@@ -1,0 +1,496 @@
+id: nf1.lata
+template: scene
+title:
+  en: The लता family
+  hi: लता का कुल
+title_sa: लताशब्दः
+minutes: 6
+teaches:
+- noun.lata
+needs:
+- noun.phala
+- gen.feminine-a
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The third branch
+    hi: तीसरी शाखा
+  depth: core
+  image:
+    brief: The tree of green mist with a third thick branch bowing toward the desk, tags rustling; Śuka scattering three tags with his wing and reading them aloud proudly; Dādī laughing; you copying into a notebook.
+    alt:
+      en: A parrot reads tags from the third branch of a tree of names
+      hi: नामों के पेड़ की तीसरी शाखा के टैग पढ़ता तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - vrikshaka
+    place: pathashala
+    ratio: '4:3'
+    id: nf1-lata-s1
+  narration:
+    en: 'A third branch, thick with leaf-tags in a different rhythm, bows toward the desk. “The feminines in -आ,” says Dādī. Śuka scatters three tags with his wing and reads them back, pleased with himself. The tree of names is almost whole now: it has found its masculine, its neuter, and now its feminine.'
+    hi: 'तीसरी शाखा, अलग लय में पत्ते-टैगों से लदी, मेज़ की ओर झुकती है। “-आ वाले स्त्रीलिंग,” दादी कहती हैं। शुक अपने पंख से तीन टैग बिखेरता है और उन्हें वापस पढ़ता है, अपने पर प्रसन्न। नामों का पेड़ अब लगभग पूरा है: उसे अपना पुंलिंग मिला, नपुंसक मिला, और अब स्त्रीलिंग।'
+- id: t1
+  kind: teach
+  title:
+    en: The feminine, लता
+    hi: स्त्रीलिंग, लता
+  depth: core
+  skills:
+  - noun.lata
+  sutras:
+  - 4.1.4
+  - 7.3.106
+  body:
+    en: 'A feminine word in -{{आ}} has its own pattern: {{लता}} (first), {{लताम्}} (object), {{लतया}} (by), {{लतायै}} (to), {{लतायाः}} (from, of), {{लतायाम्}} (in), {{हे लते}} (call). The long {{आ}} runs through almost everything.'
+    hi: '-{{आ}} वाले स्त्रीलिंग शब्द का अपना ढाँचा है: {{लता}} (प्रथमा), {{लताम्}} (कर्म), {{लतया}} (से), {{लतायै}} (को), {{लतायाः}} (से, का), {{लतायाम्}} (में), {{हे लते}} (पुकार)। दीर्घ {{आ}} लगभग सब जगह चलता है।'
+  term:
+    sa: आकारान्तम्
+    meaning:
+      en: a word ending in -आ
+      hi: -आ पर समाप्त शब्द
+- id: tb1
+  kind: table
+  title:
+    en: 'लता: the full table'
+    hi: 'लता: पूरी तालिका'
+  depth: core
+  skills:
+  - noun.lata
+  caption:
+    en: A creeper, in every case and number
+    hi: लता, हर विभक्ति और वचन में
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: लता
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: लते
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: लताः
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: लताम्
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: लते
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Dvi
+    - sa: लताः
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Bahu
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: लतया
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: लताभ्याम्
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Dvi
+    - sa: लताभिः
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Bahu
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: लतायै
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Eka
+    - sa: लताभ्याम्
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Dvi
+    - sa: लताभ्यः
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Bahu
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: लतायाः
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: लताभ्याम्
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Dvi
+    - sa: लताभ्यः
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Bahu
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: लतायाः
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: लतयोः
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Dvi
+    - sa: लतानाम्
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Bahu
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: लतायाम्
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: लतयोः
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Dvi
+    - sa: लतासु
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Bahu
+  - - text:
+        en: 8 · calling
+        hi: 8 · सम्बोधन
+    - sa: लते
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Eka
+    - sa: लते
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Dvi
+    - sa: लताः
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Bahu
+  note:
+    en: 'The fifth and sixth singular are the same: {{लतायाः}}. The first and call differ: {{लता}}, {{हे लते}}.'
+    hi: 'एकवचन में पञ्चमी और षष्ठी एक-सी हैं: {{लतायाः}}। प्रथमा और सम्बोधन अलग हैं: {{लता}}, {{हे लते}}।'
+- id: t2
+  kind: teach
+  title:
+    en: Other members of the family
+    hi: कुल के अन्य सदस्य
+  depth: core
+  skills:
+  - noun.lata
+  body:
+    en: '{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} all follow {{लता}}. Learn the table once and say any of them.'
+    hi: '{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} सब {{लता}} जैसे चलते हैं। तालिका एक बार सीखिए और इनमें से कोई भी बोलिए।'
+  examples:
+  - sa: बालिकायै
+    meaning:
+      en: to the girl
+      hi: बालिका को
+    check:
+      type: subanta
+      stem: बालिका
+      linga: Stri
+      vibhakti: Caturthi
+      vacana: Eka
+  - sa: नौकाभिः
+    meaning:
+      en: by boats
+      hi: नावों से
+    check:
+      type: subanta
+      stem: नौका
+      linga: Stri
+      vibhakti: Trtiya
+      vacana: Bahu
+  - sa: गङ्गायाम्
+    meaning:
+      en: in the Gaṅgā
+      hi: गंगा में
+    check:
+      type: subanta
+      stem: गङ्गा
+      linga: Stri
+      vibhakti: Saptami
+      vacana: Eka
+  - sa: पाठशालानाम्
+    meaning:
+      en: of schools
+      hi: पाठशालाओं का
+    check:
+      type: subanta
+      stem: पाठशाला
+      linga: Stri
+      vibhakti: Sasthi
+      vacana: Bahu
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - noun.lata
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: Every form is in the table you just read.
+    hi: हर रूप उसी तालिका में है जो अभी पढ़ी।
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: लता
+      linga: Stri
+      blanks: 3
+    seed: 4
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - noun.lata
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of a family member.
+    hi: कुल के एक सदस्य के छूटे रूप भरिए।
+  explain:
+    en: '{{बालिका}} takes the same endings as {{लता}}.'
+    hi: '{{बालिका}} वही प्रत्यय लेती है जो {{लता}}।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: बालिका
+      linga: Stri
+      blanks: 3
+    seed: 5
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - noun.lata
+  mode: choice
+  prompt:
+    en: Which is the call of {{लता}}?
+    hi: '{{लता}} की पुकार कौन-सी है?'
+  explain:
+    en: '{{हे लते}}: -आ → {{ए}}.'
+    hi: '{{हे लते}}: -आ → {{ए}}।'
+  roman: after
+  options:
+  - sa: लता
+  - sa: लताम्
+  - correct: true
+    sa: लते
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - noun.lata
+  mode: match
+  prompt:
+    en: Join each form to its case.
+    hi: हर रूप को उसकी विभक्ति से जोड़िए।
+  explain:
+    en: '{{ाम्}}, {{या}}, {{ायै}}, {{ायाम्}}.'
+    hi: '{{ाम्}}, {{या}}, {{ायै}}, {{ायाम्}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: लताम्
+    right:
+      text:
+        en: 2nd
+        hi: द्वितीया
+  - left:
+      sa: लतया
+    right:
+      text:
+        en: 3rd
+        hi: तृतीया
+  - left:
+      sa: लतायै
+    right:
+      text:
+        en: 4th
+        hi: चतुर्थी
+  - left:
+      sa: लतायाम्
+    right:
+      text:
+        en: 7th
+        hi: सप्तमी
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - noun.lata
+  widget: mark_words
+  prompt:
+    en: Tap every form that ends in {{आयाः}}.
+    hi: '{{आयाः}} पर समाप्त होने वाले हर रूप को छुइए।'
+  params:
+    passage:
+    - लतायाः
+    - लतायै
+    - बालिकायाः
+    - बालिकाम्
+    - नौकायाः
+    - नौकया
+    targets:
+    - लतायाः
+    - बालिकायाः
+    - नौकायाः
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: The third branch flowers
+    hi: तीसरी शाखा में फूल
+  depth: core
+  skills:
+  - noun.lata
+  mode: choice
+  prompt:
+    en: Which form means “in the creeper”?
+    hi: ‘लता में’ किस रूप का अर्थ है?
+  explain:
+    en: 'The seventh case: {{लतायाम्}}.'
+    hi: 'सप्तमी: {{लतायाम्}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “लतायाम्,” you say, and all along the third branch small blue flowers open, one after the other, as if the tree were counting. Vṛkṣaka stands whole, a full tree, his tags turning to leaves. “देवः, देवौ, देवाः,” he says in a green rustle. “मुक्तः।”
+      hi: “लतायाम्,” आप कहते हैं, और पूरी तीसरी शाखा पर नन्हे नीले फूल एक के बाद एक खिलते हैं, मानो पेड़ गिन रहा हो। वृक्षक पूरा खड़ा है, एक भरा हुआ पेड़, उसके टैग पत्तों में बदलते हुए। “देवः, देवौ, देवाः,” वह हरी सरसराहट में कहता है। “मुक्तः।”
+    failure:
+      en: 'The branch stays bare. “In” is the seventh case: look for {{आयाम्}}.'
+      hi: 'शाखा सूनी रहती है। ‘में’ सप्तमी है: {{आयाम्}} खोजिए।'
+  options:
+  - sa: लतायाः
+  - sa: लतायै
+  - correct: true
+    sa: लतायाम्
+- id: sum
+  kind: summary
+  title:
+    en: The लता family
+    hi: लता का कुल
+  depth: core
+  points:
+  - sa: लता लते लताः
+    text:
+      en: First case, three numbers.
+      hi: प्रथमा, तीन वचन।
+  - sa: लतायाः
+    text:
+      en: Fifth and sixth singular are the same.
+      hi: एकवचन पञ्चमी और षष्ठी एक-सी।
+  - sa: बालिका · नौका · माला · गङ्गा
+    text:
+      en: Thousands follow it.
+      hi: हज़ारों इसी पर चलते हैं।

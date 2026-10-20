@@ -1,0 +1,465 @@
+id: tad.more
+template: scene
+title:
+  en: More and most
+  hi: अधिक और सबसे अधिक
+title_sa: लघुतरः गरिष्ठः
+minutes: 6
+teaches:
+- tad.comparison
+needs:
+- tad.matup
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The twenty-fifth statue
+    hi: पच्चीसवीं प्रतिमा
+  depth: core
+  image:
+    brief: The twenty-fifth statue holding a pair of stone scales that tilt gently; Dādī pointing at the beam; Śuka perched on one pan which sinks slightly; Lubdhaka's foreman watching the scales hold his breath.
+    alt:
+      en: A statue holds stone scales tilting gently while a parrot perches on one pan
+      hi: पत्थर का तराज़ू थामे प्रतिमा, एक पलड़े पर बैठा तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - taddhitika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: tad-more-s1
+  narration:
+    en: 'The twenty-fifth statue holds a pair of scales. “लघुः,” she says: light. “लघुतरः”: lighter. “लघुतमः”: lightest. The scales tilt, tilt, tilt. “गुरुः,” she says, and the other pan sinks. “गरीयान्. गरिष्ठः.” Dādī: “Two ways to say more and most. One adds -तर and -तम to any word. The other is a special set for a few old adjectives.”'
+    hi: 'पच्चीसवीं प्रतिमा के हाथ में तराज़ू है। “लघुः,” वह कहती है: हल्का। “लघुतरः”: अधिक हल्का। “लघुतमः”: सबसे हल्का। तराज़ू झुकता है, झुकता है, झुकता है। “गुरुः,” वह कहती है, और दूसरा पलड़ा डूबता है। “गरीयान्। गरिष्ठः।” दादी: “अधिक और सबसे अधिक कहने के दो तरीक़े। एक किसी भी शब्द में -तर और -तम जोड़ता है। दूसरा कुछ पुराने विशेषणों का विशेष समूह है।”'
+- id: t1
+  kind: teach
+  title:
+    en: More and most
+    hi: अधिक और सबसे अधिक
+  depth: core
+  skills:
+  - tad.comparison
+  body:
+    en: '{{-तरः}} means “more”, for two things; {{-तमः}} means “most”, for many: {{लघु}} gives {{लघुतरः}}, {{लघुतमः}}. A few adjectives have older forms: {{गुरु}} gives {{गरीयान्}} (heavier), {{गरिष्ठः}} (heaviest); {{प्रिय}} gives {{प्रेयान्}}, {{प्रेष्ठः}}; {{बहु}} gives {{भूयान्}}, {{भूयिष्ठः}}.'
+    hi: '{{-तरः}} का अर्थ ‘अधिक’ है, दो वस्तुओं के लिए; {{-तमः}} का अर्थ ‘सबसे अधिक’ है, कई के लिए: {{लघु}} से {{लघुतरः}}, {{लघुतमः}}। कुछ विशेषणों के पुराने रूप हैं: {{गुरु}} से {{गरीयान्}} (अधिक भारी), {{गरिष्ठः}} (सबसे भारी); {{प्रिय}} से {{प्रेयान्}}, {{प्रेष्ठः}}; {{बहु}} से {{भूयान्}}, {{भूयिष्ठः}}।'
+  term:
+    sa: तरप् / तमप्
+    meaning:
+      en: the “more” and “most” suffixes
+      hi: ‘अधिक’ और ‘सबसे अधिक’ प्रत्यय
+- id: tb1
+  kind: table
+  title:
+    en: More and most
+    hi: अधिक और सबसे अधिक
+  depth: core
+  skills:
+  - tad.comparison
+  caption:
+    en: -तर, -तम and the old forms
+    hi: -तर, -तम और पुराने रूप
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: More
+    hi: अधिक
+  - en: Most
+    hi: सबसे अधिक
+  rows:
+  - - sa: लघु
+    - sa: लघुतरः
+      check:
+        type: taddhita
+        stem: लघु
+        taddhita: tarap
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: लघुतमः
+      check:
+        type: taddhita
+        stem: लघु
+        taddhita: tamap
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: उच्च
+    - sa: उच्चतरः
+      check:
+        type: taddhita
+        stem: उच्च
+        taddhita: tarap
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: उच्चतमः
+      check:
+        type: taddhita
+        stem: उच्च
+        taddhita: tamap
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: दीर्घ
+    - sa: दीर्घतरः
+      check:
+        type: taddhita
+        stem: दीर्घ
+        taddhita: tarap
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: दीर्घतमः
+      check:
+        type: taddhita
+        stem: दीर्घ
+        taddhita: tamap
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: महत्
+    - sa: महत्तरः
+      check:
+        type: taddhita
+        stem: महत्
+        taddhita: tarap
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: महत्तमः
+      check:
+        type: taddhita
+        stem: महत्
+        taddhita: tamap
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: प्रिय
+    - sa: प्रियतरः
+      check:
+        type: taddhita
+        stem: प्रिय
+        taddhita: tarap
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: प्रियतमः
+      check:
+        type: taddhita
+        stem: प्रिय
+        taddhita: tamap
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  note:
+    en: Add {{-तर}} / {{-तम}} to any adjective.
+    hi: किसी भी विशेषण में {{-तर}} / {{-तम}} जोड़िए।
+- id: tb2
+  kind: table
+  title:
+    en: The old forms
+    hi: पुराने रूप
+  depth: core
+  skills:
+  - tad.comparison
+  caption:
+    en: -ईयस् and -इष्ठ
+    hi: -ईयस् और -इष्ठ
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: More
+    hi: अधिक
+  - en: Most
+    hi: सबसे अधिक
+  rows:
+  - - sa: गुरु
+    - sa: गरीयान्
+      check:
+        type: taddhita
+        stem: गुरु
+        taddhita: Iyasun
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: गरिष्ठः
+      check:
+        type: taddhita
+        stem: गुरु
+        taddhita: izWan
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: लघु
+    - sa: लघीयान्
+      check:
+        type: taddhita
+        stem: लघु
+        taddhita: Iyasun
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: लघिष्ठः
+      check:
+        type: taddhita
+        stem: लघु
+        taddhita: izWan
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: प्रिय
+    - sa: प्रेयान्
+      check:
+        type: taddhita
+        stem: प्रिय
+        taddhita: Iyasun
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: प्रेष्ठः
+      check:
+        type: taddhita
+        stem: प्रिय
+        taddhita: izWan
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: बहु
+    - sa: भूयान्
+      check:
+        type: taddhita
+        stem: बहु
+        taddhita: Iyasun
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: भूयिष्ठः
+      check:
+        type: taddhita
+        stem: बहु
+        taddhita: izWan
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: दीर्घ
+    - sa: द्राघीयान्
+      check:
+        type: taddhita
+        stem: दीर्घ
+        taddhita: Iyasun
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: द्राघिष्ठः
+      check:
+        type: taddhita
+        stem: दीर्घ
+        taddhita: izWan
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  note:
+    en: 'These forms change the stem: {{गुरु}} → {{गर-}}.'
+    hi: 'ये रूप आधार बदलते हैं: {{गुरु}} → {{गर-}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - tad.comparison
+  mode: choice
+  prompt:
+    en: '{{लघुतमः}} means…'
+    hi: '{{लघुतमः}} का अर्थ…'
+  explain:
+    en: '{{-तमः}}: most.'
+    hi: '{{-तमः}}: सबसे अधिक।'
+  roman: after
+  options:
+  - text:
+      en: lighter
+      hi: अधिक हल्का
+  - correct: true
+    text:
+      en: lightest
+      hi: सबसे हल्का
+  - text:
+      en: light
+      hi: हल्का
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - tad.comparison
+  mode: type
+  prompt:
+    en: 'Say: “highest”.'
+    hi: 'कहिए: ‘सबसे ऊँचा’।'
+  explain:
+    en: '{{उच्चतमः}}.'
+    hi: '{{उच्चतमः}}।'
+  roman: after
+  answers:
+  - उच्चतमः
+  tiles:
+  - उच्च
+  - तमः
+  - तरः
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - tad.comparison
+  mode: match
+  prompt:
+    en: Join each word to its meaning.
+    hi: हर शब्द को उसके अर्थ से जोड़िए।
+  explain:
+    en: Two kinds of more and most.
+    hi: अधिक और सबसे अधिक के दो प्रकार।
+  roman: after
+  pairs:
+  - left:
+      sa: दीर्घतरः
+    right:
+      text:
+        en: longer
+        hi: अधिक लम्बा
+  - left:
+      sa: दीर्घतमः
+    right:
+      text:
+        en: longest
+        hi: सबसे लम्बा
+  - left:
+      sa: गरीयान्
+    right:
+      text:
+        en: heavier
+        hi: अधिक भारी
+  - left:
+      sa: गरिष्ठः
+    right:
+      text:
+        en: heaviest
+        hi: सबसे भारी
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - tad.comparison
+  widget: mark_words
+  prompt:
+    en: Tap every “most” word.
+    hi: हर ‘सबसे अधिक’ शब्द छुइए।
+  params:
+    passage:
+    - लघुतमः
+    - लघुतरः
+    - उच्चतमः
+    - उच्चतरः
+    - गरिष्ठः
+    - गरीयान्
+    targets:
+    - लघुतमः
+    - उच्चतमः
+    - गरिष्ठः
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: The scales
+    hi: तराज़ू
+  depth: core
+  skills:
+  - tad.comparison
+  mode: choice
+  prompt:
+    en: '{{प्रियतमः}} means…'
+    hi: '{{प्रियतमः}} का अर्थ…'
+  explain:
+    en: '{{प्रिय}} + {{-तम}}.'
+    hi: '{{प्रिय}} + {{-तम}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “प्रियतमः,” you say, “dearest,” and both pans of the scales settle, exactly level, with a small sound like a held breath let out. “लघुतरः. गरीयान्. प्रियतमः,” says the statue. “Everything has a weight. But it is the word that tells you which is more.” Taddhitikā, the green-bronze spirit, steps off the plinth. She is surprisingly light.
+      hi: “प्रियतमः,” आप कहते हैं, “सबसे प्रिय,” और तराज़ू के दोनों पलड़े ठीक बराबर बैठ जाते हैं, रोकी साँस छोड़ने जैसी हल्की आवाज़ के साथ। “लघुतरः। गरीयान्। प्रियतमः,” प्रतिमा कहती है। “हर चीज़ का एक भार है। पर कौन अधिक है, यह शब्द बताता है।” तद्धितिका, हरे काँसे की भूत, आसन से उतरती है। वह आश्चर्यजनक रूप से हल्की है।
+    failure:
+      en: 'The scales keep tilting. {{-तम}}: dearest: {{प्रियतमः}}.'
+      hi: 'तराज़ू झुकता रहता है। {{-तम}}: सबसे प्रिय: {{प्रियतमः}}।'
+  options:
+  - text:
+      en: dear
+      hi: प्रिय
+  - text:
+      en: dearer
+      hi: अधिक प्रिय
+  - correct: true
+    text:
+      en: dearest
+      hi: सबसे प्रिय
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's more and most
+    hi: पाणिनि का अधिक और सबसे अधिक
+  depth: panini
+  skills:
+  - tad.comparison
+  sutras:
+  - 5.3.57
+  - 5.3.55
+  - 6.4.157
+  body:
+    en: 'Sūtra 5.3.57, {{द्विवचनविभज्योपपदे तरबीयसुनौ}}, gives {{तरप्}} and {{ईयसुन्}} when comparing two; 5.3.55, {{अतिशायने तमबिष्ठनौ}}, gives {{तमप्}} and {{इष्ठन्}} for “most”. 6.4.157, {{प्रियस्थिरस्फिरोरुबहुलगुरुवृद्धतृप्रदीर्घवृन्दारकाणां प्रस्थस्फवर्बंहिगर्वर्षित्रब्द्राघिवृन्दाः}}, replaces the stem of a few adjectives: {{गुरु}} becomes {{गर्}}.'
+    hi: 'सूत्र 5.3.57, {{द्विवचनविभज्योपपदे तरबीयसुनौ}}, दो की तुलना में {{तरप्}} और {{ईयसुन्}} देता है; 5.3.55, {{अतिशायने तमबिष्ठनौ}}, ‘सबसे अधिक’ के लिए {{तमप्}} और {{इष्ठन्}} देता है। 6.4.157 कुछ विशेषणों का आधार बदल देता है: {{गुरु}} का {{गर्}}।'
+- id: sum
+  kind: summary
+  title:
+    en: More and most
+    hi: अधिक और सबसे अधिक
+  depth: core
+  points:
+  - sa: लघुतरः · लघुतमः
+    text:
+      en: Lighter; lightest.
+      hi: अधिक हल्का; सबसे हल्का।
+  - sa: गरीयान् · गरिष्ठः
+    text:
+      en: Heavier; heaviest.
+      hi: अधिक भारी; सबसे भारी।
+  - sa: प्रेयान् · प्रेष्ठः
+    text:
+      en: Dearer; dearest.
+      hi: अधिक प्रिय; सबसे प्रिय।

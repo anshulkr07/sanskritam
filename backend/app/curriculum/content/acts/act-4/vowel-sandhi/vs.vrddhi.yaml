@@ -1,0 +1,309 @@
+id: vs.vrddhi
+template: scene
+title:
+  en: When अ meets ए or ओ
+  hi: जब अ ए या ओ से मिले
+title_sa: सदैव
+minutes: 6
+teaches:
+- sandhi.vrddhi
+needs:
+- sandhi.guna
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The third statue
+    hi: तीसरी प्रतिमा
+  depth: core
+  image:
+    brief: The third statue holding a small drum, her fingers poised to tap; the first two statues beside her; Śuka squinting up at her; Lubdhaka's foreman wiping his brow; morning light.
+    alt:
+      en: A stone statue with a small drum poised to tap while a parrot squints up
+      hi: छोटा ढोल थामे पत्थर की प्रतिमा, ऊपर देखता तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - svarika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: vs-vrddhi-s1
+  narration:
+    en: 'The third statue holds a small drum. “सदैव,” she says: “always.” “तथैव”: “just so.” “जलौघः”: “a flood of water.” Śuka squints. “Those have an ऐ and an औ in the middle. Where did they come from?” “From a vowel that grew twice,” says Dādī. “अ meeting ए or ओ does not just strengthen: it grows to the top.”'
+    hi: 'तीसरी प्रतिमा के हाथ में छोटा ढोल है। “सदैव,” वह कहती है: “हमेशा।” “तथैव”: “वैसे ही।” “जलौघः”: “जल की बाढ़।” शुक आँखें सिकोड़ता है। “इनके बीच में ऐ और औ हैं। ये कहाँ से आए?” “एक ऐसे स्वर से जो दो बार बढ़ा,” दादी कहती हैं। “अ का ए या ओ से मिलना केवल बलवान् करना नहीं है: वह चरम तक बढ़ जाता है।”'
+  quote:
+    sa: कात्यायनो जगादैनमुपविष्टः क्षणान्तरे
+    gloss:
+      en: Kātyāyana, sitting down, said to him a moment later.
+      hi: बैठकर कात्यायन ने क्षण भर बाद उससे कहा।
+    source: Kathāsaritsāgara 1.2 (read in the Digital Corpus of Sanskrit); jagādainam is jagāda + enam
+- id: t1
+  kind: teach
+  title:
+    en: Growing to the top
+    hi: चरम तक बढ़ना
+  depth: core
+  skills:
+  - sandhi.vrddhi
+  body:
+    en: When {{अ}} or {{आ}} meets {{ए}} or {{ऐ}}, the result is {{ऐ}}; when it meets {{ओ}} or {{औ}}, it is {{औ}}. {{सदा + एव}} gives {{सदैव}}; {{जल + ओघः}} gives {{जलौघः}}. This is {{वृद्धिः}}, the strongest grade.
+    hi: जब {{अ}} या {{आ}}, {{ए}} या {{ऐ}} से मिलते हैं तो {{ऐ}} बनता है; {{ओ}} या {{औ}} से {{औ}}। {{सदा + एव}} से {{सदैव}}; {{जल + ओघः}} से {{जलौघः}}। यह {{वृद्धिः}} है, सबसे प्रबल दर्जा।
+  term:
+    sa: वृद्धिः
+    meaning:
+      en: 'growth: आ, ऐ, औ'
+      hi: 'वृद्धि: आ, ऐ, औ'
+- id: tb1
+  kind: table
+  title:
+    en: Vṛddhi
+    hi: वृद्धि
+  depth: core
+  skills:
+  - sandhi.vrddhi
+  caption:
+    en: अ meets ए or ओ
+    hi: अ का ए या ओ से मिलना
+  columns:
+  - en: First word
+    hi: पहला शब्द
+  - en: Second word
+    hi: दूसरा शब्द
+  - en: Joined
+    hi: जुड़ा हुआ
+  rows:
+  - - sa: एक
+    - sa: एकम्
+    - sa: एकैकम्
+      check:
+        type: sandhi
+        first: एक
+        second: एकम्
+        joined: एकैकम्
+      highlight: true
+  - - sa: सदा
+    - sa: एव
+    - sa: सदैव
+      check:
+        type: sandhi
+        first: सदा
+        second: एव
+        joined: सदैव
+      highlight: true
+  - - sa: तथा
+    - sa: एव
+    - sa: तथैव
+      check:
+        type: sandhi
+        first: तथा
+        second: एव
+        joined: तथैव
+      highlight: true
+  - - sa: महा
+    - sa: ऐश्वर्यम्
+    - sa: महैश्वर्यम्
+      check:
+        type: sandhi
+        first: महा
+        second: ऐश्वर्यम्
+        joined: महैश्वर्यम्
+      highlight: true
+  - - sa: जल
+    - sa: ओघः
+    - sa: जलौघः
+      check:
+        type: sandhi
+        first: जल
+        second: ओघः
+        joined: जलौघः
+      highlight: true
+  - - sa: वन
+    - sa: औषधिः
+    - sa: वनौषधिः
+      check:
+        type: sandhi
+        first: वन
+        second: औषधिः
+        joined: वनौषधिः
+      highlight: true
+  note:
+    en: '{{अ}} + {{ए}} = {{ऐ}}; {{अ}} + {{ओ}} = {{औ}}.'
+    hi: '{{अ}} + {{ए}} = {{ऐ}}; {{अ}} + {{ओ}} = {{औ}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.vrddhi
+  mode: choice
+  prompt:
+    en: Split the joined word {{सदैव}}.
+    hi: जुड़े शब्द {{सदैव}} को तोड़िए।
+  explain:
+    en: '{{सदा}} + {{एव}}.'
+    hi: '{{सदा}} + {{एव}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: सदा + एव
+  - sa: सदे + एव
+  - sa: सदि + एव
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.vrddhi
+  mode: choice
+  prompt:
+    en: '{{तथा + एव}} gives…'
+    hi: '{{तथा + एव}} से…'
+  explain:
+    en: '{{आ}} + {{ए}} = {{ऐ}}.'
+    hi: '{{आ}} + {{ए}} = {{ऐ}}।'
+  roman: after
+  options:
+  - sa: तथेव
+  - sa: तथोव
+  - correct: true
+    sa: तथैव
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.vrddhi
+  mode: type
+  prompt:
+    en: 'Join: {{जल}} + {{ओघः}}.'
+    hi: 'जोड़िए: {{जल}} + {{ओघः}}।'
+  explain:
+    en: '{{जलौघः}}: a flood.'
+    hi: '{{जलौघः}}: बाढ़।'
+  roman: after
+  answers:
+  - जलौघः
+  tiles:
+  - जलौ
+  - घः
+  - ओघः
+  - ति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.vrddhi
+  mode: match
+  prompt:
+    en: Join each word to its parts.
+    hi: हर शब्द को उसके भागों से जोड़िए।
+  explain:
+    en: '{{ऐ}} and {{औ}} show vṛddhi.'
+    hi: '{{ऐ}} और {{औ}} वृद्धि दिखाते हैं।'
+  roman: after
+  pairs:
+  - left:
+      sa: सदैव
+    right:
+      sa: सदा + एव
+  - left:
+      sa: एकैकम्
+    right:
+      sa: एक + एकम्
+  - left:
+      sa: वनौषधिः
+    right:
+      sa: वन + औषधिः
+  - left:
+      sa: महैश्वर्यम्
+    right:
+      sa: महा + ऐश्वर्यम्
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.vrddhi
+  widget: mark_words
+  prompt:
+    en: Tap every word with vṛddhi ({{ऐ}} or {{औ}} made by joining).
+    hi: वृद्धि वाला हर शब्द छुइए (जुड़ने से बना {{ऐ}} या {{औ}})।
+  params:
+    passage:
+    - सदैव
+    - गणेशः
+    - जलौघः
+    - महोत्सवः
+    - वनौषधिः
+    - सूक्तम्
+    targets:
+    - सदैव
+    - जलौघः
+    - वनौषधिः
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: The drum
+    hi: ढोल
+  depth: core
+  skills:
+  - sandhi.vrddhi
+  mode: choice
+  prompt:
+    en: '{{वन + औषधिः}} gives…'
+    hi: '{{वन + औषधिः}} से…'
+  explain:
+    en: '{{अ}} + {{औ}} = {{औ}}.'
+    hi: '{{अ}} + {{औ}} = {{औ}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “वनौषधिः,” you say, and the drum statue taps, once. The note is dry and bright, like a branch breaking in frost. “Forest herbs,” she says, and taps again. “जलौघः, a flood. सदैव, always.” Lubdhaka's foreman has stopped writing. He is staring at a wall of statues that are all, quietly, speaking.
+      hi: “वनौषधिः,” आप कहते हैं, और ढोल वाली प्रतिमा एक बार थाप देती है। ध्वनि सूखी और उजली है, पाले में टूटती डाल की तरह। “वन की औषधियाँ,” वह कहती है, और फिर थाप देती है। “जलौघः, बाढ़। सदैव, हमेशा।” लुब्धक का मुखिया लिखना बन्द कर चुका है। वह प्रतिमाओं की उस दीवार को घूर रहा है जो सब चुपचाप बोल रही हैं।
+    failure:
+      en: 'The drum stays silent. {{अ}} + {{औ}} = {{औ}}: {{वनौषधिः}}.'
+      hi: 'ढोल चुप रहता है। {{अ}} + {{औ}} = {{औ}}: {{वनौषधिः}}।'
+  options:
+  - sa: वनोषधिः
+  - sa: वनाओषधिः
+  - correct: true
+    sa: वनौषधिः
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's growth
+    hi: पाणिनि की वृद्धि
+  depth: panini
+  skills:
+  - sandhi.vrddhi
+  sutras:
+  - 6.1.88
+  - 1.1.1
+  body:
+    en: Sūtra 6.1.88, {{वृद्धिरेचि}}, says that when {{अ}} or {{आ}} meets an {{एच्}} vowel ({{ए}}, {{ओ}}, {{ऐ}}, {{औ}}) the result is vṛddhi. 1.1.1, {{वृद्धिरादैच्}}, names {{आ}}, {{ऐ}}, {{औ}} vṛddhi. So {{अ + ए}} gives {{ऐ}} and {{अ + ओ}} gives {{औ}}.
+    hi: सूत्र 6.1.88, {{वृद्धिरेचि}}, कहता है कि जब {{अ}} या {{आ}} {{एच्}} स्वर ({{ए}}, {{ओ}}, {{ऐ}}, {{औ}}) से मिलते हैं तो वृद्धि होती है। 1.1.1, {{वृद्धिरादैच्}}, {{आ}}, {{ऐ}}, {{औ}} को वृद्धि कहता है। इसलिए {{अ + ए}} से {{ऐ}} और {{अ + ओ}} से {{औ}}।
+- id: sum
+  kind: summary
+  title:
+    en: Vṛddhi
+    hi: वृद्धि
+  depth: core
+  points:
+  - sa: अ + ए = ऐ
+    text:
+      en: सदैव, तथैव.
+      hi: सदैव, तथैव।
+  - sa: अ + ओ = औ
+    text:
+      en: जलौघः, वनौषधिः.
+      hi: जलौघः, वनौषधिः।
+  - text:
+      en: The vowel grows to the top.
+      hi: स्वर चरम तक बढ़ता है।

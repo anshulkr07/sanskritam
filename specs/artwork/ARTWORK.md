@@ -16,11 +16,14 @@ take precedence; update this policy when the owner changes a decision.
 - Persist settings across launches using `shabd.read.appearance.v1`. A changed
   default must not overwrite a reader's explicitly saved preference.
 - Preserve existing Light/Sepia/Dark themes, five Sanskrit sizes
-  `[0.85, 1, 1.15, 1.3, 1.5]`, and Roman transliteration toggle. Do not silently
+  `[0.85, 1, 1.15, 1.3, 1.5]`, and Roman transliteration toggle. Owner update
+  2026-10-19: Roman defaults to off and its choice persists; offer independent
+  color, size and bold controls for verse, Roman, English and Hindi meaning. Do not silently
   scale down text to fit an illustration; allow the page to scroll.
 - Sanskrit uses the actual app face, Tiro Devanagari Sanskrit, at the existing
   22px base size and `round(size * 1.75)` line height. Preserve the reader's real
-  Roman text, translations, word-by-word and Learn affordances.
+  Roman text, translations, teaching content. Owner update 2026-10-19: remove word-by-word from the
+  reading page and highlight “Learn & Recite this Shloka yourself” instead.
 - No Sanskrit, Romanization, meaning, table, or UI may be flattened into a
   generated image as a replacement for actual app content.
 
@@ -52,8 +55,14 @@ take precedence; update this policy when the owner changes a decision.
 
 ## Master composition and aspect ratios
 
-- Prefer a **square 1:1 master** for the single-source background system. Request
-  2048 × 2048 or the highest genuinely supported native resolution. Record the
+- Owner update 2026-10-19: prefer **9:16 portrait originals** for new verse
+  paintings, with phones primary. Request 1080 × 1920 or the highest genuinely
+  supported native portrait resolution close to 9:16. Use the same painting on
+  tablets/landscape with proportional contain fitting; no second AI generation.
+  Existing square paintings remain complete and uncropped until a separately
+  needed extension/regeneration. The owner authorized selective regeneration
+  for better phone composition on 2026-10-19; use versioned prompts and preserve
+  historical provenance metadata, without retaining original PNG backups. Record the
   actual returned dimensions. Never claim an upscaled file is a higher native
   generation. The initial Īśopaniṣad set returned **1254 × 1254** masters.
 - Keep essential faces, hands, narrative objects, and relationships away from
@@ -72,17 +81,28 @@ take precedence; update this policy when the owner changes a decision.
 
 ## Responsive layout: phones, tablets, portrait, landscape
 
+- Owner update 2026-10-19: phones are primary, tablets secondary. Show the
+  complete verse painting using `contain` on all reader sizes, with a small
+  paper inset. Give the image explicit measured width/height and pass only its
+  URI as native source; source pixel dimensions must not become view dimensions.
+  Check 320–430px phones before tablet previews. New compositions need a compact
+  central narrative grouping and quiet margins, readable at phone width.
 - Fit against the measured page rectangle, not a list of device model names.
   Account for native safe areas and changing reader controls.
-- Never stretch/squash an image. Use proportional `cover` only if the visible
-  crop contains the entire authored safe region. Otherwise use `contain`,
-  with the reader theme's paper color filling the remaining area.
+- Never stretch/squash or crop a verse painting to fill the page. Use `contain`,
+  with the reader theme's paper color filling the remaining area. This owner's
+  phone-first update supersedes the previous optional safe-region `cover` rule.
 - Keep text layout independent of the painting. Orientation changes and larger
   accessibility text must not hide Sanskrit, transliteration, or meaning.
 - Derive phone WebP at **768px longest edge**, quality **80**, and tablet WebP
   at **up to 1536px longest edge**, quality **88**, from the original master.
   Preserve aspect ratio and never upscale a smaller master. The initial tablet
   copies therefore remain 1254 × 1254.
+- For new portrait artwork, the phone copy instead fits within **768 × 1536px**
+  (up to 768px width), quality 80. Tablet stays within 1536 × 1536px, quality 88.
+  Preserve actual native proportions, never upscale. Keep important subjects in
+  a compact central grouping, away from all four edges; no cropping to force a
+  particular phone model's ratio. Preserve the same 48% default and live text.
 - Current resolution selection uses the tablet copy when the shorter window
   dimension is at least 600 logical pixels; orientation must not unexpectedly
   switch a phone into a large download. Revisit only with measured evidence.
@@ -94,7 +114,9 @@ take precedence; update this policy when the owner changes a decision.
 
 - Keep launch icons, splash artwork, small tutor/avatar assets and useful
   fallbacks bundled. Keep fonts and essential app text offline.
-- Store large book/festival/game/lesson/path/hub paintings and verse artwork in
+- Owner update 2026-10-19: bundle festival paintings and book/audiobook covers
+  for instant offline display. These priority assets supersede the earlier R2-only
+  rule. Other large game/lesson/path/hub paintings and verse artwork remain in
   the public R2 bucket behind `https://cdn.vedicvalor.com`.
 - Use immutable, content-hashed object keys and
   `Cache-Control: public, max-age=31536000, immutable`, with correct image MIME.
@@ -156,6 +178,28 @@ After regenerating lesson asset maps with older authoring scripts, rerun the
 verified migration step: those generators must not restore static `require()`
 references to paintings already migrated. Future generators should consult the
 remote registry for known artwork and publish new deliveries before integration.
+
+## Learn story course pictures
+
+Owner decisions 2026-10-19, for the story course ("The Burnt Book",
+`specs/learn-story/IMPLEMENTATION.md` section 9). They change this policy for
+Learn story pictures only; verse artwork keeps every rule above.
+
+- Generated in **ChatGPT** (the owner's choice of method).
+- Pictures **may contain writing** when the card's `text_in_image` lists it.
+  A verifier compares the drawn text with that list exactly (NFC Devanagari)
+  before delivery; a mismatch is regenerated. Pictures with an empty list
+  must carry no lettering, fake script or watermark (rule 7 above applies).
+- The same Sanskrit is always also live text on the card: a picture never
+  replaces app content.
+- Ratios come from the content: story cards 4:3, portraits 1:1, leaves 3:4,
+  map backdrops 9:16 (map backdrops carry no text). Phone-first composition,
+  contain fitting, no cropping or stretching.
+- Delivery as above: phone WebP within 768 × 1536 (q80), tablet within
+  1536 × 1536 (q88), content-hashed R2 keys under `learn/`, immutable
+  caching, verified public URLs, originals deleted after verification. The
+  registry is `backend/app/curriculum/content/images/deliveries.yaml`.
+- No picture-choice exercises in Learn (owner, 2026-10-19).
 
 ## Release evidence
 

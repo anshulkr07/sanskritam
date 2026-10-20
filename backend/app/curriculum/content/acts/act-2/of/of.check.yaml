@@ -1,0 +1,198 @@
+id: of.check
+template: check
+title:
+  en: Whose is it?
+  hi: यह किसका है?
+title_sa: परीक्षा
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.gen
+  mode: choice
+  prompt:
+    en: “The teacher's house.” Which word for “teacher”?
+    hi: ‘आचार्य का घर।’ ‘आचार्य’ के लिए कौन-सा रूप?
+  explain:
+    en: 'Owner: sixth case.'
+    hi: 'स्वामी: षष्ठी।'
+  roman: after
+  options:
+  - sa: आचार्यः
+  - sa: आचार्यम्
+  - correct: true
+    sa: आचार्यस्य
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.gen
+  mode: match
+  prompt:
+    en: Join each owner to its meaning.
+    hi: हर स्वामी को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{स्य}} and {{याः}}.'
+    hi: '{{स्य}} और {{याः}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: रामस्य
+    right:
+      text:
+        en: of Rāma
+        hi: राम का
+  - left:
+      sa: बालिकायाः
+    right:
+      text:
+        en: of the girl
+        hi: बालिका की
+  - left:
+      sa: नद्याः
+    right:
+      text:
+        en: of the river
+        hi: नदी का
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - case.gen
+  mode: order
+  prompt:
+    en: 'Say: “Whose book?”'
+    hi: 'कहिए: ‘किसकी पुस्तक?’'
+  explain:
+    en: '{{कस्य पुस्तकम्}}: whose book?'
+    hi: '{{कस्य पुस्तकम्}}: किसकी पुस्तक?'
+  roman: after
+  tokens:
+  - कस्य
+  - पुस्तकम्
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - case.gen-family
+  mode: choice
+  prompt:
+    en: “My father.” Which phrase?
+    hi: ‘मेरे पिता।’ कौन-सा वाक्यांश?
+  explain:
+    en: '{{मम}}: my.'
+    hi: '{{मम}}: मेरा।'
+  roman: after
+  options:
+  - correct: true
+    sa: मम पिता
+  - sa: अहं पिता
+  - sa: मयि पिता
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - case.gen-family
+  mode: match
+  prompt:
+    en: Join each pronoun to its meaning.
+    hi: हर सर्वनाम को उसके अर्थ से जोड़िए।
+  explain:
+    en: The sixth case of the pronouns.
+    hi: सर्वनामों की षष्ठी।
+  roman: after
+  pairs:
+  - left:
+      sa: मम
+    right:
+      text:
+        en: my
+        hi: मेरा
+  - left:
+      sa: तव
+    right:
+      text:
+        en: your
+        hi: तेरा
+  - left:
+      sa: तस्य
+    right:
+      text:
+        en: his
+        hi: उसका
+  - left:
+      sa: अस्माकम्
+    right:
+      text:
+        en: our
+        hi: हमारा
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - case.gen-family
+  mode: choice
+  prompt:
+    en: The father's mother is…
+    hi: पिता की माता कौन है?
+  explain:
+    en: '{{पितुः माता}} is {{पितामही}}.'
+    hi: '{{पितुः माता}} यानी {{पितामही}}।'
+  roman: show
+  options:
+  - correct: true
+    sa: पितामही
+  - sa: मातामही
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - case.gen
+  mode: engine
+  prompt:
+    en: Reorder the words and keep the meaning.
+    hi: शब्दों को फिर से लगाइए, अर्थ वही रखिए।
+  explain:
+    en: The endings carry the roles.
+    hi: भूमिकाएँ प्रत्ययों में हैं।
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: आचार्यस्य गृहं गच्छति
+    seed: 7
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - case.gen-family
+  - case.gen
+  mode: order
+  prompt:
+    en: 'Name the things in the teacher''s house for the golden spirit: “my mother, my father, my home.”'
+    hi: 'सुनहरे भूत को बताइए: ‘मेरी माता, मेरे पिता, मेरा घर।’'
+  explain:
+    en: '{{मम माता, मम पिता, मम गृहम्}}.'
+    hi: '{{मम माता, मम पिता, मम गृहम्}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “मम माता, मम पिता, मम गृहम्.” Smṛtikā breathes the words in like warm air. Her lamp flares gold and she rises, light as the memory of a song. “रात्रौ गृहे दीपः अस्ति,” she says, and the lamp she has carried so long she places in your hands. Outside, the last of the storm clouds slide off the sky, and a lamp-lit night begins.
+      hi: “मम माता, मम पिता, मम गृहम्।” स्मृतिका शब्दों को गर्म हवा की तरह भीतर लेती है। उसका दीपक सुनहरा भड़क उठता है और वह किसी गीत की स्मृति-सी हल्की उठती है। “रात्रौ गृहे दीपः अस्ति,” वह कहती है, और जो दीपक इतने समय से थामे थी वह आपके हाथों में रख देती है। बाहर आँधी के आख़िरी बादल आकाश से सरक जाते हैं, और दीपों से जगमग रात शुरू होती है।
+    failure:
+      en: The lamp stays low. Three “my”-phrases, each with a name of kin or home.
+      hi: दीपक मद्धम रहता है। तीन ‘मेरा’-वाक्यांश, हर एक में नाते या घर का नाम।
+  tokens:
+  - मम
+  - माता
+  - मम
+  - पिता
+  - मम
+  - गृहम्

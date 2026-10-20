@@ -1,0 +1,195 @@
+id: aor.revision
+template: revision
+title:
+  en: Everything about the aorist and the rare four
+  hi: लुङ् और चार दुर्लभ रूपों के बारे में सब कुछ
+title_sa: लुङ्सङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The forms
+    hi: रूप
+  depth: core
+  section: core
+  rows:
+  - skill: verb.lun
+    rule:
+      en: '{{भू}} in {{लुङ्}}: {{अभूत् अभूताम् अभूवन्}}, {{अभूः अभूतम् अभूत}}, {{अभूवम् अभूव अभूम}}; {{कृ}}: {{अकार्षीत्}}.'
+      hi: '{{भू}} का {{लुङ्}}: {{अभूत् अभूताम् अभूवन्}}, {{अभूः अभूतम् अभूत}}, {{अभूवम् अभूव अभूम}}; {{कृ}}: {{अकार्षीत्}}।'
+    sutras:
+    - 3.2.110
+    - 3.1.43
+    - 3.1.44
+    - 7.2.1
+    tag: core
+    taught_in: aor.abhut#tb1
+  - skill: verb.ma
+    rule:
+      en: '{{मा}} + the aorist without {{अ}}: {{मा गमः}}, {{मा भूत्}}, {{मा भैषीः}}.'
+      hi: '{{मा}} + {{अ}} के बिना लुङ्: {{मा गमः}}, {{मा भूत्}}, {{मा भैषीः}}।'
+    sutras:
+    - 3.3.175
+    - 6.4.74
+    tag: core
+    taught_in: aor.ma#tb1
+  - skill: verb.rare-four
+    rule:
+      en: '{{लुट्}} {{भविता}}; {{आशीर्लिङ्}} {{भूयात्}}; {{लृङ्}} {{अभविष्यत्}}.'
+      hi: '{{लुट्}} {{भविता}}; {{आशीर्लिङ्}} {{भूयात्}}; {{लृङ्}} {{अभविष्यत्}}।'
+    sutras:
+    - 3.3.15
+    - 3.3.173
+    - 3.3.139
+    tag: core
+    taught_in: aor.four#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: verb.lun
+    rule:
+      en: '{{लुङ्}} for what has just come to be; in plain Sanskrit prose, {{लङ्}} is more common.'
+      hi: जो अभी हुआ, उसके लिए {{लुङ्}}; सामान्य संस्कृत गद्य में {{लङ्}} अधिक चलता है।
+    tag: good
+    taught_in: aor.abhut#t1
+  - skill: verb.ma
+    rule:
+      en: To forbid, use {{मा}} with the bare aorist, not {{न}} with a command.
+      hi: मना करने के लिए {{मा}} के साथ बिना आगम का लुङ् लीजिए, आज्ञा के साथ {{न}} नहीं।
+    tag: good
+    taught_in: aor.ma#t1
+  - skill: verb.rare-four
+    rule:
+      en: For “had … would have …”, both halves take {{लृङ्}}.
+      hi: ‘यदि … तो …’ (जो हुआ नहीं) में दोनों भाग {{लृङ्}} लेते हैं।
+    tag: good
+    taught_in: aor.four#t2
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: verb.lun
+    rule:
+      en: 'Roots of different kinds make their aorist in different ways: {{अगमत्}} (no {{ष}}), {{अकार्षीत्}} (with {{ष}}), {{अदात्}} (from {{दा}}).'
+      hi: 'अलग प्रकार की धातुएँ अलग ढंग से लुङ् बनाती हैं: {{अगमत्}} ({{ष}} नहीं), {{अकार्षीत्}} ({{ष}} सहित), {{अदात्}} ({{दा}} से)।'
+    example:
+      sa: अदात्
+      meaning:
+        en: he gave
+        hi: उसने दिया
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lun
+        purusha: Prathama
+        vacana: Eka
+    tag: rare
+    new_here: true
+  - skill: verb.rare-four
+    rule:
+      en: 'In the Veda, a fifth form {{लेट्}} (the subjunctive) appears: you will only meet it in the Ṛgveda.'
+      hi: 'वेद में पाँचवाँ रूप {{लेट्}} मिलता है: वह आपको केवल ऋग्वेद में मिलेगा।'
+    example:
+      sa: कर्ता
+      meaning:
+        en: he will do (not today)
+        hi: वह करेगा (आज नहीं)
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lut
+        purusha: Prathama
+        vacana: Eka
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: verb.ma
+    rule:
+      en: 'Do not say {{मा अगमः}}: after {{मा}} the {{अ}} drops.'
+      hi: '{{मा अगमः}} मत कहिए: {{मा}} के बाद {{अ}} हट जाता है।'
+    tag: core
+    taught_in: aor.ma#p1
+  - skill: verb.rare-four
+    rule:
+      en: 'Do not use {{भूयात्}} for “should”: it is a blessing; “should” is {{भवेत्}}.'
+      hi: '{{भूयात्}} को ‘चाहिए’ के लिए मत लीजिए: वह आशीर्वाद है; ‘चाहिए’ {{भवेत्}} है।'
+    tag: core
+    taught_in: aor.four#p1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: verb.lun
+    rule:
+      en: '{{लुङ्}}, {{च्लि लुङि}}, {{च्लेः सिच्}} and {{सिचि वृद्धिः परस्मैपदेषु}}: the tense, {{च्लि}}, {{सिच्}} and the lengthening.'
+      hi: '{{लुङ्}}, {{च्लि लुङि}}, {{च्लेः सिच्}} और {{सिचि वृद्धिः परस्मैपदेषु}}: काल, {{च्लि}}, {{सिच्}} और वृद्धि।'
+    sutras:
+    - 3.2.110
+    - 3.1.43
+    - 3.1.44
+    - 7.2.1
+    tag: core
+    taught_in: aor.abhut#pn
+  - skill: verb.ma
+    rule:
+      en: '{{माङि लुङ्}} and {{न माङ्योगे}}: {{लुङ्}} after {{मा}}, with no augment.'
+      hi: '{{माङि लुङ्}} और {{न माङ्योगे}}: {{मा}} के बाद {{लुङ्}}, आगम के बिना।'
+    sutras:
+    - 3.3.175
+    - 6.4.74
+    tag: core
+    taught_in: aor.ma#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: verb.lun
+    formula: अभूत् · अकार्षीत् · अगमत्
+    rule:
+      en: aorist
+      hi: लुङ्
+    tag: core
+    taught_in: aor.abhut#tb1
+  - skill: verb.ma
+    formula: मा गमः · मा भूत् · मा भैषीः
+    rule:
+      en: do not
+      hi: मत
+    tag: core
+    taught_in: aor.ma#tb1
+  - skill: verb.rare-four
+    formula: भविता · भूयात् · अभविष्यत्
+    rule:
+      en: far future, blessing, would have
+      hi: दूर का भविष्य, आशीर्वाद, होता
+    tag: core
+    taught_in: aor.four#tb1

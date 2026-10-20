@@ -1,0 +1,188 @@
+id: kss.check
+template: check
+title:
+  en: The naming
+  hi: नामकरण
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - kss.read
+  mode: choice
+  prompt:
+    en: Split the joined word {{तत्रासूत}}.
+    hi: जुड़े शब्द {{तत्रासूत}} को तोड़िए।
+  explain:
+    en: '{{तत्र}} + {{असूत}}.'
+    hi: '{{तत्र}} + {{असूत}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: तत्र + असूत
+  - sa: तत्री + असूत
+  - sa: तत्रे + असूत
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - kss.read
+  mode: choice
+  prompt:
+    en: Split the joined word {{तवात्मजः}}.
+    hi: जुड़े शब्द {{तवात्मजः}} को तोड़िए।
+  explain:
+    en: '{{तव}} + {{आत्मजः}}.'
+    hi: '{{तव}} + {{आत्मजः}}।'
+  roman: after
+  options:
+  - sa: तवि + आत्मजः
+  - sa: तवे + आत्मजः
+  - correct: true
+    sa: तव + आत्मजः
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - kss.read
+  mode: choice
+  prompt:
+    en: “नरवाहनदत्तं च जानीहि एनम्.” What does it say?
+    hi: “नरवाहनदत्तं च जानीहि एनम्।” वह क्या कहता है?
+  explain:
+    en: '{{जानीहि}}: know.'
+    hi: '{{जानीहि}}: जानो।'
+  roman: after
+  options:
+  - text:
+      en: And do not call him Naravāhanadatta
+      hi: और उसे नरवाहनदत्त मत कहो
+  - correct: true
+    text:
+      en: And know him by the name Naravāhanadatta
+      hi: और उसे नरवाहनदत्त नाम से जानो
+  - text:
+      en: And call the king Naravāhanadatta
+      hi: और राजा को नरवाहनदत्त कहो
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - kss.read
+  mode: choice
+  prompt:
+    en: In {{तत्रासूत च सा काले कुमारम्}}, the verb is…
+    hi: '{{तत्रासूत च सा काले कुमारम्}} में क्रिया है…'
+  explain:
+    en: '{{असूत}}: bore.'
+    hi: '{{असूत}}: जन्म दिया।'
+  roman: after
+  options:
+  - sa: कुमारम्
+  - correct: true
+    sa: असूत
+  - sa: काले
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - kss.read
+  mode: choice
+  prompt:
+    en: The line {{कामदेवावतारोऽयं राजञ्जातस्तवात्मजः}} has no finite verb. “Is” is…
+    hi: पंक्ति {{कामदेवावतारोऽयं राजञ्जातस्तवात्मजः}} में कोई तिङन्त क्रिया नहीं है। ‘है’…
+  explain:
+    en: Sanskrit often leaves “is” out.
+    hi: संस्कृत प्रायः ‘है’ छोड़ देती है।
+  roman: after
+  options:
+  - text:
+      en: supplied by {{जातः}}
+      hi: '{{जातः}} देता है'
+  - correct: true
+    text:
+      en: left out and understood
+      hi: छोड़ा गया और समझा गया
+  - text:
+      en: supplied by {{राजन्}}
+      hi: '{{राजन्}} देता है'
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - kss.read
+  mode: engine
+  prompt:
+    en: Mark each syllable of the naming line.
+    hi: नामकरण की पंक्ति के हर अक्षर को चिह्नित कीजिए।
+  explain:
+    en: Fifth light, sixth heavy, seventh alternating.
+    hi: पाँचवाँ लघु, छठा गुरु, सातवाँ बारी-बारी।
+  roman: after
+  exercise:
+    kind: scan_metre
+    params:
+      text: कामदेवावतारोऽयं राजञ्जातस्तवात्मजः
+    seed: 31
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - kss.read
+  mode: choice
+  prompt:
+    en: Who is the boy, according to the voice?
+    hi: वाणी के अनुसार बालक कौन है?
+  explain:
+    en: '{{कामदेवावतारः}}.'
+    hi: '{{कामदेवावतारः}}।'
+  roman: after
+  options:
+  - text:
+      en: a hunter
+      hi: एक व्याध
+  - correct: true
+    text:
+      en: an incarnation of Kāmadeva
+      hi: कामदेव का अवतार
+  - text:
+      en: a minister
+      hi: एक मन्त्री
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - kss.read
+  mode: choice
+  prompt:
+    en: Which work is the naming from?
+    hi: नामकरण किस ग्रन्थ से है?
+  explain:
+    en: Somadeva's Kathāsaritsāgara, book 4.
+    hi: सोमदेव का कथासरित्सागर, चतुर्थ लम्बक।
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“कथा, महाकथा,” says Kathikā, and her cupped hands, full now, turn slowly over, and the light runs out of them down the wall of the cave and into the carving there, line after line, like water finding its level. She has heard it from the beginning, in the words it was told in. She smiles, and does not fade; she rises and goes to stand at the mouth of the second alcove, and looks in. Over its dark opening, the new line has been cut: गुहा त्रीणि निहिता।'
+      hi: '“कथा, महाकथा,” कथिका कहती है, और उसकी अब भरी हुई जुड़ी हथेलियाँ धीरे-धीरे पलटती हैं, और प्रकाश उनसे गुफा की दीवार पर बह जाता है, खुदी पंक्तियों में उतरता हुआ, पंक्ति पर पंक्ति, जैसे पानी अपना तल पाता है। उसने कथा आरम्भ से सुनी है, उन्हीं शब्दों में जिनमें वह कही गई थी। वह मुस्कराती है, और मिटती नहीं; वह उठती है और दूसरे आले के मुख पर जाकर खड़ी होती है, और भीतर देखती है। उसके अँधेरे द्वार के ऊपर नई पंक्ति खुदी है: गुहा त्रीणि निहिता।'
+    failure:
+      en: Her hands stay empty. The tale is from Somadeva's Kathāsaritsāgara.
+      hi: उसके हाथ खाली रहते हैं। कथा सोमदेव के कथासरित्सागर की है।
+  options:
+  - text:
+      en: the Rāmāyaṇa
+      hi: रामायण
+  - text:
+      en: the Hitopadeśa
+      hi: हितोपदेश
+  - correct: true
+    text:
+      en: the Kathāsaritsāgara
+      hi: कथासरित्सागर

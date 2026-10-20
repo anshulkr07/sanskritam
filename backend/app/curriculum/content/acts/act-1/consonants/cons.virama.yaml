@@ -1,0 +1,261 @@
+id: cons.virama
+template: scene
+title:
+  en: The silent stroke
+  hi: मौन रेखा
+title_sa: हलन्तः
+minutes: 6
+teaches:
+- script.cons.inherent-a
+needs:
+- script.cons.grid
+- script.cons.semivowels
+- script.cons.sibilants
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: A stroke at the foot
+    hi: पाँव पर एक रेखा
+  depth: core
+  image:
+    brief: Dādī's finger resting on one carved letter of the temple door that has a small slanted stroke at its foot; Chāyikā, a slim lavender shadow with a gold thread in her hair, standing in the open beside her and nodding.
+    alt:
+      en: A grandmother's finger on a carved letter with a stroke at its foot, beside a nodding shadow
+      hi: पाँव पर रेखा वाले खुदे अक्षर पर दादी की उँगली
+    cast:
+    - you
+    - dadi
+    - shuka
+    - chayika
+    place: devalaya
+    ratio: '4:3'
+    id: cons-virama-s1
+  narration:
+    en: Some carved letters wear a small slanted stroke at their foot. Dādī lays a finger on one. “Every consonant carries a hidden {{अ}}. This stroke tells the {{अ}} to be quiet.” Chāyikā, now standing in the open, nods.
+    hi: कुछ खुदे अक्षरों के पाँव पर एक छोटी तिरछी रेखा है। दादी एक पर उँगली रखती हैं, “हर व्यंजन में एक छिपा {{अ}} रहता है। यह रेखा उस {{अ}} को चुप करा देती है।” अब खुले में खड़ी छायिका सिर हिलाती है।
+- id: t1
+  kind: teach
+  title:
+    en: A hidden {{अ}}
+    hi: छिपा हुआ {{अ}}
+  depth: core
+  skills:
+  - script.cons.inherent-a
+  body:
+    en: 'Write {{क}} and you say ka: the consonant carries {{अ}}. To take the {{अ}} away, add the stroke {{्}}, the {{हलन्तः}} or virāma: {{क्}} is just k.'
+    hi: '{{क}} लिखिए तो बोला जाता है क + अ: व्यंजन में {{अ}} रहता है। {{अ}} हटाने के लिए रेखा {{्}} लगाइए, इसे {{हलन्तः}} या विराम कहते हैं: {{क्}} केवल ‘क्’ है।'
+  steps:
+  - sa: क्
+    label:
+      en: 'k alone: the stroke removes {{अ}}'
+      hi: 'अकेला क्: रेखा {{अ}} हटा देती है'
+  - sa: क
+    label:
+      en: k + a = ka
+      hi: क् + अ = क
+  - sa: का
+    label:
+      en: k + ā = kā
+      hi: क् + आ = का
+  term:
+    sa: हलन्तः
+    meaning:
+      en: a consonant with no vowel
+      hi: बिना स्वर का व्यंजन
+- id: t2
+  kind: teach
+  title:
+    en: The final sound counts
+    hi: अन्त की ध्वनि गिनी जाती है
+  depth: core
+  skills:
+  - script.cons.inherent-a
+  body:
+    en: 'Many Sanskrit words end in a consonant with the stroke: {{जगत्}} (world), {{तत्}} (that). Words that end in plain {{अ}} are different: {{राम}} is rāma, with the final a said aloud. Hindi drops it; Sanskrit does not.'
+    hi: 'संस्कृत के कई शब्द रेखा वाले व्यंजन पर समाप्त होते हैं: {{जगत्}} (संसार), {{तत्}} (वह)। अन्त में सादा {{अ}} वाले शब्द अलग हैं: {{राम}} बोला जाता है रा-म, अन्त का अ सुनाई देता है। हिन्दी इसे छोड़ देती है; संस्कृत नहीं।'
+  examples:
+  - sa: रामः
+    meaning:
+      en: 'Rāma: say the final {{अ}}'
+      hi: 'राम: अन्त का {{अ}} बोलिए'
+    check:
+      type: subanta
+      stem: राम
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: जगत्
+    meaning:
+      en: 'the world: ends in {{त्}}, no vowel'
+      hi: 'संसार: {{त्}} पर समाप्त, कोई स्वर नहीं'
+    check:
+      type: subanta
+      stem: जगत्
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.inherent-a
+  mode: choice
+  prompt:
+    en: Which one is k alone, with no vowel?
+    hi: कौन-सा अकेला ‘क्’ है, बिना स्वर के?
+  explain:
+    en: 'The stroke {{्}} takes the {{अ}} away: {{क्}}.'
+    hi: 'रेखा {{्}} {{अ}} हटा देती है: {{क्}}।'
+  roman: after
+  options:
+  - sa: क
+  - correct: true
+    sa: क्
+  - sa: का
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.inherent-a
+  mode: type
+  prompt:
+    en: 'Make {{त्}}: take the vowel away from {{त}}.'
+    hi: '{{त्}} बनाइए: {{त}} से स्वर हटाइए।'
+  explain:
+    en: '{{त}} plus the stroke {{्}} is {{त्}}.'
+    hi: '{{त}} और रेखा {{्}} मिलकर {{त्}} बनते हैं।'
+  roman: after
+  answers:
+  - त्
+  tiles:
+  - त
+  - ्
+  - ा
+  - ि
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.inherent-a
+  mode: match
+  prompt:
+    en: Join each written form to how it is said.
+    hi: हर लिखे रूप को उसके बोले जाने से जोड़िए।
+  explain:
+    en: The stroke removes {{अ}}; a sign {{ा}} replaces it with another vowel.
+    hi: रेखा {{अ}} हटाती है; मात्रा {{ा}} उसकी जगह दूसरा स्वर रखती है।
+  roman: after
+  pairs:
+  - left:
+      sa: म
+    right:
+      text:
+        en: ma
+        hi: म + अ
+  - left:
+      sa: म्
+    right:
+      text:
+        en: m, no vowel
+        hi: केवल म्
+  - left:
+      sa: मा
+    right:
+      text:
+        en: mā
+        hi: म + आ
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - script.cons.inherent-a
+  widget: mark_words
+  prompt:
+    en: Tap every word that ends in a consonant with the stroke.
+    hi: हर उस शब्द को छुइए जो रेखा वाले व्यंजन पर समाप्त होता है।
+  params:
+    passage:
+    - जगत्
+    - रामः
+    - तत्
+    - फलम्
+    - मरुत्
+    - लता
+    targets:
+    - जगत्
+    - तत्
+    - मरुत्
+  roman: after
+- id: p4
+  kind: practice
+  title:
+    en: Her name
+    hi: उसका नाम
+  depth: core
+  skills:
+  - script.cons.inherent-a
+  mode: order
+  prompt:
+    en: 'Read her name. Put Chāyikā''s carved name in order: {{छा}} {{यि}} {{का}}.'
+    hi: 'उसका नाम पढ़िए। छायिका का खुदा नाम क्रम में लगाइए: {{छा}} {{यि}} {{का}}।'
+  explain:
+    en: '{{छा}} + {{यि}} + {{का}} = {{छायिका}}.'
+    hi: '{{छा}} + {{यि}} + {{का}} = {{छायिका}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: Chāyikā hears her own name read aloud. The gold thread in her hair blazes. “छायिका!” she whispers. It is a very small, very happy sound.
+      hi: छायिका अपना नाम ज़ोर से पढ़ा जाता सुनती है। उसके बालों का सुनहरा धागा दमक उठता है। “छायिका!” वह फुसफुसाती है। बहुत छोटी, बहुत ख़ुश आवाज़।
+    failure:
+      en: 'The name will not settle. Read the pieces left to right: {{छा}} first.'
+      hi: 'नाम जमता नहीं। टुकड़ों को बाएँ से दाएँ पढ़िए: पहले {{छा}}।'
+  tokens:
+  - छा
+  - यि
+  - का
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.inherent-a
+  mode: choice
+  prompt:
+    en: How is the final {{म}} of {{राम}} said in Sanskrit?
+    hi: संस्कृत में {{राम}} का अन्तिम {{म}} कैसे बोला जाता है?
+  explain:
+    en: Sanskrit says the final {{अ}} aloud, unlike modern Hindi.
+    hi: आधुनिक हिन्दी के विपरीत संस्कृत अन्त का {{अ}} बोलती है।
+  roman: show
+  options:
+  - text:
+      en: '{{म्}}: with no vowel'
+      hi: '{{म्}}: बिना स्वर के'
+  - correct: true
+    text:
+      en: '{{म}} with its {{अ}}, aloud'
+      hi: अपने {{अ}} के साथ, सुनाई देता हुआ
+- id: sum
+  kind: summary
+  title:
+    en: The silent stroke
+    hi: मौन रेखा
+  depth: core
+  points:
+  - sa: क्
+    text:
+      en: The stroke {{्}} takes the {{अ}} away.
+      hi: रेखा {{्}} {{अ}} हटाती है।
+  - sa: क → क्
+    text:
+      en: Every bare consonant carries {{अ}}.
+      hi: हर अकेला व्यंजन {{अ}} साथ रखता है।
+  - sa: राम · जगत्
+    text:
+      en: Final {{अ}} is said aloud; some words end in a stroke.
+      hi: अन्त का {{अ}} बोला जाता है; कुछ शब्द रेखा पर समाप्त होते हैं।

@@ -1,0 +1,205 @@
+id: pc.revision
+template: revision
+title:
+  en: Everything about the passive, causative and desiderative
+  hi: कर्मवाच्य, प्रेरणार्थक और इच्छार्थक के बारे में सब कुछ
+title_sa: कर्मवाच्यादिसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The three forms
+    hi: तीन रूप
+  depth: core
+  section: core
+  rows:
+  - skill: verb.passive
+    rule:
+      en: 'Passive: {{-यते}}: {{पठ्यते}}, {{क्रियते}}, {{दीयते}}, {{श्रूयते}}; the doer in the 3rd case.'
+      hi: 'कर्मवाच्य: {{-यते}}: {{पठ्यते}}, {{क्रियते}}, {{दीयते}}, {{श्रूयते}}; कर्ता तृतीया में।'
+    sutras:
+    - 3.4.69
+    - 3.1.67
+    - 1.3.13
+    tag: core
+    taught_in: pc.passive#tb1
+  - skill: verb.causative
+    rule:
+      en: 'Causative: {{-अय-}} after a strong root: {{पाठयति}}, {{कारयति}}, {{गमयति}}.'
+      hi: 'प्रेरणार्थक: दृढ़ धातु के बाद {{-अय-}}: {{पाठयति}}, {{कारयति}}, {{गमयति}}।'
+    sutras:
+    - 3.1.26
+    - 7.2.115
+    - 3.1.32
+    tag: core
+    taught_in: pc.cause#tb1
+  - skill: verb.desiderative
+    rule:
+      en: 'Desiderative: doubled root + {{-स-}}: {{पिपासति}}, {{पिपठिषति}}, {{जिगमिषति}}.'
+      hi: 'इच्छार्थक: दुगुनी धातु + {{-स-}}: {{पिपासति}}, {{पिपठिषति}}, {{जिगमिषति}}।'
+    sutras:
+    - 3.1.7
+    - 6.1.9
+    - 7.4.58
+    tag: core
+    taught_in: pc.want#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: verb.passive
+    rule:
+      en: Use the passive when the thing done matters more than who did it.
+      hi: जब किया गया कार्य करने वाले से अधिक महत्त्वपूर्ण हो, तब कर्मवाच्य।
+    tag: good
+    taught_in: pc.passive#t1
+  - skill: verb.causative
+    rule:
+      en: 'Use the causative when someone gets another to act: {{गुरुः बालं पाठयति}}.'
+      hi: 'जब कोई दूसरे से काम कराए, तब प्रेरणार्थक: {{गुरुः बालं पाठयति}}।'
+    tag: good
+    taught_in: pc.cause#t1
+  - skill: verb.desiderative
+    rule:
+      en: Use the desiderative when the subject wants to do the action.
+      hi: जब कर्ता स्वयं काम करना चाहे, तब इच्छार्थक।
+    tag: good
+    taught_in: pc.want#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: verb.passive
+    rule:
+      en: 'A root with no object has an impersonal passive: {{मया गम्यते}} “it is gone by me”, that is, “I go”.'
+      hi: 'बिना कर्म वाली धातु का भाववाच्य होता है: {{मया गम्यते}} ‘मुझसे जाया जाता है’, अर्थात् ‘मैं जाता हूँ’।'
+    example:
+      sa: गम्यते
+      meaning:
+        en: it is gone
+        hi: जाया जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+    tag: rare
+    new_here: true
+  - skill: verb.desiderative
+    rule:
+      en: 'A few desideratives change the root: {{दा}} gives {{दित्सति}}, {{हन्}} gives {{जिघांसति}}, {{पा}} gives {{पिपासति}}.'
+      hi: 'कुछ इच्छार्थक में धातु बदलती है: {{दा}} से {{दित्सति}}, {{हन्}} से {{जिघांसति}}, {{पा}} से {{पिपासति}}।'
+    example:
+      sa: दित्सति
+      meaning:
+        en: he wants to give
+        hi: वह देना चाहता है
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - San
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: verb.passive
+    rule:
+      en: 'Do not leave the doer in the first case: {{रामेण पठ्यते}}, not {{रामः पठ्यते}}.'
+      hi: 'कर्ता को प्रथमा में मत छोड़िए: {{रामेण पठ्यते}}, {{रामः पठ्यते}} नहीं।'
+    tag: core
+    taught_in: pc.passive#p1
+  - skill: verb.causative
+    rule:
+      en: Do not confuse {{पाठयति}} (teaches) with {{पठति}} (reads).
+      hi: '{{पाठयति}} (पढ़ाता है) और {{पठति}} (पढ़ता है) को मत मिलाइए।'
+    tag: core
+    taught_in: pc.cause#p1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: verb.passive
+    rule:
+      en: '{{लः कर्मणि च भावे चाकर्मकेभ्यः}}, {{सार्वधातुके यक्}}, {{भावकर्मणोः}}: the passive.'
+      hi: '{{लः कर्मणि च भावे चाकर्मकेभ्यः}}, {{सार्वधातुके यक्}}, {{भावकर्मणोः}}: कर्मवाच्य।'
+    sutras:
+    - 3.4.69
+    - 3.1.67
+    - 1.3.13
+    tag: core
+    taught_in: pc.passive#pn
+  - skill: verb.causative
+    rule:
+      en: '{{हेतुमति च}} and {{अचो ञ्णिति}}: the causative.'
+      hi: '{{हेतुमति च}} और {{अचो ञ्णिति}}: प्रेरणार्थक।'
+    sutras:
+    - 3.1.26
+    - 7.2.115
+    tag: core
+    taught_in: pc.cause#pn
+  - skill: verb.desiderative
+    rule:
+      en: '{{धातोः कर्मणः समानकर्तृकादिच्छायां वा}}: the desiderative.'
+      hi: '{{धातोः कर्मणः समानकर्तृकादिच्छायां वा}}: इच्छार्थक।'
+    sutras:
+    - 3.1.7
+    tag: core
+    taught_in: pc.want#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: verb.passive
+    formula: पठ्यते · क्रियते · दीयते
+    rule:
+      en: passive
+      hi: कर्मवाच्य
+    tag: core
+    taught_in: pc.passive#tb1
+  - skill: verb.causative
+    formula: पाठयति · कारयति
+    rule:
+      en: causative
+      hi: प्रेरणार्थक
+    tag: core
+    taught_in: pc.cause#tb1
+  - skill: verb.desiderative
+    formula: पिपासति · जिगमिषति
+    rule:
+      en: desiderative
+      hi: इच्छार्थक
+    tag: core
+    taught_in: pc.want#tb1

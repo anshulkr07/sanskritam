@@ -1,0 +1,130 @@
+id: m1.revision
+template: revision
+title:
+  en: Everything about the śloka's rhythm
+  hi: श्लोक की लय के बारे में सब कुछ
+title_sa: छन्दःसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The two ideas
+    hi: दो बातें
+  depth: core
+  section: core
+  rows:
+  - skill: chandas.weight
+    rule:
+      en: 'Light ({{ल}}): a short vowel, nothing joined after it. Heavy ({{ग}}): everything else.'
+      hi: 'लघु ({{ल}}): ह्रस्व स्वर, आगे कुछ संयुक्त नहीं। गुरु ({{ग}}): बाकी सब।'
+    sutras:
+    - 1.4.10
+    - 1.4.11
+    - 1.4.12
+    tag: core
+    taught_in: m1.weight#tb1
+  - skill: chandas.shloka
+    rule:
+      en: 'A śloka: four quarters of eight syllables; fifth light, sixth heavy, seventh alternating.'
+      hi: 'श्लोक: आठ-आठ अक्षर के चार चरण; पाँचवाँ लघु, छठा गुरु, सातवाँ बारी-बारी।'
+    tag: core
+    taught_in: m1.shloka#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: chandas.weight
+    rule:
+      en: Weigh a syllable by its vowel and what follows it.
+      hi: अक्षर को उसके स्वर और उसके बाद जो आता है उससे तौलिए।
+    tag: good
+    taught_in: m1.weight#t1
+  - skill: chandas.shloka
+    rule:
+      en: Read a half-verse as 16 syllables, two quarters of eight.
+      hi: आधे श्लोक को 16 अक्षर पढ़िए, आठ-आठ के दो चरण।
+    tag: good
+    taught_in: m1.shloka#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: chandas.shloka
+    rule:
+      en: 'The last syllable of a quarter counts either way: a poet may end it light or heavy.'
+      hi: 'चरण का अन्तिम अक्षर दोनों तरह गिना जाता है: कवि उसे लघु या गुरु रख सकता है।'
+    tag: rare
+    taught_in: m1.shloka#tb1
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: chandas.weight
+    rule:
+      en: 'Do not call a vowel light because it is short: a joined letter after it makes it heavy.'
+      hi: 'ह्रस्व स्वर को केवल ह्रस्व होने से लघु मत कहिए: उसके बाद संयुक्त अक्षर उसे भारी बना देता है।'
+    tag: core
+    taught_in: m1.weight#p2
+  - skill: chandas.shloka
+    rule:
+      en: 'Do not count the quarters by words: count syllables.'
+      hi: 'चरणों को शब्दों से मत गिनिए: अक्षर गिनिए।'
+    tag: core
+    taught_in: m1.shloka#p1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: chandas.weight
+    rule:
+      en: '{{ह्रस्वं लघु}}, {{संयोगे गुरु}}, {{दीर्घं च}}: light, heavy before a joined letter, and long.'
+      hi: '{{ह्रस्वं लघु}}, {{संयोगे गुरु}}, {{दीर्घं च}}: लघु, संयुक्त से पहले गुरु, और दीर्घ।'
+    sutras:
+    - 1.4.10
+    - 1.4.11
+    - 1.4.12
+    tag: core
+    taught_in: m1.weight#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: chandas.weight
+    formula: ल ग
+    rule:
+      en: light, heavy
+      hi: लघु, गुरु
+    tag: core
+    taught_in: m1.weight#tb1
+  - skill: chandas.shloka
+    formula: ल ग (५–७)
+    rule:
+      en: four quarters of eight
+      hi: आठ-आठ के चार चरण
+    tag: core
+    taught_in: m1.shloka#tb1

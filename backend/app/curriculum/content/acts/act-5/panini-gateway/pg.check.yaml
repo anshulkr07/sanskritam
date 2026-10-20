@@ -1,0 +1,213 @@
+id: pg.check
+template: check
+title:
+  en: Open the last alcove
+  hi: अन्तिम आला खोलिए
+title_sa: परीक्षा
+minutes: 7
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - panini.shiva-sutras
+  mode: choice
+  prompt:
+    en: Which name stands for all the vowels?
+    hi: कौन-सा नाम सब स्वरों का है?
+  explain:
+    en: From अ to the marker च्.
+    hi: अ से संकेत च् तक।
+  roman: after
+  options:
+  - sa: हल्
+  - correct: true
+    sa: अच्
+  - sa: यण्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - panini.shiva-sutras
+  mode: match
+  prompt:
+    en: Join each name to its sounds.
+    hi: हर नाम को उसकी ध्वनियों से जोड़िए।
+  explain:
+    en: A letter and a marker.
+    hi: एक अक्षर और एक संकेत।
+  roman: after
+  pairs:
+  - left:
+      sa: अच्
+    right:
+      text:
+        en: all the vowels
+        hi: सब स्वर
+  - left:
+      sa: हल्
+    right:
+      text:
+        en: all the consonants
+        hi: सब व्यञ्जन
+  - left:
+      sa: यण्
+    right:
+      text:
+        en: the four semivowels
+        hi: चार अन्तःस्थ
+  - left:
+      sa: एच्
+    right:
+      text:
+        en: the four diphthongs
+        hi: चार सन्ध्यक्षर
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - panini.shiva-sutras
+  mode: choice
+  prompt:
+    en: Which sounds does {{इक्}} stand for?
+    hi: '{{इक्}} किन ध्वनियों का नाम है?'
+  explain:
+    en: From इ to the marker क्.
+    hi: इ से संकेत क् तक।
+  roman: after
+  options:
+  - sa: अ इ उ
+  - correct: true
+    sa: इ उ ऋ ऌ
+  - sa: ऋ ऌ ए ओ
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - panini.it
+  mode: choice
+  prompt:
+    en: Which sūtra drops a marker?
+    hi: कौन-सा सूत्र संकेत को हटाता है?
+  explain:
+    en: 1.3.9.
+    hi: 1.3.9।
+  roman: after
+  options:
+  - correct: true
+    sa: तस्य लोपः
+  - sa: हलन्त्यम्
+  - sa: आदिरन्त्येन सहेता
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - panini.it
+  mode: match
+  prompt:
+    en: Join each ending, as taught, to what remains.
+    hi: हर प्रत्यय को, जैसा सिखाया, उसके शेष से जोड़िए।
+  explain:
+    en: Markers go; the rest stays.
+    hi: संकेत जाते हैं; बाकी रहता है।
+  roman: after
+  pairs:
+  - left:
+      sa: लँट्
+    right:
+      sa: ल्
+  - left:
+      sa: तिप्
+    right:
+      sa: ति
+  - left:
+      sa: शप्
+    right:
+      sa: अ
+  - left:
+      sa: सुँ
+    right:
+      sa: स्
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - panini.prakriya
+  mode: choice
+  prompt:
+    en: The last rules, from 8.2.1, do their work…
+    hi: 8.2.1 से अन्तिम नियम अपना काम करते हैं…
+  explain:
+    en: '{{पूर्वत्रासिद्धम्}}.'
+    hi: '{{पूर्वत्रासिद्धम्}}।'
+  roman: after
+  options:
+  - text:
+      en: first
+      hi: पहले
+  - correct: true
+    text:
+      en: last
+      hi: अन्त में
+  - text:
+      en: in any order
+      hi: किसी भी क्रम में
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - panini.prakriya
+  mode: type
+  prompt:
+    en: 'Build the word: {{भव् + अ + ति}}.'
+    hi: 'शब्द बनाइए: {{भव् + अ + ति}}।'
+  explain:
+    en: '{{भवति}}.'
+    hi: '{{भवति}}।'
+  roman: after
+  check:
+    type: tinanta
+    dhatu: भू
+    lakara: Lat
+    purusha: Prathama
+    vacana: Eka
+  answers:
+  - भवति
+  tiles:
+  - भ
+  - व
+  - ति
+  - भू
+  - अ
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - panini.prakriya
+  mode: order
+  prompt:
+    en: Put the stages of the build in order.
+    hi: निर्माण के चरणों को क्रम में रखिए।
+  explain:
+    en: Root, tense, ending, joining {{अ}}, strengthening, {{ओ}} → {{अव्}}.
+    hi: धातु, काल, प्रत्यय, जोड़ने वाला {{अ}}, गुण, {{ओ}} → {{अव्}}।
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“भवति,” you say, in the voice of one who has laid every stone, and the last alcove opens. Padikā steps into it, whole now, all four quarters of her, and turns. On the rim of the arch the line of the seers has risen in the stone: एकं सद् विप्रा बहुधा वदन्ति (Ṛgveda 1.164.46). “What is, is one,” she says. “The wise speak of it in many ways.” Inside the alcove there is no leaf. There is a lamp, and the sound of your own voice, which the cave has kept. Lubdhaka stands at the arch with his satchel in his hand. He looks at the lamp for a long time. Then he sets the satchel down on the floor, and sits, and says to Dādī, quietly: “Teach me the first line.”'
+      hi: '“भवति,” आप कहते हैं, उस की आवाज़ में जिसने हर पत्थर बिछाया है, और अन्तिम आला खुल जाता है। पदिका उसमें प्रवेश करती है, अब पूरी, अपने चारों चरणों के साथ, और मुड़ती है। मेहराब के किनारे पर द्रष्टाओं की पंक्ति पत्थर में उभर आई है: एकं सद् विप्रा बहुधा वदन्ति (ऋग्वेद 1.164.46)। “जो है, वह एक है,” वह कहती है। “ज्ञानी उसे अनेक प्रकार से कहते हैं।” आले के भीतर कोई पत्र नहीं है। एक दीपक है, और आपकी अपनी आवाज़ की गूँज, जिसे गुफा ने सँजो रखा है। लुब्धक मेहराब पर अपना झोला हाथ में लिए खड़ा है। वह देर तक दीपक को देखता है। फिर वह झोला फर्श पर रख देता है, और बैठ जाता है, और दादी से धीरे से कहता है: “मुझे पहली पंक्ति सिखाइए।”'
+    failure:
+      en: 'The stones stay dark. The order is: root, tense, ending, joining {{अ}}, strengthening, {{ओ}} → {{अव्}}.'
+      hi: 'पत्थर अँधेरे रहते हैं। क्रम है: धातु, काल, प्रत्यय, जोड़ने वाला {{अ}}, गुण, {{ओ}} → {{अव्}}।'
+  tokens:
+  - भू
+  - भू + ल्
+  - भू + ति
+  - भू + अ + ति
+  - भो + अ + ति
+  - भव् + अ + ति

@@ -20,8 +20,11 @@ in tests/fixtures/drik_parva/*.json with URL and date read.
 
 from __future__ import annotations
 
+from copy import deepcopy
+from functools import lru_cache
 from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta, timezone
+from threading import Lock
 from typing import Optional
 from zoneinfo import ZoneInfo
 
@@ -1455,7 +1458,39 @@ def holashtak_adhika_chaturmas(year: int, place: dict) -> list[Occurrence]:
 
 # ─── Top-level ────────────────────────────────────────────────────────
 
+# Only simultaneous calculations for the same year/place/tradition wait on
+# one another. Retire each lock when its last caller leaves; no location data
+# persists beyond the existing bounded, in-process astronomical cache.
+_year_calls_guard = Lock()
+_year_calls: dict[tuple, list] = {}
+
+
+@lru_cache(maxsize=128)
+def _cached_year_occurrences(year: int, lat: float, lon: float, tz: str, tradition: str,
+                             shipped: frozenset[str]) -> tuple[Occurrence, ...]:
+    # Calendar windows and detail pages reuse the astronomical year.
+    place = {"lat": lat, "lon": lon, "tz": tz}
+    return tuple(_compute_year_occurrences(year, place, tradition))
+
+
 def _year_occurrences(year: int, place: dict, tradition: str = "north") -> list[Occurrence]:
+    key = (year, float(place["lat"]), float(place["lon"]), place.get("tz") or "Asia/Kolkata",
+           tradition, frozenset(SHIPPED_RULES))
+    with _year_calls_guard:
+        pending = _year_calls.setdefault(key, [Lock(), 0])
+        pending[1] += 1
+    try:
+        with pending[0]:
+            result = _cached_year_occurrences(*key)
+        return deepcopy(list(result))
+    finally:
+        with _year_calls_guard:
+            pending[1] -= 1
+            if pending[1] == 0:
+                _year_calls.pop(key, None)
+
+
+def _compute_year_occurrences(year: int, place: dict, tradition: str = "north") -> list[Occurrence]:
     out: list[Occurrence] = []
     if "ekadashi" in SHIPPED_RULES:
         out += ekadashi_occurrences(year, place, tradition)

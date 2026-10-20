@@ -1,0 +1,406 @@
+id: vc2.kr
+template: scene
+title:
+  en: 'Classes 5 and 8: शृणोति, करोति'
+  hi: 'गण 5 और 8: शृणोति, करोति'
+title_sa: शृणोति करोति
+minutes: 6
+teaches:
+- verb.class-5-8
+needs:
+- verb.class-2
+- verb.class-3
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The drawer that says o
+    hi: ओ बोलने वाला दराज़
+  depth: core
+  image:
+    brief: A circle of small spirits with hands cupped to their ears around the Vetāla who is also listening, head tilted; Śuka hopping; Dādī smiling; Dhātuka ticking his ledger; firelight.
+    alt:
+      en: A circle of small spirits cup their ears while a grey spirit listens with a tilted head
+      hi: कान पर हाथ रखे नन्हे भूतों का घेरा, सिर टेढ़ा कर सुनता भूरा भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - dhatuka
+    - astika
+    place: smashana
+    ratio: '4:3'
+    id: vc2-kr-s1
+  narration:
+    en: 'Two drawers at once, the fifth and the eighth, because they sound alike. “Listen,” says the Vetāla, cupping a hand to his ear. “शृणोति. करोति.” The hands of every spirit in the circle go to their ears; a ring of small shapes echoes “-ओति, -ओति.” Śuka hops: “It is the hearing and the doing. He hears, he does.”'
+    hi: 'एक साथ दो दराज़, पाँचवाँ और आठवाँ, क्योंकि वे एक जैसे सुनाई देते हैं। “सुनो,” वेताल कान पर हाथ रखकर कहता है। “शृणोति। करोति।” घेरे के हर भूत का हाथ कान पर जाता है; नन्ही आकृतियों का घेरा गूँजता है “-ओति, -ओति।” शुक उछलता है: “यह सुनना और करना है। वह सुनता है, वह करता है।”'
+- id: t1
+  kind: teach
+  title:
+    en: The sign -नु- and -उ-
+    hi: चिह्न -नु- और -उ-
+  depth: core
+  skills:
+  - verb.class-5-8
+  body:
+    en: 'Class 5, {{स्वादि}}, adds {{-नु-}} (strong {{-नो-}}): {{आप्}} gives {{आप्नोति}} (gets), {{चि}} gives {{चिनोति}} (gathers), {{शक्}} gives {{शक्नोति}} (is able). {{श्रु}} follows it by a special rule: {{शृणोति}}. Class 8, {{तनादि}}, adds {{-उ-}} (strong {{-ओ-}}): {{कृ}} gives {{करोति}}, {{तन्}} gives {{तनोति}} (stretches).'
+    hi: 'गण 5, {{स्वादि}}, {{-नु-}} जोड़ता है (बलवान् {{-नो-}}): {{आप्}} से {{आप्नोति}} (पाता है), {{चि}} से {{चिनोति}} (चुनता है), {{शक्}} से {{शक्नोति}} (समर्थ है)। {{श्रु}} विशेष नियम से इसी का अनुसरण करता है: {{शृणोति}}। गण 8, {{तनादि}}, {{-उ-}} जोड़ता है (बलवान् {{-ओ-}}): {{कृ}} से {{करोति}}, {{तन्}} से {{तनोति}} (फैलाता है)।'
+- id: tb1
+  kind: table
+  title:
+    en: Class 5 and 8 roots
+    hi: गण 5 और 8 की धातुएँ
+  depth: core
+  skills:
+  - verb.class-5-8
+  caption:
+    en: Root, meaning and “he …”
+    hi: धातु, अर्थ और ‘वह …’
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Meaning
+    hi: अर्थ
+  - en: He
+    hi: वह
+  rows:
+  - - sa: आप्
+    - text:
+        en: get
+        hi: पाना
+    - sa: आप्नोति
+      check:
+        type: tinanta
+        dhatu: आप्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Svadi
+  - - sa: चि
+    - text:
+        en: gather
+        hi: चुनना
+    - sa: चिनोति
+      check:
+        type: tinanta
+        dhatu: चि
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Svadi
+  - - sa: शक्
+    - text:
+        en: be able
+        hi: समर्थ होना
+    - sa: शक्नोति
+      check:
+        type: tinanta
+        dhatu: शक्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Svadi
+  - - sa: श्रु
+    - text:
+        en: hear
+        hi: सुनना
+    - sa: शृणोति
+      check:
+        type: tinanta
+        dhatu: श्रु
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - - sa: कृ
+    - text:
+        en: do
+        hi: करना
+    - sa: करोति
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tanadi
+  - - sa: तन्
+    - text:
+        en: stretch
+        hi: फैलाना
+    - sa: तनोति
+      check:
+        type: tinanta
+        dhatu: तन्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tanadi
+  note:
+    en: All end in {{-ओति}}.
+    hi: सब {{-ओति}} पर समाप्त होती हैं।
+- id: tb2
+  kind: table
+  title:
+    en: 'कृ: all persons'
+    hi: 'कृ: सभी पुरुष'
+  depth: core
+  skills:
+  - verb.class-5-8
+  caption:
+    en: “He does, you do, I do”
+    hi: ‘वह करता है, तुम करते हो, मैं करता हूँ’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: करोति
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tanadi
+      highlight: true
+    - sa: कुरुतः
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+        gana: Tanadi
+    - sa: कुर्वन्ति
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+        gana: Tanadi
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: करोषि
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+        gana: Tanadi
+    - sa: कुरुथः
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+        gana: Tanadi
+    - sa: कुरुथ
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+        gana: Tanadi
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: करोमि
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+        gana: Tanadi
+    - sa: कुर्वः
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+        gana: Tanadi
+    - sa: कुर्मः
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+        gana: Tanadi
+  note:
+    en: Strong {{करो-}} in the singular, weak {{कुरु-}} or {{कुर्-}} in the dual and plural.
+    hi: एकवचन में बलवान् {{करो-}}, द्विवचन-बहुवचन में निर्बल {{कुरु-}} या {{कुर्-}}।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-5-8
+  mode: choice
+  prompt:
+    en: “He hears.” Which form?
+    hi: ‘वह सुनता है।’ कौन-सा रूप?
+  explain:
+    en: '{{शृणोति}}: {{श्रु}} with {{-नो-}}.'
+    hi: '{{शृणोति}}: {{श्रु}} और {{-नो-}}।'
+  roman: after
+  options:
+  - sa: श्रवति
+  - sa: श्रुति
+  - correct: true
+    sa: शृणोति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-5-8
+  mode: type
+  prompt:
+    en: 'Say: “He does.”'
+    hi: 'कहिए: ‘वह करता है।’'
+  explain:
+    en: '{{करोति}}.'
+    hi: '{{करोति}}।'
+  roman: after
+  answers:
+  - करोति
+  tiles:
+  - क
+  - रोति
+  - कृ
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-5-8
+  mode: match
+  prompt:
+    en: Join each root to its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+  explain:
+    en: '{{-नो-}} for class 5; {{-ओ-}} for class 8.'
+    hi: गण 5 के लिए {{-नो-}}; गण 8 के लिए {{-ओ-}}।
+  roman: after
+  pairs:
+  - left:
+      sa: आप्
+    right:
+      sa: आप्नोति
+  - left:
+      sa: शक्
+    right:
+      sa: शक्नोति
+  - left:
+      sa: कृ
+    right:
+      sa: करोति
+  - left:
+      sa: तन्
+    right:
+      sa: तनोति
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.class-5-8
+  widget: mark_words
+  prompt:
+    en: Tap every verb that ends in {{-ओति}}.
+    hi: '{{-ओति}} पर समाप्त होने वाली हर क्रिया छुइए।'
+  params:
+    passage:
+    - शृणोति
+    - भवति
+    - करोति
+    - पठति
+    - आप्नोति
+    - जयति
+    targets:
+    - शृणोति
+    - करोति
+    - आप्नोति
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: Drawers five and eight
+    hi: दराज़ पाँच और आठ
+  depth: core
+  skills:
+  - verb.class-5-8
+  mode: choice
+  prompt:
+    en: “They do.” Which form of {{कृ}}?
+    hi: ‘वे करते हैं।’ {{कृ}} का कौन-सा रूप?
+  explain:
+    en: '{{कुर्वन्ति}}: the weak stem {{कुर्व-}}.'
+    hi: '{{कुर्वन्ति}}: निर्बल अंग {{कुर्व-}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“कुर्वन्ति,” you say, and every spirit in the circle drops its hands from its ears. A hush, and then a sound like a great number of very small tools being laid down at once: they have heard, they are doing. Drawers five and eight shut, one after the other, with the softest clicks of all.'
+      hi: '“कुर्वन्ति,” आप कहते हैं, और घेरे का हर भूत अपने कान से हाथ हटा लेता है। एक सन्नाटा, और फिर ऐसी आवाज़ जैसे बहुत-से नन्हे औज़ार एक साथ रखे जा रहे हों: उन्होंने सुना, वे कर रहे हैं। दराज़ पाँच और आठ बारी-बारी बन्द होते हैं, सबसे मुलायम खट के साथ।'
+    failure:
+      en: 'The circle keeps listening. They do: {{कुर्वन्ति}}.'
+      hi: 'घेरा सुनता रहता है। वे करते हैं: {{कुर्वन्ति}}।'
+  options:
+  - sa: करोन्ति
+  - sa: कुरुन्ति
+  - correct: true
+    sa: कुर्वन्ति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's {{नु}} and {{उ}}
+    hi: पाणिनि के {{नु}} और {{उ}}
+  depth: panini
+  skills:
+  - verb.class-5-8
+  sutras:
+  - 3.1.73
+  - 3.1.79
+  - 3.1.74
+  body:
+    en: 'Sūtra 3.1.73, {{स्वादिभ्यः श्नुः}}, adds {{श्नु}} to class 5, and 3.1.79, {{तनादिकृञ्भ्य उः}}, adds {{उ}} to class 8 and to {{कृ}}. And 3.1.74, {{श्रुवः शृ च}}, gives {{श्रु}} the {{श्नु}} sign and turns it into {{शृ}}: {{शृणोति}}.'
+    hi: 'सूत्र 3.1.73, {{स्वादिभ्यः श्नुः}}, गण 5 में {{श्नु}} जोड़ता है, और 3.1.79, {{तनादिकृञ्भ्य उः}}, गण 8 और {{कृ}} में {{उ}} जोड़ता है। और 3.1.74, {{श्रुवः शृ च}}, {{श्रु}} को {{श्नु}} चिह्न देता है और उसे {{शृ}} बना देता है: {{शृणोति}}।'
+- id: sum
+  kind: summary
+  title:
+    en: Classes 5 and 8
+    hi: गण 5 और 8
+  depth: core
+  points:
+  - sa: आप्नोति · शक्नोति
+    text:
+      en: He gets; he is able.
+      hi: वह पाता है; वह समर्थ है।
+  - sa: शृणोति · करोति
+    text:
+      en: He hears; he does.
+      hi: वह सुनता है; वह करता है।
+  - text:
+      en: Strong {{-ओ-}} in the singular; weak in the plural.
+      hi: एकवचन में बलवान् {{-ओ-}}; बहुवचन में निर्बल।

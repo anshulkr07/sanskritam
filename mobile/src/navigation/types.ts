@@ -27,6 +27,14 @@ export type MainTabParamList = {
 };
 
 export type RootStackParamList = {
+  StoryMap: undefined;
+  StoryLeaf: { leafId: string };
+  StoryLesson: { lessonId: string };
+  StoryUnitEnd: { unitId: string; leafId?: string; lessonId?: string };
+  StoryLeaves: undefined;
+  StoryGhosts: undefined;
+  StoryCast: undefined;
+  StoryReview: undefined;
   DailyReview: undefined;
   OfflineLibrary: undefined;
   MainTabs: undefined;
@@ -128,7 +136,7 @@ export type RootStackParamList = {
   // `tradition` pins the calculation so share/Ask/reminder links reopen
   // the same occurrence instead of a different year's or month's.
   Parva: undefined;
-  ParvaPage: { slug: string; variant?: string; date?: string; dayDate?: string; tradition?: string };
+  ParvaPage: { slug: string; variant?: string; date?: string; dayDate?: string; tradition?: string; occurrence?: import("../parva/api").ParvaOccurrence };
   // Kāla: time as Sanskrit counts it. The hub behind the Home date card, and
   // one screen that shows whichever of its six chapters is asked for.
   Kala: undefined;

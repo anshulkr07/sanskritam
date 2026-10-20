@@ -1,0 +1,202 @@
+id: nf1.revision
+template: revision
+title:
+  en: Everything about the first three families
+  hi: पहले तीन कुल, सब कुछ
+title_sa: शब्दरूपसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The tables
+    hi: तालिकाएँ
+  depth: core
+  section: core
+  rows:
+  - skill: noun.deva
+    rule:
+      en: '{{देव}} (masculine -अ): {{देवः देवौ देवाः}}, {{देवम् देवौ देवान्}}, {{देवेन देवाभ्याम् देवैः}}, {{देवाय देवाभ्याम् देवेभ्यः}}, {{देवात् देवाभ्याम् देवेभ्यः}}, {{देवस्य देवयोः देवानाम्}}, {{देवे देवयोः देवेषु}}.'
+      hi: '{{देव}} (पुंलिंग -अ): {{देवः देवौ देवाः}}, {{देवम् देवौ देवान्}}, {{देवेन देवाभ्याम् देवैः}}, {{देवाय देवाभ्याम् देवेभ्यः}}, {{देवात् देवाभ्याम् देवेभ्यः}}, {{देवस्य देवयोः देवानाम्}}, {{देवे देवयोः देवेषु}}।'
+    sutras:
+    - 7.1.9
+    - 7.1.12
+    tag: core
+    taught_in: nf1.deva#tb1
+  - skill: noun.phala
+    rule:
+      en: '{{फल}} (neuter -अ) follows {{देव}} except first, second and call: {{फलम् फले फलानि}}.'
+      hi: '{{फल}} (नपुंसक -अ) {{देव}} जैसा है, सिवाय प्रथमा, द्वितीया और सम्बोधन के: {{फलम् फले फलानि}}।'
+    sutras:
+    - 7.1.19
+    - 7.1.72
+    tag: core
+    taught_in: nf1.phala#tb1
+  - skill: noun.lata
+    rule:
+      en: '{{लता}} (feminine -आ): {{लता लते लताः}}, {{लताम् लते लताः}}, {{लतया लताभ्याम् लताभिः}}, {{लतायै लताभ्याम् लताभ्यः}}, {{लतायाः लताभ्याम् लताभ्यः}}, {{लतायाः लतयोः लतानाम्}}, {{लतायाम् लतयोः लतासु}}.'
+      hi: '{{लता}} (स्त्रीलिंग -आ): {{लता लते लताः}}, {{लताम् लते लताः}}, {{लतया लताभ्याम् लताभिः}}, {{लतायै लताभ्याम् लताभ्यः}}, {{लतायाः लताभ्याम् लताभ्यः}}, {{लतायाः लतयोः लतानाम्}}, {{लतायाम् लतयोः लतासु}}।'
+    sutras:
+    - 4.1.4
+    tag: core
+    taught_in: nf1.lata#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: Shared forms
+    hi: साझा रूप
+  depth: core
+  section: conditions
+  rows:
+  - skill: noun.deva
+    rule:
+      en: In the dual, first, second and call share {{औ}}; third, fourth and fifth share {{आभ्याम्}}; sixth and seventh share {{योः}}.
+      hi: द्विवचन में प्रथमा, द्वितीया और सम्बोधन {{औ}} साझा करते हैं; तृतीया, चतुर्थी और पञ्चमी {{आभ्याम्}}; षष्ठी और सप्तमी {{योः}}।
+    tag: good
+    taught_in: nf1.deva#tb1
+  - skill: noun.deva
+    rule:
+      en: In the plural, fourth and fifth share {{एभ्यः}} (masculine, neuter) and {{आभ्यः}} (feminine).
+      hi: बहुवचन में चतुर्थी और पञ्चमी {{एभ्यः}} (पुंलिंग, नपुंसक) और {{आभ्यः}} (स्त्रीलिंग) साझा करती हैं।
+    tag: good
+    taught_in: nf1.deva#tb1
+  - skill: noun.lata
+    rule:
+      en: 'Fifth and sixth singular of a feminine in -आ are the same: {{लतायाः}}.'
+      hi: '-आ वाले स्त्रीलिंग की एकवचन पञ्चमी और षष्ठी एक-सी हैं: {{लतायाः}}।'
+    tag: good
+    taught_in: nf1.lata#tb1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: noun.deva
+    rule:
+      en: 'The call: {{देव}} stays {{देव}}. {{सर्व}} and a few pronoun-like words (like {{सर्व}}, {{विश्व}}, {{अन्य}}) take {{स्मै}}, {{स्मात्}}, {{स्मिन्}} in the singular: {{सर्वस्मै}}.'
+      hi: 'पुकार: {{देव}} वैसा ही रहता है। {{सर्व}} और कुछ सर्वनाम-जैसे शब्द ({{सर्व}}, {{विश्व}}, {{अन्य}}) एकवचन में {{स्मै}}, {{स्मात्}}, {{स्मिन्}} लेते हैं: {{सर्वस्मै}}।'
+    example:
+      sa: सर्वस्मै
+      meaning:
+        en: to everyone
+        hi: सबके लिए
+      check:
+        type: subanta
+        stem: सर्व
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+    tag: good
+    new_here: true
+  - skill: noun.phala
+    rule:
+      en: 'Neuters whose stem ends in -अ never take {{ः}} in the first singular: always {{म्}}.'
+      hi: '-अ पर समाप्त नपुंसक शब्द एकवचन प्रथमा में कभी {{ः}} नहीं लेते: सदा {{म्}}।'
+    tag: good
+    taught_in: nf1.phala#t1
+  - skill: noun.lata
+    rule:
+      en: A few words in -आ are masculine (like {{सोमपा}}, “soma-drinker”) and decline differently; they are rare.
+      hi: -आ वाले कुछ शब्द पुंलिंग हैं (जैसे {{सोमपा}}) और भिन्न चलते हैं; वे दुर्लभ हैं।
+    example:
+      sa: सोमपाः
+      meaning:
+        en: a soma-drinker, masculine in -आ
+        hi: सोम पीने वाला, -आ वाला पुंलिंग
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: noun.deva
+    rule:
+      en: 'Do not use {{देवेन}} for “gods”: it is “by a god”; “by gods” is {{देवैः}}.'
+      hi: '‘देवताओं’ के लिए {{देवेन}} मत कहिए: यह ‘देवता से’ है; ‘देवताओं से’ {{देवैः}} है।'
+    tag: core
+    taught_in: nf1.deva#tb1
+  - skill: noun.phala
+    rule:
+      en: 'Do not give a neuter the masculine plural {{फलाः}}: it is {{फलानि}}.'
+      hi: 'नपुंसक को पुंलिंग बहुवचन {{फलाः}} मत दीजिए: सही {{फलानि}} है।'
+    tag: core
+    taught_in: nf1.phala#t1
+  - skill: noun.lata
+    rule:
+      en: 'Do not call {{लता}} with {{लता}}: call with {{लते}}.'
+      hi: '{{लता}} को {{लता}} से मत पुकारिए: {{लते}} से पुकारिए।'
+    tag: core
+    taught_in: nf1.lata#t1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: noun.deva
+    rule:
+      en: '{{अतो भिस ऐस्}}: {{भिस्}} becomes {{ऐस्}} after -अ.'
+      hi: '{{अतो भिस ऐस्}}: -अ के बाद {{भिस्}} {{ऐस्}} हो जाता है।'
+    sutras:
+    - 7.1.9
+    tag: core
+    taught_in: nf1.deva#pn
+  - skill: noun.phala
+    rule:
+      en: '{{नपुंसकाच्च}} and {{नपुंसकस्य झलचः}}: the neuter dual in {{ई}}/{{ए}} and the plural in {{आनि}}.'
+      hi: '{{नपुंसकाच्च}} और {{नपुंसकस्य झलचः}}: नपुंसक द्विवचन {{ई}}/{{ए}} में और बहुवचन {{आनि}} में।'
+    sutras:
+    - 7.1.19
+    - 7.1.72
+    tag: core
+    taught_in: nf1.phala#t1
+  - skill: noun.lata
+    rule:
+      en: '{{अजाद्यतष्टाप्}}: the feminine in -आ is made with {{टाप्}}.'
+      hi: '{{अजाद्यतष्टाप्}}: -आ वाला स्त्रीलिंग {{टाप्}} से बनता है।'
+    sutras:
+    - 4.1.4
+    tag: core
+    taught_in: nf1.lata#t1
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: noun.deva
+    formula: ः औ आः · म् औ आन् · एन आभ्याम् ऐः
+    rule:
+      en: the {{देव}} pattern
+      hi: '{{देव}} का ढाँचा'
+    tag: core
+    taught_in: nf1.deva#tb1
+  - skill: noun.phala
+    formula: म् ए आनि
+    rule:
+      en: the {{फल}} pattern
+      hi: '{{फल}} का ढाँचा'
+    tag: core
+    taught_in: nf1.phala#tb1
+  - skill: noun.lata
+    formula: आ ए आः · आम् ए आः
+    rule:
+      en: the {{लता}} pattern
+      hi: '{{लता}} का ढाँचा'
+    tag: core
+    taught_in: nf1.lata#tb1

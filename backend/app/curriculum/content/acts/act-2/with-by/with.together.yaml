@@ -1,0 +1,397 @@
+id: with.together
+template: scene
+title:
+  en: Together with
+  hi: के साथ
+title_sa: सहार्थः
+minutes: 6
+teaches:
+- case.inst-saha
+needs:
+- case.inst
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Not alone
+    hi: अकेले नहीं
+  depth: core
+  image:
+    brief: The boat on a widening river with you, Dādī with her pen, Śuka on the awning and the boatman, the small boat-shaped spirit circling the boat; Dādī lifting one finger as if teaching.
+    alt:
+      en: A boat with friends aboard on a widening river with a small spirit circling it
+      hi: चौड़ी होती नदी में दोस्तों वाली नाव और उसके चारों ओर घूमता नन्हा भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - navika
+    - tarika
+    place: nauka
+    ratio: '4:3'
+    id: with-together-s1
+  narration:
+    en: The river widens. Tarikā circles your boat, curious. “With whom do you go?” the boatman asks. “With Dādī, with Śuka, with a friend,” you say, counting. Dādī lifts a finger. “For ‘together with’ Sanskrit uses the third case again, and a small word that means ‘with’.”
+    hi: नदी चौड़ी होती है। तरिका जिज्ञासा से आपकी नाव का चक्कर लगाती है। नाविक पूछता है, “किसके साथ जा रहे हो?” “दादी के साथ, शुक के साथ, एक मित्र के साथ,” आप गिनकर कहते हैं। दादी एक उँगली उठाती हैं। “‘के साथ’ के लिए संस्कृत फिर तृतीया लेती है, और ‘साथ’ का एक छोटा शब्द।”
+- id: t1
+  kind: teach
+  title:
+    en: '{{सह}} and the third case'
+    hi: '{{सह}} और तृतीया'
+  depth: core
+  skills:
+  - case.inst-saha
+  body:
+    en: 'To say “together with”, use the third case and the little word {{सह}}: {{मित्रेण सह}} (with a friend), {{शुकेन सह}}. The person you accompany stands in the third case.'
+    hi: '‘के साथ’ कहने के लिए तृतीया और छोटा शब्द {{सह}} लगाइए: {{मित्रेण सह}} (मित्र के साथ), {{शुकेन सह}}। जिसके साथ जाते हैं वह तृतीया में आता है।'
+  examples:
+  - sa: अहम् मित्रेण सह गच्छामि।
+    meaning:
+      en: I go together with a friend.
+      hi: मैं मित्र के साथ जाता हूँ।
+    words:
+    - sa: अहम्
+      gloss:
+        en: I
+        hi: मैं
+    - sa: मित्रेण
+      gloss:
+        en: with a friend
+        hi: मित्र के साथ
+      check:
+        type: subanta
+        stem: मित्र
+        linga: Napumsaka
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: सह
+      gloss:
+        en: together with
+        hi: साथ
+    - sa: गच्छामि
+      gloss:
+        en: go
+        hi: जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+  - sa: बालिका शुकेन सह क्रीडति।
+    meaning:
+      en: The girl plays with the parrot.
+      hi: बालिका तोते के साथ खेलती है।
+    words:
+    - sa: बालिका
+      gloss:
+        en: girl
+        hi: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: शुकेन
+      gloss:
+        en: with the parrot
+        hi: तोते के साथ
+      check:
+        type: subanta
+        stem: शुक
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: सह
+      gloss:
+        en: together with
+        hi: साथ
+    - sa: क्रीडति
+      gloss:
+        en: plays
+        hi: खेलती है
+      check:
+        type: tinanta
+        dhatu: क्रीड्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: शुकेन सह बालकः गच्छति।
+    meaning:
+      en: The boy goes with the parrot.
+      hi: बालक तोते के साथ जाता है।
+    words:
+    - sa: शुकेन
+      gloss:
+        en: with the parrot
+        hi: तोते के साथ
+      check:
+        type: subanta
+        stem: शुक
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: सह
+      gloss:
+        en: together with
+        hi: साथ
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गच्छति
+      gloss:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: tb1
+  kind: table
+  title:
+    en: Alone and together
+    hi: अकेले और साथ
+  depth: core
+  skills:
+  - case.inst-saha
+  caption:
+    en: The companion in the third case
+    hi: साथी तृतीया में
+  columns:
+  - en: Companion
+    hi: साथी
+  - en: '1st: alone'
+    hi: 'प्रथमा: अकेला'
+  - en: '3rd: together with'
+    hi: 'तृतीया: के साथ'
+  rows:
+  - - text:
+        en: friend
+        hi: मित्र
+    - sa: मित्रम्
+      check:
+        type: subanta
+        stem: मित्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: मित्रेण
+      check:
+        type: subanta
+        stem: मित्र
+        linga: Napumsaka
+        vibhakti: Trtiya
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: parrot
+        hi: तोता
+    - sa: शुकः
+      check:
+        type: subanta
+        stem: शुक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: शुकेन
+      check:
+        type: subanta
+        stem: शुक
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: teacher
+        hi: आचार्य
+    - sa: आचार्यः
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: आचार्येण
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: mother
+        hi: माता
+    - sa: माता
+      check:
+        type: subanta
+        stem: माता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: मातया
+      check:
+        type: subanta
+        stem: माता
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+      highlight: true
+  note:
+    en: 'Plural companions: {{मित्रैः सह}}, {{शुकैः सह}}.'
+    hi: 'अनेक साथी: {{मित्रैः सह}}, {{शुकैः सह}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.inst-saha
+  mode: choice
+  prompt:
+    en: “I go with Dādī.” Which word for “Dādī”?
+    hi: ‘मैं दादी के साथ जाता हूँ।’ ‘दादी’ के लिए कौन-सा रूप?
+  explain:
+    en: '{{पितामह्या सह}}: the third case with {{सह}}.'
+    hi: '{{पितामह्या सह}}: {{सह}} के साथ तृतीया।'
+  roman: after
+  options:
+  - sa: पितामही
+  - sa: पितामहीम्
+  - correct: true
+    sa: पितामह्या
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.inst-saha
+  mode: match
+  prompt:
+    en: Join each phrase to its meaning.
+    hi: हर वाक्यांश को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{सह}} follows the third case.'
+    hi: '{{सह}} तृतीया के बाद आता है।'
+  roman: after
+  pairs:
+  - left:
+      sa: मित्रेण सह
+    right:
+      text:
+        en: with a friend
+        hi: मित्र के साथ
+  - left:
+      sa: शुकेन सह
+    right:
+      text:
+        en: with the parrot
+        hi: तोते के साथ
+  - left:
+      sa: आचार्येण सह
+    right:
+      text:
+        en: with the teacher
+        hi: आचार्य के साथ
+  - left:
+      sa: मित्रैः सह
+    right:
+      text:
+        en: with friends
+        hi: मित्रों के साथ
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - case.inst-saha
+  widget: mark_words
+  prompt:
+    en: Tap the word that means “together with”.
+    hi: ‘के साथ’ वाले शब्द को छुइए।
+  params:
+    passage:
+    - मित्रेण
+    - सह
+    - गच्छामि
+    - फलम्
+    targets:
+    - सह
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: Together
+    hi: साथ-साथ
+  depth: core
+  skills:
+  - case.inst-saha
+  mode: order
+  prompt:
+    en: 'Say: “I go with the parrot.”'
+    hi: 'कहिए: ‘मैं तोते के साथ जाता हूँ।’'
+  explain:
+    en: '{{अहं शुकेन सह गच्छामि}}.'
+    hi: '{{अहं शुकेन सह गच्छामि}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“अहं शुकेन सह गच्छामि,” you say, and Śuka, offended at being called a travelling companion, puffs up: “मित्रेण सह! मित्रेण सह!” Tarikā laughs: a bell-like sound that skims across the river.'
+      hi: '“अहं शुकेन सह गच्छामि,” आप कहते हैं, और शुक, यात्रा-साथी कहे जाने पर नाराज़ होकर फूल उठता है: “मित्रेण सह! मित्रेण सह!” तरिका हँसती है: घंटी-सी ध्वनि जो नदी पर तैरती चली जाती है।'
+    failure:
+      en: Śuka ruffles his feathers. {{सह}} comes after the third-case word.
+      hi: शुक पंख फड़फड़ाता है। {{सह}} तृतीया वाले शब्द के बाद आता है।
+  tokens:
+  - अहम्
+  - शुकेन
+  - सह
+  - गच्छामि
+- id: pn
+  kind: teach
+  title:
+    en: '{{सह}} or {{सार्धम्}}'
+    hi: '{{सह}} या {{सार्धम्}}'
+  depth: panini
+  skills:
+  - case.inst-saha
+  body:
+    en: '{{सह}} may be replaced by {{सार्धम्}} or {{साकम्}} with the same meaning, and the third case can even stand alone: {{मित्रेण गच्छामि}}. Poets use all of these freely.'
+    hi: '{{सह}} की जगह {{सार्धम्}} या {{साकम्}} आ सकते हैं, अर्थ वही; और तृतीया अकेली भी चल सकती है: {{मित्रेण गच्छामि}}। कवि इन सबको खुलकर बरतते हैं।'
+  examples:
+  - sa: मित्रेण सार्धम्
+    meaning:
+      en: together with a friend
+      hi: मित्र के साथ
+  - sa: मित्रेण साकम्
+    meaning:
+      en: together with a friend
+      hi: मित्र के साथ
+- id: sum
+  kind: summary
+  title:
+    en: Together with
+    hi: के साथ
+  depth: core
+  points:
+  - sa: मित्रेण सह
+    text:
+      en: Third case plus {{सह}}.
+      hi: तृतीया और {{सह}}।
+  - sa: मित्रैः सह
+    text:
+      en: Many companions.
+      hi: अनेक साथी।
+  - text:
+      en: '{{सह}} follows its noun.'
+      hi: '{{सह}} अपने शब्द के बाद आता है।'

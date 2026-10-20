@@ -1,0 +1,17 @@
+{
+  "id": "vowels-short-line",
+  "sha256": "a8e38ac1fd97c7294bbac84dee1c11a3ee111cc415198abf5be874fd874b5464",
+  "model": "gemini-3.8-flash",
+  "expected": [
+    "अ इ उ",
+    "ऋ ऌ",
+    "ए ओ",
+    "ऐ औ"
+  ],
+  "detected": [
+    "अ इ उ ऋ ऌ ए ओ ऐ औ"
+  ],
+  "unreadable_lettering": false,
+  "notes": "Devanagari vowels from the Shiva Sutras (Maheshvara Sutras) written on a burned palm-leaf or birch-bark strip; the missing halanta consonants at the end of each sutra are located where the burned holes appear.",
+  "passed": true
+}

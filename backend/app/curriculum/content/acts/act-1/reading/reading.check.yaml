@@ -1,0 +1,188 @@
+id: reading.check
+template: check
+title:
+  en: Read his name
+  hi: उसका नाम पढ़िए
+title_sa: परीक्षा
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - read.syllables
+  mode: choice
+  prompt:
+    en: How many syllables does {{सीता}} have?
+    hi: '{{सीता}} में कितने अक्षर हैं?'
+  explain:
+    en: '{{सी}}-{{ता}}: two.'
+    hi: '{{सी}}-{{ता}}: दो।'
+  roman: show
+  options:
+  - text:
+      en: one
+      hi: एक
+  - correct: true
+    text:
+      en: two
+      hi: दो
+  - text:
+      en: three
+      hi: तीन
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - read.syllables
+  mode: order
+  prompt:
+    en: Put the syllables of {{लक्ष्मणः}} in order.
+    hi: '{{लक्ष्मणः}} के अक्षर क्रम में लगाइए।'
+  explain:
+    en: '{{लक्}}-{{ष्म}}-{{णः}}.'
+    hi: '{{लक्}}-{{ष्म}}-{{णः}}।'
+  roman: after
+  tokens:
+  - लक्
+  - ष्म
+  - णः
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - read.places
+  mode: choice
+  prompt:
+    en: Which sound is made at the throat and the palate together?
+    hi: कौन-सी ध्वनि कण्ठ और तालु दोनों से बनती है?
+  explain:
+    en: '{{ए}}: throat + palate.'
+    hi: '{{ए}}: कण्ठ + तालु।'
+  roman: after
+  options:
+  - correct: true
+    sa: ए
+  - sa: ओ
+  - sa: उ
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - read.places
+  mode: match
+  prompt:
+    en: Join each letter to its place.
+    hi: हर अक्षर को उसके स्थान से जोड़िए।
+  explain:
+    en: Throat, palate, teeth, lips.
+    hi: कण्ठ, तालु, दन्त, ओष्ठ।
+  roman: after
+  pairs:
+  - left:
+      sa: क
+    right:
+      text:
+        en: throat
+        hi: कण्ठ
+  - left:
+      sa: च
+    right:
+      text:
+        en: palate
+        hi: तालु
+  - left:
+      sa: त
+    right:
+      text:
+        en: teeth
+        hi: दन्त
+  - left:
+      sa: प
+    right:
+      text:
+        en: lips
+        hi: ओष्ठ
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - read.iast
+  mode: choice
+  prompt:
+    en: Which letter is ṣ?
+    hi: कौन-सा अक्षर ṣ है?
+  explain:
+    en: '{{ष}} is ṣ, the curled-tongue hiss.'
+    hi: '{{ष}} यानी ṣ, मुड़ी जीभ की फुफकार।'
+  roman: after
+  options:
+  - sa: श
+  - correct: true
+    sa: ष
+  - sa: स
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - read.iast
+  mode: choice
+  prompt:
+    en: A friend writes “gaṅgā”. Which word is it?
+    hi: मित्र ने “gaṅgā” लिखा। यह कौन-सा शब्द है?
+  explain:
+    en: 'ga-ṅ-gā: {{गङ्गा}}.'
+    hi: 'ग-ङ्-गा: {{गङ्गा}}।'
+  roman: show
+  options:
+  - correct: true
+    sa: गङ्गा
+  - sa: गञ्जा
+  - sa: गण्डा
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - read.words
+  mode: choice
+  prompt:
+    en: Which word is “Bharata”?
+    hi: नीचे के शब्दों में से कौन-सा शब्द “Bharata” पढ़ा जाता है?
+  explain:
+    en: '{{भ}} breathy, short {{र}}-{{त}}.'
+    hi: महाप्राण {{भ}}, फिर छोटा {{र}}-{{त}}।
+  roman: after
+  options:
+  - sa: बरतः
+  - correct: true
+    sa: भरतः
+  - sa: भारतः
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - read.words
+  - read.syllables
+  mode: order
+  prompt:
+    en: 'Read Maunī''s name aloud, once more: {{मौ}} {{नी}}.'
+    hi: 'मौनी का नाम एक बार फिर ज़ोर से पढ़िए: {{मौ}} {{नी}}।'
+  explain:
+    en: '{{मौनी}}: two syllables.'
+    hi: '{{मौनी}}: दो अक्षर।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“मौनी अस्मि। वदामि!” The pale-gold spirit''s voice rings out, and he laughs, lighter than before. He points to the glowing leaf, then out of the window to the river: “द्वितीयं पत्रं नद्याः तीरे अस्ति।” In the doorway, the tall man in the dark coat steps back into the shadows.'
+      hi: '“मौनी अस्मि। वदामि!” सुनहरे भूत की आवाज़ गूँजती है, और वह पहले से हल्का होकर हँस पड़ता है। वह चमकते पत्र की ओर, फिर खिड़की से नदी की ओर इशारा करता है: “द्वितीयं पत्रं नद्याः तीरे अस्ति।” द्वार पर गहरे कोट वाला लम्बा आदमी परछाईं में लौट जाता है।'
+    failure:
+      en: 'The name will not hold. Two syllables: {{मौ}}, then {{नी}}.'
+      hi: 'नाम नहीं टिकता। दो अक्षर: {{मौ}}, फिर {{नी}}।'
+  tokens:
+  - मौ
+  - नी

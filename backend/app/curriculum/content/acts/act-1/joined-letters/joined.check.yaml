@@ -1,0 +1,246 @@
+id: joined.check
+template: check
+title:
+  en: Wake the pillar
+  hi: स्तम्भ को जगाइए
+title_sa: परीक्षा
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - script.conjunct
+  mode: choice
+  prompt:
+    en: Which is {{त्}} + {{र}}?
+    hi: '{{त्}} + {{र}} कौन-सा है?'
+  explain:
+    en: '{{त्र}}: the first loses its vowel and joins {{र}}.'
+    hi: '{{त्र}}: पहला स्वर खोकर {{र}} से जुड़ता है।'
+  roman: after
+  options:
+  - correct: true
+    sa: त्र
+  - sa: र्त
+  - sa: तर
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - script.conjunct
+  mode: type
+  prompt:
+    en: Build {{सत्यम्}} from the pieces.
+    hi: टुकड़ों से {{सत्यम्}} बनाइए।
+  explain:
+    en: '{{स}} + {{त्यम्}}.'
+    hi: '{{स}} + {{त्यम्}}।'
+  roman: after
+  answers:
+  - सत्यम्
+  tiles:
+  - स
+  - त्यम्
+  - त्य
+  - म्
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - script.reph
+  mode: match
+  prompt:
+    en: Join each shape to where the {{र}} sits.
+    hi: हर आकार को {{र}} के स्थान से जोड़िए।
+  explain:
+    en: A first {{र}} curls on top; a second hangs below.
+    hi: पहला {{र}} ऊपर मुड़ता है; दूसरा नीचे लटकता है।
+  roman: after
+  pairs:
+  - left:
+      sa: र्म
+    right:
+      text:
+        en: on top
+        hi: ऊपर
+  - left:
+      sa: प्र
+    right:
+      text:
+        en: below
+        hi: नीचे
+  - left:
+      sa: र्त
+    right:
+      text:
+        en: on top
+        hi: ऊपर
+  - left:
+      sa: क्र
+    right:
+      text:
+        en: below
+        hi: नीचे
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - script.reph
+  mode: choice
+  prompt:
+    en: Which word has a curl of {{र}} on top?
+    hi: किस शब्द में ऊपर {{र}} का मोड़ है?
+  explain:
+    en: '{{कर्म}}: the {{र}} is first in {{र्म}}.'
+    hi: '{{कर्म}}: {{र्म}} में {{र}} पहले है।'
+  roman: after
+  options:
+  - sa: प्रियः
+  - correct: true
+    sa: कर्म
+  - sa: मित्रम्
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - script.anusvara
+  mode: choice
+  prompt:
+    en: Which mark is the nasal hum?
+    hi: नासिक्य गूँज का चिह्न कौन-सा है?
+  explain:
+    en: '{{ं}} is the hum.'
+    hi: '{{ं}} गूँज है।'
+  roman: after
+  options:
+  - sa: ः
+  - correct: true
+    sa: ं
+  - sa: ऽ
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - script.visarga
+  mode: type
+  prompt:
+    en: Build {{नमः}} from the pieces.
+    hi: टुकड़ों से {{नमः}} बनाइए।
+  explain:
+    en: '{{न}} + {{मः}}: the breath ends the word.'
+    hi: '{{न}} + {{मः}}: साँस शब्द का अन्त करती है।'
+  roman: after
+  answers:
+  - नमः
+  tiles:
+  - न
+  - मः
+  - म
+  - ः
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - script.signs
+  mode: match
+  prompt:
+    en: Join each mark to its job.
+    hi: हर चिह्न को उसके काम से जोड़िए।
+  explain:
+    en: Each mark does one job.
+    hi: हर चिह्न का एक काम है।
+  roman: after
+  pairs:
+  - left:
+      sa: ।
+    right:
+      text:
+        en: ends a line
+        hi: पंक्ति का अन्त
+  - left:
+      sa: ॥
+    right:
+      text:
+        en: ends a verse
+        hi: श्लोक का अन्त
+  - left:
+      sa: ऽ
+    right:
+      text:
+        en: a dropped {{अ}}
+        hi: छूटा {{अ}}
+  - left:
+      sa: ॐ
+    right:
+      text:
+        en: the sacred syllable
+        hi: पवित्र अक्षर
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - script.numerals
+  mode: match
+  prompt:
+    en: Join each numeral to its number.
+    hi: हर अंक को उसकी संख्या से जोड़िए।
+  explain:
+    en: The ten numerals are read one by one.
+    hi: दस अंक एक-एक करके पढ़े जाते हैं।
+  roman: after
+  pairs:
+  - left:
+      sa: २
+    right:
+      text:
+        en: two
+        hi: दो
+  - left:
+      sa: ६
+    right:
+      text:
+        en: six
+        hi: छह
+  - left:
+      sa: ७
+    right:
+      text:
+        en: seven
+        hi: सात
+  - left:
+      sa: ०
+    right:
+      text:
+        en: zero
+        hi: शून्य
+- id: p9
+  kind: practice
+  depth: core
+  skills:
+  - script.conjunct
+  - script.signs
+  mode: order
+  prompt:
+    en: 'Read the pillar''s line once more, aloud: put its three pieces in order.'
+    hi: 'स्तम्भ की पंक्ति एक बार फिर ज़ोर से पढ़िए: उसके तीन टुकड़े क्रम में लगाइए।'
+  explain:
+    en: '{{सत्यमेव जयते नानृतं}}: Muṇḍaka Upaniṣad 3.1.6.'
+    hi: '{{सत्यमेव जयते नानृतं}}: मुण्डक उपनिषद् 3.1.6।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: 'The line rings out. Nidrālu, the green spirit, springs up, his nightcap gone: “जागर्मि! जागर्मि!” He bows to you, then flutters toward the courtyard door, where the old register waits in the library.'
+      hi: 'पंक्ति गूँज उठती है। हरा भूत, निद्रालु, टोपी गँवाकर उछल पड़ता है: “जागर्मि! जागर्मि!” वह आपको प्रणाम करता है और आँगन के द्वार की ओर उड़ चलता है, जहाँ पुस्तकालय में पुराना रजिस्टर प्रतीक्षा कर रहा है।'
+    failure:
+      en: The pillar stays silent. Read the pieces in order, from {{सत्यमेव}}.
+      hi: स्तम्भ चुप रहता है। {{सत्यमेव}} से शुरू कर टुकड़े क्रम से पढ़िए।
+  tokens:
+  - सत्यमेव
+  - जयते
+  - नानृतं

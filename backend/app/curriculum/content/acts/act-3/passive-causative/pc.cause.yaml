@@ -1,0 +1,538 @@
+id: pc.cause
+template: scene
+title:
+  en: Makes someone read
+  hi: किसी से पढ़वाता है
+title_sa: पाठयति कारयति
+minutes: 6
+teaches:
+- verb.causative
+needs:
+- verb.passive
+- verb.class-10
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: A hand for every job
+    hi: हर काम के लिए एक हाथ
+  depth: core
+  image:
+    brief: 'The rose-mist pusher spirit with its dozen hands: one tilting a small boy''s head towards a book, one lifting a spoon to a sleepy ghost''s lips, one setting a foot on a path; the Vetāla pointing at each; Dādī laughing.'
+    alt:
+      en: A rose-mist spirit with many hands tilts a boy to a book, feeds a sleepy ghost and sets a foot on a path
+      hi: गुलाबी धुंध का भूत अनेक हाथों से बालक को पुस्तक की ओर मोड़ता, ऊँघते भूत को खिलाता, राह पर पैर रखता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - preraka
+    place: smashana
+    ratio: '4:3'
+    id: pc-cause-s1
+  narration:
+    en: 'The pusher claps all twelve hands. “पाठयति!” says the Vetāla, pointing: one hand has taken a boy''s head and tilted it to a book. “भोजयति!” Another has lifted a spoon to the lips of a sleepy ghost. “गमयति!” A third has set a foot on a path. “He makes read, makes eat, makes go,” says Dādī. “He does not do the thing himself: he gets it done.”'
+    hi: 'प्रेरक बारहों हाथ ताली में मिलाता है। “पाठयति!” वेताल इशारा करता है: एक हाथ ने एक बालक का सिर पुस्तक की ओर झुका दिया है। “भोजयति!” दूसरे ने एक ऊँघते भूत के होंठों तक चम्मच उठाया है। “गमयति!” तीसरे ने राह पर एक पैर रखा है। “वह पढ़वाता है, खिलाता है, भेजता है,” दादी कहती हैं। “वह स्वयं नहीं करता: वह करवाता है।”'
+- id: t1
+  kind: teach
+  title:
+    en: Making someone do it
+    hi: किसी से करवाना
+  depth: core
+  skills:
+  - verb.causative
+  body:
+    en: 'The causative adds {{-अय-}} after a strengthened root and means “makes do”: {{पठ्}} gives {{पाठयति}} (makes read, teaches), {{कृ}} gives {{कारयति}} (makes do), {{भुज्}} gives {{भोजयति}} (feeds), {{गम्}} gives {{गमयति}} (sends). The one made to act goes in the second case.'
+    hi: 'प्रेरणार्थक रूप दृढ़ किए हुए धातु के बाद {{-अय-}} जोड़ता है और ‘करवाता है’ का अर्थ देता है: {{पठ्}} से {{पाठयति}} (पढ़वाता है, पढ़ाता है), {{कृ}} से {{कारयति}} (करवाता है), {{भुज्}} से {{भोजयति}} (खिलाता है), {{गम्}} से {{गमयति}} (भेजता है)। जिससे कराया जाए, वह द्वितीया में जाता है।'
+  examples:
+  - sa: गुरुः बालकम् पाठम् पाठयति।
+    meaning:
+      en: The teacher makes the boy read the lesson.
+      hi: गुरु बालक को पाठ पढ़ाता है।
+    words:
+    - sa: गुरुः
+      gloss:
+        en: the teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालकम्
+      gloss:
+        en: the boy
+        hi: बालक को
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पाठम्
+      gloss:
+        en: the lesson
+        hi: पाठ
+      check:
+        type: subanta
+        stem: पाठ
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पाठयति
+      gloss:
+        en: makes read
+        hi: पढ़ाता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+  - sa: माता बालम् भोजयति।
+    meaning:
+      en: The mother feeds the child.
+      hi: माता बच्चे को खिलाती है।
+    words:
+    - sa: माता
+      gloss:
+        en: the mother
+        hi: माता
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालम्
+      gloss:
+        en: the child
+        hi: बच्चे को
+      check:
+        type: subanta
+        stem: बाल
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: भोजयति
+      gloss:
+        en: feeds
+        hi: खिलाती है
+      check:
+        type: tinanta
+        dhatu: भुज्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+  term:
+    sa: णिजन्तम्
+    meaning:
+      en: the causative stem
+      hi: प्रेरणार्थक अंग
+- id: tb1
+  kind: table
+  title:
+    en: The causative
+    hi: प्रेरणार्थक
+  depth: core
+  skills:
+  - verb.causative
+  caption:
+    en: Root, causative and meaning
+    hi: धातु, प्रेरणार्थक और अर्थ
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Causative
+    hi: प्रेरणार्थक
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: पठ्
+    - sa: पाठयति
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+    - text:
+        en: teaches
+        hi: पढ़ाता है
+  - - sa: कृ
+    - sa: कारयति
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+    - text:
+        en: has done
+        hi: करवाता है
+  - - sa: गम्
+    - sa: गमयति
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+    - text:
+        en: sends
+        hi: भेजता है
+  - - sa: दृश्
+    - sa: दर्शयति
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+    - text:
+        en: shows
+        hi: दिखाता है
+  - - sa: भुज्
+    - sa: भोजयति
+      check:
+        type: tinanta
+        dhatu: भुज्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+    - text:
+        en: feeds
+        hi: खिलाता है
+  - - sa: श्रु
+    - sa: श्रावयति
+      check:
+        type: tinanta
+        dhatu: श्रु
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+    - text:
+        en: announces
+        hi: सुनवाता है
+  - - sa: स्था
+    - sa: स्थापयति
+      check:
+        type: tinanta
+        dhatu: स्था
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+    - text:
+        en: sets up
+        hi: स्थापित करता है
+  note:
+    en: 'The sign is {{-अय-}}: the same as class 10, such as {{चोरयति}}. The vowel is lengthened or strengthened.'
+    hi: 'चिह्न {{-अय-}} है: वही जो गण 10 का, जैसे {{चोरयति}}। स्वर दीर्घ या दृढ़ होता है।'
+- id: tb2
+  kind: table
+  title:
+    en: 'पठ्: the causative'
+    hi: 'पठ्: प्रेरणार्थक'
+  depth: core
+  skills:
+  - verb.causative
+  caption:
+    en: “He teaches, you teach, I teach”
+    hi: ‘वह पढ़ाता है, तुम पढ़ाते हो, मैं पढ़ाता हूँ’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: पाठयति
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+      highlight: true
+    - sa: पाठयतः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+        sanadi:
+        - Nic
+    - sa: पाठयन्ति
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+        sanadi:
+        - Nic
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: पाठयसि
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+        sanadi:
+        - Nic
+    - sa: पाठयथः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+        sanadi:
+        - Nic
+    - sa: पाठयथ
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+        sanadi:
+        - Nic
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: पाठयामि
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+        sanadi:
+        - Nic
+    - sa: पाठयावः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+        sanadi:
+        - Nic
+    - sa: पाठयामः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+        sanadi:
+        - Nic
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.causative
+  mode: choice
+  prompt:
+    en: “He teaches (makes read).” Which form?
+    hi: ‘वह पढ़ाता है।’ कौन-सा रूप?
+  explain:
+    en: '{{पाठयति}}: {{पठ्}} + {{-अय-}}.'
+    hi: '{{पाठयति}}: {{पठ्}} + {{-अय-}}।'
+  roman: after
+  options:
+  - sa: पठति
+  - sa: पठ्यते
+  - correct: true
+    sa: पाठयति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.causative
+  mode: type
+  prompt:
+    en: 'Say: “He has (it) done.”'
+    hi: 'कहिए: ‘वह करवाता है।’'
+  explain:
+    en: '{{कारयति}}.'
+    hi: '{{कारयति}}।'
+  roman: after
+  answers:
+  - कारयति
+  tiles:
+  - का
+  - रयति
+  - कृ
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.causative
+  mode: match
+  prompt:
+    en: Join each root to its causative.
+    hi: हर धातु को उसके प्रेरणार्थक से जोड़िए।
+  explain:
+    en: The vowel is strengthened in each.
+    hi: हर एक में स्वर दृढ़ होता है।
+  roman: after
+  pairs:
+  - left:
+      sa: पठ्
+    right:
+      sa: पाठयति
+  - left:
+      sa: कृ
+    right:
+      sa: कारयति
+  - left:
+      sa: गम्
+    right:
+      sa: गमयति
+  - left:
+      sa: दृश्
+    right:
+      sa: दर्शयति
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.causative
+  widget: mark_words
+  prompt:
+    en: Tap every causative.
+    hi: हर प्रेरणार्थक रूप छुइए।
+  params:
+    passage:
+    - पाठयति
+    - पठति
+    - कारयति
+    - करोति
+    - भोजयति
+    - भुनक्ति
+    targets:
+    - पाठयति
+    - कारयति
+    - भोजयति
+  roman: show
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.causative
+  mode: order
+  prompt:
+    en: 'Say: “The mother feeds the child.”'
+    hi: 'कहिए: ‘माता बच्चे को खिलाती है।’'
+  explain:
+    en: '{{माता बालं भोजयति}}.'
+    hi: '{{माता बालं भोजयति}}।'
+  roman: after
+  tokens:
+  - माता
+  - बालम्
+  - भोजयति
+- id: p5
+  kind: practice
+  title:
+    en: He shows
+    hi: वह दिखाता है
+  depth: core
+  skills:
+  - verb.causative
+  mode: choice
+  prompt:
+    en: “He shows.” Which causative of {{दृश्}}?
+    hi: ‘वह दिखाता है।’ {{दृश्}} का कौन-सा प्रेरणार्थक?
+  explain:
+    en: '{{दर्शयति}}: {{दृश्}} + {{-अय-}}.'
+    hi: '{{दर्शयति}}: {{दृश्}} + {{-अय-}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“दर्शयति,” you say, and the pusher''s hand that was holding a path up to the dark spreads its fingers, and the dark opens: a long lane of old trees, a lamp at the far end, someone small waiting under it. “It shows,” says the Vetāla softly, “what it wants you to see.”'
+      hi: '“दर्शयति,” आप कहते हैं, और प्रेरक का जो हाथ अँधेरे की ओर राह थामे था, वह उँगलियाँ फैला देता है, और अँधेरा खुल जाता है: पुराने वृक्षों की लम्बी गली, उसके दूर के छोर पर दीपक, और उसके नीचे प्रतीक्षा करता कोई नन्हा। “वह दिखाता है,” वेताल धीमे से कहता है, “जो वह आपको दिखाना चाहता है।”'
+    failure:
+      en: 'The dark stays closed. “He shows”: {{दर्शयति}}.'
+      hi: 'अँधेरा बन्द रहता है। ‘वह दिखाता है’: {{दर्शयति}}।'
+  options:
+  - sa: पश्यति
+  - sa: दृश्यते
+  - correct: true
+    sa: दर्शयति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's causative
+    hi: पाणिनि का प्रेरणार्थक
+  depth: panini
+  skills:
+  - verb.causative
+  sutras:
+  - 3.1.26
+  - 7.2.115
+  - 3.1.32
+  body:
+    en: 'Sūtra 3.1.26, {{हेतुमति च}}, adds {{णिच्}} when someone gets the action done. 7.2.115, {{अचो ञ्णिति}}, lengthens the root''s vowel before it: {{पठ्}} becomes {{पाठ्}}. 3.1.32, {{सनाद्यन्ता धातवः}}, says the new stem is itself a root: {{पाठयति}}.'
+    hi: 'सूत्र 3.1.26, {{हेतुमति च}}, जब कोई क्रिया करवाए तब {{णिच्}} जोड़ता है। 7.2.115, {{अचो ञ्णिति}}, उससे पहले धातु का स्वर दीर्घ करता है: {{पठ्}} से {{पाठ्}}। 3.1.32, {{सनाद्यन्ता धातवः}}, कहता है कि नया अंग स्वयं एक धातु है: {{पाठयति}}।'
+- id: sum
+  kind: summary
+  title:
+    en: The causative
+    hi: प्रेरणार्थक
+  depth: core
+  points:
+  - sa: पाठयति · कारयति
+    text:
+      en: He teaches; he has it done.
+      hi: वह पढ़ाता है; वह करवाता है।
+  - sa: भोजयति · गमयति
+    text:
+      en: He feeds; he sends.
+      hi: वह खिलाता है; वह भेजता है।
+  - text:
+      en: The sign is {{-अय-}}; the vowel is strengthened.
+      hi: चिह्न {{-अय-}}; स्वर दृढ़ होता है।

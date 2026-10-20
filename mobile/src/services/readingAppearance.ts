@@ -1,12 +1,27 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useRef, useState } from "react";
 
-export type ReadingAppearance = { illustrated: boolean; imageOpacity: number; textOpacity: number; textColor: string | null };
-export const DEFAULT_READING_APPEARANCE: ReadingAppearance = { illustrated: true, imageOpacity: 0.48, textOpacity: 1, textColor: null };
+export const READING_SECTIONS = ["verse", "roman", "meaning", "hindi"] as const;
+export type ReadingSection = typeof READING_SECTIONS[number];
+export type SectionAppearance = { textColor: string | null; bold: boolean; scale: number };
+export type ReadingAppearance = { illustrated: boolean; imageOpacity: number; textOpacity: number; textColor: string | null; roman: boolean; sections: Record<ReadingSection, SectionAppearance> };
+const defaultSections = (): ReadingAppearance["sections"] => Object.fromEntries(READING_SECTIONS.map(key => [key, { textColor: null, bold: false, scale: 1 }])) as ReadingAppearance["sections"];
+export const DEFAULT_READING_APPEARANCE: ReadingAppearance = { illustrated: true, imageOpacity: 0.48, textOpacity: 1, textColor: null, roman: false, sections: defaultSections() };
 const KEY = "shabd.read.appearance.v1";
 export function normalizeReadingAppearance(value: Partial<ReadingAppearance> | null): ReadingAppearance {
   const number = (n: unknown, fallback: number, min: number) => typeof n === "number" && Number.isFinite(n) ? Math.max(min, Math.min(1, n)) : fallback;
+  const sections = defaultSections();
+  for (const key of READING_SECTIONS) {
+    const saved = value?.sections?.[key];
+    sections[key] = {
+      textColor: typeof saved?.textColor === "string" && /^#[a-f\d]{6}$/i.test(saved.textColor) ? saved.textColor : null,
+      bold: saved?.bold === true,
+      scale: typeof saved?.scale === "number" && Number.isFinite(saved.scale) ? Math.max(.85, Math.min(1.5, saved.scale)) : 1,
+    };
+  }
   return {
+    roman: value?.roman === true,
+    sections,
     illustrated: typeof value?.illustrated === "boolean" ? value.illustrated : true,
     imageOpacity: number(value?.imageOpacity, 0.48, 0),
     textOpacity: number(value?.textOpacity, 1, 0.5),
@@ -21,11 +36,18 @@ export function useReadingAppearance() {
     void AsyncStorage.getItem(KEY).then(raw => { if (raw && alive && !changed.current) setAppearance(normalizeReadingAppearance(JSON.parse(raw))); }).catch(() => {});
     return () => { alive = false; };
   }, []);
+  const latest = useRef(appearance);
+  latest.current = appearance;
+  useEffect(() => {
+    if (!changed.current) return;
+    const timer = setTimeout(() => { void AsyncStorage.setItem(KEY, JSON.stringify(appearance)).catch(() => {}); }, 160);
+    return () => clearTimeout(timer);
+  }, [appearance]);
+  useEffect(() => () => { if (changed.current) void AsyncStorage.setItem(KEY, JSON.stringify(latest.current)).catch(() => {}); }, []);
   const update = (patch: Partial<ReadingAppearance>) => {
     changed.current = true;
     setAppearance(current => {
       const next = normalizeReadingAppearance({ ...current, ...patch });
-      void AsyncStorage.setItem(KEY, JSON.stringify(next)).catch(() => {});
       return next;
     });
   };

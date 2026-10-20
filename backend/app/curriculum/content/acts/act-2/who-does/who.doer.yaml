@@ -1,0 +1,304 @@
+id: who.doer
+template: scene
+title:
+  en: Who does it
+  hi: कौन करता है
+title_sa: कर्ता
+minutes: 6
+teaches:
+- sent.nom-sg
+needs:
+- sent.stem-ending
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Everyone on the ghat
+    hi: घाट पर सब लोग
+  depth: core
+  image:
+    brief: 'The ghat steps full of morning life: a boy reading, a girl singing, a boatman resting beside his boat, a heron in the shallows; the small grey-blue spirit sweeping his arm over the scene while Dādī asks a question.'
+    alt:
+      en: A busy ghat with a reading boy, a singing girl, a boatman and a heron
+      hi: 'व्यस्त घाट: पढ़ता बालक, गाती बालिका, नाविक और बगुला'
+    cast:
+    - you
+    - dadi
+    - shuka
+    - ghataka
+    place: naditira
+    ratio: '4:3'
+    id: who-doer-s1
+  narration:
+    en: 'The small spirit sweeps his arm over the steps. A boy reads, a girl sings, the boatman rests, a heron stands in the shallows. “Who is doing what?” Dādī asks. “First, name the doers: the ones who do.”'
+    hi: 'नन्हा भूत सीढ़ियों पर हाथ फेरता है। एक बालक पढ़ता है, एक बालिका गाती है, नाविक विश्राम करता है, एक बगुला उथले पानी में खड़ा है। दादी पूछती हैं, “कौन क्या कर रहा है? पहले कर्ताओं के नाम बताओ: जो करते हैं।”'
+- id: t1
+  kind: teach
+  title:
+    en: 'The doer: the first case'
+    hi: 'कर्ता: प्रथमा विभक्ति'
+  depth: core
+  skills:
+  - sent.nom-sg
+  sutras:
+  - 2.3.46
+  - 1.4.54
+  body:
+    en: The one who does is the doer, {{कर्ता}}. In a sentence it stands in the first case, {{प्रथमा}}. The dictionary gives the stem {{बालक}}; the sentence needs {{बालकः}}.
+    hi: जो करता है वह कर्ता है। वाक्य में वह प्रथमा विभक्ति में खड़ा होता है। कोश मूल {{बालक}} देता है; वाक्य को चाहिए {{बालकः}}।
+  examples:
+  - sa: बालकः
+    meaning:
+      en: the boy (doer)
+      hi: बालक (कर्ता)
+    check:
+      type: subanta
+      stem: बालक
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: बालिका
+    meaning:
+      en: the girl (doer)
+      hi: बालिका (कर्ता)
+    check:
+      type: subanta
+      stem: बालिका
+      linga: Stri
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: नाविकः
+    meaning:
+      en: the boatman (doer)
+      hi: नाविक (कर्ता)
+    check:
+      type: subanta
+      stem: नाविक
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  term:
+    sa: प्रथमा
+    meaning:
+      en: 'the first case: the doer'
+      hi: 'पहली विभक्ति: कर्ता'
+- id: tb1
+  kind: table
+  title:
+    en: Doers
+    hi: कर्ता
+  depth: core
+  skills:
+  - sent.nom-sg
+  caption:
+    en: Stem and first case, one doer
+    hi: मूल और प्रथमा, एक कर्ता
+  columns:
+  - en: Stem
+    hi: मूल रूप
+  - en: Doer
+    hi: कर्ता
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: बालक
+    - sa: बालकः
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - text:
+        en: boy
+        hi: बालक
+  - - sa: बालिका
+    - sa: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - text:
+        en: girl
+        hi: बालिका
+  - - sa: नाविक
+    - sa: नाविकः
+      check:
+        type: subanta
+        stem: नाविक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - text:
+        en: boatman
+        hi: नाविक
+  - - sa: बक
+    - sa: बकः
+      check:
+        type: subanta
+        stem: बक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - text:
+        en: heron
+        hi: बगुला
+  - - sa: नदी
+    - sa: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - text:
+        en: river
+        hi: नदी
+  note:
+    en: Masculine words in -अ take {{ः}}; feminine words in -आ and -ई look the same as their stems.
+    hi: अकारान्त पुंलिंग शब्दों में {{ः}} लगता है; आकारान्त और ईकारान्त स्त्रीलिंग शब्द अपने मूल जैसे ही दिखते हैं।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sent.nom-sg
+  mode: choice
+  prompt:
+    en: Which word is the doer?
+    hi: कर्ता कौन-सा शब्द है?
+  explain:
+    en: '{{बालकः}}: first case, one boy, who does.'
+    hi: '{{बालकः}}: प्रथमा, एक बालक, जो करता है।'
+  roman: after
+  options:
+  - sa: बालकम्
+  - correct: true
+    sa: बालकः
+  - sa: बालकौ
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sent.nom-sg
+  mode: match
+  prompt:
+    en: Join each doer to its stem.
+    hi: हर कर्ता को उसके मूल रूप से जोड़िए।
+  explain:
+    en: The first case of a masculine -a word is the stem plus {{ः}}.
+    hi: अकारान्त पुंलिंग शब्द की प्रथमा मूल में {{ः}} जोड़ने से बनती है।
+  roman: after
+  pairs:
+  - left:
+      sa: नाविकः
+    right:
+      sa: नाविक
+  - left:
+      sa: बालिका
+    right:
+      sa: बालिका
+  - left:
+      sa: बकः
+    right:
+      sa: बक
+  - left:
+      sa: नदी
+    right:
+      sa: नदी
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sent.nom-sg
+  widget: mark_words
+  prompt:
+    en: Tap the doers (not the actions).
+    hi: कर्ताओं को छुइए (क्रियाओं को नहीं)।
+  params:
+    passage:
+    - बालकः
+    - पठति
+    - बालिका
+    - गायति
+    - नाविकः
+    - तिष्ठति
+    targets:
+    - बालकः
+    - बालिका
+    - नाविकः
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: The heron
+    hi: बगुला
+  depth: core
+  skills:
+  - sent.nom-sg
+  mode: choice
+  prompt:
+    en: The heron stands in the shallows. Which word means “the heron” as the doer?
+    hi: बगुला उथले पानी में खड़ा है। कर्ता के रूप में ‘बगुला’ कौन-सा शब्द है?
+  explain:
+    en: '{{बकः}}: the first case of {{बक}}.'
+    hi: '{{बकः}}: {{बक}} की प्रथमा।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “बकः!” The little spirit points, delighted. The heron lifts one leg and a faint ripple of light runs up the spirit's arm.
+      hi: “बकः!” नन्हा भूत ख़ुशी से इशारा करता है। बगुला एक पैर उठाता है और भूत की बाँह पर प्रकाश की एक हल्की लहर दौड़ जाती है।
+    failure:
+      en: The heron does not move. Look for the doer's ending {{ः}}.
+      hi: बगुला नहीं हिलता। कर्ता का प्रत्यय {{ः}} खोजिए।
+  options:
+  - correct: true
+    sa: बकः
+  - sa: बकम्
+  - sa: बक
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's doer
+    hi: पाणिनि का कर्ता
+  depth: panini
+  skills:
+  - sent.nom-sg
+  sutras:
+  - 1.4.54
+  - 2.3.46
+  body:
+    en: 'Sūtra 1.4.54, {{स्वतन्त्रः कर्ता}}, calls the doer “the independent one”: the one who is free to act. Sūtra 2.3.46 says the first case shows the bare meaning of the word.'
+    hi: 'सूत्र 1.4.54, {{स्वतन्त्रः कर्ता}}, कर्ता को ‘स्वतन्त्र’ कहता है: जो करने में स्वतन्त्र हो। सूत्र 2.3.46 कहता है कि प्रथमा शब्द का केवल अर्थ बताती है।'
+  term:
+    sa: कर्ता
+    meaning:
+      en: the independent doer
+      hi: स्वतन्त्र करने वाला
+- id: sum
+  kind: summary
+  title:
+    en: The doer
+    hi: कर्ता
+  depth: core
+  points:
+  - sa: प्रथमा
+    text:
+      en: The first case names the doer.
+      hi: प्रथमा कर्ता को बताती है।
+  - sa: बालकः · बालिका · नदी
+    text:
+      en: 'Masculine -अ: {{ः}}; feminine -आ, -ई: unchanged.'
+      hi: 'पुंलिंग -अ: {{ः}}; स्त्रीलिंग -आ, -ई: वैसे ही।'
+  - text:
+      en: The doer is the independent one.
+      hi: कर्ता स्वतन्त्र है।

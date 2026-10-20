@@ -1,0 +1,225 @@
+id: cons.revision
+template: revision
+title:
+  en: Everything about consonants
+  hi: व्यंजनों के बारे में सब कुछ
+title_sa: व्यञ्जनसङ्ग्रहः
+minutes: 5
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: script.cons.grid
+    formula: क च ट त प
+    rule:
+      en: 'Twenty-five consonants stand in five rows by place: throat, palate, roof, teeth, lips.'
+      hi: 'पच्चीस व्यंजन स्थान के अनुसार पाँच पंक्तियों में हैं: कण्ठ, तालु, मूर्धा, दन्त, ओष्ठ।'
+    tag: core
+    taught_in: cons.grid#t1
+  - skill: script.cons.voice
+    formula: क ख ग घ ङ
+    rule:
+      en: Each row runs plain, breathy, voiced, voiced and breathy, nasal.
+      hi: 'हर पंक्ति का क्रम: सादा, महाप्राण, घोष, घोष-महाप्राण, नासिक्य।'
+    tag: core
+    taught_in: cons.breath#t1
+  - skill: script.cons.voice
+    rule:
+      en: The 2nd and 4th letters carry a puff of air; the 3rd, 4th and 5th buzz in the throat.
+      hi: दूसरे और चौथे अक्षर में साँस का झोंका है; तीसरे, चौथे और पाँचवें में गले की गूँज है।
+    tag: core
+    taught_in: cons.breath#tb1
+  - skill: script.cons.semivowels
+    formula: इ→य · ऋ→र · ऌ→ल · उ→व
+    rule:
+      en: '{{य}} {{र}} {{ल}} {{व}} are half vowel, half consonant; each grows from a vowel.'
+      hi: '{{य}} {{र}} {{ल}} {{व}} आधे स्वर, आधे व्यंजन हैं; हर एक किसी स्वर से बनता है।'
+    sutras:
+    - SS.5
+    - SS.6
+    tag: core
+    taught_in: cons.semivowels#t1
+  - skill: script.cons.sibilants
+    formula: श ष स ह
+    rule:
+      en: '{{श}} (palate), {{ष}} (roof), {{स}} (teeth) hiss; {{ह}} is a breath from the throat.'
+      hi: '{{श}} (तालु), {{ष}} (मूर्धा), {{स}} (दन्त) फुफकारते हैं; {{ह}} गले की साँस है।'
+    sutras:
+    - SS.13
+    - SS.14
+    tag: core
+    taught_in: cons.sibilants#t1
+  - skill: script.cons.inherent-a
+    formula: क → क्
+    rule:
+      en: A bare consonant carries {{अ}}; the stroke {{्}} removes it.
+      hi: अकेला व्यंजन {{अ}} साथ रखता है; रेखा {{्}} उसे हटा देती है।
+    tag: core
+    taught_in: cons.virama#t1
+- id: conditions
+  kind: revision
+  title:
+    en: Where sounds may stand
+    hi: ध्वनियाँ कहाँ आती हैं
+  depth: core
+  section: conditions
+  rows:
+  - skill: script.cons.grid
+    rule:
+      en: The nasals {{ङ}} and {{ञ}} never begin a word, and {{ण}} almost never does; they stand inside words, after a vowel.
+      hi: नासिक्य {{ङ}} और {{ञ}} किसी शब्द के आरम्भ में नहीं आते, {{ण}} भी लगभग नहीं; ये शब्द के भीतर, स्वर के बाद आते हैं।
+    example:
+      sa: गङ्गा
+      meaning:
+        en: 'the river Gaṅgā: {{ङ}} inside the word'
+        hi: 'गंगा नदी: शब्द के भीतर {{ङ}}'
+    tag: good
+    new_here: true
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd letters
+    hi: कुछ अनोखे अक्षर
+  depth: core
+  section: exceptions
+  rows:
+  - skill: script.cons.grid
+    formula: ड → ळ
+    rule:
+      en: In the Vedas a retroflex {{ळ}} stands where classical Sanskrit has {{ड}} between vowels; classical Sanskrit does not use it.
+      hi: वेदों में दो स्वरों के बीच जहाँ लौकिक संस्कृत में {{ड}} होता है, वहाँ मूर्धन्य {{ळ}} आता है; लौकिक संस्कृत इसे नहीं बरतती।
+    example:
+      sa: ईळे
+      meaning:
+        en: '“I praise”: {{ळ}} in the first hymn of the Ṛgveda'
+        hi: '‘मैं स्तुति करता हूँ’: ऋग्वेद के पहले सूक्त में {{ळ}}'
+      source: Ṛgveda 1.1.1
+    tag: rare
+    new_here: true
+  - skill: script.cons.voice
+    rule:
+      en: Hindi's dotted {{ख़}} {{ग़}} {{ज़}} are not Sanskrit letters. Sanskrit {{ख}} is {{क}} with a puff, never a rasp.
+      hi: हिन्दी के बिन्दु वाले {{ख़}} {{ग़}} {{ज़}} संस्कृत के अक्षर नहीं हैं। संस्कृत का {{ख}} झोंके वाला {{क}} है, खुरदरी ध्वनि नहीं।
+    tag: good
+    taught_in: cons.breath#t2
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: script.cons.voice
+    rule:
+      en: 'Do not drop the puff: {{खरः}} (donkey) is not {{करः}} (hand), {{फलम्}} (fruit) is not {{पलम्}} (moment).'
+      hi: 'झोंका मत छोड़िए: {{खरः}} (गधा) {{करः}} (हाथ) नहीं है, {{फलम्}} (फल) {{पलम्}} (क्षण) नहीं है।'
+    tag: core
+    taught_in: cons.breath#t2
+  - skill: script.cons.sibilants
+    rule:
+      en: 'Do not say {{ष}} like {{श}}: curl the tongue back. {{विष्णुः}} is not {{विश्णुः}}.'
+      hi: '{{ष}} को {{श}} की तरह मत बोलिए: जीभ मोड़िए। {{विष्णुः}} {{विश्णुः}} नहीं है।'
+    tag: core
+    taught_in: cons.sibilants#t2
+  - skill: script.cons.semivowels
+    rule:
+      en: '{{व}} is not {{ब}}: the lower lip touches the upper teeth lightly, with no closure.'
+      hi: '{{व}} {{ब}} नहीं है: निचला होंठ ऊपरी दाँतों को हल्के से छूता है, बन्द नहीं होता।'
+    tag: core
+    taught_in: cons.semivowels#t1
+  - skill: script.cons.inherent-a
+    rule:
+      en: Say the final {{अ}} of words like {{राम}}; modern Hindi drops it, Sanskrit does not.
+      hi: '{{राम}} जैसे शब्दों का अन्त का {{अ}} बोलिए; आधुनिक हिन्दी उसे छोड़ती है, संस्कृत नहीं।'
+    tag: core
+    taught_in: cons.virama#t2
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: script.cons.grid
+    formula: कु चु टु तु पु
+    rule:
+      en: 'A letter with {{उ}} stands for its whole row: {{कु}} {{चु}} {{टु}} {{तु}} {{पु}}.'
+      hi: '{{उ}} लगा अक्षर अपनी पूरी पंक्ति का बोध कराता है: {{कु}} {{चु}} {{टु}} {{तु}} {{पु}}।'
+    sutras:
+    - 1.1.69
+    tag: core
+    taught_in: cons.grid#pn
+  - skill: script.cons.semivowels
+    formula: हयवरट् · लण् → यण्
+    rule:
+      en: '{{यण्}} is {{य}} {{व}} {{र}} {{ल}}, read from the Śiva sūtras 5 and 6.'
+      hi: '{{यण्}} यानी {{य}} {{व}} {{र}} {{ल}}, जो शिवसूत्र 5 और 6 से पढ़ा जाता है।'
+    sutras:
+    - SS.5
+    - SS.6
+    tag: core
+    taught_in: cons.semivowels#pn
+  - skill: script.cons.sibilants
+    formula: शषसर् · हल्
+    rule:
+      en: '{{शल्}} is {{श}} {{ष}} {{स}} {{ह}}; {{हल्}} is every consonant.'
+      hi: '{{शल्}} यानी {{श}} {{ष}} {{स}} {{ह}}; {{हल्}} यानी सभी व्यंजन।'
+    sutras:
+    - SS.13
+    - SS.14
+    tag: core
+    taught_in: cons.sibilants#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: script.cons.grid
+    formula: क ख ग घ ङ · च छ ज झ ञ · ट ठ ड ढ ण · त थ द ध न · प फ ब भ म
+    rule:
+      en: five rows by place
+      hi: स्थान के अनुसार पाँच पंक्तियाँ
+    tag: core
+    taught_in: cons.grid#tb1
+  - skill: script.cons.voice
+    formula: 1 · 2 · 3 · 4 · 5
+    rule:
+      en: plain, breathy, voiced, voiced and breathy, nasal
+      hi: सादा, महाप्राण, घोष, घोष-महाप्राण, नासिक्य
+    tag: core
+    taught_in: cons.breath#tb1
+  - skill: script.cons.semivowels
+    formula: य र ल व
+    rule:
+      en: semivowels
+      hi: अन्तःस्थ
+    tag: core
+    taught_in: cons.semivowels#t1
+  - skill: script.cons.sibilants
+    formula: श ष स ह
+    rule:
+      en: hisses and a breath
+      hi: ऊष्म और साँस
+    tag: core
+    taught_in: cons.sibilants#t1
+  - skill: script.cons.inherent-a
+    formula: क्
+    rule:
+      en: no vowel
+      hi: बिना स्वर
+    tag: core
+    taught_in: cons.virama#t1

@@ -1,0 +1,289 @@
+id: m2.arya
+template: scene
+title:
+  en: Counting time
+  hi: मात्राओं की गिनती
+title_sa: आर्या
+minutes: 6
+teaches:
+- chandas.arya
+needs:
+- chandas.vrtta
+- chandas.weight
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The scales
+    hi: तराज़ू
+  depth: core
+  image:
+    brief: A stone balance with two pans at the foot of a spiral stair; Dādī laying a palm-leaf verse on one pan and small stone grains on the other; Vṛttikā drifting past; Śuka reading the pans; Lubdhaka at a distance, taking notes.
+    alt:
+      en: A stone balance at the foot of a stair, a verse in one pan and grains in the other
+      hi: सीढ़ी के नीचे पत्थर की तराज़ू, एक पलड़े में श्लोक और दूसरे में दाने
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - vrttika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: m2-arya-s1
+  narration:
+    en: 'At the foot of the stair stands a stone balance. Dādī puts a verse on it. “Some metres do not count syllables; they count time. A light syllable weighs one grain, a heavy one two. This is Āryā.” She reads: दानं भोगो नाशस्… Vṛttikā, drifting past, watches the pans tip. “Twelve, eighteen, twelve, fifteen,” Dādī says. “Weigh it yourself.”'
+    hi: 'सीढ़ी के नीचे पत्थर की एक तराज़ू खड़ी है। दादी उस पर एक श्लोक रखती हैं। “कुछ छन्द अक्षर नहीं गिनते; वे समय गिनते हैं। लघु अक्षर का वज़न एक दाना, गुरु का दो। यह आर्या है।” वे पढ़ती हैं: दानं भोगो नाशस्… वृत्तिका, पास से तैरती हुई, पलड़ों को झुकते देखती है। “बारह, अठारह, बारह, पन्द्रह,” दादी कहती हैं। “आप स्वयं तौलिए।”'
+  quote:
+    sa: दानं भोगो नाशस् तिस्रो गतयो भवन्ति वित्तस्य यो न ददाति न भुङ्क्ते तस्य तृतीया गतिर् भवति
+    gloss:
+      en: Giving, enjoying and losing are the three courses of wealth; for one who neither gives nor enjoys, the third course is the one that comes.
+      hi: 'दान, भोग और नाश: धन की ये तीन गतियाँ हैं; जो न देता है न भोगता है, उसकी तीसरी गति होती है।'
+    source: Bhartṛhari, Nītiśataka (GRETIL numbering 1.43); the verse is in Āryā
+- id: t1
+  kind: teach
+  title:
+    en: Counting time
+    hi: समय की गिनती
+  depth: core
+  skills:
+  - chandas.arya
+  body:
+    en: 'Some metres count time, not syllables: a light syllable is one {{मात्रा}}, a heavy one two. These are called {{जाति}}. In the {{आर्या}} the four quarters have 12, 18, 12 and 15 mātrās. The last syllable of a quarter may be counted heavy to make the sum.'
+    hi: 'कुछ छन्द अक्षर नहीं, समय गिनते हैं: लघु अक्षर एक {{मात्रा}}, गुरु दो। इन्हें {{जाति}} कहते हैं। {{आर्या}} के चार चरणों में 12, 18, 12 और 15 मात्राएँ होती हैं। योग पूरा करने के लिए चरण का अन्तिम अक्षर गुरु गिना जा सकता है।'
+  term:
+    sa: मात्रा
+    meaning:
+      en: 'a beat of time: light 1, heavy 2'
+      hi: 'समय की इकाई: लघु 1, गुरु 2'
+- id: tb1
+  kind: table
+  title:
+    en: The verse weighed
+    hi: श्लोक का तौल
+  depth: core
+  skills:
+  - chandas.arya
+  caption:
+    en: Light 1, heavy 2
+    hi: लघु 1, गुरु 2
+  columns:
+  - en: Quarter
+    hi: चरण
+  - en: Text
+    hi: पाठ
+  - en: Mātrās
+    hi: मात्राएँ
+  rows:
+  - - text:
+        en: '1'
+        hi: १
+    - sa: दानं भोगो नाशस्
+    - text:
+        en: '12'
+        hi: १२
+  - - text:
+        en: '2'
+        hi: २
+    - sa: तिस्रो गतयो भवन्ति वित्तस्य
+    - text:
+        en: '18'
+        hi: १८
+  - - text:
+        en: '3'
+        hi: ३
+    - sa: यो न ददाति न भुङ्क्ते
+    - text:
+        en: '12'
+        hi: १२
+  - - text:
+        en: '4'
+        hi: ४
+    - sa: तस्य तृतीया गतिर्भवति
+    - text:
+        en: '15'
+        hi: १५
+  note:
+    en: 'Quarters two and four end light: counted heavy, they give 18 and 15.'
+    hi: 'चरण दो और चार लघु पर समाप्त होते हैं: गुरु गिनने पर 18 और 15।'
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - chandas.arya
+  widget: rhythm_tapper
+  prompt:
+    en: 'Tap the whole verse: one beat for light, hold for heavy.'
+    hi: 'पूरे श्लोक की ताल दीजिए: लघु पर एक थाप, गुरु पर दबाकर।'
+  params:
+    lines:
+    - 'दानं भोगो नाशस्
+
+      तिस्रो गतयो भवन्ति वित्तस्य
+
+      यो न ददाति न भुङ्क्ते
+
+      तस्य तृतीया गतिर्भवति'
+  roman: show
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - chandas.arya
+  mode: choice
+  prompt:
+    en: How many mātrās in {{राम}}?
+    hi: '{{राम}} में कितनी मात्राएँ हैं?'
+  explain:
+    en: '{{रा}} heavy 2, {{म}} light 1: 3.'
+    hi: '{{रा}} गुरु 2, {{म}} लघु 1: 3।'
+  roman: after
+  options:
+  - text:
+      en: '2'
+      hi: २
+  - correct: true
+    text:
+      en: '3'
+      hi: ३
+  - text:
+      en: '4'
+      hi: ४
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - chandas.arya
+  mode: choice
+  prompt:
+    en: How many mātrās in {{विद्या}}?
+    hi: '{{विद्या}} में कितनी मात्राएँ हैं?'
+  explain:
+    en: 'Both syllables are heavy: 2 + 2 = 4.'
+    hi: 'दोनों अक्षर गुरु हैं: 2 + 2 = 4।'
+  roman: after
+  options:
+  - text:
+      en: '3'
+      hi: ३
+  - correct: true
+    text:
+      en: '4'
+      hi: ४
+  - text:
+      en: '5'
+      hi: ५
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - chandas.arya
+  mode: match
+  prompt:
+    en: Join each Āryā quarter to its mātrās.
+    hi: आर्या के हर चरण को उसकी मात्राओं से जोड़िए।
+  explain:
+    en: 12, 18, 12, 15.
+    hi: 12, 18, 12, 15।
+  roman: after
+  pairs:
+  - left:
+      text:
+        en: quarters 1 and 3
+        hi: चरण १ और ३
+    right:
+      text:
+        en: '12'
+        hi: १२
+  - left:
+      text:
+        en: quarter 2
+        hi: चरण २
+    right:
+      text:
+        en: '18'
+        hi: १८
+  - left:
+      text:
+        en: quarter 4
+        hi: चरण ४
+    right:
+      text:
+        en: '15'
+        hi: १५
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - chandas.arya
+  mode: engine
+  prompt:
+    en: Mark each syllable of this quarter.
+    hi: इस चरण के हर अक्षर को चिह्नित कीजिए।
+  explain:
+    en: Heavy, light, light, heavy, light, light, heavy, heavy.
+    hi: गुरु, लघु, लघु, गुरु, लघु, लघु, गुरु, गुरु।
+  roman: after
+  exercise:
+    kind: scan_metre
+    params:
+      text: यो न ददाति न भुङ्क्ते
+    seed: 7
+- id: p5
+  kind: practice
+  title:
+    en: The scales
+    hi: तराज़ू
+  depth: core
+  skills:
+  - chandas.arya
+  mode: choice
+  prompt:
+    en: '{{यो न ददाति न भुङ्क्ते}} is heavy, light, light, heavy, light, light, heavy, heavy. How many mātrās?'
+    hi: '{{यो न ददाति न भुङ्क्ते}} है गुरु, लघु, लघु, गुरु, लघु, लघु, गुरु, गुरु। कितनी मात्राएँ?'
+  explain:
+    en: 2+1+1+2+1+1+2+2 = 12.
+    hi: 2+1+1+2+1+1+2+2 = 12।
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“Twelve,” you say, and the pan with the third quarter in it sinks, slowly, to rest on the grains: exactly level. Dādī nods. Vṛttikā, drifting past, reaches out and touches the beam of the scales with one smoky finger, and the beam rocks gently, in time, like a pendulum. “Time,” she says, “not syllables. That is why my song never ended: I was counting the wrong thing.”'
+      hi: '“बारह,” आप कहते हैं, और तीसरे चरण वाला पलड़ा धीरे-धीरे दानों पर ठहर जाता है: ठीक बराबर। दादी सिर हिलाती हैं। वृत्तिका, पास से तैरती हुई, तराज़ू की डंडी को अपनी धुएँ-सी उँगली से छूती है, और डंडी लोलक की तरह लय में हौले-हौले डोलती है। “समय,” वह कहती है, “अक्षर नहीं। इसीलिए मेरा गीत कभी पूरा नहीं हुआ: मैं गलत चीज़ गिन रही थी।”'
+    failure:
+      en: 'The pan stays up. Add the beats: 2+1+1+2+1+1+2+2.'
+      hi: 'पलड़ा ऊपर रहता है। ताल जोड़िए: 2+1+1+2+1+1+2+2।'
+  options:
+  - text:
+      en: '10'
+      hi: १०
+  - correct: true
+    text:
+      en: '12'
+      hi: १२
+  - text:
+      en: '15'
+      hi: १५
+- id: sum
+  kind: summary
+  title:
+    en: Counting time
+    hi: मात्राओं की गिनती
+  depth: core
+  points:
+  - sa: मात्रा
+    text:
+      en: Light 1, heavy 2.
+      hi: लघु 1, गुरु 2।
+  - sa: जाति
+    text:
+      en: A metre counted in time.
+      hi: समय से गिना जाने वाला छन्द।
+  - sa: आर्या
+    text:
+      en: Quarters of 12, 18, 12, 15.
+      hi: चरण 12, 18, 12, 15 के।

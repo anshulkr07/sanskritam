@@ -1,0 +1,156 @@
+id: future.check
+template: check
+title:
+  en: Say what will happen
+  hi: बताइए क्या होगा
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.lrt
+  mode: choice
+  prompt:
+    en: “He will go.” Which form?
+    hi: ‘वह जाएगा।’ कौन-सा रूप?
+  explain:
+    en: '{{गमिष्यति}}.'
+    hi: '{{गमिष्यति}}।'
+  roman: after
+  options:
+  - sa: अगच्छत्
+  - sa: गच्छति
+  - correct: true
+    sa: गमिष्यति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.lrt
+  mode: choice
+  prompt:
+    en: “He will read.” Which form?
+    hi: ‘वह पढ़ेगा।’ कौन-सा रूप?
+  explain:
+    en: '{{पठिष्यति}}.'
+    hi: '{{पठिष्यति}}।'
+  roman: after
+  options:
+  - sa: पठति
+  - correct: true
+    sa: पठिष्यति
+  - sa: अपठत्
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.lrt
+  mode: match
+  prompt:
+    en: Join present to future.
+    hi: वर्तमान को भविष्यत् से जोड़िए।
+  explain:
+    en: Mind the odd roots.
+    hi: विचित्र धातुओं का ध्यान रखिए।
+  roman: after
+  pairs:
+  - left:
+      sa: पश्यति
+    right:
+      sa: द्रक्ष्यति
+  - left:
+      sa: ददाति
+    right:
+      sa: दास्यति
+  - left:
+      sa: करोति
+    right:
+      sa: करिष्यति
+  - left:
+      sa: भवति
+    right:
+      sa: भविष्यति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.lrt
+  mode: choice
+  prompt:
+    en: “I will go.” Which form?
+    hi: ‘मैं जाऊँगा।’ कौन-सा रूप?
+  explain:
+    en: '{{गमिष्यामि}}.'
+    hi: '{{गमिष्यामि}}।'
+  roman: after
+  options:
+  - sa: गमिष्यति
+  - correct: true
+    sa: गमिष्यामि
+  - sa: गमिष्यामः
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - verb.lrt
+  mode: choice
+  prompt:
+    en: “We will read.” Which form?
+    hi: ‘हम पढ़ेंगे।’ कौन-सा रूप?
+  explain:
+    en: '{{पठिष्यामः}}.'
+    hi: '{{पठिष्यामः}}।'
+  roman: after
+  options:
+  - sa: पठिष्यामि
+  - correct: true
+    sa: पठिष्यामः
+  - sa: पठिष्यन्ति
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - verb.lrt
+  mode: order
+  prompt:
+    en: 'Promise: “I will not give.”'
+    hi: 'वचन दीजिए: ‘मैं नहीं दूँगा।’'
+  explain:
+    en: '{{अहं न दास्यामि}}.'
+    hi: '{{अहं न दास्यामि}}।'
+  roman: after
+  tokens:
+  - अहम्
+  - न
+  - दास्यामि
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - verb.lrt
+  mode: order
+  prompt:
+    en: 'Tell Bhāvika: “Tomorrow he will go.”'
+    hi: 'भाविक से कहिए: ‘कल वह जाएगा।’'
+  explain:
+    en: '{{श्वः सः गमिष्यति}}.'
+    hi: '{{श्वः सः गमिष्यति}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “श्वः सः गमिष्यति,” you say, and Bhāvika, who had been leaning for a thousand years, straightens up. “Tomorrow,” he says, as if tasting the word. “How good. I thought it would never come.” The light of dawn that was always about to break actually breaks, on his shoulders. “सः गच्छेत्,” he says, softer. “He should go.” The Vetāla's eyes snap open. “Careful,” he says. “That is not a promise. That is an opinion.”
+      hi: “श्वः सः गमिष्यति,” आप कहते हैं, और भाविक, जो हज़ार वर्षों से झुका था, सीधा हो जाता है। “कल,” वह कहता है, मानो शब्द चख रहा हो। “कितना अच्छा। मैंने सोचा था यह कभी नहीं आएगा।” भोर की जो रोशनी हमेशा फूटने को थी, वह सचमुच उसके कंधों पर फूट पड़ती है। “सः गच्छेत्,” वह धीमे से कहता है। “उसे जाना चाहिए।” वेताल की आँखें खुल जाती हैं। “सावधान,” वह कहता है। “यह वचन नहीं है। यह राय है।”
+    failure:
+      en: 'Bhāvika keeps leaning. His sentence: {{श्वः सः गमिष्यति}}.'
+      hi: 'भाविक झुका रहता है। उसका वाक्य: {{श्वः सः गमिष्यति}}।'
+  tokens:
+  - श्वः
+  - सः
+  - गमिष्यति

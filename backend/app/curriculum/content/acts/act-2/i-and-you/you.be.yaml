@@ -1,0 +1,379 @@
+id: you.be
+template: scene
+title:
+  en: I am, you are
+  hi: मैं हूँ, तुम हो
+title_sa: अस्मि असि अस्ति
+minutes: 6
+teaches:
+- verb.as
+needs:
+- verb.persons
+- sent.no-verb-to-be
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Who is aboard
+    hi: नाव पर कौन है
+  depth: core
+  image:
+    brief: 'The boat on the open river with five aboard: you, Dādī, Śuka, the boatman at the pole, the white-bearded old man, and the silvery spirit sitting on the gunwale, all turned toward one another as if introducing themselves; soft morning light on the water.'
+    alt:
+      en: Passengers introducing themselves aboard a river boat
+      hi: नदी की नाव में अपना परिचय देते सवार
+    cast:
+    - you
+    - dadi
+    - shuka
+    - navika
+    - pratibimbaka
+    place: nauka
+    ratio: '4:3'
+    id: you-be-s1
+  narration:
+    en: 'The boat settles into the current. One by one, everybody says who they are, using the little verb that means “am, are, is”. The old man: “I am a teacher.” The boatman: “I am a boatman.” You: your turn. The spirit''s voice breaks: “I… am?”'
+    hi: 'नाव धारा में स्थिर हो जाती है। एक-एक करके सब बताते हैं कि वे कौन हैं, ‘हूँ, हो, है’ वाली छोटी क्रिया के साथ। बुज़ुर्ग: “मैं शिक्षक हूँ।” नाविक: “मैं नाविक हूँ।” अब आपकी बारी। भूत की आवाज़ टूटती है: “मैं… हूँ?”'
+- id: t1
+  kind: teach
+  title:
+    en: Am, are, is
+    hi: हूँ, हो, है
+  depth: core
+  skills:
+  - verb.as
+  body:
+    en: 'The verb {{अस्}}, “to be”, has the three singular forms {{अस्मि}} (I am), {{असि}} (you are), {{अस्ति}} (he, she, it is). With {{अहम्}} and {{त्वम्}} it is used freely: {{अहं छात्रः अस्मि}}.'
+    hi: 'क्रिया {{अस्}}, ‘होना’, के तीन एकवचन रूप हैं: {{अस्मि}} (मैं हूँ), {{असि}} (तुम हो), {{अस्ति}} (वह है)। {{अहम्}} और {{त्वम्}} के साथ इसका खुलकर प्रयोग होता है: {{अहं छात्रः अस्मि}}।'
+  examples:
+  - sa: अहम् छात्रः अस्मि।
+    meaning:
+      en: I am a student.
+      hi: मैं छात्र हूँ।
+    words:
+    - sa: अहम्
+      gloss:
+        en: I
+        hi: मैं
+    - sa: छात्रः
+      gloss:
+        en: student
+        hi: छात्र
+      check:
+        type: subanta
+        stem: छात्र
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अस्मि
+      gloss:
+        en: am
+        hi: हूँ
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+  - sa: त्वम् छात्रः असि।
+    meaning:
+      en: You are a student.
+      hi: तुम छात्र हो।
+    words:
+    - sa: त्वम्
+      gloss:
+        en: you
+        hi: तुम
+    - sa: छात्रः
+      gloss:
+        en: student
+        hi: छात्र
+      check:
+        type: subanta
+        stem: छात्र
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: असि
+      gloss:
+        en: are
+        hi: हो
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+  - sa: सः छात्रः अस्ति।
+    meaning:
+      en: He is a student.
+      hi: वह छात्र है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: छात्रः
+      gloss:
+        en: student
+        hi: छात्र
+      check:
+        type: subanta
+        stem: छात्र
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: tb1
+  kind: table
+  title:
+    en: The nine forms of अस्
+    hi: अस् के नौ रूप
+  depth: core
+  skills:
+  - verb.as
+  caption:
+    en: To be, in the present
+    hi: होना, वर्तमान में
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एक
+  - en: Two
+    hi: दो
+  - en: Many
+    hi: अनेक
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: अस्ति
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: स्तः
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+    - sa: सन्ति
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: असि
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+    - sa: स्थः
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+    - sa: स्थ
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: अस्मि
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+    - sa: स्वः
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+    - sa: स्मः
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+  note:
+    en: Row 1 {{अस्ति स्तः सन्ति}}, row 2 {{असि स्थः स्थ}}, row 3 {{अस्मि स्वः स्मः}}.
+    hi: पंक्ति 1 {{अस्ति स्तः सन्ति}}, पंक्ति 2 {{असि स्थः स्थ}}, पंक्ति 3 {{अस्मि स्वः स्मः}}।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.as
+  mode: choice
+  prompt:
+    en: You say “I am”. Which form?
+    hi: आप ‘मैं हूँ’ कहते हैं। कौन-सा रूप?
+  explain:
+    en: '{{अस्मि}}: I am.'
+    hi: '{{अस्मि}}: मैं हूँ।'
+  roman: after
+  options:
+  - sa: असि
+  - sa: अस्ति
+  - correct: true
+    sa: अस्मि
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.as
+  mode: match
+  prompt:
+    en: Join each form to its meaning.
+    hi: हर रूप को उसके अर्थ से जोड़िए।
+  explain:
+    en: The forms follow the grid.
+    hi: रूप तालिका के अनुसार हैं।
+  roman: after
+  pairs:
+  - left:
+      sa: अस्मि
+    right:
+      text:
+        en: I am
+        hi: मैं हूँ
+  - left:
+      sa: असि
+    right:
+      text:
+        en: you are
+        hi: तुम हो
+  - left:
+      sa: अस्ति
+    right:
+      text:
+        en: he is
+        hi: वह है
+  - left:
+      sa: स्मः
+    right:
+      text:
+        en: we are
+        hi: हम हैं
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.as
+  widget: mark_words
+  prompt:
+    en: Tap every form of “to be”.
+    hi: ‘होना’ के हर रूप को छुइए।
+  params:
+    passage:
+    - अस्मि
+    - पठति
+    - असि
+    - अस्ति
+    - गच्छावः
+    - सन्ति
+    targets:
+    - अस्मि
+    - असि
+    - अस्ति
+    - सन्ति
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: Say who you are
+    hi: बताइए कि आप कौन हैं
+  depth: core
+  skills:
+  - verb.as
+  mode: order
+  prompt:
+    en: 'Say who you are: “I am a student.”'
+    hi: 'बताइए कि आप कौन हैं: ‘मैं छात्र हूँ।’'
+  explain:
+    en: '{{अहं छात्रः अस्मि}}: I am a student.'
+    hi: '{{अहं छात्रः अस्मि}}: मैं छात्र हूँ।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“अहं छात्रः अस्मि,” you say. The spirit listens, wide-eyed, and then, very softly: “अहम्… अस्मि.” His edges stop shimmering. He is one thing, himself.'
+      hi: '“अहं छात्रः अस्मि,” आप कहते हैं। भूत विस्मय से सुनता है, और फिर बहुत धीरे से: “अहम्… अस्मि।” उसके किनारों की झिलमिल थम जाती है। वह एक वस्तु है, स्वयं।'
+    failure:
+      en: The spirit is still unsure. Start with {{अहम्}}, end with {{अस्मि}}.
+      hi: भूत अब भी असमंजस में है। {{अहम्}} से शुरू कीजिए, {{अस्मि}} पर ख़त्म।
+  tokens:
+  - अहम्
+  - छात्रः
+  - अस्मि
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.as
+  mode: choice
+  prompt:
+    en: Which sentence is correct for “you are a friend”?
+    hi: ‘तुम मित्र हो’ के लिए कौन-सा वाक्य सही है?
+  explain:
+    en: 'With {{त्वम्}}: {{असि}}.'
+    hi: '{{त्वम्}} के साथ: {{असि}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: त्वं मित्रम् असि
+  - sa: त्वं मित्रम् अस्मि
+  - sa: त्वं मित्रम् अस्ति
+- id: sum
+  kind: summary
+  title:
+    en: To be
+    hi: होना
+  depth: core
+  points:
+  - sa: अस्मि · असि · अस्ति
+    text:
+      en: I am, you are, he is.
+      hi: मैं हूँ, तुम हो, वह है।
+  - sa: स्वः · स्थः · स्तः
+    text:
+      en: The dual.
+      hi: द्विवचन।
+  - sa: स्मः · स्थ · सन्ति
+    text:
+      en: The plural.
+      hi: बहुवचन।

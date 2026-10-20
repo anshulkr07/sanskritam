@@ -88,6 +88,7 @@ export default function ParvaStrip({ calendarPlace }: { calendarPlace?: KalaPlac
       const data = await getParvaCalendar(
         { lat: place.lat, lon: place.lon, tradition: prefs.tradition, lang },
         { start: today, days: PARVA_DAYS_AHEAD, tz: place.tz, label: place.label },
+        cached => { if (id === request.current) { setCal(cached); setLoadedOnce(true); } },
       );
       if (id !== request.current) return;
       setCal(data);
@@ -146,6 +147,7 @@ export default function ParvaStrip({ calendarPlace }: { calendarPlace?: KalaPlac
     const active = activeDayFor(o, todayStr);
     nav.navigate("ParvaPage", {
       slug: o.slug,
+      occurrence: o,
       variant: o.variant,
       date: o.date ?? undefined,
       dayDate: active?.date ?? o.date ?? undefined,

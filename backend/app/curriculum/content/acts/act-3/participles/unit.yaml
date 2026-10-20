@@ -1,0 +1,58 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: participles
+title:
+  en: Words made from verbs
+  hi: कृदन्त
+title_sa: कृदन्ताः
+status: ready
+episode:
+  summary:
+    en: 'Having gone, while going, gone, to go: the Vetāla packs whole clauses into single words.'
+    hi: 'जाकर, जाते हुए, गया हुआ, जाने के लिए: वेताल पूरे वाक्यांश एक शब्द में भर देता है।'
+  beats:
+  - गत्वा, आगत्य.
+  - गन्तुम्; गतः, गतवान्.
+  - गच्छन्, कर्तव्यम्.
+skills:
+- id: krt.ktva
+  title:
+    en: 'Having done: -त्वा, -य'
+    hi: 'करके: -त्वा, -य'
+  sutras:
+  - 3.4.21
+  - 7.1.37
+- id: krt.tumun
+  title:
+    en: 'In order to: -तुम्'
+    hi: 'के लिए: -तुम्'
+  sutras:
+  - 3.3.10
+- id: krt.kta
+  title:
+    en: 'Done, has done: -त, -तवत्'
+    hi: 'किया हुआ: -त, -तवत्'
+  sutras:
+  - 1.1.26
+- id: krt.shatr
+  title:
+    en: 'While doing: -अत्, -मान'
+    hi: 'करते हुए: -अत्, -मान'
+  sutras:
+  - 3.2.124
+- id: krt.krtya
+  title:
+    en: 'Must be done: -तव्य, -अनीय, -य'
+    hi: 'करने योग्य: -तव्य, -अनीय, -य'
+  sutras:
+  - 3.1.96
+lessons:
+- part.ktva
+- part.tumun
+- part.kta
+- part.shatr
+- part.krtya
+planned: []
+ghost: sankshepaka
+revision: part.revision
+check: part.check

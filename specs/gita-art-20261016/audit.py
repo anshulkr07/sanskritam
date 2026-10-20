@@ -2,11 +2,12 @@
 import argparse,hashlib,json
 from pathlib import Path
 from PIL import Image
+from job_policy import generation_jobs
 
 ROOT=Path(__file__).resolve().parents[2];OUT=Path(__file__).resolve().parent
 def main():
  p=argparse.ArgumentParser();p.add_argument('--complete',action='store_true');args=p.parse_args()
- jobs=json.loads((OUT/'generation-jobs.json').read_text(encoding='utf-8'))
+ jobs=generation_jobs()
  verses={v['source_ref']:v for v in json.loads((OUT/'verses.json').read_text(encoding='utf-8'))}
  assert len(jobs)==len(verses)==700
  assert len({j['key'] for j in jobs})==700
@@ -35,8 +36,8 @@ def main():
      refpath=ROOT/reference['path']
      if refpath.exists():assert hashlib.sha256(refpath.read_bytes()).hexdigest()==reference['sha256']
      else:
-      history=json.loads((OUT/'history'/f"{job['key']}-v1.json").read_text(encoding='utf-8'))
-      assert history.get('master_retained') is False and history['sha256']==reference['sha256']
+      history=[json.loads(p.read_text(encoding='utf-8')) for p in (OUT/'history').glob(f"{job['key']}-v*.json")]
+      assert any(h.get('master_retained') is False and h['master']==reference['path'] and h['sha256']==reference['sha256'] for h in history),'Missing historical edit-input provenance'
   assert delivery['key']==job['key'] and delivery['source_ref']==job['source_ref']
   assert delivery['verse_uid']==job['verse_uid'] and delivery['master']==selected['master']
   retained=delivery.get('master_retained',True)
@@ -48,7 +49,8 @@ def main():
   else:assert delivery['prompt']==selected['prompt'] and delivery['prompt_sha256']==selected['prompt_sha256']
   if retained:
    with Image.open(master) as im:
-    assert im.width==im.height and im.width>=1024
+    if delivery.get('composition_policy')=='phone-portrait-9x16-20261019':assert im.width>=768 and .53<=im.width/im.height<=.59
+    else:assert im.width==im.height and im.width>=1024
     assert [im.width,im.height]==[delivery['width'],delivery['height']];im.verify()
   else:
    assert not master.exists() and delivery.get('published') and delivery.get('master_removed_at')
@@ -65,7 +67,9 @@ def main():
     assert variant['bytes']==path.stat().st_size
     assert variant['uri'].endswith(hashlib.sha256(path.read_bytes()).hexdigest()[:24]+'.webp')
     with Image.open(path) as im:
-     assert im.width==im.height==min(edge,delivery['width'])
+     bounds=(768,1536) if name=='phone' and delivery['height']>delivery['width'] else (edge,edge)
+     expected=Image.new('RGB',(delivery['width'],delivery['height']));expected.thumbnail(bounds)
+     assert im.size==expected.size
      assert [im.width,im.height]==[variant['width'],variant['height']];im.verify()
     if name=='phone':phonebytes+=variant['bytes']
     else:tabletbytes+=variant['bytes']

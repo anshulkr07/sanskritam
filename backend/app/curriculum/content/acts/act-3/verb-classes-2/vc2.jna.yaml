@@ -1,0 +1,424 @@
+id: vc2.jna
+template: scene
+title:
+  en: 'Classes 7 and 9: रुणद्धि, जानाति'
+  hi: 'गण 7 और 9: रुणद्धि, जानाति'
+title_sa: रुणद्धि जानाति गृह्णाति
+minutes: 6
+teaches:
+- verb.class-7-9
+needs:
+- verb.class-5-8
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The knowing drawer
+    hi: जानने वाला दराज़
+  depth: core
+  image:
+    brief: 'Two small hands reaching out of two opened drawers: one cutting a thread with tiny scissors, the other holding a little scale; the Vetāla leaning back with a pleased look; Dādī reciting; Dhātuka ticking his ledger.'
+    alt:
+      en: Two tiny hands from open drawers, one cutting a thread, one weighing on a small scale
+      hi: 'खुले दराज़ों से दो नन्हे हाथ: एक धागा काटता, एक तराज़ू पर तौलता'
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - dhatuka
+    - astika
+    place: smashana
+    ratio: '4:3'
+    id: vc2-jna-s1
+  narration:
+    en: 'The last two drawers open together. From one a small hand reaches out and carefully cuts a thread with scissors: “छिनत्ति.” From the other a small figure knocks, takes and weighs: “जानाति, गृह्णाति.” The Vetāla leans back. “He cuts, he knows, he takes. There is a verse that gathers six of these verbs; Dādī can say it.” She does.'
+    hi: 'अन्तिम दो दराज़ साथ खुलते हैं। एक से नन्हा हाथ बाहर निकलकर सावधानी से कैंची से धागा काटता है: “छिनत्ति।” दूसरे से एक नन्ही आकृति दस्तक देती है, लेती है और तौलती है: “जानाति, गृह्णाति।” वेताल पीछे झुकता है। “वह काटता है, जानता है, लेता है। एक श्लोक है जो इनमें से छह क्रियाओं को एक साथ लाता है; दादी उसे सुना सकती हैं।” वे सुनाती हैं।'
+  quote:
+    sa: ददाति प्रतिगृह्णाति गुह्यम् आख्याति पृच्छति भुङ्क्ते भोजयते चैव षड्विधं प्रीतिलक्षणम्
+    gloss:
+      en: 'He gives, he takes, he tells a secret, he asks, he eats, he feeds: these are the six marks of affection.'
+      hi: 'वह देता है, लेता है, गुप्त बात बताता है, पूछता है, खाता है, खिलाता है: ये प्रीति के छह लक्षण हैं।'
+    source: Pañcatantra 2.50 and 4.13 (read at GRETIL)
+- id: t1
+  kind: teach
+  title:
+    en: The nasal and the -ना-
+    hi: नासिक्य और -ना-
+  depth: core
+  skills:
+  - verb.class-7-9
+  body:
+    en: 'Class 7, {{रुधादि}}, puts a nasal inside the root before its last letter: {{रुध्}} gives {{रुणद्धि}} (blocks), {{भिद्}} gives {{भिनत्ति}} (splits), {{छिद्}} gives {{छिनत्ति}} (cuts), {{युज्}} gives {{युनक्ति}} (joins). Class 9, {{क्र्यादि}}, adds {{-ना-}}: {{ज्ञा}} gives {{जानाति}}, {{ग्रह्}} gives {{गृह्णाति}}, {{क्री}} gives {{क्रीणाति}}.'
+    hi: 'गण 7, {{रुधादि}}, धातु के अन्तिम अक्षर से पहले भीतर एक नासिक्य रखता है: {{रुध्}} से {{रुणद्धि}} (रोकता है), {{भिद्}} से {{भिनत्ति}} (तोड़ता है), {{छिद्}} से {{छिनत्ति}} (काटता है), {{युज्}} से {{युनक्ति}} (जोड़ता है)। गण 9, {{क्र्यादि}}, {{-ना-}} जोड़ता है: {{ज्ञा}} से {{जानाति}}, {{ग्रह्}} से {{गृह्णाति}}, {{क्री}} से {{क्रीणाति}}।'
+- id: tb1
+  kind: table
+  title:
+    en: Class 7 and 9 roots
+    hi: गण 7 और 9 की धातुएँ
+  depth: core
+  skills:
+  - verb.class-7-9
+  caption:
+    en: Root, meaning and “he …”
+    hi: धातु, अर्थ और ‘वह …’
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Meaning
+    hi: अर्थ
+  - en: He
+    hi: वह
+  rows:
+  - - sa: रुध्
+    - text:
+        en: block
+        hi: रोकना
+    - sa: रुणद्धि
+      check:
+        type: tinanta
+        dhatu: रुध्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Rudhadi
+  - - sa: भिद्
+    - text:
+        en: split
+        hi: तोड़ना
+    - sa: भिनत्ति
+      check:
+        type: tinanta
+        dhatu: भिद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Rudhadi
+  - - sa: छिद्
+    - text:
+        en: cut
+        hi: काटना
+    - sa: छिनत्ति
+      check:
+        type: tinanta
+        dhatu: छिद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Rudhadi
+  - - sa: युज्
+    - text:
+        en: join
+        hi: जोड़ना
+    - sa: युनक्ति
+      check:
+        type: tinanta
+        dhatu: युज्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Rudhadi
+  - - sa: ज्ञा
+    - text:
+        en: know
+        hi: जानना
+    - sa: जानाति
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Kryadi
+  - - sa: ग्रह्
+    - text:
+        en: take
+        hi: लेना
+    - sa: गृह्णाति
+      check:
+        type: tinanta
+        dhatu: ग्रह्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Kryadi
+  - - sa: क्री
+    - text:
+        en: buy
+        hi: ख़रीदना
+    - sa: क्रीणाति
+      check:
+        type: tinanta
+        dhatu: क्री
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Kryadi
+  note:
+    en: Class 7 hides its {{न}} inside; class 9 shows {{-ना-}} at the end.
+    hi: गण 7 अपना {{न}} भीतर छिपाता है; गण 9 {{-ना-}} अन्त में दिखाता है।
+- id: tb2
+  kind: table
+  title:
+    en: 'ज्ञा: all persons'
+    hi: 'ज्ञा: सभी पुरुष'
+  depth: core
+  skills:
+  - verb.class-7-9
+  caption:
+    en: “He knows, you know, I know”
+    hi: ‘वह जानता है, तुम जानते हो, मैं जानता हूँ’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: जानाति
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Kryadi
+      highlight: true
+    - sa: जानीतः
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+        gana: Kryadi
+    - sa: जानन्ति
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+        gana: Kryadi
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: जानासि
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+        gana: Kryadi
+    - sa: जानीथः
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+        gana: Kryadi
+    - sa: जानीथ
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+        gana: Kryadi
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: जानामि
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+        gana: Kryadi
+    - sa: जानीवः
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+        gana: Kryadi
+    - sa: जानीमः
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+        gana: Kryadi
+  note:
+    en: '{{-ना-}} in the singular, {{-नी-}} in the dual, {{-न्-}} in the plural.'
+    hi: एकवचन में {{-ना-}}, द्विवचन में {{-नी-}}, बहुवचन में {{-न्-}}।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-7-9
+  mode: choice
+  prompt:
+    en: “He knows.” Which form?
+    hi: ‘वह जानता है।’ कौन-सा रूप?
+  explain:
+    en: '{{जानाति}}: {{ज्ञा}} + {{-ना-}}.'
+    hi: '{{जानाति}}: {{ज्ञा}} + {{-ना-}}।'
+  roman: after
+  options:
+  - sa: ज्ञाति
+  - sa: जनति
+  - correct: true
+    sa: जानाति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-7-9
+  mode: type
+  prompt:
+    en: 'Say: “He takes.”'
+    hi: 'कहिए: ‘वह लेता है।’'
+  explain:
+    en: '{{गृह्णाति}}.'
+    hi: '{{गृह्णाति}}।'
+  roman: after
+  answers:
+  - गृह्णाति
+  tiles:
+  - गृ
+  - ह्णाति
+  - ग्रह
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-7-9
+  mode: match
+  prompt:
+    en: Join each root to its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+  explain:
+    en: A nasal inside, or {{-ना-}} at the end.
+    hi: भीतर नासिक्य, या अन्त में {{-ना-}}।
+  roman: after
+  pairs:
+  - left:
+      sa: रुध्
+    right:
+      sa: रुणद्धि
+  - left:
+      sa: भिद्
+    right:
+      sa: भिनत्ति
+  - left:
+      sa: ज्ञा
+    right:
+      sa: जानाति
+  - left:
+      sa: क्री
+    right:
+      sa: क्रीणाति
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.class-7-9
+  widget: mark_words
+  prompt:
+    en: Tap every verb of class 9 (with {{-ना-}}).
+    hi: गण 9 की हर क्रिया (जिनमें {{-ना-}} है) छुइए।
+  params:
+    passage:
+    - जानाति
+    - भवति
+    - गृह्णाति
+    - पठति
+    - क्रीणाति
+    - रुणद्धि
+    targets:
+    - जानाति
+    - गृह्णाति
+    - क्रीणाति
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: Drawers seven and nine
+    hi: दराज़ सात और नौ
+  depth: core
+  skills:
+  - verb.class-7-9
+  mode: choice
+  prompt:
+    en: “He cuts.” Which form of {{छिद्}}?
+    hi: ‘वह काटता है।’ {{छिद्}} का कौन-सा रूप?
+  explain:
+    en: '{{छिनत्ति}}: the nasal inside.'
+    hi: '{{छिनत्ति}}: भीतर नासिक्य।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“छिनत्ति,” you say, and the small hand snips its thread, cleanly, and lets the ends float away on the air, like a ribbon being let go. The other figure, having knocked, taken and weighed, writes on the stone, in a tiny hand: जानाति. “That is how to know,” it says. “One must be willing to cut.” All ten drawers are shut; the ledger is complete.'
+      hi: '“छिनत्ति,” आप कहते हैं, और नन्हा हाथ अपना धागा साफ़ काट देता है और सिरों को हवा में तैरने देता है, जैसे कोई फीता छोड़ा गया हो। दूसरी आकृति, दस्तक देकर, लेकर और तौलकर, पत्थर पर नन्हे अक्षरों में लिखती है: जानाति। “जानने का यही तरीक़ा है,” वह कहती है। “काटने को तैयार रहना पड़ता है।” सभी दस दराज़ बन्द हैं; बही पूरी है।'
+    failure:
+      en: 'The thread stays whole. The nasal inside: {{छिनत्ति}}.'
+      hi: 'धागा साबुत रहता है। भीतर नासिक्य: {{छिनत्ति}}।'
+  options:
+  - sa: छिदति
+  - sa: छिन्नति
+  - correct: true
+    sa: छिनत्ति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's two signs
+    hi: पाणिनि के दो चिह्न
+  depth: panini
+  skills:
+  - verb.class-7-9
+  sutras:
+  - 3.1.78
+  - 3.1.81
+  - 6.4.112
+  body:
+    en: 'Sūtra 3.1.78, {{रुधादिभ्यः श्नम्}}, puts the infix {{श्नम्}} inside the root of class 7: {{रुध् + न + ध्}}. 3.1.81, {{क्र्यादिभ्यः श्ना}}, adds {{श्ना}} to class 9, which gives {{-ना-}}; and 6.4.112, {{श्नाऽभ्यस्तयोरातः}}, drops its {{आ}} before a weak ending: {{जानीतः}}.'
+    hi: 'सूत्र 3.1.78, {{रुधादिभ्यः श्नम्}}, गण 7 की धातु के भीतर {{श्नम्}} रखता है: {{रुध् + न + ध्}}। 3.1.81, {{क्र्यादिभ्यः श्ना}}, गण 9 में {{श्ना}} जोड़ता है, जिससे {{-ना-}} बनता है; और 6.4.112, {{श्नाऽभ्यस्तयोरातः}}, निर्बल प्रत्यय से पहले उसका {{आ}} हटा देता है: {{जानीतः}}।'
+- id: sum
+  kind: summary
+  title:
+    en: Classes 7 and 9
+    hi: गण 7 और 9
+  depth: core
+  points:
+  - sa: रुणद्धि · भिनत्ति · छिनत्ति
+    text:
+      en: He blocks; he splits; he cuts.
+      hi: वह रोकता है; वह तोड़ता है; वह काटता है।
+  - sa: जानाति · गृह्णाति · क्रीणाति
+    text:
+      en: He knows; he takes; he buys.
+      hi: वह जानता है; वह लेता है; वह ख़रीदता है।
+  - text:
+      en: A nasal inside, or {{-ना-}} at the end.
+      hi: भीतर नासिक्य, या अन्त में {{-ना-}}।

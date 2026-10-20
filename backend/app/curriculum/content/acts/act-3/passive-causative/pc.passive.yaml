@@ -1,0 +1,583 @@
+id: pc.passive
+template: scene
+title:
+  en: Is read by
+  hi: पढ़ा जाता है
+title_sa: पठ्यते
+minutes: 6
+teaches:
+- verb.passive
+needs:
+- verb.atmane
+- case.inst
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The eleventh night
+    hi: ग्यारहवीं रात
+  depth: core
+  image:
+    brief: 'A small round spirit of warm rose-coloured mist with a dozen tiny hands, like a starfish, bustling in: one hand pushing a book towards you, one a spoon, one setting a foot on a path; the Vetāla seated on a root beginning a tale with a raised finger; Dādī and Śuka watching.'
+    alt:
+      en: A rose-coloured spirit with a dozen tiny hands pushes a book, a spoon and a path towards a child
+      hi: गुलाबी भूत दर्जन भर हाथों से बच्चे की ओर पुस्तक, चम्मच और राह धकेलता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - preraka
+    place: smashana
+    ratio: '4:3'
+    id: pc-passive-s1
+  narration:
+    en: 'Tonight the Vetāla tells a tale in which things happen to people. “राजन्, श्रूयताम्,” he begins. “Let it be heard.” A small rose-mist spirit with a dozen tiny hands pushes a book towards you, a spoon to your lips, a foot on a path. “It is done,” Dādī says. “Not ‘he does’: ‘it is done by him’. That is the passive.”'
+    hi: 'आज वेताल एक कथा सुनाता है जिसमें लोगों पर बातें घटती हैं। “राजन्, श्रूयताम्,” वह राजा से कहे जाने वाले स्वर में शुरू करता है। “सुनी जाए।” गुलाबी धुंध का एक नन्हा भूत, दर्जन भर नन्हे हाथों वाला, प्रकट होकर आपकी ओर एक पुस्तक धकेलता है, होंठों की ओर एक चम्मच, राह पर एक पैर। “किया जाता है,” दादी कहती हैं। “‘वह करता है’ नहीं: ‘उसके द्वारा किया जाता है’। यही कर्मवाच्य है।”'
+  lines:
+  - speaker: dadi
+    sa: पठ्यते। क्रियते।
+    gloss:
+      en: It is read. It is done.
+      hi: वह पढ़ा जाता है। वह किया जाता है।
+  quote:
+    sa: राजन् श्रूयताम् तावत् कथाम् एकां कथयामि
+    gloss:
+      en: 'O king, let it be heard: I tell one tale.'
+      hi: 'हे राजन्, सुनिए: मैं एक कथा कहता हूँ।'
+    source: Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit)
+- id: t1
+  kind: teach
+  title:
+    en: By and is
+    hi: ‘द्वारा’ और ‘जाता है’
+  depth: core
+  skills:
+  - verb.passive
+  body:
+    en: 'Active: {{रामः पुस्तकं पठति}}, Rāma reads the book. Passive: {{रामेण पुस्तकं पठ्यते}}, the book is read by Rāma. The doer goes into the third case, the object becomes the subject, and the verb takes {{-य-}} and the endings for oneself: {{पठ्}} gives {{पठ्यते}}.'
+    hi: 'कर्तृवाच्य: {{रामः पुस्तकं पठति}}, राम पुस्तक पढ़ता है। कर्मवाच्य: {{रामेण पुस्तकं पठ्यते}}, पुस्तक राम द्वारा पढ़ी जाती है। कर्ता तृतीया में जाता है, कर्म उद्देश्य बन जाता है, और क्रिया {{-य-}} तथा अपने लिए वाले प्रत्यय लेती है: {{पठ्}} से {{पठ्यते}}।'
+  examples:
+  - sa: रामेण पुस्तकम् पठ्यते।
+    meaning:
+      en: The book is read by Rāma.
+      hi: पुस्तक राम द्वारा पढ़ी जाती है।
+    words:
+    - sa: रामेण
+      gloss:
+        en: by Rāma
+        hi: राम द्वारा
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: पुस्तकम्
+      gloss:
+        en: the book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठ्यते
+      gloss:
+        en: is read
+        hi: पढ़ी जाती है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+  - sa: बालकेन फलम् खाद्यते।
+    meaning:
+      en: The fruit is eaten by the boy.
+      hi: फल बालक द्वारा खाया जाता है।
+    words:
+    - sa: बालकेन
+      gloss:
+        en: by the boy
+        hi: बालक द्वारा
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: फलम्
+      gloss:
+        en: the fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: खाद्यते
+      gloss:
+        en: is eaten
+        hi: खाया जाता है
+      check:
+        type: tinanta
+        dhatu: खाद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+  term:
+    sa: कर्मवाच्यम्
+    meaning:
+      en: the passive voice
+      hi: कर्मवाच्य
+- id: tb1
+  kind: table
+  title:
+    en: 'पठ्: the passive'
+    hi: 'पठ्: कर्मवाच्य'
+  depth: core
+  skills:
+  - verb.passive
+  caption:
+    en: “It is read, you are read, I am read”
+    hi: ‘वह पढ़ा जाता है, तुम पढ़े जाते हो, मैं पढ़ा जाता हूँ’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: पठ्यते
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+      highlight: true
+    - sa: पठ्येते
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+        prayoga: Karmani
+    - sa: पठ्यन्ते
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+        prayoga: Karmani
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: पठ्यसे
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+        prayoga: Karmani
+    - sa: पठ्येथे
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+        prayoga: Karmani
+    - sa: पठ्यध्वे
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+        prayoga: Karmani
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: पठ्ये
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+        prayoga: Karmani
+    - sa: पठ्यावहे
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+        prayoga: Karmani
+    - sa: पठ्यामहे
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+        prayoga: Karmani
+  note:
+    en: Most often you will meet the third person.
+    hi: अधिकतर आपको प्रथम पुरुष मिलेगा।
+- id: tb2
+  kind: table
+  title:
+    en: Active and passive
+    hi: कर्तरि और कर्मणि
+  depth: core
+  skills:
+  - verb.passive
+  caption:
+    en: “He …” and “it is … by him”
+    hi: ‘वह …’ और ‘उसके द्वारा … किया जाता है’
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Active
+    hi: कर्तरि
+  - en: Passive
+    hi: कर्मणि
+  rows:
+  - - sa: गम्
+    - sa: गच्छति
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: गम्यते
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+      highlight: true
+  - - sa: कृ
+    - sa: करोति
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: क्रियते
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+      highlight: true
+  - - sa: दा
+    - sa: ददाति
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: दीयते
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+      highlight: true
+  - - sa: श्रु
+    - sa: शृणोति
+      check:
+        type: tinanta
+        dhatu: श्रु
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: श्रूयते
+      check:
+        type: tinanta
+        dhatu: श्रु
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+      highlight: true
+  - - sa: दृश्
+    - sa: पश्यति
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: दृश्यते
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+      highlight: true
+  - - sa: वद्
+    - sa: वदति
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: उद्यते
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+      highlight: true
+  note:
+    en: 'Some roots change: {{कृ}} → {{क्रियते}}, {{दा}} → {{दीयते}}, {{श्रु}} → {{श्रूयते}}, {{वद्}} → {{उद्यते}}.'
+    hi: 'कुछ धातुएँ बदलती हैं: {{कृ}} → {{क्रियते}}, {{दा}} → {{दीयते}}, {{श्रु}} → {{श्रूयते}}, {{वद्}} → {{उद्यते}}।'
+- id: r1
+  kind: reading
+  title:
+    en: A line that uses it
+    hi: इसका प्रयोग करने वाली पंक्ति
+  depth: core
+  skills:
+  - verb.passive
+  image:
+    brief: A quiet image of a small clay lamp whose flame stays steady while a cracked clay body beside it falls apart; ink-and-watercolour in the style of old Indian manuscripts, soft ivory paper.
+    alt:
+      en: A steady lamp flame beside a cracked clay figure
+      hi: दरार वाली मिट्टी की आकृति के पास स्थिर दीपक की लौ
+    cast:
+    - vetala
+    place: smashana
+    ratio: '4:3'
+    id: pc-passive-r1
+  passage:
+  - sa: न हन्यते हन्यमाने शरीरे
+    meaning:
+      en: “(The self) is not killed when the body is killed.” (Bhagavadgītā 2.20, read at GRETIL)
+      hi: “शरीर के मारे जाने पर (आत्मा) नहीं मारा जाता।” (भगवद्गीता 2.20, GRETIL में पढ़ा)
+    words:
+    - sa: न
+      gloss:
+        en: not
+        hi: नहीं
+    - sa: हन्यते
+      gloss:
+        en: is killed
+        hi: मारा जाता है
+    - sa: हन्यमाने
+      gloss:
+        en: while being killed
+        hi: मारे जाते हुए
+    - sa: शरीरे
+      gloss:
+        en: in the body
+        hi: शरीर में
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.passive
+  mode: choice
+  prompt:
+    en: “The book is read by Rāma.” Which sentence?
+    hi: ‘पुस्तक राम द्वारा पढ़ी जाती है।’ कौन-सा वाक्य?
+  explain:
+    en: The doer in the 3rd case, the verb in the passive.
+    hi: कर्ता तृतीया में, क्रिया कर्मवाच्य में।
+  roman: after
+  options:
+  - sa: रामः पुस्तकं पठति
+  - correct: true
+    sa: रामेण पुस्तकं पठ्यते
+  - sa: रामं पुस्तकं पठति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.passive
+  mode: type
+  prompt:
+    en: 'Say: “It is done.”'
+    hi: 'कहिए: ‘वह किया जाता है।’'
+  explain:
+    en: '{{क्रियते}}: the passive of {{कृ}}.'
+    hi: '{{क्रियते}}: {{कृ}} का कर्मवाच्य।'
+  roman: after
+  answers:
+  - क्रियते
+  tiles:
+  - क्रि
+  - यते
+  - कृ
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.passive
+  mode: match
+  prompt:
+    en: Join active to passive.
+    hi: कर्तरि को कर्मणि से जोड़िए।
+  explain:
+    en: The sign {{-य-}} and the endings for oneself.
+    hi: चिह्न {{-य-}} और अपने लिए वाले प्रत्यय।
+  roman: after
+  pairs:
+  - left:
+      sa: गच्छति
+    right:
+      sa: गम्यते
+  - left:
+      sa: करोति
+    right:
+      sa: क्रियते
+  - left:
+      sa: शृणोति
+    right:
+      sa: श्रूयते
+  - left:
+      sa: पश्यति
+    right:
+      sa: दृश्यते
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.passive
+  widget: mark_words
+  prompt:
+    en: Tap every passive verb.
+    hi: हर कर्मवाच्य क्रिया छुइए।
+  params:
+    passage:
+    - पठ्यते
+    - पठति
+    - क्रियते
+    - करोति
+    - श्रूयते
+    - शृणोति
+    targets:
+    - पठ्यते
+    - क्रियते
+    - श्रूयते
+  roman: show
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.passive
+  mode: order
+  prompt:
+    en: 'Say: “The book is read by Rāma.”'
+    hi: 'कहिए: ‘पुस्तक राम द्वारा पढ़ी जाती है।’'
+  explain:
+    en: '{{रामेण पुस्तकं पठ्यते}}.'
+    hi: '{{रामेण पुस्तकं पठ्यते}}।'
+  roman: after
+  tokens:
+  - रामेण
+  - पुस्तकम्
+  - पठ्यते
+- id: p5
+  kind: practice
+  title:
+    en: It is given
+    hi: दिया जाता है
+  depth: core
+  skills:
+  - verb.passive
+  mode: choice
+  prompt:
+    en: “It is given.” Which passive of {{दा}}?
+    hi: ‘वह दिया जाता है।’ {{दा}} का कौन-सा कर्मवाच्य?
+  explain:
+    en: '{{दीयते}}: {{दा}} → {{दी-}} + {{-यते}}.'
+    hi: '{{दीयते}}: {{दा}} → {{दी-}} + {{-यते}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “दीयते,” you say, and one of the pusher's twelve tiny hands lets go of what it holds. A fruit rolls gently across the ground towards you. “It is given,” he says in a rosy voice, “and I did not give it. It simply was given.” He looks at his other eleven hands with great interest, as if he had never counted them.
+      hi: “दीयते,” आप कहते हैं, और प्रेरक के बारह नन्हे हाथों में से एक अपनी पकड़ छोड़ देता है। एक फल हल्के से ज़मीन पर लुढ़कता आपकी ओर आता है। “दिया जाता है,” वह गुलाबी आवाज़ में कहता है, “और मैंने नहीं दिया। वह बस दिया गया।” वह अपने बाक़ी ग्यारह हाथों को बड़ी रुचि से देखता है, मानो उन्हें कभी गिना ही न हो।
+    failure:
+      en: 'The hand keeps hold. “It is given”: {{दीयते}}.'
+      hi: 'हाथ पकड़े रहता है। ‘दिया जाता है’: {{दीयते}}।'
+  options:
+  - sa: दाति
+  - sa: ददाते
+  - correct: true
+    sa: दीयते
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's passive
+    hi: पाणिनि का कर्मवाच्य
+  depth: panini
+  skills:
+  - verb.passive
+  sutras:
+  - 3.4.69
+  - 3.1.67
+  - 1.3.13
+  body:
+    en: 'Sūtra 3.4.69, {{लः कर्मणि च भावे चाकर्मकेभ्यः}}, says the verb endings can state the object, or the action itself for roots with no object. 3.1.67, {{सार्वधातुके यक्}}, adds {{यक्}}; and 1.3.13, {{भावकर्मणोः}}, gives the endings for oneself: {{पठ्यते}}.'
+    hi: 'सूत्र 3.4.69, {{लः कर्मणि च भावे चाकर्मकेभ्यः}}, कहता है कि क्रिया-प्रत्यय कर्म को कह सकते हैं, या बिना कर्म वाली धातुओं में क्रिया को ही। 3.1.67, {{सार्वधातुके यक्}}, {{यक्}} जोड़ता है; और 1.3.13, {{भावकर्मणोः}}, अपने लिए वाले प्रत्यय देता है: {{पठ्यते}}।'
+- id: sum
+  kind: summary
+  title:
+    en: The passive
+    hi: कर्मवाच्य
+  depth: core
+  points:
+  - sa: रामेण पुस्तकं पठ्यते
+    text:
+      en: The book is read by Rāma.
+      hi: पुस्तक राम द्वारा पढ़ी जाती है।
+  - sa: क्रियते · दीयते · श्रूयते
+    text:
+      en: It is done; given; heard.
+      hi: किया जाता है; दिया जाता है; सुना जाता है।
+  - text:
+      en: 'Doer: 3rd case; verb: {{-यते}}.'
+      hi: 'कर्ता: तृतीया; क्रिया: {{-यते}}।'

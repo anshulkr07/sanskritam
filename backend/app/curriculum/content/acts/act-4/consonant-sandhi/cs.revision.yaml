@@ -1,0 +1,198 @@
+id: cs.revision
+template: revision
+title:
+  en: Everything about consonant sandhi
+  hi: व्यञ्जनसन्धि के बारे में सब कुछ
+title_sa: व्यञ्जनसन्धिसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The three rules
+    hi: तीन नियम
+  depth: core
+  section: core
+  rows:
+  - skill: sandhi.voice
+    rule:
+      en: 'Hard stop + soft sound or vowel = soft: {{तद् अस्ति}} → {{तदस्ति}}, {{दिग्गजः}}, {{अब्जम्}}.'
+      hi: 'कठोर स्पर्श + कोमल ध्वनि या स्वर = कोमल: {{तद् अस्ति}} → {{तदस्ति}}, {{दिग्गजः}}, {{अब्जम्}}।'
+    sutras:
+    - 8.2.39
+    - 8.4.53
+    tag: core
+    taught_in: cs.voice#tb1
+  - skill: sandhi.place
+    rule:
+      en: '{{त्}} + {{च}}/{{ज}}/{{ट}}/{{ल}}/{{श}} takes the next sound''s place: {{सज्जनः}}, {{तच्च}}, {{उल्लेखः}}.'
+      hi: '{{त्}} + {{च}}/{{ज}}/{{ट}}/{{ल}}/{{श}} अगली ध्वनि का स्थान ले लेता है: {{सज्जनः}}, {{तच्च}}, {{उल्लेखः}}।'
+    sutras:
+    - 8.4.40
+    - 8.4.41
+    - 8.4.60
+    tag: core
+    taught_in: cs.place#tb1
+  - skill: sandhi.nasal
+    rule:
+      en: 'Stop + nasal = nasal: {{सन्मार्गः}}. {{म्}} + consonant = {{ं}}: {{संसारः}}.'
+      hi: 'स्पर्श + नासिक्य = नासिक्य: {{सन्मार्गः}}। {{म्}} + व्यंजन = {{ं}}: {{संसारः}}।'
+    sutras:
+    - 8.4.45
+    - 8.3.23
+    - 8.4.58
+    tag: core
+    taught_in: cs.nasal#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: How to tell which
+    hi: कैसे पहचानें कि कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: sandhi.voice
+    rule:
+      en: 'Look at the next sound: soft or a vowel gives voice.'
+      hi: 'अगली ध्वनि देखिए: कोमल या स्वर घोष देता है।'
+    tag: good
+    taught_in: cs.voice#t1
+  - skill: sandhi.place
+    rule:
+      en: A palatal ({{च}}, {{ज}}, {{श}}), cerebral ({{ट}}) or {{ल}} next gives place.
+      hi: बाद में तालव्य ({{च}}, {{ज}}, {{श}}), मूर्धन्य ({{ट}}) या {{ल}} हो तो स्थान बदलता है।
+    tag: good
+    taught_in: cs.place#t1
+  - skill: sandhi.nasal
+    rule:
+      en: A nasal ({{न}}, {{म}}) next gives a nasal; a final {{म्}} before a vowel stays.
+      hi: बाद में नासिक्य ({{न}}, {{म}}) हो तो नासिक्य बनता है; स्वर से पहले अन्त का {{म्}} रहता है।
+    tag: good
+    taught_in: cs.nasal#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: sandhi.voice
+    rule:
+      en: '{{ह}} after a hard stop becomes the soft aspirate: {{तत् + हि}} → {{तद्धि}}.'
+      hi: 'कठोर स्पर्श के बाद {{ह}} कोमल महाप्राण बन जाता है: {{तत् + हि}} → {{तद्धि}}।'
+    example:
+      sa: तद्धि।
+      meaning:
+        en: For that.
+        hi: क्योंकि वह।
+      words:
+      - sa: तद्धि
+        gloss:
+          en: for that
+          hi: क्योंकि वह
+    tag: rare
+    new_here: true
+  - skill: sandhi.nasal
+    rule:
+      en: '{{सम्}} may write {{ङ्}}, {{न्}} or {{ं}}: {{सङ्कल्पः}}, {{सन्तोषः}} or {{संकल्पः}}, {{संतोषः}}; both are right.'
+      hi: '{{सम्}} में {{ङ्}}, {{न्}} या {{ं}} लिखा जा सकता है: {{सङ्कल्पः}}, {{सन्तोषः}} या {{संकल्पः}}, {{संतोषः}}; दोनों सही हैं।'
+    example:
+      sa: संतोषः।
+      meaning:
+        en: Contentment.
+        hi: सन्तोष।
+      words:
+      - sa: संतोषः
+        gloss:
+          en: contentment
+          hi: सन्तोष
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: sandhi.voice
+    rule:
+      en: Do not leave {{तत् अस्ति}} unjoined when it should be {{तदस्ति}}.
+      hi: जहाँ {{तदस्ति}} होना चाहिए, वहाँ {{तत् अस्ति}} अलग मत छोड़िए।
+    tag: core
+    taught_in: cs.voice#p1
+  - skill: sandhi.place
+    rule:
+      en: 'Do not write {{सत्जनः}}: it is {{सज्जनः}}.'
+      hi: '{{सत्जनः}} मत लिखिए: यह {{सज्जनः}} है।'
+    tag: core
+    taught_in: cs.place#p1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: sandhi.voice
+    rule:
+      en: '{{झलां जशोऽन्ते}} and {{झलां जश् झशि}}: the hard stop turns soft.'
+      hi: '{{झलां जशोऽन्ते}} और {{झलां जश् झशि}}: कठोर स्पर्श कोमल हो जाता है।'
+    sutras:
+    - 8.2.39
+    - 8.4.53
+    tag: core
+    taught_in: cs.voice#pn
+  - skill: sandhi.place
+    rule:
+      en: '{{स्तोः श्चुना श्चुः}} and {{ष्टुना ष्टुः}}: the tongue takes the next place.'
+      hi: '{{स्तोः श्चुना श्चुः}} और {{ष्टुना ष्टुः}}: जीभ अगला स्थान ले लेती है।'
+    sutras:
+    - 8.4.40
+    - 8.4.41
+    tag: core
+    taught_in: cs.place#pn
+  - skill: sandhi.nasal
+    rule:
+      en: '{{मोऽनुस्वारः}}: a final {{म्}} becomes a dot.'
+      hi: '{{मोऽनुस्वारः}}: अन्त का {{म्}} बिन्दु बन जाता है।'
+    sutras:
+    - 8.3.23
+    tag: core
+    taught_in: cs.nasal#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: sandhi.voice
+    formula: तत् + अस्ति = तदस्ति
+    rule:
+      en: hard to soft
+      hi: कठोर से कोमल
+    tag: core
+    taught_in: cs.voice#tb1
+  - skill: sandhi.place
+    formula: सत् + जनः = सज्जनः
+    rule:
+      en: place spreads
+      hi: स्थान फैलता है
+    tag: core
+    taught_in: cs.place#tb1
+  - skill: sandhi.nasal
+    formula: सम् + सारः = संसारः
+    rule:
+      en: nasal and dot
+      hi: नासिक्य और बिन्दु
+    tag: core
+    taught_in: cs.nasal#tb1

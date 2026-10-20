@@ -1,0 +1,302 @@
+id: pg.prakriya
+template: scene
+title:
+  en: Building a word
+  hi: शब्द का निर्माण
+title_sa: प्रक्रिया
+minutes: 6
+teaches:
+- panini.prakriya
+needs:
+- panini.it
+- sandhi.guna
+- sandhi.ayadi
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The third alcove
+    hi: तीसरा आला
+  depth: core
+  image:
+    brief: The third alcove opened a hand's breadth, with a plain line of script over it; Dādī kneeling and chalking a single root-letter on the stone floor, a neat row of seven flat stones laid beside it like the steps of a wall; the silver spirit nearly whole, watching; Lubdhaka stepping in from the cave mouth with his satchel; Śuka on the stone row.
+    alt:
+      en: A woman chalks a root on the floor beside a row of seven laid stones as a man steps in
+      hi: फर्श पर धातु लिखती स्त्री और सात बिछे पत्थरों की कतार, भीतर आता आदमी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - padika
+    place: guha
+    ratio: '4:3'
+    id: pg-prakriya-s1
+  narration:
+    en: 'The third alcove opens a hand''s breadth, a plain line cut over it. Padikā is nearly whole. “These are not three locks,” says Dādī. “They are one road. Pāṇini builds a word as a mason builds a wall: one stone, one rule, in order.” She chalks a root on the floor: भू. Lubdhaka comes in. “Then I shall build it faster,” he says.'
+    hi: 'तीसरा आला हाथ भर खुल जाता है, और उसके ऊपर एक सादी पंक्ति खुदी है। पदिका लगभग पूरी हो चुकी है। “ये तीन ताले नहीं हैं,” दादी कहती हैं। “ये एक ही मार्ग हैं। पाणिनि शब्द वैसे बनाते हैं जैसे राजमिस्त्री दीवार: एक पत्थर, एक नियम, क्रम से।” वे फर्श पर एक धातु लिखती हैं: भू। लुब्धक गुफा के द्वार से भीतर आता है। “तो मैं इसे और जल्दी बनाऊँगा,” वह कहता है।'
+  quote:
+    sa: भूवादयो धातवः वर्तमाने लट्
+    gloss:
+      en: Bhū and the others are roots. In the present tense, {{लट्}}.
+      hi: भू आदि धातु हैं। वर्तमान काल में लट्।
+    source: Aṣṭādhyāyī 1.3.1 and 3.2.123 (sūtra text from vidyut-prakriya data)
+- id: t1
+  kind: teach
+  title:
+    en: A word is built
+    hi: शब्द बनता है
+  depth: core
+  skills:
+  - panini.prakriya
+  sutras:
+  - 1.3.1
+  - 3.2.123
+  - 3.4.78
+  - 3.1.68
+  - 7.3.84
+  - 6.1.78
+  body:
+    en: 'To make {{भवति}}, Pāṇini starts from the root {{भू}} and adds what each rule asks, one at a time: the tense, the ending for “he”, the joining {{अ}}. The markers drop away. Then two sound changes. Each step has its sūtra number, and the steps run in order.'
+    hi: '{{भवति}} बनाने के लिए पाणिनि धातु {{भू}} से आरम्भ करते हैं और हर नियम जो माँगता है उसे एक-एक करके जोड़ते हैं: काल, ‘वह’ का प्रत्यय, जोड़ने वाला {{अ}}। संकेत हटते जाते हैं। फिर दो ध्वनि-परिवर्तन। हर चरण का अपना सूत्र-क्रमांक है, और चरण क्रम से चलते हैं।'
+  steps:
+  - sa: भू
+    label:
+      en: the root (1.3.1)
+      hi: धातु (1.3.1)
+  - sa: भू + ल्
+    label:
+      en: 'the tense: present (3.2.123)'
+      hi: 'काल: वर्तमान (3.2.123)'
+  - sa: भू + ति
+    label:
+      en: the ending for “he” (3.4.78)
+      hi: ‘वह’ का प्रत्यय (3.4.78)
+  - sa: भू + अ + ति
+    label:
+      en: the joining {{अ}} (3.1.68)
+      hi: जोड़ने वाला {{अ}} (3.1.68)
+  - sa: भो + अ + ति
+    label:
+      en: strengthening (7.3.84)
+      hi: गुण (7.3.84)
+  - sa: भव् + अ + ति
+    label:
+      en: '{{ओ}} before {{अ}} becomes {{अव्}} (6.1.78)'
+      hi: '{{अ}} से पहले {{ओ}} का {{अव्}} (6.1.78)'
+  - sa: भवति
+    label:
+      en: the word
+      hi: शब्द
+- id: tb1
+  kind: table
+  title:
+    en: Seven stages
+    hi: सात चरण
+  depth: core
+  skills:
+  - panini.prakriya
+  sutras:
+  - 3.4.78
+  caption:
+    en: The build of {{भवति}}, with the rule behind each step
+    hi: '{{भवति}} का निर्माण, हर चरण के पीछे का नियम'
+  columns:
+  - en: Form
+    hi: रूप
+  - en: The sūtra
+    hi: सूत्र
+  - en: What it does
+    hi: क्या करता है
+  rows:
+  - - sa: भू
+    - sa: भूवादयो धातवः
+    - text:
+        en: names it a root
+        hi: उसे धातु कहता है
+  - - sa: भू + ल्
+    - sa: वर्तमाने लट्
+    - text:
+        en: the present tense
+        hi: वर्तमान काल
+  - - sa: भू + ति
+    - sa: तिप्तस्झि …
+    - text:
+        en: the ending for “he” takes the place of {{ल्}}
+        hi: ‘वह’ का प्रत्यय {{ल्}} का स्थान लेता है
+  - - sa: भू + अ + ति
+    - sa: कर्तरि शप्
+    - text:
+        en: the joining {{अ}}
+        hi: जोड़ने वाला {{अ}}
+  - - sa: भो + अ + ति
+    - sa: सार्वधातुकार्धधातुकयोः
+    - text:
+        en: strengthens the vowel
+        hi: स्वर को गुण करता है
+  - - sa: भव् + अ + ति
+    - sa: एचोऽयवायावः
+    - text:
+        en: '{{ओ}} + {{अ}} becomes {{अव्}} + {{अ}}'
+        hi: '{{ओ}} + {{अ}} से {{अव्}} + {{अ}} बनता है'
+  note:
+    en: The engine's full list has twenty steps; these are the ones that change the word.
+    hi: इंजन की पूरी सूची में बीस चरण हैं; ये वे हैं जो शब्द को बदलते हैं।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - panini.prakriya
+  mode: match
+  prompt:
+    en: Join each sūtra to its job.
+    hi: हर सूत्र को उसके काम से जोड़िए।
+  explain:
+    en: Four of the seven stages.
+    hi: सात चरणों में से चार।
+  roman: after
+  pairs:
+  - left:
+      sa: वर्तमाने लट्
+    right:
+      text:
+        en: the present tense
+        hi: वर्तमान काल
+  - left:
+      sa: कर्तरि शप्
+    right:
+      text:
+        en: the joining a
+        hi: जोड़ने वाला अ
+  - left:
+      sa: सार्वधातुकार्धधातुकयोः
+    right:
+      text:
+        en: strengthening the vowel
+        hi: स्वर का गुण
+  - left:
+      sa: एचोऽयवायावः
+    right:
+      text:
+        en: o + a becomes av + a
+        hi: ओ + अ से अव् + अ
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - panini.prakriya
+  mode: choice
+  prompt:
+    en: From 8.2.1 {{पूर्वत्रासिद्धम्}}, a rule counts as not yet applied for the rules before it. So the sound changes there come…
+    hi: 8.2.1 {{पूर्वत्रासिद्धम्}} से, एक नियम अपने से पहले के नियमों के लिए अभी लागू नहीं माना जाता। इसलिए वहाँ के ध्वनि-परिवर्तन आते हैं…
+  explain:
+    en: The order of the rules matters.
+    hi: नियमों का क्रम महत्त्व रखता है।
+  roman: after
+  options:
+  - text:
+      en: first
+      hi: पहले
+  - correct: true
+    text:
+      en: last, after the earlier rules
+      hi: अन्त में, पहले के नियमों के बाद
+  - text:
+      en: in any order
+      hi: किसी भी क्रम में
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - panini.prakriya
+  mode: type
+  prompt:
+    en: 'Build the word: {{भव् + अ + ति}}.'
+    hi: 'शब्द बनाइए: {{भव् + अ + ति}}।'
+  explain:
+    en: '{{भव्}} + {{अ}} + {{ति}} = {{भवति}}: “he, she, it becomes”.'
+    hi: '{{भव्}} + {{अ}} + {{ति}} = {{भवति}}: ‘वह होता है’।'
+  roman: after
+  check:
+    type: tinanta
+    dhatu: भू
+    lakara: Lat
+    purusha: Prathama
+    vacana: Eka
+  answers:
+  - भवति
+  tiles:
+  - भ
+  - व
+  - ति
+  - भू
+  - अ
+- id: p4
+  kind: practice
+  title:
+    en: The wall
+    hi: दीवार
+  depth: core
+  skills:
+  - panini.prakriya
+  mode: order
+  prompt:
+    en: Put the stages of the build in order.
+    hi: निर्माण के चरणों को क्रम में रखिए।
+  explain:
+    en: Root, tense, ending, joining {{अ}}, strengthening, {{ओ}} → {{अव्}}.
+    hi: धातु, काल, प्रत्यय, जोड़ने वाला {{अ}}, गुण, {{ओ}} → {{अव्}}।
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “भू, भू + ल्, भू + ति,” you say, laying them down in order, and the flat stones along the floor light, one after another, as you name them, until the sixth, भव् + अ + ति, and the seventh, भवति. Lubdhaka, who has been building his own row beside yours, quicker, with stones from the wrong end, finds his wall will not stand. He looks at it. Padikā is whole. “The road has an order,” she says. “One cannot start at the top of the wall.”
+      hi: “भू, भू + ल्, भू + ति,” आप उन्हें क्रम में बिछाते हुए कहते हैं, और फर्श के चपटे पत्थर एक-एक कर चमकते हैं जैसे आप उनके नाम लेते हैं, छठे, भव् + अ + ति, और सातवें, भवति, तक। लुब्धक, जो अपनी अलग कतार तेज़ी से बना रहा था, गलत सिरे के पत्थरों से, देखता है कि उसकी दीवार खड़ी नहीं होती। वह उसे देखता है। पदिका पूरी हो गई है। “मार्ग का एक क्रम है,” वह कहती है। “दीवार को ऊपर से शुरू नहीं किया जा सकता।”
+    failure:
+      en: 'The stones stay dark. The order is: root, tense, ending, joining {{अ}}, strengthening, {{ओ}} → {{अव्}}.'
+      hi: 'पत्थर अँधेरे रहते हैं। क्रम है: धातु, काल, प्रत्यय, जोड़ने वाला {{अ}}, गुण, {{ओ}} → {{अव्}}।'
+  tokens:
+  - भू
+  - भू + ल्
+  - भू + ति
+  - भू + अ + ति
+  - भो + अ + ति
+  - भव् + अ + ति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's order
+    hi: पाणिनि का क्रम
+  depth: panini
+  skills:
+  - panini.prakriya
+  sutras:
+  - 8.2.1
+  body:
+    en: Sūtra 8.2.1, {{पूर्वत्रासिद्धम्}}, opens the last three quarters of the Aṣṭādhyāyī. From there, each rule counts as not yet applied when an earlier rule looks at the word, and when a rule before it in that part does. So the sound changes there wait until the end, and the order of the rules decides the word.
+    hi: सूत्र 8.2.1, {{पूर्वत्रासिद्धम्}}, अष्टाध्यायी के अन्तिम तीन पादों को खोलता है। वहाँ से हर नियम पहले के नियम के लिए, और उस भाग में अपने से पहले के नियम के लिए, अभी लागू नहीं माना जाता। इसलिए वहाँ के ध्वनि-परिवर्तन अन्त तक रुके रहते हैं, और नियमों का क्रम शब्द तय करता है।
+- id: sum
+  kind: summary
+  title:
+    en: Building a word
+    hi: शब्द का निर्माण
+  depth: core
+  points:
+  - sa: भू → भवति
+    text:
+      en: Root, tense, ending, joining {{अ}}, two sound changes.
+      hi: धातु, काल, प्रत्यय, जोड़ने वाला {{अ}}, दो ध्वनि-परिवर्तन।
+  - text:
+      en: Each step has its sūtra; the steps run in order.
+      hi: हर चरण का अपना सूत्र है; चरण क्रम से चलते हैं।
+  - sa: पूर्वत्रासिद्धम्
+    text:
+      en: '8.2.1: the last rules wait.'
+      hi: '8.2.1: अन्तिम नियम प्रतीक्षा करते हैं।'

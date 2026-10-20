@@ -1,0 +1,157 @@
+id: split.check
+template: check
+title:
+  en: Take the words apart
+  hi: शब्दों को अलग कीजिए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.split
+  mode: choice
+  prompt:
+    en: '{{महात्मा}} comes from…'
+    hi: '{{महात्मा}} बना है…'
+  explain:
+    en: '{{आ}} + {{आ}} = {{आ}}.'
+    hi: '{{आ}} + {{आ}} = {{आ}}।'
+  roman: after
+  options:
+  - sa: महा + अत्मा
+  - sa: महे + आत्मा
+  - correct: true
+    sa: महा + आत्मा
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.split
+  mode: choice
+  prompt:
+    en: '{{गणेशः}} comes from…'
+    hi: '{{गणेशः}} बना है…'
+  explain:
+    en: '{{अ}} + {{ई}} = {{ए}}.'
+    hi: '{{अ}} + {{ई}} = {{ए}}।'
+  roman: after
+  options:
+  - sa: गणे + ईशः
+  - sa: गण + एशः
+  - correct: true
+    sa: गण + ईशः
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.split
+  mode: choice
+  prompt:
+    en: '{{रामोऽस्ति}} comes from…'
+    hi: '{{रामोऽस्ति}} बना है…'
+  explain:
+    en: '{{ओऽ}} from {{अः + अ}}.'
+    hi: '{{ओऽ}}, {{अः + अ}} से।'
+  roman: after
+  options:
+  - sa: रामु + अस्ति
+  - sa: रामम् + अस्ति
+  - correct: true
+    sa: रामः + अस्ति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.split
+  mode: choice
+  prompt:
+    en: '{{सन्मार्गः}} comes from…'
+    hi: '{{सन्मार्गः}} बना है…'
+  explain:
+    en: '{{न्म}} from {{त् + म}}.'
+    hi: '{{न्म}}, {{त् + म}} से।'
+  roman: after
+  options:
+  - sa: सन् + मार्गः
+  - sa: सद् + मार्गः
+  - correct: true
+    sa: सत् + मार्गः
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.padaccheda
+  mode: choice
+  prompt:
+    en: '{{कालो गच्छति}} is…'
+    hi: '{{कालो गच्छति}} है…'
+  explain:
+    en: '{{ओ}} from {{अः}} before a soft sound.'
+    hi: कोमल ध्वनि से पहले {{अः}} से {{ओ}}।
+  roman: after
+  options:
+  - sa: कालम् गच्छति
+  - correct: true
+    sa: कालः गच्छति
+  - sa: कालु गच्छति
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.split
+  mode: match
+  prompt:
+    en: Join each joined word to its split.
+    hi: हर जुड़े शब्द को उसके विच्छेद से जोड़िए।
+  explain:
+    en: Four joins, four splits.
+    hi: चार सन्धियाँ, चार विच्छेद।
+  roman: after
+  pairs:
+  - left:
+      sa: विद्यालयः
+    right:
+      sa: विद्या + आलयः
+  - left:
+      sa: सज्जनः
+    right:
+      sa: सत् + जनः
+  - left:
+      sa: तदस्ति
+    right:
+      sa: तत् + अस्ति
+  - left:
+      sa: कविरस्ति
+    right:
+      sa: कविः + अस्ति
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.split
+  mode: order
+  prompt:
+    en: 'Say Vicchedikā''s three splits: “vidyā + ālayaḥ, sat + janaḥ, rāmaḥ + asti.”'
+    hi: 'विच्छेदिका के तीन विच्छेद कहिए: ‘विद्या + आलयः, सत् + जनः, रामः + अस्ति।’'
+  explain:
+    en: '{{विद्यालयः सज्जनः रामोऽस्ति}}: three joined words.'
+    hi: '{{विद्यालयः सज्जनः रामोऽस्ति}}: तीन जुड़े शब्द।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “विद्या + आलयः, सत् + जनः, रामः + अस्ति,” you say, and Vicchedikā lays her thin chisel down and puts one finger to the faint line that runs down the middle of her face. The line opens, softly, and she is two statues, side by side, who look at each other, delighted, and then, in a single movement, are one again, whole and clear. “Now I can,” she says, and lifts her chin. “रामलक्ष्मणौ,” she says. “Look, they are two, and they are one.” Beyond her, in the lamplight, the next statues' names are carved in long, gleaming, joined shapes.
+      hi: “विद्या + आलयः, सत् + जनः, रामः + अस्ति,” आप कहते हैं, और विच्छेदिका अपनी पतली छेनी रख देती है और अपने चेहरे के बीच की धुँधली रेखा पर एक उँगली रखती है। रेखा कोमलता से खुलती है, और वह दो प्रतिमाएँ बन जाती है, साथ-साथ, जो एक-दूसरे को आनन्द से देखती हैं, और फिर एक ही गति में फिर एक हो जाती हैं, पूरी और साफ़। “अब मैं कर सकती हूँ,” वह कहती है और ठुड्डी उठाती है। “रामलक्ष्मणौ,” वह कहती है। “देखिए, वे दो हैं, और वे एक हैं।” उसके आगे, दीपक की रोशनी में, अगली प्रतिमाओं के नाम लम्बी, चमकती, जुड़ी आकृतियों में खुदे हैं।
+    failure:
+      en: 'Her face stays one line. The three: {{विद्यालयः सज्जनः रामोऽस्ति}}.'
+      hi: 'उसका चेहरा एक ही रेखा रहता है। तीन: {{विद्यालयः सज्जनः रामोऽस्ति}}।'
+  tokens:
+  - विद्यालयः
+  - सज्जनः
+  - रामोऽस्ति

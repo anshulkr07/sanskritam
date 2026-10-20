@@ -1,0 +1,439 @@
+id: calling.eight
+template: scene
+title:
+  en: The eight cases at a glance
+  hi: आठों विभक्तियाँ एक नज़र में
+title_sa: अष्टविभक्तयः
+minutes: 6
+teaches:
+- case.overview
+needs:
+- case.voc
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Found
+    hi: मिल गया
+  depth: core
+  image:
+    brief: 'A procession returning through a lamplit village lane: the Ācārya with a lamp, the rescued pupil wrapped in Dādī''s shawl, you and Śuka beside them; a faint blue-grey echo-spirit walking quietly alongside; the school gate ahead.'
+    alt:
+      en: A group walking home through a lamplit lane with a rescued pupil and an echo-spirit
+      hi: दीपक की रोशनी में गली से घर लौटता समूह, बचाया हुआ शिष्य और गूँज-भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - pratidhvanika
+    place: grama
+    ratio: '4:3'
+    id: calling-eight-s1
+  narration:
+    en: 'The boy is found curled up in a doorway, safe and cold. Everyone walks home through the lanes together: you, Dādī, the pupil, the Ācārya with his lamp, and a blue-grey echo that has stopped repeating and started to listen. At the school gate Dādī stops. “Eight cases. You have met all eight. Let us put them side by side.”'
+    hi: 'बालक एक द्वार में सिमटा मिलता है, सुरक्षित और ठिठुरा। सब मिलकर गलियों से घर लौटते हैं: आप, दादी, शिष्य, दीपक लिए आचार्य, और एक नीली-धूसर गूँज जो दोहराना छोड़कर सुनने लगी है। पाठशाला के फाटक पर दादी रुकती हैं। “आठ विभक्तियाँ। तुम आठों से मिल चुके हो। आओ उन्हें साथ-साथ रखें।”'
+- id: tb1
+  kind: table
+  title:
+    en: One word, eight cases
+    hi: एक शब्द, आठ विभक्तियाँ
+  depth: core
+  skills:
+  - case.overview
+  caption:
+    en: '{{बालक}} in the singular, case by case'
+    hi: '{{बालक}} एकवचन में, विभक्ति-दर-विभक्ति'
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: Form
+    hi: रूप
+  - en: Asks
+    hi: पूछती है
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: बालकः
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - text:
+        en: who?
+        hi: कौन?
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: बालकम्
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - text:
+        en: whom, what?
+        hi: किसे, क्या?
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: बालकेन
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - text:
+        en: by what? with whom?
+        hi: किससे, किसके साथ?
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: बालकाय
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+    - text:
+        en: to whom? for what?
+        hi: किसे, किसलिए?
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: बालकात्
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+    - text:
+        en: from what?
+        hi: किससे (अलग)?
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: बालकस्य
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+    - text:
+        en: whose?
+        hi: किसका?
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: बालके
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - text:
+        en: where? when?
+        hi: कहाँ? कब?
+  - - text:
+        en: 8 · calling
+        hi: 8 · सम्बोधन
+    - sa: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+    - text:
+        en: O…!
+        hi: हे…!
+  note:
+    en: Six of the eight are the kāraka roles; the sixth is “the rest”, and the eighth is the call.
+    hi: आठ में से छह कारक-भूमिकाएँ हैं; छठी ‘शेष’ है, और आठवीं पुकार।
+- id: t1
+  kind: teach
+  title:
+    en: The roles behind the cases
+    hi: विभक्तियों के पीछे की भूमिकाएँ
+  depth: core
+  skills:
+  - case.overview
+  body:
+    en: 'Pāṇini sees six roles in an action, the kārakas: the doer {{कर्ता}}, the object {{कर्म}}, the means {{करणम्}}, the recipient {{सम्प्रदानम्}}, the source {{अपादानम्}}, and the locus {{अधिकरणम्}}. Each takes its own case.'
+    hi: 'पाणिनि क्रिया में छह भूमिकाएँ देखते हैं, कारक: कर्ता, कर्म, करण, सम्प्रदान, अपादान और अधिकरण। हर एक अपनी विभक्ति लेती है।'
+  rows:
+  - sa: कर्ता
+    gloss:
+      en: 'the doer: first case'
+      hi: 'करने वाला: प्रथमा'
+  - sa: कर्म
+    gloss:
+      en: 'the object: second case'
+      hi: 'जिस पर क्रिया: द्वितीया'
+  - sa: करणम्
+    gloss:
+      en: 'the means: third case'
+      hi: 'साधन: तृतीया'
+  - sa: सम्प्रदानम्
+    gloss:
+      en: 'the recipient: fourth case'
+      hi: 'पाने वाला: चतुर्थी'
+  - sa: अपादानम्
+    gloss:
+      en: 'the source: fifth case'
+      hi: 'स्रोत: पञ्चमी'
+  - sa: अधिकरणम्
+    gloss:
+      en: 'the locus: seventh case'
+      hi: 'आधार: सप्तमी'
+  term:
+    sa: कारकम्
+    meaning:
+      en: a role in an action
+      hi: क्रिया में भूमिका
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - case.overview
+  widget: role_arrows
+  prompt:
+    en: Name each word's role in one long sentence.
+    hi: एक लम्बे वाक्य में हर शब्द की भूमिका बताइए।
+  params:
+    sentence:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      role: karta
+    - sa: ग्रामात्
+      gloss:
+        en: from the village
+        hi: गाँव से
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      role: apadana
+    - sa: नौकया
+      gloss:
+        en: by boat
+        hi: नाव से
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+      role: karana
+    - sa: आचार्याय
+      gloss:
+        en: to the teacher
+        hi: आचार्य को
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      role: sampradana
+    - sa: पुस्तकम्
+      gloss:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      role: karma
+    - sa: नयति
+      gloss:
+        en: brings
+        hi: लाता है
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      role: kriya
+    meaning:
+      en: The boy brings a book from the village by boat to the teacher.
+      hi: बालक गाँव से नाव द्वारा आचार्य के लिए पुस्तक लाता है।
+  roman: show
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.overview
+  mode: choice
+  prompt:
+    en: '{{बालकः नौकया आचार्याय पुस्तकं नयति}}: which word is the means?'
+    hi: '{{बालकः नौकया आचार्याय पुस्तकं नयति}}: साधन कौन-सा शब्द है?'
+  explain:
+    en: '{{नौकया}}: third case, the means.'
+    hi: '{{नौकया}}: तृतीया, साधन।'
+  roman: after
+  options:
+  - sa: बालकः
+  - correct: true
+    sa: नौकया
+  - sa: आचार्याय
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.overview
+  mode: match
+  prompt:
+    en: Join each case to its role.
+    hi: हर विभक्ति को उसकी भूमिका से जोड़िए।
+  explain:
+    en: The cases are the roles' names.
+    hi: विभक्तियाँ भूमिकाओं के नाम हैं।
+  roman: after
+  pairs:
+  - left:
+      sa: प्रथमा
+    right:
+      text:
+        en: the doer
+        hi: कर्ता
+  - left:
+      sa: द्वितीया
+    right:
+      text:
+        en: the object
+        hi: कर्म
+  - left:
+      sa: तृतीया
+    right:
+      text:
+        en: the means
+        hi: साधन
+  - left:
+      sa: चतुर्थी
+    right:
+      text:
+        en: the recipient
+        hi: पाने वाला
+  - left:
+      sa: पञ्चमी
+    right:
+      text:
+        en: the source
+        hi: स्रोत
+  - left:
+      sa: सप्तमी
+    right:
+      text:
+        en: the place
+        hi: स्थान
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - case.overview
+  mode: match
+  prompt:
+    en: Join each question word to its case.
+    hi: हर प्रश्नवाचक शब्द को उसकी विभक्ति से जोड़िए।
+  explain:
+    en: '{{कः}} {{केन}} {{कस्मै}} {{कस्मात्}} {{कस्य}} {{कस्मिन्}}: the question word in each case.'
+    hi: '{{कः}} {{केन}} {{कस्मै}} {{कस्मात्}} {{कस्य}} {{कस्मिन्}}: हर विभक्ति में प्रश्नवाचक शब्द।'
+  roman: after
+  pairs:
+  - left:
+      sa: कः
+    right:
+      text:
+        en: first
+        hi: प्रथमा
+  - left:
+      sa: कस्य
+    right:
+      text:
+        en: sixth
+        hi: षष्ठी
+  - left:
+      sa: केन
+    right:
+      text:
+        en: third
+        hi: तृतीया
+  - left:
+      sa: कस्मिन्
+    right:
+      text:
+        en: seventh
+        hi: सप्तमी
+- id: p4
+  kind: practice
+  title:
+    en: All together
+    hi: सब साथ
+  depth: core
+  skills:
+  - case.overview
+  mode: order
+  prompt:
+    en: 'Put all the roles in one sentence: “The boy comes from the village.”'
+    hi: 'सारी भूमिकाएँ एक वाक्य में रखिए: ‘बालक गाँव से आता है।’'
+  explain:
+    en: '{{बालकः ग्रामात् आगच्छति}}: the doer and the source.'
+    hi: '{{बालकः ग्रामात् आगच्छति}}: कर्ता और स्रोत।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“बालकः ग्रामात् आगच्छति,” you say, and the little echo, hearing a full sentence for the first time, hums along: “…ग्रामात् आगच्छति…” Then she says, shyly, in her own voice, “अहम् अस्मि.”'
+      hi: '“बालकः ग्रामात् आगच्छति,” आप कहते हैं, और नन्ही गूँज, पहली बार पूरा वाक्य सुनकर, साथ-साथ गुनगुनाती है: “…ग्रामात् आगच्छति…” फिर वह शर्माकर अपनी ही आवाज़ में कहती है, “अहम् अस्मि।”'
+    failure:
+      en: The echo waits. Doer, then source, then the verb.
+      hi: गूँज प्रतीक्षा करती है। कर्ता, फिर स्रोत, फिर क्रिया।
+  tokens:
+  - बालकः
+  - ग्रामात्
+  - आगच्छति
+- id: sum
+  kind: summary
+  title:
+    en: The eight cases
+    hi: आठ विभक्तियाँ
+  depth: core
+  points:
+  - sa: प्रथमा द्वितीया तृतीया चतुर्थी पञ्चमी षष्ठी सप्तमी सम्बोधन
+    text:
+      en: The eight cases, in order.
+      hi: आठ विभक्तियाँ, क्रम से।
+  - sa: कर्ता कर्म करणम् सम्प्रदानम् अपादानम् अधिकरणम्
+    text:
+      en: The six roles.
+      hi: छह भूमिकाएँ।
+  - text:
+      en: The sixth is “the rest”; the eighth is the call.
+      hi: छठी ‘शेष’ है; आठवीं पुकार।

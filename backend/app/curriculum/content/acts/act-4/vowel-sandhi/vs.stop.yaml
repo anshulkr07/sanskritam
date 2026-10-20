@@ -1,0 +1,251 @@
+id: vs.stop
+template: scene
+title:
+  en: When the rule stops
+  hi: जब नियम रुक जाए
+title_sa: हरी एतौ
+minutes: 6
+teaches:
+- sandhi.blocked
+needs:
+- sandhi.ayadi
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The sixth statue
+    hi: छठी प्रतिमा
+  depth: core
+  image:
+    brief: The sixth statue standing with open empty hands, a closed carved door behind her base; Śuka narrowing his eyes; Dādī pointing at an inscription with two words kept apart by a small gap; Lubdhaka's foreman scratching his head.
+    alt:
+      en: A statue with open empty hands before a closed carved door, a parrot narrowing his eyes
+      hi: ख़ाली खुले हाथों वाली प्रतिमा, बन्द नक्काशीदार द्वार के सामने, आँखें सिकोड़ता तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - svarika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: vs-stop-s1
+  narration:
+    en: 'The sixth statue holds nothing. “हरी एतौ,” she says: “these two Haris.” “ते अत्र.” “मुनी इमौ.” Śuka narrows his eyes. “Those are not joined. Look, two vowels meet and nothing happens.” “Some words are like that,” says Dādī. “Dual forms ending in ई, ऊ, ए stay apart. They are pragṛhya: the door is shut.”'
+    hi: 'छठी प्रतिमा के हाथ ख़ाली हैं। “हरी एतौ,” वह कहती है: “ये दो हरि।” “ते अत्र।” “मुनी इमौ।” शुक आँखें सिकोड़ता है। “ये जुड़े नहीं हैं। देखिए, दो स्वर मिलते हैं और कुछ नहीं होता।” “कुछ शब्द ऐसे ही होते हैं,” दादी कहती हैं। “ई, ऊ, ए पर समाप्त द्विवचन के रूप अलग रहते हैं। वे प्रगृह्य हैं: दरवाज़ा बन्द है।”'
+- id: t1
+  kind: teach
+  title:
+    en: Words that stay apart
+    hi: जो अलग रहते हैं
+  depth: core
+  skills:
+  - sandhi.blocked
+  body:
+    en: 'Some words never join. The dual forms ending in {{ई}}, {{ऊ}} or {{ए}} stay apart before a vowel: {{हरी + एतौ}} stays {{हरी एतौ}}; {{ते + अत्र}} stays {{ते अत्र}}. These are {{प्रगृह्याः}}. Interjections such as {{अहो}} also stand apart.'
+    hi: 'कुछ शब्द कभी नहीं जुड़ते। {{ई}}, {{ऊ}} या {{ए}} पर समाप्त द्विवचन के रूप स्वर से पहले भी अलग रहते हैं: {{हरी + एतौ}} {{हरी एतौ}} ही रहता है; {{ते + अत्र}} {{ते अत्र}} ही रहता है। ये {{प्रगृह्याः}} हैं। {{अहो}} जैसे विस्मयादिबोधक भी अलग रहते हैं।'
+  term:
+    sa: प्रगृह्यम्
+    meaning:
+      en: a word that does not join
+      hi: वह शब्द जो नहीं जुड़ता
+- id: tb1
+  kind: table
+  title:
+    en: Words that do not join
+    hi: जो नहीं जुड़ते
+  depth: core
+  skills:
+  - sandhi.blocked
+  caption:
+    en: These stay apart
+    hi: ये अलग रहते हैं
+  columns:
+  - en: First word
+    hi: पहला शब्द
+  - en: Second word
+    hi: दूसरा शब्द
+  - en: Stays
+    hi: रहता है
+  - en: Why
+    hi: क्यों
+  rows:
+  - - sa: हरी
+    - sa: एतौ
+    - sa: हरी एतौ
+    - text:
+        en: dual in -ई
+        hi: -ई वाला द्विवचन
+  - - sa: मुनी
+    - sa: इमौ
+    - sa: मुनी इमौ
+    - text:
+        en: dual in -ई
+        hi: -ई वाला द्विवचन
+  - - sa: साधू
+    - sa: आगतौ
+    - sa: साधू आगतौ
+    - text:
+        en: dual in -ऊ
+        hi: -ऊ वाला द्विवचन
+  - - sa: ते
+    - sa: अत्र
+    - sa: ते अत्र
+    - text:
+        en: dual in -ए
+        hi: -ए वाला द्विवचन
+  - - sa: लते
+    - sa: एते
+    - sa: लते एते
+    - text:
+        en: dual in -ए
+        hi: -ए वाला द्विवचन
+  note:
+    en: 'Check the form: if it is a dual in {{-ई}}, {{-ऊ}} or {{-ए}}, leave it alone.'
+    hi: 'रूप देखिए: यदि वह {{-ई}}, {{-ऊ}} या {{-ए}} वाला द्विवचन है, तो उसे वैसा ही रहने दीजिए।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.blocked
+  mode: choice
+  prompt:
+    en: Which pair does NOT join?
+    hi: कौन-सी जोड़ी नहीं जुड़ती?
+  explain:
+    en: '{{हरी}} is a dual in {{-ई}}: {{प्रगृह्यम्}}.'
+    hi: '{{हरी}} {{-ई}} वाला द्विवचन है: {{प्रगृह्यम्}}।'
+  roman: after
+  options:
+  - sa: विद्या आलयः
+  - correct: true
+    sa: हरी एतौ
+  - sa: न अस्ति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.blocked
+  mode: match
+  prompt:
+    en: Join each pair to what happens.
+    hi: हर जोड़ी को उससे जोड़िए जो होता है।
+  explain:
+    en: Duals in {{-ई}}, {{-ऊ}}, {{-ए}} stay apart.
+    hi: '{{-ई}}, {{-ऊ}}, {{-ए}} वाले द्विवचन अलग रहते हैं।'
+  roman: after
+  pairs:
+  - left:
+      sa: विद्या + आलयः
+    right:
+      text:
+        en: 'joins: विद्यालयः'
+        hi: 'जुड़ता है: विद्यालयः'
+  - left:
+      sa: हरी + एतौ
+    right:
+      text:
+        en: stays apart
+        hi: अलग रहता है
+  - left:
+      sa: गण + ईशः
+    right:
+      text:
+        en: 'joins: गणेशः'
+        hi: 'जुड़ता है: गणेशः'
+  - left:
+      sa: ते + अत्र
+    right:
+      text:
+        en: stays apart
+        hi: अलग रहता है
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.blocked
+  widget: mark_words
+  prompt:
+    en: Tap every dual form that stays apart.
+    hi: अलग रहने वाला हर द्विवचन रूप छुइए।
+  params:
+    passage:
+    - हरी
+    - हरिः
+    - मुनी
+    - मुनिः
+    - ते
+    - सः
+    targets:
+    - हरी
+    - मुनी
+    - ते
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: The closed door
+    hi: बन्द द्वार
+  depth: core
+  skills:
+  - sandhi.blocked
+  mode: choice
+  prompt:
+    en: '{{मुनी + इमौ}} gives…'
+    hi: '{{मुनी + इमौ}} से…'
+  explain:
+    en: A dual in {{-ई}} does not join.
+    hi: '{{-ई}} वाला द्विवचन नहीं जुड़ता।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “मुनी इमौ,” you say, “these two sages,” and you leave a clear gap between the words, as you would between two people at a door. The empty-handed statue smiles, for the first time, a little crookedly. “Yes,” she says. “Not everything joins. Sometimes the right thing is to leave the door shut.” Behind her, quietly, six statues begin to hum together.
+      hi: “मुनी इमौ,” आप कहते हैं, “ये दो मुनि,” और शब्दों के बीच साफ़ अन्तराल छोड़ते हैं, जैसे द्वार पर खड़े दो लोगों के बीच। ख़ाली हाथ वाली प्रतिमा पहली बार हल्का-सा टेढ़ा मुस्कराती है। “हाँ,” वह कहती है। “हर चीज़ जुड़ती नहीं। कभी-कभी सही यही है कि द्वार बन्द रहने दिया जाए।” उसके पीछे, धीमे से, छह प्रतिमाएँ एक साथ गुनगुनाने लगती हैं।
+    failure:
+      en: 'The statue stays grave. A dual in {{-ई}} does not join: {{मुनी इमौ}}.'
+      hi: 'प्रतिमा गम्भीर रहती है। {{-ई}} वाला द्विवचन नहीं जुड़ता: {{मुनी इमौ}}।'
+  options:
+  - sa: मुन्यिमौ
+  - sa: मुनीमौ
+  - correct: true
+    sa: मुनी इमौ
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's closed door
+    hi: पाणिनि का बन्द द्वार
+  depth: panini
+  skills:
+  - sandhi.blocked
+  sutras:
+  - 1.1.11
+  - 6.1.125
+  body:
+    en: Sūtra 1.1.11, {{ईदूदेद्द्विवचनं प्रगृह्यम्}}, names the dual forms ending in {{ई}}, {{ऊ}}, {{ए}} {{प्रगृह्य}}. And 6.1.125, {{प्लुतप्रगृह्या अचि नित्यम्}}, says a {{प्रगृह्य}} stays as it is before a vowel. So there is no sandhi.
+    hi: सूत्र 1.1.11, {{ईदूदेद्द्विवचनं प्रगृह्यम्}}, {{ई}}, {{ऊ}}, {{ए}} पर समाप्त द्विवचन के रूपों को {{प्रगृह्य}} नाम देता है। और 6.1.125, {{प्लुतप्रगृह्या अचि नित्यम्}}, कहता है कि {{प्रगृह्य}} स्वर से पहले जैसा है वैसा ही रहता है। इसलिए सन्धि नहीं होती।
+- id: sum
+  kind: summary
+  title:
+    en: When the rule stops
+    hi: जब नियम रुक जाए
+  depth: core
+  points:
+  - sa: हरी एतौ
+    text:
+      en: A dual in -ई stays apart.
+      hi: -ई वाला द्विवचन अलग रहता है।
+  - sa: ते अत्र
+    text:
+      en: A dual in -ए stays apart.
+      hi: -ए वाला द्विवचन अलग रहता है।
+  - text:
+      en: '{{प्रगृह्यम्}}: the closed door.'
+      hi: '{{प्रगृह्यम्}}: बन्द द्वार।'

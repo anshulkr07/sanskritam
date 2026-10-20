@@ -1,0 +1,430 @@
+id: in.when
+template: scene
+title:
+  en: At night, in the morning
+  hi: रात में, सुबह में
+title_sa: कालः
+minutes: 6
+teaches:
+- case.loc-time
+needs:
+- case.loc
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The hours of the house
+    hi: घर के पहर
+  depth: core
+  image:
+    brief: 'The Ācārya counting on his fingers in the lamplit house, four small scenes above him: dawn reading, noon meal, evening singing, night sleeping; the flame-shaped spirit flickering a different colour for each; Dādī nodding.'
+    alt:
+      en: An old teacher counts the hours of the day on his fingers while a flame-spirit changes colour
+      hi: दिन के पहर उँगलियों पर गिनते आचार्य और रंग बदलता लौ-भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - dipaka
+    place: pathashala
+    ratio: '4:3'
+    id: in-when-s1
+  narration:
+    en: 'The little spirit asks: “And when?” The Ācārya counts it out on his fingers. “At dawn we read. At noon we eat. In the evening we sing. At night we sleep.” Each time he says it, the lamp flickers a different colour. Dādī nods: “The same case that says where also says when.”'
+    hi: 'नन्हा भूत पूछता है: “और कब?” आचार्य उँगलियों पर गिनते हैं। “भोर में हम पढ़ते हैं। दोपहर में खाते हैं। साँझ को गाते हैं। रात में सोते हैं।” हर बार वे कहते हैं तो दीपक अलग रंग में टिमटिमाता है। दादी सिर हिलाती हैं: “जो विभक्ति ‘कहाँ’ कहती है वही ‘कब’ भी कहती है।”'
+  lines:
+  - speaker: acarya
+    sa: रात्रौ स्वपिमि।
+    gloss:
+      en: At night I sleep.
+      hi: रात में मैं सोता हूँ।
+- id: t1
+  kind: teach
+  title:
+    en: 'When: the seventh case again'
+    hi: 'कब: फिर सप्तमी'
+  depth: core
+  skills:
+  - case.loc-time
+  body:
+    en: 'A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night), {{दिने}} (by day), {{मासे}} (in the month). It answers “when?”.'
+    hi: 'जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}} (महीने में)। यह ‘कब?’ का उत्तर देती है।'
+  examples:
+  - sa: प्रभाते वयम् पठामः।
+    meaning:
+      en: At dawn we read.
+      hi: भोर में हम पढ़ते हैं।
+    words:
+    - sa: प्रभाते
+      gloss:
+        en: at dawn
+        hi: भोर में
+      check:
+        type: subanta
+        stem: प्रभात
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: वयम्
+      gloss:
+        en: we
+        hi: हम
+    - sa: पठामः
+      gloss:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+  - sa: रात्रौ अहम् स्वपिमि।
+    meaning:
+      en: At night I sleep.
+      hi: रात में मैं सोता हूँ।
+    words:
+    - sa: रात्रौ
+      gloss:
+        en: at night
+        hi: रात में
+      check:
+        type: subanta
+        stem: रात्रि
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: अहम्
+      gloss:
+        en: I
+        hi: मैं
+    - sa: स्वपिमि
+      gloss:
+        en: sleep
+        hi: सोता हूँ
+      check:
+        type: tinanta
+        dhatu: स्वप्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+  - sa: दिने दिने शुकः वदति।
+    meaning:
+      en: Day by day the parrot speaks.
+      hi: दिन-दिन तोता बोलता है।
+    words:
+    - sa: दिने
+      gloss:
+        en: by day
+        hi: दिन में
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: दिने
+      gloss:
+        en: by day
+        hi: दिन में
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: शुकः
+      gloss:
+        en: parrot
+        hi: तोता
+      check:
+        type: subanta
+        stem: शुक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वदति
+      gloss:
+        en: speaks
+        hi: बोलता है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: tb1
+  kind: table
+  title:
+    en: Times of the day
+    hi: दिन के समय
+  depth: core
+  skills:
+  - case.loc-time
+  caption:
+    en: Times, first and seventh case
+    hi: समय, प्रथमा और सप्तमी
+  columns:
+  - en: Time
+    hi: समय
+  - en: 1st
+    hi: प्रथमा
+  - en: '7th: at'
+    hi: 'सप्तमी: में'
+  rows:
+  - - text:
+        en: dawn
+        hi: भोर
+    - sa: प्रभातम्
+      check:
+        type: subanta
+        stem: प्रभात
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: प्रभाते
+      check:
+        type: subanta
+        stem: प्रभात
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: noon
+        hi: दोपहर
+    - sa: मध्याह्नः
+      check:
+        type: subanta
+        stem: मध्याह्न
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: मध्याह्ने
+      check:
+        type: subanta
+        stem: मध्याह्न
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: night
+        hi: रात
+    - sa: रात्रिः
+      check:
+        type: subanta
+        stem: रात्रि
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: रात्रौ
+      check:
+        type: subanta
+        stem: रात्रि
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: day
+        hi: दिन
+    - sa: दिनम्
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: दिने
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: month
+        hi: महीना
+    - sa: मासः
+      check:
+        type: subanta
+        stem: मास
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: मासि
+      check:
+        type: subanta
+        stem: मास
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: year
+        hi: वर्ष
+    - sa: वर्षम्
+      check:
+        type: subanta
+        stem: वर्ष
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वर्षे
+      check:
+        type: subanta
+        stem: वर्ष
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+  note:
+    en: '{{रात्रि}}, an -इ word, makes {{रात्रौ}} in the seventh case; you will meet its family later.'
+    hi: -इ वाला {{रात्रि}} सप्तमी में {{रात्रौ}} बनाता है; इसका कुल आगे मिलेगा।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.loc-time
+  mode: choice
+  prompt:
+    en: “At night.” Which word?
+    hi: ‘रात में।’ कौन-सा शब्द?
+  explain:
+    en: 'A time: seventh case.'
+    hi: 'समय: सप्तमी।'
+  roman: after
+  options:
+  - sa: रात्रिः
+  - sa: रात्रिम्
+  - correct: true
+    sa: रात्रौ
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.loc-time
+  mode: match
+  prompt:
+    en: Join each time to its meaning.
+    hi: हर समय को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{ए}} for -अ words, {{औ}} for -इ words.'
+    hi: -अ शब्दों में {{ए}}, -इ शब्दों में {{औ}}।
+  roman: after
+  pairs:
+  - left:
+      sa: प्रभाते
+    right:
+      text:
+        en: at dawn
+        hi: भोर में
+  - left:
+      sa: मध्याह्ने
+    right:
+      text:
+        en: at noon
+        hi: दोपहर में
+  - left:
+      sa: रात्रौ
+    right:
+      text:
+        en: at night
+        hi: रात में
+  - left:
+      sa: दिने
+    right:
+      text:
+        en: by day
+        hi: दिन में
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - case.loc-time
+  widget: mark_words
+  prompt:
+    en: Tap every word that tells when.
+    hi: ‘कब’ बताने वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - प्रभाते
+    - प्रभातम्
+    - रात्रौ
+    - रात्रिः
+    - दिने
+    - दिनम्
+    targets:
+    - प्रभाते
+    - रात्रौ
+    - दिने
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: At dawn
+    hi: भोर में
+  depth: core
+  skills:
+  - case.loc-time
+  mode: order
+  prompt:
+    en: 'Say: “At dawn we read.”'
+    hi: 'कहिए: ‘भोर में हम पढ़ते हैं।’'
+  explain:
+    en: '{{प्रभाते वयं पठामः}}: the time in the seventh case.'
+    hi: '{{प्रभाते वयं पठामः}}: समय सप्तमी में।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “प्रभाते वयं पठामः,” you say, and the lamp-spirit blinks, as if he were already a little afraid of dawn. “रात्रौ… दीपः अस्ति,” he says slowly, the first sentence he has ever made himself, and the whole courtyard hushes.
+      hi: “प्रभाते वयं पठामः,” आप कहते हैं, और दीप-भूत पलकें झपकाता है, मानो भोर से पहले ही थोड़ा डर रहा हो। “रात्रौ… दीपः अस्ति,” वह धीरे-धीरे कहता है, उसका अपना बनाया पहला वाक्य, और पूरा आँगन चुप हो जाता है।
+    failure:
+      en: The lamp flickers. “When” goes in the seventh case, before the rest.
+      hi: दीपक टिमटिमाता है। ‘कब’ सप्तमी में, बाक़ी से पहले।
+  tokens:
+  - प्रभाते
+  - वयम्
+  - पठामः
+- id: pn
+  kind: teach
+  title:
+    en: “When that happens”
+    hi: ‘जब वह होता है’
+  depth: panini
+  skills:
+  - case.loc-time
+  body:
+    en: A seventh-case word can also say “while this was happening”. It is the “absolute” construction, {{सति सप्तमी}}, and you will meet it in the syntax chapter.
+    hi: सप्तमी वाला शब्द ‘जब यह हो रहा था’ भी कह सकता है। यह ‘सति सप्तमी’ है, जो वाक्य-रचना के अध्याय में मिलेगा।
+  examples:
+  - sa: सूर्ये उदिते
+    meaning:
+      en: 'the sun having risen: “when the sun has risen”'
+      hi: सूर्य के उदय होने पर
+- id: sum
+  kind: summary
+  title:
+    en: When
+    hi: कब
+  depth: core
+  points:
+  - sa: प्रभाते · रात्रौ · दिने
+    text:
+      en: A time takes the seventh case.
+      hi: समय सप्तमी लेता है।
+  - sa: कदा?
+    text:
+      en: “When?” asks for this case.
+      hi: ‘कब?’ इसी विभक्ति को माँगता है।
+  - text:
+      en: One case for place and time.
+      hi: स्थान और समय के लिए एक विभक्ति।

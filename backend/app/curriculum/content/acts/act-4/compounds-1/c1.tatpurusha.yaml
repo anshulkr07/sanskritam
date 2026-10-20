@@ -1,0 +1,313 @@
+id: c1.tatpurusha
+template: scene
+title:
+  en: X's Y
+  hi: क का ख
+title_sa: राजपुरुषः
+minutes: 6
+teaches:
+- sam.tatpurusha
+needs:
+- sam.dvandva
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The sixteenth statue
+    hi: सोलहवीं प्रतिमा
+  depth: core
+  image:
+    brief: The sixteenth statue holding a staff, a king's crown carved at her feet; Lubdhaka's foreman writing in his notebook; Dādī shaking her head gently and tapping the word; Śuka reading over his shoulder.
+    alt:
+      en: A statue holds a staff while an old woman gently corrects a man's notebook
+      hi: दण्ड थामे प्रतिमा, आदमी की पुस्तिका सुधारती दादी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - samasika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: c1-tatpurusha-s1
+  narration:
+    en: 'The sixteenth statue holds a staff. “राजपुरुषः,” she says. “Rāja-puruṣaḥ.” Lubdhaka''s foreman, who has begun to follow along with his notebook, writes: ‘the king, the man’. “No,” says Dādī. “The king''s man. The first word stands for a case ending that has been left off: here, ‘of’. Each of the seven cases can hide in the first half of a compound like this.”'
+    hi: 'सोलहवीं प्रतिमा के हाथ में दण्ड है। “राजपुरुषः,” वह कहती है। “राज-पुरुषः।” लुब्धक का मुखिया, जो अब अपनी पुस्तिका लिए पीछे-पीछे चलने लगा है, लिखता है: ‘राजा, पुरुष’। “नहीं,” दादी कहती हैं। “राजा का पुरुष। पहला शब्द एक ऐसे विभक्ति-प्रत्यय का स्थान लेता है जो छूट गया है: यहाँ, ‘का’। सातों विभक्तियाँ इस तरह के समास के पहले भाग में छिप सकती हैं।”'
+- id: t1
+  kind: teach
+  title:
+    en: X's Y
+    hi: क का ख
+  depth: core
+  skills:
+  - sam.tatpurusha
+  body:
+    en: 'In a {{तत्पुरुषः}} the first word relates to the second as a case would: {{राज्ञः पुरुषः}}, “the king''s man”, becomes {{राजपुरुषः}}. The case may be any of seven: {{ग्रामगतः}} (gone to the village), {{वृक्षमूलम्}} (root of a tree), {{विद्यालयः}} (house of learning). The second word gives the gender and ending.'
+    hi: '{{तत्पुरुषः}} में पहला शब्द दूसरे से वैसे सम्बन्धित होता है जैसे कोई विभक्ति: {{राज्ञः पुरुषः}}, ‘राजा का पुरुष’, से {{राजपुरुषः}}। विभक्ति सात में से कोई भी हो सकती है: {{ग्रामगतः}} (गाँव गया हुआ), {{वृक्षमूलम्}} (वृक्ष की जड़), {{विद्यालयः}} (विद्या का घर)। दूसरा शब्द लिंग और प्रत्यय देता है।'
+  term:
+    sa: तत्पुरुषः
+    meaning:
+      en: a compound where the first word stands for a case
+      hi: वह समास जिसमें पहला शब्द किसी विभक्ति का स्थान लेता है
+- id: tb1
+  kind: table
+  title:
+    en: X's Y
+    hi: क का ख
+  depth: core
+  skills:
+  - sam.tatpurusha
+  caption:
+    en: The first word hides a case ending
+    hi: पहला शब्द एक विभक्ति-प्रत्यय छिपाता है
+  columns:
+  - en: Compound
+    hi: समास
+  - en: Unpacked
+    hi: विग्रह
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: राजपुरुषः
+      check:
+        type: subanta
+        stem: राजपुरुष
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: राज्ञः पुरुषः
+    - text:
+        en: the king's man (of)
+        hi: राजा का पुरुष (का)
+  - - sa: विद्यालयः
+      check:
+        type: subanta
+        stem: विद्यालय
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: विद्यायाः आलयः
+    - text:
+        en: a school, house of learning (of)
+        hi: विद्यालय, विद्या का घर (का)
+  - - sa: वृक्षमूलम्
+      check:
+        type: subanta
+        stem: वृक्षमूल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: वृक्षस्य मूलम्
+    - text:
+        en: root of a tree (of)
+        hi: वृक्ष की जड़ (की)
+  - - sa: ग्रामगतः
+      check:
+        type: subanta
+        stem: ग्रामगत
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: ग्रामं गतः
+    - text:
+        en: gone to the village (to)
+        hi: गाँव गया हुआ (को)
+  - - sa: रामबाणः
+      check:
+        type: subanta
+        stem: रामबाण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: रामस्य बाणः
+    - text:
+        en: Rāma's arrow (of)
+        hi: राम का बाण (का)
+  - - sa: पर्णशाला
+      check:
+        type: subanta
+        stem: पर्णशाला
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: पर्णैः निर्मिता शाला
+    - text:
+        en: a hut of leaves (by, with)
+        hi: पत्तों से बनी कुटिया (से)
+  note:
+    en: The coloured word is the compound; the second column shows its unpacking, the {{विग्रहः}}.
+    hi: रंगीन शब्द समास है; दूसरा स्तम्भ उसका खोलना दिखाता है, {{विग्रहः}}।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sam.tatpurusha
+  mode: choice
+  prompt:
+    en: '{{राजपुरुषः}} means…'
+    hi: '{{राजपुरुषः}} का अर्थ…'
+  explain:
+    en: The first word stands for “of the king”.
+    hi: पहला शब्द ‘राजा का’ के स्थान पर है।
+  roman: after
+  options:
+  - text:
+      en: the king and the man
+      hi: राजा और पुरुष
+  - correct: true
+    text:
+      en: the king's man
+      hi: राजा का पुरुष
+  - text:
+      en: the man who is a king
+      hi: वह पुरुष जो राजा है
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sam.tatpurusha
+  mode: match
+  prompt:
+    en: Join each compound to its unpacking.
+    hi: हर समास को उसके विग्रह से जोड़िए।
+  explain:
+    en: Each hides a case ending.
+    hi: हर एक में एक विभक्ति-प्रत्यय छिपा है।
+  roman: after
+  pairs:
+  - left:
+      sa: राजपुरुषः
+    right:
+      sa: राज्ञः पुरुषः
+  - left:
+      sa: वृक्षमूलम्
+    right:
+      sa: वृक्षस्य मूलम्
+  - left:
+      sa: रामबाणः
+    right:
+      sa: रामस्य बाणः
+  - left:
+      sa: ग्रामगतः
+    right:
+      sa: ग्रामं गतः
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sam.tatpurusha
+  widget: mark_words
+  prompt:
+    en: Tap every tatpuruṣa.
+    hi: हर तत्पुरुष छुइए।
+  params:
+    passage:
+    - राजपुरुषः
+    - राजा
+    - वृक्षमूलम्
+    - वृक्षः
+    - विद्यालयः
+    - विद्या
+    targets:
+    - राजपुरुषः
+    - वृक्षमूलम्
+    - विद्यालयः
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sam.tatpurusha
+  mode: order
+  prompt:
+    en: 'Say: “the king''s man comes.”'
+    hi: 'कहिए: ‘राजा का पुरुष आता है।’'
+  explain:
+    en: '{{राजपुरुषः आगच्छति}}.'
+    hi: '{{राजपुरुषः आगच्छति}}।'
+  roman: after
+  tokens:
+  - राजपुरुषः
+  - आगच्छति
+- id: p4
+  kind: practice
+  title:
+    en: The staff
+    hi: दण्ड
+  depth: core
+  skills:
+  - sam.tatpurusha
+  mode: choice
+  prompt:
+    en: '{{ग्रामगतः}} means…'
+    hi: '{{ग्रामगतः}} का अर्थ…'
+  explain:
+    en: The first word stands for “to the village” (the second case).
+    hi: पहला शब्द ‘गाँव को’ (द्वितीया) के स्थान पर है।
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “ग्रामगतः,” you say, “gone to the village,” and the staff in her hand begins to bud. A single green shoot unfurls at its tip, as if it had remembered that it was once a branch. “राजपुरुषः,” she says. “The king's man. And I am not any longer a thing he holds but a thing that grows.” Lubdhaka's foreman closes his notebook and, after a moment, opens it again to the first page.
+      hi: “ग्रामगतः,” आप कहते हैं, “गाँव गया हुआ,” और उसके हाथ का दण्ड अंकुरित होने लगता है। उसकी नोक पर एक हरा अंकुर खुलता है, मानो उसे याद आ गया हो कि वह कभी डाल था। “राजपुरुषः,” वह कहती है। “राजा का पुरुष। और अब मैं उसके हाथ की वस्तु नहीं रही, बल्कि उगने वाली वस्तु हूँ।” लुब्धक का मुखिया अपनी पुस्तिका बन्द करता है और, एक क्षण के बाद, उसे फिर पहले पृष्ठ पर खोलता है।
+    failure:
+      en: 'The staff stays bare. The first word is “to the village”: {{ग्रामगतः}}.'
+      hi: 'दण्ड सूना रहता है। पहला शब्द ‘गाँव को’ है: {{ग्रामगतः}}।'
+  options:
+  - text:
+      en: village and gone
+      hi: गाँव और गया
+  - text:
+      en: of the village, gone
+      hi: गाँव का, गया
+  - correct: true
+    text:
+      en: gone to the village
+      hi: गाँव को गया हुआ
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's X's Y
+    hi: पाणिनि का क का ख
+  depth: panini
+  skills:
+  - sam.tatpurusha
+  sutras:
+  - 2.1.22
+  - 2.2.8
+  - 2.1.24
+  body:
+    en: 'Sūtra 2.1.22, {{तत्पुरुषः}}, names the class. 2.2.8, {{षष्ठी}}, makes the second case-pair for “of” into a compound: {{राज्ञः पुरुषः}} gives {{राजपुरुषः}}. And 2.1.24, {{द्वितीया श्रितातीतपतितगतात्यस्तप्राप्तापन्नैः}}, joins the second case with words like {{गत}}: {{ग्रामगतः}}.'
+    hi: 'सूत्र 2.1.22, {{तत्पुरुषः}}, वर्ग का नाम देता है। 2.2.8, {{षष्ठी}}, ‘का’ वाली षष्ठी को समास बनाता है: {{राज्ञः पुरुषः}} से {{राजपुरुषः}}। और 2.1.24, {{द्वितीया श्रितातीतपतितगतात्यस्तप्राप्तापन्नैः}}, द्वितीया को {{गत}} जैसे शब्दों से जोड़ता है: {{ग्रामगतः}}।'
+- id: sum
+  kind: summary
+  title:
+    en: X's Y
+    hi: क का ख
+  depth: core
+  points:
+  - sa: राजपुरुषः
+    text:
+      en: The king's man.
+      hi: राजा का पुरुष।
+  - sa: विद्यालयः · वृक्षमूलम्
+    text:
+      en: House of learning; root of a tree.
+      hi: विद्या का घर; वृक्ष की जड़।
+  - sa: ग्रामगतः
+    text:
+      en: Gone to the village.
+      hi: गाँव गया हुआ।

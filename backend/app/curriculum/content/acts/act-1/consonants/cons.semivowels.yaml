@@ -1,0 +1,244 @@
+id: cons.semivowels
+template: scene
+title:
+  en: 'The in-between sounds: य र ल व'
+  hi: 'बीच की ध्वनियाँ: य र ल व'
+title_sa: अन्तःस्थाः
+minutes: 6
+teaches:
+- script.cons.semivowels
+needs:
+- script.cons.grid
+- script.cons.voice
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Between the rows
+    hi: पंक्तियों के बीच
+  depth: core
+  image:
+    brief: 'Close-up of the carved door below its five rows: one extra line of four letters set slightly apart, two lavender eyes glinting from the carving beside them, Dādī''s finger pointing.'
+    alt:
+      en: A line of four carved letters under five rows, with two eyes glinting beside them
+      hi: पाँच पंक्तियों के नीचे चार खुदे अक्षर, पास में चमकती दो आँखें
+    cast:
+    - dadi
+    - chayika
+    place: devalaya
+    ratio: '4:3'
+    id: cons-semivowels-s1
+  narration:
+    en: Under the five rows, the door has one more line of four letters that fit no row. Chāyikā's eyes glint between them. “These stand in between,” says Dādī. “Half vowel, half consonant. The old name is {{अन्तःस्थाः}}, the ones that stand within.”
+    hi: पाँच पंक्तियों के नीचे द्वार पर चार अक्षरों की एक और पंक्ति है जो किसी वर्ग में नहीं आती। उनके बीच छायिका की आँखें चमकती हैं। दादी कहती हैं, “ये बीच में खड़े हैं। आधे स्वर, आधे व्यंजन। पुराना नाम {{अन्तःस्थाः}} है, यानी भीतर खड़े होने वाले।”
+- id: t1
+  kind: teach
+  title:
+    en: Half vowel, half consonant
+    hi: आधा स्वर, आधा व्यंजन
+  depth: core
+  skills:
+  - script.cons.semivowels
+  body:
+    en: '{{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly. Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}.'
+    hi: '{{य}} {{र}} {{ल}} {{व}} स्वर {{इ}} {{ऋ}} {{ऌ}} {{उ}} की तरह बनते हैं, बस जीभ या होंठ हल्के से छूते हैं। {{इ}} बोलकर {{अ}} में फिसलिए: {{य}} बन गया। {{उ}} बोलकर फिसलिए: {{व}}।'
+  rows:
+  - sa: य
+    gloss:
+      en: 'y in “yes”: palate, like {{इ}}'
+      hi: 'यश के ‘य’ जैसा: तालु, {{इ}} की तरह'
+  - sa: र
+    gloss:
+      en: 'tapped r: roof of the mouth, like {{ऋ}}'
+      hi: 'जीभ की नोक से ‘र’: मूर्धा, {{ऋ}} की तरह'
+  - sa: ल
+    gloss:
+      en: 'l: teeth, like {{ऌ}}'
+      hi: '‘ल’: दन्त, {{ऌ}} की तरह'
+  - sa: व
+    gloss:
+      en: 'between v and w: teeth and lips, like {{उ}}'
+      hi: '‘व’ और ‘w’ के बीच: दाँत और होंठ, {{उ}} की तरह'
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - script.cons.semivowels
+  widget: mouth_map
+  prompt:
+    en: Tap each in-between letter and see where it is made.
+    hi: हर बीच के अक्षर को छुइए और देखिए कि वह कहाँ बनता है।
+  params:
+    letters:
+    - य
+    - र
+    - ल
+    - व
+  roman: after
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.semivowels
+  mode: match
+  prompt:
+    en: Join each vowel to the in-between letter that grows from it.
+    hi: हर स्वर को उस बीच के अक्षर से जोड़िए जो उससे बनता है।
+  explain:
+    en: '{{इ}}→{{य}}, {{ऋ}}→{{र}}, {{ऌ}}→{{ल}}, {{उ}}→{{व}}: you will see this again when words join.'
+    hi: '{{इ}}→{{य}}, {{ऋ}}→{{र}}, {{ऌ}}→{{ल}}, {{उ}}→{{व}}: शब्दों के जुड़ने पर यह फिर दिखेगा।'
+  roman: after
+  pairs:
+  - left:
+      sa: इ
+    right:
+      sa: य
+  - left:
+      sa: ऋ
+    right:
+      sa: र
+  - left:
+      sa: ऌ
+    right:
+      sa: ल
+  - left:
+      sa: उ
+    right:
+      sa: व
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.semivowels
+  mode: choice
+  prompt:
+    en: Which of these is one of the in-between letters?
+    hi: इनमें बीच का अक्षर कौन-सा है?
+  explain:
+    en: '{{र}} is in the line {{य}} {{र}} {{ल}} {{व}}.'
+    hi: '{{र}} पंक्ति {{य}} {{र}} {{ल}} {{व}} में है।'
+  roman: after
+  options:
+  - sa: क
+  - correct: true
+    sa: र
+  - sa: म
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - script.cons.semivowels
+  widget: mark_words
+  prompt:
+    en: Tap every word that begins with an in-between letter.
+    hi: हर उस शब्द को छुइए जो बीच के अक्षर से शुरू होता है।
+  params:
+    passage:
+    - यवः
+    - रथः
+    - लता
+    - वनम्
+    - कमलम्
+    - नगरम्
+    - सूर्यः
+    targets:
+    - यवः
+    - रथः
+    - लता
+    - वनम्
+  roman: after
+- id: p3
+  kind: practice
+  title:
+    en: Open the line
+    hi: पंक्ति खोलिए
+  depth: core
+  skills:
+  - script.cons.semivowels
+  mode: order
+  prompt:
+    en: Chāyikā's eyes blink. Put the four in-between letters in the order of the door.
+    hi: छायिका की आँखें झपकती हैं। चारों अक्षरों को द्वार के क्रम में लगाइए।
+  explain:
+    en: '{{य}} {{र}} {{ल}} {{व}}: the order of the door, and of Pāṇini''s list.'
+    hi: '{{य}} {{र}} {{ल}} {{व}}: यही द्वार का क्रम है, और पाणिनि की सूची का भी।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: The four letters glow. A shy lavender hand slips out of the carving and touches the letter {{य}}, then pulls back.
+      hi: चारों अक्षर चमकते हैं। नक्काशी से एक शर्मीला बैंगनी हाथ निकलकर {{य}} को छूता है और फिर पीछे हट जाता है।
+    failure:
+      en: 'The letters dim. Say them with your mouth: palate, roof, teeth, lips.'
+      hi: 'अक्षर मद्धम हो जाते हैं। मुँह से बोलकर देखिए: तालु, मूर्धा, दन्त, ओष्ठ।'
+  tokens:
+  - य
+  - र
+  - ल
+  - व
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.semivowels
+  mode: choice
+  prompt:
+    en: What is the old name of {{य}} {{र}} {{ल}} {{व}}?
+    hi: '{{य}} {{र}} {{ल}} {{व}} का पुराना नाम क्या है?'
+  explain:
+    en: '{{अन्तःस्थाः}}: they stand between the vowels and the consonants.'
+    hi: '{{अन्तःस्थाः}}: ये स्वरों और व्यंजनों के बीच खड़े हैं।'
+  roman: show
+  options:
+  - correct: true
+    text:
+      en: '{{अन्तःस्थाः}}: the ones that stand within'
+      hi: '{{अन्तःस्थाः}}: भीतर खड़े होने वाले'
+  - text:
+      en: '{{वर्गाः}}: the rows'
+      hi: '{{वर्गाः}}: पंक्तियाँ'
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's name for them
+    hi: पाणिनि का नाम
+  depth: panini
+  skills:
+  - script.cons.semivowels
+  sutras:
+  - SS.5
+  - SS.6
+  body:
+    en: 'Pāṇini''s Śiva sūtras 5 and 6 are {{हयवरट्}} and {{लण्}}. Drop the marker letters {{ट्}} and {{ण्}}, and {{य}} {{व}} {{र}} {{ल}} remain. He calls this group {{यण्}}: from {{य}} up to the marker {{ण्}}.'
+    hi: 'पाणिनि के शिवसूत्र 5 और 6 हैं {{हयवरट्}} और {{लण्}}। चिह्न {{ट्}} और {{ण्}} हटाइए, तो {{य}} {{व}} {{र}} {{ल}} बचते हैं। वे इस समूह को {{यण्}} कहते हैं: {{य}} से चिह्न {{ण्}} तक।'
+  term:
+    sa: यण्
+    meaning:
+      en: the four semivowels
+      hi: चारों अन्तःस्थ
+- id: sum
+  kind: summary
+  title:
+    en: The in-between sounds
+    hi: बीच की ध्वनियाँ
+  depth: core
+  points:
+  - sa: य र ल व
+    text:
+      en: 'The semivowels: half vowel, half consonant.'
+      hi: 'अन्तःस्थ: आधे स्वर, आधे व्यंजन।'
+  - sa: इ→य · ऋ→र · ऌ→ल · उ→व
+    text:
+      en: Each grows from a vowel.
+      hi: हर एक किसी स्वर से बनता है।
+  - sa: यण्
+    text:
+      en: Pāṇini's name for the group.
+      hi: इस समूह का पाणिनि-नाम।

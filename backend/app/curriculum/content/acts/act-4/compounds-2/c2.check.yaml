@@ -1,0 +1,198 @@
+id: c2.check
+template: check
+title:
+  en: Read the garland
+  hi: माला पढ़िए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sam.bahuvrihi
+  mode: choice
+  prompt:
+    en: '{{पीताम्बरः}} means…'
+    hi: '{{पीताम्बरः}} का अर्थ…'
+  explain:
+    en: A bahuvrīhi.
+    hi: बहुव्रीहि।
+  roman: after
+  options:
+  - text:
+      en: a yellow cloth
+      hi: पीला वस्त्र
+  - correct: true
+    text:
+      en: the one in yellow cloth
+      hi: पीले वस्त्र वाला
+  - text:
+      en: of the yellow cloth
+      hi: पीले वस्त्र का
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sam.bahuvrihi
+  mode: choice
+  prompt:
+    en: '{{दशाननः}} means…'
+    hi: '{{दशाननः}} का अर्थ…'
+  explain:
+    en: 'A bahuvrīhi: Rāvaṇa.'
+    hi: 'बहुव्रीहि: रावण।'
+  roman: after
+  options:
+  - text:
+      en: ten and faces
+      hi: दस और मुख
+  - correct: true
+    text:
+      en: the one with ten faces
+      hi: दस मुख वाला
+  - text:
+      en: of ten faces
+      hi: दस मुखों का
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sam.avyayibhava
+  mode: choice
+  prompt:
+    en: '{{प्रतिदिनम्}} means…'
+    hi: '{{प्रतिदिनम्}} का अर्थ…'
+  explain:
+    en: An avyayībhāva.
+    hi: अव्ययीभाव।
+  roman: after
+  options:
+  - text:
+      en: a day
+      hi: एक दिन
+  - correct: true
+    text:
+      en: every day
+      hi: हर दिन
+  - text:
+      en: of the day
+      hi: दिन का
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sam.avyayibhava
+  mode: choice
+  prompt:
+    en: '{{आमरणम्}} means…'
+    hi: '{{आमरणम्}} का अर्थ…'
+  explain:
+    en: '{{आ-}}: up to.'
+    hi: '{{आ-}}: तक।'
+  roman: after
+  options:
+  - text:
+      en: before death
+      hi: मृत्यु से पहले
+  - correct: true
+    text:
+      en: until death
+      hi: मृत्यु तक
+  - text:
+      en: after death
+      hi: मृत्यु के बाद
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - sam.long
+  mode: choice
+  prompt:
+    en: To unpack a long compound, start from…
+    hi: लम्बे समास को खोलने के लिए शुरू कीजिए…
+  explain:
+    en: The last member gives the ending.
+    hi: अन्तिम सदस्य प्रत्यय देता है।
+  roman: after
+  options:
+  - text:
+      en: the first member
+      hi: पहले सदस्य से
+  - correct: true
+    text:
+      en: the last member
+      hi: अन्तिम सदस्य से
+  - text:
+      en: the middle
+      hi: बीच से
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - sam.bahuvrihi
+  - sam.avyayibhava
+  - sam.long
+  mode: match
+  prompt:
+    en: Join each compound to its meaning.
+    hi: हर समास को उसके अर्थ से जोड़िए।
+  explain:
+    en: Four kinds of long and short.
+    hi: लम्बे और छोटे के चार प्रकार।
+  roman: after
+  pairs:
+  - left:
+      sa: नीलकण्ठः
+    right:
+      text:
+        en: the blue-throated one
+        hi: नीले कण्ठ वाला
+  - left:
+      sa: यथाशक्ति
+    right:
+      text:
+        en: as far as one can
+        hi: जितनी शक्ति हो
+  - left:
+      sa: चन्द्रमुखी
+    right:
+      text:
+        en: the moon-faced woman
+        hi: चन्द्र-मुखी स्त्री
+  - left:
+      sa: सूर्यकोटिसमाभासः
+    right:
+      text:
+        en: shining like ten million suns
+        hi: करोड़ सूर्यों-सा चमकने वाला
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - sam.bahuvrihi
+  - sam.avyayibhava
+  mode: order
+  prompt:
+    en: 'Say what Mālikā says: “the blue-throated one; as far as possible; every day.”'
+    hi: 'वह कहिए जो मालिका कहती है: ‘नीले कण्ठ वाला; यथाशक्ति; प्रतिदिन।’'
+  explain:
+    en: '{{नीलकण्ठः यथाशक्ति प्रतिदिनम्}}: a bahuvrīhi and two adverbs.'
+    hi: '{{नीलकण्ठः यथाशक्ति प्रतिदिनम्}}: एक बहुव्रीहि और दो क्रियाविशेषण।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“नीलकण्ठः, यथाशक्ति, प्रतिदिनम्,” you say, and Mālikā, the garland spirit, steps down and takes off her garland. Each flower, laid on the floor, opens like a hand and rests. “All my life,” she says, “I held them together.” She looks at the long chain on the floor, and then up at you. “राघवः,” she says, “कौन्तेयः. These are the sons: Raghu''s, Kuntī''s. I have never been able to say how.” In the lamplight, further off, the next two statues stir.'
+      hi: '“नीलकण्ठः, यथाशक्ति, प्रतिदिनम्,” आप कहते हैं, और मालिका, माला-भूत, उतरती है और अपनी माला उतार देती है। फर्श पर रखा हर फूल हाथ की तरह खुलकर विश्राम करता है। “सारी उम्र,” वह कहती है, “मैंने इन्हें साथ थामा।” वह फर्श की लम्बी श्रृंखला को देखती है, और फिर आपको। “राघवः,” वह कहती है, “कौन्तेयः। ये पुत्र हैं: रघु के, कुन्ती के। मैं कभी बता नहीं पाई कैसे।” दीपक की रोशनी में, कुछ दूर, अगली दो प्रतिमाएँ हिलती हैं।'
+    failure:
+      en: 'The garland stays on. Her three: {{नीलकण्ठः यथाशक्ति प्रतिदिनम्}}.'
+      hi: 'माला पहनी रहती है। उसके तीन: {{नीलकण्ठः यथाशक्ति प्रतिदिनम्}}।'
+  tokens:
+  - नीलकण्ठः
+  - यथाशक्ति
+  - प्रतिदिनम्

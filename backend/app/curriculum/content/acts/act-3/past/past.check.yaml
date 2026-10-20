@@ -1,0 +1,159 @@
+id: past.check
+template: check
+title:
+  en: Tell what happened
+  hi: बताइए क्या हुआ
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.lan
+  mode: choice
+  prompt:
+    en: “He read.” Which form?
+    hi: ‘उसने पढ़ा।’ कौन-सा रूप?
+  explain:
+    en: '{{अपठत्}}.'
+    hi: '{{अपठत्}}।'
+  roman: after
+  options:
+  - sa: पठति
+  - correct: true
+    sa: अपठत्
+  - sa: पठतु
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.lan
+  mode: type
+  prompt:
+    en: 'Say: “He spoke.”'
+    hi: 'कहिए: ‘उसने कहा।’'
+  explain:
+    en: '{{अवदत्}}.'
+    hi: '{{अवदत्}}।'
+  roman: after
+  answers:
+  - अवदत्
+  tiles:
+  - अ
+  - वद
+  - त्
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.lan
+  mode: match
+  prompt:
+    en: Join present to past.
+    hi: वर्तमान को भूत से जोड़िए।
+  explain:
+    en: Add {{अ}} in front.
+    hi: आगे {{अ}} लगाइए।
+  roman: after
+  pairs:
+  - left:
+      sa: पश्यति
+    right:
+      sa: अपश्यत्
+  - left:
+      sa: लिखति
+    right:
+      sa: अलिखत्
+  - left:
+      sa: खादति
+    right:
+      sa: अखादत्
+  - left:
+      sa: वसति
+    right:
+      sa: अवसत्
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.lan
+  mode: choice
+  prompt:
+    en: “They saw.” Which form?
+    hi: ‘उन्होंने देखा।’ कौन-सा रूप?
+  explain:
+    en: '{{अपश्यन्}}.'
+    hi: '{{अपश्यन्}}।'
+  roman: after
+  options:
+  - sa: अपश्यत्
+  - sa: अपश्यताम्
+  - correct: true
+    sa: अपश्यन्
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - verb.lan
+  mode: choice
+  prompt:
+    en: “There was a king.” Which sentence?
+    hi: ‘एक राजा था।’ कौन-सा वाक्य?
+  explain:
+    en: '{{आसीत्}}.'
+    hi: '{{आसीत्}}।'
+  roman: after
+  options:
+  - sa: राजा अस्ति
+  - sa: राजा अभवत्
+  - correct: true
+    sa: राजा आसीत्
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - verb.lan
+  mode: choice
+  prompt:
+    en: “He came.” Which form?
+    hi: ‘वह आया।’ कौन-सा रूप?
+  explain:
+    en: '{{आगच्छत्}}: prefix + augment + root.'
+    hi: '{{आगच्छत्}}: उपसर्ग + आगम + धातु।'
+  roman: after
+  options:
+  - sa: अगच्छत्
+  - correct: true
+    sa: आगच्छत्
+  - sa: आगच्छति
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - verb.lan
+  mode: order
+  prompt:
+    en: 'Tell the old spirit: “Yesterday he went.”'
+    hi: 'बूढ़े भूत से कहिए: ‘कल वह गया।’'
+  explain:
+    en: '{{ह्यः सः अगच्छत्}}: the spirit’s own sentence.'
+    hi: '{{ह्यः सः अगच्छत्}}: भूत का अपना ही वाक्य।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “ह्यः सः अगच्छत्,” you say. Atītaka lifts his head. “Yes,” he says, as if finishing a sentence he began a hundred years ago. “And today? He is not here. Where did he go?” He gestures into the trees, then smiles, almost cheerfully. “श्वः सः गमिष्यति.” “Tomorrow he will go.” Dādī glances at the Vetāla. “That is not past at all.”
+      hi: “ह्यः सः अगच्छत्,” आप कहते हैं। अतीतक सिर उठाता है। “हाँ,” वह कहता है, मानो सौ वर्ष पहले शुरू किया वाक्य पूरा कर रहा हो। “और आज? वह यहाँ नहीं है। कहाँ गया?” वह पेड़ों की ओर इशारा करता है, फिर लगभग हँसते हुए मुस्कराता है। “श्वः सः गमिष्यति।” “कल वह जाएगा।” दादी वेताल की ओर देखती हैं। “यह तो भूतकाल है ही नहीं।”
+    failure:
+      en: 'The old spirit shakes his head. His sentence: {{ह्यः सः अगच्छत्}}.'
+      hi: 'बूढ़ा भूत सिर हिलाता है। उसका वाक्य: {{ह्यः सः अगच्छत्}}।'
+  tokens:
+  - ह्यः
+  - सः
+  - अगच्छत्

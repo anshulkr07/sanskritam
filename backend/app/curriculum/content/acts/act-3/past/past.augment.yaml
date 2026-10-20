@@ -1,0 +1,549 @@
+id: past.augment
+template: scene
+title:
+  en: The augment अ-
+  hi: आगम अ-
+title_sa: अगच्छत्
+minutes: 6
+teaches:
+- verb.lan
+needs:
+- verb.lot
+- verb.pres-3sg
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The second night
+    hi: दूसरी रात
+  depth: core
+  image:
+    brief: 'A burning-ground grove at night: a pale, almost see-through spirit walking backwards out of the dark, its edges fading like old ink, a trail of fading footprints behind it; the Vetāla hanging from the śiṃśapā tree yawning; Dādī and Śuka watching.'
+    alt:
+      en: A faint spirit walks backwards leaving fading footprints while the Vetāla yawns above
+      hi: धुँधला भूत उलटा चलता मिटते निशान छोड़ता, ऊपर जम्हाई लेता वेताल
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - atitaka
+    place: smashana
+    ratio: '4:3'
+    id: past-augment-s1
+  narration:
+    en: 'The next night the Vetāla stretches, yawns, and says: “Tell me about yesterday.” You open your mouth and find only present tense: he goes, he reads. A faint spirit, backwards-walking, comes shuffling out of the dark with a trail of fading footprints behind him. “अगच्छत्,” he sighs. “अपठत्.” “He went, he read,” Dādī translates. “The past has an extra letter in front.”'
+    hi: 'अगली रात वेताल अँगड़ाई लेता है, जम्हाई लेता है, और कहता है: “मुझे बीते कल के बारे में बताओ।” आप मुँह खोलते हैं और पाते हैं कि केवल वर्तमान काल है: वह जाता है, वह पढ़ता है। अँधेरे से एक धुँधला भूत उलटा चलता हुआ सरकता आता है, पीछे मिटते पैरों के निशान। “अगच्छत्,” वह आह भरता है। “अपठत्।” “वह गया, उसने पढ़ा,” दादी अनुवाद करती हैं। “भूतकाल के आगे एक अतिरिक्त अक्षर लगता है।”'
+  lines:
+  - speaker: dadi
+    sa: अगच्छत्। अपठत्।
+    gloss:
+      en: He went. He read.
+      hi: वह गया। उसने पढ़ा।
+- id: t1
+  kind: teach
+  title:
+    en: The past with अ-
+    hi: अ- वाला भूतकाल
+  depth: core
+  skills:
+  - verb.lan
+  body:
+    en: 'For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}} (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment, {{अट्}}.'
+    hi: 'जो आज से पहले हुआ, उसके लिए धातु के आगे {{अ}} लगाइए और भूतकाल के प्रत्यय लीजिए: {{अगच्छत्}} (वह गया), {{अपठत्}} (उसने पढ़ा), {{अवदत्}} (उसने कहा)। इस काल का नाम {{लङ्}} है। {{अ}} को आगम {{अट्}} कहते हैं।'
+  examples:
+  - sa: ह्यः बालकः गृहम् अगच्छत्।
+    meaning:
+      en: Yesterday the boy went home.
+      hi: कल बालक घर गया।
+    words:
+    - sa: ह्यः
+      gloss:
+        en: yesterday
+        hi: कल (बीता)
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गृहम्
+      gloss:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: अगच्छत्
+      gloss:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+  - sa: बालकाः पुस्तकम् अपठन्।
+    meaning:
+      en: The boys read the book.
+      hi: बालकों ने पुस्तक पढ़ी।
+    words:
+    - sa: बालकाः
+      gloss:
+        en: boys
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: पुस्तकम्
+      gloss:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: अपठन्
+      gloss:
+        en: read
+        hi: पढ़ा
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Bahu
+  - sa: अहम् तम् अपश्यम्।
+    meaning:
+      en: I saw him.
+      hi: मैंने उसे देखा।
+    words:
+    - sa: अहम्
+      gloss:
+        en: I
+        hi: मैं
+    - sa: तम्
+      gloss:
+        en: him
+        hi: उसे
+    - sa: अपश्यम्
+      gloss:
+        en: saw
+        hi: देखा
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lan
+        purusha: Uttama
+        vacana: Eka
+  term:
+    sa: लङ्
+    meaning:
+      en: the everyday past
+      hi: सामान्य भूतकाल
+- id: tb1
+  kind: table
+  title:
+    en: 'पठ्: the past'
+    hi: 'पठ्: भूतकाल'
+  depth: core
+  skills:
+  - verb.lan
+  caption:
+    en: “He read, you read, I read”
+    hi: ‘उसने पढ़ा, तुमने पढ़ा, मैंने पढ़ा’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: अपठत्
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: अपठताम्
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Dvi
+    - sa: अपठन्
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: अपठः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lan
+        purusha: Madhyama
+        vacana: Eka
+    - sa: अपठतम्
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lan
+        purusha: Madhyama
+        vacana: Dvi
+    - sa: अपठत
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lan
+        purusha: Madhyama
+        vacana: Bahu
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: अपठम्
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lan
+        purusha: Uttama
+        vacana: Eka
+    - sa: अपठाव
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lan
+        purusha: Uttama
+        vacana: Dvi
+    - sa: अपठाम
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lan
+        purusha: Uttama
+        vacana: Bahu
+  note:
+    en: 'The endings are the present endings made past: {{-त्}} for he, {{-ः}} for you, {{-म्}} for I.'
+    hi: 'प्रत्यय वर्तमान के प्रत्यय हैं जो भूतकाल बन गए: ‘वह’ के लिए {{-त्}}, ‘तुम’ के लिए {{-ः}}, ‘मैं’ के लिए {{-म्}}।'
+- id: tb2
+  kind: table
+  title:
+    en: 'गम्: the past'
+    hi: 'गम्: भूतकाल'
+  depth: core
+  skills:
+  - verb.lan
+  caption:
+    en: “He went, you went, I went”
+    hi: ‘वह गया, तुम गए, मैं गया’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: अगच्छत्
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: अगच्छताम्
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Dvi
+    - sa: अगच्छन्
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: अगच्छः
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Madhyama
+        vacana: Eka
+    - sa: अगच्छतम्
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Madhyama
+        vacana: Dvi
+    - sa: अगच्छत
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Madhyama
+        vacana: Bahu
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: अगच्छम्
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Uttama
+        vacana: Eka
+    - sa: अगच्छाव
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Uttama
+        vacana: Dvi
+    - sa: अगच्छाम
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Uttama
+        vacana: Bahu
+- id: t2
+  kind: teach
+  title:
+    en: With a prefix
+    hi: उपसर्ग के साथ
+  depth: core
+  skills:
+  - verb.lan
+  body:
+    en: 'A prefix stays in front and the {{अ}} goes between it and the root: {{आ + गच्छति}} makes {{आगच्छति}}, and its past is {{आगच्छत्}}, “he came”.'
+    hi: 'उपसर्ग आगे ही रहता है और {{अ}} उसके और धातु के बीच आता है: {{आ + गच्छति}} से {{आगच्छति}} बनता है, और उसका भूतकाल {{आगच्छत्}} है, ‘वह आया’।'
+  examples:
+  - sa: सः आगच्छत्।
+    meaning:
+      en: He came.
+      hi: वह आया।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: आगच्छत्
+      gloss:
+        en: came
+        hi: आया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.lan
+  mode: choice
+  prompt:
+    en: “He read (yesterday).” Which form?
+    hi: ‘उसने (कल) पढ़ा।’ कौन-सा रूप?
+  explain:
+    en: '{{अपठत्}}: {{अ}} + {{पठ}} + {{त्}}.'
+    hi: '{{अपठत्}}: {{अ}} + {{पठ}} + {{त्}}।'
+  roman: after
+  options:
+  - sa: पठति
+  - correct: true
+    sa: अपठत्
+  - sa: पठतु
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.lan
+  mode: type
+  prompt:
+    en: 'Say: “He went.”'
+    hi: 'कहिए: ‘वह गया।’'
+  explain:
+    en: '{{अगच्छत्}}.'
+    hi: '{{अगच्छत्}}।'
+  roman: after
+  answers:
+  - अगच्छत्
+  tiles:
+  - अ
+  - गच्छ
+  - त्
+  - ति
+  - ः
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.lan
+  widget: mark_words
+  prompt:
+    en: Tap every past form.
+    hi: हर भूतकाल का रूप छुइए।
+  params:
+    passage:
+    - अगच्छत्
+    - गच्छति
+    - अपठत्
+    - पठति
+    - अवदत्
+    - वदति
+    targets:
+    - अगच्छत्
+    - अपठत्
+    - अवदत्
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.lan
+  mode: match
+  prompt:
+    en: Join each past form to its meaning.
+    hi: हर भूतकाल के रूप को उसके अर्थ से जोड़िए।
+  explain:
+    en: Each is {{अ}} + root + {{त्}}.
+    hi: हर एक {{अ}} + धातु + {{त्}} है।
+  roman: after
+  pairs:
+  - left:
+      sa: अगच्छत्
+    right:
+      text:
+        en: he went
+        hi: वह गया
+  - left:
+      sa: अपठत्
+    right:
+      text:
+        en: he read
+        hi: उसने पढ़ा
+  - left:
+      sa: अपश्यत्
+    right:
+      text:
+        en: he saw
+        hi: उसने देखा
+  - left:
+      sa: अलिखत्
+    right:
+      text:
+        en: he wrote
+        hi: उसने लिखा
+- id: p4
+  kind: practice
+  title:
+    en: They went
+    hi: वे गए
+  depth: core
+  skills:
+  - verb.lan
+  mode: choice
+  prompt:
+    en: “They went.” Which form?
+    hi: ‘वे गए।’ कौन-सा रूप?
+  explain:
+    en: '{{अगच्छन्}}: they, many.'
+    hi: '{{अगच्छन्}}: वे, अनेक।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “अगच्छन्,” you say, and the faint spirit stops walking backwards. His footprints, which had been fading, grow dark again, step by step, all the way from where you stand to the distant edge of the grove. “They went,” he whispers. “They did. I remember.”
+      hi: “अगच्छन्,” आप कहते हैं, और धुँधला भूत उलटा चलना रोक देता है। उसके मिटते पैरों के निशान फिर गहरे होने लगते हैं, कदम-कदम, जहाँ आप खड़े हैं वहाँ से वन के दूर छोर तक। “वे गए,” वह फुसफुसाता है। “सचमुच गए। मुझे याद है।”
+    failure:
+      en: 'His footprints keep fading. “They went”: {{अगच्छन्}}.'
+      hi: 'उसके पैरों के निशान मिटते रहते हैं। ‘वे गए’: {{अगच्छन्}}।'
+  options:
+  - sa: अगच्छत्
+  - sa: अगच्छताम्
+  - correct: true
+    sa: अगच्छन्
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's past
+    hi: पाणिनि का भूतकाल
+  depth: panini
+  skills:
+  - verb.lan
+  sutras:
+  - 3.2.111
+  - 6.4.71
+  - 3.4.100
+  body:
+    en: 'Sūtra 3.2.111, {{अनद्यतने लङ्}}, gives {{लङ्}} for a past not of today. 6.4.71, {{लुङ्लङ्लृङ्क्ष्वडुदात्तः}}, adds the augment {{अ}}. Then 3.4.100, {{इतश्च}}, drops the final {{-इ}} of the ending {{-ति}}, so {{-ति}} becomes {{-त्}}: {{अपठत्}}.'
+    hi: 'सूत्र 3.2.111, {{अनद्यतने लङ्}}, आज से पहले के भूत के लिए {{लङ्}} देता है। 6.4.71, {{लुङ्लङ्लृङ्क्ष्वडुदात्तः}}, आगम {{अ}} जोड़ता है। फिर 3.4.100, {{इतश्च}}, {{-ति}} प्रत्यय का अन्तिम {{-इ}} हटा देता है, इसलिए {{-ति}} {{-त्}} बनता है: {{अपठत्}}।'
+- id: sum
+  kind: summary
+  title:
+    en: The past
+    hi: भूतकाल
+  depth: core
+  points:
+  - sa: अगच्छत् · अपठत्
+    text:
+      en: He went, he read.
+      hi: वह गया, उसने पढ़ा।
+  - sa: अ + धातु
+    text:
+      en: The augment goes in front.
+      hi: आगम आगे लगता है।
+  - sa: आगच्छत्
+    text:
+      en: 'With a prefix: he came.'
+      hi: 'उपसर्ग सहित: वह आया।'

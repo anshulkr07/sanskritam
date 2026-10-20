@@ -1,0 +1,170 @@
+id: from.revision
+template: revision
+title:
+  en: Everything about from
+  hi: से, सब कुछ
+title_sa: पञ्चमीसङ्ग्रहः
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: case.abl
+    formula: वृक्षात् पत्रं पतति
+    rule:
+      en: The source, the fixed point something moves away from, takes the fifth case.
+      hi: स्रोत, स्थिर बिन्दु जिससे कुछ अलग होता है, पञ्चमी लेता है।
+    sutras:
+    - 2.3.28
+    - 1.4.24
+    tag: core
+    taught_in: from.away#t1
+  - skill: case.abl
+    formula: वृक्षात् · बालिकायाः · नद्याः
+    rule:
+      en: 'Singular endings: {{आत्}} (masculine, neuter -अ), {{आयाः}} (feminine -आ), {{याः}} (feminine -ई).'
+      hi: 'एकवचन प्रत्यय: {{आत्}} (पुंलिंग, नपुंसक -अ), {{आयाः}} (स्त्रीलिंग -आ), {{याः}} (स्त्रीलिंग -ई)।'
+    tag: core
+    taught_in: from.away#tb1
+  - skill: case.abl-fear-compare
+    formula: व्याघ्रात् बिभेति
+    rule:
+      en: What is feared or guarded against is in the fifth case.
+      hi: जिससे भय हो या रक्षा की जाए वह पञ्चमी में है।
+    sutras:
+    - 1.4.25
+    tag: core
+    taught_in: from.fear#t1
+  - skill: case.abl-fear-compare
+    formula: रामात् श्यामः दीर्घतरः
+    rule:
+      en: 'Comparison: the thing compared with takes the fifth case; the quality takes {{तर}}.'
+      hi: 'तुलना: जिससे तुलना हो वह पञ्चमी में; गुण में {{तर}}।'
+    sutras:
+    - 2.3.42
+    tag: core
+    taught_in: from.fear#t2
+- id: conditions
+  kind: revision
+  title:
+    en: When it applies
+    hi: कब लागू होता है
+  depth: core
+  section: conditions
+  rows:
+  - skill: case.abl
+    rule:
+      en: 'Plural: {{एभ्यः}} (masculine, neuter -अ), {{आभ्यः}} (feminine); dual {{आभ्याम्}} for all. These are the same as the fourth case.'
+      hi: 'बहुवचन: {{एभ्यः}} (पुंलिंग, नपुंसक -अ), {{आभ्यः}} (स्त्रीलिंग); द्विवचन सबके लिए {{आभ्याम्}}। ये चतुर्थी जैसे ही हैं।'
+    example:
+      sa: वृक्षेभ्यः
+      meaning:
+        en: from the trees
+        hi: पेड़ों से
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Bahu
+    tag: good
+    new_here: true
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: case.abl
+    rule:
+      en: 'The fifth case can also give a cause: {{भयात् पलायते}}, “runs away out of fear”.'
+      hi: 'पञ्चमी कारण भी बता सकती है: {{भयात् पलायते}}, ‘भय से भागता है’।'
+    example:
+      sa: भयात्
+      meaning:
+        en: out of fear
+        hi: भय के कारण
+      check:
+        type: subanta
+        stem: भय
+        linga: Napumsaka
+        vibhakti: Panchami
+        vacana: Eka
+    tag: good
+    new_here: true
+  - skill: case.abl
+    rule:
+      en: 'Feminine singular fifth and sixth look the same: {{नद्याः}}. The verb and the other words tell which.'
+      hi: 'स्त्रीलिंग एकवचन पञ्चमी और षष्ठी एक-सी दिखती हैं: {{नद्याः}}। क्रिया और दूसरे शब्द बताते हैं कि कौन-सी।'
+    tag: good
+    taught_in: from.away#tb1
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: case.abl
+    rule:
+      en: 'Do not use the third case for “from”: {{वृक्षात्}}, not {{वृक्षेण}}.'
+      hi: '‘से (अलग होने)’ के लिए तृतीया मत लगाइए: {{वृक्षात्}}, {{वृक्षेण}} नहीं।'
+    tag: core
+    taught_in: from.away#t1
+  - skill: case.abl-fear-compare
+    rule:
+      en: 'Do not put what you fear in the second case: {{व्याघ्रात् बिभेति}}.'
+      hi: 'जिससे डरें उसे द्वितीया में मत रखिए: {{व्याघ्रात् बिभेति}}।'
+    tag: core
+    taught_in: from.fear#t1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: case.abl
+    rule:
+      en: '{{ध्रुवमपायेऽपादानम्}}: the fixed point is the source; {{अपादाने पञ्चमी}}: it takes the fifth case.'
+      hi: '{{ध्रुवमपायेऽपादानम्}}: स्थिर बिन्दु स्रोत है; {{अपादाने पञ्चमी}}: वह पञ्चमी लेता है।'
+    sutras:
+    - 1.4.24
+    - 2.3.28
+    tag: core
+    taught_in: from.away#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: case.abl
+    formula: आत् · आयाः · याः
+    rule:
+      en: from
+      hi: से
+    tag: core
+    taught_in: from.away#tb1
+  - skill: case.abl-fear-compare
+    formula: व्याघ्रात् बिभेति
+    rule:
+      en: fear, protect, compare
+      hi: भय, रक्षा, तुलना
+    tag: core
+    taught_in: from.fear#t1

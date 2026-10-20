@@ -1,0 +1,253 @@
+id: reading.names
+template: scene
+title:
+  en: The register of names
+  hi: नामों का रजिस्टर
+title_sa: नामपत्रम्
+minutes: 6
+teaches:
+- read.words
+needs:
+- read.syllables
+- read.places
+- read.iast
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: A shadow in the doorway
+    hi: द्वार पर एक छाया
+  depth: core
+  image:
+    brief: 'The temple library''s arched doorway: a tall man in an expensive dark coat over a kurta with rings on his fingers and a leather satchel stands half in shadow, watching the glowing leaf on the desk; in the foreground Dādī reads the open register to you and Maunī.'
+    alt:
+      en: A tall man in a dark coat watches from a library doorway as a grandmother reads a register
+      hi: दरवाज़े से देखता गहरे कोट वाला आदमी, रजिस्टर पढ़ती दादी
+    cast:
+    - you
+    - dadi
+    - mauni
+    - lubdhaka
+    place: granthalaya
+    ratio: '4:3'
+    id: reading-names-s1
+  narration:
+    en: The register is open, names in long columns. Dādī reads the first aloud, and the second, and the third. In the arched doorway a tall man in a dark coat watches, rings on his fingers, a leather satchel on his shoulder. He says nothing. His eyes are on the glowing leaf.
+    hi: रजिस्टर खुला है, लम्बे स्तम्भों में नाम। दादी पहला नाम ज़ोर से पढ़ती हैं, फिर दूसरा, फिर तीसरा। मेहराबदार द्वार पर गहरे कोट में एक लम्बा आदमी देख रहा है, उँगलियों में अँगूठियाँ, कंधे पर चमड़े का थैला। वह कुछ नहीं बोलता। उसकी नज़र चमकते पत्र पर है।
+- id: t1
+  kind: teach
+  title:
+    en: Read it whole
+    hi: पूरा पढ़िए
+  depth: core
+  skills:
+  - read.words
+  body:
+    en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+    hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+  examples:
+  - sa: रामः
+    meaning:
+      en: Rāma
+      hi: राम
+    check:
+      type: subanta
+      stem: राम
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: सीता
+    meaning:
+      en: Sītā
+      hi: सीता
+    check:
+      type: subanta
+      stem: सीता
+      linga: Stri
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: लक्ष्मणः
+    meaning:
+      en: Lakṣmaṇa
+      hi: लक्ष्मण
+    check:
+      type: subanta
+      stem: लक्ष्मण
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: भरतः
+    meaning:
+      en: Bharata
+      hi: भरत
+    check:
+      type: subanta
+      stem: भरत
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - read.words
+  mode: choice
+  prompt:
+    en: Which word is “Sītā”?
+    hi: कौन-सा शब्द “Sītā” है?
+  explain:
+    en: '{{सी}} with the long ī, then {{ता}}.'
+    hi: दीर्घ ई वाला {{सी}}, फिर {{ता}}।
+  roman: after
+  options:
+  - correct: true
+    sa: सीता
+  - sa: शीता
+  - sa: सिता
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - read.words
+  mode: choice
+  prompt:
+    en: Which word is “Lakṣmaṇa”?
+    hi: इनमें से कौन-सा शब्द “Lakṣmaṇa” पढ़ा जाता है?
+  explain:
+    en: '{{ष्म}} joins {{ष्}} and {{म}}, and the last syllable has the curled {{ण}}.'
+    hi: '{{ष्म}} में {{ष्}} और {{म}} जुड़े हैं, और अन्तिम अक्षर में मुड़ी जीभ वाला {{ण}} है।'
+  roman: after
+  options:
+  - sa: लक्षमणः
+  - correct: true
+    sa: लक्ष्मणः
+  - sa: लक्ष्मनः
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - read.words
+  widget: mark_words
+  prompt:
+    en: Tap every name in this column.
+    hi: इस स्तम्भ के हर नाम को छुइए।
+  params:
+    passage:
+    - रामः
+    - पत्रम्
+    - सीता
+    - फलम्
+    - भरतः
+    - वनम्
+    targets:
+    - रामः
+    - सीता
+    - भरतः
+  roman: after
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - read.words
+  mode: match
+  prompt:
+    en: Join each name to its first sound's place.
+    hi: हर नाम को उसकी पहली ध्वनि के स्थान से जोड़िए।
+  explain:
+    en: 'Place of the first sound: {{र}} roof, {{स}} teeth, {{भ}} lips, {{ग}} throat.'
+    hi: 'पहली ध्वनि का स्थान: {{र}} मूर्धा, {{स}} दन्त, {{भ}} ओष्ठ, {{ग}} कण्ठ।'
+  roman: after
+  pairs:
+  - left:
+      sa: रामः
+    right:
+      text:
+        en: roof of the mouth
+        hi: मूर्धा
+  - left:
+      sa: सीता
+    right:
+      text:
+        en: teeth
+        hi: दन्त
+  - left:
+      sa: भरतः
+    right:
+      text:
+        en: lips
+        hi: ओष्ठ
+  - left:
+      sa: गङ्गा
+    right:
+      text:
+        en: throat
+        hi: कण्ठ
+- id: p4
+  kind: practice
+  title:
+    en: His name
+    hi: उसका नाम
+  depth: core
+  skills:
+  - read.words
+  mode: order
+  prompt:
+    en: 'Read the silent spirit''s name aloud: put {{मौ}} and {{नी}} in order.'
+    hi: 'चुप रहने वाले भूत का नाम ज़ोर से पढ़िए: {{मौ}} और {{नी}} को क्रम में लगाइए।'
+  explain:
+    en: '{{मौ}} + {{नी}} = {{मौनी}}: the silent one.'
+    hi: '{{मौ}} + {{नी}} = {{मौनी}}: चुप रहने वाला।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “मौनी,” you read, and the pale-gold spirit's finger leaves his lips. “मौनी अस्मि,” he says, in a voice like old paper. “वदामि!”
+      hi: “मौनी,” आप पढ़ते हैं, और सुनहरे भूत की उँगली होंठों से हट जाती है। “मौनी अस्मि,” वह पुराने कागज़ जैसी आवाज़ में कहता है। “वदामि!”
+    failure:
+      en: 'His name will not settle. Two syllables: {{मौ}} first.'
+      hi: 'उसका नाम जमता नहीं। दो अक्षर: पहले {{मौ}}।'
+  tokens:
+  - मौ
+  - नी
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - read.words
+  mode: choice
+  prompt:
+    en: Why can Maunī speak now?
+    hi: मौनी अब क्यों बोल सकता है?
+  explain:
+    en: The ghost waited for his own name to be read.
+    hi: भूत अपना नाम पढ़ा जाने की प्रतीक्षा कर रहा था।
+  roman: show
+  options:
+  - correct: true
+    text:
+      en: Someone read his name aloud
+      hi: किसी ने उसका नाम ज़ोर से पढ़ा
+  - text:
+      en: The register was closed
+      hi: रजिस्टर बन्द हो गया
+- id: sum
+  kind: summary
+  title:
+    en: Reading names
+    hi: नाम पढ़ना
+  depth: core
+  points:
+  - text:
+      en: Split into syllables, check the places, say it whole.
+      hi: अक्षरों में बाँटिए, स्थान देखिए, पूरा बोलिए।
+  - sa: मौनी
+    text:
+      en: Maunī, the silent one.
+      hi: मौनी, चुप रहने वाला।
+  - text:
+      en: Act I's letters are now yours.
+      hi: अंक I के अक्षर अब आपके हैं।

@@ -1,0 +1,334 @@
+id: m1.shloka
+template: scene
+title:
+  en: Four quarters of eight
+  hi: आठ-आठ के चार चरण
+title_sa: श्लोकः
+minutes: 6
+teaches:
+- chandas.shloka
+needs:
+- chandas.weight
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Grief into verse
+    hi: शोक से श्लोक
+  depth: core
+  image:
+    brief: Dādī telling the legend with a hand raised; behind her, a faint painted vision of a sage by a river looking up at a hunter who has lowered his bow, and a pair of cranes, one fallen, one crying; Chandikā listening with her drum in her lap; Śuka perched wide-eyed on the throne; Lubdhaka at the back, no longer smiling.
+    alt:
+      en: Dādī tells a legend while a faint vision shows a sage, a hunter and two cranes
+      hi: दादी कथा सुनाती हैं, पीछे ऋषि, व्याध और दो सारस की धुँधली छवि
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - chandika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: m1-shloka-s1
+  narration:
+    en: 'Chandikā''s drum is steady now. “Do you know where the śloka was born?” says Dādī. “A sage saw a hunter shoot one of two birds, and his grief came out in measured words: मा निषाद, hunter, may you find no rest! It had four quarters of eight syllables, and he said: the grief had become śloka.” At the back, Lubdhaka stops smiling.'
+    hi: 'छन्दिका का ढोल अब स्थिर है। “क्या आप जानते हैं श्लोक का जन्म कहाँ हुआ?” दादी कहती हैं। “एक ऋषि ने देखा कि व्याध ने दो पक्षियों में से एक को मार दिया, और उनका शोक नपे-तुले शब्दों में फूट पड़ा: मा निषाद, व्याध, तुझे चैन न मिले! उसके चार चरण थे, आठ-आठ अक्षर के, और उन्होंने कहा: शोक ही श्लोक बन गया।” पीछे, लुब्धक की मुस्कान रुक जाती है।'
+  quote:
+    sa: समाक्षरैश् चतुर्भिर् यः पादैर् गीतो महर्षिणा सो ऽनुव्याहरणाद् भूयः शोकः श्लोकत्वम् आगतः
+    gloss:
+      en: 'What the great sage sang in four quarters of equal syllables: by his saying it again, that grief became a śloka.'
+      hi: 'महर्षि ने जो चार समान अक्षरों वाले चरणों में गाया: उसे दोबारा कहने से वह शोक श्लोक बन गया।'
+    source: Rāmāyaṇa, Bālakāṇḍa 2 (read in the Digital Corpus of Sanskrit)
+- id: t1
+  kind: teach
+  title:
+    en: Four quarters of eight
+    hi: आठ-आठ के चार चरण
+  depth: core
+  skills:
+  - chandas.shloka
+  body:
+    en: 'A śloka has four quarters ({{पाद}}) of eight syllables: 32 in all, or 16 in each half. The first four syllables and the eighth are free. In the middle the pattern is fixed: the fifth light, the sixth heavy, and the seventh heavy in quarters one and three, light in two and four.'
+    hi: 'श्लोक में चार चरण ({{पाद}}) होते हैं, आठ-आठ अक्षर के: कुल 32, या हर आधे में 16। पहले चार अक्षर और आठवाँ स्वतन्त्र हैं। बीच में ढाँचा बँधा है: पाँचवाँ लघु, छठा गुरु, और सातवाँ पहले-तीसरे चरण में गुरु, दूसरे-चौथे में लघु।'
+  term:
+    sa: पादः
+    meaning:
+      en: a quarter of a verse
+      hi: श्लोक का चरण
+- id: tb1
+  kind: table
+  title:
+    en: The pattern
+    hi: ढाँचा
+  depth: core
+  skills:
+  - chandas.shloka
+  caption:
+    en: Eight places in each quarter
+    hi: हर चरण में आठ स्थान
+  columns:
+  - en: Quarter
+    hi: चरण
+  - en: 1–4
+    hi: १–४
+  - en: 5th
+    hi: ५वाँ
+  - en: 6th
+    hi: ६ठा
+  - en: 7th
+    hi: ७वाँ
+  - en: 8th
+    hi: ८वाँ
+  rows:
+  - - text:
+        en: '1'
+        hi: १
+    - text:
+        en: any
+        hi: कोई भी
+    - sa: ल
+    - sa: ग
+    - sa: ग
+    - text:
+        en: any
+        hi: कोई भी
+  - - text:
+        en: '2'
+        hi: २
+    - text:
+        en: any
+        hi: कोई भी
+    - sa: ल
+    - sa: ग
+    - sa: ल
+    - text:
+        en: any
+        hi: कोई भी
+  - - text:
+        en: '3'
+        hi: ३
+    - text:
+        en: any
+        hi: कोई भी
+    - sa: ल
+    - sa: ग
+    - sa: ग
+    - text:
+        en: any
+        hi: कोई भी
+  - - text:
+        en: '4'
+        hi: ४
+    - text:
+        en: any
+        hi: कोई भी
+    - sa: ल
+    - sa: ग
+    - sa: ल
+    - text:
+        en: any
+        hi: कोई भी
+  note:
+    en: ल = light, ग = heavy. The last syllable of a quarter is counted either way.
+    hi: ल = लघु, ग = गुरु। चरण का अन्तिम अक्षर दोनों तरह गिना जाता है।
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - chandas.shloka
+  widget: rhythm_tapper
+  prompt:
+    en: 'Tap the two lines of the first śloka: look at places five to seven.'
+    hi: 'पहले श्लोक की दो पंक्तियों की ताल दीजिए: पाँच से सात स्थानों को देखिए।'
+  params:
+    lines:
+    - मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीं समाः
+    - यत्क्रौञ्चमिथुनादेकमवधीः काममोहितम्
+  roman: show
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - chandas.shloka
+  mode: choice
+  prompt:
+    en: How many syllables are in one half of a śloka?
+    hi: श्लोक के एक आधे में कितने अक्षर होते हैं?
+  explain:
+    en: 'Two quarters of eight: 16.'
+    hi: 'आठ-आठ के दो चरण: 16।'
+  roman: after
+  options:
+  - text:
+      en: '8'
+      hi: ८
+  - correct: true
+    text:
+      en: '16'
+      hi: १६
+  - text:
+      en: '32'
+      hi: ३२
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - chandas.shloka
+  mode: choice
+  prompt:
+    en: Which syllables of a quarter are fixed?
+    hi: चरण के कौन-से अक्षर बँधे हैं?
+  explain:
+    en: The middle three; the rest are free.
+    hi: बीच के तीन; बाकी स्वतन्त्र हैं।
+  roman: after
+  options:
+  - text:
+      en: the first four
+      hi: पहले चार
+  - correct: true
+    text:
+      en: the fifth, sixth and seventh
+      hi: पाँचवाँ, छठा और सातवाँ
+  - text:
+      en: the eighth only
+      hi: केवल आठवाँ
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - chandas.shloka
+  mode: match
+  prompt:
+    en: Join each place to its weight.
+    hi: हर स्थान को उसके भार से जोड़िए।
+  explain:
+    en: Fifth light, sixth heavy, seventh alternating.
+    hi: पाँचवाँ लघु, छठा गुरु, सातवाँ बारी-बारी।
+  roman: after
+  pairs:
+  - left:
+      text:
+        en: the 5th
+        hi: ५वाँ
+    right:
+      text:
+        en: light
+        hi: लघु
+  - left:
+      text:
+        en: the 6th
+        hi: ६ठा
+    right:
+      text:
+        en: heavy
+        hi: गुरु
+  - left:
+      text:
+        en: the 7th, quarters 1 and 3
+        hi: ७वाँ, चरण १ और ३
+    right:
+      text:
+        en: heavy in these
+        hi: इनमें गुरु
+  - left:
+      text:
+        en: the 7th, quarters 2 and 4
+        hi: ७वाँ, चरण २ और ४
+    right:
+      text:
+        en: light in these
+        hi: इनमें लघु
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - chandas.shloka
+  mode: engine
+  prompt:
+    en: Mark each syllable of the hunter verse.
+    hi: व्याध-श्लोक के हर अक्षर को चिह्नित कीजिए।
+  explain:
+    en: Look at places five to seven in each quarter.
+    hi: हर चरण के पाँच से सात स्थानों को देखिए।
+  roman: after
+  exercise:
+    kind: scan_metre
+    params:
+      text: मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीं समाः
+    seed: 2
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - chandas.shloka
+  mode: engine
+  prompt:
+    en: Mark each syllable of the sage's line.
+    hi: ऋषि की पंक्ति के हर अक्षर को चिह्नित कीजिए।
+  explain:
+    en: A śloka line is 16 syllables.
+    hi: श्लोक की पंक्ति 16 अक्षरों की होती है।
+  roman: after
+  exercise:
+    kind: scan_metre
+    params:
+      text: समाक्षरैश्चतुर्भिर्यः पादैर्गीतो महर्षिणा
+    seed: 3
+- id: p6
+  kind: practice
+  title:
+    en: The first śloka
+    hi: पहला श्लोक
+  depth: core
+  skills:
+  - chandas.shloka
+  mode: choice
+  prompt:
+    en: In {{मा निषाद प्रतिष्ठाम्}} the seventh syllable is heavy. Which quarter is it?
+    hi: '{{मा निषाद प्रतिष्ठाम्}} में सातवाँ अक्षर गुरु है। यह कौन-सा चरण है?'
+  explain:
+    en: Heavy in the seventh place belongs to quarters one and three.
+    hi: सातवें स्थान पर गुरु चरण एक और तीन का है।
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीं समाः,” you chant, and Chandikā beats it with you, beat for beat, and the half-verse closes square on its sixteenth syllable. The spirit lets her sticks fall. “That is the shape,” she says. “Grief had to be held.” Across the hall, a long-sealed stone panel with a carved line on it slides open a hand's breadth.
+      hi: “मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीं समाः,” आप पढ़ते हैं, और छन्दिका आपके साथ ताल पर ताल देती है, और आधा श्लोक अपने सोलहवें अक्षर पर ठीक बैठ जाता है। भूत अपनी डंडियाँ छोड़ देती है। “यही आकार है,” वह कहती है। “शोक को थामना था।” कक्ष के पार, एक बन्द पत्थर का फलक, जिस पर पंक्ति खुदी है, हाथ भर सरक जाता है।
+    failure:
+      en: 'Her sticks stay up. The seventh place: heavy in quarters one and three.'
+      hi: 'उसकी डंडियाँ उठी रहती हैं। सातवाँ स्थान: चरण एक और तीन में गुरु।'
+  options:
+  - correct: true
+    text:
+      en: an odd quarter (1 or 3)
+      hi: विषम चरण (१ या ३)
+  - text:
+      en: an even quarter (2 or 4)
+      hi: सम चरण (२ या ४)
+  - text:
+      en: any quarter
+      hi: कोई भी चरण
+- id: sum
+  kind: summary
+  title:
+    en: Four quarters of eight
+    hi: आठ-आठ के चार चरण
+  depth: core
+  points:
+  - sa: पादः
+    text:
+      en: 'A quarter: eight syllables.'
+      hi: 'चरण: आठ अक्षर।'
+  - sa: ल ग
+    text:
+      en: Fifth light, sixth heavy.
+      hi: पाँचवाँ लघु, छठा गुरु।
+  - text:
+      en: 'Seventh: heavy in quarters 1 and 3, light in 2 and 4.'
+      hi: 'सातवाँ: चरण 1 और 3 में गुरु, 2 और 4 में लघु।'

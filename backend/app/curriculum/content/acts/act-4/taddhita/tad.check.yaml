@@ -1,0 +1,200 @@
+id: tad.check
+template: check
+title:
+  en: Name the suffixes
+  hi: प्रत्ययों के नाम बताइए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - tad.apatya
+  mode: choice
+  prompt:
+    en: '{{राघवः}} means…'
+    hi: '{{राघवः}} का अर्थ…'
+  explain:
+    en: '{{तस्यापत्यम्}}.'
+    hi: '{{तस्यापत्यम्}}।'
+  roman: after
+  options:
+  - text:
+      en: Raghu
+      hi: रघु
+  - correct: true
+    text:
+      en: a descendant of Raghu
+      hi: रघु का वंशज
+  - text:
+      en: Raghu's house
+      hi: रघु का घर
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - tad.tva-ta
+  mode: choice
+  prompt:
+    en: '{{देवता}} means…'
+    hi: '{{देवता}} का अर्थ…'
+  explain:
+    en: '{{-ता}}: being.'
+    hi: '{{-ता}}: होना।'
+  roman: after
+  options:
+  - text:
+      en: a god
+      hi: एक देव
+  - correct: true
+    text:
+      en: divinity
+      hi: देवत्व
+  - text:
+      en: of a god
+      hi: देव का
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - tad.matup
+  mode: choice
+  prompt:
+    en: '{{बुद्धिमान्}} means…'
+    hi: '{{बुद्धिमान्}} का अर्थ…'
+  explain:
+    en: '{{-मत्}}: having.'
+    hi: '{{-मत्}}: वाला।'
+  roman: after
+  options:
+  - text:
+      en: intelligence
+      hi: बुद्धि
+  - correct: true
+    text:
+      en: having intelligence
+      hi: बुद्धि वाला
+  - text:
+      en: of intelligence
+      hi: बुद्धि का
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - tad.ika
+  mode: choice
+  prompt:
+    en: '{{धार्मिकः}} means…'
+    hi: '{{धार्मिकः}} का अर्थ…'
+  explain:
+    en: '{{-इक}}: related to.'
+    hi: '{{-इक}}: सम्बन्धी।'
+  roman: after
+  options:
+  - text:
+      en: duty
+      hi: धर्म
+  - correct: true
+    text:
+      en: related to dharma, righteous
+      hi: धर्म से सम्बन्धित, धार्मिक
+  - text:
+      en: of dharma
+      hi: धर्म का
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - tad.comparison
+  mode: choice
+  prompt:
+    en: '{{उच्चतरः}} means…'
+    hi: '{{उच्चतरः}} का अर्थ…'
+  explain:
+    en: '{{-तर}}: more.'
+    hi: '{{-तर}}: अधिक।'
+  roman: after
+  options:
+  - text:
+      en: high
+      hi: ऊँचा
+  - correct: true
+    text:
+      en: higher
+      hi: अधिक ऊँचा
+  - text:
+      en: highest
+      hi: सबसे ऊँचा
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - tad.apatya
+  - tad.tva-ta
+  - tad.matup
+  - tad.comparison
+  mode: match
+  prompt:
+    en: Join each word to its meaning.
+    hi: हर शब्द को उसके अर्थ से जोड़िए।
+  explain:
+    en: Four suffixes.
+    hi: चार प्रत्यय।
+  roman: after
+  pairs:
+  - left:
+      sa: कौन्तेयः
+    right:
+      text:
+        en: Kuntī's son
+        hi: कुन्ती का पुत्र
+  - left:
+      sa: वीरता
+    right:
+      text:
+        en: heroism
+        hi: वीरता
+  - left:
+      sa: श्रीमान्
+    right:
+      text:
+        en: having fortune
+        hi: श्री वाला
+  - left:
+      sa: गरिष्ठः
+    right:
+      text:
+        en: heaviest
+        hi: सबसे भारी
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - tad.apatya
+  - tad.tva-ta
+  - tad.matup
+  mode: order
+  prompt:
+    en: 'Say what Taddhitikā says: “Raghu''s descendant; humanity; a rich man.”'
+    hi: 'वह कहिए जो तद्धितिका कहती है: ‘रघु का वंशज; मनुष्यता; धनी।’'
+  explain:
+    en: '{{राघवः मनुष्यत्वम् धनवान्}}: three suffixes.'
+    hi: '{{राघवः मनुष्यत्वम् धनवान्}}: तीन प्रत्यय।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “राघवः, मनुष्यत्वम्, धनवान्,” you say, and Taddhitikā, the green-bronze spirit, lowers her tiny crown, and the little letters on it, one by one, loosen and settle into her hair like leaves. “Every word I made,” she says, “was made for something. Now it knows what.” She looks past you into the next alcove, where a heavy stone statue is holding up a hand. “यः पठति,” it says, “सः जानाति.” “Who reads, he knows.” “The last one,” says Dādī, very quietly.
+      hi: “राघवः, मनुष्यत्वम्, धनवान्,” आप कहते हैं, और तद्धितिका, हरे काँसे की भूत, अपना नन्हा मुकुट नीचे करती है, और उस पर के छोटे अक्षर, एक-एक करके, ढीले होकर उसके बालों में पत्तों की तरह बैठ जाते हैं। “मैंने जो भी शब्द बनाया,” वह कहती है, “किसी के लिए बनाया। अब वह जानता है किसके लिए।” वह आपके पार अगले आले की ओर देखती है, जहाँ एक भारी पत्थर की प्रतिमा हाथ उठाए खड़ी है। “यः पठति,” वह कहती है, “सः जानाति।” “जो पढ़ता है, वह जानता है।” “अन्तिम,” दादी बहुत धीमे कहती हैं।
+    failure:
+      en: 'Her crown stays on. Her three: {{राघवः मनुष्यत्वम् धनवान्}}.'
+      hi: 'उसका मुकुट बना रहता है। उसके तीन: {{राघवः मनुष्यत्वम् धनवान्}}।'
+  tokens:
+  - राघवः
+  - मनुष्यत्वम्
+  - धनवान्

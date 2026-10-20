@@ -1,3 +1,4 @@
+import StorySettings from "../story/Settings";
 import ProfilePhotoEditor from "../components/ProfilePhotoEditor";
 import ProfileImage from "../components/ProfileImage";
 import Modal from "../components/AudioModal";
@@ -28,7 +29,7 @@ import {
   setHapticsEnabled,
   setReducedMotionOverride,
 } from "../services/prefs";
-import { accent, color, font, radius, shadow, space, type AccentName } from "../theme";
+import { accent, color, fill, font, onFill, radius, shadow, space, type AccentName } from "../theme";
 import { useTypeScale, type TextSize } from "../hooks/useTypeScale";
 import { firstName } from "../utils/name";
 import PlaceChooser from "../components/PlaceChooser";
@@ -154,6 +155,8 @@ export default function SettingsScreen() {
   return (
     <SafeAreaView style={styles.safe} edges={["bottom"]}>
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+        <View style={styles.intro}><Ionicons name="options-outline" size={28} color={onFill.gold} /><Text style={styles.introTitle}>Your space</Text><Text style={styles.introCopy}>Make Sanskritam feel right for you.</Text></View>
+        <StorySettings />
         <Section title="Account">
           <View style={styles.who}>
             <View style={[styles.avatar, { overflow: "hidden" }]}>
@@ -448,15 +451,18 @@ function LinkRow({
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { paddingHorizontal: space.lg, paddingTop: space.xs, paddingBottom: 120 },
-  section: { marginBottom: space.lg },
-  sectionTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink, marginBottom: space.xs },
-  card: { backgroundColor: color.surface, borderRadius: radius.lg, paddingHorizontal: space.md, paddingVertical: space.xs, ...shadow.card },
+  body: { paddingHorizontal: space.lg, paddingTop: space.md, paddingBottom: 120 },
+  intro: { backgroundColor: fill.ink, padding: 24, marginBottom: 28, gap: 8 },
+  introTitle: { color: onFill.text, fontFamily: "Nunito_800ExtraBold", fontSize: 28 },
+  introCopy: { color: onFill.soft, fontFamily: "Nunito_600SemiBold", fontSize: 14, lineHeight: 22 },
+  section: { marginBottom: 28 },
+  sectionTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 12, letterSpacing: 1.2, textTransform: "uppercase", color: color.inkSoft, marginBottom: space.sm },
+  card: { backgroundColor: color.bg, borderWidth: 1, borderColor: color.border, borderRadius: 16, paddingHorizontal: space.md, paddingVertical: space.xs },
   who: { flexDirection: "row", alignItems: "center", gap: space.sm, paddingVertical: space.sm },
   avatar: { width: 44, height: 44, borderRadius: 22, backgroundColor: color.saffronBtn, alignItems: "center", justifyContent: "center" },
   avatarLetter: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.white },
   whoName: { flex: 1, fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink },
-  row: { flexDirection: "row", alignItems: "center", gap: space.sm, minHeight: 56 },
+  row: { flexDirection: "row", alignItems: "center", gap: space.sm, minHeight: 64 },
   rowLabel: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink },
   placeValue: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft, maxWidth: 140, textAlign: "right" },
   placeHead: { flexDirection: "row", alignItems: "center", gap: space.sm, paddingHorizontal: space.lg, paddingVertical: space.sm },
@@ -465,9 +471,9 @@ const styles = StyleSheet.create({
   placeBody: { flex: 1, paddingHorizontal: space.lg },
   badge: { width: 36, height: 36, borderRadius: 12, alignItems: "center", justifyContent: "center" },
   sizerRow: { flexDirection: "row", gap: space.xs, paddingVertical: space.sm },
-  sizer: { flex: 1, minHeight: 48, borderRadius: radius.md, backgroundColor: color.surfaceMuted, alignItems: "center", justifyContent: "center" },
-  sizerOn: { backgroundColor: color.saffronBtn },
+  sizer: { flex: 1, minHeight: 48, borderRadius: radius.md, borderWidth: 1, borderColor: color.border, backgroundColor: color.bg, alignItems: "center", justifyContent: "center" },
+  sizerOn: { backgroundColor: fill.ink, borderColor: fill.ink },
   sizerText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: color.inkSoft },
   sizerTextOn: { color: color.white },
-  note: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: font.sizes.xs, color: color.inkSoft, paddingBottom: space.sm },
+  note: { fontFamily: "Nunito_500Medium", fontWeight: "500", fontSize: 13, lineHeight: 21, color: color.inkSoft, paddingTop: 4, paddingBottom: space.sm },
 });

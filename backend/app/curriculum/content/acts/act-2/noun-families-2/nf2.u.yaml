@@ -1,0 +1,865 @@
+id: nf2.u
+template: scene
+title:
+  en: Teacher, cow, honey
+  hi: गुरु, धेनु, मधु
+title_sa: उकारान्ताः
+minutes: 6
+teaches:
+- noun.u-stems
+needs:
+- noun.i-stems
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: A teacher's word
+    hi: गुरु का शब्द
+  depth: core
+  image:
+    brief: The Ācārya tiptoeing into the library with a lamp and bowing gravely to Śuka who has puffed himself up on a shelf; Dādī suppressing a laugh; the ink-stained blue-black spirit waving its pen at the next shelf.
+    alt:
+      en: An old teacher bows gravely to a puffed-up parrot in a library
+      hi: फूले हुए तोते को गम्भीरता से प्रणाम करते बूढ़े आचार्य
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - kavika
+    place: pathashala
+    ratio: '4:3'
+    id: nf2-u-s1
+  narration:
+    en: The poet spirit waves his pen at the next shelf. “Words in -उ,” says Dādī, “the family of the teacher.” Śuka puffs up at once. “गुरुः!” he squawks, and the Ācārya, who has tiptoed in with a lamp to see what the noise is, bows gravely to him.
+    hi: कवि-भूत अपनी कलम से अगली अलमारी की ओर इशारा करता है। “-उ वाले शब्द,” दादी कहती हैं, “गुरु का कुल।” शुक तुरन्त फूल उठता है। “गुरुः!” वह चहकता है, और आचार्य, जो शोर देखने दीपक लिए दबे पाँव अन्दर आए हैं, उसे गम्भीरता से प्रणाम करते हैं।
+- id: t1
+  kind: teach
+  title:
+    en: Words in -उ
+    hi: -उ वाले शब्द
+  depth: core
+  skills:
+  - noun.u-stems
+  body:
+    en: 'A short -{{उ}} works like -{{इ}}: {{गुरु}} (teacher) and {{भानु}} (sun) are masculine, {{धेनु}} (cow) and {{रज्जु}} (rope) feminine, {{मधु}} (honey) and {{वस्तु}} (thing) neuter. The {{उ}} becomes {{ओ}} or {{अव्}} where {{इ}} became {{ए}} or {{अय्}}.'
+    hi: 'ह्रस्व -{{उ}} -{{इ}} की तरह चलता है: {{गुरु}} और {{भानु}} पुंलिंग हैं, {{धेनु}} और {{रज्जु}} स्त्रीलिंग, {{मधु}} और {{वस्तु}} नपुंसक। जहाँ {{इ}} {{ए}} या {{अय्}} बना, वहाँ {{उ}} {{ओ}} या {{अव्}} बनता है।'
+  term:
+    sa: उकारान्तम्
+    meaning:
+      en: a word ending in -उ
+      hi: -उ पर समाप्त शब्द
+- id: tb1
+  kind: table
+  title:
+    en: 'गुरु: the full table'
+    hi: 'गुरु: पूरी तालिका'
+  depth: core
+  skills:
+  - noun.u-stems
+  caption:
+    en: A teacher, in every case and number
+    hi: गुरु, हर विभक्ति और वचन में
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: गुरुः
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गुरू
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: गुरवः
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: गुरुम्
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गुरू
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Dvi
+    - sa: गुरून्
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Bahu
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: गुरुणा
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: गुरुभ्याम्
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Dvi
+    - sa: गुरुभिः
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Bahu
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: गुरवे
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+    - sa: गुरुभ्याम्
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Dvi
+    - sa: गुरुभ्यः
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Bahu
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: गुरोः
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: गुरुभ्याम्
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Dvi
+    - sa: गुरुभ्यः
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Bahu
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: गुरोः
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: गुर्वोः
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Dvi
+    - sa: गुरूणाम्
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: गुरौ
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: गुर्वोः
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Dvi
+    - sa: गुरुषु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Bahu
+  - - text:
+        en: 8 · calling
+        hi: 8 · सम्बोधन
+    - sa: गुरो
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+    - sa: गुरू
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Dvi
+    - sa: गुरवः
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Bahu
+- id: tb2
+  kind: table
+  title:
+    en: 'धेनु: the full table'
+    hi: 'धेनु: पूरी तालिका'
+  depth: core
+  skills:
+  - noun.u-stems
+  caption:
+    en: A cow, in every case and number
+    hi: धेनु, हर विभक्ति और वचन में
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: धेनुः
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: धेनू
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: धेनवः
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: धेनुम्
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: धेनू
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Dvi
+    - sa: धेनूः
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Bahu
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: धेन्वा
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: धेनुभ्याम्
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Dvi
+    - sa: धेनुभिः
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Bahu
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: धेनवे
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Eka
+    - sa: धेनुभ्याम्
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Dvi
+    - sa: धेनुभ्यः
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Bahu
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: धेनोः
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: धेनुभ्याम्
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Dvi
+    - sa: धेनुभ्यः
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Bahu
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: धेनोः
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: धेन्वोः
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Dvi
+    - sa: धेनूनाम्
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Bahu
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: धेनौ
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: धेन्वोः
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Dvi
+    - sa: धेनुषु
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Bahu
+  - - text:
+        en: 8 · calling
+        hi: 8 · सम्बोधन
+    - sa: धेनो
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Eka
+    - sa: धेनू
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Dvi
+    - sa: धेनवः
+      check:
+        type: subanta
+        stem: धेनु
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Bahu
+  note:
+    en: 'Like {{मति}}, {{धेनु}} has optional singular forms: {{धेनवे}} or {{धेन्वै}}, {{धेनोः}} or {{धेन्वाः}}, {{धेनौ}} or {{धेन्वाम्}}.'
+    hi: '{{मति}} की तरह {{धेनु}} के एकवचन में वैकल्पिक रूप हैं: {{धेनवे}} या {{धेन्वै}}, {{धेनोः}} या {{धेन्वाः}}, {{धेनौ}} या {{धेन्वाम्}}।'
+- id: tb3
+  kind: table
+  title:
+    en: 'मधु: the full table'
+    hi: 'मधु: पूरी तालिका'
+  depth: core
+  skills:
+  - noun.u-stems
+  caption:
+    en: Honey, in every case and number
+    hi: मधु, हर विभक्ति और वचन में
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: मधु
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: मधुनी
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: मधूनि
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: मधु
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: मधुनी
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Dvi
+    - sa: मधूनि
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: मधुना
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: मधुभ्याम्
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Trtiya
+        vacana: Dvi
+    - sa: मधुभिः
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Trtiya
+        vacana: Bahu
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: मधुने
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Caturthi
+        vacana: Eka
+    - sa: मधुभ्याम्
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Caturthi
+        vacana: Dvi
+    - sa: मधुभ्यः
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Caturthi
+        vacana: Bahu
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: मधुनः
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: मधुभ्याम्
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Panchami
+        vacana: Dvi
+    - sa: मधुभ्यः
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Panchami
+        vacana: Bahu
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: मधुनः
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: मधुनोः
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Sasthi
+        vacana: Dvi
+    - sa: मधूनाम्
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Sasthi
+        vacana: Bahu
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: मधुनि
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: मधुनोः
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Dvi
+    - sa: मधुषु
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Bahu
+  - - text:
+        en: 8 · calling
+        hi: 8 · सम्बोधन
+    - sa: मधु
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Sambodhana
+        vacana: Eka
+    - sa: मधुनी
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Sambodhana
+        vacana: Dvi
+    - sa: मधूनि
+      check:
+        type: subanta
+        stem: मधु
+        linga: Napumsaka
+        vibhakti: Sambodhana
+        vacana: Bahu
+  note:
+    en: 'The neuter takes {{नी}}, {{नि}} and {{नू}} forms: {{मधुनी}}, {{मधूनि}}.'
+    hi: 'नपुंसक {{नी}}, {{नि}} और {{नू}} वाले रूप लेता है: {{मधुनी}}, {{मधूनि}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - noun.u-stems
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: Every form is in the table you just read.
+    hi: हर रूप उसी तालिका में है जो अभी पढ़ी।
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: गुरु
+      linga: Pum
+      blanks: 3
+    seed: 2
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - noun.u-stems
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of a neuter in -उ.
+    hi: -उ वाले एक नपुंसक के छूटे रूप भरिए।
+  explain:
+    en: '{{मधु}} takes the neuter endings.'
+    hi: '{{मधु}} नपुंसक प्रत्यय लेता है।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: मधु
+      linga: Napumsaka
+      blanks: 3
+    seed: 3
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - noun.u-stems
+  mode: choice
+  prompt:
+    en: 'The call of {{गुरुः}}: “O teacher!”'
+    hi: '{{गुरुः}} की पुकार: ‘हे गुरो!’'
+  explain:
+    en: '{{हे गुरो}}: the {{उ}} becomes {{ओ}}.'
+    hi: '{{हे गुरो}}: {{उ}} {{ओ}} बन जाता है।'
+  roman: after
+  options:
+  - sa: गुरुः
+  - sa: गुरुम्
+  - correct: true
+    sa: गुरो
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - noun.u-stems
+  mode: match
+  prompt:
+    en: Join each form to its case and number.
+    hi: हर रूप को उसकी विभक्ति और वचन से जोड़िए।
+  explain:
+    en: '{{णा}}, {{वे}}, {{ओः}}, {{वः}}.'
+    hi: '{{णा}}, {{वे}}, {{ओः}}, {{वः}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: गुरुणा
+    right:
+      text:
+        en: 3rd, one
+        hi: तृतीया, एक
+  - left:
+      sa: गुरवे
+    right:
+      text:
+        en: 4th, one
+        hi: चतुर्थी, एक
+  - left:
+      sa: गुरोः
+    right:
+      text:
+        en: 5th or 6th, one
+        hi: पञ्चमी या षष्ठी, एक
+  - left:
+      sa: गुरवः
+    right:
+      text:
+        en: 1st or call, many
+        hi: प्रथमा या सम्बोधन, अनेक
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - noun.u-stems
+  widget: mark_words
+  prompt:
+    en: Tap every form of {{गुरु}} that has {{अव्}}.
+    hi: '{{गुरु}} के हर रूप को छुइए जिसमें {{अव्}} है।'
+  params:
+    passage:
+    - गुरुः
+    - गुरवः
+    - गुरुम्
+    - गुरवे
+    - गुरुणा
+    - गुरौ
+    targets:
+    - गुरवः
+    - गुरवे
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: By the teacher
+    hi: गुरु से
+  depth: core
+  skills:
+  - noun.u-stems
+  mode: choice
+  prompt:
+    en: '“By a teacher”: the {{न}} turns to {{ण}}. Which form?'
+    hi: '‘गुरु से’: {{न}} {{ण}} बन जाता है। कौन-सा रूप?'
+  explain:
+    en: '{{गुरुणा}}: {{ण}} after {{र}}.'
+    hi: '{{गुरुणा}}: {{र}} के बाद {{ण}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“गुरुणा,” you say, and the Ācārya''s lamp flares. Śuka, with great dignity, repeats it: “गुरुणा सह!” The ink-stained spirit applauds with his pen, scattering sparks of ink.'
+      hi: '“गुरुणा,” आप कहते हैं, और आचार्य का दीपक भड़कता है। शुक अत्यन्त गरिमा से दोहराता है: “गुरुणा सह!” स्याही से सना भूत कलम से ताली बजाता है, स्याही की चिंगारियाँ बिखेरता।'
+    failure:
+      en: 'The lamp dims. “By a teacher”: the third case, {{गुरुणा}}.'
+      hi: 'दीपक मद्धम होता है। ‘गुरु से’: तृतीया, {{गुरुणा}}।'
+  options:
+  - sa: गुरुना
+  - sa: गुरुम्
+  - correct: true
+    sa: गुरुणा
+- id: sum
+  kind: summary
+  title:
+    en: Words in -उ
+    hi: -उ वाले शब्द
+  depth: core
+  points:
+  - sa: गुरुः गुरू गुरवः
+    text:
+      en: The masculine in -उ.
+      hi: -उ वाला पुंलिंग।
+  - sa: धेनुः धेनू धेनवः
+    text:
+      en: The feminine in -उ.
+      hi: -उ वाला स्त्रीलिंग।
+  - sa: मधु मधुनी मधूनि
+    text:
+      en: The neuter in -उ.
+      hi: -उ वाला नपुंसक।

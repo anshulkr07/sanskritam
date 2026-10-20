@@ -11,6 +11,8 @@ import { Pressable, SectionList, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import type { Shloka } from "../api/client";
+import { useBookActivity } from "../hooks/useBookActivity";
+import { pageId } from "../services/bookActivity";
 import CoverArt from "../components/book/CoverArt";
 import { haptics } from "../services/haptics";
 import { firstLine, parseRef } from "../utils/verses";
@@ -51,11 +53,13 @@ export default function BookContents({
   /** Present when some verse of the book has a chant. */
   onListen?: () => void;
 }) {
+  const activity = useBookActivity()[book.key] ?? [];
+  const readCount = activity.filter(page => page.read).length;
   const total = book.verses.length;
   const chapters = useMemo(() => audioChapters(book.verses), [book.verses]);
   const flat = chapters.length <= 1;
   const resume = Math.max(0, Math.min(resumeAt, total - 1));
-  const started = resume > 0;
+  const started = resume > 0 || readCount > 0;
   const nowChapter = useMemo(() => {
     const ch = chapters.find((c) => resume >= c.start && resume < c.start + c.verses.length);
     return ch?.label ?? chapters[0]?.label ?? "";
@@ -120,17 +124,17 @@ export default function BookContents({
               </View>
             </View>
 
-            {started && (
+            {(started || readCount > 0) && (
               <View style={styles.progress}>
                 <View style={styles.progressRow}>
-                  <Text style={styles.progressPct}>{Math.round((resume / Math.max(1, total)) * 100)}% read</Text>
+                  <Text style={styles.progressPct}>{Math.round((readCount / Math.max(1, total)) * 100)}% read</Text>
                   {!flat && nowIdx >= 0 && (
                     <Text style={styles.progressWhere}>
                       Chapter {nowIdx + 1} of {chapters.length}
                     </Text>
                   )}
                 </View>
-                <ProgressLine frac={resume / Math.max(1, total)} />
+                <ProgressLine frac={readCount / Math.max(1, total)} />
               </View>
             )}
 
@@ -156,7 +160,8 @@ export default function BookContents({
           if (flat) return null;
           const ch = section.ch;
           const i = chapters.indexOf(ch);
-          const state = !started ? "ahead" : i < nowIdx ? "done" : i === nowIdx ? "now" : "ahead";
+          const done = ch.verses.every(verse => activity.some(page => page.id === pageId(verse) && page.read));
+          const state = done ? "done" : started && i === nowIdx ? "now" : "ahead";
           const isOpen = open === ch.label;
           return (
             <Pressable
@@ -183,6 +188,7 @@ export default function BookContents({
         }}
         renderItem={({ item }) => {
           const here = started && item.at === resume;
+          const mark = activity.find(page => page.id === pageId(item.v));
           const { nums } = parseRef(item.v.source_ref);
           const num = nums.length > 0 ? nums[nums.length - 1] : item.at + 1;
           return (
@@ -192,16 +198,18 @@ export default function BookContents({
                 onOpen(item.at);
               }}
               accessibilityRole="button"
-              accessibilityLabel={`${item.v.source_ref}. ${firstLine(item.v.devanagari)}${here ? ". You are here." : ""}`}
-              style={[styles.verse, { marginLeft: (flat ? 0 : 48) - (here ? 8 : 0) }, here && styles.verseHere]}
+              accessibilityLabel={`${item.v.source_ref}. ${firstLine(item.v.devanagari)}${here ? ". You are here." : ""}${mark?.read ? ". Already read." : ""}${mark?.bookmarked ? ". Bookmarked." : ""}`}
+              style={[styles.verse, { marginLeft: (flat ? 0 : 48) - (here ? 8 : 0) }, here && styles.verseHere, mark?.read && { backgroundColor: "#EAF0E8", borderRadius: 8 }]}
             >
               <Text style={[styles.verseNum, here && { color: T.action }]}>{num}</Text>
               <Text style={[sa(16), styles.verseLine]} numberOfLines={1}>
                 {firstLine(item.v.devanagari)}
               </Text>
+              {mark?.read && <Ionicons name="checkmark-circle" size={16} color={T.action} />}
+              {mark?.bookmarked && <Ionicons name="bookmark" size={16} color={T.action} />}
               {here && (
                 <View style={styles.hereTag}>
-                  <Ionicons name="bookmark" size={12} color={T.action} />
+                  <Ionicons name="location-outline" size={12} color={T.action} />
                   <Text style={styles.hereText}>Here</Text>
                 </View>
               )}

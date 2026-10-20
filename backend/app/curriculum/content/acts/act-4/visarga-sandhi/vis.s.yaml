@@ -1,0 +1,328 @@
+id: vis.s
+template: scene
+title:
+  en: The hiss returns
+  hi: फुफकार लौटती है
+title_sa: रामश्च रामस्तत्र
+minutes: 6
+teaches:
+- sandhi.visarga-s
+needs:
+- sandhi.visarga-o
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The eighth statue
+    hi: आठवीं प्रतिमा
+  depth: core
+  image:
+    brief: The eighth statue with her lips slightly parted as if hissing, a faint curl of breath; Śuka counting on his claws; Dādī pointing at three inscribed words on a pillar; Lubdhaka's foreman holding his lamp higher.
+    alt:
+      en: A statue with parted lips faintly hissing while a parrot counts and an old woman points at an inscribed pillar
+      hi: हल्की फुफकारती प्रतिमा, गिनता तोता, अभिलेख वाले स्तम्भ की ओर इशारा करती दादी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - visargika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: vis-s-s1
+  narration:
+    en: 'The eighth statue hisses faintly. “रामश्च,” she says: “and Rāma.” “रामस्तत्र”: “Rāma is there.” “Where did the visarga go?” asks Śuka. “It turned into a hiss,” says Dādī. “Before च it becomes श्. Before त it becomes स्. Before ट it becomes ष्. The breath takes on the place of the sound that follows.”'
+    hi: 'आठवीं प्रतिमा हल्की फुफकारती है। “रामश्च,” वह कहती है: “और राम।” “रामस्तत्र”: “राम वहाँ है।” “विसर्ग कहाँ गया?” शुक पूछता है। “वह फुफकार बन गया,” दादी कहती हैं। “च से पहले वह श् बनता है। त से पहले स्। ट से पहले ष्। श्वास अपने बाद आने वाली ध्वनि के स्थान को अपना लेता है।”'
+- id: t1
+  kind: teach
+  title:
+    en: The breath becomes a hiss
+    hi: श्वास बनता है फुफकार
+  depth: core
+  skills:
+  - sandhi.visarga-s
+  body:
+    en: 'Before a hard consonant the visarga turns into a hiss in the same place as that consonant: before {{च}}/{{छ}} it is {{श्}}, before {{त}}/{{थ}} it is {{स्}}, before {{ट}}/{{ठ}} it is {{ष्}}. {{रामः + च}} gives {{रामश्च}}; {{रामः + तत्र}} gives {{रामस्तत्र}}. Before {{क}}, {{ख}}, {{प}}, {{फ}} the visarga stays.'
+    hi: 'कठोर व्यंजन से पहले विसर्ग उसी स्थान की फुफकार बन जाता है: {{च}}/{{छ}} से पहले {{श्}}, {{त}}/{{थ}} से पहले {{स्}}, {{ट}}/{{ठ}} से पहले {{ष्}}। {{रामः + च}} से {{रामश्च}}; {{रामः + तत्र}} से {{रामस्तत्र}}। {{क}}, {{ख}}, {{प}}, {{फ}} से पहले विसर्ग रहता है।'
+- id: tb1
+  kind: table
+  title:
+    en: The hiss
+    hi: फुफकार
+  depth: core
+  skills:
+  - sandhi.visarga-s
+  caption:
+    en: Before च, त, ट, and when it stays
+    hi: च, त, ट से पहले, और जब वह रहता है
+  columns:
+  - en: First word
+    hi: पहला शब्द
+  - en: Second word
+    hi: दूसरा शब्द
+  - en: Joined
+    hi: जुड़ा हुआ
+  rows:
+  - - sa: रामः
+    - sa: च
+    - sa: रामश्च
+      check:
+        type: sandhi
+        first: रामः
+        second: च
+        joined: रामश्च
+      highlight: true
+  - - sa: कविः
+    - sa: च
+    - sa: कविश्च
+      check:
+        type: sandhi
+        first: कविः
+        second: च
+        joined: कविश्च
+      highlight: true
+  - - sa: पुनः
+    - sa: च
+    - sa: पुनश्च
+      check:
+        type: sandhi
+        first: पुनः
+        second: च
+        joined: पुनश्च
+      highlight: true
+  - - sa: रामः
+    - sa: तत्र
+    - sa: रामस्तत्र
+      check:
+        type: sandhi
+        first: रामः
+        second: तत्र
+        joined: रामस्तत्र
+      highlight: true
+  - - sa: कविः
+    - sa: तत्र
+    - sa: कविस्तत्र
+      check:
+        type: sandhi
+        first: कविः
+        second: तत्र
+        joined: कविस्तत्र
+      highlight: true
+  - - sa: रामः
+    - sa: टीकते
+    - sa: रामष्टीकते
+      check:
+        type: sandhi
+        first: रामः
+        second: टीकते
+        joined: रामष्टीकते
+      highlight: true
+  - - sa: रामः
+    - sa: करोति
+    - sa: रामः करोति
+      check:
+        type: sandhi
+        first: रामः
+        second: करोति
+        joined: रामः करोति
+      highlight: true
+  - - sa: बालकः
+    - sa: पठति
+    - sa: बालकः पठति
+      check:
+        type: sandhi
+        first: बालकः
+        second: पठति
+        joined: बालकः पठति
+      highlight: true
+  - - sa: रामः
+    - sa: शेते
+    - sa: रामः शेते
+      check:
+        type: sandhi
+        first: रामः
+        second: शेते
+        joined: रामः शेते
+      highlight: true
+  note:
+    en: The last three show the visarga staying before {{क}}, {{प}} and {{श}}.
+    hi: अन्तिम तीन दिखाते हैं कि {{क}}, {{प}} और {{श}} से पहले विसर्ग रहता है।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-s
+  mode: choice
+  prompt:
+    en: Split the joined word {{रामश्च}}.
+    hi: जुड़े शब्द {{रामश्च}} को तोड़िए।
+  explain:
+    en: '{{रामः}} + {{च}}.'
+    hi: '{{रामः}} + {{च}}।'
+  roman: after
+  options:
+  - sa: रामात् + च
+  - correct: true
+    sa: रामः + च
+  - sa: रामे + च
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-s
+  mode: choice
+  prompt:
+    en: '{{रामः + च}} gives…'
+    hi: '{{रामः + च}} से…'
+  explain:
+    en: 'Before {{च}}: {{श्}}.'
+    hi: '{{च}} से पहले: {{श्}}।'
+  roman: after
+  options:
+  - sa: रामःच
+  - sa: रामसच
+  - correct: true
+    sa: रामश्च
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-s
+  mode: type
+  prompt:
+    en: 'Join: {{कविः}} + {{तत्र}}.'
+    hi: 'जोड़िए: {{कविः}} + {{तत्र}}।'
+  explain:
+    en: '{{कविस्तत्र}}: before {{त}}, {{स्}}.'
+    hi: '{{कविस्तत्र}}: {{त}} से पहले, {{स्}}।'
+  roman: after
+  answers:
+  - कविस्तत्र
+  tiles:
+  - कविस्
+  - तत्र
+  - कविः
+  - ति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-s
+  mode: match
+  prompt:
+    en: Join each word to its parts.
+    hi: हर शब्द को उसके भागों से जोड़िए।
+  explain:
+    en: The breath follows its neighbour.
+    hi: श्वास अपने पड़ोसी का अनुसरण करता है।
+  roman: after
+  pairs:
+  - left:
+      sa: रामश्च
+    right:
+      sa: रामः + च
+  - left:
+      sa: रामस्तत्र
+    right:
+      sa: रामः + तत्र
+  - left:
+      sa: पुनश्च
+    right:
+      sa: पुनः + च
+  - left:
+      sa: रामः करोति
+    right:
+      sa: रामः + करोति
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.visarga-s
+  widget: mark_words
+  prompt:
+    en: Tap every word where the breath has become a hiss.
+    hi: हर वह शब्द छुइए जहाँ श्वास फुफकार बन गया है।
+  params:
+    passage:
+    - रामश्च
+    - रामः
+    - कविस्तत्र
+    - कविः
+    - पुनश्च
+    - पुनः
+    targets:
+    - रामश्च
+    - कविस्तत्र
+    - पुनश्च
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: The hiss
+    hi: फुफकार
+  depth: core
+  skills:
+  - sandhi.visarga-s
+  mode: choice
+  prompt:
+    en: '{{कविः + च}} gives…'
+    hi: '{{कविः + च}} से…'
+  explain:
+    en: 'Before {{च}}: {{श्}}.'
+    hi: '{{च}} से पहले: {{श्}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “कविश्च,” you say, “and the poet,” and the statue's faint hiss swells and clears into a full, cool, rushing sound, like wind through a very long hall. The oil lamps all lean one way. “रामश्च, कविश्च,” she says. “And and and.” She laughs, a little unevenly, because she has not laughed in a thousand years.
+      hi: “कविश्च,” आप कहते हैं, “और कवि,” और प्रतिमा की हल्की फुफकार बढ़कर पूरी, ठंडी, बहती ध्वनि में साफ़ हो जाती है, किसी बहुत लम्बे कक्ष में हवा की तरह। सारे तेल-दीपक एक ओर झुक जाते हैं। “रामश्च, कविश्च,” वह कहती है। “और और और।” वह हँसती है, कुछ असमान-सी, क्योंकि वह हज़ार वर्षों से नहीं हँसी।
+    failure:
+      en: 'The hiss stays faint. Before {{च}}: {{श्}}: {{कविश्च}}.'
+      hi: 'फुफकार हल्की रहती है। {{च}} से पहले: {{श्}}: {{कविश्च}}।'
+  options:
+  - sa: कविःच
+  - sa: कविसच
+  - correct: true
+    sa: कविश्च
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's hiss
+    hi: पाणिनि की फुफकार
+  depth: panini
+  skills:
+  - sandhi.visarga-s
+  sutras:
+  - 8.3.34
+  - 8.4.40
+  - 8.4.41
+  - 8.3.35
+  body:
+    en: Sūtra 8.3.34, {{विसर्जनीयस्य सः}}, turns a visarga into {{स्}} before a hard consonant; 8.4.40, {{स्तोः श्चुना श्चुः}}, makes that {{स्}} into {{श्}} before {{च}}; and 8.4.41, {{ष्टुना ष्टुः}}, into {{ष्}} before {{ट}}. 8.3.35, {{शर्परे विसर्जनीयः}}, keeps it when a hard consonant is followed by a hiss.
+    hi: सूत्र 8.3.34, {{विसर्जनीयस्य सः}}, कठोर व्यंजन से पहले विसर्ग को {{स्}} बनाता है; 8.4.40, {{स्तोः श्चुना श्चुः}}, उस {{स्}} को {{च}} से पहले {{श्}} बनाता है; और 8.4.41, {{ष्टुना ष्टुः}}, {{ट}} से पहले {{ष्}}। 8.3.35, {{शर्परे विसर्जनीयः}}, उसे तब रखता है जब कठोर व्यंजन के बाद फुफकार हो।
+- id: sum
+  kind: summary
+  title:
+    en: The hiss
+    hi: फुफकार
+  depth: core
+  points:
+  - sa: ः + च = श्च
+    text:
+      en: रामश्च, कविश्च.
+      hi: रामश्च, कविश्च।
+  - sa: ः + त = स्त
+    text:
+      en: रामस्तत्र.
+      hi: रामस्तत्र।
+  - sa: ः + क, प = ः
+    text:
+      en: रामः करोति.
+      hi: रामः करोति।

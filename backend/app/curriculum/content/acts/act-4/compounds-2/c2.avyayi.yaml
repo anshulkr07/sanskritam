@@ -1,0 +1,335 @@
+id: c2.avyayi
+template: scene
+title:
+  en: As far as possible, every day
+  hi: यथाशक्ति, प्रतिदिन
+title_sa: यथाशक्ति प्रतिदिनम्
+minutes: 6
+teaches:
+- sam.avyayibhava
+needs:
+- sam.bahuvrihi
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The twentieth statue
+    hi: बीसवीं प्रतिमा
+  depth: core
+  image:
+    brief: The twentieth statue holding a small carved lantern whose stone flame is steady; Dādī pointing at a row of three carved words on the plinth; Śuka squinting at them; the lamps of the hall flickering.
+    alt:
+      en: A statue holds a stone lantern beside three carved words on the plinth
+      hi: पत्थर की लालटेन थामे प्रतिमा, आसन पर तीन खुदे शब्द
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - malika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: c2-avyayi-s1
+  narration:
+    en: 'The twentieth statue holds a lantern. “यथाशक्ति,” she says: “as far as possible.” “प्रतिदिनम्”: “every day.” “आमरणम्”: “until death.” Śuka tests: “Does it change?” “No,” says Dādī. “The first word is a little word, an indeclinable, and it gives the whole its sense. The result never takes endings. It is an adverb. They are called avyayībhāva.”'
+    hi: 'बीसवीं प्रतिमा के हाथ में लालटेन है। “यथाशक्ति,” वह कहती है: “जितना सम्भव हो।” “प्रतिदिनम्”: “हर दिन।” “आमरणम्”: “मृत्यु तक।” शुक परखता है: “क्या यह बदलता है?” “नहीं,” दादी कहती हैं। “पहला शब्द एक छोटा अव्यय है, और वही पूरे को अर्थ देता है। परिणाम कभी प्रत्यय नहीं लेता। वह क्रियाविशेषण है। इन्हें अव्ययीभाव कहते हैं।”'
+- id: t1
+  kind: teach
+  title:
+    en: The compound adverb
+    hi: समासित क्रियाविशेषण
+  depth: core
+  skills:
+  - sam.avyayibhava
+  body:
+    en: 'In an {{अव्ययीभावः}} the first word is an indeclinable, and the whole is an indeclinable: {{यथा + शक्ति}} gives {{यथाशक्ति}} (as far as one can); {{प्रति + दिनम्}} gives {{प्रतिदिनम्}} (every day); {{आ + मरणम्}} gives {{आमरणम्}} (until death); {{उप + कृष्णम्}} gives {{उपकृष्णम्}} (near Kṛṣṇa). Such words never change.'
+    hi: '{{अव्ययीभावः}} में पहला शब्द अव्यय होता है, और पूरा भी अव्यय बन जाता है: {{यथा + शक्ति}} से {{यथाशक्ति}} (जितनी शक्ति हो); {{प्रति + दिनम्}} से {{प्रतिदिनम्}} (हर दिन); {{आ + मरणम्}} से {{आमरणम्}} (मृत्यु तक); {{उप + कृष्णम्}} से {{उपकृष्णम्}} (कृष्ण के पास)। ऐसे शब्द कभी नहीं बदलते।'
+  examples:
+  - sa: सः यथाशक्ति कर्म करोति।
+    meaning:
+      en: He does the work as far as he can.
+      hi: वह यथाशक्ति कर्म करता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: यथाशक्ति
+      gloss:
+        en: as far as he can
+        hi: जितनी शक्ति हो
+    - sa: कर्म
+      gloss:
+        en: work
+        hi: कर्म
+      check:
+        type: subanta
+        stem: कर्मन्
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: करोति
+      gloss:
+        en: does
+        hi: करता है
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः प्रतिदिनम् पठति।
+    meaning:
+      en: He reads every day.
+      hi: वह प्रतिदिन पढ़ता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: प्रतिदिनम्
+      gloss:
+        en: every day
+        hi: हर दिन
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  term:
+    sa: अव्ययीभावः
+    meaning:
+      en: a compound that becomes an adverb
+      hi: वह समास जो अव्यय बन जाता है
+- id: tb1
+  kind: table
+  title:
+    en: The compound adverb
+    hi: समासित क्रियाविशेषण
+  depth: core
+  skills:
+  - sam.avyayibhava
+  caption:
+    en: Adverbs made by a compound
+    hi: समास से बने क्रियाविशेषण
+  columns:
+  - en: Compound
+    hi: समास
+  - en: Unpacked
+    hi: विग्रह
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: यथाशक्ति
+    - sa: शक्तिम् अनतिक्रम्य
+    - text:
+        en: as far as one can
+        hi: जितनी शक्ति हो
+  - - sa: प्रतिदिनम्
+    - sa: दिने दिने
+    - text:
+        en: every day
+        hi: हर दिन
+  - - sa: आमरणम्
+    - sa: मरणात् आ
+    - text:
+        en: until death
+        hi: मृत्यु तक
+  - - sa: उपकृष्णम्
+    - sa: कृष्णस्य समीपे
+    - text:
+        en: near Kṛṣṇa
+        hi: कृष्ण के पास
+  - - sa: यावज्जीवम्
+    - sa: जीवनस्य अवधिः
+    - text:
+        en: as long as life lasts
+        hi: जब तक जीवन है
+  - - sa: निर्विघ्नम्
+    - sa: विघ्नस्य अभावः
+    - text:
+        en: without obstacle
+        hi: बिना विघ्न के
+  - - sa: अनुरूपम्
+    - sa: रूपस्य योग्यम्
+    - text:
+        en: according to form
+        hi: रूप के अनुसार
+  note:
+    en: 'No endings: the whole is a neuter singular adverb, or has none.'
+    hi: 'प्रत्यय नहीं: पूरा नपुंसक एकवचन क्रियाविशेषण है, या कोई प्रत्यय नहीं।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sam.avyayibhava
+  mode: choice
+  prompt:
+    en: '{{प्रतिदिनम्}} means…'
+    hi: '{{प्रतिदिनम्}} का अर्थ…'
+  explain:
+    en: '{{प्रति-}}: each.'
+    hi: '{{प्रति-}}: हर।'
+  roman: after
+  options:
+  - text:
+      en: a day
+      hi: एक दिन
+  - text:
+      en: of the day
+      hi: दिन का
+  - correct: true
+    text:
+      en: every day
+      hi: हर दिन
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sam.avyayibhava
+  mode: match
+  prompt:
+    en: Join each compound to its meaning.
+    hi: हर समास को उसके अर्थ से जोड़िए।
+  explain:
+    en: The first word gives the sense.
+    hi: पहला शब्द अर्थ देता है।
+  roman: after
+  pairs:
+  - left:
+      sa: यथाशक्ति
+    right:
+      text:
+        en: as far as one can
+        hi: जितनी शक्ति हो
+  - left:
+      sa: आमरणम्
+    right:
+      text:
+        en: until death
+        hi: मृत्यु तक
+  - left:
+      sa: उपकृष्णम्
+    right:
+      text:
+        en: near Kṛṣṇa
+        hi: कृष्ण के पास
+  - left:
+      sa: निर्विघ्नम्
+    right:
+      text:
+        en: without obstacle
+        hi: बिना विघ्न के
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sam.avyayibhava
+  widget: mark_words
+  prompt:
+    en: Tap every compound adverb.
+    hi: हर समासित क्रियाविशेषण छुइए।
+  params:
+    passage:
+    - यथाशक्ति
+    - शक्तिः
+    - प्रतिदिनम्
+    - दिनम्
+    - आमरणम्
+    - मरणम्
+    targets:
+    - यथाशक्ति
+    - प्रतिदिनम्
+    - आमरणम्
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sam.avyayibhava
+  mode: order
+  prompt:
+    en: 'Say: “He reads every day.”'
+    hi: 'कहिए: ‘वह हर दिन पढ़ता है।’'
+  explain:
+    en: '{{सः प्रतिदिनं पठति}}.'
+    hi: '{{सः प्रतिदिनं पठति}}।'
+  roman: after
+  tokens:
+  - सः
+  - प्रतिदिनम्
+  - पठति
+- id: p4
+  kind: practice
+  title:
+    en: The lantern
+    hi: लालटेन
+  depth: core
+  skills:
+  - sam.avyayibhava
+  mode: choice
+  prompt:
+    en: '“Until death”: which compound?'
+    hi: '‘मृत्यु तक’: कौन-सा समास?'
+  explain:
+    en: '{{आ-}}: up to.'
+    hi: '{{आ-}}: तक।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“आमरणम्,” you say, “until death,” and the twentieth statue''s lantern lights, with a small calm flame. “यथाशक्ति,” she says. “I will keep it as far as I can.” She lowers the lamp. The hall gets a little brighter, each lamp leaning towards hers, as if the news had come to them: someone is going to keep the light on, every day, until the end.'
+      hi: '“आमरणम्,” आप कहते हैं, “मृत्यु तक,” और बीसवीं प्रतिमा की लालटेन एक छोटी शान्त लौ से जल उठती है। “यथाशक्ति,” वह कहती है। “मैं इसे जितना हो सकेगा, जलाए रखूँगी।” वह दीपक नीचे करती है। कक्ष कुछ और उजला हो जाता है, हर दीपक उसकी ओर झुकता है, मानो ख़बर पहुँची हो: कोई प्रकाश जलाए रखेगा, हर दिन, अन्त तक।'
+    failure:
+      en: 'The lantern stays dark. {{आ-}} means “up to”: {{आमरणम्}}.'
+      hi: 'लालटेन अँधेरी रहती है। {{आ-}} का अर्थ ‘तक’ है: {{आमरणम्}}।'
+  options:
+  - sa: प्रतिमरणम्
+  - correct: true
+    sa: आमरणम्
+  - sa: उपमरणम्
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's adverb
+    hi: पाणिनि का क्रियाविशेषण
+  depth: panini
+  skills:
+  - sam.avyayibhava
+  sutras:
+  - 2.1.5
+  - 2.1.6
+  - 1.1.41
+  body:
+    en: Sūtra 2.1.5, {{अव्ययीभावः}}, names the class, and 2.1.6, {{अव्ययं विभक्तिसमीपसमृद्धिव्यृद्ध्यर्थाभावात्ययासम्प्रतिशब्दप्रादुर्भावपश्चाद्यथानुपूर्व्ययौगपद्यसादृश्यसम्पत्तिसाकल्यान्तवचनेषु}}, lists the senses in which an indeclinable joins a word. The result is {{अव्यय}} by 1.1.41, {{अव्ययीभावश्च}}.
+    hi: सूत्र 2.1.5, {{अव्ययीभावः}}, वर्ग का नाम देता है, और 2.1.6 उन अर्थों की सूची देता है जिनमें अव्यय किसी शब्द से जुड़ता है। परिणाम 1.1.41, {{अव्ययीभावश्च}}, से {{अव्यय}} है।
+- id: sum
+  kind: summary
+  title:
+    en: The compound adverb
+    hi: समासित क्रियाविशेषण
+  depth: core
+  points:
+  - sa: यथाशक्ति
+    text:
+      en: As far as possible.
+      hi: जितना सम्भव हो।
+  - sa: प्रतिदिनम् · आमरणम्
+    text:
+      en: Every day; until death.
+      hi: हर दिन; मृत्यु तक।
+  - text:
+      en: They never change.
+      hi: वे कभी नहीं बदलते।

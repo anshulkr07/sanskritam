@@ -1,0 +1,46 @@
+import {actPicture} from '../artwork';
+import React,{useEffect,useRef,useState} from 'react';
+import {FlatList,View,ScrollView,Pressable,useWindowDimensions} from 'react-native';
+import Svg,{Path,Circle} from 'react-native-svg';
+import {LinearGradient} from 'expo-linear-gradient';
+import {useNavigation} from '@react-navigation/native';
+import type {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import type {RootStackParamList} from '../../navigation/types';
+import {useGuideLang} from '../../hooks/useGuide';
+import {useTypeScale} from '../../hooks/useTypeScale';
+import {useCourse} from '../course';
+import {useStoryTheme} from '../theme';
+import {Bi,Sa} from '../text';
+import {Button,Label,Panel,useCopy} from '../ui';
+import Picture from '../cards/Picture';
+import {currentContext} from '../selectors';
+import {startTestOut} from '../session';
+import UnitSheet from './UnitSheet';
+import type {Act,StoryIndex,StoryState,UnitSummary} from '../types';
+export default function JourneyMap(){const {index,state}=useCourse(),nav=useNavigation<NativeStackNavigationProp<RootStackParamList>>();if(!index||!state)return null;return <JourneyMapView index={index} state={state} onClose={()=>nav.goBack()} onLesson={(lessonId,testOut)=>{if(testOut)startTestOut(lessonId);nav.navigate('StoryLesson',{lessonId});}} onLeaf={leafId=>nav.navigate('StoryLeaf',{leafId})}/>;}
+export function JourneyMapView({index,state,onClose,onLesson,onLeaf}:{index:StoryIndex;state:StoryState;onClose:()=>void;onLesson:(id:string,testOut?:boolean)=>void;onLeaf:(id:string)=>void}){
+ const c=useStoryTheme(),hi=useCopy(),{lang}=useGuideLang();const list=useRef<FlatList<Act>>(null),[unitId,setUnitId]=useState<string|null>(null),actHeights=useRef<Record<string,number>>({}),headerHeight=useRef(0),currentOffsets=useRef<Record<string,number>>({}),positioned=useRef(false),lastOffset=useRef(-1);
+ const context=currentContext(index,state),currentAct=index.acts.findIndex(a=>a.id===context?.act.id);
+ const focusAct=(i:number)=>{positioned.current=true;list.current?.scrollToIndex({index:i,animated:false,viewPosition:0});};
+ const position=()=>{if(positioned.current||!context)return;const preceding=index.acts.slice(0,Math.max(0,currentAct));if(preceding.some(a=>!actHeights.current[a.id])||currentOffsets.current[context.act.id]===undefined)return;const offset=headerHeight.current+preceding.reduce((n,a)=>n+actHeights.current[a.id],0)+currentOffsets.current[context.act.id];if(Math.abs(lastOffset.current-offset)>1){lastOffset.current=offset;list.current?.scrollToOffset({offset,animated:false});}};
+ return <SafeAreaView style={{flex:1,backgroundColor:c.paper}} edges={['top','bottom']}><View style={{padding:12,flexDirection:'row',gap:12,alignItems:'center'}}><View style={{flex:1}}><Sa sa={index.course?.title_sa} roman={false} size={22}/><Label>{hi?'यात्रा का मानचित्र':'Journey map'}</Label></View><Button label={hi?'बंद करें':'Close'} onPress={onClose}/></View>
+ <FlatList onScrollBeginDrag={()=>{positioned.current=true;}} ref={list} data={index.acts} keyExtractor={act=>act.id} initialNumToRender={5} windowSize={5} onScrollToIndexFailed={info=>list.current?.scrollToOffset({offset:info.averageItemLength*info.index,animated:false})}
+ ListHeaderComponent={<View onLayout={e=>{headerHeight.current=e.nativeEvent.layout.height;}} style={{padding:16,gap:12}}><ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{gap:8}}>{index.acts.map((act,i)=><Button key={act.id} label={(hi?'अंक ':'Act ')+act.n+' · '+act.title[lang]} selected={act.id===context?.act.id} onPress={()=>focusAct(i)} style={{width:130}}><Sa sa={act.title_sa} roman={false} size={18}/><Bi value={act.title} size={15}/><Label>{state.acts.find(a=>a.id===act.id)?.units_done??0}/{act.parts.reduce((n,p)=>n+p.units.length,0)}</Label></Button>)}</ScrollView><Label>{hi?'✓ पूरा · ◆ आप यहाँ हैं · ○ आगे · ⋯ जल्द आ रहा है':'✓ Done · ◆ You are here · ○ Ahead · ⋯ Coming soon'}</Label>{index.course?.prologue?<Button label={hi?'कथा फिर पढ़ें':'Read the prologue again'} onPress={()=>onLesson(index.course!.prologue!.id)}/>:null}</View>}
+ renderItem={({item:act})=><View onLayout={e=>{actHeights.current[act.id]=e.nativeEvent.layout.height;position();}}><ActRegion act={act} state={state} onUnit={setUnitId} onLeaf={onLeaf} onCurrentOffset={offset=>{currentOffsets.current[act.id]=offset;position();}}/></View>}/>
+ <UnitSheet index={index} state={state} unitId={unitId} onClose={()=>setUnitId(null)} onLesson={onLesson}/></SafeAreaView>;
+}
+function ActRegion({act,state,onUnit,onLeaf,onCurrentOffset}:{act:Act;state:StoryState;onUnit:(id:string)=>void;onLeaf:(id:string)=>void;onCurrentOffset:(offset:number)=>void}){
+ const c=useStoryTheme(),hi=useCopy(),{lang}=useGuideLang(),{sized}=useTypeScale(),{width}=useWindowDimensions(),[pitch,setPitch]=useState(Math.max(150,sized(150))),[roadTop,setRoadTop]=useState(0);
+ const units=act.parts.flatMap(p=>p.units);let slot=0;const leafStops: {part:Act['parts'][number];y:number}[]=[];const stops=act.parts.flatMap(part=>{const rows=part.units.map((unit)=>{const i=units.findIndex(u=>u.id===unit.id);return {x:58+22*Math.sin(i*Math.PI/2),y:48+slot++*pitch,unit};});if(part.leaf){leafStops.push({part,y:slot*pitch});slot+=2;}return rows;});const roadHeight=slot*pitch+24;
+ const currentIndex=units.findIndex(u=>u.id===(state.current?.unit_id??state.coming_soon));
+ useEffect(()=>{if(currentIndex>=0&&roadTop>0)onCurrentOffset(roadTop+stops[currentIndex].y-48);},[currentIndex,roadTop,pitch,onCurrentOffset]);
+ const path=stops.map((stop,i)=>i===0?'M '+stop.x+' '+stop.y:' C '+stops[i-1].x+' '+(stops[i-1].y+pitch*.5)+', '+stop.x+' '+(stop.y-pitch*.5)+', '+stop.x+' '+stop.y).join('');
+ const stats=state.acts.find(a=>a.id===act.id);
+ return <View style={{paddingBottom:24,backgroundColor:c.paper}}>{actPicture(act)?<View><Picture picture={actPicture(act)}/><LinearGradient colors={[c.transparent,c.paper]} style={{position:'absolute',left:0,right:0,bottom:0,height:160}}/></View>:null}
+ <View style={{marginHorizontal:16,padding:16,borderWidth:1,borderColor:c.lineStrong,gap:6}}><View style={{width:12,height:12,backgroundColor:act.color}}/><Label>{hi?'अंक ':'ACT '}{act.n}</Label><Sa sa={act.title_sa} iast={act.title_iast} size={27}/><Bi value={act.title} size={22}/>{act.place?<Sa sa={act.place.name_sa} iast={act.place.name_iast} size={20}/>:null}<Bi value={act.goal}/><Label>{stats?.units_done??0} / {stats?.units_total??units.length} {hi?'इकाइयाँ पूरी':'units done'}</Label></View>
+ <View onLayout={e=>setRoadTop(e.nativeEvent.layout.y)} style={{height:roadHeight,marginTop:16}}><Svg width={100} height={roadHeight} style={{position:'absolute',left:0,top:0}} accessibilityElementsHidden><Path d={path} stroke={c.lineStrong} strokeWidth={3} strokeDasharray={units.every(u=>u.status==='planned')?'4 7':undefined} fill="none"/>{stops.map(({x,y,unit})=><Circle key={unit.id} cx={x} cy={y} r={state.current?.unit_id===unit.id?12:8} fill={state.units[unit.id]?.done?c.done:state.current?.unit_id===unit.id?c.action:c.paper} stroke={state.current?.unit_id===unit.id?c.actionText:c.lineStrong} strokeWidth={2}/>)}</Svg>
+ {stops.map(({unit,y})=>{const done=state.units[unit.id]?.done,current=state.current?.unit_id===unit.id,planned=unit.status==='planned';return <View key={unit.id} style={{position:'absolute',top:y-30,left:100,right:16}} onLayout={e=>{const needed=e.nativeEvent.layout.height+24;setPitch(previous=>Math.max(previous,needed));}}><Button label={unit.title[lang]+(planned?(hi?' · जल्द आ रहा है':' · Coming soon'):'')} onPress={()=>onUnit(unit.id)} selected={current} style={{borderStyle:planned?'dashed':'solid',opacity:planned?.7:1}}><View style={{flexDirection:'row',gap:8}}><View style={{flex:1}}>{current?<Label>{hi?'आप यहाँ हैं':'YOU ARE HERE'}</Label>:null}<Sa sa={unit.title_sa} roman={false} size={20}/><Bi value={unit.title} size={16}/><Label>{planned?(hi?'जल्द आ रहा है':'Coming soon'):done?(hi?'✓ पूरा · भूत मुक्त':'✓ Done · ghost freed'):(state.units[unit.id]?.finished??0)+'/'+(state.units[unit.id]?.total??unit.lessons.length)}</Label>{current&&unit.ghost?<Bi value={unit.ghost.waits_for} size={14}/>:null}</View>{unit.ghost?.portrait?<View style={{width:36,opacity:done?1:.45}}><Picture picture={unit.ghost.portrait} compact/></View>:null}</View></Button></View>;})}
+ <View pointerEvents='box-none' style={{position:'absolute',left:16,right:16,top:0,height:roadHeight,gap:10}}>{leafStops.map(({part,y})=>{const leaf=part.leaf!,found=state.leaves.find(l=>l.id===leaf.id)?.recovered;return <Button key={leaf.id} label={leaf.title[lang]} onPress={()=>onLeaf(leaf.id)} style={{position:'absolute',top:y,left:0,right:0}}><Label>{hi?'भाग का अंत':'END OF PART'} · {hi?'पत्र ':'LEAF '}{leaf.n}/7</Label><Sa sa={leaf.title_sa} iast={leaf.title_iast} size={22}/><Bi value={leaf.title}/><Label>{found?(hi?'✓ पत्र मिल गया':'✓ Leaf recovered'):(hi?'इस भाग के सभी भूतों को मुक्त करें।':'Free the ghosts of this part to recover it.')}</Label></Button>;})}</View></View>
+ </View>;
+}

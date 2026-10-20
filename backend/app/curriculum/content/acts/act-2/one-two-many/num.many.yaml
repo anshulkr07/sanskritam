@@ -1,0 +1,374 @@
+id: num.many
+template: scene
+title:
+  en: Many
+  hi: अनेक
+title_sa: बहुवचनम्
+minutes: 6
+teaches:
+- num.plural
+needs:
+- num.dual
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The boats come
+    hi: नावें आती हैं
+  depth: core
+  image:
+    brief: The ghat crowded with many boats pulling up to the steps, each with its boatman calling out, a small grey-blue spirit cupping his hands as if announcing them; Dādī and Śuka watching from the steps.
+    alt:
+      en: Many boats crowding the ghat steps
+      hi: घाट की सीढ़ियों पर भीड़ लगाती अनेक नावें
+    cast:
+    - you
+    - dadi
+    - shuka
+    - bakau
+    place: naditira
+    ratio: '4:3'
+    id: num-many-s1
+  narration:
+    en: 'Now the river is crowded. Boat after boat noses up to the steps, each with its own boatman, all of them calling. “Three or more,” says Dādī. “Count them: one, two, many.” The little spirit has found his sound. He cups his hands and says it for every boat.'
+    hi: 'अब नदी भीड़ से भर गई है। नाव पर नाव सीढ़ियों तक आती है, हर एक का अपना नाविक, सब पुकारते हुए। दादी कहती हैं, “तीन या अधिक। गिनो: एक, दो, अनेक।” नन्हे भूत को अपनी ध्वनि मिल गई है। वह हाथ जोड़कर हर नाव के लिए वही बोलता है।'
+- id: t1
+  kind: teach
+  title:
+    en: 'Three or more: the plural'
+    hi: 'तीन या अधिक: बहुवचन'
+  depth: core
+  skills:
+  - num.plural
+  sutras:
+  - 1.4.21
+  body:
+    en: 'Three or more things take the plural ({{बहुवचनम्}}). A masculine or feminine word in -अ/-आ ends in {{आः}}: {{बालकाः}} (boys), {{नौकाः}} (boats). A neuter word ends in {{आनि}}: {{फलानि}} (fruits).'
+    hi: 'तीन या अधिक वस्तुएँ बहुवचन लेती हैं। -अ/-आ वाले पुंलिंग और स्त्रीलिंग शब्द {{आः}} पर समाप्त होते हैं: {{बालकाः}} (बालक), {{नौकाः}} (नावें)। नपुंसक शब्द {{आनि}} पर: {{फलानि}} (फल)।'
+  examples:
+  - sa: बालकाः
+    meaning:
+      en: boys
+      hi: बालक (अनेक)
+    check:
+      type: subanta
+      stem: बालक
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Bahu
+  - sa: नौकाः
+    meaning:
+      en: boats
+      hi: नावें
+    check:
+      type: subanta
+      stem: नौका
+      linga: Stri
+      vibhakti: Prathama
+      vacana: Bahu
+  - sa: फलानि
+    meaning:
+      en: fruits
+      hi: फल (अनेक)
+    check:
+      type: subanta
+      stem: फल
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Bahu
+  term:
+    sa: बहुवचनम्
+    meaning:
+      en: 'the plural: three or more'
+      hi: 'बहुवचन: तीन या अधिक'
+- id: tb1
+  kind: table
+  title:
+    en: One, two, many
+    hi: एक, दो, अनेक
+  depth: core
+  skills:
+  - num.plural
+  caption:
+    en: Four words in all three numbers
+    hi: चार शब्द, तीनों वचनों में
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: One
+    hi: एक
+  - en: Two
+    hi: दो
+  - en: Many
+    hi: अनेक
+  rows:
+  - - text:
+        en: boat
+        hi: नौका
+    - sa: नौका
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नौके
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: नौकाः
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+      highlight: true
+  - - text:
+        en: boatman
+        hi: नाविक
+    - sa: नाविकः
+      check:
+        type: subanta
+        stem: नाविक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नाविकौ
+      check:
+        type: subanta
+        stem: नाविक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: नाविकाः
+      check:
+        type: subanta
+        stem: नाविक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      highlight: true
+  - - text:
+        en: leaf
+        hi: पत्र
+    - sa: पत्रम्
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पत्रे
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: पत्राणि
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Bahu
+      highlight: true
+  - - text:
+        en: river
+        hi: नदी
+    - sa: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नद्यौ
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: नद्यः
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+      highlight: true
+  note:
+    en: 'Plural: {{आः}} for masculine and feminine -अ/-आ words, {{आनि}} for neuter, {{यः}} for -ई words.'
+    hi: 'बहुवचन: पुंलिंग और स्त्रीलिंग -अ/-आ शब्दों में {{आः}}, नपुंसक में {{आनि}}, -ई शब्दों में {{यः}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - num.plural
+  mode: choice
+  prompt:
+    en: Which form means “many boatmen”?
+    hi: कौन-सा रूप ‘अनेक नाविक’ का है?
+  explain:
+    en: '{{नाविकाः}}: the plural ending {{आः}}.'
+    hi: '{{नाविकाः}}: बहुवचन प्रत्यय {{आः}}।'
+  roman: after
+  options:
+  - sa: नाविकः
+  - sa: नाविकौ
+  - correct: true
+    sa: नाविकाः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - num.plural
+  mode: match
+  prompt:
+    en: Join each plural to its meaning.
+    hi: हर बहुवचन को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{आः}}, {{आनि}}, {{यः}}: the three plural endings you have met.'
+    hi: '{{आः}}, {{आनि}}, {{यः}}: अब तक मिले तीन बहुवचन प्रत्यय।'
+  roman: after
+  pairs:
+  - left:
+      sa: नौकाः
+    right:
+      text:
+        en: boats
+        hi: नावें
+  - left:
+      sa: फलानि
+    right:
+      text:
+        en: fruits
+        hi: फल
+  - left:
+      sa: बालकाः
+    right:
+      text:
+        en: boys
+        hi: बालक
+  - left:
+      sa: नद्यः
+    right:
+      text:
+        en: rivers
+        hi: नदियाँ
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - num.plural
+  widget: mark_words
+  prompt:
+    en: Tap every plural word.
+    hi: हर बहुवचन शब्द को छुइए।
+  params:
+    passage:
+    - नौकाः
+    - बकौ
+    - फलानि
+    - बालकः
+    - नद्यः
+    - पत्रे
+    targets:
+    - नौकाः
+    - फलानि
+    - नद्यः
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: Count the boats
+    hi: नावें गिनिए
+  depth: core
+  skills:
+  - num.plural
+  mode: choice
+  prompt:
+    en: 'A neuter plural: “many leaves”. Which?'
+    hi: 'नपुंसक बहुवचन: ‘अनेक पत्र’। कौन-सा?'
+  explain:
+    en: '{{पत्राणि}}: neuter plural {{आनि}}; the {{न}} turns to {{ण}} after {{र}}.'
+    hi: '{{पत्राणि}}: नपुंसक बहुवचन {{आनि}}; {{र}} के बाद {{न}} का {{ण}} हो जाता है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “नौकाः!” The small spirit throws up his hands. Boat after boat rocks gently, as if answering to its name.
+      hi: “नौकाः!” नन्हा भूत हाथ ऊपर उछालता है। नाव पर नाव धीरे-धीरे हिलती है, मानो अपना नाम सुनकर उत्तर दे रही हो।
+    failure:
+      en: 'The boats drift. Many: look for {{आः}}.'
+      hi: 'नावें बहती रहती हैं। अनेक: {{आः}} खोजिए।'
+  options:
+  - sa: पत्रम्
+  - sa: पत्रे
+  - correct: true
+    sa: पत्राणि
+- id: pn
+  kind: teach
+  title:
+    en: Why {{पत्राणि}}, not {{पत्रानि}}?
+    hi: '{{पत्राणि}}, {{पत्रानि}} क्यों नहीं?'
+  depth: panini
+  skills:
+  - num.plural
+  sutras:
+  - 8.4.1
+  body:
+    en: After {{र}}, {{ऋ}} or {{ष}}, a following {{न}} becomes {{ण}}, even across vowels. That is why {{पत्र}} has {{पत्राणि}} but {{फल}} has {{फलानि}}. You will meet this again in the sandhi chapters.
+    hi: '{{र}}, {{ऋ}} या {{ष}} के बाद आने वाला {{न}} {{ण}} बन जाता है, बीच में स्वर हों तब भी। इसीलिए {{पत्र}} का {{पत्राणि}} है और {{फल}} का {{फलानि}}। सन्धि के अध्यायों में यह फिर मिलेगा।'
+  examples:
+  - sa: पत्राणि
+    meaning:
+      en: 'leaves: {{ण}} after {{र}}'
+      hi: 'पत्र: {{र}} के बाद {{ण}}'
+    check:
+      type: subanta
+      stem: पत्र
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Bahu
+  - sa: फलानि
+    meaning:
+      en: 'fruits: plain {{न}}'
+      hi: 'फल: सादा {{न}}'
+    check:
+      type: subanta
+      stem: फल
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Bahu
+- id: sum
+  kind: summary
+  title:
+    en: The plural
+    hi: बहुवचन
+  depth: core
+  points:
+  - sa: नौकाः · बालकाः
+    text:
+      en: 'Masculine and feminine: {{आः}}.'
+      hi: 'पुंलिंग और स्त्रीलिंग: {{आः}}।'
+  - sa: फलानि · पत्राणि
+    text:
+      en: 'Neuter: {{आनि}}.'
+      hi: 'नपुंसक: {{आनि}}।'
+  - sa: नद्यः
+    text:
+      en: '-ई words: {{यः}}.'
+      hi: '-ई शब्द: {{यः}}।'

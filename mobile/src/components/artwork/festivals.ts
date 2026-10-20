@@ -1,23 +1,22 @@
-import { remoteArtwork } from "./remoteArtwork";
 import type { ImageSourcePropType } from "react-native";
 
-// Festival/deity paintings are public remote assets with on-demand device caching.
+// Priority festival paintings ship in the APK for immediate, offline display.
 const scenes: Record<string, ImageSourcePropType> = {
-  diwali: remoteArtwork("festivals/diwali-deity-watercolor.webp"),
-  purnima: remoteArtwork("festivals/purnima.webp"),
-  amavasya: remoteArtwork("festivals/amavasya.webp"),
-  chhath: remoteArtwork("festivals/surya-deity-watercolor.webp"),
-  sankranti: remoteArtwork("festivals/surya-deity-watercolor.webp"),
-  karwa_chauth: remoteArtwork("festivals/karwa_chauth.webp"),
-  navaratri: remoteArtwork("festivals/navaratri-deity-watercolor.webp"),
-  river: remoteArtwork("festivals/sacred-river.webp"),
-  raksha_bandhan: remoteArtwork("festivals/raksha_bandhan.webp"),
-  janmashtami: remoteArtwork("festivals/janmashtami-deity-watercolor.webp"),
-  rama_navami: remoteArtwork("festivals/rama-navami-deity-watercolor.webp"),
-  ganesh_chaturthi: remoteArtwork("festivals/ganesh-chaturthi-deity-watercolor.webp"),
-  vishnu: remoteArtwork("festivals/vishnu-deity-watercolor.webp"),
-  shiva: remoteArtwork("festivals/shiva-deity-watercolor.webp"),
-  shani: remoteArtwork("festivals/shani-deity-watercolor.webp"),
+  diwali: require("../../../assets/festivals/diwali-deity-watercolor.webp"),
+  purnima: require("../../../assets/festivals/purnima.webp"),
+  amavasya: require("../../../assets/festivals/amavasya.webp"),
+  chhath: require("../../../assets/festivals/surya-deity-watercolor.webp"),
+  sankranti: require("../../../assets/festivals/surya-deity-watercolor.webp"),
+  karwa_chauth: require("../../../assets/festivals/karwa_chauth.webp"),
+  navaratri: require("../../../assets/festivals/navaratri-deity-watercolor.webp"),
+  river: require("../../../assets/festivals/sacred-river.webp"),
+  raksha_bandhan: require("../../../assets/festivals/raksha_bandhan.webp"),
+  janmashtami: require("../../../assets/festivals/janmashtami-deity-watercolor.webp"),
+  rama_navami: require("../../../assets/festivals/rama-navami-deity-watercolor.webp"),
+  ganesh_chaturthi: require("../../../assets/festivals/ganesh-chaturthi-deity-watercolor.webp"),
+  vishnu: require("../../../assets/festivals/vishnu-deity-watercolor.webp"),
+  shiva: require("../../../assets/festivals/shiva-deity-watercolor.webp"),
+  shani: require("../../../assets/festivals/shani-deity-watercolor.webp"),
 };
 const aliases: Record<string, string> = {
   sharad_navaratri: "navaratri", chaitra_navaratri: "navaratri",
@@ -31,23 +30,21 @@ const aliases: Record<string, string> = {
 };
 
 export function festivalArtwork(slug: string, remoteUrl?: string | null): ImageSourcePropType | undefined {
-  if (remoteUrl) return { uri: remoteUrl };
-  return scenes[aliases[slug] ?? slug];
+  return scenes[aliases[slug] ?? slug] ?? (remoteUrl ? { uri: remoteUrl } : undefined);
 }
 
 const forms: Record<string, ImageSourcePropType> = {
-  shailaputri: remoteArtwork("festivals/navadurga-shailaputri-watercolor.webp"),
-  brahmacharini: remoteArtwork("festivals/navadurga-brahmacharini-watercolor.webp"),
-  chandraghanta: remoteArtwork("festivals/navadurga-chandraghanta-watercolor.webp"),
-  kushmanda: remoteArtwork("festivals/navadurga-kushmanda-watercolor.webp"),
-  skandamata: remoteArtwork("festivals/navadurga-skandamata-watercolor.webp"),
-  katyayani: remoteArtwork("festivals/navadurga-katyayani-watercolor.webp"),
-  kalaratri: remoteArtwork("festivals/navadurga-kalaratri-watercolor.webp"),
-  mahagauri: remoteArtwork("festivals/navadurga-mahagauri-watercolor.webp"),
-  siddhidatri: remoteArtwork("festivals/navadurga-siddhidatri-watercolor.webp"),
+  shailaputri: require("../../../assets/festivals/navadurga-shailaputri-watercolor.webp"),
+  brahmacharini: require("../../../assets/festivals/navadurga-brahmacharini-watercolor.webp"),
+  chandraghanta: require("../../../assets/festivals/navadurga-chandraghanta-watercolor.webp"),
+  kushmanda: require("../../../assets/festivals/navadurga-kushmanda-watercolor.webp"),
+  skandamata: require("../../../assets/festivals/navadurga-skandamata-watercolor.webp"),
+  katyayani: require("../../../assets/festivals/navadurga-katyayani-watercolor.webp"),
+  kalaratri: require("../../../assets/festivals/navadurga-kalaratri-watercolor.webp"),
+  mahagauri: require("../../../assets/festivals/navadurga-mahagauri-watercolor.webp"),
+  siddhidatri: require("../../../assets/festivals/navadurga-siddhidatri-watercolor.webp"),
 };
 
 export function festivalDayArtwork(form?: string, remoteUrl?: string | null): ImageSourcePropType | undefined {
-  if (remoteUrl) return { uri: remoteUrl };
-  return form ? forms[form.replace(/^navadurga_/, "")] : undefined;
+  return (form ? forms[form.replace(/^navadurga_/, "")] : undefined) ?? (remoteUrl ? { uri: remoteUrl } : undefined);
 }

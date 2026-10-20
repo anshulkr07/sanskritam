@@ -1,0 +1,385 @@
+id: pn.count
+template: scene
+title:
+  en: Counting to ten
+  hi: दस तक गिनती
+title_sa: एकम् द्वे त्रीणि
+minutes: 6
+teaches:
+- num.one-ten
+needs:
+- num.plural
+- pron.kim-yad
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Knots on a string
+    hi: डोरी पर गाँठें
+  depth: core
+  image:
+    brief: Ganaka the knotted-cord spirit tying knots in a long cord with great pride, a row of old palm leaves laid out on a low table; Dādī laughing; Śuka counting on his claws; lamplight.
+    alt:
+      en: A cord spirit ties knots to count a row of old leaves while Dādī laughs
+      hi: डोरी का भूत गाँठें लगाकर पुराने पत्रों की पंक्ति गिन रहा, दादी हँसती हुई
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - ganaka
+    place: pathashala
+    ratio: '4:3'
+    id: pn-count-s1
+  narration:
+    en: 'Ganaka unwinds one of his cords and ties a knot. “एकम्.” Another. “द्वे.” Another. “त्रीणि.” He is very proud. “And these?” He holds up a row of old leaves. Dādī laughs. “Count them properly: the numbers up to four change with the gender of what you count, and from five they never do.”'
+    hi: 'गणक अपनी एक डोरी खोलकर गाँठ लगाता है। “एकम्।” दूसरी। “द्वे।” तीसरी। “त्रीणि।” वह बहुत गर्वित है। “और ये?” वह पुराने पत्रों की एक पंक्ति उठाता है। दादी हँसती हैं। “ठीक से गिनो: चार तक की संख्याएँ गिनी जाने वाली चीज़ के लिंग से बदलती हैं, पाँच से आगे कभी नहीं।”'
+- id: t1
+  kind: teach
+  title:
+    en: 'One to four: they change'
+    hi: 'एक से चार: बदलते हैं'
+  depth: core
+  skills:
+  - num.one-ten
+  body:
+    en: '{{एक}} is “one” and acts like a pronoun: {{एकः}}, {{एका}}, {{एकम्}}. {{द्वि}} (two) is dual only. {{त्रि}} (three) and {{चतुर्}} (four) have a different word for the feminine: {{तिस्रः}}, {{चतस्रः}}. These words agree with the noun, like an adjective.'
+    hi: '{{एक}} का अर्थ ‘एक’ है और वह सर्वनाम की तरह चलता है: {{एकः}}, {{एका}}, {{एकम्}}। {{द्वि}} (दो) केवल द्विवचन है। {{त्रि}} (तीन) और {{चतुर्}} (चार) के स्त्रीलिंग का रूप अलग है: {{तिस्रः}}, {{चतस्रः}}। ये शब्द विशेषण की तरह संज्ञा से मेल खाते हैं।'
+- id: tb1
+  kind: table
+  title:
+    en: 1 to 4 by gender
+    hi: 1 से 4 लिंग के अनुसार
+  depth: core
+  skills:
+  - num.one-ten
+  caption:
+    en: The first four numbers in the first case
+    hi: पहली चार संख्याएँ प्रथमा में
+  columns:
+  - en: Number
+    hi: संख्या
+  - en: Masculine
+    hi: पुंलिंग
+  - en: Feminine
+    hi: स्त्रीलिंग
+  - en: Neuter
+    hi: नपुंसक
+  rows:
+  - - text:
+        en: '1'
+        hi: १
+    - sa: एकः
+    - sa: एका
+    - sa: एकम्
+  - - text:
+        en: '2'
+        hi: २
+    - sa: द्वौ
+    - sa: द्वे
+    - sa: द्वे
+  - - text:
+        en: '3'
+        hi: ३
+    - sa: त्रयः
+    - sa: तिस्रः
+    - sa: त्रीणि
+  - - text:
+        en: '4'
+        hi: ४
+    - sa: चत्वारः
+    - sa: चतस्रः
+    - sa: चत्वारि
+  note:
+    en: 'Two takes the dual and agrees: {{द्वौ बालकौ}}, {{द्वे लते}}, {{द्वे फले}}.'
+    hi: 'दो द्विवचन लेता है और मेल खाता है: {{द्वौ बालकौ}}, {{द्वे लते}}, {{द्वे फले}}।'
+- id: tb2
+  kind: table
+  title:
+    en: 5 to 10 stay the same
+    hi: 5 से 10 वैसे ही रहते हैं
+  depth: core
+  skills:
+  - num.one-ten
+  caption:
+    en: The numbers five to ten
+    hi: पाँच से दस की संख्याएँ
+  columns:
+  - en: Number
+    hi: संख्या
+  - en: Word
+    hi: शब्द
+  rows:
+  - - text:
+        en: '5'
+        hi: ५
+    - sa: पञ्च
+  - - text:
+        en: '6'
+        hi: ६
+    - sa: षट्
+  - - text:
+        en: '7'
+        hi: ७
+    - sa: सप्त
+  - - text:
+        en: '8'
+        hi: ८
+    - sa: अष्ट
+  - - text:
+        en: '9'
+        hi: ९
+    - sa: नव
+  - - text:
+        en: '10'
+        hi: १०
+    - sa: दश
+  note:
+    en: 'From five on they are plural only, one form for all genders: {{पञ्च बालकाः}}, {{षट् लताः}}, {{सप्त फलानि}}. {{अष्ट}} is also {{अष्टौ}}.'
+    hi: 'पाँच से आगे केवल बहुवचन, सभी लिंगों के लिए एक रूप: {{पञ्च बालकाः}}, {{षट् लताः}}, {{सप्त फलानि}}। {{अष्ट}} का {{अष्टौ}} भी है।'
+- id: t2
+  kind: teach
+  title:
+    en: Counting things
+    hi: वस्तुएँ गिनना
+  depth: core
+  skills:
+  - num.one-ten
+  body:
+    en: 'The number comes before the noun, in the same case: {{पञ्च बालकाः}} (five boys), {{द्वे लते}} (two vines), {{त्रीणि फलानि}} (three fruits). In the instrumental or genitive the number changes too: {{त्रिभिः बालकैः}}, {{त्रयाणां बालकानाम्}}.'
+    hi: 'संख्या संज्ञा से पहले आती है, उसी विभक्ति में: {{पञ्च बालकाः}} (पाँच बालक), {{द्वे लते}} (दो लताएँ), {{त्रीणि फलानि}} (तीन फल)। तृतीया या षष्ठी में संख्या भी बदलती है: {{त्रिभिः बालकैः}}, {{त्रयाणां बालकानाम्}}।'
+  examples:
+  - sa: पञ्च बालकाः पठन्ति।
+    meaning:
+      en: Five boys read.
+      hi: पाँच बालक पढ़ते हैं।
+    words:
+    - sa: पञ्च
+      gloss:
+        en: five
+        hi: पाँच
+    - sa: बालकाः
+      gloss:
+        en: boys
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: पठन्ति
+      gloss:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - sa: द्वे लते स्तः।
+    meaning:
+      en: There are two vines.
+      hi: दो लताएँ हैं।
+    words:
+    - sa: द्वे
+      gloss:
+        en: two
+        hi: दो
+    - sa: लते
+      gloss:
+        en: vines
+        hi: लताएँ
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: स्तः
+      gloss:
+        en: are
+        hi: हैं
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+  - sa: त्रीणि फलानि सन्ति।
+    meaning:
+      en: There are three fruits.
+      hi: तीन फल हैं।
+    words:
+    - sa: त्रीणि
+      gloss:
+        en: three
+        hi: तीन
+    - sa: फलानि
+      gloss:
+        en: fruits
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: सन्ति
+      gloss:
+        en: are
+        hi: हैं
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - num.one-ten
+  mode: choice
+  prompt:
+    en: '“Three leaves” (neuter): which form?'
+    hi: '‘तीन पत्र’ (नपुंसक): कौन-सा रूप?'
+  explain:
+    en: '{{त्रीणि}}: three, neuter.'
+    hi: '{{त्रीणि}}: तीन, नपुंसक।'
+  roman: after
+  options:
+  - sa: त्रयः पत्राणि
+  - correct: true
+    sa: त्रीणि पत्राणि
+  - sa: तिस्रः पत्राणि
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - num.one-ten
+  mode: match
+  prompt:
+    en: Join each number to its word.
+    hi: हर संख्या को उसके शब्द से जोड़िए।
+  explain:
+    en: Five to ten are the same in every gender.
+    hi: पाँच से दस हर लिंग में एक-से हैं।
+  roman: after
+  pairs:
+  - left:
+      text:
+        en: '5'
+        hi: ५
+    right:
+      sa: पञ्च
+  - left:
+      text:
+        en: '7'
+        hi: ७
+    right:
+      sa: सप्त
+  - left:
+      text:
+        en: '9'
+        hi: ९
+    right:
+      sa: नव
+  - left:
+      text:
+        en: '10'
+        hi: १०
+    right:
+      sa: दश
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - num.one-ten
+  widget: mark_words
+  prompt:
+    en: Tap every number.
+    hi: हर संख्या को छुइए।
+  params:
+    passage:
+    - पञ्च
+    - बालकः
+    - सप्त
+    - फलम्
+    - दश
+    - नदी
+    targets:
+    - पञ्च
+    - सप्त
+    - दश
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - num.one-ten
+  mode: order
+  prompt:
+    en: 'Count, as for neuter things: “one, two, three, four.”'
+    hi: 'नपुंसक वस्तुओं की तरह गिनिए: ‘एक, दो, तीन, चार।’'
+  explain:
+    en: '{{एकम् द्वे त्रीणि चत्वारि}}: counting neuter things.'
+    hi: '{{एकम् द्वे त्रीणि चत्वारि}}: नपुंसक वस्तुएँ गिनना।'
+  roman: after
+  tokens:
+  - एकम्
+  - द्वे
+  - त्रीणि
+  - चत्वारि
+- id: p4
+  kind: practice
+  title:
+    en: Count the leaves
+    hi: पत्र गिनिए
+  depth: core
+  skills:
+  - num.one-ten
+  mode: choice
+  prompt:
+    en: “Two girls” (feminine). Which form?
+    hi: ‘दो बालिकाएँ’ (स्त्रीलिंग)। कौन-सा रूप?
+  explain:
+    en: '{{द्वे}}: two, feminine.'
+    hi: '{{द्वे}}: दो, स्त्रीलिंग।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “द्वे बालिके,” you say, counting two figures carved on a leaf. Ganaka ties a knot; the cord glows. Another; another. Down the table the old leaves rise a hand's breadth into the air and, one by one, settle into a neat row.
+      hi: “द्वे बालिके,” आप कहते हैं, पत्र पर खुदी दो आकृतियाँ गिनते हुए। गणक एक गाँठ लगाता है; डोरी चमक उठती है। फिर एक; फिर एक। मेज़ पर पुराने पत्र हथेली भर ऊपर उठते हैं और एक-एक करके सुघड़ पंक्ति में बैठ जाते हैं।
+    failure:
+      en: 'The knot slips. Two, feminine: {{द्वे}}.'
+      hi: 'गाँठ फिसल जाती है। दो, स्त्रीलिंग: {{द्वे}}।'
+  options:
+  - sa: द्वौ बालिके
+  - correct: true
+    sa: द्वे बालिके
+  - sa: तिस्रः बालिकाः
+- id: sum
+  kind: summary
+  title:
+    en: Counting to ten
+    hi: दस तक गिनती
+  depth: core
+  points:
+  - sa: एकः द्वौ त्रयः चत्वारः
+    text:
+      en: One to four, masculine.
+      hi: एक से चार, पुंलिंग।
+  - sa: पञ्च षट् सप्त अष्ट नव दश
+    text:
+      en: Five to ten, all genders.
+      hi: पाँच से दस, सभी लिंग।
+  - text:
+      en: One to four agree with the noun.
+      hi: एक से चार संज्ञा से मेल खाते हैं।

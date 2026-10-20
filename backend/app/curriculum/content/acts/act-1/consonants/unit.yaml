@@ -1,0 +1,53 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: consonants
+title:
+  en: Consonants
+  hi: व्यंजन
+title_sa: व्यञ्जनानि
+status: ready
+ghost: chayika
+episode:
+  summary:
+    en: Dhūmaka's clue leads you to the temple's carved door. Its rows of letters are consonants, and a shy shadow, Chāyikā, hides in the carvings, waiting to hear her name.
+    hi: धूमक का संकेत आपको मंदिर के नक्काशीदार द्वार तक ले जाता है। उसकी पंक्तियों में व्यंजन खुदे हैं, और एक शर्मीली छाया, छायिका, नक्काशी में छिपी अपना नाम सुनने की प्रतीक्षा करती है।
+  beats:
+  - The door's five rows of carved letters follow the mouth, from the throat to the lips.
+  - Śuka mixes up breathy and plain sounds until you learn the difference.
+  - You read the carved name छायिका and she steps out of the shadows; her clue points to a pillar.
+skills:
+- id: script.cons.grid
+  title:
+    en: 'The consonant grid: five places in the mouth'
+    hi: 'व्यंजन तालिका: मुख के पाँच स्थान'
+- id: script.cons.voice
+  title:
+    en: Plain, breathy, voiced, voiced-breathy and nasal
+    hi: अल्पप्राण, महाप्राण, घोष और अनुनासिक
+- id: script.cons.semivowels
+  title:
+    en: Semivowels य र ल व
+    hi: 'अन्तःस्थ: य र ल व'
+  sutras:
+  - SS.5
+  - SS.6
+- id: script.cons.sibilants
+  title:
+    en: श ष स and ह
+    hi: 'ऊष्म: श ष स ह'
+  sutras:
+  - SS.13
+  - SS.14
+- id: script.cons.inherent-a
+  title:
+    en: Every consonant carries अ; the virāma ् removes it
+    hi: हर व्यंजन में अ; हलन्त ् उसे हटाता है
+lessons:
+- cons.grid
+- cons.breath
+- cons.semivowels
+- cons.sibilants
+- cons.virama
+planned: []
+revision: cons.revision
+check: cons.check

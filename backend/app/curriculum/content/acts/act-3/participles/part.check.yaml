@@ -1,0 +1,172 @@
+id: part.check
+template: check
+title:
+  en: Open the folds
+  hi: तहें खोलिए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - krt.ktva
+  mode: choice
+  prompt:
+    en: “Having gone.” Which form?
+    hi: ‘जाकर।’ कौन-सा रूप?
+  explain:
+    en: '{{गत्वा}}.'
+    hi: '{{गत्वा}}।'
+  roman: after
+  options:
+  - sa: गतः
+  - sa: गन्तुम्
+  - correct: true
+    sa: गत्वा
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - krt.tumun
+  mode: choice
+  prompt:
+    en: “To go.” Which form?
+    hi: ‘जाने के लिए।’ कौन-सा रूप?
+  explain:
+    en: '{{गन्तुम्}}.'
+    hi: '{{गन्तुम्}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: गन्तुम्
+  - sa: गत्वा
+  - sa: गच्छन्
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - krt.kta
+  mode: choice
+  prompt:
+    en: “Gone” (the boy). Which form?
+    hi: ‘गया हुआ’ (बालक)। कौन-सा रूप?
+  explain:
+    en: '{{गतः}}.'
+    hi: '{{गतः}}।'
+  roman: after
+  options:
+  - sa: गन्तव्यः
+  - sa: गच्छन्
+  - correct: true
+    sa: गतः
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - krt.shatr
+  mode: choice
+  prompt:
+    en: “Going” (the boy). Which form?
+    hi: ‘जाता हुआ’ (बालक)। कौन-सा रूप?
+  explain:
+    en: '{{गच्छन्}}.'
+    hi: '{{गच्छन्}}।'
+  roman: after
+  options:
+  - sa: गतः
+  - sa: गत्वा
+  - correct: true
+    sa: गच्छन्
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - krt.krtya
+  mode: choice
+  prompt:
+    en: “To be done.” Which form?
+    hi: ‘करना चाहिए।’ कौन-सा रूप?
+  explain:
+    en: '{{कर्तव्यम्}}.'
+    hi: '{{कर्तव्यम्}}।'
+  roman: after
+  options:
+  - sa: कृतम्
+  - correct: true
+    sa: कर्तव्यम्
+  - sa: कुर्वन्
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - krt.ktva
+  - krt.tumun
+  - krt.kta
+  - krt.shatr
+  mode: match
+  prompt:
+    en: Join each form to its kind.
+    hi: हर रूप को उसके प्रकार से जोड़िए।
+  explain:
+    en: Four words from one root.
+    hi: एक धातु से चार शब्द।
+  roman: after
+  pairs:
+  - left:
+      sa: गत्वा
+    right:
+      text:
+        en: having gone
+        hi: जाकर
+  - left:
+      sa: गन्तुम्
+    right:
+      text:
+        en: to go
+        hi: जाने के लिए
+  - left:
+      sa: गतः
+    right:
+      text:
+        en: gone
+        hi: गया हुआ
+  - left:
+      sa: गच्छन्
+    right:
+      text:
+        en: going
+        hi: जाता हुआ
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - krt.ktva
+  - krt.tumun
+  - krt.kta
+  - krt.shatr
+  mode: order
+  prompt:
+    en: 'Fill Sankshepaka''s folds: “Having gone, to go, gone, going.”'
+    hi: 'सङ्क्षेपक की तहें भरिए: ‘जाकर, जाने के लिए, गया हुआ, जाता हुआ।’'
+  explain:
+    en: '{{गत्वा गन्तुम् गतः गच्छन्}}: four forms of one root.'
+    hi: '{{गत्वा गन्तुम् गतः गच्छन्}}: एक धातु के चार रूप।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“गत्वा, गन्तुम्, गतः, गच्छन्,” you say, and Sankshepaka opens and opens until he is a great fan, a screen, a window onto a distance. “A whole sentence,” he says, “in each,” and the folds, all of them, are written in a close, neat hand. He bows and spreads himself over the trees like a sheet of paper over a table, and all the pages read, together, softly: “च. वा. अपि. एव.” “And, or, also, only: the little words that never change.” The Vetāla looks at the ground. “The last night. I have something for you.”'
+      hi: '“गत्वा, गन्तुम्, गतः, गच्छन्,” आप कहते हैं, और सङ्क्षेपक खुलता जाता है, खुलता जाता है, जब तक वह एक विशाल पंखा, एक पर्दा, दूरी की ओर खुलती खिड़की न बन जाए। “हर एक में,” वह कहता है, “एक पूरा वाक्य,” और तहें, सब की सब, सघन सुघड़ लिखावट में लिखी हैं। वह झुकता है और वृक्षों के ऊपर मेज़ पर काग़ज़ की चादर की तरह फैल जाता है, और सारे पन्ने साथ-साथ धीमे से पढ़ते हैं: “च। वा। अपि। एव।” “और, या, भी, ही: वे छोटे शब्द जो कभी नहीं बदलते।” वेताल ज़मीन की ओर देखता है। “अन्तिम रात। मेरे पास आपके लिए कुछ है।”'
+    failure:
+      en: 'The fan stays folded. The four: {{गत्वा गन्तुम् गतः गच्छन्}}.'
+      hi: 'पंखा तह रहता है। चारों: {{गत्वा गन्तुम् गतः गच्छन्}}।'
+  tokens:
+  - गत्वा
+  - गन्तुम्
+  - गतः
+  - गच्छन्

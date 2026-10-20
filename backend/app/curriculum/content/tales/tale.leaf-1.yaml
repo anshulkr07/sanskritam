@@ -1,0 +1,315 @@
+id: tale.leaf-1
+template: tale
+title:
+  en: The parrot who learned the letters
+  hi: वह तोता जिसने अक्षर सीखे
+title_sa: शुकस्य अक्षराणि
+minutes: 4
+review: engine_ok
+sources:
+- title: An original tale for this course
+  licence: original
+cards:
+- id: r1
+  kind: reading
+  title:
+    en: The parrot and the old woman
+    hi: तोता और वृद्धा
+  depth: core
+  image:
+    brief: An old woman in a cream cotton sari sits on a low stool reading a palm leaf aloud under a banyan tree; a green parrot on a branch above her listens with its head tilted; warm morning light.
+    alt:
+      en: An old woman reads a palm leaf under a tree while a parrot listens
+      hi: पेड़ के नीचे ताड़पत्र पढ़ती वृद्धा, सुनता तोता
+    cast:
+    - shuka
+    - dadi
+    place: grama
+    ratio: '4:3'
+    id: tale-leaf-1-r1
+  passage:
+  - sa: एकः शुकः वृक्षे अस्ति।
+    meaning:
+      en: A parrot is in a tree.
+      hi: एक तोता पेड़ पर है।
+    words:
+    - sa: एकः
+      gloss:
+        en: one, a
+        hi: एक
+    - sa: शुकः
+      gloss:
+        en: parrot
+        hi: तोता
+      check:
+        type: subanta
+        stem: शुक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वृक्षे
+      gloss:
+        en: in the tree
+        hi: पेड़ पर
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: वृद्धा पत्रम् पठति।
+    meaning:
+      en: An old woman reads a leaf.
+      hi: एक वृद्धा पत्र पढ़ती है।
+    words:
+    - sa: वृद्धा
+      gloss:
+        en: old woman
+        hi: वृद्धा
+      check:
+        type: subanta
+        stem: वृद्धा
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पत्रम्
+      gloss:
+        en: leaf
+        hi: पत्र
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ती है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: शुकः शृणोति।
+    meaning:
+      en: The parrot listens.
+      hi: तोता सुनता है।
+    words:
+    - sa: शुकः
+      gloss:
+        en: parrot
+        hi: तोता
+      check:
+        type: subanta
+        stem: शुक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: शृणोति
+      gloss:
+        en: listens
+        hi: सुनता है
+      check:
+        type: tinanta
+        dhatu: श्रु
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: शुकः वदति अ आ इ ई।
+    meaning:
+      en: 'The parrot says: a, ā, i, ī.'
+      hi: 'तोता बोलता है: अ, आ, इ, ई।'
+    words:
+    - sa: शुकः
+      gloss:
+        en: parrot
+        hi: तोता
+      check:
+        type: subanta
+        stem: शुक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वदति
+      gloss:
+        en: says
+        hi: बोलता है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: अ आ इ ई
+      gloss:
+        en: 'a ā i ī: the first vowels'
+        hi: 'अ आ इ ई: पहले स्वर'
+  - sa: वृद्धा हसति।
+    meaning:
+      en: The old woman laughs.
+      hi: वृद्धा हँसती है।
+    words:
+    - sa: वृद्धा
+      gloss:
+        en: old woman
+        hi: वृद्धा
+      check:
+        type: subanta
+        stem: वृद्धा
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: हसति
+      gloss:
+        en: laughs
+        hi: हँसती है
+      check:
+        type: tinanta
+        dhatu: हस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: r2
+  kind: reading
+  title:
+    en: Day by day
+    hi: दिन-प्रतिदिन
+  depth: core
+  passage:
+  - sa: दिने दिने शुकः अक्षराणि वदति।
+    meaning:
+      en: Day by day the parrot says the letters.
+      hi: दिन-दिन तोता अक्षर बोलता है।
+    words:
+    - sa: दिने
+      gloss:
+        en: on the day
+        hi: दिन
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: दिने
+      gloss:
+        en: on the day
+        hi: दिन
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: शुकः
+      gloss:
+        en: parrot
+        hi: तोता
+      check:
+        type: subanta
+        stem: शुक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अक्षराणि
+      gloss:
+        en: letters
+        hi: अक्षर
+      check:
+        type: subanta
+        stem: अक्षर
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+    - sa: वदति
+      gloss:
+        en: says
+        hi: बोलता है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: अन्ते शुकः पत्रम् पठति।
+    meaning:
+      en: At the end the parrot reads the leaf.
+      hi: अन्त में तोता पत्र पढ़ता है।
+    words:
+    - sa: अन्ते
+      gloss:
+        en: at the end
+        hi: अन्त में
+      check:
+        type: subanta
+        stem: अन्त
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: शुकः
+      gloss:
+        en: parrot
+        hi: तोता
+      check:
+        type: subanta
+        stem: शुक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पत्रम्
+      gloss:
+        en: leaf
+        hi: पत्र
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: पत्रम् दीप्यते।
+    meaning:
+      en: The leaf glows.
+      hi: पत्र चमकता है।
+    words:
+    - sa: पत्रम्
+      gloss:
+        en: leaf
+        hi: पत्र
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: दीप्यते
+      gloss:
+        en: glows
+        hi: चमकता है
+      check:
+        type: tinanta
+        dhatu: दीप्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka

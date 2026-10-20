@@ -1,0 +1,421 @@
+id: part.tumun
+template: scene
+title:
+  en: To go
+  hi: जाने के लिए
+title_sa: गन्तुम् पठितुम्
+minutes: 6
+teaches:
+- krt.tumun
+needs:
+- krt.ktva
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: A word that wants
+    hi: चाहने वाला शब्द
+  depth: core
+  image:
+    brief: The paper-fan spirit folding his answer into a single word on one fold; Śuka testing words with a raised wing; Dādī smiling; the Vetāla listening with half-closed eyes; firelight.
+    alt:
+      en: A paper-fan spirit folds an answer into one word while a parrot tests words
+      hi: काग़ज़ी पंखे जैसा भूत उत्तर को एक शब्द में समेटता, शब्द परखता तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - sankshepaka
+    place: smashana
+    ratio: '4:3'
+    id: part-tumun-s1
+  narration:
+    en: '“Why did you come?” the Vetāla asks, and the paper-fan spirit folds his answer into a single word: “द्रष्टुम्.” “To see.” Śuka tests it. “गन्तुम् इच्छामि.” “I want to go.” “पठितुम् शक्नोमि.” “I am able to read.” “One word,” says Dādī, “and the purpose is done. No ‘in order that’, no ‘so as to’.”'
+    hi: '“तुम क्यों आए?” वेताल पूछता है, और काग़ज़ी पंखे वाला भूत अपना उत्तर एक शब्द में समेट देता है: “द्रष्टुम्।” “देखने के लिए।” शुक परखता है। “गन्तुम् इच्छामि।” “मैं जाना चाहता हूँ।” “पठितुम् शक्नोमि।” “मैं पढ़ सकता हूँ।” “एक शब्द,” दादी कहती हैं, “और प्रयोजन पूरा। न ‘ताकि’, न ‘इस उद्देश्य से’।”'
+  quote:
+    sa: अहमप्यवदं मातर्द्रष्टुमेतद्व्रजाम्यहम्
+    gloss:
+      en: 'I too said: “Mother, I go to see this.”'
+      hi: 'मैंने भी कहा: “माँ, मैं इसे देखने जाता हूँ।”'
+    source: Kathāsaritsāgara 1.2 (read in the Digital Corpus of Sanskrit)
+- id: t1
+  kind: teach
+  title:
+    en: In order to
+    hi: के लिए
+  depth: core
+  skills:
+  - krt.tumun
+  body:
+    en: 'Add {{-तुम्}} to the root to say “to do, in order to do”: {{गम्}} gives {{गन्तुम्}}, {{पठ्}} gives {{पठितुम्}}, {{कृ}} gives {{कर्तुम्}}, {{दृश्}} gives {{द्रष्टुम्}}. It goes with verbs of wanting and being able: {{इच्छति}}, {{शक्नोति}}, and with “goes”: {{द्रष्टुं गच्छति}}.'
+    hi: '‘करना, करने के लिए’ कहने के लिए धातु में {{-तुम्}} जोड़िए: {{गम्}} से {{गन्तुम्}}, {{पठ्}} से {{पठितुम्}}, {{कृ}} से {{कर्तुम्}}, {{दृश्}} से {{द्रष्टुम्}}। यह चाहने और समर्थ होने वाली क्रियाओं के साथ चलता है: {{इच्छति}}, {{शक्नोति}}, और ‘जाता है’ के साथ: {{द्रष्टुं गच्छति}}।'
+  examples:
+  - sa: सः पुस्तकम् पठितुम् इच्छति।
+    meaning:
+      en: He wants to read the book.
+      hi: वह पुस्तक पढ़ना चाहता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: पुस्तकम्
+      gloss:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पठितुम्
+      gloss:
+        en: to read
+        hi: पढ़ने
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: tumun
+    - sa: इच्छति
+      gloss:
+        en: wants
+        hi: चाहता है
+      check:
+        type: tinanta
+        dhatu: इष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tudadi
+  - sa: अहम् तम् द्रष्टुम् गच्छामि।
+    meaning:
+      en: I go to see him.
+      hi: मैं उसे देखने जाता हूँ।
+    words:
+    - sa: अहम्
+      gloss:
+        en: I
+        hi: मैं
+    - sa: तम्
+      gloss:
+        en: him
+        hi: उसे
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: द्रष्टुम्
+      gloss:
+        en: to see
+        hi: देखने
+      check:
+        type: krdanta
+        dhatu: दृश्
+        krt: tumun
+    - sa: गच्छामि
+      gloss:
+        en: go
+        hi: जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+  - sa: सः गन्तुम् शक्नोति।
+    meaning:
+      en: He is able to go.
+      hi: वह जा सकता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: गन्तुम्
+      gloss:
+        en: to go
+        hi: जाने
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: tumun
+    - sa: शक्नोति
+      gloss:
+        en: is able
+        hi: समर्थ है
+      check:
+        type: tinanta
+        dhatu: शक्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Svadi
+  term:
+    sa: तुमुन्
+    meaning:
+      en: the “in order to” ending
+      hi: ‘के लिए’ प्रत्यय
+- id: tb1
+  kind: table
+  title:
+    en: In order to
+    hi: के लिए
+  depth: core
+  skills:
+  - krt.tumun
+  caption:
+    en: Root and “to …”
+    hi: धातु और ‘… के लिए’
+  columns:
+  - en: Root
+    hi: धातु
+  - en: To …
+    hi: … के लिए
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: गम्
+    - sa: गन्तुम्
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: tumun
+    - text:
+        en: to go
+        hi: जाने के लिए
+  - - sa: पठ्
+    - sa: पठितुम्
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: tumun
+    - text:
+        en: to read
+        hi: पढ़ने के लिए
+  - - sa: कृ
+    - sa: कर्तुम्
+      check:
+        type: krdanta
+        dhatu: कृ
+        krt: tumun
+    - text:
+        en: to do
+        hi: करने के लिए
+  - - sa: दृश्
+    - sa: द्रष्टुम्
+      check:
+        type: krdanta
+        dhatu: दृश्
+        krt: tumun
+    - text:
+        en: to see
+        hi: देखने के लिए
+  - - sa: श्रु
+    - sa: श्रोतुम्
+      check:
+        type: krdanta
+        dhatu: श्रु
+        krt: tumun
+    - text:
+        en: to hear
+        hi: सुनने के लिए
+  - - sa: दा
+    - sa: दातुम्
+      check:
+        type: krdanta
+        dhatu: दा
+        krt: tumun
+    - text:
+        en: to give
+        hi: देने के लिए
+  - - sa: भू
+    - sa: भवितुम्
+      check:
+        type: krdanta
+        dhatu: भू
+        krt: tumun
+    - text:
+        en: to be
+        hi: होने के लिए
+  note:
+    en: Like {{-त्वा}}, it never changes.
+    hi: '{{-त्वा}} की तरह यह कभी नहीं बदलता।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - krt.tumun
+  mode: choice
+  prompt:
+    en: “To read.” Which form?
+    hi: ‘पढ़ने के लिए।’ कौन-सा रूप?
+  explain:
+    en: '{{पठितुम्}}: {{पठ्}} + {{-तुम्}}.'
+    hi: '{{पठितुम्}}: {{पठ्}} + {{-तुम्}}।'
+  roman: after
+  options:
+  - sa: पठित्वा
+  - sa: पठितः
+  - correct: true
+    sa: पठितुम्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - krt.tumun
+  mode: type
+  prompt:
+    en: 'Say: “To see.”'
+    hi: 'कहिए: ‘देखने के लिए।’'
+  explain:
+    en: '{{द्रष्टुम्}}.'
+    hi: '{{द्रष्टुम्}}।'
+  roman: after
+  answers:
+  - द्रष्टुम्
+  tiles:
+  - द्रष्टु
+  - म्
+  - दृश
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - krt.tumun
+  mode: match
+  prompt:
+    en: Join each root to its “to …” form.
+    hi: हर धातु को उसके ‘… के लिए’ रूप से जोड़िए।
+  explain:
+    en: Mind the strengthened vowel.
+    hi: दृढ़ हुए स्वर का ध्यान रखिए।
+  roman: after
+  pairs:
+  - left:
+      sa: गम्
+    right:
+      sa: गन्तुम्
+  - left:
+      sa: कृ
+    right:
+      sa: कर्तुम्
+  - left:
+      sa: श्रु
+    right:
+      sa: श्रोतुम्
+  - left:
+      sa: दा
+    right:
+      sa: दातुम्
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - krt.tumun
+  widget: mark_words
+  prompt:
+    en: Tap every “to …” word.
+    hi: हर ‘… के लिए’ शब्द छुइए।
+  params:
+    passage:
+    - गन्तुम्
+    - गत्वा
+    - कर्तुम्
+    - कृत्वा
+    - द्रष्टुम्
+    - दृष्ट्वा
+    targets:
+    - गन्तुम्
+    - कर्तुम्
+    - द्रष्टुम्
+  roman: show
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - krt.tumun
+  mode: order
+  prompt:
+    en: 'Say: “I want to go.”'
+    hi: 'कहिए: ‘मैं जाना चाहता हूँ।’'
+  explain:
+    en: '{{अहं गन्तुम् इच्छामि}}.'
+    hi: '{{अहं गन्तुम् इच्छामि}}।'
+  roman: after
+  tokens:
+  - अहम्
+  - गन्तुम्
+  - इच्छामि
+- id: p5
+  kind: practice
+  title:
+    en: To read
+    hi: पढ़ने के लिए
+  depth: core
+  skills:
+  - krt.tumun
+  mode: choice
+  prompt:
+    en: “He is able to read.” Which sentence?
+    hi: ‘वह पढ़ सकता है।’ कौन-सा वाक्य?
+  explain:
+    en: '{{पठितुं शक्नोति}}: {{-तुम्}} with {{शक्नोति}}.'
+    hi: '{{पठितुं शक्नोति}}: {{शक्नोति}} के साथ {{-तुम्}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“सः पठितुं शक्नोति,” you say. The folded spirit unfolds one of his folds all the way to the edge of the page, and on it there is a single line, in handwriting that is not his: “द्रष्टुम्. To see. For this I came.” “That is mine,” he says, in wonder. “I wrote it before I forgot how.”'
+      hi: '“सः पठितुं शक्नोति,” आप कहते हैं। तहदार भूत अपनी एक तह पन्ने के छोर तक खोल देता है, और उस पर एक पंक्ति है, ऐसी लिखावट में जो उसकी नहीं: “द्रष्टुम्। देखने के लिए। इसी के लिए मैं आया।” “यह मेरा है,” वह विस्मय से कहता है। “मैंने इसे भूलने से पहले लिखा था।”'
+    failure:
+      en: 'The fold stays blank. “He is able to read”: {{सः पठितुं शक्नोति}}.'
+      hi: 'तह कोरी रहती है। ‘वह पढ़ सकता है’: {{सः पठितुं शक्नोति}}।'
+  options:
+  - sa: सः पठित्वा शक्नोति
+  - correct: true
+    sa: सः पठितुं शक्नोति
+  - sa: सः पठितः शक्नोति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's purpose
+    hi: पाणिनि का प्रयोजन
+  depth: panini
+  skills:
+  - krt.tumun
+  sutras:
+  - 3.3.10
+  - 3.3.158
+  body:
+    en: Sūtra 3.3.10, {{तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम्}}, gives {{तुमुन्}} when one action is for another action. And 3.3.158, {{समानकर्तृकेषु तुमुन्}}, gives it with verbs of wanting when the doer is the same.
+    hi: सूत्र 3.3.10, {{तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम्}}, जब एक क्रिया दूसरी के लिए हो तब {{तुमुन्}} देता है। और 3.3.158, {{समानकर्तृकेषु तुमुन्}}, चाहने की क्रियाओं के साथ उसे देता है जब कर्ता वही हो।
+- id: sum
+  kind: summary
+  title:
+    en: In order to
+    hi: के लिए
+  depth: core
+  points:
+  - sa: गन्तुम् · कर्तुम् · द्रष्टुम्
+    text:
+      en: To go; to do; to see.
+      hi: जाने के लिए; करने के लिए; देखने के लिए।
+  - sa: इच्छति · शक्नोति + तुम्
+    text:
+      en: Wants to; is able to.
+      hi: चाहता है; समर्थ है।
+  - text:
+      en: It never changes.
+      hi: यह कभी नहीं बदलता।

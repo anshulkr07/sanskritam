@@ -38,5 +38,7 @@ tzdata>=2024.1
 astronomy-engine==2.1.19
 # Vector operations for Ask book search (services/book_search.py)
 numpy>=1.26
+# The story course's content files (app/curriculum/content/*.yaml)
+PyYAML>=6.0
 
 getstream==6.1.1  # Community audio only; chat stays in our database

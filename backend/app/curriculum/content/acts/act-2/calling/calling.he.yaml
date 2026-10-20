@@ -1,0 +1,462 @@
+id: calling.he
+template: scene
+title:
+  en: Calling by name
+  hi: नाम लेकर पुकारना
+title_sa: सम्बोधनम्
+minutes: 6
+teaches:
+- case.voc
+needs:
+- case.loc
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: A voice in the lanes
+    hi: गलियों में एक आवाज़
+  depth: core
+  image:
+    brief: A narrow dark village lane at night, whitewashed walls lit by the small lamp you carry, Dādī beside you with a hand cupped to her mouth calling; a faint blue-grey ripple-shaped spirit with ear-like curls peeking from behind a wall; Śuka on your shoulder with his head cocked.
+    alt:
+      en: Two people with a lamp calling down a dark village lane while a faint echo-spirit peeks from a wall
+      hi: अँधेरी गली में दीपक लेकर पुकारते दो लोग और दीवार से झाँकता गूँज-भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - pratidhvanika
+    place: grama
+    ratio: '4:3'
+    id: calling-he-s1
+  narration:
+    en: A pupil has gone out after dark to fetch water and has not come back. The village lanes are narrow and black. You and Dādī go out with a lamp, calling. Your voice bounces back from the walls, a half-second late and strangely sweet. Something answers every word you say, and it is not the pupil.
+    hi: एक शिष्य अँधेरा होने के बाद पानी लाने गया था और लौटा नहीं। गाँव की गलियाँ तंग और काली हैं। आप और दादी दीपक लेकर पुकारते निकलते हैं। आपकी आवाज़ दीवारों से लौटती है, आधा क्षण देर से और अजीब रूप से मधुर। कोई आपके हर शब्द का उत्तर दे रहा है, और वह शिष्य नहीं है।
+  lines:
+  - speaker: dadi
+    sa: हे बालक!
+    gloss:
+      en: O boy!
+      hi: अरे बालक!
+- id: t1
+  kind: teach
+  title:
+    en: 'The call: the vocative'
+    hi: 'पुकार: सम्बोधन'
+  depth: core
+  skills:
+  - case.voc
+  sutras:
+  - 2.3.47
+  - 2.3.49
+  body:
+    en: 'When you call someone, you use the vocative, {{सम्बोधनम्}}. It is usually the bare stem, often with {{हे}} before it: {{हे बालक!}} (O boy!), {{हे मित्र!}} (O friend!). For a few endings the vowel changes.'
+    hi: 'जब आप किसी को पुकारते हैं, तब सम्बोधन आता है। यह प्रायः मूल रूप होता है, अक्सर आगे {{हे}} के साथ: {{हे बालक!}} (अरे बालक!), {{हे मित्र!}} (अरे मित्र!)। कुछ अन्त वाले शब्दों में स्वर बदल जाता है।'
+  examples:
+  - sa: बालक
+    meaning:
+      en: O boy!
+      hi: हे बालक!
+    check:
+      type: subanta
+      stem: बालक
+      linga: Pum
+      vibhakti: Sambodhana
+      vacana: Eka
+  - sa: मित्र
+    meaning:
+      en: O friend!
+      hi: हे मित्र!
+    check:
+      type: subanta
+      stem: मित्र
+      linga: Napumsaka
+      vibhakti: Sambodhana
+      vacana: Eka
+  - sa: आचार्य
+    meaning:
+      en: O teacher!
+      hi: हे आचार्य!
+    check:
+      type: subanta
+      stem: आचार्य
+      linga: Pum
+      vibhakti: Sambodhana
+      vacana: Eka
+  term:
+    sa: सम्बोधनम्
+    meaning:
+      en: 'the vocative: calling'
+      hi: 'सम्बोधन: पुकारना'
+- id: tb1
+  kind: table
+  title:
+    en: Calling, in every family
+    hi: हर कुल में पुकार
+  depth: core
+  skills:
+  - case.voc
+  caption:
+    en: The first case and the call
+    hi: प्रथमा और पुकार
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: '1st: itself'
+    hi: 'प्रथमा: स्वयं'
+  - en: Call
+    hi: पुकार
+  rows:
+  - - text:
+        en: boy
+        hi: बालक
+    - sa: बालकः
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: girl
+        hi: बालिका
+    - sa: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालिके
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: river
+        hi: नदी
+    - sa: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नदि
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: teacher
+        hi: गुरु
+    - sa: गुरुः
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गुरो
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: poet
+        hi: कवि
+    - sa: कविः
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कवे
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: father
+        hi: पिता
+    - sa: पिता
+      check:
+        type: subanta
+        stem: पितृ
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पितः
+      check:
+        type: subanta
+        stem: पितृ
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: mother
+        hi: माता
+    - sa: माता
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: मातः
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Eka
+      highlight: true
+  note:
+    en: 'Most words call with their stem. The changes: -आ → {{ए}} ({{बालिके}}), -ई → {{इ}} ({{नदि}}), -इ → {{ए}} ({{कवे}}), -उ → {{ओ}} ({{गुरो}}), -ऋ → {{अः}} ({{पितः}}).'
+    hi: 'अधिकांश शब्द मूल रूप से पुकारे जाते हैं। परिवर्तन: -आ → {{ए}} ({{बालिके}}), -ई → {{इ}} ({{नदि}}), -इ → {{ए}} ({{कवे}}), -उ → {{ओ}} ({{गुरो}}), -ऋ → {{अः}} ({{पितः}})।'
+- id: t2
+  kind: teach
+  title:
+    en: A call is outside the sentence
+    hi: पुकार वाक्य से बाहर
+  depth: core
+  skills:
+  - case.voc
+  body:
+    en: 'The vocative does not change the verb. It is an extra word, set off by a comma: {{हे बालक, त्वं कुत्र असि?}} The verb still agrees with {{त्वम्}}. Plural calls look like the first case plural: {{हे बालकाः!}}'
+    hi: 'सम्बोधन क्रिया को नहीं बदलता। यह अतिरिक्त शब्द है, अल्पविराम से अलग: {{हे बालक, त्वं कुत्र असि?}} क्रिया अब भी {{त्वम्}} से मेल खाती है। बहुवचन पुकार प्रथमा बहुवचन जैसी दिखती है: {{हे बालकाः!}}'
+  examples:
+  - sa: हे बालक त्वम् कुत्र असि?
+    meaning:
+      en: O boy, where are you?
+      hi: अरे बालक, तुम कहाँ हो?
+    words:
+    - sa: हे
+      gloss:
+        en: O
+        hi: अरे
+    - sa: बालक
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+    - sa: त्वम्
+      gloss:
+        en: you
+        hi: तुम
+    - sa: कुत्र
+      gloss:
+        en: where
+        hi: कहाँ
+    - sa: असि
+      gloss:
+        en: are
+        hi: हो
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+  - sa: हे बालकाः आगच्छथ!
+    meaning:
+      en: Boys, come!
+      hi: बालको, आओ!
+    words:
+    - sa: हे
+      gloss:
+        en: O
+        hi: अरे
+    - sa: बालकाः
+      gloss:
+        en: boys
+        hi: बालको
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Bahu
+    - sa: आगच्छथ
+      gloss:
+        en: come
+        hi: आओ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+        prefixes:
+        - आ
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.voc
+  mode: choice
+  prompt:
+    en: You call a girl. Which word?
+    hi: आप एक बालिका को पुकारते हैं। कौन-सा शब्द?
+  explain:
+    en: The call of {{बालिका}} is {{बालिके}}.
+    hi: '{{बालिका}} की पुकार {{बालिके}} है।'
+  roman: after
+  options:
+  - sa: बालिका
+  - sa: बालिकाम्
+  - correct: true
+    sa: बालिके
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.voc
+  mode: match
+  prompt:
+    en: Join each word to its call.
+    hi: हर शब्द को उसकी पुकार से जोड़िए।
+  explain:
+    en: The final vowel changes in these four.
+    hi: इन चारों में अन्तिम स्वर बदलता है।
+  roman: after
+  pairs:
+  - left:
+      sa: बालिका
+    right:
+      sa: बालिके
+  - left:
+      sa: नदी
+    right:
+      sa: नदि
+  - left:
+      sa: कविः
+    right:
+      sa: कवे
+  - left:
+      sa: गुरुः
+    right:
+      sa: गुरो
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - case.voc
+  widget: mark_words
+  prompt:
+    en: Tap every word that is a call.
+    hi: पुकार वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - बालिके
+    - बालिका
+    - कवे
+    - कविः
+    - गुरो
+    - गुरुः
+    targets:
+    - बालिके
+    - कवे
+    - गुरो
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: Call him
+    hi: उसे पुकारिए
+  depth: core
+  skills:
+  - case.voc
+  mode: order
+  prompt:
+    en: 'Call the lost pupil: “O boy, where are you?”'
+    hi: 'खोए शिष्य को पुकारिए: ‘अरे बालक, तुम कहाँ हो?’'
+  explain:
+    en: '{{हे बालक, कुत्र असि}}: the call, then the question.'
+    hi: '{{हे बालक, कुत्र असि}}: पुकार, फिर प्रश्न।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“हे बालक, कुत्र असि?” you call into the dark. A faint blue-grey ripple unspools in the air: “…बालक, कुत्र असि…” And then, from somewhere to the left, a boy''s voice, thin with relief: “अत्र अस्मि!”'
+      hi: '“हे बालक, कुत्र असि?” आप अँधेरे में पुकारते हैं। हवा में एक धीमी नीली-धूसर लहर खुलती है: “…बालक, कुत्र असि…” और फिर बाईं ओर कहीं से, राहत से पतली, एक बालक की आवाज़: “अत्र अस्मि!”'
+    failure:
+      en: 'Only the echo answers. Call with {{हे}} and the stem: {{बालक}}.'
+      hi: केवल गूँज उत्तर देती है। {{हे}} और मूल रूप {{बालक}} से पुकारिए।
+  tokens:
+  - हे
+  - बालक
+  - कुत्र
+  - असि
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's address
+    hi: पाणिनि का सम्बोधन
+  depth: panini
+  skills:
+  - case.voc
+  sutras:
+  - 2.3.47
+  - 2.3.49
+  body:
+    en: Sūtra 2.3.47, {{सम्बोधने च}}, gives address the first case in form, and 2.3.49, {{एकवचनं सम्बुद्धिः}}, names the singular ending of the call {{सम्बुद्धिः}}. So the call is a special form of the first case.
+    hi: सूत्र 2.3.47, {{सम्बोधने च}}, सम्बोधन को रूप में प्रथमा देता है, और 2.3.49, {{एकवचनं सम्बुद्धिः}}, पुकार के एकवचन के प्रत्यय को {{सम्बुद्धिः}} नाम देता है। इसलिए सम्बोधन प्रथमा का विशेष रूप है।
+  term:
+    sa: सम्बुद्धिः
+    meaning:
+      en: the ending of the call
+      hi: सम्बोधन का प्रत्यय
+- id: sum
+  kind: summary
+  title:
+    en: Calling
+    hi: पुकारना
+  depth: core
+  points:
+  - sa: हे बालक · हे बालिके
+    text:
+      en: 'A call: {{हे}} plus the stem.'
+      hi: 'पुकार: {{हे}} और मूल रूप।'
+  - sa: नदि · कवे · गुरो · पितः
+    text:
+      en: Some endings change.
+      hi: कुछ अन्त बदल जाते हैं।
+  - text:
+      en: The verb does not change.
+      hi: क्रिया नहीं बदलती।

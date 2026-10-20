@@ -1,0 +1,245 @@
+id: who.order
+template: scene
+title:
+  en: Shuffle the words
+  hi: शब्द उलटिए-पलटिए
+title_sa: पदक्रमः
+minutes: 6
+teaches:
+- sent.word-order
+needs:
+- sent.stem-ending
+- sent.nom-sg
+- verb.pres-3sg
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The shuffling spirit
+    hi: शब्द उलटता भूत
+  depth: core
+  image:
+    brief: Śuka the parrot flapping happily as word-cards float in the air around him, the small grey-blue spirit juggling them, Dādī clapping on the ghat steps.
+    alt:
+      en: A parrot and a small spirit juggling floating word-cards on the ghat
+      hi: शब्द-पत्रों से खेलते तोता और नन्हा भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - ghataka
+    place: naditira
+    ratio: '4:3'
+    id: who-order-s1
+  narration:
+    en: 'Śuka decides to help and says the sentence backwards: “पठति बालकः!” Dādī claps. “Still correct.” The spirit is delighted. He shuffles every word he knows, and each time the sentence means the same. “The endings carry it,” Dādī says.'
+    hi: 'शुक मदद करने की ठानता है और वाक्य उलटा बोलता है: “पठति बालकः!” दादी ताली बजाती हैं। “अब भी सही है।” भूत मगन हो जाता है। वह हर शब्द को उलट-पलट करता है, और वाक्य का अर्थ वही रहता है। दादी कहती हैं, “अर्थ प्रत्ययों में है।”'
+- id: t1
+  kind: teach
+  title:
+    en: Any order
+    hi: कोई भी क्रम
+  depth: core
+  skills:
+  - sent.word-order
+  body:
+    en: In Sanskrit the endings carry the meaning, so words may stand in any order. {{बालकः पठति}} and {{पठति बालकः}} both say “the boy reads”. Usually the doer comes first and the verb last, but the poets mix freely.
+    hi: संस्कृत में अर्थ प्रत्ययों में होता है, इसलिए शब्द किसी भी क्रम में आ सकते हैं। {{बालकः पठति}} और {{पठति बालकः}} दोनों का अर्थ है ‘बालक पढ़ता है’। प्रायः कर्ता पहले और क्रिया अन्त में आती है, पर कवि खुलकर क्रम बदलते हैं।
+  examples:
+  - sa: बालकः पठति।
+    meaning:
+      en: The boy reads.
+      hi: बालक पढ़ता है।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: पठति बालकः।
+    meaning:
+      en: The boy reads, the same.
+      hi: बालक पढ़ता है, वही अर्थ।
+    words:
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sent.word-order
+  widget: word_shuffle
+  prompt:
+    en: Move the words around and watch the meaning stay.
+    hi: शब्दों को इधर-उधर कीजिए और देखिए कि अर्थ वही रहता है।
+  params:
+    words:
+    - बालिका
+    - हसति
+    - लिखति
+    - च
+    not_first:
+    - च
+    meaning:
+      en: The girl laughs and writes.
+      hi: बालिका हँसती है और लिखती है।
+  roman: show
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sent.word-order
+  mode: choice
+  prompt:
+    en: Which sentence does not mean “the boy reads”?
+    hi: कौन-सा वाक्य ‘बालक पढ़ता है’ नहीं कहता?
+  explain:
+    en: Changing a word changes the meaning; changing the order does not.
+    hi: शब्द बदलने से अर्थ बदलता है; क्रम बदलने से नहीं।
+  roman: show
+  options:
+  - sa: बालकः पठति
+  - sa: पठति बालकः
+  - correct: true
+    why:
+      en: That is “the girl reads”.
+      hi: यह ‘बालिका पढ़ती है’ है।
+    sa: बालिका पठति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sent.word-order
+  mode: engine
+  prompt:
+    en: Reorder the words and keep the meaning.
+    hi: शब्दों को फिर से लगाइए, अर्थ वही रखिए।
+  explain:
+    en: Both orders are right.
+    hi: दोनों क्रम सही हैं।
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: सीता गच्छति
+    seed: 0
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sent.word-order
+  mode: engine
+  prompt:
+    en: Another sentence to reorder.
+    hi: एक और वाक्य क्रम में लगाइए।
+  explain:
+    en: Word order is free; endings fix the roles.
+    hi: शब्द-क्रम स्वतन्त्र है; भूमिकाएँ प्रत्यय तय करते हैं।
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: रामः हसति
+    seed: 1
+- id: p4
+  kind: practice
+  title:
+    en: The verb first
+    hi: क्रिया पहले
+  depth: core
+  skills:
+  - sent.word-order
+  mode: order
+  prompt:
+    en: 'Say it the poet''s way: put the verb first.'
+    hi: 'कवि की तरह बोलिए: क्रिया पहले रखिए।'
+  explain:
+    en: '{{गच्छति सीता}}: Sītā goes. Same meaning.'
+    hi: '{{गच्छति सीता}}: सीता जाती है। वही अर्थ।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “गच्छति सीता,” you say. The spirit does a little dance down the steps, dripping light, and a thread of his shape drifts upriver.
+      hi: “गच्छति सीता,” आप कहते हैं। भूत सीढ़ियों पर छोटा नाच करता है, प्रकाश टपकाता हुआ, और उसकी आकृति का एक धागा नदी की ऊपरी ओर बह जाता है।
+    failure:
+      en: He waits. Put the action first, and the one who goes second.
+      hi: वह प्रतीक्षा करता है। क्रिया पहले, जाने वाला बाद में।
+  tokens:
+  - गच्छति
+  - सीता
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - sent.word-order
+  mode: choice
+  prompt:
+    en: Why can the words stand in any order?
+    hi: शब्द किसी भी क्रम में क्यों आ सकते हैं?
+  explain:
+    en: The endings, not the places, say who does what.
+    hi: कौन क्या करता है, यह प्रत्यय बताते हैं, स्थान नहीं।
+  roman: show
+  options:
+  - correct: true
+    text:
+      en: The endings tell the roles
+      hi: प्रत्यय भूमिकाएँ बताते हैं
+  - text:
+      en: Sanskrit has no grammar
+      hi: संस्कृत में व्याकरण नहीं है
+- id: sum
+  kind: summary
+  title:
+    en: Free order
+    hi: मुक्त क्रम
+  depth: core
+  points:
+  - sa: बालकः पठति = पठति बालकः
+    text:
+      en: Same meaning, any order.
+      hi: वही अर्थ, कोई भी क्रम।
+  - text:
+      en: The endings carry the roles.
+      hi: प्रत्यय भूमिकाएँ ढोते हैं।
+  - text:
+      en: 'Usual order: doer, then verb.'
+      hi: 'सामान्य क्रम: कर्ता, फिर क्रिया।'

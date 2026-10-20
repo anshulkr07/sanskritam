@@ -1,0 +1,332 @@
+id: cs.nasal
+template: scene
+title:
+  en: The nose takes over
+  hi: नासिका ले लेती है
+title_sa: सन्मार्गः संस्कृतम्
+minutes: 6
+teaches:
+- sandhi.nasal
+needs:
+- sandhi.place
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The twelfth statue
+    hi: बारहवीं प्रतिमा
+  depth: core
+  image:
+    brief: The twelfth statue humming with her mouth closed and her hand lightly against her nose, a hint of resonance; Śuka listening with a tilted head; Dādī smiling; lamplight on carved stone.
+    alt:
+      en: A statue hums with her hand lightly at her nose while a parrot listens
+      hi: मुँह बन्द कर गुनगुनाती प्रतिमा, हाथ नाक के पास; सुनता तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - vyanjanika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: cs-nasal-s1
+  narration:
+    en: 'The twelfth statue hums. “सन्मार्गः,” she says: “the good road.” “वाङ्मयम्”: “literature.” “संस्कृतम्”: “Sanskrit.” Dādī: “The last of the three. When a stop meets a nasal, it becomes a nasal too. And a final म् before a consonant turns into a dot, the anusvāra, ं, a nasal in the same place as the sound that follows.”'
+    hi: 'बारहवीं प्रतिमा गुनगुनाती है। “सन्मार्गः,” वह कहती है: “भली राह।” “वाङ्मयम्”: “साहित्य।” “संस्कृतम्”: “संस्कृत।” दादी: “तीनों में अन्तिम। जब कोई स्पर्श किसी नासिक्य से मिलता है, तो वह भी नासिक्य बन जाता है। और व्यंजन से पहले अन्त का म् एक बिन्दु बन जाता है, अनुस्वार, ं, अगली ध्वनि के स्थान की नासिक्य ध्वनि।”'
+- id: t1
+  kind: teach
+  title:
+    en: The nasal and the dot
+    hi: नासिक्य और बिन्दु
+  depth: core
+  skills:
+  - sandhi.nasal
+  body:
+    en: 'A stop before a nasal ({{न}} or {{म}}) becomes the nasal of its own class: {{तत् + मात्रम्}} gives {{तन्मात्रम्}}; {{वाक् + मयम्}} gives {{वाङ्मयम्}}. A final {{म्}} before a consonant becomes the dot {{ं}}: {{त्वम् + गच्छसि}} gives {{त्वं गच्छसि}}. Inside {{संस्कृतम्}} it is the same. Before a vowel {{म्}} stays: {{अहम् + अपि}} gives {{अहमपि}}.'
+    hi: '{{न}} या {{म}} से पहले स्पर्श अपने वर्ग का नासिक्य बन जाता है: {{तत् + मात्रम्}} से {{तन्मात्रम्}}; {{वाक् + मयम्}} से {{वाङ्मयम्}}। व्यंजन से पहले अन्त का {{म्}} बिन्दु {{ं}} बन जाता है: {{त्वम् + गच्छसि}} से {{त्वं गच्छसि}}। {{संस्कृतम्}} में भी यही है। स्वर से पहले {{म्}} रहता है: {{अहम् + अपि}} से {{अहमपि}}।'
+  term:
+    sa: अनुस्वारः
+    meaning:
+      en: the nasal dot ं
+      hi: नासिक्य बिन्दु ं
+- id: tb1
+  kind: table
+  title:
+    en: The nasal takes over
+    hi: नासिक्य ले लेता है
+  depth: core
+  skills:
+  - sandhi.nasal
+  caption:
+    en: Stop before a nasal; म् before a consonant
+    hi: नासिक्य से पहले स्पर्श; व्यंजन से पहले म्
+  columns:
+  - en: First word
+    hi: पहला शब्द
+  - en: Second word
+    hi: दूसरा शब्द
+  - en: Joined
+    hi: जुड़ा हुआ
+  rows:
+  - - sa: तत्
+    - sa: मात्रम्
+    - sa: तन्मात्रम्
+      check:
+        type: sandhi
+        first: तत्
+        second: मात्रम्
+        joined: तन्मात्रम्
+      highlight: true
+  - - sa: सत्
+    - sa: मार्गः
+    - sa: सन्मार्गः
+      check:
+        type: sandhi
+        first: सत्
+        second: मार्गः
+        joined: सन्मार्गः
+      highlight: true
+  - - sa: जगत्
+    - sa: नाथः
+    - sa: जगन्नाथः
+      check:
+        type: sandhi
+        first: जगत्
+        second: नाथः
+        joined: जगन्नाथः
+      highlight: true
+  - - sa: वाक्
+    - sa: मयम्
+    - sa: वाङ्मयम्
+      check:
+        type: sandhi
+        first: वाक्
+        second: मयम्
+        joined: वाङ्मयम्
+      highlight: true
+  - - sa: त्वम्
+    - sa: गच्छसि
+    - sa: त्वं गच्छसि
+      check:
+        type: sandhi
+        first: त्वम्
+        second: गच्छसि
+        joined: त्वं गच्छसि
+      highlight: true
+  - - sa: वृक्षम्
+    - sa: पश्यति
+    - sa: वृक्षं पश्यति
+      check:
+        type: sandhi
+        first: वृक्षम्
+        second: पश्यति
+        joined: वृक्षं पश्यति
+      highlight: true
+  - - sa: सम्
+    - sa: सारः
+    - sa: संसारः
+      check:
+        type: sandhi
+        first: सम्
+        second: सारः
+        joined: संसारः
+      highlight: true
+  - - sa: सम्
+    - sa: स्कृतम्
+    - sa: संस्कृतम्
+      check:
+        type: sandhi
+        first: सम्
+        second: स्कृतम्
+        joined: संस्कृतम्
+      highlight: true
+  - - sa: अहम्
+    - sa: अपि
+    - sa: अहमपि
+      check:
+        type: sandhi
+        first: अहम्
+        second: अपि
+        joined: अहमपि
+      highlight: true
+  note:
+    en: The last shows {{म्}} staying before a vowel.
+    hi: अन्तिम में {{म्}} स्वर से पहले रहता है।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.nasal
+  mode: choice
+  prompt:
+    en: Split the joined word {{सन्मार्गः}}.
+    hi: जुड़े शब्द {{सन्मार्गः}} को तोड़िए।
+  explain:
+    en: '{{सत्}} + {{मार्गः}}.'
+    hi: '{{सत्}} + {{मार्गः}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: सत् + मार्गः
+  - sa: सः + मार्गः
+  - sa: सस् + मार्गः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.nasal
+  mode: choice
+  prompt:
+    en: '{{सत् + मार्गः}} gives…'
+    hi: '{{सत् + मार्गः}} से…'
+  explain:
+    en: '{{त्}} becomes {{न्}} before {{म}}.'
+    hi: '{{म}} से पहले {{त्}} बनता है {{न्}}।'
+  roman: after
+  options:
+  - sa: सत्मार्गः
+  - sa: सद्मार्गः
+  - correct: true
+    sa: सन्मार्गः
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.nasal
+  mode: type
+  prompt:
+    en: 'Join: {{सम्}} + {{सारः}}.'
+    hi: 'जोड़िए: {{सम्}} + {{सारः}}।'
+  explain:
+    en: '{{संसारः}}: the world.'
+    hi: '{{संसारः}}: जगत्।'
+  roman: after
+  answers:
+  - संसारः
+  tiles:
+  - सं
+  - सारः
+  - सम्
+  - ति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.nasal
+  mode: match
+  prompt:
+    en: Join each word to its parts.
+    hi: हर शब्द को उसके भागों से जोड़िए।
+  explain:
+    en: The nasal and the dot.
+    hi: नासिक्य और बिन्दु।
+  roman: after
+  pairs:
+  - left:
+      sa: सन्मार्गः
+    right:
+      sa: सत् + मार्गः
+  - left:
+      sa: वाङ्मयम्
+    right:
+      sa: वाक् + मयम्
+  - left:
+      sa: त्वं गच्छसि
+    right:
+      sa: त्वम् + गच्छसि
+  - left:
+      sa: संस्कृतम्
+    right:
+      sa: सम् + स्कृतम्
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.nasal
+  widget: mark_words
+  prompt:
+    en: Tap every word where {{म्}} became a dot.
+    hi: हर वह शब्द छुइए जहाँ {{म्}} बिन्दु बन गया।
+  params:
+    passage:
+    - संसारः
+    - सम्
+    - संस्कृतम्
+    - वृक्षं
+    - अहमपि
+    - वृक्षम्
+    targets:
+    - संसारः
+    - संस्कृतम्
+    - वृक्षं
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: The hum
+    hi: गुनगुनाहट
+  depth: core
+  skills:
+  - sandhi.nasal
+  mode: choice
+  prompt:
+    en: '{{सम् + स्कृतम्}} gives…'
+    hi: '{{सम् + स्कृतम्}} से…'
+  explain:
+    en: '{{म्}} before a consonant becomes {{ं}}.'
+    hi: व्यंजन से पहले {{म्}} बनता है {{ं}}।
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“संस्कृतम्,” you say, “perfected speech,” and the twelfth statue stops humming. In the quiet, she says it, and each of the twelve statues you have freed or heard repeats it from its plinth: संस्कृतम्, संस्कृतम्. It goes round the hall, not as a word but as a long soft note, like a bell being rung a very long way off. Vyañjanikā, the consonant statue, is the third to step down.'
+      hi: '“संस्कृतम्,” आप कहते हैं, “परिष्कृत वाणी,” और बारहवीं प्रतिमा गुनगुनाना बन्द करती है। शान्ति में वह उसे कहती है, और जिन बारह प्रतिमाओं को आपने मुक्त किया या सुना, हर एक अपने आसन से उसे दोहराती है: संस्कृतम्, संस्कृतम्। वह कक्ष का चक्कर लगाता है, शब्द नहीं बल्कि लम्बे कोमल स्वर की तरह, बहुत दूर बजती घण्टी की तरह। व्यञ्जनिका, व्यञ्जन-प्रतिमा, तीसरी है जो उतरती है।'
+    failure:
+      en: 'The hum continues. {{म्}} before a consonant becomes {{ं}}: {{संस्कृतम्}}.'
+      hi: 'गुनगुनाहट चलती रहती है। व्यंजन से पहले {{म्}} बनता है {{ं}}: {{संस्कृतम्}}।'
+  options:
+  - sa: सम्स्कृतम्
+  - sa: सनस्कृतम्
+  - correct: true
+    sa: संस्कृतम्
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's nose
+    hi: पाणिनि की नासिका
+  depth: panini
+  skills:
+  - sandhi.nasal
+  sutras:
+  - 8.4.45
+  - 8.3.23
+  - 8.4.58
+  body:
+    en: 'Sūtra 8.4.45, {{यरोऽनुनासिकेऽनुनासिको वा}}, lets a stop before a nasal become the nasal of its class. 8.3.23, {{मोऽनुस्वारः}}, turns a final {{म्}} before a consonant into the dot. 8.4.58, {{अनुस्वारस्य ययि परसवर्णः}}, lets that dot take the nasal of the following class: {{संकल्पः}} or {{सङ्कल्पः}}.'
+    hi: 'सूत्र 8.4.45, {{यरोऽनुनासिकेऽनुनासिको वा}}, नासिक्य से पहले स्पर्श को अपने वर्ग का नासिक्य बनने देता है। 8.3.23, {{मोऽनुस्वारः}}, व्यंजन से पहले अन्त के {{म्}} को बिन्दु बनाता है। 8.4.58, {{अनुस्वारस्य ययि परसवर्णः}}, उस बिन्दु को आगे के वर्ग का नासिक्य लेने देता है: {{संकल्पः}} या {{सङ्कल्पः}}।'
+- id: sum
+  kind: summary
+  title:
+    en: The nasal
+    hi: नासिक्य
+  depth: core
+  points:
+  - sa: त् + म = न्म
+    text:
+      en: सन्मार्गः, तन्मात्रम्.
+      hi: सन्मार्गः, तन्मात्रम्।
+  - sa: म् + व्यंजन = ं
+    text:
+      en: संसारः, त्वं गच्छसि.
+      hi: संसारः, त्वं गच्छसि।
+  - sa: म् + स्वर = म्
+    text:
+      en: अहमपि.
+      hi: अहमपि।

@@ -1,0 +1,304 @@
+id: you.you
+template: scene
+title:
+  en: You
+  hi: तुम
+title_sa: त्वं युवां यूयम्
+minutes: 6
+teaches:
+- pron.you
+needs:
+- pron.i-we
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The question
+    hi: प्रश्न
+  depth: core
+  image:
+    brief: The boat sliding out from the ghat steps with you, Dādī, Śuka, the boatman and the small silvery spirit aboard; Dādī turned toward the spirit with a kind direct look as if speaking to him.
+    alt:
+      en: A grandmother speaks kindly to a small spirit as the boat leaves the ghat
+      hi: नाव के घाट छोड़ते समय नन्हे भूत से कोमलता से बोलती दादी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - navika
+    - pratibimbaka
+    place: nauka
+    ratio: '4:3'
+    id: you-you-s1
+  narration:
+    en: 'The boat slides out from the steps. “And you?” the boatman asks Dādī. “And you, little one?” he asks the spirit. The spirit cannot answer: no one has ever said “you” to him and meant it. Dādī says it first: a clear, kind word, aimed straight at him.'
+    hi: 'नाव सीढ़ियों से सरकती है। नाविक दादी से पूछता है, “और आप?” फिर भूत से, “और तुम, नन्हे?” भूत उत्तर नहीं दे पाता: किसी ने कभी उसे ‘तुम’ कहकर सचमुच नहीं पुकारा। दादी पहले कहती हैं: साफ़, कोमल शब्द, ठीक उसकी ओर।'
+  lines:
+  - speaker: dadi
+    sa: त्वं कः असि?
+    gloss:
+      en: Who are you?
+      hi: तुम कौन हो?
+- id: t1
+  kind: teach
+  title:
+    en: You, you two, you all
+    hi: तुम, तुम दोनों, तुम सब
+  depth: core
+  skills:
+  - pron.you
+  body:
+    en: '“You” is {{त्वम्}}. For two it is {{युवाम्}}, for many {{यूयम्}}. The verb ends in {{सि}}, {{थः}} or {{थ}}: {{त्वं पठसि}} (you read), {{युवां पठथः}}, {{यूयं पठथ}}.'
+    hi: '‘तुम’ है {{त्वम्}}। दो के लिए {{युवाम्}}, अनेक के लिए {{यूयम्}}। क्रिया {{सि}}, {{थः}} या {{थ}} पर समाप्त होती है: {{त्वं पठसि}} (तुम पढ़ते हो), {{युवां पठथः}}, {{यूयं पठथ}}।'
+  rows:
+  - sa: त्वम्
+    gloss:
+      en: you
+      hi: तुम
+    check:
+      type: subanta
+      stem: युष्मद्
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: युवाम्
+    gloss:
+      en: you two
+      hi: तुम दोनों
+    check:
+      type: subanta
+      stem: युष्मद्
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Dvi
+  - sa: यूयम्
+    gloss:
+      en: you all
+      hi: तुम सब
+    check:
+      type: subanta
+      stem: युष्मद्
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Bahu
+  term:
+    sa: मध्यमपुरुषः
+    meaning:
+      en: 'second person: you'
+      hi: 'मध्यम पुरुष: तुम'
+- id: tb1
+  kind: table
+  title:
+    en: Speaking to someone
+    hi: किसी से बोलना
+  depth: core
+  skills:
+  - pron.you
+  caption:
+    en: You, with the verb “read”
+    hi: तुम, क्रिया ‘पढ़ना’ के साथ
+  columns:
+  - en: Who
+    hi: कौन
+  - en: Pronoun
+    hi: सर्वनाम
+  - en: Verb
+    hi: क्रिया
+  rows:
+  - - text:
+        en: you
+        hi: तुम
+    - sa: त्वम्
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठसि
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+  - - text:
+        en: you two
+        hi: तुम दोनों
+    - sa: युवाम्
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: पठथः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+  - - text:
+        en: you all
+        hi: तुम सब
+    - sa: यूयम्
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: पठथ
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - pron.you
+  mode: choice
+  prompt:
+    en: You speak to one friend. Which word?
+    hi: आप एक मित्र से बोलते हैं। कौन-सा शब्द?
+  explain:
+    en: '{{त्वम्}}: you (one).'
+    hi: '{{त्वम्}}: तुम (एक)।'
+  roman: after
+  options:
+  - sa: अहम्
+  - correct: true
+    sa: त्वम्
+  - sa: यूयम्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - pron.you
+  mode: match
+  prompt:
+    en: Join each pronoun to its meaning.
+    hi: हर सर्वनाम को उसके अर्थ से जोड़िए।
+  explain:
+    en: 'Learn the six: I, we two, we; you, you two, you all.'
+    hi: 'छह याद रखिए: मैं, हम दोनों, हम; तुम, तुम दोनों, तुम सब।'
+  roman: after
+  pairs:
+  - left:
+      sa: त्वम्
+    right:
+      text:
+        en: you (one)
+        hi: तुम (एक)
+  - left:
+      sa: युवाम्
+    right:
+      text:
+        en: you two
+        hi: तुम दोनों
+  - left:
+      sa: यूयम्
+    right:
+      text:
+        en: you all
+        hi: तुम सब
+  - left:
+      sa: अहम्
+    right:
+      text:
+        en: I
+        hi: मैं
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - pron.you
+  widget: mark_words
+  prompt:
+    en: Tap every verb for “you”.
+    hi: ‘तुम’ की हर क्रिया को छुइए।
+  params:
+    passage:
+    - पठसि
+    - पठामि
+    - गच्छथः
+    - गच्छामः
+    - वदथ
+    - वदन्ति
+    targets:
+    - पठसि
+    - गच्छथः
+    - वदथ
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - pron.you
+  mode: choice
+  prompt:
+    en: The boatman asks you and Dādī, “Where do you two go?” Which verb is that?
+    hi: नाविक आपसे और दादी से पूछता है, “तुम दोनों कहाँ जाते हो?” वह कौन-सी क्रिया है?
+  explain:
+    en: '“You two”: {{गच्छथः}}.'
+    hi: '‘तुम दोनों’: {{गच्छथः}}।'
+  roman: after
+  options:
+  - sa: गच्छसि
+  - correct: true
+    sa: गच्छथः
+  - sa: गच्छावः
+- id: p4
+  kind: practice
+  title:
+    en: Say “you”
+    hi: ‘तुम’ कहिए
+  depth: core
+  skills:
+  - pron.you
+  mode: order
+  prompt:
+    en: 'Say it to the spirit: “You are a friend.”'
+    hi: 'भूत से कहिए: ‘तुम मित्र हो।’'
+  explain:
+    en: '{{त्वं मित्रम् असि}}: you are a friend.'
+    hi: '{{त्वं मित्रम् असि}}: तुम मित्र हो।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “त्वं मित्रम् असि,” you say. The silver spirit's outline wavers like a reflection when a stone is dropped, then settles into your own face, smiling back.
+      hi: “त्वं मित्रम् असि,” आप कहते हैं। चाँदी-सा भूत पत्थर गिरे प्रतिबिम्ब की तरह काँपता है, फिर आपके ही चेहरे में ठहर जाता है, जो मुस्कुराकर लौटता है।
+    failure:
+      en: 'The reflection stays blank. Say “you are a friend”: start with {{त्वम्}}.'
+      hi: 'प्रतिबिम्ब खाली रहता है। ‘तुम मित्र हो’ कहिए: {{त्वम्}} से शुरू कीजिए।'
+  tokens:
+  - त्वम्
+  - मित्रम्
+  - असि
+- id: sum
+  kind: summary
+  title:
+    en: You
+    hi: तुम
+  depth: core
+  points:
+  - sa: त्वम् युवाम् यूयम्
+    text:
+      en: You, you two, you all.
+      hi: तुम, तुम दोनों, तुम सब।
+  - sa: पठसि · पठथः · पठथ
+    text:
+      en: The verb for “you”.
+      hi: ‘तुम’ की क्रिया।
+  - text:
+      en: Keep “you” and “I” apart.
+      hi: ‘तुम’ और ‘मैं’ को अलग रखिए।

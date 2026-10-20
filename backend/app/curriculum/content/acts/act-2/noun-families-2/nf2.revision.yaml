@@ -1,0 +1,241 @@
+id: nf2.revision
+template: revision
+title:
+  en: Everything about these families
+  hi: इन कुलों के बारे में सब कुछ
+title_sa: शब्दरूपसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The tables
+    hi: तालिकाएँ
+  depth: core
+  section: core
+  rows:
+  - skill: noun.i-stems
+    rule:
+      en: '{{कवि}} (masculine -इ): {{कविः कवी कवयः}}, {{कविम् कवी कवीन्}}, {{कविना कविभ्याम् कविभिः}}, {{कवये}}, {{कवेः}}, {{कवेः कव्योः कवीनाम्}}, {{कवौ कव्योः कविषु}}, {{हे कवे}}.'
+      hi: '{{कवि}} (पुंलिंग -इ): {{कविः कवी कवयः}}, {{कविम् कवी कवीन्}}, {{कविना कविभ्याम् कविभिः}}, {{कवये}}, {{कवेः}}, {{कवेः कव्योः कवीनाम्}}, {{कवौ कव्योः कविषु}}, {{हे कवे}}।'
+    sutras:
+    - 7.3.109
+    - 6.1.69
+    tag: core
+    taught_in: nf2.i#tb1
+  - skill: noun.i-stems
+    rule:
+      en: '{{मति}} (feminine -इ): {{मतिः मती मतयः}}, {{मतिम् मती मतीः}}, {{मत्या मतिभ्याम् मतिभिः}}, then optional {{मतये/मत्यै}}, {{मतेः/मत्याः}}, {{मतौ/मत्याम्}}.'
+      hi: '{{मति}} (स्त्रीलिंग -इ): {{मतिः मती मतयः}}, {{मतिम् मती मतीः}}, {{मत्या मतिभ्याम् मतिभिः}}, फिर वैकल्पिक {{मतये/मत्यै}}, {{मतेः/मत्याः}}, {{मतौ/मत्याम्}}।'
+    tag: core
+    taught_in: nf2.i#tb2
+  - skill: noun.u-stems
+    rule:
+      en: '{{गुरु}} (masculine -उ): {{गुरुः गुरू गुरवः}}, {{गुरुम् गुरू गुरून्}}, {{गुरुणा}}, {{गुरवे}}, {{गुरोः}}, {{गुरौ}}, {{हे गुरो}}. {{धेनु}} (feminine) and {{मधु}} (neuter: {{मधु मधुनी मधूनि}}) follow.'
+      hi: '{{गुरु}} (पुंलिंग -उ): {{गुरुः गुरू गुरवः}}, {{गुरुम् गुरू गुरून्}}, {{गुरुणा}}, {{गुरवे}}, {{गुरोः}}, {{गुरौ}}, {{हे गुरो}}। {{धेनु}} (स्त्रीलिंग) और {{मधु}} (नपुंसक: {{मधु मधुनी मधूनि}}) इसी तरह चलते हैं।'
+    tag: core
+    taught_in: nf2.u#tb1
+  - skill: noun.ii-uu
+    rule:
+      en: '{{नदी}} (-ई): {{नदी नद्यौ नद्यः}}, {{नदीम् नद्यौ नदीः}}, {{नद्या नदीभ्याम् नदीभिः}}, {{नद्यै}}, {{नद्याः}}, {{नद्याम्}}, {{हे नदि}}. {{वधू}} (-ऊ): {{वधूः वध्वौ वध्वः}}, {{हे वधु}}.'
+      hi: '{{नदी}} (-ई): {{नदी नद्यौ नद्यः}}, {{नदीम् नद्यौ नदीः}}, {{नद्या नदीभ्याम् नदीभिः}}, {{नद्यै}}, {{नद्याः}}, {{नद्याम्}}, {{हे नदि}}। {{वधू}} (-ऊ): {{वधूः वध्वौ वध्वः}}, {{हे वधु}}।'
+    sutras:
+    - 4.1.5
+    - 7.3.112
+    - 7.3.116
+    tag: core
+    taught_in: nf2.nadi#tb1
+  - skill: noun.r-stems
+    rule:
+      en: '{{पितृ}} (-ऋ): {{पिता पितरौ पितरः}}, {{पितरम् पितरौ पितॄन्}}, {{पित्रा}}, {{पित्रे}}, {{पितुः}}, {{पितरि}}, {{हे पितः}}. {{मातृ}} differs only in {{मातॄः}} (second plural).'
+      hi: '{{पितृ}} (-ऋ): {{पिता पितरौ पितरः}}, {{पितरम् पितरौ पितॄन्}}, {{पित्रा}}, {{पित्रे}}, {{पितुः}}, {{पितरि}}, {{हे पितः}}। {{मातृ}} केवल द्वितीया बहुवचन {{मातॄः}} में अलग है।'
+    sutras:
+    - 7.3.110
+    - 7.1.94
+    tag: core
+    taught_in: nf2.pitr#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: Shared forms
+    hi: साझा रूप
+  depth: core
+  section: conditions
+  rows:
+  - skill: noun.i-stems
+    rule:
+      en: In every family the dual has three forms for eight cells, and the plural fourth and fifth are the same.
+      hi: हर कुल में द्विवचन में आठ खानों के लिए तीन रूप हैं, और बहुवचन चतुर्थी-पञ्चमी एक-सी हैं।
+    tag: good
+    taught_in: nf2.i#tb1
+  - skill: noun.i-stems
+    rule:
+      en: 'Masculine and neuter in -इ/-उ take {{ना}}/{{णा}} in the third singular; the feminine takes {{या}}/{{वा}}: {{कविना}} but {{मत्या}}.'
+      hi: '-इ/-उ वाले पुंलिंग और नपुंसक तृतीया एकवचन में {{ना}}/{{णा}} लेते हैं; स्त्रीलिंग {{या}}/{{वा}}: {{कविना}} पर {{मत्या}}।'
+    tag: good
+    taught_in: nf2.i#tb2
+  - skill: noun.r-stems
+    rule:
+      en: 'Before a consonant-initial ending the {{ऋ}} stays: {{पितृभ्याम्}}, {{पितृभिः}}, {{पितृषु}}.'
+      hi: 'व्यंजन से शुरू होने वाले प्रत्यय से पहले {{ऋ}} वैसा ही रहता है: {{पितृभ्याम्}}, {{पितृभिः}}, {{पितृषु}}।'
+    tag: good
+    taught_in: nf2.pitr#tb1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: noun.i-stems
+    rule:
+      en: '{{सखि}} (friend) is irregular in the strong cases: {{सखा सखायौ सखायः}}, but {{सख्या}}, {{सख्ये}}.'
+      hi: '{{सखि}} (मित्र) बलवान् विभक्तियों में अनियमित है: {{सखा सखायौ सखायः}}, पर {{सख्या}}, {{सख्ये}}।'
+    example:
+      sa: सखा
+      meaning:
+        en: 'a friend: {{सखा}}'
+        hi: 'मित्र: {{सखा}}'
+      check:
+        type: subanta
+        stem: सखि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    tag: rare
+    new_here: true
+  - skill: noun.ii-uu
+    rule:
+      en: '{{स्त्री}} (woman) and {{श्री}} (fortune) are long -ई words with extra endings: {{स्त्रियम्}}, {{श्रियम्}}.'
+      hi: '{{स्त्री}} (स्त्री) और {{श्री}} (लक्ष्मी) दीर्घ -ई वाले शब्द हैं जिनके कुछ अतिरिक्त प्रत्यय हैं: {{स्त्रियम्}}, {{श्रियम्}}।'
+    example:
+      sa: स्त्रियम्
+      meaning:
+        en: a woman, as an object
+        hi: स्त्री, कर्म के रूप में
+      check:
+        type: subanta
+        stem: स्त्री
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    tag: rare
+    new_here: true
+  - skill: noun.r-stems
+    rule:
+      en: '{{स्वसृ}} (sister) and {{नप्तृ}} (grandson) are ṛ-words that change a little; {{कर्तृ}} (neuter) takes {{णी}}/{{णि}}.'
+      hi: '{{स्वसृ}} (बहन) और {{नप्तृ}} (पोता) कुछ बदलकर चलते हैं; {{कर्तृ}} (नपुंसक) {{णी}}/{{णि}} लेता है।'
+    example:
+      sa: कर्तृणी
+      meaning:
+        en: two doers, neuter
+        hi: दो कर्ता, नपुंसक
+      check:
+        type: subanta
+        stem: कर्तृ
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Dvi
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: noun.i-stems
+    rule:
+      en: 'Do not call {{कविः}} with {{कविः}}: call with {{कवे}}.'
+      hi: '{{कविः}} को {{कविः}} से मत पुकारिए: {{कवे}} से पुकारिए।'
+    tag: core
+    taught_in: nf2.i#tb1
+  - skill: noun.u-stems
+    rule:
+      en: 'Do not write {{गुरुना}}: after {{र}} it is {{गुरुणा}}.'
+      hi: '{{गुरुना}} मत लिखिए: {{र}} के बाद {{गुरुणा}} होता है।'
+    tag: core
+    taught_in: nf2.u#p5
+  - skill: noun.r-stems
+    rule:
+      en: 'Do not give {{मातृ}} the masculine {{मातॄन्}}: it is {{मातॄः}}.'
+      hi: '{{मातृ}} को पुंलिंग {{मातॄन्}} मत दीजिए: सही {{मातॄः}} है।'
+    tag: core
+    taught_in: nf2.pitr#tb2
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: noun.i-stems
+    rule:
+      en: '{{जसि च}} and {{एङ्ह्रस्वात् सम्बुद्धेः}}: the plural {{कवयः}} and the call {{कवे}}.'
+      hi: '{{जसि च}} और {{एङ्ह्रस्वात् सम्बुद्धेः}}: बहुवचन {{कवयः}} और पुकार {{कवे}}।'
+    sutras:
+    - 7.3.109
+    - 6.1.69
+    tag: core
+    taught_in: nf2.i#pn
+  - skill: noun.r-stems
+    rule:
+      en: '{{ऋतो ङिसर्वनामस्थानयोः}} and {{ऋदुशनस्पुरुदंसोऽनेहसां च}}: {{पितरौ}} and {{पिता}}.'
+      hi: '{{ऋतो ङिसर्वनामस्थानयोः}} और {{ऋदुशनस्पुरुदंसोऽनेहसां च}}: {{पितरौ}} और {{पिता}}।'
+    sutras:
+    - 7.3.110
+    - 7.1.94
+    tag: core
+    taught_in: nf2.pitr#pn
+  - skill: noun.ii-uu
+    rule:
+      en: '{{ऋन्नेभ्यो ङीप्}}: many feminines in -ई are made with {{ङीप्}}.'
+      hi: '{{ऋन्नेभ्यो ङीप्}}: -ई वाले कई स्त्रीलिंग {{ङीप्}} से बनते हैं।'
+    sutras:
+    - 4.1.5
+    tag: core
+    taught_in: nf2.nadi#t1
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: noun.i-stems
+    formula: कविः कवी कवयः · हे कवे
+    rule:
+      en: -इ words
+      hi: -इ वाले शब्द
+    tag: core
+    taught_in: nf2.i#tb1
+  - skill: noun.u-stems
+    formula: गुरुः गुरू गुरवः · हे गुरो
+    rule:
+      en: -उ words
+      hi: -उ वाले शब्द
+    tag: core
+    taught_in: nf2.u#tb1
+  - skill: noun.ii-uu
+    formula: नदी नद्यौ नद्यः · वधूः वध्वौ वध्वः
+    rule:
+      en: -ई, -ऊ words
+      hi: -ई, -ऊ वाले शब्द
+    tag: core
+    taught_in: nf2.nadi#tb1
+  - skill: noun.r-stems
+    formula: पिता पितरौ पितरः · हे पितः
+    rule:
+      en: -ऋ words
+      hi: -ऋ वाले शब्द
+    tag: core
+    taught_in: nf2.pitr#tb1

@@ -1,0 +1,442 @@
+id: object.what
+template: scene
+title:
+  en: What is eaten, read, seen
+  hi: क्या खाया, पढ़ा, देखा जाता है
+title_sa: कर्म
+minutes: 6
+teaches:
+- case.acc
+needs:
+- sent.nom-sg
+- gen.three
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The market
+    hi: बाज़ार
+  depth: core
+  image:
+    brief: 'A riverside market under striped awnings: baskets of fruit, heaps of red and yellow spice, swinging brass scales; a small saffron-yellow spirit darting between stalls pointing at things, a round cheerful spice seller watching him, you, Dādī and Śuka among the shoppers.'
+    alt:
+      en: A busy market with a small yellow spirit pointing at everything
+      hi: व्यस्त बाज़ार, हर चीज़ की ओर इशारा करता नन्हा पीला भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - haridraka
+    - vanik
+    place: apana
+    ratio: '4:3'
+    id: object-what-s1
+  narration:
+    en: The fair ends in a market under striped awnings. Baskets of fruit, heaps of red and yellow spice, brass scales swinging. A small saffron-yellow spirit darts from stall to stall, pointing at things, wanting them, unable to say what. A round, cheerful spice seller watches him with narrowed eyes. “Everybody wants something,” says Dādī. “Say what, and you have a sentence.”
+    hi: मेला एक बाज़ार में ख़त्म होता है, धारीदार शामियानों के नीचे। फलों की टोकरियाँ, लाल-पीले मसालों के ढेर, झूलती पीतल की तराज़ू। एक नन्हा केसरिया-पीला भूत दुकान-दुकान भागता है, चीज़ों की ओर इशारा करता है, उन्हें चाहता है, पर कह नहीं पाता कि क्या। एक गोल-मटोल हँसमुख मसाले वाला उसे आँखें सिकोड़कर देखता है। दादी कहती हैं, “हर किसी को कुछ चाहिए। बता दो क्या, तो वाक्य बन गया।”
+  lines:
+  - speaker: dadi
+    sa: आपणे फलानि सन्ति।
+    gloss:
+      en: There are fruits in the market.
+      hi: बाज़ार में फल हैं।
+- id: t1
+  kind: teach
+  title:
+    en: The thing acted on
+    hi: जिस पर क्रिया होती है
+  depth: core
+  skills:
+  - case.acc
+  sutras:
+  - 2.3.2
+  - 1.4.49
+  body:
+    en: 'What the doer most wants to reach, what is eaten, read, seen, takes the second case, {{द्वितीया}}. It is the object, {{कर्म}}. {{रामः फलं खादति}}: Rāma eats a fruit. {{फलम्}} is the object.'
+    hi: 'कर्ता जिसे सबसे अधिक पाना चाहता है, जो खाया, पढ़ा, देखा जाता है, वह द्वितीया विभक्ति में आता है। वह कर्म है। {{रामः फलं खादति}}: राम फल खाता है। {{फलम्}} कर्म है।'
+  examples:
+  - sa: रामः फलम् खादति।
+    meaning:
+      en: Rāma eats a fruit.
+      hi: राम फल खाता है।
+    words:
+    - sa: रामः
+      gloss:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: फलम्
+      gloss:
+        en: fruit (object)
+        hi: फल (कर्म)
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: खादति
+      gloss:
+        en: eats
+        hi: खाता है
+      check:
+        type: tinanta
+        dhatu: खाद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: बालकः पुस्तकम् पठति।
+    meaning:
+      en: The boy reads a book.
+      hi: बालक पुस्तक पढ़ता है।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पुस्तकम्
+      gloss:
+        en: book (object)
+        hi: पुस्तक (कर्म)
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सीता नदीम् पश्यति।
+    meaning:
+      en: Sītā sees the river.
+      hi: सीता नदी देखती है।
+    words:
+    - sa: सीता
+      gloss:
+        en: Sītā
+        hi: सीता
+      check:
+        type: subanta
+        stem: सीता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नदीम्
+      gloss:
+        en: river (object)
+        hi: नदी (कर्म)
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पश्यति
+      gloss:
+        en: sees
+        hi: देखती है
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  term:
+    sa: कर्म
+    meaning:
+      en: 'the object: what the doer reaches'
+      hi: 'कर्म: जिसे कर्ता पाता है'
+- id: tb1
+  kind: table
+  title:
+    en: First case and second case
+    hi: प्रथमा और द्वितीया
+  depth: core
+  skills:
+  - case.acc
+  caption:
+    en: The doer and the object, side by side
+    hi: कर्ता और कर्म साथ-साथ
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: Doer (1st)
+    hi: कर्ता (प्रथमा)
+  - en: Object (2nd)
+    hi: कर्म (द्वितीया)
+  rows:
+  - - text:
+        en: boy
+        hi: बालक
+    - sa: बालकः
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालकम्
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: girl
+        hi: बालिका
+    - sa: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालिकाम्
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: fruit
+        hi: फल
+    - sa: फलम्
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: फलम्
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: river
+        hi: नदी
+    - sa: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नदीम्
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+      highlight: true
+  note:
+    en: 'Singular object: {{अम्}} for most words, {{आम्}} after -{{आ}}, {{ईम्}} after -{{ई}}. A neuter word looks the same in the first and second case.'
+    hi: 'एकवचन कर्म: अधिकांश शब्दों में {{अम्}}, -{{आ}} के बाद {{आम्}}, -{{ई}} के बाद {{ईम्}}। नपुंसक शब्द प्रथमा और द्वितीया में एक-सा दिखता है।'
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - case.acc
+  widget: role_arrows
+  prompt:
+    en: Draw an arrow from each word to the action and name its job.
+    hi: हर शब्द से क्रिया तक तीर खींचिए और उसका काम बताइए।
+  params:
+    sentence:
+    - sa: रामः
+      gloss:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      role: karta
+    - sa: फलम्
+      gloss:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      role: karma
+    - sa: खादति
+      gloss:
+        en: eats
+        hi: खाता है
+      check:
+        type: tinanta
+        dhatu: खाद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      role: kriya
+    meaning:
+      en: Rāma eats a fruit.
+      hi: राम फल खाता है।
+  roman: show
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.acc
+  mode: choice
+  prompt:
+    en: '{{बालकः पुस्तकं पठति}}: which word is the object?'
+    hi: '{{बालकः पुस्तकं पठति}}: कर्म कौन-सा शब्द है?'
+  explain:
+    en: '{{पुस्तकम्}}: second case, what is read.'
+    hi: '{{पुस्तकम्}}: द्वितीया, जो पढ़ा जाता है।'
+  roman: after
+  options:
+  - sa: बालकः
+  - correct: true
+    sa: पुस्तकम्
+  - sa: पठति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.acc
+  mode: match
+  prompt:
+    en: Join each object to its stem.
+    hi: हर कर्म को उसके मूल रूप से जोड़िए।
+  explain:
+    en: '{{अम्}}, {{आम्}}, {{ईम्}}: the singular object endings.'
+    hi: '{{अम्}}, {{आम्}}, {{ईम्}}: एकवचन कर्म के प्रत्यय।'
+  roman: after
+  pairs:
+  - left:
+      sa: बालकम्
+    right:
+      sa: बालक
+  - left:
+      sa: बालिकाम्
+    right:
+      sa: बालिका
+  - left:
+      sa: नदीम्
+    right:
+      sa: नदी
+  - left:
+      sa: फलम्
+    right:
+      sa: फल
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - case.acc
+  mode: engine
+  prompt:
+    en: Reorder the words and keep the meaning.
+    hi: शब्दों को फिर से लगाइए, अर्थ वही रखिए।
+  explain:
+    en: Word order is free; the endings carry the roles.
+    hi: शब्द-क्रम स्वतन्त्र है; भूमिकाएँ प्रत्ययों में हैं।
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: बालकः फलं खादति
+    seed: 0
+- id: p4
+  kind: practice
+  title:
+    en: Name the wanted thing
+    hi: चाही हुई वस्तु का नाम लीजिए
+  depth: core
+  skills:
+  - case.acc
+  mode: order
+  prompt:
+    en: 'The spirit points at a fruit. Say: “I see a fruit.”'
+    hi: 'भूत एक फल की ओर इशारा करता है। कहिए: ‘मैं फल देखता हूँ।’'
+  explain:
+    en: '{{अहं फलं पश्यामि}}: I see a fruit.'
+    hi: '{{अहं फलं पश्यामि}}: मैं फल देखता हूँ।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “फलम्!” the little spirit gasps, and for the first time he knows the word for the thing he wants. He pats the fruit and then himself, delighted.
+      hi: “फलम्!” नन्हा भूत हाँफता है, और पहली बार उसे अपनी चाही हुई वस्तु का शब्द पता है। वह फल को थपथपाता है, फिर ख़ुद को, ख़ुशी से।
+    failure:
+      en: 'He keeps pointing. Say what you see: the object comes before the verb.'
+      hi: 'वह इशारा करता रहता है। बताइए आप क्या देखते हैं: कर्म क्रिया से पहले आता है।'
+  tokens:
+  - अहम्
+  - फलम्
+  - पश्यामि
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's object
+    hi: पाणिनि का कर्म
+  depth: panini
+  skills:
+  - case.acc
+  sutras:
+  - 1.4.49
+  - 2.3.2
+  body:
+    en: Sūtra 1.4.49, {{कर्तुरीप्सिततमं कर्म}}, calls the object “what the doer most wishes to reach”. Sūtra 2.3.2, {{कर्मणि द्वितीया}}, puts it in the second case.
+    hi: सूत्र 1.4.49, {{कर्तुरीप्सिततमं कर्म}}, कर्म को ‘वह जिसे कर्ता सबसे अधिक पाना चाहे’ कहता है। सूत्र 2.3.2, {{कर्मणि द्वितीया}}, उसे द्वितीया में रखता है।
+- id: sum
+  kind: summary
+  title:
+    en: The object
+    hi: कर्म
+  depth: core
+  points:
+  - sa: फलम् · बालकम् · नदीम्
+    text:
+      en: 'The second case: what is acted on.'
+      hi: 'द्वितीया: जिस पर क्रिया हो।'
+  - sa: रामः फलं खादति
+    text:
+      en: Doer, object, verb.
+      hi: कर्ता, कर्म, क्रिया।
+  - text:
+      en: 'Neuter: the same as the first case.'
+      hi: 'नपुंसक: प्रथमा जैसा ही।'

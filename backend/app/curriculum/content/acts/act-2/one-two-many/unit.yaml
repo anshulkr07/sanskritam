@@ -1,0 +1,42 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: one-two-many
+title:
+  en: One, two, many
+  hi: एक, दो, अनेक
+title_sa: वचनम्
+status: ready
+episode:
+  summary:
+    en: 'Boats crowd the ghat: one, two, many. Sanskrit counts them in its endings, and keeps a special form for exactly two.'
+    hi: 'घाट पर नावें भरी हैं: एक, दो, अनेक। संस्कृत इन्हें अंतों से गिनती है, और ठीक दो के लिए अलग रूप रखती है।'
+  beats:
+  - 'Two herons stand together: a dual.'
+  - 'Many boats set off: a plural.'
+  - The verb counts with its doer.
+skills:
+- id: num.dual
+  title:
+    en: 'Exactly two: the dual'
+    hi: 'ठीक दो: द्विवचन'
+- id: num.plural
+  title:
+    en: 'Three or more: the plural'
+    hi: 'तीन या अधिक: बहुवचन'
+- id: verb.pres-3-du-pl
+  title:
+    en: 'They two read, they read: पठतः, पठन्ति'
+    hi: 'वे दोनों, वे सब: पठतः, पठन्ति'
+- id: sent.agree-number
+  title:
+    en: The verb matches its doer's number
+    hi: क्रिया कर्ता के वचन से मेल खाती है
+lessons:
+- num.two
+- num.many
+- num.verbs
+- num.agree
+planned: []
+ghost: bakau
+revision: num.revision
+check: num.check

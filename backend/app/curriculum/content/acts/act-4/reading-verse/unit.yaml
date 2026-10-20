@@ -1,0 +1,32 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: reading-verse
+title:
+  en: Reading a verse
+  hi: श्लोक पढ़ना
+title_sa: श्लोकपठनम्
+status: ready
+episode:
+  summary:
+    en: With joins, compounds and metre you can read a verse unaided. The sixth leaf is Guṇāḍhya's own story, in its original verses.
+    hi: सन्धि, समास और छन्द के साथ आप बिना सहायता के श्लोक पढ़ सकते हैं। छठा पत्र गुणाढ्य की अपनी कथा है, मूल श्लोकों में।
+  beats:
+  - Padaccheda, anvaya, meaning.
+  - Reading with a commentary.
+  - 'The sixth leaf: the book written in blood.'
+skills:
+- id: verse.read
+  title:
+    en: 'Reading a verse: split, order, meaning'
+    hi: 'श्लोक पढ़ना: पदच्छेद, अन्वय, अर्थ'
+- id: verse.commentary
+  title:
+    en: Reading with a commentary
+    hi: टीका के साथ पढ़ना
+lessons:
+- rv.steps
+- rv.tika
+planned: []
+ghost: shlokika
+revision: rv.revision
+check: rv.check

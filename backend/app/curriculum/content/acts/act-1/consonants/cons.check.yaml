@@ -1,0 +1,221 @@
+id: cons.check
+template: check
+title:
+  en: Read her name
+  hi: उसका नाम पढ़िए
+title_sa: परीक्षा
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.grid
+  mode: choice
+  prompt:
+    en: Which letter is made at the lips?
+    hi: कौन-सा अक्षर होंठों से बनता है?
+  explain:
+    en: '{{म}} is in the lip row.'
+    hi: '{{म}} ओष्ठ की पंक्ति में है।'
+  roman: after
+  options:
+  - sa: क
+  - sa: च
+  - correct: true
+    sa: म
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.grid
+  mode: match
+  prompt:
+    en: Join each row-leader to its place.
+    hi: हर पंक्ति के पहले अक्षर को उसके स्थान से जोड़िए।
+  explain:
+    en: Throat, palate, roof, teeth, lips.
+    hi: कण्ठ, तालु, मूर्धा, दन्त, ओष्ठ।
+  roman: after
+  pairs:
+  - left:
+      sa: क
+    right:
+      text:
+        en: throat
+        hi: कण्ठ
+  - left:
+      sa: च
+    right:
+      text:
+        en: palate
+        hi: तालु
+  - left:
+      sa: ट
+    right:
+      text:
+        en: roof
+        hi: मूर्धा
+  - left:
+      sa: त
+    right:
+      text:
+        en: teeth
+        hi: दन्त
+  - left:
+      sa: प
+    right:
+      text:
+        en: lips
+        hi: ओष्ठ
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.voice
+  mode: choice
+  prompt:
+    en: Which letter carries a puff of air?
+    hi: किस अक्षर में साँस का झोंका है?
+  explain:
+    en: '{{घ}} is voiced and breathy: {{ग}} with a puff.'
+    hi: '{{घ}} घोष-महाप्राण है: {{ग}} पर झोंका।'
+  roman: after
+  options:
+  - sa: ग
+  - correct: true
+    sa: घ
+  - sa: ङ
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.voice
+  mode: choice
+  prompt:
+    en: Which word means “fruit”?
+    hi: ‘फल’ किस शब्द का अर्थ है?
+  explain:
+    en: '{{फलम्}} has the breathy {{फ}}.'
+    hi: '{{फलम्}} में महाप्राण {{फ}} है।'
+  roman: show
+  options:
+  - sa: पलम्
+  - correct: true
+    sa: फलम्
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.semivowels
+  mode: choice
+  prompt:
+    en: Which of these is a semivowel?
+    hi: इनमें अन्तःस्थ कौन-सा है?
+  explain:
+    en: '{{व}} is one of {{य}} {{र}} {{ल}} {{व}}.'
+    hi: '{{व}} {{य}} {{र}} {{ल}} {{व}} में से एक है।'
+  roman: after
+  options:
+  - sa: ग
+  - correct: true
+    sa: व
+  - sa: स
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.semivowels
+  mode: match
+  prompt:
+    en: Join each semivowel to the vowel it grows from.
+    hi: हर अन्तःस्थ को उस स्वर से जोड़िए जिससे वह बनता है।
+  explain:
+    en: '{{य}}←{{इ}}, {{व}}←{{उ}}, {{र}}←{{ऋ}}, {{ल}}←{{ऌ}}.'
+    hi: '{{य}}←{{इ}}, {{व}}←{{उ}}, {{र}}←{{ऋ}}, {{ल}}←{{ऌ}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: य
+    right:
+      sa: इ
+  - left:
+      sa: व
+    right:
+      sa: उ
+  - left:
+      sa: र
+    right:
+      sa: ऋ
+  - left:
+      sa: ल
+    right:
+      sa: ऌ
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.sibilants
+  mode: choice
+  prompt:
+    en: Which letter is the curled-tongue hiss?
+    hi: कौन-सा अक्षर मुड़ी जीभ वाली फुफकार है?
+  explain:
+    en: '{{ष}} is made with the tongue curled back to the roof.'
+    hi: '{{ष}} जीभ को मूर्धा की ओर मोड़कर बनता है।'
+  roman: after
+  options:
+  - sa: श
+  - correct: true
+    sa: ष
+  - sa: स
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.inherent-a
+  mode: type
+  prompt:
+    en: 'Make {{म्}}: take the vowel away from {{म}}.'
+    hi: '{{म्}} बनाइए: {{म}} से स्वर हटाइए।'
+  explain:
+    en: '{{म}} plus the stroke {{्}} is {{म्}}.'
+    hi: '{{म}} और रेखा {{्}} मिलकर {{म्}} बनते हैं।'
+  roman: after
+  answers:
+  - म्
+  tiles:
+  - म
+  - ्
+  - ा
+  - ि
+- id: p9
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.inherent-a
+  - script.cons.grid
+  mode: order
+  prompt:
+    en: 'Read Chāyikā''s name aloud: put {{छा}} {{यि}} {{का}} in order.'
+    hi: 'छायिका का नाम ज़ोर से पढ़िए: {{छा}} {{यि}} {{का}} को क्रम में लगाइए।'
+  explain:
+    en: '{{छायिका}}: {{छा}} + {{यि}} + {{का}}.'
+    hi: '{{छायिका}}: {{छा}} + {{यि}} + {{का}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: 'You read the name from the door, letter by letter. Chāyikā steps out of the carvings, whole and bright, and smiles: “मुक्ता अस्मि!” Her gold thread lifts like smoke, and she points at the pillar.'
+      hi: 'आप द्वार से अक्षर-अक्षर नाम पढ़ते हैं। छायिका नक्काशी से पूरी और उजली बाहर आती है और मुस्कुराती है: “मुक्ता अस्मि!” उसका सुनहरा धागा धुएँ-सा उठता है, और वह स्तम्भ की ओर इशारा करती है।'
+    failure:
+      en: 'The name does not hold. Read it again: {{छा}}, {{यि}}, {{का}}.'
+      hi: 'नाम नहीं टिकता। फिर पढ़िए: {{छा}}, {{यि}}, {{का}}।'
+  tokens:
+  - छा
+  - यि
+  - का

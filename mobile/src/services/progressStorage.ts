@@ -1,3 +1,4 @@
+import { READ_PREFIX, mergeReadRecords } from "./bookActivityRecords";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type Entry = { value: string; updated_ms: number };
@@ -66,7 +67,10 @@ export async function syncLearningProgress(): Promise<void> {
     if (session !== target) return;
     for (const [key, entry] of Object.entries(result.entries)) {
       if (!allowed(key) || typeof entry.value !== "string" || !Number.isFinite(entry.updated_ms)) continue;
-      if (!target.entries[key] || entry.updated_ms > target.entries[key].updated_ms || target.entries[key] === sent[key]) target.entries[key] = entry;
+      const local = target.entries[key];
+      if (key.startsWith(READ_PREFIX) && local) {
+        target.entries[key] = { value: mergeReadRecords(local.value, entry.value), updated_ms: Math.max(local.updated_ms, entry.updated_ms) };
+      } else if (!local || entry.updated_ms > local.updated_ms || local === sent[key]) target.entries[key] = entry;
     }
     await persist(target); notify();
   } catch { /* old servers and offline sessions retain all local progress */ }
@@ -79,16 +83,32 @@ async function current(): Promise<Session | null> {
   return target === session ? target : current();
 }
 
+export const getProgressOwner = () => session?.owner ?? null;
+
 export const progressStorage = {
+  async updateItem(key: string, update: (oldValue: string | null) => string, expectedOwner: string | null): Promise<void> {
+    const target = session;
+    await target?.ready;
+    if (!target || session !== target || target.owner !== expectedOwner || !allowed(key)) return;
+    target.queue = target.queue.catch(() => {}).then(async () => {
+      const old = target.entries[key];
+      target.entries[key] = { value: update(old?.value ?? null), updated_ms: Math.max(Date.now(), (old?.updated_ms ?? 0) + 1) };
+      await persist(target);
+    });
+    await target.queue;
+    if (session === target) { notify(); schedule(); }
+  },
   async getItem(key: string): Promise<string | null> {
     if (!allowed(key)) return AsyncStorage.getItem(key);
     const target = await current();
     return target?.entries[key]?.value ?? null;
   },
-  async setItem(key: string, value: string): Promise<void> {
+  async setItem(key: string, value: string, expectedOwner?: string | null): Promise<void> {
     if (!allowed(key)) return AsyncStorage.setItem(key, value);
-    const target = await current();
-    if (!target) return;
+    const captured = session;
+    await captured?.ready;
+    const target = expectedOwner === undefined ? await current() : captured;
+    if (!target || (expectedOwner !== undefined && (session !== target || target.owner !== expectedOwner))) return;
     target.queue = target.queue.catch(() => {}).then(async () => {
       const old = target.entries[key];
       target.entries[key] = { value, updated_ms: Math.max(Date.now(), (old?.updated_ms ?? 0) + 1) };

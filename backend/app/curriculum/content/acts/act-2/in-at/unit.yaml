@@ -1,0 +1,35 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: in-at
+title:
+  en: In and at
+  hi: कहाँ और कब
+title_sa: अधिकरणम्
+status: ready
+episode:
+  summary:
+    en: Night falls over the house and the well. The seventh case says where and when.
+    hi: घर और कुएँ पर रात उतरती है। सप्तमी बताती है कहाँ और कब।
+  beats:
+  - 'गृहे, कूपे, रात्रौ: in the house, at the well, at night.'
+  - Time words.
+  - The house and its rooms.
+skills:
+- id: case.loc
+  title:
+    en: 'Where and when: seventh case'
+    hi: 'अधिकरण: सप्तमी'
+  sutras:
+  - 2.3.36
+  - 1.4.45
+- id: case.loc-time
+  title:
+    en: At what time
+    hi: किस समय
+lessons:
+- in.where
+- in.when
+planned: []
+ghost: dipaka
+revision: in.revision
+check: in.check

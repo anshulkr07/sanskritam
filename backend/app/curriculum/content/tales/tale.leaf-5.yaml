@@ -1,0 +1,846 @@
+id: tale.leaf-5
+template: tale
+title:
+  en: The minister in the dark well
+  hi: अन्धकूप का मन्त्री
+title_sa: शकटालकथा
+minutes: 7
+review: engine_ok
+sources:
+- title: Kathāsaritsāgara, taraṅga 5 (Digital Corpus of Sanskrit file KSS, 1, 5), the story retold in new, simple sentences with three real half-verses quoted
+  url: https://github.com/OliverHellwig/sanskrit
+  licence: CC BY 4.0
+  note: 'The plot follows Somadeva''s text, told by Vararuci: the proud King Yoganandā has his minister Śakaṭāla in a blind well; Vararuci rescues him; the king sees a hand with five fingers in the Gaṅgā and Vararuci answers it with two fingers; Śakaṭāla resolves to bend like a reed and wait. The quoted lines are Somadeva''s own words; the rest is new Sanskrit in the present tense.'
+cards:
+- id: r1
+  kind: reading
+  title:
+    en: The blind well
+    hi: अन्धकूप
+  depth: core
+  image:
+    brief: 'A deep dry well in a palace courtyard: a lean grey-bearded minister in a dusty cream robe being slowly hauled up on a rope by two guards, blinking in the light; a calm tall scholar-minister in white standing at the rim watching; a proud king in red and gold looking on from a balcony in the background.'
+    alt:
+      en: A grey-bearded minister is hauled from a deep dry well while a calm scholar watches at the rim
+      hi: गहरे सूखे कुएँ से खींचा जाता धूसर दाढ़ी वाला मन्त्री, किनारे पर शान्त विद्वान्
+    cast:
+    - shakatala
+    - vararuci-elder
+    - yogananda
+    place: andhakupa
+    ratio: '4:3'
+    id: tale-leaf-5-r1
+  passage:
+  - sa: कालेन योगनन्दः मत्तः भवति।
+    meaning:
+      en: With time Yoganandā becomes proud.
+      hi: समय के साथ योगनन्द मदमत्त हो जाता है।
+    words:
+    - sa: कालेन
+      gloss:
+        en: with time
+        hi: समय के साथ
+      check:
+        type: subanta
+        stem: काल
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: योगनन्दः
+      gloss:
+        en: Yoganandā
+        hi: योगनन्द
+      check:
+        type: subanta
+        stem: योगनन्द
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: मत्तः
+      gloss:
+        en: proud
+        hi: मदमत्त
+      check:
+        type: subanta
+        stem: मत्त
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: भवति
+      gloss:
+        en: becomes
+        hi: हो जाता है
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: शकटालः अन्धकूपे अस्ति।
+    meaning:
+      en: Śakaṭāla is in the blind well.
+      hi: शकटाल अन्धकूप में है।
+    words:
+    - sa: शकटालः
+      gloss:
+        en: Śakaṭāla
+        hi: शकटाल
+      check:
+        type: subanta
+        stem: शकटाल
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अन्धकूपे
+      gloss:
+        en: in the blind well
+        hi: अन्धकूप में
+      check:
+        type: subanta
+        stem: अन्धकूप
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: वररुचिः राजानम् वदति।
+    meaning:
+      en: Vararuci speaks to the king.
+      hi: वररुचि राजा से कहता है।
+    words:
+    - sa: वररुचिः
+      gloss:
+        en: Vararuci
+        hi: वररुचि
+      check:
+        type: subanta
+        stem: वररुचि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: राजानम्
+      gloss:
+        en: the king
+        hi: राजा से
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: वदति
+      gloss:
+        en: speaks to
+        hi: कहता है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: वररुचिः शकटालम् अन्धकूपात् समुद्धरति।
+    meaning:
+      en: Vararuci lifts Śakaṭāla out of the well.
+      hi: वररुचि शकटाल को कुएँ से बाहर निकालता है।
+    words:
+    - sa: वररुचिः
+      gloss:
+        en: Vararuci
+        hi: वररुचि
+      check:
+        type: subanta
+        stem: वररुचि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: शकटालम्
+      gloss:
+        en: Śakaṭāla
+        hi: शकटाल को
+      check:
+        type: subanta
+        stem: शकटाल
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: अन्धकूपात्
+      gloss:
+        en: from the well
+        hi: कुएँ से
+      check:
+        type: subanta
+        stem: अन्धकूप
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: समुद्धरति
+      gloss:
+        en: lifts out
+        hi: उठा लाता है
+      check:
+        type: tinanta
+        dhatu: हृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - सम्
+        - उद्
+  - sa: निश्चित्यैतन्मयाभ्यर्थ्य राजानं सो ऽन्धकूपतः उद्धृतः शकटालो ऽथ मृदवो हि द्विजातयः
+    meaning:
+      en: “Having decided this and asked the king, I had Śakaṭāla lifted out of the blind well, for Brahmins are gentle.” (Somadeva, Kathāsaritsāgara 1.5)
+      hi: “यह निश्चय कर और राजा से प्रार्थना कर, मैंने शकटाल को अन्धकूप से निकलवाया, क्योंकि ब्राह्मण कोमल होते हैं।” (सोमदेव, कथासरित्सागर 1.5)
+    words:
+    - sa: निश्चित्य
+      gloss:
+        en: having decided
+        hi: निश्चय करके
+    - sa: एतत्
+      gloss:
+        en: this
+        hi: यह
+    - sa: राजानम्
+      gloss:
+        en: the king
+        hi: राजा से
+    - sa: अभ्यर्थ्य
+      gloss:
+        en: having asked
+        hi: प्रार्थना करके
+    - sa: अन्धकूपतः
+      gloss:
+        en: from the blind well
+        hi: अन्धकूप से
+    - sa: उद्धृतः
+      gloss:
+        en: lifted out
+        hi: निकाला गया
+    - sa: शकटालः
+      gloss:
+        en: Śakaṭāla
+        hi: शकटाल
+    - sa: मृदवः
+      gloss:
+        en: gentle
+        hi: कोमल
+    - sa: द्विजातयः
+      gloss:
+        en: Brahmins
+        hi: ब्राह्मण
+  - sa: शकटालः मन्त्री भवति पुनः।
+    meaning:
+      en: Śakaṭāla becomes a minister again.
+      hi: शकटाल फिर मन्त्री बनता है।
+    words:
+    - sa: शकटालः
+      gloss:
+        en: Śakaṭāla
+        hi: शकटाल
+      check:
+        type: subanta
+        stem: शकटाल
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: मन्त्री
+      gloss:
+        en: minister
+        hi: मन्त्री
+      check:
+        type: subanta
+        stem: मन्त्रिन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: भवति
+      gloss:
+        en: becomes
+        hi: बनता है
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: पुनः
+      gloss:
+        en: again
+        hi: फिर
+- id: r2
+  kind: reading
+  title:
+    en: Five fingers
+    hi: पाँच उँगलियाँ
+  depth: core
+  image:
+    brief: The wide pale Gaṅgā at morning with a hand with five spread fingers rising from the water; a proud king in red and gold on the brick steps pointing in astonishment; a calm tall scholar-minister beside him holding up two fingers of one hand; a lean grey-bearded man a little behind, looking downcast.
+    alt:
+      en: A hand with five fingers rises from the river as a scholar holds up two fingers
+      hi: नदी से उठता पाँच उँगलियों वाला हाथ, दो उँगलियाँ उठाए विद्वान्
+    cast:
+    - yogananda
+    - vararuci-elder
+    - shakatala
+    place: gangatira
+    ratio: '4:3'
+    id: tale-leaf-5-r2
+  passage:
+  - sa: एकदा योगनन्दः गङ्गातीरम् गच्छति।
+    meaning:
+      en: Once Yoganandā goes to the bank of the Gaṅgā.
+      hi: एक बार योगनन्द गङ्गा के तट पर जाता है।
+    words:
+    - sa: एकदा
+      gloss:
+        en: once
+        hi: एक बार
+    - sa: योगनन्दः
+      gloss:
+        en: Yoganandā
+        hi: योगनन्द
+      check:
+        type: subanta
+        stem: योगनन्द
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गङ्गातीरम्
+      gloss:
+        en: the bank of the Gaṅgā
+        hi: गङ्गा के तट पर
+      check:
+        type: subanta
+        stem: गङ्गातीर
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गच्छति
+      gloss:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: गङ्गायाम् हस्तः दृश्यते।
+    meaning:
+      en: A hand is seen in the Gaṅgā.
+      hi: गङ्गा में एक हाथ दिखता है।
+    words:
+    - sa: गङ्गायाम्
+      gloss:
+        en: in the Gaṅgā
+        hi: गङ्गा में
+      check:
+        type: subanta
+        stem: गङ्गा
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: हस्तः
+      gloss:
+        en: a hand
+        hi: एक हाथ
+      check:
+        type: subanta
+        stem: हस्त
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: दृश्यते
+      gloss:
+        en: is seen
+        hi: दिखता है
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+  - sa: हस्ते पञ्च अङ्गुलयः सन्ति।
+    meaning:
+      en: On the hand there are five fingers.
+      hi: हाथ पर पाँच उँगलियाँ हैं।
+    words:
+    - sa: हस्ते
+      gloss:
+        en: on the hand
+        hi: हाथ पर
+      check:
+        type: subanta
+        stem: हस्त
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: पञ्च
+      gloss:
+        en: five
+        hi: पाँच
+    - sa: अङ्गुलयः
+      gloss:
+        en: fingers
+        hi: उँगलियाँ
+      check:
+        type: subanta
+        stem: अङ्गुलि
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: सन्ति
+      gloss:
+        en: are
+        hi: हैं
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - sa: राजा वररुचिम् आह्वयति।
+    meaning:
+      en: The king calls Vararuci.
+      hi: राजा वररुचि को बुलाता है।
+    words:
+    - sa: राजा
+      gloss:
+        en: the king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वररुचिम्
+      gloss:
+        en: Vararuci
+        hi: वररुचि को
+      check:
+        type: subanta
+        stem: वररुचि
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: आह्वयति
+      gloss:
+        en: calls
+        hi: बुलाता है
+      check:
+        type: tinanta
+        dhatu: ह्वे
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+  - sa: वररुचिः द्वे अङ्गुली दर्शयति।
+    meaning:
+      en: Vararuci shows two fingers.
+      hi: वररुचि दो उँगलियाँ दिखाता है।
+    words:
+    - sa: वररुचिः
+      gloss:
+        en: Vararuci
+        hi: वररुचि
+      check:
+        type: subanta
+        stem: वररुचि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: द्वे
+      gloss:
+        en: two
+        hi: दो
+    - sa: अङ्गुली
+      gloss:
+        en: fingers
+        hi: उँगलियाँ
+      check:
+        type: subanta
+        stem: अङ्गुलि
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Dvi
+    - sa: दर्शयति
+      gloss:
+        en: shows
+        hi: दिखाता है
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+  - sa: हस्तः न दृश्यते।
+    meaning:
+      en: The hand is no longer seen.
+      hi: हाथ अब नहीं दिखता।
+    words:
+    - sa: हस्तः
+      gloss:
+        en: the hand
+        hi: हाथ
+      check:
+        type: subanta
+        stem: हस्त
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: न
+      gloss:
+        en: not
+        hi: नहीं
+    - sa: दृश्यते
+      gloss:
+        en: is seen
+        hi: दिखता है
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+  - sa: ऐकचित्ये द्वयोरेव किमसाध्यं भवेदिति
+    meaning:
+      en: “What would be impossible for two who are of one mind?” (Somadeva, Kathāsaritsāgara 1.5)
+      hi: “एक मन वाले दो लोगों के लिए क्या असाध्य होगा?” (सोमदेव, कथासरित्सागर 1.5)
+    words:
+    - sa: ऐकचित्ये
+      gloss:
+        en: in unity of mind
+        hi: एकमन होने पर
+    - sa: द्वयोः
+      gloss:
+        en: of the two
+        hi: दोनों के लिए
+    - sa: एव
+      gloss:
+        en: indeed
+        hi: ही
+    - sa: किम्
+      gloss:
+        en: what
+        hi: क्या
+    - sa: असाध्यम्
+      gloss:
+        en: impossible
+        hi: असाध्य
+    - sa: भवेत्
+      gloss:
+        en: would be
+        hi: होगा
+    - sa: इति
+      gloss:
+        en: thus
+        hi: ऐसा
+  - sa: राजा तुष्यति।
+    meaning:
+      en: The king is pleased.
+      hi: राजा प्रसन्न होता है।
+    words:
+    - sa: राजा
+      gloss:
+        en: the king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: तुष्यति
+      gloss:
+        en: is pleased
+        hi: प्रसन्न होता है
+      check:
+        type: tinanta
+        dhatu: तुष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Divadi
+  - sa: शकटालः खिन्नः भवति।
+    meaning:
+      en: Śakaṭāla becomes downcast.
+      hi: शकटाल उदास हो जाता है।
+    words:
+    - sa: शकटालः
+      gloss:
+        en: Śakaṭāla
+        hi: शकटाल
+      check:
+        type: subanta
+        stem: शकटाल
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: खिन्नः
+      gloss:
+        en: downcast
+        hi: उदास
+      check:
+        type: subanta
+        stem: खिन्न
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: भवति
+      gloss:
+        en: becomes
+        hi: हो जाता है
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: r3
+  kind: reading
+  title:
+    en: The reed
+    hi: सरकण्डा
+  depth: core
+  image:
+    brief: A lean grey-bearded minister bowing deeply before a proud king in a pillared hall, his bent back like a reed in a breeze; behind him through an arch the calm tall scholar-minister watching him with narrowed eyes; a long reed bending in a vase on a table in the foreground.
+    alt:
+      en: A grey-bearded minister bows low like a reed before a proud king as a scholar watches
+      hi: घमण्डी राजा के आगे सरकण्डे की तरह झुकता मन्त्री, देखता विद्वान्
+    cast:
+    - shakatala
+    - yogananda
+    - vararuci-elder
+    place: simhasana-shala
+    ratio: '4:3'
+    id: tale-leaf-5-r3
+  passage:
+  - sa: शकटालः राजकार्याणि करोति।
+    meaning:
+      en: Śakaṭāla does the king's work.
+      hi: शकटाल राजा के काम करता है।
+    words:
+    - sa: शकटालः
+      gloss:
+        en: Śakaṭāla
+        hi: शकटाल
+      check:
+        type: subanta
+        stem: शकटाल
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: राजकार्याणि
+      gloss:
+        en: the king's work
+        hi: राजा के काम
+      check:
+        type: subanta
+        stem: राजकार्य
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+    - sa: करोति
+      gloss:
+        en: does
+        hi: करता है
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: शकटालः वेतसः इव नमति।
+    meaning:
+      en: Śakaṭāla bends like a reed.
+      hi: शकटाल सरकण्डे की तरह झुकता है।
+    words:
+    - sa: शकटालः
+      gloss:
+        en: Śakaṭāla
+        hi: शकटाल
+      check:
+        type: subanta
+        stem: शकटाल
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वेतसः
+      gloss:
+        en: a reed
+        hi: सरकण्डा
+      check:
+        type: subanta
+        stem: वेतस
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: इव
+      gloss:
+        en: like
+        hi: जैसे
+    - sa: नमति
+      gloss:
+        en: bends
+        hi: झुकता है
+      check:
+        type: tinanta
+        dhatu: नम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: अहम् वेतसीम् वृत्तिम् आश्रयामि।
+    meaning:
+      en: 'Śakaṭāla thinks: “I adopt the reed''s way.”'
+      hi: 'शकटाल सोचता है: “मैं सरकण्डे की रीति अपनाता हूँ।”'
+    words:
+    - sa: अहम्
+      gloss:
+        en: I
+        hi: मैं
+    - sa: वेतसीम्
+      gloss:
+        en: the reed's
+        hi: सरकण्डे की
+      check:
+        type: subanta
+        stem: वेतसी
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: वृत्तिम्
+      gloss:
+        en: way
+        hi: रीति
+      check:
+        type: subanta
+        stem: वृत्ति
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: आश्रयामि
+      gloss:
+        en: adopt
+        hi: अपनाता हूँ
+      check:
+        type: tinanta
+        dhatu: श्रि
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+        prefixes:
+        - आ
+  - sa: आश्रये वैतसीं वृत्तिं कालं तावत्प्रतीक्षितुम्
+    meaning:
+      en: “I shall adopt the reed's way, to wait for the time.” (Somadeva, Kathāsaritsāgara 1.5)
+      hi: “मैं सरकण्डे की रीति अपनाऊँगा, समय की प्रतीक्षा करने के लिए।” (सोमदेव, कथासरित्सागर 1.5)
+    words:
+    - sa: आश्रये
+      gloss:
+        en: I take up
+        hi: मैं अपनाता हूँ
+    - sa: वैतसीम्
+      gloss:
+        en: the reed's
+        hi: सरकण्डे की
+    - sa: वृत्तिम्
+      gloss:
+        en: way
+        hi: रीति
+    - sa: कालम्
+      gloss:
+        en: the time
+        hi: समय की
+    - sa: तावत्
+      gloss:
+        en: meanwhile
+        hi: तब तक
+    - sa: प्रतीक्षितुम्
+      gloss:
+        en: to wait for
+        hi: प्रतीक्षा करने के लिए
+  - sa: वररुचिः तम् पश्यति।
+    meaning:
+      en: Vararuci watches him.
+      hi: वररुचि उसे देखता है।
+    words:
+    - sa: वररुचिः
+      gloss:
+        en: Vararuci
+        hi: वररुचि
+      check:
+        type: subanta
+        stem: वररुचि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: तम्
+      gloss:
+        en: him
+        hi: उसे
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पश्यति
+      gloss:
+        en: watches
+        hi: देखता है
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: शकटालः कालम् प्रतीक्षते।
+    meaning:
+      en: Śakaṭāla waits for the time.
+      hi: शकटाल समय की प्रतीक्षा करता है।
+    words:
+    - sa: शकटालः
+      gloss:
+        en: Śakaṭāla
+        hi: शकटाल
+      check:
+        type: subanta
+        stem: शकटाल
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कालम्
+      gloss:
+        en: the time
+        hi: समय की
+      check:
+        type: subanta
+        stem: काल
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: प्रतीक्षते
+      gloss:
+        en: waits for
+        hi: प्रतीक्षा करता है
+      check:
+        type: tinanta
+        dhatu: ईक्ष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - प्रति

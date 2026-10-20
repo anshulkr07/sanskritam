@@ -1,0 +1,428 @@
+id: tad.ness
+template: scene
+title:
+  en: '-ness: -त्व and -ता'
+  hi: 'भाव: -त्व और -ता'
+title_sa: मनुष्यत्वम् देवता
+minutes: 6
+teaches:
+- tad.tva-ta
+needs:
+- tad.apatya
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The twenty-third statue
+    hi: तेईसवीं प्रतिमा
+  depth: core
+  image:
+    brief: 'The twenty-third statue holding a shallow bowl of still water that shivers; Dādī touching the rim; Śuka looking into the water at three faces reflected: a man, a god, a stone; lamplight on the water.'
+    alt:
+      en: A statue holds a bowl of still water shivering, with three reflected faces
+      hi: ठहरे जल का कटोरा थामे प्रतिमा, जल में तीन प्रतिबिम्ब
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - taddhitika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: tad-ness-s1
+  narration:
+    en: 'The twenty-third statue carries a bowl of still water. “मनुष्यत्वम्,” she says, and the water shivers. “Humanness.” “देवता”: “divinity.” “गुरुता”: “weight.” “They are all names of a state,” says Dādī. “‘Being a man’, ‘being a god’, ‘being heavy’. Add -त्व or -ता to a word and it becomes the name of what it is to be that.”'
+    hi: 'तेईसवीं प्रतिमा के हाथ में शान्त जल का कटोरा है। “मनुष्यत्वम्,” वह कहती है, और जल सिहरता है। “मनुष्यता।” “देवता”: “देवत्व।” “गुरुता”: “भारीपन।” “ये सब अवस्था के नाम हैं,” दादी कहती हैं। “‘मनुष्य होना’, ‘देव होना’, ‘भारी होना’। किसी शब्द में -त्व या -ता जोड़िए और वह उस होने का नाम बन जाता है।”'
+- id: t1
+  kind: teach
+  title:
+    en: The state of being
+    hi: होने की अवस्था
+  depth: core
+  skills:
+  - tad.tva-ta
+  body:
+    en: '{{-त्वम्}} (neuter) and {{-ता}} (feminine) make a word that names the state of being something: {{मनुष्य}} gives {{मनुष्यत्वम्}} or {{मनुष्यता}}, “humanity”; {{देव}} gives {{देवत्वम्}} or {{देवता}}, “divinity”; {{गुरु}} gives {{गुरुत्वम्}} or {{गुरुता}}, “weight, greatness”. Both mean the same.'
+    hi: '{{-त्वम्}} (नपुंसक) और {{-ता}} (स्त्रीलिंग) किसी शब्द से उसके होने की अवस्था का नाम बनाते हैं: {{मनुष्य}} से {{मनुष्यत्वम्}} या {{मनुष्यता}}, ‘मनुष्यता’; {{देव}} से {{देवत्वम्}} या {{देवता}}, ‘देवत्व’; {{गुरु}} से {{गुरुत्वम्}} या {{गुरुता}}, ‘भार, महत्ता’। दोनों का अर्थ एक है।'
+- id: tb1
+  kind: table
+  title:
+    en: The state of being
+    hi: होने की अवस्था
+  depth: core
+  skills:
+  - tad.tva-ta
+  caption:
+    en: -tvam and -tā
+    hi: -त्वम् और -ता
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: ending -tvam
+    hi: प्रत्यय -त्वम्
+  - en: ending -tā
+    hi: प्रत्यय -ता
+  rows:
+  - - sa: मनुष्य
+    - sa: मनुष्यत्वम्
+      check:
+        type: taddhita
+        stem: मनुष्य
+        taddhita: tva
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: मनुष्यता
+      check:
+        type: taddhita
+        stem: मनुष्य
+        taddhita: tal
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: देव
+    - sa: देवत्वम्
+      check:
+        type: taddhita
+        stem: देव
+        taddhita: tva
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: देवता
+      check:
+        type: taddhita
+        stem: देव
+        taddhita: tal
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: पुरुष
+    - sa: पुरुषत्वम्
+      check:
+        type: taddhita
+        stem: पुरुष
+        taddhita: tva
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: पुरुषता
+      check:
+        type: taddhita
+        stem: पुरुष
+        taddhita: tal
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: कवि
+    - sa: कवित्वम्
+      check:
+        type: taddhita
+        stem: कवि
+        taddhita: tva
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: कविता
+      check:
+        type: taddhita
+        stem: कवि
+        taddhita: tal
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: गुरु
+    - sa: गुरुत्वम्
+      check:
+        type: taddhita
+        stem: गुरु
+        taddhita: tva
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: गुरुता
+      check:
+        type: taddhita
+        stem: गुरु
+        taddhita: tal
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: लघु
+    - sa: लघुत्वम्
+      check:
+        type: taddhita
+        stem: लघु
+        taddhita: tva
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: लघुता
+      check:
+        type: taddhita
+        stem: लघु
+        taddhita: tal
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: सुन्दर
+    - sa: सुन्दरत्वम्
+      check:
+        type: taddhita
+        stem: सुन्दर
+        taddhita: tva
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: सुन्दरता
+      check:
+        type: taddhita
+        stem: सुन्दर
+        taddhita: tal
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: वीर
+    - sa: वीरत्वम्
+      check:
+        type: taddhita
+        stem: वीर
+        taddhita: tva
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: वीरता
+      check:
+        type: taddhita
+        stem: वीर
+        taddhita: tal
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: सत्य
+    - sa: सत्यत्वम्
+      check:
+        type: taddhita
+        stem: सत्य
+        taddhita: tva
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: सत्यता
+      check:
+        type: taddhita
+        stem: सत्य
+        taddhita: tal
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: महत्
+    - sa: महत्त्वम्
+      check:
+        type: taddhita
+        stem: महत्
+        taddhita: tva
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: महत्ता
+      check:
+        type: taddhita
+        stem: महत्
+        taddhita: tal
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  note:
+    en: 'The meaning is the same: {{मनुष्यत्वम्}} = {{मनुष्यता}}; {{महत्}} gives {{महत्त्वम्}} and {{महत्ता}}.'
+    hi: 'अर्थ एक है: {{मनुष्यत्वम्}} = {{मनुष्यता}}; {{महत्}} से {{महत्त्वम्}} और {{महत्ता}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - tad.tva-ta
+  mode: choice
+  prompt:
+    en: '{{मनुष्यत्वम्}} means…'
+    hi: '{{मनुष्यत्वम्}} का अर्थ…'
+  explain:
+    en: '{{-त्वम्}}: the state of being.'
+    hi: '{{-त्वम्}}: होने की अवस्था।'
+  roman: after
+  options:
+  - text:
+      en: a man
+      hi: एक मनुष्य
+  - correct: true
+    text:
+      en: being a man, humanity
+      hi: मनुष्य होना, मनुष्यता
+  - text:
+      en: of a man
+      hi: मनुष्य का
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - tad.tva-ta
+  mode: type
+  prompt:
+    en: 'Say: “divinity” (feminine).'
+    hi: 'कहिए: ‘देवत्व’ (स्त्रीलिंग)।'
+  explain:
+    en: '{{देवता}}.'
+    hi: '{{देवता}}।'
+  roman: after
+  answers:
+  - देवता
+  tiles:
+  - देव
+  - ता
+  - त्वम्
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - tad.tva-ta
+  mode: match
+  prompt:
+    en: Join each word to its state.
+    hi: हर शब्द को उसकी अवस्था से जोड़िए।
+  explain:
+    en: '{{-त्वम्}} or {{-ता}}.'
+    hi: '{{-त्वम्}} या {{-ता}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: देव
+    right:
+      sa: देवत्वम्
+  - left:
+      sa: गुरु
+    right:
+      sa: गुरुता
+  - left:
+      sa: वीर
+    right:
+      sa: वीरता
+  - left:
+      sa: सत्य
+    right:
+      sa: सत्यता
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - tad.tva-ta
+  widget: mark_words
+  prompt:
+    en: Tap every word that names a state.
+    hi: अवस्था का नाम बताने वाला हर शब्द छुइए।
+  params:
+    passage:
+    - मनुष्यत्वम्
+    - मनुष्यः
+    - देवता
+    - देवः
+    - गुरुता
+    - गुरुः
+    targets:
+    - मनुष्यत्वम्
+    - देवता
+    - गुरुता
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: The bowl
+    hi: कटोरा
+  depth: core
+  skills:
+  - tad.tva-ta
+  mode: choice
+  prompt:
+    en: '{{वीरता}} means…'
+    hi: '{{वीरता}} का अर्थ…'
+  explain:
+    en: '{{-ता}}: the state of being.'
+    hi: '{{-ता}}: होने की अवस्था।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“वीरता,” you say, “heroism,” and the water in the bowl stills, not frozen but settled, like a face after a long thought. In it, for a moment, three faces: a man, a god, a stone. They are all, in their way, a state of being. “मनुष्यत्वम्,” she says. “देवता. गुरुता. And what are you?”'
+      hi: '“वीरता,” आप कहते हैं, “वीर होना,” और कटोरे का जल शान्त हो जाता है, जमा नहीं, बैठा हुआ, लम्बे चिन्तन के बाद के मुख की तरह। उसमें, एक क्षण के लिए, तीन चेहरे: एक मनुष्य, एक देवता, एक पत्थर। ये सब, अपने-अपने ढंग से, होने की एक अवस्था हैं। “मनुष्यत्वम्,” वह कहती है। “देवता। गुरुता। और आप क्या हैं?”'
+    failure:
+      en: 'The water keeps shivering. {{-ता}} names the state: {{वीरता}}.'
+      hi: 'जल सिहरता रहता है। {{-ता}} अवस्था का नाम बताता है: {{वीरता}}।'
+  options:
+  - text:
+      en: a hero
+      hi: एक वीर
+  - text:
+      en: of a hero
+      hi: वीर का
+  - correct: true
+    text:
+      en: heroism
+      hi: वीरता
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's state
+    hi: पाणिनि की अवस्था
+  depth: panini
+  skills:
+  - tad.tva-ta
+  sutras:
+  - 5.1.119
+  body:
+    en: 'Sūtra 5.1.119, {{तस्य भावस्त्वतलौ}}, gives {{त्व}} and {{तल्}} to a word to name its “being”. {{तल्}} makes a feminine in {{-ता}} by 4.1.4, and {{त्व}} a neuter. {{महत् + त्व}} doubles: {{महत्त्वम्}}.'
+    hi: 'सूत्र 5.1.119, {{तस्य भावस्त्वतलौ}}, किसी शब्द को उसके ‘होने’ का नाम देने के लिए {{त्व}} और {{तल्}} देता है। {{तल्}} से स्त्रीलिंग {{-ता}} बनता है और {{त्व}} से नपुंसक। {{महत् + त्व}} में द्वित्व: {{महत्त्वम्}}।'
+- id: sum
+  kind: summary
+  title:
+    en: -ness
+    hi: भाव
+  depth: core
+  points:
+  - sa: मनुष्यत्वम् · मनुष्यता
+    text:
+      en: Humanity.
+      hi: मनुष्यता।
+  - sa: देवता · गुरुता
+    text:
+      en: Divinity; weight.
+      hi: देवत्व; भार।
+  - sa: वीरता
+    text:
+      en: Heroism.
+      hi: वीरता।

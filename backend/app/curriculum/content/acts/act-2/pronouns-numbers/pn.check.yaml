@@ -1,0 +1,207 @@
+id: pn.check
+template: check
+title:
+  en: Count, ask and point
+  hi: गिनिए, पूछिए, दिखाइए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - pron.tad-full
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: The {{तद्}} table.
+    hi: '{{तद्}} की तालिका।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: तद्
+      linga: Pum
+      blanks: 3
+    seed: 4
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - pron.tad-full
+  mode: choice
+  prompt:
+    en: “For him.” Which form?
+    hi: ‘उसके लिए।’ कौन-सा रूप?
+  explain:
+    en: '{{तस्मै}}: the fourth case.'
+    hi: '{{तस्मै}}: चतुर्थी।'
+  roman: after
+  options:
+  - sa: तेन
+  - sa: तस्य
+  - correct: true
+    sa: तस्मै
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - pron.kim-yad
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: The {{किम्}} table.
+    hi: '{{किम्}} की तालिका।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: किम्
+      linga: Pum
+      blanks: 3
+    seed: 5
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - pron.kim-yad
+  mode: choice
+  prompt:
+    en: 'Ask: “In what?” (masculine). Which form?'
+    hi: 'पूछिए: ‘किसमें?’ (पुंलिंग)। कौन-सा रूप?'
+  explain:
+    en: '{{कस्मिन्}}: the seventh case.'
+    hi: '{{कस्मिन्}}: सप्तमी।'
+  roman: after
+  options:
+  - sa: कस्मात्
+  - sa: कस्मै
+  - correct: true
+    sa: कस्मिन्
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - num.one-ten
+  mode: choice
+  prompt:
+    en: “Four fruits.” Which form?
+    hi: ‘चार फल।’ कौन-सा रूप?
+  explain:
+    en: '{{चत्वारि}}: four, neuter.'
+    hi: '{{चत्वारि}}: चार, नपुंसक।'
+  roman: after
+  options:
+  - sa: चत्वारः फलानि
+  - sa: चतस्रः फलानि
+  - correct: true
+    sa: चत्वारि फलानि
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - num.one-ten
+  - num.big-time
+  mode: match
+  prompt:
+    en: Join each number to its word.
+    hi: हर संख्या को उसके शब्द से जोड़िए।
+  explain:
+    en: Mind the gender up to four.
+    hi: चार तक लिंग का ध्यान रखिए।
+  roman: after
+  pairs:
+  - left:
+      text:
+        en: '2'
+        hi: २
+    right:
+      sa: द्वे
+  - left:
+      text:
+        en: '5'
+        hi: ५
+    right:
+      sa: पञ्च
+  - left:
+      text:
+        en: '10'
+        hi: १०
+    right:
+      sa: दश
+  - left:
+      text:
+        en: '12'
+        hi: १२
+    right:
+      sa: द्वादश
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - num.big-time
+  mode: choice
+  prompt:
+    en: Which word means “yesterday”?
+    hi: ‘बीता हुआ कल’ कौन-सा शब्द है?
+  explain:
+    en: '{{ह्यः}}: yesterday.'
+    hi: '{{ह्यः}}: बीता हुआ कल।'
+  roman: after
+  options:
+  - sa: श्वः
+  - sa: अद्य
+  - correct: true
+    sa: ह्यः
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - pron.kim-yad
+  mode: order
+  prompt:
+    en: 'Say: “Who reads, he is a scholar.”'
+    hi: 'कहिए: ‘जो पढ़ता है, वह विद्वान् है।’'
+  explain:
+    en: '{{यः … सः}}: the pair.'
+    hi: '{{यः … सः}}: जोड़ी।'
+  roman: after
+  tokens:
+  - यः
+  - पठति
+  - सः
+  - पण्डितः
+- id: p9
+  kind: practice
+  depth: core
+  skills:
+  - num.one-ten
+  mode: order
+  prompt:
+    en: 'Count for Ganaka, neuter: “one, two, three, four.”'
+    hi: 'गणक के लिए गिनिए, नपुंसक: ‘एक, दो, तीन, चार।’'
+  explain:
+    en: '{{एकम् द्वे त्रीणि चत्वारि}}.'
+    hi: '{{एकम् द्वे त्रीणि चत्वारि}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “एकम्, द्वे, त्रीणि, चत्वारि.” Ganaka ties the last knot, and every cord in the room goes taut and glows, one after another, down the shelves. “एकः, द्वौ, त्रयः, चत्वारः,” he adds, a gift, and then points, with a hand of knots, to the lowest shelf. There, between two books, a third leaf. “वेतालः श्मशाने वदति,” he says. “The Vetāla speaks in the burning ground.”
+      hi: “एकम्, द्वे, त्रीणि, चत्वारि।” गणक आख़िरी गाँठ लगाता है, और कमरे की हर डोरी तन जाती है और एक के बाद एक अलमारियों में चमक उठती है। “एकः, द्वौ, त्रयः, चत्वारः,” वह उपहार में जोड़ता है, और फिर गाँठों के हाथ से सबसे निचली अलमारी की ओर इशारा करता है। वहाँ दो पुस्तकों के बीच एक तीसरा पत्र। “वेतालः श्मशाने वदति,” वह कहता है। “वेताल श्मशान में बोलता है।”
+    failure:
+      en: A cord slips. The neuter count is {{एकम् द्वे त्रीणि चत्वारि}}.
+      hi: एक डोरी फिसलती है। नपुंसक गिनती है {{एकम् द्वे त्रीणि चत्वारि}}।
+  tokens:
+  - एकम्
+  - द्वे
+  - त्रीणि
+  - चत्वारि

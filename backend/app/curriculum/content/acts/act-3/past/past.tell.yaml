@@ -1,0 +1,553 @@
+id: past.tell
+template: scene
+title:
+  en: What happened yesterday
+  hi: कल क्या हुआ
+title_sa: आसीत् अवदत्
+minutes: 6
+teaches:
+- verb.lan
+needs:
+- verb.lan
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: A tale begins
+    hi: एक कथा शुरू होती है
+  depth: core
+  image:
+    brief: The Vetāla seated on a tree root, folded like a long grey umbrella, eyes closed, telling a tale; Dādī and Śuka sitting before him; the faint backwards-walking spirit crouched beside; at the dark edge of the trees Lubdhaka leaning in to listen, the lantern low.
+    alt:
+      en: A grey spirit sits on a root telling a tale while travellers listen and a man leans in from the dark
+      hi: जड़ पर बैठा भूत कथा सुनाता, श्रोता यात्री और अँधेरे से झुकता एक आदमी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - atitaka
+    - lubdhaka
+    place: smashana
+    ratio: '4:3'
+    id: past-tell-s1
+  narration:
+    en: '“Good,” says the Vetāla, and drops from his branch to sit on a root, folded like a long grey umbrella. “Now a tale. Every tale of mine begins the same way: आसीत्. ‘There was.’” His eyes close. “आसीत् कश्चित् राजा.” A king. In the trees Lubdhaka, listening from the dark, leans closer.'
+    hi: '“अच्छा,” वेताल कहता है, और शाखा से उतरकर जड़ पर बैठ जाता है, एक लम्बे भूरे छाते की तरह मुड़ा हुआ। “अब एक कथा। मेरी हर कथा एक ही तरह शुरू होती है: आसीत्। ‘था।’” उसकी आँखें बन्द हो जाती हैं। “आसीत् कश्चित् राजा।” एक राजा। पेड़ों में अँधेरे से सुनता लुब्धक आगे झुक आता है।'
+- id: t1
+  kind: teach
+  title:
+    en: There was
+    hi: था
+  depth: core
+  skills:
+  - verb.lan
+  body:
+    en: '{{आसीत्}} (he, she, it was; there was) is the past of {{अस्}}. A tale begins {{आसीत् कश्चित् राजा}}, “there was a king”. The other forms: {{आसन्}} (they were), {{आसम्}} (I was). {{अभवत्}} is the past of {{भू}}: “he became”.'
+    hi: '{{आसीत्}} ({{अस्}} का भूतकाल) का अर्थ ‘था’ है। कथा यों शुरू होती है: {{आसीत् कश्चित् राजा}}, ‘एक राजा था’। अन्य रूप: {{आसन्}} (वे थे), {{आसम्}} (मैं था)। {{अभवत्}} {{भू}} का भूतकाल है: ‘वह बन गया’।'
+  examples:
+  - sa: पुरा एकः राजा आसीत्।
+    meaning:
+      en: Long ago there was a king.
+      hi: पुराने समय में एक राजा था।
+    words:
+    - sa: पुरा
+      gloss:
+        en: long ago
+        hi: पुराने समय में
+    - sa: एकः
+      gloss:
+        en: a
+        hi: एक
+    - sa: राजा
+      gloss:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: आसीत्
+      gloss:
+        en: was
+        hi: था
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः सुखी अभवत्।
+    meaning:
+      en: He became happy.
+      hi: वह सुखी हो गया।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: सुखी
+      gloss:
+        en: happy
+        hi: सुखी
+      check:
+        type: subanta
+        stem: सुखिन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अभवत्
+      gloss:
+        en: became
+        hi: बन गया
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+- id: tb1
+  kind: table
+  title:
+    en: 'अस्: the past'
+    hi: 'अस्: भूतकाल'
+  depth: core
+  skills:
+  - verb.lan
+  caption:
+    en: “Was, were”
+    hi: ‘था, थे’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: आसीत्
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+    - sa: आस्ताम्
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Dvi
+    - sa: आसन्
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: आसीः
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Madhyama
+        vacana: Eka
+    - sa: आस्तम्
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Madhyama
+        vacana: Dvi
+    - sa: आस्त
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Madhyama
+        vacana: Bahu
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: आसम्
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Uttama
+        vacana: Eka
+    - sa: आस्व
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Uttama
+        vacana: Dvi
+    - sa: आस्म
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Uttama
+        vacana: Bahu
+  note:
+    en: '{{आसीत्}} is {{अ}} + {{अस्}} with a lengthened vowel: the root’s own {{अ}} fuses with the augment.'
+    hi: '{{आसीत्}} में {{अ}} + {{अस्}} है, स्वर दीर्घ होकर: धातु का अपना {{अ}} आगम से मिल जाता है।'
+- id: r1
+  kind: reading
+  title:
+    en: The Vetāla's tale
+    hi: वेताल की कथा
+  depth: core
+  skills:
+  - verb.lan
+  image:
+    brief: An old king in a forest looking up at a tree where a corpse hangs and a lamp-lit face seems to speak; ink-and-watercolour illustration in the style of old Indian manuscripts, soft ivory paper.
+    alt:
+      en: A king looks up at a talking corpse hanging in a tree
+      hi: वृक्ष पर लटके बोलते शव को ऊपर देखता राजा
+    cast:
+    - vetala
+    place: smashana
+    ratio: '4:3'
+    id: past-tell-r1
+  passage:
+  - sa: पुरा एकः राजा आसीत्।
+    meaning:
+      en: Long ago there was a king.
+      hi: पुराने समय में एक राजा था।
+    words:
+    - sa: पुरा
+      gloss:
+        en: long ago
+        hi: पुराने समय में
+    - sa: एकः
+      gloss:
+        en: a
+        hi: एक
+    - sa: राजा
+      gloss:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: आसीत्
+      gloss:
+        en: was
+        hi: था
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः नगरे अवसत्।
+    meaning:
+      en: He lived in the city.
+      hi: वह नगर में रहता था।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: नगरे
+      gloss:
+        en: in the city
+        hi: नगर में
+      check:
+        type: subanta
+        stem: नगर
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: अवसत्
+      gloss:
+        en: lived
+        hi: रहता था
+      check:
+        type: tinanta
+        dhatu: वस्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+  - sa: एकदा सः वनम् अगच्छत्।
+    meaning:
+      en: Once he went to the forest.
+      hi: एक बार वह वन गया।
+    words:
+    - sa: एकदा
+      gloss:
+        en: once
+        hi: एक बार
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: वनम्
+      gloss:
+        en: forest
+        hi: वन
+      check:
+        type: subanta
+        stem: वन
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: अगच्छत्
+      gloss:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+  - sa: तत्र सः वृक्षम् अपश्यत्।
+    meaning:
+      en: There he saw a tree.
+      hi: वहाँ उसने एक वृक्ष देखा।
+    words:
+    - sa: तत्र
+      gloss:
+        en: there
+        hi: वहाँ
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: वृक्षम्
+      gloss:
+        en: tree
+        hi: वृक्ष
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: अपश्यत्
+      gloss:
+        en: saw
+        hi: देखा
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+  - sa: वृक्षे शवः आसीत्।
+    meaning:
+      en: On the tree there was a corpse.
+      hi: वृक्ष पर एक शव था।
+    words:
+    - sa: वृक्षे
+      gloss:
+        en: on the tree
+        hi: वृक्ष पर
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: शवः
+      gloss:
+        en: a corpse
+        hi: एक शव
+      check:
+        type: subanta
+        stem: शव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: आसीत्
+      gloss:
+        en: was
+        hi: था
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+  - sa: शवः अवदत्।
+    meaning:
+      en: The corpse spoke.
+      hi: शव बोला।
+    words:
+    - sa: शवः
+      gloss:
+        en: the corpse
+        hi: शव
+      check:
+        type: subanta
+        stem: शव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अवदत्
+      gloss:
+        en: spoke
+        hi: बोला
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.lan
+  mode: match
+  prompt:
+    en: 'Join each pair: today ↔ before.'
+    hi: 'जोड़ियाँ बनाइए: आज ↔ पहले।'
+  explain:
+    en: Present on the left; past on the right.
+    hi: बाईं ओर वर्तमान; दाईं ओर भूतकाल।
+  roman: after
+  pairs:
+  - left:
+      sa: गच्छति
+    right:
+      sa: अगच्छत्
+  - left:
+      sa: पठति
+    right:
+      sa: अपठत्
+  - left:
+      sa: वसति
+    right:
+      sa: अवसत्
+  - left:
+      sa: अस्ति
+    right:
+      sa: आसीत्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.lan
+  mode: choice
+  prompt:
+    en: “There was a king.” Which sentence?
+    hi: ‘एक राजा था।’ कौन-सा वाक्य?
+  explain:
+    en: '{{आसीत्}}: was.'
+    hi: '{{आसीत्}}: था।'
+  roman: after
+  options:
+  - sa: राजा अस्ति
+  - correct: true
+    sa: राजा आसीत्
+  - sa: राजा भविष्यति
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.lan
+  widget: mark_words
+  prompt:
+    en: Tap every word that says “there was” or “he lived”.
+    hi: ‘था’ या ‘रहता था’ कहने वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - आसीत्
+    - अस्ति
+    - अवसत्
+    - वसति
+    - आसन्
+    - सन्ति
+    targets:
+    - आसीत्
+    - अवसत्
+    - आसन्
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.lan
+  mode: order
+  prompt:
+    en: 'Say: “Yesterday he went to the forest.”'
+    hi: 'कहिए: ‘कल वह वन गया।’'
+  explain:
+    en: '{{ह्यः सः वनम् अगच्छत्}}.'
+    hi: '{{ह्यः सः वनम् अगच्छत्}}।'
+  roman: after
+  tokens:
+  - ह्यः
+  - सः
+  - वनम्
+  - अगच्छत्
+- id: p4
+  kind: practice
+  title:
+    en: They were
+    hi: वे थे
+  depth: core
+  skills:
+  - verb.lan
+  mode: choice
+  prompt:
+    en: “They were.” Which form?
+    hi: ‘वे थे।’ कौन-सा रूप?
+  explain:
+    en: '{{आसन्}}: they were.'
+    hi: '{{आसन्}}: वे थे।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“आसन्,” you say: “they were,” and the old spirit steps out of the dark one last time. Behind him, along the whole path, small lamps of memory kindle one by one: a king, a city, a forest, a tree. “Now it is true,” he says, and sits down on the root beside the Vetāla.'
+      hi: '“आसन्,” आप कहते हैं: “वे थे,” और बूढ़ा भूत एक बार और अँधेरे से बाहर कदम रखता है। उसके पीछे पूरे रास्ते पर स्मृति के नन्हे दीप एक-एक करके जल उठते हैं: एक राजा, एक नगर, एक वन, एक वृक्ष। “अब यह सच है,” वह कहता है, और वेताल के पास जड़ पर बैठ जाता है।'
+    failure:
+      en: 'The lamps stay dark. “They were”: {{आसन्}}.'
+      hi: 'दीप बुझे रहते हैं। ‘वे थे’: {{आसन्}}।'
+  options:
+  - sa: आसीत्
+  - sa: आस्ताम्
+  - correct: true
+    sa: आसन्
+- id: sum
+  kind: summary
+  title:
+    en: What happened
+    hi: क्या हुआ
+  depth: core
+  points:
+  - sa: आसीत् · आसन्
+    text:
+      en: There was; there were.
+      hi: था; थे।
+  - sa: अवसत् · अगच्छत्
+    text:
+      en: He lived; he went.
+      hi: वह रहता था; वह गया।
+  - sa: ह्यः · पुरा · एकदा
+    text:
+      en: Yesterday; long ago; once.
+      hi: कल; पुराने समय में; एक बार।

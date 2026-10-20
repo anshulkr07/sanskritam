@@ -1,0 +1,940 @@
+id: tale.leaf-2
+template: tale
+title:
+  en: The mouse merchant
+  hi: चूहे वाला व्यापारी
+title_sa: मूषककथा
+minutes: 6
+review: engine_ok
+sources:
+- title: Kathāsaritsāgara 1.6.53–97 (Digital Corpus of Sanskrit), the story retold in new, simple sentences
+  url: https://github.com/OliverHellwig/sanskrit
+  licence: CC BY 4.0
+  note: 'The plot follows Somadeva''s text: a poor young man, a dead mouse, roasted chickpeas, woodcutters, a shop, a golden mouse. The Sanskrit here is new, in the present tense.'
+cards:
+- id: r1
+  kind: reading
+  title:
+    en: A dead mouse
+    hi: एक मरा चूहा
+  depth: core
+  image:
+    brief: A poor young man in a patched kurta standing before a richly dressed merchant in a market lane; the merchant looking down at a small dead mouse on the ground and laughing, the young man pointing at it with a thoughtful look; warm old-India watercolour.
+    alt:
+      en: A poor young man and a laughing merchant looking at a dead mouse
+      hi: ग़रीब युवक और मरे चूहे को देखकर हँसता व्यापारी
+    cast:
+    - vanik
+    place: apana
+    ratio: '4:3'
+    id: tale-leaf-2-r1
+  passage:
+  - sa: दरिद्रः युवा वणिजम् पश्यति।
+    meaning:
+      en: A poor young man sees a merchant.
+      hi: एक ग़रीब युवक एक व्यापारी को देखता है।
+    words:
+    - sa: दरिद्रः
+      gloss:
+        en: poor
+        hi: ग़रीब
+      check:
+        type: subanta
+        stem: दरिद्र
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: युवा
+      gloss:
+        en: young man
+        hi: युवक
+      check:
+        type: subanta
+        stem: युवन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वणिजम्
+      gloss:
+        en: merchant (object)
+        hi: व्यापारी (कर्म)
+      check:
+        type: subanta
+        stem: वणिज्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पश्यति
+      gloss:
+        en: sees
+        hi: देखता है
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: विशाखिलः धनी वणिक् अस्ति।
+    meaning:
+      en: Viśākhila is a rich merchant.
+      hi: विशाखिल एक धनी व्यापारी है।
+    words:
+    - sa: विशाखिलः
+      gloss:
+        en: Viśākhila
+        hi: विशाखिल
+      check:
+        type: subanta
+        stem: विशाखिल
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: धनी
+      gloss:
+        en: rich
+        hi: धनी
+      check:
+        type: subanta
+        stem: धनिन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वणिक्
+      gloss:
+        en: merchant
+        hi: व्यापारी
+      check:
+        type: subanta
+        stem: वणिज्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: वणिक् मृतम् मूषकम् पश्यति।
+    meaning:
+      en: The merchant sees a dead mouse.
+      hi: व्यापारी एक मरा हुआ चूहा देखता है।
+    words:
+    - sa: वणिक्
+      gloss:
+        en: merchant
+        hi: व्यापारी
+      check:
+        type: subanta
+        stem: वणिज्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: मृतम्
+      gloss:
+        en: dead
+        hi: मरा हुआ
+      check:
+        type: subanta
+        stem: मृत
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: मूषकम्
+      gloss:
+        en: mouse (object)
+        hi: चूहा (कर्म)
+      check:
+        type: subanta
+        stem: मूषक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पश्यति
+      gloss:
+        en: sees
+        hi: देखता है
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: वणिक् हसति।
+    meaning:
+      en: The merchant laughs.
+      hi: व्यापारी हँसता है।
+    words:
+    - sa: वणिक्
+      gloss:
+        en: merchant
+        hi: व्यापारी
+      check:
+        type: subanta
+        stem: वणिज्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: हसति
+      gloss:
+        en: laughs
+        hi: हँसता है
+      check:
+        type: tinanta
+        dhatu: हस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: युवा वदति अहम् मूषकम् गृह्णामि।
+    meaning:
+      en: 'The young man says: “I take the mouse.”'
+      hi: 'युवक कहता है: “मैं चूहा लेता हूँ।”'
+    words:
+    - sa: युवा
+      gloss:
+        en: young man
+        hi: युवक
+      check:
+        type: subanta
+        stem: युवन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वदति
+      gloss:
+        en: says
+        hi: कहता है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: अहम्
+      gloss:
+        en: I
+        hi: मैं
+    - sa: मूषकम्
+      gloss:
+        en: mouse (object)
+        hi: चूहा (कर्म)
+      check:
+        type: subanta
+        stem: मूषक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गृह्णामि
+      gloss:
+        en: take
+        hi: लेता हूँ
+      check:
+        type: tinanta
+        dhatu: ग्रह्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+  - sa: युवा मूषकम् गृह्णाति।
+    meaning:
+      en: The young man takes the mouse.
+      hi: युवक चूहा ले लेता है।
+    words:
+    - sa: युवा
+      gloss:
+        en: young man
+        hi: युवक
+      check:
+        type: subanta
+        stem: युवन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: मूषकम्
+      gloss:
+        en: mouse (object)
+        hi: चूहा (कर्म)
+      check:
+        type: subanta
+        stem: मूषक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गृह्णाति
+      gloss:
+        en: takes
+        hi: लेता है
+      check:
+        type: tinanta
+        dhatu: ग्रह्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: r2
+  kind: reading
+  title:
+    en: Chickpeas and water
+    hi: चने और पानी
+  depth: core
+  image:
+    brief: The young man at a shady crossroads outside the town with a water pot and a basket of roasted chickpeas, giving them to tired woodcutters who rest under a tree with bundles of logs beside them; late afternoon light.
+    alt:
+      en: A young man shares water and chickpeas with tired woodcutters at a crossroads
+      hi: चौराहे पर थके लकड़हारों को पानी और चने देता युवक
+    place: grama
+    ratio: '4:3'
+    id: tale-leaf-2-r2
+  passage:
+  - sa: सः मूषकम् नयति।
+    meaning:
+      en: He takes the mouse away.
+      hi: वह चूहे को ले जाता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: मूषकम्
+      gloss:
+        en: mouse (object)
+        hi: चूहा (कर्म)
+      check:
+        type: subanta
+        stem: मूषक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: नयति
+      gloss:
+        en: takes away
+        hi: ले जाता है
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः चणकान् गृह्णाति।
+    meaning:
+      en: He takes chickpeas.
+      hi: वह चने लेता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: चणकान्
+      gloss:
+        en: chickpeas (object)
+        hi: चने (कर्म)
+      check:
+        type: subanta
+        stem: चणक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Bahu
+    - sa: गृह्णाति
+      gloss:
+        en: takes
+        hi: लेता है
+      check:
+        type: tinanta
+        dhatu: ग्रह्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः चणकान् पचति।
+    meaning:
+      en: He roasts the chickpeas.
+      hi: वह चने भूनता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: चणकान्
+      gloss:
+        en: chickpeas (object)
+        hi: चने (कर्म)
+      check:
+        type: subanta
+        stem: चणक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Bahu
+    - sa: पचति
+      gloss:
+        en: cooks
+        hi: भूनता है
+      check:
+        type: tinanta
+        dhatu: पच्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः जलम् गृह्णाति।
+    meaning:
+      en: He takes water.
+      hi: वह जल लेता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: जलम्
+      gloss:
+        en: water (object)
+        hi: जल (कर्म)
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गृह्णाति
+      gloss:
+        en: takes
+        hi: लेता है
+      check:
+        type: tinanta
+        dhatu: ग्रह्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: युवा चत्वरे तिष्ठति।
+    meaning:
+      en: The young man stands at the crossroads.
+      hi: युवक चौराहे पर खड़ा होता है।
+    words:
+    - sa: युवा
+      gloss:
+        en: young man
+        hi: युवक
+      check:
+        type: subanta
+        stem: युवन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: चत्वरे
+      gloss:
+        en: at the crossroads
+        hi: चौराहे पर
+      check:
+        type: subanta
+        stem: चत्वर
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: तिष्ठति
+      gloss:
+        en: stands
+        hi: खड़ा होता है
+      check:
+        type: tinanta
+        dhatu: स्था
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: काष्ठिकाः आगच्छन्ति।
+    meaning:
+      en: Woodcutters come.
+      hi: लकड़हारे आते हैं।
+    words:
+    - sa: काष्ठिकाः
+      gloss:
+        en: woodcutters
+        hi: लकड़हारे
+      check:
+        type: subanta
+        stem: काष्ठिक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: आगच्छन्ति
+      gloss:
+        en: come
+        hi: आते हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+        prefixes:
+        - आ
+  - sa: काष्ठिकाः जलम् पिबन्ति।
+    meaning:
+      en: The woodcutters drink water.
+      hi: लकड़हारे पानी पीते हैं।
+    words:
+    - sa: काष्ठिकाः
+      gloss:
+        en: woodcutters
+        hi: लकड़हारे
+      check:
+        type: subanta
+        stem: काष्ठिक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: जलम्
+      gloss:
+        en: water (object)
+        hi: जल (कर्म)
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पिबन्ति
+      gloss:
+        en: drink
+        hi: पीते हैं
+      check:
+        type: tinanta
+        dhatu: पा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - sa: काष्ठिकाः चणकान् खादन्ति।
+    meaning:
+      en: The woodcutters eat the chickpeas.
+      hi: लकड़हारे चने खाते हैं।
+    words:
+    - sa: काष्ठिकाः
+      gloss:
+        en: woodcutters
+        hi: लकड़हारे
+      check:
+        type: subanta
+        stem: काष्ठिक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: चणकान्
+      gloss:
+        en: chickpeas (object)
+        hi: चने (कर्म)
+      check:
+        type: subanta
+        stem: चणक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Bahu
+    - sa: खादन्ति
+      gloss:
+        en: eat
+        hi: खाते हैं
+      check:
+        type: tinanta
+        dhatu: खाद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - sa: काष्ठिकाः काष्ठानि ददति।
+    meaning:
+      en: The woodcutters give logs.
+      hi: लकड़हारे लकड़ियाँ देते हैं।
+    words:
+    - sa: काष्ठिकाः
+      gloss:
+        en: woodcutters
+        hi: लकड़हारे
+      check:
+        type: subanta
+        stem: काष्ठिक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: काष्ठानि
+      gloss:
+        en: logs (object)
+        hi: लकड़ियाँ (कर्म)
+      check:
+        type: subanta
+        stem: काष्ठ
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+    - sa: ददति
+      gloss:
+        en: give
+        hi: देते हैं
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+- id: r3
+  kind: reading
+  title:
+    en: Rich at last
+    hi: आख़िर धनी
+  depth: core
+  image:
+    brief: The young man in good clothes standing proudly at the door of his own busy shop, holding up a small golden mouse; the old merchant Viśākhila smiling beside his daughter who is garlanding him; neighbours cheering.
+    alt:
+      en: A prosperous young man holds up a golden mouse beside a smiling merchant and his daughter
+      hi: सुनहरा चूहा थामे धनी युवक, पास में मुस्कुराता व्यापारी और उसकी कन्या
+    place: apana
+    ratio: '4:3'
+    id: tale-leaf-2-r3
+  passage:
+  - sa: युवा काष्ठानि आपणम् नयति।
+    meaning:
+      en: The young man takes the logs to the market.
+      hi: युवक लकड़ियाँ बाज़ार ले जाता है।
+    words:
+    - sa: युवा
+      gloss:
+        en: young man
+        hi: युवक
+      check:
+        type: subanta
+        stem: युवन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: काष्ठानि
+      gloss:
+        en: logs (object)
+        hi: लकड़ियाँ (कर्म)
+      check:
+        type: subanta
+        stem: काष्ठ
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+    - sa: आपणम्
+      gloss:
+        en: to the market
+        hi: बाज़ार को
+      check:
+        type: subanta
+        stem: आपण
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: नयति
+      gloss:
+        en: takes
+        hi: ले जाता है
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः धनम् गृह्णाति।
+    meaning:
+      en: He takes the money.
+      hi: वह धन लेता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: धनम्
+      gloss:
+        en: money (object)
+        hi: धन (कर्म)
+      check:
+        type: subanta
+        stem: धन
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गृह्णाति
+      gloss:
+        en: takes
+        hi: लेता है
+      check:
+        type: tinanta
+        dhatu: ग्रह्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: वृष्टिः भवति।
+    meaning:
+      en: Heavy rain falls.
+      hi: वर्षा होती है।
+    words:
+    - sa: वृष्टिः
+      gloss:
+        en: rain
+        hi: वर्षा
+      check:
+        type: subanta
+        stem: वृष्टि
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: भवति
+      gloss:
+        en: comes
+        hi: होती है
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: काष्ठानि न सन्ति।
+    meaning:
+      en: There are no logs.
+      hi: लकड़ियाँ नहीं हैं।
+    words:
+    - sa: काष्ठानि
+      gloss:
+        en: logs
+        hi: लकड़ियाँ
+      check:
+        type: subanta
+        stem: काष्ठ
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: न
+      gloss:
+        en: not
+        hi: नहीं
+    - sa: सन्ति
+      gloss:
+        en: are
+        hi: हैं
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - sa: युवा बहु धनम् गृह्णाति।
+    meaning:
+      en: The young man takes much money.
+      hi: युवक बहुत धन लेता है।
+    words:
+    - sa: युवा
+      gloss:
+        en: young man
+        hi: युवक
+      check:
+        type: subanta
+        stem: युवन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बहु
+      gloss:
+        en: much
+        hi: बहुत
+      check:
+        type: subanta
+        stem: बहु
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: धनम्
+      gloss:
+        en: money (object)
+        hi: धन (कर्म)
+      check:
+        type: subanta
+        stem: धन
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गृह्णाति
+      gloss:
+        en: takes
+        hi: लेता है
+      check:
+        type: tinanta
+        dhatu: ग्रह्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: युवा आपणम् करोति।
+    meaning:
+      en: The young man opens a shop.
+      hi: युवक दुकान खोलता है।
+    words:
+    - sa: युवा
+      gloss:
+        en: young man
+        hi: युवक
+      check:
+        type: subanta
+        stem: युवन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: आपणम्
+      gloss:
+        en: shop (object)
+        hi: दुकान (कर्म)
+      check:
+        type: subanta
+        stem: आपण
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: करोति
+      gloss:
+        en: makes
+        hi: बनाता है
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: युवा धनी भवति।
+    meaning:
+      en: The young man becomes rich.
+      hi: युवक धनी बन जाता है।
+    words:
+    - sa: युवा
+      gloss:
+        en: young man
+        hi: युवक
+      check:
+        type: subanta
+        stem: युवन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: धनी
+      gloss:
+        en: rich
+        hi: धनी
+      check:
+        type: subanta
+        stem: धनिन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: भवति
+      gloss:
+        en: becomes
+        hi: बनता है
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः सौवर्णम् मूषकम् करोति।
+    meaning:
+      en: He makes a golden mouse.
+      hi: वह एक सुनहरा चूहा बनाता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: सौवर्णम्
+      gloss:
+        en: golden
+        hi: सुनहरा
+      check:
+        type: subanta
+        stem: सौवर्ण
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: मूषकम्
+      gloss:
+        en: mouse (object)
+        hi: चूहा (कर्म)
+      check:
+        type: subanta
+        stem: मूषक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: करोति
+      gloss:
+        en: makes
+        hi: बनाता है
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: विशाखिलः कन्याम् ददाति।
+    meaning:
+      en: Viśākhila gives his daughter.
+      hi: विशाखिल अपनी कन्या देता है।
+    words:
+    - sa: विशाखिलः
+      gloss:
+        en: Viśākhila
+        hi: विशाखिल
+      check:
+        type: subanta
+        stem: विशाखिल
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कन्याम्
+      gloss:
+        en: daughter (object)
+        hi: कन्या (कर्म)
+      check:
+        type: subanta
+        stem: कन्या
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: ददाति
+      gloss:
+        en: gives
+        hi: देता है
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: युवा सुखी भवति।
+    meaning:
+      en: The young man becomes happy.
+      hi: युवक सुखी हो जाता है।
+    words:
+    - sa: युवा
+      gloss:
+        en: young man
+        hi: युवक
+      check:
+        type: subanta
+        stem: युवन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: सुखी
+      gloss:
+        en: happy
+        hi: सुखी
+      check:
+        type: subanta
+        stem: सुखिन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: भवति
+      gloss:
+        en: becomes
+        hi: बनता है
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka

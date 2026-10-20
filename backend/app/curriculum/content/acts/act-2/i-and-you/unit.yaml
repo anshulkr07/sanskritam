@@ -1,0 +1,49 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: i-and-you
+title:
+  en: I and you
+  hi: मैं और तुम
+title_sa: अहं त्वं च
+status: ready
+episode:
+  summary:
+    en: 'A boatman offers to take you downstream. Introductions follow: I, you, we, and the polite ‘you’ for elders.'
+    hi: 'एक नाविक आपको नीचे की ओर ले जाने का प्रस्ताव देता है। परिचय होता है: मैं, तुम, हम, और बड़ों के लिए आदर वाला ‘आप’।'
+  beats:
+  - 'अहं … अस्मि: you say who you are.'
+  - The boatman is addressed as भवान्.
+  - 'All nine verb forms: three persons, three numbers.'
+skills:
+- id: pron.i-we
+  title:
+    en: 'I and we: अहम्, आवाम्, वयम्'
+    hi: 'मैं और हम: अहम्, आवाम्, वयम्'
+- id: pron.you
+  title:
+    en: 'You: त्वम्, युवाम्, यूयम्'
+    hi: 'तुम: त्वम्, युवाम्, यूयम्'
+- id: verb.persons
+  title:
+    en: 'Nine verb forms: person × number'
+    hi: 'क्रिया के नौ रूप: पुरुष × वचन'
+  sutras:
+  - 3.4.78
+- id: pron.polite
+  title:
+    en: 'Polite you: भवान्, भवती'
+    hi: 'आदरसूचक: भवान्, भवती'
+- id: verb.as
+  title:
+    en: 'To be: अस्मि, असि, अस्ति'
+    hi: 'होना: अस्मि, असि, अस्ति'
+lessons:
+- you.i
+- you.you
+- you.grid
+- you.polite
+- you.be
+planned: []
+ghost: pratibimbaka
+revision: you.revision
+check: you.check

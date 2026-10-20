@@ -1,0 +1,503 @@
+id: vc2.as
+template: scene
+title:
+  en: 'Class 2: अस्ति, एति'
+  hi: 'गण 2: अस्ति, एति'
+title_sa: अस्ति एति
+minutes: 6
+teaches:
+- verb.class-2
+needs:
+- verb.class-1
+- verb.as
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The six odd drawers
+    hi: छह विचित्र दराज़
+  depth: core
+  image:
+    brief: A small plain ash-coloured spirit stepping out of an opened drawer, without any marks or ornaments, patting itself to check it is there; Dhātuka holding his ledger a little pale; the Vetāla and Dādī watching; firelight.
+    alt:
+      en: A plain ash-coloured spirit steps out of a drawer and pats itself to check it exists
+      hi: दराज़ से निकलता सादा राख-रंगा भूत, स्वयं को थपथपाकर जाँचता कि वह है
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - dhatuka
+    - astika
+    place: smashana
+    ratio: '4:3'
+    id: vc2-as-s1
+  narration:
+    en: 'The eighth night. Dhātuka holds up his ledger, rather pale. “Six drawers left. They are the odd ones, where verbs do not follow the pattern.” He opens the second. Out of it steps a small plain spirit, with no marks or ornaments at all, patting himself to check he is there. “अस्ति,” says the Vetāla. “He is.” Dādī: “And ‘he goes’ is एति.”'
+    hi: 'आठवीं रात। धातुक अपनी बही उठाता है, कुछ पीला-सा। “छह दराज़ बचे हैं। वे विचित्र वाले हैं, जहाँ क्रियाएँ ढाँचे पर नहीं चलतीं।” वह दूसरा खोलता है। उसमें से एक छोटा सादा भूत निकलता है, जिस पर कोई चिह्न या सजावट नहीं, और वह स्वयं को थपथपाकर जाँचता है कि वह है। “अस्ति,” वेताल कहता है। “वह है।” दादी: “और ‘वह जाता है’ एति है।”'
+  lines:
+  - speaker: dadi
+    sa: अस्ति। एति।
+    gloss:
+      en: He is. He goes.
+      hi: वह है। वह जाता है।
+- id: t1
+  kind: teach
+  title:
+    en: No sign at all
+    hi: कोई चिह्न नहीं
+  depth: core
+  skills:
+  - verb.class-2
+  body:
+    en: 'Class 2, {{अदादि}}, adds no sign: the ending joins the root directly, and the root often changes inside. {{अस्}} gives {{अस्ति}}, {{स्तः}}, {{सन्ति}}; {{इ}} gives {{एति}}, {{इतः}}, {{यन्ति}}; {{या}} gives {{याति}}; {{ब्रू}} gives {{ब्रवीति}}.'
+    hi: 'गण 2, {{अदादि}}, कोई चिह्न नहीं जोड़ता: प्रत्यय सीधे धातु से जुड़ता है, और धातु भीतर से अक्सर बदलती है। {{अस्}} से {{अस्ति}}, {{स्तः}}, {{सन्ति}}; {{इ}} से {{एति}}, {{इतः}}, {{यन्ति}}; {{या}} से {{याति}}; {{ब्रू}} से {{ब्रवीति}}।'
+- id: tb1
+  kind: table
+  title:
+    en: 'अस्: to be'
+    hi: 'अस्: होना'
+  depth: core
+  skills:
+  - verb.class-2
+  caption:
+    en: “He is, you are, I am”
+    hi: ‘वह है, तुम हो, मैं हूँ’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: अस्ति
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Adadi
+      highlight: true
+    - sa: स्तः
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+        gana: Adadi
+    - sa: सन्ति
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+        gana: Adadi
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: असि
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+        gana: Adadi
+    - sa: स्थः
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+        gana: Adadi
+    - sa: स्थ
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+        gana: Adadi
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: अस्मि
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+        gana: Adadi
+    - sa: स्वः
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+        gana: Adadi
+    - sa: स्मः
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+        gana: Adadi
+- id: tb2
+  kind: table
+  title:
+    en: 'इ: to go'
+    hi: 'इ: जाना'
+  depth: core
+  skills:
+  - verb.class-2
+  caption:
+    en: “He goes, you go, I go”
+    hi: ‘वह जाता है, तुम जाते हो, मैं जाता हूँ’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: एति
+      check:
+        type: tinanta
+        dhatu: इ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Adadi
+      highlight: true
+    - sa: इतः
+      check:
+        type: tinanta
+        dhatu: इ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+        gana: Adadi
+    - sa: यन्ति
+      check:
+        type: tinanta
+        dhatu: इ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+        gana: Adadi
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: एषि
+      check:
+        type: tinanta
+        dhatu: इ
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+        gana: Adadi
+    - sa: इथः
+      check:
+        type: tinanta
+        dhatu: इ
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+        gana: Adadi
+    - sa: इथ
+      check:
+        type: tinanta
+        dhatu: इ
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+        gana: Adadi
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: एमि
+      check:
+        type: tinanta
+        dhatu: इ
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+        gana: Adadi
+    - sa: इवः
+      check:
+        type: tinanta
+        dhatu: इ
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+        gana: Adadi
+    - sa: इमः
+      check:
+        type: tinanta
+        dhatu: इ
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+        gana: Adadi
+  note:
+    en: 'The {{इ}} strengthens to {{ए}} in the singular and stays short in the dual: {{एति}}, {{इतः}}.'
+    hi: 'एकवचन में {{इ}} बलवान् होकर {{ए}} बनता है और द्विवचन में छोटा रहता है: {{एति}}, {{इतः}}।'
+- id: tb3
+  kind: table
+  title:
+    en: Class 2 roots
+    hi: गण 2 की धातुएँ
+  depth: core
+  skills:
+  - verb.class-2
+  caption:
+    en: Root, meaning and “he …”
+    hi: धातु, अर्थ और ‘वह …’
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Meaning
+    hi: अर्थ
+  - en: He
+    hi: वह
+  rows:
+  - - sa: या
+    - text:
+        en: go
+        hi: जाना
+    - sa: याति
+      check:
+        type: tinanta
+        dhatu: या
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Adadi
+  - - sa: हन्
+    - text:
+        en: strike, kill
+        hi: मारना
+    - sa: हन्ति
+      check:
+        type: tinanta
+        dhatu: हन्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Adadi
+  - - sa: अद्
+    - text:
+        en: eat
+        hi: खाना
+    - sa: अत्ति
+      check:
+        type: tinanta
+        dhatu: अद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Adadi
+  - - sa: रुद्
+    - text:
+        en: weep
+        hi: रोना
+    - sa: रोदिति
+      check:
+        type: tinanta
+        dhatu: रुद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Adadi
+  - - sa: ब्रू
+    - text:
+        en: say
+        hi: कहना
+    - sa: ब्रवीति
+      check:
+        type: tinanta
+        dhatu: ब्रू
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Adadi
+  note:
+    en: These are common verbs. Learn each by heart.
+    hi: ये बहुत प्रचलित क्रियाएँ हैं। हर एक को याद कीजिए।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-2
+  mode: choice
+  prompt:
+    en: “He goes.” Which form?
+    hi: ‘वह जाता है।’ कौन-सा रूप?
+  explain:
+    en: '{{एति}}: {{इ}} + {{ति}}, strengthened.'
+    hi: '{{एति}}: {{इ}} + {{ति}}, बलवान्।'
+  roman: after
+  options:
+  - sa: इति
+  - correct: true
+    sa: एति
+  - sa: अयति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-2
+  mode: type
+  prompt:
+    en: 'Say: “They are.”'
+    hi: 'कहिए: ‘वे हैं।’'
+  explain:
+    en: '{{सन्ति}}: the {{अ}} of {{अस्}} drops.'
+    hi: '{{सन्ति}}: {{अस्}} का {{अ}} हट जाता है।'
+  roman: after
+  answers:
+  - सन्ति
+  tiles:
+  - स
+  - न्ति
+  - ति
+  - अस
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-2
+  mode: match
+  prompt:
+    en: Join each root to its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+  explain:
+    en: No sign between root and ending.
+    hi: धातु और प्रत्यय के बीच कोई चिह्न नहीं।
+  roman: after
+  pairs:
+  - left:
+      sa: अस्
+    right:
+      sa: अस्ति
+  - left:
+      sa: इ
+    right:
+      sa: एति
+  - left:
+      sa: या
+    right:
+      sa: याति
+  - left:
+      sa: हन्
+    right:
+      sa: हन्ति
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.class-2
+  widget: mark_words
+  prompt:
+    en: Tap every verb with no sign before the ending.
+    hi: प्रत्यय से पहले चिह्न रहित हर क्रिया छुइए।
+  params:
+    passage:
+    - एति
+    - भवति
+    - याति
+    - नयति
+    - हन्ति
+    - जयति
+    targets:
+    - एति
+    - याति
+    - हन्ति
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: Drawer two
+    hi: दूसरा दराज़
+  depth: core
+  skills:
+  - verb.class-2
+  mode: choice
+  prompt:
+    en: “They are.” Which form?
+    hi: ‘वे हैं।’ कौन-सा रूप?
+  explain:
+    en: '{{सन्ति}}: they, many.'
+    hi: '{{सन्ति}}: वे, अनेक।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“सन्ति,” you say, and the plain spirit stops patting himself. Behind him, in the dark, there are other small shapes: they are, they are. “They are,” he whispers. “I did not know there were others.” He steps back into his drawer and, for the first time, shuts it himself, with a click.'
+      hi: '“सन्ति,” आप कहते हैं, और सादा भूत स्वयं को थपथपाना छोड़ देता है। उसके पीछे अँधेरे में और भी नन्ही आकृतियाँ हैं: वे हैं, वे हैं। “वे हैं,” वह फुसफुसाता है। “मुझे नहीं पता था कि और भी हैं।” वह अपने दराज़ में लौट जाता है और पहली बार स्वयं उसे खट से बन्द कर देता है।'
+    failure:
+      en: 'He keeps patting himself. They, many: {{सन्ति}}.'
+      hi: 'वह स्वयं को थपथपाता रहता है। वे, अनेक: {{सन्ति}}।'
+  options:
+  - sa: अस्ति
+  - sa: स्तः
+  - correct: true
+    sa: सन्ति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's no-sign class
+    hi: बिना चिह्न का गण
+  depth: panini
+  skills:
+  - verb.class-2
+  sutras:
+  - 2.4.72
+  - 6.4.111
+  body:
+    en: 'Sūtra 2.4.72, {{अदिप्रभृतिभ्यः शपः}}, deletes the sign {{शप्}} after {{अद्}} and its class, so the ending joins the root. 6.4.111, {{श्नसोरल्लोपः}}, drops the {{अ}} of {{अस्}} before a weak ending: {{स्तः}}, {{सन्ति}}.'
+    hi: 'सूत्र 2.4.72, {{अदिप्रभृतिभ्यः शपः}}, {{अद्}} आदि धातुओं के बाद चिह्न {{शप्}} का लोप कर देता है, इसलिए प्रत्यय धातु से सीधे जुड़ता है। 6.4.111, {{श्नसोरल्लोपः}}, निर्बल प्रत्यय से पहले {{अस्}} का {{अ}} हटा देता है: {{स्तः}}, {{सन्ति}}।'
+- id: sum
+  kind: summary
+  title:
+    en: Class 2
+    hi: गण 2
+  depth: core
+  points:
+  - sa: अस्ति · स्तः · सन्ति
+    text:
+      en: He is; the two are; they are.
+      hi: वह है; दोनों हैं; वे हैं।
+  - sa: एति · याति · हन्ति
+    text:
+      en: He goes; he goes; he strikes.
+      hi: वह जाता है; वह जाता है; वह मारता है।
+  - text:
+      en: No sign; the root changes.
+      hi: चिह्न नहीं; धातु बदलती है।

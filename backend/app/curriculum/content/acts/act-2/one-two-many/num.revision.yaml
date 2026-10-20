@@ -1,0 +1,205 @@
+id: num.revision
+template: revision
+title:
+  en: Everything about number
+  hi: वचन के बारे में सब कुछ
+title_sa: वचनसङ्ग्रहः
+minutes: 5
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: num.dual
+    formula: एकवचन · द्विवचन · बहुवचन
+    rule:
+      en: 'Sanskrit has three numbers: one, two (dual) and many (plural).'
+      hi: 'संस्कृत में तीन वचन हैं: एक, दो (द्विवचन) और अनेक (बहुवचन)।'
+    sutras:
+    - 1.4.21
+    - 1.4.22
+    tag: core
+    taught_in: num.two#t1
+  - skill: num.dual
+    formula: बकौ · बालिके · फले · नद्यौ
+    rule:
+      en: 'Dual of nominative: {{औ}} for masculine -अ, {{ए}} for feminine -आ and neuter -अ, {{औ}} for -ई words.'
+      hi: 'प्रथमा द्विवचन: पुंलिंग -अ में {{औ}}, स्त्रीलिंग -आ और नपुंसक -अ में {{ए}}, -ई शब्दों में {{औ}}।'
+    tag: core
+    taught_in: num.two#tb1
+  - skill: num.plural
+    formula: बालकाः · नौकाः · फलानि · नद्यः
+    rule:
+      en: 'Plural of nominative: {{आः}} for masculine and feminine -अ/-आ, {{आनि}} for neuter, {{यः}} for -ई words.'
+      hi: 'प्रथमा बहुवचन: पुंलिंग और स्त्रीलिंग -अ/-आ में {{आः}}, नपुंसक में {{आनि}}, -ई शब्दों में {{यः}}।'
+    tag: core
+    taught_in: num.many#tb1
+  - skill: verb.pres-3-du-pl
+    formula: पठति · पठतः · पठन्ति
+    rule:
+      en: 'Verbs for he, she or it: {{ति}} (one), {{तः}} (two), {{न्ति}} (many).'
+      hi: 'वह के लिए क्रियाएँ: {{ति}} (एक), {{तः}} (दो), {{न्ति}} (अनेक)।'
+    sutras:
+    - 3.4.78
+    tag: core
+    taught_in: num.verbs#tb1
+  - skill: sent.agree-number
+    formula: बालकौ पठतः
+    rule:
+      en: The verb agrees with its doer in number.
+      hi: क्रिया कर्ता की संख्या से मेल खाती है।
+    tag: core
+    taught_in: num.agree#t1
+  - skill: sent.agree-number
+    formula: अस्ति · स्तः · सन्ति
+    rule:
+      en: '{{अस्ति}} (one), {{स्तः}} (two), {{सन्ति}} (many).'
+      hi: '{{अस्ति}} (एक), {{स्तः}} (दो), {{सन्ति}} (अनेक)।'
+    tag: core
+    taught_in: num.agree#t2
+- id: conditions
+  kind: revision
+  title:
+    en: When it applies
+    hi: कब लागू होता है
+  depth: core
+  section: conditions
+  rows:
+  - skill: num.dual
+    rule:
+      en: Use the dual only for exactly two. Natural pairs (eyes, hands, parents) are nearly always dual.
+      hi: द्विवचन केवल ठीक दो के लिए। स्वाभाविक जोड़े (आँखें, हाथ, माता-पिता) लगभग हमेशा द्विवचन में आते हैं।
+    tag: good
+    taught_in: num.two#t2
+  - skill: sent.agree-number
+    rule:
+      en: Two or more doers joined by {{च}} (and) take the dual or the plural verb, by their total.
+      hi: '{{च}} (और) से जुड़े दो या अधिक कर्ता कुल संख्या के अनुसार द्विवचन या बहुवचन क्रिया लेते हैं।'
+    example:
+      sa: रामः सीता च गच्छतः
+      meaning:
+        en: 'Rāma and Sītā go: two doers, dual verb'
+        hi: 'राम और सीता जाते हैं: दो कर्ता, द्विवचन क्रिया'
+    tag: good
+    new_here: true
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: num.plural
+    rule:
+      en: 'After {{र}}, {{ऋ}}, {{ष}} the {{न}} of {{आनि}} turns to {{ण}}: {{पत्राणि}}, {{कर्माणि}}.'
+      hi: '{{र}}, {{ऋ}}, {{ष}} के बाद {{आनि}} का {{न}} {{ण}} हो जाता है: {{पत्राणि}}, {{कर्माणि}}।'
+    sutras:
+    - 8.4.1
+    tag: good
+    taught_in: num.many#pn
+  - skill: num.dual
+    rule:
+      en: 'Some words are always plural in meaning (water, rice-grains, “the lots”): {{दाराः}} (wife). Their number does not follow counting.'
+      hi: कुछ शब्द अर्थ में सदा बहुवचन होते हैं ({{दाराः}} यानी पत्नी)। उनका वचन गिनती से नहीं चलता।
+    example:
+      sa: दाराः
+      meaning:
+        en: 'wife: always plural'
+        hi: 'पत्नी: सदा बहुवचन'
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: sent.agree-number
+    rule:
+      en: 'Do not mix numbers: {{बालकौ पठति}} is wrong; write {{बालकौ पठतः}}.'
+      hi: 'वचन मत मिलाइए: {{बालकौ पठति}} ग़लत है; {{बालकौ पठतः}} लिखिए।'
+    tag: core
+    taught_in: num.agree#t1
+  - skill: num.dual
+    rule:
+      en: 'Do not use the plural for two: two herons are {{बकौ}}, not {{बकाः}}.'
+      hi: 'दो के लिए बहुवचन मत लगाइए: दो बगुले {{बकौ}} हैं, {{बकाः}} नहीं।'
+    tag: core
+    taught_in: num.two#t1
+  - skill: num.plural
+    rule:
+      en: 'Do not write {{पत्रानि}}: it is {{पत्राणि}}.'
+      hi: '{{पत्रानि}} मत लिखिए: सही {{पत्राणि}} है।'
+    tag: core
+    taught_in: num.many#pn
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: num.dual
+    rule:
+      en: '{{द्व्येकयोर्द्विवचनैकवचने}}: dual for two, singular for one.'
+      hi: '{{द्व्येकयोर्द्विवचनैकवचने}}: दो के लिए द्विवचन, एक के लिए एकवचन।'
+    sutras:
+    - 1.4.22
+    tag: core
+    taught_in: num.two#pn
+  - skill: num.plural
+    rule:
+      en: '{{बहुषु बहुवचनम्}}: the plural for many.'
+      hi: '{{बहुषु बहुवचनम्}}: अनेक के लिए बहुवचन।'
+    sutras:
+    - 1.4.21
+    tag: core
+    taught_in: num.many#t1
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: num.dual
+    formula: बकौ · बालिके · फले
+    rule:
+      en: dual nominative
+      hi: द्विवचन प्रथमा
+    tag: core
+    taught_in: num.two#tb1
+  - skill: num.plural
+    formula: बालकाः · नौकाः · फलानि
+    rule:
+      en: plural nominative
+      hi: बहुवचन प्रथमा
+    tag: core
+    taught_in: num.many#tb1
+  - skill: verb.pres-3-du-pl
+    formula: ति · तः · न्ति
+    rule:
+      en: verb numbers
+      hi: क्रिया के वचन
+    tag: core
+    taught_in: num.verbs#tb1
+  - skill: sent.agree-number
+    formula: बालकौ पठतः
+    rule:
+      en: agreement
+      hi: मेल
+    tag: core
+    taught_in: num.agree#t1

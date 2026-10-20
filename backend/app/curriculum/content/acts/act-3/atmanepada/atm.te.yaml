@@ -1,0 +1,514 @@
+id: atm.te
+template: scene
+title:
+  en: Acting for oneself
+  hi: अपने लिए करना
+title_sa: सेवते लभते
+minutes: 6
+teaches:
+- verb.atmane
+needs:
+- verb.class-1
+- verb.class-6
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The ninth night
+    hi: नौवीं रात
+  depth: core
+  image:
+    brief: A small stooped spirit in a patched servant's wrap shuffling into the firelight with an empty tray, baffled; the Vetāla pointing a lazy finger at him; Dādī explaining with two raised hands, one pointing away and one curling back to herself; Śuka cocking his head.
+    alt:
+      en: A stooped servant spirit with an empty tray in firelight while an old woman gestures away and back
+      hi: ख़ाली थाल लिए झुका सेवक भूत, दादी दूर और अपनी ओर इशारा करती हुई
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - sevaka
+    place: smashana
+    ratio: '4:3'
+    id: atm-te-s1
+  narration:
+    en: 'A small stooped spirit shuffles into the firelight, holding a tray of nothing. “सेवते,” says the Vetāla. “He serves. For himself.” The little servant looks at him, baffled. “All my life I served others,” he says. “‘सेवति’ I would have said.” Dādī: “There are two sets of verb endings. One looks away from the doer, the other turns back to him.”'
+    hi: 'एक छोटा झुका हुआ भूत अलाव की रोशनी में घिसटता आता है, ख़ाली थाल लिए। “सेवते,” वेताल कहता है। “वह सेवा करता है। अपने लिए।” नन्हा सेवक उसे भौंचक देखता है। “जीवन भर मैंने दूसरों की सेवा की,” वह कहता है। “‘सेवति’ मैं कहता।” दादी: “क्रिया-प्रत्ययों के दो समूह हैं। एक कर्ता से दूर देखता है, दूसरा उसकी ओर लौटता है।”'
+  lines:
+  - speaker: dadi
+    sa: सेवते। लभते।
+    gloss:
+      en: He serves (for himself). He obtains.
+      hi: वह (अपने लिए) सेवा करता है। वह पाता है।
+- id: t1
+  kind: teach
+  title:
+    en: Two sets of endings
+    hi: प्रत्ययों के दो समूह
+  depth: core
+  skills:
+  - verb.atmane
+  body:
+    en: 'So far all your verbs ended in {{-ति}}: {{परस्मैपदम्}}, “word for another”. The other set is {{आत्मनेपदम्}}, “word for oneself”: {{-ते}}, {{-एते}}, {{-न्ते}}. Some roots take only these: {{सेव्}} gives {{सेवते}}, {{लभ्}} gives {{लभते}}, {{वृत्}} gives {{वर्तते}}.'
+    hi: 'अब तक आपकी क्रियाएँ {{-ति}} पर समाप्त होती थीं: {{परस्मैपदम्}}, ‘दूसरे के लिए शब्द’। दूसरा समूह {{आत्मनेपदम्}} है, ‘अपने लिए शब्द’: {{-ते}}, {{-एते}}, {{-न्ते}}। कुछ धातुएँ केवल यही लेती हैं: {{सेव्}} से {{सेवते}}, {{लभ्}} से {{लभते}}, {{वृत्}} से {{वर्तते}}।'
+  examples:
+  - sa: सेवकः गुरुम् सेवते।
+    meaning:
+      en: The servant serves the teacher.
+      hi: सेवक गुरु की सेवा करता है।
+    words:
+    - sa: सेवकः
+      gloss:
+        en: servant
+        hi: सेवक
+      check:
+        type: subanta
+        stem: सेवक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गुरुम्
+      gloss:
+        en: teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: सेवते
+      gloss:
+        en: serves
+        hi: सेवा करता है
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: बालकः फलम् लभते।
+    meaning:
+      en: The boy obtains fruit.
+      hi: बालक फल पाता है।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: फलम्
+      gloss:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: लभते
+      gloss:
+        en: obtains
+        hi: पाता है
+      check:
+        type: tinanta
+        dhatu: लभ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः ग्रामे वर्तते।
+    meaning:
+      en: He abides in the village.
+      hi: वह गाँव में रहता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: ग्रामे
+      gloss:
+        en: in the village
+        hi: गाँव में
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: वर्तते
+      gloss:
+        en: abides
+        hi: रहता है
+      check:
+        type: tinanta
+        dhatu: वृत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  term:
+    sa: आत्मनेपदम्
+    meaning:
+      en: the endings for oneself
+      hi: अपने लिए वाले प्रत्यय
+- id: tb1
+  kind: table
+  title:
+    en: 'सेव्: for oneself'
+    hi: 'सेव्: अपने लिए'
+  depth: core
+  skills:
+  - verb.atmane
+  caption:
+    en: “He serves, you serve, I serve”
+    hi: ‘वह सेवा करता है, तुम करते हो, मैं करता हूँ’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: सेवते
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: सेवेते
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+    - sa: सेवन्ते
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: सेवसे
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+    - sa: सेवेथे
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+    - sa: सेवध्वे
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: सेवे
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+    - sa: सेवावहे
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+    - sa: सेवामहे
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+  note:
+    en: The endings are {{-ते}}, {{-से}}, {{-ए}} in the singular.
+    hi: एकवचन के प्रत्यय {{-ते}}, {{-से}}, {{-ए}} हैं।
+- id: tb2
+  kind: table
+  title:
+    en: Roots with only these endings
+    hi: केवल इन प्रत्ययों वाली धातुएँ
+  depth: core
+  skills:
+  - verb.atmane
+  caption:
+    en: Root, meaning and “he …”
+    hi: धातु, अर्थ और ‘वह …’
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Meaning
+    hi: अर्थ
+  - en: He
+    hi: वह
+  rows:
+  - - sa: सेव्
+    - text:
+        en: serve
+        hi: सेवा करना
+    - sa: सेवते
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - - sa: लभ्
+    - text:
+        en: obtain
+        hi: पाना
+    - sa: लभते
+      check:
+        type: tinanta
+        dhatu: लभ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - - sa: वृत्
+    - text:
+        en: abide
+        hi: रहना
+    - sa: वर्तते
+      check:
+        type: tinanta
+        dhatu: वृत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - - sa: मुद्
+    - text:
+        en: rejoice
+        hi: आनन्दित होना
+    - sa: मोदते
+      check:
+        type: tinanta
+        dhatu: मुद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - - sa: रुच्
+    - text:
+        en: please
+        hi: अच्छा लगना
+    - sa: रोचते
+      check:
+        type: tinanta
+        dhatu: रुच्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - - sa: भाष्
+    - text:
+        en: speak
+        hi: बोलना
+    - sa: भाषते
+      check:
+        type: tinanta
+        dhatu: भाष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - - sa: ईक्ष्
+    - text:
+        en: look
+        hi: देखना
+    - sa: ईक्षते
+      check:
+        type: tinanta
+        dhatu: ईक्ष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  note:
+    en: These roots never take {{-ति}}.
+    hi: ये धातुएँ कभी {{-ति}} नहीं लेतीं।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.atmane
+  mode: choice
+  prompt:
+    en: “He obtains.” Which form?
+    hi: ‘वह पाता है।’ कौन-सा रूप?
+  explain:
+    en: '{{लभ्}} only takes {{-ते}}: {{लभते}}.'
+    hi: '{{लभ्}} केवल {{-ते}} लेती है: {{लभते}}।'
+  roman: after
+  options:
+  - sa: लभति
+  - correct: true
+    sa: लभते
+  - sa: लभसि
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.atmane
+  mode: type
+  prompt:
+    en: 'Say: “He abides.”'
+    hi: 'कहिए: ‘वह रहता है।’'
+  explain:
+    en: '{{वर्तते}}.'
+    hi: '{{वर्तते}}।'
+  roman: after
+  answers:
+  - वर्तते
+  tiles:
+  - वर्त
+  - ते
+  - ति
+  - वृत
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.atmane
+  mode: match
+  prompt:
+    en: Join each root to its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+  explain:
+    en: All end in {{-ते}}.
+    hi: सब {{-ते}} पर समाप्त होती हैं।
+  roman: after
+  pairs:
+  - left:
+      sa: सेव्
+    right:
+      sa: सेवते
+  - left:
+      sa: लभ्
+    right:
+      sa: लभते
+  - left:
+      sa: मुद्
+    right:
+      sa: मोदते
+  - left:
+      sa: रुच्
+    right:
+      sa: रोचते
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.atmane
+  widget: mark_words
+  prompt:
+    en: Tap every “for oneself” form.
+    hi: ‘अपने लिए’ वाला हर रूप छुइए।
+  params:
+    passage:
+    - सेवते
+    - पठति
+    - लभते
+    - भवति
+    - वर्तते
+    - नयति
+    targets:
+    - सेवते
+    - लभते
+    - वर्तते
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: For themselves
+    hi: अपने लिए
+  depth: core
+  skills:
+  - verb.atmane
+  mode: choice
+  prompt:
+    en: “They serve.” Which form?
+    hi: ‘वे सेवा करते हैं।’ कौन-सा रूप?
+  explain:
+    en: '{{सेवन्ते}}: they, many.'
+    hi: '{{सेवन्ते}}: वे, अनेक।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“सेवन्ते,” you say, and the little servant straightens his back a little. The tray of nothing in his hands becomes, very faintly, a tray of something: warm bread, a cup. “They serve,” he says slowly, “and I could serve myself.” He eats the bread. It is the first thing he has eaten in a thousand years.'
+      hi: '“सेवन्ते,” आप कहते हैं, और नन्हा सेवक थोड़ा सीधा हो जाता है। उसके हाथ का ख़ाली थाल, बहुत हल्के-हल्के, कुछ भरा थाल बन जाता है: गर्म रोटी, एक कटोरा। “वे सेवा करते हैं,” वह धीरे से कहता है, “और मैं अपनी सेवा कर सकता हूँ।” वह रोटी खाता है। यह हज़ार वर्षों में उसने पहली चीज़ खाई है।'
+    failure:
+      en: 'The tray stays empty. “They serve (for themselves)”: {{सेवन्ते}}.'
+      hi: 'थाल ख़ाली रहता है। ‘वे सेवा करते हैं (अपने लिए)’: {{सेवन्ते}}।'
+  options:
+  - sa: सेवन्ति
+  - sa: सेवेते
+  - correct: true
+    sa: सेवन्ते
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's two sets
+    hi: पाणिनि के दो समूह
+  depth: panini
+  skills:
+  - verb.atmane
+  sutras:
+  - 1.4.99
+  - 1.4.100
+  - 1.3.12
+  - 3.4.79
+  body:
+    en: Sūtra 1.4.99, {{लः परस्मैपदम्}}, and 1.4.100, {{तङानावात्मनेपदम्}}, name the two sets; the second is the {{तङ्}} endings. 1.3.12, {{अनुदात्तङित आत्मनेपदम्}}, says roots with a marked sign take the second set. And 3.4.79, {{टित आत्मनेपदानां टेरे}}, turns the end of {{-त}} into {{-ते}}.
+    hi: सूत्र 1.4.99, {{लः परस्मैपदम्}}, और 1.4.100, {{तङानावात्मनेपदम्}}, दोनों समूहों के नाम बताते हैं; दूसरा {{तङ्}} प्रत्ययों का है। 1.3.12, {{अनुदात्तङित आत्मनेपदम्}}, कहता है कि चिह्नित धातुएँ दूसरा समूह लेती हैं। और 3.4.79, {{टित आत्मनेपदानां टेरे}}, {{-त}} के अन्त को {{-ते}} बना देता है।
+- id: sum
+  kind: summary
+  title:
+    en: For oneself
+    hi: अपने लिए
+  depth: core
+  points:
+  - sa: सेवते · लभते · वर्तते
+    text:
+      en: He serves; obtains; abides.
+      hi: वह सेवा करता है; पाता है; रहता है।
+  - sa: -ते · -एते · -न्ते
+    text:
+      en: The endings for oneself.
+      hi: अपने लिए वाले प्रत्यय।
+  - text:
+      en: Some roots never take {{-ति}}.
+      hi: कुछ धातुएँ कभी {{-ति}} नहीं लेतीं।

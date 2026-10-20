@@ -1,0 +1,200 @@
+id: of.revision
+template: revision
+title:
+  en: Everything about of
+  hi: का, की, के, सब कुछ
+title_sa: षष्ठीसङ्ग्रहः
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: case.gen
+    formula: आचार्यस्य गृहम्
+    rule:
+      en: “Of” and “belonging to” take the sixth case.
+      hi: ‘का, की, के’ षष्ठी लेते हैं।
+    sutras:
+    - 2.3.50
+    tag: core
+    taught_in: of.whose#t1
+  - skill: case.gen
+    formula: रामस्य · बालिकायाः · नद्याः
+    rule:
+      en: 'Singular endings: {{स्य}} (masculine, neuter -अ), {{आयाः}} (feminine -आ), {{याः}} (feminine -ई).'
+      hi: 'एकवचन प्रत्यय: {{स्य}} (पुंलिंग, नपुंसक -अ), {{आयाः}} (स्त्रीलिंग -आ), {{याः}} (स्त्रीलिंग -ई)।'
+    tag: core
+    taught_in: of.whose#tb1
+  - skill: case.gen
+    formula: कस्य पुस्तकम्?
+    rule:
+      en: '{{कस्य}} and {{कस्याः}}: whose?'
+      hi: '{{कस्य}} और {{कस्याः}}: किसका? किसकी?'
+    tag: core
+    taught_in: of.whose#t2
+  - skill: case.gen-family
+    formula: मम माता
+    rule:
+      en: '{{मम}} my, {{तव}} your, {{तस्य}} his, {{तस्याः}} her, {{अस्माकम्}} our.'
+      hi: '{{मम}} मेरा, {{तव}} तेरा, {{तस्य}} उसका, {{तस्याः}} उसकी, {{अस्माकम्}} हमारा।'
+    tag: core
+    taught_in: of.family#t1
+  - skill: case.gen-family
+    formula: पितुः माता
+    rule:
+      en: 'Words in -ऋ take {{उः}} in the sixth case: {{पितुः}}, {{मातुः}}, {{भ्रातुः}}.'
+      hi: '-ऋ वाले शब्द षष्ठी में {{उः}} लेते हैं: {{पितुः}}, {{मातुः}}, {{भ्रातुः}}।'
+    tag: core
+    taught_in: of.family#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When it applies
+    hi: कब लागू होता है
+  depth: core
+  section: conditions
+  rows:
+  - skill: case.gen
+    rule:
+      en: The sixth case covers owner, part of a whole, kin, and many other links.
+      hi: षष्ठी स्वामी, पूरे का भाग, नाते और अनेक सम्बन्धों को ढकती है।
+    example:
+      sa: वृक्षस्य पत्रम्
+      meaning:
+        en: 'a leaf of the tree: part of a whole'
+        hi: 'पेड़ का पत्ता: पूरे का भाग'
+    tag: good
+    new_here: true
+  - skill: case.gen
+    rule:
+      en: Plural {{आनाम्}} (masculine, neuter -अ and feminine -आ), dual {{योः}} for all.
+      hi: बहुवचन {{आनाम्}} (पुंलिंग, नपुंसक -अ, स्त्रीलिंग -आ), द्विवचन सबके लिए {{योः}}।
+    example:
+      sa: बालकानाम्
+      meaning:
+        en: of the boys
+        hi: बालकों का
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+    tag: good
+    new_here: true
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: case.gen
+    rule:
+      en: 'Some verbs of remembering and mercy take the sixth case for the person: {{मातुः स्मरति}}, “remembers his mother”.'
+      hi: 'स्मरण और दया की कुछ क्रियाएँ व्यक्ति के लिए षष्ठी लेती हैं: {{मातुः स्मरति}}, ‘माता को याद करता है’।'
+    example:
+      sa: मातुः
+      meaning:
+        en: of the mother
+        hi: माता का
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+    tag: rare
+    new_here: true
+  - skill: case.gen-family
+    rule:
+      en: '{{पितरौ}} (father and mother) is a dual for the two parents; {{भ्रातरौ}} is two brothers.'
+      hi: '{{पितरौ}} (माता-पिता) दोनों माता-पिता के लिए द्विवचन है; {{भ्रातरौ}} दो भाई हैं।'
+    example:
+      sa: पितरौ
+      meaning:
+        en: the parents
+        hi: माता-पिता
+      check:
+        type: subanta
+        stem: पितृ
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    tag: good
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: case.gen
+    rule:
+      en: 'Do not put the owner in the first case: {{रामस्य पुस्तकम्}}, not {{रामः पुस्तकम्}}.'
+      hi: 'स्वामी को प्रथमा में मत रखिए: {{रामस्य पुस्तकम्}}, {{रामः पुस्तकम्}} नहीं।'
+    tag: core
+    taught_in: of.whose#t1
+  - skill: case.gen-family
+    rule:
+      en: 'Do not say {{अहम् माता}}: say {{मम माता}}.'
+      hi: '{{अहम् माता}} मत कहिए: {{मम माता}} कहिए।'
+    tag: core
+    taught_in: of.family#t1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: case.gen
+    rule:
+      en: '{{षष्ठी शेषे}}: the sixth case for “the rest”, every link the kāraka-cases do not express.'
+      hi: '{{षष्ठी शेषे}}: ‘शेष’ के लिए षष्ठी, हर वह सम्बन्ध जिसे कारक-विभक्तियाँ नहीं कहतीं।'
+    sutras:
+    - 2.3.50
+    tag: core
+    taught_in: of.whose#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: case.gen
+    formula: स्य · आयाः · याः
+    rule:
+      en: of
+      hi: का
+    tag: core
+    taught_in: of.whose#tb1
+  - skill: case.gen-family
+    formula: मम तव तस्य तस्याः
+    rule:
+      en: my, your, his, her
+      hi: मेरा, तेरा, उसका, उसकी
+    tag: core
+    taught_in: of.family#t1
+  - skill: case.gen-family
+    formula: पितुः मातुः भ्रातुः
+    rule:
+      en: kin in -ऋ
+      hi: -ऋ वाले नाते
+    tag: core
+    taught_in: of.family#tb1

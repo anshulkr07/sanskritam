@@ -1,0 +1,42 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: visarga-sandhi
+title:
+  en: The breath that changes
+  hi: विसर्ग सन्धि
+title_sa: विसर्गसन्धिः
+status: ready
+episode:
+  summary:
+    en: 'The next statues breathe their words: the visarga changes with every neighbour.'
+    hi: 'अगली प्रतिमाएँ साँस भरे शब्द बोलती हैं: विसर्ग हर पड़ोसी के साथ बदलता है।'
+  beats:
+  - रामः + अस्ति → रामोऽस्ति.
+  - ः → स्, श्, र्.
+  - When it vanishes.
+skills:
+- id: sandhi.visarga-o
+  title:
+    en: -अः becomes -ओ
+    hi: अः से ओ
+  sutras:
+  - 6.1.113
+  - 6.1.114
+- id: sandhi.visarga-s
+  title:
+    en: ः becomes स्, श्, ष्
+    hi: विसर्ग से स्, श्, ष्
+  sutras:
+  - 8.3.34
+- id: sandhi.visarga-r
+  title:
+    en: ः becomes र्, or drops
+    hi: विसर्ग से र्, या लोप
+lessons:
+- vis.o
+- vis.s
+- vis.r
+planned: []
+ghost: visargika
+revision: vis.revision
+check: vis.check

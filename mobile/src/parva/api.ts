@@ -92,17 +92,19 @@ export interface ParvaBasic {
 }
 
 async function getJson<T>(path: string): Promise<T | null> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 20000);
   try {
     const token = getAuthToken();
     const headers: Record<string, string> = { "Content-Type": "application/json" };
     if (token) headers.Authorization = `Bearer ${token}`;
-    const res = await fetch(`${BASE_URL}${path}`, { headers });
+    const res = await fetch(`${BASE_URL}${path}`, { headers, signal: controller.signal });
     if (res.status === 404) return null;
     if (!res.ok) return null;
     return (await res.json()) as T;
   } catch {
     return null;
-  }
+  } finally { clearTimeout(timeout); }
 }
 
 function q(params: Record<string, string | number | undefined>): string {

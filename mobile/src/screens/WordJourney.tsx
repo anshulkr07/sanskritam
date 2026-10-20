@@ -119,7 +119,7 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
 
             {routes.length > 1 && (
               <>
-                <SectionLabel>Across languages</SectionLabel>
+                <SectionLabel style={styles.sectionLabel}>Across languages</SectionLabel>
                 <View>
                   {routes.map((r) => {
                     const id = r.id ?? `${r.lang}-${r.word}`;
@@ -143,8 +143,8 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
               </>
             )}
 
-            <SectionLabel>The journey</SectionLabel>
-            <RouteLadder origin={origin} route={selected} />
+            <SectionLabel style={styles.sectionLabel}>The journey</SectionLabel>
+            <View style={styles.journeyCard}><RouteLadder origin={origin} route={selected} /></View>
 
             {!!relationLine(selected) && (
               <Text style={[styles.relation, { fontSize: sized(font.sizes.base) }]}>{relationLine(selected)}</Text>
@@ -177,7 +177,7 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
 
             {(origin.sources ?? []).length > 0 && (
               <>
-                <SectionLabel>Sources</SectionLabel>
+                <SectionLabel style={styles.sectionLabel}>Sources</SectionLabel>
                 <View>
                   {(origin.sources ?? []).map((s, i) => {
                     const name = (s.name ?? s.key ?? "").trim();
@@ -223,7 +223,7 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
 
             {!more.loading && !more.failed && (more.data?.origins ?? []).filter((o) => o.id !== origin.id && !!o.id).slice(0, 5).length > 0 && (
               <>
-                <SectionLabel>More words</SectionLabel>
+                <SectionLabel style={styles.sectionLabel}>More words</SectionLabel>
                 <View>
                   {(more.data?.origins ?? [])
                     .filter((o) => o.id !== origin.id && !!o.id)
@@ -274,7 +274,8 @@ export default function WordJourneyScreen({ route, navigation }: Props) {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { paddingHorizontal: space.md, paddingTop: space.xs, paddingBottom: 120 },
+  body: { paddingHorizontal: space.lg, paddingTop: space.md, paddingBottom: 120 },
+  sectionLabel: { marginTop: 32, marginBottom: 14, paddingTop: 20, borderTopWidth: 1, borderTopColor: color.border, fontSize: 13, letterSpacing: 1 },
   empty: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft, marginTop: space.lg },
   intro: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft, lineHeight: 24, marginBottom: space.sm },
   panelRoman: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: onFill.soft, marginTop: 2 },
@@ -299,15 +300,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: space.sm,
-    minHeight: 48,
-    paddingVertical: space.xs,
+    minHeight: 64,
+    paddingVertical: space.md,
     borderBottomWidth: 1,
     borderBottomColor: color.border,
   },
-  rowActive: { borderLeftWidth: 3, borderLeftColor: color.saffron, paddingLeft: space.sm },
+  rowActive: { borderLeftWidth: 3, borderLeftColor: color.saffronBtn, paddingLeft: space.md },
+  journeyCard: { borderWidth: 1, borderColor: color.border, padding: 20, backgroundColor: color.bg },
   relationTag: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12, color: color.inkSoft },
   pressed: { opacity: 0.75 },
-  rowText: { flex: 1, minWidth: 0 },
+  rowText: { flex: 1, minWidth: 0, gap: 4 },
   rowWord: { fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.ink },
   rowLang: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft },
   rowCount: { fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.inkSoft },

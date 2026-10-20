@@ -1,0 +1,160 @@
+id: with.revision
+template: revision
+title:
+  en: Everything about by and with
+  hi: से और के साथ, सब कुछ
+title_sa: करणसङ्ग्रहः
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: case.inst
+    formula: नौकया · दण्डेन · सुखेन
+    rule:
+      en: The means, tool or manner takes the third case.
+      hi: साधन, उपकरण या ढंग तृतीया में आता है।
+    sutras:
+    - 2.3.18
+    - 1.4.42
+    tag: core
+    taught_in: with.means#t1
+  - skill: case.inst
+    formula: बालकेन · बालिकया · नद्या
+    rule:
+      en: 'Singular endings: {{एन}} (masculine, neuter -अ), {{अया}} (feminine -आ), {{या}} (feminine -ई).'
+      hi: 'एकवचन प्रत्यय: {{एन}} (पुंलिंग, नपुंसक -अ), {{अया}} (स्त्रीलिंग -आ), {{या}} (स्त्रीलिंग -ई)।'
+    tag: core
+    taught_in: with.means#tb1
+  - skill: case.inst-saha
+    formula: मित्रेण सह
+    rule:
+      en: “Together with” is the third case plus {{सह}}.
+      hi: ‘के साथ’ तृतीया और {{सह}} से बनता है।
+    tag: core
+    taught_in: with.together#t1
+  - skill: case.inst-saha
+    formula: मित्रैः सह
+    rule:
+      en: 'Plural companions: {{ऐः}} for masculine and neuter -अ, {{भिः}} for feminine.'
+      hi: 'अनेक साथी: पुंलिंग और नपुंसक -अ में {{ऐः}}, स्त्रीलिंग में {{भिः}}।'
+    example:
+      sa: मित्रैः
+      meaning:
+        en: with friends
+        hi: मित्रों के साथ
+      check:
+        type: subanta
+        stem: मित्र
+        linga: Napumsaka
+        vibhakti: Trtiya
+        vacana: Bahu
+    tag: core
+    new_here: true
+- id: conditions
+  kind: revision
+  title:
+    en: When it applies
+    hi: कब लागू होता है
+  depth: core
+  section: conditions
+  rows:
+  - skill: case.inst
+    rule:
+      en: 'Pairs go dual: {{नेत्राभ्याम्}}, {{हस्ताभ्याम्}}; the same ending {{आभ्याम्}} serves all three genders.'
+      hi: 'जोड़े द्विवचन में चलते हैं: {{नेत्राभ्याम्}}, {{हस्ताभ्याम्}}; तीनों लिंगों में वही प्रत्यय {{आभ्याम्}}।'
+    tag: good
+    taught_in: with.means#t2
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: case.inst
+    rule:
+      en: 'The doer of a passive verb is also in the third case: {{रामेण फलं खाद्यते}}, “the fruit is eaten by Rāma”.'
+      hi: 'कर्मवाच्य क्रिया का कर्ता भी तृतीया में आता है: {{रामेण फलं खाद्यते}}, ‘राम द्वारा फल खाया जाता है’।'
+    example:
+      sa: रामेण
+      meaning:
+        en: by Rāma
+        hi: राम के द्वारा
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    tag: good
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: case.inst-saha
+    rule:
+      en: 'Do not put the companion in the first case: {{मित्रेण सह}}, not {{मित्रः सह}}.'
+      hi: 'साथी को प्रथमा में मत रखिए: {{मित्रेण सह}}, {{मित्रः सह}} नहीं।'
+    tag: core
+    taught_in: with.together#t1
+  - skill: case.inst
+    rule:
+      en: 'Do not look for a word for “by” or “with”: the ending {{एन}}/{{अया}} already says it.'
+      hi: '‘से’ या ‘के द्वारा’ के लिए शब्द मत खोजिए: प्रत्यय {{एन}}/{{अया}} वही कहता है।'
+    tag: core
+    taught_in: with.means#t1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: case.inst
+    rule:
+      en: '{{साधकतमं करणम्}}: the instrument is the most effective means; {{कर्तृकरणयोस्तृतीया}}: it takes the third case.'
+      hi: '{{साधकतमं करणम्}}: करण सबसे प्रभावी साधन है; {{कर्तृकरणयोस्तृतीया}}: वह तृतीया लेता है।'
+    sutras:
+    - 1.4.42
+    - 2.3.18
+    tag: core
+    taught_in: with.means#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: case.inst
+    formula: नौकया · दण्डेन
+    rule:
+      en: by means of
+      hi: साधन से
+    tag: core
+    taught_in: with.means#tb1
+  - skill: case.inst-saha
+    formula: मित्रेण सह
+    rule:
+      en: together with
+      hi: के साथ
+    tag: core
+    taught_in: with.together#t1

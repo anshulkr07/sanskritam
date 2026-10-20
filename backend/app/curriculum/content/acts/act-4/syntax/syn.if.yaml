@@ -1,0 +1,426 @@
+id: syn.if
+template: scene
+title:
+  en: If… then
+  hi: यदि… तो
+title_sa: यदि … तर्हि
+minutes: 6
+teaches:
+- syn.conditional
+needs:
+- syn.absolute
+- verb.vidhilin
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The thirty-second statue
+    hi: बत्तीसवीं प्रतिमा
+  depth: core
+  image:
+    brief: The thirty-second statue, the last, stern-faced, with a very small hand held up showing two fingers; at her feet the throne itself, bare and plain; Dādī and Śuka looking up at her; Lubdhaka's foreman at the back, quiet.
+    alt:
+      en: The last statue with a stern face and two raised fingers before a plain stone throne
+      hi: कठोर मुख, उठी दो उँगलियों वाली अन्तिम प्रतिमा, सादे पत्थर के सिंहासन के सामने
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - vakyika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: syn-if-s1
+  narration:
+    en: 'The thirty-second statue has a stern face and a very small hand holding up two fingers. “यदि सः पठति, तर्हि सः जानाति,” she says: “if he reads, then he knows.” “And if he does not?” “यदि न पठति, तर्हि न जानाति.” Dādī: “Three flavours of if: what is, what will be, what would be. The words यदि and तर्हि stay the same.”'
+    hi: 'बत्तीसवीं प्रतिमा का मुख कठोर है और उसके बहुत छोटे हाथ में दो उँगलियाँ उठी हैं। “यदि सः पठति, तर्हि सः जानाति,” वह कहती है: “अगर वह पढ़ता है, तो वह जानता है।” “और यदि नहीं?” “यदि न पठति, तर्हि न जानाति।” दादी: “‘अगर’ के तीन स्वाद हैं: जो होता है (वर्तमान), जो होगा (भविष्यत्), जो होता (विधिलिङ्)। शब्द यदि और तर्हि वही रहते हैं।”'
+  quote:
+    sa: यदि वदसि तर्हि तन्मृतकं पुनर् वृक्षे यास्यति
+    gloss:
+      en: If you speak, then that corpse will go back to the tree.
+      hi: यदि तुम बोलोगे, तो वह शव फिर वृक्ष पर चला जाएगा।
+    source: Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit)
+- id: t1
+  kind: teach
+  title:
+    en: If… then
+    hi: यदि… तो
+  depth: core
+  skills:
+  - syn.conditional
+  body:
+    en: '{{यदि}} (if) opens the condition, and {{तर्हि}} or {{तदा}} (then) opens the result: {{यदि सः पठति, तर्हि जानाति}}. A condition about the future takes the future: {{यदि वदसि, तर्हि यास्यति}}. A condition that is only supposed takes {{विधिलिङ्}}: {{यदि पठेत्, तर्हि जानीयात्}}. A negative condition adds {{न}}.'
+    hi: '{{यदि}} (अगर) शर्त खोलता है, और {{तर्हि}} या {{तदा}} (तब) परिणाम खोलता है: {{यदि सः पठति, तर्हि जानाति}}। भविष्य की शर्त भविष्यत् लेती है: {{यदि वदसि, तर्हि यास्यति}}। केवल मानी हुई शर्त {{विधिलिङ्}} लेती है: {{यदि पठेत्, तर्हि जानीयात्}}। नकारात्मक शर्त में {{न}} जुड़ता है।'
+  examples:
+  - sa: यदि सः पठति तर्हि सः जानाति।
+    meaning:
+      en: If he reads, then he knows.
+      hi: यदि वह पढ़ता है, तो जानता है।
+    words:
+    - sa: यदि
+      gloss:
+        en: if
+        hi: यदि
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: तर्हि
+      gloss:
+        en: then
+        hi: तो
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: जानाति
+      gloss:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: यदि त्वम् वदिष्यसि तर्हि सः यास्यति।
+    meaning:
+      en: If you speak, then it will go.
+      hi: यदि तुम बोलोगे, तो वह जाएगा।
+    words:
+    - sa: यदि
+      gloss:
+        en: if
+        hi: यदि
+    - sa: त्वम्
+      gloss:
+        en: you
+        hi: तुम
+    - sa: वदिष्यसि
+      gloss:
+        en: speak
+        hi: बोलोगे
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lrt
+        purusha: Madhyama
+        vacana: Eka
+    - sa: तर्हि
+      gloss:
+        en: then
+        hi: तो
+    - sa: सः
+      gloss:
+        en: it
+        hi: वह
+    - sa: यास्यति
+      gloss:
+        en: will go
+        hi: जाएगा
+      check:
+        type: tinanta
+        dhatu: या
+        lakara: Lrt
+        purusha: Prathama
+        vacana: Eka
+        gana: Adadi
+  - sa: यदि सः पठेत् तर्हि सः जानीयात्।
+    meaning:
+      en: If he were to read, he would know.
+      hi: यदि वह पढ़े, तो जान जाए।
+    words:
+    - sa: यदि
+      gloss:
+        en: if
+        hi: यदि
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: पठेत्
+      gloss:
+        en: were to read
+        hi: पढ़े
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+    - sa: तर्हि
+      gloss:
+        en: then
+        hi: तो
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: जानीयात्
+      gloss:
+        en: would know
+        hi: जान जाए
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+  term:
+    sa: यदि … तर्हि
+    meaning:
+      en: if … then
+      hi: यदि … तो
+- id: tb1
+  kind: table
+  title:
+    en: If… then
+    hi: यदि… तो
+  depth: core
+  skills:
+  - syn.conditional
+  caption:
+    en: Three kinds of condition
+    hi: शर्त के तीन प्रकार
+  columns:
+  - en: Kind
+    hi: प्रकार
+  - en: If (यदि)
+    hi: यदि
+  - en: Then (तर्हि)
+    hi: तर्हि
+  rows:
+  - - text:
+        en: a fact
+        hi: तथ्य
+    - sa: पठति
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: जानाति
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: the future
+        hi: भविष्य
+    - sa: वदिष्यसि
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lrt
+        purusha: Madhyama
+        vacana: Eka
+      highlight: true
+    - sa: गमिष्यति
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lrt
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: a supposition
+        hi: कल्पना
+    - sa: पठेत्
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: जानीयात्
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+  note:
+    en: Two halves, one tense in each (or the same mood).
+    hi: दो भाग, हर एक में एक काल (या वही विधान)।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - syn.conditional
+  mode: choice
+  prompt:
+    en: “If he reads, then he knows.” Which pair of words?
+    hi: ‘यदि वह पढ़ता है, तो जानता है।’ कौन-सी शब्द-जोड़ी?
+  explain:
+    en: '{{यदि}} … {{तर्हि}}.'
+    hi: '{{यदि}} … {{तर्हि}}।'
+  roman: after
+  options:
+  - sa: यः … सः
+  - sa: यदा … तदा
+  - correct: true
+    sa: यदि … तर्हि
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - syn.conditional
+  mode: match
+  prompt:
+    en: Join each pair to its meaning.
+    hi: हर जोड़ी को उसके अर्थ से जोड़िए।
+  explain:
+    en: Four pairs, one pattern.
+    hi: चार जोड़ियाँ, एक ढाँचा।
+  roman: after
+  pairs:
+  - left:
+      sa: यदि … तर्हि
+    right:
+      text:
+        en: if … then
+        hi: यदि … तो
+  - left:
+      sa: यदा … तदा
+    right:
+      text:
+        en: when … then
+        hi: जब … तब
+  - left:
+      sa: यत्र … तत्र
+    right:
+      text:
+        en: where … there
+        hi: जहाँ … वहाँ
+  - left:
+      sa: यः … सः
+    right:
+      text:
+        en: who … he
+        hi: जो … वह
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - syn.conditional
+  widget: mark_words
+  prompt:
+    en: Tap the two words that mark if … then.
+    hi: यदि … तो को बताने वाले दो शब्द छुइए।
+  params:
+    passage:
+    - यदि
+    - सः
+    - पठति
+    - तर्हि
+    - सः
+    - जानाति
+    targets:
+    - यदि
+    - तर्हि
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - syn.conditional
+  mode: order
+  prompt:
+    en: 'Say: “If you speak, then it will go.”'
+    hi: 'कहिए: ‘यदि तुम बोलोगे, तो वह जाएगा।’'
+  explain:
+    en: '{{यदि वदसि तर्हि यास्यति}}.'
+    hi: '{{यदि वदसि तर्हि यास्यति}}।'
+  roman: after
+  tokens:
+  - यदि
+  - वदसि
+  - तर्हि
+  - यास्यति
+- id: p4
+  kind: practice
+  title:
+    en: If… then
+    hi: यदि… तो
+  depth: core
+  skills:
+  - syn.conditional
+  mode: choice
+  prompt:
+    en: “If he were to read, he would know.” Which verb pair?
+    hi: ‘यदि वह पढ़े, तो जान जाए।’ कौन-सी क्रिया-जोड़ी?
+  explain:
+    en: A supposition takes the optative in both halves.
+    hi: कल्पना दोनों भागों में विधिलिङ् लेती है।
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “पठेत् … जानीयात्,” you say, and the thirty-second statue's raised fingers come down together, and the throne behind her, bare and plain for a thousand years, shines, from within, as if someone had at last turned a lamp on in it. “If he were to read,” she says, in the plainest voice of all the statues, “he would know. यदि… तर्हि. That is the throne.”
+      hi: “पठेत् … जानीयात्,” आप कहते हैं, और बत्तीसवीं प्रतिमा की उठी उँगलियाँ साथ-साथ नीचे आती हैं, और उसके पीछे का सिंहासन, हज़ार वर्षों से सादा और नंगा, भीतर से चमक उठता है, मानो किसी ने आख़िरकार उसमें दीपक जला दिया हो। “यदि वह पढ़े,” वह सब प्रतिमाओं में सबसे सादी आवाज़ में कहती है, “तो वह जान जाए। यदि… तर्हि। यही सिंहासन है।”
+    failure:
+      en: 'Her fingers stay raised. A supposition takes the optative: {{पठेत् … जानीयात्}}.'
+      hi: 'उसकी उँगलियाँ उठी रहती हैं। कल्पना विधिलिङ् लेती है: {{पठेत् … जानीयात्}}।'
+  options:
+  - sa: पठति … जानाति
+  - sa: पठिष्यति … ज्ञास्यति
+  - correct: true
+    sa: पठेत् … जानीयात्
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's if
+    hi: पाणिनि का यदि
+  depth: panini
+  skills:
+  - syn.conditional
+  sutras:
+  - 3.3.156
+  - 3.3.139
+  body:
+    en: Sūtra 3.3.156, {{हेतुहेतुमतोर्लिङ्}}, gives {{लिङ्}} to both the condition and its result. 3.3.139, {{लिङ्निमित्ते लृङ् क्रियातिपत्तौ}}, gives {{लृङ्}} when the condition was not met. {{यदि}} and {{तर्हि}} are particles, {{निपात}}s, so they never change.
+    hi: सूत्र 3.3.156, {{हेतुहेतुमतोर्लिङ्}}, शर्त और उसके परिणाम दोनों को {{लिङ्}} देता है। 3.3.139, {{लिङ्निमित्ते लृङ् क्रियातिपत्तौ}}, जब शर्त पूरी नहीं हुई तब {{लृङ्}} देता है। {{यदि}} और {{तर्हि}} निपात हैं, इसलिए कभी नहीं बदलते।
+- id: sum
+  kind: summary
+  title:
+    en: If… then
+    hi: यदि… तो
+  depth: core
+  points:
+  - sa: यदि … तर्हि
+    text:
+      en: If … then.
+      hi: यदि … तो।
+  - sa: पठति … जानाति
+    text:
+      en: A fact.
+      hi: तथ्य।
+  - sa: पठेत् … जानीयात्
+    text:
+      en: A supposition.
+      hi: कल्पना।

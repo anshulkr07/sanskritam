@@ -1,0 +1,423 @@
+id: syn.when
+template: scene
+title:
+  en: When he had gone
+  hi: जब वह जा चुका
+title_sa: रामे गते
+minutes: 6
+teaches:
+- syn.absolute
+needs:
+- syn.relative
+- krt.kta
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The thirty-first statue
+    hi: इकतीसवीं प्रतिमा
+  depth: core
+  image:
+    brief: The thirty-first statue holding a small stone bowl in which a golden sun rises; carved lotuses opening along her plinth; Dādī pointing at the sun; Śuka watching; early gold light in the hall.
+    alt:
+      en: A statue holds a stone bowl with a rising sun while carved lotuses open along her plinth
+      hi: पत्थर के कटोरे में उगता सूर्य थामे प्रतिमा, आसन पर खिलते कमल
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - vakyika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: syn-when-s1
+  narration:
+    en: 'The thirty-first statue holds a rising sun in a stone bowl. “सूर्ये उदिते,” she says: “the sun having risen.” “कमलानि विकसन्ति”: “the lotuses open.” “The first half stands apart,” says Dādī. “Its own subject and its own verb-word, both in the seventh case, say when. A little scene; then the main sentence says what happens.”'
+    hi: 'इकतीसवीं प्रतिमा पत्थर के कटोरे में उगता सूर्य थामे है। “सूर्ये उदिते,” वह कहती है: “सूर्य के उदय होने पर।” “कमलानि विकसन्ति”: “कमल खिलते हैं।” “पहला भाग अलग खड़ा है,” दादी कहती हैं। “उसका अपना कर्ता है और अपना क्रिया-शब्द, दोनों सप्तमी में, और वह बताता है कब। यह एक छोटे दृश्य जैसा है। ‘सूर्य के उदित होने पर’, और फिर मुख्य वाक्य में: क्या होता है।”'
+  quote:
+    sa: मार्गे चलिते सति शवसंक्रमितेन वेतालेन राजानं प्रत्यभिहितम्
+    gloss:
+      en: As the king walked on, the Vetāla, who had entered the corpse, spoke to him.
+      hi: राजा के मार्ग पर चलते हुए, शव में प्रविष्ट वेताल ने उससे कहा।
+    source: Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit); mārge calite sati is the absolute locative
+- id: t1
+  kind: teach
+  title:
+    en: The little scene
+    hi: छोटा दृश्य
+  depth: core
+  skills:
+  - syn.absolute
+  body:
+    en: 'A word and its participle, both in the seventh case, set the scene: {{सूर्ये उदिते}}, “the sun having risen”; {{रामे गते}}, “Rāma having gone”. If a present sense is meant, use {{शतृ}} or {{सति}}: {{बालके पठति}}, “while the boy reads”. This is {{सति सप्तमी}}, the absolute locative. The main clause has a different subject.'
+    hi: 'एक शब्द और उसका कृदन्त, दोनों सप्तमी में, दृश्य रचते हैं: {{सूर्ये उदिते}}, ‘सूर्य के उदित होने पर’; {{रामे गते}}, ‘राम के जाने पर’। वर्तमान का भाव हो तो {{शतृ}} या {{सति}} लीजिए: {{बालके पठति}}, ‘बालक के पढ़ते हुए’। यह {{सति सप्तमी}} है। मुख्य वाक्य का कर्ता अलग होता है।'
+  examples:
+  - sa: रामे गते लक्ष्मणः आगच्छति।
+    meaning:
+      en: Rāma having gone, Lakṣmaṇa comes.
+      hi: राम के जाने पर लक्ष्मण आता है।
+    words:
+    - sa: रामे
+      gloss:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: गते
+      gloss:
+        en: having gone
+        hi: जाने पर
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: kta
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: लक्ष्मणः
+      gloss:
+        en: Lakṣmaṇa
+        hi: लक्ष्मण
+      check:
+        type: subanta
+        stem: लक्ष्मण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: आगच्छति
+      gloss:
+        en: comes
+        hi: आता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+  - sa: बालके पठति गुरुः हसति।
+    meaning:
+      en: While the boy reads, the teacher smiles.
+      hi: बालक के पढ़ते हुए गुरु हँसता है।
+    words:
+    - sa: बालके
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: पठति
+      gloss:
+        en: reading
+        hi: पढ़ते हुए
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: Satf
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: गुरुः
+      gloss:
+        en: teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: हसति
+      gloss:
+        en: smiles
+        hi: हँसता है
+      check:
+        type: tinanta
+        dhatu: हस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  term:
+    sa: सति सप्तमी
+    meaning:
+      en: the absolute locative
+      hi: भावलक्षण सप्तमी
+- id: tb1
+  kind: table
+  title:
+    en: The little scene
+    hi: छोटा दृश्य
+  depth: core
+  skills:
+  - syn.absolute
+  caption:
+    en: Both words in the seventh case
+    hi: दोनों शब्द सप्तमी में
+  columns:
+  - en: Scene
+    hi: दृश्य
+  - en: Words
+    hi: शब्द
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: रामे
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+    - sa: गते
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: kta
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+    - text:
+        en: Rāma having gone
+        hi: राम के जाने पर
+  - - sa: बालके
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+    - sa: पठति
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: Satf
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+    - text:
+        en: the boy reading
+        hi: बालक के पढ़ते हुए
+  - - sa: मार्गे
+      check:
+        type: subanta
+        stem: मार्ग
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+    - sa: चलिते
+      check:
+        type: krdanta
+        dhatu: चल्
+        krt: kta
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+    - text:
+        en: the road having been travelled
+        hi: मार्ग पर चलने पर
+  - - sa: राजनि
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+    - sa: आगते
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: kta
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+        prefixes:
+        - आ
+      highlight: true
+    - text:
+        en: the king having come
+        hi: राजा के आने पर
+  note:
+    en: The scene's own subject is in the seventh case, not the first.
+    hi: दृश्य का अपना कर्ता प्रथमा में नहीं, सप्तमी में है।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - syn.absolute
+  mode: choice
+  prompt:
+    en: “Rāma having gone, Lakṣmaṇa comes.” Which first half?
+    hi: ‘राम के जाने पर लक्ष्मण आता है।’ कौन-सा पहला भाग?
+  explain:
+    en: Both in the seventh case.
+    hi: दोनों सप्तमी में।
+  roman: after
+  options:
+  - sa: रामः गतः
+  - correct: true
+    sa: रामे गते
+  - sa: रामं गतम्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - syn.absolute
+  mode: match
+  prompt:
+    en: Join each scene to its meaning.
+    hi: हर दृश्य को उसके अर्थ से जोड़िए।
+  explain:
+    en: Every one sets a scene.
+    hi: हर एक दृश्य रचता है।
+  roman: after
+  pairs:
+  - left:
+      sa: सूर्ये उदिते
+    right:
+      text:
+        en: the sun having risen
+        hi: सूर्य के उदित होने पर
+  - left:
+      sa: रामे गते
+    right:
+      text:
+        en: Rāma having gone
+        hi: राम के जाने पर
+  - left:
+      sa: बालके पठति
+    right:
+      text:
+        en: while the boy reads
+        hi: बालक के पढ़ते हुए
+  - left:
+      sa: मार्गे चलिते सति
+    right:
+      text:
+        en: the road having been travelled
+        hi: मार्ग पर चलने पर
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - syn.absolute
+  widget: mark_words
+  prompt:
+    en: Tap every word in the little scene (seventh case).
+    hi: दृश्य का हर शब्द (सप्तमी) छुइए।
+  params:
+    passage:
+    - सूर्ये
+    - उदिते
+    - कमलानि
+    - विकसन्ति
+    - रामे
+    - गते
+    targets:
+    - सूर्ये
+    - उदिते
+    - रामे
+    - गते
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - syn.absolute
+  mode: order
+  prompt:
+    en: 'Say: “The sun having risen, the lotuses open.”'
+    hi: 'कहिए: ‘सूर्य के उदित होने पर कमल खिलते हैं।’'
+  explain:
+    en: '{{सूर्ये उदिते कमलानि विकसन्ति}}.'
+    hi: '{{सूर्ये उदिते कमलानि विकसन्ति}}।'
+  roman: after
+  tokens:
+  - सूर्ये
+  - उदिते
+  - कमलानि
+  - विकसन्ति
+- id: p4
+  kind: practice
+  title:
+    en: The little scene
+    hi: छोटा दृश्य
+  depth: core
+  skills:
+  - syn.absolute
+  mode: choice
+  prompt:
+    en: In “मार्गे चलिते सति”, what is the subject of the little scene?
+    hi: “मार्गे चलिते सति” में दृश्य का कर्ता क्या है?
+  explain:
+    en: '{{मार्गे}} (the road): the scene''s own subject.'
+    hi: '{{मार्गे}} (मार्ग): दृश्य का अपना कर्ता।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“सूर्ये उदिते,” you say, and the golden sun in the thirty-first statue''s bowl rises, a hand''s breadth, and warms your face. On her plinth, one by one, the carved lotuses open, as in a very slow film: कमलानि विकसन्ति. “It takes a whole scene to say it,” she says. “Two words in the seventh case, and the world changes.”'
+      hi: '“सूर्ये उदिते,” आप कहते हैं, और इकतीसवीं प्रतिमा के कटोरे का सुनहरा सूर्य हथेली भर ऊपर उठता है और आपका चेहरा गरमाता है। उसके आसन पर, एक-एक करके, तराशे कमल खिलते हैं, बहुत धीमी फ़िल्म की तरह: कमलानि विकसन्ति। “एक पूरा दृश्य लगता है इसे कहने में,” वह कहती है। “सप्तमी में दो शब्द, और संसार बदल जाता है।”'
+    failure:
+      en: The sun stays low. The scene's subject is {{मार्गे}}.
+      hi: सूर्य नीचा रहता है। दृश्य का कर्ता {{मार्गे}} है।
+  options:
+  - sa: सति
+  - sa: चलिते
+  - correct: true
+    sa: मार्गे
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's scene
+    hi: पाणिनि का दृश्य
+  depth: panini
+  skills:
+  - syn.absolute
+  sutras:
+  - 2.3.37
+  - 2.3.36
+  body:
+    en: Sūtra 2.3.37, {{यस्य च भावेन भावलक्षणम्}}, says that when one action marks the time of another, the first is put in the seventh case with its doer. 2.3.36, {{सप्तम्यधिकरणे च}}, gives the seventh case for the place or setting of an action.
+    hi: सूत्र 2.3.37, {{यस्य च भावेन भावलक्षणम्}}, कहता है कि जब एक क्रिया दूसरी का समय बताए, तब पहली को उसके कर्ता के साथ सप्तमी में रखा जाता है। 2.3.36, {{सप्तम्यधिकरणे च}}, क्रिया के स्थान या परिवेश के लिए सप्तमी देता है।
+- id: sum
+  kind: summary
+  title:
+    en: The little scene
+    hi: छोटा दृश्य
+  depth: core
+  points:
+  - sa: सूर्ये उदिते
+    text:
+      en: The sun having risen.
+      hi: सूर्य के उदित होने पर।
+  - sa: रामे गते
+    text:
+      en: Rāma having gone.
+      hi: राम के जाने पर।
+  - sa: मार्गे चलिते सति
+    text:
+      en: The road being travelled.
+      hi: मार्ग पर चलने पर।

@@ -390,7 +390,8 @@ export default function ReaderScreen() {
         allVerses={allVerses}
         positions={positions}
         canon={canon}
-        onOpen={(key) => void enterBook(key)}
+        onOpen={(key) => nav.navigate("Book", { bookKey: key })}
+        onContents={(key) => void enterBook(key)}
         onResume={(key, at) => nav.navigate("Book", { bookKey: key, index: Math.max(0, Math.floor(at)) })}
         bottomPad={miniUp}
       />

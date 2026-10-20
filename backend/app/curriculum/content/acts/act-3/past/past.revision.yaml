@@ -1,0 +1,164 @@
+id: past.revision
+template: revision
+title:
+  en: Everything about the past
+  hi: भूतकाल के बारे में सब कुछ
+title_sa: लङ्सङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The past forms
+    hi: भूतकाल के रूप
+  depth: core
+  section: core
+  rows:
+  - skill: verb.lan
+    rule:
+      en: '{{पठ्}} in {{लङ्}}: {{अपठत् अपठताम् अपठन्}}, {{अपठः अपठतम् अपठत}}, {{अपठम् अपठाव अपठाम}}.'
+      hi: '{{पठ्}} का {{लङ्}}: {{अपठत् अपठताम् अपठन्}}, {{अपठः अपठतम् अपठत}}, {{अपठम् अपठाव अपठाम}}।'
+    sutras:
+    - 3.2.111
+    - 6.4.71
+    - 3.4.100
+    tag: core
+    taught_in: past.augment#tb1
+  - skill: verb.lan
+    rule:
+      en: '{{अस्}} in {{लङ्}}: {{आसीत् आस्ताम् आसन्}}, {{आसीः आस्तम् आस्त}}, {{आसम् आस्व आस्म}}.'
+      hi: '{{अस्}} का {{लङ्}}: {{आसीत् आस्ताम् आसन्}}, {{आसीः आस्तम् आस्त}}, {{आसम् आस्व आस्म}}।'
+    tag: core
+    taught_in: past.tell#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: verb.lan
+    rule:
+      en: Use {{लङ्}} for something that happened before today; with a time word like {{ह्यः}} or {{पुरा}}.
+      hi: आज से पहले की घटना के लिए {{लङ्}} का प्रयोग कीजिए; {{ह्यः}} या {{पुरा}} जैसे समय-शब्द के साथ।
+    tag: good
+    taught_in: past.augment#t1
+  - skill: verb.lan
+    rule:
+      en: 'With a prefix the augment sits between prefix and root: {{आगच्छत्}}.'
+      hi: 'उपसर्ग हो तो आगम उपसर्ग और धातु के बीच आता है: {{आगच्छत्}}।'
+    tag: good
+    taught_in: past.augment#t2
+  - skill: verb.lan
+    rule:
+      en: 'Tales begin {{आसीत्}}: “there was”.'
+      hi: 'कथाएँ {{आसीत्}} से शुरू होती हैं: ‘था’।'
+    tag: good
+    taught_in: past.tell#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: verb.lan
+    rule:
+      en: 'A root beginning with a vowel lengthens it: {{अद्}} (eat) gives {{आदत्}}, not {{अअदत्}}.'
+      hi: 'स्वर से शुरू होने वाली धातु उसे दीर्घ करती है: {{अद्}} (खाना) से {{आदत्}} बनता है, {{अअदत्}} नहीं।'
+    example:
+      sa: आदत्
+      meaning:
+        en: he ate
+        hi: उसने खाया
+      check:
+        type: tinanta
+        dhatu: अद्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+    tag: rare
+    new_here: true
+  - skill: verb.lan
+    rule:
+      en: '{{कृ}} (do) and {{दा}} (give) have odd roots in the past: {{अकरोत्}}, {{अददात्}}.'
+      hi: '{{कृ}} (करना) और {{दा}} (देना) के भूतकाल में धातु विचित्र है: {{अकरोत्}}, {{अददात्}}।'
+    example:
+      sa: अददात्
+      meaning:
+        en: he gave
+        hi: उसने दिया
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: verb.lan
+    rule:
+      en: 'Do not forget the {{अ}}: {{गच्छत्}} is not a word; {{अगच्छत्}} is.'
+      hi: '{{अ}} मत भूलिए: {{गच्छत्}} (इस अर्थ में) शब्द नहीं है; {{अगच्छत्}} है।'
+    tag: core
+    taught_in: past.augment#p1
+  - skill: verb.lan
+    rule:
+      en: 'Do not put the {{अ}} before a prefix: {{आगच्छत्}}, not {{अआगच्छत्}}.'
+      hi: '{{अ}} को उपसर्ग के आगे मत रखिए: {{आगच्छत्}}, {{अआगच्छत्}} नहीं।'
+    tag: core
+    taught_in: past.augment#t2
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: verb.lan
+    rule:
+      en: '{{अनद्यतने लङ्}}, {{लुङ्लङ्लृङ्क्ष्वडुदात्तः}} and {{इतश्च}}: the tense, the augment and the dropped final vowel.'
+      hi: '{{अनद्यतने लङ्}}, {{लुङ्लङ्लृङ्क्ष्वडुदात्तः}} और {{इतश्च}}: काल, आगम और हटा हुआ अन्तिम स्वर।'
+    sutras:
+    - 3.2.111
+    - 6.4.71
+    - 3.4.100
+    tag: core
+    taught_in: past.augment#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: verb.lan
+    formula: अ + धातु + त् · अगच्छत् अपठत् अवदत्
+    rule:
+      en: past
+      hi: भूतकाल
+    tag: core
+    taught_in: past.augment#tb1
+  - skill: verb.lan
+    formula: आसीत् · आसन् · आसम्
+    rule:
+      en: was
+      hi: था
+    tag: core
+    taught_in: past.tell#tb1

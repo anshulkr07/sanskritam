@@ -1,0 +1,247 @@
+id: joined.revision
+template: revision
+title:
+  en: Everything about joined letters
+  hi: संयुक्ताक्षरों के बारे में सब कुछ
+title_sa: संयुक्ताक्षरसङ्ग्रहः
+minutes: 5
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: script.conjunct
+    formula: क् + ष → क्ष
+    rule:
+      en: Consonants with no vowel between them join; the first loses its vowel.
+      hi: बिना स्वर के मिलने वाले व्यंजन जुड़ते हैं; पहला अपना स्वर खो देता है।
+    tag: core
+    taught_in: joined.clusters#t1
+  - skill: script.conjunct
+    formula: क्ष त्र ज्ञ श्र
+    rule:
+      en: '{{क्ष}} {{त्र}} {{ज्ञ}} {{श्र}} are four common joins.'
+      hi: '{{क्ष}} {{त्र}} {{ज्ञ}} {{श्र}} चार सामान्य संयोग हैं।'
+    tag: core
+    taught_in: joined.clusters#tb1
+  - skill: script.reph
+    formula: र्म · प्र
+    rule:
+      en: '{{र}} first in a join is a curl on top; {{र}} second hangs below.'
+      hi: संयोग में {{र}} पहले हो तो ऊपर मोड़; दूसरा हो तो नीचे काँटा।
+    tag: core
+    taught_in: joined.ra#t1
+  - skill: script.anusvara
+    formula: म् → ं
+    rule:
+      en: The dot {{ं}} is a nasal hum; a final {{म्}} before a consonant becomes it.
+      hi: बिन्दु {{ं}} नासिक्य गूँज है; व्यंजन से पहले अन्त का {{म्}} इसमें बदलता है।
+    sutras:
+    - 8.3.23
+    tag: core
+    taught_in: joined.hum-breath#t1
+  - skill: script.visarga
+    formula: ः
+    rule:
+      en: '{{ः}} is a soft breath after a vowel.'
+      hi: '{{ः}} स्वर के बाद हल्की साँस है।'
+    tag: core
+    taught_in: joined.hum-breath#t2
+  - skill: script.signs
+    formula: । ॥ ऽ ॐ
+    rule:
+      en: '{{।}} line; {{॥}} verse; {{ऽ}} dropped {{अ}}; {{ॐ}} the sacred syllable.'
+      hi: '{{।}} पंक्ति; {{॥}} श्लोक; {{ऽ}} छूटा {{अ}}; {{ॐ}} पवित्र अक्षर।'
+    tag: core
+    taught_in: joined.marks#t1
+  - skill: script.numerals
+    formula: ० १ २ ३ ४ ५ ६ ७ ८ ९
+    rule:
+      en: Ten numerals, written left to right.
+      hi: दस अंक, बाएँ से दाएँ लिखे जाते हैं।
+    tag: core
+    taught_in: joined.marks#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When and where
+    hi: कब और कहाँ
+  depth: core
+  section: conditions
+  rows:
+  - skill: script.anusvara
+    formula: गं = गङ्ग
+    rule:
+      en: 'Inside a word the dot hums as the nasal of the next letter''s row: {{ङ्}} before {{ग}}, {{ञ्}} before {{ज}}, {{न्}} before {{त}}, {{म्}} before {{ब}}.'
+      hi: 'शब्द के भीतर बिन्दु अगले अक्षर की पंक्ति के नासिक्य की तरह गूँजता है: {{ग}} से पहले {{ङ्}}, {{ज}} से पहले {{ञ्}}, {{त}} से पहले {{न्}}, {{ब}} से पहले {{म्}}।'
+    example:
+      sa: गंगा
+      meaning:
+        en: 'Gaṅgā: the dot hums as {{ङ्}}'
+        hi: 'गंगा: बिन्दु {{ङ्}} की तरह गूँजता है'
+    tag: good
+    new_here: true
+  - skill: script.reph
+    formula: कीर्ति
+    rule:
+      en: The curl on top is written above the last letter of its syllable, though it is said before that letter.
+      hi: ऊपर का मोड़ अक्षर के अन्तिम वर्ण के ऊपर लिखा जाता है, पर उस वर्ण से पहले बोला जाता है।
+    example:
+      sa: कीर्तिः
+      meaning:
+        en: 'fame: the curl sits over {{ति}}'
+        hi: 'यश: मोड़ {{ति}} के ऊपर बैठता है'
+    tag: good
+    new_here: true
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: script.conjunct
+    formula: राष्ट्र
+    rule:
+      en: '{{ट्र}} and {{ड्र}} do not take the {{र}} hook: they carry a different mark.'
+      hi: '{{ट्र}} और {{ड्र}} {{र}} का काँटा नहीं लेते: उनमें दूसरा चिह्न लगता है।'
+    tag: good
+    taught_in: joined.ra#t3
+  - skill: script.conjunct
+    rule:
+      en: Some print styles write {{क्त}} {{द्ध}} {{ङ्ग}} as stacked or ligature forms; they read the same.
+      hi: कुछ छापे {{क्त}} {{द्ध}} {{ङ्ग}} को ढेर या जोड़ के रूप में लिखते हैं; पढ़ने में वे समान हैं।
+    example:
+      sa: युद्धम्
+      meaning:
+        en: 'war: {{द्}} + {{ध}}'
+        hi: 'युद्ध: {{द्}} + {{ध}}'
+    tag: rare
+    new_here: true
+  - skill: script.anusvara
+    formula: ँ
+    rule:
+      en: The moon-dot {{ँ}} marks a nasalised vowel; it is Vedic and Hindi, and appears in the root list as a marker.
+      hi: चन्द्रबिन्दु {{ँ}} नासिक्य स्वर का चिह्न है; यह वैदिक और हिन्दी में है, और धातुपाठ में चिह्न के रूप में आता है।
+    example:
+      sa: कृपूँ
+      meaning:
+        en: the root {{कृप्}} with its marker
+        hi: चिह्न सहित धातु {{कृप्}}
+    tag: rare
+    new_here: true
+  - skill: script.visarga
+    formula: ः
+    rule:
+      en: Before some consonants the breath {{ः}} turns into another sound; that is for the sandhi chapters.
+      hi: कुछ व्यंजनों से पहले साँस {{ः}} दूसरी ध्वनि में बदल जाती है; यह सन्धि के अध्यायों में आएगा।
+    tag: rare
+    taught_in: joined.hum-breath#t2
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: script.conjunct
+    rule:
+      en: 'Read a joined letter in order: {{क्ष}} is {{क्}} then {{ष}}, not a new letter.'
+      hi: 'संयुक्ताक्षर को क्रम से पढ़िए: {{क्ष}} यानी {{क्}} फिर {{ष}}, कोई नया अक्षर नहीं।'
+    tag: core
+    taught_in: joined.clusters#t1
+  - skill: script.conjunct
+    rule:
+      en: 'Do not read {{ज्ञ}} as “gya” in Sanskrit: it is {{ज्}} + {{ञ}}.'
+      hi: 'संस्कृत में {{ज्ञ}} को ‘ग्य’ मत पढ़िए: यह {{ज्}} + {{ञ}} है।'
+    tag: core
+    taught_in: joined.clusters#tb1
+  - skill: script.reph
+    rule:
+      en: 'The curl is a {{र}} said first, not a sign that follows. {{धर्म}} is dha-rma: the {{र}} comes before {{म}}.'
+      hi: मोड़ पहले बोला जाने वाला {{र}} है, बाद का चिह्न नहीं। {{धर्म}} में {{र}} {{म}} से पहले आता है।
+    tag: core
+    taught_in: joined.ra#t1
+  - skill: script.visarga
+    rule:
+      en: Do not read {{ः}} as a full {{ह}} with its own vowel; it is a short echo.
+      hi: '{{ः}} को अपने स्वर वाले पूरे {{ह}} की तरह मत पढ़िए; यह छोटी प्रतिध्वनि है।'
+    tag: core
+    taught_in: joined.hum-breath#t2
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: script.anusvara
+    formula: म् → ं
+    rule:
+      en: '{{मोऽनुस्वारः}}: a final {{म्}} before a consonant is the anusvāra.'
+      hi: '{{मोऽनुस्वारः}}: व्यंजन से पहले अन्त का {{म्}} अनुस्वार बनता है।'
+    sutras:
+    - 8.3.23
+    tag: core
+    taught_in: joined.hum-breath#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: script.conjunct
+    formula: क्ष त्र ज्ञ श्र
+    rule:
+      en: joined letters
+      hi: संयुक्ताक्षर
+    tag: core
+    taught_in: joined.clusters#tb1
+  - skill: script.reph
+    formula: र्म प्र
+    rule:
+      en: r on top, r below
+      hi: ऊपर र, नीचे र
+    tag: core
+    taught_in: joined.ra#t1
+  - skill: script.anusvara
+    formula: ं
+    rule:
+      en: hum
+      hi: गूँज
+    tag: core
+    taught_in: joined.hum-breath#t1
+  - skill: script.visarga
+    formula: ः
+    rule:
+      en: breath
+      hi: साँस
+    tag: core
+    taught_in: joined.hum-breath#t2
+  - skill: script.signs
+    formula: । ॥ ऽ ॐ
+    rule:
+      en: marks
+      hi: चिह्न
+    tag: core
+    taught_in: joined.marks#t1
+  - skill: script.numerals
+    formula: ० १ २ ३ ४ ५ ६ ७ ८ ९
+    rule:
+      en: numerals
+      hi: अंक
+    tag: core
+    taught_in: joined.marks#tb1

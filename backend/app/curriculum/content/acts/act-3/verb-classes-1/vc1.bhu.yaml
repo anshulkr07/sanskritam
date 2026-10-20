@@ -1,0 +1,415 @@
+id: vc1.bhu
+template: scene
+title:
+  en: 'Class 1: भवति'
+  hi: 'गण 1: भवति'
+title_sa: भवति नयति
+minutes: 6
+teaches:
+- verb.class-1
+needs:
+- verb.lan
+- verb.lrt
+- verb.lit
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The seventh night
+    hi: सातवीं रात
+  depth: core
+  image:
+    brief: A flat stone in the grove with the Vetāla opening a worn ledger; a small round honey-brown spirit with ten tiny brass-handled drawers in his body hopping out and tugging drawers open, a pencil behind his ear; you, Dādī and Śuka watching; firelight.
+    alt:
+      en: A drawer-bodied spirit tugs his drawers open beside a grey spirit with a worn ledger
+      hi: दराज़ों वाला भूत अपने दराज़ खींचता, घिसी बही के साथ भूरा भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - dhatuka
+    place: smashana
+    ratio: '4:3'
+    id: vc1-bhu-s1
+  narration:
+    en: 'On a flat stone the Vetāla opens a worn ledger. A little spirit with ten tiny brass drawers set into his body hops out and begins yanking them open, stuffing roots in and out, muddled. “दश गणाः,” says the Vetāla patiently. “Ten classes. A verb''s class decides the small sign before its ending. Tonight, four of them. First: the one that gives भवति.”'
+    hi: 'एक चपटे पत्थर पर वेताल एक घिसी बही खोलता है। शरीर में दस नन्हे पीतल के दराज़ों वाला एक छोटा भूत कूदकर बाहर आता है और उन्हें खींचने-ठूँसने लगता है, उलझा हुआ। “दश गणाः,” वेताल धैर्य से कहता है। “दस गण। क्रिया का गण तय करता है कि प्रत्यय से पहले कौन-सा छोटा चिह्न आए। आज उनमें से चार। पहला: जो भवति देता है।”'
+  lines:
+  - speaker: dadi
+    sa: भवति। नयति। जयति।
+    gloss:
+      en: He is. He leads. He wins.
+      hi: वह होता है। वह ले जाता है। वह जीतता है।
+- id: t1
+  kind: teach
+  title:
+    en: The root and its class
+    hi: धातु और उसका गण
+  depth: core
+  skills:
+  - verb.class-1
+  body:
+    en: 'Every verb has a root and a class; a dictionary lists both. Class 1, {{भ्वादि}}, adds {{-अ-}} after the root and strengthens its vowel: {{भू}} gives {{भवति}}, {{नी}} gives {{नयति}}, {{जि}} gives {{जयति}}, {{शुच्}} gives {{शोचति}}. Most verbs you know are class 1.'
+    hi: 'हर क्रिया की एक धातु और एक गण होता है; कोश दोनों बताता है। गण 1, {{भ्वादि}}, धातु के बाद {{-अ-}} जोड़ता है और धातु का स्वर बलवान् कर देता है: {{भू}} से {{भवति}}, {{नी}} से {{नयति}}, {{जि}} से {{जयति}}, {{शुच्}} से {{शोचति}}। आपकी जानी हुई अधिकतर क्रियाएँ गण 1 की हैं।'
+  term:
+    sa: गणः
+    meaning:
+      en: a class of verb roots
+      hi: धातुओं का वर्ग
+- id: tb1
+  kind: table
+  title:
+    en: Class 1 roots
+    hi: गण 1 की धातुएँ
+  depth: core
+  skills:
+  - verb.class-1
+  caption:
+    en: Root, meaning and “he …”
+    hi: धातु, अर्थ और ‘वह …’
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Meaning
+    hi: अर्थ
+  - en: He
+    hi: वह
+  rows:
+  - - sa: भू
+    - text:
+        en: be
+        hi: होना
+    - sa: भवति
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Bhvadi
+  - - sa: नी
+    - text:
+        en: lead
+        hi: ले जाना
+    - sa: नयति
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Bhvadi
+  - - sa: जि
+    - text:
+        en: win
+        hi: जीतना
+    - sa: जयति
+      check:
+        type: tinanta
+        dhatu: जि
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Bhvadi
+  - - sa: शुच्
+    - text:
+        en: grieve
+        hi: शोक करना
+    - sa: शोचति
+      check:
+        type: tinanta
+        dhatu: शुच्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Bhvadi
+  - - sa: पठ्
+    - text:
+        en: read
+        hi: पढ़ना
+    - sa: पठति
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Bhvadi
+  - - sa: रक्ष्
+    - text:
+        en: guard
+        hi: रक्षा करना
+    - sa: रक्षति
+      check:
+        type: tinanta
+        dhatu: रक्ष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Bhvadi
+  note:
+    en: 'The vowel is strengthened: {{ऊ}} → {{ओ}} → {{अव्}}, {{ई}} → {{ए}} → {{अय्}}, {{इ}} → {{ए}} → {{अय्}}, {{उ}} → {{ओ}}.'
+    hi: 'स्वर बलवान् होता है: {{ऊ}} → {{ओ}} → {{अव्}}, {{ई}} → {{ए}} → {{अय्}}, {{इ}} → {{ए}} → {{अय्}}, {{उ}} → {{ओ}}।'
+- id: tb2
+  kind: table
+  title:
+    en: 'नी: all persons'
+    hi: 'नी: सभी पुरुष'
+  depth: core
+  skills:
+  - verb.class-1
+  caption:
+    en: “He leads, you lead, I lead”
+    hi: ‘वह ले जाता है, तुम ले जाते हो, मैं ले जाता हूँ’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: नयति
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Bhvadi
+      highlight: true
+    - sa: नयतः
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+        gana: Bhvadi
+    - sa: नयन्ति
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+        gana: Bhvadi
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: नयसि
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+        gana: Bhvadi
+    - sa: नयथः
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+        gana: Bhvadi
+    - sa: नयथ
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+        gana: Bhvadi
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: नयामि
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+        gana: Bhvadi
+    - sa: नयावः
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+        gana: Bhvadi
+    - sa: नयामः
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+        gana: Bhvadi
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-1
+  mode: choice
+  prompt:
+    en: “He leads.” Which form?
+    hi: ‘वह ले जाता है।’ कौन-सा रूप?
+  explain:
+    en: '{{नयति}}: {{नी}} + strengthening + {{-अ-}}.'
+    hi: '{{नयति}}: {{नी}} + बलवान् स्वर + {{-अ-}}।'
+  roman: after
+  options:
+  - sa: नीति
+  - correct: true
+    sa: नयति
+  - sa: निति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-1
+  mode: type
+  prompt:
+    en: 'Say: “He wins.”'
+    hi: 'कहिए: ‘वह जीतता है।’'
+  explain:
+    en: '{{जयति}}.'
+    hi: '{{जयति}}।'
+  roman: after
+  answers:
+  - जयति
+  tiles:
+  - ज
+  - यति
+  - जि
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-1
+  mode: match
+  prompt:
+    en: Join each root to its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+  explain:
+    en: The vowel is strengthened in each.
+    hi: हर एक में स्वर बलवान् होता है।
+  roman: after
+  pairs:
+  - left:
+      sa: भू
+    right:
+      sa: भवति
+  - left:
+      sa: नी
+    right:
+      sa: नयति
+  - left:
+      sa: जि
+    right:
+      sa: जयति
+  - left:
+      sa: शुच्
+    right:
+      sa: शोचति
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.class-1
+  widget: mark_words
+  prompt:
+    en: Tap the forms that are correct.
+    hi: सही रूप छुइए।
+  params:
+    passage:
+    - भवति
+    - भूति
+    - नयति
+    - नीति
+    - जयति
+    - जिति
+    targets:
+    - भवति
+    - नयति
+    - जयति
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: Drawer one
+    hi: पहला दराज़
+  depth: core
+  skills:
+  - verb.class-1
+  mode: choice
+  prompt:
+    en: “He grieves.” Which form of {{शुच्}}?
+    hi: ‘वह शोक करता है।’ {{शुच्}} का कौन-सा रूप?
+  explain:
+    en: '{{शोचति}}: {{उ}} → {{ओ}}.'
+    hi: '{{शोचति}}: {{उ}} → {{ओ}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “शोचति,” you say, and the little spirit's first drawer slides open. Out comes a neat slip, labelled भवति, नयति, जयति, शोचति, all in one tidy row. He fits it back, delighted. “One drawer,” he says, “and it shuts.”
+      hi: “शोचति,” आप कहते हैं, और नन्हे भूत का पहला दराज़ खिसककर खुल जाता है। उसमें से एक सुघड़ पर्ची निकलती है, जिस पर भवति, नयति, जयति, शोचति एक सुव्यवस्थित पंक्ति में लिखे हैं। वह उसे आनन्द से वापस लगा देता है। “एक दराज़,” वह कहता है, “और बन्द।”
+    failure:
+      en: The drawer sticks. {{शुच्}} becomes {{शोचति}}.
+      hi: दराज़ अटक जाता है। {{शुच्}} से {{शोचति}} बनता है।
+  options:
+  - sa: शुचति
+  - sa: शूचति
+  - correct: true
+    sa: शोचति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's class sign
+    hi: पाणिनि का गण-चिह्न
+  depth: panini
+  skills:
+  - verb.class-1
+  sutras:
+  - 3.1.68
+  - 7.3.84
+  - 6.1.78
+  body:
+    en: 'Sūtra 3.1.68, {{कर्तरि शप्}}, adds {{शप्}} (which leaves {{अ}}) after a root when the doer is named. 7.3.84, {{सार्वधातुकार्धधातुकयोः}}, strengthens the root''s last vowel: {{भू}} becomes {{भो}}. Then 6.1.78, {{एचोऽयवायावः}}, makes {{ओ}} before a vowel into {{अव्}}: {{भवति}}.'
+    hi: 'सूत्र 3.1.68, {{कर्तरि शप्}}, कर्ता कहा जाने पर धातु के बाद {{शप्}} (जिसमें {{अ}} बचता है) जोड़ता है। 7.3.84, {{सार्वधातुकार्धधातुकयोः}}, धातु के अन्तिम स्वर को बलवान् करता है: {{भू}} से {{भो}}। फिर 6.1.78, {{एचोऽयवायावः}}, स्वर से पहले {{ओ}} को {{अव्}} कर देता है: {{भवति}}।'
+- id: sum
+  kind: summary
+  title:
+    en: Class 1
+    hi: गण 1
+  depth: core
+  points:
+  - sa: भू → भवति
+    text:
+      en: Add {{-अ-}}; strengthen the vowel.
+      hi: '{{-अ-}} जोड़िए; स्वर बलवान् कीजिए।'
+  - sa: नयति · जयति · शोचति
+    text:
+      en: More class 1 verbs.
+      hi: गण 1 की और क्रियाएँ।
+  - text:
+      en: The class is in the dictionary.
+      hi: गण कोश में लिखा होता है।

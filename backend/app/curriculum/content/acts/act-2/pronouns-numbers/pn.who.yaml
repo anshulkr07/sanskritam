@@ -1,0 +1,655 @@
+id: pn.who
+template: scene
+title:
+  en: Who and which
+  hi: कौन और जो
+title_sa: किम् यद्
+minutes: 6
+teaches:
+- pron.kim-yad
+needs:
+- pron.tad-full
+- sent.questions
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: A question for every shelf
+    hi: हर अलमारी के लिए एक प्रश्न
+  depth: core
+  image:
+    brief: 'The library at morning: the knotted-cord spirit holding up a book and a question mark made of rope; Dādī tapping a shelf, Śuka whispering to you; sunbeams crossing the rows of books.'
+    alt:
+      en: A knotted-cord spirit holds up a book and a rope question mark in a library
+      hi: गाँठदार डोरियों का भूत पुस्तक और रस्सी का प्रश्नचिह्न उठाए हुए
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - ganaka
+    place: pathashala
+    ratio: '4:3'
+    id: pn-who-s1
+  narration:
+    en: 'Ganaka stops pointing and starts asking. “Who wrote this? What is in that? Which one is lost?” He asks it of every shelf, and each time Dādī answers with the same small word, one that the shelves seem to enjoy: कः, का, किम्. Śuka whispers to you: “Same ending as ‘that’, but with a K.”'
+    hi: 'गणक इशारा करना छोड़कर पूछने लगता है। “यह किसने लिखा? उसमें क्या है? कौन-सा खो गया है?” वह हर अलमारी से पूछता है, और हर बार दादी एक ही छोटे शब्द से उत्तर देती हैं, जो अलमारियों को भाता है: कः, का, किम्। शुक आपके कान में फुसफुसाता है: “‘वह’ जैसे ही प्रत्यय, पर क से शुरू।”'
+- id: t1
+  kind: teach
+  title:
+    en: '{{कः}}, {{का}}, {{किम्}}: who and what'
+    hi: '{{कः}}, {{का}}, {{किम्}}: कौन और क्या'
+  depth: core
+  skills:
+  - pron.kim-yad
+  body:
+    en: '{{किम्}} asks “who? what? which?” Its forms are the forms of {{तद्}} with {{क-}} in place of {{त-}}: {{कः}} (who, masculine), {{का}} (who, feminine), {{किम्}} (what). {{यद्}} is “who, which, that”, and goes with {{तद्}}: {{यः … सः}}, “who … he”.'
+    hi: '{{किम्}} पूछता है ‘कौन? क्या? कौन-सा?’ उसके रूप {{तद्}} के रूप हैं, जिनमें {{त-}} की जगह {{क-}} है: {{कः}} (कौन, पुंलिंग), {{का}} (कौन, स्त्रीलिंग), {{किम्}} (क्या)। {{यद्}} का अर्थ ‘जो’ है, और वह {{तद्}} के साथ चलता है: {{यः … सः}}, ‘जो … वह’।'
+  examples:
+  - sa: कः पठति।
+    meaning:
+      en: Who reads?
+      hi: कौन पढ़ता है?
+    words:
+    - sa: कः
+      gloss:
+        en: who
+        hi: कौन
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: का लिखति।
+    meaning:
+      en: Who (she) writes?
+      hi: कौन (स्त्री) लिखती है?
+    words:
+    - sa: का
+      gloss:
+        en: who
+        hi: कौन
+      check:
+        type: subanta
+        stem: किम्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: लिखति
+      gloss:
+        en: writes
+        hi: लिखती है
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: किम् पुस्तकम् अस्ति।
+    meaning:
+      en: What book is it?
+      hi: वह कौन-सी पुस्तक है?
+    words:
+    - sa: किम्
+      gloss:
+        en: what
+        hi: क्या
+      check:
+        type: subanta
+        stem: किम्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पुस्तकम्
+      gloss:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: tb1
+  kind: table
+  title:
+    en: 'तद्, किम्, यद्: side by side'
+    hi: 'तद्, किम्, यद्: साथ-साथ'
+  depth: core
+  skills:
+  - pron.kim-yad
+  caption:
+    en: The same pronoun pattern in the masculine singular
+    hi: पुंलिंग एकवचन में वही सर्वनाम-ढाँचा
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: That
+    hi: वह
+  - en: Who
+    hi: कौन
+  - en: Who, which
+    hi: जो
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: सः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कः
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: यः
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: तम्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: कम्
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: यम्
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: तेन
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: केन
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: येन
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: तस्मै
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      highlight: true
+    - sa: कस्मै
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      highlight: true
+    - sa: यस्मै
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: तस्मात्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      highlight: true
+    - sa: कस्मात्
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      highlight: true
+    - sa: यस्मात्
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: तस्य
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: कस्य
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: यस्य
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: तस्मिन्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+    - sa: कस्मिन्
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+    - sa: यस्मिन्
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+  note:
+    en: 'The odd endings (coloured) are the same in all three: {{-स्मै}}, {{-स्मात्}}, {{-स्मिन्}}.'
+    hi: 'विचित्र प्रत्यय (रंगीन) तीनों में एक-से हैं: {{-स्मै}}, {{-स्मात्}}, {{-स्मिन्}}।'
+- id: tb2
+  kind: table
+  title:
+    en: कः, का, किम् and यः, या, यत्
+    hi: कः, का, किम् और यः, या, यत्
+  depth: core
+  skills:
+  - pron.kim-yad
+  caption:
+    en: Who and which, first case, three genders
+    hi: कौन और जो, प्रथमा, तीन लिंग
+  columns:
+  - en: Gender
+    hi: लिंग
+  - en: Who
+    hi: कौन
+  - en: Who, which
+    hi: जो
+  rows:
+  - - text:
+        en: masculine
+        hi: पुंलिंग
+    - sa: कः
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: यः
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+  - - text:
+        en: feminine
+        hi: स्त्रीलिंग
+    - sa: का
+      check:
+        type: subanta
+        stem: किम्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: या
+      check:
+        type: subanta
+        stem: यद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+  - - text:
+        en: neuter
+        hi: नपुंसक
+    - sa: किम्
+      check:
+        type: subanta
+        stem: किम्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: यत्
+      check:
+        type: subanta
+        stem: यद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  note:
+    en: '{{किम्}} for the neuter, {{यत्}} for the neuter; the others follow {{तद्}}.'
+    hi: नपुंसक में {{किम्}} और {{यत्}}; बाक़ी {{तद्}} जैसे हैं।
+- id: t2
+  kind: teach
+  title:
+    en: 'Pairs: {{यः … सः}}'
+    hi: 'जोड़ी: {{यः … सः}}'
+  depth: core
+  skills:
+  - pron.kim-yad
+  body:
+    en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः पण्डितः}}, “who reads, he is learned”. The feminine is {{या … सा}} and the neuter {{यत् … तत्}}. The same pronoun, in any case, in both halves: {{यस्मै … तस्मै}}.'
+    hi: '{{यः}} (जो) वाला वाक्य {{सः}} (वह) से पूरा होता है: {{यः पठति सः पण्डितः}}, ‘जो पढ़ता है, वह विद्वान् है’। स्त्रीलिंग {{या … सा}} और नपुंसक {{यत् … तत्}}। दोनों भागों में एक ही सर्वनाम, किसी भी विभक्ति में: {{यस्मै … तस्मै}}।'
+  examples:
+  - sa: यः पठति सः पण्डितः।
+    meaning:
+      en: Who reads, he is a scholar.
+      hi: जो पढ़ता है, वह विद्वान् है।
+    words:
+    - sa: यः
+      gloss:
+        en: who
+        hi: जो
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: पण्डितः
+      gloss:
+        en: scholar
+        hi: विद्वान्
+      check:
+        type: subanta
+        stem: पण्डित
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: या लिखति सा कन्या।
+    meaning:
+      en: She who writes is the girl.
+      hi: जो लिखती है, वह कन्या है।
+    words:
+    - sa: या
+      gloss:
+        en: who
+        hi: जो
+    - sa: लिखति
+      gloss:
+        en: writes
+        hi: लिखती है
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: सा
+      gloss:
+        en: she
+        hi: वह
+    - sa: कन्या
+      gloss:
+        en: girl
+        hi: कन्या
+      check:
+        type: subanta
+        stem: कन्या
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - pron.kim-yad
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: '{{किम्}} follows {{तद्}}.'
+    hi: '{{किम्}} {{तद्}} जैसा चलता है।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: किम्
+      linga: Pum
+      blanks: 3
+    seed: 2
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - pron.kim-yad
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of {{यद्}}.
+    hi: '{{यद्}} के छूटे रूप भरिए।'
+  explain:
+    en: '{{यद्}} follows {{तद्}}, with {{य-}}.'
+    hi: '{{यद्}} {{तद्}} जैसा चलता है, {{य-}} के साथ।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: यद्
+      linga: Stri
+      blanks: 3
+    seed: 3
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - pron.kim-yad
+  mode: choice
+  prompt:
+    en: 'Ask: “Who reads?”'
+    hi: 'पूछिए: ‘कौन पढ़ता है?’'
+  explain:
+    en: '{{कः}}: who (masculine).'
+    hi: '{{कः}}: कौन (पुंलिंग)।'
+  roman: after
+  options:
+  - sa: सः पठति
+  - correct: true
+    sa: कः पठति
+  - sa: किम् पठति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - pron.kim-yad
+  mode: match
+  prompt:
+    en: Join each question word to its meaning.
+    hi: हर प्रश्नवाचक शब्द को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{क-}} forms follow {{त-}} forms.'
+    hi: '{{क-}} के रूप {{त-}} के रूपों जैसे हैं।'
+  roman: after
+  pairs:
+  - left:
+      sa: कः
+    right:
+      text:
+        en: who (m)
+        hi: कौन (पुं.)
+  - left:
+      sa: का
+    right:
+      text:
+        en: who (f)
+        hi: कौन (स्त्री.)
+  - left:
+      sa: किम्
+    right:
+      text:
+        en: what
+        hi: क्या
+  - left:
+      sa: कस्मै
+    right:
+      text:
+        en: for whom
+        hi: किसके लिए
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - pron.kim-yad
+  widget: mark_words
+  prompt:
+    en: Tap every question word.
+    hi: हर प्रश्नवाचक शब्द को छुइए।
+  params:
+    passage:
+    - कः
+    - सः
+    - का
+    - सा
+    - किम्
+    - तत्
+    targets:
+    - कः
+    - का
+    - किम्
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: Who reads
+    hi: जो पढ़ता है
+  depth: core
+  skills:
+  - pron.kim-yad
+  mode: order
+  prompt:
+    en: 'Say: “Who reads, he is a scholar.”'
+    hi: 'कहिए: ‘जो पढ़ता है, वह विद्वान् है।’'
+  explain:
+    en: '{{यः पठति सः पण्डितः}}: the pair {{यः … सः}}.'
+    hi: '{{यः पठति सः पण्डितः}}: {{यः … सः}} की जोड़ी।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“यः पठति सः पण्डितः,” you say. Ganaka goes very still. Then, in a small dry voice, the first thing he has said in days: “कः अहम्?” “Who am I?” “गणकः,” says Dādī. “The counter.” The cords begin to tie themselves into neat rows.'
+      hi: '“यः पठति सः पण्डितः,” आप कहते हैं। गणक एकदम स्थिर हो जाता है। फिर छोटी सूखी आवाज़ में, कई दिनों में उसकी पहली बात: “कः अहम्?” “मैं कौन हूँ?” “गणकः,” दादी कहती हैं। “गिनने वाला।” डोरियाँ अपने-आप सुघड़ पंक्तियों में गठने लगती हैं।'
+    failure:
+      en: 'Ganaka tilts his head. The pair is {{यः … सः}}: who … he.'
+      hi: 'गणक सिर टेढ़ा करता है। जोड़ी है {{यः … सः}}: जो … वह।'
+  tokens:
+  - यः
+  - पठति
+  - सः
+  - पण्डितः
+- id: sum
+  kind: summary
+  title:
+    en: Who and which
+    hi: कौन और जो
+  depth: core
+  points:
+  - sa: कः · का · किम्
+    text:
+      en: Who (m), who (f), what.
+      hi: कौन (पुं.), कौन (स्त्री.), क्या।
+  - sa: यः · या · यत्
+    text:
+      en: Who, which.
+      hi: जो।
+  - sa: यः … सः
+    text:
+      en: 'A pair: who … he.'
+      hi: 'जोड़ी: जो … वह।'

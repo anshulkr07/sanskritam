@@ -4,7 +4,7 @@ import { ArtworkImage as Image } from "../components/artwork/ArtworkImage";
 // the rich page when published, else the basic verified-dates page.
 
 import { useNavigation } from "@react-navigation/native";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { useAskContext } from "../ask/AskProvider";
@@ -26,6 +26,7 @@ const VRAT_SLUGS = new Set(["ekadashi", "pradosh", "sankashti", "vinayaka_chatur
 export default function ParvaScreen() {
   useLang();
   const nav = useNavigation() as unknown as { navigate: (r: string, p?: object) => void };
+  const request = useRef(0);
   const [occs, setOccs] = useState<ParvaOccurrence[]>([]);
   const [failed, setFailed] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -36,6 +37,7 @@ export default function ParvaScreen() {
   useAskContext("parva", "festivals");
 
   const load = useCallback(async (d: number) => {
+    const id = ++request.current;
     setLoading(true);
     setFailed(false);
     try {
@@ -57,18 +59,21 @@ export default function ParvaScreen() {
       const data = await getParvaCalendar(
         { lat: place.lat, lon: place.lon, tradition: prefs.tradition, lang: getLang() },
         { start: today, days: d, tz: place.tz, label: place.label },
+        cached => { if (id === request.current) { setOccs(cached.occurrences); setLoading(false); } },
       );
+      if (id !== request.current) return;
       setOccs(data?.occurrences ?? []);
       if (!data) setFailed(true);
     } catch {
-      setFailed(true);
+      if (id === request.current) setFailed(true);
     } finally {
-      setLoading(false);
+      if (id === request.current) setLoading(false);
     }
   }, []);
 
   useEffect(() => {
     void load(days);
+    return () => { request.current++; };
   }, [days, load]);
 
   useEffect(() => subscribeKalaPrefs(() => void load(days)), [days, load]);
@@ -84,6 +89,7 @@ export default function ParvaScreen() {
   const openOcc = (o: ParvaOccurrence) => {
     nav.navigate("ParvaPage", {
       slug: o.slug,
+      occurrence: o,
       variant: o.variant,
       date: o.date ?? undefined,
       dayDate: o.date ?? undefined,

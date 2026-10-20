@@ -40,8 +40,11 @@ def status():
  report={'checked_at':datetime.now(timezone.utc).isoformat(),'expected':700,'generated':len(ds),'reviewed':sum(bool(d.get('reviewed')) for d in ds.values()),'published':sum(bool(d.get('published')) for d in ds.values()),'chapters':counts,'errors':len(unresolved)}
  (OUT/'progress.json').write_text(json.dumps(report,indent=2),encoding='utf-8');print(json.dumps(report));return report
 
-def contact(chapter):
- ds=[d for d in deliveries().values() if int(d['key'].split('-')[0])==chapter]
+def sheet_name(chapter,start=1):
+ return f'chapter-{chapter:02d}'+(f'-from-{start:03d}' if start>1 else '')
+
+def contact(chapter,start=1):
+ ds=[d for d in deliveries().values() if int(d['key'].split('-')[0])==chapter and int(d['key'].split('-')[1])>=start]
  if not ds:return
  cols=8;width=1600;rows=(len(ds)+cols-1)//cols
  sheet=Image.new('RGB',(width,rows*225),'#fff8ee');draw=ImageDraw.Draw(sheet)
@@ -51,8 +54,8 @@ def contact(chapter):
    im=original.convert('RGB');im.thumbnail((190,190))
   x=(index%cols)*200;y=(index//cols)*225;sheet.paste(im,(x+(200-im.width)//2,y));draw.text((x+9,y+195),d['key'],fill='#3b2e25')
  target=OUT/'contact-sheets';target.mkdir(exist_ok=True)
- sheet.save(target/f'chapter-{chapter:02d}.jpg',quality=92)
- (target/f'chapter-{chapter:02d}.json').write_text(json.dumps([{'key':d['key'],'sha256':d['sha256']} for d in ds],indent=2),encoding='utf-8')
+ sheet.save(target/(sheet_name(chapter,start)+'.jpg'),quality=92)
+ (target/(sheet_name(chapter,start)+'.json')).write_text(json.dumps([{'key':d['key'],'sha256':d['sha256']} for d in ds],indent=2),encoding='utf-8')
 
 def publish():
  ds=deliveries();cfg={**dotenv_values(ROOT/'.env'),**dotenv_values(ROOT/'.env.deploy'),**os.environ};base=cfg['R2_BASE_URL'].rstrip('/')
@@ -72,11 +75,16 @@ def publish():
   return base+'/'+key
  def one(d):
   job=jobs[d['key']];master=ROOT/d['master']
+  assert hashlib.sha256(master.read_bytes()).hexdigest()==d['sha256'],'Original changed before delivery conversion'
   variants={}
   with Image.open(master) as original:
    original=original.convert('RGB')
    for name,edge,quality in [('phone',768,80),('tablet',1536,88)]:
-    im=original.copy();im.thumbnail((edge,edge));path=output/f"{d['key']}-{name}.webp";im.save(path,'WEBP',quality=quality,method=6)
+    im=original.copy()
+    # Portrait phone copies keep up to 768px width (1536px longest-edge cap),
+    # rather than shrinking a tall image to only ~432px wide.
+    bounds=(768,1536) if name=='phone' and original.height>original.width else (edge,edge)
+    im.thumbnail(bounds);path=output/f"{d['key']}-{name}.webp";im.save(path,'WEBP',quality=quality,method=6)
     digest=hashlib.sha256(path.read_bytes()).hexdigest();url=upload(path,f'art/verses/v1/{digest[:24]}.webp')
     variants[name]={'uri':url,'width':im.width,'height':im.height,'bytes':path.stat().st_size}
   entry={'source_ref':d['source_ref'],'focalPoint':job['focal_point'],'safeRegion':d.get('safe_region',{'x':0,'y':0,'width':1,'height':1}),'alt':f"Interpretive watercolor for {d['source_ref']}: {job['source_translation_en']}",'variants':variants}
@@ -101,8 +109,9 @@ def publish():
  status()
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--status',action='store_true');p.add_argument('--contact',type=int);p.add_argument('--reviewed',type=int);p.add_argument('--reviewed-sheet',type=int);p.add_argument('--exclude',default='');p.add_argument('--publish',action='store_true');a=p.parse_args()
- if a.contact:contact(a.contact)
+ p=argparse.ArgumentParser();p.add_argument('--status',action='store_true');p.add_argument('--contact',type=int);p.add_argument('--from-verse',type=int,default=1);p.add_argument('--reviewed',type=int);p.add_argument('--reviewed-sheet',type=int);p.add_argument('--exclude',default='');p.add_argument('--publish',action='store_true');a=p.parse_args()
+ assert a.from_verse>=1 and (a.from_verse==1 or a.contact or a.reviewed_sheet),'A verse range requires a contact sheet'
+ if a.contact:contact(a.contact,a.from_verse)
  assert not (a.reviewed and a.reviewed_sheet),'Choose one review mode'
  assert not a.exclude or a.reviewed_sheet,'Exclusions require a specific contact-sheet snapshot'
  if a.reviewed or a.reviewed_sheet:
@@ -111,7 +120,7 @@ def main():
    matches=[d for d in deliveries().values() if int(d['key'].split('-')[0])==a.reviewed]
    assert len(matches)==expected,'Only mark a complete, visually inspected chapter reviewed'
   else:
-   snapshot=json.loads((OUT/'contact-sheets'/f'chapter-{a.reviewed_sheet:02d}.json').read_text(encoding='utf-8'));current=deliveries();excluded=set(filter(None,a.exclude.split(',')));matches=[]
+   snapshot=json.loads((OUT/'contact-sheets'/(sheet_name(a.reviewed_sheet,a.from_verse)+'.json')).read_text(encoding='utf-8'));current=deliveries();excluded=set(filter(None,a.exclude.split(',')));matches=[]
    assert excluded<={d['key'] for d in snapshot},'Excluded key is absent from the inspected sheet'
    for item in snapshot:
     d=current[item['key']];assert d['sha256']==item['sha256'],'Master changed after the contact sheet was made'

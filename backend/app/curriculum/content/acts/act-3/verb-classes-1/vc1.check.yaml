@@ -1,0 +1,173 @@
+id: vc1.check
+template: check
+title:
+  en: Open the drawers
+  hi: दराज़ खोलिए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-1
+  mode: choice
+  prompt:
+    en: “He is.” Which class 1 form?
+    hi: ‘वह होता है।’ गण 1 का कौन-सा रूप?
+  explain:
+    en: '{{भवति}}.'
+    hi: '{{भवति}}।'
+  roman: after
+  options:
+  - sa: भूति
+  - correct: true
+    sa: भवति
+  - sa: भोति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-4
+  mode: choice
+  prompt:
+    en: “He dances.” Which form?
+    hi: ‘वह नाचता है।’ कौन-सा रूप?
+  explain:
+    en: '{{नृत्यति}}: class 4.'
+    hi: '{{नृत्यति}}: गण 4।'
+  roman: after
+  options:
+  - sa: नर्तति
+  - correct: true
+    sa: नृत्यति
+  - sa: नृतयति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-6
+  mode: choice
+  prompt:
+    en: “He writes.” Which form?
+    hi: ‘वह लिखता है।’ कौन-सा रूप?
+  explain:
+    en: '{{लिखति}}: class 6.'
+    hi: '{{लिखति}}: गण 6।'
+  roman: after
+  options:
+  - sa: लेखति
+  - correct: true
+    sa: लिखति
+  - sa: लिख्यति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-10
+  mode: choice
+  prompt:
+    en: “He steals.” Which form?
+    hi: ‘वह चुराता है।’ कौन-सा रूप?
+  explain:
+    en: '{{चोरयति}}: class 10.'
+    hi: '{{चोरयति}}: गण 10।'
+  roman: after
+  options:
+  - sa: चुरति
+  - correct: true
+    sa: चोरयति
+  - sa: चुर्यति
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-1
+  - verb.class-4
+  - verb.class-6
+  - verb.class-10
+  mode: match
+  prompt:
+    en: Join each verb to its class.
+    hi: हर क्रिया को उसके गण से जोड़िए।
+  explain:
+    en: Look at the sign before {{-ति}}.
+    hi: '{{-ति}} से पहले का चिह्न देखिए।'
+  roman: after
+  pairs:
+  - left:
+      sa: भवति
+    right:
+      text:
+        en: class 1
+        hi: गण 1
+  - left:
+      sa: नृत्यति
+    right:
+      text:
+        en: class 4
+        hi: गण 4
+  - left:
+      sa: तुदति
+    right:
+      text:
+        en: class 6
+        hi: गण 6
+  - left:
+      sa: कथयति
+    right:
+      text:
+        en: class 10
+        hi: गण 10
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-4
+  - verb.class-10
+  mode: choice
+  prompt:
+    en: Which verb is class 10 (the sign {{-अय-}})?
+    hi: कौन-सी क्रिया गण 10 की है (चिह्न {{-अय-}})?
+  explain:
+    en: '{{कथयति}}: {{-अय-}}.'
+    hi: '{{कथयति}}: {{-अय-}}।'
+  roman: after
+  options:
+  - sa: नृत्यति
+  - correct: true
+    sa: कथयति
+  - sa: भवति
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-1
+  - verb.class-4
+  - verb.class-6
+  - verb.class-10
+  mode: order
+  prompt:
+    en: 'Fill the drawers: “He is, he dances, he strikes, he steals.”'
+    hi: 'दराज़ भरिए: ‘वह होता है, वह नाचता है, वह मारता है, वह चुराता है।’'
+  explain:
+    en: '{{भवति नृत्यति तुदति चोरयति}}: four classes, four drawers.'
+    hi: '{{भवति नृत्यति तुदति चोरयति}}: चार गण, चार दराज़।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“भवति, नृत्यति, तुदति, चोरयति,” you say, and Dhātuka''s drawers click shut one after another, four neat clicks. He beams, with all ten of him in order. “Ten drawers,” he says. “But there are six more, and they are the odd ones.” He flips open his ledger and reads from the top: “अस्ति. एति. ददाति. शृणोति.” “He is, he goes, he gives, he hears,” Dādī translates. “Those are the verbs that do not follow the pattern.”'
+      hi: '“भवति, नृत्यति, तुदति, चोरयति,” आप कहते हैं, और धातुक के दराज़ एक के बाद एक बन्द होते हैं, चार सुघड़ खट-खट। वह खिल उठता है, अपने दसों दराज़ों को क्रम में पाकर। “दस दराज़,” वह कहता है। “पर छह और हैं, और वे विचित्र वाले हैं।” वह बही खोलकर ऊपर से पढ़ता है: “अस्ति। एति। ददाति। शृणोति।” “वह है, वह जाता है, वह देता है, वह सुनता है,” दादी अनुवाद करती हैं। “ये वे क्रियाएँ हैं जो ढाँचे पर नहीं चलतीं।”'
+    failure:
+      en: 'One drawer stays open. His four verbs: {{भवति नृत्यति तुदति चोरयति}}.'
+      hi: 'एक दराज़ खुला रहता है। उसकी चार क्रियाएँ: {{भवति नृत्यति तुदति चोरयति}}।'
+  tokens:
+  - भवति
+  - नृत्यति
+  - तुदति
+  - चोरयति

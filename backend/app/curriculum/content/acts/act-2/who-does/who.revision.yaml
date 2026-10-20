@@ -1,0 +1,218 @@
+id: who.revision
+template: revision
+title:
+  en: Everything about who does what
+  hi: कौन क्या करता है, सब कुछ
+title_sa: वाक्यारम्भसङ्ग्रहः
+minutes: 5
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: sent.stem-ending
+    formula: बालक + ः
+    rule:
+      en: A word is a stem plus an ending; the ending says the job and the number.
+      hi: शब्द = मूल + प्रत्यय; प्रत्यय काम और संख्या बताता है।
+    tag: core
+    taught_in: who.endings#t1
+  - skill: sent.nom-sg
+    formula: बालकः · बालिका · नदी
+    rule:
+      en: The doer stands in the first case; masculine -अ words add {{ः}}, feminine -आ and -ई words look unchanged.
+      hi: कर्ता प्रथमा में खड़ा होता है; पुंलिंग -अ शब्दों में {{ः}} लगता है, स्त्रीलिंग -आ और -ई वैसे ही दिखते हैं।
+    tag: core
+    taught_in: who.doer#tb1
+  - skill: verb.pres-3sg
+    formula: पठ् → पठति
+    rule:
+      en: 'Present, he/she/it: root + {{ति}}, with the joining {{अ}}.'
+      hi: 'वर्तमान, वह: धातु + {{ति}}, जोड़ने वाले {{अ}} के साथ।'
+    sutras:
+    - 3.2.123
+    tag: core
+    taught_in: who.does#t1
+  - skill: verb.pres-3sg
+    formula: बालकः पठति · बालिका पठति
+    rule:
+      en: The same verb form serves boy, girl and boat.
+      hi: बालक, बालिका और नाव, तीनों के लिए एक ही क्रिया-रूप चलता है।
+    tag: core
+    taught_in: who.does#t2
+  - skill: sent.no-verb-to-be
+    formula: सीता बालिका
+    rule:
+      en: '“Is” is left out: two first-case words side by side. {{अस्ति}} means “exists”.'
+      hi: '‘है’ छोड़ दिया जाता है: दो प्रथमा शब्द साथ-साथ। {{अस्ति}} का अर्थ ‘विद्यमान है’।'
+    tag: core
+    taught_in: who.is#t1
+  - skill: sent.word-order
+    formula: बालकः पठति = पठति बालकः
+    rule:
+      en: Word order is free; the endings carry the roles.
+      hi: शब्द-क्रम स्वतन्त्र है; भूमिकाएँ प्रत्ययों में हैं।
+    tag: core
+    taught_in: who.order#t1
+- id: conditions
+  kind: revision
+  title:
+    en: When it applies
+    hi: कब लागू होता है
+  depth: core
+  section: conditions
+  rows:
+  - skill: sent.nom-sg
+    rule:
+      en: The first case also names a thing in a plain statement or a dictionary-style label; it is not only for doers.
+      hi: 'प्रथमा केवल कर्ता के लिए नहीं: वह साधारण कथन या नाम के लेबल में भी आती है।'
+    example:
+      sa: गङ्गा नदी
+      meaning:
+        en: 'The Gaṅgā is a river: both words first case'
+        hi: 'गंगा नदी है: दोनों शब्द प्रथमा में'
+    tag: good
+    new_here: true
+  - skill: verb.pres-3sg
+    rule:
+      en: For one doer (he, she or it) the verb takes {{ति}}; for two or many it changes (next chapter).
+      hi: एक कर्ता (वह) के लिए क्रिया में {{ति}} लगता है; दो या अनेक के लिए बदल जाता है (अगला अध्याय)।
+    tag: core
+    taught_in: who.does#t2
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: verb.pres-3sg
+    formula: गच्छति पश्यति पिबति तिष्ठति
+    rule:
+      en: '{{गम्}} → {{गच्छति}}, {{दृश्}} → {{पश्यति}}, {{पा}} → {{पिबति}}, {{स्था}} → {{तिष्ठति}}: the root shows a different stem in the present.'
+      hi: '{{गम्}} → {{गच्छति}}, {{दृश्}} → {{पश्यति}}, {{पा}} → {{पिबति}}, {{स्था}} → {{तिष्ठति}}: वर्तमान में धातु दूसरा रूप लेती है।'
+    tag: good
+    taught_in: who.does#tb1
+  - skill: verb.pres-3sg
+    formula: वदति · वदते
+    rule:
+      en: Some roots take the {{ते}} endings instead (later chapters); the engine lists both for roots like {{वद्}} and {{पच्}}.
+      hi: कुछ धातुएँ {{ते}} प्रत्यय लेती हैं (आगे के अध्याय); {{वद्}} और {{पच्}} जैसी धातुओं के दोनों रूप होते हैं।
+    example:
+      sa: वदते
+      meaning:
+        en: speaks (for oneself)
+        hi: बोलता है (अपने लिए)
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: sent.stem-ending
+    rule:
+      en: 'Do not use the bare stem as a word: write {{बालकः}}, not {{बालक}}.'
+      hi: 'केवल मूल रूप को शब्द की तरह मत लगाइए: {{बालकः}} लिखिए, {{बालक}} नहीं।'
+    tag: core
+    taught_in: who.endings#pn
+  - skill: sent.no-verb-to-be
+    rule:
+      en: 'Do not add a verb for “is”: {{रामः बालकः}}, not {{रामः अस्ति बालकः}}.'
+      hi: '‘है’ के लिए क्रिया मत जोड़िए: {{रामः बालकः}}, न कि {{रामः अस्ति बालकः}}।'
+    tag: core
+    taught_in: who.is#t1
+  - skill: sent.word-order
+    rule:
+      en: 'Do not read meaning from place: the ending {{ः}} marks the doer wherever it stands.'
+      hi: 'अर्थ स्थान से मत निकालिए: प्रत्यय {{ः}} कर्ता को हर जगह बताता है।'
+    tag: core
+    taught_in: who.order#t1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: sent.stem-ending
+    rule:
+      en: '{{सुप्तिङन्तं पदम्}}: a word ends in a noun ending or a verb ending.'
+      hi: '{{सुप्तिङन्तं पदम्}}: पद सुप् या तिङ् प्रत्यय पर समाप्त होता है।'
+    sutras:
+    - 1.4.14
+    tag: core
+    taught_in: who.endings#pn
+  - skill: sent.nom-sg
+    rule:
+      en: '{{स्वतन्त्रः कर्ता}}: the doer is the independent one; the first case shows the bare meaning.'
+      hi: '{{स्वतन्त्रः कर्ता}}: कर्ता स्वतन्त्र है; प्रथमा केवल अर्थ दिखाती है।'
+    sutras:
+    - 1.4.54
+    - 2.3.46
+    tag: core
+    taught_in: who.doer#pn
+  - skill: verb.pres-3sg
+    rule:
+      en: '{{वर्तमाने लट्}}: the present is {{लट्}}.'
+      hi: '{{वर्तमाने लट्}}: वर्तमान काल {{लट्}} है।'
+    sutras:
+    - 3.2.123
+    tag: core
+    taught_in: who.does#t1
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: sent.stem-ending
+    formula: बालक + ः
+    rule:
+      en: stem + ending
+      hi: मूल + प्रत्यय
+    tag: core
+    taught_in: who.endings#t1
+  - skill: sent.nom-sg
+    formula: बालकः · बालिका
+    rule:
+      en: doer, first case
+      hi: कर्ता, प्रथमा
+    tag: core
+    taught_in: who.doer#tb1
+  - skill: verb.pres-3sg
+    formula: धातु + ति
+    rule:
+      en: he does
+      hi: वह करता है
+    tag: core
+    taught_in: who.does#t1
+  - skill: sent.no-verb-to-be
+    formula: रामः बालकः
+    rule:
+      en: no “is”
+      hi: ‘है’ नहीं
+    tag: core
+    taught_in: who.is#t1
+  - skill: sent.word-order
+    formula: बालकः पठति = पठति बालकः
+    rule:
+      en: any order
+      hi: कोई भी क्रम
+    tag: core
+    taught_in: who.order#t1

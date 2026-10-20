@@ -1,0 +1,207 @@
+id: gender.revision
+template: revision
+title:
+  en: Everything about gender
+  hi: लिंग के बारे में सब कुछ
+title_sa: लिङ्गसङ्ग्रहः
+minutes: 5
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: gen.three
+    formula: बालकः · बालिका · फलम्
+    rule:
+      en: 'Three genders: masculine, feminine, neuter. The typical endings are {{अः}}, {{आ}}/{{ई}}, {{अम्}}.'
+      hi: 'तीन लिंग: पुंलिंग, स्त्रीलिंग, नपुंसक। विशिष्ट प्रत्यय {{अः}}, {{आ}}/{{ई}}, {{अम्}}।'
+    tag: core
+    taught_in: gender.three#tb1
+  - skill: pron.tad
+    formula: सः सा तत्
+    rule:
+      en: 'He, she, it: {{सः}}, {{सा}}, {{तत्}}; dual {{तौ}}, {{ते}}, {{ते}}; plural {{ते}}, {{ताः}}, {{तानि}}.'
+      hi: 'वह: {{सः}}, {{सा}}, {{तत्}}; द्विवचन {{तौ}}, {{ते}}, {{ते}}; बहुवचन {{ते}}, {{ताः}}, {{तानि}}।'
+    tag: core
+    taught_in: gender.tad#tb1
+  - skill: pron.etad
+    formula: एषः एषा एतत्
+    rule:
+      en: 'This one: {{एषः}}, {{एषा}}, {{एतत्}}.'
+      hi: 'यह: {{एषः}}, {{एषा}}, {{एतत्}}।'
+    tag: core
+    taught_in: gender.this#t1
+  - skill: gen.agreement
+    formula: मधुरः बालकः · मधुरा बालिका · मधुरं फलम्
+    rule:
+      en: An adjective agrees with its noun in gender, number and case.
+      hi: विशेषण अपनी संज्ञा से लिंग, वचन और विभक्ति में मेल खाता है।
+    tag: core
+    taught_in: gender.agree#t1
+  - skill: gen.feminine-a
+    formula: छात्रः → छात्रा · देवः → देवी
+    rule:
+      en: Feminines end in {{आ}} ({{लता}}) or {{ई}} ({{नदी}}); a masculine in -अ can make either.
+      hi: स्त्रीलिंग {{आ}} ({{लता}}) या {{ई}} ({{नदी}}) पर समाप्त होते हैं; -अ वाला पुंलिंग दोनों बना सकता है।
+    sutras:
+    - 4.1.4
+    - 4.1.5
+    tag: core
+    taught_in: gender.lata#t1
+- id: conditions
+  kind: revision
+  title:
+    en: When it applies
+    hi: कब लागू होता है
+  depth: core
+  section: conditions
+  rows:
+  - skill: pron.tad
+    rule:
+      en: '{{सः}} replaces a masculine noun already named, {{सा}} a feminine, {{तत्}} a neuter. For people of unknown sex use the neuter or masculine by custom.'
+      hi: '{{सः}} पहले आए पुंलिंग का स्थान लेता है, {{सा}} स्त्रीलिंग का, {{तत्}} नपुंसक का। अज्ञात लिंग वाले व्यक्ति के लिए रीति से पुंलिंग या नपुंसक आता है।'
+    tag: good
+    taught_in: gender.tad#t2
+  - skill: gen.agreement
+    rule:
+      en: The adjective usually stands before its noun, but may follow it.
+      hi: विशेषण प्रायः संज्ञा से पहले आता है, पर बाद में भी आ सकता है।
+    example:
+      sa: मधुरं फलम्
+      meaning:
+        en: 'a sweet fruit: adjective first'
+        hi: 'मीठा फल: पहले विशेषण'
+    tag: good
+    new_here: true
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: gen.three
+    rule:
+      en: 'Gender follows the word, not the thing: {{दाराः}} (wife) is a masculine plural; {{कलत्रम्}} (wife) is neuter.'
+      hi: 'लिंग शब्द का होता है, वस्तु का नहीं: {{दाराः}} (पत्नी) पुंलिंग बहुवचन है; {{कलत्रम्}} (पत्नी) नपुंसक है।'
+    tag: good
+    taught_in: gender.three#t2
+  - skill: gen.feminine-a
+    rule:
+      en: 'Some masculines in -अ make their feminine in {{ई}}, not {{आ}}: {{देवः}} → {{देवी}}, {{कुमारः}} → {{कुमारी}}.'
+      hi: '-अ वाले कुछ पुंलिंग {{आ}} नहीं, {{ई}} से स्त्रीलिंग बनाते हैं: {{देवः}} → {{देवी}}, {{कुमारः}} → {{कुमारी}}।'
+    tag: good
+    taught_in: gender.lata#t2
+  - skill: pron.tad
+    rule:
+      en: 'In texts with sandhi {{सः}} loses its visarga before most consonants: {{स बालकः}}. You will see why later.'
+      hi: 'सन्धि वाले पाठों में अधिकतर व्यंजनों से पहले {{सः}} का विसर्ग हट जाता है: {{स बालकः}}। क्यों, यह आगे दिखेगा।'
+    example:
+      sa: स बालकः
+      meaning:
+        en: 'that boy: {{सः}} before a consonant'
+        hi: 'वह बालक: व्यंजन से पहले {{सः}}'
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: gen.agreement
+    rule:
+      en: 'Do not leave an adjective in the masculine for a feminine noun: {{मधुरा बालिका}}, not {{मधुरः बालिका}}.'
+      hi: 'स्त्रीलिंग संज्ञा के विशेषण को पुंलिंग मत रखिए: {{मधुरा बालिका}}, न कि {{मधुरः बालिका}}।'
+    tag: core
+    taught_in: gender.agree#t1
+  - skill: gen.three
+    rule:
+      en: Do not guess a noun's gender from its meaning.
+      hi: अर्थ से संज्ञा के लिंग का अनुमान मत लगाइए।
+    tag: core
+    taught_in: gender.three#t2
+  - skill: pron.etad
+    rule:
+      en: Do not mix {{एषः}} (this) with {{सः}} (that).
+      hi: '{{एषः}} (यह) और {{सः}} (वह) को मत मिलाइए।'
+    tag: core
+    taught_in: gender.this#tb1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: gen.feminine-a
+    rule:
+      en: '{{अजाद्यतष्टाप्}}: the suffix {{टाप्}} (showing as {{आ}}) makes the feminine of words in {{अ}}.'
+      hi: '{{अजाद्यतष्टाप्}}: {{टाप्}} ({{आ}} के रूप में) -{{अ}} वाले शब्दों का स्त्रीलिंग बनाता है।'
+    sutras:
+    - 4.1.4
+    tag: core
+    taught_in: gender.lata#pn
+  - skill: gen.feminine-a
+    rule:
+      en: '{{ऋन्नेभ्यो ङीप्}}: the suffix {{ङीप्}} (showing as {{ई}}) for words in {{ऋ}}, {{न्}} and others.'
+      hi: '{{ऋन्नेभ्यो ङीप्}}: {{ऋ}}, {{न्}} आदि वाले शब्दों के लिए {{ङीप्}} ({{ई}} के रूप में)।'
+    sutras:
+    - 4.1.5
+    tag: core
+    taught_in: gender.lata#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: gen.three
+    formula: अः आ/ई अम्
+    rule:
+      en: genders
+      hi: लिंग
+    tag: core
+    taught_in: gender.three#tb1
+  - skill: pron.tad
+    formula: सः सा तत्
+    rule:
+      en: he she it
+      hi: वह
+    tag: core
+    taught_in: gender.tad#tb1
+  - skill: pron.etad
+    formula: एषः एषा एतत्
+    rule:
+      en: this
+      hi: यह
+    tag: core
+    taught_in: gender.this#t1
+  - skill: gen.agreement
+    formula: मधुरः मधुरा मधुरम्
+    rule:
+      en: agreeing adjective
+      hi: मेल खाता विशेषण
+    tag: core
+    taught_in: gender.agree#tb1
+  - skill: gen.feminine-a
+    formula: आ · ई
+    rule:
+      en: feminine makers
+      hi: स्त्रीलिंग बनाने वाले
+    tag: core
+    taught_in: gender.lata#tb1

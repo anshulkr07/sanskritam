@@ -1,0 +1,286 @@
+id: joined.ra
+template: scene
+title:
+  en: The many shapes of र
+  hi: र के कई रूप
+title_sa: रेफः
+minutes: 6
+teaches:
+- script.reph
+needs:
+- script.conjunct
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Nidrālu mumbles
+    hi: निद्रालु बड़बड़ाता है
+  depth: core
+  image:
+    brief: The stone pillar in close-up with several joined letters containing the letter ra in different forms, a small curl above one and a hook below another; Śuka on Dādī's shoulder cross-eyed with effort; the sleeping green spirit mumbling in the background.
+    alt:
+      en: A pillar with joined letters containing many shapes of ra, and a parrot cross-eyed with effort
+      hi: र के कई रूपों वाला स्तम्भ और जीभ उलझाता तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - nidralu
+    place: devalaya
+    ratio: '4:3'
+    id: joined-ra-s1
+  narration:
+    en: 'The sleeping spirit mumbles in his dream: “र… र…”. On the pillar the letter {{र}} wears many costumes: a curl on top, a hook below, even a new shape. Śuka tries to read them aloud and gets his tongue in a knot.'
+    hi: 'सोया हुआ भूत सपने में बड़बड़ाता है: “र… र…”। स्तम्भ पर {{र}} कई रूप धरता है: ऊपर एक मोड़, नीचे एक काँटा, कभी बिलकुल नया आकार। शुक उन्हें ज़ोर से पढ़ने की कोशिश करता है और जीभ उलझा बैठता है।'
+- id: t1
+  kind: teach
+  title:
+    en: The curl on top
+    hi: ऊपर का मोड़
+  depth: core
+  skills:
+  - script.reph
+  body:
+    en: 'When {{र}} comes first in a joined letter, it becomes a small curl on top of the next letter: {{र्}} + {{म}} = {{र्म}}. It is called {{रेफः}}. You say it first, but write it last, above the end of the syllable.'
+    hi: 'जब {{र}} संयुक्ताक्षर में पहले आता है, तो अगले अक्षर के ऊपर छोटा मोड़ बन जाता है: {{र्}} + {{म}} = {{र्म}}। इसे {{रेफः}} कहते हैं। बोला जाता है पहले, पर लिखा जाता है अन्त में, अक्षर के सिरे पर।'
+  examples:
+  - sa: धर्मः
+    meaning:
+      en: 'duty: {{ध}} + {{र्म}}'
+      hi: 'धर्म: {{ध}} + {{र्म}}'
+    check:
+      type: subanta
+      stem: धर्म
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: कर्म
+    meaning:
+      en: 'action: {{क}} + {{र्म}}'
+      hi: 'कर्म: {{क}} + {{र्म}}'
+    check:
+      type: subanta
+      stem: कर्मन्
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
+  term:
+    sa: रेफः
+    meaning:
+      en: the curl for r at the start of a join
+      hi: संयोग के आरम्भ के र का मोड़
+- id: t2
+  kind: teach
+  title:
+    en: The hook below
+    hi: नीचे का काँटा
+  depth: core
+  skills:
+  - script.reph
+  body:
+    en: 'When {{र}} comes second, it hangs below the first letter as a small hook: {{प्}} + {{र}} = {{प्र}}, {{क्}} + {{र}} = {{क्र}}. Two have their own shapes: {{त्र}} and {{श्र}}.'
+    hi: 'जब {{र}} दूसरा आता है, तो पहले अक्षर के नीचे छोटे काँटे की तरह लटकता है: {{प्}} + {{र}} = {{प्र}}, {{क्}} + {{र}} = {{क्र}}। दो के अपने आकार हैं: {{त्र}} और {{श्र}}।'
+  examples:
+  - sa: प्रियः
+    meaning:
+      en: 'dear: {{प्र}}'
+      hi: 'प्रिय: {{प्र}}'
+    check:
+      type: subanta
+      stem: प्रिय
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: क्रमः
+    meaning:
+      en: 'order: {{क्र}}'
+      hi: 'क्रम: {{क्र}}'
+    check:
+      type: subanta
+      stem: क्रम
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - script.reph
+  widget: letter_builder
+  prompt:
+    en: Put the curl on top, or the hook below, and read each join.
+    hi: ऊपर का मोड़ या नीचे का काँटा लगाइए और हर संयोग को पढ़िए।
+  params:
+    bases:
+    - म
+    - त
+    - र
+    - य
+    halves:
+    - र्
+    - प्
+    - क्
+    - ग्
+    - द्
+    targets:
+    - र्म
+    - र्त
+    - प्र
+    - क्र
+    - ग्र
+    - द्र
+  roman: after
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - script.reph
+  mode: match
+  prompt:
+    en: Join each shape to where the {{र}} sits.
+    hi: हर आकार को उस स्थान से जोड़िए जहाँ {{र}} बैठा है।
+  explain:
+    en: In {{र्म}} the {{र}} comes first and curls on top; in {{प्र}} it comes second and hangs below.
+    hi: '{{र्म}} में {{र}} पहले है और ऊपर मुड़ता है; {{प्र}} में दूसरा है और नीचे लटकता है।'
+  roman: after
+  pairs:
+  - left:
+      sa: र्म
+    right:
+      text:
+        en: curl on top
+        hi: ऊपर का मोड़
+  - left:
+      sa: प्र
+    right:
+      text:
+        en: hook below
+        hi: नीचे का काँटा
+  - left:
+      sa: क्र
+    right:
+      text:
+        en: hook below
+        hi: नीचे का काँटा
+  - left:
+      sa: र्त
+    right:
+      text:
+        en: curl on top
+        hi: ऊपर का मोड़
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - script.reph
+  widget: mark_words
+  prompt:
+    en: Tap every word with a curl on top.
+    hi: ऊपर मोड़ वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - धर्मः
+    - पत्रम्
+    - कर्म
+    - मित्रम्
+    - सर्वम्
+    - प्रियः
+    targets:
+    - धर्मः
+    - कर्म
+    - सर्वम्
+  roman: after
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - script.reph
+  mode: choice
+  prompt:
+    en: Which word has the hook below its first letter?
+    hi: किस शब्द के पहले अक्षर के नीचे काँटा है?
+  explain:
+    en: In {{प्रियः}} the {{र}} hangs below {{प}}.
+    hi: '{{प्रियः}} में {{र}} {{प}} के नीचे लटकता है।'
+  roman: after
+  options:
+  - sa: धर्मः
+  - correct: true
+    sa: प्रियः
+  - sa: कर्म
+- id: p3
+  kind: practice
+  title:
+    en: Another word
+    hi: एक और शब्द
+  depth: core
+  skills:
+  - script.reph
+  mode: type
+  prompt:
+    en: 'Wake the pillar again: build {{धर्मः}} from the pieces.'
+    hi: 'स्तम्भ को फिर जगाइए: टुकड़ों से {{धर्मः}} बनाइए।'
+  explain:
+    en: '{{ध}} + {{र्मः}}: {{धर्मः}}.'
+    hi: '{{ध}} + {{र्मः}}: {{धर्मः}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '{{धर्मः}} lights up. The green spirit sits up halfway, rubs his eyes, and says one word in his sleep: “धर्मः”.'
+      hi: '{{धर्मः}} जगमगा उठता है। हरा भूत आधा उठ बैठता है, आँखें मलता है, और नींद में एक शब्द बोलता है: “धर्मः”।'
+    failure:
+      en: 'The pillar stays dark. Put the curl-carrying syllable last: {{र्मः}}.'
+      hi: 'स्तम्भ अँधेरा रहता है। मोड़ वाला अक्षर आख़िर में रखिए: {{र्मः}}।'
+  answers:
+  - धर्मः
+  tiles:
+  - ध
+  - र्मः
+  - र्
+  - म
+- id: t3
+  kind: teach
+  title:
+    en: Odd ones
+    hi: कुछ विचित्र
+  depth: core
+  skills:
+  - script.reph
+  body:
+    en: '{{ट्र}} and {{ड्र}} take a different mark, not the hook: {{राष्ट्रम्}} (nation). And {{ऋ}} is a vowel, not {{र}} with a sign. Read {{ऋषिः}} as ṛ-ṣi, never ri-ṣi.'
+    hi: '{{ट्र}} और {{ड्र}} काँटे की जगह दूसरा चिह्न लेते हैं: {{राष्ट्रम्}} (राष्ट्र)। और {{ऋ}} स्वर है, चिह्न लगा {{र}} नहीं। {{ऋषिः}} को ऋ-षि पढ़िए, रि-षि नहीं।'
+  examples:
+  - sa: राष्ट्रम्
+    meaning:
+      en: 'a nation: {{ष्ट्र}}'
+      hi: 'राष्ट्र: {{ष्ट्र}}'
+    check:
+      type: subanta
+      stem: राष्ट्र
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
+- id: sum
+  kind: summary
+  title:
+    en: The shapes of र
+    hi: र के रूप
+  depth: core
+  points:
+  - sa: र्म
+    text:
+      en: 'First: a curl on top (रेफः).'
+      hi: 'पहले: ऊपर का मोड़ (रेफः)।'
+  - sa: प्र
+    text:
+      en: 'Second: a hook below.'
+      hi: 'दूसरा: नीचे का काँटा।'
+  - sa: त्र श्र
+    text:
+      en: Two with their own shapes.
+      hi: दो के अपने आकार।

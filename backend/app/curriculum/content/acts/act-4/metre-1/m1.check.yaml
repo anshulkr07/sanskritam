@@ -1,0 +1,185 @@
+id: m1.check
+template: check
+title:
+  en: Beat the verse
+  hi: श्लोक की ताल दीजिए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - chandas.weight
+  mode: choice
+  prompt:
+    en: Which syllable is heavy?
+    hi: कौन-सा अक्षर गुरु है?
+  explain:
+    en: '{{का}} has a long vowel.'
+    hi: '{{का}} में दीर्घ स्वर है।'
+  roman: after
+  options:
+  - sa: कि
+  - sa: कु
+  - correct: true
+    sa: का
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - chandas.weight
+  mode: choice
+  prompt:
+    en: '{{नदी}}: how does it weigh?'
+    hi: '{{नदी}}: उसका भार क्या है?'
+  explain:
+    en: Short, then long.
+    hi: ह्रस्व, फिर दीर्घ।
+  roman: after
+  options:
+  - correct: true
+    sa: ल ग
+  - sa: ग ल
+  - sa: ल ल
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - chandas.weight
+  mode: choice
+  prompt:
+    en: In {{सत्य}}, the first syllable is…
+    hi: '{{सत्य}} में पहला अक्षर है…'
+  explain:
+    en: A joined letter follows.
+    hi: आगे संयुक्त अक्षर है।
+  roman: after
+  options:
+  - text:
+      en: light
+      hi: लघु
+  - correct: true
+    text:
+      en: heavy
+      hi: गुरु
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - chandas.weight
+  mode: engine
+  prompt:
+    en: Mark each syllable light or heavy.
+    hi: हर अक्षर को लघु या गुरु चिह्नित कीजिए।
+  explain:
+    en: 'Heavy: long vowels and short vowels before joined letters.'
+    hi: 'गुरु: दीर्घ स्वर और संयुक्त से पहले ह्रस्व स्वर।'
+  roman: after
+  exercise:
+    kind: scan_metre
+    params:
+      text: धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः
+    seed: 4
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - chandas.shloka
+  mode: choice
+  prompt:
+    en: How many syllables are in a quarter of a śloka?
+    hi: श्लोक के एक चरण में कितने अक्षर होते हैं?
+  explain:
+    en: Eight; two quarters make 16.
+    hi: आठ; दो चरणों के 16।
+  roman: after
+  options:
+  - correct: true
+    text:
+      en: '8'
+      hi: ८
+  - text:
+      en: '16'
+      hi: १६
+  - text:
+      en: '32'
+      hi: ३२
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - chandas.shloka
+  mode: choice
+  prompt:
+    en: In a śloka the fifth syllable of a quarter is…
+    hi: श्लोक में चरण का पाँचवाँ अक्षर होता है…
+  explain:
+    en: The fifth is light.
+    hi: पाँचवाँ लघु है।
+  roman: after
+  options:
+  - correct: true
+    text:
+      en: light
+      hi: लघु
+  - text:
+      en: heavy
+      hi: गुरु
+  - text:
+      en: either
+      hi: दोनों में से कोई
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - chandas.shloka
+  mode: engine
+  prompt:
+    en: Mark each syllable of the sage's line.
+    hi: ऋषि की पंक्ति के हर अक्षर को चिह्नित कीजिए।
+  explain:
+    en: Fifth light, sixth heavy, seventh alternating.
+    hi: पाँचवाँ लघु, छठा गुरु, सातवाँ बारी-बारी।
+  roman: after
+  exercise:
+    kind: scan_metre
+    params:
+      text: समाक्षरैश्चतुर्भिर्यः पादैर्गीतो महर्षिणा
+    seed: 5
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - chandas.shloka
+  mode: choice
+  prompt:
+    en: The seventh syllable of the second quarter is…
+    hi: दूसरे चरण का सातवाँ अक्षर होता है…
+  explain:
+    en: Heavy in quarters one and three; light in two and four.
+    hi: चरण एक और तीन में गुरु; दो और चार में लघु।
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“अनुष्टुप्,” says Chandikā, and for the first time her drum names the beat before she plays it. The stone panel across the hall slides open: behind it, set into the wall, a line in a clear, deeper hand, a longer measure than any you have chanted: इन्द्रवज्रा उपजाति। The spirit lays her drum in your hands, gently, and fades into the throne''s hum, light as a note.'
+      hi: '“अनुष्टुप्,” छन्दिका कहती है, और पहली बार उसका ढोल ताल को बजाने से पहले उसका नाम लेता है। कक्ष के पार पत्थर का फलक खुल जाता है: उसके पीछे दीवार में जड़ी, गहरे स्पष्ट अक्षरों की एक पंक्ति, आपके पढ़े किसी भी छन्द से लम्बी माप की: इन्द्रवज्रा उपजाति। भूत अपना ढोल धीरे से आपके हाथों में रखती है और सिंहासन की गुनगुनाहट में घुल जाती है, किसी स्वर की तरह हल्की।'
+    failure:
+      en: Her drum is silent. The seventh place of quarter two is light.
+      hi: उसका ढोल मौन है। दूसरे चरण का सातवाँ स्थान लघु है।
+  options:
+  - text:
+      en: heavy
+      hi: गुरु
+  - correct: true
+    text:
+      en: light
+      hi: लघु
+  - text:
+      en: either
+      hi: दोनों में से कोई

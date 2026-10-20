@@ -1,0 +1,160 @@
+id: future.revision
+template: revision
+title:
+  en: Everything about the future
+  hi: भविष्यत् के बारे में सब कुछ
+title_sa: लृट्सङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The future forms
+    hi: भविष्यत् के रूप
+  depth: core
+  section: core
+  rows:
+  - skill: verb.lrt
+    rule:
+      en: '{{पठ्}} in {{लृट्}}: {{पठिष्यति पठिष्यतः पठिष्यन्ति}}, {{पठिष्यसि पठिष्यथः पठिष्यथ}}, {{पठिष्यामि पठिष्यावः पठिष्यामः}}.'
+      hi: '{{पठ्}} का {{लृट्}}: {{पठिष्यति पठिष्यतः पठिष्यन्ति}}, {{पठिष्यसि पठिष्यथः पठिष्यथ}}, {{पठिष्यामि पठिष्यावः पठिष्यामः}}।'
+    sutras:
+    - 3.3.13
+    - 3.1.33
+    - 7.2.35
+    - 8.3.59
+    tag: core
+    taught_in: future.sya#tb1
+  - skill: verb.lrt
+    rule:
+      en: '{{कृ}}: {{करिष्यति}}, {{करिष्यसि}}, {{करिष्यामि}}; {{भू}}: {{भविष्यति}}.'
+      hi: '{{कृ}}: {{करिष्यति}}, {{करिष्यसि}}, {{करिष्यामि}}; {{भू}}: {{भविष्यति}}।'
+    tag: core
+    taught_in: future.plans#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: verb.lrt
+    rule:
+      en: 'Use {{लृट्}} for what will happen; time words help: {{श्वः}}, {{पश्चात्}}.'
+      hi: 'जो होगा, उसके लिए {{लृट्}}; समय-शब्द सहायक हैं: {{श्वः}}, {{पश्चात्}}।'
+    tag: good
+    taught_in: future.sya#t1
+  - skill: verb.lrt
+    rule:
+      en: '{{न}} + future is a promise to refuse: {{न दास्यामि}}.'
+      hi: '{{न}} + भविष्यत् मना करने का वचन है: {{न दास्यामि}}।'
+    tag: good
+    taught_in: future.plans#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: verb.lrt
+    rule:
+      en: 'Some roots take {{-स्य-}} without {{इ}}: {{दा}} gives {{दास्यति}}, {{पा}} gives {{पास्यति}}, {{स्था}} gives {{स्थास्यति}}.'
+      hi: 'कुछ धातुएँ {{इ}} के बिना {{-स्य-}} लेती हैं: {{दा}} से {{दास्यति}}, {{पा}} से {{पास्यति}}, {{स्था}} से {{स्थास्यति}}।'
+    example:
+      sa: दास्यति
+      meaning:
+        en: he will give
+        hi: वह देगा
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lrt
+        purusha: Prathama
+        vacana: Eka
+    tag: rare
+    new_here: true
+  - skill: verb.lrt
+    rule:
+      en: 'Some roots change their middle: {{दृश्}} gives {{द्रक्ष्यति}}, {{श्रु}} gives {{श्रोष्यति}}, {{वच्}} gives {{वक्ष्यति}}.'
+      hi: 'कुछ धातुओं का बीच बदलता है: {{दृश्}} से {{द्रक्ष्यति}}, {{श्रु}} से {{श्रोष्यति}}, {{वच्}} से {{वक्ष्यति}}।'
+    example:
+      sa: द्रक्ष्यति
+      meaning:
+        en: he will see
+        hi: वह देखेगा
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lrt
+        purusha: Prathama
+        vacana: Eka
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: verb.lrt
+    rule:
+      en: 'Do not put {{अ}} in front of a future: the augment belongs to the past only.'
+      hi: 'भविष्यत् के आगे {{अ}} मत रखिए: आगम केवल भूतकाल का है।'
+    tag: core
+    taught_in: future.sya#p1
+  - skill: verb.lrt
+    rule:
+      en: 'Do not use the present for a promise: {{न ददामि}} is “I do not give”.'
+      hi: 'वचन के लिए वर्तमान मत लीजिए: {{न ददामि}} का अर्थ ‘मैं नहीं देता’ है।'
+    tag: core
+    taught_in: future.plans#p1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: verb.lrt
+    rule:
+      en: '{{लृट् शेषे च}} and {{स्यतासी लृलुटोः}}: the tense and its sign {{स्य}}. {{आर्धधातुकस्येड् वलादेः}} and {{आदेशप्रत्यययोः}}: the {{इ}} and the {{ष्}}.'
+      hi: '{{लृट् शेषे च}} और {{स्यतासी लृलुटोः}}: काल और उसका चिह्न {{स्य}}। {{आर्धधातुकस्येड् वलादेः}} और {{आदेशप्रत्यययोः}}: {{इ}} और {{ष्}}।'
+    sutras:
+    - 3.3.13
+    - 3.1.33
+    - 7.2.35
+    - 8.3.59
+    tag: core
+    taught_in: future.sya#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: verb.lrt
+    formula: धातु + इष्य/स्य + ति · पठिष्यति दास्यति
+    rule:
+      en: future
+      hi: भविष्यत्
+    tag: core
+    taught_in: future.sya#tb1
+  - skill: verb.lrt
+    formula: करिष्यामि · करिष्यामः · न दास्यामि
+    rule:
+      en: I will, we will
+      hi: मैं, हम
+    tag: core
+    taught_in: future.plans#tb1

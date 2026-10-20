@@ -56,6 +56,8 @@ export interface LearnV2Card {
   };
   /** Production asset id (see assetMap). Absent = native diagram/text only. */
   assetId?: string;
+  /** Decorative chapter opener; teaching remains native text and diagrams. */
+  openingArt?: "sandhi" | "metre";
   /** Multiple contextual images can support one source passage. */
   assetIds?: string[];
   /** New technical term introduced on this card, with its plain explanation. */

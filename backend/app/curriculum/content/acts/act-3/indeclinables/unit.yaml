@@ -1,0 +1,37 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: indeclinables
+title:
+  en: Small words
+  hi: अव्यय
+title_sa: अव्ययानि
+status: ready
+episode:
+  summary:
+    en: The last night. The Vetāla speaks in small words that never change, and gives you the fourth leaf before it flies home.
+    hi: अंतिम रात। वेताल कभी न बदलने वाले छोटे शब्दों में बोलता है, और अपने वृक्ष पर लौटने से पहले आपको चौथा पत्र देता है।
+  beats:
+  - च, वा, अपि, एव, तु, इति.
+  - अत्र, तत्र, यदा, तदा, यथा, तथा.
+  - 'The fourth leaf: the dull pupil who won grammar.'
+skills:
+- id: avy.particles
+  title:
+    en: 'Little words: {{च}}, {{वा}}, {{अपि}}, {{एव}}, {{तु}}, {{हि}}'
+    hi: 'छोटे अव्यय: {{च}}, {{वा}}, {{अपि}}, {{एव}}, {{तु}}, {{हि}}'
+- id: avy.iti
+  title:
+    en: 'इति: quoting words and thoughts'
+    hi: 'इति: उद्धरण और विचार'
+- id: avy.adverbs
+  title:
+    en: 'Where, when, how: -त्र, -दा, -था'
+    hi: 'कहाँ, कब, कैसे: -त्र, -दा, -था'
+lessons:
+- avy.small
+- avy.iti
+- avy.where
+planned: []
+ghost: avyayaka
+revision: avy.revision
+check: avy.check

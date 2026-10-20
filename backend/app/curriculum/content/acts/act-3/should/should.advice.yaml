@@ -1,0 +1,585 @@
+id: should.advice
+template: scene
+title:
+  en: He should read
+  hi: उसे पढ़ना चाहिए
+title_sa: पठेत्
+minutes: 6
+teaches:
+- verb.vidhilin
+needs:
+- verb.lrt
+- verb.lot
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The fourth night
+    hi: चौथी रात
+  depth: core
+  image:
+    brief: 'The burning-ground grove at night: the Vetāla seated on a root rubbing his hands; a tiny round spirit of old paper in round spectacles with scrolls under both arms and one finger wagging at the sky; Dādī and Śuka beside you; a faint image in the smoke of a king and a hungry beggar on a lane.'
+    alt:
+      en: A tiny paper spirit with spectacles wags a finger at the sky while the Vetāla rubs his hands
+      hi: चश्मे वाला नन्हा काग़ज़ी भूत आकाश की ओर उँगली हिलाता, हाथ मलता वेताल
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - vidhika
+    place: smashana
+    ratio: '4:3'
+    id: should-advice-s1
+  narration:
+    en: '“A riddle,” says the Vetāla, and rubs his hands. “A king walks alone at night and meets a beggar who is hungry. What should he do?” Before you can think, a tiny round spirit in round spectacles waves a finger at the sky: “गच्छेत्! पठेत्! वदेत्!” “Should go, should read, should say,” Dādī translates. “He gives rules, not facts.”'
+    hi: '“एक पहेली,” वेताल कहता है, और हाथ मलता है। “एक राजा रात को अकेला चलता है और एक भूखे भिखारी से मिलता है। उसे क्या करना चाहिए?” आप कुछ सोचें, उससे पहले गोल चश्मे वाला एक नन्हा गोल भूत आकाश की ओर उँगली हिलाता है: “गच्छेत्! पठेत्! वदेत्!” “जाना चाहिए, पढ़ना चाहिए, कहना चाहिए,” दादी अनुवाद करती हैं। “वह नियम देता है, तथ्य नहीं।”'
+  lines:
+  - speaker: dadi
+    sa: सः गच्छेत्। सः पठेत्।
+    gloss:
+      en: He should go. He should read.
+      hi: उसे जाना चाहिए। उसे पढ़ना चाहिए।
+- id: t1
+  kind: teach
+  title:
+    en: The mood of “should”
+    hi: ‘चाहिए’ का काल-विधान
+  depth: core
+  skills:
+  - verb.vidhilin
+  body:
+    en: '{{विधिलिङ्}} gives advice, rules and what is fitting: {{पठेत्}} (he should read), {{गच्छेत्}} (he should go), {{वदेत्}} (he should say). The sign is {{-ए-}} between the root and the ending: {{पठ + ए + त्}}.'
+    hi: '{{विधिलिङ्}} सलाह, नियम और जो उचित है, वह बताता है: {{पठेत्}} (उसे पढ़ना चाहिए), {{गच्छेत्}} (उसे जाना चाहिए), {{वदेत्}} (उसे कहना चाहिए)। चिह्न {{-ए-}} है, धातु और प्रत्यय के बीच: {{पठ + ए + त्}}।'
+  examples:
+  - sa: राजा प्रजाम् रक्षेत्।
+    meaning:
+      en: A king should protect his people.
+      hi: राजा को प्रजा की रक्षा करनी चाहिए।
+    words:
+    - sa: राजा
+      gloss:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: प्रजाम्
+      gloss:
+        en: his people
+        hi: प्रजा
+      check:
+        type: subanta
+        stem: प्रजा
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: रक्षेत्
+      gloss:
+        en: should protect
+        hi: रक्षा करे
+      check:
+        type: tinanta
+        dhatu: रक्ष्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+  - sa: त्वम् गृहम् गच्छेः।
+    meaning:
+      en: You should go home.
+      hi: तुम्हें घर जाना चाहिए।
+    words:
+    - sa: त्वम्
+      gloss:
+        en: you
+        hi: तुम
+    - sa: गृहम्
+      gloss:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गच्छेः
+      gloss:
+        en: should go
+        hi: जाओ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: VidhiLin
+        purusha: Madhyama
+        vacana: Eka
+  - sa: वयम् सत्यम् वदेम।
+    meaning:
+      en: We should speak the truth.
+      hi: हमें सत्य बोलना चाहिए।
+    words:
+    - sa: वयम्
+      gloss:
+        en: we
+        hi: हम
+    - sa: सत्यम्
+      gloss:
+        en: truth
+        hi: सत्य
+      check:
+        type: subanta
+        stem: सत्य
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: वदेम
+      gloss:
+        en: should speak
+        hi: बोलें
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: VidhiLin
+        purusha: Uttama
+        vacana: Bahu
+  term:
+    sa: विधिलिङ्
+    meaning:
+      en: the mood of should and may
+      hi: चाहिए और सकता है का काल-विधान
+- id: tb1
+  kind: table
+  title:
+    en: 'पठ्: “should read”'
+    hi: 'पठ्: ‘पढ़ना चाहिए’'
+  depth: core
+  skills:
+  - verb.vidhilin
+  caption:
+    en: “He should read, you should read, I should read”
+    hi: ‘उसे, तुम्हें, मुझे पढ़ना चाहिए’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: पठेत्
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: पठेताम्
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Dvi
+    - sa: पठेयुः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: पठेः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: VidhiLin
+        purusha: Madhyama
+        vacana: Eka
+    - sa: पठेतम्
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: VidhiLin
+        purusha: Madhyama
+        vacana: Dvi
+    - sa: पठेत
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: VidhiLin
+        purusha: Madhyama
+        vacana: Bahu
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: पठेयम्
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: VidhiLin
+        purusha: Uttama
+        vacana: Eka
+    - sa: पठेव
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: VidhiLin
+        purusha: Uttama
+        vacana: Dvi
+    - sa: पठेम
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: VidhiLin
+        purusha: Uttama
+        vacana: Bahu
+  note:
+    en: Third person ends {{-एत्}}, {{-एताम्}}, {{-एयुः}}; second {{-एः}}, {{-एतम्}}, {{-एत}}; first {{-एयम्}}, {{-एव}}, {{-एम}}.
+    hi: प्रथम पुरुष {{-एत्}}, {{-एताम्}}, {{-एयुः}}; मध्यम {{-एः}}, {{-एतम्}}, {{-एत}}; उत्तम {{-एयम्}}, {{-एव}}, {{-एम}}।
+- id: tb2
+  kind: table
+  title:
+    en: 'गम्: “should go”'
+    hi: 'गम्: ‘जाना चाहिए’'
+  depth: core
+  skills:
+  - verb.vidhilin
+  caption:
+    en: “He should go, you should go, I should go”
+    hi: ‘उसे, तुम्हें, मुझे जाना चाहिए’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: गच्छेत्
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: गच्छेताम्
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Dvi
+    - sa: गच्छेयुः
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: गच्छेः
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: VidhiLin
+        purusha: Madhyama
+        vacana: Eka
+    - sa: गच्छेतम्
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: VidhiLin
+        purusha: Madhyama
+        vacana: Dvi
+    - sa: गच्छेत
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: VidhiLin
+        purusha: Madhyama
+        vacana: Bahu
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: गच्छेयम्
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: VidhiLin
+        purusha: Uttama
+        vacana: Eka
+    - sa: गच्छेव
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: VidhiLin
+        purusha: Uttama
+        vacana: Dvi
+    - sa: गच्छेम
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: VidhiLin
+        purusha: Uttama
+        vacana: Bahu
+- id: t2
+  kind: teach
+  title:
+    en: May, might, would
+    hi: सकता है, शायद, होता
+  depth: core
+  skills:
+  - verb.vidhilin
+  body:
+    en: 'The same forms also say what may be: {{सः आगच्छेत्}}, “he may come”; and ask for advice: {{किम् अहं गच्छेयम्}}, “should I go?” Context tells whether it is advice, possibility or a question.'
+    hi: 'वही रूप जो हो सकता है, वह भी कहते हैं: {{सः आगच्छेत्}}, ‘वह आ सकता है’; और सलाह माँगते हैं: {{किम् अहं गच्छेयम्}}, ‘क्या मैं जाऊँ?’ प्रसंग बताता है कि सलाह है, सम्भावना है या प्रश्न।'
+  examples:
+  - sa: सः आगच्छेत्।
+    meaning:
+      en: He may come.
+      hi: वह आ सकता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: आगच्छेत्
+      gloss:
+        en: may come
+        hi: आ सकता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+  - sa: किम् अहम् गच्छेयम्।
+    meaning:
+      en: Should I go?
+      hi: क्या मैं जाऊँ?
+    words:
+    - sa: किम्
+      gloss:
+        en: whether
+        hi: क्या
+    - sa: अहम्
+      gloss:
+        en: I
+        hi: मैं
+    - sa: गच्छेयम्
+      gloss:
+        en: should go
+        hi: जाऊँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: VidhiLin
+        purusha: Uttama
+        vacana: Eka
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: choice
+  prompt:
+    en: “He should read.” Which form?
+    hi: ‘उसे पढ़ना चाहिए।’ कौन-सा रूप?
+  explain:
+    en: '{{पठेत्}}: {{-एत्}}, the sign of “should”.'
+    hi: '{{पठेत्}}: {{-एत्}}, ‘चाहिए’ का चिह्न।'
+  roman: after
+  options:
+  - sa: पठति
+  - sa: पठतु
+  - correct: true
+    sa: पठेत्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: type
+  prompt:
+    en: 'Say: “He should go.”'
+    hi: 'कहिए: ‘उसे जाना चाहिए।’'
+  explain:
+    en: '{{गच्छेत्}}.'
+    hi: '{{गच्छेत्}}।'
+  roman: after
+  answers:
+  - गच्छेत्
+  tiles:
+  - गच्छे
+  - त्
+  - ति
+  - ः
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: match
+  prompt:
+    en: Join each form to its meaning.
+    hi: हर रूप को उसके अर्थ से जोड़िए।
+  explain:
+    en: 'The ending tells who: {{-एत्}} he, {{-एः}} you, {{-एयम्}} I, {{-एयुः}} they.'
+    hi: 'प्रत्यय बताता है कौन: {{-एत्}} वह, {{-एः}} तुम, {{-एयम्}} मैं, {{-एयुः}} वे।'
+  roman: after
+  pairs:
+  - left:
+      sa: पठेत्
+    right:
+      text:
+        en: he should read
+        hi: उसे पढ़ना चाहिए
+  - left:
+      sa: पठेः
+    right:
+      text:
+        en: you should read
+        hi: तुम्हें पढ़ना चाहिए
+  - left:
+      sa: पठेयम्
+    right:
+      text:
+        en: I should read
+        hi: मुझे पढ़ना चाहिए
+  - left:
+      sa: पठेयुः
+    right:
+      text:
+        en: they should read
+        hi: उन्हें पढ़ना चाहिए
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.vidhilin
+  widget: mark_words
+  prompt:
+    en: Tap every word that says “should”.
+    hi: ‘चाहिए’ कहने वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - पठेत्
+    - पठति
+    - गच्छेत्
+    - गच्छति
+    - वदेत्
+    - वदति
+    targets:
+    - पठेत्
+    - गच्छेत्
+    - वदेत्
+  roman: show
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: order
+  prompt:
+    en: 'Say: “A king should protect his people.”'
+    hi: 'कहिए: ‘राजा को प्रजा की रक्षा करनी चाहिए।’'
+  explain:
+    en: '{{राजा प्रजां रक्षेत्}}.'
+    hi: '{{राजा प्रजां रक्षेत्}}।'
+  roman: after
+  tokens:
+  - राजा
+  - प्रजाम्
+  - रक्षेत्
+- id: p5
+  kind: practice
+  title:
+    en: What they should do
+    hi: उन्हें क्या करना चाहिए
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: choice
+  prompt:
+    en: “They should read.” Which form?
+    hi: ‘उन्हें पढ़ना चाहिए।’ कौन-सा रूप?
+  explain:
+    en: '{{पठेयुः}}: they, many.'
+    hi: '{{पठेयुः}}: वे, अनेक।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “पठेयुः,” you say. The little round spirit stops wagging his finger, takes off his spectacles, wipes them on a scroll, and puts them on again, as if he cannot quite believe it. “Correct,” he says in a very small voice. “A rule, correctly stated.” The Vetāla nods slowly. “And the king? I will not tell you yet.”
+      hi: “पठेयुः,” आप कहते हैं। नन्हा गोल भूत उँगली हिलाना रोक देता है, चश्मा उतारता है, किसी पोथी से पोंछता है, और फिर पहन लेता है, मानो विश्वास न हो रहा हो। “सही,” वह बहुत धीमी आवाज़ में कहता है। “एक नियम, ठीक कहा हुआ।” वेताल धीरे से सिर हिलाता है। “और राजा? अभी मैं नहीं बताऊँगा।”
+    failure:
+      en: 'He keeps wagging his finger. They, many: {{पठेयुः}}.'
+      hi: 'वह उँगली हिलाता रहता है। वे, अनेक: {{पठेयुः}}।'
+  options:
+  - sa: पठेत्
+  - sa: पठेताम्
+  - correct: true
+    sa: पठेयुः
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's “should”
+    hi: पाणिनि का ‘चाहिए’
+  depth: panini
+  skills:
+  - verb.vidhilin
+  sutras:
+  - 3.3.161
+  - 3.4.103
+  - 7.2.80
+  - 6.1.87
+  body:
+    en: 'Sūtra 3.3.161, {{विधिनिमन्त्रणामन्त्रणाधीष्टसंप्रश्नप्रार्थनेषु लिङ्}}, gives {{लिङ्}} for advice, invitation and request. 3.4.103, {{यासुट् परस्मैपदेषूदात्तो ङिच्च}}, adds {{यास्}}; 7.2.80, {{अतो येयः}}, makes {{या}} into {{इय्}}; 6.1.87, {{आद्गुणः}}, joins {{अ + इ}} into {{ए}}: {{पठेत्}}.'
+    hi: 'सूत्र 3.3.161, {{विधिनिमन्त्रणामन्त्रणाधीष्टसंप्रश्नप्रार्थनेषु लिङ्}}, सलाह, निमन्त्रण और प्रार्थना के लिए {{लिङ्}} देता है। 3.4.103, {{यासुट् परस्मैपदेषूदात्तो ङिच्च}}, {{यास्}} जोड़ता है; 7.2.80, {{अतो येयः}}, {{या}} को {{इय्}} कर देता है; 6.1.87, {{आद्गुणः}}, {{अ + इ}} को {{ए}} बना देता है: {{पठेत्}}।'
+- id: sum
+  kind: summary
+  title:
+    en: Should
+    hi: चाहिए
+  depth: core
+  points:
+  - sa: पठेत् · गच्छेत् · वदेत्
+    text:
+      en: He should read, go, say.
+      hi: उसे पढ़ना, जाना, कहना चाहिए।
+  - sa: -एत् · -एः · -एयम्
+    text:
+      en: He, you, I.
+      hi: वह, तुम, मैं।
+  - sa: आगच्छेत्
+    text:
+      en: He may come.
+      hi: वह आ सकता है।

@@ -22,16 +22,18 @@ def main():
   if d.get('published'):
    if d.get('masterUrl'):expected.add(urlparse(d['masterUrl']).path.lstrip('/'))
    expected.update(urlparse(v['uri']).path.lstrip('/') for v in d['entry']['variants'].values())
- buckets={};found=set();gita_bytes=0
+ buckets={};found=set();gita_bytes=0;verse_masters=0
  for name in names:
   count=size=0
   for page in client.get_paginator('list_objects_v2').paginate(Bucket=name):
    for obj in page.get('Contents',[]):
     count+=1;size+=obj['Size']
+    if name==cfg['R2_BUCKET'] and obj['Key'].startswith(('art/masters/gita/','art/masters/isha/')):verse_masters+=1
     if name==cfg['R2_BUCKET'] and obj['Key'] in expected:
      found.add(obj['Key']);gita_bytes+=obj['Size']
   buckets[name]={'objects':count,'bytes':size}
- report={'checked_at':datetime.now(timezone.utc).isoformat(),'coverage':coverage,'buckets':buckets,'total_bytes':sum(b['bytes'] for b in buckets.values()),'gita_objects':len(found),'gita_bytes':gita_bytes,'missing_published_gita_objects':len(expected-found)}
+ report={'checked_at':datetime.now(timezone.utc).isoformat(),'coverage':coverage,'buckets':buckets,'total_bytes':sum(b['bytes'] for b in buckets.values()),'gita_objects':len(found),'gita_bytes':gita_bytes,'missing_published_gita_objects':len(expected-found),'retained_r2_verse_masters':verse_masters}
  (OUT/'storage-after.json').write_text(json.dumps(report,indent=2),encoding='utf-8');print(json.dumps(report))
  assert not expected-found,'A published Gita object is missing from R2'
+ assert verse_masters==0,'Original verse PNGs must not be retained in R2'
 if __name__=='__main__':main()

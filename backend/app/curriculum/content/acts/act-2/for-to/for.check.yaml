@@ -1,0 +1,194 @@
+id: for.check
+template: check
+title:
+  en: A gift for the teacher
+  hi: आचार्य के लिए उपहार
+title_sa: परीक्षा
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.dat
+  mode: choice
+  prompt:
+    en: “To the boy.” Which word?
+    hi: ‘बालक को।’ कौन-सा शब्द?
+  explain:
+    en: 'The recipient: fourth case.'
+    hi: 'पाने वाला: चतुर्थी।'
+  roman: after
+  options:
+  - sa: बालकम्
+  - sa: बालकेन
+  - correct: true
+    sa: बालकाय
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.dat
+  mode: match
+  prompt:
+    en: Join each recipient to its meaning.
+    hi: हर पाने वाले को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{आय}} and {{आयै}}.'
+    hi: '{{आय}} और {{आयै}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: आचार्याय
+    right:
+      text:
+        en: to the teacher
+        hi: आचार्य को
+  - left:
+      sa: बालिकायै
+    right:
+      text:
+        en: to the girl
+        hi: बालिका को
+  - left:
+      sa: मित्राय
+    right:
+      text:
+        en: to the friend
+        hi: मित्र को
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - case.dat
+  mode: order
+  prompt:
+    en: 'Say: “I give a fruit to the girl.”'
+    hi: 'कहिए: ‘मैं बालिका को फल देता हूँ।’'
+  explain:
+    en: '{{अहं बालिकायै फलं ददामि}}.'
+    hi: '{{अहं बालिकायै फलं ददामि}}।'
+  roman: after
+  tokens:
+  - अहम्
+  - बालिकायै
+  - फलम्
+  - ददामि
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - case.dat-purpose
+  mode: choice
+  prompt:
+    en: “For study.” Which word?
+    hi: ‘पढ़ने के लिए।’ कौन-सा शब्द?
+  explain:
+    en: 'The purpose: fourth case.'
+    hi: 'उद्देश्य: चतुर्थी।'
+  roman: after
+  options:
+  - sa: पठनम्
+  - sa: पठनेन
+  - correct: true
+    sa: पठनाय
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - case.dat-purpose
+  mode: match
+  prompt:
+    en: Join each purpose to its meaning.
+    hi: हर उद्देश्य को उसके अर्थ से जोड़िए।
+  explain:
+    en: Fourth case for purpose.
+    hi: उद्देश्य के लिए चतुर्थी।
+  roman: after
+  pairs:
+  - left:
+      sa: भोजनाय
+    right:
+      text:
+        en: for a meal
+        hi: भोजन के लिए
+  - left:
+      sa: धनाय
+    right:
+      text:
+        en: for wealth
+        hi: धन के लिए
+  - left:
+      sa: सुखाय
+    right:
+      text:
+        en: for happiness
+        hi: सुख के लिए
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - case.dat
+  mode: choice
+  prompt:
+    en: Which phrase says “homage to the teacher”?
+    hi: ‘आचार्य को प्रणाम’ कौन-सा वाक्यांश है?
+  explain:
+    en: '{{नमः}} takes the fourth case.'
+    hi: '{{नमः}} चतुर्थी लेता है।'
+  roman: after
+  options:
+  - sa: नमः आचार्यम्
+  - sa: नमः आचार्येण
+  - correct: true
+    sa: नमः आचार्याय
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - case.dat
+  mode: engine
+  prompt:
+    en: Reorder the words and keep the meaning.
+    hi: शब्दों को फिर से लगाइए, अर्थ वही रखिए।
+  explain:
+    en: The endings carry the roles.
+    hi: भूमिकाएँ प्रत्ययों में हैं।
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: सीता बालकाय फलं ददाति
+    seed: 5
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - case.dat
+  - case.dat-purpose
+  mode: order
+  prompt:
+    en: 'Tell the Ācārya: “I give a gift to the teacher, for study.”'
+    hi: 'आचार्य से कहिए: ‘मैं पढ़ने के लिए आचार्य को उपहार देता हूँ।’'
+  explain:
+    en: '{{अहम् आचार्याय पठनाय फलं ददामि}}: the recipient and the purpose, both in the fourth case.'
+    hi: '{{अहम् आचार्याय पठनाय फलं ददामि}}: पाने वाला और उद्देश्य, दोनों चतुर्थी में।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “आचार्याय पठनाय फलं ददामि.” The golden spirit Dānaka laughs, and each of his fingers lights like a little lamp. “नमः आचार्याय,” he says, and bows. Far overhead the sky is turning the colour of a bruise. “झञ्झावातः आगच्छति!” he calls, and points upriver, where a dark wall of cloud is rolling in.
+      hi: “आचार्याय पठनाय फलं ददामि।” सुनहरा भूत दानक हँसता है, और उसकी हर उँगली छोटे दीपक-सी जल उठती है। “नमः आचार्याय,” वह कहता है और झुकता है। बहुत ऊपर आकाश चोट के रंग का होता जा रहा है। “झञ्झावातः आगच्छति!” वह पुकारता है और नदी की ऊपरी ओर इशारा करता है, जहाँ बादलों की एक काली दीवार लुढ़कती आ रही है।
+    failure:
+      en: Dānaka waits. Recipient first, then the gift, then the verb.
+      hi: दानक प्रतीक्षा करता है। पहले पाने वाला, फिर उपहार, फिर क्रिया।
+  tokens:
+  - अहम्
+  - आचार्याय
+  - पठनाय
+  - फलं
+  - ददामि

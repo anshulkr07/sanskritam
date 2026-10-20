@@ -1,0 +1,272 @@
+id: who.is
+template: scene
+title:
+  en: No word for “is”
+  hi: ‘है’ के लिए शब्द नहीं
+title_sa: अस्ति
+minutes: 6
+teaches:
+- sent.no-verb-to-be
+needs:
+- sent.nom-sg
+- verb.pres-3sg
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Who is who
+    hi: कौन कौन है
+  depth: core
+  image:
+    brief: Dādī pointing first at a boy on the ghat steps and then at the small grey-blue spirit, as though introducing them; Śuka looking from one to the other; calm river light.
+    alt:
+      en: A grandmother introduces a boy and a small spirit on the ghat
+      hi: घाट पर बालक और नन्हे भूत का परिचय कराती दादी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - ghataka
+    place: naditira
+    ratio: '4:3'
+    id: who-is-s1
+  narration:
+    en: 'The spirit points at the boy on the steps and then at himself. Dādī answers for him: “A boy. A spirit.” No “is” anywhere. “Sanskrit does not need it,” she says. “Put two names side by side, and one is the other.”'
+    hi: भूत सीढ़ियों पर बैठे बालक की ओर, फिर अपनी ओर इशारा करता है। दादी उसकी ओर से उत्तर देती हैं, “बालक। भूत।” ‘है’ कहीं नहीं। वे कहती हैं, “संस्कृत को उसकी ज़रूरत नहीं। दो नाम साथ रखिए, एक दूसरा हो जाता है।”
+- id: t1
+  kind: teach
+  title:
+    en: Two names, no “is”
+    hi: दो नाम, ‘है’ नहीं
+  depth: core
+  skills:
+  - sent.no-verb-to-be
+  body:
+    en: To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is needed. The verb {{अस्ति}} means “exists”, “there is”.
+    hi: ‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया {{अस्ति}} का अर्थ है ‘है’, ‘विद्यमान है’।
+  examples:
+  - sa: रामः बालकः।
+    meaning:
+      en: Rāma is a boy.
+      hi: राम बालक है।
+    words:
+    - sa: रामः
+      gloss:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: सीता बालिका।
+    meaning:
+      en: Sītā is a girl.
+      hi: सीता बालिका है।
+    words:
+    - sa: सीता
+      gloss:
+        en: Sītā
+        hi: सीता
+      check:
+        type: subanta
+        stem: सीता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालिका
+      gloss:
+        en: girl
+        hi: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: गङ्गा नदी।
+    meaning:
+      en: The Gaṅgā is a river.
+      hi: गंगा एक नदी है।
+    words:
+    - sa: गङ्गा
+      gloss:
+        en: the Gaṅgā
+        hi: गंगा
+      check:
+        type: subanta
+        stem: गङ्गा
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नदी
+      gloss:
+        en: river
+        hi: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: नदी अस्ति।
+    meaning:
+      en: There is a river.
+      hi: एक नदी है।
+    words:
+    - sa: नदी
+      gloss:
+        en: river
+        hi: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अस्ति
+      gloss:
+        en: is, exists
+        hi: है, विद्यमान है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sent.no-verb-to-be
+  mode: choice
+  prompt:
+    en: How do you say “Sītā is a girl”?
+    hi: ‘सीता बालिका है’ कैसे कहेंगे?
+  explain:
+    en: 'Two first-case words side by side: no verb for “is”. {{बालिकाम्}} is the object ending, not right here.'
+    hi: 'दो प्रथमा शब्द साथ-साथ: ‘है’ के लिए क्रिया नहीं। {{बालिकाम्}} कर्म का रूप है, यहाँ ठीक नहीं।'
+  roman: after
+  options:
+  - correct: true
+    sa: सीता बालिका
+  - sa: सीता बालिकाम्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sent.no-verb-to-be
+  mode: choice
+  prompt:
+    en: What does {{अस्ति}} mean?
+    hi: '{{अस्ति}} का क्या अर्थ है?'
+  explain:
+    en: '{{अस्ति}} says that something exists: {{नदी अस्ति}}, there is a river.'
+    hi: '{{अस्ति}} बताता है कि कुछ विद्यमान है: {{नदी अस्ति}}, एक नदी है।'
+  roman: show
+  options:
+  - correct: true
+    text:
+      en: exists, there is
+      hi: है, विद्यमान है
+  - text:
+      en: reads
+      hi: पढ़ता है
+  - text:
+      en: goes
+      hi: जाता है
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sent.no-verb-to-be
+  widget: mark_words
+  prompt:
+    en: Tap the sentence that says “Rāma is a boy” with no verb.
+    hi: बिना क्रिया के ‘राम बालक है’ कहने वाला वाक्य छुइए।
+  params:
+    passage:
+    - रामः
+    - बालकः
+    - सीता
+    - पठति
+    targets:
+    - रामः
+    - बालकः
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: Who is who
+    hi: कौन कौन है
+  depth: core
+  skills:
+  - sent.no-verb-to-be
+  mode: order
+  prompt:
+    en: 'Say it for the spirit: “The Gaṅgā is a river.”'
+    hi: 'भूत के लिए बोलिए: ‘गंगा एक नदी है।’'
+  explain:
+    en: '{{गङ्गा नदी}}: two first-case words, “is” understood.'
+    hi: '{{गङ्गा नदी}}: दो प्रथमा शब्द, ‘है’ अध्याहृत।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“गङ्गा नदी,” you say, and the river glitters. The spirit taps his own chest, then the step beneath him, and says a word of his own: “घाटकः।”'
+      hi: '“गङ्गा नदी,” आप कहते हैं और नदी झिलमिलाती है। भूत अपनी छाती थपथपाता है, फिर नीचे की सीढ़ी, और अपना एक शब्द बोलता है: “घाटकः।”'
+    failure:
+      en: The river stays still. Put the name first, then what it is.
+      hi: नदी स्थिर रहती है। पहले नाम, फिर वह क्या है।
+  tokens:
+  - गङ्गा
+  - नदी
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sent.no-verb-to-be
+  mode: order
+  prompt:
+    en: 'Say “Ghāṭaka is a ghost”: the name, then the word for ghost.'
+    hi: '‘घाटक भूत है’ कहिए: पहले नाम, फिर भूत के लिए शब्द।'
+  explain:
+    en: '{{घाटकः}} and {{भूतः}}, both first case: Ghāṭaka is a ghost.'
+    hi: '{{घाटकः}} और {{भूतः}}, दोनों प्रथमा: घाटक भूत है।'
+  roman: after
+  tokens:
+  - घाटकः
+  - भूतः
+- id: sum
+  kind: summary
+  title:
+    en: No “is”
+    hi: ‘है’ नहीं
+  depth: core
+  points:
+  - sa: रामः बालकः
+    text:
+      en: 'Two first-case words: one is the other.'
+      hi: 'दो प्रथमा शब्द: एक दूसरा है।'
+  - sa: अस्ति
+    text:
+      en: “Exists”, “there is”.
+      hi: ‘है’, ‘विद्यमान है’।
+  - text:
+      en: Sanskrit leaves “is” out.
+      hi: संस्कृत ‘है’ को छोड़ देती है।

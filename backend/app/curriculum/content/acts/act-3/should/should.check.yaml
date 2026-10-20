@@ -1,0 +1,166 @@
+id: should.check
+template: check
+title:
+  en: Say the rule
+  hi: नियम बताइए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: choice
+  prompt:
+    en: “He should go.” Which form?
+    hi: ‘उसे जाना चाहिए।’ कौन-सा रूप?
+  explain:
+    en: '{{गच्छेत्}}.'
+    hi: '{{गच्छेत्}}।'
+  roman: after
+  options:
+  - sa: गच्छति
+  - sa: गमिष्यति
+  - correct: true
+    sa: गच्छेत्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: type
+  prompt:
+    en: 'Say: “He should read.”'
+    hi: 'कहिए: ‘उसे पढ़ना चाहिए।’'
+  explain:
+    en: '{{पठेत्}}.'
+    hi: '{{पठेत्}}।'
+  roman: after
+  answers:
+  - पठेत्
+  tiles:
+  - पठे
+  - त्
+  - ति
+  - ः
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: match
+  prompt:
+    en: Join each form to its meaning.
+    hi: हर रूप को उसके अर्थ से जोड़िए।
+  explain:
+    en: Mind the ending.
+    hi: प्रत्यय का ध्यान रखिए।
+  roman: after
+  pairs:
+  - left:
+      sa: पठेः
+    right:
+      text:
+        en: you should read
+        hi: तुम्हें पढ़ना चाहिए
+  - left:
+      sa: पठेयम्
+    right:
+      text:
+        en: I should read
+        hi: मुझे पढ़ना चाहिए
+  - left:
+      sa: पठेम
+    right:
+      text:
+        en: we should read
+        hi: हमें पढ़ना चाहिए
+  - left:
+      sa: पठेयुः
+    right:
+      text:
+        en: they should read
+        hi: उन्हें पढ़ना चाहिए
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: choice
+  prompt:
+    en: “Perhaps it is …”. Which word?
+    hi: ‘शायद यह …’। कौन-सा शब्द?
+  explain:
+    en: '{{स्यात्}}.'
+    hi: '{{स्यात्}}।'
+  roman: after
+  options:
+  - sa: अस्ति
+  - sa: आसीत्
+  - correct: true
+    sa: स्यात्
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: choice
+  prompt:
+    en: “One should speak.” Which form of {{ब्रू}}?
+    hi: ‘बोलना चाहिए।’ {{ब्रू}} का कौन-सा रूप?
+  explain:
+    en: '{{ब्रूयात्}}.'
+    hi: '{{ब्रूयात्}}।'
+  roman: after
+  options:
+  - sa: ब्रवीति
+  - correct: true
+    sa: ब्रूयात्
+  - sa: अब्रवीत्
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: order
+  prompt:
+    en: 'Say: “One should not speak a lie.”'
+    hi: 'कहिए: ‘असत्य नहीं बोलना चाहिए।’'
+  explain:
+    en: '{{न असत्यं ब्रूयात्}}.'
+    hi: '{{न असत्यं ब्रूयात्}}।'
+  roman: after
+  tokens:
+  - न
+  - असत्यम्
+  - ब्रूयात्
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: order
+  prompt:
+    en: 'Tell Vidhika the king''s rule: “A king should protect his people.”'
+    hi: 'विधिक को राजा का नियम बताइए: ‘राजा को प्रजा की रक्षा करनी चाहिए।’'
+  explain:
+    en: '{{राजा प्रजां रक्षेत्}}.'
+    hi: '{{राजा प्रजां रक्षेत्}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“राजा प्रजां रक्षेत्,” you say, and Vidhika drops all his scrolls. They roll across the leaves and unroll by themselves, and every one is blank except one line: the rule you just spoke. “Mine,” he breathes. “I wrote it a thousand years ago and no one would read it.” The Vetāla grins at the ceiling of branches. “That is my answer to the riddle,” he says. “The king should feed the beggar.” Then, as the little spirit hurries off with his scrolls: “स उवाच,” says the Vetāla, to no one. “He said.”'
+      hi: '“राजा प्रजां रक्षेत्,” आप कहते हैं, और विधिक अपनी सारी पोथियाँ गिरा देता है। वे पत्तों पर लुढ़कती हैं और अपने-आप खुल जाती हैं, और हर एक कोरी है सिवाय एक पंक्ति के: जो नियम आपने अभी कहा। “मेरा,” वह साँस लेते हुए कहता है। “मैंने इसे हज़ार वर्ष पहले लिखा था और किसी ने नहीं पढ़ा।” वेताल शाखाओं की छत पर मुस्कराता है। “यही मेरी पहेली का उत्तर है,” वह कहता है। “राजा को भिखारी को भोजन देना चाहिए।” फिर, जब नन्हा भूत अपनी पोथियाँ लिए दौड़ जाता है: “स उवाच,” वेताल किसी से नहीं कहता। “उसने कहा।”'
+    failure:
+      en: 'The scrolls stay rolled. The rule: {{राजा प्रजां रक्षेत्}}.'
+      hi: 'पोथियाँ बँधी रहती हैं। नियम: {{राजा प्रजां रक्षेत्}}।'
+  tokens:
+  - राजा
+  - प्रजाम्
+  - रक्षेत्

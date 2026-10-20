@@ -77,20 +77,20 @@ export default function DailyLearningCard({ navigate }: { navigate: (route: stri
       </Pressable>
       <View style={styles.links}>
         <Pressable onPress={() => navigate("DailyReview")} accessibilityRole="button" accessibilityLabel={due === null ? "Open reviews" : `${due} reviews due`} style={styles.link}>
-          <Text style={styles.linkText}>{due === null ? "Review" : due > 0 ? `${due} due for review` : "Reviews complete"}</Text>
+          <View style={styles.quickLabel}><Ionicons name="checkmark-circle-outline" size={18} color={onFill.soft} /><Text style={styles.linkText}>{due === null ? "Review" : due > 0 ? `${due} due for review` : "Reviews complete"}</Text></View><Ionicons name="chevron-forward" size={16} color={onFill.soft} />
         </Pressable>
-        <Pressable onPress={() => navigate("Challenge")} accessibilityRole="button" accessibilityLabel="Start a short practice session" style={styles.link}><Text style={styles.linkText}>Short practice</Text></Pressable>
-        <Pressable onPress={() => navigate("OfflineLibrary")} accessibilityRole="button" accessibilityLabel="Open saved reading offline" style={styles.link}><Text style={styles.linkText}>Saved reading</Text></Pressable>
+        <Pressable onPress={() => navigate("Challenge")} accessibilityRole="button" accessibilityLabel="Start a short practice session" style={styles.link}><View style={styles.quickLabel}><Ionicons name="flash-outline" size={18} color={onFill.soft} /><Text style={styles.linkText}>Short practice</Text></View><Ionicons name="chevron-forward" size={16} color={onFill.soft} /></Pressable>
+        <Pressable onPress={() => navigate("OfflineLibrary")} accessibilityRole="button" accessibilityLabel="Open saved reading offline" style={styles.link}><View style={styles.quickLabel}><Ionicons name="bookmark-outline" size={18} color={onFill.soft} /><Text style={styles.linkText}>Saved reading</Text></View><Ionicons name="chevron-forward" size={16} color={onFill.soft} /></Pressable>
       </View>
     </View>}
   </View>;
 }
 const styles = StyleSheet.create({
-  card: { borderRadius: radius.sm, overflow: "hidden", backgroundColor: fill.sage, marginBottom: space.sm },
-  heading: { flexDirection: "row", alignItems: "center", gap: space.sm, paddingHorizontal: space.md, paddingVertical: space.sm, borderBottomWidth: 1, borderColor: onFill.faint },
-  icon: { width: 32, height: 32, borderRadius: 6, alignItems: "center", justifyContent: "center", backgroundColor: "rgba(255,248,238,0.14)" },
+  card: { borderRadius: 0, overflow: "hidden", backgroundColor: fill.sage, marginBottom: space.md },
+  heading: { flexDirection: "row", alignItems: "center", gap: space.sm, paddingHorizontal: space.md, paddingVertical: space.md, borderBottomWidth: 1, borderColor: onFill.faint },
+  icon: { width: 44, height: 44, borderRadius: 22, alignItems: "center", justifyContent: "center", backgroundColor: "rgba(255,248,238,0.14)" },
   headingText: { flex: 1 },
-  title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.base, color: onFill.text },
+  title: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 20, color: onFill.text },
   subtitle: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.xs, color: onFill.soft, marginTop: 1 },
   edit: { minWidth: 44, minHeight: 44, justifyContent: "center", alignItems: "center" },
   editText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: onFill.text },
@@ -100,9 +100,10 @@ const styles = StyleSheet.create({
   choice: { minHeight: 40, justifyContent: "center", borderRadius: 8, borderWidth: 1, borderColor: "rgba(255,248,238,0.55)", paddingHorizontal: space.sm },
   choiceOn: { backgroundColor: "rgba(255,248,238,0.14)", borderColor: onFill.text },
   choiceText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: onFill.text, fontSize: font.sizes.sm },
-  primary: { minHeight: 46, borderRadius: 8, backgroundColor: color.saffronBtn, flexDirection: "row", gap: space.xs, justifyContent: "center", alignItems: "center", paddingHorizontal: space.md },
+  primary: { minHeight: 52, borderRadius: 0, backgroundColor: fill.ink, flexDirection: "row", gap: space.xs, justifyContent: "center", alignItems: "center", paddingHorizontal: space.md },
   primaryText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: onFill.text, fontSize: font.sizes.base },
-  links: { flexDirection: "row", flexWrap: "wrap", gap: space.md, marginTop: space.xs },
-  link: { minHeight: 40, justifyContent: "center" },
-  linkText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: onFill.soft, textDecorationLine: "underline" },
+  links: { marginTop: space.sm },
+  link: { minHeight: 48, justifyContent: "space-between", flexDirection: "row", alignItems: "center", borderBottomWidth: 1, borderBottomColor: onFill.faint },
+  quickLabel: { flexDirection: "row", alignItems: "center", gap: 10 },
+  linkText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: onFill.text },
 });

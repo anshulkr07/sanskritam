@@ -1,0 +1,49 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: he-she-it
+title:
+  en: He, she, it
+  hi: 'वह: तीन लिंग'
+title_sa: लिङ्गम्
+status: ready
+episode:
+  summary:
+    en: The village fair downstream is full of people and things. Every noun is masculine, feminine or neuter, and the words around it follow.
+    hi: नीचे गाँव का मेला लोगों और चीज़ों से भरा है। हर संज्ञा पुल्लिंग, स्त्रीलिंग या नपुंसकलिंग है, और उसके आसपास के शब्द उसी का पालन करते हैं।
+  beats:
+  - 'सः, सा, तत्: he, she, it at the fair.'
+  - 'एषः, एषा, एतत्: this one.'
+  - Adjectives agree with their nouns.
+skills:
+- id: gen.three
+  title:
+    en: Three genders
+    hi: तीन लिंग
+- id: pron.tad
+  title:
+    en: 'He, she, it: सः सा तत्'
+    hi: 'वह: सः सा तत्'
+- id: pron.etad
+  title:
+    en: 'This one: एषः एषा एतत्'
+    hi: 'यह: एषः एषा एतत्'
+- id: gen.agreement
+  title:
+    en: Adjectives agree
+    hi: विशेषण मेल खाते हैं
+- id: gen.feminine-a
+  title:
+    en: 'Feminines in -आ: लता'
+    hi: 'आकारान्त स्त्रीलिंग: लता'
+  sutras:
+  - 4.1.4
+lessons:
+- gender.three
+- gender.tad
+- gender.this
+- gender.agree
+- gender.lata
+planned: []
+ghost: rangaka
+revision: gender.revision
+check: gender.check

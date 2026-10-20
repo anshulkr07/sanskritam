@@ -1,0 +1,326 @@
+id: you.i
+template: scene
+title:
+  en: I and we
+  hi: मैं और हम
+title_sa: अहम् आवां वयम्
+minutes: 6
+teaches:
+- pron.i-we
+needs:
+- verb.pres-3-du-pl
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The boatman
+    hi: नाविक
+  depth: core
+  image:
+    brief: A long wooden river boat nosing up to the ghat steps; a lean sun-browned boatman in a faded blue dhoti leaning on his bamboo pole and smiling; you, Dādī and Śuka on the steps; the small grey-blue spirit hanging back behind you.
+    alt:
+      en: A boatman leaning on his pole beside a boat at the ghat steps
+      hi: घाट की सीढ़ियों पर नाव के पास डंडी पर झुका नाविक
+    cast:
+    - you
+    - dadi
+    - shuka
+    - navika
+    place: naditira
+    ratio: '4:3'
+    id: you-i-s1
+  narration:
+    en: A boat noses up to the steps. The boatman, lean and sun-browned, leans on his pole. “Downstream, to the fair? Room for three and a parrot.” Śuka bristles. “Who are you?” the boatman asks the little ghat spirit, who has been following you. The spirit just points at you. Time to say “I”.
+    hi: एक नाव सीढ़ियों तक आती है। नाविक, दुबला और धूप में तपा, अपनी बाँस की डंडी पर झुकता है। “नीचे मेले तक? तीन लोगों और एक तोते की जगह है।” शुक फुफकारता है। नाविक घाट के नन्हे भूत से पूछता है जो आपके पीछे चला आया है, “तुम कौन हो?” भूत बस आपकी ओर इशारा करता है। ‘मैं’ कहने का समय आ गया।
+  lines:
+  - speaker: navika
+    sa: कः त्वम्?
+    gloss:
+      en: Who are you?
+      hi: तुम कौन हो?
+- id: t1
+  kind: teach
+  title:
+    en: I, we two, we
+    hi: मैं, हम दोनों, हम सब
+  depth: core
+  skills:
+  - pron.i-we
+  body:
+    en: '“I” is {{अहम्}}. For two it is {{आवाम्}} (we two), for many {{वयम्}} (we). The verb shows it too: {{अहं पठामि}} (I read), {{आवां पठावः}} (we two read), {{वयं पठामः}} (we read).'
+    hi: '‘मैं’ है {{अहम्}}। दो के लिए {{आवाम्}} (हम दोनों), अनेक के लिए {{वयम्}} (हम)। क्रिया भी यही बताती है: {{अहं पठामि}} (मैं पढ़ता हूँ), {{आवां पठावः}} (हम दोनों पढ़ते हैं), {{वयं पठामः}} (हम पढ़ते हैं)।'
+  rows:
+  - sa: अहम्
+    gloss:
+      en: I
+      hi: मैं
+    check:
+      type: subanta
+      stem: अस्मद्
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: आवाम्
+    gloss:
+      en: we two
+      hi: हम दोनों
+    check:
+      type: subanta
+      stem: अस्मद्
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Dvi
+  - sa: वयम्
+    gloss:
+      en: we (many)
+      hi: हम (अनेक)
+    check:
+      type: subanta
+      stem: अस्मद्
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Bahu
+  term:
+    sa: उत्तमपुरुषः
+    meaning:
+      en: 'first person: I, we'
+      hi: 'उत्तम पुरुष: मैं, हम'
+- id: tb1
+  kind: table
+  title:
+    en: Speaking about myself
+    hi: अपने बारे में
+  depth: core
+  skills:
+  - pron.i-we
+  caption:
+    en: I and we, with the verb “read”
+    hi: मैं और हम, क्रिया ‘पढ़ना’ के साथ
+  columns:
+  - en: Who
+    hi: कौन
+  - en: Pronoun
+    hi: सर्वनाम
+  - en: Verb
+    hi: क्रिया
+  rows:
+  - - text:
+        en: I
+        hi: मैं
+    - sa: अहम्
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठामि
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+  - - text:
+        en: we two
+        hi: हम दोनों
+    - sa: आवाम्
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: पठावः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+  - - text:
+        en: we
+        hi: हम
+    - sa: वयम्
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: पठामः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+  note:
+    en: 'The verb ending already says “I” or “we”, so the pronoun is often left out: {{पठामि}} alone means “I read”.'
+    hi: 'क्रिया का प्रत्यय ही ‘मैं’ या ‘हम’ बता देता है, इसलिए सर्वनाम अक्सर छोड़ दिया जाता है: अकेला {{पठामि}} का अर्थ ‘मैं पढ़ता हूँ’।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - pron.i-we
+  mode: choice
+  prompt:
+    en: You say “I”. Which word?
+    hi: आप ‘मैं’ कहते हैं। कौन-सा शब्द?
+  explain:
+    en: '{{अहम्}}: I.'
+    hi: '{{अहम्}}: मैं।'
+  roman: after
+  options:
+  - sa: त्वम्
+  - correct: true
+    sa: अहम्
+  - sa: वयम्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - pron.i-we
+  mode: match
+  prompt:
+    en: Join each pronoun to its meaning.
+    hi: हर सर्वनाम को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{अहम्}} one, {{आवाम्}} two, {{वयम्}} many.'
+    hi: '{{अहम्}} एक, {{आवाम्}} दो, {{वयम्}} अनेक।'
+  roman: after
+  pairs:
+  - left:
+      sa: अहम्
+    right:
+      text:
+        en: I
+        hi: मैं
+  - left:
+      sa: आवाम्
+    right:
+      text:
+        en: we two
+        hi: हम दोनों
+  - left:
+      sa: वयम्
+    right:
+      text:
+        en: we (many)
+        hi: हम (अनेक)
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - pron.i-we
+  mode: type
+  prompt:
+    en: Build “I read”.
+    hi: ‘मैं पढ़ता हूँ’ बनाइए।
+  explain:
+    en: '{{पठा}} + {{मि}}: {{पठामि}}; the {{अ}} lengthens before {{मि}}.'
+    hi: '{{पठा}} + {{मि}}: {{पठामि}}; {{मि}} से पहले {{अ}} दीर्घ हो जाता है।'
+  roman: after
+  answers:
+  - पठामि
+  tiles:
+  - पठा
+  - मि
+  - ति
+  - मः
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - pron.i-we
+  widget: mark_words
+  prompt:
+    en: Tap every word that means “I” or “we”.
+    hi: ‘मैं’ या ‘हम’ वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - अहम्
+    - त्वम्
+    - वयम्
+    - सः
+    - आवाम्
+    - ते
+    targets:
+    - अहम्
+    - वयम्
+    - आवाम्
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: Who goes
+    hi: कौन जाता है
+  depth: core
+  skills:
+  - pron.i-we
+  mode: choice
+  prompt:
+    en: You and Dādī go together. Which verb?
+    hi: आप और दादी साथ जाते हैं। कौन-सी क्रिया?
+  explain:
+    en: '“We two”: {{गच्छावः}}.'
+    hi: '‘हम दोनों’: {{गच्छावः}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “आवां गच्छावः,” you tell the boatman. He grins and holds out a hand. Beside you the little spirit gives a shiver, as if wondering what he himself should say.
+      hi: “आवां गच्छावः,” आप नाविक से कहते हैं। वह मुस्कुराकर हाथ बढ़ाता है। आपके पास नन्हा भूत सिहरता है, मानो सोच रहा हो कि स्वयं क्या कहे।
+    failure:
+      en: 'The boatman waits. Two people going together: {{आवाम्}}.'
+      hi: 'नाविक प्रतीक्षा करता है। दो लोग साथ जा रहे हैं: {{आवाम्}}।'
+  options:
+  - sa: गच्छामि
+  - correct: true
+    sa: गच्छावः
+  - sa: गच्छन्ति
+- id: pn
+  kind: teach
+  title:
+    en: The first person in Pāṇini
+    hi: पाणिनि में उत्तम पुरुष
+  depth: panini
+  skills:
+  - pron.i-we
+  sutras:
+  - 1.4.107
+  - 1.4.108
+  - 1.4.101
+  body:
+    en: Pāṇini calls the “I” person {{उत्तमः}}, “the highest”, and the “you” person {{मध्यमः}}, “the middle”. The “he, she, it” person, which you know already, is {{प्रथमः}}, “the first”. The names go in an order opposite to Hindi's.
+    hi: पाणिनि ‘मैं’ वाले पुरुष को {{उत्तमः}}, ‘तुम’ वाले को {{मध्यमः}} और ‘वह’ वाले को, जो आप जानते हैं, {{प्रथमः}} कहते हैं। नामों का क्रम हिन्दी के क्रम से उलटा है।
+  term:
+    sa: पुरुषः
+    meaning:
+      en: 'person: first, middle, last'
+      hi: 'पुरुष: प्रथम, मध्यम, उत्तम'
+- id: sum
+  kind: summary
+  title:
+    en: I and we
+    hi: मैं और हम
+  depth: core
+  points:
+  - sa: अहम् आवाम् वयम्
+    text:
+      en: I, we two, we.
+      hi: मैं, हम दोनों, हम।
+  - sa: पठामि · पठावः · पठामः
+    text:
+      en: The verb shows the person.
+      hi: क्रिया पुरुष को दिखाती है।
+  - text:
+      en: The pronoun can be left out.
+      hi: सर्वनाम छोड़ा जा सकता है।

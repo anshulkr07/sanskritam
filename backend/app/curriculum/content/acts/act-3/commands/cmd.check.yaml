@@ -1,0 +1,165 @@
+id: cmd.check
+template: check
+title:
+  en: Obey the orderer
+  hi: आदेशक की आज्ञा मानिए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.lot
+  mode: choice
+  prompt:
+    en: 'Order a friend: “Read!”'
+    hi: 'मित्र को आज्ञा दीजिए: ‘पढ़ो!’'
+  explain:
+    en: '{{पठ}}.'
+    hi: '{{पठ}}।'
+  roman: after
+  options:
+  - sa: पठति
+  - correct: true
+    sa: पठ
+  - sa: पठामि
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.lot
+  mode: type
+  prompt:
+    en: 'Order: “Speak!”'
+    hi: 'आज्ञा दीजिए: ‘बोलो!’'
+  explain:
+    en: '{{वद}}.'
+    hi: '{{वद}}।'
+  roman: after
+  answers:
+  - वद
+  tiles:
+  - व
+  - द
+  - ति
+  - गच्
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.lot
+  mode: choice
+  prompt:
+    en: 'Tell several: “Go!”'
+    hi: 'कई लोगों से कहिए: ‘जाओ!’'
+  explain:
+    en: '{{गच्छत}}.'
+    hi: '{{गच्छत}}।'
+  roman: after
+  options:
+  - sa: गच्छ
+  - sa: गच्छतु
+  - correct: true
+    sa: गच्छत
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.lot
+  mode: match
+  prompt:
+    en: Join each form to its meaning.
+    hi: हर रूप को उसके अर्थ से जोड़िए।
+  explain:
+    en: Four persons of the command.
+    hi: आज्ञा के चार रूप।
+  roman: after
+  pairs:
+  - left:
+      sa: पठतु
+    right:
+      text:
+        en: let him read
+        hi: वह पढ़े
+  - left:
+      sa: पठ
+    right:
+      text:
+        en: read!
+        hi: पढ़ो!
+  - left:
+      sa: पठानि
+    right:
+      text:
+        en: let me read
+        hi: मैं पढ़ूँ
+  - left:
+      sa: पठत
+    right:
+      text:
+        en: read, all of you
+        hi: तुम सब पढ़ो
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - verb.lot-polite
+  mode: choice
+  prompt:
+    en: 'Wish: “May it be!”'
+    hi: 'कामना कीजिए: ‘हो!’'
+  explain:
+    en: '{{भवतु}}.'
+    hi: '{{भवतु}}।'
+  roman: after
+  options:
+  - sa: भवति
+  - correct: true
+    sa: भवतु
+  - sa: भव
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - verb.lot-polite
+  mode: order
+  prompt:
+    en: 'Ask politely: “Please come.”'
+    hi: 'विनम्रता से कहिए: ‘कृपया आइए।’'
+  explain:
+    en: '{{भवान् आगच्छतु}}.'
+    hi: '{{भवान् आगच्छतु}}।'
+  roman: after
+  tokens:
+  - भवान्
+  - आगच्छतु
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - verb.lot-polite
+  - verb.lot
+  mode: order
+  prompt:
+    en: 'Bless the little spirit: “Be happy!”'
+    hi: 'नन्हे भूत को आशीर्वाद दीजिए: ‘सुखी रहो!’'
+  explain:
+    en: '{{सुखी भव}}: a blessing to one.'
+    hi: '{{सुखी भव}}: एक को आशीर्वाद।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“सुखी भव,” you say to Ādeśaka. The tiny red spirit''s long finger stops pointing and curls gently into a fist, then opens like a flower. He bows, once, and a drum no bigger than a nut taps three times at his side: “गच्छ, पठ, वद.” Overhead the Vetāla laughs: “He was never really angry, only unheard.” Then, in a lazy voice: “ह्यः सः अगच्छत्.” “Yesterday he went.” He does not say who.'
+      hi: '“सुखी भव,” आप आदेशक से कहते हैं। नन्हे लाल भूत की लम्बी उँगली इशारा करना बन्द कर देती है, धीरे से मुट्ठी बनती है, फिर फूल की तरह खुलती है। वह एक बार झुकता है, और उसकी बगल में अखरोट जितना ढोल तीन बार बजता है: “गच्छ, पठ, वद।” ऊपर वेताल हँसता है: “वह कभी सचमुच क्रोधित नहीं था, बस अनसुना था।” फिर सुस्त आवाज़ में: “ह्यः सः अगच्छत्।” “कल वह गया।” वह नहीं बताता कौन।'
+    failure:
+      en: 'The finger keeps pointing. A blessing to one person: {{सुखी भव}}.'
+      hi: 'उँगली इशारा करती रहती है। एक व्यक्ति को आशीर्वाद: {{सुखी भव}}।'
+  tokens:
+  - सुखी
+  - भव

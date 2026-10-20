@@ -12,7 +12,7 @@ export default function OfflineLibrary({ navigation }: { navigation: { navigate(
     <ScrollView contentContainerStyle={{ padding: 16, gap: 16 }}>
       <Text style={{ fontFamily: "Nunito_800ExtraBold", fontSize: 24, color: color.ink }}>Saved reading</Text>
       {!packs && <Text style={{ color: color.ink }}>{error ? "Couldn't load saved reading. Reopen this screen to retry." : "Loading saved chapters…"}</Text>}
-      {packs?.length === 0 && <Text style={{ color: color.ink }}>Open a text and choose Save text offline.</Text>}
+      {packs?.length === 0 && <Text style={{ color: color.ink }}>Your saved texts and audiobooks will appear here.</Text>}
       {packs?.map(p => <Pressable key={`${p.book}:${p.chapter}`} accessibilityRole="button" accessibilityLabel={`Read ${p.title}${p.chapter ? ` chapter ${p.chapter}` : ""} offline`}
         onPress={() => navigation.navigate(p.medium === "audio" ? "Listen" : "Book", { bookKey: p.book, chapter: p.chapter ?? undefined })}
         style={{ minHeight: 64, borderBottomWidth: 1, borderBottomColor: color.border, justifyContent: "center", gap: 4 }}>

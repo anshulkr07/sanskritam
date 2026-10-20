@@ -1,0 +1,35 @@
+{
+  "app_name": "Sanskritam",
+  "cta": "Coming soon",
+  "language": "Indian English",
+  "screens": {
+    "reader": [
+      "specs/gita-art-20261016/phone-fit-393.png",
+      [
+        0,
+        62,
+        393,
+        794
+      ]
+    ],
+    "story": [
+      "mobile/src/story/__fixtures__/screenshots/home-new-light-360.png",
+      null
+    ],
+    "sounds": [
+      "mobile/src/story/__fixtures__/screenshots/card-teach-light-360.png",
+      null
+    ],
+    "letters": [
+      "mobile/src/story/__fixtures__/screenshots/letter_builder-light-360.png",
+      null
+    ]
+  },
+  "screen_provenance": "Existing code-rendered QA captures; no generated UI. Reader capture removes test annotations only.",
+  "voice_and_music": "Flow native audio only. Sarvam narration excluded at owner request.",
+  "flow_models": [
+    "veo-3.1-lite",
+    "veo-3.1-fast",
+    "veo-3.1-quality"
+  ]
+}

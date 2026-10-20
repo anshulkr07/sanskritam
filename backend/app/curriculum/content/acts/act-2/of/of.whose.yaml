@@ -1,0 +1,483 @@
+id: of.whose
+template: scene
+title:
+  en: Whose is it?
+  hi: यह किसका है?
+title_sa: षष्ठी
+minutes: 6
+teaches:
+- case.gen
+needs:
+- case.abl
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The Ācārya's house
+    hi: आचार्य का घर
+  depth: core
+  image:
+    brief: 'The Ācārya''s small, lamplit house behind the school: a low desk with a palm-leaf book, a reed pen, a folded saffron shawl and a string of beads; a slim warm-gold spirit holding a tiny lamp touching each thing softly; you and Dādī sitting on the floor mat.'
+    alt:
+      en: A slim golden spirit with a tiny lamp touches old belongings in a teacher's house
+      hi: आचार्य के घर में पुरानी चीज़ों को छूता दीपक थामे भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - smritika
+    place: pathashala
+    ratio: '4:3'
+    id: of-whose-s1
+  narration:
+    en: 'The storm blows itself out. In the Ācārya''s own small house behind the school, a warm lamp is lit. Everything is old and full of use: a book, a pen, a shawl, a string of beads. A slim golden spirit with a tiny lamp moves among the things, touching each one softly, as if asking whose it was.'
+    hi: 'आँधी थम जाती है। पाठशाला के पीछे आचार्य के छोटे-से घर में एक गर्म दीपक जलता है। हर चीज़ पुरानी है और काम में आती हुई: एक पुस्तक, एक कलम, एक शॉल, मनकों की एक माला। छोटा दीपक थामे एक दुबला सुनहरा भूत चीज़ों के बीच घूमता है, हर एक को कोमलता से छूता है, मानो पूछ रहा हो कि यह किसकी थी।'
+  lines:
+  - speaker: dadi
+    sa: आचार्यस्य गृहम् अस्ति।
+    gloss:
+      en: This is the teacher's house.
+      hi: यह आचार्य का घर है।
+- id: t1
+  kind: teach
+  title:
+    en: 'Of, belonging to: the sixth case'
+    hi: 'का, की, के: षष्ठी'
+  depth: core
+  skills:
+  - case.gen
+  sutras:
+  - 2.3.50
+  body:
+    en: 'For “of” and “belonging to”, use the sixth case, {{षष्ठी}}: {{आचार्यस्य गृहम्}} (the teacher''s house), {{रामस्य पुस्तकम्}} (Rāma''s book). It joins one noun to another.'
+    hi: '‘का, की, के’ के लिए षष्ठी विभक्ति: {{आचार्यस्य गृहम्}} (आचार्य का घर), {{रामस्य पुस्तकम्}} (राम की पुस्तक)। यह एक संज्ञा को दूसरी से जोड़ती है।'
+  examples:
+  - sa: आचार्यस्य गृहम्।
+    meaning:
+      en: the teacher's house
+      hi: आचार्य का घर
+    words:
+    - sa: आचार्यस्य
+      gloss:
+        en: of the teacher
+        hi: आचार्य का
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: गृहम्
+      gloss:
+        en: house
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: रामस्य पुस्तकम्।
+    meaning:
+      en: Rāma's book
+      hi: राम की पुस्तक
+    words:
+    - sa: रामस्य
+      gloss:
+        en: of Rāma
+        hi: राम की
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: पुस्तकम्
+      gloss:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: वृक्षस्य पत्रम्।
+    meaning:
+      en: the tree's leaf
+      hi: पेड़ का पत्ता
+    words:
+    - sa: वृक्षस्य
+      gloss:
+        en: of the tree
+        hi: पेड़ का
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: पत्रम्
+      gloss:
+        en: leaf
+        hi: पत्ता
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: नद्याः जलम्।
+    meaning:
+      en: the river's water
+      hi: नदी का जल
+    words:
+    - sa: नद्याः
+      gloss:
+        en: of the river
+        hi: नदी का
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: जलम्
+      gloss:
+        en: water
+        hi: जल
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  term:
+    sa: षष्ठी
+    meaning:
+      en: 'the sixth case: of'
+      hi: 'छठी विभक्ति: का, की, के'
+- id: tb1
+  kind: table
+  title:
+    en: First case and sixth case
+    hi: प्रथमा और षष्ठी
+  depth: core
+  skills:
+  - case.gen
+  caption:
+    en: The same word as itself and as an owner
+    hi: वही शब्द स्वयं और स्वामी के रूप में
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: '1st: itself'
+    hi: 'प्रथमा: स्वयं'
+  - en: '6th: of'
+    hi: 'षष्ठी: का, की'
+  rows:
+  - - text:
+        en: teacher
+        hi: आचार्य
+    - sa: आचार्यः
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: आचार्यस्य
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: boy
+        hi: बालक
+    - sa: बालकः
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालकस्य
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: fruit
+        hi: फल
+    - sa: फलम्
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: फलस्य
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Sasthi
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: girl
+        hi: बालिका
+    - sa: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालिकायाः
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: river
+        hi: नदी
+    - sa: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नद्याः
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      highlight: true
+  note:
+    en: 'Masculine and neuter -अ: {{अस्य}}. Feminine -आ: {{आयाः}}. Feminine -ई: {{ई}} → {{याः}}.'
+    hi: पुंलिंग और नपुंसक -अ में {{स्य}}। स्त्रीलिंग -आ में {{आयाः}}। स्त्रीलिंग -ई में {{ई}} → {{याः}}।
+- id: t2
+  kind: teach
+  title:
+    en: Whose?
+    hi: किसका?
+  depth: core
+  skills:
+  - case.gen
+  body:
+    en: '{{कस्य}} means “whose?” (masculine) and {{कस्याः}} (feminine). {{कस्य पुस्तकम्?}} Whose book? The sixth case also names a part of a whole and any other link the other cases do not cover.'
+    hi: '{{कस्य}} का अर्थ ‘किसका?’ (पुंलिंग) और {{कस्याः}} (स्त्रीलिंग)। {{कस्य पुस्तकम्?}} किसकी पुस्तक? षष्ठी पूरे का भाग और अन्य सम्बन्ध भी बताती है जिन्हें दूसरी विभक्तियाँ नहीं कहतीं।'
+  examples:
+  - sa: कस्य पुस्तकम्?
+    meaning:
+      en: Whose book?
+      hi: किसकी पुस्तक?
+    words:
+    - sa: कस्य
+      gloss:
+        en: whose?
+        hi: किसका?
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: पुस्तकम्
+      gloss:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: कस्याः गृहम्?
+    meaning:
+      en: Whose house?
+      hi: किसका घर?
+    words:
+    - sa: कस्याः
+      gloss:
+        en: whose? (f)
+        hi: किसकी?
+      check:
+        type: subanta
+        stem: किम्
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: गृहम्
+      gloss:
+        en: house
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.gen
+  mode: choice
+  prompt:
+    en: “Rāma's book.” Which word for “Rāma”?
+    hi: ‘राम की पुस्तक।’ ‘राम’ के लिए कौन-सा रूप?
+  explain:
+    en: 'Owner: sixth case.'
+    hi: 'स्वामी: षष्ठी।'
+  roman: after
+  options:
+  - sa: रामः
+  - sa: रामम्
+  - correct: true
+    sa: रामस्य
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.gen
+  mode: match
+  prompt:
+    en: Join each owner to its meaning.
+    hi: हर स्वामी को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{स्य}} and {{याः}}: the sixth-case endings.'
+    hi: '{{स्य}} और {{याः}}: षष्ठी के प्रत्यय।'
+  roman: after
+  pairs:
+  - left:
+      sa: आचार्यस्य
+    right:
+      text:
+        en: of the teacher
+        hi: आचार्य का
+  - left:
+      sa: बालिकायाः
+    right:
+      text:
+        en: of the girl
+        hi: बालिका की
+  - left:
+      sa: वृक्षस्य
+    right:
+      text:
+        en: of the tree
+        hi: पेड़ का
+  - left:
+      sa: नद्याः
+    right:
+      text:
+        en: of the river
+        hi: नदी का
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - case.gen
+  widget: mark_words
+  prompt:
+    en: Tap every word that says “of …”.
+    hi: ‘…का’ बताने वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - आचार्यस्य
+    - आचार्यः
+    - रामस्य
+    - रामः
+    - बालिकायाः
+    - बालिका
+    targets:
+    - आचार्यस्य
+    - रामस्य
+    - बालिकायाः
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: The teacher's book
+    hi: आचार्य की पुस्तक
+  depth: core
+  skills:
+  - case.gen
+  mode: order
+  prompt:
+    en: 'Say: “This is the teacher''s book.”'
+    hi: 'कहिए: ‘यह आचार्य की पुस्तक है।’'
+  explain:
+    en: '{{आचार्यस्य पुस्तकम्}}: the owner in the sixth case.'
+    hi: '{{आचार्यस्य पुस्तकम्}}: स्वामी षष्ठी में।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “आचार्यस्य पुस्तकम्,” you say, touching the old palm-leaf book. The golden spirit lifts her tiny lamp and the book's pages glow, remembering. “आचार्यस्य लेखनी,” says Dādī. The glow runs to the pen.
+      hi: “आचार्यस्य पुस्तकम्,” आप कहते हैं, पुराने ताड़पत्र की पुस्तक को छूते हुए। सुनहरा भूत अपना छोटा दीपक उठाती है और पुस्तक के पन्ने चमक उठते हैं, याद करते हुए। “आचार्यस्य लेखनी,” दादी कहती हैं। चमक कलम तक दौड़ जाती है।
+    failure:
+      en: The book stays dim. The owner comes first, in the sixth case.
+      hi: पुस्तक धुँधली रहती है। पहले स्वामी, षष्ठी में।
+  tokens:
+  - आचार्यस्य
+  - पुस्तकम्
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's “rest”
+    hi: पाणिनि का ‘शेष’
+  depth: panini
+  skills:
+  - case.gen
+  sutras:
+  - 2.3.50
+  body:
+    en: 'Sūtra 2.3.50, {{षष्ठी शेषे}}, gives the sixth case to “the rest”: every link between two nouns that the other kāraka-cases do not express. That is why it covers owner, part, kin and more.'
+    hi: 'सूत्र 2.3.50, {{षष्ठी शेषे}}, ‘शेष’ को षष्ठी देता है: दो संज्ञाओं के बीच का हर वह सम्बन्ध जिसे अन्य कारक-विभक्तियाँ नहीं कहतीं। इसीलिए वह स्वामी, भाग, नाते और बहुत कुछ को ढकती है।'
+  term:
+    sa: शेषः
+    meaning:
+      en: 'the remainder: other relations'
+      hi: 'शेष: अन्य सम्बन्ध'
+- id: sum
+  kind: summary
+  title:
+    en: Of
+    hi: का, की, के
+  depth: core
+  points:
+  - sa: आचार्यस्य गृहम्
+    text:
+      en: 'The sixth case: of, belonging to.'
+      hi: 'षष्ठी: का, की, के।'
+  - sa: कस्य · कस्याः
+    text:
+      en: Whose?
+      hi: किसका? किसकी?
+  - sa: स्य · आयाः · याः
+    text:
+      en: The singular endings.
+      hi: एकवचन प्रत्यय।

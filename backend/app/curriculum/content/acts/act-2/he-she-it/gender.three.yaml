@@ -1,0 +1,333 @@
+id: gender.three
+template: scene
+title:
+  en: Three genders
+  hi: तीन लिंग
+title_sa: लिङ्गानि
+minutes: 6
+teaches:
+- gen.three
+needs:
+- verb.as
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The fair
+    hi: मेला
+  depth: core
+  image:
+    brief: 'A riverside village fair: strings of paper flags, sweet sellers, a wooden wheel and a puppet booth with a red curtain where a puppeteer holds up a king, a queen and a golden crown puppet; you, Dādī and Śuka in the crowd, a small rainbow-coloured spirit peeping from behind the curtain.'
+    alt:
+      en: A puppet booth at a village fair with a king, a queen and a crown
+      hi: मेले में राजा, रानी और मुकुट वाली कठपुतली मंडली
+    cast:
+    - you
+    - dadi
+    - shuka
+    - rangaka
+    place: utsava
+    ratio: '4:3'
+    id: gender-three-s1
+  narration:
+    en: 'Downstream, the river bank is a festival: paper flags, sweet-sellers, a wooden wheel, a puppet booth with a red curtain. A puppeteer shows his cast: a king, a queen, a golden crown. Śuka insists the queen is a “he”. “Every Sanskrit word has a gender,” says Dādī, “and it is not always the one you expect.”'
+    hi: 'नदी के आगे का तट उत्सव बना है: काग़ज़ की झंडियाँ, मिठाई वाले, एक लकड़ी का चक्र, लाल परदे वाली कठपुतली की मंडली। कठपुतली वाला अपने पात्र दिखाता है: एक राजा, एक रानी, एक सुनहरा मुकुट। शुक अड़ा है कि रानी ‘पुल्लिंग’ है। दादी कहती हैं, “संस्कृत के हर शब्द का एक लिंग होता है, और वह हमेशा वैसा नहीं होता जैसा आप सोचें।”'
+  lines:
+  - speaker: dadi
+    sa: उत्सवे जनाः सन्ति।
+    gloss:
+      en: There are people at the fair.
+      hi: मेले में लोग हैं।
+- id: t1
+  kind: teach
+  title:
+    en: Masculine, feminine, neuter
+    hi: पुंलिंग, स्त्रीलिंग, नपुंसकलिंग
+  depth: core
+  skills:
+  - gen.three
+  body:
+    en: 'Every noun is masculine ({{पुंलिङ्गम्}}), feminine ({{स्त्रीलिङ्गम्}}) or neuter ({{नपुंसकलिङ्गम्}}). The typical endings: {{बालकः}} (masculine), {{बालिका}} (feminine), {{फलम्}} (neuter). People follow their sex; things take whatever gender their word has.'
+    hi: 'हर संज्ञा पुंलिंग, स्त्रीलिंग या नपुंसकलिंग होती है। विशिष्ट प्रत्यय: {{बालकः}} (पुंलिंग), {{बालिका}} (स्त्रीलिंग), {{फलम्}} (नपुंसकलिंग)। मनुष्य अपने लिंग के अनुसार चलते हैं; वस्तुएँ अपने शब्द का लिंग लेती हैं।'
+  term:
+    sa: लिङ्गम्
+    meaning:
+      en: gender
+      hi: लिंग
+- id: tb1
+  kind: table
+  title:
+    en: Nine nouns, three genders
+    hi: नौ संज्ञाएँ, तीन लिंग
+  depth: core
+  skills:
+  - gen.three
+  caption:
+    en: Masculine, feminine and neuter, one per row
+    hi: पुंलिंग, स्त्रीलिंग और नपुंसक, हर पंक्ति में एक-एक
+  columns:
+  - en: Masculine
+    hi: पुंलिंग
+  - en: Feminine
+    hi: स्त्रीलिंग
+  - en: Neuter
+    hi: नपुंसक
+  rows:
+  - - sa: बालकः
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: फलम्
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: वृक्षः
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: लता
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पुष्पम्
+      check:
+        type: subanta
+        stem: पुष्प
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: पुरुषः
+      check:
+        type: subanta
+        stem: पुरुष
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कन्या
+      check:
+        type: subanta
+        stem: कन्या
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गृहम्
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: सूर्यः
+      check:
+        type: subanta
+        stem: सूर्य
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: जलम्
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  note:
+    en: Masculine -{{अः}}; feminine -{{आ}} or -{{ई}}; neuter -{{अम्}}.
+    hi: पुंलिंग -{{अः}}; स्त्रीलिंग -{{आ}} या -{{ई}}; नपुंसक -{{अम्}}।
+- id: t2
+  kind: teach
+  title:
+    en: Grammar gender, not nature
+    hi: व्याकरण का लिंग, प्रकृति का नहीं
+  depth: core
+  skills:
+  - gen.three
+  body:
+    en: A river is feminine, a mountain masculine, water neuter, because of their words, not their nature. Even “wife” can be neuter ({{कलत्रम्}}) or plural masculine ({{दाराः}}). Learn the gender with each new noun.
+    hi: नदी स्त्रीलिंग है, पर्वत पुंलिंग, जल नपुंसक, इसलिए कि उनके शब्द ऐसे हैं, उनका स्वभाव नहीं। ‘पत्नी’ भी नपुंसक ({{कलत्रम्}}) या बहुवचन पुंलिंग ({{दाराः}}) हो सकता है। हर नई संज्ञा के साथ उसका लिंग सीखिए।
+  examples:
+  - sa: नदी
+    meaning:
+      en: 'a river: feminine'
+      hi: 'नदी: स्त्रीलिंग'
+    check:
+      type: subanta
+      stem: नदी
+      linga: Stri
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: पर्वतः
+    meaning:
+      en: 'a mountain: masculine'
+      hi: 'पर्वत: पुंलिंग'
+    check:
+      type: subanta
+      stem: पर्वत
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: जलम्
+    meaning:
+      en: 'water: neuter'
+      hi: 'जल: नपुंसक'
+    check:
+      type: subanta
+      stem: जल
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - gen.three
+  mode: match
+  prompt:
+    en: Join each word to its gender.
+    hi: हर शब्द को उसके लिंग से जोड़िए।
+  explain:
+    en: 'The ending gives the gender: {{अः}}, {{आ}}/{{ई}}, {{अम्}}.'
+    hi: 'प्रत्यय लिंग बताता है: {{अः}}, {{आ}}/{{ई}}, {{अम्}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: बालकः
+    right:
+      text:
+        en: masculine
+        hi: पुंलिंग
+  - left:
+      sa: बालिका
+    right:
+      text:
+        en: feminine
+        hi: स्त्रीलिंग
+  - left:
+      sa: फलम्
+    right:
+      text:
+        en: neuter
+        hi: नपुंसक
+  - left:
+      sa: नदी
+    right:
+      text:
+        en: feminine
+        hi: स्त्रीलिंग
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - gen.three
+  mode: choice
+  prompt:
+    en: Which word is neuter?
+    hi: नपुंसक शब्द कौन-सा है?
+  explain:
+    en: '{{पुष्पम्}} ends in {{अम्}}: neuter.'
+    hi: '{{पुष्पम्}} {{अम्}} पर समाप्त होता है: नपुंसक।'
+  roman: after
+  options:
+  - sa: वृक्षः
+  - sa: लता
+  - correct: true
+    sa: पुष्पम्
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - gen.three
+  widget: mark_words
+  prompt:
+    en: Tap every masculine word.
+    hi: हर पुंलिंग शब्द को छुइए।
+  params:
+    passage:
+    - बालकः
+    - लता
+    - फलम्
+    - पुरुषः
+    - नदी
+    - सूर्यः
+    targets:
+    - बालकः
+    - पुरुषः
+    - सूर्यः
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: The puppet cast
+    hi: कठपुतली के पात्र
+  depth: core
+  skills:
+  - gen.three
+  mode: choice
+  prompt:
+    en: The puppeteer holds up the queen. Which word fits a feminine noun?
+    hi: कठपुतली वाला रानी दिखाता है। स्त्रीलिंग संज्ञा के लिए कौन-सा रूप ठीक है?
+  explain:
+    en: '{{कन्या}}: a feminine word in -{{आ}}.'
+    hi: '{{कन्या}}: -{{आ}} वाला स्त्रीलिंग शब्द।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “कन्या,” you say, and the puppeteer lifts the queen high. A small multi-coloured face peeks out from behind the curtain, copies your word under its breath, and ducks back.
+      hi: “कन्या,” आप कहते हैं, और कठपुतली वाला रानी को ऊँचा उठाता है। परदे के पीछे से एक नन्हा रंग-बिरंगा चेहरा झाँकता है, आपका शब्द धीमे से दोहराता है और फिर छिप जाता है।
+    failure:
+      en: 'The queen does not rise. Feminine: look for an ending in {{आ}}.'
+      hi: 'रानी नहीं उठती। स्त्रीलिंग: {{आ}} पर समाप्त होने वाला रूप खोजिए।'
+  options:
+  - sa: राजकः
+  - correct: true
+    sa: कन्या
+  - sa: गृहम्
+- id: sum
+  kind: summary
+  title:
+    en: Three genders
+    hi: तीन लिंग
+  depth: core
+  points:
+  - sa: बालकः · बालिका · फलम्
+    text:
+      en: Masculine, feminine, neuter.
+      hi: पुंलिंग, स्त्रीलिंग, नपुंसक।
+  - sa: अः · आ · ई · अम्
+    text:
+      en: The typical endings.
+      hi: विशिष्ट प्रत्यय।
+  - text:
+      en: Gender follows the word, not nature.
+      hi: लिंग शब्द के अनुसार है, प्रकृति के नहीं।

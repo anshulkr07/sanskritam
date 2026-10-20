@@ -1,0 +1,530 @@
+id: lit.double
+template: scene
+title:
+  en: Doubling the root
+  hi: धातु का द्वित्व
+title_sa: बभूव जगाम
+minutes: 6
+teaches:
+- verb.lit
+needs:
+- verb.lan
+- verb.lrt
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The fifth night
+    hi: पाँचवीं रात
+  depth: core
+  image:
+    brief: 'The burning-ground grove at night: a small spirit shaped like a rolled-up storybook with stubby legs and a bright storyteller''s turban drumming on its own spine with two fingers; the Vetāla seated on a root in a dramatic storytelling pose; you, Dādī and Śuka around a small fire.'
+    alt:
+      en: A rolled-up storybook spirit in a turban drums on its own spine while the Vetāla tells a tale
+      hi: पगड़ी वाला लपेटी पोथी-सा भूत अपनी रीढ़ पर ताल देता, कथा सुनाता वेताल
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - kathaka
+    place: smashana
+    ratio: '4:3'
+    id: lit-double-s1
+  narration:
+    en: 'Tonight the Vetāla speaks differently. “‘Went’, ‘was’: those are for what you saw,” he says. “For what the old poets tell, the root doubles, like a drum: बभूव, जगाम, चकार.” A spirit shaped like a rolled-up storybook, in a storyteller''s turban, drums on his own spine. Dādī: “This is the voice of the epics: the past of what the teller did not see.”'
+    hi: 'आज वेताल अलग ढंग से बोलता है। “‘गया’, ‘था’: ये उसके लिए हैं जो तुमने देखा,” वह कहता है। “पुराने कवि जो सुनाते हैं, उसके लिए धातु दुगुनी हो जाती है, ढोल की तरह: बभूव, जगाम, चकार।” लपेटी हुई कथा-पोथी जैसा एक नन्हा भूत, कथावाचक की पगड़ी में, ताल देने को अपनी ही रीढ़ पर बजाता है। दादी: “यह महाकाव्यों की वाणी है: उसका भूतकाल जो कहने वाले ने नहीं देखा।”'
+  lines:
+  - speaker: dadi
+    sa: बभूव। जगाम। चकार।
+    gloss:
+      en: He became. He went. He did.
+      hi: वह हुआ। वह गया। उसने किया।
+  quote:
+    sa: आदित्यवर्मनामात्र बभूव नृपतिः पुरा
+    gloss:
+      en: Here, long ago, there was a king named Ādityavarman.
+      hi: यहाँ, बहुत पहले, आदित्यवर्मा नाम का एक राजा हुआ।
+    source: Kathāsaritsāgara 1.5 (read in the Digital Corpus of Sanskrit)
+- id: t1
+  kind: teach
+  title:
+    en: The story past
+    hi: कथा का भूतकाल
+  depth: core
+  skills:
+  - verb.lit
+  body:
+    en: '{{लिट्}} is the past of old tales and epics, for what the teller did not see. The beginning of the root is doubled: {{भू}} gives {{बभूव}} (he became), {{गम्}} gives {{जगाम}} (he went), {{कृ}} gives {{चकार}} (he did), {{पठ्}} gives {{पपाठ}} (he read).'
+    hi: '{{लिट्}} पुरानी कथाओं और महाकाव्यों का भूतकाल है, उसका जो कहने वाले ने नहीं देखा। धातु का आरम्भ दुगुना हो जाता है: {{भू}} से {{बभूव}} (वह हुआ), {{गम्}} से {{जगाम}} (वह गया), {{कृ}} से {{चकार}} (उसने किया), {{पठ्}} से {{पपाठ}} (उसने पढ़ा)।'
+  examples:
+  - sa: पुरा राजा बभूव।
+    meaning:
+      en: Long ago a king came to be.
+      hi: बहुत पहले एक राजा हुआ।
+    words:
+    - sa: पुरा
+      gloss:
+        en: long ago
+        hi: पुराने समय में
+    - sa: राजा
+      gloss:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बभूव
+      gloss:
+        en: became
+        hi: हुआ
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः वनम् जगाम।
+    meaning:
+      en: He went to the forest.
+      hi: वह वन गया।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: वनम्
+      gloss:
+        en: forest
+        hi: वन
+      check:
+        type: subanta
+        stem: वन
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: जगाम
+      gloss:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lit
+        purusha: Prathama
+        vacana: Eka
+  - sa: बालकः पुस्तकम् पपाठ।
+    meaning:
+      en: The boy read the book.
+      hi: बालक ने पुस्तक पढ़ी।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पुस्तकम्
+      gloss:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पपाठ
+      gloss:
+        en: read
+        hi: पढ़ी
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lit
+        purusha: Prathama
+        vacana: Eka
+  term:
+    sa: लिट्
+    meaning:
+      en: the story past
+      hi: कथा का भूतकाल
+- id: tb1
+  kind: table
+  title:
+    en: 'भू: the story past'
+    hi: 'भू: कथा का भूतकाल'
+  depth: core
+  skills:
+  - verb.lit
+  caption:
+    en: “He became, you became, I became”
+    hi: ‘वह हुआ, तुम हुए, मैं हुआ’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: बभूव
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: बभूवतुः
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Prathama
+        vacana: Dvi
+    - sa: बभूवुः
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: बभूविथ
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Madhyama
+        vacana: Eka
+    - sa: बभूवथुः
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Madhyama
+        vacana: Dvi
+    - sa: बभूव
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Madhyama
+        vacana: Bahu
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: बभूव
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Uttama
+        vacana: Eka
+    - sa: बभूविव
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Uttama
+        vacana: Dvi
+    - sa: बभूविम
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Uttama
+        vacana: Bahu
+  note:
+    en: The ending is {{-अ}} for “he”, {{-उः}} for “they”. The doubled {{ब}} is the sign.
+    hi: ‘वह’ के लिए प्रत्यय {{-अ}} है, ‘वे’ के लिए {{-उः}}। दुगुना {{ब}} चिह्न है।
+- id: tb2
+  kind: table
+  title:
+    en: 'गम्: the story past'
+    hi: 'गम्: कथा का भूतकाल'
+  depth: core
+  skills:
+  - verb.lit
+  caption:
+    en: “He went, you went, I went”
+    hi: ‘वह गया, तुम गए, मैं गया’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: जगाम
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lit
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: जग्मतुः
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lit
+        purusha: Prathama
+        vacana: Dvi
+    - sa: जग्मुः
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lit
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: जगमिथ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lit
+        purusha: Madhyama
+        vacana: Eka
+    - sa: जग्मथुः
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lit
+        purusha: Madhyama
+        vacana: Dvi
+    - sa: जग्म
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lit
+        purusha: Madhyama
+        vacana: Bahu
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: जगाम
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lit
+        purusha: Uttama
+        vacana: Eka
+    - sa: जग्मिव
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lit
+        purusha: Uttama
+        vacana: Dvi
+    - sa: जग्मिम
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lit
+        purusha: Uttama
+        vacana: Bahu
+  note:
+    en: 'Doubling turns a {{ग}} into {{ज}}: {{ज-गाम}}.'
+    hi: 'द्वित्व में {{ग}} {{ज}} बन जाता है: {{ज-गाम}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: choice
+  prompt:
+    en: “He became (in the tale).” Which form?
+    hi: ‘वह हुआ (कथा में)।’ कौन-सा रूप?
+  explain:
+    en: '{{बभूव}}: the doubled root {{ब-भूव}}.'
+    hi: '{{बभूव}}: दुगुनी धातु {{ब-भूव}}।'
+  roman: after
+  options:
+  - sa: अभवत्
+  - sa: भविष्यति
+  - correct: true
+    sa: बभूव
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: type
+  prompt:
+    en: 'Say: “He went (in the tale).”'
+    hi: 'कहिए: ‘वह गया (कथा में)।’'
+  explain:
+    en: '{{जगाम}}.'
+    hi: '{{जगाम}}।'
+  roman: after
+  answers:
+  - जगाम
+  tiles:
+  - ज
+  - गाम
+  - ग
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: match
+  prompt:
+    en: Join each present to its story past.
+    hi: हर वर्तमान को उसके कथा के भूतकाल से जोड़िए।
+  explain:
+    en: Look for the doubled start.
+    hi: दुगुनी शुरुआत देखिए।
+  roman: after
+  pairs:
+  - left:
+      sa: भवति
+    right:
+      sa: बभूव
+  - left:
+      sa: गच्छति
+    right:
+      sa: जगाम
+  - left:
+      sa: करोति
+    right:
+      sa: चकार
+  - left:
+      sa: पठति
+    right:
+      sa: पपाठ
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.lit
+  widget: mark_words
+  prompt:
+    en: Tap every story-past form.
+    hi: कथा के भूतकाल का हर रूप छुइए।
+  params:
+    passage:
+    - बभूव
+    - भवति
+    - जगाम
+    - गच्छति
+    - चकार
+    - करोति
+    targets:
+    - बभूव
+    - जगाम
+    - चकार
+  roman: show
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: order
+  prompt:
+    en: 'Say: “Long ago a king came to be.”'
+    hi: 'कहिए: ‘बहुत पहले एक राजा हुआ।’'
+  explain:
+    en: '{{पुरा राजा बभूव}}.'
+    hi: '{{पुरा राजा बभूव}}।'
+  roman: after
+  tokens:
+  - पुरा
+  - राजा
+  - बभूव
+- id: p5
+  kind: practice
+  title:
+    en: They became
+    hi: वे हुए
+  depth: core
+  skills:
+  - verb.lit
+  mode: choice
+  prompt:
+    en: “They became (in the tale).” Which form?
+    hi: ‘वे हुए (कथा में)।’ कौन-सा रूप?
+  explain:
+    en: '{{बभूवुः}}: they, many.'
+    hi: '{{बभूवुः}}: वे, अनेक।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“बभूवुः,” you say, and the storybook spirit''s turban tilts. All round the fire the air fills with the soft thud of a drum no one is playing: ब-भूवुः, ब-भूवुः. “That is the beat,” he whispers. “Old poets keep it so the tale can walk.”'
+      hi: '“बभूवुः,” आप कहते हैं, और पोथी-भूत की पगड़ी टेढ़ी हो जाती है। अलाव के चारों ओर हवा में एक ढोल की मद्धम थाप भर जाती है जिसे कोई नहीं बजा रहा: ब-भूवुः, ब-भूवुः। “यही ताल है,” वह फुसफुसाता है। “पुराने कवि इसे इसलिए रखते हैं कि कथा चल सके।”'
+    failure:
+      en: 'The drum stays silent. “They became”: {{बभूवुः}}.'
+      hi: 'ढोल चुप रहता है। ‘वे हुए’: {{बभूवुः}}।'
+  options:
+  - sa: बभूव
+  - sa: बभूवतुः
+  - correct: true
+    sa: बभूवुः
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's doubling
+    hi: पाणिनि का द्वित्व
+  depth: panini
+  skills:
+  - verb.lit
+  sutras:
+  - 3.2.115
+  - 6.1.8
+  - 6.1.1
+  - 7.4.62
+  body:
+    en: 'Sūtra 3.2.115, {{परोक्षे लिट्}}, gives {{लिट्}} for the unseen past. 6.1.8, {{लिटि धातोरनभ्यासस्य}}, and 6.1.1, {{एकाचो द्वे प्रथमस्य}}, double the root. 7.4.62, {{कुहोश्चुः}}, turns a guttural in the doubled part into a palatal: {{ग}} becomes {{ज}}, giving {{जगाम}}.'
+    hi: 'सूत्र 3.2.115, {{परोक्षे लिट्}}, अदृष्ट भूत के लिए {{लिट्}} देता है। 6.1.8, {{लिटि धातोरनभ्यासस्य}}, और 6.1.1, {{एकाचो द्वे प्रथमस्य}}, धातु को दुगुना करते हैं। 7.4.62, {{कुहोश्चुः}}, द्वित्व वाले भाग में कण्ठ्य को तालव्य कर देता है: {{ग}} {{ज}} बनता है, और {{जगाम}} बनता है।'
+- id: sum
+  kind: summary
+  title:
+    en: The story past
+    hi: कथा का भूतकाल
+  depth: core
+  points:
+  - sa: बभूव · जगाम · चकार
+    text:
+      en: He became, he went, he did.
+      hi: वह हुआ, वह गया, उसने किया।
+  - sa: द्वित्व
+    text:
+      en: The start of the root is doubled.
+      hi: धातु का आरम्भ दुगुना होता है।
+  - sa: बभूवुः
+    text:
+      en: They became.
+      hi: वे हुए।

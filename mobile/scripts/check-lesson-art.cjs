@@ -50,3 +50,20 @@ for (const topic of Object.values(guide.topics)) {
 assert.equal(findGuideArt('questions', 'unknown example', 'unknown'), undefined, 'Unreviewed examples stay unmapped');
 assert.equal(findGuideArt('stem-ending', 'गजः जलं पिबति', 'gajaḥ jalaṃ pibati'), 'guide-stem-ending-1', 'Existing teaching art survives');
 console.log(`Lesson art passed: ${Object.keys(EXTRA_LESSON_ART).length} new scenes, ${Object.keys(GUIDE_ART_MATCHES).length} exact mappings, ${Object.keys(guide.topics).length} illustrated openings.`);
+
+const { LEARNV2_LESSONS } = load(path.join(root, 'src/learnv2/catalogue.ts'));
+let openingCount = 0;
+for (const lesson of LEARNV2_LESSONS) {
+  assert.ok(lesson.cards.some(card => card.openingArt || card.assetId || card.assetIds?.length || card.guide?.chapterId), `Missing lesson artwork: ${lesson.id}`);
+  const opening = lesson.cards[0]?.openingArt;
+  if (!opening) continue;
+  openingCount++;
+  for (const variant of ['phone', 'tablet']) {
+    const key = `learn-v2/opening-${opening}-${variant}-v1.webp`;
+    const entry = JSON.parse(fs.readFileSync(path.join(root, 'src/components/artwork/remoteManifest.json'), 'utf8'))[key];
+    assert.ok(entry?.uri?.startsWith('https://cdn.vedicvalor.com/art/'));
+    assert.ok(fs.existsSync(path.join(root, 'assets', key)));
+    assert.ok(entry.width <= (variant === 'phone' ? 768 : 1536));
+  }
+}
+console.log(`Standalone lesson coverage: ${LEARNV2_LESSONS.length} illustrated lessons, ${openingCount} newly covered by chapter openers.`);

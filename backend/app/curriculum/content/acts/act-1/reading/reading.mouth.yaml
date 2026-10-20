@@ -1,0 +1,281 @@
+id: reading.mouth
+template: scene
+title:
+  en: Where every sound is made
+  hi: हर ध्वनि का स्थान
+title_sa: स्थानप्रयत्नौ
+minutes: 6
+teaches:
+- read.places
+needs:
+- script.cons.grid
+- script.vowel.compound
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The mouth lesson
+    hi: मुँह का पाठ
+  depth: core
+  image:
+    brief: Dādī setting a small brass hand mirror on the low reading desk beside the register; the pale-gold spirit Maunī pointing from the register to his own mouth; Śuka on the shelf looking at himself in the mirror.
+    alt:
+      en: A grandmother sets a brass mirror on a desk while a silent spirit points to his mouth
+      hi: पीतल का दर्पण रखती दादी और अपने मुँह की ओर इशारा करता भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - mauni
+    place: granthalaya
+    ratio: '4:3'
+    id: reading-mouth-s1
+  narration:
+    en: 'Maunī points at the register and then at his own mouth. Dādī understands: “To read his name properly you must know how each sound is made, where the mouth is, and what it does.” She sets a small brass mirror on the desk.'
+    hi: मौनी रजिस्टर की ओर, फिर अपने मुँह की ओर इशारा करता है। दादी समझ जाती हैं, “उसका नाम ठीक से पढ़ने के लिए जानना होगा कि हर ध्वनि कैसे बनती है, मुँह कहाँ है और क्या करता है।” वह मेज़ पर एक छोटा पीतल का दर्पण रख देती हैं।
+- id: t1
+  kind: teach
+  title:
+    en: Place and effort
+    hi: स्थान और प्रयत्न
+  depth: core
+  skills:
+  - read.places
+  body:
+    en: Every sound has a place, where the tongue or lips work, and an effort, how closely they work. Vowels leave the mouth open. Semivowels barely touch. Hisses almost touch. The five rows touch fully.
+    hi: हर ध्वनि का एक स्थान होता है, जहाँ जीभ या होंठ काम करते हैं, और एक प्रयत्न, यानी वे कितना पास आते हैं। स्वर मुँह खुला रखते हैं। अन्तःस्थ बस छूते हैं। ऊष्म लगभग छूते हैं। पाँच वर्ग पूरी तरह छूते हैं।
+  term:
+    sa: प्रयत्नः
+    meaning:
+      en: 'effort: how closely the mouth works'
+      hi: 'प्रयत्न: मुँह कितना पास आता है'
+- id: tb1
+  kind: table
+  title:
+    en: The four efforts
+    hi: चार प्रयत्न
+  depth: core
+  skills:
+  - read.places
+  caption:
+    en: How closely the mouth works
+    hi: मुँह कितना पास आता है
+  columns:
+  - en: Group
+    hi: समूह
+  - en: The mouth
+    hi: मुँह
+  - en: Letters
+    hi: अक्षर
+  rows:
+  - - text:
+        en: vowels
+        hi: स्वर
+    - text:
+        en: open, nothing touches
+        hi: खुला, कुछ नहीं छूता
+    - sa: अ इ उ
+  - - text:
+        en: hisses
+        hi: ऊष्म
+    - text:
+        en: almost touches
+        hi: लगभग छूता
+    - sa: श ष स ह
+  - - text:
+        en: semivowels
+        hi: अन्तःस्थ
+    - text:
+        en: touches lightly
+        hi: हल्का छूता
+    - sa: य र ल व
+  - - text:
+        en: the five rows
+        hi: पाँच वर्ग
+    - text:
+        en: touches fully
+        hi: पूरा छूता
+    - sa: क च ट त प
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - read.places
+  widget: mouth_map
+  prompt:
+    en: Tap the sounds that use two places, and watch both light up.
+    hi: दो स्थानों वाली ध्वनियों को छुइए और दोनों को जलते देखिए।
+  params:
+    letters:
+    - अ
+    - इ
+    - उ
+    - ए
+    - ओ
+    - व
+    - ङ
+    - म
+  roman: after
+- id: t2
+  kind: teach
+  title:
+    en: Two places at once
+    hi: एक साथ दो स्थान
+  depth: core
+  skills:
+  - read.places
+  body:
+    en: 'Some sounds use two places. {{ए}} is throat + palate; {{ओ}} is throat + lips; {{व}} is teeth + lips. Each nasal uses the nose and its own row: {{ङ}} throat + nose, {{म}} lips + nose.'
+    hi: 'कुछ ध्वनियाँ दो स्थानों का उपयोग करती हैं। {{ए}} कण्ठ + तालु है; {{ओ}} कण्ठ + ओष्ठ; {{व}} दन्त + ओष्ठ। हर नासिक्य नाक और अपनी पंक्ति का स्थान लेता है: {{ङ}} कण्ठ + नाक, {{म}} ओष्ठ + नाक।'
+  rows:
+  - sa: ए
+    gloss:
+      en: throat and palate
+      hi: कण्ठ और तालु
+  - sa: ओ
+    gloss:
+      en: throat and lips
+      hi: कण्ठ और ओष्ठ
+  - sa: व
+    gloss:
+      en: teeth and lips
+      hi: दन्त और ओष्ठ
+  - sa: ङ
+    gloss:
+      en: throat and nose
+      hi: कण्ठ और नाक
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - read.places
+  mode: match
+  prompt:
+    en: Join each sound to its places.
+    hi: हर ध्वनि को उसके स्थानों से जोड़िए।
+  explain:
+    en: '{{ए}} {{ओ}} {{व}} {{म}} each use two places.'
+    hi: '{{ए}} {{ओ}} {{व}} {{म}} हर एक दो स्थानों का उपयोग करता है।'
+  roman: after
+  pairs:
+  - left:
+      sa: ए
+    right:
+      text:
+        en: throat and palate
+        hi: कण्ठ और तालु
+  - left:
+      sa: ओ
+    right:
+      text:
+        en: throat and lips
+        hi: कण्ठ और ओष्ठ
+  - left:
+      sa: व
+    right:
+      text:
+        en: teeth and lips
+        hi: दन्त और ओष्ठ
+  - left:
+      sa: म
+    right:
+      text:
+        en: lips and nose
+        hi: ओष्ठ और नाक
+- id: p2
+  kind: practice
+  title:
+    en: The mirror
+    hi: दर्पण
+  depth: core
+  skills:
+  - read.places
+  mode: choice
+  prompt:
+    en: Which sound is made at the throat and the lips together?
+    hi: कौन-सी ध्वनि कण्ठ और होंठ दोनों से बनती है?
+  explain:
+    en: '{{ओ}}: throat + lips. {{ए}} and {{ऐ}} use the throat + palate.'
+    hi: '{{ओ}}: कण्ठ + ओष्ठ। {{ए}} और {{ऐ}} कण्ठ + तालु लेते हैं।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: 'Maunī shapes his lips into an ‘o’ in the mirror. A breath comes out, the first sound he has made in a very long time: “ओ…”'
+      hi: 'मौनी दर्पण में होंठों को ‘ओ’ का आकार देता है। साँस निकलती है, बहुत लम्बे समय में उसकी पहली ध्वनि: “ओ…”'
+    failure:
+      en: The mirror shows nothing new. Try again, with the throat and the lips.
+      hi: 'दर्पण में कुछ नया नहीं दिखता। फिर कोशिश कीजिए: कण्ठ और होंठ से।'
+  options:
+  - sa: ए
+  - correct: true
+    sa: ओ
+  - sa: ऐ
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - read.places
+  widget: mark_words
+  prompt:
+    en: Tap every letter made with the lips.
+    hi: होंठों से बनने वाले हर अक्षर को छुइए।
+  params:
+    passage:
+    - प
+    - क
+    - फ
+    - त
+    - ब
+    - च
+    - भ
+    - म
+    targets:
+    - प
+    - फ
+    - ब
+    - भ
+    - म
+  roman: after
+- id: pn
+  kind: teach
+  title:
+    en: The test for ‘same kind’
+    hi: ‘एक-सा’ की कसौटी
+  depth: panini
+  skills:
+  - read.places
+  sutras:
+  - 1.1.9
+  body:
+    en: 'Sūtra 1.1.9 says sounds with the same place and the same effort are {{सवर्ण}}, of one kind: {{इ}} and {{ई}} differ only in length; {{क}} and {{ख}} share a place but not an effort.'
+    hi: 'सूत्र 1.1.9 कहता है कि जिन ध्वनियों का स्थान और प्रयत्न एक हो, वे {{सवर्ण}} हैं: {{इ}} और {{ई}} केवल लम्बाई में अलग हैं; {{क}} और {{ख}} का स्थान एक है, पर प्रयत्न नहीं।'
+  term:
+    sa: सवर्णम्
+    meaning:
+      en: 'of one kind: same place and effort'
+      hi: 'एक-सा: वही स्थान और प्रयत्न'
+- id: sum
+  kind: summary
+  title:
+    en: Place and effort
+    hi: स्थान और प्रयत्न
+  depth: core
+  points:
+  - text:
+      en: Every sound has a place and an effort.
+      hi: हर ध्वनि का स्थान और प्रयत्न होता है।
+  - sa: ए ओ व
+    text:
+      en: Some sounds use two places.
+      hi: कुछ ध्वनियाँ दो स्थान लेती हैं।
+  - text:
+      en: Vowels open; hisses almost touch; semivowels touch lightly; rows touch fully.
+      hi: स्वर खुले; ऊष्म लगभग छूते; अन्तःस्थ हल्का; वर्ग पूरा।

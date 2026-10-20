@@ -6,6 +6,8 @@ import React, { useMemo } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
 import type { CanonText, Shloka } from "../api/client";
+import type { BookActivity } from "../services/bookActivity";
+import { useBookActivity } from "../hooks/useBookActivity";
 import CoverArt from "../components/book/CoverArt";
 import { haptics } from "../services/haptics";
 import { plain } from "../utils/text";
@@ -44,6 +46,7 @@ export default function BooksHome({
   canon,
   onOpen,
   onResume,
+  onContents,
   bottomPad,
 }: {
   media: Media;
@@ -54,9 +57,11 @@ export default function BooksHome({
   canon: CanonText[];
   onOpen: (key: string) => void;
   onResume: (key: string, at: number) => void;
+  onContents: (key: string) => void;
   /** The mini player floats above: pad the list so nothing hides under it. */
   bottomPad?: boolean;
 }) {
+  const activity = useBookActivity();
   const rails = useMemo(() => {
     const bySlug = new Map(groups.map((g) => [g.text?.slug ?? OTHER_KEY, g]));
     const canonBySlug = new Map(canon.map((c) => [c.slug, c]));
@@ -111,7 +116,7 @@ export default function BooksHome({
       ListHeaderComponent={
         <View style={{ gap: 18, marginBottom: 6 }}>
           <ReadHeader media={media} onMedia={onMedia} />
-          <ContinueReading groups={groups} allVerses={allVerses} positions={positions} onResume={onResume} onContents={onOpen} />
+          <ContinueReading groups={groups} allVerses={allVerses} positions={positions} activity={activity} onResume={onResume} onContents={onContents} />
         </View>
       }
       initialNumToRender={3}
@@ -133,7 +138,10 @@ export default function BooksHome({
               maxToRenderPerBatch={4}
               windowSize={3}
               getItemLayout={(_, index) => ({ length: 114, offset: 114 * index, index })}
-              renderItem={({ item: b }) => (
+              renderItem={({ item: b }) => {
+                const read = (activity[b.key] ?? []).filter(page => page.read).length;
+                const frac = b.count ? Math.min(1, read / b.count) : 0;
+                return <View style={styles.book}>
                 <Pressable
                   onPress={
                     soon
@@ -147,7 +155,7 @@ export default function BooksHome({
                   accessibilityRole="button"
                   accessibilityLabel={soon ? `${b.titleEn}. Coming soon.` : `${b.titleEn}. ${metaOf(b)}.`}
                   accessibilityState={{ disabled: soon }}
-                  style={[styles.book, soon && styles.bookSoon]}
+                  style={soon && styles.bookSoon}
                 >
                   <CoverArt bookKey={b.key} titleSa={b.titleSa} width={100} />
                   <Text style={styles.bookTitle} numberOfLines={2}>
@@ -157,7 +165,13 @@ export default function BooksHome({
                     {soon ? "Soon" : metaOf(b)}
                   </Text>
                 </Pressable>
-              )}
+                {!soon && <View style={{ gap: 4, marginTop: 7 }} accessibilityLabel={`${b.titleEn}: ${read} pages read${b.count ? ` of ${b.count}` : ""}`}>
+                  <ProgressLine frac={frac} />
+                  <Text style={[styles.bookMeta, { fontSize: 11 }]}>{b.count ? `${Math.round(frac * 100)}% read` : `${read} read`}</Text>
+                  <Pressable accessibilityRole="button" accessibilityLabel={`Contents of ${b.titleEn}`} onPress={() => onContents(b.key)} style={{ minHeight: 36, justifyContent: "center" }}><Text style={{ color: T.action, fontSize: 12, fontWeight: "700" }}>Contents</Text></Pressable>
+                </View>}
+                </View>;
+              }}
             />
           </View>
         );
@@ -171,12 +185,14 @@ function ContinueReading({
   groups,
   allVerses,
   positions,
+  activity,
   onResume,
   onContents,
 }: {
   groups: { text: CanonText | null; verses: Shloka[] }[];
   allVerses: Shloka[];
   positions: Record<string, number>;
+  activity: BookActivity;
   onResume: (key: string, at: number) => void;
   onContents: (key: string) => void;
 }) {
@@ -190,10 +206,10 @@ function ContinueReading({
     }
     for (const c of candidates) {
       const at = positions[c.key] ?? 0;
-      if (c.verses.length > 0 && at > 0 && at < c.verses.length) return { ...c, at };
+      if (c.verses.length > 0 && (at > 0 || activity[c.key]?.some(page => page.read)) && at < c.verses.length) return { ...c, at };
     }
     return null;
-  }, [groups, allVerses, positions]);
+  }, [groups, allVerses, positions, activity]);
   if (!row) return null;
 
   const total = row.verses.length;
@@ -203,7 +219,8 @@ function ContinueReading({
     chapter && chapter.num !== null && chapters.length > 1
       ? `Chapter ${chapter.num} · verse ${pos + 1} of ${chapter.verses.length}`
       : `Verse ${row.at + 1} of ${total}`;
-  const pct = Math.round((row.at / Math.max(1, total)) * 100);
+  const readCount = (activity[row.key] ?? []).filter(page => page.read).length;
+  const pct = Math.min(100, Math.round((readCount / Math.max(1, total)) * 100));
   const address = addressOf(row.verses[row.at]);
 
   return (
@@ -224,7 +241,7 @@ function ContinueReading({
             {where}
           </Text>
           <View style={styles.cardBarRow}>
-            <ProgressLine frac={row.at / Math.max(1, total)} style={{ flex: 1 }} />
+            <ProgressLine frac={readCount / Math.max(1, total)} style={{ flex: 1 }} />
             <Text style={styles.cardPct}>{pct}% read</Text>
           </View>
         </View>

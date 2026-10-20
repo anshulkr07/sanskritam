@@ -1,0 +1,209 @@
+id: vc1.revision
+template: revision
+title:
+  en: Everything about classes 1, 4, 6 and 10
+  hi: गण 1, 4, 6 और 10 के बारे में सब कुछ
+title_sa: गणसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The four signs
+    hi: चार चिह्न
+  depth: core
+  section: core
+  rows:
+  - skill: verb.class-1
+    rule:
+      en: 'Class 1: root with strengthened vowel + {{-अ-}}: {{भवति}}, {{नयति}}, {{जयति}}, {{शोचति}}.'
+      hi: 'गण 1: बलवान् स्वर वाली धातु + {{-अ-}}: {{भवति}}, {{नयति}}, {{जयति}}, {{शोचति}}।'
+    sutras:
+    - 3.1.68
+    - 7.3.84
+    - 6.1.78
+    tag: core
+    taught_in: vc1.bhu#tb1
+  - skill: verb.class-4
+    rule:
+      en: 'Class 4: root + {{-य-}}: {{नृत्यति}}, {{कुप्यति}}, {{नश्यति}}.'
+      hi: 'गण 4: धातु + {{-य-}}: {{नृत्यति}}, {{कुप्यति}}, {{नश्यति}}।'
+    sutras:
+    - 3.1.69
+    tag: core
+    taught_in: vc1.div#tb1
+  - skill: verb.class-6
+    rule:
+      en: 'Class 6: root + {{-अ-}}, no strengthening: {{तुदति}}, {{लिखति}}, {{विशति}}.'
+      hi: 'गण 6: धातु + {{-अ-}}, बिना बल के: {{तुदति}}, {{लिखति}}, {{विशति}}।'
+    sutras:
+    - 3.1.77
+    - 1.1.5
+    tag: core
+    taught_in: vc1.tud#tb1
+  - skill: verb.class-10
+    rule:
+      en: 'Class 10: root + {{-अय-}}: {{चोरयति}}, {{कथयति}}, {{पूजयति}}.'
+      hi: 'गण 10: धातु + {{-अय-}}: {{चोरयति}}, {{कथयति}}, {{पूजयति}}।'
+    sutras:
+    - 3.1.25
+    - 7.3.86
+    tag: core
+    taught_in: vc1.cur#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: How to tell the class
+    hi: गण कैसे पहचानें
+  depth: core
+  section: conditions
+  rows:
+  - skill: verb.class-1
+    rule:
+      en: A {{-य-}} before the ending means class 4; {{-अय-}} means class 10.
+      hi: प्रत्यय से पहले {{-य-}} हो तो गण 4; {{-अय-}} हो तो गण 10।
+    tag: good
+    taught_in: vc1.div#t1
+  - skill: verb.class-6
+    rule:
+      en: 'A plain {{-अ-}}: class 1 if the vowel is strengthened ({{जयति}}), class 6 if not ({{लिखति}}).'
+      hi: 'सादा {{-अ-}}: बल वाला स्वर हो तो गण 1 ({{जयति}}), न हो तो गण 6 ({{लिखति}})।'
+    tag: good
+    taught_in: vc1.tud#tb2
+  - skill: verb.class-1
+    rule:
+      en: The dictionary lists the class with the root, so look it up when unsure.
+      hi: कोश धातु के साथ गण लिखता है, इसलिए अनिश्चित हों तो देख लीजिए।
+    tag: good
+    taught_in: vc1.bhu#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: verb.class-1
+    rule:
+      en: 'Some class 1 roots change their stem: {{गम्}} gives {{गच्छति}}, {{पा}} gives {{पिबति}}, {{स्था}} gives {{तिष्ठति}}, {{दृश्}} gives {{पश्यति}}.'
+      hi: 'गण 1 की कुछ धातुओं का अंग बदलता है: {{गम्}} से {{गच्छति}}, {{पा}} से {{पिबति}}, {{स्था}} से {{तिष्ठति}}, {{दृश्}} से {{पश्यति}}।'
+    example:
+      sa: गच्छति
+      meaning:
+        en: he goes
+        hi: वह जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Bhvadi
+    tag: rare
+    new_here: true
+  - skill: verb.class-10
+    rule:
+      en: 'A few class 10 roots also have a plain form: {{चिन्त्}} gives both {{चिन्तति}} and {{चिन्तयति}}.'
+      hi: 'गण 10 की कुछ धातुओं का सादा रूप भी मिलता है: {{चिन्त्}} से {{चिन्तति}} और {{चिन्तयति}} दोनों।'
+    example:
+      sa: चिन्तयति
+      meaning:
+        en: he thinks
+        hi: वह सोचता है
+      check:
+        type: tinanta
+        dhatu: चिन्त्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Curadi
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: verb.class-6
+    rule:
+      en: 'Do not strengthen a class 6 root: {{लिखति}}, not {{लेखति}}.'
+      hi: 'गण 6 की धातु को बलवान् मत कीजिए: {{लिखति}}, {{लेखति}} नहीं।'
+    tag: core
+    taught_in: vc1.tud#p1
+  - skill: verb.class-10
+    rule:
+      en: 'Do not drop the {{-अय-}}: {{कथयति}}, not {{कथति}}.'
+      hi: '{{-अय-}} मत छोड़िए: {{कथयति}}, {{कथति}} नहीं।'
+    tag: core
+    taught_in: vc1.cur#p1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: verb.class-1
+    rule:
+      en: '{{कर्तरि शप्}}, {{दिवादिभ्यः श्यन्}}, {{तुदादिभ्यः शः}}, {{चुरादिभ्यो णिच्}}: the four signs.'
+      hi: '{{कर्तरि शप्}}, {{दिवादिभ्यः श्यन्}}, {{तुदादिभ्यः शः}}, {{चुरादिभ्यो णिच्}}: चार चिह्न।'
+    sutras:
+    - 3.1.68
+    - 3.1.69
+    - 3.1.77
+    - 3.1.25
+    tag: core
+    taught_in: vc1.bhu#pn
+  - skill: verb.class-6
+    rule:
+      en: '{{क्ङिति च}} stops the strengthening before the marked sign of class 6.'
+      hi: '{{क्ङिति च}} गण 6 के चिह्नित प्रत्यय से पहले बलवान् होना रोकता है।'
+    sutras:
+    - 1.1.5
+    tag: core
+    taught_in: vc1.tud#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: verb.class-1
+    formula: भू → भवति · नी → नयति
+    rule:
+      en: class 1
+      hi: गण 1
+    tag: core
+    taught_in: vc1.bhu#tb1
+  - skill: verb.class-4
+    formula: नृत् → नृत्यति
+    rule:
+      en: class 4
+      hi: गण 4
+    tag: core
+    taught_in: vc1.div#tb1
+  - skill: verb.class-6
+    formula: तुद् → तुदति
+    rule:
+      en: class 6
+      hi: गण 6
+    tag: core
+    taught_in: vc1.tud#tb1
+  - skill: verb.class-10
+    formula: चुर् → चोरयति
+    rule:
+      en: class 10
+      hi: गण 10
+    tag: core
+    taught_in: vc1.cur#tb1

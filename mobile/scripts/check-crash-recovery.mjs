@@ -71,3 +71,35 @@ request = Promise.resolve(data);
 await Promise.all([cache.getParvaCalendar(key, opts), cache.getParvaCalendar(key, { ...opts, days: 120 })]);
 assert.equal(calls, 5, "different calendar windows are not merged");
 console.log("Crash fallback, recovery, diagnostic privacy/offline handling and calendar concurrency checks passed.");
+
+// Descriptions render before the slow timing calculation; cached calendars also
+// render immediately while a refresh is still pending.
+modules.delete(resolve(root, "src/parva/cache.ts"));
+const saved = new Map();
+const storage = { getItem: async key => saved.get(key) ?? null, setItem: async (key,value) => { saved.set(key,value); } };
+let finishCalendar, finishPage;
+const calendarGate = new Promise(resolve => { finishCalendar = resolve; });
+const pageGate = new Promise(resolve => { finishPage = resolve; });
+const pageCalls = [];
+const fastBody = { slug: "diwali", body: { summary: "Festival description" }, times: [], date: null };
+const fastCache = load("src/parva/cache.ts", {
+  "@react-native-async-storage/async-storage": storage,
+  "./api": { parvaCalendar: () => calendarGate, parvaPage: args => { pageCalls.push(args); return args.lat == null ? Promise.resolve(fastBody) : pageGate; } },
+});
+const calendarData = { occurrences: [{ slug: "diwali", date: "2026-10-12" }] };
+saved.set(fastCache.cacheKey(key,opts), JSON.stringify({ fetched: opts.start, fetchedAt: 1, tz: opts.tz, start: opts.start, days: opts.days, data: calendarData }));
+const renderedCalendars = [];
+const refreshing = fastCache.getParvaCalendar(key,opts,data => renderedCalendars.push(data));
+await new Promise(resolve => setImmediate(resolve));
+assert.deepEqual(renderedCalendars,[calendarData],"Cached dates are visible while fresh calculations wait");
+finishCalendar(calendarData);await refreshing;
+const renderedBodies = [];
+const richPage = fastCache.getParvaPage({ ...key,slug:"diwali",variant:"",date:opts.start,tz:opts.tz },{year:2026,lat:key.lat,lon:key.lon},data => renderedBodies.push(data));
+await new Promise(resolve => setImmediate(resolve));
+assert.equal(pageCalls.length,2);
+assert.equal(pageCalls[0].lat,undefined,"Fast content request skips astronomical calculations");
+assert.deepEqual(renderedBodies,[fastBody],"Description is visible before timing response");
+const timedBody = {...fastBody,date:opts.start,times:[{key:"tithi",start:"2026-10-12T12:00:00Z",end:null}]};
+finishPage(timedBody);assert.equal(await richPage,timedBody);
+assert.ok([...saved.values()].some(raw=>raw.includes('"tithi"')),"Final calculated page persists for next launch");
+console.log("Festival first-render PASS: cached dates and unlocated descriptions render before slow timing requests.");

@@ -1,0 +1,16 @@
+{
+  "key": "18-070",
+  "revision": 2,
+  "mode": "edit",
+  "composition_policy": "phone-portrait-9x16-20261019",
+  "master": "results/gita-art-20261016/masters/18-070-v2.png",
+  "prompt": "Use case: precise-object-edit. Edit only the visible manuscript and book surfaces in the supplied portrait watercolor for Bhagavad Gita 18.070. Remove ALL writing, pseudo-Sanskrit, characters, glyphs and writing-like horizontal strokes from EVERY open book and manuscript, including the teacher's book and any student's manuscript. Replace these marks with plain warm natural palm-leaf or paper surfaces, subtle natural grain and binding details only. Preserve the books' shapes, positions, angles and bindings. Keep every person, face, hand, pose, clothing, normal forehead adornment, tree, buildings, landscape, objects, watercolor style, light, palette and full 9:16 portrait framing unchanged. No typography, labels, sacred written syllables, explanatory marks, arrows or watermark. Sanskrit and translations remain separate live app text.",
+  "prompt_sha256": "a8832888b1e7abb059b5aa855bf002760716e8b455b580e2fa7d4eb0fdbe3d25",
+  "reference_images": [
+    {
+      "path": "results/gita-art-20261016/delivery/18-070-tablet-v1.webp",
+      "sha256": "0f97723ea173f60fd862dbf7748d3432fe9b1b1b4b8acbfa78ec8c019d155366"
+    }
+  ],
+  "reason": "Native visual review found pseudo-writing on manuscripts; remove before publication."
+}

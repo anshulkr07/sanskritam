@@ -1,0 +1,321 @@
+id: vs.glide
+template: scene
+title:
+  en: A vowel becomes a glide
+  hi: स्वर बनता है अर्धस्वर
+title_sa: इत्यादि यद्यपि
+minutes: 6
+teaches:
+- sandhi.yan
+needs:
+- sandhi.vrddhi
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The fourth statue
+    hi: चौथी प्रतिमा
+  depth: core
+  image:
+    brief: The fourth statue holding a polished bronze mirror, in which the three travellers are reflected; Śuka peering into it; Dādī smiling; the earlier three statues behind; Lubdhaka's foreman in the background with a notebook.
+    alt:
+      en: A stone statue holds a mirror in which three travellers are reflected
+      hi: दर्पण थामे पत्थर की प्रतिमा, जिसमें तीन यात्रियों का प्रतिबिम्ब दिखता है
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - svarika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: vs-glide-s1
+  narration:
+    en: The fourth statue holds a mirror. “इत्यादि,” she says. “यद्यपि.” “स्वागतम्.” “Those have a य, a द्य, a व,” says Śuka. “Something is wearing a different vowel.” “The इ turns into य्,” says Dādī, “the उ into व्, the ऋ into र्. A vowel becomes a glide when another, different, vowel follows.”
+    hi: चौथी प्रतिमा के हाथ में दर्पण है। “इत्यादि,” वह कहती है। “यद्यपि।” “स्वागतम्।” “इनमें य है, द्य है, व है,” शुक कहता है। “कोई स्वर दूसरा रूप पहने हुए है।” “इ य् बन जाता है,” दादी कहती हैं, “उ व्, ऋ र्। एक स्वर अर्धस्वर बन जाता है जब उसके बाद कोई और, भिन्न स्वर आता है।”
+- id: t1
+  kind: teach
+  title:
+    en: Vowel to glide
+    hi: स्वर से अर्धस्वर
+  depth: core
+  skills:
+  - sandhi.yan
+  body:
+    en: 'When {{इ}}/{{ई}}, {{उ}}/{{ऊ}} or {{ऋ}} meets a different vowel, it becomes {{य्}}, {{व्}} or {{र्}}: {{इति + आदि}} gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}, {{पितृ + आज्ञा}} gives {{पित्राज्ञा}}. This is {{यण्}}.'
+    hi: 'जब {{इ}}/{{ई}}, {{उ}}/{{ऊ}} या {{ऋ}} किसी भिन्न स्वर से मिलते हैं, तो वे {{य्}}, {{व्}} या {{र्}} बन जाते हैं: {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}, {{पितृ + आज्ञा}} से {{पित्राज्ञा}}। यह {{यण्}} है।'
+  term:
+    sa: यण्
+    meaning:
+      en: the glides य्, व्, र्, ल्
+      hi: अर्धस्वर य्, व्, र्, ल्
+- id: tb1
+  kind: table
+  title:
+    en: Glides
+    hi: अर्धस्वर
+  depth: core
+  skills:
+  - sandhi.yan
+  caption:
+    en: इ, उ, ऋ before a different vowel
+    hi: भिन्न स्वर से पहले इ, उ, ऋ
+  columns:
+  - en: First word
+    hi: पहला शब्द
+  - en: Second word
+    hi: दूसरा शब्द
+  - en: Joined
+    hi: जुड़ा हुआ
+  rows:
+  - - sa: इति
+    - sa: आदि
+    - sa: इत्यादि
+      check:
+        type: sandhi
+        first: इति
+        second: आदि
+        joined: इत्यादि
+      highlight: true
+  - - sa: यदि
+    - sa: अपि
+    - sa: यद्यपि
+      check:
+        type: sandhi
+        first: यदि
+        second: अपि
+        joined: यद्यपि
+      highlight: true
+  - - sa: अति
+    - sa: अधिकम्
+    - sa: अत्यधिकम्
+      check:
+        type: sandhi
+        first: अति
+        second: अधिकम्
+        joined: अत्यधिकम्
+      highlight: true
+  - - sa: प्रति
+    - sa: एकम्
+    - sa: प्रत्येकम्
+      check:
+        type: sandhi
+        first: प्रति
+        second: एकम्
+        joined: प्रत्येकम्
+      highlight: true
+  - - sa: सु
+    - sa: आगतम्
+    - sa: स्वागतम्
+      check:
+        type: sandhi
+        first: सु
+        second: आगतम्
+        joined: स्वागतम्
+      highlight: true
+  - - sa: मधु
+    - sa: अरिः
+    - sa: मध्वरिः
+      check:
+        type: sandhi
+        first: मधु
+        second: अरिः
+        joined: मध्वरिः
+      highlight: true
+  - - sa: पितृ
+    - sa: आज्ञा
+    - sa: पित्राज्ञा
+      check:
+        type: sandhi
+        first: पितृ
+        second: आज्ञा
+        joined: पित्राज्ञा
+      highlight: true
+  - - sa: वधू
+    - sa: आगमः
+    - sa: वध्वागमः
+      check:
+        type: sandhi
+        first: वधू
+        second: आगमः
+        joined: वध्वागमः
+      highlight: true
+  note:
+    en: '{{इ}} → {{य्}}, {{उ}} → {{व्}}, {{ऋ}} → {{र्}}.'
+    hi: '{{इ}} → {{य्}}, {{उ}} → {{व्}}, {{ऋ}} → {{र्}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.yan
+  mode: choice
+  prompt:
+    en: Split the joined word {{इत्यादि}}.
+    hi: जुड़े शब्द {{इत्यादि}} को तोड़िए।
+  explain:
+    en: '{{इति}} + {{आदि}}.'
+    hi: '{{इति}} + {{आदि}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: इति + आदि
+  - sa: इते + आदि
+  - sa: इतु + आदि
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.yan
+  mode: choice
+  prompt:
+    en: '{{सु + आगतम्}} gives…'
+    hi: '{{सु + आगतम्}} से…'
+  explain:
+    en: '{{उ}} → {{व्}} before {{आ}}.'
+    hi: '{{आ}} से पहले {{उ}} → {{व्}}।'
+  roman: after
+  options:
+  - sa: सुआगतम्
+  - sa: सौगतम्
+  - correct: true
+    sa: स्वागतम्
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.yan
+  mode: type
+  prompt:
+    en: 'Join: {{यदि}} + {{अपि}}.'
+    hi: 'जोड़िए: {{यदि}} + {{अपि}}।'
+  explain:
+    en: '{{यद्यपि}}: “even if”.'
+    hi: '{{यद्यपि}}: ‘भले ही’।'
+  roman: after
+  answers:
+  - यद्यपि
+  tiles:
+  - यद्
+  - यपि
+  - अपि
+  - ति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.yan
+  mode: match
+  prompt:
+    en: Join each word to its parts.
+    hi: हर शब्द को उसके भागों से जोड़िए।
+  explain:
+    en: The glide shows where the vowel was.
+    hi: अर्धस्वर बताता है कि स्वर कहाँ था।
+  roman: after
+  pairs:
+  - left:
+      sa: इत्यादि
+    right:
+      sa: इति + आदि
+  - left:
+      sa: स्वागतम्
+    right:
+      sa: सु + आगतम्
+  - left:
+      sa: प्रत्येकम्
+    right:
+      sa: प्रति + एकम्
+  - left:
+      sa: पित्राज्ञा
+    right:
+      sa: पितृ + आज्ञा
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.yan
+  widget: mark_words
+  prompt:
+    en: Tap every word with a glide ({{य्}}, {{व्}} or {{र्}} made by joining).
+    hi: अर्धस्वर वाला हर शब्द छुइए (जुड़ने से बना {{य्}}, {{व्}} या {{र्}})।
+  params:
+    passage:
+    - इत्यादि
+    - विद्यालयः
+    - स्वागतम्
+    - महात्मा
+    - अत्यधिकम्
+    - सदैव
+    targets:
+    - इत्यादि
+    - स्वागतम्
+    - अत्यधिकम्
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: The mirror
+    hi: दर्पण
+  depth: core
+  skills:
+  - sandhi.yan
+  mode: choice
+  prompt:
+    en: '{{पितृ + आज्ञा}} gives…'
+    hi: '{{पितृ + आज्ञा}} से…'
+  explain:
+    en: '{{ऋ}} → {{र्}}.'
+    hi: '{{ऋ}} → {{र्}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “पित्राज्ञा,” you say, “a father's command,” and the mirror in the statue's hand clears. In it the travellers are reflected, and behind them, in the glass, a long procession of other people, walking up the hill to the throne for a thousand years, each saying a word of welcome. “स्वागतम्,” the statue says. “Welcome.”
+      hi: “पित्राज्ञा,” आप कहते हैं, “पिता की आज्ञा,” और प्रतिमा के हाथ का दर्पण साफ़ हो जाता है। उसमें यात्री दिखते हैं, और उनके पीछे काँच में, अन्य लोगों की लम्बी शोभायात्रा, हज़ार वर्षों से पहाड़ी चढ़कर सिंहासन तक आते, हर एक स्वागत का एक शब्द कहता हुआ। “स्वागतम्,” प्रतिमा कहती है। “स्वागत है।”
+    failure:
+      en: 'The mirror stays dim. {{ऋ}} → {{र्}}: {{पित्राज्ञा}}.'
+      hi: 'दर्पण धुँधला रहता है। {{ऋ}} → {{र्}}: {{पित्राज्ञा}}।'
+  options:
+  - sa: पितृआज्ञा
+  - sa: पितराज्ञा
+  - correct: true
+    sa: पित्राज्ञा
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's glide
+    hi: पाणिनि का अर्धस्वर
+  depth: panini
+  skills:
+  - sandhi.yan
+  sutras:
+  - 6.1.77
+  body:
+    en: Sūtra 6.1.77, {{इको यणचि}}, says that {{इक्}} (the vowels {{इ}}, {{उ}}, {{ऋ}}, {{ऌ}}) is replaced by {{यण्}} ({{य्}}, {{व्}}, {{र्}}, {{ल्}}) before a vowel. So {{इति + आदि}} gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}.
+    hi: सूत्र 6.1.77, {{इको यणचि}}, कहता है कि स्वर के पहले {{इक्}} ({{इ}}, {{उ}}, {{ऋ}}, {{ऌ}}) की जगह {{यण्}} ({{य्}}, {{व्}}, {{र्}}, {{ल्}}) हो जाता है। इसलिए {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}।
+- id: sum
+  kind: summary
+  title:
+    en: Glides
+    hi: अर्धस्वर
+  depth: core
+  points:
+  - sa: इ → य्
+    text:
+      en: इत्यादि, यद्यपि.
+      hi: इत्यादि, यद्यपि।
+  - sa: उ → व्
+    text:
+      en: स्वागतम्, मध्वरिः.
+      hi: स्वागतम्, मध्वरिः।
+  - sa: ऋ → र्
+    text:
+      en: पित्राज्ञा.
+      hi: पित्राज्ञा।

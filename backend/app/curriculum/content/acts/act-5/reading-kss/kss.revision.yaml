@@ -1,0 +1,83 @@
+id: kss.revision
+template: revision
+title:
+  en: Everything about reading Somadeva
+  hi: सोमदेव को पढ़ने के बारे में सब कुछ
+title_sa: कथासङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The method
+    hi: विधि
+  depth: core
+  section: core
+  rows:
+  - skill: kss.read
+    rule:
+      en: Split the joins, find the verb (or see there is none), then the doer, the object and the rest.
+      hi: जोड़ खोलिए, क्रिया खोजिए (या देखिए कि नहीं है), फिर कर्ता, कर्म और शेष।
+    tag: core
+    taught_in: kss.naming#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: kss.read
+    rule:
+      en: 'A long compound before the verb is one name or idea: split it, then read the parts.'
+      hi: 'क्रिया से पहले लम्बा समास एक नाम या विचार है: उसे खोलिए, फिर अंश पढ़िए।'
+    tag: good
+    taught_in: kss.naming#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: kss.read
+    rule:
+      en: 'A line with no verb is a subject and what it is: “is” is understood.'
+      hi: 'बिना क्रिया की पंक्ति कर्ता और वह जो है: ‘है’ समझा जाता है।'
+    tag: rare
+    taught_in: kss.naming#p3
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: kss.read
+    rule:
+      en: 'Do not stop at the first compound: it is the beginning of the sentence, not its end.'
+      hi: 'पहले समास पर मत रुकिए: वह वाक्य की शुरुआत है, अन्त नहीं।'
+    tag: core
+    taught_in: kss.naming#t1
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: kss.read
+    formula: नरवाहनदत्तं च जानीहि एनम्
+    rule:
+      en: the naming
+      hi: नामकरण
+    tag: core
+    taught_in: kss.naming#r1

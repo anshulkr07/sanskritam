@@ -1,0 +1,250 @@
+id: pg.it
+template: scene
+title:
+  en: Letters that vanish
+  hi: लुप्त होने वाले अक्षर
+title_sa: इत्
+minutes: 6
+teaches:
+- panini.it
+needs:
+- panini.shiva-sutras
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The seal
+    hi: मुहर
+  depth: core
+  image:
+    brief: A dark second alcove with a round stone seal cut with a single word and small marks; Dādī pointing at the word; the quarter-visible silver spirit leaning forward; Śuka on her shoulder; Lubdhaka behind with a hand resting on the seal, face calm and unreadable.
+    alt:
+      en: A round seal with a word and small marks, a spirit leaning forward, a man's hand on the seal
+      hi: शब्द और छोटे चिह्नों वाली गोल मुहर, आगे झुकती भूत, मुहर पर टिका एक हाथ
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - padika
+    place: guha
+    ratio: '4:3'
+    id: pg-it-s1
+  narration:
+    en: 'The second alcove is dark, and its seal is cut with the word लँट्, the present tense. Dādī points. “Look at the marks: a nasal sign on the vowel, a ट् at the end. In Pāṇini''s rules they are tools: they tell a rule what to do, then vanish.” Padikā leans forward. “And what is left?” Behind you, Lubdhaka has put a hand on the seal.'
+    hi: 'दूसरा आला अँधेरा है, और उसकी मुहर पर शब्द लँट् खुदा है, वर्तमान काल का नाम। दादी इशारा करती हैं। “चिह्नों को देखिए। स्वर पर अनुनासिक चिह्न; अन्त में ट्। पाणिनि के सूत्रों में वे औज़ार हैं: वे सूत्र को बताते हैं कि क्या करना है, और फिर लुप्त हो जाते हैं।” पदिका आगे झुकती है। “और बचता क्या है?” आपके पीछे लुब्धक ने मुहर पर हाथ रख दिया है।'
+  quote:
+    sa: उपदेशे ऽजनुनासिक इत् हलन्त्यम् तस्य लोपः
+    gloss:
+      en: In the original teaching, a nasalised vowel is a marker; so is a final consonant; and the marker is dropped.
+      hi: मूल उपदेश में अनुनासिक स्वर इत् है; अन्तिम व्यञ्जन भी; और इत् का लोप होता है।
+    source: Aṣṭādhyāyī 1.3.2, 1.3.3 and 1.3.9 (sūtra text from vidyut-prakriya data)
+- id: t1
+  kind: teach
+  title:
+    en: Markers
+    hi: इत् संकेत
+  depth: core
+  skills:
+  - panini.it
+  body:
+    en: 'A marker ({{इत्}}) is a sound that tells a rule what to do and then goes. 1.3.2: a nasalised vowel in the original teaching is one. 1.3.3: so is a last consonant. 1.3.9 drops it ({{लोपः}}). So {{तिप्}} becomes {{ति}}, and {{लँट्}} becomes {{ल्}}.'
+    hi: 'इत् वह ध्वनि है जो सूत्र को बताती है कि क्या करना है, और फिर चली जाती है। 1.3.2: मूल उपदेश में अनुनासिक स्वर इत् है। 1.3.3: अन्तिम व्यञ्जन भी। 1.3.9 उसे हटाता है ({{लोपः}})। इसलिए {{तिप्}} से {{ति}} और {{लँट्}} से {{ल्}} बनता है।'
+  term:
+    sa: इत्
+    meaning:
+      en: a marker sound that is later dropped
+      hi: संकेत-ध्वनि जो बाद में हटा दी जाती है
+- id: tb1
+  kind: table
+  title:
+    en: Markers at work
+    hi: संकेत काम करते हुए
+  depth: core
+  skills:
+  - panini.it
+  sutras:
+  - 1.3.2
+  - 1.3.3
+  - 1.3.8
+  - 1.3.9
+  caption:
+    en: Four endings from the build of भवति and रामः
+    hi: भवति और रामः के निर्माण के चार प्रत्यय
+  columns:
+  - en: As taught
+    hi: जैसा सिखाया
+  - en: Marker
+    hi: इत्
+  - en: What remains
+    hi: जो बचा
+  rows:
+  - - sa: लँट्
+    - sa: ँ ट्
+    - sa: ल्
+  - - sa: तिप्
+    - sa: प्
+    - sa: ति
+  - - sa: शप्
+    - sa: श् प्
+    - sa: अ
+  - - sa: सुँ
+    - sa: ँ
+    - sa: स्
+  note:
+    en: 1.3.2 and 1.3.3 name the markers; 1.3.8 names the {{श्}} of {{शप्}}; 1.3.9 drops them.
+    hi: 1.3.2 और 1.3.3 संकेत बताते हैं; 1.3.8 {{शप्}} का {{श्}} बताता है; 1.3.9 उन्हें हटाता है।
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - panini.it
+  widget: mark_words
+  prompt:
+    en: Tap the two markers in {{शप्}}.
+    hi: '{{शप्}} के दोनों संकेत छुइए।'
+  params:
+    passage:
+    - श्
+    - अ
+    - प्
+    targets:
+    - श्
+    - प्
+  roman: show
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - panini.it
+  mode: choice
+  prompt:
+    en: Which sūtra drops a marker?
+    hi: कौन-सा सूत्र संकेत को हटाता है?
+  explain:
+    en: '1.3.9, {{तस्य लोपः}}: “its dropping”.'
+    hi: '1.3.9, {{तस्य लोपः}}: ‘उसका लोप’।'
+  roman: after
+  options:
+  - sa: हलन्त्यम्
+  - sa: उपदेशेऽजनुनासिक इत्
+  - correct: true
+    sa: तस्य लोपः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - panini.it
+  mode: choice
+  prompt:
+    en: In {{तिप्}}, which letter is the marker?
+    hi: '{{तिप्}} में संकेत कौन-सा अक्षर है?'
+  explain:
+    en: A last consonant is a marker (1.3.3 {{हलन्त्यम्}}).
+    hi: अन्तिम व्यञ्जन इत् है (1.3.3 {{हलन्त्यम्}})।
+  roman: after
+  options:
+  - sa: त्
+  - sa: इ
+  - correct: true
+    sa: प्
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - panini.it
+  mode: match
+  prompt:
+    en: Join each ending, as taught, to what remains.
+    hi: हर प्रत्यय को, जैसा सिखाया, उसके शेष से जोड़िए।
+  explain:
+    en: Markers go; the rest stays.
+    hi: संकेत जाते हैं; बाकी रहता है।
+  roman: after
+  pairs:
+  - left:
+      sa: लँट्
+    right:
+      sa: ल्
+  - left:
+      sa: तिप्
+    right:
+      sa: ति
+  - left:
+      sa: शप्
+    right:
+      sa: अ
+  - left:
+      sa: सुँ
+    right:
+      sa: स्
+- id: p4
+  kind: practice
+  title:
+    en: The seal
+    hi: मुहर
+  depth: core
+  skills:
+  - panini.it
+  mode: choice
+  prompt:
+    en: What remains of {{शप्}} when its markers have gone?
+    hi: '{{शप्}} के संकेत चले जाने पर क्या बचता है?'
+  explain:
+    en: '{{श्}} (1.3.8) and {{प्}} (1.3.3) go: {{अ}} stays.'
+    hi: '{{श्}} (1.3.8) और {{प्}} (1.3.3) जाते हैं: {{अ}} रहता है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “अ,” you say. “What is left of शप् is only अ.” The seal on the second alcove goes clear, as if a mist had cleared from a window, and Lubdhaka's hand, which had been resting on it, finds nothing under it and falls to his side. Padikā is now three quarters. She turns to him, not unkindly. “You laid your hand on the marker,” she says. “The marker was never the thing.”
+      hi: “अ,” आप कहते हैं। “शप् का जो बचता है, वह केवल अ है।” दूसरे आले की मुहर साफ़ हो जाती है, जैसे खिड़की से धुँध हट गई हो, और लुब्धक का हाथ, जो उस पर टिका था, उसके नीचे कुछ नहीं पाता और बगल में गिर जाता है। पदिका अब तीन चौथाई है। वह उसकी ओर मुड़ती है, कठोरता से नहीं। “आपने संकेत पर हाथ रखा,” वह कहती है। “संकेत कभी असली वस्तु नहीं था।”
+    failure:
+      en: The seal stays shut. Both markers go; {{अ}} stays.
+      hi: मुहर बन्द रहती है। दोनों संकेत जाते हैं; {{अ}} रहता है।
+  options:
+  - sa: श्
+  - correct: true
+    sa: अ
+  - sa: प्
+- id: pn
+  kind: teach
+  title:
+    en: More markers
+    hi: और संकेत
+  depth: panini
+  skills:
+  - panini.it
+  sutras:
+  - 1.3.6
+  - 1.3.7
+  - 1.3.8
+  body:
+    en: 'Other sūtras name markers at the start of a suffix: 1.3.6 {{षः प्रत्ययस्य}}, an initial {{ष्}}; 1.3.7 {{चुटू}}, an initial palatal or retroflex stop; 1.3.8 {{लशक्वतद्धिते}}, an initial {{ल्}}, {{श्}} or velar of a suffix that is not a taddhita.'
+    hi: 'अन्य सूत्र प्रत्यय के आरम्भ के संकेत बताते हैं: 1.3.6 {{षः प्रत्ययस्य}}, आदि का {{ष्}}; 1.3.7 {{चुटू}}, आदि का तालव्य या मूर्धन्य स्पर्श; 1.3.8 {{लशक्वतद्धिते}}, तद्धित से भिन्न प्रत्यय के आदि का {{ल्}}, {{श्}} या कवर्ग।'
+- id: sum
+  kind: summary
+  title:
+    en: Letters that vanish
+    hi: लुप्त होने वाले अक्षर
+  depth: core
+  points:
+  - sa: इत्
+    text:
+      en: 'A marker: it does its job and goes.'
+      hi: 'संकेत: अपना काम करके चला जाता है।'
+  - sa: तस्य लोपः
+    text:
+      en: 1.3.9 drops the marker.
+      hi: 1.3.9 संकेत हटाता है।
+  - sa: तिप् → ति
+    text:
+      en: What remains.
+      hi: जो बचता है।

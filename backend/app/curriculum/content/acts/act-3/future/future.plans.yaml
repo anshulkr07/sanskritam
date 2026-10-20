@@ -1,0 +1,475 @@
+id: future.plans
+template: scene
+title:
+  en: Plans and promises
+  hi: योजनाएँ और वचन
+title_sa: करिष्यामि न दास्यामि
+minutes: 6
+teaches:
+- verb.lrt
+needs:
+- verb.lrt
+- sent.negation
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: An offer
+    hi: एक प्रस्ताव
+  depth: core
+  image:
+    brief: Lubdhaka setting a heavy leather purse on a tree root before you, his other hand on his satchel; the Vetāla grinning upside down; you standing firm with Dādī's hand on your shoulder and Śuka fluffed up; lantern light and long shadows.
+    alt:
+      en: A man sets a heavy purse on a root before a child while a spirit grins upside down above
+      hi: जड़ पर बच्चे के सामने भारी थैली रखता आदमी, ऊपर उलटा मुस्कराता भूत
+    cast:
+    - lubdhaka
+    - vetala
+    - you
+    - dadi
+    - shuka
+    place: smashana
+    ratio: '4:3'
+    id: future-plans-s1
+  narration:
+    en: 'Lubdhaka comes close. He sets a heavy purse on the root before you. “Name your price for the leaves.” The Vetāla opens one eye and grins. “किं करिष्यसि? What will you do?” Dādī nods. The answer is a promise, the first person of the future: “न दास्यामि.” “I will not give.” The grove goes quiet.'
+    hi: 'लुब्धक पास आता है। वह जड़ पर आपके सामने भारी थैली रखता है। “पत्रों का मोल बताओ।” वेताल एक आँख खोलकर मुस्कराता है। “किं करिष्यसि? तुम क्या करोगे?” दादी सिर हिलाती हैं। उत्तर एक वचन है, भविष्यत् का उत्तम पुरुष: “न दास्यामि।” “मैं नहीं दूँगा।” वन चुप हो जाता है।'
+- id: t1
+  kind: teach
+  title:
+    en: I will, we will
+    hi: मैं करूँगा, हम करेंगे
+  depth: core
+  skills:
+  - verb.lrt
+  body:
+    en: 'The first person ends in {{-मि}} for “I” and {{-मः}} for “we”: {{करिष्यामि}} (I will do), {{करिष्यामः}} (we will do). With {{न}} it is a promise to refuse: {{न दास्यामि}}, “I will not give”. A question: {{किं करिष्यसि}}, “what will you do?”'
+    hi: 'उत्तम पुरुष में ‘मैं’ के लिए {{-मि}} और ‘हम’ के लिए {{-मः}} है: {{करिष्यामि}} (मैं करूँगा), {{करिष्यामः}} (हम करेंगे)। {{न}} के साथ यह मना करने का वचन है: {{न दास्यामि}}, ‘मैं नहीं दूँगा’। प्रश्न: {{किं करिष्यसि}}, ‘तुम क्या करोगे?’'
+  examples:
+  - sa: अहम् न पत्राणि दास्यामि।
+    meaning:
+      en: I will not give the leaves.
+      hi: मैं पत्र नहीं दूँगा।
+    words:
+    - sa: अहम्
+      gloss:
+        en: I
+        hi: मैं
+    - sa: न
+      gloss:
+        en: not
+        hi: नहीं
+    - sa: पत्राणि
+      gloss:
+        en: leaves
+        hi: पत्र
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+    - sa: दास्यामि
+      gloss:
+        en: will give
+        hi: दूँगा
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lrt
+        purusha: Uttama
+        vacana: Eka
+  - sa: वयम् पुस्तकम् पठिष्यामः।
+    meaning:
+      en: We will read the book.
+      hi: हम पुस्तक पढ़ेंगे।
+    words:
+    - sa: वयम्
+      gloss:
+        en: we
+        hi: हम
+    - sa: पुस्तकम्
+      gloss:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पठिष्यामः
+      gloss:
+        en: will read
+        hi: पढ़ेंगे
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lrt
+        purusha: Uttama
+        vacana: Bahu
+  - sa: किम् त्वम् करिष्यसि।
+    meaning:
+      en: What will you do?
+      hi: तुम क्या करोगे?
+    words:
+    - sa: किम्
+      gloss:
+        en: what
+        hi: क्या
+      check:
+        type: subanta
+        stem: किम्
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: त्वम्
+      gloss:
+        en: you
+        hi: तुम
+    - sa: करिष्यसि
+      gloss:
+        en: will do
+        hi: करोगे
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lrt
+        purusha: Madhyama
+        vacana: Eka
+- id: tb1
+  kind: table
+  title:
+    en: 'कृ: the future'
+    hi: 'कृ: भविष्यत्'
+  depth: core
+  skills:
+  - verb.lrt
+  caption:
+    en: “Will do”
+    hi: ‘करेगा’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: करिष्यति
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lrt
+        purusha: Prathama
+        vacana: Eka
+    - sa: करिष्यतः
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lrt
+        purusha: Prathama
+        vacana: Dvi
+    - sa: करिष्यन्ति
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lrt
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: करिष्यसि
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lrt
+        purusha: Madhyama
+        vacana: Eka
+    - sa: करिष्यथः
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lrt
+        purusha: Madhyama
+        vacana: Dvi
+    - sa: करिष्यथ
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lrt
+        purusha: Madhyama
+        vacana: Bahu
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: करिष्यामि
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lrt
+        purusha: Uttama
+        vacana: Eka
+      highlight: true
+    - sa: करिष्यावः
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lrt
+        purusha: Uttama
+        vacana: Dvi
+      highlight: true
+    - sa: करिष्यामः
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lrt
+        purusha: Uttama
+        vacana: Bahu
+      highlight: true
+  note:
+    en: 'Every person adds {{-इष्य-}} to {{कृ}}: {{करिष्यति}}.'
+    hi: 'हर पुरुष {{कृ}} में {{-इष्य-}} जोड़ता है: {{करिष्यति}}।'
+- id: t2
+  kind: teach
+  title:
+    en: Plans
+    hi: योजनाएँ
+  depth: core
+  skills:
+  - verb.lrt
+  body:
+    en: 'The future is also for plans: {{श्वः गमिष्यामि}} (tomorrow I will go), {{पश्चात् पठिष्यामः}} (afterwards we will read). Time words help: {{श्वः}} (tomorrow), {{परश्वः}} (the day after), {{पश्चात्}} (afterwards).'
+    hi: 'भविष्यत् योजनाओं के लिए भी है: {{श्वः गमिष्यामि}} (कल मैं जाऊँगा), {{पश्चात् पठिष्यामः}} (बाद में हम पढ़ेंगे)। समय-शब्द सहायक हैं: {{श्वः}} (कल), {{परश्वः}} (परसों), {{पश्चात्}} (बाद में)।'
+  examples:
+  - sa: श्वः अहम् ग्रामम् गमिष्यामि।
+    meaning:
+      en: Tomorrow I will go to the village.
+      hi: कल मैं गाँव जाऊँगा।
+    words:
+    - sa: श्वः
+      gloss:
+        en: tomorrow
+        hi: कल
+    - sa: अहम्
+      gloss:
+        en: I
+        hi: मैं
+    - sa: ग्रामम्
+      gloss:
+        en: village
+        hi: गाँव
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गमिष्यामि
+      gloss:
+        en: will go
+        hi: जाऊँगा
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lrt
+        purusha: Uttama
+        vacana: Eka
+  - sa: पश्चात् वयम् पठिष्यामः।
+    meaning:
+      en: Afterwards we will read.
+      hi: बाद में हम पढ़ेंगे।
+    words:
+    - sa: पश्चात्
+      gloss:
+        en: afterwards
+        hi: बाद में
+    - sa: वयम्
+      gloss:
+        en: we
+        hi: हम
+    - sa: पठिष्यामः
+      gloss:
+        en: will read
+        hi: पढ़ेंगे
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lrt
+        purusha: Uttama
+        vacana: Bahu
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.lrt
+  mode: choice
+  prompt:
+    en: 'Promise: “I will not give.”'
+    hi: 'वचन दीजिए: ‘मैं नहीं दूँगा।’'
+  explain:
+    en: '{{दास्यामि}}: future, first person.'
+    hi: '{{दास्यामि}}: भविष्यत्, उत्तम पुरुष।'
+  roman: after
+  options:
+  - sa: न ददामि
+  - correct: true
+    sa: न दास्यामि
+  - sa: न अददात्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.lrt
+  mode: type
+  prompt:
+    en: 'Say: “I will be.”'
+    hi: 'कहिए: ‘मैं होऊँगा।’'
+  explain:
+    en: '{{भविष्यामि}}.'
+    hi: '{{भविष्यामि}}।'
+  roman: after
+  answers:
+  - भविष्यामि
+  tiles:
+  - भ
+  - वि
+  - ष्या
+  - मि
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.lrt
+  mode: match
+  prompt:
+    en: Join each future form to its meaning.
+    hi: हर भविष्यत् रूप को उसके अर्थ से जोड़िए।
+  explain:
+    en: 'The ending tells who: {{-मि}} I, {{-मः}} we, {{-सि}} you, {{-ति}} he.'
+    hi: 'प्रत्यय बताता है कौन: {{-मि}} मैं, {{-मः}} हम, {{-सि}} तुम, {{-ति}} वह।'
+  roman: after
+  pairs:
+  - left:
+      sa: गमिष्यामि
+    right:
+      text:
+        en: I will go
+        hi: मैं जाऊँगा
+  - left:
+      sa: पठिष्यामः
+    right:
+      text:
+        en: we will read
+        hi: हम पढ़ेंगे
+  - left:
+      sa: करिष्यसि
+    right:
+      text:
+        en: you will do
+        hi: तुम करोगे
+  - left:
+      sa: दास्यति
+    right:
+      text:
+        en: he will give
+        hi: वह देगा
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.lrt
+  widget: mark_words
+  prompt:
+    en: Tap every word that means “I will …”.
+    hi: ‘मैं … करूँगा’ अर्थ वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - गमिष्यामि
+    - गमिष्यामः
+    - पठिष्यामि
+    - पठिष्यति
+    - करिष्यामि
+    - करिष्यसि
+    targets:
+    - गमिष्यामि
+    - पठिष्यामि
+    - करिष्यामि
+  roman: show
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.lrt
+  mode: order
+  prompt:
+    en: 'Say: “We will not give the leaves.”'
+    hi: 'कहिए: ‘हम पत्र नहीं देंगे।’'
+  explain:
+    en: '{{वयं पत्राणि न दास्यामः}}.'
+    hi: '{{वयं पत्राणि न दास्यामः}}।'
+  roman: after
+  tokens:
+  - वयम्
+  - पत्राणि
+  - न
+  - दास्यामः
+- id: p5
+  kind: practice
+  title:
+    en: Your answer
+    hi: आपका उत्तर
+  depth: core
+  skills:
+  - verb.lrt
+  mode: choice
+  prompt:
+    en: 'Answer the Vetāla: “What will you do?” “Tomorrow I will go.”'
+    hi: 'वेताल को उत्तर दीजिए: ‘तुम क्या करोगे?’ ‘कल मैं जाऊँगा।’'
+  explain:
+    en: '{{श्वः गमिष्यामि}}: tomorrow with the future.'
+    hi: '{{श्वः गमिष्यामि}}: कल, भविष्यत् के साथ।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“श्वः गमिष्यामि,” you say, and Lubdhaka''s purse slowly rolls off the root, spilling no coins: it was never full. He stares at it. “I did not expect,” he says carefully, “a child who plans.” The Vetāla swings with delight. “A forward-looker. A forward-looker!”'
+      hi: '“श्वः गमिष्यामि,” आप कहते हैं, और लुब्धक की थैली धीरे-धीरे जड़ से लुढ़कती है, एक भी सिक्का बिखेरे बिना: वह कभी भरी ही नहीं थी। वह उसे घूरता है। “मुझे उम्मीद नहीं थी,” वह सावधानी से कहता है, “कि कोई बच्चा योजना बनाता होगा।” वेताल आनन्द से झूल उठता है। “आगे देखने वाला। आगे देखने वाला!”'
+    failure:
+      en: 'The purse stays where it is. “Tomorrow I will go”: {{श्वः गमिष्यामि}}.'
+      hi: 'थैली वहीं रहती है। ‘कल मैं जाऊँगा’: {{श्वः गमिष्यामि}}।'
+  options:
+  - sa: श्वः अगच्छम्
+  - correct: true
+    sa: श्वः गमिष्यामि
+  - sa: ह्यः गमिष्यामि
+- id: sum
+  kind: summary
+  title:
+    en: Plans and promises
+    hi: योजनाएँ और वचन
+  depth: core
+  points:
+  - sa: करिष्यामि · करिष्यामः
+    text:
+      en: I will do; we will do.
+      hi: मैं करूँगा; हम करेंगे।
+  - sa: न दास्यामि
+    text:
+      en: I will not give.
+      hi: मैं नहीं दूँगा।
+  - sa: किं करिष्यसि
+    text:
+      en: What will you do?
+      hi: तुम क्या करोगे?

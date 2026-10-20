@@ -1,0 +1,131 @@
+# The unit check: practice only, every skill at least once, ending with the
+# gate that frees the ghost. A learner who already reads Devanagari can take
+# it first; passing it finishes the unit's lessons for them.
+id: vowels.check
+template: check
+title: {en: "Read the first line", hi: "पहली पंक्ति पढ़िए"}
+title_sa: "परीक्षा"
+minutes: 4
+review: engine_ok
+sources:
+  - title: "Lesson text"
+    licence: "original"
+cards:
+  - id: c1
+    kind: practice
+    mode: choice
+    skills: [script.vowel.short]
+    roman: after
+    prompt: {en: "Which is a short vowel?", hi: "इनमें से ह्रस्व स्वर कौन-सा है?"}
+    options:
+      - sa: "आ"
+      - sa: "उ"
+        correct: true
+      - sa: "ए"
+    explain: {en: "{{उ}} is short; {{आ}} and {{ए}} are long.", hi: "{{उ}} ह्रस्व है; {{आ}} और {{ए}} दीर्घ हैं।"}
+
+  - id: c2
+    kind: practice
+    mode: choice
+    skills: [script.vowel.long]
+    prompt: {en: "Which word means “a riverbank”?", hi: "‘नदी का किनारा’ किस शब्द का अर्थ है?"}
+    options:
+      - sa: "कुलम्"
+        why: {en: "{{कुलम्}}, short {{उ}}: a family.", hi: "{{कुलम्}} में ह्रस्व उ: परिवार।"}
+      - sa: "कूलम्"
+        correct: true
+    explain: {en: "{{कूलम्}} has the long {{ऊ}}: a riverbank.", hi: "{{कूलम्}} में दीर्घ ऊ है: नदी का किनारा।"}
+
+  - id: c3
+    kind: practice
+    mode: match
+    skills: [script.vowel.long]
+    roman: after
+    prompt: {en: "Join each short vowel to its long twin.", hi: "हर ह्रस्व स्वर को उसके दीर्घ जुड़वाँ से जोड़िए।"}
+    pairs:
+      - left: {sa: "अ"}
+        right: {sa: "आ"}
+      - left: {sa: "इ"}
+        right: {sa: "ई"}
+      - left: {sa: "उ"}
+        right: {sa: "ऊ"}
+    explain: {en: "Twins are made at one place; the long one lasts two beats.", hi: "जुड़वाँ एक ही स्थान से बनते हैं; दीर्घ दो मात्रा का होता है।"}
+
+  - id: c4
+    kind: practice
+    mode: choice
+    skills: [script.vowel.compound]
+    roman: after
+    prompt: {en: "Which vowel is always long?", hi: "कौन-सा स्वर सदा दीर्घ होता है?"}
+    options:
+      - sa: "इ"
+      - sa: "ओ"
+        correct: true
+      - sa: "उ"
+    explain: {en: "{{ओ}}, like all four joined vowels, always lasts two beats.", hi: "{{ओ}}, चारों संयुक्त स्वरों की तरह, सदा दो मात्रा का होता है।"}
+
+  - id: c5
+    kind: practice
+    mode: type
+    skills: [script.matra]
+    roman: after
+    prompt: {en: "Build {{क्}} + {{ऐ}}: {{क}} with the sign for {{ऐ}}.", hi: "बनाइए: {{क}} पर {{ऐ}} की मात्रा।"}
+    answers: ["कै"]
+    tiles: ["क", "ै", "े", "ा"]
+    explain: {en: "{{ै}}, two strokes above the letter: {{कै}}. One stroke, {{े}}, is {{ए}}.", hi: "{{ै}}, अक्षर के ऊपर दो रेखाएँ: {{कै}}। एक रेखा, {{े}}, {{ए}} की मात्रा है।"}
+
+  - id: c6
+    kind: practice
+    mode: choice
+    skills: [script.matra]
+    roman: after
+    prompt: {en: "How is {{क्}} + {{इ}} written?", hi: "{{क्}} + {{इ}} कैसे लिखा जाता है?"}
+    options:
+      - sa: "कि"
+        correct: true
+      - sa: "की"
+        why: {en: "{{की}} is {{क्}} + {{ई}}, the long sign.", hi: "{{की}} क् + ई है, दीर्घ मात्रा।"}
+      - sa: "के"
+        why: {en: "{{के}} is {{क्}} + {{ए}}.", hi: "{{के}} क् + ए है।"}
+    explain: {en: "Short i is the sign written before the letter: {{कि}}.", hi: "ह्रस्व इ की मात्रा अक्षर से पहले लिखी जाती है: {{कि}}।"}
+
+  - id: c7
+    kind: practice
+    mode: choice
+    skills: [script.matra, script.vowel.long]
+    roman: after
+    prompt: {en: "Which word has the long ī sign?", hi: "किस शब्द में दीर्घ ई की मात्रा है?"}
+    options:
+      - sa: "दिनम्"
+      - sa: "दीनः"
+        correct: true
+      - sa: "कुलम्"
+    explain: {en: "{{दीनः}}: the sign {{ी}} stands after {{द}}.", hi: "{{दीनः}}: {{ी}} की मात्रा {{द}} के बाद है।"}
+
+  - id: c8
+    kind: practice
+    mode: choice
+    skills: [script.vowel.short]
+    prompt: {en: "How do you say {{ऋ}}?", hi: "{{ऋ}} कैसे बोलते हैं?"}
+    options:
+      - text: {en: "One quick vowel r", hi: "एक छोटी ध्वनि, स्वर के रूप में ‘र’"}
+        correct: true
+      - text: {en: "r followed by a full i, “ri-i”", hi: "‘र’ के बाद पूरा ‘इ’"}
+        why: {en: "That is two sounds, {{र}} + {{इ}}. {{ऋ}} is one.", hi: "यह दो ध्वनियाँ हैं, {{र}} + {{इ}}। {{ऋ}} एक है।"}
+      - text: {en: "A long “ree”", hi: "लम्बा ‘री’"}
+        why: {en: "{{ऋ}} is short: one beat.", hi: "{{ऋ}} ह्रस्व है: एक मात्रा।"}
+    explain: {en: "{{ऋ}} is a single short vowel: an r that carries the syllable.", hi: "{{ऋ}} एक ह्रस्व स्वर है: ‘र’ जो स्वयं अक्षर बनता है।"}
+
+  - id: c9
+    kind: practice
+    mode: order
+    title: {en: "Read the whole line", hi: "पूरी पंक्ति पढ़िए"}
+    skills: [script.vowel.short, script.vowel.compound]
+    roman: after
+    gate: true
+    prompt: {en: "Read the first line aloud for Dhūmaka: put all nine vowels in the leaf's order.", hi: "धूमक के लिए पहली पंक्ति ज़ोर से पढ़िए: नौ स्वरों को पत्र के क्रम में लगाइए।"}
+    tokens: ["अ", "इ", "उ", "ऋ", "ऌ", "ए", "ओ", "ऐ", "औ"]
+    explain: {en: "Four groups: {{अ}} {{इ}} {{उ}}, {{ऋ}} {{ऌ}}, {{ए}} {{ओ}}, {{ऐ}} {{औ}}.", hi: "चार समूह: {{अ}} {{इ}} {{उ}}, {{ऋ}} {{ऌ}}, {{ए}} {{ओ}}, {{ऐ}} {{औ}}।"}
+    story:
+      success: {en: "You read the line aloud, from अ to औ. The leaf blazes gold, and Dhūmaka rises like smoke from a lamp just put out, smiling.", hi: "आप पंक्ति ज़ोर से पढ़ते हैं, अ से औ तक। पत्र सुनहरा दमक उठता है, और धूमक अभी-अभी बुझे दीपक के धुएँ की तरह मुस्कुराता हुआ ऊपर उठता है।"}
+      failure: {en: "The line flickers. Dhūmaka waits. Take it group by group: अ इ उ, ऋ ऌ, ए ओ, ऐ औ.", hi: "पंक्ति टिमटिमाती है। धूमक प्रतीक्षा करता है। समूह-दर-समूह चलिए: अ इ उ, ऋ ऌ, ए ओ, ऐ औ।"}

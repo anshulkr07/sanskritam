@@ -1,0 +1,416 @@
+id: kss.naming
+template: scene
+title:
+  en: The child named Naravāhanadatta
+  hi: नरवाहनदत्त नाम का बालक
+title_sa: नरवाहनदत्तः
+minutes: 6
+teaches:
+- kss.read
+needs:
+- verse.read
+- verse.commentary
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The late listener
+    hi: देर से आई श्रोता
+  depth: core
+  image:
+    brief: A mountain cave whose walls are carved with lines of script, lit by small lamps; four alcoves in the far wall, three dark and one glowing; a small amber spirit with cupped hands sitting in the first alcove; Dādī and Śuka at the front; at the cave mouth behind, a tall figure in a dark coat in silhouette.
+    alt:
+      en: A cave with script-carved walls and four alcoves, a small spirit with cupped hands in the first
+      hi: लिपि खुदी दीवारों और चार आलों वाली गुफा, पहले आले में हाथ जोड़े नन्ही भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - kathika
+    place: guha
+    ratio: '4:3'
+    id: kss-naming-s1
+  narration:
+    en: 'The tunnel opens into a cave whose walls are carved with lines of script. Four alcoves: three dark, one glowing. In the first sits a small spirit, her hands cupped as if to catch water. “Kathikā,” says Dādī. “She came too late, and waited. The seventh leaf is the tale that survived: the life of Naravāhanadatta.” At the cave mouth, a step: Lubdhaka.'
+    hi: 'सुरंग एक गुफा में खुलती है जिसकी दीवारों पर लिपि की पंक्तियाँ खुदी हैं। चार आले: तीन अँधेरे, एक चमकता। पहले में एक नन्ही भूत बैठी है, हाथ ऐसे जोड़े मानो पानी थामना हो। “कथिका,” दादी कहती हैं। “वह देर से आई और प्रतीक्षा करती रही। सातवाँ पत्र वह कथा है जो बच गई: नरवाहनदत्त का चरित।” गुफा के द्वार पर एक आहट: लुब्धक।'
+  quote:
+    sa: तत्रासूत च सा काले कुमारं कान्तदर्शनम् द्यौर् इन्दुम् इव निर्गच्छदच्छामृतमयद्युतिम्
+    gloss:
+      en: There, in due time, she bore a son lovely to see, like the sky giving forth the moon, whose light was pure nectar.
+      hi: वहाँ, समय आने पर, उसने सुन्दर दर्शन वाले पुत्र को जन्म दिया, मानो आकाश चन्द्रमा को निकाल रहा हो, जिसकी कान्ति निर्मल अमृत-सी थी।
+    source: Kathāsaritsāgara 4.3 (Digital Corpus of Sanskrit, file KSS, 4, 3)
+- id: t1
+  kind: teach
+  title:
+    en: Reading Somadeva
+    hi: सोमदेव को पढ़ना
+  depth: core
+  skills:
+  - kss.read
+  body:
+    en: 'Somadeva writes in śloka, like the epics, but his sentences run long, and a compound can fill a quarter. Word order is free, and “is” is often left out. Use your three steps: split the joins, find the verb or see there is none, then the doer and the rest.'
+    hi: 'सोमदेव महाकाव्यों की तरह श्लोक में लिखते हैं, पर उनके वाक्य लम्बे होते हैं, और एक समास पूरा चरण भर सकता है। शब्द-क्रम स्वतन्त्र है, और ‘है’ प्रायः छोड़ दिया जाता है। अपने तीन चरण लीजिए: जोड़ खोलिए, क्रिया खोजिए या देखिए कि नहीं है, फिर कर्ता और शेष।'
+- id: tb1
+  kind: table
+  title:
+    en: The boy's name is given
+    hi: बालक का नाम दिया गया
+  depth: core
+  skills:
+  - kss.read
+  caption:
+    en: One line, split at its joins
+    hi: एक पंक्ति, जोड़ों पर खुली हुई
+  columns:
+  - en: First word
+    hi: पहला शब्द
+  - en: Second word
+    hi: दूसरा शब्द
+  - en: Joined
+    hi: जुड़ा हुआ
+  rows:
+  - - sa: कामदेवावतारः
+    - sa: अयम्
+    - sa: कामदेवावतारोऽयम्
+      check:
+        type: sandhi
+        first: कामदेवावतारः
+        second: अयम्
+        joined: कामदेवावतारोऽयम्
+      highlight: true
+  - - sa: राजन्
+    - sa: जातः
+    - sa: राजञ्जातः
+      check:
+        type: sandhi
+        first: राजन्
+        second: जातः
+        joined: राजञ्जातः
+      highlight: true
+  - - sa: जातः
+    - sa: तव
+    - sa: जातस्तव
+      check:
+        type: sandhi
+        first: जातः
+        second: तव
+        joined: जातस्तव
+      highlight: true
+  - - sa: तव
+    - sa: आत्मजः
+    - sa: तवात्मजः
+      check:
+        type: sandhi
+        first: तव
+        second: आत्मजः
+        joined: तवात्मजः
+      highlight: true
+  note:
+    en: Four joins in one line of a śloka.
+    hi: एक श्लोक-पंक्ति में चार जोड़।
+- id: r1
+  kind: reading
+  title:
+    en: The voice from the sky
+    hi: आकाश की वाणी
+  depth: core
+  skills:
+  - kss.read
+  passage:
+  - sa: तत्रासूत च सा काले कुमारं कान्तदर्शनम्
+    meaning:
+      en: There, in due time, she bore a son lovely to see. (Somadeva, Kathāsaritsāgara 4.3)
+      hi: वहाँ, समय आने पर, उसने सुन्दर दर्शन वाले पुत्र को जन्म दिया। (सोमदेव, कथासरित्सागर 4.3)
+    words:
+    - sa: तत्र
+      gloss:
+        en: there
+        hi: वहाँ
+    - sa: असूत
+      gloss:
+        en: bore
+        hi: जन्म दिया
+    - sa: च
+      gloss:
+        en: and
+        hi: और
+    - sa: सा
+      gloss:
+        en: she
+        hi: उसने
+    - sa: काले
+      gloss:
+        en: in due time
+        hi: समय पर
+    - sa: कुमारम्
+      gloss:
+        en: a son
+        hi: पुत्र को
+    - sa: कान्तदर्शनम्
+      gloss:
+        en: lovely to see
+        hi: सुन्दर दर्शन वाले
+  - sa: गगनाद् उच्चचारैवं काले तस्मिन् सरस्वती
+    meaning:
+      en: At that time a voice spoke thus from the sky. (Somadeva, Kathāsaritsāgara 4.3)
+      hi: उस समय आकाश से वाणी ने ऐसा कहा। (सोमदेव, कथासरित्सागर 4.3)
+    words:
+    - sa: गगनात्
+      gloss:
+        en: from the sky
+        hi: आकाश से
+    - sa: उच्चचार
+      gloss:
+        en: spoke
+        hi: बोली
+    - sa: एवम्
+      gloss:
+        en: thus
+        hi: ऐसे
+    - sa: काले
+      gloss:
+        en: time
+        hi: समय
+    - sa: तस्मिन्
+      gloss:
+        en: that
+        hi: उस
+    - sa: सरस्वती
+      gloss:
+        en: the voice (Sarasvatī)
+        hi: वाणी (सरस्वती)
+  - sa: कामदेवावतारो ऽयं राजञ् जातस् तवात्मजः
+    meaning:
+      en: “This son born to you, O king, is an incarnation of Kāmadeva.” (Somadeva, Kathāsaritsāgara 4.3)
+      hi: “हे राजन्, तुम्हारा यह उत्पन्न पुत्र कामदेव का अवतार है।” (सोमदेव, कथासरित्सागर 4.3)
+    words:
+    - sa: कामदेवावतारः
+      gloss:
+        en: an incarnation of Kāmadeva
+        hi: कामदेव का अवतार
+    - sa: अयम्
+      gloss:
+        en: this
+        hi: यह
+    - sa: राजन्
+      gloss:
+        en: O king
+        hi: हे राजन्
+    - sa: जातः
+      gloss:
+        en: born
+        hi: उत्पन्न
+    - sa: तव
+      gloss:
+        en: your
+        hi: तुम्हारा
+    - sa: आत्मजः
+      gloss:
+        en: son
+        hi: पुत्र
+  - sa: नरवाहनदत्तं च जानीह्य् एनम् इहाख्यया
+    meaning:
+      en: “And know him here by the name Naravāhanadatta.” (Somadeva, Kathāsaritsāgara 4.3)
+      hi: “और उसे यहाँ नरवाहनदत्त नाम से जानो।” (सोमदेव, कथासरित्सागर 4.3)
+    words:
+    - sa: नरवाहनदत्तम्
+      gloss:
+        en: Naravāhanadatta
+        hi: नरवाहनदत्त को
+    - sa: च
+      gloss:
+        en: and
+        hi: और
+    - sa: जानीहि
+      gloss:
+        en: know
+        hi: जानो
+    - sa: एनम्
+      gloss:
+        en: him
+        hi: उसे
+    - sa: इह
+      gloss:
+        en: here
+        hi: यहाँ
+    - sa: आख्यया
+      gloss:
+        en: by the name
+        hi: नाम से
+  - sa: अनेन भवितव्यं च दिव्यं कल्पम् अतन्द्रिणा सर्वविद्याधरेन्द्राणाम् अचिराच् चक्रवर्तिना
+    meaning:
+      en: “Tireless, he will soon be emperor of all the lords of the Vidyādharas, for a divine aeon.” (Somadeva, Kathāsaritsāgara 4.3)
+      hi: “वह अथक होकर शीघ्र ही सब विद्याधरेन्द्रों का चक्रवर्ती बनेगा, एक दिव्य कल्प तक।” (सोमदेव, कथासरित्सागर 4.3)
+    words:
+    - sa: अनेन
+      gloss:
+        en: by him
+        hi: उसके द्वारा
+    - sa: भवितव्यम्
+      gloss:
+        en: it shall be
+        hi: होगा
+    - sa: च
+      gloss:
+        en: and
+        hi: और
+    - sa: दिव्यम्
+      gloss:
+        en: divine
+        hi: दिव्य
+    - sa: कल्पम्
+      gloss:
+        en: for an aeon
+        hi: एक कल्प तक
+    - sa: अतन्द्रिणा
+      gloss:
+        en: by the tireless one
+        hi: अथक के द्वारा
+    - sa: सर्वविद्याधरेन्द्राणाम्
+      gloss:
+        en: of all the lords of the Vidyādharas
+        hi: सब विद्याधरेन्द्रों के
+    - sa: अचिरात्
+      gloss:
+        en: soon
+        hi: शीघ्र
+    - sa: चक्रवर्तिना
+      gloss:
+        en: as emperor
+        hi: चक्रवर्ती के रूप में
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - kss.read
+  widget: rhythm_tapper
+  prompt:
+    en: 'Tap the beats of the naming line: look at places five to seven.'
+    hi: 'नामकरण की पंक्ति की ताल दीजिए: पाँच से सात स्थानों को देखिए।'
+  params:
+    lines:
+    - कामदेवावतारोऽयं राजञ्जातस्तवात्मजः
+  roman: show
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - kss.read
+  mode: choice
+  prompt:
+    en: Split the joined word {{तवात्मजः}}.
+    hi: जुड़े शब्द {{तवात्मजः}} को तोड़िए।
+  explain:
+    en: '{{तव}} + {{आत्मजः}}.'
+    hi: '{{तव}} + {{आत्मजः}}।'
+  roman: after
+  options:
+  - sa: तवि + आत्मजः
+  - sa: तवे + आत्मजः
+  - correct: true
+    sa: तव + आत्मजः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - kss.read
+  mode: choice
+  prompt:
+    en: “नरवाहनदत्तं च जानीहि एनम्.” What does it say?
+    hi: “नरवाहनदत्तं च जानीहि एनम्।” वह क्या कहता है?
+  explain:
+    en: '{{जानीहि}}: know; {{एनम्}}: him.'
+    hi: '{{जानीहि}}: जानो; {{एनम्}}: उसे।'
+  roman: after
+  options:
+  - correct: true
+    text:
+      en: And know him by the name Naravāhanadatta
+      hi: और उसे नरवाहनदत्त नाम से जानो
+  - text:
+      en: And do not call him Naravāhanadatta
+      hi: और उसे नरवाहनदत्त मत कहो
+  - text:
+      en: And call the king Naravāhanadatta
+      hi: और राजा को नरवाहनदत्त कहो
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - kss.read
+  mode: choice
+  prompt:
+    en: The line {{कामदेवावतारोऽयं राजञ्जातस्तवात्मजः}} has no finite verb. What supplies “is”?
+    hi: पंक्ति {{कामदेवावतारोऽयं राजञ्जातस्तवात्मजः}} में कोई तिङन्त क्रिया नहीं है। ‘है’ कौन देता है?
+  explain:
+    en: A sentence can be a subject and what it is, with no “is”.
+    hi: वाक्य कर्ता और वह जो है, बिना ‘है’ के, हो सकता है।
+  roman: after
+  options:
+  - text:
+      en: the word {{जातः}}
+      hi: शब्द {{जातः}}
+  - correct: true
+    text:
+      en: 'nothing: Sanskrit leaves it out'
+      hi: 'कुछ नहीं: संस्कृत उसे छोड़ देती है'
+  - text:
+      en: the word {{राजन्}}
+      hi: शब्द {{राजन्}}
+- id: p4
+  kind: practice
+  title:
+    en: The name
+    hi: नाम
+  depth: core
+  skills:
+  - kss.read
+  mode: choice
+  prompt:
+    en: Who is the boy, according to the voice from the sky?
+    hi: आकाश की वाणी के अनुसार बालक कौन है?
+  explain:
+    en: '{{कामदेवावतारः}}: an incarnation of Kāmadeva.'
+    hi: '{{कामदेवावतारः}}: कामदेव का अवतार।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “कामदेवावतारः,” you read, and the amber spirit's cupped hands slowly fill with a pale light, like water. “नरवाहनदत्तम्,” she whispers. The lamps along the walls flare once. At the mouth of the cave, Lubdhaka, who has been listening, says the name too, carefully, as one tries a coin between the teeth. “Naravāhanadatta,” he says. “So that is whose tale it is.”
+      hi: “कामदेवावतारः,” आप पढ़ते हैं, और अम्बर-रंग की भूत की जुड़ी हथेलियों में पानी की तरह धीरे-धीरे हल्का प्रकाश भरता है। “नरवाहनदत्तम्,” वह फुसफुसाती है। दीवारों के दीपक एक बार लपकते हैं। गुफा के द्वार पर लुब्धक, जो सुन रहा था, वही नाम सावधानी से दोहराता है, जैसे कोई सिक्के को दाँत से परखता हो। “नरवाहनदत्त,” वह कहता है। “तो यह उसकी कथा है।”
+    failure:
+      en: The light does not gather. The boy is {{कामदेवावतारः}}.
+      hi: प्रकाश नहीं भरता। बालक {{कामदेवावतारः}} है।
+  options:
+  - correct: true
+    text:
+      en: an incarnation of Kāmadeva
+      hi: कामदेव का अवतार
+  - text:
+      en: a hunter
+      hi: एक व्याध
+  - text:
+      en: a minister
+      hi: एक मन्त्री
+- id: sum
+  kind: summary
+  title:
+    en: The child named Naravāhanadatta
+    hi: नरवाहनदत्त नाम का बालक
+  depth: core
+  points:
+  - sa: नरवाहनदत्तः
+    text:
+      en: The boy named by the voice from the sky.
+      hi: आकाशवाणी द्वारा नामित बालक।
+  - text:
+      en: 'Somadeva''s verses run long: split, then find the verb.'
+      hi: 'सोमदेव के श्लोक लम्बे हैं: खोलिए, फिर क्रिया खोजिए।'
+  - text:
+      en: “Is” is often left out.
+      hi: ‘है’ प्रायः छोड़ दिया जाता है।

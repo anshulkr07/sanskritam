@@ -7,7 +7,7 @@ import { ArtworkImage as Image } from "../components/artwork/ArtworkImage";
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 
 import { useGuideLang } from "../hooks/useGuide";
 import { useTypeScale } from "../hooks/useTypeScale";
@@ -17,6 +17,7 @@ import { announce } from "../utils/announce";
 import { devanagariFormula } from "../utils/sanskritDisplay";
 import InlineText from "../components/grammar/InlineText";
 import GuideCardDetails from "./GuideCardDetails";
+import { remoteArtwork } from "../components/artwork/remoteArtwork";
 import { hubArtwork } from "../components/artwork/hubs";
 import { findGuideArt, findSandhiArt, getLearnV2Asset } from "./assetMap";
 import { sceneHeightOf } from "./sceneCrop";
@@ -40,6 +41,16 @@ function artIds(card: LearnV2Card): string[] {
   const matched = ex && card.guide ? findGuideArt(card.guide.topicId, ex.sa, ex.iast)
     : ex && card.id.startsWith("sandhi-") ? findSandhiArt(ex.sa, ex.iast) : undefined;
   return (card.assetIds ?? (card.assetId ? [card.assetId] : matched ? [matched] : [])).filter((id) => !!getLearnV2Asset(id));
+}
+
+export function lessonArtworkSources(card: LearnV2Card, tablet = false) {
+  const sources = artIds(card).flatMap(id => { const art = getLearnV2Asset(id); return art ? [art.source] : []; });
+  if (card.openingArt) sources.push(remoteArtwork(`learn-v2/opening-${card.openingArt}-${tablet ? "tablet" : "phone"}-v1.webp`));
+  if (!sources.length && card.guide?.chapterId) {
+    const chapter = hubArtwork(`grammar:${card.guide.chapterId}`);
+    if (chapter) sources.push(chapter);
+  }
+  return sources;
 }
 
 /** The painted scene only: the generated caption band below it is cut off. */
@@ -198,12 +209,17 @@ function Practice({ card, onAnswer }: { card: LearnV2Card; onAnswer?: (correct: 
 export default function LearnV2CardView({ card, accent = T.action, onAnswer }: { card: LearnV2Card; accent?: string; onAnswer?: (correct: boolean) => void }) {
   const { lang } = useGuideLang();
   const { sized } = useTypeScale();
+  const dimensions = useWindowDimensions();
+  const tablet = Math.min(dimensions.width, dimensions.height) >= 600;
   const ids = artIds(card);
   const chapterArt = card.guide?.chapterId ? hubArtwork(`grammar:${card.guide.chapterId}`) : undefined;
   return (
     <View style={{ gap: 14 }}>
       <Text style={[ui("bold"), { color: accent, fontSize: sized(12), letterSpacing: 1.4 }]}>{cardLabel(card, lang).toUpperCase()}</Text>
       <InlineText accessibilityRole="header" text={lang === "hi" ? card.title.hi : card.title.en} lang={lang} style={[ui("bold"), { color: T.ink, fontSize: sized(23), lineHeight: sized(29), marginTop: -8 }]} />
+      {card.openingArt && <Image source={remoteArtwork(`learn-v2/opening-${card.openingArt}-${tablet ? "tablet" : "phone"}-v1.webp`)} resizeMode="contain"
+        accessibilityLabel={card.openingArt === "sandhi" ? "Two streams meet and flow onward together, an illustration of joining." : "Two learners recite and listen carefully beneath a banyan tree."}
+        style={{ width: "100%", aspectRatio: 1 }} />}
       {ids.map((id) => <Scene key={id} id={id} />)}
       {!ids.length && chapterArt && <Image source={chapterArt} resizeMode="contain" accessible={false}
         style={{ width: "100%", height: 200, backgroundColor: T.surface }} />}

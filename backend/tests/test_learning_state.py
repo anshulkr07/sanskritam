@@ -76,3 +76,13 @@ def test_trail_visits_from_an_older_offline_device_are_not_lost():
                    {"shabd.trail.v1.visited": {"value": '["b"]', "updated_ms": 10}})
     import json
     assert json.loads(merged["shabd.trail.v1.visited"]["value"]) == ["a", "b"]
+
+
+def test_book_read_chunks_union_older_devices_without_losing_pages():
+    import json
+    key = "shabd.read.pages.v1.gita.2.0"
+    record = lambda pages, stamp: {key: {"value": json.dumps({"book": "gita", "chapter": "2", "pages": pages}), "updated_ms": stamp}}
+    saved = record([["Gita 2.1", 0], ["Gita 2.2", 1]], 20)
+    result = merge(saved, record([["Gita 2.2", 1], ["Gita 2.3", 2]], 10))
+    assert json.loads(result[key]["value"])["pages"] == [["Gita 2.1", 0], ["Gita 2.2", 1], ["Gita 2.3", 2]]
+    assert result[key]["updated_ms"] == 20

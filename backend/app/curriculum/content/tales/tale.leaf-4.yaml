@@ -1,0 +1,865 @@
+id: tale.leaf-4
+template: tale
+title:
+  en: The dull pupil
+  hi: मन्द शिष्य
+title_sa: पाणिनिकथा
+minutes: 7
+review: engine_ok
+sources:
+- title: Kathāsaritsāgara, taraṅga 4 (Digital Corpus of Sanskrit file KSS, 1, 4), the story retold in new, simple sentences with three real half-verses quoted
+  url: https://github.com/OliverHellwig/sanskrit
+  licence: CC BY 4.0
+  note: 'The plot follows Somadeva''s text, told by Vararuci: in Varṣa''s school there was a dull pupil, Pāṇini; he went to the Himālaya, pleased Śiva with austerity and received a new grammar, the mouth of all knowledge; he came back and defeated Vararuci in debate. The three quoted lines are Somadeva''s own words; the rest is new Sanskrit in the present tense.'
+cards:
+- id: r1
+  kind: reading
+  title:
+    en: A dull pupil
+    hi: एक मन्द शिष्य
+  depth: core
+  image:
+    brief: 'A quiet courtyard school in Pāṭaliputra: a thin earnest young man in plain white with a shaved head and a bundle of palm leaves sitting a little apart from the other pupils, slow and sorrowful; the teacher Varṣa''s wife at a doorway making a gentle but firm gesture of dismissal; warm old-India watercolour.'
+    alt:
+      en: A thin young man sits apart from other pupils while the teacher's wife gestures him away
+      hi: दूसरे शिष्यों से अलग बैठा पतला युवक, उसे विदा करती गुरुपत्नी
+    cast:
+    - panini
+    - varsha
+    place: pataliputra
+    ratio: '4:3'
+    id: tale-leaf-4-r1
+  passage:
+  - sa: कालेन वर्षस्य शिष्याः बहवः भवन्ति।
+    meaning:
+      en: With time Varṣa's pupils become many.
+      hi: समय के साथ वर्ष के शिष्य बहुत हो जाते हैं।
+    words:
+    - sa: कालेन
+      gloss:
+        en: with time
+        hi: समय के साथ
+      check:
+        type: subanta
+        stem: काल
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: वर्षस्य
+      gloss:
+        en: of Varṣa
+        hi: वर्ष के
+      check:
+        type: subanta
+        stem: वर्ष
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: शिष्याः
+      gloss:
+        en: pupils
+        hi: शिष्य
+      check:
+        type: subanta
+        stem: शिष्य
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: बहवः
+      gloss:
+        en: many
+        hi: बहुत-से
+    - sa: भवन्ति
+      gloss:
+        en: become
+        hi: हो जाते हैं
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - sa: तत्र पाणिनिः नाम एकः शिष्यः अस्ति।
+    meaning:
+      en: There is one pupil named Pāṇini.
+      hi: वहाँ पाणिनि नाम का एक शिष्य है।
+    words:
+    - sa: तत्र
+      gloss:
+        en: there
+        hi: वहाँ
+    - sa: पाणिनिः
+      gloss:
+        en: Pāṇini
+        hi: पाणिनि
+      check:
+        type: subanta
+        stem: पाणिनि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नाम
+      gloss:
+        en: by name
+        hi: नाम का
+    - sa: एकः
+      gloss:
+        en: one
+        hi: एक
+    - sa: शिष्यः
+      gloss:
+        en: pupil
+        hi: शिष्य
+      check:
+        type: subanta
+        stem: शिष्य
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: तत्रैकः पाणिनिर्नाम जडबुद्धितरो ऽभवत्
+    meaning:
+      en: “There was one, named Pāṇini, very dull of mind.” (Somadeva, Kathāsaritsāgara 1.4)
+      hi: “वहाँ पाणिनि नाम का एक था, अत्यन्त जड़-बुद्धि।” (सोमदेव, कथासरित्सागर 1.4)
+    words:
+    - sa: तत्र
+      gloss:
+        en: there
+        hi: वहाँ
+    - sa: एकः
+      gloss:
+        en: one
+        hi: एक
+    - sa: पाणिनिः
+      gloss:
+        en: Pāṇini
+        hi: पाणिनि
+    - sa: नाम
+      gloss:
+        en: named
+        hi: नाम का
+    - sa: जडबुद्धितरः
+      gloss:
+        en: very dull of mind
+        hi: अत्यन्त जड़-बुद्धि
+    - sa: अभवत्
+      gloss:
+        en: was
+        hi: था
+  - sa: पाणिनिः जडः अस्ति।
+    meaning:
+      en: Pāṇini is dull.
+      hi: पाणिनि मन्द है।
+    words:
+    - sa: पाणिनिः
+      gloss:
+        en: Pāṇini
+        hi: पाणिनि
+      check:
+        type: subanta
+        stem: पाणिनि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: जडः
+      gloss:
+        en: dull
+        hi: मन्द
+      check:
+        type: subanta
+        stem: जड
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः गुरुपत्नीम् सेवते।
+    meaning:
+      en: He serves the teacher's wife.
+      hi: वह गुरुपत्नी की सेवा करता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: गुरुपत्नीम्
+      gloss:
+        en: the teacher's wife
+        hi: गुरुपत्नी की
+      check:
+        type: subanta
+        stem: गुरुपत्नी
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: सेवते
+      gloss:
+        en: serves
+        hi: सेवा करता है
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: गुरुपत्नी तम् प्रेषयति।
+    meaning:
+      en: The teacher's wife sends him away.
+      hi: गुरुपत्नी उसे भेज देती है।
+    words:
+    - sa: गुरुपत्नी
+      gloss:
+        en: the teacher's wife
+        hi: गुरुपत्नी
+      check:
+        type: subanta
+        stem: गुरुपत्नी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: तम्
+      gloss:
+        en: him
+        hi: उसे
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: प्रेषयति
+      gloss:
+        en: sends away
+        hi: भेज देती है
+      check:
+        type: tinanta
+        dhatu: इष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tudadi
+        prefixes:
+        - प्र
+        sanadi:
+        - Nic
+  - sa: सः खिन्नः भवति।
+    meaning:
+      en: He becomes weary.
+      hi: वह थक-हार जाता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: खिन्नः
+      gloss:
+        en: weary
+        hi: थका-हारा
+      check:
+        type: subanta
+        stem: खिन्न
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: भवति
+      gloss:
+        en: becomes
+        hi: हो जाता है
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः हिमालयम् गच्छति।
+    meaning:
+      en: He goes to the Himālaya.
+      hi: वह हिमालय जाता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: हिमालयम्
+      gloss:
+        en: Himālaya
+        hi: हिमालय
+      check:
+        type: subanta
+        stem: हिमालय
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गच्छति
+      gloss:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: r2
+  kind: reading
+  title:
+    en: The mountain
+    hi: पर्वत
+  depth: core
+  image:
+    brief: 'A high Himālayan slope with snow peaks and dark pines: the thin young man seated cross-legged on a flat rock beside a tiny fire, eyes closed in austerity, snow on his shoulders; above him on the peak a serene ascetic figure with a thin crescent moon in his matted hair, hand raised in blessing; drifting cloud; soft gold light.'
+    alt:
+      en: A thin young man sits in austerity on a snowy slope while a serene ascetic with a crescent moon blesses him
+      hi: बर्फ़ीली ढलान पर तप करता पतला युवक, अर्धचन्द्र वाले शान्त तपस्वी का आशीर्वाद
+    cast:
+    - panini
+    - shiva
+    place: himalaya
+    ratio: '4:3'
+    id: tale-leaf-4-r2
+  passage:
+  - sa: तत्र सः तपः करोति।
+    meaning:
+      en: There he practises austerity.
+      hi: वहाँ वह तप करता है।
+    words:
+    - sa: तत्र
+      gloss:
+        en: there
+        hi: वहाँ
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: तपः
+      gloss:
+        en: austerity
+        hi: तप
+      check:
+        type: subanta
+        stem: तपस्
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: करोति
+      gloss:
+        en: does
+        hi: करता है
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः विद्याम् इच्छति।
+    meaning:
+      en: He wants knowledge.
+      hi: वह विद्या चाहता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: विद्याम्
+      gloss:
+        en: knowledge
+        hi: विद्या
+      check:
+        type: subanta
+        stem: विद्या
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: इच्छति
+      gloss:
+        en: wants
+        hi: चाहता है
+      check:
+        type: tinanta
+        dhatu: इष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tudadi
+  - sa: शिवः तुष्यति।
+    meaning:
+      en: Śiva is pleased.
+      hi: शिव प्रसन्न होते हैं।
+    words:
+    - sa: शिवः
+      gloss:
+        en: Śiva
+        hi: शिव
+      check:
+        type: subanta
+        stem: शिव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: तुष्यति
+      gloss:
+        en: is pleased
+        hi: प्रसन्न होते हैं
+      check:
+        type: tinanta
+        dhatu: तुष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Divadi
+  - sa: शिवः पाणिनये नूतनम् व्याकरणम् ददाति।
+    meaning:
+      en: Śiva gives Pāṇini a new grammar.
+      hi: शिव पाणिनि को नया व्याकरण देते हैं।
+    words:
+    - sa: शिवः
+      gloss:
+        en: Śiva
+        hi: शिव
+      check:
+        type: subanta
+        stem: शिव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पाणिनये
+      gloss:
+        en: to Pāṇini
+        hi: पाणिनि को
+      check:
+        type: subanta
+        stem: पाणिनि
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+    - sa: नूतनम्
+      gloss:
+        en: new
+        hi: नया
+      check:
+        type: subanta
+        stem: नूतन
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: व्याकरणम्
+      gloss:
+        en: grammar
+        hi: व्याकरण
+      check:
+        type: subanta
+        stem: व्याकरण
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: ददाति
+      gloss:
+        en: gives
+        hi: देते हैं
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सर्वविद्यामुखं तेन प्राप्तं व्याकरणं नवम्
+    meaning:
+      en: “By him was obtained a new grammar, the mouth of all knowledge.” (Somadeva, Kathāsaritsāgara 1.4)
+      hi: “उसने एक नया व्याकरण पाया, सब विद्याओं का मुख।” (सोमदेव, कथासरित्सागर 1.4)
+    words:
+    - sa: सर्वविद्यामुखम्
+      gloss:
+        en: the mouth of all knowledge
+        hi: सब विद्याओं का मुख
+    - sa: तेन
+      gloss:
+        en: by him
+        hi: उसके द्वारा
+    - sa: प्राप्तम्
+      gloss:
+        en: obtained
+        hi: पाया गया
+    - sa: व्याकरणम्
+      gloss:
+        en: grammar
+        hi: व्याकरण
+    - sa: नवम्
+      gloss:
+        en: new
+        hi: नया
+  - sa: व्याकरणम् सर्वविद्यानाम् मुखम् अस्ति।
+    meaning:
+      en: Grammar is the mouth of all knowledge.
+      hi: व्याकरण सब विद्याओं का मुख है।
+    words:
+    - sa: व्याकरणम्
+      gloss:
+        en: grammar
+        hi: व्याकरण
+      check:
+        type: subanta
+        stem: व्याकरण
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: सर्वविद्यानाम्
+      gloss:
+        en: of all knowledge
+        hi: सब विद्याओं का
+      check:
+        type: subanta
+        stem: सर्वविद्या
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Bahu
+    - sa: मुखम्
+      gloss:
+        en: mouth
+        hi: मुख
+      check:
+        type: subanta
+        stem: मुख
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: पाणिनिः वररुचिम् आह्वयति।
+    meaning:
+      en: Pāṇini challenges Vararuci.
+      hi: पाणिनि वररुचि को ललकारता है।
+    words:
+    - sa: पाणिनिः
+      gloss:
+        en: Pāṇini
+        hi: पाणिनि
+      check:
+        type: subanta
+        stem: पाणिनि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वररुचिम्
+      gloss:
+        en: Vararuci
+        hi: वररुचि को
+    - sa: आह्वयति
+      gloss:
+        en: challenges
+        hi: ललकारता है
+      check:
+        type: tinanta
+        dhatu: ह्वे
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+- id: r3
+  kind: reading
+  title:
+    en: The debate
+    hi: शास्त्रार्थ
+  depth: core
+  image:
+    brief: 'A courtyard in Pāṭaliputra at dusk: two scholars facing each other, one older and assured, one thin and pale; a ring of silent listeners; above, a dark sky with a great shape of cloud and the faint outline of an ascetic with a crescent moon raising a hand; an unrolled palm-leaf manuscript on the ground between the two debaters.'
+    alt:
+      en: Two scholars debate in a courtyard as a great shape appears in the dusk sky
+      hi: आँगन में शास्त्रार्थ करते दो विद्वान्, साँझ के आकाश में एक विराट आकृति
+    cast:
+    - panini
+    - vararuci
+    - shiva
+    place: pataliputra
+    ratio: '4:3'
+    id: tale-leaf-4-r3
+  passage:
+  - sa: तौ वादम् कुरुतः।
+    meaning:
+      en: The two hold a debate.
+      hi: दोनों शास्त्रार्थ करते हैं।
+    words:
+    - sa: तौ
+      gloss:
+        en: the two
+        hi: दोनों
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: वादम्
+      gloss:
+        en: a debate
+        hi: शास्त्रार्थ
+      check:
+        type: subanta
+        stem: वाद
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: कुरुतः
+      gloss:
+        en: hold
+        hi: करते हैं
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+  - sa: सप्त दिनानि तौ वदतः।
+    meaning:
+      en: For seven days the two speak.
+      hi: सात दिन दोनों बोलते हैं।
+    words:
+    - sa: सप्त
+      gloss:
+        en: seven
+        hi: सात
+    - sa: दिनानि
+      gloss:
+        en: days
+        hi: दिन
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+    - sa: तौ
+      gloss:
+        en: the two
+        hi: दोनों
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: वदतः
+      gloss:
+        en: speak
+        hi: बोलते हैं
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+  - sa: अष्टमे दिने शिवः आकाशे हुङ्कारम् करोति।
+    meaning:
+      en: On the eighth day Śiva roars in the sky.
+      hi: आठवें दिन शिव आकाश में गर्जन करते हैं।
+    words:
+    - sa: अष्टमे
+      gloss:
+        en: on the eighth
+        hi: आठवें
+      check:
+        type: subanta
+        stem: अष्टम
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: दिने
+      gloss:
+        en: day
+        hi: दिन
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: शिवः
+      gloss:
+        en: Śiva
+        hi: शिव
+      check:
+        type: subanta
+        stem: शिव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: आकाशे
+      gloss:
+        en: in the sky
+        hi: आकाश में
+      check:
+        type: subanta
+        stem: आकाश
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: हुङ्कारम्
+      gloss:
+        en: a roar
+        hi: गर्जन
+      check:
+        type: subanta
+        stem: हुङ्कार
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: करोति
+      gloss:
+        en: makes
+        hi: करते हैं
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: नभःस्थेन महाघोरो हुंकारः शंभुना कृतः
+    meaning:
+      en: “A great terrible roar was made by Śambhu from the sky.” (Somadeva, Kathāsaritsāgara 1.4)
+      hi: “आकाश में स्थित शम्भु ने महाभयंकर हुंकार किया।” (सोमदेव, कथासरित्सागर 1.4)
+    words:
+    - sa: नभःस्थेन
+      gloss:
+        en: from the sky
+        hi: आकाश में स्थित
+    - sa: महाघोरः
+      gloss:
+        en: very terrible
+        hi: महाभयंकर
+    - sa: हुंकारः
+      gloss:
+        en: roar
+        hi: हुंकार
+    - sa: शम्भुना
+      gloss:
+        en: by Śambhu (Śiva)
+        hi: शम्भु द्वारा
+    - sa: कृतः
+      gloss:
+        en: was made
+        hi: किया गया
+  - sa: ऐन्द्रम् व्याकरणम् नश्यति।
+    meaning:
+      en: Indra's grammar is lost.
+      hi: इन्द्र का व्याकरण नष्ट हो जाता है।
+    words:
+    - sa: ऐन्द्रम्
+      gloss:
+        en: Indra's
+        hi: इन्द्र का
+    - sa: व्याकरणम्
+      gloss:
+        en: grammar
+        hi: व्याकरण
+      check:
+        type: subanta
+        stem: व्याकरण
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नश्यति
+      gloss:
+        en: is lost
+        hi: नष्ट हो जाता है
+      check:
+        type: tinanta
+        dhatu: नश्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Divadi
+  - sa: पाणिनिः जयति।
+    meaning:
+      en: Pāṇini wins.
+      hi: पाणिनि जीतता है।
+    words:
+    - sa: पाणिनिः
+      gloss:
+        en: Pāṇini
+        hi: पाणिनि
+      check:
+        type: subanta
+        stem: पाणिनि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: जयति
+      gloss:
+        en: wins
+        hi: जीतता है
+      check:
+        type: tinanta
+        dhatu: जि
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: पाणिनेः व्याकरणम् लोके तिष्ठति।
+    meaning:
+      en: Pāṇini's grammar stands in the world.
+      hi: पाणिनि का व्याकरण संसार में टिकता है।
+    words:
+    - sa: पाणिनेः
+      gloss:
+        en: Pāṇini's
+        hi: पाणिनि का
+      check:
+        type: subanta
+        stem: पाणिनि
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: व्याकरणम्
+      gloss:
+        en: grammar
+        hi: व्याकरण
+      check:
+        type: subanta
+        stem: व्याकरण
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: लोके
+      gloss:
+        en: in the world
+        hi: संसार में
+      check:
+        type: subanta
+        stem: लोक
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: तिष्ठति
+      gloss:
+        en: stands
+        hi: टिकता है
+      check:
+        type: tinanta
+        dhatu: स्था
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka

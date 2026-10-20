@@ -1,0 +1,372 @@
+id: gender.tad
+template: scene
+title:
+  en: 'He, she, it: सः, सा, तत्'
+  hi: 'वह: सः, सा, तत्'
+title_sa: सः सा तत्
+minutes: 6
+teaches:
+- pron.tad
+needs:
+- gen.three
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Who is that?
+    hi: वह कौन है?
+  depth: core
+  image:
+    brief: 'Śuka on Dādī''s shoulder pointing a wing at three puppets in turn: a king, a queen and a golden crown; the puppeteer''s wife laughing and holding up the crown; the small rainbow-coloured spirit peeking.'
+    alt:
+      en: A parrot points at a king, a queen and a crown puppet in turn
+      hi: राजा, रानी और मुकुट की कठपुतली की ओर बारी-बारी इशारा करता तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - rangaka
+    place: utsava
+    ratio: '4:3'
+    id: gender-tad-s1
+  narration:
+    en: 'Śuka points at the puppets. “He!” “She!” “It!” The puppeteer''s wife laughs and holds up the crown. Dādī says: “Instead of repeating a noun, use a short word that matches its gender. Sanskrit has one for each.”'
+    hi: शुक कठपुतलियों की ओर इशारा करता है। “वह!” “वह!” “वह!” कठपुतली वाले की पत्नी हँसकर मुकुट उठाती है। दादी कहती हैं, “संज्ञा दोहराने की जगह उसी के लिंग से मेल खाता छोटा शब्द बोलिए। संस्कृत में हर लिंग के लिए एक है।”
+- id: t1
+  kind: teach
+  title:
+    en: He, she, it
+    hi: वह (पुं.), वह (स्त्री.), वह (नपुं.)
+  depth: core
+  skills:
+  - pron.tad
+  body:
+    en: '{{सः}} means “he”, {{सा}} “she”, {{तत्}} “it”. They stand for a masculine, a feminine and a neuter noun: {{सः बालकः}} (that boy), {{सा बालिका}}, {{तत् फलम्}}.'
+    hi: '{{सः}} का अर्थ ‘वह (पुं.)’, {{सा}} ‘वह (स्त्री.)’, {{तत्}} ‘वह (नपुं.)’। ये पुंलिंग, स्त्रीलिंग और नपुंसक संज्ञा के स्थान पर आते हैं: {{सः बालकः}} (वह बालक), {{सा बालिका}}, {{तत् फलम्}}।'
+  rows:
+  - sa: सः
+    gloss:
+      en: he, that
+      hi: वह
+    check:
+      type: subanta
+      stem: तद्
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: सा
+    gloss:
+      en: she, that
+      hi: वह (स्त्री)
+    check:
+      type: subanta
+      stem: तद्
+      linga: Stri
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: तत्
+    gloss:
+      en: it, that
+      hi: वह (नपुं.)
+    check:
+      type: subanta
+      stem: तद्
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
+- id: tb1
+  kind: table
+  title:
+    en: सः, सा, तत् in three numbers
+    hi: सः, सा, तत् तीनों वचनों में
+  depth: core
+  skills:
+  - pron.tad
+  caption:
+    en: The pronoun “that, he, she, it”, nominative
+    hi: सर्वनाम ‘वह’, प्रथमा
+  columns:
+  - en: Gender
+    hi: लिंग
+  - en: One
+    hi: एक
+  - en: Two
+    hi: दो
+  - en: Many
+    hi: अनेक
+  rows:
+  - - text:
+        en: masculine
+        hi: पुंलिंग
+    - sa: सः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: तौ
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: ते
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: feminine
+        hi: स्त्रीलिंग
+    - sa: सा
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: ते
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: ताः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: neuter
+        hi: नपुंसक
+    - sa: तत्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: ते
+      check:
+        type: subanta
+        stem: तद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: तानि
+      check:
+        type: subanta
+        stem: तद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Bahu
+  note:
+    en: 'Two forms are alike: {{ते}} is both the feminine and neuter dual, and the masculine plural. Context tells which.'
+    hi: 'कुछ रूप एक-से हैं: {{ते}} स्त्रीलिंग और नपुंसक का द्विवचन भी है और पुंलिंग का बहुवचन भी। प्रसंग बताता है कि कौन-सा।'
+- id: t2
+  kind: teach
+  title:
+    en: Pronouns in sentences
+    hi: वाक्यों में सर्वनाम
+  depth: core
+  skills:
+  - pron.tad
+  body:
+    en: 'A pronoun replaces a noun: {{बालकः पठति}} becomes {{सः पठति}}; {{बालिका पठति}} becomes {{सा पठति}}. The verb does not change.'
+    hi: 'सर्वनाम संज्ञा की जगह आता है: {{बालकः पठति}} का {{सः पठति}} हो जाता है; {{बालिका पठति}} का {{सा पठति}}। क्रिया नहीं बदलती।'
+  examples:
+  - sa: सः पठति।
+    meaning:
+      en: He reads.
+      hi: वह पढ़ता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सा लिखति।
+    meaning:
+      en: She writes.
+      hi: वह लिखती है।
+    words:
+    - sa: सा
+      gloss:
+        en: she
+        hi: वह
+    - sa: लिखति
+      gloss:
+        en: writes
+        hi: लिखती है
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: तत् फलम् अस्ति।
+    meaning:
+      en: That is a fruit.
+      hi: वह फल है।
+    words:
+    - sa: तत्
+      gloss:
+        en: it
+        hi: वह
+    - sa: फलम्
+      gloss:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - pron.tad
+  mode: choice
+  prompt:
+    en: You mean the queen. Which pronoun?
+    hi: आपका आशय रानी से है। कौन-सा सर्वनाम?
+  explain:
+    en: A feminine noun takes {{सा}}.
+    hi: स्त्रीलिंग संज्ञा के लिए {{सा}}।
+  roman: after
+  options:
+  - sa: सः
+  - correct: true
+    sa: सा
+  - sa: तत्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - pron.tad
+  mode: match
+  prompt:
+    en: Join each pronoun to the noun it stands for.
+    hi: हर सर्वनाम को उस संज्ञा से जोड़िए जिसकी जगह वह आता है।
+  explain:
+    en: The pronoun takes the gender and number of its noun.
+    hi: सर्वनाम अपनी संज्ञा का लिंग और वचन लेता है।
+  roman: after
+  pairs:
+  - left:
+      sa: सः
+    right:
+      sa: बालकः
+  - left:
+      sa: सा
+    right:
+      sa: बालिका
+  - left:
+      sa: तत्
+    right:
+      sa: फलम्
+  - left:
+      sa: ताः
+    right:
+      sa: नद्यः
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - pron.tad
+  widget: mark_words
+  prompt:
+    en: Tap every word that means “he”, “she” or “it”.
+    hi: ‘वह’ अर्थ वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - सः
+    - बालकः
+    - सा
+    - फलम्
+    - तत्
+    - नदी
+    targets:
+    - सः
+    - सा
+    - तत्
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: Point at the puppets
+    hi: कठपुतलियों को दिखाइए
+  depth: core
+  skills:
+  - pron.tad
+  mode: choice
+  prompt:
+    en: “That fruit is sweet.” Which pronoun?
+    hi: ‘वह फल मीठा है।’ कौन-सा सर्वनाम?
+  explain:
+    en: '{{फलम्}} is neuter: {{तत्}}.'
+    hi: '{{फलम्}} नपुंसक है: {{तत्}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “सः! सा! तत्!” You point at king, queen and crown in turn, and each puppet bows. A little round face with a painted smile pops over the curtain.
+      hi: “सः! सा! तत्!” आप राजा, रानी और मुकुट की ओर बारी-बारी इशारा करते हैं और हर कठपुतली झुकती है। परदे के ऊपर चित्रित मुस्कान वाला एक नन्हा गोल चेहरा उभर आता है।
+    failure:
+      en: 'The puppets stay still. The crown is neuter: {{तत्}}.'
+      hi: 'कठपुतलियाँ स्थिर रहती हैं। मुकुट नपुंसक है: {{तत्}}।'
+  options:
+  - sa: सः
+  - sa: सा
+  - correct: true
+    sa: तत्
+- id: sum
+  kind: summary
+  title:
+    en: He, she, it
+    hi: वह
+  depth: core
+  points:
+  - sa: सः · सा · तत्
+    text:
+      en: Masculine, feminine, neuter.
+      hi: पुंलिंग, स्त्रीलिंग, नपुंसक।
+  - sa: तौ · ते · ताः · ते · तानि
+    text:
+      en: Two and many.
+      hi: दो और अनेक।
+  - text:
+      en: The pronoun matches its noun.
+      hi: सर्वनाम अपनी संज्ञा से मेल खाता है।

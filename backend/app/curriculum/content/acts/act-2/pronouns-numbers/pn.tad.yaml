@@ -1,0 +1,643 @@
+id: pn.tad
+template: scene
+title:
+  en: That one, in every case
+  hi: वह, हर विभक्ति में
+title_sa: तद्
+minutes: 6
+teaches:
+- pron.tad-full
+needs:
+- pron.tad
+- noun.deva
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The one who loses count
+    hi: गिनती भूलने वाला
+  depth: core
+  image:
+    brief: 'The inner room of the village school library at morning: the Ācārya unlocking a carved door; high on a shelf a small grey spirit made of knotted cords and pebbles pointing at rows of books and muttering; Dādī and Śuka looking up at it; sunbeams full of dust.'
+    alt:
+      en: A knotted-cord spirit on a high library shelf points at rows of books while Dādī and a parrot look up
+      hi: ऊँची अलमारी पर गाँठदार डोरियों का भूत पुस्तकों की ओर इशारा करता, दादी और तोता ऊपर देखते
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - ganaka
+    place: pathashala
+    ratio: '4:3'
+    id: pn-tad-s1
+  narration:
+    en: 'Next morning the Ācārya unlocks the inner room of the library. High on a shelf, a knot of cords and pebbles is counting books, losing count and starting again. “That book, those books, that leaf,” it mutters, pointing at everything and naming nothing. Dādī says softly: “He needs a word for ‘that’ in every case.”'
+    hi: 'अगली सुबह आचार्य पुस्तकालय का भीतरी कक्ष खोलते हैं। ऊँची अलमारी पर डोरियों और कंकड़ों की एक गाँठ पुस्तकें गिन रही है, गिनती भूल रही है, फिर शुरू कर रही है। “वह पुस्तक, वे पुस्तकें, वह पत्र,” वह बुदबुदाता है, हर चीज़ की ओर इशारा करता और किसी का नाम न लेता। दादी धीमे से कहती हैं: “उसे ‘वह’ के लिए हर विभक्ति में शब्द चाहिए।”'
+  lines:
+  - speaker: dadi
+    sa: तत्, तानि, तस्य, तस्मै।
+    gloss:
+      en: That, those, of that, for that.
+      hi: वह, वे, उसका, उसके लिए।
+- id: t1
+  kind: teach
+  title:
+    en: '{{सः}} has more than it shows'
+    hi: '{{सः}} के और भी रूप हैं'
+  depth: core
+  skills:
+  - pron.tad-full
+  body:
+    en: 'Only the first-case forms {{सः}} and {{सा}} show an {{स्}}; everything else starts with {{त्}}. Pronouns also borrow odd endings: for a masculine or neuter, {{तस्मै}} (for), {{तस्मात्}} (from) and {{तस्मिन्}} (in); for a feminine, {{तस्यै}}, {{तस्याः}} and {{तस्याम्}}. The plural genitive is {{तेषाम्}} and {{तासाम्}}.'
+    hi: 'केवल प्रथमा के रूप {{सः}} और {{सा}} में {{स्}} दिखता है; बाक़ी सब {{त्}} से शुरू होते हैं। सर्वनाम कुछ विचित्र प्रत्यय भी लेते हैं: पुंलिंग और नपुंसक में {{तस्मै}} (के लिए), {{तस्मात्}} (से) और {{तस्मिन्}} (में); स्त्रीलिंग में {{तस्यै}}, {{तस्याः}} और {{तस्याम्}}। षष्ठी बहुवचन {{तेषाम्}} और {{तासाम्}} है।'
+  term:
+    sa: सर्वनाम
+    meaning:
+      en: a word that stands for a noun
+      hi: संज्ञा की जगह आने वाला शब्द
+- id: tb1
+  kind: table
+  title:
+    en: तद् masculine
+    hi: तद् पुंलिंग
+  depth: core
+  skills:
+  - pron.tad-full
+  caption:
+    en: “That”, masculine, in every case
+    hi: ‘वह’, पुंलिंग, हर विभक्ति में
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: सः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: तौ
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: ते
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: तम्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: तौ
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Dvi
+    - sa: तान्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Bahu
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: तेन
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: ताभ्याम्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Dvi
+    - sa: तैः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Bahu
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: तस्मै
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      highlight: true
+    - sa: ताभ्याम्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Dvi
+    - sa: तेभ्यः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Bahu
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: तस्मात्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      highlight: true
+    - sa: ताभ्याम्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Dvi
+    - sa: तेभ्यः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Bahu
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: तस्य
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: तयोः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Dvi
+    - sa: तेषाम्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      highlight: true
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: तस्मिन्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+    - sa: तयोः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Dvi
+    - sa: तेषु
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Bahu
+  note:
+    en: 'The coloured forms are the odd ones: {{तस्मै}}, {{तस्मात्}}, {{तस्मिन्}}, {{तेषाम्}}. The neuter is the same except {{तत्}}, {{ते}}, {{तानि}} in the first and second cases.'
+    hi: 'रंगीन रूप विचित्र हैं: {{तस्मै}}, {{तस्मात्}}, {{तस्मिन्}}, {{तेषाम्}}। नपुंसक वैसा ही है, केवल प्रथमा और द्वितीया में {{तत्}}, {{ते}}, {{तानि}}।'
+- id: tb2
+  kind: table
+  title:
+    en: तद् feminine
+    hi: तद् स्त्रीलिंग
+  depth: core
+  skills:
+  - pron.tad-full
+  caption:
+    en: “That”, feminine, in every case
+    hi: ‘वह’, स्त्रीलिंग, हर विभक्ति में
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: सा
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: ते
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: ताः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: ताम्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: ते
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Dvi
+    - sa: ताः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Bahu
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: तया
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: ताभ्याम्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Dvi
+    - sa: ताभिः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Bahu
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: तस्यै
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Eka
+      highlight: true
+    - sa: ताभ्याम्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Dvi
+    - sa: ताभ्यः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Bahu
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: तस्याः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Eka
+      highlight: true
+    - sa: ताभ्याम्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Dvi
+    - sa: ताभ्यः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Bahu
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: तस्याः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      highlight: true
+    - sa: तयोः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Dvi
+    - sa: तासाम्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Bahu
+      highlight: true
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: तस्याम्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+    - sa: तयोः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Dvi
+    - sa: तासु
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Bahu
+  note:
+    en: Four singular forms end in {{स्याः}} or {{स्यै}} or {{स्याम्}}; the others are like {{लता}}.
+    hi: एकवचन के चार रूप {{स्याः}}, {{स्यै}} या {{स्याम्}} पर समाप्त होते हैं; बाक़ी {{लता}} जैसे हैं।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - pron.tad-full
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of that table.
+    hi: उस तालिका के छूटे रूप भरिए।
+  explain:
+    en: Every form is in the masculine table above.
+    hi: हर रूप ऊपर की पुंलिंग तालिका में है।
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: तद्
+      linga: Pum
+      blanks: 3
+    seed: 0
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - pron.tad-full
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the feminine.
+    hi: स्त्रीलिंग के छूटे रूप भरिए।
+  explain:
+    en: Look for {{स्यै}}, {{स्याः}}, {{स्याम्}} in the singular.
+    hi: एकवचन में {{स्यै}}, {{स्याः}}, {{स्याम्}} देखिए।
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: तद्
+      linga: Stri
+      blanks: 3
+    seed: 1
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - pron.tad-full
+  mode: choice
+  prompt:
+    en: “For her.” Which form?
+    hi: ‘उसके लिए’ (स्त्री)। कौन-सा रूप?
+  explain:
+    en: '{{तस्यै}}: the fourth case, feminine.'
+    hi: '{{तस्यै}}: चतुर्थी, स्त्रीलिंग।'
+  roman: after
+  options:
+  - sa: तस्मै
+  - correct: true
+    sa: तस्यै
+  - sa: तया
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - pron.tad-full
+  mode: match
+  prompt:
+    en: Join each form to its meaning.
+    hi: हर रूप को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{तस्मै}}, {{तस्मात्}}, {{तस्य}}, {{तस्मिन्}}: the masculine singular.'
+    hi: '{{तस्मै}}, {{तस्मात्}}, {{तस्य}}, {{तस्मिन्}}: पुंलिंग एकवचन।'
+  roman: after
+  pairs:
+  - left:
+      sa: तस्मै
+    right:
+      text:
+        en: for him
+        hi: उसके लिए
+  - left:
+      sa: तस्मात्
+    right:
+      text:
+        en: from him
+        hi: उससे
+  - left:
+      sa: तस्य
+    right:
+      text:
+        en: of him
+        hi: उसका
+  - left:
+      sa: तस्मिन्
+    right:
+      text:
+        en: in him
+        hi: उसमें
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - pron.tad-full
+  widget: mark_words
+  prompt:
+    en: Tap every form of “that” in the feminine.
+    hi: स्त्रीलिंग ‘वह’ का हर रूप छुइए।
+  params:
+    passage:
+    - सा
+    - ताम्
+    - तेन
+    - तया
+    - तस्मै
+    - तस्याः
+    targets:
+    - सा
+    - ताम्
+    - तया
+    - तस्याः
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: Of those
+    hi: उनका
+  depth: core
+  skills:
+  - pron.tad-full
+  mode: choice
+  prompt:
+    en: “Of those (women).” Which form?
+    hi: ‘उन (स्त्रियों) का।’ कौन-सा रूप?
+  explain:
+    en: '{{तासाम्}}: the sixth case plural, feminine.'
+    hi: '{{तासाम्}}: षष्ठी बहुवचन, स्त्रीलिंग।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“तासाम्,” you say, and the knot of cords loosens a little. It points at the shelf of poetry and at last names it: “तासाम् कवितानाम्…” Dādī nods. “Now he can count what is not in front of him.”'
+      hi: “तासाम्,” आप कहते हैं, और डोरियों की गाँठ कुछ ढीली पड़ती है। वह कविता की अलमारी की ओर इशारा करता है और अन्ततः उसका नाम लेता है। दादी सिर हिलाती हैं। “अब वह उसे भी गिन सकता है जो सामने नहीं।”
+    failure:
+      en: 'The cords stay knotted. “Of those”, feminine plural: {{तासाम्}}.'
+      hi: 'डोरियाँ गठी रहती हैं। ‘उनका’, स्त्रीलिंग बहुवचन: {{तासाम्}}।'
+  options:
+  - sa: तेषाम्
+  - sa: तयोः
+  - correct: true
+    sa: तासाम्
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's pronoun rules
+    hi: पाणिनि के सर्वनाम-नियम
+  depth: panini
+  skills:
+  - pron.tad-full
+  sutras:
+  - 7.2.102
+  - 7.2.106
+  - 7.1.14
+  - 7.1.15
+  - 7.1.17
+  - 7.1.52
+  body:
+    en: Sūtra 7.2.102, {{त्यदादीनामः}}, makes the stem {{तद्}} end in {{अ}}; 7.2.106, {{तदोः सः सावनन्त्ययोः}}, turns its {{त्}} into {{स्}} before the first-case ending, giving {{सः}}. Then 7.1.14, {{सर्वनाम्नः स्मै}}, gives {{तस्मै}}; 7.1.15, {{ङसिङ्योः स्मात्स्मिनौ}}, gives {{तस्मात्}} and {{तस्मिन्}}; 7.1.17, {{जसः शी}}, gives {{ते}}; and 7.1.52, {{आमि सर्वनाम्नः सुट्}}, gives {{तेषाम्}}.
+    hi: सूत्र 7.2.102, {{त्यदादीनामः}}, {{तद्}} को {{अ}}-अन्त बनाता है; 7.2.106, {{तदोः सः सावनन्त्ययोः}}, प्रथमा के प्रत्यय से पहले उसके {{त्}} को {{स्}} कर देता है, जिससे {{सः}} बनता है। फिर 7.1.14, {{सर्वनाम्नः स्मै}}, {{तस्मै}} देता है; 7.1.15, {{ङसिङ्योः स्मात्स्मिनौ}}, {{तस्मात्}} और {{तस्मिन्}} देता है; 7.1.17, {{जसः शी}}, {{ते}} देता है; और 7.1.52, {{आमि सर्वनाम्नः सुट्}}, {{तेषाम्}} देता है।
+- id: sum
+  kind: summary
+  title:
+    en: That one in every case
+    hi: वह हर विभक्ति में
+  depth: core
+  points:
+  - sa: तस्मै · तस्मात् · तस्मिन्
+    text:
+      en: The odd masculine and neuter endings.
+      hi: पुंलिंग और नपुंसक के विचित्र प्रत्यय।
+  - sa: तस्यै · तस्याः · तस्याम्
+    text:
+      en: The odd feminine endings.
+      hi: स्त्रीलिंग के विचित्र प्रत्यय।
+  - sa: तेषाम् · तासाम्
+    text:
+      en: “Of those”, masculine and feminine.
+      hi: ‘उनका’, पुंलिंग और स्त्रीलिंग।

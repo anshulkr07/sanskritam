@@ -1,0 +1,166 @@
+id: cmd.revision
+template: revision
+title:
+  en: Everything about commands
+  hi: आज्ञा के बारे में सब कुछ
+title_sa: लोट्सङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The command forms
+    hi: आज्ञा के रूप
+  depth: core
+  section: core
+  rows:
+  - skill: verb.lot
+    rule:
+      en: '{{पठ्}} in {{लोट्}}: {{पठतु पठताम् पठन्तु}}, {{पठ पठतम् पठत}}, {{पठानि पठाव पठाम}}.'
+      hi: '{{पठ्}} का {{लोट्}}: {{पठतु पठताम् पठन्तु}}, {{पठ पठतम् पठत}}, {{पठानि पठाव पठाम}}।'
+    sutras:
+    - 3.3.162
+    - 3.4.86
+    - 6.4.105
+    - 3.4.92
+    tag: core
+    taught_in: cmd.go#tb1
+  - skill: verb.lot-polite
+    rule:
+      en: 'A polite request is the third person with {{भवान्}}: {{भवान् आगच्छतु}}. A wish is the third person: {{भवतु}}, {{जयतु}}.'
+      hi: 'विनम्र प्रार्थना {{भवान्}} के साथ प्रथम पुरुष है: {{भवान् आगच्छतु}}। कामना प्रथम पुरुष है: {{भवतु}}, {{जयतु}}।'
+    tag: core
+    taught_in: cmd.wish#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: verb.lot
+    rule:
+      en: 'To one person: the bare root with its class sign, {{गच्छ}}. To several: {{-त}}, {{गच्छत}}.'
+      hi: 'एक को: गण-चिह्न सहित केवल धातु, {{गच्छ}}। कई को: {{-त}}, {{गच्छत}}।'
+    tag: good
+    taught_in: cmd.go#t2
+  - skill: verb.lot
+    rule:
+      en: '“Let me / let us” is the first person: {{पठानि}}, {{गच्छाम}}.'
+      hi: '‘मैं करूँ / हम करें’ उत्तम पुरुष है: {{पठानि}}, {{गच्छाम}}।'
+    tag: good
+    taught_in: cmd.go#t2
+  - skill: verb.lot-polite
+    rule:
+      en: To an honoured guest, ask in the third person instead of ordering in the second.
+      hi: आदरणीय अतिथि को मध्यम पुरुष में आज्ञा देने के बजाय प्रथम पुरुष में अनुरोध कीजिए।
+    tag: good
+    taught_in: cmd.wish#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: verb.lot
+    rule:
+      en: '{{अस्}} (be) gives {{एधि}}; {{दा}} gives {{देहि}}; {{कृ}} gives {{कुरु}}; {{श्रु}} gives {{शृणु}}. These do not use the bare root.'
+      hi: '{{अस्}} (होना) से {{एधि}}; {{दा}} से {{देहि}}; {{कृ}} से {{कुरु}}; {{श्रु}} से {{शृणु}}। ये केवल धातु नहीं लेते।'
+    example:
+      sa: एधि
+      meaning:
+        en: be!
+        hi: रहो!
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lot
+        purusha: Madhyama
+        vacana: Eka
+    tag: rare
+    new_here: true
+  - skill: verb.lot
+    rule:
+      en: 'In the dual and plural the endings are plain: {{कुरुतम्}}, {{कुरुत}}; only the singular is odd.'
+      hi: 'द्विवचन और बहुवचन में प्रत्यय सीधे हैं: {{कुरुतम्}}, {{कुरुत}}; केवल एकवचन विचित्र है।'
+    example:
+      sa: कुरुत
+      meaning:
+        en: do, all of you
+        hi: तुम सब करो
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lot
+        purusha: Madhyama
+        vacana: Bahu
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: verb.lot
+    rule:
+      en: 'Do not add {{-ति}} to a command: {{गच्छति}} is “he goes”, {{गच्छ}} is “go!”.'
+      hi: 'आज्ञा में {{-ति}} मत जोड़िए: {{गच्छति}} का अर्थ ‘वह जाता है’, {{गच्छ}} का ‘जाओ!’।'
+    tag: core
+    taught_in: cmd.go#p1
+  - skill: verb.lot
+    rule:
+      en: 'Do not use {{पठ}} for several people: say {{पठत}}.'
+      hi: 'कई लोगों के लिए {{पठ}} मत कहिए: {{पठत}} कहिए।'
+    tag: core
+    taught_in: cmd.go#p5
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: verb.lot
+    rule:
+      en: '{{लोट् च}} gives the {{लोट्}} for commands; {{एरुः}} makes {{-ति}} into {{-तु}}; {{अतो हेः}} drops {{हि}} after {{अ}}; {{आडुत्तमस्य पिच्च}} gives {{पठानि}}.'
+      hi: '{{लोट् च}} आज्ञा के लिए {{लोट्}} देता है; {{एरुः}} {{-ति}} को {{-तु}} करता है; {{अतो हेः}} {{अ}} के बाद {{हि}} को हटाता है; {{आडुत्तमस्य पिच्च}} से {{पठानि}} बनता है।'
+    sutras:
+    - 3.3.162
+    - 3.4.86
+    - 6.4.105
+    - 3.4.92
+    tag: core
+    taught_in: cmd.go#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: verb.lot
+    formula: गच्छ · गच्छतु · गच्छत · गच्छाम
+    rule:
+      en: command
+      hi: आज्ञा
+    tag: core
+    taught_in: cmd.go#tb1
+  - skill: verb.lot-polite
+    formula: भवतु · भवन्तु · भवान् आगच्छतु
+    rule:
+      en: wish and polite request
+      hi: कामना और प्रार्थना
+    tag: core
+    taught_in: cmd.wish#tb1

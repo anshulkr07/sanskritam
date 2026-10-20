@@ -1,0 +1,298 @@
+id: reading.iast
+template: scene
+title:
+  en: Roman letters as a helper
+  hi: रोमन अक्षर सहायक
+title_sa: रोमनलिप्यन्तरम्
+minutes: 6
+teaches:
+- read.iast
+needs:
+- read.syllables
+- read.places
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: A friend from far away
+    hi: दूर से आया मित्र
+  depth: core
+  image:
+    brief: Dādī reading a letter written in Roman letters with dots and bars over them, beside the register; Śuka peering at it upside down; the tall silent spirit leaning in; warm lamplight.
+    alt:
+      en: A grandmother reads a letter in Roman letters with dots and bars while a parrot peers at it
+      hi: बिन्दु और रेखा वाले रोमन अक्षरों का पत्र पढ़ती दादी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - mauni
+    place: granthalaya
+    ratio: '4:3'
+    id: reading-iast-s1
+  narration:
+    en: 'A letter arrives in the library from a friend abroad. It is written in Roman letters with little dots and bars on them: ā, ś, ṣ, ṛ. “It is called IAST,” says Dādī. “A helper, so that people who cannot read Devanagari yet can still say our words. But the leaf is read in Devanagari.”'
+    hi: 'पुस्तकालय में विदेश से एक मित्र का पत्र आता है। वह रोमन अक्षरों में है, जिन पर छोटे बिन्दु और रेखाएँ हैं: ā, ś, ṣ, ṛ। दादी कहती हैं, “इसे IAST कहते हैं। यह एक सहायक है, ताकि जो अभी देवनागरी नहीं पढ़ सकते, वे भी हमारे शब्द बोल सकें। पर पत्र देवनागरी में पढ़ा जाता है।”'
+- id: t1
+  kind: teach
+  title:
+    en: One sign, one sound
+    hi: एक चिह्न, एक ध्वनि
+  depth: core
+  skills:
+  - read.iast
+  body:
+    en: 'In IAST every sign stands for exactly one Devanagari sound. A bar means long: {{आ}} is ā. A dot below means retroflex: {{ट}} is ṭ. {{श}} is ś, {{ष}} is ṣ, {{ङ}} is ṅ, {{ञ}} is ñ.'
+    hi: 'IAST में हर चिह्न देवनागरी की ठीक एक ध्वनि के लिए है। ऊपर की रेखा का अर्थ दीर्घ: {{आ}} यानी ā। नीचे का बिन्दु मूर्धन्य दिखाता है: {{ट}} यानी ṭ। {{श}} यानी ś, {{ष}} यानी ṣ, {{ङ}} यानी ṅ, {{ञ}} यानी ñ।'
+  term:
+    sa: रोमनलिप्यन्तरम्
+    meaning:
+      en: 'IAST: the standard Roman letters for Sanskrit'
+      hi: 'IAST: संस्कृत के लिए मानक रोमन अक्षर'
+- id: tb1
+  kind: table
+  title:
+    en: Vowels with their Roman helper
+    hi: स्वर और उनका रोमन सहायक
+  depth: core
+  skills:
+  - read.iast
+  caption:
+    en: Under each letter the app shows its Roman helper
+    hi: हर अक्षर के नीचे ऐप उसका रोमन सहायक दिखाता है
+  columns:
+  - en: Short
+    hi: ह्रस्व
+  - en: Long
+    hi: दीर्घ
+  rows:
+  - - sa: अ
+    - sa: आ
+  - - sa: इ
+    - sa: ई
+  - - sa: उ
+    - sa: ऊ
+  - - sa: ऋ
+    - sa: ॠ
+  - - sa: ऌ
+    - sa: ॡ
+  - - sa: ए
+    - sa: ऐ
+  - - sa: ओ
+    - sa: औ
+  note:
+    en: Long vowels carry a bar; {{ऋ}} is ṛ and {{ऌ}} is ḷ.
+    hi: दीर्घ स्वरों पर रेखा होती है; {{ऋ}} यानी ṛ और {{ऌ}} यानी ḷ।
+- id: tb2
+  kind: table
+  title:
+    en: Consonants with their Roman helper
+    hi: व्यंजन और उनका रोमन सहायक
+  depth: core
+  skills:
+  - read.iast
+  caption:
+    en: The five rows and the rest
+    hi: पाँच वर्ग और शेष
+  columns:
+  - en: '1'
+    hi: १
+  - en: '2'
+    hi: २
+  - en: '3'
+    hi: ३
+  - en: '4'
+    hi: ४
+  - en: '5'
+    hi: ५
+  rows:
+  - - sa: क
+    - sa: ख
+    - sa: ग
+    - sa: घ
+    - sa: ङ
+  - - sa: च
+    - sa: छ
+    - sa: ज
+    - sa: झ
+    - sa: ञ
+  - - sa: ट
+    - sa: ठ
+    - sa: ड
+    - sa: ढ
+    - sa: ण
+  - - sa: त
+    - sa: थ
+    - sa: द
+    - sa: ध
+    - sa: न
+  - - sa: प
+    - sa: फ
+    - sa: ब
+    - sa: भ
+    - sa: म
+  - - sa: य
+    - sa: र
+    - sa: ल
+    - sa: व
+    - sa: श
+  - - sa: ष
+    - sa: स
+    - sa: ह
+    - sa: ं
+    - sa: ः
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - read.iast
+  mode: choice
+  prompt:
+    en: Which letter is ś (as in Śiva)?
+    hi: कौन-सा अक्षर ś (जैसे Śiva में) है?
+  explain:
+    en: '{{श}} is ś, the palatal hiss; ṣ is {{ष}}.'
+    hi: '{{श}} यानी ś, तालव्य ऊष्म; ṣ यानी {{ष}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: श
+  - sa: ष
+  - sa: स
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - read.iast
+  mode: match
+  prompt:
+    en: Join each Roman letter to its Devanagari letter.
+    hi: हर रोमन अक्षर को उसके देवनागरी अक्षर से जोड़िए।
+  explain:
+    en: A bar means long; a dot below means retroflex; ñ and ṅ are nasals.
+    hi: रेखा यानी दीर्घ; नीचे बिन्दु यानी मूर्धन्य; ñ और ṅ नासिक्य हैं।
+  roman: after
+  pairs:
+  - left:
+      sa: आ
+    right:
+      text:
+        en: ā, a long vowel
+        hi: ā, दीर्घ स्वर
+  - left:
+      sa: ट
+    right:
+      text:
+        en: ṭ, a retroflex
+        hi: ṭ, मूर्धन्य
+  - left:
+      sa: ञ
+    right:
+      text:
+        en: ñ, a palatal nasal
+        hi: ñ, तालव्य नासिक्य
+  - left:
+      sa: ष
+    right:
+      text:
+        en: ṣ, the curled hiss
+        hi: ṣ, मुड़ी फुफकार
+- id: t2
+  kind: teach
+  title:
+    en: Read aloud, then check
+    hi: पहले ज़ोर से पढ़िए, फिर देखिए
+  depth: core
+  skills:
+  - read.iast
+  body:
+    en: 'Say the Devanagari word first. The Roman helper is a check, not a crutch: {{कृष्णः}} is kṛṣṇaḥ, {{गङ्गा}} is gaṅgā, {{संस्कृतम्}} is saṃskṛtam. Note ṃ for the hum and ḥ for the breath.'
+    hi: 'पहले देवनागरी शब्द बोलिए। रोमन सहायक जाँच है, बैसाखी नहीं: {{कृष्णः}} यानी kṛṣṇaḥ, {{गङ्गा}} यानी gaṅgā, {{संस्कृतम्}} यानी saṃskṛtam। ध्यान दीजिए: ṃ गूँज के लिए और ḥ साँस के लिए है।'
+  examples:
+  - sa: कृष्णः
+    meaning:
+      en: Kṛṣṇa
+      hi: कृष्ण
+    check:
+      type: subanta
+      stem: कृष्ण
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: संस्कृतम्
+    meaning:
+      en: Sanskrit
+      hi: संस्कृत
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - read.iast
+  widget: mark_words
+  prompt:
+    en: Tap every word with a long ā.
+    hi: दीर्घ ā वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - रामः
+    - सीता
+    - लता
+    - कमलम्
+    - बालः
+    - फलम्
+    targets:
+    - रामः
+    - सीता
+    - लता
+    - बालः
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: The friend's letter
+    hi: मित्र का पत्र
+  depth: core
+  skills:
+  - read.iast
+  mode: choice
+  prompt:
+    en: A friend writes “dharmaḥ”. Which Devanagari word is it?
+    hi: मित्र ने “dharmaḥ” लिखा। यह कौन-सा देवनागरी शब्द है?
+  explain:
+    en: 'dha-r-ma-ḥ: {{धर्मः}}.'
+    hi: 'ध-र्-म-ः: {{धर्मः}}।'
+  roman: show
+  gate: true
+  story:
+    success:
+      en: “धर्मः!” Maunī reads it off the paper with you, his mouth forming each sound exactly. A pale-gold glow runs up his scroll.
+      hi: “धर्मः!” मौनी आपके साथ काग़ज़ से उसे पढ़ता है, मुँह हर ध्वनि को ठीक आकार देता है। उसके खर्रे पर हल्की सुनहरी चमक दौड़ जाती है।
+    failure:
+      en: 'The word does not match. Read the Roman letters one by one: dha, r, ma, ḥ.'
+      hi: 'शब्द मेल नहीं खाता। रोमन अक्षर एक-एक करके पढ़िए: dha, r, ma, ḥ।'
+  options:
+  - correct: true
+    sa: धर्मः
+  - sa: धर्मम्
+  - sa: ध्रमः
+- id: sum
+  kind: summary
+  title:
+    en: Roman helper
+    hi: रोमन सहायक
+  depth: core
+  points:
+  - text:
+      en: 'IAST: one sign, one sound.'
+      hi: 'रोमन लिपि (IAST): एक चिह्न, एक ध्वनि।'
+  - sa: ā ś ṣ ṭ ṃ ḥ
+    text:
+      en: A bar is long, a dot below is retroflex.
+      hi: रेखा दीर्घ, नीचे बिन्दु मूर्धन्य।
+  - text:
+      en: The Roman letters help; the leaf is read in Devanagari.
+      hi: रोमन अक्षर सहायक हैं; पत्र देवनागरी में पढ़ा जाता है।

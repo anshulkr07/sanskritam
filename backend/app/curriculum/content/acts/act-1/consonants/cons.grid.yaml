@@ -1,0 +1,351 @@
+id: cons.grid
+template: scene
+title:
+  en: Five rows on the carved door
+  hi: नक्काशीदार द्वार की पाँच पंक्तियाँ
+title_sa: वर्गाः
+minutes: 6
+teaches:
+- script.cons.grid
+needs:
+- script.matra
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The carved door
+    hi: नक्काशीदार द्वार
+  depth: core
+  image:
+    brief: 'The sandstone temple''s carved wooden door at dusk: five rows of Devanagari-like carved letters across it, a small lavender shadow half hidden in the carving, you seen from behind with Dādī and Śuka on her shoulder.'
+    alt:
+      en: A carved temple door with five rows of letters and a shy shadow hiding in the carving
+      hi: पाँच पंक्तियों में अक्षर खुदा नक्काशीदार मंदिर द्वार, जिसमें शर्मीली छाया छिपी है
+    cast:
+    - you
+    - dadi
+    - shuka
+    - chayika
+    place: devalaya
+    ratio: '4:3'
+    id: cons-grid-s1
+  narration:
+    en: Dhūmaka's clue leads you to the temple door. Its wood is carved with rows of letters, five rows in all. Something small and lavender flickers between the carvings and hides again. Dādī reads the door's first words aloud.
+    hi: धूमक का संकेत आपको मंदिर के द्वार तक ले जाता है। उसकी लकड़ी पर अक्षरों की पंक्तियाँ खुदी हैं, कुल पाँच। नक्काशी के बीच कोई छोटी, बैंगनी-सी चीज़ झिलमिलाती है और फिर छिप जाती है। दादी द्वार के पहले शब्द ज़ोर से पढ़ती हैं।
+  lines:
+  - speaker: dadi
+    sa: द्वारे व्यञ्जनानि सन्ति।
+    gloss:
+      en: There are consonants on the door.
+      hi: द्वार पर व्यंजन हैं।
+- id: t1
+  kind: teach
+  title:
+    en: Where the mouth touches
+    hi: मुँह कहाँ छूता है
+  depth: core
+  skills:
+  - script.cons.grid
+  body:
+    en: 'A consonant, {{व्यञ्जनम्}}, is a sound made by closing or narrowing the mouth. The door''s five rows follow your mouth from the back to the front: throat, palate, roof, teeth, lips. Say {{क}} {{च}} {{ट}} {{त}} {{प}} and feel the sound move forward.'
+    hi: 'व्यंजन ({{व्यञ्जनम्}}) वह ध्वनि है जो मुँह को बन्द या तंग करके बनती है। द्वार की पाँच पंक्तियाँ मुँह के पिछले भाग से अगले भाग तक चलती हैं: कण्ठ, तालु, मूर्धा, दाँत, होंठ। {{क}} {{च}} {{ट}} {{त}} {{प}} बोलिए और ध्वनि को आगे बढ़ते महसूस कीजिए।'
+  rows:
+  - sa: क
+    gloss:
+      en: throat (कण्ठ)
+      hi: कण्ठ (गला)
+  - sa: च
+    gloss:
+      en: palate (तालु)
+      hi: तालु
+  - sa: ट
+    gloss:
+      en: roof of the mouth, tongue curled back (मूर्धा)
+      hi: मूर्धा, जीभ मुड़ी हुई
+  - sa: त
+    gloss:
+      en: teeth (दन्त)
+      hi: दन्त (दाँत)
+  - sa: प
+    gloss:
+      en: lips (ओष्ठ)
+      hi: ओष्ठ (होंठ)
+  term:
+    sa: व्यञ्जनम्
+    meaning:
+      en: consonant
+      hi: व्यंजन
+- id: tb1
+  kind: table
+  title:
+    en: The whole door
+    hi: पूरा द्वार
+  depth: core
+  skills:
+  - script.cons.grid
+  caption:
+    en: The five rows, from throat to lips
+    hi: पाँच पंक्तियाँ, कण्ठ से होंठ तक
+  columns:
+  - en: Where
+    hi: स्थान
+  - en: '1'
+    hi: १
+  - en: '2'
+    hi: २
+  - en: '3'
+    hi: ३
+  - en: '4'
+    hi: ४
+  - en: '5'
+    hi: ५
+  rows:
+  - - text:
+        en: throat
+        hi: कण्ठ
+    - sa: क
+    - sa: ख
+    - sa: ग
+    - sa: घ
+    - sa: ङ
+  - - text:
+        en: palate
+        hi: तालु
+    - sa: च
+    - sa: छ
+    - sa: ज
+    - sa: झ
+    - sa: ञ
+  - - text:
+        en: roof
+        hi: मूर्धा
+    - sa: ट
+    - sa: ठ
+    - sa: ड
+    - sa: ढ
+    - sa: ण
+  - - text:
+        en: teeth
+        hi: दन्त
+    - sa: त
+    - sa: थ
+    - sa: द
+    - sa: ध
+    - sa: न
+  - - text:
+        en: lips
+        hi: ओष्ठ
+    - sa: प
+    - sa: फ
+    - sa: ब
+    - sa: भ
+    - sa: म
+  note:
+    en: 'Twenty-five letters in five rows of five. A row is a {{वर्गः}}: one place, five sounds.'
+    hi: 'पाँच-पाँच की पाँच पंक्तियाँ, कुल पच्चीस अक्षर। हर पंक्ति एक {{वर्गः}} है: एक स्थान, पाँच ध्वनियाँ।'
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - script.cons.grid
+  widget: mouth_map
+  prompt:
+    en: Tap the first letter of each row and see where your mouth makes it.
+    hi: हर पंक्ति के पहले अक्षर को छुइए और देखिए कि मुँह में वह कहाँ बनता है।
+  params:
+    letters:
+    - क
+    - च
+    - ट
+    - त
+    - प
+  roman: after
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.grid
+  mode: choice
+  prompt:
+    en: Which letter is made with the lips?
+    hi: कौन-सा अक्षर होंठों से बनता है?
+  explain:
+    en: '{{प}} is the first letter of the lip row.'
+    hi: '{{प}} होंठ वाली पंक्ति का पहला अक्षर है।'
+  roman: after
+  options:
+  - sa: क
+  - correct: true
+    sa: प
+  - sa: त
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.grid
+  mode: match
+  prompt:
+    en: Join each row-leader to its place.
+    hi: हर पंक्ति के पहले अक्षर को उसके स्थान से जोड़िए।
+  explain:
+    en: The rows follow the mouth from the throat to the lips.
+    hi: पंक्तियाँ मुँह के क्रम में चलती हैं, गले से होंठों तक।
+  roman: after
+  pairs:
+  - left:
+      sa: क
+    right:
+      text:
+        en: throat
+        hi: कण्ठ (गला)
+  - left:
+      sa: च
+    right:
+      text:
+        en: palate
+        hi: तालु
+  - left:
+      sa: ट
+    right:
+      text:
+        en: roof of the mouth
+        hi: मूर्धा
+  - left:
+      sa: त
+    right:
+      text:
+        en: teeth
+        hi: दन्त (दाँत)
+  - left:
+      sa: प
+    right:
+      text:
+        en: lips
+        hi: ओष्ठ (होंठ)
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - script.cons.grid
+  widget: mark_words
+  prompt:
+    en: Tap every word that begins with a lip letter ({{प}} {{फ}} {{ब}} {{भ}} {{म}}).
+    hi: हर उस शब्द को छुइए जो होंठ के अक्षर ({{प}} {{फ}} {{ब}} {{भ}} {{म}}) से शुरू होता है।
+  params:
+    passage:
+    - पत्रम्
+    - कमलम्
+    - फलम्
+    - चन्द्रः
+    - बालः
+    - तारा
+    - भक्तः
+    - नदी
+    targets:
+    - पत्रम्
+    - फलम्
+    - बालः
+    - भक्तः
+  roman: after
+- id: p3
+  kind: practice
+  title:
+    en: Mend the door
+    hi: द्वार ठीक कीजिए
+  depth: core
+  skills:
+  - script.cons.grid
+  mode: order
+  prompt:
+    en: 'Mend the door: put the five row-leaders in order, from the throat to the lips.'
+    hi: 'द्वार ठीक कीजिए: पाँच पंक्तियों के पहले अक्षर गले से होंठों तक क्रम में लगाइए।'
+  explain:
+    en: Throat {{क}}, palate {{च}}, roof {{ट}}, teeth {{त}}, lips {{प}}.
+    hi: कण्ठ {{क}}, तालु {{च}}, मूर्धा {{ट}}, दन्त {{त}}, ओष्ठ {{प}}।
+  roman: after
+  gate: true
+  story:
+    success:
+      en: The five rows light up one after another. A small lavender face peeks out of the carving, then ducks away, smiling.
+      hi: पाँचों पंक्तियाँ एक-एक करके जगमगा उठती हैं। नक्काशी में से एक छोटा बैंगनी चेहरा झाँकता है और मुस्कुराकर फिर छिप जाता है।
+    failure:
+      en: The rows stay dark. The door waits, patient as wood. Go from the throat forward.
+      hi: पंक्तियाँ बुझी रहती हैं। द्वार लकड़ी जैसे धैर्य से प्रतीक्षा करता है। गले से आगे की ओर चलिए।
+  tokens:
+  - क
+  - च
+  - ट
+  - त
+  - प
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.grid
+  mode: choice
+  prompt:
+    en: What do {{क}} {{ख}} {{ग}} {{घ}} {{ङ}} have in common?
+    hi: '{{क}} {{ख}} {{ग}} {{घ}} {{ङ}} में क्या समान है?'
+  explain:
+    en: A row is one place with five sounds.
+    hi: एक पंक्ति यानी एक स्थान, पाँच ध्वनियाँ।
+  roman: show
+  options:
+  - correct: true
+    text:
+      en: They are all made at the throat
+      hi: पाँचों गले (कण्ठ) से बनते हैं
+  - why:
+      en: The lips make {{प}} {{फ}} {{ब}} {{भ}} {{म}}.
+      hi: होंठ से {{प}} {{फ}} {{ब}} {{भ}} {{म}} बनते हैं।
+    text:
+      en: They are all made with the lips
+      hi: पाँचों होंठों से बनते हैं
+  - why:
+      en: They carry {{अ}}.
+      hi: इनमें {{अ}} रहता है।
+    text:
+      en: They all have the vowel {{इ}}
+      hi: सब में स्वर {{इ}} है
+- id: pn
+  kind: teach
+  title:
+    en: The row names
+    hi: पंक्तियों के नाम
+  depth: panini
+  skills:
+  - script.cons.grid
+  sutras:
+  - 1.1.69
+  body:
+    en: 'Pāṇini names each row by its first letter plus {{उ}}: {{कु}} is the throat row, {{चु}} the palate row, {{टु}} the roof row, {{तु}} the teeth row, {{पु}} the lip row. By sūtra 1.1.69 a letter with {{उ}} stands for its whole row.'
+    hi: 'पाणिनि हर पंक्ति को उसके पहले अक्षर और {{उ}} से नाम देते हैं: {{कु}} कण्ठ की पंक्ति, {{चु}} तालु की, {{टु}} मूर्धा की, {{तु}} दन्त की, {{पु}} ओष्ठ की। सूत्र 1.1.69 के अनुसार {{उ}} लगा अक्षर अपनी पूरी पंक्ति का बोध कराता है।'
+  term:
+    sa: वर्गः
+    meaning:
+      en: a row of five consonants
+      hi: पाँच व्यंजनों की पंक्ति
+- id: sum
+  kind: summary
+  title:
+    en: The five rows
+    hi: पाँच पंक्तियाँ
+  depth: core
+  points:
+  - sa: क च ट त प
+    text:
+      en: 'Throat, palate, roof, teeth, lips: five places.'
+      hi: 'कण्ठ, तालु, मूर्धा, दन्त, ओष्ठ: पाँच स्थान।'
+  - text:
+      en: Each row holds five sounds made at one place.
+      hi: हर पंक्ति में पाँच ध्वनियाँ हैं, एक ही स्थान से।
+  - text:
+      en: Twenty-five letters in all.
+      hi: कुल पच्चीस अक्षर।

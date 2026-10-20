@@ -1,0 +1,208 @@
+id: rv.check
+template: check
+title:
+  en: Untie the verse
+  hi: श्लोक की गाँठें खोलिए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verse.read
+  mode: choice
+  prompt:
+    en: Which step comes first?
+    hi: पहला चरण कौन-सा है?
+  explain:
+    en: Split the joins first.
+    hi: पहले जोड़ खोलिए।
+  roman: after
+  options:
+  - correct: true
+    sa: पदच्छेदः
+  - sa: अन्वयः
+  - sa: अर्थः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verse.read
+  mode: choice
+  prompt:
+    en: Split the joined word {{विनयाद्याति}}.
+    hi: जुड़े शब्द {{विनयाद्याति}} को तोड़िए।
+  explain:
+    en: '{{विनयात्}} + {{याति}}.'
+    hi: '{{विनयात्}} + {{याति}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: विनयात् + याति
+  - sa: विनयान् + याति
+  - sa: विनयाः + याति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verse.read
+  mode: engine
+  prompt:
+    en: Put the words in the right order.
+    hi: शब्दों को सही क्रम में रखिए।
+  explain:
+    en: The doer, the object, the verb.
+    hi: कर्ता, कर्म, क्रिया।
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: विद्या विनयं ददाति
+    seed: 25
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verse.read
+  mode: choice
+  prompt:
+    en: In {{विद्या ददाति विनयम्}}, the verb is…
+    hi: '{{विद्या ददाति विनयम्}} में क्रिया है…'
+  explain:
+    en: '{{ददाति}}: gives.'
+    hi: '{{ददाति}}: देती है।'
+  roman: after
+  options:
+  - sa: विद्या
+  - correct: true
+    sa: ददाति
+  - sa: विनयम्
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - verse.read
+  mode: choice
+  prompt:
+    en: “पात्रत्वाद् धनम् आप्नोति.” What does it say?
+    hi: “पात्रत्वाद् धनम् आप्नोति।” वह क्या कहता है?
+  explain:
+    en: '{{पात्रत्वात्}}: from worthiness; {{धनम् आप्नोति}}: gains wealth.'
+    hi: '{{पात्रत्वात्}}: पात्रता से; {{धनम् आप्नोति}}: धन पाता है।'
+  roman: after
+  options:
+  - text:
+      en: From wealth one reaches worthiness
+      hi: धन से पात्रता मिलती है
+  - correct: true
+    text:
+      en: From worthiness one gains wealth
+      hi: पात्रता से धन मिलता है
+  - text:
+      en: One loses worthiness
+      hi: पात्रता खो जाती है
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - verse.commentary
+  mode: match
+  prompt:
+    en: Join each word of the verse to the commentary's word.
+    hi: श्लोक के हर शब्द को टीका के शब्द से जोड़िए।
+  explain:
+    en: The commentary puts its own word beside the verse's.
+    hi: टीका श्लोक के शब्द के पास अपना शब्द रखती है।
+  roman: after
+  pairs:
+  - left:
+      sa: भुञ्जीथाः
+    right:
+      sa: पालयेथाः
+  - left:
+      sa: त्यक्तेन
+    right:
+      sa: त्यागेन
+  - left:
+      sa: मा गृधः
+    right:
+      sa: गृधिं मा कार्षीः
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - verse.commentary
+  mode: choice
+  prompt:
+    en: What does {{इत्यर्थः}} say?
+    hi: '{{इत्यर्थः}} क्या कहता है?'
+  explain:
+    en: '{{इति}} + {{अर्थः}}.'
+    hi: '{{इति}} + {{अर्थः}}।'
+  roman: after
+  options:
+  - correct: true
+    text:
+      en: That is the meaning
+      hi: यही अर्थ है
+  - text:
+      en: A new verse begins
+      hi: नया श्लोक शुरू होता है
+  - text:
+      en: The verse ends here
+      hi: श्लोक यहाँ समाप्त होता है
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - verse.commentary
+  mode: choice
+  prompt:
+    en: After {{कस्मात्}}, a commentator gives…
+    hi: '{{कस्मात्}} के बाद टीकाकार देता है…'
+  explain:
+    en: '“Why?”: a reason follows.'
+    hi: '‘क्यों?’: कारण आता है।'
+  roman: after
+  options:
+  - text:
+      en: a command
+      hi: एक आज्ञा
+  - text:
+      en: a name
+      hi: एक नाम
+  - correct: true
+    text:
+      en: a reason
+      hi: एक कारण
+- id: p9
+  kind: practice
+  depth: core
+  skills:
+  - verse.read
+  mode: choice
+  prompt:
+    en: Which step turns the carved line into separate words?
+    hi: कौन-सा चरण खुदी पंक्ति को अलग-अलग शब्दों में बदलता है?
+  explain:
+    en: '{{पदच्छेदः}}: splitting.'
+    hi: '{{पदच्छेदः}}: तोड़ना।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“पदच्छेदः, अन्वयः, अर्थः,” says Ślokikā, in one breath, and the cord that bound her falls away like a thread of ink in water. She stands, small and upright, with her verse in the air round her: विद्या ददाति विनयम्, every word standing clear. Behind her, in the wall of the vault, a glass-fronted case swings open, and in it lies a palm leaf, whole, glowing: the sixth. Written on its edge, in a quick hand: कथा, महाकथा।'
+      hi: '“पदच्छेदः, अन्वयः, अर्थः,” श्लोकिका एक साँस में कहती है, और उसे बाँधने वाली डोरी पानी में स्याही के धागे की तरह गिर जाती है। वह खड़ी होती है, छोटी और सीधी, उसका श्लोक उसके चारों ओर हवा में: विद्या ददाति विनयम्, हर शब्द साफ़ खड़ा हुआ। उसके पीछे, तहख़ाने की दीवार में, काँच-जड़ा एक सन्दूक खुल जाता है, और उसमें एक ताड़पत्र पड़ा है, पूरा, चमकता: छठा। उसके किनारे पर, तेज़ हाथ से लिखा: कथा, महाकथा।'
+    failure:
+      en: 'The cord holds. Splitting comes first: {{पदच्छेदः}}.'
+      hi: 'डोरी कसी रहती है। तोड़ना पहले आता है: {{पदच्छेदः}}।'
+  options:
+  - sa: अन्वयः
+  - sa: अर्थः
+  - correct: true
+    sa: पदच्छेदः

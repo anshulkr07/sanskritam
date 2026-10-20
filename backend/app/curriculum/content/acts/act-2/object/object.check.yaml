@@ -1,0 +1,192 @@
+id: object.check
+template: check
+title:
+  en: Open the chest
+  hi: संदूक खोलिए
+title_sa: परीक्षा
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.acc
+  mode: choice
+  prompt:
+    en: '{{सीता फलं खादति}}: which word is the object?'
+    hi: '{{सीता फलं खादति}}: कर्म कौन-सा शब्द है?'
+  explain:
+    en: '{{फलम्}}: what is eaten.'
+    hi: '{{फलम्}}: जो खाया जाता है।'
+  roman: after
+  options:
+  - sa: सीता
+  - correct: true
+    sa: फलम्
+  - sa: खादति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.acc
+  mode: match
+  prompt:
+    en: Join each object to its stem.
+    hi: हर कर्म को उसके मूल रूप से जोड़िए।
+  explain:
+    en: '{{अम्}}, {{आम्}}, {{ईम्}}.'
+    hi: '{{अम्}}, {{आम्}}, {{ईम्}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: बालकम्
+    right:
+      sa: बालक
+  - left:
+      sa: बालिकाम्
+    right:
+      sa: बालिका
+  - left:
+      sa: नदीम्
+    right:
+      sa: नदी
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - case.acc-goal
+  mode: choice
+  prompt:
+    en: “The boy goes to the village.” Which word for “village”?
+    hi: ‘बालक गाँव जाता है।’ ‘गाँव’ के लिए कौन-सा रूप?
+  explain:
+    en: The goal takes the second case.
+    hi: गन्तव्य द्वितीया लेता है।
+  roman: after
+  options:
+  - sa: ग्रामः
+  - correct: true
+    sa: ग्रामम्
+  - sa: ग्रामाः
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - case.acc-goal
+  mode: order
+  prompt:
+    en: 'Say: “I go to the village.”'
+    hi: 'कहिए: ‘मैं गाँव जाता हूँ।’'
+  explain:
+    en: '{{अहं ग्रामं गच्छामि}}.'
+    hi: '{{अहं ग्रामं गच्छामि}}।'
+  roman: after
+  tokens:
+  - अहम्
+  - ग्रामम्
+  - गच्छामि
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - sent.questions
+  mode: match
+  prompt:
+    en: Join each question word to its meaning.
+    hi: हर प्रश्नवाचक शब्द को उसके अर्थ से जोड़िए।
+  explain:
+    en: The क family.
+    hi: क वाला कुल।
+  roman: after
+  pairs:
+  - left:
+      sa: कः
+    right:
+      text:
+        en: who
+        hi: कौन
+  - left:
+      sa: किम्
+    right:
+      text:
+        en: what
+        hi: क्या
+  - left:
+      sa: कुत्र
+    right:
+      text:
+        en: where
+        hi: कहाँ
+  - left:
+      sa: कदा
+    right:
+      text:
+        en: when
+        hi: कब
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - sent.negation
+  mode: choice
+  prompt:
+    en: How do you say “the boy does not read”?
+    hi: ‘बालक नहीं पढ़ता’ कैसे कहेंगे?
+  explain:
+    en: '{{न}} right before the verb.'
+    hi: '{{न}} क्रिया से ठीक पहले।'
+  roman: after
+  options:
+  - sa: न बालकः पठति
+  - correct: true
+    sa: बालकः न पठति
+  - sa: बालकः पठति न
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - case.acc
+  mode: engine
+  prompt:
+    en: Reorder the words and keep the meaning.
+    hi: शब्दों को फिर से लगाइए, अर्थ वही रखिए।
+  explain:
+    en: The endings carry the roles.
+    hi: भूमिकाएँ प्रत्ययों में हैं।
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: सीता फलं खादति
+    seed: 3
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - case.acc
+  - sent.negation
+  mode: order
+  prompt:
+    en: 'Tell the spice seller: “I do not see a fruit; I see a leaf.” Start with “I do not see”.'
+    hi: 'मसाले वाले से कहिए: ‘मैं फल नहीं देखता।’'
+  explain:
+    en: '{{अहं फलं न पश्यामि}}: {{न}} before the verb, the object before that.'
+    hi: '{{अहं फलं न पश्यामि}}: {{न}} क्रिया से पहले, कर्म उससे भी पहले।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“अहं पत्रं पश्यामि,” you say instead, and the second leaf glows in your hands. The yellow spirit hops with delight: “अहं मुक्तिं पश्यामि!” His dust turns to gold light and drifts up through the awnings. “नौकया गच्छामः,” he calls, pointing at the river, where the boat waits.'
+      hi: '“अहं पत्रं पश्यामि,” आप उसकी जगह कहते हैं, और आपके हाथों में दूसरा पत्र चमक उठता है। पीला भूत ख़ुशी से उछलता है: “अहं मुक्तिं पश्यामि!” उसकी धूल सुनहरी रोशनी बनकर शामियानों के बीच से ऊपर उठती है। “नौकया गच्छामः,” वह नदी की ओर इशारा करके पुकारता है, जहाँ नाव प्रतीक्षा कर रही है।'
+    failure:
+      en: The chest stays shut. Put the object before the verb, and {{न}} right before the verb.
+      hi: संदूक बन्द रहता है। कर्म क्रिया से पहले रखिए, और {{न}} क्रिया से ठीक पहले।
+  tokens:
+  - अहम्
+  - फलम्
+  - न
+  - पश्यामि

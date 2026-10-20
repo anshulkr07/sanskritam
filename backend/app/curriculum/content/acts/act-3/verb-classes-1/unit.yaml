@@ -1,0 +1,44 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: verb-classes-1
+title:
+  en: Verb classes I
+  hi: गण १
+title_sa: गणाः
+status: ready
+episode:
+  summary:
+    en: The Vetāla's tales are full of verbs. Four verb classes simply add -अ-; learn them and most verbs open.
+    hi: वेताल की कथाओं में क्रियाएँ भरी हैं। चार गण केवल -अ- जोड़ते हैं; इन्हें सीखिए और अधिकतर क्रियाएँ खुल जाती हैं।
+  beats:
+  - भवति (class 1).
+  - नृत्यति (class 4).
+  - तुदति (6), चोरयति (10).
+skills:
+- id: verb.class-1
+  title:
+    en: 'Class 1: भवति'
+    hi: 'भ्वादि: भवति'
+  sutras:
+  - 3.1.68
+- id: verb.class-4
+  title:
+    en: 'Class 4: नृत्यति'
+    hi: 'दिवादि: नृत्यति'
+- id: verb.class-6
+  title:
+    en: 'Class 6: तुदति'
+    hi: 'तुदादि: तुदति'
+- id: verb.class-10
+  title:
+    en: 'Class 10: चोरयति'
+    hi: 'चुरादि: चोरयति'
+lessons:
+- vc1.bhu
+- vc1.div
+- vc1.tud
+- vc1.cur
+planned: []
+ghost: dhatuka
+revision: vc1.revision
+check: vc1.check

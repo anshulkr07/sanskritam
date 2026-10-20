@@ -2,17 +2,26 @@
   "key": "01-001",
   "source_ref": "Bhagavad Gītā 1.1",
   "verse_uid": "28ec8e128c8a757d",
-  "master": "results/gita-art-20261016/masters/01-001.png",
-  "generated_path": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a1437b-52ec-7611-93e1-b6ef249f87c4\\exec-295435a2-9cba-45c6-95b2-e2ba6881358b.png",
+  "master": "results/gita-art-20261016/masters/01-001-v3.png",
+  "generated_path": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a1437b-52ec-7611-93e1-b6ef249f87c4\\exec-55a99e4e-fbfa-45e4-acb1-449a313eb3b6.png",
   "generator": "built-in image_gen",
-  "reused_preview": true,
-  "prompt": null,
-  "prompt_sha256": null,
-  "width": 1254,
-  "height": 1254,
-  "sha256": "3daa0ea2bbfdf60cc82cbe5040534aeb4f5cdbec7e396c027142ffdf510d3f5a",
-  "recorded_at": "2026-10-16T13:50:42.269552+00:00",
+  "reused_preview": false,
+  "prompt": "Use case: precise-object-edit. Edit only the flags in the supplied 9:16 portrait watercolor for Bhagavad Gita 1.1. Remove every gold emblem, sacred-looking curl, glyph, character and writing-like mark from ALL blue and red battlefield flags, including small distant flags. Make every flag a plain unlettered cloth of the same existing blue or red color, with natural fabric folds only. Preserve the blind elderly king listening to Sanjaya inside the palace, their complete faces, crowns, hands and gestures, the room, army formations, elephants, chariots, light, colors, composition and portrait dimensions. Do not crop, zoom, move or otherwise change anything else. No text, sacred syllables, pseudo-writing, labels, explanatory marks or watermark anywhere.",
+  "prompt_sha256": "f2c93bd42fc25b9b2741c4ea7723dd905fa9b262156451e3a82b507ab05f3914",
+  "width": 941,
+  "height": 1672,
+  "sha256": "2983aaa1e9d1db6c39af1ce335dfe28ffe8c69a62d23e7423e2754d35f5b1072",
+  "recorded_at": "2026-10-19T06:57:42.323219+00:00",
   "reviewed": true,
+  "revision": 3,
+  "composition_policy": "phone-portrait-9x16-20261019",
+  "generation_mode": "edit",
+  "reference_images": [
+    {
+      "path": "results/gita-art-20261016/masters/01-001-v2.png",
+      "sha256": "125845b87b7029c1c52a549bfce3d25e043956b3091a701a0f1fb997f4b08e91"
+    }
+  ],
   "safe_region": {
     "x": 0,
     "y": 0,
@@ -36,21 +45,20 @@
     "alt": "Interpretive watercolor for Bhagavad Gītā 1.1: Dhritarashtra said: O Sanjaya, assembled on the sacred field of Kurukshetra, eager to fight — what did my sons and the sons of Pandu do?",
     "variants": {
       "phone": {
-        "uri": "https://cdn.vedicvalor.com/art/verses/v1/74c9a24d7fcc8f497e41ab46.webp",
+        "uri": "https://cdn.vedicvalor.com/art/verses/v1/cdcd910430dcd97aaa9aebdf.webp",
         "width": 768,
-        "height": 768,
-        "bytes": 139454
+        "height": 1365,
+        "bytes": 159954
       },
       "tablet": {
-        "uri": "https://cdn.vedicvalor.com/art/verses/v1/e1cc38992bc1fb7ab361c482.webp",
-        "width": 1254,
-        "height": 1254,
-        "bytes": 453442
+        "uri": "https://cdn.vedicvalor.com/art/verses/v1/24684bb2992d2b40c9f0c78a.webp",
+        "width": 864,
+        "height": 1536,
+        "bytes": 266980
       }
     }
   },
   "master_retained": false,
-  "master_removed_at": "2026-10-16T20:09:32.839619+00:00",
-  "master_storage_policy": "Temporary generation input only; retain phone/tablet WebP deliveries.",
-  "removed_master_url": "https://cdn.vedicvalor.com/art/masters/gita/01-001-3daa0ea2bbfdf60c.png"
+  "master_removed_at": "2026-10-19T07:11:40.172241+00:00",
+  "master_storage_policy": "Temporary generation input only; retain phone/tablet WebP deliveries."
 }

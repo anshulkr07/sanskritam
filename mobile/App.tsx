@@ -39,7 +39,7 @@ import LearningProgressSync from "./src/components/LearningProgressSync";
 import DailyReviewScreen from "./src/screens/DailyReview";
 import OfflineLibraryScreen from "./src/screens/OfflineLibrary";
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, StyleSheet, View } from "react-native";
+import { ActivityIndicator, Image, StyleSheet, View, useWindowDimensions } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaProvider, SafeAreaView, initialWindowMetrics } from "react-native-safe-area-context";
@@ -123,13 +123,17 @@ function PrefsLoader() {
   return null;
 }
 
+function LaunchScreen() {
+  const { width, height } = useWindowDimensions();
+  const size = Math.min(width - 24, height * .72, 460);
+  return <View style={styles.boot}><Image source={require("./assets/splash-icon.png")} resizeMode="contain" style={{ width: size, height: size }} accessible={false} /><ActivityIndicator color={color.saffron} style={{ marginTop: 12 }} /></View>;
+}
+
 function RootNavigator() {
   const { loading, onboarded } = useAuth();
   if (loading) {
     return (
-      <View style={styles.boot}>
-        <ActivityIndicator color={color.saffron} size="large" />
-      </View>
+      <LaunchScreen />
     );
   }
   // If not onboarded, show the login/onboarding screen instead of the app
@@ -258,9 +262,7 @@ export default function App() {
 
   if (!fontsLoaded) {
     return (
-      <View style={styles.boot}>
-        <ActivityIndicator color={color.saffron} size="large" />
-      </View>
+      <LaunchScreen />
     );
   }
 

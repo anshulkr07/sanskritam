@@ -1,0 +1,34 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: commands
+title:
+  en: Commands
+  hi: आज्ञा
+title_sa: लोट्
+status: ready
+episode:
+  summary:
+    en: Lubdhaka has followed you to the old grove, hunting a powerful spirit. That night a Vetāla hanging in a śiṃśapā tree begins to speak, and gives orders.
+    hi: लुब्धक आपके पीछे पुराने उपवन तक आ गया है, एक शक्तिशाली आत्मा की खोज में। उस रात शिंशपा वृक्ष पर लटका एक वेताल बोलने लगता है, और आदेश देता है।
+  beats:
+  - गच्छ! Go! The command mood.
+  - 'Polite requests and wishes: सुखिनः भवन्तु.'
+  - The Vetāla's first tale begins.
+skills:
+- id: verb.lot
+  title:
+    en: 'Commands and wishes: लोट्'
+    hi: 'आज्ञा और आशीर्वाद: लोट्'
+  sutras:
+  - 3.3.162
+- id: verb.lot-polite
+  title:
+    en: Polite requests and blessings
+    hi: विनम्र अनुरोध और आशीर्वाद
+lessons:
+- cmd.go
+- cmd.wish
+planned: []
+ghost: adeshaka
+revision: cmd.revision
+check: cmd.check

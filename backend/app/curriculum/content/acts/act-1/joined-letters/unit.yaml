@@ -1,0 +1,52 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: joined-letters
+title:
+  en: Joined letters
+  hi: संयुक्ताक्षर
+title_sa: संयुक्ताक्षराणि
+status: ready
+ghost: nidralu
+episode:
+  summary:
+    en: Chāyikā's clue points to a pillar where letters crowd together. Nidrālu sleeps among them; only someone who can read joined letters, the hum and the breath can wake him.
+    hi: छायिका का संकेत एक स्तंभ की ओर है जहाँ अक्षर एक-दूसरे से सटे हैं। निद्रालु उनके बीच सोया है; उसे वही जगा सकता है जो संयुक्ताक्षर, अनुस्वार और विसर्ग पढ़ सके।
+  beats:
+  - Letters with no vowel between them join into one shape.
+  - Two small marks, ं and ः, close many words.
+  - You read the pillar's line, numbers and all, and Nidrālu wakes with a yawn.
+skills:
+- id: script.conjunct
+  title:
+    en: 'Joined letters: क्ष त्र ज्ञ श्र'
+    hi: 'संयुक्ताक्षर: क्ष त्र ज्ञ श्र'
+- id: script.reph
+  title:
+    en: 'र above and below: र्म, प्र'
+    hi: 'र के रूप: र्म, प्र'
+- id: script.anusvara
+  title:
+    en: 'The hum: anusvāra ं'
+    hi: अनुस्वार ं
+  sutras:
+  - 8.3.23
+- id: script.visarga
+  title:
+    en: 'The breath: visarga ः'
+    hi: विसर्ग ः
+- id: script.signs
+  title:
+    en: Avagraha ऽ, daṇḍa । ॥ and ॐ
+    hi: अवग्रह ऽ, दण्ड । ॥ और ॐ
+- id: script.numerals
+  title:
+    en: Devanagari numerals ० to ९
+    hi: देवनागरी अंक ० से ९
+lessons:
+- joined.clusters
+- joined.ra
+- joined.hum-breath
+- joined.marks
+planned: []
+revision: joined.revision
+check: joined.check

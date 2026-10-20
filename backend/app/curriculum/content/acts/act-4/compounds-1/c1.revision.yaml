@@ -1,0 +1,201 @@
+id: c1.revision
+template: revision
+title:
+  en: Everything about compounds I
+  hi: समास १ के बारे में सब कुछ
+title_sa: समाससङ्ग्रहः १
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The four kinds
+    hi: चार प्रकार
+  depth: core
+  section: core
+  rows:
+  - skill: sam.dvandva
+    rule:
+      en: 'Dvandva: X and Y: {{रामलक्ष्मणौ}}, {{मातापितरौ}}; a set: {{पाणिपादम्}}.'
+      hi: 'द्वन्द्व: क और ख: {{रामलक्ष्मणौ}}, {{मातापितरौ}}; समूह: {{पाणिपादम्}}।'
+    sutras:
+    - 2.2.29
+    - 2.2.30
+    tag: core
+    taught_in: c1.dvandva#tb1
+  - skill: sam.tatpurusha
+    rule:
+      en: 'Tatpuruṣa: X''s Y, with a case hidden: {{राजपुरुषः}}, {{ग्रामगतः}}.'
+      hi: 'तत्पुरुष: क का ख, विभक्ति छिपी हुई: {{राजपुरुषः}}, {{ग्रामगतः}}।'
+    sutras:
+    - 2.1.22
+    - 2.2.8
+    - 2.1.24
+    tag: core
+    taught_in: c1.tatpurusha#tb1
+  - skill: sam.karmadharaya
+    rule:
+      en: 'Karmadhāraya: describing: {{नीलोत्पलम्}}; dvigu: counting: {{त्रिलोकी}}.'
+      hi: 'कर्मधारय: वर्णन: {{नीलोत्पलम्}}; द्विगु: गिनती: {{त्रिलोकी}}।'
+    sutras:
+    - 1.2.42
+    - 2.1.57
+    - 2.1.52
+    tag: core
+    taught_in: c1.karmadharaya#tb1
+  - skill: sam.nan-upapada
+    rule:
+      en: 'Nañ: {{असत्यम्}}, {{अनन्तः}}; doer: {{कुम्भकारः}}.'
+      hi: 'नञ्: {{असत्यम्}}, {{अनन्तः}}; कर्ता: {{कुम्भकारः}}।'
+    sutras:
+    - 2.2.6
+    - 2.2.19
+    - 3.2.1
+    tag: core
+    taught_in: c1.nan#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: How to tell which
+    hi: कैसे पहचानें कि कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: sam.dvandva
+    rule:
+      en: 'Ask: does it mean “and”? Then a dvandva.'
+      hi: 'पूछिए: क्या इसका अर्थ ‘और’ है? तब द्वन्द्व।'
+    tag: good
+    taught_in: c1.dvandva#t1
+  - skill: sam.tatpurusha
+    rule:
+      en: 'Ask: is the first word “of”, “to”, “by” the second? Then a tatpuruṣa.'
+      hi: 'पूछिए: क्या पहला शब्द दूसरे का ‘का’, ‘को’, ‘से’ है? तब तत्पुरुष।'
+    tag: good
+    taught_in: c1.tatpurusha#t1
+  - skill: sam.karmadharaya
+    rule:
+      en: 'Ask: does the first word describe or count the second? Then a karmadhāraya or dvigu.'
+      hi: 'पूछिए: क्या पहला शब्द दूसरे का वर्णन या गिनती करता है? तब कर्मधारय या द्विगु।'
+    tag: good
+    taught_in: c1.karmadharaya#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: sam.dvandva
+    rule:
+      en: 'In a few dvandvas the order is fixed by custom: {{मातापितरौ}}, not {{पितामातरौ}}.'
+      hi: 'कुछ द्वन्द्वों में क्रम परम्परा से तय है: {{मातापितरौ}}, {{पितामातरौ}} नहीं।'
+    example:
+      sa: मातापितरौ।
+      meaning:
+        en: Mother and father.
+        hi: माता और पिता।
+      words:
+      - sa: मातापितरौ
+        gloss:
+          en: mother and father
+          hi: माता और पिता
+    tag: rare
+    new_here: true
+  - skill: sam.karmadharaya
+    rule:
+      en: 'A compound can be read two ways: {{सज्जनः}} is “good person” (karmadhāraya), though its first member looks like a past participle.'
+      hi: 'एक समास दो प्रकार से पढ़ा जा सकता है: {{सज्जनः}} ‘भला मनुष्य’ है (कर्मधारय), यद्यपि उसका पहला सदस्य कृदन्त जैसा दिखता है।'
+    example:
+      sa: सज्जनः।
+      meaning:
+        en: A good person.
+        hi: भला मनुष्य।
+      words:
+      - sa: सज्जनः
+        gloss:
+          en: a good person
+          hi: भला मनुष्य
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: sam.tatpurusha
+    rule:
+      en: Do not read {{राजपुरुषः}} as “king and man”.
+      hi: '{{राजपुरुषः}} को ‘राजा और पुरुष’ मत पढ़िए।'
+    tag: core
+    taught_in: c1.tatpurusha#p1
+  - skill: sam.nan-upapada
+    rule:
+      en: 'Do not forget the {{अन्-}} before a vowel: {{अनन्तः}}, not {{अअन्तः}}.'
+      hi: 'स्वर से पहले {{अन्-}} मत भूलिए: {{अनन्तः}}, {{अअन्तः}} नहीं।'
+    tag: core
+    taught_in: c1.nan#p4
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: sam.dvandva
+    rule:
+      en: '{{चार्थे द्वन्द्वः}}: dvandva. {{तत्पुरुषः}}, {{षष्ठी}}: tatpuruṣa. {{संख्यापूर्वो द्विगुः}}: dvigu. {{नञ्}}: nañ.'
+      hi: '{{चार्थे द्वन्द्वः}}: द्वन्द्व। {{तत्पुरुषः}}, {{षष्ठी}}: तत्पुरुष। {{संख्यापूर्वो द्विगुः}}: द्विगु। {{नञ्}}: नञ्।'
+    sutras:
+    - 2.2.29
+    - 2.1.22
+    - 2.2.8
+    - 2.1.52
+    - 2.2.6
+    tag: core
+    taught_in: c1.dvandva#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: sam.dvandva
+    formula: रामलक्ष्मणौ
+    rule:
+      en: X and Y
+      hi: क और ख
+    tag: core
+    taught_in: c1.dvandva#tb1
+  - skill: sam.tatpurusha
+    formula: राजपुरुषः
+    rule:
+      en: X's Y
+      hi: क का ख
+    tag: core
+    taught_in: c1.tatpurusha#tb1
+  - skill: sam.karmadharaya
+    formula: नीलोत्पलम् · त्रिलोकी
+    rule:
+      en: describing, counting
+      hi: वर्णन, गिनती
+    tag: core
+    taught_in: c1.karmadharaya#tb1
+  - skill: sam.nan-upapada
+    formula: असत्यम् · कुम्भकारः
+    rule:
+      en: not, maker
+      hi: न, बनाने वाला
+    tag: core
+    taught_in: c1.nan#tb1

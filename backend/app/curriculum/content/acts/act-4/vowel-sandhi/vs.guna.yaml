@@ -1,0 +1,313 @@
+id: vs.guna
+template: scene
+title:
+  en: When अ meets इ or उ
+  hi: जब अ इ या उ से मिले
+title_sa: गणेशः
+minutes: 6
+teaches:
+- sandhi.guna
+needs:
+- sandhi.savarna
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The second statue
+    hi: दूसरी प्रतिमा
+  depth: core
+  image:
+    brief: The second statue, a woman holding a conch, with Śuka on Dādī's shoulder counting on his claws; Lubdhaka's foreman looking on with arms folded; the first statue beside her with a lotus; morning light on the dig.
+    alt:
+      en: A stone statue holding a conch while a parrot counts on his claws and a foreman watches
+      hi: शंख थामे पत्थर की प्रतिमा, पंजों पर गिनता तोता, देखता मुखिया
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - svarika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: vs-guna-s1
+  narration:
+    en: 'The second statue holds a conch. “गणेशः,” she says, and “महोत्सवः,” and “सप्तर्षयः.” “These are different,” says Śuka, who has been counting. “In the first, two vowels became one long one. Here, a vowel turned into something else.” “Yes,” says Dādī. “When अ meets इ or उ, it does not merge: it strengthens.”'
+    hi: 'दूसरी प्रतिमा के हाथ में शंख है। “गणेशः,” वह कहती है, और “महोत्सवः,” और “सप्तर्षयः।” “ये अलग हैं,” शुक कहता है, जो गिन रहा था। “पहले में दो स्वर मिलकर एक दीर्घ बने थे। यहाँ एक स्वर कुछ और बन गया है।” “हाँ,” दादी कहती हैं। “जब अ इ या उ से मिलता है, तो वह मिलता नहीं: वह बलवान् हो जाता है।”'
+- id: t1
+  kind: teach
+  title:
+    en: Strengthening
+    hi: बलवान् होना
+  depth: core
+  skills:
+  - sandhi.guna
+  body:
+    en: When {{अ}} or {{आ}} meets {{इ}} or {{ई}}, the result is {{ए}}; with {{उ}} or {{ऊ}}, it is {{ओ}}; with {{ऋ}}, it is {{अर्}}. {{गण + ईशः}} gives {{गणेशः}}, {{महा + उत्सवः}} gives {{महोत्सवः}}, {{सप्त + ऋषयः}} gives {{सप्तर्षयः}}. This is {{गुणः}}.
+    hi: जब {{अ}} या {{आ}}, {{इ}} या {{ई}} से मिलते हैं तो {{ए}} बनता है; {{उ}} या {{ऊ}} से {{ओ}}; {{ऋ}} से {{अर्}}। {{गण + ईशः}} से {{गणेशः}}, {{महा + उत्सवः}} से {{महोत्सवः}}, {{सप्त + ऋषयः}} से {{सप्तर्षयः}}। यह {{गुणः}} है।
+  term:
+    sa: गुणः
+    meaning:
+      en: 'strengthening: अ→अ, इ→ए, उ→ओ, ऋ→अर्'
+      hi: 'बलवान् होना: इ→ए, उ→ओ, ऋ→अर्'
+- id: tb1
+  kind: table
+  title:
+    en: Guṇa
+    hi: गुण
+  depth: core
+  skills:
+  - sandhi.guna
+  caption:
+    en: अ meets इ, उ or ऋ
+    hi: अ का इ, उ या ऋ से मिलना
+  columns:
+  - en: First word
+    hi: पहला शब्द
+  - en: Second word
+    hi: दूसरा शब्द
+  - en: Joined
+    hi: जुड़ा हुआ
+  rows:
+  - - sa: उप
+    - sa: इन्द्रः
+    - sa: उपेन्द्रः
+      check:
+        type: sandhi
+        first: उप
+        second: इन्द्रः
+        joined: उपेन्द्रः
+      highlight: true
+  - - sa: महा
+    - sa: ईश्वरः
+    - sa: महेश्वरः
+      check:
+        type: sandhi
+        first: महा
+        second: ईश्वरः
+        joined: महेश्वरः
+      highlight: true
+  - - sa: गण
+    - sa: ईशः
+    - sa: गणेशः
+      check:
+        type: sandhi
+        first: गण
+        second: ईशः
+        joined: गणेशः
+      highlight: true
+  - - sa: सूर्य
+    - sa: उदयः
+    - sa: सूर्योदयः
+      check:
+        type: sandhi
+        first: सूर्य
+        second: उदयः
+        joined: सूर्योदयः
+      highlight: true
+  - - sa: महा
+    - sa: उत्सवः
+    - sa: महोत्सवः
+      check:
+        type: sandhi
+        first: महा
+        second: उत्सवः
+        joined: महोत्सवः
+      highlight: true
+  - - sa: देव
+    - sa: ऋषिः
+    - sa: देवर्षिः
+      check:
+        type: sandhi
+        first: देव
+        second: ऋषिः
+        joined: देवर्षिः
+      highlight: true
+  - - sa: सप्त
+    - sa: ऋषयः
+    - sa: सप्तर्षयः
+      check:
+        type: sandhi
+        first: सप्त
+        second: ऋषयः
+        joined: सप्तर्षयः
+      highlight: true
+  note:
+    en: '{{अ}}/{{आ}} + {{इ}}/{{ई}} = {{ए}}; + {{उ}}/{{ऊ}} = {{ओ}}; + {{ऋ}} = {{अर्}}.'
+    hi: '{{अ}}/{{आ}} + {{इ}}/{{ई}} = {{ए}}; + {{उ}}/{{ऊ}} = {{ओ}}; + {{ऋ}} = {{अर्}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.guna
+  mode: choice
+  prompt:
+    en: Split the joined word {{गणेशः}}.
+    hi: जुड़े शब्द {{गणेशः}} को तोड़िए।
+  explain:
+    en: '{{गण}} + {{ईशः}}.'
+    hi: '{{गण}} + {{ईशः}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: गण + ईशः
+  - sa: गणि + ईशः
+  - sa: गणु + ईशः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.guna
+  mode: choice
+  prompt:
+    en: '{{महा + उत्सवः}} gives…'
+    hi: '{{महा + उत्सवः}} से…'
+  explain:
+    en: '{{आ}} + {{उ}} = {{ओ}}.'
+    hi: '{{आ}} + {{उ}} = {{ओ}}।'
+  roman: after
+  options:
+  - sa: महाउत्सवः
+  - sa: महौत्सवः
+  - correct: true
+    sa: महोत्सवः
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.guna
+  mode: type
+  prompt:
+    en: 'Join: {{गण}} + {{ईशः}}.'
+    hi: 'जोड़िए: {{गण}} + {{ईशः}}।'
+  explain:
+    en: '{{गणेशः}}: “lord of the hosts”.'
+    hi: '{{गणेशः}}: ‘गणों का स्वामी’।'
+  roman: after
+  answers:
+  - गणेशः
+  tiles:
+  - गणे
+  - शः
+  - ईशः
+  - ति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.guna
+  mode: match
+  prompt:
+    en: Join each word to its parts.
+    hi: हर शब्द को उसके भागों से जोड़िए।
+  explain:
+    en: The vowel strengthens.
+    hi: स्वर बलवान् हो जाता है।
+  roman: after
+  pairs:
+  - left:
+      sa: उपेन्द्रः
+    right:
+      sa: उप + इन्द्रः
+  - left:
+      sa: सूर्योदयः
+    right:
+      sa: सूर्य + उदयः
+  - left:
+      sa: महर्षिः
+    right:
+      sa: महा + ऋषिः
+  - left:
+      sa: सप्तर्षयः
+    right:
+      sa: सप्त + ऋषयः
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.guna
+  widget: mark_words
+  prompt:
+    en: Tap every word with guṇa (an {{ए}}, {{ओ}} or {{अर्}} made by joining).
+    hi: गुण वाला हर शब्द छुइए (जुड़ने से बना {{ए}}, {{ओ}} या {{अर्}})।
+  params:
+    passage:
+    - गणेशः
+    - विद्यालयः
+    - महोत्सवः
+    - महात्मा
+    - सप्तर्षयः
+    - सूक्तम्
+    targets:
+    - गणेशः
+    - महोत्सवः
+    - सप्तर्षयः
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: The conch
+    hi: शंख
+  depth: core
+  skills:
+  - sandhi.guna
+  mode: choice
+  prompt:
+    en: '{{देव + ऋषिः}} gives…'
+    hi: '{{देव + ऋषिः}} से…'
+  explain:
+    en: '{{अ}} + {{ऋ}} = {{अर्}}.'
+    hi: '{{अ}} + {{ऋ}} = {{अर्}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “देवर्षिः,” you say, “a sage of the gods,” and the conch statue lifts her shell to her lips. A low sound spreads through the dig, so deep that the ropes and lamps tremble. Lubdhaka's foreman looks at his own hands. “She said it,” he says, uneasily, “before you did.” “No,” says Dādī, gently. “You were listening.”
+      hi: “देवर्षिः,” आप कहते हैं, “देवताओं के ऋषि,” और शंख वाली प्रतिमा अपना शंख होंठों तक उठाती है। एक गहरी ध्वनि खुदाई में फैलती है, इतनी गहरी कि रस्सियाँ और दीपक काँप उठते हैं। लुब्धक का मुखिया अपने हाथों को देखता है। “उसने पहले कहा,” वह बेचैनी से कहता है, “आपके कहने से पहले।” “नहीं,” दादी कोमलता से कहती हैं। “आप सुन रहे थे।”
+    failure:
+      en: 'No sound comes. {{अ}} + {{ऋ}} = {{अर्}}: {{देवर्षिः}}.'
+      hi: 'कोई ध्वनि नहीं आती। {{अ}} + {{ऋ}} = {{अर्}}: {{देवर्षिः}}।'
+  options:
+  - sa: देवृषिः
+  - sa: देवैषिः
+  - correct: true
+    sa: देवर्षिः
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's guṇa
+    hi: पाणिनि का गुण
+  depth: panini
+  skills:
+  - sandhi.guna
+  sutras:
+  - 6.1.87
+  - 1.1.2
+  body:
+    en: Sūtra 6.1.87, {{आद्गुणः}}, says that after {{अ}} or {{आ}}, a following vowel merges with it into its guṇa. 1.1.2, {{अदेङ् गुणः}}, names {{अ}}, {{ए}}, {{ओ}} guṇa. So {{अ + इ}} gives {{ए}}, {{अ + उ}} gives {{ओ}}.
+    hi: सूत्र 6.1.87, {{आद्गुणः}}, कहता है कि {{अ}} या {{आ}} के बाद आने वाला स्वर उसके साथ मिलकर अपने गुण में बदल जाता है। 1.1.2, {{अदेङ् गुणः}}, {{अ}}, {{ए}}, {{ओ}} को गुण कहता है। इसलिए {{अ + इ}} से {{ए}}, {{अ + उ}} से {{ओ}}।
+- id: sum
+  kind: summary
+  title:
+    en: Guṇa
+    hi: गुण
+  depth: core
+  points:
+  - sa: अ + इ = ए
+    text:
+      en: गणेशः, उपेन्द्रः.
+      hi: गणेशः, उपेन्द्रः।
+  - sa: अ + उ = ओ
+    text:
+      en: सूर्योदयः, महोत्सवः.
+      hi: सूर्योदयः, महोत्सवः।
+  - sa: अ + ऋ = अर्
+    text:
+      en: देवर्षिः, महर्षिः.
+      hi: देवर्षिः, महर्षिः।

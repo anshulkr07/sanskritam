@@ -1,0 +1,31 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: past
+title:
+  en: The past
+  hi: भूतकाल
+title_sa: लङ्
+status: ready
+episode:
+  summary:
+    en: The Vetāla's tales happened long ago. You learn the everyday past to follow them.
+    hi: वेताल की कथाएँ बहुत पहले घटी थीं। उन्हें समझने के लिए आप सामान्य भूतकाल सीखते हैं।
+  beats:
+  - 'अपठत्: the augment अ.'
+  - Telling what happened yesterday.
+  - The night's riddle.
+skills:
+- id: verb.lan
+  title:
+    en: 'The everyday past: लङ्'
+    hi: 'सामान्य भूत: लङ्'
+  sutras:
+  - 3.2.111
+  - 6.4.71
+lessons:
+- past.augment
+- past.tell
+planned: []
+ghost: atitaka
+revision: past.revision
+check: past.check

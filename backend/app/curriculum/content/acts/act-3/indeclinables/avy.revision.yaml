@@ -1,0 +1,201 @@
+id: avy.revision
+template: revision
+title:
+  en: Everything about small words
+  hi: छोटे शब्दों के बारे में सब कुछ
+title_sa: अव्ययसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The small words
+    hi: छोटे शब्द
+  depth: core
+  section: core
+  rows:
+  - skill: avy.particles
+    rule:
+      en: '{{च}} and, {{वा}} or, {{अपि}} also, {{एव}} only, {{तु}} but, {{हि}} for, {{न}} not, {{इव}} like.'
+      hi: '{{च}} और, {{वा}} या, {{अपि}} भी, {{एव}} ही, {{तु}} परन्तु, {{हि}} क्योंकि, {{न}} नहीं, {{इव}} जैसे।'
+    sutras:
+    - 1.1.37
+    tag: core
+    taught_in: avy.small#tb1
+  - skill: avy.iti
+    rule:
+      en: '{{इति}} closes a quote or a thought: {{अहं गच्छामि इति वदति}}.'
+      hi: '{{इति}} उद्धरण या विचार को बन्द करता है: {{अहं गच्छामि इति वदति}}।'
+    sutras:
+    - 1.4.57
+    tag: core
+    taught_in: avy.iti#t1
+  - skill: avy.adverbs
+    rule:
+      en: '{{-त्र}} place, {{-दा}} time, {{-था}} manner: {{अत्र तत्र यत्र}}, {{यदा तदा}}, {{यथा तथा}}.'
+      hi: '{{-त्र}} स्थान, {{-दा}} समय, {{-था}} रीति: {{अत्र तत्र यत्र}}, {{यदा तदा}}, {{यथा तथा}}।'
+    sutras:
+    - 5.3.10
+    - 5.3.15
+    - 5.3.23
+    tag: core
+    taught_in: avy.where#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: avy.particles
+    rule:
+      en: '{{तु}} and {{हि}} stand second in their clause.'
+      hi: '{{तु}} और {{हि}} अपने वाक्यांश में दूसरे स्थान पर रहते हैं।'
+    tag: good
+    taught_in: avy.small#tb1
+  - skill: avy.adverbs
+    rule:
+      en: 'Relative and correlative come in pairs: {{यत्र … तत्र}}, {{यदा … तदा}}, {{यथा … तथा}}.'
+      hi: 'सम्बन्धवाची और उसका उत्तर जोड़ी में आते हैं: {{यत्र … तत्र}}, {{यदा … तदा}}, {{यथा … तथा}}।'
+    tag: good
+    taught_in: avy.where#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: avy.particles
+    rule:
+      en: '{{कथम्}} (how?) and {{एवम्}} (thus) end in {{-म्}} but never change.'
+      hi: '{{कथम्}} (कैसे?) और {{एवम्}} (ऐसे) {{-म्}} पर समाप्त होते हैं पर कभी नहीं बदलते।'
+    example:
+      sa: एवम् अस्ति।
+      meaning:
+        en: It is so.
+        hi: ऐसा है।
+      words:
+      - sa: एवम्
+        gloss:
+          en: thus
+          hi: ऐसे
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    tag: rare
+    new_here: true
+  - skill: avy.iti
+    rule:
+      en: '{{इति}} joins with the following vowel: {{इति + उवाच}} gives {{इत्युवाच}}.'
+      hi: '{{इति}} अगले स्वर से जुड़ जाता है: {{इति + उवाच}} से {{इत्युवाच}}।'
+    example:
+      sa: इत्युवाच।
+      meaning:
+        en: Saying so, he said.
+        hi: ऐसा कहकर बोला।
+      words:
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: उवाच
+        gloss:
+          en: said
+          hi: बोला
+        check:
+          type: tinanta
+          dhatu: वच्
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: avy.particles
+    rule:
+      en: 'Do not put an ending on an indeclinable: {{च}}, not {{चः}}.'
+      hi: 'अव्यय पर प्रत्यय मत लगाइए: {{च}}, {{चः}} नहीं।'
+    tag: core
+    taught_in: avy.small#t1
+  - skill: avy.iti
+    rule:
+      en: Do not forget {{इति}} after a quotation.
+      hi: उद्धरण के बाद {{इति}} मत भूलिए।
+    tag: core
+    taught_in: avy.iti#p1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: avy.particles
+    rule:
+      en: '{{स्वरादिनिपातमव्ययम्}} names the indeclinables.'
+      hi: '{{स्वरादिनिपातमव्ययम्}} अव्ययों को नाम देता है।'
+    sutras:
+    - 1.1.37
+    tag: core
+    taught_in: avy.small#pn
+  - skill: avy.adverbs
+    rule:
+      en: '{{सप्तम्यास्त्रल्}}, {{सर्वैकान्यकिंयत्तदः काले दा}}, {{प्रकारवचने थाल्}}: {{-त्र}}, {{-दा}}, {{-था}}.'
+      hi: '{{सप्तम्यास्त्रल्}}, {{सर्वैकान्यकिंयत्तदः काले दा}}, {{प्रकारवचने थाल्}}: {{-त्र}}, {{-दा}}, {{-था}}।'
+    sutras:
+    - 5.3.10
+    - 5.3.15
+    - 5.3.23
+    tag: core
+    taught_in: avy.where#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: avy.particles
+    formula: च · वा · अपि · एव · तु · हि
+    rule:
+      en: little words
+      hi: छोटे शब्द
+    tag: core
+    taught_in: avy.small#tb1
+  - skill: avy.iti
+    formula: अहं गच्छामि इति
+    rule:
+      en: closing a thought
+      hi: विचार बन्द करना
+    tag: core
+    taught_in: avy.iti#t1
+  - skill: avy.adverbs
+    formula: अत्र · यदा · यथा
+    rule:
+      en: where, when, how
+      hi: कहाँ, कब, कैसे
+    tag: core
+    taught_in: avy.where#tb1

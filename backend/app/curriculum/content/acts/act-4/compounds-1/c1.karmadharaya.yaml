@@ -1,0 +1,338 @@
+id: c1.karmadharaya
+template: scene
+title:
+  en: Blue lotus, three worlds
+  hi: नीला कमल, तीन लोक
+title_sa: नीलोत्पलम् त्रिलोकी
+minutes: 6
+teaches:
+- sam.karmadharaya
+needs:
+- sam.tatpurusha
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The seventeenth statue
+    hi: सत्रहवीं प्रतिमा
+  depth: core
+  image:
+    brief: The seventeenth statue holding a blue lotus; behind her a carved trio of small worlds like three bowls; Śuka looking from one to the other; Dādī counting on her fingers.
+    alt:
+      en: A statue holds a blue lotus with three carved bowls behind her while a parrot looks from one to the other
+      hi: नीला कमल थामे प्रतिमा, पीछे तीन कटोरे, उन्हें देखता तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - samasika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: c1-karmadharaya-s1
+  narration:
+    en: 'The seventeenth statue holds a flower. “नीलोत्पलम्,” she says: “a blue lotus.” “महात्मा”: “a great soul.” “त्रिलोकी”: “the three worlds.” “These are different,” says Śuka. “Nothing is ‘of’ anything.” “Right,” says Dādī. “In the first two, the first word describes the second: blue lotus, great soul. In the third, a number counts a group: three worlds.”'
+    hi: 'सत्रहवीं प्रतिमा के हाथ में एक फूल है। “नीलोत्पलम्,” वह कहती है: “नीला कमल।” “महात्मा”: “महान् आत्मा।” “त्रिलोकी”: “तीन लोक।” “ये अलग हैं,” शुक कहता है। “कोई किसी का नहीं है।” “ठीक,” दादी कहती हैं। “पहले दो में पहला शब्द दूसरे का वर्णन करता है: नीला कमल, महान् आत्मा। तीसरे में संख्या एक समूह गिनती है: तीन लोक।”'
+- id: t1
+  kind: teach
+  title:
+    en: Describing and counting
+    hi: वर्णन और गिनती
+  depth: core
+  skills:
+  - sam.karmadharaya
+  body:
+    en: 'In a {{कर्मधारयः}} the first word describes the second: {{नीलम् उत्पलम्}} gives {{नीलोत्पलम्}} (blue lotus); {{महान् आत्मा}} gives {{महात्मा}} (great soul). In a {{द्विगुः}} a number counts a group: {{त्रयाणां लोकानां समाहारः}} gives {{त्रिलोकी}} (the three worlds), {{अष्टानाम् अध्यायानां समाहारः}} gives {{अष्टाध्यायी}} (the eight chapters, Pāṇini''s book).'
+    hi: '{{कर्मधारयः}} में पहला शब्द दूसरे का वर्णन करता है: {{नीलम् उत्पलम्}} से {{नीलोत्पलम्}} (नीला कमल); {{महान् आत्मा}} से {{महात्मा}} (महान् आत्मा)। {{द्विगुः}} में संख्या एक समूह गिनती है: {{त्रयाणां लोकानां समाहारः}} से {{त्रिलोकी}} (तीन लोक), {{अष्टानाम् अध्यायानां समाहारः}} से {{अष्टाध्यायी}} (आठ अध्याय, पाणिनि की पुस्तक)।'
+  term:
+    sa: कर्मधारयः
+    meaning:
+      en: a compound where the first word describes the second
+      hi: वह समास जिसमें पहला शब्द दूसरे का वर्णन करता है
+- id: tb1
+  kind: table
+  title:
+    en: Describing and counting
+    hi: वर्णन और गिनती
+  depth: core
+  skills:
+  - sam.karmadharaya
+  caption:
+    en: कर्मधारयः and द्विगुः
+    hi: कर्मधारय और द्विगु
+  columns:
+  - en: Compound
+    hi: समास
+  - en: Unpacked
+    hi: विग्रह
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: नीलोत्पलम्
+      check:
+        type: subanta
+        stem: नीलोत्पल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: नीलम् उत्पलम्
+    - text:
+        en: a blue lotus
+        hi: नीला कमल
+  - - sa: महात्मा
+      check:
+        type: subanta
+        stem: महात्मन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: महान् आत्मा
+    - text:
+        en: a great soul
+        hi: महान् आत्मा
+  - - sa: सज्जनः
+      check:
+        type: subanta
+        stem: सज्जन
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: सन् जनः
+    - text:
+        en: a good person
+        hi: भला मनुष्य
+  - - sa: कृष्णसर्पः
+      check:
+        type: subanta
+        stem: कृष्णसर्प
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: कृष्णः सर्पः
+    - text:
+        en: a black snake
+        hi: काला साँप
+  - - sa: त्रिलोकी
+      check:
+        type: subanta
+        stem: त्रिलोकी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: त्रयाणां लोकानां समाहारः
+    - text:
+        en: the three worlds
+        hi: तीन लोक
+  - - sa: पञ्चवटी
+      check:
+        type: subanta
+        stem: पञ्चवटी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: पञ्चानां वटानां समाहारः
+    - text:
+        en: the five banyan trees
+        hi: पाँच बरगद
+  - - sa: अष्टाध्यायी
+      check:
+        type: subanta
+        stem: अष्टाध्यायी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: अष्टानाम् अध्यायानां समाहारः
+    - text:
+        en: the eight chapters
+        hi: आठ अध्याय
+  - - sa: त्रिभुवनम्
+      check:
+        type: subanta
+        stem: त्रिभुवन
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: त्रयाणां भुवनानां समाहारः
+    - text:
+        en: the three worlds
+        hi: तीन भुवन
+  note:
+    en: 'Both halves have the same case: that is why a karmadhāraya is called {{समानाधिकरणः}}.'
+    hi: 'दोनों भागों की विभक्ति एक है: इसीलिए कर्मधारय को {{समानाधिकरणः}} कहते हैं।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sam.karmadharaya
+  mode: choice
+  prompt:
+    en: '{{नीलोत्पलम्}} means…'
+    hi: '{{नीलोत्पलम्}} का अर्थ…'
+  explain:
+    en: The first word describes the second.
+    hi: पहला शब्द दूसरे का वर्णन करता है।
+  roman: after
+  options:
+  - text:
+      en: a lotus of the blue
+      hi: नील का कमल
+  - correct: true
+    text:
+      en: a blue lotus
+      hi: नीला कमल
+  - text:
+      en: blue and a lotus
+      hi: नीला और कमल
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sam.karmadharaya
+  mode: match
+  prompt:
+    en: Join each compound to its unpacking.
+    hi: हर समास को उसके विग्रह से जोड़िए।
+  explain:
+    en: Two describe, two count.
+    hi: दो वर्णन करते हैं, दो गिनते हैं।
+  roman: after
+  pairs:
+  - left:
+      sa: नीलोत्पलम्
+    right:
+      sa: नीलम् उत्पलम्
+  - left:
+      sa: महात्मा
+    right:
+      sa: महान् आत्मा
+  - left:
+      sa: त्रिलोकी
+    right:
+      sa: त्रयाणां लोकानां समाहारः
+  - left:
+      sa: अष्टाध्यायी
+    right:
+      sa: अष्टानाम् अध्यायानां समाहारः
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sam.karmadharaya
+  widget: mark_words
+  prompt:
+    en: Tap every compound that counts a group.
+    hi: समूह गिनने वाला हर समास छुइए।
+  params:
+    passage:
+    - त्रिलोकी
+    - नीलोत्पलम्
+    - पञ्चवटी
+    - महात्मा
+    - अष्टाध्यायी
+    - सज्जनः
+    targets:
+    - त्रिलोकी
+    - पञ्चवटी
+    - अष्टाध्यायी
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sam.karmadharaya
+  mode: order
+  prompt:
+    en: 'Say: “a great soul comes.”'
+    hi: 'कहिए: ‘महान् आत्मा आता है।’'
+  explain:
+    en: '{{महात्मा आगच्छति}}.'
+    hi: '{{महात्मा आगच्छति}}।'
+  roman: after
+  tokens:
+  - महात्मा
+  - आगच्छति
+- id: p4
+  kind: practice
+  title:
+    en: Eight chapters
+    hi: आठ अध्याय
+  depth: core
+  skills:
+  - sam.karmadharaya
+  mode: choice
+  prompt:
+    en: '{{अष्टाध्यायी}} means…'
+    hi: '{{अष्टाध्यायी}} का अर्थ…'
+  explain:
+    en: 'A number counts a group: a dvigu. It is Pāṇini''s book.'
+    hi: 'संख्या एक समूह गिनती है: द्विगु। यह पाणिनि की पुस्तक है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “अष्टाध्यायी,” you say, and the seventeenth statue's lotus lifts a little, as if at the name of a mountain. “The eight chapters,” she says, in a voice that has changed. “That is the name of the book in the last room. Do not forget it.” Lubdhaka's foreman writes it down, and underlines it twice, though he has no idea why.
+      hi: “अष्टाध्यायी,” आप कहते हैं, और सत्रहवीं प्रतिमा का कमल थोड़ा ऊपर उठ जाता है, मानो किसी पर्वत का नाम सुनकर। “आठ अध्याय,” वह कहती है, बदली हुई आवाज़ में। “यह अन्तिम कक्ष की पुस्तक का नाम है। इसे मत भूलिए।” लुब्धक का मुखिया उसे लिखता है और दो बार रेखांकित करता है, यद्यपि उसे पता नहीं क्यों।
+    failure:
+      en: 'The lotus stays still. A number counts a group: {{अष्टाध्यायी}}.'
+      hi: 'कमल स्थिर रहता है। संख्या समूह गिनती है: {{अष्टाध्यायी}}।'
+  options:
+  - text:
+      en: a chapter of eight
+      hi: आठ का अध्याय
+  - text:
+      en: eight and a chapter
+      hi: आठ और एक अध्याय
+  - correct: true
+    text:
+      en: the group of eight chapters
+      hi: आठ अध्यायों का समूह
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's describing and counting
+    hi: पाणिनि का वर्णन और गिनती
+  depth: panini
+  skills:
+  - sam.karmadharaya
+  sutras:
+  - 1.2.42
+  - 2.1.57
+  - 2.1.52
+  - 2.1.51
+  body:
+    en: Sūtra 1.2.42, {{तत्पुरुषः समानाधिकरणः कर्मधारयः}}, calls a tatpuruṣa whose members share a case a {{कर्मधारयः}}; 2.1.57, {{विशेषणं विशेष्येण बहुलम्}}, joins a describing word to the described. 2.1.52, {{संख्यापूर्वो द्विगुः}}, calls a compound with a number first {{द्विगुः}}; 2.1.51 gives its sense of a group.
+    hi: सूत्र 1.2.42, {{तत्पुरुषः समानाधिकरणः कर्मधारयः}}, उस तत्पुरुष को {{कर्मधारयः}} कहता है जिसके सदस्यों की विभक्ति एक है; 2.1.57, {{विशेषणं विशेष्येण बहुलम्}}, वर्णन करने वाले शब्द को वर्णित से जोड़ता है। 2.1.52, {{संख्यापूर्वो द्विगुः}}, उस समास को {{द्विगुः}} कहता है जिसमें संख्या पहले है; 2.1.51 उसे समूह का अर्थ देता है।
+- id: sum
+  kind: summary
+  title:
+    en: Describing and counting
+    hi: वर्णन और गिनती
+  depth: core
+  points:
+  - sa: नीलोत्पलम् · महात्मा
+    text:
+      en: A blue lotus; a great soul.
+      hi: नीला कमल; महान् आत्मा।
+  - sa: त्रिलोकी · पञ्चवटी
+    text:
+      en: The three worlds; the five banyans.
+      hi: तीन लोक; पाँच बरगद।
+  - sa: अष्टाध्यायी
+    text:
+      en: Pāṇini's book of eight chapters.
+      hi: पाणिनि की आठ अध्यायों की पुस्तक।

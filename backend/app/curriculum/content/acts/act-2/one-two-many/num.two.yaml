@@ -1,0 +1,406 @@
+id: num.two
+template: scene
+title:
+  en: Two of anything
+  hi: कोई भी दो
+title_sa: द्विवचनम्
+minutes: 6
+teaches:
+- num.dual
+needs:
+- sent.nom-sg
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Two herons
+    hi: दो बगुले
+  depth: core
+  image:
+    brief: Two tall white herons standing side by side on one leg each in the shallows of the river at the ghat, perfectly mirrored in the water; Śuka on Dādī's shoulder counting on his claw; boats beginning to gather behind.
+    alt:
+      en: Two white herons standing side by side in the river shallows
+      hi: उथले पानी में साथ-साथ खड़े दो सफ़ेद बगुले
+    cast:
+    - you
+    - dadi
+    - shuka
+    - bakau
+    place: naditira
+    ratio: '4:3'
+    id: num-two-s1
+  narration:
+    en: Down the river the ghat fills up. Two white herons stand side by side in the shallows, perfectly still, each on one leg. Śuka counts them out loud and gets confused. “Not one,” says Dādī, “and not many. Sanskrit has a form for exactly two.”
+    hi: नदी के किनारे घाट भरने लगता है। उथले पानी में दो सफ़ेद बगुले साथ-साथ खड़े हैं, बिलकुल स्थिर, हर एक एक पैर पर। शुक ज़ोर से गिनता है और उलझ जाता है। दादी कहती हैं, “न एक, न अनेक। संस्कृत में ठीक दो के लिए अलग रूप है।”
+  lines:
+  - speaker: dadi
+    sa: द्वौ बकौ।
+    gloss:
+      en: Two herons.
+      hi: दो बगुले।
+- id: t1
+  kind: teach
+  title:
+    en: 'Exactly two: the dual'
+    hi: 'ठीक दो: द्विवचन'
+  depth: core
+  skills:
+  - num.dual
+  sutras:
+  - 1.4.22
+  body:
+    en: 'Sanskrit counts one, two and many. Exactly two has its own ending, the dual ({{द्विवचनम्}}). A masculine word in -अ ends in {{औ}}: {{बकः}} (one heron), {{बकौ}} (two herons).'
+    hi: 'संस्कृत एक, दो और अनेक गिनती है। ठीक दो का अपना प्रत्यय है, द्विवचन। अकारान्त पुंलिंग शब्द {{औ}} पर समाप्त होता है: {{बकः}} (एक बगुला), {{बकौ}} (दो बगुले)।'
+  examples:
+  - sa: बकः
+    meaning:
+      en: one heron
+      hi: एक बगुला
+    check:
+      type: subanta
+      stem: बक
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: बकौ
+    meaning:
+      en: two herons
+      hi: दो बगुले
+    check:
+      type: subanta
+      stem: बक
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Dvi
+  term:
+    sa: द्विवचनम्
+    meaning:
+      en: 'the dual: exactly two'
+      hi: 'द्विवचन: ठीक दो'
+- id: tb1
+  kind: table
+  title:
+    en: Dual, in every gender
+    hi: हर लिंग में द्विवचन
+  depth: core
+  skills:
+  - num.dual
+  caption:
+    en: One, two and many for four words
+    hi: चार शब्दों के एक, दो और अनेक
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: One
+    hi: एक
+  - en: Two
+    hi: दो
+  - en: Many
+    hi: अनेक
+  rows:
+  - - text:
+        en: boy
+        hi: बालक
+    - sa: बालकः
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालकौ
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      highlight: true
+    - sa: बालकाः
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: girl
+        hi: बालिका
+    - sa: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालिके
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Dvi
+      highlight: true
+    - sa: बालिकाः
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: fruit
+        hi: फल
+    - sa: फलम्
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: फले
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Dvi
+      highlight: true
+    - sa: फलानि
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: river
+        hi: नदी
+    - sa: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नद्यौ
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Dvi
+      highlight: true
+    - sa: नद्यः
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+  note:
+    en: The dual ends in {{औ}} (masculine) or {{ए}} (feminine and neuter -अ/-आ words).
+    hi: द्विवचन {{औ}} (पुंलिंग) या {{ए}} (स्त्रीलिंग और नपुंसक -अ/-आ शब्द) पर समाप्त होता है।
+- id: t2
+  kind: teach
+  title:
+    en: Natural pairs
+    hi: स्वाभाविक जोड़े
+  depth: core
+  skills:
+  - num.dual
+  body:
+    en: 'The dual is most at home with things that come in twos: eyes, hands, feet, ears, parents. These you will meet often.'
+    hi: 'द्विवचन उन चीज़ों के साथ सबसे सहज है जो जोड़े में आती हैं: आँखें, हाथ, पाँव, कान, माता-पिता। ये आपको अक्सर मिलेंगे।'
+  examples:
+  - sa: नेत्रे
+    meaning:
+      en: two eyes
+      hi: दो आँखें
+    check:
+      type: subanta
+      stem: नेत्र
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Dvi
+  - sa: हस्तौ
+    meaning:
+      en: two hands
+      hi: दो हाथ
+    check:
+      type: subanta
+      stem: हस्त
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Dvi
+  - sa: पादौ
+    meaning:
+      en: two feet
+      hi: दो पाँव
+    check:
+      type: subanta
+      stem: पाद
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Dvi
+  - sa: कर्णौ
+    meaning:
+      en: two ears
+      hi: दो कान
+    check:
+      type: subanta
+      stem: कर्ण
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Dvi
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - num.dual
+  mode: choice
+  prompt:
+    en: Which form means exactly two herons?
+    hi: कौन-सा रूप ठीक दो बगुलों का है?
+  explain:
+    en: '{{बकौ}}: the dual ending {{औ}}.'
+    hi: '{{बकौ}}: द्विवचन प्रत्यय {{औ}}।'
+  roman: after
+  options:
+  - sa: बकः
+  - correct: true
+    sa: बकौ
+  - sa: बकाः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - num.dual
+  mode: match
+  prompt:
+    en: Join each dual to its meaning.
+    hi: हर द्विवचन को उसके अर्थ से जोड़िए।
+  explain:
+    en: The dual ends in {{औ}} or {{ए}}, or {{औ}} after {{ई}}.
+    hi: द्विवचन {{औ}} या {{ए}} पर समाप्त होता है, {{ई}} के बाद {{औ}}।
+  roman: after
+  pairs:
+  - left:
+      sa: बालकौ
+    right:
+      text:
+        en: two boys
+        hi: दो बालक
+  - left:
+      sa: बालिके
+    right:
+      text:
+        en: two girls
+        hi: दो बालिकाएँ
+  - left:
+      sa: फले
+    right:
+      text:
+        en: two fruits
+        hi: दो फल
+  - left:
+      sa: नद्यौ
+    right:
+      text:
+        en: two rivers
+        hi: दो नदियाँ
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - num.dual
+  widget: mark_words
+  prompt:
+    en: Tap every word that means exactly two.
+    hi: ठीक दो वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - बकौ
+    - बकः
+    - बालिके
+    - फलानि
+    - नेत्रे
+    - बालकाः
+    targets:
+    - बकौ
+    - बालिके
+    - नेत्रे
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: Count the pair
+    hi: जोड़ा गिनिए
+  depth: core
+  skills:
+  - num.dual
+  mode: choice
+  prompt:
+    en: Two girls sit on the step. Which word?
+    hi: सीढ़ी पर दो बालिकाएँ बैठी हैं। कौन-सा शब्द?
+  explain:
+    en: '{{बालिके}}: the dual of {{बालिका}}.'
+    hi: '{{बालिके}}: {{बालिका}} का द्विवचन।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “बकौ,” you say. Both herons lift the same leg at once and the water between them glows.
+      hi: “बकौ,” आप कहते हैं। दोनों बगुले एक साथ एक ही पैर उठाते हैं और उनके बीच का पानी चमक उठता है।
+    failure:
+      en: 'The herons stay as they are. Two: find the dual ending.'
+      hi: 'बगुले जैसे थे वैसे रहते हैं। दो: द्विवचन का प्रत्यय खोजिए।'
+  options:
+  - sa: बालिका
+  - correct: true
+    sa: बालिके
+  - sa: बालिकाः
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini on number
+    hi: संख्या पर पाणिनि
+  depth: panini
+  skills:
+  - num.dual
+  sutras:
+  - 1.4.22
+  body:
+    en: 'Sūtra 1.4.22, {{द्व्येकयोर्द्विवचनैकवचने}}: the dual ending goes with two things, the singular with one. Number is a feature of the ending, not of the stem.'
+    hi: 'सूत्र 1.4.22, {{द्व्येकयोर्द्विवचनैकवचने}}: दो के लिए द्विवचन का प्रत्यय, एक के लिए एकवचन का। संख्या प्रत्यय की विशेषता है, मूल की नहीं।'
+  term:
+    sa: वचनम्
+    meaning:
+      en: 'number: one, two, many'
+      hi: 'वचन: एक, दो, अनेक'
+- id: sum
+  kind: summary
+  title:
+    en: The dual
+    hi: द्विवचन
+  depth: core
+  points:
+  - sa: बकौ · बालिके · फले
+    text:
+      en: Exactly two has its own ending.
+      hi: ठीक दो का अपना प्रत्यय है।
+  - sa: औ · ए
+    text:
+      en: Masculine {{औ}}; feminine and neuter {{ए}}.
+      hi: पुंलिंग {{औ}}; स्त्रीलिंग और नपुंसक {{ए}}।
+  - sa: नेत्रे · हस्तौ
+    text:
+      en: Pairs love the dual.
+      hi: जोड़ों को द्विवचन प्रिय है।

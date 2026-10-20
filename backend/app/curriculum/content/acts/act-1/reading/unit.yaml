@@ -1,0 +1,44 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: reading
+title:
+  en: Reading words
+  hi: शब्द पढ़ना
+title_sa: पठनम्
+status: ready
+ghost: mauni
+episode:
+  summary:
+    en: The library's old register is full of names. Maunī cannot speak until someone reads his name aloud. Reading whole words, syllable by syllable, makes the first leaf whole.
+    hi: ग्रंथालय का पुराना रजिस्टर नामों से भरा है। मौनी तब तक नहीं बोल सकता जब तक कोई उसका नाम ज़ोर से न पढ़े। अक्षर-अक्षर पूरे शब्द पढ़ते ही पहला पत्र पूरा हो जाता है।
+  beats:
+  - Words split into syllables, each with one vowel.
+  - Roman letters can help, but the leaf is read in Devanagari.
+  - You read Maunī's name; he speaks and points you to the river, where the second leaf lies. Lubdhaka watches from the doorway.
+skills:
+- id: read.syllables
+  title:
+    en: Splitting a word into syllables
+    hi: शब्द को अक्षरों में बाँटना
+- id: read.places
+  title:
+    en: 'Where each sound is made: place and effort'
+    hi: उच्चारण स्थान और प्रयत्न
+  sutras:
+  - 1.1.9
+- id: read.iast
+  title:
+    en: Roman letters (IAST) as a helper
+    hi: रोमन लिपि (IAST) सहायक के रूप में
+- id: read.words
+  title:
+    en: Reading whole words aloud
+    hi: पूरे शब्द ज़ोर से पढ़ना
+lessons:
+- reading.syllables
+- reading.mouth
+- reading.iast
+- reading.names
+planned: []
+revision: reading.revision
+check: reading.check

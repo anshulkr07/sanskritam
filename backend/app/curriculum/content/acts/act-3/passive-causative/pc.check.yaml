@@ -1,0 +1,171 @@
+id: pc.check
+template: check
+title:
+  en: Three kinds of verbs
+  hi: तीन तरह की क्रियाएँ
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.passive
+  mode: choice
+  prompt:
+    en: “It is read.” Which form?
+    hi: ‘वह पढ़ा जाता है।’ कौन-सा रूप?
+  explain:
+    en: '{{पठ्यते}}.'
+    hi: '{{पठ्यते}}।'
+  roman: after
+  options:
+  - sa: पठति
+  - correct: true
+    sa: पठ्यते
+  - sa: पाठयति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.passive
+  mode: choice
+  prompt:
+    en: “It is done.” Which form?
+    hi: ‘वह किया जाता है।’ कौन-सा रूप?
+  explain:
+    en: '{{क्रियते}}.'
+    hi: '{{क्रियते}}।'
+  roman: after
+  options:
+  - sa: करोति
+  - correct: true
+    sa: क्रियते
+  - sa: कारयति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.causative
+  mode: choice
+  prompt:
+    en: “He teaches.” Which form?
+    hi: ‘वह पढ़ाता है।’ कौन-सा रूप?
+  explain:
+    en: '{{पाठयति}}.'
+    hi: '{{पाठयति}}।'
+  roman: after
+  options:
+  - sa: पठति
+  - sa: पठ्यते
+  - correct: true
+    sa: पाठयति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.causative
+  mode: match
+  prompt:
+    en: Join each root to its causative.
+    hi: हर धातु को उसके प्रेरणार्थक से जोड़िए।
+  explain:
+    en: Strengthen and add {{-अय-}}.
+    hi: दृढ़ कीजिए और {{-अय-}} जोड़िए।
+  roman: after
+  pairs:
+  - left:
+      sa: कृ
+    right:
+      sa: कारयति
+  - left:
+      sa: गम्
+    right:
+      sa: गमयति
+  - left:
+      sa: भुज्
+    right:
+      sa: भोजयति
+  - left:
+      sa: दृश्
+    right:
+      sa: दर्शयति
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - verb.desiderative
+  mode: choice
+  prompt:
+    en: “He wants to drink.” Which form?
+    hi: ‘वह पीना चाहता है।’ कौन-सा रूप?
+  explain:
+    en: '{{पिपासति}}.'
+    hi: '{{पिपासति}}।'
+  roman: after
+  options:
+  - sa: पिबति
+  - correct: true
+    sa: पिपासति
+  - sa: पाययति
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - verb.desiderative
+  mode: match
+  prompt:
+    en: Join each root to its “wants to” form.
+    hi: हर धातु को उसके ‘चाहता है’ रूप से जोड़िए।
+  explain:
+    en: Double and add {{-स-}}.
+    hi: दुगुना कीजिए और {{-स-}} जोड़िए।
+  roman: after
+  pairs:
+  - left:
+      sa: पठ्
+    right:
+      sa: पिपठिषति
+  - left:
+      sa: गम्
+    right:
+      sa: जिगमिषति
+  - left:
+      sa: भू
+    right:
+      sa: बुभूषति
+  - left:
+      sa: ज्ञा
+    right:
+      sa: जिज्ञासते
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - verb.passive
+  - verb.causative
+  - verb.desiderative
+  mode: order
+  prompt:
+    en: 'Complete the pusher: “It is read; he makes read; he wants to read.”'
+    hi: 'प्रेरक को पूरा कीजिए: ‘वह पढ़ा जाता है; वह पढ़वाता है; वह पढ़ना चाहता है।’'
+  explain:
+    en: '{{पठ्यते पाठयति पिपठिषति}}: one root, three forms.'
+    hi: '{{पठ्यते पाठयति पिपठिषति}}: एक धातु, तीन रूप।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“पठ्यते, पाठयति, पिपठिषति,” you say, and Preraka claps all twelve hands. Every small hand opens and lets go: the book, the spoon, the cup, the path. “It was read, I read, I wanted to read,” he says, jumbling it all in his delight. “गत्वा!” he cries suddenly, springing back: “Having gone! गन्तुम्! To go! गतः! Gone!” He streaks off into the dark with the rose light behind him, shouting the three words over and over, and the trees take them up.'
+      hi: '“पठ्यते, पाठयति, पिपठिषति,” आप कहते हैं, और प्रेरक बारहों हाथों से ताली बजाता है। हर नन्हा हाथ खुलकर छोड़ देता है: पुस्तक, चम्मच, प्याला, राह। “पढ़ी गई, मैंने पढ़वाई, मैं पढ़ना चाहता था,” वह आनन्द में सब गड्डमड्ड कर देता है। “गत्वा!” वह अचानक पीछे उछलकर चिल्लाता है: “जाकर! गन्तुम्! जाने के लिए! गतः! गया हुआ!” वह गुलाबी रोशनी पीछे छोड़ता अँधेरे में दौड़ जाता है, तीनों शब्द बार-बार चिल्लाता हुआ, और वृक्ष उन्हें दोहराने लगते हैं।'
+    failure:
+      en: 'A hand still holds on. The three: {{पठ्यते पाठयति पिपठिषति}}.'
+      hi: 'एक हाथ अब भी पकड़े है। तीनों: {{पठ्यते पाठयति पिपठिषति}}।'
+  tokens:
+  - पठ्यते
+  - पाठयति
+  - पिपठिषति

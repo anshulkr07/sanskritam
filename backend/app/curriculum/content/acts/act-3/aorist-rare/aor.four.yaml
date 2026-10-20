@@ -1,0 +1,391 @@
+id: aor.four
+template: scene
+title:
+  en: The rare four
+  hi: चार दुर्लभ रूप
+title_sa: भविता भूयात् अभविष्यत्
+minutes: 6
+teaches:
+- verb.rare-four
+needs:
+- verb.lun
+- verb.ma
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The oldest speak
+    hi: सबसे पुराने बोलते हैं
+  depth: core
+  image:
+    brief: 'The very edge of the old grove at night: four ancient grey spirits seated in a half-circle, faint and wise, like carved figures worn smooth by time; the Vetāla introducing them with an open hand; you, Dādī and Śuka standing respectfully in front.'
+    alt:
+      en: Four ancient grey spirits sit in a half-circle while the Vetāla introduces them
+      hi: अर्धवृत्त में बैठे चार प्राचीन भूरे भूत, परिचय कराता वेताल
+    cast:
+    - vetala
+    - you
+    - dadi
+    - shuka
+    place: smashana
+    ratio: '4:3'
+    id: aor-four-s1
+  narration:
+    en: At the very edge of the grove, the oldest spirits gather, whose speech has not been used in a thousand years. They speak in four rare forms, one for the far future, one for blessings, one for what would have happened, and one the Vedas keep. “You will not need them to speak,” says the Vetāla. “But a reader must know them when they pass.”
+    hi: 'वन के ठीक छोर पर सबसे पुराने भूत जुटते हैं, जिनकी भाषा हज़ार वर्ष से प्रयोग में नहीं आई। वे चार दुर्लभ रूपों में बोलते हैं: एक दूर के भविष्य के लिए, एक आशीर्वाद के लिए, एक उसके लिए जो होता, और एक जिसे वेद सँभालते हैं। “बोलने के लिए तुम्हें इनकी ज़रूरत नहीं होगी,” वेताल कहता है। “पर पढ़ने वाले को पहचानना आना चाहिए जब वे गुज़रें।”'
+- id: t1
+  kind: teach
+  title:
+    en: Four rare forms
+    hi: चार दुर्लभ रूप
+  depth: core
+  skills:
+  - verb.rare-four
+  body:
+    en: '{{लुट्}} is the far future, “not today”: {{भविता}}, {{कर्ता}}. {{आशीर्लिङ्}} is the blessing: {{भूयात्}}, “may he be”. {{लृङ्}} is “would have happened”: {{अभविष्यत्}}. And {{लेट्}} is found only in the Veda; you can skip it.'
+    hi: '{{लुट्}} दूर का भविष्य है, ‘आज नहीं’: {{भविता}}, {{कर्ता}}। {{आशीर्लिङ्}} आशीर्वाद है: {{भूयात्}}, ‘वह हो’। {{लृङ्}} का अर्थ ‘होता’ है: {{अभविष्यत्}}। और {{लेट्}} केवल वेद में मिलता है; उसे छोड़ सकते हैं।'
+  term:
+    sa: आशीर्लिङ्
+    meaning:
+      en: the blessing form
+      hi: आशीर्वाद का रूप
+- id: tb1
+  kind: table
+  title:
+    en: Three rare tenses of भू
+    hi: भू के तीन दुर्लभ काल
+  depth: core
+  skills:
+  - verb.rare-four
+  caption:
+    en: He, the two, they
+    hi: वह, दो, अनेक
+  columns:
+  - en: Form
+    hi: रूप
+  - en: He
+    hi: वह
+  - en: Two
+    hi: दो
+  - en: Many
+    hi: अनेक
+  rows:
+  - - text:
+        en: '{{लुट्}}: far future'
+        hi: '{{लुट्}}: दूर का भविष्य'
+    - sa: भविता
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lut
+        purusha: Prathama
+        vacana: Eka
+    - sa: भवितारौ
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lut
+        purusha: Prathama
+        vacana: Dvi
+    - sa: भवितारः
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lut
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: '{{आशीर्लिङ्}}: blessing'
+        hi: '{{आशीर्लिङ्}}: आशीर्वाद'
+    - sa: भूयात्
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: AshirLin
+        purusha: Prathama
+        vacana: Eka
+    - sa: भूयास्ताम्
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: AshirLin
+        purusha: Prathama
+        vacana: Dvi
+    - sa: भूयासुः
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: AshirLin
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: '{{लृङ्}}: would have'
+        hi: '{{लृङ्}}: होता'
+    - sa: अभविष्यत्
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lrn
+        purusha: Prathama
+        vacana: Eka
+    - sa: अभविष्यताम्
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lrn
+        purusha: Prathama
+        vacana: Dvi
+    - sa: अभविष्यन्
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lrn
+        purusha: Prathama
+        vacana: Bahu
+  note:
+    en: '{{भविता}} looks like an agent noun: {{कर्ता}} can be “doer” or “he will do”.'
+    hi: '{{भविता}} कर्तृवाचक जैसा दिखता है: {{कर्ता}} का अर्थ ‘करने वाला’ या ‘वह करेगा’ हो सकता है।'
+- id: t2
+  kind: teach
+  title:
+    en: How each is used
+    hi: हर एक कैसे चलता है
+  depth: core
+  skills:
+  - verb.rare-four
+  body:
+    en: '{{श्वः भविता}}: tomorrow, or later, he will be. {{चिरं जीव्यात्}}: may he live long. {{यदि पठेत् …}} uses {{लिङ्}}, while {{यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} says “had he read, he would have known”: both halves take {{लृङ्}}.'
+    hi: '{{श्वः भविता}}: कल या बाद में वह होगा। {{चिरं जीव्यात्}}: वह चिरंजीवी हो। {{यदि पठेत् …}} में {{लिङ्}} है, जबकि {{यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} कहता है ‘पढ़ता तो जान जाता’: दोनों भाग {{लृङ्}} लेते हैं।'
+  examples:
+  - sa: श्वः सः गन्ता।
+    meaning:
+      en: Tomorrow or later he will go.
+      hi: कल या बाद में वह जाएगा।
+    words:
+    - sa: श्वः
+      gloss:
+        en: tomorrow
+        hi: कल
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: गन्ता
+      gloss:
+        en: will go (far future)
+        hi: जाएगा (दूर का भविष्य)
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lut
+        purusha: Prathama
+        vacana: Eka
+  - sa: चिरम् जीव्यात्।
+    meaning:
+      en: May he live long.
+      hi: वह चिरकाल जिए।
+    words:
+    - sa: चिरम्
+      gloss:
+        en: long
+        hi: चिरकाल
+    - sa: जीव्यात्
+      gloss:
+        en: may he live
+        hi: जिए
+      check:
+        type: tinanta
+        dhatu: जीव्
+        lakara: AshirLin
+        purusha: Prathama
+        vacana: Eka
+  - sa: यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्।
+    meaning:
+      en: If he had read, he would have known.
+      hi: अगर वह पढ़ता, तो जान जाता।
+    words:
+    - sa: यदि
+      gloss:
+        en: if
+        hi: यदि
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: अपठिष्यत्
+      gloss:
+        en: had read
+        hi: पढ़ता
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lrn
+        purusha: Prathama
+        vacana: Eka
+    - sa: तर्हि
+      gloss:
+        en: then
+        hi: तो
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: अज्ञास्यत्
+      gloss:
+        en: would have known
+        hi: जान जाता
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lrn
+        purusha: Prathama
+        vacana: Eka
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.rare-four
+  mode: choice
+  prompt:
+    en: “May he live!” Which form?
+    hi: ‘वह जिए!’ कौन-सा रूप?
+  explain:
+    en: '{{जीव्यात्}}: the blessing form.'
+    hi: '{{जीव्यात्}}: आशीर्वाद का रूप।'
+  roman: after
+  options:
+  - sa: जीवति
+  - sa: जीवतु
+  - correct: true
+    sa: जीव्यात्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.rare-four
+  mode: match
+  prompt:
+    en: Join each form to its name.
+    hi: हर रूप को उसके नाम से जोड़िए।
+  explain:
+    en: Four forms, four jobs.
+    hi: चार रूप, चार काम।
+  roman: after
+  pairs:
+  - left:
+      sa: भविता
+    right:
+      text:
+        en: far future
+        hi: दूर का भविष्य
+  - left:
+      sa: भूयात्
+    right:
+      text:
+        en: blessing
+        hi: आशीर्वाद
+  - left:
+      sa: अभविष्यत्
+    right:
+      text:
+        en: would have been
+        hi: होता
+  - left:
+      sa: अभूत्
+    right:
+      text:
+        en: the aorist
+        hi: लुङ्
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.rare-four
+  widget: mark_words
+  prompt:
+    en: Tap every blessing form.
+    hi: आशीर्वाद का हर रूप छुइए।
+  params:
+    passage:
+    - भूयात्
+    - भवति
+    - जीव्यात्
+    - जीवति
+    - जीयात्
+    - जयति
+    targets:
+    - भूयात्
+    - जीव्यात्
+    - जीयात्
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.rare-four
+  mode: order
+  prompt:
+    en: 'Say: “If he had read, he would have known.”'
+    hi: 'कहिए: ‘अगर वह पढ़ता, तो जान जाता।’'
+  explain:
+    en: '{{यदि सः अपठिष्यत् तर्हि अज्ञास्यत्}}: both halves in {{लृङ्}}.'
+    hi: '{{यदि सः अपठिष्यत् तर्हि अज्ञास्यत्}}: दोनों भाग {{लृङ्}} में।'
+  roman: after
+  tokens:
+  - यदि
+  - सः
+  - अपठिष्यत्
+  - तर्हि
+  - अज्ञास्यत्
+- id: p4
+  kind: practice
+  title:
+    en: What would have been
+    hi: जो होता
+  depth: core
+  skills:
+  - verb.rare-four
+  mode: choice
+  prompt:
+    en: “He would have become.” Which form?
+    hi: ‘वह हो जाता।’ कौन-सा रूप?
+  explain:
+    en: '{{अभविष्यत्}}: the {{लृङ्}}.'
+    hi: '{{अभविष्यत्}}: {{लृङ्}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “अभविष्यत्,” you say. The four old spirits stir. The oldest, the faintest, lifts a hand like a leaf and lets it fall, and the whole grove sighs, once, as if a long story had at last been understood. “भूयात्,” whispers the Vetāla. “May you be.” “May you all be,” you say.
+      hi: “अभविष्यत्,” आप कहते हैं। चारों पुराने भूत हिलते हैं। सबसे पुराना, सबसे धुँधला, पत्ते जैसा हाथ उठाकर गिरा देता है, और पूरा वन एक बार साँस लेता है, मानो कोई लम्बी कथा अन्ततः समझ ली गई हो। “भूयात्,” वेताल फुसफुसाता है। “तुम हो।” “आप सब हों,” आप कहते हैं।
+    failure:
+      en: 'The old spirits keep still. “He would have become”: {{अभविष्यत्}}.'
+      hi: 'पुराने भूत स्थिर रहते हैं। ‘वह हो जाता’: {{अभविष्यत्}}।'
+  options:
+  - sa: भविष्यति
+  - sa: भूयात्
+  - correct: true
+    sa: अभविष्यत्
+- id: sum
+  kind: summary
+  title:
+    en: The rare four
+    hi: चार दुर्लभ रूप
+  depth: core
+  points:
+  - sa: भविता · कर्ता
+    text:
+      en: He will (not today).
+      hi: वह करेगा (आज नहीं)।
+  - sa: भूयात् · जीव्यात्
+    text:
+      en: May he be; may he live.
+      hi: वह हो; वह जिए।
+  - sa: अभविष्यत्
+    text:
+      en: He would have become.
+      hi: वह हो जाता।

@@ -1,0 +1,177 @@
+id: atm.check
+template: check
+title:
+  en: For oneself or for another
+  hi: अपने लिए या दूसरे के लिए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.atmane
+  mode: choice
+  prompt:
+    en: “He obtains.” Which form?
+    hi: ‘वह पाता है।’ कौन-सा रूप?
+  explain:
+    en: '{{लभते}}.'
+    hi: '{{लभते}}।'
+  roman: after
+  options:
+  - sa: लभति
+  - correct: true
+    sa: लभते
+  - sa: लभन्ति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.atmane
+  mode: choice
+  prompt:
+    en: “He serves.” Which form?
+    hi: ‘वह सेवा करता है।’ कौन-सा रूप?
+  explain:
+    en: '{{सेवते}}.'
+    hi: '{{सेवते}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: सेवते
+  - sa: सेवति
+  - sa: असेवत्
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.atmane
+  mode: match
+  prompt:
+    en: Join each root to its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+  explain:
+    en: Four roots with only {{-ते}}.
+    hi: केवल {{-ते}} वाली चार धातुएँ।
+  roman: after
+  pairs:
+  - left:
+      sa: वृत्
+    right:
+      sa: वर्तते
+  - left:
+      sa: मुद्
+    right:
+      sa: मोदते
+  - left:
+      sa: रुच्
+    right:
+      sa: रोचते
+  - left:
+      sa: ईक्ष्
+    right:
+      sa: ईक्षते
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.both-padas
+  mode: choice
+  prompt:
+    en: “He cooks for himself.” Which form?
+    hi: ‘वह अपने लिए पकाता है।’ कौन-सा रूप?
+  explain:
+    en: '{{पचते}}.'
+    hi: '{{पचते}}।'
+  roman: after
+  options:
+  - sa: पचति
+  - correct: true
+    sa: पचते
+  - sa: पचतु
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - verb.both-padas
+  mode: match
+  prompt:
+    en: Join each pair.
+    hi: जोड़ियाँ मिलाइए।
+  explain:
+    en: Two sets, two shades.
+    hi: दो समूह, दो रंग।
+  roman: after
+  pairs:
+  - left:
+      sa: करोति
+    right:
+      text:
+        en: does
+        hi: करता है
+  - left:
+      sa: कुरुते
+    right:
+      text:
+        en: does for himself
+        hi: अपने लिए करता है
+  - left:
+      sa: यजति
+    right:
+      text:
+        en: sacrifices (for another)
+        hi: यज्ञ करता है (दूसरे के लिए)
+  - left:
+      sa: यजते
+    right:
+      text:
+        en: sacrifices for himself
+        hi: अपने लिए यज्ञ करता है
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - verb.both-padas
+  mode: choice
+  prompt:
+    en: “He is defeated.” Which form?
+    hi: ‘वह हारता है।’ कौन-सा रूप?
+  explain:
+    en: '{{पराजयते}}.'
+    hi: '{{पराजयते}}।'
+  roman: after
+  options:
+  - sa: विजयते
+  - sa: जयति
+  - correct: true
+    sa: पराजयते
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - verb.atmane
+  mode: order
+  prompt:
+    en: 'Say to Sevaka: “He serves, he obtains, he abides.”'
+    hi: 'सेवक से कहिए: ‘वह सेवा करता है, पाता है, रहता है।’'
+  explain:
+    en: '{{सेवते लभते वर्तते}}: three verbs for oneself.'
+    hi: '{{सेवते लभते वर्तते}}: अपने लिए तीन क्रियाएँ।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“सेवते, लभते, वर्तते,” you say, and Sevaka lays down his tray, which is no longer empty, and places a cup of warm broth in your hands. “For you,” he says, in the other set, with a smile: “ददाति.” The Vetāla laughs outright. “A servant,” he says, “who has learned to give and to keep. Now watch him go.” Sevaka walks off, lighter, and as he goes, a short line of light hangs in the air behind him: “आगच्छति, निर्गच्छति.”'
+      hi: '“सेवते, लभते, वर्तते,” आप कहते हैं, और सेवक अपना थाल रख देता है, जो अब ख़ाली नहीं है, और आपके हाथों में गर्म शोरबे का कटोरा थमा देता है। “आपके लिए,” वह दूसरे समूह में मुस्कराकर कहता है: “ददाति।” वेताल ठहाका मारकर हँसता है। “एक सेवक,” वह कहता है, “जिसने देना और रखना सीख लिया। अब देखो वह कैसे जाता है।” सेवक हल्का होकर चल देता है, और जाते हुए उसके पीछे हवा में प्रकाश की एक छोटी पंक्ति टँगी रहती है: “आगच्छति, निर्गच्छति।”'
+    failure:
+      en: 'Sevaka waits. Three verbs for oneself: {{सेवते लभते वर्तते}}.'
+      hi: 'सेवक प्रतीक्षा करता है। अपने लिए तीन क्रियाएँ: {{सेवते लभते वर्तते}}।'
+  tokens:
+  - सेवते
+  - लभते
+  - वर्तते

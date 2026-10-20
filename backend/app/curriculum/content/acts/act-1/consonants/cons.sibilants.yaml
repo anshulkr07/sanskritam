@@ -1,0 +1,273 @@
+id: cons.sibilants
+template: scene
+title:
+  en: Three hisses and a breath
+  hi: तीन ऊष्म और एक साँस
+title_sa: ऊष्माणः
+minutes: 6
+teaches:
+- script.cons.sibilants
+needs:
+- script.cons.grid
+- script.cons.semivowels
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The hissing carvings
+    hi: फुफकारती नक्काशी
+  depth: core
+  image:
+    brief: The last carved line of the temple door with four letters; Śuka hissing with his beak narrowed, Dādī pointing at the letters, a lavender shadow laughing in the open, no longer hiding.
+    alt:
+      en: A parrot hissing at four carved letters while a shy shadow laughs
+      hi: चार खुदे अक्षरों पर फुफकारता तोता, खुलकर हँसती छाया
+    cast:
+    - you
+    - dadi
+    - shuka
+    - chayika
+    place: devalaya
+    ratio: '4:3'
+    id: cons-sibilants-s1
+  narration:
+    en: 'On the door''s last line Śuka starts to hiss. Four letters hiss or sigh: three like a snake, one like a breath. He tries each one and gets them all wrong. Chāyikā forgets to hide and laughs out loud.'
+    hi: 'द्वार की आख़िरी पंक्ति पर शुक फुफकारने लगता है। चार अक्षर फुफकारते या साँस छोड़ते हैं: तीन साँप की तरह, एक साँस की तरह। वह हर एक आज़माता है और सब ग़लत बोलता है। छायिका छिपना भूलकर ज़ोर से हँस पड़ती है।'
+- id: t1
+  kind: teach
+  title:
+    en: Hiss and breath
+    hi: फुफकार और साँस
+  depth: core
+  skills:
+  - script.cons.sibilants
+  body:
+    en: '{{श}} is a soft hiss at the palate, like “sh” in “ship”. {{ष}} is the same hiss with the tongue curled back to the roof. {{स}} is the “s” of “sun”, at the teeth. {{ह}} is a plain breath from the throat.'
+    hi: '{{श}} तालु की कोमल फुफकार है, अंग्रेज़ी ‘sh’ जैसी। {{ष}} वही फुफकार है, पर जीभ मुड़कर मूर्धा पर। {{स}} दाँतों वाला ‘स’ है। {{ह}} गले से निकलती साफ़ साँस है।'
+  rows:
+  - sa: श
+    gloss:
+      en: palate, “sh” in “ship”
+      hi: तालु, ‘श’
+  - sa: ष
+    gloss:
+      en: roof, tongue curled back
+      hi: मूर्धा, जीभ मुड़ी हुई
+  - sa: स
+    gloss:
+      en: teeth, “s” in “sun”
+      hi: दन्त, ‘स’
+  - sa: ह
+    gloss:
+      en: throat, a breath
+      hi: कण्ठ, साँस
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - script.cons.sibilants
+  widget: mouth_map
+  prompt:
+    en: Tap each hiss and see where it is made.
+    hi: हर फुफकार को छुइए और देखिए कि वह कहाँ बनती है।
+  params:
+    letters:
+    - श
+    - ष
+    - स
+    - ह
+  roman: after
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.sibilants
+  mode: match
+  prompt:
+    en: Join each letter to its place.
+    hi: हर अक्षर को उसके स्थान से जोड़िए।
+  explain:
+    en: '{{श}} palate, {{ष}} roof, {{स}} teeth, {{ह}} throat.'
+    hi: '{{श}} तालु, {{ष}} मूर्धा, {{स}} दन्त, {{ह}} कण्ठ।'
+  roman: after
+  pairs:
+  - left:
+      sa: श
+    right:
+      text:
+        en: palate
+        hi: तालु
+  - left:
+      sa: ष
+    right:
+      text:
+        en: roof of the mouth
+        hi: मूर्धा
+  - left:
+      sa: स
+    right:
+      text:
+        en: teeth
+        hi: दन्त
+  - left:
+      sa: ह
+    right:
+      text:
+        en: throat
+        hi: कण्ठ
+- id: t2
+  kind: teach
+  title:
+    en: Same hiss, three places
+    hi: एक फुफकार, तीन स्थान
+  depth: core
+  skills:
+  - script.cons.sibilants
+  body:
+    en: 'Śiva, a name of the god, begins with {{श}}; {{विष्णुः}} has {{ष}} in the middle; {{सूर्यः}}, the sun, starts with {{स}}. In Hindi {{श}} and {{ष}} sound alike. In Sanskrit keep them apart: curl the tongue for {{ष}}.'
+    hi: 'देवता का नाम {{शिवः}} {{श}} से शुरू होता है; {{विष्णुः}} के बीच में {{ष}} है; {{सूर्यः}} {{स}} से शुरू होता है। हिन्दी में {{श}} और {{ष}} एक-से सुनाई देते हैं। संस्कृत में इन्हें अलग रखिए: {{ष}} के लिए जीभ मोड़िए।'
+  examples:
+  - sa: शिवः
+    meaning:
+      en: 'Śiva: palatal {{श}}'
+      hi: 'शिव: तालव्य {{श}}'
+    check:
+      type: subanta
+      stem: शिव
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: विष्णुः
+    meaning:
+      en: 'Viṣṇu: curled {{ष}}'
+      hi: 'विष्णु: मूर्धन्य {{ष}}'
+    check:
+      type: subanta
+      stem: विष्णु
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: सूर्यः
+    meaning:
+      en: 'the sun: dental {{स}}'
+      hi: 'सूर्य: दन्त्य {{स}}'
+    check:
+      type: subanta
+      stem: सूर्य
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - script.cons.sibilants
+  widget: mark_words
+  prompt:
+    en: Tap every word that has a curled {{ष}}.
+    hi: हर उस शब्द को छुइए जिसमें मुड़ी जीभ वाला {{ष}} है।
+  params:
+    passage:
+    - शिवः
+    - षट्
+    - सुखम्
+    - कृष्णः
+    - विष्णुः
+    - शान्तिः
+    targets:
+    - षट्
+    - कृष्णः
+    - विष्णुः
+  roman: after
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.sibilants
+  mode: choice
+  prompt:
+    en: Which letter is a plain breath, made in the throat?
+    hi: कौन-सा अक्षर गले से निकलती साफ़ साँस है?
+  explain:
+    en: '{{ह}} is a breath from the throat; the other two hiss.'
+    hi: '{{ह}} गले की साँस है; बाकी दो फुफकारते हैं।'
+  roman: after
+  options:
+  - sa: श
+  - sa: स
+  - correct: true
+    sa: ह
+- id: p3
+  kind: practice
+  title:
+    en: The last line
+    hi: आख़िरी पंक्ति
+  depth: core
+  skills:
+  - script.cons.sibilants
+  mode: order
+  prompt:
+    en: 'Put the four in the door''s order: three hisses, then the breath.'
+    hi: 'चारों को द्वार के क्रम में लगाइए: तीन फुफकारें, फिर साँस।'
+  explain:
+    en: '{{श}} {{ष}} {{स}} {{ह}}: the last line of the door.'
+    hi: '{{श}} {{ष}} {{स}} {{ह}}: द्वार की आख़िरी पंक्ति।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: 'The last line glows. Chāyikā steps halfway out of the carving: a slim lavender shadow with a gold thread in her hair. She still cannot say her name.'
+      hi: 'आख़िरी पंक्ति चमक उठती है। छायिका आधी नक्काशी से बाहर आ जाती है: बालों में सुनहरे धागे वाली दुबली बैंगनी छाया। फिर भी वह अपना नाम नहीं बोल पाती।'
+    failure:
+      en: The letters flicker. Hiss, hiss, hiss, then the breath.
+      hi: अक्षर टिमटिमाते हैं। फुफकार, फुफकार, फुफकार, फिर साँस।
+  tokens:
+  - श
+  - ष
+  - स
+  - ह
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's names
+    hi: पाणिनि के नाम
+  depth: panini
+  skills:
+  - script.cons.sibilants
+  sutras:
+  - SS.13
+  - SS.14
+  body:
+    en: The Śiva sūtra {{शषसर्}} (13) ends in the marker {{र्}}; {{हल्}} (14) ends in {{ल्}}. From {{श}} to that {{ल्}} Pāṇini's group {{शल्}} holds exactly {{श}} {{ष}} {{स}} {{ह}}. And {{हल्}}, from the {{ह}} of sūtra 5, is every consonant.
+    hi: शिवसूत्र {{शषसर्}} (13) का अन्तिम चिह्न {{र्}} है; {{हल्}} (14) का {{ल्}}। {{श}} से उस {{ल्}} तक पाणिनि का समूह {{शल्}} ठीक {{श}} {{ष}} {{स}} {{ह}} है। और {{हल्}}, सूत्र 5 के {{ह}} से, सभी व्यंजन हैं।
+  term:
+    sa: शल्
+    meaning:
+      en: the hissing group {{श}} {{ष}} {{स}} {{ह}}
+      hi: ऊष्म समूह {{श}} {{ष}} {{स}} {{ह}}
+- id: sum
+  kind: summary
+  title:
+    en: Hisses and the breath
+    hi: फुफकारें और साँस
+  depth: core
+  points:
+  - sa: श ष स
+    text:
+      en: 'Three hisses: palate, roof, teeth.'
+      hi: 'तीन फुफकारें: तालु, मूर्धा, दन्त।'
+  - sa: ह
+    text:
+      en: A breath from the throat.
+      hi: गले की साँस।
+  - sa: शल्
+    text:
+      en: Pāṇini's name for the four.
+      hi: चारों का पाणिनि-नाम।

@@ -1,0 +1,381 @@
+id: cmd.wish
+template: scene
+title:
+  en: May they be happy
+  hi: वे सुखी हों
+title_sa: भवतु सुखी भव
+minutes: 6
+teaches:
+- verb.lot-polite
+needs:
+- verb.lot
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The lantern in the trees
+    hi: पेड़ों के बीच लालटेन
+  depth: core
+  image:
+    brief: Lubdhaka stepping out from between tree trunks with a raised lantern and a thin smile; the Vetāla hanging above him with a sweetly polite expression and a hand extended in welcome; Dādī gripping Śuka who stares with his beak open; long shadows.
+    alt:
+      en: A tall man with a lantern steps out of the trees while a spirit hanging above him gestures a polite welcome
+      hi: लालटेन थामे लम्बा आदमी पेड़ों से निकलता है, ऊपर लटका भूत विनम्र स्वागत करता है
+    cast:
+    - lubdhaka
+    - vetala
+    - dadi
+    - shuka
+    place: smashana
+    ratio: '4:3'
+    id: cmd-wish-s1
+  narration:
+    en: 'Lubdhaka steps out of the trees, lantern raised, smiling the smile of someone who does not smile. “आगच्छतु भवान्,” the Vetāla says to him, sweet as honey: “Let your honour come.” Śuka gasps. “Why is he being polite?” Dādī: “The Vetāla never gives plain orders to a guest. A command in the third person is a request.”'
+    hi: 'लुब्धक पेड़ों से निकल आता है, लालटेन उठाए, उस आदमी की मुस्कान लिए जो मुस्कराता नहीं। “आगच्छतु भवान्,” वेताल उससे शहद-सी मिठास में कहता है: “आप पधारें।” शुक चौंककर साँस लेता है। “यह इतना विनम्र क्यों है?” दादी: “वेताल अतिथि को सीधी आज्ञा नहीं देता। प्रथम पुरुष में आज्ञा एक प्रार्थना है।”'
+- id: t1
+  kind: teach
+  title:
+    en: Wishes and polite requests
+    hi: शुभकामनाएँ और विनम्र प्रार्थना
+  depth: core
+  skills:
+  - verb.lot-polite
+  body:
+    en: 'The third-person {{लोट्}} is also the polite request and the blessing: {{भवतु}} (let it be), {{जयतु}} (victory to him), {{जीवतु}} (long life), {{अस्तु}} (so be it). To be polite to “you”, say {{भवान्}} (your honour, a word for “you”) and put the verb in the third person: {{भवान् आगच्छतु}}, “please come”.'
+    hi: 'प्रथम पुरुष का {{लोट्}} विनम्र प्रार्थना और आशीर्वाद भी है: {{भवतु}} (हो), {{जयतु}} (उसकी जय हो), {{जीवतु}} (दीर्घायु हो), {{अस्तु}} (ऐसा ही हो)। ‘आप’ के लिए विनम्र होने को {{भवान्}} (आप, ‘तुम’ का आदरसूचक शब्द) कहिए और क्रिया प्रथम पुरुष में रखिए: {{भवान् आगच्छतु}}, ‘कृपया आइए’।'
+  examples:
+  - sa: भवान् आगच्छतु।
+    meaning:
+      en: Please come.
+      hi: कृपया आइए।
+    words:
+    - sa: भवान्
+      gloss:
+        en: you (polite)
+        hi: आप
+    - sa: आगच्छतु
+      gloss:
+        en: please come
+        hi: पधारिए
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lot
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+  - sa: भवान् उपविशतु।
+    meaning:
+      en: Please sit down.
+      hi: कृपया बैठिए।
+    words:
+    - sa: भवान्
+      gloss:
+        en: you (polite)
+        hi: आप
+    - sa: उपविशतु
+      gloss:
+        en: please sit
+        hi: बैठिए
+      check:
+        type: tinanta
+        dhatu: विश्
+        lakara: Lot
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - उप
+  - sa: जयतु।
+    meaning:
+      en: May he win!
+      hi: उसकी जय हो!
+    words:
+    - sa: जयतु
+      gloss:
+        en: may he win
+        hi: वह जीते
+      check:
+        type: tinanta
+        dhatu: जि
+        lakara: Lot
+        purusha: Prathama
+        vacana: Eka
+- id: tb1
+  kind: table
+  title:
+    en: Wishes in the third person
+    hi: प्रथम पुरुष में शुभकामनाएँ
+  depth: core
+  skills:
+  - verb.lot-polite
+  caption:
+    en: Four everyday wishes
+    hi: चार रोज़ की शुभकामनाएँ
+  columns:
+  - en: Wish
+    hi: शुभकामना
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: भवतु
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lot
+        purusha: Prathama
+        vacana: Eka
+    - text:
+        en: may it be
+        hi: हो
+  - - sa: जयतु
+      check:
+        type: tinanta
+        dhatu: जि
+        lakara: Lot
+        purusha: Prathama
+        vacana: Eka
+    - text:
+        en: victory to him
+        hi: उसकी जय हो
+  - - sa: जीवतु
+      check:
+        type: tinanta
+        dhatu: जीव्
+        lakara: Lot
+        purusha: Prathama
+        vacana: Eka
+    - text:
+        en: long life to him
+        hi: वह जिए
+  - - sa: अस्तु
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lot
+        purusha: Prathama
+        vacana: Eka
+    - text:
+        en: so be it
+        hi: ऐसा ही हो
+  note:
+    en: 'For several people, change {{-तु}} to {{-न्तु}}: {{भवन्तु}}, {{जयन्तु}}.'
+    hi: 'कई लोगों के लिए {{-तु}} को {{-न्तु}} कीजिए: {{भवन्तु}}, {{जयन्तु}}।'
+- id: t2
+  kind: teach
+  title:
+    en: Blessings with “be!”
+    hi: ‘हो जाओ!’ वाले आशीर्वाद
+  depth: core
+  skills:
+  - verb.lot-polite
+  body:
+    en: 'A blessing to one person uses {{भव}} (be!) with an adjective: {{सुखी भव}} (be happy), {{आयुष्मान् भव}} (be long-lived). {{सर्वे सुखिनः भवन्तु}} wishes that all be happy.'
+    hi: 'एक व्यक्ति के लिए आशीर्वाद में विशेषण के साथ {{भव}} (हो जाओ) आता है: {{सुखी भव}} (सुखी रहो), {{आयुष्मान् भव}} (दीर्घायु हो)। {{सर्वे सुखिनः भवन्तु}} कामना करता है कि सब सुखी हों।'
+  examples:
+  - sa: सुखी भव।
+    meaning:
+      en: Be happy!
+      hi: सुखी रहो!
+    words:
+    - sa: सुखी
+      gloss:
+        en: happy
+        hi: सुखी
+      check:
+        type: subanta
+        stem: सुखिन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: भव
+      gloss:
+        en: be!
+        hi: बनो!
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lot
+        purusha: Madhyama
+        vacana: Eka
+  - sa: सर्वे सुखिनः भवन्तु।
+    meaning:
+      en: May all be happy.
+      hi: सब सुखी हों।
+    words:
+    - sa: सर्वे
+      gloss:
+        en: all
+        hi: सब
+      check:
+        type: subanta
+        stem: सर्व
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: सुखिनः
+      gloss:
+        en: happy
+        hi: सुखी
+      check:
+        type: subanta
+        stem: सुखिन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: भवन्तु
+      gloss:
+        en: let them be
+        hi: हों
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lot
+        purusha: Prathama
+        vacana: Bahu
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.lot-polite
+  mode: choice
+  prompt:
+    en: 'Wish: “May he live!”'
+    hi: 'कामना कीजिए: ‘वह जिए!’'
+  explain:
+    en: '{{जीवतु}}: third person, {{-तु}}.'
+    hi: '{{जीवतु}}: प्रथम पुरुष, {{-तु}}।'
+  roman: after
+  options:
+  - sa: जीवति
+  - correct: true
+    sa: जीवतु
+  - sa: जीव
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.lot-polite
+  mode: match
+  prompt:
+    en: Join each wish to its meaning.
+    hi: हर कामना को उसके अर्थ से जोड़िए।
+  explain:
+    en: The third-person command is a wish.
+    hi: प्रथम पुरुष की आज्ञा एक कामना है।
+  roman: after
+  pairs:
+  - left:
+      sa: भवतु
+    right:
+      text:
+        en: may it be
+        hi: हो
+  - left:
+      sa: जयतु
+    right:
+      text:
+        en: victory to him
+        hi: उसकी जय हो
+  - left:
+      sa: अस्तु
+    right:
+      text:
+        en: so be it
+        hi: ऐसा ही हो
+  - left:
+      sa: सुखी भव
+    right:
+      text:
+        en: be happy
+        hi: सुखी रहो
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.lot-polite
+  widget: mark_words
+  prompt:
+    en: Tap every wish (“let him …”).
+    hi: हर कामना (‘वह … करे’) छुइए।
+  params:
+    passage:
+    - भवतु
+    - भवति
+    - जयतु
+    - जयति
+    - अस्तु
+    - अस्ति
+    targets:
+    - भवतु
+    - जयतु
+    - अस्तु
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.lot-polite
+  mode: order
+  prompt:
+    en: 'Say: “Please come, sir.”'
+    hi: 'कहिए: ‘कृपया आइए, श्रीमान्।’'
+  explain:
+    en: '{{भवान् आगच्छतु}}: the polite request.'
+    hi: '{{भवान् आगच्छतु}}: विनम्र प्रार्थना।'
+  roman: after
+  tokens:
+  - भवान्
+  - आगच्छतु
+- id: p4
+  kind: practice
+  title:
+    en: A wish
+    hi: एक कामना
+  depth: core
+  skills:
+  - verb.lot-polite
+  mode: choice
+  prompt:
+    en: Wish that all be happy. Which sentence?
+    hi: कामना कीजिए कि सब सुखी हों। कौन-सा वाक्य?
+  explain:
+    en: '{{भवन्तु}}: let them be.'
+    hi: '{{भवन्तु}}: वे हों।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“सर्वे सुखिनः भवन्तु,” you say, quite loudly, to Lubdhaka''s lantern. Lubdhaka''s smile stiffens: it is hard to be angry at a blessing. The Vetāla, upside down, applauds with two fingers. “That,” he says, “is how you disarm a man in one line.”'
+      hi: '“सर्वे सुखिनः भवन्तु,” आप लुब्धक की लालटेन से काफ़ी ऊँचे स्वर में कहते हैं। लुब्धक की मुस्कान तन जाती है: आशीर्वाद पर क्रोध करना कठिन है। वेताल, उलटा लटका, दो उँगलियों से ताली बजाता है। “इसे कहते हैं,” वह कहता है, “एक पंक्ति में किसी को निःशस्त्र करना।”'
+    failure:
+      en: 'The lantern stays steady and cold. Third person, several: {{भवन्तु}}.'
+      hi: 'लालटेन स्थिर और ठंडी रहती है। प्रथम पुरुष, कई: {{भवन्तु}}।'
+  options:
+  - sa: सर्वे सुखिनः भवन्ति
+  - correct: true
+    sa: सर्वे सुखिनः भवन्तु
+  - sa: सर्वे सुखिनः भवामि
+- id: sum
+  kind: summary
+  title:
+    en: Wishes
+    hi: शुभकामनाएँ
+  depth: core
+  points:
+  - sa: भवतु · जयतु · अस्तु
+    text:
+      en: May it be; victory; so be it.
+      hi: हो; जय हो; ऐसा ही हो।
+  - sa: भवान् आगच्छतु
+    text:
+      en: A polite request.
+      hi: विनम्र प्रार्थना।
+  - sa: सुखी भव
+    text:
+      en: 'A blessing: be happy.'
+      hi: 'आशीर्वाद: सुखी रहो।'

@@ -1,0 +1,49 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: compounds-1
+title:
+  en: Compounds I
+  hi: समास १
+title_sa: समासाः
+status: ready
+episode:
+  summary:
+    en: The statues' names are compounds. Unpack them and they tell you who they are.
+    hi: प्रतिमाओं के नाम समास हैं। इन्हें खोलिए और वे बताते हैं कि वे कौन हैं।
+  beats:
+  - 'रामलक्ष्मणौ: X and Y.'
+  - 'राजपुरुषः: X''s Y.'
+  - नीलोत्पलम्, त्रिलोकी; असत्यम्, कुम्भकारः.
+skills:
+- id: sam.dvandva
+  title:
+    en: 'Dvandva: X and Y'
+    hi: द्वन्द्व
+  sutras:
+  - 2.2.29
+- id: sam.tatpurusha
+  title:
+    en: 'Tatpuruṣa: X''s Y, Y for X'
+    hi: तत्पुरुष
+  sutras:
+  - 2.1.22
+- id: sam.karmadharaya
+  title:
+    en: Karmadhāraya and dvigu
+    hi: कर्मधारय और द्विगु
+  sutras:
+  - 1.2.42
+  - 2.1.52
+- id: sam.nan-upapada
+  title:
+    en: Not-X and X-maker
+    hi: नञ् और उपपद
+lessons:
+- c1.dvandva
+- c1.tatpurusha
+- c1.karmadharaya
+- c1.nan
+planned: []
+ghost: samasika
+revision: c1.revision
+check: c1.check

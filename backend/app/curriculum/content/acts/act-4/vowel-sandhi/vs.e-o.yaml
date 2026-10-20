@@ -1,0 +1,303 @@
+id: vs.e-o
+template: scene
+title:
+  en: The special ए and ओ
+  hi: विशेष ए और ओ
+title_sa: नाविकः वनेऽस्ति
+minutes: 6
+teaches:
+- sandhi.ayadi
+needs:
+- sandhi.yan
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The fifth statue
+    hi: पाँचवीं प्रतिमा
+  depth: core
+  image:
+    brief: The fifth statue holding a carved stone oar upright, a faint wave pattern carved on her base; Śuka tilting his head; Dādī pointing at the small curl on a rubbing of an inscription; morning light.
+    alt:
+      en: A stone statue holds an oar upright while a parrot tilts his head at an inscription rubbing
+      hi: पतवार थामे पत्थर की प्रतिमा, अभिलेख की छाप देखता तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - svarika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: vs-e-o-s1
+  narration:
+    en: 'The fifth statue holds an oar. “नाविकः,” she says. “पावकः.” “वनेऽस्ति.” Śuka tilts his head: “नाविकः has a व. And वनेऽस्ति has a little curl, ऽ. Where did a letter go?” “Two things,” says Dādī. “An ऐ or औ before a vowel turns into आय् or आव्. And an ए before अ drops the अ, leaving the little curl behind.”'
+    hi: 'पाँचवीं प्रतिमा के हाथ में पतवार है। “नाविकः,” वह कहती है। “पावकः।” “वनेऽस्ति।” शुक सिर टेढ़ा करता है: “नाविकः में व है। और वनेऽस्ति में एक छोटा मोड़ है, ऽ। कोई अक्षर कहाँ गया?” “दो बातें,” दादी कहती हैं। “स्वर से पहले ऐ या औ आय् या आव् बन जाता है। और अ से पहले ए अपना अ गिरा देता है, और छोटा मोड़ छोड़ जाता है।”'
+- id: t1
+  kind: teach
+  title:
+    en: ए, ओ, ऐ, औ before a vowel
+    hi: स्वर से पहले ए, ओ, ऐ, औ
+  depth: core
+  skills:
+  - sandhi.ayadi
+  body:
+    en: '{{औ}} before a vowel becomes {{आव्}}: {{नौ + इकः}} gives {{नाविकः}}. {{ऐ}} becomes {{आय्}} (often written {{आ}} before a vowel: {{तस्मै + इदम्}} gives {{तस्मा इदम्}}). {{ए}} before {{इ}} or {{आ}} drops to {{अ}}: {{हरे + इह}} gives {{हर इह}}. Before {{अ}} it leaves {{ऽ}}: {{वने + अस्ति}} gives {{वनेऽस्ति}}.'
+    hi: 'स्वर से पहले {{औ}} {{आव्}} बन जाता है: {{नौ + इकः}} से {{नाविकः}}। {{ऐ}} {{आय्}} बनता है (स्वर से पहले अक्सर {{आ}} लिखा जाता है: {{तस्मै + इदम्}} से {{तस्मा इदम्}})। {{इ}} या {{आ}} से पहले {{ए}} घटकर {{अ}} हो जाता है: {{हरे + इह}} से {{हर इह}}। {{अ}} से पहले वह {{ऽ}} छोड़ जाता है: {{वने + अस्ति}} से {{वनेऽस्ति}}।'
+  term:
+    sa: ऽ
+    meaning:
+      en: the avagraha, a missing अ
+      hi: अवग्रह, लुप्त अ
+- id: tb1
+  kind: table
+  title:
+    en: ए, ओ, ऐ, औ and ऽ
+    hi: ए, ओ, ऐ, औ और ऽ
+  depth: core
+  skills:
+  - sandhi.ayadi
+  caption:
+    en: Before a vowel
+    hi: स्वर से पहले
+  columns:
+  - en: First word
+    hi: पहला शब्द
+  - en: Second word
+    hi: दूसरा शब्द
+  - en: Joined
+    hi: जुड़ा हुआ
+  rows:
+  - - sa: नौ
+    - sa: इकः
+    - sa: नाविकः
+      check:
+        type: sandhi
+        first: नौ
+        second: इकः
+        joined: नाविकः
+      highlight: true
+  - - sa: पौ
+    - sa: अकः
+    - sa: पावकः
+      check:
+        type: sandhi
+        first: पौ
+        second: अकः
+        joined: पावकः
+      highlight: true
+  - - sa: तस्मै
+    - sa: इदम्
+    - sa: तस्मा इदम्
+      check:
+        type: sandhi
+        first: तस्मै
+        second: इदम्
+        joined: तस्मा इदम्
+      highlight: true
+  - - sa: हरे
+    - sa: इह
+    - sa: हर इह
+      check:
+        type: sandhi
+        first: हरे
+        second: इह
+        joined: हर इह
+      highlight: true
+  - - sa: वने
+    - sa: अस्ति
+    - sa: वनेऽस्ति
+      check:
+        type: sandhi
+        first: वने
+        second: अस्ति
+        joined: वनेऽस्ति
+      highlight: true
+  - - sa: हरे
+    - sa: अव
+    - sa: हरेऽव
+      check:
+        type: sandhi
+        first: हरे
+        second: अव
+        joined: हरेऽव
+      highlight: true
+  note:
+    en: '{{ऽ}} marks the {{अ}} that has gone.'
+    hi: '{{ऽ}} उस {{अ}} को चिह्नित करता है जो गया।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.ayadi
+  mode: choice
+  prompt:
+    en: Split the joined word {{नाविकः}}.
+    hi: जुड़े शब्द {{नाविकः}} को तोड़िए।
+  explain:
+    en: '{{नौ}} + {{इकः}}.'
+    hi: '{{नौ}} + {{इकः}}।'
+  roman: after
+  options:
+  - sa: नो + इकः
+  - sa: नै + इकः
+  - correct: true
+    sa: नौ + इकः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.ayadi
+  mode: choice
+  prompt:
+    en: '{{नौ + इकः}} gives…'
+    hi: '{{नौ + इकः}} से…'
+  explain:
+    en: '{{औ}} → {{आव्}} before {{इ}}.'
+    hi: '{{इ}} से पहले {{औ}} → {{आव्}}।'
+  roman: after
+  options:
+  - sa: नोइकः
+  - sa: नविकः
+  - correct: true
+    sa: नाविकः
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.ayadi
+  mode: type
+  prompt:
+    en: 'Join: {{पौ}} + {{अकः}}.'
+    hi: 'जोड़िए: {{पौ}} + {{अकः}}।'
+  explain:
+    en: '{{पावकः}}: “fire, the purifier”.'
+    hi: '{{पावकः}}: ‘अग्नि, पवित्र करने वाला’।'
+  roman: after
+  answers:
+  - पावकः
+  tiles:
+  - पा
+  - वकः
+  - अकः
+  - ति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.ayadi
+  mode: match
+  prompt:
+    en: Join each word to its parts.
+    hi: हर शब्द को उसके भागों से जोड़िए।
+  explain:
+    en: Before a vowel the long vowel grows a glide.
+    hi: स्वर से पहले दीर्घ स्वर अर्धस्वर उगाता है।
+  roman: after
+  pairs:
+  - left:
+      sa: नाविकः
+    right:
+      sa: नौ + इकः
+  - left:
+      sa: पावकः
+    right:
+      sa: पौ + अकः
+  - left:
+      sa: वनेऽस्ति
+    right:
+      sa: वने + अस्ति
+  - left:
+      sa: हर इह
+    right:
+      sa: हरे + इह
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.ayadi
+  widget: mark_words
+  prompt:
+    en: Tap every word with a curl {{ऽ}}.
+    hi: '{{ऽ}} वाला हर शब्द छुइए।'
+  params:
+    passage:
+    - वनेऽस्ति
+    - वनम्
+    - हरेऽव
+    - हरः
+    - नाविकः
+    - नावः
+    targets:
+    - वनेऽस्ति
+    - हरेऽव
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: The oar
+    hi: पतवार
+  depth: core
+  skills:
+  - sandhi.ayadi
+  mode: choice
+  prompt:
+    en: '{{वने + अस्ति}} gives…'
+    hi: '{{वने + अस्ति}} से…'
+  explain:
+    en: '{{ए}} + {{अ}} keeps the {{ए}} and marks the {{अ}} with {{ऽ}}.'
+    hi: '{{ए}} + {{अ}} में {{ए}} रहता है और {{अ}} को {{ऽ}} चिह्नित करता है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“वनेऽस्ति,” you say, “it is in the forest,” and the oar statue dips her oar. In the stone floor of the hall, where there was only dust, a thin line of water runs across and vanishes in a crack: a river that is not there any more. “नाविकः,” she says gently. “The boatman has gone.” But the small curl on the wall of the hall, the ऽ, is still shining.'
+      hi: '“वनेऽस्ति,” आप कहते हैं, “वह वन में है,” और पतवार वाली प्रतिमा अपनी पतवार डुबोती है। कक्ष के पत्थर के फ़र्श पर, जहाँ केवल धूल थी, पानी की एक पतली लकीर बहती है और एक दरार में खो जाती है: एक नदी जो अब नहीं है। “नाविकः,” वह कोमलता से कहती है। “नाविक चला गया।” पर कक्ष की दीवार पर वह छोटा मोड़, ऽ, अब भी चमक रहा है।'
+    failure:
+      en: 'The oar stays dry. {{ए}} + {{अ}} = {{एऽ}}: {{वनेऽस्ति}}.'
+      hi: 'पतवार सूखी रहती है। {{ए}} + {{अ}} = {{एऽ}}: {{वनेऽस्ति}}।'
+  options:
+  - sa: वनेअस्ति
+  - sa: वनयस्ति
+  - correct: true
+    sa: वनेऽस्ति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's ay, av
+    hi: पाणिनि के अय्, अव्
+  depth: panini
+  skills:
+  - sandhi.ayadi
+  sutras:
+  - 6.1.78
+  - 6.1.109
+  body:
+    en: Sūtra 6.1.78, {{एचोऽयवायावः}}, replaces {{ए}}, {{ओ}}, {{ऐ}}, {{औ}} before a vowel with {{अय्}}, {{अव्}}, {{आय्}}, {{आव्}}. And 6.1.109, {{एङः पदान्तादति}}, says that a word-final {{ए}} or {{ओ}} before {{अ}} keeps itself and the {{अ}} is dropped, marked {{ऽ}}.
+    hi: सूत्र 6.1.78, {{एचोऽयवायावः}}, स्वर से पहले {{ए}}, {{ओ}}, {{ऐ}}, {{औ}} की जगह {{अय्}}, {{अव्}}, {{आय्}}, {{आव्}} करता है। और 6.1.109, {{एङः पदान्तादति}}, कहता है कि पद के अन्त के {{ए}} या {{ओ}} के बाद {{अ}} आए तो {{ए}}/{{ओ}} रहता है और {{अ}} गिरा दिया जाता है, {{ऽ}} से चिह्नित।
+- id: sum
+  kind: summary
+  title:
+    en: Vowels before vowels
+    hi: स्वर से पहले ए, ओ, ऐ, औ
+  depth: core
+  points:
+  - sa: औ + इ = आवि
+    text:
+      en: नौ + इकः = नाविकः.
+      hi: नौ + इकः = नाविकः।
+  - sa: ए + अ = एऽ
+    text:
+      en: वने + अस्ति = वनेऽस्ति.
+      hi: वने + अस्ति = वनेऽस्ति।
+  - sa: ए + इ = अ इ
+    text:
+      en: हरे + इह = हर इह.
+      hi: हरे + इह = हर इह।

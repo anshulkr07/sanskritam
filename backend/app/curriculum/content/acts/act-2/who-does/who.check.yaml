@@ -1,0 +1,177 @@
+id: who.check
+template: check
+title:
+  en: Describe the ghat
+  hi: घाट का वर्णन कीजिए
+title_sa: परीक्षा
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sent.stem-ending
+  mode: choice
+  prompt:
+    en: Which part of {{बालकः}} is the ending?
+    hi: '{{बालकः}} में प्रत्यय कौन-सा भाग है?'
+  explain:
+    en: The stem is {{बालक}}; the ending is {{ः}}.
+    hi: मूल {{बालक}} है; प्रत्यय {{ः}}।
+  roman: after
+  options:
+  - sa: बा
+  - sa: लक
+  - correct: true
+    sa: ः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sent.stem-ending
+  mode: match
+  prompt:
+    en: Join each word to its stem.
+    hi: हर शब्द को उसके मूल रूप से जोड़िए।
+  explain:
+    en: Take off the ending.
+    hi: प्रत्यय हटाइए।
+  roman: after
+  pairs:
+  - left:
+      sa: बालकः
+    right:
+      sa: बालक
+  - left:
+      sa: पठति
+    right:
+      sa: पठ्
+  - left:
+      sa: हसति
+    right:
+      sa: हस्
+  - left:
+      sa: नाविकः
+    right:
+      sa: नाविक
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sent.nom-sg
+  mode: choice
+  prompt:
+    en: Which word is the doer?
+    hi: कर्ता कौन-सा शब्द है?
+  explain:
+    en: '{{नाविकः}}: first case, the one who does.'
+    hi: '{{नाविकः}}: प्रथमा, जो करता है।'
+  roman: after
+  options:
+  - sa: बालकम्
+  - correct: true
+    sa: नाविकः
+  - sa: नौकाम्
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.pres-3sg
+  mode: type
+  prompt:
+    en: Build the verb “he writes”.
+    hi: क्रिया ‘वह लिखता है’ बनाइए।
+  explain:
+    en: '{{लिख}} + {{ति}}: {{लिखति}}.'
+    hi: '{{लिख}} + {{ति}}: {{लिखति}}।'
+  roman: after
+  answers:
+  - लिखति
+  tiles:
+  - लिख
+  - ति
+  - लिख्
+  - ते
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - verb.pres-3sg
+  mode: choice
+  prompt:
+    en: Which verb means “he goes”?
+    hi: किस क्रिया का अर्थ ‘वह जाता है’ है?
+  explain:
+    en: The root {{गम्}} gives {{गच्छति}}.
+    hi: धातु {{गम्}} से {{गच्छति}} बनता है।
+  roman: after
+  options:
+  - sa: गमति
+  - correct: true
+    sa: गच्छति
+  - sa: गतति
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - sent.no-verb-to-be
+  mode: choice
+  prompt:
+    en: How do you say “Sītā is a girl”?
+    hi: ‘सीता बालिका है’ कैसे कहेंगे?
+  explain:
+    en: 'Two first-case words: no verb for “is”.'
+    hi: 'दो प्रथमा शब्द: ‘है’ के लिए क्रिया नहीं।'
+  roman: after
+  options:
+  - correct: true
+    sa: सीता बालिका
+  - sa: सीता बालिकाम्
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - sent.word-order
+  mode: engine
+  prompt:
+    en: Reorder the words and keep the meaning.
+    hi: शब्दों को फिर से लगाइए, अर्थ वही रखिए।
+  explain:
+    en: Any order is right.
+    hi: कोई भी क्रम सही है।
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: बालिका लिखति
+    seed: 0
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - sent.nom-sg
+  - verb.pres-3sg
+  - sent.word-order
+  mode: order
+  prompt:
+    en: 'Describe the ghat for the little spirit: put the sentence in order.'
+    hi: 'नन्हे भूत के लिए घाट का वर्णन कीजिए: वाक्य क्रम में लगाइए।'
+  explain:
+    en: '{{नाविकः गच्छति}}: the boatman goes.'
+    hi: '{{नाविकः गच्छति}}: नाविक जाता है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“नाविकः गच्छति। बालकः पठति। नदी वहति।” You name everything on the ghat. The little spirit rises from the step, clear as dew, and bows: “नदी वहति। अहं मुक्तः।” He points downstream: “नौकाः सन्ति।”'
+      hi: '“नाविकः गच्छति। बालकः पठति। नदी वहति।” आप घाट की हर चीज़ का नाम लेते हैं। नन्हा भूत सीढ़ी से ओस की तरह साफ़ उठता है और झुककर प्रणाम करता है: “नदी वहति। अहं मुक्तः।” वह नदी की धारा की ओर इशारा करता है: “नौकाः सन्ति।”'
+    failure:
+      en: The ghat waits. Start with the doer, then the verb.
+      hi: घाट प्रतीक्षा करता है। कर्ता से शुरू कीजिए, फिर क्रिया।
+  tokens:
+  - नाविकः
+  - गच्छति

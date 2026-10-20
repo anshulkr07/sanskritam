@@ -1,0 +1,160 @@
+id: lit.revision
+template: revision
+title:
+  en: Everything about the story past
+  hi: कथा के भूतकाल के बारे में सब कुछ
+title_sa: लिट्सङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The story-past forms
+    hi: कथा के भूतकाल के रूप
+  depth: core
+  section: core
+  rows:
+  - skill: verb.lit
+    rule:
+      en: '{{भू}} in {{लिट्}}: {{बभूव बभूवतुः बभूवुः}}, {{बभूविथ बभूवथुः बभूव}}, {{बभूव बभूविव बभूविम}}.'
+      hi: '{{भू}} का {{लिट्}}: {{बभूव बभूवतुः बभूवुः}}, {{बभूविथ बभूवथुः बभूव}}, {{बभूव बभूविव बभूविम}}।'
+    sutras:
+    - 3.2.115
+    - 6.1.8
+    - 6.1.1
+    - 7.4.62
+    tag: core
+    taught_in: lit.double#tb1
+  - skill: verb.lit
+    rule:
+      en: '{{गम्}}: {{जगाम जग्मतुः जग्मुः}}; {{वच्}}: {{उवाच ऊचतुः ऊचुः}}.'
+      hi: '{{गम्}}: {{जगाम जग्मतुः जग्मुः}}; {{वच्}}: {{उवाच ऊचतुः ऊचुः}}।'
+    tag: core
+    taught_in: lit.said#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: verb.lit
+    rule:
+      en: 'Use {{लिट्}} when a teller narrates what he did not see: epics, tales, old histories.'
+      hi: 'जब कथावाचक वह सुनाता है जो उसने नहीं देखा, तब {{लिट्}}: महाकाव्य, कथाएँ, पुराने इतिहास।'
+    tag: good
+    taught_in: lit.double#t1
+  - skill: verb.lit
+    rule:
+      en: Use {{लङ्}} for what you know yourself.
+      hi: जो आप स्वयं जानते हैं, उसके लिए {{लङ्}}।
+    tag: good
+    taught_in: lit.said#t2
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: verb.lit
+    rule:
+      en: '{{वच्}} gives {{उवाच}}, {{वस्}} (live) gives {{उवास}}: the {{व}} gives {{उ}}.'
+      hi: '{{वच्}} से {{उवाच}}, {{वस्}} (रहना) से {{उवास}}: {{व}} से {{उ}} बनता है।'
+    example:
+      sa: उवास
+      meaning:
+        en: he lived
+        hi: वह रहा
+      check:
+        type: tinanta
+        dhatu: वस्
+        lakara: Lit
+        purusha: Prathama
+        vacana: Eka
+    tag: rare
+    new_here: true
+  - skill: verb.lit
+    rule:
+      en: 'Many roots with a middle {{अ}} shorten and drop the doubling in the dual and plural: {{पठ्}} gives {{पपाठ}} but {{पेठतुः}}.'
+      hi: 'मध्य {{अ}} वाली कई धातुएँ द्विवचन और बहुवचन में छोटी होकर द्वित्व छोड़ देती हैं: {{पठ्}} से {{पपाठ}} पर {{पेठतुः}}।'
+    example:
+      sa: पेठतुः
+      meaning:
+        en: the two read
+        hi: दोनों ने पढ़ा
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lit
+        purusha: Prathama
+        vacana: Dvi
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: verb.lit
+    rule:
+      en: 'Do not use {{लिट्}} for today''s events: it is the unseen past.'
+      hi: 'आज की घटनाओं के लिए {{लिट्}} मत लीजिए: वह अदृष्ट भूत है।'
+    tag: core
+    taught_in: lit.said#t2
+  - skill: verb.lit
+    rule:
+      en: 'Do not forget the doubling: {{भूव}} is not a verb; {{बभूव}} is.'
+      hi: 'द्वित्व मत भूलिए: {{भूव}} क्रिया नहीं है; {{बभूव}} है।'
+    tag: core
+    taught_in: lit.double#p1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: verb.lit
+    rule:
+      en: '{{परोक्षे लिट्}}, {{लिटि धातोरनभ्यासस्य}}, {{एकाचो द्वे प्रथमस्य}} and {{कुहोश्चुः}}: the tense, the doubling and the {{ग}} → {{ज}}.'
+      hi: '{{परोक्षे लिट्}}, {{लिटि धातोरनभ्यासस्य}}, {{एकाचो द्वे प्रथमस्य}} और {{कुहोश्चुः}}: काल, द्वित्व और {{ग}} → {{ज}}।'
+    sutras:
+    - 3.2.115
+    - 6.1.8
+    - 6.1.1
+    - 7.4.62
+    tag: core
+    taught_in: lit.double#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: verb.lit
+    formula: बभूव · जगाम · चकार · पपाठ
+    rule:
+      en: story past
+      hi: कथा का भूतकाल
+    tag: core
+    taught_in: lit.double#tb1
+  - skill: verb.lit
+    formula: उवाच · ऊचतुः · ऊचुः
+    rule:
+      en: said
+      hi: कहा
+    tag: core
+    taught_in: lit.said#tb1

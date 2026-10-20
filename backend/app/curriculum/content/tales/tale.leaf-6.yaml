@@ -1,0 +1,1022 @@
+id: tale.leaf-6
+template: tale
+title:
+  en: The book written in blood
+  hi: रक्त से लिखी पुस्तक
+title_sa: गुणाढ्यकथा
+minutes: 8
+review: engine_ok
+sources:
+- title: Kathāsaritsāgara, taraṅgas 7 and 8 (Digital Corpus of Sanskrit files KSS, 1, 7 and KSS, 1, 8), the story retold in new, simple sentences with eight real half-verses and verses quoted
+  url: https://github.com/OliverHellwig/sanskrit
+  licence: CC BY 4.0
+  note: 'The plot follows Somadeva''s text: after hearing the great tale from Kāṇabhūti in the Vindhya forest, Guṇāḍhya writes it in the language of the ghosts, in his own blood, seven lakhs of verses in seven years; King Sātavāhana scorns it; Guṇāḍhya reads six of the seven tales leaf by leaf to the animals and burns them; the king, hearing of it from hunters, comes, asks for the tale, and takes the last lakh, the life of Naravāhanadatta. The quoted lines are Somadeva''s own words; the rest is new Sanskrit in the present tense. The last sentence, about ghosts who come late, is this course''s own story, not Somadeva''s.'
+cards:
+- id: r1
+  kind: reading
+  title:
+    en: Seven tales
+    hi: सात कथाएँ
+  depth: core
+  image:
+    brief: A lean bearded poet in white sitting under a banyan tree in a wild forest, a palm leaf on his knee, writing with his own finger in a shallow bowl of dark red; a stack of finished leaves beside him; small blue-lit spirits listening between the trunks; a tall dignified blue spirit, Kāṇabhūti, nearby; soft evening light.
+    alt:
+      en: A poet under a banyan writes on a palm leaf with a dark red liquid while blue spirits listen
+      hi: बरगद के नीचे गहरे लाल द्रव से ताड़पत्र पर लिखता कवि, सुनती नीली भूत
+    cast:
+    - gunadhya
+    - kanabhuti
+    place: vindhyavana
+    ratio: '4:3'
+    id: tale-leaf-6-r1
+  passage:
+  - sa: गुणाढ्यः महाकविः अटव्याम् वसति।
+    meaning:
+      en: Guṇāḍhya, the great poet, lives in the forest.
+      hi: महाकवि गुणाढ्य वन में रहता है।
+    words:
+    - sa: गुणाढ्यः
+      gloss:
+        en: Guṇāḍhya
+        hi: गुणाढ्य
+      check:
+        type: subanta
+        stem: गुणाढ्य
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: महाकविः
+      gloss:
+        en: the great poet
+        hi: महाकवि
+      check:
+        type: subanta
+        stem: महाकवि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अटव्याम्
+      gloss:
+        en: in the forest
+        hi: वन में
+      check:
+        type: subanta
+        stem: अटवी
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: वसति
+      gloss:
+        en: lives
+        hi: रहता है
+      check:
+        type: tinanta
+        dhatu: वस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः भूतभाषया कथाम् लिखति।
+    meaning:
+      en: He writes a story in the ghosts' language.
+      hi: वह भूतों की भाषा में कथा लिखता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: भूतभाषया
+      gloss:
+        en: in the ghosts' language
+        hi: भूतों की भाषा में
+      check:
+        type: subanta
+        stem: भूतभाषा
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: कथाम्
+      gloss:
+        en: a story
+        hi: कथा
+      check:
+        type: subanta
+        stem: कथा
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: लिखति
+      gloss:
+        en: writes
+        hi: लिखता है
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: मषी न अस्ति।
+    meaning:
+      en: There is no ink.
+      hi: स्याही नहीं है।
+    words:
+    - sa: मषी
+      gloss:
+        en: ink
+        hi: स्याही
+      check:
+        type: subanta
+        stem: मषी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: न
+      gloss:
+        en: not
+        hi: नहीं
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: मैतां विद्याधरा हार्षुर् इति ताम् आत्मशोणितैः अटव्यां मष्यभावाच् च लिलेख स महाकविः
+    meaning:
+      en: “So that the Vidyādharas should not carry it off, and for want of ink in the forest, that great poet wrote it with his own blood.” (Somadeva, Kathāsaritsāgara 1.8)
+      hi: “विद्याधर इसे न ले जाएँ, इसलिए, और वन में स्याही के अभाव में, उस महाकवि ने उसे अपने रक्त से लिखा।” (सोमदेव, कथासरित्सागर 1.8)
+    words:
+    - sa: मा
+      gloss:
+        en: lest
+        hi: ऐसा न हो कि
+    - sa: एताम्
+      gloss:
+        en: this
+        hi: इसे
+    - sa: विद्याधराः
+      gloss:
+        en: the Vidyādharas
+        hi: विद्याधर
+    - sa: हार्षुः
+      gloss:
+        en: carry off
+        hi: ले जाएँ
+    - sa: इति
+      gloss:
+        en: thus
+        hi: इसलिए
+    - sa: ताम्
+      gloss:
+        en: it
+        hi: उसे
+    - sa: आत्मशोणितैः
+      gloss:
+        en: with his own blood
+        hi: अपने रक्त से
+    - sa: अटव्याम्
+      gloss:
+        en: in the forest
+        hi: वन में
+    - sa: मष्यभावात्
+      gloss:
+        en: for want of ink
+        hi: स्याही के अभाव में
+    - sa: च
+      gloss:
+        en: and
+        hi: और
+    - sa: लिलेख
+      gloss:
+        en: wrote
+        hi: लिखा
+    - sa: सः
+      gloss:
+        en: he
+        hi: उसने
+    - sa: महाकविः
+      gloss:
+        en: the great poet
+        hi: महाकवि
+  - sa: पैशाच्या भाषया तया निबद्धा सप्तभिर् वर्षैर् ग्रन्थलक्षाणि सप्त सा
+    meaning:
+      en: '“In that language of the ghosts, composed in seven years: seven lakhs of verses.” (Somadeva, Kathāsaritsāgara 1.8)'
+      hi: '“भूतों की उस भाषा में, सात वर्षों में रची गई: सात लाख श्लोक।” (सोमदेव, कथासरित्सागर 1.8)'
+    words:
+    - sa: पैशाच्या
+      gloss:
+        en: in the Paiśācī
+        hi: पैशाची में
+    - sa: भाषया
+      gloss:
+        en: language
+        hi: भाषा
+    - sa: तया
+      gloss:
+        en: that
+        hi: उस
+    - sa: निबद्धा
+      gloss:
+        en: composed
+        hi: रची गई
+    - sa: सप्तभिः
+      gloss:
+        en: in seven
+        hi: सात
+    - sa: वर्षैः
+      gloss:
+        en: years
+        hi: वर्षों में
+    - sa: ग्रन्थलक्षाणि
+      gloss:
+        en: lakhs of verses
+        hi: लाख श्लोक
+    - sa: सप्त
+      gloss:
+        en: seven
+        hi: सात
+    - sa: सा
+      gloss:
+        en: it
+        hi: वह
+  - sa: सप्त कथाः भवन्ति।
+    meaning:
+      en: There are seven tales.
+      hi: सात कथाएँ हैं।
+    words:
+    - sa: सप्त
+      gloss:
+        en: seven
+        hi: सात
+    - sa: कथाः
+      gloss:
+        en: tales
+        hi: कथाएँ
+      check:
+        type: subanta
+        stem: कथा
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: भवन्ति
+      gloss:
+        en: are
+        hi: हैं
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+- id: r2
+  kind: reading
+  title:
+    en: The king's scorn
+    hi: राजा का तिरस्कार
+  depth: core
+  image:
+    brief: A pillared court hall in a stone city on a river; a proud young king in red and gold with a pearl necklace holding up a palm-leaf book at arm's length with a sneer; two young disciples in pale saffron standing back, the tall one stiff, the round-faced one near tears; sunlight through the pillars.
+    alt:
+      en: A king holds a palm-leaf book at arm's length with a sneer as two young disciples stand back
+      hi: पत्तों की पुस्तक को दूर से उपहास में थामे राजा, पीछे खड़े दो शिष्य
+    cast:
+    - satavahana
+    - gunadeva
+    - nandideva
+    place: pratishthana
+    ratio: '4:3'
+    id: tale-leaf-6-r2
+  passage:
+  - sa: शिष्यौ पुस्तकम् नयतः।
+    meaning:
+      en: The two disciples carry the book.
+      hi: दोनों शिष्य पुस्तक ले जाते हैं।
+    words:
+    - sa: शिष्यौ
+      gloss:
+        en: the two disciples
+        hi: दोनों शिष्य
+      check:
+        type: subanta
+        stem: शिष्य
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: पुस्तकम्
+      gloss:
+        en: the book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: नयतः
+      gloss:
+        en: carry
+        hi: ले जाते हैं
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+  - sa: राजा पुस्तकम् पश्यति।
+    meaning:
+      en: The king looks at the book.
+      hi: राजा पुस्तक को देखता है।
+    words:
+    - sa: राजा
+      gloss:
+        en: the king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पुस्तकम्
+      gloss:
+        en: the book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पश्यति
+      gloss:
+        en: looks at
+        hi: देखता है
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: प्रमाणं सप्तलक्षाणि पैशाचं नीरसं वचः शोणितेनाक्षरन्यासो धिक्पिशाचकथाम् इमाम्
+    meaning:
+      en: '“Its measure: seven lakhs, in the piśāca tongue, dull speech; the letters set down in blood: shame on this ghost-tale!” (the king, Kathāsaritsāgara 1.8)'
+      hi: '“इसका माप सात लाख, पिशाच-भाषा में, नीरस वचन; अक्षर रक्त से लिखे: इस पिशाच-कथा को धिक्कार!” (राजा, कथासरित्सागर 1.8)'
+    words:
+    - sa: प्रमाणम्
+      gloss:
+        en: its measure
+        hi: उसका माप
+    - sa: सप्तलक्षाणि
+      gloss:
+        en: seven lakhs
+        hi: सात लाख
+    - sa: पैशाचम्
+      gloss:
+        en: in the piśāca tongue
+        hi: पिशाच-भाषा का
+    - sa: नीरसम्
+      gloss:
+        en: dull
+        hi: नीरस
+    - sa: वचः
+      gloss:
+        en: speech
+        hi: वचन
+    - sa: शोणितेन
+      gloss:
+        en: with blood
+        hi: रक्त से
+    - sa: अक्षरन्यासः
+      gloss:
+        en: the setting down of letters
+        hi: अक्षरों का लिखा जाना
+    - sa: धिक्
+      gloss:
+        en: shame on
+        hi: धिक्कार
+    - sa: पिशाचकथाम्
+      gloss:
+        en: the ghost-tale
+        hi: पिशाच-कथा
+    - sa: इमाम्
+      gloss:
+        en: this
+        hi: इस
+  - sa: राजा निन्दति।
+    meaning:
+      en: The king mocks it.
+      hi: राजा निन्दा करता है।
+    words:
+    - sa: राजा
+      gloss:
+        en: the king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: निन्दति
+      gloss:
+        en: mocks
+        hi: निन्दा करता है
+      check:
+        type: tinanta
+        dhatu: निन्द्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: गुणाढ्यः खिन्नः भवति।
+    meaning:
+      en: Guṇāḍhya becomes downcast.
+      hi: गुणाढ्य उदास हो जाता है।
+    words:
+    - sa: गुणाढ्यः
+      gloss:
+        en: Guṇāḍhya
+        hi: गुणाढ्य
+      check:
+        type: subanta
+        stem: गुणाढ्य
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: खिन्नः
+      gloss:
+        en: downcast
+        hi: उदास
+      check:
+        type: subanta
+        stem: खिन्न
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: भवति
+      gloss:
+        en: becomes
+        hi: हो जाता है
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: तत्त्वज्ञेन कृतावज्ञः को नामान्तर् न तप्यते
+    meaning:
+      en: “Who, scorned by one who knows the truth, does not burn within?” (Somadeva, Kathāsaritsāgara 1.8)
+      hi: “तत्त्व जानने वाले से अपमानित होकर भला कौन भीतर नहीं जलता?” (सोमदेव, कथासरित्सागर 1.8)
+    words:
+    - sa: तत्त्वज्ञेन
+      gloss:
+        en: by one who knows the truth
+        hi: तत्त्व जानने वाले से
+    - sa: कृतावज्ञः
+      gloss:
+        en: scorned
+        hi: अपमानित
+    - sa: कः
+      gloss:
+        en: who
+        hi: कौन
+    - sa: नाम
+      gloss:
+        en: indeed
+        hi: भला
+    - sa: अन्तः
+      gloss:
+        en: within
+        hi: भीतर
+    - sa: न
+      gloss:
+        en: not
+        hi: नहीं
+    - sa: तप्यते
+      gloss:
+        en: burns
+        hi: जलता है
+- id: r3
+  kind: reading
+  title:
+    en: The fire in the forest
+    hi: वन की अग्नि
+  depth: core
+  image:
+    brief: A small clearing on a rocky rise at dusk; a lean bearded poet in white feeding palm leaves one by one into a square stone fire-pit, holding up a leaf as if reading aloud; two young disciples in pale saffron standing close, wet-eyed; a quiet ring of deer, boars and birds sitting very still, listening; thin smoke curling upward.
+    alt:
+      en: A poet burns palm leaves one by one in a fire-pit as deer and birds sit listening in a ring
+      hi: अग्निकुण्ड में एक-एक ताड़पत्र जलाता कवि, घेरे में चुपचाप सुनते मृग और पक्षी
+    cast:
+    - gunadhya
+    - gunadeva
+    - nandideva
+    place: agnikunda
+    ratio: '4:3'
+    id: tale-leaf-6-r3
+  passage:
+  - sa: गुणाढ्यः अग्निकुण्डम् करोति।
+    meaning:
+      en: Guṇāḍhya makes a fire-pit.
+      hi: गुणाढ्य अग्निकुण्ड बनाता है।
+    words:
+    - sa: गुणाढ्यः
+      gloss:
+        en: Guṇāḍhya
+        hi: गुणाढ्य
+      check:
+        type: subanta
+        stem: गुणाढ्य
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अग्निकुण्डम्
+      gloss:
+        en: a fire-pit
+        hi: अग्निकुण्ड
+      check:
+        type: subanta
+        stem: अग्निकुण्ड
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: करोति
+      gloss:
+        en: makes
+        hi: बनाता है
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः एकैकम् पत्रम् वाचयति।
+    meaning:
+      en: He reads out the leaves one by one.
+      hi: वह एक-एक पत्र पढ़कर सुनाता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: एकैकम्
+      gloss:
+        en: one by one
+        hi: एक-एक
+    - sa: पत्रम्
+      gloss:
+        en: leaf
+        hi: पत्र
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: वाचयति
+      gloss:
+        en: reads out
+        hi: पढ़कर सुनाता है
+      check:
+        type: tinanta
+        dhatu: वच्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+  - sa: सः पत्रम् अग्नौ क्षिपति।
+    meaning:
+      en: He throws the leaf into the fire.
+      hi: वह पत्र को आग में फेंकता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: पत्रम्
+      gloss:
+        en: the leaf
+        hi: पत्र को
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: अग्नौ
+      gloss:
+        en: into the fire
+        hi: आग में
+      check:
+        type: subanta
+        stem: अग्नि
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: क्षिपति
+      gloss:
+        en: throws
+        hi: फेंकता है
+      check:
+        type: tinanta
+        dhatu: क्षिप्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tudadi
+  - sa: तत्राग्नौ पत्त्रम् एकैकं शिष्याभ्यां साश्रु वीक्षितः वाचयित्वा स चिक्षेप श्रावयन् मृगपक्षिणः
+    meaning:
+      en: “There, watched tearfully by his two disciples, he read out the leaves one by one and threw each into the fire, letting the beasts and birds hear.” (Somadeva, Kathāsaritsāgara 1.8)
+      hi: “वहाँ, दोनों शिष्यों की आँसुओं भरी दृष्टि के बीच, उसने एक-एक पत्र पढ़कर आग में फेंका, मृगों और पक्षियों को सुनाते हुए।” (सोमदेव, कथासरित्सागर 1.8)
+    words:
+    - sa: तत्र
+      gloss:
+        en: there
+        hi: वहाँ
+    - sa: अग्नौ
+      gloss:
+        en: into the fire
+        hi: आग में
+    - sa: पत्रम्
+      gloss:
+        en: leaf
+        hi: पत्र
+    - sa: एकैकम्
+      gloss:
+        en: one by one
+        hi: एक-एक
+    - sa: शिष्याभ्याम्
+      gloss:
+        en: by his two disciples
+        hi: दोनों शिष्यों द्वारा
+    - sa: साश्रु
+      gloss:
+        en: tearfully
+        hi: आँसुओं के साथ
+    - sa: वीक्षितः
+      gloss:
+        en: watched
+        hi: देखा गया
+    - sa: वाचयित्वा
+      gloss:
+        en: having read out
+        hi: पढ़कर सुनाकर
+    - sa: सः
+      gloss:
+        en: he
+        hi: उसने
+    - sa: चिक्षेप
+      gloss:
+        en: threw
+        hi: फेंका
+    - sa: श्रावयन्
+      gloss:
+        en: letting hear
+        hi: सुनाते हुए
+    - sa: मृगपक्षिणः
+      gloss:
+        en: the beasts and birds
+        hi: मृग और पक्षी
+  - sa: मृगाः पक्षिणः च शृण्वन्ति।
+    meaning:
+      en: The deer and the birds listen.
+      hi: मृग और पक्षी सुनते हैं।
+    words:
+    - sa: मृगाः
+      gloss:
+        en: the deer
+        hi: मृग
+      check:
+        type: subanta
+        stem: मृग
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: पक्षिणः
+      gloss:
+        en: the birds
+        hi: पक्षी
+      check:
+        type: subanta
+        stem: पक्षिन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: च
+      gloss:
+        en: and
+        hi: और
+    - sa: शृण्वन्ति
+      gloss:
+        en: listen
+        hi: सुनते हैं
+      check:
+        type: tinanta
+        dhatu: श्रु
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - sa: परित्यक्ततृणाहाराः शृण्वन्तः साश्रुलोचनाः
+    meaning:
+      en: “Leaving their food of grass, listening with tearful eyes.” (Somadeva, Kathāsaritsāgara 1.8)
+      hi: “घास का भोजन छोड़कर, आँसू भरी आँखों से सुनते हुए।” (सोमदेव, कथासरित्सागर 1.8)
+    words:
+    - sa: परित्यक्ततृणाहाराः
+      gloss:
+        en: having left their grass-food
+        hi: घास का भोजन छोड़कर
+    - sa: शृण्वन्तः
+      gloss:
+        en: listening
+        hi: सुनते हुए
+    - sa: साश्रुलोचनाः
+      gloss:
+        en: with tearful eyes
+        hi: आँसू भरी आँखों वाले
+- id: r4
+  kind: reading
+  title:
+    en: The last lakh
+    hi: अन्तिम लाख
+  depth: core
+  image:
+    brief: 'The clearing at dawn: the fire burnt low, grey ash in the stone pit; the young king, humbled, kneeling before the lean bearded poet and holding out both hands; the poet offering a single small bundle of palm leaves; two disciples behind; a few small blue-lit ghosts at the clearing''s edge, arriving too late, watching from between the trees.'
+    alt:
+      en: A humbled king kneels and receives a last bundle of palm leaves from a poet beside a burnt-out fire
+      hi: बुझी आग के पास घुटनों पर राजा, कवि से ताड़पत्रों की अन्तिम गठरी लेता हुआ
+    cast:
+    - satavahana
+    - gunadhya
+    - gunadeva
+    - nandideva
+    - dhumaka
+    place: agnikunda
+    ratio: '4:3'
+    id: tale-leaf-6-r4
+  passage:
+  - sa: राजा गुणाढ्यम् प्रणमति।
+    meaning:
+      en: The king bows to Guṇāḍhya.
+      hi: राजा गुणाढ्य को प्रणाम करता है।
+    words:
+    - sa: राजा
+      gloss:
+        en: the king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गुणाढ्यम्
+      gloss:
+        en: Guṇāḍhya
+        hi: गुणाढ्य को
+      check:
+        type: subanta
+        stem: गुणाढ्य
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: प्रणमति
+      gloss:
+        en: bows to
+        hi: प्रणाम करता है
+      check:
+        type: tinanta
+        dhatu: नम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - प्र
+  - sa: राजा कथाम् इच्छति।
+    meaning:
+      en: The king wants the story.
+      hi: राजा कथा चाहता है।
+    words:
+    - sa: राजा
+      gloss:
+        en: the king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कथाम्
+      gloss:
+        en: the story
+        hi: कथा
+      check:
+        type: subanta
+        stem: कथा
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: इच्छति
+      gloss:
+        en: wants
+        hi: चाहता है
+      check:
+        type: tinanta
+        dhatu: इष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tudadi
+  - sa: राजन् षड्ग्रन्थलक्षाणि मया दग्धानि षट्कथाः लक्षम् एकम् इदं त्व् अस्ति कथैका सैव गृह्यताम्
+    meaning:
+      en: '“O king, six lakhs of verses, six tales, have been burnt by me; one lakh, this one tale, remains: let that one be taken.” (Somadeva, Kathāsaritsāgara 1.8)'
+      hi: '“हे राजन्, मैंने छह लाख श्लोक, छह कथाएँ, जला दिए हैं; यह एक लाख, एक कथा, बची है: वही ली जाए।” (सोमदेव, कथासरित्सागर 1.8)'
+    words:
+    - sa: राजन्
+      gloss:
+        en: O king
+        hi: हे राजन्
+    - sa: षड्ग्रन्थलक्षाणि
+      gloss:
+        en: six lakhs of verses
+        hi: छह लाख श्लोक
+    - sa: मया
+      gloss:
+        en: by me
+        hi: मेरे द्वारा
+    - sa: दग्धानि
+      gloss:
+        en: burnt
+        hi: जला दिए गए
+    - sa: षट्कथाः
+      gloss:
+        en: six tales
+        hi: छह कथाएँ
+    - sa: लक्षम्
+      gloss:
+        en: a lakh
+        hi: एक लाख
+    - sa: एकम्
+      gloss:
+        en: one
+        hi: एक
+    - sa: इदम्
+      gloss:
+        en: this
+        hi: यह
+    - sa: तु
+      gloss:
+        en: but
+        hi: पर
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+    - sa: कथा
+      gloss:
+        en: tale
+        hi: कथा
+    - sa: एका
+      gloss:
+        en: one
+        hi: एक
+    - sa: सा
+      gloss:
+        en: that
+        hi: वही
+    - sa: एव
+      gloss:
+        en: only
+        hi: ही
+    - sa: गृह्यताम्
+      gloss:
+        en: let it be taken
+        hi: ली जाए
+  - sa: राजा कथाम् गृह्णाति।
+    meaning:
+      en: The king takes the story.
+      hi: राजा कथा को ग्रहण करता है।
+    words:
+    - sa: राजा
+      gloss:
+        en: the king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कथाम्
+      gloss:
+        en: the story
+        hi: कथा को
+      check:
+        type: subanta
+        stem: कथा
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गृह्णाति
+      gloss:
+        en: takes
+        hi: ग्रहण करता है
+      check:
+        type: tinanta
+        dhatu: ग्रह्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Kryadi
+  - sa: अथ तां गुणाढ्यदत्ताम् आदाय कथां बृहत्कथां नाम्ना नृपतिर् अगान् निजनगरं नरवाहनदत्तचरितमयीम्
+    meaning:
+      en: Then the king, taking the story that Guṇāḍhya had given, named the Bṛhatkathā, made of the deeds of Naravāhanadatta, went to his own city. (Somadeva, Kathāsaritsāgara 1.8)
+      hi: तब राजा गुणाढ्य की दी हुई कथा को लेकर, जिसका नाम बृहत्कथा है, जो नरवाहनदत्त के चरित से बनी है, अपने नगर को गया। (सोमदेव, कथासरित्सागर 1.8)
+    words:
+    - sa: अथ
+      gloss:
+        en: then
+        hi: तब
+    - sa: ताम्
+      gloss:
+        en: that
+        hi: उस
+    - sa: गुणाढ्यदत्ताम्
+      gloss:
+        en: given by Guṇāḍhya
+        hi: गुणाढ्य की दी हुई
+    - sa: आदाय
+      gloss:
+        en: taking
+        hi: लेकर
+    - sa: कथाम्
+      gloss:
+        en: story
+        hi: कथा को
+    - sa: बृहत्कथाम्
+      gloss:
+        en: the Bṛhatkathā
+        hi: बृहत्कथा
+    - sa: नाम्ना
+      gloss:
+        en: by name
+        hi: नाम से
+    - sa: नृपतिः
+      gloss:
+        en: the king
+        hi: राजा
+    - sa: अगात्
+      gloss:
+        en: went
+        hi: गया
+    - sa: निजनगरम्
+      gloss:
+        en: to his own city
+        hi: अपने नगर को
+    - sa: नरवाहनदत्तचरितमयीम्
+      gloss:
+        en: made of the deeds of Naravāhanadatta
+        hi: नरवाहनदत्त के चरित से बनी
+  - sa: केचित् भूताः विलम्बेन आगच्छन्ति।
+    meaning:
+      en: Some ghosts come late.
+      hi: कुछ भूत देर से आते हैं।
+    words:
+    - sa: केचित्
+      gloss:
+        en: some
+        hi: कुछ
+    - sa: भूताः
+      gloss:
+        en: ghosts
+        hi: भूत
+      check:
+        type: subanta
+        stem: भूत
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: विलम्बेन
+      gloss:
+        en: late
+        hi: देर से
+      check:
+        type: subanta
+        stem: विलम्ब
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: आगच्छन्ति
+      gloss:
+        en: come
+        hi: आते हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+        prefixes:
+        - आ

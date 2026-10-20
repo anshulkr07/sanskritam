@@ -1,0 +1,166 @@
+id: calling.revision
+template: revision
+title:
+  en: Everything about calling and the eight cases
+  hi: पुकार और आठ विभक्तियाँ, सब कुछ
+title_sa: सम्बोधनसङ्ग्रहः
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: case.voc
+    formula: हे बालक!
+    rule:
+      en: A call is the stem, often after {{हे}}; it stands outside the sentence and does not change the verb.
+      hi: पुकार मूल रूप है, प्रायः {{हे}} के बाद; वह वाक्य से बाहर रहती है और क्रिया को नहीं बदलती।
+    sutras:
+    - 2.3.47
+    - 2.3.49
+    tag: core
+    taught_in: calling.he#t1
+  - skill: case.voc
+    formula: बालिके · नदि · कवे · गुरो · पितः
+    rule:
+      en: 'Changes in the call: -आ → {{ए}}, -ई → {{इ}}, -इ → {{ए}}, -उ → {{ओ}}, -ऋ → {{अः}}.'
+      hi: 'पुकार में परिवर्तन: -आ → {{ए}}, -ई → {{इ}}, -इ → {{ए}}, -उ → {{ओ}}, -ऋ → {{अः}}।'
+    tag: core
+    taught_in: calling.he#tb1
+  - skill: case.voc
+    rule:
+      en: 'The plural call looks like the first plural: {{हे बालकाः}}.'
+      hi: 'बहुवचन पुकार प्रथमा बहुवचन जैसी दिखती है: {{हे बालकाः}}।'
+    tag: core
+    taught_in: calling.he#t2
+  - skill: case.overview
+    formula: १ २ ३ ४ ५ ६ ७ ८
+    rule:
+      en: 'Eight cases: first to seventh and the call.'
+      hi: 'आठ विभक्तियाँ: प्रथमा से सप्तमी और सम्बोधन।'
+    tag: core
+    taught_in: calling.eight#tb1
+  - skill: case.overview
+    formula: कर्ता कर्म करणम् सम्प्रदानम् अपादानम् अधिकरणम्
+    rule:
+      en: 'Six kārakas: doer, object, means, recipient, source, locus; the sixth case is “the rest”.'
+      hi: 'छह कारक: कर्ता, कर्म, करण, सम्प्रदान, अपादान, अधिकरण; षष्ठी ‘शेष’ है।'
+    tag: core
+    taught_in: calling.eight#t1
+- id: conditions
+  kind: revision
+  title:
+    en: When it applies
+    hi: कब लागू होता है
+  depth: core
+  section: conditions
+  rows:
+  - skill: case.voc
+    rule:
+      en: 'Neuter words call like their first case ({{हे फल}}); the call of a word in -अन् or -वत् drops its {{त्}}: {{राजन्}}, {{भगवन्}}.'
+      hi: 'नपुंसक शब्द अपनी प्रथमा जैसे पुकारे जाते हैं ({{हे फल}}); -अन् या -वत् वाले शब्द की पुकार में {{त्}} हटता है: {{राजन्}}, {{भगवन्}}।'
+    example:
+      sa: फल
+      meaning:
+        en: O fruit!
+        hi: हे फल!
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Sambodhana
+        vacana: Eka
+    tag: good
+    new_here: true
+  - skill: case.overview
+    rule:
+      en: Every sentence combines roles, but most sentences use only two or three of them.
+      hi: हर वाक्य में भूमिकाएँ मिलती हैं, पर अधिकतर वाक्य उनमें से दो-तीन ही लेते हैं।
+    tag: good
+    taught_in: calling.eight#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: case.voc
+    rule:
+      en: '{{भोः}} (hey!) and {{अयि}} (O!) are calling words too; {{भोः}} often precedes a call: {{भोः आचार्य}}.'
+      hi: '{{भोः}} (अरे!) और {{अयि}} (अहो!) भी पुकार के शब्द हैं; {{भोः}} अक्सर पुकार से पहले आता है: {{भोः आचार्य}}।'
+    example:
+      sa: भोः आचार्य!
+      meaning:
+        en: hey, teacher!
+        hi: अरे आचार्य!
+    tag: good
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: case.voc
+    rule:
+      en: 'Do not call with the first case: {{हे बालिके}}, not {{हे बालिका}}.'
+      hi: 'पुकार के लिए प्रथमा मत लगाइए: {{हे बालिके}}, {{हे बालिका}} नहीं।'
+    tag: core
+    taught_in: calling.he#tb1
+  - skill: case.overview
+    rule:
+      en: 'Do not read the roles from word order: read them from the endings.'
+      hi: 'भूमिकाएँ शब्द-क्रम से मत पढ़िए: प्रत्ययों से पढ़िए।'
+    tag: core
+    taught_in: calling.eight#t1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: case.voc
+    rule:
+      en: '{{सम्बोधने च}}: address; {{एकवचनं सम्बुद्धिः}}: the singular ending of the call is {{सम्बुद्धिः}}.'
+      hi: '{{सम्बोधने च}}: सम्बोधन; {{एकवचनं सम्बुद्धिः}}: पुकार का एकवचन प्रत्यय {{सम्बुद्धिः}} है।'
+    sutras:
+    - 2.3.47
+    - 2.3.49
+    tag: core
+    taught_in: calling.he#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: case.voc
+    formula: हे + मूल रूप
+    rule:
+      en: calling
+      hi: पुकार
+    tag: core
+    taught_in: calling.he#tb1
+  - skill: case.overview
+    formula: १ से ८
+    rule:
+      en: eight cases
+      hi: आठ विभक्तियाँ
+    tag: core
+    taught_in: calling.eight#tb1

@@ -354,7 +354,8 @@ def parva_page(
             occs: list[rules.Occurrence] = []
             for yy in sorted(years):
                 try:
-                    occs += rules.occurrences(date_cls(yy, 1, 1), 366, place, trad)
+                    span = (date_cls(yy + 1, 1, 1) - date_cls(yy, 1, 1)).days
+                    occs += rules.occurrences(date_cls(yy, 1, 1), span, place, trad)
                 except Exception:
                     continue
         except Exception:
@@ -455,7 +456,8 @@ def parva_basic(
     occs: list[rules.Occurrence] = []
     for yy in sorted(years):
         try:
-            occs += rules.occurrences(date_cls(yy, 1, 1), 366, place, trad)
+            span = (date_cls(yy + 1, 1, 1) - date_cls(yy, 1, 1)).days
+            occs += rules.occurrences(date_cls(yy, 1, 1), span, place, trad)
         except Exception:
             continue
     best = _pick_occurrence(occs, slug, variant or "", date)

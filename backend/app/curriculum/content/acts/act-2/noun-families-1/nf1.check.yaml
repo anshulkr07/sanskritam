@@ -1,0 +1,191 @@
+id: nf1.check
+template: check
+title:
+  en: Name the family
+  hi: कुल के नाम बताइए
+title_sa: परीक्षा
+minutes: 5
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - noun.deva
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: The {{देव}} table.
+    hi: '{{देव}} की तालिका।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: देव
+      linga: Pum
+      blanks: 3
+    seed: 6
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - noun.deva
+  mode: choice
+  prompt:
+    en: “By trees.” Which form?
+    hi: ‘पेड़ों से।’ कौन-सा रूप?
+  explain:
+    en: 'Third case plural: {{ऐः}}.'
+    hi: 'तृतीया बहुवचन: {{ऐः}}।'
+  roman: after
+  options:
+  - sa: वृक्षेण
+  - sa: वृक्षाभ्याम्
+  - correct: true
+    sa: वृक्षैः
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - noun.phala
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: The {{फल}} table.
+    hi: '{{फल}} की तालिका।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: फल
+      linga: Napumsaka
+      blanks: 3
+    seed: 7
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - noun.phala
+  mode: choice
+  prompt:
+    en: Which neuter form is the plural?
+    hi: नपुंसक का बहुवचन कौन-सा रूप है?
+  explain:
+    en: '{{फलानि}}: plural.'
+    hi: '{{फलानि}}: बहुवचन।'
+  roman: after
+  options:
+  - sa: फले
+  - sa: फलम्
+  - correct: true
+    sa: फलानि
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - noun.lata
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: The {{लता}} table.
+    hi: '{{लता}} की तालिका।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: लता
+      linga: Stri
+      blanks: 3
+    seed: 8
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - noun.lata
+  mode: choice
+  prompt:
+    en: The call of {{बालिका}}?
+    hi: '{{बालिका}} की पुकार?'
+  explain:
+    en: '{{हे बालिके}}.'
+    hi: '{{हे बालिके}}।'
+  roman: after
+  options:
+  - sa: बालिका
+  - sa: बालिकाम्
+  - correct: true
+    sa: बालिके
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - noun.deva
+  - noun.phala
+  - noun.lata
+  mode: match
+  prompt:
+    en: Join each form to its case.
+    hi: हर रूप को उसकी विभक्ति से जोड़िए।
+  explain:
+    en: Three families, one grid.
+    hi: तीन कुल, एक तालिका।
+  roman: after
+  pairs:
+  - left:
+      sa: देवेन
+    right:
+      text:
+        en: 3rd
+        hi: तृतीया
+  - left:
+      sa: फलानि
+    right:
+      text:
+        en: plural
+        hi: बहुवचन
+  - left:
+      sa: लतायाम्
+    right:
+      text:
+        en: 7th
+        hi: सप्तमी
+  - left:
+      sa: देवैः
+    right:
+      text:
+        en: 3rd plural
+        hi: तृतीया बहुवचन
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - noun.deva
+  mode: order
+  prompt:
+    en: 'Say it for the green tree: “A god, two gods, gods.”'
+    hi: 'हरे पेड़ से कहिए: ‘एक देवता, दो देवता, अनेक देवता।’'
+  explain:
+    en: '{{देवः देवौ देवाः}}: the first case in three numbers.'
+    hi: '{{देवः देवौ देवाः}}: प्रथमा तीन वचनों में।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“देवः, देवौ, देवाः.” The tree of names bursts into leaf, every tag a green leaf, every leaf a name. Vṛkṣaka bows his crown of branches, and out of the rustling comes a clear voice: “देवः, देवौ, देवाः।” He tilts toward the shelves, where a trio of figures stands at the far end of the aisle: “कविः गुरुः पिता च सन्ति।”'
+      hi: '“देवः, देवौ, देवाः।” नामों का पेड़ पत्तों से भर उठता है, हर टैग हरा पत्ता, हर पत्ता एक नाम। वृक्षक अपनी शाखाओं का मुकुट झुकाता है, और सरसराहट से एक साफ़ आवाज़ आती है: “देवः, देवौ, देवाः।” वह अलमारियों की ओर झुकता है, जहाँ गलियारे के दूर छोर पर तीन आकृतियाँ खड़ी हैं: “कविः गुरुः पिता च सन्ति।”'
+    failure:
+      en: The tree waits. The same word, in three numbers.
+      hi: पेड़ प्रतीक्षा करता है। वही शब्द, तीन वचनों में।
+  tokens:
+  - देवः
+  - देवौ
+  - देवाः

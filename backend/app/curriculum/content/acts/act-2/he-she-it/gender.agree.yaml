@@ -1,0 +1,455 @@
+id: gender.agree
+template: scene
+title:
+  en: Words that agree
+  hi: मेल खाने वाले शब्द
+title_sa: विशेषणम्
+minutes: 6
+teaches:
+- gen.agreement
+needs:
+- gen.three
+- pron.tad
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Sweet, big, beautiful
+    hi: मीठा, बड़ा, सुन्दर
+  depth: core
+  image:
+    brief: The puppeteer's wife at her stall holding up a sweet fruit, a sweet cake and a doll of a pretty girl while Dādī listens with a raised finger; the small rainbow-coloured spirit on a lamp changing colour.
+    alt:
+      en: A stall-keeper describing her wares while a small colour-changing spirit watches
+      hi: अपना सामान बखानती दुकानदार और रंग बदलता नन्हा भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - rangaka
+    place: utsava
+    ratio: '4:3'
+    id: gender-agree-s1
+  narration:
+    en: The puppeteer's wife describes her wares. “A sweet fruit. A sweet cake. A beautiful girl.” Dādī listens carefully. “Do you hear it? The describing word changes shape to match what it describes.” The rainbow spirit, perched on a lamp, changes colour as each word goes by.
+    hi: कठपुतली वाले की पत्नी अपना सामान बखानती है। “मीठा फल। मीठी बर्फ़ी। सुन्दर बालिका।” दादी ध्यान से सुनती हैं। “सुनाई दिया? वर्णन करने वाला शब्द उसी के अनुसार रूप बदलता है जिसका वह वर्णन करता है।” दीपक पर बैठा इन्द्रधनुषी भूत हर शब्द के साथ रंग बदलता है।
+- id: t1
+  kind: teach
+  title:
+    en: Adjectives agree
+    hi: विशेषण मेल खाते हैं
+  depth: core
+  skills:
+  - gen.agreement
+  body:
+    en: A describing word, an adjective ({{विशेषणम्}}), agrees with its noun in gender, number and case. {{मधुरः}} {{बालकः}}, {{मधुरा}} {{बालिका}}, {{मधुरम्}} {{फलम्}}.
+    hi: वर्णन करने वाला शब्द, विशेषण, अपनी संज्ञा से लिंग, वचन और विभक्ति में मेल खाता है। {{मधुरः}} {{बालकः}}, {{मधुरा}} {{बालिका}}, {{मधुरम्}} {{फलम्}}।
+  examples:
+  - sa: मधुरः बालकः।
+    meaning:
+      en: a sweet boy
+      hi: एक मधुर बालक
+    words:
+    - sa: मधुरः
+      gloss:
+        en: sweet
+        hi: मीठा
+      check:
+        type: subanta
+        stem: मधुर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: मधुरा बालिका।
+    meaning:
+      en: a sweet girl
+      hi: एक मधुर बालिका
+    words:
+    - sa: मधुरा
+      gloss:
+        en: sweet
+        hi: मीठी
+      check:
+        type: subanta
+        stem: मधुरा
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालिका
+      gloss:
+        en: girl
+        hi: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: मधुरम् फलम्।
+    meaning:
+      en: a sweet fruit
+      hi: एक मीठा फल
+    words:
+    - sa: मधुरम्
+      gloss:
+        en: sweet
+        hi: मीठा
+      check:
+        type: subanta
+        stem: मधुर
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: फलम्
+      gloss:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  term:
+    sa: विशेषणम्
+    meaning:
+      en: 'an adjective: it describes a noun'
+      hi: 'विशेषण: संज्ञा का वर्णन करता है'
+- id: tb1
+  kind: table
+  title:
+    en: Adjectives in three genders
+    hi: तीन लिंगों में विशेषण
+  depth: core
+  skills:
+  - gen.agreement
+  caption:
+    en: Four adjectives, nominative singular
+    hi: चार विशेषण, प्रथमा एकवचन
+  columns:
+  - en: Meaning
+    hi: अर्थ
+  - en: Masculine
+    hi: पुंलिंग
+  - en: Feminine
+    hi: स्त्रीलिंग
+  - en: Neuter
+    hi: नपुंसक
+  rows:
+  - - text:
+        en: sweet
+        hi: मीठा
+    - sa: मधुरः
+      check:
+        type: subanta
+        stem: मधुर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: मधुरा
+      check:
+        type: subanta
+        stem: मधुरा
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: मधुरम्
+      check:
+        type: subanta
+        stem: मधुर
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - text:
+        en: black, dark
+        hi: काला
+    - sa: कृष्णः
+      check:
+        type: subanta
+        stem: कृष्ण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कृष्णा
+      check:
+        type: subanta
+        stem: कृष्णा
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कृष्णम्
+      check:
+        type: subanta
+        stem: कृष्ण
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - text:
+        en: white
+        hi: सफ़ेद
+    - sa: श्वेतः
+      check:
+        type: subanta
+        stem: श्वेत
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: श्वेता
+      check:
+        type: subanta
+        stem: श्वेता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: श्वेतम्
+      check:
+        type: subanta
+        stem: श्वेत
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - text:
+        en: new
+        hi: नया
+    - sa: नूतनः
+      check:
+        type: subanta
+        stem: नूतन
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नूतना
+      check:
+        type: subanta
+        stem: नूतना
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नूतनम्
+      check:
+        type: subanta
+        stem: नूतन
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  note:
+    en: 'Adjectives in -{{अ}} take the endings of {{देव}}, {{लता}} and {{फल}}: three genders, one stem.'
+    hi: '-{{अ}} वाले विशेषण {{देव}}, {{लता}} और {{फल}} के प्रत्यय लेते हैं: तीन लिंग, एक मूल।'
+- id: t2
+  kind: teach
+  title:
+    en: Number agrees too
+    hi: वचन भी मेल खाता है
+  depth: core
+  skills:
+  - gen.agreement
+  body:
+    en: 'The adjective follows its noun''s number as well: {{मधुरौ बालकौ}} (two sweet boys), {{मधुराः बालिकाः}}, {{मधुराणि फलानि}}.'
+    hi: 'विशेषण अपनी संज्ञा के वचन के अनुसार भी चलता है: {{मधुरौ बालकौ}} (दो मधुर बालक), {{मधुराः बालिकाः}}, {{मधुराणि फलानि}}।'
+  examples:
+  - sa: मधुरौ बालकौ।
+    meaning:
+      en: two sweet boys
+      hi: दो मधुर बालक
+    words:
+    - sa: मधुरौ
+      gloss:
+        en: sweet
+        hi: मीठे
+      check:
+        type: subanta
+        stem: मधुर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: बालकौ
+      gloss:
+        en: boys
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+  - sa: मधुराः बालिकाः।
+    meaning:
+      en: sweet girls
+      hi: मधुर बालिकाएँ
+    words:
+    - sa: मधुराः
+      gloss:
+        en: sweet
+        hi: मीठी
+      check:
+        type: subanta
+        stem: मधुरा
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: बालिकाः
+      gloss:
+        en: girls
+        hi: बालिकाएँ
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+  - sa: मधुराणि फलानि।
+    meaning:
+      en: sweet fruits
+      hi: मीठे फल
+    words:
+    - sa: मधुराणि
+      gloss:
+        en: sweet
+        hi: मीठे
+      check:
+        type: subanta
+        stem: मधुर
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: फलानि
+      gloss:
+        en: fruits
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Bahu
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - gen.agreement
+  mode: choice
+  prompt:
+    en: “A sweet girl.” Which adjective?
+    hi: ‘एक मधुर बालिका।’ कौन-सा विशेषण?
+  explain:
+    en: A feminine noun takes {{मधुरा}}.
+    hi: स्त्रीलिंग संज्ञा के लिए {{मधुरा}}।
+  roman: after
+  options:
+  - sa: मधुरः
+  - correct: true
+    sa: मधुरा
+  - sa: मधुरम्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - gen.agreement
+  mode: match
+  prompt:
+    en: Join each adjective to its noun.
+    hi: हर विशेषण को उसकी संज्ञा से जोड़िए।
+  explain:
+    en: Gender, number and case all match.
+    hi: लिंग, वचन और विभक्ति सब मेल खाते हैं।
+  roman: after
+  pairs:
+  - left:
+      sa: मधुरः
+    right:
+      sa: बालकः
+  - left:
+      sa: मधुरा
+    right:
+      sa: बालिका
+  - left:
+      sa: मधुरम्
+    right:
+      sa: फलम्
+  - left:
+      sa: मधुराणि
+    right:
+      sa: फलानि
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - gen.agreement
+  widget: mark_words
+  prompt:
+    en: Tap the adjective in each pair.
+    hi: हर जोड़ी में विशेषण को छुइए।
+  params:
+    passage:
+    - मधुरम्
+    - फलम्
+    - श्वेता
+    - लता
+    - नूतनः
+    - मार्गः
+    targets:
+    - मधुरम्
+    - श्वेता
+    - नूतनः
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: Describe it
+    hi: वर्णन कीजिए
+  depth: core
+  skills:
+  - gen.agreement
+  mode: choice
+  prompt:
+    en: '“A white flower”: {{पुष्पम्}} is neuter. Which?'
+    hi: '‘एक सफ़ेद फूल’: {{पुष्पम्}} नपुंसक है। कौन-सा?'
+  explain:
+    en: A neuter noun takes the neuter adjective {{श्वेतम्}}.
+    hi: नपुंसक संज्ञा के लिए नपुंसक विशेषण {{श्वेतम्}}।
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“श्वेतं पुष्पम्,” you say, and the multi-coloured spirit flushes white all over, like a petal. Then pink. Then gold: he cannot decide.'
+      hi: '“श्वेतं पुष्पम्,” आप कहते हैं, और इन्द्रधनुषी भूत पूरा फूल की पंखुड़ी-सा सफ़ेद हो जाता है। फिर गुलाबी। फिर सुनहरा: वह तय नहीं कर पाता।'
+    failure:
+      en: 'He stays grey. Neuter noun, neuter adjective: both end in {{अम्}}.'
+      hi: 'वह धूसर ही रहता है। नपुंसक संज्ञा, नपुंसक विशेषण: दोनों {{अम्}} पर समाप्त होते हैं।'
+  options:
+  - sa: श्वेतः पुष्पम्
+  - sa: श्वेता पुष्पम्
+  - correct: true
+    sa: श्वेतं पुष्पम्
+- id: sum
+  kind: summary
+  title:
+    en: Agreement
+    hi: मेल
+  depth: core
+  points:
+  - sa: मधुरः बालकः · मधुरा बालिका · मधुरं फलम्
+    text:
+      en: The adjective matches gender.
+      hi: विशेषण लिंग से मेल खाता है।
+  - sa: मधुरौ · मधुराः · मधुराणि
+    text:
+      en: …and number.
+      hi: …और वचन से।
+  - text:
+      en: …and, later, case.
+      hi: …और आगे चलकर विभक्ति से भी।

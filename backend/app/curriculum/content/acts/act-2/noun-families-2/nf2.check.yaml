@@ -1,0 +1,210 @@
+id: nf2.check
+template: check
+title:
+  en: Name the families
+  hi: कुलों के नाम बताइए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - noun.i-stems
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: The {{कवि}} table.
+    hi: '{{कवि}} की तालिका।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: कवि
+      linga: Pum
+      blanks: 3
+    seed: 8
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - noun.i-stems
+  mode: choice
+  prompt:
+    en: The call of {{कविः}}?
+    hi: '{{कविः}} की पुकार?'
+  explain:
+    en: '{{हे कवे}}.'
+    hi: '{{हे कवे}}।'
+  roman: after
+  options:
+  - sa: कविः
+  - sa: कविम्
+  - correct: true
+    sa: कवे
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - noun.u-stems
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: The {{गुरु}} table.
+    hi: '{{गुरु}} की तालिका।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: गुरु
+      linga: Pum
+      blanks: 3
+    seed: 9
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - noun.u-stems
+  mode: choice
+  prompt:
+    en: “By a teacher.” Which form?
+    hi: ‘गुरु से।’ कौन-सा रूप?
+  explain:
+    en: '{{गुरुणा}}.'
+    hi: '{{गुरुणा}}।'
+  roman: after
+  options:
+  - sa: गुरुना
+  - sa: गुरवे
+  - correct: true
+    sa: गुरुणा
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - noun.ii-uu
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: The {{नदी}} table.
+    hi: '{{नदी}} की तालिका।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: नदी
+      linga: Stri
+      blanks: 3
+    seed: 10
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - noun.ii-uu
+  mode: choice
+  prompt:
+    en: “Two rivers.” Which form?
+    hi: ‘दो नदियाँ।’ कौन-सा रूप?
+  explain:
+    en: '{{नद्यौ}}.'
+    hi: '{{नद्यौ}}।'
+  roman: after
+  options:
+  - sa: नद्यः
+  - correct: true
+    sa: नद्यौ
+  - sa: नदीः
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - noun.r-stems
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: The {{पितृ}} table.
+    hi: '{{पितृ}} की तालिका।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: पितृ
+      linga: Pum
+      blanks: 3
+    seed: 11
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - noun.r-stems
+  - noun.i-stems
+  mode: match
+  prompt:
+    en: Join each form to its case and number.
+    hi: हर रूप को उसकी विभक्ति और वचन से जोड़िए।
+  explain:
+    en: Four families, one grid.
+    hi: चार कुल, एक तालिका।
+  roman: after
+  pairs:
+  - left:
+      sa: पितरः
+    right:
+      text:
+        en: 1st, many
+        hi: प्रथमा, अनेक
+  - left:
+      sa: पित्रा
+    right:
+      text:
+        en: 3rd, one
+        hi: तृतीया, एक
+  - left:
+      sa: मातुः
+    right:
+      text:
+        en: 5th or 6th, one
+        hi: पञ्चमी या षष्ठी, एक
+  - left:
+      sa: दाता
+    right:
+      text:
+        en: 1st, one
+        hi: प्रथमा, एक
+- id: p9
+  kind: practice
+  depth: core
+  skills:
+  - noun.i-stems
+  mode: order
+  prompt:
+    en: 'Recite for the poet spirit: “A poet, two poets, poets.”'
+    hi: 'कवि-भूत को सुनाइए: ‘एक कवि, दो कवि, अनेक कवि।’'
+  explain:
+    en: '{{कविः कवी कवयः}}: the first case in three numbers.'
+    hi: '{{कविः कवी कवयः}}: प्रथमा तीन वचनों में।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“कविः, कवी, कवयः.” The ink-stained spirit takes his pen from behind his ear and writes the three words in the air, in a bright line that stays. “कविः कवी कवयः,” he reads, and then, as if giving a gift: “एकं पत्रम्, द्वे पत्रे, त्रीणि पत्राणि.” The bright line bends into a count, and goes out through the library window into the dark.'
+      hi: '“कविः, कवी, कवयः।” स्याही से सना भूत कान के पीछे से कलम निकालकर हवा में तीनों शब्द एक चमकती रेखा में लिखता है जो टिकी रहती है। “कविः कवी कवयः,” वह पढ़ता है, और फिर मानो उपहार देते हुए: “एकं पत्रम्, द्वे पत्रे, त्रीणि पत्राणि।” चमकती रेखा एक गिनती में मुड़ती है और पुस्तकालय की खिड़की से अँधेरे में निकल जाती है।'
+    failure:
+      en: The line will not hold. The same word, in the first case, in three numbers.
+      hi: रेखा नहीं टिकती। वही शब्द, प्रथमा में, तीन वचनों में।
+  tokens:
+  - कविः
+  - कवी
+  - कवयः

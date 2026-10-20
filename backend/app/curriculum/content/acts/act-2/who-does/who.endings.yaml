@@ -1,0 +1,302 @@
+id: who.endings
+template: scene
+title:
+  en: Endings do the work
+  hi: प्रत्यय ही काम करते हैं
+title_sa: सुप्तिङन्तम्
+minutes: 6
+teaches:
+- sent.stem-ending
+needs:
+- read.words
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Dawn at the ghat
+    hi: घाट पर भोर
+  depth: core
+  image:
+    brief: 'Dawn on the stone ghat steps of a calm river: people bathing, a boy reading on the steps, and on the lowest step a small grey-blue spirit like river mist with his feet in the water, pointing; you, Dādī and Śuka coming down the steps.'
+    alt:
+      en: Dawn at the river steps with a boy reading and a small mist-spirit pointing
+      hi: 'भोर में नदी की सीढ़ियाँ: पढ़ता बालक और इशारा करता नन्हा भूत'
+    cast:
+    - you
+    - dadi
+    - shuka
+    - ghataka
+    place: naditira
+    ratio: '4:3'
+    id: who-endings-s1
+  narration:
+    en: Dawn at the river ghats. Wide stone steps run down to the water, and people wash, read and sing. On the lowest step a small grey-blue spirit sits with his feet in the river. He points at a boy reading, then at you. “A sentence,” says Dādī. “Your first.”
+    hi: नदी के घाट पर भोर है। चौड़ी पत्थर की सीढ़ियाँ पानी तक उतरती हैं, और लोग नहाते, पढ़ते और गाते हैं। सबसे निचली सीढ़ी पर एक नन्हा नीला-भूरा भूत पैर नदी में डाले बैठा है। वह पढ़ते हुए बालक की ओर, फिर आपकी ओर इशारा करता है। दादी कहती हैं, “एक वाक्य। तुम्हारा पहला।”
+  lines:
+  - speaker: dadi
+    sa: बालकः पठति।
+    gloss:
+      en: A boy reads.
+      hi: एक बालक पढ़ता है।
+- id: t1
+  kind: teach
+  title:
+    en: A word is a stem and an ending
+    hi: शब्द = मूल + प्रत्यय
+  depth: core
+  skills:
+  - sent.stem-ending
+  body:
+    en: Every Sanskrit word is a stem plus an ending, and the ending does the work. {{बालक}} (boy) with {{ः}} is {{बालकः}}. {{पठ्}} (read) with {{ति}} is {{पठति}}. The stem carries the meaning; the ending says the job.
+    hi: संस्कृत का हर शब्द मूल रूप और प्रत्यय से बनता है, और प्रत्यय ही काम करता है। {{बालक}} में {{ः}} लगा तो {{बालकः}}। {{पठ्}} में {{ति}} लगा तो {{पठति}}। मूल रूप अर्थ देता है; प्रत्यय बताता है कि शब्द का काम क्या है।
+  examples:
+  - sa: पठति
+    meaning:
+      en: '{{पठ्}} + {{ति}}: he reads'
+      hi: '{{पठ्}} + {{ति}}: वह पढ़ता है'
+    check:
+      type: tinanta
+      dhatu: पठ्
+      lakara: Lat
+      purusha: Prathama
+      vacana: Eka
+  steps:
+  - sa: बालक
+    label:
+      en: 'stem: boy'
+      hi: 'मूल रूप: बालक'
+  - sa: ः
+    label:
+      en: 'ending: the doer'
+      hi: 'प्रत्यय: कर्ता'
+  - sa: बालकः
+    label:
+      en: 'word: the boy (who does)'
+      hi: 'शब्द: बालक (जो करता है)'
+- id: tb1
+  kind: table
+  title:
+    en: One stem, four endings
+    hi: एक मूल, चार प्रत्यय
+  depth: core
+  skills:
+  - sent.stem-ending
+  caption:
+    en: The same stem with different endings
+    hi: वही मूल रूप, अलग-अलग प्रत्यय
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: Ending
+    hi: प्रत्यय
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: बालकः
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: ः
+    - text:
+        en: the boy, who does
+        hi: बालक, जो करता है
+  - - sa: बालकम्
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: म्
+    - text:
+        en: the boy, acted on
+        hi: बालक, जिस पर क्रिया होती है
+  - - sa: बालकौ
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: औ
+    - text:
+        en: two boys
+        hi: दो बालक
+  - - sa: बालकाः
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: आः
+    - text:
+        en: many boys
+        hi: अनेक बालक
+  note:
+    en: The ending tells the job and the number. Word order does not.
+    hi: प्रत्यय काम और संख्या बताता है। शब्दों का क्रम नहीं।
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sent.stem-ending
+  widget: mark_words
+  prompt:
+    en: Tap every verb. Verbs end in {{ति}}.
+    hi: हर क्रिया को छुइए। क्रियाएँ {{ति}} पर समाप्त होती हैं।
+  params:
+    passage:
+    - बालकः
+    - पठति
+    - फलम्
+    - हसति
+    - नदी
+    - गच्छति
+    targets:
+    - पठति
+    - हसति
+    - गच्छति
+  roman: show
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sent.stem-ending
+  mode: choice
+  prompt:
+    en: Which part of {{बालकः}} is the ending?
+    hi: '{{बालकः}} में प्रत्यय कौन-सा भाग है?'
+  explain:
+    en: '{{बालक}} is the stem; {{ः}} is the ending.'
+    hi: '{{बालक}} मूल है; {{ः}} प्रत्यय है।'
+  roman: after
+  options:
+  - sa: बा
+  - sa: लक
+  - correct: true
+    sa: ः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sent.stem-ending
+  mode: match
+  prompt:
+    en: Join each word to its stem.
+    hi: हर शब्द को उसके मूल रूप से जोड़िए।
+  explain:
+    en: Take off the ending to find the stem.
+    hi: प्रत्यय हटाइए तो मूल रूप मिल जाता है।
+  roman: after
+  pairs:
+  - left:
+      sa: बालकः
+    right:
+      sa: बालक
+  - left:
+      sa: पठति
+    right:
+      sa: पठ्
+  - left:
+      sa: लिखति
+    right:
+      sa: लिख्
+  - left:
+      sa: हसति
+    right:
+      sa: हस्
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sent.stem-ending
+  mode: choice
+  prompt:
+    en: In {{बालकः पठति}}, which word shows who is reading?
+    hi: '{{बालकः पठति}} में कौन-सा शब्द बताता है कि कौन पढ़ रहा है?'
+  explain:
+    en: The ending {{ः}} marks the doer, wherever the word stands.
+    hi: प्रत्यय {{ः}} कर्ता को चिह्नित करता है, शब्द कहीं भी खड़ा हो।
+  roman: show
+  options:
+  - correct: true
+    text:
+      en: '{{बालकः}}, by its ending {{ः}}'
+      hi: '{{बालकः}}, अपने प्रत्यय {{ः}} से'
+  - text:
+      en: '{{पठति}}, because it comes last'
+      hi: '{{पठति}}, क्योंकि वह अन्त में है'
+- id: p4
+  kind: practice
+  title:
+    en: Your first sentence
+    hi: आपका पहला वाक्य
+  depth: core
+  skills:
+  - sent.stem-ending
+  mode: order
+  prompt:
+    en: 'Say it for the spirit: put the two words in order, doer first.'
+    hi: 'भूत के लिए बोलिए: दो शब्द क्रम में लगाइए, पहले कर्ता।'
+  explain:
+    en: '{{बालकः पठति}}: the boy reads.'
+    hi: '{{बालकः पठति}}: बालक पढ़ता है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “बालकः पठति,” you say. The small spirit's outline firms up like wet sand. He claps two foggy hands.
+      hi: “बालकः पठति,” आप कहते हैं। नन्हे भूत की आकृति गीली रेत की तरह ठोस हो जाती है। वह दो धुँधले हाथों से ताली बजाता है।
+    failure:
+      en: The spirit tilts his head. Start with the word that does the reading.
+      hi: भूत सिर टेढ़ा करता है। पहले वह शब्द रखिए जो पढ़ता है।
+  tokens:
+  - बालकः
+  - पठति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's definition of a word
+    hi: पद की पाणिनि-परिभाषा
+  depth: panini
+  skills:
+  - sent.stem-ending
+  sutras:
+  - 1.4.14
+  body:
+    en: 'Sūtra 1.4.14, {{सुप्तिङन्तं पदम्}}: a word ({{पदम्}}) is what ends in a noun ending ({{सुप्}}) or a verb ending ({{तिङ्}}). So {{बालकः}} and {{पठति}} are words; the bare stems {{बालक}} and {{पठ्}} are not yet.'
+    hi: 'सूत्र 1.4.14, {{सुप्तिङन्तं पदम्}}: पद वह है जो सुप् (नाम का प्रत्यय) या तिङ् (क्रिया का प्रत्यय) पर समाप्त हो। इसलिए {{बालकः}} और {{पठति}} पद हैं; केवल मूल {{बालक}} और {{पठ्}} अभी पद नहीं।'
+  term:
+    sa: पदम्
+    meaning:
+      en: 'a word: stem + ending'
+      hi: 'पद: मूल + प्रत्यय'
+- id: sum
+  kind: summary
+  title:
+    en: Stems and endings
+    hi: मूल और प्रत्यय
+  depth: core
+  points:
+  - sa: बालक + ः
+    text:
+      en: A word is a stem plus an ending.
+      hi: शब्द = मूल + प्रत्यय।
+  - sa: पठ् + ति
+    text:
+      en: Verbs take their own endings.
+      hi: क्रियाओं के अपने प्रत्यय होते हैं।
+  - text:
+      en: The ending, not the place, tells the job.
+      hi: काम प्रत्यय बताता है, स्थान नहीं।

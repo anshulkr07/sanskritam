@@ -1,0 +1,338 @@
+id: c2.long
+template: scene
+title:
+  en: Long compounds
+  hi: लम्बे समास
+title_sa: सूर्यकोटिसमाभासः
+minutes: 6
+teaches:
+- sam.long
+needs:
+- sam.avyayibhava
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The twenty-first statue
+    hi: इक्कीसवीं प्रतिमा
+  depth: core
+  image:
+    brief: The twenty-first statue wearing a long garland of carved stone flowers, each a different shape, trailing to the floor; Śuka counting on his claws; Dādī tracing the garland from its last flower back to its first; Lubdhaka's foreman following her finger.
+    alt:
+      en: A statue wears a long stone garland while an old woman traces it from the last flower to the first
+      hi: लम्बी पत्थर की माला पहने प्रतिमा, अन्तिम फूल से पहले तक उसे खोजती दादी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - malika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: c2-long-s1
+  narration:
+    en: 'The twenty-first statue wears a garland of stone flowers trailing to the floor, each a different shape. “सूर्यकोटिसमाभासः,” she says, and takes a breath. “One word: ‘shining like ten million suns’.” Śuka counts on his claws. “Five pieces!” “Read it from the end,” says Dādī. “The last member gives the case and gender. Then take each piece from the right.”'
+    hi: इक्कीसवीं प्रतिमा पत्थर के फूलों की माला पहने है जो ज़मीन तक लटकती है, और हर फूल का रूप अलग है। “सूर्यकोटिसमाभासः,” वह कहती है, और साँस लेती है। “यह एक शब्द है। इसका अर्थ है ‘करोड़ सूर्यों-सा चमकने वाला’।” शुक पंजों पर गिनता है। “पाँच टुकड़े!” “अन्त से पढ़िए,” दादी कहती हैं। “अन्तिम सदस्य विभक्ति और लिंग देता है। फिर हर टुकड़े को दाईं ओर से लीजिए।”
+  quote:
+    sa: सूर्यकोटिसमाभासो विद्युज्ज्योतिःसमप्रभः
+    gloss:
+      en: Shining like ten million suns, radiant like the light of lightning.
+      hi: करोड़ सूर्यों-सा चमकने वाला, बिजली की ज्योति-सी प्रभा वाला।
+    source: Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit)
+- id: t1
+  kind: teach
+  title:
+    en: Read from the end
+    hi: अन्त से पढ़िए
+  depth: core
+  skills:
+  - sam.long
+  body:
+    en: 'A long compound is built from the left, so read it from the right. First, the last member gives the ending and gender. Then take the compound in two big halves, and again in halves, until each is a single word. Finally decide each join: and, of, describing, whose.'
+    hi: 'लम्बा समास बाईं ओर से बनता है, इसलिए उसे दाईं ओर से पढ़िए। पहले, अन्तिम सदस्य प्रत्यय और लिंग देता है। फिर समास को दो बड़े भागों में लीजिए, फिर और दो-दो भागों में, जब तक हर एक एक शब्द न रह जाए। अन्त में हर जोड़ को पहचानिए: और, का, वर्णन, जिसका।'
+  term:
+    sa: समासविग्रहः
+    meaning:
+      en: unpacking a compound
+      hi: समास को खोलना
+- id: tb1
+  kind: table
+  title:
+    en: Unpacking a long compound
+    hi: लम्बे समास को खोलना
+  depth: core
+  skills:
+  - sam.long
+  caption:
+    en: From the end to the beginning
+    hi: अन्त से शुरू तक
+  columns:
+  - en: Step
+    hi: चरण
+  - en: What you do
+    hi: क्या करें
+  - en: Result
+    hi: परिणाम
+  rows:
+  - - text:
+        en: '1'
+        hi: १
+    - text:
+        en: Take the last member
+        hi: अन्तिम सदस्य लीजिए
+    - text:
+        en: 'आभासः: shining'
+        hi: 'आभासः: चमकने वाला'
+  - - text:
+        en: '2'
+        hi: २
+    - text:
+        en: Cut the rest in two
+        hi: शेष को दो में काटिए
+    - sa: सूर्यकोटिसम + आभासः
+  - - text:
+        en: '3'
+        hi: ३
+    - text:
+        en: Cut again
+        hi: फिर काटिए
+    - sa: सूर्यकोटिः + सम + आभासः
+  - - text:
+        en: '4'
+        hi: ४
+    - text:
+        en: Cut the first part
+        hi: पहले भाग को काटिए
+    - sa: सूर्य + कोटिः + सम + आभासः
+  - - text:
+        en: '5'
+        hi: ५
+    - text:
+        en: Decide the joins
+        hi: जोड़ तय कीजिए
+    - text:
+        en: “whose brilliance is like ten million suns”
+        hi: ‘जिसकी चमक करोड़ सूर्यों-सी है’
+  note:
+    en: 'The whole compound is a bahuvrīhi: it names the king.'
+    hi: 'पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।'
+- id: r1
+  kind: reading
+  title:
+    en: A long chain, read
+    hi: एक लम्बी श्रृंखला, पढ़ी हुई
+  depth: core
+  skills:
+  - sam.long
+  image:
+    brief: A long garland of carved stone flowers laid along a table, each flower holding one tiny Sanskrit syllable-group; a brass lamp beside it; ink-and-watercolour illustration, soft ivory paper.
+    alt:
+      en: A long stone garland laid on a table, each flower holding a word
+      hi: मेज़ पर फैली पत्थर के फूलों की लम्बी माला, हर फूल में एक शब्द
+    cast:
+    - dadi
+    place: simhasana-shala
+    ratio: '4:3'
+    id: c2-long-r1
+  passage:
+  - sa: सूर्यकोटिसमाभासो विद्युज्ज्योतिःसमप्रभः
+    meaning:
+      en: “Shining like ten million suns, radiant like the light of lightning.” (Vetālapañcaviṃśatikā, introduction)
+      hi: “करोड़ सूर्यों-सा चमकने वाला, बिजली की ज्योति-सी प्रभा वाला।” (वेतालपञ्चविंशतिका, भूमिका)
+    words:
+    - sa: सूर्यकोटिसमाभासः
+      gloss:
+        en: shining like ten million suns
+        hi: करोड़ सूर्यों-सा चमकने वाला
+    - sa: विद्युज्ज्योतिःसमप्रभः
+      gloss:
+        en: radiant like the light of lightning
+        hi: बिजली की ज्योति-सी प्रभा वाला
+  - sa: मृणालनालललितभुजा पीनस्तनोज्ज्वला
+    meaning:
+      en: “Her arms graceful like lotus-stalks, shining with a full figure.” (Kathāsaritsāgara 1.4)
+      hi: “कमलनाल-सी सुकोमल भुजाओं वाली, भरे वक्ष से दीप्त।” (कथासरित्सागर 1.4)
+    words:
+    - sa: मृणालनालललितभुजा
+      gloss:
+        en: arms graceful as a lotus-stalk
+        hi: कमलनाल-सी सुकोमल भुजाओं वाली
+    - sa: पीनस्तनोज्ज्वला
+      gloss:
+        en: shining with a full figure
+        hi: भरे वक्ष से दीप्त
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sam.long
+  mode: choice
+  prompt:
+    en: To unpack a long compound, start…
+    hi: लम्बे समास को खोलने के लिए शुरू कीजिए…
+  explain:
+    en: The last member gives the ending and gender.
+    hi: अन्तिम सदस्य प्रत्यय और लिंग देता है।
+  roman: after
+  options:
+  - text:
+      en: from the first member
+      hi: पहले सदस्य से
+  - correct: true
+    text:
+      en: from the last member
+      hi: अन्तिम सदस्य से
+  - text:
+      en: from the middle
+      hi: बीच से
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sam.long
+  mode: match
+  prompt:
+    en: Join each long compound to its meaning.
+    hi: हर लम्बे समास को उसके अर्थ से जोड़िए।
+  explain:
+    en: All four describe a person.
+    hi: चारों किसी व्यक्ति का वर्णन करते हैं।
+  roman: after
+  pairs:
+  - left:
+      sa: सूर्यकोटिसमाभासः
+    right:
+      text:
+        en: shining like ten million suns
+        hi: करोड़ सूर्यों-सा चमकने वाला
+  - left:
+      sa: विद्युज्ज्योतिःसमप्रभः
+    right:
+      text:
+        en: radiant like lightning
+        hi: बिजली-सी प्रभा वाला
+  - left:
+      sa: मृणालनालललितभुजा
+    right:
+      text:
+        en: arms graceful as a lotus-stalk
+        hi: कमलनाल-सी भुजाओं वाली
+  - left:
+      sa: पीनस्तनोज्ज्वला
+    right:
+      text:
+        en: shining with a full figure
+        hi: भरे वक्ष से दीप्त
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sam.long
+  widget: mark_words
+  prompt:
+    en: Tap the long compounds.
+    hi: लम्बे समास छुइए।
+  params:
+    passage:
+    - सूर्यकोटिसमाभासः
+    - राजा
+    - विद्युज्ज्योतिःसमप्रभः
+    - नगरम्
+    - पीनस्तनोज्ज्वला
+    - बालिका
+    targets:
+    - सूर्यकोटिसमाभासः
+    - विद्युज्ज्योतिःसमप्रभः
+    - पीनस्तनोज्ज्वला
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sam.long
+  mode: order
+  prompt:
+    en: 'Order the steps of unpacking: first the last member, then cut, then decide.'
+    hi: 'खोलने के चरणों को क्रम दीजिए: पहले अन्तिम सदस्य, फिर काटना, फिर तय करना।'
+  explain:
+    en: '{{अन्तिमः छेदः निर्णयः}}: the last member, the cuts, the decision.'
+    hi: '{{अन्तिमः छेदः निर्णयः}}: अन्तिम सदस्य, काटना, निर्णय।'
+  roman: after
+  tokens:
+  - अन्तिमः
+  - छेदः
+  - निर्णयः
+- id: p4
+  kind: practice
+  title:
+    en: The garland
+    hi: माला
+  depth: core
+  skills:
+  - sam.long
+  mode: choice
+  prompt:
+    en: '{{पीनस्तनोज्ज्वला}} ends in {{-ज्ज्वला}}. This tells you it is…'
+    hi: '{{पीनस्तनोज्ज्वला}} {{-ज्ज्वला}} पर समाप्त होता है। इससे पता चलता है कि यह है…'
+  explain:
+    en: The last member {{उज्ज्वला}} is feminine.
+    hi: अन्तिम सदस्य {{उज्ज्वला}} स्त्रीलिंग है।
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“सूर्यकोटिसमाभासः,” you say, and the twenty-first statue slips her garland over her head and lays it on the plinth. It is not stone but a chain of small, perfect, separate flowers, and you read it, from the end, flower by flower: shining, like, ten million, sun. When you reach the first, the garland begins to glow, quietly, the colour of her sandstone, rose. “That was my name,” she says, “and my work: to hold a long thing together.”'
+      hi: '“सूर्यकोटिसमाभासः,” आप कहते हैं, और इक्कीसवीं प्रतिमा अपनी माला सिर से उतारकर आसन पर रख देती है। वह पत्थर की नहीं, छोटे, पूर्ण, अलग-अलग फूलों की श्रृंखला है, और आप उसे अन्त से, फूल-फूल पढ़ते हैं: चमकने वाला, जैसा, करोड़, सूर्य। जब आप पहले तक पहुँचते हैं, माला हल्के-हल्के चमकने लगती है, उसके बलुआ पत्थर के रंग में, गुलाबी। “यही मेरा नाम था,” वह कहती है, “और मेरा काम: लम्बी चीज़ को साथ थामना।”'
+    failure:
+      en: 'The garland stays stone. The last member is feminine: {{उज्ज्वला}}.'
+      hi: 'माला पत्थर रहती है। अन्तिम सदस्य स्त्रीलिंग है: {{उज्ज्वला}}।'
+  options:
+  - text:
+      en: masculine
+      hi: पुंलिंग
+  - text:
+      en: neuter
+      hi: नपुंसक
+  - correct: true
+    text:
+      en: feminine, describing a woman
+      hi: स्त्रीलिंग, स्त्री का वर्णन करता
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's long compounds
+    hi: पाणिनि के लम्बे समास
+  depth: panini
+  skills:
+  - sam.long
+  sutras:
+  - 2.1.3
+  - 2.2.30
+  body:
+    en: Sūtra 2.1.3, {{प्राक् कडारात् समासः}}, says compounding is allowed before {{कडार}} in the order of the sūtras, which gives the grammar's own order of types. And 2.2.30, {{उपसर्जनं पूर्वम्}}, puts the subordinate member first. Long compounds are made by repeating the same rules.
+    hi: सूत्र 2.1.3, {{प्राक् कडारात् समासः}}, कहता है कि {{कडार}} से पहले तक समास की अनुमति है, जिससे व्याकरण के अपने प्रकारों का क्रम मिलता है। और 2.2.30, {{उपसर्जनं पूर्वम्}}, गौण सदस्य को पहले रखता है। लम्बे समास उन्हीं नियमों को दोहराने से बनते हैं।
+- id: sum
+  kind: summary
+  title:
+    en: Long compounds
+    hi: लम्बे समास
+  depth: core
+  points:
+  - sa: सूर्यकोटिसमाभासः
+    text:
+      en: Shining like ten million suns.
+      hi: करोड़ सूर्यों-सा चमकने वाला।
+  - sa: अन्त से
+    text:
+      en: Start at the last member.
+      hi: अन्तिम सदस्य से शुरू कीजिए।
+  - text:
+      en: Cut in halves, then decide the joins.
+      hi: दो-दो भागों में काटिए, फिर जोड़ तय कीजिए।

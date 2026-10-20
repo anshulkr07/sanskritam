@@ -19,12 +19,13 @@ import { useGuideLang } from "../hooks/useGuide";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useTypeScale } from "../hooks/useTypeScale";
 import { useQuery } from "../hooks/useQuery";
-import LearnV2CardView from "../learnv2/LearnCard";
+import LearnV2CardView, { lessonArtworkSources } from "../learnv2/LearnCard";
 import { getLearnV2Lesson } from "../learnv2/catalogue";
 import { loadCardLesson } from "../learnv2/loadLesson";
 import type { LearnV2Lesson } from "../learnv2/types";
 import { getLearnV2LastCard, loadLearnV2Visited, markLearnV2CardVisited, markLearnV2LessonDone, setLearnV2LastCard, setLearnV2LastLesson } from "../learnv2/progress";
 import type { RootStackParamList } from "../navigation/types";
+import { prefetchArtwork } from "../services/artworkCache";
 import { haptics } from "../services/haptics";
 import { loadGrammarProgress, setLastTopic, setTopicRead } from "../services/grammarGuide";
 import { findStopByCards, stopAfter } from "../trail/course";
@@ -64,10 +65,10 @@ export function CardLessonScreen({ lessonId, navigation }: { lessonId: string; n
         : <View accessible accessibilityLabel={lang === "hi" ? "पाठ लोड हो रहा है" : "Loading lesson"} style={{ gap: 16 }}><Skeleton height={28} /><Skeleton height={180} /><Skeleton height={90} /></View>}
     </View>
   </SafeAreaView>;
-  return <LessonPlayer key={lessonId} lesson={lesson} navigation={navigation} />;
+  return <LegacyLessonPlayer key={lessonId} lesson={lesson} navigation={navigation} />;
 }
 
-function LessonPlayer({ lesson, navigation }: { lesson: LearnV2Lesson; navigation: LessonNavigation }) {
+function LegacyLessonPlayer({ lesson, navigation }: { lesson: LearnV2Lesson; navigation: LessonNavigation }) {
   const lessonId = lesson.id;
   const stop = useMemo(() => findStopByCards(lessonId), [lessonId]);
   const next = stop ? stopAfter(stop) : undefined;
@@ -76,13 +77,18 @@ function LessonPlayer({ lesson, navigation }: { lesson: LearnV2Lesson; navigatio
   const hi = lang === "hi";
   const { sized } = useTypeScale();
   const reduced = useReducedMotion();
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const listRef = useRef<FlatList<number>>(null);
   const answers = useRef<Record<string, boolean>>({});
   const completing = useRef(false);
 
   const [index, setIndex] = useState(0);
   const [resumed, setResumed] = useState(false);
+  useEffect(() => {
+    const uris = lesson.cards.slice(index, index + 3).flatMap(card => lessonArtworkSources(card, Math.min(width, height) >= 600)).flatMap(source =>
+      source && typeof source === "object" && !Array.isArray(source) && source.uri ? [source.uri] : []);
+    prefetchArtwork(uris);
+  }, [lesson, index, width, height]);
   const [finish, setFinish] = useState<Finish | null>(null);
 
   useAskContext("lesson", lesson?.titleSa ?? lessonId);
@@ -123,13 +129,6 @@ function LessonPlayer({ lesson, navigation }: { lesson: LearnV2Lesson; navigatio
     AccessibilityInfo.announceForAccessibility(hi ? `कार्ड ${to + 1} / ${total}` : `Card ${to + 1} of ${total}`);
   }, [lesson, lessonId, total, reduced, hi]);
 
-  const onViewable = useCallback(({ viewableItems }: { viewableItems: Array<{ index: number | null }> }) => {
-    const at = viewableItems[0]?.index;
-    if (at != null && at >= 0 && at < total) {
-      setIndex(at);
-      setLearnV2LastCard(lessonId, at);
-    }
-  }, [lessonId, total]);
 
   const complete = useCallback(async () => {
     if (completing.current) return;
@@ -250,55 +249,45 @@ function LessonPlayer({ lesson, navigation }: { lesson: LearnV2Lesson; navigatio
     );
   }
 
-  const last = index >= total - 1;
-  return (
-    <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
-      <View style={styles.topBar}>
-        <IconButton icon="close" label={hi ? "पाठ बंद करें" : "Close lesson"} onPress={() => navigation.goBack()} />
-        <Segments total={total} filled={index + 1} color={accent} />
-        <Text style={[ui("regular"), { color: T.ink2, fontSize: sized(13), minWidth: 40, textAlign: "right" }]}>{index + 1}/{total}</Text>
-      </View>
-      <View style={{ paddingHorizontal: 16, paddingBottom: 8, flexDirection: "row", alignItems: "center", gap: 12 }}>
-        <Text numberOfLines={1} style={[ui("semibold"), { flex: 1, color: T.ink2, fontSize: sized(14) }]}>{lesson.title[lang]}</Text>
-        <LangSwitch lang={lang} onChange={setLang} />
-      </View>
+  return <LessonPlayer
+    title={lesson.title[lang]} index={index} total={total} onIndexChange={goTo}
+    onFinish={() => { void complete(); }} onClose={() => navigation.goBack()} hi={hi}
+    palette={T} canAdvance={() => true}
+    header={<LangSwitch lang={lang} onChange={setLang} />}
+    renderCard={i => <LearnV2CardView card={lesson.cards[i]} accent={accent}
+      onAnswer={ok => { if (!(lesson.cards[i].id in answers.current)) answers.current[lesson.cards[i].id] = ok; }} />}
+  />;
+}
 
-      <FlatList
-        ref={listRef}
-        data={indices}
-        keyExtractor={(i) => `${lessonId}-${i}`}
-        renderItem={({ index: i }) => (
-          <View style={{ width }}>
-            <ScrollView contentContainerStyle={styles.page} showsVerticalScrollIndicator={false} nestedScrollEnabled>
-              <LearnV2CardView card={lesson.cards[i]} accent={accent}
-                onAnswer={(ok) => { if (!(lesson.cards[i].id in answers.current)) answers.current[lesson.cards[i].id] = ok; }} />
-            </ScrollView>
-          </View>
-        )}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        initialNumToRender={3}
-        maxToRenderPerBatch={3}
-        windowSize={3}
-        getItemLayout={(_, i) => ({ length: width, offset: width * i, index: i })}
-        onViewableItemsChanged={onViewable}
-        viewabilityConfig={{ viewAreaCoveragePercentThreshold: 50 }}
-        accessibilityLabel={hi ? "पाठ कार्ड। बाएँ या दाएँ स्वाइप करें।" : "Lesson cards. Swipe left or right to move."}
-      />
-
-      <View style={styles.bottomRow}>
-        <Pressable onPress={() => goTo(index - 1)} disabled={index === 0} accessibilityRole="button"
-          accessibilityLabel={hi ? "पिछला कार्ड" : "Previous card"} accessibilityState={{ disabled: index === 0 }}
-          style={[styles.back, index === 0 && { opacity: 0.4 }]}>
-          <Ionicons name="chevron-back" size={22} color={T.ink} />
-        </Pressable>
-        <PrimaryButton style={{ flex: 1 }} label={last ? (hi ? "पाठ पूरा करें" : "Finish lesson") : hi ? "आगे" : "Continue"}
-          accessibilityLabel={last ? (hi ? "पाठ पूरा करें" : "Finish lesson") : hi ? `अगला कार्ड, ${index + 2} / ${total}` : `Next card, ${index + 2} of ${total}`}
-          onPress={() => (last ? void complete() : goTo(index + 1))} />
-      </View>
-    </SafeAreaView>
-  );
+/** Shared paging, progress and controls for every Learn deck. */
+export interface PlayerPalette { paper:string; surface:string; ink:string; ink2:string; line:string; lineStrong:string; action:string; white:string }
+export function LessonPlayer({title,index,total,onIndexChange,onFinish,onClose,hi,palette:c,renderCard,canAdvance,header,busy=false} : {
+ title:string; index:number; total:number; onIndexChange:(index:number)=>void; onFinish:()=>void; onClose:()=>void; hi:boolean;
+ palette:PlayerPalette; renderCard:(index:number)=>React.ReactNode; canAdvance:(index:number)=>boolean; header?:React.ReactNode; busy?:boolean;
+}) {
+ const {width}=useWindowDimensions(), {sized}=useTypeScale(), reduced=useReducedMotion();
+ const ref=useRef<FlatList<number>>(null), last=index>=total-1;
+ const advance=canAdvance(index) && !busy;
+ const indices=useMemo(()=>Array.from({length:total},(_,i)=>i),[total]);
+ useEffect(()=>{ ref.current?.scrollToOffset({offset:index*width,animated:!reduced}); },[index,width,reduced]);
+ const move=(at:number)=>{ if(at<0||at>=total) return; if(at>index && !canAdvance(index)) return; onIndexChange(at); AccessibilityInfo.announceForAccessibility((hi?'कार्ड ':'Card ')+(at+1)+' / '+total); };
+ return <SafeAreaView edges={['top','bottom']} style={{flex:1,backgroundColor:c.paper}}>
+ <View style={{flexDirection:'row',alignItems:'center',padding:12,gap:10}}>
+ <Pressable accessibilityRole="button" accessibilityLabel={hi?'पाठ बंद करें':'Close lesson'} onPress={onClose} style={{minWidth:44,minHeight:44,justifyContent:'center'}}><Text style={{color:c.ink,fontSize:sized(24)}}>×</Text></Pressable>
+ <View accessibilityRole="progressbar" accessibilityLabel={hi?'पाठ की प्रगति':'Lesson progress'} accessibilityValue={{min:0,max:total,now:index+1}} style={{flex:1,height:5,backgroundColor:c.line}}><View style={{width:(((index+1)/Math.max(total,1)*100)+'%') as `${number}%`,height:5,backgroundColor:c.action}}/></View>
+ <Text style={{color:c.ink2,fontFamily:'Mukta_400Regular'}}>{index+1}/{total}</Text></View>
+ <View style={{paddingHorizontal:16,flexDirection:'row',gap:8,alignItems:'center'}}><Text style={{flex:1,color:c.ink2,fontFamily:'Mukta_600SemiBold',fontSize:sized(16)}}>{title}</Text>{header}</View>
+ <FlatList ref={ref} data={indices} extraData={{index,renderCard}} horizontal pagingEnabled scrollEnabled={advance}
+ keyExtractor={i=>String(i)} renderItem={({item:i})=><View testID={'lesson-card-'+i} accessibilityElementsHidden={i!==index} importantForAccessibility={i===index?'auto':'no-hide-descendants'} style={{width}}><ScrollView contentContainerStyle={{padding:16,paddingBottom:32,gap:14}} nestedScrollEnabled>{renderCard(i)}</ScrollView></View>}
+ onScroll={e=>{if(!canAdvance(index)&&e.nativeEvent.contentOffset.x>index*width+1)ref.current?.scrollToOffset({offset:index*width,animated:false});}} scrollEventThrottle={16}
+ showsHorizontalScrollIndicator={false} initialNumToRender={3} windowSize={3}
+ getItemLayout={(_,i)=>({length:width,offset:width*i,index:i})}
+ onMomentumScrollEnd={e=>{const at=Math.round(e.nativeEvent.contentOffset.x/width); if(at>index && (!canAdvance(index)||at>index+1)){ref.current?.scrollToOffset({offset:index*width,animated:false});return;} move(at);}}
+ accessibilityLabel={hi?'पाठ के कार्ड':'Lesson cards'} />
+ <View style={{flexDirection:'row',gap:10,padding:12,borderTopWidth:1,borderTopColor:c.line}}>
+ <Pressable accessibilityRole="button" accessibilityLabel={hi?'पिछला कार्ड':'Previous card'} accessibilityState={{disabled:index===0}} disabled={index===0} onPress={()=>move(index-1)} style={{padding:14,minHeight:52,borderWidth:1,borderColor:c.lineStrong,opacity:index===0?.4:1}}><Text style={{color:c.ink,fontFamily:'Mukta_600SemiBold'}}>{hi?'पीछे':'Back'}</Text></Pressable>
+ <Pressable accessibilityRole="button" accessibilityLabel={last?(hi?'पाठ पूरा करें':'Finish lesson'):(hi?'आगे':'Continue')} accessibilityState={{disabled:!advance}} disabled={!advance} onPress={()=>{if(!advance)return;last?onFinish():move(index+1);}} style={{flex:1,alignItems:'center',justifyContent:'center',padding:14,minHeight:52,backgroundColor:c.action,opacity:advance?1:.45}}><Text style={{fontFamily:'Mukta_600SemiBold',fontSize:sized(17),color:c.white}}>{last?(hi?'पाठ पूरा करें':'Finish lesson'):(hi?'आगे':'Continue')}</Text></Pressable>
+ </View></SafeAreaView>;
 }
 
 function safeHost(url: string): string {

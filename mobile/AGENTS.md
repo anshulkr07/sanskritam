@@ -21,8 +21,10 @@ display preference.
 # Artwork and reader backgrounds
 
 Read [`../specs/artwork/ARTWORK.md`](../specs/artwork/ARTWORK.md) before generating
-or changing artwork or its integration. Use one master per verse, derive device
-delivery sizes from it, and preserve the narrative safe region across orientations.
+or changing artwork or its integration. Phones are primary: use one temporary
+9:16 portrait original per verse, derive phone/tablet files, verify publication,
+then discard originals without master backups. Preserve the complete painting
+across orientations with contain fitting and explicit measured image bounds.
 The default background image opacity is **48%**, with a persisted Plain option
 and independent text color/text opacity. Keep startup/tutor/fallback art bundled;
 larger paintings belong in R2 with device caching. Do not reintroduce static

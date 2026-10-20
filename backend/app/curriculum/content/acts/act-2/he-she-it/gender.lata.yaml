@@ -1,0 +1,352 @@
+id: gender.lata
+template: scene
+title:
+  en: Feminines like लता
+  hi: लता जैसे स्त्रीलिंग
+title_sa: स्त्रीप्रत्ययाः
+minutes: 6
+teaches:
+- gen.feminine-a
+needs:
+- gen.agreement
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The garland-maker
+    hi: माला वाली
+  depth: core
+  image:
+    brief: A garland-maker sitting under a banyan tree at the fair with a basket of flowers, a trailing white jasmine vine and her small daughter pointing at the river; Śuka tugging at a flower; the rainbow-coloured spirit hiding in the basket.
+    alt:
+      en: A garland-maker under a banyan tree with her small daughter
+      hi: बरगद के नीचे माला वाली और उसकी छोटी बेटी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - rangaka
+    place: utsava
+    ratio: '4:3'
+    id: gender-lata-s1
+  narration:
+    en: Under a banyan tree sits a garland-maker with a basket of flowers and a vine of white jasmine. “लता,” she says, holding up a trailing creeper. “कन्या,” she says, of her small daughter. “नदी,” says her daughter, pointing at the river. The three words end differently from the boys' words, but alike with each other.
+    hi: बरगद के नीचे माला वाली बैठी है, उसके पास फूलों की टोकरी और सफ़ेद चमेली की एक बेल है। “लता,” वह फैलती हुई लता उठाकर कहती है। “कन्या,” वह अपनी छोटी बेटी के लिए कहती है। “नदी,” बेटी नदी की ओर इशारा करके कहती है। ये तीनों शब्द बालकों के शब्दों से अलग समाप्त होते हैं, पर आपस में एक-से हैं।
+- id: t1
+  kind: teach
+  title:
+    en: Feminine in -आ
+    hi: -आ वाले स्त्रीलिंग
+  depth: core
+  skills:
+  - gen.feminine-a
+  sutras:
+  - 4.1.4
+  body:
+    en: 'Many feminine words end in {{आ}}: {{लता}} (creeper), {{कन्या}} (girl), {{बालिका}}, {{माला}} (garland). You can make a feminine from a masculine by adding {{आ}}: {{छात्रः}} → {{छात्रा}}.'
+    hi: 'अनेक स्त्रीलिंग शब्द {{आ}} पर समाप्त होते हैं: {{लता}}, {{कन्या}}, {{बालिका}}, {{माला}}। पुंलिंग में {{आ}} जोड़कर स्त्रीलिंग बनाया जा सकता है: {{छात्रः}} → {{छात्रा}}।'
+  examples:
+  - sa: लता
+    meaning:
+      en: a creeper
+      hi: लता
+    check:
+      type: subanta
+      stem: लता
+      linga: Stri
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: छात्रा
+    meaning:
+      en: a girl student, from {{छात्रः}}
+      hi: छात्रा, {{छात्रः}} से
+    check:
+      type: subanta
+      stem: छात्रा
+      linga: Stri
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: माला
+    meaning:
+      en: a garland
+      hi: माला
+    check:
+      type: subanta
+      stem: माला
+      linga: Stri
+      vibhakti: Prathama
+      vacana: Eka
+- id: t2
+  kind: teach
+  title:
+    en: Feminine in -ई
+    hi: -ई वाले स्त्रीलिंग
+  depth: core
+  skills:
+  - gen.feminine-a
+  sutras:
+  - 4.1.5
+  body:
+    en: 'Others end in {{ई}}: {{नदी}} (river), {{देवी}} (goddess), {{सुन्दरी}} (beautiful woman). A masculine in -अ can make an {{ई}} feminine too: {{देवः}} → {{देवी}}.'
+    hi: 'दूसरे {{ई}} पर समाप्त होते हैं: {{नदी}}, {{देवी}}, {{सुन्दरी}}। -अ वाले पुंलिंग से भी {{ई}} वाला स्त्रीलिंग बनता है: {{देवः}} → {{देवी}}।'
+  examples:
+  - sa: नदी
+    meaning:
+      en: a river
+      hi: नदी
+    check:
+      type: subanta
+      stem: नदी
+      linga: Stri
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: देवी
+    meaning:
+      en: a goddess, from {{देवः}}
+      hi: देवी, {{देवः}} से
+    check:
+      type: subanta
+      stem: देवी
+      linga: Stri
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: सुन्दरी
+    meaning:
+      en: a beautiful woman
+      hi: सुन्दरी
+    check:
+      type: subanta
+      stem: सुन्दरी
+      linga: Stri
+      vibhakti: Prathama
+      vacana: Eka
+- id: tb1
+  kind: table
+  title:
+    en: Masculine and feminine pairs
+    hi: पुंलिंग और स्त्रीलिंग जोड़े
+  depth: core
+  skills:
+  - gen.feminine-a
+  caption:
+    en: How a feminine is made
+    hi: स्त्रीलिंग कैसे बनता है
+  columns:
+  - en: Masculine
+    hi: पुंलिंग
+  - en: Feminine
+    hi: स्त्रीलिंग
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: छात्रः
+      check:
+        type: subanta
+        stem: छात्र
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: छात्रा
+      check:
+        type: subanta
+        stem: छात्रा
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - text:
+        en: student
+        hi: छात्र
+  - - sa: बालकः
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - text:
+        en: child
+        hi: बच्चा
+  - - sa: देवः
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: देवी
+      check:
+        type: subanta
+        stem: देवी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - text:
+        en: god, goddess
+        hi: देवता, देवी
+  - - sa: शिष्यः
+      check:
+        type: subanta
+        stem: शिष्य
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: शिष्या
+      check:
+        type: subanta
+        stem: शिष्या
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - text:
+        en: pupil
+        hi: शिष्य
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - gen.feminine-a
+  mode: choice
+  prompt:
+    en: Which word is feminine?
+    hi: स्त्रीलिंग शब्द कौन-सा है?
+  explain:
+    en: '{{माला}} ends in {{आ}}.'
+    hi: '{{माला}} {{आ}} पर समाप्त होता है।'
+  roman: after
+  options:
+  - sa: गृहम्
+  - correct: true
+    sa: माला
+  - sa: वृक्षः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - gen.feminine-a
+  mode: match
+  prompt:
+    en: Join each masculine to its feminine.
+    hi: हर पुंलिंग को उसके स्त्रीलिंग से जोड़िए।
+  explain:
+    en: Add {{आ}} or {{ई}} to make a feminine.
+    hi: स्त्रीलिंग बनाने के लिए {{आ}} या {{ई}} जोड़िए।
+  roman: after
+  pairs:
+  - left:
+      sa: छात्रः
+    right:
+      sa: छात्रा
+  - left:
+      sa: देवः
+    right:
+      sa: देवी
+  - left:
+      sa: शिष्यः
+    right:
+      sa: शिष्या
+  - left:
+      sa: बालकः
+    right:
+      sa: बालिका
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - gen.feminine-a
+  widget: mark_words
+  prompt:
+    en: Tap every feminine word.
+    hi: हर स्त्रीलिंग शब्द को छुइए।
+  params:
+    passage:
+    - लता
+    - वृक्षः
+    - कन्या
+    - फलम्
+    - नदी
+    - माला
+    targets:
+    - लता
+    - कन्या
+    - नदी
+    - माला
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: Girl and student
+    hi: कन्या और छात्रा
+  depth: core
+  skills:
+  - gen.feminine-a
+  mode: order
+  prompt:
+    en: 'Say: “The girl is a student.”'
+    hi: 'कहिए: ‘कन्या छात्रा है।’'
+  explain:
+    en: '{{कन्या छात्रा}}: both feminine, both first case.'
+    hi: '{{कन्या छात्रा}}: दोनों स्त्रीलिंग, दोनों प्रथमा।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“कन्या छात्रा,” you say. The garland-maker''s daughter claps. The multi-coloured spirit leaps from the basket, no longer hiding, one colour at last: gold. He bows to the garland-maker: “सः मुक्तः, सा मुक्ता, तत् मुक्तम्।”'
+      hi: '“कन्या छात्रा,” आप कहते हैं। माला वाली की बेटी ताली बजाती है। इन्द्रधनुषी भूत टोकरी से कूदता है, अब छिपा नहीं, आख़िर एक रंग का: सुनहरा। वह माला वाली को प्रणाम करता है: “सः मुक्तः, सा मुक्ता, तत् मुक्तम्।”'
+    failure:
+      en: 'The basket stays shut. Both words are feminine: both end in {{आ}}.'
+      hi: 'टोकरी बन्द रहती है। दोनों शब्द स्त्रीलिंग हैं: दोनों {{आ}} पर समाप्त होते हैं।'
+  tokens:
+  - कन्या
+  - छात्रा
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's feminine makers
+    hi: पाणिनि के स्त्रीप्रत्यय
+  depth: panini
+  skills:
+  - gen.feminine-a
+  sutras:
+  - 4.1.4
+  - 4.1.5
+  body:
+    en: Sūtra 4.1.4 says a word ending in {{अ}} makes its feminine with {{टाप्}}, which shows up as {{आ}}. Sūtra 4.1.5 gives {{ङीप्}}, which shows up as {{ई}}, to words in {{ऋ}} and {{न्}} and others.
+    hi: सूत्र 4.1.4 कहता है कि -{{अ}} वाला शब्द {{टाप्}} से स्त्रीलिंग बनाता है, जो {{आ}} के रूप में दिखता है। सूत्र 4.1.5 {{ऋ}} और {{न्}} आदि वाले शब्दों को {{ङीप्}} देता है, जो {{ई}} के रूप में दिखता है।
+  term:
+    sa: टाप्
+    meaning:
+      en: the suffix that gives -आ
+      hi: -आ देने वाला प्रत्यय
+- id: sum
+  kind: summary
+  title:
+    en: Feminines
+    hi: स्त्रीलिंग
+  depth: core
+  points:
+  - sa: लता · कन्या · माला
+    text:
+      en: Feminine words in -आ.
+      hi: -आ वाले स्त्रीलिंग शब्द।
+  - sa: नदी · देवी
+    text:
+      en: Feminine words in -ई.
+      hi: -ई वाले स्त्रीलिंग शब्द।
+  - sa: छात्रः → छात्रा · देवः → देवी
+    text:
+      en: A masculine makes a feminine with {{आ}} or {{ई}}.
+      hi: पुंलिंग {{आ}} या {{ई}} से स्त्रीलिंग बनाता है।

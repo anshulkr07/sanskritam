@@ -1,0 +1,201 @@
+id: object.revision
+template: revision
+title:
+  en: Everything about the object
+  hi: कर्म के बारे में सब कुछ
+title_sa: कर्मसङ्ग्रहः
+minutes: 5
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: case.acc
+    formula: रामः फलं खादति
+    rule:
+      en: The object, what the doer acts on, takes the second case.
+      hi: कर्म, जिस पर कर्ता क्रिया करता है, द्वितीया लेता है।
+    sutras:
+    - 2.3.2
+    - 1.4.49
+    tag: core
+    taught_in: object.what#t1
+  - skill: case.acc
+    formula: बालकम् · बालिकाम् · नदीम् · फलम्
+    rule:
+      en: 'Singular second case: {{अम्}}; after -{{आ}}, {{आम्}}; after -{{ई}}, {{ईम्}}. A neuter looks like its first case.'
+      hi: 'एकवचन द्वितीया: {{अम्}}; -{{आ}} के बाद {{आम्}}; -{{ई}} के बाद {{ईम्}}। नपुंसक अपनी प्रथमा जैसा दिखता है।'
+    tag: core
+    taught_in: object.what#tb1
+  - skill: case.acc-goal
+    formula: ग्रामं गच्छति
+    rule:
+      en: The place you go to takes the second case.
+      hi: जहाँ जाते हैं वह स्थान द्वितीया लेता है।
+    tag: core
+    taught_in: object.where-to#t1
+  - skill: sent.questions
+    formula: कः किम् कुत्र कदा
+    rule:
+      en: 'Question words: {{कः}} {{का}} {{किम्}}, {{कुत्र}} {{कदा}} {{कथम्}} {{कुतः}}.'
+      hi: 'प्रश्नवाचक शब्द: {{कः}} {{का}} {{किम्}}, {{कुत्र}} {{कदा}} {{कथम्}} {{कुतः}}।'
+    tag: core
+    taught_in: object.ask#t1
+  - skill: sent.questions
+    formula: किं त्वं पठसि?
+    rule:
+      en: A yes/no question begins with {{किम्}}.
+      hi: हाँ-या-नहीं का प्रश्न {{किम्}} से शुरू होता है।
+    tag: core
+    taught_in: object.ask#t2
+  - skill: sent.negation
+    formula: सः न पठति
+    rule:
+      en: '{{न}} before the verb says no.'
+      hi: क्रिया से पहले {{न}} निषेध करता है।
+    tag: core
+    taught_in: object.no#t1
+- id: conditions
+  kind: revision
+  title:
+    en: When it applies
+    hi: कब लागू होता है
+  depth: core
+  section: conditions
+  rows:
+  - skill: case.acc
+    rule:
+      en: Verbs of eating, reading, seeing, writing, drinking, speaking take an object; verbs of going and coming take a goal in the same case.
+      hi: खाना, पढ़ना, देखना, लिखना, पीना, बोलना क्रियाएँ कर्म लेती हैं; जाना और आना क्रियाएँ उसी विभक्ति में गन्तव्य लेती हैं।
+    tag: core
+    taught_in: object.what#t1
+  - skill: sent.negation
+    rule:
+      en: '{{न}} may also deny a noun or an adjective: {{न विक्रेयम्}}, “not for sale”.'
+      hi: '{{न}} संज्ञा या विशेषण का भी निषेध कर सकता है: {{न विक्रेयम्}}, ‘बिकाऊ नहीं’।'
+    tag: good
+    taught_in: object.no#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: case.acc
+    formula: बालकान् · बालिकाः · फलानि
+    rule:
+      en: 'Plural objects: {{आन्}} for masculine -अ ({{बालकान्}}), {{आः}} for feminine -आ ({{बालिकाः}}), {{आनि}} for neuter ({{फलानि}}).'
+      hi: 'बहुवचन कर्म: पुंलिंग -अ में {{आन्}} ({{बालकान्}}), स्त्रीलिंग -आ में {{आः}} ({{बालिकाः}}), नपुंसक में {{आनि}} ({{फलानि}})।'
+    example:
+      sa: बालकान्
+      meaning:
+        en: boys, as objects
+        hi: बालक, कर्म के रूप में
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Bahu
+    tag: good
+    new_here: true
+  - skill: sent.negation
+    rule:
+      en: 'Prohibition uses {{मा}}, not {{न}}: {{मा गच्छ}}, “do not go”. You will meet it with the commands.'
+      hi: 'निषेध-आज्ञा में {{न}} नहीं {{मा}} आता है: {{मा गच्छ}}, ‘मत जाओ’। आज्ञार्थ के साथ यह मिलेगा।'
+    example:
+      sa: मा गच्छ
+      meaning:
+        en: do not go
+        hi: मत जाओ
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: case.acc
+    rule:
+      en: 'Do not leave the object in the first case: {{रामः फलं खादति}}, not {{रामः फलः खादति}} or a bare stem.'
+      hi: 'कर्म को प्रथमा में मत छोड़िए: {{रामः फलं खादति}}, केवल मूल रूप नहीं।'
+    tag: core
+    taught_in: object.what#t1
+  - skill: case.acc-goal
+    rule:
+      en: 'Do not look for a word for “to”: the second case already says it.'
+      hi: '‘को’ के लिए शब्द मत खोजिए: द्वितीया वही बता देती है।'
+    tag: core
+    taught_in: object.where-to#t1
+  - skill: sent.negation
+    rule:
+      en: Do not put {{न}} after the verb.
+      hi: '{{न}} को क्रिया के बाद मत रखिए।'
+    tag: core
+    taught_in: object.no#t1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: case.acc
+    rule:
+      en: '{{कर्तुरीप्सिततमं कर्म}}: the object is what the doer most wishes to reach; {{कर्मणि द्वितीया}}: it takes the second case.'
+      hi: '{{कर्तुरीप्सिततमं कर्म}}: कर्म वह है जिसे कर्ता सबसे अधिक पाना चाहे; {{कर्मणि द्वितीया}}: वह द्वितीया लेता है।'
+    sutras:
+    - 1.4.49
+    - 2.3.2
+    tag: core
+    taught_in: object.what#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: case.acc
+    formula: अम् · आम् · ईम्
+    rule:
+      en: object
+      hi: कर्म
+    tag: core
+    taught_in: object.what#tb1
+  - skill: case.acc-goal
+    formula: ग्रामं गच्छति
+    rule:
+      en: going to
+      hi: को जाना
+    tag: core
+    taught_in: object.where-to#t1
+  - skill: sent.questions
+    formula: कः किम् कुत्र कदा कथम्
+    rule:
+      en: questions
+      hi: प्रश्न
+    tag: core
+    taught_in: object.ask#t1
+  - skill: sent.negation
+    formula: न + क्रिया
+    rule:
+      en: 'no'
+      hi: नहीं
+    tag: core
+    taught_in: object.no#t1

@@ -73,7 +73,7 @@ function load(file) {
 const { SinglePlayback } = load("../src/services/singlePlayback.ts");
 modules["./ttsAudioCache"] = load("../src/services/ttsAudioCache.ts");
 modules["./audioTransport"] = load("../src/services/audioTransport.ts");
-modules["./offlineBooks"] = { offlineAudioUrl: url => url };
+modules["./protectedAudio"] = { needsOfflineAudioResolution: () => false, resolveOfflineAudio: async url => ({ uri: url, release() {} }), onOfflineAudioInvalidated: () => () => {} };
 // Entitled background playback keeps the media-control assertions meaningful.
 modules["./commerce"] = { canPlayInBackground: () => true };
 modules["./managedAudio"] = load("../src/services/managedAudio.ts");
@@ -135,6 +135,30 @@ speech.setSpeechRoute("Home");
   assert.equal(audioTransport.getSnapshot().kind, "audio", "Direct voice/video sources do not opt in to the floater");
   audioTransport.release(voiceId);
   players.length = 0;
+}
+
+// Decryption can finish after pause or removal. It must not restart audio or
+// leak a plaintext lease once the player has gone away.
+{
+  const protectedAudio = modules["./protectedAudio"];
+  const originalResolver = protectedAudio.resolveOfflineAudio;
+  protectedAudio.needsOfflineAudioResolution = () => true;
+  const gate = deferred(); let releases = 0;
+  protectedAudio.resolveOfflineAudio = () => gate.promise;
+  const p = modules["./managedAudio"].createManagedAudioPlayer({uri:"saved.wav"});
+  const native = players.at(-1);
+  p.play(); p.pause();
+  gate.resolve({uri:"private/decrypted.audio",release:()=>{releases++;}});
+  await flush();
+  assert.equal(native.playing,false,"Late decryption respects a pause");
+  assert.equal(native.src.uri,"private/decrypted.audio","Object audio sources use protected downloads too");
+  p.remove();assert.equal(releases,1,"Removing the player removes playback plaintext");
+  const late = deferred(); protectedAudio.resolveOfflineAudio = () => late.promise;
+  const removed = modules["./managedAudio"].createManagedAudioPlayer("saved.wav");
+  const nativeRemoved = players.at(-1);removed.play();removed.remove();
+  late.resolve({uri:"private/late.audio",release:()=>{releases++;}});await flush();
+  assert.equal(nativeRemoved.src,null);assert.equal(releases,2,"Abandoned decryptions discard plaintext");
+  protectedAudio.needsOfflineAudioResolution=()=>false;protectedAudio.resolveOfflineAudio=originalResolver;players.length=0;
 }
 
 // Four taps before native mode setup completes produce one player; taps during

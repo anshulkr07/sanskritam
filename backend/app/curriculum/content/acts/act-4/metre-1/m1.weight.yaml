@@ -1,0 +1,278 @@
+id: m1.weight
+template: scene
+title:
+  en: Light and heavy
+  hi: लघु और गुरु
+title_sa: लघु · गुरु
+minutes: 6
+teaches:
+- chandas.weight
+needs:
+- script.vowel.long
+- script.conjunct
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The drum spirit
+    hi: ढोल की भूत
+  depth: core
+  image:
+    brief: A small grey-blue stone spirit with a drum sitting on the carved arm of a golden throne, tapping with both hands; Dādī crouching to talk to her; Śuka on the throne's back tilting his head at a line of carved verse on the seat; Lubdhaka at the back in the shadows.
+    alt:
+      en: A tiny stone spirit with a drum sits on a throne's arm while a parrot studies a carved line
+      hi: सिंहासन की बाँह पर ढोल लिए नन्ही पत्थर की भूत, खुदी पंक्ति देखता तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - chandika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: m1-weight-s1
+  narration:
+    en: 'The fifth leaf glows in your hand, but the throne still hums. On its arm sits a stone spirit with a drum, tapping every beat the same: tap, tap, tap. “Every syllable has a weight,” says Dādī. “Light is one beat; heavy is two. Chandikā cannot hear the difference, so she cannot follow a verse.” Śuka tilts his head at a line carved on the seat.'
+    hi: 'पाँचवाँ पत्र आपके हाथ में चमक रहा है, पर सिंहासन अब भी गुनगुना रहा है। उसकी बाँह पर पत्थर की एक नन्ही भूत बैठी है, हाथ में ढोल लिए, हर ताल एक-सी बजाती हुई: ठक, ठक, ठक। “हर अक्षर का एक भार होता है,” दादी कहती हैं। “लघु एक ताल है; गुरु दो। छन्दिका को यह अन्तर सुनाई नहीं देता, इसलिए वह श्लोक के साथ नहीं चल पाती।” शुक आसन पर खुदी एक पंक्ति की ओर सिर झुकाता है।'
+  quote:
+    sa: धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः मामकाः पाण्डवाश् चैव किम् अकुर्वत सञ्जय
+    gloss:
+      en: 'On the field of dharma, the field of the Kurus, gathered and eager to fight: what did my people and the Pāṇḍavas do, Sañjaya?'
+      hi: धर्म के क्षेत्र, कुरुक्षेत्र में, युद्ध की इच्छा से एकत्र होकर, मेरे और पाण्डु के पुत्रों ने क्या किया, सञ्जय?
+    source: Bhagavadgītā 1.1 (read at GRETIL)
+- id: t1
+  kind: teach
+  title:
+    en: Light and heavy
+    hi: लघु और गुरु
+  depth: core
+  skills:
+  - chandas.weight
+  body:
+    en: Every syllable is light ({{लघु}}) or heavy ({{गुरु}}). It is light when its vowel is short and nothing joined follows. It is heavy when its vowel is long, or when a short vowel is followed by a joined letter, an anusvāra or a visarga. Light takes one beat; heavy takes two.
+    hi: हर अक्षर लघु ({{लघु}}) होता है या गुरु ({{गुरु}})। स्वर ह्रस्व हो और आगे संयुक्त अक्षर न हो, तो वह लघु है। स्वर दीर्घ हो, या ह्रस्व स्वर के बाद संयुक्त अक्षर, अनुस्वार या विसर्ग हो, तो वह गुरु है। लघु में एक मात्रा लगती है; गुरु में दो।
+  term:
+    sa: लघु · गुरु
+    meaning:
+      en: light · heavy
+      hi: हल्का · भारी
+- id: tb1
+  kind: table
+  title:
+    en: Weighing words
+    hi: शब्दों को तौलना
+  depth: core
+  skills:
+  - chandas.weight
+  caption:
+    en: Light = ल, heavy = ग
+    hi: लघु = ल, गुरु = ग
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: Weights
+    hi: भार
+  - en: Why
+    hi: क्यों
+  rows:
+  - - sa: पठति
+    - sa: ल ल ल
+    - text:
+        en: three short vowels, nothing joined
+        hi: तीन ह्रस्व स्वर, कुछ जुड़ा नहीं
+  - - sa: नदी
+    - sa: ल ग
+    - text:
+        en: a short vowel, then a long one
+        hi: एक ह्रस्व स्वर, फिर दीर्घ
+  - - sa: राम
+    - sa: ग ल
+    - text:
+        en: a long vowel, then a short one
+        hi: दीर्घ स्वर, फिर ह्रस्व
+  - - sa: सत्य
+    - sa: ग ल
+    - text:
+        en: '{{स}} is short, but the joined {{त्य}} follows'
+        hi: '{{स}} ह्रस्व है, पर आगे संयुक्त {{त्य}} है'
+  - - sa: गुरुः
+    - sa: ल ग
+    - text:
+        en: the visarga makes the last syllable heavy
+        hi: विसर्ग अन्तिम अक्षर को भारी बनाता है
+  note:
+    en: Look at the vowel and at what follows it.
+    hi: स्वर को देखिए और उसके बाद जो आता है उसे।
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - chandas.weight
+  widget: rhythm_tapper
+  prompt:
+    en: 'Tap the beats of the line on the seat: tap for light, hold for heavy.'
+    hi: 'आसन की पंक्ति की ताल दीजिए: लघु पर थपथपाइए, गुरु पर दबाकर रखिए।'
+  params:
+    lines:
+    - धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः
+  roman: show
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - chandas.weight
+  mode: choice
+  prompt:
+    en: Which syllable is light?
+    hi: कौन-सा अक्षर लघु है?
+  explain:
+    en: '{{कि}}: a short vowel, nothing after it. The others are long, or carry an anusvāra or a visarga.'
+    hi: '{{कि}}: ह्रस्व स्वर, उसके बाद कुछ नहीं। बाकी दीर्घ हैं, या अनुस्वार या विसर्ग वाले।'
+  roman: after
+  options:
+  - correct: true
+    sa: कि
+  - sa: की
+  - sa: किं
+  - sa: कः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - chandas.weight
+  mode: choice
+  prompt:
+    en: In {{सत्य}}, why is the first syllable heavy?
+    hi: '{{सत्य}} में पहला अक्षर भारी क्यों है?'
+  explain:
+    en: A short vowel before a joined letter is heavy.
+    hi: संयुक्त अक्षर से पहले ह्रस्व स्वर भारी होता है।
+  roman: after
+  options:
+  - correct: true
+    text:
+      en: A joined letter follows it
+      hi: उसके बाद संयुक्त अक्षर आता है
+  - text:
+      en: Its vowel is long
+      hi: उसका स्वर दीर्घ है
+  - text:
+      en: A visarga follows it
+      hi: उसके बाद विसर्ग आता है
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - chandas.weight
+  mode: match
+  prompt:
+    en: Join each word to its weights.
+    hi: हर शब्द को उसके भार से जोड़िए।
+  explain:
+    en: Weigh each syllable on its own.
+    hi: हर अक्षर को अलग से तौलिए।
+  roman: after
+  pairs:
+  - left:
+      sa: पठति
+    right:
+      sa: ल ल ल
+  - left:
+      sa: नदी
+    right:
+      sa: ल ग
+  - left:
+      sa: राम
+    right:
+      sa: ग ल
+  - left:
+      sa: बालकः
+    right:
+      sa: ग ल ग
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - chandas.weight
+  mode: engine
+  prompt:
+    en: Mark each syllable light or heavy.
+    hi: हर अक्षर को लघु या गुरु चिह्नित कीजिए।
+  explain:
+    en: Short vowels before joined letters are heavy.
+    hi: संयुक्त अक्षर से पहले ह्रस्व स्वर भारी होते हैं।
+  roman: after
+  exercise:
+    kind: scan_metre
+    params:
+      text: मामकाः पाण्डवाश्चैव किमकुर्वत सञ्जय
+    seed: 1
+- id: p5
+  kind: practice
+  title:
+    en: The drum
+    hi: ढोल
+  depth: core
+  skills:
+  - chandas.weight
+  mode: choice
+  prompt:
+    en: '{{विद्या}}: how does it weigh?'
+    hi: '{{विद्या}}: उसका भार क्या है?'
+  explain:
+    en: '{{वि}} is short but heavy, because the joined {{द्य}} follows; {{द्या}} is long.'
+    hi: '{{वि}} ह्रस्व है पर भारी, क्योंकि आगे संयुक्त {{द्य}} है; {{द्या}} दीर्घ है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “विद्या,” you say. “Heavy, heavy.” The little spirit's sticks come down twice for each syllable, long, long, and then, to her own surprise, she stops. Her even tapping has split into two kinds of beat. “Short and long,” she whispers. Under her hands the hum of the throne steadies, like a held note. “Now I can hear that there is something to follow.”
+      hi: “विद्या,” आप कहते हैं। “गुरु, गुरु।” नन्ही भूत की डंडियाँ हर अक्षर पर दो बार गिरती हैं, लम्बी, लम्बी, और फिर, अपने ही आश्चर्य से, वह रुक जाती है। उसकी एक-सी थाप दो तरह की ताल में बँट गई है। “छोटी और लम्बी,” वह फुसफुसाती है। उसके हाथों के नीचे सिंहासन की गुनगुनाहट स्थिर हो जाती है, जैसे थामा हुआ स्वर। “अब मैं सुन सकती हूँ कि चलने के लिए कुछ है।”
+    failure:
+      en: Her tapping stays even. {{वि}} is short, but the joined {{द्य}} follows.
+      hi: उसकी थाप एक-सी रहती है। {{वि}} ह्रस्व है, पर आगे संयुक्त {{द्य}} है।
+  options:
+  - sa: ल ल
+  - sa: ल ग
+  - correct: true
+    sa: ग ग
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's weights
+    hi: पाणिनि के भार
+  depth: panini
+  skills:
+  - chandas.weight
+  sutras:
+  - 1.4.10
+  - 1.4.11
+  - 1.4.12
+  body:
+    en: 'Pāṇini defines the terms for his own use: 1.4.10, {{ह्रस्वं लघु}}, a short vowel is light; 1.4.11, {{संयोगे गुरु}}, a short vowel before a joined letter is heavy; 1.4.12, {{दीर्घं च}}, and a long vowel is heavy. The books of metre add the anusvāra and the visarga.'
+    hi: 'पाणिनि अपने काम के लिए ये संज्ञाएँ बनाते हैं: 1.4.10, {{ह्रस्वं लघु}}, ह्रस्व स्वर लघु है; 1.4.11, {{संयोगे गुरु}}, संयुक्त अक्षर से पहले ह्रस्व स्वर गुरु है; 1.4.12, {{दीर्घं च}}, और दीर्घ स्वर गुरु है। छन्द के ग्रन्थ अनुस्वार और विसर्ग को जोड़ते हैं।'
+- id: sum
+  kind: summary
+  title:
+    en: Light and heavy
+    hi: लघु और गुरु
+  depth: core
+  points:
+  - sa: लघु
+    text:
+      en: 'Light: one beat.'
+      hi: 'लघु: एक ताल।'
+  - sa: गुरु
+    text:
+      en: 'Heavy: two beats.'
+      hi: 'गुरु: दो ताल।'
+  - text:
+      en: 'Heavy: long vowel; short vowel before a joined letter, anusvāra or visarga.'
+      hi: 'गुरु: दीर्घ स्वर; संयुक्त अक्षर, अनुस्वार या विसर्ग से पहले ह्रस्व स्वर।'

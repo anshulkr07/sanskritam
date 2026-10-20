@@ -1,0 +1,66 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: vowel-sandhi
+title:
+  en: Vowels that join
+  hi: स्वर सन्धि
+title_sa: स्वरसन्धिः
+status: ready
+episode:
+  summary:
+    en: Archaeologists have uncovered a buried throne ringed by thirty-two statues. Lubdhaka wants it. The first statues speak only in joined words.
+    hi: पुरातत्त्वविदों ने बत्तीस प्रतिमाओं से घिरा एक दबा हुआ सिंहासन खोजा है। लुब्धक उसे चाहता है। पहली प्रतिमाएँ केवल जुड़े हुए शब्दों में बोलती हैं।
+  beats:
+  - 'अ + आ → आ: like vowels merge.'
+  - Guṇa, vṛddhi, glides.
+  - When the rule stops.
+skills:
+- id: sandhi.savarna
+  title:
+    en: Like vowels become long
+    hi: दीर्घ सन्धि
+  sutras:
+  - 6.1.101
+- id: sandhi.guna
+  title:
+    en: अ + इ → ए, अ + उ → ओ
+    hi: गुण सन्धि
+  sutras:
+  - 6.1.87
+- id: sandhi.vrddhi
+  title:
+    en: अ + ए → ऐ, अ + ओ → औ
+    hi: वृद्धि सन्धि
+  sutras:
+  - 6.1.88
+- id: sandhi.yan
+  title:
+    en: इ → य्, उ → व् before a vowel
+    hi: यण् सन्धि
+  sutras:
+  - 6.1.77
+- id: sandhi.ayadi
+  title:
+    en: ए, ओ → अय्, अव्; and ऽ
+    hi: अयादि सन्धि, अवग्रह
+  sutras:
+  - 6.1.78
+  - 6.1.109
+- id: sandhi.blocked
+  title:
+    en: When vowels do not join
+    hi: जब स्वर नहीं जुड़ते
+  sutras:
+  - 1.1.11
+  - 6.1.125
+lessons:
+- vs.like
+- vs.guna
+- vs.vrddhi
+- vs.glide
+- vs.e-o
+- vs.stop
+planned: []
+ghost: svarika
+revision: vs.revision
+check: vs.check

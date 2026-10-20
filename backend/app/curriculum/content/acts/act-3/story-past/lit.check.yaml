@@ -1,0 +1,158 @@
+id: lit.check
+template: check
+title:
+  en: Begin the tale
+  hi: कथा आरम्भ कीजिए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: choice
+  prompt:
+    en: “He went (in the tale).” Which form?
+    hi: ‘वह गया (कथा में)।’ कौन-सा रूप?
+  explain:
+    en: '{{जगाम}}.'
+    hi: '{{जगाम}}।'
+  roman: after
+  options:
+  - sa: अगच्छत्
+  - sa: गमिष्यति
+  - correct: true
+    sa: जगाम
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: type
+  prompt:
+    en: 'Say: “He became.”'
+    hi: 'कहिए: ‘वह हुआ।’'
+  explain:
+    en: '{{बभूव}}.'
+    hi: '{{बभूव}}।'
+  roman: after
+  answers:
+  - बभूव
+  tiles:
+  - ब
+  - भूव
+  - भव
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: match
+  prompt:
+    en: Join present to story past.
+    hi: वर्तमान को कथा के भूतकाल से जोड़िए।
+  explain:
+    en: Doubling, and a few irregular starts.
+    hi: द्वित्व और कुछ अनियमित आरम्भ।
+  roman: after
+  pairs:
+  - left:
+      sa: पश्यति
+    right:
+      sa: ददर्श
+  - left:
+      sa: करोति
+    right:
+      sa: चकार
+  - left:
+      sa: शृणोति
+    right:
+      sa: शुश्राव
+  - left:
+      sa: वसति
+    right:
+      sa: उवास
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: choice
+  prompt:
+    en: “He said (in the tale).” Which form?
+    hi: ‘उसने कहा (कथा में)।’ कौन-सा रूप?
+  explain:
+    en: '{{उवाच}}.'
+    hi: '{{उवाच}}।'
+  roman: after
+  options:
+  - sa: अवदत्
+  - sa: वदति
+  - correct: true
+    sa: उवाच
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: choice
+  prompt:
+    en: “They went.” Which form?
+    hi: ‘वे गए।’ कौन-सा रूप?
+  explain:
+    en: '{{जग्मुः}}.'
+    hi: '{{जग्मुः}}।'
+  roman: after
+  options:
+  - sa: जगाम
+  - sa: जग्मतुः
+  - correct: true
+    sa: जग्मुः
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: order
+  prompt:
+    en: 'Begin a tale: “Long ago a king came to be.”'
+    hi: 'कथा आरम्भ कीजिए: ‘बहुत पहले एक राजा हुआ।’'
+  explain:
+    en: '{{पुरा राजा बभूव}}.'
+    hi: '{{पुरा राजा बभूव}}।'
+  roman: after
+  tokens:
+  - पुरा
+  - राजा
+  - बभूव
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: order
+  prompt:
+    en: 'Speak for the tale: “Kāṇabhūti said to him.”'
+    hi: 'कथा की ओर से बोलिए: ‘काणभूति ने उससे कहा।’'
+  explain:
+    en: '{{काणभूतिः उवाच तम्}}.'
+    hi: '{{काणभूतिः उवाच तम्}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “काणभूतिः उवाच तम्,” you say, and Kathaka unrolls to his full length, so that all his pages show. “Now I remember how the old tale ends,” he says. “जगाम मुक्तशापः सन् काणभूतिः निजां गतिम्. ‘Kāṇabhūti, freed from his curse, went to his own place.’” He rolls himself up again, humming, and walks off into the night. At the edge of the grove he turns. “मा शुचः,” he says gently. “Do not grieve.”
+      hi: “काणभूतिः उवाच तम्,” आप कहते हैं, और कथक अपनी पूरी लम्बाई में खुल जाता है, ताकि उसके सारे पन्ने दिखें। “अब मुझे याद आया कि पुरानी कथा कैसे समाप्त होती है,” वह कहता है। “जगाम मुक्तशापः सन् काणभूतिः निजां गतिम्। ‘शाप से मुक्त होकर काणभूति अपने स्थान को गया।’” वह फिर लपेट लेता है और गुनगुनाता रात में चल देता है। वन के छोर पर वह मुड़ता है। “मा शुचः,” वह धीमे से कहता है। “शोक मत करो।”
+    failure:
+      en: 'The pages stay rolled. The real line: {{काणभूतिः उवाच तम्}}.'
+      hi: 'पन्ने लपेटे रहते हैं। असली पंक्ति: {{काणभूतिः उवाच तम्}}।'
+  tokens:
+  - काणभूतिः
+  - उवाच
+  - तम्

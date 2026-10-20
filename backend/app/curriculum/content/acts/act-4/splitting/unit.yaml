@@ -1,0 +1,32 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: splitting
+title:
+  en: Splitting the joins
+  hi: सन्धि-विच्छेद
+title_sa: सन्धिविच्छेदः
+status: ready
+episode:
+  summary:
+    en: To hear a statue's whole sentence you must split it back into words. Lubdhaka cannot.
+    hi: किसी प्रतिमा का पूरा वाक्य सुनने के लिए उसे फिर शब्दों में बाँटना होगा। लुब्धक यह नहीं कर सकता।
+  beats:
+  - Work backwards from the tell-tale sound.
+  - Check both halves are real words.
+  - Split a whole line.
+skills:
+- id: sandhi.split
+  title:
+    en: Splitting a join back into words
+    hi: सन्धि-विच्छेद
+- id: sandhi.padaccheda
+  title:
+    en: 'Splitting a whole line: padaccheda'
+    hi: पदच्छेद
+lessons:
+- split.back
+- split.line
+planned: []
+ghost: vicchedika
+revision: split.revision
+check: split.check

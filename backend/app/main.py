@@ -181,6 +181,7 @@ def create_app() -> FastAPI:
     from app.routers.matches import router as matches_router
     from app.routers.share import router as share_router
     from app.routers.recite_calibration import router as recite_calibration_router
+    from app.routers.learn import router as learn_router
 
     app.include_router(health_router, tags=["Health"])
     from app.commerce.router import router as commerce_router
@@ -233,6 +234,7 @@ def create_app() -> FastAPI:
         app.include_router(matches_router, tags=["Matches"])
     app.include_router(share_router, tags=["Share"])
     app.include_router(recite_calibration_router, tags=["Recite calibration"])
+    app.include_router(learn_router, tags=["Learn"])
     # Live match socket lives at /ws/matches/{ticket}, outside the router
     # prefix (the matches router prefix is for its REST half).
     from app.routers.matches import ws_matches

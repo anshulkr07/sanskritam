@@ -1,0 +1,195 @@
+id: from.check
+template: check
+title:
+  en: Away from the storm
+  hi: आँधी से दूर
+title_sa: परीक्षा
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.abl
+  mode: choice
+  prompt:
+    en: “From the village.” Which word?
+    hi: ‘गाँव से।’ कौन-सा शब्द?
+  explain:
+    en: 'The source: fifth case.'
+    hi: 'स्रोत: पञ्चमी।'
+  roman: after
+  options:
+  - sa: ग्रामः
+  - sa: ग्रामम्
+  - correct: true
+    sa: ग्रामात्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.abl
+  mode: match
+  prompt:
+    en: Join each source to its meaning.
+    hi: हर स्रोत को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{आत्}} and {{याः}}.'
+    hi: '{{आत्}} और {{याः}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: वृक्षात्
+    right:
+      text:
+        en: from the tree
+        hi: पेड़ से
+  - left:
+      sa: गृहात्
+    right:
+      text:
+        en: from the house
+        hi: घर से
+  - left:
+      sa: नद्याः
+    right:
+      text:
+        en: from the river
+        hi: नदी से
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - case.abl
+  mode: order
+  prompt:
+    en: 'Say: “A leaf falls from the tree.”'
+    hi: 'कहिए: ‘पेड़ से पत्ता गिरता है।’'
+  explain:
+    en: '{{वृक्षात् पत्रं पतति}}.'
+    hi: '{{वृक्षात् पत्रं पतति}}।'
+  roman: after
+  tokens:
+  - वृक्षात्
+  - पत्रम्
+  - पतति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - case.abl-fear-compare
+  mode: choice
+  prompt:
+    en: “He fears the snake.” Which word for “snake”?
+    hi: ‘वह साँप से डरता है।’ ‘साँप’ के लिए कौन-सा रूप?
+  explain:
+    en: 'What is feared: fifth case.'
+    hi: 'जिससे डर: पञ्चमी।'
+  roman: after
+  options:
+  - sa: सर्पम्
+  - sa: सर्पः
+  - correct: true
+    sa: सर्पात्
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - case.abl-fear-compare
+  - case.abl
+  mode: match
+  prompt:
+    en: Join each phrase to its meaning.
+    hi: हर वाक्यांश को उसके अर्थ से जोड़िए।
+  explain:
+    en: Fifth case throughout.
+    hi: सब जगह पञ्चमी।
+  roman: after
+  pairs:
+  - left:
+      sa: व्याघ्रात् बिभेति
+    right:
+      text:
+        en: fears the tiger
+        hi: बाघ से डरता है
+  - left:
+      sa: सर्पात् रक्षति
+    right:
+      text:
+        en: protects from the snake
+        hi: साँप से बचाता है
+  - left:
+      sa: गृहात् आगच्छति
+    right:
+      text:
+        en: comes from the house
+        hi: घर से आता है
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - case.abl-fear-compare
+  mode: choice
+  prompt:
+    en: '{{रामात् श्यामः दीर्घतरः}}: who is taller?'
+    hi: '{{रामात् श्यामः दीर्घतरः}}: कौन अधिक लम्बा है?'
+  explain:
+    en: The thing compared with (Rāma) is in the fifth case; Śyāma is more tall.
+    hi: जिससे तुलना है (राम) वह पञ्चमी में है; श्याम अधिक लम्बा है।
+  roman: show
+  options:
+  - text:
+      en: Rāma
+      hi: राम
+  - correct: true
+    text:
+      en: Śyāma
+      hi: श्याम
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - case.abl
+  mode: engine
+  prompt:
+    en: Reorder the words and keep the meaning.
+    hi: शब्दों को फिर से लगाइए, अर्थ वही रखिए।
+  explain:
+    en: The endings carry the roles.
+    hi: भूमिकाएँ प्रत्ययों में हैं।
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: बालकः ग्रामात् आगच्छति
+    seed: 6
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - case.abl-fear-compare
+  - case.abl
+  mode: order
+  prompt:
+    en: 'Tell the wind spirit: “I fear the storm. I go from the river to the house.” Start with fear.'
+    hi: 'पवन-भूत से कहिए: ‘मैं आँधी से डरता हूँ।’'
+  explain:
+    en: '{{अहं झञ्झावातात् बिभेमि}}: the storm is what is feared.'
+    hi: '{{अहं झञ्झावातात् बिभेमि}}: आँधी वह है जिससे डर है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“अहं झञ्झावातात् बिभेमि,” you say. The wind spirit, hearing a name for what you fear, stops being the storm and becomes a grey-green breeze, laughing. “ग्रामात् ग्रामं गच्छामि,” he sings, spinning away over the thatch, and ends on a word as soft as a leaf falling: “आचार्यस्य गृहम् अस्ति.”'
+      hi: '“अहं झञ्झावातात् बिभेमि,” आप कहते हैं। पवन-भूत, जिससे आप डरते हैं उसका नाम सुनकर, आँधी होना छोड़ देता है और धूसर-हरा समीर बनकर हँसता है। “ग्रामात् ग्रामं गच्छामि,” वह गाता है, छप्परों के ऊपर घूमता हुआ, और गिरते पत्ते जैसे कोमल शब्द पर रुकता है: “आचार्यस्य गृहम् अस्ति।”'
+    failure:
+      en: The wind keeps howling. What you fear, {{झञ्झावातात्}}, takes the fifth case.
+      hi: पवन गरजता रहता है। जिससे डर है, {{झञ्झावातात्}}, वह पञ्चमी लेता है।
+  tokens:
+  - अहम्
+  - झञ्झावातात्
+  - बिभेमि

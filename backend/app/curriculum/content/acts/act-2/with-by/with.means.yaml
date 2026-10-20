@@ -1,0 +1,469 @@
+id: with.means
+template: scene
+title:
+  en: By boat, with a pen
+  hi: नाव से, कलम से
+title_sa: करणम्
+minutes: 6
+teaches:
+- case.inst
+needs:
+- case.acc
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Downstream
+    hi: धारा के साथ
+  depth: core
+  image:
+    brief: A wooden river boat gliding downstream with you, Dādī, Śuka and the boatman poling it, the spice seller waving from the bank; Dādī writing with a reed pen in her notebook; beside the boat a small pale-blue spirit shaped like a curved boat riding the current.
+    alt:
+      en: A boat gliding downstream with a small boat-shaped spirit riding beside it
+      hi: धारा में चलती नाव और उसके बगल में नाव के आकार का नन्हा भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - navika
+    - tarika
+    place: nauka
+    ratio: '4:3'
+    id: with-means-s1
+  narration:
+    en: 'The boat glides out into the current, the spice seller waving from the bank. Dādī writes in her notebook with a thin reed pen. The boatman pushes off with his long pole. Śuka cracks a seed with his beak. Beside the boat rides a pale blue wisp shaped like a little boat itself: Tarikā. “How is each thing done?” asks Dādī. “By what means?”'
+    hi: 'नाव धारा में सरकती है, तट से मसाले वाला हाथ हिलाता है। दादी अपनी कॉपी में पतली सरकंडे की कलम से लिखती हैं। नाविक लम्बी डंडी से नाव धकेलता है। शुक चोंच से बीज तोड़ता है। नाव के बगल में नन्ही नाव के आकार का हल्का नीला धुआँ चलता है: तरिका। दादी पूछती हैं, “हर काम किस साधन से होता है?”'
+  lines:
+  - speaker: dadi
+    sa: नौकया गच्छामः।
+    gloss:
+      en: We go by boat.
+      hi: हम नाव से जाते हैं।
+- id: t1
+  kind: teach
+  title:
+    en: 'The means: the third case'
+    hi: 'साधन: तृतीया'
+  depth: core
+  skills:
+  - case.inst
+  sutras:
+  - 2.3.18
+  - 1.4.42
+  body:
+    en: 'The tool or means by which something is done takes the third case, {{तृतीया}}: {{नौकया}} (by boat), {{दण्डेन}} (with a pole), {{हस्तेन}} (with the hand).'
+    hi: 'जिस साधन से कोई काम होता है वह तृतीया में आता है: {{नौकया}} (नाव से), {{दण्डेन}} (डंडी से), {{हस्तेन}} (हाथ से)।'
+  examples:
+  - sa: वयम् नौकया गच्छामः।
+    meaning:
+      en: We go by boat.
+      hi: हम नाव से जाते हैं।
+    words:
+    - sa: वयम्
+      gloss:
+        en: we
+        hi: हम
+    - sa: नौकया
+      gloss:
+        en: by boat
+        hi: नाव से
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: गच्छामः
+      gloss:
+        en: go
+        hi: जाते हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+  - sa: सा लेखन्या लिखति।
+    meaning:
+      en: She writes with a pen.
+      hi: वह कलम से लिखती है।
+    words:
+    - sa: सा
+      gloss:
+        en: she
+        hi: वह
+    - sa: लेखन्या
+      gloss:
+        en: with a pen
+        hi: कलम से
+      check:
+        type: subanta
+        stem: लेखनी
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: लिखति
+      gloss:
+        en: writes
+        hi: लिखती है
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: नाविकः दण्डेन नौकाम् नयति।
+    meaning:
+      en: The boatman drives the boat with a pole.
+      hi: नाविक डंडी से नाव चलाता है।
+    words:
+    - sa: नाविकः
+      gloss:
+        en: boatman
+        hi: नाविक
+      check:
+        type: subanta
+        stem: नाविक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: दण्डेन
+      gloss:
+        en: with a pole
+        hi: डंडी से
+      check:
+        type: subanta
+        stem: दण्ड
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: नौकाम्
+      gloss:
+        en: boat (object)
+        hi: नाव (कर्म)
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: नयति
+      gloss:
+        en: drives
+        hi: चलाता है
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  term:
+    sa: तृतीया
+    meaning:
+      en: 'the third case: by, with'
+      hi: 'तीसरी विभक्ति: से, के द्वारा'
+- id: tb1
+  kind: table
+  title:
+    en: First case and third case
+    hi: प्रथमा और तृतीया
+  depth: core
+  skills:
+  - case.inst
+  caption:
+    en: The same word as itself and as a means
+    hi: वही शब्द स्वयं और साधन के रूप में
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: '1st: itself'
+    hi: 'प्रथमा: स्वयं'
+  - en: '3rd: by means of'
+    hi: 'तृतीया: साधन से'
+  rows:
+  - - text:
+        en: boat
+        hi: नाव
+    - sa: नौका
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नौकया
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: pole
+        hi: डंडी
+    - sa: दण्डः
+      check:
+        type: subanta
+        stem: दण्ड
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: दण्डेन
+      check:
+        type: subanta
+        stem: दण्ड
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: hand
+        hi: हाथ
+    - sa: हस्तः
+      check:
+        type: subanta
+        stem: हस्त
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: हस्तेन
+      check:
+        type: subanta
+        stem: हस्त
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: pen
+        hi: कलम
+    - sa: लेखनी
+      check:
+        type: subanta
+        stem: लेखनी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: लेखन्या
+      check:
+        type: subanta
+        stem: लेखनी
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: fruit
+        hi: फल
+    - sa: फलम्
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: फलेन
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Trtiya
+        vacana: Eka
+      highlight: true
+  note:
+    en: 'Masculine and neuter -अ: {{एन}}. Feminine -आ: {{अया}}. Feminine -ई: {{ई}} → {{या}}.'
+    hi: पुंलिंग और नपुंसक -अ में {{एन}}। स्त्रीलिंग -आ में {{अया}}। स्त्रीलिंग -ई में {{ई}} → {{या}}।
+- id: t2
+  kind: teach
+  title:
+    en: Two more uses
+    hi: दो और प्रयोग
+  depth: core
+  skills:
+  - case.inst
+  body:
+    en: 'The third case also says how, in what manner: {{सुखेन}} (happily), {{वेगेन}} (swiftly). And with the eyes, ears, hands in pairs it goes dual: {{नेत्राभ्याम्}} (with the two eyes).'
+    hi: 'तृतीया यह भी बताती है कि कैसे, किस ढंग से: {{सुखेन}} (सुख से), {{वेगेन}} (वेग से)। और आँखों, कानों, हाथों की जोड़ी के साथ वह द्विवचन हो जाती है: {{नेत्राभ्याम्}} (दोनों आँखों से)।'
+  examples:
+  - sa: सुखेन
+    meaning:
+      en: happily, in comfort
+      hi: सुख से
+    check:
+      type: subanta
+      stem: सुख
+      linga: Napumsaka
+      vibhakti: Trtiya
+      vacana: Eka
+  - sa: वेगेन
+    meaning:
+      en: swiftly
+      hi: वेग से
+    check:
+      type: subanta
+      stem: वेग
+      linga: Pum
+      vibhakti: Trtiya
+      vacana: Eka
+  - sa: नेत्राभ्याम्
+    meaning:
+      en: with the two eyes
+      hi: दोनों आँखों से
+    check:
+      type: subanta
+      stem: नेत्र
+      linga: Napumsaka
+      vibhakti: Trtiya
+      vacana: Dvi
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.inst
+  mode: choice
+  prompt:
+    en: “He writes with a pen.” Which word for “pen”?
+    hi: ‘वह कलम से लिखता है।’ ‘कलम’ के लिए कौन-सा रूप?
+  explain:
+    en: 'The means takes the third case: {{लेखन्या}}.'
+    hi: 'साधन तृतीया लेता है: {{लेखन्या}}।'
+  roman: after
+  options:
+  - sa: लेखनी
+  - sa: लेखनीम्
+  - correct: true
+    sa: लेखन्या
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.inst
+  mode: match
+  prompt:
+    en: Join each means to its meaning.
+    hi: हर साधन को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{एन}}, {{अया}}: the third-case endings.'
+    hi: '{{एन}}, {{अया}}: तृतीया के प्रत्यय।'
+  roman: after
+  pairs:
+  - left:
+      sa: नौकया
+    right:
+      text:
+        en: by boat
+        hi: नाव से
+  - left:
+      sa: दण्डेन
+    right:
+      text:
+        en: with a pole
+        hi: डंडी से
+  - left:
+      sa: हस्तेन
+    right:
+      text:
+        en: with the hand
+        hi: हाथ से
+  - left:
+      sa: फलेन
+    right:
+      text:
+        en: with a fruit
+        hi: फल से
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - case.inst
+  widget: mark_words
+  prompt:
+    en: Tap every word that names a means (third case).
+    hi: साधन बताने वाले हर शब्द (तृतीया) को छुइए।
+  params:
+    passage:
+    - नौकया
+    - नौका
+    - दण्डेन
+    - दण्डः
+    - हस्तेन
+    - हस्तः
+    targets:
+    - नौकया
+    - दण्डेन
+    - हस्तेन
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: By boat
+    hi: नाव से
+  depth: core
+  skills:
+  - case.inst
+  mode: order
+  prompt:
+    en: 'Say: “The boatman goes by boat.”'
+    hi: 'कहिए: ‘नाविक नाव से जाता है।’'
+  explain:
+    en: '{{नाविकः नौकया गच्छति}}: the boat is the means.'
+    hi: '{{नाविकः नौकया गच्छति}}: नाव साधन है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “नौकया गच्छति,” you say. Tarikā rocks gently on the water and lets out a long note, like wind over a bottle.
+      hi: “नौकया गच्छति,” आप कहते हैं। तरिका पानी पर धीरे से डोलती है और बोतल पर हवा जैसी एक लम्बी तान छोड़ती है।
+    failure:
+      en: The little boat spirit looks puzzled. The means, {{नौकया}}, comes before the verb.
+      hi: नन्ही नाव उलझन में दिखती है। साधन {{नौकया}} क्रिया से पहले आता है।
+  tokens:
+  - नाविकः
+  - नौकया
+  - गच्छति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's tool
+    hi: पाणिनि का करण
+  depth: panini
+  skills:
+  - case.inst
+  sutras:
+  - 1.4.42
+  - 2.3.18
+  body:
+    en: Sūtra 1.4.42, {{साधकतमं करणम्}}, calls the tool “the most effective means” of an action. Sūtra 2.3.18 puts the tool, and the doer of a passive verb, in the third case.
+    hi: सूत्र 1.4.42, {{साधकतमं करणम्}}, उपकरण को क्रिया का ‘सबसे प्रभावी साधन’ कहता है। सूत्र 2.3.18 साधन को, और कर्मवाच्य के कर्ता को, तृतीया में रखता है।
+  term:
+    sa: करणम्
+    meaning:
+      en: the instrument
+      hi: 'करण: साधन'
+- id: sum
+  kind: summary
+  title:
+    en: By means of
+    hi: साधन से
+  depth: core
+  points:
+  - sa: नौकया · दण्डेन · हस्तेन
+    text:
+      en: The means takes the third case.
+      hi: साधन तृतीया में आता है।
+  - sa: सुखेन · वेगेन
+    text:
+      en: …and so does the manner.
+      hi: …और ढंग भी।
+  - sa: एन · अया
+    text:
+      en: Masculine/neuter and feminine endings.
+      hi: पुंलिंग/नपुंसक और स्त्रीलिंग के प्रत्यय।

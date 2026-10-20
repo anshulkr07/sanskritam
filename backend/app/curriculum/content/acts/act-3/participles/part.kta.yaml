@@ -1,0 +1,608 @@
+id: part.kta
+template: scene
+title:
+  en: Gone, has gone
+  hi: गया हुआ
+title_sa: गतः गतवान्
+minutes: 6
+teaches:
+- krt.kta
+needs:
+- krt.ktva
+- krt.tumun
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The one who has done
+    hi: जो कर चुका
+  depth: core
+  image:
+    brief: The paper-fan spirit lifting a folded hand to show three folds, each with a word, one for a figure who has gone, one for a said word, one for a finished thing; the Vetāla and Dādī watching; firelight.
+    alt:
+      en: A paper-fan spirit shows three folds labelled with finished actions
+      hi: पंखे जैसा भूत तीन तहें दिखाता जिन पर पूरी हो चुकी क्रियाओं के शब्द हैं
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - sankshepaka
+    place: smashana
+    ratio: '4:3'
+    id: part-kta-s1
+  narration:
+    en: '“Who is it that has gone?” the Vetāla asks. The paper-fan spirit lifts one folded hand: “गतः.” “Gone.” A word that is also a person, a thing that has happened to someone. “उक्तः,” he adds: “said.” “कृतः”: “done.” Dādī: “It is an adjective made from a verb. It says what has been done, and it agrees with its noun, like any adjective.”'
+    hi: '“कौन है जो गया है?” वेताल पूछता है। काग़ज़ी पंखे वाला भूत अपना एक तहदार हाथ उठाता है: “गतः।” “गया हुआ।” एक शब्द जो एक व्यक्ति भी है, कोई बात जो किसी पर बीत चुकी है। “उक्तः,” वह जोड़ता है: “कहा गया।” “कृतः”: “किया गया।” दादी: “यह क्रिया से बना विशेषण है। यह बताता है कि क्या किया जा चुका है, और किसी भी विशेषण की तरह अपनी संज्ञा से मेल खाता है।”'
+  quote:
+    sa: तस्य तद् वचनं श्रुत्वा राज्ञा भाण्डागारिक आकारितः
+    gloss:
+      en: Hearing his words, the king summoned the treasurer.
+      hi: उसकी वह बात सुनकर राजा ने भण्डारी को बुलाया।
+    source: Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit)
+- id: t1
+  kind: teach
+  title:
+    en: Done and having done
+    hi: किया हुआ और कर चुका
+  depth: core
+  skills:
+  - krt.kta
+  body:
+    en: '{{-त}} makes “done”, an adjective: {{गतः}} (gone), {{कृतः}} (done), {{उक्तः}} (said), {{श्रुतः}} (heard). It often has a passive sense: {{रामेण पुस्तकं पठितम्}}, “the book was read by Rāma”. {{-तवत्}} makes the active “has done”: {{रामः पुस्तकं पठितवान्}}.'
+    hi: '{{-त}} ‘किया हुआ’ बनाता है, एक विशेषण: {{गतः}} (गया हुआ), {{कृतः}} (किया हुआ), {{उक्तः}} (कहा हुआ), {{श्रुतः}} (सुना हुआ)। उसमें अक्सर कर्मवाच्य का भाव होता है: {{रामेण पुस्तकं पठितम्}}, ‘पुस्तक राम द्वारा पढ़ी गई’। {{-तवत्}} कर्तृवाची ‘कर चुका’ बनाता है: {{रामः पुस्तकं पठितवान्}}।'
+  examples:
+  - sa: बालकः गतः।
+    meaning:
+      en: The boy has gone.
+      hi: बालक गया।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गतः
+      gloss:
+        en: gone
+        hi: गया
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: kta
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: रामेण पुस्तकम् पठितम्।
+    meaning:
+      en: The book was read by Rāma.
+      hi: पुस्तक राम द्वारा पढ़ी गई।
+    words:
+    - sa: रामेण
+      gloss:
+        en: by Rāma
+        hi: राम द्वारा
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: पुस्तकम्
+      gloss:
+        en: the book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठितम्
+      gloss:
+        en: read
+        hi: पढ़ी गई
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: kta
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: रामः पुस्तकम् पठितवान्।
+    meaning:
+      en: Rāma read the book.
+      hi: राम ने पुस्तक पढ़ी।
+    words:
+    - sa: रामः
+      gloss:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पुस्तकम्
+      gloss:
+        en: the book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: पठितवान्
+      gloss:
+        en: read
+        hi: पढ़ी
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: ktavatu
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+  term:
+    sa: निष्ठा
+    meaning:
+      en: the “done” endings, -त and -तवत्
+      hi: ‘किया हुआ’ प्रत्यय, -त और -तवत्
+- id: tb1
+  kind: table
+  title:
+    en: Gone
+    hi: गया हुआ
+  depth: core
+  skills:
+  - krt.kta
+  caption:
+    en: Root, “done” in three genders
+    hi: धातु, तीनों लिंगों में ‘किया हुआ’
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Masculine
+    hi: पुंलिंग
+  - en: Feminine
+    hi: स्त्रीलिंग
+  - en: Neuter
+    hi: नपुंसक
+  rows:
+  - - sa: गम्
+    - sa: गतः
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: kta
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गता
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: kta
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गतम्
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: kta
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: पठ्
+    - sa: पठितः
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: kta
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठिता
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: kta
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठितम्
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: kta
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: कृ
+    - sa: कृतः
+      check:
+        type: krdanta
+        dhatu: कृ
+        krt: kta
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कृता
+      check:
+        type: krdanta
+        dhatu: कृ
+        krt: kta
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कृतम्
+      check:
+        type: krdanta
+        dhatu: कृ
+        krt: kta
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: श्रु
+    - sa: श्रुतः
+      check:
+        type: krdanta
+        dhatu: श्रु
+        krt: kta
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: श्रुता
+      check:
+        type: krdanta
+        dhatu: श्रु
+        krt: kta
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: श्रुतम्
+      check:
+        type: krdanta
+        dhatu: श्रु
+        krt: kta
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: दृश्
+    - sa: दृष्टः
+      check:
+        type: krdanta
+        dhatu: दृश्
+        krt: kta
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: दृष्टा
+      check:
+        type: krdanta
+        dhatu: दृश्
+        krt: kta
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: दृष्टम्
+      check:
+        type: krdanta
+        dhatu: दृश्
+        krt: kta
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: दा
+    - sa: दत्तः
+      check:
+        type: krdanta
+        dhatu: दा
+        krt: kta
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: दत्ता
+      check:
+        type: krdanta
+        dhatu: दा
+        krt: kta
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: दत्तम्
+      check:
+        type: krdanta
+        dhatu: दा
+        krt: kta
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  note:
+    en: 'The endings are {{-तः}}, {{-ता}}, {{-तम्}}: like {{देव}}, {{लता}} and {{फल}}.'
+    hi: 'प्रत्यय {{-तः}}, {{-ता}}, {{-तम्}} हैं: {{देव}}, {{लता}} और {{फल}} की तरह।'
+- id: tb2
+  kind: table
+  title:
+    en: Has done
+    hi: कर चुका
+  depth: core
+  skills:
+  - krt.kta
+  caption:
+    en: The active “has done” in three genders
+    hi: तीनों लिंगों में कर्तृवाची ‘कर चुका’
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Masculine
+    hi: पुंलिंग
+  - en: Feminine
+    hi: स्त्रीलिंग
+  - en: Neuter
+    hi: नपुंसक
+  rows:
+  - - sa: गम्
+    - sa: गतवान्
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: ktavatu
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गतवती
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: ktavatu
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गतवत्
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: ktavatu
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: पठ्
+    - sa: पठितवान्
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: ktavatu
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठितवती
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: ktavatu
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठितवत्
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: ktavatu
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: कृ
+    - sa: कृतवान्
+      check:
+        type: krdanta
+        dhatu: कृ
+        krt: ktavatu
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कृतवती
+      check:
+        type: krdanta
+        dhatu: कृ
+        krt: ktavatu
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कृतवत्
+      check:
+        type: krdanta
+        dhatu: कृ
+        krt: ktavatu
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  note:
+    en: '{{-तवान्}}, {{-तवती}}, {{-तवत्}}.'
+    hi: '{{-तवान्}}, {{-तवती}}, {{-तवत्}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - krt.kta
+  mode: choice
+  prompt:
+    en: “Gone” (a boy who has gone). Which form?
+    hi: ‘गया हुआ’ (बालक)। कौन-सा रूप?
+  explain:
+    en: '{{गतः}}: masculine, with {{बालकः}}.'
+    hi: '{{गतः}}: पुंलिंग, {{बालकः}} के साथ।'
+  roman: after
+  options:
+  - sa: गत्वा
+  - sa: गन्तुम्
+  - correct: true
+    sa: गतः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - krt.kta
+  mode: type
+  prompt:
+    en: 'Say: “Done” (masculine).'
+    hi: 'कहिए: ‘किया हुआ’ (पुंलिंग)।'
+  explain:
+    en: '{{कृतः}}.'
+    hi: '{{कृतः}}।'
+  roman: after
+  answers:
+  - कृतः
+  tiles:
+  - कृ
+  - तः
+  - कर
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - krt.kta
+  mode: match
+  prompt:
+    en: Join each root to its “done” form.
+    hi: हर धातु को उसके ‘किया हुआ’ रूप से जोड़िए।
+  explain:
+    en: '{{-त}} after the changed root.'
+    hi: बदली हुई धातु के बाद {{-त}}।
+  roman: after
+  pairs:
+  - left:
+      sa: गम्
+    right:
+      sa: गतः
+  - left:
+      sa: श्रु
+    right:
+      sa: श्रुतः
+  - left:
+      sa: वच्
+    right:
+      sa: उक्तः
+  - left:
+      sa: दा
+    right:
+      sa: दत्तः
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - krt.kta
+  widget: mark_words
+  prompt:
+    en: Tap every “done” word.
+    hi: हर ‘किया हुआ’ शब्द छुइए।
+  params:
+    passage:
+    - गतः
+    - गच्छति
+    - कृतः
+    - करोति
+    - श्रुतः
+    - शृणोति
+    targets:
+    - गतः
+    - कृतः
+    - श्रुतः
+  roman: show
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - krt.kta
+  mode: order
+  prompt:
+    en: 'Say: “Rāma read the book.”'
+    hi: 'कहिए: ‘राम ने पुस्तक पढ़ी।’'
+  explain:
+    en: '{{रामः पुस्तकं पठितवान्}}.'
+    hi: '{{रामः पुस्तकं पठितवान्}}।'
+  roman: after
+  tokens:
+  - रामः
+  - पुस्तकम्
+  - पठितवान्
+- id: p5
+  kind: practice
+  title:
+    en: Gone
+    hi: गई
+  depth: core
+  skills:
+  - krt.kta
+  mode: choice
+  prompt:
+    en: “The girl has gone.” Which form agrees?
+    hi: ‘बालिका गई।’ कौन-सा रूप मेल खाता है?
+  explain:
+    en: '{{गता}}: feminine, with {{बालिका}}.'
+    hi: '{{गता}}: स्त्रीलिंग, {{बालिका}} के साथ।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“गता,” you say. The paper-fan spirit''s third fold, the one that had been stuck, comes undone with a small sigh. On it, in tiny letters, a line that fills it: “कृतः. उक्तः. गतः.” “Done, said, gone,” he reads. “A whole life, and I thought it was only one word.”'
+      hi: '“गता,” आप कहते हैं। काग़ज़ी पंखे वाले भूत की तीसरी तह, जो अटकी हुई थी, एक छोटी आह के साथ खुल जाती है। उस पर नन्हे अक्षरों में एक पंक्ति है जो उसे भर देती है: “कृतः। उक्तः। गतः।” “किया, कहा, गया,” वह पढ़ता है। “एक पूरा जीवन, और मैंने सोचा यह केवल एक शब्द है।”'
+    failure:
+      en: The fold stays stuck. {{गता}} agrees with a feminine noun.
+      hi: तह अटकी रहती है। {{गता}} स्त्रीलिंग संज्ञा से मेल खाता है।
+  options:
+  - sa: गतः
+  - correct: true
+    sa: गता
+  - sa: गतम्
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's “done”
+    hi: पाणिनि का ‘किया हुआ’
+  depth: panini
+  skills:
+  - krt.kta
+  sutras:
+  - 1.1.26
+  - 3.2.102
+  - 3.4.70
+  - 3.4.72
+  body:
+    en: 'Sūtra 1.1.26, {{क्तक्तवतू निष्ठा}}, names {{क्त}} and {{क्तवतु}} {{निष्ठा}}, and 3.2.102, {{निष्ठा}}, gives them for the past. 3.4.70, {{तयोरेव कृत्यक्तखलर्थाः}}, says {{क्त}} is used for the object or the bare action, and 3.4.72, {{गत्यर्थाकर्मकश्लिषशीङ्स्थाऽऽसवसजनरुहजीर्यतिभ्यश्च}}, lets it be active for verbs of going: {{गतः}}.'
+    hi: 'सूत्र 1.1.26, {{क्तक्तवतू निष्ठा}}, {{क्त}} और {{क्तवतु}} को {{निष्ठा}} कहता है, और 3.2.102, {{निष्ठा}}, उन्हें भूतकाल के लिए देता है। 3.4.70, {{तयोरेव कृत्यक्तखलर्थाः}}, कहता है कि {{क्त}} कर्म या केवल क्रिया के लिए आता है, और 3.4.72, {{गत्यर्थाकर्मकश्लिषशीङ्स्थाऽऽसवसजनरुहजीर्यतिभ्यश्च}}, उसे गति वाली क्रियाओं में कर्तृवाची होने देता है: {{गतः}}।'
+- id: sum
+  kind: summary
+  title:
+    en: Done
+    hi: किया हुआ
+  depth: core
+  points:
+  - sa: गतः · गता · गतम्
+    text:
+      en: Gone, in three genders.
+      hi: गया हुआ, तीनों लिंगों में।
+  - sa: गतवान् · गतवती · गतवत्
+    text:
+      en: Has gone (active).
+      hi: जा चुका (कर्तृवाची)।
+  - sa: रामेण पुस्तकं पठितम्
+    text:
+      en: The book was read by Rāma.
+      hi: पुस्तक राम द्वारा पढ़ी गई।

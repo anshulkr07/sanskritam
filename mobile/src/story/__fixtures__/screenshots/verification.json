@@ -1,0 +1,62 @@
+{
+  "width": 360,
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "fixtureLessons": 7,
+  "fixtureCards": 65,
+  "posts": [
+    {
+      "path": "/progress/card-lesson",
+      "body": {
+        "lesson_id": "vowels.short",
+        "checks_right": 2,
+        "checks_total": 4
+      }
+    },
+    {
+      "path": "/learn/attempts",
+      "body": {
+        "lesson_id": "vowels.short",
+        "results": [
+          {
+            "card_id": "p1",
+            "verdict": "incorrect"
+          },
+          {
+            "card_id": "p2",
+            "verdict": "correct"
+          },
+          {
+            "card_id": "p3",
+            "verdict": "incorrect"
+          },
+          {
+            "card_id": "p4",
+            "verdict": "correct"
+          }
+        ]
+      }
+    }
+  ],
+  "browserErrors": [],
+  "checks": [
+    "flag persistence",
+    "theme persistence",
+    "offline home/map/lesson",
+    "all cards",
+    "four widgets",
+    "gate failure/retry/success",
+    "first verdicts",
+    "ordered posts",
+    "tile and keyboard input",
+    "Hindi large text",
+    "home new/mid/done",
+    "unit end frees Dhumaka",
+    "leaves/ghosts/cast",
+    "44 map units and measured spacing",
+    "review attempts only",
+    "320/430/tablet/landscape fitting"
+  ]
+}

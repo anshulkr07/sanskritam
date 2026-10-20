@@ -1,0 +1,45 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: consonant-sandhi
+title:
+  en: Consonants that join
+  hi: व्यंजन सन्धि
+title_sa: व्यञ्जनसन्धिः
+status: ready
+episode:
+  summary:
+    en: 'Statues with hard edges: the last sound of a word takes on its neighbour''s voice, place or nasal sound.'
+    hi: 'कठोर किनारों वाली प्रतिमाएँ: शब्द की अंतिम ध्वनि पड़ोसी की घोषता, स्थान या नासिक्यता ले लेती है।'
+  beats:
+  - सत् + जनः → सज्जनः.
+  - म् → ं before consonants.
+  - Nasals and ṣ/ṇ inside words.
+skills:
+- id: sandhi.voice
+  title:
+    en: Final stops take their neighbour's voice
+    hi: जश्त्व और चर्त्व
+  sutras:
+  - 8.2.39
+- id: sandhi.place
+  title:
+    en: Assimilation of place
+    hi: श्चुत्व, ष्टुत्व
+  sutras:
+  - 8.4.40
+  - 8.4.41
+- id: sandhi.nasal
+  title:
+    en: Nasals and anusvāra
+    hi: अनुनासिक और अनुस्वार
+  sutras:
+  - 8.4.45
+  - 8.3.23
+lessons:
+- cs.voice
+- cs.place
+- cs.nasal
+planned: []
+ghost: vyanjanika
+revision: cs.revision
+check: cs.check

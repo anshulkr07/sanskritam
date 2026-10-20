@@ -1,0 +1,213 @@
+id: pn.revision
+template: revision
+title:
+  en: Everything about pronouns and numbers
+  hi: सर्वनामों और संख्याओं के बारे में सब कुछ
+title_sa: सर्वनामसङ्ख्यासङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The patterns
+    hi: ढाँचे
+  depth: core
+  section: core
+  rows:
+  - skill: pron.tad-full
+    rule:
+      en: '{{तद्}}: {{सः तौ ते}}, {{तम् तौ तान्}}, {{तेन ताभ्याम् तैः}}, {{तस्मै}}, {{तस्मात्}}, {{तस्य तयोः तेषाम्}}, {{तस्मिन् तयोः तेषु}}. Feminine: {{सा}}, {{ताम्}}, {{तया}}, {{तस्यै}}, {{तस्याः}}, {{तस्याम्}}. Neuter: {{तत्}}, {{ते}}, {{तानि}}.'
+      hi: '{{तद्}}: {{सः तौ ते}}, {{तम् तौ तान्}}, {{तेन ताभ्याम् तैः}}, {{तस्मै}}, {{तस्मात्}}, {{तस्य तयोः तेषाम्}}, {{तस्मिन् तयोः तेषु}}। स्त्रीलिंग: {{सा}}, {{ताम्}}, {{तया}}, {{तस्यै}}, {{तस्याः}}, {{तस्याम्}}। नपुंसक: {{तत्}}, {{ते}}, {{तानि}}।'
+    sutras:
+    - 7.2.102
+    - 7.1.14
+    - 7.1.15
+    - 7.1.17
+    - 7.1.52
+    tag: core
+    taught_in: pn.tad#tb1
+  - skill: pron.kim-yad
+    rule:
+      en: '{{किम्}} and {{यद्}} follow {{तद्}}: {{कः का किम्}}, {{कस्मै}}, {{कस्मात्}}, {{कस्मिन्}}; {{यः या यत्}}, {{यस्मै}}, {{यस्मात्}}, {{यस्मिन्}}.'
+      hi: '{{किम्}} और {{यद्}} {{तद्}} के पीछे चलते हैं: {{कः का किम्}}, {{कस्मै}}, {{कस्मात्}}, {{कस्मिन्}}; {{यः या यत्}}, {{यस्मै}}, {{यस्मात्}}, {{यस्मिन्}}।'
+    tag: core
+    taught_in: pn.who#tb1
+  - skill: num.one-ten
+    rule:
+      en: 'One to four agree: {{एकः एका एकम्}}, {{द्वौ द्वे द्वे}}, {{त्रयः तिस्रः त्रीणि}}, {{चत्वारः चतस्रः चत्वारि}}. Five to ten do not change: {{पञ्च षट् सप्त अष्ट नव दश}}.'
+      hi: 'एक से चार मेल खाते हैं: {{एकः एका एकम्}}, {{द्वौ द्वे द्वे}}, {{त्रयः तिस्रः त्रीणि}}, {{चत्वारः चतस्रः चत्वारि}}। पाँच से दस नहीं बदलते: {{पञ्च षट् सप्त अष्ट नव दश}}।'
+    tag: core
+    taught_in: pn.count#tb1
+  - skill: num.big-time
+    rule:
+      en: '{{एकादश}} … {{अष्टादश}}; {{विंशतिः}}, {{त्रिंशत्}}, {{चत्वारिंशत्}}, {{पञ्चाशत्}}, {{षष्टिः}}, {{सप्ततिः}}, {{अशीतिः}}, {{नवतिः}}, {{शतम्}}, {{सहस्रम्}}. Ordinals: {{प्रथमः}}, {{द्वितीयः}}, {{तृतीयः}} … {{दशमः}}.'
+      hi: '{{एकादश}} … {{अष्टादश}}; {{विंशतिः}}, {{त्रिंशत्}}, {{चत्वारिंशत्}}, {{पञ्चाशत्}}, {{षष्टिः}}, {{सप्ततिः}}, {{अशीतिः}}, {{नवतिः}}, {{शतम्}}, {{सहस्रम्}}। क्रमवाचक: {{प्रथमः}}, {{द्वितीयः}}, {{तृतीयः}} … {{दशमः}}।'
+    tag: core
+    taught_in: pn.time#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: pron.tad-full
+    rule:
+      en: '{{तद्}} is the far “that” or the “he, she, it” of a story; {{एतद्}} is the near “this”; {{इदम्}} is also “this”.'
+      hi: '{{तद्}} दूर का ‘वह’ या कथा का ‘वह (पुं., स्त्री., नपुं.)’ है; {{एतद्}} पास का ‘यह’; {{इदम्}} भी ‘यह’ है।'
+    tag: good
+    taught_in: pn.tad#t1
+  - skill: pron.kim-yad
+    rule:
+      en: '{{यद्}}-clauses come with {{तद्}}-clauses: {{यः … सः}}, {{या … सा}}, {{यत् … तत्}}, in the same case in both halves.'
+      hi: '{{यद्}}-वाक्यांश {{तद्}}-वाक्यांश के साथ आते हैं: {{यः … सः}}, {{या … सा}}, {{यत् … तत्}}, दोनों भागों में एक ही विभक्ति।'
+    tag: good
+    taught_in: pn.who#t2
+  - skill: num.one-ten
+    rule:
+      en: Two takes the dual; three to four the plural; five to ten the plural and never change.
+      hi: दो द्विवचन लेता है; तीन-चार बहुवचन; पाँच से दस बहुवचन और कभी नहीं बदलते।
+    tag: good
+    taught_in: pn.count#t2
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: pron.tad-full
+    rule:
+      en: '{{इदम्}} (“this”) has a stem that changes: {{अयम् इयम् इदम्}}, {{अनेन}} (by this), {{अस्य}} (of this).'
+      hi: '{{इदम्}} (‘यह’) का आधार बदलता है: {{अयम् इयम् इदम्}}, {{अनेन}} (इससे), {{अस्य}} (इसका)।'
+    example:
+      sa: अयम्
+      meaning:
+        en: 'this one: {{अयम्}}'
+        hi: 'यह: {{अयम्}}'
+      check:
+        type: subanta
+        stem: इदम्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    tag: rare
+    new_here: true
+  - skill: num.one-ten
+    rule:
+      en: '{{अष्ट}} is also {{अष्टौ}}; {{षष्}} becomes {{षट्}}; {{एक}} has a plural: {{एके}}, “some”.'
+      hi: '{{अष्ट}} का {{अष्टौ}} भी है; {{षष्}} का {{षट्}} बनता है; {{एक}} का बहुवचन भी है: {{एके}}, ‘कुछ’।'
+    example:
+      sa: एकाः
+      meaning:
+        en: 'some: {{एके}}'
+        hi: 'कुछ: {{एके}}'
+      check:
+        type: subanta
+        stem: एक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: pron.tad-full
+    rule:
+      en: 'Do not write {{तस्मे}} or {{तस्मा}}: the fourth case masculine is {{तस्मै}}.'
+      hi: '{{तस्मे}} या {{तस्मा}} मत लिखिए: पुंलिंग चतुर्थी {{तस्मै}} है।'
+    tag: core
+    taught_in: pn.tad#p5
+  - skill: pron.kim-yad
+    rule:
+      en: 'Do not start {{यः}} and forget {{सः}}: the sentence needs both halves.'
+      hi: '{{यः}} से शुरू करके {{सः}} मत भूलिए: वाक्य में दोनों भाग चाहिए।'
+    tag: core
+    taught_in: pn.who#p5
+  - skill: num.one-ten
+    rule:
+      en: 'Do not say {{त्रयः लताः}}: a feminine takes {{तिस्रः}}: {{तिस्रः लताः}}.'
+      hi: '{{त्रयः लताः}} मत कहिए: स्त्रीलिंग {{तिस्रः}} लेता है: {{तिस्रः लताः}}।'
+    tag: core
+    taught_in: pn.count#p1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: pron.tad-full
+    rule:
+      en: '{{सर्वनाम्नः स्मै}} and {{ङसिङ्योः स्मात्स्मिनौ}}: the odd endings of {{तस्मै}}, {{तस्मात्}}, {{तस्मिन्}}.'
+      hi: '{{सर्वनाम्नः स्मै}} और {{ङसिङ्योः स्मात्स्मिनौ}}: {{तस्मै}}, {{तस्मात्}}, {{तस्मिन्}} के विचित्र प्रत्यय।'
+    sutras:
+    - 7.1.14
+    - 7.1.15
+    tag: core
+    taught_in: pn.tad#pn
+  - skill: pron.tad-full
+    rule:
+      en: '{{आमि सर्वनाम्नः सुट्}}: the plural genitive {{तेषाम्}}, {{तासाम्}}.'
+      hi: '{{आमि सर्वनाम्नः सुट्}}: षष्ठी बहुवचन {{तेषाम्}}, {{तासाम्}}।'
+    sutras:
+    - 7.1.52
+    tag: core
+    taught_in: pn.tad#pn
+  - skill: pron.kim-yad
+    rule:
+      en: '{{किमः कः}} makes {{किम्}} into {{क-}} before most endings: {{कः}}, {{कस्मै}}.'
+      hi: '{{किमः कः}} अधिकतर प्रत्ययों से पहले {{किम्}} को {{क-}} कर देता है: {{कः}}, {{कस्मै}}।'
+    sutras:
+    - 7.2.103
+    tag: core
+    taught_in: pn.who#t1
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: pron.tad-full
+    formula: सः सा तत् · तस्मै · तस्यै
+    rule:
+      en: that
+      hi: वह
+    tag: core
+    taught_in: pn.tad#tb1
+  - skill: pron.kim-yad
+    formula: कः का किम् · यः या यत्
+    rule:
+      en: who, which
+      hi: कौन, जो
+    tag: core
+    taught_in: pn.who#tb1
+  - skill: num.one-ten
+    formula: एकः द्वौ त्रयः चत्वारः पञ्च … दश
+    rule:
+      en: one to ten
+      hi: एक से दस
+    tag: core
+    taught_in: pn.count#tb1
+  - skill: num.big-time
+    formula: एकादश · विंशतिः · शतम् · प्रथमः · अद्य श्वः ह्यः
+    rule:
+      en: big numbers, ordinals, time
+      hi: बड़ी संख्याएँ, क्रमवाचक, समय
+    tag: core
+    taught_in: pn.time#tb1

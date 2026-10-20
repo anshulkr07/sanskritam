@@ -131,7 +131,7 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
           <Text style={[styles.empty, { fontSize: sized(font.sizes.base) }]}>No fact today.</Text>
         ) : (
           <>
-            <Panel tone="teal" style={{ borderRadius: 0 }}>
+            <Panel tone="teal" style={{ borderRadius: 0, padding: 24 }}>
               {!!claim && <Text style={[styles.eyebrow, { color: labelOn("teal") }]}>{claim}</Text>}
               <Text
                 style={[styles.fact, { fontSize: sized(20), lineHeight: Math.round(sized(20) * 1.4) }]}
@@ -144,7 +144,7 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
 
             {lines.length > 0 && (
               <>
-                <SectionLabel>The verse</SectionLabel>
+                <SectionLabel style={styles.sectionLabel}>The verse</SectionLabel>
                 <View accessible accessibilityLabel={iast ? `The verse. ${iast}` : "The verse"}>
                   {lines.map((line, i) => (
                     <Sa key={`${i}-${line}`} size={22}>
@@ -163,7 +163,7 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
 
             {!!translation && (
               <>
-                <SectionLabel>In English</SectionLabel>
+                <SectionLabel style={styles.sectionLabel}>In English</SectionLabel>
                 <Text style={[styles.prose, { fontSize: sized(font.sizes.base), lineHeight: Math.round(sized(font.sizes.base) * 1.5) }]}>
                   {translation}
                 </Text>
@@ -172,7 +172,7 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
 
             {!!explanation && (
               <>
-                <SectionLabel>What it says</SectionLabel>
+                <SectionLabel style={styles.sectionLabel}>What it says</SectionLabel>
                 <Text style={[styles.prose, { fontSize: sized(font.sizes.base), lineHeight: Math.round(sized(font.sizes.base) * 1.5) }]}>
                   {explanation}
                 </Text>
@@ -181,7 +181,7 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
 
             {page && (
               <>
-                <SectionLabel>Source</SectionLabel>
+                <SectionLabel style={styles.sectionLabel}>Source</SectionLabel>
                 <Pressable
                   onPress={() => {
                     haptics.tap();
@@ -204,7 +204,7 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
               </>
             )}
 
-            <SectionLabel>Share this insight</SectionLabel>
+            <SectionLabel style={styles.sectionLabel}>Share this insight</SectionLabel>
             <View style={styles.shareFormats}>
               {(["post", "story"] as const).map((format) => (
                 <Pressable key={format} onPress={() => setShareFormat(format)} accessibilityRole="button"
@@ -236,7 +236,7 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
 
             {!more.loading && !more.failed && earlier.length > 0 && (
               <>
-                <SectionLabel>Earlier</SectionLabel>
+                <SectionLabel style={styles.sectionLabel}>Earlier</SectionLabel>
                 <View>
                   {earlier.map((f) => {
                     const where = refLine(f);
@@ -284,7 +284,8 @@ export default function DoYouKnowScreen({ route, navigation }: Props) {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.bg },
-  body: { paddingHorizontal: space.md, paddingTop: space.xs, paddingBottom: 120 },
+  body: { paddingHorizontal: space.lg, paddingTop: space.md, paddingBottom: 120 },
+  sectionLabel: { marginTop: 32, marginBottom: 14, paddingTop: 20, borderTopWidth: 1, borderTopColor: color.border, fontSize: 13, letterSpacing: 1 },
   empty: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft, marginTop: space.lg },
   eyebrow: {
     fontFamily: "Nunito_800ExtraBold",
@@ -302,23 +303,23 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: space.sm,
-    minHeight: 48,
-    paddingVertical: space.xs,
+    minHeight: 64,
+    paddingVertical: space.md,
     borderBottomWidth: 1,
     borderBottomColor: color.border,
   },
   pressed: { opacity: 0.75 },
-  rowText: { flex: 1, minWidth: 0 },
+  rowText: { flex: 1, minWidth: 0, gap: 4 },
   rowTitle: { fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.ink },
   rowSub: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", color: color.inkSoft },
   flagRow: { flexDirection: "row", justifyContent: "flex-end", alignItems: "center", minHeight: 44, marginTop: space.sm },
   shareFormats: { flexDirection: "row", gap: space.sm, marginTop: space.xs, marginBottom: space.xs },
-  shareFormat: { minHeight: 44, paddingHorizontal: space.md, justifyContent: "center", borderWidth: 1, borderColor: color.ink },
+  shareFormat: { minHeight: 44, paddingHorizontal: space.md, justifyContent: "center", borderWidth: 1, borderColor: color.ink, borderRadius: 22 },
   shareFormatOn: { backgroundColor: color.ink },
   shareFormatText: { fontFamily: "Nunito_700Bold", fontWeight: "700", color: color.ink },
   shareFormatTextOn: { color: "#FFF8EE" },
   sharePreview: { width: "100%", alignItems: "center", justifyContent: "center", overflow: "hidden" },
-  shareButton: { minHeight: 48, justifyContent: "center", alignItems: "center", backgroundColor: color.saffronBtn, marginTop: space.sm },
+  shareButton: { borderRadius: 14, minHeight: 52, justifyContent: "center", alignItems: "center", backgroundColor: color.saffronBtn, marginTop: space.sm },
   shareButtonText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", color: "#FFF8EE" },
   offscreen: { position: "absolute", left: 0, top: -10000 },
 });

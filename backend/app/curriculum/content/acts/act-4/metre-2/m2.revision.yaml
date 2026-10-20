@@ -1,0 +1,108 @@
+id: m2.revision
+template: revision
+title:
+  en: Everything about the great metres
+  hi: प्रमुख छन्दों के बारे में सब कुछ
+title_sa: वृत्तसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The two ways to count
+    hi: गिनने के दो ढंग
+  depth: core
+  section: core
+  rows:
+  - skill: chandas.vrtta
+    rule:
+      en: 'A {{वृत्तम्}} counts syllables: the same number in each quarter, in the same pattern.'
+      hi: '{{वृत्तम्}} अक्षर गिनता है: हर चरण में संख्या बराबर, ढाँचा वही।'
+    tag: core
+    taught_in: m2.vrtta#tb1
+  - skill: chandas.arya
+    rule:
+      en: 'A {{जाति}} counts time: light 1, heavy 2. {{आर्या}}: 12, 18, 12, 15.'
+      hi: '{{जाति}} समय गिनता है: लघु 1, गुरु 2। {{आर्या}}: 12, 18, 12, 15।'
+    tag: core
+    taught_in: m2.arya#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: chandas.vrtta
+    rule:
+      en: 'Count the syllables of one quarter: 11, 14, 17 or 19.'
+      hi: 'एक चरण के अक्षर गिनिए: 11, 14, 17 या 19।'
+    tag: good
+    taught_in: m2.vrtta#t1
+  - skill: chandas.arya
+    rule:
+      en: Add the beats of each quarter; the sums 12, 18, 12, 15 mean Āryā.
+      hi: हर चरण की ताल जोड़िए; योग 12, 18, 12, 15 हो तो आर्या।
+    tag: good
+    taught_in: m2.arya#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: chandas.vrtta
+    rule:
+      en: '{{उपजाति}}: a verse that mixes two eleven-syllable metres, {{इन्द्रवज्रा}} and {{उपेन्द्रवज्रा}}.'
+      hi: '{{उपजाति}}: ग्यारह अक्षरों वाले दो छन्दों, {{इन्द्रवज्रा}} और {{उपेन्द्रवज्रा}}, को मिलाने वाला श्लोक।'
+    tag: rare
+    taught_in: m2.vrtta#p4
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: chandas.vrtta
+    rule:
+      en: 'Do not name a metre from its first quarter''s start alone: count the whole quarter.'
+      hi: 'केवल चरण के आरम्भ से छन्द का नाम मत लीजिए: पूरा चरण गिनिए।'
+    tag: core
+    taught_in: m2.vrtta#p1
+  - skill: chandas.arya
+    rule:
+      en: 'Do not count an Āryā by syllables: count mātrās.'
+      hi: 'आर्या को अक्षरों से मत गिनिए: मात्राएँ गिनिए।'
+    tag: core
+    taught_in: m2.arya#p4
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: chandas.vrtta
+    formula: ११ · १४ · १७ · १९
+    rule:
+      en: syllables in a quarter
+      hi: चरण में अक्षर
+    tag: core
+    taught_in: m2.vrtta#tb1
+  - skill: chandas.arya
+    formula: १२ · १८ · १२ · १५
+    rule:
+      en: mātrās in the Āryā
+      hi: आर्या की मात्राएँ
+    tag: core
+    taught_in: m2.arya#tb1

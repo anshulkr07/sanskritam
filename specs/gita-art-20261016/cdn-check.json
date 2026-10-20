@@ -1,17 +1,50 @@
 {
-  "uri": "https://cdn.vedicvalor.com/art/verses/v1/74c9a24d7fcc8f497e41ab46.webp",
-  "requests": [
+  "checked_at": "2026-10-19T10:52:28.653301+00:00",
+  "results": [
     {
-      "milliseconds": 665,
-      "cache": "MISS",
-      "bytes": 139454,
-      "content_type": "image/webp"
+      "key": "01-001",
+      "requests": [
+        {
+          "cache_status": "HIT",
+          "cache_control": "public, max-age=31536000, immutable",
+          "bytes": 159954
+        },
+        {
+          "cache_status": "HIT",
+          "cache_control": "public, max-age=31536000, immutable",
+          "bytes": 159954
+        }
+      ]
     },
     {
-      "milliseconds": 42,
-      "cache": "HIT",
-      "bytes": 139454,
-      "content_type": "image/webp"
+      "key": "13-016",
+      "requests": [
+        {
+          "cache_status": "HIT",
+          "cache_control": "public, max-age=31536000, immutable",
+          "bytes": 216664
+        },
+        {
+          "cache_status": "HIT",
+          "cache_control": "public, max-age=31536000, immutable",
+          "bytes": 216664
+        }
+      ]
+    },
+    {
+      "key": "18-078",
+      "requests": [
+        {
+          "cache_status": "HIT",
+          "cache_control": "public, max-age=31536000, immutable",
+          "bytes": 217070
+        },
+        {
+          "cache_status": "HIT",
+          "cache_control": "public, max-age=31536000, immutable",
+          "bytes": 217070
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,464 @@
+id: in.where
+template: scene
+title:
+  en: In, on, at
+  hi: में, पर, पास
+title_sa: अधिकरणम्
+minutes: 6
+teaches:
+- case.loc
+needs:
+- case.gen
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Night in the courtyard
+    hi: आँगन में रात
+  depth: core
+  image:
+    brief: 'The school courtyard at night: the old Ācārya hanging a lit brass lamp beside a stone well, pupils in a ring, a small flickering amber spirit shaped like a flame leaping up from the lamp; stars overhead; you and Dādī at the edge.'
+    alt:
+      en: Night in a school courtyard, a lamp hung by the well and a flame-shaped spirit leaping up
+      hi: आँगन में रात, कुएँ पर टँगा दीपक और उछलता लौ-भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - dipaka
+    place: pathashala
+    ratio: '4:3'
+    id: in-where-s1
+  narration:
+    en: 'Night falls over the school. The Ācārya hangs a lamp by the well in the courtyard. “Where is the water?” he asks. “In the well,” says a pupil. “Where is the lamp?” “At the well.” “Where is the boy?” A flame-coloured spirit leaps up from the lamp: “Here!”'
+    hi: 'पाठशाला पर रात उतरती है। आचार्य आँगन में कुएँ के पास एक दीपक टाँगते हैं। “जल कहाँ है?” वे पूछते हैं। “कुएँ में,” एक शिष्य कहता है। “दीपक कहाँ है?” “कुएँ पर।” “बालक कहाँ है?” दीपक से एक लौ के रंग का भूत उछलता है: “यहाँ!”'
+  lines:
+  - speaker: acarya
+    sa: कूपे जलम् अस्ति।
+    gloss:
+      en: There is water in the well.
+      hi: कुएँ में जल है।
+- id: t1
+  kind: teach
+  title:
+    en: 'Where: the seventh case'
+    hi: 'कहाँ: सप्तमी'
+  depth: core
+  skills:
+  - case.loc
+  sutras:
+  - 2.3.36
+  - 1.4.45
+  body:
+    en: 'The place or support where something is or happens takes the seventh case, {{सप्तमी}}: {{कूपे जलम्}} (water in the well), {{गृहे दीपः}} (a lamp in the house), {{वृक्षे शुकः}} (a parrot in the tree).'
+    hi: 'जो स्थान या आधार जहाँ कुछ होता है, वह सप्तमी में आता है: {{कूपे जलम्}} (कुएँ में जल), {{गृहे दीपः}} (घर में दीपक), {{वृक्षे शुकः}} (पेड़ पर तोता)।'
+  examples:
+  - sa: कूपे जलम् अस्ति।
+    meaning:
+      en: There is water in the well.
+      hi: कुएँ में जल है।
+    words:
+    - sa: कूपे
+      gloss:
+        en: in the well
+        hi: कुएँ में
+      check:
+        type: subanta
+        stem: कूप
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: जलम्
+      gloss:
+        en: water
+        hi: जल
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: गृहे दीपः अस्ति।
+    meaning:
+      en: There is a lamp in the house.
+      hi: घर में दीपक है।
+    words:
+    - sa: गृहे
+      gloss:
+        en: in the house
+        hi: घर में
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: दीपः
+      gloss:
+        en: lamp
+        hi: दीपक
+      check:
+        type: subanta
+        stem: दीप
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: वृक्षे शुकः तिष्ठति।
+    meaning:
+      en: A parrot sits in the tree.
+      hi: पेड़ पर तोता बैठा है।
+    words:
+    - sa: वृक्षे
+      gloss:
+        en: in the tree
+        hi: पेड़ पर
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: शुकः
+      gloss:
+        en: parrot
+        hi: तोता
+      check:
+        type: subanta
+        stem: शुक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: तिष्ठति
+      gloss:
+        en: sits
+        hi: बैठा है
+      check:
+        type: tinanta
+        dhatu: स्था
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: नद्याम् नौका अस्ति।
+    meaning:
+      en: The boat is on the river.
+      hi: नाव नदी में है।
+    words:
+    - sa: नद्याम्
+      gloss:
+        en: in the river
+        hi: नदी में
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: नौका
+      gloss:
+        en: boat
+        hi: नाव
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  term:
+    sa: सप्तमी
+    meaning:
+      en: 'the seventh case: in, on, at'
+      hi: 'सातवीं विभक्ति: में, पर, पास'
+- id: tb1
+  kind: table
+  title:
+    en: First case and seventh case
+    hi: प्रथमा और सप्तमी
+  depth: core
+  skills:
+  - case.loc
+  caption:
+    en: The same word as itself and as a place
+    hi: वही शब्द स्वयं और स्थान के रूप में
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: '1st: itself'
+    hi: 'प्रथमा: स्वयं'
+  - en: '7th: in, on, at'
+    hi: 'सप्तमी: में, पर'
+  rows:
+  - - text:
+        en: house
+        hi: घर
+    - sa: गृहम्
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गृहे
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: well
+        hi: कुआँ
+    - sa: कूपः
+      check:
+        type: subanta
+        stem: कूप
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कूपे
+      check:
+        type: subanta
+        stem: कूप
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: tree
+        hi: पेड़
+    - sa: वृक्षः
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वृक्षे
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: school
+        hi: पाठशाला
+    - sa: पाठशाला
+      check:
+        type: subanta
+        stem: पाठशाला
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पाठशालायाम्
+      check:
+        type: subanta
+        stem: पाठशाला
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: river
+        hi: नदी
+    - sa: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नद्याम्
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+  note:
+    en: 'Masculine and neuter -अ: {{ए}}. Feminine -आ: {{आयाम्}}. Feminine -ई: {{ई}} → {{याम्}}.'
+    hi: पुंलिंग और नपुंसक -अ में {{ए}}। स्त्रीलिंग -आ में {{आयाम्}}। स्त्रीलिंग -ई में {{ई}} → {{याम्}}।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.loc
+  mode: choice
+  prompt:
+    en: “The water is in the well.” Which word for “well”?
+    hi: ‘जल कुएँ में है।’ ‘कुआँ’ के लिए कौन-सा रूप?
+  explain:
+    en: 'The place: seventh case.'
+    hi: 'स्थान: सप्तमी।'
+  roman: after
+  options:
+  - sa: कूपः
+  - sa: कूपम्
+  - correct: true
+    sa: कूपे
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.loc
+  mode: match
+  prompt:
+    en: Join each place to its meaning.
+    hi: हर स्थान को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{ए}}, {{आयाम्}}, {{याम्}}: the seventh-case endings.'
+    hi: '{{ए}}, {{आयाम्}}, {{याम्}}: सप्तमी के प्रत्यय।'
+  roman: after
+  pairs:
+  - left:
+      sa: गृहे
+    right:
+      text:
+        en: in the house
+        hi: घर में
+  - left:
+      sa: कूपे
+    right:
+      text:
+        en: in the well
+        hi: कुएँ में
+  - left:
+      sa: पाठशालायाम्
+    right:
+      text:
+        en: in the school
+        hi: पाठशाला में
+  - left:
+      sa: नद्याम्
+    right:
+      text:
+        en: in the river
+        hi: नदी में
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - case.loc
+  widget: mark_words
+  prompt:
+    en: Tap every word that says “in” or “on”.
+    hi: ‘में’ या ‘पर’ बताने वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - गृहे
+    - गृहम्
+    - वृक्षे
+    - वृक्षः
+    - कूपे
+    - कूपः
+    targets:
+    - गृहे
+    - वृक्षे
+    - कूपे
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: Where is the light?
+    hi: प्रकाश कहाँ है?
+  depth: core
+  skills:
+  - case.loc
+  mode: order
+  prompt:
+    en: 'Say: “There is a lamp in the house.”'
+    hi: 'कहिए: ‘घर में दीपक है।’'
+  explain:
+    en: '{{गृहे दीपः अस्ति}}: the place in the seventh case.'
+    hi: '{{गृहे दीपः अस्ति}}: स्थान सप्तमी में।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “गृहे दीपः अस्ति,” you say, and the flame-coloured spirit darts through the open door and back, trailing sparks. “कूपे जलम्,” says Dādī, and the spirit dives toward the well, looking down into the dark water as if checking.
+      hi: “गृहे दीपः अस्ति,” आप कहते हैं, और लौ के रंग का भूत खुले द्वार से अन्दर-बाहर झपटता है, चिंगारियाँ बिखेरता। “कूपे जलम्,” दादी कहती हैं, और भूत कुएँ की ओर गोता लगाता है, काले जल में झाँकता हुआ मानो जाँच रहा हो।
+    failure:
+      en: The spirit hovers. The place goes in the seventh case, first.
+      hi: भूत मँडराता है। स्थान सप्तमी में, पहले।
+  tokens:
+  - गृहे
+  - दीपः
+  - अस्ति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's locus
+    hi: पाणिनि का अधिकरण
+  depth: panini
+  skills:
+  - case.loc
+  sutras:
+  - 1.4.45
+  - 2.3.36
+  body:
+    en: 'Sūtra 1.4.45, {{आधारोऽधिकरणम्}}: the locus is the support. Sūtra 2.3.36, {{सप्तम्यधिकरणे च}}: it takes the seventh case.'
+    hi: 'सूत्र 1.4.45, {{आधारोऽधिकरणम्}}: अधिकरण आधार है। सूत्र 2.3.36, {{सप्तम्यधिकरणे च}}: वह सप्तमी लेता है।'
+  term:
+    sa: अधिकरणम्
+    meaning:
+      en: 'the locus: where something is'
+      hi: 'अधिकरण: जहाँ कुछ है'
+- id: sum
+  kind: summary
+  title:
+    en: In, on, at
+    hi: में, पर, पास
+  depth: core
+  points:
+  - sa: गृहे · कूपे · नद्याम्
+    text:
+      en: 'The seventh case: where.'
+      hi: 'सप्तमी: कहाँ।'
+  - sa: ए · आयाम् · याम्
+    text:
+      en: The singular endings.
+      hi: एकवचन प्रत्यय।
+  - sa: कुत्र?
+    text:
+      en: “Where?” asks for this case.
+      hi: ‘कहाँ?’ इसी विभक्ति को माँगता है।

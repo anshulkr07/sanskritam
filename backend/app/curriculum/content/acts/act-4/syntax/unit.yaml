@@ -1,0 +1,42 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: syntax
+title:
+  en: Longer sentences
+  hi: लंबे वाक्य
+title_sa: वाक्यम्
+status: ready
+episode:
+  summary:
+    en: 'The final statue speaks in long sentences: who… he, when… then, having gone, while he was going. Learn to put them in prose order.'
+    hi: 'अंतिम प्रतिमा लंबे वाक्यों में बोलती है: जो… वह, जब… तब, जाकर, उसके जाते समय। इन्हें अन्वय में रखना सीखिए।'
+  beats:
+  - यः … सः; यदा … तदा; यदि … तर्हि.
+  - सति सप्तमी.
+  - 'Anvaya: the prose order.'
+skills:
+- id: syn.relative
+  title:
+    en: 'Relative pairs: यः … सः'
+    hi: यत्-तत् वाक्य
+- id: syn.absolute
+  title:
+    en: 'Absolute clauses: सति सप्तमी'
+    hi: सति सप्तमी
+- id: syn.conditional
+  title:
+    en: 'If … then: यदि … तर्हि'
+    hi: यदि … तर्हि
+- id: syn.anvaya
+  title:
+    en: 'Prose order: anvaya'
+    hi: अन्वय
+lessons:
+- syn.who
+- syn.when
+- syn.if
+- syn.order
+planned: []
+ghost: vakyika
+revision: syn.revision
+check: syn.check

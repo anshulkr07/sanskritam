@@ -1,0 +1,160 @@
+id: split.revision
+template: revision
+title:
+  en: Everything about splitting
+  hi: विच्छेद के बारे में सब कुछ
+title_sa: विच्छेदसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The method
+    hi: विधि
+  depth: core
+  section: core
+  rows:
+  - skill: sandhi.split
+    rule:
+      en: Find the tell-tale sound, undo the rule, test both halves as words.
+      hi: पहचान की ध्वनि खोजिए, नियम को उलटिए, दोनों भागों को शब्द की तरह परखिए।
+    sutras:
+    - 6.1.101
+    - 6.1.87
+    - 8.2.39
+    tag: core
+    taught_in: split.back#tb1
+  - skill: sandhi.padaccheda
+    rule:
+      en: A line is split from the left, one join at a time.
+      hi: पंक्ति को बाएँ से एक-एक सन्धि करके तोड़ा जाता है।
+    tag: core
+    taught_in: split.line#t1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: sandhi.split
+    rule:
+      en: More than one split may be possible; choose the one that gives real words that fit the sentence.
+      hi: एक से अधिक विच्छेद सम्भव हो सकते हैं; वह चुनिए जो वाक्य में बैठने वाले असली शब्द दे।
+    tag: good
+    taught_in: split.back#t1
+  - skill: sandhi.padaccheda
+    rule:
+      en: After padaccheda comes anvaya, then the meaning.
+      hi: पदच्छेद के बाद अन्वय, फिर अर्थ।
+    tag: good
+    taught_in: split.line#pn
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: sandhi.split
+    rule:
+      en: 'A compound is joined too: {{रामलक्ष्मणौ}} is two words in a compound, not a sandhi; you will meet that next.'
+      hi: 'समास भी जुड़ा हुआ है: {{रामलक्ष्मणौ}} समास में दो शब्द हैं, सन्धि नहीं; वह आगे मिलेगा।'
+    example:
+      sa: रामलक्ष्मणौ।
+      meaning:
+        en: Rāma and Lakṣmaṇa.
+        hi: राम और लक्ष्मण।
+      words:
+      - sa: रामलक्ष्मणौ
+        gloss:
+          en: Rāma and Lakṣmaṇa
+          hi: राम और लक्ष्मण
+    tag: rare
+    new_here: true
+  - skill: sandhi.padaccheda
+    rule:
+      en: In verse the metre may force a join the prose would not make.
+      hi: श्लोक में छन्द वह सन्धि करा सकता है जो गद्य नहीं करता।
+    example:
+      sa: कालो गच्छति।
+      meaning:
+        en: Time passes.
+        hi: समय बीतता है।
+      words:
+      - sa: कालो
+        gloss:
+          en: time
+          hi: समय
+      - sa: गच्छति
+        gloss:
+          en: passes
+          hi: बीतता है
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: sandhi.split
+    rule:
+      en: 'Do not split into non-words: {{सज्जनः}} is {{सत् + जनः}}, not {{सज् + जनः}}.'
+      hi: 'अशब्दों में मत तोड़िए: {{सज्जनः}} {{सत् + जनः}} है, {{सज् + जनः}} नहीं।'
+    tag: core
+    taught_in: split.back#p3
+  - skill: sandhi.padaccheda
+    rule:
+      en: 'Do not stop at the first join: check the whole line.'
+      hi: 'पहली सन्धि पर मत रुकिए: पूरी पंक्ति जाँचिए।'
+    tag: core
+    taught_in: split.line#t1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: sandhi.split
+    rule:
+      en: 'To split, undo each sūtra you have met: {{अकः सवर्णे दीर्घः}}, {{आद्गुणः}}, {{झलां जशोऽन्ते}}.'
+      hi: 'अलग करने के लिए अब तक के हर सूत्र को उलटिए: {{अकः सवर्णे दीर्घः}}, {{आद्गुणः}}, {{झलां जशोऽन्ते}}।'
+    sutras:
+    - 6.1.101
+    - 6.1.87
+    - 8.2.39
+    tag: core
+    taught_in: split.back#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: sandhi.split
+    formula: विद्यालयः = विद्या + आलयः
+    rule:
+      en: splitting
+      hi: विच्छेद
+    tag: core
+    taught_in: split.back#tb1
+  - skill: sandhi.padaccheda
+    formula: कालो गच्छति = कालः गच्छति
+    rule:
+      en: a whole line
+      hi: पूरी पंक्ति
+    tag: core
+    taught_in: split.line#t1

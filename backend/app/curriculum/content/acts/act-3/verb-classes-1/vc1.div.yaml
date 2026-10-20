@@ -1,0 +1,412 @@
+id: vc1.div
+template: scene
+title:
+  en: 'Class 4: नृत्यति'
+  hi: 'गण 4: नृत्यति'
+title_sa: नृत्यति कुप्यति
+minutes: 6
+teaches:
+- verb.class-4
+needs:
+- verb.class-1
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The dancing drawer
+    hi: नाचता दराज़
+  depth: core
+  image:
+    brief: A tiny figure of mist spilling out of an opened drawer in the little spirit's body, turning on one foot with arms wide in a dance; the drawer-spirit staring at it in wonder; the Vetāla smiling; Dādī pointing; lamplight.
+    alt:
+      en: A tiny mist dancer spills from a drawer in a little spirit's body
+      hi: नन्हे भूत के दराज़ से बाहर बिखरता धुंध का नर्तक
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - dhatuka
+    place: smashana
+    ratio: '4:3'
+    id: vc1-div-s1
+  narration:
+    en: 'Drawer number four springs open by itself and a very small dance spills out of it: a tiny figure of mist turning on one foot, arms wide. “नृत्यति,” says the Vetāla, with satisfaction. “He dances.” The ledger-spirit looks at his own drawer in amazement. “It is the class of the sign -य-,” Dādī says. “The root stays as it is, and a य walks in.”'
+    hi: 'चौथा दराज़ अपने-आप खुल जाता है और उसमें से एक बहुत नन्हा नृत्य बाहर बिखर पड़ता है: धुंध की एक छोटी आकृति, एक पैर पर घूमती, बाहें फैलाए। “नृत्यति,” वेताल संतोष से कहता है। “वह नाचता है।” बही-भूत अपने ही दराज़ को आश्चर्य से देखता है। “यह -य- चिह्न वाला गण है,” दादी कहती हैं। “धातु जैसी है वैसी रहती है, और एक य भीतर आ जाता है।”'
+- id: t1
+  kind: teach
+  title:
+    en: The sign -य-
+    hi: चिह्न -य-
+  depth: core
+  skills:
+  - verb.class-4
+  body:
+    en: 'Class 4, {{दिवादि}}, puts {{-य-}} between the root and the ending, and the root keeps its own vowel: {{नृत्}} gives {{नृत्यति}} (dances), {{दिव्}} gives {{दीव्यति}} (plays), {{नश्}} gives {{नश्यति}} (is lost), {{कुप्}} gives {{कुप्यति}} (is angry). {{शम्}} lengthens: {{शाम्यति}}.'
+    hi: 'गण 4, {{दिवादि}}, धातु और प्रत्यय के बीच {{-य-}} रखता है, और धातु अपना स्वर रखती है: {{नृत्}} से {{नृत्यति}} (नाचता है), {{दिव्}} से {{दीव्यति}} (खेलता है), {{नश्}} से {{नश्यति}} (नष्ट होता है), {{कुप्}} से {{कुप्यति}} (क्रोध करता है)। {{शम्}} दीर्घ होता है: {{शाम्यति}}।'
+- id: tb1
+  kind: table
+  title:
+    en: Class 4 roots
+    hi: गण 4 की धातुएँ
+  depth: core
+  skills:
+  - verb.class-4
+  caption:
+    en: Root, meaning and “he …”
+    hi: धातु, अर्थ और ‘वह …’
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Meaning
+    hi: अर्थ
+  - en: He
+    hi: वह
+  rows:
+  - - sa: नृत्
+    - text:
+        en: dance
+        hi: नाचना
+    - sa: नृत्यति
+      check:
+        type: tinanta
+        dhatu: नृत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Divadi
+  - - sa: दिव्
+    - text:
+        en: play, gamble
+        hi: खेलना
+    - sa: दीव्यति
+      check:
+        type: tinanta
+        dhatu: दिव्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Divadi
+  - - sa: नश्
+    - text:
+        en: be lost
+        hi: नष्ट होना
+    - sa: नश्यति
+      check:
+        type: tinanta
+        dhatu: नश्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Divadi
+  - - sa: कुप्
+    - text:
+        en: be angry
+        hi: कुपित होना
+    - sa: कुप्यति
+      check:
+        type: tinanta
+        dhatu: कुप्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Divadi
+  - - sa: तुष्
+    - text:
+        en: be pleased
+        hi: प्रसन्न होना
+    - sa: तुष्यति
+      check:
+        type: tinanta
+        dhatu: तुष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Divadi
+  - - sa: मुह्
+    - text:
+        en: be confused
+        hi: मोहित होना
+    - sa: मुह्यति
+      check:
+        type: tinanta
+        dhatu: मुह्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Divadi
+  - - sa: शम्
+    - text:
+        en: grow calm
+        hi: शान्त होना
+    - sa: शाम्यति
+      check:
+        type: tinanta
+        dhatu: शम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Divadi
+  note:
+    en: The sign {{-य-}} is always there; a few roots lengthen their vowel.
+    hi: चिह्न {{-य-}} सदा रहता है; कुछ धातुएँ अपना स्वर दीर्घ कर लेती हैं।
+- id: tb2
+  kind: table
+  title:
+    en: 'नृत्: all persons'
+    hi: 'नृत्: सभी पुरुष'
+  depth: core
+  skills:
+  - verb.class-4
+  caption:
+    en: “He dances, you dance, I dance”
+    hi: ‘वह नाचता है, तुम नाचते हो, मैं नाचता हूँ’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: नृत्यति
+      check:
+        type: tinanta
+        dhatu: नृत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Divadi
+      highlight: true
+    - sa: नृत्यतः
+      check:
+        type: tinanta
+        dhatu: नृत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+        gana: Divadi
+    - sa: नृत्यन्ति
+      check:
+        type: tinanta
+        dhatu: नृत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+        gana: Divadi
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: नृत्यसि
+      check:
+        type: tinanta
+        dhatu: नृत्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+        gana: Divadi
+    - sa: नृत्यथः
+      check:
+        type: tinanta
+        dhatu: नृत्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+        gana: Divadi
+    - sa: नृत्यथ
+      check:
+        type: tinanta
+        dhatu: नृत्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+        gana: Divadi
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: नृत्यामि
+      check:
+        type: tinanta
+        dhatu: नृत्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+        gana: Divadi
+    - sa: नृत्यावः
+      check:
+        type: tinanta
+        dhatu: नृत्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+        gana: Divadi
+    - sa: नृत्यामः
+      check:
+        type: tinanta
+        dhatu: नृत्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+        gana: Divadi
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-4
+  mode: choice
+  prompt:
+    en: “He dances.” Which form?
+    hi: ‘वह नाचता है।’ कौन-सा रूप?
+  explain:
+    en: '{{नृत्यति}}: {{-य-}} before {{-ति}}.'
+    hi: '{{नृत्यति}}: {{-ति}} से पहले {{-य-}}।'
+  roman: after
+  options:
+  - sa: नर्तति
+  - correct: true
+    sa: नृत्यति
+  - sa: नृतति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-4
+  mode: type
+  prompt:
+    en: 'Say: “He is lost.”'
+    hi: 'कहिए: ‘वह नष्ट होता है।’'
+  explain:
+    en: '{{नश्यति}}.'
+    hi: '{{नश्यति}}।'
+  roman: after
+  answers:
+  - नश्यति
+  tiles:
+  - न
+  - श्य
+  - ति
+  - श
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-4
+  mode: match
+  prompt:
+    en: Join each root to its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+  explain:
+    en: The sign {{-य-}} appears in each.
+    hi: हर एक में चिह्न {{-य-}} दिखता है।
+  roman: after
+  pairs:
+  - left:
+      sa: नृत्
+    right:
+      sa: नृत्यति
+  - left:
+      sa: कुप्
+    right:
+      sa: कुप्यति
+  - left:
+      sa: तुष्
+    right:
+      sa: तुष्यति
+  - left:
+      sa: मुह्
+    right:
+      sa: मुह्यति
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.class-4
+  widget: mark_words
+  prompt:
+    en: Tap every class 4 verb (the ones with {{-य-}}).
+    hi: गण 4 की हर क्रिया (जिनमें {{-य-}} है) छुइए।
+  params:
+    passage:
+    - नृत्यति
+    - पठति
+    - कुप्यति
+    - भवति
+    - तुष्यति
+    - जयति
+    targets:
+    - नृत्यति
+    - कुप्यति
+    - तुष्यति
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: Drawer four
+    hi: चौथा दराज़
+  depth: core
+  skills:
+  - verb.class-4
+  mode: choice
+  prompt:
+    en: “He is angry.” Which form?
+    hi: ‘वह क्रोध करता है।’ कौन-सा रूप?
+  explain:
+    en: '{{कुप्यति}}: class 4.'
+    hi: '{{कुप्यति}}: गण 4।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “कुप्यति,” you say, and in the corner of the stone where the little dance had been, a very small thundercloud forms, grumbles, and, as you watch, thinks better of it and settles into a puff of steam. Drawer four closes, smiling.
+      hi: “कुप्यति,” आप कहते हैं, और पत्थर के उस कोने में जहाँ नन्हा नृत्य था, एक बहुत छोटा घना बादल बनता है, गड़गड़ाता है, और आपके देखते-देखते इरादा बदलकर भाप के गुबार में बैठ जाता है। चौथा दराज़ मुस्कराकर बन्द हो जाता है।
+    failure:
+      en: 'The drawer rattles. Class 4: {{कुप्यति}}.'
+      hi: 'दराज़ खड़खड़ाता है। गण 4: {{कुप्यति}}।'
+  options:
+  - sa: कोपति
+  - sa: कुपति
+  - correct: true
+    sa: कुप्यति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's {{-य-}}
+    hi: पाणिनि का {{-य-}}
+  depth: panini
+  skills:
+  - verb.class-4
+  sutras:
+  - 3.1.69
+  body:
+    en: 'Sūtra 3.1.69, {{दिवादिभ्यः श्यन्}}, adds {{श्यन्}} after the roots of {{दिव्}} and its class; the {{श्}} and {{न्}} drop away and leave {{-य-}}. Because this sign is not the strengthening kind, the root keeps its own vowel: {{नृत्यति}}, not {{नर्त्यति}}.'
+    hi: 'सूत्र 3.1.69, {{दिवादिभ्यः श्यन्}}, {{दिव्}} आदि धातुओं के बाद {{श्यन्}} जोड़ता है; {{श्}} और {{न्}} हट जाते हैं और {{-य-}} बचता है। यह चिह्न बलवान् करने वाला नहीं है, इसलिए धातु अपना स्वर रखती है: {{नृत्यति}}, {{नर्त्यति}} नहीं।'
+- id: sum
+  kind: summary
+  title:
+    en: Class 4
+    hi: गण 4
+  depth: core
+  points:
+  - sa: नृत्यति · कुप्यति
+    text:
+      en: He dances; he is angry.
+      hi: वह नाचता है; वह क्रोध करता है।
+  - sa: धातु + य + ति
+    text:
+      en: The sign {{-य-}}.
+      hi: चिह्न {{-य-}}।
+  - text:
+      en: The root keeps its vowel.
+      hi: धातु अपना स्वर रखती है।

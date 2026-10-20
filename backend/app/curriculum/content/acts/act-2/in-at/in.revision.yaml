@@ -1,0 +1,153 @@
+id: in.revision
+template: revision
+title:
+  en: Everything about in and at
+  hi: में और पर, सब कुछ
+title_sa: सप्तमीसङ्ग्रहः
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: case.loc
+    formula: कूपे जलम्
+    rule:
+      en: The place where something is takes the seventh case.
+      hi: जहाँ कुछ है वह स्थान सप्तमी लेता है।
+    sutras:
+    - 2.3.36
+    - 1.4.45
+    tag: core
+    taught_in: in.where#t1
+  - skill: case.loc
+    formula: गृहे · पाठशालायाम् · नद्याम्
+    rule:
+      en: 'Singular endings: {{ए}} (masculine, neuter -अ), {{आयाम्}} (feminine -आ), {{याम्}} (feminine -ई).'
+      hi: 'एकवचन प्रत्यय: {{ए}} (पुंलिंग, नपुंसक -अ), {{आयाम्}} (स्त्रीलिंग -आ), {{याम्}} (स्त्रीलिंग -ई)।'
+    tag: core
+    taught_in: in.where#tb1
+  - skill: case.loc-time
+    formula: प्रभाते · रात्रौ
+    rule:
+      en: A time when something happens also takes the seventh case.
+      hi: जब कुछ होता है वह समय भी सप्तमी लेता है।
+    tag: core
+    taught_in: in.when#t1
+  - skill: case.loc-time
+    rule:
+      en: '{{कुत्र}} (where) and {{कदा}} (when) ask for this case.'
+      hi: '{{कुत्र}} (कहाँ) और {{कदा}} (कब) इसी विभक्ति की माँग करते हैं।'
+    tag: core
+    taught_in: in.when#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When it applies
+    hi: कब लागू होता है
+  depth: core
+  section: conditions
+  rows:
+  - skill: case.loc
+    rule:
+      en: Plural {{एषु}} (masculine, neuter -अ), {{आसु}} (feminine -आ), dual {{योः}}.
+      hi: बहुवचन {{एषु}} (पुंलिंग, नपुंसक -अ), {{आसु}} (स्त्रीलिंग -आ), द्विवचन {{योः}}।
+    example:
+      sa: वृक्षेषु
+      meaning:
+        en: in the trees
+        hi: पेड़ों पर
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Bahu
+    tag: good
+    new_here: true
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: case.loc
+    rule:
+      en: 'The seventh case also says “among” and “towards”: {{कवीनां मध्ये}} is “among the poets” (the sixth case with {{मध्ये}}); {{मयि स्नेहः}}, “affection towards me”.'
+      hi: 'सप्तमी ‘के बीच’ और ‘के प्रति’ भी कहती है: {{कवीनां मध्ये}} (षष्ठी के साथ {{मध्ये}}) ‘कवियों के बीच’; {{मयि स्नेहः}}, ‘मेरे प्रति स्नेह’।'
+    example:
+      sa: मयि
+      meaning:
+        en: towards me, in me
+        hi: मेरे प्रति, मुझमें
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: case.loc
+    rule:
+      en: 'Do not use the second case for “in”: {{गृहे}}, not {{गृहम्}}.'
+      hi: '‘में’ के लिए द्वितीया मत लगाइए: {{गृहे}}, {{गृहम्}} नहीं।'
+    tag: core
+    taught_in: in.where#t1
+  - skill: case.loc-time
+    rule:
+      en: 'Do not use the first case for “at night”: {{रात्रौ}}, not {{रात्रिः}}.'
+      hi: '‘रात में’ के लिए प्रथमा मत लगाइए: {{रात्रौ}}, {{रात्रिः}} नहीं।'
+    tag: core
+    taught_in: in.when#t1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: case.loc
+    rule:
+      en: '{{आधारोऽधिकरणम्}}: the locus is the support; {{सप्तम्यधिकरणे च}}: it takes the seventh case.'
+      hi: '{{आधारोऽधिकरणम्}}: अधिकरण आधार है; {{सप्तम्यधिकरणे च}}: वह सप्तमी लेता है।'
+    sutras:
+    - 1.4.45
+    - 2.3.36
+    tag: core
+    taught_in: in.where#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: case.loc
+    formula: ए · आयाम् · याम्
+    rule:
+      en: in, on, at
+      hi: में, पर
+    tag: core
+    taught_in: in.where#tb1
+  - skill: case.loc-time
+    formula: प्रभाते · रात्रौ
+    rule:
+      en: at a time
+      hi: किसी समय
+    tag: core
+    taught_in: in.when#t1

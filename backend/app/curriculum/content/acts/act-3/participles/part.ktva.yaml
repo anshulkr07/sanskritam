@@ -1,0 +1,459 @@
+id: part.ktva
+template: scene
+title:
+  en: Having gone
+  hi: जाकर
+title_sa: गत्वा आगत्य
+minutes: 6
+teaches:
+- krt.ktva
+needs:
+- verb.passive
+- verb.class-1
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The twelfth night
+    hi: बारहवीं रात
+  depth: core
+  image:
+    brief: A slim spirit like a folded paper fan unfolding in the firelight, each fold holding a line of tiny writing; the Vetāla speaking quickly with a hand pointing at the sky; Śuka looking lost; Dādī smiling and explaining.
+    alt:
+      en: A paper-fan spirit unfolds in firelight as a grey spirit speaks quickly and a parrot looks lost
+      hi: अलाव की रोशनी में खुलता पंखे-सा भूत, तेज़ बोलता भूरा भूत, उलझा हुआ तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - sankshepaka
+    place: smashana
+    ratio: '4:3'
+    id: part-ktva-s1
+  narration:
+    en: 'Tonight the Vetāla is in a hurry. “Having gone there, having climbed the tree, having cut the rope, he threw down the corpse,” he says in one breath. Śuka is lost. A spirit like a folded paper fan unfolds: “गत्वा, आरुह्य, छित्त्वा. Three short words, not three sentences.” Dādī: “‘Having done’: so the sentence need not stop.”'
+    hi: 'आज वेताल जल्दी में है। “वहाँ जाकर, वृक्ष पर चढ़कर, रस्सी काटकर, उसने शव नीचे गिराया,” वह एक ही साँस में कहता है। शुक खो जाता है। तह किए काग़ज़ी पंखे जैसा एक पतला भूत अलाव की रोशनी में खुलता है और कहता है: “गत्वा, आरुह्य, छित्त्वा। तीन छोटे शब्द, तीन वाक्य नहीं।” दादी: “‘करके’ अर्थ वाला शब्द, ताकि बाक़ी वाक्य को रुकना न पड़े।”'
+  quote:
+    sa: तत्र गत्वा राज्ञा शिंशिपावृक्षम् आरुह्य छुरिकया पाशं छित्त्वा मृतकं भूतले पातितम्
+    gloss:
+      en: Going there, climbing the śiṃśipā tree and cutting the noose with a knife, the king threw the corpse down to the ground.
+      hi: वहाँ जाकर, शिंशिपा के वृक्ष पर चढ़कर और छुरी से फंदा काटकर, राजा ने शव को ज़मीन पर गिराया।
+    source: Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit)
+- id: t1
+  kind: teach
+  title:
+    en: Having done
+    hi: करके
+  depth: core
+  skills:
+  - krt.ktva
+  body:
+    en: 'To say “having done X, he does Y” with the same doer, add {{-त्वा}} to the root: {{गम्}} gives {{गत्वा}} (having gone), {{कृ}} gives {{कृत्वा}}, {{श्रु}} gives {{श्रुत्वा}}, {{पठ्}} gives {{पठित्वा}}. With a prefix it is {{-य}}: {{आ + गम्}} gives {{आगत्य}}. These never change; they are indeclinable.'
+    hi: '‘X करके वह Y करता है’ कहने के लिए, कर्ता वही हो तो, धातु में {{-त्वा}} जोड़िए: {{गम्}} से {{गत्वा}} (जाकर), {{कृ}} से {{कृत्वा}}, {{श्रु}} से {{श्रुत्वा}}, {{पठ्}} से {{पठित्वा}}। उपसर्ग हो तो {{-य}}: {{आ + गम्}} से {{आगत्य}}। ये कभी नहीं बदलते; ये अव्यय हैं।'
+  examples:
+  - sa: सः गृहम् गत्वा पठति।
+    meaning:
+      en: Having gone home, he reads.
+      hi: घर जाकर वह पढ़ता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: गृहम्
+      gloss:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गत्वा
+      gloss:
+        en: having gone
+        hi: जाकर
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: ktvA
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः फलम् खादित्वा गच्छति।
+    meaning:
+      en: Having eaten fruit, he goes.
+      hi: फल खाकर वह जाता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: फलम्
+      gloss:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: खादित्वा
+      gloss:
+        en: having eaten
+        hi: खाकर
+      check:
+        type: krdanta
+        dhatu: खाद्
+        krt: ktvA
+    - sa: गच्छति
+      gloss:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः आगत्य पठति।
+    meaning:
+      en: Having come, he reads.
+      hi: आकर वह पढ़ता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: आगत्य
+      gloss:
+        en: having come
+        hi: आकर
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: ktvA
+        prefixes:
+        - आ
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  term:
+    sa: क्त्वा
+    meaning:
+      en: the “having done” ending
+      hi: ‘करके’ प्रत्यय
+- id: tb1
+  kind: table
+  title:
+    en: Having done
+    hi: करके
+  depth: core
+  skills:
+  - krt.ktva
+  caption:
+    en: Root, “having …” and the form with a prefix
+    hi: धातु, ‘… करके’ और उपसर्ग वाला रूप
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Having …
+    hi: … करके
+  - en: With a prefix
+    hi: उपसर्ग सहित
+  rows:
+  - - sa: गम्
+    - sa: गत्वा
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: ktvA
+    - sa: आगत्य
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: ktvA
+        prefixes:
+        - आ
+      highlight: true
+  - - sa: कृ
+    - sa: कृत्वा
+      check:
+        type: krdanta
+        dhatu: कृ
+        krt: ktvA
+    - sa: संस्कृत्य
+      check:
+        type: krdanta
+        dhatu: कृ
+        krt: ktvA
+        prefixes:
+        - सम्
+      highlight: true
+  - - sa: श्रु
+    - sa: श्रुत्वा
+      check:
+        type: krdanta
+        dhatu: श्रु
+        krt: ktvA
+    - sa: आश्रुत्य
+      check:
+        type: krdanta
+        dhatu: श्रु
+        krt: ktvA
+        prefixes:
+        - आ
+      highlight: true
+  - - sa: दृश्
+    - sa: दृष्ट्वा
+      check:
+        type: krdanta
+        dhatu: दृश्
+        krt: ktvA
+    - sa: संदृश्य
+      check:
+        type: krdanta
+        dhatu: दृश्
+        krt: ktvA
+        prefixes:
+        - सम्
+      highlight: true
+  - - sa: दा
+    - sa: दत्त्वा
+      check:
+        type: krdanta
+        dhatu: दा
+        krt: ktvA
+    - sa: प्रदाय
+      check:
+        type: krdanta
+        dhatu: दा
+        krt: ktvA
+        prefixes:
+        - प्र
+      highlight: true
+  - - sa: नी
+    - sa: नीत्वा
+      check:
+        type: krdanta
+        dhatu: नी
+        krt: ktvA
+    - sa: आनीय
+      check:
+        type: krdanta
+        dhatu: नी
+        krt: ktvA
+        prefixes:
+        - आ
+      highlight: true
+  - - sa: जि
+    - sa: जित्वा
+      check:
+        type: krdanta
+        dhatu: जि
+        krt: ktvA
+    - sa: विजित्य
+      check:
+        type: krdanta
+        dhatu: जि
+        krt: ktvA
+        prefixes:
+        - वि
+      highlight: true
+  note:
+    en: Without a prefix {{-त्वा}}; with a prefix {{-य}} (or {{-त्य}} after a short vowel).
+    hi: उपसर्ग के बिना {{-त्वा}}; उपसर्ग हो तो {{-य}} (ह्रस्व स्वर के बाद {{-त्य}})।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - krt.ktva
+  mode: choice
+  prompt:
+    en: “Having gone.” Which form?
+    hi: ‘जाकर।’ कौन-सा रूप?
+  explain:
+    en: '{{गत्वा}}: {{गम्}} + {{-त्वा}}.'
+    hi: '{{गत्वा}}: {{गम्}} + {{-त्वा}}।'
+  roman: after
+  options:
+  - sa: गतः
+  - sa: गन्तुम्
+  - correct: true
+    sa: गत्वा
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - krt.ktva
+  mode: type
+  prompt:
+    en: 'Say: “Having done.”'
+    hi: 'कहिए: ‘करके।’'
+  explain:
+    en: '{{कृत्वा}}.'
+    hi: '{{कृत्वा}}।'
+  roman: after
+  answers:
+  - कृत्वा
+  tiles:
+  - कृ
+  - त्वा
+  - कर
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - krt.ktva
+  mode: match
+  prompt:
+    en: Join each root to its “having …” form.
+    hi: हर धातु को उसके ‘… करके’ रूप से जोड़िए।
+  explain:
+    en: Some roots change inside.
+    hi: कुछ धातुएँ भीतर बदलती हैं।
+  roman: after
+  pairs:
+  - left:
+      sa: गम्
+    right:
+      sa: गत्वा
+  - left:
+      sa: श्रु
+    right:
+      sa: श्रुत्वा
+  - left:
+      sa: दृश्
+    right:
+      sa: दृष्ट्वा
+  - left:
+      sa: जि
+    right:
+      sa: जित्वा
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - krt.ktva
+  widget: mark_words
+  prompt:
+    en: Tap every “having …” word.
+    hi: हर ‘… करके’ शब्द छुइए।
+  params:
+    passage:
+    - गत्वा
+    - गच्छति
+    - श्रुत्वा
+    - शृणोति
+    - कृत्वा
+    - करोति
+    targets:
+    - गत्वा
+    - श्रुत्वा
+    - कृत्वा
+  roman: show
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - krt.ktva
+  mode: order
+  prompt:
+    en: 'Say: “Having gone home, he reads.”'
+    hi: 'कहिए: ‘घर जाकर वह पढ़ता है।’'
+  explain:
+    en: '{{सः गृहं गत्वा पठति}}.'
+    hi: '{{सः गृहं गत्वा पठति}}।'
+  roman: after
+  tokens:
+  - सः
+  - गृहम्
+  - गत्वा
+  - पठति
+- id: p5
+  kind: practice
+  title:
+    en: Having come
+    hi: आकर
+  depth: core
+  skills:
+  - krt.ktva
+  mode: choice
+  prompt:
+    en: “Having come.” Which form (prefix {{आ}} + {{गम्}})?
+    hi: ‘आकर।’ कौन-सा रूप (उपसर्ग {{आ}} + {{गम्}})?
+  explain:
+    en: '{{आगत्य}}: with a prefix, {{-य}} not {{-त्वा}}.'
+    hi: '{{आगत्य}}: उपसर्ग के साथ {{-य}}, {{-त्वा}} नहीं।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “आगत्य,” you say, and the folded spirit opens one more fold, as if a page had been turned. “Having come,” he says, reading it. “And so he is here, and the sentence goes on.” He seems taller, and the writing in his folds is a little darker.
+      hi: “आगत्य,” आप कहते हैं, और तहदार भूत एक और तह खोलता है, मानो पन्ना पलटा गया हो। “आकर,” वह उसे पढ़ते हुए कहता है। “और इसलिए वह यहाँ है, और वाक्य आगे चलता है।” वह कुछ ऊँचा लगता है, और उसकी तहों की लिखावट थोड़ी गहरी है।
+    failure:
+      en: 'The fold stays shut. With a prefix: {{आगत्य}}.'
+      hi: 'तह बन्द रहती है। उपसर्ग के साथ: {{आगत्य}}।'
+  options:
+  - sa: आगत्वा
+  - correct: true
+    sa: आगत्य
+  - sa: आगतः
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's “having done”
+    hi: पाणिनि का ‘करके’
+  depth: panini
+  skills:
+  - krt.ktva
+  sutras:
+  - 3.4.21
+  - 7.1.37
+  - 1.1.40
+  body:
+    en: Sūtra 3.4.21, {{समानकर्तृकयोः पूर्वकाले}}, gives {{क्त्वा}} for an earlier action by the same doer. 7.1.37, {{समासेऽनञ्पूर्वे क्त्वो ल्यप्}}, turns {{क्त्वा}} into {{ल्यप्}}, that is {{-य}}, after a prefix. 1.1.40, {{क्त्वातोसुन्कसुनः}}, says these endings are indeclinable.
+    hi: सूत्र 3.4.21, {{समानकर्तृकयोः पूर्वकाले}}, उसी कर्ता की पहले हुई क्रिया के लिए {{क्त्वा}} देता है। 7.1.37, {{समासेऽनञ्पूर्वे क्त्वो ल्यप्}}, उपसर्ग के बाद {{क्त्वा}} को {{ल्यप्}}, अर्थात् {{-य}}, बना देता है। 1.1.40, {{क्त्वातोसुन्कसुनः}}, कहता है कि ये प्रत्यय अव्यय हैं।
+- id: sum
+  kind: summary
+  title:
+    en: Having done
+    hi: करके
+  depth: core
+  points:
+  - sa: गत्वा · कृत्वा · श्रुत्वा
+    text:
+      en: Having gone, done, heard.
+      hi: जाकर, करके, सुनकर।
+  - sa: आगत्य · संदृश्य
+    text:
+      en: 'With a prefix: {{-य}}.'
+      hi: 'उपसर्ग के साथ: {{-य}}।'
+  - text:
+      en: They never change.
+      hi: ये कभी नहीं बदलते।

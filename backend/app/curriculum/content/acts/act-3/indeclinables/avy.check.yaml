@@ -1,0 +1,169 @@
+id: avy.check
+template: check
+title:
+  en: Round the stone
+  hi: पत्थर को गोल कीजिए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - avy.particles
+  mode: choice
+  prompt:
+    en: “Rāma and Lakṣmaṇa.” Which word means “and”?
+    hi: ‘राम और लक्ष्मण।’ कौन-सा शब्द ‘और’ है?
+  explain:
+    en: '{{च}}.'
+    hi: '{{च}}।'
+  roman: after
+  options:
+  - sa: वा
+  - correct: true
+    sa: च
+  - sa: तु
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - avy.particles
+  mode: choice
+  prompt:
+    en: “Only he.” Which word means “only”?
+    hi: ‘केवल वही।’ कौन-सा शब्द ‘केवल’ है?
+  explain:
+    en: '{{एव}}.'
+    hi: '{{एव}}।'
+  roman: after
+  options:
+  - sa: अपि
+  - correct: true
+    sa: एव
+  - sa: इव
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - avy.iti
+  mode: choice
+  prompt:
+    en: “He says, ‘I go’.” Which word closes it?
+    hi: ‘वह कहता है, “मैं जाता हूँ”।’ इसे कौन-सा शब्द बन्द करता है?
+  explain:
+    en: '{{इति}}.'
+    hi: '{{इति}}।'
+  roman: after
+  options:
+  - sa: च
+  - sa: एव
+  - correct: true
+    sa: इति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - avy.iti
+  mode: order
+  prompt:
+    en: 'Say: “He says: ‘I go’.”'
+    hi: 'कहिए: ‘वह कहता है: “मैं जाता हूँ”।’'
+  explain:
+    en: '{{सः अहं गच्छामि इति वदति}}.'
+    hi: '{{सः अहं गच्छामि इति वदति}}।'
+  roman: after
+  tokens:
+  - सः
+  - अहम्
+  - गच्छामि
+  - इति
+  - वदति
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - avy.adverbs
+  mode: choice
+  prompt:
+    en: “There.” Which word?
+    hi: ‘वहाँ।’ कौन-सा शब्द?
+  explain:
+    en: '{{तत्र}}.'
+    hi: '{{तत्र}}।'
+  roman: after
+  options:
+  - sa: अत्र
+  - correct: true
+    sa: तत्र
+  - sa: यत्र
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - avy.adverbs
+  mode: match
+  prompt:
+    en: Join each word to its meaning.
+    hi: हर शब्द को उसके अर्थ से जोड़िए।
+  explain:
+    en: 'Pairs: {{यदा … तदा}}, {{यथा … तथा}}.'
+    hi: 'जोड़ियाँ: {{यदा … तदा}}, {{यथा … तथा}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: यदा
+    right:
+      text:
+        en: when
+        hi: जब
+  - left:
+      sa: तदा
+    right:
+      text:
+        en: then
+        hi: तब
+  - left:
+      sa: यथा
+    right:
+      text:
+        en: as
+        hi: जैसे
+  - left:
+      sa: तथा
+    right:
+      text:
+        en: so
+        hi: वैसे
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - avy.particles
+  mode: order
+  prompt:
+    en: 'Say the little words that never change: “and, or, also, only, but, for.”'
+    hi: 'वे छोटे शब्द कहिए जो कभी नहीं बदलते: ‘और, या, भी, ही, परन्तु, क्योंकि।’'
+  explain:
+    en: '{{च वा अपि एव तु हि}}: the six little words.'
+    hi: '{{च वा अपि एव तु हि}}: छह छोटे शब्द।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“च, वा, अपि, एव, तु, हि,” you say, and Avyayaka, perfectly round and smooth, rolls once around your feet, then rises a hand''s breadth into the air, turning slowly, and begins to give off a quiet white light. “तत्र अस्ति,” he says, and then, very softly, as if to himself: “तत्रास्ति.” He has joined the two words; the vowels have flowed into one another, and the sentence is not broken but smoother. “That,” says the Vetāla, “is the next thing. But first.”'
+      hi: '“च, वा, अपि, एव, तु, हि,” आप कहते हैं, और अव्यय, पूर्णतः गोल और चिकना, आपके पैरों के चारों ओर एक बार लुढ़कता है, फिर हथेली भर ऊपर हवा में उठकर धीरे-धीरे घूमता है और एक शान्त सफ़ेद प्रकाश देने लगता है। “तत्र अस्ति,” वह कहता है, और फिर बहुत धीमे, मानो अपने-आप से: “तत्रास्ति।” उसने दोनों शब्द जोड़ दिए हैं; स्वर एक-दूसरे में बह गए हैं, और वाक्य टूटा नहीं बल्कि और चिकना हो गया है। “वही अगली चीज़ है,” वेताल कहता है। “पर पहले।”'
+    failure:
+      en: 'He keeps patting himself. His six words: {{च वा अपि एव तु हि}}.'
+      hi: 'वह स्वयं को थपथपाता रहता है। उसके छह शब्द: {{च वा अपि एव तु हि}}।'
+  tokens:
+  - च
+  - वा
+  - अपि
+  - एव
+  - तु
+  - हि

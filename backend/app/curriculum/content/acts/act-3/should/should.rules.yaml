@@ -1,0 +1,507 @@
+id: should.rules
+template: scene
+title:
+  en: Rules and possibilities
+  hi: नियम और सम्भावनाएँ
+title_sa: ब्रूयात् स्यात्
+minutes: 6
+teaches:
+- verb.vidhilin
+needs:
+- verb.vidhilin
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: A rule from old times
+    hi: पुराने समय का एक नियम
+  depth: core
+  image:
+    brief: The Vetāla seated on a root reciting from memory with one finger raised, a faint glow of old palm-leaf lines in the air above him; Lubdhaka, tall and arms folded, sneering at the edge of the lamplight; you, Dādī and Śuka listening.
+    alt:
+      en: A grey spirit recites an old verse while a tall man sneers at the edge of the lamplight
+      hi: पुराना श्लोक सुनाता भूत, दीपक की रोशनी के किनारे व्यंग्य से मुस्कराता लम्बा आदमी
+    cast:
+    - vetala
+    - lubdhaka
+    - you
+    - dadi
+    - shuka
+    place: smashana
+    ratio: '4:3'
+    id: should-rules-s1
+  narration:
+    en: 'Lubdhaka sneers: “Rules are for the weak.” The Vetāla opens one eye. “Rules,” he says, “are what the strong keep when no one is watching. Listen. This is a very old one.” He clears his throat and recites, slowly, a verse from the book of Manu.'
+    hi: 'लुब्धक व्यंग्य से हँसता है: “नियम कमज़ोरों के लिए होते हैं।” वेताल एक आँख खोलता है। “नियम,” वह कहता है, “वे हैं जिन्हें बलवान तब निभाते हैं जब कोई नहीं देख रहा होता। सुनो। यह बहुत पुराना है।” वह गला साफ़ करता है और मनुस्मृति का एक श्लोक धीरे-धीरे सुनाता है।'
+  quote:
+    sa: सत्यं ब्रूयात् प्रियं ब्रूयान् न ब्रूयात् सत्यम् अप्रियम् प्रियं च नानृतं ब्रूयाद् एष धर्मः सनातनः
+    gloss:
+      en: One should speak the truth; one should speak what is pleasant; one should not speak an unpleasant truth; nor should one speak a pleasant lie. This is the eternal rule.
+      hi: सत्य बोलना चाहिए; प्रिय बोलना चाहिए; अप्रिय सत्य नहीं बोलना चाहिए; और प्रिय असत्य भी नहीं बोलना चाहिए। यही सनातन धर्म है।
+    source: Manusmṛti 4.138 (read in the Digital Corpus of Sanskrit)
+- id: t1
+  kind: teach
+  title:
+    en: Rules and duties
+    hi: नियम और कर्तव्य
+  depth: core
+  skills:
+  - verb.vidhilin
+  body:
+    en: 'The old law-books state duties with {{विधिलिङ्}}: {{ब्रूयात्}} (one should speak), {{न ब्रूयात्}} (one should not speak). Add {{न}} to say “should not”. {{ब्रू}} is “say”, and its {{लिङ्}} is {{ब्रूयात्}}.'
+    hi: 'प्राचीन धर्मशास्त्र कर्तव्य {{विधिलिङ्}} से बताते हैं: {{ब्रूयात्}} (बोलना चाहिए), {{न ब्रूयात्}} (नहीं बोलना चाहिए)। ‘नहीं चाहिए’ के लिए {{न}} जोड़िए। {{ब्रू}} का अर्थ ‘कहना’ है, और उसका {{लिङ्}} {{ब्रूयात्}} है।'
+  examples:
+  - sa: सत्यम् ब्रूयात्।
+    meaning:
+      en: One should speak the truth.
+      hi: सत्य बोलना चाहिए।
+    words:
+    - sa: सत्यम्
+      gloss:
+        en: truth
+        hi: सत्य
+    - sa: ब्रूयात्
+      gloss:
+        en: should speak
+        hi: बोले
+      check:
+        type: tinanta
+        dhatu: ब्रू
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+  - sa: गुरुम् नमेत्।
+    meaning:
+      en: One should bow to the teacher.
+      hi: गुरु को प्रणाम करना चाहिए।
+    words:
+    - sa: गुरुम्
+      gloss:
+        en: the teacher
+        hi: गुरु को
+    - sa: नमेत्
+      gloss:
+        en: should bow to
+        hi: प्रणाम करे
+      check:
+        type: tinanta
+        dhatu: नम्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+  - sa: न असत्यम् ब्रूयात्।
+    meaning:
+      en: One should not speak a lie.
+      hi: असत्य नहीं बोलना चाहिए।
+    words:
+    - sa: न
+      gloss:
+        en: not
+        hi: नहीं
+    - sa: असत्यम्
+      gloss:
+        en: a lie
+        hi: असत्य
+    - sa: ब्रूयात्
+      gloss:
+        en: should speak
+        hi: बोले
+      check:
+        type: tinanta
+        dhatu: ब्रू
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+- id: r1
+  kind: reading
+  title:
+    en: From the Vetāla's own book
+    hi: वेताल की अपनी पोथी से
+  depth: core
+  skills:
+  - verb.vidhilin
+  image:
+    brief: The Vetāla seated on a root holding up a palm-leaf scroll with one finger on a line; a small basket of fruit at his feet; Dādī and Śuka beside you reading along; firelight.
+    alt:
+      en: A grey spirit points to a line on a palm-leaf scroll beside a basket of fruit
+      hi: पोथी की एक पंक्ति पर उँगली रखे भूत, पास में फलों की टोकरी
+    cast:
+    - vetala
+    - dadi
+    - shuka
+    - you
+    place: smashana
+    ratio: '4:3'
+    id: should-rules-r1
+  passage:
+  - sa: रिक्तपाणिर् न पश्येत राजानं भिषजं गुरुम्
+    meaning:
+      en: “One should not go empty-handed to see a king, a doctor or a teacher” (Vetālapañcaviṃśatikā, introduction)
+      hi: “राजा, वैद्य या गुरु से खाली हाथ नहीं मिलना चाहिए” (वेतालपञ्चविंशतिका, भूमिका)
+    words:
+    - sa: रिक्तपाणिः
+      gloss:
+        en: empty-handed
+        hi: खाली हाथ
+    - sa: न
+      gloss:
+        en: not
+        hi: नहीं
+    - sa: पश्येत्
+      gloss:
+        en: should see
+        hi: देखे, मिले
+    - sa: राजानम्
+      gloss:
+        en: a king
+        hi: राजा को
+    - sa: भिषजम्
+      gloss:
+        en: a doctor
+        hi: वैद्य को
+    - sa: गुरुम्
+      gloss:
+        en: a teacher
+        hi: गुरु को
+  - sa: दैवज्ञं पुत्रकं मित्रं फलेन फलम् आदिशेत्
+    meaning:
+      en: '“Nor an astrologer, a son or a friend: with a fruit one should ask for fruit.” (the same verse)'
+      hi: '“न ज्योतिषी, पुत्र या मित्र से: फल के साथ फल माँगना चाहिए।” (वही श्लोक)'
+    words:
+    - sa: दैवज्ञम्
+      gloss:
+        en: an astrologer
+        hi: ज्योतिषी को
+    - sa: पुत्रकम्
+      gloss:
+        en: a son
+        hi: पुत्र को
+    - sa: मित्रम्
+      gloss:
+        en: a friend
+        hi: मित्र को
+    - sa: फलेन
+      gloss:
+        en: with a fruit
+        hi: फल के साथ
+    - sa: फलम्
+      gloss:
+        en: fruit
+        hi: फल
+    - sa: आदिशेत्
+      gloss:
+        en: should ask for
+        hi: माँगे
+- id: t2
+  kind: teach
+  title:
+    en: 'Maybe: {{स्यात्}}'
+    hi: 'शायद: {{स्यात्}}'
+  depth: core
+  skills:
+  - verb.vidhilin
+  body:
+    en: '{{स्यात्}} is the {{लिङ्}} of {{अस्}}: “it may be, perhaps”. {{स्युः}} is “they may be”. Often with {{यदि}} (if): {{यदि सः पठेत् तर्हि जानीयात्}}, “if he were to read, he would know”.'
+    hi: '{{स्यात्}} {{अस्}} का {{लिङ्}} है: ‘हो सकता है, शायद’। {{स्युः}} का अर्थ ‘वे हो सकते हैं’। अक्सर {{यदि}} (अगर) के साथ: {{यदि सः पठेत् तर्हि जानीयात्}}, ‘अगर वह पढ़े तो जान जाए’।'
+  examples:
+  - sa: स्यात् सः पण्डितः।
+    meaning:
+      en: Perhaps he is a scholar.
+      hi: शायद वह विद्वान् है।
+    words:
+    - sa: स्यात्
+      gloss:
+        en: perhaps
+        hi: शायद
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: पण्डितः
+      gloss:
+        en: a scholar
+        hi: विद्वान्
+  - sa: यदि सः पठेत् तर्हि सः जानीयात्।
+    meaning:
+      en: If he were to read, he would know.
+      hi: अगर वह पढ़े तो वह जान जाए।
+    words:
+    - sa: यदि
+      gloss:
+        en: if
+        hi: यदि
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: पठेत्
+      gloss:
+        en: were to read
+        hi: पढ़े
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+    - sa: तर्हि
+      gloss:
+        en: then
+        hi: तो
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: जानीयात्
+      gloss:
+        en: would know
+        hi: जान जाए
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+- id: tb1
+  kind: table
+  title:
+    en: 'अस्: “may be”'
+    hi: 'अस्: ‘हो सकता है’'
+  depth: core
+  skills:
+  - verb.vidhilin
+  caption:
+    en: “It may be, you may be, I may be”
+    hi: ‘वह हो, तुम हो, मैं होऊँ’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: स्यात्
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+    - sa: स्याताम्
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Dvi
+    - sa: स्युः
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: स्याः
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: VidhiLin
+        purusha: Madhyama
+        vacana: Eka
+    - sa: स्यातम्
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: VidhiLin
+        purusha: Madhyama
+        vacana: Dvi
+    - sa: स्यात
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: VidhiLin
+        purusha: Madhyama
+        vacana: Bahu
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: स्याम्
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: VidhiLin
+        purusha: Uttama
+        vacana: Eka
+    - sa: स्याव
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: VidhiLin
+        purusha: Uttama
+        vacana: Dvi
+    - sa: स्याम
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: VidhiLin
+        purusha: Uttama
+        vacana: Bahu
+  note:
+    en: '{{स्यात्}}, {{स्याताम्}}, {{स्युः}}: the root {{अस्}} shrinks to {{स्}}.'
+    hi: '{{स्यात्}}, {{स्याताम्}}, {{स्युः}}: धातु {{अस्}} घटकर {{स्}} रह जाती है।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: choice
+  prompt:
+    en: “One should speak the truth.” Which sentence?
+    hi: ‘सत्य बोलना चाहिए।’ कौन-सा वाक्य?
+  explain:
+    en: '{{ब्रूयात्}}: should speak.'
+    hi: '{{ब्रूयात्}}: बोलना चाहिए।'
+  roman: after
+  options:
+  - sa: सत्यं ब्रवीति
+  - correct: true
+    sa: सत्यं ब्रूयात्
+  - sa: सत्यम् अब्रवीत्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: match
+  prompt:
+    en: Join each form to its meaning.
+    hi: हर रूप को उसके अर्थ से जोड़िए।
+  explain:
+    en: Four verbs, one mood.
+    hi: चार क्रियाएँ, एक काल-विधान।
+  roman: after
+  pairs:
+  - left:
+      sa: ब्रूयात्
+    right:
+      text:
+        en: he should say
+        hi: उसे कहना चाहिए
+  - left:
+      sa: स्यात्
+    right:
+      text:
+        en: it may be
+        hi: हो सकता है
+  - left:
+      sa: नमेत्
+    right:
+      text:
+        en: he should bow
+        hi: उसे प्रणाम करना चाहिए
+  - left:
+      sa: जानीयात्
+    right:
+      text:
+        en: he would know
+        hi: वह जान जाए
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.vidhilin
+  widget: mark_words
+  prompt:
+    en: Tap every word that says “should” or “may”.
+    hi: ‘चाहिए’ या ‘सकता है’ कहने वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - ब्रूयात्
+    - ब्रवीति
+    - स्यात्
+    - अस्ति
+    - जानीयात्
+    - जानाति
+    targets:
+    - ब्रूयात्
+    - स्यात्
+    - जानीयात्
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: order
+  prompt:
+    en: 'Say: “One should not speak a lie.”'
+    hi: 'कहिए: ‘असत्य नहीं बोलना चाहिए।’'
+  explain:
+    en: '{{न असत्यं ब्रूयात्}}.'
+    hi: '{{न असत्यं ब्रूयात्}}।'
+  roman: after
+  tokens:
+  - न
+  - असत्यम्
+  - ब्रूयात्
+- id: p4
+  kind: practice
+  title:
+    en: Perhaps
+    hi: शायद
+  depth: core
+  skills:
+  - verb.vidhilin
+  mode: choice
+  prompt:
+    en: “It may be” (perhaps). Which form?
+    hi: ‘हो सकता है’ (शायद)। कौन-सा रूप?
+  explain:
+    en: '{{स्यात्}}: perhaps.'
+    hi: '{{स्यात्}}: शायद।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“स्यात्,” you say: “perhaps,” and Lubdhaka''s sneer wavers. It is the first time anyone has refused to argue with him. The little spirit in spectacles hops from foot to foot, pointing at the verse hanging in the smoke, and every word of it brightens. “A rule,” he whispers, “and a possibility. Both.”'
+      hi: '“स्यात्,” आप कहते हैं: ‘शायद’, और लुब्धक की व्यंग्य-मुस्कान डगमगाती है। यह पहली बार है कि किसी ने उससे बहस करने से मना किया। चश्मे वाला नन्हा भूत पैर बदलते हुए धुएँ में लटके श्लोक की ओर इशारा करता है, और उसका हर शब्द चमक उठता है। “एक नियम,” वह फुसफुसाता है, “और एक सम्भावना। दोनों।”'
+    failure:
+      en: 'The sneer stays. “It may be”: {{स्यात्}}.'
+      hi: 'व्यंग्य-मुस्कान बनी रहती है। ‘हो सकता है’: {{स्यात्}}।'
+  options:
+  - sa: अस्ति
+  - correct: true
+    sa: स्यात्
+  - sa: आसीत्
+- id: sum
+  kind: summary
+  title:
+    en: Rules and possibilities
+    hi: नियम और सम्भावनाएँ
+  depth: core
+  points:
+  - sa: सत्यं ब्रूयात्
+    text:
+      en: One should speak the truth.
+      hi: सत्य बोलना चाहिए।
+  - sa: न ब्रूयात्
+    text:
+      en: One should not speak.
+      hi: नहीं बोलना चाहिए।
+  - sa: स्यात् · स्युः
+    text:
+      en: It may be; they may be.
+      hi: हो सकता है; वे हो सकते हैं।

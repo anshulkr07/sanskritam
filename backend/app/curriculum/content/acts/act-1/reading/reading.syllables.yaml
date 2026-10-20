@@ -1,0 +1,254 @@
+id: reading.syllables
+template: scene
+title:
+  en: One vowel, one syllable
+  hi: एक स्वर, एक अक्षर
+title_sa: अक्षराणि
+minutes: 6
+teaches:
+- read.syllables
+needs:
+- script.numerals
+- script.conjunct
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The old register
+    hi: पुराना रजिस्टर
+  depth: core
+  image:
+    brief: 'The temple library: Dādī lowers a huge cloth-bound register onto the low reading desk; between the shelves a tall thin pale-gold spirit stands with one finger to his lips and a scroll under his arm; you and Śuka watching.'
+    alt:
+      en: A grandmother lowers a huge register while a tall pale-gold spirit stands with a finger to his lips
+      hi: विशाल रजिस्टर उतारती दादी और होंठों पर उँगली रखे सुनहरा भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - mauni
+    place: granthalaya
+    ratio: '4:3'
+    id: reading-syllables-s1
+  narration:
+    en: 'Back in the temple library, Dādī lifts down a huge cloth-bound register: names, names, names, in columns. Nidrālu''s carved clue brought you here. Between the shelves stands a tall, thin, pale-gold spirit with a finger pressed to his lips. He cannot say a word.'
+    hi: 'मंदिर के ग्रंथालय में दादी कपड़े में बँधा एक विशाल रजिस्टर उतारती हैं: नाम, नाम, नाम, स्तम्भों में। निद्रालु का खुदा संकेत आपको यहीं लाया। अलमारियों के बीच एक लम्बा, दुबला, हल्का सुनहरा भूत खड़ा है, उँगली होंठों पर रखे। वह एक शब्द नहीं बोल पाता।'
+  lines:
+  - speaker: dadi
+    sa: पश्य। मौनी।
+    gloss:
+      en: Look. Maunī, the silent one.
+      hi: देखो। मौनी, चुप रहने वाला।
+- id: t1
+  kind: teach
+  title:
+    en: Count the vowels
+    hi: स्वर गिनिए
+  depth: core
+  skills:
+  - read.syllables
+  body:
+    en: 'A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and you have counted the syllables: {{रा}}-{{मः}} has two.'
+    hi: 'अक्षर में ठीक एक स्वर होता है, और उसके साथ के व्यंजन। स्वर गिन लीजिए तो अक्षर गिन लिए: {{रा}}-{{मः}} में दो अक्षर हैं।'
+  rows:
+  - sa: रामः
+    gloss:
+      en: '{{रा}} {{मः}}: 2'
+      hi: '{{रा}} {{मः}}: 2 अक्षर'
+  - sa: सीता
+    gloss:
+      en: '{{सी}} {{ता}}: 2'
+      hi: '{{सी}} {{ता}}: 2 अक्षर'
+  - sa: लक्ष्मणः
+    gloss:
+      en: '{{लक्}} {{ष्म}} {{णः}}: 3'
+      hi: '{{लक्}} {{ष्म}} {{णः}}: 3 अक्षर'
+  term:
+    sa: अक्षरम्
+    meaning:
+      en: 'a syllable (also: a letter)'
+      hi: अक्षर (वर्ण भी)
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - read.syllables
+  mode: choice
+  prompt:
+    en: How many syllables does {{सीता}} have?
+    hi: '{{सीता}} में कितने अक्षर हैं?'
+  explain:
+    en: '{{सी}}-{{ता}}: two vowels, two syllables.'
+    hi: '{{सी}}-{{ता}}: दो स्वर, दो अक्षर।'
+  roman: show
+  options:
+  - text:
+      en: one
+      hi: एक
+  - correct: true
+    text:
+      en: two
+      hi: दो
+  - text:
+      en: three
+      hi: तीन
+- id: t2
+  kind: teach
+  title:
+    en: Joined letters count once
+    hi: संयुक्ताक्षर एक बार गिने जाते हैं
+  depth: core
+  skills:
+  - read.syllables
+  body:
+    en: 'A joined letter has no vowel inside it, so it adds no syllable. {{सत्यम्}} has two vowels, two syllables: {{सत्}}-{{यम्}}.'
+    hi: 'संयुक्ताक्षर के भीतर स्वर नहीं होता, इसलिए वह अक्षर नहीं बढ़ाता। {{सत्यम्}} में दो स्वर हैं, दो अक्षर: {{सत्}}-{{यम्}}।'
+  examples:
+  - sa: सत्यम्
+    meaning:
+      en: 'truth: two syllables'
+      hi: 'सत्य: दो अक्षर'
+    check:
+      type: subanta
+      stem: सत्य
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: लक्ष्मणः
+    meaning:
+      en: 'Lakṣmaṇa: three syllables'
+      hi: 'लक्ष्मण: तीन अक्षर'
+    check:
+      type: subanta
+      stem: लक्ष्मण
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - read.syllables
+  widget: mark_words
+  prompt:
+    en: Tap every name with exactly three syllables.
+    hi: ठीक तीन अक्षरों वाले हर नाम को छुइए।
+  params:
+    passage:
+    - रामः
+    - लक्ष्मणः
+    - सीता
+    - हनुमान्
+    - भरतः
+    - गङ्गा
+    targets:
+    - लक्ष्मणः
+    - हनुमान्
+    - भरतः
+  roman: after
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - read.syllables
+  mode: match
+  prompt:
+    en: Join each name to its number of syllables.
+    hi: हर नाम को उसके अक्षरों की संख्या से जोड़िए।
+  explain:
+    en: Count the vowels.
+    hi: स्वर गिनिए।
+  roman: after
+  pairs:
+  - left:
+      sa: रामः
+    right:
+      text:
+        en: two
+        hi: दो
+  - left:
+      sa: लक्ष्मणः
+    right:
+      text:
+        en: three
+        hi: तीन
+  - left:
+      sa: सीता
+    right:
+      text:
+        en: two
+        hi: दो
+  - left:
+      sa: हनुमान्
+    right:
+      text:
+        en: three
+        hi: तीन
+- id: p3
+  kind: practice
+  title:
+    en: A name aloud
+    hi: एक नाम ज़ोर से
+  depth: core
+  skills:
+  - read.syllables
+  mode: order
+  prompt:
+    en: Maunī taps the register. Put the syllables of {{हनुमान्}} in order.
+    hi: मौनी रजिस्टर थपथपाता है। {{हनुमान्}} के अक्षर क्रम में लगाइए।
+  explain:
+    en: '{{ह}}-{{नु}}-{{मान्}}: three vowels, three syllables.'
+    hi: '{{ह}}-{{नु}}-{{मान्}}: तीन स्वर, तीन अक्षर।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: 'You say it slowly: ha, nu, mān. The tall spirit''s lips tremble as if he nearly spoke.'
+      hi: 'आप धीरे-धीरे बोलते हैं: ह, नु, मान्। लम्बे भूत के होंठ काँपते हैं मानो वह बोलने ही वाला हो।'
+    failure:
+      en: 'The word comes out tangled. Say one vowel at a time: {{ह}} first.'
+      hi: 'शब्द उलझा निकलता है। एक-एक स्वर बोलिए: पहले {{ह}}।'
+  tokens:
+  - ह
+  - नु
+  - मान्
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - read.syllables
+  mode: choice
+  prompt:
+    en: Which word has two syllables?
+    hi: किस शब्द में दो अक्षर हैं?
+  explain:
+    en: '{{रा}}-{{मः}}: two vowels.'
+    hi: '{{रा}}-{{मः}}: दो स्वर।'
+  roman: after
+  options:
+  - correct: true
+    sa: रामः
+  - sa: लक्ष्मणः
+  - sa: हनुमान्
+- id: sum
+  kind: summary
+  title:
+    en: Syllables
+    hi: अक्षर
+  depth: core
+  points:
+  - text:
+      en: One vowel, one syllable.
+      hi: एक स्वर, एक अक्षर।
+  - sa: रा-मः
+    text:
+      en: Count the vowels to count the syllables.
+      hi: अक्षर गिनने के लिए स्वर गिनिए।
+  - sa: सत्-यम्
+    text:
+      en: A joined letter adds no syllable.
+      hi: संयुक्ताक्षर अक्षर नहीं बढ़ाता।

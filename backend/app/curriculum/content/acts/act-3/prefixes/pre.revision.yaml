@@ -1,0 +1,170 @@
+id: pre.revision
+template: revision
+title:
+  en: Everything about prefixes
+  hi: उपसर्गों के बारे में सब कुछ
+title_sa: उपसर्गसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The prefixes
+    hi: उपसर्ग
+  depth: core
+  section: core
+  rows:
+  - skill: verb.upasarga
+    rule:
+      en: 'A prefix goes in front of the root and changes the meaning: {{आगच्छति}}, {{निर्गच्छति}}, {{उपगच्छति}}.'
+      hi: 'उपसर्ग धातु के आगे जाकर अर्थ बदलता है: {{आगच्छति}}, {{निर्गच्छति}}, {{उपगच्छति}}।'
+    sutras:
+    - 1.4.59
+    - 1.4.80
+    tag: core
+    taught_in: pre.come#tb1
+  - skill: verb.upasarga-list
+    rule:
+      en: 'The twenty-two: {{प्र परा अप सम् अनु अव निस् निर् दुस् दुर् वि आ नि अधि अपि अति सु उत् अभि प्रति परि उप}}.'
+      hi: 'बाईस: {{प्र परा अप सम् अनु अव निस् निर् दुस् दुर् वि आ नि अधि अपि अति सु उत् अभि प्रति परि उप}}।'
+    sutras:
+    - 1.4.58
+    tag: core
+    taught_in: pre.list#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: verb.upasarga
+    rule:
+      en: 'Check the meaning of the whole word, not just the root: {{अवजानाति}} is “despises”.'
+      hi: 'पूरे शब्द का अर्थ देखिए, केवल धातु का नहीं: {{अवजानाति}} का अर्थ ‘तिरस्कार करता है’।'
+    tag: good
+    taught_in: pre.list#t2
+  - skill: verb.upasarga-list
+    rule:
+      en: '{{दुस्}}/{{दुर्}} and {{निस्}}/{{निर्}} are the same prefix; the form depends on the next sound.'
+      hi: '{{दुस्}}/{{दुर्}} और {{निस्}}/{{निर्}} एक ही उपसर्ग हैं; रूप अगली ध्वनि पर निर्भर है।'
+    tag: good
+    taught_in: pre.come#tb1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: verb.upasarga
+    rule:
+      en: 'A prefix may change the set: {{गम्}} gives {{गच्छति}} but {{सम् + गम्}} can give {{संगच्छते}}.'
+      hi: 'उपसर्ग समूह बदल सकता है: {{गम्}} से {{गच्छति}}, पर {{सम् + गम्}} से {{संगच्छते}} भी बन सकता है।'
+    example:
+      sa: संगच्छते
+      meaning:
+        en: he meets
+        hi: वह मिलता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - सम्
+    tag: rare
+    new_here: true
+  - skill: verb.upasarga-list
+    rule:
+      en: 'Some prefixes join in sandhi: {{उत्}} + {{गच्छति}} gives {{उद्गच्छति}}.'
+      hi: 'कुछ उपसर्ग सन्धि से जुड़ते हैं: {{उत्}} + {{गच्छति}} से {{उद्गच्छति}}।'
+    example:
+      sa: उद्गच्छति
+      meaning:
+        en: he goes up
+        hi: वह ऊपर जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - उत्
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: verb.upasarga
+    rule:
+      en: 'Do not put the prefix after the root: {{आगच्छति}}, not {{गच्छत्याति}}.'
+      hi: 'उपसर्ग धातु के बाद मत रखिए: {{आगच्छति}}, {{गच्छत्याति}} नहीं।'
+    tag: core
+    taught_in: pre.come#p1
+  - skill: verb.upasarga-list
+    rule:
+      en: 'Do not translate a prefixed verb word by word: {{पराभवति}} is not “goes away + is”.'
+      hi: 'उपसर्ग वाली क्रिया का शब्द-दर-शब्द अनुवाद मत कीजिए: {{पराभवति}} ‘दूर + होता है’ नहीं है।'
+    tag: core
+    taught_in: pre.list#t2
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: verb.upasarga
+    rule:
+      en: '{{उपसर्गाः क्रियायोगे}} and {{ते प्राग्धातोः}}: they join a verb and stand in front.'
+      hi: '{{उपसर्गाः क्रियायोगे}} और {{ते प्राग्धातोः}}: वे क्रिया से जुड़ते हैं और आगे रहते हैं।'
+    sutras:
+    - 1.4.59
+    - 1.4.80
+    tag: core
+    taught_in: pre.come#pn
+  - skill: verb.upasarga-list
+    rule:
+      en: '{{प्रादयः}} gives the list.'
+      hi: '{{प्रादयः}} सूची देता है।'
+    sutras:
+    - 1.4.58
+    tag: core
+    taught_in: pre.list#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: verb.upasarga
+    formula: आगच्छति · निर्गच्छति · उपगच्छति
+    rule:
+      en: prefix + root
+      hi: उपसर्ग + धातु
+    tag: core
+    taught_in: pre.come#tb1
+  - skill: verb.upasarga-list
+    formula: प्र परा अप सम् अनु अव …
+    rule:
+      en: the twenty-two
+      hi: बाईस
+    tag: core
+    taught_in: pre.list#tb1

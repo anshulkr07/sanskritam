@@ -1,0 +1,39 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: noun-families-1
+title:
+  en: Noun families I
+  hi: शब्द-परिवार १
+title_sa: शब्दरूपाणि
+status: ready
+episode:
+  summary:
+    en: 'In your grandparents'' old library, Dādī shows noun tables as family trees: once you know one member, you know thousands.'
+    hi: 'दादा-दादी के पुराने ग्रंथालय में दादी शब्दरूपों को परिवार-वृक्ष की तरह दिखाती हैं: एक सदस्य जानिए तो हज़ारों जान लीजिए।'
+  beats:
+  - 'देव: the a-masculine family.'
+  - 'फल: the a-neuter family.'
+  - 'लता: the ā-feminine family.'
+skills:
+- id: noun.deva
+  title:
+    en: Masculines like देव
+    hi: देव जैसे पुल्लिंग
+  sutras:
+  - 7.1.9
+- id: noun.phala
+  title:
+    en: Neuters like फल
+    hi: फल जैसे नपुंसकलिंग
+- id: noun.lata
+  title:
+    en: Feminines like लता
+    hi: लता जैसे स्त्रीलिंग
+lessons:
+- nf1.deva
+- nf1.phala
+- nf1.lata
+planned: []
+ghost: vrikshaka
+revision: nf1.revision
+check: nf1.check

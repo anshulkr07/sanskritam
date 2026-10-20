@@ -1,0 +1,234 @@
+id: m2.check
+template: check
+title:
+  en: Name the metre
+  hi: छन्द का नाम बताइए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - chandas.vrtta
+  mode: choice
+  prompt:
+    en: A quarter has 17 syllables. Which metre?
+    hi: एक चरण में 17 अक्षर हैं। कौन-सा छन्द?
+  explain:
+    en: 'Seventeen: {{मन्दाक्रान्ता}}.'
+    hi: 'सत्रह: {{मन्दाक्रान्ता}}।'
+  roman: after
+  options:
+  - sa: वसन्ततिलका
+  - correct: true
+    sa: मन्दाक्रान्ता
+  - sa: शार्दूलविक्रीडित
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - chandas.vrtta
+  mode: choice
+  prompt:
+    en: A quarter has 19 syllables. Which metre?
+    hi: एक चरण में 19 अक्षर हैं। कौन-सा छन्द?
+  explain:
+    en: 'Nineteen: {{शार्दूलविक्रीडित}}.'
+    hi: 'उन्नीस: {{शार्दूलविक्रीडित}}।'
+  roman: after
+  options:
+  - sa: इन्द्रवज्रा
+  - sa: मन्दाक्रान्ता
+  - correct: true
+    sa: शार्दूलविक्रीडित
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - chandas.vrtta
+  mode: match
+  prompt:
+    en: Join each metre to the syllables in a quarter.
+    hi: हर छन्द को चरण के अक्षरों की संख्या से जोड़िए।
+  explain:
+    en: Count one quarter.
+    hi: एक चरण गिनिए।
+  roman: after
+  pairs:
+  - left:
+      sa: इन्द्रवज्रा
+    right:
+      text:
+        en: '11'
+        hi: ११
+  - left:
+      sa: वसन्ततिलका
+    right:
+      text:
+        en: '14'
+        hi: १४
+  - left:
+      sa: मन्दाक्रान्ता
+    right:
+      text:
+        en: '17'
+        hi: १७
+  - left:
+      sa: शार्दूलविक्रीडित
+    right:
+      text:
+        en: '19'
+        hi: १९
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - chandas.vrtta
+  mode: engine
+  prompt:
+    en: Mark each syllable of this quarter.
+    hi: इस चरण के हर अक्षर को चिह्नित कीजिए।
+  explain:
+    en: Light, heavy, light, heavy, heavy…
+    hi: लघु, गुरु, लघु, गुरु, गुरु…
+  roman: after
+  exercise:
+    kind: scan_metre
+    params:
+      text: हिमालयो नाम नगाधिराजः
+    seed: 8
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - chandas.vrtta
+  mode: choice
+  prompt:
+    en: A verse mixes indravajrā and upendravajrā quarters. It is…
+    hi: एक श्लोक में इन्द्रवज्रा और उपेन्द्रवज्रा के चरण मिले हैं। वह है…
+  explain:
+    en: 'Mixed elevens: {{उपजाति}}.'
+    hi: 'मिले हुए ग्यारह: {{उपजाति}}।'
+  roman: after
+  options:
+  - sa: वसन्ततिलका
+  - correct: true
+    sa: उपजाति
+  - sa: आर्या
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - chandas.arya
+  mode: choice
+  prompt:
+    en: How many mātrās in {{विद्या}}?
+    hi: '{{विद्या}} में कितनी मात्राएँ हैं?'
+  explain:
+    en: 2 + 2 = 4.
+    hi: 2 + 2 = 4।
+  roman: after
+  options:
+  - text:
+      en: '3'
+      hi: ३
+  - correct: true
+    text:
+      en: '4'
+      hi: ४
+  - text:
+      en: '5'
+      hi: ५
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - chandas.arya
+  mode: match
+  prompt:
+    en: Join each Āryā quarter to its mātrās.
+    hi: आर्या के हर चरण को उसकी मात्राओं से जोड़िए।
+  explain:
+    en: 12, 18, 12, 15.
+    hi: 12, 18, 12, 15।
+  roman: after
+  pairs:
+  - left:
+      text:
+        en: quarters 1 and 3
+        hi: चरण १ और ३
+    right:
+      text:
+        en: '12'
+        hi: १२
+  - left:
+      text:
+        en: quarter 2
+        hi: चरण २
+    right:
+      text:
+        en: '18'
+        hi: १८
+  - left:
+      text:
+        en: quarter 4
+        hi: चरण ४
+    right:
+      text:
+        en: '15'
+        hi: १५
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - chandas.arya
+  mode: engine
+  prompt:
+    en: Mark each syllable of this Āryā quarter.
+    hi: आर्या के इस चरण के हर अक्षर को चिह्नित कीजिए।
+  explain:
+    en: 'Heavy, light, light, heavy, light, light, heavy, heavy: 12 beats.'
+    hi: 'गुरु, लघु, लघु, गुरु, लघु, लघु, गुरु, गुरु: 12 ताल।'
+  roman: after
+  exercise:
+    kind: scan_metre
+    params:
+      text: यो न ददाति न भुङ्क्ते
+    seed: 9
+- id: p9
+  kind: practice
+  depth: core
+  skills:
+  - chandas.arya
+  mode: choice
+  prompt:
+    en: The Āryā is counted by…
+    hi: आर्या गिनी जाती है…
+  explain:
+    en: A {{जाति}} counts time.
+    hi: '{{जाति}} समय गिनता है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“मात्राभिः,” says Vṛttikā, “by the beats,” and finishes a circle for the first time: eleven, fourteen, seventeen, nineteen, and the long swing of the Āryā at the end. She is no longer smoke; she is a tall, plain figure with a counting-cord in one hand. “इन्द्रवज्रा उपजाति,” she says, setting it down. On the lowest step of the stair, a clear, new line has appeared: पदच्छेदः, अन्वयः, अर्थः।'
+      hi: '“मात्राभिः,” वृत्तिका कहती है, “ताल से,” और पहली बार एक घेरा पूरा करती है: ग्यारह, चौदह, सत्रह, उन्नीस, और अन्त में आर्या का लम्बा झूला। वह अब धुआँ नहीं है; वह एक लम्बी, सादी आकृति है, जिसके एक हाथ में गिनने की डोरी है। “इन्द्रवज्रा उपजाति,” वह कहती है, और उसे नीचे रख देती है। सीढ़ी की सबसे नीची पौड़ी पर एक नई स्पष्ट पंक्ति उभर आई है: पदच्छेदः, अन्वयः, अर्थः।'
+    failure:
+      en: Her circle stays open. The Āryā counts mātrās, beats of time.
+      hi: उसका घेरा खुला रहता है। आर्या मात्राएँ, समय की ताल, गिनती है।
+  options:
+  - text:
+      en: syllables
+      hi: अक्षरों से
+  - correct: true
+    text:
+      en: mātrās
+      hi: मात्राओं से
+  - text:
+      en: words
+      hi: शब्दों से

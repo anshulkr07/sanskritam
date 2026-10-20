@@ -1,0 +1,336 @@
+id: vis.o
+template: scene
+title:
+  en: When -aḥ becomes -o
+  hi: जब -अः बनता है -ओ
+title_sa: रामोऽस्ति
+minutes: 6
+teaches:
+- sandhi.visarga-o
+needs:
+- sandhi.blocked
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The seventh statue
+    hi: सातवीं प्रतिमा
+  depth: core
+  image:
+    brief: The seventh statue with a finger lifted to her lips, a fine mist of breath leaving her mouth and drifting up in the cold air; Śuka testing words with a raised wing; Dādī listening; Lubdhaka's foreman at a distance holding a lamp.
+    alt:
+      en: A stone statue with a finger at her lips, a trail of mist leaving her mouth
+      hi: होंठों पर उँगली रखे प्रतिमा, मुँह से उठती धुंध की रेखा
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - visargika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: vis-o-s1
+  narration:
+    en: 'The seventh statue has a finger to her lips and a faint mist at her mouth, as if breathing out. “रामोऽस्ति,” she says. “Rāma is.” Dādī: “Any Sanskrit word can end in that breath, ः, the visarga. What happens to it depends on what comes next. Before a soft sound, अः becomes ओ.” Śuka tests it: “रामो गच्छति.” “Yes,” says the statue.'
+    hi: 'सातवीं प्रतिमा ने होंठों पर उँगली रखी है और उसके मुँह पर हल्की धुंध है, मानो वह निःश्वास छोड़ रही हो। “रामोऽस्ति,” वह कहती है। “राम है।” दादी: “संस्कृत का हर शब्द उसी श्वास, ः, विसर्ग पर समाप्त हो सकता है। उसका क्या होता है, यह इस पर निर्भर है कि आगे क्या आता है। कोमल ध्वनि से पहले अः ओ बन जाता है।” शुक परखता है। “रामो गच्छति।” “हाँ,” प्रतिमा कहती है, और श्वास लेती है।'
+  lines:
+  - speaker: dadi
+    sa: रामः + अस्ति = रामोऽस्ति।
+    gloss:
+      en: Rāma + is = Rāma is.
+      hi: राम + है = राम है।
+  quote:
+    sa: कस्मिंश्चिद् दिवसे कुतो ऽपि स्थानाच्छान्तिशीलो नाम योगी
+    gloss:
+      en: One day, from somewhere, a yogī named Śāntiśīla came.
+      hi: एक दिन, कहीं से, शान्तिशील नाम का एक योगी आया।
+    source: Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit); kuto 'pi is kutaḥ + api
+- id: t1
+  kind: teach
+  title:
+    en: The breath ः
+    hi: श्वास ः
+  depth: core
+  skills:
+  - sandhi.visarga-o
+  body:
+    en: 'A word can end in the breath {{ः}}, the {{विसर्गः}}: {{रामः}}, {{देवः}}, {{सः}}. Before a soft sound, a vowel, or a soft consonant, the ending {{-अः}} becomes {{-ओ}}. Before {{अ}} the {{अ}} is dropped, leaving {{ऽ}}: {{रामः + अस्ति}} gives {{रामोऽस्ति}}; {{रामः + गच्छति}} gives {{रामो गच्छति}}.'
+    hi: 'शब्द श्वास {{ः}}, अर्थात् {{विसर्गः}} पर समाप्त हो सकता है: {{रामः}}, {{देवः}}, {{सः}}। कोमल ध्वनि, स्वर या कोमल व्यंजन से पहले {{-अः}} {{-ओ}} बन जाता है। {{अ}} से पहले {{अ}} गिर जाता है और {{ऽ}} बचता है: {{रामः + अस्ति}} से {{रामोऽस्ति}}; {{रामः + गच्छति}} से {{रामो गच्छति}}।'
+  term:
+    sa: विसर्गः
+    meaning:
+      en: the breath sound ः
+      hi: श्वास की ध्वनि ः
+- id: tb1
+  kind: table
+  title:
+    en: -अः becomes -ओ
+    hi: -अः बनता है -ओ
+  depth: core
+  skills:
+  - sandhi.visarga-o
+  caption:
+    en: Before a soft sound
+    hi: कोमल ध्वनि से पहले
+  columns:
+  - en: First word
+    hi: पहला शब्द
+  - en: Second word
+    hi: दूसरा शब्द
+  - en: Joined
+    hi: जुड़ा हुआ
+  rows:
+  - - sa: रामः
+    - sa: अस्ति
+    - sa: रामोऽस्ति
+      check:
+        type: sandhi
+        first: रामः
+        second: अस्ति
+        joined: रामोऽस्ति
+      highlight: true
+  - - sa: सः
+    - sa: अपि
+    - sa: सोऽपि
+      check:
+        type: sandhi
+        first: सः
+        second: अपि
+        joined: सोऽपि
+      highlight: true
+  - - sa: एषः
+    - sa: अपि
+    - sa: एषोऽपि
+      check:
+        type: sandhi
+        first: एषः
+        second: अपि
+        joined: एषोऽपि
+      highlight: true
+  - - sa: रामः
+    - sa: गच्छति
+    - sa: रामो गच्छति
+      check:
+        type: sandhi
+        first: रामः
+        second: गच्छति
+        joined: रामो गच्छति
+      highlight: true
+  - - sa: देवः
+    - sa: भवति
+    - sa: देवो भवति
+      check:
+        type: sandhi
+        first: देवः
+        second: भवति
+        joined: देवो भवति
+      highlight: true
+  - - sa: बालकः
+    - sa: वदति
+    - sa: बालको वदति
+      check:
+        type: sandhi
+        first: बालकः
+        second: वदति
+        joined: बालको वदति
+      highlight: true
+  - - sa: तपः
+    - sa: वनम्
+    - sa: तपोवनम्
+      check:
+        type: sandhi
+        first: तपः
+        second: वनम्
+        joined: तपोवनम्
+      highlight: true
+  - - sa: मनः
+    - sa: हरम्
+    - sa: मनोहरम्
+      check:
+        type: sandhi
+        first: मनः
+        second: हरम्
+        joined: मनोहरम्
+      highlight: true
+  note:
+    en: 'Compounds follow the same rule: {{तपः + वनम्}} gives {{तपोवनम्}}.'
+    hi: 'समास भी वही नियम मानते हैं: {{तपः + वनम्}} से {{तपोवनम्}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-o
+  mode: choice
+  prompt:
+    en: Split the joined word {{रामोऽस्ति}}.
+    hi: जुड़े शब्द {{रामोऽस्ति}} को तोड़िए।
+  explain:
+    en: '{{रामः}} + {{अस्ति}}.'
+    hi: '{{रामः}} + {{अस्ति}}।'
+  roman: after
+  options:
+  - sa: रामे + अस्ति
+  - sa: रामा + अस्ति
+  - correct: true
+    sa: रामः + अस्ति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-o
+  mode: choice
+  prompt:
+    en: '{{सः + अपि}} gives…'
+    hi: '{{सः + अपि}} से…'
+  explain:
+    en: '{{अः}} + {{अ}} = {{ओऽ}}.'
+    hi: '{{अः}} + {{अ}} = {{ओऽ}}।'
+  roman: after
+  options:
+  - sa: सअपि
+  - sa: सःअपि
+  - correct: true
+    sa: सोऽपि
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-o
+  mode: type
+  prompt:
+    en: 'Join: {{रामः}} + {{अस्ति}}.'
+    hi: 'जोड़िए: {{रामः}} + {{अस्ति}}।'
+  explain:
+    en: '{{रामोऽस्ति}}.'
+    hi: '{{रामोऽस्ति}}।'
+  roman: after
+  answers:
+  - रामोऽस्ति
+  tiles:
+  - रामो
+  - ऽस्ति
+  - अस्ति
+  - ति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-o
+  mode: match
+  prompt:
+    en: Join each word to its parts.
+    hi: हर शब्द को उसके भागों से जोड़िए।
+  explain:
+    en: '{{-अः}} becomes {{-ओ}}.'
+    hi: '{{-अः}} बनता है {{-ओ}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: रामोऽस्ति
+    right:
+      sa: रामः + अस्ति
+  - left:
+      sa: रामो गच्छति
+    right:
+      sa: रामः + गच्छति
+  - left:
+      sa: तपोवनम्
+    right:
+      sa: तपः + वनम्
+  - left:
+      sa: मनोहरम्
+    right:
+      sa: मनः + हरम्
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.visarga-o
+  widget: mark_words
+  prompt:
+    en: Tap every word where the breath has become {{ओ}}.
+    hi: हर वह शब्द छुइए जहाँ श्वास {{ओ}} बन गया है।
+  params:
+    passage:
+    - रामोऽस्ति
+    - रामः
+    - देवो
+    - देवः
+    - तपोवनम्
+    - तपः
+    targets:
+    - रामोऽस्ति
+    - देवो
+    - तपोवनम्
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: The seventh breath
+    hi: सातवीं श्वास
+  depth: core
+  skills:
+  - sandhi.visarga-o
+  mode: choice
+  prompt:
+    en: '{{बालकः + वदति}} gives…'
+    hi: '{{बालकः + वदति}} से…'
+  explain:
+    en: '{{व}} is a soft sound: {{-अः}} becomes {{-ओ}}.'
+    hi: '{{व}} कोमल ध्वनि है: {{-अः}} बनता है {{-ओ}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “बालको वदति,” you say, “the boy speaks,” and the breath-statue's mist, which had been hanging in the air in a nervous little cloud, settles in a line across the hall, like a word written in air, and is gone. “रामोऽस्ति,” she says. “Rāma is. And someone is listening.” She breathes in, for the first time in a thousand years.
+      hi: “बालको वदति,” आप कहते हैं, “बालक बोलता है,” और श्वास-प्रतिमा की धुंध, जो बेचैन-सी नन्ही बदली बनकर हवा में टँगी थी, कक्ष के आर-पार एक रेखा में बैठ जाती है, हवा में लिखे शब्द की तरह, और ओझल हो जाती है। “रामोऽस्ति,” वह कहती है। “राम है। और कोई सुन रहा है।” वह भीतर साँस खींचती है, हज़ार वर्षों में पहली बार।
+    failure:
+      en: 'The mist hangs. {{-अः}} before a soft sound becomes {{-ओ}}: {{बालको वदति}}.'
+      hi: 'धुंध टँगी रहती है। कोमल ध्वनि से पहले {{-अः}} बनता है {{-ओ}}: {{बालको वदति}}।'
+  options:
+  - sa: बालकः वदति
+  - sa: बालकस्वदति
+  - correct: true
+    sa: बालको वदति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's breath
+    hi: पाणिनि की श्वास
+  depth: panini
+  skills:
+  - sandhi.visarga-o
+  sutras:
+  - 8.2.66
+  - 8.3.15
+  - 6.1.113
+  - 6.1.114
+  body:
+    en: Sūtra 8.2.66, {{ससजुषो रुः}}, turns a final {{स्}} into {{रु}}, and 8.3.15, {{खरवसानयोर्विसर्जनीयः}}, makes the {{र्}} a visarga at a pause. But 6.1.113, {{अतो रोरप्लुतादप्लुते}}, makes {{रु}} after {{अ}} into {{उ}} before a short {{अ}}, and 6.1.114, {{हशि च}}, does the same before a soft consonant.
+    hi: सूत्र 8.2.66, {{ससजुषो रुः}}, पद के अन्तिम {{स्}} को {{रु}} बनाता है, और 8.3.15, {{खरवसानयोर्विसर्जनीयः}}, विराम पर {{र्}} को विसर्ग बनाता है। पर 6.1.113, {{अतो रोरप्लुतादप्लुते}}, {{अ}} के बाद ह्रस्व {{अ}} से पहले {{रु}} को {{उ}} बनाता है, और 6.1.114, {{हशि च}}, कोमल व्यंजन से पहले भी यही करता है।
+- id: sum
+  kind: summary
+  title:
+    en: -अः becomes -ओ
+    hi: -अः बनता है -ओ
+  depth: core
+  points:
+  - sa: रामोऽस्ति
+    text:
+      en: 'Before अ: ओऽ.'
+      hi: 'अ से पहले: ओऽ।'
+  - sa: रामो गच्छति
+    text:
+      en: 'Before a soft sound: ओ.'
+      hi: 'कोमल ध्वनि से पहले: ओ।'
+  - sa: तपोवनम्
+    text:
+      en: In compounds too.
+      hi: समासों में भी।

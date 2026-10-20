@@ -1,0 +1,186 @@
+id: c1.check
+template: check
+title:
+  en: Unpack the names
+  hi: नामों को खोलिए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sam.dvandva
+  mode: choice
+  prompt:
+    en: '{{रामलक्ष्मणौ}} means…'
+    hi: '{{रामलक्ष्मणौ}} का अर्थ…'
+  explain:
+    en: 'A dvandva: “and”.'
+    hi: 'द्वन्द्व: ‘और’।'
+  roman: after
+  options:
+  - text:
+      en: Rāma's Lakṣmaṇa
+      hi: राम का लक्ष्मण
+  - correct: true
+    text:
+      en: Rāma and Lakṣmaṇa
+      hi: राम और लक्ष्मण
+  - text:
+      en: the Lakṣmaṇa who is Rāma
+      hi: वह लक्ष्मण जो राम है
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sam.tatpurusha
+  mode: choice
+  prompt:
+    en: '{{राजपुरुषः}} means…'
+    hi: '{{राजपुरुषः}} का अर्थ…'
+  explain:
+    en: 'A tatpuruṣa: “of”.'
+    hi: 'तत्पुरुष: ‘का’।'
+  roman: after
+  options:
+  - text:
+      en: king and man
+      hi: राजा और पुरुष
+  - correct: true
+    text:
+      en: the king's man
+      hi: राजा का पुरुष
+  - text:
+      en: a man like a king
+      hi: राजा जैसा पुरुष
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sam.karmadharaya
+  mode: choice
+  prompt:
+    en: '{{नीलोत्पलम्}} is…'
+    hi: '{{नीलोत्पलम्}} है…'
+  explain:
+    en: 'A karmadhāraya: describing.'
+    hi: 'कर्मधारय: वर्णन।'
+  roman: after
+  options:
+  - text:
+      en: a lotus of the blue
+      hi: नील का कमल
+  - correct: true
+    text:
+      en: a blue lotus
+      hi: नीला कमल
+  - text:
+      en: blue and lotus
+      hi: नीला और कमल
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sam.karmadharaya
+  mode: choice
+  prompt:
+    en: '{{त्रिलोकी}} is…'
+    hi: '{{त्रिलोकी}} है…'
+  explain:
+    en: 'A dvigu: a number counts a group.'
+    hi: 'द्विगु: संख्या एक समूह गिनती है।'
+  roman: after
+  options:
+  - text:
+      en: three and worlds
+      hi: तीन और लोक
+  - correct: true
+    text:
+      en: the group of three worlds
+      hi: तीन लोकों का समूह
+  - text:
+      en: of three worlds
+      hi: तीन लोकों का
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - sam.nan-upapada
+  mode: choice
+  prompt:
+    en: '{{असत्यम्}} unpacks as…'
+    hi: '{{असत्यम्}} का विग्रह…'
+  explain:
+    en: '{{अ-}} comes from {{न}}.'
+    hi: '{{अ-}}, {{न}} से आता है।'
+  roman: after
+  options:
+  - sa: अ सत्यम्
+  - correct: true
+    sa: न सत्यम्
+  - sa: सत्यस्य
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - sam.dvandva
+  - sam.tatpurusha
+  - sam.karmadharaya
+  - sam.nan-upapada
+  mode: match
+  prompt:
+    en: Join each compound to its unpacking.
+    hi: हर समास को उसके विग्रह से जोड़िए।
+  explain:
+    en: Four kinds.
+    hi: चार प्रकार।
+  roman: after
+  pairs:
+  - left:
+      sa: मातापितरौ
+    right:
+      sa: माता च पिता च
+  - left:
+      sa: वृक्षमूलम्
+    right:
+      sa: वृक्षस्य मूलम्
+  - left:
+      sa: महात्मा
+    right:
+      sa: महान् आत्मा
+  - left:
+      sa: कुम्भकारः
+    right:
+      sa: कुम्भं करोति
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - sam.dvandva
+  - sam.tatpurusha
+  - sam.karmadharaya
+  mode: order
+  prompt:
+    en: 'Say what Samāsikā says: “Rāma and Lakṣmaṇa; the king''s man; a blue lotus.”'
+    hi: 'वह कहिए जो समासिका कहती है: ‘राम और लक्ष्मण; राजा का पुरुष; नीला कमल।’'
+  explain:
+    en: '{{रामलक्ष्मणौ राजपुरुषः नीलोत्पलम्}}: three kinds of compound.'
+    hi: '{{रामलक्ष्मणौ राजपुरुषः नीलोत्पलम्}}: समास के तीन प्रकार।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“रामलक्ष्मणौ, राजपुरुषः, नीलोत्पलम्,” you say, and Samāsikā, the two-figured granite spirit, steps down, and for the first time the two figures do not hold on to one another. They stand side by side, one with a lotus, one with a bow, and smile. “We are two,” they say, “and we are one name.” In the next alcove a statue lifts her head: a woman with a pale blue throat, carved in a stone the colour of the sky before rain. “नीलकण्ठः,” she says. “Not the blue throat. The one who has it.”'
+      hi: '“रामलक्ष्मणौ, राजपुरुषः, नीलोत्पलम्,” आप कहते हैं, और समासिका, दो आकृतियों वाली ग्रेनाइट भूत, उतरती है, और पहली बार दोनों आकृतियाँ एक-दूसरे को थामे नहीं हैं। वे साथ-साथ खड़ी हैं, एक कमल लिए, एक धनुष, और मुस्कराती हैं। “हम दो हैं,” वे कहती हैं, “और हम एक नाम हैं।” अगले आले में एक प्रतिमा सिर उठाती है: हल्के नीले कण्ठ वाली स्त्री, वर्षा से पहले के आकाश के रंग के पत्थर में तराशी हुई। “नीलकण्ठः,” वह कहती है। “नीला कण्ठ नहीं। वह जिसके पास वह है।”'
+    failure:
+      en: 'The pair stays joined. Her three: {{रामलक्ष्मणौ राजपुरुषः नीलोत्पलम्}}.'
+      hi: 'जोड़ी जुड़ी रहती है। उसके तीन: {{रामलक्ष्मणौ राजपुरुषः नीलोत्पलम्}}।'
+  tokens:
+  - रामलक्ष्मणौ
+  - राजपुरुषः
+  - नीलोत्पलम्

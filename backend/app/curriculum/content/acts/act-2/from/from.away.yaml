@@ -1,0 +1,434 @@
+id: from.away
+template: scene
+title:
+  en: Away from
+  hi: से दूर
+title_sa: अपादानम्
+minutes: 6
+teaches:
+- case.abl
+needs:
+- case.dat
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The storm
+    hi: आँधी
+  depth: core
+  image:
+    brief: 'A sudden storm at the river: leaves torn from the neem trees, boats straining at their ropes, children running toward the school, the old Ācārya waving everyone away from the water; in the whirl of wind a swirling grey-green spirit made of leaves and gust dancing.'
+    alt:
+      en: A storm sweeps the riverbank as everyone runs for the school
+      hi: नदी तट पर आँधी और पाठशाला की ओर भागते सब लोग
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - vayuka
+    place: naditira
+    ratio: '4:3'
+    id: from-away-s1
+  narration:
+    en: 'The sky turns the colour of slate. A roaring wind tears down the river: leaves rip from the neem trees, the boats strain at their ropes, children run for the school. The Ācārya shouts: “From the river! Come away from the river!” In the middle of the whirl dances a grey-green spirit made of leaves and wind.'
+    hi: 'आकाश स्लेटी रंग का हो जाता है। एक गर्जता पवन नदी पर टूट पड़ता है: नीम के पेड़ों से पत्ते टूटकर उड़ते हैं, नावें रस्सियों पर तनती हैं, बच्चे पाठशाला की ओर भागते हैं। आचार्य चिल्लाते हैं: “नदी से! नदी से दूर आओ!” भँवर के बीच पत्तों और हवा से बना एक धूसर-हरा भूत नाचता है।'
+  lines:
+  - speaker: acarya
+    sa: नद्याः आगच्छत!
+    gloss:
+      en: Come away from the river!
+      hi: नदी से दूर आओ!
+- id: t1
+  kind: teach
+  title:
+    en: 'Away from: the fifth case'
+    hi: 'से दूर: पञ्चमी'
+  depth: core
+  skills:
+  - case.abl
+  sutras:
+  - 2.3.28
+  - 1.4.24
+  body:
+    en: 'The point something moves away from takes the fifth case, {{पञ्चमी}}, the source ({{अपादानम्}}): {{वृक्षात् पत्रं पतति}} (a leaf falls from the tree), {{ग्रामात् आगच्छति}} (he comes from the village).'
+    hi: 'जहाँ से कोई चीज़ अलग होती है वह पञ्चमी में आता है, अपादान: {{वृक्षात् पत्रं पतति}} (पेड़ से पत्ता गिरता है), {{ग्रामात् आगच्छति}} (वह गाँव से आता है)।'
+  examples:
+  - sa: वृक्षात् पत्रम् पतति।
+    meaning:
+      en: A leaf falls from the tree.
+      hi: पेड़ से पत्ता गिरता है।
+    words:
+    - sa: वृक्षात्
+      gloss:
+        en: from the tree
+        hi: पेड़ से
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: पत्रम्
+      gloss:
+        en: leaf
+        hi: पत्ता
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पतति
+      gloss:
+        en: falls
+        hi: गिरता है
+      check:
+        type: tinanta
+        dhatu: पत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: बालकः ग्रामात् आगच्छति।
+    meaning:
+      en: The boy comes from the village.
+      hi: बालक गाँव से आता है।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: ग्रामात्
+      gloss:
+        en: from the village
+        hi: गाँव से
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: आगच्छति
+      gloss:
+        en: comes
+        hi: आता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+  - sa: सः नद्याः जलम् गृह्णाति।
+    meaning:
+      en: He takes water from the river.
+      hi: वह नदी से जल लेता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: नद्याः
+      gloss:
+        en: from the river
+        hi: नदी से
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: जलम्
+      gloss:
+        en: water
+        hi: जल
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गृह्णाति
+      gloss:
+        en: takes
+        hi: लेता है
+      check:
+        type: tinanta
+        dhatu: ग्रह्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  term:
+    sa: पञ्चमी
+    meaning:
+      en: 'the fifth case: from'
+      hi: 'पाँचवीं विभक्ति: से (अलग होना)'
+- id: tb1
+  kind: table
+  title:
+    en: First case and fifth case
+    hi: प्रथमा और पञ्चमी
+  depth: core
+  skills:
+  - case.abl
+  caption:
+    en: The same word as itself and as a starting point
+    hi: वही शब्द स्वयं और आरम्भ-बिन्दु के रूप में
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: '1st: itself'
+    hi: 'प्रथमा: स्वयं'
+  - en: '5th: from'
+    hi: 'पञ्चमी: से'
+  rows:
+  - - text:
+        en: tree
+        hi: पेड़
+    - sa: वृक्षः
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वृक्षात्
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: village
+        hi: गाँव
+    - sa: ग्रामः
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: ग्रामात्
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: house
+        hi: घर
+    - sa: गृहम्
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गृहात्
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Panchami
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: girl
+        hi: बालिका
+    - sa: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: बालिकायाः
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: river
+        hi: नदी
+    - sa: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नद्याः
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Eka
+      highlight: true
+  note:
+    en: 'Masculine and neuter -अ: {{आत्}}. Feminine -आ: {{आयाः}}. Feminine -ई: {{ई}} → {{याः}}. Feminine fifth looks like the sixth case.'
+    hi: पुंलिंग और नपुंसक -अ में {{आत्}}। स्त्रीलिंग -आ में {{आयाः}}। स्त्रीलिंग -ई में {{ई}} → {{याः}}। स्त्रीलिंग पञ्चमी षष्ठी जैसी दिखती है।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.abl
+  mode: choice
+  prompt:
+    en: “The leaf falls from the tree.” Which word for “tree”?
+    hi: ‘पेड़ से पत्ता गिरता है।’ ‘पेड़’ के लिए कौन-सा रूप?
+  explain:
+    en: 'The source takes the fifth case: {{वृक्षात्}}.'
+    hi: 'स्रोत पञ्चमी लेता है: {{वृक्षात्}}।'
+  roman: after
+  options:
+  - sa: वृक्षम्
+  - sa: वृक्षेण
+  - correct: true
+    sa: वृक्षात्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.abl
+  mode: match
+  prompt:
+    en: Join each source to its meaning.
+    hi: हर स्रोत को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{आत्}} and {{याः}}: the fifth-case endings.'
+    hi: '{{आत्}} और {{याः}}: पञ्चमी के प्रत्यय।'
+  roman: after
+  pairs:
+  - left:
+      sa: वृक्षात्
+    right:
+      text:
+        en: from the tree
+        hi: पेड़ से
+  - left:
+      sa: ग्रामात्
+    right:
+      text:
+        en: from the village
+        hi: गाँव से
+  - left:
+      sa: गृहात्
+    right:
+      text:
+        en: from the house
+        hi: घर से
+  - left:
+      sa: नद्याः
+    right:
+      text:
+        en: from the river
+        hi: नदी से
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - case.abl
+  widget: mark_words
+  prompt:
+    en: Tap every word that says “from”.
+    hi: ‘से’ बताने वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - वृक्षात्
+    - वृक्षः
+    - ग्रामात्
+    - ग्रामः
+    - गृहात्
+    - गृहम्
+    targets:
+    - वृक्षात्
+    - ग्रामात्
+    - गृहात्
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: Away from the river
+    hi: नदी से दूर
+  depth: core
+  skills:
+  - case.abl
+  mode: order
+  prompt:
+    en: 'Shout like the Ācārya: “The children come from the river!”'
+    hi: 'आचार्य की तरह पुकारिए: ‘बच्चे नदी से आते हैं!’'
+  explain:
+    en: '{{बालकाः नद्याः आगच्छन्ति}}: the river is the source.'
+    hi: '{{बालकाः नद्याः आगच्छन्ति}}: नदी स्रोत है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “बालकाः नद्याः आगच्छन्ति!” you shout, and the last children dash up the bank into the school. The grey-green spirit whirls once around you, tugging at your hair, and the wind becomes a laugh.
+      hi: “बालकाः नद्याः आगच्छन्ति!” आप चिल्लाते हैं, और आख़िरी बच्चे किनारे से दौड़कर पाठशाला में पहुँच जाते हैं। धूसर-हरा भूत एक बार आपके चारों ओर घूमकर आपके बाल खींचता है, और हवा हँसी बन जाती है।
+    failure:
+      en: 'The wind pushes you back. The river is where they come from: put it in the fifth case.'
+      hi: 'हवा आपको पीछे धकेलती है। नदी वह है जहाँ से वे आते हैं: उसे पञ्चमी में रखिए।'
+  tokens:
+  - बालकाः
+  - नद्याः
+  - आगच्छन्ति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's source
+    hi: पाणिनि का अपादान
+  depth: panini
+  skills:
+  - case.abl
+  sutras:
+  - 1.4.24
+  - 2.3.28
+  body:
+    en: 'Sūtra 1.4.24, {{ध्रुवमपायेऽपादानम्}}: when two things move apart, the fixed one is the source. A leaf falls from a tree; the tree stays. Sūtra 2.3.28 gives the source the fifth case.'
+    hi: 'सूत्र 1.4.24, {{ध्रुवमपायेऽपादानम्}}: जब दो वस्तुएँ अलग होती हैं तो स्थिर रहने वाली स्रोत है। पत्ता पेड़ से गिरता है; पेड़ वहीं रहता है। सूत्र 2.3.28 स्रोत को पञ्चमी देता है।'
+  term:
+    sa: अपादानम्
+    meaning:
+      en: the fixed point things move away from
+      hi: 'अपादान: स्थिर बिन्दु जिससे वस्तुएँ दूर होती हैं'
+- id: sum
+  kind: summary
+  title:
+    en: From
+    hi: से
+  depth: core
+  points:
+  - sa: वृक्षात् · ग्रामात् · नद्याः
+    text:
+      en: 'The fifth case: the source.'
+      hi: 'पञ्चमी: स्रोत।'
+  - sa: आत् · आयाः · याः
+    text:
+      en: The singular endings.
+      hi: एकवचन प्रत्यय।
+  - text:
+      en: The source stays; the other thing moves.
+      hi: स्रोत स्थिर रहता है; दूसरी वस्तु हटती है।

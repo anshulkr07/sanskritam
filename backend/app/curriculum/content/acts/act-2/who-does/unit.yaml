@@ -1,0 +1,54 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: who-does
+title:
+  en: Who does what
+  hi: कौन क्या करता है
+title_sa: कः किं करोति
+status: ready
+episode:
+  summary:
+    en: 'Down at the river ghats the day begins. People wash, read and sing. Here you make your first sentences: one person doing one thing.'
+    hi: 'नदी के घाट पर दिन शुरू होता है। लोग नहाते, पढ़ते और गाते हैं। यहाँ आप अपने पहले वाक्य बनाते हैं: एक व्यक्ति, एक काम।'
+  beats:
+  - 'A boy reads on the steps: बालकः पठति.'
+  - Endings, not word order, say who does what.
+  - A spirit on the steps asks you to describe what everyone is doing.
+skills:
+- id: sent.stem-ending
+  title:
+    en: A word is a stem plus an ending
+    hi: शब्द = प्रातिपदिक + विभक्ति
+  sutras:
+  - 1.4.14
+- id: sent.nom-sg
+  title:
+    en: 'The doer: first case, singular'
+    hi: 'कर्ता: प्रथमा एकवचन'
+  sutras:
+  - 2.3.46
+  - 1.4.54
+- id: verb.pres-3sg
+  title:
+    en: 'He or she does: पठति'
+    hi: 'वह करता/करती है: पठति'
+  sutras:
+  - 3.2.123
+- id: sent.no-verb-to-be
+  title:
+    en: 'Sentences without “is”: अहं छात्रः'
+    hi: 'बिना “है” के वाक्य: अहं छात्रः'
+- id: sent.word-order
+  title:
+    en: Any word order works
+    hi: शब्द-क्रम स्वतंत्र है
+lessons:
+- who.endings
+- who.doer
+- who.does
+- who.is
+- who.order
+planned: []
+ghost: ghataka
+revision: who.revision
+check: who.check

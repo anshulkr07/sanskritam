@@ -1,0 +1,46 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: panini-gateway
+title:
+  en: Pāṇini's grammar
+  hi: पाणिनि का व्याकरण
+title_sa: पाणिनीयम्
+status: ready
+episode:
+  summary:
+    en: Three quarters of speech lie hidden (Ṛgveda 1.164.45). The last alcove opens only for one who can build a word the way Pāṇini does. Lubdhaka wants the power; you choose understanding.
+    hi: वाणी के तीन चरण छिपे हैं (ऋग्वेद 1.164.45)। अंतिम आला केवल उसके लिए खुलता है जो पाणिनि की तरह शब्द बना सके। लुब्धक शक्ति चाहता है; आप समझ चुनते हैं।
+  beats:
+  - The Śiva sūtras and pratyāhāras.
+  - 'How a sūtra works: it, saṃjñā, vidhi.'
+  - Build a word step by step; the alcove opens on एकं सद्विप्रा बहुधा वदन्ति (Ṛgveda 1.164.46).
+skills:
+- id: panini.shiva-sutras
+  title:
+    en: The Śiva sūtras and pratyāhāras
+    hi: माहेश्वर सूत्र और प्रत्याहार
+  sutras:
+  - SS.1
+  - 1.1.71
+- id: panini.it
+  title:
+    en: 'Marker letters: it'
+    hi: इत् संज्ञा
+  sutras:
+  - 1.3.2
+  - 1.3.3
+  - 1.3.9
+- id: panini.prakriya
+  title:
+    en: Building a word sūtra by sūtra
+    hi: 'प्रक्रिया: सूत्र-दर-सूत्र'
+  sutras:
+  - 8.2.1
+lessons:
+- pg.shiva
+- pg.it
+- pg.prakriya
+planned: []
+ghost: padika
+revision: pg.revision
+check: pg.check

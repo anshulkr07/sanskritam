@@ -1,0 +1,55 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: taddhita
+title:
+  en: Word-making suffixes
+  hi: तद्धित
+title_sa: तद्धिताः
+status: ready
+episode:
+  summary:
+    en: 'The throne''s inscriptions use derived words: son of, -ness, having, more and most.'
+    hi: 'सिंहासन के शिलालेख तद्धित शब्दों से भरे हैं: का पुत्र, -ता, वाला, अधिक और सबसे अधिक।'
+  beats:
+  - राघवः, कौन्तेयः.
+  - -त्व, -ता; -वत्, -मत्; -इक.
+  - -तर, -तम; feminines.
+skills:
+- id: tad.apatya
+  title:
+    en: 'Son of: राघवः'
+    hi: 'अपत्य: राघवः'
+  sutras:
+  - 4.1.92
+- id: tad.tva-ta
+  title:
+    en: '-ness: -त्व, -ता'
+    hi: 'भाव: -त्व, -ता'
+  sutras:
+  - 5.1.119
+- id: tad.matup
+  title:
+    en: 'Having: -वत्, -मत्'
+    hi: 'मतुप्: -वत्, -मत्'
+  sutras:
+  - 5.2.94
+- id: tad.ika
+  title:
+    en: 'Related to: -इक'
+    hi: 'ठक्: -इक'
+- id: tad.comparison
+  title:
+    en: 'More, most: -तर, -तम, -ईयस्, -इष्ठ'
+    hi: 'तुलना: -तर, -तम, -ईयस्, -इष्ठ'
+  sutras:
+  - 5.3.57
+  - 5.3.55
+lessons:
+- tad.son
+- tad.ness
+- tad.having
+- tad.more
+planned: []
+ghost: taddhitika
+revision: tad.revision
+check: tad.check

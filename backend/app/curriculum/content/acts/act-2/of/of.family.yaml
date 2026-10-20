@@ -1,0 +1,448 @@
+id: of.family
+template: scene
+title:
+  en: The family tree
+  hi: वंशवृक्ष
+title_sa: सम्बन्धिनः
+minutes: 6
+teaches:
+- case.gen-family
+needs:
+- case.gen
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Dādī draws a tree
+    hi: दादी वृक्ष बनाती हैं
+  depth: core
+  image:
+    brief: Dādī on the floor mat of the Ācārya's lamplit house drawing a family tree in her cloth-bound notebook with a reed pen, a trunk with many named branches; you leaning over her shoulder; the slim golden spirit's lamp glowing brighter as each name is read; Śuka on the shelf.
+    alt:
+      en: A grandmother draws a family tree in her notebook while a golden spirit's lamp brightens
+      hi: कॉपी में वंशवृक्ष बनाती दादी और उज्ज्वल होता भूत का दीपक
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - smritika
+    place: pathashala
+    ratio: '4:3'
+    id: of-family-s1
+  narration:
+    en: 'That evening Dādī takes out her cloth-bound notebook and draws a tree for you: a trunk and many branches, each with a name. “Mother. Father. Brother. Sister. Grandmother. Whose are they? Yours.” The golden spirit Smṛtikā watches, and each name she reads makes her lamp burn a little brighter.'
+    hi: 'उस शाम दादी अपनी कपड़े में बँधी कॉपी निकालती हैं और आपके लिए एक वृक्ष बनाती हैं: एक तना और कई शाखाएँ, हर एक पर एक नाम। “माता। पिता। भाई। बहन। दादी। ये किसके हैं? तुम्हारे।” सुनहरी स्मृतिका देखती है, और हर नाम पढ़ने पर उसका दीपक कुछ और उज्ज्वल हो उठता है।'
+- id: t1
+  kind: teach
+  title:
+    en: My, your, his, her
+    hi: मेरा, तेरा, उसका
+  depth: core
+  skills:
+  - case.gen-family
+  body:
+    en: 'The sixth case of the pronouns says “my”, “your”, “his”, “her”: {{मम}} (my), {{तव}} (your), {{तस्य}} (his), {{तस्याः}} (her), {{अस्माकम्}} (our), {{युष्माकम्}} (your, many).'
+    hi: 'सर्वनामों की षष्ठी ‘मेरा’, ‘तेरा’, ‘उसका’ बताती है: {{मम}} (मेरा), {{तव}} (तेरा), {{तस्य}} (उसका), {{तस्याः}} (उसकी), {{अस्माकम्}} (हमारा), {{युष्माकम्}} (तुम सबका)।'
+  rows:
+  - sa: मम
+    gloss:
+      en: my, of me
+      hi: मेरा
+    check:
+      type: subanta
+      stem: अस्मद्
+      linga: Pum
+      vibhakti: Sasthi
+      vacana: Eka
+  - sa: तव
+    gloss:
+      en: your, of you
+      hi: तेरा
+    check:
+      type: subanta
+      stem: युष्मद्
+      linga: Pum
+      vibhakti: Sasthi
+      vacana: Eka
+  - sa: तस्य
+    gloss:
+      en: his, of him
+      hi: उसका
+    check:
+      type: subanta
+      stem: तद्
+      linga: Pum
+      vibhakti: Sasthi
+      vacana: Eka
+  - sa: तस्याः
+    gloss:
+      en: her, of her
+      hi: उसकी
+    check:
+      type: subanta
+      stem: तद्
+      linga: Stri
+      vibhakti: Sasthi
+      vacana: Eka
+  - sa: अस्माकम्
+    gloss:
+      en: our, of us
+      hi: हमारा
+    check:
+      type: subanta
+      stem: अस्मद्
+      linga: Pum
+      vibhakti: Sasthi
+      vacana: Bahu
+  - sa: युष्माकम्
+    gloss:
+      en: your, of you all
+      hi: तुम सबका
+    check:
+      type: subanta
+      stem: युष्मद्
+      linga: Pum
+      vibhakti: Sasthi
+      vacana: Bahu
+- id: tb1
+  kind: table
+  title:
+    en: The family
+    hi: परिवार
+  depth: core
+  skills:
+  - case.gen-family
+  caption:
+    en: Family words, first and sixth case
+    hi: परिवार के शब्द, प्रथमा और षष्ठी
+  columns:
+  - en: Meaning
+    hi: अर्थ
+  - en: '1st: who'
+    hi: 'प्रथमा: कौन'
+  - en: '6th: of'
+    hi: 'षष्ठी: का'
+  rows:
+  - - text:
+        en: father
+        hi: पिता
+    - sa: पिता
+      check:
+        type: subanta
+        stem: पितृ
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पितुः
+      check:
+        type: subanta
+        stem: पितृ
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: mother
+        hi: माता
+    - sa: माता
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: मातुः
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: brother
+        hi: भाई
+    - sa: भ्राता
+      check:
+        type: subanta
+        stem: भ्रातृ
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: भ्रातुः
+      check:
+        type: subanta
+        stem: भ्रातृ
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: sister
+        hi: बहन
+    - sa: भगिनी
+      check:
+        type: subanta
+        stem: भगिनी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: भगिन्याः
+      check:
+        type: subanta
+        stem: भगिनी
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: son
+        hi: पुत्र
+    - sa: पुत्रः
+      check:
+        type: subanta
+        stem: पुत्र
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पुत्रस्य
+      check:
+        type: subanta
+        stem: पुत्र
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: grandmother
+        hi: दादी
+    - sa: पितामही
+      check:
+        type: subanta
+        stem: पितामही
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पितामह्याः
+      check:
+        type: subanta
+        stem: पितामही
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      highlight: true
+  note:
+    en: 'Words in -ऋ make the sixth case in {{उः}}: {{पितुः}}, {{मातुः}}, {{भ्रातुः}}.'
+    hi: '-ऋ वाले शब्द षष्ठी में {{उः}} लेते हैं: {{पितुः}}, {{मातुः}}, {{भ्रातुः}}।'
+- id: t2
+  kind: teach
+  title:
+    en: Reading the tree
+    hi: वृक्ष पढ़ना
+  depth: core
+  skills:
+  - case.gen-family
+  body:
+    en: Link names with the sixth case. {{मम माता}} (my mother), {{पितुः माता}} (father's mother) is {{पितामही}} (grandmother). {{मातुः पिता}} is {{मातामहः}} (mother's father).
+    hi: नामों को षष्ठी से जोड़िए। {{मम माता}} (मेरी माता), {{पितुः माता}} (पिता की माता) यानी {{पितामही}} (दादी)। {{मातुः पिता}} यानी {{मातामहः}} (नाना)।
+  examples:
+  - sa: मम माता।
+    meaning:
+      en: my mother
+      hi: मेरी माता
+    words:
+    - sa: मम
+      gloss:
+        en: my
+        hi: मेरी
+    - sa: माता
+      gloss:
+        en: mother
+        hi: माता
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: पितुः माता।
+    meaning:
+      en: 'the father''s mother: grandmother'
+      hi: 'पिता की माता: दादी'
+    words:
+    - sa: पितुः
+      gloss:
+        en: of the father
+        hi: पिता की
+      check:
+        type: subanta
+        stem: पितृ
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: माता
+      gloss:
+        en: mother
+        hi: माता
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: मातुः पिता।
+    meaning:
+      en: 'the mother''s father: maternal grandfather'
+      hi: 'माता के पिता: नाना'
+    words:
+    - sa: मातुः
+      gloss:
+        en: of the mother
+        hi: माता का
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: पिता
+      gloss:
+        en: father
+        hi: पिता
+      check:
+        type: subanta
+        stem: पितृ
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.gen-family
+  mode: choice
+  prompt:
+    en: “My mother.” Which phrase?
+    hi: ‘मेरी माता।’ कौन-सा वाक्यांश?
+  explain:
+    en: '{{मम}}: of me, my.'
+    hi: '{{मम}}: मेरा।'
+  roman: after
+  options:
+  - sa: अहं माता
+  - correct: true
+    sa: मम माता
+  - sa: माम् माता
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.gen-family
+  mode: match
+  prompt:
+    en: Join each word to its meaning.
+    hi: हर शब्द को उसके अर्थ से जोड़िए।
+  explain:
+    en: The words in -ऋ have {{आ}} in the first case.
+    hi: -ऋ वाले शब्दों की प्रथमा में {{आ}} होता है।
+  roman: after
+  pairs:
+  - left:
+      sa: पिता
+    right:
+      text:
+        en: father
+        hi: पिता
+  - left:
+      sa: माता
+    right:
+      text:
+        en: mother
+        hi: माता
+  - left:
+      sa: भ्राता
+    right:
+      text:
+        en: brother
+        hi: भाई
+  - left:
+      sa: भगिनी
+    right:
+      text:
+        en: sister
+        hi: बहन
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - case.gen-family
+  widget: mark_words
+  prompt:
+    en: Tap every word that says “my”, “your” or “his”.
+    hi: ‘मेरा’, ‘तेरा’ या ‘उसका’ वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - मम
+    - अहम्
+    - तव
+    - त्वम्
+    - तस्य
+    - सः
+    targets:
+    - मम
+    - तव
+    - तस्य
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: The family link
+    hi: परिवार की कड़ी
+  depth: core
+  skills:
+  - case.gen-family
+  mode: order
+  prompt:
+    en: 'Say: “My grandmother is the teacher''s pupil.”'
+    hi: 'कहिए: ‘मेरी दादी आचार्य की शिष्या हैं।’'
+  explain:
+    en: '{{मम पितामही आचार्यस्य शिष्या}}: two sixth-case words, no verb needed.'
+    hi: '{{मम पितामही आचार्यस्य शिष्या}}: दो षष्ठी शब्द, क्रिया की ज़रूरत नहीं।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “मम पितामही आचार्यस्य शिष्या,” you say, and the old Ācārya laughs aloud. “So she is.” Dādī tears up a little. Smṛtikā's lamp burns so bright that every name on the tree shows through the page.
+      hi: “मम पितामही आचार्यस्य शिष्या,” आप कहते हैं, और बूढ़े आचार्य खुलकर हँस पड़ते हैं। “हाँ, वे हैं।” दादी की आँखें भर आती हैं। स्मृतिका का दीपक इतना उज्ज्वल जलता है कि वृक्ष का हर नाम पन्ने के आर-पार दिखता है।
+    failure:
+      en: The tree stays dim. “My” is {{मम}}; then the person; then the teacher's pupil.
+      hi: वृक्ष धुँधला रहता है। ‘मेरी’ है {{मम}}; फिर व्यक्ति; फिर आचार्य की शिष्या।
+  tokens:
+  - मम
+  - पितामही
+  - आचार्यस्य
+  - शिष्या
+- id: sum
+  kind: summary
+  title:
+    en: The family
+    hi: परिवार
+  depth: core
+  points:
+  - sa: मम · तव · तस्य · तस्याः
+    text:
+      en: My, your, his, her.
+      hi: मेरा, तेरा, उसका, उसकी।
+  - sa: पितुः · मातुः · भ्रातुः
+    text:
+      en: Of the father, mother, brother.
+      hi: पिता, माता, भाई का।
+  - sa: पितुः माता
+    text:
+      en: Link names with the sixth case.
+      hi: नामों को षष्ठी से जोड़िए।

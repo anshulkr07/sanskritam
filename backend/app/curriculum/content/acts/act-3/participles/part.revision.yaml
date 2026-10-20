@@ -1,0 +1,221 @@
+id: part.revision
+template: revision
+title:
+  en: Everything about words made from verbs
+  hi: क्रिया से बने शब्दों के बारे में सब कुछ
+title_sa: कृदन्तसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The five kinds
+    hi: पाँच प्रकार
+  depth: core
+  section: core
+  rows:
+  - skill: krt.ktva
+    rule:
+      en: '{{-त्वा}} / {{-य}}: having done: {{गत्वा}}, {{कृत्वा}}, {{आगत्य}}.'
+      hi: '{{-त्वा}} / {{-य}}: करके: {{गत्वा}}, {{कृत्वा}}, {{आगत्य}}।'
+    sutras:
+    - 3.4.21
+    - 7.1.37
+    tag: core
+    taught_in: part.ktva#tb1
+  - skill: krt.tumun
+    rule:
+      en: '{{-तुम्}}: to do: {{गन्तुम्}}, {{पठितुम्}}, {{द्रष्टुम्}}.'
+      hi: '{{-तुम्}}: करने के लिए: {{गन्तुम्}}, {{पठितुम्}}, {{द्रष्टुम्}}।'
+    sutras:
+    - 3.3.10
+    - 3.3.158
+    tag: core
+    taught_in: part.tumun#tb1
+  - skill: krt.kta
+    rule:
+      en: '{{-त}} / {{-तवत्}}: done / has done: {{गतः}}, {{गतवान्}}.'
+      hi: '{{-त}} / {{-तवत्}}: किया हुआ / कर चुका: {{गतः}}, {{गतवान्}}।'
+    sutras:
+    - 1.1.26
+    - 3.2.102
+    tag: core
+    taught_in: part.kta#tb1
+  - skill: krt.shatr
+    rule:
+      en: '{{-अत्}} / {{-मान}}: while doing: {{गच्छन्}}, {{सेवमानः}}.'
+      hi: '{{-अत्}} / {{-मान}}: करते हुए: {{गच्छन्}}, {{सेवमानः}}।'
+    sutras:
+    - 3.2.124
+    tag: core
+    taught_in: part.shatr#tb1
+  - skill: krt.krtya
+    rule:
+      en: '{{-तव्य}} / {{-अनीय}} / {{-य}}: must be done: {{कर्तव्यम्}}, {{करणीयम्}}, {{कार्यम्}}.'
+      hi: '{{-तव्य}} / {{-अनीय}} / {{-य}}: करना चाहिए: {{कर्तव्यम्}}, {{करणीयम्}}, {{कार्यम्}}।'
+    sutras:
+    - 3.1.96
+    - 3.1.97
+    tag: core
+    taught_in: part.krtya#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: krt.ktva
+    rule:
+      en: '{{-त्वा}} / {{-य}} and {{-तुम्}} never change; the others agree with a noun.'
+      hi: '{{-त्वा}} / {{-य}} और {{-तुम्}} कभी नहीं बदलते; बाक़ी संज्ञा से मेल खाते हैं।'
+    tag: good
+    taught_in: part.ktva#t1
+  - skill: krt.kta
+    rule:
+      en: '{{-त}} for the object or the bare action, {{-तवत्}} for the doer.'
+      hi: कर्म या केवल क्रिया के लिए {{-त}}, कर्ता के लिए {{-तवत्}}।
+    tag: good
+    taught_in: part.kta#t1
+  - skill: krt.krtya
+    rule:
+      en: With a “must” word, the doer is in the third case.
+      hi: ‘चाहिए’ वाले शब्द के साथ कर्ता तृतीया में रहता है।
+    tag: good
+    taught_in: part.krtya#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: krt.ktva
+    rule:
+      en: 'The root changes before {{-त्वा}}: {{दृश्}} gives {{दृष्ट्वा}}, {{वच्}} gives {{उक्त्वा}}, {{दा}} gives {{दत्त्वा}}.'
+      hi: '{{-त्वा}} से पहले धातु बदलती है: {{दृश्}} से {{दृष्ट्वा}}, {{वच्}} से {{उक्त्वा}}, {{दा}} से {{दत्त्वा}}।'
+    example:
+      sa: दृष्ट्वा
+      meaning:
+        en: having seen
+        hi: देखकर
+      check:
+        type: krdanta
+        dhatu: दृश्
+        krt: ktvA
+    tag: rare
+    new_here: true
+  - skill: krt.kta
+    rule:
+      en: 'Some {{-त}} words are quite irregular: {{पच्}} gives {{पक्वः}}, {{धा}} gives {{हितः}}.'
+      hi: 'कुछ {{-त}} शब्द बहुत अनियमित हैं: {{पच्}} से {{पक्वः}}, {{धा}} से {{हितः}}।'
+    example:
+      sa: पक्वः
+      meaning:
+        en: cooked
+        hi: पका हुआ
+      check:
+        type: krdanta
+        dhatu: पच्
+        krt: kta
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: krt.ktva
+    rule:
+      en: 'Do not use {{-त्वा}} after a prefix: {{आगत्य}}, not {{आगत्वा}}.'
+      hi: 'उपसर्ग के बाद {{-त्वा}} मत लगाइए: {{आगत्य}}, {{आगत्वा}} नहीं।'
+    tag: core
+    taught_in: part.ktva#p5
+  - skill: krt.shatr
+    rule:
+      en: 'Do not give a masculine ending to a feminine noun: {{गच्छन्ती बालिका}}.'
+      hi: 'स्त्रीलिंग संज्ञा को पुंलिंग रूप मत दीजिए: {{गच्छन्ती बालिका}}।'
+    tag: core
+    taught_in: part.shatr#p5
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: krt.ktva
+    rule:
+      en: '{{समानकर्तृकयोः पूर्वकाले}} and {{समासेऽनञ्पूर्वे क्त्वो ल्यप्}}: {{क्त्वा}} and {{ल्यप्}}.'
+      hi: '{{समानकर्तृकयोः पूर्वकाले}} और {{समासेऽनञ्पूर्वे क्त्वो ल्यप्}}: {{क्त्वा}} और {{ल्यप्}}।'
+    sutras:
+    - 3.4.21
+    - 7.1.37
+    tag: core
+    taught_in: part.ktva#pn
+  - skill: krt.krtya
+    rule:
+      en: '{{तव्यत्तव्यानीयरः}}, {{अचो यत्}}, {{ऋहलोर्ण्यत्}}: the three “must” endings.'
+      hi: '{{तव्यत्तव्यानीयरः}}, {{अचो यत्}}, {{ऋहलोर्ण्यत्}}: तीन ‘चाहिए’ प्रत्यय।'
+    sutras:
+    - 3.1.96
+    - 3.1.97
+    - 3.1.124
+    tag: core
+    taught_in: part.krtya#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: krt.ktva
+    formula: गत्वा · आगत्य
+    rule:
+      en: having done
+      hi: करके
+    tag: core
+    taught_in: part.ktva#tb1
+  - skill: krt.tumun
+    formula: गन्तुम् · कर्तुम्
+    rule:
+      en: to do
+      hi: करने के लिए
+    tag: core
+    taught_in: part.tumun#tb1
+  - skill: krt.kta
+    formula: गतः · गता · गतम् · गतवान्
+    rule:
+      en: done
+      hi: किया हुआ
+    tag: core
+    taught_in: part.kta#tb1
+  - skill: krt.shatr
+    formula: गच्छन् · गच्छन्ती · सेवमानः
+    rule:
+      en: while doing
+      hi: करते हुए
+    tag: core
+    taught_in: part.shatr#tb1
+  - skill: krt.krtya
+    formula: कर्तव्यम् · करणीयम् · कार्यम्
+    rule:
+      en: must be done
+      hi: करना चाहिए
+    tag: core
+    taught_in: part.krtya#tb1

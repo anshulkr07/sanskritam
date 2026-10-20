@@ -1,0 +1,188 @@
+id: vowels.compound
+template: scene
+title: {en: "The last two groups", hi: "आख़िरी दो समूह"}
+title_sa: "सन्ध्यक्षराणि"
+minutes: 6
+teaches: [script.vowel.compound]
+needs: [script.vowel.short, script.vowel.long]
+review: engine_ok
+sources:
+  - title: "Śiva sūtras and Aṣṭādhyāyī sūtra text (vidyut-prakriya data)"
+    url: "https://github.com/ambuda-org/vidyut"
+    licence: "MIT"
+  - title: "Lesson text and story"
+    licence: "original"
+cards:
+  - id: s1
+    kind: story
+    title: {en: "Two shapes pressed together", hi: "आपस में दबी दो आकृतियाँ"}
+    image:
+      id: vowels-compound-end
+      brief: "The far end of the glowing palm leaf: Dhūmaka, now a brighter silvery grey, hovers over the last two letter groups ए ओ and ऐ औ, which glow faintly; Dādī's hand points at them with a reed pen; warm lamplight."
+      alt: {en: "A small bright ghost hovers over the last two groups of letters on a glowing leaf", hi: "चमकते पत्र के आख़िरी दो अक्षर-समूहों पर मँडराता नन्हा चमकीला भूत"}
+      text_in_image: ["ए ओ", "ऐ औ"]
+      ratio: "4:3"
+      cast: [dhumaka, dadi]
+      place: granthalaya
+    narration:
+      en: "Dhūmaka is brighter now. He drifts to the end of the line, where the last two groups wait. Each letter looks like two shapes pressed together. Dādī taps them with her pen. “The joined vowels. Each one began as two sounds.”"
+      hi: "धूमक अब पहले से ज़्यादा चमकीला है। वह पंक्ति के अन्त की ओर तैर जाता है, जहाँ आख़िरी दो समूह प्रतीक्षा कर रहे हैं। हर अक्षर ऐसा लगता है मानो दो आकृतियाँ आपस में दबा दी गई हों। दादी कलम से उन्हें छूती हैं, “ये संयुक्त स्वर हैं। हर एक की शुरुआत दो ध्वनियों से हुई थी।”"
+
+  - id: t1
+    kind: teach
+    title: {en: "Two sounds in one", hi: "एक में दो ध्वनियाँ"}
+    skills: [script.vowel.compound]
+    sutras: [SS.3, SS.4]
+    body:
+      en: "When {{अ}} meets {{इ}}, they press into one smooth sound, {{ए}}: e as in “they”. {{अ}} with {{उ}} gives {{ओ}}: o as in “go”. {{ऐ}} and {{औ}} glide instead: ai as in “aisle”, au as in “out”."
+      hi: "जब {{अ}} और {{इ}} मिलते हैं, तो वे एक चिकनी ध्वनि {{ए}} बन जाते हैं। {{अ}} और {{उ}} मिलकर {{ओ}} बनते हैं। {{ऐ}} और {{औ}} फिसलते हुए बोले जाते हैं: ‘अ’ से ‘इ’ की ओर, और ‘अ’ से ‘उ’ की ओर।"
+    rows:
+      - sa: "अ + इ → ए"
+        gloss: {en: "e, as in “they”", hi: "ए, जैसे ‘एक’ में"}
+      - sa: "अ + उ → ओ"
+        gloss: {en: "o, as in “go”", hi: "ओ, जैसे ‘ओस’ में"}
+      - sa: "ऐ"
+        gloss: {en: "ai, a glide, as in “aisle”", hi: "ऐ, ‘अ’ से ‘इ’ की ओर फिसलता"}
+      - sa: "औ"
+        gloss: {en: "au, a glide, as in “out”", hi: "औ, ‘अ’ से ‘उ’ की ओर फिसलता"}
+
+  - id: e1
+    kind: explore
+    title: {en: "Two places at once", hi: "एक साथ दो स्थान"}
+    skills: [script.vowel.compound]
+    widget: mouth_map
+    prompt: {en: "These vowels use two places at once. Tap each one and watch.", hi: "ये स्वर एक साथ दो स्थानों से बनते हैं। हर एक को छूकर देखिए।"}
+    params:
+      letters: ["ए", "ऐ", "ओ", "औ"]
+
+  - id: p1
+    kind: practice
+    mode: choice
+    skills: [script.vowel.compound]
+    roman: after
+    prompt: {en: "What do {{अ}} and {{उ}} make when they meet?", hi: "{{अ}} और {{उ}} मिलकर क्या बनाते हैं?"}
+    options:
+      - sa: "ओ"
+        correct: true
+      - sa: "ए"
+        why: {en: "{{ए}} is {{अ}} + {{इ}}.", hi: "{{ए}} तो {{अ}} + {{इ}} है।"}
+      - sa: "औ"
+        why: {en: "{{औ}} glides from {{अ}} to {{उ}}; it is not one smooth sound.", hi: "{{औ}} ‘अ’ से ‘उ’ की ओर फिसलता स्वर है, एक चिकना ‘ओ’ नहीं।"}
+    explain: {en: "{{अ}} + {{उ}} press into {{ओ}}, one smooth sound.", hi: "{{अ}} + {{उ}} मिलकर {{ओ}} बनते हैं, एक चिकनी ध्वनि।"}
+
+  - id: p2
+    kind: practice
+    mode: match
+    skills: [script.vowel.compound]
+    roman: after
+    prompt: {en: "Join each joined vowel to how it is made.", hi: "हर संयुक्त स्वर को उसके बनने के ढंग से जोड़िए।"}
+    pairs:
+      - left: {sa: "ए"}
+        right: {text: {en: "{{अ}} + {{इ}}, pressed into one", hi: "{{अ}} + {{इ}}, एक ध्वनि में"}}
+      - left: {sa: "ओ"}
+        right: {text: {en: "{{अ}} + {{उ}}, pressed into one", hi: "{{अ}} + {{उ}}, एक ध्वनि में"}}
+      - left: {sa: "ऐ"}
+        right: {text: {en: "{{अ}} gliding to {{इ}}", hi: "‘अ’ से ‘इ’ की ओर फिसलता"}}
+      - left: {sa: "औ"}
+        right: {text: {en: "{{अ}} gliding to {{उ}}", hi: "‘अ’ से ‘उ’ की ओर फिसलता"}}
+    explain: {en: "{{ए}} and {{ओ}} are fused; {{ऐ}} and {{औ}} glide.", hi: "{{ए}} और {{ओ}} जुड़कर एक हुए हैं; {{ऐ}} और {{औ}} फिसलते हैं।"}
+
+  - id: t2
+    kind: teach
+    title: {en: "Always two beats", hi: "सदा दो मात्राएँ"}
+    skills: [script.vowel.compound]
+    body:
+      en: "Sanskrit has no short {{ए}} or {{ओ}}. All four joined vowels last two beats, like {{आ}}. So {{देवः}}, a god, has a long e, and {{लोकः}}, a world, a long o. Never clip them."
+      hi: "संस्कृत में ह्रस्व {{ए}} या {{ओ}} होता ही नहीं। चारों संयुक्त स्वर {{आ}} की तरह दो मात्रा के होते हैं। इसलिए {{देवः}} (देवता) में ए दीर्घ है, और {{लोकः}} (संसार) में ओ। इन्हें कभी छोटा मत कीजिए।"
+    examples:
+      - sa: "देवः"
+        meaning: {en: "a god", hi: "देवता"}
+        check: {type: subanta, stem: "देव", linga: Pum, vibhakti: Prathama, vacana: Eka}
+      - sa: "लोकः"
+        meaning: {en: "a world", hi: "लोक, संसार"}
+        check: {type: subanta, stem: "लोक", linga: Pum, vibhakti: Prathama, vacana: Eka}
+
+  - id: t3
+    kind: teach
+    title: {en: "Let ऐ and औ glide", hi: "ऐ और औ को फिसलने दीजिए"}
+    skills: [script.vowel.compound]
+    body:
+      en: "In Hindi, {{ऐ}} and {{औ}} are often said flat, as in है and और. In Sanskrit they glide: start at {{अ}} and slide to {{इ}} or {{उ}}, in one syllable. Dādī fills the lamp with {{तैलम्}}, oil: “tai-lam”, as in “aisle”. A cow is {{गौः}}: “gau”, as in “now”."
+      hi: "हिन्दी में {{ऐ}} और {{औ}} अक्सर सपाट बोले जाते हैं, जैसे ‘है’ और ‘और’ में। संस्कृत में ये फिसलते हैं: ‘अ’ से शुरू होकर ‘इ’ या ‘उ’ तक, एक ही अक्षर में। दादी दीपक में {{तैलम्}} (तेल) भरती हैं: ‘तइ-लम्’ जैसा। गाय है {{गौः}}: ‘गउः’ जैसा।"
+    examples:
+      - sa: "तैलम्"
+        meaning: {en: "oil", hi: "तेल"}
+        check: {type: subanta, stem: "तैल", linga: Napumsaka, vibhakti: Prathama, vacana: Eka}
+      - sa: "गौः"
+        meaning: {en: "a cow", hi: "गाय"}
+        check: {type: subanta, stem: "गो", linga: Stri, vibhakti: Prathama, vacana: Eka}
+    image:
+      id: vowels-compound-lamp
+      brief: "Dādī carefully pours golden sesame oil from a small brass pot into the temple library's brass lamp; the flame brightens; Dhūmaka floats happily in the curl of smoke above it; Śuka watches from the top of a shelf."
+      alt: {en: "A grandmother pours oil into a brass lamp while a small ghost floats in the smoke", hi: "दादी पीतल के दीपक में तेल डालती हैं, धुएँ में नन्हा भूत तैर रहा है"}
+      ratio: "4:3"
+      cast: [dadi, dhumaka, shuka]
+      place: granthalaya
+
+  - id: p3
+    kind: practice
+    mode: order
+    title: {en: "The line made whole", hi: "पूरी हुई पंक्ति"}
+    skills: [script.vowel.compound]
+    sutras: [SS.3, SS.4]
+    roman: after
+    gate: true
+    prompt: {en: "The fire scattered the last two groups. Put them back in the leaf's order.", hi: "आग ने आख़िरी दो समूह बिखेर दिए हैं। उन्हें पत्र के क्रम में फिर से लगाइए।"}
+    tokens: ["ए", "ओ", "ऐ", "औ"]
+    explain: {en: "The third group is {{ए}} {{ओ}}, the fourth {{ऐ}} {{औ}}: first the fused pair, then the gliding pair.", hi: "तीसरा समूह {{ए}} {{ओ}} है, चौथा {{ऐ}} {{औ}}: पहले जुड़ी हुई जोड़ी, फिर फिसलने वाली।"}
+    story:
+      success: {en: "The whole first line glows from end to end. Dhūmaka opens his mouth and, faintly, says it with you: “अ इ उ ऋ ऌ ए ओ ऐ औ.” His voice is coming back.", hi: "पूरी पहली पंक्ति शुरू से अन्त तक चमक उठती है। धूमक मुँह खोलता है और धीमे से आपके साथ बोलता है: “अ इ उ ऋ ऌ ए ओ ऐ औ।” उसकी आवाज़ लौट रही है।"}
+      failure: {en: "Two letters flare and fade. Dhūmaka shakes his smoky head: the fused pair comes first.", hi: "दो अक्षर चमककर बुझ जाते हैं। धूमक अपना धुएँ-सा सिर हिलाता है: पहले जुड़ी हुई जोड़ी आती है।"}
+
+  - id: p4
+    kind: practice
+    mode: choice
+    skills: [script.vowel.compound]
+    roman: after
+    prompt: {en: "Which vowel is never short in Sanskrit?", hi: "संस्कृत में कौन-सा स्वर कभी ह्रस्व नहीं होता?"}
+    options:
+      - sa: "ओ"
+        correct: true
+      - sa: "उ"
+        why: {en: "{{उ}} is short; its long twin is {{ऊ}}.", hi: "{{उ}} ह्रस्व है; उसका दीर्घ जुड़वाँ {{ऊ}} है।"}
+      - sa: "इ"
+        why: {en: "{{इ}} is short; its long twin is {{ई}}.", hi: "{{इ}} ह्रस्व है; उसका दीर्घ जुड़वाँ {{ई}} है।"}
+    explain: {en: "{{ओ}} is always long, two beats. Sanskrit has no short {{ओ}}.", hi: "{{ओ}} सदा दीर्घ है, दो मात्राएँ। संस्कृत में ह्रस्व ओ नहीं होता।"}
+
+  - id: e2
+    kind: explore
+    title: {en: "Words that open with a joined vowel", hi: "संयुक्त स्वर से खुलने वाले शब्द"}
+    skills: [script.vowel.compound]
+    widget: mark_words
+    roman: after
+    prompt: {en: "Look at the first letter only. Tap every word that begins with a joined vowel.", hi: "केवल पहला अक्षर देखिए। जो शब्द संयुक्त स्वर से शुरू होते हैं, उन सबको छुइए।"}
+    params:
+      passage: ["एकः", "इन्द्रः", "ओदनः", "उषा", "ऐरावतः", "औषधम्", "अग्निः"]
+      targets: ["एकः", "ओदनः", "ऐरावतः", "औषधम्"]
+
+  - id: pn
+    kind: teach
+    depth: panini
+    title: {en: "Pāṇini's names for these vowels", hi: "इन स्वरों के लिए पाणिनि के नाम"}
+    skills: [script.vowel.compound]
+    sutras: [1.1.1, 1.1.2]
+    body:
+      en: "The first two sūtras of the Aṣṭādhyāyī name vowels you now know. {{आ}} {{ऐ}} {{औ}} are {{वृद्धि}} (1.1.1); {{अ}} {{ए}} {{ओ}} are {{गुण}} (1.1.2). Many later rules say “becomes guṇa” or “becomes vṛddhi”, and when words join you will watch these vowels appear."
+      hi: "अष्टाध्यायी के पहले दो सूत्र उन्हीं स्वरों को नाम देते हैं जिन्हें आप अब जानते हैं। {{आ}} {{ऐ}} {{औ}} {{वृद्धि}} हैं (1.1.1); {{अ}} {{ए}} {{ओ}} {{गुण}} हैं (1.1.2)। आगे के बहुत-से नियम कहते हैं “गुण होता है” या “वृद्धि होती है”, और शब्दों के मिलने पर आप इन्हीं स्वरों को प्रकट होते देखेंगे।"
+
+  - id: sum
+    kind: summary
+    title: {en: "The joined vowels", hi: "संयुक्त स्वर"}
+    points:
+      - sa: "ए ओ"
+        text: {en: "Fused: {{अ}} + {{इ}}, {{अ}} + {{उ}}; e as in “they”, o as in “go”.", hi: "जुड़े हुए: {{अ}} + {{इ}}, {{अ}} + {{उ}}।"}
+      - sa: "ऐ औ"
+        text: {en: "Glides: {{अ}} to {{इ}}, {{अ}} to {{उ}}.", hi: "फिसलते स्वर: ‘अ’ से ‘इ’, ‘अ’ से ‘उ’।"}
+      - text: {en: "All four are always long: two beats.", hi: "चारों सदा दीर्घ हैं: दो मात्राएँ।"}
+      - sa: "अ इ उ · ऋ ऌ · ए ओ · ऐ औ"
+        text: {en: "The leaf's first line, whole.", hi: "पत्र की पूरी पहली पंक्ति।"}

@@ -1,0 +1,330 @@
+id: c2.bahuvrihi
+template: scene
+title:
+  en: The one who has
+  hi: वह जिसके पास है
+title_sa: नीलकण्ठः
+minutes: 6
+teaches:
+- sam.bahuvrihi
+needs:
+- sam.nan-upapada
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The nineteenth statue
+    hi: उन्नीसवीं प्रतिमा
+  depth: core
+  image:
+    brief: The nineteenth statue with a pale blue throat carved into the stone, a faint crescent moon over her brow; Dādī touching the throat and pointing outward; Śuka looking up the hall; Lubdhaka's foreman reading from his notebook.
+    alt:
+      en: A statue with a pale blue carved throat while an old woman touches it and points outward
+      hi: हल्के नीले कण्ठ वाली प्रतिमा, उसे छूकर बाहर इशारा करती दादी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - malika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: c2-bahuvrihi-s1
+  narration:
+    en: 'The nineteenth statue has a pale blue throat carved into the stone. “नीलकण्ठः,” she says. “A blue throat.” “No,” says Dādī. “A karmadhāraya would be the throat itself. This is the one who has the blue throat. The compound points outside itself, to someone else: Śiva. It is called bahuvrīhi, which itself means ‘the one who has much rice’.”'
+    hi: 'उन्नीसवीं प्रतिमा के पत्थर में हल्का नीला कण्ठ तराशा गया है। “नीलकण्ठः,” वह कहती है। “नीला कण्ठ।” “नहीं,” दादी कहती हैं। “कर्मधारय होता तो वही कण्ठ होता। यह वह है जिसके पास नीला कण्ठ है। समास अपने से बाहर किसी और की ओर संकेत करता है: शिव की ओर। इसे बहुव्रीहि कहते हैं, जिसका अपना अर्थ है ‘बहुत चावल वाला’।”'
+  quote:
+    sa: पूर्णचन्द्रमुखी नीलनीरजोत्तमलोचना
+    gloss:
+      en: Moon-faced, with lotus eyes of the finest blue.
+      hi: पूर्ण चन्द्र-सा मुख वाली, श्रेष्ठ नील कमल-सी आँखों वाली।
+    source: Kathāsaritsāgara 1.4 (read in the Digital Corpus of Sanskrit)
+- id: t1
+  kind: teach
+  title:
+    en: The one who has
+    hi: जिसके पास है
+  depth: core
+  skills:
+  - sam.bahuvrihi
+  body:
+    en: 'In a {{बहुव्रीहिः}} the whole compound describes a third person: {{नीलः कण्ठः यस्य सः}}, “he whose throat is blue”, is {{नीलकण्ठः}}, Śiva. {{पीतम् अम्बरम् यस्य सः}} is {{पीताम्बरः}}, Viṣṇu. A bahuvrīhi is an adjective, and takes the gender of the person it describes.'
+    hi: '{{बहुव्रीहिः}} में पूरा समास किसी तीसरे का वर्णन करता है: {{नीलः कण्ठः यस्य सः}}, ‘जिसका कण्ठ नीला है’, {{नीलकण्ठः}} है, शिव। {{पीतम् अम्बरम् यस्य सः}} {{पीताम्बरः}} है, विष्णु। बहुव्रीहि विशेषण है, और वह जिस व्यक्ति का वर्णन करता है उसी का लिंग लेता है।'
+  term:
+    sa: बहुव्रीहिः
+    meaning:
+      en: a compound that describes someone else
+      hi: वह समास जो किसी और का वर्णन करता है
+- id: tb1
+  kind: table
+  title:
+    en: The one who has
+    hi: जिसके पास है
+  depth: core
+  skills:
+  - sam.bahuvrihi
+  caption:
+    en: Bahuvrīhi names the owner
+    hi: बहुव्रीहि स्वामी का नाम बताता है
+  columns:
+  - en: Compound
+    hi: समास
+  - en: Unpacked
+    hi: विग्रह
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: नीलकण्ठः
+      check:
+        type: subanta
+        stem: नीलकण्ठ
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: नीलः कण्ठः यस्य सः
+    - text:
+        en: the one whose throat is blue (Śiva)
+        hi: जिसका कण्ठ नीला है (शिव)
+  - - sa: पीताम्बरः
+      check:
+        type: subanta
+        stem: पीताम्बर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: पीतम् अम्बरम् यस्य सः
+    - text:
+        en: the one in yellow cloth (Viṣṇu)
+        hi: पीले वस्त्र वाला (विष्णु)
+  - - sa: दशाननः
+      check:
+        type: subanta
+        stem: दशानन
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: दश आननानि यस्य सः
+    - text:
+        en: the ten-faced one (Rāvaṇa)
+        hi: दस मुख वाला (रावण)
+  - - sa: चतुर्मुखः
+      check:
+        type: subanta
+        stem: चतुर्मुख
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: चत्वारि मुखानि यस्य सः
+    - text:
+        en: the four-faced one (Brahmā)
+        hi: चार मुख वाला (ब्रह्मा)
+  - - sa: कमलनयनः
+      check:
+        type: subanta
+        stem: कमलनयन
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: कमलम् इव नयने यस्य सः
+    - text:
+        en: the lotus-eyed one
+        hi: कमल-नेत्र वाला
+  - - sa: दीर्घबाहुः
+      check:
+        type: subanta
+        stem: दीर्घबाहु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: दीर्घौ बाहू यस्य सः
+    - text:
+        en: the long-armed one
+        hi: लम्बी भुजाओं वाला
+  - - sa: चन्द्रमुखी
+      check:
+        type: subanta
+        stem: चन्द्रमुखी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: चन्द्रः इव मुखं यस्याः सा
+    - text:
+        en: the moon-faced woman
+        hi: चन्द्र-सा मुख वाली स्त्री
+  note:
+    en: Look for {{यस्य}}, {{यस्याः}} (whose) in the unpacking.
+    hi: विग्रह में {{यस्य}}, {{यस्याः}} (जिसका) देखिए।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sam.bahuvrihi
+  mode: choice
+  prompt:
+    en: '{{नीलकण्ठः}} means…'
+    hi: '{{नीलकण्ठः}} का अर्थ…'
+  explain:
+    en: A bahuvrīhi names the owner.
+    hi: बहुव्रीहि स्वामी का नाम बताता है।
+  roman: after
+  options:
+  - text:
+      en: a blue throat
+      hi: नीला कण्ठ
+  - correct: true
+    text:
+      en: the one whose throat is blue
+      hi: जिसका कण्ठ नीला है
+  - text:
+      en: of the blue throat
+      hi: नीले कण्ठ का
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sam.bahuvrihi
+  mode: match
+  prompt:
+    en: Join each compound to its unpacking.
+    hi: हर समास को उसके विग्रह से जोड़िए।
+  explain:
+    en: Every one begins “whose …”.
+    hi: हर एक ‘जिसका …’ से शुरू होता है।
+  roman: after
+  pairs:
+  - left:
+      sa: पीताम्बरः
+    right:
+      sa: पीतम् अम्बरम् यस्य सः
+  - left:
+      sa: दशाननः
+    right:
+      sa: दश आननानि यस्य सः
+  - left:
+      sa: दीर्घबाहुः
+    right:
+      sa: दीर्घौ बाहू यस्य सः
+  - left:
+      sa: चन्द्रमुखी
+    right:
+      sa: चन्द्रः इव मुखं यस्याः सा
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sam.bahuvrihi
+  widget: mark_words
+  prompt:
+    en: Tap every bahuvrīhi (a word naming its owner).
+    hi: हर बहुव्रीहि (स्वामी का नाम बताने वाला शब्द) छुइए।
+  params:
+    passage:
+    - नीलकण्ठः
+    - कण्ठः
+    - पीताम्बरः
+    - अम्बरम्
+    - दशाननः
+    - आननम्
+    targets:
+    - नीलकण्ठः
+    - पीताम्बरः
+    - दशाननः
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sam.bahuvrihi
+  mode: order
+  prompt:
+    en: 'Say: “The blue-throated one comes.”'
+    hi: 'कहिए: ‘नीले कण्ठ वाला आता है।’'
+  explain:
+    en: '{{नीलकण्ठः आगच्छति}}.'
+    hi: '{{नीलकण्ठः आगच्छति}}।'
+  roman: after
+  tokens:
+  - नीलकण्ठः
+  - आगच्छति
+- id: p4
+  kind: practice
+  title:
+    en: The blue throat
+    hi: नीला कण्ठ
+  depth: core
+  skills:
+  - sam.bahuvrihi
+  mode: choice
+  prompt:
+    en: '{{चन्द्रमुखी}} (feminine) means…'
+    hi: '{{चन्द्रमुखी}} (स्त्रीलिंग) का अर्थ…'
+  explain:
+    en: A bahuvrīhi in the feminine, as it describes a woman.
+    hi: स्त्रीलिंग में बहुव्रीहि, क्योंकि वह स्त्री का वर्णन करता है।
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “चन्द्रमुखी,” you say, “she whose face is the moon,” and the nineteenth statue lifts her face to the lamplight. The pale blue of her carved throat deepens, from the throat upwards, into the whole stone, and her expression changes, the way a face changes when its name is finally said right. “नीलकण्ठः,” she says. “The one who has it. Yes. I was never the throat. I belong to someone.”
+      hi: “चन्द्रमुखी,” आप कहते हैं, “वह जिसका मुख चन्द्र है,” और उन्नीसवीं प्रतिमा अपना मुख दीपक की रोशनी की ओर उठाती है। उसके तराशे कण्ठ का हल्का नीला रंग गहरा होता है, कण्ठ से ऊपर पूरे पत्थर में, और उसका भाव बदल जाता है, जैसे किसी चेहरे का तब बदलता है जब उसका नाम अन्ततः ठीक कहा जाए। “नीलकण्ठः,” वह कहती है। “वह जिसके पास है। हाँ। मैं कभी कण्ठ नहीं थी। मैं किसी की हूँ।”
+    failure:
+      en: 'Her throat stays pale. A bahuvrīhi names the owner: “she whose face is the moon”.'
+      hi: 'उसका कण्ठ हल्का रहता है। बहुव्रीहि स्वामी का नाम बताता है: ‘वह जिसका मुख चन्द्र है’।'
+  options:
+  - text:
+      en: a moon and a face
+      hi: चन्द्र और मुख
+  - text:
+      en: the moon of the face
+      hi: मुख का चन्द्र
+  - correct: true
+    text:
+      en: a woman whose face is like the moon
+      hi: वह स्त्री जिसका मुख चन्द्र-सा है
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's “whose”
+    hi: पाणिनि का ‘जिसका’
+  depth: panini
+  skills:
+  - sam.bahuvrihi
+  sutras:
+  - 2.2.23
+  - 2.2.24
+  body:
+    en: Sūtra 2.2.23, {{शेषो बहुव्रीहिः}}, calls the remaining compounds {{बहुव्रीहिः}}, and 2.2.24, {{अनेकमन्यपदार्थे}}, says several words join in the sense of another word, someone outside the compound. The compound's own gender and number come from the one it describes.
+    hi: सूत्र 2.2.23, {{शेषो बहुव्रीहिः}}, शेष समासों को {{बहुव्रीहिः}} कहता है, और 2.2.24, {{अनेकमन्यपदार्थे}}, कहता है कि कई शब्द किसी अन्य पद के अर्थ में जुड़ते हैं, अर्थात् समास से बाहर कोई। समास का अपना लिंग और वचन उसी से आता है जिसका वह वर्णन करता है।
+- id: sum
+  kind: summary
+  title:
+    en: The one who has
+    hi: जिसके पास है
+  depth: core
+  points:
+  - sa: नीलकण्ठः
+    text:
+      en: He whose throat is blue (Śiva).
+      hi: जिसका कण्ठ नीला है (शिव)।
+  - sa: पीताम्बरः · दशाननः
+    text:
+      en: The one in yellow; the ten-faced one.
+      hi: पीले वस्त्र वाला; दस मुख वाला।
+  - sa: चन्द्रमुखी
+    text:
+      en: She whose face is the moon.
+      hi: वह जिसका मुख चन्द्र है।

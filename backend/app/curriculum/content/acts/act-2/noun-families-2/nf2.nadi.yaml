@@ -1,0 +1,660 @@
+id: nf2.nadi
+template: scene
+title:
+  en: नदी and वधू
+  hi: नदी और वधू
+title_sa: ईकारान्ताः
+minutes: 6
+teaches:
+- noun.ii-uu
+needs:
+- noun.u-stems
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The river and the bride
+    hi: नदी और वधू
+  depth: core
+  image:
+    brief: 'A library shelf at the end of an aisle with two small glowing figures of mist: a river-shaped ripple and a veiled bride; the ink-stained spirit sweeping its pen over them so that their outlines ripple like water; Dādī pointing and explaining.'
+    alt:
+      en: Two glowing mist figures, a river and a bride, on a library shelf as a poet-spirit sweeps his pen over them
+      hi: 'पुस्तकालय की अलमारी पर दो चमकते धुंध-आकार: नदी और वधू'
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - kavika
+    place: pathashala
+    ratio: '4:3'
+    id: nf2-nadi-s1
+  narration:
+    en: 'At the end of the aisle, two words stand side by side on a shelf: a river and a bride, both long vowels, both feminine. The poet spirit sweeps his pen over them, and their endings ripple like water. “The long ones,” says Dādī. “Words in -ई and -ऊ. Feminines, mostly. They do what the short ones do, with a different rhythm.”'
+    hi: 'गलियारे के छोर पर अलमारी पर दो शब्द साथ-साथ खड़े हैं: एक नदी और एक वधू, दोनों दीर्घ स्वर, दोनों स्त्रीलिंग। कवि-भूत उन पर कलम फेरता है, और उनके प्रत्यय पानी की तरह लहराते हैं। “दीर्घ वाले,” दादी कहती हैं। “-ई और -ऊ वाले शब्द। अधिकतर स्त्रीलिंग। वे वही करते हैं जो ह्रस्व वाले, अलग लय में।”'
+- id: t1
+  kind: teach
+  title:
+    en: Long -ई and -ऊ
+    hi: दीर्घ -ई और -ऊ
+  depth: core
+  skills:
+  - noun.ii-uu
+  sutras:
+  - 4.1.5
+  - 7.3.112
+  - 7.3.116
+  body:
+    en: 'Feminines in long -{{ई}} ({{नदी}}, {{देवी}}, {{कन्यका}}-like {{गौरी}}) and -{{ऊ}} ({{वधू}}, {{भू}}) share a pattern. Before a vowel-initial ending the long vowel becomes {{य्}} or {{व्}}: {{नद्यौ}}, {{वध्वौ}}. Sūtra 4.1.5 makes many of these feminines with {{ङीप्}}.'
+    hi: 'दीर्घ -{{ई}} ({{नदी}}, {{देवी}}, {{गौरी}}) और -{{ऊ}} ({{वधू}}, {{भू}}) वाले स्त्रीलिंग एक ढाँचे पर चलते हैं। स्वर से शुरू होने वाले प्रत्यय से पहले दीर्घ स्वर {{य्}} या {{व्}} बन जाता है: {{नद्यौ}}, {{वध्वौ}}। सूत्र 4.1.5 इनमें से कई स्त्रीलिंग {{ङीप्}} से बनाता है।'
+  term:
+    sa: नदी
+    meaning:
+      en: the model of long -ई feminines
+      hi: दीर्घ -ई स्त्रीलिंग का नमूना
+- id: tb1
+  kind: table
+  title:
+    en: 'नदी: the full table'
+    hi: 'नदी: पूरी तालिका'
+  depth: core
+  skills:
+  - noun.ii-uu
+  caption:
+    en: A river, in every case and number
+    hi: नदी, हर विभक्ति और वचन में
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नद्यौ
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: नद्यः
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: नदीम्
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: नद्यौ
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Dvi
+    - sa: नदीः
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Bahu
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: नद्या
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: नदीभ्याम्
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Dvi
+    - sa: नदीभिः
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Bahu
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: नद्यै
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Eka
+    - sa: नदीभ्याम्
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Dvi
+    - sa: नदीभ्यः
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Bahu
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: नद्याः
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: नदीभ्याम्
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Dvi
+    - sa: नदीभ्यः
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Bahu
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: नद्याः
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: नद्योः
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Dvi
+    - sa: नदीनाम्
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Bahu
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: नद्याम्
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: नद्योः
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Dvi
+    - sa: नदीषु
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Bahu
+  - - text:
+        en: 8 · calling
+        hi: 8 · सम्बोधन
+    - sa: नदि
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Eka
+    - sa: नद्यौ
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Dvi
+    - sa: नद्यः
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Bahu
+  note:
+    en: 'The call is short: {{हे नदि}}. {{नद्याः}} serves both the fifth and the sixth singular.'
+    hi: 'पुकार छोटी है: {{हे नदि}}। {{नद्याः}} एकवचन पञ्चमी और षष्ठी दोनों का काम करता है।'
+- id: tb2
+  kind: table
+  title:
+    en: 'वधू: the full table'
+    hi: 'वधू: पूरी तालिका'
+  depth: core
+  skills:
+  - noun.ii-uu
+  caption:
+    en: A bride, in every case and number
+    hi: वधू, हर विभक्ति और वचन में
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: वधूः
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वध्वौ
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: वध्वः
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: वधूम्
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: वध्वौ
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Dvi
+    - sa: वधूः
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Bahu
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: वध्वा
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: वधूभ्याम्
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Dvi
+    - sa: वधूभिः
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Bahu
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: वध्वै
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Eka
+    - sa: वधूभ्याम्
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Dvi
+    - sa: वधूभ्यः
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Bahu
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: वध्वाः
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: वधूभ्याम्
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Dvi
+    - sa: वधूभ्यः
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Bahu
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: वध्वाः
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: वध्वोः
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Dvi
+    - sa: वधूनाम्
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Bahu
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: वध्वाम्
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: वध्वोः
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Dvi
+    - sa: वधूषु
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Bahu
+  - - text:
+        en: 8 · calling
+        hi: 8 · सम्बोधन
+    - sa: वधु
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Eka
+    - sa: वध्वौ
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Dvi
+    - sa: वध्वः
+      check:
+        type: subanta
+        stem: वधू
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Bahu
+  note:
+    en: 'The {{ऊ}} turns to {{व्}} before vowels: {{वध्वौ}}, {{वध्वाः}}. The call is {{हे वधु}}.'
+    hi: 'स्वर से पहले {{ऊ}} {{व्}} बन जाता है: {{वध्वौ}}, {{वध्वाः}}। पुकार है {{हे वधु}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - noun.ii-uu
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: Every form is in the table you just read.
+    hi: हर रूप उसी तालिका में है जो अभी पढ़ी।
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: नदी
+      linga: Stri
+      blanks: 3
+    seed: 4
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - noun.ii-uu
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of a feminine in -ऊ.
+    hi: -ऊ वाले एक स्त्रीलिंग के छूटे रूप भरिए।
+  explain:
+    en: '{{वधू}} follows the same pattern with {{व्}}.'
+    hi: '{{वधू}} उसी ढाँचे पर {{व्}} के साथ चलती है।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: वधू
+      linga: Stri
+      blanks: 3
+    seed: 5
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - noun.ii-uu
+  mode: choice
+  prompt:
+    en: “Two rivers.” Which form?
+    hi: ‘दो नदियाँ।’ कौन-सा रूप?
+  explain:
+    en: '{{नद्यौ}}: the dual, {{ई}} → {{य्}} before {{औ}}.'
+    hi: '{{नद्यौ}}: द्विवचन, {{औ}} से पहले {{ई}} → {{य्}}।'
+  roman: after
+  options:
+  - sa: नद्यः
+  - correct: true
+    sa: नद्यौ
+  - sa: नदीः
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - noun.ii-uu
+  mode: match
+  prompt:
+    en: Join each form to its case.
+    hi: हर रूप को उसकी विभक्ति से जोड़िए।
+  explain:
+    en: The {{ई}} becomes {{य्}} before a vowel.
+    hi: स्वर से पहले {{ई}} {{य्}} बन जाता है।
+  roman: after
+  pairs:
+  - left:
+      sa: नदीम्
+    right:
+      text:
+        en: 2nd, one
+        hi: द्वितीया, एक
+  - left:
+      sa: नद्या
+    right:
+      text:
+        en: 3rd, one
+        hi: तृतीया, एक
+  - left:
+      sa: नद्यै
+    right:
+      text:
+        en: 4th, one
+        hi: चतुर्थी, एक
+  - left:
+      sa: नद्याम्
+    right:
+      text:
+        en: 7th, one
+        hi: सप्तमी, एक
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - noun.ii-uu
+  widget: mark_words
+  prompt:
+    en: Tap every form of {{नदी}} that has {{य्}}.
+    hi: '{{नदी}} के हर रूप को छुइए जिसमें {{य्}} है।'
+  params:
+    passage:
+    - नदी
+    - नद्यः
+    - नदीम्
+    - नद्या
+    - नदीभिः
+    - नद्याम्
+    targets:
+    - नद्यः
+    - नद्या
+    - नद्याम्
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: River and bride
+    hi: नदी और वधू
+  depth: core
+  skills:
+  - noun.ii-uu
+  mode: choice
+  prompt:
+    en: “Brides” as the first case plural?
+    hi: ‘वधुएँ’ प्रथमा बहुवचन में?
+  explain:
+    en: '{{वध्वः}}: {{ऊ}} → {{व्}} before {{अः}}.'
+    hi: '{{वध्वः}}: {{अः}} से पहले {{ऊ}} → {{व्}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “वध्वः,” you say, and the little veiled bride on the shelf lifts her veil and laughs. The river-ripple beside her unfolds, unfolds, and runs the length of the aisle in a silver line.
+      hi: “वध्वः,” आप कहते हैं, और अलमारी की नन्ही घूँघट वाली वधू घूँघट उठाकर हँस पड़ती है। उसके पास की नदी-लहर खुलती है, खुलती है, और गलियारे की पूरी लम्बाई में चाँदी की रेखा बनकर बह जाती है।
+    failure:
+      en: The bride stays veiled. The plural of {{वधू}} is {{वध्वः}}.
+      hi: वधू घूँघट में रहती है। {{वधू}} का बहुवचन {{वध्वः}} है।
+  options:
+  - sa: वधूः
+  - sa: वध्वौ
+  - correct: true
+    sa: वध्वः
+- id: sum
+  kind: summary
+  title:
+    en: Long -ई and -ऊ
+    hi: दीर्घ -ई और -ऊ
+  depth: core
+  points:
+  - sa: नदी नद्यौ नद्यः
+    text:
+      en: The feminine in -ई.
+      hi: -ई वाला स्त्रीलिंग।
+  - sa: वधूः वध्वौ वध्वः
+    text:
+      en: The feminine in -ऊ.
+      hi: -ऊ वाला स्त्रीलिंग।
+  - sa: हे नदि · हे वधु
+    text:
+      en: The call is short.
+      hi: पुकार छोटी है।

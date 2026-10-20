@@ -1,0 +1,16 @@
+{
+  "key": "01-001",
+  "revision": 3,
+  "mode": "edit",
+  "composition_policy": "phone-portrait-9x16-20261019",
+  "master": "results/gita-art-20261016/masters/01-001-v3.png",
+  "prompt": "Use case: precise-object-edit. Edit only the flags in the supplied 9:16 portrait watercolor for Bhagavad Gita 1.1. Remove every gold emblem, sacred-looking curl, glyph, character and writing-like mark from ALL blue and red battlefield flags, including small distant flags. Make every flag a plain unlettered cloth of the same existing blue or red color, with natural fabric folds only. Preserve the blind elderly king listening to Sanjaya inside the palace, their complete faces, crowns, hands and gestures, the room, army formations, elephants, chariots, light, colors, composition and portrait dimensions. Do not crop, zoom, move or otherwise change anything else. No text, sacred syllables, pseudo-writing, labels, explanatory marks or watermark anywhere.",
+  "prompt_sha256": "f2c93bd42fc25b9b2741c4ea7723dd905fa9b262156451e3a82b507ab05f3914",
+  "reference_images": [
+    {
+      "path": "results/gita-art-20261016/masters/01-001-v2.png",
+      "sha256": "125845b87b7029c1c52a549bfce3d25e043956b3091a701a0f1fb997f4b08e91"
+    }
+  ],
+  "reason": "Remove small gold flag emblems that can resemble sacred lettering; preserve the approved portrait scene."
+}

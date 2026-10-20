@@ -1,0 +1,383 @@
+id: atm.both
+template: scene
+title:
+  en: Verbs with both sets
+  hi: दोनों समूहों वाली क्रियाएँ
+title_sa: पचति पचते
+minutes: 6
+teaches:
+- verb.both-padas
+needs:
+- verb.atmane
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The cook
+    hi: रसोइया
+  depth: core
+  image:
+    brief: The small servant spirit crouched by the fire cooking in a little clay pot, one hand stirring, a thin smile; Dādī watching; Śuka sniffing the steam; the Vetāla in the background with an amused expression.
+    alt:
+      en: A small servant spirit cooks by the fire in a clay pot while a parrot sniffs the steam
+      hi: अलाव के पास मिट्टी की हाँडी में पकाता सेवक भूत, भाप सूँघता तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - sevaka
+    place: smashana
+    ratio: '4:3'
+    id: atm-both-s1
+  narration:
+    en: 'Sevaka sits beside the fire and takes out a small pot. He lights a twig and begins to cook, and as he cooks he talks. “पचति,” he murmurs, thinking of the beggars he once cooked for. Then, looking at the pot, and at himself: “पचते.” “He cooks for himself,” says Dādī. “The same root, two sets. The set you choose says who gets the fruit.”'
+    hi: 'सेवक अलाव के पास बैठता है और एक छोटी हाँडी निकालता है। वह तिनका जलाता है और पकाने लगता है, और पकाते हुए बोलता जाता है। “पचति,” वह बुदबुदाता है, उन भिखारियों को याद करते जिनके लिए कभी पकाता था। फिर हाँडी को और स्वयं को देखकर: “पचते।” “वह अपने लिए पकाता है,” दादी कहती हैं। “एक ही धातु, दो समूह। जो समूह चुनें, वह बताता है कि फल किसे मिलेगा।”'
+- id: t1
+  kind: teach
+  title:
+    en: Both sets
+    hi: दोनों समूह
+  depth: core
+  skills:
+  - verb.both-padas
+  body:
+    en: 'Many roots take both sets. The set can say who gets the benefit: {{पचति}} (he cooks, for others), {{पचते}} (he cooks for himself); {{यजति}} / {{यजते}} (he sacrifices for another / for himself); {{करोति}} / {{कुरुते}} (he does / he does for himself). In everyday Sanskrit the difference is often slight.'
+    hi: 'अनेक धातुएँ दोनों समूह लेती हैं। समूह बता सकता है कि लाभ किसे मिलता है: {{पचति}} (वह पकाता है, दूसरों के लिए), {{पचते}} (वह अपने लिए पकाता है); {{यजति}} / {{यजते}} (वह दूसरे के लिए / अपने लिए यज्ञ करता है); {{करोति}} / {{कुरुते}} (वह करता है / अपने लिए करता है)। रोज़ की संस्कृत में यह भेद अक्सर हल्का होता है।'
+- id: tb1
+  kind: table
+  title:
+    en: The same root, both sets
+    hi: वही धातु, दोनों समूह
+  depth: core
+  skills:
+  - verb.both-padas
+  caption:
+    en: For another, and for oneself
+    hi: दूसरे के लिए, और अपने लिए
+  columns:
+  - en: Root
+    hi: धातु
+  - en: For another
+    hi: दूसरे के लिए
+  - en: For oneself
+    hi: अपने लिए
+  rows:
+  - - sa: पच्
+    - sa: पचति
+      check:
+        type: tinanta
+        dhatu: पच्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: पचते
+      check:
+        type: tinanta
+        dhatu: पच्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: यज्
+    - sa: यजति
+      check:
+        type: tinanta
+        dhatu: यज्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: यजते
+      check:
+        type: tinanta
+        dhatu: यज्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: कृ
+    - sa: करोति
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: कुरुते
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: नी
+    - sa: नयति
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: नयते
+      check:
+        type: tinanta
+        dhatu: नी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: वह्
+    - sa: वहति
+      check:
+        type: tinanta
+        dhatu: वह्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: वहते
+      check:
+        type: tinanta
+        dhatu: वह्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+  note:
+    en: 'Left: {{-ति}}; right: {{-ते}}. The coloured forms are the ones for oneself.'
+    hi: 'बाएँ: {{-ति}}; दाएँ: {{-ते}}। रंगीन रूप अपने लिए वाले हैं।'
+- id: t2
+  kind: teach
+  title:
+    en: The prefix can decide
+    hi: उपसर्ग भी तय करता है
+  depth: core
+  skills:
+  - verb.both-padas
+  body:
+    en: 'With some prefixes the set is fixed: {{जि}} gives {{जयति}} (wins), but {{वि + जि}} gives {{विजयते}} (is victorious) and {{परा + जि}} gives {{पराजयते}} (is defeated). {{स्था}} gives {{तिष्ठति}} but {{प्र + स्था}} gives {{प्रतिष्ठते}} (sets out).'
+    hi: 'कुछ उपसर्गों के साथ समूह तय हो जाता है: {{जि}} से {{जयति}} (जीतता है), पर {{वि + जि}} से {{विजयते}} (विजयी होता है) और {{परा + जि}} से {{पराजयते}} (हारता है)। {{स्था}} से {{तिष्ठति}}, पर {{प्र + स्था}} से {{प्रतिष्ठते}} (प्रस्थान करता है)।'
+  examples:
+  - sa: सः विजयते।
+    meaning:
+      en: He is victorious.
+      hi: वह विजयी होता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: विजयते
+      gloss:
+        en: is victorious
+        hi: विजयी होता है
+      check:
+        type: tinanta
+        dhatu: जि
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - वि
+  - sa: सः पराजयते।
+    meaning:
+      en: He is defeated.
+      hi: वह हारता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: पराजयते
+      gloss:
+        en: is defeated
+        hi: हारता है
+      check:
+        type: tinanta
+        dhatu: जि
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - परा
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.both-padas
+  mode: choice
+  prompt:
+    en: “He cooks for himself.” Which form?
+    hi: ‘वह अपने लिए पकाता है।’ कौन-सा रूप?
+  explain:
+    en: '{{पचते}}: {{पच्}} with {{-ते}}.'
+    hi: '{{पचते}}: {{पच्}} और {{-ते}}।'
+  roman: after
+  options:
+  - sa: पचति
+  - correct: true
+    sa: पचते
+  - sa: अपचत्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.both-padas
+  mode: match
+  prompt:
+    en: Join each pair.
+    hi: जोड़ियाँ मिलाइए।
+  explain:
+    en: Two sets, two shades.
+    hi: दो समूह, दो रंग।
+  roman: after
+  pairs:
+  - left:
+      sa: पचति
+    right:
+      text:
+        en: cooks (for another)
+        hi: पकाता है (दूसरे के लिए)
+  - left:
+      sa: पचते
+    right:
+      text:
+        en: cooks for himself
+        hi: अपने लिए पकाता है
+  - left:
+      sa: करोति
+    right:
+      text:
+        en: does
+        hi: करता है
+  - left:
+      sa: कुरुते
+    right:
+      text:
+        en: does for himself
+        hi: अपने लिए करता है
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.both-padas
+  widget: mark_words
+  prompt:
+    en: Tap every form for oneself.
+    hi: अपने लिए वाला हर रूप छुइए।
+  params:
+    passage:
+    - पचते
+    - पचति
+    - यजते
+    - यजति
+    - कुरुते
+    - करोति
+    targets:
+    - पचते
+    - यजते
+    - कुरुते
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.both-padas
+  mode: choice
+  prompt:
+    en: “He is victorious.” Which form?
+    hi: ‘वह विजयी होता है।’ कौन-सा रूप?
+  explain:
+    en: '{{विजयते}}: {{वि + जि}}.'
+    hi: '{{विजयते}}: {{वि + जि}}।'
+  roman: after
+  options:
+  - sa: विजयति
+  - correct: true
+    sa: विजयते
+  - sa: पराजयते
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.both-padas
+  mode: order
+  prompt:
+    en: 'Say: “He cooks for himself.”'
+    hi: 'कहिए: ‘वह अपने लिए पकाता है।’'
+  explain:
+    en: '{{सः पचते}}.'
+    hi: '{{सः पचते}}।'
+  roman: after
+  tokens:
+  - सः
+  - पचते
+- id: p5
+  kind: practice
+  title:
+    en: For himself
+    hi: अपने लिए
+  depth: core
+  skills:
+  - verb.both-padas
+  mode: choice
+  prompt:
+    en: “He does (it) for himself.” Which form of {{कृ}}?
+    hi: ‘वह (उसे) अपने लिए करता है।’ {{कृ}} का कौन-सा रूप?
+  explain:
+    en: '{{कुरुते}}: the form for oneself.'
+    hi: '{{कुरुते}}: अपने लिए वाला रूप।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“कुरुते,” you say, and Sevaka tastes his stew. His face does something it has not done in a thousand years: it relaxes, as if a very old tightness had been let go. “For myself,” he says, and he is quiet a long while. When he looks up, he is almost whole. “सेवते, लभते, वर्तते,” he says. “I serve myself, I obtain, I am.”'
+      hi: '“कुरुते,” आप कहते हैं, और सेवक अपना शोरबा चखता है। उसके चेहरे पर वह भाव आता है जो हज़ार वर्षों से नहीं आया था: वह ढीला हो जाता है, मानो कोई बहुत पुरानी कसावट छूट गई हो। “अपने लिए,” वह कहता है, और बहुत देर चुप रहता है। जब वह ऊपर देखता है, वह लगभग पूर्ण है। “सेवते, लभते, वर्तते,” वह कहता है। “मैं अपनी सेवा करता हूँ, पाता हूँ, हूँ।”'
+    failure:
+      en: 'The stew stays hot and untasted. For himself: {{कुरुते}}.'
+      hi: 'शोरबा गर्म और बिना चखा रहता है। अपने लिए: {{कुरुते}}।'
+  options:
+  - sa: करोति
+  - correct: true
+    sa: कुरुते
+  - sa: अकरोत्
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's choice
+    hi: पाणिनि का चुनाव
+  depth: panini
+  skills:
+  - verb.both-padas
+  sutras:
+  - 1.3.72
+  - 1.3.78
+  - 1.3.19
+  body:
+    en: Sūtra 1.3.72, {{स्वरितञितः कर्त्रभिप्राये क्रियाफले}}, says the second set is used when the fruit of the action goes to the doer. And 1.3.78, {{शेषात् कर्तरि परस्मैपदम्}}, says that for all other roots the first set is the default. Prefixes can change the set; for example {{विपराभ्यां जेः}}, 1.3.19, gives {{विजयते}}.
+    hi: सूत्र 1.3.72, {{स्वरितञितः कर्त्रभिप्राये क्रियाफले}}, कहता है कि जब क्रिया का फल कर्ता को जाए तब दूसरा समूह आता है। और 1.3.78, {{शेषात् कर्तरि परस्मैपदम्}}, कहता है कि बाक़ी सब धातुओं में पहला समूह डिफ़ॉल्ट है। उपसर्ग समूह बदल सकते हैं; जैसे {{विपराभ्यां जेः}}, 1.3.19, {{विजयते}} देता है।
+- id: sum
+  kind: summary
+  title:
+    en: Both sets
+    hi: दोनों समूह
+  depth: core
+  points:
+  - sa: पचति · पचते
+    text:
+      en: He cooks; he cooks for himself.
+      hi: वह पकाता है; वह अपने लिए पकाता है।
+  - sa: विजयते · पराजयते
+    text:
+      en: A prefix fixes the set.
+      hi: उपसर्ग समूह तय करता है।
+  - text:
+      en: The set says who gets the fruit.
+      hi: समूह बताता है कि फल किसे मिलता है।

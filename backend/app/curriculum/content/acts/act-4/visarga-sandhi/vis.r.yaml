@@ -1,0 +1,347 @@
+id: vis.r
+template: scene
+title:
+  en: र् and the vanishing breath
+  hi: र् और लुप्त श्वास
+title_sa: कविरस्ति स गच्छति
+minutes: 6
+teaches:
+- sandhi.visarga-r
+needs:
+- sandhi.visarga-s
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The ninth statue
+    hi: नौवीं प्रतिमा
+  depth: core
+  image:
+    brief: The ninth statue with a calm, steady expression, one hand lifted as if to hold a thought; Śuka checking words on his claws; Dādī nodding; the earlier eight statues behind her in the lamplight; the first stars outside the hall.
+    alt:
+      en: A calm statue with one hand lifted as the lamp-lit hall fills with earlier statues
+      hi: शान्त प्रतिमा, एक हाथ उठाए, दीपक-प्रकाशित कक्ष में पिछली प्रतिमाएँ
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - visargika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: vis-r-s1
+  narration:
+    en: 'The ninth statue speaks in a low, sure voice. “कविरस्ति,” she says: “the poet is.” “स गच्छति”: “he goes.” “Two more things,” says Dādī. “After इ or उ the breath becomes र् before a vowel or a soft sound. And after other vowels it sometimes just vanishes: सः does not keep its breath before most consonants.”'
+    hi: 'नौवीं प्रतिमा नीची और दृढ़ आवाज़ में बोलती है। “कविरस्ति,” वह कहती है: “कवि है।” “स गच्छति”: “वह जाता है।” “दो बातें और,” दादी कहती हैं। “इ या उ के बाद श्वास स्वर या कोमल ध्वनि से पहले र् बन जाता है। और अन्य स्वरों के बाद वह कभी-कभी बस लुप्त हो जाता है: सः अधिकतर व्यंजनों से पहले अपनी श्वास नहीं रखता।”'
+- id: t1
+  kind: teach
+  title:
+    en: र् and gone
+    hi: र् और लुप्त
+  depth: core
+  skills:
+  - sandhi.visarga-r
+  body:
+    en: 'After {{-इः}} or {{-उः}}, the visarga becomes {{र्}} before a vowel or a soft sound: {{कविः + अस्ति}} gives {{कविरस्ति}}; {{गुरुः + ददाति}} gives {{गुरुर्ददाति}}. After {{-अः}} and {{-आः}}, before a vowel other than {{अ}}, it vanishes: {{रामः + इह}} gives {{राम इह}}. {{सः}} and {{एषः}} lose it before consonants: {{स गच्छति}}.'
+    hi: '{{-इः}} या {{-उः}} के बाद विसर्ग स्वर या कोमल ध्वनि से पहले {{र्}} बन जाता है: {{कविः + अस्ति}} से {{कविरस्ति}}; {{गुरुः + ददाति}} से {{गुरुर्ददाति}}। {{-अः}} और {{-आः}} के बाद, {{अ}} को छोड़कर किसी स्वर से पहले, वह लुप्त हो जाता है: {{रामः + इह}} से {{राम इह}}। {{सः}} और {{एषः}} व्यंजन से पहले उसे खो देते हैं: {{स गच्छति}}।'
+- id: tb1
+  kind: table
+  title:
+    en: र् and the vanishing breath
+    hi: र् और लुप्त श्वास
+  depth: core
+  skills:
+  - sandhi.visarga-r
+  caption:
+    en: After इ, उ; after अ, आ; and सः
+    hi: इ, उ के बाद; अ, आ के बाद; और सः
+  columns:
+  - en: First word
+    hi: पहला शब्द
+  - en: Second word
+    hi: दूसरा शब्द
+  - en: Joined
+    hi: जुड़ा हुआ
+  rows:
+  - - sa: कविः
+    - sa: अस्ति
+    - sa: कविरस्ति
+      check:
+        type: sandhi
+        first: कविः
+        second: अस्ति
+        joined: कविरस्ति
+      highlight: true
+  - - sa: गुरुः
+    - sa: अपि
+    - sa: गुरुरपि
+      check:
+        type: sandhi
+        first: गुरुः
+        second: अपि
+        joined: गुरुरपि
+      highlight: true
+  - - sa: मुनिः
+    - sa: गच्छति
+    - sa: मुनिर्गच्छति
+      check:
+        type: sandhi
+        first: मुनिः
+        second: गच्छति
+        joined: मुनिर्गच्छति
+      highlight: true
+  - - sa: कविः
+    - sa: वदति
+    - sa: कविर्वदति
+      check:
+        type: sandhi
+        first: कविः
+        second: वदति
+        joined: कविर्वदति
+      highlight: true
+  - - sa: गुरुः
+    - sa: ददाति
+    - sa: गुरुर्ददाति
+      check:
+        type: sandhi
+        first: गुरुः
+        second: ददाति
+        joined: गुरुर्ददाति
+      highlight: true
+  - - sa: रामः
+    - sa: इह
+    - sa: राम इह
+      check:
+        type: sandhi
+        first: रामः
+        second: इह
+        joined: राम इह
+      highlight: true
+  - - sa: रामाः
+    - sa: इह
+    - sa: रामा इह
+      check:
+        type: sandhi
+        first: रामाः
+        second: इह
+        joined: रामा इह
+      highlight: true
+  - - sa: अतः
+    - sa: एव
+    - sa: अत एव
+      check:
+        type: sandhi
+        first: अतः
+        second: एव
+        joined: अत एव
+      highlight: true
+  - - sa: सः
+    - sa: गच्छति
+    - sa: स गच्छति
+      check:
+        type: sandhi
+        first: सः
+        second: गच्छति
+        joined: स गच्छति
+      highlight: true
+  - - sa: सः
+    - sa: बालकः
+    - sa: स बालकः
+      check:
+        type: sandhi
+        first: सः
+        second: बालकः
+        joined: स बालकः
+      highlight: true
+  - - sa: एषः
+    - sa: दत्तः
+    - sa: एष दत्तः
+      check:
+        type: sandhi
+        first: एषः
+        second: दत्तः
+        joined: एष दत्तः
+      highlight: true
+  note:
+    en: Only {{सः}} and {{एषः}} lose the visarga before a consonant. Other {{-अः}} words become {{-ओ}}.
+    hi: केवल {{सः}} और {{एषः}} व्यंजन से पहले विसर्ग खोते हैं। अन्य {{-अः}} शब्द {{-ओ}} बनते हैं।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-r
+  mode: choice
+  prompt:
+    en: Split the joined word {{कविरस्ति}}.
+    hi: जुड़े शब्द {{कविरस्ति}} को तोड़िए।
+  explain:
+    en: '{{कविः}} + {{अस्ति}}.'
+    hi: '{{कविः}} + {{अस्ति}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: कविः + अस्ति
+  - sa: कवे + अस्ति
+  - sa: कवी + अस्ति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-r
+  mode: choice
+  prompt:
+    en: '{{गुरुः + अपि}} gives…'
+    hi: '{{गुरुः + अपि}} से…'
+  explain:
+    en: After {{उः}}, {{र्}}.
+    hi: '{{उः}} के बाद, {{र्}}।'
+  roman: after
+  options:
+  - sa: गुरुअपि
+  - sa: गुरोऽपि
+  - correct: true
+    sa: गुरुरपि
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-r
+  mode: type
+  prompt:
+    en: 'Join: {{कविः}} + {{वदति}}.'
+    hi: 'जोड़िए: {{कविः}} + {{वदति}}।'
+  explain:
+    en: '{{कविर्वदति}}.'
+    hi: '{{कविर्वदति}}।'
+  roman: after
+  answers:
+  - कविर्वदति
+  tiles:
+  - कविर्
+  - वदति
+  - कविः
+  - ति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-r
+  mode: match
+  prompt:
+    en: Join each word to its parts.
+    hi: हर शब्द को उसके भागों से जोड़िए।
+  explain:
+    en: 'After {{इः}}: {{र्}}; after {{अः}}: it vanishes.'
+    hi: '{{इः}} के बाद: {{र्}}; {{अः}} के बाद: वह लुप्त।'
+  roman: after
+  pairs:
+  - left:
+      sa: कविरस्ति
+    right:
+      sa: कविः + अस्ति
+  - left:
+      sa: राम इह
+    right:
+      sa: रामः + इह
+  - left:
+      sa: स गच्छति
+    right:
+      sa: सः + गच्छति
+  - left:
+      sa: अत एव
+    right:
+      sa: अतः + एव
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.visarga-r
+  widget: mark_words
+  prompt:
+    en: Tap every word where the breath has become {{र्}}.
+    hi: हर वह शब्द छुइए जहाँ श्वास {{र्}} बन गया है।
+  params:
+    passage:
+    - कविरस्ति
+    - कविः
+    - गुरुर्ददाति
+    - गुरुः
+    - मुनिर्गच्छति
+    - मुनिः
+    targets:
+    - कविरस्ति
+    - गुरुर्ददाति
+    - मुनिर्गच्छति
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: The vanishing breath
+    hi: लुप्त श्वास
+  depth: core
+  skills:
+  - sandhi.visarga-r
+  mode: choice
+  prompt:
+    en: '{{सः + बालकः}} gives…'
+    hi: '{{सः + बालकः}} से…'
+  explain:
+    en: '{{सः}} drops its visarga before a consonant.'
+    hi: '{{सः}} व्यंजन से पहले विसर्ग छोड़ देता है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “स बालकः,” you say, “that boy,” and the ninth statue closes her eyes. The breath that she has carried for a thousand years leaves her all at once, not as mist but as a faint warmth, like the last of a sunset. “कविरस्ति,” she says. “The poet is. And I.” She steps down from her plinth, as a spirit of grey marble, and stands beside the other two, who are already waiting.
+      hi: “स बालकः,” आप कहते हैं, “वह बालक,” और नौवीं प्रतिमा आँखें बन्द कर लेती है। जो श्वास उसने हज़ार वर्ष ढोई, वह एक साथ उससे निकल जाती है, धुंध नहीं बल्कि हल्की ऊष्मा बनकर, सूर्यास्त के अन्तिम क्षण की तरह। “कविरस्ति,” वह कहती है। “कवि है। और मैं भी।” वह अपने आसन से उतरती है, ग्रे संगमरमर का भूत बनकर, और उन दो के पास खड़ी हो जाती है जो पहले से प्रतीक्षा में हैं।
+    failure:
+      en: 'She does not move. {{सः}} before a consonant drops its breath: {{स बालकः}}.'
+      hi: 'वह हिलती नहीं। व्यंजन से पहले {{सः}} श्वास छोड़ देता है: {{स बालकः}}।'
+  options:
+  - sa: सः बालकः
+  - sa: सो बालकः
+  - correct: true
+    sa: स बालकः
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's r and gone
+    hi: पाणिनि का र् और लोप
+  depth: panini
+  skills:
+  - sandhi.visarga-r
+  sutras:
+  - 8.2.66
+  - 8.3.15
+  - 8.3.17
+  - 8.3.19
+  - 6.1.132
+  body:
+    en: The visarga is a changed {{रु}}, so after {{इ}} or {{उ}} the {{र्}} stays before a soft sound (8.2.66, 8.3.15). After {{अ}}, {{आ}}, 8.3.17, {{भोभगघपूर्वस्य योऽशि}}, makes it {{य्}} before a soft sound and 8.3.19, {{लोपः शाकल्यस्य}}, drops it. 6.1.132, {{एतत्तदोः सुलोपोऽकोरनञ्समासे हलि}}, drops the {{सु}} of {{सः}} and {{एषः}} before a consonant.
+    hi: विसर्ग बदला हुआ {{रु}} है, इसलिए {{इ}} या {{उ}} के बाद {{र्}} कोमल ध्वनि से पहले रहता है (8.2.66, 8.3.15)। {{अ}}, {{आ}} के बाद 8.3.17, {{भोभगघपूर्वस्य योऽशि}}, उसे कोमल ध्वनि से पहले {{य्}} बनाता है और 8.3.19, {{लोपः शाकल्यस्य}}, उसे हटा देता है। 6.1.132, {{एतत्तदोः सुलोपोऽकोरनञ्समासे हलि}}, व्यंजन से पहले {{सः}} और {{एषः}} का {{सु}} हटा देता है।
+- id: sum
+  kind: summary
+  title:
+    en: र् and gone
+    hi: र् और लोप
+  depth: core
+  points:
+  - sa: कविरस्ति
+    text:
+      en: 'After इः or उः: र्.'
+      hi: 'इः या उः के बाद: र्।'
+  - sa: राम इह
+    text:
+      en: 'After अः before another vowel: gone.'
+      hi: 'अः के बाद अन्य स्वर से पहले: लुप्त।'
+  - sa: स गच्छति
+    text:
+      en: सः loses its breath before a consonant.
+      hi: सः व्यंजन से पहले श्वास खोता है।

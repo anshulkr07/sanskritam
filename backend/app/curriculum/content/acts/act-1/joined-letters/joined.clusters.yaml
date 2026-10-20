@@ -1,0 +1,336 @@
+id: joined.clusters
+template: scene
+title:
+  en: Letters that hold hands
+  hi: हाथ थामे अक्षर
+title_sa: संयुक्ताक्षराणि
+minutes: 6
+teaches:
+- script.conjunct
+needs:
+- script.cons.inherent-a
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The crowded pillar
+    hi: भीड़ भरा स्तम्भ
+  depth: core
+  image:
+    brief: A tall carved stone pillar in the temple courtyard covered in crowded joined Devanagari-style letters; curled up in the carving a sleeping pale sage-green round spirit with a tiny nightcap of mist; you, Dādī and Śuka looking up at it.
+    alt:
+      en: A stone pillar crowded with joined letters and a sleeping green spirit in a nightcap
+      hi: संयुक्ताक्षरों से भरा पत्थर का स्तम्भ और टोपी पहने सोया हरा भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - nidralu
+    place: devalaya
+    ratio: '4:3'
+    id: joined-clusters-s1
+  narration:
+    en: Chāyikā's clue leads you into the temple courtyard, to a stone pillar covered in letters. They crowd so close they seem to hold hands. In the carving, curled up like a cat, sleeps a pale green spirit in a nightcap of mist.
+    hi: छायिका का संकेत आपको मंदिर के आँगन में एक पत्थर के स्तम्भ तक ले जाता है, जो अक्षरों से ढका है। वे इतने पास-पास हैं मानो हाथ थामे हों। नक्काशी में बिल्ली की तरह सिमटा, धुंध की टोपी पहने, एक हल्का हरा भूत सो रहा है।
+  lines:
+  - speaker: dadi
+    sa: स्तम्भे संयुक्ताक्षराणि सन्ति।
+    gloss:
+      en: There are joined letters on the pillar.
+      hi: स्तम्भ पर संयुक्ताक्षर हैं।
+- id: t1
+  kind: teach
+  title:
+    en: Two consonants, one shape
+    hi: दो व्यंजन, एक आकृति
+  depth: core
+  skills:
+  - script.conjunct
+  body:
+    en: 'When two consonants meet with no vowel between them, they join into one shape, a {{संयुक्ताक्षरम्}}. The first drops its vowel, the second keeps it: {{क्}} + {{ष}} = {{क्ष}}.'
+    hi: 'जब दो व्यंजन बिना स्वर के मिलते हैं, तो वे एक आकृति में जुड़ जाते हैं, {{संयुक्ताक्षरम्}}। पहला अपना स्वर छोड़ देता है, दूसरा रखता है: {{क्}} + {{ष}} = {{क्ष}}।'
+  steps:
+  - sa: क्
+    label:
+      en: the first, with no vowel
+      hi: पहला, बिना स्वर
+  - sa: ष
+    label:
+      en: the second keeps its vowel
+      hi: दूसरा अपना स्वर रखता है
+  - sa: क्ष
+    label:
+      en: one joined letter
+      hi: एक संयुक्ताक्षर
+  term:
+    sa: संयुक्ताक्षरम्
+    meaning:
+      en: a joined letter
+      hi: जुड़ा हुआ अक्षर
+- id: tb1
+  kind: table
+  title:
+    en: Four famous joins
+    hi: चार प्रसिद्ध संयोग
+  depth: core
+  skills:
+  - script.conjunct
+  caption:
+    en: Four joined letters you will meet everywhere
+    hi: चार संयुक्ताक्षर जो हर जगह मिलेंगे
+  columns:
+  - en: Joined
+    hi: संयुक्त
+  - en: Made of
+    hi: से बना
+  - en: In a word
+    hi: शब्द में
+  rows:
+  - - sa: क्ष
+    - sa: क् + ष
+    - sa: क्षत्रियः
+      check:
+        type: subanta
+        stem: क्षत्रिय
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: त्र
+    - sa: त् + र
+    - sa: मित्रम्
+      check:
+        type: subanta
+        stem: मित्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: ज्ञ
+    - sa: ज् + ञ
+    - sa: ज्ञानम्
+      check:
+        type: subanta
+        stem: ज्ञान
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: श्र
+    - sa: श् + र
+    - sa: श्रमः
+      check:
+        type: subanta
+        stem: श्रम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+  note:
+    en: 'Hindi says {{ज्ञ}} as “gya”; Sanskrit says it as ज् with the nasal {{ञ}}: “jña”.'
+    hi: 'हिन्दी {{ज्ञ}} को ‘ग्य’ बोलती है; संस्कृत में यह ज् और नासिक्य {{ञ}} है: ‘ज्ञ’।'
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - script.conjunct
+  widget: letter_builder
+  prompt:
+    en: Join the halves to the letters and read what you make.
+    hi: आधे अक्षरों को पूरे अक्षरों से जोड़िए और जो बना उसे पढ़िए।
+  params:
+    bases:
+    - ष
+    - र
+    - ञ
+    - त
+    halves:
+    - क्
+    - त्
+    - ज्
+    - श्
+    - स्
+    targets:
+    - क्ष
+    - त्र
+    - ज्ञ
+    - श्र
+    - स्त
+  roman: after
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - script.conjunct
+  mode: choice
+  prompt:
+    en: Which one is {{क्}} + {{ष}}?
+    hi: इनमें {{क्}} + {{ष}} कौन-सा है?
+  explain:
+    en: '{{क्ष}}: the first loses its vowel and joins the second. {{कष}} is two separate letters.'
+    hi: '{{क्ष}}: पहला स्वर खोकर दूसरे से जुड़ता है। {{कष}} दो अलग अक्षर हैं।'
+  roman: after
+  options:
+  - correct: true
+    sa: क्ष
+  - sa: ष्क
+  - sa: कष
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - script.conjunct
+  mode: match
+  prompt:
+    en: Join each joined letter to its parts.
+    hi: हर संयुक्ताक्षर को उसके भागों से जोड़िए।
+  explain:
+    en: Each joined letter is its first half plus its second letter.
+    hi: हर संयुक्ताक्षर पहला आधा और दूसरा अक्षर है।
+  roman: after
+  pairs:
+  - left:
+      sa: क्ष
+    right:
+      sa: क् + ष
+  - left:
+      sa: त्र
+    right:
+      sa: त् + र
+  - left:
+      sa: ज्ञ
+    right:
+      sa: ज् + ञ
+  - left:
+      sa: श्र
+    right:
+      sa: श् + र
+- id: t2
+  kind: teach
+  title:
+    en: Half letters and stacks
+    hi: आधे अक्षर और ढेर
+  depth: core
+  skills:
+  - script.conjunct
+  body:
+    en: 'Letters with an upright bar lose it as the first half: {{स्}} + {{त}} = {{स्त}}. Letters without a bar sit on top of the next: {{ट्}} + {{ट}} = {{ट्ट}}. A joined letter is still read left to right, top to bottom.'
+    hi: 'खड़ी पाई वाले अक्षर पहले आधे के रूप में उसे खो देते हैं: {{स्}} + {{त}} = {{स्त}}। बिना पाई वाले अगले अक्षर के ऊपर बैठते हैं: {{ट्}} + {{ट}} = {{ट्ट}}। संयुक्ताक्षर बाएँ से दाएँ, ऊपर से नीचे पढ़ा जाता है।'
+  examples:
+  - sa: अस्ति
+    meaning:
+      en: is, exists
+      hi: है, विद्यमान है
+  - sa: पुत्रः
+    meaning:
+      en: 'a son: {{त्}} + {{र}}'
+      hi: 'पुत्र: {{त्}} + {{र}}'
+    check:
+      type: subanta
+      stem: पुत्र
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: सत्यम्
+    meaning:
+      en: 'truth: {{त्}} + {{य}}'
+      hi: 'सत्य: {{त्}} + {{य}}'
+    check:
+      type: subanta
+      stem: सत्य
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - script.conjunct
+  widget: mark_words
+  prompt:
+    en: Tap every word that has a joined letter.
+    hi: हर उस शब्द को छुइए जिसमें संयुक्ताक्षर है।
+  params:
+    passage:
+    - सत्यम्
+    - कमलम्
+    - मित्रम्
+    - नगरम्
+    - शास्त्रम्
+    - बालः
+    - पुत्रः
+    - फलम्
+    targets:
+    - सत्यम्
+    - मित्रम्
+    - शास्त्रम्
+    - पुत्रः
+  roman: after
+- id: p3
+  kind: practice
+  title:
+    en: A word on the pillar
+    hi: स्तम्भ पर एक शब्द
+  depth: core
+  skills:
+  - script.conjunct
+  mode: type
+  prompt:
+    en: 'Wake the pillar: build the carved word {{ज्ञानम्}} from the pieces.'
+    hi: 'स्तम्भ को जगाइए: टुकड़ों से खुदा शब्द {{ज्ञानम्}} बनाइए।'
+  explain:
+    en: '{{ज्ञा}} + {{नम्}}: {{ज्ञानम्}}, knowledge.'
+    hi: '{{ज्ञा}} + {{नम्}}: {{ज्ञानम्}}, ज्ञान।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: The word glows on the pillar. The green spirit twitches a nightcap and turns over, still asleep, but smiling.
+      hi: शब्द स्तम्भ पर चमक उठता है। हरा भूत अपनी टोपी हिलाता है और करवट बदलता है, अब भी सोया, पर मुस्कुराता हुआ।
+    failure:
+      en: The word fades. Join {{ज्ञा}} to {{नम्}}, left to right.
+      hi: शब्द धुँधला पड़ जाता है। {{ज्ञा}} को {{नम्}} से जोड़िए, बाएँ से दाएँ।
+  answers:
+  - ज्ञानम्
+  tiles:
+  - ज्ञा
+  - नम्
+  - ज्ञ
+  - म्
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - script.conjunct
+  mode: choice
+  prompt:
+    en: In {{मित्रम्}}, which two letters have joined?
+    hi: '{{मित्रम्}} में कौन-से दो अक्षर जुड़े हैं?'
+  explain:
+    en: '{{मित्रम्}} = {{मि}} + {{त्र}} + {{म्}}: {{त्}} + {{र}}.'
+    hi: '{{मित्रम्}} = {{मि}} + {{त्र}} + {{म्}}: {{त्}} + {{र}}।'
+  roman: show
+  options:
+  - correct: true
+    sa: '{{त्}} + {{र}}'
+  - sa: '{{म्}} + {{त}}'
+  - sa: '{{र}} + {{म}}'
+- id: sum
+  kind: summary
+  title:
+    en: Joined letters
+    hi: संयुक्ताक्षर
+  depth: core
+  points:
+  - sa: क्ष त्र ज्ञ श्र
+    text:
+      en: Four joins you will see everywhere.
+      hi: चार संयोग जो हर जगह दिखेंगे।
+  - sa: क् + ष → क्ष
+    text:
+      en: The first half drops its vowel.
+      hi: पहला आधा अपना स्वर खो देता है।
+  - sa: सत्यम्
+    text:
+      en: Read a joined letter left to right.
+      hi: संयुक्ताक्षर को बाएँ से दाएँ पढ़िए।

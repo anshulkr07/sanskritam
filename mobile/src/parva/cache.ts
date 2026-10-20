@@ -92,13 +92,16 @@ export async function refreshParvaCache(
 export async function getParvaCalendar(
   k: ParvaCacheKey,
   opts: { start: string; days: number; tz: string; label?: string },
+  onCached?: (data: ParvaCalendar) => void,
 ): Promise<ParvaCalendar | null> {
+  const cached = await readParvaCache(k, opts);
+  if (cached && windowCovers({ start: cached.start || cached.fetched, days: cached.days || opts.days }, opts)) onCached?.(cached.data);
   // Home, preference loading and the festival list can request the same
   // expensive calendar together, before any of them has populated storage.
   const key = cacheKey(k, opts);
   const running = calendarRequests.get(key);
   if (running) return running;
-  const pending = loadParvaCalendar(k, opts);
+  const pending = loadParvaCalendar(k, opts, cached);
   calendarRequests.set(key, pending);
   try {
     return await pending;
@@ -110,8 +113,8 @@ export async function getParvaCalendar(
 async function loadParvaCalendar(
   k: ParvaCacheKey,
   opts: { start: string; days: number; tz: string; label?: string },
+  cached: Stored | null,
 ): Promise<ParvaCalendar | null> {
-  const cached = await readParvaCache(k, { tz: opts.tz, start: opts.start, days: opts.days });
   const fresh =
     cached != null &&
     cached.fetched === todayKey(opts.tz) &&
@@ -136,16 +139,25 @@ function pageKey(k: ParvaCacheKey & { slug: string; variant: string; date?: stri
 export async function getParvaPage(
   k: ParvaCacheKey & { slug: string; variant: string; date?: string; tz: string; tradition: string },
   opts: { year?: number; lat: number; lon: number },
+  onCached?: (data: ParvaPageBody) => void,
 ): Promise<ParvaPageBody | null> {
+  let hasCachedBody = false;
   try {
     const raw = await AsyncStorage.getItem(pageKey(k));
     if (raw) {
       const s = JSON.parse(raw) as PageStored;
+      if (s?.data) { hasCachedBody = true; onCached?.(s.data); }
       if (s?.data && s.fetchedAt && Date.now() - s.fetchedAt < PAGE_FRESH_MS) return s.data;
     }
   } catch {
     /* fall through to network */
   }
+  // Reading the description must not wait for an astronomical year scan.
+  // Fetch the unlocated body alongside timings; it carries no computed times.
+  let complete = false;
+  const content = !hasCachedBody && onCached ? parvaPage({
+    slug: k.slug, variant: k.variant, lang: k.lang, tradition: k.tradition, date: k.date,
+  }).then(body => { if (body && !complete) onCached(body); return body; }).catch(() => null) : null;
   const data = await parvaPage({
     slug: k.slug,
     variant: k.variant,
@@ -157,7 +169,9 @@ export async function getParvaPage(
     tradition: k.tradition,
     date: k.date,
   });
+  complete = true;
   if (!data) {
+    if (content) { const body = await content; if (body) return body; }
     try {
       const raw = await AsyncStorage.getItem(pageKey(k));
       if (raw) return (JSON.parse(raw) as PageStored).data ?? null;

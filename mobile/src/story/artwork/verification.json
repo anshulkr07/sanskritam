@@ -1,0 +1,313 @@
+{
+  "portrait-you": {
+    "id": "portrait-you",
+    "sha256": "7a0c4c79f584a31e57f8ae471c8c5da5393e3f45dc0d1c4654ea17096babe939",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No readable text or pseudo-lettering is present in the painting; the scroll is illuminated blankly and manuscript bundles lack discernible script.",
+    "passed": true
+  },
+  "portrait-dadi": {
+    "id": "portrait-dadi",
+    "sha256": "748cbd385c35cdd92ae7c34eb3612cf66a22576c00652096d98748b6e3df06fe",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No readable text or pseudo-text is present in the painting. The palm-leaf manuscripts and books do not contain legible writing.",
+    "passed": true
+  },
+  "portrait-shuka": {
+    "id": "portrait-shuka",
+    "sha256": "badf5ef040d106b0d9560d07d72cda051a477b20fbd38dab27af9796df1c6131",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No readable letters, inscriptions, or simulated text appear on the books, shelves, or anywhere in the scene.",
+    "passed": true
+  },
+  "portrait-gunadhya": {
+    "id": "portrait-gunadhya",
+    "sha256": "4c35ff01f55164c3305bc2fd6ab8af4a8cdd6b0276da23f6675499b9c49c03ba",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No readable or unreadable text is visible. The bundles held by the figure represent tied palm-leaf manuscripts, but no inscribed lettering is visible on their surfaces.",
+    "passed": true
+  },
+  "portrait-lubdhaka": {
+    "id": "portrait-lubdhaka",
+    "sha256": "8a77e630c1872af3cd34c2f47d95af0f03100f491c2941a69ced468cced5dc85",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No readable text or lettering is present in the painting.",
+    "passed": true
+  },
+  "portrait-dhumaka": {
+    "id": "portrait-dhumaka",
+    "sha256": "93288e1043942ddfc5cca4ec1aae9ea9b4075475ffd5d3f91c609d1ae2103bd9",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No text or lettering is present in the image.",
+    "passed": true
+  },
+  "portrait-chayika": {
+    "id": "portrait-chayika",
+    "sha256": "483bf68d368e3b1d78f220c87d2533fda58e6512147f1bb7d1a99c60cde6ee8c",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No text or lettering is present in the painting.",
+    "passed": true
+  },
+  "portrait-nidralu": {
+    "id": "portrait-nidralu",
+    "sha256": "81818c359b8c574a20505a0b528e487707a4699382742399e4ef4a77e191bcb6",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No readable text or lettering is present in the painting. The carvings on the stone pillars are floral and geometric decorative patterns.",
+    "passed": true
+  },
+  "portrait-mauni": {
+    "id": "portrait-mauni",
+    "sha256": "1d202798779166ab758555375bbf478cf66c933d611734951fa185dbe214b5c7",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "The book pages and scroll are completely blank, and the book spines display only decorative tooling and patterns without legible lettering.",
+    "passed": true
+  },
+  "freed-dhumaka": {
+    "id": "freed-dhumaka",
+    "sha256": "7cf832de33046e6785224b60c55ec186ecec1f500d42a20ea396b5f7b3290cf9",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No readable text or lettering appears in the image. The manuscripts and open glowing book contain no legible words or characters.",
+    "passed": true
+  },
+  "leaf-1": {
+    "id": "leaf-1",
+    "sha256": "6658467339693d240fab0460b2e41e7725032823d6278ef4809775d0c92afaff",
+    "model": "gemini-3.8-flash",
+    "expected": [
+      "शुकस्य अक्षराणि"
+    ],
+    "detected": [
+      "शुकस्य अक्षराणि"
+    ],
+    "unreadable_lettering": false,
+    "notes": "The Devanagari heading translates roughly to 'The Parrot's Letters' or 'The Parrot's Words'. The palm leaf manuscripts in the painting have no legible writing.",
+    "passed": true
+  },
+  "vowels-compound-end": {
+    "id": "vowels-compound-end",
+    "sha256": "707687f853599ca894aa949662184a66f43de969499696cdd9e612933745e8e1",
+    "model": "gemini-3.8-flash",
+    "expected": [
+      "ए ओ",
+      "ऐ औ"
+    ],
+    "detected": [
+      "ए ओ",
+      "ऐ औ"
+    ],
+    "unreadable_lettering": false,
+    "notes": "Devanagari vowels written on the illuminated palm-leaf manuscript pages.",
+    "passed": true
+  },
+  "vowels-compound-lamp": {
+    "id": "vowels-compound-lamp",
+    "sha256": "f42f93114f0f5ec04181c01352fd95390ac768e5a901b1734b8804520072742c",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No readable or decorative text is present on the manuscripts, books, or architecture.",
+    "passed": true
+  },
+  "vowels-long-shuka": {
+    "id": "vowels-long-shuka",
+    "sha256": "62595f75b326d05af9de3b2543900d89c1019f3c887855c2286980a4b807982e",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "The open book pages are blank/illuminated with light, and no legible or pseudo-text appears on the manuscripts or surrounding objects.",
+    "passed": true
+  },
+  "vowels-long-pairs": {
+    "id": "vowels-long-pairs",
+    "sha256": "9e581a129a01c8f23240383d9d0a5a728e1e2499ffb9cecb77250209e0d6b32d",
+    "model": "gemini-3.8-flash",
+    "expected": [
+      "दिनम्",
+      "दीनः"
+    ],
+    "detected": [
+      "दिनम्",
+      "दीनः"
+    ],
+    "unreadable_lettering": false,
+    "notes": "Devanagari text below each panel indicating 'दिनम्' (day) and 'दीनः' (poor/humble).",
+    "passed": true
+  },
+  "vowels-short-smoke": {
+    "id": "vowels-short-smoke",
+    "sha256": "da4a317d863fff412801c19a5f2d5cd25850c8fbd2dd119154f1d2e4b69069ff",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No readable text or pseudo-text is present on any books, manuscripts, textiles, or background architectural elements.",
+    "passed": true
+  },
+  "vowels-short-line": {
+    "id": "vowels-short-line",
+    "sha256": "a8e38ac1fd97c7294bbac84dee1c11a3ee111cc415198abf5be874fd874b5464",
+    "model": "gemini-3.8-flash",
+    "expected": [
+      "अ इ उ",
+      "ऋ ऌ",
+      "ए ओ",
+      "ऐ औ"
+    ],
+    "detected": [
+      "अ इ उ ऋ ऌ ए ओ ऐ औ"
+    ],
+    "unreadable_lettering": false,
+    "notes": "Devanagari vowels from the Shiva Sutras (Maheshvara Sutras) written on a burned palm-leaf or birch-bark strip; the missing halanta consonants at the end of each sutra are located where the burned holes appear.",
+    "passed": true
+  },
+  "vowels-short-aiu": {
+    "id": "vowels-short-aiu",
+    "sha256": "bc980044fc78bf43d05bd8493a85b911c62d4cdba730f587cbd65200501eb7ee",
+    "model": "gemini-3.8-flash",
+    "expected": [
+      "अ",
+      "इ",
+      "उ"
+    ],
+    "detected": [
+      "अ",
+      "इ",
+      "उ"
+    ],
+    "unreadable_lettering": false,
+    "notes": "The Devanagari vowels अ, इ, and उ are inscribed on the wooden plaque above illustrations of mouth shapes.",
+    "passed": true
+  },
+  "vowels-signs-second-line": {
+    "id": "vowels-signs-second-line",
+    "sha256": "5a4af980690260f7fa9d0defa9d8df1231af3e45c0bd8b1af9a3930e53ddfb55",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No text or letter-like marks are present in the image.",
+    "passed": true
+  },
+  "prologue-1": {
+    "id": "prologue-1",
+    "sha256": "738df21ad095c6adee22cc464146ac38a92f107f6faf11444597bff582c2825b",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "The palm leaf being inscribed upon and the surrounding manuscript stacks show no visible or readable lettering.",
+    "passed": true
+  },
+  "prologue-2": {
+    "id": "prologue-2",
+    "sha256": "2332dc319c6a1c0ff9b99868a7258938d7cf40012240422205922c0e03294d26",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No text or lettering is visible in the artwork.",
+    "passed": true
+  },
+  "prologue-3": {
+    "id": "prologue-3",
+    "sha256": "e2fc647c073de5e3c495ebf340d7d74ad4d4b8c66e5bf731b624f234b27dffbb",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No readable or unreadable lettering is present in the painting. The manuscript leaves are depicted as blank.",
+    "passed": true
+  },
+  "prologue-4": {
+    "id": "prologue-4",
+    "sha256": "683a43ec6adb3860e0b9b73540443857bcf87c4f9a6e1372da32cf6342e53836",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No readable or unreadable lettering found; the manuscripts and illuminated surface contain no visible text.",
+    "passed": true
+  },
+  "map-act-1": {
+    "id": "map-act-1",
+    "sha256": "6e49c17a195981fc4d14cc031d06e5454da65701d4795200715caaac55b49def",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No readable letters or script markings are present in the image; the books, scrolls, and architectural carvings show only decorative patterns and textures.",
+    "passed": true
+  },
+  "map-act-2": {
+    "id": "map-act-2",
+    "sha256": "fe2b50de030e6c5130baa37dde644c12fdf6b838936469b2220914ee648d8d63",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No readable or unreadable text found in the painting.",
+    "passed": true
+  },
+  "map-act-3": {
+    "id": "map-act-3",
+    "sha256": "2cd9762468350f2da9f34e0e0a11f34b1405a54c6c4b7a7275882363f58bb01c",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "There is no text or lettering visible in this illustration of a riverside temple ghat under the moonlight.",
+    "passed": true
+  },
+  "map-act-4": {
+    "id": "map-act-4",
+    "sha256": "3d5eeb9e89e4b5ab690aeef4a46a0b70d378d9414b0aa989d798bbaf27d69379",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No text or lettering is present in the artwork.",
+    "passed": true
+  },
+  "map-act-5": {
+    "id": "map-act-5",
+    "sha256": "ae46580a478c425be9f010a186eeae2a396d2bc39cc626d7d37c36effc73f57b",
+    "model": "gemini-3.8-flash",
+    "expected": [],
+    "detected": [],
+    "unreadable_lettering": false,
+    "notes": "No readable text or pseudo-script is present in the painting.",
+    "passed": true
+  }
+}

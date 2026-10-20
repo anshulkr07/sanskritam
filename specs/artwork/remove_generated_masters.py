@@ -54,6 +54,8 @@ def local_masters(record):
 
 def discard_local(record):
     paths = local_masters(record)
+    if not paths and record.get('master_retained') is False:
+        return 0, 0
     removed = sum(p.stat().st_size for p in paths)
     for path in paths: path.unlink()
     record['master_retained'] = False

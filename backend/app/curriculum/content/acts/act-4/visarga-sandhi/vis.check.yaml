@@ -1,0 +1,179 @@
+id: vis.check
+template: check
+title:
+  en: Give each breath its sound
+  hi: हर श्वास को उसकी ध्वनि दीजिए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-o
+  mode: choice
+  prompt:
+    en: '{{रामः + अस्ति}} gives…'
+    hi: '{{रामः + अस्ति}} से…'
+  explain:
+    en: '{{अः}} + {{अ}} = {{ओऽ}}.'
+    hi: '{{अः}} + {{अ}} = {{ओऽ}}।'
+  roman: after
+  options:
+  - sa: रामस्त
+  - sa: रामरस्ति
+  - correct: true
+    sa: रामोऽस्ति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-o
+  mode: choice
+  prompt:
+    en: '{{देवः + भवति}} gives…'
+    hi: '{{देवः + भवति}} से…'
+  explain:
+    en: '{{भ}} is soft: {{ओ}}.'
+    hi: '{{भ}} कोमल है: {{ओ}}।'
+  roman: after
+  options:
+  - sa: देवःभवति
+  - correct: true
+    sa: देवो भवति
+  - sa: देवर्भवति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-s
+  mode: choice
+  prompt:
+    en: '{{रामः + च}} gives…'
+    hi: '{{रामः + च}} से…'
+  explain:
+    en: 'Before {{च}}: {{श्}}.'
+    hi: '{{च}} से पहले: {{श्}}।'
+  roman: after
+  options:
+  - sa: रामःच
+  - sa: रामसच
+  - correct: true
+    sa: रामश्च
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-s
+  mode: choice
+  prompt:
+    en: '{{रामः + करोति}} gives…'
+    hi: '{{रामः + करोति}} से…'
+  explain:
+    en: Before {{क}} the breath stays.
+    hi: '{{क}} से पहले श्वास रहता है।'
+  roman: after
+  options:
+  - sa: रामस्करोति
+  - sa: रामो करोति
+  - correct: true
+    sa: रामः करोति
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-r
+  mode: choice
+  prompt:
+    en: '{{कविः + अस्ति}} gives…'
+    hi: '{{कविः + अस्ति}} से…'
+  explain:
+    en: 'After {{इः}}: {{र्}}.'
+    hi: '{{इः}} के बाद: {{र्}}।'
+  roman: after
+  options:
+  - sa: कविअस्ति
+  - sa: कवोऽस्ति
+  - correct: true
+    sa: कविरस्ति
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-r
+  mode: choice
+  prompt:
+    en: '{{सः + गच्छति}} gives…'
+    hi: '{{सः + गच्छति}} से…'
+  explain:
+    en: '{{सः}} loses its breath before a consonant.'
+    hi: '{{सः}} व्यंजन से पहले श्वास खोता है।'
+  roman: after
+  options:
+  - sa: सः गच्छति
+  - sa: सो गच्छति
+  - correct: true
+    sa: स गच्छति
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-o
+  - sandhi.visarga-s
+  - sandhi.visarga-r
+  mode: match
+  prompt:
+    en: Join each word to its parts.
+    hi: हर शब्द को उसके भागों से जोड़िए।
+  explain:
+    en: Four ways the breath ends.
+    hi: श्वास के समाप्त होने के चार तरीक़े।
+  roman: after
+  pairs:
+  - left:
+      sa: रामोऽस्ति
+    right:
+      sa: रामः + अस्ति
+  - left:
+      sa: रामश्च
+    right:
+      sa: रामः + च
+  - left:
+      sa: कविरस्ति
+    right:
+      sa: कविः + अस्ति
+  - left:
+      sa: राम इह
+    right:
+      sa: रामः + इह
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.visarga-o
+  - sandhi.visarga-s
+  - sandhi.visarga-r
+  mode: order
+  prompt:
+    en: 'Say what Visargikā says: “Rāma is; the poet is; and Rāma.”'
+    hi: 'वह कहिए जो विसर्गिका कहती है: ‘राम है; कवि है; और राम।’'
+  explain:
+    en: '{{रामोऽस्ति कविरस्ति रामश्च}}: the three breaths.'
+    hi: '{{रामोऽस्ति कविरस्ति रामश्च}}: तीन श्वास।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “रामोऽस्ति, कविरस्ति, रामश्च,” you say, and Visargikā steps down, a small marble woman with a finger at her lips, and lowers it. “At last,” she says, in her own voice, quite plain and low, “every breath has a name.” She breathes, aloud, once. Behind her the tenth statue is already holding a stone lamp. “तदस्ति,” she says, in a voice like a bell. “Tat and asti. They have joined, but what happened to the t?”
+      hi: “रामोऽस्ति, कविरस्ति, रामश्च,” आप कहते हैं, और विसर्गिका उतरती है, संगमरमर की नन्ही स्त्री, जिसकी होंठों पर उँगली है, और उसे नीचे कर लेती है। “आख़िर,” वह अपनी ही आवाज़ में, बहुत सादी और नीची, कहती है, “हर श्वास का एक नाम है।” वह एक बार ज़ोर से साँस लेती है। उसके पीछे दसवीं प्रतिमा पहले से पत्थर का दीपक थामे है। “तदस्ति,” वह घण्टी-सी आवाज़ में कहती है। “तत् और अस्ति। वे जुड़ गए, पर त् का क्या हुआ?”
+    failure:
+      en: 'The breath hangs unnamed. Her three: {{रामोऽस्ति कविरस्ति रामश्च}}.'
+      hi: 'श्वास बिना नाम का टँगा रहता है। उसके तीन: {{रामोऽस्ति कविरस्ति रामश्च}}।'
+  tokens:
+  - रामोऽस्ति
+  - कविरस्ति
+  - रामश्च

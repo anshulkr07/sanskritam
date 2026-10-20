@@ -1,0 +1,195 @@
+id: vis.revision
+template: revision
+title:
+  en: Everything about the visarga
+  hi: विसर्ग के बारे में सब कुछ
+title_sa: विसर्गसन्धिसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: sandhi.visarga-o
+    rule:
+      en: '-अः + अ/soft = ओ: {{रामोऽस्ति}}, {{रामो गच्छति}}, {{तपोवनम्}}.'
+      hi: '-अः + अ/कोमल = ओ: {{रामोऽस्ति}}, {{रामो गच्छति}}, {{तपोवनम्}}।'
+    sutras:
+    - 6.1.113
+    - 6.1.114
+    tag: core
+    taught_in: vis.o#tb1
+  - skill: sandhi.visarga-s
+    rule:
+      en: 'ः + च = श्च; ः + त = स्त; ः + ट = ष्ट; ः + क, प = ः: {{रामश्च}}, {{रामस्तत्र}}, {{रामः करोति}}.'
+      hi: 'ः + च = श्च; ः + त = स्त; ः + ट = ष्ट; ः + क, प = ः: {{रामश्च}}, {{रामस्तत्र}}, {{रामः करोति}}।'
+    sutras:
+    - 8.3.34
+    - 8.4.40
+    - 8.4.41
+    tag: core
+    taught_in: vis.s#tb1
+  - skill: sandhi.visarga-r
+    rule:
+      en: '-इः, -उः + vowel/soft = र्: {{कविरस्ति}}; -अः, -आः + other vowel: breath vanishes: {{राम इह}}; {{सः}} + consonant: {{स गच्छति}}.'
+      hi: '-इः, -उः + स्वर/कोमल = र्: {{कविरस्ति}}; -अः, -आः + अन्य स्वर: श्वास लुप्त: {{राम इह}}; {{सः}} + व्यंजन: {{स गच्छति}}।'
+    sutras:
+    - 8.2.66
+    - 8.3.17
+    - 8.3.19
+    - 6.1.132
+    tag: core
+    taught_in: vis.r#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: How to tell which
+    hi: कैसे पहचानें कि कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: sandhi.visarga-o
+    rule:
+      en: 'Look at the vowel before the breath: {{अः}} gives {{ओ}}; {{इः}}/{{उः}} give {{र्}}; {{आः}} before a vowel just drops it.'
+      hi: 'श्वास से पहले का स्वर देखिए: {{अः}} से {{ओ}}; {{इः}}/{{उः}} से {{र्}}; {{आः}} स्वर से पहले उसे गिरा देता है।'
+    tag: good
+    taught_in: vis.o#t1
+  - skill: sandhi.visarga-s
+    rule:
+      en: 'Look at the sound after: hard {{च}}, {{त}}, {{ट}} give a hiss; {{क}}, {{प}} keep the breath.'
+      hi: 'बाद की ध्वनि देखिए: कठोर {{च}}, {{त}}, {{ट}} फुफकार देते हैं; {{क}}, {{प}} श्वास रखते हैं।'
+    tag: good
+    taught_in: vis.s#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: sandhi.visarga-o
+    rule:
+      en: 'A few words keep the breath: {{पुनः पुनः}}, {{प्रातः}} before a hard consonant.'
+      hi: 'कुछ शब्द श्वास रखते हैं: कठोर व्यंजन से पहले {{पुनः पुनः}}, {{प्रातः}}।'
+    example:
+      sa: पुनः पुनः।
+      meaning:
+        en: Again and again.
+        hi: बार-बार।
+      words:
+      - sa: पुनः
+        gloss:
+          en: again
+          hi: फिर
+      - sa: पुनः
+        gloss:
+          en: again
+          hi: फिर
+    tag: rare
+    new_here: true
+  - skill: sandhi.visarga-r
+    rule:
+      en: In the Veda, {{र्}} may appear where classical Sanskrit has the breath; follow the classical rules.
+      hi: वेद में जहाँ लौकिक संस्कृत में श्वास है, वहाँ {{र्}} आ सकता है; लौकिक नियम मानिए।
+    example:
+      sa: हरिः अस्ति।
+      meaning:
+        en: Hari is.
+        hi: हरि है।
+      words:
+      - sa: हरिः
+        gloss:
+          en: Hari
+          hi: हरि
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: sandhi.visarga-o
+    rule:
+      en: Do not write {{रामः गच्छति}} where the join gives {{रामो गच्छति}}.
+      hi: जहाँ सन्धि {{रामो गच्छति}} देती है, वहाँ {{रामः गच्छति}} मत लिखिए।
+    tag: core
+    taught_in: vis.o#p1
+  - skill: sandhi.visarga-s
+    rule:
+      en: 'Do not write {{रामःच}}: it is {{रामश्च}}.'
+      hi: '{{रामःच}} मत लिखिए: यह {{रामश्च}} है।'
+    tag: core
+    taught_in: vis.s#p1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: sandhi.visarga-o
+    rule:
+      en: '{{ससजुषो रुः}}, {{अतो रोरप्लुतादप्लुते}}, {{हशि च}}: the breath as {{रु}}, then {{उ}}, then {{ओ}}.'
+      hi: '{{ससजुषो रुः}}, {{अतो रोरप्लुतादप्लुते}}, {{हशि च}}: श्वास {{रु}} के रूप में, फिर {{उ}}, फिर {{ओ}}।'
+    sutras:
+    - 8.2.66
+    - 6.1.113
+    - 6.1.114
+    tag: core
+    taught_in: vis.o#pn
+  - skill: sandhi.visarga-s
+    rule:
+      en: '{{विसर्जनीयस्य सः}}, {{स्तोः श्चुना श्चुः}}, {{ष्टुना ष्टुः}}: the hiss takes the place of the next sound.'
+      hi: '{{विसर्जनीयस्य सः}}, {{स्तोः श्चुना श्चुः}}, {{ष्टुना ष्टुः}}: फुफकार अगली ध्वनि का स्थान ले लेती है।'
+    sutras:
+    - 8.3.34
+    - 8.4.40
+    - 8.4.41
+    tag: core
+    taught_in: vis.s#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: sandhi.visarga-o
+    formula: रामः + अस्ति = रामोऽस्ति
+    rule:
+      en: -अः turns into ओ
+      hi: -अः से बनता है ओ
+    tag: core
+    taught_in: vis.o#tb1
+  - skill: sandhi.visarga-s
+    formula: रामः + च = रामश्च
+    rule:
+      en: The breath turns into a hiss
+      hi: श्वास बनता है फुफकार
+    tag: core
+    taught_in: vis.s#tb1
+  - skill: sandhi.visarga-r
+    formula: कविः + अस्ति = कविरस्ति
+    rule:
+      en: The breath turns into र् or vanishes
+      hi: श्वास बनता है र् या लुप्त हो जाता है
+    tag: core
+    taught_in: vis.r#tb1

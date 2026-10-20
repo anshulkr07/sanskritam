@@ -1,0 +1,225 @@
+id: syn.revision
+template: revision
+title:
+  en: Everything about longer sentences
+  hi: लम्बे वाक्यों के बारे में सब कुछ
+title_sa: वाक्यसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The four patterns
+    hi: चार ढाँचे
+  depth: core
+  section: core
+  rows:
+  - skill: syn.relative
+    rule:
+      en: '{{यः … सः}}, {{या … सा}}, {{यत् … तत्}}: who … he; in any case: {{यस्य … तस्य}}.'
+      hi: '{{यः … सः}}, {{या … सा}}, {{यत् … तत्}}: जो … वह; किसी भी विभक्ति में: {{यस्य … तस्य}}।'
+    sutras:
+    - 7.1.14
+    - 7.2.106
+    tag: core
+    taught_in: syn.who#tb1
+  - skill: syn.absolute
+    rule:
+      en: '{{रामे गते}}: the little scene in the seventh case.'
+      hi: '{{रामे गते}}: सप्तमी में छोटा दृश्य।'
+    sutras:
+    - 2.3.37
+    tag: core
+    taught_in: syn.when#tb1
+  - skill: syn.conditional
+    rule:
+      en: '{{यदि … तर्हि}}: if … then; the verbs tell the kind.'
+      hi: '{{यदि … तर्हि}}: यदि … तो; क्रियाएँ प्रकार बताती हैं।'
+    sutras:
+    - 3.3.156
+    - 3.3.139
+    tag: core
+    taught_in: syn.if#tb1
+  - skill: syn.anvaya
+    rule:
+      en: 'Anvaya: split, find the verb, the doer, then the rest.'
+      hi: 'अन्वय: सन्धि खोलिए, क्रिया, कर्ता, फिर शेष।'
+    sutras:
+    - 2.3.1
+    tag: core
+    taught_in: syn.order#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: syn.relative
+    rule:
+      en: Use {{यद्}} … {{तद्}} when the first half names the one you then describe.
+      hi: जब पहला भाग उसका नाम बताए जिसका आप आगे वर्णन करते हैं, तब {{यद्}} … {{तद्}}।
+    tag: good
+    taught_in: syn.who#t1
+  - skill: syn.absolute
+    rule:
+      en: Use the little scene when the subject of the first action differs from the main subject.
+      hi: जब पहली क्रिया का कर्ता मुख्य कर्ता से अलग हो, तब छोटा दृश्य।
+    tag: good
+    taught_in: syn.when#t1
+  - skill: syn.conditional
+    rule:
+      en: 'Fact: present; promise: future; supposition: optative.'
+      hi: 'तथ्य: वर्तमान; वचन: भविष्यत्; कल्पना: विधिलिङ्।'
+    tag: good
+    taught_in: syn.if#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: syn.relative
+    rule:
+      en: 'In verse the {{सः}}-half may come first: {{सः … यः}}.'
+      hi: 'श्लोक में {{सः}}-भाग पहले भी आ सकता है: {{सः … यः}}।'
+    example:
+      sa: सः पठति यः जानाति।
+      meaning:
+        en: He reads who knows.
+        hi: वह पढ़ता है जो जानता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+    tag: rare
+    new_here: true
+  - skill: syn.conditional
+    rule:
+      en: '{{चेत्}} also means “if” and stands second in its clause: {{सः पठति चेत्}}.'
+      hi: '{{चेत्}} का भी अर्थ ‘यदि’ है और वह अपने वाक्यांश में दूसरे स्थान पर रहता है: {{सः पठति चेत्}}।'
+    example:
+      sa: सः पठति चेत् जानाति।
+      meaning:
+        en: If he reads, he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+      - sa: चेत्
+        gloss:
+          en: if
+          hi: यदि
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: syn.absolute
+    rule:
+      en: 'Do not put the scene''s subject in the first case: {{रामे गते}}, not {{रामः गते}}.'
+      hi: 'दृश्य का कर्ता प्रथमा में मत रखिए: {{रामे गते}}, {{रामः गते}} नहीं।'
+    tag: core
+    taught_in: syn.when#p1
+  - skill: syn.anvaya
+    rule:
+      en: Do not read verse word by word in the order printed.
+      hi: श्लोक को छपे क्रम में शब्द-शब्द मत पढ़िए।
+    tag: core
+    taught_in: syn.order#p3
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: syn.absolute
+    rule:
+      en: '{{यस्य च भावेन भावलक्षणम्}} and {{सप्तम्यधिकरणे च}}: the little scene.'
+      hi: '{{यस्य च भावेन भावलक्षणम्}} और {{सप्तम्यधिकरणे च}}: छोटा दृश्य।'
+    sutras:
+    - 2.3.37
+    - 2.3.36
+    tag: core
+    taught_in: syn.when#pn
+  - skill: syn.conditional
+    rule:
+      en: '{{हेतुहेतुमतोर्लिङ्}}: the optative for a condition and its result.'
+      hi: '{{हेतुहेतुमतोर्लिङ्}}: शर्त और परिणाम के लिए विधिलिङ्।'
+    sutras:
+    - 3.3.156
+    tag: core
+    taught_in: syn.if#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: syn.relative
+    formula: यः पठति सः जानाति
+    rule:
+      en: who … he
+      hi: जो … वह
+    tag: core
+    taught_in: syn.who#tb1
+  - skill: syn.absolute
+    formula: रामे गते
+    rule:
+      en: the little scene
+      hi: छोटा दृश्य
+    tag: core
+    taught_in: syn.when#tb1
+  - skill: syn.conditional
+    formula: यदि पठति तर्हि जानाति
+    rule:
+      en: if … then
+      hi: यदि … तो
+    tag: core
+    taught_in: syn.if#tb1
+  - skill: syn.anvaya
+    formula: कर्ता, कर्म, क्रिया
+    rule:
+      en: prose order
+      hi: गद्य का क्रम
+    tag: core
+    taught_in: syn.order#tb1

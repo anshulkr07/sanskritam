@@ -1,0 +1,295 @@
+id: from.fear
+template: scene
+title:
+  en: Afraid of, better than
+  hi: से डरना, से बढ़कर
+title_sa: भयतुलने
+minutes: 6
+teaches:
+- case.abl-fear-compare
+needs:
+- case.abl
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Inside the school
+    hi: पाठशाला के भीतर
+  depth: core
+  image:
+    brief: Children huddled together in a lamplit school hall while a storm hammers the shutters, a small girl clinging to the old Ācārya who sits among them; at the window a grinning grey-green spirit pressing its face against the shutter slats.
+    alt:
+      en: Children huddle in a school hall during a storm with a grinning wind spirit at the window
+      hi: आँधी में पाठशाला के कक्ष में दुबके बच्चे और खिड़की पर मुस्कुराता पवन-भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - vayuka
+    place: pathashala
+    ratio: '4:3'
+    id: from-fear-s1
+  narration:
+    en: 'Everyone crowds into the school hall as the storm hammers the shutters. Children huddle. A small girl whispers: “I am afraid of the thunder.” The Ācārya sits down among them. “What you fear, Sanskrit puts in the fifth case, as if you were backing away from it.” Outside, the wind spirit presses a grinning face to the window.'
+    hi: आँधी खिड़कियों के किवाड़ों पर प्रहार करती है और सब पाठशाला के कक्ष में सिमट आते हैं। बच्चे दुबक जाते हैं। एक नन्ही बालिका फुसफुसाती है, “मुझे बादल की गड़गड़ाहट से डर लगता है।” आचार्य उनके बीच बैठ जाते हैं। “जिससे डरो उसे संस्कृत पञ्चमी में रखती है, मानो तुम उससे पीछे हट रहे हो।” बाहर पवन-भूत खिड़की पर मुस्कुराता चेहरा सटा देता है।
+- id: t1
+  kind: teach
+  title:
+    en: What you fear
+    hi: जिससे डर लगे
+  depth: core
+  skills:
+  - case.abl-fear-compare
+  sutras:
+  - 1.4.25
+  body:
+    en: 'With verbs of fear and protection, the thing feared or guarded against stands in the fifth case: {{व्याघ्रात् बिभेति}} (he fears the tiger), {{बालकं सर्पात् रक्षति}} (he protects the boy from the snake).'
+    hi: 'भय और रक्षा की क्रियाओं के साथ जिससे भय हो या रक्षा की जाए वह पञ्चमी में आता है: {{व्याघ्रात् बिभेति}} (वह बाघ से डरता है), {{बालकं सर्पात् रक्षति}} (वह बालक को साँप से बचाता है)।'
+  examples:
+  - sa: व्याघ्रात् बिभेति।
+    meaning:
+      en: He fears the tiger.
+      hi: वह बाघ से डरता है।
+    words:
+    - sa: व्याघ्रात्
+      gloss:
+        en: from the tiger
+        hi: बाघ से
+      check:
+        type: subanta
+        stem: व्याघ्र
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: बिभेति
+      gloss:
+        en: fears
+        hi: डरता है
+      check:
+        type: tinanta
+        dhatu: भी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः बालकम् सर्पात् रक्षति।
+    meaning:
+      en: He protects the boy from the snake.
+      hi: वह बालक को साँप से बचाता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: बालकम्
+      gloss:
+        en: boy (object)
+        hi: बालक (कर्म)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: सर्पात्
+      gloss:
+        en: from the snake
+        hi: साँप से
+      check:
+        type: subanta
+        stem: सर्प
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: रक्षति
+      gloss:
+        en: protects
+        hi: बचाता है
+      check:
+        type: tinanta
+        dhatu: रक्ष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: t2
+  kind: teach
+  title:
+    en: Better than
+    hi: से बढ़कर
+  depth: core
+  skills:
+  - case.abl-fear-compare
+  sutras:
+  - 2.3.42
+  body:
+    en: 'To say “more than”, put the thing compared with in the fifth case and add {{तर}} to the quality: {{रामात् श्यामः दीर्घतरः}}, “Śyāma is taller than Rāma”. The ending {{तर}} means “more”.'
+    hi: '‘से अधिक’ कहने के लिए जिससे तुलना हो उसे पञ्चमी में रखिए और गुण में {{तर}} जोड़िए: {{रामात् श्यामः दीर्घतरः}}, ‘श्याम राम से लम्बा है’। प्रत्यय {{तर}} का अर्थ ‘अधिक’ है।'
+  examples:
+  - sa: रामात् श्यामः दीर्घतरः।
+    meaning:
+      en: Śyāma is taller than Rāma.
+      hi: श्याम राम से लम्बा है।
+    words:
+    - sa: रामात्
+      gloss:
+        en: than Rāma
+        hi: राम से
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: श्यामः
+      gloss:
+        en: Śyāma
+        hi: श्याम
+      check:
+        type: subanta
+        stem: श्याम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: दीर्घतरः
+      gloss:
+        en: taller
+        hi: अधिक लम्बा
+      check:
+        type: taddhita
+        stem: दीर्घ
+        taddhita: tarap
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.abl-fear-compare
+  mode: choice
+  prompt:
+    en: “The boy fears the tiger.” Which word for “tiger”?
+    hi: ‘बालक बाघ से डरता है।’ ‘बाघ’ के लिए कौन-सा रूप?
+  explain:
+    en: What is feared takes the fifth case.
+    hi: जिससे डर लगे वह पञ्चमी लेता है।
+  roman: after
+  options:
+  - sa: व्याघ्रम्
+  - sa: व्याघ्रेण
+  - correct: true
+    sa: व्याघ्रात्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.abl-fear-compare
+  mode: match
+  prompt:
+    en: Join each phrase to its meaning.
+    hi: हर वाक्यांश को उसके अर्थ से जोड़िए।
+  explain:
+    en: 'The fifth case: source, fear, protection, comparison.'
+    hi: 'पञ्चमी: स्रोत, भय, रक्षा, तुलना।'
+  roman: after
+  pairs:
+  - left:
+      sa: व्याघ्रात् बिभेति
+    right:
+      text:
+        en: fears the tiger
+        hi: बाघ से डरता है
+  - left:
+      sa: सर्पात् रक्षति
+    right:
+      text:
+        en: protects from the snake
+        hi: साँप से बचाता है
+  - left:
+      sa: रामात् दीर्घतरः
+    right:
+      text:
+        en: taller than Rāma
+        hi: राम से लम्बा
+  - left:
+      sa: ग्रामात् आगच्छति
+    right:
+      text:
+        en: comes from the village
+        hi: गाँव से आता है
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - case.abl-fear-compare
+  widget: mark_words
+  prompt:
+    en: Tap every word in the fifth case.
+    hi: पञ्चमी वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - व्याघ्रात्
+    - व्याघ्रः
+    - सर्पात्
+    - सर्पः
+    - ग्रामात्
+    - ग्रामः
+    targets:
+    - व्याघ्रात्
+    - सर्पात्
+    - ग्रामात्
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: I fear the cloud
+    hi: मुझे बादल से डर है
+  depth: core
+  skills:
+  - case.abl-fear-compare
+  mode: order
+  prompt:
+    en: 'Say it like the small girl: “I fear the thunder.”'
+    hi: 'नन्ही बालिका की तरह कहिए: ‘मैं गर्जन से डरती हूँ।’'
+  explain:
+    en: '{{अहं मेघात् बिभेमि}}: the thing feared is in the fifth case.'
+    hi: '{{अहं मेघात् बिभेमि}}: जिससे डर है वह पञ्चमी में है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “अहं मेघात् बिभेमि,” you say, and the little girl nods so hard her plait bounces. The Ācārya smiles. “And now say what protects you.” “आचार्यस्य गृहम्,” says Dādī softly. At the window the wind spirit goes still, listening.
+      hi: “अहं मेघात् बिभेमि,” आप कहते हैं, और नन्ही बालिका इतनी ज़ोर से सिर हिलाती है कि उसकी चोटी उछल जाती है। आचार्य मुस्कुराते हैं। “और अब कहो कि तुम्हें किसने बचाया है।” “आचार्यस्य गृहम्,” दादी धीमे से कहती हैं। खिड़की पर पवन-भूत शान्त होकर सुनने लगता है।
+    failure:
+      en: 'The girl waits. What you fear goes in the fifth case: {{मेघात्}}.'
+      hi: 'बालिका प्रतीक्षा करती है। जिससे डरें वह पञ्चमी में: {{मेघात्}}।'
+  tokens:
+  - अहम्
+  - मेघात्
+  - बिभेमि
+- id: sum
+  kind: summary
+  title:
+    en: Fear and comparison
+    hi: भय और तुलना
+  depth: core
+  points:
+  - sa: व्याघ्रात् बिभेति
+    text:
+      en: 'What is feared: the fifth case.'
+      hi: 'जिससे डर: पञ्चमी।'
+  - sa: सर्पात् रक्षति
+    text:
+      en: What one guards against.
+      hi: जिससे रक्षा की जाए।
+  - sa: रामात् दीर्घतरः
+    text:
+      en: What one compares with.
+      hi: जिससे तुलना की जाए।

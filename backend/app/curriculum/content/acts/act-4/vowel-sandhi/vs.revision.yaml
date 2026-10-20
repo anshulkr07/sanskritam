@@ -1,0 +1,232 @@
+id: vs.revision
+template: revision
+title:
+  en: Everything about vowel sandhi
+  hi: स्वरसन्धि के बारे में सब कुछ
+title_sa: स्वरसन्धिसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The six rules
+    hi: छह नियम
+  depth: core
+  section: core
+  rows:
+  - skill: sandhi.savarna
+    rule:
+      en: 'Like vowels merge into one long vowel: {{विद्या + आलयः = विद्यालयः}}.'
+      hi: 'एक-से स्वर मिलकर एक दीर्घ स्वर बनते हैं: {{विद्या + आलयः = विद्यालयः}}।'
+    sutras:
+    - 6.1.101
+    tag: core
+    taught_in: vs.like#tb1
+  - skill: sandhi.guna
+    rule:
+      en: '{{अ}} + {{इ}} = {{ए}}, {{अ}} + {{उ}} = {{ओ}}, {{अ}} + {{ऋ}} = {{अर्}}: {{गणेशः}}, {{महोत्सवः}}, {{देवर्षिः}}.'
+      hi: '{{अ}} + {{इ}} = {{ए}}, {{अ}} + {{उ}} = {{ओ}}, {{अ}} + {{ऋ}} = {{अर्}}: {{गणेशः}}, {{महोत्सवः}}, {{देवर्षिः}}।'
+    sutras:
+    - 6.1.87
+    tag: core
+    taught_in: vs.guna#tb1
+  - skill: sandhi.vrddhi
+    rule:
+      en: '{{अ}} + {{ए}} = {{ऐ}}, {{अ}} + {{ओ}} = {{औ}}: {{सदैव}}, {{जलौघः}}.'
+      hi: '{{अ}} + {{ए}} = {{ऐ}}, {{अ}} + {{ओ}} = {{औ}}: {{सदैव}}, {{जलौघः}}।'
+    sutras:
+    - 6.1.88
+    tag: core
+    taught_in: vs.vrddhi#tb1
+  - skill: sandhi.yan
+    rule:
+      en: '{{इ}} → {{य्}}, {{उ}} → {{व्}}, {{ऋ}} → {{र्}} before a different vowel: {{इत्यादि}}, {{स्वागतम्}}.'
+      hi: 'भिन्न स्वर से पहले {{इ}} → {{य्}}, {{उ}} → {{व्}}, {{ऋ}} → {{र्}}: {{इत्यादि}}, {{स्वागतम्}}।'
+    sutras:
+    - 6.1.77
+    tag: core
+    taught_in: vs.glide#tb1
+  - skill: sandhi.ayadi
+    rule:
+      en: '{{औ}} → {{आव्}}, {{ऐ}} → {{आय्}}, {{ए}} → {{अय्}}/{{अ}}; {{ए}} + {{अ}} = {{एऽ}}: {{नाविकः}}, {{वनेऽस्ति}}.'
+      hi: '{{औ}} → {{आव्}}, {{ऐ}} → {{आय्}}, {{ए}} → {{अय्}}/{{अ}}; {{ए}} + {{अ}} = {{एऽ}}: {{नाविकः}}, {{वनेऽस्ति}}।'
+    sutras:
+    - 6.1.78
+    - 6.1.109
+    tag: core
+    taught_in: vs.e-o#tb1
+  - skill: sandhi.blocked
+    rule:
+      en: 'Duals in {{-ई}}, {{-ऊ}}, {{-ए}} never join: {{हरी एतौ}}.'
+      hi: '{{-ई}}, {{-ऊ}}, {{-ए}} वाले द्विवचन कभी नहीं जुड़ते: {{हरी एतौ}}।'
+    sutras:
+    - 1.1.11
+    - 6.1.125
+    tag: core
+    taught_in: vs.stop#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: How to tell which
+    hi: कैसे पहचानें कि कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: sandhi.savarna
+    rule:
+      en: 'Same family: long vowel. {{अ}} with {{इ}}/{{उ}}/{{ऋ}}: guṇa. {{अ}} with {{ए}}/{{ओ}}: vṛddhi. {{इ}}/{{उ}}/{{ऋ}} with another vowel: glide.'
+      hi: 'एक कुल: दीर्घ स्वर। {{अ}} के साथ {{इ}}/{{उ}}/{{ऋ}}: गुण। {{अ}} के साथ {{ए}}/{{ओ}}: वृद्धि। {{इ}}/{{उ}}/{{ऋ}} के साथ अन्य स्वर: अर्धस्वर।'
+    tag: good
+    taught_in: vs.like#t1
+  - skill: sandhi.ayadi
+    rule:
+      en: '{{ऽ}} shows a lost {{अ}} after {{ए}} or {{ओ}}.'
+      hi: '{{ऽ}} {{ए}} या {{ओ}} के बाद लुप्त {{अ}} को दिखाता है।'
+    tag: good
+    taught_in: vs.e-o#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: sandhi.guna
+    rule:
+      en: 'A prefix ending in {{अ}} before a root starting with {{ऋ}} gives {{आर्}}: {{उप + ऋच्छति}} gives {{उपार्च्छति}}.'
+      hi: '{{अ}} पर समाप्त उपसर्ग के बाद {{ऋ}} से शुरू होने वाली धातु हो तो {{आर्}} बनता है: {{उप + ऋच्छति}} से {{उपार्च्छति}}।'
+    example:
+      sa: उपार्च्छति।
+      meaning:
+        en: He approaches.
+        hi: वह पहुँचता है।
+      words:
+      - sa: उपार्च्छति
+        gloss:
+          en: approaches
+          hi: पहुँचता है
+    tag: rare
+    new_here: true
+  - skill: sandhi.yan
+    rule:
+      en: '{{ए}}-ending or {{ओ}}-ending words in the Veda may behave differently; for the classical language, follow the rules above.'
+      hi: वेद में {{ए}} या {{ओ}} पर समाप्त शब्द अलग व्यवहार कर सकते हैं; लौकिक भाषा के लिए ऊपर के नियम मानिए।
+    example:
+      sa: वने अस्ति।
+      meaning:
+        en: He is in the forest.
+        hi: वह वन में है।
+      words:
+      - sa: वने
+        gloss:
+          en: in the forest
+          hi: वन में
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: sandhi.savarna
+    rule:
+      en: 'Do not leave two vowels side by side when they should join: {{विद्यालयः}}, not {{विद्याआलयः}}.'
+      hi: 'जहाँ जुड़ना चाहिए, वहाँ दो स्वर साथ-साथ मत छोड़िए: {{विद्यालयः}}, {{विद्याआलयः}} नहीं।'
+    tag: core
+    taught_in: vs.like#p1
+  - skill: sandhi.blocked
+    rule:
+      en: Do not join the dual {{हरी एतौ}} into {{हर्येतौ}}.
+      hi: द्विवचन {{हरी एतौ}} को {{हर्येतौ}} मत बनाइए।
+    tag: core
+    taught_in: vs.stop#p1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: sandhi.savarna
+    rule:
+      en: '{{अकः सवर्णे दीर्घः}}, {{आद्गुणः}}, {{वृद्धिरेचि}}, {{इको यणचि}}, {{एचोऽयवायावः}}: the five joining rules.'
+      hi: '{{अकः सवर्णे दीर्घः}}, {{आद्गुणः}}, {{वृद्धिरेचि}}, {{इको यणचि}}, {{एचोऽयवायावः}}: पाँच जोड़ने वाले नियम।'
+    sutras:
+    - 6.1.101
+    - 6.1.87
+    - 6.1.88
+    - 6.1.77
+    - 6.1.78
+    tag: core
+    taught_in: vs.like#pn
+  - skill: sandhi.blocked
+    rule:
+      en: '{{प्लुतप्रगृह्या अचि नित्यम्}} blocks them.'
+      hi: '{{प्लुतप्रगृह्या अचि नित्यम्}} उन्हें रोकता है।'
+    sutras:
+    - 6.1.125
+    tag: core
+    taught_in: vs.stop#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: sandhi.savarna
+    formula: विद्या + आलयः = विद्यालयः
+    rule:
+      en: like vowels
+      hi: एक-से स्वर
+    tag: core
+    taught_in: vs.like#tb1
+  - skill: sandhi.guna
+    formula: गण + ईशः = गणेशः
+    rule:
+      en: guṇa
+      hi: गुण
+    tag: core
+    taught_in: vs.guna#tb1
+  - skill: sandhi.vrddhi
+    formula: सदा + एव = सदैव
+    rule:
+      en: vṛddhi
+      hi: वृद्धि
+    tag: core
+    taught_in: vs.vrddhi#tb1
+  - skill: sandhi.yan
+    formula: इति + आदि = इत्यादि
+    rule:
+      en: glide
+      hi: अर्धस्वर
+    tag: core
+    taught_in: vs.glide#tb1
+  - skill: sandhi.ayadi
+    formula: नौ + इकः = नाविकः · वने + अस्ति = वनेऽस्ति
+    rule:
+      en: ay, av, ऽ
+      hi: अय्, अव्, ऽ
+    tag: core
+    taught_in: vs.e-o#tb1
+  - skill: sandhi.blocked
+    formula: हरी एतौ
+    rule:
+      en: no join
+      hi: नहीं जुड़ता
+    tag: core
+    taught_in: vs.stop#tb1

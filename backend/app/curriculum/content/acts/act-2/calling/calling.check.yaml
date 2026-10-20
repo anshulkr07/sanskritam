@@ -1,0 +1,197 @@
+id: calling.check
+template: check
+title:
+  en: Call and name
+  hi: पुकारिए और नाम बताइए
+title_sa: परीक्षा
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.voc
+  mode: choice
+  prompt:
+    en: You call a girl. Which word?
+    hi: आप एक बालिका को पुकारते हैं। कौन-सा शब्द?
+  explain:
+    en: 'The call of {{बालिका}}: {{बालिके}}.'
+    hi: '{{बालिका}} की पुकार: {{बालिके}}।'
+  roman: after
+  options:
+  - sa: बालिका
+  - sa: बालिकाम्
+  - correct: true
+    sa: बालिके
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.voc
+  mode: match
+  prompt:
+    en: Join each word to its call.
+    hi: हर शब्द को उसकी पुकार से जोड़िए।
+  explain:
+    en: The final vowel changes.
+    hi: अन्तिम स्वर बदलता है।
+  roman: after
+  pairs:
+  - left:
+      sa: नदी
+    right:
+      sa: नदि
+  - left:
+      sa: कविः
+    right:
+      sa: कवे
+  - left:
+      sa: गुरुः
+    right:
+      sa: गुरो
+  - left:
+      sa: पिता
+    right:
+      sa: पितः
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - case.voc
+  mode: order
+  prompt:
+    en: 'Call: “O friend, where are you?”'
+    hi: 'पुकारिए: ‘हे मित्र, तुम कहाँ हो?’'
+  explain:
+    en: '{{हे मित्र, कुत्र असि}}.'
+    hi: '{{हे मित्र, कुत्र असि}}।'
+  roman: after
+  tokens:
+  - हे
+  - मित्र
+  - कुत्र
+  - असि
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - case.overview
+  mode: match
+  prompt:
+    en: Join each case to its role.
+    hi: हर विभक्ति को उसकी भूमिका से जोड़िए।
+  explain:
+    en: Case and role go together.
+    hi: विभक्ति और भूमिका साथ चलती हैं।
+  roman: after
+  pairs:
+  - left:
+      sa: प्रथमा
+    right:
+      text:
+        en: the doer
+        hi: कर्ता
+  - left:
+      sa: द्वितीया
+    right:
+      text:
+        en: the object
+        hi: कर्म
+  - left:
+      sa: तृतीया
+    right:
+      text:
+        en: the means
+        hi: साधन
+  - left:
+      sa: पञ्चमी
+    right:
+      text:
+        en: the source
+        hi: स्रोत
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - case.overview
+  mode: choice
+  prompt:
+    en: '{{बालकः ग्रामात् आगच्छति}}: which word is the source?'
+    hi: '{{बालकः ग्रामात् आगच्छति}}: स्रोत कौन-सा शब्द है?'
+  explain:
+    en: '{{ग्रामात्}}: fifth case.'
+    hi: '{{ग्रामात्}}: पञ्चमी।'
+  roman: after
+  options:
+  - sa: बालकः
+  - correct: true
+    sa: ग्रामात्
+  - sa: आगच्छति
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - case.overview
+  mode: choice
+  prompt:
+    en: Which word is the object? {{रामः फलं खादति}}
+    hi: कर्म कौन-सा शब्द है? {{रामः फलं खादति}}
+  explain:
+    en: '{{फलम्}}: second case.'
+    hi: '{{फलम्}}: द्वितीया।'
+  roman: after
+  options:
+  - sa: रामः
+  - correct: true
+    sa: फलम्
+  - sa: खादति
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - case.overview
+  mode: engine
+  prompt:
+    en: Reorder the words and keep the meaning.
+    hi: शब्दों को फिर से लगाइए, अर्थ वही रखिए।
+  explain:
+    en: The endings carry the roles.
+    hi: भूमिकाएँ प्रत्ययों में हैं।
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: बालकः आचार्याय फलं ददाति
+    seed: 9
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - case.voc
+  - case.overview
+  mode: order
+  prompt:
+    en: 'Call the echo by her name and say who you are: “O echo, I am here.”'
+    hi: 'गूँज को उसके नाम से पुकारकर बताइए कि आप कौन हैं: ‘हे गूँज, मैं यहाँ हूँ।’'
+  explain:
+    en: '{{हे प्रतिध्वनिक, अहम् अस्मि}}: a call, then a sentence.'
+    hi: '{{हे प्रतिध्वनिक, अहम् अस्मि}}: पुकार, फिर वाक्य।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“हे प्रतिध्वनिक, अहम् अस्मि.” The blue-grey echo hears herself called by name, in the call-form, for the first time ever. She does not repeat it. She answers: “हे बालक! हे मित्र! अहम् अस्मि।” Then she rises, a ripple turning into light, and says one last thing, softly, pointing at the school: “पुस्तकालये शब्दरूपाणि सन्ति।”'
+      hi: '“हे प्रतिध्वनिक, अहम् अस्मि।” नीली-धूसर गूँज पहली बार अपना नाम सम्बोधन-रूप में पुकारा जाता सुनती है। वह उसे दोहराती नहीं। वह उत्तर देती है: “हे बालक! हे मित्र! अहम् अस्मि।” फिर वह ऊपर उठती है, एक लहर रोशनी बनती हुई, और आख़िरी बात धीमे से कहती है, पाठशाला की ओर इशारा करके: “पुस्तकालये शब्दरूपाणि सन्ति।”'
+    failure:
+      en: The echo is silent. A call, then your own sentence.
+      hi: गूँज चुप है। पुकार, फिर आपका अपना वाक्य।
+  tokens:
+  - हे
+  - प्रतिध्वनिक
+  - अहम्
+  - अस्मि

@@ -1,0 +1,325 @@
+id: vs.like
+template: scene
+title:
+  en: Two vowels of one family
+  hi: एक कुल के दो स्वर
+title_sa: विद्यालयः
+minutes: 6
+teaches:
+- sandhi.savarna
+needs:
+- krt.ktva
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The throne hall
+    hi: सिंहासन का कक्ष
+  depth: core
+  image:
+    brief: 'A hill above Ujjayinī at dawn: workmen''s tents and ropes around a half-uncovered stone throne ringed by thirty-two weathered statues of women; the first statue, holding a lotus, close to the viewer; Lubdhaka''s foreman frowning at her; you, Dādī and Śuka at the edge of the dig.'
+    alt:
+      en: A dig site with a stone throne ringed by thirty-two statues, the first holding a lotus
+      hi: पत्थर के सिंहासन के चारों ओर बत्तीस प्रतिमाएँ, पहली कमल थामे
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - svarika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: vs-like-s1
+  narration:
+    en: 'A day''s walk from the grove, on a hill above Ujjayinī, workmen have uncovered a throne ringed by thirty-two stone women. Lubdhaka''s tents are everywhere. The first statue, a woman holding a lotus, says one word: “विद्यालयः.” His foreman frowns: “Nonsense.” “Two words,” says Dādī. “विद्या and आलयः, run together. Learn how they join and every statue will speak.”'
+    hi: 'वन से एक दिन की दूरी पर, उज्जयिनी के ऊपर एक पहाड़ी पर, मज़दूरों ने बत्तीस पत्थर की नारियों से घिरा एक सिंहासन खोद निकाला है। लुब्धक के तम्बू चारों ओर हैं। पहली प्रतिमा, कमल थामे एक नारी, एक शब्द कहती है: “विद्यालयः।” उसका मुखिया भौंहें चढ़ाता है: “बकवास।” “दो शब्द,” दादी कहती हैं। “विद्या और आलयः, घुले-मिले। जोड़ना सीख लो तो हर प्रतिमा बोलेगी।”'
+  lines:
+  - speaker: dadi
+    sa: विद्या + आलयः = विद्यालयः।
+    gloss:
+      en: Knowledge + home = school.
+      hi: विद्या + घर = विद्यालय।
+  quote:
+    sa: इति व्याडिवचः श्रुत्वा मन्माता सादरावदत्
+    gloss:
+      en: Hearing Vyāḍi's words, my mother said respectfully.
+      hi: व्याडि के ये वचन सुनकर मेरी माता ने आदर से कहा।
+    source: Kathāsaritsāgara 1.2 (read in the Digital Corpus of Sanskrit); the last word is sādarā + avadat
+- id: t1
+  kind: teach
+  title:
+    en: Joining sounds
+    hi: ध्वनियों का जुड़ना
+  depth: core
+  skills:
+  - sandhi.savarna
+  body:
+    en: 'When two words meet, the last sound of the first and the first sound of the second may join. This is {{सन्धिः}}. When two vowels of the same family meet, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, they merge into one long vowel: {{विद्या + आलयः}} gives {{विद्यालयः}}.'
+    hi: 'जब दो शब्द मिलते हैं, तो पहले शब्द की अन्तिम और दूसरे की पहली ध्वनि जुड़ सकती हैं। यह {{सन्धिः}} है। जब एक ही कुल के दो स्वर मिलते हैं, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, तो वे मिलकर एक दीर्घ स्वर बन जाते हैं: {{विद्या + आलयः}} से {{विद्यालयः}}।'
+  term:
+    sa: सन्धिः
+    meaning:
+      en: the joining of sounds
+      hi: ध्वनियों का जुड़ना
+- id: tb1
+  kind: table
+  title:
+    en: Like vowels
+    hi: एक-से स्वर
+  depth: core
+  skills:
+  - sandhi.savarna
+  caption:
+    en: Two vowels of one family make one long vowel
+    hi: एक कुल के दो स्वर एक दीर्घ स्वर बनाते हैं
+  columns:
+  - en: First word
+    hi: पहला शब्द
+  - en: Second word
+    hi: दूसरा शब्द
+  - en: Joined
+    hi: जुड़ा हुआ
+  rows:
+  - - sa: विद्या
+    - sa: आलयः
+    - sa: विद्यालयः
+      check:
+        type: sandhi
+        first: विद्या
+        second: आलयः
+        joined: विद्यालयः
+      highlight: true
+  - - sa: हिम
+    - sa: आलयः
+    - sa: हिमालयः
+      check:
+        type: sandhi
+        first: हिम
+        second: आलयः
+        joined: हिमालयः
+      highlight: true
+  - - sa: महा
+    - sa: आत्मा
+    - sa: महात्मा
+      check:
+        type: sandhi
+        first: महा
+        second: आत्मा
+        joined: महात्मा
+      highlight: true
+  - - sa: कवि
+    - sa: इन्द्रः
+    - sa: कवीन्द्रः
+      check:
+        type: sandhi
+        first: कवि
+        second: इन्द्रः
+        joined: कवीन्द्रः
+      highlight: true
+  - - sa: सु
+    - sa: उक्तम्
+    - sa: सूक्तम्
+      check:
+        type: sandhi
+        first: सु
+        second: उक्तम्
+        joined: सूक्तम्
+      highlight: true
+  - - sa: गुरु
+    - sa: उपदेशः
+    - sa: गुरूपदेशः
+      check:
+        type: sandhi
+        first: गुरु
+        second: उपदेशः
+        joined: गुरूपदेशः
+      highlight: true
+  - - sa: न
+    - sa: अस्ति
+    - sa: नास्ति
+      check:
+        type: sandhi
+        first: न
+        second: अस्ति
+        joined: नास्ति
+      highlight: true
+  note:
+    en: '{{आ}} + {{आ}} gives {{आ}}; {{अ}} + {{आ}} gives {{आ}}; {{इ}} + {{इ}} gives {{ई}}; {{उ}} + {{उ}} gives {{ऊ}}.'
+    hi: '{{आ}} + {{आ}} से {{आ}}; {{अ}} + {{आ}} से {{आ}}; {{इ}} + {{इ}} से {{ई}}; {{उ}} + {{उ}} से {{ऊ}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.savarna
+  mode: choice
+  prompt:
+    en: Split the joined word {{विद्यालयः}}.
+    hi: जुड़े शब्द {{विद्यालयः}} को तोड़िए।
+  explain:
+    en: '{{विद्या}} + {{आलयः}}.'
+    hi: '{{विद्या}} + {{आलयः}}।'
+  roman: after
+  options:
+  - sa: विद्ये + आलयः
+  - sa: विद्यै + आलयः
+  - correct: true
+    sa: विद्या + आलयः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.savarna
+  mode: choice
+  prompt:
+    en: '{{हिम + आलयः}} gives…'
+    hi: '{{हिम + आलयः}} से…'
+  explain:
+    en: '{{अ}} + {{आ}} = {{आ}}.'
+    hi: '{{अ}} + {{आ}} = {{आ}}।'
+  roman: after
+  options:
+  - sa: हिमलयः
+  - sa: हिमैलयः
+  - correct: true
+    sa: हिमालयः
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.savarna
+  mode: type
+  prompt:
+    en: 'Join: {{महा}} + {{आत्मा}}.'
+    hi: 'जोड़िए: {{महा}} + {{आत्मा}}।'
+  explain:
+    en: '{{महात्मा}}: “great soul”.'
+    hi: '{{महात्मा}}: ‘महान् आत्मा’।'
+  roman: after
+  answers:
+  - महात्मा
+  tiles:
+  - महा
+  - त्मा
+  - आत्मा
+  - ति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.savarna
+  mode: match
+  prompt:
+    en: Join each word to its parts.
+    hi: हर शब्द को उसके भागों से जोड़िए।
+  explain:
+    en: Like vowels merge.
+    hi: एक-से स्वर मिल जाते हैं।
+  roman: after
+  pairs:
+  - left:
+      sa: विद्यालयः
+    right:
+      sa: विद्या + आलयः
+  - left:
+      sa: कवीन्द्रः
+    right:
+      sa: कवि + इन्द्रः
+  - left:
+      sa: सूक्तम्
+    right:
+      sa: सु + उक्तम्
+  - left:
+      sa: नास्ति
+    right:
+      sa: न + अस्ति
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.savarna
+  widget: mark_words
+  prompt:
+    en: Tap every joined word.
+    hi: हर जुड़ा हुआ शब्द छुइए।
+  params:
+    passage:
+    - विद्यालयः
+    - विद्या
+    - महात्मा
+    - महा
+    - सूक्तम्
+    - सु
+    targets:
+    - विद्यालयः
+    - महात्मा
+    - सूक्तम्
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: The first statue
+    hi: पहली प्रतिमा
+  depth: core
+  skills:
+  - sandhi.savarna
+  mode: choice
+  prompt:
+    en: '{{सु + उक्तम्}} gives…'
+    hi: '{{सु + उक्तम्}} से…'
+  explain:
+    en: '{{उ}} + {{उ}} = {{ऊ}}.'
+    hi: '{{उ}} + {{उ}} = {{ऊ}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “सूक्तम्,” you say, “su-uktam, a good saying,” and the lotus statue turns her head, with a small grinding sound, towards you. Her fine crack closes a little. “विद्यालयः,” she says, to Lubdhaka's foreman. “महात्मा. सूक्तम्.” She lowers her lotus, and the foreman takes a step back. He did not know that stone could speak.
+      hi: “सूक्तम्,” आप कहते हैं, “सु-उक्तम्, सुभाषित,” और कमल वाली प्रतिमा हल्की घिसने की आवाज़ के साथ आपकी ओर सिर घुमाती है। उसकी बारीक दरार थोड़ी भर जाती है। “विद्यालयः,” वह लुब्धक के मुखिया से कहती है। “महात्मा। सूक्तम्।” वह अपना कमल नीचे करती है, और मुखिया एक क़दम पीछे हटता है। उसे पता नहीं था कि पत्थर बोल सकता है।
+    failure:
+      en: 'The statue stays still. {{उ}} + {{उ}} = {{ऊ}}: {{सूक्तम्}}.'
+      hi: 'प्रतिमा स्थिर रहती है। {{उ}} + {{उ}} = {{ऊ}}: {{सूक्तम्}}।'
+  options:
+  - sa: सुक्तम्
+  - sa: सोक्तम्
+  - correct: true
+    sa: सूक्तम्
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's merging
+    hi: पाणिनि का मिलना
+  depth: panini
+  skills:
+  - sandhi.savarna
+  sutras:
+  - 6.1.101
+  - 1.1.9
+  body:
+    en: 'Sūtra 6.1.101, {{अकः सवर्णे दीर्घः}}, says that when {{अ}}, {{इ}}, {{उ}} or {{ऋ}} (short or long) meets a vowel of its own family, the two become one long vowel. 1.1.9, {{तुल्यास्यप्रयत्नं सवर्णम्}}, defines “own family”: sounds made in the same place with the same effort.'
+    hi: 'सूत्र 6.1.101, {{अकः सवर्णे दीर्घः}}, कहता है कि जब {{अ}}, {{इ}}, {{उ}} या {{ऋ}} (ह्रस्व या दीर्घ) अपने कुल के स्वर से मिलता है, तो दोनों एक दीर्घ स्वर बन जाते हैं। 1.1.9, {{तुल्यास्यप्रयत्नं सवर्णम्}}, ‘अपने कुल’ की परिभाषा देता है: एक स्थान और एक प्रयत्न से बनी ध्वनियाँ।'
+- id: sum
+  kind: summary
+  title:
+    en: Like vowels
+    hi: एक-से स्वर
+  depth: core
+  points:
+  - sa: अ/आ + अ/आ = आ
+    text:
+      en: विद्यालयः, हिमालयः.
+      hi: विद्यालयः, हिमालयः।
+  - sa: इ/ई + इ/ई = ई
+    text:
+      en: कवीन्द्रः.
+      hi: कवीन्द्रः।
+  - sa: उ/ऊ + उ/ऊ = ऊ
+    text:
+      en: सूक्तम्, गुरूपदेशः.
+      hi: सूक्तम्, गुरूपदेशः।

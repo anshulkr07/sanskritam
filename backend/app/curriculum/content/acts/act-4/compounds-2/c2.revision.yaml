@@ -1,0 +1,182 @@
+id: c2.revision
+template: revision
+title:
+  en: Everything about compounds II
+  hi: समास २ के बारे में सब कुछ
+title_sa: समाससङ्ग्रहः २
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The kinds
+    hi: प्रकार
+  depth: core
+  section: core
+  rows:
+  - skill: sam.bahuvrihi
+    rule:
+      en: 'Bahuvrīhi: “the one who has”: {{नीलकण्ठः}}, {{पीताम्बरः}}, {{चन्द्रमुखी}}.'
+      hi: 'बहुव्रीहि: ‘वह जिसके पास है’: {{नीलकण्ठः}}, {{पीताम्बरः}}, {{चन्द्रमुखी}}।'
+    sutras:
+    - 2.2.23
+    - 2.2.24
+    tag: core
+    taught_in: c2.bahuvrihi#tb1
+  - skill: sam.avyayibhava
+    rule:
+      en: 'Avyayībhāva: an adverb made by a compound: {{यथाशक्ति}}, {{प्रतिदिनम्}}, {{आमरणम्}}.'
+      hi: 'अव्ययीभाव: समास से बना क्रियाविशेषण: {{यथाशक्ति}}, {{प्रतिदिनम्}}, {{आमरणम्}}।'
+    sutras:
+    - 2.1.5
+    - 2.1.6
+    - 1.1.41
+    tag: core
+    taught_in: c2.avyayi#tb1
+  - skill: sam.long
+    rule:
+      en: 'Long compound: read from the last member back, cut in halves, then decide each join.'
+      hi: 'लम्बा समास: अन्तिम सदस्य से पीछे की ओर पढ़िए, दो-दो भागों में काटिए, फिर हर जोड़ तय कीजिए।'
+    sutras:
+    - 2.1.3
+    - 2.2.30
+    tag: core
+    taught_in: c2.long#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: How to tell which
+    hi: कैसे पहचानें कि कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: sam.bahuvrihi
+    rule:
+      en: If the compound names a person or thing outside itself, it is a bahuvrīhi.
+      hi: यदि समास अपने से बाहर किसी व्यक्ति या वस्तु का नाम बताए, तो वह बहुव्रीहि है।
+    tag: good
+    taught_in: c2.bahuvrihi#t1
+  - skill: sam.avyayibhava
+    rule:
+      en: If it never takes an ending and means “as far as, every, until”, it is an avyayībhāva.
+      hi: यदि वह कभी प्रत्यय नहीं लेता और उसका अर्थ ‘जितना, हर, तक’ है, तो वह अव्ययीभाव है।
+    tag: good
+    taught_in: c2.avyayi#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: sam.bahuvrihi
+    rule:
+      en: 'The same words can be a bahuvrīhi or a karmadhāraya: {{नीलकण्ठः}} is Śiva (bahuvrīhi); the context decides.'
+      hi: 'वही शब्द बहुव्रीहि या कर्मधारय हो सकते हैं: {{नीलकण्ठः}} शिव है (बहुव्रीहि); प्रसंग तय करता है।'
+    example:
+      sa: नीलकण्ठः।
+      meaning:
+        en: The blue-throated one.
+        hi: नीले कण्ठ वाला।
+      words:
+      - sa: नीलकण्ठः
+        gloss:
+          en: the blue-throated one
+          hi: नीले कण्ठ वाला
+    tag: rare
+    new_here: true
+  - skill: sam.long
+    rule:
+      en: 'A compound may mix types: {{सूर्यकोटिसमाभासः}} has a tatpuruṣa inside a bahuvrīhi.'
+      hi: 'समास में प्रकार मिल सकते हैं: {{सूर्यकोटिसमाभासः}} में बहुव्रीहि के भीतर तत्पुरुष है।'
+    example:
+      sa: सूर्यकोटिसमाभासः।
+      meaning:
+        en: Shining like ten million suns.
+        hi: करोड़ सूर्यों-सा चमकने वाला।
+      words:
+      - sa: सूर्यकोटिसमाभासः
+        gloss:
+          en: shining like ten million suns
+          hi: करोड़ सूर्यों-सा चमकने वाला
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: sam.bahuvrihi
+    rule:
+      en: 'Do not translate {{पीताम्बरः}} as “a yellow cloth”: it is “the one in yellow cloth”.'
+      hi: '{{पीताम्बरः}} का अनुवाद ‘पीला वस्त्र’ मत कीजिए: यह ‘पीले वस्त्र वाला’ है।'
+    tag: core
+    taught_in: c2.bahuvrihi#p1
+  - skill: sam.long
+    rule:
+      en: 'Do not read a long compound from the left: start from the last member.'
+      hi: 'लम्बे समास को बाईं ओर से मत पढ़िए: अन्तिम सदस्य से शुरू कीजिए।'
+    tag: core
+    taught_in: c2.long#p1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: sam.bahuvrihi
+    rule:
+      en: '{{शेषो बहुव्रीहिः}} and {{अनेकमन्यपदार्थे}}: the compound of the one who has.'
+      hi: '{{शेषो बहुव्रीहिः}} और {{अनेकमन्यपदार्थे}}: वह जिसके पास है, उसका समास।'
+    sutras:
+    - 2.2.23
+    - 2.2.24
+    tag: core
+    taught_in: c2.bahuvrihi#pn
+  - skill: sam.avyayibhava
+    rule:
+      en: '{{अव्ययीभावः}}: the compound that becomes indeclinable.'
+      hi: '{{अव्ययीभावः}}: वह समास जो अव्यय बन जाता है।'
+    sutras:
+    - 2.1.5
+    tag: core
+    taught_in: c2.avyayi#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: sam.bahuvrihi
+    formula: नीलकण्ठः · पीताम्बरः
+    rule:
+      en: the one who has
+      hi: वह जिसके पास है
+    tag: core
+    taught_in: c2.bahuvrihi#tb1
+  - skill: sam.avyayibhava
+    formula: यथाशक्ति · प्रतिदिनम्
+    rule:
+      en: compound adverb
+      hi: समासित क्रियाविशेषण
+    tag: core
+    taught_in: c2.avyayi#tb1
+  - skill: sam.long
+    formula: सूर्यकोटिसमाभासः
+    rule:
+      en: long compound
+      hi: लम्बा समास
+    tag: core
+    taught_in: c2.long#tb1

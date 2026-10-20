@@ -8,3 +8,9 @@ Use this policy for future books and lessons, not only the current Īśopaniṣa
 The illustrated reader's default image opacity is **48%**. Preserve a reader's
 explicitly saved settings. All Sanskrit, transliteration, translations, teaching
 tables, and controls remain real app content separate from the image.
+
+Phones are primary, tablets secondary. New verse artwork uses one 9:16 portrait
+generation, reused proportionally on all devices with the complete painting
+visible. Keep only verified optimized phone/tablet files; original generation
+PNGs are temporary and must be discarded after delivery verification, never
+archived locally or in R2. See the artwork policy for sizing and provenance.

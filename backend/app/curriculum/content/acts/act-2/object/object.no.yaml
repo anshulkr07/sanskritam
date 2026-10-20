@@ -1,0 +1,305 @@
+id: object.no
+template: scene
+title:
+  en: Saying no
+  hi: नहीं कहना
+title_sa: निषेधः
+minutes: 6
+teaches:
+- sent.negation
+needs:
+- sent.questions
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The old chest
+    hi: पुराना संदूक
+  depth: core
+  image:
+    brief: The spice seller sitting behind his stall with a very old green-lidded wooden chest at his feet, shaking his head with a smile; the small yellow spirit hovering above the lid; you and Dādī looking at it with curiosity.
+    alt:
+      en: A spice seller shakes his head over an old chest while a spirit hovers above it
+      hi: पुराने संदूक पर सिर हिलाता मसाले वाला और ऊपर मँडराता भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - haridraka
+    - vanik
+    place: apana
+    ratio: '4:3'
+    id: object-no-s1
+  narration:
+    en: “Can we see what is in the chest?” you ask. “No,” says the spice seller. “It is not for sale. It is not mine.” He glances at the little yellow spirit, who is hovering over the lid. “It is not for him either.” Dādī smiles. “A good moment to learn how to say no.”
+    hi: “क्या हम देख सकते हैं कि संदूक में क्या है?” आप पूछते हैं। मसाले वाला कहता है, “नहीं। यह बिकाऊ नहीं है। यह मेरा नहीं है।” वह पीले भूत की ओर देखता है, जो ढक्कन पर मँडरा रहा है। “इसके लिए भी नहीं।” दादी मुस्कुराती हैं। “नहीं कहना सीखने का अच्छा समय।”
+  lines:
+  - speaker: vanik
+    sa: न विक्रेयम्।
+    gloss:
+      en: It is not for sale.
+      hi: यह बिकाऊ नहीं है।
+- id: t1
+  kind: teach
+  title:
+    en: '{{न}} before the word'
+    hi: शब्द से पहले {{न}}
+  depth: core
+  skills:
+  - sent.negation
+  body:
+    en: To say “not”, put {{न}} before the word you deny, usually the verb. {{बालकः पठति}} (the boy reads), {{बालकः न पठति}} (the boy does not read).
+    hi: ‘नहीं’ कहने के लिए जिस शब्द का निषेध करना हो, प्रायः क्रिया, उससे पहले {{न}} रखिए। {{बालकः पठति}} (बालक पढ़ता है), {{बालकः न पठति}} (बालक नहीं पढ़ता)।
+  examples:
+  - sa: बालकः न पठति।
+    meaning:
+      en: The boy does not read.
+      hi: बालक नहीं पढ़ता।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: न
+      gloss:
+        en: not
+        hi: नहीं
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: अहम् फलम् न खादामि।
+    meaning:
+      en: I do not eat a fruit.
+      hi: मैं फल नहीं खाता।
+    words:
+    - sa: अहम्
+      gloss:
+        en: I
+        hi: मैं
+    - sa: फलम्
+      gloss:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: न
+      gloss:
+        en: not
+        hi: नहीं
+    - sa: खादामि
+      gloss:
+        en: eat
+        hi: खाता हूँ
+      check:
+        type: tinanta
+        dhatu: खाद्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+  - sa: न अस्ति।
+    meaning:
+      en: There is not.
+      hi: नहीं है।
+    words:
+    - sa: न
+      gloss:
+        en: not
+        hi: नहीं
+    - sa: अस्ति
+      gloss:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: न विक्रेयम्।
+    meaning:
+      en: Not for sale.
+      hi: बिकाऊ नहीं।
+    words:
+    - sa: न
+      gloss:
+        en: not
+        hi: नहीं
+    - sa: विक्रेयम्
+      gloss:
+        en: for sale
+        hi: बिकाऊ
+- id: t2
+  kind: teach
+  title:
+    en: The word {{नास्ति}}
+    hi: शब्द {{नास्ति}}
+  depth: core
+  skills:
+  - sent.negation
+  body:
+    en: 'You will see {{नास्ति}} everywhere: it is {{न}} + {{अस्ति}} joined, “there is not”. The two words melt together, a sandhi you will meet later.'
+    hi: 'आपको {{नास्ति}} हर जगह दिखेगा: यह {{न}} + {{अस्ति}} का मेल है, ‘नहीं है’। दोनों शब्द मिल जाते हैं, यह सन्धि आगे मिलेगी।'
+  examples:
+  - sa: नास्ति
+    meaning:
+      en: 'there is not: {{न}} + {{अस्ति}}'
+      hi: 'नहीं है: {{न}} + {{अस्ति}}'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sent.negation
+  mode: choice
+  prompt:
+    en: How do you say “the girl does not write”?
+    hi: ‘बालिका नहीं लिखती’ कैसे कहेंगे?
+  explain:
+    en: '{{न}} stands right before the verb.'
+    hi: '{{न}} क्रिया से ठीक पहले आता है।'
+  roman: after
+  options:
+  - correct: true
+    sa: बालिका न लिखति
+  - sa: न बालिका लिखति
+  - sa: बालिका लिखति न
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sent.negation
+  mode: match
+  prompt:
+    en: Join each sentence to its meaning.
+    hi: हर वाक्य को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{न}} turns a statement into its opposite.'
+    hi: '{{न}} कथन को उसके उलटे में बदल देता है।'
+  roman: after
+  pairs:
+  - left:
+      sa: सः पठति
+    right:
+      text:
+        en: he reads
+        hi: वह पढ़ता है
+  - left:
+      sa: सः न पठति
+    right:
+      text:
+        en: he does not read
+        hi: वह नहीं पढ़ता
+  - left:
+      sa: अहं न गच्छामि
+    right:
+      text:
+        en: I do not go
+        hi: मैं नहीं जाता
+  - left:
+      sa: न अस्ति
+    right:
+      text:
+        en: there is not
+        hi: नहीं है
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sent.negation
+  widget: mark_words
+  prompt:
+    en: Tap every word that says no.
+    hi: ‘नहीं’ कहने वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - न
+    - पठति
+    - न
+    - गच्छति
+    - फलम्
+    targets:
+    - न
+  roman: show
+- id: p3
+  kind: practice
+  title:
+    en: Not for sale
+    hi: बिकाऊ नहीं
+  depth: core
+  skills:
+  - sent.negation
+  mode: order
+  prompt:
+    en: 'Say: “It is not for sale.”'
+    hi: 'कहिए: ‘यह बिकाऊ नहीं है।’'
+  explain:
+    en: '{{न विक्रेयम्}}: not for sale.'
+    hi: '{{न विक्रेयम्}}: बिकाऊ नहीं।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “न विक्रेयम्,” you say gravely, and the spice seller bursts out laughing. “You speak like my grandfather!” He lifts the green lid. Inside, on a bed of dry marigolds, lies a half-burnt palm leaf, softly glowing. “It was left here by a boatman long ago,” he says. “Nobody could read it.”
+      hi: “न विक्रेयम्,” आप गम्भीरता से कहते हैं, और मसाले वाला ठहाका लगाता है। “तुम तो मेरे दादा की तरह बोलते हो!” वह हरा ढक्कन उठाता है। भीतर, सूखे गेंदे के बिछौने पर, एक अधजला ताड़पत्र हल्का चमक रहा है। “बहुत पहले एक नाविक इसे यहाँ छोड़ गया था,” वह कहता है। “कोई इसे पढ़ न सका।”
+    failure:
+      en: The lid stays shut. Put {{न}} first, then the thing denied.
+      hi: ढक्कन बन्द रहता है। पहले {{न}}, फिर जिसका निषेध है।
+  tokens:
+  - न
+  - विक्रेयम्
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sent.negation
+  mode: choice
+  prompt:
+    en: Which sentence means “I do not see”?
+    hi: ‘मैं नहीं देखता’ का वाक्य कौन-सा है?
+  explain:
+    en: '{{न}} before the verb: {{न पश्यामि}}.'
+    hi: 'क्रिया से पहले {{न}}: {{न पश्यामि}}।'
+  roman: after
+  options:
+  - sa: अहं पश्यामि
+  - correct: true
+    sa: अहं न पश्यामि
+  - sa: अहं पश्यसि न
+- id: sum
+  kind: summary
+  title:
+    en: Saying no
+    hi: नहीं कहना
+  depth: core
+  points:
+  - sa: सः न पठति
+    text:
+      en: '{{न}} before the verb.'
+      hi: क्रिया से पहले {{न}}।
+  - sa: नास्ति
+    text:
+      en: '{{न}} + {{अस्ति}}: there is not.'
+      hi: '{{न}} + {{अस्ति}}: नहीं है।'
+  - text:
+      en: One small word reverses a sentence.
+      hi: एक छोटा शब्द वाक्य को उलट देता है।

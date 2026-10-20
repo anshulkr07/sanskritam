@@ -1,0 +1,87 @@
+# The prologue: the real legend (Kathāsaritsāgara 1.8, read at the DCS text),
+# in the order the text tells it, then where our story begins.
+id: prologue
+template: prologue
+title: {en: "The Burnt Book", hi: "जली हुई पुस्तक"}
+title_sa: "पूर्वकथा"
+minutes: 3
+review: engine_ok
+sources:
+  - title: "Kathāsaritsāgara 1.8, Digital Corpus of Sanskrit"
+    url: "https://github.com/OliverHellwig/sanskrit"
+    licence: "CC BY 4.0"
+    note: "All three quotes read at the DCS text of KSS 1.8 on 2026-10-19."
+cards:
+  - id: p1
+    kind: story
+    title: {en: "The book of seven tales", hi: "सात कथाओं की पुस्तक"}
+    image:
+      id: prologue-1
+      brief: "Deep forest under a great banyan tree: the poet Guṇāḍhya writes on palm leaves with a reed pen dipped in a small dark-red pot (no wound shown). Spirits of soft blue light and forest animals gather at a distance, listening. Calm, reverent, golden evening light."
+      alt: {en: "A poet under a banyan tree writing on palm leaves while spirits and animals listen", hi: "बरगद के नीचे ताड़पत्रों पर लिखते कवि, जिन्हें आत्माएँ और पशु सुन रहे हैं"}
+      ratio: "4:3"
+      cast: [gunadhya]
+    narration:
+      en: "Long ago, the poet Guṇāḍhya wrote a book of seven tales in Paiśācī, the language of the ghosts. Alone in the forest, with no ink, he wrote all of it in his own blood."
+      hi: "बहुत पहले कवि गुणाढ्य ने भूतों की भाषा, पैशाची, में सात कथाओं की एक पुस्तक लिखी। वन में अकेले, बिना स्याही के, उन्होंने पूरी पुस्तक अपने रक्त से लिखी।"
+    quote:
+      sa: "मैतां विद्याधरा हार्षुरिति तामात्मशोणितैः।\nअटव्यां मष्यभावाच्च लिलेख स महाकविः॥"
+      gloss:
+        en: "So that the vidyādharas, the sky-folk, would not carry it off, the great poet wrote it in his own blood, in the forest, for there was no ink."
+        hi: "ताकि विद्याधर इसे उठा न ले जाएँ, उस महाकवि ने वन में, स्याही न होने के कारण, इसे अपने रक्त से लिखा।"
+      source: "Kathāsaritsāgara 1.8"
+
+  - id: p2
+    kind: story
+    title: {en: "The ghosts who listened", hi: "सुनने वाले भूत"}
+    image:
+      id: prologue-2
+      brief: "Night in the forest clearing: gentle luminous spirits rise like lamp smoke into a starry sky, freed and smiling; at the edge, three small spirits arrive too late and look up, wistful. Beautiful and calm, never frightening."
+      alt: {en: "Glowing spirits rising into the night sky while a few small spirits watch from the edge", hi: "रात के आकाश में उठती चमकती आत्माएँ, किनारे से देखती कुछ नन्ही आत्माएँ"}
+      ratio: "4:3"
+    narration:
+      en: "Every ghost who heard the finished tale was set free. But some came too late. By the time they arrived, the book had been sent to a king."
+      hi: "जिस-जिस भूत ने पूरी कथा सुनी, वह मुक्त हो गया। पर कुछ देर से पहुँचे। जब तक वे आए, पुस्तक एक राजा के पास भेजी जा चुकी थी।"
+    quote:
+      sa: "तेऽपि प्रापुर्दिवं सर्वे दिव्यामाकर्ण्य तां कथाम्॥"
+      gloss:
+        en: "They too, all of them, rose to heaven on hearing that divine tale."
+        hi: "वे भी सब उस दिव्य कथा को सुनकर स्वर्ग पहुँच गए।"
+      source: "Kathāsaritsāgara 1.8"
+
+  - id: p3
+    kind: story
+    title: {en: "Leaf by leaf, into the fire", hi: "पत्र-पत्र, अग्नि में"}
+    image:
+      id: prologue-3
+      brief: "A hilltop at dusk: Guṇāḍhya reads aloud from a palm leaf beside a small fire, a tear on his cheek; deer, boars, buffaloes and birds sit in a quiet circle listening; two pupils watch sadly; one leaf curls into the flames."
+      alt: {en: "A poet reading leaves aloud to a circle of animals and giving each leaf to a small fire", hi: "पशुओं के घेरे को पत्र पढ़कर सुनाते और हर पत्र अग्नि को सौंपते कवि"}
+      ratio: "4:3"
+      cast: [gunadhya]
+    narration:
+      en: "The king laughed at a ghost-tale written in blood. So Guṇāḍhya read the book aloud to the deer and the birds, one leaf at a time, and gave each leaf to the fire. Six tales burned."
+      hi: "राजा ने रक्त से लिखी भूत-कथा का उपहास किया। तब गुणाढ्य ने पुस्तक हिरणों और पक्षियों को एक-एक पत्र करके पढ़कर सुनाई, और हर पत्र अग्नि को सौंप दिया। छह कथाएँ जल गईं।"
+    quote:
+      sa: "राजन् षड्ग्रन्थलक्षाणि मया दग्धानि षट्कथाः।"
+      gloss:
+        en: "“King, I have burned six hundred thousand verses: six tales.”"
+        hi: "“राजन्, मैंने छह लाख श्लोक, छह कथाएँ, जला दीं।”"
+      source: "Kathāsaritsāgara 1.8"
+
+  - id: p4
+    kind: story
+    title: {en: "Today", hi: "आज"}
+    image:
+      id: prologue-4
+      brief: "Present day, evening, in the temple library: you (seen from behind) and Dādī at the low reading desk; a half-burnt palm leaf has begun to glow faintly gold; Śuka the parrot on your shoulder; brass lamps, shelves of palm-leaf bundles."
+      alt: {en: "A grandmother and a young person at a desk where a half-burnt leaf glows, a parrot watching", hi: "डेस्क पर चमकता अधजला पत्र, पास में दादी, एक युवा और तोता"}
+      ratio: "4:3"
+      cast: [you, dadi, shuka]
+      place: granthalaya
+    narration:
+      en: "In an old temple library, a half-burnt leaf has begun to glow. It glows only for the one who found it: you. Learn to read it, and the lost tales will come back, one leaf at a time."
+      hi: "एक पुराने मंदिर के ग्रंथालय में एक अधजला पत्र चमकने लगा है। वह केवल उसी के लिए चमकता है जिसने उसे पाया: आपके लिए। उसे पढ़ना सीखिए, और खोई कथाएँ एक-एक पत्र करके लौट आएँगी।"
+    lines:
+      - speaker: dadi
+        sa: "पत्रं दीप्यते।"
+        gloss: {en: "“The leaf glows.”", hi: "“पत्र चमक रहा है।”"}

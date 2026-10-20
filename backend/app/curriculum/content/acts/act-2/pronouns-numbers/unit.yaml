@@ -1,0 +1,42 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: pronouns-numbers
+title:
+  en: Pronouns and numbers
+  hi: सर्वनाम और संख्या
+title_sa: सर्वनामानि सङ्ख्याश्च
+status: ready
+episode:
+  summary:
+    en: 'Counting the leaves you have found, and the days of the journey home: pronouns in every case, numbers and the time. In the old library, the third leaf turns up.'
+    hi: 'मिले हुए पत्रों और घर लौटने के दिनों की गिनती: हर विभक्ति में सर्वनाम, संख्याएँ और समय। पुराने ग्रंथालय में तीसरा पत्र मिलता है।'
+  beats:
+  - तद्, एतद्, इदम् in every case.
+  - कः, का, किम्; यः … सः.
+  - 'Numbers one to a hundred, and telling the time. The third leaf: the boy who heard once.'
+skills:
+- id: pron.tad-full
+  title:
+    en: This and that in every case
+    hi: यह-वह हर विभक्ति में
+- id: pron.kim-yad
+  title:
+    en: 'Who and which: किम्, यद्'
+    hi: 'कौन और जो: किम्, यद्'
+- id: num.one-ten
+  title:
+    en: Numbers 1–10 and their forms
+    hi: संख्या 1–10 और उनके रूप
+- id: num.big-time
+  title:
+    en: Bigger numbers, ordinals, time
+    hi: बड़ी संख्याएँ, क्रमवाचक, समय
+lessons:
+- pn.tad
+- pn.who
+- pn.count
+- pn.time
+planned: []
+ghost: ganaka
+revision: pn.revision
+check: pn.check

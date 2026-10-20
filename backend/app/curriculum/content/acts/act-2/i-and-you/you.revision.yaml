@@ -1,0 +1,196 @@
+id: you.revision
+template: revision
+title:
+  en: Everything about I and you
+  hi: मैं और तुम के बारे में सब कुछ
+title_sa: पुरुषसङ्ग्रहः
+minutes: 5
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: pron.i-we
+    formula: अहम् · आवाम् · वयम्
+    rule:
+      en: 'I, we two, we: {{अहम्}}, {{आवाम्}}, {{वयम्}}.'
+      hi: 'मैं, हम दोनों, हम: {{अहम्}}, {{आवाम्}}, {{वयम्}}।'
+    tag: core
+    taught_in: you.i#t1
+  - skill: pron.you
+    formula: त्वम् · युवाम् · यूयम्
+    rule:
+      en: 'You, you two, you all: {{त्वम्}}, {{युवाम्}}, {{यूयम्}}.'
+      hi: 'तुम, तुम दोनों, तुम सब: {{त्वम्}}, {{युवाम्}}, {{यूयम्}}।'
+    tag: core
+    taught_in: you.you#t1
+  - skill: verb.persons
+    formula: पठति पठसि पठामि
+    rule:
+      en: 'Nine present forms: {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}.'
+      hi: 'वर्तमान के नौ रूप: {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}।'
+    sutras:
+    - 3.4.78
+    tag: core
+    taught_in: you.grid#tb1
+  - skill: pron.polite
+    formula: भवान् पठति
+    rule:
+      en: To an elder say {{भवान्}} or {{भवती}}, with the third-person verb.
+      hi: बड़ों से {{भवान्}} या {{भवती}} कहिए, क्रिया प्रथम पुरुष की।
+    tag: core
+    taught_in: you.polite#t1
+  - skill: verb.as
+    formula: अस्मि असि अस्ति
+    rule:
+      en: '{{अस्मि}} (I am), {{असि}} (you are), {{अस्ति}} (he is).'
+      hi: '{{अस्मि}} (मैं हूँ), {{असि}} (तुम हो), {{अस्ति}} (वह है)।'
+    tag: core
+    taught_in: you.be#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When it applies
+    hi: कब लागू होता है
+  depth: core
+  section: conditions
+  rows:
+  - skill: pron.i-we
+    rule:
+      en: The pronoun is often dropped because the verb ending shows the person; it is kept for emphasis or contrast.
+      hi: क्रिया का प्रत्यय पुरुष बता देता है, इसलिए सर्वनाम अक्सर छोड़ा जाता है; ज़ोर देने या अन्तर दिखाने के लिए रखा जाता है।
+    example:
+      sa: पठामि
+      meaning:
+        en: I read (no {{अहम्}} needed)
+        hi: मैं पढ़ता हूँ ({{अहम्}} की ज़रूरत नहीं)
+    tag: good
+    new_here: true
+  - skill: verb.as
+    rule:
+      en: With a pronoun {{अस्}} is used freely; between two nouns it is usually left out.
+      hi: सर्वनाम के साथ {{अस्}} का खुलकर प्रयोग होता है; दो संज्ञाओं के बीच प्रायः छोड़ दिया जाता है।
+    tag: core
+    taught_in: you.be#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: verb.persons
+    rule:
+      en: 'Before {{वः}} and {{मः}} a final {{अ}} lengthens: {{पठावः}}, {{पठामः}}, but {{पठामि}} too has a long {{आ}}.'
+      hi: '{{वः}} और {{मः}} से पहले अन्त का {{अ}} दीर्घ होता है: {{पठावः}}, {{पठामः}}, और {{पठामि}} में भी {{आ}} दीर्घ है।'
+    tag: good
+    taught_in: you.grid#t1
+  - skill: pron.polite
+    rule:
+      en: Older speakers also use {{आर्य}} (sir) and {{देवि}} (madam) as polite address in speech.
+      hi: पुराने वक्ता आदर के सम्बोधन के रूप में {{आर्य}} (श्रीमान्) और {{देवि}} (देवी) भी बोलते हैं।
+    example:
+      sa: आर्य
+      meaning:
+        en: sir, noble one
+        hi: श्रीमान्, आर्य
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: pron.polite
+    rule:
+      en: 'Do not use {{त्वम्}} for elders, and do not give {{भवान्}} the verb for “you”: {{भवान् पठति}}, not {{भवान् पठसि}}.'
+      hi: 'बड़ों के लिए {{त्वम्}} मत कहिए, और {{भवान्}} को ‘तुम’ की क्रिया मत दीजिए: {{भवान् पठति}}, न कि {{भवान् पठसि}}।'
+    tag: core
+    taught_in: you.polite#t1
+  - skill: pron.i-we
+    rule:
+      en: 'Do not mix {{अहम्}} and {{वयम्}}: one is “I”, the other “we”.'
+      hi: '{{अहम्}} और {{वयम्}} को मत मिलाइए: एक ‘मैं’, दूसरा ‘हम’।'
+    tag: core
+    taught_in: you.i#t1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: verb.persons
+    rule:
+      en: '{{तिप्तस्झिसिप्थस्थमिब्वस्मस्...}}: the nine endings, in three triples.'
+      hi: '{{तिप्तस्झिसिप्थस्थमिब्वस्मस्...}}: नौ प्रत्यय, तीन-तीन के समूह में।'
+    sutras:
+    - 3.4.78
+    tag: core
+    taught_in: you.grid#t1
+  - skill: pron.i-we
+    rule:
+      en: '{{उत्तमः}} is the “I” person, {{मध्यमः}} “you”, {{प्रथमः}} “he, she, it”.'
+      hi: '{{उत्तमः}} ‘मैं’ वाला पुरुष है, {{मध्यमः}} ‘तुम’, {{प्रथमः}} ‘वह’।'
+    sutras:
+    - 1.4.107
+    - 1.4.108
+    - 1.4.101
+    tag: core
+    taught_in: you.i#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: pron.i-we
+    formula: अहम् आवाम् वयम्
+    rule:
+      en: I, we two, we
+      hi: मैं, हम दोनों, हम
+    tag: core
+    taught_in: you.i#t1
+  - skill: pron.you
+    formula: त्वम् युवाम् यूयम्
+    rule:
+      en: you, you two, you all
+      hi: तुम, तुम दोनों, तुम सब
+    tag: core
+    taught_in: you.you#t1
+  - skill: verb.persons
+    formula: ति तः न्ति · सि थः थ · मि वः मः
+    rule:
+      en: nine forms
+      hi: नौ रूप
+    tag: core
+    taught_in: you.grid#t1
+  - skill: pron.polite
+    formula: भवान् भवती
+    rule:
+      en: polite you
+      hi: आदर से ‘आप’
+    tag: core
+    taught_in: you.polite#t1
+  - skill: verb.as
+    formula: अस्मि असि अस्ति
+    rule:
+      en: to be
+      hi: होना
+    tag: core
+    taught_in: you.be#tb1

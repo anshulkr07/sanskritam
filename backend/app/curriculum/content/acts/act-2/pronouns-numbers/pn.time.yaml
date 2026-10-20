@@ -1,0 +1,457 @@
+id: pn.time
+template: scene
+title:
+  en: Big numbers and the time
+  hi: बड़ी संख्याएँ और समय
+title_sa: एकादश शतम् प्रहरः
+minutes: 6
+teaches:
+- num.big-time
+needs:
+- num.one-ten
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Days on the road
+    hi: मार्ग के दिन
+  depth: core
+  image:
+    brief: 'Dādī and the knotted-cord spirit at a low table: on a clay slate a ladder of written numbers and a circle of a day cut into eight slices, half bright and half dark; Śuka looking at the slate; Dādī pointing.'
+    alt:
+      en: Dādī draws a day cut into eight watches on a clay slate beside the cord spirit
+      hi: दादी पाटी पर आठ पहरों में कटा दिन खींचती हुई, पास में डोरी का भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - ganaka
+    place: pathashala
+    ratio: '4:3'
+    id: pn-time-s1
+  narration:
+    en: 'Ganaka''s cords are long now. “How many days of the road? Eleven? A hundred?” Dādī sits him down with a clay slate and writes a ladder of numbers: eleven, twelve, twenty, a hundred, a thousand. Then she draws a day on the slate, cut into eight equal slices. “The old way of keeping time: eight watches, four of day and four of night.”'
+    hi: 'गणक की डोरियाँ अब लम्बी हो गई हैं। “मार्ग के कितने दिन? ग्यारह? सौ?” दादी उसे मिट्टी की पाटी के पास बिठाती हैं और संख्याओं की सीढ़ी लिखती हैं: ग्यारह, बारह, बीस, सौ, हज़ार। फिर वे पाटी पर एक दिन खींचती हैं, आठ बराबर फाँकों में कटा हुआ। “समय गिनने का पुराना ढंग: आठ पहर, चार दिन के और चार रात के।”'
+- id: t1
+  kind: teach
+  title:
+    en: Eleven to a thousand
+    hi: ग्यारह से हज़ार
+  depth: core
+  skills:
+  - num.big-time
+  body:
+    en: 'From eleven to nineteen: the unit and then {{दश}}: {{एकादश}}, {{द्वादश}}, {{त्रयोदश}}, {{चतुर्दश}}, {{पञ्चदश}}, {{षोडश}}, {{सप्तदश}}, {{अष्टादश}}. The tens are {{विंशतिः}} (20), {{त्रिंशत्}} (30), {{चत्वारिंशत्}} (40), {{पञ्चाशत्}} (50), {{षष्टिः}} (60), {{सप्ततिः}} (70), {{अशीतिः}} (80), {{नवतिः}} (90). Then {{शतम्}} (100) and {{सहस्रम्}} (1000).'
+    hi: 'ग्यारह से उन्नीस तक: इकाई और फिर {{दश}}: {{एकादश}}, {{द्वादश}}, {{त्रयोदश}}, {{चतुर्दश}}, {{पञ्चदश}}, {{षोडश}}, {{सप्तदश}}, {{अष्टादश}}। दहाइयाँ ये हैं: {{विंशतिः}} (20), {{त्रिंशत्}} (30), {{चत्वारिंशत्}} (40), {{पञ्चाशत्}} (50), {{षष्टिः}} (60), {{सप्ततिः}} (70), {{अशीतिः}} (80), {{नवतिः}} (90)। फिर {{शतम्}} (100) और {{सहस्रम्}} (1000)।'
+- id: tb1
+  kind: table
+  title:
+    en: Eleven to nineteen
+    hi: ग्यारह से उन्नीस
+  depth: core
+  skills:
+  - num.big-time
+  caption:
+    en: Teens
+    hi: ग्यारह से उन्नीस तक
+  columns:
+  - en: Number
+    hi: संख्या
+  - en: Word
+    hi: शब्द
+  rows:
+  - - text:
+        en: '11'
+        hi: ११
+    - sa: एकादश
+  - - text:
+        en: '12'
+        hi: १२
+    - sa: द्वादश
+  - - text:
+        en: '13'
+        hi: १३
+    - sa: त्रयोदश
+  - - text:
+        en: '14'
+        hi: १४
+    - sa: चतुर्दश
+  - - text:
+        en: '15'
+        hi: १५
+    - sa: पञ्चदश
+  - - text:
+        en: '16'
+        hi: १६
+    - sa: षोडश
+  - - text:
+        en: '17'
+        hi: १७
+    - sa: सप्तदश
+  - - text:
+        en: '18'
+        hi: १८
+    - sa: अष्टादश
+  note:
+    en: 'Nineteen is {{नवदश}} or, more often, “one short of twenty”: {{ऊनविंशतिः}}.'
+    hi: 'उन्नीस {{नवदश}} है या, अधिकतर, ‘बीस से एक कम’: {{ऊनविंशतिः}}।'
+- id: tb2
+  kind: table
+  title:
+    en: Tens and the hundred
+    hi: दहाइयाँ और सौ
+  depth: core
+  skills:
+  - num.big-time
+  caption:
+    en: The tens
+    hi: दहाइयाँ
+  columns:
+  - en: Number
+    hi: संख्या
+  - en: Word
+    hi: शब्द
+  rows:
+  - - text:
+        en: '20'
+        hi: २०
+    - sa: विंशतिः
+  - - text:
+        en: '30'
+        hi: ३०
+    - sa: त्रिंशत्
+  - - text:
+        en: '40'
+        hi: ४०
+    - sa: चत्वारिंशत्
+  - - text:
+        en: '50'
+        hi: ५०
+    - sa: पञ्चाशत्
+  - - text:
+        en: '60'
+        hi: ६०
+    - sa: षष्टिः
+  - - text:
+        en: '70'
+        hi: ७०
+    - sa: सप्ततिः
+  - - text:
+        en: '80'
+        hi: ८०
+    - sa: अशीतिः
+  - - text:
+        en: '90'
+        hi: ९०
+    - sa: नवतिः
+  - - text:
+        en: '100'
+        hi: १००
+    - sa: शतम्
+  - - text:
+        en: '1000'
+        hi: १०००
+    - sa: सहस्रम्
+- id: t2
+  kind: teach
+  title:
+    en: First, second, third
+    hi: पहला, दूसरा, तीसरा
+  depth: core
+  skills:
+  - num.big-time
+  body:
+    en: 'Ordinals say “first, second, third”: {{प्रथमः}}, {{द्वितीयः}}, {{तृतीयः}}, {{चतुर्थः}}, {{पञ्चमः}}, {{षष्ठः}}, {{सप्तमः}}, {{अष्टमः}}, {{नवमः}}, {{दशमः}}. They act like adjectives, so there is also a feminine: {{प्रथमा}}, {{द्वितीया}}, {{तृतीया}}. You have met these as the names of the cases.'
+    hi: 'क्रमवाचक ‘पहला, दूसरा, तीसरा’ बताते हैं: {{प्रथमः}}, {{द्वितीयः}}, {{तृतीयः}}, {{चतुर्थः}}, {{पञ्चमः}}, {{षष्ठः}}, {{सप्तमः}}, {{अष्टमः}}, {{नवमः}}, {{दशमः}}। ये विशेषण की तरह चलते हैं, इसलिए स्त्रीलिंग भी है: {{प्रथमा}}, {{द्वितीया}}, {{तृतीया}}। आप इन्हें विभक्तियों के नाम के रूप में मिल चुके हैं।'
+  term:
+    sa: क्रमवाचकम्
+    meaning:
+      en: an ordinal number
+      hi: क्रमसूचक संख्या
+- id: t3
+  kind: teach
+  title:
+    en: The day and the watch
+    hi: दिन और पहर
+  depth: core
+  skills:
+  - num.big-time
+  body:
+    en: 'A day and night has eight watches, {{प्रहराः}}, so one {{प्रहरः}} is three hours. The day-parts are {{प्रातः}} (morning), {{मध्याह्नः}} (midday), {{सायम्}} (evening), {{रात्रिः}} (night). For when: {{अद्य}} (today), {{श्वः}} (tomorrow), {{ह्यः}} (yesterday), {{परश्वः}} (the day after tomorrow).'
+    hi: 'एक दिन-रात में आठ पहर होते हैं, {{प्रहराः}}, इसलिए एक {{प्रहरः}} तीन घंटे का है। दिन के भाग हैं {{प्रातः}} (सुबह), {{मध्याह्नः}} (दोपहर), {{सायम्}} (शाम), {{रात्रिः}} (रात)। कब के लिए: {{अद्य}} (आज), {{श्वः}} (कल, आने वाला), {{ह्यः}} (कल, बीता हुआ), {{परश्वः}} (परसों)।'
+  examples:
+  - sa: अद्य सप्त दिनानि।
+    meaning:
+      en: Today it is seven days.
+      hi: आज सात दिन हो गए।
+    words:
+    - sa: अद्य
+      gloss:
+        en: today
+        hi: आज
+    - sa: सप्त
+      gloss:
+        en: seven
+        hi: सात
+    - sa: दिनानि
+      gloss:
+        en: days
+        hi: दिन
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Bahu
+  - sa: श्वः प्रातः।
+    meaning:
+      en: Tomorrow morning.
+      hi: कल सुबह।
+    words:
+    - sa: श्वः
+      gloss:
+        en: tomorrow
+        hi: कल
+    - sa: प्रातः
+      gloss:
+        en: morning
+        hi: सुबह
+- id: tb3
+  kind: table
+  title:
+    en: The days of the week
+    hi: सप्ताह के दिन
+  depth: core
+  skills:
+  - num.big-time
+  caption:
+    en: The seven days
+    hi: सात दिन
+  columns:
+  - en: Day
+    hi: दिन
+  - en: Word
+    hi: शब्द
+  rows:
+  - - text:
+        en: Sunday
+        hi: रविवार
+    - sa: रविवासरः
+  - - text:
+        en: Monday
+        hi: सोमवार
+    - sa: सोमवासरः
+  - - text:
+        en: Tuesday
+        hi: मंगलवार
+    - sa: मङ्गलवासरः
+  - - text:
+        en: Wednesday
+        hi: बुधवार
+    - sa: बुधवासरः
+  - - text:
+        en: Thursday
+        hi: गुरुवार
+    - sa: गुरुवासरः
+  - - text:
+        en: Friday
+        hi: शुक्रवार
+    - sa: शुक्रवासरः
+  - - text:
+        en: Saturday
+        hi: शनिवार
+    - sa: शनिवासरः
+  note:
+    en: 'Each is named for a planet-god: the sun, the moon, Mars, Mercury, Jupiter, Venus and Saturn.'
+    hi: 'हर दिन एक ग्रह-देव के नाम पर है: सूर्य, चन्द्र, मंगल, बुध, गुरु, शुक्र और शनि।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - num.big-time
+  mode: choice
+  prompt:
+    en: “Twelve.” Which word?
+    hi: ‘बारह।’ कौन-सा शब्द?
+  explain:
+    en: '{{द्वादश}}: two plus ten.'
+    hi: '{{द्वादश}}: दो और दस।'
+  roman: after
+  options:
+  - sa: एकादश
+  - correct: true
+    sa: द्वादश
+  - sa: त्रयोदश
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - num.big-time
+  mode: match
+  prompt:
+    en: Join each number to its word.
+    hi: हर संख्या को उसके शब्द से जोड़िए।
+  explain:
+    en: The tens grow from {{विंशतिः}} (20).
+    hi: दहाइयाँ {{विंशतिः}} (20) से आगे बढ़ती हैं।
+  roman: after
+  pairs:
+  - left:
+      text:
+        en: '20'
+        hi: २०
+    right:
+      sa: विंशतिः
+  - left:
+      text:
+        en: '60'
+        hi: ६०
+    right:
+      sa: षष्टिः
+  - left:
+      text:
+        en: '100'
+        hi: १००
+    right:
+      sa: शतम्
+  - left:
+      text:
+        en: '1000'
+        hi: १०००
+    right:
+      sa: सहस्रम्
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - num.big-time
+  widget: mark_words
+  prompt:
+    en: Tap every word that says when.
+    hi: हर उस शब्द को छुइए जो ‘कब’ बताता है।
+  params:
+    passage:
+    - अद्य
+    - पुस्तकम्
+    - श्वः
+    - नदी
+    - ह्यः
+    - बालकः
+    targets:
+    - अद्य
+    - श्वः
+    - ह्यः
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - num.big-time
+  mode: choice
+  prompt:
+    en: Which one is “tomorrow”?
+    hi: ‘कल (आने वाला)’ कौन-सा है?
+  explain:
+    en: '{{श्वः}}: tomorrow; {{ह्यः}}: yesterday.'
+    hi: '{{श्वः}}: आने वाला कल; {{ह्यः}}: बीता हुआ कल।'
+  roman: after
+  options:
+  - sa: ह्यः
+  - sa: अद्य
+  - correct: true
+    sa: श्वः
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - num.big-time
+  mode: match
+  prompt:
+    en: Join each ordinal to its place.
+    hi: हर क्रमवाचक को उसके स्थान से जोड़िए।
+  explain:
+    en: '{{द्वितीयः}} and {{तृतीयः}} are the case names too.'
+    hi: '{{द्वितीयः}} और {{तृतीयः}} विभक्तियों के नाम भी हैं।'
+  roman: after
+  pairs:
+  - left:
+      sa: प्रथमः
+    right:
+      text:
+        en: 1st
+        hi: पहला
+  - left:
+      sa: द्वितीयः
+    right:
+      text:
+        en: 2nd
+        hi: दूसरा
+  - left:
+      sa: तृतीयः
+    right:
+      text:
+        en: 3rd
+        hi: तीसरा
+  - left:
+      sa: दशमः
+    right:
+      text:
+        en: 10th
+        hi: दसवाँ
+- id: p5
+  kind: practice
+  title:
+    en: The eighth watch
+    hi: आठवाँ पहर
+  depth: core
+  skills:
+  - num.big-time
+  mode: choice
+  prompt:
+    en: “The eighth.” Which word?
+    hi: ‘आठवाँ।’ कौन-सा शब्द?
+  explain:
+    en: '{{अष्टमः}}: from {{अष्ट}}.'
+    hi: '{{अष्टमः}}: {{अष्ट}} से।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“अष्टमः,” you say, putting your finger on the last slice of the day on Dādī''s slate. Ganaka counts all the way round: one, two, … eight, and the day closes into a ring. “Evening is the end,” he says, “and the beginning.” The slate warms under your finger.'
+      hi: '“अष्टमः,” आप कहते हैं, दादी की पाटी पर दिन की आख़िरी फाँक पर उँगली रखते हुए। गणक पूरा घेरा गिनता है: एक, दो, … आठ, और दिन एक वलय में बन्द हो जाता है। “सन्ध्या अन्त है,” वह कहता है, “और आरम्भ।” आपकी उँगली के नीचे पाटी गरम हो उठती है।'
+    failure:
+      en: 'The ring will not close. The eighth: {{अष्टमः}}.'
+      hi: 'वलय बन्द नहीं होता। आठवाँ: {{अष्टमः}}।'
+  options:
+  - sa: सप्तमः
+  - sa: नवमः
+  - correct: true
+    sa: अष्टमः
+- id: sum
+  kind: summary
+  title:
+    en: Big numbers and the time
+    hi: बड़ी संख्याएँ और समय
+  depth: core
+  points:
+  - sa: एकादश · द्वादश · विंशतिः
+    text:
+      en: Eleven, twelve, twenty.
+      hi: ग्यारह, बारह, बीस।
+  - sa: शतम् · सहस्रम्
+    text:
+      en: A hundred, a thousand.
+      hi: सौ, हज़ार।
+  - sa: प्रथमः · द्वितीयः · तृतीयः
+    text:
+      en: First, second, third.
+      hi: पहला, दूसरा, तीसरा।
+  - sa: अद्य · श्वः · ह्यः
+    text:
+      en: Today, tomorrow, yesterday.
+      hi: आज, कल, कल।

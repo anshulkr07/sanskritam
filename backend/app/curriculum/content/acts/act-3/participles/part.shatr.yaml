@@ -1,0 +1,566 @@
+id: part.shatr
+template: scene
+title:
+  en: While going
+  hi: जाते हुए
+title_sa: गच्छन् सेवमानः
+minutes: 6
+teaches:
+- krt.shatr
+needs:
+- krt.kta
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The one who is going
+    hi: जो जा रहा है
+  depth: core
+  image:
+    brief: A hurrying figure crossing a moonlit clearing, murmuring to himself as he goes, a paper-fan spirit pointing at him from the roots; the Vetāla and Dādī watching; Śuka perched on a stump.
+    alt:
+      en: A figure crosses a moonlit clearing murmuring as he goes while a paper-fan spirit points
+      hi: चाँदनी में खुले स्थान को पार करती आकृति, बुदबुदाती हुई, पंखे जैसा भूत इशारा करता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - sankshepaka
+    place: smashana
+    ratio: '4:3'
+    id: part-shatr-s1
+  narration:
+    en: 'A figure crosses the clearing, hurrying, murmuring to himself as he goes. “गच्छन्,” says the paper-fan spirit. “Going.” “पठन्.” “Reading.” “Not he went, not he will go, but he is going while he does something else.” Dādī: “It is the word for ‘while’. It always goes with another verb.”'
+    hi: 'एक आकृति खुले स्थान को पार करती है, जल्दी में, चलते हुए अपने-आप से बुदबुदाती। “गच्छन्,” काग़ज़ी पंखे वाला भूत कहता है। “जाता हुआ।” “पठन्।” “पढ़ता हुआ।” “वह गया नहीं, वह जाएगा नहीं, बल्कि वह जाते हुए कुछ और कर रहा है।” दादी: “यह ‘जबकि’ का शब्द है। यह हमेशा दूसरी क्रिया के साथ आता है।”'
+  quote:
+    sa: इति संचिन्तयामास योगनन्दः क्रुधा ज्वलन्
+    gloss:
+      en: So Yogananda thought, blazing with anger.
+      hi: इस प्रकार योगनन्द ने क्रोध से जलते हुए सोचा।
+    source: Kathāsaritsāgara 1.5 (read in the Digital Corpus of Sanskrit)
+- id: t1
+  kind: teach
+  title:
+    en: While doing
+    hi: करते हुए
+  depth: core
+  skills:
+  - krt.shatr
+  body:
+    en: '{{-अत्}} (after the sign {{-अ-}}) or {{-मान}} makes “while doing”: {{गम्}} gives {{गच्छन्}} (going), {{पठ्}} gives {{पठन्}} (reading), {{कृ}} gives {{कुर्वन्}} (doing), {{सेव्}} gives {{सेवमानः}} (serving, for oneself). It agrees with its noun: {{गच्छन् बालकः}}, {{गच्छन्ती बालिका}}.'
+    hi: '{{-अत्}} ({{-अ-}} चिह्न के बाद) या {{-मान}} ‘करते हुए’ बनाता है: {{गम्}} से {{गच्छन्}} (जाता हुआ), {{पठ्}} से {{पठन्}} (पढ़ता हुआ), {{कृ}} से {{कुर्वन्}} (करता हुआ), {{सेव्}} से {{सेवमानः}} (सेवा करता हुआ, अपने लिए)। यह अपनी संज्ञा से मेल खाता है: {{गच्छन् बालकः}}, {{गच्छन्ती बालिका}}।'
+  examples:
+  - sa: बालकः गच्छन् पठति।
+    meaning:
+      en: The boy reads while going.
+      hi: बालक जाते हुए पढ़ता है।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गच्छन्
+      gloss:
+        en: going
+        hi: जाता हुआ
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: Satf
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: बालिका गच्छन्ती पठति।
+    meaning:
+      en: The girl reads while going.
+      hi: बालिका जाते हुए पढ़ती है।
+    words:
+    - sa: बालिका
+      gloss:
+        en: girl
+        hi: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गच्छन्ती
+      gloss:
+        en: going
+        hi: जाती हुई
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: Satf
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ती है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: शिष्यः सेवमानः वर्तते।
+    meaning:
+      en: The pupil abides serving.
+      hi: शिष्य सेवा करता हुआ रहता है।
+    words:
+    - sa: शिष्यः
+      gloss:
+        en: pupil
+        hi: शिष्य
+      check:
+        type: subanta
+        stem: शिष्य
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: सेवमानः
+      gloss:
+        en: serving
+        hi: सेवा करता हुआ
+      check:
+        type: krdanta
+        dhatu: सेव्
+        krt: SAnac
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वर्तते
+      gloss:
+        en: abides
+        hi: रहता है
+      check:
+        type: tinanta
+        dhatu: वृत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  term:
+    sa: शतृ / शानच्
+    meaning:
+      en: the “while doing” endings
+      hi: ‘करते हुए’ प्रत्यय
+- id: tb1
+  kind: table
+  title:
+    en: While doing
+    hi: करते हुए
+  depth: core
+  skills:
+  - krt.shatr
+  caption:
+    en: Root, “doing” in three genders
+    hi: धातु, तीनों लिंगों में ‘करता हुआ’
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Masculine
+    hi: पुंलिंग
+  - en: Feminine
+    hi: स्त्रीलिंग
+  - en: Neuter
+    hi: नपुंसक
+  rows:
+  - - sa: गम्
+    - sa: गच्छन्
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: Satf
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गच्छन्ती
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: Satf
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गच्छत्
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: Satf
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: पठ्
+    - sa: पठन्
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: Satf
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठन्ती
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: Satf
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठत्
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: Satf
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: कृ
+    - sa: कुर्वन्
+      check:
+        type: krdanta
+        dhatu: कृ
+        krt: Satf
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कुर्वती
+      check:
+        type: krdanta
+        dhatu: कृ
+        krt: Satf
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कुर्वत्
+      check:
+        type: krdanta
+        dhatu: कृ
+        krt: Satf
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: श्रु
+    - sa: शृण्वन्
+      check:
+        type: krdanta
+        dhatu: श्रु
+        krt: Satf
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: शृण्वती
+      check:
+        type: krdanta
+        dhatu: श्रु
+        krt: Satf
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: शृण्वत्
+      check:
+        type: krdanta
+        dhatu: श्रु
+        krt: Satf
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  note:
+    en: The masculine ends in {{-न्}}, the feminine in {{-न्ती}}, the neuter in {{-त्}}.
+    hi: पुंलिंग {{-न्}} पर, स्त्रीलिंग {{-न्ती}} पर, नपुंसक {{-त्}} पर समाप्त होता है।
+- id: tb2
+  kind: table
+  title:
+    en: For oneself
+    hi: अपने लिए
+  depth: core
+  skills:
+  - krt.shatr
+  caption:
+    en: The “-मान” form for ātmanepada roots
+    hi: आत्मनेपदी धातुओं का ‘-मान’ रूप
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Masculine
+    hi: पुंलिंग
+  - en: Feminine
+    hi: स्त्रीलिंग
+  - en: Neuter
+    hi: नपुंसक
+  rows:
+  - - sa: सेव्
+    - sa: सेवमानः
+      check:
+        type: krdanta
+        dhatu: सेव्
+        krt: SAnac
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: सेवमाना
+      check:
+        type: krdanta
+        dhatu: सेव्
+        krt: SAnac
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: सेवमानम्
+      check:
+        type: krdanta
+        dhatu: सेव्
+        krt: SAnac
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: वृत्
+    - sa: वर्तमानः
+      check:
+        type: krdanta
+        dhatu: वृत्
+        krt: SAnac
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वर्तमाना
+      check:
+        type: krdanta
+        dhatu: वृत्
+        krt: SAnac
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: वर्तमानम्
+      check:
+        type: krdanta
+        dhatu: वृत्
+        krt: SAnac
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  - - sa: लभ्
+    - sa: लभमानः
+      check:
+        type: krdanta
+        dhatu: लभ्
+        krt: SAnac
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: लभमाना
+      check:
+        type: krdanta
+        dhatu: लभ्
+        krt: SAnac
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: लभमानम्
+      check:
+        type: krdanta
+        dhatu: लभ्
+        krt: SAnac
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+  note:
+    en: '{{-मानः}}, {{-माना}}, {{-मानम्}}: like {{देव}}, {{लता}}, {{फल}}.'
+    hi: '{{-मानः}}, {{-माना}}, {{-मानम्}}: {{देव}}, {{लता}}, {{फल}} की तरह।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - krt.shatr
+  mode: choice
+  prompt:
+    en: “Going” (masculine). Which form?
+    hi: ‘जाता हुआ’ (पुंलिंग)। कौन-सा रूप?
+  explain:
+    en: '{{गच्छन्}}: while going.'
+    hi: '{{गच्छन्}}: जाते हुए।'
+  roman: after
+  options:
+  - sa: गतः
+  - sa: गत्वा
+  - correct: true
+    sa: गच्छन्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - krt.shatr
+  mode: type
+  prompt:
+    en: 'Say: “Reading” (masculine).'
+    hi: 'कहिए: ‘पढ़ता हुआ’ (पुंलिंग)।'
+  explain:
+    en: '{{पठन्}}.'
+    hi: '{{पठन्}}।'
+  roman: after
+  answers:
+  - पठन्
+  tiles:
+  - पठ
+  - न्
+  - पठि
+  - तः
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - krt.shatr
+  mode: match
+  prompt:
+    en: Join each root to its “while …” form.
+    hi: हर धातु को उसके ‘… हुए’ रूप से जोड़िए।
+  explain:
+    en: 'The class sign shows: {{गच्छ}}, {{कुर्व}}.'
+    hi: 'गण-चिह्न दिखता है: {{गच्छ}}, {{कुर्व}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: गम्
+    right:
+      sa: गच्छन्
+  - left:
+      sa: कृ
+    right:
+      sa: कुर्वन्
+  - left:
+      sa: श्रु
+    right:
+      sa: शृण्वन्
+  - left:
+      sa: दृश्
+    right:
+      sa: पश्यन्
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - krt.shatr
+  widget: mark_words
+  prompt:
+    en: Tap every “while …” word.
+    hi: हर ‘… हुए’ शब्द छुइए।
+  params:
+    passage:
+    - गच्छन्
+    - गतः
+    - पठन्
+    - पठितः
+    - सेवमानः
+    - सेवितः
+    targets:
+    - गच्छन्
+    - पठन्
+    - सेवमानः
+  roman: show
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - krt.shatr
+  mode: order
+  prompt:
+    en: 'Say: “The boy reads while going.”'
+    hi: 'कहिए: ‘बालक जाते हुए पढ़ता है।’'
+  explain:
+    en: '{{बालकः गच्छन् पठति}}.'
+    hi: '{{बालकः गच्छन् पठति}}।'
+  roman: after
+  tokens:
+  - बालकः
+  - गच्छन्
+  - पठति
+- id: p5
+  kind: practice
+  title:
+    en: Going
+    hi: जाते हुए
+  depth: core
+  skills:
+  - krt.shatr
+  mode: choice
+  prompt:
+    en: “The girl, going.” Which form agrees?
+    hi: ‘बालिका, जाती हुई।’ कौन-सा रूप मेल खाता है?
+  explain:
+    en: '{{गच्छन्ती}}: feminine.'
+    hi: '{{गच्छन्ती}}: स्त्रीलिंग।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“गच्छन्ती,” you say, and the hurrying figure slows, turns, and looks at you: a woman, with a bundle on her back and the beginning of a smile. “Going,” she says, and nods, and goes on across the clearing, no longer in a hurry. The paper-fan spirit folds himself closed, pleased, and unfolds again: “च. वा. अपि. एव.”'
+      hi: '“गच्छन्ती,” आप कहते हैं, और जल्दी वाली आकृति धीमी होती है, मुड़ती है, और आपको देखती है: एक स्त्री, पीठ पर गठरी और मुस्कान की शुरुआत लिए। “जा रही हूँ,” वह कहती है, सिर हिलाती है, और खुले स्थान को पार करती आगे बढ़ती है, अब जल्दी में नहीं। काग़ज़ी पंखे वाला भूत प्रसन्न होकर स्वयं को बन्द करता है और फिर खुलता है: “च। वा। अपि। एव।”'
+    failure:
+      en: 'The figure hurries on. The girl, going: {{गच्छन्ती}}.'
+      hi: 'आकृति जल्दी में आगे बढ़ती है। बालिका, जाती हुई: {{गच्छन्ती}}।'
+  options:
+  - sa: गच्छन्
+  - correct: true
+    sa: गच्छन्ती
+  - sa: गच्छत्
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's “while”
+    hi: पाणिनि का ‘हुए’
+  depth: panini
+  skills:
+  - krt.shatr
+  sutras:
+  - 3.2.124
+  - 7.1.78
+  - 6.4.14
+  body:
+    en: Sūtra 3.2.124, {{लटः शतृशानचावप्रथमासमानाधिकरणे}}, replaces the present endings with {{शतृ}} or {{शानच्}}, “while doing”, when the word is not in the first case with the verb. 7.1.78, {{नाभ्यस्ताच्छतुः}}, and 6.4.14, {{अत्वसन्तस्य चाधातोः}}, give the forms {{गच्छन्}} and {{गच्छत्}}.
+    hi: सूत्र 3.2.124, {{लटः शतृशानचावप्रथमासमानाधिकरणे}}, वर्तमान के प्रत्ययों की जगह {{शतृ}} या {{शानच्}} रखता है, ‘करते हुए’, जब शब्द क्रिया के साथ प्रथमा में न हो। 7.1.78, {{नाभ्यस्ताच्छतुः}}, और 6.4.14, {{अत्वसन्तस्य चाधातोः}}, {{गच्छन्}} और {{गच्छत्}} रूप देते हैं।
+- id: sum
+  kind: summary
+  title:
+    en: While doing
+    hi: करते हुए
+  depth: core
+  points:
+  - sa: गच्छन् · पठन् · कुर्वन्
+    text:
+      en: Going; reading; doing.
+      hi: जाता; पढ़ता; करता हुआ।
+  - sa: गच्छन्ती · गच्छत्
+    text:
+      en: Feminine and neuter.
+      hi: स्त्रीलिंग और नपुंसक।
+  - sa: सेवमानः · वर्तमानः
+    text:
+      en: For roots of the second set.
+      hi: दूसरे समूह की धातुओं के लिए।

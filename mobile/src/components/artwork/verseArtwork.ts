@@ -10,6 +10,15 @@ export type VerseArtworkEntry = {
 };
 const entries = manifest as Record<string, VerseArtworkEntry>;
 
+/** Explicit layout bounds prevent source pixel dimensions becoming native view dimensions. */
+export function containedArtworkFrame(width: number, height: number, imageWidth: number, imageHeight: number) {
+  if (width <= 0 || height <= 0 || imageWidth <= 0 || imageHeight <= 0) return { left: 0, top: 0, width: 0, height: 0 };
+  const inset = Math.min(12, width / 20, height / 20);
+  const scale = Math.min((width - inset * 2) / imageWidth, (height - inset * 2) / imageHeight);
+  const fittedWidth = imageWidth * scale, fittedHeight = imageHeight * scale;
+  return { left: (width - fittedWidth) / 2, top: (height - fittedHeight) / 2, width: fittedWidth, height: fittedHeight };
+}
+
 export function verseArtworkFor(ref: string): VerseArtworkEntry | undefined {
   const normalized = ref.normalize("NFC").trim().replace(/\s+/g, " ");
   const exact = entries[normalized];

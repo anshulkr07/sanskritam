@@ -1,0 +1,442 @@
+id: you.grid
+template: scene
+title:
+  en: The nine forms
+  hi: नौ रूप
+title_sa: पुरुषवचनानि
+minutes: 6
+teaches:
+- verb.persons
+needs:
+- pron.i-we
+- pron.you
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The grid on the water
+    hi: पानी पर तालिका
+  depth: core
+  image:
+    brief: A grid of nine glowing words laid out in light on the surface of the river, three rows by three columns, rippling; the boat drifting through it, you and Dādī leaning over the side to read it; the silvery spirit spreading his arms over the water.
+    alt:
+      en: A grid of nine glowing verb forms on the river water
+      hi: नदी के जल पर चमकती नौ क्रियाओं की तालिका
+    cast:
+    - you
+    - dadi
+    - shuka
+    - navika
+    - pratibimbaka
+    place: nauka
+    ratio: '4:3'
+    id: you-grid-s1
+  narration:
+    en: 'As the boat drifts, the reflection spirit ripples across the water and lays out a grid in light: three rows, three columns. In each box a verb form of {{पठ्}}. “Three persons, three numbers,” says Dādī. “Nine forms. Know the grid and you know every verb.”'
+    hi: 'नाव बहती है तो प्रतिबिम्ब-भूत पानी पर लहराता है और प्रकाश की एक तालिका बिछा देता है: तीन पंक्तियाँ, तीन स्तम्भ। हर खाने में {{पठ्}} का एक क्रियापद। दादी कहती हैं, “तीन पुरुष, तीन वचन। नौ रूप। तालिका जान ली तो हर क्रिया जान ली।”'
+- id: t1
+  kind: teach
+  title:
+    en: Three persons, three numbers
+    hi: तीन पुरुष, तीन वचन
+  depth: core
+  skills:
+  - verb.persons
+  sutras:
+  - 3.4.78
+  body:
+    en: 'Every verb has three persons (he/she/it, you, I) and three numbers (one, two, many): nine forms. The endings are {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}.'
+    hi: 'हर क्रिया के तीन पुरुष (वह, तुम, मैं) और तीन वचन (एक, दो, अनेक) होते हैं: नौ रूप। प्रत्यय हैं {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}।'
+  examples:
+  - sa: गच्छति
+    meaning:
+      en: he goes
+      hi: वह जाता है
+    check:
+      type: tinanta
+      dhatu: गम्
+      lakara: Lat
+      purusha: Prathama
+      vacana: Eka
+  - sa: गच्छसि
+    meaning:
+      en: you go
+      hi: तुम जाते हो
+    check:
+      type: tinanta
+      dhatu: गम्
+      lakara: Lat
+      purusha: Madhyama
+      vacana: Eka
+  - sa: गच्छामि
+    meaning:
+      en: I go
+      hi: मैं जाता हूँ
+    check:
+      type: tinanta
+      dhatu: गम्
+      lakara: Lat
+      purusha: Uttama
+      vacana: Eka
+- id: tb1
+  kind: table
+  title:
+    en: 'The grid: पठ्'
+    hi: 'तालिका: पठ्'
+  depth: core
+  skills:
+  - verb.persons
+  caption:
+    en: 'Present of {{पठ्}}: three persons by three numbers'
+    hi: '{{पठ्}} का वर्तमान: तीन पुरुष × तीन वचन'
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एक
+  - en: Two
+    hi: दो
+  - en: Many
+    hi: अनेक
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: पठति
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: पठतः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+    - sa: पठन्ति
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: पठसि
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+    - sa: पठथः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+    - sa: पठथ
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: पठामि
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+    - sa: पठावः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+    - sa: पठामः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+  note:
+    en: 'Row 1: he/she/it. Row 2: you. Row 3: I. The columns are always one, two, many.'
+    hi: 'पंक्ति 1: वह। पंक्ति 2: तुम। पंक्ति 3: मैं। स्तम्भ सदा एक, दो, अनेक।'
+- id: tb2
+  kind: table
+  title:
+    en: 'The grid: गम्'
+    hi: 'तालिका: गम्'
+  depth: core
+  skills:
+  - verb.persons
+  caption:
+    en: 'Present of {{गम्}}: same endings, a changed stem'
+    hi: '{{गम्}} का वर्तमान: वही प्रत्यय, बदला मूल'
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एक
+  - en: Two
+    hi: दो
+  - en: Many
+    hi: अनेक
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: गच्छति
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: गच्छतः
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+    - sa: गच्छन्ति
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: गच्छसि
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+    - sa: गच्छथः
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+    - sa: गच्छथ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: गच्छामि
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+    - sa: गच्छावः
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+    - sa: गच्छामः
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.persons
+  widget: form_explorer
+  prompt:
+    en: Pick a person and a number and read the form.
+    hi: पुरुष और वचन चुनिए और रूप पढ़िए।
+  params:
+    roots:
+    - dhatu: पठ्
+      lakaras:
+      - Lat
+    - dhatu: गम्
+      lakaras:
+      - Lat
+    - dhatu: वद्
+      lakaras:
+      - Lat
+  roman: show
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.persons
+  mode: choice
+  prompt:
+    en: Which form is “you two read”?
+    hi: ‘तुम दोनों पढ़ते हो’ का रूप कौन-सा है?
+  explain:
+    en: 'Second person, two: {{पठथः}}.'
+    hi: 'मध्यम पुरुष, दो: {{पठथः}}।'
+  roman: after
+  options:
+  - sa: पठतः
+  - correct: true
+    sa: पठथः
+  - sa: पठावः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.persons
+  mode: match
+  prompt:
+    en: Join each form to its person and number.
+    hi: हर रूप को उसके पुरुष और वचन से जोड़िए।
+  explain:
+    en: '{{ति}} he, {{सि}} you, {{मि}} I, {{मः}} we.'
+    hi: '{{ति}} वह, {{सि}} तुम, {{मि}} मैं, {{मः}} हम।'
+  roman: after
+  pairs:
+  - left:
+      sa: पठति
+    right:
+      text:
+        en: he reads
+        hi: वह पढ़ता है
+  - left:
+      sa: पठसि
+    right:
+      text:
+        en: you read
+        hi: तुम पढ़ते हो
+  - left:
+      sa: पठामि
+    right:
+      text:
+        en: I read
+        hi: मैं पढ़ता हूँ
+  - left:
+      sa: पठामः
+    right:
+      text:
+        en: we read
+        hi: हम पढ़ते हैं
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.persons
+  mode: type
+  prompt:
+    en: Build “we two go”.
+    hi: ‘हम दोनों जाते हैं’ बनाइए।
+  explain:
+    en: '{{गच्छा}} + {{वः}}: {{गच्छावः}}; the {{अ}} lengthens before {{वः}} and {{मः}}.'
+    hi: '{{गच्छा}} + {{वः}}: {{गच्छावः}}; {{वः}} और {{मः}} से पहले {{अ}} दीर्घ हो जाता है।'
+  roman: after
+  answers:
+  - गच्छावः
+  tiles:
+  - गच्छा
+  - वः
+  - तः
+  - मः
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - verb.persons
+  widget: mark_words
+  prompt:
+    en: Tap every first-person form (“I” or “we”).
+    hi: हर उत्तम पुरुष रूप (‘मैं’ या ‘हम’) को छुइए।
+  params:
+    passage:
+    - पठामि
+    - पठति
+    - पठावः
+    - पठथः
+    - पठामः
+    - पठन्ति
+    targets:
+    - पठामि
+    - पठावः
+    - पठामः
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: Fill the grid
+    hi: तालिका भरिए
+  depth: core
+  skills:
+  - verb.persons
+  mode: choice
+  prompt:
+    en: 'The reflection asks: “How do you say ‘they read’?”'
+    hi: 'प्रतिबिम्ब पूछता है: “‘वे पढ़ते हैं’ कैसे कहोगे?”'
+  explain:
+    en: 'Third person, many: {{पठन्ति}}.'
+    hi: 'प्रथम पुरुष, अनेक: {{पठन्ति}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: Eight boxes glow. You name the ninth and the grid lights from edge to edge. The reflection spirit shivers with delight; for the first time he has a shape of his own.
+      hi: आठ खाने चमकते हैं। आप नौवें का नाम लेते हैं और तालिका किनारे से किनारे तक जगमगा उठती है। प्रतिबिम्ब-भूत ख़ुशी से सिहरता है; पहली बार उसका अपना एक आकार है।
+    failure:
+      en: 'A box stays dark. Third person, many: look for {{न्ति}}.'
+      hi: 'एक खाना अँधेरा रहता है। प्रथम पुरुष, अनेक: {{न्ति}} खोजिए।'
+  options:
+  - correct: true
+    sa: पठन्ति
+  - sa: पठथ
+  - sa: पठामः
+- id: sum
+  kind: summary
+  title:
+    en: The nine forms
+    hi: नौ रूप
+  depth: core
+  points:
+  - sa: ति तः न्ति · सि थः थ · मि वः मः
+    text:
+      en: Three persons, three numbers.
+      hi: तीन पुरुष, तीन वचन।
+  - sa: पठति पठसि पठामि
+    text:
+      en: He, you, I, in the singular.
+      hi: वह, तुम, मैं, एकवचन में।
+  - text:
+      en: The grid works for every verb.
+      hi: तालिका हर क्रिया पर चलती है।

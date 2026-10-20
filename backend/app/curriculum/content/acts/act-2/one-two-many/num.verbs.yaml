@@ -1,0 +1,375 @@
+id: num.verbs
+template: scene
+title:
+  en: One, two and many readers
+  hi: एक, दो और अनेक पढ़ने वाले
+title_sa: क्रियावचनम्
+minutes: 6
+teaches:
+- verb.pres-3-du-pl
+needs:
+- num.dual
+- num.plural
+- verb.pres-3sg
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Readers on the steps
+    hi: सीढ़ियों पर पढ़ने वाले
+  depth: core
+  image:
+    brief: 'Three groups of readers on the ghat steps: one boy reading alone, two girls sharing a palm leaf, and a row of children reading aloud together; the small grey-blue spirit leaning in with a hand cupped to his ear.'
+    alt:
+      en: One reader, two readers and a row of readers on the ghat steps
+      hi: एक पाठक, दो पाठक और पाठकों की पंक्ति
+    cast:
+    - you
+    - dadi
+    - shuka
+    - bakau
+    place: naditira
+    ratio: '4:3'
+    id: num-verbs-s1
+  narration:
+    en: 'Along the steps sit readers. One reads alone. Two sit together over one leaf. A whole class reads aloud in a row. The spirit listens to their voices and notices something: the sound at the end of the verb changes with how many there are.'
+    hi: 'सीढ़ियों पर पाठक बैठे हैं। एक अकेला पढ़ता है। दो एक पत्र पर साथ बैठे हैं। पूरी कक्षा एक पंक्ति में ज़ोर से पढ़ती है। भूत उनकी आवाज़ें सुनता है और कुछ ध्यान देता है: क्रिया के अन्त की ध्वनि बदलती है जैसे ही संख्या बदलती है।'
+- id: t1
+  kind: teach
+  title:
+    en: The verb counts, too
+    hi: क्रिया भी गिनती है
+  depth: core
+  skills:
+  - verb.pres-3-du-pl
+  sutras:
+  - 3.4.78
+  body:
+    en: 'The verb has three endings for he, she or it: {{ति}} for one doer, {{तः}} for two, {{न्ति}} for many. {{पठति}} (he reads), {{पठतः}} (the two read), {{पठन्ति}} (they read).'
+    hi: 'वह के लिए क्रिया के तीन प्रत्यय हैं: एक कर्ता के लिए {{ति}}, दो के लिए {{तः}}, अनेक के लिए {{न्ति}}। {{पठति}} (वह पढ़ता है), {{पठतः}} (दो पढ़ते हैं), {{पठन्ति}} (वे पढ़ते हैं)।'
+  steps:
+  - sa: पठति
+    label:
+      en: one reads
+      hi: एक पढ़ता है
+  - sa: पठतः
+    label:
+      en: two read
+      hi: दो पढ़ते हैं
+  - sa: पठन्ति
+    label:
+      en: many read
+      hi: अनेक पढ़ते हैं
+- id: tb1
+  kind: table
+  title:
+    en: Three verbs, three numbers
+    hi: तीन क्रियाएँ, तीन वचन
+  depth: core
+  skills:
+  - verb.pres-3-du-pl
+  caption:
+    en: He, she or it, in the three numbers
+    hi: वह, तीनों वचनों में
+  columns:
+  - en: Root
+    hi: धातु
+  - en: One
+    hi: एक
+  - en: Two
+    hi: दो
+  - en: Many
+    hi: अनेक
+  rows:
+  - - sa: पठ्
+    - sa: पठति
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: पठतः
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+      highlight: true
+    - sa: पठन्ति
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - - sa: लिख्
+    - sa: लिखति
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: लिखतः
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+      highlight: true
+    - sa: लिखन्ति
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - - sa: हस्
+    - sa: हसति
+      check:
+        type: tinanta
+        dhatu: हस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: हसतः
+      check:
+        type: tinanta
+        dhatu: हस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+      highlight: true
+    - sa: हसन्ति
+      check:
+        type: tinanta
+        dhatu: हस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - - sa: चल्
+    - sa: चलति
+      check:
+        type: tinanta
+        dhatu: चल्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: चलतः
+      check:
+        type: tinanta
+        dhatu: चल्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+      highlight: true
+    - sa: चलन्ति
+      check:
+        type: tinanta
+        dhatu: चल्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - - sa: वद्
+    - sa: वदति
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: वदतः
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+      highlight: true
+    - sa: वदन्ति
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  note:
+    en: 'One {{ति}}, two {{तः}}, many {{न्ति}}: the same three endings for every verb you know.'
+    hi: 'एक {{ति}}, दो {{तः}}, अनेक {{न्ति}}: हर परिचित क्रिया के लिए वही तीन प्रत्यय।'
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.pres-3-du-pl
+  widget: form_explorer
+  prompt:
+    en: Switch between one, two and many and watch the ending change.
+    hi: एक, दो और अनेक के बीच बदलिए और देखिए कि प्रत्यय कैसे बदलता है।
+  params:
+    roots:
+    - dhatu: पठ्
+      lakaras:
+      - Lat
+    - dhatu: लिख्
+      lakaras:
+      - Lat
+    vacanas:
+    - Eka
+    - Dvi
+    - Bahu
+  roman: show
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.pres-3-du-pl
+  mode: choice
+  prompt:
+    en: Two girls read together. Which verb?
+    hi: दो बालिकाएँ साथ पढ़ती हैं। कौन-सी क्रिया?
+  explain:
+    en: 'Two doers: {{पठतः}}.'
+    hi: 'दो कर्ता: {{पठतः}}।'
+  roman: after
+  options:
+  - sa: पठति
+  - correct: true
+    sa: पठतः
+  - sa: पठन्ति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.pres-3-du-pl
+  mode: match
+  prompt:
+    en: Join each verb to its number.
+    hi: हर क्रिया को उसके वचन से जोड़िए।
+  explain:
+    en: '{{ति}} one, {{तः}} two, {{न्ति}} many.'
+    hi: '{{ति}} एक, {{तः}} दो, {{न्ति}} अनेक।'
+  roman: after
+  pairs:
+  - left:
+      sa: पठति
+    right:
+      text:
+        en: one
+        hi: एक
+  - left:
+      sa: पठतः
+    right:
+      text:
+        en: two
+        hi: दो
+  - left:
+      sa: पठन्ति
+    right:
+      text:
+        en: many
+        hi: अनेक
+  - left:
+      sa: हसन्ति
+    right:
+      text:
+        en: many
+        hi: अनेक
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.pres-3-du-pl
+  mode: type
+  prompt:
+    en: Build “the two write”.
+    hi: ‘दो लिखते हैं’ बनाइए।
+  explain:
+    en: '{{लिख}} + {{तः}}: {{लिखतः}}.'
+    hi: '{{लिख}} + {{तः}}: {{लिखतः}}।'
+  roman: after
+  answers:
+  - लिखतः
+  tiles:
+  - लिख
+  - तः
+  - ति
+  - न्ति
+- id: e2
+  kind: explore
+  depth: core
+  skills:
+  - verb.pres-3-du-pl
+  widget: mark_words
+  prompt:
+    en: Tap every verb for many doers.
+    hi: अनेक कर्ताओं की हर क्रिया को छुइए।
+  params:
+    passage:
+    - पठति
+    - हसन्ति
+    - लिखतः
+    - वदन्ति
+    - चलति
+    - गच्छन्ति
+    targets:
+    - हसन्ति
+    - वदन्ति
+    - गच्छन्ति
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: Call the class
+    hi: कक्षा को पुकारिए
+  depth: core
+  skills:
+  - verb.pres-3-du-pl
+  mode: choice
+  prompt:
+    en: Which verb means “they go”?
+    hi: ‘वे जाते हैं’ के लिए कौन-सी क्रिया है?
+  explain:
+    en: 'Many doers: {{गच्छन्ति}}.'
+    hi: 'अनेक कर्ता: {{गच्छन्ति}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “गच्छन्ति,” you say, and the whole row of readers rises and files off along the ghat, their voices fading in a long happy chain.
+      hi: “गच्छन्ति,” आप कहते हैं, और पाठकों की पूरी पंक्ति उठकर घाट के किनारे-किनारे चल पड़ती है, उनकी आवाज़ें एक लम्बी, ख़ुश कड़ी में धीमी होती हुई।
+    failure:
+      en: 'The readers stay seated. Many: look for {{न्ति}}.'
+      hi: 'पाठक बैठे रहते हैं। अनेक: {{न्ति}} खोजिए।'
+  options:
+  - sa: गच्छति
+  - sa: गच्छतः
+  - correct: true
+    sa: गच्छन्ति
+- id: sum
+  kind: summary
+  title:
+    en: The verb counts
+    hi: क्रिया गिनती है
+  depth: core
+  points:
+  - sa: पठति · पठतः · पठन्ति
+    text:
+      en: One, two, many.
+      hi: एक, दो, अनेक।
+  - sa: ति · तः · न्ति
+    text:
+      en: The three endings.
+      hi: तीन प्रत्यय।
+  - text:
+      en: The same for every verb.
+      hi: हर क्रिया के लिए वही।

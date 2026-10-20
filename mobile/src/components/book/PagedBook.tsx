@@ -22,6 +22,8 @@ import { useQuery } from "../../hooks/useQuery";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 import { useTypeScale } from "../../hooks/useTypeScale";
 import { haptics } from "../../services/haptics";
+import { useBookActivity } from "../../hooks/useBookActivity";
+import { pageId } from "../../services/bookActivity";
 import { getReadingChapter, getReadingPosition } from "../../services/readingProgress";
 import { color, space } from "../../theme";
 import { plain } from "../../utils/text";
@@ -100,6 +102,8 @@ export function PagedBookIndex({
   onBack: () => void;
   onOpenChapter: (chapter: string, index: number) => void;
 }) {
+  const activity = useBookActivity()[text.slug] ?? [];
+  const readCount = activity.filter(page => page.read).length;
   const { sized } = useTypeScale();
   const q = useQuery(`paged-index-${text.slug}`, () => api.canonChapters(text.slug));
   const data = q.data;
@@ -178,7 +182,7 @@ export function PagedBookIndex({
     for (let i = 0; i < nowAt; i++) before += chapters[i]?.count ?? 0;
     return before + Math.max(0, resume.index);
   }, [chapters, nowAt, resume]);
-  const started = position > 0;
+  const started = position > 0 || readCount > 0;
 
   const rowsOf = useCallback(
     (c: PagedChapter): Row[] => {
@@ -287,14 +291,14 @@ export function PagedBookIndex({
             {started && (
               <View style={styles.progress}>
                 <View style={styles.progressRow}>
-                  <Text style={styles.progressPct}>{Math.round((position / Math.max(1, total)) * 100)}% read</Text>
+                  <Text style={styles.progressPct}>{Math.round((readCount / Math.max(1, total)) * 100)}% read</Text>
                   {many && nowAt >= 0 && (
                     <Text style={styles.progressWhere}>
                       Chapter {nowAt + 1} of {chapters.length}
                     </Text>
                   )}
                 </View>
-                <ProgressLine frac={position / Math.max(1, total)} />
+                <ProgressLine frac={readCount / Math.max(1, total)} />
               </View>
             )}
 
@@ -320,7 +324,8 @@ export function PagedBookIndex({
           if (!many) return section.partFirst ? <Text style={styles.sectionLabel}>{section.label}</Text> : null;
           const label = c.chapter ? `Chapter ${c.chapter}` : "Verses";
           const i = order.indexOf(c.chapter);
-          const state = !started || nowAt < 0 ? "ahead" : i < nowAt ? "done" : i === nowAt ? "now" : "ahead";
+          const done = activity.filter(page => page.chapter === c.chapter && page.read).length >= c.count && c.count > 0;
+          const state = done ? "done" : started && i === nowAt ? "now" : "ahead";
           const isOpen = openCh === c.chapter;
           return (
             <>
@@ -376,6 +381,7 @@ export function PagedBookIndex({
             );
           }
           const here = started && item.chapter === resume?.chapter && item.at === resume.index;
+          const mark = activity.find(page => page.chapter === item.chapter && page.id === pageId(item.v));
           const { nums } = parseRef(item.v.source_ref);
           const num = nums.length > 0 ? nums[nums.length - 1] : item.at + 1;
           return (
@@ -385,16 +391,18 @@ export function PagedBookIndex({
                 onOpenChapter(item.chapter, item.at);
               }}
               accessibilityRole="button"
-              accessibilityLabel={`${item.v.source_ref}. ${firstLine(item.v.devanagari)}${here ? ". You are here." : ""}`}
-              style={[styles.verse, { marginLeft: (many ? 48 : 0) - (here ? 8 : 0) }, here && styles.verseHere]}
+              accessibilityLabel={`${item.v.source_ref}. ${firstLine(item.v.devanagari)}${here ? ". You are here." : ""}${mark?.read ? ". Already read." : ""}${mark?.bookmarked ? ". Bookmarked." : ""}`}
+              style={[styles.verse, { marginLeft: (many ? 48 : 0) - (here ? 8 : 0) }, here && styles.verseHere, mark?.read && { backgroundColor: "#EAF0E8", borderRadius: 8 }]}
             >
               <Text style={[styles.verseNum, here && { color: T.action }]}>{num}</Text>
               <Text style={[sa(16), styles.verseLine]} numberOfLines={1}>
                 {firstLine(item.v.devanagari)}
               </Text>
+              {mark?.read && <Ionicons name="checkmark-circle" size={16} color={T.action} />}
+              {mark?.bookmarked && <Ionicons name="bookmark" size={16} color={T.action} />}
               {here && (
                 <View style={styles.hereTag}>
-                  <Ionicons name="bookmark" size={12} color={T.action} />
+                  <Ionicons name="location-outline" size={12} color={T.action} />
                   <Text style={styles.hereText}>Here</Text>
                 </View>
               )}

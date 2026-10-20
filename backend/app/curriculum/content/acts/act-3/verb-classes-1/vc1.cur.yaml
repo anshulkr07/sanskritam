@@ -1,0 +1,415 @@
+id: vc1.cur
+template: scene
+title:
+  en: 'Class 10: चोरयति'
+  hi: 'गण 10: चोरयति'
+title_sa: चोरयति कथयति
+minutes: 6
+teaches:
+- verb.class-10
+needs:
+- verb.class-1
+- verb.class-4
+- verb.class-6
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The last drawer
+    hi: अन्तिम दराज़
+  depth: core
+  image:
+    brief: A very small quick hand reaching out of an open drawer in the little spirit's body and snatching a pencil from behind his ear; the spirit squealing; the Vetāla amused; Dādī and Śuka laughing; firelight.
+    alt:
+      en: A tiny hand from a drawer snatches a pencil from behind a startled spirit's ear
+      hi: दराज़ से निकला नन्हा हाथ चौंके भूत के कान के पीछे से पेंसिल छीनता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - dhatuka
+    place: smashana
+    ratio: '4:3'
+    id: vc1-cur-s1
+  narration:
+    en: 'The tenth drawer is empty, and the little ledger-spirit looks at it, ashamed. “कथयति,” the Vetāla says: “he tells.” A tiny, quick hand reaches out of the drawer, takes the pencil from behind the spirit''s ear, and snatches it back inside. “चोरयति,” says the Vetāla, amused. “He steals.” The ledger-spirit squeals. “The tenth class,” says Dādī, “adds -अय-.”'
+    hi: 'दसवाँ दराज़ ख़ाली है, और नन्हा बही-भूत उसे लज्जित होकर देखता है। “कथयति,” वेताल कहता है: “वह कहता है।” दराज़ से एक नन्हा तेज़ हाथ निकलता है, भूत के कान के पीछे से पेंसिल उठाता है और भीतर खींच लेता है। “चोरयति,” वेताल मनोरंजन से कहता है। “वह चुराता है।” बही-भूत चीख पड़ता है। “दसवाँ गण,” दादी कहती हैं, “-अय- जोड़ता है।”'
+- id: t1
+  kind: teach
+  title:
+    en: The sign -अय-
+    hi: चिह्न -अय-
+  depth: core
+  skills:
+  - verb.class-10
+  body:
+    en: 'Class 10, {{चुरादि}}, adds {{-अय-}} after the root: {{चुर्}} gives {{चोरयति}} (steals), {{कथ्}} gives {{कथयति}} (tells), {{चिन्त्}} gives {{चिन्तयति}} (thinks), {{पूज्}} gives {{पूजयति}} (honours), {{रच्}} gives {{रचयति}} (composes), {{गण्}} gives {{गणयति}} (counts). A short middle vowel is strengthened.'
+    hi: 'गण 10, {{चुरादि}}, धातु के बाद {{-अय-}} जोड़ता है: {{चुर्}} से {{चोरयति}} (चुराता है), {{कथ्}} से {{कथयति}} (कहता है), {{चिन्त्}} से {{चिन्तयति}} (सोचता है), {{पूज्}} से {{पूजयति}} (पूजता है), {{रच्}} से {{रचयति}} (रचता है), {{गण्}} से {{गणयति}} (गिनता है)। छोटा मध्य स्वर बलवान् होता है।'
+- id: tb1
+  kind: table
+  title:
+    en: Class 10 roots
+    hi: गण 10 की धातुएँ
+  depth: core
+  skills:
+  - verb.class-10
+  caption:
+    en: Root, meaning and “he …”
+    hi: धातु, अर्थ और ‘वह …’
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Meaning
+    hi: अर्थ
+  - en: He
+    hi: वह
+  rows:
+  - - sa: चुर्
+    - text:
+        en: steal
+        hi: चुराना
+    - sa: चोरयति
+      check:
+        type: tinanta
+        dhatu: चुर्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Curadi
+  - - sa: कथ्
+    - text:
+        en: tell
+        hi: कहना
+    - sa: कथयति
+      check:
+        type: tinanta
+        dhatu: कथ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Curadi
+  - - sa: चिन्त्
+    - text:
+        en: think
+        hi: सोचना
+    - sa: चिन्तयति
+      check:
+        type: tinanta
+        dhatu: चिन्त्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Curadi
+  - - sa: पूज्
+    - text:
+        en: honour
+        hi: पूजना
+    - sa: पूजयति
+      check:
+        type: tinanta
+        dhatu: पूज्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Curadi
+  - - sa: रच्
+    - text:
+        en: compose
+        hi: रचना
+    - sa: रचयति
+      check:
+        type: tinanta
+        dhatu: रच्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Curadi
+  - - sa: गण्
+    - text:
+        en: count
+        hi: गिनना
+    - sa: गणयति
+      check:
+        type: tinanta
+        dhatu: गण्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Curadi
+  - - sa: पाल्
+    - text:
+        en: protect
+        hi: पालना
+    - sa: पालयति
+      check:
+        type: tinanta
+        dhatu: पाल्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Curadi
+  note:
+    en: '{{चुर्}} has a short {{उ}}, so it is strengthened to {{चोर्}}; {{पूज्}} has a long {{ऊ}} and stays.'
+    hi: '{{चुर्}} में छोटा {{उ}} है, इसलिए {{चोर्}} हो जाता है; {{पूज्}} में दीर्घ {{ऊ}} है, इसलिए वैसा ही रहता है।'
+- id: tb2
+  kind: table
+  title:
+    en: 'चुर्: all persons'
+    hi: 'चुर्: सभी पुरुष'
+  depth: core
+  skills:
+  - verb.class-10
+  caption:
+    en: “He steals, you steal, I steal”
+    hi: ‘वह चुराता है, तुम चुराते हो, मैं चुराता हूँ’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: चोरयति
+      check:
+        type: tinanta
+        dhatu: चुर्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Curadi
+      highlight: true
+    - sa: चोरयतः
+      check:
+        type: tinanta
+        dhatu: चुर्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+        gana: Curadi
+    - sa: चोरयन्ति
+      check:
+        type: tinanta
+        dhatu: चुर्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+        gana: Curadi
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: चोरयसि
+      check:
+        type: tinanta
+        dhatu: चुर्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+        gana: Curadi
+    - sa: चोरयथः
+      check:
+        type: tinanta
+        dhatu: चुर्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+        gana: Curadi
+    - sa: चोरयथ
+      check:
+        type: tinanta
+        dhatu: चुर्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+        gana: Curadi
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: चोरयामि
+      check:
+        type: tinanta
+        dhatu: चुर्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+        gana: Curadi
+    - sa: चोरयावः
+      check:
+        type: tinanta
+        dhatu: चुर्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+        gana: Curadi
+    - sa: चोरयामः
+      check:
+        type: tinanta
+        dhatu: चुर्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+        gana: Curadi
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-10
+  mode: choice
+  prompt:
+    en: “He tells.” Which form?
+    hi: ‘वह कहता है।’ कौन-सा रूप?
+  explain:
+    en: '{{कथयति}}: {{कथ्}} + {{-अय-}}.'
+    hi: '{{कथयति}}: {{कथ्}} + {{-अय-}}।'
+  roman: after
+  options:
+  - sa: कथति
+  - correct: true
+    sa: कथयति
+  - sa: कथ्यति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-10
+  mode: type
+  prompt:
+    en: 'Say: “He steals.”'
+    hi: 'कहिए: ‘वह चुराता है।’'
+  explain:
+    en: '{{चोरयति}}.'
+    hi: '{{चोरयति}}।'
+  roman: after
+  answers:
+  - चोरयति
+  tiles:
+  - चोर
+  - यति
+  - चुर
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-10
+  mode: match
+  prompt:
+    en: Join each root to its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+  explain:
+    en: '{{-अय-}} in each.'
+    hi: हर एक में {{-अय-}}।
+  roman: after
+  pairs:
+  - left:
+      sa: चुर्
+    right:
+      sa: चोरयति
+  - left:
+      sa: कथ्
+    right:
+      sa: कथयति
+  - left:
+      sa: पूज्
+    right:
+      sa: पूजयति
+  - left:
+      sa: गण्
+    right:
+      sa: गणयति
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.class-10
+  widget: mark_words
+  prompt:
+    en: Tap every class 10 verb (the ones with {{-अय-}}).
+    hi: गण 10 की हर क्रिया (जिनमें {{-अय-}} है) छुइए।
+  params:
+    passage:
+    - चोरयति
+    - भवति
+    - कथयति
+    - नृत्यति
+    - पूजयति
+    - तुदति
+    targets:
+    - चोरयति
+    - कथयति
+    - पूजयति
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: Drawer ten
+    hi: दसवाँ दराज़
+  depth: core
+  skills:
+  - verb.class-10
+  mode: choice
+  prompt:
+    en: “He honours.” Which form?
+    hi: ‘वह पूजता है।’ कौन-सा रूप?
+  explain:
+    en: '{{पूजयति}}: the long {{ऊ}} stays.'
+    hi: '{{पूजयति}}: दीर्घ {{ऊ}} वैसा ही रहता है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“पूजयति,” you say, and the tiny quick hand sets the pencil gently on the stone, bows its fingers, and withdraws. The tenth drawer fills, slowly, with ten small bright seeds, one for each class. “All ten,” whispers the ledger-spirit, shutting each drawer in turn: click, click, click.'
+      hi: '“पूजयति,” आप कहते हैं, और नन्हा तेज़ हाथ पेंसिल को पत्थर पर धीरे से रखता है, उँगलियाँ झुकाता है और लौट जाता है। दसवाँ दराज़ धीरे-धीरे दस नन्हे चमकीले बीजों से भर जाता है, हर गण के लिए एक। “सब दस,” बही-भूत फुसफुसाता है, हर दराज़ को बारी-बारी बन्द करते हुए: खट, खट, खट।'
+    failure:
+      en: The tiny hand keeps the pencil. {{पूज्}} becomes {{पूजयति}}.
+      hi: नन्हा हाथ पेंसिल रखे रहता है। {{पूज्}} से {{पूजयति}} बनता है।
+  options:
+  - sa: पूजति
+  - sa: पोजयति
+  - correct: true
+    sa: पूजयति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's {{णिच्}}
+    hi: पाणिनि का {{णिच्}}
+  depth: panini
+  skills:
+  - verb.class-10
+  sutras:
+  - 3.1.25
+  - 7.3.86
+  body:
+    en: 'Sūtra 3.1.25, {{सत्यापपाशरूपवीणातूलश्लोकसेनालोमत्वचवर्मवर्णचूर्णचुरादिभ्यो णिच्}}, adds {{णिच्}}, which becomes {{-इ-}} and then {{-अय-}}. 7.3.86, {{पुगन्तलघूपधस्य च}}, strengthens a short middle vowel: {{चुर्}} becomes {{चोर्}}. So {{चोर + अय + ति}}: {{चोरयति}}.'
+    hi: 'सूत्र 3.1.25, {{सत्यापपाशरूपवीणातूलश्लोकसेनालोमत्वचवर्मवर्णचूर्णचुरादिभ्यो णिच्}}, {{णिच्}} जोड़ता है, जो {{-इ-}} और फिर {{-अय-}} बनता है। 7.3.86, {{पुगन्तलघूपधस्य च}}, छोटे मध्य स्वर को बलवान् करता है: {{चुर्}} से {{चोर्}}। इस प्रकार {{चोर + अय + ति}}: {{चोरयति}}।'
+- id: sum
+  kind: summary
+  title:
+    en: Class 10
+    hi: गण 10
+  depth: core
+  points:
+  - sa: चोरयति · कथयति
+    text:
+      en: He steals; he tells.
+      hi: वह चुराता है; वह कहता है।
+  - sa: धातु + अय + ति
+    text:
+      en: The sign {{-अय-}}.
+      hi: चिह्न {{-अय-}}।
+  - text:
+      en: A short middle vowel is strengthened.
+      hi: छोटा मध्य स्वर बलवान् होता है।

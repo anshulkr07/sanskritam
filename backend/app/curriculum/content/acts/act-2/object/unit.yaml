@@ -1,0 +1,45 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: object
+title:
+  en: The object
+  hi: कर्म
+title_sa: कर्म
+status: ready
+episode:
+  summary:
+    en: In the market everyone wants something. You learn the object, the second case, and how to ask and say no. In a spice seller's stall, the second leaf turns up.
+    hi: बाज़ार में हर किसी को कुछ चाहिए। आप कर्म, यानी द्वितीया विभक्ति, और प्रश्न पूछना तथा मना करना सीखते हैं। एक मसाले वाले की दुकान में दूसरा पत्र मिलता है।
+  beats:
+  - 'रामः फलं खादति: what is eaten takes the second case.'
+  - 'Where to? ग्रामं गच्छति: the goal takes it too.'
+  - 'Questions with किम्, कुत्र, कदा; no with न. The second leaf: the mouse merchant''s tale.'
+skills:
+- id: case.acc
+  title:
+    en: 'The object: second case'
+    hi: 'कर्म: द्वितीया'
+  sutras:
+  - 2.3.2
+  - 1.4.49
+- id: case.acc-goal
+  title:
+    en: 'Going to: the goal in the second case'
+    hi: 'गन्तव्य: द्वितीया'
+- id: sent.questions
+  title:
+    en: 'Asking: किम्, कः, कुत्र, कदा, कथम्'
+    hi: 'प्रश्न: किम्, कः, कुत्र, कदा, कथम्'
+- id: sent.negation
+  title:
+    en: 'Saying no: न'
+    hi: 'निषेध: न'
+lessons:
+- object.what
+- object.where-to
+- object.ask
+- object.no
+planned: []
+ghost: haridraka
+revision: object.revision
+check: object.check

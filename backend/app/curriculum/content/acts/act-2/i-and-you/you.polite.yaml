@@ -1,0 +1,295 @@
+id: you.polite
+template: scene
+title:
+  en: Speaking to elders
+  hi: बड़ों से बात
+title_sa: भवान्
+minutes: 6
+teaches:
+- pron.polite
+needs:
+- pron.you
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: An elder on board
+    hi: नाव पर एक बुज़ुर्ग
+  depth: core
+  image:
+    brief: A white-bearded old man being helped into the boat at a bend of the river by the boatman, Dādī whispering to you with a finger raised, Śuka bowing his head, the silver spirit peering over the side.
+    alt:
+      en: An old man is helped into the boat while Dādī whispers advice
+      hi: बुज़ुर्ग को नाव में चढ़ाते नाविक और कान में सलाह देती दादी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - navika
+    - pratibimbaka
+    place: nauka
+    ratio: '4:3'
+    id: you-polite-s1
+  narration:
+    en: At a bend a white-bearded old man asks for a lift. The boatman helps him in. “Do not say त्वम् to him,” whispers Dādī. “Say भवान्, ‘your honour’. It looks like ‘you’, but it takes the verb for ‘he’.” The old man smiles into his beard.
+    hi: एक मोड़ पर सफ़ेद दाढ़ी वाले एक बुज़ुर्ग नाव में बैठने के लिए पूछते हैं। नाविक उन्हें चढ़ाता है। दादी फुसफुसाती हैं, “उनसे त्वम् मत कहना। कहो भवान्, ‘आप’। यह ‘तुम’ जैसा दिखता है, पर इसके साथ ‘वह’ की क्रिया लगती है।” बुज़ुर्ग दाढ़ी में मुस्कुराते हैं।
+- id: t1
+  kind: teach
+  title:
+    en: '{{भवान्}}: your honour'
+    hi: '{{भवान्}}: आप'
+  depth: core
+  skills:
+  - pron.polite
+  body:
+    en: 'To someone you respect, say {{भवान्}} (to a man) or {{भवती}} (to a woman) instead of {{त्वम्}}. They mean “you”, but the verb is the third person: {{भवान् पठति}}.'
+    hi: 'जिनका आप आदर करते हैं उनसे {{त्वम्}} की जगह {{भवान्}} (पुरुष से) या {{भवती}} (स्त्री से) कहिए। अर्थ ‘आप’ है, पर क्रिया प्रथम पुरुष की लगती है: {{भवान् पठति}}।'
+  examples:
+  - sa: भवान् पठति।
+    meaning:
+      en: You (sir) read.
+      hi: आप पढ़ते हैं।
+    words:
+    - sa: भवान्
+      gloss:
+        en: you (to a man, polite)
+        hi: आप (पुरुष से, आदरार्थ)
+    - sa: पठति
+      gloss:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: भवती गच्छति।
+    meaning:
+      en: You (madam) go.
+      hi: आप जाती हैं।
+    words:
+    - sa: भवती
+      gloss:
+        en: you (to a woman, polite)
+        hi: आप (स्त्री से, आदरार्थ)
+      check:
+        type: subanta
+        stem: भवती
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गच्छति
+      gloss:
+        en: go
+        hi: जाती हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  term:
+    sa: भवान्
+    meaning:
+      en: '“your honour”: polite you'
+      hi: '‘आप’: आदरपूर्ण तुम'
+- id: tb1
+  kind: table
+  title:
+    en: Plain and polite
+    hi: सामान्य और आदरपूर्ण
+  depth: core
+  skills:
+  - pron.polite
+  caption:
+    en: Two ways to say “you read”
+    hi: ‘तुम पढ़ते हो’ कहने के दो ढंग
+  columns:
+  - en: To whom
+    hi: किससे
+  - en: Pronoun
+    hi: सर्वनाम
+  - en: Verb
+    hi: क्रिया
+  rows:
+  - - text:
+        en: a friend or child
+        hi: मित्र या बच्चा
+    - sa: त्वम्
+    - sa: पठसि
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+  - - text:
+        en: an elder, a man
+        hi: बड़ा, पुरुष
+    - sa: भवान्
+    - sa: पठति
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - - text:
+        en: an elder, a woman
+        hi: बड़ी, स्त्री
+    - sa: भवती
+    - sa: पठति
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  note:
+    en: '{{भवान्}} and {{भवती}} take the same verb as {{सः}} and {{सा}}.'
+    hi: '{{भवान्}} और {{भवती}} वही क्रिया लेते हैं जो {{सः}} और {{सा}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - pron.polite
+  mode: choice
+  prompt:
+    en: You speak to your teacher. Which pronoun?
+    hi: आप अपने गुरु से बोलते हैं। कौन-सा सर्वनाम?
+  explain:
+    en: '{{भवान्}}: the polite “you”.'
+    hi: '{{भवान्}}: आदरपूर्ण ‘आप’।'
+  roman: after
+  options:
+  - sa: त्वम्
+  - correct: true
+    sa: भवान्
+  - sa: अहम्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - pron.polite
+  mode: choice
+  prompt:
+    en: Which verb goes with {{भवान्}}?
+    hi: '{{भवान्}} के साथ कौन-सी क्रिया?'
+  explain:
+    en: '{{भवान्}} takes the third-person verb: {{पठति}}.'
+    hi: '{{भवान्}} प्रथम पुरुष की क्रिया लेता है: {{पठति}}।'
+  roman: after
+  options:
+  - sa: पठसि
+  - correct: true
+    sa: पठति
+  - sa: पठामि
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - pron.polite
+  mode: match
+  prompt:
+    en: Join each situation to the word you say.
+    hi: हर स्थिति को उस शब्द से जोड़िए जो आप कहेंगे।
+  explain:
+    en: 'Respect: {{भवान्}} or {{भवती}}. Friends: {{त्वम्}}.'
+    hi: 'आदर: {{भवान्}} या {{भवती}}। मित्र: {{त्वम्}}।'
+  roman: after
+  pairs:
+  - left:
+      text:
+        en: a friend
+        hi: मित्र
+    right:
+      sa: त्वम्
+  - left:
+      text:
+        en: an old man
+        hi: एक बूढ़ा
+    right:
+      sa: भवान्
+  - left:
+      text:
+        en: an old woman
+        hi: एक बूढ़ी
+    right:
+      sa: भवती
+- id: p4
+  kind: practice
+  title:
+    en: Say it politely
+    hi: आदर से कहिए
+  depth: core
+  skills:
+  - pron.polite
+  mode: order
+  prompt:
+    en: 'Say to the old man: “Does your honour go?” as a statement: “Your honour goes.”'
+    hi: 'बुज़ुर्ग से कहिए: ‘आप जाते हैं।’'
+  explain:
+    en: '{{भवान् गच्छति}}: polite “you”, third-person verb.'
+    hi: '{{भवान् गच्छति}}: आदरपूर्ण ‘आप’, प्रथम पुरुष की क्रिया।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “भवान् गच्छति,” you say, bowing a little. The old man laughs and lays a hand on your head. Behind you the silver spirit bows too, copying you exactly, and a little too low.
+      hi: “भवान् गच्छति,” आप थोड़ा झुककर कहते हैं। बुज़ुर्ग हँसकर आपके सिर पर हाथ रखते हैं। आपके पीछे चाँदी-सा भूत भी झुकता है, ठीक आपकी नक़ल में, थोड़ा ज़्यादा नीचे।
+    failure:
+      en: He frowns kindly. {{भवान्}} takes the verb for “he”.
+      hi: वे प्रेम से भौंहें सिकोड़ते हैं। {{भवान्}} के साथ ‘वह’ की क्रिया लगती है।
+  tokens:
+  - भवान्
+  - गच्छति
+- id: t2
+  kind: teach
+  title:
+    en: A word of greeting
+    hi: अभिवादन का शब्द
+  depth: core
+  skills:
+  - pron.polite
+  body:
+    en: '{{नमः}} means “bow, homage”. {{नमस्ते}} is {{नमः}} joined with {{ते}} (“to you”): “homage to you”. You will learn why the two words melt together in the sandhi chapters.'
+    hi: '{{नमः}} का अर्थ है ‘प्रणाम’। {{नमस्ते}} {{नमः}} और {{ते}} (‘तुम्हें’) का मेल है: ‘तुम्हें प्रणाम’। दोनों शब्द क्यों मिल जाते हैं, यह सन्धि के अध्यायों में आएगा।'
+  examples:
+  - sa: नमः
+    meaning:
+      en: '{{नमः}}: homage'
+      hi: '{{नमः}}: प्रणाम'
+    check:
+      type: subanta
+      stem: नमस्
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: नमस्ते
+    meaning:
+      en: 'homage to you: the everyday greeting'
+      hi: 'तुम्हें प्रणाम: रोज़ का अभिवादन'
+- id: sum
+  kind: summary
+  title:
+    en: Polite “you”
+    hi: आदरपूर्ण ‘आप’
+  depth: core
+  points:
+  - sa: भवान् · भवती
+    text:
+      en: '“Your honour”: polite you.'
+      hi: '‘आप’: आदरपूर्ण तुम।'
+  - sa: भवान् पठति
+    text:
+      en: It takes the verb for “he”.
+      hi: इसके साथ ‘वह’ की क्रिया लगती है।
+  - sa: नमस्ते
+    text:
+      en: Homage to you.
+      hi: तुम्हें प्रणाम।

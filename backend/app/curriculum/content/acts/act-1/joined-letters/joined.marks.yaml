@@ -1,0 +1,333 @@
+id: joined.marks
+template: scene
+title:
+  en: Marks and numbers on the pillar
+  hi: स्तम्भ के चिह्न और अंक
+title_sa: चिह्नान्यङ्काश्च
+minutes: 6
+teaches:
+- script.signs
+- script.numerals
+needs:
+- script.anusvara
+- script.visarga
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The last lines
+    hi: आख़िरी पंक्तियाँ
+  depth: core
+  image:
+    brief: 'The foot of the temple pillar with carved marks: a small avagraha curl, a tall single bar and a double bar, the sacred Om sign, and a row of Devanagari numerals; the green spirit stirring awake above them, Dādī pointing.'
+    alt:
+      en: The foot of a pillar with carved marks, the Om sign and numbers, and a spirit stirring
+      hi: चिह्नों, ॐ और अंकों वाला स्तम्भ का पाँव, हिलता हुआ भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - nidralu
+    place: devalaya
+    ratio: '4:3'
+    id: joined-marks-s1
+  narration:
+    en: 'At the pillar''s foot, below the letters, stand strange marks: a small curl like an S, tall bars, a great round sign, and a row of numbers. The green spirit stirs. “Read the last line,” says Dādī, “and he will wake.”'
+    hi: 'स्तम्भ के पाँव पर, अक्षरों के नीचे, अजीब चिह्न खुदे हैं: ‘S’ जैसा छोटा मोड़, ऊँची खड़ी रेखाएँ, एक बड़ा गोल चिह्न, और अंकों की एक पंक्ति। हरा भूत हिलता है। दादी कहती हैं, “आख़िरी पंक्ति पढ़ो, वह जाग जाएगा।”'
+  quote:
+    sa: सत्यमेव जयते नानृतं
+    gloss:
+      en: Truth alone prevails, not falsehood.
+      hi: सत्य की ही जीत होती है, असत्य की नहीं।
+    source: Muṇḍaka Upaniṣad 3.1.6
+- id: t1
+  kind: teach
+  title:
+    en: Bars, a curl and a sacred sound
+    hi: रेखाएँ, एक मोड़ और एक पवित्र ध्वनि
+  depth: core
+  skills:
+  - script.signs
+  - script.numerals
+  body:
+    en: '{{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}: {{सोऽहम्}}. {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}.'
+    hi: '{{।}} {{दण्डः}} पंक्ति या वाक्य का अन्त करता है; {{॥}} श्लोक का अन्त। {{ऽ}}, अवग्रह, छूटे हुए {{अ}} का चिह्न है: {{सोऽहम्}}। {{ॐ}} पवित्र अक्षर है, {{अ}} + {{उ}} + {{म्}}।'
+  rows:
+  - sa: ।
+    gloss:
+      en: ends a line or sentence
+      hi: पंक्ति या वाक्य का अन्त
+  - sa: ॥
+    gloss:
+      en: ends a verse
+      hi: श्लोक का अन्त
+  - sa: ऽ
+    gloss:
+      en: a dropped {{अ}} (avagraha)
+      hi: छूटा हुआ {{अ}} (अवग्रह)
+  - sa: ॐ
+    gloss:
+      en: the sacred syllable
+      hi: पवित्र अक्षर
+- id: tb1
+  kind: table
+  title:
+    en: Numbers
+    hi: अंक
+  depth: core
+  skills:
+  - script.signs
+  - script.numerals
+  caption:
+    en: The ten Devanagari numerals
+    hi: दस देवनागरी अंक
+  columns:
+  - en: Numeral
+    hi: अंक
+  - en: Number
+    hi: संख्या
+  rows:
+  - - sa: ०
+    - text:
+        en: zero
+        hi: शून्य
+  - - sa: १
+    - text:
+        en: one
+        hi: एक
+  - - sa: २
+    - text:
+        en: two
+        hi: दो
+  - - sa: ३
+    - text:
+        en: three
+        hi: तीन
+  - - sa: ४
+    - text:
+        en: four
+        hi: चार
+  - - sa: ५
+    - text:
+        en: five
+        hi: पाँच
+  - - sa: ६
+    - text:
+        en: six
+        hi: छह
+  - - sa: ७
+    - text:
+        en: seven
+        hi: सात
+  - - sa: ८
+    - text:
+        en: eight
+        hi: आठ
+  - - sa: ९
+    - text:
+        en: nine
+        hi: नौ
+  note:
+    en: 'Numbers are written left to right like words: {{१०८}} is one hundred and eight.'
+    hi: 'अंक शब्दों की तरह बाएँ से दाएँ लिखे जाते हैं: {{१०८}} यानी एक सौ आठ।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - script.signs
+  - script.numerals
+  mode: match
+  prompt:
+    en: Join each mark to its job.
+    hi: हर चिह्न को उसके काम से जोड़िए।
+  explain:
+    en: Each mark does one job.
+    hi: हर चिह्न का एक काम है।
+  roman: after
+  pairs:
+  - left:
+      sa: ।
+    right:
+      text:
+        en: ends a line
+        hi: पंक्ति का अन्त
+  - left:
+      sa: ॥
+    right:
+      text:
+        en: ends a verse
+        hi: श्लोक का अन्त
+  - left:
+      sa: ऽ
+    right:
+      text:
+        en: a dropped {{अ}}
+        hi: छूटा {{अ}}
+  - left:
+      sa: ॐ
+    right:
+      text:
+        en: the sacred syllable
+        hi: पवित्र अक्षर
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - script.signs
+  - script.numerals
+  mode: match
+  prompt:
+    en: Join each numeral to its number.
+    hi: हर अंक को उसकी संख्या से जोड़िए।
+  explain:
+    en: Learn the ten once and you can read any number.
+    hi: दस अंक एक बार सीख लिए, तो कोई भी संख्या पढ़ सकते हैं।
+  roman: after
+  pairs:
+  - left:
+      sa: ३
+    right:
+      text:
+        en: three
+        hi: तीन
+  - left:
+      sa: ५
+    right:
+      text:
+        en: five
+        hi: पाँच
+  - left:
+      sa: ८
+    right:
+      text:
+        en: eight
+        hi: आठ
+  - left:
+      sa: ९
+    right:
+      text:
+        en: nine
+        hi: नौ
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - script.signs
+  - script.numerals
+  mode: type
+  prompt:
+    en: Build {{१०८}}, the number of beads on a prayer garland.
+    hi: '{{१०८}} बनाइए, माला के मनकों की संख्या।'
+  explain:
+    en: '{{१}} {{०}} {{८}}: one hundred and eight.'
+    hi: '{{१}} {{०}} {{८}}: एक सौ आठ।'
+  roman: after
+  answers:
+  - १०८
+  tiles:
+  - १
+  - ०
+  - ८
+  - ९
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - script.signs
+  - script.numerals
+  widget: mark_words
+  prompt:
+    en: Tap every numeral.
+    hi: हर अंक को छुइए।
+  params:
+    passage:
+    - १
+    - रामः
+    - ७
+    - ॐ
+    - ४
+    - सत्यम्
+    - ९
+    targets:
+    - १
+    - ७
+    - ४
+    - ९
+  roman: after
+- id: p4
+  kind: practice
+  title:
+    en: The last line
+    hi: आख़िरी पंक्ति
+  depth: core
+  skills:
+  - script.signs
+  - script.numerals
+  mode: order
+  prompt:
+    en: Read the pillar's last line. Put its three pieces in order.
+    hi: स्तम्भ की आख़िरी पंक्ति पढ़िए। उसके तीन टुकड़े क्रम में लगाइए।
+  explain:
+    en: '{{सत्यमेव जयते नानृतं}}: truth alone prevails, not falsehood (Muṇḍaka Upaniṣad 3.1.6).'
+    hi: '{{सत्यमेव जयते नानृतं}}: सत्य की ही जीत होती है, असत्य की नहीं (मुण्डक उपनिषद् 3.1.6)।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: 'You read the line aloud, bars and all. The green spirit yawns, stretches, and opens both eyes: “जागर्मि!” His nightcap pops like a bubble.'
+      hi: 'आप पूरी पंक्ति, रेखाओं सहित, ज़ोर से पढ़ते हैं। हरा भूत उबासी लेता है, अँगड़ाई लेता है और दोनों आँखें खोल देता है: “जागर्मि!” उसकी टोपी बुलबुले की तरह फूट जाती है।'
+    failure:
+      en: 'The line will not wake him. Say it as you read it: {{सत्यमेव}} first.'
+      hi: 'पंक्ति उसे जगा नहीं पाती। पढ़ते हुए बोलिए: पहले {{सत्यमेव}}।'
+  tokens:
+  - सत्यमेव
+  - जयते
+  - नानृतं
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - script.signs
+  - script.numerals
+  mode: choice
+  prompt:
+    en: What does the curl {{ऽ}} in {{सोऽहम्}} stand for?
+    hi: '{{सोऽहम्}} में मोड़ {{ऽ}} किसकी जगह है?'
+  explain:
+    en: '{{सोऽहम्}} is {{सः}} + {{अहम्}}: the {{अ}} is dropped and marked by {{ऽ}}.'
+    hi: '{{सोऽहम्}} यानी {{सः}} + {{अहम्}}: {{अ}} छूट गया और {{ऽ}} से दिखाया गया।'
+  roman: show
+  options:
+  - correct: true
+    text:
+      en: a dropped {{अ}}
+      hi: छूटे हुए {{अ}} की
+  - text:
+      en: a hum
+      hi: गूँज की
+  - text:
+      en: a breath
+      hi: साँस की
+- id: sum
+  kind: summary
+  title:
+    en: Marks and numbers
+    hi: चिह्न और अंक
+  depth: core
+  points:
+  - sa: । ॥
+    text:
+      en: End of a line; end of a verse.
+      hi: पंक्ति का अन्त; श्लोक का अन्त।
+  - sa: ऽ ॐ
+    text:
+      en: A dropped {{अ}}; the sacred syllable.
+      hi: छूटा {{अ}}; पवित्र अक्षर।
+  - sa: ० १ २ ३ ४ ५ ६ ७ ८ ९
+    text:
+      en: The ten numerals.
+      hi: दस अंक।

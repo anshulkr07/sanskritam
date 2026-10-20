@@ -1,0 +1,4594 @@
+{
+ "course": {
+  "$defs": {
+   "Text": {
+    "additionalProperties": false,
+    "description": "A learner-facing string in English and Hindi. ``{{संस्कृत}}`` marks\ninline Sanskrit (rendered in the Sanskrit face); ``**bold**`` is allowed.",
+    "properties": {
+     "en": {
+      "title": "En",
+      "type": "string"
+     },
+     "hi": {
+      "default": "",
+      "title": "Hi",
+      "type": "string"
+     }
+    },
+    "required": [
+     "en"
+    ],
+    "title": "Text",
+    "type": "object"
+   }
+  },
+  "additionalProperties": false,
+  "properties": {
+   "id": {
+    "title": "Id",
+    "type": "string"
+   },
+   "title": {
+    "$ref": "#/$defs/Text"
+   },
+   "title_sa": {
+    "title": "Title Sa",
+    "type": "string"
+   },
+   "prologue": {
+    "title": "Prologue",
+    "type": "string"
+   },
+   "acts": {
+    "items": {
+     "type": "string"
+    },
+    "title": "Acts",
+    "type": "array"
+   }
+  },
+  "required": [
+   "id",
+   "title",
+   "title_sa",
+   "prologue",
+   "acts"
+  ],
+  "title": "Course",
+  "type": "object"
+ },
+ "act": {
+  "$defs": {
+   "ImageRef": {
+    "additionalProperties": false,
+    "description": "A picture on a card. ChatGPT draws it from ``brief``; the delivery\nregistry (``content/images/deliveries.yaml``) maps ``id`` to the files.\n``text_in_image`` lists every string the picture must show, exactly, so\nthe text verifier can compare what was drawn.",
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "brief": {
+      "title": "Brief",
+      "type": "string"
+     },
+     "alt": {
+      "$ref": "#/$defs/Text"
+     },
+     "text_in_image": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Text In Image",
+      "type": "array"
+     },
+     "ratio": {
+      "default": "4:3",
+      "enum": [
+       "16:9",
+       "4:3",
+       "1:1",
+       "3:4",
+       "9:16"
+      ],
+      "title": "Ratio",
+      "type": "string"
+     },
+     "cast": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Cast",
+      "type": "array"
+     },
+     "place": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Place"
+     }
+    },
+    "required": [
+     "id",
+     "brief",
+     "alt"
+    ],
+    "title": "ImageRef",
+    "type": "object"
+   },
+   "Part": {
+    "additionalProperties": false,
+    "properties": {
+     "leaf": {
+      "title": "Leaf",
+      "type": "string"
+     },
+     "units": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Units",
+      "type": "array"
+     }
+    },
+    "required": [
+     "leaf",
+     "units"
+    ],
+    "title": "Part",
+    "type": "object"
+   },
+   "Text": {
+    "additionalProperties": false,
+    "description": "A learner-facing string in English and Hindi. ``{{संस्कृत}}`` marks\ninline Sanskrit (rendered in the Sanskrit face); ``**bold**`` is allowed.",
+    "properties": {
+     "en": {
+      "title": "En",
+      "type": "string"
+     },
+     "hi": {
+      "default": "",
+      "title": "Hi",
+      "type": "string"
+     }
+    },
+    "required": [
+     "en"
+    ],
+    "title": "Text",
+    "type": "object"
+   }
+  },
+  "additionalProperties": false,
+  "properties": {
+   "id": {
+    "title": "Id",
+    "type": "string"
+   },
+   "n": {
+    "title": "N",
+    "type": "integer"
+   },
+   "title": {
+    "$ref": "#/$defs/Text"
+   },
+   "title_sa": {
+    "title": "Title Sa",
+    "type": "string"
+   },
+   "place": {
+    "title": "Place",
+    "type": "string"
+   },
+   "color": {
+    "title": "Color",
+    "type": "string"
+   },
+   "goal": {
+    "$ref": "#/$defs/Text"
+   },
+   "parts": {
+    "items": {
+     "$ref": "#/$defs/Part"
+    },
+    "title": "Parts",
+    "type": "array"
+   },
+   "map": {
+    "anyOf": [
+     {
+      "$ref": "#/$defs/ImageRef"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null
+   }
+  },
+  "required": [
+   "id",
+   "n",
+   "title",
+   "title_sa",
+   "place",
+   "color",
+   "goal",
+   "parts"
+  ],
+  "title": "Act",
+  "type": "object"
+ },
+ "unit": {
+  "$defs": {
+   "Episode": {
+    "additionalProperties": false,
+    "description": "The unit's story. ``summary`` is the \"story so far\" card for anyone\narriving here (learner-facing, both languages); ``beats`` is the plot\noutline for authors, approved before any Sanskrit is written.",
+    "properties": {
+     "summary": {
+      "$ref": "#/$defs/Text"
+     },
+     "beats": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Beats",
+      "type": "array"
+     }
+    },
+    "required": [
+     "summary"
+    ],
+    "title": "Episode",
+    "type": "object"
+   },
+   "PlannedLesson": {
+    "additionalProperties": false,
+    "description": "A lesson in the syllabus that is not written yet.",
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "title": {
+      "$ref": "#/$defs/Text"
+     },
+     "teaches": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Teaches",
+      "type": "array"
+     },
+     "notes": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Notes"
+     }
+    },
+    "required": [
+     "id",
+     "title"
+    ],
+    "title": "PlannedLesson",
+    "type": "object"
+   },
+   "Skill": {
+    "additionalProperties": false,
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "title": {
+      "$ref": "#/$defs/Text"
+     },
+     "sutras": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Sutras",
+      "type": "array"
+     }
+    },
+    "required": [
+     "id",
+     "title"
+    ],
+    "title": "Skill",
+    "type": "object"
+   },
+   "Text": {
+    "additionalProperties": false,
+    "description": "A learner-facing string in English and Hindi. ``{{संस्कृत}}`` marks\ninline Sanskrit (rendered in the Sanskrit face); ``**bold**`` is allowed.",
+    "properties": {
+     "en": {
+      "title": "En",
+      "type": "string"
+     },
+     "hi": {
+      "default": "",
+      "title": "Hi",
+      "type": "string"
+     }
+    },
+    "required": [
+     "en"
+    ],
+    "title": "Text",
+    "type": "object"
+   },
+   "UnitVideo": {
+    "additionalProperties": false,
+    "properties": {
+     "youtube_id": {
+      "title": "Youtube Id",
+      "type": "string"
+     },
+     "channel": {
+      "title": "Channel",
+      "type": "string"
+     },
+     "title": {
+      "title": "Title",
+      "type": "string"
+     },
+     "start": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Start"
+     },
+     "end": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "End"
+     }
+    },
+    "required": [
+     "youtube_id",
+     "channel",
+     "title"
+    ],
+    "title": "UnitVideo",
+    "type": "object"
+   }
+  },
+  "additionalProperties": false,
+  "properties": {
+   "id": {
+    "title": "Id",
+    "type": "string"
+   },
+   "title": {
+    "$ref": "#/$defs/Text"
+   },
+   "title_sa": {
+    "anyOf": [
+     {
+      "type": "string"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null,
+    "title": "Title Sa"
+   },
+   "status": {
+    "default": "planned",
+    "enum": [
+     "ready",
+     "planned"
+    ],
+    "title": "Status",
+    "type": "string"
+   },
+   "ghost": {
+    "anyOf": [
+     {
+      "type": "string"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null,
+    "title": "Ghost"
+   },
+   "episode": {
+    "$ref": "#/$defs/Episode"
+   },
+   "skills": {
+    "items": {
+     "$ref": "#/$defs/Skill"
+    },
+    "title": "Skills",
+    "type": "array"
+   },
+   "lessons": {
+    "default": [],
+    "items": {
+     "type": "string"
+    },
+    "title": "Lessons",
+    "type": "array"
+   },
+   "planned": {
+    "default": [],
+    "items": {
+     "$ref": "#/$defs/PlannedLesson"
+    },
+    "title": "Planned",
+    "type": "array"
+   },
+   "revision": {
+    "anyOf": [
+     {
+      "type": "string"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null,
+    "title": "Revision"
+   },
+   "check": {
+    "anyOf": [
+     {
+      "type": "string"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null,
+    "title": "Check"
+   },
+   "video": {
+    "anyOf": [
+     {
+      "$ref": "#/$defs/UnitVideo"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null
+   }
+  },
+  "required": [
+   "id",
+   "title",
+   "episode",
+   "skills"
+  ],
+  "title": "Unit",
+  "type": "object"
+ },
+ "lesson": {
+  "$defs": {
+   "Cell": {
+    "additionalProperties": false,
+    "description": "A table cell: Sanskrit (``sa``) or a learner-language label (``text``).",
+    "properties": {
+     "sa": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Sa"
+     },
+     "text": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "highlight": {
+      "default": false,
+      "title": "Highlight",
+      "type": "boolean"
+     },
+     "check": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Check"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "title": "Cell",
+    "type": "object"
+   },
+   "Check": {
+    "additionalProperties": false,
+    "description": "One engine claim; the same vocabulary as the Grammar guide's checks\n(``app.services.grammar_guide.model``). Names are vidyut's: linga\nPum/Stri/Napumsaka; vibhakti Prathama, Dvitiya, Trtiya, Caturthi,\nPanchami, Sasthi, Saptami, Sambodhana; vacana Eka/Dvi/Bahu; lakara Lat,\nLit, Lut, Lrt, Let, Lot, Lan, VidhiLin, AshirLin, Lun, Lrn; purusha\nPrathama/Madhyama/Uttama.",
+    "properties": {
+     "type": {
+      "enum": [
+       "subanta",
+       "tinanta",
+       "krdanta",
+       "taddhita",
+       "sandhi"
+      ],
+      "title": "Type",
+      "type": "string"
+     },
+     "stem": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Stem"
+     },
+     "linga": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Linga"
+     },
+     "vibhakti": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Vibhakti"
+     },
+     "vacana": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Vacana"
+     },
+     "stem_type": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Stem Type"
+     },
+     "dhatu": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Dhatu"
+     },
+     "lakara": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Lakara"
+     },
+     "purusha": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Purusha"
+     },
+     "prayoga": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Prayoga"
+     },
+     "sanadi": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Sanadi"
+     },
+     "prefixes": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Prefixes"
+     },
+     "gana": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Gana"
+     },
+     "krt": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Krt"
+     },
+     "taddhita": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Taddhita"
+     },
+     "first": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "First"
+     },
+     "second": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Second"
+     },
+     "joined": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Joined"
+     },
+     "form": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Form"
+     }
+    },
+    "required": [
+     "type"
+    ],
+    "title": "Check",
+    "type": "object"
+   },
+   "EngineExercise": {
+    "additionalProperties": false,
+    "description": "A generated exercise (``app.services.exercise_gen``): the builder\nrenders it once at build time and stores the item and its answer, so the\ncard works offline and every shipped item is one the engine could make.",
+    "properties": {
+     "kind": {
+      "enum": [
+       "grid_fill",
+       "derive_next",
+       "sandhi_split",
+       "sandhi_join",
+       "scan_metre",
+       "reorder",
+       "contrast"
+      ],
+      "title": "Kind",
+      "type": "string"
+     },
+     "params": {
+      "additionalProperties": true,
+      "default": {},
+      "title": "Params",
+      "type": "object"
+     },
+     "seed": {
+      "default": 0,
+      "title": "Seed",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "kind"
+    ],
+    "title": "EngineExercise",
+    "type": "object"
+   },
+   "Example": {
+    "additionalProperties": false,
+    "description": "A Sanskrit example: the text, its meaning, optional word-by-word gloss\nand a source (a text reference such as \"Kathāsaritsāgara 1.8\", or omitted\nfor our own sentences).",
+    "properties": {
+     "sa": {
+      "title": "Sa",
+      "type": "string"
+     },
+     "meaning": {
+      "$ref": "#/$defs/Text"
+     },
+     "words": {
+      "default": [],
+      "items": {
+       "$ref": "#/$defs/Word"
+      },
+      "title": "Words",
+      "type": "array"
+     },
+     "source": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Source"
+     },
+     "check": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Check"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "required": [
+     "sa",
+     "meaning"
+    ],
+    "title": "Example",
+    "type": "object"
+   },
+   "ExploreCard": {
+    "additionalProperties": false,
+    "description": "A hands-on widget. ``params`` are the widget's own inputs, one of the\n``*Params`` shapes below (``WIDGET_PARAMS`` maps widget → shape; the\nchecker parses them, so a wrong key fails like anywhere else).",
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "title": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "image": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/ImageRef"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "depth": {
+      "default": "core",
+      "enum": [
+       "core",
+       "panini"
+      ],
+      "title": "Depth",
+      "type": "string"
+     },
+     "skills": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Skills",
+      "type": "array"
+     },
+     "sutras": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Sutras",
+      "type": "array"
+     },
+     "kind": {
+      "const": "explore",
+      "title": "Kind",
+      "type": "string"
+     },
+     "widget": {
+      "enum": [
+       "letter_builder",
+       "mouth_map",
+       "form_explorer",
+       "role_arrows",
+       "time_slider",
+       "word_shuffle",
+       "sandhi_mixer",
+       "compound_unpacker",
+       "word_factory",
+       "mark_words",
+       "rhythm_tapper",
+       "derivation_stepper"
+      ],
+      "title": "Widget",
+      "type": "string"
+     },
+     "prompt": {
+      "$ref": "#/$defs/Text"
+     },
+     "params": {
+      "additionalProperties": true,
+      "default": {},
+      "title": "Params",
+      "type": "object"
+     },
+     "roman": {
+      "default": "show",
+      "enum": [
+       "show",
+       "after"
+      ],
+      "title": "Roman",
+      "type": "string"
+     }
+    },
+    "required": [
+     "id",
+     "kind",
+     "widget",
+     "prompt"
+    ],
+    "title": "ExploreCard",
+    "type": "object"
+   },
+   "ImageRef": {
+    "additionalProperties": false,
+    "description": "A picture on a card. ChatGPT draws it from ``brief``; the delivery\nregistry (``content/images/deliveries.yaml``) maps ``id`` to the files.\n``text_in_image`` lists every string the picture must show, exactly, so\nthe text verifier can compare what was drawn.",
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "brief": {
+      "title": "Brief",
+      "type": "string"
+     },
+     "alt": {
+      "$ref": "#/$defs/Text"
+     },
+     "text_in_image": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Text In Image",
+      "type": "array"
+     },
+     "ratio": {
+      "default": "4:3",
+      "enum": [
+       "16:9",
+       "4:3",
+       "1:1",
+       "3:4",
+       "9:16"
+      ],
+      "title": "Ratio",
+      "type": "string"
+     },
+     "cast": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Cast",
+      "type": "array"
+     },
+     "place": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Place"
+     }
+    },
+    "required": [
+     "id",
+     "brief",
+     "alt"
+    ],
+    "title": "ImageRef",
+    "type": "object"
+   },
+   "Line": {
+    "additionalProperties": false,
+    "description": "One line spoken in a story card. Either Sanskrit (``sa`` + ``gloss``)\nor plain speech in the learner's language (``text``).",
+    "properties": {
+     "speaker": {
+      "title": "Speaker",
+      "type": "string"
+     },
+     "sa": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Sa"
+     },
+     "gloss": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "text": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "check": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Check"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "required": [
+     "speaker"
+    ],
+    "title": "Line",
+    "type": "object"
+   },
+   "Option": {
+    "additionalProperties": false,
+    "description": "A choice: Sanskrit (``sa``) or a learner-language label (``text``).",
+    "properties": {
+     "sa": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Sa"
+     },
+     "text": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "correct": {
+      "default": false,
+      "title": "Correct",
+      "type": "boolean"
+     },
+     "why": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "title": "Option",
+    "type": "object"
+   },
+   "Pair": {
+    "additionalProperties": false,
+    "properties": {
+     "left": {
+      "$ref": "#/$defs/Option"
+     },
+     "right": {
+      "$ref": "#/$defs/Option"
+     }
+    },
+    "required": [
+     "left",
+     "right"
+    ],
+    "title": "Pair",
+    "type": "object"
+   },
+   "PracticeCard": {
+    "additionalProperties": false,
+    "description": "A check. Modes:\nchoice  – options, exactly one ``correct``\ntype    – the learner builds the Sanskrit answer from tiles or types it;\n          ``answers`` lists every accepted form (anusvāra/visarga pause\n          variants are added by the builder)\norder   – ``tokens`` in the right order; the learner re-orders them\nmatch   – ``pairs`` the learner joins\nengine  – a generated exercise (``exercise``)\nA ``gate`` practice is a story puzzle: the story waits until it is solved\nand ``story`` narrates the result.",
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "title": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "image": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/ImageRef"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "depth": {
+      "default": "core",
+      "enum": [
+       "core",
+       "panini"
+      ],
+      "title": "Depth",
+      "type": "string"
+     },
+     "skills": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Skills",
+      "type": "array"
+     },
+     "sutras": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Sutras",
+      "type": "array"
+     },
+     "kind": {
+      "const": "practice",
+      "title": "Kind",
+      "type": "string"
+     },
+     "mode": {
+      "enum": [
+       "choice",
+       "type",
+       "order",
+       "match",
+       "engine"
+      ],
+      "title": "Mode",
+      "type": "string"
+     },
+     "prompt": {
+      "$ref": "#/$defs/Text"
+     },
+     "explain": {
+      "$ref": "#/$defs/Text"
+     },
+     "options": {
+      "default": [],
+      "items": {
+       "$ref": "#/$defs/Option"
+      },
+      "title": "Options",
+      "type": "array"
+     },
+     "answers": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Answers",
+      "type": "array"
+     },
+     "tiles": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Tiles",
+      "type": "array"
+     },
+     "tokens": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Tokens",
+      "type": "array"
+     },
+     "pairs": {
+      "default": [],
+      "items": {
+       "$ref": "#/$defs/Pair"
+      },
+      "title": "Pairs",
+      "type": "array"
+     },
+     "exercise": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/EngineExercise"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "check": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Check"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "gate": {
+      "default": false,
+      "title": "Gate",
+      "type": "boolean"
+     },
+     "story": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/StoryResult"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "roman": {
+      "default": "show",
+      "enum": [
+       "show",
+       "after"
+      ],
+      "title": "Roman",
+      "type": "string"
+     }
+    },
+    "required": [
+     "id",
+     "kind",
+     "mode",
+     "prompt",
+     "explain"
+    ],
+    "title": "PracticeCard",
+    "type": "object"
+   },
+   "Quote": {
+    "additionalProperties": false,
+    "description": "A real line from a text, shown with its reference. ``source`` is\nrequired: a quote without a reference is not allowed.",
+    "properties": {
+     "sa": {
+      "title": "Sa",
+      "type": "string"
+     },
+     "gloss": {
+      "$ref": "#/$defs/Text"
+     },
+     "source": {
+      "title": "Source",
+      "type": "string"
+     }
+    },
+    "required": [
+     "sa",
+     "gloss",
+     "source"
+    ],
+    "title": "Quote",
+    "type": "object"
+   },
+   "ReadingCard": {
+    "additionalProperties": false,
+    "description": "A passage read in Sanskrit with tap-to-gloss words (episode readings,\nleaf tales).",
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "title": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "image": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/ImageRef"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "depth": {
+      "default": "core",
+      "enum": [
+       "core",
+       "panini"
+      ],
+      "title": "Depth",
+      "type": "string"
+     },
+     "skills": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Skills",
+      "type": "array"
+     },
+     "sutras": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Sutras",
+      "type": "array"
+     },
+     "kind": {
+      "const": "reading",
+      "title": "Kind",
+      "type": "string"
+     },
+     "passage": {
+      "items": {
+       "$ref": "#/$defs/Sentence"
+      },
+      "title": "Passage",
+      "type": "array"
+     }
+    },
+    "required": [
+     "id",
+     "kind",
+     "passage"
+    ],
+    "title": "ReadingCard",
+    "type": "object"
+   },
+   "RevisionCard": {
+    "additionalProperties": false,
+    "description": "One section of a revision lesson (rows are paged ~6 per card by the\nclient).",
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "title": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "image": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/ImageRef"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "depth": {
+      "default": "core",
+      "enum": [
+       "core",
+       "panini"
+      ],
+      "title": "Depth",
+      "type": "string"
+     },
+     "skills": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Skills",
+      "type": "array"
+     },
+     "sutras": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Sutras",
+      "type": "array"
+     },
+     "kind": {
+      "const": "revision",
+      "title": "Kind",
+      "type": "string"
+     },
+     "section": {
+      "enum": [
+       "core",
+       "conditions",
+       "exceptions",
+       "optional",
+       "blocked",
+       "splitting",
+       "mistakes",
+       "panini",
+       "quick_sheet"
+      ],
+      "title": "Section",
+      "type": "string"
+     },
+     "rows": {
+      "items": {
+       "$ref": "#/$defs/RevisionRow"
+      },
+      "title": "Rows",
+      "type": "array"
+     }
+    },
+    "required": [
+     "id",
+     "kind",
+     "section",
+     "rows"
+    ],
+    "title": "RevisionCard",
+    "type": "object"
+   },
+   "RevisionRow": {
+    "additionalProperties": false,
+    "description": "One rule in a revision lesson. Either ``taught_in`` names the card that\ntaught it (\"<lesson id>#<card id>\") or ``new_here`` says the revision\nlesson is where it is first met (then ``example`` is required).",
+    "properties": {
+     "skill": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Skill"
+     },
+     "formula": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Formula"
+     },
+     "rule": {
+      "$ref": "#/$defs/Text"
+     },
+     "example": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Example"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "sutras": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Sutras",
+      "type": "array"
+     },
+     "tag": {
+      "default": "core",
+      "enum": [
+       "core",
+       "good",
+       "rare"
+      ],
+      "title": "Tag",
+      "type": "string"
+     },
+     "taught_in": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Taught In"
+     },
+     "new_here": {
+      "default": false,
+      "title": "New Here",
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "rule"
+    ],
+    "title": "RevisionRow",
+    "type": "object"
+   },
+   "Row": {
+    "additionalProperties": false,
+    "description": "A short contrast row (2–4 per card).",
+    "properties": {
+     "sa": {
+      "title": "Sa",
+      "type": "string"
+     },
+     "gloss": {
+      "$ref": "#/$defs/Text"
+     },
+     "check": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Check"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "required": [
+     "sa",
+     "gloss"
+    ],
+    "title": "Row",
+    "type": "object"
+   },
+   "Sentence": {
+    "additionalProperties": false,
+    "properties": {
+     "sa": {
+      "title": "Sa",
+      "type": "string"
+     },
+     "meaning": {
+      "$ref": "#/$defs/Text"
+     },
+     "words": {
+      "default": [],
+      "items": {
+       "$ref": "#/$defs/Word"
+      },
+      "title": "Words",
+      "type": "array"
+     },
+     "check": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Check"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "required": [
+     "sa",
+     "meaning"
+    ],
+    "title": "Sentence",
+    "type": "object"
+   },
+   "Source": {
+    "additionalProperties": false,
+    "description": "Where adapted material came from. Licences outside ALLOWED_LICENCES\nfail the build (no non-commercial sources).",
+    "properties": {
+     "title": {
+      "title": "Title",
+      "type": "string"
+     },
+     "url": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Url"
+     },
+     "licence": {
+      "title": "Licence",
+      "type": "string"
+     },
+     "note": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Note"
+     }
+    },
+    "required": [
+     "title",
+     "licence"
+    ],
+    "title": "Source",
+    "type": "object"
+   },
+   "Step": {
+    "additionalProperties": false,
+    "description": "One step of a formation shown left to right: पठ् → पठ → पठति.",
+    "properties": {
+     "sa": {
+      "title": "Sa",
+      "type": "string"
+     },
+     "label": {
+      "$ref": "#/$defs/Text"
+     }
+    },
+    "required": [
+     "sa",
+     "label"
+    ],
+    "title": "Step",
+    "type": "object"
+   },
+   "StoryCard": {
+    "additionalProperties": false,
+    "description": "A story panel: picture, a few sentences of narration, optional spoken\nlines and an optional real quote from a text.",
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "title": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "image": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/ImageRef"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "depth": {
+      "default": "core",
+      "enum": [
+       "core",
+       "panini"
+      ],
+      "title": "Depth",
+      "type": "string"
+     },
+     "skills": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Skills",
+      "type": "array"
+     },
+     "sutras": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Sutras",
+      "type": "array"
+     },
+     "kind": {
+      "const": "story",
+      "title": "Kind",
+      "type": "string"
+     },
+     "narration": {
+      "$ref": "#/$defs/Text"
+     },
+     "lines": {
+      "default": [],
+      "items": {
+       "$ref": "#/$defs/Line"
+      },
+      "title": "Lines",
+      "type": "array"
+     },
+     "quote": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Quote"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "required": [
+     "id",
+     "kind",
+     "narration"
+    ],
+    "title": "StoryCard",
+    "type": "object"
+   },
+   "StoryResult": {
+    "additionalProperties": false,
+    "description": "What the story says after a gate is solved, or missed.",
+    "properties": {
+     "success": {
+      "$ref": "#/$defs/Text"
+     },
+     "failure": {
+      "$ref": "#/$defs/Text"
+     }
+    },
+    "required": [
+     "success",
+     "failure"
+    ],
+    "title": "StoryResult",
+    "type": "object"
+   },
+   "SummaryCard": {
+    "additionalProperties": false,
+    "description": "The lesson's own quick sheet (the last card of a scene).",
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "title": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "image": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/ImageRef"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "depth": {
+      "default": "core",
+      "enum": [
+       "core",
+       "panini"
+      ],
+      "title": "Depth",
+      "type": "string"
+     },
+     "skills": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Skills",
+      "type": "array"
+     },
+     "sutras": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Sutras",
+      "type": "array"
+     },
+     "kind": {
+      "const": "summary",
+      "title": "Kind",
+      "type": "string"
+     },
+     "points": {
+      "items": {
+       "$ref": "#/$defs/SummaryPoint"
+      },
+      "title": "Points",
+      "type": "array"
+     }
+    },
+    "required": [
+     "id",
+     "kind",
+     "points"
+    ],
+    "title": "SummaryCard",
+    "type": "object"
+   },
+   "SummaryPoint": {
+    "additionalProperties": false,
+    "properties": {
+     "sa": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Sa"
+     },
+     "text": {
+      "$ref": "#/$defs/Text"
+     }
+    },
+    "required": [
+     "text"
+    ],
+    "title": "SummaryPoint",
+    "type": "object"
+   },
+   "TableCard": {
+    "additionalProperties": false,
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "title": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "image": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/ImageRef"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "depth": {
+      "default": "core",
+      "enum": [
+       "core",
+       "panini"
+      ],
+      "title": "Depth",
+      "type": "string"
+     },
+     "skills": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Skills",
+      "type": "array"
+     },
+     "sutras": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Sutras",
+      "type": "array"
+     },
+     "kind": {
+      "const": "table",
+      "title": "Kind",
+      "type": "string"
+     },
+     "caption": {
+      "$ref": "#/$defs/Text"
+     },
+     "columns": {
+      "items": {
+       "$ref": "#/$defs/Text"
+      },
+      "title": "Columns",
+      "type": "array"
+     },
+     "rows": {
+      "items": {
+       "items": {
+        "$ref": "#/$defs/Cell"
+       },
+       "type": "array"
+      },
+      "title": "Rows",
+      "type": "array"
+     },
+     "note": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "required": [
+     "id",
+     "kind",
+     "caption",
+     "columns",
+     "rows"
+    ],
+    "title": "TableCard",
+    "type": "object"
+   },
+   "TeachCard": {
+    "additionalProperties": false,
+    "description": "One idea, taught. ``body`` is ≤ 60 English words.",
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "title": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "image": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/ImageRef"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "depth": {
+      "default": "core",
+      "enum": [
+       "core",
+       "panini"
+      ],
+      "title": "Depth",
+      "type": "string"
+     },
+     "skills": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Skills",
+      "type": "array"
+     },
+     "sutras": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Sutras",
+      "type": "array"
+     },
+     "kind": {
+      "const": "teach",
+      "title": "Kind",
+      "type": "string"
+     },
+     "body": {
+      "$ref": "#/$defs/Text"
+     },
+     "examples": {
+      "default": [],
+      "items": {
+       "$ref": "#/$defs/Example"
+      },
+      "title": "Examples",
+      "type": "array"
+     },
+     "rows": {
+      "default": [],
+      "items": {
+       "$ref": "#/$defs/Row"
+      },
+      "title": "Rows",
+      "type": "array"
+     },
+     "steps": {
+      "default": [],
+      "items": {
+       "$ref": "#/$defs/Step"
+      },
+      "title": "Steps",
+      "type": "array"
+     },
+     "formula": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Formula"
+     },
+     "term": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Term"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "required": [
+     "id",
+     "kind",
+     "body"
+    ],
+    "title": "TeachCard",
+    "type": "object"
+   },
+   "Term": {
+    "additionalProperties": false,
+    "description": "A technical term introduced on a card, with its plain meaning.",
+    "properties": {
+     "sa": {
+      "title": "Sa",
+      "type": "string"
+     },
+     "meaning": {
+      "$ref": "#/$defs/Text"
+     }
+    },
+    "required": [
+     "sa",
+     "meaning"
+    ],
+    "title": "Term",
+    "type": "object"
+   },
+   "Text": {
+    "additionalProperties": false,
+    "description": "A learner-facing string in English and Hindi. ``{{संस्कृत}}`` marks\ninline Sanskrit (rendered in the Sanskrit face); ``**bold**`` is allowed.",
+    "properties": {
+     "en": {
+      "title": "En",
+      "type": "string"
+     },
+     "hi": {
+      "default": "",
+      "title": "Hi",
+      "type": "string"
+     }
+    },
+    "required": [
+     "en"
+    ],
+    "title": "Text",
+    "type": "object"
+   },
+   "VideoCard": {
+    "additionalProperties": false,
+    "description": "A short YouTube clip at a unit's end. Watching earns nothing (YouTube\nDeveloper Policies III.F.3). ``start``/``end`` in seconds clip a lecture.",
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "title": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Text"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "image": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/ImageRef"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "depth": {
+      "default": "core",
+      "enum": [
+       "core",
+       "panini"
+      ],
+      "title": "Depth",
+      "type": "string"
+     },
+     "skills": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Skills",
+      "type": "array"
+     },
+     "sutras": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Sutras",
+      "type": "array"
+     },
+     "kind": {
+      "const": "video",
+      "title": "Kind",
+      "type": "string"
+     },
+     "youtube_id": {
+      "title": "Youtube Id",
+      "type": "string"
+     },
+     "channel": {
+      "title": "Channel",
+      "type": "string"
+     },
+     "start": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Start"
+     },
+     "end": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "End"
+     }
+    },
+    "required": [
+     "id",
+     "kind",
+     "youtube_id",
+     "channel"
+    ],
+    "title": "VideoCard",
+    "type": "object"
+   },
+   "Word": {
+    "additionalProperties": false,
+    "properties": {
+     "sa": {
+      "title": "Sa",
+      "type": "string"
+     },
+     "gloss": {
+      "$ref": "#/$defs/Text"
+     },
+     "check": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Check"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "required": [
+     "sa",
+     "gloss"
+    ],
+    "title": "Word",
+    "type": "object"
+   }
+  },
+  "additionalProperties": false,
+  "description": "One lesson file. Templates:\nprologue – story cards only (the opening legend)\nscene    – story → teach → explore/examples → practice (≥ 40%) → summary\nepisode  – the unit's story read in Sanskrit, with comprehension checks\nrevision – the unit's complete rule list, in REVISION_SECTIONS order\ncheck    – the unit test: practice only, every unit skill at least once\ntale     – the readable tale inside a recovered leaf",
+  "properties": {
+   "id": {
+    "title": "Id",
+    "type": "string"
+   },
+   "template": {
+    "enum": [
+     "prologue",
+     "scene",
+     "episode",
+     "revision",
+     "check",
+     "tale"
+    ],
+    "title": "Template",
+    "type": "string"
+   },
+   "title": {
+    "$ref": "#/$defs/Text"
+   },
+   "title_sa": {
+    "anyOf": [
+     {
+      "type": "string"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null,
+    "title": "Title Sa"
+   },
+   "minutes": {
+    "default": 6,
+    "title": "Minutes",
+    "type": "integer"
+   },
+   "teaches": {
+    "default": [],
+    "items": {
+     "type": "string"
+    },
+    "title": "Teaches",
+    "type": "array"
+   },
+   "needs": {
+    "default": [],
+    "items": {
+     "type": "string"
+    },
+    "title": "Needs",
+    "type": "array"
+   },
+   "review": {
+    "default": "draft",
+    "enum": [
+     "draft",
+     "engine_ok",
+     "scholar_ok"
+    ],
+    "title": "Review",
+    "type": "string"
+   },
+   "sources": {
+    "default": [],
+    "items": {
+     "$ref": "#/$defs/Source"
+    },
+    "title": "Sources",
+    "type": "array"
+   },
+   "cards": {
+    "items": {
+     "discriminator": {
+      "mapping": {
+       "explore": "#/$defs/ExploreCard",
+       "practice": "#/$defs/PracticeCard",
+       "reading": "#/$defs/ReadingCard",
+       "revision": "#/$defs/RevisionCard",
+       "story": "#/$defs/StoryCard",
+       "summary": "#/$defs/SummaryCard",
+       "table": "#/$defs/TableCard",
+       "teach": "#/$defs/TeachCard",
+       "video": "#/$defs/VideoCard"
+      },
+      "propertyName": "kind"
+     },
+     "oneOf": [
+      {
+       "$ref": "#/$defs/StoryCard"
+      },
+      {
+       "$ref": "#/$defs/TeachCard"
+      },
+      {
+       "$ref": "#/$defs/TableCard"
+      },
+      {
+       "$ref": "#/$defs/ExploreCard"
+      },
+      {
+       "$ref": "#/$defs/PracticeCard"
+      },
+      {
+       "$ref": "#/$defs/SummaryCard"
+      },
+      {
+       "$ref": "#/$defs/ReadingCard"
+      },
+      {
+       "$ref": "#/$defs/RevisionCard"
+      },
+      {
+       "$ref": "#/$defs/VideoCard"
+      }
+     ]
+    },
+    "title": "Cards",
+    "type": "array"
+   }
+  },
+  "required": [
+   "id",
+   "template",
+   "title",
+   "cards"
+  ],
+  "title": "Lesson",
+  "type": "object"
+ },
+ "bible": {
+  "$defs": {
+   "Character": {
+    "additionalProperties": false,
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "name_sa": {
+      "title": "Name Sa",
+      "type": "string"
+     },
+     "name": {
+      "$ref": "#/$defs/Text"
+     },
+     "kind": {
+      "enum": [
+       "human",
+       "animal",
+       "ghost",
+       "divine",
+       "historical"
+      ],
+      "title": "Kind",
+      "type": "string"
+     },
+     "role": {
+      "$ref": "#/$defs/Text"
+     },
+     "look": {
+      "title": "Look",
+      "type": "string"
+     },
+     "portrait": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/ImageRef"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "required": [
+     "id",
+     "name_sa",
+     "name",
+     "kind",
+     "role",
+     "look"
+    ],
+    "title": "Character",
+    "type": "object"
+   },
+   "Check": {
+    "additionalProperties": false,
+    "description": "One engine claim; the same vocabulary as the Grammar guide's checks\n(``app.services.grammar_guide.model``). Names are vidyut's: linga\nPum/Stri/Napumsaka; vibhakti Prathama, Dvitiya, Trtiya, Caturthi,\nPanchami, Sasthi, Saptami, Sambodhana; vacana Eka/Dvi/Bahu; lakara Lat,\nLit, Lut, Lrt, Let, Lot, Lan, VidhiLin, AshirLin, Lun, Lrn; purusha\nPrathama/Madhyama/Uttama.",
+    "properties": {
+     "type": {
+      "enum": [
+       "subanta",
+       "tinanta",
+       "krdanta",
+       "taddhita",
+       "sandhi"
+      ],
+      "title": "Type",
+      "type": "string"
+     },
+     "stem": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Stem"
+     },
+     "linga": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Linga"
+     },
+     "vibhakti": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Vibhakti"
+     },
+     "vacana": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Vacana"
+     },
+     "stem_type": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Stem Type"
+     },
+     "dhatu": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Dhatu"
+     },
+     "lakara": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Lakara"
+     },
+     "purusha": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Purusha"
+     },
+     "prayoga": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Prayoga"
+     },
+     "sanadi": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Sanadi"
+     },
+     "prefixes": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Prefixes"
+     },
+     "gana": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Gana"
+     },
+     "krt": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Krt"
+     },
+     "taddhita": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Taddhita"
+     },
+     "first": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "First"
+     },
+     "second": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Second"
+     },
+     "joined": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Joined"
+     },
+     "form": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Form"
+     }
+    },
+    "required": [
+     "type"
+    ],
+    "title": "Check",
+    "type": "object"
+   },
+   "Ghost": {
+    "additionalProperties": false,
+    "description": "The ghost freed when a unit is finished.",
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "unit": {
+      "title": "Unit",
+      "type": "string"
+     },
+     "waits_for": {
+      "$ref": "#/$defs/Text"
+     },
+     "freed_line": {
+      "$ref": "#/$defs/SaLine"
+     },
+     "clue": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/SaLine"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "freed_image": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/ImageRef"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "required": [
+     "id",
+     "unit",
+     "waits_for",
+     "freed_line"
+    ],
+    "title": "Ghost",
+    "type": "object"
+   },
+   "ImageRef": {
+    "additionalProperties": false,
+    "description": "A picture on a card. ChatGPT draws it from ``brief``; the delivery\nregistry (``content/images/deliveries.yaml``) maps ``id`` to the files.\n``text_in_image`` lists every string the picture must show, exactly, so\nthe text verifier can compare what was drawn.",
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "brief": {
+      "title": "Brief",
+      "type": "string"
+     },
+     "alt": {
+      "$ref": "#/$defs/Text"
+     },
+     "text_in_image": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Text In Image",
+      "type": "array"
+     },
+     "ratio": {
+      "default": "4:3",
+      "enum": [
+       "16:9",
+       "4:3",
+       "1:1",
+       "3:4",
+       "9:16"
+      ],
+      "title": "Ratio",
+      "type": "string"
+     },
+     "cast": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Cast",
+      "type": "array"
+     },
+     "place": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Place"
+     }
+    },
+    "required": [
+     "id",
+     "brief",
+     "alt"
+    ],
+    "title": "ImageRef",
+    "type": "object"
+   },
+   "Leaf": {
+    "additionalProperties": false,
+    "description": "One of the seven tales of Guṇāḍhya's book. Leaves 1–6 are the burned\ntales recovered at the end of each part; leaf 7 is the tale that\nsurvived, read at the end of the course.",
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "n": {
+      "title": "N",
+      "type": "integer"
+     },
+     "title": {
+      "$ref": "#/$defs/Text"
+     },
+     "title_sa": {
+      "title": "Title Sa",
+      "type": "string"
+     },
+     "tale": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Tale"
+     },
+     "about": {
+      "$ref": "#/$defs/Text"
+     },
+     "image": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/ImageRef"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "required": [
+     "id",
+     "n",
+     "title",
+     "title_sa",
+     "about"
+    ],
+    "title": "Leaf",
+    "type": "object"
+   },
+   "Place": {
+    "additionalProperties": false,
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "name_sa": {
+      "title": "Name Sa",
+      "type": "string"
+     },
+     "name": {
+      "$ref": "#/$defs/Text"
+     },
+     "look": {
+      "title": "Look",
+      "type": "string"
+     }
+    },
+    "required": [
+     "id",
+     "name_sa",
+     "name",
+     "look"
+    ],
+    "title": "Place",
+    "type": "object"
+   },
+   "SaLine": {
+    "additionalProperties": false,
+    "properties": {
+     "sa": {
+      "title": "Sa",
+      "type": "string"
+     },
+     "gloss": {
+      "$ref": "#/$defs/Text"
+     },
+     "check": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/Check"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     }
+    },
+    "required": [
+     "sa",
+     "gloss"
+    ],
+    "title": "SaLine",
+    "type": "object"
+   },
+   "Text": {
+    "additionalProperties": false,
+    "description": "A learner-facing string in English and Hindi. ``{{संस्कृत}}`` marks\ninline Sanskrit (rendered in the Sanskrit face); ``**bold**`` is allowed.",
+    "properties": {
+     "en": {
+      "title": "En",
+      "type": "string"
+     },
+     "hi": {
+      "default": "",
+      "title": "Hi",
+      "type": "string"
+     }
+    },
+    "required": [
+     "en"
+    ],
+    "title": "Text",
+    "type": "object"
+   }
+  },
+  "additionalProperties": false,
+  "properties": {
+   "style": {
+    "title": "Style",
+    "type": "string"
+   },
+   "characters": {
+    "items": {
+     "$ref": "#/$defs/Character"
+    },
+    "title": "Characters",
+    "type": "array"
+   },
+   "places": {
+    "items": {
+     "$ref": "#/$defs/Place"
+    },
+    "title": "Places",
+    "type": "array"
+   },
+   "ghosts": {
+    "items": {
+     "$ref": "#/$defs/Ghost"
+    },
+    "title": "Ghosts",
+    "type": "array"
+   },
+   "leaves": {
+    "items": {
+     "$ref": "#/$defs/Leaf"
+    },
+    "title": "Leaves",
+    "type": "array"
+   }
+  },
+  "required": [
+   "style",
+   "characters",
+   "places",
+   "ghosts",
+   "leaves"
+  ],
+  "title": "Bible",
+  "type": "object"
+ },
+ "image_delivery": {
+  "additionalProperties": false,
+  "description": "A delivered picture (written by the image agent after verification).",
+  "properties": {
+   "id": {
+    "title": "Id",
+    "type": "string"
+   },
+   "phone": {
+    "title": "Phone",
+    "type": "string"
+   },
+   "tablet": {
+    "title": "Tablet",
+    "type": "string"
+   },
+   "width": {
+    "title": "Width",
+    "type": "integer"
+   },
+   "height": {
+    "title": "Height",
+    "type": "integer"
+   },
+   "sha256": {
+    "title": "Sha256",
+    "type": "string"
+   },
+   "text_verified": {
+    "default": false,
+    "title": "Text Verified",
+    "type": "boolean"
+   },
+   "prompt": {
+    "anyOf": [
+     {
+      "type": "string"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null,
+    "title": "Prompt"
+   }
+  },
+  "required": [
+   "id",
+   "phone",
+   "tablet",
+   "width",
+   "height",
+   "sha256"
+  ],
+  "title": "ImageDelivery",
+  "type": "object"
+ },
+ "widget_params": {
+  "letter_builder": {
+   "additionalProperties": false,
+   "description": "Drag a vowel sign onto a consonant, or a half letter (with ्) onto a\nconsonant to snap a conjunct. Results are plain Unicode joins\n(क + ि = कि, क् + ष = क्ष); ``targets`` are optional goals to tick off.",
+   "properties": {
+    "bases": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Bases",
+     "type": "array"
+    },
+    "signs": {
+     "default": [],
+     "items": {
+      "type": "string"
+     },
+     "title": "Signs",
+     "type": "array"
+    },
+    "halves": {
+     "default": [],
+     "items": {
+      "type": "string"
+     },
+     "title": "Halves",
+     "type": "array"
+    },
+    "targets": {
+     "default": [],
+     "items": {
+      "type": "string"
+     },
+     "title": "Targets",
+     "type": "array"
+    }
+   },
+   "required": [
+    "bases"
+   ],
+   "title": "LetterBuilderParams",
+   "type": "object"
+  },
+  "mouth_map": {
+   "additionalProperties": false,
+   "description": "A side view of the mouth; tap a letter to light its place, or a place\nto list its letters. → built: ``places`` {letter: [place ids]}.",
+   "properties": {
+    "letters": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Letters",
+     "type": "array"
+    }
+   },
+   "required": [
+    "letters"
+   ],
+   "title": "MouthMapParams",
+   "type": "object"
+  },
+  "form_explorer": {
+   "$defs": {
+    "RootSpec": {
+     "additionalProperties": false,
+     "properties": {
+      "dhatu": {
+       "title": "Dhatu",
+       "type": "string"
+      },
+      "lakaras": {
+       "default": [
+        "Lat"
+       ],
+       "items": {
+        "type": "string"
+       },
+       "title": "Lakaras",
+       "type": "array"
+      },
+      "gana": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Gana"
+      },
+      "prayoga": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Prayoga"
+      },
+      "gloss": {
+       "anyOf": [
+        {
+         "$ref": "#/$defs/Text"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null
+      }
+     },
+     "required": [
+      "dhatu"
+     ],
+     "title": "RootSpec",
+     "type": "object"
+    },
+    "StemSpec": {
+     "additionalProperties": false,
+     "properties": {
+      "stem": {
+       "title": "Stem",
+       "type": "string"
+      },
+      "linga": {
+       "enum": [
+        "Pum",
+        "Stri",
+        "Napumsaka"
+       ],
+       "title": "Linga",
+       "type": "string"
+      },
+      "stem_type": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Stem Type"
+      },
+      "gloss": {
+       "anyOf": [
+        {
+         "$ref": "#/$defs/Text"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null
+      }
+     },
+     "required": [
+      "stem",
+      "linga"
+     ],
+     "title": "StemSpec",
+     "type": "object"
+    },
+    "Text": {
+     "additionalProperties": false,
+     "description": "A learner-facing string in English and Hindi. ``{{संस्कृत}}`` marks\ninline Sanskrit (rendered in the Sanskrit face); ``**bold**`` is allowed.",
+     "properties": {
+      "en": {
+       "title": "En",
+       "type": "string"
+      },
+      "hi": {
+       "default": "",
+       "title": "Hi",
+       "type": "string"
+      }
+     },
+     "required": [
+      "en"
+     ],
+     "title": "Text",
+     "type": "object"
+    }
+   },
+   "additionalProperties": false,
+   "description": "Switch case/number (nouns) or person/number/tense (verbs) and watch\nthe form change. Give ``stems`` or ``roots``, not both. → built: every\ngrid from the engine (``paradigms``).",
+   "properties": {
+    "stems": {
+     "default": [],
+     "items": {
+      "$ref": "#/$defs/StemSpec"
+     },
+     "title": "Stems",
+     "type": "array"
+    },
+    "roots": {
+     "default": [],
+     "items": {
+      "$ref": "#/$defs/RootSpec"
+     },
+     "title": "Roots",
+     "type": "array"
+    },
+    "vibhaktis": {
+     "default": [],
+     "items": {
+      "type": "string"
+     },
+     "title": "Vibhaktis",
+     "type": "array"
+    },
+    "vacanas": {
+     "default": [],
+     "items": {
+      "type": "string"
+     },
+     "title": "Vacanas",
+     "type": "array"
+    }
+   },
+   "title": "FormExplorerParams",
+   "type": "object"
+  },
+  "role_arrows": {
+   "$defs": {
+    "Check": {
+     "additionalProperties": false,
+     "description": "One engine claim; the same vocabulary as the Grammar guide's checks\n(``app.services.grammar_guide.model``). Names are vidyut's: linga\nPum/Stri/Napumsaka; vibhakti Prathama, Dvitiya, Trtiya, Caturthi,\nPanchami, Sasthi, Saptami, Sambodhana; vacana Eka/Dvi/Bahu; lakara Lat,\nLit, Lut, Lrt, Let, Lot, Lan, VidhiLin, AshirLin, Lun, Lrn; purusha\nPrathama/Madhyama/Uttama.",
+     "properties": {
+      "type": {
+       "enum": [
+        "subanta",
+        "tinanta",
+        "krdanta",
+        "taddhita",
+        "sandhi"
+       ],
+       "title": "Type",
+       "type": "string"
+      },
+      "stem": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Stem"
+      },
+      "linga": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Linga"
+      },
+      "vibhakti": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Vibhakti"
+      },
+      "vacana": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Vacana"
+      },
+      "stem_type": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Stem Type"
+      },
+      "dhatu": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Dhatu"
+      },
+      "lakara": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Lakara"
+      },
+      "purusha": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Purusha"
+      },
+      "prayoga": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Prayoga"
+      },
+      "sanadi": {
+       "anyOf": [
+        {
+         "items": {
+          "type": "string"
+         },
+         "type": "array"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Sanadi"
+      },
+      "prefixes": {
+       "anyOf": [
+        {
+         "items": {
+          "type": "string"
+         },
+         "type": "array"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Prefixes"
+      },
+      "gana": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Gana"
+      },
+      "krt": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Krt"
+      },
+      "taddhita": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Taddhita"
+      },
+      "first": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "First"
+      },
+      "second": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Second"
+      },
+      "joined": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Joined"
+      },
+      "form": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Form"
+      }
+     },
+     "required": [
+      "type"
+     ],
+     "title": "Check",
+     "type": "object"
+    },
+    "RoleWord": {
+     "additionalProperties": false,
+     "properties": {
+      "sa": {
+       "title": "Sa",
+       "type": "string"
+      },
+      "role": {
+       "enum": [
+        "karta",
+        "karma",
+        "karana",
+        "sampradana",
+        "apadana",
+        "sambandha",
+        "adhikarana",
+        "sambodhana",
+        "kriya",
+        "other"
+       ],
+       "title": "Role",
+       "type": "string"
+      },
+      "gloss": {
+       "$ref": "#/$defs/Text"
+      },
+      "check": {
+       "anyOf": [
+        {
+         "$ref": "#/$defs/Check"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null
+      }
+     },
+     "required": [
+      "sa",
+      "role",
+      "gloss"
+     ],
+     "title": "RoleWord",
+     "type": "object"
+    },
+    "Text": {
+     "additionalProperties": false,
+     "description": "A learner-facing string in English and Hindi. ``{{संस्कृत}}`` marks\ninline Sanskrit (rendered in the Sanskrit face); ``**bold**`` is allowed.",
+     "properties": {
+      "en": {
+       "title": "En",
+       "type": "string"
+      },
+      "hi": {
+       "default": "",
+       "title": "Hi",
+       "type": "string"
+      }
+     },
+     "required": [
+      "en"
+     ],
+     "title": "Text",
+     "type": "object"
+    }
+   },
+   "additionalProperties": false,
+   "description": "Draw an arrow from each noun to the verb and name its role.",
+   "properties": {
+    "sentence": {
+     "items": {
+      "$ref": "#/$defs/RoleWord"
+     },
+     "title": "Sentence",
+     "type": "array"
+    },
+    "meaning": {
+     "$ref": "#/$defs/Text"
+    }
+   },
+   "required": [
+    "sentence",
+    "meaning"
+   ],
+   "title": "RoleArrowsParams",
+   "type": "object"
+  },
+  "time_slider": {
+   "$defs": {
+    "Check": {
+     "additionalProperties": false,
+     "description": "One engine claim; the same vocabulary as the Grammar guide's checks\n(``app.services.grammar_guide.model``). Names are vidyut's: linga\nPum/Stri/Napumsaka; vibhakti Prathama, Dvitiya, Trtiya, Caturthi,\nPanchami, Sasthi, Saptami, Sambodhana; vacana Eka/Dvi/Bahu; lakara Lat,\nLit, Lut, Lrt, Let, Lot, Lan, VidhiLin, AshirLin, Lun, Lrn; purusha\nPrathama/Madhyama/Uttama.",
+     "properties": {
+      "type": {
+       "enum": [
+        "subanta",
+        "tinanta",
+        "krdanta",
+        "taddhita",
+        "sandhi"
+       ],
+       "title": "Type",
+       "type": "string"
+      },
+      "stem": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Stem"
+      },
+      "linga": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Linga"
+      },
+      "vibhakti": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Vibhakti"
+      },
+      "vacana": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Vacana"
+      },
+      "stem_type": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Stem Type"
+      },
+      "dhatu": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Dhatu"
+      },
+      "lakara": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Lakara"
+      },
+      "purusha": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Purusha"
+      },
+      "prayoga": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Prayoga"
+      },
+      "sanadi": {
+       "anyOf": [
+        {
+         "items": {
+          "type": "string"
+         },
+         "type": "array"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Sanadi"
+      },
+      "prefixes": {
+       "anyOf": [
+        {
+         "items": {
+          "type": "string"
+         },
+         "type": "array"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Prefixes"
+      },
+      "gana": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Gana"
+      },
+      "krt": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Krt"
+      },
+      "taddhita": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Taddhita"
+      },
+      "first": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "First"
+      },
+      "second": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Second"
+      },
+      "joined": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Joined"
+      },
+      "form": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Form"
+      }
+     },
+     "required": [
+      "type"
+     ],
+     "title": "Check",
+     "type": "object"
+    },
+    "Text": {
+     "additionalProperties": false,
+     "description": "A learner-facing string in English and Hindi. ``{{संस्कृत}}`` marks\ninline Sanskrit (rendered in the Sanskrit face); ``**bold**`` is allowed.",
+     "properties": {
+      "en": {
+       "title": "En",
+       "type": "string"
+      },
+      "hi": {
+       "default": "",
+       "title": "Hi",
+       "type": "string"
+      }
+     },
+     "required": [
+      "en"
+     ],
+     "title": "Text",
+     "type": "object"
+    },
+    "TimeForm": {
+     "additionalProperties": false,
+     "properties": {
+      "label": {
+       "$ref": "#/$defs/Text"
+      },
+      "sa": {
+       "title": "Sa",
+       "type": "string"
+      },
+      "meaning": {
+       "$ref": "#/$defs/Text"
+      },
+      "check": {
+       "anyOf": [
+        {
+         "$ref": "#/$defs/Check"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null
+      }
+     },
+     "required": [
+      "label",
+      "sa",
+      "meaning"
+     ],
+     "title": "TimeForm",
+     "type": "object"
+    }
+   },
+   "additionalProperties": false,
+   "description": "One sentence slid from past to present to future.",
+   "properties": {
+    "forms": {
+     "items": {
+      "$ref": "#/$defs/TimeForm"
+     },
+     "title": "Forms",
+     "type": "array"
+    }
+   },
+   "required": [
+    "forms"
+   ],
+   "title": "TimeSliderParams",
+   "type": "object"
+  },
+  "word_shuffle": {
+   "$defs": {
+    "Text": {
+     "additionalProperties": false,
+     "description": "A learner-facing string in English and Hindi. ``{{संस्कृत}}`` marks\ninline Sanskrit (rendered in the Sanskrit face); ``**bold**`` is allowed.",
+     "properties": {
+      "en": {
+       "title": "En",
+       "type": "string"
+      },
+      "hi": {
+       "default": "",
+       "title": "Hi",
+       "type": "string"
+      }
+     },
+     "required": [
+      "en"
+     ],
+     "title": "Text",
+     "type": "object"
+    }
+   },
+   "additionalProperties": false,
+   "description": "Reorder the words freely; the meaning stays the same. ``not_first``\nlists words that follow another word and never open a sentence (the\nparticles च, वा, हि…): an order that starts with one is shown as not\nnatural. Authored, for the scholar to confirm; the app decides nothing.",
+   "properties": {
+    "words": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Words",
+     "type": "array"
+    },
+    "meaning": {
+     "$ref": "#/$defs/Text"
+    },
+    "not_first": {
+     "default": [],
+     "items": {
+      "type": "string"
+     },
+     "title": "Not First",
+     "type": "array"
+    }
+   },
+   "required": [
+    "words",
+    "meaning"
+   ],
+   "title": "WordShuffleParams",
+   "type": "object"
+  },
+  "sandhi_mixer": {
+   "$defs": {
+    "SandhiPair": {
+     "additionalProperties": false,
+     "properties": {
+      "first": {
+       "title": "First",
+       "type": "string"
+      },
+      "second": {
+       "title": "Second",
+       "type": "string"
+      },
+      "joined": {
+       "title": "Joined",
+       "type": "string"
+      },
+      "sutras": {
+       "default": [],
+       "items": {
+        "type": "string"
+       },
+       "title": "Sutras",
+       "type": "array"
+      }
+     },
+     "required": [
+      "first",
+      "second",
+      "joined"
+     ],
+     "title": "SandhiPair",
+     "type": "object"
+    }
+   },
+   "additionalProperties": false,
+   "description": "Drop one word on another to join them; pull them apart to split.\nEvery pair is checked against the engine's sandhi table.",
+   "properties": {
+    "pairs": {
+     "items": {
+      "$ref": "#/$defs/SandhiPair"
+     },
+     "title": "Pairs",
+     "type": "array"
+    }
+   },
+   "required": [
+    "pairs"
+   ],
+   "title": "SandhiMixerParams",
+   "type": "object"
+  },
+  "compound_unpacker": {
+   "$defs": {
+    "Text": {
+     "additionalProperties": false,
+     "description": "A learner-facing string in English and Hindi. ``{{संस्कृत}}`` marks\ninline Sanskrit (rendered in the Sanskrit face); ``**bold**`` is allowed.",
+     "properties": {
+      "en": {
+       "title": "En",
+       "type": "string"
+      },
+      "hi": {
+       "default": "",
+       "title": "Hi",
+       "type": "string"
+      }
+     },
+     "required": [
+      "en"
+     ],
+     "title": "Text",
+     "type": "object"
+    }
+   },
+   "additionalProperties": false,
+   "description": "Split a compound and build its meaning tree. The engine does not\ncheck compounds: these need the scholar's review.",
+   "properties": {
+    "compound": {
+     "title": "Compound",
+     "type": "string"
+    },
+    "parts": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Parts",
+     "type": "array"
+    },
+    "kind": {
+     "enum": [
+      "tatpurusha",
+      "karmadharaya",
+      "dvigu",
+      "dvandva",
+      "bahuvrihi",
+      "avyayibhava"
+     ],
+     "title": "Kind",
+     "type": "string"
+    },
+    "vigraha": {
+     "title": "Vigraha",
+     "type": "string"
+    },
+    "meaning": {
+     "$ref": "#/$defs/Text"
+    }
+   },
+   "required": [
+    "compound",
+    "parts",
+    "kind",
+    "vigraha",
+    "meaning"
+   ],
+   "title": "CompoundUnpackerParams",
+   "type": "object"
+  },
+  "word_factory": {
+   "$defs": {
+    "FactoryRoot": {
+     "additionalProperties": false,
+     "properties": {
+      "dhatu": {
+       "title": "Dhatu",
+       "type": "string"
+      },
+      "gloss": {
+       "$ref": "#/$defs/Text"
+      },
+      "gana": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Gana"
+      }
+     },
+     "required": [
+      "dhatu",
+      "gloss"
+     ],
+     "title": "FactoryRoot",
+     "type": "object"
+    },
+    "FactorySuffix": {
+     "additionalProperties": false,
+     "properties": {
+      "krt": {
+       "title": "Krt",
+       "type": "string"
+      },
+      "label": {
+       "$ref": "#/$defs/Text"
+      }
+     },
+     "required": [
+      "krt",
+      "label"
+     ],
+     "title": "FactorySuffix",
+     "type": "object"
+    },
+    "Text": {
+     "additionalProperties": false,
+     "description": "A learner-facing string in English and Hindi. ``{{संस्कृत}}`` marks\ninline Sanskrit (rendered in the Sanskrit face); ``**bold**`` is allowed.",
+     "properties": {
+      "en": {
+       "title": "En",
+       "type": "string"
+      },
+      "hi": {
+       "default": "",
+       "title": "Hi",
+       "type": "string"
+      }
+     },
+     "required": [
+      "en"
+     ],
+     "title": "Text",
+     "type": "object"
+    }
+   },
+   "additionalProperties": false,
+   "description": "Snap a suffix onto a root and get a new word. → built: ``results``\n{dhātu|krt: form} from the engine (a cell it cannot make is left out).",
+   "properties": {
+    "roots": {
+     "items": {
+      "$ref": "#/$defs/FactoryRoot"
+     },
+     "title": "Roots",
+     "type": "array"
+    },
+    "suffixes": {
+     "items": {
+      "$ref": "#/$defs/FactorySuffix"
+     },
+     "title": "Suffixes",
+     "type": "array"
+    }
+   },
+   "required": [
+    "roots",
+    "suffixes"
+   ],
+   "title": "WordFactoryParams",
+   "type": "object"
+  },
+  "mark_words": {
+   "additionalProperties": false,
+   "description": "Tap every word in the passage that matches the prompt.",
+   "properties": {
+    "passage": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Passage",
+     "type": "array"
+    },
+    "targets": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Targets",
+     "type": "array"
+    }
+   },
+   "required": [
+    "passage",
+    "targets"
+   ],
+   "title": "MarkWordsParams",
+   "type": "object"
+  },
+  "rhythm_tapper": {
+   "additionalProperties": false,
+   "description": "Tap for a light syllable, hold for a heavy one; the pattern (and the\nmetre's name) appears. → built: ``scan`` per line from the engine.",
+   "properties": {
+    "lines": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Lines",
+     "type": "array"
+    }
+   },
+   "required": [
+    "lines"
+   ],
+   "title": "RhythmTapperParams",
+   "type": "object"
+  },
+  "derivation_stepper": {
+   "$defs": {
+    "Check": {
+     "additionalProperties": false,
+     "description": "One engine claim; the same vocabulary as the Grammar guide's checks\n(``app.services.grammar_guide.model``). Names are vidyut's: linga\nPum/Stri/Napumsaka; vibhakti Prathama, Dvitiya, Trtiya, Caturthi,\nPanchami, Sasthi, Saptami, Sambodhana; vacana Eka/Dvi/Bahu; lakara Lat,\nLit, Lut, Lrt, Let, Lot, Lan, VidhiLin, AshirLin, Lun, Lrn; purusha\nPrathama/Madhyama/Uttama.",
+     "properties": {
+      "type": {
+       "enum": [
+        "subanta",
+        "tinanta",
+        "krdanta",
+        "taddhita",
+        "sandhi"
+       ],
+       "title": "Type",
+       "type": "string"
+      },
+      "stem": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Stem"
+      },
+      "linga": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Linga"
+      },
+      "vibhakti": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Vibhakti"
+      },
+      "vacana": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Vacana"
+      },
+      "stem_type": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Stem Type"
+      },
+      "dhatu": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Dhatu"
+      },
+      "lakara": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Lakara"
+      },
+      "purusha": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Purusha"
+      },
+      "prayoga": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Prayoga"
+      },
+      "sanadi": {
+       "anyOf": [
+        {
+         "items": {
+          "type": "string"
+         },
+         "type": "array"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Sanadi"
+      },
+      "prefixes": {
+       "anyOf": [
+        {
+         "items": {
+          "type": "string"
+         },
+         "type": "array"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Prefixes"
+      },
+      "gana": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Gana"
+      },
+      "krt": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Krt"
+      },
+      "taddhita": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Taddhita"
+      },
+      "first": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "First"
+      },
+      "second": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Second"
+      },
+      "joined": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Joined"
+      },
+      "form": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "title": "Form"
+      }
+     },
+     "required": [
+      "type"
+     ],
+     "title": "Check",
+     "type": "object"
+    }
+   },
+   "additionalProperties": false,
+   "description": "A word built one sūtra at a time. ``spec`` says what to derive (the\nsame vocabulary as a check). → built: ``steps`` from the engine.",
+   "properties": {
+    "target": {
+     "title": "Target",
+     "type": "string"
+    },
+    "spec": {
+     "$ref": "#/$defs/Check"
+    }
+   },
+   "required": [
+    "target",
+    "spec"
+   ],
+   "title": "DerivationStepperParams",
+   "type": "object"
+  }
+ }
+}

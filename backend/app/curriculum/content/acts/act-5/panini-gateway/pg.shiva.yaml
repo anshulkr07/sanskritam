@@ -1,0 +1,378 @@
+id: pg.shiva
+template: scene
+title:
+  en: Fourteen lines of sound
+  hi: ध्वनि की चौदह पंक्तियाँ
+title_sa: माहेश्वराणि सूत्राणि
+minutes: 6
+teaches:
+- panini.shiva-sutras
+needs:
+- script.cons.grid
+- script.vowel.long
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The last alcove
+    hi: अन्तिम आला
+  depth: core
+  image:
+    brief: A mountain cave with four alcoves in the far wall, three dark and the last one glowing behind a sealed round stone; fourteen short lines of script carved above it in a neat row; a small silver spirit of whom only a crescent quarter is visible sitting beside the stone; Dādī and Śuka looking up at the carving; Lubdhaka at the cave mouth with one hand raised, commanding.
+    alt:
+      en: A glowing alcove behind a sealed stone with fourteen short carved lines above it
+      hi: बन्द पत्थर के पीछे चमकता आला और उसके ऊपर खुदी चौदह छोटी पंक्तियाँ
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - padika
+    place: guha
+    ratio: '4:3'
+    id: pg-shiva-s1
+  narration:
+    en: 'The last alcove glows behind a sealed stone, with fourteen short lines of script above it. Beside it sits Padikā, a spirit of whom only a quarter can be seen. “Speech has four quarters,” says Dādī. “Three lie hidden in the cave; people speak the fourth. Pāṇini''s grammar finds the hidden ones, beginning with these lines.” Lubdhaka, at the cave mouth, says: “Open it.”'
+    hi: 'अन्तिम आला एक बन्द पत्थर के पीछे चमक रहा है, और उसके ऊपर लिपि की चौदह छोटी पंक्तियाँ हैं। उसके पास पदिका बैठी है, एक भूत जिसका केवल चौथाई भाग दिखता है। “वाणी के चार चरण हैं,” दादी कहती हैं। “तीन गुफा में छिपे हैं; चौथा लोग बोलते हैं। पाणिनि का व्याकरण छिपे हुओं को खोजता है, इन्हीं पंक्तियों से आरम्भ करके।” गुफा के द्वार पर लुब्धक कहता है: “इसे खोलो।”'
+  quote:
+    sa: चत्वारि वाक् परिमिता पदानि तानि विदुर् ब्राह्मणा ये मनीषिणः गुहा त्रीणि निहिता नेङ्गयन्ति तुरीयं वाचो मनुष्या वदन्ति
+    gloss:
+      en: Speech has four measured quarters; the wise know them. Three, hidden in the cave, do not stir; the fourth quarter of speech is what people speak.
+      hi: वाणी के चार नपे-तुले चरण हैं; ज्ञानी उन्हें जानते हैं। तीन, गुफा में छिपे, हिलते नहीं; वाणी का चौथा चरण मनुष्य बोलते हैं।
+    source: Ṛgveda 1.164.45 (read at GRETIL, Aufrecht's edition)
+- id: t1
+  kind: teach
+  title:
+    en: Fourteen lines
+    hi: चौदह पंक्तियाँ
+  depth: core
+  skills:
+  - panini.shiva-sutras
+  body:
+    en: 'The Śiva sūtras list every sound of Sanskrit in fourteen short lines; tradition ascribes them to Śiva. Each line ends with a marker, a letter that is not itself a sound: ण् क् ङ् च् ट् ण् म् ञ् ष् श् व् य् र् ल्. They are Pāṇini''s alphabet, arranged so that groups of sounds stand side by side.'
+    hi: 'शिवसूत्र संस्कृत की हर ध्वनि को चौदह छोटी पंक्तियों में गिनाते हैं; परम्परा उन्हें शिव से जोड़ती है। हर पंक्ति एक संकेत पर समाप्त होती है, एक ऐसा अक्षर जो स्वयं ध्वनि नहीं है: ण् क् ङ् च् ट् ण् म् ञ् ष् श् व् य् र् ल्। वे पाणिनि की वर्णमाला हैं, इस क्रम में कि ध्वनियों के समूह साथ-साथ आएँ।'
+- id: tb1
+  kind: table
+  title:
+    en: The fourteen lines
+    hi: चौदह पंक्तियाँ
+  depth: core
+  skills:
+  - panini.shiva-sutras
+  sutras:
+  - SS.1
+  - SS.14
+  caption:
+    en: Each line, and the sounds before its marker
+    hi: हर पंक्ति, और संकेत से पहले की ध्वनियाँ
+  columns:
+  - en: No.
+    hi: क्र.
+  - en: The line
+    hi: पंक्ति
+  - en: Sounds
+    hi: ध्वनियाँ
+  rows:
+  - - text:
+        en: '1'
+        hi: १
+    - sa: अइउण्
+    - sa: अ इ उ
+  - - text:
+        en: '2'
+        hi: २
+    - sa: ऋऌक्
+    - sa: ऋ ऌ
+  - - text:
+        en: '3'
+        hi: ३
+    - sa: एओङ्
+    - sa: ए ओ
+  - - text:
+        en: '4'
+        hi: ४
+    - sa: ऐऔच्
+    - sa: ऐ औ
+  - - text:
+        en: '5'
+        hi: ५
+    - sa: हयवरट्
+    - sa: ह य व र
+  - - text:
+        en: '6'
+        hi: ६
+    - sa: लण्
+    - sa: ल
+  - - text:
+        en: '7'
+        hi: ७
+    - sa: ञमङणनम्
+    - sa: ञ म ङ ण न
+  - - text:
+        en: '8'
+        hi: ८
+    - sa: झभञ्
+    - sa: झ भ
+  - - text:
+        en: '9'
+        hi: ९
+    - sa: घढधष्
+    - sa: घ ढ ध
+  - - text:
+        en: '10'
+        hi: १०
+    - sa: जबगडदश्
+    - sa: ज ब ग ड द
+  - - text:
+        en: '11'
+        hi: ११
+    - sa: खफछठथचटतव्
+    - sa: ख फ छ ठ थ च ट त
+  - - text:
+        en: '12'
+        hi: १२
+    - sa: कपय्
+    - sa: क प
+  - - text:
+        en: '13'
+        hi: १३
+    - sa: शषसर्
+    - sa: श ष स
+  - - text:
+        en: '14'
+        hi: १४
+    - sa: हल्
+    - sa: ह
+  note:
+    en: 'The marker is dropped: it names the group, it is not a sound.'
+    hi: 'संकेत हटा दिया जाता है: वह समूह का नाम बताता है, ध्वनि नहीं है।'
+- id: t2
+  kind: teach
+  title:
+    en: Two-letter names
+    hi: दो अक्षरों के नाम
+  depth: core
+  skills:
+  - panini.shiva-sutras
+  body:
+    en: 'Pāṇini needs short names for groups of sounds. Take a letter and a later marker: the name stands for that letter and every sound between them, markers left out. So {{अच्}}, from अ to च्, is all the vowels; {{हल्}}, from ह to ल्, is all the consonants.'
+    hi: 'पाणिनि को ध्वनि-समूहों के छोटे नाम चाहिए। एक अक्षर और उसके बाद का एक संकेत लीजिए: नाम उस अक्षर और बीच की हर ध्वनि का है, संकेत छोड़कर। इसलिए {{अच्}}, अ से च् तक, सब स्वर है; {{हल्}}, ह से ल् तक, सब व्यञ्जन है।'
+  term:
+    sa: प्रत्याहारः
+    meaning:
+      en: a short name for a group of sounds
+      hi: ध्वनि-समूह का संक्षिप्त नाम
+- id: tb2
+  kind: table
+  title:
+    en: Names made from the lines
+    hi: पंक्तियों से बने नाम
+  depth: core
+  skills:
+  - panini.shiva-sutras
+  sutras:
+  - 1.1.71
+  caption:
+    en: From a letter to a marker
+    hi: एक अक्षर से एक संकेत तक
+  columns:
+  - en: Name
+    hi: नाम
+  - en: From … to
+    hi: से … तक
+  - en: Sounds
+    hi: ध्वनियाँ
+  rows:
+  - - sa: अच्
+    - sa: अ … च्
+    - sa: अ इ उ ऋ ऌ ए ओ ऐ औ
+  - - sa: इक्
+    - sa: इ … क्
+    - sa: इ उ ऋ ऌ
+  - - sa: एच्
+    - sa: ए … च्
+    - sa: ए ओ ऐ औ
+  - - sa: यण्
+    - sa: य … ण्
+    - sa: य व र ल
+  - - sa: जश्
+    - sa: ज … श्
+    - sa: ज ब ग ड द
+  - - sa: शल्
+    - sa: श … ल्
+    - sa: श ष स ह
+  - - sa: हल्
+    - sa: ह … ल्
+    - sa: ह य व र ल ञ म ङ ण न झ भ घ ढ ध ज ब ग ड द ख फ छ ठ थ च ट त क प श ष स
+  note:
+    en: Each letter also stands for its long and nasal forms.
+    hi: हर अक्षर अपने दीर्घ और अनुनासिक रूपों का भी बोध कराता है।
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - panini.shiva-sutras
+  widget: mark_words
+  prompt:
+    en: Tap the sounds inside the name {{इक्}}.
+    hi: नाम {{इक्}} के भीतर की ध्वनियाँ छुइए।
+  params:
+    passage:
+    - अ
+    - इ
+    - उ
+    - ऋ
+    - ऌ
+    - ए
+    - ओ
+    targets:
+    - इ
+    - उ
+    - ऋ
+    - ऌ
+  roman: show
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - panini.shiva-sutras
+  mode: choice
+  prompt:
+    en: Which name stands for all the vowels?
+    hi: कौन-सा नाम सब स्वरों का है?
+  explain:
+    en: '{{अच्}}: from अ to the marker च्, the nine vowels.'
+    hi: '{{अच्}}: अ से संकेत च् तक, नौ स्वर।'
+  roman: after
+  options:
+  - correct: true
+    sa: अच्
+  - sa: हल्
+  - sa: यण्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - panini.shiva-sutras
+  mode: match
+  prompt:
+    en: Join each name to its sounds.
+    hi: हर नाम को उसकी ध्वनियों से जोड़िए।
+  explain:
+    en: Each name is a letter and a marker.
+    hi: हर नाम एक अक्षर और एक संकेत है।
+  roman: after
+  pairs:
+  - left:
+      sa: अच्
+    right:
+      text:
+        en: all the vowels
+        hi: सब स्वर
+  - left:
+      sa: हल्
+    right:
+      text:
+        en: all the consonants
+        hi: सब व्यञ्जन
+  - left:
+      sa: यण्
+    right:
+      text:
+        en: the four semivowels
+        hi: चार अन्तःस्थ
+  - left:
+      sa: एच्
+    right:
+      text:
+        en: the four diphthongs
+        hi: चार सन्ध्यक्षर
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - panini.shiva-sutras
+  mode: type
+  prompt:
+    en: Build the name of the four diphthongs {{ए ओ ऐ औ}}.
+    hi: चार सन्ध्यक्षरों {{ए ओ ऐ औ}} का नाम बनाइए।
+  explain:
+    en: 'From ए to the marker च्: {{एच्}}.'
+    hi: 'ए से संकेत च् तक: {{एच्}}।'
+  roman: after
+  answers:
+  - एच्
+  tiles:
+  - ए
+  - च्
+  - ङ्
+  - ण्
+- id: p4
+  kind: practice
+  title:
+    en: The first line
+    hi: पहली पंक्ति
+  depth: core
+  skills:
+  - panini.shiva-sutras
+  mode: choice
+  prompt:
+    en: Which name stands for {{अ इ उ ऋ ऌ}}?
+    hi: कौन-सा नाम {{अ इ उ ऋ ऌ}} का है?
+  explain:
+    en: 'From अ to the marker क् of the second line: {{अक्}}.'
+    hi: 'अ से दूसरी पंक्ति के संकेत क् तक: {{अक्}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“अक्,” you say, and the first line of the carving, अइउण्, brightens, and then the second, and the third, line after line, like a row of lamps taken from one flame. Padikā, who has been a crescent, grows to a half. “Every sound has its place,” she says, “and a short name in the order.” At the cave mouth, Lubdhaka says: “Faster.”'
+      hi: '“अक्,” आप कहते हैं, और खुदी पंक्तियों की पहली, अइउण्, चमक उठती है, फिर दूसरी, फिर तीसरी, पंक्ति पर पंक्ति, जैसे एक ही लौ से जलाए दीपों की कतार। पदिका, जो अब तक अर्धचन्द्र थी, आधी हो जाती है। “हर ध्वनि का अपना स्थान है,” वह कहती है, “और क्रम में एक छोटा नाम।” गुफा के द्वार पर लुब्धक कहता है: “और तेज़।”'
+    failure:
+      en: The lines stay dim. {{अक्}} runs from अ to the marker क्.
+      hi: पंक्तियाँ मद्धम रहती हैं। {{अक्}} अ से संकेत क् तक जाता है।
+  options:
+  - sa: अच्
+  - correct: true
+    sa: अक्
+  - sa: इक्
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's names
+    hi: पाणिनि के नाम
+  depth: panini
+  skills:
+  - panini.shiva-sutras
+  sutras:
+  - 1.1.71
+  - 1.1.69
+  body:
+    en: 'Sūtra 1.1.71, {{आदिरन्त्येन सहेता}}, makes these names: a first letter, together with the last marker, stands for itself and the letters between. And 1.1.69, which you met with the vowels, lets each letter stand for its twins as well.'
+    hi: 'सूत्र 1.1.71, {{आदिरन्त्येन सहेता}}, ये नाम बनाता है: पहला अक्षर, अन्तिम संकेत के साथ, अपना और बीच के अक्षरों का बोध कराता है। और 1.1.69, जो आप स्वरों के साथ मिल चुके हैं, हर अक्षर को उसके जुड़वाँ रूपों का भी बोधक बनाता है।'
+- id: sum
+  kind: summary
+  title:
+    en: Fourteen lines of sound
+    hi: ध्वनि की चौदह पंक्तियाँ
+  depth: core
+  points:
+  - sa: १४
+    text:
+      en: Fourteen lines, each ending in a marker.
+      hi: चौदह पंक्तियाँ, हर एक संकेत पर समाप्त।
+  - sa: अच् · हल् · यण्
+    text:
+      en: 'Names: a letter and a marker.'
+      hi: 'नाम: एक अक्षर और एक संकेत।'
+  - sa: आदिरन्त्येन सहेता
+    text:
+      en: 1.1.71 makes the names.
+      hi: 1.1.71 नाम बनाता है।

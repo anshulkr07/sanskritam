@@ -1,0 +1,41 @@
+# THE REFERENCE UNIT. Written by hand as the pattern for every other unit
+# (specs/learn-story/HANDOVER.md, "Writing a unit"). Copy its shape, not its
+# words: story first, one idea per teach card, practice at least 40% of the
+# cards, a gate puzzle that moves the story, a summary last; a revision
+# lesson that holds everything about the chapter; a check that touches
+# every skill.
+#
+# Story: the glowing leaf's first line is the four vowel groups of the Śiva
+# sūtras, the last letter of each group burnt away (अइउ… ऋऌ… एओ… ऐऔ…).
+# Read aloud, the line frees Dhūmaka. The burnt letters are Pāṇini's
+# markers (ण् क् ङ् च्); the course answers that riddle in Act V.
+id: vowels
+title: {en: Vowels, hi: स्वर}
+title_sa: स्वराः
+status: ready
+ghost: dhumaka
+episode:
+  summary:
+    en: "The leaf you found glows in the temple library. Smoke from a lamp gathers into Dhūmaka, a small ghost who missed Guṇāḍhya's reading long ago. He cannot leave until he hears the leaf's first line read aloud, and that line is made of vowels."
+    hi: "आपको मिला पत्र मंदिर के ग्रंथालय में चमक रहा है। दीपक का धुआँ सिमटकर धूमक बन जाता है, एक नन्हा भूत जो बहुत पहले गुणाढ्य का पाठ सुनने से चूक गया था। जब तक वह पत्र की पहली पंक्ति ज़ोर से पढ़ी जाती न सुन ले, वह जा नहीं सकता, और वह पंक्ति स्वरों से बनी है।"
+  beats:
+    - "Lamp smoke gathers into Dhūmaka, who cannot speak; he points at the leaf's first line: four groups of letters, the last letter of each burnt away."
+    - "The first two groups are the five short vowels अ इ उ ऋ ऌ; put back in order, the first marks glow."
+    - "Śuka stretches every sound and calls Dādī poor (दीनः) instead of greeting the day (दिनम्): a long vowel makes a different word."
+    - "The last two groups are ए ओ and ऐ औ, the joined vowels, always long; the whole first line glows."
+    - "A second line wakes: vowels riding on letters as signs, and Dhūmaka's own name among them. You read the first line aloud and he is freed. His clue: there are letters on the temple door."
+skills:
+  - id: script.vowel.short
+    title: {en: "The short vowels अ इ उ ऋ ऌ", hi: "ह्रस्व स्वर अ इ उ ऋ ऌ"}
+    sutras: [SS.1, SS.2, 1.2.27]
+  - id: script.vowel.long
+    title: {en: "Long vowels आ ई ऊ ॠ, held twice as long", hi: "दीर्घ स्वर आ ई ऊ ॠ, दुगुने समय तक"}
+    sutras: [1.2.27, 1.1.9, 1.1.69]
+  - id: script.vowel.compound
+    title: {en: "The joined vowels ए ऐ ओ औ, always long", hi: "संयुक्त स्वर ए ऐ ओ औ, सदा दीर्घ"}
+    sutras: [SS.3, SS.4]
+  - id: script.matra
+    title: {en: "Vowel signs on a letter: का कि की कु कू कृ के कै को कौ", hi: "अक्षर पर मात्राएँ: का कि की कु कू कृ के कै को कौ"}
+lessons: [vowels.short, vowels.long, vowels.compound, vowels.signs]
+revision: vowels.revision
+check: vowels.check

@@ -1,0 +1,16 @@
+{
+  "key": "15-001",
+  "revision": 2,
+  "mode": "edit",
+  "composition_policy": "phone-portrait-9x16-20261019",
+  "master": "results/gita-art-20261016/masters/15-001-v2.png",
+  "prompt": "Use case: precise-object-edit. Edit the supplied portrait watercolor for Bhagavad Gita 15.1. Remove ALL lettering, pseudo-Sanskrit, horizontal writing-like strokes and glyphs from EVERY golden leaf on the inverted tree, including small leaves around the sides. Replace those markings with plain natural leaf surfaces and delicate botanical veins only. Preserve the gold leaf shapes and the inverted ashvattha tree with roots above and branches/leaves hanging below, the heavenly light above, Krishna teaching Arjuna below, their complete bodies/hands, the valley, river, architecture, watercolor/gouache palette, composition and all other details. Preserve the tall 9:16 portrait aspect ratio and quiet outer margins; do not crop or enlarge the figures. No text, sacred syllables, glyphs, labels, red X marks, arrows, borders, watermark or UI anywhere. The verse and its meaning are rendered separately as live app text. Change only the leaf markings; keep the painting otherwise the same.",
+  "prompt_sha256": "af0359f938e5af138192696fb7aa4c56f716cfda04e603b8d13859070a816fc7",
+  "reference_images": [
+    {
+      "path": "results/gita-art-20261016/masters/15-001.png",
+      "sha256": "db73cf903dbffaad3bd380254143f52bf1fc1b55a460f0a94ab7c485788169df"
+    }
+  ],
+  "reason": "Native-size inspection found pseudo-writing on golden leaves; remove it before publication."
+}

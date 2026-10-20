@@ -1,0 +1,173 @@
+id: vc2.check
+template: check
+title:
+  en: Name the odd ones
+  hi: विचित्र क्रियाएँ पहचानिए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-2
+  mode: choice
+  prompt:
+    en: “He goes.” Which class 2 form?
+    hi: ‘वह जाता है।’ गण 2 का कौन-सा रूप?
+  explain:
+    en: '{{एति}}.'
+    hi: '{{एति}}।'
+  roman: after
+  options:
+  - sa: इति
+  - correct: true
+    sa: एति
+  - sa: अयति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-3
+  mode: choice
+  prompt:
+    en: “He gives.” Which form?
+    hi: ‘वह देता है।’ कौन-सा रूप?
+  explain:
+    en: '{{ददाति}}.'
+    hi: '{{ददाति}}।'
+  roman: after
+  options:
+  - sa: दाति
+  - correct: true
+    sa: ददाति
+  - sa: देति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-5-8
+  mode: choice
+  prompt:
+    en: “He hears.” Which form?
+    hi: ‘वह सुनता है।’ कौन-सा रूप?
+  explain:
+    en: '{{शृणोति}}.'
+    hi: '{{शृणोति}}।'
+  roman: after
+  options:
+  - sa: श्रवति
+  - correct: true
+    sa: शृणोति
+  - sa: श्रुति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-5-8
+  mode: choice
+  prompt:
+    en: “They do.” Which form?
+    hi: ‘वे करते हैं।’ कौन-सा रूप?
+  explain:
+    en: '{{कुर्वन्ति}}.'
+    hi: '{{कुर्वन्ति}}।'
+  roman: after
+  options:
+  - sa: करोन्ति
+  - sa: कुरुन्ति
+  - correct: true
+    sa: कुर्वन्ति
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-7-9
+  mode: choice
+  prompt:
+    en: “He knows.” Which form?
+    hi: ‘वह जानता है।’ कौन-सा रूप?
+  explain:
+    en: '{{जानाति}}.'
+    hi: '{{जानाति}}।'
+  roman: after
+  options:
+  - sa: ज्ञाति
+  - correct: true
+    sa: जानाति
+  - sa: जनति
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-2
+  - verb.class-3
+  - verb.class-5-8
+  - verb.class-7-9
+  mode: match
+  prompt:
+    en: Join each verb to its class.
+    hi: हर क्रिया को उसके गण से जोड़िए।
+  explain:
+    en: The sign, or the lack of one.
+    hi: चिह्न, या उसका अभाव।
+  roman: after
+  pairs:
+  - left:
+      sa: अस्ति
+    right:
+      text:
+        en: class 2
+        hi: गण 2
+  - left:
+      sa: ददाति
+    right:
+      text:
+        en: class 3
+        hi: गण 3
+  - left:
+      sa: करोति
+    right:
+      text:
+        en: class 8
+        hi: गण 8
+  - left:
+      sa: छिनत्ति
+    right:
+      text:
+        en: class 7
+        hi: गण 7
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-2
+  - verb.class-3
+  - verb.class-5-8
+  - verb.class-7-9
+  mode: order
+  prompt:
+    en: 'Complete Astika: “He is, he goes, he gives, he does, he knows.”'
+    hi: 'अस्तिक को पूरा कीजिए: ‘वह है, वह जाता है, वह देता है, वह करता है, वह जानता है।’'
+  explain:
+    en: '{{अस्ति एति ददाति करोति जानाति}}: five odd drawers.'
+    hi: '{{अस्ति एति ददाति करोति जानाति}}: पाँच विचित्र दराज़।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “अस्ति, एति, ददाति, करोति, जानाति,” you say, and Astika, who had spent a thousand years patting himself, stops. “I am,” he says wonderingly. “I go. I give. I do. I know.” He puts his hands in front of him and looks at them, and the plain grey of his edges takes on a faint warm colour, as if each verb had left a little of its own. “सेवते,” he says shyly, trying the word. “लभते.” “He serves, he obtains,” Dādī whispers. “Those are for oneself.”
+      hi: “अस्ति, एति, ददाति, करोति, जानाति,” आप कहते हैं, और अस्तिक, जिसने हज़ार वर्ष स्वयं को थपथपाते बिताए, रुक जाता है। “मैं हूँ,” वह विस्मय से कहता है। “मैं जाता हूँ। मैं देता हूँ। मैं करता हूँ। मैं जानता हूँ।” वह अपने हाथ सामने रखकर उन्हें देखता है, और उसके किनारों का सादा धूसर रंग हल्के गर्म रंग में बदल जाता है, मानो हर क्रिया अपना थोड़ा-सा रंग छोड़ गई हो। “सेवते,” वह झिझकते हुए शब्द आज़माता है। “लभते।” “वह सेवा करता है, वह पाता है,” दादी फुसफुसाती हैं। “ये अपने लिए हैं।”
+    failure:
+      en: 'Astika waits. The five verbs: {{अस्ति एति ददाति करोति जानाति}}.'
+      hi: 'अस्तिक प्रतीक्षा करता है। पाँच क्रियाएँ: {{अस्ति एति ददाति करोति जानाति}}।'
+  tokens:
+  - अस्ति
+  - एति
+  - ददाति
+  - करोति
+  - जानाति

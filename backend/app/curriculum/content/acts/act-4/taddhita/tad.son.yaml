@@ -1,0 +1,357 @@
+id: tad.son
+template: scene
+title:
+  en: Son of
+  hi: का पुत्र
+title_sa: राघवः कौन्तेयः
+minutes: 6
+teaches:
+- tad.apatya
+needs:
+- sam.long
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The twenty-second statue
+    hi: बाईसवीं प्रतिमा
+  depth: core
+  image:
+    brief: The twenty-second statue holding a small bronze mirror in which a row of names glows instead of a face; Dādī leaning in to read them; Śuka reading over her shoulder; Lubdhaka's foreman copying names into his notebook.
+    alt:
+      en: A statue holds a small mirror showing a row of glowing names instead of a face
+      hi: छोटा दर्पण थामे प्रतिमा, चेहरे की जगह चमकते नामों की पंक्ति
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - taddhitika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: tad-son-s1
+  narration:
+    en: 'The twenty-second statue holds a small mirror. In it, not her face, but a row of names: “राघवः,” she says. “पाण्डवः. कौरवः. कौन्तेयः.” “All someone''s children,” says Dādī. “Raghu''s, Pāṇḍu''s, Kuru''s, Kuntī''s. A word can carry its parent inside it: the first vowel grows, and an ending is added. These are taddhita words.”'
+    hi: 'बाईसवीं प्रतिमा के हाथ में एक छोटा दर्पण है। उसमें उसका अपना मुख नहीं, नामों की एक पंक्ति है: “राघवः,” वह कहती है। “पाण्डवः। कौरवः। कौन्तेयः।” “ये सब किसी की सन्तान हैं,” दादी कहती हैं। “रघु की, पाण्डु की, कुरु की, कुन्ती की। शब्द अपने भीतर अपने माता-पिता को लिए रह सकता है: पहला स्वर बढ़ता है, और एक प्रत्यय जुड़ता है। इन्हें तद्धित शब्द कहते हैं, ‘उसके लिए बने शब्द’।”'
+  quote:
+    sa: मात्रास्पर्शास् तु कौन्तेय शीतोष्णसुखदुःखदाः आगमापायिनो ऽनित्यास् तांस् तितिक्षस्व भारत
+    gloss:
+      en: 'O son of Kuntī, contacts with the senses give cold and heat, pleasure and pain; they come and go, they are not lasting: bear them, O descendant of Bharata.'
+      hi: 'हे कुन्तीपुत्र, इन्द्रियों के स्पर्श शीत-उष्ण, सुख-दुःख देते हैं; वे आते-जाते हैं, स्थायी नहीं: हे भारत, उन्हें सहो।'
+    source: Bhagavadgītā 2.14 (read at GRETIL)
+- id: t1
+  kind: teach
+  title:
+    en: A word with its parent
+    hi: अपने माता-पिता के साथ शब्द
+  depth: core
+  skills:
+  - tad.apatya
+  body:
+    en: 'To say “son or descendant of X”, take X, make its first vowel grow (vṛddhi) and add an ending: {{रघु}} gives {{राघवः}}, {{पाण्डु}} gives {{पाण्डवः}}, {{कुरु}} gives {{कौरवः}}. For a mother''s name in {{-ई}} or {{-आ}} it is {{-एय}}: {{कुन्ती}} gives {{कौन्तेयः}}.'
+    hi: '‘X का पुत्र या वंशज’ कहने के लिए X लीजिए, उसका पहला स्वर बढ़ाइए (वृद्धि) और प्रत्यय जोड़िए: {{रघु}} से {{राघवः}}, {{पाण्डु}} से {{पाण्डवः}}, {{कुरु}} से {{कौरवः}}। {{-ई}} या {{-आ}} वाले माता के नाम से {{-एय}} बनता है: {{कुन्ती}} से {{कौन्तेयः}}।'
+  term:
+    sa: तद्धितः
+    meaning:
+      en: a word made from another word by a suffix
+      hi: किसी शब्द से प्रत्यय लगाकर बना शब्द
+- id: tb1
+  kind: table
+  title:
+    en: Son of
+    hi: का पुत्र
+  depth: core
+  skills:
+  - tad.apatya
+  caption:
+    en: Taddhita words of descent
+    hi: वंश के तद्धित शब्द
+  columns:
+  - en: Name
+    hi: नाम
+  - en: Descendant
+    hi: वंशज
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: रघु
+    - sa: राघवः
+      check:
+        type: taddhita
+        stem: रघु
+        taddhita: aR
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: descendant of Raghu (Rāma)
+        hi: रघु का वंशज (राम)
+  - - sa: पाण्डु
+    - sa: पाण्डवः
+      check:
+        type: taddhita
+        stem: पाण्डु
+        taddhita: aR
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: son of Pāṇḍu
+        hi: पाण्डु का पुत्र
+  - - sa: कुरु
+    - sa: कौरवः
+      check:
+        type: taddhita
+        stem: कुरु
+        taddhita: aR
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: descendant of Kuru
+        hi: कुरु का वंशज
+  - - sa: मनु
+    - sa: मानवः
+      check:
+        type: taddhita
+        stem: मनु
+        taddhita: aR
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: descendant of Manu, human
+        hi: मनु का वंशज, मनुष्य
+  - - sa: वसुदेव
+    - sa: वासुदेवः
+      check:
+        type: taddhita
+        stem: वसुदेव
+        taddhita: aR
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: son of Vasudeva (Kṛṣṇa)
+        hi: वसुदेव का पुत्र (कृष्ण)
+  - - sa: दशरथ
+    - sa: दाशरथिः
+      check:
+        type: taddhita
+        stem: दशरथ
+        taddhita: iY
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: son of Daśaratha (Rāma)
+        hi: दशरथ का पुत्र (राम)
+  - - sa: कुन्ती
+    - sa: कौन्तेयः
+      check:
+        type: taddhita
+        stem: कुन्ती
+        taddhita: Qak
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: son of Kuntī
+        hi: कुन्ती का पुत्र
+  - - sa: गङ्गा
+    - sa: गाङ्गेयः
+      check:
+        type: taddhita
+        stem: गङ्गा
+        taddhita: Qak
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: son of Gaṅgā (Bhīṣma)
+        hi: गङ्गा का पुत्र (भीष्म)
+  note:
+    en: 'The first vowel grows: {{उ}} → {{औ}}, {{अ}} → {{आ}}.'
+    hi: 'पहला स्वर बढ़ता है: {{उ}} → {{औ}}, {{अ}} → {{आ}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - tad.apatya
+  mode: choice
+  prompt:
+    en: '{{राघवः}} means…'
+    hi: '{{राघवः}} का अर्थ…'
+  explain:
+    en: '{{-अ}} after the grown vowel: descendant.'
+    hi: 'बढ़े स्वर के बाद {{-अ}}: वंशज।'
+  roman: after
+  options:
+  - text:
+      en: Raghu himself
+      hi: स्वयं रघु
+  - correct: true
+    text:
+      en: a descendant of Raghu
+      hi: रघु का वंशज
+  - text:
+      en: Raghu's house
+      hi: रघु का घर
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - tad.apatya
+  mode: type
+  prompt:
+    en: 'Say: “Kuntī''s son”.'
+    hi: 'कहिए: ‘कुन्ती का पुत्र’।'
+  explain:
+    en: '{{कौन्तेयः}}.'
+    hi: '{{कौन्तेयः}}।'
+  roman: after
+  answers:
+  - कौन्तेयः
+  tiles:
+  - कौन्
+  - तेयः
+  - कुन्ती
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - tad.apatya
+  mode: match
+  prompt:
+    en: Join each name to its descendant.
+    hi: हर नाम को उसके वंशज से जोड़िए।
+  explain:
+    en: The first vowel grows.
+    hi: पहला स्वर बढ़ता है।
+  roman: after
+  pairs:
+  - left:
+      sa: रघु
+    right:
+      sa: राघवः
+  - left:
+      sa: पाण्डु
+    right:
+      sa: पाण्डवः
+  - left:
+      sa: कुरु
+    right:
+      sa: कौरवः
+  - left:
+      sa: गङ्गा
+    right:
+      sa: गाङ्गेयः
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - tad.apatya
+  widget: mark_words
+  prompt:
+    en: Tap every word that means “descendant of …”.
+    hi: ‘… का वंशज’ अर्थ वाला हर शब्द छुइए।
+  params:
+    passage:
+    - राघवः
+    - रघुः
+    - पाण्डवः
+    - पाण्डुः
+    - कौन्तेयः
+    - कुन्ती
+    targets:
+    - राघवः
+    - पाण्डवः
+    - कौन्तेयः
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: Descendants
+    hi: वंशज
+  depth: core
+  skills:
+  - tad.apatya
+  mode: choice
+  prompt:
+    en: '{{भारत}} in the Gītā line is a taddhita from {{भरत}}. It means…'
+    hi: गीता की पंक्ति में {{भारत}}, {{भरत}} से बना तद्धित है। इसका अर्थ…
+  explain:
+    en: '{{अ}} → {{आ}}: {{भरत}} → {{भारत}}.'
+    hi: '{{अ}} → {{आ}}: {{भरत}} → {{भारत}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “भारत,” you say, “a descendant of Bharata,” and the mirror in the twenty-second statue's hand ripples. The names settle into rows of children, and each child, the way a face is behind a face, shows its parent behind it, and behind that parent another. “All of these,” she says, “carry somebody.” She lowers the mirror. “So do you.” You think of Dādī.
+      hi: “भारत,” आप कहते हैं, “भरत का वंशज,” और बाईसवीं प्रतिमा के हाथ का दर्पण लहराता है। नाम सन्तानों की पंक्तियों में बैठ जाते हैं, और हर सन्तान, चेहरे के पीछे चेहरे की तरह, अपने पीछे अपने माता-पिता को दिखाती है, और उनके पीछे उनके। “इन सबके भीतर,” वह कहती है, “कोई-न-कोई है।” वह दर्पण नीचे करती है। “आपके भी।” आप दादी के बारे में सोचते हैं।
+    failure:
+      en: 'The mirror stays still. {{भरत}} → {{भारत}}: a descendant.'
+      hi: 'दर्पण स्थिर रहता है। {{भरत}} → {{भारत}}: वंशज।'
+  options:
+  - text:
+      en: Bharata himself
+      hi: स्वयं भरत
+  - correct: true
+    text:
+      en: descendant of Bharata
+      hi: भरत का वंशज
+  - text:
+      en: Bharata's land only
+      hi: केवल भरत की भूमि
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's descendant
+    hi: पाणिनि का वंशज
+  depth: panini
+  skills:
+  - tad.apatya
+  sutras:
+  - 4.1.92
+  - 4.1.83
+  - 7.2.117
+  - 4.1.95
+  - 4.1.120
+  body:
+    en: Sūtra 4.1.92, {{तस्यापत्यम्}}, gives a taddhita for “his descendant”; 4.1.83, {{प्राग्दीव्यतोऽण्}}, makes {{अण्}} the usual ending, and 7.2.117, {{तद्धितेष्वचामादेः}}, makes the first vowel grow. 4.1.95, {{अत इञ्}}, gives {{इञ्}} after {{अ}}-ending names ({{दाशरथिः}}), and 4.1.120, {{स्त्रीभ्यो ढक्}}, {{ढक्}} after feminines ({{कौन्तेयः}}).
+    hi: सूत्र 4.1.92, {{तस्यापत्यम्}}, ‘उसका वंशज’ के लिए तद्धित देता है; 4.1.83, {{प्राग्दीव्यतोऽण्}}, {{अण्}} को सामान्य प्रत्यय बनाता है, और 7.2.117, {{तद्धितेष्वचामादेः}}, पहले स्वर को बढ़ाता है। 4.1.95, {{अत इञ्}}, {{अ}}-अन्त नामों के बाद {{इञ्}} देता है ({{दाशरथिः}}), और 4.1.120, {{स्त्रीभ्यो ढक्}}, स्त्रीलिंग शब्दों के बाद {{ढक्}} ({{कौन्तेयः}})।
+- id: sum
+  kind: summary
+  title:
+    en: Son of
+    hi: का पुत्र
+  depth: core
+  points:
+  - sa: राघवः · पाण्डवः · कौरवः
+    text:
+      en: Descendants of Raghu, Pāṇḍu, Kuru.
+      hi: रघु, पाण्डु, कुरु के वंशज।
+  - sa: कौन्तेयः · गाङ्गेयः
+    text:
+      en: Sons of Kuntī and Gaṅgā.
+      hi: कुन्ती और गङ्गा के पुत्र।
+  - sa: भारतः
+    text:
+      en: A descendant of Bharata.
+      hi: भरत का वंशज।

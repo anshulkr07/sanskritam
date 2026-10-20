@@ -1,0 +1,394 @@
+id: object.where-to
+template: scene
+title:
+  en: Where to?
+  hi: कहाँ को?
+title_sa: गन्तव्यम्
+minutes: 6
+teaches:
+- case.acc-goal
+needs:
+- case.acc
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Which way?
+    hi: किस ओर?
+  depth: core
+  image:
+    brief: The small saffron-yellow spirit tugging at your sleeve and pointing between the spice stall, the river and a grove of trees beyond the market; Dādī smiling; Śuka looking where he points.
+    alt:
+      en: A small spirit tugging a sleeve and pointing in three directions
+      hi: तीन दिशाओं में इशारा करते हुए आस्तीन खींचता नन्हा भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - haridraka
+    - vanik
+    place: apana
+    ratio: '4:3'
+    id: object-where-to-s1
+  narration:
+    en: 'The yellow spirit tugs your sleeve and points: the spice seller''s stall, the river, the grove beyond the market. He wants to go somewhere, and cannot say where. “A place you go to is also reached by the doer,” says Dādī. “So it takes the second case as well.”'
+    hi: 'पीला भूत आपकी आस्तीन खींचता है और इशारा करता है: मसाले वाले की दुकान, नदी, बाज़ार के पार का उपवन। वह कहीं जाना चाहता है, और बता नहीं पाता कहाँ। दादी कहती हैं, “जिस जगह आप जाते हैं, उसे भी कर्ता पहुँचता है। इसलिए वह भी द्वितीया में आता है।”'
+- id: t1
+  kind: teach
+  title:
+    en: Going to a place
+    hi: किसी स्थान को जाना
+  depth: core
+  skills:
+  - case.acc-goal
+  sutras:
+  - 2.3.2
+  body:
+    en: 'With verbs of going, the place you go to takes the second case: {{बालकः ग्रामं गच्छति}} (the boy goes to the village). The verb of coming works the same way: {{गृहम् आगच्छति}}.'
+    hi: 'जाने की क्रियाओं के साथ जहाँ जाया जाए वह स्थान द्वितीया में आता है: {{बालकः ग्रामं गच्छति}} (बालक गाँव जाता है)। आने की क्रिया भी ऐसी ही चलती है: {{गृहम् आगच्छति}}।'
+  examples:
+  - sa: बालकः ग्रामम् गच्छति।
+    meaning:
+      en: The boy goes to the village.
+      hi: बालक गाँव जाता है।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: ग्रामम्
+      gloss:
+        en: to the village
+        hi: गाँव को
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गच्छति
+      gloss:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सीता गृहम् गच्छति।
+    meaning:
+      en: Sītā goes home.
+      hi: सीता घर जाती है।
+    words:
+    - sa: सीता
+      gloss:
+        en: Sītā
+        hi: सीता
+      check:
+        type: subanta
+        stem: सीता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गृहम्
+      gloss:
+        en: to the house
+        hi: घर को
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गच्छति
+      gloss:
+        en: goes
+        hi: जाती है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: नाविकः नगरम् गच्छति।
+    meaning:
+      en: The boatman goes to the town.
+      hi: नाविक नगर जाता है।
+    words:
+    - sa: नाविकः
+      gloss:
+        en: boatman
+        hi: नाविक
+      check:
+        type: subanta
+        stem: नाविक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नगरम्
+      gloss:
+        en: to the town
+        hi: नगर को
+      check:
+        type: subanta
+        stem: नगर
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: गच्छति
+      gloss:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: tb1
+  kind: table
+  title:
+    en: Places to go to
+    hi: जाने के स्थान
+  depth: core
+  skills:
+  - case.acc-goal
+  caption:
+    en: Four places, first and second case
+    hi: चार स्थान, प्रथमा और द्वितीया
+  columns:
+  - en: Place
+    hi: स्थान
+  - en: 1st
+    hi: प्रथमा
+  - en: '2nd: to'
+    hi: 'द्वितीया: को'
+  rows:
+  - - text:
+        en: village
+        hi: गाँव
+    - sa: ग्रामः
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: ग्रामम्
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: town
+        hi: नगर
+    - sa: नगरम्
+      check:
+        type: subanta
+        stem: नगर
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नगरम्
+      check:
+        type: subanta
+        stem: नगर
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: house
+        hi: घर
+    - sa: गृहम्
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गृहम्
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      highlight: true
+  - - text:
+        en: river
+        hi: नदी
+    - sa: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: नदीम्
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+      highlight: true
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.acc-goal
+  mode: choice
+  prompt:
+    en: “The girl goes to the river.” Which word for “river”?
+    hi: ‘बालिका नदी को जाती है।’ ‘नदी’ के लिए कौन-सा रूप?
+  explain:
+    en: 'The goal takes the second case: {{नदीम्}}.'
+    hi: 'गन्तव्य द्वितीया लेता है: {{नदीम्}}।'
+  roman: after
+  options:
+  - sa: नदी
+  - correct: true
+    sa: नदीम्
+  - sa: नद्यः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.acc-goal
+  mode: match
+  prompt:
+    en: Join each place to “to …”.
+    hi: हर स्थान को ‘…को’ से जोड़िए।
+  explain:
+    en: The second case marks where you go.
+    hi: द्वितीया बताती है कि कहाँ जाते हैं।
+  roman: after
+  pairs:
+  - left:
+      sa: ग्रामम्
+    right:
+      text:
+        en: to the village
+        hi: गाँव को
+  - left:
+      sa: नगरम्
+    right:
+      text:
+        en: to the town
+        hi: नगर को
+  - left:
+      sa: गृहम्
+    right:
+      text:
+        en: to the house
+        hi: घर को
+  - left:
+      sa: नदीम्
+    right:
+      text:
+        en: to the river
+        hi: नदी को
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - case.acc-goal
+  mode: engine
+  prompt:
+    en: Reorder the words and keep the meaning.
+    hi: शब्दों को फिर से लगाइए, अर्थ वही रखिए।
+  explain:
+    en: The village is the goal wherever it stands.
+    hi: गाँव कहीं भी हो, गन्तव्य वही है।
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: बालकः ग्रामं गच्छति
+    seed: 2
+- id: p4
+  kind: practice
+  title:
+    en: Where to
+    hi: कहाँ को
+  depth: core
+  skills:
+  - case.acc-goal
+  mode: order
+  prompt:
+    en: 'Say: “We go to the river.”'
+    hi: 'कहिए: ‘हम नदी को जाते हैं।’'
+  explain:
+    en: '{{वयं नदीं गच्छामः}}: we go to the river.'
+    hi: '{{वयं नदीं गच्छामः}}: हम नदी को जाते हैं।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “वयं नदीं गच्छामः,” you say, and the little spirit skips ahead with a trail of yellow dust, then turns back to see whether you follow.
+      hi: “वयं नदीं गच्छामः,” आप कहते हैं, और नन्हा भूत पीली धूल की लकीर छोड़ता आगे कूद चलता है, फिर मुड़कर देखता है कि आप आ रहे हैं या नहीं।
+    failure:
+      en: He tugs again. “We” is {{वयम्}}; the place is in the second case.
+      hi: वह फिर खींचता है। ‘हम’ है {{वयम्}}; स्थान द्वितीया में है।
+  tokens:
+  - वयम्
+  - नदीम्
+  - गच्छामः
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - case.acc-goal
+  widget: mark_words
+  prompt:
+    en: Tap every word that names a place you go to.
+    hi: जाने के स्थान वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - ग्रामम्
+    - बालकः
+    - गृहम्
+    - पठति
+    - नगरम्
+    - नदी
+    targets:
+    - ग्रामम्
+    - गृहम्
+    - नगरम्
+  roman: show
+- id: sum
+  kind: summary
+  title:
+    en: Going to
+    hi: को जाना
+  depth: core
+  points:
+  - sa: ग्रामं गच्छति
+    text:
+      en: The goal takes the second case.
+      hi: गन्तव्य द्वितीया लेता है।
+  - sa: गृहम् आगच्छति
+    text:
+      en: Coming works the same way.
+      hi: आना भी इसी तरह चलता है।
+  - text:
+      en: No separate word for “to”.
+      hi: ‘को’ के लिए अलग शब्द नहीं।

@@ -1,0 +1,217 @@
+id: vc2.revision
+template: revision
+title:
+  en: Everything about the odd classes
+  hi: विचित्र गणों के बारे में सब कुछ
+title_sa: गणसङ्ग्रहः २
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The signs
+    hi: चिह्न
+  depth: core
+  section: core
+  rows:
+  - skill: verb.class-2
+    rule:
+      en: 'Class 2: no sign: {{अस्ति}}, {{एति}}, {{याति}}, {{हन्ति}}, {{ब्रवीति}}.'
+      hi: 'गण 2: कोई चिह्न नहीं: {{अस्ति}}, {{एति}}, {{याति}}, {{हन्ति}}, {{ब्रवीति}}।'
+    sutras:
+    - 2.4.72
+    - 6.4.111
+    tag: core
+    taught_in: vc2.as#tb1
+  - skill: verb.class-3
+    rule:
+      en: 'Class 3: the root is doubled: {{ददाति}}, {{दधाति}}, {{जुहोति}}, {{बिभेति}}.'
+      hi: 'गण 3: धातु दुगुनी होती है: {{ददाति}}, {{दधाति}}, {{जुहोति}}, {{बिभेति}}।'
+    sutras:
+    - 2.4.75
+    - 6.1.10
+    - 7.4.58
+    tag: core
+    taught_in: vc2.da#tb1
+  - skill: verb.class-5-8
+    rule:
+      en: 'Class 5: {{-नु-}}/{{-नो-}}: {{शृणोति}}, {{आप्नोति}}. Class 8: {{-उ-}}/{{-ओ-}}: {{करोति}}, {{तनोति}}.'
+      hi: 'गण 5: {{-नु-}}/{{-नो-}}: {{शृणोति}}, {{आप्नोति}}। गण 8: {{-उ-}}/{{-ओ-}}: {{करोति}}, {{तनोति}}।'
+    sutras:
+    - 3.1.73
+    - 3.1.79
+    - 3.1.74
+    tag: core
+    taught_in: vc2.kr#tb1
+  - skill: verb.class-7-9
+    rule:
+      en: 'Class 7: a nasal inside: {{रुणद्धि}}, {{छिनत्ति}}. Class 9: {{-ना-}}: {{जानाति}}, {{गृह्णाति}}.'
+      hi: 'गण 7: भीतर नासिक्य: {{रुणद्धि}}, {{छिनत्ति}}। गण 9: {{-ना-}}: {{जानाति}}, {{गृह्णाति}}।'
+    sutras:
+    - 3.1.78
+    - 3.1.81
+    - 6.4.112
+    tag: core
+    taught_in: vc2.jna#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: How to tell the class
+    hi: गण कैसे पहचानें
+  depth: core
+  section: conditions
+  rows:
+  - skill: verb.class-2
+    rule:
+      en: If the ending joins the root directly, think class 2.
+      hi: प्रत्यय सीधे धातु से जुड़े तो गण 2 सोचिए।
+    tag: good
+    taught_in: vc2.as#t1
+  - skill: verb.class-3
+    rule:
+      en: A doubled first syllable means class 3.
+      hi: दुगुना पहला अक्षर हो तो गण 3।
+    tag: good
+    taught_in: vc2.da#t1
+  - skill: verb.class-5-8
+    rule:
+      en: '{{-ओति}} or {{-नोति}}: class 5 or 8.'
+      hi: '{{-ओति}} या {{-नोति}}: गण 5 या 8।'
+    tag: good
+    taught_in: vc2.kr#t1
+  - skill: verb.class-7-9
+    rule:
+      en: 'A nasal in the middle of the root: class 7; {{-नाति}}: class 9.'
+      hi: 'धातु के बीच नासिक्य: गण 7; {{-नाति}}: गण 9।'
+    tag: good
+    taught_in: vc2.jna#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: verb.class-2
+    rule:
+      en: '{{ब्रू}} has two forms, {{ब्रवीति}} and {{आह}}: {{आह}} is old and used only in a few forms.'
+      hi: '{{ब्रू}} के दो रूप हैं, {{ब्रवीति}} और {{आह}}: {{आह}} पुराना है और कुछ ही रूपों में चलता है।'
+    example:
+      sa: ब्रवीति
+      meaning:
+        en: he says
+        hi: वह कहता है
+      check:
+        type: tinanta
+        dhatu: ब्रू
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Adadi
+    tag: rare
+    new_here: true
+  - skill: verb.class-5-8
+    rule:
+      en: '{{कृ}} has a short weak stem {{कुर्-}} in some forms: {{कुर्वः}}, {{कुर्मः}}.'
+      hi: '{{कृ}} के कुछ रूपों में छोटा निर्बल अंग {{कुर्-}} है: {{कुर्वः}}, {{कुर्मः}}।'
+    example:
+      sa: कुर्मः
+      meaning:
+        en: we do
+        hi: हम करते हैं
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+        gana: Tanadi
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: verb.class-3
+    rule:
+      en: 'Do not forget the doubling: {{दाति}} is not a verb.'
+      hi: 'द्वित्व मत भूलिए: {{दाति}} क्रिया नहीं है।'
+    tag: core
+    taught_in: vc2.da#p1
+  - skill: verb.class-5-8
+    rule:
+      en: 'Do not say {{करोन्ति}}: the plural is {{कुर्वन्ति}}.'
+      hi: '{{करोन्ति}} मत कहिए: बहुवचन {{कुर्वन्ति}} है।'
+    tag: core
+    taught_in: vc2.kr#p4
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: verb.class-2
+    rule:
+      en: '{{अदिप्रभृतिभ्यः शपः}} and {{जुहोत्यादिभ्यः श्लुः}} remove the sign {{शप्}}; class 3 keeps the doubling.'
+      hi: '{{अदिप्रभृतिभ्यः शपः}} और {{जुहोत्यादिभ्यः श्लुः}} चिह्न {{शप्}} को हटाते हैं; गण 3 द्वित्व रखता है।'
+    sutras:
+    - 2.4.72
+    - 2.4.75
+    tag: core
+    taught_in: vc2.as#pn
+  - skill: verb.class-7-9
+    rule:
+      en: '{{रुधादिभ्यः श्नम्}} and {{क्र्यादिभ्यः श्ना}} give the nasal and {{-ना-}}.'
+      hi: '{{रुधादिभ्यः श्नम्}} और {{क्र्यादिभ्यः श्ना}} नासिक्य और {{-ना-}} देते हैं।'
+    sutras:
+    - 3.1.78
+    - 3.1.81
+    tag: core
+    taught_in: vc2.jna#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: verb.class-2
+    formula: अस्ति · एति · याति
+    rule:
+      en: class 2
+      hi: गण 2
+    tag: core
+    taught_in: vc2.as#tb1
+  - skill: verb.class-3
+    formula: ददाति · जुहोति · बिभेति
+    rule:
+      en: class 3
+      hi: गण 3
+    tag: core
+    taught_in: vc2.da#tb1
+  - skill: verb.class-5-8
+    formula: शृणोति · करोति
+    rule:
+      en: classes 5 and 8
+      hi: गण 5 और 8
+    tag: core
+    taught_in: vc2.kr#tb1
+  - skill: verb.class-7-9
+    formula: रुणद्धि · जानाति · गृह्णाति
+    rule:
+      en: classes 7 and 9
+      hi: गण 7 और 9
+    tag: core
+    taught_in: vc2.jna#tb1

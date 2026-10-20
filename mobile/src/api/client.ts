@@ -1405,7 +1405,6 @@ let authToken: string | null = null;
 
 export function setAuthToken(token: string | null): void {
   authToken = token;
-  void import("../services/offlineBooks").then(m => m.resetOfflineAudio());
 }
 
 export function getAuthToken(): string | null {

@@ -1,0 +1,192 @@
+id: in.check
+template: check
+title:
+  en: Where and when
+  hi: कहाँ और कब
+title_sa: परीक्षा
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.loc
+  mode: choice
+  prompt:
+    en: “In the house.” Which word?
+    hi: ‘घर में।’ कौन-सा शब्द?
+  explain:
+    en: 'Place: seventh case.'
+    hi: 'स्थान: सप्तमी।'
+  roman: after
+  options:
+  - sa: गृहम्
+  - sa: गृहेण
+  - correct: true
+    sa: गृहे
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.loc
+  mode: match
+  prompt:
+    en: Join each place to its meaning.
+    hi: हर स्थान को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{ए}} and {{याम्}}.'
+    hi: '{{ए}} और {{याम्}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: कूपे
+    right:
+      text:
+        en: in the well
+        hi: कुएँ में
+  - left:
+      sa: वृक्षे
+    right:
+      text:
+        en: in the tree
+        hi: पेड़ पर
+  - left:
+      sa: नद्याम्
+    right:
+      text:
+        en: in the river
+        hi: नदी में
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - case.loc
+  mode: order
+  prompt:
+    en: 'Say: “There is water in the well.”'
+    hi: 'कहिए: ‘कुएँ में जल है।’'
+  explain:
+    en: '{{कूपे जलम् अस्ति}}.'
+    hi: '{{कूपे जलम् अस्ति}}।'
+  roman: after
+  tokens:
+  - कूपे
+  - जलम्
+  - अस्ति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - case.loc-time
+  mode: choice
+  prompt:
+    en: “At dawn.” Which word?
+    hi: ‘भोर में।’ कौन-सा शब्द?
+  explain:
+    en: 'A time: seventh case.'
+    hi: 'समय: सप्तमी।'
+  roman: after
+  options:
+  - sa: प्रभातम्
+  - sa: प्रभातेन
+  - correct: true
+    sa: प्रभाते
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - case.loc-time
+  mode: match
+  prompt:
+    en: Join each time to its meaning.
+    hi: हर समय को उसके अर्थ से जोड़िए।
+  explain:
+    en: A time takes the seventh case.
+    hi: समय सप्तमी लेता है।
+  roman: after
+  pairs:
+  - left:
+      sa: रात्रौ
+    right:
+      text:
+        en: at night
+        hi: रात में
+  - left:
+      sa: दिने
+    right:
+      text:
+        en: by day
+        hi: दिन में
+  - left:
+      sa: मासे
+    right:
+      text:
+        en: in the month
+        hi: महीने में
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - case.loc
+  mode: choice
+  prompt:
+    en: Which question word asks for a place?
+    hi: स्थान पूछने वाला प्रश्नवाचक शब्द कौन-सा है?
+  explain:
+    en: '{{कुत्र}}: where.'
+    hi: '{{कुत्र}}: कहाँ।'
+  roman: after
+  options:
+  - sa: कदा
+  - correct: true
+    sa: कुत्र
+  - sa: कथम्
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - case.loc
+  mode: engine
+  prompt:
+    en: Reorder the words and keep the meaning.
+    hi: शब्दों को फिर से लगाइए, अर्थ वही रखिए।
+  explain:
+    en: The endings carry the roles.
+    hi: भूमिकाएँ प्रत्ययों में हैं।
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: बालकः गृहे पठति
+    seed: 8
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - case.loc
+  - case.loc-time
+  mode: order
+  prompt:
+    en: 'Tell the lamp-spirit where the light is and when: “At night there is a lamp in the house.”'
+    hi: 'दीप-भूत से बताइए कि प्रकाश कहाँ और कब है: ‘रात में घर में दीपक है।’'
+  explain:
+    en: '{{रात्रौ गृहे दीपः अस्ति}}: time and place, both in the seventh case.'
+    hi: '{{रात्रौ गृहे दीपः अस्ति}}: समय और स्थान, दोनों सप्तमी में।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“रात्रौ गृहे दीपः अस्ति.” The flame-coloured spirit gives a joyful flicker and rises from his lamp into the night, a thread of amber light. “कूपे जलम् अस्ति। गृहे दीपः अस्ति,” he says, in a voice as warm as a hearth. Then, from the dark lanes beyond the school wall, a faint voice calls, and he turns: “हे मित्र! कुत्र असि?”'
+      hi: '“रात्रौ गृहे दीपः अस्ति।” लौ के रंग का भूत ख़ुशी से टिमटिमाता है और अपने दीपक से रात में ऊपर उठता है, अम्बर रोशनी का एक धागा। “कूपे जलम् अस्ति। गृहे दीपः अस्ति,” वह चूल्हे जैसी गर्म आवाज़ में कहता है। फिर पाठशाला की दीवार के पार की अँधेरी गलियों से एक धीमी आवाज़ पुकारती है, और वह मुड़ता है: “हे मित्र! कुत्र असि?”'
+    failure:
+      en: The lamp flickers uncertainly. Time and place both go in the seventh case.
+      hi: दीपक अनिश्चित-सा टिमटिमाता है। समय और स्थान, दोनों सप्तमी में।
+  tokens:
+  - रात्रौ
+  - गृहे
+  - दीपः
+  - अस्ति

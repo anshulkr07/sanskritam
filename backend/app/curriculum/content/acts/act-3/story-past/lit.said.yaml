@@ -1,0 +1,371 @@
+id: lit.said
+template: scene
+title:
+  en: 'उवाच: he said'
+  hi: 'उवाच: उसने कहा'
+title_sa: उवाच
+minutes: 6
+teaches:
+- verb.lit
+needs:
+- verb.lit
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The word before every speech
+    hi: हर वक्तव्य से पहले का शब्द
+  depth: core
+  image:
+    brief: The Vetāla seated near a small fire telling a tale with a raised finger; the storybook spirit beating a drum-roll on his spine; Lubdhaka stopping at the edge of the firelight, pulled in by the drum; you, Dādī and Śuka around the fire.
+    alt:
+      en: A grey spirit tells a tale by a fire while a man stops at the edge of the light
+      hi: अलाव के पास कथा सुनाता भूत, रोशनी के किनारे रुका आदमी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - kathaka
+    - lubdhaka
+    place: smashana
+    ratio: '4:3'
+    id: lit-said-s1
+  narration:
+    en: '“Every speech in my tales begins the same way,” says the Vetāla. “उवाच. ‘He said.’” The little storyteller beats a roll on his spine. Lubdhaka, drawn in by the drum, stops at the edge of the firelight. “उवाच कः?” asks the Vetāla pleasantly. “Who said?” Dādī nods at you: “Say it, and speak for the tale.”'
+    hi: '“मेरी कथाओं में हर वक्तव्य एक ही तरह शुरू होता है,” वेताल कहता है। “उवाच। ‘उसने कहा।’” नन्हा कथावाचक रीढ़ पर ढोल की झड़ी बजाता है। ढोल से खिंचा लुब्धक अलाव की रोशनी के किनारे रुक जाता है। “उवाच कः?” वेताल मीठे स्वर में पूछता है। “किसने कहा?” दादी आपकी ओर सिर हिलाती हैं: “कहिए, और कथा की ओर से बोलिए।”'
+  quote:
+    sa: तच्छ्रुत्वा प्रणतो हृष्टः काणभूतिरुवाच तम्
+    gloss:
+      en: Hearing that, bowing, delighted, Kāṇabhūti said to him.
+      hi: यह सुनकर, प्रणाम करके, प्रसन्न काणभूति ने उससे कहा।
+    source: Kathāsaritsāgara 1.6 (read in the Digital Corpus of Sanskrit)
+- id: t1
+  kind: teach
+  title:
+    en: उवाच and the others
+    hi: उवाच और अन्य
+  depth: core
+  skills:
+  - verb.lit
+  body:
+    en: '{{वच्}} (say) has an irregular story past: {{उवाच}} (he said), {{ऊचतुः}} (the two said), {{ऊचुः}} (they said). {{उवाच}} introduces a speech: {{सः उवाच}}, “he said”. {{जगाद}} (from {{गद्}}) also means “he said”.'
+    hi: '{{वच्}} (कहना) का कथा-भूतकाल अनियमित है: {{उवाच}} (उसने कहा), {{ऊचतुः}} (दोनों ने कहा), {{ऊचुः}} (उन्होंने कहा)। {{उवाच}} वक्तव्य का आरम्भ करता है: {{सः उवाच}}, ‘उसने कहा’। {{जगाद}} ({{गद्}} से) का भी अर्थ ‘उसने कहा’ है।'
+  examples:
+  - sa: काणभूतिः तम् उवाच।
+    meaning:
+      en: Kāṇabhūti said to him.
+      hi: काणभूति ने उससे कहा।
+    words:
+    - sa: काणभूतिः
+      gloss:
+        en: Kāṇabhūti
+        hi: काणभूति
+    - sa: तम्
+      gloss:
+        en: to him
+        hi: उससे
+    - sa: उवाच
+      gloss:
+        en: said
+        hi: बोला
+      check:
+        type: tinanta
+        dhatu: वच्
+        lakara: Lit
+        purusha: Prathama
+        vacana: Eka
+  - sa: ते ऊचुः।
+    meaning:
+      en: They said.
+      hi: वे बोले।
+    words:
+    - sa: ते
+      gloss:
+        en: they
+        hi: वे
+    - sa: ऊचुः
+      gloss:
+        en: said
+        hi: बोले
+      check:
+        type: tinanta
+        dhatu: वच्
+        lakara: Lit
+        purusha: Prathama
+        vacana: Bahu
+- id: tb1
+  kind: table
+  title:
+    en: 'वच्: the story past'
+    hi: 'वच्: कथा का भूतकाल'
+  depth: core
+  skills:
+  - verb.lit
+  caption:
+    en: “He said, you said, I said”
+    hi: ‘उसने कहा, तुमने कहा, मैंने कहा’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: उवाच
+      check:
+        type: tinanta
+        dhatu: वच्
+        lakara: Lit
+        purusha: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: ऊचतुः
+      check:
+        type: tinanta
+        dhatu: वच्
+        lakara: Lit
+        purusha: Prathama
+        vacana: Dvi
+    - sa: ऊचुः
+      check:
+        type: tinanta
+        dhatu: वच्
+        lakara: Lit
+        purusha: Prathama
+        vacana: Bahu
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: उवचिथ
+      check:
+        type: tinanta
+        dhatu: वच्
+        lakara: Lit
+        purusha: Madhyama
+        vacana: Eka
+    - sa: ऊचथुः
+      check:
+        type: tinanta
+        dhatu: वच्
+        lakara: Lit
+        purusha: Madhyama
+        vacana: Dvi
+    - sa: ऊच
+      check:
+        type: tinanta
+        dhatu: वच्
+        lakara: Lit
+        purusha: Madhyama
+        vacana: Bahu
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: उवाच
+      check:
+        type: tinanta
+        dhatu: वच्
+        lakara: Lit
+        purusha: Uttama
+        vacana: Eka
+    - sa: ऊचिव
+      check:
+        type: tinanta
+        dhatu: वच्
+        lakara: Lit
+        purusha: Uttama
+        vacana: Dvi
+    - sa: ऊचिम
+      check:
+        type: tinanta
+        dhatu: वच्
+        lakara: Lit
+        purusha: Uttama
+        vacana: Bahu
+  note:
+    en: '{{उवाच}} is the form to know: the {{व}} of the root joins the doubled {{व}} into {{उ}}.'
+    hi: '{{उवाच}} जानने योग्य रूप है: धातु का {{व}} और द्वित्व का {{व}} मिलकर {{उ}} बन जाते हैं।'
+- id: t2
+  kind: teach
+  title:
+    en: Seen and unseen
+    hi: देखा और अनदेखा
+  depth: core
+  skills:
+  - verb.lit
+  body:
+    en: 'Compare: {{अवदत्}} is “he said” for something you know; {{उवाच}} is “he said” as the old teller narrates. In everyday Sanskrit you will find both; the epics prefer {{उवाच}}.'
+    hi: 'तुलना कीजिए: {{अवदत्}} उसके लिए ‘उसने कहा’ है जो आप जानते हैं; {{उवाच}} पुराने कथावाचक का ‘उसने कहा’ है। रोज़ की संस्कृत में दोनों मिलेंगे; महाकाव्य {{उवाच}} पसन्द करते हैं।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: choice
+  prompt:
+    en: “He said (in the tale).” Which form?
+    hi: ‘उसने कहा (कथा में)।’ कौन-सा रूप?
+  explain:
+    en: '{{उवाच}}: the old tellers'' “said”.'
+    hi: '{{उवाच}}: पुराने कथावाचकों का ‘कहा’।'
+  roman: after
+  options:
+  - sa: अवदत्
+  - correct: true
+    sa: उवाच
+  - sa: वदति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: type
+  prompt:
+    en: 'Say: “He said.”'
+    hi: 'कहिए: ‘उसने कहा।’'
+  explain:
+    en: '{{उवाच}}.'
+    hi: '{{उवाच}}।'
+  roman: after
+  answers:
+  - उवाच
+  tiles:
+  - उ
+  - वाच
+  - वद
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: match
+  prompt:
+    en: Join each form to its meaning.
+    hi: हर रूप को उसके अर्थ से जोड़िए।
+  explain:
+    en: Four story-past verbs.
+    hi: कथा के भूतकाल की चार क्रियाएँ।
+  roman: after
+  pairs:
+  - left:
+      sa: उवाच
+    right:
+      text:
+        en: he said
+        hi: उसने कहा
+  - left:
+      sa: ऊचुः
+    right:
+      text:
+        en: they said
+        hi: उन्होंने कहा
+  - left:
+      sa: बभूव
+    right:
+      text:
+        en: he became
+        hi: वह हुआ
+  - left:
+      sa: जगाम
+    right:
+      text:
+        en: he went
+        hi: वह गया
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.lit
+  widget: mark_words
+  prompt:
+    en: Tap every word that means “said”.
+    hi: ‘कहा’ अर्थ वाले हर शब्द को छुइए।
+  params:
+    passage:
+    - उवाच
+    - वदति
+    - ऊचुः
+    - अवदत्
+    - जगाद
+    - वक्ति
+    targets:
+    - उवाच
+    - ऊचुः
+    - जगाद
+  roman: show
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.lit
+  mode: order
+  prompt:
+    en: 'Say: “Kāṇabhūti said to him.”'
+    hi: 'कहिए: ‘काणभूति ने उससे कहा।’'
+  explain:
+    en: '{{काणभूतिः उवाच तम्}}: a line of the real tale.'
+    hi: '{{काणभूतिः उवाच तम्}}: असली कथा की पंक्ति।'
+  roman: after
+  tokens:
+  - काणभूतिः
+  - उवाच
+  - तम्
+- id: p5
+  kind: practice
+  title:
+    en: They said
+    hi: उन्होंने कहा
+  depth: core
+  skills:
+  - verb.lit
+  mode: choice
+  prompt:
+    en: “They said.” Which form?
+    hi: ‘उन्होंने कहा।’ कौन-सा रूप?
+  explain:
+    en: '{{ऊचुः}}: they, many.'
+    hi: '{{ऊचुः}}: वे, अनेक।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“ऊचुः,” you say, and the fire crackles as if many voices had spoken at once. The storybook spirit unrolls himself, delighted, and his pages are full of speeches, each starting with the same word: उवाच, उवाच, उवाच. “I forgot how to begin,” he says. “You have reminded me.”'
+      hi: '“ऊचुः,” आप कहते हैं, और अलाव ऐसे चटकता है जैसे कई आवाज़ें एक साथ बोली हों। पोथी-भूत आनन्द से स्वयं को खोल देता है, और उसके पन्ने वक्तव्यों से भरे हैं, हर एक उसी शब्द से शुरू: उवाच, उवाच, उवाच। “मैं शुरू करना भूल गया था,” वह कहता है। “आपने मुझे याद दिला दिया।”'
+    failure:
+      en: 'The fire stays quiet. “They said”: {{ऊचुः}}.'
+      hi: 'अलाव शान्त रहता है। ‘उन्होंने कहा’: {{ऊचुः}}।'
+  options:
+  - sa: उवाच
+  - sa: ऊचतुः
+  - correct: true
+    sa: ऊचुः
+- id: sum
+  kind: summary
+  title:
+    en: He said
+    hi: उसने कहा
+  depth: core
+  points:
+  - sa: उवाच · ऊचुः
+    text:
+      en: He said; they said.
+      hi: उसने कहा; उन्होंने कहा।
+  - sa: उवाच
+    text:
+      en: Starts a speech in the epics.
+      hi: महाकाव्यों में वक्तव्य शुरू करता है।
+  - sa: अवदत्
+    text:
+      en: The everyday “said”.
+      hi: रोज़ का ‘कहा’।

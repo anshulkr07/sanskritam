@@ -1,0 +1,43 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: passive-causative
+title:
+  en: Passive and causative
+  hi: कर्मवाच्य और प्रेरणार्थक
+title_sa: कर्मणि णिच् च
+status: ready
+episode:
+  summary:
+    en: 'In tonight''s tale, things are done and people are made to do them: the passive, the causative, and wanting to.'
+    hi: 'आज की कथा में काम किए जाते हैं और लोगों से करवाए जाते हैं: कर्मवाच्य, प्रेरणार्थक, और इच्छा।'
+  beats:
+  - रामेण पुस्तकं पठ्यते.
+  - 'पाठयति: makes someone read.'
+  - 'Wanting to: पिपासति.'
+skills:
+- id: verb.passive
+  title:
+    en: 'The passive: पठ्यते'
+    hi: 'कर्मवाच्य: पठ्यते'
+  sutras:
+  - 3.1.67
+- id: verb.causative
+  title:
+    en: 'Making someone do: पाठयति'
+    hi: 'प्रेरणार्थक: पाठयति'
+  sutras:
+  - 3.1.26
+- id: verb.desiderative
+  title:
+    en: 'Wanting to: पिपासति'
+    hi: 'इच्छार्थक: पिपासति'
+  sutras:
+  - 3.1.7
+lessons:
+- pc.passive
+- pc.cause
+- pc.want
+planned: []
+ghost: preraka
+revision: pc.revision
+check: pc.check

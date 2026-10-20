@@ -1,0 +1,108 @@
+id: rv.revision
+template: revision
+title:
+  en: Everything about reading a verse
+  hi: श्लोक पढ़ने के बारे में सब कुछ
+title_sa: श्लोकसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The two skills
+    hi: दो कौशल
+  depth: core
+  section: core
+  rows:
+  - skill: verse.read
+    rule:
+      en: Split the joins, put the words in prose order, then say the meaning.
+      hi: जोड़ खोलिए, शब्दों को गद्य के क्रम में रखिए, फिर अर्थ कहिए।
+    tag: core
+    taught_in: rv.steps#tb1
+  - skill: verse.commentary
+    rule:
+      en: A commentary repeats a word, adds a word of the same meaning, and closes with {{इत्यर्थः}}.
+      hi: टीका एक शब्द दोहराती है, उसी अर्थ का शब्द जोड़ती है, और {{इत्यर्थः}} पर बन्द करती है।
+    tag: core
+    taught_in: rv.tika#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: verse.read
+    rule:
+      en: Find the verb first, then the doer.
+      hi: पहले क्रिया खोजिए, फिर कर्ता।
+    tag: good
+    taught_in: rv.steps#t1
+  - skill: verse.commentary
+    rule:
+      en: Read a commentary for the sense; the extra word is the commentator's.
+      hi: टीका को अर्थ के लिए पढ़िए; अतिरिक्त शब्द टीकाकार का है।
+    tag: good
+    taught_in: rv.tika#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: verse.commentary
+    rule:
+      en: '{{अथवा}} gives a second reading; both may be right.'
+      hi: '{{अथवा}} दूसरा पाठ देता है; दोनों सही हो सकते हैं।'
+    tag: rare
+    taught_in: rv.tika#t1
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: verse.read
+    rule:
+      en: 'Do not order words you have not separated: split first.'
+      hi: 'जिन शब्दों को अलग नहीं किया उन्हें क्रम मत दीजिए: पहले तोड़िए।'
+    tag: core
+    taught_in: rv.steps#p5
+  - skill: verse.commentary
+    rule:
+      en: Do not read the commentator's word as the verse's own.
+      hi: टीकाकार के शब्द को श्लोक का अपना शब्द मत पढ़िए।
+    tag: core
+    taught_in: rv.tika#p4
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: verse.read
+    formula: पदच्छेदः · अन्वयः · अर्थः
+    rule:
+      en: three steps
+      hi: तीन चरण
+    tag: core
+    taught_in: rv.steps#tb1
+  - skill: verse.commentary
+    formula: इत्यर्थः
+    rule:
+      en: that is the meaning
+      hi: यही अर्थ है
+    tag: core
+    taught_in: rv.tika#tb1

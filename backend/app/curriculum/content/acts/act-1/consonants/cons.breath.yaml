@@ -1,0 +1,334 @@
+id: cons.breath
+template: scene
+title:
+  en: 'Breath and voice: क ख ग घ ङ'
+  hi: 'साँस और नाद: क ख ग घ ङ'
+title_sa: प्राणः घोषश्च
+minutes: 6
+teaches:
+- script.cons.voice
+needs:
+- script.cons.grid
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Śuka's puffs of air
+    hi: शुक की साँस के झोंके
+  depth: core
+  image:
+    brief: Śuka the parrot on Dādī's shoulder squawking beside the carved temple door, a hand held up in front of his open beak to feel the puff of air; Dādī covering her ears, amused; a lavender shadow giggling in the carving.
+    alt:
+      en: A parrot squawks beside a carved door while a grandmother covers her ears
+      hi: नक्काशीदार द्वार के पास चिल्लाता तोता, कान ढकती दादी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - chayika
+    place: devalaya
+    ratio: '4:3'
+    id: cons-breath-s1
+  narration:
+    en: Śuka wants to help read the door. He squawks {{खरः}} for every {{करः}}. Dādī covers her ears. “One puff of breath, Śuka, and a hand becomes a donkey.” Behind the carving, a lavender giggle.
+    hi: शुक द्वार पढ़ने में मदद करना चाहता है। वह हर {{करः}} को {{खरः}} चिल्लाता है। दादी कान बन्द कर लेती हैं, “शुक, साँस के एक झोंके से हाथ गधा बन जाता है।” नक्काशी के पीछे बैंगनी हँसी गूँजती है।
+  lines:
+  - speaker: shuka
+    sa: खरः! खरः!
+    gloss:
+      en: Donkey! Donkey!
+      hi: गधा! गधा!
+- id: t1
+  kind: teach
+  title:
+    en: Five sounds in a row
+    hi: एक पंक्ति में पाँच ध्वनियाँ
+  depth: core
+  skills:
+  - script.cons.voice
+  body:
+    en: 'Every row runs in the same order: plain, breathy, voiced, voiced and breathy, nasal. Put your hand before your mouth: {{ख}} is {{क}} with a puff of air. Touch your throat: {{ग}} buzzes, {{क}} does not.'
+    hi: 'हर पंक्ति एक ही क्रम में चलती है: सादा, साँस वाला, नाद वाला, नाद और साँस वाला, नासिक्य। हाथ मुँह के आगे रखिए: {{ख}} यानी {{क}} पर साँस का झोंका। गले को छुइए: {{ग}} में गूँज है, {{क}} में नहीं।'
+  rows:
+  - sa: क
+    gloss:
+      en: 'plain: k in “skin”, no buzz, no puff'
+      hi: 'अल्पप्राण, अघोष: सादा, न गूँज, न झोंका'
+  - sa: ख
+    gloss:
+      en: 'breathy: {{क}} with a puff of air'
+      hi: 'महाप्राण, अघोष: {{क}} पर साँस का झोंका'
+  - sa: ग
+    gloss:
+      en: 'voiced: g in “go”, the throat buzzes'
+      hi: 'अल्पप्राण, घोष: गले में गूँज'
+  - sa: घ
+    gloss:
+      en: 'voiced and breathy: {{ग}} with a puff'
+      hi: 'महाप्राण, घोष: {{ग}} पर झोंका'
+  - sa: ङ
+    gloss:
+      en: 'nasal: ng in “sing”'
+      hi: 'नासिक्य: नाक से'
+- id: tb1
+  kind: table
+  title:
+    en: Reading the grid
+    hi: तालिका पढ़ना
+  depth: core
+  skills:
+  - script.cons.voice
+  caption:
+    en: What the five places of every row mean
+    hi: हर पंक्ति के पाँच स्थानों का अर्थ
+  columns:
+  - en: Plain
+    hi: सादा
+  - en: Breathy
+    hi: महाप्राण
+  - en: Voiced
+    hi: घोष
+  - en: Voiced + breath
+    hi: घोष-महाप्राण
+  - en: Nasal
+    hi: नासिक्य
+  rows:
+  - - sa: क
+    - sa: ख
+    - sa: ग
+    - sa: घ
+    - sa: ङ
+  - - sa: च
+    - sa: छ
+    - sa: ज
+    - sa: झ
+    - sa: ञ
+  - - sa: ट
+    - sa: ठ
+    - sa: ड
+    - sa: ढ
+    - sa: ण
+  - - sa: त
+    - sa: थ
+    - sa: द
+    - sa: ध
+    - sa: न
+  - - sa: प
+    - sa: फ
+    - sa: ब
+    - sa: भ
+    - sa: म
+  note:
+    en: Column 1 and 2 are unvoiced (no buzz); columns 3, 4 and 5 buzz. Columns 2 and 4 carry the puff.
+    hi: स्तम्भ 1 और 2 में गूँज नहीं (अघोष); 3, 4 और 5 में गूँज है (घोष)। स्तम्भ 2 और 4 में साँस का झोंका (महाप्राण) है।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.voice
+  mode: choice
+  prompt:
+    en: Which letter is the plain, unvoiced one in the throat row?
+    hi: कण्ठ की पंक्ति में सादा, बिना गूँज वाला अक्षर कौन-सा है?
+  explain:
+    en: '{{क}}: no puff and no buzz. {{ख}} has the puff, {{ग}} the buzz.'
+    hi: '{{क}} में न झोंका है, न गूँज। {{ख}} में झोंका है, {{ग}} में गूँज।'
+  roman: after
+  options:
+  - correct: true
+    sa: क
+  - sa: ख
+  - sa: ग
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.voice
+  mode: match
+  prompt:
+    en: Join each letter to how it is made.
+    hi: हर अक्षर को उसके बनने के ढंग से जोड़िए।
+  explain:
+    en: 'Plain, puff, buzz, buzz and puff, nose: the order of every row.'
+    hi: 'सादा, झोंका, गूँज, गूँज और झोंका, नाक: हर पंक्ति का यही क्रम है।'
+  roman: after
+  pairs:
+  - left:
+      sa: क
+    right:
+      text:
+        en: plain
+        hi: सादा
+  - left:
+      sa: ख
+    right:
+      text:
+        en: puff of air
+        hi: साँस का झोंका
+  - left:
+      sa: ग
+    right:
+      text:
+        en: buzz
+        hi: गूँज
+  - left:
+      sa: घ
+    right:
+      text:
+        en: buzz and puff
+        hi: गूँज और झोंका
+  - left:
+      sa: ङ
+    right:
+      text:
+        en: through the nose
+        hi: नाक से
+- id: t2
+  kind: teach
+  title:
+    en: A puff makes a new word
+    hi: झोंके से नया शब्द
+  depth: core
+  skills:
+  - script.cons.voice
+  body:
+    en: 'Keep the puff, or lose it: the word changes. Hindi speakers know this from {{कल}} and {{खल}}; Sanskrit keeps the difference everywhere.'
+    hi: 'झोंका रखिए या हटाइए: शब्द बदल जाता है। हिन्दी बोलने वाले इसे जानते हैं; संस्कृत हर जगह यह अन्तर रखती है।'
+  examples:
+  - sa: करः
+    meaning:
+      en: a hand; a ray of light (plain {{क}})
+      hi: हाथ; किरण (सादा {{क}})
+    check:
+      type: subanta
+      stem: कर
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: खरः
+    meaning:
+      en: a donkey (breathy {{ख}})
+      hi: गधा (महाप्राण {{ख}})
+    check:
+      type: subanta
+      stem: खर
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: पलम्
+    meaning:
+      en: a moment (plain {{प}})
+      hi: पल, क्षण (सादा {{प}})
+    check:
+      type: subanta
+      stem: पल
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: फलम्
+    meaning:
+      en: a fruit (breathy {{फ}})
+      hi: फल (महाप्राण {{फ}})
+    check:
+      type: subanta
+      stem: फल
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - script.cons.voice
+  widget: mark_words
+  prompt:
+    en: Tap every breathy letter (with a puff of air).
+    hi: साँस के झोंके वाले हर अक्षर को छुइए।
+  params:
+    passage:
+    - क
+    - ख
+    - ग
+    - घ
+    - ङ
+    - च
+    - छ
+    - ज
+    - झ
+    - ञ
+    targets:
+    - ख
+    - घ
+    - छ
+    - झ
+  roman: after
+- id: p3
+  kind: practice
+  title:
+    en: The right word
+    hi: सही शब्द
+  depth: core
+  skills:
+  - script.cons.voice
+  mode: choice
+  prompt:
+    en: Śuka should say “fruit”, not “moment”. Which word is it?
+    hi: शुक को ‘फल’ कहना है, ‘पल’ नहीं। कौन-सा शब्द है?
+  explain:
+    en: '{{फलम्}} has the breathy {{फ}}: a fruit.'
+    hi: '{{फलम्}} में महाप्राण {{फ}} है: फल।'
+  roman: show
+  gate: true
+  story:
+    success:
+      en: “फलम्! फलम्!” Śuka crunches an imaginary fruit. From the carving comes a lavender laugh, brighter than before.
+      hi: “फलम्! फलम्!” शुक काल्पनिक फल चबाता है। नक्काशी से पहले से ज़्यादा उजली बैंगनी हँसी सुनाई देती है।
+    failure:
+      en: '“पलम्! पलम्!” Śuka bites the air. Dādī smiles: “A moment is not a fruit.” Feel for the puff.'
+      hi: “पलम्! पलम्!” शुक हवा को काटता है। दादी मुस्कुराती हैं, “पल कोई फल नहीं होता।” झोंके को महसूस कीजिए।
+  options:
+  - sa: पलम्
+  - correct: true
+    sa: फलम्
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - script.cons.voice
+  mode: type
+  prompt:
+    en: Build the word {{खरः}} from the pieces.
+    hi: टुकड़ों से शब्द {{खरः}} बनाइए।
+  explain:
+    en: '{{ख}} with the puff, then {{रः}}: {{खरः}}, a donkey.'
+    hi: 'झोंके वाला {{ख}}, फिर {{रः}}: {{खरः}}, गधा।'
+  roman: after
+  answers:
+  - खरः
+  tiles:
+  - ख
+  - रः
+  - क
+  - ग
+- id: sum
+  kind: summary
+  title:
+    en: Breath and voice
+    hi: साँस और नाद
+  depth: core
+  points:
+  - sa: क ख ग घ ङ
+    text:
+      en: Plain, breathy, voiced, voiced and breathy, nasal.
+      hi: सादा, महाप्राण, घोष, घोष-महाप्राण, नासिक्य।
+  - text:
+      en: Breathy letters carry a puff of air; voiced letters buzz in the throat.
+      hi: महाप्राण में साँस का झोंका है; घोष में गले की गूँज।
+  - sa: कर · खर
+    text:
+      en: One puff changes the word.
+      hi: एक झोंके से शब्द बदल जाता है।

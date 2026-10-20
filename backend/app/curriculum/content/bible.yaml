@@ -1,0 +1,1392 @@
+# The story bible for "The Burnt Book" (दग्धा बृहत्कथा).
+#
+# Every picture, scene and line must agree with this file. Add characters,
+# places and ghosts here before using them in a lesson; never change a
+# character's look once pictures exist (ChatGPT redraws from these words).
+#
+# The legend the story grows from is real and checked at the text
+# (Kathāsaritsāgara 1.8, DCS): Guṇāḍhya wrote a book of seven tales in
+# Paiśācī, the language of the ghosts, in his own blood; King Sātavāhana
+# scorned it; Guṇāḍhya read it leaf by leaf to the deer and birds and burned
+# six of the tales; the ghosts who heard it were freed; one tale survived.
+# Everything after "some ghosts came too late" is our story.
+#
+# YAML: quote every learner-facing string. An unquoted comma inside
+# {en: …, hi: …} silently splits the text and the checker reports
+# "Extra inputs are not permitted".
+
+style: >-
+  Refined Indian watercolour with restrained gouache on warm ivory paper,
+  organic detail, quiet ochre, sage, dusty terracotta and muted indigo, soft
+  natural light. Warm and gentle; spirits are luminous and kind, never
+  frightening. Phone-first composition: the main subject grouped in the
+  centre, quiet margins. Text appears only where the brief asks for it, and
+  then exactly as given.
+
+characters:
+  - id: you
+    name_sa: "त्वम्"
+    name: {en: "You", hi: "आप"}
+    kind: human
+    role: {en: "The one who found the glowing leaf", hi: "वह जिसे चमकता पत्र मिला"}
+    look: >-
+      Always seen from behind or at a distance, face never detailed, so every
+      learner can be the hero: a young person in a simple ochre kurta with a
+      cloth shoulder bag.
+    portrait:
+      id: portrait-you
+      brief: "Square portrait: you, seen from behind and a little to one side, holding a softly glowing half-burnt palm leaf in both hands in warm library lamplight; the face is not shown."
+      alt: {en: "A young person seen from behind, holding a glowing palm leaf", hi: "पीछे से दिखता एक युवा, हाथों में चमकता ताड़पत्र"}
+      ratio: "1:1"
+      cast: [you]
+
+  - id: dadi
+    name_sa: "पितामही"
+    name: {en: "Dādī", hi: "दादी"}
+    kind: human
+    role: {en: "Your grandmother, a Sanskrit teacher and storyteller", hi: "आपकी दादी, संस्कृत की अध्यापिका और कथावाचिका"}
+    look: >-
+      A warm, sharp-eyed grandmother in her seventies, silver hair in a low
+      bun, round spectacles, a cream cotton sari with a thin maroon border and
+      a grey shawl; carries a cloth-bound notebook.
+    portrait:
+      id: portrait-dadi
+      brief: "Square portrait: Dādī holding her cloth-bound notebook against her chest, smiling as if about to tell a story, shelves of palm-leaf bundles softly behind her."
+      alt: {en: "A smiling grandmother with round spectacles holding a notebook", hi: "गोल चश्मे वाली मुस्कुराती दादी, हाथ में कॉपी"}
+      ratio: "1:1"
+      cast: [dadi]
+
+  - id: shuka
+    name_sa: "शुकः"
+    name: {en: "Śuka the parrot", hi: "शुक तोता"}
+    kind: animal
+    role: {en: "Your companion, who repeats every word he hears", hi: "आपका साथी, जो हर सुना हुआ शब्द दोहराता है"}
+    look: >-
+      A bright green rose-ringed parrot with a red beak and a faint pink and
+      black neck ring, a little scruffy, very expressive eyes; usually on
+      your shoulder or Dādī's.
+    portrait:
+      id: portrait-shuka
+      brief: "Square portrait: Śuka the green rose-ringed parrot perched on the edge of a wooden shelf, head tilted, beak slightly open as if about to repeat a word."
+      alt: {en: "A green parrot with a red beak, head tilted", hi: "लाल चोंच वाला हरा तोता, सिर झुकाए"}
+      ratio: "1:1"
+      cast: [shuka]
+
+  - id: gunadhya
+    name_sa: "गुणाढ्यः"
+    name: {en: "Guṇāḍhya", hi: "गुणाढ्य"}
+    kind: historical
+    role: {en: "The poet who wrote the book of seven tales", hi: "सात कथाओं की पुस्तक के रचयिता कवि"}
+    look: >-
+      A lean poet with long matted hair and a beard, in plain white cloth,
+      sitting under a banyan tree with bundles of palm leaves.
+    portrait:
+      id: portrait-gunadhya
+      brief: "Square portrait: Guṇāḍhya sitting under a banyan tree with bundles of palm leaves on his knees, calm and sorrowful, evening light through the leaves."
+      alt: {en: "A lean bearded poet under a banyan tree with palm leaves", hi: "बरगद के नीचे ताड़पत्रों के साथ दुबले-पतले दाढ़ी वाले कवि"}
+      ratio: "1:1"
+      cast: [gunadhya]
+
+  - id: satavahana
+    name_sa: "सातवाहनः"
+    name: {en: "King Sātavāhana", hi: "राजा सातवाहन"}
+    kind: historical
+    role: {en: "The king who laughed at the book", hi: "वह राजा जिसने पुस्तक का उपहास किया"}
+    look: >-
+      A proud young king in red and gold with a pearl necklace; later shown
+      humbled, kneeling.
+
+  - id: kanabhuti
+    name_sa: "काणभूतिः"
+    name: {en: "Kāṇabhūti", hi: "काणभूति"}
+    kind: ghost
+    role: {en: "The cursed spirit who first told the great tale in the ghosts' language", hi: "वह शापित आत्मा जिसने पहली बार भूतों की भाषा में महाकथा सुनाई"}
+    look: >-
+      A tall, dignified spirit of soft blue light in the shape of a forest
+      dweller, kind eyes, wisps trailing like smoke from a lamp.
+
+  - id: lubdhaka
+    name_sa: "लुब्धकः"
+    name: {en: "Lubdhaka the collector", hi: "लुब्धक, संग्रहकर्ता"}
+    kind: human
+    role: {en: "A rich collector who wants the leaves for their powers", hi: "एक धनी संग्रहकर्ता जो शक्तियों के लिए पत्र चाहता है"}
+    look: >-
+      A tall man in an expensive dark coat over a kurta, rings on his fingers,
+      a leather satchel, usually half in shadow; never monstrous.
+    portrait:
+      id: portrait-lubdhaka
+      brief: "Square portrait: Lubdhaka standing half in shadow in a stone doorway, one ringed hand on the strap of his leather satchel, watching calmly; elegant, never monstrous."
+      alt: {en: "A tall man in a dark coat, half in shadow in a doorway", hi: "गहरे कोट में एक लम्बा आदमी, दरवाज़े पर आधा अँधेरे में"}
+      ratio: "1:1"
+      cast: [lubdhaka]
+
+  - id: dhumaka
+    name_sa: "धूमकः"
+    name: {en: "Dhūmaka, little smoke", hi: "धूमक, नन्हा धुआँ"}
+    kind: ghost
+    role: {en: "A small ghost who missed Guṇāḍhya's reading", hi: "एक नन्हा भूत जो गुणाढ्य का पाठ सुनने से चूक गया"}
+    look: >-
+      A small, round, smoke-grey spirit about the height of a child's knee,
+      with big kind dark eyes and a wavy, wispy lower edge like lamp smoke.
+    portrait:
+      id: portrait-dhumaka
+      brief: "Square portrait: Dhūmaka floating just above a brass oil lamp, a small round smoke-grey ghost with big kind dark eyes, his wispy lower edge curling into the lamp's smoke."
+      alt: {en: "A small round smoky ghost with big eyes above a brass lamp", hi: "पीतल के दीपक के ऊपर बड़ी आँखों वाला नन्हा धुएँ-सा भूत"}
+      ratio: "1:1"
+      cast: [dhumaka]
+
+  - id: chayika
+    name_sa: "छायिका"
+    name: {en: "Chāyikā, little shadow", hi: "छायिका, नन्ही छाया"}
+    kind: ghost
+    role: {en: "A shy shadow-ghost who lives in the temple's carved door", hi: "मंदिर के नक्काशीदार द्वार में रहने वाली एक शर्मीली छाया"}
+    look: >-
+      A slim lavender-grey shadow spirit with a small gold thread in her hair,
+      half hidden in the carvings, gentle smile.
+    portrait:
+      id: portrait-chayika
+      brief: "Square portrait: Chāyikā, a slim lavender-grey shadow spirit with a gold thread in her hair, peeking shyly out from the carvings of a wooden temple door."
+      alt: {en: "A shy lavender shadow spirit peeking from a carved door", hi: "नक्काशीदार द्वार से झाँकती शर्मीली बैंगनी छाया"}
+      ratio: "1:1"
+      cast: [chayika]
+
+  - id: nidralu
+    name_sa: "निद्रालुः"
+    name: {en: "Nidrālu, the sleepy one", hi: "निद्रालु, नींद में डूबा"}
+    kind: ghost
+    role: {en: "A drowsy ghost asleep among the joined letters on the temple pillar", hi: "मंदिर के स्तंभ पर संयुक्ताक्षरों के बीच सोया हुआ भूत"}
+    look: >-
+      A pale sage-green round spirit with half-closed eyes and a tiny
+      nightcap of mist, often yawning.
+    portrait:
+      id: portrait-nidralu
+      brief: "Square portrait: Nidrālu, a pale sage-green round spirit with half-closed eyes and a tiny nightcap of mist, yawning, curled against a carved stone pillar."
+      alt: {en: "A sleepy green spirit yawning against a stone pillar", hi: "पत्थर के स्तंभ से टिका, उबासी लेता हरा-सा भूत"}
+      ratio: "1:1"
+      cast: [nidralu]
+
+  - id: mauni
+    name_sa: "मौनी"
+    name: {en: "Maunī, the silent one", hi: "मौनी, मौन रहने वाला"}
+    kind: ghost
+    role: {en: "A ghost who cannot speak until someone reads his name aloud", hi: "वह भूत जो तब तक बोल नहीं सकता जब तक कोई उसका नाम पढ़कर न सुनाए"}
+    look: >-
+      A tall, thin, pale-gold spirit with a finger to his lips and a scroll
+      tucked under his arm.
+    portrait:
+      id: portrait-mauni
+      brief: "Square portrait: Maunī, a tall thin pale-gold spirit with one finger to his lips and a scroll tucked under his arm, standing beside an old library register."
+      alt: {en: "A tall pale-gold spirit with a finger to his lips", hi: "होंठों पर उँगली रखे लम्बा, सुनहरा-सा भूत"}
+      ratio: "1:1"
+      cast: [mauni]
+
+  # >>> characters added for Acts I-V
+  - id: navika
+    name_sa: "नाविकः"
+    name: {en: "The boatman", hi: "नाविक"}
+    kind: human
+    role: {en: "A weathered boatman who offers to take you downstream", hi: "धूप में तपा नाविक जो आपको नदी में आगे ले जाने की पेशकश करता है"}
+    look: >-
+      A lean, sun-browned boatman in a faded blue dhoti and a cloth headwrap,
+      kind creased eyes, a long bamboo pole in his hands.
+
+  - id: vanik
+    name_sa: "वणिक्"
+    name: {en: "The spice seller", hi: "मसाले वाला"}
+    kind: human
+    role: {en: "A cheerful trader in the market who guards a very old chest", hi: "बाज़ार का हँसमुख व्यापारी जो एक बहुत पुराना संदूक सँभालता है"}
+    look: >-
+      A round, cheerful man in a mustard-yellow shawl with a thick moustache,
+      brass scales hanging from his stall, heaps of spices in front of him.
+
+  - id: acarya
+    name_sa: "आचार्यः"
+    name: {en: "The Ācārya", hi: "आचार्य"}
+    kind: human
+    role: {en: "Dādī's old teacher, who keeps the village school and its library", hi: "दादी के पुराने गुरु, जो गाँव की पाठशाला और उसका पुस्तकालय सँभालते हैं"}
+    look: >-
+      A very old, serene scholar with a white beard and a saffron shawl, a
+      palm-leaf manuscript always under his arm, kind half-closed eyes.
+
+  - id: vararuci
+    name_sa: "वररुचिः"
+    name: {en: "Vararuci, the boy", hi: "वररुचि, बालक"}
+    kind: human
+    role: {en: "A small boy who remembers everything he hears once", hi: "एक छोटा बालक जो एक बार सुनी हर बात याद रखता है"}
+    look: >-
+      A small, bright-eyed boy of about seven in a plain white dhoti, a thin
+      sacred thread, hair in a short tuft, always listening with his head
+      tilted.
+
+  - id: vasudatta
+    name_sa: "वसुदत्ता"
+    name: {en: "His mother", hi: "उसकी माता"}
+    kind: human
+    role: {en: "The boy's mother, a widow who raised him alone", hi: "बालक की माता, एक विधवा जिसने उसे अकेले पाला"}
+    look: >-
+      A slim young widow in a plain white-grey sari, tired kind eyes, a clay
+      lamp always near her hand.
+
+  - id: vyadi
+    name_sa: "व्याडिः"
+    name: {en: "Vyāḍi", hi: "व्याडि"}
+    kind: human
+    role: {en: "A travelling scholar searching for a pupil who hears once", hi: "एक यात्री विद्वान् जो एक बार सुनने वाले शिष्य को खोज रहा है"}
+    look: >-
+      A lean scholar in a travel-worn ochre dhoti, dusty feet, a cloth bundle
+      of palm leaves on one shoulder, tired but eager eyes.
+
+  - id: indradatta
+    name_sa: "इन्द्रदत्तः"
+    name: {en: "Indradatta", hi: "इन्द्रदत्त"}
+    kind: human
+    role: {en: "Vyāḍi's friend and fellow traveller", hi: "व्याडि का मित्र और सहयात्री"}
+    look: >-
+      A broad, quiet scholar in a faded saffron wrap, a staff, a thoughtful
+      frown, walking beside Vyāḍi.
+
+  - id: varsha
+    name_sa: "वर्षः"
+    name: {en: "Varṣa, the teacher", hi: "वर्ष, गुरु"}
+    kind: human
+    role: {en: "A teacher whom the town thinks a fool, though he holds all knowledge", hi: "एक गुरु जिन्हें नगर मूर्ख समझता है, पर जिनके पास सारा ज्ञान है"}
+    look: >-
+      A thin man in a threadbare white dhoti, deep-set calm eyes and a patient
+      smile, sitting on swept ground before a mud-walled house.
+
+  - id: vetala
+    name_sa: "वेतालः"
+    name: {en: "The Vetāla", hi: "वेताल"}
+    kind: ghost
+    role: {en: "A tale-telling spirit who hangs in a śiṃśapā tree and speaks in riddles", hi: "एक कथा सुनाने वाला भूत जो शिंशपा के वृक्ष पर लटका रहता है और पहेलियों में बोलता है"}
+    look: >-
+      A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch
+      by its ankles, arms folded across its chest, bright amused eyes, a shawl
+      of mist trailing downwards; strange, never frightening.
+
+  - id: panini
+    name_sa: "पाणिनिः"
+    name: {en: "Pāṇini", hi: "पाणिनि"}
+    kind: historical
+    role: {en: "A dull pupil who climbed the Himālaya and came back with a grammar", hi: "एक मन्द शिष्य जो हिमालय चढ़ा और व्याकरण लेकर लौटा"}
+    look: >-
+      A thin, earnest young man in a plain white dhoti, shaved head with a
+      short tuft, pale from fasting, a bundle of palm leaves under his arm and
+      a stubborn set to his jaw.
+
+  - id: shiva
+    name_sa: "शिवः"
+    name: {en: "Śiva", hi: "शिव"}
+    kind: divine
+    role: {en: "The lord of the Himālaya who gives Pāṇini the new grammar", hi: "हिमालय के स्वामी जो पाणिनि को नया व्याकरण देते हैं"}
+    look: >-
+      A serene ascetic figure seated on a snowy peak, ash on the skin, matted
+      hair piled up with a thin crescent moon in it, calm half-closed eyes;
+      shown with reverence, never alarming.
+
+  - id: shakatala
+    name_sa: "शकटालः"
+    name: {en: "Śakaṭāla", hi: "शकटाल"}
+    kind: historical
+    role: {en: "King Nanda's old minister, thrown into a blind well and then lifted out", hi: "राजा नन्द का पुराना मन्त्री, अन्धकूप में डाला गया और फिर बाहर निकाला गया"}
+    look: >-
+      A middle-aged minister, lean and grey-bearded, in a once-fine but now
+      dusty cream robe, with a long patient face and the bent back of someone
+      who has learned to bow.
+
+  - id: yogananda
+    name_sa: "योगनन्दः"
+    name: {en: "Yogananda", hi: "योगनन्द"}
+    kind: historical
+    role: {en: "The proud, careless king of Pāṭaliputra", hi: "पाटलिपुत्र का घमण्डी, लापरवाह राजा"}
+    look: >-
+      A heavy king in rich red and gold, a thick jewelled necklace, rings on
+      every finger, a restless proud look; shown human, never monstrous.
+
+  - id: vararuci-elder
+    name_sa: "वररुचिः"
+    name: {en: "Vararuci, the elder", hi: "वररुचि, बड़ा"}
+    kind: historical
+    role: {en: "The boy who heard once, now grown, the king's wise minister", hi: "एक बार सुनकर याद रखने वाला बालक, अब बड़ा हो चुका, राजा का बुद्धिमान मन्त्री"}
+    look: >-
+      A tall, calm, middle-aged scholar-minister in a clean white dhoti and
+      shawl, a thin sacred thread, quick bright eyes and a steady half-smile;
+      the same eyes as the boy.
+
+  - id: gunadeva
+    name_sa: "गुणदेवः"
+    name: {en: "Guṇadeva", hi: "गुणदेव"}
+    kind: historical
+    role: {en: "One of Guṇāḍhya's two disciples, the tall earnest one", hi: "गुणाढ्य के दो शिष्यों में से एक, लम्बा और गम्भीर"}
+    look: >-
+      A tall earnest young disciple in plain pale-saffron cloth, a thin sacred
+      thread, a serious face and ink-stained fingers; carries a bundle of palm
+      leaves.
+
+  - id: nandideva
+    name_sa: "नन्दिदेवः"
+    name: {en: "Nandideva", hi: "नन्दिदेव"}
+    kind: historical
+    role: {en: "Guṇāḍhya's other disciple, the round-faced gentle one", hi: "गुणाढ्य का दूसरा शिष्य, गोल चेहरे वाला और कोमल"}
+    look: >-
+      A shorter round-faced young disciple in plain pale-saffron cloth, gentle
+      and quick to tears, always a step behind his friend.
+
+  - id: vasavadatta
+    name_sa: "वासवदत्ता"
+    name: {en: "Queen Vāsavadattā", hi: "रानी वासवदत्ता"}
+    kind: historical
+    role: {en: "The queen of the king of Vatsa, mother of Naravāhanadatta", hi: "वत्सराज की रानी, नरवाहनदत्त की माता"}
+    look: >-
+      A calm young queen in a deep-red sari with a gold border, dark hair in a
+      long plait with jasmine, a thoughtful anxious face that softens into
+      joy.
+
+  - id: vatsaraja
+    name_sa: "वत्सराजः"
+    name: {en: "The king of Vatsa", hi: "वत्सराज"}
+    kind: historical
+    role: {en: "The king of Vatsa, father of Naravāhanadatta", hi: "वत्स देश का राजा, नरवाहनदत्त का पिता"}
+    look: >-
+      A handsome young king in a pale gold robe with a simple crown and a lute
+      slung at his shoulder, warm eyes and a ready smile.
+
+  - id: naravahanadatta
+    name_sa: "नरवाहनदत्तः"
+    name: {en: "Naravāhanadatta", hi: "नरवाहनदत्त"}
+    kind: historical
+    role: {en: "The child whose life is the tale that survived", hi: "वह बालक जिसका जीवन बची हुई कथा है"}
+    look: >-
+      A baby with large bright eyes and a smiling mouth, wrapped in a saffron
+      cloth with a thin gold edge; later a small laughing child.
+
+  - id: ghataka
+    name_sa: "घाटकः"
+    name: {en: "Ghāṭaka, little ghat", hi: "घाटक, नन्हा घाट"}
+    kind: ghost
+    role: {en: "A little spirit who sits on the lowest ghat step", hi: "घाट की सबसे निचली सीढ़ी पर बैठने वाला नन्हा भूत"}
+    look: >-
+      A small grey-blue spirit like river mist, sitting on the lowest stone
+      step with his wispy feet trailing in the water, big curious eyes.
+
+  - id: bakau
+    name_sa: "बकौ"
+    name: {en: "Bakau, the two herons", hi: "बकौ, दो बगुले"}
+    kind: ghost
+    role: {en: "Two white heron-spirits who always stand together", hi: "दो सफ़ेद बगुला-भूत जो हमेशा साथ खड़े रहते हैं"}
+    look: >-
+      Two tall white spirits shaped like herons, standing side by side on one
+      leg each, their feathers soft as mist.
+
+  - id: pratibimbaka
+    name_sa: "प्रतिबिम्बकः"
+    name: {en: "Pratibimbaka, little reflection", hi: "प्रतिबिम्बक, नन्हा प्रतिबिम्ब"}
+    kind: ghost
+    role: {en: "A shy spirit who only repeats what he sees, like a reflection", hi: "एक शर्मीला भूत जो प्रतिबिम्ब की तरह केवल दोहराता है"}
+    look: >-
+      A pale silver spirit that looks like a rippling reflection of whoever
+      stands near; his edges shimmer like water.
+
+  - id: rangaka
+    name_sa: "रङ्गकः"
+    name: {en: "Rangaka, little colour", hi: "रंगक, नन्हा रंग"}
+    kind: ghost
+    role: {en: "A spirit of many colours hidden among the fair's puppets", hi: "मेले की कठपुतलियों में छिपा रंग-बिरंगा भूत"}
+    look: >-
+      A small spirit that changes colour from red to gold to green, with a
+      painted-clay face and a tiny paper hat.
+
+  - id: haridraka
+    name_sa: "हरिद्रकः"
+    name: {en: "Haridraka, little turmeric", hi: "हरिद्रक, नन्हा हल्दी"}
+    kind: ghost
+    role: {en: "A yellow spirit who haunts the spice seller's stall", hi: "मसाले वाले की दुकान पर रहने वाला पीला भूत"}
+    look: >-
+      A small round saffron-yellow spirit dusted with spice powder, a tiny
+      brass scale hanging from one wisp.
+
+  - id: tarika
+    name_sa: "तरिका"
+    name: {en: "Tarikā, little boat", hi: "तरिका, नन्ही नाव"}
+    kind: ghost
+    role: {en: "A boat-shaped wisp of smoke that rides the river", hi: "नदी पर चलने वाला नाव के आकार का धुएँ का टुकड़ा"}
+    look: >-
+      A small spirit shaped like a curved boat of pale blue mist, with two
+      bright eyes at the bow.
+
+  - id: danaka
+    name_sa: "दानकः"
+    name: {en: "Dānaka, the little giver", hi: "दानक, नन्हा दाता"}
+    kind: ghost
+    role: {en: "A spirit with open hands who longs to be given something", hi: "खुले हाथों वाला भूत जो कुछ पाने की चाह रखता है"}
+    look: >-
+      A round golden spirit holding out two cupped hands, with a smile as wide
+      as a lamp's flame.
+
+  - id: vayuka
+    name_sa: "वायुकः"
+    name: {en: "Vāyuka, little wind", hi: "वायुक, नन्हा पवन"}
+    kind: ghost
+    role: {en: "A restless gust that carries everyone away from the river", hi: "बेचैन झोंका जो सबको नदी से दूर ले जाता है"}
+    look: >-
+      A swirling grey-green spirit made of wind and leaves, with a wide
+      windblown smile.
+
+  - id: smritika
+    name_sa: "स्मृतिका"
+    name: {en: "Smṛtikā, little memory", hi: "स्मृतिका, नन्ही याद"}
+    kind: ghost
+    role: {en: "A gentle spirit who keeps the house's memories", hi: "घर की यादें सँजोने वाला कोमल भूत"}
+    look: >-
+      A slim warm-gold spirit holding a tiny lamp, her wisps trailing like the
+      fringe of an old shawl.
+
+  - id: dipaka
+    name_sa: "दीपकः"
+    name: {en: "Dīpaka, little lamp", hi: "दीपक, नन्हा दीया"}
+    kind: ghost
+    role: {en: "A flickering spirit who lives in the lamp by the well", hi: "कुएँ के पास दीये में रहने वाला टिमटिमाता भूत"}
+    look: >-
+      A small flickering amber spirit shaped like a lamp's flame, with a
+      bright pair of eyes and a thin trail of smoke.
+
+  - id: pratidhvanika
+    name_sa: "प्रतिध्वनिकः"
+    name: {en: "Pratidhvanika, little echo", hi: "प्रतिध्वनिक, नन्ही गूँज"}
+    kind: ghost
+    role: {en: "An echo that answers every call, lost in the dark lanes", hi: "अँधेरी गलियों में खोई प्रतिध्वनि जो हर पुकार का उत्तर देती है"}
+    look: >-
+      A faint blue-grey spirit shaped like a ripple of sound, with ear-like
+      curls and a mouth that opens in a perfect O.
+
+  - id: vrikshaka
+    name_sa: "वृक्षकः"
+    name: {en: "Vṛkṣaka, little family tree", hi: "वृक्षक, नन्हा वंशवृक्ष"}
+    kind: ghost
+    role: {en: "A spirit shaped like a tree whose leaves are names", hi: "पेड़ जैसा भूत जिसके पत्ते नाम हैं"}
+    look: >-
+      A small tree-shaped spirit of green mist with tiny palm-leaf tags
+      hanging from its branches like names.
+
+  - id: kavika
+    name_sa: "कविकः"
+    name: {en: "Kavika, little poet", hi: "कविक, नन्हा कवि"}
+    kind: ghost
+    role: {en: "An ink-stained spirit who composes in his sleep", hi: "स्याही से सने हाथों वाला भूत जो नींद में कविता रचता है"}
+    look: >-
+      A small blue-black spirit with ink-stained wisps, a reed pen behind one
+      ear.
+
+  - id: ganaka
+    name_sa: "गणकः"
+    name: {en: "Ganaka, the counter", hi: "गणक, गिनने वाला"}
+    kind: ghost
+    role: {en: "A spirit of knotted cords and pebbles who counts everything and loses count", hi: "गाँठ वाली डोरियों और कंकड़ों का भूत जो हर चीज़ गिनता है और गिनती भूल जाता है"}
+    look: >-
+      A small grey spirit made of knotted cords, with two round pebbles for
+      eyes and a cord of beads trailing behind.
+
+  - id: adeshaka
+    name_sa: "आदेशकः"
+    name: {en: "Ādeśaka, the orderer", hi: "आदेशक, आज्ञा देने वाला"}
+    kind: ghost
+    role: {en: "A tiny spirit who can only give orders and is never obeyed", hi: "नन्हा भूत जो केवल आज्ञा दे सकता है और जिसकी कोई नहीं सुनता"}
+    look: >-
+      A small bright-red spirit with a pointing finger as long as its body and
+      a tiny drum hanging at its side.
+
+  - id: atitaka
+    name_sa: "अतीतकः"
+    name: {en: "Atītaka, little yesterday", hi: "अतीतक, नन्हा बीता कल"}
+    kind: ghost
+    role: {en: "A faint spirit who walks backwards and can speak only of what is over", hi: "एक धुँधला भूत जो उलटा चलता है और केवल बीती बातें कह सकता है"}
+    look: >-
+      A pale, almost see-through spirit whose edges fade like old ink, walking
+      backwards and leaving a trail of fading footprints.
+
+  - id: bhavika
+    name_sa: "भाविकः"
+    name: {en: "Bhāvika, little tomorrow", hi: "भाविक, नन्हा आने वाला कल"}
+    kind: ghost
+    role: {en: "A spirit who leans forward, always about to do something", hi: "एक भूत जो आगे की ओर झुका रहता है, सदा कुछ करने को तैयार"}
+    look: >-
+      A slim spirit of pale morning light leaning forward as if about to run,
+      hair streaming ahead of him in a breeze that is not there.
+
+  - id: vidhika
+    name_sa: "विधिकः"
+    name: {en: "Vidhika, little rule-keeper", hi: "विधिक, नन्हा नियम-पालक"}
+    kind: ghost
+    role: {en: "A tiny rule-keeper who can only say what should be done", hi: "नन्हा नियम-पालक जो केवल यह कह सकता है कि क्या करना चाहिए"}
+    look: >-
+      A small round spirit of old paper with tiny round spectacles and rolled
+      palm-leaf scrolls under both arms, one finger always wagging.
+
+  - id: kathaka
+    name_sa: "कथकः"
+    name: {en: "Kathaka, little storyteller", hi: "कथक, नन्हा कथावाचक"}
+    kind: ghost
+    role: {en: "A spirit shaped like a rolled-up storybook who has forgotten how to begin", hi: "लपेटी हुई कथा-पोथी जैसा भूत जो कथा शुरू करना भूल गया है"}
+    look: >-
+      A small spirit shaped like a rolled-up storybook with two stubby legs, a
+      bright storyteller's turban and a pair of drumming fingers.
+
+  - id: abhutaka
+    name_sa: "अभूतकः"
+    name: {en: "Abhūtaka, little spark", hi: "अभूतक, नन्हा स्फुलिंग"}
+    kind: ghost
+    role: {en: "A spark that flickers on and off, never sure it ever really lit", hi: "एक स्फुलिंग जो जलता-बुझता है और कभी निश्चित नहीं कि सचमुच जला था"}
+    look: >-
+      A tiny golden spark that flickers on and off, trailing a thin thread of
+      smoke, forever unsure whether it ever really lit.
+
+  - id: dhatuka
+    name_sa: "धातुकः"
+    name: {en: "Dhātuka, little drawers", hi: "धातुक, नन्हे दराज़"}
+    kind: ghost
+    role: {en: "A little spirit with ten drawers in his body who has muddled which root goes where", hi: "दस दराज़ों वाला नन्हा भूत जो भूल गया है कि कौन-सी धातु कहाँ जाती है"}
+    look: >-
+      A small, round, honey-brown spirit with ten tiny brass-handled drawers
+      set into his body, a pencil behind one ear, forever hurrying.
+
+  - id: astika
+    name_sa: "अस्तिकः"
+    name: {en: "Astika, little is", hi: "अस्तिक, नन्हा ‘है’"}
+    kind: ghost
+    role: {en: "A small plain spirit who has forgotten whether he is", hi: "एक छोटा सादा भूत जो भूल गया है कि वह है भी या नहीं"}
+    look: >-
+      A small, plain, ash-coloured spirit without any marks or ornament, who
+      keeps patting himself to check he is there.
+
+  - id: sevaka
+    name_sa: "सेवकः"
+    name: {en: "Sevaka, little servant", hi: "सेवक, नन्हा सेवक"}
+    kind: ghost
+    role: {en: "A servant spirit who served everyone else and forgot how to say “for myself”", hi: "सेवक भूत जिसने सबकी सेवा की और ‘अपने लिए’ कहना भूल गया"}
+    look: >-
+      A small stooped spirit in a patched servant's wrap, holding a tray of
+      nothing, with kind tired eyes.
+
+  - id: yojaka
+    name_sa: "योजकः"
+    name: {en: "Yojaka, little joiner", hi: "योजक, नन्हा जोड़ने वाला"}
+    kind: ghost
+    role: {en: "A bead-stringing spirit who can tell a root by the prefix it wears", hi: "मनके पिरोने वाला भूत जो धातु को उसके पहने उपसर्ग से पहचान लेता है"}
+    look: >-
+      A small quick spirit with strings of tiny glass beads around its neck
+      and wrists, each bead holding a prefix; it clicks them as it speaks.
+
+  - id: preraka
+    name_sa: "प्रेरकः"
+    name: {en: "Preraka, little pusher", hi: "प्रेरक, नन्हा प्रेरणा देने वाला"}
+    kind: ghost
+    role: {en: "A spirit with a dozen small hands who pushes everything towards everything else", hi: "दर्जन भर नन्हे हाथों वाला भूत जो हर चीज़ को हर चीज़ की ओर धकेलता है"}
+    look: >-
+      A small round spirit of warm rose-coloured mist with a dozen tiny hands
+      like a starfish, each hand pushing, pointing or passing something.
+
+  - id: sankshepaka
+    name_sa: "सङ्क्षेपकः"
+    name: {en: "Sankshepaka, little squeezer", hi: "सङ्क्षेपक, नन्हा संक्षेप करने वाला"}
+    kind: ghost
+    role: {en: "A spirit who can squeeze a whole sentence into a single word", hi: "एक भूत जो पूरे वाक्य को एक शब्द में समेट सकता है"}
+    look: >-
+      A small, slim spirit like a folded paper fan, whose sides fold and
+      unfold as he speaks, each fold holding a tiny line of writing.
+
+  - id: avyayaka
+    name_sa: "अव्ययकः"
+    name: {en: "Avyayaka, little unchanging", hi: "अव्यय, नन्हा अपरिवर्तनीय"}
+    kind: ghost
+    role: {en: "A spirit with nothing to change, who keeps trying to put endings on himself", hi: "बदलने को कुछ न रखने वाला भूत जो बार-बार स्वयं पर प्रत्यय लगाने की कोशिश करता है"}
+    look: >-
+      A tiny, perfectly round and smooth spirit of white stone, with no mark
+      or edge, who keeps patting himself as if looking for a place to attach
+      something.
+
+  - id: svarika
+    name_sa: "स्वरिका"
+    name: {en: "Svarikā, the vowel statue", hi: "स्वरिका, स्वर-प्रतिमा"}
+    kind: ghost
+    role: {en: "A statue-spirit who speaks only in words where vowels have run together", hi: "एक प्रतिमा-भूत जो केवल उन शब्दों में बोलती है जिनमें स्वर घुल-मिल गए हैं"}
+    look: >-
+      A small spirit of cool grey stone in the shape of a young woman holding
+      a lotus, with a fine crack down one cheek and eyes of pale gold.
+
+  - id: visargika
+    name_sa: "विसर्गिका"
+    name: {en: "Visargikā, the breath statue", hi: "विसर्गिका, श्वास-प्रतिमा"}
+    kind: ghost
+    role: {en: "A statue-spirit who speaks on the out-breath and cannot tell which sound the breath wants to be", hi: "एक प्रतिमा-भूत जो निःश्वास पर बोलती है और तय नहीं कर पाती कि श्वास कौन-सी ध्वनि बनना चाहता है"}
+    look: >-
+      A small spirit of pale marble in the shape of a young woman with a
+      finger lifted to her lips, a faint trail of breath like mist leaving her
+      mouth.
+
+  - id: vyanjanika
+    name_sa: "व्यञ्जनिका"
+    name: {en: "Vyañjanikā, the consonant statue", hi: "व्यञ्जनिका, व्यञ्जन-प्रतिमा"}
+    kind: ghost
+    role: {en: "A statue-spirit with hard edges whose last sound keeps changing to match its neighbour", hi: "कठोर किनारों वाली प्रतिमा-भूत जिसकी अन्तिम ध्वनि पड़ोसी से मेल खाने के लिए बदलती रहती है"}
+    look: >-
+      A small spirit of rough sandstone with sharp edges, in the shape of a
+      young woman with a stone bell in one hand; her outline seems to soften
+      wherever she touches something.
+
+  - id: vicchedika
+    name_sa: "विच्छेदिका"
+    name: {en: "Vicchedikā, the splitting statue", hi: "विच्छेदिका, विच्छेद-प्रतिमा"}
+    kind: ghost
+    role: {en: "A statue-spirit who can say any word but cannot take one apart", hi: "एक प्रतिमा-भूत जो कोई भी शब्द बोल सकती है पर किसी को अलग नहीं कर सकती"}
+    look: >-
+      A small spirit of fine white limestone with a thin chisel in one hand
+      and a faint line running down the middle of her face, like a word
+      waiting to be divided.
+
+  - id: samasika
+    name_sa: "समासिका"
+    name: {en: "Samāsikā, the compound statue", hi: "समासिका, समास-प्रतिमा"}
+    kind: ghost
+    role: {en: "A statue-spirit made of two figures standing back to back, who cannot decide whether they are one or two", hi: "पीठ से पीठ टिकाए दो आकृतियों से बनी प्रतिमा-भूत, जो तय नहीं कर पाती कि वह एक है या दो"}
+    look: >-
+      A small spirit of pale granite made of two slender figures joined at the
+      back, each with a different lotus in hand, who finish each other's
+      sentences.
+
+  - id: malika
+    name_sa: "मालिका"
+    name: {en: "Mālikā, the garland statue", hi: "मालिका, माला-प्रतिमा"}
+    kind: ghost
+    role: {en: "A statue-spirit hung with a long garland of stone flowers, each one a word in a chain", hi: "पत्थर के फूलों की लम्बी माला पहने प्रतिमा-भूत, हर फूल एक शब्द, श्रृंखला में"}
+    look: >-
+      A small spirit of rose-coloured sandstone, a young woman wearing a long
+      garland of carved flowers that trails to the floor, each flower a
+      slightly different shape.
+
+  - id: taddhitika
+    name_sa: "तद्धितिका"
+    name: {en: "Taddhitikā, the suffix statue", hi: "तद्धितिका, प्रत्यय-प्रतिमा"}
+    kind: ghost
+    role: {en: "A statue-spirit wearing a crown of tiny word-endings, who can turn any word into a descendant, a state or an owner", hi: "शब्द-प्रत्ययों का मुकुट पहने प्रतिमा-भूत जो किसी भी शब्द को वंशज, अवस्था या स्वामी बना सकती है"}
+    look: >-
+      A small spirit of green-bronze with a tiny crown of little letters, in
+      the shape of a young woman holding a small mirror that shows each
+      thing's name for its son.
+
+  - id: vakyika
+    name_sa: "वाक्यिका"
+    name: {en: "Vākyikā, the sentence statue", hi: "वाक्यिका, वाक्य-प्रतिमा"}
+    kind: ghost
+    role: {en: "A heavy statue-spirit who speaks in one very long sentence and cannot find where it ends", hi: "भारी प्रतिमा-भूत जो एक बहुत लम्बे वाक्य में बोलती है और उसका अन्त नहीं खोज पाती"}
+    look: >-
+      A small, heavy spirit of dark basalt holding a long unrolled scroll that
+      trails behind her, with a single sentence written across it in a close,
+      tidy hand.
+
+  - id: chandika
+    name_sa: "छन्दिका"
+    name: {en: "Chandikā, the drum spirit", hi: "छन्दिका, ढोल की भूत"}
+    kind: ghost
+    role: {en: "A tiny spirit with a small drum who taps every beat exactly the same, and so cannot tell a long beat from a short one", hi: "ढोल वाली एक नन्ही भूत जो हर ताल बिलकुल एक-सी बजाती है, इसलिए लम्बी और छोटी ताल में भेद नहीं कर पाती"}
+    look: >-
+      A tiny spirit of grey-blue stone, round as a pebble, with a small drum
+      hung at her waist and two thin sticks tucked in her hair like hairpins;
+      she taps with both hands.
+
+  - id: vrttika
+    name_sa: "वृत्तिका"
+    name: {en: "Vṛttikā, the circling spirit", hi: "वृत्तिका, घेरे में घूमती भूत"}
+    kind: ghost
+    role: {en: "A tall, thin spirit of pale smoke who walks round and round the throne humming a very long line, and starts again whenever she reaches the end of a quarter", hi: "पीले धुएँ की लम्बी, पतली भूत जो सिंहासन के चारों ओर घूमती हुई एक बहुत लम्बी पंक्ति गुनगुनाती है, और हर चरण के अन्त पर फिर शुरू कर देती है"}
+    look: >-
+      A tall thin spirit of pale smoke, drifting in a slow ring round a golden
+      throne, her long sleeves trailing, one hand lightly counting on her
+      fingers as she goes.
+
+  - id: shlokika
+    name_sa: "श्लोकिका"
+    name: {en: "Ślokikā, the knotted spirit", hi: "श्लोकिका, गाँठों वाली भूत"}
+    kind: ghost
+    role: {en: "A small spirit who knows her verse by heart but is tied in a cord of words, with a knot at every join, and cannot undo it", hi: "एक नन्ही भूत जिसे अपना श्लोक कण्ठस्थ है, पर जो शब्दों की डोरी में बँधी है, हर जोड़ पर एक गाँठ, और उसे खोल नहीं पाती"}
+    look: >-
+      A small ink-dark spirit sitting on the floor of a round stone vault,
+      wound round and round in a long cord of tiny knotted letters, one knot
+      at every join; she hums the verse patiently.
+
+  - id: kathika
+    name_sa: "कथिका"
+    name: {en: "Kathikā, the late listener", hi: "कथिका, देर से आई श्रोता"}
+    kind: ghost
+    role: {en: "A small spirit who came too late to hear the great tale and has waited in the cave ever since, hands cupped as if to catch water, hoping to hear it from the beginning", hi: "एक नन्ही भूत जो महाकथा सुनने में देर से पहुँची और तब से गुफा में प्रतीक्षा कर रही है, हाथ ऐसे जोड़े मानो पानी थामना हो, कथा आरम्भ से सुनने की आशा में"}
+    look: >-
+      A small spirit of warm amber light sitting cross-legged in the first
+      alcove of a cave, her two hands cupped in front of her as if to catch
+      water, her face tilted up and patient.
+
+  - id: padika
+    name_sa: "पदिका"
+    name: {en: "Padikā, the quarter spirit", hi: "पदिका, चरण-भूत"}
+    kind: ghost
+    role: {en: "A small spirit of whom only a quarter can be seen, waiting by the last alcove for the speech that is spoken", hi: "एक नन्ही भूत जिसका केवल एक चौथाई भाग दिखता है, जो अन्तिम आले के पास उस वाणी की प्रतीक्षा में है जो बोली जाती है"}
+    look: >-
+      A small spirit of pale silver light of whom only one quarter is visible,
+      like a crescent, the rest a faint outline in the dark beside the last,
+      glowing alcove.
+
+  # <<< characters added
+
+places:
+  - id: grama
+    name_sa: "ग्रामः"
+    name: {en: "The village", hi: "गाँव"}
+    look: >-
+      A small riverside village of whitewashed houses with tiled roofs, a
+      peepal tree with a stone platform, a well, a path down to the river.
+
+  - id: granthalaya
+    name_sa: "ग्रन्थालयः"
+    name: {en: "The temple library", hi: "मंदिर का ग्रंथालय"}
+    look: >-
+      An old stone library beside a temple: carved wooden shelves of
+      palm-leaf bundles, brass oil lamps, a low reading desk, an arched
+      doorway onto the courtyard with the temple spire beyond.
+
+  - id: devalaya
+    name_sa: "देवालयः"
+    name: {en: "The temple", hi: "मंदिर"}
+    look: >-
+      A sandstone temple with a carved wooden door, stone pillars with
+      inscriptions, a courtyard with lamps and steps down to the river.
+
+  - id: naditira
+    name_sa: "नदीतीरम्"
+    name: {en: "The river ghats", hi: "नदी के घाट"}
+    look: >-
+      Wide stone steps down to a calm river, small boats, morning mist, a
+      shrine on the far bank.
+
+  - id: smashana
+    name_sa: "श्मशानम्"
+    name: {en: "The old grove by the river", hi: "नदी किनारे का पुराना उपवन"}
+    look: >-
+      A quiet cremation grove at night beside the river: an ancient banyan
+      and a śiṃśapā tree, a few lamps, mist, stars; solemn and calm, never
+      gruesome.
+
+  - id: simhasana-shala
+    name_sa: "सिंहासनशाला"
+    name: {en: "The throne hall", hi: "सिंहासन का कक्ष"}
+    look: >-
+      A ruined royal hall being uncovered by archaeologists: a buried stone
+      throne ringed by thirty-two small carved statues, dust in shafts of
+      light.
+
+  - id: guha
+    name_sa: "गुहा"
+    name: {en: "The cave of hidden speech", hi: "छिपी वाणी की गुफा"}
+    look: >-
+      A mountain cave whose walls are carved with lines of script, lit by
+      lamps; four alcoves, three dark and one glowing.
+
+  # >>> places added for Acts I-V
+  - id: apana
+    name_sa: "आपणः"
+    name: {en: "The market", hi: "बाज़ार"}
+    look: >-
+      A busy riverside market under striped awnings: stalls of fruit, spices
+      and cloth, brass scales, baskets, a spice seller's low wooden stall at
+      the corner.
+
+  - id: nauka
+    name_sa: "नौका"
+    name: {en: "The boat", hi: "नाव"}
+    look: >-
+      A long wooden river boat with a faded blue awning, a bamboo pole, a
+      bundle of cloth bags in the middle, calm brown water all around.
+
+  - id: pathashala
+    name_sa: "पाठशाला"
+    name: {en: "The village school", hi: "गाँव की पाठशाला"}
+    look: >-
+      A low whitewashed village school around a courtyard with a neem tree; a
+      small library room with palm-leaf bundles on wooden shelves and a low
+      reading desk.
+
+  - id: utsava
+    name_sa: "उत्सवः"
+    name: {en: "The fair", hi: "मेला"}
+    look: >-
+      A lively village fair on the river bank: strings of paper flags, a
+      puppet booth, sweet sellers, a small ferris wheel of wood, crowds in
+      bright clothes.
+
+  - id: pataliputra
+    name_sa: "पाटलिपुत्रम्"
+    name: {en: "Pāṭaliputra", hi: "पाटलिपुत्र"}
+    look: >-
+      A great old river-city of low brick houses and gardens, wide lanes with
+      bullock carts, the palace roofs far off, and at a quiet edge one poor
+      mud-walled house with a swept courtyard.
+
+  - id: himalaya
+    name_sa: "हिमालयः"
+    name: {en: "The Himālaya", hi: "हिमालय"}
+    look: >-
+      A high Himalayan slope of snow peaks, dark pines and drifting cloud,
+      with a tiny hermit's fire on a flat rock far below the summit.
+
+  - id: andhakupa
+    name_sa: "अन्धकूपः"
+    name: {en: "The blind well", hi: "अन्धकूप"}
+    look: >-
+      A very deep dry well in a palace courtyard, ringed by a low stone rim; a
+      rope and a wooden bucket-wheel above; darkness below, with a faint gleam
+      of wet stone.
+
+  - id: gangatira
+    name_sa: "गङ्गातीरम्"
+    name: {en: "The bank of the Gaṅgā", hi: "गङ्गा का तट"}
+    look: >-
+      A wide pale river at the edge of a city, steps of old brick leading down
+      to the water, a few boats and banyan trees, soft morning mist.
+
+  - id: vindhyavana
+    name_sa: "विन्ध्यवनम्"
+    name: {en: "The Vindhya forest", hi: "विन्ध्य का वन"}
+    look: >-
+      A wild forest of tall sal and teak trees on rising ground with a rocky
+      outcrop, dappled light, long shadows, and here and there a small spirit
+      of soft blue light between the trunks.
+
+  - id: agnikunda
+    name_sa: "अग्निकुण्डम्"
+    name: {en: "The fire-pit in the forest", hi: "वन का अग्निकुण्ड"}
+    look: >-
+      A small clearing on a rocky rise with a square fire-pit of stacked
+      stones, thin smoke curling into evening sky, and a ring of deer, boars
+      and birds sitting very still around it.
+
+  - id: pratishthana
+    name_sa: "प्रतिष्ठानम्"
+    name: {en: "Pratiṣṭhāna, the king's city", hi: "प्रतिष्ठान, राजा का नगर"}
+    look: >-
+      A city of pale stone terraces on a wide river with a pillared court
+      hall, a gilded throne, banners and sunlight; quiet, stately, never
+      crowded.
+
+  - id: vatsagrha
+    name_sa: "वत्सराजगृहम्"
+    name: {en: "The palace of the king of Vatsa", hi: "वत्सराज का महल"}
+    look: >-
+      A warm inner courtyard of a palace with carved pillars, a lotus pool,
+      lamps and a lying-in chamber with latticed windows; festive banners at
+      the roof edge.
+
+  # <<< places added
+
+# One ghost per unit, freed when the unit is finished. waits_for is what the
+# ghost needs in story terms; the unit's lessons teach exactly that.
+ghosts:
+  - id: dhumaka
+    unit: vowels
+    waits_for: {en: "To hear the first line of the leaf read aloud", hi: "पत्र की पहली पंक्ति ज़ोर से पढ़ी जाती सुनना"}
+    freed_line:
+      sa: "मुक्तः अस्मि! धन्यवादः।"
+      gloss: {en: "“I am free! Thank you.”", hi: "“मैं मुक्त हूँ! धन्यवाद।”"}
+    clue:
+      sa: "द्वारे अक्षराणि सन्ति।"
+      gloss: {en: "“There are letters on the door.”", hi: "“द्वार पर अक्षर हैं।”"}
+    freed_image:
+      id: freed-dhumaka
+      brief: "The temple library at night: Dhūmaka, now silver and glowing, rises from the desk in a spiral like smoke from a lamp just put out, smiling and waving; the half-burnt leaf blazes gold with its first line lit; you (seen from behind), Dādī and Śuka look up in wonder."
+      alt: {en: "A small silver ghost spirals up from a glowing leaf while a family looks up in wonder", hi: "चमकते पत्र से ऊपर घूमता हुआ उठता नन्हा चाँदी-सा भूत; परिवार अचरज से ऊपर देख रहा है"}
+      ratio: "4:3"
+      cast: [dhumaka, you, dadi, shuka]
+      place: granthalaya
+
+  - id: chayika
+    unit: consonants
+    waits_for: {en: "To hear her name read from the carvings on the temple door", hi: "मंदिर के द्वार की नक्काशी से अपना नाम पढ़ा जाता सुनना"}
+    freed_line:
+      sa: "मुक्ता अस्मि!"
+      gloss: {en: "“I am free!”", hi: "“मैं मुक्त हूँ!”"}
+    clue:
+      sa: "स्तम्भे संयुक्ताक्षराणि सन्ति।"
+      gloss: {en: "“There are joined letters on the pillar.”", hi: "“स्तंभ पर संयुक्ताक्षर हैं।”"}
+
+  - id: nidralu
+    unit: joined-letters
+    waits_for: {en: "To be woken by someone reading the joined letters on the pillar", hi: "स्तंभ के संयुक्ताक्षर पढ़कर जगाया जाना"}
+    freed_line:
+      sa: "जागर्मि!"
+      gloss: {en: "“I am awake!”", hi: "“मैं जाग गया!”"}
+
+  - id: mauni
+    unit: reading
+    waits_for: {en: "To hear his own name read aloud, so he can speak again", hi: "अपना नाम पढ़ा जाता सुनना, ताकि वह फिर बोल सके"}
+    freed_line:
+      sa: "मौनी अस्मि। वदामि!"
+      gloss: {en: "“I am Maunī. I speak!”", hi: "“मैं मौनी हूँ। मैं बोलता हूँ!”"}
+    clue:
+      sa: "द्वितीयं पत्रं नद्याः तीरे अस्ति।"
+      gloss: {en: "“The second leaf is on the river bank.”", hi: "“दूसरा पत्र नदी के तट पर है।”"}
+
+  # >>> ghosts added for Acts I-V
+  - id: ghataka
+    unit: who-does
+    waits_for: {en: "To hear someone say what every person on the ghat is doing", hi: "किसी से सुनना कि घाट पर हर व्यक्ति क्या कर रहा है"}
+    freed_line:
+      sa: "नदी वहति। अहं मुक्तः।"
+      gloss: {en: "The river flows. I am free.", hi: "नदी बहती है। मैं मुक्त हूँ।"}
+    clue:
+      sa: "नौकाः सन्ति।"
+      gloss: {en: "There are boats.", hi: "नावें हैं।"}
+
+  - id: bakau
+    unit: one-two-many
+    waits_for: {en: "To be counted as two, not one and not many", hi: "दो गिने जाना: न एक, न अनेक"}
+    freed_line:
+      sa: "द्वौ बकौ मुक्तौ।"
+      gloss: {en: "The two herons are free.", hi: "दोनों बगुले मुक्त हैं।"}
+    clue:
+      sa: "नौकायाम् नाविकः अस्ति।"
+      gloss: {en: "In the boat there is a boatman.", hi: "नाव में एक नाविक है।"}
+
+  - id: pratibimbaka
+    unit: i-and-you
+    waits_for: {en: "To be spoken to as “you”, and to answer “I”", hi: "‘तुम’ कहकर बुलाया जाना, और ‘मैं’ कहकर उत्तर देना"}
+    freed_line:
+      sa: "त्वं मित्रम् असि।"
+      gloss: {en: "You are a friend.", hi: "तुम मित्र हो।"}
+    clue:
+      sa: "उत्सवे जनाः सन्ति।"
+      gloss: {en: "There are people at the fair.", hi: "मेले में लोग हैं।"}
+
+  - id: rangaka
+    unit: he-she-it
+    waits_for: {en: "To hear himself, herself and itself named: he, she, it", hi: "अपने लिए ‘वह’ (पुं.), ‘वह’ (स्त्री.) और ‘वह’ (नपुं.) कहा जाता सुनना"}
+    freed_line:
+      sa: "सः मुक्तः, सा मुक्ता, तत् मुक्तम्।"
+      gloss: {en: "He is free, she is free, it is free.", hi: "वह मुक्त है, वह मुक्त है, वह मुक्त है।"}
+    clue:
+      sa: "आपणे फलानि सन्ति।"
+      gloss: {en: "There are fruits in the market.", hi: "बाज़ार में फल हैं।"}
+
+  - id: haridraka
+    unit: object
+    waits_for: {en: "To have each thing he wants named, so that he can take it", hi: "जो वह चाहता है उसका नाम लिया जाना, ताकि वह उसे ले सके"}
+    freed_line:
+      sa: "अहं मुक्तिं पश्यामि।"
+      gloss: {en: "I see freedom.", hi: "मैं मुक्ति देखता हूँ।"}
+    clue:
+      sa: "नौकया गच्छामः।"
+      gloss: {en: "We go by boat.", hi: "हम नाव से जाते हैं।"}
+
+  - id: tarika
+    unit: with-by
+    waits_for: {en: "To hear the journey told: by boat, together with a friend", hi: "यात्रा का वर्णन सुनना: नाव से, मित्र के साथ"}
+    freed_line:
+      sa: "मित्रेण सह गच्छामि।"
+      gloss: {en: "I go together with a friend.", hi: "मैं मित्र के साथ जाता हूँ।"}
+    clue:
+      sa: "आचार्याय फलं ददामि।"
+      gloss: {en: "I give fruit to the teacher.", hi: "मैं आचार्य को फल देता हूँ।"}
+
+  - id: danaka
+    unit: for-to
+    waits_for: {en: "To be given a gift, and to hear who it is for", hi: "उपहार पाना, और सुनना कि वह किसके लिए है"}
+    freed_line:
+      sa: "नमः आचार्याय।"
+      gloss: {en: "Homage to the teacher.", hi: "आचार्य को प्रणाम।"}
+    clue:
+      sa: "झञ्झावातः आगच्छति!"
+      gloss: {en: "A storm is coming!", hi: "आँधी आ रही है!"}
+
+  - id: vayuka
+    unit: from
+    waits_for: {en: "To be thanked for the storm that led everyone to shelter", hi: "उस आँधी के लिए धन्यवाद पाना जिसने सबको आश्रय तक पहुँचाया"}
+    freed_line:
+      sa: "ग्रामात् ग्रामं गच्छामि।"
+      gloss: {en: "I go from village to village.", hi: "मैं गाँव-गाँव जाता हूँ।"}
+    clue:
+      sa: "आचार्यस्य गृहम् अस्ति।"
+      gloss: {en: "The teacher's house is here.", hi: "आचार्य का घर यहाँ है।"}
+
+  - id: smritika
+    unit: of
+    waits_for: {en: "To hear whose things are whose: whose book, whose home", hi: "सुनना कि कौन-सी वस्तु किसकी है: किसकी पुस्तक, किसका घर"}
+    freed_line:
+      sa: "मम माता, मम पिता, मम गृहम्।"
+      gloss: {en: "My mother, my father, my home.", hi: "मेरी माता, मेरे पिता, मेरा घर।"}
+    clue:
+      sa: "रात्रौ गृहे दीपः अस्ति।"
+      gloss: {en: "At night there is a lamp in the house.", hi: "रात में घर में दीपक है।"}
+
+  - id: dipaka
+    unit: in-at
+    waits_for: {en: "To be told where the light is, and when", hi: "यह सुनना कि प्रकाश कहाँ है, और कब"}
+    freed_line:
+      sa: "कूपे जलम् अस्ति। गृहे दीपः अस्ति।"
+      gloss: {en: "There is water in the well. There is a lamp in the house.", hi: "कुएँ में जल है। घर में दीपक है।"}
+    clue:
+      sa: "हे मित्र! कुत्र असि?"
+      gloss: {en: "O friend! Where are you?", hi: "हे मित्र! तुम कहाँ हो?"}
+
+  - id: pratidhvanika
+    unit: calling
+    waits_for: {en: "To be called by name, correctly, so that she can answer", hi: "ठीक से नाम लेकर पुकारा जाना, ताकि वह उत्तर दे सके"}
+    freed_line:
+      sa: "हे बालक! हे मित्र! अहम् अस्मि।"
+      gloss: {en: "O boy! O friend! Here I am.", hi: "हे बालक! हे मित्र! मैं यहाँ हूँ।"}
+    clue:
+      sa: "पुस्तकालये शब्दरूपाणि सन्ति।"
+      gloss: {en: "In the library there are word-forms.", hi: "पुस्तकालय में शब्दरूप हैं।"}
+
+  - id: vrikshaka
+    unit: noun-families-1
+    waits_for: {en: "To have every member of his family named in turn", hi: "अपने कुल के हर सदस्य का क्रम से नाम लिया जाना"}
+    freed_line:
+      sa: "देवः, देवौ, देवाः।"
+      gloss: {en: "A god, two gods, gods.", hi: "एक देवता, दो देवता, अनेक देवता।"}
+    clue:
+      sa: "कविः गुरुः पिता च सन्ति।"
+      gloss: {en: "There are a poet, a teacher and a father.", hi: "कवि, गुरु और पिता हैं।"}
+
+  - id: kavika
+    unit: noun-families-2
+    waits_for: {en: "To hear his own kind of words, the ones in -i, -u, -ī, -ū and -ṛ", hi: "अपनी तरह के शब्द सुनना: -इ, -उ, -ई, -ऊ और -ऋ वाले"}
+    freed_line:
+      sa: "कविः कवी कवयः।"
+      gloss: {en: "A poet, two poets, poets.", hi: "एक कवि, दो कवि, अनेक कवि।"}
+    clue:
+      sa: "एकं पत्रम्, द्वे पत्रे, त्रीणि पत्राणि।"
+      gloss: {en: "One leaf, two leaves, three leaves.", hi: "एक पत्र, दो पत्र, तीन पत्र।"}
+
+  - id: ganaka
+    unit: pronouns-numbers
+    waits_for: {en: "To hear the numbers said in the right form", hi: "संख्याओं को सही रूप में बोला जाता सुनना"}
+    freed_line:
+      sa: "एकः, द्वौ, त्रयः, चत्वारः।"
+      gloss: {en: "One, two, three, four.", hi: "एक, दो, तीन, चार।"}
+    clue:
+      sa: "वेतालः श्मशाने वदति।"
+      gloss: {en: "The Vetāla speaks in the burning ground.", hi: "वेताल श्मशान में बोलता है।"}
+
+  - id: adeshaka
+    unit: commands
+    waits_for: {en: "To be obeyed, just once, in the proper form", hi: "एक बार, ठीक रूप में, उसकी आज्ञा माननी"}
+    freed_line:
+      sa: "गच्छ, पठ, वद।"
+      gloss: {en: "Go, read, speak.", hi: "जाओ, पढ़ो, बोलो।"}
+    clue:
+      sa: "ह्यः सः अगच्छत्।"
+      gloss: {en: "Yesterday he went.", hi: "कल वह गया।"}
+
+  - id: atitaka
+    unit: past
+    waits_for: {en: "To hear what happened, told in the past", hi: "यह सुनना कि क्या हुआ, भूतकाल में कहा हुआ"}
+    freed_line:
+      sa: "अपठत्, अगच्छत्, अवदत्।"
+      gloss: {en: "He read, he went, he spoke.", hi: "उसने पढ़ा, वह गया, उसने कहा।"}
+    clue:
+      sa: "श्वः सः गमिष्यति।"
+      gloss: {en: "Tomorrow he will go.", hi: "कल वह जाएगा।"}
+
+  - id: bhavika
+    unit: future
+    waits_for: {en: "To hear what will happen, said in the future", hi: "यह सुनना कि क्या होगा, भविष्यत् में कहा हुआ"}
+    freed_line:
+      sa: "गमिष्यति, पठिष्यति।"
+      gloss: {en: "He will go, he will read.", hi: "वह जाएगा, वह पढ़ेगा।"}
+    clue:
+      sa: "सः गच्छेत्।"
+      gloss: {en: "He should go.", hi: "उसे जाना चाहिए।"}
+
+  - id: vidhika
+    unit: should
+    waits_for: {en: "To have a rule stated properly: should, may, might", hi: "किसी नियम का ठीक से कथन सुनना: चाहिए, सकता है, शायद"}
+    freed_line:
+      sa: "गच्छेत्, पठेत्, वदेत्।"
+      gloss: {en: "He should go, he should read, he should speak.", hi: "उसे जाना चाहिए, उसे पढ़ना चाहिए, उसे बोलना चाहिए।"}
+    clue:
+      sa: "स उवाच।"
+      gloss: {en: "He said.", hi: "उसने कहा।"}
+
+  - id: kathaka
+    unit: story-past
+    waits_for: {en: "To hear a tale begun in the old storytelling voice", hi: "पुरानी कथा-शैली में कथा शुरू होती सुनना"}
+    freed_line:
+      sa: "बभूव, उवाच, जगाम।"
+      gloss: {en: "He became, he said, he went.", hi: "वह हुआ, उसने कहा, वह गया।"}
+    clue:
+      sa: "मा शुचः।"
+      gloss: {en: "Do not grieve.", hi: "शोक मत करो।"}
+
+  - id: abhutaka
+    unit: aorist-rare
+    waits_for: {en: "To be told firmly that it has happened, and that it need not grieve", hi: "दृढ़ता से बताया जाना कि यह हो चुका है, और उसे शोक नहीं करना है"}
+    freed_line:
+      sa: "अभूत्। मा शुचः।"
+      gloss: {en: "It has become. Do not grieve.", hi: "हो गया। शोक मत करो।"}
+    clue:
+      sa: "भवति, नृत्यति, तुदति, चोरयति।"
+      gloss: {en: "He becomes, he dances, he strikes, he steals.", hi: "वह होता है, वह नाचता है, वह मारता है, वह चुराता है।"}
+
+  - id: dhatuka
+    unit: verb-classes-1
+    waits_for: {en: "To have every root put in its right drawer", hi: "हर धातु को उसके सही दराज़ में रखा जाना"}
+    freed_line:
+      sa: "भवति, नृत्यति, तुदति, चोरयति।"
+      gloss: {en: "He is, he dances, he strikes, he steals.", hi: "वह होता है, वह नाचता है, वह मारता है, वह चुराता है।"}
+    clue:
+      sa: "अस्ति, एति, ददाति, शृणोति।"
+      gloss: {en: "He is, he goes, he gives, he hears.", hi: "वह है, वह जाता है, वह देता है, वह सुनता है।"}
+
+  - id: astika
+    unit: verb-classes-2
+    waits_for: {en: "To be told, by the verbs that break the rules, that he is", hi: "नियम तोड़ने वाली क्रियाओं से यह सुनना कि वह है"}
+    freed_line:
+      sa: "अस्ति, एति, ददाति, करोति, जानाति।"
+      gloss: {en: "He is, he goes, he gives, he does, he knows.", hi: "वह है, वह जाता है, वह देता है, वह करता है, वह जानता है।"}
+    clue:
+      sa: "सेवते, लभते।"
+      gloss: {en: "He serves, he obtains.", hi: "वह सेवा करता है, वह पाता है।"}
+
+  - id: sevaka
+    unit: atmanepada
+    waits_for: {en: "To hear verbs said for oneself, with the endings that turn back", hi: "अपने लिए कहे गए क्रियारूप सुनना, उन प्रत्ययों के साथ जो लौटकर अपनी ओर आते हैं"}
+    freed_line:
+      sa: "सेवते, लभते, वर्तते।"
+      gloss: {en: "He serves (for himself), he obtains, he abides.", hi: "वह सेवा करता है, वह पाता है, वह रहता है।"}
+    clue:
+      sa: "आगच्छति, निर्गच्छति।"
+      gloss: {en: "He comes, he goes out.", hi: "वह आता है, वह बाहर जाता है।"}
+
+  - id: yojaka
+    unit: prefixes
+    waits_for: {en: "To have each prefix put on its root, so that the verb means what it should", hi: "हर उपसर्ग को उसकी धातु पर लगाया जाना, ताकि क्रिया का अर्थ वही रहे जो होना चाहिए"}
+    freed_line:
+      sa: "आगच्छति, निर्गच्छति, उपगच्छति।"
+      gloss: {en: "He comes, he goes out, he approaches.", hi: "वह आता है, वह बाहर जाता है, वह पास जाता है।"}
+    clue:
+      sa: "पठ्यते, पाठयति।"
+      gloss: {en: "It is read, he makes read.", hi: "पढ़ा जाता है, वह पढ़वाता है।"}
+
+  - id: preraka
+    unit: passive-causative
+    waits_for: {en: "To be understood: that things are done, that people are made to do them, and that they want to", hi: "यह समझा जाना कि काम होते हैं, कि लोग कराए जाते हैं, और कि वे चाहते हैं"}
+    freed_line:
+      sa: "पठ्यते, पाठयति, पिपठिषति।"
+      gloss: {en: "It is read; he makes read; he wants to read.", hi: "वह पढ़ा जाता है; वह पढ़वाता है; वह पढ़ना चाहता है।"}
+    clue:
+      sa: "गत्वा, गन्तुम्, गतः।"
+      gloss: {en: "Having gone, to go, gone.", hi: "जाकर, जाने के लिए, गया हुआ।"}
+
+  - id: sankshepaka
+    unit: participles
+    waits_for: {en: "To have his folded sentences opened out, and the right word chosen", hi: "अपने समेटे वाक्यों को खोला जाते देखना और सही शब्द चुना जाना"}
+    freed_line:
+      sa: "गत्वा, गन्तुम्, गतः, गच्छन्।"
+      gloss: {en: "Having gone, to go, gone, going.", hi: "जाकर, जाने के लिए, गया हुआ, जाता हुआ।"}
+    clue:
+      sa: "च, वा, अपि, एव।"
+      gloss: {en: "And, or, also, only.", hi: "और, या, भी, ही।"}
+
+  - id: avyayaka
+    unit: indeclinables
+    waits_for: {en: "To be told that he is whole as he is, and that small words are never wrong", hi: "यह सुनना कि वह जैसा है वैसा पूर्ण है, और छोटे शब्द कभी ग़लत नहीं होते"}
+    freed_line:
+      sa: "च, वा, अपि, एव, तु, हि।"
+      gloss: {en: "And, or, also, only, but, for.", hi: "और, या, भी, ही, परन्तु, क्योंकि।"}
+    clue:
+      sa: "तत्र अस्ति → तत्रास्ति।"
+      gloss: {en: "There is → there is (joined).", hi: "वहाँ है → वहाँ है (जुड़ा हुआ)।"}
+
+  - id: svarika
+    unit: vowel-sandhi
+    waits_for: {en: "To have her joined words heard whole, and then taken apart", hi: "अपने जुड़े शब्द पूरे सुने जाना, और फिर अलग किए जाना"}
+    freed_line:
+      sa: "विद्यालयः, महात्मा, सूक्तम्।"
+      gloss: {en: "The school, the great soul, the good saying.", hi: "विद्यालय, महात्मा, सुभाषित।"}
+    clue:
+      sa: "रामोऽस्ति।"
+      gloss: {en: "Rāma is (here).", hi: "राम है।"}
+
+  - id: visargika
+    unit: visarga-sandhi
+    waits_for: {en: "To have each breath given its right sound", hi: "हर श्वास को उसकी सही ध्वनि दी जाना"}
+    freed_line:
+      sa: "रामोऽस्ति, कविरस्ति, रामश्च।"
+      gloss: {en: "Rāma is; the poet is; and Rāma.", hi: "राम है; कवि है; और राम।"}
+    clue:
+      sa: "तदस्ति।"
+      gloss: {en: "That is (tat + asti).", hi: "वह है (तत् + अस्ति)।"}
+
+  - id: vyanjanika
+    unit: consonant-sandhi
+    waits_for: {en: "To have each last sound match what comes next", hi: "हर अन्तिम ध्वनि का अगली ध्वनि से मेल खाना"}
+    freed_line:
+      sa: "सज्जनः, तद्धि, संस्कृतम्।"
+      gloss: {en: "A good person; for that; Sanskrit.", hi: "सज्जन; क्योंकि वह; संस्कृत।"}
+    clue:
+      sa: "विद्यालयः = ?"
+      gloss: {en: "School = ? (take it apart)", hi: "विद्यालय = ? (इसे अलग कीजिए)।"}
+
+  - id: vicchedika
+    unit: splitting
+    waits_for: {en: "To take joined words apart, and put every part back in its place", hi: "जुड़े शब्दों को अलग करना, और हर भाग को उसके स्थान पर लौटाना"}
+    freed_line:
+      sa: "विद्या + आलयः, सत् + जनः, रामः + अस्ति।"
+      gloss: {en: "Vidyā + ālayaḥ, sat + janaḥ, rāmaḥ + asti.", hi: "विद्या + आलयः, सत् + जनः, रामः + अस्ति।"}
+    clue:
+      sa: "रामलक्ष्मणौ।"
+      gloss: {en: "Rāma and Lakṣmaṇa (a compound).", hi: "राम और लक्ष्मण (एक समास)।"}
+
+  - id: samasika
+    unit: compounds-1
+    waits_for: {en: "To be unpacked into her two parts, and called by one name", hi: "अपने दो भागों में खोली जाना, और एक नाम से पुकारी जाना"}
+    freed_line:
+      sa: "रामलक्ष्मणौ, राजपुरुषः, नीलोत्पलम्।"
+      gloss: {en: "Rāma and Lakṣmaṇa; the king's man; a blue lotus.", hi: "राम और लक्ष्मण; राजा का पुरुष; नीला कमल।"}
+    clue:
+      sa: "नीलकण्ठः।"
+      gloss: {en: "The one with the blue throat.", hi: "नीले कण्ठ वाला।"}
+
+  - id: malika
+    unit: compounds-2
+    waits_for: {en: "To have her long garland read from the end to the beginning", hi: "अपनी लम्बी माला को अन्त से शुरू तक पढ़ा जाते देखना"}
+    freed_line:
+      sa: "नीलकण्ठः, यथाशक्ति, प्रतिदिनम्।"
+      gloss: {en: "The blue-throated one; as far as possible; every day.", hi: "नीले कण्ठ वाला; यथाशक्ति; प्रतिदिन।"}
+    clue:
+      sa: "राघवः, कौन्तेयः।"
+      gloss: {en: "Raghu's descendant; Kuntī's son.", hi: "रघु का वंशज; कुन्ती का पुत्र।"}
+
+  - id: taddhitika
+    unit: taddhita
+    waits_for: {en: "To have her suffixes named, and the right word chosen", hi: "अपने प्रत्ययों के नाम पुकारे जाना और सही शब्द चुना जाना"}
+    freed_line:
+      sa: "राघवः, मनुष्यत्वम्, धनवान्।"
+      gloss: {en: "Raghu's descendant; humanity; a rich man.", hi: "रघु का वंशज; मनुष्यता; धनी।"}
+    clue:
+      sa: "यः पठति, सः जानाति।"
+      gloss: {en: "Who reads, he knows.", hi: "जो पढ़ता है, वह जानता है।"}
+
+  - id: vakyika
+    unit: syntax
+    waits_for: {en: "To have her long sentence put into order, from beginning to end", hi: "अपने लम्बे वाक्य को आरम्भ से अन्त तक क्रम में रखा जाते देखना"}
+    freed_line:
+      sa: "यः पठति, सः जानाति।"
+      gloss: {en: "Who reads, he knows.", hi: "जो पढ़ता है, वह जानता है।"}
+    clue:
+      sa: "अनुष्टुप्।"
+      gloss: {en: "The anuṣṭubh metre.", hi: "अनुष्टुप् छन्द।"}
+
+  - id: chandika
+    unit: metre-1
+    waits_for: {en: "To hear the beats of a verse named, the short and the long", hi: "किसी श्लोक की तालों के नाम सुनना, छोटी और लम्बी"}
+    freed_line:
+      sa: "अनुष्टुप्।"
+      gloss: {en: "The anuṣṭubh metre.", hi: "अनुष्टुप् छन्द।"}
+    clue:
+      sa: "इन्द्रवज्रा उपजाति।"
+      gloss: {en: "Indravajrā and upajāti.", hi: "इन्द्रवज्रा और उपजाति।"}
+
+  - id: vrttika
+    unit: metre-2
+    waits_for: {en: "To have the long measures counted and named", hi: "लम्बे छन्दों को गिना और नाम पाते देखना"}
+    freed_line:
+      sa: "इन्द्रवज्रा उपजाति।"
+      gloss: {en: "Indravajrā and upajāti.", hi: "इन्द्रवज्रा और उपजाति।"}
+    clue:
+      sa: "पदच्छेदः, अन्वयः, अर्थः।"
+      gloss: {en: "Split, order, meaning.", hi: "पदच्छेद, अन्वय, अर्थ।"}
+
+  - id: shlokika
+    unit: reading-verse
+    waits_for: {en: "To have her verse untied: split, ordered and understood", hi: "अपने श्लोक को खुलते देखना: तोड़ा, क्रम में रखा और समझा हुआ"}
+    freed_line:
+      sa: "पदच्छेदः, अन्वयः, अर्थः।"
+      gloss: {en: "Split, order, meaning.", hi: "पदच्छेद, अन्वय, अर्थ।"}
+    clue:
+      sa: "कथा, महाकथा।"
+      gloss: {en: "A story, the great story.", hi: "कथा, महाकथा।"}
+
+  - id: kathika
+    unit: reading-kss
+    waits_for: {en: "To hear the tale from its beginning, in the words it was told in", hi: "कथा को आरम्भ से सुनना, उन्हीं शब्दों में जिनमें वह कही गई थी"}
+    freed_line:
+      sa: "कथा, महाकथा।"
+      gloss: {en: "A story, the great story.", hi: "कथा, महाकथा।"}
+    clue:
+      sa: "गुहा त्रीणि निहिता।"
+      gloss: {en: "Three are hidden in the cave.", hi: "तीन गुफा में छिपे हैं।"}
+
+  - id: padika
+    unit: panini-gateway
+    waits_for: {en: "To see all four quarters of speech, and to hear the last one spoken", hi: "वाणी के चारों चरण देखना, और अन्तिम को बोला जाते सुनना"}
+    freed_line:
+      sa: "गुहा त्रीणि निहिता।"
+      gloss: {en: "Three are hidden in the cave.", hi: "तीन गुफा में छिपे हैं।"}
+
+  # <<< ghosts added
+
+# The seven tales. Leaves 1–6 end the six parts of the course; leaf 7, the
+# tale that survived, ends Act V. Tales 2–7 retell stories from the
+# Kathāsaritsāgara (DCS, CC BY 4.0), each checked at its chapter.
+leaves:
+  - id: leaf-1
+    n: 1
+    title: {en: "The parrot who learned the letters", hi: "वह तोता जिसने अक्षर सीखे"}
+    title_sa: "शुकस्य अक्षराणि"
+    tale: tale.leaf-1
+    about: {en: "Our own short tale, told only in words you can now read.", hi: "हमारी अपनी छोटी कथा, केवल उन शब्दों में जिन्हें आप अब पढ़ सकते हैं।"}
+    image:
+      id: leaf-1
+      brief: "A recovered palm leaf, whole and softly glowing, its edges still a little charred; in its centre a small painted vignette of a green parrot learning letters from an old woman; along the top, in neat Devanagari, its title."
+      alt: {en: "A glowing palm leaf with a painting of a parrot learning letters", hi: "चमकता ताड़पत्र, जिस पर अक्षर सीखते तोते का चित्र"}
+      text_in_image: ["शुकस्य अक्षराणि"]
+      ratio: "3:4"
+      cast: [shuka]
+
+  - id: leaf-2
+    n: 2
+    title: {en: "The mouse merchant", hi: "चूहे वाला व्यापारी"}
+    title_sa: "मूषककथा"
+    tale: tale.leaf-2
+    about: {en: "A poor young man starts a fortune with one dead mouse (Kathāsaritsāgara 1.6), retold in simple sentences.", hi: "एक गरीब युवक एक मरे हुए चूहे से अपना भाग्य बनाता है (कथासरित्सागर 1.6), सरल वाक्यों में।"}
+
+  - id: leaf-3
+    n: 3
+    title: {en: "The boy who heard once", hi: "एक बार सुनकर याद रखने वाला बालक"}
+    title_sa: "श्रुतधरः"
+    tale: tale.leaf-3
+    about: {en: "Two travellers search the earth for a boy who remembers everything he hears once (Kathāsaritsāgara 1.2).", hi: "दो यात्री उस बालक को खोजते हैं जो एक बार सुनी हर बात याद रखता है (कथासरित्सागर 1.2)।"}
+
+  - id: leaf-4
+    n: 4
+    title: {en: "The dull pupil and the new grammar", hi: "मंदबुद्धि शिष्य और नया व्याकरण"}
+    title_sa: "पाणिनिः"
+    tale: tale.leaf-4
+    about: {en: "Pāṇini, the slowest pupil, wins grammar from Śiva by fierce penance (Kathāsaritsāgara 1.4).", hi: "सबसे मंद शिष्य पाणिनि कठोर तप से शिव से व्याकरण पाते हैं (कथासरित्सागर 1.4)।"}
+
+  - id: leaf-5
+    n: 5
+    title: {en: "The minister in the dark well", hi: "अंधे कुएँ में मंत्री"}
+    title_sa: "शकटालः"
+    tale: tale.leaf-5
+    about: {en: "The minister Śakaṭāla survives a dark pit and plans his return (Kathāsaritsāgara 1.5).", hi: "मंत्री शकटाल अंधेरे गड्ढे से बचकर अपनी वापसी की योजना बनाते हैं (कथासरित्सागर 1.5)।"}
+
+  - id: leaf-6
+    n: 6
+    title: {en: "The book written in blood", hi: "रक्त से लिखी पुस्तक"}
+    title_sa: "गुणाढ्यः"
+    tale: tale.leaf-6
+    about: {en: "Guṇāḍhya's own story, read in its original verses (Kathāsaritsāgara 1.7–1.8).", hi: "गुणाढ्य की अपनी कथा, मूल श्लोकों में (कथासरित्सागर 1.7–1.8)।"}
+
+  - id: leaf-7
+    n: 7
+    title: {en: "The tale that survived", hi: "वह कथा जो बच गई"}
+    title_sa: "नरवाहनदत्तचरितम्"
+    tale: tale.leaf-7
+    about: {en: "The one tale that was not burned: the life of Naravāhanadatta (Kathāsaritsāgara 4.3 onward), read in Sanskrit.", hi: "वह एक कथा जो जली नहीं: नरवाहनदत्त का चरित (कथासरित्सागर 4.3 से), संस्कृत में।"}

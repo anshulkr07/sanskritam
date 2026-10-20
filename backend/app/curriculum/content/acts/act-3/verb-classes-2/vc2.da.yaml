@@ -1,0 +1,394 @@
+id: vc2.da
+template: scene
+title:
+  en: 'Class 3: ददाति'
+  hi: 'गण 3: ददाति'
+title_sa: ददाति जुहोति
+minutes: 6
+teaches:
+- verb.class-3
+needs:
+- verb.class-2
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The doubling drawer
+    hi: द्वित्व वाला दराज़
+  depth: core
+  image:
+    brief: A small spirit emerging from an open drawer, bowing and handing an apple to you, with two more apples in its other hand; Dhātuka beside it ticking a list; Dādī laughing; Śuka eyeing an apple.
+    alt:
+      en: A small spirit from a drawer bows and hands over apples while a parrot eyes one
+      hi: दराज़ से निकला नन्हा भूत झुककर सेब देता, तोता एक पर नज़र टिकाए
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - dhatuka
+    - astika
+    place: smashana
+    ratio: '4:3'
+    id: vc2-da-s1
+  narration:
+    en: 'Drawer three rattles. It holds a small spirit that says everything twice, and bows, and gives: दद-दद. “ददाति,” says the Vetāla, “he gives.” The spirit offers you an apple, then another, then another, each time repeating the word. Dādī laughs. “Class 3 doubles the first syllable of the root, so that it is easy to remember: दा becomes दद, हु becomes जुहु.”'
+    hi: 'तीसरा दराज़ खड़खड़ाता है। उसमें एक नन्हा भूत है जो हर बात दो बार कहता है, झुकता है और देता है: दद-दद। “ददाति,” वेताल कहता है, “वह देता है।” भूत आपको एक सेब देता है, फिर दूसरा, फिर तीसरा, हर बार शब्द दोहराता हुआ। दादी हँस पड़ती हैं। “गण 3 धातु का पहला अक्षर दोहरा देता है, ताकि याद रखना आसान हो: दा से दद बनता है, हु से जुहु।”'
+- id: t1
+  kind: teach
+  title:
+    en: The first syllable twice
+    hi: पहला अक्षर दो बार
+  depth: core
+  skills:
+  - verb.class-3
+  body:
+    en: 'Class 3, {{जुहोत्यादि}}, doubles the beginning of the root: {{दा}} gives {{ददाति}} (gives), {{धा}} gives {{दधाति}} (places), {{हु}} gives {{जुहोति}} (offers), {{भी}} gives {{बिभेति}} (fears), {{भृ}} gives {{बिभर्ति}} (carries). The plural ends in {{-ति}} after the doubled root: {{ददति}}.'
+    hi: 'गण 3, {{जुहोत्यादि}}, धातु का आरम्भ दुगुना कर देता है: {{दा}} से {{ददाति}} (देता है), {{धा}} से {{दधाति}} (रखता है), {{हु}} से {{जुहोति}} (हवन करता है), {{भी}} से {{बिभेति}} (डरता है), {{भृ}} से {{बिभर्ति}} (धारण करता है)। बहुवचन दुगुनी धातु के बाद {{-ति}} पर समाप्त होता है: {{ददति}}।'
+- id: tb1
+  kind: table
+  title:
+    en: Class 3 roots
+    hi: गण 3 की धातुएँ
+  depth: core
+  skills:
+  - verb.class-3
+  caption:
+    en: Root, meaning and “he …”
+    hi: धातु, अर्थ और ‘वह …’
+  columns:
+  - en: Root
+    hi: धातु
+  - en: Meaning
+    hi: अर्थ
+  - en: He
+    hi: वह
+  rows:
+  - - sa: दा
+    - text:
+        en: give
+        hi: देना
+    - sa: ददाति
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Juhotyadi
+  - - sa: धा
+    - text:
+        en: place
+        hi: रखना
+    - sa: दधाति
+      check:
+        type: tinanta
+        dhatu: धा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Juhotyadi
+  - - sa: हु
+    - text:
+        en: offer
+        hi: हवन करना
+    - sa: जुहोति
+      check:
+        type: tinanta
+        dhatu: हु
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Juhotyadi
+  - - sa: भी
+    - text:
+        en: fear
+        hi: डरना
+    - sa: बिभेति
+      check:
+        type: tinanta
+        dhatu: भी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Juhotyadi
+  - - sa: भृ
+    - text:
+        en: carry
+        hi: धारण करना
+    - sa: बिभर्ति
+      check:
+        type: tinanta
+        dhatu: भृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Juhotyadi
+  note:
+    en: The doubled start is the sign of the class.
+    hi: दुगुना आरम्भ गण का चिह्न है।
+- id: tb2
+  kind: table
+  title:
+    en: 'दा: all persons'
+    hi: 'दा: सभी पुरुष'
+  depth: core
+  skills:
+  - verb.class-3
+  caption:
+    en: “He gives, you give, I give”
+    hi: ‘वह देता है, तुम देते हो, मैं देता हूँ’
+  columns:
+  - en: Person
+    hi: पुरुष
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: he, she, it
+        hi: वह (प्रथम पुरुष)
+    - sa: ददाति
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Juhotyadi
+      highlight: true
+    - sa: दत्तः
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+        gana: Juhotyadi
+    - sa: ददति
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+        gana: Juhotyadi
+  - - text:
+        en: you
+        hi: तुम (मध्यम पुरुष)
+    - sa: ददासि
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+        gana: Juhotyadi
+    - sa: दत्थः
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Dvi
+        gana: Juhotyadi
+    - sa: दत्थ
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Bahu
+        gana: Juhotyadi
+  - - text:
+        en: I, we
+        hi: मैं (उत्तम पुरुष)
+    - sa: ददामि
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+        gana: Juhotyadi
+    - sa: दद्वः
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Uttama
+        vacana: Dvi
+        gana: Juhotyadi
+    - sa: दद्मः
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+        gana: Juhotyadi
+  note:
+    en: 'The dual and plural use the weak stem {{दत्-}} or {{दद-}}: {{दत्तः}}, {{ददति}}.'
+    hi: 'द्विवचन और बहुवचन निर्बल अंग {{दत्-}} या {{दद-}} लेते हैं: {{दत्तः}}, {{ददति}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-3
+  mode: choice
+  prompt:
+    en: “He gives.” Which form?
+    hi: ‘वह देता है।’ कौन-सा रूप?
+  explain:
+    en: '{{ददाति}}: {{दा}} doubled.'
+    hi: '{{ददाति}}: {{दा}} दुगुना।'
+  roman: after
+  options:
+  - sa: दाति
+  - correct: true
+    sa: ददाति
+  - sa: दययति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-3
+  mode: type
+  prompt:
+    en: 'Say: “He offers (a sacrifice).”'
+    hi: 'कहिए: ‘वह हवन करता है।’'
+  explain:
+    en: '{{जुहोति}}.'
+    hi: '{{जुहोति}}।'
+  roman: after
+  answers:
+  - जुहोति
+  tiles:
+  - जु
+  - होति
+  - हु
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.class-3
+  mode: match
+  prompt:
+    en: Join each root to its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+  explain:
+    en: Look for the doubled start.
+    hi: दुगुना आरम्भ देखिए।
+  roman: after
+  pairs:
+  - left:
+      sa: दा
+    right:
+      sa: ददाति
+  - left:
+      sa: धा
+    right:
+      sa: दधाति
+  - left:
+      sa: भी
+    right:
+      sa: बिभेति
+  - left:
+      sa: भृ
+    right:
+      sa: बिभर्ति
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.class-3
+  widget: mark_words
+  prompt:
+    en: Tap every verb with a doubled start.
+    hi: दुगुने आरम्भ वाली हर क्रिया छुइए।
+  params:
+    passage:
+    - ददाति
+    - भवति
+    - दधाति
+    - पठति
+    - जुहोति
+    - नयति
+    targets:
+    - ददाति
+    - दधाति
+    - जुहोति
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: Drawer three
+    hi: तीसरा दराज़
+  depth: core
+  skills:
+  - verb.class-3
+  mode: choice
+  prompt:
+    en: “He fears.” Which form of {{भी}}?
+    hi: ‘वह डरता है।’ {{भी}} का कौन-सा रूप?
+  explain:
+    en: '{{बिभेति}}: {{भी}} doubled.'
+    hi: '{{बिभेति}}: {{भी}} दुगुना।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “बिभेति,” you say, and the giving spirit's apples all fall, one after another, and roll away. He stands there, empty-handed, with the first look of fear his drawer has ever seen. Then he laughs. “Of course,” he says. “Even a giver fears. I give, therefore I fear.” He picks the apples up again, one by one, and gives them to you.
+      hi: “बिभेति,” आप कहते हैं, और देने वाले भूत के सारे सेब एक के बाद एक गिरकर लुढ़क जाते हैं। वह ख़ाली हाथ खड़ा रह जाता है, भय का वह पहला भाव लिए जो उसके दराज़ ने कभी देखा। फिर वह हँसता है। “स्वाभाविक है,” वह कहता है। “देने वाला भी डरता है। मैं देता हूँ, इसलिए डरता हूँ।” वह सेब एक-एक करके फिर उठाता है और आपको दे देता है।
+    failure:
+      en: 'The apples stay on the ground. {{भी}} doubled: {{बिभेति}}.'
+      hi: 'सेब ज़मीन पर पड़े रहते हैं। {{भी}} दुगुना: {{बिभेति}}।'
+  options:
+  - sa: भयति
+  - sa: भेति
+  - correct: true
+    sa: बिभेति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's doubling class
+    hi: द्वित्व वाला गण
+  depth: panini
+  skills:
+  - verb.class-3
+  sutras:
+  - 2.4.75
+  - 6.1.10
+  - 7.4.58
+  body:
+    en: Sūtra 2.4.75, {{जुहोत्यादिभ्यः श्लुः}}, replaces the sign {{शप्}} with {{श्लु}}, which is deleted but leaves the root doubled. 6.1.10, {{श्लौ}}, orders the doubling. And 7.4.58, {{अत्र लोपोऽभ्यासस्य}}, shortens the doubled start, giving {{दद-}}.
+    hi: सूत्र 2.4.75, {{जुहोत्यादिभ्यः श्लुः}}, चिह्न {{शप्}} की जगह {{श्लु}} रखता है, जो लुप्त हो जाता है पर धातु को दुगुना छोड़ जाता है। 6.1.10, {{श्लौ}}, द्वित्व का आदेश देता है। और 7.4.58, {{अत्र लोपोऽभ्यासस्य}}, दुगुने आरम्भ को छोटा करता है और {{दद-}} देता है।
+- id: sum
+  kind: summary
+  title:
+    en: Class 3
+    hi: गण 3
+  depth: core
+  points:
+  - sa: ददाति · दधाति · जुहोति
+    text:
+      en: He gives; he places; he offers.
+      hi: वह देता है; वह रखता है; वह हवन करता है।
+  - sa: बिभेति · बिभर्ति
+    text:
+      en: He fears; he carries.
+      hi: वह डरता है; वह धारण करता है।
+  - text:
+      en: The first syllable is doubled.
+      hi: पहला अक्षर दुगुना होता है।

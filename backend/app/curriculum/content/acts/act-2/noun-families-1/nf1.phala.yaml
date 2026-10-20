@@ -1,0 +1,524 @@
+id: nf1.phala
+template: scene
+title:
+  en: The फल family
+  hi: फल का कुल
+title_sa: फलशब्दः
+minutes: 6
+teaches:
+- noun.phala
+needs:
+- noun.deva
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The neuter branch
+    hi: नपुंसक शाखा
+  depth: core
+  image:
+    brief: The tree of green mist in the library with a second lower branch hung with a different set of leaf-tags, Dādī pointing to it with her pen and comparing it to the upper branch; Śuka on a shelf pulling at a tag.
+    alt:
+      en: A tree of name-tags with two branches, one pointing to the other
+      hi: दो शाखाओं वाला नाम-पत्तों का पेड़, एक शाखा की ओर इशारा
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - vrikshaka
+    place: pathashala
+    ratio: '4:3'
+    id: nf1-phala-s1
+  narration:
+    en: On a lower branch of the green tree hangs a second set of leaf-tags, close to the first but a little different. “Neuters,” says Dādī. “Almost the same as the masculines. The family resemblance is strong, and only a few places differ.” Vṛkṣaka shakes a branch and the tags rustle, delighted.
+    hi: हरे पेड़ की एक नीची शाखा पर पत्ते-टैगों का दूसरा समूह लटका है, पहले के क़रीब पर थोड़ा अलग। “नपुंसक,” दादी कहती हैं। “पुंलिंग से लगभग वही। पारिवारिक समानता गहरी है, बस कुछ जगहों पर अन्तर है।” वृक्षक एक शाखा हिलाता है और टैग ख़ुशी से सरसराते हैं।
+- id: t1
+  kind: teach
+  title:
+    en: The neuter, फल
+    hi: नपुंसक, फल
+  depth: core
+  skills:
+  - noun.phala
+  sutras:
+  - 7.1.19
+  - 7.1.72
+  body:
+    en: 'A neuter word in -{{अ}} is like {{देव}} except where the doer and object come in: in the first, second and call cases, singular {{फलम्}}, dual {{फले}}, plural {{फलानि}}. All the other cells are the same as {{देव}}.'
+    hi: '-{{अ}} वाला नपुंसक शब्द {{देव}} जैसा ही है, सिवाय कर्ता और कर्म वाली जगहों के: प्रथमा, द्वितीया और सम्बोधन में एकवचन {{फलम्}}, द्विवचन {{फले}}, बहुवचन {{फलानि}}। बाक़ी सब खाने {{देव}} जैसे हैं।'
+  term:
+    sa: नपुंसकम्
+    meaning:
+      en: neuter
+      hi: नपुंसक
+- id: tb1
+  kind: table
+  title:
+    en: 'फल: the full table'
+    hi: 'फल: पूरी तालिका'
+  depth: core
+  skills:
+  - noun.phala
+  caption:
+    en: A fruit, in every case and number
+    hi: फल, हर विभक्ति और वचन में
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: फलम्
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: फले
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Dvi
+      highlight: true
+    - sa: फलानि
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Bahu
+      highlight: true
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: फलम्
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      highlight: true
+    - sa: फले
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Dvi
+      highlight: true
+    - sa: फलानि
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+      highlight: true
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: फलेन
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: फलाभ्याम्
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Trtiya
+        vacana: Dvi
+    - sa: फलैः
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Trtiya
+        vacana: Bahu
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: फलाय
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Caturthi
+        vacana: Eka
+    - sa: फलाभ्याम्
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Caturthi
+        vacana: Dvi
+    - sa: फलेभ्यः
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Caturthi
+        vacana: Bahu
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: फलात्
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: फलाभ्याम्
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Panchami
+        vacana: Dvi
+    - sa: फलेभ्यः
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Panchami
+        vacana: Bahu
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: फलस्य
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: फलयोः
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Sasthi
+        vacana: Dvi
+    - sa: फलानाम्
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Sasthi
+        vacana: Bahu
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: फले
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: फलयोः
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Dvi
+    - sa: फलेषु
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Bahu
+  - - text:
+        en: 8 · calling
+        hi: 8 · सम्बोधन
+    - sa: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Sambodhana
+        vacana: Eka
+      highlight: true
+    - sa: फले
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Sambodhana
+        vacana: Dvi
+      highlight: true
+    - sa: फलानि
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Sambodhana
+        vacana: Bahu
+      highlight: true
+  note:
+    en: 'The highlighted cells are the three that differ from {{देव}}: first, second and the call share one form in each number.'
+    hi: 'रंगीन खाने वे हैं जो {{देव}} से अलग हैं: हर वचन में प्रथमा, द्वितीया और सम्बोधन का एक ही रूप।'
+- id: t2
+  kind: teach
+  title:
+    en: Same form, three jobs
+    hi: एक रूप, तीन काम
+  depth: core
+  skills:
+  - noun.phala
+  body:
+    en: 'In a neuter the doer and the object look the same: {{फलम्}} can be the first case or the second. Context tells which: {{फलं पतति}} (the fruit falls), {{रामः फलं खादति}} (Rāma eats the fruit).'
+    hi: 'नपुंसक में कर्ता और कर्म एक-से दिखते हैं: {{फलम्}} प्रथमा भी हो सकता है और द्वितीया भी। प्रसंग बताता है कि कौन-सा: {{फलं पतति}} (फल गिरता है), {{रामः फलं खादति}} (राम फल खाता है)।'
+  examples:
+  - sa: फलम् पतति।
+    meaning:
+      en: The fruit falls.
+      hi: फल गिरता है।
+    words:
+    - sa: फलम्
+      gloss:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पतति
+      gloss:
+        en: falls
+        hi: गिरता है
+      check:
+        type: tinanta
+        dhatu: पत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: रामः फलम् खादति।
+    meaning:
+      en: Rāma eats the fruit.
+      hi: राम फल खाता है।
+    words:
+    - sa: रामः
+      gloss:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: फलम्
+      gloss:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: खादति
+      gloss:
+        en: eats
+        hi: खाता है
+      check:
+        type: tinanta
+        dhatu: खाद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - noun.phala
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: The neuter differs from {{देव}} only in the first, second and call.
+    hi: नपुंसक {{देव}} से केवल प्रथमा, द्वितीया और सम्बोधन में अलग है।
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: फल
+      linga: Napumsaka
+      blanks: 3
+    seed: 2
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - noun.phala
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of a family member.
+    hi: कुल के एक सदस्य के छूटे रूप भरिए।
+  explain:
+    en: '{{पत्र}} follows {{फल}}; mind the {{ण}} in {{पत्राणि}}.'
+    hi: '{{पत्र}} {{फल}} जैसा चलता है; {{पत्राणि}} का {{ण}} ध्यान में रखिए।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: पत्र
+      linga: Napumsaka
+      blanks: 3
+    seed: 3
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - noun.phala
+  mode: choice
+  prompt:
+    en: Which is the plural of {{गृहम्}}, “houses”, as the first case?
+    hi: '{{गृहम्}} का प्रथमा बहुवचन, ‘घर’, कौन-सा है?'
+  explain:
+    en: 'Neuter plural: {{आनि}} (with {{ण}} after {{र}}).'
+    hi: 'नपुंसक बहुवचन: {{आनि}} ({{र}} के बाद {{ण}} के साथ)।'
+  roman: after
+  options:
+  - sa: गृहाः
+  - sa: गृहे
+  - correct: true
+    sa: गृहाणि
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - noun.phala
+  mode: match
+  prompt:
+    en: Join each form to its case and number.
+    hi: हर रूप को उसकी विभक्ति और वचन से जोड़िए।
+  explain:
+    en: The neuter's three shared cells.
+    hi: नपुंसक के तीन साझा खाने।
+  roman: after
+  pairs:
+  - left:
+      sa: फलम्
+    right:
+      text:
+        en: 1st or 2nd, one
+        hi: प्रथमा या द्वितीया, एक
+  - left:
+      sa: फले
+    right:
+      text:
+        en: 1st, 2nd or call, two
+        hi: प्रथमा, द्वितीया या सम्बोधन, दो
+  - left:
+      sa: फलानि
+    right:
+      text:
+        en: 1st, 2nd or call, many
+        hi: प्रथमा, द्वितीया या सम्बोधन, अनेक
+  - left:
+      sa: फलेन
+    right:
+      text:
+        en: 3rd, one
+        hi: तृतीया, एक
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - noun.phala
+  widget: mark_words
+  prompt:
+    en: Tap every neuter plural.
+    hi: हर नपुंसक बहुवचन को छुइए।
+  params:
+    passage:
+    - फलानि
+    - फलम्
+    - पत्राणि
+    - बालकाः
+    - गृहाणि
+    - वृक्षाः
+    targets:
+    - फलानि
+    - पत्राणि
+    - गृहाणि
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: The neuter branch
+    hi: नपुंसक शाखा
+  depth: core
+  skills:
+  - noun.phala
+  mode: choice
+  prompt:
+    en: Which neuter form is the dual?
+    hi: नपुंसक का द्विवचन कौन-सा रूप है?
+  explain:
+    en: '{{फले}}: dual of {{फल}}.'
+    hi: '{{फले}}: {{फल}} का द्विवचन।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “फले,” you say, and on the lower branch, two small golden fruits ripen at once. Vṛkṣaka sighs, the leaf-tags settling like birds.
+      hi: “फले,” आप कहते हैं, और नीची शाखा पर दो नन्हे सुनहरे फल एक साथ पक जाते हैं। वृक्षक साँस छोड़ता है, पत्ते-टैग पक्षियों की तरह बैठ जाते हैं।
+    failure:
+      en: The branch stays bare. The neuter dual ends in {{ए}}.
+      hi: शाखा सूनी रहती है। नपुंसक द्विवचन {{ए}} पर समाप्त होता है।
+  options:
+  - sa: फलानि
+  - sa: फलम्
+  - correct: true
+    sa: फले
+- id: sum
+  kind: summary
+  title:
+    en: The फल family
+    hi: फल का कुल
+  depth: core
+  points:
+  - sa: फलम् फले फलानि
+    text:
+      en: 'First, second and call: one form each.'
+      hi: 'प्रथमा, द्वितीया और सम्बोधन: एक-एक रूप।'
+  - sa: देव = फल
+    text:
+      en: Everywhere else, the same as {{देव}}.
+      hi: बाक़ी सब जगह {{देव}} जैसा।
+  - sa: फल · पत्र · गृह · जल
+    text:
+      en: Thousands of neuters follow it.
+      hi: हज़ारों नपुंसक इसी पर चलते हैं।

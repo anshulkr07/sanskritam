@@ -1,0 +1,510 @@
+id: nf1.deva
+template: scene
+title:
+  en: The देव family
+  hi: देव का कुल
+title_sa: देवशब्दः
+minutes: 6
+teaches:
+- noun.deva
+needs:
+- case.overview
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The school's library
+    hi: पाठशाला का पुस्तकालय
+  depth: core
+  image:
+    brief: 'The school library: tall shelves of palm-leaf bundles tied with coloured threads, a low reading desk with Dādī''s open notebook; beside the desk a small tree of green mist hung with tiny leaf-shaped name tags, standing up; you and Śuka looking on.'
+    alt:
+      en: A library with a small tree of green mist hung with name-tags standing beside a desk
+      hi: नाम-पत्तों वाला हरे धुंध का नन्हा पेड़ पुस्तकालय में मेज़ के पास
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - vrikshaka
+    place: pathashala
+    ratio: '4:3'
+    id: nf1-deva-s1
+  narration:
+    en: 'In the Ācārya''s library, shelves of palm-leaf bundles rise to the rafters, each tied with a coloured thread. Dādī lays her notebook open on the low desk. “Here is a secret,” she says. “Words come in families. Once you know one member, you know thousands.” Beside the desk a small tree of green mist stands up, hung with tiny leaf-tags: names, all waiting.'
+    hi: 'आचार्य के पुस्तकालय में ताड़पत्रों के गट्ठर कड़ियों तक ऊँचे रखे हैं, हर एक रंगीन धागे से बँधा। दादी अपनी कॉपी नीची मेज़ पर खोलती हैं। “एक रहस्य सुनो,” वे कहती हैं। “शब्द कुलों में आते हैं। एक सदस्य जान लिया, तो हज़ारों जान लिए।” मेज़ के पास हरे धुंध का एक नन्हा पेड़ खड़ा हो जाता है, जिस पर छोटे पत्ते-टैग टँगे हैं: नाम, सब प्रतीक्षा में।'
+  lines:
+  - speaker: dadi
+    sa: पुस्तकालये शब्दरूपाणि सन्ति।
+    gloss:
+      en: In the library there are word-forms.
+      hi: पुस्तकालय में शब्दरूप हैं।
+- id: t1
+  kind: teach
+  title:
+    en: One word, twenty-four forms
+    hi: एक शब्द, चौबीस रूप
+  depth: core
+  skills:
+  - noun.deva
+  body:
+    en: 'A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands of masculine words ending in -{{अ}}. Learn it once.'
+    hi: '{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।'
+  term:
+    sa: शब्दरूपम्
+    meaning:
+      en: the table of a word's forms
+      hi: शब्द के रूपों की तालिका
+- id: tb1
+  kind: table
+  title:
+    en: 'देव: the full table'
+    hi: 'देव: पूरी तालिका'
+  depth: core
+  skills:
+  - noun.deva
+  caption:
+    en: A god, in every case and number
+    hi: देवता, हर विभक्ति और वचन में
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: देवः
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: देवौ
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: देवाः
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: देवम्
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: देवौ
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Dvi
+    - sa: देवान्
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Bahu
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: देवेन
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: देवाभ्याम्
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Dvi
+    - sa: देवैः
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Bahu
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: देवाय
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+    - sa: देवाभ्याम्
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Dvi
+    - sa: देवेभ्यः
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Bahu
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: देवात्
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: देवाभ्याम्
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Dvi
+    - sa: देवेभ्यः
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Bahu
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: देवस्य
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: देवयोः
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Dvi
+    - sa: देवानाम्
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: देवे
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: देवयोः
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Dvi
+    - sa: देवेषु
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Bahu
+  - - text:
+        en: 8 · calling
+        hi: 8 · सम्बोधन
+    - sa: देव
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+    - sa: देवौ
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Dvi
+    - sa: देवाः
+      check:
+        type: subanta
+        stem: देव
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Bahu
+  note:
+    en: 'Watch the repeats: the dual has three forms for eight cells, and {{देवेभ्यः}} serves two cases.'
+    hi: 'दोहराव देखिए: द्विवचन में आठ खानों के लिए तीन रूप हैं, और {{देवेभ्यः}} दो विभक्तियों का काम करता है।'
+- id: t2
+  kind: teach
+  title:
+    en: Other members of the family
+    hi: कुल के अन्य सदस्य
+  depth: core
+  skills:
+  - noun.deva
+  sutras:
+  - 7.1.9
+  body:
+    en: 'Every masculine word in -{{अ}} follows {{देव}}: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}. Change the stem, keep the endings.'
+    hi: '-{{अ}} वाला हर पुंलिंग शब्द {{देव}} जैसा चलता है: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}। मूल बदलिए, प्रत्यय वही रखिए।'
+  examples:
+  - sa: रामाः
+    meaning:
+      en: Rāmas (plural)
+      hi: राम (अनेक)
+    check:
+      type: subanta
+      stem: राम
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Bahu
+  - sa: वृक्षैः
+    meaning:
+      en: by trees
+      hi: पेड़ों द्वारा
+    check:
+      type: subanta
+      stem: वृक्ष
+      linga: Pum
+      vibhakti: Trtiya
+      vacana: Bahu
+  - sa: शुकयोः
+    meaning:
+      en: of two parrots
+      hi: दो तोतों का
+    check:
+      type: subanta
+      stem: शुक
+      linga: Pum
+      vibhakti: Sasthi
+      vacana: Dvi
+  - sa: ग्रामेषु
+    meaning:
+      en: in villages
+      hi: गाँवों में
+    check:
+      type: subanta
+      stem: ग्राम
+      linga: Pum
+      vibhakti: Saptami
+      vacana: Bahu
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - noun.deva
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: Every form is in the table you just read.
+    hi: हर रूप उसी तालिका में है जो अभी पढ़ी।
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: देव
+      linga: Pum
+      blanks: 3
+    seed: 0
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - noun.deva
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of a family member.
+    hi: कुल के एक सदस्य के छूटे रूप भरिए।
+  explain:
+    en: '{{बालक}} takes the same endings as {{देव}}.'
+    hi: '{{बालक}} वही प्रत्यय लेता है जो {{देव}}।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: बालक
+      linga: Pum
+      blanks: 3
+    seed: 1
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - noun.deva
+  mode: choice
+  prompt:
+    en: Which is the plural of {{वृक्षः}} in the third case, “by trees”?
+    hi: '{{वृक्षः}} का तृतीया बहुवचन, ‘पेड़ों से’, कौन-सा है?'
+  explain:
+    en: 'Third case plural: {{ऐः}}.'
+    hi: 'तृतीया बहुवचन: {{ऐः}}।'
+  roman: after
+  options:
+  - sa: वृक्षेण
+  - sa: वृक्षाभ्याम्
+  - correct: true
+    sa: वृक्षैः
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - noun.deva
+  mode: match
+  prompt:
+    en: Join each form to its case and number.
+    hi: हर रूप को उसकी विभक्ति और वचन से जोड़िए।
+  explain:
+    en: '{{म्}}, {{एन}}, {{आय}}, {{स्य}}.'
+    hi: '{{म्}}, {{एन}}, {{आय}}, {{स्य}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: देवम्
+    right:
+      text:
+        en: 2nd, one
+        hi: द्वितीया, एक
+  - left:
+      sa: देवेन
+    right:
+      text:
+        en: 3rd, one
+        hi: तृतीया, एक
+  - left:
+      sa: देवाय
+    right:
+      text:
+        en: 4th, one
+        hi: चतुर्थी, एक
+  - left:
+      sa: देवस्य
+    right:
+      text:
+        en: 6th, one
+        hi: षष्ठी, एक
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - noun.deva
+  widget: form_explorer
+  prompt:
+    en: Switch the word and the case, and watch the ending change.
+    hi: शब्द और विभक्ति बदलिए और देखिए कि प्रत्यय कैसे बदलता है।
+  params:
+    stems:
+    - stem: देव
+      linga: Pum
+    - stem: बालक
+      linga: Pum
+    - stem: वृक्ष
+      linga: Pum
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: The tree flowers
+    hi: पेड़ में फूल आते हैं
+  depth: core
+  skills:
+  - noun.deva
+  mode: choice
+  prompt:
+    en: Which form is the same in the dual for the first, second and call?
+    hi: द्विवचन में प्रथमा, द्वितीया और सम्बोधन में कौन-सा रूप एक ही है?
+  explain:
+    en: '{{देवौ}} fills three cells of the dual.'
+    hi: '{{देवौ}} द्विवचन के तीन खाने भरता है।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “देवौ,” you say, and the green tree of names shivers. A small white flower opens on one branch. “देवाः,” you add, and a second blooms. Vṛkṣaka's trunk straightens, as if his name were beginning to hold.
+      hi: “देवौ,” आप कहते हैं, और नामों का हरा पेड़ सिहरता है। एक शाखा पर एक नन्हा सफ़ेद फूल खिलता है। “देवाः,” आप जोड़ते हैं, और दूसरा खिलता है। वृक्षक का तना सीधा होता है, मानो उसका नाम टिकना शुरू हो गया हो।
+    failure:
+      en: 'The tree droops. Three cells share one form in the dual: the one with {{औ}}.'
+      hi: 'पेड़ झुक जाता है। द्विवचन में तीन खाने एक रूप साझा करते हैं: {{औ}} वाला।'
+  options:
+  - sa: देवाभ्याम्
+  - sa: देवयोः
+  - correct: true
+    sa: देवौ
+- id: pn
+  kind: teach
+  title:
+    en: Why {{देवैः}}?
+    hi: '{{देवैः}} क्यों?'
+  depth: panini
+  skills:
+  - noun.deva
+  sutras:
+  - 7.1.9
+  - 7.1.12
+  body:
+    en: 'Pāṇini''s sūtra 7.1.9, {{अतो भिस ऐस्}}, changes the ending {{भिस्}} to {{ऐस्}} after a word in -{{अ}}: {{देव}} + {{भिस्}} → {{देवैः}}. And 7.1.12 turns {{टा}} into {{इन}}, {{ङसि}} into {{आत्}} and {{ङस्}} into {{स्य}}: {{देवेन}}, {{देवात्}}, {{देवस्य}}.'
+    hi: 'पाणिनि का सूत्र 7.1.9, {{अतो भिस ऐस्}}, -{{अ}} वाले शब्द के बाद {{भिस्}} को {{ऐस्}} कर देता है: {{देव}} + {{भिस्}} → {{देवैः}}। और 7.1.12 {{टा}} को {{इन}}, {{ङसि}} को {{आत्}} और {{ङस्}} को {{स्य}} बना देता है: {{देवेन}}, {{देवात्}}, {{देवस्य}}।'
+- id: sum
+  kind: summary
+  title:
+    en: The देव family
+    hi: देव का कुल
+  depth: core
+  points:
+  - sa: देवः देवौ देवाः
+    text:
+      en: First case, three numbers.
+      hi: प्रथमा, तीन वचन।
+  - sa: बालक · वृक्ष · राम · ग्राम
+    text:
+      en: Thousands of words follow it.
+      hi: हज़ारों शब्द इसी पर चलते हैं।
+  - sa: औ · एभ्यः · ऐः
+    text:
+      en: Watch the shared forms.
+      hi: साझा रूपों पर ध्यान दीजिए।

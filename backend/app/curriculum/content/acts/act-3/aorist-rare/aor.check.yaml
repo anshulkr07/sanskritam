@@ -1,0 +1,179 @@
+id: aor.check
+template: check
+title:
+  en: Spot the rare forms
+  hi: दुर्लभ रूप पहचानिए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.lun
+  mode: choice
+  prompt:
+    en: Which is the aorist of “become”?
+    hi: ‘होना’ का लुङ् कौन-सा है?
+  explain:
+    en: '{{अभूत्}}.'
+    hi: '{{अभूत्}}।'
+  roman: after
+  options:
+  - sa: अभवत्
+  - sa: बभूव
+  - correct: true
+    sa: अभूत्
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.lun
+  mode: match
+  prompt:
+    en: Join each present to its aorist.
+    hi: हर वर्तमान को उसके लुङ् से जोड़िए।
+  explain:
+    en: Four aorists.
+    hi: चार लुङ्।
+  roman: after
+  pairs:
+  - left:
+      sa: भवति
+    right:
+      sa: अभूत्
+  - left:
+      sa: करोति
+    right:
+      sa: अकार्षीत्
+  - left:
+      sa: शृणोति
+    right:
+      sa: अश्रौषीत्
+  - left:
+      sa: ददाति
+    right:
+      sa: अदात्
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.ma
+  mode: choice
+  prompt:
+    en: “Do not go.” Which sentence?
+    hi: ‘मत जाओ।’ कौन-सा वाक्य?
+  explain:
+    en: '{{मा गमः}}.'
+    hi: '{{मा गमः}}।'
+  roman: after
+  options:
+  - sa: मा अगमः
+  - correct: true
+    sa: मा गमः
+  - sa: न अगमः
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.ma
+  mode: choice
+  prompt:
+    en: “Do not fear.” Which sentence?
+    hi: ‘मत डरो।’ कौन-सा वाक्य?
+  explain:
+    en: '{{मा भैषीः}}.'
+    hi: '{{मा भैषीः}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: मा भैषीः
+  - sa: मा अभैषीः
+  - sa: न बिभेति
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - verb.rare-four
+  mode: choice
+  prompt:
+    en: “May he live!” Which form?
+    hi: ‘वह जिए!’ कौन-सा रूप?
+  explain:
+    en: '{{जीव्यात्}}.'
+    hi: '{{जीव्यात्}}।'
+  roman: after
+  options:
+  - sa: जीवति
+  - correct: true
+    sa: जीव्यात्
+  - sa: अजीवीत्
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - verb.rare-four
+  - verb.lun
+  mode: match
+  prompt:
+    en: Join each form to its name.
+    hi: हर रूप को उसके नाम से जोड़िए।
+  explain:
+    en: Four tenses.
+    hi: चार काल।
+  roman: after
+  pairs:
+  - left:
+      sa: भविता
+    right:
+      text:
+        en: far future
+        hi: दूर का भविष्य
+  - left:
+      sa: भूयात्
+    right:
+      text:
+        en: blessing
+        hi: आशीर्वाद
+  - left:
+      sa: अभविष्यत्
+    right:
+      text:
+        en: would have been
+        hi: होता
+  - left:
+      sa: अभूत्
+    right:
+      text:
+        en: aorist
+        hi: लुङ्
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - verb.ma
+  - verb.lun
+  mode: order
+  prompt:
+    en: 'Comfort the flame: “Do not fear; it has become.”'
+    hi: 'लौ को ढाढ़स बँधाइए: ‘मत डरो; हो गया।’'
+  explain:
+    en: '{{मा भैषीः, अभूत्}}.'
+    hi: '{{मा भैषीः, अभूत्}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“मा भैषीः, अभूत्,” you say, and the little flame, Abhūtaka, leans against your hand without burning it. “It did become,” he says, “and so did I.” He lifts, bright and steady, into the dark above the trees. As he goes he leaves a line of light behind him, spelling four words: “भवति, नृत्यति, तुदति, चोरयति.” The Vetāla watches him out of sight. “Verbs,” he says. “You will need many more of those.”'
+      hi: '“मा भैषीः, अभूत्,” आप कहते हैं, और नन्हीं लौ, अभूतक, आपके हाथ से बिना जलाए टिक जाता है। “सचमुच हुआ,” वह कहता है, “और मैं भी।” वह उजला और स्थिर, पेड़ों के ऊपर अँधेरे में उठ जाता है। जाते हुए वह पीछे प्रकाश की एक रेखा छोड़ता है, जो चार शब्द लिखती है: “भवति, नृत्यति, तुदति, चोरयति।” वेताल उसे आँखों से ओझल होने तक देखता है। “क्रियाएँ,” वह कहता है। “अभी तुम्हें इनमें से बहुत-सी चाहिए होंगी।”'
+    failure:
+      en: 'The flame wavers. His words: {{मा भैषीः, अभूत्}}.'
+      hi: 'लौ डगमगाती है। उसके शब्द: {{मा भैषीः, अभूत्}}।'
+  tokens:
+  - मा
+  - भैषीः
+  - अभूत्

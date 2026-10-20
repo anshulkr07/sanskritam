@@ -1,0 +1,169 @@
+id: pg.revision
+template: revision
+title:
+  en: Everything about Pāṇini's grammar
+  hi: पाणिनि के व्याकरण के बारे में सब कुछ
+title_sa: पाणिनीयसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The three ideas
+    hi: तीन बातें
+  depth: core
+  section: core
+  rows:
+  - skill: panini.shiva-sutras
+    rule:
+      en: 'The fourteen Śiva sūtras list the sounds; a letter and a marker name a group: {{अच्}}, {{हल्}}.'
+      hi: 'चौदह शिवसूत्र ध्वनियाँ गिनाते हैं; एक अक्षर और एक संकेत एक समूह का नाम बनाते हैं: {{अच्}}, {{हल्}}।'
+    sutras:
+    - 1.1.71
+    tag: core
+    taught_in: pg.shiva#tb2
+  - skill: panini.it
+    rule:
+      en: 'A marker ({{इत्}}) does its job and is dropped: {{तिप्}} → {{ति}}.'
+      hi: 'संकेत ({{इत्}}) अपना काम करके हट जाता है: {{तिप्}} → {{ति}}।'
+    sutras:
+    - 1.3.2
+    - 1.3.3
+    - 1.3.9
+    tag: core
+    taught_in: pg.it#tb1
+  - skill: panini.prakriya
+    rule:
+      en: A word is built one rule at a time, in order, each with its sūtra number.
+      hi: शब्द एक-एक नियम से, क्रम में बनता है, हर एक का अपना सूत्र-क्रमांक होता है।
+    sutras:
+    - 3.2.123
+    - 3.4.78
+    - 3.1.68
+    tag: core
+    taught_in: pg.prakriya#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: panini.shiva-sutras
+    rule:
+      en: 'Find the first letter, then the marker that ends the name: everything between is in it.'
+      hi: 'पहला अक्षर खोजिए, फिर नाम को समाप्त करने वाला संकेत: बीच का सब कुछ उसमें है।'
+    tag: good
+    taught_in: pg.shiva#t2
+  - skill: panini.it
+    rule:
+      en: A last consonant of a suffix as taught is a marker.
+      hi: सिखाए गए प्रत्यय का अन्तिम व्यञ्जन संकेत है।
+    tag: good
+    taught_in: pg.it#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: panini.it
+    rule:
+      en: 'Initial markers: {{ष्}}, the palatals and retroflexes, and (outside taddhitas) {{ल्}} {{श्}} and the velars, of a suffix.'
+      hi: 'आदि के संकेत: {{ष्}}, तालव्य और मूर्धन्य, और (तद्धित से बाहर) प्रत्यय के {{ल्}} {{श्}} और कवर्ग।'
+    sutras:
+    - 1.3.6
+    - 1.3.7
+    - 1.3.8
+    tag: rare
+    taught_in: pg.it#pn
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: panini.shiva-sutras
+    rule:
+      en: 'Do not count the marker as a sound of the name: {{अच्}} has nine sounds, not ten.'
+      hi: 'संकेत को नाम की ध्वनि मत गिनिए: {{अच्}} में नौ ध्वनियाँ हैं, दस नहीं।'
+    tag: core
+    taught_in: pg.shiva#p1
+  - skill: panini.prakriya
+    rule:
+      en: 'Do not apply a later rule first: the order of the build decides the word.'
+      hi: 'बाद का नियम पहले लागू मत कीजिए: निर्माण का क्रम शब्द तय करता है।'
+    tag: core
+    taught_in: pg.prakriya#p2
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: panini.shiva-sutras
+    rule:
+      en: '{{आदिरन्त्येन सहेता}}: a first letter with the last marker.'
+      hi: '{{आदिरन्त्येन सहेता}}: पहला अक्षर अन्तिम संकेत के साथ।'
+    sutras:
+    - 1.1.71
+    tag: core
+    taught_in: pg.shiva#pn
+  - skill: panini.it
+    rule:
+      en: '{{उपदेशेऽजनुनासिक इत्}}, {{हलन्त्यम्}}, {{तस्य लोपः}}.'
+      hi: '{{उपदेशेऽजनुनासिक इत्}}, {{हलन्त्यम्}}, {{तस्य लोपः}}।'
+    sutras:
+    - 1.3.2
+    - 1.3.3
+    - 1.3.9
+    tag: core
+    taught_in: pg.it#tb1
+  - skill: panini.prakriya
+    rule:
+      en: '{{पूर्वत्रासिद्धम्}}: the last three quarters wait.'
+      hi: '{{पूर्वत्रासिद्धम्}}: अन्तिम तीन पाद प्रतीक्षा करते हैं।'
+    sutras:
+    - 8.2.1
+    tag: core
+    taught_in: pg.prakriya#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: panini.shiva-sutras
+    formula: अच्
+    rule:
+      en: all the vowels
+      hi: सब स्वर
+    tag: core
+    taught_in: pg.shiva#tb2
+  - skill: panini.it
+    formula: तिप् → ति
+    rule:
+      en: ending, markers gone
+      hi: प्रत्यय, संकेत हटे
+    tag: core
+    taught_in: pg.it#tb1
+  - skill: panini.prakriya
+    formula: भू → भवति
+    rule:
+      en: the built word
+      hi: बना हुआ शब्द
+    tag: core
+    taught_in: pg.prakriya#tb1

@@ -15,6 +15,7 @@ import { api, ApiError, setAuthToken, type DevLoginResponse, type LearnerProfile
 import { DEFAULT_LEARNER_NAME } from "../config";
 import { invalidateCache } from "../services/apiCache";
 import { registerPushToken } from "../services/push";
+import { setOfflineAudioOwner } from "../services/protectedAudio";
 import { setProgressOwner } from "../services/progressStorage";
 
 const TOKEN_KEY = "shabd.token";
@@ -100,7 +101,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       streak: res.learner.streak ?? 0,
       voice_minutes_used: res.learner.voice_minutes_used ?? 0,
     };
-    setProgressOwner(profile.id);
+    setOfflineAudioOwner(profile.id); setProgressOwner(profile.id);
     setLearner(profile);
     await AsyncStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
     await AsyncStorage.setItem(TOKEN_KEY, res.token);
@@ -165,7 +166,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const setting =
       me.learner.sanskrit_ratio_setting ?? me.model?.sanskrit_ratio_setting ?? me.learner.sanskrit_ratio;
     const merged: LearnerProfile = { ...me.learner, sanskrit_ratio_setting: setting };
-    setProgressOwner(merged.id);
+    setOfflineAudioOwner(merged.id); setProgressOwner(merged.id);
     setLearner(merged);
     void AsyncStorage.setItem(PROFILE_KEY, JSON.stringify(merged));
     return merged;
@@ -184,7 +185,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           if (saved) {
             try {
               const profile = JSON.parse(saved) as LearnerProfile;
-              if (typeof profile.id === "string") { setProgressOwner(profile.id); setLearner(profile); }
+              if (typeof profile.id === "string") { setOfflineAudioOwner(profile.id); setProgressOwner(profile.id); setLearner(profile); }
             } catch { /* ignore an invalid cached profile */ }
           }
           try {
@@ -199,7 +200,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               // screen 401s and reports "check your connection". Any other
               // failure (offline, 5xx) keeps local state so a retry works.
               await AsyncStorage.multiRemove([TOKEN_KEY, ONBOARDED_KEY, PROFILE_KEY]);
-              setProgressOwner(null); setLearner(null);
+              setOfflineAudioOwner(null); setProgressOwner(null); setLearner(null);
               setAuthToken(null);
               setToken(null);
               setOnboarded(false);
@@ -226,7 +227,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = useCallback(async () => {
     await AsyncStorage.multiRemove([TOKEN_KEY, ONBOARDED_KEY, PROFILE_KEY]);
-    setProgressOwner(null);
+    setOfflineAudioOwner(null); setProgressOwner(null);
     invalidateCache();
     setAuthToken(null);
     setToken(null);
@@ -240,7 +241,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // unlinked learner. If the server call fails, nothing local is touched.
   const deleteAccount = useCallback(async () => {
     await api.deleteMe();
-    setProgressOwner(null);
+    setOfflineAudioOwner(null); setProgressOwner(null);
     invalidateCache();
     await AsyncStorage.clear();
     setAuthToken(null);

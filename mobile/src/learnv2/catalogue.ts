@@ -1306,7 +1306,12 @@ const RETIRED_SANDHI_COPIES = new Set([
 ]);
 const kept = (id: string) => !id.startsWith("guide-art-") && !RETIRED_SANDHI_COPIES.has(id);
 
-export const LEARNV2_LESSONS: LearnV2Lesson[] = [...REVIEWED_LEARNV2_LESSONS, ...SOURCE_READING_LESSONS.filter((l) => kept(l.id))];
+export const LEARNV2_LESSONS: LearnV2Lesson[] = [...REVIEWED_LEARNV2_LESSONS, ...SOURCE_READING_LESSONS.filter((l) => kept(l.id))].map(lesson => {
+  if (lesson.cards.some(card => card.assetId || card.assetIds?.length || card.guide?.chapterId)) return lesson;
+  const openingArt = lesson.id.startsWith("sandhi-") ? "sandhi" : lesson.id.startsWith("verse-") ? "metre" : undefined;
+  if (!openingArt) return lesson;
+  return { ...lesson, cards: lesson.cards.map((card, index) => index === 0 ? { ...card, openingArt } : card) };
+});
 export const LEARNV2_UNITS: LearnV2Unit[] = [...REVIEWED_LEARNV2_UNITS, ...SOURCE_READING_UNITS]
   .filter((u) => !u.id.startsWith("guide-art-"))
   .map((u) => ({ ...u, lessonIds: u.lessonIds.filter(kept) }))

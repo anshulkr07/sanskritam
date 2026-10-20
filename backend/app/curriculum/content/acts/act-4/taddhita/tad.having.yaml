@@ -1,0 +1,561 @@
+id: tad.having
+template: scene
+title:
+  en: Having and related
+  hi: वाला और सम्बन्धी
+title_sa: धनवान् धार्मिकः
+minutes: 6
+teaches:
+- tad.matup
+- tad.ika
+needs:
+- tad.tva-ta
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The twenty-fourth statue
+    hi: चौबीसवीं प्रतिमा
+  depth: core
+  image:
+    brief: The twenty-fourth statue holding a small purse of coins that clink; Dādī counting a few on her palm; Śuka trying words aloud; Lubdhaka's foreman eyeing the purse hungrily.
+    alt:
+      en: A statue holds a purse of clinking coins while a man eyes it hungrily
+      hi: खनकते सिक्कों की थैली थामे प्रतिमा, लालच से देखता आदमी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - taddhitika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: tad-having-s1
+  narration:
+    en: 'The twenty-fourth statue holds a purse of coins. “धनवान्,” she says, and the coins clink: “the one who has wealth.” “बुद्धिमान्”: “the one who has intelligence.” “धार्मिकः”: “related to dharma, righteous.” Śuka tries one: “श्रीमान्.” “Yes,” says Dādī. “Two small endings. One names the owner of something. The other names what belongs to it.”'
+    hi: 'चौबीसवीं प्रतिमा के हाथ में सिक्कों की थैली है। “धनवान्,” वह कहती है, और सिक्के खनकते हैं: “जिसके पास धन है।” “बुद्धिमान्”: “जिसके पास बुद्धि है।” “धार्मिकः”: “धर्म से सम्बन्धित, धर्मात्मा।” शुक एक आज़माता है: “श्रीमान्।” “हाँ,” दादी कहती हैं। “दो छोटे प्रत्यय। एक किसी वस्तु के स्वामी का नाम बताता है। दूसरा उससे सम्बन्धित का।”'
+- id: t1
+  kind: teach
+  title:
+    en: Having, and related to
+    hi: वाला, और सम्बन्धी
+  depth: core
+  skills:
+  - tad.matup
+  - tad.ika
+  body:
+    en: '{{-वत्}} or {{-मत्}} means “having”: {{धन}} gives {{धनवान्}} (wealthy), {{बुद्धि}} gives {{बुद्धिमान्}} (intelligent); the feminine is {{-वती}}, {{-मती}}. After a stem in {{-इ}}, {{-ई}}, {{-उ}} it is {{-मत्}}, otherwise {{-वत्}}. {{-इक}} means “related to”: {{धर्म}} gives {{धार्मिकः}}, {{दिन}} gives {{दैनिकः}} (daily).'
+    hi: '{{-वत्}} या {{-मत्}} का अर्थ ‘वाला’ है: {{धन}} से {{धनवान्}} (धनी), {{बुद्धि}} से {{बुद्धिमान्}} (बुद्धिमान्); स्त्रीलिंग {{-वती}}, {{-मती}}। {{-इ}}, {{-ई}}, {{-उ}} वाले आधार के बाद {{-मत्}} होता है, अन्यथा {{-वत्}}। {{-इक}} का अर्थ ‘सम्बन्धी’ है: {{धर्म}} से {{धार्मिकः}}, {{दिन}} से {{दैनिकः}} (दैनिक)।'
+  term:
+    sa: मतुप्
+    meaning:
+      en: the “having” suffix
+      hi: ‘वाला’ प्रत्यय
+- id: tb1
+  kind: table
+  title:
+    en: Having
+    hi: वाला
+  depth: core
+  skills:
+  - tad.matup
+  - tad.ika
+  caption:
+    en: -वत् and -मत्
+    hi: -वत् और -मत्
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: Having (m)
+    hi: वाला (पुं.)
+  - en: Having (f)
+    hi: वाली (स्त्री.)
+  rows:
+  - - sa: धन
+    - sa: धनवान्
+      check:
+        type: taddhita
+        stem: धन
+        taddhita: matup
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: धनवती
+      check:
+        type: taddhita
+        stem: धन
+        taddhita: matup
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: गुण
+    - sa: गुणवान्
+      check:
+        type: taddhita
+        stem: गुण
+        taddhita: matup
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: गुणवती
+      check:
+        type: taddhita
+        stem: गुण
+        taddhita: matup
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: बल
+    - sa: बलवान्
+      check:
+        type: taddhita
+        stem: बल
+        taddhita: matup
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: बलवती
+      check:
+        type: taddhita
+        stem: बल
+        taddhita: matup
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: पुत्र
+    - sa: पुत्रवान्
+      check:
+        type: taddhita
+        stem: पुत्र
+        taddhita: matup
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: पुत्रवती
+      check:
+        type: taddhita
+        stem: पुत्र
+        taddhita: matup
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: बुद्धि
+    - sa: बुद्धिमान्
+      check:
+        type: taddhita
+        stem: बुद्धि
+        taddhita: matup
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: बुद्धिमती
+      check:
+        type: taddhita
+        stem: बुद्धि
+        taddhita: matup
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: श्री
+    - sa: श्रीमान्
+      check:
+        type: taddhita
+        stem: श्री
+        taddhita: matup
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: श्रीमती
+      check:
+        type: taddhita
+        stem: श्री
+        taddhita: matup
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: शक्ति
+    - sa: शक्तिमान्
+      check:
+        type: taddhita
+        stem: शक्ति
+        taddhita: matup
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: शक्तिमती
+      check:
+        type: taddhita
+        stem: शक्ति
+        taddhita: matup
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: धी
+    - sa: धीमान्
+      check:
+        type: taddhita
+        stem: धी
+        taddhita: matup
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: धीमती
+      check:
+        type: taddhita
+        stem: धी
+        taddhita: matup
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  - - sa: हनु
+    - sa: हनुमान्
+      check:
+        type: taddhita
+        stem: हनु
+        taddhita: matup
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: हनुमती
+      check:
+        type: taddhita
+        stem: हनु
+        taddhita: matup
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+  note:
+    en: '{{धनवान्}} after {{-अ}}; {{बुद्धिमान्}} after {{-इ}}; {{हनुमान्}} after {{-उ}}.'
+    hi: '{{-अ}} के बाद {{धनवान्}}; {{-इ}} के बाद {{बुद्धिमान्}}; {{-उ}} के बाद {{हनुमान्}}।'
+- id: tb2
+  kind: table
+  title:
+    en: Related to
+    hi: सम्बन्धी
+  depth: core
+  skills:
+  - tad.matup
+  - tad.ika
+  caption:
+    en: The ending -ika
+    hi: प्रत्यय -इक
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: Related to
+    hi: सम्बन्धी
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: धर्म
+    - sa: धार्मिकः
+      check:
+        type: taddhita
+        stem: धर्म
+        taddhita: Wak
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: righteous
+        hi: धार्मिक
+  - - sa: समाज
+    - sa: सामाजिकः
+      check:
+        type: taddhita
+        stem: समाज
+        taddhita: Wak
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: social
+        hi: सामाजिक
+  - - sa: लोक
+    - sa: लौकिकः
+      check:
+        type: taddhita
+        stem: लोक
+        taddhita: Wak
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: worldly
+        hi: लौकिक
+  - - sa: वेद
+    - sa: वैदिकः
+      check:
+        type: taddhita
+        stem: वेद
+        taddhita: Wak
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: Vedic
+        hi: वैदिक
+  - - sa: नीति
+    - sa: नैतिकः
+      check:
+        type: taddhita
+        stem: नीति
+        taddhita: Wak
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: moral
+        hi: नैतिक
+  - - sa: दिन
+    - sa: दैनिकः
+      check:
+        type: taddhita
+        stem: दिन
+        taddhita: Wak
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: daily
+        hi: दैनिक
+  - - sa: मास
+    - sa: मासिकः
+      check:
+        type: taddhita
+        stem: मास
+        taddhita: Wak
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: monthly
+        hi: मासिक
+  - - sa: इतिहास
+    - sa: ऐतिहासिकः
+      check:
+        type: taddhita
+        stem: इतिहास
+        taddhita: Wak
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - text:
+        en: historical
+        hi: ऐतिहासिक
+  note:
+    en: 'The first vowel often grows: {{धर्म}} → {{धार्मिकः}}.'
+    hi: 'पहला स्वर अक्सर बढ़ता है: {{धर्म}} → {{धार्मिकः}}।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - tad.matup
+  - tad.ika
+  mode: choice
+  prompt:
+    en: '{{धनवान्}} means…'
+    hi: '{{धनवान्}} का अर्थ…'
+  explain:
+    en: '{{-वत्}}: having.'
+    hi: '{{-वत्}}: वाला।'
+  roman: after
+  options:
+  - text:
+      en: wealth
+      hi: धन
+  - text:
+      en: of wealth
+      hi: धन का
+  - correct: true
+    text:
+      en: one who has wealth
+      hi: जिसके पास धन है
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - tad.matup
+  - tad.ika
+  mode: type
+  prompt:
+    en: 'Say: “intelligent” (masculine).'
+    hi: 'कहिए: ‘बुद्धिमान्’ (पुंलिंग)।'
+  explain:
+    en: '{{बुद्धिमान्}}: {{-मत्}} after {{-इ}}.'
+    hi: '{{बुद्धिमान्}}: {{-इ}} के बाद {{-मत्}}।'
+  roman: after
+  answers:
+  - बुद्धिमान्
+  tiles:
+  - बुद्धि
+  - मान्
+  - वान्
+  - ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - tad.matup
+  - tad.ika
+  mode: match
+  prompt:
+    en: Join each word to its meaning.
+    hi: हर शब्द को उसके अर्थ से जोड़िए।
+  explain:
+    en: Owner or related.
+    hi: स्वामी या सम्बन्धी।
+  roman: after
+  pairs:
+  - left:
+      sa: धनवान्
+    right:
+      text:
+        en: wealthy
+        hi: धनी
+  - left:
+      sa: बलवान्
+    right:
+      text:
+        en: strong
+        hi: बलवान्
+  - left:
+      sa: धार्मिकः
+    right:
+      text:
+        en: righteous
+        hi: धार्मिक
+  - left:
+      sa: दैनिकः
+    right:
+      text:
+        en: daily
+        hi: दैनिक
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - tad.matup
+  - tad.ika
+  widget: mark_words
+  prompt:
+    en: Tap every “having” word.
+    hi: हर ‘वाला’ शब्द छुइए।
+  params:
+    passage:
+    - धनवान्
+    - धनम्
+    - बुद्धिमान्
+    - बुद्धिः
+    - श्रीमान्
+    - श्रीः
+    targets:
+    - धनवान्
+    - बुद्धिमान्
+    - श्रीमान्
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: The purse
+    hi: थैली
+  depth: core
+  skills:
+  - tad.matup
+  - tad.ika
+  mode: choice
+  prompt:
+    en: '{{वैदिकः}} means…'
+    hi: '{{वैदिकः}} का अर्थ…'
+  explain:
+    en: '{{-इक}}: related to.'
+    hi: '{{-इक}}: सम्बन्धी।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“वैदिकः,” you say, “related to the Veda,” and the purse in the statue''s hand opens, and out of it pour, not coins, but small bright letters, which hang a moment in the air and assemble: धनवान्, बुद्धिमान्, श्रीमान्, धार्मिकः. “All of these,” she says, “carry what they own, or what is theirs.” Lubdhaka''s foreman, who has been looking at the purse for some time, reaches for it, then thinks better of it.'
+      hi: '“वैदिकः,” आप कहते हैं, “वेद से सम्बन्धित,” और प्रतिमा के हाथ की थैली खुल जाती है, और उसमें से सिक्के नहीं, छोटे चमकदार अक्षर बहते हैं, जो क्षण भर हवा में टँगे रहते हैं और जुड़ जाते हैं: धनवान्, बुद्धिमान्, श्रीमान्, धार्मिकः। “ये सब,” वह कहती है, “वह ढोते हैं जो इनका है।” लुब्धक का मुखिया, जो काफ़ी देर से थैली को देख रहा था, उसकी ओर हाथ बढ़ाता है, फिर बेहतर सोचकर रुक जाता है।'
+    failure:
+      en: 'The purse stays shut. {{-इक}}: related to: {{वैदिकः}}.'
+      hi: 'थैली बन्द रहती है। {{-इक}}: सम्बन्धी: {{वैदिकः}}।'
+  options:
+  - text:
+      en: a Veda
+      hi: एक वेद
+  - correct: true
+    text:
+      en: related to the Veda, Vedic
+      hi: वेद से सम्बन्धित, वैदिक
+  - text:
+      en: the Veda's son
+      hi: वेद का पुत्र
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's owner
+    hi: पाणिनि का स्वामी
+  depth: panini
+  skills:
+  - tad.matup
+  - tad.ika
+  sutras:
+  - 5.2.94
+  - 8.2.9
+  - 5.1.18
+  - 7.3.50
+  body:
+    en: Sūtra 5.2.94, {{तदस्यास्त्यस्मिन्निति मतुप्}}, gives {{मतुप्}} to say “he has it”; 8.2.9, {{मादुपधायाश्च मतोर्वोऽयवादिभ्यः}}, makes it {{वत्}} after a stem with {{म्}}, {{अ}} or {{आ}} before the end. For “related to”, 5.1.18, {{प्राग्वतेष्ठञ्}}, gives {{ठञ्}}, which 7.3.50, {{ठस्येकः}}, turns into {{इक}}.
+    hi: सूत्र 5.2.94, {{तदस्यास्त्यस्मिन्निति मतुप्}}, ‘उसके पास है’ कहने के लिए {{मतुप्}} देता है; 8.2.9, {{मादुपधायाश्च मतोर्वोऽयवादिभ्यः}}, म्, अ या आ वाले आधार के बाद उसे {{वत्}} बनाता है। ‘सम्बन्धी’ के लिए 5.1.18, {{प्राग्वतेष्ठञ्}}, {{ठञ्}} देता है, जिसे 7.3.50, {{ठस्येकः}}, {{इक}} बना देता है।
+- id: sum
+  kind: summary
+  title:
+    en: Having and related
+    hi: वाला और सम्बन्धी
+  depth: core
+  points:
+  - sa: धनवान् · बुद्धिमान्
+    text:
+      en: Wealthy; intelligent.
+      hi: धनी; बुद्धिमान्।
+  - sa: धार्मिकः · दैनिकः
+    text:
+      en: Righteous; daily.
+      hi: धार्मिक; दैनिक।
+  - sa: -वत् / -मत्
+    text:
+      en: Having; feminine -वती / -मती.
+      hi: वाला; स्त्रीलिंग -वती / -मती।

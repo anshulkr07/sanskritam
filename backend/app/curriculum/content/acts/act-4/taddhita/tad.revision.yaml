@@ -1,0 +1,224 @@
+id: tad.revision
+template: revision
+title:
+  en: Everything about suffixes
+  hi: प्रत्ययों के बारे में सब कुछ
+title_sa: तद्धितसङ्ग्रहः
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The suffixes
+    hi: प्रत्यय
+  depth: core
+  section: core
+  rows:
+  - skill: tad.apatya
+    rule:
+      en: 'Son of: grow the first vowel and add {{-अ}}: {{राघवः}}, {{पाण्डवः}}, {{कौन्तेयः}}, {{भारतः}}.'
+      hi: 'का पुत्र: पहला स्वर बढ़ाइए और {{-अ}} जोड़िए: {{राघवः}}, {{पाण्डवः}}, {{कौन्तेयः}}, {{भारतः}}।'
+    sutras:
+    - 4.1.92
+    - 7.2.117
+    tag: core
+    taught_in: tad.son#tb1
+  - skill: tad.tva-ta
+    rule:
+      en: '-ness: {{-त्वम्}} or {{-ता}}: {{मनुष्यत्वम्}}, {{देवता}}.'
+      hi: 'भाव: {{-त्वम्}} या {{-ता}}: {{मनुष्यत्वम्}}, {{देवता}}।'
+    sutras:
+    - 5.1.119
+    tag: core
+    taught_in: tad.ness#tb1
+  - skill: tad.matup
+    rule:
+      en: 'Having: {{-वत्}}, {{-मत्}}: {{धनवान्}}, {{बुद्धिमान्}}; feminine {{-वती}}, {{-मती}}.'
+      hi: 'वाला: {{-वत्}}, {{-मत्}}: {{धनवान्}}, {{बुद्धिमान्}}; स्त्रीलिंग {{-वती}}, {{-मती}}।'
+    sutras:
+    - 5.2.94
+    - 8.2.9
+    tag: core
+    taught_in: tad.having#tb1
+  - skill: tad.ika
+    rule:
+      en: 'Related to: {{-इक}}: {{धार्मिकः}}, {{दैनिकः}}.'
+      hi: 'सम्बन्धी: {{-इक}}: {{धार्मिकः}}, {{दैनिकः}}।'
+    sutras:
+    - 5.1.18
+    - 7.3.50
+    tag: core
+    taught_in: tad.having#tb2
+  - skill: tad.comparison
+    rule:
+      en: 'More, most: {{-तर}}, {{-तम}}: {{लघुतरः}}, {{लघुतमः}}; old forms {{गरीयान्}}, {{गरिष्ठः}}.'
+      hi: 'अधिक, सबसे अधिक: {{-तर}}, {{-तम}}: {{लघुतरः}}, {{लघुतमः}}; पुराने रूप {{गरीयान्}}, {{गरिष्ठः}}।'
+    sutras:
+    - 5.3.57
+    - 5.3.55
+    tag: core
+    taught_in: tad.more#tb1
+- id: conditions
+  kind: revision
+  title:
+    en: When to use which
+    hi: कब कौन-सा
+  depth: core
+  section: conditions
+  rows:
+  - skill: tad.tva-ta
+    rule:
+      en: '{{-त्वम्}} and {{-ता}} mean the same; {{-ता}} is feminine and {{-त्वम्}} neuter.'
+      hi: '{{-त्वम्}} और {{-ता}} का अर्थ एक है; {{-ता}} स्त्रीलिंग और {{-त्वम्}} नपुंसक है।'
+    tag: good
+    taught_in: tad.ness#t1
+  - skill: tad.matup
+    rule:
+      en: '{{-मत्}} after {{-इ}}, {{-उ}}, {{-ई}}; {{-वत्}} otherwise.'
+      hi: '{{-इ}}, {{-उ}}, {{-ई}} के बाद {{-मत्}}; अन्यथा {{-वत्}}।'
+    tag: good
+    taught_in: tad.having#t1
+  - skill: tad.comparison
+    rule:
+      en: '{{-तर}} compares two; {{-तम}} picks from many.'
+      hi: '{{-तर}} दो की तुलना करता है; {{-तम}} कई में से चुनता है।'
+    tag: good
+    taught_in: tad.more#t1
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: tad.matup
+    rule:
+      en: '{{भगवान्}} and {{हनुमान्}} look like {{-वत्}}/{{-मत्}} words but have their own stems.'
+      hi: '{{भगवान्}} और {{हनुमान्}} {{-वत्}}/{{-मत्}} शब्द लगते हैं पर उनके अपने आधार हैं।'
+    example:
+      sa: भगवान्
+      meaning:
+        en: possessing fortune
+        hi: ऐश्वर्यवान्
+      check:
+        type: taddhita
+        stem: भग
+        taddhita: matup
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    tag: rare
+    new_here: true
+  - skill: tad.comparison
+    rule:
+      en: 'Some comparatives are quite irregular: {{ज्यायान्}} (elder), {{श्रेयान्}} (better).'
+      hi: 'कुछ तुलनात्मक रूप बहुत अनियमित हैं: {{ज्यायान्}} (बड़ा), {{श्रेयान्}} (बेहतर)।'
+    example:
+      sa: श्रेयान्
+      meaning:
+        en: better
+        hi: बेहतर
+      check:
+        type: taddhita
+        stem: प्रशस्य
+        taddhita: Iyasun
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: tad.apatya
+    rule:
+      en: 'Do not forget the grown vowel: {{राघवः}}, not {{रघवः}}.'
+      hi: 'बढ़ा हुआ स्वर मत भूलिए: {{राघवः}}, {{रघवः}} नहीं।'
+    tag: core
+    taught_in: tad.son#p1
+  - skill: tad.matup
+    rule:
+      en: 'Do not say {{बुद्धिवान्}}: it is {{बुद्धिमान्}}.'
+      hi: '{{बुद्धिवान्}} मत कहिए: यह {{बुद्धिमान्}} है।'
+    tag: core
+    taught_in: tad.having#p2
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: tad.apatya
+    rule:
+      en: '{{तस्यापत्यम्}}: the descendant. {{तस्य भावस्त्वतलौ}}: the state. {{तदस्यास्त्यस्मिन्निति मतुप्}}: the owner.'
+      hi: '{{तस्यापत्यम्}}: वंशज। {{तस्य भावस्त्वतलौ}}: अवस्था। {{तदस्यास्त्यस्मिन्निति मतुप्}}: स्वामी।'
+    sutras:
+    - 4.1.92
+    - 5.1.119
+    - 5.2.94
+    tag: core
+    taught_in: tad.son#pn
+  - skill: tad.comparison
+    rule:
+      en: '{{द्विवचनविभज्योपपदे तरबीयसुनौ}} and {{अतिशायने तमबिष्ठनौ}}: more and most.'
+      hi: '{{द्विवचनविभज्योपपदे तरबीयसुनौ}} और {{अतिशायने तमबिष्ठनौ}}: अधिक और सबसे अधिक।'
+    sutras:
+    - 5.3.57
+    - 5.3.55
+    tag: core
+    taught_in: tad.more#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: tad.apatya
+    formula: रघु → राघवः
+    rule:
+      en: son of
+      hi: का पुत्र
+    tag: core
+    taught_in: tad.son#tb1
+  - skill: tad.tva-ta
+    formula: मनुष्य → मनुष्यत्वम्
+    rule:
+      en: -ness
+      hi: भाव
+    tag: core
+    taught_in: tad.ness#tb1
+  - skill: tad.matup
+    formula: धन → धनवान्
+    rule:
+      en: having
+      hi: वाला
+    tag: core
+    taught_in: tad.having#tb1
+  - skill: tad.ika
+    formula: धर्म → धार्मिकः
+    rule:
+      en: related to
+      hi: सम्बन्धी
+    tag: core
+    taught_in: tad.having#tb2
+  - skill: tad.comparison
+    formula: लघु → लघुतरः, लघुतमः
+    rule:
+      en: more, most
+      hi: अधिक, सबसे अधिक
+    tag: core
+    taught_in: tad.more#tb1

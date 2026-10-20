@@ -1,0 +1,193 @@
+id: syn.check
+template: check
+title:
+  en: Put the sentence in order
+  hi: वाक्य को क्रम में रखिए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - syn.relative
+  mode: choice
+  prompt:
+    en: “Who reads, he knows.” Which pair?
+    hi: ‘जो पढ़ता है, वह जानता है।’ कौन-सी जोड़ी?
+  explain:
+    en: Masculine.
+    hi: पुंलिंग।
+  roman: after
+  options:
+  - sa: यत् … तत्
+  - correct: true
+    sa: यः … सः
+  - sa: या … सा
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - syn.relative
+  mode: choice
+  prompt:
+    en: “Whose intellect, his strength.” Which pair?
+    hi: ‘जिसकी बुद्धि, उसका बल।’ कौन-सी जोड़ी?
+  explain:
+    en: The sixth case.
+    hi: षष्ठी।
+  roman: after
+  options:
+  - sa: यः … सः
+  - correct: true
+    sa: यस्य … तस्य
+  - sa: येन … तेन
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - syn.absolute
+  mode: choice
+  prompt:
+    en: “The sun having risen.” Which words?
+    hi: ‘सूर्य के उदित होने पर।’ कौन-से शब्द?
+  explain:
+    en: Both in the seventh case.
+    hi: दोनों सप्तमी में।
+  roman: after
+  options:
+  - sa: सूर्यः उदितः
+  - correct: true
+    sa: सूर्ये उदिते
+  - sa: सूर्यं उदितम्
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - syn.absolute
+  mode: choice
+  prompt:
+    en: In “मार्गे चलिते सति”, the little scene is in the…
+    hi: “मार्गे चलिते सति” में छोटा दृश्य है…
+  explain:
+    en: The absolute locative.
+    hi: भावलक्षण सप्तमी।
+  roman: after
+  options:
+  - text:
+      en: first case
+      hi: प्रथमा में
+  - text:
+      en: second case
+      hi: द्वितीया में
+  - correct: true
+    text:
+      en: seventh case
+      hi: सप्तमी में
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - syn.conditional
+  mode: choice
+  prompt:
+    en: “If he were to read, he would know.” Which verbs?
+    hi: ‘यदि वह पढ़े, तो जान जाए।’ कौन-सी क्रियाएँ?
+  explain:
+    en: The optative in both halves.
+    hi: दोनों भागों में विधिलिङ्।
+  roman: after
+  options:
+  - sa: पठति … जानाति
+  - sa: पठिष्यति … ज्ञास्यति
+  - correct: true
+    sa: पठेत् … जानीयात्
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - syn.anvaya
+  mode: order
+  prompt:
+    en: 'Put in prose order: “One empty-handed should not see a king.”'
+    hi: 'गद्य के क्रम में रखिए: ‘खाली हाथ वाला राजा से न मिले।’'
+  explain:
+    en: '{{रिक्तपाणिः राजानं न पश्येत्}}: doer, object, negative, verb.'
+    hi: '{{रिक्तपाणिः राजानं न पश्येत्}}: कर्ता, कर्म, निषेध, क्रिया।'
+  roman: after
+  tokens:
+  - रिक्तपाणिः
+  - राजानम्
+  - न
+  - पश्येत्
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - syn.relative
+  - syn.absolute
+  - syn.conditional
+  - syn.anvaya
+  mode: match
+  prompt:
+    en: Join each pattern to its words.
+    hi: हर ढाँचे को उसके शब्दों से जोड़िए।
+  explain:
+    en: Four patterns of the long sentence.
+    hi: लम्बे वाक्य के चार ढाँचे।
+  roman: after
+  pairs:
+  - left:
+      sa: यः … सः
+    right:
+      text:
+        en: who … he
+        hi: जो … वह
+  - left:
+      sa: रामे गते
+    right:
+      text:
+        en: Rāma having gone
+        hi: राम के जाने पर
+  - left:
+      sa: यदि … तर्हि
+    right:
+      text:
+        en: if … then
+        hi: यदि … तो
+  - left:
+      sa: अन्वयः
+    right:
+      text:
+        en: prose order
+        hi: गद्य का क्रम
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - syn.relative
+  mode: order
+  prompt:
+    en: 'Say what Vākyikā says: “Who reads, he knows.”'
+    hi: 'वह कहिए जो वाक्यिका कहती है: ‘जो पढ़ता है, वह जानता है।’'
+  explain:
+    en: '{{यः पठति सः जानाति}}: her sentence, at last in order.'
+    hi: '{{यः पठति सः जानाति}}: उसका वाक्य, आख़िरकार क्रम में।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “यः पठति, सः जानाति,” you say, and Vākyikā, the heavy little basalt spirit, rolls up her scroll, which has no end, and finds the end. She sets it down. “At last,” she says. “Who reads, he knows.” The thirty-two statues step down, one by one, into the light of the throne, and become thirty-two small figures standing together, no longer carved, and the throne, plain and warm, is only a seat. In the stone of its base, a long-sealed slab has slid aside, and in the dark space behind it lies a palm leaf, whole, glowing, the fifth.
+      hi: “यः पठति, सः जानाति,” आप कहते हैं, और वाक्यिका, भारी नन्ही बेसाल्ट भूत, अपना पत्र लपेटती है, जिसका कोई अन्त नहीं था, और अन्त पा लेती है। वह उसे रख देती है। “आख़िर,” वह कहती है। “जो पढ़ता है, वह जानता है।” बत्तीसों प्रतिमाएँ एक-एक करके सिंहासन के प्रकाश में उतरती हैं, और बत्तीस नन्ही आकृतियाँ बन जाती हैं जो साथ खड़ी हैं, अब तराशी हुई नहीं, और सिंहासन, सादा और गरम, केवल एक आसन है। उसके आधार के पत्थर में, बहुत समय से बन्द एक पटिया सरक गई है, और पीछे के अँधेरे स्थान में एक ताड़पत्र पड़ा है, पूरा, चमकता, पाँचवाँ।
+    failure:
+      en: 'She cannot find the end. Her sentence: {{यः पठति सः जानाति}}.'
+      hi: 'उसे अन्त नहीं मिलता। उसका वाक्य: {{यः पठति सः जानाति}}।'
+  tokens:
+  - यः
+  - पठति
+  - सः
+  - जानाति

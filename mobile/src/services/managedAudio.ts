@@ -1,6 +1,6 @@
 import { createAudioPlayer } from "expo-audio";
 import { audioTransport, type AudioKind } from "./audioTransport";
-import { offlineAudioUrl } from "./offlineBooks";
+import { needsOfflineAudioResolution, onOfflineAudioInvalidated, resolveOfflineAudio } from "./protectedAudio";
 
 let lockOwner: { clear(): void } | null = null;
 
@@ -13,8 +13,35 @@ export function createManagedAudioPlayer(
   retainLockScreenOnFinish = false,
   kind: AudioKind = "audio",
 ): ReturnType<typeof createAudioPlayer> {
-  const resolved = typeof source === "string" ? offlineAudioUrl(source) : source;
-  const player = createAudioPlayer(resolved, options);
+  type Source = Parameters<typeof createAudioPlayer>[0];
+  const player = createAudioPlayer(null, options);
+  let sourceVersion = 0;
+  let releaseSource = () => {};
+  let ready: Promise<void> = Promise.resolve();
+  let wantsPlay = false;
+  let preparing = false;
+  const statusListeners = new Set<(status: typeof player.currentStatus) => void>();
+  const replace = (next: Source) => {
+    const version = ++sourceVersion;
+    preparing = true;
+    ready = (async () => {
+      const uri = typeof next === "string" ? next : typeof next === "object" ? next?.uri : undefined;
+      const lease = uri && needsOfflineAudioResolution(uri) ? await resolveOfflineAudio(uri) : null;
+      if (removed || version !== sourceVersion) { lease?.release(); return; }
+      const previousRelease = releaseSource;
+      releaseSource = lease?.release ?? (() => {});
+      try { player.replace(lease ? typeof next === "object" ? { ...next, uri: lease.uri } : lease.uri : next ?? null); }
+      finally { previousRelease(); }
+      preparing = false;
+      if (wantsPlay) player.play();
+    })();
+    void ready.catch(error => {
+      if (removed || version !== sourceVersion) return;
+      preparing = false; wantsPlay = false; setLock(false); audioTransport.release(id);
+      const status = { ...player.currentStatus, error: error instanceof Error ? error.message : "Couldn't open saved audio.", playing: false };
+      for (const listener of statusListeners) listener(status);
+    });
+  };
   let id = 0;
   let removed = false;
   let lockActive = false;
@@ -34,14 +61,16 @@ export function createManagedAudioPlayer(
     if (!id || audioTransport.getSnapshot()?.id !== id) {
       id = audioTransport.claim(title, { play, pause }, kind);
     }
+    wantsPlay = true;
     try {
       if (!lockActive) setLock(true);
-      player.play(); audioTransport.update(id, { playing: true });
+      if (!preparing) player.play(); audioTransport.update(id, { playing: true });
     }
     catch (error) { setLock(false); audioTransport.release(id); throw error; }
   };
   const pause = () => {
     if (removed) return;
+    wantsPlay = false;
     player.pause(); audioTransport.update(id, { playing: false });
   };
   const subscription = player.addListener("playbackStatusUpdate", status => {
@@ -57,15 +86,24 @@ export function createManagedAudioPlayer(
   });
   const remove = () => {
     if (removed) return;
-    removed = true; subscription.remove(); setLock(false); audioTransport.release(id); player.remove();
+    removed = true; sourceVersion++; wantsPlay = false; subscription.remove(); unsubscribeInvalidation(); statusListeners.clear(); setLock(false); audioTransport.release(id); try { player.remove(); } finally { releaseSource(); }
   };
+  const unsubscribeInvalidation = onOfflineAudioInvalidated(remove);
+  replace(source);
   return new Proxy(player, {
     get(target, property) {
       if (property === "play") return play;
       if (property === "pause") return pause;
       if (property === "remove" || property === "release") return remove;
       if (property === "setActiveForLockScreen") return setLock;
-      if (property === "replace") return (next: Parameters<typeof player.replace>[0]) => { return player.replace(typeof next === "string" ? offlineAudioUrl(next) : next); };
+      if (property === "replace") return replace;
+      if (property === "seekTo") return async (...args: Parameters<typeof player.seekTo>) => { await ready; if (!removed) await player.seekTo(...args); };
+      if (property === "addListener") return (event: string, callback: (status: typeof player.currentStatus) => void) => {
+        if (event !== "playbackStatusUpdate") return player.addListener(event as "playbackStatusUpdate", callback);
+        statusListeners.add(callback);
+        const sub = player.addListener(event, callback);
+        return { remove: () => { statusListeners.delete(callback); sub.remove(); } };
+      };
       const value = Reflect.get(target, property, target);
       return typeof value === "function" ? value.bind(target) : value;
     },

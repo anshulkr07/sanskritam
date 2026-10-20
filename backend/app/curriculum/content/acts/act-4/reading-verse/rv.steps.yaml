@@ -1,0 +1,303 @@
+id: rv.steps
+template: scene
+title:
+  en: Split, order, understand
+  hi: पदच्छेद, अन्वय, अर्थ
+title_sa: पदच्छेदः · अन्वयः · अर्थः
+minutes: 6
+teaches:
+- verse.read
+needs:
+- syn.anvaya
+- sandhi.padaccheda
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The knotted cord
+    hi: गाँठों वाली डोरी
+  depth: core
+  image:
+    brief: A round stone vault at the foot of a spiral stair; a small ink-dark spirit tangled in a long cord of tiny knotted letters, knots at every joint; a carved verse on the wall with no gaps between words; Dādī kneeling beside the spirit; Śuka on the carved ledge reading; at the top of the stair, a tall figure in a dark coat in silhouette.
+    alt:
+      en: A small spirit sits tangled in a cord of knotted letters beneath a carved verse
+      hi: खुदे श्लोक के नीचे गाँठ-गाँठ अक्षरों की डोरी में उलझी नन्ही भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - shlokika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: rv-steps-s1
+  narration:
+    en: 'The stair ends in a round vault. On its wall a verse is carved with the words run together, and a small spirit sits tangled in a cord with a knot at every join. “This is Ślokikā,” says Dādī. “She knows her verse by heart but cannot untie it. Three steps: split, order, understand.” Behind you, softly, Lubdhaka''s step sounds on the stair.'
+    hi: 'सीढ़ी एक गोल तहख़ाने में खुलती है। उसकी दीवार पर एक श्लोक खुदा है, शब्द आपस में जुड़े हुए, और एक नन्ही भूत डोरी में उलझी बैठी है, हर जोड़ पर एक गाँठ। “यह श्लोकिका है,” दादी कहती हैं। “उसे अपना श्लोक कण्ठस्थ है, पर वह उसे खोल नहीं पाती। तीन चरण: तोड़ो, क्रम दो, समझो।” आपके पीछे, धीरे-धीरे, सीढ़ी पर लुब्धक के पैरों की आहट आती है।'
+  quote:
+    sa: विद्या ददाति विनयं विनयाद् याति पात्रताम् पात्रत्वात् धनम् आप्नोति धनाद् धर्मं ततः सुखम्
+    gloss:
+      en: Learning gives humility; from humility one reaches worthiness; from worthiness, wealth; from wealth, dharma, and from that, happiness.
+      hi: विद्या विनय देती है; विनय से पात्रता मिलती है; पात्रता से धन; धन से धर्म, और उससे सुख।
+    source: Hitopadeśa, introduction (read in the Digital Corpus of Sanskrit)
+- id: t1
+  kind: teach
+  title:
+    en: Three steps
+    hi: तीन चरण
+  depth: core
+  skills:
+  - verse.read
+  body:
+    en: 'To read a verse, take three steps. First {{पदच्छेदः}}: split the joins into words. Then {{अन्वयः}}: put the words in prose order, verb first to find. Last {{अर्थः}}: say what it means. Never skip the first: you cannot order words you have not separated.'
+    hi: 'श्लोक पढ़ने के लिए तीन चरण लीजिए। पहले {{पदच्छेदः}}: जोड़ खोलकर शब्द अलग कीजिए। फिर {{अन्वयः}}: शब्दों को गद्य के क्रम में रखिए, पहले क्रिया खोजिए। अन्त में {{अर्थः}}: बताइए कि वह क्या कहता है। पहला चरण कभी न छोड़िए: जिन शब्दों को अलग नहीं किया, उन्हें क्रम नहीं दे सकते।'
+  steps:
+  - sa: पदच्छेदः
+    label:
+      en: split the joins
+      hi: जोड़ खोलना
+  - sa: अन्वयः
+    label:
+      en: prose order
+      hi: गद्य का क्रम
+  - sa: अर्थः
+    label:
+      en: the meaning
+      hi: अर्थ
+  term:
+    sa: पदच्छेदः
+    meaning:
+      en: splitting a verse into its words
+      hi: श्लोक को उसके शब्दों में तोड़ना
+- id: tb1
+  kind: table
+  title:
+    en: One line, three steps
+    hi: एक पंक्ति, तीन चरण
+  depth: core
+  skills:
+  - verse.read
+  caption:
+    en: The first line of the verse
+    hi: श्लोक की पहली पंक्ति
+  columns:
+  - en: Step
+    hi: चरण
+  - en: The line
+    hi: पंक्ति
+  rows:
+  - - text:
+        en: As carved
+        hi: जैसा खुदा है
+    - sa: विद्या ददाति विनयं विनयाद्याति पात्रताम्
+  - - sa: पदच्छेदः
+    - sa: विद्या ददाति विनयम् विनयात् याति पात्रताम्
+  - - sa: अन्वयः
+    - sa: विद्या विनयं ददाति; विनयात् पात्रतां याति
+  - - sa: अर्थः
+    - text:
+        en: Learning gives humility; from humility one reaches worthiness.
+        hi: विद्या विनय देती है; विनय से पात्रता मिलती है।
+  note:
+    en: The knots are the joins; the meaning is last.
+    hi: गाँठें जोड़ हैं; अर्थ अन्त में आता है।
+- id: tb2
+  kind: table
+  title:
+    en: The knots
+    hi: गाँठें
+  depth: core
+  skills:
+  - verse.read
+  caption:
+    en: Each join, opened
+    hi: हर जोड़, खुला हुआ
+  columns:
+  - en: First word
+    hi: पहला शब्द
+  - en: Second word
+    hi: दूसरा शब्द
+  - en: Joined
+    hi: जुड़ा हुआ
+  rows:
+  - - sa: विनयात्
+    - sa: याति
+    - sa: विनयाद्याति
+      check:
+        type: sandhi
+        first: विनयात्
+        second: याति
+        joined: विनयाद्याति
+      highlight: true
+  - - sa: पात्रत्वात्
+    - sa: धनम्
+    - sa: पात्रत्वाद्धनम्
+      check:
+        type: sandhi
+        first: पात्रत्वात्
+        second: धनम्
+        joined: पात्रत्वाद्धनम्
+      highlight: true
+  - - sa: धनात्
+    - sa: धर्मम्
+    - sa: धनाद्धर्मम्
+      check:
+        type: sandhi
+        first: धनात्
+        second: धर्मम्
+        joined: धनाद्धर्मम्
+      highlight: true
+  note:
+    en: Each join is a sandhi you already know.
+    hi: हर जोड़ वह सन्धि है जिसे आप पहले से जानते हैं।
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verse.read
+  widget: mark_words
+  prompt:
+    en: Tap the two verbs of the first line.
+    hi: पहली पंक्ति की दो क्रियाएँ छुइए।
+  params:
+    passage:
+    - विद्या
+    - ददाति
+    - विनयम्
+    - विनयात्
+    - याति
+    - पात्रताम्
+    targets:
+    - ददाति
+    - याति
+  roman: show
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verse.read
+  mode: choice
+  prompt:
+    en: Split the joined word {{विनयाद्याति}}.
+    hi: जुड़े शब्द {{विनयाद्याति}} को तोड़िए।
+  explain:
+    en: '{{विनयात्}} + {{याति}}.'
+    hi: '{{विनयात्}} + {{याति}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: विनयात् + याति
+  - sa: विनयान् + याति
+  - sa: विनयाः + याति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verse.read
+  mode: choice
+  prompt:
+    en: Split the joined word {{पात्रत्वाद्धनम्}}.
+    hi: जुड़े शब्द {{पात्रत्वाद्धनम्}} को तोड़िए।
+  explain:
+    en: '{{पात्रत्वात्}} + {{धनम्}}.'
+    hi: '{{पात्रत्वात्}} + {{धनम्}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: पात्रत्वात् + धनम्
+  - sa: पात्रत्वान् + धनम्
+  - sa: पात्रत्वाः + धनम्
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verse.read
+  mode: engine
+  prompt:
+    en: Put the words in the right order.
+    hi: शब्दों को सही क्रम में रखिए।
+  explain:
+    en: The doer, the object, the verb.
+    hi: कर्ता, कर्म, क्रिया।
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: विद्या विनयं ददाति
+    seed: 23
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verse.read
+  mode: choice
+  prompt:
+    en: “विनयात् पात्रतां याति.” What does it say?
+    hi: “विनयात् पात्रतां याति।” वह क्या कहता है?
+  explain:
+    en: '{{विनयात्}}: from humility; {{पात्रतां याति}}: reaches worthiness.'
+    hi: '{{विनयात्}}: विनय से; {{पात्रतां याति}}: पात्रता पाता है।'
+  roman: after
+  options:
+  - text:
+      en: Humility comes from worthiness
+      hi: पात्रता से विनय आता है
+  - correct: true
+    text:
+      en: From humility one reaches worthiness
+      hi: विनय से पात्रता मिलती है
+  - text:
+      en: One goes away from humility
+      hi: कोई विनय से दूर जाता है
+- id: p5
+  kind: practice
+  title:
+    en: The first knot
+    hi: पहली गाँठ
+  depth: core
+  skills:
+  - verse.read
+  mode: choice
+  prompt:
+    en: In reading a verse, which step comes first?
+    hi: श्लोक पढ़ते समय पहला चरण कौन-सा है?
+  explain:
+    en: 'First split the joins: {{पदच्छेदः}}.'
+    hi: 'पहले जोड़ खोलिए: {{पदच्छेदः}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“पदच्छेदः,” you say, and you put your finger on the first knot in Ślokikā''s cord: विनयात् + याति. It comes undone, a loop falls away, and the cord loosens round her wrist. One by one, as you name the joins, the knots give: पात्रत्वात् + धनम्, धनात् + धर्मम्. She breathes, and for the first time says the verse aloud with every word standing separate and clear.'
+      hi: '“पदच्छेदः,” आप कहते हैं, और श्लोकिका की डोरी की पहली गाँठ पर उँगली रखते हैं: विनयात् + याति। वह खुल जाती है, एक फन्दा गिर जाता है, और डोरी उसकी कलाई पर ढीली पड़ जाती है। जैसे-जैसे आप जोड़ों के नाम लेते हैं, गाँठें एक-एक कर खुलती हैं: पात्रत्वात् + धनम्, धनात् + धर्मम्। वह साँस लेती है, और पहली बार श्लोक को ज़ोर से बोलती है, हर शब्द अलग और साफ़ खड़ा हुआ।'
+    failure:
+      en: 'The knots hold. The first step is {{पदच्छेदः}}: split the joins.'
+      hi: 'गाँठें कसी रहती हैं। पहला चरण {{पदच्छेदः}} है: जोड़ खोलना।'
+  options:
+  - sa: अन्वयः
+  - sa: अर्थः
+  - correct: true
+    sa: पदच्छेदः
+- id: sum
+  kind: summary
+  title:
+    en: Split, order, understand
+    hi: पदच्छेद, अन्वय, अर्थ
+  depth: core
+  points:
+  - sa: पदच्छेदः
+    text:
+      en: Split the joins.
+      hi: जोड़ खोलिए।
+  - sa: अन्वयः
+    text:
+      en: 'Prose order: verb, doer, object.'
+      hi: 'गद्य का क्रम: क्रिया, कर्ता, कर्म।'
+  - sa: अर्थः
+    text:
+      en: Then the meaning.
+      hi: फिर अर्थ।

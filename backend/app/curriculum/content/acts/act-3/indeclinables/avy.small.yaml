@@ -1,0 +1,474 @@
+id: avy.small
+template: scene
+title:
+  en: Small words
+  hi: छोटे शब्द
+title_sa: च वा अपि एव तु हि
+minutes: 6
+teaches:
+- avy.particles
+needs:
+- krt.ktva
+- sent.negation
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The last night
+    hi: अन्तिम रात
+  depth: core
+  image:
+    brief: A tiny perfectly round smooth white stone spirit rolled up to your feet at the foot of the śiṃśapā tree, patting itself as if looking for a place to attach something; the Vetāla hanging above, smiling; Dādī and Śuka looking down; firelight on the smooth stone.
+    alt:
+      en: A small smooth white stone spirit at a child's feet patting itself, the grey spirit smiling above
+      hi: बच्चे के पैरों के पास स्वयं को थपथपाता नन्हा चिकना सफ़ेद पत्थर का भूत, ऊपर मुस्कराता भूरा भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - avyayaka
+    place: smashana
+    ratio: '4:3'
+    id: avy-small-s1
+  narration:
+    en: 'A small round spirit of white stone rolls up to your feet and stops. No marks, no edges: nothing to hold on to. He pats himself, hunting for a place to attach an ending. “He is whole,” the Vetāla says, “and does not know it. These words never change: च, वा, अपि, एव, तु, हि. They are the joints of every sentence.”'
+    hi: 'सफ़ेद पत्थर का एक नन्हा गोल भूत लुढ़कता आपके पैरों के पास आकर रुक जाता है। उस पर कोई चिह्न नहीं, कोई किनारा नहीं: पकड़ने को कुछ नहीं। वह बार-बार स्वयं को थपथपाता है, मानो प्रत्यय लगाने की जगह खोज रहा हो। “वह पूर्ण है,” वेताल कहता है, “और जानता नहीं। ये वे शब्द हैं जो कभी नहीं बदलते: च, वा, अपि, एव, तु, हि। ये हर वाक्य के जोड़ हैं।”'
+  quote:
+    sa: गुणाढ्येन निबद्धां च तां दृष्ट्वैव महाकथाम् जगाम मुक्तशापः सन् काणभूतिर् निजां गतिम्
+    gloss:
+      en: Freed from his curse, Kāṇabhūti went to his own place, having only seen the great tale composed by Guṇāḍhya.
+      hi: गुणाढ्य की रची उस महाकथा को देखते ही, शाप से मुक्त होकर काणभूति अपने स्थान को गया।
+    source: Kathāsaritsāgara 1.8 (read in the Digital Corpus of Sanskrit)
+- id: t1
+  kind: teach
+  title:
+    en: Words that never change
+    hi: जो कभी नहीं बदलते
+  depth: core
+  skills:
+  - avy.particles
+  body:
+    en: 'Some words have no endings: they are indeclinable, {{अव्ययम्}}. {{च}} (and), {{वा}} (or), {{अपि}} (also, even), {{एव}} (only, just), {{तु}} (but), {{हि}} (for, indeed), {{न}} (not), {{इव}} (like). They follow the word they belong to.'
+    hi: 'कुछ शब्दों में प्रत्यय नहीं होते: वे अव्यय हैं, {{अव्ययम्}}। {{च}} (और), {{वा}} (या), {{अपि}} (भी), {{एव}} (ही), {{तु}} (परन्तु), {{हि}} (क्योंकि), {{न}} (नहीं), {{इव}} (जैसे)। वे उस शब्द के बाद आते हैं जिससे जुड़े हों।'
+  examples:
+  - sa: रामः लक्ष्मणः च गच्छतः।
+    meaning:
+      en: Rāma and Lakṣmaṇa go.
+      hi: राम और लक्ष्मण जाते हैं।
+    words:
+    - sa: रामः
+      gloss:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: लक्ष्मणः
+      gloss:
+        en: Lakṣmaṇa
+        hi: लक्ष्मण
+      check:
+        type: subanta
+        stem: लक्ष्मण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: च
+      gloss:
+        en: and
+        hi: और
+    - sa: गच्छतः
+      gloss:
+        en: go
+        hi: जाते हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+  - sa: सः पठति वा लिखति।
+    meaning:
+      en: He reads or writes.
+      hi: वह पढ़ता है या लिखता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: वा
+      gloss:
+        en: or
+        hi: या
+    - sa: लिखति
+      gloss:
+        en: writes
+        hi: लिखता है
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: बालकः अपि पठति।
+    meaning:
+      en: The boy also reads.
+      hi: बालक भी पढ़ता है।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अपि
+      gloss:
+        en: also
+        hi: भी
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः एव गच्छति।
+    meaning:
+      en: Only he goes.
+      hi: वही जाता है।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: एव
+      gloss:
+        en: only
+        hi: ही
+    - sa: गच्छति
+      gloss:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: बालकः पठति बालिका तु लिखति।
+    meaning:
+      en: The boy reads; the girl, however, writes.
+      hi: बालक पढ़ता है; बालिका परन्तु लिखती है।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: बालिका
+      gloss:
+        en: girl
+        hi: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: तु
+      gloss:
+        en: but
+        hi: परन्तु
+    - sa: लिखति
+      gloss:
+        en: writes
+        hi: लिखती है
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  term:
+    sa: अव्ययम्
+    meaning:
+      en: a word that never changes
+      hi: वह शब्द जो कभी नहीं बदलता
+- id: tb1
+  kind: table
+  title:
+    en: Little words
+    hi: छोटे शब्द
+  depth: core
+  skills:
+  - avy.particles
+  caption:
+    en: Eight indeclinables
+    hi: आठ अव्यय
+  columns:
+  - en: Word
+    hi: शब्द
+  - en: Meaning
+    hi: अर्थ
+  - en: Where it goes
+    hi: कहाँ आता है
+  rows:
+  - - sa: च
+    - text:
+        en: and
+        hi: और
+    - text:
+        en: after the last item
+        hi: अन्तिम वस्तु के बाद
+  - - sa: वा
+    - text:
+        en: or
+        hi: या
+    - text:
+        en: after the choice
+        hi: विकल्प के बाद
+  - - sa: अपि
+    - text:
+        en: also, even
+        hi: भी
+    - text:
+        en: after the word it stresses
+        hi: जिस पर बल हो उसके बाद
+  - - sa: एव
+    - text:
+        en: only, just
+        hi: ही
+    - text:
+        en: after the word it limits
+        hi: जिसे सीमित करे उसके बाद
+  - - sa: तु
+    - text:
+        en: but, however
+        hi: परन्तु
+    - text:
+        en: second in its clause
+        hi: अपने वाक्यांश में दूसरा
+  - - sa: हि
+    - text:
+        en: for, indeed
+        hi: क्योंकि
+    - text:
+        en: second in its clause
+        hi: अपने वाक्यांश में दूसरा
+  - - sa: न
+    - text:
+        en: not
+        hi: नहीं
+    - text:
+        en: before the verb
+        hi: क्रिया से पहले
+  - - sa: इव
+    - text:
+        en: like, as if
+        hi: जैसे
+    - text:
+        en: after the word compared
+        hi: जिसकी तुलना हो उसके बाद
+  note:
+    en: None of them ever takes an ending.
+    hi: इनमें से कोई भी कभी प्रत्यय नहीं लेता।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - avy.particles
+  mode: choice
+  prompt:
+    en: “Rāma and Lakṣmaṇa.” Which word means “and”?
+    hi: ‘राम और लक्ष्मण।’ कौन-सा शब्द ‘और’ है?
+  explain:
+    en: '{{च}}: and.'
+    hi: '{{च}}: और।'
+  roman: after
+  options:
+  - sa: वा
+  - correct: true
+    sa: च
+  - sa: तु
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - avy.particles
+  mode: match
+  prompt:
+    en: Join each word to its meaning.
+    hi: हर शब्द को उसके अर्थ से जोड़िए।
+  explain:
+    en: Four little words.
+    hi: चार छोटे शब्द।
+  roman: after
+  pairs:
+  - left:
+      sa: च
+    right:
+      text:
+        en: and
+        hi: और
+  - left:
+      sa: वा
+    right:
+      text:
+        en: or
+        hi: या
+  - left:
+      sa: एव
+    right:
+      text:
+        en: only
+        hi: ही
+  - left:
+      sa: तु
+    right:
+      text:
+        en: but
+        hi: परन्तु
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - avy.particles
+  widget: mark_words
+  prompt:
+    en: Tap every word that never changes.
+    hi: हर वह शब्द छुइए जो कभी नहीं बदलता।
+  params:
+    passage:
+    - रामः
+    - च
+    - लक्ष्मणः
+    - वा
+    - बालकः
+    - अपि
+    targets:
+    - च
+    - वा
+    - अपि
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - avy.particles
+  mode: order
+  prompt:
+    en: 'Say: “He reads or writes.”'
+    hi: 'कहिए: ‘वह पढ़ता है या लिखता है।’'
+  explain:
+    en: '{{सः पठति वा लिखति}}.'
+    hi: '{{सः पठति वा लिखति}}।'
+  roman: after
+  tokens:
+  - सः
+  - पठति
+  - वा
+  - लिखति
+- id: p4
+  kind: practice
+  title:
+    en: Only
+    hi: ही
+  depth: core
+  skills:
+  - avy.particles
+  mode: choice
+  prompt:
+    en: “Only he goes.” Which sentence?
+    hi: ‘वही जाता है।’ कौन-सा वाक्य?
+  explain:
+    en: '{{एव}}: only.'
+    hi: '{{एव}}: ही।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“सः एव गच्छति,” you say, and the round white spirit stops patting himself. “It sits just right,” he says, wondering: “one little word, and the whole sentence leans on it.” He rolls a quarter turn, as if settling into place. “I am not missing anything,” he says. “I am the part that holds.”'
+      hi: '“सः एव गच्छति,” आप कहते हैं, और गोल सफ़ेद भूत स्वयं को थपथपाना बन्द कर देता है। “बिलकुल ठीक बैठता है,” वह विस्मय से कहता है: “एक छोटा शब्द, और पूरा वाक्य उस पर टिक जाता है।” वह चौथाई घेरा लुढ़कता है, मानो अपनी जगह बैठ रहा हो। “मुझमें कुछ कम नहीं,” वह कहता है। “मैं वह हिस्सा हूँ जो थामता है।”'
+    failure:
+      en: 'He keeps patting himself. “Only he goes”: {{सः एव गच्छति}}.'
+      hi: 'वह स्वयं को थपथपाता रहता है। ‘वही जाता है’: {{सः एव गच्छति}}।'
+  options:
+  - sa: सः अपि गच्छति
+  - sa: सः तु गच्छति
+  - correct: true
+    sa: सः एव गच्छति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's indeclinables
+    hi: पाणिनि के अव्यय
+  depth: panini
+  skills:
+  - avy.particles
+  sutras:
+  - 1.1.37
+  - 1.1.38
+  body:
+    en: Sūtra 1.1.37, {{स्वरादिनिपातमव्ययम्}}, calls the words beginning with {{स्वर्}} and the particles {{निपात}}, “indeclinable”. 1.1.38, {{तद्धितश्चासर्वविभक्तिः}}, adds the {{तद्धित}} words that take no case ending. Because they are {{अव्यय}}, their case endings are deleted and they never change.
+    hi: सूत्र 1.1.37, {{स्वरादिनिपातमव्ययम्}}, {{स्वर्}} आदि शब्दों और निपातों को ‘अव्यय’ कहता है। 1.1.38, {{तद्धितश्चासर्वविभक्तिः}}, उन {{तद्धित}} शब्दों को जोड़ता है जो सब विभक्तियाँ नहीं लेते। {{अव्यय}} होने से उनकी विभक्तियों का लोप हो जाता है और वे कभी नहीं बदलते।
+- id: sum
+  kind: summary
+  title:
+    en: Small words
+    hi: छोटे शब्द
+  depth: core
+  points:
+  - sa: च · वा · अपि
+    text:
+      en: And; or; also.
+      hi: और; या; भी।
+  - sa: एव · तु · हि
+    text:
+      en: Only; but; for.
+      hi: ही; परन्तु; क्योंकि।
+  - text:
+      en: They never take endings.
+      hi: वे कभी प्रत्यय नहीं लेते।

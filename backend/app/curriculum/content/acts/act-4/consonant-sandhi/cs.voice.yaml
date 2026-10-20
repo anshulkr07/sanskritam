@@ -1,0 +1,328 @@
+id: cs.voice
+template: scene
+title:
+  en: Voice spreads
+  hi: स्वर-तन्त्री का प्रभाव
+title_sa: तदस्ति
+minutes: 6
+teaches:
+- sandhi.voice
+needs:
+- sandhi.visarga-r
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The tenth statue
+    hi: दसवीं प्रतिमा
+  depth: core
+  image:
+    brief: The tenth statue with sharp sandstone edges holding a small stone bell, an inscription on her plinth; Śuka peering at it; Dādī pointing at a single letter; Lubdhaka's foreman holding up a lamp behind them; early evening light.
+    alt:
+      en: A statue with sharp edges holding a stone bell while a parrot peers at the inscription on her plinth
+      hi: तीखे किनारों वाली प्रतिमा पत्थर की घण्टी थामे, आसन के अभिलेख को झाँकता तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - vyanjanika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: cs-voice-s1
+  narration:
+    en: 'The tenth statue has hard stone edges and a stone bell in her hand. “तदस्ति,” she says: “that is.” Śuka peers at the inscription on her base. “The word was तत्, with a त्. Now it has a द. Why did the sound go soft?” “Because it is next to a soft one,” says Dādī. “The अ after it is voiced, and the voice has spread backwards.”'
+    hi: 'दसवीं प्रतिमा के किनारे कठोर पत्थर के हैं और हाथ में पत्थर की घण्टी। “तदस्ति,” वह कहती है: “वह है।” शुक उसके आसन पर लिखे अभिलेख को झाँकता है। “शब्द तत् था, त के साथ। अब उसमें द है। ध्वनि कोमल क्यों हो गई?” “क्योंकि वह कोमल ध्वनि के पास है,” दादी कहती हैं। “उसके बाद का अ घोष है, और घोष पीछे की ओर फैल गया है।”'
+  lines:
+  - speaker: dadi
+    sa: तत् + अस्ति = तदस्ति।
+    gloss:
+      en: That + is = that is.
+      hi: वह + है = वह है।
+- id: t1
+  kind: teach
+  title:
+    en: Hard becomes soft
+    hi: कठोर बनता है कोमल
+  depth: core
+  skills:
+  - sandhi.voice
+  body:
+    en: 'A final hard stop ({{क्}}, {{ट्}}, {{त्}}, {{प्}}) becomes its soft partner ({{ग्}}, {{ड्}}, {{द्}}, {{ब्}}) when a soft sound or a vowel follows: {{तत् + अस्ति}} gives {{तदस्ति}}; {{जगत् + ईशः}} gives {{जगदीशः}}; {{दिक् + गजः}} gives {{दिग्गजः}}. Voice spreads from the next sound.'
+    hi: 'अन्त का कठोर स्पर्श ({{क्}}, {{ट्}}, {{त्}}, {{प्}}) अपने कोमल जोड़ीदार ({{ग्}}, {{ड्}}, {{द्}}, {{ब्}}) में बदल जाता है जब आगे कोमल ध्वनि या स्वर हो: {{तत् + अस्ति}} से {{तदस्ति}}; {{जगत् + ईशः}} से {{जगदीशः}}; {{दिक् + गजः}} से {{दिग्गजः}}। घोष अगली ध्वनि से फैलता है।'
+  term:
+    sa: जश्त्वम्
+    meaning:
+      en: hard to soft at the end of a word
+      hi: पद के अन्त में कठोर से कोमल
+- id: tb1
+  kind: table
+  title:
+    en: Voice spreads
+    hi: घोष फैलता है
+  depth: core
+  skills:
+  - sandhi.voice
+  caption:
+    en: Hard to soft before a soft sound or vowel
+    hi: कोमल ध्वनि या स्वर से पहले कठोर से कोमल
+  columns:
+  - en: First word
+    hi: पहला शब्द
+  - en: Second word
+    hi: दूसरा शब्द
+  - en: Joined
+    hi: जुड़ा हुआ
+  rows:
+  - - sa: तत्
+    - sa: अस्ति
+    - sa: तदस्ति
+      check:
+        type: sandhi
+        first: तत्
+        second: अस्ति
+        joined: तदस्ति
+      highlight: true
+  - - sa: जगत्
+    - sa: ईशः
+    - sa: जगदीशः
+      check:
+        type: sandhi
+        first: जगत्
+        second: ईशः
+        joined: जगदीशः
+      highlight: true
+  - - sa: सत्
+    - sa: आचारः
+    - sa: सदाचारः
+      check:
+        type: sandhi
+        first: सत्
+        second: आचारः
+        joined: सदाचारः
+      highlight: true
+  - - sa: दिक्
+    - sa: गजः
+    - sa: दिग्गजः
+      check:
+        type: sandhi
+        first: दिक्
+        second: गजः
+        joined: दिग्गजः
+      highlight: true
+  - - sa: अप्
+    - sa: जम्
+    - sa: अब्जम्
+      check:
+        type: sandhi
+        first: अप्
+        second: जम्
+        joined: अब्जम्
+      highlight: true
+  - - sa: तत्
+    - sa: गच्छति
+    - sa: तद्गच्छति
+      check:
+        type: sandhi
+        first: तत्
+        second: गच्छति
+        joined: तद्गच्छति
+      highlight: true
+  - - sa: वाक्
+    - sa: दानम्
+    - sa: वाग्दानम्
+      check:
+        type: sandhi
+        first: वाक्
+        second: दानम्
+        joined: वाग्दानम्
+      highlight: true
+  - - sa: तत्
+    - sa: हि
+    - sa: तद्धि
+      check:
+        type: sandhi
+        first: तत्
+        second: हि
+        joined: तद्धि
+      highlight: true
+  note:
+    en: '{{तत् + हि}} gives {{तद्धि}}: the {{ह}} also becomes soft-aspirated {{ध}}.'
+    hi: '{{तत् + हि}} से {{तद्धि}}: {{ह}} भी कोमल महाप्राण {{ध}} बन जाता है।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.voice
+  mode: choice
+  prompt:
+    en: Split the joined word {{तदस्ति}}.
+    hi: जुड़े शब्द {{तदस्ति}} को तोड़िए।
+  explain:
+    en: '{{तत्}} + {{अस्ति}}.'
+    hi: '{{तत्}} + {{अस्ति}}।'
+  roman: after
+  options:
+  - correct: true
+    sa: तत् + अस्ति
+  - sa: तस् + अस्ति
+  - sa: तन् + अस्ति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.voice
+  mode: choice
+  prompt:
+    en: '{{सत् + आचारः}} gives…'
+    hi: '{{सत् + आचारः}} से…'
+  explain:
+    en: '{{त्}} becomes {{द्}} before a vowel.'
+    hi: स्वर से पहले {{त्}} बनता है {{द्}}।
+  roman: after
+  options:
+  - sa: सत्आचारः
+  - sa: सताचारः
+  - correct: true
+    sa: सदाचारः
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.voice
+  mode: type
+  prompt:
+    en: 'Join: {{दिक्}} + {{गजः}}.'
+    hi: 'जोड़िए: {{दिक्}} + {{गजः}}।'
+  explain:
+    en: '{{दिग्गजः}}: “elephant of the quarters”.'
+    hi: '{{दिग्गजः}}: ‘दिशाओं का हाथी’।'
+  roman: after
+  answers:
+  - दिग्गजः
+  tiles:
+  - दिग्
+  - गजः
+  - दिक्
+  - ति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.voice
+  mode: match
+  prompt:
+    en: Join each word to its parts.
+    hi: हर शब्द को उसके भागों से जोड़िए।
+  explain:
+    en: The hard stop turns soft.
+    hi: कठोर स्पर्श कोमल हो जाता है।
+  roman: after
+  pairs:
+  - left:
+      sa: जगदीशः
+    right:
+      sa: जगत् + ईशः
+  - left:
+      sa: दिग्गजः
+    right:
+      sa: दिक् + गजः
+  - left:
+      sa: अब्जम्
+    right:
+      sa: अप् + जम्
+  - left:
+      sa: तद्गच्छति
+    right:
+      sa: तत् + गच्छति
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sandhi.voice
+  widget: mark_words
+  prompt:
+    en: Tap every word where a hard stop went soft.
+    hi: हर वह शब्द छुइए जहाँ कठोर स्पर्श कोमल हो गया।
+  params:
+    passage:
+    - तदस्ति
+    - तत्
+    - जगदीशः
+    - जगत्
+    - दिग्गजः
+    - दिक्
+    targets:
+    - तदस्ति
+    - जगदीशः
+    - दिग्गजः
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: The stone bell
+    hi: पत्थर की घण्टी
+  depth: core
+  skills:
+  - sandhi.voice
+  mode: choice
+  prompt:
+    en: '{{वाक् + दानम्}} gives…'
+    hi: '{{वाक् + दानम्}} से…'
+  explain:
+    en: '{{क्}} becomes {{ग्}} before {{द}}.'
+    hi: '{{द}} से पहले {{क्}} बनता है {{ग्}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “वाग्दानम्,” you say, “a promise of speech,” and the stone bell in the statue's hand rings, once, clear, a soft round note, not the hard clack it made before. “तदस्ति,” she says. “That is.” Her sharp edges, one by one, grow a little less sharp, as if the voice had run back through the stone.
+      hi: “वाग्दानम्,” आप कहते हैं, “वाणी का वचन,” और प्रतिमा के हाथ की पत्थर की घण्टी एक बार बजती है, साफ़, कोमल गोल स्वर, पहले की कठोर टकराहट नहीं। “तदस्ति,” वह कहती है। “वह है।” उसके तीखे किनारे एक-एक करके कुछ कम तीखे हो जाते हैं, मानो घोष पत्थर में पीछे की ओर दौड़ गया हो।
+    failure:
+      en: 'The bell stays hard. {{क्}} becomes {{ग्}} before {{द}}: {{वाग्दानम्}}.'
+      hi: 'घण्टी कठोर रहती है। {{द}} से पहले {{क्}} बनता है {{ग्}}: {{वाग्दानम्}}।'
+  options:
+  - sa: वाक्दानम्
+  - sa: वाघदानम्
+  - correct: true
+    sa: वाग्दानम्
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's voicing
+    hi: पाणिनि का घोष
+  depth: panini
+  skills:
+  - sandhi.voice
+  sutras:
+  - 8.2.39
+  - 8.4.53
+  body:
+    en: 'Sūtra 8.2.39, {{झलां जशोऽन्ते}}, says that at the end of a word, any hard or aspirated stop ({{झल्}}) becomes the soft unaspirated stop ({{जश्}}) of its own class: {{त्}} becomes {{द्}}, {{क्}} becomes {{ग्}}. 8.4.53, {{झलां जश् झशि}}, does the same inside a word before a soft aspirate.'
+    hi: 'सूत्र 8.2.39, {{झलां जशोऽन्ते}}, कहता है कि पद के अन्त में कोई भी कठोर या महाप्राण स्पर्श ({{झल्}}) अपने वर्ग का कोमल अल्पप्राण ({{जश्}}) बन जाता है: {{त्}} से {{द्}}, {{क्}} से {{ग्}}। 8.4.53, {{झलां जश् झशि}}, पद के भीतर कोमल महाप्राण से पहले वही करता है।'
+- id: sum
+  kind: summary
+  title:
+    en: Voice spreads
+    hi: घोष फैलता है
+  depth: core
+  points:
+  - sa: त् → द्
+    text:
+      en: तदस्ति, जगदीशः.
+      hi: तदस्ति, जगदीशः।
+  - sa: क् → ग्
+    text:
+      en: दिग्गजः, वाग्दानम्.
+      hi: दिग्गजः, वाग्दानम्।
+  - sa: प् → ब्
+    text:
+      en: अब्जम्.
+      hi: अब्जम्।

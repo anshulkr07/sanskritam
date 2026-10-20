@@ -30,7 +30,7 @@ import { cachedGet } from "../services/apiCache";
 import { ACHIEVEMENTS, SPARSHA_25, getSparshaCoverage, getUnlocked } from "../services/achievements";
 import { haptics } from "../services/haptics";
 import { useAuth } from "../store/auth";
-import { accent, accentAt, color, font, radius, script, shadow, space, type AccentName } from "../theme";
+import { accent, accentAt, fill, onFill, color, font, radius, script, shadow, space, type AccentName } from "../theme";
 import { weekGrid } from "../utils/streak";
 import { plain } from "../utils/text";
 
@@ -142,6 +142,7 @@ export default function ProgressScreen() {
   return (
     <SafeAreaView style={styles.safe} edges={["bottom", "left", "right"]}>
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+        <View style={styles.intro}><Text style={styles.eyebrow}>YOUR PRACTICE, TAKING ROOT</Text><Text style={styles.introTitle}>Every day adds up.</Text><Text style={styles.introCopy}>A little Sanskrit, a growing journey.</Text></View>
         {/* the three numbers that matter */}
         <View style={styles.tiles}>
           <Tile tone="saffron" label="Day streak">
@@ -320,7 +321,7 @@ export default function ProgressScreen() {
             return (
               <View
                 key={a.id}
-                style={[styles.achTile, isOut ? { backgroundColor: accent[tone].bg } : styles.achLocked]}
+                style={[styles.achTile, isOut ? { backgroundColor: color.bg, borderColor: color.border, borderWidth: 1 } : styles.achLocked]}
                 accessible
                 accessibilityRole="text"
                 accessibilityLabel={`${a.sa}. ${a.en}. ${isOut ? "Earned" : `Locked. ${sub}`}`}
@@ -341,7 +342,7 @@ export default function ProgressScreen() {
 
 function Tile({ tone, label, children }: { tone: AccentName; label: string; children: React.ReactNode }) {
   return (
-    <View style={[styles.tile, { backgroundColor: accent[tone].bg }]}>
+    <View style={[styles.tile, { backgroundColor: color.bg, borderColor: color.border, borderWidth: 1 }]}>
       <View style={styles.tileBody}>{children}</View>
       <Text style={[styles.tileLabel, { color: accent[tone].fg }]}>{label}</Text>
     </View>
@@ -353,7 +354,11 @@ const styles = StyleSheet.create({
   center: { flex: 1, alignItems: "center", justifyContent: "center" },
   muted: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft },
   // 120 at the bottom: the Ask bubble floats over the last tiles.
-  body: { paddingHorizontal: space.lg, paddingTop: space.xs, paddingBottom: 120 },
+  body: { paddingHorizontal: space.lg, paddingTop: space.md, paddingBottom: 120 },
+  intro: { backgroundColor: fill.teal, padding: 24, marginBottom: 20, gap: 8 },
+  eyebrow: { fontFamily: "Nunito_800ExtraBold", fontSize: 10, letterSpacing: 1.2, color: onFill.gold },
+  introTitle: { fontFamily: "Nunito_800ExtraBold", fontSize: 28, lineHeight: 36, color: onFill.text },
+  introCopy: { fontFamily: "Nunito_600SemiBold", fontSize: 14, color: onFill.soft },
   tiles: { flexDirection: "row", gap: space.sm },
   tile: { flex: 1, borderRadius: radius.lg, paddingVertical: space.md, paddingHorizontal: space.sm, alignItems: "center", gap: space.xs },
   tileBody: { minHeight: 52, alignItems: "center", justifyContent: "center" },
@@ -362,8 +367,8 @@ const styles = StyleSheet.create({
   tileLabel: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.xs, textAlign: "center" },
   ringNum: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm },
   goalLine: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: font.sizes.sm, color: color.inkSoft, textAlign: "center", marginTop: space.sm },
-  sectionTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.md, color: color.ink, marginTop: space.lg, marginBottom: space.sm },
-  card: { backgroundColor: color.surface, borderRadius: radius.lg, padding: space.md, ...shadow.card },
+  sectionTitle: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: 12, letterSpacing: 1.1, textTransform: "uppercase", color: color.inkSoft, marginTop: 32, marginBottom: space.sm },
+  card: { backgroundColor: color.bg, borderWidth: 1, borderColor: color.border, borderRadius: 16, padding: 20 },
   // ── calendar ──
   weekHead: { flexDirection: "row", marginBottom: 6 },
   weekHeadText: { width: `${100 / 7}%`, textAlign: "center", fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.inkSoft },
@@ -397,12 +402,12 @@ const styles = StyleSheet.create({
   ringItem: { alignItems: "center", width: 72 },
   ringLabel: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.xs, color: color.inkSoft, marginTop: 4 },
   topRow: { flexDirection: "row", alignItems: "center", marginVertical: 6 },
-  topLabel: { width: 130, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.ink },
+  topLabel: { width: "38%", fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.ink },
   topTrack: { flex: 1, height: 8, borderRadius: 4, backgroundColor: color.border, overflow: "hidden", marginHorizontal: space.sm },
   topScore: { width: 28, textAlign: "right", fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.inkSoft },
   // ── achievements ──
   achGrid: { flexDirection: "row", flexWrap: "wrap", gap: space.sm },
-  achTile: { width: "48%", borderRadius: radius.lg, padding: space.md, alignItems: "center" },
+  achTile: { flexGrow: 1, flexBasis: "46%", borderRadius: radius.lg, padding: space.md, alignItems: "center" },
   achLocked: { backgroundColor: color.surfaceMuted },
   achMotif: { fontSize: font.sizes.xl, lineHeight: 42 },
   achSa: { fontSize: font.sizes.base, color: color.ink, marginTop: 4, textAlign: "center" },

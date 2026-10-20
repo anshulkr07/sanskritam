@@ -1,0 +1,458 @@
+id: syn.who
+template: scene
+title:
+  en: Who… he
+  hi: जो… वह
+title_sa: यः … सः
+minutes: 6
+teaches:
+- syn.relative
+needs:
+- tad.comparison
+- pron.kim-yad
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The thirtieth statue
+    hi: तीसवीं प्रतिमा
+  depth: core
+  image:
+    brief: The thirtieth statue holding a long unrolled scroll that trails behind her; Śuka reading it aloud with a raised wing; Dādī smiling; Lubdhaka's foreman following the words with his finger.
+    alt:
+      en: A statue holds a long scroll while a parrot reads aloud and a man follows with his finger
+      hi: लम्बा पत्र थामे प्रतिमा, ज़ोर से पढ़ता तोता, उँगली से पढ़ता आदमी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - vakyika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: syn-who-s1
+  narration:
+    en: 'The thirtieth statue holds a long scroll. “यः पठति, सः जानाति,” she says. Śuka, who has been getting good at this, says: “Who reads, he knows.” “It comes in two halves,” says Dādī. “The first, with यः (who), says who we mean. The second, with सः (he), says what we say about him. They always pair: यः… सः, या… सा, यत्… तत्. It works for any case.”'
+    hi: 'तीसवीं प्रतिमा के हाथ में लम्बा पत्र है। “यः पठति, सः जानाति,” वह कहती है। शुक, जो इसमें माहिर होता जा रहा है, कहता है: “जो पढ़ता है, वह जानता है।” “यह दो भागों में आता है,” दादी कहती हैं। “पहला, यः (जो) के साथ, बताता है कि हम किसकी बात कर रहे हैं। दूसरा, सः (वह) के साथ, बताता है कि हम उसके बारे में क्या कहते हैं। वे सदा जोड़ी में आते हैं: यः… सः, या… सा, यत्… तत्। यह किसी भी विभक्ति में चलता है।”'
+  quote:
+    sa: यद् यद् आचरति श्रेष्ठस् तत् तद् एवेतरो जनः स यत् प्रमाणं कुरुते लोकस् तद् अनुवर्तते
+    gloss:
+      en: Whatever the best person does, that and that others do; whatever standard he sets, the world follows.
+      hi: श्रेष्ठ जन जो-जो करता है, वही-वही अन्य लोग करते हैं; वह जो प्रमाण रखता है, संसार उसी का अनुसरण करता है।
+    source: Bhagavadgītā 3.21 (read at GRETIL)
+- id: t1
+  kind: teach
+  title:
+    en: Who… he
+    hi: जो… वह
+  depth: core
+  skills:
+  - syn.relative
+  body:
+    en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair agrees in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} … {{तस्य}}. The {{यद्}}-half usually comes first.'
+    hi: '{{यः}} (जो) वाले वाक्य का उत्तर {{सः}} (वह) देता है: {{यः पठति सः जानाति}}, ‘जो पढ़ता है, वह जानता है’। जोड़ी लिंग और वचन में मेल खाती है, और कोई भी किसी भी विभक्ति में आ सकता है: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} … {{तस्य}}। {{यद्}}-भाग प्रायः पहले आता है।'
+  examples:
+  - sa: यः पठति सः जानाति।
+    meaning:
+      en: Who reads, he knows.
+      hi: जो पढ़ता है, वह जानता है।
+    words:
+    - sa: यः
+      gloss:
+        en: who
+        hi: जो
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: जानाति
+      gloss:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: या लिखति सा कन्या।
+    meaning:
+      en: She who writes is the girl.
+      hi: जो लिखती है, वह कन्या है।
+    words:
+    - sa: या
+      gloss:
+        en: who
+        hi: जो
+    - sa: लिखति
+      gloss:
+        en: writes
+        hi: लिखती है
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+    - sa: सा
+      gloss:
+        en: she
+        hi: वह
+    - sa: कन्या
+      gloss:
+        en: girl
+        hi: कन्या
+      check:
+        type: subanta
+        stem: कन्या
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+  - sa: यस्य बुद्धिः तस्य बलम्।
+    meaning:
+      en: Whose intellect, his strength.
+      hi: जिसकी बुद्धि, उसका बल।
+    words:
+    - sa: यस्य
+      gloss:
+        en: whose
+        hi: जिसकी
+    - sa: बुद्धिः
+      gloss:
+        en: intellect
+        hi: बुद्धि
+      check:
+        type: subanta
+        stem: बुद्धि
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: तस्य
+      gloss:
+        en: his
+        hi: उसका
+    - sa: बलम्
+      gloss:
+        en: strength
+        hi: बल
+      check:
+        type: subanta
+        stem: बल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+- id: tb1
+  kind: table
+  title:
+    en: The pairs
+    hi: जोड़ियाँ
+  depth: core
+  skills:
+  - syn.relative
+  caption:
+    en: यद् … तद् in the cases
+    hi: विभक्तियों में यद् … तद्
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: Who (यद्)
+    hi: जो (यद्)
+  - en: He (तद्)
+    hi: वह (तद्)
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: यः
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: सः
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: यम्
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      highlight: true
+    - sa: तम्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: येन
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+      highlight: true
+    - sa: तेन
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: यस्मै
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      highlight: true
+    - sa: तस्मै
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: यस्मात्
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      highlight: true
+    - sa: तस्मात्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: यस्य
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      highlight: true
+    - sa: तस्य
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: यस्मिन्
+      check:
+        type: subanta
+        stem: यद्
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      highlight: true
+    - sa: तस्मिन्
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+  note:
+    en: Match the case of each half to its own clause.
+    hi: हर भाग की विभक्ति उसके अपने वाक्यांश के अनुसार रखिए।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - syn.relative
+  mode: choice
+  prompt:
+    en: “She who writes, she …” Which pair?
+    hi: ‘जो लिखती है, वह …’ कौन-सी जोड़ी?
+  explain:
+    en: 'Feminine: {{या}} … {{सा}}.'
+    hi: 'स्त्रीलिंग: {{या}} … {{सा}}।'
+  roman: after
+  options:
+  - sa: यः … सः
+  - sa: यत् … तत्
+  - correct: true
+    sa: या … सा
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - syn.relative
+  mode: match
+  prompt:
+    en: Join each who-word to its he-word.
+    hi: हर ‘जो’ शब्द को उसके ‘वह’ शब्द से जोड़िए।
+  explain:
+    en: The pair agrees.
+    hi: जोड़ी मेल खाती है।
+  roman: after
+  pairs:
+  - left:
+      sa: यः
+    right:
+      sa: सः
+  - left:
+      sa: या
+    right:
+      sa: सा
+  - left:
+      sa: यत्
+    right:
+      sa: तत्
+  - left:
+      sa: येन
+    right:
+      sa: तेन
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - syn.relative
+  widget: mark_words
+  prompt:
+    en: Tap the word that starts each “who” clause.
+    hi: हर ‘जो’ वाक्यांश शुरू करने वाला शब्द छुइए।
+  params:
+    passage:
+    - यः
+    - पठति
+    - सः
+    - जानाति
+    - या
+    - सा
+    targets:
+    - यः
+    - या
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - syn.relative
+  mode: order
+  prompt:
+    en: 'Say: “Who reads, he knows.”'
+    hi: 'कहिए: ‘जो पढ़ता है, वह जानता है।’'
+  explain:
+    en: '{{यः पठति सः जानाति}}.'
+    hi: '{{यः पठति सः जानाति}}।'
+  roman: after
+  tokens:
+  - यः
+  - पठति
+  - सः
+  - जानाति
+- id: p4
+  kind: practice
+  title:
+    en: The scroll
+    hi: पत्र
+  depth: core
+  skills:
+  - syn.relative
+  mode: choice
+  prompt:
+    en: “Whose intellect, his strength.” Which pair?
+    hi: ‘जिसकी बुद्धि, उसका बल।’ कौन-सी जोड़ी?
+  explain:
+    en: 'The sixth case: {{यस्य}} … {{तस्य}}.'
+    hi: 'षष्ठी: {{यस्य}} … {{तस्य}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “यस्य बुद्धिः, तस्य बलम्,” you say. The thirtieth statue unrolls her scroll a little further and lets you read the line she has been carrying. Her sentence is long, in two halves, but the halves answer each other, यः… सः, यत्… तत्, and for the first time she reads it through to the end. “Who… he,” she says, breathless. “And I did not know where to stop.”
+      hi: “यस्य बुद्धिः, तस्य बलम्,” आप कहते हैं। तीसवीं प्रतिमा अपना पत्र थोड़ा और खोलती है और आपको वह पंक्ति पढ़ने देती है जो वह ढोती रही है। उसका वाक्य लम्बा है, दो भागों में, पर भाग एक-दूसरे का उत्तर देते हैं, यः… सः, यत्… तत्, और पहली बार वह उसे अन्त तक पढ़ जाती है। “जो… वह,” वह हाँफते हुए कहती है। “और मुझे नहीं पता था कि कहाँ रुकना है।”
+    failure:
+      en: 'The scroll stays rolled. The sixth case: {{यस्य}} … {{तस्य}}.'
+      hi: 'पत्र लिपटा रहता है। षष्ठी: {{यस्य}} … {{तस्य}}।'
+  options:
+  - sa: यः … सः
+  - correct: true
+    sa: यस्य … तस्य
+  - sa: येन … तेन
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's pair
+    hi: पाणिनि की जोड़ी
+  depth: panini
+  skills:
+  - syn.relative
+  sutras:
+  - 7.1.14
+  - 7.1.15
+  - 7.2.106
+  body:
+    en: 'Pāṇini does not give a rule for the pair itself: it is part of how {{यद्}} and {{तद्}} are defined. {{यद्}} is {{सर्वनाम}}, taking the odd endings {{यस्मै}}, {{यस्मात्}}, {{यस्मिन्}} by 7.1.14 and 7.1.15; {{तद्}} answers it, and 7.2.106 gives {{सः}}.'
+    hi: 'पाणिनि जोड़ी के लिए स्वतन्त्र नियम नहीं देते: वह {{यद्}} और {{तद्}} की परिभाषा का भाग है। {{यद्}} {{सर्वनाम}} है, जो 7.1.14 और 7.1.15 से {{यस्मै}}, {{यस्मात्}}, {{यस्मिन्}} जैसे विचित्र प्रत्यय लेता है; {{तद्}} उसका उत्तर देता है, और 7.2.106 से {{सः}} बनता है।'
+- id: sum
+  kind: summary
+  title:
+    en: Who… he
+    hi: जो… वह
+  depth: core
+  points:
+  - sa: यः … सः
+    text:
+      en: Who … he.
+      hi: जो … वह।
+  - sa: या … सा · यत् … तत्
+    text:
+      en: Feminine; neuter.
+      hi: स्त्रीलिंग; नपुंसक।
+  - sa: यस्य … तस्य
+    text:
+      en: Whose … his.
+      hi: जिसका … उसका।

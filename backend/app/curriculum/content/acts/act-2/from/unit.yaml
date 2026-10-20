@@ -1,0 +1,35 @@
+# Written from the syllabus by the story-course authoring pass (see specs/learn-story/HANDOVER.md).
+# Lessons are review: engine_ok once `python -m app.curriculum check --engine` passes; scholar review pending.
+id: from
+title:
+  en: From
+  hi: कहाँ से
+title_sa: अपादानम्
+status: ready
+episode:
+  summary:
+    en: A storm drives everyone from the river. The fifth case says from where, and what one fears.
+    hi: तूफ़ान सबको नदी से दूर भगाता है। पञ्चमी बताती है कहाँ से, और किससे डर।
+  beats:
+  - 'वृक्षात् पत्रं पतति: a leaf falls from the tree.'
+  - Fear of the storm.
+  - 'Comparison: than.'
+skills:
+- id: case.abl
+  title:
+    en: 'From: fifth case'
+    hi: 'अपादान: पञ्चमी'
+  sutras:
+  - 2.3.28
+  - 1.4.24
+- id: case.abl-fear-compare
+  title:
+    en: Afraid of, and more than
+    hi: भय और तुलना
+lessons:
+- from.away
+- from.fear
+planned: []
+ghost: vayuka
+revision: from.revision
+check: from.check

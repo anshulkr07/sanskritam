@@ -1,0 +1,182 @@
+id: reading.revision
+template: revision
+title:
+  en: Everything about reading words
+  hi: शब्द पढ़ने के बारे में सब कुछ
+title_sa: पठनसङ्ग्रहः
+minutes: 5
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: read.syllables
+    formula: रा-मः
+    rule:
+      en: A syllable has exactly one vowel; count the vowels to count the syllables.
+      hi: अक्षर में ठीक एक स्वर होता है; अक्षर गिनने के लिए स्वर गिनिए।
+    tag: core
+    taught_in: reading.syllables#t1
+  - skill: read.syllables
+    formula: सत्-यम्
+    rule:
+      en: A joined letter holds no vowel, so it adds no syllable.
+      hi: संयुक्ताक्षर में स्वर नहीं होता, इसलिए वह अक्षर नहीं बढ़ाता।
+    tag: core
+    taught_in: reading.syllables#t2
+  - skill: read.places
+    rule:
+      en: Every sound has a place (throat, palate, roof, teeth, lips, nose) and an effort (open, almost touching, touching lightly, touching fully).
+      hi: हर ध्वनि का एक स्थान (कण्ठ, तालु, मूर्धा, दन्त, ओष्ठ, नासिका) और एक प्रयत्न (खुला, लगभग छूता, हल्का छूता, पूरा छूता) है।
+    tag: core
+    taught_in: reading.mouth#t1
+  - skill: read.places
+    rule:
+      en: '{{ए}} {{ऐ}} use throat + palate; {{ओ}} {{औ}} throat + lips; {{व}} teeth + lips; nasals add the nose.'
+      hi: '{{ए}} {{ऐ}} कण्ठ + तालु; {{ओ}} {{औ}} कण्ठ + ओष्ठ; {{व}} दन्त + ओष्ठ; नासिक्य नाक जोड़ते हैं।'
+    tag: core
+    taught_in: reading.mouth#t2
+  - skill: read.iast
+    formula: ā ṭ ś ṣ ṃ ḥ
+    rule:
+      en: 'IAST: one Roman sign for each Devanagari sound; a bar for long, a dot below for retroflex.'
+      hi: 'IAST: हर देवनागरी ध्वनि के लिए एक रोमन चिह्न; रेखा दीर्घ के लिए, नीचे बिन्दु मूर्धन्य के लिए।'
+    tag: core
+    taught_in: reading.iast#t1
+  - skill: read.words
+    rule:
+      en: Read a word by syllables, check each sound's place, then say it smoothly.
+      hi: शब्द को अक्षरों में पढ़िए, हर ध्वनि का स्थान जाँचिए, फिर प्रवाह से बोलिए।
+    tag: core
+    taught_in: reading.names#t1
+- id: conditions
+  kind: revision
+  title:
+    en: Where it matters
+    hi: कहाँ महत्त्व है
+  depth: core
+  section: conditions
+  rows:
+  - skill: read.syllables
+    rule:
+      en: The last syllable of a word can end in a consonant with the stroke ({{जगत्}}), the hum ({{संस्कृतम्}}) or the breath ({{रामः}}); the vowel before it still counts as one syllable.
+      hi: शब्द का अन्तिम अक्षर रेखा वाले व्यंजन ({{जगत्}}), गूँज ({{संस्कृतम्}}) या साँस ({{रामः}}) पर समाप्त हो सकता है; उससे पहले का स्वर फिर भी एक अक्षर है।
+    example:
+      sa: जगत्
+      meaning:
+        en: 'the world: two syllables, ja-gat'
+        hi: 'संसार: दो अक्षर, ज-गत्'
+    tag: good
+    new_here: true
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: read.iast
+    rule:
+      en: Older books write ṃ as ṁ, and some print {{ऋ}} as ri. IAST itself keeps ṃ and ṛ.
+      hi: पुरानी पुस्तकें ṃ को ṁ लिखती हैं, और कुछ {{ऋ}} को ri छापती हैं। IAST स्वयं ṃ और ṛ रखता है।
+    example:
+      sa: कृष्णः
+      meaning:
+        en: Kṛṣṇa, not Krishna
+        hi: रोमन अक्षरों में इसे सही ढंग से Kṛṣṇa लिखा जाता है
+    tag: rare
+    new_here: true
+  - skill: read.places
+    rule:
+      en: Classical teachers also list {{ह}} and the breath {{ः}} as throat sounds, and the hum as a nose sound.
+      hi: शास्त्रीय शिक्षक {{ह}} और साँस {{ः}} को कण्ठ्य, तथा गूँज को नासिक्य गिनते हैं।
+    tag: good
+    taught_in: reading.mouth#t2
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: read.iast
+    rule:
+      en: 'Do not read Roman letters like English: ś is not s, ṭ is not t.'
+      hi: 'रोमन अक्षरों को अंग्रेज़ी की तरह मत पढ़िए: ś का मतलब s नहीं, ṭ का मतलब t नहीं।'
+    tag: core
+    taught_in: reading.iast#t1
+  - skill: read.syllables
+    rule:
+      en: 'Do not drop a final {{अ}} while counting: {{रामः}} has two syllables, not one.'
+      hi: 'गिनते समय अन्त का {{अ}} मत छोड़िए: {{रामः}} में दो अक्षर हैं, एक नहीं।'
+    tag: core
+    taught_in: reading.syllables#t1
+  - skill: read.words
+    rule:
+      en: 'Do not guess a word from its first letters: read every syllable.'
+      hi: 'पहले अक्षरों से शब्द का अनुमान मत लगाइए: हर अक्षर पढ़िए।'
+    tag: core
+    taught_in: reading.names#t1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: read.places
+    formula: स्थान + प्रयत्न
+    rule:
+      en: '{{तुल्यास्यप्रयत्नं सवर्णम्}}: sounds with the same place and effort are of one kind.'
+      hi: '{{तुल्यास्यप्रयत्नं सवर्णम्}}: जिन ध्वनियों का स्थान और प्रयत्न एक हो, वे सवर्ण हैं।'
+    sutras:
+    - 1.1.9
+    tag: core
+    taught_in: reading.mouth#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: read.syllables
+    formula: एक स्वर = एक अक्षर
+    rule:
+      en: syllables
+      hi: अक्षर
+    tag: core
+    taught_in: reading.syllables#t1
+  - skill: read.places
+    formula: कण्ठ तालु मूर्धा दन्त ओष्ठ
+    rule:
+      en: place and effort
+      hi: स्थान और प्रयत्न
+    tag: core
+    taught_in: reading.mouth#tb1
+  - skill: read.iast
+    formula: ā ṭ ś ṣ ṃ ḥ
+    rule:
+      en: Roman helper
+      hi: रोमन सहायक
+    tag: core
+    taught_in: reading.iast#tb1
+  - skill: read.words
+    formula: अक्षर → स्थान → प्रवाह
+    rule:
+      en: reading a word
+      hi: शब्द पढ़ना
+    tag: core
+    taught_in: reading.names#t1

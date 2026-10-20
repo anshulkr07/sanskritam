@@ -1,0 +1,179 @@
+id: cs.check
+template: check
+title:
+  en: Match each sound to its neighbour
+  hi: हर ध्वनि को उसके पड़ोसी से मिलाइए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.voice
+  mode: choice
+  prompt:
+    en: '{{तत् + अस्ति}} gives…'
+    hi: '{{तत् + अस्ति}} से…'
+  explain:
+    en: '{{त्}} → {{द्}}.'
+    hi: '{{त्}} → {{द्}}।'
+  roman: after
+  options:
+  - sa: तताऽस्ति
+  - sa: तत्अस्ति
+  - correct: true
+    sa: तदस्ति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.voice
+  mode: choice
+  prompt:
+    en: '{{दिक् + गजः}} gives…'
+    hi: '{{दिक् + गजः}} से…'
+  explain:
+    en: '{{क्}} → {{ग्}}.'
+    hi: '{{क्}} → {{ग्}}।'
+  roman: after
+  options:
+  - sa: दिक्गजः
+  - sa: दिघ्गजः
+  - correct: true
+    sa: दिग्गजः
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.place
+  mode: choice
+  prompt:
+    en: '{{सत् + जनः}} gives…'
+    hi: '{{सत् + जनः}} से…'
+  explain:
+    en: '{{त्}} → {{ज्}}.'
+    hi: '{{त्}} → {{ज्}}।'
+  roman: after
+  options:
+  - sa: सत्जनः
+  - sa: सद्जनः
+  - correct: true
+    sa: सज्जनः
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.place
+  mode: choice
+  prompt:
+    en: '{{उत् + चारणम्}} gives…'
+    hi: '{{उत् + चारणम्}} से…'
+  explain:
+    en: '{{त्}} → {{च्}}.'
+    hi: '{{त्}} → {{च्}}।'
+  roman: after
+  options:
+  - sa: उत्चारणम्
+  - sa: उद्चारणम्
+  - correct: true
+    sa: उच्चारणम्
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.nasal
+  mode: choice
+  prompt:
+    en: '{{सत् + मार्गः}} gives…'
+    hi: '{{सत् + मार्गः}} से…'
+  explain:
+    en: '{{त्}} → {{न्}}.'
+    hi: '{{त्}} → {{न्}}।'
+  roman: after
+  options:
+  - sa: सत्मार्गः
+  - sa: सद्मार्गः
+  - correct: true
+    sa: सन्मार्गः
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.nasal
+  mode: choice
+  prompt:
+    en: '{{सम् + सारः}} gives…'
+    hi: '{{सम् + सारः}} से…'
+  explain:
+    en: '{{म्}} → {{ं}}.'
+    hi: '{{म्}} → {{ं}}।'
+  roman: after
+  options:
+  - sa: सम्सारः
+  - sa: सन्सारः
+  - correct: true
+    sa: संसारः
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.voice
+  - sandhi.place
+  - sandhi.nasal
+  mode: match
+  prompt:
+    en: Join each word to its parts.
+    hi: हर शब्द को उसके भागों से जोड़िए।
+  explain:
+    en: Voice, place, nasal.
+    hi: घोष, स्थान, नासिक्य।
+  roman: after
+  pairs:
+  - left:
+      sa: तदस्ति
+    right:
+      sa: तत् + अस्ति
+  - left:
+      sa: सज्जनः
+    right:
+      sa: सत् + जनः
+  - left:
+      sa: सन्मार्गः
+    right:
+      sa: सत् + मार्गः
+  - left:
+      sa: संस्कृतम्
+    right:
+      sa: सम् + स्कृतम्
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.voice
+  - sandhi.place
+  - sandhi.nasal
+  mode: order
+  prompt:
+    en: 'Say what Vyañjanikā says: “a good person; for that; Sanskrit.”'
+    hi: 'वह कहिए जो व्यञ्जनिका कहती है: ‘सज्जन; क्योंकि वह; संस्कृत।’'
+  explain:
+    en: '{{सज्जनः तद्धि संस्कृतम्}}: place, voice, nasal.'
+    hi: '{{सज्जनः तद्धि संस्कृतम्}}: स्थान, घोष, नासिक्य।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “सज्जनः, तद्धि, संस्कृतम्,” you say, and Vyañjanikā, with a clink, steps down from her plinth, rough sandstone gone soft at the edges. “All my life,” she says, “I have been one sound off from the next one.” She touches the nearest statue's shoulder and her outline softens into it, like a word meeting a word. “विद्यालयः,” she says. “I can say it, but I cannot take it apart. That is for the thirteenth.”
+      hi: “सज्जनः, तद्धि, संस्कृतम्,” आप कहते हैं, और व्यञ्जनिका, खनक के साथ, अपने आसन से उतरती है, खुरदरा बलुआ पत्थर अब किनारों पर नरम। “सारी उम्र,” वह कहती है, “मैं अगली ध्वनि से एक ध्वनि दूर रही।” वह निकटतम प्रतिमा के कंधे को छूती है और उसकी रूपरेखा उसमें पिघल जाती है, शब्द से मिलते शब्द की तरह। “विद्यालयः,” वह कहती है। “मैं इसे कह सकती हूँ, पर अलग नहीं कर सकती। वह तेरहवीं का काम है।”
+    failure:
+      en: 'Her edges stay sharp. Her three: {{सज्जनः तद्धि संस्कृतम्}}.'
+      hi: 'उसके किनारे तीखे रहते हैं। उसके तीन: {{सज्जनः तद्धि संस्कृतम्}}।'
+  tokens:
+  - सज्जनः
+  - तद्धि
+  - संस्कृतम्

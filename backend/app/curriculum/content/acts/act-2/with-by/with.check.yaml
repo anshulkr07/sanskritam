@@ -1,0 +1,162 @@
+id: with.check
+template: check
+title:
+  en: How and with whom
+  hi: कैसे और किसके साथ
+title_sa: परीक्षा
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - case.inst
+  mode: choice
+  prompt:
+    en: “By boat.” Which word?
+    hi: ‘नाव से।’ कौन-सा शब्द?
+  explain:
+    en: 'The means: third case.'
+    hi: 'साधन: तृतीया।'
+  roman: after
+  options:
+  - sa: नौका
+  - sa: नौकाम्
+  - correct: true
+    sa: नौकया
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - case.inst
+  mode: match
+  prompt:
+    en: Join each means to its meaning.
+    hi: हर साधन को उसके अर्थ से जोड़िए।
+  explain:
+    en: '{{एन}} and {{अया}}/{{या}}.'
+    hi: '{{एन}} और {{अया}}/{{या}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: दण्डेन
+    right:
+      text:
+        en: with a pole
+        hi: डंडी से
+  - left:
+      sa: हस्तेन
+    right:
+      text:
+        en: with the hand
+        hi: हाथ से
+  - left:
+      sa: लेखन्या
+    right:
+      text:
+        en: with a pen
+        hi: कलम से
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - case.inst-saha
+  mode: choice
+  prompt:
+    en: Which phrase means “together with a friend”?
+    hi: ‘मित्र के साथ’ कौन-सा वाक्यांश है?
+  explain:
+    en: '{{सह}} goes with the third case.'
+    hi: '{{सह}} तृतीया के साथ चलता है।'
+  roman: after
+  options:
+  - sa: मित्रः सह
+  - correct: true
+    sa: मित्रेण सह
+  - sa: मित्राय सह
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - case.inst-saha
+  mode: order
+  prompt:
+    en: 'Say: “The boy goes with the teacher.”'
+    hi: 'कहिए: ‘बालक आचार्य के साथ जाता है।’'
+  explain:
+    en: '{{बालकः आचार्येण सह गच्छति}}.'
+    hi: '{{बालकः आचार्येण सह गच्छति}}।'
+  roman: after
+  tokens:
+  - बालकः
+  - आचार्येण
+  - सह
+  - गच्छति
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - case.inst
+  mode: engine
+  prompt:
+    en: Reorder the words and keep the meaning.
+    hi: शब्दों को फिर से लगाइए, अर्थ वही रखिए।
+  explain:
+    en: The endings carry the roles.
+    hi: भूमिकाएँ प्रत्ययों में हैं।
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: नाविकः दण्डेन गच्छति
+    seed: 4
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - case.inst
+  mode: choice
+  prompt:
+    en: Which word is the means in {{सा लेखन्या लिखति}}?
+    hi: '{{सा लेखन्या लिखति}} में साधन कौन-सा शब्द है?'
+  explain:
+    en: '{{लेखन्या}}: third case.'
+    hi: '{{लेखन्या}}: तृतीया।'
+  roman: after
+  options:
+  - sa: सा
+  - correct: true
+    sa: लेखन्या
+  - sa: लिखति
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - case.inst
+  - case.inst-saha
+  mode: order
+  prompt:
+    en: 'Tell Tarikā: “We go by boat, together with a friend.”'
+    hi: 'तरिका से कहिए: ‘हम मित्र के साथ नाव से जाते हैं।’'
+  explain:
+    en: '{{वयं नौकया मित्रेण सह गच्छामः}}.'
+    hi: '{{वयं नौकया मित्रेण सह गच्छामः}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “वयं नौकया मित्रेण सह गच्छामः.” Tarikā rises from the water as a clear blue light and bows. “मित्रेण सह गच्छामि,” she says, in a voice like a bell over water. “आचार्याय फलं ददामि।” She nods towards the far bank, where a whitewashed school waits among neem trees.
+      hi: “वयं नौकया मित्रेण सह गच्छामः।” तरिका पानी से साफ़ नीली रोशनी बनकर उठती है और झुकती है। “मित्रेण सह गच्छामि,” वह पानी पर घंटी जैसी आवाज़ में कहती है। “आचार्याय फलं ददामि।” वह दूर के तट की ओर सिर हिलाती है, जहाँ नीम के पेड़ों के बीच एक चूने से पुती पाठशाला प्रतीक्षा कर रही है।
+    failure:
+      en: Tarikā circles, waiting. The means comes first, the companion with {{सह}} second.
+      hi: तरिका चक्कर लगाती प्रतीक्षा करती है। पहले साधन, फिर {{सह}} के साथ साथी।
+  tokens:
+  - वयम्
+  - नौकया
+  - मित्रेण
+  - सह
+  - गच्छामः

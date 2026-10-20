@@ -1,0 +1,166 @@
+id: pre.check
+template: check
+title:
+  en: Fit the beads
+  hi: मनके बैठाइए
+title_sa: परीक्षा
+minutes: 6
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.upasarga
+  mode: choice
+  prompt:
+    en: “He goes out.” Which form?
+    hi: ‘वह बाहर जाता है।’ कौन-सा रूप?
+  explain:
+    en: '{{निर्गच्छति}}.'
+    hi: '{{निर्गच्छति}}।'
+  roman: after
+  options:
+  - sa: आगच्छति
+  - correct: true
+    sa: निर्गच्छति
+  - sa: उपगच्छति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.upasarga
+  mode: choice
+  prompt:
+    en: “He understands.” Which form of {{गम्}}?
+    hi: ‘वह समझता है।’ {{गम्}} का कौन-सा रूप?
+  explain:
+    en: '{{अवगच्छति}}.'
+    hi: '{{अवगच्छति}}।'
+  roman: after
+  options:
+  - sa: अनुगच्छति
+  - correct: true
+    sa: अवगच्छति
+  - sa: अतिगच्छति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.upasarga-list
+  mode: match
+  prompt:
+    en: Join each prefix to its meaning.
+    hi: हर उपसर्ग को उसके अर्थ से जोड़िए।
+  explain:
+    en: Four of the twenty-two.
+    hi: बाईस में से चार।
+  roman: after
+  pairs:
+  - left:
+      sa: आ
+    right:
+      text:
+        en: towards
+        hi: की ओर
+  - left:
+      sa: निस्
+    right:
+      text:
+        en: out
+        hi: बाहर
+  - left:
+      sa: उप
+    right:
+      text:
+        en: near
+        hi: पास
+  - left:
+      sa: परि
+    right:
+      text:
+        en: around
+        hi: चारों ओर
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.upasarga-list
+  mode: choice
+  prompt:
+    en: “He is defeated.” Which form?
+    hi: ‘वह हारता है।’ कौन-सा रूप?
+  explain:
+    en: '{{पराभवति}}: {{परा}} + {{भवति}}.'
+    hi: '{{पराभवति}}: {{परा}} + {{भवति}}।'
+  roman: after
+  options:
+  - sa: अनुभवति
+  - correct: true
+    sa: पराभवति
+  - sa: सम्भवति
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - verb.upasarga
+  - verb.upasarga-list
+  mode: choice
+  prompt:
+    en: “He avoids.” Which form of {{हृ}}?
+    hi: ‘वह बचता है।’ {{हृ}} का कौन-सा रूप?
+  explain:
+    en: '{{परिहरति}}: {{परि}} + {{हृ}}.'
+    hi: '{{परिहरति}}: {{परि}} + {{हृ}}।'
+  roman: after
+  options:
+  - sa: प्रहरति
+  - sa: आहरति
+  - correct: true
+    sa: परिहरति
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - verb.upasarga
+  mode: order
+  prompt:
+    en: 'Put the beads on: “He comes, he goes out, he approaches.”'
+    hi: 'मनके पिरोइए: ‘वह आता है, वह बाहर जाता है, वह पास जाता है।’'
+  explain:
+    en: '{{आगच्छति निर्गच्छति उपगच्छति}}: three prefixes on one root.'
+    hi: '{{आगच्छति निर्गच्छति उपगच्छति}}: एक धातु पर तीन उपसर्ग।'
+  roman: after
+  tokens:
+  - आगच्छति
+  - निर्गच्छति
+  - उपगच्छति
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - verb.upasarga
+  mode: choice
+  prompt:
+    en: Which of these is NOT a verb with a prefix?
+    hi: इनमें कौन-सी क्रिया उपसर्ग वाली नहीं है?
+  explain:
+    en: '{{पठ्यते}}: not a prefix but a new form, the passive.'
+    hi: '{{पठ्यते}}: उपसर्ग नहीं, एक नया रूप, कर्मवाच्य।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“पठ्यते,” you say, to see what will happen. Yojaka''s beads all stop clicking at once. He leans very close and whispers: “That is not one of mine. That is a different kind of change. I hear it from the Vetāla and from the old ones.” He bows. “आगच्छति, निर्गच्छति, उपगच्छति. Take them, they are yours.” He gives you a bead. Then he clicks his string closed and calls into the dark: “पठ्यते! पाठयति!” and something answers from deep in the trees.'
+      hi: '“पठ्यते,” आप कहते हैं, यह देखने कि क्या होता है। योजक के सारे मनके एक साथ खटखटाना बन्द कर देते हैं। वह बहुत पास झुककर फुसफुसाता है: “यह मेरा नहीं है। यह किसी और तरह का परिवर्तन है। मैंने इसे वेताल और पुराने भूतों से सुना है।” वह झुकता है। “आगच्छति, निर्गच्छति, उपगच्छति। लो, ये आपके हैं।” वह आपको एक मनका देता है। फिर वह अपनी माला बन्द करता है और अँधेरे में पुकारता है: “पठ्यते! पाठयति!” और पेड़ों के गहरे से कुछ उत्तर देता है।'
+    failure:
+      en: 'The beads keep waiting. {{पठ्यते}}: “it is read”.'
+      hi: 'मनके प्रतीक्षा करते रहते हैं। {{पठ्यते}}: ‘वह पढ़ा जाता है’।'
+  options:
+  - sa: आगच्छति
+  - sa: निर्गच्छति
+  - correct: true
+    sa: पठ्यते

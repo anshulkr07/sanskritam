@@ -1,0 +1,342 @@
+id: num.agree
+template: scene
+title:
+  en: The verb counts too
+  hi: क्रिया भी गिनती है
+title_sa: वचनसङ्गतिः
+minutes: 6
+teaches:
+- sent.agree-number
+needs:
+- verb.pres-3-du-pl
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: Matching the number
+    hi: संख्या मिलाना
+  depth: core
+  image:
+    brief: The small grey-blue spirit arranging word-cards into three sentences on the ghat steps, shaking his head at one wrong one that Śuka placed; Dādī watching with arms folded and a smile.
+    alt:
+      en: A small spirit rejects a mismatched sentence while a parrot grins
+      hi: बेमेल वाक्य पर सिर हिलाता भूत और मुस्कुराता तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - bakau
+    place: naditira
+    ratio: '4:3'
+    id: num-agree-s1
+  narration:
+    en: 'The spirit builds sentences. One boy reads: बालकः पठति. Two boys read together. Many boys read together. The verb must match its doer in number. Śuka gets it wrong on purpose, and the spirit shakes his head like a wet dog.'
+    hi: 'भूत वाक्य बनाता है। एक बालक पढ़ता है: बालकः पठति। दो बालक साथ पढ़ते हैं। अनेक बालक साथ पढ़ते हैं। क्रिया को अपने कर्ता की संख्या से मेल खाना चाहिए। शुक जान-बूझकर ग़लत बोलता है, और भूत गीले कुत्ते की तरह सिर हिलाता है।'
+- id: t1
+  kind: teach
+  title:
+    en: Doer and verb agree
+    hi: कर्ता और क्रिया सहमत
+  depth: core
+  skills:
+  - sent.agree-number
+  body:
+    en: 'The verb agrees with its doer in number: one doer, one-ending; two, two-ending; many, many-ending. {{बालकः पठति}}, {{बालकौ पठतः}}, {{बालकाः पठन्ति}}.'
+    hi: 'क्रिया अपने कर्ता से संख्या में मेल खाती है: एक कर्ता, एक का प्रत्यय; दो, दो का; अनेक, अनेक का। {{बालकः पठति}}, {{बालकौ पठतः}}, {{बालकाः पठन्ति}}।'
+  examples:
+  - sa: बालकः पठति।
+    meaning:
+      en: The boy reads.
+      hi: बालक पढ़ता है।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: बालकौ पठतः।
+    meaning:
+      en: The two boys read.
+      hi: दो बालक पढ़ते हैं।
+    words:
+    - sa: बालकौ
+      gloss:
+        en: two boys
+        hi: दो बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: पठतः
+      gloss:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+  - sa: बालकाः पठन्ति।
+    meaning:
+      en: The boys read.
+      hi: बालक पढ़ते हैं।
+    words:
+    - sa: बालकाः
+      gloss:
+        en: boys
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: पठन्ति
+      gloss:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - sa: नौकाः सन्ति।
+    meaning:
+      en: There are boats.
+      hi: नावें हैं।
+    words:
+    - sa: नौकाः
+      gloss:
+        en: boats
+        hi: नावें
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: सन्ति
+      gloss:
+        en: are
+        hi: हैं
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+- id: t2
+  kind: teach
+  title:
+    en: The verb “to be”
+    hi: क्रिया ‘होना’
+  depth: core
+  skills:
+  - sent.agree-number
+  body:
+    en: '{{अस्ति}} (there is) also counts: {{अस्ति}} for one, {{स्तः}} for two, {{सन्ति}} for many. {{नौकाः सन्ति}}: there are boats.'
+    hi: '{{अस्ति}} (है) भी गिनती है: एक के लिए {{अस्ति}}, दो के लिए {{स्तः}}, अनेक के लिए {{सन्ति}}। {{नौकाः सन्ति}}: नावें हैं।'
+  rows:
+  - sa: अस्ति
+    gloss:
+      en: 'one: there is'
+      hi: 'एक: है'
+    check:
+      type: tinanta
+      dhatu: अस्
+      lakara: Lat
+      purusha: Prathama
+      vacana: Eka
+  - sa: स्तः
+    gloss:
+      en: 'two: there are'
+      hi: 'दो: हैं'
+    check:
+      type: tinanta
+      dhatu: अस्
+      lakara: Lat
+      purusha: Prathama
+      vacana: Dvi
+  - sa: सन्ति
+    gloss:
+      en: 'many: there are'
+      hi: 'अनेक: हैं'
+    check:
+      type: tinanta
+      dhatu: अस्
+      lakara: Lat
+      purusha: Prathama
+      vacana: Bahu
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sent.agree-number
+  mode: choice
+  prompt:
+    en: Which sentence agrees?
+    hi: कौन-सा वाक्य मेल खाता है?
+  explain:
+    en: Many doers need {{पठन्ति}}.
+    hi: अनेक कर्ताओं के लिए {{पठन्ति}} चाहिए।
+  roman: after
+  options:
+  - sa: बालकाः पठति
+  - correct: true
+    sa: बालकाः पठन्ति
+  - sa: बालकाः पठतः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sent.agree-number
+  mode: choice
+  prompt:
+    en: Which sentence agrees?
+    hi: कौन-सा वाक्य मेल खाता है?
+  explain:
+    en: Two herons need the dual verb {{तिष्ठतः}}.
+    hi: दो बगुलों के लिए द्विवचन क्रिया {{तिष्ठतः}} चाहिए।
+  roman: after
+  options:
+  - correct: true
+    sa: बकौ तिष्ठतः
+  - sa: बकौ तिष्ठति
+  - sa: बकौ तिष्ठन्ति
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sent.agree-number
+  mode: match
+  prompt:
+    en: Join each doer to its verb.
+    hi: हर कर्ता को उसकी क्रिया से जोड़िए।
+  explain:
+    en: The verb matches its doer's number.
+    hi: क्रिया कर्ता की संख्या से मेल खाती है।
+  roman: after
+  pairs:
+  - left:
+      sa: बालकः
+    right:
+      sa: पठति
+  - left:
+      sa: बालकौ
+    right:
+      sa: पठतः
+  - left:
+      sa: बालकाः
+    right:
+      sa: पठन्ति
+  - left:
+      sa: नौकाः
+    right:
+      sa: सन्ति
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - sent.agree-number
+  mode: engine
+  prompt:
+    en: Reorder the words and keep the meaning.
+    hi: शब्दों को फिर से लगाइए, अर्थ वही रखिए।
+  explain:
+    en: The ending {{औ}} and {{तः}} agree whatever the order.
+    hi: '{{औ}} और {{तः}} का मेल क्रम से नहीं बदलता।'
+  roman: show
+  exercise:
+    kind: reorder
+    params:
+      sentence: बालकौ पठतः
+    seed: 0
+- id: p5
+  kind: practice
+  title:
+    en: The herons stand
+    hi: बगुले खड़े हैं
+  depth: core
+  skills:
+  - sent.agree-number
+  mode: order
+  prompt:
+    en: 'Say it for the two herons: the doer, then the verb.'
+    hi: 'दोनों बगुलों के लिए बोलिए: कर्ता, फिर क्रिया।'
+  explain:
+    en: '{{बकौ तिष्ठतः}}: the two herons stand.'
+    hi: '{{बकौ तिष्ठतः}}: दो बगुले खड़े हैं।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “बकौ तिष्ठतः,” you say, and the two herons turn, bow once to the left and once to the right, and dissolve into two soft white breaths. “द्वौ बकौ मुक्तौ,” they say in one voice, and drift off over the boats.
+      hi: “बकौ तिष्ठतः,” आप कहते हैं, और दोनों बगुले मुड़ते हैं, एक बार बाएँ और एक बार दाएँ झुकते हैं, और दो कोमल सफ़ेद साँसों में घुल जाते हैं। “द्वौ बकौ मुक्तौ,” वे एक स्वर में कहते हैं और नावों के ऊपर बह जाते हैं।
+    failure:
+      en: The herons keep still. Two doers need the two-ending verb.
+      hi: बगुले स्थिर रहते हैं। दो कर्ताओं के लिए द्विवचन की क्रिया चाहिए।
+  tokens:
+  - बकौ
+  - तिष्ठतः
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - sent.agree-number
+  mode: choice
+  prompt:
+    en: Why is {{बकौ तिष्ठति}} wrong?
+    hi: '{{बकौ तिष्ठति}} ग़लत क्यों है?'
+  explain:
+    en: Doer and verb must agree in number.
+    hi: कर्ता और क्रिया की संख्या मेल खानी चाहिए।
+  roman: show
+  options:
+  - correct: true
+    text:
+      en: '{{बकौ}} is two but {{तिष्ठति}} is one'
+      hi: '{{बकौ}} दो है पर {{तिष्ठति}} एक'
+  - text:
+      en: '{{बकौ}} is a verb'
+      hi: '{{बकौ}} क्रिया है'
+- id: sum
+  kind: summary
+  title:
+    en: Agreement
+    hi: मेल
+  depth: core
+  points:
+  - sa: बालकः पठति · बालकौ पठतः · बालकाः पठन्ति
+    text:
+      en: The verb matches the doer's number.
+      hi: क्रिया कर्ता की संख्या से मेल खाती है।
+  - sa: अस्ति · स्तः · सन्ति
+    text:
+      en: “Is”, in three numbers.
+      hi: ‘है’, तीन वचनों में।
+  - text:
+      en: Order is free; agreement is not.
+      hi: क्रम स्वतन्त्र है; मेल नहीं।

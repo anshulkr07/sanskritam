@@ -247,7 +247,8 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
     let alive = true;
     (async () => {
       setPage(null);
-      setBasic(null);
+      const occurrence = route.params.occurrence;
+      setBasic(occurrence ? { ...occurrence, availability: occurrence.availability ?? "verified_dates", message: "", tradition: tradition ?? getKalaPrefs().tradition } : null);
       setFailed(false);
       try {
         const stored = await getPlace().catch(() => null);
@@ -270,7 +271,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
           today = new Date().toISOString().slice(0, 10);
         }
         setTodayStr(today);
-        setFollowedState(await followedSlugs());
+        void followedSlugs().then(v => { if (alive) setFollowedState(v); });
         void isRemindUnavailable().then((v) => { if (alive) setRemindOff(v); });
         const lang = getLang();
         const y = (dayDate ?? date) ? Number((dayDate ?? date ?? "").slice(0, 4)) : new Date().getFullYear();
@@ -280,6 +281,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
         const data = await getParvaPage(
           { lat, lon, tradition: useTrad, lang, slug, variant: variant ?? "", date: dayDate ?? date, tz: place.tz },
           { year: y, lat, lon },
+          cached => { if (alive) { setPage(cached); setDayIdx(Math.max(0, selectDayIndex(cached.day ?? [], { requestedDate: dayDate ?? date, todayStr: today }))); } },
         );
         if (!alive) return;
         if (data) {
@@ -311,7 +313,7 @@ export default function ParvaPageScreen({ route, navigation }: Props) {
     return () => {
       alive = false;
     };
-  }, [slug, variant, date, dayDate, tradition, reload]);
+  }, [slug, variant, date, dayDate, tradition, reload, route.params.occurrence]);
 
   const body = (page?.body ?? {}) as Record<string, unknown>;
   const why = (body.why as Item[] | undefined) ?? [];

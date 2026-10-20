@@ -23,6 +23,11 @@ import { haptics } from "../services/haptics";
 import { color, font, radius, space } from "../theme";
 
 interface ReaderSliderProps {
+  compact?: boolean;
+  accentColor?: string;
+  trackColor?: string;
+  thumbColor?: string;
+  textColor?: string;
   index: number;
   count: number;
   /** Short label per page, e.g. the source_ref ("Bhagavad Gītā 2.47"). */
@@ -39,6 +44,11 @@ function clamp(i: number, count: number): number {
 }
 
 export default function ReaderSlider({
+  compact = false,
+  accentColor = color.saffronBtn,
+  trackColor = color.border,
+  thumbColor = color.surface,
+  textColor = color.inkSoft,
   index,
   count,
   labelFor,
@@ -141,7 +151,7 @@ export default function ReaderSlider({
   if (count <= 1) return null;
 
   return (
-    <View style={styles.wrap}>
+    <View style={[styles.wrap, compact && { paddingTop: 0, width: "100%" }]}>
       {/* Tooltip: what the thumb is on, while held. */}
       {preview !== null && (
         <View style={styles.tip} pointerEvents="none">
@@ -160,24 +170,26 @@ export default function ReaderSlider({
           }}
           accessibilityRole="adjustable"
           accessibilityLabel={`Reading position, page ${safeShown + 1} of ${count}, ${labelFor(safeShown)}`}
+          accessibilityValue={{ min: 1, max: count, now: safeShown + 1 }}
+          aria-valuemin={1} aria-valuemax={count} aria-valuenow={safeShown + 1}
           accessibilityActions={[{ name: "increment" }, { name: "decrement" }]}
           onAccessibilityAction={(e) => {
             if (e.nativeEvent.actionName === "increment") commit(safeShown + 1);
             else commit(safeShown - 1);
           }}
         >
-          <View style={styles.track} accessibilityRole="none">
-            <View style={[styles.fill, { width: `${safeFrac * 100}%` }]} />
+          <View style={[styles.track, { backgroundColor: trackColor }, compact && { height: 4 }]} accessibilityRole="none">
+            <View style={[styles.fill, { width: `${safeFrac * 100}%`, backgroundColor: accentColor }]} />
           </View>
-          <Animated.View style={[styles.thumbAnchor, thumbStyle]} pointerEvents="none">
-            <View style={styles.thumb} />
+          <Animated.View style={[styles.thumbAnchor, compact && { left: -8, width: 16 }, thumbStyle]} pointerEvents="none">
+            <View style={[styles.thumb, { backgroundColor: thumbColor, borderColor: accentColor }, compact && { width: 16, height: 16, borderRadius: 8, borderWidth: 2 }]} />
           </Animated.View>
         </View>
       </GestureDetector>
-      <View style={styles.ends}>
-        <Text style={styles.endText} numberOfLines={1}>{labelFor(0)}</Text>
-        <Text style={styles.endText} numberOfLines={1}>{labelFor(count - 1)}</Text>
-      </View>
+      {!compact && <View style={styles.ends}>
+        <Text style={[styles.endText, { color: textColor }]} numberOfLines={1}>{labelFor(0)}</Text>
+        <Text style={[styles.endText, { color: textColor }]} numberOfLines={1}>{labelFor(count - 1)}</Text>
+      </View>}
     </View>
   );
 }
@@ -185,7 +197,7 @@ export default function ReaderSlider({
 const styles = StyleSheet.create({
   wrap: { paddingHorizontal: space.lg, paddingTop: space.xs },
   tip: {
-    alignSelf: "center",
+    position: "absolute", bottom: 48, alignSelf: "center", zIndex: 2,
     backgroundColor: color.ink,
     borderRadius: radius.sm,
     paddingHorizontal: space.sm,

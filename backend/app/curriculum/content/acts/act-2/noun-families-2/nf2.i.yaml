@@ -1,0 +1,678 @@
+id: nf2.i
+template: scene
+title:
+  en: कवि and मति
+  hi: कवि और मति
+title_sa: इकारान्ताः
+minutes: 6
+teaches:
+- noun.i-stems
+needs:
+- noun.deva
+- noun.phala
+- noun.lata
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The night poet
+    hi: रात का कवि
+  depth: core
+  image:
+    brief: 'The school library at night, moonlight through a window: a small blue-black spirit with ink-stained wisps writing in the air with a reed pen, faint glowing lines of verse trailing behind it; you, Dādī and Śuka peering round a shelf; the tree of names glowing softly in a corner.'
+    alt:
+      en: An ink-stained spirit writing glowing verse in the air in a moonlit library
+      hi: चाँदनी में पुस्तकालय में हवा पर चमकते श्लोक लिखता स्याही से सना भूत
+    cast:
+    - you
+    - dadi
+    - shuka
+    - acarya
+    - kavika
+    place: pathashala
+    ratio: '4:3'
+    id: nf2-i-s1
+  narration:
+    en: Late that night, while the school sleeps, scratching comes from the library. A small blue-black spirit with ink on every wisp is writing on the air with a reed pen, muttering verses. Every line ends the same way, in -इ. “कविः,” he says, tapping his own chest. “कवयः,” he adds, looking round hopefully at a shelf of silent bundles.
+    hi: उस रात देर से, जब पाठशाला सोती है, पुस्तकालय से खरोंच की आवाज़ आती है। हर लट पर स्याही लगा एक नन्हा नीला-काला भूत सरकंडे की कलम से हवा पर लिख रहा है, श्लोक बुदबुदाते हुए। हर पंक्ति एक ही ढंग से समाप्त होती है, -इ पर। “कविः,” वह अपनी छाती थपथपाकर कहता है। “कवयः,” वह जोड़ता है, चुप गट्ठरों की अलमारी की ओर आशा से देखता हुआ।
+  lines:
+  - speaker: dadi
+    sa: कविः कवी कवयः।
+    gloss:
+      en: A poet, two poets, poets.
+      hi: एक कवि, दो कवि, अनेक कवि।
+- id: t1
+  kind: teach
+  title:
+    en: Words in -इ
+    hi: -इ वाले शब्द
+  depth: core
+  skills:
+  - noun.i-stems
+  body:
+    en: 'Many words end in a short -{{इ}}: {{कवि}} (poet), {{अग्नि}} (fire), {{मुनि}} (sage) are masculine; {{मति}} (thought), {{भूमि}} (earth), {{रात्रि}} (night) are feminine. Their patterns are close to {{देव}} and {{लता}}, with the {{इ}} sometimes turning to {{ए}} or {{य्}}.'
+    hi: 'अनेक शब्द ह्रस्व -{{इ}} पर समाप्त होते हैं: {{कवि}}, {{अग्नि}}, {{मुनि}} पुंलिंग हैं; {{मति}}, {{भूमि}}, {{रात्रि}} स्त्रीलिंग हैं। उनका ढाँचा {{देव}} और {{लता}} के क़रीब है, जिसमें {{इ}} कभी {{ए}} या {{य्}} बन जाता है।'
+  term:
+    sa: इकारान्तम्
+    meaning:
+      en: a word ending in -इ
+      hi: -इ पर समाप्त शब्द
+- id: tb1
+  kind: table
+  title:
+    en: 'कवि: the full table'
+    hi: 'कवि: पूरी तालिका'
+  depth: core
+  skills:
+  - noun.i-stems
+  caption:
+    en: A poet, in every case and number
+    hi: कवि, हर विभक्ति और वचन में
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: कविः
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: कवी
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: कवयः
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: कविम्
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: कवी
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Dvi
+    - sa: कवीन्
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Bahu
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: कविना
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: कविभ्याम्
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Dvi
+    - sa: कविभिः
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Bahu
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: कवये
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+    - sa: कविभ्याम्
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Dvi
+    - sa: कविभ्यः
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Bahu
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: कवेः
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: कविभ्याम्
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Dvi
+    - sa: कविभ्यः
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Bahu
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: कवेः
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: कव्योः
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Dvi
+    - sa: कवीनाम्
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: कवौ
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: कव्योः
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Dvi
+    - sa: कविषु
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Bahu
+  - - text:
+        en: 8 · calling
+        hi: 8 · सम्बोधन
+    - sa: कवे
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+    - sa: कवी
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Dvi
+    - sa: कवयः
+      check:
+        type: subanta
+        stem: कवि
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Bahu
+  note:
+    en: 'The {{इ}} becomes {{ए}} or {{अय्}} before many endings: {{कवये}}, {{कवयः}}, {{हे कवे}}.'
+    hi: 'कई प्रत्ययों से पहले {{इ}} {{ए}} या {{अय्}} बन जाता है: {{कवये}}, {{कवयः}}, {{हे कवे}}।'
+- id: tb2
+  kind: table
+  title:
+    en: 'मति: the full table'
+    hi: 'मति: पूरी तालिका'
+  depth: core
+  skills:
+  - noun.i-stems
+  caption:
+    en: A thought, in every case and number
+    hi: मति, हर विभक्ति और वचन में
+  columns:
+  - en: Case
+    hi: विभक्ति
+  - en: One
+    hi: एकवचन
+  - en: Two
+    hi: द्विवचन
+  - en: Many
+    hi: बहुवचन
+  rows:
+  - - text:
+        en: 1 · 1st (doer)
+        hi: 1 · प्रथमा
+    - sa: मतिः
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: मती
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: मतयः
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+  - - text:
+        en: 2 · 2nd (object)
+        hi: 2 · द्वितीया
+    - sa: मतिम्
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: मती
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Dvi
+    - sa: मतीः
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Bahu
+  - - text:
+        en: 3 · 3rd (by, with)
+        hi: 3 · तृतीया
+    - sa: मत्या
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+    - sa: मतिभ्याम्
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Dvi
+    - sa: मतिभिः
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Bahu
+  - - text:
+        en: 4 · 4th (to, for)
+        hi: 4 · चतुर्थी
+    - sa: मतये
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Eka
+    - sa: मतिभ्याम्
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Dvi
+    - sa: मतिभ्यः
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Bahu
+  - - text:
+        en: 5 · 5th (from)
+        hi: 5 · पञ्चमी
+    - sa: मतेः
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: मतिभ्याम्
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Dvi
+    - sa: मतिभ्यः
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Bahu
+  - - text:
+        en: 6 · 6th (of)
+        hi: 6 · षष्ठी
+    - sa: मतेः
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+    - sa: मत्योः
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Dvi
+    - sa: मतीनाम्
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Bahu
+  - - text:
+        en: 7 · 7th (in, at)
+        hi: 7 · सप्तमी
+    - sa: मतौ
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: मत्योः
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Dvi
+    - sa: मतिषु
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Bahu
+  - - text:
+        en: 8 · calling
+        hi: 8 · सम्बोधन
+    - sa: मते
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Eka
+    - sa: मती
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Dvi
+    - sa: मतयः
+      check:
+        type: subanta
+        stem: मति
+        linga: Stri
+        vibhakti: Sambodhana
+        vacana: Bahu
+  note:
+    en: 'The feminine has optional forms in the singular: {{मतये}} or {{मत्यै}}, {{मतेः}} or {{मत्याः}}, {{मतौ}} or {{मत्याम्}}. The first of each is shown.'
+    hi: 'स्त्रीलिंग में एकवचन के वैकल्पिक रूप हैं: {{मतये}} या {{मत्यै}}, {{मतेः}} या {{मत्याः}}, {{मतौ}} या {{मत्याम्}}। हर एक का पहला रूप दिखाया है।'
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - noun.i-stems
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of the table.
+    hi: तालिका के छूटे रूप भरिए।
+  explain:
+    en: Every form is in the table you just read.
+    hi: हर रूप उसी तालिका में है जो अभी पढ़ी।
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: कवि
+      linga: Pum
+      blanks: 3
+    seed: 0
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - noun.i-stems
+  mode: engine
+  prompt:
+    en: Fill in the missing forms of a feminine in -इ.
+    hi: -इ वाले एक स्त्रीलिंग के छूटे रूप भरिए।
+  explain:
+    en: '{{मति}} has the feminine endings.'
+    hi: '{{मति}} स्त्रीलिंग प्रत्यय लेती है।'
+  roman: show
+  exercise:
+    kind: grid_fill
+    params:
+      pratipadika: मति
+      linga: Stri
+      blanks: 3
+    seed: 1
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - noun.i-stems
+  mode: choice
+  prompt:
+    en: 'The call of {{कविः}}: “O poet!”'
+    hi: '{{कविः}} की पुकार: ‘हे कवि!’'
+  explain:
+    en: '{{हे कवे}}: the {{इ}} becomes {{ए}}.'
+    hi: '{{हे कवे}}: {{इ}} {{ए}} बन जाता है।'
+  roman: after
+  options:
+  - sa: कविः
+  - sa: कविम्
+  - correct: true
+    sa: कवे
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - noun.i-stems
+  mode: match
+  prompt:
+    en: Join each form to its case and number.
+    hi: हर रूप को उसकी विभक्ति और वचन से जोड़िए।
+  explain:
+    en: '{{ना}}, {{ए}}, {{एः}}, {{औ}}.'
+    hi: '{{ना}}, {{ए}}, {{एः}}, {{औ}}।'
+  roman: after
+  pairs:
+  - left:
+      sa: कविना
+    right:
+      text:
+        en: 3rd, one
+        hi: तृतीया, एक
+  - left:
+      sa: कवये
+    right:
+      text:
+        en: 4th, one
+        hi: चतुर्थी, एक
+  - left:
+      sa: कवेः
+    right:
+      text:
+        en: 5th or 6th, one
+        hi: पञ्चमी या षष्ठी, एक
+  - left:
+      sa: कवौ
+    right:
+      text:
+        en: 7th, one
+        hi: सप्तमी, एक
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - noun.i-stems
+  widget: mark_words
+  prompt:
+    en: 'Tap every form of {{कवि}} that has {{अय्}}: {{कवयः}} or {{कवये}}.'
+    hi: '{{कवि}} के हर रूप को छुइए जिसमें {{अय्}} है: {{कवयः}} या {{कवये}}।'
+  params:
+    passage:
+    - कविः
+    - कवयः
+    - कविम्
+    - कवये
+    - कविना
+    - कवौ
+    targets:
+    - कवयः
+    - कवये
+  roman: show
+- id: p5
+  kind: practice
+  title:
+    en: Poets
+    hi: कवि
+  depth: core
+  skills:
+  - noun.i-stems
+  mode: choice
+  prompt:
+    en: “Poets” as the first case plural?
+    hi: ‘कवि’ प्रथमा बहुवचन में?
+  explain:
+    en: '{{कवयः}}: plural of the first case.'
+    hi: '{{कवयः}}: प्रथमा बहुवचन।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: '“कवयः,” you say, and the shelf of silent bundles trembles. A dozen faint voices, long dead poets, answer in chorus: “कवयः!” The little spirit beams, ink dripping from his chin.'
+      hi: '“कवयः,” आप कहते हैं, और चुप गट्ठरों की अलमारी काँपती है। एक दर्जन धीमी आवाज़ें, कब के मरे कवि, सामूहिक रूप से उत्तर देती हैं: “कवयः!” नन्हा भूत खिल उठता है, ठुड्डी से स्याही टपकती हुई।'
+    failure:
+      en: 'The shelf stays silent. Plural: the {{इ}} becomes {{अय्}} and takes {{अः}}.'
+      hi: 'अलमारी चुप रहती है। बहुवचन: {{इ}} {{अय्}} बनता है और {{अः}} लेता है।'
+  options:
+  - sa: कवी
+  - sa: कवीन्
+  - correct: true
+    sa: कवयः
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's guṇa
+    hi: पाणिनि का गुण
+  depth: panini
+  skills:
+  - noun.i-stems
+  sutras:
+  - 7.3.109
+  - 6.1.69
+  - 7.3.120
+  body:
+    en: Why {{कवयः}} and not {{कविः}} again? Sūtra 7.3.109, {{जसि च}}, strengthens a final {{इ}}/{{उ}} to {{ए}}/{{ओ}} before the plural ending {{जस्}}; and {{ए}} becomes {{अय्}} before a vowel. In the singular call, 6.1.69, {{एङ्ह्रस्वात् सम्बुद्धेः}}, drops the ending after {{ए}}.
+    hi: '{{कवयः}} क्यों, फिर {{कविः}} क्यों नहीं? सूत्र 7.3.109, {{जसि च}}, बहुवचन प्रत्यय {{जस्}} से पहले अन्तिम {{इ}}/{{उ}} को {{ए}}/{{ओ}} बना देता है; और {{ए}} स्वर से पहले {{अय्}} हो जाता है। सम्बोधन एकवचन में 6.1.69, {{एङ्ह्रस्वात् सम्बुद्धेः}}, {{ए}} के बाद प्रत्यय हटा देता है।'
+- id: sum
+  kind: summary
+  title:
+    en: Words in -इ
+    hi: -इ वाले शब्द
+  depth: core
+  points:
+  - sa: कविः कवी कवयः
+    text:
+      en: The masculine in -इ.
+      hi: -इ वाला पुंलिंग।
+  - sa: मतिः मती मतयः
+    text:
+      en: The feminine in -इ.
+      hi: -इ वाला स्त्रीलिंग।
+  - sa: हे कवे · हे मते
+    text:
+      en: The call turns {{इ}} to {{ए}}.
+      hi: पुकार में {{इ}} {{ए}} हो जाता है।

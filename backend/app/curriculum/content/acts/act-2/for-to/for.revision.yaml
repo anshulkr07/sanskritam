@@ -1,0 +1,161 @@
+id: for.revision
+template: revision
+title:
+  en: Everything about to and for
+  hi: को और के लिए, सब कुछ
+title_sa: चतुर्थीसङ्ग्रहः
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: core
+  kind: revision
+  title:
+    en: The rules
+    hi: नियम
+  depth: core
+  section: core
+  rows:
+  - skill: case.dat
+    formula: आचार्याय फलं ददाति
+    rule:
+      en: The recipient takes the fourth case.
+      hi: पाने वाला चतुर्थी लेता है।
+    sutras:
+    - 2.3.13
+    - 1.4.32
+    tag: core
+    taught_in: for.giving#t1
+  - skill: case.dat
+    formula: बालकाय · बालिकायै · नद्यै
+    rule:
+      en: 'Singular endings: {{आय}} (masculine, neuter -अ), {{आयै}} (feminine -आ), {{यै}} (feminine -ई).'
+      hi: 'एकवचन प्रत्यय: {{आय}} (पुंलिंग, नपुंसक -अ), {{आयै}} (स्त्रीलिंग -आ), {{यै}} (स्त्रीलिंग -ई)।'
+    tag: core
+    taught_in: for.giving#tb1
+  - skill: case.dat
+    formula: नमः आचार्याय
+    rule:
+      en: '{{नमः}} and {{स्वस्ति}} take the fourth case.'
+      hi: '{{नमः}} और {{स्वस्ति}} चतुर्थी लेते हैं।'
+    tag: core
+    taught_in: for.giving#t2
+  - skill: case.dat-purpose
+    formula: पठनाय गच्छति
+    rule:
+      en: The purpose, “for what”, takes the fourth case.
+      hi: उद्देश्य, ‘किसलिए’, चतुर्थी लेता है।
+    tag: core
+    taught_in: for.purpose#t1
+  - skill: case.dat-purpose
+    formula: बालकाय फलं रोचते
+    rule:
+      en: '{{रुच्}} (to please): the person pleased takes the fourth case.'
+      hi: '{{रुच्}} (भाना): जिसे भाता है वह चतुर्थी में आता है।'
+    tag: core
+    taught_in: for.purpose#t2
+- id: conditions
+  kind: revision
+  title:
+    en: When it applies
+    hi: कब लागू होता है
+  depth: core
+  section: conditions
+  rows:
+  - skill: case.dat
+    rule:
+      en: 'Plural: {{एभ्यः}} (masculine, neuter -अ), {{आभ्यः}} (feminine); dual {{आभ्याम्}} for all.'
+      hi: 'बहुवचन: {{एभ्यः}} (पुंलिंग, नपुंसक -अ), {{आभ्यः}} (स्त्रीलिंग); द्विवचन सबके लिए {{आभ्याम्}}।'
+    example:
+      sa: बालकेभ्यः
+      meaning:
+        en: to the boys
+        hi: बालकों को
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Bahu
+    tag: good
+    new_here: true
+- id: exceptions
+  kind: revision
+  title:
+    en: Odd cases
+    hi: विचित्र स्थितियाँ
+  depth: core
+  section: exceptions
+  rows:
+  - skill: case.dat
+    rule:
+      en: With verbs of going, the goal usually takes the second case, but the fourth case may also appear for a destination in poetry.
+      hi: जाने की क्रियाओं के साथ गन्तव्य प्रायः द्वितीया लेता है, पर काव्य में गन्तव्य के लिए चतुर्थी भी दिख सकती है।
+    example:
+      sa: वनाय गच्छति
+      meaning:
+        en: he goes to the forest (poetic)
+        hi: वह वन को जाता है (काव्य में)
+    tag: rare
+    new_here: true
+- id: mistakes
+  kind: revision
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  depth: core
+  section: mistakes
+  rows:
+  - skill: case.dat
+    rule:
+      en: 'Do not put the recipient in the second case: {{आचार्याय फलं ददाति}}, not {{आचार्यं फलं ददाति}}.'
+      hi: 'पाने वाले को द्वितीया में मत रखिए: {{आचार्याय फलं ददाति}}, {{आचार्यं फलं ददाति}} नहीं।'
+    tag: core
+    taught_in: for.giving#t1
+  - skill: case.dat-purpose
+    rule:
+      en: Do not confuse the purpose {{पठनाय}} with the means {{पठनेन}}.
+      hi: उद्देश्य {{पठनाय}} को साधन {{पठनेन}} से मत मिलाइए।
+    tag: core
+    taught_in: for.purpose#t1
+- id: panini
+  kind: revision
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  depth: panini
+  section: panini
+  rows:
+  - skill: case.dat
+    rule:
+      en: '{{कर्मणा यमभिप्रैति स सम्प्रदानम्}}: the recipient; {{चतुर्थी सम्प्रदाने}}: the fourth case.'
+      hi: '{{कर्मणा यमभिप्रैति स सम्प्रदानम्}}: सम्प्रदान; {{चतुर्थी सम्प्रदाने}}: चतुर्थी विभक्ति।'
+    sutras:
+    - 1.4.32
+    - 2.3.13
+    tag: core
+    taught_in: for.giving#pn
+- id: sheet
+  kind: revision
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  depth: core
+  section: quick_sheet
+  rows:
+  - skill: case.dat
+    formula: आय · आयै · यै
+    rule:
+      en: recipient
+      hi: पाने वाला
+    tag: core
+    taught_in: for.giving#tb1
+  - skill: case.dat-purpose
+    formula: पठनाय
+    rule:
+      en: purpose
+      hi: उद्देश्य
+    tag: core
+    taught_in: for.purpose#t1

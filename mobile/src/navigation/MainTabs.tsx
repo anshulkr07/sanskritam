@@ -1,3 +1,5 @@
+import { useStoryFlag } from "../story/flags";
+import StoryNavigation from "../story/Navigation";
 // Main destinations, with the isolated Voice Lab beside Read.
 import {
   Ionicons,
@@ -42,6 +44,7 @@ const LABEL: Record<keyof MainTabParamList, string> = {
   Group: "Group",
 };
 export default function MainTabs() {
+  const storyEnabled = useStoryFlag();
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const iconsOnly = width < 320 || PixelRatio.getFontScale() >= 1.4;
@@ -89,7 +92,7 @@ export default function MainTabs() {
       />
       <Tab.Screen
         name="Learn"
-        component={LearnTrailScreen}
+        component={storyEnabled ? StoryNavigation : LearnTrailScreen}
         options={{ tabBarLabel: LABEL.Learn }}
       />
       <Tab.Screen

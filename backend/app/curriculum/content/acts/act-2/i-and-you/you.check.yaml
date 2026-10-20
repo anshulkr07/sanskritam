@@ -1,0 +1,207 @@
+id: you.check
+template: check
+title:
+  en: Say who is who
+  hi: बताइए कौन कौन है
+title_sa: परीक्षा
+minutes: 4
+review: engine_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - pron.i-we
+  mode: choice
+  prompt:
+    en: Which word means “I”?
+    hi: ‘मैं’ के लिए कौन-सा शब्द है?
+  explain:
+    en: '{{अहम्}}: I.'
+    hi: '{{अहम्}}: मैं।'
+  roman: after
+  options:
+  - correct: true
+    sa: अहम्
+  - sa: त्वम्
+  - sa: सः
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - pron.i-we
+  - pron.you
+  mode: match
+  prompt:
+    en: Join each pronoun to its meaning.
+    hi: हर सर्वनाम को उसके अर्थ से जोड़िए।
+  explain:
+    en: Two or many, first or second person.
+    hi: दो या अनेक, उत्तम या मध्यम पुरुष।
+  roman: after
+  pairs:
+  - left:
+      sa: आवाम्
+    right:
+      text:
+        en: we two
+        hi: हम दोनों
+  - left:
+      sa: वयम्
+    right:
+      text:
+        en: we
+        hi: हम
+  - left:
+      sa: युवाम्
+    right:
+      text:
+        en: you two
+        hi: तुम दोनों
+  - left:
+      sa: यूयम्
+    right:
+      text:
+        en: you all
+        hi: तुम सब
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - pron.you
+  mode: choice
+  prompt:
+    en: You speak to one friend. Which verb?
+    hi: आप एक मित्र से बोलते हैं। कौन-सी क्रिया?
+  explain:
+    en: '{{त्वं पठसि}}: you read.'
+    hi: '{{त्वं पठसि}}: तुम पढ़ते हो।'
+  roman: after
+  options:
+  - sa: पठति
+  - correct: true
+    sa: पठसि
+  - sa: पठामि
+- id: p4
+  kind: practice
+  depth: core
+  skills:
+  - verb.persons
+  mode: match
+  prompt:
+    en: Join each form to its person and number.
+    hi: हर रूप को उसके पुरुष और वचन से जोड़िए।
+  explain:
+    en: 'Read the grid: row, then column.'
+    hi: 'तालिका पढ़िए: पंक्ति, फिर स्तम्भ।'
+  roman: after
+  pairs:
+  - left:
+      sa: पठामः
+    right:
+      text:
+        en: we read
+        hi: हम पढ़ते हैं
+  - left:
+      sa: पठथः
+    right:
+      text:
+        en: you two read
+        hi: तुम दोनों पढ़ते हो
+  - left:
+      sa: पठन्ति
+    right:
+      text:
+        en: they read
+        hi: वे पढ़ते हैं
+  - left:
+      sa: पठावः
+    right:
+      text:
+        en: we two read
+        hi: हम दोनों पढ़ते हैं
+- id: p5
+  kind: practice
+  depth: core
+  skills:
+  - verb.persons
+  mode: type
+  prompt:
+    en: Build “you two go”.
+    hi: ‘तुम दोनों जाते हो’ बनाइए।
+  explain:
+    en: '{{गच्छ}} + {{थः}}: {{गच्छथः}}.'
+    hi: '{{गच्छ}} + {{थः}}: {{गच्छथः}}।'
+  roman: after
+  answers:
+  - गच्छथः
+  tiles:
+  - गच्छ
+  - थः
+  - तः
+  - वः
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - pron.polite
+  mode: choice
+  prompt:
+    en: You speak to an old teacher. Which sentence?
+    hi: आप एक बूढ़े गुरु से बोलते हैं। कौन-सा वाक्य?
+  explain:
+    en: '{{भवान्}} with the third-person verb.'
+    hi: '{{भवान्}} प्रथम पुरुष की क्रिया के साथ।'
+  roman: after
+  options:
+  - sa: त्वं पठसि
+  - correct: true
+    sa: भवान् पठति
+  - sa: अहं पठामि
+- id: p7
+  kind: practice
+  depth: core
+  skills:
+  - verb.as
+  mode: choice
+  prompt:
+    en: Which form is “you are”?
+    hi: ‘तुम हो’ का रूप कौन-सा है?
+  explain:
+    en: '{{असि}}: you are.'
+    hi: '{{असि}}: तुम हो।'
+  roman: after
+  options:
+  - sa: अस्मि
+  - correct: true
+    sa: असि
+  - sa: अस्ति
+- id: p8
+  kind: practice
+  depth: core
+  skills:
+  - pron.you
+  - verb.as
+  mode: order
+  prompt:
+    en: 'Say to the little reflection: “You are a friend.”'
+    hi: 'नन्हे प्रतिबिम्ब से कहिए: ‘तुम मित्र हो।’'
+  explain:
+    en: '{{त्वं मित्रम् असि}}: you are a friend.'
+    hi: '{{त्वं मित्रम् असि}}: तुम मित्र हो।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “त्वं मित्रम् असि.” The silver spirit's outline firms into a boy-sized shimmer with your own smile. “त्वं मित्रम् असि,” he says back, and this time it is not an echo. “उत्सवे जनाः सन्ति।” He points downstream, where paper flags flutter over a crowd.
+      hi: “त्वं मित्रम् असि।” चाँदी-से भूत की आकृति आपकी ही मुस्कान के साथ बालक के आकार की झिलमिल में ठोस हो जाती है। “त्वं मित्रम् असि,” वह लौटाकर कहता है, और इस बार यह प्रतिध्वनि नहीं है। “उत्सवे जनाः सन्ति।” वह धारा की ओर इशारा करता है, जहाँ भीड़ के ऊपर काग़ज़ की झंडियाँ फहरा रही हैं।
+    failure:
+      en: 'The reflection waits. “You”: {{त्वम्}}, then “friend”, then {{असि}}.'
+      hi: 'प्रतिबिम्ब प्रतीक्षा करता है। ‘तुम’: {{त्वम्}}, फिर ‘मित्र’, फिर {{असि}}।'
+  tokens:
+  - त्वम्
+  - मित्रम्
+  - असि

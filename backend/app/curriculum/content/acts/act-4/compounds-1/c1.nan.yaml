@@ -1,0 +1,333 @@
+id: c1.nan
+template: scene
+title:
+  en: Untrue, pot-maker
+  hi: असत्य, घड़ा बनाने वाला
+title_sa: असत्यम् कुम्भकारः
+minutes: 6
+teaches:
+- sam.nan-upapada
+needs:
+- sam.karmadharaya
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The eighteenth statue
+    hi: अठारहवीं प्रतिमा
+  depth: core
+  image:
+    brief: The eighteenth statue holding a clay pot, tapping it with one finger; a potter's wheel carved at her feet; Śuka cocking his head; Lubdhaka's foreman holding up his notebook to show a column of compounds.
+    alt:
+      en: A statue taps a clay pot beside a carved potter's wheel while a man holds up a notebook of compounds
+      hi: मिट्टी के घड़े पर थपथपाती प्रतिमा, कुम्हार का चाक, समासों की पुस्तिका दिखाता आदमी
+    cast:
+    - you
+    - dadi
+    - shuka
+    - lubdhaka
+    - samasika
+    place: simhasana-shala
+    ratio: '4:3'
+    id: c1-nan-s1
+  narration:
+    en: 'The eighteenth statue holds a clay pot. “कुम्भकारः,” she says, tapping it: “the pot-maker.” “असत्यम्,” and she shakes her head: “not true.” “These are the last two kinds,” says Dādī. “A न before a word makes its opposite, अ-. And a word like -कारः after a thing means ‘the one who makes it’, a compound with the doer in the second place.”'
+    hi: 'अठारहवीं प्रतिमा के हाथ में मिट्टी का घड़ा है। “कुम्भकारः,” वह कहती है, उस पर थपथपाते हुए: “घड़ा बनाने वाला।” “असत्यम्,” और वह सिर हिलाती है: “सच नहीं।” “ये अन्तिम दो प्रकार हैं,” दादी कहती हैं। “शब्द के आगे न उसका उलटा बनाता है, अ-। और किसी वस्तु के बाद -कारः जैसा शब्द ‘उसे बनाने वाला’ का अर्थ देता है, दूसरे स्थान पर कर्ता वाला समास।”'
+- id: t1
+  kind: teach
+  title:
+    en: Not-X and X-maker
+    hi: क नहीं और क बनाने वाला
+  depth: core
+  skills:
+  - sam.nan-upapada
+  body:
+    en: 'A {{न}} before a word makes the opposite: {{न सत्यम्}} gives {{असत्यम्}} (untrue); before a vowel it is {{अन्}}: {{न अन्तः}} gives {{अनन्तः}} (endless). A word before a doer-word names the thing done: {{कुम्भं करोति}} gives {{कुम्भकारः}} (pot-maker); {{शास्त्रं जानाति}} gives {{शास्त्रज्ञः}} (knower of the śāstras).'
+    hi: 'शब्द के आगे {{न}} उसका उलटा बनाता है: {{न सत्यम्}} से {{असत्यम्}} (झूठ); स्वर से पहले वह {{अन्}} होता है: {{न अन्तः}} से {{अनन्तः}} (अनन्त)। कर्ता-शब्द के आगे का शब्द बताता है कि क्या किया जाता है: {{कुम्भं करोति}} से {{कुम्भकारः}} (घड़ा बनाने वाला); {{शास्त्रं जानाति}} से {{शास्त्रज्ञः}} (शास्त्रों का ज्ञाता)।'
+  term:
+    sa: नञ्तत्पुरुषः
+    meaning:
+      en: a compound with न, “not”
+      hi: न, ‘नहीं’ वाला समास
+- id: tb1
+  kind: table
+  title:
+    en: Not-X and X-maker
+    hi: क नहीं और क बनाने वाला
+  depth: core
+  skills:
+  - sam.nan-upapada
+  caption:
+    en: नञ्-तत्पुरुषः and the doer
+    hi: नञ्-तत्पुरुष और कर्ता
+  columns:
+  - en: Compound
+    hi: समास
+  - en: Unpacked
+    hi: विग्रह
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: असत्यम्
+      check:
+        type: subanta
+        stem: असत्य
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: न सत्यम्
+    - text:
+        en: untrue
+        hi: असत्य
+  - - sa: अधर्मः
+      check:
+        type: subanta
+        stem: अधर्म
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: न धर्मः
+    - text:
+        en: not-duty, wrong
+        hi: अधर्म, अनुचित
+  - - sa: अनन्तः
+      check:
+        type: subanta
+        stem: अनन्त
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: न अन्तः
+    - text:
+        en: endless
+        hi: अनन्त
+  - - sa: अज्ञानम्
+      check:
+        type: subanta
+        stem: अज्ञान
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: न ज्ञानम्
+    - text:
+        en: ignorance
+        hi: अज्ञान
+  - - sa: अहिंसा
+      check:
+        type: subanta
+        stem: अहिंसा
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: न हिंसा
+    - text:
+        en: non-violence
+        hi: अहिंसा
+  - - sa: कुम्भकारः
+      check:
+        type: subanta
+        stem: कुम्भकार
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: कुम्भं करोति
+    - text:
+        en: pot-maker
+        hi: घड़ा बनाने वाला
+  - - sa: ग्रन्थकारः
+      check:
+        type: subanta
+        stem: ग्रन्थकार
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: ग्रन्थं करोति
+    - text:
+        en: author, maker of a book
+        hi: लेखक, ग्रन्थ रचने वाला
+  - - sa: शास्त्रज्ञः
+      check:
+        type: subanta
+        stem: शास्त्रज्ञ
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      highlight: true
+    - sa: शास्त्रं जानाति
+    - text:
+        en: knower of the śāstras
+        hi: शास्त्रों का ज्ञाता
+  note:
+    en: '{{अ-}} before a consonant, {{अन्-}} before a vowel.'
+    hi: व्यंजन से पहले {{अ-}}, स्वर से पहले {{अन्-}}।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - sam.nan-upapada
+  mode: choice
+  prompt:
+    en: '{{असत्यम्}} means…'
+    hi: '{{असत्यम्}} का अर्थ…'
+  explain:
+    en: '{{अ-}} makes the opposite.'
+    hi: '{{अ-}} उलटा बनाता है।'
+  roman: after
+  options:
+  - text:
+      en: the truth
+      hi: सत्य
+  - correct: true
+    text:
+      en: not true
+      hi: सच नहीं
+  - text:
+      en: of the truth
+      hi: सत्य का
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - sam.nan-upapada
+  mode: match
+  prompt:
+    en: Join each compound to its unpacking.
+    hi: हर समास को उसके विग्रह से जोड़िए।
+  explain:
+    en: A न, or a doer.
+    hi: एक न, या एक कर्ता।
+  roman: after
+  pairs:
+  - left:
+      sa: असत्यम्
+    right:
+      sa: न सत्यम्
+  - left:
+      sa: अनन्तः
+    right:
+      sa: न अन्तः
+  - left:
+      sa: कुम्भकारः
+    right:
+      sa: कुम्भं करोति
+  - left:
+      sa: शास्त्रज्ञः
+    right:
+      sa: शास्त्रं जानाति
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - sam.nan-upapada
+  widget: mark_words
+  prompt:
+    en: Tap every word that means “not-”.
+    hi: हर वह शब्द छुइए जिसका अर्थ ‘न-’ है।
+  params:
+    passage:
+    - असत्यम्
+    - सत्यम्
+    - अधर्मः
+    - धर्मः
+    - अज्ञानम्
+    - ज्ञानम्
+    targets:
+    - असत्यम्
+    - अधर्मः
+    - अज्ञानम्
+  roman: show
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - sam.nan-upapada
+  mode: order
+  prompt:
+    en: 'Say: “the pot-maker comes.”'
+    hi: 'कहिए: ‘घड़ा बनाने वाला आता है।’'
+  explain:
+    en: '{{कुम्भकारः आगच्छति}}.'
+    hi: '{{कुम्भकारः आगच्छति}}।'
+  roman: after
+  tokens:
+  - कुम्भकारः
+  - आगच्छति
+- id: p4
+  kind: practice
+  title:
+    en: The pot
+    hi: घड़ा
+  depth: core
+  skills:
+  - sam.nan-upapada
+  mode: choice
+  prompt:
+    en: '{{अनन्तः}} unpacks as…'
+    hi: '{{अनन्तः}} का विग्रह…'
+  explain:
+    en: '{{न}} + {{अन्तः}}: {{अन्-}} before a vowel.'
+    hi: '{{न}} + {{अन्तः}}: स्वर से पहले {{अन्-}}।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “न अन्तः, अनन्तः,” you say, “endless,” and the clay pot in the statue's hand, which has been closed at the mouth for a thousand years, opens. Out of it comes not water, nor grain, but a long, soft, smooth sound, rising, without edge or end. “असत्यम्,” she says, shaking her head, once more, smiling now. “Nothing here is not true.” Samāsikā steps out of the pair behind her, a small granite figure with two lotuses, and takes her hand.
+      hi: “न अन्तः, अनन्तः,” आप कहते हैं, “अनन्त,” और प्रतिमा के हाथ का मिट्टी का घड़ा, जो हज़ार वर्षों से मुँह बन्द था, खुल जाता है। उसमें से न पानी निकलता है, न अनाज, बल्कि एक लम्बी, कोमल, चिकनी ध्वनि, ऊपर उठती, बिना किनारे या अन्त के। “असत्यम्,” वह कहती है, एक बार फिर सिर हिलाते, अब मुस्कराते हुए। “यहाँ कुछ भी असत्य नहीं।” समासिका उसके पीछे की जोड़ी से बाहर आती है, दो कमलों वाली नन्ही ग्रेनाइट आकृति, और उसका हाथ थाम लेती है।
+    failure:
+      en: The pot stays closed. {{न}} + {{अन्तः}} gives {{अनन्तः}}.
+      hi: घड़ा बन्द रहता है। {{न}} + {{अन्तः}} से {{अनन्तः}}।
+  options:
+  - sa: न नन्तः
+  - sa: अ अन्तः
+  - correct: true
+    sa: न अन्तः
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's not and maker
+    hi: पाणिनि का न और बनाने वाला
+  depth: panini
+  skills:
+  - sam.nan-upapada
+  sutras:
+  - 2.2.6
+  - 6.3.73
+  - 6.3.74
+  - 2.2.19
+  - 3.2.1
+  body:
+    en: 'Sūtra 2.2.6, {{नञ्}}, joins {{नञ्}}, “not”, to the following word as a compound. 6.3.73, {{नलोपो नञः}}, drops its {{न्}}, and 6.3.74, {{तस्मान्नुडचि}}, adds {{न्}} before a vowel. For the maker, 2.2.19, {{उपपदमतिङ्}}, joins the word that stands next to a verb-noun, and 3.2.1, {{कर्मण्यण्}}, makes the doer: {{कुम्भकारः}}.'
+    hi: 'सूत्र 2.2.6, {{नञ्}}, {{नञ्}}, ‘नहीं’, को अगले शब्द से समास में जोड़ता है। 6.3.73, {{नलोपो नञः}}, उसका {{न्}} हटाता है, और 6.3.74, {{तस्मान्नुडचि}}, स्वर से पहले {{न्}} जोड़ता है। बनाने वाले के लिए 2.2.19, {{उपपदमतिङ्}}, कृदन्त के पास खड़े शब्द को जोड़ता है, और 3.2.1, {{कर्मण्यण्}}, कर्ता बनाता है: {{कुम्भकारः}}।'
+- id: sum
+  kind: summary
+  title:
+    en: Not and maker
+    hi: न और बनाने वाला
+  depth: core
+  points:
+  - sa: असत्यम् · अनन्तः
+    text:
+      en: Untrue; endless.
+      hi: असत्य; अनन्त।
+  - sa: कुम्भकारः · ग्रन्थकारः
+    text:
+      en: Pot-maker; author.
+      hi: घड़ा बनाने वाला; लेखक।
+  - sa: शास्त्रज्ञः
+    text:
+      en: Knower of the śāstras.
+      hi: शास्त्रों का ज्ञाता।

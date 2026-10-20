@@ -6,6 +6,7 @@
 // contents, never crashes. Written fire-and-forget on every settled page
 // turn (a lost write costs one tap, a blocking write costs a dropped frame).
 
+import { positionKey } from "../utils/paged";
 import { progressStorage as AsyncStorage } from "./progressStorage";
 
 const KEY = "shabd.read.pos";
@@ -90,3 +91,10 @@ export default {
   getReadingChapters,
   setReadingChapter,
 };
+
+/** Explicit index choices win; ordinary opening resumes the saved chapter/page. */
+export async function resolveReadingStart(bookKey: string, chapter: string | undefined, index: number | undefined, firstChapter: () => Promise<string | undefined>) {
+  if (index !== undefined) return { chapter, index: Math.max(0, Math.floor(index)) };
+  const targetChapter = chapter ?? await getReadingChapter(bookKey) ?? await firstChapter();
+  return { chapter: targetChapter, index: await getReadingPosition(targetChapter ? positionKey(bookKey, targetChapter) : bookKey) };
+}

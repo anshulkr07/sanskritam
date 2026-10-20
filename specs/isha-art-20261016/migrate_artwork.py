@@ -74,7 +74,7 @@ def main():
    def replace(match):
     nonlocal used
     asset=match.group(3)
-    if asset not in entries:return match.group(0)
+    if asset not in entries or asset.startswith(('covers/', 'festivals/')):return match.group(0)
     used=True;return 'remoteArtwork('+json.dumps(asset)+')'
    updated=pattern.sub(replace,text)
    if not used:continue

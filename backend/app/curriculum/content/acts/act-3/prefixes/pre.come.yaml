@@ -1,0 +1,483 @@
+id: pre.come
+template: scene
+title:
+  en: Going becomes coming
+  hi: जाना बन जाता है आना
+title_sa: आगच्छति निर्गच्छति
+minutes: 6
+teaches:
+- verb.upasarga
+needs:
+- verb.class-1
+- verb.lan
+review: engine_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: s1
+  kind: story
+  title:
+    en: The tenth night
+    hi: दसवीं रात
+  depth: core
+  image:
+    brief: A small quick spirit sitting on a tree stump with strings of tiny glass beads around its neck and wrists, sliding a bead onto a larger bead marked with a root; Śuka cocking his head; Dādī and the Vetāla watching; firelight on the glass.
+    alt:
+      en: A bead-stringing spirit on a stump slides a glass bead onto a root while a parrot cocks his head
+      hi: ठूँठ पर बैठा मनके पिरोता भूत, सिर टेढ़ा करता तोता
+    cast:
+    - you
+    - dadi
+    - shuka
+    - vetala
+    - yojaka
+    place: smashana
+    ratio: '4:3'
+    id: pre-come-s1
+  narration:
+    en: 'A small spirit sits on a stump clicking strings of glass beads around his neck, each bead marked with a little word. “आ,” he says, and slides a bead onto a root. “गच्छति” was “he goes”. Now he slides: “आगच्छति.” “He comes.” “नि-स्,” another bead: “निर्गच्छति.” “He goes out.” Śuka cocks his head. “Same root,” he says. “Different little word, different journey.”'
+    hi: 'एक नन्हा भूत ठूँठ पर बैठा गले के काँच के मनकों की माला खटखटा रहा है, हर मनके पर एक छोटा शब्द। “आ,” वह कहता है और एक मनका धातु पर सरका देता है। “गच्छति” का अर्थ था ‘वह जाता है’। अब वह सरकाता है: “आगच्छति।” “वह आता है।” “निस्,” एक और मनका: “निर्गच्छति।” “वह बाहर जाता है।” शुक सिर टेढ़ा करता है। “वही धातु,” वह कहता है। “अलग छोटा शब्द, अलग यात्रा।”'
+  lines:
+  - speaker: dadi
+    sa: आगच्छति। निर्गच्छति।
+    gloss:
+      en: He comes. He goes out.
+      hi: वह आता है। वह बाहर जाता है।
+- id: t1
+  kind: teach
+  title:
+    en: A little word in front
+    hi: आगे एक छोटा शब्द
+  depth: core
+  skills:
+  - verb.upasarga
+  body:
+    en: 'A prefix is a short word set in front of a verb root, and it changes the meaning: {{गच्छति}} (he goes) becomes {{आगच्छति}} (he comes), {{निर्गच्छति}} (he goes out), {{उपगच्छति}} (he approaches). The prefix stays in front; the ending is the same. These prefixes are called {{उपसर्गाः}}.'
+    hi: 'उपसर्ग धातु के आगे रखा छोटा शब्द है, और वह अर्थ बदल देता है: {{गच्छति}} (वह जाता है) से {{आगच्छति}} (वह आता है), {{निर्गच्छति}} (वह बाहर जाता है), {{उपगच्छति}} (वह पास जाता है)। उपसर्ग आगे रहता है; प्रत्यय वही रहता है। इन्हें {{उपसर्गाः}} कहते हैं।'
+  examples:
+  - sa: बालकः गृहम् आगच्छति।
+    meaning:
+      en: The boy comes home.
+      hi: बालक घर आता है।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गृहम्
+      gloss:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: आगच्छति
+      gloss:
+        en: comes
+        hi: आता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+  - sa: बालकः गृहात् निर्गच्छति।
+    meaning:
+      en: The boy goes out of the house.
+      hi: बालक घर से बाहर जाता है।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: गृहात्
+      gloss:
+        en: from the house
+        hi: घर से
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Panchami
+        vacana: Eka
+    - sa: निर्गच्छति
+      gloss:
+        en: goes out
+        hi: बाहर जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - निस्
+  term:
+    sa: उपसर्गः
+    meaning:
+      en: a prefix on a verb
+      hi: क्रिया के आगे लगने वाला शब्द
+- id: tb1
+  kind: table
+  title:
+    en: गम् with prefixes
+    hi: उपसर्गों के साथ गम्
+  depth: core
+  skills:
+  - verb.upasarga
+  caption:
+    en: One root, many journeys
+    hi: एक धातु, अनेक यात्राएँ
+  columns:
+  - en: Verb
+    hi: क्रिया
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: आगच्छति
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+    - text:
+        en: comes
+        hi: आता है
+  - - sa: निर्गच्छति
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - निस्
+    - text:
+        en: goes out
+        hi: बाहर जाता है
+  - - sa: उपगच्छति
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - उप
+    - text:
+        en: approaches
+        hi: पास जाता है
+  - - sa: अवगच्छति
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - अव
+    - text:
+        en: understands
+        hi: समझता है
+  - - sa: अधिगच्छति
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - अधि
+    - text:
+        en: obtains
+        hi: पाता है
+  - - sa: अनुगच्छति
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - अनु
+    - text:
+        en: follows
+        hi: पीछे चलता है
+  - - sa: प्रतिगच्छति
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - प्रति
+    - text:
+        en: goes back
+        hi: लौटता है
+  note:
+    en: 'Some prefixes change their last sound: {{निस्}} becomes {{निर्}}.'
+    hi: 'कुछ उपसर्ग अपनी अन्तिम ध्वनि बदल लेते हैं: {{निस्}} {{निर्}} बन जाता है।'
+- id: tb2
+  kind: table
+  title:
+    en: हृ with prefixes
+    hi: उपसर्गों के साथ हृ
+  depth: core
+  skills:
+  - verb.upasarga
+  caption:
+    en: One root, five great words
+    hi: एक धातु, पाँच बड़े शब्द
+  columns:
+  - en: Verb
+    hi: क्रिया
+  - en: Meaning
+    hi: अर्थ
+  rows:
+  - - sa: प्रहरति
+      check:
+        type: tinanta
+        dhatu: हृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - प्र
+    - text:
+        en: strikes
+        hi: प्रहार करता है
+  - - sa: आहरति
+      check:
+        type: tinanta
+        dhatu: हृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+    - text:
+        en: brings
+        hi: लाता है
+  - - sa: संहरति
+      check:
+        type: tinanta
+        dhatu: हृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - सम्
+    - text:
+        en: withdraws, destroys
+        hi: समेटता, संहार करता है
+  - - sa: विहरति
+      check:
+        type: tinanta
+        dhatu: हृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - वि
+    - text:
+        en: roams for pleasure
+        hi: विहार करता है
+  - - sa: परिहरति
+      check:
+        type: tinanta
+        dhatu: हृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - परि
+    - text:
+        en: avoids
+        hi: परिहार करता है, बचता है
+  note:
+    en: From these come {{प्रहारः}}, {{आहारः}}, {{संहारः}}, {{विहारः}}, {{परिहारः}}.
+    hi: इन्हीं से {{प्रहारः}}, {{आहारः}}, {{संहारः}}, {{विहारः}}, {{परिहारः}} बनते हैं।
+- id: p1
+  kind: practice
+  depth: core
+  skills:
+  - verb.upasarga
+  mode: choice
+  prompt:
+    en: “He comes.” Which form?
+    hi: ‘वह आता है।’ कौन-सा रूप?
+  explain:
+    en: '{{आगच्छति}}: {{आ}} + {{गच्छति}}.'
+    hi: '{{आगच्छति}}: {{आ}} + {{गच्छति}}।'
+  roman: after
+  options:
+  - sa: गच्छति
+  - sa: निर्गच्छति
+  - correct: true
+    sa: आगच्छति
+- id: p2
+  kind: practice
+  depth: core
+  skills:
+  - verb.upasarga
+  mode: type
+  prompt:
+    en: 'Say: “He goes out.”'
+    hi: 'कहिए: ‘वह बाहर जाता है।’'
+  explain:
+    en: '{{निर्गच्छति}}.'
+    hi: '{{निर्गच्छति}}।'
+  roman: after
+  answers:
+  - निर्गच्छति
+  tiles:
+  - निर्
+  - गच्छ
+  - ति
+  - आ
+- id: p3
+  kind: practice
+  depth: core
+  skills:
+  - verb.upasarga
+  mode: match
+  prompt:
+    en: Join each verb to its meaning.
+    hi: हर क्रिया को उसके अर्थ से जोड़िए।
+  explain:
+    en: The prefix sets the direction.
+    hi: उपसर्ग दिशा तय करता है।
+  roman: after
+  pairs:
+  - left:
+      sa: आगच्छति
+    right:
+      text:
+        en: comes
+        hi: आता है
+  - left:
+      sa: निर्गच्छति
+    right:
+      text:
+        en: goes out
+        hi: बाहर जाता है
+  - left:
+      sa: उपगच्छति
+    right:
+      text:
+        en: approaches
+        hi: पास जाता है
+  - left:
+      sa: अवगच्छति
+    right:
+      text:
+        en: understands
+        hi: समझता है
+- id: e1
+  kind: explore
+  depth: core
+  skills:
+  - verb.upasarga
+  widget: mark_words
+  prompt:
+    en: Tap every verb with a prefix.
+    hi: उपसर्ग वाली हर क्रिया छुइए।
+  params:
+    passage:
+    - आगच्छति
+    - गच्छति
+    - निर्गच्छति
+    - पठति
+    - उपगच्छति
+    - वदति
+    targets:
+    - आगच्छति
+    - निर्गच्छति
+    - उपगच्छति
+  roman: show
+- id: p4
+  kind: practice
+  title:
+    en: The bead
+    hi: मनका
+  depth: core
+  skills:
+  - verb.upasarga
+  mode: choice
+  prompt:
+    en: “He approaches.” Which form?
+    hi: ‘वह पास जाता है।’ कौन-सा रूप?
+  explain:
+    en: '{{उपगच्छति}}: {{उप}} = near.'
+    hi: '{{उपगच्छति}}: {{उप}} = पास।'
+  roman: after
+  gate: true
+  story:
+    success:
+      en: “उपगच्छति,” you say. The bead-spirit slides a bead onto a root, and the bead glows, and the root, which was lying quiet, stands up and walks to him. “It came,” he says, delighted. “It did what it was told.” Śuka claps both wings. “A bead,” he says, “and a journey.”
+      hi: “उपगच्छति,” आप कहते हैं। मनके वाला भूत एक मनका धातु पर सरकाता है, और मनका चमकता है, और धातु, जो चुप पड़ी थी, उठकर उसके पास चल आती है। “आ गई,” वह प्रसन्नता से कहता है। “जो कहा गया, उसने वही किया।” शुक दोनों पंख ताली में मिलाता है। “एक मनका,” वह कहता है, “और एक यात्रा।”
+    failure:
+      en: 'The root stays still. “He approaches”: {{उपगच्छति}}.'
+      hi: 'धातु स्थिर रहती है। ‘वह पास जाता है’: {{उपगच्छति}}।'
+  options:
+  - sa: आगच्छति
+  - correct: true
+    sa: उपगच्छति
+  - sa: प्रतिगच्छति
+- id: pn
+  kind: teach
+  title:
+    en: Pāṇini's prefixes
+    hi: पाणिनि के उपसर्ग
+  depth: panini
+  skills:
+  - verb.upasarga
+  sutras:
+  - 1.4.59
+  - 1.4.80
+  body:
+    en: Sūtra 1.4.59, {{उपसर्गाः क्रियायोगे}}, names words like {{प्र}} and {{परा}} as {{उपसर्ग}} when they join a verb. 1.4.80, {{ते प्राग्धातोः}}, says they stand before the root. Together they give {{आ + गच्छति}} = {{आगच्छति}}.
+    hi: सूत्र 1.4.59, {{उपसर्गाः क्रियायोगे}}, {{प्र}}, {{परा}} जैसे शब्दों को {{उपसर्ग}} नाम देता है जब वे क्रिया से जुड़ें। 1.4.80, {{ते प्राग्धातोः}}, कहता है कि वे धातु से पहले रहते हैं। दोनों मिलकर {{आ + गच्छति}} = {{आगच्छति}} देते हैं।
+- id: sum
+  kind: summary
+  title:
+    en: Prefixes
+    hi: उपसर्ग
+  depth: core
+  points:
+  - sa: आगच्छति · निर्गच्छति · उपगच्छति
+    text:
+      en: He comes; goes out; approaches.
+      hi: वह आता है; बाहर जाता है; पास जाता है।
+  - sa: प्र · आ · सम् · वि · परि + हृ
+    text:
+      en: Five great words from one root.
+      hi: एक धातु से पाँच बड़े शब्द।
+  - text:
+      en: A prefix changes the meaning of the verb.
+      hi: उपसर्ग क्रिया का अर्थ बदल देता है।
