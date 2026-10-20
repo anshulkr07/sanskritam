@@ -9,7 +9,7 @@ teaches:
 - sam.tatpurusha
 needs:
 - sam.dvandva
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,9 +37,22 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: c1-tatpurusha-s1
+    text_in_image: ["राजपुरुषः"]
   narration:
     en: 'The sixteenth statue holds a staff. “राजपुरुषः,” she says. “Rāja-puruṣaḥ.” Lubdhaka''s foreman, who has begun to follow along with his notebook, writes: ‘the king, the man’. “No,” says Dādī. “The king''s man. The first word stands for a case ending that has been left off: here, ‘of’. Each of the seven cases can hide in the first half of a compound like this.”'
     hi: 'सोलहवीं प्रतिमा के हाथ में दण्ड है। “राजपुरुषः,” वह कहती है। “राज-पुरुषः।” लुब्धक का मुखिया, जो अब अपनी पुस्तिका लिए पीछे-पीछे चलने लगा है, लिखता है: ‘राजा, पुरुष’। “नहीं,” दादी कहती हैं। “राजा का पुरुष। पहला शब्द एक ऐसे विभक्ति-प्रत्यय का स्थान लेता है जो छूट गया है: यहाँ, ‘का’। सातों विभक्तियाँ इस तरह के समास के पहले भाग में छिप सकती हैं।”'
+  lines:
+  - speaker: samasika
+    sa: राजपुरुषः
+    gloss:
+      en: The king's man.
+      hi: राजा का आदमी।
+    check:
+      type: subanta
+      stem: राजपुरुष
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
 - id: t1
   kind: teach
   title:
@@ -181,8 +194,8 @@ cards:
   - sam.tatpurusha
   mode: match
   prompt:
-    en: Join each compound to its unpacking.
-    hi: हर समास को उसके विग्रह से जोड़िए।
+    en: Match each compound with its unpacking.
+    hi: हर समास को उसके विग्रह से मिलाइए।
   explain:
     en: Each hides a case ending.
     hi: हर एक में एक विभक्ति-प्रत्यय छिपा है।

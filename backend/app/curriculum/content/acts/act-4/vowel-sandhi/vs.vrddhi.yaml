@@ -9,7 +9,7 @@ teaches:
 - sandhi.vrddhi
 needs:
 - sandhi.guna
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -46,6 +46,17 @@ cards:
       en: Kātyāyana, sitting down, said to him a moment later.
       hi: बैठकर कात्यायन ने क्षण भर बाद उससे कहा।
     source: Kathāsaritsāgara 1.2 (read in the Digital Corpus of Sanskrit); jagādainam is jagāda + enam
+  lines:
+  - speaker: svarika
+    sa: सदैव
+    gloss:
+      en: Always.
+      hi: सदा।
+    check:
+      type: sandhi
+      first: सदा
+      second: एव
+      joined: सदैव
 - id: t1
   kind: teach
   title:
@@ -201,8 +212,8 @@ cards:
   - sandhi.vrddhi
   mode: match
   prompt:
-    en: Join each word to its parts.
-    hi: हर शब्द को उसके भागों से जोड़िए।
+    en: Match each word with its parts.
+    hi: हर शब्द को उसके भागों से मिलाइए।
   explain:
     en: '{{ऐ}} and {{औ}} show vṛddhi.'
     hi: '{{ऐ}} और {{औ}} वृद्धि दिखाते हैं।'

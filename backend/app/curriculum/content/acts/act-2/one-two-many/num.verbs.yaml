@@ -11,7 +11,7 @@ needs:
 - num.dual
 - num.plural
 - verb.pres-3sg
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -38,6 +38,7 @@ cards:
     place: naditira
     ratio: '4:3'
     id: num-verbs-s1
+    text_in_image: ["पठति", "पठतः", "पठन्ति"]
   narration:
     en: 'Along the steps sit readers. One reads alone. Two sit together over one leaf. A whole class reads aloud in a row. The spirit listens to their voices and notices something: the sound at the end of the verb changes with how many there are.'
     hi: 'सीढ़ियों पर पाठक बैठे हैं। एक अकेला पढ़ता है। दो एक पत्र पर साथ बैठे हैं। पूरी कक्षा एक पंक्ति में ज़ोर से पढ़ती है। भूत उनकी आवाज़ें सुनता है और कुछ ध्यान देता है: क्रिया के अन्त की ध्वनि बदलती है जैसे ही संख्या बदलती है।'
@@ -253,8 +254,8 @@ cards:
   - verb.pres-3-du-pl
   mode: match
   prompt:
-    en: Join each verb to its number.
-    hi: हर क्रिया को उसके वचन से जोड़िए।
+    en: Match each verb with its number.
+    hi: हर क्रिया को उसके वचन से मिलाइए।
   explain:
     en: '{{ति}} one, {{तः}} two, {{न्ति}} many.'
     hi: '{{ति}} एक, {{तः}} दो, {{न्ति}} अनेक।'

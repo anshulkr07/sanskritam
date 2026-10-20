@@ -1,0 +1,176 @@
+id: who.reading
+template: episode
+title:
+  en: Read the ghat scene
+  hi: घाट का दृश्य पढ़ें
+minutes: 4
+needs: &id001
+- verb.pres-3sg
+review: scholar_ok
+sources:
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
+cards:
+- id: r1
+  kind: reading
+  title:
+    en: Read the scene
+    hi: दृश्य पढ़ें
+  passage:
+  - sa: बालकः पठति।
+    meaning:
+      en: The boy reads.
+      hi: बालक पढ़ता है।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: बालिका लिखति।
+    meaning:
+      en: The girl writes.
+      hi: बालिका लिखती है।
+    words:
+    - sa: बालिका
+      gloss:
+        en: girl
+        hi: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: लिखति
+      gloss:
+        en: writes
+        hi: लिखती है
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: p1
+  kind: practice
+  mode: choice
+  skills: *id001
+  prompt:
+    en: What does the girl do?
+    hi: बालिका क्या करती है?
+  explain:
+    en: The second sentence says that the girl writes.
+    hi: दूसरे वाक्य में बालिका लिखती है।
+  options:
+  - text:
+      en: She writes.
+      hi: वह लिखती है।
+    correct: true
+  - text:
+      en: She reads.
+      hi: वह पढ़ती है।
+    why:
+      en: The second sentence says that the girl writes.
+      hi: दूसरे वाक्य में बालिका लिखती है।
+- id: r2
+  kind: reading
+  title:
+    en: Read on
+    hi: आगे पढ़ें
+  passage:
+  - sa: बकः तिष्ठति।
+    meaning:
+      en: The heron stands.
+      hi: बगुला खड़ा है।
+    words:
+    - sa: बकः
+      gloss:
+        en: heron
+        hi: बगुला
+      check:
+        type: subanta
+        stem: बक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: तिष्ठति
+      gloss:
+        en: stands
+        hi: खड़ा है
+      check:
+        type: tinanta
+        dhatu: स्था
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: नौका चलति।
+    meaning:
+      en: The boat moves.
+      hi: नाव चलती है।
+    words:
+    - sa: नौका
+      gloss:
+        en: boat
+        hi: नाव
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: चलति
+      gloss:
+        en: moves
+        hi: चलती है
+      check:
+        type: tinanta
+        dhatu: चल्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+- id: p2
+  kind: practice
+  mode: choice
+  skills: *id001
+  prompt:
+    en: Which one moves in the last sentence?
+    hi: अन्तिम वाक्य में कौन चलता है?
+  explain:
+    en: The heron stands. The boat moves.
+    hi: बगुला खड़ा है। नाव चलती है।
+  options:
+  - text:
+      en: The boat
+      hi: नाव
+    correct: true
+  - text:
+      en: The heron
+      hi: बगुला
+    why:
+      en: The heron stands. The boat moves.
+      hi: बगुला खड़ा है। नाव चलती है।
+- id: end
+  kind: summary
+  points:
+  - text:
+      en: You followed four actions at the ghat by finding who acts and what each one does.
+      hi: आपने घाट की चार क्रियाएँ पढ़ीं और पहचाना कि कौन क्या करता है।

@@ -9,7 +9,7 @@ teaches:
 - script.cons.grid
 needs:
 - script.matra
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -36,6 +36,7 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: cons-grid-s1
+    text_in_image: ["क ख ग घ ङ", "च छ ज झ ञ", "ट ठ ड ढ ण", "त थ द ध न", "प फ ब भ म"]
   narration:
     en: Dhūmaka's clue leads you to the temple door. Its wood is carved with rows of letters, five rows in all. Something small and lavender flickers between the carvings and hides again. Dādī reads the door's first words aloud.
     hi: धूमक का संकेत आपको मंदिर के द्वार तक ले जाता है। उसकी लकड़ी पर अक्षरों की पंक्तियाँ खुदी हैं, कुल पाँच। नक्काशी के बीच कोई छोटी, बैंगनी-सी चीज़ झिलमिलाती है और फिर छिप जाती है। दादी द्वार के पहले शब्द ज़ोर से पढ़ती हैं।
@@ -192,8 +193,8 @@ cards:
   - script.cons.grid
   mode: match
   prompt:
-    en: Join each row-leader to its place.
-    hi: हर पंक्ति के पहले अक्षर को उसके स्थान से जोड़िए।
+    en: Match each row-leader with its place.
+    hi: हर पंक्ति के पहले अक्षर को उसके स्थान से मिलाइए।
   explain:
     en: The rows follow the mouth from the throat to the lips.
     hi: पंक्तियाँ मुँह के क्रम में चलती हैं, गले से होंठों तक।

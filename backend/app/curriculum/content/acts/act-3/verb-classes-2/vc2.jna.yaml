@@ -9,7 +9,7 @@ teaches:
 - verb.class-7-9
 needs:
 - verb.class-5-8
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -38,6 +38,7 @@ cards:
     place: smashana
     ratio: '4:3'
     id: vc2-jna-s1
+    text_in_image: ["छिद्", "छिनत्ति", "क्री", "क्रीणाति"]
   narration:
     en: 'The last two drawers open together. From one a small hand reaches out and carefully cuts a thread with scissors: “छिनत्ति.” From the other a small figure knocks, takes and weighs: “जानाति, गृह्णाति.” The Vetāla leans back. “He cuts, he knows, he takes. There is a verse that gathers six of these verbs; Dādī can say it.” She does.'
     hi: 'अन्तिम दो दराज़ साथ खुलते हैं। एक से नन्हा हाथ बाहर निकलकर सावधानी से कैंची से धागा काटता है: “छिनत्ति।” दूसरे से एक नन्ही आकृति दस्तक देती है, लेती है और तौलती है: “जानाति, गृह्णाति।” वेताल पीछे झुकता है। “वह काटता है, जानता है, लेता है। एक श्लोक है जो इनमें से छह क्रियाओं को एक साथ लाता है; दादी उसे सुना सकती हैं।” वे सुनाती हैं।'
@@ -315,8 +316,8 @@ cards:
   - verb.class-7-9
   mode: match
   prompt:
-    en: Join each root to its “he” form.
-    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+    en: Match each root with its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से मिलाइए।
   explain:
     en: A nasal inside, or {{-ना-}} at the end.
     hi: भीतर नासिक्य, या अन्त में {{-ना-}}।

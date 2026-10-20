@@ -85,10 +85,10 @@ def test_generator_deterministic_across_processes():
         "import json; from app.services import exercise_gen as eg; "
         "print(json.dumps(eg.generate('grid_fill', {}, 7), sort_keys=True, ensure_ascii=False))"
     )
-    a = subprocess.run([sys.executable, "-c", code], capture_output=True,
-                       text=True, cwd=".")
-    b = subprocess.run([sys.executable, "-c", code], capture_output=True,
-                       text=True, cwd=".")
+    a = subprocess.run([sys.executable, "-X", "utf8", "-c", code], capture_output=True,
+                       text=True, encoding="utf-8", cwd=".")
+    b = subprocess.run([sys.executable, "-X", "utf8", "-c", code], capture_output=True,
+                       text=True, encoding="utf-8", cwd=".")
     assert a.returncode == 0, a.stderr[-2000:]
     assert b.returncode == 0, b.stderr[-2000:]
     assert a.stdout == b.stdout

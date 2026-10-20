@@ -1,0 +1,911 @@
+{
+  "id": "tad-son-s1",
+  "where": "tad.son#s1",
+  "ratio": "4:3",
+  "expected": [
+    "राघवः",
+    "पाण्डवः",
+    "कौरवः"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The twenty-second statue holding a small bronze mirror in which a row of names glows instead of a face; Dādī leaning in to read them; Śuka reading over her shoulder; Lubdhaka's foreman copying names into his notebook.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\ntaddhitika: A small spirit of green-bronze with a tiny crown of little letters, in the shape of a young woman holding a small mirror that shows each thing's name for its son.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nराघवः\nपाण्डवः\nकौरवः",
+  "source": {
+    "id": "tad.son",
+    "template": "scene",
+    "title": {
+      "en": "Son of",
+      "hi": "का पुत्र"
+    },
+    "title_sa": "राघवः कौन्तेयः",
+    "minutes": 6,
+    "teaches": [
+      "tad.apatya"
+    ],
+    "needs": [
+      "sam.long"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The twenty-second statue",
+          "hi": "बाईसवीं प्रतिमा"
+        },
+        "image": {
+          "id": "tad-son-s1",
+          "brief": "The twenty-second statue holding a small bronze mirror in which a row of names glows instead of a face; Dādī leaning in to read them; Śuka reading over her shoulder; Lubdhaka's foreman copying names into his notebook.",
+          "alt": {
+            "en": "A statue holds a small mirror showing a row of glowing names instead of a face",
+            "hi": "छोटा दर्पण थामे प्रतिमा, चेहरे की जगह चमकते नामों की पंक्ति"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "taddhitika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The twenty-second statue holds a small mirror. In it, not her face, but a row of names: “राघवः,” she says. “पाण्डवः. कौरवः. कौन्तेयः.” “All someone's children,” says Dādī. “Raghu's, Pāṇḍu's, Kuru's, Kuntī's. A word can carry its parent inside it: the first vowel grows, and an ending is added. These are taddhita words.”",
+          "hi": "बाईसवीं प्रतिमा के हाथ में एक छोटा दर्पण है। उसमें उसका अपना मुख नहीं, नामों की एक पंक्ति है: “राघवः,” वह कहती है। “पाण्डवः। कौरवः। कौन्तेयः।” “ये सब किसी की सन्तान हैं,” दादी कहती हैं। “रघु की, पाण्डु की, कुरु की, कुन्ती की। शब्द अपने भीतर अपने माता-पिता को लिए रह सकता है: पहला स्वर बढ़ता है, और एक प्रत्यय जुड़ता है। इन्हें तद्धित शब्द कहते हैं, ‘उसके लिए बने शब्द’।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "मात्रास्पर्शास् तु कौन्तेय शीतोष्णसुखदुःखदाः आगमापायिनो ऽनित्यास् तांस् तितिक्षस्व भारत",
+          "gloss": {
+            "en": "O son of Kuntī, contacts with the senses give cold and heat, pleasure and pain; they come and go, they are not lasting: bear them, O descendant of Bharata.",
+            "hi": "हे कुन्तीपुत्र, इन्द्रियों के स्पर्श शीत-उष्ण, सुख-दुःख देते हैं; वे आते-जाते हैं, स्थायी नहीं: हे भारत, उन्हें सहो।"
+          },
+          "source": "Bhagavadgītā 2.14 (read at GRETIL)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "A word with its parent",
+          "hi": "अपने माता-पिता के साथ शब्द"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.apatya"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "To say “son or descendant of X”, take X, make its first vowel grow (vṛddhi) and add an ending: {{रघु}} gives {{राघवः}}, {{पाण्डु}} gives {{पाण्डवः}}, {{कुरु}} gives {{कौरवः}}. For a mother's name in {{-ई}} or {{-आ}} it is {{-एय}}: {{कुन्ती}} gives {{कौन्तेयः}}.",
+          "hi": "‘X का पुत्र या वंशज’ कहने के लिए X लीजिए, उसका पहला स्वर बढ़ाइए (वृद्धि) और प्रत्यय जोड़िए: {{रघु}} से {{राघवः}}, {{पाण्डु}} से {{पाण्डवः}}, {{कुरु}} से {{कौरवः}}। {{-ई}} या {{-आ}} वाले माता के नाम से {{-एय}} बनता है: {{कुन्ती}} से {{कौन्तेयः}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "तद्धितः",
+          "meaning": {
+            "en": "a word made from another word by a suffix",
+            "hi": "किसी शब्द से प्रत्यय लगाकर बना शब्द"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Son of",
+          "hi": "का पुत्र"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.apatya"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Taddhita words of descent",
+          "hi": "वंश के तद्धित शब्द"
+        },
+        "columns": [
+          {
+            "en": "Name",
+            "hi": "नाम"
+          },
+          {
+            "en": "Descendant",
+            "hi": "वंशज"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "रघु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "राघवः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "रघु",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "aR",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "descendant of Raghu (Rāma)",
+                "hi": "रघु का वंशज (राम)"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "पाण्डु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पाण्डवः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "पाण्डु",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "aR",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "son of Pāṇḍu",
+                "hi": "पाण्डु का पुत्र"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "कुरु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "कौरवः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "कुरु",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "aR",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "descendant of Kuru",
+                "hi": "कुरु का वंशज"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "मनु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "मानवः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "मनु",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "aR",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "descendant of Manu, human",
+                "hi": "मनु का वंशज, मनुष्य"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "वसुदेव",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "वासुदेवः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "वसुदेव",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "aR",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "son of Vasudeva (Kṛṣṇa)",
+                "hi": "वसुदेव का पुत्र (कृष्ण)"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "दशरथ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "दाशरथिः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "दशरथ",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "iY",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "son of Daśaratha (Rāma)",
+                "hi": "दशरथ का पुत्र (राम)"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "कुन्ती",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "कौन्तेयः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "कुन्ती",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "Qak",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "son of Kuntī",
+                "hi": "कुन्ती का पुत्र"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "गङ्गा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गाङ्गेयः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "गङ्गा",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "Qak",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "son of Gaṅgā (Bhīṣma)",
+                "hi": "गङ्गा का पुत्र (भीष्म)"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "The first vowel grows: {{उ}} → {{औ}}, {{अ}} → {{आ}}.",
+          "hi": "पहला स्वर बढ़ता है: {{उ}} → {{औ}}, {{अ}} → {{आ}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.apatya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{राघवः}} means…",
+          "hi": "{{राघवः}} का अर्थ…"
+        },
+        "explain": {
+          "en": "{{-अ}} after the grown vowel: descendant.",
+          "hi": "बढ़े स्वर के बाद {{-अ}}: वंशज।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "Raghu himself",
+              "hi": "स्वयं रघु"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "a descendant of Raghu",
+              "hi": "रघु का वंशज"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Raghu's house",
+              "hi": "रघु का घर"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.apatya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “Kuntī's son”.",
+          "hi": "कहिए: ‘कुन्ती का पुत्र’।"
+        },
+        "explain": {
+          "en": "{{कौन्तेयः}}.",
+          "hi": "{{कौन्तेयः}}।"
+        },
+        "options": [],
+        "answers": [
+          "कौन्तेयः"
+        ],
+        "tiles": [
+          "कौन्",
+          "तेयः",
+          "कुन्ती",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.apatya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each name to its descendant.",
+          "hi": "हर नाम को उसके वंशज से जोड़िए।"
+        },
+        "explain": {
+          "en": "The first vowel grows.",
+          "hi": "पहला स्वर बढ़ता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "रघु",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "राघवः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पाण्डु",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "पाण्डवः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "कुरु",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "कौरवः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "गङ्गा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "गाङ्गेयः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.apatya"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that means “descendant of …”.",
+          "hi": "‘… का वंशज’ अर्थ वाला हर शब्द छुइए।"
+        },
+        "params": {
+          "passage": [
+            "राघवः",
+            "रघुः",
+            "पाण्डवः",
+            "पाण्डुः",
+            "कौन्तेयः",
+            "कुन्ती"
+          ],
+          "targets": [
+            "राघवः",
+            "पाण्डवः",
+            "कौन्तेयः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Descendants",
+          "hi": "वंशज"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.apatya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{भारत}} in the Gītā line is a taddhita from {{भरत}}. It means…",
+          "hi": "गीता की पंक्ति में {{भारत}}, {{भरत}} से बना तद्धित है। इसका अर्थ…"
+        },
+        "explain": {
+          "en": "{{अ}} → {{आ}}: {{भरत}} → {{भारत}}.",
+          "hi": "{{अ}} → {{आ}}: {{भरत}} → {{भारत}}।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "Bharata himself",
+              "hi": "स्वयं भरत"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "descendant of Bharata",
+              "hi": "भरत का वंशज"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Bharata's land only",
+              "hi": "केवल भरत की भूमि"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“भारत,” you say, “a descendant of Bharata,” and the mirror in the twenty-second statue's hand ripples. The names settle into rows of children, and each child, the way a face is behind a face, shows its parent behind it, and behind that parent another. “All of these,” she says, “carry somebody.” She lowers the mirror. “So do you.” You think of Dādī.",
+            "hi": "“भारत,” आप कहते हैं, “भरत का वंशज,” और बाईसवीं प्रतिमा के हाथ का दर्पण लहराता है। नाम सन्तानों की पंक्तियों में बैठ जाते हैं, और हर सन्तान, चेहरे के पीछे चेहरे की तरह, अपने पीछे अपने माता-पिता को दिखाती है, और उनके पीछे उनके। “इन सबके भीतर,” वह कहती है, “कोई-न-कोई है।” वह दर्पण नीचे करती है। “आपके भी।” आप दादी के बारे में सोचते हैं।"
+          },
+          "failure": {
+            "en": "The mirror stays still. {{भरत}} → {{भारत}}: a descendant.",
+            "hi": "दर्पण स्थिर रहता है। {{भरत}} → {{भारत}}: वंशज।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's descendant",
+          "hi": "पाणिनि का वंशज"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "tad.apatya"
+        ],
+        "sutras": [
+          "4.1.92",
+          "4.1.83",
+          "7.2.117",
+          "4.1.95",
+          "4.1.120"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 4.1.92, {{तस्यापत्यम्}}, gives a taddhita for “his descendant”; 4.1.83, {{प्राग्दीव्यतोऽण्}}, makes {{अण्}} the usual ending, and 7.2.117, {{तद्धितेष्वचामादेः}}, makes the first vowel grow. 4.1.95, {{अत इञ्}}, gives {{इञ्}} after {{अ}}-ending names ({{दाशरथिः}}), and 4.1.120, {{स्त्रीभ्यो ढक्}}, {{ढक्}} after feminines ({{कौन्तेयः}}).",
+          "hi": "सूत्र 4.1.92, {{तस्यापत्यम्}}, ‘उसका वंशज’ के लिए तद्धित देता है; 4.1.83, {{प्राग्दीव्यतोऽण्}}, {{अण्}} को सामान्य प्रत्यय बनाता है, और 7.2.117, {{तद्धितेष्वचामादेः}}, पहले स्वर को बढ़ाता है। 4.1.95, {{अत इञ्}}, {{अ}}-अन्त नामों के बाद {{इञ्}} देता है ({{दाशरथिः}}), और 4.1.120, {{स्त्रीभ्यो ढक्}}, स्त्रीलिंग शब्दों के बाद {{ढक्}} ({{कौन्तेयः}})।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Son of",
+          "hi": "का पुत्र"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "राघवः · पाण्डवः · कौरवः",
+            "text": {
+              "en": "Descendants of Raghu, Pāṇḍu, Kuru.",
+              "hi": "रघु, पाण्डु, कुरु के वंशज।"
+            }
+          },
+          {
+            "sa": "कौन्तेयः · गाङ्गेयः",
+            "text": {
+              "en": "Sons of Kuntī and Gaṅgā.",
+              "hi": "कुन्ती और गङ्गा के पुत्र।"
+            }
+          },
+          {
+            "sa": "भारतः",
+            "text": {
+              "en": "A descendant of Bharata.",
+              "hi": "भरत का वंशज।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "tad-son-s1",
+    "brief": "The twenty-second statue holding a small bronze mirror in which a row of names glows instead of a face; Dādī leaning in to read them; Śuka reading over her shoulder; Lubdhaka's foreman copying names into his notebook.",
+    "alt": {
+      "en": "A statue holds a small mirror showing a row of glowing names instead of a face",
+      "hi": "छोटा दर्पण थामे प्रतिमा, चेहरे की जगह चमकते नामों की पंक्ति"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "taddhitika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The twenty-second statue holding a small bronze mirror in which a row of names glows instead of a face; Dādī leaning in to read them; Śuka reading over her shoulder; Lubdhaka's foreman copying names into his notebook.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\ntaddhitika: A small spirit of green-bronze with a tiny crown of little letters, in the shape of a young woman holding a small mirror that shows each thing's name for its son.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-9cac182b-8481-47eb-94d8-87baed67a34a.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "016a06edca4bb8126213f41d70df1e0af7271be78e5ab990697ef54108cf60bb",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\tad-son-s1-phone-3f68dad3.webp",
+      "key": "learn/tad-son-s1-phone-3f68dad3.webp",
+      "sha256": "3f68dad39f62e28cb83fbfb66a0c499c9aaa5e56a070ddc637c1e0dd6aceeaa5",
+      "bytes": 92612,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/tad-son-s1-phone-3f68dad3.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\tad-son-s1-tablet-298a22e2.webp",
+      "key": "learn/tad-son-s1-tablet-298a22e2.webp",
+      "sha256": "298a22e257565ddc5637739c5042e38b19b6205d16ac9cc77d32f3b14629c5e7",
+      "bytes": 345740,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/tad-son-s1-tablet-298a22e2.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

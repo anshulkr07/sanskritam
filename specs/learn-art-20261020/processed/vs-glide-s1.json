@@ -1,0 +1,956 @@
+{
+  "id": "vs-glide-s1",
+  "where": "vs.glide#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The fourth statue holding a polished bronze mirror, in which the three travellers are reflected; Śuka peering into it; Dādī smiling; the earlier three statues behind; Lubdhaka's foreman in the background with a notebook.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsvarika: A small spirit of cool grey stone in the shape of a young woman holding a lotus, with a fine crack down one cheek and eyes of pale gold.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "vs.glide",
+    "template": "scene",
+    "title": {
+      "en": "A vowel becomes a glide",
+      "hi": "स्वर बनता है अर्धस्वर"
+    },
+    "title_sa": "इत्यादि यद्यपि",
+    "minutes": 6,
+    "teaches": [
+      "sandhi.yan"
+    ],
+    "needs": [
+      "sandhi.vrddhi"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The fourth statue",
+          "hi": "चौथी प्रतिमा"
+        },
+        "image": {
+          "id": "vs-glide-s1",
+          "brief": "The fourth statue holding a polished bronze mirror, in which the three travellers are reflected; Śuka peering into it; Dādī smiling; the earlier three statues behind; Lubdhaka's foreman in the background with a notebook.",
+          "alt": {
+            "en": "A stone statue holds a mirror in which three travellers are reflected",
+            "hi": "दर्पण थामे पत्थर की प्रतिमा, जिसमें तीन यात्रियों का प्रतिबिम्ब दिखता है"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "svarika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The fourth statue holds a mirror. “इत्यादि,” she says. “यद्यपि.” “स्वागतम्.” “Those have a य, a द्य, a व,” says Śuka. “Something is wearing a different vowel.” “The इ turns into य्,” says Dādī, “the उ into व्, the ऋ into र्. A vowel becomes a glide when another, different, vowel follows.”",
+          "hi": "चौथी प्रतिमा के हाथ में दर्पण है। “इत्यादि,” वह कहती है। “यद्यपि।” “स्वागतम्।” “इनमें य है, द्य है, व है,” शुक कहता है। “कोई स्वर दूसरा रूप पहने हुए है।” “इ य् बन जाता है,” दादी कहती हैं, “उ व्, ऋ र्। एक स्वर अर्धस्वर बन जाता है जब उसके बाद कोई और, भिन्न स्वर आता है।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Vowel to glide",
+          "hi": "स्वर से अर्धस्वर"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.yan"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "When {{इ}}/{{ई}}, {{उ}}/{{ऊ}} or {{ऋ}} meets a different vowel, it becomes {{य्}}, {{व्}} or {{र्}}: {{इति + आदि}} gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}, {{पितृ + आज्ञा}} gives {{पित्राज्ञा}}. This is {{यण्}}.",
+          "hi": "जब {{इ}}/{{ई}}, {{उ}}/{{ऊ}} या {{ऋ}} किसी भिन्न स्वर से मिलते हैं, तो वे {{य्}}, {{व्}} या {{र्}} बन जाते हैं: {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}, {{पितृ + आज्ञा}} से {{पित्राज्ञा}}। यह {{यण्}} है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "यण्",
+          "meaning": {
+            "en": "the glides य्, व्, र्, ल्",
+            "hi": "अर्धस्वर य्, व्, र्, ल्"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Glides",
+          "hi": "अर्धस्वर"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.yan"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "इ, उ, ऋ before a different vowel",
+          "hi": "भिन्न स्वर से पहले इ, उ, ऋ"
+        },
+        "columns": [
+          {
+            "en": "First word",
+            "hi": "पहला शब्द"
+          },
+          {
+            "en": "Second word",
+            "hi": "दूसरा शब्द"
+          },
+          {
+            "en": "Joined",
+            "hi": "जुड़ा हुआ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "इति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "आदि",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "इत्यादि",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "इति",
+                "second": "आदि",
+                "joined": "इत्यादि",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "यदि",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अपि",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "यद्यपि",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "यदि",
+                "second": "अपि",
+                "joined": "यद्यपि",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "अति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अधिकम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अत्यधिकम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "अति",
+                "second": "अधिकम्",
+                "joined": "अत्यधिकम्",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "प्रति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एकम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "प्रत्येकम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "प्रति",
+                "second": "एकम्",
+                "joined": "प्रत्येकम्",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "सु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "आगतम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "स्वागतम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "सु",
+                "second": "आगतम्",
+                "joined": "स्वागतम्",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "मधु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अरिः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "मध्वरिः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "मधु",
+                "second": "अरिः",
+                "joined": "मध्वरिः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "पितृ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "आज्ञा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पित्राज्ञा",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "पितृ",
+                "second": "आज्ञा",
+                "joined": "पित्राज्ञा",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "वधू",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "आगमः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "वध्वागमः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "वधू",
+                "second": "आगमः",
+                "joined": "वध्वागमः",
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{इ}} → {{य्}}, {{उ}} → {{व्}}, {{ऋ}} → {{र्}}.",
+          "hi": "{{इ}} → {{य्}}, {{उ}} → {{व्}}, {{ऋ}} → {{र्}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.yan"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Split the joined word {{इत्यादि}}.",
+          "hi": "जुड़े शब्द {{इत्यादि}} को तोड़िए।"
+        },
+        "explain": {
+          "en": "{{इति}} + {{आदि}}.",
+          "hi": "{{इति}} + {{आदि}}।"
+        },
+        "options": [
+          {
+            "sa": "इति + आदि",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "इते + आदि",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "इतु + आदि",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.yan"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{सु + आगतम्}} gives…",
+          "hi": "{{सु + आगतम्}} से…"
+        },
+        "explain": {
+          "en": "{{उ}} → {{व्}} before {{आ}}.",
+          "hi": "{{आ}} से पहले {{उ}} → {{व्}}।"
+        },
+        "options": [
+          {
+            "sa": "सुआगतम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सौगतम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "स्वागतम्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.yan"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Join: {{यदि}} + {{अपि}}.",
+          "hi": "जोड़िए: {{यदि}} + {{अपि}}।"
+        },
+        "explain": {
+          "en": "{{यद्यपि}}: “even if”.",
+          "hi": "{{यद्यपि}}: ‘भले ही’।"
+        },
+        "options": [],
+        "answers": [
+          "यद्यपि"
+        ],
+        "tiles": [
+          "यद्",
+          "यपि",
+          "अपि",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.yan"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its parts.",
+          "hi": "हर शब्द को उसके भागों से जोड़िए।"
+        },
+        "explain": {
+          "en": "The glide shows where the vowel was.",
+          "hi": "अर्धस्वर बताता है कि स्वर कहाँ था।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "इत्यादि",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "इति + आदि",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "स्वागतम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "सु + आगतम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "प्रत्येकम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "प्रति + एकम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पित्राज्ञा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "पितृ + आज्ञा",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.yan"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word with a glide ({{य्}}, {{व्}} or {{र्}} made by joining).",
+          "hi": "अर्धस्वर वाला हर शब्द छुइए (जुड़ने से बना {{य्}}, {{व्}} या {{र्}})।"
+        },
+        "params": {
+          "passage": [
+            "इत्यादि",
+            "विद्यालयः",
+            "स्वागतम्",
+            "महात्मा",
+            "अत्यधिकम्",
+            "सदैव"
+          ],
+          "targets": [
+            "इत्यादि",
+            "स्वागतम्",
+            "अत्यधिकम्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.yan"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "sandhi_mixer",
+        "prompt": {
+          "en": "Pick a pair and join it: see the word and the rule.",
+          "hi": "एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।"
+        },
+        "params": {
+          "pairs": [
+            {
+              "first": "इति",
+              "second": "आदि",
+              "joined": "इत्यादि",
+              "sutras": [
+                "6.1.77"
+              ]
+            },
+            {
+              "first": "प्रति",
+              "second": "एकम्",
+              "joined": "प्रत्येकम्",
+              "sutras": [
+                "6.1.77"
+              ]
+            },
+            {
+              "first": "सु",
+              "second": "आगतम्",
+              "joined": "स्वागतम्",
+              "sutras": [
+                "6.1.77"
+              ]
+            },
+            {
+              "first": "पितृ",
+              "second": "आज्ञा",
+              "joined": "पित्राज्ञा",
+              "sutras": [
+                "6.1.77"
+              ]
+            }
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The mirror",
+          "hi": "दर्पण"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.yan"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{पितृ + आज्ञा}} gives…",
+          "hi": "{{पितृ + आज्ञा}} से…"
+        },
+        "explain": {
+          "en": "{{ऋ}} → {{र्}}.",
+          "hi": "{{ऋ}} → {{र्}}।"
+        },
+        "options": [
+          {
+            "sa": "पितृआज्ञा",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पितराज्ञा",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पित्राज्ञा",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“पित्राज्ञा,” you say, “a father's command,” and the mirror in the statue's hand clears. In it the travellers are reflected, and behind them, in the glass, a long procession of other people, walking up the hill to the throne for a thousand years, each saying a word of welcome. “स्वागतम्,” the statue says. “Welcome.”",
+            "hi": "“पित्राज्ञा,” आप कहते हैं, “पिता की आज्ञा,” और प्रतिमा के हाथ का दर्पण साफ़ हो जाता है। उसमें यात्री दिखते हैं, और उनके पीछे काँच में, अन्य लोगों की लम्बी शोभायात्रा, हज़ार वर्षों से पहाड़ी चढ़कर सिंहासन तक आते, हर एक स्वागत का एक शब्द कहता हुआ। “स्वागतम्,” प्रतिमा कहती है। “स्वागत है।”"
+          },
+          "failure": {
+            "en": "The mirror stays dim. {{ऋ}} → {{र्}}: {{पित्राज्ञा}}.",
+            "hi": "दर्पण धुँधला रहता है। {{ऋ}} → {{र्}}: {{पित्राज्ञा}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's glide",
+          "hi": "पाणिनि का अर्धस्वर"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sandhi.yan"
+        ],
+        "sutras": [
+          "6.1.77"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 6.1.77, {{इको यणचि}}, says that {{इक्}} (the vowels {{इ}}, {{उ}}, {{ऋ}}, {{ऌ}}) is replaced by {{यण्}} ({{य्}}, {{व्}}, {{र्}}, {{ल्}}) before a vowel. So {{इति + आदि}} gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}.",
+          "hi": "सूत्र 6.1.77, {{इको यणचि}}, कहता है कि स्वर के पहले {{इक्}} ({{इ}}, {{उ}}, {{ऋ}}, {{ऌ}}) की जगह {{यण्}} ({{य्}}, {{व्}}, {{र्}}, {{ल्}}) हो जाता है। इसलिए {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Glides",
+          "hi": "अर्धस्वर"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "इ → य्",
+            "text": {
+              "en": "इत्यादि, यद्यपि.",
+              "hi": "इत्यादि, यद्यपि।"
+            }
+          },
+          {
+            "sa": "उ → व्",
+            "text": {
+              "en": "स्वागतम्, मध्वरिः.",
+              "hi": "स्वागतम्, मध्वरिः।"
+            }
+          },
+          {
+            "sa": "ऋ → र्",
+            "text": {
+              "en": "पित्राज्ञा.",
+              "hi": "पित्राज्ञा।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "vs-glide-s1",
+    "brief": "The fourth statue holding a polished bronze mirror, in which the three travellers are reflected; Śuka peering into it; Dādī smiling; the earlier three statues behind; Lubdhaka's foreman in the background with a notebook.",
+    "alt": {
+      "en": "A stone statue holds a mirror in which three travellers are reflected",
+      "hi": "दर्पण थामे पत्थर की प्रतिमा, जिसमें तीन यात्रियों का प्रतिबिम्ब दिखता है"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "svarika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The fourth statue holding a polished bronze mirror, in which the three travellers are reflected; Śuka peering into it; Dādī smiling; the earlier three statues behind; Lubdhaka's foreman in the background with a notebook.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsvarika: A small spirit of cool grey stone in the shape of a young woman holding a lotus, with a fine crack down one cheek and eyes of pale gold.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-fb4e93f6-8a6b-4fd5-824e-707cd2db9d12.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "a2434738bceaeaffb50b97c3ab6cc83a9e24af7bd7a98ba95b9a0eb4bafd9bf6",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vs-glide-s1-phone-92502bb0.webp",
+      "key": "learn/vs-glide-s1-phone-92502bb0.webp",
+      "sha256": "92502bb0abc0ca8fce7c3462fe9eec3113e2983de2dcdf731db226e5321ec52f",
+      "bytes": 117878,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/vs-glide-s1-phone-92502bb0.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vs-glide-s1-tablet-a92e55d0.webp",
+      "key": "learn/vs-glide-s1-tablet-a92e55d0.webp",
+      "sha256": "a92e55d081c8f7a1d5527cb2f198e74d1e022426cad4a852fe1a80fc1f1d484f",
+      "bytes": 452188,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/vs-glide-s1-tablet-a92e55d0.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

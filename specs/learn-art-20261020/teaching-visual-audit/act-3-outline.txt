@@ -1,0 +1,485 @@
+ACT 3: The Vetāla Nights
+
+UNIT commands — Commands
+
+cmd.go [scene] Go! Read!
+s1 story [IMAGE cmd-go-s1] The hanging one
+t1 teach The bare root commands | To tell one person “you do it!”, use the root with its class sign and no ending: {{गच्छ}} (go!), {{पठ}} (read!), {{वद}} (speak!), {{पश्य}} (look!), {{लिख}} (write!), {{पिब}} (drink!). This is the command mood, {{लोट्}}. | examples: बालक गृहम् गच्छ।; बालक पुस्तकम् पठ।; जलम् पिब।
+tb1 table पठ्: the command mood | “Let him read, read!, let me read” | 3 rows x 4 cols
+t2 teach Let him, let us | The third person is “let him …”: {{पठतु}}, {{गच्छतु}}. The first person is “let me …” or “let us …”: {{पठानि}}, {{गच्छाम}}. The command to several people ends in {{-त}}: {{पठत}}, “read, all of you”. | examples: सः पठतु।; वयम् गृहम् गच्छाम।; बालकाः पठत।
+e1 explore | mark_words {"passage": ["गच्छ", "गच्छति", "पठ", "पठामि", "वद", "वदति"], "targets": ["गच्छ", "पठ", "वद"]}
+pn teach Pāṇini's command | Sūtra 3.3.162, {{लोट् च}}, gives {{लोट्}} for commands and requests. Then 3.4.86, {{एरुः}}, turns {{-ति}} into {{-तु}}: {{पठतु}}. In the second person {{हि}} comes and 6.4.105, {{अतो हेः}}, drops it after {{अ}}: {{पठ}}. In the first person 3.4.92, {{आडुत्तमस्य पिच्च}}, adds {{आ}}: {{पठानि}}.
+sum summary Go! Read!
+
+cmd.wish [scene] May they be happy
+s1 story [IMAGE cmd-wish-s1] The lantern in the trees
+t1 teach Wishes and polite requests | The third-person {{लोट्}} is also the polite request and the blessing: {{भवतु}} (let it be), {{जयतु}} (victory to him), {{जीवतु}} (long life), {{अस्तु}} (so be it). To be polite to “you”, say {{भवान्}} (your honour, a word for “you”) and put the verb in the third person: {{भवान् आगच्छतु}}, “please come”. | examples: भवान् आगच्छतु।; भवान् उपविशतु।; जयतु।
+tb1 table Wishes in the third person | Four everyday wishes | 4 rows x 2 cols
+t2 teach Blessings with “be!” | A blessing to one person uses {{भव}} (be!) with an adjective: {{सुखी भव}} (be happy), {{आयुष्मान् भव}} (be long-lived). {{सर्वे सुखिनः भवन्तु}} wishes that all be happy. | examples: सुखी भव।; सर्वे सुखिनः भवन्तु।
+e1 explore | mark_words {"passage": ["भवतु", "भवति", "जयतु", "जयति", "अस्तु", "अस्ति"], "targets": ["भवतु", "जयतु", "अस्तु"]}
+sum summary Wishes
+
+cmd.revision [revision] Everything about commands
+core revision The command forms | 2 revision rules
+conditions revision When to use which | 3 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 1 revision rules
+sheet revision Quick sheet | 2 revision rules
+
+cmd.check [check] Obey the orderer
+
+UNIT past — The past
+
+past.augment [scene] The augment अ-
+s1 story [IMAGE past-augment-s1] The second night
+t1 teach The past with अ- | For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}} (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment, {{अट्}}. | examples: ह्यः बालकः गृहम् अगच्छत्।; बालकाः पुस्तकम् अपठन्।; अहम् तम् अपश्यम्।
+tb1 table पठ्: the past | “He read, you read, I read” | 3 rows x 4 cols
+tb2 table गम्: the past | “He went, you went, I went” | 3 rows x 4 cols
+t2 teach With a prefix | A prefix stays in front and the {{अ}} goes between it and the root: {{आ + गच्छति}} makes {{आगच्छति}}, and its past is {{आगच्छत्}}, “he came”. | examples: सः आगच्छत्।
+e1 explore | mark_words {"passage": ["अगच्छत्", "गच्छति", "अपठत्", "पठति", "अवदत्", "वदति"], "targets": ["अगच्छत्", "अपठत्", "अवदत्"]}
+e2 explore | time_slider {"forms": [{"label": {"en": "yesterday", "hi": "कल"}, "sa": "सः अगच्छत्।", "meaning": {"en": "He went.", "hi": "वह गया।"}, "check": {"type": "tinanta", "dhatu": "गम्", "lakara": "Lan", "purusha": "Prathama", "vacana": "Eka", "form": "अगच्छत्"}}, {"label": {"en": "now", "hi": "अब"}, "sa": "सः गच्छति।", "meaning": {"en": "He goes.", "hi": "वह जाता है।"}, "check": {"type": "tinanta", "dhatu": "गम्", "lakara": "Lat", "purusha": "Prathama", "vacana": "Eka", "form": "गच्छति"}}]}
+pn teach Pāṇini's past | Sūtra 3.2.111, {{अनद्यतने लङ्}}, gives {{लङ्}} for a past not of today. 6.4.71, {{लुङ्लङ्लृङ्क्ष्वडुदात्तः}}, adds the augment {{अ}}. Then 3.4.100, {{इतश्च}}, drops the final {{-इ}} of the ending {{-ति}}, so {{-ति}} becomes {{-त्}}: {{अपठत्}}.
+sum summary The past
+
+past.tell [scene] What happened yesterday
+s1 story [IMAGE past-tell-s1] A tale begins
+t1 teach There was | {{आसीत्}} (he, she, it was; there was) is the past of {{अस्}}. A tale begins {{आसीत् कश्चित् राजा}}, “there was a king”. The other forms: {{आसन्}} (they were), {{आसम्}} (I was). {{अभवत्}} is the past of {{भू}}: “he became”. | examples: पुरा एकः राजा आसीत्।; सः सुखी अभवत्।
+tb1 table अस्: the past | “Was, were” | 3 rows x 4 cols
+r1 reading [IMAGE past-tell-r1] The Vetāla's tale | पुरा एकः राजा आसीत्। / सः नगरे अवसत्। / एकदा सः वनम् अगच्छत्। / तत्र सः वृक्षम् अपश्यत्। / वृक्षे शवः आसीत्। / शवः अवदत्।
+e1 explore | mark_words {"passage": ["आसीत्", "अस्ति", "अवसत्", "वसति", "आसन्", "सन्ति"], "targets": ["आसीत्", "अवसत्", "आसन्"]}
+sum summary What happened
+
+past.revision [revision] Everything about the past
+core revision The past forms | 2 revision rules
+conditions revision When to use which | 3 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 1 revision rules
+sheet revision Quick sheet | 2 revision rules
+
+past.reading [episode] Read the Vetāla's opening
+r1 reading Read the scene | पुरा एकः राजा आसीत्। / सः नगरे अवसत्। / एकदा सः वनम् अगच्छत्।
+r2 reading Read on | तत्र सः वृक्षम् अपश्यत्। / वृक्षे शवः आसीत्। / शवः अवदत्।
+end summary
+
+past.check [check] Tell what happened
+
+UNIT future — The future
+
+future.sya [scene] Will read: पठिष्यति
+s1 story [IMAGE future-sya-s1] The third night
+t1 teach The sign -स्य- | For what will happen, put {{-इष्य-}} or {{-स्य-}} between the root and the present endings: {{पठ् + इष्य + ति}} makes {{पठिष्यति}}; {{दा + स्य + ति}} makes {{दास्यति}}. This tense is {{लृट्}}. Some roots change: {{दृश्}} gives {{द्रक्ष्यति}}. | examples: श्वः बालकः गृहम् गमिष्यति।; बालकाः पुस्तकम् पठिष्यन्ति।; अहम् तम् द्रक्ष्यामि।
+tb1 table पठ्: the future | “He will read, you will read, I will read” | 3 rows x 4 cols
+tb2 table भू: the future | “He will be, you will be, I will be” | 3 rows x 4 cols
+e1 explore | mark_words {"passage": ["गमिष्यति", "गच्छति", "पठिष्यति", "पठति", "भविष्यति", "भवति"], "targets": ["गमिष्यति", "पठिष्यति", "भविष्यति"]}
+e2 explore | time_slider {"forms": [{"label": {"en": "yesterday", "hi": "कल"}, "sa": "बालकः अपठत्।", "meaning": {"en": "The boy read.", "hi": "बालक ने पढ़ा।"}, "check": {"type": "tinanta", "dhatu": "पठ्", "lakara": "Lan", "purusha": "Prathama", "vacana": "Eka", "form": "अपठत्"}}, {"label": {"en": "now", "hi": "अब"}, "sa": "बालकः पठति।", "meaning": {"en": "The boy reads.", "hi": "बालक पढ़ता है।"}, "check": {"type": "tinanta", "dhatu": "पठ्", "lakara": "Lat", "purusha": "Prathama", "vacana": "Eka", "form": "पठति"}}, {"label": {"en": "tomorrow", "hi": "कल (आने वाला)"}, "sa": "बालकः पठिष्यति।", "meaning": {"en": "The boy will read.", "hi": "बालक पढ़ेगा।"}, "check": {"type": "tinanta", "dhatu": "पठ्", "lakara": "Lrt", "purusha": "Prathama", "vacana": "Eka", "form": "पठिष्यति"}}]}
+pn teach Pāṇini's future | Sūtra 3.3.13, {{लृट् शेषे च}}, gives {{लृट्}} for what will happen. 3.1.33, {{स्यतासी लृलुटोः}}, adds {{स्य}}. 7.2.35, {{आर्धधातुकस्येड् वलादेः}}, adds {{इ}} before a consonant, so {{पठ् + इ + स्य}}; and 8.3.59, {{आदेशप्रत्यययोः}}, turns {{स्}} into {{ष्}} after {{इ}}: {{पठिष्यति}}.
+sum summary The future
+
+future.plans [scene] Plans and promises
+s1 story [IMAGE future-plans-s1] An offer
+t1 teach I will, we will | The first person ends in {{-मि}} for “I” and {{-मः}} for “we”: {{करिष्यामि}} (I will do), {{करिष्यामः}} (we will do). With {{न}} it is a promise to refuse: {{न दास्यामि}}, “I will not give”. A question: {{किं करिष्यसि}}, “what will you do?” | examples: अहम् न पत्राणि दास्यामि।; वयम् पुस्तकम् पठिष्यामः।; किम् त्वम् करिष्यसि।
+tb1 table कृ: the future | “Will do” | 3 rows x 4 cols
+t2 teach Plans | The future is also for plans: {{श्वः गमिष्यामि}} (tomorrow I will go), {{पश्चात् पठिष्यामः}} (afterwards we will read). Time words help: {{श्वः}} (tomorrow), {{परश्वः}} (the day after), {{पश्चात्}} (afterwards). | examples: श्वः अहम् ग्रामम् गमिष्यामि।; पश्चात् वयम् पठिष्यामः।
+e1 explore | mark_words {"passage": ["गमिष्यामि", "गमिष्यामः", "पठिष्यामि", "पठिष्यति", "करिष्यामि", "करिष्यसि"], "targets": ["गमिष्यामि", "पठिष्यामि", "करिष्यामि"]}
+sum summary Plans and promises
+
+future.revision [revision] Everything about the future
+core revision The future forms | 2 revision rules
+conditions revision When to use which | 2 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 1 revision rules
+sheet revision Quick sheet | 2 revision rules
+
+future.check [check] Say what will happen
+
+UNIT should — Should and may
+
+should.advice [scene] He should read
+s1 story [IMAGE should-advice-s1] The fourth night
+t1 teach The mood of “should” | {{विधिलिङ्}} gives advice, rules and what is fitting: {{पठेत्}} (he should read), {{गच्छेत्}} (he should go), {{वदेत्}} (he should say). The sign is {{-ए-}} between the root and the ending: {{पठ + ए + त्}}. | examples: राजा प्रजाम् रक्षेत्।; त्वम् गृहम् गच्छेः।; वयम् सत्यम् वदेम।
+tb1 table पठ्: “should read” | “He should read, you should read, I should read” | 3 rows x 4 cols
+tb2 table गम्: “should go” | “He should go, you should go, I should go” | 3 rows x 4 cols
+t2 teach May, might, would | The same forms also say what may be: {{सः आगच्छेत्}}, “he may come”; and ask for advice: {{किम् अहं गच्छेयम्}}, “should I go?” Context tells whether it is advice, possibility or a question. | examples: सः आगच्छेत्।; किम् अहम् गच्छेयम्।
+e1 explore | mark_words {"passage": ["पठेत्", "पठति", "गच्छेत्", "गच्छति", "वदेत्", "वदति"], "targets": ["पठेत्", "गच्छेत्", "वदेत्"]}
+pn teach Pāṇini's “should” | Sūtra 3.3.161, {{विधिनिमन्त्रणामन्त्रणाधीष्टसंप्रश्नप्रार्थनेषु लिङ्}}, gives {{लिङ्}} for advice, invitation and request. 3.4.103, {{यासुट् परस्मैपदेषूदात्तो ङिच्च}}, adds {{यास्}}; 7.2.80, {{अतो येयः}}, makes {{या}} into {{इय्}}; 6.1.87, {{आद्गुणः}}, joins {{अ + इ}} into {{ए}}: {{पठेत्}}.
+sum summary Should
+
+should.rules [scene] Rules and possibilities
+s1 story [IMAGE should-rules-s1] A rule from old times
+t1 teach Rules and duties | The old law-books state duties with {{विधिलिङ्}}: {{ब्रूयात्}} (one should speak), {{न ब्रूयात्}} (one should not speak). Add {{न}} to say “should not”. {{ब्रू}} is “say”, and its {{लिङ्}} is {{ब्रूयात्}}. | examples: सत्यम् ब्रूयात्।; गुरुम् नमेत्।; न असत्यम् ब्रूयात्।
+r1 reading [IMAGE should-rules-r1] From the Vetāla's own book | रिक्तपाणिर् न पश्येत राजानं भिषजं गुरुम् / दैवज्ञं पुत्रकं मित्रं फलेन फलम् आदिशेत्
+t2 teach Maybe: {{स्यात्}} | {{स्यात्}} is the {{लिङ्}} of {{अस्}}: “it may be, perhaps”. {{स्युः}} is “they may be”. Often with {{यदि}} (if): {{यदि सः पठेत् तर्हि जानीयात्}}, “if he were to read, he would know”. | examples: स्यात् सः पण्डितः।; यदि सः पठेत् तर्हि सः जानीयात्।
+tb1 table अस्: “may be” | “It may be, you may be, I may be” | 3 rows x 4 cols
+e1 explore | mark_words {"passage": ["ब्रूयात्", "ब्रवीति", "स्यात्", "अस्ति", "जानीयात्", "जानाति"], "targets": ["ब्रूयात्", "स्यात्", "जानीयात्"]}
+sum summary Rules and possibilities
+
+should.revision [revision] Everything about “should”
+core revision The “should” forms | 2 revision rules
+conditions revision When to use which | 2 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 1 revision rules
+sheet revision Quick sheet | 2 revision rules
+
+should.check [check] Say the rule
+
+UNIT story-past — The story past
+
+lit.double [scene] Doubling the root
+s1 story [IMAGE lit-double-s1] The fifth night
+t1 teach The story past | {{लिट्}} is the past of old tales and epics, for what the teller did not see. The beginning of the root is doubled: {{भू}} gives {{बभूव}} (he became), {{गम्}} gives {{जगाम}} (he went), {{कृ}} gives {{चकार}} (he did), {{पठ्}} gives {{पपाठ}} (he read). | examples: पुरा राजा बभूव।; सः वनम् जगाम।; बालकः पुस्तकम् पपाठ।
+tb1 table भू: the story past | “He became, you became, I became” | 3 rows x 4 cols
+tb2 table गम्: the story past | “He went, you went, I went” | 3 rows x 4 cols
+e1 explore | mark_words {"passage": ["बभूव", "भवति", "जगाम", "गच्छति", "चकार", "करोति"], "targets": ["बभूव", "जगाम", "चकार"]}
+pn teach Pāṇini's doubling | Sūtra 3.2.115, {{परोक्षे लिट्}}, gives {{लिट्}} for the unseen past. 6.1.8, {{लिटि धातोरनभ्यासस्य}}, and 6.1.1, {{एकाचो द्वे प्रथमस्य}}, double the root. 7.4.62, {{कुहोश्चुः}}, turns a guttural in the doubled part into a palatal: {{ग}} becomes {{ज}}, giving {{जगाम}}.
+sum summary The story past
+
+lit.said [scene] उवाच: he said
+s1 story [IMAGE lit-said-s1] The word before every speech
+t1 teach उवाच and the others | {{वच्}} (say) has an irregular story past: {{उवाच}} (he said), {{ऊचतुः}} (the two said), {{ऊचुः}} (they said). {{उवाच}} introduces a speech: {{सः उवाच}}, “he said”. {{जगाद}} (from {{गद्}}) also means “he said”. | examples: काणभूतिः तम् उवाच।; ते ऊचुः।
+tb1 table वच्: the story past | “He said, you said, I said” | 3 rows x 4 cols
+t2 teach Seen and unseen | Compare: {{अवदत्}} is “he said” for something you know; {{उवाच}} is “he said” as the old teller narrates. In everyday Sanskrit you will find both; the epics prefer {{उवाच}}.
+e1 explore | mark_words {"passage": ["उवाच", "वदति", "ऊचुः", "अवदत्", "जगाद", "वक्ति"], "targets": ["उवाच", "ऊचुः", "जगाद"]}
+sum summary He said
+
+lit.revision [revision] Everything about the story past
+core revision The story-past forms | 2 revision rules
+conditions revision When to use which | 2 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 1 revision rules
+sheet revision Quick sheet | 2 revision rules
+
+lit.check [check] Begin the tale
+
+UNIT aorist-rare — The rare tenses
+
+aor.abhut [scene] The aorist
+s1 story [IMAGE aor-abhut-s1] The sixth night
+t1 teach What has just happened | {{लुङ्}} is the aorist, a past that says something has come to be, a done event. It wears the augment {{अ}}, like {{लङ्}}, but the middle is different: {{अभूत्}} (it became), {{अकार्षीत्}} (he did), {{अगमत्}} (he went). The forms vary by root, so learn them as they come. | examples: प्रकाशः अभूत्।; सः कर्म अकार्षीत्।; ते अगमन्।
+tb1 table भू: the aorist | “It has become, you have become, I have become” | 3 rows x 4 cols
+tb2 table कृ: the aorist | “He did, you did, I did” | 3 rows x 4 cols
+e1 explore | mark_words {"passage": ["अभूत्", "भवति", "अकार्षीत्", "करोति", "अश्रौषीत्", "शृणोति"], "targets": ["अभूत्", "अकार्षीत्", "अश्रौषीत्"]}
+pn teach Pāṇini's aorist | Sūtra 3.2.110, {{लुङ्}}, gives the aorist for what is past. 3.1.43, {{च्लि लुङि}}, puts {{च्लि}} before it, and 3.1.44, {{च्लेः सिच्}}, turns it into {{सिच्}}. 7.2.1, {{सिचि वृद्धिः परस्मैपदेषु}}, lengthens the root vowel, so {{कृ}} becomes {{कार्}}: {{अकार्षीत्}}.
+sum summary The aorist
+
+aor.ma [scene] Do not grieve
+s1 story [IMAGE aor-ma-s1] A word for every fear
+t1 teach {{मा}} and the bare aorist | To say “do not …” use {{मा}} with the aorist, and drop the augment {{अ}}: {{अगमः}} (you went) becomes {{मा गमः}} (do not go); {{अभूत्}} becomes {{मा भूत्}} (let it not be); {{अभैषीः}} becomes {{मा भैषीः}} (do not fear). {{मा शुचः}}, “do not grieve”, is the same kind of form. | examples: मा गमः।; मा भैषीः।; मा भूत्।
+tb1 table With and without the augment | From a statement to a plea | 4 rows x 3 cols
+e1 explore | mark_words {"passage": ["गमः", "अगमः", "भूत्", "अभूत्", "कार्षीः", "अकार्षीः"], "targets": ["गमः", "भूत्", "कार्षीः"]}
+pn teach Pāṇini's {{मा}} | Sūtra 3.3.175, {{माङि लुङ्}}, says that after {{मा}} the {{लुङ्}} is used. And 6.4.74, {{न माङ्योगे}}, says the augment {{अ}} does not appear when {{मा}} is attached. So {{अगमः}} becomes {{मा गमः}}.
+sum summary Do not
+
+aor.four [scene] The rare four
+s1 story [IMAGE aor-four-s1] The oldest speak
+t1 teach Four rare forms | {{लुट्}} is the far future, “not today”: {{भविता}}, {{कर्ता}}. {{आशीर्लिङ्}} is the blessing: {{भूयात्}}, “may he be”. {{लृङ्}} is “would have happened”: {{अभविष्यत्}}. And {{लेट्}} is found only in the Veda; you can skip it.
+tb1 table Three rare tenses of भू | He, the two, they | 3 rows x 4 cols
+t2 teach How each is used | {{श्वः भविता}}: tomorrow, or later, he will be. {{चिरं जीव्यात्}}: may he live long. {{यदि पठेत् …}} uses {{लिङ्}}, while {{यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} says “had he read, he would have known”: both halves take {{लृङ्}}. | examples: श्वः सः गन्ता।; चिरम् जीव्यात्।; यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्।
+e1 explore | mark_words {"passage": ["भूयात्", "भवति", "जीव्यात्", "जीवति", "जीयात्", "जयति"], "targets": ["भूयात्", "जीव्यात्", "जीयात्"]}
+pn teach The rules behind the rare forms | {{लुट्}} places an action beyond today. {{आशीर्लिङ्}} expresses a blessing. {{लृङ्}} describes an action that did not come about when its condition failed. These rules explain the three forms in the table; {{लेट्}} belongs to Vedic usage.
+sum summary The rare four
+
+aor.revision [revision] Everything about the aorist and the rare four
+core revision The forms | 3 revision rules
+conditions revision When to use which | 3 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 2 revision rules
+sheet revision Quick sheet | 3 revision rules
+
+aor.check [check] Spot the rare forms
+
+UNIT verb-classes-1 — Verb classes I
+
+vc1.bhu [scene] Class 1: भवति
+s1 story [IMAGE vc1-bhu-s1] The seventh night
+t1 teach The root and its class | Every verb has a root and a class; a dictionary lists both. Class 1, {{भ्वादि}}, adds {{-अ-}} after the root and strengthens its vowel: {{भू}} gives {{भवति}}, {{नी}} gives {{नयति}}, {{जि}} gives {{जयति}}, {{शुच्}} gives {{शोचति}}. Most verbs you know are class 1.
+tb1 table Class 1 roots | Root, meaning and “he …” | 6 rows x 3 cols
+tb2 table नी: all persons | “He leads, you lead, I lead” | 3 rows x 4 cols
+e1 explore | mark_words {"passage": ["भवति", "भूति", "नयति", "नीति", "जयति", "जिति"], "targets": ["भवति", "नयति", "जयति"]}
+pn teach Pāṇini's class sign | Sūtra 3.1.68, {{कर्तरि शप्}}, adds {{शप्}} (which leaves {{अ}}) after a root when the doer is named. 7.3.84, {{सार्वधातुकार्धधातुकयोः}}, strengthens the root's last vowel: {{भू}} becomes {{भो}}. Then 6.1.78, {{एचोऽयवायावः}}, makes {{ओ}} before a vowel into {{अव्}}: {{भवति}}.
+sum summary Class 1
+
+vc1.div [scene] Class 4: नृत्यति
+s1 story [IMAGE vc1-div-s1] The dancing drawer
+t1 teach The sign -य- | Class 4, {{दिवादि}}, puts {{-य-}} between the root and the ending, and the root keeps its own vowel: {{नृत्}} gives {{नृत्यति}} (dances), {{दिव्}} gives {{दीव्यति}} (plays), {{नश्}} gives {{नश्यति}} (is lost), {{कुप्}} gives {{कुप्यति}} (is angry). {{शम्}} lengthens: {{शाम्यति}}.
+tb1 table Class 4 roots | Root, meaning and “he …” | 7 rows x 3 cols
+tb2 table नृत्: all persons | “He dances, you dance, I dance” | 3 rows x 4 cols
+e1 explore | mark_words {"passage": ["नृत्यति", "पठति", "कुप्यति", "भवति", "तुष्यति", "जयति"], "targets": ["नृत्यति", "कुप्यति", "तुष्यति"]}
+pn teach Pāṇini's {{-य-}} | Sūtra 3.1.69, {{दिवादिभ्यः श्यन्}}, adds {{श्यन्}} after the roots of {{दिव्}} and its class; the {{श्}} and {{न्}} drop away and leave {{-य-}}. Because this sign is not the strengthening kind, the root keeps its own vowel: {{नृत्यति}}, not {{नर्त्यति}}.
+sum summary Class 4
+
+vc1.tud [scene] Class 6: तुदति
+s1 story [IMAGE vc1-tud-s1] The sharp drawer
+t1 teach The root stays as it is | Class 6, {{तुदादि}}, adds {{-अ-}} but does not strengthen the root: {{तुद्}} gives {{तुदति}} (strikes), {{लिख्}} gives {{लिखति}} (writes), {{विश्}} gives {{विशति}} (enters). Compare class 1, where {{भू}} becomes {{भवति}}. A few roots change: {{मुच्}} gives {{मुञ्चति}}, {{इष्}} gives {{इच्छति}}.
+tb1 table Class 6 roots | Root, meaning and “he …” | 7 rows x 3 cols
+tb2 table Class 1 or class 6? | The same {{-अ-}}, a different root vowel | 4 rows x 3 cols
+e1 explore | mark_words {"passage": ["तुदति", "भवति", "लिखति", "जयति", "विशति", "नयति"], "targets": ["तुदति", "लिखति", "विशति"]}
+pn teach Pāṇini's unstrengthened sign | Sūtra 3.1.77, {{तुदादिभ्यः शः}}, adds {{श}} after {{तुद्}} and its class. This sign is {{ङित्}}, “marked”, and 1.1.5, {{क्ङिति च}}, forbids the strengthening before a marked sign: {{तुदति}}. And 7.3.77, {{इषुगमियमां छः}}, turns {{इष्}}, {{गम्}} and {{यम्}} into {{इच्छ्}}, {{गच्छ्}}, {{यच्छ्}}.
+sum summary Class 6
+
+vc1.cur [scene] Class 10: चोरयति
+s1 story [IMAGE vc1-cur-s1] The last drawer
+t1 teach The sign -अय- | Class 10, {{चुरादि}}, adds {{-अय-}} after the root: {{चुर्}} gives {{चोरयति}} (steals), {{कथ्}} gives {{कथयति}} (tells), {{चिन्त्}} gives {{चिन्तयति}} (thinks), {{पूज्}} gives {{पूजयति}} (honours), {{रच्}} gives {{रचयति}} (composes), {{गण्}} gives {{गणयति}} (counts). A short middle vowel is strengthened.
+tb1 table Class 10 roots | Root, meaning and “he …” | 7 rows x 3 cols
+tb2 table चुर्: all persons | “He steals, you steal, I steal” | 3 rows x 4 cols
+e1 explore | mark_words {"passage": ["चोरयति", "भवति", "कथयति", "नृत्यति", "पूजयति", "तुदति"], "targets": ["चोरयति", "कथयति", "पूजयति"]}
+pn teach Pāṇini's {{णिच्}} | Sūtra 3.1.25, {{सत्यापपाशरूपवीणातूलश्लोकसेनालोमत्वचवर्मवर्णचूर्णचुरादिभ्यो णिच्}}, adds {{णिच्}}, which becomes {{-इ-}} and then {{-अय-}}. 7.3.86, {{पुगन्तलघूपधस्य च}}, strengthens a short middle vowel: {{चुर्}} becomes {{चोर्}}. So {{चोर + अय + ति}}: {{चोरयति}}.
+sum summary Class 10
+
+vc1.revision [revision] Everything about classes 1, 4, 6 and 10
+core revision The four signs | 4 revision rules
+conditions revision How to tell the class | 3 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 2 revision rules
+sheet revision Quick sheet | 4 revision rules
+
+vc1.check [check] Open the drawers
+
+UNIT verb-classes-2 — Verb classes II
+
+vc2.as [scene] Class 2: अस्ति, एति
+s1 story [IMAGE vc2-as-s1] The six odd drawers
+t1 teach No sign at all | Class 2, {{अदादि}}, adds no sign: the ending joins the root directly, and the root often changes inside. {{अस्}} gives {{अस्ति}}, {{स्तः}}, {{सन्ति}}; {{इ}} gives {{एति}}, {{इतः}}, {{यन्ति}}; {{या}} gives {{याति}}; {{ब्रू}} gives {{ब्रवीति}}.
+tb1 table अस्: to be | “He is, you are, I am” | 3 rows x 4 cols
+tb2 table इ: to go | “He goes, you go, I go” | 3 rows x 4 cols
+tb3 table Class 2 roots | Root, meaning and “he …” | 5 rows x 3 cols
+e1 explore | mark_words {"passage": ["एति", "भवति", "याति", "नयति", "हन्ति", "जयति"], "targets": ["एति", "याति", "हन्ति"]}
+pn teach Pāṇini's no-sign class | Sūtra 2.4.72, {{अदिप्रभृतिभ्यः शपः}}, deletes the sign {{शप्}} after {{अद्}} and its class, so the ending joins the root. 6.4.111, {{श्नसोरल्लोपः}}, drops the {{अ}} of {{अस्}} before a weak ending: {{स्तः}}, {{सन्ति}}.
+sum summary Class 2
+
+vc2.da [scene] Class 3: ददाति
+s1 story [IMAGE vc2-da-s1] The doubling drawer
+t1 teach The first syllable twice | Class 3, {{जुहोत्यादि}}, doubles the beginning of the root: {{दा}} gives {{ददाति}} (gives), {{धा}} gives {{दधाति}} (places), {{हु}} gives {{जुहोति}} (offers), {{भी}} gives {{बिभेति}} (fears), {{भृ}} gives {{बिभर्ति}} (carries). The plural ends in {{-ति}} after the doubled root: {{ददति}}.
+tb1 table Class 3 roots | Root, meaning and “he …” | 5 rows x 3 cols
+tb2 table दा: all persons | “He gives, you give, I give” | 3 rows x 4 cols
+e1 explore | mark_words {"passage": ["ददाति", "भवति", "दधाति", "पठति", "जुहोति", "नयति"], "targets": ["ददाति", "दधाति", "जुहोति"]}
+pn teach Pāṇini's doubling class | Sūtra 2.4.75, {{जुहोत्यादिभ्यः श्लुः}}, replaces the sign {{शप्}} with {{श्लु}}, which is deleted but leaves the root doubled. 6.1.10, {{श्लौ}}, orders the doubling. And 7.4.58, {{अत्र लोपोऽभ्यासस्य}}, shortens the doubled start, giving {{दद-}}.
+sum summary Class 3
+
+vc2.kr [scene] Classes 5 and 8: शृणोति, करोति
+s1 story [IMAGE vc2-kr-s1] The drawer that says o
+t1 teach The sign -नु- and -उ- | Class 5, {{स्वादि}}, adds {{-नु-}} (strong {{-नो-}}): {{आप्}} gives {{आप्नोति}} (gets), {{चि}} gives {{चिनोति}} (gathers), {{शक्}} gives {{शक्नोति}} (is able). {{श्रु}} follows it by a special rule: {{शृणोति}}. Class 8, {{तनादि}}, adds {{-उ-}} (strong {{-ओ-}}): {{कृ}} gives {{करोति}}, {{तन्}} gives {{तनोति}} (stretches).
+tb1 table Class 5 and 8 roots | Root, meaning and “he …” | 6 rows x 3 cols
+tb2 table कृ: all persons | “He does, you do, I do” | 3 rows x 4 cols
+e1 explore | mark_words {"passage": ["शृणोति", "भवति", "करोति", "पठति", "आप्नोति", "जयति"], "targets": ["शृणोति", "करोति", "आप्नोति"]}
+pn teach Pāṇini's {{नु}} and {{उ}} | Sūtra 3.1.73, {{स्वादिभ्यः श्नुः}}, adds {{श्नु}} to class 5, and 3.1.79, {{तनादिकृञ्भ्य उः}}, adds {{उ}} to class 8 and to {{कृ}}. And 3.1.74, {{श्रुवः शृ च}}, gives {{श्रु}} the {{श्नु}} sign and turns it into {{शृ}}: {{शृणोति}}.
+sum summary Classes 5 and 8
+
+vc2.jna [scene] Classes 7 and 9: रुणद्धि, जानाति
+s1 story [IMAGE vc2-jna-s1] The knowing drawer
+t1 teach The nasal and the -ना- | Class 7, {{रुधादि}}, puts a nasal inside the root before its last letter: {{रुध्}} gives {{रुणद्धि}} (blocks), {{भिद्}} gives {{भिनत्ति}} (splits), {{छिद्}} gives {{छिनत्ति}} (cuts), {{युज्}} gives {{युनक्ति}} (joins). Class 9, {{क्र्यादि}}, adds {{-ना-}}: {{ज्ञा}} gives {{जानाति}}, {{ग्रह्}} gives {{गृह्णाति}}, {{क्री}} gives {{क्रीणाति}}.
+tb1 table Class 7 and 9 roots | Root, meaning and “he …” | 7 rows x 3 cols
+tb2 table ज्ञा: all persons | “He knows, you know, I know” | 3 rows x 4 cols
+e1 explore | mark_words {"passage": ["जानाति", "भवति", "गृह्णाति", "पठति", "क्रीणाति", "रुणद्धि"], "targets": ["जानाति", "गृह्णाति", "क्रीणाति"]}
+pn teach Pāṇini's two signs | Sūtra 3.1.78, {{रुधादिभ्यः श्नम्}}, puts the infix {{श्नम्}} inside the root of class 7: {{रुध् + न + ध्}}. 3.1.81, {{क्र्यादिभ्यः श्ना}}, adds {{श्ना}} to class 9, which gives {{-ना-}}; and 6.4.112, {{श्नाऽभ्यस्तयोरातः}}, drops its {{आ}} before a weak ending: {{जानीतः}}.
+sum summary Classes 7 and 9
+
+vc2.revision [revision] Everything about the odd classes
+core revision The signs | 4 revision rules
+conditions revision How to tell the class | 4 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 2 revision rules
+sheet revision Quick sheet | 4 revision rules
+
+vc2.check [check] Name the odd ones
+
+UNIT atmanepada — Acting for oneself
+
+atm.te [scene] Acting for oneself
+s1 story [IMAGE atm-te-s1] The ninth night
+t1 teach Two sets of endings | So far all your verbs ended in {{-ति}}: {{परस्मैपदम्}}, “word for another”. The other set is {{आत्मनेपदम्}}, “word for oneself”: {{-ते}}, {{-एते}}, {{-न्ते}}. Some roots take only these: {{सेव्}} gives {{सेवते}}, {{लभ्}} gives {{लभते}}, {{वृत्}} gives {{वर्तते}}. | examples: सेवकः गुरुम् सेवते।; बालकः फलम् लभते।; सः ग्रामे वर्तते।
+tb1 table सेव्: for oneself | “He serves, you serve, I serve” | 3 rows x 4 cols
+tb2 table Roots with only these endings | Root, meaning and “he …” | 7 rows x 3 cols
+e1 explore | mark_words {"passage": ["सेवते", "पठति", "लभते", "भवति", "वर्तते", "नयति"], "targets": ["सेवते", "लभते", "वर्तते"]}
+pn teach Pāṇini's two sets | Sūtra 1.4.99, {{लः परस्मैपदम्}}, and 1.4.100, {{तङानावात्मनेपदम्}}, name the two sets; the second is the {{तङ्}} endings. 1.3.12, {{अनुदात्तङित आत्मनेपदम्}}, says roots with a marked sign take the second set. And 3.4.79, {{टित आत्मनेपदानां टेरे}}, turns the end of {{-त}} into {{-ते}}.
+sum summary For oneself
+
+atm.both [scene] Verbs with both sets
+s1 story [IMAGE atm-both-s1] The cook
+t1 teach Both sets | Many roots take both sets. The set can say who gets the benefit: {{पचति}} (he cooks, for others), {{पचते}} (he cooks for himself); {{यजति}} / {{यजते}} (he sacrifices for another / for himself); {{करोति}} / {{कुरुते}} (he does / he does for himself). In everyday Sanskrit the difference is often slight.
+tb1 table The same root, both sets | For another, and for oneself | 5 rows x 3 cols
+t2 teach The prefix can decide | With some prefixes the set is fixed: {{जि}} gives {{जयति}} (wins), but {{वि + जि}} gives {{विजयते}} (is victorious) and {{परा + जि}} gives {{पराजयते}} (is defeated). {{स्था}} gives {{तिष्ठति}} but {{प्र + स्था}} gives {{प्रतिष्ठते}} (sets out). | examples: सः विजयते।; सः पराजयते।
+e1 explore | mark_words {"passage": ["पचते", "पचति", "यजते", "यजति", "कुरुते", "करोति"], "targets": ["पचते", "यजते", "कुरुते"]}
+pn teach Pāṇini's choice | Sūtra 1.3.72, {{स्वरितञितः कर्त्रभिप्राये क्रियाफले}}, says the second set is used when the fruit of the action goes to the doer. And 1.3.78, {{शेषात् कर्तरि परस्मैपदम्}}, says that for all other roots the first set is the default. Prefixes can change the set; for example {{विपराभ्यां जेः}}, 1.3.19, gives {{विजयते}}.
+sum summary Both sets
+
+atm.revision [revision] Everything about the two sets
+core revision The endings | 2 revision rules
+conditions revision When to use which | 2 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 2 revision rules
+sheet revision Quick sheet | 2 revision rules
+
+atm.check [check] For oneself or for another
+
+UNIT prefixes — Prefixes
+
+pre.come [scene] Going becomes coming
+s1 story [IMAGE pre-come-s1] The tenth night
+t1 teach A little word in front | A prefix is a short word set in front of a verb root, and it changes the meaning: {{गच्छति}} (he goes) becomes {{आगच्छति}} (he comes), {{निर्गच्छति}} (he goes out), {{उपगच्छति}} (he approaches). The prefix stays in front; the ending is the same. These prefixes are called {{उपसर्गाः}}. | examples: बालकः गृहम् आगच्छति।; बालकः गृहात् निर्गच्छति।
+tb1 table गम् with prefixes | One root, many journeys | 7 rows x 2 cols
+tb2 table हृ with prefixes | One root, five great words | 5 rows x 2 cols
+e1 explore | mark_words {"passage": ["आगच्छति", "गच्छति", "निर्गच्छति", "पठति", "उपगच्छति", "वदति"], "targets": ["आगच्छति", "निर्गच्छति", "उपगच्छति"]}
+pn teach Pāṇini's prefixes | Sūtra 1.4.59, {{उपसर्गाः क्रियायोगे}}, names words like {{प्र}} and {{परा}} as {{उपसर्ग}} when they join a verb. 1.4.80, {{ते प्राग्धातोः}}, says they stand before the root. Together they give {{आ + गच्छति}} = {{आगच्छति}}.
+sum summary Prefixes
+
+pre.list [scene] All twenty-two
+s1 story [IMAGE pre-list-s1] The whole string
+t1 teach The twenty-two | There are twenty-two prefixes: {{प्र}}, {{परा}}, {{अप}}, {{सम्}}, {{अनु}}, {{अव}}, {{निस्}}, {{निर्}}, {{दुस्}}, {{दुर्}}, {{वि}}, {{आ}}, {{नि}}, {{अधि}}, {{अपि}}, {{अति}}, {{सु}}, {{उत्}}, {{अभि}}, {{प्रति}}, {{परि}}, {{उप}}. Each carries a direction or a shade.
+tb1 table Prefixes, first half | Eleven prefixes, their meaning and a verb | 11 rows x 3 cols
+tb2 table Prefixes, second half | Eleven more prefixes | 9 rows x 3 cols
+t2 teach Two meanings may differ | A prefix can turn a meaning around: {{जानाति}} (knows) but {{अवजानाति}} (despises); {{भवति}} (is) but {{पराभवति}} (is defeated); {{नयति}} (leads) but {{विनयति}} (trains). Always check the meaning of the whole word. | examples: सः अवजानाति।; सः पराभवति।
+e1 explore | mark_words {"passage": ["प्र", "पठति", "सम्", "फलम्", "उप", "बालकः"], "targets": ["प्र", "सम्", "उप"]}
+pn teach Pāṇini's list | Sūtra 1.4.58, {{प्रादयः}}, gives the list {{प्र}} onwards, and 1.4.59, {{उपसर्गाः क्रियायोगे}}, names those that join a verb {{उपसर्ग}}. The list of twenty-two is a tradition from the grammarians and is memorised as a verse.
+sum summary The twenty-two
+
+pre.revision [revision] Everything about prefixes
+core revision The prefixes | 2 revision rules
+conditions revision When to use which | 2 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 2 revision rules
+sheet revision Quick sheet | 2 revision rules
+
+pre.check [check] Fit the beads
+
+UNIT passive-causative — Passive and causative
+
+pc.passive [scene] Is read by
+s1 story [IMAGE pc-passive-s1] The eleventh night
+t1 teach By and is | Active: {{रामः पुस्तकं पठति}}, Rāma reads the book. Passive: {{रामेण पुस्तकं पठ्यते}}, the book is read by Rāma. The doer goes into the third case, the object becomes the subject, and the verb takes {{-य-}} and the endings for oneself: {{पठ्}} gives {{पठ्यते}}. | examples: रामेण पुस्तकम् पठ्यते।; बालकेन फलम् खाद्यते।
+tb1 table पठ्: the passive | “It is read, you are read, I am read” | 3 rows x 4 cols
+tb2 table Active and passive | “He …” and “it is … by him” | 6 rows x 3 cols
+r1 reading [IMAGE pc-passive-r1] A line that uses it | न हन्यते हन्यमाने शरीरे
+e1 explore | mark_words {"passage": ["पठ्यते", "पठति", "क्रियते", "करोति", "श्रूयते", "शृणोति"], "targets": ["पठ्यते", "क्रियते", "श्रूयते"]}
+pn teach Pāṇini's passive | Sūtra 3.4.69, {{लः कर्मणि च भावे चाकर्मकेभ्यः}}, says the verb endings can state the object, or the action itself for roots with no object. 3.1.67, {{सार्वधातुके यक्}}, adds {{यक्}}; and 1.3.13, {{भावकर्मणोः}}, gives the endings for oneself: {{पठ्यते}}.
+sum summary The passive
+
+pc.cause [scene] Makes someone read
+s1 story [IMAGE pc-cause-s1] A hand for every job
+t1 teach Making someone do it | The causative adds {{-अय-}} after a strengthened root and means “makes do”: {{पठ्}} gives {{पाठयति}} (makes read, teaches), {{कृ}} gives {{कारयति}} (makes do), {{भुज्}} gives {{भोजयति}} (feeds), {{गम्}} gives {{गमयति}} (sends). The one made to act goes in the second case. | examples: गुरुः बालकम् पाठम् पाठयति।; माता बालम् भोजयति।
+tb1 table The causative | Root, causative and meaning | 7 rows x 3 cols
+tb2 table पठ्: the causative | “He teaches, you teach, I teach” | 3 rows x 4 cols
+e1 explore | mark_words {"passage": ["पाठयति", "पठति", "कारयति", "करोति", "भोजयति", "भुनक्ति"], "targets": ["पाठयति", "कारयति", "भोजयति"]}
+pn teach Pāṇini's causative | Sūtra 3.1.26, {{हेतुमति च}}, adds {{णिच्}} when someone gets the action done. 7.2.115, {{अचो ञ्णिति}}, lengthens the root's vowel before it: {{पठ्}} becomes {{पाठ्}}. 3.1.32, {{सनाद्यन्ता धातवः}}, says the new stem is itself a root: {{पाठयति}}.
+sum summary The causative
+
+pc.want [scene] Wants to drink
+s1 story [IMAGE pc-want-s1] The last hand
+t1 teach Wanting to | The desiderative doubles the root and adds {{-स-}} (with {{-इ-}} before it for many roots): {{पा}} gives {{पिपासति}} (wants to drink), {{पठ्}} gives {{पिपठिषति}} (wants to read), {{गम्}} gives {{जिगमिषति}} (wants to go), {{भू}} gives {{बुभूषति}} (wants to be). It is called {{सन्}}.
+tb1 table Wanting to | Root, desiderative and meaning | 7 rows x 3 cols
+e1 explore | mark_words {"passage": ["पिपासति", "पिबति", "बुभूषति", "भवति", "जिगमिषति", "गच्छति"], "targets": ["पिपासति", "बुभूषति", "जिगमिषति"]}
+pn teach Pāṇini's wanting | Sūtra 3.1.7, {{धातोः कर्मणः समानकर्तृकादिच्छायां वा}}, gives {{सन्}} to a root when the same person wants to do the action. 6.1.9, {{सन्यङोः}}, orders the doubling, and 7.4.58, {{अत्र लोपोऽभ्यासस्य}}, shortens the first half. 7.2.35 adds the {{इ}}: {{पिपठिषति}}.
+sum summary Wanting to
+
+pc.revision [revision] Everything about the passive, causative and desiderative
+core revision The three forms | 3 revision rules
+conditions revision When to use which | 3 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 3 revision rules
+sheet revision Quick sheet | 3 revision rules
+
+pc.check [check] Three kinds of verbs
+
+UNIT participles — Words made from verbs
+
+part.ktva [scene] Having gone
+s1 story [IMAGE part-ktva-s1] The twelfth night
+t1 teach Having done | To say “having done X, he does Y” with the same doer, add {{-त्वा}} to the root: {{गम्}} gives {{गत्वा}} (having gone), {{कृ}} gives {{कृत्वा}}, {{श्रु}} gives {{श्रुत्वा}}, {{पठ्}} gives {{पठित्वा}}. With a prefix it is {{-य}}: {{आ + गम्}} gives {{आगत्य}}. These never change; they are indeclinable. | examples: सः गृहम् गत्वा पठति।; सः फलम् खादित्वा गच्छति।; सः आगत्य पठति।
+tb1 table Having done | Root, “having …” and the form with a prefix | 7 rows x 3 cols
+e1 explore | mark_words {"passage": ["गत्वा", "गच्छति", "श्रुत्वा", "शृणोति", "कृत्वा", "करोति"], "targets": ["गत्वा", "श्रुत्वा", "कृत्वा"]}
+e2 explore | word_factory {"roots": [{"dhatu": "पठ्", "gloss": {"en": "read", "hi": "पढ़ना"}}, {"dhatu": "गम्", "gloss": {"en": "go", "hi": "जाना"}}, {"dhatu": "कृ", "gloss": {"en": "do", "hi": "करना"}}, {"dhatu": "दृश्", "gloss": {"en": "see", "hi": "देखना"}}], "suffixes": [{"krt": "ktvA", "label": {"en": "having …", "hi": "… करके"}}]}
+pn teach Pāṇini's “having done” | Sūtra 3.4.21, {{समानकर्तृकयोः पूर्वकाले}}, gives {{क्त्वा}} for an earlier action by the same doer. 7.1.37, {{समासेऽनञ्पूर्वे क्त्वो ल्यप्}}, turns {{क्त्वा}} into {{ल्यप्}}, that is {{-य}}, after a prefix. 1.1.40, {{क्त्वातोसुन्कसुनः}}, says these endings are indeclinable.
+sum summary Having done
+
+part.tumun [scene] To go
+s1 story [IMAGE part-tumun-s1] A word that wants
+t1 teach In order to | Add {{-तुम्}} to the root to say “to do, in order to do”: {{गम्}} gives {{गन्तुम्}}, {{पठ्}} gives {{पठितुम्}}, {{कृ}} gives {{कर्तुम्}}, {{दृश्}} gives {{द्रष्टुम्}}. It goes with verbs of wanting and being able: {{इच्छति}}, {{शक्नोति}}, and with “goes”: {{द्रष्टुं गच्छति}}. | examples: सः पुस्तकम् पठितुम् इच्छति।; अहम् तम् द्रष्टुम् गच्छामि।; सः गन्तुम् शक्नोति।
+tb1 table In order to | Root and “to …” | 7 rows x 3 cols
+e1 explore | mark_words {"passage": ["गन्तुम्", "गत्वा", "कर्तुम्", "कृत्वा", "द्रष्टुम्", "दृष्ट्वा"], "targets": ["गन्तुम्", "कर्तुम्", "द्रष्टुम्"]}
+e2 explore | word_factory {"roots": [{"dhatu": "पठ्", "gloss": {"en": "read", "hi": "पढ़ना"}}, {"dhatu": "गम्", "gloss": {"en": "go", "hi": "जाना"}}, {"dhatu": "कृ", "gloss": {"en": "do", "hi": "करना"}}, {"dhatu": "दृश्", "gloss": {"en": "see", "hi": "देखना"}}], "suffixes": [{"krt": "tumun", "label": {"en": "to …", "hi": "… के लिए"}}, {"krt": "ktvA", "label": {"en": "having …", "hi": "… करके"}}]}
+pn teach Pāṇini's purpose | Sūtra 3.3.10, {{तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम्}}, gives {{तुमुन्}} when one action is for another action. And 3.3.158, {{समानकर्तृकेषु तुमुन्}}, gives it with verbs of wanting when the doer is the same.
+sum summary In order to
+
+part.kta [scene] Gone, has gone
+s1 story [IMAGE part-kta-s1] The one who has done
+t1 teach Done and having done | {{-त}} makes “done”, an adjective: {{गतः}} (gone), {{कृतः}} (done), {{उक्तः}} (said), {{श्रुतः}} (heard). It often has a passive sense: {{रामेण पुस्तकं पठितम्}}, “the book was read by Rāma”. {{-तवत्}} makes the active “has done”: {{रामः पुस्तकं पठितवान्}}. | examples: बालकः गतः।; रामेण पुस्तकम् पठितम्।; रामः पुस्तकम् पठितवान्।
+tb1 table Gone | Root, “done” in three genders | 6 rows x 4 cols
+tb2 table Has done | The active “has done” in three genders | 3 rows x 4 cols
+e1 explore | mark_words {"passage": ["गतः", "गच्छति", "कृतः", "करोति", "श्रुतः", "शृणोति"], "targets": ["गतः", "कृतः", "श्रुतः"]}
+e2 explore | word_factory {"roots": [{"dhatu": "पठ्", "gloss": {"en": "read", "hi": "पढ़ना"}}, {"dhatu": "गम्", "gloss": {"en": "go", "hi": "जाना"}}, {"dhatu": "कृ", "gloss": {"en": "do", "hi": "करना"}}, {"dhatu": "दृश्", "gloss": {"en": "see", "hi": "देखना"}}], "suffixes": [{"krt": "kta", "label": {"en": "done", "hi": "किया हुआ"}}, {"krt": "ktavatu", "label": {"en": "one who did", "hi": "जिसने किया"}}]}
+pn teach Pāṇini's “done” | Sūtra 1.1.26, {{क्तक्तवतू निष्ठा}}, names {{क्त}} and {{क्तवतु}} {{निष्ठा}}, and 3.2.102, {{निष्ठा}}, gives them for the past. 3.4.70, {{तयोरेव कृत्यक्तखलर्थाः}}, says {{क्त}} is used for the object or the bare action, and 3.4.72, {{गत्यर्थाकर्मकश्लिषशीङ्स्थाऽऽसवसजनरुहजीर्यतिभ्यश्च}}, lets it be active for verbs of going: {{गतः}}.
+sum summary Done
+
+part.shatr [scene] While going
+s1 story [IMAGE part-shatr-s1] The one who is going
+t1 teach While doing | {{-अत्}} (after the sign {{-अ-}}) or {{-मान}} makes “while doing”: {{गम्}} gives {{गच्छन्}} (going), {{पठ्}} gives {{पठन्}} (reading), {{कृ}} gives {{कुर्वन्}} (doing), {{सेव्}} gives {{सेवमानः}} (serving, for oneself). It agrees with its noun: {{गच्छन् बालकः}}, {{गच्छन्ती बालिका}}. | examples: बालकः गच्छन् पठति।; बालिका गच्छन्ती पठति।; शिष्यः सेवमानः वर्तते।
+tb1 table While doing | Root, “doing” in three genders | 4 rows x 4 cols
+tb2 table For oneself | The “-मान” form for ātmanepada roots | 3 rows x 4 cols
+e1 explore | mark_words {"passage": ["गच्छन्", "गतः", "पठन्", "पठितः", "सेवमानः", "सेवितः"], "targets": ["गच्छन्", "पठन्", "सेवमानः"]}
+e2 explore | word_factory {"roots": [{"dhatu": "पठ्", "gloss": {"en": "read", "hi": "पढ़ना"}}, {"dhatu": "गम्", "gloss": {"en": "go", "hi": "जाना"}}, {"dhatu": "कृ", "gloss": {"en": "do", "hi": "करना"}}, {"dhatu": "दृश्", "gloss": {"en": "see", "hi": "देखना"}}], "suffixes": [{"krt": "Satf", "label": {"en": "while …ing", "hi": "… हुए"}}]}
+pn teach Pāṇini's “while” | Sūtra 3.2.124, {{लटः शतृशानचावप्रथमासमानाधिकरणे}}, replaces the present endings with {{शतृ}} or {{शानच्}}, “while doing”, when the word is not in the first case with the verb. 7.1.78, {{नाभ्यस्ताच्छतुः}}, and 6.4.14, {{अत्वसन्तस्य चाधातोः}}, give the forms {{गच्छन्}} and {{गच्छत्}}.
+sum summary While doing
+
+part.krtya [scene] Must be done
+s1 story [IMAGE part-krtya-s1] The duty word
+t1 teach What ought to be done | {{-तव्य}}, {{-अनीय}} and {{-य}} (with a lengthened vowel) make “to be done”: {{कृ}} gives {{कर्तव्यम्}}, {{करणीयम्}}, {{कार्यम्}}; {{दा}} gives {{दातव्यम्}}, {{देयम्}}; {{गम्}} gives {{गन्तव्यम्}}. The doer is in the third case: {{मया गन्तव्यम्}}, “I must go”. | examples: मया गन्तव्यम्।; सत्यम् वक्तव्यम्।; बालकेन कर्म कार्यम्।
+tb1 table Must be done | Root and the three “must” forms | 6 rows x 4 cols
+e1 explore | mark_words {"passage": ["कर्तव्यम्", "कृतम्", "गन्तव्यम्", "गतम्", "देयम्", "दत्तम्"], "targets": ["कर्तव्यम्", "गन्तव्यम्", "देयम्"]}
+e2 explore | word_factory {"roots": [{"dhatu": "कृ", "gloss": {"en": "do", "hi": "करना"}}, {"dhatu": "गम्", "gloss": {"en": "go", "hi": "जाना"}}, {"dhatu": "दा", "gloss": {"en": "give", "hi": "देना"}}, {"dhatu": "श्रु", "gloss": {"en": "hear", "hi": "सुनना"}}, {"dhatu": "पठ्", "gloss": {"en": "read", "hi": "पढ़ना"}}], "suffixes": [{"krt": "tavya", "label": {"en": "must be …d", "hi": "करना चाहिए (-तव्य)"}}, {"krt": "anIyar", "label": {"en": "fit to be …d", "hi": "करने योग्य (-अनीय)"}}], "linga": "Napumsaka"}
+pn teach Pāṇini's “ought” | Sūtra 3.1.96, {{तव्यत्तव्यानीयरः}}, gives {{तव्यत्}}, {{तव्य}} and {{अनीयर्}}; 3.1.97, {{अचो यत्}}, gives {{यत्}} after a root ending in a vowel, and 3.1.124, {{ऋहलोर्ण्यत्}}, gives {{ण्यत्}}. 3.4.70, {{तयोरेव कृत्यक्तखलर्थाः}}, says the “must” words state the object or the bare action.
+sum summary Must be done
+
+part.revision [revision] Everything about words made from verbs
+core revision The five kinds | 5 revision rules
+conditions revision When to use which | 3 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 2 revision rules
+sheet revision Quick sheet | 5 revision rules
+
+part.check [check] Open the folds
+
+UNIT indeclinables — Small words
+
+avy.small [scene] Small words
+s1 story [IMAGE avy-small-s1] The last night
+t1 teach Words that never change | Some words have no endings: they are indeclinable, {{अव्ययम्}}. {{च}} (and), {{वा}} (or), {{अपि}} (also, even), {{एव}} (only, just), {{तु}} (but), {{हि}} (for, indeed), {{न}} (not), {{इव}} (like). They follow the word they belong to. | examples: रामः लक्ष्मणः च गच्छतः।; सः पठति वा लिखति।; बालकः अपि पठति।; सः एव गच्छति।; बालकः पठति बालिका तु लिखति।
+tb1 table Little words | Eight indeclinables | 8 rows x 3 cols
+e1 explore | mark_words {"passage": ["रामः", "च", "लक्ष्मणः", "वा", "बालकः", "अपि"], "targets": ["च", "वा", "अपि"]}
+pn teach Pāṇini's indeclinables | Sūtra 1.1.37, {{स्वरादिनिपातमव्ययम्}}, calls the words beginning with {{स्वर्}} and the particles {{निपात}}, “indeclinable”. 1.1.38, {{तद्धितश्चासर्वविभक्तिः}}, adds the {{तद्धित}} words that take no case ending. Because they are {{अव्यय}}, their case endings are deleted and they never change.
+sum summary Small words
+
+avy.iti [scene] इति: quotes and thoughts
+s1 story [IMAGE avy-iti-s1] The word that closes
+t1 teach Closing a thought | {{इति}} comes after a quoted word, thought or sentence: {{सः वदति ‘अहं गच्छामि’ इति}}, “he says: ‘I go’”. It also means “so”: {{इति उक्त्वा}}, “having said so”. In epics it joins with the next word: {{इत्युवाच}}, “saying so, he said”. | examples: सः अहम् गच्छामि इति वदति।; माता पठ इति वदति।; बालकः अहम् पण्डितः अस्मि इति चिन्तयति।
+e1 explore | mark_words {"passage": ["सः", "वदति", "अहम्", "गच्छामि", "इति", "च"], "targets": ["इति"]}
+pn teach Pāṇini's {{इति}} | {{इति}} is a {{निपात}}, a particle, listed with {{च}} and {{वा}} in the grammarians' lists of {{चादि}}. By 1.4.57, {{चादयोऽसत्त्वे}}, it has the name {{निपात}} and, by 1.1.37, it is indeclinable.
+sum summary Thus
+
+avy.where [scene] Here, there, then
+s1 story [IMAGE avy-where-s1] The answer in three letters
+t1 teach Three endings | Place words end in {{-त्र}}: {{अत्र}} (here), {{तत्र}} (there), {{यत्र}} (where), {{कुत्र}} (where?), {{सर्वत्र}} (everywhere). Time words end in {{-दा}}: {{यदा}} (when), {{तदा}} (then), {{कदा}} (when?), {{सर्वदा}} (always), {{एकदा}} (once). Manner words end in {{-था}}: {{यथा}} (as), {{तथा}} (so), {{कथम्}} (how?). | examples: अत्र पुस्तकम् अस्ति।; यदा सः गच्छति तदा अहम् पठामि।; यथा सः वदति तथा अहम् करोमि।
+tb1 table Where, when, how | The pattern in three columns | 5 rows x 4 cols
+e1 explore | mark_words {"passage": ["अत्र", "यदा", "तत्र", "तदा", "यत्र", "सर्वदा"], "targets": ["यदा", "तदा", "सर्वदा"]}
+pn teach Pāṇini's three endings | These words are made with {{तद्धित}} endings. 5.3.10, {{सप्तम्यास्त्रल्}}, makes {{-त्र}} (place); 5.3.15, {{सर्वैकान्यकिंयत्तदः काले दा}}, makes {{-दा}} (time); 5.3.23, {{प्रकारवचने थाल्}}, makes {{-था}} (manner). By 1.1.38 they take no case endings, so they are indeclinable.
+sum summary Where, when, how
+
+avy.revision [revision] Everything about small words
+core revision The small words | 3 revision rules
+conditions revision When to use which | 2 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 2 revision rules
+sheet revision Quick sheet | 3 revision rules
+
+avy.check [check] Round the stone

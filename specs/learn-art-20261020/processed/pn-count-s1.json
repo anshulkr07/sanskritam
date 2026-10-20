@@ -1,0 +1,1013 @@
+{
+  "id": "pn-count-s1",
+  "where": "pn.count#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Ganaka the knotted-cord spirit tying knots in a long cord with great pride, a row of old palm leaves laid out on a low table; Dādī laughing; Śuka counting on his claws; lamplight.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nganaka: A small grey spirit made of knotted cords, with two round pebbles for eyes and a cord of beads trailing behind.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "pn.count",
+    "template": "scene",
+    "title": {
+      "en": "Counting to ten",
+      "hi": "दस तक गिनती"
+    },
+    "title_sa": "एकम् द्वे त्रीणि",
+    "minutes": 6,
+    "teaches": [
+      "num.one-ten"
+    ],
+    "needs": [
+      "num.plural",
+      "pron.kim-yad"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Knots on a string",
+          "hi": "डोरी पर गाँठें"
+        },
+        "image": {
+          "id": "pn-count-s1",
+          "brief": "Ganaka the knotted-cord spirit tying knots in a long cord with great pride, a row of old palm leaves laid out on a low table; Dādī laughing; Śuka counting on his claws; lamplight.",
+          "alt": {
+            "en": "A cord spirit ties knots to count a row of old leaves while Dādī laughs",
+            "hi": "डोरी का भूत गाँठें लगाकर पुराने पत्रों की पंक्ति गिन रहा, दादी हँसती हुई"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "acarya",
+            "ganaka"
+          ],
+          "place": "pathashala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Ganaka unwinds one of his cords and ties a knot. “एकम्.” Another. “द्वे.” Another. “त्रीणि.” He is very proud. “And these?” He holds up a row of old leaves. Dādī laughs. “Count them properly: the numbers up to four change with the gender of what you count, and from five they never do.”",
+          "hi": "गणक अपनी एक डोरी खोलकर गाँठ लगाता है। “एकम्।” दूसरी। “द्वे।” तीसरी। “त्रीणि।” वह बहुत गर्वित है। “और ये?” वह पुराने पत्रों की एक पंक्ति उठाता है। दादी हँसती हैं। “ठीक से गिनो: चार तक की संख्याएँ गिनी जाने वाली चीज़ के लिंग से बदलती हैं, पाँच से आगे कभी नहीं।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "One to four: they change",
+          "hi": "एक से चार: बदलते हैं"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.one-ten"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{एक}} is “one” and acts like a pronoun: {{एकः}}, {{एका}}, {{एकम्}}. {{द्वि}} (two) is dual only. {{त्रि}} (three) and {{चतुर्}} (four) have a different word for the feminine: {{तिस्रः}}, {{चतस्रः}}. These words agree with the noun, like an adjective.",
+          "hi": "{{एक}} का अर्थ ‘एक’ है और वह सर्वनाम की तरह चलता है: {{एकः}}, {{एका}}, {{एकम्}}। {{द्वि}} (दो) केवल द्विवचन है। {{त्रि}} (तीन) और {{चतुर्}} (चार) के स्त्रीलिंग का रूप अलग है: {{तिस्रः}}, {{चतस्रः}}। ये शब्द विशेषण की तरह संज्ञा से मेल खाते हैं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "1 to 4 by gender",
+          "hi": "1 से 4 लिंग के अनुसार"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.one-ten"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The first four numbers in the first case",
+          "hi": "पहली चार संख्याएँ प्रथमा में"
+        },
+        "columns": [
+          {
+            "en": "Number",
+            "hi": "संख्या"
+          },
+          {
+            "en": "Masculine",
+            "hi": "पुंलिंग"
+          },
+          {
+            "en": "Feminine",
+            "hi": "स्त्रीलिंग"
+          },
+          {
+            "en": "Neuter",
+            "hi": "नपुंसक"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "1",
+                "hi": "१"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एकः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एका",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एकम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "2",
+                "hi": "२"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "द्वौ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "द्वे",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "द्वे",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "3",
+                "hi": "३"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "त्रयः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तिस्रः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "त्रीणि",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "4",
+                "hi": "४"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "चत्वारः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "चतस्रः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "चत्वारि",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "Two takes the dual and agrees: {{द्वौ बालकौ}}, {{द्वे लते}}, {{द्वे फले}}.",
+          "hi": "दो द्विवचन लेता है और मेल खाता है: {{द्वौ बालकौ}}, {{द्वे लते}}, {{द्वे फले}}।"
+        }
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "5 to 10 stay the same",
+          "hi": "5 से 10 वैसे ही रहते हैं"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.one-ten"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The numbers five to ten",
+          "hi": "पाँच से दस की संख्याएँ"
+        },
+        "columns": [
+          {
+            "en": "Number",
+            "hi": "संख्या"
+          },
+          {
+            "en": "Word",
+            "hi": "शब्द"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "5",
+                "hi": "५"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पञ्च",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "6",
+                "hi": "६"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "षट्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "7",
+                "hi": "७"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सप्त",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "8",
+                "hi": "८"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अष्ट",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "9",
+                "hi": "९"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नव",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "10",
+                "hi": "१०"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "दश",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "From five on they are plural only, one form for all genders: {{पञ्च बालकाः}}, {{षट् लताः}}, {{सप्त फलानि}}. {{अष्ट}} is also {{अष्टौ}}.",
+          "hi": "पाँच से आगे केवल बहुवचन, सभी लिंगों के लिए एक रूप: {{पञ्च बालकाः}}, {{षट् लताः}}, {{सप्त फलानि}}। {{अष्ट}} का {{अष्टौ}} भी है।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Counting things",
+          "hi": "वस्तुएँ गिनना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.one-ten"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "The number comes before the noun, in the same case: {{पञ्च बालकाः}} (five boys), {{द्वे लते}} (two vines), {{त्रीणि फलानि}} (three fruits). In the instrumental or genitive the number changes too: {{त्रिभिः बालकैः}}, {{त्रयाणां बालकानाम्}}.",
+          "hi": "संख्या संज्ञा से पहले आती है, उसी विभक्ति में: {{पञ्च बालकाः}} (पाँच बालक), {{द्वे लते}} (दो लताएँ), {{त्रीणि फलानि}} (तीन फल)। तृतीया या षष्ठी में संख्या भी बदलती है: {{त्रिभिः बालकैः}}, {{त्रयाणां बालकानाम्}}।"
+        },
+        "examples": [
+          {
+            "sa": "पञ्च बालकाः पठन्ति।",
+            "meaning": {
+              "en": "Five boys read.",
+              "hi": "पाँच बालक पढ़ते हैं।"
+            },
+            "words": [
+              {
+                "sa": "पञ्च",
+                "gloss": {
+                  "en": "five",
+                  "hi": "पाँच"
+                },
+                "check": null
+              },
+              {
+                "sa": "बालकाः",
+                "gloss": {
+                  "en": "boys",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठन्ति",
+                "gloss": {
+                  "en": "read",
+                  "hi": "पढ़ते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "द्वे लते स्तः।",
+            "meaning": {
+              "en": "There are two vines.",
+              "hi": "दो लताएँ हैं।"
+            },
+            "words": [
+              {
+                "sa": "द्वे",
+                "gloss": {
+                  "en": "two",
+                  "hi": "दो"
+                },
+                "check": null
+              },
+              {
+                "sa": "लते",
+                "gloss": {
+                  "en": "vines",
+                  "hi": "लताएँ"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "लता",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "स्तः",
+                "gloss": {
+                  "en": "are",
+                  "hi": "हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "त्रीणि फलानि सन्ति।",
+            "meaning": {
+              "en": "There are three fruits.",
+              "hi": "तीन फल हैं।"
+            },
+            "words": [
+              {
+                "sa": "त्रीणि",
+                "gloss": {
+                  "en": "three",
+                  "hi": "तीन"
+                },
+                "check": null
+              },
+              {
+                "sa": "फलानि",
+                "gloss": {
+                  "en": "fruits",
+                  "hi": "फल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "फल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "सन्ति",
+                "gloss": {
+                  "en": "are",
+                  "hi": "हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.one-ten"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“Three leaves” (neuter): which form?",
+          "hi": "‘तीन पत्र’ (नपुंसक): कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{त्रीणि}}: three, neuter.",
+          "hi": "{{त्रीणि}}: तीन, नपुंसक।"
+        },
+        "options": [
+          {
+            "sa": "त्रयः पत्राणि",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "त्रीणि पत्राणि",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "तिस्रः पत्राणि",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.one-ten"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each number to its word.",
+          "hi": "हर संख्या को उसके शब्द से जोड़िए।"
+        },
+        "explain": {
+          "en": "Five to ten are the same in every gender.",
+          "hi": "पाँच से दस हर लिंग में एक-से हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": null,
+              "text": {
+                "en": "5",
+                "hi": "५"
+              },
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "पञ्च",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": null,
+              "text": {
+                "en": "7",
+                "hi": "७"
+              },
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "सप्त",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": null,
+              "text": {
+                "en": "9",
+                "hi": "९"
+              },
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "नव",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": null,
+              "text": {
+                "en": "10",
+                "hi": "१०"
+              },
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "दश",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.one-ten"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every number.",
+          "hi": "हर संख्या को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "पञ्च",
+            "बालकः",
+            "सप्त",
+            "फलम्",
+            "दश",
+            "नदी"
+          ],
+          "targets": [
+            "पञ्च",
+            "सप्त",
+            "दश"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.one-ten"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Count, as for neuter things: “one, two, three, four.”",
+          "hi": "नपुंसक वस्तुओं की तरह गिनिए: ‘एक, दो, तीन, चार।’"
+        },
+        "explain": {
+          "en": "{{एकम् द्वे त्रीणि चत्वारि}}: counting neuter things.",
+          "hi": "{{एकम् द्वे त्रीणि चत्वारि}}: नपुंसक वस्तुएँ गिनना।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "एकम्",
+          "द्वे",
+          "त्रीणि",
+          "चत्वारि"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Count the leaves",
+          "hi": "पत्र गिनिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.one-ten"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“Two girls” (feminine). Which form?",
+          "hi": "‘दो बालिकाएँ’ (स्त्रीलिंग)। कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{द्वे}}: two, feminine.",
+          "hi": "{{द्वे}}: दो, स्त्रीलिंग।"
+        },
+        "options": [
+          {
+            "sa": "द्वौ बालिके",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "द्वे बालिके",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "तिस्रः बालिकाः",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“द्वे बालिके,” you say, counting two figures carved on a leaf. Ganaka ties a knot; the cord glows. Another; another. Down the table the old leaves rise a hand's breadth into the air and, one by one, settle into a neat row.",
+            "hi": "“द्वे बालिके,” आप कहते हैं, पत्र पर खुदी दो आकृतियाँ गिनते हुए। गणक एक गाँठ लगाता है; डोरी चमक उठती है। फिर एक; फिर एक। मेज़ पर पुराने पत्र हथेली भर ऊपर उठते हैं और एक-एक करके सुघड़ पंक्ति में बैठ जाते हैं।"
+          },
+          "failure": {
+            "en": "The knot slips. Two, feminine: {{द्वे}}.",
+            "hi": "गाँठ फिसल जाती है। दो, स्त्रीलिंग: {{द्वे}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Counting to ten",
+          "hi": "दस तक गिनती"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "एकः द्वौ त्रयः चत्वारः",
+            "text": {
+              "en": "One to four, masculine.",
+              "hi": "एक से चार, पुंलिंग।"
+            }
+          },
+          {
+            "sa": "पञ्च षट् सप्त अष्ट नव दश",
+            "text": {
+              "en": "Five to ten, all genders.",
+              "hi": "पाँच से दस, सभी लिंग।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "One to four agree with the noun.",
+              "hi": "एक से चार संज्ञा से मेल खाते हैं।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "pn-count-s1",
+    "brief": "Ganaka the knotted-cord spirit tying knots in a long cord with great pride, a row of old palm leaves laid out on a low table; Dādī laughing; Śuka counting on his claws; lamplight.",
+    "alt": {
+      "en": "A cord spirit ties knots to count a row of old leaves while Dādī laughs",
+      "hi": "डोरी का भूत गाँठें लगाकर पुराने पत्रों की पंक्ति गिन रहा, दादी हँसती हुई"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "acarya",
+      "ganaka"
+    ],
+    "place": "pathashala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Ganaka the knotted-cord spirit tying knots in a long cord with great pride, a row of old palm leaves laid out on a low table; Dādī laughing; Śuka counting on his claws; lamplight.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nganaka: A small grey spirit made of knotted cords, with two round pebbles for eyes and a cord of beads trailing behind.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-47a8ac26-1950-48e5-9e46-09099147df77.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "c745aa2a9e6935324e49adfe4e4f28de7cc124a4068297a7f4b2d1bac0219c34",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\pn-count-s1-phone-7f0b0111.webp",
+      "key": "learn/pn-count-s1-phone-7f0b0111.webp",
+      "sha256": "7f0b0111d99fc1cd5345bd6cea66a3e3070364c5a365506cbf5b826fbe9b77fd",
+      "bytes": 106480,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/pn-count-s1-phone-7f0b0111.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\pn-count-s1-tablet-b312780a.webp",
+      "key": "learn/pn-count-s1-tablet-b312780a.webp",
+      "sha256": "b312780a54416ee7671ec1df2f7677d3cc3208a7d7b788d6d85fb74f05b9585f",
+      "bytes": 397402,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/pn-count-s1-tablet-b312780a.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

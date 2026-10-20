@@ -1,0 +1,855 @@
+{
+  "id": "c1-dvandva-s1",
+  "where": "c1.dvandva#s1",
+  "ratio": "4:3",
+  "expected": [
+    "रामलक्ष्मणौ"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The fifteenth statue: two stone figures standing back to back on one plinth, one holding a lotus, the other a bow; Śuka reading the long carved name on the plinth; Dādī with her hand on the stone; Lubdhaka's foreman copying it down.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsamasika: A small spirit of pale granite made of two slender figures joined at the back, each with a different lotus in hand, who finish each other's sentences.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nरामलक्ष्मणौ All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "c1.dvandva",
+    "template": "scene",
+    "title": {
+      "en": "X and Y",
+      "hi": "क और ख"
+    },
+    "title_sa": "रामलक्ष्मणौ",
+    "minutes": 6,
+    "teaches": [
+      "sam.dvandva"
+    ],
+    "needs": [
+      "sandhi.padaccheda"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The fifteenth statue",
+          "hi": "पन्द्रहवीं प्रतिमा"
+        },
+        "image": {
+          "id": "c1-dvandva-s1",
+          "brief": "The fifteenth statue: two stone figures standing back to back on one plinth, one holding a lotus, the other a bow; Śuka reading the long carved name on the plinth; Dādī with her hand on the stone; Lubdhaka's foreman copying it down.",
+          "alt": {
+            "en": "Two stone figures back to back on one plinth, one with a lotus and one with a bow",
+            "hi": "एक आसन पर पीठ से पीठ टिकाए दो पत्थर की आकृतियाँ, एक कमल लिए, दूसरी धनुष लिए"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "samasika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The fifteenth statue is two figures standing back to back, one holding a lotus, the other a bow. Their plinth reads one long name: “रामलक्ष्मणौ.” “One name,” says Śuka, “for two people.” “It is a compound,” says Dādī. “Two words packed into one so that they walk together. This kind means ‘and’: Rāma and Lakṣmaṇa. We call it dvandva, the pair.”",
+          "hi": "पन्द्रहवीं प्रतिमा पीठ से पीठ टिकाए दो आकृतियाँ हैं, एक के हाथ में कमल, दूसरी के हाथ में धनुष। उनके आसन पर एक लम्बा नाम लिखा है: “रामलक्ष्मणौ।” “एक नाम,” शुक कहता है, “दो व्यक्तियों के लिए।” “यह समास है,” दादी कहती हैं। “दो शब्द एक में बँधे ताकि वे साथ चलें। इस प्रकार का अर्थ ‘और’ है: राम और लक्ष्मण। इसे द्वन्द्व कहते हैं, जोड़ी।”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "रामः च लक्ष्मणः च = रामलक्ष्मणौ।",
+            "gloss": {
+              "en": "Rāma and Lakṣmaṇa = Rāma-Lakṣmaṇa.",
+              "hi": "राम और लक्ष्मण = रामलक्ष्मण।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The pair",
+          "hi": "जोड़ी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.dvandva"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A compound is a word made of two or more words, with the endings of the first left off. A {{द्वन्द्वः}} means “and”: {{रामः च लक्ष्मणः च}} becomes {{रामलक्ष्मणौ}}. The compound takes the number of the whole: dual for two, plural for several. A set of things is neuter singular: {{पाणिपादम्}}, “hands and feet”.",
+          "hi": "समास दो या अधिक शब्दों से बना एक शब्द है, जिसमें पहले शब्दों के प्रत्यय छूट जाते हैं। {{द्वन्द्वः}} का अर्थ ‘और’ है: {{रामः च लक्ष्मणः च}} से {{रामलक्ष्मणौ}}। समास पूरे का वचन लेता है: दो के लिए द्विवचन, कई के लिए बहुवचन। वस्तुओं का समूह नपुंसक एकवचन होता है: {{पाणिपादम्}}, ‘हाथ और पैर’।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "समासः",
+          "meaning": {
+            "en": "a compound word",
+            "hi": "समस्त शब्द"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "The pair",
+          "hi": "जोड़ी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.dvandva"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "X and Y",
+          "hi": "क और ख"
+        },
+        "columns": [
+          {
+            "en": "Compound",
+            "hi": "समास"
+          },
+          {
+            "en": "Unpacked",
+            "hi": "विग्रह"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "रामलक्ष्मणौ",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "रामलक्ष्मण",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "रामः च लक्ष्मणः च",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "Rāma and Lakṣmaṇa",
+                "hi": "राम और लक्ष्मण"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "मातापितरौ",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "मातापितृ",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "माता च पिता च",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "mother and father",
+                "hi": "माता और पिता"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "गुरुशिष्यौ",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "गुरुशिष्य",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गुरुः च शिष्यः च",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "teacher and pupil",
+                "hi": "गुरु और शिष्य"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "धर्मार्थकाममोक्षाः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "धर्मार्थकाममोक्ष",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "धर्मः च अर्थः च कामः च मोक्षः च",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "duty, wealth, desire and freedom",
+                "hi": "धर्म, अर्थ, काम और मोक्ष"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "पाणिपादम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "पाणिपाद",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पाणी च पादौ च",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "hands and feet",
+                "hi": "हाथ और पैर"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "सुखदुःखे",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "सुखदुःख",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "सुखं च दुःखं च",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "pleasure and pain",
+                "hi": "सुख और दुःख"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{मातापितरौ}}: the first member {{माता}} is shortened.",
+          "hi": "{{मातापितरौ}}: पहला पद {{माता}} छोटा हो गया है।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.dvandva"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{रामलक्ष्मणौ}} means…",
+          "hi": "{{रामलक्ष्मणौ}} का अर्थ…"
+        },
+        "explain": {
+          "en": "A dvandva means “and”.",
+          "hi": "द्वन्द्व का अर्थ ‘और’ है।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "Rāma's Lakṣmaṇa",
+              "hi": "राम का लक्ष्मण"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "the Lakṣmaṇa who is Rāma",
+              "hi": "वह लक्ष्मण जो राम है"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Rāma and Lakṣmaṇa",
+              "hi": "राम और लक्ष्मण"
+            },
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.dvandva"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “mother and father”.",
+          "hi": "कहिए: ‘माता और पिता’।"
+        },
+        "explain": {
+          "en": "{{मातापितरौ}}: a dvandva in the dual.",
+          "hi": "{{मातापितरौ}}: द्विवचन में द्वन्द्व।"
+        },
+        "options": [],
+        "answers": [
+          "मातापितरौ"
+        ],
+        "tiles": [
+          "माता",
+          "पितरौ",
+          "पिता",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.dvandva"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each compound to its unpacking.",
+          "hi": "हर समास को उसके विग्रह से जोड़िए।"
+        },
+        "explain": {
+          "en": "Every one means “and”.",
+          "hi": "हर एक का अर्थ ‘और’ है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "रामलक्ष्मणौ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "रामः च लक्ष्मणः च",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "गुरुशिष्यौ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "गुरुः च शिष्यः च",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पाणिपादम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "पाणी च पादौ च",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "सुखदुःखे",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "सुखं च दुःखं च",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.dvandva"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every dvandva (the “and” compounds).",
+          "hi": "हर द्वन्द्व (‘और’ वाला समास) छुइए।"
+        },
+        "params": {
+          "passage": [
+            "रामलक्ष्मणौ",
+            "रामः",
+            "मातापितरौ",
+            "माता",
+            "गुरुशिष्यौ",
+            "गुरुः"
+          ],
+          "targets": [
+            "रामलक्ष्मणौ",
+            "मातापितरौ",
+            "गुरुशिष्यौ"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.dvandva"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "compound_unpacker",
+        "prompt": {
+          "en": "Unpack the compound, then name its kind.",
+          "hi": "समास को खोलिए, फिर उसका प्रकार बताइए।"
+        },
+        "params": {
+          "compound": "रामलक्ष्मणौ",
+          "parts": [
+            "राम",
+            "लक्ष्मण"
+          ],
+          "kind": "dvandva",
+          "vigraha": "रामः च लक्ष्मणः च",
+          "meaning": {
+            "en": "Rāma and Lakṣmaṇa",
+            "hi": "राम और लक्ष्मण"
+          }
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Two in one",
+          "hi": "दो एक में"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.dvandva"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{धर्मार्थकाममोक्षाः}} has how many members?",
+          "hi": "{{धर्मार्थकाममोक्षाः}} में कितने सदस्य हैं?"
+        },
+        "explain": {
+          "en": "Duty, wealth, desire, freedom: four, so the plural.",
+          "hi": "धर्म, अर्थ, काम, मोक्ष: चार, इसलिए बहुवचन।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "Two",
+              "hi": "दो"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Three",
+              "hi": "तीन"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Four",
+              "hi": "चार"
+            },
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“धर्मार्थकाममोक्षाः,” you say, reading the four, and the two figures on the plinth turn, back to back, and look at each other. “Four goals of life,” the first one says. “In one word,” says the second. “We are only two,” they say together, “but we know how to stand for many.” They step apart, and the plinth does not break.",
+            "hi": "“धर्मार्थकाममोक्षाः,” आप चारों को पढ़ते हुए कहते हैं, और आसन पर की दोनों आकृतियाँ पीठ से पीठ टिकाए मुड़ती हैं और एक-दूसरे को देखती हैं। “जीवन के चार लक्ष्य,” पहली कहती है। “एक शब्द में,” दूसरी कहती है। “हम केवल दो हैं,” वे एक साथ कहती हैं, “पर कई के लिए खड़े होना जानती हैं।” वे अलग होती हैं, और आसन नहीं टूटता।"
+          },
+          "failure": {
+            "en": "The figures stay back to back. Four members make a plural: {{धर्मार्थकाममोक्षाः}}.",
+            "hi": "आकृतियाँ पीठ से पीठ टिकाए रहती हैं। चार सदस्य बहुवचन बनाते हैं: {{धर्मार्थकाममोक्षाः}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's pair",
+          "hi": "पाणिनि की जोड़ी"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sam.dvandva"
+        ],
+        "sutras": [
+          "2.2.29",
+          "2.2.30",
+          "2.1.4"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 2.2.29, {{चार्थे द्वन्द्वः}}, says that words joined with the sense of {{च}} (and) form a {{द्वन्द्वः}}. 2.2.30, {{उपसर्जनं पूर्वम्}}, says the subordinate word goes first; and 2.1.22, {{तत्पुरुषः}}, 2.1.4, {{सह सुपा}}, say every compound is made by joining with the case endings.",
+          "hi": "सूत्र 2.2.29, {{चार्थे द्वन्द्वः}}, कहता है कि {{च}} (और) के अर्थ में जुड़े शब्द {{द्वन्द्वः}} बनाते हैं। 2.2.30, {{उपसर्जनं पूर्वम्}}, कहता है कि गौण शब्द पहले रखा जाता है; और 2.1.4, {{सह सुपा}}, कहता है कि हर समास विभक्ति-सहित शब्दों को जोड़कर बनता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The pair",
+          "hi": "जोड़ी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "रामलक्ष्मणौ",
+            "text": {
+              "en": "Rāma and Lakṣmaṇa.",
+              "hi": "राम और लक्ष्मण।"
+            }
+          },
+          {
+            "sa": "मातापितरौ",
+            "text": {
+              "en": "Mother and father.",
+              "hi": "माता और पिता।"
+            }
+          },
+          {
+            "sa": "पाणिपादम्",
+            "text": {
+              "en": "Hands and feet.",
+              "hi": "हाथ और पैर।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "c1-dvandva-s1",
+    "brief": "The fifteenth statue: two stone figures standing back to back on one plinth, one holding a lotus, the other a bow; Śuka reading the long carved name on the plinth; Dādī with her hand on the stone; Lubdhaka's foreman copying it down.",
+    "alt": {
+      "en": "Two stone figures back to back on one plinth, one with a lotus and one with a bow",
+      "hi": "एक आसन पर पीठ से पीठ टिकाए दो पत्थर की आकृतियाँ, एक कमल लिए, दूसरी धनुष लिए"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "samasika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The fifteenth statue: two stone figures standing back to back on one plinth, one holding a lotus, the other a bow; Śuka reading the long carved name on the plinth; Dādī with her hand on the stone; Lubdhaka's foreman copying it down.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsamasika: A small spirit of pale granite made of two slender figures joined at the back, each with a different lotus in hand, who finish each other's sentences.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-0719dbf3-a20a-406c-ade5-df9291fc82e9.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "06296e5bd5109dd96729ed19aa2af3fe10946811f9870e12df47d3e7e929eb70",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\c1-dvandva-s1-phone-1e9e43aa.webp",
+      "key": "learn/c1-dvandva-s1-phone-1e9e43aa.webp",
+      "sha256": "1e9e43aa24fd85fbb0c4280863c1e00275907b70943ebbd652bed046c700e967",
+      "bytes": 105114,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/c1-dvandva-s1-phone-1e9e43aa.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\c1-dvandva-s1-tablet-8c072bda.webp",
+      "key": "learn/c1-dvandva-s1-tablet-8c072bda.webp",
+      "sha256": "8c072bda9a6539750ec78bc9ae0723ea4112bed7fe10fceb5cc80f5632ead8bd",
+      "bytes": 403642,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/c1-dvandva-s1-tablet-8c072bda.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

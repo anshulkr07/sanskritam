@@ -9,7 +9,9 @@ Run after publishing or replacing Learn paintings.
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
+from uuid import uuid4
 
 import yaml
 
@@ -52,7 +54,9 @@ def main():
     expected = selected_deliveries()
     if args.apply:
         TARGET.parent.mkdir(parents=True, exist_ok=True)
-        TARGET.write_text(yaml.safe_dump(expected, allow_unicode=True, sort_keys=False), encoding="utf-8")
+        temporary = TARGET.with_name(TARGET.name + "." + uuid4().hex + ".tmp")
+        temporary.write_text(yaml.safe_dump(expected, allow_unicode=True, sort_keys=False), encoding="utf-8")
+        os.replace(temporary, TARGET)
     actual = yaml.safe_load(TARGET.read_text(encoding="utf-8")) if TARGET.exists() else []
     if actual != expected:
         raise SystemExit("Backend/app artwork registry differs. Run --apply after checking the selected deliveries.")

@@ -75,7 +75,7 @@ interface AuthState {
   updateName: (name: string) => Promise<void>;
 }
 
-const AuthContext = createContext<AuthState | undefined>(undefined);
+export const AuthContext = createContext<AuthState | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [token, setToken] = useState<string | null>(null);

@@ -1,0 +1,669 @@
+{
+  "id": "who-is-s1",
+  "where": "who.is#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Dādī pointing first at a boy on the ghat steps and then at the small grey-blue spirit, as though introducing them; Śuka looking from one to the other; calm river light.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nghataka: A small grey-blue spirit like river mist, sitting on the lowest stone step with his wispy feet trailing in the water, big curious eyes.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "who.is",
+    "template": "scene",
+    "title": {
+      "en": "No word for “is”",
+      "hi": "‘है’ के लिए शब्द नहीं"
+    },
+    "title_sa": "अस्ति",
+    "minutes": 6,
+    "teaches": [
+      "sent.no-verb-to-be"
+    ],
+    "needs": [
+      "sent.nom-sg",
+      "verb.pres-3sg"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Who is who",
+          "hi": "कौन कौन है"
+        },
+        "image": {
+          "id": "who-is-s1",
+          "brief": "Dādī pointing first at a boy on the ghat steps and then at the small grey-blue spirit, as though introducing them; Śuka looking from one to the other; calm river light.",
+          "alt": {
+            "en": "A grandmother introduces a boy and a small spirit on the ghat",
+            "hi": "घाट पर बालक और नन्हे भूत का परिचय कराती दादी"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "ghataka"
+          ],
+          "place": "naditira"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The spirit points at the boy on the steps and then at himself. Dādī answers for him: “A boy. A spirit.” No “is” anywhere. “Sanskrit does not need it,” she says. “Put two names side by side, and one is the other.”",
+          "hi": "भूत सीढ़ियों पर बैठे बालक की ओर, फिर अपनी ओर इशारा करता है। दादी उसकी ओर से उत्तर देती हैं, “बालक। भूत।” ‘है’ कहीं नहीं। वे कहती हैं, “संस्कृत को उसकी ज़रूरत नहीं। दो नाम साथ रखिए, एक दूसरा हो जाता है।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Two names, no “is”",
+          "hi": "दो नाम, ‘है’ नहीं"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.no-verb-to-be"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is needed. The verb {{अस्ति}} means “exists”, “there is”.",
+          "hi": "‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया {{अस्ति}} का अर्थ है ‘है’, ‘विद्यमान है’।"
+        },
+        "examples": [
+          {
+            "sa": "रामः बालकः।",
+            "meaning": {
+              "en": "Rāma is a boy.",
+              "hi": "राम बालक है।"
+            },
+            "words": [
+              {
+                "sa": "रामः",
+                "gloss": {
+                  "en": "Rāma",
+                  "hi": "राम"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "राम",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "बालकः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "सीता बालिका।",
+            "meaning": {
+              "en": "Sītā is a girl.",
+              "hi": "सीता बालिका है।"
+            },
+            "words": [
+              {
+                "sa": "सीता",
+                "gloss": {
+                  "en": "Sītā",
+                  "hi": "सीता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "सीता",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "बालिका",
+                "gloss": {
+                  "en": "girl",
+                  "hi": "बालिका"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालिका",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "गङ्गा नदी।",
+            "meaning": {
+              "en": "The Gaṅgā is a river.",
+              "hi": "गंगा एक नदी है।"
+            },
+            "words": [
+              {
+                "sa": "गङ्गा",
+                "gloss": {
+                  "en": "the Gaṅgā",
+                  "hi": "गंगा"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गङ्गा",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "नदी",
+                "gloss": {
+                  "en": "river",
+                  "hi": "नदी"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नदी",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "नदी अस्ति।",
+            "meaning": {
+              "en": "There is a river.",
+              "hi": "एक नदी है।"
+            },
+            "words": [
+              {
+                "sa": "नदी",
+                "gloss": {
+                  "en": "river",
+                  "hi": "नदी"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नदी",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अस्ति",
+                "gloss": {
+                  "en": "is, exists",
+                  "hi": "है, विद्यमान है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.no-verb-to-be"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "How do you say “Sītā is a girl”?",
+          "hi": "‘सीता बालिका है’ कैसे कहेंगे?"
+        },
+        "explain": {
+          "en": "Two first-case words side by side: no verb for “is”. {{बालिकाम्}} is the object ending, not right here.",
+          "hi": "दो प्रथमा शब्द साथ-साथ: ‘है’ के लिए क्रिया नहीं। {{बालिकाम्}} कर्म का रूप है, यहाँ ठीक नहीं।"
+        },
+        "options": [
+          {
+            "sa": "सीता बालिका",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "सीता बालिकाम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.no-verb-to-be"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "What does {{अस्ति}} mean?",
+          "hi": "{{अस्ति}} का क्या अर्थ है?"
+        },
+        "explain": {
+          "en": "{{अस्ति}} says that something exists: {{नदी अस्ति}}, there is a river.",
+          "hi": "{{अस्ति}} बताता है कि कुछ विद्यमान है: {{नदी अस्ति}}, एक नदी है।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "exists, there is",
+              "hi": "है, विद्यमान है"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "reads",
+              "hi": "पढ़ता है"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "goes",
+              "hi": "जाता है"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.no-verb-to-be"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap the sentence that says “Rāma is a boy” with no verb.",
+          "hi": "बिना क्रिया के ‘राम बालक है’ कहने वाला वाक्य छुइए।"
+        },
+        "params": {
+          "passage": [
+            "रामः",
+            "बालकः",
+            "सीता",
+            "पठति"
+          ],
+          "targets": [
+            "रामः",
+            "बालकः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "Who is who",
+          "hi": "कौन कौन है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.no-verb-to-be"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say it for the spirit: “The Gaṅgā is a river.”",
+          "hi": "भूत के लिए बोलिए: ‘गंगा एक नदी है।’"
+        },
+        "explain": {
+          "en": "{{गङ्गा नदी}}: two first-case words, “is” understood.",
+          "hi": "{{गङ्गा नदी}}: दो प्रथमा शब्द, ‘है’ अध्याहृत।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "गङ्गा",
+          "नदी"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“गङ्गा नदी,” you say, and the river glitters. The spirit taps his own chest, then the step beneath him, and says a word of his own: “घाटकः।”",
+            "hi": "“गङ्गा नदी,” आप कहते हैं और नदी झिलमिलाती है। भूत अपनी छाती थपथपाता है, फिर नीचे की सीढ़ी, और अपना एक शब्द बोलता है: “घाटकः।”"
+          },
+          "failure": {
+            "en": "The river stays still. Put the name first, then what it is.",
+            "hi": "नदी स्थिर रहती है। पहले नाम, फिर वह क्या है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.no-verb-to-be"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say “Ghāṭaka is a ghost”: the name, then the word for ghost.",
+          "hi": "‘घाटक भूत है’ कहिए: पहले नाम, फिर भूत के लिए शब्द।"
+        },
+        "explain": {
+          "en": "{{घाटकः}} and {{भूतः}}, both first case: Ghāṭaka is a ghost.",
+          "hi": "{{घाटकः}} और {{भूतः}}, दोनों प्रथमा: घाटक भूत है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "घाटकः",
+          "भूतः"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "No “is”",
+          "hi": "‘है’ नहीं"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "रामः बालकः",
+            "text": {
+              "en": "Two first-case words: one is the other.",
+              "hi": "दो प्रथमा शब्द: एक दूसरा है।"
+            }
+          },
+          {
+            "sa": "अस्ति",
+            "text": {
+              "en": "“Exists”, “there is”.",
+              "hi": "‘है’, ‘विद्यमान है’।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Sanskrit leaves “is” out.",
+              "hi": "संस्कृत ‘है’ को छोड़ देती है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "who-is-s1",
+    "brief": "Dādī pointing first at a boy on the ghat steps and then at the small grey-blue spirit, as though introducing them; Śuka looking from one to the other; calm river light.",
+    "alt": {
+      "en": "A grandmother introduces a boy and a small spirit on the ghat",
+      "hi": "घाट पर बालक और नन्हे भूत का परिचय कराती दादी"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "ghataka"
+    ],
+    "place": "naditira"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Dādī pointing first at a boy on the ghat steps and then at the small grey-blue spirit, as though introducing them; Śuka looking from one to the other; calm river light.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nghataka: A small grey-blue spirit like river mist, sitting on the lowest stone step with his wispy feet trailing in the water, big curious eyes.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-951893e3-971e-44e5-94a1-3ef053f24464.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "b4757094b1d7406aa12e98ee5398af7b14af68f22728663852c3d579f5eef31a",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\who-is-s1-phone-3d31a037.webp",
+      "key": "learn/who-is-s1-phone-3d31a037.webp",
+      "sha256": "3d31a037251c3621732f55547b60f742bf57ae7ab7063e84583fabc6751740bf",
+      "bytes": 105412,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/who-is-s1-phone-3d31a037.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\who-is-s1-tablet-3e4cacac.webp",
+      "key": "learn/who-is-s1-tablet-3e4cacac.webp",
+      "sha256": "3e4cacac663ad88ddab14bf3fbc7088cf00dca44fecfee067d914ca969c6b69a",
+      "bytes": 407092,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/who-is-s1-tablet-3e4cacac.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

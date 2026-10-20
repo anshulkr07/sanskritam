@@ -19,7 +19,7 @@ export function gained(before:StoryState,after:StoryState){return {ghosts:after.
 /**
  * Simple mode (owner, 2026-10-20): what is finished stays open, and the road
  * opens the next lesson plus the three after it (unit checks count; a
- * revision opens with its unit). Nothing past a planned unit opens.
+ * revision or reading opens with its unit). Nothing past a planned unit opens.
  */
 export const SIMPLE_AHEAD=3;
 export function simpleOpen(index:StoryIndex,state:StoryState):Set<string>{
@@ -27,6 +27,7 @@ export function simpleOpen(index:StoryIndex,state:StoryState):Set<string>{
  for(const stop of courseOrder(index)){if(stop.role==='coming_soon')break;if(stop.role==='lesson'||stop.role==='check')road.push(stop.lesson_id!);}
  const at=road.findIndex(id=>!open.has(id));
  if(at>=0)road.slice(at,at+1+SIMPLE_AHEAD).forEach(id=>open.add(id));
- for(const {unit} of unitContexts(index))if(unit.revision&&unitStops(unit).some(l=>open.has(l.id)))open.add(unit.revision.id);
+ // A unit's revision and its optional reading open with its lessons.
+ for(const {unit} of unitContexts(index))if(unitStops(unit).some(l=>open.has(l.id)))for(const extra of [unit.revision,unit.reading])if(extra)open.add(extra.id);
  return open;
 }

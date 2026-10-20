@@ -9,7 +9,7 @@ teaches:
 - sandhi.split
 needs:
 - sandhi.nasal
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: split-back-s1
+    text_in_image: ["विद्यालयः"]
   narration:
     en: 'The thirteenth statue holds a thin chisel. Lubdhaka''s foreman has put his lamp on the plinth and is staring at the nearest inscription: “विद्यालयः”. He cannot read it. “You have to take it apart,” says Dādī, not unkindly. “Look at the sound that has changed, and work backwards to what must have been there. Then check that both halves are real words.”'
     hi: तेरहवीं प्रतिमा के हाथ में पतली छेनी है। लुब्धक के मुखिया ने अपना दीपक आसन पर रख दिया है और निकटतम अभिलेख “विद्यालयः” को घूर रहा है। वह उसे पढ़ नहीं पाता। “उसे अलग करना होगा,” दादी बिना कठोरता के कहती हैं। “जो ध्वनि बदली है उसे देखिए, और पीछे चलकर सोचिए कि वहाँ क्या रहा होगा। फिर जाँचिए कि दोनों भाग असली शब्द हैं।”
@@ -180,8 +181,8 @@ cards:
   - sandhi.split
   mode: match
   prompt:
-    en: Join each joined word to its split.
-    hi: हर जुड़े शब्द को उसके विच्छेद से जोड़िए।
+    en: Match each joined word with its split.
+    hi: हर जुड़े शब्द को उसके विच्छेद से मिलाइए।
   explain:
     en: Four ways to join {{अस्ति}}.
     hi: '{{अस्ति}} को जोड़ने के चार तरीक़े।'

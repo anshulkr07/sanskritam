@@ -9,7 +9,7 @@ teaches:
 - sandhi.ayadi
 needs:
 - sandhi.yan
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,9 +37,21 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: vs-e-o-s1
+    text_in_image: ["वनेऽस्ति"]
   narration:
     en: 'The fifth statue holds an oar. “नाविकः,” she says. “पावकः.” “वनेऽस्ति.” Śuka tilts his head: “नाविकः has a व. And वनेऽस्ति has a little curl, ऽ. Where did a letter go?” “Two things,” says Dādī. “An ऐ or औ before a vowel turns into आय् or आव्. And an ए before अ drops the अ, leaving the little curl behind.”'
     hi: 'पाँचवीं प्रतिमा के हाथ में पतवार है। “नाविकः,” वह कहती है। “पावकः।” “वनेऽस्ति।” शुक सिर टेढ़ा करता है: “नाविकः में व है। और वनेऽस्ति में एक छोटा मोड़ है, ऽ। कोई अक्षर कहाँ गया?” “दो बातें,” दादी कहती हैं। “स्वर से पहले ऐ या औ आय् या आव् बन जाता है। और अ से पहले ए अपना अ गिरा देता है, और छोटा मोड़ छोड़ जाता है।”'
+  lines:
+  - speaker: svarika
+    sa: नाविकः
+    gloss:
+      en: The boatman.
+      hi: नाविक।
+    check:
+      type: sandhi
+      first: नौ
+      second: इकः
+      joined: नाविकः
 - id: t1
   kind: teach
   title:
@@ -195,8 +207,8 @@ cards:
   - sandhi.ayadi
   mode: match
   prompt:
-    en: Join each word to its parts.
-    hi: हर शब्द को उसके भागों से जोड़िए।
+    en: Match each word with its parts.
+    hi: हर शब्द को उसके भागों से मिलाइए।
   explain:
     en: Before a vowel the long vowel grows a glide.
     hi: स्वर से पहले दीर्घ स्वर अर्धस्वर उगाता है।

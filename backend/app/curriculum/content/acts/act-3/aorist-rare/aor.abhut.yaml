@@ -10,7 +10,7 @@ teaches:
 needs:
 - verb.lan
 - verb.lit
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -370,8 +370,8 @@ cards:
   - verb.lun
   mode: match
   prompt:
-    en: Join each present to its aorist.
-    hi: हर वर्तमान को उसके लुङ् से जोड़िए।
+    en: Match each present with its aorist.
+    hi: हर वर्तमान को उसके लुङ् से मिलाइए।
   explain:
     en: The aorist rarely follows the present.
     hi: लुङ् बहुत कम वर्तमान के पीछे चलता है।

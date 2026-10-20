@@ -52,6 +52,9 @@ def test_approval_uses_replacement_and_clips_and_preserves_other_text(tmp_path):
 
 @pytest.mark.parametrize("row", [choice(start="-1"), choice(start="1.5"), choice(start="60", end="30"), choice(end="0"), choice(url="https://youtube.com.evil.test/watch?v=UfNXkiaGX9I"), choice(url="https://youtube.com/playlist?list=abc"), choice(uid="unknown"), choice(decision="=TRUE")])
 def test_invalid_approvals_fail_before_any_file_write(tmp_path, row):
+    # Exercise the invalid field itself, not the duplicate-ID guard.
+    if row[0] != "unknown":
+        row = ["consonants", *row[1:]]
     file, root = review(tmp_path, [choice(), row])
     before = {p: p.read_bytes() for p in root.rglob("unit.yaml")}
     with pytest.raises(ValueError):

@@ -1,0 +1,810 @@
+{
+  "id": "object-ask-s1",
+  "where": "object.ask#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The round spice seller with arms folded firing questions at the small yellow spirit, who shrinks behind your leg; Dādī holding up four fingers; Śuka cocking his head; spice heaps in the foreground.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nharidraka: A small round saffron-yellow spirit dusted with spice powder, a tiny brass scale hanging from one wisp.\nvanik: A round, cheerful man in a mustard-yellow shawl with a thick moustache, brass scales hanging from his stall, heaps of spices in front of him.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "object.ask",
+    "template": "scene",
+    "title": {
+      "en": "Asking questions",
+      "hi": "प्रश्न पूछना"
+    },
+    "title_sa": "प्रश्नाः",
+    "minutes": 6,
+    "teaches": [
+      "sent.questions"
+    ],
+    "needs": [
+      "case.acc",
+      "case.acc-goal"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The seller's riddle",
+          "hi": "विक्रेता की पहेली"
+        },
+        "image": {
+          "id": "object-ask-s1",
+          "brief": "The round spice seller with arms folded firing questions at the small yellow spirit, who shrinks behind your leg; Dādī holding up four fingers; Śuka cocking his head; spice heaps in the foreground.",
+          "alt": {
+            "en": "A spice seller fires questions at a shy yellow spirit",
+            "hi": "मसाले वाला शर्मीले पीले भूत पर प्रश्न दागता है"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "haridraka",
+            "vanik"
+          ],
+          "place": "apana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The spice seller crosses his arms. “What do you want?” he asks the spirit. “Who sent you? Where are you going? When will you leave?” The spirit cannot answer a single one. “To ask,” says Dādī, “Sanskrit has a family of words that begin with क.”",
+          "hi": "मसाले वाला बाँहें मोड़ लेता है। वह भूत से पूछता है, “तुम्हें क्या चाहिए? किसने भेजा? कहाँ जा रहे हो? कब जाओगे?” भूत एक का भी उत्तर नहीं दे पाता। दादी कहती हैं, “पूछने के लिए संस्कृत में क से शुरू होने वाले शब्दों का एक कुल है।”"
+        },
+        "lines": [
+          {
+            "speaker": "vanik",
+            "sa": "किं पश्यसि?",
+            "gloss": {
+              "en": "What do you see?",
+              "hi": "तुम क्या देखते हो?"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The क words",
+          "hi": "क वाले शब्द"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.questions"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{कः}} (who), {{का}} (who, feminine), {{किम्}} (what): they take the endings you know. And four little words that never change: {{कुत्र}} (where), {{कदा}} (when), {{कथम्}} (how), {{कुतः}} (from where).",
+          "hi": "{{कः}} (कौन), {{का}} (कौन, स्त्री), {{किम्}} (क्या): ये परिचित प्रत्यय लेते हैं। और चार छोटे शब्द जो कभी नहीं बदलते: {{कुत्र}} (कहाँ), {{कदा}} (कब), {{कथम्}} (कैसे), {{कुतः}} (कहाँ से)।"
+        },
+        "examples": [],
+        "rows": [
+          {
+            "sa": "कः",
+            "gloss": {
+              "en": "who?",
+              "hi": "कौन?"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "किम्",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "का",
+            "gloss": {
+              "en": "who? (f)",
+              "hi": "कौन? (स्त्री.)"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "किम्",
+              "linga": "Stri",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "किम्",
+            "gloss": {
+              "en": "what?",
+              "hi": "क्या?"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "किम्",
+              "linga": "Napumsaka",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "कुत्र",
+            "gloss": {
+              "en": "where?",
+              "hi": "कहाँ?"
+            },
+            "check": null
+          },
+          {
+            "sa": "कदा",
+            "gloss": {
+              "en": "when?",
+              "hi": "कब?"
+            },
+            "check": null
+          },
+          {
+            "sa": "कथम्",
+            "gloss": {
+              "en": "how?",
+              "hi": "कैसे?"
+            },
+            "check": null
+          },
+          {
+            "sa": "कुतः",
+            "gloss": {
+              "en": "from where?",
+              "hi": "कहाँ से?"
+            },
+            "check": null
+          }
+        ],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Questions in sentences",
+          "hi": "वाक्यों में प्रश्न"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.questions"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A question word takes the place of the thing asked. {{कः पठति?}} (who reads?), {{किं पश्यसि?}} (what do you see?), {{कुत्र गच्छसि?}} (where do you go?). For a yes/no question, begin with {{किम्}}.",
+          "hi": "प्रश्नवाचक शब्द उस वस्तु की जगह आता है जिसके बारे में पूछा जा रहा है। {{कः पठति?}} (कौन पढ़ता है?), {{किं पश्यसि?}} (तुम क्या देखते हो?), {{कुत्र गच्छसि?}} (तुम कहाँ जाते हो?)। हाँ-या-नहीं के प्रश्न के लिए {{किम्}} से शुरू कीजिए।"
+        },
+        "examples": [
+          {
+            "sa": "कः पठति?",
+            "meaning": {
+              "en": "Who reads?",
+              "hi": "कौन पढ़ता है?"
+            },
+            "words": [
+              {
+                "sa": "कः",
+                "gloss": {
+                  "en": "who",
+                  "hi": "कौन"
+                },
+                "check": null
+              },
+              {
+                "sa": "पठति",
+                "gloss": {
+                  "en": "reads",
+                  "hi": "पढ़ता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "किम् पश्यसि?",
+            "meaning": {
+              "en": "What do you see?",
+              "hi": "तुम क्या देखते हो?"
+            },
+            "words": [
+              {
+                "sa": "किम्",
+                "gloss": {
+                  "en": "what",
+                  "hi": "क्या"
+                },
+                "check": null
+              },
+              {
+                "sa": "पश्यसि",
+                "gloss": {
+                  "en": "do you see",
+                  "hi": "तुम देखते हो"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दृश्",
+                  "lakara": "Lat",
+                  "purusha": "Madhyama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "कुत्र गच्छसि?",
+            "meaning": {
+              "en": "Where do you go?",
+              "hi": "तुम कहाँ जाते हो?"
+            },
+            "words": [
+              {
+                "sa": "कुत्र",
+                "gloss": {
+                  "en": "where",
+                  "hi": "कहाँ"
+                },
+                "check": null
+              },
+              {
+                "sa": "गच्छसि",
+                "gloss": {
+                  "en": "do you go",
+                  "hi": "तुम जाते हो"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Madhyama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "कदा गच्छति?",
+            "meaning": {
+              "en": "When does he go?",
+              "hi": "वह कब जाता है?"
+            },
+            "words": [
+              {
+                "sa": "कदा",
+                "gloss": {
+                  "en": "when",
+                  "hi": "कब"
+                },
+                "check": null
+              },
+              {
+                "sa": "गच्छति",
+                "gloss": {
+                  "en": "goes",
+                  "hi": "जाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.questions"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which word asks “where?”",
+          "hi": "‘कहाँ?’ पूछने वाला शब्द कौन-सा है?"
+        },
+        "explain": {
+          "en": "{{कुत्र}}: where.",
+          "hi": "{{कुत्र}}: कहाँ।"
+        },
+        "options": [
+          {
+            "sa": "कदा",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "कुत्र",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "कथम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.questions"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each question word to its meaning.",
+          "hi": "हर प्रश्नवाचक शब्द को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "A family of क words.",
+          "hi": "क वाले शब्दों का कुल।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "कः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "who",
+                "hi": "कौन"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "किम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "what",
+                "hi": "क्या"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "कदा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "when",
+                "hi": "कब"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "कथम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "how",
+                "hi": "कैसे"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.questions"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every question word.",
+          "hi": "हर प्रश्नवाचक शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "कः",
+            "बालकः",
+            "किम्",
+            "फलम्",
+            "कुत्र",
+            "कदा",
+            "नदी"
+          ],
+          "targets": [
+            "कः",
+            "किम्",
+            "कुत्र",
+            "कदा"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "A question back",
+          "hi": "पलटकर प्रश्न"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.questions"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Ask the seller: “Where do you go?”",
+          "hi": "विक्रेता से पूछिए: ‘तुम कहाँ जाते हो?’"
+        },
+        "explain": {
+          "en": "{{कुत्र गच्छसि}}: where do you go?",
+          "hi": "{{कुत्र गच्छसि}}: तुम कहाँ जाते हो?"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "कुत्र",
+          "गच्छसि"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“कुत्र गच्छसि?” you ask. The spice seller blinks, then laughs and lets his arms drop. “Nowhere. I sit here all day.” He pats the old chest at his feet, the lid green with age.",
+            "hi": "“कुत्र गच्छसि?” आप पूछते हैं। मसाले वाला पलकें झपकाता है, फिर हँसकर बाँहें खोल देता है। “कहीं नहीं। मैं दिन भर यहीं बैठता हूँ।” वह अपने पैरों के पास के पुराने संदूक को थपथपाता है, जिसका ढक्कन उम्र से हरा हो चुका है।"
+          },
+          "failure": {
+            "en": "The seller shakes his head. “Where” is {{कुत्र}}, then the verb.",
+            "hi": "विक्रेता सिर हिलाता है। ‘कहाँ’ है {{कुत्र}}, फिर क्रिया।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.questions"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{किं त्वं पठसि?}} begins with {{किम्}}. What kind of question is it?",
+          "hi": "{{किं त्वं पठसि?}} {{किम्}} से शुरू होता है। यह किस प्रकार का प्रश्न है?"
+        },
+        "explain": {
+          "en": "{{किम्}} at the start asks “whether”.",
+          "hi": "आरम्भ में {{किम्}} का अर्थ ‘क्या’ है, यानी हाँ-या-नहीं का प्रश्न।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "a yes/no question: “Do you read?”",
+              "hi": "हाँ-या-नहीं का प्रश्न: ‘क्या तुम पढ़ते हो?’"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "a “who” question",
+              "hi": "‘कौन’ का प्रश्न"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Questions",
+          "hi": "प्रश्न"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "कः · का · किम्",
+            "text": {
+              "en": "Who, who (f), what.",
+              "hi": "कौन, कौन (स्त्री), क्या।"
+            }
+          },
+          {
+            "sa": "कुत्र · कदा · कथम् · कुतः",
+            "text": {
+              "en": "Where, when, how, from where.",
+              "hi": "कहाँ, कब, कैसे, कहाँ से।"
+            }
+          },
+          {
+            "sa": "किं त्वं पठसि?",
+            "text": {
+              "en": "A yes/no question starts with {{किम्}}.",
+              "hi": "हाँ-या-नहीं का प्रश्न {{किम्}} से शुरू होता है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "object-ask-s1",
+    "brief": "The round spice seller with arms folded firing questions at the small yellow spirit, who shrinks behind your leg; Dādī holding up four fingers; Śuka cocking his head; spice heaps in the foreground.",
+    "alt": {
+      "en": "A spice seller fires questions at a shy yellow spirit",
+      "hi": "मसाले वाला शर्मीले पीले भूत पर प्रश्न दागता है"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "haridraka",
+      "vanik"
+    ],
+    "place": "apana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The round spice seller with arms folded firing questions at the small yellow spirit, who shrinks behind your leg; Dādī holding up four fingers; Śuka cocking his head; spice heaps in the foreground.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nharidraka: A small round saffron-yellow spirit dusted with spice powder, a tiny brass scale hanging from one wisp.\nvanik: A round, cheerful man in a mustard-yellow shawl with a thick moustache, brass scales hanging from his stall, heaps of spices in front of him.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-d3e3b017-facd-49d0-8cbe-ce6553434109.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "38d82af7e55d58ea1fb9498f21d5a51477a164edb1eea2a1ffe84dcca83f42ea",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\object-ask-s1-phone-76951f20.webp",
+      "key": "learn/object-ask-s1-phone-76951f20.webp",
+      "sha256": "76951f20963b94ad7a994cd232c22c58ca9ea51079ffa3fb20e0338932cb74e6",
+      "bytes": 124308,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/object-ask-s1-phone-76951f20.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\object-ask-s1-tablet-8836f2a0.webp",
+      "key": "learn/object-ask-s1-tablet-8836f2a0.webp",
+      "sha256": "8836f2a0bb8a378f8ad8040d592c577fed71e90bc0d6a3fe8392e9e26cbeb940",
+      "bytes": 457768,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/object-ask-s1-tablet-8836f2a0.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

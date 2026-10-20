@@ -1,0 +1,1039 @@
+{
+  "id": "syn-if-s1",
+  "where": "syn.if#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The thirty-second statue, the last, stern-faced, with a very small hand held up showing two fingers; at her feet the throne itself, bare and plain; Dādī and Śuka looking up at her; Lubdhaka's foreman at the back, quiet.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvakyika: A small, heavy spirit of dark basalt holding a long unrolled scroll that trails behind her, with a single sentence written across it in a close, tidy hand.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "syn.if",
+    "template": "scene",
+    "title": {
+      "en": "If… then",
+      "hi": "यदि… तो"
+    },
+    "title_sa": "यदि … तर्हि",
+    "minutes": 6,
+    "teaches": [
+      "syn.conditional"
+    ],
+    "needs": [
+      "syn.absolute",
+      "verb.vidhilin"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The thirty-second statue",
+          "hi": "बत्तीसवीं प्रतिमा"
+        },
+        "image": {
+          "id": "syn-if-s1",
+          "brief": "The thirty-second statue, the last, stern-faced, with a very small hand held up showing two fingers; at her feet the throne itself, bare and plain; Dādī and Śuka looking up at her; Lubdhaka's foreman at the back, quiet.",
+          "alt": {
+            "en": "The last statue with a stern face and two raised fingers before a plain stone throne",
+            "hi": "कठोर मुख, उठी दो उँगलियों वाली अन्तिम प्रतिमा, सादे पत्थर के सिंहासन के सामने"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "vakyika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The thirty-second statue has a stern face and a very small hand holding up two fingers. “यदि सः पठति, तर्हि सः जानाति,” she says: “if he reads, then he knows.” “And if he does not?” “यदि न पठति, तर्हि न जानाति.” Dādī: “Three flavours of if: what is, what will be, what would be. The words यदि and तर्हि stay the same.”",
+          "hi": "बत्तीसवीं प्रतिमा का मुख कठोर है और उसके बहुत छोटे हाथ में दो उँगलियाँ उठी हैं। “यदि सः पठति, तर्हि सः जानाति,” वह कहती है: “अगर वह पढ़ता है, तो वह जानता है।” “और यदि नहीं?” “यदि न पठति, तर्हि न जानाति।” दादी: “‘अगर’ के तीन स्वाद हैं: जो होता है (वर्तमान), जो होगा (भविष्यत्), जो होता (विधिलिङ्)। शब्द यदि और तर्हि वही रहते हैं।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "यदि वदसि तर्हि तन्मृतकं पुनर् वृक्षे यास्यति",
+          "gloss": {
+            "en": "If you speak, then that corpse will go back to the tree.",
+            "hi": "यदि तुम बोलोगे, तो वह शव फिर वृक्ष पर चला जाएगा।"
+          },
+          "source": "Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "If… then",
+          "hi": "यदि… तो"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.conditional"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{यदि}} (if) opens the condition, and {{तर्हि}} or {{तदा}} (then) opens the result: {{यदि सः पठति, तर्हि जानाति}}. A condition about the future takes the future: {{यदि वदसि, तर्हि यास्यति}}. A condition that is only supposed takes {{विधिलिङ्}}: {{यदि पठेत्, तर्हि जानीयात्}}. A negative condition adds {{न}}.",
+          "hi": "{{यदि}} (अगर) शर्त खोलता है, और {{तर्हि}} या {{तदा}} (तब) परिणाम खोलता है: {{यदि सः पठति, तर्हि जानाति}}। भविष्य की शर्त भविष्यत् लेती है: {{यदि वदसि, तर्हि यास्यति}}। केवल मानी हुई शर्त {{विधिलिङ्}} लेती है: {{यदि पठेत्, तर्हि जानीयात्}}। नकारात्मक शर्त में {{न}} जुड़ता है।"
+        },
+        "examples": [
+          {
+            "sa": "यदि सः पठति तर्हि सः जानाति।",
+            "meaning": {
+              "en": "If he reads, then he knows.",
+              "hi": "यदि वह पढ़ता है, तो जानता है।"
+            },
+            "words": [
+              {
+                "sa": "यदि",
+                "gloss": {
+                  "en": "if",
+                  "hi": "यदि"
+                },
+                "check": null
+              },
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "पठति",
+                "gloss": {
+                  "en": "reads",
+                  "hi": "पढ़ता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "तर्हि",
+                "gloss": {
+                  "en": "then",
+                  "hi": "तो"
+                },
+                "check": null
+              },
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "जानाति",
+                "gloss": {
+                  "en": "knows",
+                  "hi": "जानता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "ज्ञा",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "यदि त्वम् वदिष्यसि तर्हि सः यास्यति।",
+            "meaning": {
+              "en": "If you speak, then it will go.",
+              "hi": "यदि तुम बोलोगे, तो वह जाएगा।"
+            },
+            "words": [
+              {
+                "sa": "यदि",
+                "gloss": {
+                  "en": "if",
+                  "hi": "यदि"
+                },
+                "check": null
+              },
+              {
+                "sa": "त्वम्",
+                "gloss": {
+                  "en": "you",
+                  "hi": "तुम"
+                },
+                "check": null
+              },
+              {
+                "sa": "वदिष्यसि",
+                "gloss": {
+                  "en": "speak",
+                  "hi": "बोलोगे"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lrt",
+                  "purusha": "Madhyama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "तर्हि",
+                "gloss": {
+                  "en": "then",
+                  "hi": "तो"
+                },
+                "check": null
+              },
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "it",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "यास्यति",
+                "gloss": {
+                  "en": "will go",
+                  "hi": "जाएगा"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "या",
+                  "lakara": "Lrt",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": "Adadi",
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "यदि सः पठेत् तर्हि सः जानीयात्।",
+            "meaning": {
+              "en": "If he were to read, he would know.",
+              "hi": "यदि वह पढ़े, तो जान जाए।"
+            },
+            "words": [
+              {
+                "sa": "यदि",
+                "gloss": {
+                  "en": "if",
+                  "hi": "यदि"
+                },
+                "check": null
+              },
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "पठेत्",
+                "gloss": {
+                  "en": "were to read",
+                  "hi": "पढ़े"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "VidhiLin",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "तर्हि",
+                "gloss": {
+                  "en": "then",
+                  "hi": "तो"
+                },
+                "check": null
+              },
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "जानीयात्",
+                "gloss": {
+                  "en": "would know",
+                  "hi": "जान जाए"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "ज्ञा",
+                  "lakara": "VidhiLin",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "यदि … तर्हि",
+          "meaning": {
+            "en": "if … then",
+            "hi": "यदि … तो"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "If… then",
+          "hi": "यदि… तो"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.conditional"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Three kinds of condition",
+          "hi": "शर्त के तीन प्रकार"
+        },
+        "columns": [
+          {
+            "en": "Kind",
+            "hi": "प्रकार"
+          },
+          {
+            "en": "If (यदि)",
+            "hi": "यदि"
+          },
+          {
+            "en": "Then (तर्हि)",
+            "hi": "तर्हि"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "a fact",
+                "hi": "तथ्य"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "जानाति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "ज्ञा",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "the future",
+                "hi": "भविष्य"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "वदिष्यसि",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "वद्",
+                "lakara": "Lrt",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गमिष्यति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lrt",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "a supposition",
+                "hi": "कल्पना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठेत्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "VidhiLin",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "जानीयात्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "ज्ञा",
+                "lakara": "VidhiLin",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Two halves, one tense in each (or the same mood).",
+          "hi": "दो भाग, हर एक में एक काल (या वही विधान)।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.conditional"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“If he reads, then he knows.” Which pair of words?",
+          "hi": "‘यदि वह पढ़ता है, तो जानता है।’ कौन-सी शब्द-जोड़ी?"
+        },
+        "explain": {
+          "en": "{{यदि}} … {{तर्हि}}.",
+          "hi": "{{यदि}} … {{तर्हि}}।"
+        },
+        "options": [
+          {
+            "sa": "यः … सः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "यदा … तदा",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "यदि … तर्हि",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.conditional"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each pair to its meaning.",
+          "hi": "हर जोड़ी को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "Four pairs, one pattern.",
+          "hi": "चार जोड़ियाँ, एक ढाँचा।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "यदि … तर्हि",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "if … then",
+                "hi": "यदि … तो"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "यदा … तदा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "when … then",
+                "hi": "जब … तब"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "यत्र … तत्र",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "where … there",
+                "hi": "जहाँ … वहाँ"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "यः … सः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "who … he",
+                "hi": "जो … वह"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.conditional"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap the two words that mark if … then.",
+          "hi": "यदि … तो को बताने वाले दो शब्द छुइए।"
+        },
+        "params": {
+          "passage": [
+            "यदि",
+            "सः",
+            "पठति",
+            "तर्हि",
+            "सः",
+            "जानाति"
+          ],
+          "targets": [
+            "यदि",
+            "तर्हि"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.conditional"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “If you speak, then it will go.”",
+          "hi": "कहिए: ‘यदि तुम बोलोगे, तो वह जाएगा।’"
+        },
+        "explain": {
+          "en": "{{यदि वदसि तर्हि यास्यति}}.",
+          "hi": "{{यदि वदसि तर्हि यास्यति}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "यदि",
+          "वदसि",
+          "तर्हि",
+          "यास्यति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "If… then",
+          "hi": "यदि… तो"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.conditional"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“If he were to read, he would know.” Which verb pair?",
+          "hi": "‘यदि वह पढ़े, तो जान जाए।’ कौन-सी क्रिया-जोड़ी?"
+        },
+        "explain": {
+          "en": "A supposition takes the optative in both halves.",
+          "hi": "कल्पना दोनों भागों में विधिलिङ् लेती है।"
+        },
+        "options": [
+          {
+            "sa": "पठति … जानाति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठिष्यति … ज्ञास्यति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठेत् … जानीयात्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“पठेत् … जानीयात्,” you say, and the thirty-second statue's raised fingers come down together, and the throne behind her, bare and plain for a thousand years, shines, from within, as if someone had at last turned a lamp on in it. “If he were to read,” she says, in the plainest voice of all the statues, “he would know. यदि… तर्हि. That is the throne.”",
+            "hi": "“पठेत् … जानीयात्,” आप कहते हैं, और बत्तीसवीं प्रतिमा की उठी उँगलियाँ साथ-साथ नीचे आती हैं, और उसके पीछे का सिंहासन, हज़ार वर्षों से सादा और नंगा, भीतर से चमक उठता है, मानो किसी ने आख़िरकार उसमें दीपक जला दिया हो। “यदि वह पढ़े,” वह सब प्रतिमाओं में सबसे सादी आवाज़ में कहती है, “तो वह जान जाए। यदि… तर्हि। यही सिंहासन है।”"
+          },
+          "failure": {
+            "en": "Her fingers stay raised. A supposition takes the optative: {{पठेत् … जानीयात्}}.",
+            "hi": "उसकी उँगलियाँ उठी रहती हैं। कल्पना विधिलिङ् लेती है: {{पठेत् … जानीयात्}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's if",
+          "hi": "पाणिनि का यदि"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "syn.conditional"
+        ],
+        "sutras": [
+          "3.3.156",
+          "3.3.139"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 3.3.156, {{हेतुहेतुमतोर्लिङ्}}, gives {{लिङ्}} to both the condition and its result. 3.3.139, {{लिङ्निमित्ते लृङ् क्रियातिपत्तौ}}, gives {{लृङ्}} when the condition was not met. {{यदि}} and {{तर्हि}} are particles, {{निपात}}s, so they never change.",
+          "hi": "सूत्र 3.3.156, {{हेतुहेतुमतोर्लिङ्}}, शर्त और उसके परिणाम दोनों को {{लिङ्}} देता है। 3.3.139, {{लिङ्निमित्ते लृङ् क्रियातिपत्तौ}}, जब शर्त पूरी नहीं हुई तब {{लृङ्}} देता है। {{यदि}} और {{तर्हि}} निपात हैं, इसलिए कभी नहीं बदलते।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "If… then",
+          "hi": "यदि… तो"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "यदि … तर्हि",
+            "text": {
+              "en": "If … then.",
+              "hi": "यदि … तो।"
+            }
+          },
+          {
+            "sa": "पठति … जानाति",
+            "text": {
+              "en": "A fact.",
+              "hi": "तथ्य।"
+            }
+          },
+          {
+            "sa": "पठेत् … जानीयात्",
+            "text": {
+              "en": "A supposition.",
+              "hi": "कल्पना।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "syn-if-s1",
+    "brief": "The thirty-second statue, the last, stern-faced, with a very small hand held up showing two fingers; at her feet the throne itself, bare and plain; Dādī and Śuka looking up at her; Lubdhaka's foreman at the back, quiet.",
+    "alt": {
+      "en": "The last statue with a stern face and two raised fingers before a plain stone throne",
+      "hi": "कठोर मुख, उठी दो उँगलियों वाली अन्तिम प्रतिमा, सादे पत्थर के सिंहासन के सामने"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "vakyika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The thirty-second statue, the last, stern-faced, with a very small hand held up showing two fingers; at her feet the throne itself, bare and plain; Dādī and Śuka looking up at her; Lubdhaka's foreman at the back, quiet.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvakyika: A small, heavy spirit of dark basalt holding a long unrolled scroll that trails behind her, with a single sentence written across it in a close, tidy hand.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-4353cbae-a934-4e40-bad8-433e826a854c.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "fd599e194daaf0885ba366357b8a340561766a75a5271f8d1621b63f3aa1a46f",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\syn-if-s1-phone-51ed2656.webp",
+      "key": "learn/syn-if-s1-phone-51ed2656.webp",
+      "sha256": "51ed2656233aa287b57d6c074a5e3d7ef1bbad1345cea1295d97434dc31c0491",
+      "bytes": 111770,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/syn-if-s1-phone-51ed2656.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\syn-if-s1-tablet-2d6a4648.webp",
+      "key": "learn/syn-if-s1-tablet-2d6a4648.webp",
+      "sha256": "2d6a4648e669920d1780a17cf28ea48ceba5c194562ffa4a1678c478ffd083bc",
+      "bytes": 440068,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/syn-if-s1-tablet-2d6a4648.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

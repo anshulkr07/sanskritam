@@ -10,7 +10,7 @@ teaches:
 needs:
 - noun.phala
 - gen.feminine-a
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -38,6 +38,7 @@ cards:
     place: pathashala
     ratio: '4:3'
     id: nf1-lata-s1
+    text_in_image: ["लता", "लते", "लताः"]
   narration:
     en: 'A third branch, thick with leaf-tags in a different rhythm, bows toward the desk. “The feminines in -आ,” says Dādī. Śuka scatters three tags with his wing and reads them back, pleased with himself. The tree of names is almost whole now: it has found its masculine, its neuter, and now its feminine.'
     hi: 'तीसरी शाखा, अलग लय में पत्ते-टैगों से लदी, मेज़ की ओर झुकती है। “-आ वाले स्त्रीलिंग,” दादी कहती हैं। शुक अपने पंख से तीन टैग बिखेरता है और उन्हें वापस पढ़ता है, अपने पर प्रसन्न। नामों का पेड़ अब लगभग पूरा है: उसे अपना पुंलिंग मिला, नपुंसक मिला, और अब स्त्रीलिंग।'
@@ -393,8 +394,8 @@ cards:
   - noun.lata
   mode: match
   prompt:
-    en: Join each form to its case.
-    hi: हर रूप को उसकी विभक्ति से जोड़िए।
+    en: Match each form with its case.
+    hi: हर रूप को उसकी विभक्ति से मिलाइए।
   explain:
     en: '{{ाम्}}, {{या}}, {{ायै}}, {{ायाम्}}.'
     hi: '{{ाम्}}, {{या}}, {{ायै}}, {{ायाम्}}।'

@@ -68,6 +68,7 @@ class SarvamClient:
         model: str = "bulbul:v3",
         pace: float = 1.0,
         sample_rate: int = 22050,
+        codec: Optional[str] = None,
     ) -> str:
         """Convert text to speech via Bulbul v3.
 
@@ -96,6 +97,8 @@ class SarvamClient:
             "pace": pace,
             "speech_sample_rate": sample_rate,
         }
+        if codec:  # mp3/aac/...; unset keeps Bulbul's default (wav)
+            payload["output_audio_codec"] = codec
         resp = await client.post("/text-to-speech", json=payload)
         if resp.status_code != 200:
             raise SarvamError(resp.status_code, resp.text)

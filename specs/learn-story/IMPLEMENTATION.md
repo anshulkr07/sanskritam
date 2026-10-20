@@ -18,17 +18,18 @@ code or at the source; **not verified** = not checked.
 
 | Piece | State | Checked |
 |---|---|---|
-| Blueprints (`backend/app/curriculum/schema.py`), loader, checker, engine checks, pack builder, story state | built | run: `tests/test_curriculum.py`, 19 tests pass |
-| The whole course: prologue, 44 units (5 acts), 234 lessons (scenes, revisions, checks, 7 leaf tales), 2,074 cards | written, `review: engine_ok` (no scholar has read any lesson) | run: `python -m app.curriculum check --engine` → 0 errors, 0 warnings; `stats`; `tests/test_curriculum.py` 19 pass |
+| Blueprints (`backend/app/curriculum/schema.py`), loader, checker, engine checks, pack builder, story state | built | run: curriculum/importer/parity modules, 41 tests pass |
+| The whole course: prologue, 44 units (5 acts), 238 lessons (including 4 optional episodes and 7 leaf tales), 2,124 cards | current authored lessons `review: scholar_ok`, following owner-reported scholar sign-off | run: `python -m app.curriculum check --engine --release` → 0 errors, 0 warnings; approval statement and material hashes in `owner-approval-20261020.json` |
 | Syllabus: 5 acts, 44 units (44 ready), 137 skills | written | run: checker; sūtra numbers resolve in the engine's sūtrapāṭha |
 | `/learn/*` API (index, lessons, state, attempts, review, test-out) | built, registered in `app/main.py` | run: endpoint tests with the test client |
 | App contract `mobile/src/story/types.ts` | written | run: `npx tsc --noEmit` clean |
-| App screens, widgets, theme | **not built** | see HANDOVER.md |
-| Pictures | **none generated**; 183 requests ready as written briefs (`python -m app.curriculum images`); the app shows a placeholder until delivered; `check --release` fails on every undelivered image | run |
-| Scholar review of any Sanskrit | **none yet**; `check --release` fails on all 234 lessons (`review is engine_ok; a release needs scholar_ok`) | run |
-| Commit, backend deploy, app build, OTA | committed by the owner in `c00d1bc` and `68a8514` (branch in sync with origin); the production backend serves the same pack version as the working tree (`GET /learn/index` 200, ETag `learn-036d091ca4c6`, 2026-10-20, run); app build / OTA: no record after those commits, **not verified**; the story flag still defaults to off | run: git log, curl |
+| App screens, widgets, theme | built in the shared card player; native acceptance remains open | run: browser harness, 16 fixture lessons / 130 cards, offline FastAPI replay, TypeScript |
+| Pictures | 188 selected deliveries, no missing source references; generation/public audits recorded separately | run: registry parity and release checks; see `../learn-art-20261020/README.md` |
+| Scholar review of current Sanskrit | owner reports scholars completed review; all 238 current lessons marked `scholar_ok` | owner confirmation in chat, 20 October 2026; no independent reviewer identities asserted |
+| Commit, backend deploy, app build, OTA | current follow-up changes remain local and uncommitted; no deployment, OTA or native build performed by this follow-up. The local story default is on and saved overrides are preserved. Current production parity is not verified | source read; native phone/screen-reader acceptance remains open |
 
-The story course is committed and its API is live; the app screens are behind the Settings flag (default off).
+The local story course defaults on following owner approval. Explicit saved
+Settings choices still take precedence. Production distribution is separate.
 
 ---
 
@@ -135,6 +136,11 @@ A bottom sheet (square top corners, drag handle, 85% height):
 - **Scenes** (the story book): numbered rows, done ✓ / current (highlighted,
   "Up next") / ahead; each opens that lesson. Done scenes stay replayable.
 - **Everything about <unit>** (revision; open any time).
+- **Read in Sanskrit** when `unit.reading` is authored: an optional episode
+  with word glosses and comprehension practice in the shared card player.
+  Its completion is saved, but it never changes the required road, a unit's
+  completion total, a freed ghost or a recovered leaf. Adding it to a finished
+  unit therefore does not reset the learner's progress.
 - **The check** ("Read her name · frees Chāyikā") with **Take it now**.
 - **Video** (only when the unit has one; after the unit; optional).
 - Footer: **Continue: scene n**.
@@ -230,7 +236,7 @@ at most 32 characters (they are `GameResult.mode` and the client cache key).
 | Course | prologue, acts | the burnt book |
 | Act (5) | place, colour, goal, map backdrop, parts | a region of the map |
 | Part (7 leaves; Act II and IV have two parts) | one leaf, units | ends by recovering a leaf |
-| Unit (44) | ghost, episode (story so far + authors' beats), skills, lessons, revision, check, video | one chapter, one ghost freed |
+| Unit (44) | ghost, episode (story so far + authors' beats), skills, lessons, revision, optional reading, check, video | one chapter, one ghost freed |
 | Lesson | template, cards, teaches/needs, sources, review status | one scene (or revision, check, tale) |
 | Card | one kind (below) | one beat |
 
@@ -388,7 +394,11 @@ requests; `schema` writes the JSON Schema.
   refs become `{ref, sa, iast}`; `type` answers gain `accept` (final ं/म्,
   ः/स्/र् pause variants); engine exercises are generated with their answers;
   explore params are built (4.7); pictures become `{id, alt, ratio,
-  delivered, phone?, tablet?, width?, height?}`.
+  delivered, phone?, tablet?, width?, height?}`. Recorded audio: the lesson gains
+  `audio` (Sanskrit text → clip URL) and each card with clips gains `audio`
+  (URLs in reading order), only for clips listed in
+  `content/audio/deliveries.json` (AUDIO.md); a lesson with new audio gets a new
+  hash, so phones refetch it.
 - **Never shipped**: engine claims, picture briefs/text lists/cast, authors'
   episode beats, lessons of planned units.
 - **Hashes**: each lesson has `hash` (sha1 of its payload, 12 hex); the index
@@ -442,8 +452,11 @@ TypeScript for offline use and test it against the same cases):
 
 ## 9. Pictures (ChatGPT)
 
-The owner's choice (2026-10-19): pictures are generated in **ChatGPT**, may
-contain writing, and a verifier checks that writing. This extends
+The owner's choice (updated 2026-10-20): pictures are generated in **ChatGPT**,
+may contain writing, and a verifier checks that writing. Earlier blank-page
+and no-lettering decisions are superseded: audit the scene brief for useful
+writing even when its old `text_in_image` list was empty, record the exact
+intended strings, and regenerate earlier pictures that omitted them. This extends
 `specs/artwork/ARTWORK.md` for Learn (recorded there); everything else in
 that policy applies: one generation per picture, phone-first composition
 with the subject grouped in the centre, contain fitting, phone/tablet WebP
@@ -455,13 +468,13 @@ immutable caching, verified public URLs, originals discarded after delivery.
    id, ratio, the bible's style, brief, the look of every cast member and the
    place, `text_in_image`, alt.
 2. **Generate** in ChatGPT: prompt = style + brief + cast looks + place look +
-   "Text: exactly …" (only when `text_in_image` is not empty) + ratio. Save
-   as `<id>.png` in a temporary folder.
-3. **Verify text** (pictures with `text_in_image`): read the Devanagari back
-   with Gemini vision (the owner's existing Gemini setup), compare NFC
-   strings exactly with `text_in_image`; then a human glance. Any mismatch
-   → regenerate. Pictures without text: reject any lettering, fake script
-   or watermark.
+   "Text: exactly …" for the audited intended strings + ratio. Save the
+   temporary original at the built-in generator's returned path.
+3. **Verify text**: visually proofread every written form against the NFC
+   source strings, including the optimized phone version. Independent OCR
+   can assist; record the actual method and never label direct proofreading
+   as an OCR-service result. Correct or regenerate mismatches before replacing
+   app references. Reject invented script, unintended writing and watermarks.
 4. **Review**: cast consistent with the bible (Dādī's spectacles and sari,
    Śuka's ring, ghosts kind and luminous, "you" never showing a face).
 5. **Deliver**: WebP phone (fit within 768 × 1536, q80) and tablet (fit
@@ -473,6 +486,10 @@ immutable caching, verified public URLs, originals discarded after delivery.
 
 Until delivered, a card shows a paper placeholder with the alt text; the
 lesson works without pictures.
+
+The 2026-10-20 full-course audit and verified deliveries are recorded in
+`specs/learn-art-20261020/README.md`: 168 new/replacement paintings, including
+76 with required writing, with all 183 canonical picture IDs covered.
 
 ---
 
@@ -554,13 +571,52 @@ Extend the shared player; do not fork it. Add a renderer per kind in
 - Hindi when the guide language is Hindi, else English (the existing
   `useGuideLang`).
 - `depth: "panini"` cards are skipped unless Pāṇini depth is on.
-- A gate disables Continue until solved; show the story result as a beat.
+- A gate stops the swipe forward until solved (the next page is simply not in
+  the list; going back is free); show the story result as a beat. The story
+  player has no Back/Continue bar: see 10.9.
 - Pictures: contain, explicit measured size, placeholder until delivered.
 - Revision cards: page rows ~6 per screen; tags as small labels (core,
   good to know, rare); "seen in scene N" links; "new here" badge.
 - Video cards / unit video: the existing YouTube player
   (`react-native-youtube-iframe`), `start`/`end` honoured, no XP, after the
   unit (YouTube Developer Policies III.F.3: no rewards for watching).
+
+### 10.9 Player and exercise rules from owner feedback (2026-10-20, phone)
+- **Swipe only.** `LessonPlayer controls={false}` (story lessons and reviews):
+  no Back/Continue bar; one Finish button on the last card; a muted line at
+  the bottom says "Swipe left for the next card" on card 1 and "Answer this
+  to go on" while a practice card is unanswered. Arrow keys page on the web;
+  the progress bar has increment/decrement accessibility actions. The other
+  Learn decks keep their buttons until the owner says otherwise.
+- **Header.** The title takes one line; the language switch and "I know this"
+  are 36-pt chips on the same row (the second is an icon, label "I know this:
+  skip to the practice").
+- **Every exercise says how to answer.** Practice cards print a one-line
+  "how" under the prompt (`cards/practiceHelp.ts`: order, type and the engine
+  kinds); a match card prints a live status line instead ("Tap one on the
+  left, then its partner on the right (0/4)"). Explore widgets print their
+  own line (`WIDGET_HOWTO` in `widgets/index.tsx`). Prompts say what the
+  learner actually does: all 195 match prompts now read "Match each X with Y"
+  (was "Join each X to Y"), and the three widget prompts that said drag,
+  draw or snap were reworded.
+- **Match board.** Tap one item on either side, then its partner; joined
+  pairs carry the same number on both tiles; tap a joined tile to lift it.
+- **Daily hint.** One per learner per local day, shared across the app
+  (`services/dailyHint.ts`, stored per account on the device; not on the
+  server), shows the answer, is scored as "unsure" (no first-try credit, not
+  counted wrong). A small bulb chip beside the prompt: tap, confirm, answer.
+  Wired into story practice cards and the old Learn deck checks. The Play
+  games, Challenge rounds and Recite are scored, so they never offer it (a hint
+  would be free points); the server-graded Lesson steps hold no answers on the
+  phone.
+- **Recorded Sanskrit** (`specs/learn-story/AUDIO.md`). Lessons carry `audio`
+  (Sanskrit text → clip URL) and cards carry `audio` (URLs in reading order),
+  only for clips that exist in R2. A line with a clip gets a speaker button
+  (tap to play, again to stop); a table cell with a clip is tap-to-hear; a
+  mouth-map letter sounds when chosen; practice cards never offer audio.
+  With a card on screen, its clips and those of the three cards ahead and the
+  three behind are buffered (`audioWindow.ts`, `useAudioWindow.ts`, `holdClips`
+  in `services/speech.ts`), so a swipe never waits.
 
 ### 10.7 Grading
 Local, per 4.5. Normalise to NFC; compare `accept`. Record each practice
@@ -615,6 +671,11 @@ greedy, never demonic; "you" never shows a face.
 5. The old trail stays in the Library until the story course covers its
    material; then the owner decides its removal.
 
+Owner update, 20 October 2026: current videos and dialogue are approved, the
+owner reports scholar review complete, and the local default is enabled.
+Phone/screen-reader acceptance has not been performed here; no deployment,
+OTA or build accompanied this source change.
+
 ---
 
 ## 13. Phases and acceptance
@@ -631,7 +692,9 @@ greedy, never demonic; "you" never shows a face.
 
 ## 14. Known gaps and risks
 
-- **No Sanskrit is scholar-reviewed yet**; everything is `draft` (run).
+- The current 238 lessons have owner-reported scholar sign-off. Future or
+  changed Sanskrit requires a new review; the approval record binds the current
+  lesson material hashes. Forty units have no separate optional episode yet.
 - The engine cannot check compounds (samāsa), kāraka roles, pluta (३) or
   uṇādi words; such content needs the scholar. (`तितउ` was cut: the engine
   derives `तितो`; run.)

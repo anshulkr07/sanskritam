@@ -1,9 +1,17 @@
 {
   "id": "reading-names-s1",
-  "sha256": "0ca9d5f30fa3cf9b674e10ae1ac6f403d7ed755aa2d4ce4f66f9207178e94057",
+  "sha256": "7a0a781ce0c53dff23c6f22ef84ab699b771491a12294b5ee211ef67d0fc194f",
   "model": "Codex visual inspection",
-  "expected": [],
-  "detected": [],
+  "expected": [
+    "रामः",
+    "सीता",
+    "लक्ष्मणः"
+  ],
+  "detected": [
+    "रामः",
+    "सीता",
+    "लक्ष्मणः"
+  ],
   "unreadable_lettering": false,
   "passed": true,
   "notes": "Direct visual review: source scene, character appearances and full-frame composition. All visible lettering compared with the recorded exact source strings (NFC); no OCR-service result is claimed."

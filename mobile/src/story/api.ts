@@ -19,7 +19,7 @@ export const getState = (track: 'story' | 'simple' = 'story') => request<StorySt
 // outbox. Keep a single write path so completion survives a lost connection.
 export const getReview = () => request<{due_count:number; items:{item_key:string; lesson_id:string; lesson_title:StoryLesson['title']; due_at:string; card:PracticeCard}[]}>('/learn/review?limit=12', {}, true);
 export function lessonSummaries(index: StoryIndex): LessonSummary[] {
- return [index.course?.prologue, ...index.acts.flatMap(a => a.parts.flatMap(p => p.units.flatMap(u => [...u.lessons, u.revision, u.check]))), ...index.acts.flatMap(a=>a.parts.map(p=>p.leaf?.tale)), ...index.finale_leaves.map(l=>l.tale)].filter((l): l is LessonSummary => !!l);
+ return [index.course?.prologue, ...index.acts.flatMap(a => a.parts.flatMap(p => p.units.flatMap(u => [...u.lessons, u.revision, u.reading, u.check]))), ...index.acts.flatMap(a=>a.parts.map(p=>p.leaf?.tale)), ...index.finale_leaves.map(l=>l.tale)].filter((l): l is LessonSummary => !!l);
 }
 export async function prefetchLessons(summaries: LessonSummary[], tablet: boolean, characters: Character[] = []) {
  await Promise.allSettled(summaries.slice(0,3).map(async summary => {

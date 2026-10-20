@@ -9,7 +9,7 @@ teaches:
 - case.inst
 needs:
 - case.acc
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: nauka
     ratio: '4:3'
     id: with-means-s1
+    text_in_image: ["सा लेखन्या लिखति।"]
   narration:
     en: 'The boat glides out into the current, the spice seller waving from the bank. Dādī writes in her notebook with a thin reed pen. The boatman pushes off with his long pole. Śuka cracks a seed with his beak. Beside the boat rides a pale blue wisp shaped like a little boat itself: Tarikā. “How is each thing done?” asks Dādī. “By what means?”'
     hi: 'नाव धारा में सरकती है, तट से मसाले वाला हाथ हिलाता है। दादी अपनी कॉपी में पतली सरकंडे की कलम से लिखती हैं। नाविक लम्बी डंडी से नाव धकेलता है। शुक चोंच से बीज तोड़ता है। नाव के बगल में नन्ही नाव के आकार का हल्का नीला धुआँ चलता है: तरिका। दादी पूछती हैं, “हर काम किस साधन से होता है?”'
@@ -348,8 +349,8 @@ cards:
   - case.inst
   mode: match
   prompt:
-    en: Join each means to its meaning.
-    hi: हर साधन को उसके अर्थ से जोड़िए।
+    en: Match each means with its meaning.
+    hi: हर साधन को उसके अर्थ से मिलाइए।
   explain:
     en: '{{एन}}, {{अया}}: the third-case endings.'
     hi: '{{एन}}, {{अया}}: तृतीया के प्रत्यय।'

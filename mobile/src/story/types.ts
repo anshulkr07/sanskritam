@@ -94,6 +94,7 @@ export interface UnitSummary {
   lessons: LessonSummary[]; // ready units only, in order
   planned: { id: string; title: Bi }[]; // the road ahead ("coming soon")
   revision: LessonSummary | null;
+  reading?: LessonSummary | null; // optional episode, absent in older cached indexes
   check: LessonSummary | null;
   video: UnitVideo | null;
 }
@@ -149,7 +150,7 @@ export interface StoryIndex {
 
 export interface Stop {
   lesson_id: string | null;
-  role: "prologue" | "lesson" | "revision" | "check" | "coming_soon";
+  role: "prologue" | "lesson" | "revision" | "reading" | "check" | "coming_soon";
   unit_id: string | null;
   act_id: string | null;
 }
@@ -187,6 +188,8 @@ export interface StoryLesson {
   sources: Source[];
   cards: Card[];
   hash: string;
+  /** Sanskrit text → recorded clip URL (R2), for the lines of this lesson that have one. */
+  audio?: Record<string, string>;
 }
 
 interface CardBase {
@@ -197,6 +200,8 @@ interface CardBase {
   depth: "core" | "panini";
   skills: string[];
   sutras: Sutra[];
+  /** Pre-rendered clips of this card's Sanskrit, in reading order (R2 URLs); absent until the audio is rendered. */
+  audio?: string[];
 }
 
 export interface Word {

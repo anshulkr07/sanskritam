@@ -10,7 +10,7 @@ teaches:
 needs:
 - verb.passive
 - verb.class-1
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -38,6 +38,7 @@ cards:
     place: smashana
     ratio: '4:3'
     id: part-ktva-s1
+    text_in_image: ["गत्वा", "कृत्वा", "श्रुत्वा"]
   narration:
     en: 'Tonight the Vetāla is in a hurry. “Having gone there, having climbed the tree, having cut the rope, he threw down the corpse,” he says in one breath. Śuka is lost. A spirit like a folded paper fan unfolds: “गत्वा, आरुह्य, छित्त्वा. Three short words, not three sentences.” Dādī: “‘Having done’: so the sentence need not stop.”'
     hi: 'आज वेताल जल्दी में है। “वहाँ जाकर, वृक्ष पर चढ़कर, रस्सी काटकर, उसने शव नीचे गिराया,” वह एक ही साँस में कहता है। शुक खो जाता है। तह किए काग़ज़ी पंखे जैसा एक पतला भूत अलाव की रोशनी में खुलता है और कहता है: “गत्वा, आरुह्य, छित्त्वा। तीन छोटे शब्द, तीन वाक्य नहीं।” दादी: “‘करके’ अर्थ वाला शब्द, ताकि बाक़ी वाक्य को रुकना न पड़े।”'
@@ -47,6 +48,16 @@ cards:
       en: Going there, climbing the śiṃśipā tree and cutting the noose with a knife, the king threw the corpse down to the ground.
       hi: वहाँ जाकर, शिंशिपा के वृक्ष पर चढ़कर और छुरी से फंदा काटकर, राजा ने शव को ज़मीन पर गिराया।
     source: Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit)
+  lines:
+  - speaker: sankshepaka
+    sa: गत्वा
+    gloss:
+      en: Having gone.
+      hi: जाकर।
+    check:
+      type: krdanta
+      dhatu: गम्
+      krt: ktvA
 - id: t1
   kind: teach
   title:
@@ -332,8 +343,8 @@ cards:
   - krt.ktva
   mode: match
   prompt:
-    en: Join each root to its “having …” form.
-    hi: हर धातु को उसके ‘… करके’ रूप से जोड़िए।
+    en: Match each root with its “having …” form.
+    hi: हर धातु को उसके ‘… करके’ रूप से मिलाइए।
   explain:
     en: Some roots change inside.
     hi: कुछ धातुएँ भीतर बदलती हैं।
@@ -384,8 +395,8 @@ cards:
   - krt.ktva
   widget: word_factory
   prompt:
-    en: Snap a suffix onto a root and see the word it makes.
-    hi: धातु पर प्रत्यय जोड़िए और देखिए कि कौन-सा शब्द बनता है।
+    en: Pick a root and a suffix, and see the word they make.
+    hi: एक धातु और एक प्रत्यय चुनिए और देखिए कि कौन-सा शब्द बनता है।
   params:
     roots:
     - dhatu: पठ्

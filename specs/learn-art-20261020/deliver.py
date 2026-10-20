@@ -1,5 +1,5 @@
 """Incremental text verification, optimized delivery and canonical-ID integration."""
-import argparse, importlib.util, json, os, sys, time, uuid
+import argparse, importlib.util, json, os, subprocess, sys, time, uuid
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 from dotenv import dotenv_values
@@ -78,9 +78,8 @@ def main():
         if previous and previous['original']==generated['original']:continue
         job={**jobs[key],**generated}
         report=read(OUT/'ocr'/(key+'.json'),{})
-        if not report or report.get('expected')!=job['expected']:
+        if not report or report.get('expected')!=job['expected'] or report.get('sha256')!=pipeline.digest(Path(job['original']).read_bytes()):
             pending_count+=1;continue
-        assert report['sha256']==pipeline.digest(Path(job['original']).read_bytes()), 'Review belongs to another draft'
         if not report['passed']:
             print(key+': REJECTED '+str(report['detected']),flush=True);continue
         row=pipeline.prepare(job,report)
@@ -114,6 +113,9 @@ def main():
                 if old_original.exists():old_original.unlink()
             save(OUT/'processed'/(key+'.json'),row)
             save(OUT/'deliveries.json',deliveries)
+            # Keep release validation and the app on the same verified selection.
+            # Synchronize only after both derivatives and original cleanup passed.
+            subprocess.run([sys.executable,'-X','utf8',str(ROOT/'backend/scripts/sync_story_artwork.py'),'--apply'],check=True,creationflags=subprocess.CREATE_NO_WINDOW if os.name=='nt' else 0)
             print(key+': published, hashes/dimensions/MIME/CDN HIT verified; original discarded',flush=True)
         else:print(key+': text and derivative dimensions verified',flush=True)
     sheet(deliveries)

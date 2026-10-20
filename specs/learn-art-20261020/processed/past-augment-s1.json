@@ -1,0 +1,1524 @@
+{
+  "id": "past-augment-s1",
+  "where": "past.augment#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A burning-ground grove at night: a pale, almost see-through spirit walking backwards out of the dark, its edges fading like old ink, a trail of fading footprints behind it; the Vetāla hanging from the śiṃśapā tree yawning; Dādī and Śuka watching.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\natitaka: A pale, almost see-through spirit whose edges fade like old ink, walking backwards and leaving a trail of fading footprints.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI. All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "past.augment",
+    "template": "scene",
+    "title": {
+      "en": "The augment अ-",
+      "hi": "आगम अ-"
+    },
+    "title_sa": "अगच्छत्",
+    "minutes": 6,
+    "teaches": [
+      "verb.lan"
+    ],
+    "needs": [
+      "verb.lot",
+      "verb.pres-3sg"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The second night",
+          "hi": "दूसरी रात"
+        },
+        "image": {
+          "id": "past-augment-s1",
+          "brief": "A burning-ground grove at night: a pale, almost see-through spirit walking backwards out of the dark, its edges fading like old ink, a trail of fading footprints behind it; the Vetāla hanging from the śiṃśapā tree yawning; Dādī and Śuka watching.",
+          "alt": {
+            "en": "A faint spirit walks backwards leaving fading footprints while the Vetāla yawns above",
+            "hi": "धुँधला भूत उलटा चलता मिटते निशान छोड़ता, ऊपर जम्हाई लेता वेताल"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "atitaka"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The next night the Vetāla stretches, yawns, and says: “Tell me about yesterday.” You open your mouth and find only present tense: he goes, he reads. A faint spirit, backwards-walking, comes shuffling out of the dark with a trail of fading footprints behind him. “अगच्छत्,” he sighs. “अपठत्.” “He went, he read,” Dādī translates. “The past has an extra letter in front.”",
+          "hi": "अगली रात वेताल अँगड़ाई लेता है, जम्हाई लेता है, और कहता है: “मुझे बीते कल के बारे में बताओ।” आप मुँह खोलते हैं और पाते हैं कि केवल वर्तमान काल है: वह जाता है, वह पढ़ता है। अँधेरे से एक धुँधला भूत उलटा चलता हुआ सरकता आता है, पीछे मिटते पैरों के निशान। “अगच्छत्,” वह आह भरता है। “अपठत्।” “वह गया, उसने पढ़ा,” दादी अनुवाद करती हैं। “भूतकाल के आगे एक अतिरिक्त अक्षर लगता है।”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "अगच्छत्। अपठत्।",
+            "gloss": {
+              "en": "He went. He read.",
+              "hi": "वह गया। उसने पढ़ा।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The past with अ-",
+          "hi": "अ- वाला भूतकाल"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lan"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}} (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment, {{अट्}}.",
+          "hi": "जो आज से पहले हुआ, उसके लिए धातु के आगे {{अ}} लगाइए और भूतकाल के प्रत्यय लीजिए: {{अगच्छत्}} (वह गया), {{अपठत्}} (उसने पढ़ा), {{अवदत्}} (उसने कहा)। इस काल का नाम {{लङ्}} है। {{अ}} को आगम {{अट्}} कहते हैं।"
+        },
+        "examples": [
+          {
+            "sa": "ह्यः बालकः गृहम् अगच्छत्।",
+            "meaning": {
+              "en": "Yesterday the boy went home.",
+              "hi": "कल बालक घर गया।"
+            },
+            "words": [
+              {
+                "sa": "ह्यः",
+                "gloss": {
+                  "en": "yesterday",
+                  "hi": "कल (बीता)"
+                },
+                "check": null
+              },
+              {
+                "sa": "बालकः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गृहम्",
+                "gloss": {
+                  "en": "home",
+                  "hi": "घर"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गृह",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अगच्छत्",
+                "gloss": {
+                  "en": "went",
+                  "hi": "गया"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lan",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "बालकाः पुस्तकम् अपठन्।",
+            "meaning": {
+              "en": "The boys read the book.",
+              "hi": "बालकों ने पुस्तक पढ़ी।"
+            },
+            "words": [
+              {
+                "sa": "बालकाः",
+                "gloss": {
+                  "en": "boys",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पुस्तकम्",
+                "gloss": {
+                  "en": "book",
+                  "hi": "पुस्तक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पुस्तक",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अपठन्",
+                "gloss": {
+                  "en": "read",
+                  "hi": "पढ़ा"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lan",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "अहम् तम् अपश्यम्।",
+            "meaning": {
+              "en": "I saw him.",
+              "hi": "मैंने उसे देखा।"
+            },
+            "words": [
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "तम्",
+                "gloss": {
+                  "en": "him",
+                  "hi": "उसे"
+                },
+                "check": null
+              },
+              {
+                "sa": "अपश्यम्",
+                "gloss": {
+                  "en": "saw",
+                  "hi": "देखा"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दृश्",
+                  "lakara": "Lan",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "लङ्",
+          "meaning": {
+            "en": "the everyday past",
+            "hi": "सामान्य भूतकाल"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "पठ्: the past",
+          "hi": "पठ्: भूतकाल"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lan"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“He read, you read, I read”",
+          "hi": "‘उसने पढ़ा, तुमने पढ़ा, मैंने पढ़ा’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अपठत्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lan",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अपठताम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lan",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अपठन्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lan",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अपठः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lan",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अपठतम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lan",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अपठत",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lan",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अपठम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lan",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अपठाव",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lan",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अपठाम",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lan",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "The endings are the present endings made past: {{-त्}} for he, {{-ः}} for you, {{-म्}} for I.",
+          "hi": "प्रत्यय वर्तमान के प्रत्यय हैं जो भूतकाल बन गए: ‘वह’ के लिए {{-त्}}, ‘तुम’ के लिए {{-ः}}, ‘मैं’ के लिए {{-म्}}।"
+        }
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "गम्: the past",
+          "hi": "गम्: भूतकाल"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lan"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“He went, you went, I went”",
+          "hi": "‘वह गया, तुम गए, मैं गया’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अगच्छत्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lan",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अगच्छताम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lan",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अगच्छन्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lan",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अगच्छः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lan",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अगच्छतम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lan",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अगच्छत",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lan",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अगच्छम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lan",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अगच्छाव",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lan",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अगच्छाम",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lan",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": null
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "With a prefix",
+          "hi": "उपसर्ग के साथ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lan"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A prefix stays in front and the {{अ}} goes between it and the root: {{आ + गच्छति}} makes {{आगच्छति}}, and its past is {{आगच्छत्}}, “he came”.",
+          "hi": "उपसर्ग आगे ही रहता है और {{अ}} उसके और धातु के बीच आता है: {{आ + गच्छति}} से {{आगच्छति}} बनता है, और उसका भूतकाल {{आगच्छत्}} है, ‘वह आया’।"
+        },
+        "examples": [
+          {
+            "sa": "सः आगच्छत्।",
+            "meaning": {
+              "en": "He came.",
+              "hi": "वह आया।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "आगच्छत्",
+                "gloss": {
+                  "en": "came",
+                  "hi": "आया"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lan",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "आ"
+                  ],
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lan"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He read (yesterday).” Which form?",
+          "hi": "‘उसने (कल) पढ़ा।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{अपठत्}}: {{अ}} + {{पठ}} + {{त्}}.",
+          "hi": "{{अपठत्}}: {{अ}} + {{पठ}} + {{त्}}।"
+        },
+        "options": [
+          {
+            "sa": "पठति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अपठत्",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "पठतु",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lan"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “He went.”",
+          "hi": "कहिए: ‘वह गया।’"
+        },
+        "explain": {
+          "en": "{{अगच्छत्}}.",
+          "hi": "{{अगच्छत्}}।"
+        },
+        "options": [],
+        "answers": [
+          "अगच्छत्"
+        ],
+        "tiles": [
+          "अ",
+          "गच्छ",
+          "त्",
+          "ति",
+          "ः"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lan"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every past form.",
+          "hi": "हर भूतकाल का रूप छुइए।"
+        },
+        "params": {
+          "passage": [
+            "अगच्छत्",
+            "गच्छति",
+            "अपठत्",
+            "पठति",
+            "अवदत्",
+            "वदति"
+          ],
+          "targets": [
+            "अगच्छत्",
+            "अपठत्",
+            "अवदत्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lan"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "time_slider",
+        "prompt": {
+          "en": "Slide through time and watch the verb change.",
+          "hi": "समय में खिसकाइए और देखिए कि क्रिया कैसे बदलती है।"
+        },
+        "params": {
+          "forms": [
+            {
+              "label": {
+                "en": "yesterday",
+                "hi": "कल"
+              },
+              "sa": "सः अगच्छत्।",
+              "meaning": {
+                "en": "He went.",
+                "hi": "वह गया।"
+              },
+              "check": {
+                "type": "tinanta",
+                "dhatu": "गम्",
+                "lakara": "Lan",
+                "purusha": "Prathama",
+                "vacana": "Eka",
+                "form": "अगच्छत्"
+              }
+            },
+            {
+              "label": {
+                "en": "now",
+                "hi": "अब"
+              },
+              "sa": "सः गच्छति।",
+              "meaning": {
+                "en": "He goes.",
+                "hi": "वह जाता है।"
+              },
+              "check": {
+                "type": "tinanta",
+                "dhatu": "गम्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "vacana": "Eka",
+                "form": "गच्छति"
+              }
+            }
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lan"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each past form to its meaning.",
+          "hi": "हर भूतकाल के रूप को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "Each is {{अ}} + root + {{त्}}.",
+          "hi": "हर एक {{अ}} + धातु + {{त्}} है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "अगच्छत्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "he went",
+                "hi": "वह गया"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "अपठत्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "he read",
+                "hi": "उसने पढ़ा"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "अपश्यत्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "he saw",
+                "hi": "उसने देखा"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "अलिखत्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "he wrote",
+                "hi": "उसने लिखा"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "They went",
+          "hi": "वे गए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lan"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“They went.” Which form?",
+          "hi": "‘वे गए।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{अगच्छन्}}: they, many.",
+          "hi": "{{अगच्छन्}}: वे, अनेक।"
+        },
+        "options": [
+          {
+            "sa": "अगच्छत्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अगच्छताम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अगच्छन्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“अगच्छन्,” you say, and the faint spirit stops walking backwards. His footprints, which had been fading, grow dark again, step by step, all the way from where you stand to the distant edge of the grove. “They went,” he whispers. “They did. I remember.”",
+            "hi": "“अगच्छन्,” आप कहते हैं, और धुँधला भूत उलटा चलना रोक देता है। उसके मिटते पैरों के निशान फिर गहरे होने लगते हैं, कदम-कदम, जहाँ आप खड़े हैं वहाँ से वन के दूर छोर तक। “वे गए,” वह फुसफुसाता है। “सचमुच गए। मुझे याद है।”"
+          },
+          "failure": {
+            "en": "His footprints keep fading. “They went”: {{अगच्छन्}}.",
+            "hi": "उसके पैरों के निशान मिटते रहते हैं। ‘वे गए’: {{अगच्छन्}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's past",
+          "hi": "पाणिनि का भूतकाल"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "verb.lan"
+        ],
+        "sutras": [
+          "3.2.111",
+          "6.4.71",
+          "3.4.100"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 3.2.111, {{अनद्यतने लङ्}}, gives {{लङ्}} for a past not of today. 6.4.71, {{लुङ्लङ्लृङ्क्ष्वडुदात्तः}}, adds the augment {{अ}}. Then 3.4.100, {{इतश्च}}, drops the final {{-इ}} of the ending {{-ति}}, so {{-ति}} becomes {{-त्}}: {{अपठत्}}.",
+          "hi": "सूत्र 3.2.111, {{अनद्यतने लङ्}}, आज से पहले के भूत के लिए {{लङ्}} देता है। 6.4.71, {{लुङ्लङ्लृङ्क्ष्वडुदात्तः}}, आगम {{अ}} जोड़ता है। फिर 3.4.100, {{इतश्च}}, {{-ति}} प्रत्यय का अन्तिम {{-इ}} हटा देता है, इसलिए {{-ति}} {{-त्}} बनता है: {{अपठत्}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The past",
+          "hi": "भूतकाल"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "अगच्छत् · अपठत्",
+            "text": {
+              "en": "He went, he read.",
+              "hi": "वह गया, उसने पढ़ा।"
+            }
+          },
+          {
+            "sa": "अ + धातु",
+            "text": {
+              "en": "The augment goes in front.",
+              "hi": "आगम आगे लगता है।"
+            }
+          },
+          {
+            "sa": "आगच्छत्",
+            "text": {
+              "en": "With a prefix: he came.",
+              "hi": "उपसर्ग सहित: वह आया।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "past-augment-s1",
+    "brief": "A burning-ground grove at night: a pale, almost see-through spirit walking backwards out of the dark, its edges fading like old ink, a trail of fading footprints behind it; the Vetāla hanging from the śiṃśapā tree yawning; Dādī and Śuka watching.",
+    "alt": {
+      "en": "A faint spirit walks backwards leaving fading footprints while the Vetāla yawns above",
+      "hi": "धुँधला भूत उलटा चलता मिटते निशान छोड़ता, ऊपर जम्हाई लेता वेताल"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "atitaka"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A burning-ground grove at night: a pale, almost see-through spirit walking backwards out of the dark, its edges fading like old ink, a trail of fading footprints behind it; the Vetāla hanging from the śiṃśapā tree yawning; Dādī and Śuka watching.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\natitaka: A pale, almost see-through spirit whose edges fade like old ink, walking backwards and leaving a trail of fading footprints.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-162a5d58-f0f6-421a-8d7a-bd8162bc9093.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "feb91ae66747106cec21450fc126204ab4b0daa3cabf9c39a312b7731077b80a",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\past-augment-s1-phone-0e48e54b.webp",
+      "key": "learn/past-augment-s1-phone-0e48e54b.webp",
+      "sha256": "0e48e54b0ba502ba27815530526a859e2e3d7d1eda011c40983608aed93964fe",
+      "bytes": 115030,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/past-augment-s1-phone-0e48e54b.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\past-augment-s1-tablet-93e95ada.webp",
+      "key": "learn/past-augment-s1-tablet-93e95ada.webp",
+      "sha256": "93e95adaeaa96ad6082255d2dc1358b0b2583bf695c2e0e977095f89622d43da",
+      "bytes": 487918,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/past-augment-s1-tablet-93e95ada.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

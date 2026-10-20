@@ -5,7 +5,9 @@ Read the exact versioned docs at https://docs.expo.dev/versions/v57.0.0/ before 
 # Lessons and Sanskrit display
 
 Every current and future Learn lesson must open in the shared swipeable card
-player, with Continue/Back and completion progress. Preserve the complete
+player, with Continue/Back and completion progress. Exception (owner,
+2026-10-20): the story course in `src/story` is swipe-only (`controls={false}`):
+no Continue/Back buttons, a Finish button on the last card. Preserve the complete
 source material; do not fall back to a long scrolling grammar page or replace
 full teaching with an illustrated summary. Keep examples, tables, qualifications,
 quick checks, audio and source attribution when converting content.

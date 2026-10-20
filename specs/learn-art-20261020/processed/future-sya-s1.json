@@ -1,0 +1,1492 @@
+{
+  "id": "future-sya-s1",
+  "where": "future.sya#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. One 4:3 landscape watercolor for The Burnt Book Sanskrit lesson future.sya. Refined Indian watercolor with restrained gouache on warm ivory; muted ochre, sage, terracotta and indigo. At dawn in a quiet old grove, a slender friendly adult spirit made of pale morning light leans forward as if ready to run, long hair swept forward. He wears an opaque ivory kurta and dhoti. Above, the amused ash-grey Vetala spirit hangs upside down by its ankles from a sturdy branch, arms folded, wearing a complete opaque long grey tunic and trousers secured at the ankles. In the foreground: learner seen from behind in ochre kurta and cloth shoulder bag; grandmother with silver bun, round glasses, cream sari with maroon border and grey shawl; bright green rose-ringed parrot with red beak. Soft dawn glows beyond the trees. Gentle curious storytelling, fully clothed figures, compact clear central group, essential faces and hands away from the edges. This scene needs no writing. No invented script, watermark, UI, border or frightening imagery.",
+  "source": {
+    "id": "future.sya",
+    "template": "scene",
+    "title": {
+      "en": "Will read: पठिष्यति",
+      "hi": "पढ़ेगा: पठिष्यति"
+    },
+    "title_sa": "पठिष्यति",
+    "minutes": 6,
+    "teaches": [
+      "verb.lrt"
+    ],
+    "needs": [
+      "verb.lan",
+      "verb.pres-3sg"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The third night",
+          "hi": "तीसरी रात"
+        },
+        "image": {
+          "id": "future-sya-s1",
+          "brief": "The burning-ground grove at night: a slim spirit of pale morning light leaning forward as if about to run, hair streaming ahead; the Vetāla hanging above with a sly look; you, Dādī and Śuka in the foreground; a glow of dawn beginning at the far edge of the trees.",
+          "alt": {
+            "en": "A pale spirit leans forward as if about to run while the Vetāla hangs above with a sly look",
+            "hi": "पीला भूत दौड़ने को आगे झुकता, ऊपर चालाक मुद्रा में वेताल"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "bhavika"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "“Tell me,” the Vetāla asks lazily, “what will you do if the collector finds the leaves?” You open your mouth and know only “I read” and “I read yesterday”. A slim spirit of pale light leans in from the dark, as if about to run. “गमिष्यति,” he says, eager. “पठिष्यति.” “He will go, he will read,” Dādī says. “The sign is -ष्य-.”",
+          "hi": "“बताओ,” वेताल सुस्ती से पूछता है, “अगर संग्रहकर्ता को पत्र मिल गए तो तुम क्या करोगे?” आप मुँह खोलते हैं और जानते हैं केवल ‘मैं पढ़ता हूँ’ और ‘मैंने कल पढ़ा’। पीला प्रकाश-सा एक पतला भूत अँधेरे से आगे झुकता है, मानो अभी दौड़ पड़ेगा। “गमिष्यति,” वह उत्सुकता से कहता है। “पठिष्यति।” “वह जाएगा, वह पढ़ेगा,” दादी कहती हैं। “इसका चिह्न -ष्य- है।”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "गमिष्यति। पठिष्यति।",
+            "gloss": {
+              "en": "He will go. He will read.",
+              "hi": "वह जाएगा। वह पढ़ेगा।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The sign -स्य-",
+          "hi": "चिह्न -स्य-"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lrt"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "For what will happen, put {{-इष्य-}} or {{-स्य-}} between the root and the present endings: {{पठ् + इष्य + ति}} makes {{पठिष्यति}}; {{दा + स्य + ति}} makes {{दास्यति}}. This tense is {{लृट्}}. Some roots change: {{दृश्}} gives {{द्रक्ष्यति}}.",
+          "hi": "जो होगा, उसके लिए धातु और वर्तमान के प्रत्ययों के बीच {{-इष्य-}} या {{-स्य-}} रखिए: {{पठ् + इष्य + ति}} से {{पठिष्यति}}; {{दा + स्य + ति}} से {{दास्यति}}। यह काल {{लृट्}} है। कुछ धातुएँ बदलती हैं: {{दृश्}} से {{द्रक्ष्यति}}।"
+        },
+        "examples": [
+          {
+            "sa": "श्वः बालकः गृहम् गमिष्यति।",
+            "meaning": {
+              "en": "Tomorrow the boy will go home.",
+              "hi": "कल बालक घर जाएगा।"
+            },
+            "words": [
+              {
+                "sa": "श्वः",
+                "gloss": {
+                  "en": "tomorrow",
+                  "hi": "कल (आने वाला)"
+                },
+                "check": null
+              },
+              {
+                "sa": "बालकः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गृहम्",
+                "gloss": {
+                  "en": "home",
+                  "hi": "घर"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गृह",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गमिष्यति",
+                "gloss": {
+                  "en": "will go",
+                  "hi": "जाएगा"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lrt",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "बालकाः पुस्तकम् पठिष्यन्ति।",
+            "meaning": {
+              "en": "The boys will read the book.",
+              "hi": "बालक पुस्तक पढ़ेंगे।"
+            },
+            "words": [
+              {
+                "sa": "बालकाः",
+                "gloss": {
+                  "en": "boys",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पुस्तकम्",
+                "gloss": {
+                  "en": "book",
+                  "hi": "पुस्तक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पुस्तक",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठिष्यन्ति",
+                "gloss": {
+                  "en": "will read",
+                  "hi": "पढ़ेंगे"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lrt",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "अहम् तम् द्रक्ष्यामि।",
+            "meaning": {
+              "en": "I will see him.",
+              "hi": "मैं उसे देखूँगा।"
+            },
+            "words": [
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "तम्",
+                "gloss": {
+                  "en": "him",
+                  "hi": "उसे"
+                },
+                "check": null
+              },
+              {
+                "sa": "द्रक्ष्यामि",
+                "gloss": {
+                  "en": "will see",
+                  "hi": "देखूँगा"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दृश्",
+                  "lakara": "Lrt",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "लृट्",
+          "meaning": {
+            "en": "the future",
+            "hi": "भविष्यत् काल"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "पठ्: the future",
+          "hi": "पठ्: भविष्यत्"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lrt"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“He will read, you will read, I will read”",
+          "hi": "‘वह पढ़ेगा, तुम पढ़ोगे, मैं पढ़ूँगा’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठिष्यति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lrt",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठिष्यतः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lrt",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठिष्यन्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lrt",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठिष्यसि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lrt",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठिष्यथः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lrt",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठिष्यथ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lrt",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठिष्यामि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lrt",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठिष्यावः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lrt",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठिष्यामः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lrt",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "The endings are the present endings after {{-इष्य-}}: {{-ति}}, {{-सि}}, {{-मि}}.",
+          "hi": "प्रत्यय {{-इष्य-}} के बाद वर्तमान के प्रत्यय हैं: {{-ति}}, {{-सि}}, {{-मि}}।"
+        }
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "भू: the future",
+          "hi": "भू: भविष्यत्"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lrt"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“He will be, you will be, I will be”",
+          "hi": "‘वह होगा, तुम होगे, मैं होऊँगा’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "भविष्यति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lrt",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "भविष्यतः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lrt",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "भविष्यन्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lrt",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "भविष्यसि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lrt",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "भविष्यथः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lrt",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "भविष्यथ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lrt",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "भविष्यामि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lrt",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "भविष्यावः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lrt",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "भविष्यामः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lrt",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lrt"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He will read.” Which form?",
+          "hi": "‘वह पढ़ेगा।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{पठिष्यति}}: root + {{-इष्य-}} + {{-ति}}.",
+          "hi": "{{पठिष्यति}}: धातु + {{-इष्य-}} + {{-ति}}।"
+        },
+        "options": [
+          {
+            "sa": "पठति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अपठत्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठिष्यति",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lrt"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “He will be.”",
+          "hi": "कहिए: ‘वह होगा।’"
+        },
+        "explain": {
+          "en": "{{भविष्यति}}.",
+          "hi": "{{भविष्यति}}।"
+        },
+        "options": [],
+        "answers": [
+          "भविष्यति"
+        ],
+        "tiles": [
+          "भ",
+          "विष्य",
+          "ति",
+          "वति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lrt"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join present to future.",
+          "hi": "वर्तमान को भविष्यत् से जोड़िए।"
+        },
+        "explain": {
+          "en": "The sign {{-ष्य-}} appears in each.",
+          "hi": "हर एक में चिह्न {{-ष्य-}} दिखता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "गच्छति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "गमिष्यति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पठति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "पठिष्यति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "भवति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "भविष्यति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ददाति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "दास्यति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lrt"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every future form.",
+          "hi": "हर भविष्यत् रूप छुइए।"
+        },
+        "params": {
+          "passage": [
+            "गमिष्यति",
+            "गच्छति",
+            "पठिष्यति",
+            "पठति",
+            "भविष्यति",
+            "भवति"
+          ],
+          "targets": [
+            "गमिष्यति",
+            "पठिष्यति",
+            "भविष्यति"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lrt"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "time_slider",
+        "prompt": {
+          "en": "Slide through time and watch the verb change.",
+          "hi": "समय में खिसकाइए और देखिए कि क्रिया कैसे बदलती है।"
+        },
+        "params": {
+          "forms": [
+            {
+              "label": {
+                "en": "yesterday",
+                "hi": "कल"
+              },
+              "sa": "बालकः अपठत्।",
+              "meaning": {
+                "en": "The boy read.",
+                "hi": "बालक ने पढ़ा।"
+              },
+              "check": {
+                "type": "tinanta",
+                "dhatu": "पठ्",
+                "lakara": "Lan",
+                "purusha": "Prathama",
+                "vacana": "Eka",
+                "form": "अपठत्"
+              }
+            },
+            {
+              "label": {
+                "en": "now",
+                "hi": "अब"
+              },
+              "sa": "बालकः पठति।",
+              "meaning": {
+                "en": "The boy reads.",
+                "hi": "बालक पढ़ता है।"
+              },
+              "check": {
+                "type": "tinanta",
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "vacana": "Eka",
+                "form": "पठति"
+              }
+            },
+            {
+              "label": {
+                "en": "tomorrow",
+                "hi": "कल (आने वाला)"
+              },
+              "sa": "बालकः पठिष्यति।",
+              "meaning": {
+                "en": "The boy will read.",
+                "hi": "बालक पढ़ेगा।"
+              },
+              "check": {
+                "type": "tinanta",
+                "dhatu": "पठ्",
+                "lakara": "Lrt",
+                "purusha": "Prathama",
+                "vacana": "Eka",
+                "form": "पठिष्यति"
+              }
+            }
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lrt"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “Tomorrow he will go.”",
+          "hi": "कहिए: ‘कल वह जाएगा।’"
+        },
+        "explain": {
+          "en": "{{श्वः सः गमिष्यति}}: the spirit’s own sentence.",
+          "hi": "{{श्वः सः गमिष्यति}}: भूत का अपना वाक्य।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "श्वः",
+          "सः",
+          "गमिष्यति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "They will read",
+          "hi": "वे पढ़ेंगे"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lrt"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“They will read.” Which form?",
+          "hi": "‘वे पढ़ेंगे।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{पठिष्यन्ति}}: they, many.",
+          "hi": "{{पठिष्यन्ति}}: वे, अनेक।"
+        },
+        "options": [
+          {
+            "sa": "पठिष्यति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठिष्यतः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठिष्यन्ति",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“पठिष्यन्ति,” you say, and the leaning spirit tips forward at last, runs three steps, and turns into a streak of dawn that races away between the trees. Where he passed, the grass stands a little taller. The Vetāla opens one eye. “Ah. A forward-looker. Rare.”",
+            "hi": "“पठिष्यन्ति,” आप कहते हैं, और झुका हुआ भूत अन्ततः आगे गिर पड़ता है, तीन कदम दौड़ता है, और भोर की एक लकीर बनकर पेड़ों के बीच से भाग जाता है। जहाँ से वह गुज़रा, घास थोड़ी ऊँची खड़ी है। वेताल एक आँख खोलता है। “आहा। आगे देखने वाला। दुर्लभ।”"
+          },
+          "failure": {
+            "en": "The spirit stays leaning. “They will read”: {{पठिष्यन्ति}}.",
+            "hi": "भूत झुका रहता है। ‘वे पढ़ेंगे’: {{पठिष्यन्ति}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's future",
+          "hi": "पाणिनि का भविष्यत्"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "verb.lrt"
+        ],
+        "sutras": [
+          "3.3.13",
+          "3.1.33",
+          "7.2.35",
+          "8.3.59"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 3.3.13, {{लृट् शेषे च}}, gives {{लृट्}} for what will happen. 3.1.33, {{स्यतासी लृलुटोः}}, adds {{स्य}}. 7.2.35, {{आर्धधातुकस्येड् वलादेः}}, adds {{इ}} before a consonant, so {{पठ् + इ + स्य}}; and 8.3.59, {{आदेशप्रत्यययोः}}, turns {{स्}} into {{ष्}} after {{इ}}: {{पठिष्यति}}.",
+          "hi": "सूत्र 3.3.13, {{लृट् शेषे च}}, जो होगा उसके लिए {{लृट्}} देता है। 3.1.33, {{स्यतासी लृलुटोः}}, {{स्य}} जोड़ता है। 7.2.35, {{आर्धधातुकस्येड् वलादेः}}, व्यंजन से पहले {{इ}} जोड़ता है, इसलिए {{पठ् + इ + स्य}}; और 8.3.59, {{आदेशप्रत्यययोः}}, {{इ}} के बाद {{स्}} को {{ष्}} कर देता है: {{पठिष्यति}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The future",
+          "hi": "भविष्यत् काल"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "पठिष्यति · गमिष्यति",
+            "text": {
+              "en": "He will read, he will go.",
+              "hi": "वह पढ़ेगा, वह जाएगा।"
+            }
+          },
+          {
+            "sa": "धातु + स्य + ति",
+            "text": {
+              "en": "The sign is {{-स्य-}}.",
+              "hi": "चिह्न {{-स्य-}} है।"
+            }
+          },
+          {
+            "sa": "दास्यति · द्रक्ष्यति",
+            "text": {
+              "en": "Some roots change.",
+              "hi": "कुछ धातुएँ बदलती हैं।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "future-sya-s1",
+    "brief": "The burning-ground grove at night: a slim spirit of pale morning light leaning forward as if about to run, hair streaming ahead; the Vetāla hanging above with a sly look; you, Dādī and Śuka in the foreground; a glow of dawn beginning at the far edge of the trees.",
+    "alt": {
+      "en": "A pale spirit leans forward as if about to run while the Vetāla hangs above with a sly look",
+      "hi": "पीला भूत दौड़ने को आगे झुकता, ऊपर चालाक मुद्रा में वेताल"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "bhavika"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The burning-ground grove at night: a slim spirit of pale morning light leaning forward as if about to run, hair streaming ahead; the Vetāla hanging above with a sly look; you, Dādī and Śuka in the foreground; a glow of dawn beginning at the far edge of the trees.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nbhavika: A slim spirit of pale morning light leaning forward as if about to run, hair streaming ahead of him in a breeze that is not there.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-88a0d92e-cb25-418d-8aae-79b54bfa5c82.png",
+  "history_note": "The earlier output was blocked by the image service; this prompt explicitly specifies complete opaque clothing for both adult spirits.",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "f6e23ff31364860dc8c80428a5e850cbd0371ae743e62456c08f5ec527d6c793",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\future-sya-s1-phone-3e8c288e.webp",
+      "key": "learn/future-sya-s1-phone-3e8c288e.webp",
+      "sha256": "3e8c288e32ae3f493318b484c4eeb65afb423ccce8b78af828b2c468b986c6c4",
+      "bytes": 123082,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/future-sya-s1-phone-3e8c288e.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\future-sya-s1-tablet-7def7854.webp",
+      "key": "learn/future-sya-s1-tablet-7def7854.webp",
+      "sha256": "7def78542cb5467175d9b82bfa04658eaab5e3f6dc95f6a82b8cec57e8a9c229",
+      "bytes": 460912,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/future-sya-s1-tablet-7def7854.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

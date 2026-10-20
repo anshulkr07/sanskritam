@@ -9,7 +9,7 @@ teaches:
 - sam.karmadharaya
 needs:
 - sam.tatpurusha
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -40,6 +40,18 @@ cards:
   narration:
     en: 'The seventeenth statue holds a flower. “नीलोत्पलम्,” she says: “a blue lotus.” “महात्मा”: “a great soul.” “त्रिलोकी”: “the three worlds.” “These are different,” says Śuka. “Nothing is ‘of’ anything.” “Right,” says Dādī. “In the first two, the first word describes the second: blue lotus, great soul. In the third, a number counts a group: three worlds.”'
     hi: 'सत्रहवीं प्रतिमा के हाथ में एक फूल है। “नीलोत्पलम्,” वह कहती है: “नीला कमल।” “महात्मा”: “महान् आत्मा।” “त्रिलोकी”: “तीन लोक।” “ये अलग हैं,” शुक कहता है। “कोई किसी का नहीं है।” “ठीक,” दादी कहती हैं। “पहले दो में पहला शब्द दूसरे का वर्णन करता है: नीला कमल, महान् आत्मा। तीसरे में संख्या एक समूह गिनती है: तीन लोक।”'
+  lines:
+  - speaker: samasika
+    sa: नीलोत्पलम्
+    gloss:
+      en: A blue lotus.
+      hi: नीला कमल।
+    check:
+      type: subanta
+      stem: नीलोत्पल
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
 - id: t1
   kind: teach
   title:
@@ -205,8 +217,8 @@ cards:
   - sam.karmadharaya
   mode: match
   prompt:
-    en: Join each compound to its unpacking.
-    hi: हर समास को उसके विग्रह से जोड़िए।
+    en: Match each compound with its unpacking.
+    hi: हर समास को उसके विग्रह से मिलाइए।
   explain:
     en: Two describe, two count.
     hi: दो वर्णन करते हैं, दो गिनते हैं।

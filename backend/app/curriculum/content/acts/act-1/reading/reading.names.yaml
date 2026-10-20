@@ -11,7 +11,7 @@ needs:
 - read.syllables
 - read.places
 - read.iast
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -35,6 +35,7 @@ cards:
     place: granthalaya
     ratio: '4:3'
     id: reading-names-s1
+    text_in_image: ["रामः", "सीता", "लक्ष्मणः"]
   narration:
     en: The register is open, names in long columns. Dādī reads the first aloud, and the second, and the third. In the arched doorway a tall man in a dark coat watches, rings on his fingers, a leather satchel on his shoulder. He says nothing. His eyes are on the glowing leaf.
     hi: रजिस्टर खुला है, लम्बे स्तम्भों में नाम। दादी पहला नाम ज़ोर से पढ़ती हैं, फिर दूसरा, फिर तीसरा। मेहराबदार द्वार पर गहरे कोट में एक लम्बा आदमी देख रहा है, उँगलियों में अँगूठियाँ, कंधे पर चमड़े का थैला। वह कुछ नहीं बोलता। उसकी नज़र चमकते पत्र पर है।
@@ -155,8 +156,8 @@ cards:
   - read.words
   mode: match
   prompt:
-    en: Join each name to its first sound's place.
-    hi: हर नाम को उसकी पहली ध्वनि के स्थान से जोड़िए।
+    en: Match each name with its first sound's place.
+    hi: हर नाम को उसकी पहली ध्वनि के स्थान से मिलाइए।
   explain:
     en: 'Place of the first sound: {{र}} roof, {{स}} teeth, {{भ}} lips, {{ग}} throat.'
     hi: 'पहली ध्वनि का स्थान: {{र}} मूर्धा, {{स}} दन्त, {{भ}} ओष्ठ, {{ग}} कण्ठ।'

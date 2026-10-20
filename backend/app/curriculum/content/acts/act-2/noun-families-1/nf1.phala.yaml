@@ -9,7 +9,7 @@ teaches:
 - noun.phala
 needs:
 - noun.deva
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: pathashala
     ratio: '4:3'
     id: nf1-phala-s1
+    text_in_image: ["फलम्", "फले", "फलानि"]
   narration:
     en: On a lower branch of the green tree hangs a second set of leaf-tags, close to the first but a little different. “Neuters,” says Dādī. “Almost the same as the masculines. The family resemblance is strong, and only a few places differ.” Vṛkṣaka shakes a branch and the tags rustle, delighted.
     hi: हरे पेड़ की एक नीची शाखा पर पत्ते-टैगों का दूसरा समूह लटका है, पहले के क़रीब पर थोड़ा अलग। “नपुंसक,” दादी कहती हैं। “पुंलिंग से लगभग वही। पारिवारिक समानता गहरी है, बस कुछ जगहों पर अन्तर है।” वृक्षक एक शाखा हिलाता है और टैग ख़ुशी से सरसराते हैं।
@@ -421,8 +422,8 @@ cards:
   - noun.phala
   mode: match
   prompt:
-    en: Join each form to its case and number.
-    hi: हर रूप को उसकी विभक्ति और वचन से जोड़िए।
+    en: Match each form with its case and number.
+    hi: हर रूप को उसकी विभक्ति और वचन से मिलाइए।
   explain:
     en: The neuter's three shared cells.
     hi: नपुंसक के तीन साझा खाने।

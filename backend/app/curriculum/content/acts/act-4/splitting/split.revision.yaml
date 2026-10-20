@@ -5,7 +5,7 @@ title:
   hi: विच्छेद के बारे में सब कुछ
 title_sa: विच्छेदसङ्ग्रहः
 minutes: 6
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -34,26 +34,6 @@ cards:
       hi: पंक्ति को बाएँ से एक-एक सन्धि करके तोड़ा जाता है।
     tag: core
     taught_in: split.line#t1
-- id: conditions
-  kind: revision
-  title:
-    en: When to use which
-    hi: कब कौन-सा
-  depth: core
-  section: conditions
-  rows:
-  - skill: sandhi.split
-    rule:
-      en: More than one split may be possible; choose the one that gives real words that fit the sentence.
-      hi: एक से अधिक विच्छेद सम्भव हो सकते हैं; वह चुनिए जो वाक्य में बैठने वाले असली शब्द दे।
-    tag: good
-    taught_in: split.back#t1
-  - skill: sandhi.padaccheda
-    rule:
-      en: After padaccheda comes anvaya, then the meaning.
-      hi: पदच्छेद के बाद अन्वय, फिर अर्थ।
-    tag: good
-    taught_in: split.line#pn
 - id: exceptions
   kind: revision
   title:
@@ -98,6 +78,26 @@ cards:
           hi: बीतता है
     tag: rare
     new_here: true
+- id: conditions
+  kind: revision
+  title:
+    en: Choosing a word split
+    hi: सही पदच्छेद चुनना
+  depth: core
+  section: splitting
+  rows:
+  - skill: sandhi.split
+    rule:
+      en: More than one split may be possible; choose the one that gives real words that fit the sentence.
+      hi: एक से अधिक विच्छेद सम्भव हो सकते हैं; वह चुनिए जो वाक्य में बैठने वाले असली शब्द दे।
+    tag: good
+    taught_in: split.back#t1
+  - skill: sandhi.padaccheda
+    rule:
+      en: After padaccheda comes anvaya, then the meaning.
+      hi: पदच्छेद के बाद अन्वय, फिर अर्थ।
+    tag: good
+    taught_in: split.line#pn
 - id: mistakes
   kind: revision
   title:

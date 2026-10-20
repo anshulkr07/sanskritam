@@ -1,0 +1,943 @@
+{
+  "id": "vs-like-s1",
+  "where": "vs.like#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A hill above Ujjayinī at dawn: workmen's tents and ropes around a half-uncovered stone throne ringed by thirty-two weathered statues of women; the first statue, holding a lotus, close to the viewer; Lubdhaka's foreman frowning at her; you, Dādī and Śuka at the edge of the dig.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsvarika: A small spirit of cool grey stone in the shape of a young woman holding a lotus, with a fine crack down one cheek and eyes of pale gold.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "vs.like",
+    "template": "scene",
+    "title": {
+      "en": "Two vowels of one family",
+      "hi": "एक कुल के दो स्वर"
+    },
+    "title_sa": "विद्यालयः",
+    "minutes": 6,
+    "teaches": [
+      "sandhi.savarna"
+    ],
+    "needs": [
+      "krt.ktva"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The throne hall",
+          "hi": "सिंहासन का कक्ष"
+        },
+        "image": {
+          "id": "vs-like-s1",
+          "brief": "A hill above Ujjayinī at dawn: workmen's tents and ropes around a half-uncovered stone throne ringed by thirty-two weathered statues of women; the first statue, holding a lotus, close to the viewer; Lubdhaka's foreman frowning at her; you, Dādī and Śuka at the edge of the dig.",
+          "alt": {
+            "en": "A dig site with a stone throne ringed by thirty-two statues, the first holding a lotus",
+            "hi": "पत्थर के सिंहासन के चारों ओर बत्तीस प्रतिमाएँ, पहली कमल थामे"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "svarika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "A day's walk from the grove, on a hill above Ujjayinī, workmen have uncovered a throne ringed by thirty-two stone women. Lubdhaka's tents are everywhere. The first statue, a woman holding a lotus, says one word: “विद्यालयः.” His foreman frowns: “Nonsense.” “Two words,” says Dādī. “विद्या and आलयः, run together. Learn how they join and every statue will speak.”",
+          "hi": "वन से एक दिन की दूरी पर, उज्जयिनी के ऊपर एक पहाड़ी पर, मज़दूरों ने बत्तीस पत्थर की नारियों से घिरा एक सिंहासन खोद निकाला है। लुब्धक के तम्बू चारों ओर हैं। पहली प्रतिमा, कमल थामे एक नारी, एक शब्द कहती है: “विद्यालयः।” उसका मुखिया भौंहें चढ़ाता है: “बकवास।” “दो शब्द,” दादी कहती हैं। “विद्या और आलयः, घुले-मिले। जोड़ना सीख लो तो हर प्रतिमा बोलेगी।”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "विद्या + आलयः = विद्यालयः।",
+            "gloss": {
+              "en": "Knowledge + home = school.",
+              "hi": "विद्या + घर = विद्यालय।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": {
+          "sa": "इति व्याडिवचः श्रुत्वा मन्माता सादरावदत्",
+          "gloss": {
+            "en": "Hearing Vyāḍi's words, my mother said respectfully.",
+            "hi": "व्याडि के ये वचन सुनकर मेरी माता ने आदर से कहा।"
+          },
+          "source": "Kathāsaritsāgara 1.2 (read in the Digital Corpus of Sanskrit); the last word is sādarā + avadat"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Joining sounds",
+          "hi": "ध्वनियों का जुड़ना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.savarna"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "When two words meet, the last sound of the first and the first sound of the second may join. This is {{सन्धिः}}. When two vowels of the same family meet, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, they merge into one long vowel: {{विद्या + आलयः}} gives {{विद्यालयः}}.",
+          "hi": "जब दो शब्द मिलते हैं, तो पहले शब्द की अन्तिम और दूसरे की पहली ध्वनि जुड़ सकती हैं। यह {{सन्धिः}} है। जब एक ही कुल के दो स्वर मिलते हैं, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, तो वे मिलकर एक दीर्घ स्वर बन जाते हैं: {{विद्या + आलयः}} से {{विद्यालयः}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "सन्धिः",
+          "meaning": {
+            "en": "the joining of sounds",
+            "hi": "ध्वनियों का जुड़ना"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Like vowels",
+          "hi": "एक-से स्वर"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.savarna"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Two vowels of one family make one long vowel",
+          "hi": "एक कुल के दो स्वर एक दीर्घ स्वर बनाते हैं"
+        },
+        "columns": [
+          {
+            "en": "First word",
+            "hi": "पहला शब्द"
+          },
+          {
+            "en": "Second word",
+            "hi": "दूसरा शब्द"
+          },
+          {
+            "en": "Joined",
+            "hi": "जुड़ा हुआ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "विद्या",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "आलयः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "विद्यालयः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "विद्या",
+                "second": "आलयः",
+                "joined": "विद्यालयः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "हिम",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "आलयः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "हिमालयः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "हिम",
+                "second": "आलयः",
+                "joined": "हिमालयः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "महा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "आत्मा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "महात्मा",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "महा",
+                "second": "आत्मा",
+                "joined": "महात्मा",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "कवि",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "इन्द्रः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "कवीन्द्रः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "कवि",
+                "second": "इन्द्रः",
+                "joined": "कवीन्द्रः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "सु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "उक्तम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सूक्तम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "सु",
+                "second": "उक्तम्",
+                "joined": "सूक्तम्",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "गुरु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "उपदेशः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गुरूपदेशः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "गुरु",
+                "second": "उपदेशः",
+                "joined": "गुरूपदेशः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "न",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अस्ति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नास्ति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "न",
+                "second": "अस्ति",
+                "joined": "नास्ति",
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{आ}} + {{आ}} gives {{आ}}; {{अ}} + {{आ}} gives {{आ}}; {{इ}} + {{इ}} gives {{ई}}; {{उ}} + {{उ}} gives {{ऊ}}.",
+          "hi": "{{आ}} + {{आ}} से {{आ}}; {{अ}} + {{आ}} से {{आ}}; {{इ}} + {{इ}} से {{ई}}; {{उ}} + {{उ}} से {{ऊ}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.savarna"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Split the joined word {{विद्यालयः}}.",
+          "hi": "जुड़े शब्द {{विद्यालयः}} को तोड़िए।"
+        },
+        "explain": {
+          "en": "{{विद्या}} + {{आलयः}}.",
+          "hi": "{{विद्या}} + {{आलयः}}।"
+        },
+        "options": [
+          {
+            "sa": "विद्ये + आलयः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "विद्यै + आलयः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "विद्या + आलयः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.savarna"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{हिम + आलयः}} gives…",
+          "hi": "{{हिम + आलयः}} से…"
+        },
+        "explain": {
+          "en": "{{अ}} + {{आ}} = {{आ}}.",
+          "hi": "{{अ}} + {{आ}} = {{आ}}।"
+        },
+        "options": [
+          {
+            "sa": "हिमलयः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "हिमैलयः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "हिमालयः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.savarna"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Join: {{महा}} + {{आत्मा}}.",
+          "hi": "जोड़िए: {{महा}} + {{आत्मा}}।"
+        },
+        "explain": {
+          "en": "{{महात्मा}}: “great soul”.",
+          "hi": "{{महात्मा}}: ‘महान् आत्मा’।"
+        },
+        "options": [],
+        "answers": [
+          "महात्मा"
+        ],
+        "tiles": [
+          "महा",
+          "त्मा",
+          "आत्मा",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.savarna"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its parts.",
+          "hi": "हर शब्द को उसके भागों से जोड़िए।"
+        },
+        "explain": {
+          "en": "Like vowels merge.",
+          "hi": "एक-से स्वर मिल जाते हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "विद्यालयः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "विद्या + आलयः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "कवीन्द्रः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "कवि + इन्द्रः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "सूक्तम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "सु + उक्तम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "नास्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "न + अस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.savarna"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every joined word.",
+          "hi": "हर जुड़ा हुआ शब्द छुइए।"
+        },
+        "params": {
+          "passage": [
+            "विद्यालयः",
+            "विद्या",
+            "महात्मा",
+            "महा",
+            "सूक्तम्",
+            "सु"
+          ],
+          "targets": [
+            "विद्यालयः",
+            "महात्मा",
+            "सूक्तम्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.savarna"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "sandhi_mixer",
+        "prompt": {
+          "en": "Pick a pair and join it: see the word and the rule.",
+          "hi": "एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।"
+        },
+        "params": {
+          "pairs": [
+            {
+              "first": "विद्या",
+              "second": "आलयः",
+              "joined": "विद्यालयः",
+              "sutras": [
+                "6.1.101"
+              ]
+            },
+            {
+              "first": "हिम",
+              "second": "आलयः",
+              "joined": "हिमालयः",
+              "sutras": [
+                "6.1.101"
+              ]
+            },
+            {
+              "first": "महा",
+              "second": "आत्मा",
+              "joined": "महात्मा",
+              "sutras": [
+                "6.1.101"
+              ]
+            },
+            {
+              "first": "कवि",
+              "second": "इन्द्रः",
+              "joined": "कवीन्द्रः",
+              "sutras": [
+                "6.1.101"
+              ]
+            },
+            {
+              "first": "सु",
+              "second": "उक्तम्",
+              "joined": "सूक्तम्",
+              "sutras": [
+                "6.1.101"
+              ]
+            }
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The first statue",
+          "hi": "पहली प्रतिमा"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.savarna"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{सु + उक्तम्}} gives…",
+          "hi": "{{सु + उक्तम्}} से…"
+        },
+        "explain": {
+          "en": "{{उ}} + {{उ}} = {{ऊ}}.",
+          "hi": "{{उ}} + {{उ}} = {{ऊ}}।"
+        },
+        "options": [
+          {
+            "sa": "सुक्तम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सोक्तम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सूक्तम्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“सूक्तम्,” you say, “su-uktam, a good saying,” and the lotus statue turns her head, with a small grinding sound, towards you. Her fine crack closes a little. “विद्यालयः,” she says, to Lubdhaka's foreman. “महात्मा. सूक्तम्.” She lowers her lotus, and the foreman takes a step back. He did not know that stone could speak.",
+            "hi": "“सूक्तम्,” आप कहते हैं, “सु-उक्तम्, सुभाषित,” और कमल वाली प्रतिमा हल्की घिसने की आवाज़ के साथ आपकी ओर सिर घुमाती है। उसकी बारीक दरार थोड़ी भर जाती है। “विद्यालयः,” वह लुब्धक के मुखिया से कहती है। “महात्मा। सूक्तम्।” वह अपना कमल नीचे करती है, और मुखिया एक क़दम पीछे हटता है। उसे पता नहीं था कि पत्थर बोल सकता है।"
+          },
+          "failure": {
+            "en": "The statue stays still. {{उ}} + {{उ}} = {{ऊ}}: {{सूक्तम्}}.",
+            "hi": "प्रतिमा स्थिर रहती है। {{उ}} + {{उ}} = {{ऊ}}: {{सूक्तम्}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's merging",
+          "hi": "पाणिनि का मिलना"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sandhi.savarna"
+        ],
+        "sutras": [
+          "6.1.101",
+          "1.1.9"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 6.1.101, {{अकः सवर्णे दीर्घः}}, says that when {{अ}}, {{इ}}, {{उ}} or {{ऋ}} (short or long) meets a vowel of its own family, the two become one long vowel. 1.1.9, {{तुल्यास्यप्रयत्नं सवर्णम्}}, defines “own family”: sounds made in the same place with the same effort.",
+          "hi": "सूत्र 6.1.101, {{अकः सवर्णे दीर्घः}}, कहता है कि जब {{अ}}, {{इ}}, {{उ}} या {{ऋ}} (ह्रस्व या दीर्घ) अपने कुल के स्वर से मिलता है, तो दोनों एक दीर्घ स्वर बन जाते हैं। 1.1.9, {{तुल्यास्यप्रयत्नं सवर्णम्}}, ‘अपने कुल’ की परिभाषा देता है: एक स्थान और एक प्रयत्न से बनी ध्वनियाँ।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Like vowels",
+          "hi": "एक-से स्वर"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "अ/आ + अ/आ = आ",
+            "text": {
+              "en": "विद्यालयः, हिमालयः.",
+              "hi": "विद्यालयः, हिमालयः।"
+            }
+          },
+          {
+            "sa": "इ/ई + इ/ई = ई",
+            "text": {
+              "en": "कवीन्द्रः.",
+              "hi": "कवीन्द्रः।"
+            }
+          },
+          {
+            "sa": "उ/ऊ + उ/ऊ = ऊ",
+            "text": {
+              "en": "सूक्तम्, गुरूपदेशः.",
+              "hi": "सूक्तम्, गुरूपदेशः।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "vs-like-s1",
+    "brief": "A hill above Ujjayinī at dawn: workmen's tents and ropes around a half-uncovered stone throne ringed by thirty-two weathered statues of women; the first statue, holding a lotus, close to the viewer; Lubdhaka's foreman frowning at her; you, Dādī and Śuka at the edge of the dig.",
+    "alt": {
+      "en": "A dig site with a stone throne ringed by thirty-two statues, the first holding a lotus",
+      "hi": "पत्थर के सिंहासन के चारों ओर बत्तीस प्रतिमाएँ, पहली कमल थामे"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "svarika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A hill above Ujjayinī at dawn: workmen's tents and ropes around a half-uncovered stone throne ringed by thirty-two weathered statues of women; the first statue, holding a lotus, close to the viewer; Lubdhaka's foreman frowning at her; you, Dādī and Śuka at the edge of the dig.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsvarika: A small spirit of cool grey stone in the shape of a young woman holding a lotus, with a fine crack down one cheek and eyes of pale gold.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-c471bfc8-ff2b-4872-84c7-e28cabea13d8.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "9c093fd400dbab23010423c2b10afc779fa460c802cc613827700309349f7cd6",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vs-like-s1-phone-0987bdeb.webp",
+      "key": "learn/vs-like-s1-phone-0987bdeb.webp",
+      "sha256": "0987bdebdbe4c74cbbccedbd4bcd58bec3141cb504d5746b482a388779b8d603",
+      "bytes": 129376,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/vs-like-s1-phone-0987bdeb.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vs-like-s1-tablet-45b36eb1.webp",
+      "key": "learn/vs-like-s1-tablet-45b36eb1.webp",
+      "sha256": "45b36eb109f21d293bf7209ba643faf35b7bd56fabed3426f063edfb144b760c",
+      "bytes": 489366,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/vs-like-s1-tablet-45b36eb1.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

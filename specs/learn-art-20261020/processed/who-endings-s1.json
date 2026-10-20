@@ -1,0 +1,764 @@
+{
+  "id": "who-endings-s1",
+  "where": "who.endings#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Dawn on the stone ghat steps of a calm river: people bathing, a boy reading on the steps, and on the lowest step a small grey-blue spirit like river mist with his feet in the water, pointing; you, Dādī and Śuka coming down the steps.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nghataka: A small grey-blue spirit like river mist, sitting on the lowest stone step with his wispy feet trailing in the water, big curious eyes.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "who.endings",
+    "template": "scene",
+    "title": {
+      "en": "Endings do the work",
+      "hi": "प्रत्यय ही काम करते हैं"
+    },
+    "title_sa": "सुप्तिङन्तम्",
+    "minutes": 6,
+    "teaches": [
+      "sent.stem-ending"
+    ],
+    "needs": [
+      "read.words"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Dawn at the ghat",
+          "hi": "घाट पर भोर"
+        },
+        "image": {
+          "id": "who-endings-s1",
+          "brief": "Dawn on the stone ghat steps of a calm river: people bathing, a boy reading on the steps, and on the lowest step a small grey-blue spirit like river mist with his feet in the water, pointing; you, Dādī and Śuka coming down the steps.",
+          "alt": {
+            "en": "Dawn at the river steps with a boy reading and a small mist-spirit pointing",
+            "hi": "भोर में नदी की सीढ़ियाँ: पढ़ता बालक और इशारा करता नन्हा भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "ghataka"
+          ],
+          "place": "naditira"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Dawn at the river ghats. Wide stone steps run down to the water, and people wash, read and sing. On the lowest step a small grey-blue spirit sits with his feet in the river. He points at a boy reading, then at you. “A sentence,” says Dādī. “Your first.”",
+          "hi": "नदी के घाट पर भोर है। चौड़ी पत्थर की सीढ़ियाँ पानी तक उतरती हैं, और लोग नहाते, पढ़ते और गाते हैं। सबसे निचली सीढ़ी पर एक नन्हा नीला-भूरा भूत पैर नदी में डाले बैठा है। वह पढ़ते हुए बालक की ओर, फिर आपकी ओर इशारा करता है। दादी कहती हैं, “एक वाक्य। तुम्हारा पहला।”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "बालकः पठति।",
+            "gloss": {
+              "en": "A boy reads.",
+              "hi": "एक बालक पढ़ता है।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "A word is a stem and an ending",
+          "hi": "शब्द = मूल + प्रत्यय"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.stem-ending"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Every Sanskrit word is a stem plus an ending, and the ending does the work. {{बालक}} (boy) with {{ः}} is {{बालकः}}. {{पठ्}} (read) with {{ति}} is {{पठति}}. The stem carries the meaning; the ending says the job.",
+          "hi": "संस्कृत का हर शब्द मूल रूप और प्रत्यय से बनता है, और प्रत्यय ही काम करता है। {{बालक}} में {{ः}} लगा तो {{बालकः}}। {{पठ्}} में {{ति}} लगा तो {{पठति}}। मूल रूप अर्थ देता है; प्रत्यय बताता है कि शब्द का काम क्या है।"
+        },
+        "examples": [
+          {
+            "sa": "पठति",
+            "meaning": {
+              "en": "{{पठ्}} + {{ति}}: he reads",
+              "hi": "{{पठ्}} + {{ति}}: वह पढ़ता है"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "tinanta",
+              "stem": null,
+              "linga": null,
+              "vibhakti": null,
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": "पठ्",
+              "lakara": "Lat",
+              "purusha": "Prathama",
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [
+          {
+            "sa": "बालक",
+            "label": {
+              "en": "stem: boy",
+              "hi": "मूल रूप: बालक"
+            }
+          },
+          {
+            "sa": "ः",
+            "label": {
+              "en": "ending: the doer",
+              "hi": "प्रत्यय: कर्ता"
+            }
+          },
+          {
+            "sa": "बालकः",
+            "label": {
+              "en": "word: the boy (who does)",
+              "hi": "शब्द: बालक (जो करता है)"
+            }
+          }
+        ],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "One stem, four endings",
+          "hi": "एक मूल, चार प्रत्यय"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.stem-ending"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The same stem with different endings",
+          "hi": "वही मूल रूप, अलग-अलग प्रत्यय"
+        },
+        "columns": [
+          {
+            "en": "Word",
+            "hi": "शब्द"
+          },
+          {
+            "en": "Ending",
+            "hi": "प्रत्यय"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "बालकः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालक",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "the boy, who does",
+                "hi": "बालक, जो करता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "बालकम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालक",
+                "linga": "Pum",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "म्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "the boy, acted on",
+                "hi": "बालक, जिस पर क्रिया होती है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "बालकौ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालक",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "औ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "two boys",
+                "hi": "दो बालक"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "बालकाः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालक",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "आः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "many boys",
+                "hi": "अनेक बालक"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "The ending tells the job and the number. Word order does not.",
+          "hi": "प्रत्यय काम और संख्या बताता है। शब्दों का क्रम नहीं।"
+        }
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.stem-ending"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every verb. Verbs end in {{ति}}.",
+          "hi": "हर क्रिया को छुइए। क्रियाएँ {{ति}} पर समाप्त होती हैं।"
+        },
+        "params": {
+          "passage": [
+            "बालकः",
+            "पठति",
+            "फलम्",
+            "हसति",
+            "नदी",
+            "गच्छति"
+          ],
+          "targets": [
+            "पठति",
+            "हसति",
+            "गच्छति"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.stem-ending"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which part of {{बालकः}} is the ending?",
+          "hi": "{{बालकः}} में प्रत्यय कौन-सा भाग है?"
+        },
+        "explain": {
+          "en": "{{बालक}} is the stem; {{ः}} is the ending.",
+          "hi": "{{बालक}} मूल है; {{ः}} प्रत्यय है।"
+        },
+        "options": [
+          {
+            "sa": "बा",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "लक",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "ः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.stem-ending"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its stem.",
+          "hi": "हर शब्द को उसके मूल रूप से जोड़िए।"
+        },
+        "explain": {
+          "en": "Take off the ending to find the stem.",
+          "hi": "प्रत्यय हटाइए तो मूल रूप मिल जाता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "बालकः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "बालक",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पठति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "पठ्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "लिखति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "लिख्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "हसति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "हस्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.stem-ending"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "In {{बालकः पठति}}, which word shows who is reading?",
+          "hi": "{{बालकः पठति}} में कौन-सा शब्द बताता है कि कौन पढ़ रहा है?"
+        },
+        "explain": {
+          "en": "The ending {{ः}} marks the doer, wherever the word stands.",
+          "hi": "प्रत्यय {{ः}} कर्ता को चिह्नित करता है, शब्द कहीं भी खड़ा हो।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "{{बालकः}}, by its ending {{ः}}",
+              "hi": "{{बालकः}}, अपने प्रत्यय {{ः}} से"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "{{पठति}}, because it comes last",
+              "hi": "{{पठति}}, क्योंकि वह अन्त में है"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Your first sentence",
+          "hi": "आपका पहला वाक्य"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.stem-ending"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say it for the spirit: put the two words in order, doer first.",
+          "hi": "भूत के लिए बोलिए: दो शब्द क्रम में लगाइए, पहले कर्ता।"
+        },
+        "explain": {
+          "en": "{{बालकः पठति}}: the boy reads.",
+          "hi": "{{बालकः पठति}}: बालक पढ़ता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "बालकः",
+          "पठति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“बालकः पठति,” you say. The small spirit's outline firms up like wet sand. He claps two foggy hands.",
+            "hi": "“बालकः पठति,” आप कहते हैं। नन्हे भूत की आकृति गीली रेत की तरह ठोस हो जाती है। वह दो धुँधले हाथों से ताली बजाता है।"
+          },
+          "failure": {
+            "en": "The spirit tilts his head. Start with the word that does the reading.",
+            "hi": "भूत सिर टेढ़ा करता है। पहले वह शब्द रखिए जो पढ़ता है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's definition of a word",
+          "hi": "पद की पाणिनि-परिभाषा"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sent.stem-ending"
+        ],
+        "sutras": [
+          "1.4.14"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 1.4.14, {{सुप्तिङन्तं पदम्}}: a word ({{पदम्}}) is what ends in a noun ending ({{सुप्}}) or a verb ending ({{तिङ्}}). So {{बालकः}} and {{पठति}} are words; the bare stems {{बालक}} and {{पठ्}} are not yet.",
+          "hi": "सूत्र 1.4.14, {{सुप्तिङन्तं पदम्}}: पद वह है जो सुप् (नाम का प्रत्यय) या तिङ् (क्रिया का प्रत्यय) पर समाप्त हो। इसलिए {{बालकः}} और {{पठति}} पद हैं; केवल मूल {{बालक}} और {{पठ्}} अभी पद नहीं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "पदम्",
+          "meaning": {
+            "en": "a word: stem + ending",
+            "hi": "पद: मूल + प्रत्यय"
+          }
+        }
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Stems and endings",
+          "hi": "मूल और प्रत्यय"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "बालक + ः",
+            "text": {
+              "en": "A word is a stem plus an ending.",
+              "hi": "शब्द = मूल + प्रत्यय।"
+            }
+          },
+          {
+            "sa": "पठ् + ति",
+            "text": {
+              "en": "Verbs take their own endings.",
+              "hi": "क्रियाओं के अपने प्रत्यय होते हैं।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "The ending, not the place, tells the job.",
+              "hi": "काम प्रत्यय बताता है, स्थान नहीं।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "who-endings-s1",
+    "brief": "Dawn on the stone ghat steps of a calm river: people bathing, a boy reading on the steps, and on the lowest step a small grey-blue spirit like river mist with his feet in the water, pointing; you, Dādī and Śuka coming down the steps.",
+    "alt": {
+      "en": "Dawn at the river steps with a boy reading and a small mist-spirit pointing",
+      "hi": "भोर में नदी की सीढ़ियाँ: पढ़ता बालक और इशारा करता नन्हा भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "ghataka"
+    ],
+    "place": "naditira"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Dawn on the stone ghat steps of a calm river: people bathing, a boy reading on the steps, and on the lowest step a small grey-blue spirit like river mist with his feet in the water, pointing; you, Dādī and Śuka coming down the steps.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nghataka: A small grey-blue spirit like river mist, sitting on the lowest stone step with his wispy feet trailing in the water, big curious eyes.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-1cf7c700-ac26-495a-818d-6e55640c04c9.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "0f970ac10f42b09d7a53b94e67ca0352dcd5b577da12a426b85880fe7f03f4c1",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\who-endings-s1-phone-1b7ff603.webp",
+      "key": "learn/who-endings-s1-phone-1b7ff603.webp",
+      "sha256": "1b7ff60334f4f6b6aa707b813d437b4a3d129db3e37874a04f5d1ecff7cc9a93",
+      "bytes": 109688,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/who-endings-s1-phone-1b7ff603.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\who-endings-s1-tablet-be962995.webp",
+      "key": "learn/who-endings-s1-tablet-be962995.webp",
+      "sha256": "be962995458a42f75748d30cd1f5f5d3200bf1e07d7f87dbce42070ae15d882b",
+      "bytes": 408764,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/who-endings-s1-tablet-be962995.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

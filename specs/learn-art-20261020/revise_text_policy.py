@@ -61,7 +61,7 @@ first_line=['अ इ उ','ऋ ऌ','ए ओ','ऐ औ']
 for key in ['portrait-you','freed-dhumaka','prologue-4','vowels-short-smoke','vowels-long-shuka']:
     plan[key]=first_line
 for key in ['prologue-1','prologue-3']:plan[key]=['बृहत्कथा']
-plan['vowels-signs-second-line']=['का कि की कु कू कृ के कै को कौ']
+plan['vowels-signs-second-line']=[*first_line,'का कि की कु कू कृ के कै को कौ']
 for job in jobs:
     job['shared_text_sources']={'course_title_sa':'दग्धा बृहत्कथा'}
     source_strings=strings({'scene':job['source'],'shared':job['shared_text_sources']}); corpus=' '.join(source_strings)
@@ -72,13 +72,15 @@ for job in jobs:
     if 'prompt_before_text_permission' not in job:job['prompt_before_text_permission']=job['prompt']
     prompt=job['prompt_before_text_permission'].split('MANDATORY TEXT OVERRIDE:')[0]
     if expected:
-        prompt+='Owner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\n'+ '\n'.join(expected)
+        script='accurate LATIN letters with the exact macrons, acute accents and underdots; never convert these to Devanagari' if job['id']=='reading-iast-s1' else 'accurate Devanagari'
+        prompt+='Owner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and '+script+'. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\n'+ '\n'.join(expected)
     else:
         prompt+='Writing is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.'
     if job['id'] in {'nf1-deva-s1','nf1-lata-s1','nf1-phala-s1'}:
         prompt+='\nMake exactly THREE large foreground name tags, each bearing one approved form, clearly readable. Other foliage is natural leaves, not additional blank tags. Keep all three labelled tags unobscured.'
     if job['id']=='of-family-s1':prompt+='\nDraw six clear named branches in the notebook, using the six approved kinship labels exactly once each.'
     if job['id']=='rv-tika-s1':prompt+='\nThe first two approved strings are the large carved verse; the last two are its smaller marginal commentary notes. No extra pseudo-writing on the wall or cord.'
+    if job['id']=='vowels-signs-second-line':prompt+='\nPut the first four approved groups together on the established FIRST line of the leaf; the final approved string is the SECOND line, with each vowel sign clearly and correctly placed. Both lines are legible.'
     if job['id'].startswith('vc'):prompt+='\nPut the approved roots and corresponding forms in a clear, short ledger list, one root/form pair per row. No additional writing.'
     if job['id'] in {'prologue-1','prologue-3','tale-leaf-6-r1','tale-leaf-6-r2','tale-leaf-6-r3'}:
         prompt+='\nThe writing is the book title sourced from the course, an interpretive title label, not an invented historical Paishachi quotation. Render only that title on the visible manuscript.'

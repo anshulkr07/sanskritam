@@ -9,7 +9,7 @@ teaches:
 - case.loc
 needs:
 - case.gen
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -343,8 +343,8 @@ cards:
   - case.loc
   mode: match
   prompt:
-    en: Join each place to its meaning.
-    hi: हर स्थान को उसके अर्थ से जोड़िए।
+    en: Match each place with its meaning.
+    hi: हर स्थान को उसके अर्थ से मिलाइए।
   explain:
     en: '{{ए}}, {{आयाम्}}, {{याम्}}: the seventh-case endings.'
     hi: '{{ए}}, {{आयाम्}}, {{याम्}}: सप्तमी के प्रत्यय।'

@@ -1,0 +1,1359 @@
+{
+  "id": "part-ktva-s1",
+  "where": "part.ktva#s1",
+  "ratio": "4:3",
+  "expected": [
+    "गत्वा",
+    "कृत्वा",
+    "श्रुत्वा"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A slim spirit like a folded paper fan unfolding in the firelight, each fold holding a line of tiny writing; the Vetāla speaking quickly with a hand pointing at the sky; Śuka looking lost; Dādī smiling and explaining.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nsankshepaka: A small, slim spirit like a folded paper fan, whose sides fold and unfold as he speaks, each fold holding a tiny line of writing.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nगत्वा\nकृत्वा\nश्रुत्वा All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "part.ktva",
+    "template": "scene",
+    "title": {
+      "en": "Having gone",
+      "hi": "जाकर"
+    },
+    "title_sa": "गत्वा आगत्य",
+    "minutes": 6,
+    "teaches": [
+      "krt.ktva"
+    ],
+    "needs": [
+      "verb.passive",
+      "verb.class-1"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The twelfth night",
+          "hi": "बारहवीं रात"
+        },
+        "image": {
+          "id": "part-ktva-s1",
+          "brief": "A slim spirit like a folded paper fan unfolding in the firelight, each fold holding a line of tiny writing; the Vetāla speaking quickly with a hand pointing at the sky; Śuka looking lost; Dādī smiling and explaining.",
+          "alt": {
+            "en": "A paper-fan spirit unfolds in firelight as a grey spirit speaks quickly and a parrot looks lost",
+            "hi": "अलाव की रोशनी में खुलता पंखे-सा भूत, तेज़ बोलता भूरा भूत, उलझा हुआ तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "sankshepaka"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Tonight the Vetāla is in a hurry. “Having gone there, having climbed the tree, having cut the rope, he threw down the corpse,” he says in one breath. Śuka is lost. A spirit like a folded paper fan unfolds: “गत्वा, आरुह्य, छित्त्वा. Three short words, not three sentences.” Dādī: “‘Having done’: so the sentence need not stop.”",
+          "hi": "आज वेताल जल्दी में है। “वहाँ जाकर, वृक्ष पर चढ़कर, रस्सी काटकर, उसने शव नीचे गिराया,” वह एक ही साँस में कहता है। शुक खो जाता है। तह किए काग़ज़ी पंखे जैसा एक पतला भूत अलाव की रोशनी में खुलता है और कहता है: “गत्वा, आरुह्य, छित्त्वा। तीन छोटे शब्द, तीन वाक्य नहीं।” दादी: “‘करके’ अर्थ वाला शब्द, ताकि बाक़ी वाक्य को रुकना न पड़े।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "तत्र गत्वा राज्ञा शिंशिपावृक्षम् आरुह्य छुरिकया पाशं छित्त्वा मृतकं भूतले पातितम्",
+          "gloss": {
+            "en": "Going there, climbing the śiṃśipā tree and cutting the noose with a knife, the king threw the corpse down to the ground.",
+            "hi": "वहाँ जाकर, शिंशिपा के वृक्ष पर चढ़कर और छुरी से फंदा काटकर, राजा ने शव को ज़मीन पर गिराया।"
+          },
+          "source": "Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Having done",
+          "hi": "करके"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.ktva"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "To say “having done X, he does Y” with the same doer, add {{-त्वा}} to the root: {{गम्}} gives {{गत्वा}} (having gone), {{कृ}} gives {{कृत्वा}}, {{श्रु}} gives {{श्रुत्वा}}, {{पठ्}} gives {{पठित्वा}}. With a prefix it is {{-य}}: {{आ + गम्}} gives {{आगत्य}}. These never change; they are indeclinable.",
+          "hi": "‘X करके वह Y करता है’ कहने के लिए, कर्ता वही हो तो, धातु में {{-त्वा}} जोड़िए: {{गम्}} से {{गत्वा}} (जाकर), {{कृ}} से {{कृत्वा}}, {{श्रु}} से {{श्रुत्वा}}, {{पठ्}} से {{पठित्वा}}। उपसर्ग हो तो {{-य}}: {{आ + गम्}} से {{आगत्य}}। ये कभी नहीं बदलते; ये अव्यय हैं।"
+        },
+        "examples": [
+          {
+            "sa": "सः गृहम् गत्वा पठति।",
+            "meaning": {
+              "en": "Having gone home, he reads.",
+              "hi": "घर जाकर वह पढ़ता है।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "गृहम्",
+                "gloss": {
+                  "en": "home",
+                  "hi": "घर"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गृह",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गत्वा",
+                "gloss": {
+                  "en": "having gone",
+                  "hi": "जाकर"
+                },
+                "check": {
+                  "type": "krdanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": null,
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": "ktvA",
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठति",
+                "gloss": {
+                  "en": "reads",
+                  "hi": "पढ़ता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "सः फलम् खादित्वा गच्छति।",
+            "meaning": {
+              "en": "Having eaten fruit, he goes.",
+              "hi": "फल खाकर वह जाता है।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "फलम्",
+                "gloss": {
+                  "en": "fruit",
+                  "hi": "फल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "फल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "खादित्वा",
+                "gloss": {
+                  "en": "having eaten",
+                  "hi": "खाकर"
+                },
+                "check": {
+                  "type": "krdanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": null,
+                  "stem_type": null,
+                  "dhatu": "खाद्",
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": "ktvA",
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छति",
+                "gloss": {
+                  "en": "goes",
+                  "hi": "जाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "सः आगत्य पठति।",
+            "meaning": {
+              "en": "Having come, he reads.",
+              "hi": "आकर वह पढ़ता है।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "आगत्य",
+                "gloss": {
+                  "en": "having come",
+                  "hi": "आकर"
+                },
+                "check": {
+                  "type": "krdanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": null,
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "आ"
+                  ],
+                  "gana": null,
+                  "krt": "ktvA",
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठति",
+                "gloss": {
+                  "en": "reads",
+                  "hi": "पढ़ता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "क्त्वा",
+          "meaning": {
+            "en": "the “having done” ending",
+            "hi": "‘करके’ प्रत्यय"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Having done",
+          "hi": "करके"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.ktva"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Root, “having …” and the form with a prefix",
+          "hi": "धातु, ‘… करके’ और उपसर्ग वाला रूप"
+        },
+        "columns": [
+          {
+            "en": "Root",
+            "hi": "धातु"
+          },
+          {
+            "en": "Having …",
+            "hi": "… करके"
+          },
+          {
+            "en": "With a prefix",
+            "hi": "उपसर्ग सहित"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "गम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गत्वा",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "ktvA",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "आगत्य",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": [
+                  "आ"
+                ],
+                "gana": null,
+                "krt": "ktvA",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "कृ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "कृत्वा",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "ktvA",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "संस्कृत्य",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": [
+                  "सम्"
+                ],
+                "gana": null,
+                "krt": "ktvA",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "श्रु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "श्रुत्वा",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "श्रु",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "ktvA",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "आश्रुत्य",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "श्रु",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": [
+                  "आ"
+                ],
+                "gana": null,
+                "krt": "ktvA",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "दृश्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "दृष्ट्वा",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "दृश्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "ktvA",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "संदृश्य",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "दृश्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": [
+                  "सम्"
+                ],
+                "gana": null,
+                "krt": "ktvA",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "दा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "दत्त्वा",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "दा",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "ktvA",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "प्रदाय",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "दा",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": [
+                  "प्र"
+                ],
+                "gana": null,
+                "krt": "ktvA",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "नी",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नीत्वा",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "नी",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "ktvA",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "आनीय",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "नी",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": [
+                  "आ"
+                ],
+                "gana": null,
+                "krt": "ktvA",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "जि",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "जित्वा",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "जि",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "ktvA",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "विजित्य",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "जि",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": [
+                  "वि"
+                ],
+                "gana": null,
+                "krt": "ktvA",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Without a prefix {{-त्वा}}; with a prefix {{-य}} (or {{-त्य}} after a short vowel).",
+          "hi": "उपसर्ग के बिना {{-त्वा}}; उपसर्ग हो तो {{-य}} (ह्रस्व स्वर के बाद {{-त्य}})।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.ktva"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“Having gone.” Which form?",
+          "hi": "‘जाकर।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{गत्वा}}: {{गम्}} + {{-त्वा}}.",
+          "hi": "{{गत्वा}}: {{गम्}} + {{-त्वा}}।"
+        },
+        "options": [
+          {
+            "sa": "गतः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "गन्तुम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "गत्वा",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.ktva"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “Having done.”",
+          "hi": "कहिए: ‘करके।’"
+        },
+        "explain": {
+          "en": "{{कृत्वा}}.",
+          "hi": "{{कृत्वा}}।"
+        },
+        "options": [],
+        "answers": [
+          "कृत्वा"
+        ],
+        "tiles": [
+          "कृ",
+          "त्वा",
+          "कर",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.ktva"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each root to its “having …” form.",
+          "hi": "हर धातु को उसके ‘… करके’ रूप से जोड़िए।"
+        },
+        "explain": {
+          "en": "Some roots change inside.",
+          "hi": "कुछ धातुएँ भीतर बदलती हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "गम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "गत्वा",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "श्रु",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "श्रुत्वा",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "दृश्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "दृष्ट्वा",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "जि",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "जित्वा",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.ktva"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every “having …” word.",
+          "hi": "हर ‘… करके’ शब्द छुइए।"
+        },
+        "params": {
+          "passage": [
+            "गत्वा",
+            "गच्छति",
+            "श्रुत्वा",
+            "शृणोति",
+            "कृत्वा",
+            "करोति"
+          ],
+          "targets": [
+            "गत्वा",
+            "श्रुत्वा",
+            "कृत्वा"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.ktva"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "word_factory",
+        "prompt": {
+          "en": "Snap a suffix onto a root and see the word it makes.",
+          "hi": "धातु पर प्रत्यय जोड़िए और देखिए कि कौन-सा शब्द बनता है।"
+        },
+        "params": {
+          "roots": [
+            {
+              "dhatu": "पठ्",
+              "gloss": {
+                "en": "read",
+                "hi": "पढ़ना"
+              }
+            },
+            {
+              "dhatu": "गम्",
+              "gloss": {
+                "en": "go",
+                "hi": "जाना"
+              }
+            },
+            {
+              "dhatu": "कृ",
+              "gloss": {
+                "en": "do",
+                "hi": "करना"
+              }
+            },
+            {
+              "dhatu": "दृश्",
+              "gloss": {
+                "en": "see",
+                "hi": "देखना"
+              }
+            }
+          ],
+          "suffixes": [
+            {
+              "krt": "ktvA",
+              "label": {
+                "en": "having …",
+                "hi": "… करके"
+              }
+            }
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.ktva"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “Having gone home, he reads.”",
+          "hi": "कहिए: ‘घर जाकर वह पढ़ता है।’"
+        },
+        "explain": {
+          "en": "{{सः गृहं गत्वा पठति}}.",
+          "hi": "{{सः गृहं गत्वा पठति}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "सः",
+          "गृहम्",
+          "गत्वा",
+          "पठति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "Having come",
+          "hi": "आकर"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.ktva"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“Having come.” Which form (prefix {{आ}} + {{गम्}})?",
+          "hi": "‘आकर।’ कौन-सा रूप (उपसर्ग {{आ}} + {{गम्}})?"
+        },
+        "explain": {
+          "en": "{{आगत्य}}: with a prefix, {{-य}} not {{-त्वा}}.",
+          "hi": "{{आगत्य}}: उपसर्ग के साथ {{-य}}, {{-त्वा}} नहीं।"
+        },
+        "options": [
+          {
+            "sa": "आगत्वा",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "आगत्य",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "आगतः",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“आगत्य,” you say, and the folded spirit opens one more fold, as if a page had been turned. “Having come,” he says, reading it. “And so he is here, and the sentence goes on.” He seems taller, and the writing in his folds is a little darker.",
+            "hi": "“आगत्य,” आप कहते हैं, और तहदार भूत एक और तह खोलता है, मानो पन्ना पलटा गया हो। “आकर,” वह उसे पढ़ते हुए कहता है। “और इसलिए वह यहाँ है, और वाक्य आगे चलता है।” वह कुछ ऊँचा लगता है, और उसकी तहों की लिखावट थोड़ी गहरी है।"
+          },
+          "failure": {
+            "en": "The fold stays shut. With a prefix: {{आगत्य}}.",
+            "hi": "तह बन्द रहती है। उपसर्ग के साथ: {{आगत्य}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's “having done”",
+          "hi": "पाणिनि का ‘करके’"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "krt.ktva"
+        ],
+        "sutras": [
+          "3.4.21",
+          "7.1.37",
+          "1.1.40"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 3.4.21, {{समानकर्तृकयोः पूर्वकाले}}, gives {{क्त्वा}} for an earlier action by the same doer. 7.1.37, {{समासेऽनञ्पूर्वे क्त्वो ल्यप्}}, turns {{क्त्वा}} into {{ल्यप्}}, that is {{-य}}, after a prefix. 1.1.40, {{क्त्वातोसुन्कसुनः}}, says these endings are indeclinable.",
+          "hi": "सूत्र 3.4.21, {{समानकर्तृकयोः पूर्वकाले}}, उसी कर्ता की पहले हुई क्रिया के लिए {{क्त्वा}} देता है। 7.1.37, {{समासेऽनञ्पूर्वे क्त्वो ल्यप्}}, उपसर्ग के बाद {{क्त्वा}} को {{ल्यप्}}, अर्थात् {{-य}}, बना देता है। 1.1.40, {{क्त्वातोसुन्कसुनः}}, कहता है कि ये प्रत्यय अव्यय हैं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Having done",
+          "hi": "करके"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "गत्वा · कृत्वा · श्रुत्वा",
+            "text": {
+              "en": "Having gone, done, heard.",
+              "hi": "जाकर, करके, सुनकर।"
+            }
+          },
+          {
+            "sa": "आगत्य · संदृश्य",
+            "text": {
+              "en": "With a prefix: {{-य}}.",
+              "hi": "उपसर्ग के साथ: {{-य}}।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "They never change.",
+              "hi": "ये कभी नहीं बदलते।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "part-ktva-s1",
+    "brief": "A slim spirit like a folded paper fan unfolding in the firelight, each fold holding a line of tiny writing; the Vetāla speaking quickly with a hand pointing at the sky; Śuka looking lost; Dādī smiling and explaining.",
+    "alt": {
+      "en": "A paper-fan spirit unfolds in firelight as a grey spirit speaks quickly and a parrot looks lost",
+      "hi": "अलाव की रोशनी में खुलता पंखे-सा भूत, तेज़ बोलता भूरा भूत, उलझा हुआ तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "sankshepaka"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A slim spirit like a folded paper fan unfolding in the firelight, each fold holding a line of tiny writing; the Vetāla speaking quickly with a hand pointing at the sky; Śuka looking lost; Dādī smiling and explaining.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nsankshepaka: A small, slim spirit like a folded paper fan, whose sides fold and unfold as he speaks, each fold holding a tiny line of writing.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-76945ceb-82d2-4b1f-b175-9a2fb9035f27.png",
+  "policy_version": "2026-10-20-full-text-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "a934562393726e7aee14ca1f4a95da79ad3725977190f827a7e6d19a93f5dd3d",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\part-ktva-s1-phone-3fd3f0ea.webp",
+      "key": "learn/part-ktva-s1-phone-3fd3f0ea.webp",
+      "sha256": "3fd3f0ea53948cc948878cebf403d6c3ac4b886cbc025401328840b37e5a0299",
+      "bytes": 110148,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/part-ktva-s1-phone-3fd3f0ea.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\part-ktva-s1-tablet-6cf0ac9a.webp",
+      "key": "learn/part-ktva-s1-tablet-6cf0ac9a.webp",
+      "sha256": "6cf0ac9a26c71773972a22b0c43352ef38b3f2b0e34a5a78e1a92f6b65485f8a",
+      "bytes": 423408,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/part-ktva-s1-tablet-6cf0ac9a.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

@@ -1,0 +1,888 @@
+{
+  "id": "c2-avyayi-s1",
+  "where": "c2.avyayi#s1",
+  "ratio": "4:3",
+  "expected": [
+    "यथाशक्ति",
+    "प्रतिदिनम्",
+    "आमरणम्"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The twentieth statue holding a small carved lantern whose stone flame is steady; Dādī pointing at a row of three carved words on the plinth; Śuka squinting at them; the lamps of the hall flickering.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nmalika: A small spirit of rose-coloured sandstone, a young woman wearing a long garland of carved flowers that trails to the floor, each flower a slightly different shape.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nयथाशक्ति\nप्रतिदिनम्\nआमरणम् All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "c2.avyayi",
+    "template": "scene",
+    "title": {
+      "en": "As far as possible, every day",
+      "hi": "यथाशक्ति, प्रतिदिन"
+    },
+    "title_sa": "यथाशक्ति प्रतिदिनम्",
+    "minutes": 6,
+    "teaches": [
+      "sam.avyayibhava"
+    ],
+    "needs": [
+      "sam.bahuvrihi"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The twentieth statue",
+          "hi": "बीसवीं प्रतिमा"
+        },
+        "image": {
+          "id": "c2-avyayi-s1",
+          "brief": "The twentieth statue holding a small carved lantern whose stone flame is steady; Dādī pointing at a row of three carved words on the plinth; Śuka squinting at them; the lamps of the hall flickering.",
+          "alt": {
+            "en": "A statue holds a stone lantern beside three carved words on the plinth",
+            "hi": "पत्थर की लालटेन थामे प्रतिमा, आसन पर तीन खुदे शब्द"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "malika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The twentieth statue holds a lantern. “यथाशक्ति,” she says: “as far as possible.” “प्रतिदिनम्”: “every day.” “आमरणम्”: “until death.” Śuka tests: “Does it change?” “No,” says Dādī. “The first word is a little word, an indeclinable, and it gives the whole its sense. The result never takes endings. It is an adverb. They are called avyayībhāva.”",
+          "hi": "बीसवीं प्रतिमा के हाथ में लालटेन है। “यथाशक्ति,” वह कहती है: “जितना सम्भव हो।” “प्रतिदिनम्”: “हर दिन।” “आमरणम्”: “मृत्यु तक।” शुक परखता है: “क्या यह बदलता है?” “नहीं,” दादी कहती हैं। “पहला शब्द एक छोटा अव्यय है, और वही पूरे को अर्थ देता है। परिणाम कभी प्रत्यय नहीं लेता। वह क्रियाविशेषण है। इन्हें अव्ययीभाव कहते हैं।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The compound adverb",
+          "hi": "समासित क्रियाविशेषण"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.avyayibhava"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "In an {{अव्ययीभावः}} the first word is an indeclinable, and the whole is an indeclinable: {{यथा + शक्ति}} gives {{यथाशक्ति}} (as far as one can); {{प्रति + दिनम्}} gives {{प्रतिदिनम्}} (every day); {{आ + मरणम्}} gives {{आमरणम्}} (until death); {{उप + कृष्णम्}} gives {{उपकृष्णम्}} (near Kṛṣṇa). Such words never change.",
+          "hi": "{{अव्ययीभावः}} में पहला शब्द अव्यय होता है, और पूरा भी अव्यय बन जाता है: {{यथा + शक्ति}} से {{यथाशक्ति}} (जितनी शक्ति हो); {{प्रति + दिनम्}} से {{प्रतिदिनम्}} (हर दिन); {{आ + मरणम्}} से {{आमरणम्}} (मृत्यु तक); {{उप + कृष्णम्}} से {{उपकृष्णम्}} (कृष्ण के पास)। ऐसे शब्द कभी नहीं बदलते।"
+        },
+        "examples": [
+          {
+            "sa": "सः यथाशक्ति कर्म करोति।",
+            "meaning": {
+              "en": "He does the work as far as he can.",
+              "hi": "वह यथाशक्ति कर्म करता है।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "यथाशक्ति",
+                "gloss": {
+                  "en": "as far as he can",
+                  "hi": "जितनी शक्ति हो"
+                },
+                "check": null
+              },
+              {
+                "sa": "कर्म",
+                "gloss": {
+                  "en": "work",
+                  "hi": "कर्म"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "कर्मन्",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "करोति",
+                "gloss": {
+                  "en": "does",
+                  "hi": "करता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "कृ",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "सः प्रतिदिनम् पठति।",
+            "meaning": {
+              "en": "He reads every day.",
+              "hi": "वह प्रतिदिन पढ़ता है।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "प्रतिदिनम्",
+                "gloss": {
+                  "en": "every day",
+                  "hi": "हर दिन"
+                },
+                "check": null
+              },
+              {
+                "sa": "पठति",
+                "gloss": {
+                  "en": "reads",
+                  "hi": "पढ़ता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "अव्ययीभावः",
+          "meaning": {
+            "en": "a compound that becomes an adverb",
+            "hi": "वह समास जो अव्यय बन जाता है"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "The compound adverb",
+          "hi": "समासित क्रियाविशेषण"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.avyayibhava"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Adverbs made by a compound",
+          "hi": "समास से बने क्रियाविशेषण"
+        },
+        "columns": [
+          {
+            "en": "Compound",
+            "hi": "समास"
+          },
+          {
+            "en": "Unpacked",
+            "hi": "विग्रह"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "यथाशक्ति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "शक्तिम् अनतिक्रम्य",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "as far as one can",
+                "hi": "जितनी शक्ति हो"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "प्रतिदिनम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "दिने दिने",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "every day",
+                "hi": "हर दिन"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "आमरणम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "मरणात् आ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "until death",
+                "hi": "मृत्यु तक"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "उपकृष्णम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "कृष्णस्य समीपे",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "near Kṛṣṇa",
+                "hi": "कृष्ण के पास"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "यावज्जीवम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "जीवनस्य अवधिः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "as long as life lasts",
+                "hi": "जब तक जीवन है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "निर्विघ्नम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "विघ्नस्य अभावः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "without obstacle",
+                "hi": "बिना विघ्न के"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "अनुरूपम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "रूपस्य योग्यम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "according to form",
+                "hi": "रूप के अनुसार"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "No endings: the whole is a neuter singular adverb, or has none.",
+          "hi": "प्रत्यय नहीं: पूरा नपुंसक एकवचन क्रियाविशेषण है, या कोई प्रत्यय नहीं।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.avyayibhava"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{प्रतिदिनम्}} means…",
+          "hi": "{{प्रतिदिनम्}} का अर्थ…"
+        },
+        "explain": {
+          "en": "{{प्रति-}}: each.",
+          "hi": "{{प्रति-}}: हर।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "a day",
+              "hi": "एक दिन"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "of the day",
+              "hi": "दिन का"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "every day",
+              "hi": "हर दिन"
+            },
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.avyayibhava"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each compound to its meaning.",
+          "hi": "हर समास को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "The first word gives the sense.",
+          "hi": "पहला शब्द अर्थ देता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "यथाशक्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "as far as one can",
+                "hi": "जितनी शक्ति हो"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "आमरणम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "until death",
+                "hi": "मृत्यु तक"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "उपकृष्णम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "near Kṛṣṇa",
+                "hi": "कृष्ण के पास"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "निर्विघ्नम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "without obstacle",
+                "hi": "बिना विघ्न के"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.avyayibhava"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every compound adverb.",
+          "hi": "हर समासित क्रियाविशेषण छुइए।"
+        },
+        "params": {
+          "passage": [
+            "यथाशक्ति",
+            "शक्तिः",
+            "प्रतिदिनम्",
+            "दिनम्",
+            "आमरणम्",
+            "मरणम्"
+          ],
+          "targets": [
+            "यथाशक्ति",
+            "प्रतिदिनम्",
+            "आमरणम्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.avyayibhava"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "compound_unpacker",
+        "prompt": {
+          "en": "Unpack the compound, then name its kind.",
+          "hi": "समास को खोलिए, फिर उसका प्रकार बताइए।"
+        },
+        "params": {
+          "compound": "यथाशक्ति",
+          "parts": [
+            "यथा",
+            "शक्ति"
+          ],
+          "kind": "avyayibhava",
+          "vigraha": "शक्तिम् अनतिक्रम्य",
+          "meaning": {
+            "en": "as far as one can",
+            "hi": "जितनी शक्ति हो उतना"
+          }
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.avyayibhava"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “He reads every day.”",
+          "hi": "कहिए: ‘वह हर दिन पढ़ता है।’"
+        },
+        "explain": {
+          "en": "{{सः प्रतिदिनं पठति}}.",
+          "hi": "{{सः प्रतिदिनं पठति}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "सः",
+          "प्रतिदिनम्",
+          "पठति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "The lantern",
+          "hi": "लालटेन"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.avyayibhava"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“Until death”: which compound?",
+          "hi": "‘मृत्यु तक’: कौन-सा समास?"
+        },
+        "explain": {
+          "en": "{{आ-}}: up to.",
+          "hi": "{{आ-}}: तक।"
+        },
+        "options": [
+          {
+            "sa": "प्रतिमरणम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "आमरणम्",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "उपमरणम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“आमरणम्,” you say, “until death,” and the twentieth statue's lantern lights, with a small calm flame. “यथाशक्ति,” she says. “I will keep it as far as I can.” She lowers the lamp. The hall gets a little brighter, each lamp leaning towards hers, as if the news had come to them: someone is going to keep the light on, every day, until the end.",
+            "hi": "“आमरणम्,” आप कहते हैं, “मृत्यु तक,” और बीसवीं प्रतिमा की लालटेन एक छोटी शान्त लौ से जल उठती है। “यथाशक्ति,” वह कहती है। “मैं इसे जितना हो सकेगा, जलाए रखूँगी।” वह दीपक नीचे करती है। कक्ष कुछ और उजला हो जाता है, हर दीपक उसकी ओर झुकता है, मानो ख़बर पहुँची हो: कोई प्रकाश जलाए रखेगा, हर दिन, अन्त तक।"
+          },
+          "failure": {
+            "en": "The lantern stays dark. {{आ-}} means “up to”: {{आमरणम्}}.",
+            "hi": "लालटेन अँधेरी रहती है। {{आ-}} का अर्थ ‘तक’ है: {{आमरणम्}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's adverb",
+          "hi": "पाणिनि का क्रियाविशेषण"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sam.avyayibhava"
+        ],
+        "sutras": [
+          "2.1.5",
+          "2.1.6",
+          "1.1.41"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 2.1.5, {{अव्ययीभावः}}, names the class, and 2.1.6, {{अव्ययं विभक्तिसमीपसमृद्धिव्यृद्ध्यर्थाभावात्ययासम्प्रतिशब्दप्रादुर्भावपश्चाद्यथानुपूर्व्ययौगपद्यसादृश्यसम्पत्तिसाकल्यान्तवचनेषु}}, lists the senses in which an indeclinable joins a word. The result is {{अव्यय}} by 1.1.41, {{अव्ययीभावश्च}}.",
+          "hi": "सूत्र 2.1.5, {{अव्ययीभावः}}, वर्ग का नाम देता है, और 2.1.6 उन अर्थों की सूची देता है जिनमें अव्यय किसी शब्द से जुड़ता है। परिणाम 1.1.41, {{अव्ययीभावश्च}}, से {{अव्यय}} है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The compound adverb",
+          "hi": "समासित क्रियाविशेषण"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "यथाशक्ति",
+            "text": {
+              "en": "As far as possible.",
+              "hi": "जितना सम्भव हो।"
+            }
+          },
+          {
+            "sa": "प्रतिदिनम् · आमरणम्",
+            "text": {
+              "en": "Every day; until death.",
+              "hi": "हर दिन; मृत्यु तक।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "They never change.",
+              "hi": "वे कभी नहीं बदलते।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "c2-avyayi-s1",
+    "brief": "The twentieth statue holding a small carved lantern whose stone flame is steady; Dādī pointing at a row of three carved words on the plinth; Śuka squinting at them; the lamps of the hall flickering.",
+    "alt": {
+      "en": "A statue holds a stone lantern beside three carved words on the plinth",
+      "hi": "पत्थर की लालटेन थामे प्रतिमा, आसन पर तीन खुदे शब्द"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "malika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The twentieth statue holding a small carved lantern whose stone flame is steady; Dādī pointing at a row of three carved words on the plinth; Śuka squinting at them; the lamps of the hall flickering.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nmalika: A small spirit of rose-coloured sandstone, a young woman wearing a long garland of carved flowers that trails to the floor, each flower a slightly different shape.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-907dda8d-276a-4204-b088-5a83fa5d9bd8.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "bc8b763e99991724137d5068ae3ffcf4ffbeca5a32a97821f5cc7b312c75efe3",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\c2-avyayi-s1-phone-5ee65819.webp",
+      "key": "learn/c2-avyayi-s1-phone-5ee65819.webp",
+      "sha256": "5ee658198b8ddb371b18d1034adb0b488b92e8700014e9222dfe748f510e74d8",
+      "bytes": 102000,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/c2-avyayi-s1-phone-5ee65819.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\c2-avyayi-s1-tablet-5de3a652.webp",
+      "key": "learn/c2-avyayi-s1-tablet-5de3a652.webp",
+      "sha256": "5de3a6525cf3d2770d7eb41eda5cdc49cb7a756d436ff12f5cdccd5e8ab3c2f8",
+      "bytes": 378130,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/c2-avyayi-s1-tablet-5de3a652.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

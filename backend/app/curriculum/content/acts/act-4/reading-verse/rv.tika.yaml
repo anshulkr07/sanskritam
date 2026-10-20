@@ -9,7 +9,7 @@ teaches:
 - verse.commentary
 needs:
 - verse.read
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -34,6 +34,7 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: rv-tika-s1
+    text_in_image: ["ईशा वास्यम् इदं सर्वं यत् किञ्च जगत्यां जगत्", "तेन त्यक्तेन भुञ्जीथा मा गृधः कस्य स्विद्धनम्", "तेन त्यक्तेन", "त्यागेनेत्यर्थः"]
   narration:
     en: 'Ślokikā''s cord is slack, and the vault is full of margins: small notes in faded ink round every carved verse. “That is a commentary,” says Dādī, “a teacher''s voice beside the verse.” Śuka reads aloud the notes round the Īśā verse. Each repeats a word and puts another beside it, like a hand held out. Ślokikā loosens her cord to listen.'
     hi: 'श्लोकिका की डोरी ढीली है, और तहख़ाना हाशियों से भरा है: हर खुदे श्लोक के चारों ओर फीकी स्याही के छोटे नोट। “यह टीका है,” दादी कहती हैं, “श्लोक के पास एक गुरु की आवाज़।” शुक ईशा-श्लोक के चारों ओर के नोट ज़ोर से पढ़ता है। हर नोट एक शब्द दोहराता है और उसके पास दूसरा रख देता है, जैसे बढ़ा हुआ हाथ। श्लोकिका सुनने के लिए अपनी डोरी ढीली करती है।'
@@ -192,8 +193,8 @@ cards:
   - verse.commentary
   mode: match
   prompt:
-    en: Join each word of the verse to the commentary's word.
-    hi: श्लोक के हर शब्द को टीका के शब्द से जोड़िए।
+    en: Match each word of the verse with the commentary's word.
+    hi: श्लोक के हर शब्द को टीका के शब्द से मिलाइए।
   explain:
     en: The commentary puts its own word beside the verse's.
     hi: टीका श्लोक के शब्द के पास अपना शब्द रखती है।

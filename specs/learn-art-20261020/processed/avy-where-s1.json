@@ -1,0 +1,957 @@
+{
+  "id": "avy-where-s1",
+  "where": "avy.where#s1",
+  "ratio": "4:3",
+  "expected": [
+    "अत्र",
+    "तत्र",
+    "कुत्र"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The round white stone spirit rolling between three small stones scratched with a mark each, answering the Vetāla's questions; Śuka laughing; Dādī pointing at the three marks; the Vetāla leaning back satisfied.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\navyayaka: A tiny, perfectly round and smooth spirit of white stone, with no mark or edge, who keeps patting himself as if looking for a place to attach something.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nअत्र\nतत्र\nकुत्र All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "avy.where",
+    "template": "scene",
+    "title": {
+      "en": "Here, there, then",
+      "hi": "यहाँ, वहाँ, तब"
+    },
+    "title_sa": "अत्र तत्र यदा तदा",
+    "minutes": 6,
+    "teaches": [
+      "avy.adverbs"
+    ],
+    "needs": [
+      "avy.iti"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The answer in three letters",
+          "hi": "तीन अक्षरों में उत्तर"
+        },
+        "image": {
+          "id": "avy-where-s1",
+          "brief": "The round white stone spirit rolling between three small stones scratched with a mark each, answering the Vetāla's questions; Śuka laughing; Dādī pointing at the three marks; the Vetāla leaning back satisfied.",
+          "alt": {
+            "en": "A white stone spirit rolls between three marked stones while a parrot laughs",
+            "hi": "तीन चिह्नित पत्थरों के बीच लुढ़कता सफ़ेद पत्थर-भूत, हँसता तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "avyayaka"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "“Where?” asks the Vetāla. “अत्र,” says Avyayaka. “Here.” “And there?” “तत्र.” “When?” “यदा.” “And then?” “तदा.” “How?” “यथा.” “And so?” “तथा.” Śuka laughs. “They all end in the same three sounds: -त्र for ‘where’, -दा for ‘when’, -था for ‘how’.” The Vetāla leans back, satisfied.",
+          "hi": "“कहाँ?” वेताल पूछता है। “अत्र,” अव्यय कहता है। “यहाँ।” “और वहाँ?” “तत्र।” “कब?” “यदा।” “और तब?” “तदा।” “कैसे?” “यथा।” “और वैसे?” “तथा।” शुक हँस पड़ता है। “सब एक ही तीन ध्वनियों पर समाप्त होते हैं: ‘कहाँ’ के लिए -त्र, ‘कब’ के लिए -दा, ‘कैसे’ के लिए -था।” वेताल संतुष्ट होकर पीछे झुकता है।"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "यत्र नार्यस् तु पूज्यन्ते रमन्ते तत्र देवताः",
+          "gloss": {
+            "en": "Where women are honoured, the gods delight.",
+            "hi": "जहाँ नारियों का सम्मान होता है, वहाँ देवता प्रसन्न रहते हैं।"
+          },
+          "source": "Manusmṛti 3.56 (read in the Digital Corpus of Sanskrit)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Three endings",
+          "hi": "-त्र, -दा, -था"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "avy.adverbs"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Place words end in {{-त्र}}: {{अत्र}} (here), {{तत्र}} (there), {{यत्र}} (where), {{कुत्र}} (where?), {{सर्वत्र}} (everywhere). Time words end in {{-दा}}: {{यदा}} (when), {{तदा}} (then), {{कदा}} (when?), {{सर्वदा}} (always), {{एकदा}} (once). Manner words end in {{-था}}: {{यथा}} (as), {{तथा}} (so), {{कथम्}} (how?).",
+          "hi": "स्थान के शब्द {{-त्र}} पर समाप्त होते हैं: {{अत्र}} (यहाँ), {{तत्र}} (वहाँ), {{यत्र}} (जहाँ), {{कुत्र}} (कहाँ?), {{सर्वत्र}} (सब जगह)। समय के शब्द {{-दा}} पर: {{यदा}} (जब), {{तदा}} (तब), {{कदा}} (कब?), {{सर्वदा}} (सदा), {{एकदा}} (एक बार)। रीति के शब्द {{-था}} पर: {{यथा}} (जैसे), {{तथा}} (वैसे), {{कथम्}} (कैसे?)।"
+        },
+        "examples": [
+          {
+            "sa": "अत्र पुस्तकम् अस्ति।",
+            "meaning": {
+              "en": "Here is a book.",
+              "hi": "यहाँ पुस्तक है।"
+            },
+            "words": [
+              {
+                "sa": "अत्र",
+                "gloss": {
+                  "en": "here",
+                  "hi": "यहाँ"
+                },
+                "check": null
+              },
+              {
+                "sa": "पुस्तकम्",
+                "gloss": {
+                  "en": "a book",
+                  "hi": "पुस्तक"
+                },
+                "check": null
+              },
+              {
+                "sa": "अस्ति",
+                "gloss": {
+                  "en": "is",
+                  "hi": "है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "यदा सः गच्छति तदा अहम् पठामि।",
+            "meaning": {
+              "en": "When he goes, then I read.",
+              "hi": "जब वह जाता है, तब मैं पढ़ता हूँ।"
+            },
+            "words": [
+              {
+                "sa": "यदा",
+                "gloss": {
+                  "en": "when",
+                  "hi": "जब"
+                },
+                "check": null
+              },
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "गच्छति",
+                "gloss": {
+                  "en": "goes",
+                  "hi": "जाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "तदा",
+                "gloss": {
+                  "en": "then",
+                  "hi": "तब"
+                },
+                "check": null
+              },
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "पठामि",
+                "gloss": {
+                  "en": "read",
+                  "hi": "पढ़ता हूँ"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "यथा सः वदति तथा अहम् करोमि।",
+            "meaning": {
+              "en": "As he says, so I do.",
+              "hi": "जैसा वह कहता है, वैसा मैं करता हूँ।"
+            },
+            "words": [
+              {
+                "sa": "यथा",
+                "gloss": {
+                  "en": "as",
+                  "hi": "जैसे"
+                },
+                "check": null
+              },
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "वदति",
+                "gloss": {
+                  "en": "says",
+                  "hi": "कहता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "तथा",
+                "gloss": {
+                  "en": "so",
+                  "hi": "वैसे"
+                },
+                "check": null
+              },
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "करोमि",
+                "gloss": {
+                  "en": "do",
+                  "hi": "करता हूँ"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "कृ",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": "Tanadi",
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Where, when, how",
+          "hi": "कहाँ, कब, कैसे"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "avy.adverbs"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The pattern in three columns",
+          "hi": "तीन स्तम्भों में ढाँचा"
+        },
+        "columns": [
+          {
+            "en": "Pointing at",
+            "hi": "किस ओर"
+          },
+          {
+            "en": "Place",
+            "hi": "स्थान"
+          },
+          {
+            "en": "Time",
+            "hi": "समय"
+          },
+          {
+            "en": "Manner",
+            "hi": "रीति"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "this, that",
+                "hi": "यह, वह"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अत्र · तत्र",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "इदानीम् · तदा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एवम् · तथा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "which",
+                "hi": "जो"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "यत्र",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "यदा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "यथा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "which?",
+                "hi": "कौन?"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "कुत्र",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "कदा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "कथम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "all",
+                "hi": "सब"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सर्वत्र",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सर्वदा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सर्वथा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "one",
+                "hi": "एक"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एकत्र",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एकदा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एकथा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{यत्र … तत्र}}, {{यदा … तदा}}, {{यथा … तथा}} go in pairs, like {{यः … सः}}.",
+          "hi": "{{यत्र … तत्र}}, {{यदा … तदा}}, {{यथा … तथा}} जोड़ियों में आते हैं, जैसे {{यः … सः}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "avy.adverbs"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“Here.” Which word?",
+          "hi": "‘यहाँ।’ कौन-सा शब्द?"
+        },
+        "explain": {
+          "en": "{{अत्र}}: here.",
+          "hi": "{{अत्र}}: यहाँ।"
+        },
+        "options": [
+          {
+            "sa": "तत्र",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अत्र",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "यत्र",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "avy.adverbs"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its meaning.",
+          "hi": "हर शब्द को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{-त्र}} place, {{-दा}} time.",
+          "hi": "{{-त्र}} स्थान, {{-दा}} समय।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "तत्र",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "there",
+                "hi": "वहाँ"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "यदा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "when",
+                "hi": "जब"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "तदा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "then",
+                "hi": "तब"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "सर्वदा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "always",
+                "hi": "सदा"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "avy.adverbs"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word of time (-दा).",
+          "hi": "समय का हर शब्द (-दा) छुइए।"
+        },
+        "params": {
+          "passage": [
+            "अत्र",
+            "यदा",
+            "तत्र",
+            "तदा",
+            "यत्र",
+            "सर्वदा"
+          ],
+          "targets": [
+            "यदा",
+            "तदा",
+            "सर्वदा"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "avy.adverbs"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “Where women are honoured, there the gods delight.”",
+          "hi": "कहिए: ‘जहाँ नारियों का सम्मान होता है, वहाँ देवता प्रसन्न रहते हैं।’"
+        },
+        "explain": {
+          "en": "{{यत्र नार्यः पूज्यन्ते तत्र देवताः रमन्ते}}: the pair {{यत्र … तत्र}}.",
+          "hi": "{{यत्र नार्यः पूज्यन्ते तत्र देवताः रमन्ते}}: जोड़ी {{यत्र … तत्र}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "यत्र",
+          "नार्यः",
+          "पूज्यन्ते",
+          "तत्र",
+          "देवताः",
+          "रमन्ते"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "As … so",
+          "hi": "जैसे … वैसे"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "avy.adverbs"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“As he says, so I do.” Which pair?",
+          "hi": "‘जैसा वह कहता है, वैसा मैं करता हूँ।’ कौन-सी जोड़ी?"
+        },
+        "explain": {
+          "en": "{{यथा … तथा}}: as … so.",
+          "hi": "{{यथा … तथा}}: जैसे … वैसे।"
+        },
+        "options": [
+          {
+            "sa": "यत्र … तत्र",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "यदा … तदा",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "यथा … तथा",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“यथा… तथा,” you say, and Avyayaka rolls round once and a half, laughing, and stops. “I know every place, every time, every manner,” he says, in the voice of someone who has been given his own name. “And I never change.” The Vetāla swings down from the śiṃśapā tree and lands on his feet, lightly, like a cat. “Now,” he says.",
+            "hi": "“यथा… तथा,” आप कहते हैं, और अव्यय डेढ़ चक्कर लुढ़ककर हँसता है और रुक जाता है। “मैं हर स्थान, हर समय, हर रीति जानता हूँ,” वह उस स्वर में कहता है जिसे अपना ही नाम मिल गया हो। “और मैं कभी नहीं बदलता।” वेताल शिंशपा के वृक्ष से झूलकर नीचे उतरता है और बिल्ली की तरह हल्के से पैरों पर आ खड़ा होता है। “अब,” वह कहता है।"
+          },
+          "failure": {
+            "en": "He keeps rolling. The pair: {{यथा … तथा}}.",
+            "hi": "वह लुढ़कता रहता है। जोड़ी: {{यथा … तथा}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's three endings",
+          "hi": "पाणिनि के तीन प्रत्यय"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "avy.adverbs"
+        ],
+        "sutras": [
+          "5.3.10",
+          "5.3.15",
+          "5.3.23",
+          "1.1.38"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "These words are made with {{तद्धित}} endings. 5.3.10, {{सप्तम्यास्त्रल्}}, makes {{-त्र}} (place); 5.3.15, {{सर्वैकान्यकिंयत्तदः काले दा}}, makes {{-दा}} (time); 5.3.23, {{प्रकारवचने थाल्}}, makes {{-था}} (manner). By 1.1.38 they take no case endings, so they are indeclinable.",
+          "hi": "ये शब्द {{तद्धित}} प्रत्ययों से बनते हैं। 5.3.10, {{सप्तम्यास्त्रल्}}, {{-त्र}} (स्थान) बनाता है; 5.3.15, {{सर्वैकान्यकिंयत्तदः काले दा}}, {{-दा}} (समय) बनाता है; 5.3.23, {{प्रकारवचने थाल्}}, {{-था}} (रीति) बनाता है। 1.1.38 से वे विभक्ति नहीं लेते, इसलिए अव्यय हैं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Where, when, how",
+          "hi": "कहाँ, कब, कैसे"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "अत्र · तत्र · यत्र",
+            "text": {
+              "en": "Here, there, where.",
+              "hi": "यहाँ, वहाँ, जहाँ।"
+            }
+          },
+          {
+            "sa": "यदा · तदा · सर्वदा",
+            "text": {
+              "en": "When, then, always.",
+              "hi": "जब, तब, सदा।"
+            }
+          },
+          {
+            "sa": "यथा · तथा",
+            "text": {
+              "en": "As, so.",
+              "hi": "जैसे, वैसे।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "avy-where-s1",
+    "brief": "The round white stone spirit rolling between three small stones scratched with a mark each, answering the Vetāla's questions; Śuka laughing; Dādī pointing at the three marks; the Vetāla leaning back satisfied.",
+    "alt": {
+      "en": "A white stone spirit rolls between three marked stones while a parrot laughs",
+      "hi": "तीन चिह्नित पत्थरों के बीच लुढ़कता सफ़ेद पत्थर-भूत, हँसता तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "avyayaka"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The round white stone spirit rolling between three small stones scratched with a mark each, answering the Vetāla's questions; Śuka laughing; Dādī pointing at the three marks; the Vetāla leaning back satisfied.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\navyayaka: A tiny, perfectly round and smooth spirit of white stone, with no mark or edge, who keeps patting himself as if looking for a place to attach something.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-e4bf22d5-8f39-41d1-800a-7bc2553966fa.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "37db65b808cf855550fdcfd947720c8dae7bd0fb54b2c3616ee8fdbc608a75e9",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\avy-where-s1-phone-2a5f6ae4.webp",
+      "key": "learn/avy-where-s1-phone-2a5f6ae4.webp",
+      "sha256": "2a5f6ae46fc9081369f2cc95905102d6e85b2ac160aac7272aced08671da8dad",
+      "bytes": 104742,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/avy-where-s1-phone-2a5f6ae4.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\avy-where-s1-tablet-256ea729.webp",
+      "key": "learn/avy-where-s1-tablet-256ea729.webp",
+      "sha256": "256ea729a7c9f64af353af838fce288127c15780ba3158ef979c8a575960ec0f",
+      "bytes": 382180,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/avy-where-s1-tablet-256ea729.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

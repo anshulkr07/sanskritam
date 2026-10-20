@@ -1,0 +1,1000 @@
+{
+  "id": "cs-place-s1",
+  "where": "cs.place#s1",
+  "ratio": "4:3",
+  "expected": [
+    "च"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The eleventh statue, smooth and smiling calmly, with her palm turned up; Śuka looking at the stone beside her; Dādī tracing a letter in the dust with one finger; the long hall lit by oil lamps.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvyanjanika: A small spirit of rough sandstone with sharp edges, in the shape of a young woman with a stone bell in one hand; her outline seems to soften wherever she touches something.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nच All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "cs.place",
+    "template": "scene",
+    "title": {
+      "en": "Place spreads",
+      "hi": "स्थान फैलता है"
+    },
+    "title_sa": "सज्जनः तच्च",
+    "minutes": 6,
+    "teaches": [
+      "sandhi.place"
+    ],
+    "needs": [
+      "sandhi.voice"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The eleventh statue",
+          "hi": "ग्यारहवीं प्रतिमा"
+        },
+        "image": {
+          "id": "cs-place-s1",
+          "brief": "The eleventh statue, smooth and smiling calmly, with her palm turned up; Śuka looking at the stone beside her; Dādī tracing a letter in the dust with one finger; the long hall lit by oil lamps.",
+          "alt": {
+            "en": "A smooth smiling statue with her palm turned up while an old woman traces a letter in the dust",
+            "hi": "चिकनी मुस्कराती प्रतिमा, हथेली ऊपर किए; धूल में अक्षर खींचती दादी"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "vyanjanika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The eleventh statue is smooth and wears a calm smile. “सज्जनः,” she says: “a good person.” “तच्च”: “and that.” Śuka looks at the stone. “In सज्जनः there was a त from सत्. Now there is a ज. In तच्च there was a त. Now there is a च.” “It has moved,” says Dādī. “A त beside a palatal sound becomes palatal too. The place spreads.”",
+          "hi": "ग्यारहवीं प्रतिमा चिकनी है और शान्त मुस्कान पहने है। “सज्जनः,” वह कहती है: “भला मनुष्य।” “तच्च”: “और वह।” शुक पत्थर को देखता है। “सज्जनः में सत् का त था। अब ज है। तच्च में त था। अब च है।” “वह खिसक गया है,” दादी कहती हैं। “तालव्य ध्वनि के पास त भी तालव्य हो जाता है। स्थान फैलता है।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The tongue moves",
+          "hi": "जीभ खिसकती है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.place"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A dental {{त्}} or {{न्}} moves to the place of the sound that follows: before {{च}}/{{छ}}/{{ज}}/{{श}} it becomes {{च्}}/{{ज्}}, before {{ट}} it becomes {{ट्}}, before {{ल}} it becomes {{ल्}}. {{सत् + जनः}} gives {{सज्जनः}}; {{तत् + च}} gives {{तच्च}}; {{तत् + लीनः}} gives {{तल्लीनः}}.",
+          "hi": "दन्त्य {{त्}} या {{न्}} अगली ध्वनि के स्थान पर चला जाता है: {{च}}/{{छ}}/{{ज}}/{{श}} से पहले {{च्}}/{{ज्}}, {{ट}} से पहले {{ट्}}, {{ल}} से पहले {{ल्}}। {{सत् + जनः}} से {{सज्जनः}}; {{तत् + च}} से {{तच्च}}; {{तत् + लीनः}} से {{तल्लीनः}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "श्चुत्वम्",
+          "meaning": {
+            "en": "dentals becoming palatals",
+            "hi": "दन्त्य का तालव्य बनना"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Place spreads",
+          "hi": "स्थान फैलता है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.place"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Before च, ज, ट, ल, श",
+          "hi": "च, ज, ट, ल, श से पहले"
+        },
+        "columns": [
+          {
+            "en": "First word",
+            "hi": "पहला शब्द"
+          },
+          {
+            "en": "Second word",
+            "hi": "दूसरा शब्द"
+          },
+          {
+            "en": "Joined",
+            "hi": "जुड़ा हुआ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "सत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "जनः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सज्जनः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "सत्",
+                "second": "जनः",
+                "joined": "सज्जनः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "तत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "च",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तच्च",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "तत्",
+                "second": "च",
+                "joined": "तच्च",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "उत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "चारणम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "उच्चारणम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "उत्",
+                "second": "चारणम्",
+                "joined": "उच्चारणम्",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "सत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "चरित्रम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सच्चरित्रम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "सत्",
+                "second": "चरित्रम्",
+                "joined": "सच्चरित्रम्",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "उत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ज्वलः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "उज्ज्वलः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "उत्",
+                "second": "ज्वलः",
+                "joined": "उज्ज्वलः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "तत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "टीका",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तट्टीका",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "तत्",
+                "second": "टीका",
+                "joined": "तट्टीका",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "उत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लेखः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "उल्लेखः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "उत्",
+                "second": "लेखः",
+                "joined": "उल्लेखः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "तत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लीनः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तल्लीनः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "तत्",
+                "second": "लीनः",
+                "joined": "तल्लीनः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "तत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "शिवः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तच्छिवः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "तत्",
+                "second": "शिवः",
+                "joined": "तच्छिवः",
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Before {{श}} the dental becomes {{च्}} and the {{श}} becomes {{छ}}: {{तत् + शिवः}} gives {{तच्छिवः}}.",
+          "hi": "{{श}} से पहले दन्त्य {{च्}} बनता है और {{श}} {{छ}} बन जाता है: {{तत् + शिवः}} से {{तच्छिवः}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.place"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Split the joined word {{सज्जनः}}.",
+          "hi": "जुड़े शब्द {{सज्जनः}} को तोड़िए।"
+        },
+        "explain": {
+          "en": "{{सत्}} + {{जनः}}.",
+          "hi": "{{सत्}} + {{जनः}}।"
+        },
+        "options": [
+          {
+            "sa": "सन् + जनः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सत् + जनः",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "सः + जनः",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.place"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{तत् + च}} gives…",
+          "hi": "{{तत् + च}} से…"
+        },
+        "explain": {
+          "en": "{{त्}} becomes {{च्}} before {{च}}.",
+          "hi": "{{च}} से पहले {{त्}} बनता है {{च्}}।"
+        },
+        "options": [
+          {
+            "sa": "तत्च",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "तद्च",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "तच्च",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.place"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Join: {{सत्}} + {{जनः}}.",
+          "hi": "जोड़िए: {{सत्}} + {{जनः}}।"
+        },
+        "explain": {
+          "en": "{{सज्जनः}}: a good person.",
+          "hi": "{{सज्जनः}}: भला मनुष्य।"
+        },
+        "options": [],
+        "answers": [
+          "सज्जनः"
+        ],
+        "tiles": [
+          "सज्",
+          "जनः",
+          "सत्",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.place"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its parts.",
+          "hi": "हर शब्द को उसके भागों से जोड़िए।"
+        },
+        "explain": {
+          "en": "The {{त्}} takes the next sound's place.",
+          "hi": "{{त्}} अगली ध्वनि का स्थान ले लेता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "उच्चारणम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "उत् + चारणम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "उज्ज्वलः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "उत् + ज्वलः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "तल्लीनः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "तत् + लीनः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "तट्टीका",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "तत् + टीका",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.place"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word where a {{त्}} has moved.",
+          "hi": "हर वह शब्द छुइए जहाँ {{त्}} खिसक गया है।"
+        },
+        "params": {
+          "passage": [
+            "सज्जनः",
+            "सत्",
+            "तच्च",
+            "तत्",
+            "उच्चारणम्",
+            "उत्"
+          ],
+          "targets": [
+            "सज्जनः",
+            "तच्च",
+            "उच्चारणम्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.place"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "sandhi_mixer",
+        "prompt": {
+          "en": "Pick a pair and join it: see the word and the rule.",
+          "hi": "एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।"
+        },
+        "params": {
+          "pairs": [
+            {
+              "first": "सत्",
+              "second": "जनः",
+              "joined": "सज्जनः",
+              "sutras": [
+                "8.4.40"
+              ]
+            },
+            {
+              "first": "तत्",
+              "second": "च",
+              "joined": "तच्च",
+              "sutras": [
+                "8.4.40"
+              ]
+            },
+            {
+              "first": "उत्",
+              "second": "चारणम्",
+              "joined": "उच्चारणम्",
+              "sutras": [
+                "8.4.40"
+              ]
+            },
+            {
+              "first": "तत्",
+              "second": "लीनः",
+              "joined": "तल्लीनः",
+              "sutras": [
+                "8.4.60"
+              ]
+            }
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The calm statue",
+          "hi": "शान्त प्रतिमा"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.place"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{उत् + लेखः}} gives…",
+          "hi": "{{उत् + लेखः}} से…"
+        },
+        "explain": {
+          "en": "{{त्}} becomes {{ल्}} before {{ल}}.",
+          "hi": "{{ल}} से पहले {{त्}} बनता है {{ल्}}।"
+        },
+        "options": [
+          {
+            "sa": "उत्लेखः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "उद्लेखः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "उल्लेखः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“उल्लेखः,” you say, “a mention,” and the eleventh statue turns her palm over, and in it, very small, lies a seed. “सज्जनः,” she says. “तच्च. उल्लेखः.” She closes her hand, and her calm smile deepens, because somewhere, on her very smooth stone, a sound has found its place.",
+            "hi": "“उल्लेखः,” आप कहते हैं, “उल्लेख,” और ग्यारहवीं प्रतिमा हथेली पलटती है, और उसमें, बहुत छोटा, एक बीज रखा है। “सज्जनः,” वह कहती है। “तच्च। उल्लेखः।” वह मुट्ठी बन्द करती है, और उसकी शान्त मुस्कान गहरी हो जाती है, क्योंकि कहीं, उसके बहुत चिकने पत्थर पर, एक ध्वनि को अपना स्थान मिल गया है।"
+          },
+          "failure": {
+            "en": "The palm stays empty. {{त्}} becomes {{ल्}} before {{ल}}: {{उल्लेखः}}.",
+            "hi": "हथेली ख़ाली रहती है। {{ल}} से पहले {{त्}} बनता है {{ल्}}: {{उल्लेखः}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's place",
+          "hi": "पाणिनि का स्थान"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sandhi.place"
+        ],
+        "sutras": [
+          "8.4.40",
+          "8.4.41",
+          "8.4.60"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 8.4.40, {{स्तोः श्चुना श्चुः}}, says that {{स्}} or a dental ({{तवर्ग}}) next to a palatal ({{श्चु}}) becomes palatal. 8.4.41, {{ष्टुना ष्टुः}}, makes it cerebral next to a cerebral. Next to {{ल}}, 8.4.60, {{तोर्लि}}, makes {{त्}} into {{ल्}}.",
+          "hi": "सूत्र 8.4.40, {{स्तोः श्चुना श्चुः}}, कहता है कि तालव्य ({{श्चु}}) के पास {{स्}} या दन्त्य ({{तवर्ग}}) तालव्य हो जाता है। 8.4.41, {{ष्टुना ष्टुः}}, मूर्धन्य के पास उसे मूर्धन्य बनाता है। {{ल}} के पास 8.4.60, {{तोर्लि}}, {{त्}} को {{ल्}} बनाता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Place spreads",
+          "hi": "स्थान फैलता है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "त् + च = च्च",
+            "text": {
+              "en": "तच्च, उच्चारणम्.",
+              "hi": "तच्च, उच्चारणम्।"
+            }
+          },
+          {
+            "sa": "त् + ज = ज्ज",
+            "text": {
+              "en": "सज्जनः, उज्ज्वलः.",
+              "hi": "सज्जनः, उज्ज्वलः।"
+            }
+          },
+          {
+            "sa": "त् + ल = ल्ल",
+            "text": {
+              "en": "उल्लेखः, तल्लीनः.",
+              "hi": "उल्लेखः, तल्लीनः।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "cs-place-s1",
+    "brief": "The eleventh statue, smooth and smiling calmly, with her palm turned up; Śuka looking at the stone beside her; Dādī tracing a letter in the dust with one finger; the long hall lit by oil lamps.",
+    "alt": {
+      "en": "A smooth smiling statue with her palm turned up while an old woman traces a letter in the dust",
+      "hi": "चिकनी मुस्कराती प्रतिमा, हथेली ऊपर किए; धूल में अक्षर खींचती दादी"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "vyanjanika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The eleventh statue, smooth and smiling calmly, with her palm turned up; Śuka looking at the stone beside her; Dādī tracing a letter in the dust with one finger; the long hall lit by oil lamps.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvyanjanika: A small spirit of rough sandstone with sharp edges, in the shape of a young woman with a stone bell in one hand; her outline seems to soften wherever she touches something.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-7062eb5a-7951-4478-a780-7afcfc0c28d3.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "03c536d2f85f269802790fb2d0d92290632426b1b77962870ff1fd044b93100d",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cs-place-s1-phone-7d91ebbb.webp",
+      "key": "learn/cs-place-s1-phone-7d91ebbb.webp",
+      "sha256": "7d91ebbba174adbfce19d107eb0aa922814641e043a8827798756c21d953dd5a",
+      "bytes": 89180,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/cs-place-s1-phone-7d91ebbb.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cs-place-s1-tablet-94d06526.webp",
+      "key": "learn/cs-place-s1-tablet-94d06526.webp",
+      "sha256": "94d0652682fa2dc143615e69a531371395c92bbb5d24e8d857aebe8b86db78eb",
+      "bytes": 334428,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/cs-place-s1-tablet-94d06526.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

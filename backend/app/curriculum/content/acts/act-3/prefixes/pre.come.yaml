@@ -10,7 +10,7 @@ teaches:
 needs:
 - verb.class-1
 - verb.lan
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -38,6 +38,7 @@ cards:
     place: smashana
     ratio: '4:3'
     id: pre-come-s1
+    text_in_image: ["गम्"]
   narration:
     en: 'A small spirit sits on a stump clicking strings of glass beads around his neck, each bead marked with a little word. “आ,” he says, and slides a bead onto a root. “गच्छति” was “he goes”. Now he slides: “आगच्छति.” “He comes.” “नि-स्,” another bead: “निर्गच्छति.” “He goes out.” Śuka cocks his head. “Same root,” he says. “Different little word, different journey.”'
     hi: 'एक नन्हा भूत ठूँठ पर बैठा गले के काँच के मनकों की माला खटखटा रहा है, हर मनके पर एक छोटा शब्द। “आ,” वह कहता है और एक मनका धातु पर सरका देता है। “गच्छति” का अर्थ था ‘वह जाता है’। अब वह सरकाता है: “आगच्छति।” “वह आता है।” “निस्,” एक और मनका: “निर्गच्छति।” “वह बाहर जाता है।” शुक सिर टेढ़ा करता है। “वही धातु,” वह कहता है। “अलग छोटा शब्द, अलग यात्रा।”'
@@ -367,8 +368,8 @@ cards:
   - verb.upasarga
   mode: match
   prompt:
-    en: Join each verb to its meaning.
-    hi: हर क्रिया को उसके अर्थ से जोड़िए।
+    en: Match each verb with its meaning.
+    hi: हर क्रिया को उसके अर्थ से मिलाइए।
   explain:
     en: The prefix sets the direction.
     hi: उपसर्ग दिशा तय करता है।

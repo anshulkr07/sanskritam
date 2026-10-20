@@ -10,7 +10,7 @@ teaches:
 needs:
 - pron.i-we
 - pron.you
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -38,6 +38,7 @@ cards:
     place: nauka
     ratio: '4:3'
     id: you-grid-s1
+    text_in_image: ["पठति पठतः पठन्ति", "पठसि पठथः पठथ", "पठामि पठावः पठामः"]
   narration:
     en: 'As the boat drifts, the reflection spirit ripples across the water and lays out a grid in light: three rows, three columns. In each box a verb form of {{पठ्}}. “Three persons, three numbers,” says Dādī. “Nine forms. Know the grid and you know every verb.”'
     hi: 'नाव बहती है तो प्रतिबिम्ब-भूत पानी पर लहराता है और प्रकाश की एक तालिका बिछा देता है: तीन पंक्तियाँ, तीन स्तम्भ। हर खाने में {{पठ्}} का एक क्रियापद। दादी कहती हैं, “तीन पुरुष, तीन वचन। नौ रूप। तालिका जान ली तो हर क्रिया जान ली।”'
@@ -320,8 +321,8 @@ cards:
   - verb.persons
   mode: match
   prompt:
-    en: Join each form to its person and number.
-    hi: हर रूप को उसके पुरुष और वचन से जोड़िए।
+    en: Match each form with its person and number.
+    hi: हर रूप को उसके पुरुष और वचन से मिलाइए।
   explain:
     en: '{{ति}} he, {{सि}} you, {{मि}} I, {{मः}} we.'
     hi: '{{ति}} वह, {{सि}} तुम, {{मि}} मैं, {{मः}} हम।'

@@ -1,0 +1,1204 @@
+{
+  "id": "tad-more-s1",
+  "where": "tad.more#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The twenty-fifth statue holding a pair of stone scales that tilt gently; Dādī pointing at the beam; Śuka perched on one pan which sinks slightly; Lubdhaka's foreman watching the scales hold his breath.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\ntaddhitika: A small spirit of green-bronze with a tiny crown of little letters, in the shape of a young woman holding a small mirror that shows each thing's name for its son.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "tad.more",
+    "template": "scene",
+    "title": {
+      "en": "More and most",
+      "hi": "अधिक और सबसे अधिक"
+    },
+    "title_sa": "लघुतरः गरिष्ठः",
+    "minutes": 6,
+    "teaches": [
+      "tad.comparison"
+    ],
+    "needs": [
+      "tad.matup"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The twenty-fifth statue",
+          "hi": "पच्चीसवीं प्रतिमा"
+        },
+        "image": {
+          "id": "tad-more-s1",
+          "brief": "The twenty-fifth statue holding a pair of stone scales that tilt gently; Dādī pointing at the beam; Śuka perched on one pan which sinks slightly; Lubdhaka's foreman watching the scales hold his breath.",
+          "alt": {
+            "en": "A statue holds stone scales tilting gently while a parrot perches on one pan",
+            "hi": "पत्थर का तराज़ू थामे प्रतिमा, एक पलड़े पर बैठा तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "taddhitika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The twenty-fifth statue holds a pair of scales. “लघुः,” she says: light. “लघुतरः”: lighter. “लघुतमः”: lightest. The scales tilt, tilt, tilt. “गुरुः,” she says, and the other pan sinks. “गरीयान्. गरिष्ठः.” Dādī: “Two ways to say more and most. One adds -तर and -तम to any word. The other is a special set for a few old adjectives.”",
+          "hi": "पच्चीसवीं प्रतिमा के हाथ में तराज़ू है। “लघुः,” वह कहती है: हल्का। “लघुतरः”: अधिक हल्का। “लघुतमः”: सबसे हल्का। तराज़ू झुकता है, झुकता है, झुकता है। “गुरुः,” वह कहती है, और दूसरा पलड़ा डूबता है। “गरीयान्। गरिष्ठः।” दादी: “अधिक और सबसे अधिक कहने के दो तरीक़े। एक किसी भी शब्द में -तर और -तम जोड़ता है। दूसरा कुछ पुराने विशेषणों का विशेष समूह है।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "More and most",
+          "hi": "अधिक और सबसे अधिक"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.comparison"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{-तरः}} means “more”, for two things; {{-तमः}} means “most”, for many: {{लघु}} gives {{लघुतरः}}, {{लघुतमः}}. A few adjectives have older forms: {{गुरु}} gives {{गरीयान्}} (heavier), {{गरिष्ठः}} (heaviest); {{प्रिय}} gives {{प्रेयान्}}, {{प्रेष्ठः}}; {{बहु}} gives {{भूयान्}}, {{भूयिष्ठः}}.",
+          "hi": "{{-तरः}} का अर्थ ‘अधिक’ है, दो वस्तुओं के लिए; {{-तमः}} का अर्थ ‘सबसे अधिक’ है, कई के लिए: {{लघु}} से {{लघुतरः}}, {{लघुतमः}}। कुछ विशेषणों के पुराने रूप हैं: {{गुरु}} से {{गरीयान्}} (अधिक भारी), {{गरिष्ठः}} (सबसे भारी); {{प्रिय}} से {{प्रेयान्}}, {{प्रेष्ठः}}; {{बहु}} से {{भूयान्}}, {{भूयिष्ठः}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "तरप् / तमप्",
+          "meaning": {
+            "en": "the “more” and “most” suffixes",
+            "hi": "‘अधिक’ और ‘सबसे अधिक’ प्रत्यय"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "More and most",
+          "hi": "अधिक और सबसे अधिक"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.comparison"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "-तर, -तम and the old forms",
+          "hi": "-तर, -तम और पुराने रूप"
+        },
+        "columns": [
+          {
+            "en": "Word",
+            "hi": "शब्द"
+          },
+          {
+            "en": "More",
+            "hi": "अधिक"
+          },
+          {
+            "en": "Most",
+            "hi": "सबसे अधिक"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "लघु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लघुतरः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "लघु",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "tarap",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लघुतमः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "लघु",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "tamap",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "उच्च",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "उच्चतरः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "उच्च",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "tarap",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "उच्चतमः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "उच्च",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "tamap",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "दीर्घ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "दीर्घतरः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "दीर्घ",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "tarap",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "दीर्घतमः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "दीर्घ",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "tamap",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "महत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "महत्तरः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "महत्",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "tarap",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "महत्तमः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "महत्",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "tamap",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "प्रिय",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "प्रियतरः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "प्रिय",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "tarap",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "प्रियतमः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "प्रिय",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "tamap",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Add {{-तर}} / {{-तम}} to any adjective.",
+          "hi": "किसी भी विशेषण में {{-तर}} / {{-तम}} जोड़िए।"
+        }
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "The old forms",
+          "hi": "पुराने रूप"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.comparison"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "-ईयस् and -इष्ठ",
+          "hi": "-ईयस् और -इष्ठ"
+        },
+        "columns": [
+          {
+            "en": "Word",
+            "hi": "शब्द"
+          },
+          {
+            "en": "More",
+            "hi": "अधिक"
+          },
+          {
+            "en": "Most",
+            "hi": "सबसे अधिक"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "गुरु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गरीयान्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "गुरु",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "Iyasun",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गरिष्ठः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "गुरु",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "izWan",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "लघु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लघीयान्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "लघु",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "Iyasun",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लघिष्ठः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "लघु",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "izWan",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "प्रिय",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "प्रेयान्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "प्रिय",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "Iyasun",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "प्रेष्ठः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "प्रिय",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "izWan",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "बहु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "भूयान्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "बहु",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "Iyasun",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "भूयिष्ठः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "बहु",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "izWan",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "दीर्घ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "द्राघीयान्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "दीर्घ",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "Iyasun",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "द्राघिष्ठः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "taddhita",
+                "stem": "दीर्घ",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": "izWan",
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "These forms change the stem: {{गुरु}} → {{गर-}}.",
+          "hi": "ये रूप आधार बदलते हैं: {{गुरु}} → {{गर-}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.comparison"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{लघुतमः}} means…",
+          "hi": "{{लघुतमः}} का अर्थ…"
+        },
+        "explain": {
+          "en": "{{-तमः}}: most.",
+          "hi": "{{-तमः}}: सबसे अधिक।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "lighter",
+              "hi": "अधिक हल्का"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "lightest",
+              "hi": "सबसे हल्का"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "light",
+              "hi": "हल्का"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.comparison"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “highest”.",
+          "hi": "कहिए: ‘सबसे ऊँचा’।"
+        },
+        "explain": {
+          "en": "{{उच्चतमः}}.",
+          "hi": "{{उच्चतमः}}।"
+        },
+        "options": [],
+        "answers": [
+          "उच्चतमः"
+        ],
+        "tiles": [
+          "उच्च",
+          "तमः",
+          "तरः",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.comparison"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its meaning.",
+          "hi": "हर शब्द को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "Two kinds of more and most.",
+          "hi": "अधिक और सबसे अधिक के दो प्रकार।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "दीर्घतरः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "longer",
+                "hi": "अधिक लम्बा"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "दीर्घतमः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "longest",
+                "hi": "सबसे लम्बा"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "गरीयान्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "heavier",
+                "hi": "अधिक भारी"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "गरिष्ठः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "heaviest",
+                "hi": "सबसे भारी"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.comparison"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every “most” word.",
+          "hi": "हर ‘सबसे अधिक’ शब्द छुइए।"
+        },
+        "params": {
+          "passage": [
+            "लघुतमः",
+            "लघुतरः",
+            "उच्चतमः",
+            "उच्चतरः",
+            "गरिष्ठः",
+            "गरीयान्"
+          ],
+          "targets": [
+            "लघुतमः",
+            "उच्चतमः",
+            "गरिष्ठः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "The scales",
+          "hi": "तराज़ू"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "tad.comparison"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{प्रियतमः}} means…",
+          "hi": "{{प्रियतमः}} का अर्थ…"
+        },
+        "explain": {
+          "en": "{{प्रिय}} + {{-तम}}.",
+          "hi": "{{प्रिय}} + {{-तम}}।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "dear",
+              "hi": "प्रिय"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "dearer",
+              "hi": "अधिक प्रिय"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "dearest",
+              "hi": "सबसे प्रिय"
+            },
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“प्रियतमः,” you say, “dearest,” and both pans of the scales settle, exactly level, with a small sound like a held breath let out. “लघुतरः. गरीयान्. प्रियतमः,” says the statue. “Everything has a weight. But it is the word that tells you which is more.” Taddhitikā, the green-bronze spirit, steps off the plinth. She is surprisingly light.",
+            "hi": "“प्रियतमः,” आप कहते हैं, “सबसे प्रिय,” और तराज़ू के दोनों पलड़े ठीक बराबर बैठ जाते हैं, रोकी साँस छोड़ने जैसी हल्की आवाज़ के साथ। “लघुतरः। गरीयान्। प्रियतमः,” प्रतिमा कहती है। “हर चीज़ का एक भार है। पर कौन अधिक है, यह शब्द बताता है।” तद्धितिका, हरे काँसे की भूत, आसन से उतरती है। वह आश्चर्यजनक रूप से हल्की है।"
+          },
+          "failure": {
+            "en": "The scales keep tilting. {{-तम}}: dearest: {{प्रियतमः}}.",
+            "hi": "तराज़ू झुकता रहता है। {{-तम}}: सबसे प्रिय: {{प्रियतमः}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's more and most",
+          "hi": "पाणिनि का अधिक और सबसे अधिक"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "tad.comparison"
+        ],
+        "sutras": [
+          "5.3.57",
+          "5.3.55",
+          "6.4.157"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 5.3.57, {{द्विवचनविभज्योपपदे तरबीयसुनौ}}, gives {{तरप्}} and {{ईयसुन्}} when comparing two; 5.3.55, {{अतिशायने तमबिष्ठनौ}}, gives {{तमप्}} and {{इष्ठन्}} for “most”. 6.4.157, {{प्रियस्थिरस्फिरोरुबहुलगुरुवृद्धतृप्रदीर्घवृन्दारकाणां प्रस्थस्फवर्बंहिगर्वर्षित्रब्द्राघिवृन्दाः}}, replaces the stem of a few adjectives: {{गुरु}} becomes {{गर्}}.",
+          "hi": "सूत्र 5.3.57, {{द्विवचनविभज्योपपदे तरबीयसुनौ}}, दो की तुलना में {{तरप्}} और {{ईयसुन्}} देता है; 5.3.55, {{अतिशायने तमबिष्ठनौ}}, ‘सबसे अधिक’ के लिए {{तमप्}} और {{इष्ठन्}} देता है। 6.4.157 कुछ विशेषणों का आधार बदल देता है: {{गुरु}} का {{गर्}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "More and most",
+          "hi": "अधिक और सबसे अधिक"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "लघुतरः · लघुतमः",
+            "text": {
+              "en": "Lighter; lightest.",
+              "hi": "अधिक हल्का; सबसे हल्का।"
+            }
+          },
+          {
+            "sa": "गरीयान् · गरिष्ठः",
+            "text": {
+              "en": "Heavier; heaviest.",
+              "hi": "अधिक भारी; सबसे भारी।"
+            }
+          },
+          {
+            "sa": "प्रेयान् · प्रेष्ठः",
+            "text": {
+              "en": "Dearer; dearest.",
+              "hi": "अधिक प्रिय; सबसे प्रिय।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "tad-more-s1",
+    "brief": "The twenty-fifth statue holding a pair of stone scales that tilt gently; Dādī pointing at the beam; Śuka perched on one pan which sinks slightly; Lubdhaka's foreman watching the scales hold his breath.",
+    "alt": {
+      "en": "A statue holds stone scales tilting gently while a parrot perches on one pan",
+      "hi": "पत्थर का तराज़ू थामे प्रतिमा, एक पलड़े पर बैठा तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "taddhitika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The twenty-fifth statue holding a pair of stone scales that tilt gently; Dādī pointing at the beam; Śuka perched on one pan which sinks slightly; Lubdhaka's foreman watching the scales hold his breath.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\ntaddhitika: A small spirit of green-bronze with a tiny crown of little letters, in the shape of a young woman holding a small mirror that shows each thing's name for its son.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-dc8dadba-6ccd-4f8a-b24f-35c05c36751d.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "6945580983502116fc3bea3e98658ffe9e47ec5677ddee800c2c1e9b586439c3",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\tad-more-s1-phone-da112619.webp",
+      "key": "learn/tad-more-s1-phone-da112619.webp",
+      "sha256": "da112619c42467410b92fa2b794c4cc9cbee3d556bd10a06a77ab0063dde2843",
+      "bytes": 103348,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/tad-more-s1-phone-da112619.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\tad-more-s1-tablet-36101a70.webp",
+      "key": "learn/tad-more-s1-tablet-36101a70.webp",
+      "sha256": "36101a70dfbd109142e2a86e54617d3bdbe8b8391f258621b5b6b8dfb7eb63da",
+      "bytes": 396628,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/tad-more-s1-tablet-36101a70.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

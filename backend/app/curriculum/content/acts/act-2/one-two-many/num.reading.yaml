@@ -1,0 +1,173 @@
+id: num.reading
+template: episode
+title:
+  en: Read one, two and many
+  hi: एक, दो और अनेक पढ़ें
+minutes: 4
+needs: &id001
+- sent.agree-number
+review: scholar_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: r1
+  kind: reading
+  title:
+    en: Read the scene
+    hi: दृश्य पढ़ें
+  passage:
+  - sa: बालकः पठति।
+    meaning:
+      en: The boy reads.
+      hi: बालक पढ़ता है।
+    words:
+    - sa: बालकः
+      gloss:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: पठति
+      gloss:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+  - sa: बालकौ पठतः।
+    meaning:
+      en: The two boys read.
+      hi: दो बालक पढ़ते हैं।
+    words:
+    - sa: बालकौ
+      gloss:
+        en: two boys
+        hi: दो बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+    - sa: पठतः
+      gloss:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+- id: p1
+  kind: practice
+  mode: choice
+  skills: *id001
+  prompt:
+    en: How many boys read in the second sentence?
+    hi: दूसरे वाक्य में कितने बालक पढ़ते हैं?
+  explain:
+    en: Both the noun and the verb in the second sentence show two.
+    hi: दूसरे वाक्य में संज्ञा और क्रिया, दोनों से दो का बोध होता है।
+  options:
+  - text:
+      en: Two
+      hi: दो
+    correct: true
+  - text:
+      en: One
+      hi: एक
+    why:
+      en: Both the noun and the verb in the second sentence show two.
+      hi: दूसरे वाक्य में संज्ञा और क्रिया, दोनों से दो का बोध होता है।
+- id: r2
+  kind: reading
+  title:
+    en: Read on
+    hi: आगे पढ़ें
+  passage:
+  - sa: बालकाः पठन्ति।
+    meaning:
+      en: The boys read.
+      hi: बालक पढ़ते हैं।
+    words:
+    - sa: बालकाः
+      gloss:
+        en: boys
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: पठन्ति
+      gloss:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+  - sa: नौकाः सन्ति।
+    meaning:
+      en: There are boats.
+      hi: नावें हैं।
+    words:
+    - sa: नौकाः
+      gloss:
+        en: boats
+        hi: नावें
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+    - sa: सन्ति
+      gloss:
+        en: are
+        hi: हैं
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+- id: p2
+  kind: practice
+  mode: choice
+  skills: *id001
+  prompt:
+    en: Are there one or several boats in the last sentence?
+    hi: अन्तिम वाक्य में एक नाव है या अनेक?
+  explain:
+    en: The final sentence uses plural forms for the boats and for being.
+    hi: अन्तिम वाक्य में नाव और होने की क्रिया, दोनों बहुवचन में हैं।
+  options:
+  - text:
+      en: Several boats
+      hi: अनेक नावें
+    correct: true
+  - text:
+      en: One boat
+      hi: एक नाव
+    why:
+      en: The final sentence uses plural forms for the boats and for being.
+      hi: अन्तिम वाक्य में नाव और होने की क्रिया, दोनों बहुवचन में हैं।
+- id: end
+  kind: summary
+  points:
+  - text:
+      en: You read the same action with one, two and many people, then identified the boats in the plural.
+      hi: आपने एक, दो और अनेक लोगों के साथ वही क्रिया पढ़ी, फिर नावों का बहुवचन पहचाना।

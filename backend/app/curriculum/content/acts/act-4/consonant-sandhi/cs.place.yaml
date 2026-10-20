@@ -9,7 +9,7 @@ teaches:
 - sandhi.place
 needs:
 - sandhi.voice
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,9 +37,21 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: cs-place-s1
+    text_in_image: ["च"]
   narration:
     en: 'The eleventh statue is smooth and wears a calm smile. “सज्जनः,” she says: “a good person.” “तच्च”: “and that.” Śuka looks at the stone. “In सज्जनः there was a त from सत्. Now there is a ज. In तच्च there was a त. Now there is a च.” “It has moved,” says Dādī. “A त beside a palatal sound becomes palatal too. The place spreads.”'
     hi: 'ग्यारहवीं प्रतिमा चिकनी है और शान्त मुस्कान पहने है। “सज्जनः,” वह कहती है: “भला मनुष्य।” “तच्च”: “और वह।” शुक पत्थर को देखता है। “सज्जनः में सत् का त था। अब ज है। तच्च में त था। अब च है।” “वह खिसक गया है,” दादी कहती हैं। “तालव्य ध्वनि के पास त भी तालव्य हो जाता है। स्थान फैलता है।”'
+  lines:
+  - speaker: vyanjanika
+    sa: सज्जनः
+    gloss:
+      en: A good person.
+      hi: अच्छा व्यक्ति।
+    check:
+      type: sandhi
+      first: सत्
+      second: जनः
+      joined: सज्जनः
 - id: t1
   kind: teach
   title:
@@ -222,8 +234,8 @@ cards:
   - sandhi.place
   mode: match
   prompt:
-    en: Join each word to its parts.
-    hi: हर शब्द को उसके भागों से जोड़िए।
+    en: Match each word with its parts.
+    hi: हर शब्द को उसके भागों से मिलाइए।
   explain:
     en: The {{त्}} takes the next sound's place.
     hi: '{{त्}} अगली ध्वनि का स्थान ले लेता है।'

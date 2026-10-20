@@ -9,7 +9,7 @@ teaches:
 - sam.bahuvrihi
 needs:
 - sam.nan-upapada
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: c2-bahuvrihi-s1
+    text_in_image: ["नीलकण्ठः"]
   narration:
     en: 'The nineteenth statue has a pale blue throat carved into the stone. “नीलकण्ठः,” she says. “A blue throat.” “No,” says Dādī. “A karmadhāraya would be the throat itself. This is the one who has the blue throat. The compound points outside itself, to someone else: Śiva. It is called bahuvrīhi, which itself means ‘the one who has much rice’.”'
     hi: 'उन्नीसवीं प्रतिमा के पत्थर में हल्का नीला कण्ठ तराशा गया है। “नीलकण्ठः,” वह कहती है। “नीला कण्ठ।” “नहीं,” दादी कहती हैं। “कर्मधारय होता तो वही कण्ठ होता। यह वह है जिसके पास नीला कण्ठ है। समास अपने से बाहर किसी और की ओर संकेत करता है: शिव की ओर। इसे बहुव्रीहि कहते हैं, जिसका अपना अर्थ है ‘बहुत चावल वाला’।”'
@@ -46,6 +47,18 @@ cards:
       en: Moon-faced, with lotus eyes of the finest blue.
       hi: पूर्ण चन्द्र-सा मुख वाली, श्रेष्ठ नील कमल-सी आँखों वाली।
     source: Kathāsaritsāgara 1.4 (read in the Digital Corpus of Sanskrit)
+  lines:
+  - speaker: malika
+    sa: नीलकण्ठः
+    gloss:
+      en: The one with a blue throat.
+      hi: नीले कण्ठ वाला।
+    check:
+      type: subanta
+      stem: नीलकण्ठ
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
 - id: t1
   kind: teach
   title:
@@ -199,8 +212,8 @@ cards:
   - sam.bahuvrihi
   mode: match
   prompt:
-    en: Join each compound to its unpacking.
-    hi: हर समास को उसके विग्रह से जोड़िए।
+    en: Match each compound with its unpacking.
+    hi: हर समास को उसके विग्रह से मिलाइए।
   explain:
     en: Every one begins “whose …”.
     hi: हर एक ‘जिसका …’ से शुरू होता है।

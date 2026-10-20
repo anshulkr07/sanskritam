@@ -1,0 +1,796 @@
+{
+  "id": "rv-tika-s1",
+  "where": "rv.tika#s1",
+  "ratio": "4:3",
+  "expected": [
+    "ईशा वास्यम् इदं सर्वं यत् किञ्च जगत्यां जगत्",
+    "तेन त्यक्तेन भुञ्जीथा मा गृधः कस्य स्विद्धनम्",
+    "तेन त्यक्तेन",
+    "त्यागेनेत्यर्थः"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The round vault wall covered in carved verses, each with small notes in faded ink all round it; Śuka on a ledge reading the notes round one verse aloud; Dādī beside him following with a finger; the small spirit Ślokikā with her cord slack on her lap, listening; warm lamplight.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nshlokika: A small ink-dark spirit sitting on the floor of a round stone vault, wound round and round in a long cord of tiny knotted letters, one knot at every join; she hums the verse patiently.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nईशा वास्यम् इदं सर्वं यत् किञ्च जगत्यां जगत्\nतेन त्यक्तेन भुञ्जीथा मा गृधः कस्य स्विद्धनम्\nतेन त्यक्तेन\nत्यागेनेत्यर्थः\nThe first two approved strings are the large carved verse; the last two are its smaller marginal commentary notes. No extra pseudo-writing on the wall or cord.",
+  "source": {
+    "id": "rv.tika",
+    "template": "scene",
+    "title": {
+      "en": "With a commentary",
+      "hi": "टीका के साथ"
+    },
+    "title_sa": "टीका",
+    "minutes": 6,
+    "teaches": [
+      "verse.commentary"
+    ],
+    "needs": [
+      "verse.read"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The margins",
+          "hi": "हाशिये"
+        },
+        "image": {
+          "id": "rv-tika-s1",
+          "brief": "The round vault wall covered in carved verses, each with small notes in faded ink all round it; Śuka on a ledge reading the notes round one verse aloud; Dādī beside him following with a finger; the small spirit Ślokikā with her cord slack on her lap, listening; warm lamplight.",
+          "alt": {
+            "en": "A vault wall of carved verses with faded margin notes while a parrot reads them aloud",
+            "hi": "खुदे श्लोकों वाली दीवार पर फीके हाशिये के नोट, ज़ोर से पढ़ता तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "shlokika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Ślokikā's cord is slack, and the vault is full of margins: small notes in faded ink round every carved verse. “That is a commentary,” says Dādī, “a teacher's voice beside the verse.” Śuka reads aloud the notes round the Īśā verse. Each repeats a word and puts another beside it, like a hand held out. Ślokikā loosens her cord to listen.",
+          "hi": "श्लोकिका की डोरी ढीली है, और तहख़ाना हाशियों से भरा है: हर खुदे श्लोक के चारों ओर फीकी स्याही के छोटे नोट। “यह टीका है,” दादी कहती हैं, “श्लोक के पास एक गुरु की आवाज़।” शुक ईशा-श्लोक के चारों ओर के नोट ज़ोर से पढ़ता है। हर नोट एक शब्द दोहराता है और उसके पास दूसरा रख देता है, जैसे बढ़ा हुआ हाथ। श्लोकिका सुनने के लिए अपनी डोरी ढीली करती है।"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "ईशा वास्यम् इदं सर्वं यत् किञ्च जगत्यां जगत् तेन त्यक्तेन भुञ्जीथा मा गृधः कस्य स्विद्धनम्",
+          "gloss": {
+            "en": "Whatever moves in this moving world is to be clothed by the Lord. Take your enjoyment through renunciation; do not covet: whose is wealth?",
+            "hi": "इस गतिशील जगत् में जो कुछ गतिशील है, वह सब ईश्वर से आच्छादित होने योग्य है। त्याग से भोग कीजिए; लालच न कीजिए: धन किसका है?"
+          },
+          "source": "Īśāvāsyopaniṣad 1 (read at GRETIL, with the commentary ascribed to Śaṅkara)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The commentary's moves",
+          "hi": "टीका की चालें"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.commentary"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A commentary ({{टीका}}) walks along the verse. It repeats a word, gives another with the same meaning, and closes with {{इत्यर्थः}}, “that is the meaning”. It asks {{कस्मात्}}, “why?”, and answers. {{अथवा}}, “or else”, offers a second reading. Read it for the sense, not word for word.",
+          "hi": "टीका श्लोक के साथ-साथ चलती है। वह एक शब्द दोहराती है, उसी अर्थ का दूसरा शब्द देती है, और {{इत्यर्थः}}, ‘यही अर्थ है’, पर बन्द करती है। वह {{कस्मात्}}, ‘क्यों?’, पूछती है और उत्तर देती है। {{अथवा}}, ‘या फिर’, दूसरा पाठ देता है। उसे अर्थ के लिए पढ़िए, शब्द-दर-शब्द नहीं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "टीका",
+          "meaning": {
+            "en": "a commentary on a text",
+            "hi": "किसी ग्रन्थ की व्याख्या"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Notes on the Īśā verse",
+          "hi": "ईशा-श्लोक पर टिप्पणियाँ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.commentary"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "What the commentary says beside each word",
+          "hi": "हर शब्द के पास टीका क्या कहती है"
+        },
+        "columns": [
+          {
+            "en": "The verse says",
+            "hi": "श्लोक में"
+          },
+          {
+            "en": "The commentary says",
+            "hi": "टीका कहती है"
+          },
+          {
+            "en": "So it means",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "भुञ्जीथाः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पालयेथाः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "you should protect",
+                "hi": "आपको पालन करना चाहिए"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "तेन त्यक्तेन",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "त्यागेनेत्यर्थः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "by renunciation",
+                "hi": "त्याग से"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "मा गृधः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गृधिम् आकाङ्क्षां मा कार्षीः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "do not make a longing",
+                "hi": "लालसा मत कीजिए"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "From the commentary ascribed to Śaṅkara (read at GRETIL).",
+          "hi": "शङ्कर के नाम से कही जाने वाली टीका से (GRETIL में पढ़ी)।"
+        }
+      },
+      {
+        "id": "r1",
+        "title": {
+          "en": "In the teacher's own words",
+          "hi": "गुरु के अपने शब्दों में"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.commentary"
+        ],
+        "sutras": [],
+        "kind": "reading",
+        "passage": [
+          {
+            "sa": "ईशिता परमेश्वरः परमात्मा सर्वस्य",
+            "meaning": {
+              "en": "The ruler is the supreme Lord, the supreme Self of all.",
+              "hi": "शासक परमेश्वर है, सबका परमात्मा।"
+            },
+            "words": [
+              {
+                "sa": "ईशिता",
+                "gloss": {
+                  "en": "the ruler",
+                  "hi": "शासक"
+                },
+                "check": null
+              },
+              {
+                "sa": "परमेश्वरः",
+                "gloss": {
+                  "en": "the supreme Lord",
+                  "hi": "परमेश्वर"
+                },
+                "check": null
+              },
+              {
+                "sa": "परमात्मा",
+                "gloss": {
+                  "en": "the supreme Self",
+                  "hi": "परमात्मा"
+                },
+                "check": null
+              },
+              {
+                "sa": "सर्वस्य",
+                "gloss": {
+                  "en": "of all",
+                  "hi": "सबका"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "स हि सर्वम् ईष्टे",
+            "meaning": {
+              "en": "For he rules everything.",
+              "hi": "क्योंकि वह सब पर शासन करता है।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "हि",
+                "gloss": {
+                  "en": "for",
+                  "hi": "क्योंकि"
+                },
+                "check": null
+              },
+              {
+                "sa": "सर्वम्",
+                "gloss": {
+                  "en": "everything",
+                  "hi": "सब कुछ"
+                },
+                "check": null
+              },
+              {
+                "sa": "ईष्टे",
+                "gloss": {
+                  "en": "rules",
+                  "hi": "शासन करता है"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "तेन त्यक्तेन त्यागेनेत्यर्थः",
+            "meaning": {
+              "en": "“By that, renounced”: by renunciation, that is the meaning.",
+              "hi": "‘उससे, त्यागे हुए से’: त्याग से, यही अर्थ है।"
+            },
+            "words": [
+              {
+                "sa": "तेन",
+                "gloss": {
+                  "en": "by that",
+                  "hi": "उससे"
+                },
+                "check": null
+              },
+              {
+                "sa": "त्यक्तेन",
+                "gloss": {
+                  "en": "renounced",
+                  "hi": "त्यागे हुए से"
+                },
+                "check": null
+              },
+              {
+                "sa": "त्यागेन",
+                "gloss": {
+                  "en": "by renunciation",
+                  "hi": "त्याग से"
+                },
+                "check": null
+              },
+              {
+                "sa": "इति",
+                "gloss": {
+                  "en": "thus",
+                  "hi": "ऐसा"
+                },
+                "check": null
+              },
+              {
+                "sa": "अर्थः",
+                "gloss": {
+                  "en": "the meaning",
+                  "hi": "अर्थ"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "भुञ्जीथाः पालयेथाः",
+            "meaning": {
+              "en": "“You should enjoy”: you should protect.",
+              "hi": "‘आप भोग करें’: आप पालन करें।"
+            },
+            "words": [
+              {
+                "sa": "भुञ्जीथाः",
+                "gloss": {
+                  "en": "you should enjoy",
+                  "hi": "आप भोग करें"
+                },
+                "check": null
+              },
+              {
+                "sa": "पालयेथाः",
+                "gloss": {
+                  "en": "you should protect",
+                  "hi": "आप पालन करें"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          }
+        ]
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.commentary"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word of the verse to the commentary's word.",
+          "hi": "श्लोक के हर शब्द को टीका के शब्द से जोड़िए।"
+        },
+        "explain": {
+          "en": "The commentary puts its own word beside the verse's.",
+          "hi": "टीका श्लोक के शब्द के पास अपना शब्द रखती है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "भुञ्जीथाः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "पालयेथाः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "त्यक्तेन",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "त्यागेन",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "मा गृधः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "गृधिं मा कार्षीः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.commentary"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "What does {{इत्यर्थः}} say?",
+          "hi": "{{इत्यर्थः}} क्या कहता है?"
+        },
+        "explain": {
+          "en": "{{इत्यर्थः}} = {{इति}} + {{अर्थः}}: “that is the meaning”.",
+          "hi": "{{इत्यर्थः}} = {{इति}} + {{अर्थः}}: ‘यही अर्थ है’।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "That is the meaning",
+              "hi": "यही अर्थ है"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "The verse ends here",
+              "hi": "श्लोक यहाँ समाप्त होता है"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "A new verse begins",
+              "hi": "नया श्लोक शुरू होता है"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.commentary"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "After {{कस्मात्}}, a commentator gives…",
+          "hi": "{{कस्मात्}} के बाद टीकाकार देता है…"
+        },
+        "explain": {
+          "en": "{{कस्मात्}}: “why?”; the answer is a reason.",
+          "hi": "{{कस्मात्}}: ‘क्यों?’; उत्तर एक कारण है।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "a name",
+              "hi": "एक नाम"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "a reason",
+              "hi": "एक कारण"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "a command",
+              "hi": "एक आज्ञा"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.commentary"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "The verse has {{भुञ्जीथाः}}; the commentary has {{पालयेथाः}}. Which is the commentator's word?",
+          "hi": "श्लोक में {{भुञ्जीथाः}} है; टीका में {{पालयेथाः}}। टीकाकार का शब्द कौन-सा है?"
+        },
+        "explain": {
+          "en": "The commentator adds {{पालयेथाः}}.",
+          "hi": "टीकाकार {{पालयेथाः}} जोड़ता है।"
+        },
+        "options": [
+          {
+            "sa": "भुञ्जीथाः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पालयेथाः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The margins",
+          "hi": "हाशिये"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.commentary"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "The verse says {{मा गृधः}}; the commentary says {{गृधिम् आकाङ्क्षां मा कार्षीः}}. It means…",
+          "hi": "श्लोक में {{मा गृधः}} है; टीका कहती है {{गृधिम् आकाङ्क्षां मा कार्षीः}}। अर्थ है…"
+        },
+        "explain": {
+          "en": "{{मा कार्षीः}}: do not make.",
+          "hi": "{{मा कार्षीः}}: मत कीजिए।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "do not give",
+              "hi": "मत दीजिए"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "do not make a longing",
+              "hi": "लालसा मत कीजिए"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "go away",
+              "hi": "चले जाइए"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“Do not make a longing,” you read, and in the margin the ink brightens, and Śuka, who has been reading the notes aloud, goes silent, and the whole vault listens. Ślokikā lets the last loop of her cord slide to the floor. “The teacher kept the verse company,” she says. “He did not leave it alone in its knots.” On the stair behind you, Lubdhaka's step has stopped.",
+            "hi": "“लालसा मत कीजिए,” आप पढ़ते हैं, और हाशिये की स्याही चमक उठती है, और शुक, जो नोट ज़ोर से पढ़ रहा था, चुप हो जाता है, और पूरा तहख़ाना सुनने लगता है। श्लोकिका अपनी डोरी का अन्तिम फन्दा फर्श पर सरक जाने देती है। “गुरु श्लोक का साथ निभाते थे,” वह कहती है। “उन्होंने उसे उसकी गाँठों में अकेला नहीं छोड़ा।” आपके पीछे सीढ़ी पर लुब्धक के पैरों की आहट रुक गई है।"
+          },
+          "failure": {
+            "en": "The ink stays dim. {{मा कार्षीः}} means: do not make.",
+            "hi": "स्याही मद्धम रहती है। {{मा कार्षीः}} का अर्थ है: मत कीजिए।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "With a commentary",
+          "hi": "टीका के साथ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "टीका",
+            "text": {
+              "en": "A teacher's voice beside the verse.",
+              "hi": "श्लोक के पास गुरु की आवाज़।"
+            }
+          },
+          {
+            "sa": "इत्यर्थः",
+            "text": {
+              "en": "That is the meaning.",
+              "hi": "यही अर्थ है।"
+            }
+          },
+          {
+            "sa": "कस्मात् · अथवा",
+            "text": {
+              "en": "Why? · or else.",
+              "hi": "क्यों? · या फिर।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "rv-tika-s1",
+    "brief": "The round vault wall covered in carved verses, each with small notes in faded ink all round it; Śuka on a ledge reading the notes round one verse aloud; Dādī beside him following with a finger; the small spirit Ślokikā with her cord slack on her lap, listening; warm lamplight.",
+    "alt": {
+      "en": "A vault wall of carved verses with faded margin notes while a parrot reads them aloud",
+      "hi": "खुदे श्लोकों वाली दीवार पर फीके हाशिये के नोट, ज़ोर से पढ़ता तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "shlokika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The round vault wall covered in carved verses, each with small notes in faded ink all round it; Śuka on a ledge reading the notes round one verse aloud; Dādī beside him following with a finger; the small spirit Ślokikā with her cord slack on her lap, listening; warm lamplight.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nshlokika: A small ink-dark spirit sitting on the floor of a round stone vault, wound round and round in a long cord of tiny knotted letters, one knot at every join; she hums the verse patiently.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-ac526e18-9b90-4eb2-a31d-d403d3d51880.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "e6d7d16abb0b8179f4a4f6d5bf1a67bc97fe7c26497306f23c30d7ae6ff563da",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\rv-tika-s1-phone-b0697417.webp",
+      "key": "learn/rv-tika-s1-phone-b0697417.webp",
+      "sha256": "b06974170ab961f740ffc30ea986c329a0f49c45dccded9d3b082a6f0b919b2a",
+      "bytes": 103606,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/rv-tika-s1-phone-b0697417.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\rv-tika-s1-tablet-7de956be.webp",
+      "key": "learn/rv-tika-s1-tablet-7de956be.webp",
+      "sha256": "7de956bea7aa9bbda5a3e0dcea4b88bafaace3c134a90a0d37497085bb2c36f3",
+      "bytes": 402478,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/rv-tika-s1-tablet-7de956be.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

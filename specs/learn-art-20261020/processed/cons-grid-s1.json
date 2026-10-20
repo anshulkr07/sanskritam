@@ -1,0 +1,894 @@
+{
+  "id": "cons-grid-s1",
+  "where": "cons.grid#s1",
+  "ratio": "4:3",
+  "expected": [
+    "क ख ग घ ङ",
+    "च छ ज झ ञ",
+    "ट ठ ड ढ ण",
+    "त थ द ध न",
+    "प फ ब भ म"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The sandstone temple's carved wooden door at dusk: five rows of Devanagari-like carved letters across it, a small lavender shadow half hidden in the carving, you seen from behind with Dādī and Śuka on her shoulder.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nchayika: A slim lavender-grey shadow spirit with a small gold thread in her hair, half hidden in the carvings, gentle smile.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nक ख ग घ ङ\nच छ ज झ ञ\nट ठ ड ढ ण\nत थ द ध न\nप फ ब भ म",
+  "source": {
+    "id": "cons.grid",
+    "template": "scene",
+    "title": {
+      "en": "Five rows on the carved door",
+      "hi": "नक्काशीदार द्वार की पाँच पंक्तियाँ"
+    },
+    "title_sa": "वर्गाः",
+    "minutes": 6,
+    "teaches": [
+      "script.cons.grid"
+    ],
+    "needs": [
+      "script.matra"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The carved door",
+          "hi": "नक्काशीदार द्वार"
+        },
+        "image": {
+          "id": "cons-grid-s1",
+          "brief": "The sandstone temple's carved wooden door at dusk: five rows of Devanagari-like carved letters across it, a small lavender shadow half hidden in the carving, you seen from behind with Dādī and Śuka on her shoulder.",
+          "alt": {
+            "en": "A carved temple door with five rows of letters and a shy shadow hiding in the carving",
+            "hi": "पाँच पंक्तियों में अक्षर खुदा नक्काशीदार मंदिर द्वार, जिसमें शर्मीली छाया छिपी है"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "chayika"
+          ],
+          "place": "devalaya"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Dhūmaka's clue leads you to the temple door. Its wood is carved with rows of letters, five rows in all. Something small and lavender flickers between the carvings and hides again. Dādī reads the door's first words aloud.",
+          "hi": "धूमक का संकेत आपको मंदिर के द्वार तक ले जाता है। उसकी लकड़ी पर अक्षरों की पंक्तियाँ खुदी हैं, कुल पाँच। नक्काशी के बीच कोई छोटी, बैंगनी-सी चीज़ झिलमिलाती है और फिर छिप जाती है। दादी द्वार के पहले शब्द ज़ोर से पढ़ती हैं।"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "द्वारे व्यञ्जनानि सन्ति।",
+            "gloss": {
+              "en": "There are consonants on the door.",
+              "hi": "द्वार पर व्यंजन हैं।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Where the mouth touches",
+          "hi": "मुँह कहाँ छूता है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.grid"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A consonant, {{व्यञ्जनम्}}, is a sound made by closing or narrowing the mouth. The door's five rows follow your mouth from the back to the front: throat, palate, roof, teeth, lips. Say {{क}} {{च}} {{ट}} {{त}} {{प}} and feel the sound move forward.",
+          "hi": "व्यंजन ({{व्यञ्जनम्}}) वह ध्वनि है जो मुँह को बन्द या तंग करके बनती है। द्वार की पाँच पंक्तियाँ मुँह के पिछले भाग से अगले भाग तक चलती हैं: कण्ठ, तालु, मूर्धा, दाँत, होंठ। {{क}} {{च}} {{ट}} {{त}} {{प}} बोलिए और ध्वनि को आगे बढ़ते महसूस कीजिए।"
+        },
+        "examples": [],
+        "rows": [
+          {
+            "sa": "क",
+            "gloss": {
+              "en": "throat (कण्ठ)",
+              "hi": "कण्ठ (गला)"
+            },
+            "check": null
+          },
+          {
+            "sa": "च",
+            "gloss": {
+              "en": "palate (तालु)",
+              "hi": "तालु"
+            },
+            "check": null
+          },
+          {
+            "sa": "ट",
+            "gloss": {
+              "en": "roof of the mouth, tongue curled back (मूर्धा)",
+              "hi": "मूर्धा, जीभ मुड़ी हुई"
+            },
+            "check": null
+          },
+          {
+            "sa": "त",
+            "gloss": {
+              "en": "teeth (दन्त)",
+              "hi": "दन्त (दाँत)"
+            },
+            "check": null
+          },
+          {
+            "sa": "प",
+            "gloss": {
+              "en": "lips (ओष्ठ)",
+              "hi": "ओष्ठ (होंठ)"
+            },
+            "check": null
+          }
+        ],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "व्यञ्जनम्",
+          "meaning": {
+            "en": "consonant",
+            "hi": "व्यंजन"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "The whole door",
+          "hi": "पूरा द्वार"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.grid"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The five rows, from throat to lips",
+          "hi": "पाँच पंक्तियाँ, कण्ठ से होंठ तक"
+        },
+        "columns": [
+          {
+            "en": "Where",
+            "hi": "स्थान"
+          },
+          {
+            "en": "1",
+            "hi": "१"
+          },
+          {
+            "en": "2",
+            "hi": "२"
+          },
+          {
+            "en": "3",
+            "hi": "३"
+          },
+          {
+            "en": "4",
+            "hi": "४"
+          },
+          {
+            "en": "5",
+            "hi": "५"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "throat",
+                "hi": "कण्ठ"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "क",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ख",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ग",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "घ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ङ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "palate",
+                "hi": "तालु"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "च",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "छ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ज",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "झ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ञ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "roof",
+                "hi": "मूर्धा"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ट",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ठ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ड",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ढ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ण",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "teeth",
+                "hi": "दन्त"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "त",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "थ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "द",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ध",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "न",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "lips",
+                "hi": "ओष्ठ"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "प",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "फ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ब",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "भ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "म",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "Twenty-five letters in five rows of five. A row is a {{वर्गः}}: one place, five sounds.",
+          "hi": "पाँच-पाँच की पाँच पंक्तियाँ, कुल पच्चीस अक्षर। हर पंक्ति एक {{वर्गः}} है: एक स्थान, पाँच ध्वनियाँ।"
+        }
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.grid"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mouth_map",
+        "prompt": {
+          "en": "Tap the first letter of each row and see where your mouth makes it.",
+          "hi": "हर पंक्ति के पहले अक्षर को छुइए और देखिए कि मुँह में वह कहाँ बनता है।"
+        },
+        "params": {
+          "letters": [
+            "क",
+            "च",
+            "ट",
+            "त",
+            "प"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.grid"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which letter is made with the lips?",
+          "hi": "कौन-सा अक्षर होंठों से बनता है?"
+        },
+        "explain": {
+          "en": "{{प}} is the first letter of the lip row.",
+          "hi": "{{प}} होंठ वाली पंक्ति का पहला अक्षर है।"
+        },
+        "options": [
+          {
+            "sa": "क",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "प",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "त",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.grid"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each row-leader to its place.",
+          "hi": "हर पंक्ति के पहले अक्षर को उसके स्थान से जोड़िए।"
+        },
+        "explain": {
+          "en": "The rows follow the mouth from the throat to the lips.",
+          "hi": "पंक्तियाँ मुँह के क्रम में चलती हैं, गले से होंठों तक।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "क",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "throat",
+                "hi": "कण्ठ (गला)"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "च",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "palate",
+                "hi": "तालु"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ट",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "roof of the mouth",
+                "hi": "मूर्धा"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "त",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "teeth",
+                "hi": "दन्त (दाँत)"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "प",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "lips",
+                "hi": "ओष्ठ (होंठ)"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.grid"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that begins with a lip letter ({{प}} {{फ}} {{ब}} {{भ}} {{म}}).",
+          "hi": "हर उस शब्द को छुइए जो होंठ के अक्षर ({{प}} {{फ}} {{ब}} {{भ}} {{म}}) से शुरू होता है।"
+        },
+        "params": {
+          "passage": [
+            "पत्रम्",
+            "कमलम्",
+            "फलम्",
+            "चन्द्रः",
+            "बालः",
+            "तारा",
+            "भक्तः",
+            "नदी"
+          ],
+          "targets": [
+            "पत्रम्",
+            "फलम्",
+            "बालः",
+            "भक्तः"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "Mend the door",
+          "hi": "द्वार ठीक कीजिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.grid"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Mend the door: put the five row-leaders in order, from the throat to the lips.",
+          "hi": "द्वार ठीक कीजिए: पाँच पंक्तियों के पहले अक्षर गले से होंठों तक क्रम में लगाइए।"
+        },
+        "explain": {
+          "en": "Throat {{क}}, palate {{च}}, roof {{ट}}, teeth {{त}}, lips {{प}}.",
+          "hi": "कण्ठ {{क}}, तालु {{च}}, मूर्धा {{ट}}, दन्त {{त}}, ओष्ठ {{प}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "क",
+          "च",
+          "ट",
+          "त",
+          "प"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "The five rows light up one after another. A small lavender face peeks out of the carving, then ducks away, smiling.",
+            "hi": "पाँचों पंक्तियाँ एक-एक करके जगमगा उठती हैं। नक्काशी में से एक छोटा बैंगनी चेहरा झाँकता है और मुस्कुराकर फिर छिप जाता है।"
+          },
+          "failure": {
+            "en": "The rows stay dark. The door waits, patient as wood. Go from the throat forward.",
+            "hi": "पंक्तियाँ बुझी रहती हैं। द्वार लकड़ी जैसे धैर्य से प्रतीक्षा करता है। गले से आगे की ओर चलिए।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.cons.grid"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "What do {{क}} {{ख}} {{ग}} {{घ}} {{ङ}} have in common?",
+          "hi": "{{क}} {{ख}} {{ग}} {{घ}} {{ङ}} में क्या समान है?"
+        },
+        "explain": {
+          "en": "A row is one place with five sounds.",
+          "hi": "एक पंक्ति यानी एक स्थान, पाँच ध्वनियाँ।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "They are all made at the throat",
+              "hi": "पाँचों गले (कण्ठ) से बनते हैं"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "They are all made with the lips",
+              "hi": "पाँचों होंठों से बनते हैं"
+            },
+            "correct": false,
+            "why": {
+              "en": "The lips make {{प}} {{फ}} {{ब}} {{भ}} {{म}}.",
+              "hi": "होंठ से {{प}} {{फ}} {{ब}} {{भ}} {{म}} बनते हैं।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "They all have the vowel {{इ}}",
+              "hi": "सब में स्वर {{इ}} है"
+            },
+            "correct": false,
+            "why": {
+              "en": "They carry {{अ}}.",
+              "hi": "इनमें {{अ}} रहता है।"
+            }
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "The row names",
+          "hi": "पंक्तियों के नाम"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "script.cons.grid"
+        ],
+        "sutras": [
+          "1.1.69"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Pāṇini names each row by its first letter plus {{उ}}: {{कु}} is the throat row, {{चु}} the palate row, {{टु}} the roof row, {{तु}} the teeth row, {{पु}} the lip row. By sūtra 1.1.69 a letter with {{उ}} stands for its whole row.",
+          "hi": "पाणिनि हर पंक्ति को उसके पहले अक्षर और {{उ}} से नाम देते हैं: {{कु}} कण्ठ की पंक्ति, {{चु}} तालु की, {{टु}} मूर्धा की, {{तु}} दन्त की, {{पु}} ओष्ठ की। सूत्र 1.1.69 के अनुसार {{उ}} लगा अक्षर अपनी पूरी पंक्ति का बोध कराता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "वर्गः",
+          "meaning": {
+            "en": "a row of five consonants",
+            "hi": "पाँच व्यंजनों की पंक्ति"
+          }
+        }
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The five rows",
+          "hi": "पाँच पंक्तियाँ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "क च ट त प",
+            "text": {
+              "en": "Throat, palate, roof, teeth, lips: five places.",
+              "hi": "कण्ठ, तालु, मूर्धा, दन्त, ओष्ठ: पाँच स्थान।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Each row holds five sounds made at one place.",
+              "hi": "हर पंक्ति में पाँच ध्वनियाँ हैं, एक ही स्थान से।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Twenty-five letters in all.",
+              "hi": "कुल पच्चीस अक्षर।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "cons-grid-s1",
+    "brief": "The sandstone temple's carved wooden door at dusk: five rows of Devanagari-like carved letters across it, a small lavender shadow half hidden in the carving, you seen from behind with Dādī and Śuka on her shoulder.",
+    "alt": {
+      "en": "A carved temple door with five rows of letters and a shy shadow hiding in the carving",
+      "hi": "पाँच पंक्तियों में अक्षर खुदा नक्काशीदार मंदिर द्वार, जिसमें शर्मीली छाया छिपी है"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "chayika"
+    ],
+    "place": "devalaya"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The sandstone temple's carved wooden door at dusk: five rows of Devanagari-like carved letters across it, a small lavender shadow half hidden in the carving, you seen from behind with Dādī and Śuka on her shoulder.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nchayika: A slim lavender-grey shadow spirit with a small gold thread in her hair, half hidden in the carvings, gentle smile.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-0b51ae20-613e-43ac-a58c-5ebe1c981544.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [
+    {
+      "prompt": "Precise educational lettering correction. Image 1 is the painting to preserve. Image 2 is the exact correct glyph ञ rendered in the app's Tiro Devanagari Sanskrit font. Change ONLY the fifth (rightmost) glyph in the second row on the carved door. Its current shape resembles अ and is incorrect. Replace it with the exact outline of ञ from Image 2, as a gold carved letter matching the other letters. Preserve every other glyph exactly: row1 क ख ग घ ङ; row2 च छ ज झ ञ; row3 ट ठ ड ढ ण; row4 त थ द ध न; row5 प फ ब भ म. Preserve the entire painting, people, parrot, ghost, composition, ornament and 4:3 canvas. No added lettering.",
+      "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-a4f51553-12b8-406d-9dc8-c7cbc8cf0c2a.png",
+      "rejection": "Edit introduced an incorrect third-row fifth glyph. Original v2 matches the app-font consonant reference and is selected.",
+      "sha256": "6b54219311f3d8bd0b043fe85d806cea25c4f9826aedf30f9235f71e50ce59e7",
+      "master_retained": false
+    }
+  ],
+  "review_note": "Compared all 25 consonants with the app Tiro font reference. Initial suspicion about ञ was cleared; retain the original v2 painting.",
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "7c675918d4c5dd6740302cfd4e2198b4c4fd99044fd6cac029389268b72c978e",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cons-grid-s1-phone-6a684684.webp",
+      "key": "learn/cons-grid-s1-phone-6a684684.webp",
+      "sha256": "6a684684c29b40a93a0be1af04f3ed4566b2e2c519927ad86a7aa0ebe1f72f44",
+      "bytes": 99952,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/cons-grid-s1-phone-6a684684.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cons-grid-s1-tablet-e07ac075.webp",
+      "key": "learn/cons-grid-s1-tablet-e07ac075.webp",
+      "sha256": "e07ac0752c61ec986b46eeef8c6d1a3fb0903166099d94fafeacb4f8d64ed6a3",
+      "bytes": 383344,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/cons-grid-s1-tablet-e07ac075.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

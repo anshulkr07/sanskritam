@@ -1,0 +1,242 @@
+id: kss.reading
+template: episode
+title:
+  en: Read Naravāhanadatta's naming
+  hi: नरवाहनदत्त का नामकरण पढ़ें
+minutes: 4
+needs: &id001
+- kss.read
+review: scholar_ok
+sources:
+- title: Lesson text and story
+  licence: original
+- title: Somadeva, Kathāsaritsāgara 4.3.64a, 72b–74 (excerpts)
+  url: https://gretil.sub.uni-goettingen.de/gretil/1_sanskr/5_poetry/4_narr/sokss_pu.htm
+  licence: public domain
+  note: Ancient source text, edition Durgaprasad and Parab 1915. GRETIL transcription checked 20 October 2026. Course
+    word splitting, glosses and guide-language translations are original; the passage uses selected lines rather
+    than continuous verses.
+cards:
+- id: r1
+  kind: reading
+  title:
+    en: Read the scene
+    hi: दृश्य पढ़ें
+  passage:
+  - sa: तत्रासूत च सा काले कुमारं कान्तदर्शनम्
+    meaning:
+      en: There, in due time, she bore a son lovely to see. (Somadeva, Kathāsaritsāgara 4.3)
+      hi: वहाँ, समय आने पर, उसने सुन्दर दर्शन वाले पुत्र को जन्म दिया। (सोमदेव, कथासरित्सागर 4.3)
+    words:
+    - sa: तत्र
+      gloss:
+        en: there
+        hi: वहाँ
+    - sa: असूत
+      gloss:
+        en: bore
+        hi: जन्म दिया
+    - sa: च
+      gloss:
+        en: and
+        hi: और
+    - sa: सा
+      gloss:
+        en: she
+        hi: उसने
+    - sa: काले
+      gloss:
+        en: in due time
+        hi: समय पर
+    - sa: कुमारम्
+      gloss:
+        en: a son
+        hi: पुत्र को
+    - sa: कान्तदर्शनम्
+      gloss:
+        en: lovely to see
+        hi: सुन्दर दर्शन वाले
+  - sa: गगनाद् उच्चचारैवं काले तस्मिन् सरस्वती
+    meaning:
+      en: At that time a voice spoke thus from the sky. (Somadeva, Kathāsaritsāgara 4.3)
+      hi: उस समय आकाश से वाणी ने ऐसा कहा। (सोमदेव, कथासरित्सागर 4.3)
+    words:
+    - sa: गगनात्
+      gloss:
+        en: from the sky
+        hi: आकाश से
+    - sa: उच्चचार
+      gloss:
+        en: spoke
+        hi: बोली
+    - sa: एवम्
+      gloss:
+        en: thus
+        hi: ऐसे
+    - sa: काले
+      gloss:
+        en: time
+        hi: समय
+    - sa: तस्मिन्
+      gloss:
+        en: that
+        hi: उस
+    - sa: सरस्वती
+      gloss:
+        en: the voice (Sarasvatī)
+        hi: वाणी (सरस्वती)
+  - sa: कामदेवावतारो ऽयं राजञ् जातस् तवात्मजः
+    meaning:
+      en: “This son born to you, O king, is an incarnation of Kāmadeva.” (Somadeva, Kathāsaritsāgara 4.3)
+      hi: “हे राजन्, तुम्हारा यह उत्पन्न पुत्र कामदेव का अवतार है।” (सोमदेव, कथासरित्सागर 4.3)
+    words:
+    - sa: कामदेवावतारः
+      gloss:
+        en: an incarnation of Kāmadeva
+        hi: कामदेव का अवतार
+    - sa: अयम्
+      gloss:
+        en: this
+        hi: यह
+    - sa: राजन्
+      gloss:
+        en: O king
+        hi: हे राजन्
+    - sa: जातः
+      gloss:
+        en: born
+        hi: उत्पन्न
+    - sa: तव
+      gloss:
+        en: your
+        hi: तुम्हारा
+    - sa: आत्मजः
+      gloss:
+        en: son
+        hi: पुत्र
+- id: p1
+  kind: practice
+  mode: choice
+  skills: *id001
+  prompt:
+    en: Where does the voice announcing the child's identity come from?
+    hi: बालक का परिचय देने वाली वाणी कहाँ से आती है?
+  explain:
+    en: The second sentence identifies the sky as the source of the voice.
+    hi: दूसरे वाक्य में वाणी आकाश से आती है।
+  options:
+  - text:
+      en: From the sky
+      hi: आकाश से
+    correct: true
+  - text:
+      en: From the forest
+      hi: वन से
+    why:
+      en: The second sentence identifies the sky as the source of the voice.
+      hi: दूसरे वाक्य में वाणी आकाश से आती है।
+- id: r2
+  kind: reading
+  title:
+    en: Read on
+    hi: आगे पढ़ें
+  passage:
+  - sa: नरवाहनदत्तं च जानीह्य् एनम् इहाख्यया
+    meaning:
+      en: “And know him here by the name Naravāhanadatta.” (Somadeva, Kathāsaritsāgara 4.3)
+      hi: “और उसे यहाँ नरवाहनदत्त नाम से जानो।” (सोमदेव, कथासरित्सागर 4.3)
+    words:
+    - sa: नरवाहनदत्तम्
+      gloss:
+        en: Naravāhanadatta
+        hi: नरवाहनदत्त को
+    - sa: च
+      gloss:
+        en: and
+        hi: और
+    - sa: जानीहि
+      gloss:
+        en: know
+        hi: जानो
+    - sa: एनम्
+      gloss:
+        en: him
+        hi: उसे
+    - sa: इह
+      gloss:
+        en: here
+        hi: यहाँ
+    - sa: आख्यया
+      gloss:
+        en: by the name
+        hi: नाम से
+  - sa: अनेन भवितव्यं च दिव्यं कल्पम् अतन्द्रिणा सर्वविद्याधरेन्द्राणाम् अचिराच् चक्रवर्तिना
+    meaning:
+      en: “Tireless, he will soon be emperor of all the lords of the Vidyādharas, for a divine aeon.” (Somadeva,
+        Kathāsaritsāgara 4.3)
+      hi: “वह अथक होकर शीघ्र ही सब विद्याधरेन्द्रों का चक्रवर्ती बनेगा, एक दिव्य कल्प तक।” (सोमदेव, कथासरित्सागर
+        4.3)
+    words:
+    - sa: अनेन
+      gloss:
+        en: by him
+        hi: उसके द्वारा
+    - sa: भवितव्यम्
+      gloss:
+        en: it shall be
+        hi: होगा
+    - sa: च
+      gloss:
+        en: and
+        hi: और
+    - sa: दिव्यम्
+      gloss:
+        en: divine
+        hi: दिव्य
+    - sa: कल्पम्
+      gloss:
+        en: for an aeon
+        hi: एक कल्प तक
+    - sa: अतन्द्रिणा
+      gloss:
+        en: by the tireless one
+        hi: अथक के द्वारा
+    - sa: सर्वविद्याधरेन्द्राणाम्
+      gloss:
+        en: of all the lords of the Vidyādharas
+        hi: सब विद्याधरेन्द्रों के
+    - sa: अचिरात्
+      gloss:
+        en: soon
+        hi: शीघ्र
+    - sa: चक्रवर्तिना
+      gloss:
+        en: as emperor
+        hi: चक्रवर्ती के रूप में
+- id: p2
+  kind: practice
+  mode: choice
+  skills: *id001
+  prompt:
+    en: What future is announced for the child?
+    hi: बालक के किस भविष्य की घोषणा होती है?
+  explain:
+    en: The voice gives him the name Naravāhanadatta and foretells his rule over the Vidyādhara lords.
+    hi: वाणी उसका नाम नरवाहनदत्त बताती है और विद्याधरेन्द्रों पर उसके शासन की भविष्यवाणी करती है।
+  options:
+  - text:
+      en: He will be emperor of the Vidyādhara lords.
+      hi: वह विद्याधरेन्द्रों का चक्रवर्ती बनेगा।
+    correct: true
+  - text:
+      en: He will remain unnamed.
+      hi: वह बिना नाम का रहेगा।
+    why:
+      en: The voice gives him the name Naravāhanadatta and foretells his rule over the Vidyādhara lords.
+      hi: वाणी उसका नाम नरवाहनदत्त बताती है और विद्याधरेन्द्रों पर उसके शासन की भविष्यवाणी करती है।
+- id: end
+  kind: summary
+  points:
+  - text:
+      en: You followed a birth, an announcement from the sky, a name and a prophecy in Somadeva's Sanskrit.
+      hi: आपने सोमदेव की संस्कृत में जन्म, आकाशवाणी, नामकरण और भविष्यवाणी पढ़ी।

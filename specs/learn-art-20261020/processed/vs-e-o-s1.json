@@ -1,0 +1,878 @@
+{
+  "id": "vs-e-o-s1",
+  "where": "vs.e-o#s1",
+  "ratio": "4:3",
+  "expected": [
+    "वनेऽस्ति"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The fifth statue holding a carved stone oar upright, a faint wave pattern carved on her base; Śuka tilting his head; Dādī pointing at the small curl on a rubbing of an inscription; morning light.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsvarika: A small spirit of cool grey stone in the shape of a young woman holding a lotus, with a fine crack down one cheek and eyes of pale gold.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nवनेऽस्ति",
+  "source": {
+    "id": "vs.e-o",
+    "template": "scene",
+    "title": {
+      "en": "The special ए and ओ",
+      "hi": "विशेष ए और ओ"
+    },
+    "title_sa": "नाविकः वनेऽस्ति",
+    "minutes": 6,
+    "teaches": [
+      "sandhi.ayadi"
+    ],
+    "needs": [
+      "sandhi.yan"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The fifth statue",
+          "hi": "पाँचवीं प्रतिमा"
+        },
+        "image": {
+          "id": "vs-e-o-s1",
+          "brief": "The fifth statue holding a carved stone oar upright, a faint wave pattern carved on her base; Śuka tilting his head; Dādī pointing at the small curl on a rubbing of an inscription; morning light.",
+          "alt": {
+            "en": "A stone statue holds an oar upright while a parrot tilts his head at an inscription rubbing",
+            "hi": "पतवार थामे पत्थर की प्रतिमा, अभिलेख की छाप देखता तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "svarika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The fifth statue holds an oar. “नाविकः,” she says. “पावकः.” “वनेऽस्ति.” Śuka tilts his head: “नाविकः has a व. And वनेऽस्ति has a little curl, ऽ. Where did a letter go?” “Two things,” says Dādī. “An ऐ or औ before a vowel turns into आय् or आव्. And an ए before अ drops the अ, leaving the little curl behind.”",
+          "hi": "पाँचवीं प्रतिमा के हाथ में पतवार है। “नाविकः,” वह कहती है। “पावकः।” “वनेऽस्ति।” शुक सिर टेढ़ा करता है: “नाविकः में व है। और वनेऽस्ति में एक छोटा मोड़ है, ऽ। कोई अक्षर कहाँ गया?” “दो बातें,” दादी कहती हैं। “स्वर से पहले ऐ या औ आय् या आव् बन जाता है। और अ से पहले ए अपना अ गिरा देता है, और छोटा मोड़ छोड़ जाता है।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "ए, ओ, ऐ, औ before a vowel",
+          "hi": "स्वर से पहले ए, ओ, ऐ, औ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.ayadi"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{औ}} before a vowel becomes {{आव्}}: {{नौ + इकः}} gives {{नाविकः}}. {{ऐ}} becomes {{आय्}} (often written {{आ}} before a vowel: {{तस्मै + इदम्}} gives {{तस्मा इदम्}}). {{ए}} before {{इ}} or {{आ}} drops to {{अ}}: {{हरे + इह}} gives {{हर इह}}. Before {{अ}} it leaves {{ऽ}}: {{वने + अस्ति}} gives {{वनेऽस्ति}}.",
+          "hi": "स्वर से पहले {{औ}} {{आव्}} बन जाता है: {{नौ + इकः}} से {{नाविकः}}। {{ऐ}} {{आय्}} बनता है (स्वर से पहले अक्सर {{आ}} लिखा जाता है: {{तस्मै + इदम्}} से {{तस्मा इदम्}})। {{इ}} या {{आ}} से पहले {{ए}} घटकर {{अ}} हो जाता है: {{हरे + इह}} से {{हर इह}}। {{अ}} से पहले वह {{ऽ}} छोड़ जाता है: {{वने + अस्ति}} से {{वनेऽस्ति}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "ऽ",
+          "meaning": {
+            "en": "the avagraha, a missing अ",
+            "hi": "अवग्रह, लुप्त अ"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "ए, ओ, ऐ, औ and ऽ",
+          "hi": "ए, ओ, ऐ, औ और ऽ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.ayadi"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Before a vowel",
+          "hi": "स्वर से पहले"
+        },
+        "columns": [
+          {
+            "en": "First word",
+            "hi": "पहला शब्द"
+          },
+          {
+            "en": "Second word",
+            "hi": "दूसरा शब्द"
+          },
+          {
+            "en": "Joined",
+            "hi": "जुड़ा हुआ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "नौ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "इकः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नाविकः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "नौ",
+                "second": "इकः",
+                "joined": "नाविकः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "पौ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अकः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पावकः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "पौ",
+                "second": "अकः",
+                "joined": "पावकः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "तस्मै",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "इदम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तस्मा इदम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "तस्मै",
+                "second": "इदम्",
+                "joined": "तस्मा इदम्",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "हरे",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "इह",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "हर इह",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "हरे",
+                "second": "इह",
+                "joined": "हर इह",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "वने",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अस्ति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "वनेऽस्ति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "वने",
+                "second": "अस्ति",
+                "joined": "वनेऽस्ति",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "हरे",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अव",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "हरेऽव",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "हरे",
+                "second": "अव",
+                "joined": "हरेऽव",
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{ऽ}} marks the {{अ}} that has gone.",
+          "hi": "{{ऽ}} उस {{अ}} को चिह्नित करता है जो गया।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.ayadi"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Split the joined word {{नाविकः}}.",
+          "hi": "जुड़े शब्द {{नाविकः}} को तोड़िए।"
+        },
+        "explain": {
+          "en": "{{नौ}} + {{इकः}}.",
+          "hi": "{{नौ}} + {{इकः}}।"
+        },
+        "options": [
+          {
+            "sa": "नो + इकः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "नै + इकः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "नौ + इकः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.ayadi"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{नौ + इकः}} gives…",
+          "hi": "{{नौ + इकः}} से…"
+        },
+        "explain": {
+          "en": "{{औ}} → {{आव्}} before {{इ}}.",
+          "hi": "{{इ}} से पहले {{औ}} → {{आव्}}।"
+        },
+        "options": [
+          {
+            "sa": "नोइकः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "नविकः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "नाविकः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.ayadi"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Join: {{पौ}} + {{अकः}}.",
+          "hi": "जोड़िए: {{पौ}} + {{अकः}}।"
+        },
+        "explain": {
+          "en": "{{पावकः}}: “fire, the purifier”.",
+          "hi": "{{पावकः}}: ‘अग्नि, पवित्र करने वाला’।"
+        },
+        "options": [],
+        "answers": [
+          "पावकः"
+        ],
+        "tiles": [
+          "पा",
+          "वकः",
+          "अकः",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.ayadi"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its parts.",
+          "hi": "हर शब्द को उसके भागों से जोड़िए।"
+        },
+        "explain": {
+          "en": "Before a vowel the long vowel grows a glide.",
+          "hi": "स्वर से पहले दीर्घ स्वर अर्धस्वर उगाता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "नाविकः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "नौ + इकः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पावकः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "पौ + अकः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "वनेऽस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "वने + अस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "हर इह",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "हरे + इह",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.ayadi"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word with a curl {{ऽ}}.",
+          "hi": "{{ऽ}} वाला हर शब्द छुइए।"
+        },
+        "params": {
+          "passage": [
+            "वनेऽस्ति",
+            "वनम्",
+            "हरेऽव",
+            "हरः",
+            "नाविकः",
+            "नावः"
+          ],
+          "targets": [
+            "वनेऽस्ति",
+            "हरेऽव"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.ayadi"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "sandhi_mixer",
+        "prompt": {
+          "en": "Pick a pair and join it: see the word and the rule.",
+          "hi": "एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।"
+        },
+        "params": {
+          "pairs": [
+            {
+              "first": "नौ",
+              "second": "इकः",
+              "joined": "नाविकः",
+              "sutras": [
+                "6.1.78"
+              ]
+            },
+            {
+              "first": "पौ",
+              "second": "अकः",
+              "joined": "पावकः",
+              "sutras": [
+                "6.1.78"
+              ]
+            },
+            {
+              "first": "हरे",
+              "second": "इह",
+              "joined": "हर इह",
+              "sutras": [
+                "6.1.78"
+              ]
+            },
+            {
+              "first": "वने",
+              "second": "अस्ति",
+              "joined": "वनेऽस्ति",
+              "sutras": [
+                "6.1.109"
+              ]
+            }
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The oar",
+          "hi": "पतवार"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.ayadi"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{वने + अस्ति}} gives…",
+          "hi": "{{वने + अस्ति}} से…"
+        },
+        "explain": {
+          "en": "{{ए}} + {{अ}} keeps the {{ए}} and marks the {{अ}} with {{ऽ}}.",
+          "hi": "{{ए}} + {{अ}} में {{ए}} रहता है और {{अ}} को {{ऽ}} चिह्नित करता है।"
+        },
+        "options": [
+          {
+            "sa": "वनेअस्ति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "वनयस्ति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "वनेऽस्ति",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“वनेऽस्ति,” you say, “it is in the forest,” and the oar statue dips her oar. In the stone floor of the hall, where there was only dust, a thin line of water runs across and vanishes in a crack: a river that is not there any more. “नाविकः,” she says gently. “The boatman has gone.” But the small curl on the wall of the hall, the ऽ, is still shining.",
+            "hi": "“वनेऽस्ति,” आप कहते हैं, “वह वन में है,” और पतवार वाली प्रतिमा अपनी पतवार डुबोती है। कक्ष के पत्थर के फ़र्श पर, जहाँ केवल धूल थी, पानी की एक पतली लकीर बहती है और एक दरार में खो जाती है: एक नदी जो अब नहीं है। “नाविकः,” वह कोमलता से कहती है। “नाविक चला गया।” पर कक्ष की दीवार पर वह छोटा मोड़, ऽ, अब भी चमक रहा है।"
+          },
+          "failure": {
+            "en": "The oar stays dry. {{ए}} + {{अ}} = {{एऽ}}: {{वनेऽस्ति}}.",
+            "hi": "पतवार सूखी रहती है। {{ए}} + {{अ}} = {{एऽ}}: {{वनेऽस्ति}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's ay, av",
+          "hi": "पाणिनि के अय्, अव्"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sandhi.ayadi"
+        ],
+        "sutras": [
+          "6.1.78",
+          "6.1.109"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 6.1.78, {{एचोऽयवायावः}}, replaces {{ए}}, {{ओ}}, {{ऐ}}, {{औ}} before a vowel with {{अय्}}, {{अव्}}, {{आय्}}, {{आव्}}. And 6.1.109, {{एङः पदान्तादति}}, says that a word-final {{ए}} or {{ओ}} before {{अ}} keeps itself and the {{अ}} is dropped, marked {{ऽ}}.",
+          "hi": "सूत्र 6.1.78, {{एचोऽयवायावः}}, स्वर से पहले {{ए}}, {{ओ}}, {{ऐ}}, {{औ}} की जगह {{अय्}}, {{अव्}}, {{आय्}}, {{आव्}} करता है। और 6.1.109, {{एङः पदान्तादति}}, कहता है कि पद के अन्त के {{ए}} या {{ओ}} के बाद {{अ}} आए तो {{ए}}/{{ओ}} रहता है और {{अ}} गिरा दिया जाता है, {{ऽ}} से चिह्नित।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Vowels before vowels",
+          "hi": "स्वर से पहले ए, ओ, ऐ, औ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "औ + इ = आवि",
+            "text": {
+              "en": "नौ + इकः = नाविकः.",
+              "hi": "नौ + इकः = नाविकः।"
+            }
+          },
+          {
+            "sa": "ए + अ = एऽ",
+            "text": {
+              "en": "वने + अस्ति = वनेऽस्ति.",
+              "hi": "वने + अस्ति = वनेऽस्ति।"
+            }
+          },
+          {
+            "sa": "ए + इ = अ इ",
+            "text": {
+              "en": "हरे + इह = हर इह.",
+              "hi": "हरे + इह = हर इह।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "vs-e-o-s1",
+    "brief": "The fifth statue holding a carved stone oar upright, a faint wave pattern carved on her base; Śuka tilting his head; Dādī pointing at the small curl on a rubbing of an inscription; morning light.",
+    "alt": {
+      "en": "A stone statue holds an oar upright while a parrot tilts his head at an inscription rubbing",
+      "hi": "पतवार थामे पत्थर की प्रतिमा, अभिलेख की छाप देखता तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "svarika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The fifth statue holding a carved stone oar upright, a faint wave pattern carved on her base; Śuka tilting his head; Dādī pointing at the small curl on a rubbing of an inscription; morning light.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsvarika: A small spirit of cool grey stone in the shape of a young woman holding a lotus, with a fine crack down one cheek and eyes of pale gold.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-8b3a7ba0-b792-48eb-a5d3-60eabb1e8511.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "77f860f6c244c83220b91dbe93099a1a6e7f3e9fd7a030cdb720450e9417f29e",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vs-e-o-s1-phone-a07682aa.webp",
+      "key": "learn/vs-e-o-s1-phone-a07682aa.webp",
+      "sha256": "a07682aa8ce4b5d8a9598e38a9eed7d652f35464a7d97d55d9a3443fd2965b76",
+      "bytes": 111726,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/vs-e-o-s1-phone-a07682aa.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vs-e-o-s1-tablet-a820ff52.webp",
+      "key": "learn/vs-e-o-s1-tablet-a820ff52.webp",
+      "sha256": "a820ff52d5ca1d51e956d4abe84b5f91876acf2858df9056f88c4ca2a348a974",
+      "bytes": 417234,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/vs-e-o-s1-tablet-a820ff52.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

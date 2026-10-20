@@ -9,7 +9,7 @@ teaches:
 - verb.both-padas
 needs:
 - verb.atmane
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -40,6 +40,18 @@ cards:
   narration:
     en: 'Sevaka sits beside the fire and takes out a small pot. He lights a twig and begins to cook, and as he cooks he talks. “पचति,” he murmurs, thinking of the beggars he once cooked for. Then, looking at the pot, and at himself: “पचते.” “He cooks for himself,” says Dādī. “The same root, two sets. The set you choose says who gets the fruit.”'
     hi: 'सेवक अलाव के पास बैठता है और एक छोटी हाँडी निकालता है। वह तिनका जलाता है और पकाने लगता है, और पकाते हुए बोलता जाता है। “पचति,” वह बुदबुदाता है, उन भिखारियों को याद करते जिनके लिए कभी पकाता था। फिर हाँडी को और स्वयं को देखकर: “पचते।” “वह अपने लिए पकाता है,” दादी कहती हैं। “एक ही धातु, दो समूह। जो समूह चुनें, वह बताता है कि फल किसे मिलेगा।”'
+  lines:
+  - speaker: sevaka
+    sa: पचते
+    gloss:
+      en: He cooks for himself.
+      hi: वह अपने लिए पकाता है।
+    check:
+      type: tinanta
+      dhatu: पच्
+      lakara: Lat
+      purusha: Prathama
+      vacana: Eka
 - id: t1
   kind: teach
   title:
@@ -232,7 +244,7 @@ cards:
   - verb.both-padas
   mode: match
   prompt:
-    en: Join each pair.
+    en: Match each pair.
     hi: जोड़ियाँ मिलाइए।
   explain:
     en: Two sets, two shades.

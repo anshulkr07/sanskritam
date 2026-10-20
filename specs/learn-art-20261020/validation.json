@@ -1,0 +1,55 @@
+{
+  "mobile_checks": [
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "chunk_id": "5163a4",
+      "wall_time_seconds": 10.0128031,
+      "original_token_count": 0,
+      "output": "",
+      "exit_code": 0
+    },
+    {
+      "command": "node scripts/check-artwork.cjs",
+      "chunk_id": "1cf6b6",
+      "wall_time_seconds": 1.7959371,
+      "exit_code": 0,
+      "original_token_count": 50,
+      "output": "Artwork PASS: download deduplication, bounded concurrency, partial-file cleanup, restart/eviction fallback, cache cap, private URL exclusion, responsive safe crops and saved preference validation.\n"
+    },
+    {
+      "command": "node scripts/check-story.mjs",
+      "chunk_id": "9ef484",
+      "wall_time_seconds": 1.6467401000000002,
+      "exit_code": 0,
+      "original_token_count": 118,
+      "output": "Story state parity cases passed\nAll fixture inline text parsed without literal braces\n41 fixture practice cards and all seven engine grading kinds passed\nFour widget fixture cases passed\nOffline index/map/next-three cache, ETag, hash cleanup, ordered finish posts, backoff, expiry and concurrent finishes passed\nAll seven real backend-generated engine fixtures grade correctly\nUnit-check label, course-complete state and scan_metre verse layout and submit payload passed\n"
+    },
+    {
+      "command": "node scripts/check-lesson-art.cjs",
+      "chunk_id": "5ca1e8",
+      "wall_time_seconds": 5.9851776,
+      "exit_code": 0,
+      "original_token_count": 42,
+      "output": "Lesson art passed: 20 new scenes, 38 exact mappings, 105 illustrated openings.\nStandalone lesson coverage: 62 illustrated lessons, 36 newly covered by chapter openers.\n"
+    }
+  ],
+  "curriculum_check": {
+    "command": ".venv/Scripts/python.exe -X utf8 -m app.curriculum check --engine",
+    "exit_code": 0,
+    "output": "0 errors, 0 warnings"
+  },
+  "curriculum_tests": {
+    "command": ".venv/Scripts/python.exe -X utf8 -m pytest tests/test_curriculum.py -q",
+    "exit_code": 0,
+    "passed": 19,
+    "note": "Post text-metadata integration; one Starlette deprecation warning."
+  },
+  "public_audit": "audit.json",
+  "source_coverage": "coverage-audit.json",
+  "native_exports": "export-audit.json",
+  "visual_audit": "visual-audit.json",
+  "phone_text_audit": "phone-audit.json",
+  "physical_device_tested": false,
+  "apk_built_or_installed": false,
+  "backend_deployed": false
+}

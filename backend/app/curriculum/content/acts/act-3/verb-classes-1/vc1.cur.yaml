@@ -11,7 +11,7 @@ needs:
 - verb.class-1
 - verb.class-4
 - verb.class-6
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -42,6 +42,19 @@ cards:
   narration:
     en: 'The tenth drawer is empty, and the little ledger-spirit looks at it, ashamed. “कथयति,” the Vetāla says: “he tells.” A tiny, quick hand reaches out of the drawer, takes the pencil from behind the spirit''s ear, and snatches it back inside. “चोरयति,” says the Vetāla, amused. “He steals.” The ledger-spirit squeals. “The tenth class,” says Dādī, “adds -अय-.”'
     hi: 'दसवाँ दराज़ ख़ाली है, और नन्हा बही-भूत उसे लज्जित होकर देखता है। “कथयति,” वेताल कहता है: “वह कहता है।” दराज़ से एक नन्हा तेज़ हाथ निकलता है, भूत के कान के पीछे से पेंसिल उठाता है और भीतर खींच लेता है। “चोरयति,” वेताल मनोरंजन से कहता है। “वह चुराता है।” बही-भूत चीख पड़ता है। “दसवाँ गण,” दादी कहती हैं, “-अय- जोड़ता है।”'
+  lines:
+  - speaker: vetala
+    sa: कथयति
+    gloss:
+      en: He tells.
+      hi: वह बताता है।
+    check:
+      type: tinanta
+      dhatu: कथ्
+      lakara: Lat
+      purusha: Prathama
+      vacana: Eka
+      gana: Curadi
 - id: t1
   kind: teach
   title:
@@ -307,8 +320,8 @@ cards:
   - verb.class-10
   mode: match
   prompt:
-    en: Join each root to its “he” form.
-    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+    en: Match each root with its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से मिलाइए।
   explain:
     en: '{{-अय-}} in each.'
     hi: हर एक में {{-अय-}}।

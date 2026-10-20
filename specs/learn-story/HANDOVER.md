@@ -2,9 +2,11 @@
 
 For the implementing models (Sonnet, Sol, GLM Flash). The design and every
 rule are in [`IMPLEMENTATION.md`](IMPLEMENTATION.md); this file is the work
-list. The backend engine, the checker, the API, the reference unit and the
-app's type contract are done and tested; what is left is the app, more
-content, and the pictures.
+list. The backend engine, checker, API, shared card player and app screens are
+built. The current course has 238 authored lessons, including four optional
+readings, and all picture references are delivered. Native phone/screen-reader
+acceptance and additional optional readings remain open. See also
+`../learn-video-review-20261020/STATUS.md`.
 
 ## Read first (in this order)
 
@@ -77,8 +79,11 @@ PYTHONUTF8=1 ./.venv/Scripts/python.exe -X utf8 -c "import json; from app.curric
 ```
 
 ### A1 · Flag and entry (GLM Flash / Sol)
-- `mobile/src/story/flags.ts`: `STORY_COURSE_DEFAULT = false`; a per-device
-  override in AsyncStorage (`story.flag.v1`), read once at start.
+- `mobile/src/story/flags.ts`: `STORY_COURSE_DEFAULT = true` following the
+  owner's 20 October 2026 approval; a per-device
+  override in AsyncStorage (`story.flag.v1`), read once at start. Preserve
+  explicit saved on/off choices. Content/scholar sign-off is recorded in
+  `owner-approval-20261020.json`; new Sanskrit needs its own review.
 - Settings: a row "Try the new Learn (preview)" that flips the override.
   The app is not public yet, so the row can show for everyone; the owner
   decides when it goes.
@@ -269,25 +274,29 @@ title, start?, end?}`. List the candidates for the owner; the owner picks.
 ### C1 · Requests (GLM Flash)
 Run the `images --missing` command; hand `requests.jsonl` to the owner
 (ChatGPT generation is the owner's tool) with a one-line prompt template per
-row: style + brief + cast looks + place look + "Text, exactly: …" (only when
-`text_in_image` is not empty) + ratio.
+row: style + brief + cast looks + place look + "Text, exactly: …" + ratio.
+Owner update 2026-10-20: audit briefs for useful writing even when an old
+`text_in_image` list is empty; record the intended strings and regenerate
+earlier blank tags, pages, ledgers and inscriptions. See ARTWORK.md.
 
 ### C2 · Verify and deliver (Sonnet)
 `specs/learn-story/images/deliver.py` (model it on
 `specs/isha-art-20261016/publish_isha.py`):
 1. Input: a folder of `<id>.png` from ChatGPT.
-2. Text check for every id with `text_in_image`: OCR the picture (Gemini
-   vision via the owner's existing setup), NFC-compare with the list; write
-   a report; stop on any mismatch (the owner regenerates).
-3. Pictures without text: flag any detected lettering for the owner.
+2. Proofread every intended written form against the NFC source list and
+   inspect the optimized phone image. Independent OCR can assist. Record
+   the actual verification method; correct mismatches before replacement.
+3. Reject invented script, unintended writing and watermarks.
 4. Phone WebP (within 768 × 1536, q80) and tablet WebP (within 1536 × 1536,
    q88), never upscaled; R2 keys `learn/<id>-<sha8>.webp`; immutable cache
    headers; verify both URLs (status, bytes, dimensions, CDN HIT).
 5. Append to `backend/app/curriculum/content/images/deliveries.yaml`
    (`id, phone, tablet, width, height, sha256, text_verified, prompt`).
 6. Delete the originals only after step 4 passes.
-Done when: the 23 pictures of the prologue, bible and Vowels are delivered
-and `check --release` reports only review-status errors.
+The original 23-picture scope was completed and expanded in the 2026-10-20
+follow-up. See `specs/learn-art-20261020/README.md` for all 183 canonical
+picture IDs plus five map fallbacks, exact text reviews and delivery evidence.
+Scholar review remains a separate release requirement.
 
 ---
 

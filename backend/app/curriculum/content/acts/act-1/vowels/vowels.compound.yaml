@@ -5,7 +5,7 @@ title_sa: "सन्ध्यक्षराणि"
 minutes: 6
 teaches: [script.vowel.compound]
 needs: [script.vowel.short, script.vowel.long]
-review: engine_ok
+review: scholar_ok
 sources:
   - title: "Śiva sūtras and Aṣṭādhyāyī sūtra text (vidyut-prakriya data)"
     url: "https://github.com/ambuda-org/vidyut"
@@ -75,7 +75,7 @@ cards:
     mode: match
     skills: [script.vowel.compound]
     roman: after
-    prompt: {en: "Join each joined vowel to how it is made.", hi: "हर संयुक्त स्वर को उसके बनने के ढंग से जोड़िए।"}
+    prompt: {en: "Match each joined vowel with how it is made.", hi: "हर संयुक्त स्वर को उसके बनने के ढंग से मिलाइए।"}
     pairs:
       - left: {sa: "ए"}
         right: {text: {en: "{{अ}} + {{इ}}, pressed into one", hi: "{{अ}} + {{इ}}, एक ध्वनि में"}}

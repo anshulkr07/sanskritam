@@ -22,6 +22,6 @@ def fetch(video):
 if __name__ == "__main__":
     catalog = json.loads((HERE / "candidates.json").read_text(encoding="utf-8"))
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
-        data = dict(pool.map(fetch, sorted({row[1] for row in catalog["candidates"]})))
+        data = dict(pool.map(fetch, sorted({row[1] for row in catalog["candidates"] + catalog.get("previous_candidates", [])})))
     (HERE / "metadata.json").write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"unique_videos": len(data), "metadata_available": sum(v["status"] == "metadata available" for v in data.values()), "unavailable": [k for k, v in data.items() if v["status"] != "metadata available"]}))
+    print(json.dumps({"selected_videos": len({r[1] for r in catalog["candidates"]}), "total_including_prior_alternatives": len(data), "metadata_available": sum(v["status"] == "metadata available" for v in data.values()), "unavailable": [k for k, v in data.items() if v["status"] != "metadata available"]}))

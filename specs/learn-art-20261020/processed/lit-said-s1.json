@@ -1,0 +1,949 @@
+{
+  "id": "lit-said-s1",
+  "where": "lit.said#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The Vetāla seated near a small fire telling a tale with a raised finger; the storybook spirit beating a drum-roll on his spine; Lubdhaka stopping at the edge of the firelight, pulled in by the drum; you, Dādī and Śuka around the fire.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nkathaka: A small spirit shaped like a rolled-up storybook with two stubby legs, a bright storyteller's turban and a pair of drumming fingers.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI. All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "lit.said",
+    "template": "scene",
+    "title": {
+      "en": "उवाच: he said",
+      "hi": "उवाच: उसने कहा"
+    },
+    "title_sa": "उवाच",
+    "minutes": 6,
+    "teaches": [
+      "verb.lit"
+    ],
+    "needs": [
+      "verb.lit"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The word before every speech",
+          "hi": "हर वक्तव्य से पहले का शब्द"
+        },
+        "image": {
+          "id": "lit-said-s1",
+          "brief": "The Vetāla seated near a small fire telling a tale with a raised finger; the storybook spirit beating a drum-roll on his spine; Lubdhaka stopping at the edge of the firelight, pulled in by the drum; you, Dādī and Śuka around the fire.",
+          "alt": {
+            "en": "A grey spirit tells a tale by a fire while a man stops at the edge of the light",
+            "hi": "अलाव के पास कथा सुनाता भूत, रोशनी के किनारे रुका आदमी"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "kathaka",
+            "lubdhaka"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "“Every speech in my tales begins the same way,” says the Vetāla. “उवाच. ‘He said.’” The little storyteller beats a roll on his spine. Lubdhaka, drawn in by the drum, stops at the edge of the firelight. “उवाच कः?” asks the Vetāla pleasantly. “Who said?” Dādī nods at you: “Say it, and speak for the tale.”",
+          "hi": "“मेरी कथाओं में हर वक्तव्य एक ही तरह शुरू होता है,” वेताल कहता है। “उवाच। ‘उसने कहा।’” नन्हा कथावाचक रीढ़ पर ढोल की झड़ी बजाता है। ढोल से खिंचा लुब्धक अलाव की रोशनी के किनारे रुक जाता है। “उवाच कः?” वेताल मीठे स्वर में पूछता है। “किसने कहा?” दादी आपकी ओर सिर हिलाती हैं: “कहिए, और कथा की ओर से बोलिए।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "तच्छ्रुत्वा प्रणतो हृष्टः काणभूतिरुवाच तम्",
+          "gloss": {
+            "en": "Hearing that, bowing, delighted, Kāṇabhūti said to him.",
+            "hi": "यह सुनकर, प्रणाम करके, प्रसन्न काणभूति ने उससे कहा।"
+          },
+          "source": "Kathāsaritsāgara 1.6 (read in the Digital Corpus of Sanskrit)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "उवाच and the others",
+          "hi": "उवाच और अन्य"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lit"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{वच्}} (say) has an irregular story past: {{उवाच}} (he said), {{ऊचतुः}} (the two said), {{ऊचुः}} (they said). {{उवाच}} introduces a speech: {{सः उवाच}}, “he said”. {{जगाद}} (from {{गद्}}) also means “he said”.",
+          "hi": "{{वच्}} (कहना) का कथा-भूतकाल अनियमित है: {{उवाच}} (उसने कहा), {{ऊचतुः}} (दोनों ने कहा), {{ऊचुः}} (उन्होंने कहा)। {{उवाच}} वक्तव्य का आरम्भ करता है: {{सः उवाच}}, ‘उसने कहा’। {{जगाद}} ({{गद्}} से) का भी अर्थ ‘उसने कहा’ है।"
+        },
+        "examples": [
+          {
+            "sa": "काणभूतिः तम् उवाच।",
+            "meaning": {
+              "en": "Kāṇabhūti said to him.",
+              "hi": "काणभूति ने उससे कहा।"
+            },
+            "words": [
+              {
+                "sa": "काणभूतिः",
+                "gloss": {
+                  "en": "Kāṇabhūti",
+                  "hi": "काणभूति"
+                },
+                "check": null
+              },
+              {
+                "sa": "तम्",
+                "gloss": {
+                  "en": "to him",
+                  "hi": "उससे"
+                },
+                "check": null
+              },
+              {
+                "sa": "उवाच",
+                "gloss": {
+                  "en": "said",
+                  "hi": "बोला"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वच्",
+                  "lakara": "Lit",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "ते ऊचुः।",
+            "meaning": {
+              "en": "They said.",
+              "hi": "वे बोले।"
+            },
+            "words": [
+              {
+                "sa": "ते",
+                "gloss": {
+                  "en": "they",
+                  "hi": "वे"
+                },
+                "check": null
+              },
+              {
+                "sa": "ऊचुः",
+                "gloss": {
+                  "en": "said",
+                  "hi": "बोले"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "वच्",
+                  "lakara": "Lit",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "वच्: the story past",
+          "hi": "वच्: कथा का भूतकाल"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lit"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“He said, you said, I said”",
+          "hi": "‘उसने कहा, तुमने कहा, मैंने कहा’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "उवाच",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "वच्",
+                "lakara": "Lit",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ऊचतुः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "वच्",
+                "lakara": "Lit",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ऊचुः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "वच्",
+                "lakara": "Lit",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "उवचिथ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "वच्",
+                "lakara": "Lit",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ऊचथुः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "वच्",
+                "lakara": "Lit",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ऊच",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "वच्",
+                "lakara": "Lit",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "उवाच",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "वच्",
+                "lakara": "Lit",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ऊचिव",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "वच्",
+                "lakara": "Lit",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ऊचिम",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "वच्",
+                "lakara": "Lit",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{उवाच}} is the form to know: the {{व}} of the root joins the doubled {{व}} into {{उ}}.",
+          "hi": "{{उवाच}} जानने योग्य रूप है: धातु का {{व}} और द्वित्व का {{व}} मिलकर {{उ}} बन जाते हैं।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Seen and unseen",
+          "hi": "देखा और अनदेखा"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lit"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Compare: {{अवदत्}} is “he said” for something you know; {{उवाच}} is “he said” as the old teller narrates. In everyday Sanskrit you will find both; the epics prefer {{उवाच}}.",
+          "hi": "तुलना कीजिए: {{अवदत्}} उसके लिए ‘उसने कहा’ है जो आप जानते हैं; {{उवाच}} पुराने कथावाचक का ‘उसने कहा’ है। रोज़ की संस्कृत में दोनों मिलेंगे; महाकाव्य {{उवाच}} पसन्द करते हैं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lit"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He said (in the tale).” Which form?",
+          "hi": "‘उसने कहा (कथा में)।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{उवाच}}: the old tellers' “said”.",
+          "hi": "{{उवाच}}: पुराने कथावाचकों का ‘कहा’।"
+        },
+        "options": [
+          {
+            "sa": "अवदत्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "उवाच",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "वदति",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lit"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “He said.”",
+          "hi": "कहिए: ‘उसने कहा।’"
+        },
+        "explain": {
+          "en": "{{उवाच}}.",
+          "hi": "{{उवाच}}।"
+        },
+        "options": [],
+        "answers": [
+          "उवाच"
+        ],
+        "tiles": [
+          "उ",
+          "वाच",
+          "वद",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lit"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each form to its meaning.",
+          "hi": "हर रूप को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "Four story-past verbs.",
+          "hi": "कथा के भूतकाल की चार क्रियाएँ।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "उवाच",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "he said",
+                "hi": "उसने कहा"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ऊचुः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "they said",
+                "hi": "उन्होंने कहा"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "बभूव",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "he became",
+                "hi": "वह हुआ"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "जगाम",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "he went",
+                "hi": "वह गया"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lit"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that means “said”.",
+          "hi": "‘कहा’ अर्थ वाले हर शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "उवाच",
+            "वदति",
+            "ऊचुः",
+            "अवदत्",
+            "जगाद",
+            "वक्ति"
+          ],
+          "targets": [
+            "उवाच",
+            "ऊचुः",
+            "जगाद"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lit"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “Kāṇabhūti said to him.”",
+          "hi": "कहिए: ‘काणभूति ने उससे कहा।’"
+        },
+        "explain": {
+          "en": "{{काणभूतिः उवाच तम्}}: a line of the real tale.",
+          "hi": "{{काणभूतिः उवाच तम्}}: असली कथा की पंक्ति।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "काणभूतिः",
+          "उवाच",
+          "तम्"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "They said",
+          "hi": "उन्होंने कहा"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lit"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“They said.” Which form?",
+          "hi": "‘उन्होंने कहा।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{ऊचुः}}: they, many.",
+          "hi": "{{ऊचुः}}: वे, अनेक।"
+        },
+        "options": [
+          {
+            "sa": "उवाच",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "ऊचतुः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "ऊचुः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“ऊचुः,” you say, and the fire crackles as if many voices had spoken at once. The storybook spirit unrolls himself, delighted, and his pages are full of speeches, each starting with the same word: उवाच, उवाच, उवाच. “I forgot how to begin,” he says. “You have reminded me.”",
+            "hi": "“ऊचुः,” आप कहते हैं, और अलाव ऐसे चटकता है जैसे कई आवाज़ें एक साथ बोली हों। पोथी-भूत आनन्द से स्वयं को खोल देता है, और उसके पन्ने वक्तव्यों से भरे हैं, हर एक उसी शब्द से शुरू: उवाच, उवाच, उवाच। “मैं शुरू करना भूल गया था,” वह कहता है। “आपने मुझे याद दिला दिया।”"
+          },
+          "failure": {
+            "en": "The fire stays quiet. “They said”: {{ऊचुः}}.",
+            "hi": "अलाव शान्त रहता है। ‘उन्होंने कहा’: {{ऊचुः}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "He said",
+          "hi": "उसने कहा"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "उवाच · ऊचुः",
+            "text": {
+              "en": "He said; they said.",
+              "hi": "उसने कहा; उन्होंने कहा।"
+            }
+          },
+          {
+            "sa": "उवाच",
+            "text": {
+              "en": "Starts a speech in the epics.",
+              "hi": "महाकाव्यों में वक्तव्य शुरू करता है।"
+            }
+          },
+          {
+            "sa": "अवदत्",
+            "text": {
+              "en": "The everyday “said”.",
+              "hi": "रोज़ का ‘कहा’।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "lit-said-s1",
+    "brief": "The Vetāla seated near a small fire telling a tale with a raised finger; the storybook spirit beating a drum-roll on his spine; Lubdhaka stopping at the edge of the firelight, pulled in by the drum; you, Dādī and Śuka around the fire.",
+    "alt": {
+      "en": "A grey spirit tells a tale by a fire while a man stops at the edge of the light",
+      "hi": "अलाव के पास कथा सुनाता भूत, रोशनी के किनारे रुका आदमी"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "kathaka",
+      "lubdhaka"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The Vetāla seated near a small fire telling a tale with a raised finger; the storybook spirit beating a drum-roll on his spine; Lubdhaka stopping at the edge of the firelight, pulled in by the drum; you, Dādī and Śuka around the fire.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nkathaka: A small spirit shaped like a rolled-up storybook with two stubby legs, a bright storyteller's turban and a pair of drumming fingers.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-77c4d392-d923-4a78-8db5-c69b26269204.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "9d6df5e8fcc4b1d9d9c9a540431a882602ac409a89558bc11c3eba2df0b57380",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\lit-said-s1-phone-6771606c.webp",
+      "key": "learn/lit-said-s1-phone-6771606c.webp",
+      "sha256": "6771606c91f0eca5330603de9d572fe739ea5c09ab2126ee688a5863e6a75f32",
+      "bytes": 119978,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/lit-said-s1-phone-6771606c.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\lit-said-s1-tablet-5f385584.webp",
+      "key": "learn/lit-said-s1-tablet-5f385584.webp",
+      "sha256": "5f385584641883d99f0487575b775f0f603ce0ccc7c69e44752d2715700105c1",
+      "bytes": 459440,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/lit-said-s1-tablet-5f385584.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

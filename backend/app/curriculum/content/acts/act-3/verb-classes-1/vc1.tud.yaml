@@ -10,7 +10,7 @@ teaches:
 needs:
 - verb.class-1
 - verb.class-4
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -41,6 +41,19 @@ cards:
   narration:
     en: The sixth drawer holds something sharp. The ledger-spirit opens it with two fingers and lifts out a small silver needle. “तुदति,” says the Vetāla. “He pricks, he strikes.” “It looks just like class 1,” you say. “It does,” Dādī agrees. “But look closely. In class 1, भू became भव. Here the root does not change at all.”
     hi: छठे दराज़ में कुछ तीखा है। बही-भूत उसे दो उँगलियों से खोलता है और एक नन्ही चाँदी की सुई निकालता है। “तुदति,” वेताल कहता है। “वह चुभाता है, मारता है।” “यह तो ठीक गण 1 जैसा लगता है,” आप कहते हैं। “लगता है,” दादी सहमत हैं। “पर ध्यान से देखो। गण 1 में भू का भव हुआ। यहाँ धातु बिल्कुल नहीं बदलती।”
+  lines:
+  - speaker: vetala
+    sa: तुदति
+    gloss:
+      en: He pricks.
+      hi: वह चुभोता है।
+    check:
+      type: tinanta
+      dhatu: तुद्
+      lakara: Lat
+      purusha: Prathama
+      vacana: Eka
+      gana: Tudadi
 - id: t1
   kind: teach
   title:
@@ -277,8 +290,8 @@ cards:
   - verb.class-6
   mode: match
   prompt:
-    en: Join each root to its “he” form.
-    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+    en: Match each root with its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से मिलाइए।
   explain:
     en: Two roots change a little.
     hi: दो धातुएँ थोड़ी बदलती हैं।

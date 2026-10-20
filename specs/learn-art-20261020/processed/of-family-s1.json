@@ -1,0 +1,1217 @@
+{
+  "id": "of-family-s1",
+  "where": "of.family#s1",
+  "ratio": "4:3",
+  "expected": [
+    "पिता",
+    "माता",
+    "भ्राता",
+    "भगिनी",
+    "पुत्रः",
+    "पितामही"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Dādī on the floor mat of the Ācārya's lamplit house drawing a family tree in her cloth-bound notebook with a reed pen, a trunk with many named branches; you leaning over her shoulder; the slim golden spirit's lamp glowing brighter as each name is read; Śuka on the shelf.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nsmritika: A slim warm-gold spirit holding a tiny lamp, her wisps trailing like the fringe of an old shawl.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nपिता\nमाता\nभ्राता\nभगिनी\nपुत्रः\nपितामही\nDraw six clear named branches in the notebook, using the six approved kinship labels exactly once each. All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "of.family",
+    "template": "scene",
+    "title": {
+      "en": "The family tree",
+      "hi": "वंशवृक्ष"
+    },
+    "title_sa": "सम्बन्धिनः",
+    "minutes": 6,
+    "teaches": [
+      "case.gen-family"
+    ],
+    "needs": [
+      "case.gen"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Dādī draws a tree",
+          "hi": "दादी वृक्ष बनाती हैं"
+        },
+        "image": {
+          "id": "of-family-s1",
+          "brief": "Dādī on the floor mat of the Ācārya's lamplit house drawing a family tree in her cloth-bound notebook with a reed pen, a trunk with many named branches; you leaning over her shoulder; the slim golden spirit's lamp glowing brighter as each name is read; Śuka on the shelf.",
+          "alt": {
+            "en": "A grandmother draws a family tree in her notebook while a golden spirit's lamp brightens",
+            "hi": "कॉपी में वंशवृक्ष बनाती दादी और उज्ज्वल होता भूत का दीपक"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "acarya",
+            "smritika"
+          ],
+          "place": "pathashala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "That evening Dādī takes out her cloth-bound notebook and draws a tree for you: a trunk and many branches, each with a name. “Mother. Father. Brother. Sister. Grandmother. Whose are they? Yours.” The golden spirit Smṛtikā watches, and each name she reads makes her lamp burn a little brighter.",
+          "hi": "उस शाम दादी अपनी कपड़े में बँधी कॉपी निकालती हैं और आपके लिए एक वृक्ष बनाती हैं: एक तना और कई शाखाएँ, हर एक पर एक नाम। “माता। पिता। भाई। बहन। दादी। ये किसके हैं? तुम्हारे।” सुनहरी स्मृतिका देखती है, और हर नाम पढ़ने पर उसका दीपक कुछ और उज्ज्वल हो उठता है।"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "My, your, his, her",
+          "hi": "मेरा, तेरा, उसका"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.gen-family"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "The sixth case of the pronouns says “my”, “your”, “his”, “her”: {{मम}} (my), {{तव}} (your), {{तस्य}} (his), {{तस्याः}} (her), {{अस्माकम्}} (our), {{युष्माकम्}} (your, many).",
+          "hi": "सर्वनामों की षष्ठी ‘मेरा’, ‘तेरा’, ‘उसका’ बताती है: {{मम}} (मेरा), {{तव}} (तेरा), {{तस्य}} (उसका), {{तस्याः}} (उसकी), {{अस्माकम्}} (हमारा), {{युष्माकम्}} (तुम सबका)।"
+        },
+        "examples": [],
+        "rows": [
+          {
+            "sa": "मम",
+            "gloss": {
+              "en": "my, of me",
+              "hi": "मेरा"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "अस्मद्",
+              "linga": "Pum",
+              "vibhakti": "Sasthi",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "तव",
+            "gloss": {
+              "en": "your, of you",
+              "hi": "तेरा"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "युष्मद्",
+              "linga": "Pum",
+              "vibhakti": "Sasthi",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "तस्य",
+            "gloss": {
+              "en": "his, of him",
+              "hi": "उसका"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "तद्",
+              "linga": "Pum",
+              "vibhakti": "Sasthi",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "तस्याः",
+            "gloss": {
+              "en": "her, of her",
+              "hi": "उसकी"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "तद्",
+              "linga": "Stri",
+              "vibhakti": "Sasthi",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "अस्माकम्",
+            "gloss": {
+              "en": "our, of us",
+              "hi": "हमारा"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "अस्मद्",
+              "linga": "Pum",
+              "vibhakti": "Sasthi",
+              "vacana": "Bahu",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "युष्माकम्",
+            "gloss": {
+              "en": "your, of you all",
+              "hi": "तुम सबका"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "युष्मद्",
+              "linga": "Pum",
+              "vibhakti": "Sasthi",
+              "vacana": "Bahu",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "The family",
+          "hi": "परिवार"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.gen-family"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Family words, first and sixth case",
+          "hi": "परिवार के शब्द, प्रथमा और षष्ठी"
+        },
+        "columns": [
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          },
+          {
+            "en": "1st: who",
+            "hi": "प्रथमा: कौन"
+          },
+          {
+            "en": "6th: of",
+            "hi": "षष्ठी: का"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "father",
+                "hi": "पिता"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पिता",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "पितृ",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पितुः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "पितृ",
+                "linga": "Pum",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "mother",
+                "hi": "माता"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "माता",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "मातृ",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "मातुः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "मातृ",
+                "linga": "Stri",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "brother",
+                "hi": "भाई"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "भ्राता",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "भ्रातृ",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "भ्रातुः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "भ्रातृ",
+                "linga": "Pum",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "sister",
+                "hi": "बहन"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "भगिनी",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "भगिनी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "भगिन्याः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "भगिनी",
+                "linga": "Stri",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "son",
+                "hi": "पुत्र"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पुत्रः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "पुत्र",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पुत्रस्य",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "पुत्र",
+                "linga": "Pum",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "grandmother",
+                "hi": "दादी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पितामही",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "पितामही",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पितामह्याः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "पितामही",
+                "linga": "Stri",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Words in -ऋ make the sixth case in {{उः}}: {{पितुः}}, {{मातुः}}, {{भ्रातुः}}.",
+          "hi": "-ऋ वाले शब्द षष्ठी में {{उः}} लेते हैं: {{पितुः}}, {{मातुः}}, {{भ्रातुः}}।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Reading the tree",
+          "hi": "वृक्ष पढ़ना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.gen-family"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Link names with the sixth case. {{मम माता}} (my mother), {{पितुः माता}} (father's mother) is {{पितामही}} (grandmother). {{मातुः पिता}} is {{मातामहः}} (mother's father).",
+          "hi": "नामों को षष्ठी से जोड़िए। {{मम माता}} (मेरी माता), {{पितुः माता}} (पिता की माता) यानी {{पितामही}} (दादी)। {{मातुः पिता}} यानी {{मातामहः}} (नाना)।"
+        },
+        "examples": [
+          {
+            "sa": "मम माता।",
+            "meaning": {
+              "en": "my mother",
+              "hi": "मेरी माता"
+            },
+            "words": [
+              {
+                "sa": "मम",
+                "gloss": {
+                  "en": "my",
+                  "hi": "मेरी"
+                },
+                "check": null
+              },
+              {
+                "sa": "माता",
+                "gloss": {
+                  "en": "mother",
+                  "hi": "माता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "मातृ",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "पितुः माता।",
+            "meaning": {
+              "en": "the father's mother: grandmother",
+              "hi": "पिता की माता: दादी"
+            },
+            "words": [
+              {
+                "sa": "पितुः",
+                "gloss": {
+                  "en": "of the father",
+                  "hi": "पिता की"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पितृ",
+                  "linga": "Pum",
+                  "vibhakti": "Sasthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "माता",
+                "gloss": {
+                  "en": "mother",
+                  "hi": "माता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "मातृ",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "मातुः पिता।",
+            "meaning": {
+              "en": "the mother's father: maternal grandfather",
+              "hi": "माता के पिता: नाना"
+            },
+            "words": [
+              {
+                "sa": "मातुः",
+                "gloss": {
+                  "en": "of the mother",
+                  "hi": "माता का"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "मातृ",
+                  "linga": "Stri",
+                  "vibhakti": "Sasthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पिता",
+                "gloss": {
+                  "en": "father",
+                  "hi": "पिता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पितृ",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.gen-family"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“My mother.” Which phrase?",
+          "hi": "‘मेरी माता।’ कौन-सा वाक्यांश?"
+        },
+        "explain": {
+          "en": "{{मम}}: of me, my.",
+          "hi": "{{मम}}: मेरा।"
+        },
+        "options": [
+          {
+            "sa": "अहं माता",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "मम माता",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "माम् माता",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.gen-family"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its meaning.",
+          "hi": "हर शब्द को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "The words in -ऋ have {{आ}} in the first case.",
+          "hi": "-ऋ वाले शब्दों की प्रथमा में {{आ}} होता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "पिता",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "father",
+                "hi": "पिता"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "माता",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "mother",
+                "hi": "माता"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "भ्राता",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "brother",
+                "hi": "भाई"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "भगिनी",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "sister",
+                "hi": "बहन"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.gen-family"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that says “my”, “your” or “his”.",
+          "hi": "‘मेरा’, ‘तेरा’ या ‘उसका’ वाले हर शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "मम",
+            "अहम्",
+            "तव",
+            "त्वम्",
+            "तस्य",
+            "सः"
+          ],
+          "targets": [
+            "मम",
+            "तव",
+            "तस्य"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "The family link",
+          "hi": "परिवार की कड़ी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.gen-family"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “My grandmother is the teacher's pupil.”",
+          "hi": "कहिए: ‘मेरी दादी आचार्य की शिष्या हैं।’"
+        },
+        "explain": {
+          "en": "{{मम पितामही आचार्यस्य शिष्या}}: two sixth-case words, no verb needed.",
+          "hi": "{{मम पितामही आचार्यस्य शिष्या}}: दो षष्ठी शब्द, क्रिया की ज़रूरत नहीं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "मम",
+          "पितामही",
+          "आचार्यस्य",
+          "शिष्या"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“मम पितामही आचार्यस्य शिष्या,” you say, and the old Ācārya laughs aloud. “So she is.” Dādī tears up a little. Smṛtikā's lamp burns so bright that every name on the tree shows through the page.",
+            "hi": "“मम पितामही आचार्यस्य शिष्या,” आप कहते हैं, और बूढ़े आचार्य खुलकर हँस पड़ते हैं। “हाँ, वे हैं।” दादी की आँखें भर आती हैं। स्मृतिका का दीपक इतना उज्ज्वल जलता है कि वृक्ष का हर नाम पन्ने के आर-पार दिखता है।"
+          },
+          "failure": {
+            "en": "The tree stays dim. “My” is {{मम}}; then the person; then the teacher's pupil.",
+            "hi": "वृक्ष धुँधला रहता है। ‘मेरी’ है {{मम}}; फिर व्यक्ति; फिर आचार्य की शिष्या।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The family",
+          "hi": "परिवार"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "मम · तव · तस्य · तस्याः",
+            "text": {
+              "en": "My, your, his, her.",
+              "hi": "मेरा, तेरा, उसका, उसकी।"
+            }
+          },
+          {
+            "sa": "पितुः · मातुः · भ्रातुः",
+            "text": {
+              "en": "Of the father, mother, brother.",
+              "hi": "पिता, माता, भाई का।"
+            }
+          },
+          {
+            "sa": "पितुः माता",
+            "text": {
+              "en": "Link names with the sixth case.",
+              "hi": "नामों को षष्ठी से जोड़िए।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "of-family-s1",
+    "brief": "Dādī on the floor mat of the Ācārya's lamplit house drawing a family tree in her cloth-bound notebook with a reed pen, a trunk with many named branches; you leaning over her shoulder; the slim golden spirit's lamp glowing brighter as each name is read; Śuka on the shelf.",
+    "alt": {
+      "en": "A grandmother draws a family tree in her notebook while a golden spirit's lamp brightens",
+      "hi": "कॉपी में वंशवृक्ष बनाती दादी और उज्ज्वल होता भूत का दीपक"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "acarya",
+      "smritika"
+    ],
+    "place": "pathashala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Dādī on the floor mat of the Ācārya's lamplit house drawing a family tree in her cloth-bound notebook with a reed pen, a trunk with many named branches; you leaning over her shoulder; the slim golden spirit's lamp glowing brighter as each name is read; Śuka on the shelf.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nsmritika: A slim warm-gold spirit holding a tiny lamp, her wisps trailing like the fringe of an old shawl.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-8bd8d87a-944d-4566-bf76-ef9aa7d96150.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "5c2a9176f57ca13fe51a2879e6a99ae2770b5ff5b0b3d5050f2ed39e92348f10",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\of-family-s1-phone-1350127f.webp",
+      "key": "learn/of-family-s1-phone-1350127f.webp",
+      "sha256": "1350127f9ea8e31d55843e442539b5483d3553d2bed78472df2b111c684d8e77",
+      "bytes": 101662,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/of-family-s1-phone-1350127f.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\of-family-s1-tablet-c461863c.webp",
+      "key": "learn/of-family-s1-tablet-c461863c.webp",
+      "sha256": "c461863ca624147182c97de64f4c5c6a0c2c3c9b9ed934a46101413e62e704d1",
+      "bytes": 358992,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/of-family-s1-tablet-c461863c.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

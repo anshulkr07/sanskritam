@@ -1,0 +1,1109 @@
+{
+  "id": "object-what-s1",
+  "where": "object.what#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A riverside market under striped awnings: baskets of fruit, heaps of red and yellow spice, swinging brass scales; a small saffron-yellow spirit darting between stalls pointing at things, a round cheerful spice seller watching him, you, Dādī and Śuka among the shoppers.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nharidraka: A small round saffron-yellow spirit dusted with spice powder, a tiny brass scale hanging from one wisp.\nvanik: A round, cheerful man in a mustard-yellow shawl with a thick moustache, brass scales hanging from his stall, heaps of spices in front of him.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "source": {
+    "id": "object.what",
+    "template": "scene",
+    "title": {
+      "en": "What is eaten, read, seen",
+      "hi": "क्या खाया, पढ़ा, देखा जाता है"
+    },
+    "title_sa": "कर्म",
+    "minutes": 6,
+    "teaches": [
+      "case.acc"
+    ],
+    "needs": [
+      "sent.nom-sg",
+      "gen.three"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The market",
+          "hi": "बाज़ार"
+        },
+        "image": {
+          "id": "object-what-s1",
+          "brief": "A riverside market under striped awnings: baskets of fruit, heaps of red and yellow spice, swinging brass scales; a small saffron-yellow spirit darting between stalls pointing at things, a round cheerful spice seller watching him, you, Dādī and Śuka among the shoppers.",
+          "alt": {
+            "en": "A busy market with a small yellow spirit pointing at everything",
+            "hi": "व्यस्त बाज़ार, हर चीज़ की ओर इशारा करता नन्हा पीला भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "haridraka",
+            "vanik"
+          ],
+          "place": "apana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The fair ends in a market under striped awnings. Baskets of fruit, heaps of red and yellow spice, brass scales swinging. A small saffron-yellow spirit darts from stall to stall, pointing at things, wanting them, unable to say what. A round, cheerful spice seller watches him with narrowed eyes. “Everybody wants something,” says Dādī. “Say what, and you have a sentence.”",
+          "hi": "मेला एक बाज़ार में ख़त्म होता है, धारीदार शामियानों के नीचे। फलों की टोकरियाँ, लाल-पीले मसालों के ढेर, झूलती पीतल की तराज़ू। एक नन्हा केसरिया-पीला भूत दुकान-दुकान भागता है, चीज़ों की ओर इशारा करता है, उन्हें चाहता है, पर कह नहीं पाता कि क्या। एक गोल-मटोल हँसमुख मसाले वाला उसे आँखें सिकोड़कर देखता है। दादी कहती हैं, “हर किसी को कुछ चाहिए। बता दो क्या, तो वाक्य बन गया।”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "आपणे फलानि सन्ति।",
+            "gloss": {
+              "en": "There are fruits in the market.",
+              "hi": "बाज़ार में फल हैं।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The thing acted on",
+          "hi": "जिस पर क्रिया होती है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.acc"
+        ],
+        "sutras": [
+          "2.3.2",
+          "1.4.49"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "What the doer most wants to reach, what is eaten, read, seen, takes the second case, {{द्वितीया}}. It is the object, {{कर्म}}. {{रामः फलं खादति}}: Rāma eats a fruit. {{फलम्}} is the object.",
+          "hi": "कर्ता जिसे सबसे अधिक पाना चाहता है, जो खाया, पढ़ा, देखा जाता है, वह द्वितीया विभक्ति में आता है। वह कर्म है। {{रामः फलं खादति}}: राम फल खाता है। {{फलम्}} कर्म है।"
+        },
+        "examples": [
+          {
+            "sa": "रामः फलम् खादति।",
+            "meaning": {
+              "en": "Rāma eats a fruit.",
+              "hi": "राम फल खाता है।"
+            },
+            "words": [
+              {
+                "sa": "रामः",
+                "gloss": {
+                  "en": "Rāma",
+                  "hi": "राम"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "राम",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "फलम्",
+                "gloss": {
+                  "en": "fruit (object)",
+                  "hi": "फल (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "फल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "खादति",
+                "gloss": {
+                  "en": "eats",
+                  "hi": "खाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "खाद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "बालकः पुस्तकम् पठति।",
+            "meaning": {
+              "en": "The boy reads a book.",
+              "hi": "बालक पुस्तक पढ़ता है।"
+            },
+            "words": [
+              {
+                "sa": "बालकः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पुस्तकम्",
+                "gloss": {
+                  "en": "book (object)",
+                  "hi": "पुस्तक (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पुस्तक",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठति",
+                "gloss": {
+                  "en": "reads",
+                  "hi": "पढ़ता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "सीता नदीम् पश्यति।",
+            "meaning": {
+              "en": "Sītā sees the river.",
+              "hi": "सीता नदी देखती है।"
+            },
+            "words": [
+              {
+                "sa": "सीता",
+                "gloss": {
+                  "en": "Sītā",
+                  "hi": "सीता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "सीता",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "नदीम्",
+                "gloss": {
+                  "en": "river (object)",
+                  "hi": "नदी (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नदी",
+                  "linga": "Stri",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पश्यति",
+                "gloss": {
+                  "en": "sees",
+                  "hi": "देखती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दृश्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "कर्म",
+          "meaning": {
+            "en": "the object: what the doer reaches",
+            "hi": "कर्म: जिसे कर्ता पाता है"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "First case and second case",
+          "hi": "प्रथमा और द्वितीया"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.acc"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The doer and the object, side by side",
+          "hi": "कर्ता और कर्म साथ-साथ"
+        },
+        "columns": [
+          {
+            "en": "Word",
+            "hi": "शब्द"
+          },
+          {
+            "en": "Doer (1st)",
+            "hi": "कर्ता (प्रथमा)"
+          },
+          {
+            "en": "Object (2nd)",
+            "hi": "कर्म (द्वितीया)"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "boy",
+                "hi": "बालक"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "बालकः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालक",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "बालकम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "बालक",
+                "linga": "Pum",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "girl",
+                "hi": "बालिका"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "बालिका",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालिका",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "बालिकाम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "बालिका",
+                "linga": "Stri",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "fruit",
+                "hi": "फल"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "फलम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "river",
+                "hi": "नदी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नदी",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नदीम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Singular object: {{अम्}} for most words, {{आम्}} after -{{आ}}, {{ईम्}} after -{{ई}}. A neuter word looks the same in the first and second case.",
+          "hi": "एकवचन कर्म: अधिकांश शब्दों में {{अम्}}, -{{आ}} के बाद {{आम्}}, -{{ई}} के बाद {{ईम्}}। नपुंसक शब्द प्रथमा और द्वितीया में एक-सा दिखता है।"
+        }
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.acc"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "role_arrows",
+        "prompt": {
+          "en": "Draw an arrow from each word to the action and name its job.",
+          "hi": "हर शब्द से क्रिया तक तीर खींचिए और उसका काम बताइए।"
+        },
+        "params": {
+          "sentence": [
+            {
+              "sa": "रामः",
+              "gloss": {
+                "en": "Rāma",
+                "hi": "राम"
+              },
+              "check": {
+                "type": "subanta",
+                "stem": "राम",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka"
+              },
+              "role": "karta"
+            },
+            {
+              "sa": "फलम्",
+              "gloss": {
+                "en": "fruit",
+                "hi": "फल"
+              },
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka"
+              },
+              "role": "karma"
+            },
+            {
+              "sa": "खादति",
+              "gloss": {
+                "en": "eats",
+                "hi": "खाता है"
+              },
+              "check": {
+                "type": "tinanta",
+                "dhatu": "खाद्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "vacana": "Eka"
+              },
+              "role": "kriya"
+            }
+          ],
+          "meaning": {
+            "en": "Rāma eats a fruit.",
+            "hi": "राम फल खाता है।"
+          }
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.acc"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{बालकः पुस्तकं पठति}}: which word is the object?",
+          "hi": "{{बालकः पुस्तकं पठति}}: कर्म कौन-सा शब्द है?"
+        },
+        "explain": {
+          "en": "{{पुस्तकम्}}: second case, what is read.",
+          "hi": "{{पुस्तकम्}}: द्वितीया, जो पढ़ा जाता है।"
+        },
+        "options": [
+          {
+            "sa": "बालकः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पुस्तकम्",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "पठति",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.acc"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each object to its stem.",
+          "hi": "हर कर्म को उसके मूल रूप से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{अम्}}, {{आम्}}, {{ईम्}}: the singular object endings.",
+          "hi": "{{अम्}}, {{आम्}}, {{ईम्}}: एकवचन कर्म के प्रत्यय।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "बालकम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "बालक",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "बालिकाम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "बालिका",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "नदीम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "नदी",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "फलम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "फल",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.acc"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Reorder the words and keep the meaning.",
+          "hi": "शब्दों को फिर से लगाइए, अर्थ वही रखिए।"
+        },
+        "explain": {
+          "en": "Word order is free; the endings carry the roles.",
+          "hi": "शब्द-क्रम स्वतन्त्र है; भूमिकाएँ प्रत्ययों में हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "reorder",
+          "params": {
+            "sentence": "बालकः फलं खादति"
+          },
+          "seed": 0
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Name the wanted thing",
+          "hi": "चाही हुई वस्तु का नाम लीजिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.acc"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "The spirit points at a fruit. Say: “I see a fruit.”",
+          "hi": "भूत एक फल की ओर इशारा करता है। कहिए: ‘मैं फल देखता हूँ।’"
+        },
+        "explain": {
+          "en": "{{अहं फलं पश्यामि}}: I see a fruit.",
+          "hi": "{{अहं फलं पश्यामि}}: मैं फल देखता हूँ।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "अहम्",
+          "फलम्",
+          "पश्यामि"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“फलम्!” the little spirit gasps, and for the first time he knows the word for the thing he wants. He pats the fruit and then himself, delighted.",
+            "hi": "“फलम्!” नन्हा भूत हाँफता है, और पहली बार उसे अपनी चाही हुई वस्तु का शब्द पता है। वह फल को थपथपाता है, फिर ख़ुद को, ख़ुशी से।"
+          },
+          "failure": {
+            "en": "He keeps pointing. Say what you see: the object comes before the verb.",
+            "hi": "वह इशारा करता रहता है। बताइए आप क्या देखते हैं: कर्म क्रिया से पहले आता है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's object",
+          "hi": "पाणिनि का कर्म"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "case.acc"
+        ],
+        "sutras": [
+          "1.4.49",
+          "2.3.2"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 1.4.49, {{कर्तुरीप्सिततमं कर्म}}, calls the object “what the doer most wishes to reach”. Sūtra 2.3.2, {{कर्मणि द्वितीया}}, puts it in the second case.",
+          "hi": "सूत्र 1.4.49, {{कर्तुरीप्सिततमं कर्म}}, कर्म को ‘वह जिसे कर्ता सबसे अधिक पाना चाहे’ कहता है। सूत्र 2.3.2, {{कर्मणि द्वितीया}}, उसे द्वितीया में रखता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The object",
+          "hi": "कर्म"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "फलम् · बालकम् · नदीम्",
+            "text": {
+              "en": "The second case: what is acted on.",
+              "hi": "द्वितीया: जिस पर क्रिया हो।"
+            }
+          },
+          {
+            "sa": "रामः फलं खादति",
+            "text": {
+              "en": "Doer, object, verb.",
+              "hi": "कर्ता, कर्म, क्रिया।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Neuter: the same as the first case.",
+              "hi": "नपुंसक: प्रथमा जैसा ही।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "object-what-s1",
+    "brief": "A riverside market under striped awnings: baskets of fruit, heaps of red and yellow spice, swinging brass scales; a small saffron-yellow spirit darting between stalls pointing at things, a round cheerful spice seller watching him, you, Dādī and Śuka among the shoppers.",
+    "alt": {
+      "en": "A busy market with a small yellow spirit pointing at everything",
+      "hi": "व्यस्त बाज़ार, हर चीज़ की ओर इशारा करता नन्हा पीला भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "haridraka",
+      "vanik"
+    ],
+    "place": "apana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A riverside market under striped awnings: baskets of fruit, heaps of red and yellow spice, swinging brass scales; a small saffron-yellow spirit darting between stalls pointing at things, a round cheerful spice seller watching him, you, Dādī and Śuka among the shoppers.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nharidraka: A small round saffron-yellow spirit dusted with spice powder, a tiny brass scale hanging from one wisp.\nvanik: A round, cheerful man in a mustard-yellow shawl with a thick moustache, brass scales hanging from his stall, heaps of spices in front of him.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-b879a766-2e59-4a16-8a77-a57372c61316.png",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "b8724c6170c5fd14d77d76218f2bb4f3185ada89d8e00467a44452a4f0433409",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\object-what-s1-phone-2dbeed7a.webp",
+      "key": "learn/object-what-s1-phone-2dbeed7a.webp",
+      "sha256": "2dbeed7a2030818814a8af79dba60f71fc3edb7831568b4839a256e9521a3474",
+      "bytes": 124460,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/object-what-s1-phone-2dbeed7a.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\object-what-s1-tablet-2ea34289.webp",
+      "key": "learn/object-what-s1-tablet-2ea34289.webp",
+      "sha256": "2ea342899c0e5f11673636ef9b7c7bf9787b16e788351b4069e9c7acd4bb8f9a",
+      "bytes": 442050,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/object-what-s1-tablet-2ea34289.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

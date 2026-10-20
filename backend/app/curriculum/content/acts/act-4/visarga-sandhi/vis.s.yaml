@@ -9,7 +9,7 @@ teaches:
 - sandhi.visarga-s
 needs:
 - sandhi.visarga-o
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,9 +37,21 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: vis-s-s1
+    text_in_image: ["रामश्च", "रामस्तत्र", "रामष्टीकते"]
   narration:
     en: 'The eighth statue hisses faintly. “रामश्च,” she says: “and Rāma.” “रामस्तत्र”: “Rāma is there.” “Where did the visarga go?” asks Śuka. “It turned into a hiss,” says Dādī. “Before च it becomes श्. Before त it becomes स्. Before ट it becomes ष्. The breath takes on the place of the sound that follows.”'
     hi: 'आठवीं प्रतिमा हल्की फुफकारती है। “रामश्च,” वह कहती है: “और राम।” “रामस्तत्र”: “राम वहाँ है।” “विसर्ग कहाँ गया?” शुक पूछता है। “वह फुफकार बन गया,” दादी कहती हैं। “च से पहले वह श् बनता है। त से पहले स्। ट से पहले ष्। श्वास अपने बाद आने वाली ध्वनि के स्थान को अपना लेता है।”'
+  lines:
+  - speaker: visargika
+    sa: रामश्च
+    gloss:
+      en: And Rāma.
+      hi: और राम।
+    check:
+      type: sandhi
+      first: रामः
+      second: च
+      joined: रामश्च
 - id: t1
   kind: teach
   title:
@@ -217,8 +229,8 @@ cards:
   - sandhi.visarga-s
   mode: match
   prompt:
-    en: Join each word to its parts.
-    hi: हर शब्द को उसके भागों से जोड़िए।
+    en: Match each word with its parts.
+    hi: हर शब्द को उसके भागों से मिलाइए।
   explain:
     en: The breath follows its neighbour.
     hi: श्वास अपने पड़ोसी का अनुसरण करता है।

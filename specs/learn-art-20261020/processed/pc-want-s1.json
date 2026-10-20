@@ -1,0 +1,886 @@
+{
+  "id": "pc-want-s1",
+  "where": "pc.want#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The twelfth tiny hand of the rose-mist spirit holding out a small clay cup, empty and very still; Śuka tilting his head; Dādī nodding; the Vetāla watching with half-closed eyes.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\npreraka: A small round spirit of warm rose-coloured mist with a dozen tiny hands like a starfish, each hand pushing, pointing or passing something.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI. All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "pc.want",
+    "template": "scene",
+    "title": {
+      "en": "Wants to drink",
+      "hi": "पीना चाहता है"
+    },
+    "title_sa": "पिपासति पिपठिषति",
+    "minutes": 6,
+    "teaches": [
+      "verb.desiderative"
+    ],
+    "needs": [
+      "verb.passive",
+      "verb.causative"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The last hand",
+          "hi": "अन्तिम हाथ"
+        },
+        "image": {
+          "id": "pc-want-s1",
+          "brief": "The twelfth tiny hand of the rose-mist spirit holding out a small clay cup, empty and very still; Śuka tilting his head; Dādī nodding; the Vetāla watching with half-closed eyes.",
+          "alt": {
+            "en": "A tiny hand holds out an empty clay cup very still while a parrot tilts his head",
+            "hi": "नन्हा हाथ ख़ाली मिट्टी का प्याला स्थिर बढ़ाए, सिर टेढ़ा करता तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "preraka"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The twelfth hand has a clay cup, and it is empty. It holds it out, very still. “पिपासति,” says the Vetāla. “He wants to drink.” “It is not drinking,” Śuka says. “It is wanting to.” Dādī nods: “That is the third form: neither ‘he does’, nor ‘he is made to’, but ‘he wants to’. The root doubles, and an स comes after it.”",
+          "hi": "बारहवें हाथ में मिट्टी का प्याला है, और वह ख़ाली है। वह उसे बहुत स्थिर पकड़े हुए बढ़ाता है। “पिपासति,” वेताल कहता है। “वह पीना चाहता है।” “यह पी नहीं रहा,” शुक कहता है। “यह चाह रहा है।” दादी सिर हिलाती हैं: “यह तीसरा रूप है: न ‘वह करता है’, न ‘उससे करवाया जाता है’, बल्कि ‘वह करना चाहता है’। धातु दुगुनी होती है, और उसके बाद एक स आता है।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Wanting to",
+          "hi": "चाहना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.desiderative"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "The desiderative doubles the root and adds {{-स-}} (with {{-इ-}} before it for many roots): {{पा}} gives {{पिपासति}} (wants to drink), {{पठ्}} gives {{पिपठिषति}} (wants to read), {{गम्}} gives {{जिगमिषति}} (wants to go), {{भू}} gives {{बुभूषति}} (wants to be). It is called {{सन्}}.",
+          "hi": "इच्छार्थक रूप धातु को दुगुना करता है और {{-स-}} जोड़ता है (अनेक धातुओं में उससे पहले {{-इ-}}): {{पा}} से {{पिपासति}} (पीना चाहता है), {{पठ्}} से {{पिपठिषति}} (पढ़ना चाहता है), {{गम्}} से {{जिगमिषति}} (जाना चाहता है), {{भू}} से {{बुभूषति}} (होना चाहता है)। इसे {{सन्}} कहते हैं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "सन्नन्तम्",
+          "meaning": {
+            "en": "the desiderative stem",
+            "hi": "इच्छार्थक अंग"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Wanting to",
+          "hi": "चाहना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.desiderative"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Root, desiderative and meaning",
+          "hi": "धातु, इच्छार्थक और अर्थ"
+        },
+        "columns": [
+          {
+            "en": "Root",
+            "hi": "धातु"
+          },
+          {
+            "en": "Wants to",
+            "hi": "चाहता है"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "पा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पिपासति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पा",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": [
+                  "San"
+                ],
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "wants to drink",
+                "hi": "पीना चाहता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "पठ्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पिपठिषति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": [
+                  "San"
+                ],
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "wants to read",
+                "hi": "पढ़ना चाहता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "गम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "जिगमिषति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": [
+                  "San"
+                ],
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "wants to go",
+                "hi": "जाना चाहता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "भू",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "बुभूषति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": [
+                  "San"
+                ],
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "wants to be",
+                "hi": "होना चाहता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "भुज्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "बुभुक्षति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "भुज्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": [
+                  "San"
+                ],
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "wants to eat",
+                "hi": "खाना चाहता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "ज्ञा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "जिज्ञासते",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "ज्ञा",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": [
+                  "San"
+                ],
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "wants to know",
+                "hi": "जानना चाहता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "श्रु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "शुश्रूषते",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "श्रु",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": [
+                  "San"
+                ],
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "wants to hear, serves",
+                "hi": "सुनना चाहता है, सेवा करता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "From these come nouns: {{पिपासा}} (thirst), {{बुभुक्षा}} (hunger), {{जिज्ञासा}} (curiosity), {{शुश्रूषा}} (service).",
+          "hi": "इनसे संज्ञाएँ बनती हैं: {{पिपासा}} (प्यास), {{बुभुक्षा}} (भूख), {{जिज्ञासा}} (जिज्ञासा), {{शुश्रूषा}} (सेवा)।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.desiderative"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He wants to drink.” Which form?",
+          "hi": "‘वह पीना चाहता है।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{पिपासति}}: {{पा}} doubled + {{-स-}}.",
+          "hi": "{{पिपासति}}: {{पा}} दुगुना + {{-स-}}।"
+        },
+        "options": [
+          {
+            "sa": "पिबति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पीयते",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पिपासति",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.desiderative"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “He wants to go.”",
+          "hi": "कहिए: ‘वह जाना चाहता है।’"
+        },
+        "explain": {
+          "en": "{{जिगमिषति}}.",
+          "hi": "{{जिगमिषति}}।"
+        },
+        "options": [],
+        "answers": [
+          "जिगमिषति"
+        ],
+        "tiles": [
+          "जि",
+          "गमि",
+          "षति",
+          "गम"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.desiderative"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each root to its “wants to” form.",
+          "hi": "हर धातु को उसके ‘चाहता है’ रूप से जोड़िए।"
+        },
+        "explain": {
+          "en": "The root is doubled and {{-स-}} follows.",
+          "hi": "धातु दुगुनी और उसके बाद {{-स-}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "पा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "पिपासति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "भू",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "बुभूषति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "भुज्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "बुभुक्षति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ज्ञा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "जिज्ञासते",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.desiderative"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every “wants to” verb.",
+          "hi": "हर ‘चाहता है’ क्रिया छुइए।"
+        },
+        "params": {
+          "passage": [
+            "पिपासति",
+            "पिबति",
+            "बुभूषति",
+            "भवति",
+            "जिगमिषति",
+            "गच्छति"
+          ],
+          "targets": [
+            "पिपासति",
+            "बुभूषति",
+            "जिगमिषति"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.desiderative"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “The boy wants to read.”",
+          "hi": "कहिए: ‘बालक पढ़ना चाहता है।’"
+        },
+        "explain": {
+          "en": "{{बालकः पिपठिषति}}.",
+          "hi": "{{बालकः पिपठिषति}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "बालकः",
+          "पिपठिषति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "Wanting to know",
+          "hi": "जानना चाहता है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.desiderative"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He wants to know.” Which form?",
+          "hi": "‘वह जानना चाहता है।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{जिज्ञासते}}: {{ज्ञा}} + {{सन्}}.",
+          "hi": "{{जिज्ञासते}}: {{ज्ञा}} + {{सन्}}।"
+        },
+        "options": [
+          {
+            "sa": "जानाति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "ज्ञायते",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "जिज्ञासते",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“जिज्ञासते,” you say, and the twelfth hand, the one with the cup, trembles. Water wells up in the cup, slowly, from nowhere, and spills a single drop that glows. “It wanted,” the pusher says, in a small voice, “and wanting was enough.” He drinks. The Vetāla puts both hands over his mouth to hide a smile.",
+            "hi": "“जिज्ञासते,” आप कहते हैं, और बारहवाँ हाथ, जिसमें प्याला है, काँपता है। प्याले में पानी धीरे-धीरे कहीं से भर आता है और एक बूँद छलकती है जो चमकती है। “उसने चाहा,” प्रेरक छोटी आवाज़ में कहता है, “और चाहना ही काफ़ी था।” वह पी लेता है। वेताल अपने दोनों हाथ मुँह पर रखकर मुस्कान छिपाता है।"
+          },
+          "failure": {
+            "en": "The cup stays dry. “He wants to know”: {{जिज्ञासते}}.",
+            "hi": "प्याला सूखा रहता है। ‘वह जानना चाहता है’: {{जिज्ञासते}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's wanting",
+          "hi": "पाणिनि की इच्छा"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "verb.desiderative"
+        ],
+        "sutras": [
+          "3.1.7",
+          "6.1.9",
+          "7.4.58",
+          "7.2.35"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 3.1.7, {{धातोः कर्मणः समानकर्तृकादिच्छायां वा}}, gives {{सन्}} to a root when the same person wants to do the action. 6.1.9, {{सन्यङोः}}, orders the doubling, and 7.4.58, {{अत्र लोपोऽभ्यासस्य}}, shortens the first half. 7.2.35 adds the {{इ}}: {{पिपठिषति}}.",
+          "hi": "सूत्र 3.1.7, {{धातोः कर्मणः समानकर्तृकादिच्छायां वा}}, धातु को {{सन्}} देता है जब वही व्यक्ति काम करना चाहे। 6.1.9, {{सन्यङोः}}, द्वित्व का आदेश देता है, और 7.4.58, {{अत्र लोपोऽभ्यासस्य}}, पहले भाग को छोटा करता है। 7.2.35 {{इ}} जोड़ता है: {{पिपठिषति}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Wanting to",
+          "hi": "चाहना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "पिपासति · पिपठिषति",
+            "text": {
+              "en": "Wants to drink; wants to read.",
+              "hi": "पीना चाहता है; पढ़ना चाहता है।"
+            }
+          },
+          {
+            "sa": "बुभूषति · जिगमिषति",
+            "text": {
+              "en": "Wants to be; wants to go.",
+              "hi": "होना चाहता है; जाना चाहता है।"
+            }
+          },
+          {
+            "sa": "पिपासा · जिज्ञासा",
+            "text": {
+              "en": "Thirst; curiosity.",
+              "hi": "प्यास; जिज्ञासा।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "pc-want-s1",
+    "brief": "The twelfth tiny hand of the rose-mist spirit holding out a small clay cup, empty and very still; Śuka tilting his head; Dādī nodding; the Vetāla watching with half-closed eyes.",
+    "alt": {
+      "en": "A tiny hand holds out an empty clay cup very still while a parrot tilts his head",
+      "hi": "नन्हा हाथ ख़ाली मिट्टी का प्याला स्थिर बढ़ाए, सिर टेढ़ा करता तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "preraka"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The twelfth tiny hand of the rose-mist spirit holding out a small clay cup, empty and very still; Śuka tilting his head; Dādī nodding; the Vetāla watching with half-closed eyes.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\npreraka: A small round spirit of warm rose-coloured mist with a dozen tiny hands like a starfish, each hand pushing, pointing or passing something.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-2b22a977-cb2b-4795-b0fe-47ff4cb68571.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "66d0c96a91f7a61798fc60545a5595060bd083fc8e9458383ca59b0ebd2b9dcc",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\pc-want-s1-phone-cfe5566b.webp",
+      "key": "learn/pc-want-s1-phone-cfe5566b.webp",
+      "sha256": "cfe5566b07f1d888d0cf529e0b0fccd9ca4f71cdcab50a0fc8c857ea2f594680",
+      "bytes": 117534,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/pc-want-s1-phone-cfe5566b.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\pc-want-s1-tablet-0b008ce8.webp",
+      "key": "learn/pc-want-s1-tablet-0b008ce8.webp",
+      "sha256": "0b008ce8b685fef41694eea0795cc88b8a37295f37327684c7ad3c51f8225d8f",
+      "bytes": 439474,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/pc-want-s1-tablet-0b008ce8.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

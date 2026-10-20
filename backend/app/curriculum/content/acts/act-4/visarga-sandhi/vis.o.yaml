@@ -9,7 +9,7 @@ teaches:
 - sandhi.visarga-o
 needs:
 - sandhi.blocked
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -225,8 +225,8 @@ cards:
   - sandhi.visarga-o
   mode: match
   prompt:
-    en: Join each word to its parts.
-    hi: हर शब्द को उसके भागों से जोड़िए।
+    en: Match each word with its parts.
+    hi: हर शब्द को उसके भागों से मिलाइए।
   explain:
     en: '{{-अः}} becomes {{-ओ}}.'
     hi: '{{-अः}} बनता है {{-ओ}}।'

@@ -9,7 +9,7 @@ teaches:
 - script.reph
 needs:
 - script.conjunct
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -33,6 +33,7 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: joined-ra-s1
+    text_in_image: ["धर्मः", "प्रियः", "क्रमः"]
   narration:
     en: 'The sleeping spirit mumbles in his dream: “र… र…”. On the pillar the letter {{र}} wears many costumes: a curl on top, a hook below, even a new shape. Śuka tries to read them aloud and gets his tongue in a knot.'
     hi: 'सोया हुआ भूत सपने में बड़बड़ाता है: “र… र…”। स्तम्भ पर {{र}} कई रूप धरता है: ऊपर एक मोड़, नीचे एक काँटा, कभी बिलकुल नया आकार। शुक उन्हें ज़ोर से पढ़ने की कोशिश करता है और जीभ उलझा बैठता है।'
@@ -141,8 +142,8 @@ cards:
   - script.reph
   mode: match
   prompt:
-    en: Join each shape to where the {{र}} sits.
-    hi: हर आकार को उस स्थान से जोड़िए जहाँ {{र}} बैठा है।
+    en: Match each shape with where the {{र}} sits.
+    hi: हर आकार को उस स्थान से मिलाइए जहाँ {{र}} बैठा है।
   explain:
     en: In {{र्म}} the {{र}} comes first and curls on top; in {{प्र}} it comes second and hangs below.
     hi: '{{र्म}} में {{र}} पहले है और ऊपर मुड़ता है; {{प्र}} में दूसरा है और नीचे लटकता है।'

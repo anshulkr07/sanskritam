@@ -5,7 +5,7 @@ title_sa: "दीर्घाः स्वराः"
 minutes: 6
 teaches: [script.vowel.long]
 needs: [script.vowel.short]
-review: engine_ok
+review: scholar_ok
 sources:
   - title: "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)"
     url: "https://github.com/ambuda-org/vidyut"
@@ -18,6 +18,7 @@ cards:
     title: {en: "Śuka stretches everything", hi: "शुक सब कुछ खींच देता है"}
     image:
       id: vowels-long-shuka
+      text_in_image: ["अ इ उ", "ऋ ऌ", "ए ओ", "ऐ औ"]
       brief: "Early morning in the temple library: Śuka the parrot at an open window with the sunrise behind him, beak wide open mid-squawk, wings half spread; Dādī at the reading desk lowering her round spectacles with one eyebrow raised, amused; Dhūmaka giggling as a little puff of smoke beside the glowing leaf."
       alt: {en: "A parrot squawking at a sunrise window while a grandmother raises an eyebrow and a small ghost giggles", hi: "सूर्योदय की खिड़की पर चिल्लाता तोता, भौंहें उठाती दादी और खिलखिलाता नन्हा भूत"}
       ratio: "4:3"
@@ -123,7 +124,7 @@ cards:
     mode: match
     skills: [script.vowel.long]
     roman: after
-    prompt: {en: "Join each short vowel to its long twin.", hi: "हर ह्रस्व स्वर को उसके दीर्घ जुड़वाँ से जोड़िए।"}
+    prompt: {en: "Match each short vowel with its long twin.", hi: "हर ह्रस्व स्वर को उसके दीर्घ जुड़वाँ से मिलाइए।"}
     pairs:
       - left: {sa: "अ"}
         right: {sa: "आ"}

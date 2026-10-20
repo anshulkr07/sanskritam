@@ -78,6 +78,29 @@ export async function preloadClip(url?: string): Promise<void> {
   return loading;
 }
 
+/**
+ * Keep exactly these clips buffered: load the ones missing, release the rest.
+ * A lesson passes the clips of the card on screen and the three cards each way
+ * (story/audioWindow.ts), so a swipe never waits on the network.
+ */
+export async function holdClips(urls: string[]): Promise<void> {
+  const { BASE_URL } = await import("../config");
+  const wanted = urls.filter(url => url?.trim()).map(url => (url.startsWith("http") ? url : `${BASE_URL}${url}`));
+  const keep = new Set(wanted);
+  for (const src of [...preloadedClips.keys()]) {
+    if (keep.has(src)) continue;
+    preloadedClips.delete(src);
+    void Promise.resolve().then(() => clearPreloadedSource(src)).catch(() => {});
+  }
+  for (const src of wanted) {
+    if (preloadedClips.has(src)) continue;
+    const loading = Promise.resolve().then(() => preload(src)).catch(() => {
+      if (preloadedClips.get(src) === loading) preloadedClips.delete(src);
+    });
+    preloadedClips.set(src, loading);
+  }
+}
+
 export async function setPlaybackMode(): Promise<void> {
   if (IS_WEB) return;
   try {

@@ -9,7 +9,7 @@ teaches:
 - sandhi.padaccheda
 needs:
 - sandhi.split
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -34,6 +34,7 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: split-line-s1
+    text_in_image: ["काव्यशास्त्रविनोदेन कालो गच्छति धीमताम्"]
   narration:
     en: 'The fourteenth statue holds a whole line, carved across her base. “Not one word,” she says. “A line. A real one, from the old tales.” Lubdhaka''s foreman steps back. “That is a sentence,” he says, and nobody laughs, because he is right: it is joined all the way along. Dādī takes the chisel. “Word by word. That is called padaccheda.”'
     hi: 'चौदहवीं प्रतिमा के आसन पर आर-पार एक पूरी पंक्ति खुदी है। “एक शब्द नहीं,” वह कहती है। “एक पंक्ति। पुरानी कथाओं से, असली।” लुब्धक का मुखिया पीछे हटता है। “यह तो पूरा वाक्य है,” वह कहता है, और कोई नहीं हँसता, क्योंकि वह ठीक कहता है: वह पूरी लम्बाई में जुड़ा है। दादी छेनी लेती हैं। “शब्द-शब्द। इसे पदच्छेद कहते हैं।”'
@@ -71,6 +72,7 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: split-line-r1
+    text_in_image: ["काव्यशास्त्रविनोदेन", "कालः गच्छति धीमताम्", "तदा राजा साश्चर्यो बभूव"]
   passage:
   - sa: काव्यशास्त्रविनोदेन कालो गच्छति धीमताम्
     meaning:
@@ -186,8 +188,8 @@ cards:
   - sandhi.padaccheda
   mode: match
   prompt:
-    en: Join each joined word to its split.
-    hi: हर जुड़े शब्द को उसके विच्छेद से जोड़िए।
+    en: Match each joined word with its split.
+    hi: हर जुड़े शब्द को उसके विच्छेद से मिलाइए।
   explain:
     en: Three of these are breath joins.
     hi: इनमें से तीन श्वास की सन्धियाँ हैं।

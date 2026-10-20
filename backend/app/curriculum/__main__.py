@@ -30,11 +30,29 @@ def _check(args) -> int:
         from .engine import run as engine_run
 
         issues += engine_run(data)
+    if args.release:
+        issues += _audio_gaps(data)
     for i in issues:
         print(i)
     bad = errors(issues)
     print(f"\n{len(bad)} errors, {len(issues) - len(bad)} warnings")
     return 1 if bad else 0
+
+
+def _audio_gaps(data) -> list:
+    """Release warnings: letters and dialogue lines with no recorded clip (the sounds the course leans on)."""
+    from . import audio
+    from .loader import Issue
+    from .pack import build
+
+    items = audio.collect(build(data).lessons)
+    out = []
+    for tier in ("letter", "dialogue"):
+        gaps = [it for it in items if it["tier"] == tier and audio.clip_key(it["text"]) not in data.audio]
+        if gaps:
+            sample = ", ".join(it["text"] for it in gaps[:5])
+            out.append(Issue("warning", "audio/deliveries.json", f"{len(gaps)} {tier} string(s) have no recorded clip (e.g. {sample}); run scripts.render_story_audio"))
+    return out
 
 
 def _stats(_args) -> int:
@@ -110,6 +128,29 @@ def _images(args) -> int:
     return 0
 
 
+def _audio(args) -> int:
+    """Which Sanskrit strings have a recorded clip, by tier. ``--missing`` lists the rest."""
+    from . import audio
+    from .pack import build
+
+    data = load()
+    pk = build(data)
+    items = audio.collect(pk.lessons)
+    done = {it["text"] for it in items if audio.clip_key(it["text"]) in data.audio}
+    live = {audio.clip_key(it["text"]) for it in items}
+    stale = [k for k in data.audio if k not in live]
+    print(f"{len(done)} of {len(items)} strings with a speaker have a clip ({len(data.audio)} clips listed, {len(stale)} no longer used by any lesson)")
+    for tier in audio.TIERS:
+        mine = [it for it in items if it["tier"] == tier]
+        have = sum(1 for it in mine if it["text"] in done)
+        print(f"  {tier:9} {have:5} / {len(mine)}")
+    if args.missing:
+        for it in items:
+            if it["text"] not in done:
+                print(json.dumps({"tier": it["tier"], "text": it["text"], "first": it["first"]}, ensure_ascii=False))
+    return 0
+
+
 def _schema(args) -> int:
     from .schema import WIDGET_PARAMS, Act, Course, ImageDelivery
 
@@ -141,10 +182,12 @@ def main(argv: list[str] | None = None) -> int:
     i = sub.add_parser("images")
     i.add_argument("--out")
     i.add_argument("--missing", action="store_true", help="only pictures not delivered yet")
+    a = sub.add_parser("audio")
+    a.add_argument("--missing", action="store_true", help="list the strings without a clip")
     s = sub.add_parser("schema")
     s.add_argument("--out")
     args = p.parse_args(argv)
-    return {"check": _check, "stats": _stats, "images": _images, "schema": _schema}[args.cmd](args)
+    return {"check": _check, "stats": _stats, "images": _images, "audio": _audio, "schema": _schema}[args.cmd](args)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,665 @@
+{
+  "id": "pg-it-s1",
+  "where": "pg.it#s1",
+  "ratio": "4:3",
+  "expected": [
+    "तिप्"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A dark second alcove with a round stone seal cut with a single word and small marks; Dādī pointing at the word; the quarter-visible silver spirit leaning forward; Śuka on her shoulder; Lubdhaka behind with a hand resting on the seal, face calm and unreadable.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\npadika: A small spirit of pale silver light of whom only one quarter is visible, like a crescent, the rest a faint outline in the dark beside the last, glowing alcove.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nतिप्",
+  "source": {
+    "id": "pg.it",
+    "template": "scene",
+    "title": {
+      "en": "Letters that vanish",
+      "hi": "लुप्त होने वाले अक्षर"
+    },
+    "title_sa": "इत्",
+    "minutes": 6,
+    "teaches": [
+      "panini.it"
+    ],
+    "needs": [
+      "panini.shiva-sutras"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The seal",
+          "hi": "मुहर"
+        },
+        "image": {
+          "id": "pg-it-s1",
+          "brief": "A dark second alcove with a round stone seal cut with a single word and small marks; Dādī pointing at the word; the quarter-visible silver spirit leaning forward; Śuka on her shoulder; Lubdhaka behind with a hand resting on the seal, face calm and unreadable.",
+          "alt": {
+            "en": "A round seal with a word and small marks, a spirit leaning forward, a man's hand on the seal",
+            "hi": "शब्द और छोटे चिह्नों वाली गोल मुहर, आगे झुकती भूत, मुहर पर टिका एक हाथ"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "padika"
+          ],
+          "place": "guha"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The second alcove is dark, and its seal is cut with the word लँट्, the present tense. Dādī points. “Look at the marks: a nasal sign on the vowel, a ट् at the end. In Pāṇini's rules they are tools: they tell a rule what to do, then vanish.” Padikā leans forward. “And what is left?” Behind you, Lubdhaka has put a hand on the seal.",
+          "hi": "दूसरा आला अँधेरा है, और उसकी मुहर पर शब्द लँट् खुदा है, वर्तमान काल का नाम। दादी इशारा करती हैं। “चिह्नों को देखिए। स्वर पर अनुनासिक चिह्न; अन्त में ट्। पाणिनि के सूत्रों में वे औज़ार हैं: वे सूत्र को बताते हैं कि क्या करना है, और फिर लुप्त हो जाते हैं।” पदिका आगे झुकती है। “और बचता क्या है?” आपके पीछे लुब्धक ने मुहर पर हाथ रख दिया है।"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "उपदेशे ऽजनुनासिक इत् हलन्त्यम् तस्य लोपः",
+          "gloss": {
+            "en": "In the original teaching, a nasalised vowel is a marker; so is a final consonant; and the marker is dropped.",
+            "hi": "मूल उपदेश में अनुनासिक स्वर इत् है; अन्तिम व्यञ्जन भी; और इत् का लोप होता है।"
+          },
+          "source": "Aṣṭādhyāyī 1.3.2, 1.3.3 and 1.3.9 (sūtra text from vidyut-prakriya data)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Markers",
+          "hi": "इत् संकेत"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.it"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A marker ({{इत्}}) is a sound that tells a rule what to do and then goes. 1.3.2: a nasalised vowel in the original teaching is one. 1.3.3: so is a last consonant. 1.3.9 drops it ({{लोपः}}). So {{तिप्}} becomes {{ति}}, and {{लँट्}} becomes {{ल्}}.",
+          "hi": "इत् वह ध्वनि है जो सूत्र को बताती है कि क्या करना है, और फिर चली जाती है। 1.3.2: मूल उपदेश में अनुनासिक स्वर इत् है। 1.3.3: अन्तिम व्यञ्जन भी। 1.3.9 उसे हटाता है ({{लोपः}})। इसलिए {{तिप्}} से {{ति}} और {{लँट्}} से {{ल्}} बनता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "इत्",
+          "meaning": {
+            "en": "a marker sound that is later dropped",
+            "hi": "संकेत-ध्वनि जो बाद में हटा दी जाती है"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Markers at work",
+          "hi": "संकेत काम करते हुए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.it"
+        ],
+        "sutras": [
+          "1.3.2",
+          "1.3.3",
+          "1.3.8",
+          "1.3.9"
+        ],
+        "kind": "table",
+        "caption": {
+          "en": "Four endings from the build of भवति and रामः",
+          "hi": "भवति और रामः के निर्माण के चार प्रत्यय"
+        },
+        "columns": [
+          {
+            "en": "As taught",
+            "hi": "जैसा सिखाया"
+          },
+          {
+            "en": "Marker",
+            "hi": "इत्"
+          },
+          {
+            "en": "What remains",
+            "hi": "जो बचा"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "लँट्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ँ ट्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ल्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "तिप्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "प्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "शप्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "श् प्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "सुँ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ँ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "स्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "1.3.2 and 1.3.3 name the markers; 1.3.8 names the {{श्}} of {{शप्}}; 1.3.9 drops them.",
+          "hi": "1.3.2 और 1.3.3 संकेत बताते हैं; 1.3.8 {{शप्}} का {{श्}} बताता है; 1.3.9 उन्हें हटाता है।"
+        }
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.it"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap the two markers in {{शप्}}.",
+          "hi": "{{शप्}} के दोनों संकेत छुइए।"
+        },
+        "params": {
+          "passage": [
+            "श्",
+            "अ",
+            "प्"
+          ],
+          "targets": [
+            "श्",
+            "प्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.it"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "derivation_stepper",
+        "prompt": {
+          "en": "Build the word one rule at a time.",
+          "hi": "शब्द को एक-एक नियम से बनाइए।"
+        },
+        "params": {
+          "target": "रामः",
+          "spec": {
+            "type": "subanta",
+            "stem": "राम",
+            "linga": "Pum",
+            "vibhakti": "Prathama",
+            "vacana": "Eka"
+          }
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.it"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which sūtra drops a marker?",
+          "hi": "कौन-सा सूत्र संकेत को हटाता है?"
+        },
+        "explain": {
+          "en": "1.3.9, {{तस्य लोपः}}: “its dropping”.",
+          "hi": "1.3.9, {{तस्य लोपः}}: ‘उसका लोप’।"
+        },
+        "options": [
+          {
+            "sa": "हलन्त्यम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "उपदेशेऽजनुनासिक इत्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "तस्य लोपः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.it"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "In {{तिप्}}, which letter is the marker?",
+          "hi": "{{तिप्}} में संकेत कौन-सा अक्षर है?"
+        },
+        "explain": {
+          "en": "A last consonant is a marker (1.3.3 {{हलन्त्यम्}}).",
+          "hi": "अन्तिम व्यञ्जन इत् है (1.3.3 {{हलन्त्यम्}})।"
+        },
+        "options": [
+          {
+            "sa": "त्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "इ",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "प्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.it"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each ending, as taught, to what remains.",
+          "hi": "हर प्रत्यय को, जैसा सिखाया, उसके शेष से जोड़िए।"
+        },
+        "explain": {
+          "en": "Markers go; the rest stays.",
+          "hi": "संकेत जाते हैं; बाकी रहता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "लँट्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "ल्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "तिप्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "शप्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "अ",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "सुँ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "स्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "The seal",
+          "hi": "मुहर"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.it"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "What remains of {{शप्}} when its markers have gone?",
+          "hi": "{{शप्}} के संकेत चले जाने पर क्या बचता है?"
+        },
+        "explain": {
+          "en": "{{श्}} (1.3.8) and {{प्}} (1.3.3) go: {{अ}} stays.",
+          "hi": "{{श्}} (1.3.8) और {{प्}} (1.3.3) जाते हैं: {{अ}} रहता है।"
+        },
+        "options": [
+          {
+            "sa": "श्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अ",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "प्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“अ,” you say. “What is left of शप् is only अ.” The seal on the second alcove goes clear, as if a mist had cleared from a window, and Lubdhaka's hand, which had been resting on it, finds nothing under it and falls to his side. Padikā is now three quarters. She turns to him, not unkindly. “You laid your hand on the marker,” she says. “The marker was never the thing.”",
+            "hi": "“अ,” आप कहते हैं। “शप् का जो बचता है, वह केवल अ है।” दूसरे आले की मुहर साफ़ हो जाती है, जैसे खिड़की से धुँध हट गई हो, और लुब्धक का हाथ, जो उस पर टिका था, उसके नीचे कुछ नहीं पाता और बगल में गिर जाता है। पदिका अब तीन चौथाई है। वह उसकी ओर मुड़ती है, कठोरता से नहीं। “आपने संकेत पर हाथ रखा,” वह कहती है। “संकेत कभी असली वस्तु नहीं था।”"
+          },
+          "failure": {
+            "en": "The seal stays shut. Both markers go; {{अ}} stays.",
+            "hi": "मुहर बन्द रहती है। दोनों संकेत जाते हैं; {{अ}} रहता है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "More markers",
+          "hi": "और संकेत"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "panini.it"
+        ],
+        "sutras": [
+          "1.3.6",
+          "1.3.7",
+          "1.3.8"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Other sūtras name markers at the start of a suffix: 1.3.6 {{षः प्रत्ययस्य}}, an initial {{ष्}}; 1.3.7 {{चुटू}}, an initial palatal or retroflex stop; 1.3.8 {{लशक्वतद्धिते}}, an initial {{ल्}}, {{श्}} or velar of a suffix that is not a taddhita.",
+          "hi": "अन्य सूत्र प्रत्यय के आरम्भ के संकेत बताते हैं: 1.3.6 {{षः प्रत्ययस्य}}, आदि का {{ष्}}; 1.3.7 {{चुटू}}, आदि का तालव्य या मूर्धन्य स्पर्श; 1.3.8 {{लशक्वतद्धिते}}, तद्धित से भिन्न प्रत्यय के आदि का {{ल्}}, {{श्}} या कवर्ग।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Letters that vanish",
+          "hi": "लुप्त होने वाले अक्षर"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "इत्",
+            "text": {
+              "en": "A marker: it does its job and goes.",
+              "hi": "संकेत: अपना काम करके चला जाता है।"
+            }
+          },
+          {
+            "sa": "तस्य लोपः",
+            "text": {
+              "en": "1.3.9 drops the marker.",
+              "hi": "1.3.9 संकेत हटाता है।"
+            }
+          },
+          {
+            "sa": "तिप् → ति",
+            "text": {
+              "en": "What remains.",
+              "hi": "जो बचता है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "pg-it-s1",
+    "brief": "A dark second alcove with a round stone seal cut with a single word and small marks; Dādī pointing at the word; the quarter-visible silver spirit leaning forward; Śuka on her shoulder; Lubdhaka behind with a hand resting on the seal, face calm and unreadable.",
+    "alt": {
+      "en": "A round seal with a word and small marks, a spirit leaning forward, a man's hand on the seal",
+      "hi": "शब्द और छोटे चिह्नों वाली गोल मुहर, आगे झुकती भूत, मुहर पर टिका एक हाथ"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "padika"
+    ],
+    "place": "guha"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A dark second alcove with a round stone seal cut with a single word and small marks; Dādī pointing at the word; the quarter-visible silver spirit leaning forward; Śuka on her shoulder; Lubdhaka behind with a hand resting on the seal, face calm and unreadable.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\npadika: A small spirit of pale silver light of whom only one quarter is visible, like a crescent, the rest a faint outline in the dark beside the last, glowing alcove.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-31b65806-0799-43b3-bb73-3db5f0d4c68c.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "caf8be603ae3d55089ee4e212f0bf003130dd8eb93402459d522f9349ec1e1b5",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\pg-it-s1-phone-e3a46920.webp",
+      "key": "learn/pg-it-s1-phone-e3a46920.webp",
+      "sha256": "e3a46920bce3d875bfc210cc221faf4551f4c3282c44afec35fba872fe1036c6",
+      "bytes": 85708,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/pg-it-s1-phone-e3a46920.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\pg-it-s1-tablet-406b5bbf.webp",
+      "key": "learn/pg-it-s1-tablet-406b5bbf.webp",
+      "sha256": "406b5bbf52cdda83d96dd3fb0d97f6fd08c083932a4bc19e89961512d3be95c2",
+      "bytes": 347202,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/pg-it-s1-tablet-406b5bbf.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

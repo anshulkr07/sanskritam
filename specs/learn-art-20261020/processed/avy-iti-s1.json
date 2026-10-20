@@ -1,0 +1,849 @@
+{
+  "id": "avy-iti-s1",
+  "where": "avy.iti#s1",
+  "ratio": "4:3",
+  "expected": [
+    "इति"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The round white stone spirit stopping mid-pat with a thoughtful look; the Vetāla raising an eyebrow from his branch; Dādī and Śuka smiling; a faint glowing speech-mark shape in the air around the spirit's words.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\navyayaka: A tiny, perfectly round and smooth spirit of white stone, with no mark or edge, who keeps patting himself as if looking for a place to attach something.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nइति All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "avy.iti",
+    "template": "scene",
+    "title": {
+      "en": "इति: quotes and thoughts",
+      "hi": "इति: उद्धरण और विचार"
+    },
+    "title_sa": "इति",
+    "minutes": 6,
+    "teaches": [
+      "avy.iti"
+    ],
+    "needs": [
+      "avy.particles"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The word that closes",
+          "hi": "बन्द करने वाला शब्द"
+        },
+        "image": {
+          "id": "avy-iti-s1",
+          "brief": "The round white stone spirit stopping mid-pat with a thoughtful look; the Vetāla raising an eyebrow from his branch; Dādī and Śuka smiling; a faint glowing speech-mark shape in the air around the spirit's words.",
+          "alt": {
+            "en": "A smooth white stone spirit stops mid-pat in thought while a grey spirit raises an eyebrow above",
+            "hi": "सोच में थमा चिकना सफ़ेद पत्थर का भूत, ऊपर भौंह उठाता भूरा भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "avyayaka"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Avyayaka pats himself once more, then stops, pleased, at a thought. “I am whole,” he says, “इति.” “Thus.” The Vetāla raises an eyebrow. “Say it once more, but this time as a thought.” “अहं पूर्णः इति चिन्तयामि.” “I think: ‘I am whole’.” “That is it,” says Dādī. “इति closes a quotation or a thought, like a pair of marks round it.”",
+          "hi": "अव्यय एक बार फिर स्वयं को थपथपाता है, फिर एक विचार पर प्रसन्न होकर रुक जाता है। “मैं पूर्ण हूँ,” वह कहता है, “इति।” “ऐसा।” वेताल भौंह उठाता है। “एक बार और कहो, पर इस बार विचार की तरह।” “अहं पूर्णः इति चिन्तयामि।” “मैं सोचता हूँ: ‘मैं पूर्ण हूँ’।” “वही,” दादी कहती हैं। “इति उद्धरण या विचार को बन्द करता है, उसके चारों ओर दो चिह्नों की तरह।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "इत्युक्त्वा सावयोः साध्वी कथामेतामवर्णयत्",
+          "gloss": {
+            "en": "Having said so, the good woman told us this tale.",
+            "hi": "ऐसा कहकर उस साध्वी ने हमें यह कथा सुनाई।"
+          },
+          "source": "Kathāsaritsāgara 1.2 (read in the Digital Corpus of Sanskrit)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Closing a thought",
+          "hi": "विचार को बन्द करना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "avy.iti"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{इति}} comes after a quoted word, thought or sentence: {{सः वदति ‘अहं गच्छामि’ इति}}, “he says: ‘I go’”. It also means “so”: {{इति उक्त्वा}}, “having said so”. In epics it joins with the next word: {{इत्युवाच}}, “saying so, he said”.",
+          "hi": "{{इति}} उद्धृत शब्द, विचार या वाक्य के बाद आता है: {{सः वदति ‘अहं गच्छामि’ इति}}, ‘वह कहता है: “मैं जाता हूँ”’। इसका अर्थ ‘ऐसा’ भी है: {{इति उक्त्वा}}, ‘ऐसा कहकर’। महाकाव्यों में वह अगले शब्द से जुड़ जाता है: {{इत्युवाच}}, ‘ऐसा कहकर बोला’।"
+        },
+        "examples": [
+          {
+            "sa": "सः अहम् गच्छामि इति वदति।",
+            "meaning": {
+              "en": "He says: “I go.”",
+              "hi": "वह कहता है: “मैं जाता हूँ।”"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "गच्छामि",
+                "gloss": {
+                  "en": "go",
+                  "hi": "जाता हूँ"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "इति",
+                "gloss": {
+                  "en": "thus",
+                  "hi": "ऐसा"
+                },
+                "check": null
+              },
+              {
+                "sa": "वदति",
+                "gloss": {
+                  "en": "says",
+                  "hi": "कहता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "माता पठ इति वदति।",
+            "meaning": {
+              "en": "The mother says: “Read!”",
+              "hi": "माता कहती है: “पढ़ो!”"
+            },
+            "words": [
+              {
+                "sa": "माता",
+                "gloss": {
+                  "en": "mother",
+                  "hi": "माता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "मातृ",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठ",
+                "gloss": {
+                  "en": "read!",
+                  "hi": "पढ़ो!"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lot",
+                  "purusha": "Madhyama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "इति",
+                "gloss": {
+                  "en": "thus",
+                  "hi": "ऐसा"
+                },
+                "check": null
+              },
+              {
+                "sa": "वदति",
+                "gloss": {
+                  "en": "says",
+                  "hi": "कहती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "बालकः अहम् पण्डितः अस्मि इति चिन्तयति।",
+            "meaning": {
+              "en": "The boy thinks: “I am a scholar.”",
+              "hi": "बालक सोचता है: “मैं विद्वान् हूँ।”"
+            },
+            "words": [
+              {
+                "sa": "बालकः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "पण्डितः",
+                "gloss": {
+                  "en": "scholar",
+                  "hi": "विद्वान्"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पण्डित",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अस्मि",
+                "gloss": {
+                  "en": "am",
+                  "hi": "हूँ"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "इति",
+                "gloss": {
+                  "en": "thus",
+                  "hi": "ऐसा"
+                },
+                "check": null
+              },
+              {
+                "sa": "चिन्तयति",
+                "gloss": {
+                  "en": "thinks",
+                  "hi": "सोचता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "चिन्त्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": "Curadi",
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "इति",
+          "meaning": {
+            "en": "the closing word of a quotation",
+            "hi": "उद्धरण को बन्द करने वाला शब्द"
+          }
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "avy.iti"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He says, ‘I go’.” Which word closes it?",
+          "hi": "‘वह कहता है, “मैं जाता हूँ”।’ इसे कौन-सा शब्द बन्द करता है?"
+        },
+        "explain": {
+          "en": "{{इति}}: closes the quote.",
+          "hi": "{{इति}}: उद्धरण को बन्द करता है।"
+        },
+        "options": [
+          {
+            "sa": "च",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "एव",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "इति",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "avy.iti"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its job.",
+          "hi": "हर शब्द को उसके काम से जोड़िए।"
+        },
+        "explain": {
+          "en": "Each little word has its place.",
+          "hi": "हर छोटे शब्द का अपना स्थान है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "इति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "closes a quote",
+                "hi": "उद्धरण बन्द करता है"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "च",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "joins two things",
+                "hi": "दो चीज़ें जोड़ता है"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "न",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "says not",
+                "hi": "नहीं कहता है"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "वा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "gives a choice",
+                "hi": "विकल्प देता है"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "avy.iti"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap the word that closes each quote.",
+          "hi": "हर उद्धरण को बन्द करने वाला शब्द छुइए।"
+        },
+        "params": {
+          "passage": [
+            "सः",
+            "वदति",
+            "अहम्",
+            "गच्छामि",
+            "इति",
+            "च"
+          ],
+          "targets": [
+            "इति"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "avy.iti"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “He says: ‘I go’.”",
+          "hi": "कहिए: ‘वह कहता है: “मैं जाता हूँ”।’"
+        },
+        "explain": {
+          "en": "{{सः अहं गच्छामि इति वदति}}.",
+          "hi": "{{सः अहं गच्छामि इति वदति}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "सः",
+          "अहम्",
+          "गच्छामि",
+          "इति",
+          "वदति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Thus",
+          "hi": "इति"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "avy.iti"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“The mother says: ‘Read!’” Which sentence?",
+          "hi": "‘माता कहती है: “पढ़ो!”’ कौन-सा वाक्य?"
+        },
+        "explain": {
+          "en": "{{पठ इति वदति}}: the quote closed by {{इति}}.",
+          "hi": "{{पठ इति वदति}}: {{इति}} से बन्द उद्धरण।"
+        },
+        "options": [
+          {
+            "sa": "माता पठ वा वदति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "माता पठ तु वदति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "माता पठ इति वदति",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“माता पठ इति वदति,” you say. “Thus,” says Avyayaka, and he rolls round and settles, like a stone in a stream. “I thought I was nothing but a pebble,” he says. “But I am the closing of a thought, and a quote cannot be said without me.”",
+            "hi": "“माता पठ इति वदति,” आप कहते हैं। “ऐसा,” अव्यय कहता है, और वह धारा में पत्थर की तरह लुढ़ककर बैठ जाता है। “मैंने सोचा था मैं बस एक कंकड़ हूँ,” वह कहता है। “पर मैं विचार का समापन हूँ, और मेरे बिना कोई उद्धरण नहीं कहा जा सकता।”"
+          },
+          "failure": {
+            "en": "He keeps rolling. The quote needs {{इति}}.",
+            "hi": "वह लुढ़कता रहता है। उद्धरण को {{इति}} चाहिए।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's {{इति}}",
+          "hi": "पाणिनि का {{इति}}"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "avy.iti"
+        ],
+        "sutras": [
+          "1.4.57",
+          "1.1.37"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "{{इति}} is a {{निपात}}, a particle, listed with {{च}} and {{वा}} in the grammarians' lists of {{चादि}}. By 1.4.57, {{चादयोऽसत्त्वे}}, it has the name {{निपात}} and, by 1.1.37, it is indeclinable.",
+          "hi": "{{इति}} {{निपात}} है, वैयाकरणों की {{चादि}} सूचियों में {{च}} और {{वा}} के साथ गिना जाने वाला। 1.4.57, {{चादयोऽसत्त्वे}}, से उसकी {{निपात}} संज्ञा है और 1.1.37 से वह अव्यय है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Thus",
+          "hi": "इति"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "अहं गच्छामि इति",
+            "text": {
+              "en": "“I go,” thus.",
+              "hi": "“मैं जाता हूँ,” ऐसा।"
+            }
+          },
+          {
+            "sa": "इति उक्त्वा",
+            "text": {
+              "en": "Having said so.",
+              "hi": "ऐसा कहकर।"
+            }
+          },
+          {
+            "sa": "इत्युवाच",
+            "text": {
+              "en": "Saying so, he said.",
+              "hi": "ऐसा कहकर बोला।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "avy-iti-s1",
+    "brief": "The round white stone spirit stopping mid-pat with a thoughtful look; the Vetāla raising an eyebrow from his branch; Dādī and Śuka smiling; a faint glowing speech-mark shape in the air around the spirit's words.",
+    "alt": {
+      "en": "A smooth white stone spirit stops mid-pat in thought while a grey spirit raises an eyebrow above",
+      "hi": "सोच में थमा चिकना सफ़ेद पत्थर का भूत, ऊपर भौंह उठाता भूरा भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "avyayaka"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The round white stone spirit stopping mid-pat with a thoughtful look; the Vetāla raising an eyebrow from his branch; Dādī and Śuka smiling; a faint glowing speech-mark shape in the air around the spirit's words.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\navyayaka: A tiny, perfectly round and smooth spirit of white stone, with no mark or edge, who keeps patting himself as if looking for a place to attach something.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-a334f38f-5dba-4f28-8dc8-aaa7717982ba.png",
+  "policy_version": "2026-10-20-full-text-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "c1a6ea36e8d7ad2f823f96604923a955900500a9ebb1f43bbfaca22327ef6f87",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\avy-iti-s1-phone-a2bca8af.webp",
+      "key": "learn/avy-iti-s1-phone-a2bca8af.webp",
+      "sha256": "a2bca8afea456136b6d1a9bd3f58a2c054fd9232a1de1f31d04b7492012dd9fb",
+      "bytes": 116224,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/avy-iti-s1-phone-a2bca8af.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\avy-iti-s1-tablet-55111b30.webp",
+      "key": "learn/avy-iti-s1-tablet-55111b30.webp",
+      "sha256": "55111b30829770bd2c342d25aa166eb974510b5185c0b31c21e8e2cf576f93d6",
+      "bytes": 444446,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/avy-iti-s1-tablet-55111b30.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

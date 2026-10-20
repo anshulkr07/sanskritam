@@ -1,0 +1,769 @@
+{
+  "id": "rv-steps-s1",
+  "where": "rv.steps#s1",
+  "ratio": "4:3",
+  "expected": [
+    "विद्याददातिविनयंविनयाद्यातिपात्रताम्"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A round stone vault at the foot of a spiral stair; a small ink-dark spirit tangled in a long cord of tiny knotted letters, knots at every joint; a carved verse on the wall with no gaps between words; Dādī kneeling beside the spirit; Śuka on the carved ledge reading; at the top of the stair, a tall figure in a dark coat in silhouette.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nshlokika: A small ink-dark spirit sitting on the floor of a round stone vault, wound round and round in a long cord of tiny knotted letters, one knot at every join; she hums the verse patiently.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nविद्याददातिविनयंविनयाद्यातिपात्रताम्",
+  "source": {
+    "id": "rv.steps",
+    "template": "scene",
+    "title": {
+      "en": "Split, order, understand",
+      "hi": "पदच्छेद, अन्वय, अर्थ"
+    },
+    "title_sa": "पदच्छेदः · अन्वयः · अर्थः",
+    "minutes": 6,
+    "teaches": [
+      "verse.read"
+    ],
+    "needs": [
+      "syn.anvaya",
+      "sandhi.padaccheda"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The knotted cord",
+          "hi": "गाँठों वाली डोरी"
+        },
+        "image": {
+          "id": "rv-steps-s1",
+          "brief": "A round stone vault at the foot of a spiral stair; a small ink-dark spirit tangled in a long cord of tiny knotted letters, knots at every joint; a carved verse on the wall with no gaps between words; Dādī kneeling beside the spirit; Śuka on the carved ledge reading; at the top of the stair, a tall figure in a dark coat in silhouette.",
+          "alt": {
+            "en": "A small spirit sits tangled in a cord of knotted letters beneath a carved verse",
+            "hi": "खुदे श्लोक के नीचे गाँठ-गाँठ अक्षरों की डोरी में उलझी नन्ही भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "shlokika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The stair ends in a round vault. On its wall a verse is carved with the words run together, and a small spirit sits tangled in a cord with a knot at every join. “This is Ślokikā,” says Dādī. “She knows her verse by heart but cannot untie it. Three steps: split, order, understand.” Behind you, softly, Lubdhaka's step sounds on the stair.",
+          "hi": "सीढ़ी एक गोल तहख़ाने में खुलती है। उसकी दीवार पर एक श्लोक खुदा है, शब्द आपस में जुड़े हुए, और एक नन्ही भूत डोरी में उलझी बैठी है, हर जोड़ पर एक गाँठ। “यह श्लोकिका है,” दादी कहती हैं। “उसे अपना श्लोक कण्ठस्थ है, पर वह उसे खोल नहीं पाती। तीन चरण: तोड़ो, क्रम दो, समझो।” आपके पीछे, धीरे-धीरे, सीढ़ी पर लुब्धक के पैरों की आहट आती है।"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "विद्या ददाति विनयं विनयाद् याति पात्रताम् पात्रत्वात् धनम् आप्नोति धनाद् धर्मं ततः सुखम्",
+          "gloss": {
+            "en": "Learning gives humility; from humility one reaches worthiness; from worthiness, wealth; from wealth, dharma, and from that, happiness.",
+            "hi": "विद्या विनय देती है; विनय से पात्रता मिलती है; पात्रता से धन; धन से धर्म, और उससे सुख।"
+          },
+          "source": "Hitopadeśa, introduction (read in the Digital Corpus of Sanskrit)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Three steps",
+          "hi": "तीन चरण"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.read"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "To read a verse, take three steps. First {{पदच्छेदः}}: split the joins into words. Then {{अन्वयः}}: put the words in prose order, verb first to find. Last {{अर्थः}}: say what it means. Never skip the first: you cannot order words you have not separated.",
+          "hi": "श्लोक पढ़ने के लिए तीन चरण लीजिए। पहले {{पदच्छेदः}}: जोड़ खोलकर शब्द अलग कीजिए। फिर {{अन्वयः}}: शब्दों को गद्य के क्रम में रखिए, पहले क्रिया खोजिए। अन्त में {{अर्थः}}: बताइए कि वह क्या कहता है। पहला चरण कभी न छोड़िए: जिन शब्दों को अलग नहीं किया, उन्हें क्रम नहीं दे सकते।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [
+          {
+            "sa": "पदच्छेदः",
+            "label": {
+              "en": "split the joins",
+              "hi": "जोड़ खोलना"
+            }
+          },
+          {
+            "sa": "अन्वयः",
+            "label": {
+              "en": "prose order",
+              "hi": "गद्य का क्रम"
+            }
+          },
+          {
+            "sa": "अर्थः",
+            "label": {
+              "en": "the meaning",
+              "hi": "अर्थ"
+            }
+          }
+        ],
+        "formula": null,
+        "term": {
+          "sa": "पदच्छेदः",
+          "meaning": {
+            "en": "splitting a verse into its words",
+            "hi": "श्लोक को उसके शब्दों में तोड़ना"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "One line, three steps",
+          "hi": "एक पंक्ति, तीन चरण"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.read"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The first line of the verse",
+          "hi": "श्लोक की पहली पंक्ति"
+        },
+        "columns": [
+          {
+            "en": "Step",
+            "hi": "चरण"
+          },
+          {
+            "en": "The line",
+            "hi": "पंक्ति"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "As carved",
+                "hi": "जैसा खुदा है"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "विद्या ददाति विनयं विनयाद्याति पात्रताम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "पदच्छेदः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "विद्या ददाति विनयम् विनयात् याति पात्रताम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "अन्वयः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "विद्या विनयं ददाति; विनयात् पात्रतां याति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "अर्थः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "Learning gives humility; from humility one reaches worthiness.",
+                "hi": "विद्या विनय देती है; विनय से पात्रता मिलती है।"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "The knots are the joins; the meaning is last.",
+          "hi": "गाँठें जोड़ हैं; अर्थ अन्त में आता है।"
+        }
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "The knots",
+          "hi": "गाँठें"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.read"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Each join, opened",
+          "hi": "हर जोड़, खुला हुआ"
+        },
+        "columns": [
+          {
+            "en": "First word",
+            "hi": "पहला शब्द"
+          },
+          {
+            "en": "Second word",
+            "hi": "दूसरा शब्द"
+          },
+          {
+            "en": "Joined",
+            "hi": "जुड़ा हुआ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "विनयात्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "याति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "विनयाद्याति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "विनयात्",
+                "second": "याति",
+                "joined": "विनयाद्याति",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "पात्रत्वात्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "धनम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पात्रत्वाद्धनम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "पात्रत्वात्",
+                "second": "धनम्",
+                "joined": "पात्रत्वाद्धनम्",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "धनात्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "धर्मम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "धनाद्धर्मम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "धनात्",
+                "second": "धर्मम्",
+                "joined": "धनाद्धर्मम्",
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Each join is a sandhi you already know.",
+          "hi": "हर जोड़ वह सन्धि है जिसे आप पहले से जानते हैं।"
+        }
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.read"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap the two verbs of the first line.",
+          "hi": "पहली पंक्ति की दो क्रियाएँ छुइए।"
+        },
+        "params": {
+          "passage": [
+            "विद्या",
+            "ददाति",
+            "विनयम्",
+            "विनयात्",
+            "याति",
+            "पात्रताम्"
+          ],
+          "targets": [
+            "ददाति",
+            "याति"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.read"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Split the joined word {{विनयाद्याति}}.",
+          "hi": "जुड़े शब्द {{विनयाद्याति}} को तोड़िए।"
+        },
+        "explain": {
+          "en": "{{विनयात्}} + {{याति}}.",
+          "hi": "{{विनयात्}} + {{याति}}।"
+        },
+        "options": [
+          {
+            "sa": "विनयात् + याति",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "विनयान् + याति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "विनयाः + याति",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.read"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Split the joined word {{पात्रत्वाद्धनम्}}.",
+          "hi": "जुड़े शब्द {{पात्रत्वाद्धनम्}} को तोड़िए।"
+        },
+        "explain": {
+          "en": "{{पात्रत्वात्}} + {{धनम्}}.",
+          "hi": "{{पात्रत्वात्}} + {{धनम्}}।"
+        },
+        "options": [
+          {
+            "sa": "पात्रत्वात् + धनम्",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "पात्रत्वान् + धनम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पात्रत्वाः + धनम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.read"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Put the words in the right order.",
+          "hi": "शब्दों को सही क्रम में रखिए।"
+        },
+        "explain": {
+          "en": "The doer, the object, the verb.",
+          "hi": "कर्ता, कर्म, क्रिया।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "reorder",
+          "params": {
+            "sentence": "विद्या विनयं ददाति"
+          },
+          "seed": 23
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.read"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“विनयात् पात्रतां याति.” What does it say?",
+          "hi": "“विनयात् पात्रतां याति।” वह क्या कहता है?"
+        },
+        "explain": {
+          "en": "{{विनयात्}}: from humility; {{पात्रतां याति}}: reaches worthiness.",
+          "hi": "{{विनयात्}}: विनय से; {{पात्रतां याति}}: पात्रता पाता है।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "Humility comes from worthiness",
+              "hi": "पात्रता से विनय आता है"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "From humility one reaches worthiness",
+              "hi": "विनय से पात्रता मिलती है"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "One goes away from humility",
+              "hi": "कोई विनय से दूर जाता है"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The first knot",
+          "hi": "पहली गाँठ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verse.read"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "In reading a verse, which step comes first?",
+          "hi": "श्लोक पढ़ते समय पहला चरण कौन-सा है?"
+        },
+        "explain": {
+          "en": "First split the joins: {{पदच्छेदः}}.",
+          "hi": "पहले जोड़ खोलिए: {{पदच्छेदः}}।"
+        },
+        "options": [
+          {
+            "sa": "अन्वयः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अर्थः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पदच्छेदः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“पदच्छेदः,” you say, and you put your finger on the first knot in Ślokikā's cord: विनयात् + याति. It comes undone, a loop falls away, and the cord loosens round her wrist. One by one, as you name the joins, the knots give: पात्रत्वात् + धनम्, धनात् + धर्मम्. She breathes, and for the first time says the verse aloud with every word standing separate and clear.",
+            "hi": "“पदच्छेदः,” आप कहते हैं, और श्लोकिका की डोरी की पहली गाँठ पर उँगली रखते हैं: विनयात् + याति। वह खुल जाती है, एक फन्दा गिर जाता है, और डोरी उसकी कलाई पर ढीली पड़ जाती है। जैसे-जैसे आप जोड़ों के नाम लेते हैं, गाँठें एक-एक कर खुलती हैं: पात्रत्वात् + धनम्, धनात् + धर्मम्। वह साँस लेती है, और पहली बार श्लोक को ज़ोर से बोलती है, हर शब्द अलग और साफ़ खड़ा हुआ।"
+          },
+          "failure": {
+            "en": "The knots hold. The first step is {{पदच्छेदः}}: split the joins.",
+            "hi": "गाँठें कसी रहती हैं। पहला चरण {{पदच्छेदः}} है: जोड़ खोलना।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Split, order, understand",
+          "hi": "पदच्छेद, अन्वय, अर्थ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "पदच्छेदः",
+            "text": {
+              "en": "Split the joins.",
+              "hi": "जोड़ खोलिए।"
+            }
+          },
+          {
+            "sa": "अन्वयः",
+            "text": {
+              "en": "Prose order: verb, doer, object.",
+              "hi": "गद्य का क्रम: क्रिया, कर्ता, कर्म।"
+            }
+          },
+          {
+            "sa": "अर्थः",
+            "text": {
+              "en": "Then the meaning.",
+              "hi": "फिर अर्थ।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "rv-steps-s1",
+    "brief": "A round stone vault at the foot of a spiral stair; a small ink-dark spirit tangled in a long cord of tiny knotted letters, knots at every joint; a carved verse on the wall with no gaps between words; Dādī kneeling beside the spirit; Śuka on the carved ledge reading; at the top of the stair, a tall figure in a dark coat in silhouette.",
+    "alt": {
+      "en": "A small spirit sits tangled in a cord of knotted letters beneath a carved verse",
+      "hi": "खुदे श्लोक के नीचे गाँठ-गाँठ अक्षरों की डोरी में उलझी नन्ही भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "shlokika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A round stone vault at the foot of a spiral stair; a small ink-dark spirit tangled in a long cord of tiny knotted letters, knots at every joint; a carved verse on the wall with no gaps between words; Dādī kneeling beside the spirit; Śuka on the carved ledge reading; at the top of the stair, a tall figure in a dark coat in silhouette.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nshlokika: A small ink-dark spirit sitting on the floor of a round stone vault, wound round and round in a long cord of tiny knotted letters, one knot at every join; she hums the verse patiently.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-976a8391-7d99-4f23-8a13-6835645b37be.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "1159ce73171bae59727ab4ff0c0c4498d923af2990effbe0d954e4df96358481",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\rv-steps-s1-phone-a67021bc.webp",
+      "key": "learn/rv-steps-s1-phone-a67021bc.webp",
+      "sha256": "a67021bce9e997a5b6ba7462570ae6e99b1f892105b3b8b3979097a20619634b",
+      "bytes": 107164,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/rv-steps-s1-phone-a67021bc.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\rv-steps-s1-tablet-47ae22c7.webp",
+      "key": "learn/rv-steps-s1-tablet-47ae22c7.webp",
+      "sha256": "47ae22c74700c7e4504279c73f3776d447a3b7eb97f1e07eb7076fe68bc73d7c",
+      "bytes": 416228,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/rv-steps-s1-tablet-47ae22c7.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

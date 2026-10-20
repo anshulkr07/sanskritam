@@ -203,6 +203,12 @@ Learn story pictures only; verse artwork keeps every rule above.
   when authoring content). Verify all visible writing at the end against those
   strings, using NFC Devanagari; correct or regenerate mismatches before final
   delivery. Do not accept invented script, unintended lettering or watermarks.
+- Owner follow-up **2026-10-20**: regenerate and replace earlier pictures that
+  needed writing but were generated without it. Include names on tags and
+  family trees, ledgers, word cards, inscriptions, verses, commentary notes and
+  manuscript pages in the audit. Do not substitute blank writing surfaces for
+  the source's intended teaching text. Verify the complete written result before
+  replacing the app references, and keep the same teaching as live app content.
 - The same Sanskrit is always also live text on the card: a picture never
   replaces app content.
 - Ratios come from the content: story cards 4:3, portraits 1:1, leaves 3:4,

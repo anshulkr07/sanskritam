@@ -74,6 +74,7 @@ export default function SimpleUnitScreen({ route, navigation }: NativeStackScree
           <>
             {unit.lessons.map((l, i) => row(l, String(i + 1), l.minutes + (hi ? ' मिनट' : ' min')))}
             {unit.revision ? row(unit.revision, 'R', hi ? 'दोहराव · कभी भी खोलें' : 'Revision · open any time') : null}
+            {unit.reading ? row(unit.reading, '+', hi ? 'संस्कृत में पढ़ें · वैकल्पिक' : 'Read in Sanskrit · optional') : null}
             {unit.check ? row(unit.check, '?', hi ? 'इकाई की जाँच · आता है तो आगे बढ़ें' : 'Unit check · skip ahead if you know it', canTestOut(index, state, unit)) : null}
           </>
         )}

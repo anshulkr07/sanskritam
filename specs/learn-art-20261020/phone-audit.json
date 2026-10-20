@@ -1,0 +1,722 @@
+{
+  "method": "Direct visual proofreading of every q80 optimized phone WebP; phone-proof-0 through44 and45 through73; original master review recorded independently in ocr/.",
+  "checks": [
+    {
+      "id": "cons-semivowels-s1",
+      "sha256": "934c95f4e3a900bba2a13133211a21fa3d1f7e327edbe1bdb6824ad2a13eeeb8",
+      "expected": [
+        "य र ल व"
+      ],
+      "passed": true
+    },
+    {
+      "id": "cons-sibilants-s1",
+      "sha256": "e9dd536a815e83903a333e01eb38e56f76cd0b7ded0b9f78f95687634d4254fd",
+      "expected": [
+        "श ष स ह"
+      ],
+      "passed": true
+    },
+    {
+      "id": "cons-virama-s1",
+      "sha256": "5deb00182dc31787b2781c09d2a009f8880ad20d60e7b3478a72052069571b7c",
+      "expected": [
+        "क्"
+      ],
+      "passed": true
+    },
+    {
+      "id": "joined-clusters-s1",
+      "sha256": "efa46a82c29fe93f589aee4a7958d74e5e1ebefea4ef8d38c3cb7b890f04c85e",
+      "expected": [
+        "क्ष त्र ज्ञ श्र"
+      ],
+      "passed": true
+    },
+    {
+      "id": "cons-grid-s1",
+      "sha256": "6a684684c29b40a93a0be1af04f3ed4566b2e2c519927ad86a7aa0ebe1f72f44",
+      "expected": [
+        "क ख ग घ ङ",
+        "च छ ज झ ञ",
+        "ट ठ ड ढ ण",
+        "त थ द ध न",
+        "प फ ब भ म"
+      ],
+      "passed": true
+    },
+    {
+      "id": "joined-hum-breath-s1",
+      "sha256": "df8c081087a6579533f2f22407b7b8626e3fbb278bc8a08dc6cd57b8773396cb",
+      "expected": [
+        "गंगा",
+        "रामः"
+      ],
+      "passed": true
+    },
+    {
+      "id": "joined-marks-s1",
+      "sha256": "92fdd4d730242e90772acc7b2803e6d6771f0562246e8559898e89c004a92537",
+      "expected": [
+        "ऽ",
+        "।",
+        "॥",
+        "ॐ",
+        "० १ २ ३ ४ ५ ६ ७ ८ ९"
+      ],
+      "passed": true
+    },
+    {
+      "id": "joined-ra-s1",
+      "sha256": "f1ea73deb48e58bae1b93876ea038b13bab0fd43d23b94e060ac0f37bab76222",
+      "expected": [
+        "धर्मः",
+        "प्रियः",
+        "क्रमः"
+      ],
+      "passed": true
+    },
+    {
+      "id": "reading-names-s1",
+      "sha256": "b644c3d5cbf31c6478fcaf1c80c6f3f86f1e039e4659ddd06243456a2faa334e",
+      "expected": [
+        "रामः",
+        "सीता",
+        "लक्ष्मणः"
+      ],
+      "passed": true
+    },
+    {
+      "id": "reading-syllables-s1",
+      "sha256": "6d5ed090e899313f43580c634666d13cf004e914dfcef866aabfedccfe80e157",
+      "expected": [
+        "मौनी"
+      ],
+      "passed": true
+    },
+    {
+      "id": "you-grid-s1",
+      "sha256": "32b66628bdc4018f7ea1af36cc52fa79261c50b8f4e0ef12a6098d36656fb1b6",
+      "expected": [
+        "पठति पठतः पठन्ति",
+        "पठसि पठथः पठथ",
+        "पठामि पठावः पठामः"
+      ],
+      "passed": true
+    },
+    {
+      "id": "nf1-deva-s1",
+      "sha256": "a2d69ce3cceb303b59530fad1843e186e1954cab3515a3668cc49ea4059b4280",
+      "expected": [
+        "देवः",
+        "देवौ",
+        "देवाः"
+      ],
+      "passed": true
+    },
+    {
+      "id": "nf1-lata-s1",
+      "sha256": "0416ed12f0d78fce256c26875235044b1cb768a224f773967396470a68c02335",
+      "expected": [
+        "लता",
+        "लते",
+        "लताः"
+      ],
+      "passed": true
+    },
+    {
+      "id": "nf1-phala-s1",
+      "sha256": "87d698d3beb3b0ba2c437ea1dec3283596ed16ba01d3d603d8e3a7b4ab1e1468",
+      "expected": [
+        "फलम्",
+        "फले",
+        "फलानि"
+      ],
+      "passed": true
+    },
+    {
+      "id": "of-family-s1",
+      "sha256": "1350127f9ea8e31d55843e442539b5483d3553d2bed78472df2b111c684d8e77",
+      "expected": [
+        "पिता",
+        "माता",
+        "भ्राता",
+        "भगिनी",
+        "पुत्रः",
+        "पितामही"
+      ],
+      "passed": true
+    },
+    {
+      "id": "reading-iast-s1",
+      "sha256": "b53332a82ffbcfa95cb4f5d7ad0cf30c4a6e8cf11261f6ba5d1c910a9a18ae3e",
+      "expected": [
+        "ā ś ṣ ṭ ṃ ḥ"
+      ],
+      "passed": true
+    },
+    {
+      "id": "avy-iti-s1",
+      "sha256": "a2bca8afea456136b6d1a9bd3f58a2c054fd9232a1de1f31d04b7492012dd9fb",
+      "expected": [
+        "इति"
+      ],
+      "passed": true
+    },
+    {
+      "id": "avy-where-s1",
+      "sha256": "2a5f6ae46fc9081369f2cc95905102d6e85b2ac160aac7272aced08671da8dad",
+      "expected": [
+        "अत्र",
+        "तत्र",
+        "कुत्र"
+      ],
+      "passed": true
+    },
+    {
+      "id": "nf2-i-s1",
+      "sha256": "117ee5a6226757260aa278af0f5f94719d82d5b30b78819e25f75d49cc76eda2",
+      "expected": [
+        "कविः कवी कवयः।"
+      ],
+      "passed": true
+    },
+    {
+      "id": "num-agree-s1",
+      "sha256": "d6f368ef68eceb38b8a1e8cb65c0309d323500cddc38ff08fc984cd0f1c12f3d",
+      "expected": [
+        "बालकः पठति।",
+        "बालकौ पठतः।",
+        "बालकाः पठन्ति।"
+      ],
+      "passed": true
+    },
+    {
+      "id": "num-verbs-s1",
+      "sha256": "2786ae12abc4499ff6d969d34bde66402c568a14f591ca303988b603c42bd0b5",
+      "expected": [
+        "पठति",
+        "पठतः",
+        "पठन्ति"
+      ],
+      "passed": true
+    },
+    {
+      "id": "part-krtya-s1",
+      "sha256": "369add57c78e2fd2ee267edd92446246e7467003f7c4285f2388a248a8a8e48b",
+      "expected": [
+        "कर्तव्यम्",
+        "करणीयम्",
+        "कार्यम्"
+      ],
+      "passed": true
+    },
+    {
+      "id": "part-kta-s1",
+      "sha256": "ba24af9dc5abed60ae863f9a1b49752c5dbebd7081f75957405d28bec10efa9c",
+      "expected": [
+        "गतः",
+        "पठितम्",
+        "कृतम्"
+      ],
+      "passed": true
+    },
+    {
+      "id": "part-ktva-s1",
+      "sha256": "3fd3f0ea53948cc948878cebf403d6c3ac4b886cbc025401328840b37e5a0299",
+      "expected": [
+        "गत्वा",
+        "कृत्वा",
+        "श्रुत्वा"
+      ],
+      "passed": true
+    },
+    {
+      "id": "part-tumun-s1",
+      "sha256": "6359ef0b361cb95b8e53d2c473937b370949cf9ffb320aeb121f0717373a683e",
+      "expected": [
+        "पठितुम्"
+      ],
+      "passed": true
+    },
+    {
+      "id": "pn-time-s1",
+      "sha256": "21ea9ebe4b51b94238dff9e753f8fbefeb43cb8a001ab42b08f630dff5606cb5",
+      "expected": [
+        "एकादश",
+        "द्वादश",
+        "त्रयोदश"
+      ],
+      "passed": true
+    },
+    {
+      "id": "pn-who-s1",
+      "sha256": "5a53f13e2d06c154830008a637e77ed2caee7122823aed2200eff7fd31b42c12",
+      "expected": [
+        "?"
+      ],
+      "passed": true
+    },
+    {
+      "id": "pre-come-s1",
+      "sha256": "c1cc4dfa9553866ab22e4c68f4cde8e3db89e0a2c38c946f3835d567de90c3ff",
+      "expected": [
+        "गम्"
+      ],
+      "passed": true
+    },
+    {
+      "id": "should-rules-r1",
+      "sha256": "42dd7ba4252befdc67459cc0519247e95e8b754da93b9611dd6d26e863362978",
+      "expected": [
+        "सत्यम् ब्रूयात्।"
+      ],
+      "passed": true
+    },
+    {
+      "id": "should-rules-s1",
+      "sha256": "99e968e889bdcd6812e55082c71ec256d5a5071a45a9b39a4d38ab7b4de9048e",
+      "expected": [
+        "सत्यं ब्रूयात् प्रियं ब्रूयान्",
+        "न ब्रूयात् सत्यम् अप्रियम्"
+      ],
+      "passed": true
+    },
+    {
+      "id": "vc1-bhu-s1",
+      "sha256": "c2946e81177f4430c14b2a1760cd18373536d7d6281002ba960fc728f1d41796",
+      "expected": [
+        "भू",
+        "भवति",
+        "नी",
+        "नयति",
+        "जि",
+        "जयति"
+      ],
+      "passed": true
+    },
+    {
+      "id": "vc2-da-s1",
+      "sha256": "79213c027c8aa972dd65a727b9793f9d02d82c16962cb942cac22712ca95dba3",
+      "expected": [
+        "दा",
+        "ददाति",
+        "धा",
+        "दधाति"
+      ],
+      "passed": true
+    },
+    {
+      "id": "who-does-s1",
+      "sha256": "72badb65063e7a60020c514fc983e8346007ff28b9c4585f0e202ff547bde1ca",
+      "expected": [
+        "लिखति"
+      ],
+      "passed": true
+    },
+    {
+      "id": "who-order-s1",
+      "sha256": "fb36ff4058fb05b17ce1d734e0c6020c29cdca216d0f20053da5278c8212cd4c",
+      "expected": [
+        "बालकः",
+        "पठति"
+      ],
+      "passed": true
+    },
+    {
+      "id": "with-means-s1",
+      "sha256": "4d0660d777ae7344a97deb68914afd1f79a608fdb71c7cbf0bdb151f77acb128",
+      "expected": [
+        "सा लेखन्या लिखति।"
+      ],
+      "passed": true
+    },
+    {
+      "id": "c1-dvandva-s1",
+      "sha256": "1e9e43aa24fd85fbb0c4280863c1e00275907b70943ebbd652bed046c700e967",
+      "expected": [
+        "रामलक्ष्मणौ"
+      ],
+      "passed": true
+    },
+    {
+      "id": "c1-nan-s1",
+      "sha256": "ff6b1c4cd70bef2d40e16dc700fde68569f78df8a6f2b04c57f75fa914a1402b",
+      "expected": [
+        "असत्यम्",
+        "अधर्मः",
+        "अनन्तः"
+      ],
+      "passed": true
+    },
+    {
+      "id": "c1-tatpurusha-s1",
+      "sha256": "894fccc6ac3bf1b773a4538d2088455d6313bb8a11c672c18e1e243d3c01853a",
+      "expected": [
+        "राजपुरुषः"
+      ],
+      "passed": true
+    },
+    {
+      "id": "c2-avyayi-s1",
+      "sha256": "5ee658198b8ddb371b18d1034adb0b488b92e8700014e9222dfe748f510e74d8",
+      "expected": [
+        "यथाशक्ति",
+        "प्रतिदिनम्",
+        "आमरणम्"
+      ],
+      "passed": true
+    },
+    {
+      "id": "c2-bahuvrihi-s1",
+      "sha256": "b268f47c7d6be71de218916ed3d17883f815ce3c3324bd633b0d9fd233e97aaa",
+      "expected": [
+        "नीलकण्ठः"
+      ],
+      "passed": true
+    },
+    {
+      "id": "c2-long-r1",
+      "sha256": "8b2bdccff402d1f7491149d4081103462cf7ba7f08e8dd8ef7a7ce7ab7a9fcea",
+      "expected": [
+        "सूर्य",
+        "कोटिः",
+        "सम",
+        "आभासः"
+      ],
+      "passed": true
+    },
+    {
+      "id": "cs-place-s1",
+      "sha256": "7d91ebbba174adbfce19d107eb0aa922814641e043a8827798756c21d953dd5a",
+      "expected": [
+        "च"
+      ],
+      "passed": true
+    },
+    {
+      "id": "cs-voice-s1",
+      "sha256": "85ced019a0f8965379aee08f194968e0e30a854a2c5b3f34ef70f353a5d6e53f",
+      "expected": [
+        "तदस्ति"
+      ],
+      "passed": true
+    },
+    {
+      "id": "m1-weight-s1",
+      "sha256": "06fd5e7d8b9ebcd9d093d9cf6697bf1587b6cd530de4d246ed5bbe00da4aea29",
+      "expected": [
+        "धर्मक्षेत्रे कुरुक्षेत्रे"
+      ],
+      "passed": true
+    },
+    {
+      "id": "vc2-kr-s1",
+      "sha256": "07770d63ba8f3e2a7363c4f01d6420ab0a9bc22bab547b5d52662ad24a970da4",
+      "expected": [
+        "श्रु",
+        "शृणोति",
+        "कृ",
+        "करोति"
+      ],
+      "passed": true
+    },
+    {
+      "id": "m2-arya-s1",
+      "sha256": "718369cf43af1b35beab0ba7baa320427c05d5c40dd896efe31e15d9e5507168",
+      "expected": [
+        "दानं भोगो नाशस्",
+        "तिस्रो गतयो भवन्ति वित्तस्य",
+        "यो न ददाति न भुङ्क्ते",
+        "तस्य तृतीया गतिर्भवति"
+      ],
+      "passed": true
+    },
+    {
+      "id": "portrait-you",
+      "sha256": "794a05827fe53024d5e44a2b902803be97591e33a9e61d1e2ca103681a863016",
+      "expected": [
+        "अ इ उ",
+        "ऋ ऌ",
+        "ए ओ",
+        "ऐ औ"
+      ],
+      "passed": true
+    },
+    {
+      "id": "rv-steps-s1",
+      "sha256": "a67021bce9e997a5b6ba7462570ae6e99b1f892105b3b8b3979097a20619634b",
+      "expected": [
+        "विद्याददातिविनयंविनयाद्यातिपात्रताम्"
+      ],
+      "passed": true
+    },
+    {
+      "id": "rv-tika-s1",
+      "sha256": "b06974170ab961f740ffc30ea986c329a0f49c45dccded9d3b082a6f0b919b2a",
+      "expected": [
+        "ईशा वास्यम् इदं सर्वं यत् किञ्च जगत्यां जगत्",
+        "तेन त्यक्तेन भुञ्जीथा मा गृधः कस्य स्विद्धनम्",
+        "तेन त्यक्तेन",
+        "त्यागेनेत्यर्थः"
+      ],
+      "passed": true
+    },
+    {
+      "id": "split-line-r1",
+      "sha256": "18151707e05f57f6df49fbfe1d00a627ef755a123607293875c27a7bdf5288f3",
+      "expected": [
+        "काव्यशास्त्रविनोदेन",
+        "कालः गच्छति धीमताम्",
+        "तदा राजा साश्चर्यो बभूव"
+      ],
+      "passed": true
+    },
+    {
+      "id": "split-line-s1",
+      "sha256": "c72d040efb67245577bed33f267ea5b137a260c7ed6a155b38deacd3323e88d1",
+      "expected": [
+        "काव्यशास्त्रविनोदेन कालो गच्छति धीमताम्"
+      ],
+      "passed": true
+    },
+    {
+      "id": "syn-who-s1",
+      "sha256": "79b8915db215a63988e40af55e14997af09ec40621c9c3825ee8d40f493f693b",
+      "expected": [
+        "यः पठति सः जानाति।"
+      ],
+      "passed": true
+    },
+    {
+      "id": "vis-s-s1",
+      "sha256": "9b63a35ec678e30468371b05eed84b78067ada6777f50ecae03d8d0fb12633fe",
+      "expected": [
+        "रामश्च",
+        "रामस्तत्र",
+        "रामष्टीकते"
+      ],
+      "passed": true
+    },
+    {
+      "id": "split-back-s1",
+      "sha256": "6cd2f368871821ff443fd82005610abf4822ae3cbc298124c4a701555379dfd5",
+      "expected": [
+        "विद्यालयः"
+      ],
+      "passed": true
+    },
+    {
+      "id": "syn-order-s1",
+      "sha256": "000381ea39716e6628a469a8232194a094cbc92e49ec9392a5ce4217acc8cce9",
+      "expected": [
+        "रिक्तपाणिर् न पश्येत राजानं भिषजं गुरुम्"
+      ],
+      "passed": true
+    },
+    {
+      "id": "tad-son-s1",
+      "sha256": "3f68dad39f62e28cb83fbfb66a0c499c9aaa5e56a070ddc637c1e0dd6aceeaa5",
+      "expected": [
+        "राघवः",
+        "पाण्डवः",
+        "कौरवः"
+      ],
+      "passed": true
+    },
+    {
+      "id": "vc2-jna-s1",
+      "sha256": "8e63020b4776b70a6626f5ebb0fd12b6a5310e666efb61c51002d4e3a5edfe5d",
+      "expected": [
+        "छिद्",
+        "छिनत्ति",
+        "क्री",
+        "क्रीणाति"
+      ],
+      "passed": true
+    },
+    {
+      "id": "vs-e-o-s1",
+      "sha256": "a07682aa8ce4b5d8a9598e38a9eed7d652f35464a7d97d55d9a3443fd2965b76",
+      "expected": [
+        "वनेऽस्ति"
+      ],
+      "passed": true
+    },
+    {
+      "id": "freed-dhumaka",
+      "sha256": "209b8d0c2b461732e4f11414cf7b3babfc8687f2e8788da35a1873ba5a115522",
+      "expected": [
+        "अ इ उ",
+        "ऋ ऌ",
+        "ए ओ",
+        "ऐ औ"
+      ],
+      "passed": true
+    },
+    {
+      "id": "kss-naming-s1",
+      "sha256": "36189e4bda6ce6b85fc14772dcc748a6016a7790b5ea4ba9ce8cbacbb19f481a",
+      "expected": [
+        "तत्रासूत च सा काले कुमारं कान्तदर्शनम्",
+        "गगनाद् उच्चचारैवं काले तस्मिन् सरस्वती"
+      ],
+      "passed": true
+    },
+    {
+      "id": "pg-it-s1",
+      "sha256": "e3a46920bce3d875bfc210cc221faf4551f4c3282c44afec35fba872fe1036c6",
+      "expected": [
+        "तिप्"
+      ],
+      "passed": true
+    },
+    {
+      "id": "pg-prakriya-s1",
+      "sha256": "ea661ff2b6daa4d5cc13520f602e45063abb7c5860d21cec614eb2251e1a503a",
+      "expected": [
+        "भू"
+      ],
+      "passed": true
+    },
+    {
+      "id": "prologue-1",
+      "sha256": "ceb2a35641ed54e2a07e083256949d1b9e70d428ee6737f92699d1882f82378e",
+      "expected": [
+        "बृहत्कथा"
+      ],
+      "passed": true
+    },
+    {
+      "id": "prologue-3",
+      "sha256": "3450b1b265d6b665dd259c84187633fdda83cfed55722b53b51e5ff401709745",
+      "expected": [
+        "बृहत्कथा"
+      ],
+      "passed": true
+    },
+    {
+      "id": "prologue-4",
+      "sha256": "3d1933a2dc23f08053a7c73922569b0a1c681427b3b69879d0c9067d5119dd9e",
+      "expected": [
+        "अ इ उ",
+        "ऋ ऌ",
+        "ए ओ",
+        "ऐ औ"
+      ],
+      "passed": true
+    },
+    {
+      "id": "tale-leaf-1-r1",
+      "sha256": "ea995b89a73497a559ac8359e3500ffb507d0aa5ef78dd5b8472c3c6d0bbe27f",
+      "expected": [
+        "अ आ इ ई"
+      ],
+      "passed": true
+    },
+    {
+      "id": "tale-leaf-3-r2",
+      "sha256": "12bfb0273b9626fb959fffe27977e4f266b6940e406cda77c8048c2ccf173520",
+      "expected": [
+        "एष श्रुतधरो जातो विद्यां वर्षादवाप्स्यति",
+        "किंच व्याकरणं लोके प्रतिष्ठां प्रापयिष्यति"
+      ],
+      "passed": true
+    },
+    {
+      "id": "tale-leaf-4-r3",
+      "sha256": "8fdb501e3c05479ce5f69de12a7e621ad911aa4b8010fed90300a2aa29c715d5",
+      "expected": [
+        "व्याकरणम्"
+      ],
+      "passed": true
+    },
+    {
+      "id": "tale-leaf-6-r1",
+      "sha256": "ee78ee5f146acf03a64936d3718bb8f8090c7b3cc0dd88afa0c18a2d6277d5b6",
+      "expected": [
+        "बृहत्कथा"
+      ],
+      "passed": true
+    },
+    {
+      "id": "tale-leaf-6-r2",
+      "sha256": "67f62271465dec3e8adf70971193b7eea5b816c3952b2b18a67e6efffb297af1",
+      "expected": [
+        "बृहत्कथा"
+      ],
+      "passed": true
+    },
+    {
+      "id": "tale-leaf-6-r3",
+      "sha256": "246e42d74b39701f1b75efcdcfc81cbfdc3060531c2147a30f6eeab8b373173e",
+      "expected": [
+        "बृहत्कथा"
+      ],
+      "passed": true
+    },
+    {
+      "id": "vowels-long-shuka",
+      "sha256": "c5050deaf268fdf154fa82eff1261819cfe354622f3f7a82077947049436cbe8",
+      "expected": [
+        "अ इ उ",
+        "ऋ ऌ",
+        "ए ओ",
+        "ऐ औ"
+      ],
+      "passed": true
+    },
+    {
+      "id": "vowels-short-smoke",
+      "sha256": "f592ecd8115dbbb47e3aade285bc0eda8d3662a0f3f6e559a64276c3e2a911fe",
+      "expected": [
+        "अ इ उ",
+        "ऋ ऌ",
+        "ए ओ",
+        "ऐ औ"
+      ],
+      "passed": true
+    },
+    {
+      "id": "vowels-signs-second-line",
+      "sha256": "f5ebec47238a178e9c775302dc1d5e1152283dd141b6095c21178803152db9cf",
+      "expected": [
+        "अ इ उ",
+        "ऋ ऌ",
+        "ए ओ",
+        "ऐ औ",
+        "का कि की कु कू कृ के कै को कौ"
+      ],
+      "passed": true
+    },
+    {
+      "id": "vs-stop-s1",
+      "sha256": "95a350d271c5a196ba4b534f811a0c8468e78b60aaad5173fc914a0b85e21e50",
+      "expected": [
+        "हरी एतौ"
+      ],
+      "passed": true
+    },
+    {
+      "id": "pg-shiva-s1",
+      "sha256": "16e01e117ef3692e4967290371f17cc211e8536989e713df917ffe144935b917",
+      "expected": [
+        "अइउण्",
+        "ऋऌक्",
+        "एओङ्",
+        "ऐऔच्",
+        "हयवरट्",
+        "लण्",
+        "ञमङणनम्",
+        "झभञ्",
+        "घढधष्",
+        "जबगडदश्",
+        "खफछठथचटतव्",
+        "कपय्",
+        "शषसर्",
+        "हल्"
+      ],
+      "passed": true
+    }
+  ]
+}

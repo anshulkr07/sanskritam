@@ -1,0 +1,1021 @@
+{
+  "id": "num-many-s1",
+  "where": "num.many#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The ghat crowded with many boats pulling up to the steps, each with its boatman calling out, a small grey-blue spirit cupping his hands as if announcing them; Dādī and Śuka watching from the steps.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nbakau: Two tall white spirits shaped like herons, standing side by side on one leg each, their feathers soft as mist.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "num.many",
+    "template": "scene",
+    "title": {
+      "en": "Many",
+      "hi": "अनेक"
+    },
+    "title_sa": "बहुवचनम्",
+    "minutes": 6,
+    "teaches": [
+      "num.plural"
+    ],
+    "needs": [
+      "num.dual"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The boats come",
+          "hi": "नावें आती हैं"
+        },
+        "image": {
+          "id": "num-many-s1",
+          "brief": "The ghat crowded with many boats pulling up to the steps, each with its boatman calling out, a small grey-blue spirit cupping his hands as if announcing them; Dādī and Śuka watching from the steps.",
+          "alt": {
+            "en": "Many boats crowding the ghat steps",
+            "hi": "घाट की सीढ़ियों पर भीड़ लगाती अनेक नावें"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "bakau"
+          ],
+          "place": "naditira"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Now the river is crowded. Boat after boat noses up to the steps, each with its own boatman, all of them calling. “Three or more,” says Dādī. “Count them: one, two, many.” The little spirit has found his sound. He cups his hands and says it for every boat.",
+          "hi": "अब नदी भीड़ से भर गई है। नाव पर नाव सीढ़ियों तक आती है, हर एक का अपना नाविक, सब पुकारते हुए। दादी कहती हैं, “तीन या अधिक। गिनो: एक, दो, अनेक।” नन्हे भूत को अपनी ध्वनि मिल गई है। वह हाथ जोड़कर हर नाव के लिए वही बोलता है।"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Three or more: the plural",
+          "hi": "तीन या अधिक: बहुवचन"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.plural"
+        ],
+        "sutras": [
+          "1.4.21"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Three or more things take the plural ({{बहुवचनम्}}). A masculine or feminine word in -अ/-आ ends in {{आः}}: {{बालकाः}} (boys), {{नौकाः}} (boats). A neuter word ends in {{आनि}}: {{फलानि}} (fruits).",
+          "hi": "तीन या अधिक वस्तुएँ बहुवचन लेती हैं। -अ/-आ वाले पुंलिंग और स्त्रीलिंग शब्द {{आः}} पर समाप्त होते हैं: {{बालकाः}} (बालक), {{नौकाः}} (नावें)। नपुंसक शब्द {{आनि}} पर: {{फलानि}} (फल)।"
+        },
+        "examples": [
+          {
+            "sa": "बालकाः",
+            "meaning": {
+              "en": "boys",
+              "hi": "बालक (अनेक)"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "बालक",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Bahu",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "नौकाः",
+            "meaning": {
+              "en": "boats",
+              "hi": "नावें"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "नौका",
+              "linga": "Stri",
+              "vibhakti": "Prathama",
+              "vacana": "Bahu",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "फलानि",
+            "meaning": {
+              "en": "fruits",
+              "hi": "फल (अनेक)"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "फल",
+              "linga": "Napumsaka",
+              "vibhakti": "Prathama",
+              "vacana": "Bahu",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "बहुवचनम्",
+          "meaning": {
+            "en": "the plural: three or more",
+            "hi": "बहुवचन: तीन या अधिक"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "One, two, many",
+          "hi": "एक, दो, अनेक"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.plural"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Four words in all three numbers",
+          "hi": "चार शब्द, तीनों वचनों में"
+        },
+        "columns": [
+          {
+            "en": "Word",
+            "hi": "शब्द"
+          },
+          {
+            "en": "One",
+            "hi": "एक"
+          },
+          {
+            "en": "Two",
+            "hi": "दो"
+          },
+          {
+            "en": "Many",
+            "hi": "अनेक"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "boat",
+                "hi": "नौका"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नौका",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नौका",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नौके",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नौका",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नौकाः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "नौका",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "boatman",
+                "hi": "नाविक"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नाविकः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नाविक",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नाविकौ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नाविक",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नाविकाः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "नाविक",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "leaf",
+                "hi": "पत्र"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पत्रम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "पत्र",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पत्रे",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "पत्र",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पत्राणि",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "पत्र",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "river",
+                "hi": "नदी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नदी",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नद्यौ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नद्यः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Plural: {{आः}} for masculine and feminine -अ/-आ words, {{आनि}} for neuter, {{यः}} for -ई words.",
+          "hi": "बहुवचन: पुंलिंग और स्त्रीलिंग -अ/-आ शब्दों में {{आः}}, नपुंसक में {{आनि}}, -ई शब्दों में {{यः}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.plural"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which form means “many boatmen”?",
+          "hi": "कौन-सा रूप ‘अनेक नाविक’ का है?"
+        },
+        "explain": {
+          "en": "{{नाविकाः}}: the plural ending {{आः}}.",
+          "hi": "{{नाविकाः}}: बहुवचन प्रत्यय {{आः}}।"
+        },
+        "options": [
+          {
+            "sa": "नाविकः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "नाविकौ",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "नाविकाः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.plural"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each plural to its meaning.",
+          "hi": "हर बहुवचन को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{आः}}, {{आनि}}, {{यः}}: the three plural endings you have met.",
+          "hi": "{{आः}}, {{आनि}}, {{यः}}: अब तक मिले तीन बहुवचन प्रत्यय।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "नौकाः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "boats",
+                "hi": "नावें"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "फलानि",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "fruits",
+                "hi": "फल"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "बालकाः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "boys",
+                "hi": "बालक"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "नद्यः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "rivers",
+                "hi": "नदियाँ"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.plural"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every plural word.",
+          "hi": "हर बहुवचन शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "नौकाः",
+            "बकौ",
+            "फलानि",
+            "बालकः",
+            "नद्यः",
+            "पत्रे"
+          ],
+          "targets": [
+            "नौकाः",
+            "फलानि",
+            "नद्यः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "Count the boats",
+          "hi": "नावें गिनिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "num.plural"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "A neuter plural: “many leaves”. Which?",
+          "hi": "नपुंसक बहुवचन: ‘अनेक पत्र’। कौन-सा?"
+        },
+        "explain": {
+          "en": "{{पत्राणि}}: neuter plural {{आनि}}; the {{न}} turns to {{ण}} after {{र}}.",
+          "hi": "{{पत्राणि}}: नपुंसक बहुवचन {{आनि}}; {{र}} के बाद {{न}} का {{ण}} हो जाता है।"
+        },
+        "options": [
+          {
+            "sa": "पत्रम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पत्रे",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पत्राणि",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“नौकाः!” The small spirit throws up his hands. Boat after boat rocks gently, as if answering to its name.",
+            "hi": "“नौकाः!” नन्हा भूत हाथ ऊपर उछालता है। नाव पर नाव धीरे-धीरे हिलती है, मानो अपना नाम सुनकर उत्तर दे रही हो।"
+          },
+          "failure": {
+            "en": "The boats drift. Many: look for {{आः}}.",
+            "hi": "नावें बहती रहती हैं। अनेक: {{आः}} खोजिए।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Why {{पत्राणि}}, not {{पत्रानि}}?",
+          "hi": "{{पत्राणि}}, {{पत्रानि}} क्यों नहीं?"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "num.plural"
+        ],
+        "sutras": [
+          "8.4.1"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "After {{र}}, {{ऋ}} or {{ष}}, a following {{न}} becomes {{ण}}, even across vowels. That is why {{पत्र}} has {{पत्राणि}} but {{फल}} has {{फलानि}}. You will meet this again in the sandhi chapters.",
+          "hi": "{{र}}, {{ऋ}} या {{ष}} के बाद आने वाला {{न}} {{ण}} बन जाता है, बीच में स्वर हों तब भी। इसीलिए {{पत्र}} का {{पत्राणि}} है और {{फल}} का {{फलानि}}। सन्धि के अध्यायों में यह फिर मिलेगा।"
+        },
+        "examples": [
+          {
+            "sa": "पत्राणि",
+            "meaning": {
+              "en": "leaves: {{ण}} after {{र}}",
+              "hi": "पत्र: {{र}} के बाद {{ण}}"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "पत्र",
+              "linga": "Napumsaka",
+              "vibhakti": "Prathama",
+              "vacana": "Bahu",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "फलानि",
+            "meaning": {
+              "en": "fruits: plain {{न}}",
+              "hi": "फल: सादा {{न}}"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "फल",
+              "linga": "Napumsaka",
+              "vibhakti": "Prathama",
+              "vacana": "Bahu",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The plural",
+          "hi": "बहुवचन"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "नौकाः · बालकाः",
+            "text": {
+              "en": "Masculine and feminine: {{आः}}.",
+              "hi": "पुंलिंग और स्त्रीलिंग: {{आः}}।"
+            }
+          },
+          {
+            "sa": "फलानि · पत्राणि",
+            "text": {
+              "en": "Neuter: {{आनि}}.",
+              "hi": "नपुंसक: {{आनि}}।"
+            }
+          },
+          {
+            "sa": "नद्यः",
+            "text": {
+              "en": "-ई words: {{यः}}.",
+              "hi": "-ई शब्द: {{यः}}।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "num-many-s1",
+    "brief": "The ghat crowded with many boats pulling up to the steps, each with its boatman calling out, a small grey-blue spirit cupping his hands as if announcing them; Dādī and Śuka watching from the steps.",
+    "alt": {
+      "en": "Many boats crowding the ghat steps",
+      "hi": "घाट की सीढ़ियों पर भीड़ लगाती अनेक नावें"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "bakau"
+    ],
+    "place": "naditira"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The ghat crowded with many boats pulling up to the steps, each with its boatman calling out, a small grey-blue spirit cupping his hands as if announcing them; Dādī and Śuka watching from the steps.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nbakau: Two tall white spirits shaped like herons, standing side by side on one leg each, their feathers soft as mist.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-758c9379-54d7-4263-948a-1bdc5486eb52.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "0c6cadaa9907b5508d5160db68746dd29ba4854f85831e36c7f563651ce3f4c3",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\num-many-s1-phone-fa109e67.webp",
+      "key": "learn/num-many-s1-phone-fa109e67.webp",
+      "sha256": "fa109e677010241ecae4ebd5795849e3656201919a049f4c0b9a19d0052341be",
+      "bytes": 123798,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/num-many-s1-phone-fa109e67.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\num-many-s1-tablet-38ec324d.webp",
+      "key": "learn/num-many-s1-tablet-38ec324d.webp",
+      "sha256": "38ec324d2e3fef13b47ea3937d737b63b252fabbedb65ddeb0107bf34037ee69",
+      "bytes": 454868,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/num-many-s1-tablet-38ec324d.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

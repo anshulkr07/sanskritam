@@ -1,0 +1,1220 @@
+{
+  "id": "with-means-s1",
+  "where": "with.means#s1",
+  "ratio": "4:3",
+  "expected": [
+    "सा लेखन्या लिखति।"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A wooden river boat gliding downstream with you, Dādī, Śuka and the boatman poling it, the spice seller waving from the bank; Dādī writing with a reed pen in her notebook; beside the boat a small pale-blue spirit shaped like a curved boat riding the current.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nnavika: A lean, sun-browned boatman in a faded blue dhoti and a cloth headwrap, kind creased eyes, a long bamboo pole in his hands.\ntarika: A small spirit shaped like a curved boat of pale blue mist, with two bright eyes at the bow.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nसा लेखन्या लिखति।",
+  "source": {
+    "id": "with.means",
+    "template": "scene",
+    "title": {
+      "en": "By boat, with a pen",
+      "hi": "नाव से, कलम से"
+    },
+    "title_sa": "करणम्",
+    "minutes": 6,
+    "teaches": [
+      "case.inst"
+    ],
+    "needs": [
+      "case.acc"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Downstream",
+          "hi": "धारा के साथ"
+        },
+        "image": {
+          "id": "with-means-s1",
+          "brief": "A wooden river boat gliding downstream with you, Dādī, Śuka and the boatman poling it, the spice seller waving from the bank; Dādī writing with a reed pen in her notebook; beside the boat a small pale-blue spirit shaped like a curved boat riding the current.",
+          "alt": {
+            "en": "A boat gliding downstream with a small boat-shaped spirit riding beside it",
+            "hi": "धारा में चलती नाव और उसके बगल में नाव के आकार का नन्हा भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "navika",
+            "tarika"
+          ],
+          "place": "nauka"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The boat glides out into the current, the spice seller waving from the bank. Dādī writes in her notebook with a thin reed pen. The boatman pushes off with his long pole. Śuka cracks a seed with his beak. Beside the boat rides a pale blue wisp shaped like a little boat itself: Tarikā. “How is each thing done?” asks Dādī. “By what means?”",
+          "hi": "नाव धारा में सरकती है, तट से मसाले वाला हाथ हिलाता है। दादी अपनी कॉपी में पतली सरकंडे की कलम से लिखती हैं। नाविक लम्बी डंडी से नाव धकेलता है। शुक चोंच से बीज तोड़ता है। नाव के बगल में नन्ही नाव के आकार का हल्का नीला धुआँ चलता है: तरिका। दादी पूछती हैं, “हर काम किस साधन से होता है?”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "नौकया गच्छामः।",
+            "gloss": {
+              "en": "We go by boat.",
+              "hi": "हम नाव से जाते हैं।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The means: the third case",
+          "hi": "साधन: तृतीया"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.inst"
+        ],
+        "sutras": [
+          "2.3.18",
+          "1.4.42"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "The tool or means by which something is done takes the third case, {{तृतीया}}: {{नौकया}} (by boat), {{दण्डेन}} (with a pole), {{हस्तेन}} (with the hand).",
+          "hi": "जिस साधन से कोई काम होता है वह तृतीया में आता है: {{नौकया}} (नाव से), {{दण्डेन}} (डंडी से), {{हस्तेन}} (हाथ से)।"
+        },
+        "examples": [
+          {
+            "sa": "वयम् नौकया गच्छामः।",
+            "meaning": {
+              "en": "We go by boat.",
+              "hi": "हम नाव से जाते हैं।"
+            },
+            "words": [
+              {
+                "sa": "वयम्",
+                "gloss": {
+                  "en": "we",
+                  "hi": "हम"
+                },
+                "check": null
+              },
+              {
+                "sa": "नौकया",
+                "gloss": {
+                  "en": "by boat",
+                  "hi": "नाव से"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नौका",
+                  "linga": "Stri",
+                  "vibhakti": "Trtiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छामः",
+                "gloss": {
+                  "en": "go",
+                  "hi": "जाते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "सा लेखन्या लिखति।",
+            "meaning": {
+              "en": "She writes with a pen.",
+              "hi": "वह कलम से लिखती है।"
+            },
+            "words": [
+              {
+                "sa": "सा",
+                "gloss": {
+                  "en": "she",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "लेखन्या",
+                "gloss": {
+                  "en": "with a pen",
+                  "hi": "कलम से"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "लेखनी",
+                  "linga": "Stri",
+                  "vibhakti": "Trtiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "लिखति",
+                "gloss": {
+                  "en": "writes",
+                  "hi": "लिखती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "लिख्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "नाविकः दण्डेन नौकाम् नयति।",
+            "meaning": {
+              "en": "The boatman drives the boat with a pole.",
+              "hi": "नाविक डंडी से नाव चलाता है।"
+            },
+            "words": [
+              {
+                "sa": "नाविकः",
+                "gloss": {
+                  "en": "boatman",
+                  "hi": "नाविक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नाविक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "दण्डेन",
+                "gloss": {
+                  "en": "with a pole",
+                  "hi": "डंडी से"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "दण्ड",
+                  "linga": "Pum",
+                  "vibhakti": "Trtiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "नौकाम्",
+                "gloss": {
+                  "en": "boat (object)",
+                  "hi": "नाव (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नौका",
+                  "linga": "Stri",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "नयति",
+                "gloss": {
+                  "en": "drives",
+                  "hi": "चलाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "नी",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "तृतीया",
+          "meaning": {
+            "en": "the third case: by, with",
+            "hi": "तीसरी विभक्ति: से, के द्वारा"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "First case and third case",
+          "hi": "प्रथमा और तृतीया"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.inst"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The same word as itself and as a means",
+          "hi": "वही शब्द स्वयं और साधन के रूप में"
+        },
+        "columns": [
+          {
+            "en": "Word",
+            "hi": "शब्द"
+          },
+          {
+            "en": "1st: itself",
+            "hi": "प्रथमा: स्वयं"
+          },
+          {
+            "en": "3rd: by means of",
+            "hi": "तृतीया: साधन से"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "boat",
+                "hi": "नाव"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नौका",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नौका",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नौकया",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "नौका",
+                "linga": "Stri",
+                "vibhakti": "Trtiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "pole",
+                "hi": "डंडी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "दण्डः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "दण्ड",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "दण्डेन",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "दण्ड",
+                "linga": "Pum",
+                "vibhakti": "Trtiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "hand",
+                "hi": "हाथ"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "हस्तः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "हस्त",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "हस्तेन",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "हस्त",
+                "linga": "Pum",
+                "vibhakti": "Trtiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "pen",
+                "hi": "कलम"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लेखनी",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लेखनी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लेखन्या",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "लेखनी",
+                "linga": "Stri",
+                "vibhakti": "Trtiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "fruit",
+                "hi": "फल"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "फलम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलेन",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Trtiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Masculine and neuter -अ: {{एन}}. Feminine -आ: {{अया}}. Feminine -ई: {{ई}} → {{या}}.",
+          "hi": "पुंलिंग और नपुंसक -अ में {{एन}}। स्त्रीलिंग -आ में {{अया}}। स्त्रीलिंग -ई में {{ई}} → {{या}}।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Two more uses",
+          "hi": "दो और प्रयोग"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.inst"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "The third case also says how, in what manner: {{सुखेन}} (happily), {{वेगेन}} (swiftly). And with the eyes, ears, hands in pairs it goes dual: {{नेत्राभ्याम्}} (with the two eyes).",
+          "hi": "तृतीया यह भी बताती है कि कैसे, किस ढंग से: {{सुखेन}} (सुख से), {{वेगेन}} (वेग से)। और आँखों, कानों, हाथों की जोड़ी के साथ वह द्विवचन हो जाती है: {{नेत्राभ्याम्}} (दोनों आँखों से)।"
+        },
+        "examples": [
+          {
+            "sa": "सुखेन",
+            "meaning": {
+              "en": "happily, in comfort",
+              "hi": "सुख से"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "सुख",
+              "linga": "Napumsaka",
+              "vibhakti": "Trtiya",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "वेगेन",
+            "meaning": {
+              "en": "swiftly",
+              "hi": "वेग से"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "वेग",
+              "linga": "Pum",
+              "vibhakti": "Trtiya",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "नेत्राभ्याम्",
+            "meaning": {
+              "en": "with the two eyes",
+              "hi": "दोनों आँखों से"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "नेत्र",
+              "linga": "Napumsaka",
+              "vibhakti": "Trtiya",
+              "vacana": "Dvi",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.inst"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He writes with a pen.” Which word for “pen”?",
+          "hi": "‘वह कलम से लिखता है।’ ‘कलम’ के लिए कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "The means takes the third case: {{लेखन्या}}.",
+          "hi": "साधन तृतीया लेता है: {{लेखन्या}}।"
+        },
+        "options": [
+          {
+            "sa": "लेखनी",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "लेखनीम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "लेखन्या",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.inst"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each means to its meaning.",
+          "hi": "हर साधन को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{एन}}, {{अया}}: the third-case endings.",
+          "hi": "{{एन}}, {{अया}}: तृतीया के प्रत्यय।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "नौकया",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "by boat",
+                "hi": "नाव से"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "दण्डेन",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "with a pole",
+                "hi": "डंडी से"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "हस्तेन",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "with the hand",
+                "hi": "हाथ से"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "फलेन",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "with a fruit",
+                "hi": "फल से"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.inst"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that names a means (third case).",
+          "hi": "साधन बताने वाले हर शब्द (तृतीया) को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "नौकया",
+            "नौका",
+            "दण्डेन",
+            "दण्डः",
+            "हस्तेन",
+            "हस्तः"
+          ],
+          "targets": [
+            "नौकया",
+            "दण्डेन",
+            "हस्तेन"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "By boat",
+          "hi": "नाव से"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.inst"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “The boatman goes by boat.”",
+          "hi": "कहिए: ‘नाविक नाव से जाता है।’"
+        },
+        "explain": {
+          "en": "{{नाविकः नौकया गच्छति}}: the boat is the means.",
+          "hi": "{{नाविकः नौकया गच्छति}}: नाव साधन है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "नाविकः",
+          "नौकया",
+          "गच्छति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“नौकया गच्छति,” you say. Tarikā rocks gently on the water and lets out a long note, like wind over a bottle.",
+            "hi": "“नौकया गच्छति,” आप कहते हैं। तरिका पानी पर धीरे से डोलती है और बोतल पर हवा जैसी एक लम्बी तान छोड़ती है।"
+          },
+          "failure": {
+            "en": "The little boat spirit looks puzzled. The means, {{नौकया}}, comes before the verb.",
+            "hi": "नन्ही नाव उलझन में दिखती है। साधन {{नौकया}} क्रिया से पहले आता है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's tool",
+          "hi": "पाणिनि का करण"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "case.inst"
+        ],
+        "sutras": [
+          "1.4.42",
+          "2.3.18"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 1.4.42, {{साधकतमं करणम्}}, calls the tool “the most effective means” of an action. Sūtra 2.3.18 puts the tool, and the doer of a passive verb, in the third case.",
+          "hi": "सूत्र 1.4.42, {{साधकतमं करणम्}}, उपकरण को क्रिया का ‘सबसे प्रभावी साधन’ कहता है। सूत्र 2.3.18 साधन को, और कर्मवाच्य के कर्ता को, तृतीया में रखता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "करणम्",
+          "meaning": {
+            "en": "the instrument",
+            "hi": "करण: साधन"
+          }
+        }
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "By means of",
+          "hi": "साधन से"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "नौकया · दण्डेन · हस्तेन",
+            "text": {
+              "en": "The means takes the third case.",
+              "hi": "साधन तृतीया में आता है।"
+            }
+          },
+          {
+            "sa": "सुखेन · वेगेन",
+            "text": {
+              "en": "…and so does the manner.",
+              "hi": "…और ढंग भी।"
+            }
+          },
+          {
+            "sa": "एन · अया",
+            "text": {
+              "en": "Masculine/neuter and feminine endings.",
+              "hi": "पुंलिंग/नपुंसक और स्त्रीलिंग के प्रत्यय।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "with-means-s1",
+    "brief": "A wooden river boat gliding downstream with you, Dādī, Śuka and the boatman poling it, the spice seller waving from the bank; Dādī writing with a reed pen in her notebook; beside the boat a small pale-blue spirit shaped like a curved boat riding the current.",
+    "alt": {
+      "en": "A boat gliding downstream with a small boat-shaped spirit riding beside it",
+      "hi": "धारा में चलती नाव और उसके बगल में नाव के आकार का नन्हा भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "navika",
+      "tarika"
+    ],
+    "place": "nauka"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A wooden river boat gliding downstream with you, Dādī, Śuka and the boatman poling it, the spice seller waving from the bank; Dādī writing with a reed pen in her notebook; beside the boat a small pale-blue spirit shaped like a curved boat riding the current.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nnavika: A lean, sun-browned boatman in a faded blue dhoti and a cloth headwrap, kind creased eyes, a long bamboo pole in his hands.\ntarika: A small spirit shaped like a curved boat of pale blue mist, with two bright eyes at the bow.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-02bd78ff-4820-4487-ba6a-14561d6533de.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "55f409307b95f1eaa750fefd886490586eb8e2bcff05bf70caa5c053c7dddf5f",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\with-means-s1-phone-4d0660d7.webp",
+      "key": "learn/with-means-s1-phone-4d0660d7.webp",
+      "sha256": "4d0660d777ae7344a97deb68914afd1f79a608fdb71c7cbf0bdb151f77acb128",
+      "bytes": 125118,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/with-means-s1-phone-4d0660d7.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\with-means-s1-tablet-eee3ea27.webp",
+      "key": "learn/with-means-s1-tablet-eee3ea27.webp",
+      "sha256": "eee3ea276cd8f0a7f793fefb0f746c698eb12f16e690ddf97fafdfcbe1493cf6",
+      "bytes": 487328,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/with-means-s1-tablet-eee3ea27.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

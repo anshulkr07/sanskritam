@@ -11,7 +11,7 @@ needs:
 - verb.lan
 - verb.lrt
 - verb.lit
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -39,6 +39,7 @@ cards:
     place: smashana
     ratio: '4:3'
     id: vc1-bhu-s1
+    text_in_image: ["भू", "भवति", "नी", "नयति", "जि", "जयति"]
   narration:
     en: 'On a flat stone the Vetāla opens a worn ledger. A little spirit with ten tiny brass drawers set into his body hops out and begins yanking them open, stuffing roots in and out, muddled. “दश गणाः,” says the Vetāla patiently. “Ten classes. A verb''s class decides the small sign before its ending. Tonight, four of them. First: the one that gives भवति.”'
     hi: 'एक चपटे पत्थर पर वेताल एक घिसी बही खोलता है। शरीर में दस नन्हे पीतल के दराज़ों वाला एक छोटा भूत कूदकर बाहर आता है और उन्हें खींचने-ठूँसने लगता है, उलझा हुआ। “दश गणाः,” वेताल धैर्य से कहता है। “दस गण। क्रिया का गण तय करता है कि प्रत्यय से पहले कौन-सा छोटा चिह्न आए। आज उनमें से चार। पहला: जो भवति देता है।”'
@@ -306,8 +307,8 @@ cards:
   - verb.class-1
   mode: match
   prompt:
-    en: Join each root to its “he” form.
-    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+    en: Match each root with its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से मिलाइए।
   explain:
     en: The vowel is strengthened in each.
     hi: हर एक में स्वर बलवान् होता है।

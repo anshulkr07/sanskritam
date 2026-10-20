@@ -1,0 +1,590 @@
+{
+  "id": "joined-hum-breath-s1",
+  "where": "joined.hum-breath#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The pillar with two carved marks highlighted, a single dot above one letter and a pair of dots after another; the sleeping green spirit humming, with tiny wavy lines of sound drifting from his nose and a puff of breath from his mouth.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nnidralu: A pale sage-green round spirit with half-closed eyes and a tiny nightcap of mist, often yawning.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "source": {
+    "id": "joined.hum-breath",
+    "template": "scene",
+    "title": {
+      "en": "The hum and the breath",
+      "hi": "गूँज और साँस"
+    },
+    "title_sa": "अनुस्वारविसर्गौ",
+    "minutes": 6,
+    "teaches": [
+      "script.anusvara",
+      "script.visarga"
+    ],
+    "needs": [
+      "script.conjunct"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Hum and sigh",
+          "hi": "गूँज और आह"
+        },
+        "image": {
+          "id": "joined-hum-breath-s1",
+          "brief": "The pillar with two carved marks highlighted, a single dot above one letter and a pair of dots after another; the sleeping green spirit humming, with tiny wavy lines of sound drifting from his nose and a puff of breath from his mouth.",
+          "alt": {
+            "en": "A pillar with a dot above one letter and two dots after another, and a sleeping spirit humming and sighing",
+            "hi": "एक बिन्दु और दो बिन्दुओं वाला स्तम्भ, गुनगुनाता सोया भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "nidralu"
+          ],
+          "place": "devalaya"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The green spirit hums in his sleep, a soft nasal sound, then sighs out a little breath. Above one letter on the pillar sits a dot, after another two dots, just like his hum and sigh. “The pillar is breathing,” whispers Śuka.",
+          "hi": "हरा भूत नींद में गुनगुनाता है, एक कोमल नासिक्य ध्वनि, फिर हल्की साँस छोड़ता है। स्तम्भ पर एक अक्षर के ऊपर एक बिन्दु है, दूसरे के बाद दो बिन्दु, ठीक उसकी गूँज और आह की तरह। “स्तम्भ साँस ले रहा है,” शुक फुसफुसाता है।"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The hum: ं",
+          "hi": "गूँज: ं"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.anusvara",
+          "script.visarga"
+        ],
+        "sutras": [
+          "8.3.23"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "The dot above a letter, the {{अनुस्वारः}}, is a nasal hum through the nose: {{अं}}. At the end of a word it stands for {{म्}}: {{रामम्}} may be written {{रामं}}. Inside a word it hums like the nasal of the letter after it.",
+          "hi": "अक्षर के ऊपर का बिन्दु, {{अनुस्वारः}}, नाक से निकलने वाली नासिक्य गूँज है: {{अं}}। शब्द के अन्त में यह {{म्}} का काम करता है: {{रामम्}} को {{रामं}} भी लिखते हैं। शब्द के भीतर यह अगले अक्षर के नासिक्य की तरह गूँजता है।"
+        },
+        "examples": [
+          {
+            "sa": "गंगा",
+            "meaning": {
+              "en": "the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}",
+              "hi": "गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है"
+            },
+            "words": [],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "संस्कृतम्",
+            "meaning": {
+              "en": "Sanskrit: {{सं}} hums before {{स्}}",
+              "hi": "संस्कृत: {{स्}} से पहले {{सं}} गूँजता है"
+            },
+            "words": [],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "अनुस्वारः",
+          "meaning": {
+            "en": "the dot: a nasal hum",
+            "hi": "बिन्दु: नासिक्य गूँज"
+          }
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "The breath: ः",
+          "hi": "साँस: ः"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.anusvara",
+          "script.visarga"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Two dots after a vowel, the {{विसर्गः}}, are a soft breath that echoes the vowel: {{रामः}} ends in a light “ha”. It is never a letter of its own at the start of a word.",
+          "hi": "स्वर के बाद दो बिन्दु, {{विसर्गः}}, हल्की साँस हैं जो उस स्वर की गूँज बनती है: {{रामः}} अन्त में हल्के ‘ह’ पर रुकता है। यह कभी शब्द के आरम्भ का अक्षर नहीं होता।"
+        },
+        "examples": [
+          {
+            "sa": "रामः",
+            "meaning": {
+              "en": "Rāma: ends in a breath",
+              "hi": "राम: साँस पर समाप्त"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "राम",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "नमः",
+            "meaning": {
+              "en": "homage: {{नमः}}",
+              "hi": "नमन: {{नमः}}"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "नमस्",
+              "linga": "Napumsaka",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "विसर्गः",
+          "meaning": {
+            "en": "the two dots: a soft breath",
+            "hi": "दो बिन्दु: हल्की साँस"
+          }
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.anusvara",
+          "script.visarga"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each mark to its sound.",
+          "hi": "हर चिह्न को उसकी ध्वनि से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{ं}} hums, {{ः}} breathes, {{्}} silences the vowel.",
+          "hi": "{{ं}} गूँजता है, {{ः}} साँस लेता है, {{्}} स्वर को चुप कराता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "ं",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "a nasal hum",
+                "hi": "नासिक्य गूँज"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "a soft breath",
+                "hi": "हल्की साँस"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "no vowel",
+                "hi": "बिना स्वर"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.anusvara",
+          "script.visarga"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which mark is the hum?",
+          "hi": "गूँज का चिह्न कौन-सा है?"
+        },
+        "explain": {
+          "en": "{{ं}}, one dot above, is the hum. {{ः}} is the breath.",
+          "hi": "{{ं}}, ऊपर एक बिन्दु, गूँज है। {{ः}} साँस है।"
+        },
+        "options": [
+          {
+            "sa": "ं",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "ः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "ऽ",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.anusvara",
+          "script.visarga"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that ends in a breath {{ः}}.",
+          "hi": "{{ः}} पर समाप्त होने वाले हर शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "रामः",
+            "फलम्",
+            "बालः",
+            "नमः",
+            "पत्रम्",
+            "देवः"
+          ],
+          "targets": [
+            "रामः",
+            "बालः",
+            "नमः",
+            "देवः"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.anusvara",
+          "script.visarga"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Build {{रामः}} from the pieces.",
+          "hi": "टुकड़ों से {{रामः}} बनाइए।"
+        },
+        "explain": {
+          "en": "{{रा}} + {{मः}}: {{रामः}}.",
+          "hi": "{{रा}} + {{मः}}: {{रामः}}।"
+        },
+        "options": [],
+        "answers": [
+          "रामः"
+        ],
+        "tiles": [
+          "रा",
+          "मः",
+          "म",
+          "ः"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "The great word",
+          "hi": "बड़ा शब्द"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.anusvara",
+          "script.visarga"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "The hum, the conjunct, the vowel: put the pieces of {{संस्कृतम्}} in order.",
+          "hi": "गूँज, संयुक्ताक्षर, स्वर: {{संस्कृतम्}} के टुकड़े क्रम में लगाइए।"
+        },
+        "explain": {
+          "en": "{{सं}} + {{स्कृ}} + {{तम्}}: the hum, the join, the end.",
+          "hi": "{{सं}} + {{स्कृ}} + {{तम्}}: गूँज, संयोग, अन्त।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "सं",
+          "स्कृ",
+          "तम्"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "The pillar hums with you: “संस्कृतम्”. The green spirit's nightcap slides over one eye as he stretches. “Hmm… breath… hum…”",
+            "hi": "स्तम्भ आपके साथ गूँजता है: “संस्कृतम्”। हरे भूत की टोपी एक आँख पर खिसक जाती है और वह अँगड़ाई लेता है। “हम्म… साँस… गूँज…”"
+          },
+          "failure": {
+            "en": "The pillar goes quiet. Start with the hum: {{सं}}.",
+            "hi": "स्तम्भ चुप हो जाता है। गूँज से शुरू कीजिए: {{सं}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's rule for the hum",
+          "hi": "गूँज का पाणिनि-नियम"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "script.anusvara"
+        ],
+        "sutras": [
+          "8.3.23"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 8.3.23, {{मोऽनुस्वारः}}: a final {{म्}} before a consonant becomes the dot. So {{रामम्}} + {{नमति}} is written {{रामं नमति}}.",
+          "hi": "सूत्र 8.3.23, {{मोऽनुस्वारः}}: व्यंजन से पहले अन्त का {{म्}} बिन्दु बन जाता है। इसलिए {{रामम्}} + {{नमति}} लिखा जाता है {{रामं नमति}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The hum and the breath",
+          "hi": "गूँज और साँस"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "ं",
+            "text": {
+              "en": "The hum: a nasal through the nose.",
+              "hi": "गूँज: नाक से नासिक्य।"
+            }
+          },
+          {
+            "sa": "ः",
+            "text": {
+              "en": "The breath: a soft echo after a vowel.",
+              "hi": "साँस: स्वर के बाद हल्की प्रतिध्वनि।"
+            }
+          },
+          {
+            "sa": "संस्कृतम्",
+            "text": {
+              "en": "Hum, join, end.",
+              "hi": "गूँज, संयोग, अन्त।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "joined-hum-breath-s1",
+    "brief": "The pillar with two carved marks highlighted, a single dot above one letter and a pair of dots after another; the sleeping green spirit humming, with tiny wavy lines of sound drifting from his nose and a puff of breath from his mouth.",
+    "alt": {
+      "en": "A pillar with a dot above one letter and two dots after another, and a sleeping spirit humming and sighing",
+      "hi": "एक बिन्दु और दो बिन्दुओं वाला स्तम्भ, गुनगुनाता सोया भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "nidralu"
+    ],
+    "place": "devalaya"
+  },
+  "generator": "built-in image_gen",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-46713055-e521-4da4-9180-5c2cf7670719.png",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "f6c7979f616bcbb9becc012db472c51d8478bab6d8af66c5dea7d1c674c3d4f6",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\joined-hum-breath-s1-phone-cae2fea7.webp",
+      "key": "learn/joined-hum-breath-s1-phone-cae2fea7.webp",
+      "sha256": "cae2fea7cf8127be3c9f13782406ed6bd67f436ba2600fcf4e40a71e8d7ea352",
+      "bytes": 104132,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/joined-hum-breath-s1-phone-cae2fea7.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\joined-hum-breath-s1-tablet-abcf348a.webp",
+      "key": "learn/joined-hum-breath-s1-tablet-abcf348a.webp",
+      "sha256": "abcf348a53a717a2731bc8afc75d21e40c49e429d9219a396b1669b009c939c6",
+      "bytes": 427556,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/joined-hum-breath-s1-tablet-abcf348a.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

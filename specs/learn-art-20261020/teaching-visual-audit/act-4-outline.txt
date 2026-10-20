@@ -1,0 +1,427 @@
+ACT 4: The Throne Hall
+
+UNIT vowel-sandhi — Vowels that join
+
+vs.like [scene] Two vowels of one family
+s1 story [IMAGE vs-like-s1] The throne hall
+t1 teach Joining sounds | When two words meet, the last sound of the first and the first sound of the second may join. This is {{सन्धिः}}. When two vowels of the same family meet, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, they merge into one long vowel: {{विद्या + आलयः}} gives {{विद्यालयः}}.
+tb1 table Like vowels | Two vowels of one family make one long vowel | 7 rows x 3 cols
+e1 explore | mark_words {"passage": ["विद्यालयः", "विद्या", "महात्मा", "महा", "सूक्तम्", "सु"], "targets": ["विद्यालयः", "महात्मा", "सूक्तम्"]}
+e2 explore | sandhi_mixer {"pairs": [{"first": "विद्या", "second": "आलयः", "joined": "विद्यालयः", "sutras": ["6.1.101"]}, {"first": "हिम", "second": "आलयः", "joined": "हिमालयः", "sutras": ["6.1.101"]}, {"first": "महा", "second": "आत्मा", "joined": "महात्मा", "sutras": ["6.1.101"]}, {"first": "कवि", "second": "इन्द्रः", "joined": "कवीन्द्रः", "sutras": ["6.1.101"]}, {"first": "सु", "second": "उक्तम्", "joined": "सूक्तम्", "sutras": ["6.1.101"]}]}
+pn teach Pāṇini's merging | Sūtra 6.1.101, {{अकः सवर्णे दीर्घः}}, says that when {{अ}}, {{इ}}, {{उ}} or {{ऋ}} (short or long) meets a vowel of its own family, the two become one long vowel. 1.1.9, {{तुल्यास्यप्रयत्नं सवर्णम्}}, defines “own family”: sounds made in the same place with the same effort.
+sum summary Like vowels
+
+vs.guna [scene] When अ meets इ or उ
+s1 story [IMAGE vs-guna-s1] The second statue
+t1 teach Strengthening | When {{अ}} or {{आ}} meets {{इ}} or {{ई}}, the result is {{ए}}; with {{उ}} or {{ऊ}}, it is {{ओ}}; with {{ऋ}}, it is {{अर्}}. {{गण + ईशः}} gives {{गणेशः}}, {{महा + उत्सवः}} gives {{महोत्सवः}}, {{सप्त + ऋषयः}} gives {{सप्तर्षयः}}. This is {{गुणः}}. | अ + इ → ए · अ + उ → ओ · अ + ऋ → अर्
+tb1 table Guṇa | अ meets इ, उ or ऋ | 7 rows x 3 cols
+e1 explore | mark_words {"passage": ["गणेशः", "विद्यालयः", "महोत्सवः", "महात्मा", "सप्तर्षयः", "सूक्तम्"], "targets": ["गणेशः", "महोत्सवः", "सप्तर्षयः"]}
+e2 explore | sandhi_mixer {"pairs": [{"first": "उप", "second": "इन्द्रः", "joined": "उपेन्द्रः", "sutras": ["6.1.87"]}, {"first": "महा", "second": "ईश्वरः", "joined": "महेश्वरः", "sutras": ["6.1.87"]}, {"first": "सूर्य", "second": "उदयः", "joined": "सूर्योदयः", "sutras": ["6.1.87"]}, {"first": "देव", "second": "ऋषिः", "joined": "देवर्षिः", "sutras": ["6.1.87"]}]}
+pn teach Pāṇini's guṇa | Sūtra 6.1.87, {{आद्गुणः}}, says that after {{अ}} or {{आ}}, a following vowel merges with it into its guṇa. 1.1.2, {{अदेङ् गुणः}}, names {{अ}}, {{ए}}, {{ओ}} guṇa. So {{अ + इ}} gives {{ए}}, {{अ + उ}} gives {{ओ}}.
+sum summary Guṇa
+
+vs.vrddhi [scene] When अ meets ए or ओ
+s1 story [IMAGE vs-vrddhi-s1] The third statue
+t1 teach Growing to the top | When {{अ}} or {{आ}} meets {{ए}} or {{ऐ}}, the result is {{ऐ}}; when it meets {{ओ}} or {{औ}}, it is {{औ}}. {{सदा + एव}} gives {{सदैव}}; {{जल + ओघः}} gives {{जलौघः}}. This is {{वृद्धिः}}, the strongest grade.
+tb1 table Vṛddhi | अ meets ए or ओ | 6 rows x 3 cols
+e1 explore | mark_words {"passage": ["सदैव", "गणेशः", "जलौघः", "महोत्सवः", "वनौषधिः", "सूक्तम्"], "targets": ["सदैव", "जलौघः", "वनौषधिः"]}
+e2 explore | sandhi_mixer {"pairs": [{"first": "सदा", "second": "एव", "joined": "सदैव", "sutras": ["6.1.88"]}, {"first": "जल", "second": "ओघः", "joined": "जलौघः", "sutras": ["6.1.88"]}, {"first": "वन", "second": "औषधिः", "joined": "वनौषधिः", "sutras": ["6.1.88"]}, {"first": "महा", "second": "ऐश्वर्यम्", "joined": "महैश्वर्यम्", "sutras": ["6.1.88"]}]}
+pn teach Pāṇini's growth | Sūtra 6.1.88, {{वृद्धिरेचि}}, says that when {{अ}} or {{आ}} meets an {{एच्}} vowel ({{ए}}, {{ओ}}, {{ऐ}}, {{औ}}) the result is vṛddhi. 1.1.1, {{वृद्धिरादैच्}}, names {{आ}}, {{ऐ}}, {{औ}} vṛddhi. So {{अ + ए}} gives {{ऐ}} and {{अ + ओ}} gives {{औ}}.
+sum summary Vṛddhi
+
+vs.glide [scene] A vowel becomes a glide
+s1 story [IMAGE vs-glide-s1] The fourth statue
+t1 teach Vowel to glide | When {{इ}}/{{ई}}, {{उ}}/{{ऊ}} or {{ऋ}} meets a different vowel, it becomes {{य्}}, {{व्}} or {{र्}}: {{इति + आदि}} gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}, {{पितृ + आज्ञा}} gives {{पित्राज्ञा}}. This is {{यण्}}.
+tb1 table Glides | इ, उ, ऋ before a different vowel | 8 rows x 3 cols
+e1 explore | mark_words {"passage": ["इत्यादि", "विद्यालयः", "स्वागतम्", "महात्मा", "अत्यधिकम्", "सदैव"], "targets": ["इत्यादि", "स्वागतम्", "अत्यधिकम्"]}
+e2 explore | sandhi_mixer {"pairs": [{"first": "इति", "second": "आदि", "joined": "इत्यादि", "sutras": ["6.1.77"]}, {"first": "प्रति", "second": "एकम्", "joined": "प्रत्येकम्", "sutras": ["6.1.77"]}, {"first": "सु", "second": "आगतम्", "joined": "स्वागतम्", "sutras": ["6.1.77"]}, {"first": "पितृ", "second": "आज्ञा", "joined": "पित्राज्ञा", "sutras": ["6.1.77"]}]}
+pn teach Pāṇini's glide | Sūtra 6.1.77, {{इको यणचि}}, says that {{इक्}} (the vowels {{इ}}, {{उ}}, {{ऋ}}, {{ऌ}}) is replaced by {{यण्}} ({{य्}}, {{व्}}, {{र्}}, {{ल्}}) before a vowel. So {{इति + आदि}} gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}.
+sum summary Glides
+
+vs.e-o [scene] The special ए and ओ
+s1 story [IMAGE vs-e-o-s1] The fifth statue
+t1 teach ए, ओ, ऐ, औ before a vowel | {{औ}} before a vowel becomes {{आव्}}: {{नौ + इकः}} gives {{नाविकः}}. {{ऐ}} becomes {{आय्}} (often written {{आ}} before a vowel: {{तस्मै + इदम्}} gives {{तस्मा इदम्}}). {{ए}} before {{इ}} or {{आ}} drops to {{अ}}: {{हरे + इह}} gives {{हर इह}}. Before {{अ}} it leaves {{ऽ}}: {{वने + अस्ति}} gives {{वनेऽस्ति}}.
+tb1 table ए, ओ, ऐ, औ and ऽ | Before a vowel | 6 rows x 3 cols
+e1 explore | mark_words {"passage": ["वनेऽस्ति", "वनम्", "हरेऽव", "हरः", "नाविकः", "नावः"], "targets": ["वनेऽस्ति", "हरेऽव"]}
+e2 explore | sandhi_mixer {"pairs": [{"first": "नौ", "second": "इकः", "joined": "नाविकः", "sutras": ["6.1.78"]}, {"first": "पौ", "second": "अकः", "joined": "पावकः", "sutras": ["6.1.78"]}, {"first": "हरे", "second": "इह", "joined": "हर इह", "sutras": ["6.1.78"]}, {"first": "वने", "second": "अस्ति", "joined": "वनेऽस्ति", "sutras": ["6.1.109"]}]}
+pn teach Pāṇini's ay, av | Sūtra 6.1.78, {{एचोऽयवायावः}}, replaces {{ए}}, {{ओ}}, {{ऐ}}, {{औ}} before a vowel with {{अय्}}, {{अव्}}, {{आय्}}, {{आव्}}. And 6.1.109, {{एङः पदान्तादति}}, says that a word-final {{ए}} or {{ओ}} before {{अ}} keeps itself and the {{अ}} is dropped, marked {{ऽ}}.
+sum summary Vowels before vowels
+
+vs.stop [scene] When the rule stops
+s1 story [IMAGE vs-stop-s1] The sixth statue
+t1 teach Words that stay apart | Some words never join. The dual forms ending in {{ई}}, {{ऊ}} or {{ए}} stay apart before a vowel: {{हरी + एतौ}} stays {{हरी एतौ}}; {{ते + अत्र}} stays {{ते अत्र}}. These are {{प्रगृह्याः}}. Interjections such as {{अहो}} also stand apart.
+tb1 table Words that do not join | These stay apart | 5 rows x 4 cols
+e1 explore | mark_words {"passage": ["हरी", "हरिः", "मुनी", "मुनिः", "ते", "सः"], "targets": ["हरी", "मुनी", "ते"]}
+pn teach Pāṇini's closed door | Sūtra 1.1.11, {{ईदूदेद्द्विवचनं प्रगृह्यम्}}, names the dual forms ending in {{ई}}, {{ऊ}}, {{ए}} {{प्रगृह्य}}. And 6.1.125, {{प्लुतप्रगृह्या अचि नित्यम्}}, says a {{प्रगृह्य}} stays as it is before a vowel. So there is no sandhi.
+sum summary When the rule stops
+
+vs.revision [revision] Everything about vowel sandhi
+core revision The joining rules | 5 revision rules
+conditions revision How to tell which | 2 revision rules
+exceptions revision Odd cases | 2 revision rules
+blocked revision When the join is blocked | 1 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 2 revision rules
+sheet revision Quick sheet | 6 revision rules
+
+vs.check [check] Say what the statues say
+
+UNIT visarga-sandhi — The breath that changes
+
+vis.o [scene] When -aḥ becomes -o
+s1 story [IMAGE vis-o-s1] The seventh statue
+t1 teach The breath ः | A word can end in the breath {{ः}}, the {{विसर्गः}}: {{रामः}}, {{देवः}}, {{सः}}. Before a soft sound, a vowel, or a soft consonant, the ending {{-अः}} becomes {{-ओ}}. Before {{अ}} the {{अ}} is dropped, leaving {{ऽ}}: {{रामः + अस्ति}} gives {{रामोऽस्ति}}; {{रामः + गच्छति}} gives {{रामो गच्छति}}.
+tb1 table -अः becomes -ओ | Before a soft sound | 8 rows x 3 cols
+e1 explore | mark_words {"passage": ["रामोऽस्ति", "रामः", "देवो", "देवः", "तपोवनम्", "तपः"], "targets": ["रामोऽस्ति", "देवो", "तपोवनम्"]}
+e2 explore | sandhi_mixer {"pairs": [{"first": "रामः", "second": "अस्ति", "joined": "रामोऽस्ति", "sutras": ["8.2.66", "6.1.113"]}, {"first": "सः", "second": "अपि", "joined": "सोऽपि", "sutras": ["6.1.113"]}, {"first": "देवः", "second": "भवति", "joined": "देवो भवति", "sutras": ["8.2.66", "6.1.114"]}, {"first": "तपः", "second": "वनम्", "joined": "तपोवनम्", "sutras": ["8.2.66", "6.1.114"]}]}
+pn teach Pāṇini's breath | Sūtra 8.2.66, {{ससजुषो रुः}}, turns a final {{स्}} into {{रु}}, and 8.3.15, {{खरवसानयोर्विसर्जनीयः}}, makes the {{र्}} a visarga at a pause. But 6.1.113, {{अतो रोरप्लुतादप्लुते}}, makes {{रु}} after {{अ}} into {{उ}} before a short {{अ}}, and 6.1.114, {{हशि च}}, does the same before a soft consonant.
+sum summary -अः becomes -ओ
+
+vis.s [scene] The hiss returns
+s1 story [IMAGE vis-s-s1] The eighth statue
+t1 teach The breath becomes a hiss | Before a hard consonant the visarga turns into a hiss in the same place as that consonant: before {{च}}/{{छ}} it is {{श्}}, before {{त}}/{{थ}} it is {{स्}}, before {{ट}}/{{ठ}} it is {{ष्}}. {{रामः + च}} gives {{रामश्च}}; {{रामः + तत्र}} gives {{रामस्तत्र}}. Before {{क}}, {{ख}}, {{प}}, {{फ}} the visarga stays.
+tb1 table The hiss | Before च, त, ट, and when it stays | 9 rows x 3 cols
+e1 explore | mark_words {"passage": ["रामश्च", "रामः", "कविस्तत्र", "कविः", "पुनश्च", "पुनः"], "targets": ["रामश्च", "कविस्तत्र", "पुनश्च"]}
+e2 explore | sandhi_mixer {"pairs": [{"first": "रामः", "second": "च", "joined": "रामश्च", "sutras": ["8.3.34", "8.4.40"]}, {"first": "कविः", "second": "च", "joined": "कविश्च", "sutras": ["8.3.34", "8.4.40"]}, {"first": "रामः", "second": "तत्र", "joined": "रामस्तत्र", "sutras": ["8.3.34"]}, {"first": "रामः", "second": "टीकते", "joined": "रामष्टीकते", "sutras": ["8.3.34", "8.4.41"]}]}
+pn teach Pāṇini's hiss | Sūtra 8.3.34, {{विसर्जनीयस्य सः}}, turns a visarga into {{स्}} before a hard consonant; 8.4.40, {{स्तोः श्चुना श्चुः}}, makes that {{स्}} into {{श्}} before {{च}}; and 8.4.41, {{ष्टुना ष्टुः}}, into {{ष्}} before {{ट}}. 8.3.35, {{शर्परे विसर्जनीयः}}, keeps it when a hard consonant is followed by a hiss.
+sum summary The hiss
+
+vis.r [scene] र् and the vanishing breath
+s1 story [IMAGE vis-r-s1] The ninth statue
+t1 teach र् and gone | After {{-इः}} or {{-उः}}, the visarga becomes {{र्}} before a vowel or a soft sound: {{कविः + अस्ति}} gives {{कविरस्ति}}; {{गुरुः + ददाति}} gives {{गुरुर्ददाति}}. After {{-अः}} and {{-आः}}, before a vowel other than {{अ}}, it vanishes: {{रामः + इह}} gives {{राम इह}}. {{सः}} and {{एषः}} lose it before consonants: {{स गच्छति}}.
+tb1 table र् and the vanishing breath | After इ, उ; after अ, आ; and सः | 11 rows x 3 cols
+e1 explore | mark_words {"passage": ["कविरस्ति", "कविः", "गुरुर्ददाति", "गुरुः", "मुनिर्गच्छति", "मुनिः"], "targets": ["कविरस्ति", "गुरुर्ददाति", "मुनिर्गच्छति"]}
+e2 explore | sandhi_mixer {"pairs": [{"first": "कविः", "second": "अस्ति", "joined": "कविरस्ति", "sutras": ["8.2.66", "8.3.15"]}, {"first": "गुरुः", "second": "अपि", "joined": "गुरुरपि", "sutras": ["8.2.66", "8.3.15"]}, {"first": "मुनिः", "second": "गच्छति", "joined": "मुनिर्गच्छति", "sutras": ["8.2.66", "8.3.15"]}, {"first": "रामः", "second": "इह", "joined": "राम इह", "sutras": ["8.3.17", "8.3.19"]}]}
+pn teach Pāṇini's r and gone | The visarga is a changed {{रु}}, so after {{इ}} or {{उ}} the {{र्}} stays before a soft sound (8.2.66, 8.3.15). After {{अ}}, {{आ}}, 8.3.17, {{भोभगघपूर्वस्य योऽशि}}, makes it {{य्}} before a soft sound and 8.3.19, {{लोपः शाकल्यस्य}}, drops it. 6.1.132, {{एतत्तदोः सुलोपोऽकोरनञ्समासे हलि}}, drops the {{सु}} of {{सः}} and {{एषः}} before a consonant.
+sum summary र् and gone
+
+vis.revision [revision] Everything about the visarga
+core revision The rules | 3 revision rules
+conditions revision How to tell which | 2 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 2 revision rules
+sheet revision Quick sheet | 3 revision rules
+
+vis.check [check] Give each breath its sound
+
+UNIT consonant-sandhi — Consonants that join
+
+cs.voice [scene] Voice spreads
+s1 story [IMAGE cs-voice-s1] The tenth statue
+t1 teach Hard becomes soft | A final hard stop ({{क्}}, {{ट्}}, {{त्}}, {{प्}}) becomes its soft partner ({{ग्}}, {{ड्}}, {{द्}}, {{ब्}}) when a soft sound or a vowel follows: {{तत् + अस्ति}} gives {{तदस्ति}}; {{जगत् + ईशः}} gives {{जगदीशः}}; {{दिक् + गजः}} gives {{दिग्गजः}}. Voice spreads from the next sound.
+tb1 table Voice spreads | Hard to soft before a soft sound or vowel | 8 rows x 3 cols
+e1 explore | mark_words {"passage": ["तदस्ति", "तत्", "जगदीशः", "जगत्", "दिग्गजः", "दिक्"], "targets": ["तदस्ति", "जगदीशः", "दिग्गजः"]}
+e2 explore | sandhi_mixer {"pairs": [{"first": "तत्", "second": "अस्ति", "joined": "तदस्ति", "sutras": ["8.2.39"]}, {"first": "जगत्", "second": "ईशः", "joined": "जगदीशः", "sutras": ["8.2.39"]}, {"first": "दिक्", "second": "गजः", "joined": "दिग्गजः", "sutras": ["8.2.39"]}, {"first": "अप्", "second": "जम्", "joined": "अब्जम्", "sutras": ["8.2.39"]}]}
+pn teach Pāṇini's voicing | Sūtra 8.2.39, {{झलां जशोऽन्ते}}, says that at the end of a word, any hard or aspirated stop ({{झल्}}) becomes the soft unaspirated stop ({{जश्}}) of its own class: {{त्}} becomes {{द्}}, {{क्}} becomes {{ग्}}. 8.4.53, {{झलां जश् झशि}}, does the same inside a word before a soft aspirate.
+sum summary Voice spreads
+
+cs.place [scene] Place spreads
+s1 story [IMAGE cs-place-s1] The eleventh statue
+t1 teach The tongue moves | A dental {{त्}} or {{न्}} moves to the place of the sound that follows: before {{च}}/{{छ}}/{{ज}}/{{श}} it becomes {{च्}}/{{ज्}}, before {{ट}} it becomes {{ट्}}, before {{ल}} it becomes {{ल्}}. {{सत् + जनः}} gives {{सज्जनः}}; {{तत् + च}} gives {{तच्च}}; {{तत् + लीनः}} gives {{तल्लीनः}}.
+tb1 table Place spreads | Before च, ज, ट, ल, श | 9 rows x 3 cols
+e1 explore | mark_words {"passage": ["सज्जनः", "सत्", "तच्च", "तत्", "उच्चारणम्", "उत्"], "targets": ["सज्जनः", "तच्च", "उच्चारणम्"]}
+e2 explore | sandhi_mixer {"pairs": [{"first": "सत्", "second": "जनः", "joined": "सज्जनः", "sutras": ["8.4.40"]}, {"first": "तत्", "second": "च", "joined": "तच्च", "sutras": ["8.4.40"]}, {"first": "उत्", "second": "चारणम्", "joined": "उच्चारणम्", "sutras": ["8.4.40"]}, {"first": "तत्", "second": "लीनः", "joined": "तल्लीनः", "sutras": ["8.4.60"]}]}
+pn teach Pāṇini's place | Sūtra 8.4.40, {{स्तोः श्चुना श्चुः}}, says that {{स्}} or a dental ({{तवर्ग}}) next to a palatal ({{श्चु}}) becomes palatal. 8.4.41, {{ष्टुना ष्टुः}}, makes it cerebral next to a cerebral. Next to {{ल}}, 8.4.60, {{तोर्लि}}, makes {{त्}} into {{ल्}}.
+sum summary Place spreads
+
+cs.nasal [scene] The nose takes over
+s1 story [IMAGE cs-nasal-s1] The twelfth statue
+t1 teach The nasal and the dot | A stop before a nasal ({{न}} or {{म}}) becomes the nasal of its own class: {{तत् + मात्रम्}} gives {{तन्मात्रम्}}; {{वाक् + मयम्}} gives {{वाङ्मयम्}}. A final {{म्}} before a consonant becomes the dot {{ं}}: {{त्वम् + गच्छसि}} gives {{त्वं गच्छसि}}. Inside {{संस्कृतम्}} it is the same. Before a vowel {{म्}} stays: {{अहम् + अपि}} gives {{अहमपि}}.
+tb1 table The nasal takes over | Stop before a nasal; म् before a consonant | 9 rows x 3 cols
+e1 explore | mark_words {"passage": ["संसारः", "सम्", "संस्कृतम्", "वृक्षं", "अहमपि", "वृक्षम्"], "targets": ["संसारः", "संस्कृतम्", "वृक्षं"]}
+e2 explore | sandhi_mixer {"pairs": [{"first": "तत्", "second": "मात्रम्", "joined": "तन्मात्रम्", "sutras": ["8.4.45"]}, {"first": "सत्", "second": "मार्गः", "joined": "सन्मार्गः", "sutras": ["8.4.45"]}, {"first": "वाक्", "second": "मयम्", "joined": "वाङ्मयम्", "sutras": ["8.4.45"]}, {"first": "सम्", "second": "सारः", "joined": "संसारः", "sutras": ["8.3.23"]}]}
+pn teach Pāṇini's nose | Sūtra 8.4.45, {{यरोऽनुनासिकेऽनुनासिको वा}}, lets a stop before a nasal become the nasal of its class. 8.3.23, {{मोऽनुस्वारः}}, turns a final {{म्}} before a consonant into the dot. 8.4.58, {{अनुस्वारस्य ययि परसवर्णः}}, lets that dot take the nasal of the following class: {{संकल्पः}} or {{सङ्कल्पः}}.
+sum summary The nasal
+
+cs.revision [revision] Everything about consonant sandhi
+core revision The three rules | 3 revision rules
+conditions revision How to tell which | 3 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 3 revision rules
+sheet revision Quick sheet | 3 revision rules
+
+cs.check [check] Match each sound to its neighbour
+
+UNIT splitting — Splitting the joins
+
+split.back [scene] Working backwards
+s1 story [IMAGE split-back-s1] The thirteenth statue
+t1 teach Spot the tell-tale sound | To split, look for the sound that gave the join away. A long {{आ}} may be {{अ/आ + अ/आ}}; {{ए}} may be {{अ + इ}}; {{ओ}} may be {{अ + उ}}; {{य्}} or {{व्}} between a consonant and a vowel may be {{इ}} or {{उ}}; {{ज्ज}} may be {{त् + ज}}; {{ोऽ}} may be {{अः + अ}}. Then test both halves as words.
+tb1 table Clues to the split | What the joined sound may hide | 7 rows x 3 cols
+e1 explore | mark_words {"passage": ["विद्यालयः", "विद्या", "सज्जनः", "सत्", "तदस्ति", "तत्"], "targets": ["विद्यालयः", "सज्जनः", "तदस्ति"]}
+pn teach Pāṇini in reverse | Pāṇini's sūtras only join; the splitting is the reader's work, done by undoing each rule. {{अकः सवर्णे दीर्घः}} tells you a long {{आ}} may hide two {{अ/आ}}. {{आद्गुणः}} tells you {{ए}} may hide {{अ + इ}}. {{झलां जशोऽन्ते}} tells you a soft stop may be a hard one.
+sum summary Splitting
+
+split.line [scene] A whole line, word by word
+s1 story [IMAGE split-line-s1] The fourteenth statue
+t1 teach Padaccheda | A real line often has several joins. Take them one at a time, from the left: find the first joined sound, split it, check both words, and carry on. Then write the line with spaces. This is {{पदच्छेदः}}. After it comes the meaning.
+r1 reading [IMAGE split-line-r1] Three real lines, split | काव्यशास्त्रविनोदेन कालो गच्छति धीमताम् / तदा राजा साश्चर्यो बभूव / एकश्रुतधरः प्राप्तो बालो ऽयं तनयस्तव
+e1 explore | mark_words {"passage": ["तदा", "राजा", "साश्चर्यः", "बभूव", "धीमताम्", "तनयस्तव"], "targets": ["तदा", "राजा", "बभूव", "धीमताम्"]}
+pn teach Reading order | After padaccheda comes {{अन्वयः}}, putting the words in prose order, and then the meaning. For now, you have the first step: you can see where every word begins and ends.
+sum summary A whole line
+
+split.revision [revision] Everything about splitting
+core revision The method | 2 revision rules
+exceptions revision Odd cases | 2 revision rules
+conditions revision Choosing a word split | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 1 revision rules
+sheet revision Quick sheet | 2 revision rules
+
+split.check [check] Take the words apart
+
+UNIT compounds-1 — Compounds I
+
+c1.dvandva [scene] X and Y
+s1 story [IMAGE c1-dvandva-s1] The fifteenth statue
+t1 teach The pair | A compound is a word made of two or more words, with the endings of the first left off. A {{द्वन्द्वः}} means “and”: {{रामः च लक्ष्मणः च}} becomes {{रामलक्ष्मणौ}}. The compound takes the number of the whole: dual for two, plural for several. A set of things is neuter singular: {{पाणिपादम्}}, “hands and feet”.
+tb1 table The pair | X and Y | 6 rows x 3 cols
+e1 explore | mark_words {"passage": ["रामलक्ष्मणौ", "रामः", "मातापितरौ", "माता", "गुरुशिष्यौ", "गुरुः"], "targets": ["रामलक्ष्मणौ", "मातापितरौ", "गुरुशिष्यौ"]}
+e2 explore | compound_unpacker {"compound": "रामलक्ष्मणौ", "parts": ["राम", "लक्ष्मण"], "kind": "dvandva", "vigraha": "रामः च लक्ष्मणः च", "meaning": {"en": "Rāma and Lakṣmaṇa", "hi": "राम और लक्ष्मण"}}
+pn teach Pāṇini's pair | Sūtra 2.2.29, {{चार्थे द्वन्द्वः}}, says that words joined with the sense of {{च}} (and) form a {{द्वन्द्वः}}. 2.2.30, {{उपसर्जनं पूर्वम्}}, says the subordinate word goes first; and 2.1.22, {{तत्पुरुषः}}, 2.1.4, {{सह सुपा}}, say every compound is made by joining with the case endings.
+sum summary The pair
+
+c1.tatpurusha [scene] X's Y
+s1 story [IMAGE c1-tatpurusha-s1] The sixteenth statue
+t1 teach X's Y | In a {{तत्पुरुषः}} the first word relates to the second as a case would: {{राज्ञः पुरुषः}}, “the king's man”, becomes {{राजपुरुषः}}. The case may be any of seven: {{ग्रामगतः}} (gone to the village), {{वृक्षमूलम्}} (root of a tree), {{विद्यालयः}} (house of learning). The second word gives the gender and ending.
+tb1 table X's Y | The first word hides a case ending | 6 rows x 3 cols
+e1 explore | mark_words {"passage": ["राजपुरुषः", "राजा", "वृक्षमूलम्", "वृक्षः", "विद्यालयः", "विद्या"], "targets": ["राजपुरुषः", "वृक्षमूलम्", "विद्यालयः"]}
+e2 explore | compound_unpacker {"compound": "राजपुरुषः", "parts": ["राज", "पुरुष"], "kind": "tatpurusha", "vigraha": "राज्ञः पुरुषः", "meaning": {"en": "the king's man", "hi": "राजा का पुरुष"}}
+pn teach Pāṇini's X's Y | Sūtra 2.1.22, {{तत्पुरुषः}}, names the class. 2.2.8, {{षष्ठी}}, makes the second case-pair for “of” into a compound: {{राज्ञः पुरुषः}} gives {{राजपुरुषः}}. And 2.1.24, {{द्वितीया श्रितातीतपतितगतात्यस्तप्राप्तापन्नैः}}, joins the second case with words like {{गत}}: {{ग्रामगतः}}.
+sum summary X's Y
+
+c1.karmadharaya [scene] Blue lotus, three worlds
+s1 story [IMAGE c1-karmadharaya-s1] The seventeenth statue
+t1 teach Describing and counting | In a {{कर्मधारयः}} the first word describes the second: {{नीलम् उत्पलम्}} gives {{नीलोत्पलम्}} (blue lotus); {{महान् आत्मा}} gives {{महात्मा}} (great soul). In a {{द्विगुः}} a number counts a group: {{त्रयाणां लोकानां समाहारः}} gives {{त्रिलोकी}} (the three worlds), {{अष्टानाम् अध्यायानां समाहारः}} gives {{अष्टाध्यायी}} (the eight chapters, Pāṇini's book).
+tb1 table Describing and counting | कर्मधारयः and द्विगुः | 8 rows x 3 cols
+e1 explore | mark_words {"passage": ["त्रिलोकी", "नीलोत्पलम्", "पञ्चवटी", "महात्मा", "अष्टाध्यायी", "सज्जनः"], "targets": ["त्रिलोकी", "पञ्चवटी", "अष्टाध्यायी"]}
+e2 explore | compound_unpacker {"compound": "नीलोत्पलम्", "parts": ["नील", "उत्पल"], "kind": "karmadharaya", "vigraha": "नीलम् उत्पलम्", "meaning": {"en": "a blue lotus", "hi": "एक नीला कमल"}}
+pn teach Pāṇini's describing and counting | Sūtra 1.2.42, {{तत्पुरुषः समानाधिकरणः कर्मधारयः}}, calls a tatpuruṣa whose members share a case a {{कर्मधारयः}}; 2.1.57, {{विशेषणं विशेष्येण बहुलम्}}, joins a describing word to the described. 2.1.52, {{संख्यापूर्वो द्विगुः}}, calls a compound with a number first {{द्विगुः}}; 2.1.51 gives its sense of a group.
+sum summary Describing and counting
+
+c1.nan [scene] Untrue, pot-maker
+s1 story [IMAGE c1-nan-s1] The eighteenth statue
+t1 teach Not-X and X-maker | A {{न}} before a word makes the opposite: {{न सत्यम्}} gives {{असत्यम्}} (untrue); before a vowel it is {{अन्}}: {{न अन्तः}} gives {{अनन्तः}} (endless). A word before a doer-word names the thing done: {{कुम्भं करोति}} gives {{कुम्भकारः}} (pot-maker); {{शास्त्रं जानाति}} gives {{शास्त्रज्ञः}} (knower of the śāstras).
+tb1 table Not-X and X-maker | नञ्-तत्पुरुषः and the doer | 8 rows x 3 cols
+e1 explore | mark_words {"passage": ["असत्यम्", "सत्यम्", "अधर्मः", "धर्मः", "अज्ञानम्", "ज्ञानम्"], "targets": ["असत्यम्", "अधर्मः", "अज्ञानम्"]}
+e2 explore | compound_unpacker {"compound": "असत्यम्", "parts": ["अ", "सत्य"], "kind": "tatpurusha", "vigraha": "न सत्यम्", "meaning": {"en": "untrue", "hi": "असत्य"}}
+pn teach Pāṇini's not and maker | Sūtra 2.2.6, {{नञ्}}, joins {{नञ्}}, “not”, to the following word as a compound. 6.3.73, {{नलोपो नञः}}, drops its {{न्}}, and 6.3.74, {{तस्मान्नुडचि}}, adds {{न्}} before a vowel. For the maker, 2.2.19, {{उपपदमतिङ्}}, joins the word that stands next to a verb-noun, and 3.2.1, {{कर्मण्यण्}}, makes the doer: {{कुम्भकारः}}.
+sum summary Not and maker
+
+c1.revision [revision] Everything about compounds I
+core revision The four kinds | 4 revision rules
+conditions revision How to tell which | 3 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 1 revision rules
+sheet revision Quick sheet | 4 revision rules
+
+c1.check [check] Unpack the names
+
+UNIT compounds-2 — Compounds II
+
+c2.bahuvrihi [scene] The one who has
+s1 story [IMAGE c2-bahuvrihi-s1] The nineteenth statue
+t1 teach The one who has | In a {{बहुव्रीहिः}} the whole compound describes a third person: {{नीलः कण्ठः यस्य सः}}, “he whose throat is blue”, is {{नीलकण्ठः}}, Śiva. {{पीतम् अम्बरम् यस्य सः}} is {{पीताम्बरः}}, Viṣṇu. A bahuvrīhi is an adjective, and takes the gender of the person it describes.
+tb1 table The one who has | Bahuvrīhi names the owner | 7 rows x 3 cols
+e1 explore | mark_words {"passage": ["नीलकण्ठः", "कण्ठः", "पीताम्बरः", "अम्बरम्", "दशाननः", "आननम्"], "targets": ["नीलकण्ठः", "पीताम्बरः", "दशाननः"]}
+e2 explore | compound_unpacker {"compound": "नीलकण्ठः", "parts": ["नील", "कण्ठ"], "kind": "bahuvrihi", "vigraha": "नीलः कण्ठः यस्य सः", "meaning": {"en": "the one whose throat is blue (Śiva)", "hi": "जिसका कण्ठ नीला है (शिव)"}}
+pn teach Pāṇini's “whose” | Sūtra 2.2.23, {{शेषो बहुव्रीहिः}}, calls the remaining compounds {{बहुव्रीहिः}}, and 2.2.24, {{अनेकमन्यपदार्थे}}, says several words join in the sense of another word, someone outside the compound. The compound's own gender and number come from the one it describes.
+sum summary The one who has
+
+c2.avyayi [scene] As far as possible, every day
+s1 story [IMAGE c2-avyayi-s1] The twentieth statue
+t1 teach The compound adverb | In an {{अव्ययीभावः}} the first word is an indeclinable, and the whole is an indeclinable: {{यथा + शक्ति}} gives {{यथाशक्ति}} (as far as one can); {{प्रति + दिनम्}} gives {{प्रतिदिनम्}} (every day); {{आ + मरणम्}} gives {{आमरणम्}} (until death); {{उप + कृष्णम्}} gives {{उपकृष्णम्}} (near Kṛṣṇa). Such words never change. | examples: सः यथाशक्ति कर्म करोति।; सः प्रतिदिनम् पठति।
+tb1 table The compound adverb | Adverbs made by a compound | 7 rows x 3 cols
+e1 explore | mark_words {"passage": ["यथाशक्ति", "शक्तिः", "प्रतिदिनम्", "दिनम्", "आमरणम्", "मरणम्"], "targets": ["यथाशक्ति", "प्रतिदिनम्", "आमरणम्"]}
+e2 explore | compound_unpacker {"compound": "यथाशक्ति", "parts": ["यथा", "शक्ति"], "kind": "avyayibhava", "vigraha": "शक्तिम् अनतिक्रम्य", "meaning": {"en": "as far as one can", "hi": "जितनी शक्ति हो उतना"}}
+pn teach Pāṇini's adverb | Sūtra 2.1.5, {{अव्ययीभावः}}, names the class, and 2.1.6, {{अव्ययं विभक्तिसमीपसमृद्धिव्यृद्ध्यर्थाभावात्ययासम्प्रतिशब्दप्रादुर्भावपश्चाद्यथानुपूर्व्ययौगपद्यसादृश्यसम्पत्तिसाकल्यान्तवचनेषु}}, lists the senses in which an indeclinable joins a word. The result is {{अव्यय}} by 1.1.41, {{अव्ययीभावश्च}}.
+sum summary The compound adverb
+
+c2.long [scene] Long compounds
+s1 story [IMAGE c2-long-s1] The twenty-first statue
+t1 teach Read from the end | A long compound is built from the left, so read it from the right. First, the last member gives the ending and gender. Then take the compound in two big halves, and again in halves, until each is a single word. Finally decide each join: and, of, describing, whose.
+tb1 table Unpacking a long compound | From the end to the beginning | 5 rows x 3 cols
+r1 reading [IMAGE c2-long-r1] A long chain, read | सूर्यकोटिसमाभासो विद्युज्ज्योतिःसमप्रभः / मृणालनालललितभुजा पीनस्तनोज्ज्वला
+e1 explore | mark_words {"passage": ["सूर्यकोटिसमाभासः", "राजा", "विद्युज्ज्योतिःसमप्रभः", "नगरम्", "पीनस्तनोज्ज्वला", "बालिका"], "targets": ["सूर्यकोटिसमाभासः", "विद्युज्ज्योतिःसमप्रभः", "पीनस्तनोज्ज्वला"]}
+pn teach Pāṇini's long compounds | Sūtra 2.1.3, {{प्राक् कडारात् समासः}}, says compounding is allowed before {{कडार}} in the order of the sūtras, which gives the grammar's own order of types. And 2.2.30, {{उपसर्जनं पूर्वम्}}, puts the subordinate member first. Long compounds are made by repeating the same rules.
+sum summary Long compounds
+
+c2.revision [revision] Everything about compounds II
+core revision The kinds | 3 revision rules
+conditions revision How to tell which | 2 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 2 revision rules
+sheet revision Quick sheet | 3 revision rules
+
+c2.check [check] Read the garland
+
+UNIT taddhita — Word-making suffixes
+
+tad.son [scene] Son of
+s1 story [IMAGE tad-son-s1] The twenty-second statue
+t1 teach A word with its parent | To say “son or descendant of X”, take X, make its first vowel grow (vṛddhi) and add an ending: {{रघु}} gives {{राघवः}}, {{पाण्डु}} gives {{पाण्डवः}}, {{कुरु}} gives {{कौरवः}}. For a mother's name in {{-ई}} or {{-आ}} it is {{-एय}}: {{कुन्ती}} gives {{कौन्तेयः}}.
+tb1 table Son of | Taddhita words of descent | 8 rows x 3 cols
+e1 explore | mark_words {"passage": ["राघवः", "रघुः", "पाण्डवः", "पाण्डुः", "कौन्तेयः", "कुन्ती"], "targets": ["राघवः", "पाण्डवः", "कौन्तेयः"]}
+pn teach Pāṇini's descendant | Sūtra 4.1.92, {{तस्यापत्यम्}}, gives a taddhita for “his descendant”; 4.1.83, {{प्राग्दीव्यतोऽण्}}, makes {{अण्}} the usual ending, and 7.2.117, {{तद्धितेष्वचामादेः}}, makes the first vowel grow. 4.1.95, {{अत इञ्}}, gives {{इञ्}} after {{अ}}-ending names ({{दाशरथिः}}), and 4.1.120, {{स्त्रीभ्यो ढक्}}, {{ढक्}} after feminines ({{कौन्तेयः}}).
+sum summary Son of
+
+tad.ness [scene] -ness: -त्व and -ता
+s1 story [IMAGE tad-ness-s1] The twenty-third statue
+t1 teach The state of being | {{-त्वम्}} (neuter) and {{-ता}} (feminine) make a word that names the state of being something: {{मनुष्य}} gives {{मनुष्यत्वम्}} or {{मनुष्यता}}, “humanity”; {{देव}} gives {{देवत्वम्}} or {{देवता}}, “divinity”; {{गुरु}} gives {{गुरुत्वम्}} or {{गुरुता}}, “weight, greatness”. Both mean the same.
+tb1 table The state of being | -tvam and -tā | 10 rows x 3 cols
+e1 explore | mark_words {"passage": ["मनुष्यत्वम्", "मनुष्यः", "देवता", "देवः", "गुरुता", "गुरुः"], "targets": ["मनुष्यत्वम्", "देवता", "गुरुता"]}
+pn teach Pāṇini's state | Sūtra 5.1.119, {{तस्य भावस्त्वतलौ}}, gives {{त्व}} and {{तल्}} to a word to name its “being”. {{तल्}} makes a feminine in {{-ता}} by 4.1.4, and {{त्व}} a neuter. {{महत् + त्व}} doubles: {{महत्त्वम्}}.
+sum summary -ness
+
+tad.having [scene] Having and related
+s1 story [IMAGE tad-having-s1] The twenty-fourth statue
+t1 teach Having, and related to | {{-वत्}} or {{-मत्}} means “having”: {{धन}} gives {{धनवान्}} (wealthy), {{बुद्धि}} gives {{बुद्धिमान्}} (intelligent); the feminine is {{-वती}}, {{-मती}}. After a stem in {{-इ}}, {{-ई}}, {{-उ}} it is {{-मत्}}, otherwise {{-वत्}}. {{-इक}} means “related to”: {{धर्म}} gives {{धार्मिकः}}, {{दिन}} gives {{दैनिकः}} (daily).
+tb1 table Having | -वत् and -मत् | 9 rows x 3 cols
+tb2 table Related to | The ending -ika | 8 rows x 3 cols
+e1 explore | mark_words {"passage": ["धनवान्", "धनम्", "बुद्धिमान्", "बुद्धिः", "श्रीमान्", "श्रीः"], "targets": ["धनवान्", "बुद्धिमान्", "श्रीमान्"]}
+pn teach Pāṇini's owner | Sūtra 5.2.94, {{तदस्यास्त्यस्मिन्निति मतुप्}}, gives {{मतुप्}} to say “he has it”; 8.2.9, {{मादुपधायाश्च मतोर्वोऽयवादिभ्यः}}, makes it {{वत्}} after a stem with {{म्}}, {{अ}} or {{आ}} before the end. For “related to”, 5.1.18, {{प्राग्वतेष्ठञ्}}, gives {{ठञ्}}, which 7.3.50, {{ठस्येकः}}, turns into {{इक}}.
+sum summary Having and related
+
+tad.more [scene] More and most
+s1 story [IMAGE tad-more-s1] The twenty-fifth statue
+t1 teach More and most | {{-तरः}} means “more”, for two things; {{-तमः}} means “most”, for many: {{लघु}} gives {{लघुतरः}}, {{लघुतमः}}. A few adjectives have older forms: {{गुरु}} gives {{गरीयान्}} (heavier), {{गरिष्ठः}} (heaviest); {{प्रिय}} gives {{प्रेयान्}}, {{प्रेष्ठः}}; {{बहु}} gives {{भूयान्}}, {{भूयिष्ठः}}.
+tb1 table More and most | -तर, -तम and the old forms | 5 rows x 3 cols
+tb2 table The old forms | -ईयस् and -इष्ठ | 5 rows x 3 cols
+e1 explore | mark_words {"passage": ["लघुतमः", "लघुतरः", "उच्चतमः", "उच्चतरः", "गरिष्ठः", "गरीयान्"], "targets": ["लघुतमः", "उच्चतमः", "गरिष्ठः"]}
+pn teach Pāṇini's more and most | Sūtra 5.3.57, {{द्विवचनविभज्योपपदे तरबीयसुनौ}}, gives {{तरप्}} and {{ईयसुन्}} when comparing two; 5.3.55, {{अतिशायने तमबिष्ठनौ}}, gives {{तमप्}} and {{इष्ठन्}} for “most”. 6.4.157, {{प्रियस्थिरस्फिरोरुबहुलगुरुवृद्धतृप्रदीर्घवृन्दारकाणां प्रस्थस्फवर्बंहिगर्वर्षित्रब्द्राघिवृन्दाः}}, replaces the stem of a few adjectives: {{गुरु}} becomes {{गर्}}.
+sum summary More and most
+
+tad.revision [revision] Everything about suffixes
+core revision The suffixes | 5 revision rules
+conditions revision When to use which | 3 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 2 revision rules
+sheet revision Quick sheet | 5 revision rules
+
+tad.check [check] Name the suffixes
+
+UNIT syntax — Longer sentences
+
+syn.who [scene] Who… he
+s1 story [IMAGE syn-who-s1] The thirtieth statue
+t1 teach Who… he | A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair agrees in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} … {{तस्य}}. The {{यद्}}-half usually comes first. | examples: यः पठति सः जानाति।; या लिखति सा कन्या।; यस्य बुद्धिः तस्य बलम्।
+tb1 table The pairs | यद् … तद् in the cases | 7 rows x 3 cols
+e1 explore | mark_words {"passage": ["यः", "पठति", "सः", "जानाति", "या", "सा"], "targets": ["यः", "या"]}
+pn teach Pāṇini's pair | Pāṇini does not give a rule for the pair itself: it is part of how {{यद्}} and {{तद्}} are defined. {{यद्}} is {{सर्वनाम}}, taking the odd endings {{यस्मै}}, {{यस्मात्}}, {{यस्मिन्}} by 7.1.14 and 7.1.15; {{तद्}} answers it, and 7.2.106 gives {{सः}}.
+sum summary Who… he
+
+syn.when [scene] When he had gone
+s1 story [IMAGE syn-when-s1] The thirty-first statue
+t1 teach The little scene | A word and its participle, both in the seventh case, set the scene: {{सूर्ये उदिते}}, “the sun having risen”; {{रामे गते}}, “Rāma having gone”. If a present sense is meant, use {{शतृ}} or {{सति}}: {{बालके पठति}}, “while the boy reads”. This is {{सति सप्तमी}}, the absolute locative. The main clause has a different subject. | examples: रामे गते लक्ष्मणः आगच्छति।; बालके पठति गुरुः हसति।
+tb1 table The little scene | Both words in the seventh case | 4 rows x 3 cols
+e1 explore | mark_words {"passage": ["सूर्ये", "उदिते", "कमलानि", "विकसन्ति", "रामे", "गते"], "targets": ["सूर्ये", "उदिते", "रामे", "गते"]}
+pn teach Pāṇini's scene | Sūtra 2.3.37, {{यस्य च भावेन भावलक्षणम्}}, says that when one action marks the time of another, the first is put in the seventh case with its doer. 2.3.36, {{सप्तम्यधिकरणे च}}, gives the seventh case for the place or setting of an action.
+sum summary The little scene
+
+syn.if [scene] If… then
+s1 story [IMAGE syn-if-s1] The thirty-second statue
+t1 teach If… then | {{यदि}} (if) opens the condition, and {{तर्हि}} or {{तदा}} (then) opens the result: {{यदि सः पठति, तर्हि जानाति}}. A condition about the future takes the future: {{यदि वदसि, तर्हि यास्यति}}. A condition that is only supposed takes {{विधिलिङ्}}: {{यदि पठेत्, तर्हि जानीयात्}}. A negative condition adds {{न}}. | examples: यदि सः पठति तर्हि सः जानाति।; यदि त्वम् वदिष्यसि तर्हि सः यास्यति।; यदि सः पठेत् तर्हि सः जानीयात्।
+tb1 table If… then | Three kinds of condition | 3 rows x 3 cols
+e1 explore | mark_words {"passage": ["यदि", "सः", "पठति", "तर्हि", "सः", "जानाति"], "targets": ["यदि", "तर्हि"]}
+pn teach Pāṇini's if | Sūtra 3.3.156, {{हेतुहेतुमतोर्लिङ्}}, gives {{लिङ्}} to both the condition and its result. 3.3.139, {{लिङ्निमित्ते लृङ् क्रियातिपत्तौ}}, gives {{लृङ्}} when the condition was not met. {{यदि}} and {{तर्हि}} are particles, {{निपात}}s, so they never change.
+sum summary If… then
+
+syn.order [scene] Prose order
+s1 story [IMAGE syn-order-s1] The throne
+t1 teach Anvaya | Verse puts words in the order of the metre; prose puts them in the order of sense. To find the {{अन्वयः}}: first split the joins (padaccheda); then find the verb; then its doer; then the object, and describing words next to the words they describe. {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: who, whom, what, how.
+tb1 table Anvaya in four steps | From verse order to prose order | 4 rows x 3 cols
+pn teach Pāṇini's order | Pāṇini does not fix a word order, because a case ending already says each word's job: 2.3.1, {{अनभिहिते}}, says a case is used for the relation not already expressed by the verb. So prose order is for the reader's comfort, and verse may use any order.
+sum summary Prose order
+
+syn.revision [revision] Everything about longer sentences
+core revision The four patterns | 4 revision rules
+conditions revision When to use which | 3 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 2 revision rules
+sheet revision Quick sheet | 4 revision rules
+
+syn.check [check] Put the sentence in order
+
+UNIT metre-1 — Rhythm
+
+m1.weight [scene] Light and heavy
+s1 story [IMAGE m1-weight-s1] The drum spirit
+t1 teach Light and heavy | Every syllable is light ({{लघु}}) or heavy ({{गुरु}}). It is light when its vowel is short and nothing joined follows. It is heavy when its vowel is long, or when a short vowel is followed by a joined letter, an anusvāra or a visarga. Light takes one beat; heavy takes two.
+tb1 table Weighing words | Light = ल, heavy = ग | 5 rows x 3 cols
+e1 explore | rhythm_tapper {"lines": ["धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः"]}
+pn teach Pāṇini's weights | Pāṇini defines the terms for his own use: 1.4.10, {{ह्रस्वं लघु}}, a short vowel is light; 1.4.11, {{संयोगे गुरु}}, a short vowel before a joined letter is heavy; 1.4.12, {{दीर्घं च}}, and a long vowel is heavy. The books of metre add the anusvāra and the visarga.
+sum summary Light and heavy
+
+m1.shloka [scene] Four quarters of eight
+s1 story [IMAGE m1-shloka-s1] Grief into verse
+t1 teach Four quarters of eight | A śloka has four quarters ({{पाद}}) of eight syllables: 32 in all, or 16 in each half. The first four syllables and the eighth are free. In the middle the pattern is fixed: the fifth light, the sixth heavy, and the seventh heavy in quarters one and three, light in two and four.
+tb1 table The pattern | Eight places in each quarter | 4 rows x 6 cols
+e1 explore | rhythm_tapper {"lines": ["मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीं समाः", "यत्क्रौञ्चमिथुनादेकमवधीः काममोहितम्"]}
+sum summary Four quarters of eight
+
+m1.revision [revision] Everything about the śloka's rhythm
+core revision The two ideas | 2 revision rules
+conditions revision When to use which | 2 revision rules
+exceptions revision Either weight at the end | 1 revision rules
+mistakes revision Common mistakes | 2 revision rules
+panini revision In Pāṇini's words | 1 revision rules
+sheet revision Quick sheet | 2 revision rules
+
+m1.check [check] Beat the verse
+
+UNIT metre-2 — The great metres
+
+m2.vrtta [scene] The great metres
+s1 story [IMAGE m2-vrtta-s1] The circling spirit
+t1 teach Counting the quarter | A {{वृत्तम्}} is a metre counted in syllables: all four quarters have the same number, in the same pattern. Count one quarter. Eleven: {{इन्द्रवज्रा}} or {{उपेन्द्रवज्रा}}. Fourteen: {{वसन्ततिलका}}. Seventeen: {{मन्दाक्रान्ता}}. Nineteen: {{शार्दूलविक्रीडित}}.
+tb1 table The great metres | One quarter of each (ल = light, ग = heavy) | 5 rows x 3 cols
+e1 explore | rhythm_tapper {"lines": ["अस्त्युत्तरस्यां दिशि देवतात्मा", "हिमालयो नाम नगाधिराजः"]}
+sum summary The great metres
+
+m2.arya [scene] Counting time
+s1 story [IMAGE m2-arya-s1] The scales
+t1 teach Counting time | Some metres count time, not syllables: a light syllable is one {{मात्रा}}, a heavy one two. These are called {{जाति}}. In the {{आर्या}} the four quarters have 12, 18, 12 and 15 mātrās. The last syllable of a quarter may be counted heavy to make the sum.
+tb1 table The verse weighed | Light 1, heavy 2 | 4 rows x 3 cols
+e1 explore | rhythm_tapper {"lines": ["दानं भोगो नाशस्\nतिस्रो गतयो भवन्ति वित्तस्य\nयो न ददाति न भुङ्क्ते\nतस्य तृतीया गतिर्भवति"]}
+sum summary Counting time
+
+m2.revision [revision] Everything about the great metres
+core revision The two ways to count | 2 revision rules
+conditions revision When to use which | 2 revision rules
+exceptions revision Odd cases | 1 revision rules
+mistakes revision Common mistakes | 2 revision rules
+sheet revision Quick sheet | 2 revision rules
+
+m2.check [check] Name the metre
+
+UNIT reading-verse — Reading a verse
+
+rv.steps [scene] Split, order, understand
+s1 story [IMAGE rv-steps-s1] The knotted cord
+t1 teach Three steps | To read a verse, take three steps. First {{पदच्छेदः}}: split the joins into words. Then {{अन्वयः}}: put the words in prose order, verb first to find. Last {{अर्थः}}: say what it means. Never skip the first: you cannot order words you have not separated.
+tb1 table One line, three steps | The first line of the verse | 4 rows x 2 cols
+tb2 table The knots | Each join, opened | 3 rows x 3 cols
+e1 explore | mark_words {"passage": ["विद्या", "ददाति", "विनयम्", "विनयात्", "याति", "पात्रताम्"], "targets": ["ददाति", "याति"]}
+sum summary Split, order, understand
+
+rv.tika [scene] With a commentary
+s1 story [IMAGE rv-tika-s1] The margins
+t1 teach The commentary's moves | A commentary ({{टीका}}) walks along the verse. It repeats a word, gives another with the same meaning, and closes with {{इत्यर्थः}}, “that is the meaning”. It asks {{कस्मात्}}, “why?”, and answers. {{अथवा}}, “or else”, offers a second reading. Read it for the sense, not word for word.
+tb1 table Notes on the Īśā verse | What the commentary says beside each word | 3 rows x 3 cols
+r1 reading In the teacher's own words | ईशिता परमेश्वरः परमात्मा सर्वस्य / स हि सर्वम् ईष्टे / तेन त्यक्तेन त्यागेनेत्यर्थः / भुञ्जीथाः पालयेथाः
+sum summary With a commentary
+
+rv.revision [revision] Everything about reading a verse
+core revision The two skills | 2 revision rules
+conditions revision When to use which | 2 revision rules
+exceptions revision Odd cases | 1 revision rules
+mistakes revision Common mistakes | 2 revision rules
+sheet revision Quick sheet | 2 revision rules
+
+rv.check [check] Untie the verse

@@ -1,0 +1,1057 @@
+{
+  "id": "syn-when-s1",
+  "where": "syn.when#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The thirty-first statue holding a small stone bowl in which a golden sun rises; carved lotuses opening along her plinth; Dādī pointing at the sun; Śuka watching; early gold light in the hall.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvakyika: A small, heavy spirit of dark basalt holding a long unrolled scroll that trails behind her, with a single sentence written across it in a close, tidy hand.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "syn.when",
+    "template": "scene",
+    "title": {
+      "en": "When he had gone",
+      "hi": "जब वह जा चुका"
+    },
+    "title_sa": "रामे गते",
+    "minutes": 6,
+    "teaches": [
+      "syn.absolute"
+    ],
+    "needs": [
+      "syn.relative",
+      "krt.kta"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The thirty-first statue",
+          "hi": "इकतीसवीं प्रतिमा"
+        },
+        "image": {
+          "id": "syn-when-s1",
+          "brief": "The thirty-first statue holding a small stone bowl in which a golden sun rises; carved lotuses opening along her plinth; Dādī pointing at the sun; Śuka watching; early gold light in the hall.",
+          "alt": {
+            "en": "A statue holds a stone bowl with a rising sun while carved lotuses open along her plinth",
+            "hi": "पत्थर के कटोरे में उगता सूर्य थामे प्रतिमा, आसन पर खिलते कमल"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "vakyika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The thirty-first statue holds a rising sun in a stone bowl. “सूर्ये उदिते,” she says: “the sun having risen.” “कमलानि विकसन्ति”: “the lotuses open.” “The first half stands apart,” says Dādī. “Its own subject and its own verb-word, both in the seventh case, say when. A little scene; then the main sentence says what happens.”",
+          "hi": "इकतीसवीं प्रतिमा पत्थर के कटोरे में उगता सूर्य थामे है। “सूर्ये उदिते,” वह कहती है: “सूर्य के उदय होने पर।” “कमलानि विकसन्ति”: “कमल खिलते हैं।” “पहला भाग अलग खड़ा है,” दादी कहती हैं। “उसका अपना कर्ता है और अपना क्रिया-शब्द, दोनों सप्तमी में, और वह बताता है कब। यह एक छोटे दृश्य जैसा है। ‘सूर्य के उदित होने पर’, और फिर मुख्य वाक्य में: क्या होता है।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "मार्गे चलिते सति शवसंक्रमितेन वेतालेन राजानं प्रत्यभिहितम्",
+          "gloss": {
+            "en": "As the king walked on, the Vetāla, who had entered the corpse, spoke to him.",
+            "hi": "राजा के मार्ग पर चलते हुए, शव में प्रविष्ट वेताल ने उससे कहा।"
+          },
+          "source": "Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit); mārge calite sati is the absolute locative"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The little scene",
+          "hi": "छोटा दृश्य"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.absolute"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A word and its participle, both in the seventh case, set the scene: {{सूर्ये उदिते}}, “the sun having risen”; {{रामे गते}}, “Rāma having gone”. If a present sense is meant, use {{शतृ}} or {{सति}}: {{बालके पठति}}, “while the boy reads”. This is {{सति सप्तमी}}, the absolute locative. The main clause has a different subject.",
+          "hi": "एक शब्द और उसका कृदन्त, दोनों सप्तमी में, दृश्य रचते हैं: {{सूर्ये उदिते}}, ‘सूर्य के उदित होने पर’; {{रामे गते}}, ‘राम के जाने पर’। वर्तमान का भाव हो तो {{शतृ}} या {{सति}} लीजिए: {{बालके पठति}}, ‘बालक के पढ़ते हुए’। यह {{सति सप्तमी}} है। मुख्य वाक्य का कर्ता अलग होता है।"
+        },
+        "examples": [
+          {
+            "sa": "रामे गते लक्ष्मणः आगच्छति।",
+            "meaning": {
+              "en": "Rāma having gone, Lakṣmaṇa comes.",
+              "hi": "राम के जाने पर लक्ष्मण आता है।"
+            },
+            "words": [
+              {
+                "sa": "रामे",
+                "gloss": {
+                  "en": "Rāma",
+                  "hi": "राम"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "राम",
+                  "linga": "Pum",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गते",
+                "gloss": {
+                  "en": "having gone",
+                  "hi": "जाने पर"
+                },
+                "check": {
+                  "type": "krdanta",
+                  "stem": null,
+                  "linga": "Pum",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": "kta",
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "लक्ष्मणः",
+                "gloss": {
+                  "en": "Lakṣmaṇa",
+                  "hi": "लक्ष्मण"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "लक्ष्मण",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "आगच्छति",
+                "gloss": {
+                  "en": "comes",
+                  "hi": "आता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "आ"
+                  ],
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "बालके पठति गुरुः हसति।",
+            "meaning": {
+              "en": "While the boy reads, the teacher smiles.",
+              "hi": "बालक के पढ़ते हुए गुरु हँसता है।"
+            },
+            "words": [
+              {
+                "sa": "बालके",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठति",
+                "gloss": {
+                  "en": "reading",
+                  "hi": "पढ़ते हुए"
+                },
+                "check": {
+                  "type": "krdanta",
+                  "stem": null,
+                  "linga": "Pum",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": "Satf",
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गुरुः",
+                "gloss": {
+                  "en": "teacher",
+                  "hi": "गुरु"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गुरु",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "हसति",
+                "gloss": {
+                  "en": "smiles",
+                  "hi": "हँसता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "हस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "सति सप्तमी",
+          "meaning": {
+            "en": "the absolute locative",
+            "hi": "भावलक्षण सप्तमी"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "The little scene",
+          "hi": "छोटा दृश्य"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.absolute"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Both words in the seventh case",
+          "hi": "दोनों शब्द सप्तमी में"
+        },
+        "columns": [
+          {
+            "en": "Scene",
+            "hi": "दृश्य"
+          },
+          {
+            "en": "Words",
+            "hi": "शब्द"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "रामे",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "राम",
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गते",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "kta",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "Rāma having gone",
+                "hi": "राम के जाने पर"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "बालके",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "बालक",
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "Satf",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "the boy reading",
+                "hi": "बालक के पढ़ते हुए"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "मार्गे",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "मार्ग",
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "चलिते",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "चल्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "kta",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "the road having been travelled",
+                "hi": "मार्ग पर चलने पर"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "राजनि",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "राजन्",
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "आगते",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": [
+                  "आ"
+                ],
+                "gana": null,
+                "krt": "kta",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "the king having come",
+                "hi": "राजा के आने पर"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "The scene's own subject is in the seventh case, not the first.",
+          "hi": "दृश्य का अपना कर्ता प्रथमा में नहीं, सप्तमी में है।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.absolute"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“Rāma having gone, Lakṣmaṇa comes.” Which first half?",
+          "hi": "‘राम के जाने पर लक्ष्मण आता है।’ कौन-सा पहला भाग?"
+        },
+        "explain": {
+          "en": "Both in the seventh case.",
+          "hi": "दोनों सप्तमी में।"
+        },
+        "options": [
+          {
+            "sa": "रामः गतः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "रामे गते",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "रामं गतम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.absolute"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each scene to its meaning.",
+          "hi": "हर दृश्य को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "Every one sets a scene.",
+          "hi": "हर एक दृश्य रचता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "सूर्ये उदिते",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "the sun having risen",
+                "hi": "सूर्य के उदित होने पर"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "रामे गते",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "Rāma having gone",
+                "hi": "राम के जाने पर"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "बालके पठति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "while the boy reads",
+                "hi": "बालक के पढ़ते हुए"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "मार्गे चलिते सति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "the road having been travelled",
+                "hi": "मार्ग पर चलने पर"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.absolute"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word in the little scene (seventh case).",
+          "hi": "दृश्य का हर शब्द (सप्तमी) छुइए।"
+        },
+        "params": {
+          "passage": [
+            "सूर्ये",
+            "उदिते",
+            "कमलानि",
+            "विकसन्ति",
+            "रामे",
+            "गते"
+          ],
+          "targets": [
+            "सूर्ये",
+            "उदिते",
+            "रामे",
+            "गते"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.absolute"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “The sun having risen, the lotuses open.”",
+          "hi": "कहिए: ‘सूर्य के उदित होने पर कमल खिलते हैं।’"
+        },
+        "explain": {
+          "en": "{{सूर्ये उदिते कमलानि विकसन्ति}}.",
+          "hi": "{{सूर्ये उदिते कमलानि विकसन्ति}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "सूर्ये",
+          "उदिते",
+          "कमलानि",
+          "विकसन्ति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "The little scene",
+          "hi": "छोटा दृश्य"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.absolute"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "In “मार्गे चलिते सति”, what is the subject of the little scene?",
+          "hi": "“मार्गे चलिते सति” में दृश्य का कर्ता क्या है?"
+        },
+        "explain": {
+          "en": "{{मार्गे}} (the road): the scene's own subject.",
+          "hi": "{{मार्गे}} (मार्ग): दृश्य का अपना कर्ता।"
+        },
+        "options": [
+          {
+            "sa": "सति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "चलिते",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "मार्गे",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“सूर्ये उदिते,” you say, and the golden sun in the thirty-first statue's bowl rises, a hand's breadth, and warms your face. On her plinth, one by one, the carved lotuses open, as in a very slow film: कमलानि विकसन्ति. “It takes a whole scene to say it,” she says. “Two words in the seventh case, and the world changes.”",
+            "hi": "“सूर्ये उदिते,” आप कहते हैं, और इकतीसवीं प्रतिमा के कटोरे का सुनहरा सूर्य हथेली भर ऊपर उठता है और आपका चेहरा गरमाता है। उसके आसन पर, एक-एक करके, तराशे कमल खिलते हैं, बहुत धीमी फ़िल्म की तरह: कमलानि विकसन्ति। “एक पूरा दृश्य लगता है इसे कहने में,” वह कहती है। “सप्तमी में दो शब्द, और संसार बदल जाता है।”"
+          },
+          "failure": {
+            "en": "The sun stays low. The scene's subject is {{मार्गे}}.",
+            "hi": "सूर्य नीचा रहता है। दृश्य का कर्ता {{मार्गे}} है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's scene",
+          "hi": "पाणिनि का दृश्य"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "syn.absolute"
+        ],
+        "sutras": [
+          "2.3.37",
+          "2.3.36"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 2.3.37, {{यस्य च भावेन भावलक्षणम्}}, says that when one action marks the time of another, the first is put in the seventh case with its doer. 2.3.36, {{सप्तम्यधिकरणे च}}, gives the seventh case for the place or setting of an action.",
+          "hi": "सूत्र 2.3.37, {{यस्य च भावेन भावलक्षणम्}}, कहता है कि जब एक क्रिया दूसरी का समय बताए, तब पहली को उसके कर्ता के साथ सप्तमी में रखा जाता है। 2.3.36, {{सप्तम्यधिकरणे च}}, क्रिया के स्थान या परिवेश के लिए सप्तमी देता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The little scene",
+          "hi": "छोटा दृश्य"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "सूर्ये उदिते",
+            "text": {
+              "en": "The sun having risen.",
+              "hi": "सूर्य के उदित होने पर।"
+            }
+          },
+          {
+            "sa": "रामे गते",
+            "text": {
+              "en": "Rāma having gone.",
+              "hi": "राम के जाने पर।"
+            }
+          },
+          {
+            "sa": "मार्गे चलिते सति",
+            "text": {
+              "en": "The road being travelled.",
+              "hi": "मार्ग पर चलने पर।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "syn-when-s1",
+    "brief": "The thirty-first statue holding a small stone bowl in which a golden sun rises; carved lotuses opening along her plinth; Dādī pointing at the sun; Śuka watching; early gold light in the hall.",
+    "alt": {
+      "en": "A statue holds a stone bowl with a rising sun while carved lotuses open along her plinth",
+      "hi": "पत्थर के कटोरे में उगता सूर्य थामे प्रतिमा, आसन पर खिलते कमल"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "vakyika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The thirty-first statue holding a small stone bowl in which a golden sun rises; carved lotuses opening along her plinth; Dādī pointing at the sun; Śuka watching; early gold light in the hall.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvakyika: A small, heavy spirit of dark basalt holding a long unrolled scroll that trails behind her, with a single sentence written across it in a close, tidy hand.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-b11b7752-4fa0-40d2-a0b9-d9acd52876e5.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "85d44f72e55530a2f4054df4416c54622147e4675040182ce910019fadbe4f44",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\syn-when-s1-phone-3b1774e6.webp",
+      "key": "learn/syn-when-s1-phone-3b1774e6.webp",
+      "sha256": "3b1774e62a380d11ce9eb2d1db15b55720c49f46f4c4ac4e5deb03c720f5b610",
+      "bytes": 96748,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/syn-when-s1-phone-3b1774e6.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\syn-when-s1-tablet-a6b20ada.webp",
+      "key": "learn/syn-when-s1-tablet-a6b20ada.webp",
+      "sha256": "a6b20ada248d0a0bfd0243ca975921b5c1ea40d411e967f50e8c53ce9f865805",
+      "bytes": 378526,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/syn-when-s1-tablet-a6b20ada.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

@@ -11,7 +11,7 @@ needs:
 - script.cons.grid
 - script.cons.semivowels
 - script.cons.sibilants
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -35,6 +35,7 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: cons-virama-s1
+    text_in_image: ["क्"]
   narration:
     en: Some carved letters wear a small slanted stroke at their foot. Dādī lays a finger on one. “Every consonant carries a hidden {{अ}}. This stroke tells the {{अ}} to be quiet.” Chāyikā, now standing in the open, nods.
     hi: कुछ खुदे अक्षरों के पाँव पर एक छोटी तिरछी रेखा है। दादी एक पर उँगली रखती हैं, “हर व्यंजन में एक छिपा {{अ}} रहता है। यह रेखा उस {{अ}} को चुप करा देती है।” अब खुले में खड़ी छायिका सिर हिलाती है।
@@ -144,8 +145,8 @@ cards:
   - script.cons.inherent-a
   mode: match
   prompt:
-    en: Join each written form to how it is said.
-    hi: हर लिखे रूप को उसके बोले जाने से जोड़िए।
+    en: Match each written form with how it is said.
+    hi: हर लिखे रूप को उसके बोले जाने से मिलाइए।
   explain:
     en: The stroke removes {{अ}}; a sign {{ा}} replaces it with another vowel.
     hi: रेखा {{अ}} हटाती है; मात्रा {{ा}} उसकी जगह दूसरा स्वर रखती है।

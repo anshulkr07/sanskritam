@@ -11,7 +11,7 @@ needs:
 - noun.deva
 - noun.phala
 - noun.lata
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -39,6 +39,7 @@ cards:
     place: pathashala
     ratio: '4:3'
     id: nf2-i-s1
+    text_in_image: ["कविः कवी कवयः।"]
   narration:
     en: Late that night, while the school sleeps, scratching comes from the library. A small blue-black spirit with ink on every wisp is writing on the air with a reed pen, muttering verses. Every line ends the same way, in -इ. “कविः,” he says, tapping his own chest. “कवयः,” he adds, looking round hopefully at a shelf of silent bundles.
     hi: उस रात देर से, जब पाठशाला सोती है, पुस्तकालय से खरोंच की आवाज़ आती है। हर लट पर स्याही लगा एक नन्हा नीला-काला भूत सरकंडे की कलम से हवा पर लिख रहा है, श्लोक बुदबुदाते हुए। हर पंक्ति एक ही ढंग से समाप्त होती है, -इ पर। “कविः,” वह अपनी छाती थपथपाकर कहता है। “कवयः,” वह जोड़ता है, चुप गट्ठरों की अलमारी की ओर आशा से देखता हुआ।
@@ -561,8 +562,8 @@ cards:
   - noun.i-stems
   mode: match
   prompt:
-    en: Join each form to its case and number.
-    hi: हर रूप को उसकी विभक्ति और वचन से जोड़िए।
+    en: Match each form with its case and number.
+    hi: हर रूप को उसकी विभक्ति और वचन से मिलाइए।
   explain:
     en: '{{ना}}, {{ए}}, {{एः}}, {{औ}}.'
     hi: '{{ना}}, {{ए}}, {{एः}}, {{औ}}।'

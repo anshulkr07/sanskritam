@@ -10,7 +10,7 @@ teaches:
 needs:
 - script.cons.grid
 - script.cons.voice
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -35,6 +35,7 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: cons-semivowels-s1
+    text_in_image: ["य र ल व"]
   narration:
     en: Under the five rows, the door has one more line of four letters that fit no row. Chāyikā's eyes glint between them. “These stand in between,” says Dādī. “Half vowel, half consonant. The old name is {{अन्तःस्थाः}}, the ones that stand within.”
     hi: पाँच पंक्तियों के नीचे द्वार पर चार अक्षरों की एक और पंक्ति है जो किसी वर्ग में नहीं आती। उनके बीच छायिका की आँखें चमकती हैं। दादी कहती हैं, “ये बीच में खड़े हैं। आधे स्वर, आधे व्यंजन। पुराना नाम {{अन्तःस्थाः}} है, यानी भीतर खड़े होने वाले।”
@@ -89,8 +90,8 @@ cards:
   - script.cons.semivowels
   mode: match
   prompt:
-    en: Join each vowel to the in-between letter that grows from it.
-    hi: हर स्वर को उस बीच के अक्षर से जोड़िए जो उससे बनता है।
+    en: Match each vowel with the in-between letter that grows from it.
+    hi: हर स्वर को उस बीच के अक्षर से मिलाइए जो उससे बनता है।
   explain:
     en: '{{इ}}→{{य}}, {{ऋ}}→{{र}}, {{ऌ}}→{{ल}}, {{उ}}→{{व}}: you will see this again when words join.'
     hi: '{{इ}}→{{य}}, {{ऋ}}→{{र}}, {{ऌ}}→{{ल}}, {{उ}}→{{व}}: शब्दों के जुड़ने पर यह फिर दिखेगा।'

@@ -9,7 +9,7 @@ teaches:
 - sandhi.blocked
 needs:
 - sandhi.ayadi
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: vs-stop-s1
+    text_in_image: ["हरी एतौ"]
   narration:
     en: 'The sixth statue holds nothing. “हरी एतौ,” she says: “these two Haris.” “ते अत्र.” “मुनी इमौ.” Śuka narrows his eyes. “Those are not joined. Look, two vowels meet and nothing happens.” “Some words are like that,” says Dādī. “Dual forms ending in ई, ऊ, ए stay apart. They are pragṛhya: the door is shut.”'
     hi: 'छठी प्रतिमा के हाथ ख़ाली हैं। “हरी एतौ,” वह कहती है: “ये दो हरि।” “ते अत्र।” “मुनी इमौ।” शुक आँखें सिकोड़ता है। “ये जुड़े नहीं हैं। देखिए, दो स्वर मिलते हैं और कुछ नहीं होता।” “कुछ शब्द ऐसे ही होते हैं,” दादी कहती हैं। “ई, ऊ, ए पर समाप्त द्विवचन के रूप अलग रहते हैं। वे प्रगृह्य हैं: दरवाज़ा बन्द है।”'
@@ -135,8 +136,8 @@ cards:
   - sandhi.blocked
   mode: match
   prompt:
-    en: Join each pair to what happens.
-    hi: हर जोड़ी को उससे जोड़िए जो होता है।
+    en: Match each pair with what happens.
+    hi: हर जोड़ी को उससे मिलाइए जो होता है।
   explain:
     en: Duals in {{-ई}}, {{-ऊ}}, {{-ए}} stay apart.
     hi: '{{-ई}}, {{-ऊ}}, {{-ए}} वाले द्विवचन अलग रहते हैं।'

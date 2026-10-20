@@ -10,7 +10,7 @@ teaches:
 needs:
 - verb.lrt
 - verb.lot
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -449,8 +449,8 @@ cards:
   - verb.vidhilin
   mode: match
   prompt:
-    en: Join each form to its meaning.
-    hi: हर रूप को उसके अर्थ से जोड़िए।
+    en: Match each form with its meaning.
+    hi: हर रूप को उसके अर्थ से मिलाइए।
   explain:
     en: 'The ending tells who: {{-एत्}} he, {{-एः}} you, {{-एयम्}} I, {{-एयुः}} they.'
     hi: 'प्रत्यय बताता है कौन: {{-एत्}} वह, {{-एः}} तुम, {{-एयम्}} मैं, {{-एयुः}} वे।'

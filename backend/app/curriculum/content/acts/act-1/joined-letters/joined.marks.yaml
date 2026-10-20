@@ -11,7 +11,7 @@ teaches:
 needs:
 - script.anusvara
 - script.visarga
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -35,6 +35,7 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: joined-marks-s1
+    text_in_image: ["ऽ", "।", "॥", "ॐ", "० १ २ ३ ४ ५ ६ ७ ८ ९"]
   narration:
     en: 'At the pillar''s foot, below the letters, stand strange marks: a small curl like an S, tall bars, a great round sign, and a row of numbers. The green spirit stirs. “Read the last line,” says Dādī, “and he will wake.”'
     hi: 'स्तम्भ के पाँव पर, अक्षरों के नीचे, अजीब चिह्न खुदे हैं: ‘S’ जैसा छोटा मोड़, ऊँची खड़ी रेखाएँ, एक बड़ा गोल चिह्न, और अंकों की एक पंक्ति। हरा भूत हिलता है। दादी कहती हैं, “आख़िरी पंक्ति पढ़ो, वह जाग जाएगा।”'
@@ -142,8 +143,8 @@ cards:
   - script.numerals
   mode: match
   prompt:
-    en: Join each mark to its job.
-    hi: हर चिह्न को उसके काम से जोड़िए।
+    en: Match each mark with its job.
+    hi: हर चिह्न को उसके काम से मिलाइए।
   explain:
     en: Each mark does one job.
     hi: हर चिह्न का एक काम है।
@@ -181,8 +182,8 @@ cards:
   - script.numerals
   mode: match
   prompt:
-    en: Join each numeral to its number.
-    hi: हर अंक को उसकी संख्या से जोड़िए।
+    en: Match each numeral with its number.
+    hi: हर अंक को उसकी संख्या से मिलाइए।
   explain:
     en: Learn the ten once and you can read any number.
     hi: दस अंक एक बार सीख लिए, तो कोई भी संख्या पढ़ सकते हैं।

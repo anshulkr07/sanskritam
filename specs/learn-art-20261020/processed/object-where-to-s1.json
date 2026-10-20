@@ -1,0 +1,1036 @@
+{
+  "id": "object-where-to-s1",
+  "where": "object.where-to#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The small saffron-yellow spirit tugging at your sleeve and pointing between the spice stall, the river and a grove of trees beyond the market; Dādī smiling; Śuka looking where he points.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nharidraka: A small round saffron-yellow spirit dusted with spice powder, a tiny brass scale hanging from one wisp.\nvanik: A round, cheerful man in a mustard-yellow shawl with a thick moustache, brass scales hanging from his stall, heaps of spices in front of him.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "object.where-to",
+    "template": "scene",
+    "title": {
+      "en": "Where to?",
+      "hi": "कहाँ को?"
+    },
+    "title_sa": "गन्तव्यम्",
+    "minutes": 6,
+    "teaches": [
+      "case.acc-goal"
+    ],
+    "needs": [
+      "case.acc"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Which way?",
+          "hi": "किस ओर?"
+        },
+        "image": {
+          "id": "object-where-to-s1",
+          "brief": "The small saffron-yellow spirit tugging at your sleeve and pointing between the spice stall, the river and a grove of trees beyond the market; Dādī smiling; Śuka looking where he points.",
+          "alt": {
+            "en": "A small spirit tugging a sleeve and pointing in three directions",
+            "hi": "तीन दिशाओं में इशारा करते हुए आस्तीन खींचता नन्हा भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "haridraka",
+            "vanik"
+          ],
+          "place": "apana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The yellow spirit tugs your sleeve and points: the spice seller's stall, the river, the grove beyond the market. He wants to go somewhere, and cannot say where. “A place you go to is also reached by the doer,” says Dādī. “So it takes the second case as well.”",
+          "hi": "पीला भूत आपकी आस्तीन खींचता है और इशारा करता है: मसाले वाले की दुकान, नदी, बाज़ार के पार का उपवन। वह कहीं जाना चाहता है, और बता नहीं पाता कहाँ। दादी कहती हैं, “जिस जगह आप जाते हैं, उसे भी कर्ता पहुँचता है। इसलिए वह भी द्वितीया में आता है।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Going to a place",
+          "hi": "किसी स्थान को जाना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.acc-goal"
+        ],
+        "sutras": [
+          "2.3.2"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "With verbs of going, the place you go to takes the second case: {{बालकः ग्रामं गच्छति}} (the boy goes to the village). The verb of coming works the same way: {{गृहम् आगच्छति}}.",
+          "hi": "जाने की क्रियाओं के साथ जहाँ जाया जाए वह स्थान द्वितीया में आता है: {{बालकः ग्रामं गच्छति}} (बालक गाँव जाता है)। आने की क्रिया भी ऐसी ही चलती है: {{गृहम् आगच्छति}}।"
+        },
+        "examples": [
+          {
+            "sa": "बालकः ग्रामम् गच्छति।",
+            "meaning": {
+              "en": "The boy goes to the village.",
+              "hi": "बालक गाँव जाता है।"
+            },
+            "words": [
+              {
+                "sa": "बालकः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "ग्रामम्",
+                "gloss": {
+                  "en": "to the village",
+                  "hi": "गाँव को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "ग्राम",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छति",
+                "gloss": {
+                  "en": "goes",
+                  "hi": "जाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "सीता गृहम् गच्छति।",
+            "meaning": {
+              "en": "Sītā goes home.",
+              "hi": "सीता घर जाती है।"
+            },
+            "words": [
+              {
+                "sa": "सीता",
+                "gloss": {
+                  "en": "Sītā",
+                  "hi": "सीता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "सीता",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गृहम्",
+                "gloss": {
+                  "en": "to the house",
+                  "hi": "घर को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गृह",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छति",
+                "gloss": {
+                  "en": "goes",
+                  "hi": "जाती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "नाविकः नगरम् गच्छति।",
+            "meaning": {
+              "en": "The boatman goes to the town.",
+              "hi": "नाविक नगर जाता है।"
+            },
+            "words": [
+              {
+                "sa": "नाविकः",
+                "gloss": {
+                  "en": "boatman",
+                  "hi": "नाविक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नाविक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "नगरम्",
+                "gloss": {
+                  "en": "to the town",
+                  "hi": "नगर को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नगर",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छति",
+                "gloss": {
+                  "en": "goes",
+                  "hi": "जाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Places to go to",
+          "hi": "जाने के स्थान"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.acc-goal"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Four places, first and second case",
+          "hi": "चार स्थान, प्रथमा और द्वितीया"
+        },
+        "columns": [
+          {
+            "en": "Place",
+            "hi": "स्थान"
+          },
+          {
+            "en": "1st",
+            "hi": "प्रथमा"
+          },
+          {
+            "en": "2nd: to",
+            "hi": "द्वितीया: को"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "village",
+                "hi": "गाँव"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ग्रामः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "ग्राम",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ग्रामम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "ग्राम",
+                "linga": "Pum",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "town",
+                "hi": "नगर"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नगरम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नगर",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नगरम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "नगर",
+                "linga": "Napumsaka",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "house",
+                "hi": "घर"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गृहम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "गृह",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गृहम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "गृह",
+                "linga": "Napumsaka",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "river",
+                "hi": "नदी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नदी",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नदीम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.acc-goal"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“The girl goes to the river.” Which word for “river”?",
+          "hi": "‘बालिका नदी को जाती है।’ ‘नदी’ के लिए कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "The goal takes the second case: {{नदीम्}}.",
+          "hi": "गन्तव्य द्वितीया लेता है: {{नदीम्}}।"
+        },
+        "options": [
+          {
+            "sa": "नदी",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "नदीम्",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "नद्यः",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.acc-goal"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each place to “to …”.",
+          "hi": "हर स्थान को ‘…को’ से जोड़िए।"
+        },
+        "explain": {
+          "en": "The second case marks where you go.",
+          "hi": "द्वितीया बताती है कि कहाँ जाते हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "ग्रामम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "to the village",
+                "hi": "गाँव को"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "नगरम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "to the town",
+                "hi": "नगर को"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "गृहम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "to the house",
+                "hi": "घर को"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "नदीम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "to the river",
+                "hi": "नदी को"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.acc-goal"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Reorder the words and keep the meaning.",
+          "hi": "शब्दों को फिर से लगाइए, अर्थ वही रखिए।"
+        },
+        "explain": {
+          "en": "The village is the goal wherever it stands.",
+          "hi": "गाँव कहीं भी हो, गन्तव्य वही है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "reorder",
+          "params": {
+            "sentence": "बालकः ग्रामं गच्छति"
+          },
+          "seed": 2
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Where to",
+          "hi": "कहाँ को"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.acc-goal"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “We go to the river.”",
+          "hi": "कहिए: ‘हम नदी को जाते हैं।’"
+        },
+        "explain": {
+          "en": "{{वयं नदीं गच्छामः}}: we go to the river.",
+          "hi": "{{वयं नदीं गच्छामः}}: हम नदी को जाते हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "वयम्",
+          "नदीम्",
+          "गच्छामः"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“वयं नदीं गच्छामः,” you say, and the little spirit skips ahead with a trail of yellow dust, then turns back to see whether you follow.",
+            "hi": "“वयं नदीं गच्छामः,” आप कहते हैं, और नन्हा भूत पीली धूल की लकीर छोड़ता आगे कूद चलता है, फिर मुड़कर देखता है कि आप आ रहे हैं या नहीं।"
+          },
+          "failure": {
+            "en": "He tugs again. “We” is {{वयम्}}; the place is in the second case.",
+            "hi": "वह फिर खींचता है। ‘हम’ है {{वयम्}}; स्थान द्वितीया में है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.acc-goal"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that names a place you go to.",
+          "hi": "जाने के स्थान वाले हर शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "ग्रामम्",
+            "बालकः",
+            "गृहम्",
+            "पठति",
+            "नगरम्",
+            "नदी"
+          ],
+          "targets": [
+            "ग्रामम्",
+            "गृहम्",
+            "नगरम्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Going to",
+          "hi": "को जाना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "ग्रामं गच्छति",
+            "text": {
+              "en": "The goal takes the second case.",
+              "hi": "गन्तव्य द्वितीया लेता है।"
+            }
+          },
+          {
+            "sa": "गृहम् आगच्छति",
+            "text": {
+              "en": "Coming works the same way.",
+              "hi": "आना भी इसी तरह चलता है।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "No separate word for “to”.",
+              "hi": "‘को’ के लिए अलग शब्द नहीं।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "object-where-to-s1",
+    "brief": "The small saffron-yellow spirit tugging at your sleeve and pointing between the spice stall, the river and a grove of trees beyond the market; Dādī smiling; Śuka looking where he points.",
+    "alt": {
+      "en": "A small spirit tugging a sleeve and pointing in three directions",
+      "hi": "तीन दिशाओं में इशारा करते हुए आस्तीन खींचता नन्हा भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "haridraka",
+      "vanik"
+    ],
+    "place": "apana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The small saffron-yellow spirit tugging at your sleeve and pointing between the spice stall, the river and a grove of trees beyond the market; Dādī smiling; Śuka looking where he points.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nharidraka: A small round saffron-yellow spirit dusted with spice powder, a tiny brass scale hanging from one wisp.\nvanik: A round, cheerful man in a mustard-yellow shawl with a thick moustache, brass scales hanging from his stall, heaps of spices in front of him.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-19d17ff1-1eed-429c-8c78-b946e0d3ddd7.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "3439c3773666faceea5861e9a54bab1cfbca9088cfbd2baaccf5afd483de4349",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\object-where-to-s1-phone-1d411396.webp",
+      "key": "learn/object-where-to-s1-phone-1d411396.webp",
+      "sha256": "1d411396d36a1a12679f4e01b18b6959ae25057050a13df2ca247e94ece75996",
+      "bytes": 130656,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/object-where-to-s1-phone-1d411396.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\object-where-to-s1-tablet-0459abfc.webp",
+      "key": "learn/object-where-to-s1-tablet-0459abfc.webp",
+      "sha256": "0459abfcaa66a331aed566a69d651124c85ae82af5ff1cd7f236b31c7a95195a",
+      "bytes": 480572,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/object-where-to-s1-tablet-0459abfc.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

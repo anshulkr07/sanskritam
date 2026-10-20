@@ -9,7 +9,7 @@ teaches:
 - krt.tumun
 needs:
 - krt.ktva
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: smashana
     ratio: '4:3'
     id: part-tumun-s1
+    text_in_image: ["पठितुम्"]
   narration:
     en: '“Why did you come?” the Vetāla asks, and the paper-fan spirit folds his answer into a single word: “द्रष्टुम्.” “To see.” Śuka tests it. “गन्तुम् इच्छामि.” “I want to go.” “पठितुम् शक्नोमि.” “I am able to read.” “One word,” says Dādī, “and the purpose is done. No ‘in order that’, no ‘so as to’.”'
     hi: '“तुम क्यों आए?” वेताल पूछता है, और काग़ज़ी पंखे वाला भूत अपना उत्तर एक शब्द में समेट देता है: “द्रष्टुम्।” “देखने के लिए।” शुक परखता है। “गन्तुम् इच्छामि।” “मैं जाना चाहता हूँ।” “पठितुम् शक्नोमि।” “मैं पढ़ सकता हूँ।” “एक शब्द,” दादी कहती हैं, “और प्रयोजन पूरा। न ‘ताकि’, न ‘इस उद्देश्य से’।”'
@@ -46,6 +47,16 @@ cards:
       en: 'I too said: “Mother, I go to see this.”'
       hi: 'मैंने भी कहा: “माँ, मैं इसे देखने जाता हूँ।”'
     source: Kathāsaritsāgara 1.2 (read in the Digital Corpus of Sanskrit)
+  lines:
+  - speaker: sankshepaka
+    sa: द्रष्टुम्
+    gloss:
+      en: To see.
+      hi: देखने के लिए।
+    check:
+      type: krdanta
+      dhatu: दृश्
+      krt: tumun
 - id: t1
   kind: teach
   title:
@@ -296,8 +307,8 @@ cards:
   - krt.tumun
   mode: match
   prompt:
-    en: Join each root to its “to …” form.
-    hi: हर धातु को उसके ‘… के लिए’ रूप से जोड़िए।
+    en: Match each root with its “to …” form.
+    hi: हर धातु को उसके ‘… के लिए’ रूप से मिलाइए।
   explain:
     en: Mind the strengthened vowel.
     hi: दृढ़ हुए स्वर का ध्यान रखिए।
@@ -348,8 +359,8 @@ cards:
   - krt.tumun
   widget: word_factory
   prompt:
-    en: Snap a suffix onto a root and see the word it makes.
-    hi: धातु पर प्रत्यय जोड़िए और देखिए कि कौन-सा शब्द बनता है।
+    en: Pick a root and a suffix, and see the word they make.
+    hi: एक धातु और एक प्रत्यय चुनिए और देखिए कि कौन-सा शब्द बनता है।
   params:
     roots:
     - dhatu: पठ्

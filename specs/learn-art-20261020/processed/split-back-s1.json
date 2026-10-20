@@ -1,0 +1,791 @@
+{
+  "id": "split-back-s1",
+  "where": "split.back#s1",
+  "ratio": "4:3",
+  "expected": [
+    "विद्यालयः"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The thirteenth statue holding a thin chisel; Lubdhaka's foreman crouched at an inscription on the plinth with his lamp beside him, frowning; Dādī kneeling beside him and pointing to one letter; Śuka on the plinth.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvicchedika: A small spirit of fine white limestone with a thin chisel in one hand and a faint line running down the middle of her face, like a word waiting to be divided.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nविद्यालयः",
+  "source": {
+    "id": "split.back",
+    "template": "scene",
+    "title": {
+      "en": "Working backwards",
+      "hi": "पीछे की ओर चलना"
+    },
+    "title_sa": "सन्धिविच्छेदः",
+    "minutes": 6,
+    "teaches": [
+      "sandhi.split"
+    ],
+    "needs": [
+      "sandhi.nasal"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The thirteenth statue",
+          "hi": "तेरहवीं प्रतिमा"
+        },
+        "image": {
+          "id": "split-back-s1",
+          "brief": "The thirteenth statue holding a thin chisel; Lubdhaka's foreman crouched at an inscription on the plinth with his lamp beside him, frowning; Dādī kneeling beside him and pointing to one letter; Śuka on the plinth.",
+          "alt": {
+            "en": "A statue with a thin chisel while an old woman points at one letter and a frowning man crouches by his lamp",
+            "hi": "पतली छेनी वाली प्रतिमा, एक अक्षर की ओर इशारा करती दादी, दीपक के पास झुका उलझा आदमी"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "vicchedika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The thirteenth statue holds a thin chisel. Lubdhaka's foreman has put his lamp on the plinth and is staring at the nearest inscription: “विद्यालयः”. He cannot read it. “You have to take it apart,” says Dādī, not unkindly. “Look at the sound that has changed, and work backwards to what must have been there. Then check that both halves are real words.”",
+          "hi": "तेरहवीं प्रतिमा के हाथ में पतली छेनी है। लुब्धक के मुखिया ने अपना दीपक आसन पर रख दिया है और निकटतम अभिलेख “विद्यालयः” को घूर रहा है। वह उसे पढ़ नहीं पाता। “उसे अलग करना होगा,” दादी बिना कठोरता के कहती हैं। “जो ध्वनि बदली है उसे देखिए, और पीछे चलकर सोचिए कि वहाँ क्या रहा होगा। फिर जाँचिए कि दोनों भाग असली शब्द हैं।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Spot the tell-tale sound",
+          "hi": "पहचान की ध्वनि खोजिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.split"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "To split, look for the sound that gave the join away. A long {{आ}} may be {{अ/आ + अ/आ}}; {{ए}} may be {{अ + इ}}; {{ओ}} may be {{अ + उ}}; {{य्}} or {{व्}} between a consonant and a vowel may be {{इ}} or {{उ}}; {{ज्ज}} may be {{त् + ज}}; {{ोऽ}} may be {{अः + अ}}. Then test both halves as words.",
+          "hi": "अलग करने के लिए वह ध्वनि खोजिए जिसने सन्धि का भेद खोला। दीर्घ {{आ}} {{अ/आ + अ/आ}} हो सकता है; {{ए}} {{अ + इ}} हो सकता है; {{ओ}} {{अ + उ}} हो सकता है; व्यंजन और स्वर के बीच {{य्}} या {{व्}} {{इ}} या {{उ}} हो सकता है; {{ज्ज}} {{त् + ज}} हो सकता है; {{ोऽ}} {{अः + अ}} हो सकता है। फिर दोनों भागों को शब्द की तरह परखिए।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "सन्धिविच्छेदः",
+          "meaning": {
+            "en": "taking a join apart",
+            "hi": "सन्धि को अलग करना"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Clues to the split",
+          "hi": "विच्छेद के संकेत"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.split"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "What the joined sound may hide",
+          "hi": "जुड़ी हुई ध्वनि क्या छिपा सकती है"
+        },
+        "columns": [
+          {
+            "en": "Joined sound",
+            "hi": "जुड़ी ध्वनि"
+          },
+          {
+            "en": "May be",
+            "hi": "हो सकता है"
+          },
+          {
+            "en": "Example",
+            "hi": "उदाहरण"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "आ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अ/आ + अ/आ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "विद्यालयः = विद्या + आलयः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "ए, ओ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अ + इ, अ + उ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गणेशः = गण + ईशः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "ऐ, औ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अ + ए, अ + ओ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सदैव = सदा + एव",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "य्, व्, र्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "इ, उ, ऋ + vowel",
+                "hi": "इ, उ, ऋ + स्वर"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "इत्यादि = इति + आदि",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "ोऽ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अः + अ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "रामोऽस्ति = रामः + अस्ति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "ज्ज, च्च, ल्ल",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "त् + ज, च, ल",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सज्जनः = सत् + जनः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "न्म, ङ्म",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "त्, क् + म",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सन्मार्गः = सत् + मार्गः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "Several answers may be possible; the right one gives two real words.",
+          "hi": "कई उत्तर सम्भव हो सकते हैं; सही वह है जो दो असली शब्द दे।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.split"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Split the joined word {{महात्मा}}.",
+          "hi": "जुड़े शब्द {{महात्मा}} को तोड़िए।"
+        },
+        "explain": {
+          "en": "{{महा}} + {{आत्मा}}.",
+          "hi": "{{महा}} + {{आत्मा}}।"
+        },
+        "options": [
+          {
+            "sa": "महे + आत्मा",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "महि + आत्मा",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "महा + आत्मा",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.split"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Split the joined word {{सज्जनः}}.",
+          "hi": "जुड़े शब्द {{सज्जनः}} को तोड़िए।"
+        },
+        "explain": {
+          "en": "{{सत्}} + {{जनः}}.",
+          "hi": "{{सत्}} + {{जनः}}।"
+        },
+        "options": [
+          {
+            "sa": "सन् + जनः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सत् + जनः",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "सः + जनः",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.split"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{सूक्तम्}} comes from…",
+          "hi": "{{सूक्तम्}} बना है…"
+        },
+        "explain": {
+          "en": "A long {{ऊ}} from {{उ}} + {{उ}}.",
+          "hi": "दीर्घ {{ऊ}} {{उ}} + {{उ}} से।"
+        },
+        "options": [
+          {
+            "sa": "सो + उक्तम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सु + उक्तम्",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "सि + उक्तम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.split"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{इत्यादि}} comes from…",
+          "hi": "{{इत्यादि}} बना है…"
+        },
+        "explain": {
+          "en": "{{य्}} before {{आ}} from {{इ}}.",
+          "hi": "{{आ}} से पहले {{य्}}, {{इ}} से।"
+        },
+        "options": [
+          {
+            "sa": "इत + आदि",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "इतु + आदि",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "इति + आदि",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.split"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each joined word to its split.",
+          "hi": "हर जुड़े शब्द को उसके विच्छेद से जोड़िए।"
+        },
+        "explain": {
+          "en": "Four ways to join {{अस्ति}}.",
+          "hi": "{{अस्ति}} को जोड़ने के चार तरीक़े।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "रामोऽस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "रामः + अस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "कविरस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "कविः + अस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "तदस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "तत् + अस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "नास्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "न + अस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.split"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap the joined words.",
+          "hi": "जुड़े हुए शब्द छुइए।"
+        },
+        "params": {
+          "passage": [
+            "विद्यालयः",
+            "विद्या",
+            "सज्जनः",
+            "सत्",
+            "तदस्ति",
+            "तत्"
+          ],
+          "targets": [
+            "विद्यालयः",
+            "सज्जनः",
+            "तदस्ति"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p6",
+        "title": {
+          "en": "The chisel",
+          "hi": "छेनी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.split"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{उज्ज्वलः}} comes from…",
+          "hi": "{{उज्ज्वलः}} बना है…"
+        },
+        "explain": {
+          "en": "{{ज्ज}} from {{त् + ज}}.",
+          "hi": "{{ज्ज}}, {{त् + ज}} से।"
+        },
+        "options": [
+          {
+            "sa": "उद् + ज्वलः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "उक् + ज्वलः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "उत् + ज्वलः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“उत् + ज्वलः,” you say, and the thirteenth statue lays the thin chisel on the word, and the word comes apart, cleanly, with a sound like a thread parting: उत्, ज्वलः. The foreman gives a small shaky laugh. “Two words,” he says. “It was two words all the time.” He writes them in his notebook, and for the first time, crossly, he asks Dādī: “And that one?”",
+            "hi": "“उत् + ज्वलः,” आप कहते हैं, और तेरहवीं प्रतिमा पतली छेनी शब्द पर रखती है, और शब्द साफ़ दो टुकड़े हो जाता है, धागा टूटने की ध्वनि के साथ: उत्, ज्वलः। मुखिया हल्की काँपती हँसी हँसता है। “दो शब्द,” वह कहता है। “यह हमेशा से दो शब्द थे।” वह उन्हें अपनी पुस्तिका में लिखता है, और पहली बार, चिढ़कर, दादी से पूछता है: “और वह वाला?”"
+          },
+          "failure": {
+            "en": "The word stays whole. {{ज्ज}} from {{त् + ज}}: {{उत् + ज्वलः}}.",
+            "hi": "शब्द साबुत रहता है। {{ज्ज}}, {{त् + ज}} से: {{उत् + ज्वलः}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini in reverse",
+          "hi": "पाणिनि उलटे क्रम में"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sandhi.split"
+        ],
+        "sutras": [
+          "6.1.101",
+          "6.1.87",
+          "8.2.39"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Pāṇini's sūtras only join; the splitting is the reader's work, done by undoing each rule. {{अकः सवर्णे दीर्घः}} tells you a long {{आ}} may hide two {{अ/आ}}. {{आद्गुणः}} tells you {{ए}} may hide {{अ + इ}}. {{झलां जशोऽन्ते}} tells you a soft stop may be a hard one.",
+          "hi": "पाणिनि के सूत्र केवल जोड़ते हैं; विच्छेद पाठक का काम है, जो हर नियम को उलटकर किया जाता है। {{अकः सवर्णे दीर्घः}} बताता है कि दीर्घ {{आ}} दो {{अ/आ}} छिपा सकता है। {{आद्गुणः}} बताता है कि {{ए}} {{अ + इ}} छिपा सकता है। {{झलां जशोऽन्ते}} बताता है कि कोमल स्पर्श कठोर हो सकता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Splitting",
+          "hi": "विच्छेद"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "विद्यालयः",
+            "text": {
+              "en": "विद्या + आलयः.",
+              "hi": "विद्या + आलयः।"
+            }
+          },
+          {
+            "sa": "सज्जनः",
+            "text": {
+              "en": "सत् + जनः.",
+              "hi": "सत् + जनः।"
+            }
+          },
+          {
+            "sa": "रामोऽस्ति",
+            "text": {
+              "en": "रामः + अस्ति.",
+              "hi": "रामः + अस्ति।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "split-back-s1",
+    "brief": "The thirteenth statue holding a thin chisel; Lubdhaka's foreman crouched at an inscription on the plinth with his lamp beside him, frowning; Dādī kneeling beside him and pointing to one letter; Śuka on the plinth.",
+    "alt": {
+      "en": "A statue with a thin chisel while an old woman points at one letter and a frowning man crouches by his lamp",
+      "hi": "पतली छेनी वाली प्रतिमा, एक अक्षर की ओर इशारा करती दादी, दीपक के पास झुका उलझा आदमी"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "vicchedika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The thirteenth statue holding a thin chisel; Lubdhaka's foreman crouched at an inscription on the plinth with his lamp beside him, frowning; Dādī kneeling beside him and pointing to one letter; Śuka on the plinth.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvicchedika: A small spirit of fine white limestone with a thin chisel in one hand and a faint line running down the middle of her face, like a word waiting to be divided.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-bbbd4acd-5c84-4891-9cdb-b8f1662f461c.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "3d25fd926d98e7c70c464a59400db4de269831007e8e5952653edb251d0cf23e",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\split-back-s1-phone-6cd2f368.webp",
+      "key": "learn/split-back-s1-phone-6cd2f368.webp",
+      "sha256": "6cd2f368871821ff443fd82005610abf4822ae3cbc298124c4a701555379dfd5",
+      "bytes": 88590,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/split-back-s1-phone-6cd2f368.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\split-back-s1-tablet-7ba14e58.webp",
+      "key": "learn/split-back-s1-tablet-7ba14e58.webp",
+      "sha256": "7ba14e589983f5f3b3a4f9c4e39b7e813917dc73d2639f09956e8bd677158aff",
+      "bytes": 317380,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/split-back-s1-tablet-7ba14e58.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

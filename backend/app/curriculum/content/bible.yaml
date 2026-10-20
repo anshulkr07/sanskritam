@@ -20,8 +20,10 @@ style: >-
   organic detail, quiet ochre, sage, dusty terracotta and muted indigo, soft
   natural light. Warm and gentle; spirits are luminous and kind, never
   frightening. Phone-first composition: the main subject grouped in the
-  centre, quiet margins. Text appears only where the brief asks for it, and
-  then exactly as given.
+  centre, quiet margins. Writing is welcome where it helps the lesson. Use
+  the approved text_in_image strings exactly, and verify every visible
+  letter before publishing. Do not substitute blank tags or pages where
+  the lesson needs writing.
 
 characters:
   - id: you
@@ -35,6 +37,7 @@ characters:
       cloth shoulder bag.
     portrait:
       id: portrait-you
+      text_in_image: ["अ इ उ", "ऋ ऌ", "ए ओ", "ऐ औ"]
       brief: "Square portrait: you, seen from behind and a little to one side, holding a softly glowing half-burnt palm leaf in both hands in warm library lamplight; the face is not shown."
       alt: {en: "A young person seen from behind, holding a glowing palm leaf", hi: "पीछे से दिखता एक युवा, हाथों में चमकता ताड़पत्र"}
       ratio: "1:1"
@@ -898,6 +901,7 @@ ghosts:
       gloss: {en: "“There are letters on the door.”", hi: "“द्वार पर अक्षर हैं।”"}
     freed_image:
       id: freed-dhumaka
+      text_in_image: ["अ इ उ", "ऋ ऌ", "ए ओ", "ऐ औ"]
       brief: "The temple library at night: Dhūmaka, now silver and glowing, rises from the desk in a spiral like smoke from a lamp just put out, smiling and waving; the half-burnt leaf blazes gold with its first line lit; you (seen from behind), Dādī and Śuka look up in wonder."
       alt: {en: "A small silver ghost spirals up from a glowing leaf while a family looks up in wonder", hi: "चमकते पत्र से ऊपर घूमता हुआ उठता नन्हा चाँदी-सा भूत; परिवार अचरज से ऊपर देख रहा है"}
       ratio: "4:3"

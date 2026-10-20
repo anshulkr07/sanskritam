@@ -9,7 +9,7 @@ teaches:
 - case.abl
 needs:
 - case.dat
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -314,8 +314,8 @@ cards:
   - case.abl
   mode: match
   prompt:
-    en: Join each source to its meaning.
-    hi: हर स्रोत को उसके अर्थ से जोड़िए।
+    en: Match each source with its meaning.
+    hi: हर स्रोत को उसके अर्थ से मिलाइए।
   explain:
     en: '{{आत्}} and {{याः}}: the fifth-case endings.'
     hi: '{{आत्}} और {{याः}}: पञ्चमी के प्रत्यय।'

@@ -5,7 +5,7 @@ title:
   hi: कठपुतलियों के नाम बताइए
 title_sa: परीक्षा
 minutes: 4
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -17,8 +17,8 @@ cards:
   - gen.three
   mode: match
   prompt:
-    en: Join each word to its gender.
-    hi: हर शब्द को उसके लिंग से जोड़िए।
+    en: Match each word with its gender.
+    hi: हर शब्द को उसके लिंग से मिलाइए।
   explain:
     en: The ending gives the gender.
     hi: प्रत्यय लिंग बताता है।
@@ -85,8 +85,8 @@ cards:
   - pron.tad
   mode: match
   prompt:
-    en: Join each pronoun to its noun.
-    hi: हर सर्वनाम को उसकी संज्ञा से जोड़िए।
+    en: Match each pronoun with its noun.
+    hi: हर सर्वनाम को उसकी संज्ञा से मिलाइए।
   explain:
     en: The pronoun takes its noun's gender.
     hi: सर्वनाम अपनी संज्ञा का लिंग लेता है।
@@ -147,8 +147,8 @@ cards:
   - gen.feminine-a
   mode: match
   prompt:
-    en: Join each masculine to its feminine.
-    hi: हर पुंलिंग को उसके स्त्रीलिंग से जोड़िए।
+    en: Match each masculine with its feminine.
+    hi: हर पुंलिंग को उसके स्त्रीलिंग से मिलाइए।
   explain:
     en: Add {{आ}} or {{ई}}.
     hi: '{{आ}} या {{ई}} जोड़िए।'

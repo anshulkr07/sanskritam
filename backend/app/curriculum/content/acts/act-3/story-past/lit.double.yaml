@@ -10,7 +10,7 @@ teaches:
 needs:
 - verb.lan
 - verb.lrt
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -402,8 +402,8 @@ cards:
   - verb.lit
   mode: match
   prompt:
-    en: Join each present to its story past.
-    hi: हर वर्तमान को उसके कथा के भूतकाल से जोड़िए।
+    en: Match each present with its story past.
+    hi: हर वर्तमान को उसके कथा के भूतकाल से मिलाइए।
   explain:
     en: Look for the doubled start.
     hi: दुगुनी शुरुआत देखिए।

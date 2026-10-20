@@ -10,7 +10,7 @@ teaches:
 needs:
 - verb.passive
 - verb.causative
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -41,6 +41,20 @@ cards:
   narration:
     en: 'The twelfth hand has a clay cup, and it is empty. It holds it out, very still. “पिपासति,” says the Vetāla. “He wants to drink.” “It is not drinking,” Śuka says. “It is wanting to.” Dādī nods: “That is the third form: neither ‘he does’, nor ‘he is made to’, but ‘he wants to’. The root doubles, and an स comes after it.”'
     hi: 'बारहवें हाथ में मिट्टी का प्याला है, और वह ख़ाली है। वह उसे बहुत स्थिर पकड़े हुए बढ़ाता है। “पिपासति,” वेताल कहता है। “वह पीना चाहता है।” “यह पी नहीं रहा,” शुक कहता है। “यह चाह रहा है।” दादी सिर हिलाती हैं: “यह तीसरा रूप है: न ‘वह करता है’, न ‘उससे करवाया जाता है’, बल्कि ‘वह करना चाहता है’। धातु दुगुनी होती है, और उसके बाद एक स आता है।”'
+  lines:
+  - speaker: vetala
+    sa: पिपासति
+    gloss:
+      en: He wants to drink.
+      hi: वह पीना चाहता है।
+    check:
+      type: tinanta
+      dhatu: पा
+      lakara: Lat
+      purusha: Prathama
+      vacana: Eka
+      sanadi:
+      - San
 - id: t1
   kind: teach
   title:
@@ -215,8 +229,8 @@ cards:
   - verb.desiderative
   mode: match
   prompt:
-    en: Join each root to its “wants to” form.
-    hi: हर धातु को उसके ‘चाहता है’ रूप से जोड़िए।
+    en: Match each root with its “wants to” form.
+    hi: हर धातु को उसके ‘चाहता है’ रूप से मिलाइए।
   explain:
     en: The root is doubled and {{-स-}} follows.
     hi: धातु दुगुनी और उसके बाद {{-स-}}।

@@ -9,6 +9,7 @@ export function courseOrder(index: StoryIndex): Stop[] {
   if (unit.status !== 'ready') { out.push({...base, lesson_id:null, role:'coming_soon'}); continue; }
   for (const lesson of unit.lessons) out.push({...base, lesson_id:lesson.id, role:'lesson'});
   if (unit.revision) out.push({...base, lesson_id:unit.revision.id, role:'revision'});
+  if (unit.reading) out.push({...base, lesson_id:unit.reading.id, role:'reading'});
   if (unit.check) out.push({...base, lesson_id:unit.check.id, role:'check'});
  }
  return out;
@@ -37,7 +38,7 @@ export function derive(index: StoryIndex, finished: Iterable<string>): StoryStat
  let current: Stop | null = null, comingSoon: string | null = null;
  for (const stop of courseOrder(index)) {
   if (stop.role === 'coming_soon') { comingSoon = stop.unit_id; break; }
-  if (stop.role === 'revision') continue;
+  if (stop.role === 'revision' || stop.role === 'reading') continue;
   if (!done.has(stop.lesson_id!)) { current = stop; break; }
  }
  const known = new Set(courseOrder(index).map(s=>s.lesson_id).filter(Boolean));

@@ -1,0 +1,971 @@
+{
+  "id": "cmd-wish-s1",
+  "where": "cmd.wish#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Lubdhaka stepping out from between tree trunks with a raised lantern and a thin smile; the Vetāla hanging above him with a sweetly polite expression and a hand extended in welcome; Dādī gripping Śuka who stares with his beak open; long shadows.\nCharacter appearances:\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "cmd.wish",
+    "template": "scene",
+    "title": {
+      "en": "May they be happy",
+      "hi": "वे सुखी हों"
+    },
+    "title_sa": "भवतु सुखी भव",
+    "minutes": 6,
+    "teaches": [
+      "verb.lot-polite"
+    ],
+    "needs": [
+      "verb.lot"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The lantern in the trees",
+          "hi": "पेड़ों के बीच लालटेन"
+        },
+        "image": {
+          "id": "cmd-wish-s1",
+          "brief": "Lubdhaka stepping out from between tree trunks with a raised lantern and a thin smile; the Vetāla hanging above him with a sweetly polite expression and a hand extended in welcome; Dādī gripping Śuka who stares with his beak open; long shadows.",
+          "alt": {
+            "en": "A tall man with a lantern steps out of the trees while a spirit hanging above him gestures a polite welcome",
+            "hi": "लालटेन थामे लम्बा आदमी पेड़ों से निकलता है, ऊपर लटका भूत विनम्र स्वागत करता है"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "lubdhaka",
+            "vetala",
+            "dadi",
+            "shuka"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Lubdhaka steps out of the trees, lantern raised, smiling the smile of someone who does not smile. “आगच्छतु भवान्,” the Vetāla says to him, sweet as honey: “Let your honour come.” Śuka gasps. “Why is he being polite?” Dādī: “The Vetāla never gives plain orders to a guest. A command in the third person is a request.”",
+          "hi": "लुब्धक पेड़ों से निकल आता है, लालटेन उठाए, उस आदमी की मुस्कान लिए जो मुस्कराता नहीं। “आगच्छतु भवान्,” वेताल उससे शहद-सी मिठास में कहता है: “आप पधारें।” शुक चौंककर साँस लेता है। “यह इतना विनम्र क्यों है?” दादी: “वेताल अतिथि को सीधी आज्ञा नहीं देता। प्रथम पुरुष में आज्ञा एक प्रार्थना है।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Wishes and polite requests",
+          "hi": "शुभकामनाएँ और विनम्र प्रार्थना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot-polite"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "The third-person {{लोट्}} is also the polite request and the blessing: {{भवतु}} (let it be), {{जयतु}} (victory to him), {{जीवतु}} (long life), {{अस्तु}} (so be it). To be polite to “you”, say {{भवान्}} (your honour, a word for “you”) and put the verb in the third person: {{भवान् आगच्छतु}}, “please come”.",
+          "hi": "प्रथम पुरुष का {{लोट्}} विनम्र प्रार्थना और आशीर्वाद भी है: {{भवतु}} (हो), {{जयतु}} (उसकी जय हो), {{जीवतु}} (दीर्घायु हो), {{अस्तु}} (ऐसा ही हो)। ‘आप’ के लिए विनम्र होने को {{भवान्}} (आप, ‘तुम’ का आदरसूचक शब्द) कहिए और क्रिया प्रथम पुरुष में रखिए: {{भवान् आगच्छतु}}, ‘कृपया आइए’।"
+        },
+        "examples": [
+          {
+            "sa": "भवान् आगच्छतु।",
+            "meaning": {
+              "en": "Please come.",
+              "hi": "कृपया आइए।"
+            },
+            "words": [
+              {
+                "sa": "भवान्",
+                "gloss": {
+                  "en": "you (polite)",
+                  "hi": "आप"
+                },
+                "check": null
+              },
+              {
+                "sa": "आगच्छतु",
+                "gloss": {
+                  "en": "please come",
+                  "hi": "पधारिए"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lot",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "आ"
+                  ],
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "भवान् उपविशतु।",
+            "meaning": {
+              "en": "Please sit down.",
+              "hi": "कृपया बैठिए।"
+            },
+            "words": [
+              {
+                "sa": "भवान्",
+                "gloss": {
+                  "en": "you (polite)",
+                  "hi": "आप"
+                },
+                "check": null
+              },
+              {
+                "sa": "उपविशतु",
+                "gloss": {
+                  "en": "please sit",
+                  "hi": "बैठिए"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "विश्",
+                  "lakara": "Lot",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "उप"
+                  ],
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "जयतु।",
+            "meaning": {
+              "en": "May he win!",
+              "hi": "उसकी जय हो!"
+            },
+            "words": [
+              {
+                "sa": "जयतु",
+                "gloss": {
+                  "en": "may he win",
+                  "hi": "वह जीते"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "जि",
+                  "lakara": "Lot",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Wishes in the third person",
+          "hi": "प्रथम पुरुष में शुभकामनाएँ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot-polite"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Four everyday wishes",
+          "hi": "चार रोज़ की शुभकामनाएँ"
+        },
+        "columns": [
+          {
+            "en": "Wish",
+            "hi": "शुभकामना"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "भवतु",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lot",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "may it be",
+                "hi": "हो"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "जयतु",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "जि",
+                "lakara": "Lot",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "victory to him",
+                "hi": "उसकी जय हो"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "जीवतु",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "जीव्",
+                "lakara": "Lot",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "long life to him",
+                "hi": "वह जिए"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "अस्तु",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lot",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "so be it",
+                "hi": "ऐसा ही हो"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "For several people, change {{-तु}} to {{-न्तु}}: {{भवन्तु}}, {{जयन्तु}}.",
+          "hi": "कई लोगों के लिए {{-तु}} को {{-न्तु}} कीजिए: {{भवन्तु}}, {{जयन्तु}}।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Blessings with “be!”",
+          "hi": "‘हो जाओ!’ वाले आशीर्वाद"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot-polite"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A blessing to one person uses {{भव}} (be!) with an adjective: {{सुखी भव}} (be happy), {{आयुष्मान् भव}} (be long-lived). {{सर्वे सुखिनः भवन्तु}} wishes that all be happy.",
+          "hi": "एक व्यक्ति के लिए आशीर्वाद में विशेषण के साथ {{भव}} (हो जाओ) आता है: {{सुखी भव}} (सुखी रहो), {{आयुष्मान् भव}} (दीर्घायु हो)। {{सर्वे सुखिनः भवन्तु}} कामना करता है कि सब सुखी हों।"
+        },
+        "examples": [
+          {
+            "sa": "सुखी भव।",
+            "meaning": {
+              "en": "Be happy!",
+              "hi": "सुखी रहो!"
+            },
+            "words": [
+              {
+                "sa": "सुखी",
+                "gloss": {
+                  "en": "happy",
+                  "hi": "सुखी"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "सुखिन्",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "भव",
+                "gloss": {
+                  "en": "be!",
+                  "hi": "बनो!"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "भू",
+                  "lakara": "Lot",
+                  "purusha": "Madhyama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "सर्वे सुखिनः भवन्तु।",
+            "meaning": {
+              "en": "May all be happy.",
+              "hi": "सब सुखी हों।"
+            },
+            "words": [
+              {
+                "sa": "सर्वे",
+                "gloss": {
+                  "en": "all",
+                  "hi": "सब"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "सर्व",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "सुखिनः",
+                "gloss": {
+                  "en": "happy",
+                  "hi": "सुखी"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "सुखिन्",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "भवन्तु",
+                "gloss": {
+                  "en": "let them be",
+                  "hi": "हों"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "भू",
+                  "lakara": "Lot",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot-polite"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Wish: “May he live!”",
+          "hi": "कामना कीजिए: ‘वह जिए!’"
+        },
+        "explain": {
+          "en": "{{जीवतु}}: third person, {{-तु}}.",
+          "hi": "{{जीवतु}}: प्रथम पुरुष, {{-तु}}।"
+        },
+        "options": [
+          {
+            "sa": "जीवति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "जीवतु",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "जीव",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot-polite"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each wish to its meaning.",
+          "hi": "हर कामना को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "The third-person command is a wish.",
+          "hi": "प्रथम पुरुष की आज्ञा एक कामना है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "भवतु",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "may it be",
+                "hi": "हो"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "जयतु",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "victory to him",
+                "hi": "उसकी जय हो"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "अस्तु",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "so be it",
+                "hi": "ऐसा ही हो"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "सुखी भव",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "be happy",
+                "hi": "सुखी रहो"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot-polite"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every wish (“let him …”).",
+          "hi": "हर कामना (‘वह … करे’) छुइए।"
+        },
+        "params": {
+          "passage": [
+            "भवतु",
+            "भवति",
+            "जयतु",
+            "जयति",
+            "अस्तु",
+            "अस्ति"
+          ],
+          "targets": [
+            "भवतु",
+            "जयतु",
+            "अस्तु"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot-polite"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “Please come, sir.”",
+          "hi": "कहिए: ‘कृपया आइए, श्रीमान्।’"
+        },
+        "explain": {
+          "en": "{{भवान् आगच्छतु}}: the polite request.",
+          "hi": "{{भवान् आगच्छतु}}: विनम्र प्रार्थना।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "भवान्",
+          "आगच्छतु"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "A wish",
+          "hi": "एक कामना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot-polite"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Wish that all be happy. Which sentence?",
+          "hi": "कामना कीजिए कि सब सुखी हों। कौन-सा वाक्य?"
+        },
+        "explain": {
+          "en": "{{भवन्तु}}: let them be.",
+          "hi": "{{भवन्तु}}: वे हों।"
+        },
+        "options": [
+          {
+            "sa": "सर्वे सुखिनः भवन्ति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सर्वे सुखिनः भवन्तु",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "सर्वे सुखिनः भवामि",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“सर्वे सुखिनः भवन्तु,” you say, quite loudly, to Lubdhaka's lantern. Lubdhaka's smile stiffens: it is hard to be angry at a blessing. The Vetāla, upside down, applauds with two fingers. “That,” he says, “is how you disarm a man in one line.”",
+            "hi": "“सर्वे सुखिनः भवन्तु,” आप लुब्धक की लालटेन से काफ़ी ऊँचे स्वर में कहते हैं। लुब्धक की मुस्कान तन जाती है: आशीर्वाद पर क्रोध करना कठिन है। वेताल, उलटा लटका, दो उँगलियों से ताली बजाता है। “इसे कहते हैं,” वह कहता है, “एक पंक्ति में किसी को निःशस्त्र करना।”"
+          },
+          "failure": {
+            "en": "The lantern stays steady and cold. Third person, several: {{भवन्तु}}.",
+            "hi": "लालटेन स्थिर और ठंडी रहती है। प्रथम पुरुष, कई: {{भवन्तु}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Wishes",
+          "hi": "शुभकामनाएँ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "भवतु · जयतु · अस्तु",
+            "text": {
+              "en": "May it be; victory; so be it.",
+              "hi": "हो; जय हो; ऐसा ही हो।"
+            }
+          },
+          {
+            "sa": "भवान् आगच्छतु",
+            "text": {
+              "en": "A polite request.",
+              "hi": "विनम्र प्रार्थना।"
+            }
+          },
+          {
+            "sa": "सुखी भव",
+            "text": {
+              "en": "A blessing: be happy.",
+              "hi": "आशीर्वाद: सुखी रहो।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "cmd-wish-s1",
+    "brief": "Lubdhaka stepping out from between tree trunks with a raised lantern and a thin smile; the Vetāla hanging above him with a sweetly polite expression and a hand extended in welcome; Dādī gripping Śuka who stares with his beak open; long shadows.",
+    "alt": {
+      "en": "A tall man with a lantern steps out of the trees while a spirit hanging above him gestures a polite welcome",
+      "hi": "लालटेन थामे लम्बा आदमी पेड़ों से निकलता है, ऊपर लटका भूत विनम्र स्वागत करता है"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "lubdhaka",
+      "vetala",
+      "dadi",
+      "shuka"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Lubdhaka stepping out from between tree trunks with a raised lantern and a thin smile; the Vetāla hanging above him with a sweetly polite expression and a hand extended in welcome; Dādī gripping Śuka who stares with his beak open; long shadows.\nCharacter appearances:\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-7a2ad633-0820-474c-9715-2465192b89b4.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "2ff3a80533bb2d997b8a24e931477f4f7056e322e5cf72b6cc440819cfdfc51a",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cmd-wish-s1-phone-5e427924.webp",
+      "key": "learn/cmd-wish-s1-phone-5e427924.webp",
+      "sha256": "5e4279249d868e8328cfa5b96f69dc7eb3fa7b060554dd49cc1466c55ceed765",
+      "bytes": 128598,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/cmd-wish-s1-phone-5e427924.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cmd-wish-s1-tablet-5ac69a3e.webp",
+      "key": "learn/cmd-wish-s1-tablet-5ac69a3e.webp",
+      "sha256": "5ac69a3ed8be91adad4828067393eda4cd45b9f6769e3dd11379483eed561767",
+      "bytes": 504748,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/cmd-wish-s1-tablet-5ac69a3e.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

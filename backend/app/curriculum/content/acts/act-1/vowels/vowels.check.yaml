@@ -6,7 +6,7 @@ template: check
 title: {en: "Read the first line", hi: "पहली पंक्ति पढ़िए"}
 title_sa: "परीक्षा"
 minutes: 4
-review: engine_ok
+review: scholar_ok
 sources:
   - title: "Lesson text"
     licence: "original"
@@ -41,7 +41,7 @@ cards:
     mode: match
     skills: [script.vowel.long]
     roman: after
-    prompt: {en: "Join each short vowel to its long twin.", hi: "हर ह्रस्व स्वर को उसके दीर्घ जुड़वाँ से जोड़िए।"}
+    prompt: {en: "Match each short vowel with its long twin.", hi: "हर ह्रस्व स्वर को उसके दीर्घ जुड़वाँ से मिलाइए।"}
     pairs:
       - left: {sa: "अ"}
         right: {sa: "आ"}

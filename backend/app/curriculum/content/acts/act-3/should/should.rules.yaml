@@ -9,7 +9,7 @@ teaches:
 - verb.vidhilin
 needs:
 - verb.vidhilin
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -34,6 +34,7 @@ cards:
     place: smashana
     ratio: '4:3'
     id: should-rules-s1
+    text_in_image: ["सत्यं ब्रूयात् प्रियं ब्रूयान्", "न ब्रूयात् सत्यम् अप्रियम्"]
   narration:
     en: 'Lubdhaka sneers: “Rules are for the weak.” The Vetāla opens one eye. “Rules,” he says, “are what the strong keep when no one is watching. Listen. This is a very old one.” He clears his throat and recites, slowly, a verse from the book of Manu.'
     hi: 'लुब्धक व्यंग्य से हँसता है: “नियम कमज़ोरों के लिए होते हैं।” वेताल एक आँख खोलता है। “नियम,” वह कहता है, “वे हैं जिन्हें बलवान तब निभाते हैं जब कोई नहीं देख रहा होता। सुनो। यह बहुत पुराना है।” वह गला साफ़ करता है और मनुस्मृति का एक श्लोक धीरे-धीरे सुनाता है।'
@@ -137,6 +138,7 @@ cards:
     place: smashana
     ratio: '4:3'
     id: should-rules-r1
+    text_in_image: ["सत्यम् ब्रूयात्।"]
   passage:
   - sa: रिक्तपाणिर् न पश्येत राजानं भिषजं गुरुम्
     meaning:
@@ -387,8 +389,8 @@ cards:
   - verb.vidhilin
   mode: match
   prompt:
-    en: Join each form to its meaning.
-    hi: हर रूप को उसके अर्थ से जोड़िए।
+    en: Match each form with its meaning.
+    hi: हर रूप को उसके अर्थ से मिलाइए।
   explain:
     en: Four verbs, one mood.
     hi: चार क्रियाएँ, एक काल-विधान।

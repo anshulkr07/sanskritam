@@ -10,7 +10,7 @@ teaches:
 - tad.ika
 needs:
 - tad.tva-ta
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -41,6 +41,19 @@ cards:
   narration:
     en: 'The twenty-fourth statue holds a purse of coins. “धनवान्,” she says, and the coins clink: “the one who has wealth.” “बुद्धिमान्”: “the one who has intelligence.” “धार्मिकः”: “related to dharma, righteous.” Śuka tries one: “श्रीमान्.” “Yes,” says Dādī. “Two small endings. One names the owner of something. The other names what belongs to it.”'
     hi: 'चौबीसवीं प्रतिमा के हाथ में सिक्कों की थैली है। “धनवान्,” वह कहती है, और सिक्के खनकते हैं: “जिसके पास धन है।” “बुद्धिमान्”: “जिसके पास बुद्धि है।” “धार्मिकः”: “धर्म से सम्बन्धित, धर्मात्मा।” शुक एक आज़माता है: “श्रीमान्।” “हाँ,” दादी कहती हैं। “दो छोटे प्रत्यय। एक किसी वस्तु के स्वामी का नाम बताता है। दूसरा उससे सम्बन्धित का।”'
+  lines:
+  - speaker: taddhitika
+    sa: धनवान्
+    gloss:
+      en: One who has wealth.
+      hi: जिसके पास धन है।
+    check:
+      type: taddhita
+      stem: धन
+      taddhita: matup
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
 - id: t1
   kind: teach
   title:
@@ -433,8 +446,8 @@ cards:
   - tad.ika
   mode: match
   prompt:
-    en: Join each word to its meaning.
-    hi: हर शब्द को उसके अर्थ से जोड़िए।
+    en: Match each word with its meaning.
+    hi: हर शब्द को उसके अर्थ से मिलाइए।
   explain:
     en: Owner or related.
     hi: स्वामी या सम्बन्धी।

@@ -1,0 +1,1347 @@
+{
+  "id": "cmd-go-s1",
+  "where": "cmd.go#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: An old grove at night at the edge of a burning ground: a śiṃśapā tree with a long, thin ash-grey spirit hanging upside down from a branch, eyes closed, arms folded; below, you, Dādī and Śuka looking up; far back among the trunks the faint glow of a lantern and the tall silhouette of Lubdhaka; a tiny bright-red spirit pointing a long finger.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nadeshaka: A small bright-red spirit with a pointing finger as long as its body and a tiny drum hanging at its side.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "cmd.go",
+    "template": "scene",
+    "title": {
+      "en": "Go! Read!",
+      "hi": "जाओ! पढ़ो!"
+    },
+    "title_sa": "गच्छ पठ",
+    "minutes": 6,
+    "teaches": [
+      "verb.lot"
+    ],
+    "needs": [
+      "verb.persons",
+      "verb.pres-3sg",
+      "case.voc"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The hanging one",
+          "hi": "लटकने वाला"
+        },
+        "image": {
+          "id": "cmd-go-s1",
+          "brief": "An old grove at night at the edge of a burning ground: a śiṃśapā tree with a long, thin ash-grey spirit hanging upside down from a branch, eyes closed, arms folded; below, you, Dādī and Śuka looking up; far back among the trunks the faint glow of a lantern and the tall silhouette of Lubdhaka; a tiny bright-red spirit pointing a long finger.",
+          "alt": {
+            "en": "A grey spirit hangs upside down in a tree while three travellers look up and a lantern glows far behind",
+            "hi": "पेड़ पर उलटा लटका भूरा भूत, नीचे तीन यात्री, पीछे दूर लालटेन की झलक"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "adeshaka",
+            "lubdhaka"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "An old grove at the edge of a burning ground. In a śiṃśapā tree something hangs upside down like a great grey bat: the Vetāla. “गच्छ!” he drawls at you, without opening his eyes. “पठ!” A lantern winks far back among the trunks. Lubdhaka has followed you here. Dādī whispers: “He only gives orders. Answer in Sanskrit and he will help.”",
+          "hi": "बीहड़ श्मशान के छोर पर एक पुराना वन। शिंशपा के वृक्ष पर कोई बड़े भूरे चमगादड़ की तरह उलटा लटका है: वेताल। “गच्छ!” वह आँखें बन्द किए ही सुस्ती से कहता है। “पठ!” पीछे तनों के बीच एक लालटेन टिमटिमाती है। लुब्धक आपके पीछे यहाँ तक आ गया है। दादी फुसफुसाती हैं: “वह केवल आज्ञा देता है। संस्कृत में उत्तर दो तो वह मदद करेगा।”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "गच्छ! पठ! वद!",
+            "gloss": {
+              "en": "Go! Read! Speak!",
+              "hi": "जाओ! पढ़ो! बोलो!"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": {
+          "sa": "तत्र शिंशिपावृक्षे मृतकम् अवलम्बितम् आस्ते",
+          "gloss": {
+            "en": "There, on the śiṃśipā tree, a corpse hangs.",
+            "hi": "वहाँ शिंशिपा के वृक्ष पर एक शव लटका है।"
+          },
+          "source": "Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The bare root commands",
+          "hi": "केवल धातु से आज्ञा"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "To tell one person “you do it!”, use the root with its class sign and no ending: {{गच्छ}} (go!), {{पठ}} (read!), {{वद}} (speak!), {{पश्य}} (look!), {{लिख}} (write!), {{पिब}} (drink!). This is the command mood, {{लोट्}}.",
+          "hi": "किसी एक को ‘तुम करो!’ कहने के लिए धातु को उसके गण-चिह्न के साथ बिना प्रत्यय के रखिए: {{गच्छ}} (जाओ!), {{पठ}} (पढ़ो!), {{वद}} (बोलो!), {{पश्य}} (देखो!), {{लिख}} (लिखो!), {{पिब}} (पियो!)। यह आज्ञा का काल-विधान है, {{लोट्}}।"
+        },
+        "examples": [
+          {
+            "sa": "बालक गृहम् गच्छ।",
+            "meaning": {
+              "en": "Boy, go home!",
+              "hi": "बालक, घर जाओ!"
+            },
+            "words": [
+              {
+                "sa": "बालक",
+                "gloss": {
+                  "en": "boy!",
+                  "hi": "बालक!"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Sambodhana",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गृहम्",
+                "gloss": {
+                  "en": "home",
+                  "hi": "घर"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गृह",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छ",
+                "gloss": {
+                  "en": "go!",
+                  "hi": "जाओ!"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lot",
+                  "purusha": "Madhyama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "बालक पुस्तकम् पठ।",
+            "meaning": {
+              "en": "Boy, read the book!",
+              "hi": "बालक, पुस्तक पढ़ो!"
+            },
+            "words": [
+              {
+                "sa": "बालक",
+                "gloss": {
+                  "en": "boy!",
+                  "hi": "बालक!"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Sambodhana",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पुस्तकम्",
+                "gloss": {
+                  "en": "book",
+                  "hi": "पुस्तक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पुस्तक",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठ",
+                "gloss": {
+                  "en": "read!",
+                  "hi": "पढ़ो!"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lot",
+                  "purusha": "Madhyama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "जलम् पिब।",
+            "meaning": {
+              "en": "Drink water!",
+              "hi": "जल पियो!"
+            },
+            "words": [
+              {
+                "sa": "जलम्",
+                "gloss": {
+                  "en": "water",
+                  "hi": "जल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "जल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पिब",
+                "gloss": {
+                  "en": "drink!",
+                  "hi": "पियो!"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पा",
+                  "lakara": "Lot",
+                  "purusha": "Madhyama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "लोट्",
+          "meaning": {
+            "en": "the command mood",
+            "hi": "आज्ञा का काल-विधान"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "पठ्: the command mood",
+          "hi": "पठ्: आज्ञा"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“Let him read, read!, let me read”",
+          "hi": "‘वह पढ़े, पढ़ो!, मैं पढ़ूँ’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठतु",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lot",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठताम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lot",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठन्तु",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lot",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठ",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lot",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठतम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lot",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठत",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lot",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठानि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lot",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठाव",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lot",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठाम",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lot",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "The coloured form is the command to one person: {{पठ}}. The third person ends in {{-तु}}: {{पठतु}}, “let him read”.",
+          "hi": "रंगीन रूप एक व्यक्ति को आज्ञा है: {{पठ}}। प्रथम पुरुष {{-तु}} पर समाप्त होता है: {{पठतु}}, ‘वह पढ़े’।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Let him, let us",
+          "hi": "वह करे, हम करें"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "The third person is “let him …”: {{पठतु}}, {{गच्छतु}}. The first person is “let me …” or “let us …”: {{पठानि}}, {{गच्छाम}}. The command to several people ends in {{-त}}: {{पठत}}, “read, all of you”.",
+          "hi": "प्रथम पुरुष ‘वह … करे’ है: {{पठतु}}, {{गच्छतु}}। उत्तम पुरुष ‘मैं … करूँ’ या ‘हम … करें’ है: {{पठानि}}, {{गच्छाम}}। कई लोगों को आज्ञा {{-त}} पर समाप्त होती है: {{पठत}}, ‘तुम सब पढ़ो’।"
+        },
+        "examples": [
+          {
+            "sa": "सः पठतु।",
+            "meaning": {
+              "en": "Let him read.",
+              "hi": "वह पढ़े।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "पठतु",
+                "gloss": {
+                  "en": "let him read",
+                  "hi": "वह पढ़े"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lot",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "वयम् गृहम् गच्छाम।",
+            "meaning": {
+              "en": "Let us go home.",
+              "hi": "हम घर चलें।"
+            },
+            "words": [
+              {
+                "sa": "वयम्",
+                "gloss": {
+                  "en": "we",
+                  "hi": "हम"
+                },
+                "check": null
+              },
+              {
+                "sa": "गृहम्",
+                "gloss": {
+                  "en": "home",
+                  "hi": "घर"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गृह",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छाम",
+                "gloss": {
+                  "en": "let us go",
+                  "hi": "हम चलें"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lot",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "बालकाः पठत।",
+            "meaning": {
+              "en": "Boys, read!",
+              "hi": "बालको, पढ़ो!"
+            },
+            "words": [
+              {
+                "sa": "बालकाः",
+                "gloss": {
+                  "en": "boys!",
+                  "hi": "बालको!"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Sambodhana",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठत",
+                "gloss": {
+                  "en": "read!",
+                  "hi": "पढ़ो!"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lot",
+                  "purusha": "Madhyama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Tell your friend: “Go!”",
+          "hi": "मित्र से कहिए: ‘जाओ!’"
+        },
+        "explain": {
+          "en": "{{गच्छ}}: the bare root with its class sign.",
+          "hi": "{{गच्छ}}: गण-चिह्न सहित केवल धातु।"
+        },
+        "options": [
+          {
+            "sa": "गच्छति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "गच्छ",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "गच्छामि",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Order someone: “Write!”",
+          "hi": "किसी को आज्ञा दीजिए: ‘लिखो!’"
+        },
+        "explain": {
+          "en": "{{लिख}}: the bare root.",
+          "hi": "{{लिख}}: केवल धातु।"
+        },
+        "options": [],
+        "answers": [
+          "लिख"
+        ],
+        "tiles": [
+          "लि",
+          "ख",
+          "ति",
+          "पठ"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each command to its meaning.",
+          "hi": "हर आज्ञा को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "Each is the root plus its class sign.",
+          "hi": "हर एक धातु और उसका गण-चिह्न है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "गच्छ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "go!",
+                "hi": "जाओ!"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पठ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "read!",
+                "hi": "पढ़ो!"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पश्य",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "look!",
+                "hi": "देखो!"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पिब",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "drink!",
+                "hi": "पियो!"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every command to one person.",
+          "hi": "एक व्यक्ति को दी हर आज्ञा छुइए।"
+        },
+        "params": {
+          "passage": [
+            "गच्छ",
+            "गच्छति",
+            "पठ",
+            "पठामि",
+            "वद",
+            "वदति"
+          ],
+          "targets": [
+            "गच्छ",
+            "पठ",
+            "वद"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “Boy, read the book!”",
+          "hi": "कहिए: ‘बालक, पुस्तक पढ़ो!’"
+        },
+        "explain": {
+          "en": "{{बालक पुस्तकं पठ}}.",
+          "hi": "{{बालक पुस्तकं पठ}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "बालक",
+          "पुस्तकम्",
+          "पठ"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "An order",
+          "hi": "आज्ञा"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lot"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Tell several friends to read. Which form?",
+          "hi": "कई मित्रों से पढ़ने को कहिए। कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{पठत}}: the command to several.",
+          "hi": "{{पठत}}: कई लोगों को आज्ञा।"
+        },
+        "options": [
+          {
+            "sa": "पठ",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठतु",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठत",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“पठत!” you call, and the Vetāla's eyes open a slit. “Hm,” he says. “Someone who gives orders back.” He swings, delighted, and a small bright-red spirit drops from his shawl: a tiny finger as long as itself, shaking at you. “आदेशकः,” says Dādī. “He has not been obeyed in a hundred years.”",
+            "hi": "“पठत!” आप पुकारते हैं और वेताल की आँखें एक दरार भर खुलती हैं। “हूँ,” वह कहता है। “कोई जो उलटे आदेश देता है।” वह खुश होकर झूलता है, और उसके शॉल से एक नन्हा चमकीला लाल भूत गिरता है: अपने ही जितनी लम्बी उँगली आपकी ओर हिलाता हुआ। “आदेशकः,” दादी कहती हैं। “सौ वर्षों से किसी ने उसकी आज्ञा नहीं मानी।”"
+          },
+          "failure": {
+            "en": "The Vetāla stays asleep. To several people: {{पठत}}.",
+            "hi": "वेताल सोया रहता है। कई लोगों से: {{पठत}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's command",
+          "hi": "पाणिनि की आज्ञा"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "verb.lot"
+        ],
+        "sutras": [
+          "3.3.162",
+          "3.4.86",
+          "6.4.105",
+          "3.4.92"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 3.3.162, {{लोट् च}}, gives {{लोट्}} for commands and requests. Then 3.4.86, {{एरुः}}, turns {{-ति}} into {{-तु}}: {{पठतु}}. In the second person {{हि}} comes and 6.4.105, {{अतो हेः}}, drops it after {{अ}}: {{पठ}}. In the first person 3.4.92, {{आडुत्तमस्य पिच्च}}, adds {{आ}}: {{पठानि}}.",
+          "hi": "सूत्र 3.3.162, {{लोट् च}}, कहता है कि {{लोट्}} के प्रत्यय आज्ञा और प्रार्थना में आते हैं। प्रथम पुरुष में 3.4.86, {{एरुः}}, {{-ति}} प्रत्यय को {{-तु}} कर देता है: {{पठति}} से {{पठतु}}। मध्यम पुरुष में {{हि}} आता है, और 6.4.105, {{अतो हेः}}, ह्रस्व {{अ}} के बाद उसे हटा देता है: {{पठ}}। उत्तम पुरुष में 3.4.92, {{आडुत्तमस्य पिच्च}}, {{आ}} जोड़ता है: {{पठानि}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Go! Read!",
+          "hi": "जाओ! पढ़ो!"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "गच्छ · पठ · वद",
+            "text": {
+              "en": "A command to one person.",
+              "hi": "एक व्यक्ति को आज्ञा।"
+            }
+          },
+          {
+            "sa": "गच्छतु · पठतु",
+            "text": {
+              "en": "Let him …",
+              "hi": "वह … करे।"
+            }
+          },
+          {
+            "sa": "गच्छत · गच्छाम",
+            "text": {
+              "en": "To several; let us.",
+              "hi": "कई लोगों को; हम करें।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "cmd-go-s1",
+    "brief": "An old grove at night at the edge of a burning ground: a śiṃśapā tree with a long, thin ash-grey spirit hanging upside down from a branch, eyes closed, arms folded; below, you, Dādī and Śuka looking up; far back among the trunks the faint glow of a lantern and the tall silhouette of Lubdhaka; a tiny bright-red spirit pointing a long finger.",
+    "alt": {
+      "en": "A grey spirit hangs upside down in a tree while three travellers look up and a lantern glows far behind",
+      "hi": "पेड़ पर उलटा लटका भूरा भूत, नीचे तीन यात्री, पीछे दूर लालटेन की झलक"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "adeshaka",
+      "lubdhaka"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: An old grove at night at the edge of a burning ground: a śiṃśapā tree with a long, thin ash-grey spirit hanging upside down from a branch, eyes closed, arms folded; below, you, Dādī and Śuka looking up; far back among the trunks the faint glow of a lantern and the tall silhouette of Lubdhaka; a tiny bright-red spirit pointing a long finger.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nadeshaka: A small bright-red spirit with a pointing finger as long as its body and a tiny drum hanging at its side.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-f7503c51-a674-47e9-b680-bc6dfb795eea.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "009fbcaa1154cf8283dc74ec5947a22fb255c0d218ceaf8125677c8ac65983a6",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cmd-go-s1-phone-accc23e7.webp",
+      "key": "learn/cmd-go-s1-phone-accc23e7.webp",
+      "sha256": "accc23e74b2c2c9781cd12e3c60f1f59354d38d38a2d705a2ac0ce20220590a8",
+      "bytes": 117900,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/cmd-go-s1-phone-accc23e7.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cmd-go-s1-tablet-5b0106d0.webp",
+      "key": "learn/cmd-go-s1-tablet-5b0106d0.webp",
+      "sha256": "5b0106d03863d1d684858dede46af7c50326302d44c0606f2fbb3222a2466527",
+      "bytes": 467144,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/cmd-go-s1-tablet-5b0106d0.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

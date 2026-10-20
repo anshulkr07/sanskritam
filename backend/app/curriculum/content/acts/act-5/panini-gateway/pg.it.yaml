@@ -9,7 +9,7 @@ teaches:
 - panini.it
 needs:
 - panini.shiva-sutras
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: guha
     ratio: '4:3'
     id: pg-it-s1
+    text_in_image: ["तिप्"]
   narration:
     en: 'The second alcove is dark, and its seal is cut with the word लँट्, the present tense. Dādī points. “Look at the marks: a nasal sign on the vowel, a ट् at the end. In Pāṇini''s rules they are tools: they tell a rule what to do, then vanish.” Padikā leans forward. “And what is left?” Behind you, Lubdhaka has put a hand on the seal.'
     hi: 'दूसरा आला अँधेरा है, और उसकी मुहर पर शब्द लँट् खुदा है, वर्तमान काल का नाम। दादी इशारा करती हैं। “चिह्नों को देखिए। स्वर पर अनुनासिक चिह्न; अन्त में ट्। पाणिनि के सूत्रों में वे औज़ार हैं: वे सूत्र को बताते हैं कि क्या करना है, और फिर लुप्त हो जाते हैं।” पदिका आगे झुकती है। “और बचता क्या है?” आपके पीछे लुब्धक ने मुहर पर हाथ रख दिया है।'
@@ -180,8 +181,8 @@ cards:
   - panini.it
   mode: match
   prompt:
-    en: Join each ending, as taught, to what remains.
-    hi: हर प्रत्यय को, जैसा सिखाया, उसके शेष से जोड़िए।
+    en: Match each ending, as taught, with what remains.
+    hi: हर प्रत्यय को, जैसा सिखाया, उसके शेष से मिलाइए।
   explain:
     en: Markers go; the rest stays.
     hi: संकेत जाते हैं; बाकी रहता है।

@@ -21,7 +21,9 @@ for pos,(i,job,generation) in enumerate(rows):
     canvas.paste(im,(x+(800-im.width)//2,y));draw.text((x+8,y+602),f'{i}: {job["id"]}',fill='#2A2019')
 identity='|'.join(job['id']+generation['original'] for _,job,generation in rows)
 target=OUT/('review-'+hashlib.sha256(identity.encode()).hexdigest()[:12]+'.jpg')
-if rows:canvas.save(target,quality=94)
+if rows:
+    canvas.save(target,quality=94)
+    module.save(target.with_suffix('.json'),[{'id':job['id'],'original':generation['original'],'sha256':module.pipeline.digest(Path(generation['original']).read_bytes()),'expected':job['expected'],'brief':job['brief']['brief']} for _,job,generation in rows])
 for _,job,_ in rows:
     print(job['id']+': '+job['brief']['brief'])
     if job['expected']:print('EXPECTED: '+repr(job['expected']))

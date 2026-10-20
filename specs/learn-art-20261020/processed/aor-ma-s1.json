@@ -1,0 +1,835 @@
+{
+  "id": "aor-ma-s1",
+  "where": "aor.ma#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A ring of golden sparks in the dark trembling as a branch cracks somewhere far; the Vetāla speaking softly to them with an open hand; you kneeling beside the smallest spark with Dādī's hand on your shoulder; Śuka close against your arm.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nabhutaka: A tiny golden spark that flickers on and off, trailing a thin thread of smoke, forever unsure whether it ever really lit.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "aor.ma",
+    "template": "scene",
+    "title": {
+      "en": "Do not grieve",
+      "hi": "शोक मत करो"
+    },
+    "title_sa": "मा शुचः मा भैषीः",
+    "minutes": 6,
+    "teaches": [
+      "verb.ma"
+    ],
+    "needs": [
+      "verb.lun"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "A word for every fear",
+          "hi": "हर भय के लिए एक शब्द"
+        },
+        "image": {
+          "id": "aor-ma-s1",
+          "brief": "A ring of golden sparks in the dark trembling as a branch cracks somewhere far; the Vetāla speaking softly to them with an open hand; you kneeling beside the smallest spark with Dādī's hand on your shoulder; Śuka close against your arm.",
+          "alt": {
+            "en": "A ring of golden sparks trembles in the dark while a grey spirit speaks softly and a child kneels beside the smallest",
+            "hi": "अँधेरे में काँपता सुनहरे स्फुलिंगों का घेरा, कोमलता से बोलता भूत, सबसे छोटे के पास बैठा बच्चा"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "abhutaka"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The ring of sparks trembles. Somewhere in the dark, a branch cracks. “मा भैषीः,” the Vetāla says to the sparks, softly. “Do not be afraid.” The word drops the augment the aorist wears and changes everything: a statement becomes a plea. “Say it to him,” Dādī whispers, nodding at the little spark. “He needs to hear it from you.”",
+          "hi": "चिंगारियों का घेरा काँपता है। अँधेरे में कहीं एक डाल चटकती है। “मा भैषीः,” वेताल चिंगारियों से धीमे कहता है। “मत डरो।” शब्द वह आगम छोड़ देता है जो लुङ् पहनता है, और सब कुछ बदल जाता है: कथन एक विनती बन जाता है। “उससे कहिए,” दादी नन्हे स्फुलिंग की ओर सिर हिलाकर फुसफुसाती हैं। “उसे आपसे सुनना है।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "मा शुचः संपदं दैवीम् अभिजातो ऽसि पाण्डव",
+          "gloss": {
+            "en": "Do not grieve: you are born to the divine endowment, Pāṇḍava.",
+            "hi": "शोक मत करो: हे पाण्डव, तुम दैवी सम्पदा के लिए उत्पन्न हुए हो।"
+          },
+          "source": "Bhagavadgītā 16.5 (read at GRETIL)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "{{मा}} and the bare aorist",
+          "hi": "{{मा}} और बिना आगम का लुङ्"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.ma"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "To say “do not …” use {{मा}} with the aorist, and drop the augment {{अ}}: {{अगमः}} (you went) becomes {{मा गमः}} (do not go); {{अभूत्}} becomes {{मा भूत्}} (let it not be); {{अभैषीः}} becomes {{मा भैषीः}} (do not fear). {{मा शुचः}}, “do not grieve”, is the same kind of form.",
+          "hi": "‘मत …’ कहने के लिए {{मा}} के साथ लुङ् लीजिए और आगम {{अ}} हटा दीजिए: {{अगमः}} (तुम गए) से {{मा गमः}} (मत जाओ); {{अभूत्}} से {{मा भूत्}} (न हो); {{अभैषीः}} से {{मा भैषीः}} (मत डरो)। {{मा शुचः}}, ‘शोक मत करो’, इसी प्रकार का रूप है।"
+        },
+        "examples": [
+          {
+            "sa": "मा गमः।",
+            "meaning": {
+              "en": "Do not go.",
+              "hi": "मत जाओ।"
+            },
+            "words": [
+              {
+                "sa": "मा",
+                "gloss": {
+                  "en": "do not",
+                  "hi": "मत"
+                },
+                "check": null
+              },
+              {
+                "sa": "गमः",
+                "gloss": {
+                  "en": "go",
+                  "hi": "जाओ"
+                },
+                "check": null
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "मा भैषीः।",
+            "meaning": {
+              "en": "Do not fear.",
+              "hi": "मत डरो।"
+            },
+            "words": [
+              {
+                "sa": "मा",
+                "gloss": {
+                  "en": "do not",
+                  "hi": "मत"
+                },
+                "check": null
+              },
+              {
+                "sa": "भैषीः",
+                "gloss": {
+                  "en": "fear",
+                  "hi": "डरो"
+                },
+                "check": null
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "मा भूत्।",
+            "meaning": {
+              "en": "Let it not be.",
+              "hi": "ऐसा न हो।"
+            },
+            "words": [
+              {
+                "sa": "मा",
+                "gloss": {
+                  "en": "let not",
+                  "hi": "न हो"
+                },
+                "check": null
+              },
+              {
+                "sa": "भूत्",
+                "gloss": {
+                  "en": "it be",
+                  "hi": "वह"
+                },
+                "check": null
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "With and without the augment",
+          "hi": "आगम सहित और रहित"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.ma"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "From a statement to a plea",
+          "hi": "कथन से विनती तक"
+        },
+        "columns": [
+          {
+            "en": "Verb",
+            "hi": "क्रिया"
+          },
+          {
+            "en": "Aorist",
+            "hi": "लुङ्"
+          },
+          {
+            "en": "With मा",
+            "hi": "मा के साथ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "go",
+                "hi": "जाना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अगमः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lun",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "मा गमः",
+              "text": null,
+              "highlight": true,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "be",
+                "hi": "होना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अभूत्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lun",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "मा भूत्",
+              "text": null,
+              "highlight": true,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "do",
+                "hi": "करना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अकार्षीः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lun",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "मा कार्षीः",
+              "text": null,
+              "highlight": true,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "fear",
+                "hi": "डरना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अभैषीः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "भी",
+                "lakara": "Lun",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "मा भैषीः",
+              "text": null,
+              "highlight": true,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "Drop the {{अ}} and you have the form after {{मा}}. This rule is {{न माङ्योगे}}.",
+          "hi": "{{अ}} हटाइए, मिल गया {{मा}} के बाद का रूप। यह नियम {{न माङ्योगे}} है।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.ma"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“Do not go!” Which sentence?",
+          "hi": "‘मत जाओ!’ कौन-सा वाक्य?"
+        },
+        "explain": {
+          "en": "{{मा गमः}}: {{मा}} with the bare aorist.",
+          "hi": "{{मा गमः}}: {{मा}} के साथ बिना आगम का लुङ्।"
+        },
+        "options": [
+          {
+            "sa": "मा अगमः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "न गच्छ",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "मा गमः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.ma"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Complete: “{{मा}} … ” (do not fear).",
+          "hi": "पूरा कीजिए: ‘{{मा}} …’ (मत डरो)।"
+        },
+        "explain": {
+          "en": "{{मा भैषीः}}.",
+          "hi": "{{मा भैषीः}}।"
+        },
+        "options": [],
+        "answers": [
+          "भैषीः"
+        ],
+        "tiles": [
+          "भै",
+          "षीः",
+          "भय",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.ma"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each plea to its meaning.",
+          "hi": "हर विनती को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{मा}} + the form without {{अ}}.",
+          "hi": "{{मा}} + {{अ}} के बिना रूप।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "मा गमः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "do not go",
+                "hi": "मत जाओ"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "मा भैषीः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "do not fear",
+                "hi": "मत डरो"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "मा भूत्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "let it not be",
+                "hi": "न हो"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "मा कार्षीः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "do not do",
+                "hi": "मत करो"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.ma"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every form that has dropped the augment.",
+          "hi": "आगम छोड़ चुके हर रूप को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "गमः",
+            "अगमः",
+            "भूत्",
+            "अभूत्",
+            "कार्षीः",
+            "अकार्षीः"
+          ],
+          "targets": [
+            "गमः",
+            "भूत्",
+            "कार्षीः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.ma"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say to the spark: “Do not fear.”",
+          "hi": "स्फुलिंग से कहिए: ‘मत डरो।’"
+        },
+        "explain": {
+          "en": "{{मा भैषीः}}.",
+          "hi": "{{मा भैषीः}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "मा",
+          "भैषीः"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "Do not fear",
+          "hi": "मत डरो"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.ma"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“Let it not be.” Which form?",
+          "hi": "‘ऐसा न हो।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{मा भूत्}}: no augment after {{मा}}.",
+          "hi": "{{मा भूत्}}: {{मा}} के बाद आगम नहीं।"
+        },
+        "options": [
+          {
+            "sa": "मा अभूत्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "न भवति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "मा भूत्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“मा भैषीः,” you say to the little spark, and it steadies, and then, very slowly, it begins to grow. It is not a spark any more: it is a small clear flame, a lamp-flame, standing alone in the air without wick or oil. “अभूत्,” it says, in a voice that is quite its own. “अभूत्.” The Vetāla bows to it.",
+            "hi": "“मा भैषीः,” आप नन्हे स्फुलिंग से कहते हैं, और वह स्थिर हो जाता है, और फिर, बहुत धीरे-धीरे, बढ़ने लगता है। वह अब स्फुलिंग नहीं रहा: एक छोटी स्वच्छ लौ है, दीपक की लौ, बिना बाती या तेल के हवा में अकेली खड़ी। “अभूत्,” वह कहता है, एक ऐसी आवाज़ में जो ठीक उसकी अपनी है। “अभूत्।” वेताल उसे प्रणाम करता है।"
+          },
+          "failure": {
+            "en": "The spark trembles. “Let it not be”: {{मा भूत्}}.",
+            "hi": "स्फुलिंग काँपता है। ‘ऐसा न हो’: {{मा भूत्}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's {{मा}}",
+          "hi": "पाणिनि का {{मा}}"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "verb.ma"
+        ],
+        "sutras": [
+          "3.3.175",
+          "6.4.74"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 3.3.175, {{माङि लुङ्}}, says that after {{मा}} the {{लुङ्}} is used. And 6.4.74, {{न माङ्योगे}}, says the augment {{अ}} does not appear when {{मा}} is attached. So {{अगमः}} becomes {{मा गमः}}.",
+          "hi": "सूत्र 3.3.175, {{माङि लुङ्}}, कहता है कि {{मा}} के साथ {{लुङ्}} आता है। और 6.4.74, {{न माङ्योगे}}, कहता है कि {{मा}} जुड़ा हो तो आगम {{अ}} नहीं आता। इसलिए {{अगमः}} से {{मा गमः}} बनता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Do not",
+          "hi": "मत"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "मा गमः · मा भैषीः",
+            "text": {
+              "en": "Do not go; do not fear.",
+              "hi": "मत जाओ; मत डरो।"
+            }
+          },
+          {
+            "sa": "मा भूत्",
+            "text": {
+              "en": "Let it not be.",
+              "hi": "ऐसा न हो।"
+            }
+          },
+          {
+            "sa": "अगमः → गमः",
+            "text": {
+              "en": "The augment disappears after {{मा}}.",
+              "hi": "{{मा}} के बाद आगम गायब हो जाता है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "aor-ma-s1",
+    "brief": "A ring of golden sparks in the dark trembling as a branch cracks somewhere far; the Vetāla speaking softly to them with an open hand; you kneeling beside the smallest spark with Dādī's hand on your shoulder; Śuka close against your arm.",
+    "alt": {
+      "en": "A ring of golden sparks trembles in the dark while a grey spirit speaks softly and a child kneels beside the smallest",
+      "hi": "अँधेरे में काँपता सुनहरे स्फुलिंगों का घेरा, कोमलता से बोलता भूत, सबसे छोटे के पास बैठा बच्चा"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "abhutaka"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A ring of golden sparks in the dark trembling as a branch cracks somewhere far; the Vetāla speaking softly to them with an open hand; you kneeling beside the smallest spark with Dādī's hand on your shoulder; Śuka close against your arm.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nabhutaka: A tiny golden spark that flickers on and off, trailing a thin thread of smoke, forever unsure whether it ever really lit.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-b5863e12-5273-49a7-abac-0c29190c1d67.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "bd5a57c24fb83f462f1639248b8813f83ae9c586ba24a6213875a8e528348b43",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\aor-ma-s1-phone-db7651d9.webp",
+      "key": "learn/aor-ma-s1-phone-db7651d9.webp",
+      "sha256": "db7651d9376c8eaeca55f179ce9c46b6fa33f1b2186bbe8860533b20b0f6d091",
+      "bytes": 106584,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/aor-ma-s1-phone-db7651d9.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\aor-ma-s1-tablet-2d387cc2.webp",
+      "key": "learn/aor-ma-s1-tablet-2d387cc2.webp",
+      "sha256": "2d387cc274b3beae9eabf39fd0730c3cdfa9400025d63c483031a9d22d1bde33",
+      "bytes": 432960,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/aor-ma-s1-tablet-2d387cc2.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}
