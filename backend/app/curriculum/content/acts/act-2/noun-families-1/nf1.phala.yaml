@@ -24,7 +24,8 @@ cards:
     hi: नपुंसक शाखा
   depth: core
   image:
-    brief: The tree of green mist in the library with a second lower branch hung with a different set of leaf-tags, Dādī pointing to it with her pen and comparing it to the upper branch; Śuka on a shelf pulling at a tag.
+    brief: The tree of green mist in the library with a second lower branch hung with a different set of leaf-tags, Dādī pointing
+      to it with her pen and comparing it to the upper branch; Śuka on a shelf pulling at a tag.
     alt:
       en: A tree of name-tags with two branches, one pointing to the other
       hi: दो शाखाओं वाला नाम-पत्तों का पेड़, एक शाखा की ओर इशारा
@@ -37,10 +38,17 @@ cards:
     place: pathashala
     ratio: '4:3'
     id: nf1-phala-s1
-    text_in_image: ["फलम्", "फले", "फलानि"]
+    text_in_image:
+    - फलम्
+    - फले
+    - फलानि
   narration:
-    en: On a lower branch of the green tree hangs a second set of leaf-tags, close to the first but a little different. “Neuters,” says Dādī. “Almost the same as the masculines. The family resemblance is strong, and only a few places differ.” Vṛkṣaka shakes a branch and the tags rustle, delighted.
-    hi: हरे पेड़ की एक नीची शाखा पर पत्ते-टैगों का दूसरा समूह लटका है, पहले के क़रीब पर थोड़ा अलग। “नपुंसक,” दादी कहती हैं। “पुंलिंग से लगभग वही। पारिवारिक समानता गहरी है, बस कुछ जगहों पर अन्तर है।” वृक्षक एक शाखा हिलाता है और टैग ख़ुशी से सरसराते हैं।
+    en: On a lower branch of the green tree hangs a second set of leaf-tags, close to the first but a little different. “Neuters,”
+      says Dādī. “Almost the same as the masculines. The family resemblance is strong, and only a few places differ.” Vṛkṣaka
+      shakes a branch and the tags rustle, delighted.
+    hi: हरे पेड़ की एक नीची शाखा पर पत्ते-टैगों का दूसरा समूह लटका है, पहले के क़रीब पर थोड़ा अलग। “नपुंसक,” दादी कहती हैं।
+      “पुंलिंग से लगभग वही। पारिवारिक समानता गहरी है, बस कुछ जगहों पर अन्तर है।” वृक्षक एक शाखा हिलाता है और टैग ख़ुशी से
+      सरसराते हैं।
 - id: t1
   kind: teach
   title:
@@ -53,13 +61,37 @@ cards:
   - 7.1.19
   - 7.1.72
   body:
-    en: 'A neuter word in -{{अ}} is like {{देव}} except where the doer and object come in: in the first, second and call cases, singular {{फलम्}}, dual {{फले}}, plural {{फलानि}}. All the other cells are the same as {{देव}}.'
-    hi: '-{{अ}} वाला नपुंसक शब्द {{देव}} जैसा ही है, सिवाय कर्ता और कर्म वाली जगहों के: प्रथमा, द्वितीया और सम्बोधन में एकवचन {{फलम्}}, द्विवचन {{फले}}, बहुवचन {{फलानि}}। बाक़ी सब खाने {{देव}} जैसे हैं।'
+    en: 'A neuter word in -{{अ}} is like {{देव}} except where the doer and object come in: in the first, second and call cases,
+      singular {{फलम्}}, dual {{फले}}, plural {{फलानि}}. All the other cells are the same as {{देव}}.'
+    hi: '-{{अ}} वाला नपुंसक शब्द {{देव}} जैसा ही है, सिवाय कर्ता और कर्म वाली जगहों के: प्रथमा, द्वितीया और सम्बोधन में एकवचन
+      {{फलम्}}, द्विवचन {{फले}}, बहुवचन {{फलानि}}। बाक़ी सब खाने {{देव}} जैसे हैं।'
   term:
     sa: नपुंसकम्
     meaning:
       en: neuter
       hi: नपुंसक
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'A neuter word in -{{अ}} is like {{देव}} except where the doer and object come in: in the first, second and call
+        cases, singular {{फलम्}}, dual {{फले}}, plural {{फलानि}}. All the other cells are the same as {{देव}}.'
+      hi: '-{{अ}} वाला नपुंसक शब्द {{देव}} जैसा ही है, सिवाय कर्ता और कर्म वाली जगहों के: प्रथमा, द्वितीया और सम्बोधन में
+        एकवचन {{फलम्}}, द्विवचन {{फले}}, बहुवचन {{फलानि}}। बाक़ी सब खाने {{देव}} जैसे हैं।'
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: देव
+    - id: i2
+      sa: फलम्
+    - id: i3
+      sa: फले
+    - id: i4
+      sa: फलानि
 - id: tb1
   kind: table
   title:
@@ -294,8 +326,10 @@ cards:
   skills:
   - noun.phala
   body:
-    en: 'In a neuter the doer and the object look the same: {{फलम्}} can be the first case or the second. Context tells which: {{फलं पतति}} (the fruit falls), {{रामः फलं खादति}} (Rāma eats the fruit).'
-    hi: 'नपुंसक में कर्ता और कर्म एक-से दिखते हैं: {{फलम्}} प्रथमा भी हो सकता है और द्वितीया भी। प्रसंग बताता है कि कौन-सा: {{फलं पतति}} (फल गिरता है), {{रामः फलं खादति}} (राम फल खाता है)।'
+    en: 'In a neuter the doer and the object look the same: {{फलम्}} can be the first case or the second. Context tells which:
+      {{फलं पतति}} (the fruit falls), {{रामः फलं खादति}} (Rāma eats the fruit).'
+    hi: 'नपुंसक में कर्ता और कर्म एक-से दिखते हैं: {{फलम्}} प्रथमा भी हो सकता है और द्वितीया भी। प्रसंग बताता है कि कौन-सा:
+      {{फलं पतति}} (फल गिरता है), {{रामः फलं खादति}} (राम फल खाता है)।'
   examples:
   - sa: फलम् पतति।
     meaning:
@@ -357,6 +391,258 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: फलम् पतति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The fruit falls.
+        hi: फल गिरता है।
+      words:
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पतति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: falls
+        hi: गिरता है
+      check:
+        type: tinanta
+        dhatu: पत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'In a neuter the doer and the object look the same: {{फलम्}} can be the first case or the second. Context tells
+          which: {{फलं पतति}} (the fruit falls), {{रामः फलं खादति}} (Rāma eats the fruit).'
+        hi: 'नपुंसक में कर्ता और कर्म एक-से दिखते हैं: {{फलम्}} प्रथमा भी हो सकता है और द्वितीया भी। प्रसंग बताता है कि कौन-सा:
+          {{फलं पतति}} (फल गिरता है), {{रामः फलं खादति}} (राम फल खाता है)।'
+    - id: i5
+      sa: फलम् पतति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The fruit falls.
+        hi: फल गिरता है।
+      words:
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: रामः फलम् खादति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma eats the fruit.
+        hi: राम फल खाता है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादति
+        gloss:
+          en: eats
+          hi: खाता है
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: रामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: खादति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: eats
+        hi: खाता है
+      check:
+        type: tinanta
+        dhatu: खाद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{खाद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{खाद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'In a neuter the doer and the object look the same: {{फलम्}} can be the first case or the second. Context tells
+          which: {{फलं पतति}} (the fruit falls), {{रामः फलं खादति}} (Rāma eats the fruit).'
+        hi: 'नपुंसक में कर्ता और कर्म एक-से दिखते हैं: {{फलम्}} प्रथमा भी हो सकता है और द्वितीया भी। प्रसंग बताता है कि कौन-सा:
+          {{फलं पतति}} (फल गिरता है), {{रामः फलं खादति}} (राम फल खाता है)।'
+    - id: i6
+      sa: रामः फलम् खादति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma eats the fruit.
+        hi: राम फल खाता है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादति
+        gloss:
+          en: eats
+          hi: खाता है
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p1
   kind: practice
   depth: core
@@ -377,6 +663,28 @@ cards:
       linga: Napumsaka
       blanks: 3
     seed: 2
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A neuter word in -{{अ}} is like {{देव}} except where the doer and object come in: in the first, second and call
+        cases, singular {{फलम्}}, dual {{फले}}, plural {{फलानि}}. All the other cells are the same as {{देव}}.'
+      hi: '-{{अ}} वाला नपुंसक शब्द {{देव}} जैसा ही है, सिवाय कर्ता और कर्म वाली जगहों के: प्रथमा, द्वितीया और सम्बोधन में
+        एकवचन {{फलम्}}, द्विवचन {{फले}}, बहुवचन {{फलानि}}। बाक़ी सब खाने {{देव}} जैसे हैं।'
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: देव
+    - id: i2
+      sa: फलम्
+    - id: i3
+      sa: फले
+    - id: i4
+      sa: फलानि
 - id: p2
   kind: practice
   depth: core
@@ -397,6 +705,28 @@ cards:
       linga: Napumsaka
       blanks: 3
     seed: 3
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A neuter word in -{{अ}} is like {{देव}} except where the doer and object come in: in the first, second and call
+        cases, singular {{फलम्}}, dual {{फले}}, plural {{फलानि}}. All the other cells are the same as {{देव}}.'
+      hi: '-{{अ}} वाला नपुंसक शब्द {{देव}} जैसा ही है, सिवाय कर्ता और कर्म वाली जगहों के: प्रथमा, द्वितीया और सम्बोधन में
+        एकवचन {{फलम्}}, द्विवचन {{फले}}, बहुवचन {{फलानि}}। बाक़ी सब खाने {{देव}} जैसे हैं।'
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: देव
+    - id: i2
+      sa: फलम्
+    - id: i3
+      sa: फले
+    - id: i4
+      sa: फलानि
 - id: p3
   kind: practice
   depth: core
@@ -415,6 +745,28 @@ cards:
   - sa: गृहे
   - correct: true
     sa: गृहाणि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A neuter word in -{{अ}} is like {{देव}} except where the doer and object come in: in the first, second and call
+        cases, singular {{फलम्}}, dual {{फले}}, plural {{फलानि}}. All the other cells are the same as {{देव}}.'
+      hi: '-{{अ}} वाला नपुंसक शब्द {{देव}} जैसा ही है, सिवाय कर्ता और कर्म वाली जगहों के: प्रथमा, द्वितीया और सम्बोधन में
+        एकवचन {{फलम्}}, द्विवचन {{फले}}, बहुवचन {{फलानि}}। बाक़ी सब खाने {{देव}} जैसे हैं।'
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: देव
+    - id: i2
+      sa: फलम्
+    - id: i3
+      sa: फले
+    - id: i4
+      sa: फलानि
 - id: p4
   kind: practice
   depth: core
@@ -453,6 +805,28 @@ cards:
       text:
         en: 3rd, one
         hi: तृतीया, एक
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A neuter word in -{{अ}} is like {{देव}} except where the doer and object come in: in the first, second and call
+        cases, singular {{फलम्}}, dual {{फले}}, plural {{फलानि}}. All the other cells are the same as {{देव}}.'
+      hi: '-{{अ}} वाला नपुंसक शब्द {{देव}} जैसा ही है, सिवाय कर्ता और कर्म वाली जगहों के: प्रथमा, द्वितीया और सम्बोधन में
+        एकवचन {{फलम्}}, द्विवचन {{फले}}, बहुवचन {{फलानि}}। बाक़ी सब खाने {{देव}} जैसे हैं।'
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: देव
+    - id: i2
+      sa: फलम्
+    - id: i3
+      sa: फले
+    - id: i4
+      sa: फलानि
 - id: e1
   kind: explore
   depth: core
@@ -494,8 +868,10 @@ cards:
   gate: true
   story:
     success:
-      en: “फले,” you say, and on the lower branch, two small golden fruits ripen at once. Vṛkṣaka sighs, the leaf-tags settling like birds.
-      hi: “फले,” आप कहते हैं, और नीची शाखा पर दो नन्हे सुनहरे फल एक साथ पक जाते हैं। वृक्षक साँस छोड़ता है, पत्ते-टैग पक्षियों की तरह बैठ जाते हैं।
+      en: “फले,” you say, and on the lower branch, two small golden fruits ripen at once. Vṛkṣaka sighs, the leaf-tags settling
+        like birds.
+      hi: “फले,” आप कहते हैं, और नीची शाखा पर दो नन्हे सुनहरे फल एक साथ पक जाते हैं। वृक्षक साँस छोड़ता है, पत्ते-टैग पक्षियों
+        की तरह बैठ जाते हैं।
     failure:
       en: The branch stays bare. The neuter dual ends in {{ए}}.
       hi: शाखा सूनी रहती है। नपुंसक द्विवचन {{ए}} पर समाप्त होता है।
@@ -504,6 +880,28 @@ cards:
   - sa: फलम्
   - correct: true
     sa: फले
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A neuter word in -{{अ}} is like {{देव}} except where the doer and object come in: in the first, second and call
+        cases, singular {{फलम्}}, dual {{फले}}, plural {{फलानि}}. All the other cells are the same as {{देव}}.'
+      hi: '-{{अ}} वाला नपुंसक शब्द {{देव}} जैसा ही है, सिवाय कर्ता और कर्म वाली जगहों के: प्रथमा, द्वितीया और सम्बोधन में
+        एकवचन {{फलम्}}, द्विवचन {{फले}}, बहुवचन {{फलानि}}। बाक़ी सब खाने {{देव}} जैसे हैं।'
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: देव
+    - id: i2
+      sa: फलम्
+    - id: i3
+      sa: फले
+    - id: i4
+      sa: फलानि
 - id: sum
   kind: summary
   title:

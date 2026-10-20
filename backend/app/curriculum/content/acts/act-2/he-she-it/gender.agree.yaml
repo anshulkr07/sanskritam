@@ -22,7 +22,8 @@ cards:
     hi: मीठा, बड़ा, सुन्दर
   depth: core
   image:
-    brief: The puppeteer's wife at her stall holding up a sweet fruit, a sweet cake and a doll of a pretty girl while Dādī listens with a raised finger; the small rainbow-coloured spirit on a lamp changing colour.
+    brief: The puppeteer's wife at her stall holding up a sweet fruit, a sweet cake and a doll of a pretty girl while Dādī
+      listens with a raised finger; the small rainbow-coloured spirit on a lamp changing colour.
     alt:
       en: A stall-keeper describing her wares while a small colour-changing spirit watches
       hi: अपना सामान बखानती दुकानदार और रंग बदलता नन्हा भूत
@@ -35,8 +36,12 @@ cards:
     ratio: '4:3'
     id: gender-agree-s1
   narration:
-    en: The puppeteer's wife describes her wares. “A sweet fruit. A sweet cake. A beautiful girl.” Dādī listens carefully. “Do you hear it? The describing word changes shape to match what it describes.” The rainbow spirit, perched on a lamp, changes colour as each word goes by.
-    hi: कठपुतली वाले की पत्नी अपना सामान बखानती है। “मीठा फल। मीठी बर्फ़ी। सुन्दर बालिका।” दादी ध्यान से सुनती हैं। “सुनाई दिया? वर्णन करने वाला शब्द उसी के अनुसार रूप बदलता है जिसका वह वर्णन करता है।” दीपक पर बैठा इन्द्रधनुषी भूत हर शब्द के साथ रंग बदलता है।
+    en: The puppeteer's wife describes her wares. “A sweet fruit. A sweet cake. A beautiful girl.” Dādī listens carefully.
+      “Do you hear it? The describing word changes shape to match what it describes.” The rainbow spirit, perched on a lamp,
+      changes colour as each word goes by.
+    hi: कठपुतली वाले की पत्नी अपना सामान बखानती है। “मीठा फल। मीठी बर्फ़ी। सुन्दर बालिका।” दादी ध्यान से सुनती हैं। “सुनाई
+      दिया? वर्णन करने वाला शब्द उसी के अनुसार रूप बदलता है जिसका वह वर्णन करता है।” दीपक पर बैठा इन्द्रधनुषी भूत हर शब्द
+      के साथ रंग बदलता है।
 - id: t1
   kind: teach
   title:
@@ -46,8 +51,10 @@ cards:
   skills:
   - gen.agreement
   body:
-    en: A describing word, an adjective ({{विशेषणम्}}), agrees with its noun in gender, number and case. {{मधुरः}} {{बालकः}}, {{मधुरा}} {{बालिका}}, {{मधुरम्}} {{फलम्}}.
-    hi: वर्णन करने वाला शब्द, विशेषण, अपनी संज्ञा से लिंग, वचन और विभक्ति में मेल खाता है। {{मधुरः}} {{बालकः}}, {{मधुरा}} {{बालिका}}, {{मधुरम्}} {{फलम्}}।
+    en: A describing word, an adjective ({{विशेषणम्}}), agrees with its noun in gender, number and case. {{मधुरः}} {{बालकः}},
+      {{मधुरा}} {{बालिका}}, {{मधुरम्}} {{फलम्}}.
+    hi: वर्णन करने वाला शब्द, विशेषण, अपनी संज्ञा से लिंग, वचन और विभक्ति में मेल खाता है। {{मधुरः}} {{बालकः}}, {{मधुरा}}
+      {{बालिका}}, {{मधुरम्}} {{फलम्}}।
   examples:
   - sa: मधुरः बालकः।
     meaning:
@@ -129,6 +136,328 @@ cards:
     meaning:
       en: 'an adjective: it describes a noun'
       hi: 'विशेषण: संज्ञा का वर्णन करता है'
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: मधुरः बालकः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a sweet boy
+        hi: एक मधुर बालक
+      words:
+      - sa: मधुरः
+        gloss:
+          en: sweet
+          hi: मीठा
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मधुरः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: sweet
+        hi: मीठा
+      check:
+        type: subanta
+        stem: मधुर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मधुर}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मधुर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: A describing word, an adjective ({{विशेषणम्}}), agrees with its noun in gender, number and case. {{मधुरः}} {{बालकः}},
+          {{मधुरा}} {{बालिका}}, {{मधुरम्}} {{फलम्}}.
+        hi: वर्णन करने वाला शब्द, विशेषण, अपनी संज्ञा से लिंग, वचन और विभक्ति में मेल खाता है। {{मधुरः}} {{बालकः}}, {{मधुरा}}
+          {{बालिका}}, {{मधुरम्}} {{फलम्}}।
+    - id: i5
+      sa: मधुरः बालकः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a sweet boy
+        hi: एक मधुर बालक
+      words:
+      - sa: मधुरः
+        gloss:
+          en: sweet
+          hi: मीठा
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: मधुरा बालिका।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a sweet girl
+        hi: एक मधुर बालिका
+      words:
+      - sa: मधुरा
+        gloss:
+          en: sweet
+          hi: मीठी
+        check:
+          type: subanta
+          stem: मधुरा
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालिका
+        gloss:
+          en: girl
+          hi: बालिका
+        check:
+          type: subanta
+          stem: बालिका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मधुरा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: sweet
+        hi: मीठी
+      check:
+        type: subanta
+        stem: मधुरा
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मधुरा}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मधुरा}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालिका
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: girl
+        hi: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: A describing word, an adjective ({{विशेषणम्}}), agrees with its noun in gender, number and case. {{मधुरः}} {{बालकः}},
+          {{मधुरा}} {{बालिका}}, {{मधुरम्}} {{फलम्}}.
+        hi: वर्णन करने वाला शब्द, विशेषण, अपनी संज्ञा से लिंग, वचन और विभक्ति में मेल खाता है। {{मधुरः}} {{बालकः}}, {{मधुरा}}
+          {{बालिका}}, {{मधुरम्}} {{फलम्}}।
+    - id: i5
+      sa: मधुरा बालिका।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a sweet girl
+        hi: एक मधुर बालिका
+      words:
+      - sa: मधुरा
+        gloss:
+          en: sweet
+          hi: मीठी
+        check:
+          type: subanta
+          stem: मधुरा
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालिका
+        gloss:
+          en: girl
+          hi: बालिका
+        check:
+          type: subanta
+          stem: बालिका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: मधुरम् फलम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a sweet fruit
+        hi: एक मीठा फल
+      words:
+      - sa: मधुरम्
+        gloss:
+          en: sweet
+          hi: मीठा
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मधुरम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: sweet
+        hi: मीठा
+      check:
+        type: subanta
+        stem: मधुर
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मधुर}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मधुर}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: A describing word, an adjective ({{विशेषणम्}}), agrees with its noun in gender, number and case. {{मधुरः}} {{बालकः}},
+          {{मधुरा}} {{बालिका}}, {{मधुरम्}} {{फलम्}}.
+        hi: वर्णन करने वाला शब्द, विशेषण, अपनी संज्ञा से लिंग, वचन और विभक्ति में मेल खाता है। {{मधुरः}} {{बालकः}}, {{मधुरा}}
+          {{बालिका}}, {{मधुरम्}} {{फलम्}}।
+    - id: i5
+      sa: मधुरम् फलम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a sweet fruit
+        hi: एक मीठा फल
+      words:
+      - sa: मधुरम्
+        gloss:
+          en: sweet
+          hi: मीठा
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
 - id: tb1
   kind: table
   title:
@@ -258,7 +587,8 @@ cards:
   skills:
   - gen.agreement
   body:
-    en: 'The adjective follows its noun''s number as well: {{मधुरौ बालकौ}} (two sweet boys), {{मधुराः बालिकाः}}, {{मधुराणि फलानि}}.'
+    en: 'The adjective follows its noun''s number as well: {{मधुरौ बालकौ}} (two sweet boys), {{मधुराः बालिकाः}}, {{मधुराणि
+      फलानि}}.'
     hi: 'विशेषण अपनी संज्ञा के वचन के अनुसार भी चलता है: {{मधुरौ बालकौ}} (दो मधुर बालक), {{मधुराः बालिकाः}}, {{मधुराणि फलानि}}।'
   examples:
   - sa: मधुरौ बालकौ।
@@ -336,6 +666,328 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Bahu
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: मधुरौ बालकौ।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: two sweet boys
+        hi: दो मधुर बालक
+      words:
+      - sa: मधुरौ
+        gloss:
+          en: sweet
+          hi: मीठे
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Dvi
+      - sa: बालकौ
+        gloss:
+          en: boys
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Dvi
+    - id: i1
+      sa: मधुरौ
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: sweet
+        hi: मीठे
+      check:
+        type: subanta
+        stem: मधुर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{मधुर}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{मधुर}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+    - id: i2
+      sa: बालकौ
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boys
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The adjective follows its noun''s number as well: {{मधुरौ बालकौ}} (two sweet boys), {{मधुराः बालिकाः}}, {{मधुराणि
+          फलानि}}.'
+        hi: 'विशेषण अपनी संज्ञा के वचन के अनुसार भी चलता है: {{मधुरौ बालकौ}} (दो मधुर बालक), {{मधुराः बालिकाः}}, {{मधुराणि
+          फलानि}}।'
+    - id: i5
+      sa: मधुरौ बालकौ।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: two sweet boys
+        hi: दो मधुर बालक
+      words:
+      - sa: मधुरौ
+        gloss:
+          en: sweet
+          hi: मीठे
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Dvi
+      - sa: बालकौ
+        gloss:
+          en: boys
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Dvi
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: मधुराः बालिकाः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: sweet girls
+        hi: मधुर बालिकाएँ
+      words:
+      - sa: मधुराः
+        gloss:
+          en: sweet
+          hi: मीठी
+        check:
+          type: subanta
+          stem: मधुरा
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Bahu
+      - sa: बालिकाः
+        gloss:
+          en: girls
+          hi: बालिकाएँ
+        check:
+          type: subanta
+          stem: बालिका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Bahu
+    - id: i1
+      sa: मधुराः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: sweet
+        hi: मीठी
+      check:
+        type: subanta
+        stem: मधुरा
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{मधुरा}} · feminine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{मधुरा}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+    - id: i2
+      sa: बालिकाः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: girls
+        hi: बालिकाएँ
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The adjective follows its noun''s number as well: {{मधुरौ बालकौ}} (two sweet boys), {{मधुराः बालिकाः}}, {{मधुराणि
+          फलानि}}.'
+        hi: 'विशेषण अपनी संज्ञा के वचन के अनुसार भी चलता है: {{मधुरौ बालकौ}} (दो मधुर बालक), {{मधुराः बालिकाः}}, {{मधुराणि
+          फलानि}}।'
+    - id: i5
+      sa: मधुराः बालिकाः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: sweet girls
+        hi: मधुर बालिकाएँ
+      words:
+      - sa: मधुराः
+        gloss:
+          en: sweet
+          hi: मीठी
+        check:
+          type: subanta
+          stem: मधुरा
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Bahu
+      - sa: बालिकाः
+        gloss:
+          en: girls
+          hi: बालिकाएँ
+        check:
+          type: subanta
+          stem: बालिका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Bahu
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: मधुराणि फलानि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: sweet fruits
+        hi: मीठे फल
+      words:
+      - sa: मधुराणि
+        gloss:
+          en: sweet
+          hi: मीठे
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Bahu
+      - sa: फलानि
+        gloss:
+          en: fruits
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Bahu
+    - id: i1
+      sa: मधुराणि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: sweet
+        hi: मीठे
+      check:
+        type: subanta
+        stem: मधुर
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{मधुर}} · neuter · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{मधुर}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+    - id: i2
+      sa: फलानि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruits
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The adjective follows its noun''s number as well: {{मधुरौ बालकौ}} (two sweet boys), {{मधुराः बालिकाः}}, {{मधुराणि
+          फलानि}}.'
+        hi: 'विशेषण अपनी संज्ञा के वचन के अनुसार भी चलता है: {{मधुरौ बालकौ}} (दो मधुर बालक), {{मधुराः बालिकाः}}, {{मधुराणि
+          फलानि}}।'
+    - id: i5
+      sa: मधुराणि फलानि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: sweet fruits
+        hi: मीठे फल
+      words:
+      - sa: मधुराणि
+        gloss:
+          en: sweet
+          hi: मीठे
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Bahu
+      - sa: फलानि
+        gloss:
+          en: fruits
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Bahu
 - id: p1
   kind: practice
   depth: core
@@ -354,6 +1006,114 @@ cards:
   - correct: true
     sa: मधुरा
   - sa: मधुरम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: मधुरः बालकः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a sweet boy
+        hi: एक मधुर बालक
+      words:
+      - sa: मधुरः
+        gloss:
+          en: sweet
+          hi: मीठा
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मधुरः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: sweet
+        hi: मीठा
+      check:
+        type: subanta
+        stem: मधुर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मधुर}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मधुर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: A describing word, an adjective ({{विशेषणम्}}), agrees with its noun in gender, number and case. {{मधुरः}} {{बालकः}},
+          {{मधुरा}} {{बालिका}}, {{मधुरम्}} {{फलम्}}.
+        hi: वर्णन करने वाला शब्द, विशेषण, अपनी संज्ञा से लिंग, वचन और विभक्ति में मेल खाता है। {{मधुरः}} {{बालकः}}, {{मधुरा}}
+          {{बालिका}}, {{मधुरम्}} {{फलम्}}।
+    - id: i5
+      sa: मधुरः बालकः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a sweet boy
+        hi: एक मधुर बालक
+      words:
+      - sa: मधुरः
+        gloss:
+          en: sweet
+          hi: मीठा
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -384,6 +1144,114 @@ cards:
       sa: मधुराणि
     right:
       sa: फलानि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: मधुरः बालकः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a sweet boy
+        hi: एक मधुर बालक
+      words:
+      - sa: मधुरः
+        gloss:
+          en: sweet
+          hi: मीठा
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मधुरः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: sweet
+        hi: मीठा
+      check:
+        type: subanta
+        stem: मधुर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मधुर}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मधुर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: A describing word, an adjective ({{विशेषणम्}}), agrees with its noun in gender, number and case. {{मधुरः}} {{बालकः}},
+          {{मधुरा}} {{बालिका}}, {{मधुरम्}} {{फलम्}}.
+        hi: वर्णन करने वाला शब्द, विशेषण, अपनी संज्ञा से लिंग, वचन और विभक्ति में मेल खाता है। {{मधुरः}} {{बालकः}}, {{मधुरा}}
+          {{बालिका}}, {{मधुरम्}} {{फलम्}}।
+    - id: i5
+      sa: मधुरः बालकः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a sweet boy
+        hi: एक मधुर बालक
+      words:
+      - sa: मधुरः
+        gloss:
+          en: sweet
+          hi: मीठा
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -425,8 +1293,10 @@ cards:
   gate: true
   story:
     success:
-      en: '“श्वेतं पुष्पम्,” you say, and the multi-coloured spirit flushes white all over, like a petal. Then pink. Then gold: he cannot decide.'
-      hi: '“श्वेतं पुष्पम्,” आप कहते हैं, और इन्द्रधनुषी भूत पूरा फूल की पंखुड़ी-सा सफ़ेद हो जाता है। फिर गुलाबी। फिर सुनहरा: वह तय नहीं कर पाता।'
+      en: '“श्वेतं पुष्पम्,” you say, and the multi-coloured spirit flushes white all over, like a petal. Then pink. Then
+        gold: he cannot decide.'
+      hi: '“श्वेतं पुष्पम्,” आप कहते हैं, और इन्द्रधनुषी भूत पूरा फूल की पंखुड़ी-सा सफ़ेद हो जाता है। फिर गुलाबी। फिर सुनहरा:
+        वह तय नहीं कर पाता।'
     failure:
       en: 'He stays grey. Neuter noun, neuter adjective: both end in {{अम्}}.'
       hi: 'वह धूसर ही रहता है। नपुंसक संज्ञा, नपुंसक विशेषण: दोनों {{अम्}} पर समाप्त होते हैं।'
@@ -435,6 +1305,114 @@ cards:
   - sa: श्वेता पुष्पम्
   - correct: true
     sa: श्वेतं पुष्पम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: मधुरः बालकः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a sweet boy
+        hi: एक मधुर बालक
+      words:
+      - sa: मधुरः
+        gloss:
+          en: sweet
+          hi: मीठा
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मधुरः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: sweet
+        hi: मीठा
+      check:
+        type: subanta
+        stem: मधुर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मधुर}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मधुर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: A describing word, an adjective ({{विशेषणम्}}), agrees with its noun in gender, number and case. {{मधुरः}} {{बालकः}},
+          {{मधुरा}} {{बालिका}}, {{मधुरम्}} {{फलम्}}.
+        hi: वर्णन करने वाला शब्द, विशेषण, अपनी संज्ञा से लिंग, वचन और विभक्ति में मेल खाता है। {{मधुरः}} {{बालकः}}, {{मधुरा}}
+          {{बालिका}}, {{मधुरम्}} {{फलम्}}।
+    - id: i5
+      sa: मधुरः बालकः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a sweet boy
+        hi: एक मधुर बालक
+      words:
+      - sa: मधुरः
+        gloss:
+          en: sweet
+          hi: मीठा
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
 - id: sum
   kind: summary
   title:

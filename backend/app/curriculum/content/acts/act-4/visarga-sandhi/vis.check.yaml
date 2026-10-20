@@ -28,6 +28,46 @@ cards:
   - sa: रामरस्ति
   - correct: true
     sa: रामोऽस्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A word can end in the breath {{ः}}, the {{विसर्गः}}: {{रामः}}, {{देवः}}, {{सः}}. Before a soft sound, a vowel,
+        or a soft consonant, the ending {{-अः}} becomes {{-ओ}}. Before {{अ}} the {{अ}} is dropped, leaving {{ऽ}}: {{रामः +
+        अस्ति}} gives {{रामोऽस्ति}}; {{रामः + गच्छति}} gives {{रामो गच्छति}}.'
+      hi: 'शब्द श्वास {{ः}}, अर्थात् {{विसर्गः}} पर समाप्त हो सकता है: {{रामः}}, {{देवः}}, {{सः}}। कोमल ध्वनि, स्वर या कोमल
+        व्यंजन से पहले {{-अः}} {{-ओ}} बन जाता है। {{अ}} से पहले {{अ}} गिर जाता है और {{ऽ}} बचता है: {{रामः + अस्ति}} से {{रामोऽस्ति}};
+        {{रामः + गच्छति}} से {{रामो गच्छति}}।'
+    items:
+    - id: i0
+      sa: ः
+    - id: i1
+      sa: विसर्गः
+    - id: i2
+      sa: रामः
+    - id: i3
+      sa: देवः
+    - id: i4
+      sa: सः
+    - id: i5
+      sa: -अः
+    - id: i6
+      sa: -ओ
+    - id: i7
+      sa: अ
+    - id: i8
+      sa: ऽ
+    - id: i9
+      sa: रामः + अस्ति
+    - id: i10
+      sa: रामोऽस्ति
+    - id: i11
+      sa: रामः + गच्छति
+    - id: i12
+      sa: रामो गच्छति
 - id: p2
   kind: practice
   depth: core
@@ -46,6 +86,46 @@ cards:
   - correct: true
     sa: देवो भवति
   - sa: देवर्भवति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A word can end in the breath {{ः}}, the {{विसर्गः}}: {{रामः}}, {{देवः}}, {{सः}}. Before a soft sound, a vowel,
+        or a soft consonant, the ending {{-अः}} becomes {{-ओ}}. Before {{अ}} the {{अ}} is dropped, leaving {{ऽ}}: {{रामः +
+        अस्ति}} gives {{रामोऽस्ति}}; {{रामः + गच्छति}} gives {{रामो गच्छति}}.'
+      hi: 'शब्द श्वास {{ः}}, अर्थात् {{विसर्गः}} पर समाप्त हो सकता है: {{रामः}}, {{देवः}}, {{सः}}। कोमल ध्वनि, स्वर या कोमल
+        व्यंजन से पहले {{-अः}} {{-ओ}} बन जाता है। {{अ}} से पहले {{अ}} गिर जाता है और {{ऽ}} बचता है: {{रामः + अस्ति}} से {{रामोऽस्ति}};
+        {{रामः + गच्छति}} से {{रामो गच्छति}}।'
+    items:
+    - id: i0
+      sa: ः
+    - id: i1
+      sa: विसर्गः
+    - id: i2
+      sa: रामः
+    - id: i3
+      sa: देवः
+    - id: i4
+      sa: सः
+    - id: i5
+      sa: -अः
+    - id: i6
+      sa: -ओ
+    - id: i7
+      sa: अ
+    - id: i8
+      sa: ऽ
+    - id: i9
+      sa: रामः + अस्ति
+    - id: i10
+      sa: रामोऽस्ति
+    - id: i11
+      sa: रामः + गच्छति
+    - id: i12
+      sa: रामो गच्छति
 - id: p3
   kind: practice
   depth: core
@@ -64,6 +144,54 @@ cards:
   - sa: रामसच
   - correct: true
     sa: रामश्च
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Before a hard consonant the visarga turns into a hiss in the same place as that consonant: before {{च}}/{{छ}} it
+        is {{श्}}, before {{त}}/{{थ}} it is {{स्}}, before {{ट}}/{{ठ}} it is {{ष्}}. {{रामः + च}} gives {{रामश्च}}; {{रामः
+        + तत्र}} gives {{रामस्तत्र}}. Before {{क}}, {{ख}}, {{प}}, {{फ}} the visarga stays.'
+      hi: 'कठोर व्यंजन से पहले विसर्ग उसी स्थान की फुफकार बन जाता है: {{च}}/{{छ}} से पहले {{श्}}, {{त}}/{{थ}} से पहले {{स्}},
+        {{ट}}/{{ठ}} से पहले {{ष्}}। {{रामः + च}} से {{रामश्च}}; {{रामः + तत्र}} से {{रामस्तत्र}}। {{क}}, {{ख}}, {{प}}, {{फ}}
+        से पहले विसर्ग रहता है।'
+    items:
+    - id: i0
+      sa: च
+    - id: i1
+      sa: छ
+    - id: i2
+      sa: श्
+    - id: i3
+      sa: त
+    - id: i4
+      sa: थ
+    - id: i5
+      sa: स्
+    - id: i6
+      sa: ट
+    - id: i7
+      sa: ठ
+    - id: i8
+      sa: ष्
+    - id: i9
+      sa: रामः + च
+    - id: i10
+      sa: रामश्च
+    - id: i11
+      sa: रामः + तत्र
+    - id: i12
+      sa: रामस्तत्र
+    - id: i13
+      sa: क
+    - id: i14
+      sa: ख
+    - id: i15
+      sa: प
+    - id: i16
+      sa: फ
 - id: p4
   kind: practice
   depth: core
@@ -82,6 +210,54 @@ cards:
   - sa: रामो करोति
   - correct: true
     sa: रामः करोति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Before a hard consonant the visarga turns into a hiss in the same place as that consonant: before {{च}}/{{छ}} it
+        is {{श्}}, before {{त}}/{{थ}} it is {{स्}}, before {{ट}}/{{ठ}} it is {{ष्}}. {{रामः + च}} gives {{रामश्च}}; {{रामः
+        + तत्र}} gives {{रामस्तत्र}}. Before {{क}}, {{ख}}, {{प}}, {{फ}} the visarga stays.'
+      hi: 'कठोर व्यंजन से पहले विसर्ग उसी स्थान की फुफकार बन जाता है: {{च}}/{{छ}} से पहले {{श्}}, {{त}}/{{थ}} से पहले {{स्}},
+        {{ट}}/{{ठ}} से पहले {{ष्}}। {{रामः + च}} से {{रामश्च}}; {{रामः + तत्र}} से {{रामस्तत्र}}। {{क}}, {{ख}}, {{प}}, {{फ}}
+        से पहले विसर्ग रहता है।'
+    items:
+    - id: i0
+      sa: च
+    - id: i1
+      sa: छ
+    - id: i2
+      sa: श्
+    - id: i3
+      sa: त
+    - id: i4
+      sa: थ
+    - id: i5
+      sa: स्
+    - id: i6
+      sa: ट
+    - id: i7
+      sa: ठ
+    - id: i8
+      sa: ष्
+    - id: i9
+      sa: रामः + च
+    - id: i10
+      sa: रामश्च
+    - id: i11
+      sa: रामः + तत्र
+    - id: i12
+      sa: रामस्तत्र
+    - id: i13
+      sa: क
+    - id: i14
+      sa: ख
+    - id: i15
+      sa: प
+    - id: i16
+      sa: फ
 - id: p5
   kind: practice
   depth: core
@@ -100,6 +276,50 @@ cards:
   - sa: कवोऽस्ति
   - correct: true
     sa: कविरस्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'After {{-इः}} or {{-उः}}, the visarga becomes {{र्}} before a vowel or a soft sound: {{कविः + अस्ति}} gives {{कविरस्ति}};
+        {{गुरुः + ददाति}} gives {{गुरुर्ददाति}}. After {{-अः}} and {{-आः}}, before a vowel other than {{अ}}, it vanishes:
+        {{रामः + इह}} gives {{राम इह}}. {{सः}} and {{एषः}} lose it before consonants: {{स गच्छति}}.'
+      hi: '{{-इः}} या {{-उः}} के बाद विसर्ग स्वर या कोमल ध्वनि से पहले {{र्}} बन जाता है: {{कविः + अस्ति}} से {{कविरस्ति}};
+        {{गुरुः + ददाति}} से {{गुरुर्ददाति}}। {{-अः}} और {{-आः}} के बाद, {{अ}} को छोड़कर किसी स्वर से पहले, वह लुप्त हो जाता
+        है: {{रामः + इह}} से {{राम इह}}। {{सः}} और {{एषः}} व्यंजन से पहले उसे खो देते हैं: {{स गच्छति}}।'
+    items:
+    - id: i0
+      sa: -इः
+    - id: i1
+      sa: -उः
+    - id: i2
+      sa: र्
+    - id: i3
+      sa: कविः + अस्ति
+    - id: i4
+      sa: कविरस्ति
+    - id: i5
+      sa: गुरुः + ददाति
+    - id: i6
+      sa: गुरुर्ददाति
+    - id: i7
+      sa: -अः
+    - id: i8
+      sa: -आः
+    - id: i9
+      sa: अ
+    - id: i10
+      sa: रामः + इह
+    - id: i11
+      sa: राम इह
+    - id: i12
+      sa: सः
+    - id: i13
+      sa: एषः
+    - id: i14
+      sa: स गच्छति
 - id: p6
   kind: practice
   depth: core
@@ -118,6 +338,50 @@ cards:
   - sa: सो गच्छति
   - correct: true
     sa: स गच्छति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'After {{-इः}} or {{-उः}}, the visarga becomes {{र्}} before a vowel or a soft sound: {{कविः + अस्ति}} gives {{कविरस्ति}};
+        {{गुरुः + ददाति}} gives {{गुरुर्ददाति}}. After {{-अः}} and {{-आः}}, before a vowel other than {{अ}}, it vanishes:
+        {{रामः + इह}} gives {{राम इह}}. {{सः}} and {{एषः}} lose it before consonants: {{स गच्छति}}.'
+      hi: '{{-इः}} या {{-उः}} के बाद विसर्ग स्वर या कोमल ध्वनि से पहले {{र्}} बन जाता है: {{कविः + अस्ति}} से {{कविरस्ति}};
+        {{गुरुः + ददाति}} से {{गुरुर्ददाति}}। {{-अः}} और {{-आः}} के बाद, {{अ}} को छोड़कर किसी स्वर से पहले, वह लुप्त हो जाता
+        है: {{रामः + इह}} से {{राम इह}}। {{सः}} और {{एषः}} व्यंजन से पहले उसे खो देते हैं: {{स गच्छति}}।'
+    items:
+    - id: i0
+      sa: -इः
+    - id: i1
+      sa: -उः
+    - id: i2
+      sa: र्
+    - id: i3
+      sa: कविः + अस्ति
+    - id: i4
+      sa: कविरस्ति
+    - id: i5
+      sa: गुरुः + ददाति
+    - id: i6
+      sa: गुरुर्ददाति
+    - id: i7
+      sa: -अः
+    - id: i8
+      sa: -आः
+    - id: i9
+      sa: अ
+    - id: i10
+      sa: रामः + इह
+    - id: i11
+      sa: राम इह
+    - id: i12
+      sa: सः
+    - id: i13
+      sa: एषः
+    - id: i14
+      sa: स गच्छति
 - id: p7
   kind: practice
   depth: core
@@ -150,6 +414,46 @@ cards:
       sa: राम इह
     right:
       sa: रामः + इह
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A word can end in the breath {{ः}}, the {{विसर्गः}}: {{रामः}}, {{देवः}}, {{सः}}. Before a soft sound, a vowel,
+        or a soft consonant, the ending {{-अः}} becomes {{-ओ}}. Before {{अ}} the {{अ}} is dropped, leaving {{ऽ}}: {{रामः +
+        अस्ति}} gives {{रामोऽस्ति}}; {{रामः + गच्छति}} gives {{रामो गच्छति}}.'
+      hi: 'शब्द श्वास {{ः}}, अर्थात् {{विसर्गः}} पर समाप्त हो सकता है: {{रामः}}, {{देवः}}, {{सः}}। कोमल ध्वनि, स्वर या कोमल
+        व्यंजन से पहले {{-अः}} {{-ओ}} बन जाता है। {{अ}} से पहले {{अ}} गिर जाता है और {{ऽ}} बचता है: {{रामः + अस्ति}} से {{रामोऽस्ति}};
+        {{रामः + गच्छति}} से {{रामो गच्छति}}।'
+    items:
+    - id: i0
+      sa: ः
+    - id: i1
+      sa: विसर्गः
+    - id: i2
+      sa: रामः
+    - id: i3
+      sa: देवः
+    - id: i4
+      sa: सः
+    - id: i5
+      sa: -अः
+    - id: i6
+      sa: -ओ
+    - id: i7
+      sa: अ
+    - id: i8
+      sa: ऽ
+    - id: i9
+      sa: रामः + अस्ति
+    - id: i10
+      sa: रामोऽस्ति
+    - id: i11
+      sa: रामः + गच्छति
+    - id: i12
+      sa: रामो गच्छति
 - id: p8
   kind: practice
   depth: core
@@ -168,8 +472,14 @@ cards:
   gate: true
   story:
     success:
-      en: “रामोऽस्ति, कविरस्ति, रामश्च,” you say, and Visargikā steps down, a small marble woman with a finger at her lips, and lowers it. “At last,” she says, in her own voice, quite plain and low, “every breath has a name.” She breathes, aloud, once. Behind her the tenth statue is already holding a stone lamp. “तदस्ति,” she says, in a voice like a bell. “Tat and asti. They have joined, but what happened to the t?”
-      hi: “रामोऽस्ति, कविरस्ति, रामश्च,” आप कहते हैं, और विसर्गिका उतरती है, संगमरमर की नन्ही स्त्री, जिसकी होंठों पर उँगली है, और उसे नीचे कर लेती है। “आख़िर,” वह अपनी ही आवाज़ में, बहुत सादी और नीची, कहती है, “हर श्वास का एक नाम है।” वह एक बार ज़ोर से साँस लेती है। उसके पीछे दसवीं प्रतिमा पहले से पत्थर का दीपक थामे है। “तदस्ति,” वह घण्टी-सी आवाज़ में कहती है। “तत् और अस्ति। वे जुड़ गए, पर त् का क्या हुआ?”
+      en: “रामोऽस्ति, कविरस्ति, रामश्च,” you say, and Visargikā steps down, a small marble woman with a finger at her lips,
+        and lowers it. “At last,” she says, in her own voice, quite plain and low, “every breath has a name.” She breathes,
+        aloud, once. Behind her the tenth statue is already holding a stone lamp. “तदस्ति,” she says, in a voice like a bell.
+        “Tat and asti. They have joined, but what happened to the t?”
+      hi: “रामोऽस्ति, कविरस्ति, रामश्च,” आप कहते हैं, और विसर्गिका उतरती है, संगमरमर की नन्ही स्त्री, जिसकी होंठों पर उँगली
+        है, और उसे नीचे कर लेती है। “आख़िर,” वह अपनी ही आवाज़ में, बहुत सादी और नीची, कहती है, “हर श्वास का एक नाम है।” वह
+        एक बार ज़ोर से साँस लेती है। उसके पीछे दसवीं प्रतिमा पहले से पत्थर का दीपक थामे है। “तदस्ति,” वह घण्टी-सी आवाज़ में
+        कहती है। “तत् और अस्ति। वे जुड़ गए, पर त् का क्या हुआ?”
     failure:
       en: 'The breath hangs unnamed. Her three: {{रामोऽस्ति कविरस्ति रामश्च}}.'
       hi: 'श्वास बिना नाम का टँगा रहता है। उसके तीन: {{रामोऽस्ति कविरस्ति रामश्च}}।'
@@ -177,3 +487,43 @@ cards:
   - रामोऽस्ति
   - कविरस्ति
   - रामश्च
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A word can end in the breath {{ः}}, the {{विसर्गः}}: {{रामः}}, {{देवः}}, {{सः}}. Before a soft sound, a vowel,
+        or a soft consonant, the ending {{-अः}} becomes {{-ओ}}. Before {{अ}} the {{अ}} is dropped, leaving {{ऽ}}: {{रामः +
+        अस्ति}} gives {{रामोऽस्ति}}; {{रामः + गच्छति}} gives {{रामो गच्छति}}.'
+      hi: 'शब्द श्वास {{ः}}, अर्थात् {{विसर्गः}} पर समाप्त हो सकता है: {{रामः}}, {{देवः}}, {{सः}}। कोमल ध्वनि, स्वर या कोमल
+        व्यंजन से पहले {{-अः}} {{-ओ}} बन जाता है। {{अ}} से पहले {{अ}} गिर जाता है और {{ऽ}} बचता है: {{रामः + अस्ति}} से {{रामोऽस्ति}};
+        {{रामः + गच्छति}} से {{रामो गच्छति}}।'
+    items:
+    - id: i0
+      sa: ः
+    - id: i1
+      sa: विसर्गः
+    - id: i2
+      sa: रामः
+    - id: i3
+      sa: देवः
+    - id: i4
+      sa: सः
+    - id: i5
+      sa: -अः
+    - id: i6
+      sa: -ओ
+    - id: i7
+      sa: अ
+    - id: i8
+      sa: ऽ
+    - id: i9
+      sa: रामः + अस्ति
+    - id: i10
+      sa: रामोऽस्ति
+    - id: i11
+      sa: रामः + गच्छति
+    - id: i12
+      sa: रामो गच्छति

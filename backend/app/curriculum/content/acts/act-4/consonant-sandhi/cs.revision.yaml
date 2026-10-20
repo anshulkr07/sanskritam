@@ -97,10 +97,59 @@ cards:
           hi: क्योंकि वह
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: तद्धि।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: For that.
+          hi: क्योंकि वह।
+        words:
+        - sa: तद्धि
+          gloss:
+            en: for that
+            hi: क्योंकि वह
+      - id: i1
+        sa: तद्धि
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: for that
+          hi: क्योंकि वह
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{ह}} after a hard stop becomes the soft aspirate: {{तत् + हि}} → {{तद्धि}}.'
+          hi: 'कठोर स्पर्श के बाद {{ह}} कोमल महाप्राण बन जाता है: {{तत् + हि}} → {{तद्धि}}।'
+      - id: i4
+        sa: तद्धि।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: For that.
+          hi: क्योंकि वह।
+        words:
+        - sa: तद्धि
+          gloss:
+            en: for that
+            hi: क्योंकि वह
   - skill: sandhi.nasal
     rule:
       en: '{{सम्}} may write {{ङ्}}, {{न्}} or {{ं}}: {{सङ्कल्पः}}, {{सन्तोषः}} or {{संकल्पः}}, {{संतोषः}}; both are right.'
-      hi: '{{सम्}} में {{ङ्}}, {{न्}} या {{ं}} लिखा जा सकता है: {{सङ्कल्पः}}, {{सन्तोषः}} या {{संकल्पः}}, {{संतोषः}}; दोनों सही हैं।'
+      hi: '{{सम्}} में {{ङ्}}, {{न्}} या {{ं}} लिखा जा सकता है: {{सङ्कल्पः}}, {{सन्तोषः}} या {{संकल्पः}}, {{संतोषः}}; दोनों
+        सही हैं।'
     example:
       sa: संतोषः।
       meaning:
@@ -113,6 +162,55 @@ cards:
           hi: सन्तोष
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: संतोषः।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Contentment.
+          hi: सन्तोष।
+        words:
+        - sa: संतोषः
+          gloss:
+            en: contentment
+            hi: सन्तोष
+      - id: i1
+        sa: संतोषः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: contentment
+          hi: सन्तोष
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{सम्}} may write {{ङ्}}, {{न्}} or {{ं}}: {{सङ्कल्पः}}, {{सन्तोषः}} or {{संकल्पः}}, {{संतोषः}}; both are right.'
+          hi: '{{सम्}} में {{ङ्}}, {{न्}} या {{ं}} लिखा जा सकता है: {{सङ्कल्पः}}, {{सन्तोषः}} या {{संकल्पः}}, {{संतोषः}};
+            दोनों सही हैं।'
+      - id: i4
+        sa: संतोषः।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Contentment.
+          hi: सन्तोष।
+        words:
+        - sa: संतोषः
+          gloss:
+            en: contentment
+            hi: सन्तोष
 - id: mistakes
   kind: revision
   title:

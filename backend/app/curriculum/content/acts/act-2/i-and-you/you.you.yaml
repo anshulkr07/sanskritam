@@ -21,7 +21,8 @@ cards:
     hi: प्रश्न
   depth: core
   image:
-    brief: The boat sliding out from the ghat steps with you, Dādī, Śuka, the boatman and the small silvery spirit aboard; Dādī turned toward the spirit with a kind direct look as if speaking to him.
+    brief: The boat sliding out from the ghat steps with you, Dādī, Śuka, the boatman and the small silvery spirit aboard;
+      Dādī turned toward the spirit with a kind direct look as if speaking to him.
     alt:
       en: A grandmother speaks kindly to a small spirit as the boat leaves the ghat
       hi: नाव के घाट छोड़ते समय नन्हे भूत से कोमलता से बोलती दादी
@@ -35,8 +36,11 @@ cards:
     ratio: '4:3'
     id: you-you-s1
   narration:
-    en: 'The boat slides out from the steps. “And you?” the boatman asks Dādī. “And you, little one?” he asks the spirit. The spirit cannot answer: no one has ever said “you” to him and meant it. Dādī says it first: a clear, kind word, aimed straight at him.'
-    hi: 'नाव सीढ़ियों से सरकती है। नाविक दादी से पूछता है, “और आप?” फिर भूत से, “और तुम, नन्हे?” भूत उत्तर नहीं दे पाता: किसी ने कभी उसे ‘तुम’ कहकर सचमुच नहीं पुकारा। दादी पहले कहती हैं: साफ़, कोमल शब्द, ठीक उसकी ओर।'
+    en: 'The boat slides out from the steps. “And you?” the boatman asks Dādī. “And you, little one?” he asks the spirit.
+      The spirit cannot answer: no one has ever said “you” to him and meant it. Dādī says it first: a clear, kind word, aimed
+      straight at him.'
+    hi: 'नाव सीढ़ियों से सरकती है। नाविक दादी से पूछता है, “और आप?” फिर भूत से, “और तुम, नन्हे?” भूत उत्तर नहीं दे पाता: किसी
+      ने कभी उसे ‘तुम’ कहकर सचमुच नहीं पुकारा। दादी पहले कहती हैं: साफ़, कोमल शब्द, ठीक उसकी ओर।'
   lines:
   - speaker: dadi
     sa: त्वं कः असि?
@@ -52,8 +56,10 @@ cards:
   skills:
   - pron.you
   body:
-    en: '“You” is {{त्वम्}}. For two it is {{युवाम्}}, for many {{यूयम्}}. The verb ends in {{सि}}, {{थः}} or {{थ}}: {{त्वं पठसि}} (you read), {{युवां पठथः}}, {{यूयं पठथ}}.'
-    hi: '‘तुम’ है {{त्वम्}}। दो के लिए {{युवाम्}}, अनेक के लिए {{यूयम्}}। क्रिया {{सि}}, {{थः}} या {{थ}} पर समाप्त होती है: {{त्वं पठसि}} (तुम पढ़ते हो), {{युवां पठथः}}, {{यूयं पठथ}}।'
+    en: '“You” is {{त्वम्}}. For two it is {{युवाम्}}, for many {{यूयम्}}. The verb ends in {{सि}}, {{थः}} or {{थ}}: {{त्वं
+      पठसि}} (you read), {{युवां पठथः}}, {{यूयं पठथ}}.'
+    hi: '‘तुम’ है {{त्वम्}}। दो के लिए {{युवाम्}}, अनेक के लिए {{यूयम्}}। क्रिया {{सि}}, {{थः}} या {{थ}} पर समाप्त होती है:
+      {{त्वं पठसि}} (तुम पढ़ते हो), {{युवां पठथः}}, {{यूयं पठथ}}।'
   rows:
   - sa: त्वम्
     gloss:
@@ -90,6 +96,60 @@ cards:
     meaning:
       en: 'second person: you'
       hi: 'मध्यम पुरुष: तुम'
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: '“You” is {{त्वम्}}. For two it is {{युवाम्}}, for many {{यूयम्}}. The verb ends in {{सि}}, {{थः}} or {{थ}}: {{त्वं
+        पठसि}} (you read), {{युवां पठथः}}, {{यूयं पठथ}}.'
+      hi: '‘तुम’ है {{त्वम्}}। दो के लिए {{युवाम्}}, अनेक के लिए {{यूयम्}}। क्रिया {{सि}}, {{थः}} या {{थ}} पर समाप्त होती
+        है: {{त्वं पठसि}} (तुम पढ़ते हो), {{युवां पठथः}}, {{यूयं पठथ}}।'
+    items:
+    - id: i0
+      sa: त्वम्
+      meaning:
+        en: you
+        hi: तुम
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: युवाम्
+      meaning:
+        en: you two
+        hi: तुम दोनों
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+    - id: i2
+      sa: यूयम्
+      meaning:
+        en: you all
+        hi: तुम सब
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
 - id: tb1
   kind: table
   title:
@@ -178,6 +238,60 @@ cards:
   - correct: true
     sa: त्वम्
   - sa: यूयम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '“You” is {{त्वम्}}. For two it is {{युवाम्}}, for many {{यूयम्}}. The verb ends in {{सि}}, {{थः}} or {{थ}}: {{त्वं
+        पठसि}} (you read), {{युवां पठथः}}, {{यूयं पठथ}}.'
+      hi: '‘तुम’ है {{त्वम्}}। दो के लिए {{युवाम्}}, अनेक के लिए {{यूयम्}}। क्रिया {{सि}}, {{थः}} या {{थ}} पर समाप्त होती
+        है: {{त्वं पठसि}} (तुम पढ़ते हो), {{युवां पठथः}}, {{यूयं पठथ}}।'
+    items:
+    - id: i0
+      sa: त्वम्
+      meaning:
+        en: you
+        hi: तुम
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: युवाम्
+      meaning:
+        en: you two
+        hi: तुम दोनों
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+    - id: i2
+      sa: यूयम्
+      meaning:
+        en: you all
+        hi: तुम सब
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
 - id: p2
   kind: practice
   depth: core
@@ -216,6 +330,60 @@ cards:
       text:
         en: I
         hi: मैं
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '“You” is {{त्वम्}}. For two it is {{युवाम्}}, for many {{यूयम्}}. The verb ends in {{सि}}, {{थः}} or {{थ}}: {{त्वं
+        पठसि}} (you read), {{युवां पठथः}}, {{यूयं पठथ}}.'
+      hi: '‘तुम’ है {{त्वम्}}। दो के लिए {{युवाम्}}, अनेक के लिए {{यूयम्}}। क्रिया {{सि}}, {{थः}} या {{थ}} पर समाप्त होती
+        है: {{त्वं पठसि}} (तुम पढ़ते हो), {{युवां पठथः}}, {{यूयं पठथ}}।'
+    items:
+    - id: i0
+      sa: त्वम्
+      meaning:
+        en: you
+        hi: तुम
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: युवाम्
+      meaning:
+        en: you two
+        hi: तुम दोनों
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+    - id: i2
+      sa: यूयम्
+      meaning:
+        en: you all
+        hi: तुम सब
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
 - id: e1
   kind: explore
   depth: core
@@ -256,6 +424,60 @@ cards:
   - correct: true
     sa: गच्छथः
   - sa: गच्छावः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '“You” is {{त्वम्}}. For two it is {{युवाम्}}, for many {{यूयम्}}. The verb ends in {{सि}}, {{थः}} or {{थ}}: {{त्वं
+        पठसि}} (you read), {{युवां पठथः}}, {{यूयं पठथ}}.'
+      hi: '‘तुम’ है {{त्वम्}}। दो के लिए {{युवाम्}}, अनेक के लिए {{यूयम्}}। क्रिया {{सि}}, {{थः}} या {{थ}} पर समाप्त होती
+        है: {{त्वं पठसि}} (तुम पढ़ते हो), {{युवां पठथः}}, {{यूयं पठथ}}।'
+    items:
+    - id: i0
+      sa: त्वम्
+      meaning:
+        en: you
+        hi: तुम
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: युवाम्
+      meaning:
+        en: you two
+        hi: तुम दोनों
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+    - id: i2
+      sa: यूयम्
+      meaning:
+        en: you all
+        hi: तुम सब
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
 - id: p4
   kind: practice
   title:
@@ -275,8 +497,10 @@ cards:
   gate: true
   story:
     success:
-      en: “त्वं मित्रम् असि,” you say. The silver spirit's outline wavers like a reflection when a stone is dropped, then settles into your own face, smiling back.
-      hi: “त्वं मित्रम् असि,” आप कहते हैं। चाँदी-सा भूत पत्थर गिरे प्रतिबिम्ब की तरह काँपता है, फिर आपके ही चेहरे में ठहर जाता है, जो मुस्कुराकर लौटता है।
+      en: “त्वं मित्रम् असि,” you say. The silver spirit's outline wavers like a reflection when a stone is dropped, then
+        settles into your own face, smiling back.
+      hi: “त्वं मित्रम् असि,” आप कहते हैं। चाँदी-सा भूत पत्थर गिरे प्रतिबिम्ब की तरह काँपता है, फिर आपके ही चेहरे में ठहर
+        जाता है, जो मुस्कुराकर लौटता है।
     failure:
       en: 'The reflection stays blank. Say “you are a friend”: start with {{त्वम्}}.'
       hi: 'प्रतिबिम्ब खाली रहता है। ‘तुम मित्र हो’ कहिए: {{त्वम्}} से शुरू कीजिए।'
@@ -284,6 +508,60 @@ cards:
   - त्वम्
   - मित्रम्
   - असि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '“You” is {{त्वम्}}. For two it is {{युवाम्}}, for many {{यूयम्}}. The verb ends in {{सि}}, {{थः}} or {{थ}}: {{त्वं
+        पठसि}} (you read), {{युवां पठथः}}, {{यूयं पठथ}}.'
+      hi: '‘तुम’ है {{त्वम्}}। दो के लिए {{युवाम्}}, अनेक के लिए {{यूयम्}}। क्रिया {{सि}}, {{थः}} या {{थ}} पर समाप्त होती
+        है: {{त्वं पठसि}} (तुम पढ़ते हो), {{युवां पठथः}}, {{यूयं पठथ}}।'
+    items:
+    - id: i0
+      sa: त्वम्
+      meaning:
+        en: you
+        hi: तुम
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: युवाम्
+      meaning:
+        en: you two
+        hi: तुम दोनों
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+    - id: i2
+      sa: यूयम्
+      meaning:
+        en: you all
+        hi: तुम सब
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
 - id: sum
   kind: summary
   title:

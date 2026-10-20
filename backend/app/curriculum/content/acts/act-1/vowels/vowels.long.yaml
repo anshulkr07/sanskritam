@@ -1,183 +1,719 @@
 id: vowels.long
 template: scene
-title: {en: "Śuka's long words", hi: "शुक के लम्बे शब्द"}
-title_sa: "दीर्घाः स्वराः"
+title:
+  en: Śuka's long words
+  hi: शुक के लम्बे शब्द
+title_sa: दीर्घाः स्वराः
 minutes: 6
-teaches: [script.vowel.long]
-needs: [script.vowel.short]
+teaches:
+- script.vowel.long
+needs:
+- script.vowel.short
 review: scholar_ok
 sources:
-  - title: "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)"
-    url: "https://github.com/ambuda-org/vidyut"
-    licence: "MIT"
-  - title: "Lesson text and story"
-    licence: "original"
+- title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
 cards:
-  - id: s1
-    kind: story
-    title: {en: "Śuka stretches everything", hi: "शुक सब कुछ खींच देता है"}
-    image:
-      id: vowels-long-shuka
-      text_in_image: ["अ इ उ", "ऋ ऌ", "ए ओ", "ऐ औ"]
-      brief: "Early morning in the temple library: Śuka the parrot at an open window with the sunrise behind him, beak wide open mid-squawk, wings half spread; Dādī at the reading desk lowering her round spectacles with one eyebrow raised, amused; Dhūmaka giggling as a little puff of smoke beside the glowing leaf."
-      alt: {en: "A parrot squawking at a sunrise window while a grandmother raises an eyebrow and a small ghost giggles", hi: "सूर्योदय की खिड़की पर चिल्लाता तोता, भौंहें उठाती दादी और खिलखिलाता नन्हा भूत"}
-      ratio: "4:3"
-      cast: [shuka, dadi, dhumaka]
-      place: granthalaya
-    narration:
-      en: "Śuka wants to help. Every sound Dādī reads, he repeats, but stretched out long. Then morning comes, and he flies to the window to greet the day. Dādī puts down her spectacles. “Śuka, why are you calling me poor?”"
-      hi: "शुक मदद करना चाहता है। दादी जो भी ध्वनि पढ़ती हैं, वह उसे दोहराता है, पर खींचकर, लम्बा करके। फिर सुबह होती है, और वह दिन का स्वागत करने खिड़की पर उड़ जाता है। दादी अपना चश्मा नीचे रखती हैं, “शुक, तुम मुझे दीन क्यों कह रहे हो?”"
+- id: s1
+  kind: story
+  title:
+    en: Śuka stretches everything
+    hi: शुक सब कुछ खींच देता है
+  image:
+    id: vowels-long-shuka
+    text_in_image:
+    - अ इ उ
+    - ऋ ऌ
+    - ए ओ
+    - ऐ औ
+    brief: 'Early morning in the temple library: Śuka the parrot at an open window with the sunrise behind him, beak wide
+      open mid-squawk, wings half spread; Dādī at the reading desk lowering her round spectacles with one eyebrow raised,
+      amused; Dhūmaka giggling as a little puff of smoke beside the glowing leaf.'
+    alt:
+      en: A parrot squawking at a sunrise window while a grandmother raises an eyebrow and a small ghost giggles
+      hi: सूर्योदय की खिड़की पर चिल्लाता तोता, भौंहें उठाती दादी और खिलखिलाता नन्हा भूत
+    ratio: '4:3'
+    cast:
+    - shuka
+    - dadi
+    - dhumaka
+    place: granthalaya
+  narration:
+    en: Śuka wants to help. Every sound Dādī reads, he repeats, but stretched out long. Then morning comes, and he flies to
+      the window to greet the day. Dādī puts down her spectacles. “Śuka, why are you calling me poor?”
+    hi: शुक मदद करना चाहता है। दादी जो भी ध्वनि पढ़ती हैं, वह उसे दोहराता है, पर खींचकर, लम्बा करके। फिर सुबह होती है, और
+      वह दिन का स्वागत करने खिड़की पर उड़ जाता है। दादी अपना चश्मा नीचे रखती हैं, “शुक, तुम मुझे दीन क्यों कह रहे हो?”
+  lines:
+  - speaker: shuka
+    sa: दीनः! दीनः!
+    gloss:
+      en: “Poor one! Poor one!”
+      hi: “दीन! दीन!”
+- id: t1
+  kind: teach
+  title:
+    en: The long twins
+    hi: दीर्घ जुड़वाँ
+  skills:
+  - script.vowel.long
+  sutras:
+  - 1.2.27
+  body:
+    en: 'Three short vowels have a long twin, held for two beats: {{आ}} ā, {{ई}} ī, {{ऊ}} ū. {{ऋ}} has one too, {{ॠ}} ṝ, but
+      you will rarely see it. A long vowel is made at the same place as its short twin, only held twice as long.'
+    hi: 'तीन ह्रस्व स्वरों का एक दीर्घ जुड़वाँ है, जो दो मात्रा तक बोला जाता है: {{आ}}, {{ई}}, {{ऊ}}। {{ऋ}} का भी है, {{ॠ}},
+      पर वह कम ही दिखता है। दीर्घ स्वर उसी स्थान से बनता है जहाँ से उसका ह्रस्व जुड़वाँ, बस दुगुने समय तक बोला जाता है।'
+  rows:
+  - sa: अ → आ
+    gloss:
+      en: a → ā, as in “father”
+      hi: अ → आ, जैसे ‘आम’ में
+  - sa: इ → ई
+    gloss:
+      en: i → ī, as in “see”
+      hi: इ → ई, जैसे ‘ईख’ में
+  - sa: उ → ऊ
+    gloss:
+      en: u → ū, as in “moon”
+      hi: उ → ऊ, जैसे ‘ऊन’ में
+  - sa: ऋ → ॠ
+    gloss:
+      en: ṛ → ṝ, held longer (rare)
+      hi: ऋ → ॠ, लम्बा खिंचा (दुर्लभ)
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: 'Three short vowels have a long twin, held for two beats: {{आ}} ā, {{ई}} ī, {{ऊ}} ū. {{ऋ}} has one too, {{ॠ}} ṝ,
+        but you will rarely see it. A long vowel is made at the same place as its short twin, only held twice as long.'
+      hi: 'तीन ह्रस्व स्वरों का एक दीर्घ जुड़वाँ है, जो दो मात्रा तक बोला जाता है: {{आ}}, {{ई}}, {{ऊ}}। {{ऋ}} का भी है, {{ॠ}},
+        पर वह कम ही दिखता है। दीर्घ स्वर उसी स्थान से बनता है जहाँ से उसका ह्रस्व जुड़वाँ, बस दुगुने समय तक बोला जाता है।'
+    items:
+    - id: i0
+      sa: अ → आ
+      meaning:
+        en: a → ā, as in “father”
+        hi: अ → आ, जैसे ‘आम’ में
+    - id: i1
+      sa: इ → ई
+      meaning:
+        en: i → ī, as in “see”
+        hi: इ → ई, जैसे ‘ईख’ में
+    - id: i2
+      sa: उ → ऊ
+      meaning:
+        en: u → ū, as in “moon”
+        hi: उ → ऊ, जैसे ‘ऊन’ में
+    - id: i3
+      sa: ऋ → ॠ
+      meaning:
+        en: ṛ → ṝ, held longer (rare)
+        hi: ऋ → ॠ, लम्बा खिंचा (दुर्लभ)
+- id: e1
+  kind: explore
+  title:
+    en: Same place, longer sound
+    hi: वही स्थान, लम्बी ध्वनि
+  skills:
+  - script.vowel.long
+  widget: mouth_map
+  prompt:
+    en: Tap a short vowel, then its long twin. Do they light the same place?
+    hi: पहले ह्रस्व स्वर को छुइए, फिर उसके दीर्घ जुड़वाँ को। क्या दोनों एक ही स्थान को चमकाते हैं?
+  params:
+    letters:
+    - अ
+    - आ
+    - इ
+    - ई
+    - उ
+    - ऊ
+- id: p1
+  kind: practice
+  mode: choice
+  skills:
+  - script.vowel.long
+  roman: after
+  prompt:
+    en: Which is the long twin of {{इ}}?
+    hi: '{{इ}} का दीर्घ जुड़वाँ कौन-सा है?'
+  options:
+  - sa: ई
+    correct: true
+  - sa: ए
+    why:
+      en: '{{ए}} is a different vowel, made at two places; it is not {{इ}} held longer.'
+      hi: '{{ए}} अलग स्वर है, जो दो स्थानों से बनता है; यह {{इ}} का लम्बा रूप नहीं।'
+  - sa: ऊ
+    why:
+      en: '{{ऊ}} is the long twin of {{उ}}.'
+      hi: '{{ऊ}} तो {{उ}} का दीर्घ रूप है।'
+  explain:
+    en: '{{ई}} is {{इ}} held for two beats, at the same place: the palate.'
+    hi: '{{ई}} वही {{इ}} है, दो मात्रा तक, उसी स्थान से: तालु।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Three short vowels have a long twin, held for two beats: {{आ}} ā, {{ई}} ī, {{ऊ}} ū. {{ऋ}} has one too, {{ॠ}} ṝ,
+        but you will rarely see it. A long vowel is made at the same place as its short twin, only held twice as long.'
+      hi: 'तीन ह्रस्व स्वरों का एक दीर्घ जुड़वाँ है, जो दो मात्रा तक बोला जाता है: {{आ}}, {{ई}}, {{ऊ}}। {{ऋ}} का भी है, {{ॠ}},
+        पर वह कम ही दिखता है। दीर्घ स्वर उसी स्थान से बनता है जहाँ से उसका ह्रस्व जुड़वाँ, बस दुगुने समय तक बोला जाता है।'
+    items:
+    - id: i0
+      sa: अ → आ
+      meaning:
+        en: a → ā, as in “father”
+        hi: अ → आ, जैसे ‘आम’ में
+    - id: i1
+      sa: इ → ई
+      meaning:
+        en: i → ī, as in “see”
+        hi: इ → ई, जैसे ‘ईख’ में
+    - id: i2
+      sa: उ → ऊ
+      meaning:
+        en: u → ū, as in “moon”
+        hi: उ → ऊ, जैसे ‘ऊन’ में
+    - id: i3
+      sa: ऋ → ॠ
+      meaning:
+        en: ṛ → ṝ, held longer (rare)
+        hi: ऋ → ॠ, लम्बा खिंचा (दुर्लभ)
+- id: t2
+  kind: teach
+  title:
+    en: One beat or two
+    hi: एक मात्रा या दो
+  skills:
+  - script.vowel.long
+  body:
+    en: Hold a vowel too long, or clip it too short, and you say a different word. Each pair below differs only in one vowel's
+      length. Inside a word a vowel is written as a small sign, which you will meet on the leaf's second line. For now, compare
+      the Roman letters.
+    hi: स्वर को ज़रूरत से ज़्यादा खींचिए या छोटा कर दीजिए, तो शब्द ही बदल जाता है। नीचे के हर जोड़े में केवल एक स्वर की लम्बाई
+      का अन्तर है। शब्द के भीतर स्वर एक छोटी मात्रा बनकर लिखा जाता है, जिसे आप पत्र की दूसरी पंक्ति में देखेंगे।
+  examples:
+  - sa: दिनम्
+    meaning:
+      en: a day (short {{इ}})
+      hi: दिन (ह्रस्व इ)
+    check:
+      type: subanta
+      stem: दिन
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: दीनः
+    meaning:
+      en: a poor, humble person (long {{ई}})
+      hi: दीन व्यक्ति (दीर्घ ई)
+    check:
+      type: subanta
+      stem: दीन
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: कुलम्
+    meaning:
+      en: a family (short {{उ}})
+      hi: कुल, परिवार (ह्रस्व उ)
+    check:
+      type: subanta
+      stem: कुल
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
+  - sa: कूलम्
+    meaning:
+      en: a riverbank (long {{ऊ}})
+      hi: नदी का किनारा (दीर्घ ऊ)
+    check:
+      type: subanta
+      stem: कूल
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
+  image:
+    id: vowels-long-pairs
+    brief: 'A watercolour in two panels side by side, divided by a thin painted border. Left panel: the riverside village
+      bathed in bright morning sun, labelled दिनम् underneath. Right panel: a thin, humble old man sitting quietly against
+      a whitewashed wall with an empty brass bowl, painted with dignity and warmth, labelled दीनः underneath.'
+    alt:
+      en: 'Two panels: a sunny village labelled दिनम् and a humble old man labelled दीनः'
+      hi: 'दो चित्र: धूप में नहाया गाँव (दिनम्) और एक विनम्र बूढ़ा व्यक्ति (दीनः)'
+    text_in_image:
+    - दिनम्
+    - दीनः
+    ratio: '4:3'
+    place: grama
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: दिनम्
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a day (short {{इ}})
+        hi: दिन (ह्रस्व इ)
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: Hold a vowel too long, or clip it too short, and you say a different word. Each pair below differs only in one
+          vowel's length. Inside a word a vowel is written as a small sign, which you will meet on the leaf's second line.
+          For now, compare the Roman letters.
+        hi: स्वर को ज़रूरत से ज़्यादा खींचिए या छोटा कर दीजिए, तो शब्द ही बदल जाता है। नीचे के हर जोड़े में केवल एक स्वर की
+          लम्बाई का अन्तर है। शब्द के भीतर स्वर एक छोटी मात्रा बनकर लिखा जाता है, जिसे आप पत्र की दूसरी पंक्ति में देखेंगे।
+    - id: i3
+      sa: दिनम्
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a day (short {{इ}})
+        hi: दिन (ह्रस्व इ)
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: दीनः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a poor, humble person (long {{ई}})
+        hi: दीन व्यक्ति (दीर्घ ई)
+      check:
+        type: subanta
+        stem: दीन
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{दीन}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{दीन}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: Hold a vowel too long, or clip it too short, and you say a different word. Each pair below differs only in one
+          vowel's length. Inside a word a vowel is written as a small sign, which you will meet on the leaf's second line.
+          For now, compare the Roman letters.
+        hi: स्वर को ज़रूरत से ज़्यादा खींचिए या छोटा कर दीजिए, तो शब्द ही बदल जाता है। नीचे के हर जोड़े में केवल एक स्वर की
+          लम्बाई का अन्तर है। शब्द के भीतर स्वर एक छोटी मात्रा बनकर लिखा जाता है, जिसे आप पत्र की दूसरी पंक्ति में देखेंगे।
+    - id: i3
+      sa: दीनः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a poor, humble person (long {{ई}})
+        hi: दीन व्यक्ति (दीर्घ ई)
+      check:
+        type: subanta
+        stem: दीन
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{दीन}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{दीन}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: कुलम्
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a family (short {{उ}})
+        hi: कुल, परिवार (ह्रस्व उ)
+      check:
+        type: subanta
+        stem: कुल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कुल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कुल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: Hold a vowel too long, or clip it too short, and you say a different word. Each pair below differs only in one
+          vowel's length. Inside a word a vowel is written as a small sign, which you will meet on the leaf's second line.
+          For now, compare the Roman letters.
+        hi: स्वर को ज़रूरत से ज़्यादा खींचिए या छोटा कर दीजिए, तो शब्द ही बदल जाता है। नीचे के हर जोड़े में केवल एक स्वर की
+          लम्बाई का अन्तर है। शब्द के भीतर स्वर एक छोटी मात्रा बनकर लिखा जाता है, जिसे आप पत्र की दूसरी पंक्ति में देखेंगे।
+    - id: i3
+      sa: कुलम्
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a family (short {{उ}})
+        hi: कुल, परिवार (ह्रस्व उ)
+      check:
+        type: subanta
+        stem: कुल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कुल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कुल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-3
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: कूलम्
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a riverbank (long {{ऊ}})
+        hi: नदी का किनारा (दीर्घ ऊ)
+      check:
+        type: subanta
+        stem: कूल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कूल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कूल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: Hold a vowel too long, or clip it too short, and you say a different word. Each pair below differs only in one
+          vowel's length. Inside a word a vowel is written as a small sign, which you will meet on the leaf's second line.
+          For now, compare the Roman letters.
+        hi: स्वर को ज़रूरत से ज़्यादा खींचिए या छोटा कर दीजिए, तो शब्द ही बदल जाता है। नीचे के हर जोड़े में केवल एक स्वर की
+          लम्बाई का अन्तर है। शब्द के भीतर स्वर एक छोटी मात्रा बनकर लिखा जाता है, जिसे आप पत्र की दूसरी पंक्ति में देखेंगे।
+    - id: i3
+      sa: कूलम्
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a riverbank (long {{ऊ}})
+        hi: नदी का किनारा (दीर्घ ऊ)
+      check:
+        type: subanta
+        stem: कूल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कूल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कूल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+- id: p2
+  kind: practice
+  mode: choice
+  title:
+    en: Greet the day
+    hi: दिन का स्वागत
+  skills:
+  - script.vowel.long
+  gate: true
+  prompt:
+    en: Help Śuka greet the morning properly. Which word means “day”?
+    hi: शुक को सुबह का ठीक से स्वागत करने में मदद कीजिए। ‘दिन’ के लिए कौन-सा शब्द है?
+  options:
+  - sa: दिनम्
+    correct: true
+  - sa: दीनः
+    why:
+      en: '{{दीनः}} has the long {{ई}}: a poor person. That is how Śuka got into trouble.'
+      hi: '{{दीनः}} में दीर्घ ई है: दीन व्यक्ति। शुक इसी से मुसीबत में पड़ा।'
+  explain:
+    en: '{{दिनम्}}, with a short {{इ}}: a day.'
+    hi: '{{दिनम्}} में ह्रस्व इ है: दिन।'
+  story:
+    success:
+      en: Śuka puffs up his feathers and calls, “दिनम्! दिनम्!” Dādī laughs and puts her spectacles back on. Dhūmaka's outline
+        grows a little sharper.
+      hi: शुक पंख फुलाकर पुकारता है, “दिनम्! दिनम्!” दादी हँसकर फिर से चश्मा लगा लेती हैं। धूमक की आकृति थोड़ी और साफ़ हो
+        जाती है।
+    failure:
+      en: '“दीनः!” squawks Śuka again. Dādī raises an eyebrow: “Still poor, am I?” Listen for the short {{इ}}.'
+      hi: “दीनः!” शुक फिर चिल्लाता है। दादी भौंहें उठाती हैं, “अब भी मैं दीन हूँ?” ह्रस्व इ पर ध्यान दीजिए।
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Three short vowels have a long twin, held for two beats: {{आ}} ā, {{ई}} ī, {{ऊ}} ū. {{ऋ}} has one too, {{ॠ}} ṝ,
+        but you will rarely see it. A long vowel is made at the same place as its short twin, only held twice as long.'
+      hi: 'तीन ह्रस्व स्वरों का एक दीर्घ जुड़वाँ है, जो दो मात्रा तक बोला जाता है: {{आ}}, {{ई}}, {{ऊ}}। {{ऋ}} का भी है, {{ॠ}},
+        पर वह कम ही दिखता है। दीर्घ स्वर उसी स्थान से बनता है जहाँ से उसका ह्रस्व जुड़वाँ, बस दुगुने समय तक बोला जाता है।'
+    items:
+    - id: i0
+      sa: अ → आ
+      meaning:
+        en: a → ā, as in “father”
+        hi: अ → आ, जैसे ‘आम’ में
+    - id: i1
+      sa: इ → ई
+      meaning:
+        en: i → ī, as in “see”
+        hi: इ → ई, जैसे ‘ईख’ में
+    - id: i2
+      sa: उ → ऊ
+      meaning:
+        en: u → ū, as in “moon”
+        hi: उ → ऊ, जैसे ‘ऊन’ में
+    - id: i3
+      sa: ऋ → ॠ
+      meaning:
+        en: ṛ → ṝ, held longer (rare)
+        hi: ऋ → ॠ, लम्बा खिंचा (दुर्लभ)
+- id: p3
+  kind: practice
+  mode: match
+  skills:
+  - script.vowel.long
+  roman: after
+  prompt:
+    en: Match each short vowel with its long twin.
+    hi: हर ह्रस्व स्वर को उसके दीर्घ जुड़वाँ से मिलाइए।
+  pairs:
+  - left:
+      sa: अ
+    right:
+      sa: आ
+  - left:
+      sa: इ
+    right:
+      sa: ई
+  - left:
+      sa: उ
+    right:
+      sa: ऊ
+  - left:
+      sa: ऋ
+    right:
+      sa: ॠ
+  explain:
+    en: Each pair is made at one place in the mouth; the long one is held for two beats.
+    hi: हर जोड़ा मुँह के एक ही स्थान से बनता है; दीर्घ स्वर दो मात्रा तक बोला जाता है।
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Three short vowels have a long twin, held for two beats: {{आ}} ā, {{ई}} ī, {{ऊ}} ū. {{ऋ}} has one too, {{ॠ}} ṝ,
+        but you will rarely see it. A long vowel is made at the same place as its short twin, only held twice as long.'
+      hi: 'तीन ह्रस्व स्वरों का एक दीर्घ जुड़वाँ है, जो दो मात्रा तक बोला जाता है: {{आ}}, {{ई}}, {{ऊ}}। {{ऋ}} का भी है, {{ॠ}},
+        पर वह कम ही दिखता है। दीर्घ स्वर उसी स्थान से बनता है जहाँ से उसका ह्रस्व जुड़वाँ, बस दुगुने समय तक बोला जाता है।'
+    items:
+    - id: i0
+      sa: अ → आ
+      meaning:
+        en: a → ā, as in “father”
+        hi: अ → आ, जैसे ‘आम’ में
+    - id: i1
+      sa: इ → ई
+      meaning:
+        en: i → ī, as in “see”
+        hi: इ → ई, जैसे ‘ईख’ में
+    - id: i2
+      sa: उ → ऊ
+      meaning:
+        en: u → ū, as in “moon”
+        hi: उ → ऊ, जैसे ‘ऊन’ में
+    - id: i3
+      sa: ऋ → ॠ
+      meaning:
+        en: ṛ → ṝ, held longer (rare)
+        hi: ऋ → ॠ, लम्बा खिंचा (दुर्लभ)
+- id: e2
+  kind: explore
+  title:
+    en: Tap the beats
+    hi: मात्राएँ थपथपाइए
+  skills:
+  - script.vowel.long
+  widget: rhythm_tapper
+  prompt:
+    en: Tap once for a short vowel; press and hold for a long one. Short is light, long is heavy.
+    hi: ह्रस्व स्वर पर एक बार थपथपाइए; दीर्घ पर दबाकर रखिए। ह्रस्व लघु है, दीर्घ गुरु।
+  params:
     lines:
-      - speaker: shuka
-        sa: "दीनः! दीनः!"
-        gloss: {en: "“Poor one! Poor one!”", hi: "“दीन! दीन!”"}
-
-  - id: t1
-    kind: teach
-    title: {en: "The long twins", hi: "दीर्घ जुड़वाँ"}
-    skills: [script.vowel.long]
-    sutras: [1.2.27]
-    body:
-      en: "Three short vowels have a long twin, held for two beats: {{आ}} ā, {{ई}} ī, {{ऊ}} ū. {{ऋ}} has one too, {{ॠ}} ṝ, but you will rarely see it. A long vowel is made at the same place as its short twin, only held twice as long."
-      hi: "तीन ह्रस्व स्वरों का एक दीर्घ जुड़वाँ है, जो दो मात्रा तक बोला जाता है: {{आ}}, {{ई}}, {{ऊ}}। {{ऋ}} का भी है, {{ॠ}}, पर वह कम ही दिखता है। दीर्घ स्वर उसी स्थान से बनता है जहाँ से उसका ह्रस्व जुड़वाँ, बस दुगुने समय तक बोला जाता है।"
-    rows:
-      - sa: "अ → आ"
-        gloss: {en: "a → ā, as in “father”", hi: "अ → आ, जैसे ‘आम’ में"}
-      - sa: "इ → ई"
-        gloss: {en: "i → ī, as in “see”", hi: "इ → ई, जैसे ‘ईख’ में"}
-      - sa: "उ → ऊ"
-        gloss: {en: "u → ū, as in “moon”", hi: "उ → ऊ, जैसे ‘ऊन’ में"}
-      - sa: "ऋ → ॠ"
-        gloss: {en: "ṛ → ṝ, held longer (rare)", hi: "ऋ → ॠ, लम्बा खिंचा (दुर्लभ)"}
-
-  - id: e1
-    kind: explore
-    title: {en: "Same place, longer sound", hi: "वही स्थान, लम्बी ध्वनि"}
-    skills: [script.vowel.long]
-    widget: mouth_map
-    prompt: {en: "Tap a short vowel, then its long twin. Do they light the same place?", hi: "पहले ह्रस्व स्वर को छुइए, फिर उसके दीर्घ जुड़वाँ को। क्या दोनों एक ही स्थान को चमकाते हैं?"}
-    params:
-      letters: ["अ", "आ", "इ", "ई", "उ", "ऊ"]
-
-  - id: p1
-    kind: practice
-    mode: choice
-    skills: [script.vowel.long]
-    roman: after
-    prompt: {en: "Which is the long twin of {{इ}}?", hi: "{{इ}} का दीर्घ जुड़वाँ कौन-सा है?"}
-    options:
-      - sa: "ई"
-        correct: true
-      - sa: "ए"
-        why: {en: "{{ए}} is a different vowel, made at two places; it is not {{इ}} held longer.", hi: "{{ए}} अलग स्वर है, जो दो स्थानों से बनता है; यह {{इ}} का लम्बा रूप नहीं।"}
-      - sa: "ऊ"
-        why: {en: "{{ऊ}} is the long twin of {{उ}}.", hi: "{{ऊ}} तो {{उ}} का दीर्घ रूप है।"}
-    explain: {en: "{{ई}} is {{इ}} held for two beats, at the same place: the palate.", hi: "{{ई}} वही {{इ}} है, दो मात्रा तक, उसी स्थान से: तालु।"}
-
-  - id: t2
-    kind: teach
-    title: {en: "One beat or two", hi: "एक मात्रा या दो"}
-    skills: [script.vowel.long]
-    body:
-      en: "Hold a vowel too long, or clip it too short, and you say a different word. Each pair below differs only in one vowel's length. Inside a word a vowel is written as a small sign, which you will meet on the leaf's second line. For now, compare the Roman letters."
-      hi: "स्वर को ज़रूरत से ज़्यादा खींचिए या छोटा कर दीजिए, तो शब्द ही बदल जाता है। नीचे के हर जोड़े में केवल एक स्वर की लम्बाई का अन्तर है। शब्द के भीतर स्वर एक छोटी मात्रा बनकर लिखा जाता है, जिसे आप पत्र की दूसरी पंक्ति में देखेंगे।"
-    examples:
-      - sa: "दिनम्"
-        meaning: {en: "a day (short {{इ}})", hi: "दिन (ह्रस्व इ)"}
-        check: {type: subanta, stem: "दिन", linga: Napumsaka, vibhakti: Prathama, vacana: Eka}
-      - sa: "दीनः"
-        meaning: {en: "a poor, humble person (long {{ई}})", hi: "दीन व्यक्ति (दीर्घ ई)"}
-        check: {type: subanta, stem: "दीन", linga: Pum, vibhakti: Prathama, vacana: Eka}
-      - sa: "कुलम्"
-        meaning: {en: "a family (short {{उ}})", hi: "कुल, परिवार (ह्रस्व उ)"}
-        check: {type: subanta, stem: "कुल", linga: Napumsaka, vibhakti: Prathama, vacana: Eka}
-      - sa: "कूलम्"
-        meaning: {en: "a riverbank (long {{ऊ}})", hi: "नदी का किनारा (दीर्घ ऊ)"}
-        check: {type: subanta, stem: "कूल", linga: Napumsaka, vibhakti: Prathama, vacana: Eka}
-    image:
-      id: vowels-long-pairs
-      brief: "A watercolour in two panels side by side, divided by a thin painted border. Left panel: the riverside village bathed in bright morning sun, labelled दिनम् underneath. Right panel: a thin, humble old man sitting quietly against a whitewashed wall with an empty brass bowl, painted with dignity and warmth, labelled दीनः underneath."
-      alt: {en: "Two panels: a sunny village labelled दिनम् and a humble old man labelled दीनः", hi: "दो चित्र: धूप में नहाया गाँव (दिनम्) और एक विनम्र बूढ़ा व्यक्ति (दीनः)"}
-      text_in_image: ["दिनम्", "दीनः"]
-      ratio: "4:3"
-      place: grama
-
-  - id: p2
-    kind: practice
-    mode: choice
-    title: {en: "Greet the day", hi: "दिन का स्वागत"}
-    skills: [script.vowel.long]
-    gate: true
-    prompt: {en: "Help Śuka greet the morning properly. Which word means “day”?", hi: "शुक को सुबह का ठीक से स्वागत करने में मदद कीजिए। ‘दिन’ के लिए कौन-सा शब्द है?"}
-    options:
-      - sa: "दिनम्"
-        correct: true
-      - sa: "दीनः"
-        why: {en: "{{दीनः}} has the long {{ई}}: a poor person. That is how Śuka got into trouble.", hi: "{{दीनः}} में दीर्घ ई है: दीन व्यक्ति। शुक इसी से मुसीबत में पड़ा।"}
-    explain: {en: "{{दिनम्}}, with a short {{इ}}: a day.", hi: "{{दिनम्}} में ह्रस्व इ है: दिन।"}
-    story:
-      success: {en: "Śuka puffs up his feathers and calls, “दिनम्! दिनम्!” Dādī laughs and puts her spectacles back on. Dhūmaka's outline grows a little sharper.", hi: "शुक पंख फुलाकर पुकारता है, “दिनम्! दिनम्!” दादी हँसकर फिर से चश्मा लगा लेती हैं। धूमक की आकृति थोड़ी और साफ़ हो जाती है।"}
-      failure: {en: "“दीनः!” squawks Śuka again. Dādī raises an eyebrow: “Still poor, am I?” Listen for the short {{इ}}.", hi: "“दीनः!” शुक फिर चिल्लाता है। दादी भौंहें उठाती हैं, “अब भी मैं दीन हूँ?” ह्रस्व इ पर ध्यान दीजिए।"}
-
-  - id: p3
-    kind: practice
-    mode: match
-    skills: [script.vowel.long]
-    roman: after
-    prompt: {en: "Match each short vowel with its long twin.", hi: "हर ह्रस्व स्वर को उसके दीर्घ जुड़वाँ से मिलाइए।"}
-    pairs:
-      - left: {sa: "अ"}
-        right: {sa: "आ"}
-      - left: {sa: "इ"}
-        right: {sa: "ई"}
-      - left: {sa: "उ"}
-        right: {sa: "ऊ"}
-      - left: {sa: "ऋ"}
-        right: {sa: "ॠ"}
-    explain: {en: "Each pair is made at one place in the mouth; the long one is held for two beats.", hi: "हर जोड़ा मुँह के एक ही स्थान से बनता है; दीर्घ स्वर दो मात्रा तक बोला जाता है।"}
-
-  - id: e2
-    kind: explore
-    title: {en: "Tap the beats", hi: "मात्राएँ थपथपाइए"}
-    skills: [script.vowel.long]
-    widget: rhythm_tapper
-    prompt: {en: "Tap once for a short vowel; press and hold for a long one. Short is light, long is heavy.", hi: "ह्रस्व स्वर पर एक बार थपथपाइए; दीर्घ पर दबाकर रखिए। ह्रस्व लघु है, दीर्घ गुरु।"}
-    params:
-      lines: ["अ आ इ ई उ ऊ ऋ ॠ"]
-
-  - id: p4
-    kind: practice
-    mode: choice
-    skills: [script.vowel.long]
-    prompt: {en: "Which word means “riverbank”?", hi: "‘नदी का किनारा’ किस शब्द का अर्थ है?"}
-    options:
-      - sa: "कुलम्"
-        why: {en: "{{कुलम्}}, short {{उ}}: a family.", hi: "{{कुलम्}} में ह्रस्व उ: कुल, परिवार।"}
-      - sa: "कूलम्"
-        correct: true
-    explain: {en: "{{कूलम्}}, with a long {{ऊ}}: a riverbank.", hi: "{{कूलम्}} में दीर्घ ऊ है: नदी का किनारा।"}
-
-  - id: pn
-    kind: teach
-    depth: panini
-    title: {en: "Twins in Pāṇini", hi: "पाणिनि में जुड़वाँ"}
-    skills: [script.vowel.long]
-    sutras: [1.1.9, 1.1.69]
-    term:
-      sa: "सवर्णम्"
-      meaning: {en: "sounds of one kind: same place, same effort", hi: "एक ही स्थान और प्रयत्न वाली ध्वनियाँ"}
-    body:
-      en: "Sūtra 1.1.9 calls sounds made at one place with one effort {{सवर्ण}}, “of one kind”: {{इ}} and {{ई}} are {{सवर्ण}}. By sūtra 1.1.69 a short vowel in a rule stands for its twins too. So the leaf, like Pāṇini's list, writes only {{अ}} {{इ}} {{उ}}, never {{आ}} {{ई}} {{ऊ}}."
-      hi: "सूत्र 1.1.9 एक ही स्थान और एक ही प्रयत्न से बनी ध्वनियों को {{सवर्ण}} कहता है: {{इ}} और {{ई}} सवर्ण हैं। सूत्र 1.1.69 के अनुसार नियम में लिखा ह्रस्व स्वर अपने सवर्णों का भी बोध कराता है। इसीलिए पत्र, पाणिनि की सूची की तरह, केवल {{अ}} {{इ}} {{उ}} लिखता है, {{आ}} {{ई}} {{ऊ}} कभी नहीं।"
-
-  - id: sum
-    kind: summary
-    title: {en: "The long vowels", hi: "दीर्घ स्वर"}
-    points:
-      - sa: "आ ई ऊ ॠ"
-        text: {en: "Long vowels: two beats each.", hi: "दीर्घ स्वर: हर एक की दो मात्राएँ।"}
-      - text: {en: "A long vowel is made where its short twin is made.", hi: "दीर्घ स्वर वहीं बनता है जहाँ उसका ह्रस्व जुड़वाँ।"}
-      - sa: "दिनम् · दीनः"
-        text: {en: "Length changes the word: a day, a poor person.", hi: "लम्बाई से शब्द बदलता है: दिन, दीन व्यक्ति।"}
-      - sa: "कुलम् · कूलम्"
-        text: {en: "A family, a riverbank.", hi: "कुल, नदी का किनारा।"}
+    - अ आ इ ई उ ऊ ऋ ॠ
+- id: p4
+  kind: practice
+  mode: choice
+  skills:
+  - script.vowel.long
+  prompt:
+    en: Which word means “riverbank”?
+    hi: ‘नदी का किनारा’ किस शब्द का अर्थ है?
+  options:
+  - sa: कुलम्
+    why:
+      en: '{{कुलम्}}, short {{उ}}: a family.'
+      hi: '{{कुलम्}} में ह्रस्व उ: कुल, परिवार।'
+  - sa: कूलम्
+    correct: true
+  explain:
+    en: '{{कूलम्}}, with a long {{ऊ}}: a riverbank.'
+    hi: '{{कूलम्}} में दीर्घ ऊ है: नदी का किनारा।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Three short vowels have a long twin, held for two beats: {{आ}} ā, {{ई}} ī, {{ऊ}} ū. {{ऋ}} has one too, {{ॠ}} ṝ,
+        but you will rarely see it. A long vowel is made at the same place as its short twin, only held twice as long.'
+      hi: 'तीन ह्रस्व स्वरों का एक दीर्घ जुड़वाँ है, जो दो मात्रा तक बोला जाता है: {{आ}}, {{ई}}, {{ऊ}}। {{ऋ}} का भी है, {{ॠ}},
+        पर वह कम ही दिखता है। दीर्घ स्वर उसी स्थान से बनता है जहाँ से उसका ह्रस्व जुड़वाँ, बस दुगुने समय तक बोला जाता है।'
+    items:
+    - id: i0
+      sa: अ → आ
+      meaning:
+        en: a → ā, as in “father”
+        hi: अ → आ, जैसे ‘आम’ में
+    - id: i1
+      sa: इ → ई
+      meaning:
+        en: i → ī, as in “see”
+        hi: इ → ई, जैसे ‘ईख’ में
+    - id: i2
+      sa: उ → ऊ
+      meaning:
+        en: u → ū, as in “moon”
+        hi: उ → ऊ, जैसे ‘ऊन’ में
+    - id: i3
+      sa: ऋ → ॠ
+      meaning:
+        en: ṛ → ṝ, held longer (rare)
+        hi: ऋ → ॠ, लम्बा खिंचा (दुर्लभ)
+- id: pn
+  kind: teach
+  depth: panini
+  title:
+    en: Twins in Pāṇini
+    hi: पाणिनि में जुड़वाँ
+  skills:
+  - script.vowel.long
+  sutras:
+  - 1.1.9
+  - 1.1.69
+  term:
+    sa: सवर्णम्
+    meaning:
+      en: 'sounds of one kind: same place, same effort'
+      hi: एक ही स्थान और प्रयत्न वाली ध्वनियाँ
+  body:
+    en: 'Sūtra 1.1.9 calls sounds made at one place with one effort {{सवर्ण}}, “of one kind”: {{इ}} and {{ई}} are {{सवर्ण}}.
+      By sūtra 1.1.69 a short vowel in a rule stands for its twins too. So the leaf, like Pāṇini''s list, writes only {{अ}}
+      {{इ}} {{उ}}, never {{आ}} {{ई}} {{ऊ}}.'
+    hi: 'सूत्र 1.1.9 एक ही स्थान और एक ही प्रयत्न से बनी ध्वनियों को {{सवर्ण}} कहता है: {{इ}} और {{ई}} सवर्ण हैं। सूत्र 1.1.69
+      के अनुसार नियम में लिखा ह्रस्व स्वर अपने सवर्णों का भी बोध कराता है। इसीलिए पत्र, पाणिनि की सूची की तरह, केवल {{अ}}
+      {{इ}} {{उ}} लिखता है, {{आ}} {{ई}} {{ऊ}} कभी नहीं।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Sūtra 1.1.9 calls sounds made at one place with one effort {{सवर्ण}}, “of one kind”: {{इ}} and {{ई}} are {{सवर्ण}}.
+        By sūtra 1.1.69 a short vowel in a rule stands for its twins too. So the leaf, like Pāṇini''s list, writes only {{अ}}
+        {{इ}} {{उ}}, never {{आ}} {{ई}} {{ऊ}}.'
+      hi: 'सूत्र 1.1.9 एक ही स्थान और एक ही प्रयत्न से बनी ध्वनियों को {{सवर्ण}} कहता है: {{इ}} और {{ई}} सवर्ण हैं। सूत्र
+        1.1.69 के अनुसार नियम में लिखा ह्रस्व स्वर अपने सवर्णों का भी बोध कराता है। इसीलिए पत्र, पाणिनि की सूची की तरह, केवल
+        {{अ}} {{इ}} {{उ}} लिखता है, {{आ}} {{ई}} {{ऊ}} कभी नहीं।'
+    items:
+    - id: i0
+      sa: सवर्ण
+    - id: i1
+      sa: इ
+    - id: i2
+      sa: ई
+    - id: i3
+      sa: अ
+    - id: i4
+      sa: उ
+    - id: i5
+      sa: आ
+    - id: i6
+      sa: ऊ
+- id: sum
+  kind: summary
+  title:
+    en: The long vowels
+    hi: दीर्घ स्वर
+  points:
+  - sa: आ ई ऊ ॠ
+    text:
+      en: 'Long vowels: two beats each.'
+      hi: 'दीर्घ स्वर: हर एक की दो मात्राएँ।'
+  - text:
+      en: A long vowel is made where its short twin is made.
+      hi: दीर्घ स्वर वहीं बनता है जहाँ उसका ह्रस्व जुड़वाँ।
+  - sa: दिनम् · दीनः
+    text:
+      en: 'Length changes the word: a day, a poor person.'
+      hi: 'लम्बाई से शब्द बदलता है: दिन, दीन व्यक्ति।'
+  - sa: कुलम् · कूलम्
+    text:
+      en: A family, a riverbank.
+      hi: कुल, नदी का किनारा।

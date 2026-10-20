@@ -1,218 +1,581 @@
-# The unit's complete rule list: everything about vowels, including what the
-# scenes left out. Every row says where it was taught (taught_in) or that it
-# is met here first (new_here, with an example). Tags: core = must know,
-# good = worth knowing, rare = for reference.
 id: vowels.revision
 template: revision
-title: {en: "Everything about vowels", hi: "स्वरों के बारे में सब कुछ"}
-title_sa: "स्वरसङ्ग्रहः"
+title:
+  en: Everything about vowels
+  hi: स्वरों के बारे में सब कुछ
+title_sa: स्वरसङ्ग्रहः
 minutes: 5
 review: scholar_ok
 sources:
-  - title: "Śiva sūtras, Aṣṭādhyāyī and Dhātupāṭha (vidyut-prakriya data)"
-    url: "https://github.com/ambuda-org/vidyut"
-    licence: "MIT"
-  - title: "Lesson text"
-    licence: "original"
+- title: Śiva sūtras, Aṣṭādhyāyī and Dhātupāṭha (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text
+  licence: original
 cards:
-  - id: core
-    kind: revision
-    section: core
-    title: {en: "The rules", hi: "नियम"}
-    rows:
-      - skill: script.vowel.short
-        formula: "अ इ उ ऋ ऌ"
-        rule: {en: "Five short vowels, one beat each.", hi: "पाँच ह्रस्व स्वर, हर एक की एक मात्रा।"}
-        sutras: [SS.1, SS.2]
-        taught_in: "vowels.short#t1"
-      - skill: script.vowel.short
-        formula: "ऋ ऌ"
-        rule: {en: "{{ऋ}} and {{ऌ}} are vowels: r and l that carry the syllable.", hi: "{{ऋ}} और {{ऌ}} स्वर हैं: ‘र’ और ‘ल’ जो स्वयं अक्षर बनते हैं।"}
-        taught_in: "vowels.short#t2"
-      - skill: script.vowel.long
-        formula: "आ ई ऊ ॠ"
-        rule: {en: "Long twins: two beats, made where the short twin is made.", hi: "दीर्घ जुड़वाँ: दो मात्राएँ, उसी स्थान से जहाँ ह्रस्व बनता है।"}
-        sutras: [1.2.27]
-        taught_in: "vowels.long#t1"
-      - skill: script.vowel.long
-        rule: {en: "Length changes the word.", hi: "लम्बाई से शब्द बदलता है।"}
-        example:
-          sa: "दिनम्"
-          meaning: {en: "a day; {{दीनः}} is a poor person", hi: "दिन; {{दीनः}} यानी दीन व्यक्ति"}
-          check: {type: subanta, stem: "दिन", linga: Napumsaka, vibhakti: Prathama, vacana: Eka}
-        taught_in: "vowels.long#t2"
-      - skill: script.vowel.compound
-        formula: "अ + इ → ए · अ + उ → ओ"
-        rule: {en: "{{ए}} and {{ओ}}: two sounds fused into one.", hi: "{{ए}} और {{ओ}}: दो ध्वनियाँ एक में जुड़ीं।"}
-        sutras: [SS.3]
-        taught_in: "vowels.compound#t1"
-      - skill: script.vowel.compound
-        formula: "ऐ औ"
-        rule: {en: "{{ऐ}} and {{औ}} glide: {{अ}} to {{इ}}, {{अ}} to {{उ}}.", hi: "{{ऐ}} और {{औ}} फिसलते हैं: ‘अ’ से ‘इ’, ‘अ’ से ‘उ’।"}
-        sutras: [SS.4]
-        taught_in: "vowels.compound#t1"
-      - skill: script.vowel.compound
-        rule: {en: "All four joined vowels are always long.", hi: "चारों संयुक्त स्वर सदा दीर्घ हैं।"}
-        example:
-          sa: "लोकः"
-          meaning: {en: "a world: a long o", hi: "लोक: दीर्घ ओ"}
-          check: {type: subanta, stem: "लोक", linga: Pum, vibhakti: Prathama, vacana: Eka}
-        taught_in: "vowels.compound#t2"
-      - skill: script.matra
-        formula: "क का कि की कु कू कृ के कै को कौ"
-        rule: {en: "Inside a word a vowel is a sign on the letter before it; {{अ}} has no sign.", hi: "शब्द के भीतर स्वर पहले वाले अक्षर पर मात्रा बनता है; {{अ}} की कोई मात्रा नहीं।"}
-        taught_in: "vowels.signs#t2"
-      - skill: script.matra
-        formula: "ि"
-        rule: {en: "Written before the letter, said after it.", hi: "अक्षर से पहले लिखी जाती है, बाद में बोली जाती है।"}
-        taught_in: "vowels.signs#t3"
-
-  - id: conditions
-    kind: revision
-    section: conditions
-    title: {en: "Letter or sign?", hi: "अक्षर या मात्रा?"}
-    rows:
-      - skill: script.matra
-        rule: {en: "A vowel is written as its full letter at the start of a word; inside a word, as a sign on the letter before it.", hi: "शब्द के आरम्भ में स्वर अपना पूरा अक्षर बनकर लिखा जाता है; शब्द के भीतर पहले वाले अक्षर पर मात्रा बनकर।"}
-        new_here: true
-        example:
-          sa: "इति"
-          meaning: {en: "“thus”: the first i is the letter {{इ}}, the second is the sign on {{त}}", hi: "‘इस प्रकार’: पहला इ पूरा अक्षर {{इ}} है, दूसरा {{त}} पर मात्रा"}
-
-  - id: exceptions
-    kind: revision
-    section: exceptions
-    title: {en: "Odd shapes and rare letters", hi: "अनोखे रूप और दुर्लभ वर्ण"}
-    rows:
-      - skill: script.matra
-        rule: {en: "With {{र}}, the signs {{ु}} and {{ू}} change shape: {{रु}}, {{रू}}.", hi: "{{र}} के साथ {{ु}} और {{ू}} का रूप बदल जाता है: {{रु}}, {{रू}}।"}
-        new_here: true
-        example:
-          sa: "गुरुः"
-          meaning: {en: "a teacher: {{रु}} in the middle", hi: "गुरु: बीच में {{रु}}"}
-          check: {type: subanta, stem: "गुरु", linga: Pum, vibhakti: Prathama, vacana: Eka}
-      - skill: script.matra
-        tag: good
-        rule: {en: "With {{ह}}, the sign {{ृ}} often tucks into the letter: {{हृ}}.", hi: "{{ह}} के साथ {{ृ}} अक्सर अक्षर के भीतर समा जाती है: {{हृ}}।"}
-        new_here: true
-        example:
-          sa: "हृदयम्"
-          meaning: {en: "the heart", hi: "हृदय"}
-          check: {type: subanta, stem: "हृदय", linga: Napumsaka, vibhakti: Prathama, vacana: Eka}
-      - skill: script.vowel.long
-        tag: rare
-        formula: "ॠ"
-        rule: {en: "{{ॠ}} appears in a few forms of nouns that end in {{ऋ}}, and in the listed form of some roots, such as {{तॄ}} “to cross”.", hi: "{{ॠ}} ऋ पर अन्त होने वाले कुछ संज्ञा-शब्दों के रूपों में, और कुछ धातुओं के मूल रूप में मिलता है, जैसे {{तॄ}} ‘पार करना’।"}
-        example:
-          sa: "पितॄन्"
-          meaning: {en: "fathers (as the object of a verb)", hi: "पितरों को"}
-          check: {type: subanta, stem: "पितृ", linga: Pum, vibhakti: Dvitiya, vacana: Bahu}
-        taught_in: "vowels.long#t1"
-      - skill: script.vowel.short
-        tag: rare
-        formula: "ऌ"
-        rule: {en: "In real words {{ऌ}} appears only in forms of one root, {{कृप्}} “to be fit”, whose {{ऋ}} becomes {{ऌ}}.", hi: "असली शब्दों में {{ऌ}} केवल एक धातु के रूपों में आता है: {{कृप्}} ‘समर्थ होना’, जिसका {{ऋ}} {{ऌ}} बन जाता है।"}
-        sutras: [8.2.18]
-        example:
-          sa: "कॢप्तः"
-          meaning: {en: "arranged, made ready", hi: "व्यवस्थित, तैयार किया हुआ"}
-          check: {type: krdanta, dhatu: "कृप्", krt: kta, linga: Pum, vibhakti: Prathama, vacana: Eka}
-        taught_in: "vowels.short#t2"
-      - skill: script.vowel.long
-        tag: rare
-        formula: "ॡ"
-        rule: {en: "{{ॡ}} is listed in some alphabet charts, but no Sanskrit word uses it.", hi: "{{ॡ}} कुछ वर्णमाला-तालिकाओं में दिखता है, पर किसी संस्कृत शब्द में नहीं आता।"}
-        new_here: true
-        example:
-          sa: "ॡ"
-          meaning: {en: "in the charts only, to complete the pattern", hi: "केवल तालिकाओं में, क्रम पूरा करने के लिए"}
-
-  - id: mistakes
-    kind: revision
-    section: mistakes
-    title: {en: "Common mistakes", hi: "आम भूलें"}
-    rows:
-      - skill: script.vowel.short
-        rule: {en: "{{ऋ}} is one vowel, not {{र}} + {{इ}}. Never write {{रिषिः}} for {{ऋषिः}}.", hi: "{{ऋ}} एक स्वर है, {{र}} + {{इ}} नहीं। {{ऋषिः}} को {{रिषिः}} मत लिखिए।"}
-        taught_in: "vowels.short#t2"
-      - skill: script.vowel.long
-        rule: {en: "Check the length before you write: {{दिनम्}} a day, {{दीनः}} a poor person.", hi: "लिखने से पहले लम्बाई देखिए: {{दिनम्}} दिन, {{दीनः}} दीन।"}
-        taught_in: "vowels.long#t2"
-      - skill: script.vowel.compound
-        rule: {en: "Don't clip {{ए}} and {{ओ}}: they last two beats, like {{आ}}.", hi: "{{ए}} और {{ओ}} को छोटा मत कीजिए: ये {{आ}} की तरह दो मात्रा के हैं।"}
-        taught_in: "vowels.compound#t2"
-      - skill: script.vowel.compound
-        rule: {en: "Let {{ऐ}} and {{औ}} glide; Hindi often says them flat.", hi: "{{ऐ}} और {{औ}} को फिसलने दीजिए; हिन्दी में ये अक्सर सपाट बोले जाते हैं।"}
-        example:
-          sa: "तैलम्"
-          meaning: {en: "oil: “tai-lam”", hi: "तेल: ‘तइ-लम्’"}
-          check: {type: subanta, stem: "तैल", linga: Napumsaka, vibhakti: Prathama, vacana: Eka}
-        taught_in: "vowels.compound#t3"
-      - skill: script.matra
-        rule: {en: "{{ि}} comes first on the page, last in the mouth.", hi: "{{ि}} पन्ने पर पहले, मुँह में बाद में।"}
-        taught_in: "vowels.signs#t3"
-
-  - id: panini
-    kind: revision
-    section: panini
-    depth: panini
-    title: {en: "In Pāṇini's words", hi: "पाणिनि के शब्दों में"}
-    rows:
-      - skill: script.vowel.short
-        rule: {en: "Vowels are named by time: {{ह्रस्वः}} one beat, {{दीर्घः}} two, {{प्लुतः}} three.", hi: "स्वरों के नाम समय से: {{ह्रस्वः}} एक मात्रा, {{दीर्घः}} दो, {{प्लुतः}} तीन।"}
-        sutras: [1.2.27]
-        taught_in: "vowels.short#pn"
-      - skill: script.vowel.long
-        rule: {en: "{{सवर्ण}}: one place, one effort. A short vowel and its long twin are {{सवर्ण}}.", hi: "{{सवर्ण}}: एक स्थान, एक प्रयत्न। ह्रस्व स्वर और उसका दीर्घ जुड़वाँ सवर्ण हैं।"}
-        sutras: [1.1.9]
-        taught_in: "vowels.long#pn"
-      - skill: script.vowel.long
-        rule: {en: "In a rule, a vowel letter stands for its twins too; so the Śiva sūtras list only {{अ}} {{इ}} {{उ}}.", hi: "नियम में लिखा स्वर अपने सवर्णों का भी बोध कराता है; इसीलिए शिवसूत्रों में केवल {{अ}} {{इ}} {{उ}} हैं।"}
-        sutras: [1.1.69]
-        taught_in: "vowels.long#pn"
-      - skill: script.vowel.compound
-        rule: {en: "{{आ}} {{ऐ}} {{औ}} are named {{वृद्धि}}; {{अ}} {{ए}} {{ओ}} are named {{गुण}}.", hi: "{{आ}} {{ऐ}} {{औ}} का नाम {{वृद्धि}} है; {{अ}} {{ए}} {{ओ}} का {{गुण}}।"}
-        sutras: [1.1.1, 1.1.2]
-        taught_in: "vowels.compound#pn"
-      - skill: script.vowel.short
-        tag: rare
-        rule: {en: "Pāṇini's list of roots also uses {{ऌ}} as a silent marker: {{गमॢँ}} is the root {{गम्}} “to go”, tagged with it. The tag changes some past forms.", hi: "पाणिनि की धातु-सूची में {{ऌ}} एक मौन चिह्न के रूप में भी आता है: {{गमॢँ}} यानी धातु {{गम्}} ‘जाना’, इस चिह्न के साथ। यह चिह्न कुछ भूतकाल-रूप बदल देता है।"}
-        sutras: [1.3.2, 1.3.9, 3.1.55]
-        new_here: true
-        example:
-          sa: "गमॢँ"
-          meaning: {en: "the root {{गम्}} as the list of roots gives it", hi: "धातु-सूची में दिया गया {{गम्}}"}
-      - skill: script.vowel.long
-        tag: rare
-        rule: {en: "A vowel held for three beats, {{प्लुतः}}, is written with ३. It is used when calling to someone far away.", hi: "तीन मात्रा तक खिंचा स्वर, {{प्लुतः}}, ३ लगाकर लिखा जाता है। दूर से किसी को पुकारते समय इसका प्रयोग होता है।"}
-        sutras: [8.2.84]
-        new_here: true
-        example:
-          sa: "पितामहि३"
-          meaning: {en: "“Grandmother!”, called from far away", hi: "‘दादी!’, दूर से पुकारा हुआ"}
-
-  - id: sheet
-    kind: revision
-    section: quick_sheet
-    title: {en: "Quick sheet", hi: "एक नज़र में"}
-    rows:
-      - skill: script.vowel.short
-        formula: "अ इ उ ऋ ऌ"
-        rule: {en: "short · one beat", hi: "ह्रस्व · एक मात्रा"}
-        taught_in: "vowels.short#t1"
-      - skill: script.vowel.long
-        formula: "आ ई ऊ ॠ"
-        rule: {en: "long · two beats", hi: "दीर्घ · दो मात्राएँ"}
-        taught_in: "vowels.long#t1"
-      - skill: script.vowel.compound
-        formula: "ए ऐ ओ औ"
-        rule: {en: "joined · always two beats", hi: "संयुक्त · सदा दो मात्राएँ"}
-        taught_in: "vowels.compound#t1"
-      - skill: script.matra
-        formula: "ा ि ी ु ू ृ े ै ो ौ"
-        rule: {en: "signs on a letter; {{ि}} is written first", hi: "अक्षर पर मात्राएँ; {{ि}} पहले लिखी जाती है"}
-        taught_in: "vowels.signs#t2"
-      - skill: script.vowel.compound
-        formula: "अ इ उ · ऋ ऌ · ए ओ · ऐ औ"
-        rule: {en: "the leaf's first line", hi: "पत्र की पहली पंक्ति"}
-        taught_in: "vowels.compound#p3"
+- id: core
+  kind: revision
+  section: core
+  title:
+    en: The rules
+    hi: नियम
+  rows:
+  - skill: script.vowel.short
+    formula: अ इ उ ऋ ऌ
+    rule:
+      en: Five short vowels, one beat each.
+      hi: पाँच ह्रस्व स्वर, हर एक की एक मात्रा।
+    sutras:
+    - SS.1
+    - SS.2
+    taught_in: vowels.short#t1
+  - skill: script.vowel.short
+    formula: ऋ ऌ
+    rule:
+      en: '{{ऋ}} and {{ऌ}} are vowels: r and l that carry the syllable.'
+      hi: '{{ऋ}} और {{ऌ}} स्वर हैं: ‘र’ और ‘ल’ जो स्वयं अक्षर बनते हैं।'
+    taught_in: vowels.short#t2
+  - skill: script.vowel.long
+    formula: आ ई ऊ ॠ
+    rule:
+      en: 'Long twins: two beats, made where the short twin is made.'
+      hi: 'दीर्घ जुड़वाँ: दो मात्राएँ, उसी स्थान से जहाँ ह्रस्व बनता है।'
+    sutras:
+    - 1.2.27
+    taught_in: vowels.long#t1
+  - skill: script.vowel.long
+    rule:
+      en: Length changes the word.
+      hi: लम्बाई से शब्द बदलता है।
+    example:
+      sa: दिनम्
+      meaning:
+        en: a day; {{दीनः}} is a poor person
+        hi: दिन; {{दीनः}} यानी दीन व्यक्ति
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    taught_in: vowels.long#t2
+  - skill: script.vowel.compound
+    formula: अ + इ → ए · अ + उ → ओ
+    rule:
+      en: '{{ए}} and {{ओ}}: two sounds fused into one.'
+      hi: '{{ए}} और {{ओ}}: दो ध्वनियाँ एक में जुड़ीं।'
+    sutras:
+    - SS.3
+    taught_in: vowels.compound#t1
+  - skill: script.vowel.compound
+    formula: ऐ औ
+    rule:
+      en: '{{ऐ}} and {{औ}} glide: {{अ}} to {{इ}}, {{अ}} to {{उ}}.'
+      hi: '{{ऐ}} और {{औ}} फिसलते हैं: ‘अ’ से ‘इ’, ‘अ’ से ‘उ’।'
+    sutras:
+    - SS.4
+    taught_in: vowels.compound#t1
+  - skill: script.vowel.compound
+    rule:
+      en: All four joined vowels are always long.
+      hi: चारों संयुक्त स्वर सदा दीर्घ हैं।
+    example:
+      sa: लोकः
+      meaning:
+        en: 'a world: a long o'
+        hi: 'लोक: दीर्घ ओ'
+      check:
+        type: subanta
+        stem: लोक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    taught_in: vowels.compound#t2
+  - skill: script.matra
+    formula: क का कि की कु कू कृ के कै को कौ
+    rule:
+      en: Inside a word a vowel is a sign on the letter before it; {{अ}} has no sign.
+      hi: शब्द के भीतर स्वर पहले वाले अक्षर पर मात्रा बनता है; {{अ}} की कोई मात्रा नहीं।
+    taught_in: vowels.signs#t2
+  - skill: script.matra
+    formula: ि
+    rule:
+      en: Written before the letter, said after it.
+      hi: अक्षर से पहले लिखी जाती है, बाद में बोली जाती है।
+    taught_in: vowels.signs#t3
+- id: conditions
+  kind: revision
+  section: conditions
+  title:
+    en: Letter or sign?
+    hi: अक्षर या मात्रा?
+  rows:
+  - skill: script.matra
+    rule:
+      en: A vowel is written as its full letter at the start of a word; inside a word, as a sign on the letter before it.
+      hi: शब्द के आरम्भ में स्वर अपना पूरा अक्षर बनकर लिखा जाता है; शब्द के भीतर पहले वाले अक्षर पर मात्रा बनकर।
+    new_here: true
+    example:
+      sa: इति
+      meaning:
+        en: '“thus”: the first i is the letter {{इ}}, the second is the sign on {{त}}'
+        hi: '‘इस प्रकार’: पहला इ पूरा अक्षर {{इ}} है, दूसरा {{त}} पर मात्रा'
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: इति
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: '“thus”: the first i is the letter {{इ}}, the second is the sign on {{त}}'
+          hi: '‘इस प्रकार’: पहला इ पूरा अक्षर {{इ}} है, दूसरा {{त}} पर मात्रा'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: A vowel is written as its full letter at the start of a word; inside a word, as a sign on the letter before
+            it.
+          hi: शब्द के आरम्भ में स्वर अपना पूरा अक्षर बनकर लिखा जाता है; शब्द के भीतर पहले वाले अक्षर पर मात्रा बनकर।
+      - id: i3
+        sa: इति
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: '“thus”: the first i is the letter {{इ}}, the second is the sign on {{त}}'
+          hi: '‘इस प्रकार’: पहला इ पूरा अक्षर {{इ}} है, दूसरा {{त}} पर मात्रा'
+- id: exceptions
+  kind: revision
+  section: exceptions
+  title:
+    en: Odd shapes and rare letters
+    hi: अनोखे रूप और दुर्लभ वर्ण
+  rows:
+  - skill: script.matra
+    rule:
+      en: 'With {{र}}, the signs {{ु}} and {{ू}} change shape: {{रु}}, {{रू}}.'
+      hi: '{{र}} के साथ {{ु}} और {{ू}} का रूप बदल जाता है: {{रु}}, {{रू}}।'
+    new_here: true
+    example:
+      sa: गुरुः
+      meaning:
+        en: 'a teacher: {{रु}} in the middle'
+        hi: 'गुरु: बीच में {{रु}}'
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: गुरुः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'a teacher: {{रु}} in the middle'
+          hi: 'गुरु: बीच में {{रु}}'
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'With {{र}}, the signs {{ु}} and {{ू}} change shape: {{रु}}, {{रू}}.'
+          hi: '{{र}} के साथ {{ु}} और {{ू}} का रूप बदल जाता है: {{रु}}, {{रू}}।'
+      - id: i3
+        sa: गुरुः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'a teacher: {{रु}} in the middle'
+          hi: 'गुरु: बीच में {{रु}}'
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - skill: script.matra
+    tag: good
+    rule:
+      en: 'With {{ह}}, the sign {{ृ}} often tucks into the letter: {{हृ}}.'
+      hi: '{{ह}} के साथ {{ृ}} अक्सर अक्षर के भीतर समा जाती है: {{हृ}}।'
+    new_here: true
+    example:
+      sa: हृदयम्
+      meaning:
+        en: the heart
+        hi: हृदय
+      check:
+        type: subanta
+        stem: हृदय
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: हृदयम्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: the heart
+          hi: हृदय
+        check:
+          type: subanta
+          stem: हृदय
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{हृदय}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{हृदय}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'With {{ह}}, the sign {{ृ}} often tucks into the letter: {{हृ}}.'
+          hi: '{{ह}} के साथ {{ृ}} अक्सर अक्षर के भीतर समा जाती है: {{हृ}}।'
+      - id: i3
+        sa: हृदयम्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: the heart
+          hi: हृदय
+        check:
+          type: subanta
+          stem: हृदय
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{हृदय}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{हृदय}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - skill: script.vowel.long
+    tag: rare
+    formula: ॠ
+    rule:
+      en: '{{ॠ}} appears in a few forms of nouns that end in {{ऋ}}, and in the listed form of some roots, such as {{तॄ}} “to
+        cross”.'
+      hi: '{{ॠ}} ऋ पर अन्त होने वाले कुछ संज्ञा-शब्दों के रूपों में, और कुछ धातुओं के मूल रूप में मिलता है, जैसे {{तॄ}} ‘पार
+        करना’।'
+    example:
+      sa: पितॄन्
+      meaning:
+        en: fathers (as the object of a verb)
+        hi: पितरों को
+      check:
+        type: subanta
+        stem: पितृ
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Bahu
+    taught_in: vowels.long#t1
+  - skill: script.vowel.short
+    tag: rare
+    formula: ऌ
+    rule:
+      en: In real words {{ऌ}} appears only in forms of one root, {{कृप्}} “to be fit”, whose {{ऋ}} becomes {{ऌ}}.
+      hi: 'असली शब्दों में {{ऌ}} केवल एक धातु के रूपों में आता है: {{कृप्}} ‘समर्थ होना’, जिसका {{ऋ}} {{ऌ}} बन जाता है।'
+    sutras:
+    - 8.2.18
+    example:
+      sa: कॢप्तः
+      meaning:
+        en: arranged, made ready
+        hi: व्यवस्थित, तैयार किया हुआ
+      check:
+        type: krdanta
+        dhatu: कृप्
+        krt: kta
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    taught_in: vowels.short#t2
+  - skill: script.vowel.long
+    tag: rare
+    formula: ॡ
+    rule:
+      en: '{{ॡ}} is listed in some alphabet charts, but no Sanskrit word uses it.'
+      hi: '{{ॡ}} कुछ वर्णमाला-तालिकाओं में दिखता है, पर किसी संस्कृत शब्द में नहीं आता।'
+    new_here: true
+    example:
+      sa: ॡ
+      meaning:
+        en: in the charts only, to complete the pattern
+        hi: केवल तालिकाओं में, क्रम पूरा करने के लिए
+    visuals:
+    - id: v-source-new-4
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: ॡ
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: in the charts only, to complete the pattern
+          hi: केवल तालिकाओं में, क्रम पूरा करने के लिए
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{ॡ}} is listed in some alphabet charts, but no Sanskrit word uses it.'
+          hi: '{{ॡ}} कुछ वर्णमाला-तालिकाओं में दिखता है, पर किसी संस्कृत शब्द में नहीं आता।'
+      - id: i3
+        sa: ॡ
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: in the charts only, to complete the pattern
+          hi: केवल तालिकाओं में, क्रम पूरा करने के लिए
+- id: mistakes
+  kind: revision
+  section: mistakes
+  title:
+    en: Common mistakes
+    hi: आम भूलें
+  rows:
+  - skill: script.vowel.short
+    rule:
+      en: '{{ऋ}} is one vowel, not {{र}} + {{इ}}. Never write {{रिषिः}} for {{ऋषिः}}.'
+      hi: '{{ऋ}} एक स्वर है, {{र}} + {{इ}} नहीं। {{ऋषिः}} को {{रिषिः}} मत लिखिए।'
+    taught_in: vowels.short#t2
+  - skill: script.vowel.long
+    rule:
+      en: 'Check the length before you write: {{दिनम्}} a day, {{दीनः}} a poor person.'
+      hi: 'लिखने से पहले लम्बाई देखिए: {{दिनम्}} दिन, {{दीनः}} दीन।'
+    taught_in: vowels.long#t2
+  - skill: script.vowel.compound
+    rule:
+      en: 'Don''t clip {{ए}} and {{ओ}}: they last two beats, like {{आ}}.'
+      hi: '{{ए}} और {{ओ}} को छोटा मत कीजिए: ये {{आ}} की तरह दो मात्रा के हैं।'
+    taught_in: vowels.compound#t2
+  - skill: script.vowel.compound
+    rule:
+      en: Let {{ऐ}} and {{औ}} glide; Hindi often says them flat.
+      hi: '{{ऐ}} और {{औ}} को फिसलने दीजिए; हिन्दी में ये अक्सर सपाट बोले जाते हैं।'
+    example:
+      sa: तैलम्
+      meaning:
+        en: 'oil: “tai-lam”'
+        hi: 'तेल: ‘तइ-लम्’'
+      check:
+        type: subanta
+        stem: तैल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+    taught_in: vowels.compound#t3
+  - skill: script.matra
+    rule:
+      en: '{{ि}} comes first on the page, last in the mouth.'
+      hi: '{{ि}} पन्ने पर पहले, मुँह में बाद में।'
+    taught_in: vowels.signs#t3
+- id: panini
+  kind: revision
+  section: panini
+  depth: panini
+  title:
+    en: In Pāṇini's words
+    hi: पाणिनि के शब्दों में
+  rows:
+  - skill: script.vowel.short
+    rule:
+      en: 'Vowels are named by time: {{ह्रस्वः}} one beat, {{दीर्घः}} two, {{प्लुतः}} three.'
+      hi: 'स्वरों के नाम समय से: {{ह्रस्वः}} एक मात्रा, {{दीर्घः}} दो, {{प्लुतः}} तीन।'
+    sutras:
+    - 1.2.27
+    taught_in: vowels.short#pn
+  - skill: script.vowel.long
+    rule:
+      en: '{{सवर्ण}}: one place, one effort. A short vowel and its long twin are {{सवर्ण}}.'
+      hi: '{{सवर्ण}}: एक स्थान, एक प्रयत्न। ह्रस्व स्वर और उसका दीर्घ जुड़वाँ सवर्ण हैं।'
+    sutras:
+    - 1.1.9
+    taught_in: vowels.long#pn
+  - skill: script.vowel.long
+    rule:
+      en: In a rule, a vowel letter stands for its twins too; so the Śiva sūtras list only {{अ}} {{इ}} {{उ}}.
+      hi: नियम में लिखा स्वर अपने सवर्णों का भी बोध कराता है; इसीलिए शिवसूत्रों में केवल {{अ}} {{इ}} {{उ}} हैं।
+    sutras:
+    - 1.1.69
+    taught_in: vowels.long#pn
+  - skill: script.vowel.compound
+    rule:
+      en: '{{आ}} {{ऐ}} {{औ}} are named {{वृद्धि}}; {{अ}} {{ए}} {{ओ}} are named {{गुण}}.'
+      hi: '{{आ}} {{ऐ}} {{औ}} का नाम {{वृद्धि}} है; {{अ}} {{ए}} {{ओ}} का {{गुण}}।'
+    sutras:
+    - 1.1.1
+    - 1.1.2
+    taught_in: vowels.compound#pn
+  - skill: script.vowel.short
+    tag: rare
+    rule:
+      en: 'Pāṇini''s list of roots also uses {{ऌ}} as a silent marker: {{गमॢँ}} is the root {{गम्}} “to go”, tagged with it.
+        The tag changes some past forms.'
+      hi: 'पाणिनि की धातु-सूची में {{ऌ}} एक मौन चिह्न के रूप में भी आता है: {{गमॢँ}} यानी धातु {{गम्}} ‘जाना’, इस चिह्न के
+        साथ। यह चिह्न कुछ भूतकाल-रूप बदल देता है।'
+    sutras:
+    - 1.3.2
+    - 1.3.9
+    - 3.1.55
+    new_here: true
+    example:
+      sa: गमॢँ
+      meaning:
+        en: the root {{गम्}} as the list of roots gives it
+        hi: धातु-सूची में दिया गया {{गम्}}
+    visuals:
+    - id: v-source-new-4
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: गमॢँ
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: the root {{गम्}} as the list of roots gives it
+          hi: धातु-सूची में दिया गया {{गम्}}
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Pāṇini''s list of roots also uses {{ऌ}} as a silent marker: {{गमॢँ}} is the root {{गम्}} “to go”, tagged with
+            it. The tag changes some past forms.'
+          hi: 'पाणिनि की धातु-सूची में {{ऌ}} एक मौन चिह्न के रूप में भी आता है: {{गमॢँ}} यानी धातु {{गम्}} ‘जाना’, इस चिह्न
+            के साथ। यह चिह्न कुछ भूतकाल-रूप बदल देता है।'
+      - id: i3
+        sa: गमॢँ
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: the root {{गम्}} as the list of roots gives it
+          hi: धातु-सूची में दिया गया {{गम्}}
+  - skill: script.vowel.long
+    tag: rare
+    rule:
+      en: A vowel held for three beats, {{प्लुतः}}, is written with ३. It is used when calling to someone far away.
+      hi: तीन मात्रा तक खिंचा स्वर, {{प्लुतः}}, ३ लगाकर लिखा जाता है। दूर से किसी को पुकारते समय इसका प्रयोग होता है।
+    sutras:
+    - 8.2.84
+    new_here: true
+    example:
+      sa: पितामहि३
+      meaning:
+        en: “Grandmother!”, called from far away
+        hi: ‘दादी!’, दूर से पुकारा हुआ
+    visuals:
+    - id: v-source-new-5
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: पितामहि३
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: “Grandmother!”, called from far away
+          hi: ‘दादी!’, दूर से पुकारा हुआ
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: A vowel held for three beats, {{प्लुतः}}, is written with ३. It is used when calling to someone far away.
+          hi: तीन मात्रा तक खिंचा स्वर, {{प्लुतः}}, ३ लगाकर लिखा जाता है। दूर से किसी को पुकारते समय इसका प्रयोग होता है।
+      - id: i3
+        sa: पितामहि३
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: “Grandmother!”, called from far away
+          hi: ‘दादी!’, दूर से पुकारा हुआ
+- id: sheet
+  kind: revision
+  section: quick_sheet
+  title:
+    en: Quick sheet
+    hi: एक नज़र में
+  rows:
+  - skill: script.vowel.short
+    formula: अ इ उ ऋ ऌ
+    rule:
+      en: short · one beat
+      hi: ह्रस्व · एक मात्रा
+    taught_in: vowels.short#t1
+  - skill: script.vowel.long
+    formula: आ ई ऊ ॠ
+    rule:
+      en: long · two beats
+      hi: दीर्घ · दो मात्राएँ
+    taught_in: vowels.long#t1
+  - skill: script.vowel.compound
+    formula: ए ऐ ओ औ
+    rule:
+      en: joined · always two beats
+      hi: संयुक्त · सदा दो मात्राएँ
+    taught_in: vowels.compound#t1
+  - skill: script.matra
+    formula: ा ि ी ु ू ृ े ै ो ौ
+    rule:
+      en: signs on a letter; {{ि}} is written first
+      hi: अक्षर पर मात्राएँ; {{ि}} पहले लिखी जाती है
+    taught_in: vowels.signs#t2
+  - skill: script.vowel.compound
+    formula: अ इ उ · ऋ ऌ · ए ओ · ऐ औ
+    rule:
+      en: the leaf's first line
+      hi: पत्र की पहली पंक्ति
+    taught_in: vowels.compound#p3

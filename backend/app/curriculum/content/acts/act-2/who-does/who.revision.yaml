@@ -81,6 +81,36 @@ cards:
         hi: 'गंगा नदी है: दोनों शब्द प्रथमा में'
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: गङ्गा नदी
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'The Gaṅgā is a river: both words first case'
+          hi: 'गंगा नदी है: दोनों शब्द प्रथमा में'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: The first case also names a thing in a plain statement or a dictionary-style label; it is not only for doers.
+          hi: 'प्रथमा केवल कर्ता के लिए नहीं: वह साधारण कथन या नाम के लेबल में भी आती है।'
+      - id: i3
+        sa: गङ्गा नदी
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'The Gaṅgā is a river: both words first case'
+          hi: 'गंगा नदी है: दोनों शब्द प्रथमा में'
   - skill: verb.pres-3sg
     rule:
       en: For one doer (he, she or it) the verb takes {{ति}}; for two or many it changes (next chapter).
@@ -98,8 +128,10 @@ cards:
   - skill: verb.pres-3sg
     formula: गच्छति पश्यति पिबति तिष्ठति
     rule:
-      en: '{{गम्}} → {{गच्छति}}, {{दृश्}} → {{पश्यति}}, {{पा}} → {{पिबति}}, {{स्था}} → {{तिष्ठति}}: the root shows a different stem in the present.'
-      hi: '{{गम्}} → {{गच्छति}}, {{दृश्}} → {{पश्यति}}, {{पा}} → {{पिबति}}, {{स्था}} → {{तिष्ठति}}: वर्तमान में धातु दूसरा रूप लेती है।'
+      en: '{{गम्}} → {{गच्छति}}, {{दृश्}} → {{पश्यति}}, {{पा}} → {{पिबति}}, {{स्था}} → {{तिष्ठति}}: the root shows a different
+        stem in the present.'
+      hi: '{{गम्}} → {{गच्छति}}, {{दृश्}} → {{पश्यति}}, {{पा}} → {{पिबति}}, {{स्था}} → {{तिष्ठति}}: वर्तमान में धातु दूसरा
+        रूप लेती है।'
     tag: good
     taught_in: who.does#tb1
   - skill: verb.pres-3sg
@@ -114,6 +146,37 @@ cards:
         hi: बोलता है (अपने लिए)
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: वदते
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: speaks (for oneself)
+          hi: बोलता है (अपने लिए)
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: Some roots take the {{ते}} endings instead (later chapters); the engine lists both for roots like {{वद्}} and
+            {{पच्}}.
+          hi: कुछ धातुएँ {{ते}} प्रत्यय लेती हैं (आगे के अध्याय); {{वद्}} और {{पच्}} जैसी धातुओं के दोनों रूप होते हैं।
+      - id: i3
+        sa: वदते
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: speaks (for oneself)
+          hi: बोलता है (अपने लिए)
 - id: mistakes
   kind: revision
   title:

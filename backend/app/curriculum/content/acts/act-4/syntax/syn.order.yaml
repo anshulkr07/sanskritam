@@ -25,7 +25,9 @@ cards:
     hi: सिंहासन
   depth: core
   image:
-    brief: The thirty-two statues standing in a ring around a lit stone throne; Lubdhaka with one foot on the first step and his foreman beside him; a small basalt spirit holding out a scroll with a line on it to the travellers; Dādī and Śuka stepping forward; warm light from inside the throne.
+    brief: The thirty-two statues standing in a ring around a lit stone throne; Lubdhaka with one foot on the first step and
+      his foreman beside him; a small basalt spirit holding out a scroll with a line on it to the travellers; Dādī and Śuka
+      stepping forward; warm light from inside the throne.
     alt:
       en: Thirty-two statues ring a lit throne as a man puts a foot on the step and a small spirit holds out a line
       hi: प्रकाशित सिंहासन के चारों ओर बत्तीस प्रतिमाएँ, सीढ़ी पर पैर रखता आदमी, पंक्ति बढ़ाती नन्ही भूत
@@ -38,10 +40,16 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: syn-order-s1
-    text_in_image: ["रिक्तपाणिर् न पश्येत राजानं भिषजं गुरुम्"]
+    text_in_image:
+    - रिक्तपाणिर् न पश्येत राजानं भिषजं गुरुम्
   narration:
-    en: 'The thirty-two statues stand in a ring, the throne lit from within. Lubdhaka steps forward and puts one foot on the first step. “Wait,” says Vākyikā, the basalt spirit. “To sit here you must read the last word. It is in verse.” She holds out a line. “Verse puts words in the order of the metre. Read it in the order of sense: that is anvaya.”'
-    hi: 'बत्तीस प्रतिमाएँ घेरे में खड़ी हैं, और सिंहासन भीतर से प्रकाशित है। लुब्धक आगे बढ़ता है, उसका मुखिया उसके पास, और पहली सीढ़ी पर एक पैर रखता है। “रुकिए,” वाक्यिका, बेसाल्ट की भूत, पत्र से कहती है। “यहाँ बैठने के लिए अन्तिम शब्द पढ़ना होगा। और वह श्लोक में है।” वह एक पंक्ति आगे बढ़ाती है। “शब्द छन्द के क्रम में हैं। उन्हें अर्थ के क्रम में पढ़िए: उसे अन्वय कहते हैं।”'
+    en: 'The thirty-two statues stand in a ring, the throne lit from within. Lubdhaka steps forward and puts one foot on the
+      first step. “Wait,” says Vākyikā, the basalt spirit. “To sit here you must read the last word. It is in verse.” She
+      holds out a line. “Verse puts words in the order of the metre. Read it in the order of sense: that is anvaya.”'
+    hi: 'बत्तीस प्रतिमाएँ घेरे में खड़ी हैं, और सिंहासन भीतर से प्रकाशित है। लुब्धक आगे बढ़ता है, उसका मुखिया उसके पास, और
+      पहली सीढ़ी पर एक पैर रखता है। “रुकिए,” वाक्यिका, बेसाल्ट की भूत, पत्र से कहती है। “यहाँ बैठने के लिए अन्तिम शब्द पढ़ना
+      होगा। और वह श्लोक में है।” वह एक पंक्ति आगे बढ़ाती है। “शब्द छन्द के क्रम में हैं। उन्हें अर्थ के क्रम में पढ़िए: उसे
+      अन्वय कहते हैं।”'
   quote:
     sa: रिक्तपाणिर् न पश्येत राजानं भिषजं गुरुम्
     gloss:
@@ -57,13 +65,35 @@ cards:
   skills:
   - syn.anvaya
   body:
-    en: 'Verse puts words in the order of the metre; prose puts them in the order of sense. To find the {{अन्वयः}}: first split the joins (padaccheda); then find the verb; then its doer; then the object, and describing words next to the words they describe. {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: who, whom, what, how.'
-    hi: 'श्लोक शब्दों को छन्द के क्रम में रखता है; गद्य अर्थ के क्रम में। {{अन्वयः}} खोजने के लिए: पहले सन्धि खोलिए (पदच्छेद); फिर क्रिया खोजिए; फिर उसका कर्ता; फिर कर्म, और विशेषण उन शब्दों के पास जिनका वे वर्णन करते हैं। {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: कौन, किसे, कैसे।'
+    en: 'Verse puts words in the order of the metre; prose puts them in the order of sense. To find the {{अन्वयः}}: first
+      split the joins (padaccheda); then find the verb; then its doer; then the object, and describing words next to the words
+      they describe. {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: who, whom, what, how.'
+    hi: 'श्लोक शब्दों को छन्द के क्रम में रखता है; गद्य अर्थ के क्रम में। {{अन्वयः}} खोजने के लिए: पहले सन्धि खोलिए (पदच्छेद);
+      फिर क्रिया खोजिए; फिर उसका कर्ता; फिर कर्म, और विशेषण उन शब्दों के पास जिनका वे वर्णन करते हैं। {{रिक्तपाणिः राजानं
+      भिषजं गुरुं न पश्येत्}}: कौन, किसे, कैसे।'
   term:
     sa: अन्वयः
     meaning:
       en: the prose order of a verse
       hi: श्लोक का गद्य-क्रम
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Verse puts words in the order of the metre; prose puts them in the order of sense. To find the {{अन्वयः}}: first
+        split the joins (padaccheda); then find the verb; then its doer; then the object, and describing words next to the
+        words they describe. {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: who, whom, what, how.'
+      hi: 'श्लोक शब्दों को छन्द के क्रम में रखता है; गद्य अर्थ के क्रम में। {{अन्वयः}} खोजने के लिए: पहले सन्धि खोलिए (पदच्छेद);
+        फिर क्रिया खोजिए; फिर उसका कर्ता; फिर कर्म, और विशेषण उन शब्दों के पास जिनका वे वर्णन करते हैं। {{रिक्तपाणिः राजानं
+        भिषजं गुरुं न पश्येत्}}: कौन, किसे, कैसे।'
+    items:
+    - id: i0
+      sa: अन्वयः
+    - id: i1
+      sa: रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्
 - id: tb1
   kind: table
   title:
@@ -136,6 +166,24 @@ cards:
     params:
       sentence: बालकः ग्रामं गच्छति
     seed: 13
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Verse puts words in the order of the metre; prose puts them in the order of sense. To find the {{अन्वयः}}: first
+        split the joins (padaccheda); then find the verb; then its doer; then the object, and describing words next to the
+        words they describe. {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: who, whom, what, how.'
+      hi: 'श्लोक शब्दों को छन्द के क्रम में रखता है; गद्य अर्थ के क्रम में। {{अन्वयः}} खोजने के लिए: पहले सन्धि खोलिए (पदच्छेद);
+        फिर क्रिया खोजिए; फिर उसका कर्ता; फिर कर्म, और विशेषण उन शब्दों के पास जिनका वे वर्णन करते हैं। {{रिक्तपाणिः राजानं
+        भिषजं गुरुं न पश्येत्}}: कौन, किसे, कैसे।'
+    items:
+    - id: i0
+      sa: अन्वयः
+    - id: i1
+      sa: रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्
 - id: p2
   kind: practice
   depth: core
@@ -154,6 +202,24 @@ cards:
     params:
       sentence: रामः फलम् खादति
     seed: 14
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Verse puts words in the order of the metre; prose puts them in the order of sense. To find the {{अन्वयः}}: first
+        split the joins (padaccheda); then find the verb; then its doer; then the object, and describing words next to the
+        words they describe. {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: who, whom, what, how.'
+      hi: 'श्लोक शब्दों को छन्द के क्रम में रखता है; गद्य अर्थ के क्रम में। {{अन्वयः}} खोजने के लिए: पहले सन्धि खोलिए (पदच्छेद);
+        फिर क्रिया खोजिए; फिर उसका कर्ता; फिर कर्म, और विशेषण उन शब्दों के पास जिनका वे वर्णन करते हैं। {{रिक्तपाणिः राजानं
+        भिषजं गुरुं न पश्येत्}}: कौन, किसे, कैसे।'
+    items:
+    - id: i0
+      sa: अन्वयः
+    - id: i1
+      sa: रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्
 - id: p3
   kind: practice
   depth: core
@@ -178,6 +244,24 @@ cards:
     text:
       en: last
       hi: अन्त में
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Verse puts words in the order of the metre; prose puts them in the order of sense. To find the {{अन्वयः}}: first
+        split the joins (padaccheda); then find the verb; then its doer; then the object, and describing words next to the
+        words they describe. {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: who, whom, what, how.'
+      hi: 'श्लोक शब्दों को छन्द के क्रम में रखता है; गद्य अर्थ के क्रम में। {{अन्वयः}} खोजने के लिए: पहले सन्धि खोलिए (पदच्छेद);
+        फिर क्रिया खोजिए; फिर उसका कर्ता; फिर कर्म, और विशेषण उन शब्दों के पास जिनका वे वर्णन करते हैं। {{रिक्तपाणिः राजानं
+        भिषजं गुरुं न पश्येत्}}: कौन, किसे, कैसे।'
+    items:
+    - id: i0
+      sa: अन्वयः
+    - id: i1
+      sa: रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्
 - id: p4
   kind: practice
   depth: core
@@ -196,6 +280,24 @@ cards:
   - कालः
   - काव्यशास्त्रविनोदेन
   - गच्छति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Verse puts words in the order of the metre; prose puts them in the order of sense. To find the {{अन्वयः}}: first
+        split the joins (padaccheda); then find the verb; then its doer; then the object, and describing words next to the
+        words they describe. {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: who, whom, what, how.'
+      hi: 'श्लोक शब्दों को छन्द के क्रम में रखता है; गद्य अर्थ के क्रम में। {{अन्वयः}} खोजने के लिए: पहले सन्धि खोलिए (पदच्छेद);
+        फिर क्रिया खोजिए; फिर उसका कर्ता; फिर कर्म, और विशेषण उन शब्दों के पास जिनका वे वर्णन करते हैं। {{रिक्तपाणिः राजानं
+        भिषजं गुरुं न पश्येत्}}: कौन, किसे, कैसे।'
+    items:
+    - id: i0
+      sa: अन्वयः
+    - id: i1
+      sa: रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्
 - id: p5
   kind: practice
   depth: core
@@ -234,6 +336,24 @@ cards:
       text:
         en: the verb
         hi: क्रिया
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Verse puts words in the order of the metre; prose puts them in the order of sense. To find the {{अन्वयः}}: first
+        split the joins (padaccheda); then find the verb; then its doer; then the object, and describing words next to the
+        words they describe. {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: who, whom, what, how.'
+      hi: 'श्लोक शब्दों को छन्द के क्रम में रखता है; गद्य अर्थ के क्रम में। {{अन्वयः}} खोजने के लिए: पहले सन्धि खोलिए (पदच्छेद);
+        फिर क्रिया खोजिए; फिर उसका कर्ता; फिर कर्म, और विशेषण उन शब्दों के पास जिनका वे वर्णन करते हैं। {{रिक्तपाणिः राजानं
+        भिषजं गुरुं न पश्येत्}}: कौन, किसे, कैसे।'
+    items:
+    - id: i0
+      sa: अन्वयः
+    - id: i1
+      sa: रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्
 - id: p6
   kind: practice
   title:
@@ -253,8 +373,15 @@ cards:
   gate: true
   story:
     success:
-      en: '“रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्,” you say, in the order of sense, “one empty-handed should not see a king, a doctor, a teacher.” Vākyikā lowers her scroll, and the throne''s light brightens, so that the whole hall is gold. “Whoever sits here,” she says, “must know that the last word is not a command. It is an order: the order that makes sense.” Lubdhaka''s foot comes off the step. In the stone of the throne''s base, a slab, long sealed, slides gently aside.'
-      hi: '“रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्,” आप अर्थ के क्रम में कहते हैं, “खाली हाथ वाला राजा, वैद्य, गुरु से न मिले।” वाक्यिका अपना पत्र नीचे करती है, और सिंहासन का प्रकाश तेज़ हो जाता है, पूरा कक्ष सुनहरा हो जाता है। “जो भी यहाँ बैठे,” वह कहती है, “उसे जानना चाहिए कि अन्तिम शब्द आज्ञा नहीं है। वह क्रम है: वह क्रम जिसका अर्थ बनता है।” लुब्धक का पैर सीढ़ी से हट जाता है। सिंहासन के आधार के पत्थर में, बहुत समय से बन्द एक पटिया धीरे से सरक जाती है।'
+      en: '“रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्,” you say, in the order of sense, “one empty-handed should not see a king,
+        a doctor, a teacher.” Vākyikā lowers her scroll, and the throne''s light brightens, so that the whole hall is gold.
+        “Whoever sits here,” she says, “must know that the last word is not a command. It is an order: the order that makes
+        sense.” Lubdhaka''s foot comes off the step. In the stone of the throne''s base, a slab, long sealed, slides gently
+        aside.'
+      hi: '“रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्,” आप अर्थ के क्रम में कहते हैं, “खाली हाथ वाला राजा, वैद्य, गुरु से न
+        मिले।” वाक्यिका अपना पत्र नीचे करती है, और सिंहासन का प्रकाश तेज़ हो जाता है, पूरा कक्ष सुनहरा हो जाता है। “जो भी
+        यहाँ बैठे,” वह कहती है, “उसे जानना चाहिए कि अन्तिम शब्द आज्ञा नहीं है। वह क्रम है: वह क्रम जिसका अर्थ बनता है।” लुब्धक
+        का पैर सीढ़ी से हट जाता है। सिंहासन के आधार के पत्थर में, बहुत समय से बन्द एक पटिया धीरे से सरक जाती है।'
     failure:
       en: The light stays dim. The doer is {{रिक्तपाणिः}}.
       hi: प्रकाश मद्धम रहता है। कर्ता {{रिक्तपाणिः}} है।
@@ -263,6 +390,24 @@ cards:
   - sa: पश्येत्
   - correct: true
     sa: रिक्तपाणिः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Verse puts words in the order of the metre; prose puts them in the order of sense. To find the {{अन्वयः}}: first
+        split the joins (padaccheda); then find the verb; then its doer; then the object, and describing words next to the
+        words they describe. {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: who, whom, what, how.'
+      hi: 'श्लोक शब्दों को छन्द के क्रम में रखता है; गद्य अर्थ के क्रम में। {{अन्वयः}} खोजने के लिए: पहले सन्धि खोलिए (पदच्छेद);
+        फिर क्रिया खोजिए; फिर उसका कर्ता; फिर कर्म, और विशेषण उन शब्दों के पास जिनका वे वर्णन करते हैं। {{रिक्तपाणिः राजानं
+        भिषजं गुरुं न पश्येत्}}: कौन, किसे, कैसे।'
+    items:
+    - id: i0
+      sa: अन्वयः
+    - id: i1
+      sa: रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्
 - id: pn
   kind: teach
   title:
@@ -274,8 +419,28 @@ cards:
   sutras:
   - 2.3.1
   body:
-    en: 'Pāṇini does not fix a word order, because a case ending already says each word''s job: 2.3.1, {{अनभिहिते}}, says a case is used for the relation not already expressed by the verb. So prose order is for the reader''s comfort, and verse may use any order.'
-    hi: 'पाणिनि शब्द-क्रम तय नहीं करते, क्योंकि विभक्ति प्रत्यय पहले से हर शब्द का काम बताता है: 2.3.1, {{अनभिहिते}}, कहता है कि विभक्ति उस सम्बन्ध के लिए आती है जो क्रिया ने पहले से नहीं कहा। इसलिए गद्य का क्रम पाठक की सुविधा के लिए है, और श्लोक कोई भी क्रम ले सकता है।'
+    en: 'Pāṇini does not fix a word order, because a case ending already says each word''s job: 2.3.1, {{अनभिहिते}}, says
+      a case is used for the relation not already expressed by the verb. So prose order is for the reader''s comfort, and
+      verse may use any order.'
+    hi: 'पाणिनि शब्द-क्रम तय नहीं करते, क्योंकि विभक्ति प्रत्यय पहले से हर शब्द का काम बताता है: 2.3.1, {{अनभिहिते}}, कहता
+      है कि विभक्ति उस सम्बन्ध के लिए आती है जो क्रिया ने पहले से नहीं कहा। इसलिए गद्य का क्रम पाठक की सुविधा के लिए है, और
+      श्लोक कोई भी क्रम ले सकता है।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Pāṇini does not fix a word order, because a case ending already says each word''s job: 2.3.1, {{अनभिहिते}}, says
+        a case is used for the relation not already expressed by the verb. So prose order is for the reader''s comfort, and
+        verse may use any order.'
+      hi: 'पाणिनि शब्द-क्रम तय नहीं करते, क्योंकि विभक्ति प्रत्यय पहले से हर शब्द का काम बताता है: 2.3.1, {{अनभिहिते}}, कहता
+        है कि विभक्ति उस सम्बन्ध के लिए आती है जो क्रिया ने पहले से नहीं कहा। इसलिए गद्य का क्रम पाठक की सुविधा के लिए है,
+        और श्लोक कोई भी क्रम ले सकता है।'
+    items:
+    - id: i0
+      sa: अनभिहिते
 - id: sum
   kind: summary
   title:

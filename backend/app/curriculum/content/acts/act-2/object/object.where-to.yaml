@@ -24,7 +24,8 @@ cards:
     hi: किस ओर?
   depth: core
   image:
-    brief: The small saffron-yellow spirit tugging at your sleeve and pointing between the spice stall, the river and a grove of trees beyond the market; Dādī smiling; Śuka looking where he points.
+    brief: The small saffron-yellow spirit tugging at your sleeve and pointing between the spice stall, the river and a grove
+      of trees beyond the market; Dādī smiling; Śuka looking where he points.
     alt:
       en: A small spirit tugging a sleeve and pointing in three directions
       hi: तीन दिशाओं में इशारा करते हुए आस्तीन खींचता नन्हा भूत
@@ -38,8 +39,12 @@ cards:
     ratio: '4:3'
     id: object-where-to-s1
   narration:
-    en: 'The yellow spirit tugs your sleeve and points: the spice seller''s stall, the river, the grove beyond the market. He wants to go somewhere, and cannot say where. “A place you go to is also reached by the doer,” says Dādī. “So it takes the second case as well.”'
-    hi: 'पीला भूत आपकी आस्तीन खींचता है और इशारा करता है: मसाले वाले की दुकान, नदी, बाज़ार के पार का उपवन। वह कहीं जाना चाहता है, और बता नहीं पाता कहाँ। दादी कहती हैं, “जिस जगह आप जाते हैं, उसे भी कर्ता पहुँचता है। इसलिए वह भी द्वितीया में आता है।”'
+    en: 'The yellow spirit tugs your sleeve and points: the spice seller''s stall, the river, the grove beyond the market.
+      He wants to go somewhere, and cannot say where. “A place you go to is also reached by the doer,” says Dādī. “So it takes
+      the second case as well.”'
+    hi: 'पीला भूत आपकी आस्तीन खींचता है और इशारा करता है: मसाले वाले की दुकान, नदी, बाज़ार के पार का उपवन। वह कहीं जाना चाहता
+      है, और बता नहीं पाता कहाँ। दादी कहती हैं, “जिस जगह आप जाते हैं, उसे भी कर्ता पहुँचता है। इसलिए वह भी द्वितीया में आता
+      है।”'
 - id: t1
   kind: teach
   title:
@@ -51,8 +56,10 @@ cards:
   sutras:
   - 2.3.2
   body:
-    en: 'With verbs of going, the place you go to takes the second case: {{बालकः ग्रामं गच्छति}} (the boy goes to the village). The verb of coming works the same way: {{गृहम् आगच्छति}}.'
-    hi: 'जाने की क्रियाओं के साथ जहाँ जाया जाए वह स्थान द्वितीया में आता है: {{बालकः ग्रामं गच्छति}} (बालक गाँव जाता है)। आने की क्रिया भी ऐसी ही चलती है: {{गृहम् आगच्छति}}।'
+    en: 'With verbs of going, the place you go to takes the second case: {{बालकः ग्रामं गच्छति}} (the boy goes to the village).
+      The verb of coming works the same way: {{गृहम् आगच्छति}}.'
+    hi: 'जाने की क्रियाओं के साथ जहाँ जाया जाए वह स्थान द्वितीया में आता है: {{बालकः ग्रामं गच्छति}} (बालक गाँव जाता है)।
+      आने की क्रिया भी ऐसी ही चलती है: {{गृहम् आगच्छति}}।'
   examples:
   - sa: बालकः ग्रामम् गच्छति।
     meaning:
@@ -159,6 +166,439 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकः ग्रामम् गच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy goes to the village.
+        hi: बालक गाँव जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: ग्रामम्
+        gloss:
+          en: to the village
+          hi: गाँव को
+        check:
+          type: subanta
+          stem: ग्राम
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: ग्रामम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the village
+        hi: गाँव को
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{ग्राम}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of going, the place you go to takes the second case: {{बालकः ग्रामं गच्छति}} (the boy goes to the
+          village). The verb of coming works the same way: {{गृहम् आगच्छति}}.'
+        hi: 'जाने की क्रियाओं के साथ जहाँ जाया जाए वह स्थान द्वितीया में आता है: {{बालकः ग्रामं गच्छति}} (बालक गाँव जाता है)।
+          आने की क्रिया भी ऐसी ही चलती है: {{गृहम् आगच्छति}}।'
+    - id: i6
+      sa: बालकः ग्रामम् गच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy goes to the village.
+        hi: बालक गाँव जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: ग्रामम्
+        gloss:
+          en: to the village
+          hi: गाँव को
+        check:
+          type: subanta
+          stem: ग्राम
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सीता गृहम् गच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Sītā goes home.
+        hi: सीता घर जाती है।
+      words:
+      - sa: सीता
+        gloss:
+          en: Sītā
+          hi: सीता
+        check:
+          type: subanta
+          stem: सीता
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: to the house
+          hi: घर को
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाती है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सीता
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Sītā
+        hi: सीता
+      check:
+        type: subanta
+        stem: सीता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सीता}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सीता}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the house
+        hi: घर को
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: goes
+        hi: जाती है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of going, the place you go to takes the second case: {{बालकः ग्रामं गच्छति}} (the boy goes to the
+          village). The verb of coming works the same way: {{गृहम् आगच्छति}}.'
+        hi: 'जाने की क्रियाओं के साथ जहाँ जाया जाए वह स्थान द्वितीया में आता है: {{बालकः ग्रामं गच्छति}} (बालक गाँव जाता है)।
+          आने की क्रिया भी ऐसी ही चलती है: {{गृहम् आगच्छति}}।'
+    - id: i6
+      sa: सीता गृहम् गच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Sītā goes home.
+        hi: सीता घर जाती है।
+      words:
+      - sa: सीता
+        gloss:
+          en: Sītā
+          hi: सीता
+        check:
+          type: subanta
+          stem: सीता
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: to the house
+          hi: घर को
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाती है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: नाविकः नगरम् गच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boatman goes to the town.
+        hi: नाविक नगर जाता है।
+      words:
+      - sa: नाविकः
+        gloss:
+          en: boatman
+          hi: नाविक
+        check:
+          type: subanta
+          stem: नाविक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: नगरम्
+        gloss:
+          en: to the town
+          hi: नगर को
+        check:
+          type: subanta
+          stem: नगर
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: नाविकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boatman
+        hi: नाविक
+      check:
+        type: subanta
+        stem: नाविक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: नगरम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the town
+        hi: नगर को
+      check:
+        type: subanta
+        stem: नगर
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नगर}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{नगर}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of going, the place you go to takes the second case: {{बालकः ग्रामं गच्छति}} (the boy goes to the
+          village). The verb of coming works the same way: {{गृहम् आगच्छति}}.'
+        hi: 'जाने की क्रियाओं के साथ जहाँ जाया जाए वह स्थान द्वितीया में आता है: {{बालकः ग्रामं गच्छति}} (बालक गाँव जाता है)।
+          आने की क्रिया भी ऐसी ही चलती है: {{गृहम् आगच्छति}}।'
+    - id: i6
+      sa: नाविकः नगरम् गच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boatman goes to the town.
+        hi: नाविक नगर जाता है।
+      words:
+      - sa: नाविकः
+        gloss:
+          en: boatman
+          hi: नाविक
+        check:
+          type: subanta
+          stem: नाविक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: नगरम्
+        gloss:
+          en: to the town
+          hi: नगर को
+        check:
+          type: subanta
+          stem: नगर
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: tb1
   kind: table
   title:
@@ -268,6 +708,151 @@ cards:
   - correct: true
     sa: नदीम्
   - sa: नद्यः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः ग्रामम् गच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy goes to the village.
+        hi: बालक गाँव जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: ग्रामम्
+        gloss:
+          en: to the village
+          hi: गाँव को
+        check:
+          type: subanta
+          stem: ग्राम
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: ग्रामम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the village
+        hi: गाँव को
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{ग्राम}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of going, the place you go to takes the second case: {{बालकः ग्रामं गच्छति}} (the boy goes to the
+          village). The verb of coming works the same way: {{गृहम् आगच्छति}}.'
+        hi: 'जाने की क्रियाओं के साथ जहाँ जाया जाए वह स्थान द्वितीया में आता है: {{बालकः ग्रामं गच्छति}} (बालक गाँव जाता है)।
+          आने की क्रिया भी ऐसी ही चलती है: {{गृहम् आगच्छति}}।'
+    - id: i6
+      sa: बालकः ग्रामम् गच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy goes to the village.
+        hi: बालक गाँव जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: ग्रामम्
+        gloss:
+          en: to the village
+          hi: गाँव को
+        check:
+          type: subanta
+          stem: ग्राम
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -306,6 +891,151 @@ cards:
       text:
         en: to the river
         hi: नदी को
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः ग्रामम् गच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy goes to the village.
+        hi: बालक गाँव जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: ग्रामम्
+        gloss:
+          en: to the village
+          hi: गाँव को
+        check:
+          type: subanta
+          stem: ग्राम
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: ग्रामम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the village
+        hi: गाँव को
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{ग्राम}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of going, the place you go to takes the second case: {{बालकः ग्रामं गच्छति}} (the boy goes to the
+          village). The verb of coming works the same way: {{गृहम् आगच्छति}}.'
+        hi: 'जाने की क्रियाओं के साथ जहाँ जाया जाए वह स्थान द्वितीया में आता है: {{बालकः ग्रामं गच्छति}} (बालक गाँव जाता है)।
+          आने की क्रिया भी ऐसी ही चलती है: {{गृहम् आगच्छति}}।'
+    - id: i6
+      sa: बालकः ग्रामम् गच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy goes to the village.
+        hi: बालक गाँव जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: ग्रामम्
+        gloss:
+          en: to the village
+          hi: गाँव को
+        check:
+          type: subanta
+          stem: ग्राम
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -324,6 +1054,151 @@ cards:
     params:
       sentence: बालकः ग्रामं गच्छति
     seed: 2
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः ग्रामम् गच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy goes to the village.
+        hi: बालक गाँव जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: ग्रामम्
+        gloss:
+          en: to the village
+          hi: गाँव को
+        check:
+          type: subanta
+          stem: ग्राम
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: ग्रामम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the village
+        hi: गाँव को
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{ग्राम}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of going, the place you go to takes the second case: {{बालकः ग्रामं गच्छति}} (the boy goes to the
+          village). The verb of coming works the same way: {{गृहम् आगच्छति}}.'
+        hi: 'जाने की क्रियाओं के साथ जहाँ जाया जाए वह स्थान द्वितीया में आता है: {{बालकः ग्रामं गच्छति}} (बालक गाँव जाता है)।
+          आने की क्रिया भी ऐसी ही चलती है: {{गृहम् आगच्छति}}।'
+    - id: i6
+      sa: बालकः ग्रामम् गच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy goes to the village.
+        hi: बालक गाँव जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: ग्रामम्
+        gloss:
+          en: to the village
+          hi: गाँव को
+        check:
+          type: subanta
+          stem: ग्राम
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   title:
@@ -343,8 +1218,10 @@ cards:
   gate: true
   story:
     success:
-      en: “वयं नदीं गच्छामः,” you say, and the little spirit skips ahead with a trail of yellow dust, then turns back to see whether you follow.
-      hi: “वयं नदीं गच्छामः,” आप कहते हैं, और नन्हा भूत पीली धूल की लकीर छोड़ता आगे कूद चलता है, फिर मुड़कर देखता है कि आप आ रहे हैं या नहीं।
+      en: “वयं नदीं गच्छामः,” you say, and the little spirit skips ahead with a trail of yellow dust, then turns back to see
+        whether you follow.
+      hi: “वयं नदीं गच्छामः,” आप कहते हैं, और नन्हा भूत पीली धूल की लकीर छोड़ता आगे कूद चलता है, फिर मुड़कर देखता है कि आप
+        आ रहे हैं या नहीं।
     failure:
       en: He tugs again. “We” is {{वयम्}}; the place is in the second case.
       hi: वह फिर खींचता है। ‘हम’ है {{वयम्}}; स्थान द्वितीया में है।
@@ -352,6 +1229,151 @@ cards:
   - वयम्
   - नदीम्
   - गच्छामः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः ग्रामम् गच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy goes to the village.
+        hi: बालक गाँव जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: ग्रामम्
+        gloss:
+          en: to the village
+          hi: गाँव को
+        check:
+          type: subanta
+          stem: ग्राम
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: ग्रामम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the village
+        hi: गाँव को
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{ग्राम}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of going, the place you go to takes the second case: {{बालकः ग्रामं गच्छति}} (the boy goes to the
+          village). The verb of coming works the same way: {{गृहम् आगच्छति}}.'
+        hi: 'जाने की क्रियाओं के साथ जहाँ जाया जाए वह स्थान द्वितीया में आता है: {{बालकः ग्रामं गच्छति}} (बालक गाँव जाता है)।
+          आने की क्रिया भी ऐसी ही चलती है: {{गृहम् आगच्छति}}।'
+    - id: i6
+      sa: बालकः ग्रामम् गच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy goes to the village.
+        hi: बालक गाँव जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: ग्रामम्
+        gloss:
+          en: to the village
+          hi: गाँव को
+        check:
+          type: subanta
+          stem: ग्राम
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core

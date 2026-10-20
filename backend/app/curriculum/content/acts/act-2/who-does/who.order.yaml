@@ -23,7 +23,8 @@ cards:
     hi: शब्द उलटता भूत
   depth: core
   image:
-    brief: Śuka the parrot flapping happily as word-cards float in the air around him, the small grey-blue spirit juggling them, Dādī clapping on the ghat steps.
+    brief: Śuka the parrot flapping happily as word-cards float in the air around him, the small grey-blue spirit juggling
+      them, Dādī clapping on the ghat steps.
     alt:
       en: A parrot and a small spirit juggling floating word-cards on the ghat
       hi: शब्द-पत्रों से खेलते तोता और नन्हा भूत
@@ -35,10 +36,14 @@ cards:
     place: naditira
     ratio: '4:3'
     id: who-order-s1
-    text_in_image: ["बालकः", "पठति"]
+    text_in_image:
+    - बालकः
+    - पठति
   narration:
-    en: 'Śuka decides to help and says the sentence backwards: “पठति बालकः!” Dādī claps. “Still correct.” The spirit is delighted. He shuffles every word he knows, and each time the sentence means the same. “The endings carry it,” Dādī says.'
-    hi: 'शुक मदद करने की ठानता है और वाक्य उलटा बोलता है: “पठति बालकः!” दादी ताली बजाती हैं। “अब भी सही है।” भूत मगन हो जाता है। वह हर शब्द को उलट-पलट करता है, और वाक्य का अर्थ वही रहता है। दादी कहती हैं, “अर्थ प्रत्ययों में है।”'
+    en: 'Śuka decides to help and says the sentence backwards: “पठति बालकः!” Dādī claps. “Still correct.” The spirit is delighted.
+      He shuffles every word he knows, and each time the sentence means the same. “The endings carry it,” Dādī says.'
+    hi: 'शुक मदद करने की ठानता है और वाक्य उलटा बोलता है: “पठति बालकः!” दादी ताली बजाती हैं। “अब भी सही है।” भूत मगन हो जाता
+      है। वह हर शब्द को उलट-पलट करता है, और वाक्य का अर्थ वही रहता है। दादी कहती हैं, “अर्थ प्रत्ययों में है।”'
 - id: t1
   kind: teach
   title:
@@ -48,8 +53,10 @@ cards:
   skills:
   - sent.word-order
   body:
-    en: In Sanskrit the endings carry the meaning, so words may stand in any order. {{बालकः पठति}} and {{पठति बालकः}} both say “the boy reads”. Usually the doer comes first and the verb last, but the poets mix freely.
-    hi: संस्कृत में अर्थ प्रत्ययों में होता है, इसलिए शब्द किसी भी क्रम में आ सकते हैं। {{बालकः पठति}} और {{पठति बालकः}} दोनों का अर्थ है ‘बालक पढ़ता है’। प्रायः कर्ता पहले और क्रिया अन्त में आती है, पर कवि खुलकर क्रम बदलते हैं।
+    en: In Sanskrit the endings carry the meaning, so words may stand in any order. {{बालकः पठति}} and {{पठति बालकः}} both
+      say “the boy reads”. Usually the doer comes first and the verb last, but the poets mix freely.
+    hi: संस्कृत में अर्थ प्रत्ययों में होता है, इसलिए शब्द किसी भी क्रम में आ सकते हैं। {{बालकः पठति}} और {{पठति बालकः}} दोनों
+      का अर्थ है ‘बालक पढ़ता है’। प्रायः कर्ता पहले और क्रिया अन्त में आती है, पर कवि खुलकर क्रम बदलते हैं।
   examples:
   - sa: बालकः पठति।
     meaning:
@@ -101,6 +108,221 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: In Sanskrit the endings carry the meaning, so words may stand in any order. {{बालकः पठति}} and {{पठति बालकः}}
+          both say “the boy reads”. Usually the doer comes first and the verb last, but the poets mix freely.
+        hi: संस्कृत में अर्थ प्रत्ययों में होता है, इसलिए शब्द किसी भी क्रम में आ सकते हैं। {{बालकः पठति}} और {{पठति बालकः}}
+          दोनों का अर्थ है ‘बालक पढ़ता है’। प्रायः कर्ता पहले और क्रिया अन्त में आती है, पर कवि खुलकर क्रम बदलते हैं।
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: पठति बालकः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads, the same.
+        hi: बालक पढ़ता है, वही अर्थ।
+      words:
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: In Sanskrit the endings carry the meaning, so words may stand in any order. {{बालकः पठति}} and {{पठति बालकः}}
+          both say “the boy reads”. Usually the doer comes first and the verb last, but the poets mix freely.
+        hi: संस्कृत में अर्थ प्रत्ययों में होता है, इसलिए शब्द किसी भी क्रम में आ सकते हैं। {{बालकः पठति}} और {{पठति बालकः}}
+          दोनों का अर्थ है ‘बालक पढ़ता है’। प्रायः कर्ता पहले और क्रिया अन्त में आती है, पर कवि खुलकर क्रम बदलते हैं।
+    - id: i5
+      sa: पठति बालकः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads, the same.
+        hi: बालक पढ़ता है, वही अर्थ।
+      words:
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -143,6 +365,114 @@ cards:
       en: That is “the girl reads”.
       hi: यह ‘बालिका पढ़ती है’ है।
     sa: बालिका पठति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: In Sanskrit the endings carry the meaning, so words may stand in any order. {{बालकः पठति}} and {{पठति बालकः}}
+          both say “the boy reads”. Usually the doer comes first and the verb last, but the poets mix freely.
+        hi: संस्कृत में अर्थ प्रत्ययों में होता है, इसलिए शब्द किसी भी क्रम में आ सकते हैं। {{बालकः पठति}} और {{पठति बालकः}}
+          दोनों का अर्थ है ‘बालक पढ़ता है’। प्रायः कर्ता पहले और क्रिया अन्त में आती है, पर कवि खुलकर क्रम बदलते हैं।
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -161,6 +491,114 @@ cards:
     params:
       sentence: सीता गच्छति
     seed: 0
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: In Sanskrit the endings carry the meaning, so words may stand in any order. {{बालकः पठति}} and {{पठति बालकः}}
+          both say “the boy reads”. Usually the doer comes first and the verb last, but the poets mix freely.
+        hi: संस्कृत में अर्थ प्रत्ययों में होता है, इसलिए शब्द किसी भी क्रम में आ सकते हैं। {{बालकः पठति}} और {{पठति बालकः}}
+          दोनों का अर्थ है ‘बालक पढ़ता है’। प्रायः कर्ता पहले और क्रिया अन्त में आती है, पर कवि खुलकर क्रम बदलते हैं।
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -179,6 +617,114 @@ cards:
     params:
       sentence: रामः हसति
     seed: 1
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: In Sanskrit the endings carry the meaning, so words may stand in any order. {{बालकः पठति}} and {{पठति बालकः}}
+          both say “the boy reads”. Usually the doer comes first and the verb last, but the poets mix freely.
+        hi: संस्कृत में अर्थ प्रत्ययों में होता है, इसलिए शब्द किसी भी क्रम में आ सकते हैं। {{बालकः पठति}} और {{पठति बालकः}}
+          दोनों का अर्थ है ‘बालक पढ़ता है’। प्रायः कर्ता पहले और क्रिया अन्त में आती है, पर कवि खुलकर क्रम बदलते हैं।
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   title:
@@ -198,14 +744,124 @@ cards:
   gate: true
   story:
     success:
-      en: “गच्छति सीता,” you say. The spirit does a little dance down the steps, dripping light, and a thread of his shape drifts upriver.
-      hi: “गच्छति सीता,” आप कहते हैं। भूत सीढ़ियों पर छोटा नाच करता है, प्रकाश टपकाता हुआ, और उसकी आकृति का एक धागा नदी की ऊपरी ओर बह जाता है।
+      en: “गच्छति सीता,” you say. The spirit does a little dance down the steps, dripping light, and a thread of his shape
+        drifts upriver.
+      hi: “गच्छति सीता,” आप कहते हैं। भूत सीढ़ियों पर छोटा नाच करता है, प्रकाश टपकाता हुआ, और उसकी आकृति का एक धागा नदी की
+        ऊपरी ओर बह जाता है।
     failure:
       en: He waits. Put the action first, and the one who goes second.
       hi: वह प्रतीक्षा करता है। क्रिया पहले, जाने वाला बाद में।
   tokens:
   - गच्छति
   - सीता
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: In Sanskrit the endings carry the meaning, so words may stand in any order. {{बालकः पठति}} and {{पठति बालकः}}
+          both say “the boy reads”. Usually the doer comes first and the verb last, but the poets mix freely.
+        hi: संस्कृत में अर्थ प्रत्ययों में होता है, इसलिए शब्द किसी भी क्रम में आ सकते हैं। {{बालकः पठति}} और {{पठति बालकः}}
+          दोनों का अर्थ है ‘बालक पढ़ता है’। प्रायः कर्ता पहले और क्रिया अन्त में आती है, पर कवि खुलकर क्रम बदलते हैं।
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p5
   kind: practice
   depth: core
@@ -227,6 +883,114 @@ cards:
   - text:
       en: Sanskrit has no grammar
       hi: संस्कृत में व्याकरण नहीं है
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: In Sanskrit the endings carry the meaning, so words may stand in any order. {{बालकः पठति}} and {{पठति बालकः}}
+          both say “the boy reads”. Usually the doer comes first and the verb last, but the poets mix freely.
+        hi: संस्कृत में अर्थ प्रत्ययों में होता है, इसलिए शब्द किसी भी क्रम में आ सकते हैं। {{बालकः पठति}} और {{पठति बालकः}}
+          दोनों का अर्थ है ‘बालक पढ़ता है’। प्रायः कर्ता पहले और क्रिया अन्त में आती है, पर कवि खुलकर क्रम बदलते हैं।
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: sum
   kind: summary
   title:

@@ -80,9 +80,58 @@ cards:
         vacana: Eka
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: उवास
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he lived
+          hi: वह रहा
+        check:
+          type: tinanta
+          dhatu: वस्
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{वस्}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{वस्}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{वच्}} gives {{उवाच}}, {{वस्}} (live) gives {{उवास}}: the {{व}} gives {{उ}}.'
+          hi: '{{वच्}} से {{उवाच}}, {{वस्}} (रहना) से {{उवास}}: {{व}} से {{उ}} बनता है।'
+      - id: i3
+        sa: उवास
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he lived
+          hi: वह रहा
+        check:
+          type: tinanta
+          dhatu: वस्
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{वस्}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{वस्}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
   - skill: verb.lit
     rule:
-      en: 'Many roots with a middle {{अ}} shorten and drop the doubling in the dual and plural: {{पठ्}} gives {{पपाठ}} but {{पेठतुः}}.'
+      en: 'Many roots with a middle {{अ}} shorten and drop the doubling in the dual and plural: {{पठ्}} gives {{पपाठ}} but
+        {{पेठतुः}}.'
       hi: 'मध्य {{अ}} वाली कई धातुएँ द्विवचन और बहुवचन में छोटी होकर द्वित्व छोड़ देती हैं: {{पठ्}} से {{पपाठ}} पर {{पेठतुः}}।'
     example:
       sa: पेठतुः
@@ -97,6 +146,55 @@ cards:
         vacana: Dvi
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: पेठतुः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: the two read
+          hi: दोनों ने पढ़ा
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lit
+          purusha: Prathama
+          vacana: Dvi
+        feature:
+          en: 'Root: {{पठ्}} · dual · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लिट्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Many roots with a middle {{अ}} shorten and drop the doubling in the dual and plural: {{पठ्}} gives {{पपाठ}}
+            but {{पेठतुः}}.'
+          hi: 'मध्य {{अ}} वाली कई धातुएँ द्विवचन और बहुवचन में छोटी होकर द्वित्व छोड़ देती हैं: {{पठ्}} से {{पपाठ}} पर {{पेठतुः}}।'
+      - id: i3
+        sa: पेठतुः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: the two read
+          hi: दोनों ने पढ़ा
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lit
+          purusha: Prathama
+          vacana: Dvi
+        feature:
+          en: 'Root: {{पठ्}} · dual · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लिट्}} · प्रथमपुरुष'
 - id: mistakes
   kind: revision
   title:
@@ -127,7 +225,8 @@ cards:
   rows:
   - skill: verb.lit
     rule:
-      en: '{{परोक्षे लिट्}}, {{लिटि धातोरनभ्यासस्य}}, {{एकाचो द्वे प्रथमस्य}} and {{कुहोश्चुः}}: the tense, the doubling and the {{ग}} → {{ज}}.'
+      en: '{{परोक्षे लिट्}}, {{लिटि धातोरनभ्यासस्य}}, {{एकाचो द्वे प्रथमस्य}} and {{कुहोश्चुः}}: the tense, the doubling and
+        the {{ग}} → {{ज}}.'
       hi: '{{परोक्षे लिट्}}, {{लिटि धातोरनभ्यासस्य}}, {{एकाचो द्वे प्रथमस्य}} और {{कुहोश्चुः}}: काल, द्वित्व और {{ग}} → {{ज}}।'
     sutras:
     - 3.2.115

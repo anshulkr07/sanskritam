@@ -74,6 +74,36 @@ cards:
         hi: 'पेड़ का पत्ता: पूरे का भाग'
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: वृक्षस्य पत्रम्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'a leaf of the tree: part of a whole'
+          hi: 'पेड़ का पत्ता: पूरे का भाग'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: The sixth case covers owner, part of a whole, kin, and many other links.
+          hi: षष्ठी स्वामी, पूरे का भाग, नाते और अनेक सम्बन्धों को ढकती है।
+      - id: i3
+        sa: वृक्षस्य पत्रम्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'a leaf of the tree: part of a whole'
+          hi: 'पेड़ का पत्ता: पूरे का भाग'
   - skill: case.gen
     rule:
       en: Plural {{आनाम्}} (masculine, neuter -अ and feminine -आ), dual {{योः}} for all.
@@ -91,6 +121,54 @@ cards:
         vacana: Bahu
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: बालकानाम्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: of the boys
+          hi: बालकों का
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sasthi
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{बालक}} · masculine · {{षष्ठी}} · plural'
+          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: Plural {{आनाम्}} (masculine, neuter -अ and feminine -आ), dual {{योः}} for all.
+          hi: बहुवचन {{आनाम्}} (पुंलिंग, नपुंसक -अ, स्त्रीलिंग -आ), द्विवचन सबके लिए {{योः}}।
+      - id: i3
+        sa: बालकानाम्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: of the boys
+          hi: बालकों का
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sasthi
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{बालक}} · masculine · {{षष्ठी}} · plural'
+          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
 - id: exceptions
   kind: revision
   title:
@@ -116,6 +194,54 @@ cards:
         vacana: Eka
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: मातुः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: of the mother
+          hi: माता का
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Sasthi
+          vacana: Eka
+        feature:
+          en: 'Stem: {{मातृ}} · feminine · {{षष्ठी}} · singular'
+          hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Some verbs of remembering and mercy take the sixth case for the person: {{मातुः स्मरति}}, “remembers his mother”.'
+          hi: 'स्मरण और दया की कुछ क्रियाएँ व्यक्ति के लिए षष्ठी लेती हैं: {{मातुः स्मरति}}, ‘माता को याद करता है’।'
+      - id: i3
+        sa: मातुः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: of the mother
+          hi: माता का
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Sasthi
+          vacana: Eka
+        feature:
+          en: 'Stem: {{मातृ}} · feminine · {{षष्ठी}} · singular'
+          hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
   - skill: case.gen-family
     rule:
       en: '{{पितरौ}} (father and mother) is a dual for the two parents; {{भ्रातरौ}} is two brothers.'
@@ -133,6 +259,54 @@ cards:
         vacana: Dvi
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: पितरौ
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: the parents
+          hi: माता-पिता
+        check:
+          type: subanta
+          stem: पितृ
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Dvi
+        feature:
+          en: 'Stem: {{पितृ}} · masculine · {{प्रथमा}} · dual'
+          hi: 'प्रातिपदिक: {{पितृ}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{पितरौ}} (father and mother) is a dual for the two parents; {{भ्रातरौ}} is two brothers.'
+          hi: '{{पितरौ}} (माता-पिता) दोनों माता-पिता के लिए द्विवचन है; {{भ्रातरौ}} दो भाई हैं।'
+      - id: i3
+        sa: पितरौ
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: the parents
+          hi: माता-पिता
+        check:
+          type: subanta
+          stem: पितृ
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Dvi
+        feature:
+          en: 'Stem: {{पितृ}} · masculine · {{प्रथमा}} · dual'
+          hi: 'प्रातिपदिक: {{पितृ}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
 - id: mistakes
   kind: revision
   title:

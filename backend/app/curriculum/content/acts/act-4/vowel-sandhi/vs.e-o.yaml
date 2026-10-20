@@ -24,7 +24,8 @@ cards:
     hi: पाँचवीं प्रतिमा
   depth: core
   image:
-    brief: The fifth statue holding a carved stone oar upright, a faint wave pattern carved on her base; Śuka tilting his head; Dādī pointing at the small curl on a rubbing of an inscription; morning light.
+    brief: The fifth statue holding a carved stone oar upright, a faint wave pattern carved on her base; Śuka tilting his
+      head; Dādī pointing at the small curl on a rubbing of an inscription; morning light.
     alt:
       en: A stone statue holds an oar upright while a parrot tilts his head at an inscription rubbing
       hi: पतवार थामे पत्थर की प्रतिमा, अभिलेख की छाप देखता तोता
@@ -37,10 +38,15 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: vs-e-o-s1
-    text_in_image: ["वनेऽस्ति"]
+    text_in_image:
+    - वनेऽस्ति
   narration:
-    en: 'The fifth statue holds an oar. “नाविकः,” she says. “पावकः.” “वनेऽस्ति.” Śuka tilts his head: “नाविकः has a व. And वनेऽस्ति has a little curl, ऽ. Where did a letter go?” “Two things,” says Dādī. “An ऐ or औ before a vowel turns into आय् or आव्. And an ए before अ drops the अ, leaving the little curl behind.”'
-    hi: 'पाँचवीं प्रतिमा के हाथ में पतवार है। “नाविकः,” वह कहती है। “पावकः।” “वनेऽस्ति।” शुक सिर टेढ़ा करता है: “नाविकः में व है। और वनेऽस्ति में एक छोटा मोड़ है, ऽ। कोई अक्षर कहाँ गया?” “दो बातें,” दादी कहती हैं। “स्वर से पहले ऐ या औ आय् या आव् बन जाता है। और अ से पहले ए अपना अ गिरा देता है, और छोटा मोड़ छोड़ जाता है।”'
+    en: 'The fifth statue holds an oar. “नाविकः,” she says. “पावकः.” “वनेऽस्ति.” Śuka tilts his head: “नाविकः has a व. And
+      वनेऽस्ति has a little curl, ऽ. Where did a letter go?” “Two things,” says Dādī. “An ऐ or औ before a vowel turns into
+      आय् or आव्. And an ए before अ drops the अ, leaving the little curl behind.”'
+    hi: 'पाँचवीं प्रतिमा के हाथ में पतवार है। “नाविकः,” वह कहती है। “पावकः।” “वनेऽस्ति।” शुक सिर टेढ़ा करता है: “नाविकः में
+      व है। और वनेऽस्ति में एक छोटा मोड़ है, ऽ। कोई अक्षर कहाँ गया?” “दो बातें,” दादी कहती हैं। “स्वर से पहले ऐ या औ आय् या
+      आव् बन जाता है। और अ से पहले ए अपना अ गिरा देता है, और छोटा मोड़ छोड़ जाता है।”'
   lines:
   - speaker: svarika
     sa: नाविकः
@@ -61,13 +67,65 @@ cards:
   skills:
   - sandhi.ayadi
   body:
-    en: '{{औ}} before a vowel becomes {{आव्}}: {{नौ + इकः}} gives {{नाविकः}}. {{ऐ}} becomes {{आय्}} (often written {{आ}} before a vowel: {{तस्मै + इदम्}} gives {{तस्मा इदम्}}). {{ए}} before {{इ}} or {{आ}} drops to {{अ}}: {{हरे + इह}} gives {{हर इह}}. Before {{अ}} it leaves {{ऽ}}: {{वने + अस्ति}} gives {{वनेऽस्ति}}.'
-    hi: 'स्वर से पहले {{औ}} {{आव्}} बन जाता है: {{नौ + इकः}} से {{नाविकः}}। {{ऐ}} {{आय्}} बनता है (स्वर से पहले अक्सर {{आ}} लिखा जाता है: {{तस्मै + इदम्}} से {{तस्मा इदम्}})। {{इ}} या {{आ}} से पहले {{ए}} घटकर {{अ}} हो जाता है: {{हरे + इह}} से {{हर इह}}। {{अ}} से पहले वह {{ऽ}} छोड़ जाता है: {{वने + अस्ति}} से {{वनेऽस्ति}}।'
+    en: '{{औ}} before a vowel becomes {{आव्}}: {{नौ + इकः}} gives {{नाविकः}}. {{ऐ}} becomes {{आय्}} (often written {{आ}} before
+      a vowel: {{तस्मै + इदम्}} gives {{तस्मा इदम्}}). {{ए}} before {{इ}} or {{आ}} drops to {{अ}}: {{हरे + इह}} gives {{हर
+      इह}}. Before {{अ}} it leaves {{ऽ}}: {{वने + अस्ति}} gives {{वनेऽस्ति}}.'
+    hi: 'स्वर से पहले {{औ}} {{आव्}} बन जाता है: {{नौ + इकः}} से {{नाविकः}}। {{ऐ}} {{आय्}} बनता है (स्वर से पहले अक्सर {{आ}}
+      लिखा जाता है: {{तस्मै + इदम्}} से {{तस्मा इदम्}})। {{इ}} या {{आ}} से पहले {{ए}} घटकर {{अ}} हो जाता है: {{हरे + इह}}
+      से {{हर इह}}। {{अ}} से पहले वह {{ऽ}} छोड़ जाता है: {{वने + अस्ति}} से {{वनेऽस्ति}}।'
   term:
     sa: ऽ
     meaning:
       en: the avagraha, a missing अ
       hi: अवग्रह, लुप्त अ
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: '{{औ}} before a vowel becomes {{आव्}}: {{नौ + इकः}} gives {{नाविकः}}. {{ऐ}} becomes {{आय्}} (often written {{आ}}
+        before a vowel: {{तस्मै + इदम्}} gives {{तस्मा इदम्}}). {{ए}} before {{इ}} or {{आ}} drops to {{अ}}: {{हरे + इह}} gives
+        {{हर इह}}. Before {{अ}} it leaves {{ऽ}}: {{वने + अस्ति}} gives {{वनेऽस्ति}}.'
+      hi: 'स्वर से पहले {{औ}} {{आव्}} बन जाता है: {{नौ + इकः}} से {{नाविकः}}। {{ऐ}} {{आय्}} बनता है (स्वर से पहले अक्सर {{आ}}
+        लिखा जाता है: {{तस्मै + इदम्}} से {{तस्मा इदम्}})। {{इ}} या {{आ}} से पहले {{ए}} घटकर {{अ}} हो जाता है: {{हरे + इह}}
+        से {{हर इह}}। {{अ}} से पहले वह {{ऽ}} छोड़ जाता है: {{वने + अस्ति}} से {{वनेऽस्ति}}।'
+    items:
+    - id: i0
+      sa: औ
+    - id: i1
+      sa: आव्
+    - id: i2
+      sa: नौ + इकः
+    - id: i3
+      sa: नाविकः
+    - id: i4
+      sa: ऐ
+    - id: i5
+      sa: आय्
+    - id: i6
+      sa: आ
+    - id: i7
+      sa: तस्मै + इदम्
+    - id: i8
+      sa: तस्मा इदम्
+    - id: i9
+      sa: ए
+    - id: i10
+      sa: इ
+    - id: i11
+      sa: अ
+    - id: i12
+      sa: हरे + इह
+    - id: i13
+      sa: हर इह
+    - id: i14
+      sa: ऽ
+    - id: i15
+      sa: वने + अस्ति
+    - id: i16
+      sa: वनेऽस्ति
 - id: tb1
   kind: table
   title:
@@ -162,6 +220,54 @@ cards:
   - sa: नै + इकः
   - correct: true
     sa: नौ + इकः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{औ}} before a vowel becomes {{आव्}}: {{नौ + इकः}} gives {{नाविकः}}. {{ऐ}} becomes {{आय्}} (often written {{आ}}
+        before a vowel: {{तस्मै + इदम्}} gives {{तस्मा इदम्}}). {{ए}} before {{इ}} or {{आ}} drops to {{अ}}: {{हरे + इह}} gives
+        {{हर इह}}. Before {{अ}} it leaves {{ऽ}}: {{वने + अस्ति}} gives {{वनेऽस्ति}}.'
+      hi: 'स्वर से पहले {{औ}} {{आव्}} बन जाता है: {{नौ + इकः}} से {{नाविकः}}। {{ऐ}} {{आय्}} बनता है (स्वर से पहले अक्सर {{आ}}
+        लिखा जाता है: {{तस्मै + इदम्}} से {{तस्मा इदम्}})। {{इ}} या {{आ}} से पहले {{ए}} घटकर {{अ}} हो जाता है: {{हरे + इह}}
+        से {{हर इह}}। {{अ}} से पहले वह {{ऽ}} छोड़ जाता है: {{वने + अस्ति}} से {{वनेऽस्ति}}।'
+    items:
+    - id: i0
+      sa: औ
+    - id: i1
+      sa: आव्
+    - id: i2
+      sa: नौ + इकः
+    - id: i3
+      sa: नाविकः
+    - id: i4
+      sa: ऐ
+    - id: i5
+      sa: आय्
+    - id: i6
+      sa: आ
+    - id: i7
+      sa: तस्मै + इदम्
+    - id: i8
+      sa: तस्मा इदम्
+    - id: i9
+      sa: ए
+    - id: i10
+      sa: इ
+    - id: i11
+      sa: अ
+    - id: i12
+      sa: हरे + इह
+    - id: i13
+      sa: हर इह
+    - id: i14
+      sa: ऽ
+    - id: i15
+      sa: वने + अस्ति
+    - id: i16
+      sa: वनेऽस्ति
 - id: p2
   kind: practice
   depth: core
@@ -180,6 +286,54 @@ cards:
   - sa: नविकः
   - correct: true
     sa: नाविकः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{औ}} before a vowel becomes {{आव्}}: {{नौ + इकः}} gives {{नाविकः}}. {{ऐ}} becomes {{आय्}} (often written {{आ}}
+        before a vowel: {{तस्मै + इदम्}} gives {{तस्मा इदम्}}). {{ए}} before {{इ}} or {{आ}} drops to {{अ}}: {{हरे + इह}} gives
+        {{हर इह}}. Before {{अ}} it leaves {{ऽ}}: {{वने + अस्ति}} gives {{वनेऽस्ति}}.'
+      hi: 'स्वर से पहले {{औ}} {{आव्}} बन जाता है: {{नौ + इकः}} से {{नाविकः}}। {{ऐ}} {{आय्}} बनता है (स्वर से पहले अक्सर {{आ}}
+        लिखा जाता है: {{तस्मै + इदम्}} से {{तस्मा इदम्}})। {{इ}} या {{आ}} से पहले {{ए}} घटकर {{अ}} हो जाता है: {{हरे + इह}}
+        से {{हर इह}}। {{अ}} से पहले वह {{ऽ}} छोड़ जाता है: {{वने + अस्ति}} से {{वनेऽस्ति}}।'
+    items:
+    - id: i0
+      sa: औ
+    - id: i1
+      sa: आव्
+    - id: i2
+      sa: नौ + इकः
+    - id: i3
+      sa: नाविकः
+    - id: i4
+      sa: ऐ
+    - id: i5
+      sa: आय्
+    - id: i6
+      sa: आ
+    - id: i7
+      sa: तस्मै + इदम्
+    - id: i8
+      sa: तस्मा इदम्
+    - id: i9
+      sa: ए
+    - id: i10
+      sa: इ
+    - id: i11
+      sa: अ
+    - id: i12
+      sa: हरे + इह
+    - id: i13
+      sa: हर इह
+    - id: i14
+      sa: ऽ
+    - id: i15
+      sa: वने + अस्ति
+    - id: i16
+      sa: वनेऽस्ति
 - id: p3
   kind: practice
   depth: core
@@ -200,6 +354,54 @@ cards:
   - वकः
   - अकः
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{औ}} before a vowel becomes {{आव्}}: {{नौ + इकः}} gives {{नाविकः}}. {{ऐ}} becomes {{आय्}} (often written {{आ}}
+        before a vowel: {{तस्मै + इदम्}} gives {{तस्मा इदम्}}). {{ए}} before {{इ}} or {{आ}} drops to {{अ}}: {{हरे + इह}} gives
+        {{हर इह}}. Before {{अ}} it leaves {{ऽ}}: {{वने + अस्ति}} gives {{वनेऽस्ति}}.'
+      hi: 'स्वर से पहले {{औ}} {{आव्}} बन जाता है: {{नौ + इकः}} से {{नाविकः}}। {{ऐ}} {{आय्}} बनता है (स्वर से पहले अक्सर {{आ}}
+        लिखा जाता है: {{तस्मै + इदम्}} से {{तस्मा इदम्}})। {{इ}} या {{आ}} से पहले {{ए}} घटकर {{अ}} हो जाता है: {{हरे + इह}}
+        से {{हर इह}}। {{अ}} से पहले वह {{ऽ}} छोड़ जाता है: {{वने + अस्ति}} से {{वनेऽस्ति}}।'
+    items:
+    - id: i0
+      sa: औ
+    - id: i1
+      sa: आव्
+    - id: i2
+      sa: नौ + इकः
+    - id: i3
+      sa: नाविकः
+    - id: i4
+      sa: ऐ
+    - id: i5
+      sa: आय्
+    - id: i6
+      sa: आ
+    - id: i7
+      sa: तस्मै + इदम्
+    - id: i8
+      sa: तस्मा इदम्
+    - id: i9
+      sa: ए
+    - id: i10
+      sa: इ
+    - id: i11
+      sa: अ
+    - id: i12
+      sa: हरे + इह
+    - id: i13
+      sa: हर इह
+    - id: i14
+      sa: ऽ
+    - id: i15
+      sa: वने + अस्ति
+    - id: i16
+      sa: वनेऽस्ति
 - id: p4
   kind: practice
   depth: core
@@ -230,6 +432,54 @@ cards:
       sa: हर इह
     right:
       sa: हरे + इह
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{औ}} before a vowel becomes {{आव्}}: {{नौ + इकः}} gives {{नाविकः}}. {{ऐ}} becomes {{आय्}} (often written {{आ}}
+        before a vowel: {{तस्मै + इदम्}} gives {{तस्मा इदम्}}). {{ए}} before {{इ}} or {{आ}} drops to {{अ}}: {{हरे + इह}} gives
+        {{हर इह}}. Before {{अ}} it leaves {{ऽ}}: {{वने + अस्ति}} gives {{वनेऽस्ति}}.'
+      hi: 'स्वर से पहले {{औ}} {{आव्}} बन जाता है: {{नौ + इकः}} से {{नाविकः}}। {{ऐ}} {{आय्}} बनता है (स्वर से पहले अक्सर {{आ}}
+        लिखा जाता है: {{तस्मै + इदम्}} से {{तस्मा इदम्}})। {{इ}} या {{आ}} से पहले {{ए}} घटकर {{अ}} हो जाता है: {{हरे + इह}}
+        से {{हर इह}}। {{अ}} से पहले वह {{ऽ}} छोड़ जाता है: {{वने + अस्ति}} से {{वनेऽस्ति}}।'
+    items:
+    - id: i0
+      sa: औ
+    - id: i1
+      sa: आव्
+    - id: i2
+      sa: नौ + इकः
+    - id: i3
+      sa: नाविकः
+    - id: i4
+      sa: ऐ
+    - id: i5
+      sa: आय्
+    - id: i6
+      sa: आ
+    - id: i7
+      sa: तस्मै + इदम्
+    - id: i8
+      sa: तस्मा इदम्
+    - id: i9
+      sa: ए
+    - id: i10
+      sa: इ
+    - id: i11
+      sa: अ
+    - id: i12
+      sa: हरे + इह
+    - id: i13
+      sa: हर इह
+    - id: i14
+      sa: ऽ
+    - id: i15
+      sa: वने + अस्ति
+    - id: i16
+      sa: वनेऽस्ति
 - id: e1
   kind: explore
   depth: core
@@ -302,8 +552,12 @@ cards:
   gate: true
   story:
     success:
-      en: '“वनेऽस्ति,” you say, “it is in the forest,” and the oar statue dips her oar. In the stone floor of the hall, where there was only dust, a thin line of water runs across and vanishes in a crack: a river that is not there any more. “नाविकः,” she says gently. “The boatman has gone.” But the small curl on the wall of the hall, the ऽ, is still shining.'
-      hi: '“वनेऽस्ति,” आप कहते हैं, “वह वन में है,” और पतवार वाली प्रतिमा अपनी पतवार डुबोती है। कक्ष के पत्थर के फ़र्श पर, जहाँ केवल धूल थी, पानी की एक पतली लकीर बहती है और एक दरार में खो जाती है: एक नदी जो अब नहीं है। “नाविकः,” वह कोमलता से कहती है। “नाविक चला गया।” पर कक्ष की दीवार पर वह छोटा मोड़, ऽ, अब भी चमक रहा है।'
+      en: '“वनेऽस्ति,” you say, “it is in the forest,” and the oar statue dips her oar. In the stone floor of the hall, where
+        there was only dust, a thin line of water runs across and vanishes in a crack: a river that is not there any more.
+        “नाविकः,” she says gently. “The boatman has gone.” But the small curl on the wall of the hall, the ऽ, is still shining.'
+      hi: '“वनेऽस्ति,” आप कहते हैं, “वह वन में है,” और पतवार वाली प्रतिमा अपनी पतवार डुबोती है। कक्ष के पत्थर के फ़र्श पर,
+        जहाँ केवल धूल थी, पानी की एक पतली लकीर बहती है और एक दरार में खो जाती है: एक नदी जो अब नहीं है। “नाविकः,” वह कोमलता
+        से कहती है। “नाविक चला गया।” पर कक्ष की दीवार पर वह छोटा मोड़, ऽ, अब भी चमक रहा है।'
     failure:
       en: 'The oar stays dry. {{ए}} + {{अ}} = {{एऽ}}: {{वनेऽस्ति}}.'
       hi: 'पतवार सूखी रहती है। {{ए}} + {{अ}} = {{एऽ}}: {{वनेऽस्ति}}।'
@@ -312,6 +566,54 @@ cards:
   - sa: वनयस्ति
   - correct: true
     sa: वनेऽस्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{औ}} before a vowel becomes {{आव्}}: {{नौ + इकः}} gives {{नाविकः}}. {{ऐ}} becomes {{आय्}} (often written {{आ}}
+        before a vowel: {{तस्मै + इदम्}} gives {{तस्मा इदम्}}). {{ए}} before {{इ}} or {{आ}} drops to {{अ}}: {{हरे + इह}} gives
+        {{हर इह}}. Before {{अ}} it leaves {{ऽ}}: {{वने + अस्ति}} gives {{वनेऽस्ति}}.'
+      hi: 'स्वर से पहले {{औ}} {{आव्}} बन जाता है: {{नौ + इकः}} से {{नाविकः}}। {{ऐ}} {{आय्}} बनता है (स्वर से पहले अक्सर {{आ}}
+        लिखा जाता है: {{तस्मै + इदम्}} से {{तस्मा इदम्}})। {{इ}} या {{आ}} से पहले {{ए}} घटकर {{अ}} हो जाता है: {{हरे + इह}}
+        से {{हर इह}}। {{अ}} से पहले वह {{ऽ}} छोड़ जाता है: {{वने + अस्ति}} से {{वनेऽस्ति}}।'
+    items:
+    - id: i0
+      sa: औ
+    - id: i1
+      sa: आव्
+    - id: i2
+      sa: नौ + इकः
+    - id: i3
+      sa: नाविकः
+    - id: i4
+      sa: ऐ
+    - id: i5
+      sa: आय्
+    - id: i6
+      sa: आ
+    - id: i7
+      sa: तस्मै + इदम्
+    - id: i8
+      sa: तस्मा इदम्
+    - id: i9
+      sa: ए
+    - id: i10
+      sa: इ
+    - id: i11
+      sa: अ
+    - id: i12
+      sa: हरे + इह
+    - id: i13
+      sa: हर इह
+    - id: i14
+      sa: ऽ
+    - id: i15
+      sa: वने + अस्ति
+    - id: i16
+      sa: वनेऽस्ति
 - id: pn
   kind: teach
   title:
@@ -324,8 +626,50 @@ cards:
   - 6.1.78
   - 6.1.109
   body:
-    en: Sūtra 6.1.78, {{एचोऽयवायावः}}, replaces {{ए}}, {{ओ}}, {{ऐ}}, {{औ}} before a vowel with {{अय्}}, {{अव्}}, {{आय्}}, {{आव्}}. And 6.1.109, {{एङः पदान्तादति}}, says that a word-final {{ए}} or {{ओ}} before {{अ}} keeps itself and the {{अ}} is dropped, marked {{ऽ}}.
-    hi: सूत्र 6.1.78, {{एचोऽयवायावः}}, स्वर से पहले {{ए}}, {{ओ}}, {{ऐ}}, {{औ}} की जगह {{अय्}}, {{अव्}}, {{आय्}}, {{आव्}} करता है। और 6.1.109, {{एङः पदान्तादति}}, कहता है कि पद के अन्त के {{ए}} या {{ओ}} के बाद {{अ}} आए तो {{ए}}/{{ओ}} रहता है और {{अ}} गिरा दिया जाता है, {{ऽ}} से चिह्नित।
+    en: Sūtra 6.1.78, {{एचोऽयवायावः}}, replaces {{ए}}, {{ओ}}, {{ऐ}}, {{औ}} before a vowel with {{अय्}}, {{अव्}}, {{आय्}},
+      {{आव्}}. And 6.1.109, {{एङः पदान्तादति}}, says that a word-final {{ए}} or {{ओ}} before {{अ}} keeps itself and the {{अ}}
+      is dropped, marked {{ऽ}}.
+    hi: सूत्र 6.1.78, {{एचोऽयवायावः}}, स्वर से पहले {{ए}}, {{ओ}}, {{ऐ}}, {{औ}} की जगह {{अय्}}, {{अव्}}, {{आय्}}, {{आव्}} करता
+      है। और 6.1.109, {{एङः पदान्तादति}}, कहता है कि पद के अन्त के {{ए}} या {{ओ}} के बाद {{अ}} आए तो {{ए}}/{{ओ}} रहता है और
+      {{अ}} गिरा दिया जाता है, {{ऽ}} से चिह्नित।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 6.1.78, {{एचोऽयवायावः}}, replaces {{ए}}, {{ओ}}, {{ऐ}}, {{औ}} before a vowel with {{अय्}}, {{अव्}}, {{आय्}},
+        {{आव्}}. And 6.1.109, {{एङः पदान्तादति}}, says that a word-final {{ए}} or {{ओ}} before {{अ}} keeps itself and the
+        {{अ}} is dropped, marked {{ऽ}}.
+      hi: सूत्र 6.1.78, {{एचोऽयवायावः}}, स्वर से पहले {{ए}}, {{ओ}}, {{ऐ}}, {{औ}} की जगह {{अय्}}, {{अव्}}, {{आय्}}, {{आव्}}
+        करता है। और 6.1.109, {{एङः पदान्तादति}}, कहता है कि पद के अन्त के {{ए}} या {{ओ}} के बाद {{अ}} आए तो {{ए}}/{{ओ}} रहता
+        है और {{अ}} गिरा दिया जाता है, {{ऽ}} से चिह्नित।
+    items:
+    - id: i0
+      sa: एचोऽयवायावः
+    - id: i1
+      sa: ए
+    - id: i2
+      sa: ओ
+    - id: i3
+      sa: ऐ
+    - id: i4
+      sa: औ
+    - id: i5
+      sa: अय्
+    - id: i6
+      sa: अव्
+    - id: i7
+      sa: आय्
+    - id: i8
+      sa: आव्
+    - id: i9
+      sa: एङः पदान्तादति
+    - id: i10
+      sa: अ
+    - id: i11
+      sa: ऽ
 - id: sum
   kind: summary
   title:

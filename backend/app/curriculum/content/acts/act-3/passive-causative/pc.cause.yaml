@@ -25,7 +25,8 @@ cards:
     hi: हर काम के लिए एक हाथ
   depth: core
   image:
-    brief: 'The rose-mist pusher spirit with its dozen hands: one tilting a small boy''s head towards a book, one lifting a spoon to a sleepy ghost''s lips, one setting a foot on a path; the Vetāla pointing at each; Dādī laughing.'
+    brief: 'The rose-mist pusher spirit with its dozen hands: one tilting a small boy''s head towards a book, one lifting
+      a spoon to a sleepy ghost''s lips, one setting a foot on a path; the Vetāla pointing at each; Dādī laughing.'
     alt:
       en: A rose-mist spirit with many hands tilts a boy to a book, feeds a sleepy ghost and sets a foot on a path
       hi: गुलाबी धुंध का भूत अनेक हाथों से बालक को पुस्तक की ओर मोड़ता, ऊँघते भूत को खिलाता, राह पर पैर रखता
@@ -39,8 +40,12 @@ cards:
     ratio: '4:3'
     id: pc-cause-s1
   narration:
-    en: 'The pusher claps all twelve hands. “पाठयति!” says the Vetāla, pointing: one hand has taken a boy''s head and tilted it to a book. “भोजयति!” Another has lifted a spoon to the lips of a sleepy ghost. “गमयति!” A third has set a foot on a path. “He makes read, makes eat, makes go,” says Dādī. “He does not do the thing himself: he gets it done.”'
-    hi: 'प्रेरक बारहों हाथ ताली में मिलाता है। “पाठयति!” वेताल इशारा करता है: एक हाथ ने एक बालक का सिर पुस्तक की ओर झुका दिया है। “भोजयति!” दूसरे ने एक ऊँघते भूत के होंठों तक चम्मच उठाया है। “गमयति!” तीसरे ने राह पर एक पैर रखा है। “वह पढ़वाता है, खिलाता है, भेजता है,” दादी कहती हैं। “वह स्वयं नहीं करता: वह करवाता है।”'
+    en: 'The pusher claps all twelve hands. “पाठयति!” says the Vetāla, pointing: one hand has taken a boy''s head and tilted
+      it to a book. “भोजयति!” Another has lifted a spoon to the lips of a sleepy ghost. “गमयति!” A third has set a foot on
+      a path. “He makes read, makes eat, makes go,” says Dādī. “He does not do the thing himself: he gets it done.”'
+    hi: 'प्रेरक बारहों हाथ ताली में मिलाता है। “पाठयति!” वेताल इशारा करता है: एक हाथ ने एक बालक का सिर पुस्तक की ओर झुका दिया
+      है। “भोजयति!” दूसरे ने एक ऊँघते भूत के होंठों तक चम्मच उठाया है। “गमयति!” तीसरे ने राह पर एक पैर रखा है। “वह पढ़वाता
+      है, खिलाता है, भेजता है,” दादी कहती हैं। “वह स्वयं नहीं करता: वह करवाता है।”'
   lines:
   - speaker: vetala
     sa: पाठयति
@@ -64,8 +69,12 @@ cards:
   skills:
   - verb.causative
   body:
-    en: 'The causative adds {{-अय-}} after a strengthened root and means “makes do”: {{पठ्}} gives {{पाठयति}} (makes read, teaches), {{कृ}} gives {{कारयति}} (makes do), {{भुज्}} gives {{भोजयति}} (feeds), {{गम्}} gives {{गमयति}} (sends). The one made to act goes in the second case.'
-    hi: 'प्रेरणार्थक रूप दृढ़ किए हुए धातु के बाद {{-अय-}} जोड़ता है और ‘करवाता है’ का अर्थ देता है: {{पठ्}} से {{पाठयति}} (पढ़वाता है, पढ़ाता है), {{कृ}} से {{कारयति}} (करवाता है), {{भुज्}} से {{भोजयति}} (खिलाता है), {{गम्}} से {{गमयति}} (भेजता है)। जिससे कराया जाए, वह द्वितीया में जाता है।'
+    en: 'The causative adds {{-अय-}} after a strengthened root and means “makes do”: {{पठ्}} gives {{पाठयति}} (makes read,
+      teaches), {{कृ}} gives {{कारयति}} (makes do), {{भुज्}} gives {{भोजयति}} (feeds), {{गम्}} gives {{गमयति}} (sends). The
+      one made to act goes in the second case.'
+    hi: 'प्रेरणार्थक रूप दृढ़ किए हुए धातु के बाद {{-अय-}} जोड़ता है और ‘करवाता है’ का अर्थ देता है: {{पठ्}} से {{पाठयति}}
+      (पढ़वाता है, पढ़ाता है), {{कृ}} से {{कारयति}} (करवाता है), {{भुज्}} से {{भोजयति}} (खिलाता है), {{गम्}} से {{गमयति}}
+      (भेजता है)। जिससे कराया जाए, वह द्वितीया में जाता है।'
   examples:
   - sa: गुरुः बालकम् पाठम् पाठयति।
     meaning:
@@ -156,6 +165,348 @@ cards:
     meaning:
       en: the causative stem
       hi: प्रेरणार्थक अंग
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
+    - id: i1
+      sa: गुरुः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the boy
+        hi: बालक को
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पाठम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the lesson
+        hi: पाठ
+      check:
+        type: subanta
+        stem: पाठ
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: पाठयति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: makes read
+        hi: पढ़ाता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The causative adds {{-अय-}} after a strengthened root and means “makes do”: {{पठ्}} gives {{पाठयति}} (makes read,
+          teaches), {{कृ}} gives {{कारयति}} (makes do), {{भुज्}} gives {{भोजयति}} (feeds), {{गम्}} gives {{गमयति}} (sends).
+          The one made to act goes in the second case.'
+        hi: 'प्रेरणार्थक रूप दृढ़ किए हुए धातु के बाद {{-अय-}} जोड़ता है और ‘करवाता है’ का अर्थ देता है: {{पठ्}} से {{पाठयति}}
+          (पढ़वाता है, पढ़ाता है), {{कृ}} से {{कारयति}} (करवाता है), {{भुज्}} से {{भोजयति}} (खिलाता है), {{गम्}} से {{गमयति}}
+          (भेजता है)। जिससे कराया जाए, वह द्वितीया में जाता है।'
+    - id: i7
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: माता बालम् भोजयति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The mother feeds the child.
+        hi: माता बच्चे को खिलाती है।
+      words:
+      - sa: माता
+        gloss:
+          en: the mother
+          hi: माता
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालम्
+        gloss:
+          en: the child
+          hi: बच्चे को
+        check:
+          type: subanta
+          stem: बाल
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: भोजयति
+        gloss:
+          en: feeds
+          hi: खिलाती है
+        check:
+          type: tinanta
+          dhatu: भुज्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
+    - id: i1
+      sa: माता
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the mother
+        hi: माता
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मातृ}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the child
+        hi: बच्चे को
+      check:
+        type: subanta
+        stem: बाल
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बाल}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{बाल}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: भोजयति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: feeds
+        hi: खिलाती है
+      check:
+        type: tinanta
+        dhatu: भुज्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+      feature:
+        en: 'Root: {{भुज्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भुज्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The causative adds {{-अय-}} after a strengthened root and means “makes do”: {{पठ्}} gives {{पाठयति}} (makes read,
+          teaches), {{कृ}} gives {{कारयति}} (makes do), {{भुज्}} gives {{भोजयति}} (feeds), {{गम्}} gives {{गमयति}} (sends).
+          The one made to act goes in the second case.'
+        hi: 'प्रेरणार्थक रूप दृढ़ किए हुए धातु के बाद {{-अय-}} जोड़ता है और ‘करवाता है’ का अर्थ देता है: {{पठ्}} से {{पाठयति}}
+          (पढ़वाता है, पढ़ाता है), {{कृ}} से {{कारयति}} (करवाता है), {{भुज्}} से {{भोजयति}} (खिलाता है), {{गम्}} से {{गमयति}}
+          (भेजता है)। जिससे कराया जाए, वह द्वितीया में जाता है।'
+    - id: i6
+      sa: माता बालम् भोजयति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The mother feeds the child.
+        hi: माता बच्चे को खिलाती है।
+      words:
+      - sa: माता
+        gloss:
+          en: the mother
+          hi: माता
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालम्
+        gloss:
+          en: the child
+          hi: बच्चे को
+        check:
+          type: subanta
+          stem: बाल
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: भोजयति
+        gloss:
+          en: feeds
+          hi: खिलाती है
+        check:
+          type: tinanta
+          dhatu: भुज्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
 - id: tb1
   kind: table
   title:
@@ -399,6 +750,196 @@ cards:
   - sa: पठ्यते
   - correct: true
     sa: पाठयति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
+    - id: i1
+      sa: गुरुः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the boy
+        hi: बालक को
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पाठम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the lesson
+        hi: पाठ
+      check:
+        type: subanta
+        stem: पाठ
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: पाठयति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: makes read
+        hi: पढ़ाता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The causative adds {{-अय-}} after a strengthened root and means “makes do”: {{पठ्}} gives {{पाठयति}} (makes read,
+          teaches), {{कृ}} gives {{कारयति}} (makes do), {{भुज्}} gives {{भोजयति}} (feeds), {{गम्}} gives {{गमयति}} (sends).
+          The one made to act goes in the second case.'
+        hi: 'प्रेरणार्थक रूप दृढ़ किए हुए धातु के बाद {{-अय-}} जोड़ता है और ‘करवाता है’ का अर्थ देता है: {{पठ्}} से {{पाठयति}}
+          (पढ़वाता है, पढ़ाता है), {{कृ}} से {{कारयति}} (करवाता है), {{भुज्}} से {{भोजयति}} (खिलाता है), {{गम्}} से {{गमयति}}
+          (भेजता है)। जिससे कराया जाए, वह द्वितीया में जाता है।'
+    - id: i7
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
 - id: p2
   kind: practice
   depth: core
@@ -419,6 +960,196 @@ cards:
   - रयति
   - कृ
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
+    - id: i1
+      sa: गुरुः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the boy
+        hi: बालक को
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पाठम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the lesson
+        hi: पाठ
+      check:
+        type: subanta
+        stem: पाठ
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: पाठयति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: makes read
+        hi: पढ़ाता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The causative adds {{-अय-}} after a strengthened root and means “makes do”: {{पठ्}} gives {{पाठयति}} (makes read,
+          teaches), {{कृ}} gives {{कारयति}} (makes do), {{भुज्}} gives {{भोजयति}} (feeds), {{गम्}} gives {{गमयति}} (sends).
+          The one made to act goes in the second case.'
+        hi: 'प्रेरणार्थक रूप दृढ़ किए हुए धातु के बाद {{-अय-}} जोड़ता है और ‘करवाता है’ का अर्थ देता है: {{पठ्}} से {{पाठयति}}
+          (पढ़वाता है, पढ़ाता है), {{कृ}} से {{कारयति}} (करवाता है), {{भुज्}} से {{भोजयति}} (खिलाता है), {{गम्}} से {{गमयति}}
+          (भेजता है)। जिससे कराया जाए, वह द्वितीया में जाता है।'
+    - id: i7
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
 - id: p3
   kind: practice
   depth: core
@@ -449,6 +1180,196 @@ cards:
       sa: दृश्
     right:
       sa: दर्शयति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
+    - id: i1
+      sa: गुरुः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the boy
+        hi: बालक को
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पाठम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the lesson
+        hi: पाठ
+      check:
+        type: subanta
+        stem: पाठ
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: पाठयति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: makes read
+        hi: पढ़ाता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The causative adds {{-अय-}} after a strengthened root and means “makes do”: {{पठ्}} gives {{पाठयति}} (makes read,
+          teaches), {{कृ}} gives {{कारयति}} (makes do), {{भुज्}} gives {{भोजयति}} (feeds), {{गम्}} gives {{गमयति}} (sends).
+          The one made to act goes in the second case.'
+        hi: 'प्रेरणार्थक रूप दृढ़ किए हुए धातु के बाद {{-अय-}} जोड़ता है और ‘करवाता है’ का अर्थ देता है: {{पठ्}} से {{पाठयति}}
+          (पढ़वाता है, पढ़ाता है), {{कृ}} से {{कारयति}} (करवाता है), {{भुज्}} से {{भोजयति}} (खिलाता है), {{गम्}} से {{गमयति}}
+          (भेजता है)। जिससे कराया जाए, वह द्वितीया में जाता है।'
+    - id: i7
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
 - id: e1
   kind: explore
   depth: core
@@ -488,6 +1409,196 @@ cards:
   - माता
   - बालम्
   - भोजयति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
+    - id: i1
+      sa: गुरुः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the boy
+        hi: बालक को
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पाठम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the lesson
+        hi: पाठ
+      check:
+        type: subanta
+        stem: पाठ
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: पाठयति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: makes read
+        hi: पढ़ाता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The causative adds {{-अय-}} after a strengthened root and means “makes do”: {{पठ्}} gives {{पाठयति}} (makes read,
+          teaches), {{कृ}} gives {{कारयति}} (makes do), {{भुज्}} gives {{भोजयति}} (feeds), {{गम्}} gives {{गमयति}} (sends).
+          The one made to act goes in the second case.'
+        hi: 'प्रेरणार्थक रूप दृढ़ किए हुए धातु के बाद {{-अय-}} जोड़ता है और ‘करवाता है’ का अर्थ देता है: {{पठ्}} से {{पाठयति}}
+          (पढ़वाता है, पढ़ाता है), {{कृ}} से {{कारयति}} (करवाता है), {{भुज्}} से {{भोजयति}} (खिलाता है), {{गम्}} से {{गमयति}}
+          (भेजता है)। जिससे कराया जाए, वह द्वितीया में जाता है।'
+    - id: i7
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
 - id: p5
   kind: practice
   title:
@@ -507,8 +1618,12 @@ cards:
   gate: true
   story:
     success:
-      en: '“दर्शयति,” you say, and the pusher''s hand that was holding a path up to the dark spreads its fingers, and the dark opens: a long lane of old trees, a lamp at the far end, someone small waiting under it. “It shows,” says the Vetāla softly, “what it wants you to see.”'
-      hi: '“दर्शयति,” आप कहते हैं, और प्रेरक का जो हाथ अँधेरे की ओर राह थामे था, वह उँगलियाँ फैला देता है, और अँधेरा खुल जाता है: पुराने वृक्षों की लम्बी गली, उसके दूर के छोर पर दीपक, और उसके नीचे प्रतीक्षा करता कोई नन्हा। “वह दिखाता है,” वेताल धीमे से कहता है, “जो वह आपको दिखाना चाहता है।”'
+      en: '“दर्शयति,” you say, and the pusher''s hand that was holding a path up to the dark spreads its fingers, and the
+        dark opens: a long lane of old trees, a lamp at the far end, someone small waiting under it. “It shows,” says the
+        Vetāla softly, “what it wants you to see.”'
+      hi: '“दर्शयति,” आप कहते हैं, और प्रेरक का जो हाथ अँधेरे की ओर राह थामे था, वह उँगलियाँ फैला देता है, और अँधेरा खुल जाता
+        है: पुराने वृक्षों की लम्बी गली, उसके दूर के छोर पर दीपक, और उसके नीचे प्रतीक्षा करता कोई नन्हा। “वह दिखाता है,” वेताल
+        धीमे से कहता है, “जो वह आपको दिखाना चाहता है।”'
     failure:
       en: 'The dark stays closed. “He shows”: {{दर्शयति}}.'
       hi: 'अँधेरा बन्द रहता है। ‘वह दिखाता है’: {{दर्शयति}}।'
@@ -517,6 +1632,196 @@ cards:
   - sa: दृश्यते
   - correct: true
     sa: दर्शयति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
+    - id: i1
+      sa: गुरुः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the boy
+        hi: बालक को
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पाठम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the lesson
+        hi: पाठ
+      check:
+        type: subanta
+        stem: पाठ
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: पाठयति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: makes read
+        hi: पढ़ाता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The causative adds {{-अय-}} after a strengthened root and means “makes do”: {{पठ्}} gives {{पाठयति}} (makes read,
+          teaches), {{कृ}} gives {{कारयति}} (makes do), {{भुज्}} gives {{भोजयति}} (feeds), {{गम्}} gives {{गमयति}} (sends).
+          The one made to act goes in the second case.'
+        hi: 'प्रेरणार्थक रूप दृढ़ किए हुए धातु के बाद {{-अय-}} जोड़ता है और ‘करवाता है’ का अर्थ देता है: {{पठ्}} से {{पाठयति}}
+          (पढ़वाता है, पढ़ाता है), {{कृ}} से {{कारयति}} (करवाता है), {{भुज्}} से {{भोजयति}} (खिलाता है), {{गम्}} से {{गमयति}}
+          (भेजता है)। जिससे कराया जाए, वह द्वितीया में जाता है।'
+    - id: i7
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
 - id: pn
   kind: teach
   title:
@@ -530,8 +1835,38 @@ cards:
   - 7.2.115
   - 3.1.32
   body:
-    en: 'Sūtra 3.1.26, {{हेतुमति च}}, adds {{णिच्}} when someone gets the action done. 7.2.115, {{अचो ञ्णिति}}, lengthens the root''s vowel before it: {{पठ्}} becomes {{पाठ्}}. 3.1.32, {{सनाद्यन्ता धातवः}}, says the new stem is itself a root: {{पाठयति}}.'
-    hi: 'सूत्र 3.1.26, {{हेतुमति च}}, जब कोई क्रिया करवाए तब {{णिच्}} जोड़ता है। 7.2.115, {{अचो ञ्णिति}}, उससे पहले धातु का स्वर दीर्घ करता है: {{पठ्}} से {{पाठ्}}। 3.1.32, {{सनाद्यन्ता धातवः}}, कहता है कि नया अंग स्वयं एक धातु है: {{पाठयति}}।'
+    en: 'Sūtra 3.1.26, {{हेतुमति च}}, adds {{णिच्}} when someone gets the action done. 7.2.115, {{अचो ञ्णिति}}, lengthens
+      the root''s vowel before it: {{पठ्}} becomes {{पाठ्}}. 3.1.32, {{सनाद्यन्ता धातवः}}, says the new stem is itself a root:
+      {{पाठयति}}.'
+    hi: 'सूत्र 3.1.26, {{हेतुमति च}}, जब कोई क्रिया करवाए तब {{णिच्}} जोड़ता है। 7.2.115, {{अचो ञ्णिति}}, उससे पहले धातु का
+      स्वर दीर्घ करता है: {{पठ्}} से {{पाठ्}}। 3.1.32, {{सनाद्यन्ता धातवः}}, कहता है कि नया अंग स्वयं एक धातु है: {{पाठयति}}।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Sūtra 3.1.26, {{हेतुमति च}}, adds {{णिच्}} when someone gets the action done. 7.2.115, {{अचो ञ्णिति}}, lengthens
+        the root''s vowel before it: {{पठ्}} becomes {{पाठ्}}. 3.1.32, {{सनाद्यन्ता धातवः}}, says the new stem is itself a
+        root: {{पाठयति}}.'
+      hi: 'सूत्र 3.1.26, {{हेतुमति च}}, जब कोई क्रिया करवाए तब {{णिच्}} जोड़ता है। 7.2.115, {{अचो ञ्णिति}}, उससे पहले धातु
+        का स्वर दीर्घ करता है: {{पठ्}} से {{पाठ्}}। 3.1.32, {{सनाद्यन्ता धातवः}}, कहता है कि नया अंग स्वयं एक धातु है: {{पाठयति}}।'
+    items:
+    - id: i0
+      sa: हेतुमति च
+    - id: i1
+      sa: णिच्
+    - id: i2
+      sa: अचो ञ्णिति
+    - id: i3
+      sa: पठ्
+    - id: i4
+      sa: पाठ्
+    - id: i5
+      sa: सनाद्यन्ता धातवः
+    - id: i6
+      sa: पाठयति
 - id: sum
   kind: summary
   title:

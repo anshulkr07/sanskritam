@@ -22,7 +22,8 @@ cards:
     hi: कौन कौन है
   depth: core
   image:
-    brief: Dādī pointing first at a boy on the ghat steps and then at the small grey-blue spirit, as though introducing them; Śuka looking from one to the other; calm river light.
+    brief: Dādī pointing first at a boy on the ghat steps and then at the small grey-blue spirit, as though introducing them;
+      Śuka looking from one to the other; calm river light.
     alt:
       en: A grandmother introduces a boy and a small spirit on the ghat
       hi: घाट पर बालक और नन्हे भूत का परिचय कराती दादी
@@ -35,8 +36,10 @@ cards:
     ratio: '4:3'
     id: who-is-s1
   narration:
-    en: 'The spirit points at the boy on the steps and then at himself. Dādī answers for him: “A boy. A spirit.” No “is” anywhere. “Sanskrit does not need it,” she says. “Put two names side by side, and one is the other.”'
-    hi: भूत सीढ़ियों पर बैठे बालक की ओर, फिर अपनी ओर इशारा करता है। दादी उसकी ओर से उत्तर देती हैं, “बालक। भूत।” ‘है’ कहीं नहीं। वे कहती हैं, “संस्कृत को उसकी ज़रूरत नहीं। दो नाम साथ रखिए, एक दूसरा हो जाता है।”
+    en: 'The spirit points at the boy on the steps and then at himself. Dādī answers for him: “A boy. A spirit.” No “is” anywhere.
+      “Sanskrit does not need it,” she says. “Put two names side by side, and one is the other.”'
+    hi: भूत सीढ़ियों पर बैठे बालक की ओर, फिर अपनी ओर इशारा करता है। दादी उसकी ओर से उत्तर देती हैं, “बालक। भूत।” ‘है’ कहीं
+      नहीं। वे कहती हैं, “संस्कृत को उसकी ज़रूरत नहीं। दो नाम साथ रखिए, एक दूसरा हो जाता है।”
 - id: t1
   kind: teach
   title:
@@ -46,8 +49,10 @@ cards:
   skills:
   - sent.no-verb-to-be
   body:
-    en: To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is needed. The verb {{अस्ति}} means “exists”, “there is”.
-    hi: ‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया {{अस्ति}} का अर्थ है ‘है’, ‘विद्यमान है’।
+    en: To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is needed.
+      The verb {{अस्ति}} means “exists”, “there is”.
+    hi: ‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया {{अस्ति}}
+      का अर्थ है ‘है’, ‘विद्यमान है’।
   examples:
   - sa: रामः बालकः।
     meaning:
@@ -149,6 +154,435 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: रामः बालकः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma is a boy.
+        hi: राम बालक है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: रामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is needed.
+          The verb {{अस्ति}} means “exists”, “there is”.
+        hi: ‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया
+          {{अस्ति}} का अर्थ है ‘है’, ‘विद्यमान है’।
+    - id: i5
+      sa: रामः बालकः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma is a boy.
+        hi: राम बालक है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सीता बालिका।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Sītā is a girl.
+        hi: सीता बालिका है।
+      words:
+      - sa: सीता
+        gloss:
+          en: Sītā
+          hi: सीता
+        check:
+          type: subanta
+          stem: सीता
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालिका
+        gloss:
+          en: girl
+          hi: बालिका
+        check:
+          type: subanta
+          stem: बालिका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सीता
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Sītā
+        hi: सीता
+      check:
+        type: subanta
+        stem: सीता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सीता}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सीता}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालिका
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: girl
+        hi: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is needed.
+          The verb {{अस्ति}} means “exists”, “there is”.
+        hi: ‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया
+          {{अस्ति}} का अर्थ है ‘है’, ‘विद्यमान है’।
+    - id: i5
+      sa: सीता बालिका।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Sītā is a girl.
+        hi: सीता बालिका है।
+      words:
+      - sa: सीता
+        gloss:
+          en: Sītā
+          hi: सीता
+        check:
+          type: subanta
+          stem: सीता
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालिका
+        gloss:
+          en: girl
+          hi: बालिका
+        check:
+          type: subanta
+          stem: बालिका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: गङ्गा नदी।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The Gaṅgā is a river.
+        hi: गंगा एक नदी है।
+      words:
+      - sa: गङ्गा
+        gloss:
+          en: the Gaṅgā
+          hi: गंगा
+        check:
+          type: subanta
+          stem: गङ्गा
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: नदी
+        gloss:
+          en: river
+          hi: नदी
+        check:
+          type: subanta
+          stem: नदी
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: गङ्गा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the Gaṅgā
+        hi: गंगा
+      check:
+        type: subanta
+        stem: गङ्गा
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गङ्गा}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गङ्गा}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: नदी
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: river
+        hi: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is needed.
+          The verb {{अस्ति}} means “exists”, “there is”.
+        hi: ‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया
+          {{अस्ति}} का अर्थ है ‘है’, ‘विद्यमान है’।
+    - id: i5
+      sa: गङ्गा नदी।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The Gaṅgā is a river.
+        hi: गंगा एक नदी है।
+      words:
+      - sa: गङ्गा
+        gloss:
+          en: the Gaṅgā
+          hi: गंगा
+        check:
+          type: subanta
+          stem: गङ्गा
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: नदी
+        gloss:
+          en: river
+          hi: नदी
+        check:
+          type: subanta
+          stem: नदी
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+  - id: v-source-example-3
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: नदी अस्ति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: There is a river.
+        hi: एक नदी है।
+      words:
+      - sa: नदी
+        gloss:
+          en: river
+          hi: नदी
+        check:
+          type: subanta
+          stem: नदी
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is, exists
+          hi: है, विद्यमान है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: नदी
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: river
+        hi: नदी
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: अस्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is, exists
+        hi: है, विद्यमान है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is needed.
+          The verb {{अस्ति}} means “exists”, “there is”.
+        hi: ‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया
+          {{अस्ति}} का अर्थ है ‘है’, ‘विद्यमान है’।
+    - id: i5
+      sa: नदी अस्ति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: There is a river.
+        hi: एक नदी है।
+      words:
+      - sa: नदी
+        gloss:
+          en: river
+          hi: नदी
+        check:
+          type: subanta
+          stem: नदी
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is, exists
+          hi: है, विद्यमान है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p1
   kind: practice
   depth: core
@@ -166,6 +600,114 @@ cards:
   - correct: true
     sa: सीता बालिका
   - sa: सीता बालिकाम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः बालकः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma is a boy.
+        hi: राम बालक है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: रामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is needed.
+          The verb {{अस्ति}} means “exists”, “there is”.
+        hi: ‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया
+          {{अस्ति}} का अर्थ है ‘है’, ‘विद्यमान है’।
+    - id: i5
+      sa: रामः बालकः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma is a boy.
+        hi: राम बालक है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -190,6 +732,114 @@ cards:
   - text:
       en: goes
       hi: जाता है
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः बालकः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma is a boy.
+        hi: राम बालक है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: रामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is needed.
+          The verb {{अस्ति}} means “exists”, “there is”.
+        hi: ‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया
+          {{अस्ति}} का अर्थ है ‘है’, ‘विद्यमान है’।
+    - id: i5
+      sa: रामः बालकः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma is a boy.
+        hi: राम बालक है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -228,14 +878,124 @@ cards:
   gate: true
   story:
     success:
-      en: '“गङ्गा नदी,” you say, and the river glitters. The spirit taps his own chest, then the step beneath him, and says a word of his own: “घाटकः।”'
-      hi: '“गङ्गा नदी,” आप कहते हैं और नदी झिलमिलाती है। भूत अपनी छाती थपथपाता है, फिर नीचे की सीढ़ी, और अपना एक शब्द बोलता है: “घाटकः।”'
+      en: '“गङ्गा नदी,” you say, and the river glitters. The spirit taps his own chest, then the step beneath him, and says
+        a word of his own: “घाटकः।”'
+      hi: '“गङ्गा नदी,” आप कहते हैं और नदी झिलमिलाती है। भूत अपनी छाती थपथपाता है, फिर नीचे की सीढ़ी, और अपना एक शब्द बोलता
+        है: “घाटकः।”'
     failure:
       en: The river stays still. Put the name first, then what it is.
       hi: नदी स्थिर रहती है। पहले नाम, फिर वह क्या है।
   tokens:
   - गङ्गा
   - नदी
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः बालकः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma is a boy.
+        hi: राम बालक है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: रामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is needed.
+          The verb {{अस्ति}} means “exists”, “there is”.
+        hi: ‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया
+          {{अस्ति}} का अर्थ है ‘है’, ‘विद्यमान है’।
+    - id: i5
+      sa: रामः बालकः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma is a boy.
+        hi: राम बालक है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -252,6 +1012,114 @@ cards:
   tokens:
   - घाटकः
   - भूतः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः बालकः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma is a boy.
+        hi: राम बालक है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: रामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “Rāma is a boy”, put {{रामः}} and {{बालकः}} side by side. Both are in the first case, and no verb is needed.
+          The verb {{अस्ति}} means “exists”, “there is”.
+        hi: ‘राम बालक है’ कहने के लिए {{रामः}} और {{बालकः}} साथ रखिए। दोनों प्रथमा में हैं, और क्रिया की ज़रूरत नहीं। क्रिया
+          {{अस्ति}} का अर्थ है ‘है’, ‘विद्यमान है’।
+    - id: i5
+      sa: रामः बालकः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma is a boy.
+        hi: राम बालक है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
 - id: sum
   kind: summary
   title:

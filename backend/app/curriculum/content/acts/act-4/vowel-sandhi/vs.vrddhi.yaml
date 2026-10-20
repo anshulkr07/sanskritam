@@ -24,7 +24,8 @@ cards:
     hi: तीसरी प्रतिमा
   depth: core
   image:
-    brief: The third statue holding a small drum, her fingers poised to tap; the first two statues beside her; Śuka squinting up at her; Lubdhaka's foreman wiping his brow; morning light.
+    brief: The third statue holding a small drum, her fingers poised to tap; the first two statues beside her; Śuka squinting
+      up at her; Lubdhaka's foreman wiping his brow; morning light.
     alt:
       en: A stone statue with a small drum poised to tap while a parrot squints up
       hi: छोटा ढोल थामे पत्थर की प्रतिमा, ऊपर देखता तोता
@@ -38,8 +39,12 @@ cards:
     ratio: '4:3'
     id: vs-vrddhi-s1
   narration:
-    en: 'The third statue holds a small drum. “सदैव,” she says: “always.” “तथैव”: “just so.” “जलौघः”: “a flood of water.” Śuka squints. “Those have an ऐ and an औ in the middle. Where did they come from?” “From a vowel that grew twice,” says Dādī. “अ meeting ए or ओ does not just strengthen: it grows to the top.”'
-    hi: 'तीसरी प्रतिमा के हाथ में छोटा ढोल है। “सदैव,” वह कहती है: “हमेशा।” “तथैव”: “वैसे ही।” “जलौघः”: “जल की बाढ़।” शुक आँखें सिकोड़ता है। “इनके बीच में ऐ और औ हैं। ये कहाँ से आए?” “एक ऐसे स्वर से जो दो बार बढ़ा,” दादी कहती हैं। “अ का ए या ओ से मिलना केवल बलवान् करना नहीं है: वह चरम तक बढ़ जाता है।”'
+    en: 'The third statue holds a small drum. “सदैव,” she says: “always.” “तथैव”: “just so.” “जलौघः”: “a flood of water.”
+      Śuka squints. “Those have an ऐ and an औ in the middle. Where did they come from?” “From a vowel that grew twice,” says
+      Dādī. “अ meeting ए or ओ does not just strengthen: it grows to the top.”'
+    hi: 'तीसरी प्रतिमा के हाथ में छोटा ढोल है। “सदैव,” वह कहती है: “हमेशा।” “तथैव”: “वैसे ही।” “जलौघः”: “जल की बाढ़।” शुक
+      आँखें सिकोड़ता है। “इनके बीच में ऐ और औ हैं। ये कहाँ से आए?” “एक ऐसे स्वर से जो दो बार बढ़ा,” दादी कहती हैं। “अ का ए
+      या ओ से मिलना केवल बलवान् करना नहीं है: वह चरम तक बढ़ जाता है।”'
   quote:
     sa: कात्यायनो जगादैनमुपविष्टः क्षणान्तरे
     gloss:
@@ -66,13 +71,49 @@ cards:
   skills:
   - sandhi.vrddhi
   body:
-    en: When {{अ}} or {{आ}} meets {{ए}} or {{ऐ}}, the result is {{ऐ}}; when it meets {{ओ}} or {{औ}}, it is {{औ}}. {{सदा + एव}} gives {{सदैव}}; {{जल + ओघः}} gives {{जलौघः}}. This is {{वृद्धिः}}, the strongest grade.
-    hi: जब {{अ}} या {{आ}}, {{ए}} या {{ऐ}} से मिलते हैं तो {{ऐ}} बनता है; {{ओ}} या {{औ}} से {{औ}}। {{सदा + एव}} से {{सदैव}}; {{जल + ओघः}} से {{जलौघः}}। यह {{वृद्धिः}} है, सबसे प्रबल दर्जा।
+    en: When {{अ}} or {{आ}} meets {{ए}} or {{ऐ}}, the result is {{ऐ}}; when it meets {{ओ}} or {{औ}}, it is {{औ}}. {{सदा +
+      एव}} gives {{सदैव}}; {{जल + ओघः}} gives {{जलौघः}}. This is {{वृद्धिः}}, the strongest grade.
+    hi: जब {{अ}} या {{आ}}, {{ए}} या {{ऐ}} से मिलते हैं तो {{ऐ}} बनता है; {{ओ}} या {{औ}} से {{औ}}। {{सदा + एव}} से {{सदैव}};
+      {{जल + ओघः}} से {{जलौघः}}। यह {{वृद्धिः}} है, सबसे प्रबल दर्जा।
   term:
     sa: वृद्धिः
     meaning:
       en: 'growth: आ, ऐ, औ'
       hi: 'वृद्धि: आ, ऐ, औ'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{ए}} or {{ऐ}}, the result is {{ऐ}}; when it meets {{ओ}} or {{औ}}, it is {{औ}}. {{सदा
+        + एव}} gives {{सदैव}}; {{जल + ओघः}} gives {{जलौघः}}. This is {{वृद्धिः}}, the strongest grade.
+      hi: जब {{अ}} या {{आ}}, {{ए}} या {{ऐ}} से मिलते हैं तो {{ऐ}} बनता है; {{ओ}} या {{औ}} से {{औ}}। {{सदा + एव}} से {{सदैव}};
+        {{जल + ओघः}} से {{जलौघः}}। यह {{वृद्धिः}} है, सबसे प्रबल दर्जा।
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: आ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: ऐ
+    - id: i4
+      sa: ओ
+    - id: i5
+      sa: औ
+    - id: i6
+      sa: सदा + एव
+    - id: i7
+      sa: सदैव
+    - id: i8
+      sa: जल + ओघः
+    - id: i9
+      sa: जलौघः
+    - id: i10
+      sa: वृद्धिः
 - id: tb1
   kind: table
   title:
@@ -167,6 +208,40 @@ cards:
     sa: सदा + एव
   - sa: सदे + एव
   - sa: सदि + एव
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{ए}} or {{ऐ}}, the result is {{ऐ}}; when it meets {{ओ}} or {{औ}}, it is {{औ}}. {{सदा
+        + एव}} gives {{सदैव}}; {{जल + ओघः}} gives {{जलौघः}}. This is {{वृद्धिः}}, the strongest grade.
+      hi: जब {{अ}} या {{आ}}, {{ए}} या {{ऐ}} से मिलते हैं तो {{ऐ}} बनता है; {{ओ}} या {{औ}} से {{औ}}। {{सदा + एव}} से {{सदैव}};
+        {{जल + ओघः}} से {{जलौघः}}। यह {{वृद्धिः}} है, सबसे प्रबल दर्जा।
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: आ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: ऐ
+    - id: i4
+      sa: ओ
+    - id: i5
+      sa: औ
+    - id: i6
+      sa: सदा + एव
+    - id: i7
+      sa: सदैव
+    - id: i8
+      sa: जल + ओघः
+    - id: i9
+      sa: जलौघः
+    - id: i10
+      sa: वृद्धिः
 - id: p2
   kind: practice
   depth: core
@@ -185,6 +260,40 @@ cards:
   - sa: तथोव
   - correct: true
     sa: तथैव
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{ए}} or {{ऐ}}, the result is {{ऐ}}; when it meets {{ओ}} or {{औ}}, it is {{औ}}. {{सदा
+        + एव}} gives {{सदैव}}; {{जल + ओघः}} gives {{जलौघः}}. This is {{वृद्धिः}}, the strongest grade.
+      hi: जब {{अ}} या {{आ}}, {{ए}} या {{ऐ}} से मिलते हैं तो {{ऐ}} बनता है; {{ओ}} या {{औ}} से {{औ}}। {{सदा + एव}} से {{सदैव}};
+        {{जल + ओघः}} से {{जलौघः}}। यह {{वृद्धिः}} है, सबसे प्रबल दर्जा।
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: आ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: ऐ
+    - id: i4
+      sa: ओ
+    - id: i5
+      sa: औ
+    - id: i6
+      sa: सदा + एव
+    - id: i7
+      sa: सदैव
+    - id: i8
+      sa: जल + ओघः
+    - id: i9
+      sa: जलौघः
+    - id: i10
+      sa: वृद्धिः
 - id: p3
   kind: practice
   depth: core
@@ -205,6 +314,40 @@ cards:
   - घः
   - ओघः
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{ए}} or {{ऐ}}, the result is {{ऐ}}; when it meets {{ओ}} or {{औ}}, it is {{औ}}. {{सदा
+        + एव}} gives {{सदैव}}; {{जल + ओघः}} gives {{जलौघः}}. This is {{वृद्धिः}}, the strongest grade.
+      hi: जब {{अ}} या {{आ}}, {{ए}} या {{ऐ}} से मिलते हैं तो {{ऐ}} बनता है; {{ओ}} या {{औ}} से {{औ}}। {{सदा + एव}} से {{सदैव}};
+        {{जल + ओघः}} से {{जलौघः}}। यह {{वृद्धिः}} है, सबसे प्रबल दर्जा।
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: आ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: ऐ
+    - id: i4
+      sa: ओ
+    - id: i5
+      sa: औ
+    - id: i6
+      sa: सदा + एव
+    - id: i7
+      sa: सदैव
+    - id: i8
+      sa: जल + ओघः
+    - id: i9
+      sa: जलौघः
+    - id: i10
+      sa: वृद्धिः
 - id: p4
   kind: practice
   depth: core
@@ -235,6 +378,40 @@ cards:
       sa: महैश्वर्यम्
     right:
       sa: महा + ऐश्वर्यम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{ए}} or {{ऐ}}, the result is {{ऐ}}; when it meets {{ओ}} or {{औ}}, it is {{औ}}. {{सदा
+        + एव}} gives {{सदैव}}; {{जल + ओघः}} gives {{जलौघः}}. This is {{वृद्धिः}}, the strongest grade.
+      hi: जब {{अ}} या {{आ}}, {{ए}} या {{ऐ}} से मिलते हैं तो {{ऐ}} बनता है; {{ओ}} या {{औ}} से {{औ}}। {{सदा + एव}} से {{सदैव}};
+        {{जल + ओघः}} से {{जलौघः}}। यह {{वृद्धिः}} है, सबसे प्रबल दर्जा।
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: आ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: ऐ
+    - id: i4
+      sa: ओ
+    - id: i5
+      sa: औ
+    - id: i6
+      sa: सदा + एव
+    - id: i7
+      sa: सदैव
+    - id: i8
+      sa: जल + ओघः
+    - id: i9
+      sa: जलौघः
+    - id: i10
+      sa: वृद्धिः
 - id: e1
   kind: explore
   depth: core
@@ -308,8 +485,12 @@ cards:
   gate: true
   story:
     success:
-      en: “वनौषधिः,” you say, and the drum statue taps, once. The note is dry and bright, like a branch breaking in frost. “Forest herbs,” she says, and taps again. “जलौघः, a flood. सदैव, always.” Lubdhaka's foreman has stopped writing. He is staring at a wall of statues that are all, quietly, speaking.
-      hi: “वनौषधिः,” आप कहते हैं, और ढोल वाली प्रतिमा एक बार थाप देती है। ध्वनि सूखी और उजली है, पाले में टूटती डाल की तरह। “वन की औषधियाँ,” वह कहती है, और फिर थाप देती है। “जलौघः, बाढ़। सदैव, हमेशा।” लुब्धक का मुखिया लिखना बन्द कर चुका है। वह प्रतिमाओं की उस दीवार को घूर रहा है जो सब चुपचाप बोल रही हैं।
+      en: “वनौषधिः,” you say, and the drum statue taps, once. The note is dry and bright, like a branch breaking in frost.
+        “Forest herbs,” she says, and taps again. “जलौघः, a flood. सदैव, always.” Lubdhaka's foreman has stopped writing.
+        He is staring at a wall of statues that are all, quietly, speaking.
+      hi: “वनौषधिः,” आप कहते हैं, और ढोल वाली प्रतिमा एक बार थाप देती है। ध्वनि सूखी और उजली है, पाले में टूटती डाल की तरह।
+        “वन की औषधियाँ,” वह कहती है, और फिर थाप देती है। “जलौघः, बाढ़। सदैव, हमेशा।” लुब्धक का मुखिया लिखना बन्द कर चुका है।
+        वह प्रतिमाओं की उस दीवार को घूर रहा है जो सब चुपचाप बोल रही हैं।
     failure:
       en: 'The drum stays silent. {{अ}} + {{औ}} = {{औ}}: {{वनौषधिः}}.'
       hi: 'ढोल चुप रहता है। {{अ}} + {{औ}} = {{औ}}: {{वनौषधिः}}।'
@@ -318,6 +499,40 @@ cards:
   - sa: वनाओषधिः
   - correct: true
     sa: वनौषधिः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{ए}} or {{ऐ}}, the result is {{ऐ}}; when it meets {{ओ}} or {{औ}}, it is {{औ}}. {{सदा
+        + एव}} gives {{सदैव}}; {{जल + ओघः}} gives {{जलौघः}}. This is {{वृद्धिः}}, the strongest grade.
+      hi: जब {{अ}} या {{आ}}, {{ए}} या {{ऐ}} से मिलते हैं तो {{ऐ}} बनता है; {{ओ}} या {{औ}} से {{औ}}। {{सदा + एव}} से {{सदैव}};
+        {{जल + ओघः}} से {{जलौघः}}। यह {{वृद्धिः}} है, सबसे प्रबल दर्जा।
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: आ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: ऐ
+    - id: i4
+      sa: ओ
+    - id: i5
+      sa: औ
+    - id: i6
+      sa: सदा + एव
+    - id: i7
+      sa: सदैव
+    - id: i8
+      sa: जल + ओघः
+    - id: i9
+      sa: जलौघः
+    - id: i10
+      sa: वृद्धिः
 - id: pn
   kind: teach
   title:
@@ -330,8 +545,48 @@ cards:
   - 6.1.88
   - 1.1.1
   body:
-    en: Sūtra 6.1.88, {{वृद्धिरेचि}}, says that when {{अ}} or {{आ}} meets an {{एच्}} vowel ({{ए}}, {{ओ}}, {{ऐ}}, {{औ}}) the result is vṛddhi. 1.1.1, {{वृद्धिरादैच्}}, names {{आ}}, {{ऐ}}, {{औ}} vṛddhi. So {{अ + ए}} gives {{ऐ}} and {{अ + ओ}} gives {{औ}}.
-    hi: सूत्र 6.1.88, {{वृद्धिरेचि}}, कहता है कि जब {{अ}} या {{आ}} {{एच्}} स्वर ({{ए}}, {{ओ}}, {{ऐ}}, {{औ}}) से मिलते हैं तो वृद्धि होती है। 1.1.1, {{वृद्धिरादैच्}}, {{आ}}, {{ऐ}}, {{औ}} को वृद्धि कहता है। इसलिए {{अ + ए}} से {{ऐ}} और {{अ + ओ}} से {{औ}}।
+    en: Sūtra 6.1.88, {{वृद्धिरेचि}}, says that when {{अ}} or {{आ}} meets an {{एच्}} vowel ({{ए}}, {{ओ}}, {{ऐ}}, {{औ}}) the
+      result is vṛddhi. 1.1.1, {{वृद्धिरादैच्}}, names {{आ}}, {{ऐ}}, {{औ}} vṛddhi. So {{अ + ए}} gives {{ऐ}} and {{अ + ओ}}
+      gives {{औ}}.
+    hi: सूत्र 6.1.88, {{वृद्धिरेचि}}, कहता है कि जब {{अ}} या {{आ}} {{एच्}} स्वर ({{ए}}, {{ओ}}, {{ऐ}}, {{औ}}) से मिलते हैं
+      तो वृद्धि होती है। 1.1.1, {{वृद्धिरादैच्}}, {{आ}}, {{ऐ}}, {{औ}} को वृद्धि कहता है। इसलिए {{अ + ए}} से {{ऐ}} और {{अ +
+      ओ}} से {{औ}}।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 6.1.88, {{वृद्धिरेचि}}, says that when {{अ}} or {{आ}} meets an {{एच्}} vowel ({{ए}}, {{ओ}}, {{ऐ}}, {{औ}})
+        the result is vṛddhi. 1.1.1, {{वृद्धिरादैच्}}, names {{आ}}, {{ऐ}}, {{औ}} vṛddhi. So {{अ + ए}} gives {{ऐ}} and {{अ
+        + ओ}} gives {{औ}}.
+      hi: सूत्र 6.1.88, {{वृद्धिरेचि}}, कहता है कि जब {{अ}} या {{आ}} {{एच्}} स्वर ({{ए}}, {{ओ}}, {{ऐ}}, {{औ}}) से मिलते हैं
+        तो वृद्धि होती है। 1.1.1, {{वृद्धिरादैच्}}, {{आ}}, {{ऐ}}, {{औ}} को वृद्धि कहता है। इसलिए {{अ + ए}} से {{ऐ}} और {{अ
+        + ओ}} से {{औ}}।
+    items:
+    - id: i0
+      sa: वृद्धिरेचि
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: एच्
+    - id: i4
+      sa: ए
+    - id: i5
+      sa: ओ
+    - id: i6
+      sa: ऐ
+    - id: i7
+      sa: औ
+    - id: i8
+      sa: वृद्धिरादैच्
+    - id: i9
+      sa: अ + ए
+    - id: i10
+      sa: अ + ओ
 - id: sum
   kind: summary
   title:

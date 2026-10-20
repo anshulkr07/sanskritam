@@ -34,6 +34,33 @@ cards:
   - text:
       en: three
       hi: तीन
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and you
+        have counted the syllables: {{रा}}-{{मः}} has two.'
+      hi: 'अक्षर में ठीक एक स्वर होता है, और उसके साथ के व्यंजन। स्वर गिन लीजिए तो अक्षर गिन लिए: {{रा}}-{{मः}} में दो अक्षर
+        हैं।'
+    items:
+    - id: i0
+      sa: रामः
+      meaning:
+        en: '{{रा}} {{मः}}: 2'
+        hi: '{{रा}} {{मः}}: 2 अक्षर'
+    - id: i1
+      sa: सीता
+      meaning:
+        en: '{{सी}} {{ता}}: 2'
+        hi: '{{सी}} {{ता}}: 2 अक्षर'
+    - id: i2
+      sa: लक्ष्मणः
+      meaning:
+        en: '{{लक्}} {{ष्म}} {{णः}}: 3'
+        hi: '{{लक्}} {{ष्म}} {{णः}}: 3 अक्षर'
 - id: p2
   kind: practice
   depth: core
@@ -51,6 +78,33 @@ cards:
   - लक्
   - ष्म
   - णः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and you
+        have counted the syllables: {{रा}}-{{मः}} has two.'
+      hi: 'अक्षर में ठीक एक स्वर होता है, और उसके साथ के व्यंजन। स्वर गिन लीजिए तो अक्षर गिन लिए: {{रा}}-{{मः}} में दो अक्षर
+        हैं।'
+    items:
+    - id: i0
+      sa: रामः
+      meaning:
+        en: '{{रा}} {{मः}}: 2'
+        hi: '{{रा}} {{मः}}: 2 अक्षर'
+    - id: i1
+      sa: सीता
+      meaning:
+        en: '{{सी}} {{ता}}: 2'
+        hi: '{{सी}} {{ता}}: 2 अक्षर'
+    - id: i2
+      sa: लक्ष्मणः
+      meaning:
+        en: '{{लक्}} {{ष्म}} {{णः}}: 3'
+        hi: '{{लक्}} {{ष्म}} {{णः}}: 3 अक्षर'
 - id: p3
   kind: practice
   depth: core
@@ -69,6 +123,38 @@ cards:
     sa: ए
   - sa: ओ
   - sa: उ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Some sounds use two places. {{ए}} is throat + palate; {{ओ}} is throat + lips; {{व}} is teeth + lips. Each nasal
+        uses the nose and its own row: {{ङ}} throat + nose, {{म}} lips + nose.'
+      hi: 'कुछ ध्वनियाँ दो स्थानों का उपयोग करती हैं। {{ए}} कण्ठ + तालु है; {{ओ}} कण्ठ + ओष्ठ; {{व}} दन्त + ओष्ठ। हर नासिक्य
+        नाक और अपनी पंक्ति का स्थान लेता है: {{ङ}} कण्ठ + नाक, {{म}} ओष्ठ + नाक।'
+    items:
+    - id: i0
+      sa: ए
+      meaning:
+        en: throat and palate
+        hi: कण्ठ और तालु
+    - id: i1
+      sa: ओ
+      meaning:
+        en: throat and lips
+        hi: कण्ठ और ओष्ठ
+    - id: i2
+      sa: व
+      meaning:
+        en: teeth and lips
+        hi: दन्त और ओष्ठ
+    - id: i3
+      sa: ङ
+      meaning:
+        en: throat and nose
+        hi: कण्ठ और नाक
 - id: p4
   kind: practice
   depth: core
@@ -107,6 +193,38 @@ cards:
       text:
         en: lips
         hi: ओष्ठ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Some sounds use two places. {{ए}} is throat + palate; {{ओ}} is throat + lips; {{व}} is teeth + lips. Each nasal
+        uses the nose and its own row: {{ङ}} throat + nose, {{म}} lips + nose.'
+      hi: 'कुछ ध्वनियाँ दो स्थानों का उपयोग करती हैं। {{ए}} कण्ठ + तालु है; {{ओ}} कण्ठ + ओष्ठ; {{व}} दन्त + ओष्ठ। हर नासिक्य
+        नाक और अपनी पंक्ति का स्थान लेता है: {{ङ}} कण्ठ + नाक, {{म}} ओष्ठ + नाक।'
+    items:
+    - id: i0
+      sa: ए
+      meaning:
+        en: throat and palate
+        hi: कण्ठ और तालु
+    - id: i1
+      sa: ओ
+      meaning:
+        en: throat and lips
+        hi: कण्ठ और ओष्ठ
+    - id: i2
+      sa: व
+      meaning:
+        en: teeth and lips
+        hi: दन्त और ओष्ठ
+    - id: i3
+      sa: ङ
+      meaning:
+        en: throat and nose
+        hi: कण्ठ और नाक
 - id: p5
   kind: practice
   depth: core
@@ -125,6 +243,30 @@ cards:
   - correct: true
     sa: ष
   - sa: स
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'In IAST every sign stands for exactly one Devanagari sound. A bar means long: {{आ}} is ā. A dot below means retroflex:
+        {{ट}} is ṭ. {{श}} is ś, {{ष}} is ṣ, {{ङ}} is ṅ, {{ञ}} is ñ.'
+      hi: 'IAST में हर चिह्न देवनागरी की ठीक एक ध्वनि के लिए है। ऊपर की रेखा का अर्थ दीर्घ: {{आ}} यानी ā। नीचे का बिन्दु मूर्धन्य
+        दिखाता है: {{ट}} यानी ṭ। {{श}} यानी ś, {{ष}} यानी ṣ, {{ङ}} यानी ṅ, {{ञ}} यानी ñ।'
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: ट
+    - id: i2
+      sa: श
+    - id: i3
+      sa: ष
+    - id: i4
+      sa: ङ
+    - id: i5
+      sa: ञ
 - id: p6
   kind: practice
   depth: core
@@ -143,6 +285,30 @@ cards:
     sa: गङ्गा
   - sa: गञ्जा
   - sa: गण्डा
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'In IAST every sign stands for exactly one Devanagari sound. A bar means long: {{आ}} is ā. A dot below means retroflex:
+        {{ट}} is ṭ. {{श}} is ś, {{ष}} is ṣ, {{ङ}} is ṅ, {{ञ}} is ñ.'
+      hi: 'IAST में हर चिह्न देवनागरी की ठीक एक ध्वनि के लिए है। ऊपर की रेखा का अर्थ दीर्घ: {{आ}} यानी ā। नीचे का बिन्दु मूर्धन्य
+        दिखाता है: {{ट}} यानी ṭ। {{श}} यानी ś, {{ष}} यानी ṣ, {{ङ}} यानी ṅ, {{ञ}} यानी ñ।'
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: ट
+    - id: i2
+      sa: श
+    - id: i3
+      sa: ष
+    - id: i4
+      sa: ङ
+    - id: i5
+      sa: ञ
 - id: p7
   kind: practice
   depth: core
@@ -161,6 +327,56 @@ cards:
   - correct: true
     sa: भरतः
   - sa: भारतः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column
+          of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+        hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का
+          एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+    - id: i3
+      sa: रामः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p8
   kind: practice
   depth: core
@@ -178,11 +394,65 @@ cards:
   gate: true
   story:
     success:
-      en: '“मौनी अस्मि। वदामि!” The pale-gold spirit''s voice rings out, and he laughs, lighter than before. He points to the glowing leaf, then out of the window to the river: “द्वितीयं पत्रं नद्याः तीरे अस्ति।” In the doorway, the tall man in the dark coat steps back into the shadows.'
-      hi: '“मौनी अस्मि। वदामि!” सुनहरे भूत की आवाज़ गूँजती है, और वह पहले से हल्का होकर हँस पड़ता है। वह चमकते पत्र की ओर, फिर खिड़की से नदी की ओर इशारा करता है: “द्वितीयं पत्रं नद्याः तीरे अस्ति।” द्वार पर गहरे कोट वाला लम्बा आदमी परछाईं में लौट जाता है।'
+      en: '“मौनी अस्मि। वदामि!” The pale-gold spirit''s voice rings out, and he laughs, lighter than before. He points to
+        the glowing leaf, then out of the window to the river: “द्वितीयं पत्रं नद्याः तीरे अस्ति।” In the doorway, the tall
+        man in the dark coat steps back into the shadows.'
+      hi: '“मौनी अस्मि। वदामि!” सुनहरे भूत की आवाज़ गूँजती है, और वह पहले से हल्का होकर हँस पड़ता है। वह चमकते पत्र की ओर,
+        फिर खिड़की से नदी की ओर इशारा करता है: “द्वितीयं पत्रं नद्याः तीरे अस्ति।” द्वार पर गहरे कोट वाला लम्बा आदमी परछाईं
+        में लौट जाता है।'
     failure:
       en: 'The name will not hold. Two syllables: {{मौ}}, then {{नी}}.'
       hi: 'नाम नहीं टिकता। दो अक्षर: {{मौ}}, फिर {{नी}}।'
   tokens:
   - मौ
   - नी
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column
+          of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+        hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का
+          एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+    - id: i3
+      sa: रामः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'

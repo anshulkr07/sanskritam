@@ -22,7 +22,8 @@ cards:
     hi: पुराना रजिस्टर
   depth: core
   image:
-    brief: 'The temple library: Dādī lowers a huge cloth-bound register onto the low reading desk; between the shelves a tall thin pale-gold spirit stands with one finger to his lips and a scroll under his arm; you and Śuka watching.'
+    brief: 'The temple library: Dādī lowers a huge cloth-bound register onto the low reading desk; between the shelves a tall
+      thin pale-gold spirit stands with one finger to his lips and a scroll under his arm; you and Śuka watching.'
     alt:
       en: A grandmother lowers a huge register while a tall pale-gold spirit stands with a finger to his lips
       hi: विशाल रजिस्टर उतारती दादी और होंठों पर उँगली रखे सुनहरा भूत
@@ -34,10 +35,15 @@ cards:
     place: granthalaya
     ratio: '4:3'
     id: reading-syllables-s1
-    text_in_image: ["मौनी"]
+    text_in_image:
+    - मौनी
   narration:
-    en: 'Back in the temple library, Dādī lifts down a huge cloth-bound register: names, names, names, in columns. Nidrālu''s carved clue brought you here. Between the shelves stands a tall, thin, pale-gold spirit with a finger pressed to his lips. He cannot say a word.'
-    hi: 'मंदिर के ग्रंथालय में दादी कपड़े में बँधा एक विशाल रजिस्टर उतारती हैं: नाम, नाम, नाम, स्तम्भों में। निद्रालु का खुदा संकेत आपको यहीं लाया। अलमारियों के बीच एक लम्बा, दुबला, हल्का सुनहरा भूत खड़ा है, उँगली होंठों पर रखे। वह एक शब्द नहीं बोल पाता।'
+    en: 'Back in the temple library, Dādī lifts down a huge cloth-bound register: names, names, names, in columns. Nidrālu''s
+      carved clue brought you here. Between the shelves stands a tall, thin, pale-gold spirit with a finger pressed to his
+      lips. He cannot say a word.'
+    hi: 'मंदिर के ग्रंथालय में दादी कपड़े में बँधा एक विशाल रजिस्टर उतारती हैं: नाम, नाम, नाम, स्तम्भों में। निद्रालु का खुदा
+      संकेत आपको यहीं लाया। अलमारियों के बीच एक लम्बा, दुबला, हल्का सुनहरा भूत खड़ा है, उँगली होंठों पर रखे। वह एक शब्द नहीं
+      बोल पाता।'
   lines:
   - speaker: dadi
     sa: पश्य। मौनी।
@@ -53,8 +59,10 @@ cards:
   skills:
   - read.syllables
   body:
-    en: 'A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and you have counted the syllables: {{रा}}-{{मः}} has two.'
-    hi: 'अक्षर में ठीक एक स्वर होता है, और उसके साथ के व्यंजन। स्वर गिन लीजिए तो अक्षर गिन लिए: {{रा}}-{{मः}} में दो अक्षर हैं।'
+    en: 'A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and you
+      have counted the syllables: {{रा}}-{{मः}} has two.'
+    hi: 'अक्षर में ठीक एक स्वर होता है, और उसके साथ के व्यंजन। स्वर गिन लीजिए तो अक्षर गिन लिए: {{रा}}-{{मः}} में दो अक्षर
+      हैं।'
   rows:
   - sa: रामः
     gloss:
@@ -73,6 +81,33 @@ cards:
     meaning:
       en: 'a syllable (also: a letter)'
       hi: अक्षर (वर्ण भी)
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: 'A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and you
+        have counted the syllables: {{रा}}-{{मः}} has two.'
+      hi: 'अक्षर में ठीक एक स्वर होता है, और उसके साथ के व्यंजन। स्वर गिन लीजिए तो अक्षर गिन लिए: {{रा}}-{{मः}} में दो अक्षर
+        हैं।'
+    items:
+    - id: i0
+      sa: रामः
+      meaning:
+        en: '{{रा}} {{मः}}: 2'
+        hi: '{{रा}} {{मः}}: 2 अक्षर'
+    - id: i1
+      sa: सीता
+      meaning:
+        en: '{{सी}} {{ता}}: 2'
+        hi: '{{सी}} {{ता}}: 2 अक्षर'
+    - id: i2
+      sa: लक्ष्मणः
+      meaning:
+        en: '{{लक्}} {{ष्म}} {{णः}}: 3'
+        hi: '{{लक्}} {{ष्म}} {{णः}}: 3 अक्षर'
 - id: p1
   kind: practice
   depth: core
@@ -97,6 +132,33 @@ cards:
   - text:
       en: three
       hi: तीन
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and you
+        have counted the syllables: {{रा}}-{{मः}} has two.'
+      hi: 'अक्षर में ठीक एक स्वर होता है, और उसके साथ के व्यंजन। स्वर गिन लीजिए तो अक्षर गिन लिए: {{रा}}-{{मः}} में दो अक्षर
+        हैं।'
+    items:
+    - id: i0
+      sa: रामः
+      meaning:
+        en: '{{रा}} {{मः}}: 2'
+        hi: '{{रा}} {{मः}}: 2 अक्षर'
+    - id: i1
+      sa: सीता
+      meaning:
+        en: '{{सी}} {{ता}}: 2'
+        hi: '{{सी}} {{ता}}: 2 अक्षर'
+    - id: i2
+      sa: लक्ष्मणः
+      meaning:
+        en: '{{लक्}} {{ष्म}} {{णः}}: 3'
+        hi: '{{लक्}} {{ष्म}} {{णः}}: 3 अक्षर'
 - id: t2
   kind: teach
   title:
@@ -129,6 +191,101 @@ cards:
       linga: Pum
       vibhakti: Prathama
       vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सत्यम्
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'truth: two syllables'
+        hi: 'सत्य: दो अक्षर'
+      check:
+        type: subanta
+        stem: सत्य
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सत्य}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सत्य}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A joined letter has no vowel inside it, so it adds no syllable. {{सत्यम्}} has two vowels, two syllables: {{सत्}}-{{यम्}}.'
+        hi: 'संयुक्ताक्षर के भीतर स्वर नहीं होता, इसलिए वह अक्षर नहीं बढ़ाता। {{सत्यम्}} में दो स्वर हैं, दो अक्षर: {{सत्}}-{{यम्}}।'
+    - id: i3
+      sa: सत्यम्
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'truth: two syllables'
+        hi: 'सत्य: दो अक्षर'
+      check:
+        type: subanta
+        stem: सत्य
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सत्य}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सत्य}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: लक्ष्मणः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'Lakṣmaṇa: three syllables'
+        hi: 'लक्ष्मण: तीन अक्षर'
+      check:
+        type: subanta
+        stem: लक्ष्मण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{लक्ष्मण}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{लक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A joined letter has no vowel inside it, so it adds no syllable. {{सत्यम्}} has two vowels, two syllables: {{सत्}}-{{यम्}}.'
+        hi: 'संयुक्ताक्षर के भीतर स्वर नहीं होता, इसलिए वह अक्षर नहीं बढ़ाता। {{सत्यम्}} में दो स्वर हैं, दो अक्षर: {{सत्}}-{{यम्}}।'
+    - id: i3
+      sa: लक्ष्मणः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'Lakṣmaṇa: three syllables'
+        hi: 'लक्ष्मण: तीन अक्षर'
+      check:
+        type: subanta
+        stem: लक्ष्मण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{लक्ष्मण}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{लक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: e1
   kind: explore
   depth: core
@@ -189,6 +346,33 @@ cards:
       text:
         en: three
         hi: तीन
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and you
+        have counted the syllables: {{रा}}-{{मः}} has two.'
+      hi: 'अक्षर में ठीक एक स्वर होता है, और उसके साथ के व्यंजन। स्वर गिन लीजिए तो अक्षर गिन लिए: {{रा}}-{{मः}} में दो अक्षर
+        हैं।'
+    items:
+    - id: i0
+      sa: रामः
+      meaning:
+        en: '{{रा}} {{मः}}: 2'
+        hi: '{{रा}} {{मः}}: 2 अक्षर'
+    - id: i1
+      sa: सीता
+      meaning:
+        en: '{{सी}} {{ता}}: 2'
+        hi: '{{सी}} {{ता}}: 2 अक्षर'
+    - id: i2
+      sa: लक्ष्मणः
+      meaning:
+        en: '{{लक्}} {{ष्म}} {{णः}}: 3'
+        hi: '{{लक्}} {{ष्म}} {{णः}}: 3 अक्षर'
 - id: p3
   kind: practice
   title:
@@ -217,6 +401,33 @@ cards:
   - ह
   - नु
   - मान्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and you
+        have counted the syllables: {{रा}}-{{मः}} has two.'
+      hi: 'अक्षर में ठीक एक स्वर होता है, और उसके साथ के व्यंजन। स्वर गिन लीजिए तो अक्षर गिन लिए: {{रा}}-{{मः}} में दो अक्षर
+        हैं।'
+    items:
+    - id: i0
+      sa: रामः
+      meaning:
+        en: '{{रा}} {{मः}}: 2'
+        hi: '{{रा}} {{मः}}: 2 अक्षर'
+    - id: i1
+      sa: सीता
+      meaning:
+        en: '{{सी}} {{ता}}: 2'
+        hi: '{{सी}} {{ता}}: 2 अक्षर'
+    - id: i2
+      sa: लक्ष्मणः
+      meaning:
+        en: '{{लक्}} {{ष्म}} {{णः}}: 3'
+        hi: '{{लक्}} {{ष्म}} {{णः}}: 3 अक्षर'
 - id: p4
   kind: practice
   depth: core
@@ -235,6 +446,33 @@ cards:
     sa: रामः
   - sa: लक्ष्मणः
   - sa: हनुमान्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and you
+        have counted the syllables: {{रा}}-{{मः}} has two.'
+      hi: 'अक्षर में ठीक एक स्वर होता है, और उसके साथ के व्यंजन। स्वर गिन लीजिए तो अक्षर गिन लिए: {{रा}}-{{मः}} में दो अक्षर
+        हैं।'
+    items:
+    - id: i0
+      sa: रामः
+      meaning:
+        en: '{{रा}} {{मः}}: 2'
+        hi: '{{रा}} {{मः}}: 2 अक्षर'
+    - id: i1
+      sa: सीता
+      meaning:
+        en: '{{सी}} {{ता}}: 2'
+        hi: '{{सी}} {{ता}}: 2 अक्षर'
+    - id: i2
+      sa: लक्ष्मणः
+      meaning:
+        en: '{{लक्}} {{ष्म}} {{णः}}: 3'
+        hi: '{{लक्}} {{ष्म}} {{णः}}: 3 अक्षर'
 - id: sum
   kind: summary
   title:

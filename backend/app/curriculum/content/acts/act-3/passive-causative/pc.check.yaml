@@ -28,6 +28,156 @@ cards:
   - correct: true
     sa: पठ्यते
   - sa: पाठयति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामेण पुस्तकम् पठ्यते।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The book is read by Rāma.
+        hi: पुस्तक राम द्वारा पढ़ी जाती है।
+      words:
+      - sa: रामेण
+        gloss:
+          en: by Rāma
+          hi: राम द्वारा
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: the book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठ्यते
+        gloss:
+          en: is read
+          hi: पढ़ी जाती है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prayoga: Karmani
+    - id: i1
+      sa: रामेण
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by Rāma
+        hi: राम द्वारा
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+    - id: i2
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: पठ्यते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is read
+        hi: पढ़ी जाती है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Active: {{रामः पुस्तकं पठति}}, Rāma reads the book. Passive: {{रामेण पुस्तकं पठ्यते}}, the book is read by Rāma.
+          The doer goes into the third case, the object becomes the subject, and the verb takes {{-य-}} and the endings for
+          oneself: {{पठ्}} gives {{पठ्यते}}.'
+        hi: 'कर्तृवाच्य: {{रामः पुस्तकं पठति}}, राम पुस्तक पढ़ता है। कर्मवाच्य: {{रामेण पुस्तकं पठ्यते}}, पुस्तक राम द्वारा
+          पढ़ी जाती है। कर्ता तृतीया में जाता है, कर्म उद्देश्य बन जाता है, और क्रिया {{-य-}} तथा अपने लिए वाले प्रत्यय लेती
+          है: {{पठ्}} से {{पठ्यते}}।'
+    - id: i6
+      sa: रामेण पुस्तकम् पठ्यते।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The book is read by Rāma.
+        hi: पुस्तक राम द्वारा पढ़ी जाती है।
+      words:
+      - sa: रामेण
+        gloss:
+          en: by Rāma
+          hi: राम द्वारा
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: the book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठ्यते
+        gloss:
+          en: is read
+          hi: पढ़ी जाती है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prayoga: Karmani
 - id: p2
   kind: practice
   depth: core
@@ -46,6 +196,156 @@ cards:
   - correct: true
     sa: क्रियते
   - sa: कारयति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामेण पुस्तकम् पठ्यते।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The book is read by Rāma.
+        hi: पुस्तक राम द्वारा पढ़ी जाती है।
+      words:
+      - sa: रामेण
+        gloss:
+          en: by Rāma
+          hi: राम द्वारा
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: the book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठ्यते
+        gloss:
+          en: is read
+          hi: पढ़ी जाती है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prayoga: Karmani
+    - id: i1
+      sa: रामेण
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by Rāma
+        hi: राम द्वारा
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+    - id: i2
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: पठ्यते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is read
+        hi: पढ़ी जाती है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Active: {{रामः पुस्तकं पठति}}, Rāma reads the book. Passive: {{रामेण पुस्तकं पठ्यते}}, the book is read by Rāma.
+          The doer goes into the third case, the object becomes the subject, and the verb takes {{-य-}} and the endings for
+          oneself: {{पठ्}} gives {{पठ्यते}}.'
+        hi: 'कर्तृवाच्य: {{रामः पुस्तकं पठति}}, राम पुस्तक पढ़ता है। कर्मवाच्य: {{रामेण पुस्तकं पठ्यते}}, पुस्तक राम द्वारा
+          पढ़ी जाती है। कर्ता तृतीया में जाता है, कर्म उद्देश्य बन जाता है, और क्रिया {{-य-}} तथा अपने लिए वाले प्रत्यय लेती
+          है: {{पठ्}} से {{पठ्यते}}।'
+    - id: i6
+      sa: रामेण पुस्तकम् पठ्यते।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The book is read by Rāma.
+        hi: पुस्तक राम द्वारा पढ़ी जाती है।
+      words:
+      - sa: रामेण
+        gloss:
+          en: by Rāma
+          hi: राम द्वारा
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: the book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठ्यते
+        gloss:
+          en: is read
+          hi: पढ़ी जाती है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prayoga: Karmani
 - id: p3
   kind: practice
   depth: core
@@ -64,6 +364,196 @@ cards:
   - sa: पठ्यते
   - correct: true
     sa: पाठयति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
+    - id: i1
+      sa: गुरुः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the boy
+        hi: बालक को
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पाठम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the lesson
+        hi: पाठ
+      check:
+        type: subanta
+        stem: पाठ
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: पाठयति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: makes read
+        hi: पढ़ाता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The causative adds {{-अय-}} after a strengthened root and means “makes do”: {{पठ्}} gives {{पाठयति}} (makes read,
+          teaches), {{कृ}} gives {{कारयति}} (makes do), {{भुज्}} gives {{भोजयति}} (feeds), {{गम्}} gives {{गमयति}} (sends).
+          The one made to act goes in the second case.'
+        hi: 'प्रेरणार्थक रूप दृढ़ किए हुए धातु के बाद {{-अय-}} जोड़ता है और ‘करवाता है’ का अर्थ देता है: {{पठ्}} से {{पाठयति}}
+          (पढ़वाता है, पढ़ाता है), {{कृ}} से {{कारयति}} (करवाता है), {{भुज्}} से {{भोजयति}} (खिलाता है), {{गम्}} से {{गमयति}}
+          (भेजता है)। जिससे कराया जाए, वह द्वितीया में जाता है।'
+    - id: i7
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
 - id: p4
   kind: practice
   depth: core
@@ -94,6 +584,196 @@ cards:
       sa: दृश्
     right:
       sa: दर्शयति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
+    - id: i1
+      sa: गुरुः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the boy
+        hi: बालक को
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पाठम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the lesson
+        hi: पाठ
+      check:
+        type: subanta
+        stem: पाठ
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: पाठयति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: makes read
+        hi: पढ़ाता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        sanadi:
+        - Nic
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The causative adds {{-अय-}} after a strengthened root and means “makes do”: {{पठ्}} gives {{पाठयति}} (makes read,
+          teaches), {{कृ}} gives {{कारयति}} (makes do), {{भुज्}} gives {{भोजयति}} (feeds), {{गम्}} gives {{गमयति}} (sends).
+          The one made to act goes in the second case.'
+        hi: 'प्रेरणार्थक रूप दृढ़ किए हुए धातु के बाद {{-अय-}} जोड़ता है और ‘करवाता है’ का अर्थ देता है: {{पठ्}} से {{पाठयति}}
+          (पढ़वाता है, पढ़ाता है), {{कृ}} से {{कारयति}} (करवाता है), {{भुज्}} से {{भोजयति}} (खिलाता है), {{गम्}} से {{गमयति}}
+          (भेजता है)। जिससे कराया जाए, वह द्वितीया में जाता है।'
+    - id: i7
+      sa: गुरुः बालकम् पाठम् पाठयति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The teacher makes the boy read the lesson.
+        hi: गुरु बालक को पाठ पढ़ाता है।
+      words:
+      - sa: गुरुः
+        gloss:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकम्
+        gloss:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठम्
+        gloss:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पाठयति
+        gloss:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
 - id: p5
   kind: practice
   depth: core
@@ -112,6 +792,42 @@ cards:
   - correct: true
     sa: पिपासति
   - sa: पाययति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'The desiderative doubles the root and adds {{-स-}} (with {{-इ-}} before it for many roots): {{पा}} gives {{पिपासति}}
+        (wants to drink), {{पठ्}} gives {{पिपठिषति}} (wants to read), {{गम्}} gives {{जिगमिषति}} (wants to go), {{भू}} gives
+        {{बुभूषति}} (wants to be). It is called {{सन्}}.'
+      hi: 'इच्छार्थक रूप धातु को दुगुना करता है और {{-स-}} जोड़ता है (अनेक धातुओं में उससे पहले {{-इ-}}): {{पा}} से {{पिपासति}}
+        (पीना चाहता है), {{पठ्}} से {{पिपठिषति}} (पढ़ना चाहता है), {{गम्}} से {{जिगमिषति}} (जाना चाहता है), {{भू}} से {{बुभूषति}}
+        (होना चाहता है)। इसे {{सन्}} कहते हैं।'
+    items:
+    - id: i0
+      sa: -स-
+    - id: i1
+      sa: -इ-
+    - id: i2
+      sa: पा
+    - id: i3
+      sa: पिपासति
+    - id: i4
+      sa: पठ्
+    - id: i5
+      sa: पिपठिषति
+    - id: i6
+      sa: गम्
+    - id: i7
+      sa: जिगमिषति
+    - id: i8
+      sa: भू
+    - id: i9
+      sa: बुभूषति
+    - id: i10
+      sa: सन्
 - id: p6
   kind: practice
   depth: core
@@ -142,6 +858,42 @@ cards:
       sa: ज्ञा
     right:
       sa: जिज्ञासते
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'The desiderative doubles the root and adds {{-स-}} (with {{-इ-}} before it for many roots): {{पा}} gives {{पिपासति}}
+        (wants to drink), {{पठ्}} gives {{पिपठिषति}} (wants to read), {{गम्}} gives {{जिगमिषति}} (wants to go), {{भू}} gives
+        {{बुभूषति}} (wants to be). It is called {{सन्}}.'
+      hi: 'इच्छार्थक रूप धातु को दुगुना करता है और {{-स-}} जोड़ता है (अनेक धातुओं में उससे पहले {{-इ-}}): {{पा}} से {{पिपासति}}
+        (पीना चाहता है), {{पठ्}} से {{पिपठिषति}} (पढ़ना चाहता है), {{गम्}} से {{जिगमिषति}} (जाना चाहता है), {{भू}} से {{बुभूषति}}
+        (होना चाहता है)। इसे {{सन्}} कहते हैं।'
+    items:
+    - id: i0
+      sa: -स-
+    - id: i1
+      sa: -इ-
+    - id: i2
+      sa: पा
+    - id: i3
+      sa: पिपासति
+    - id: i4
+      sa: पठ्
+    - id: i5
+      sa: पिपठिषति
+    - id: i6
+      sa: गम्
+    - id: i7
+      sa: जिगमिषति
+    - id: i8
+      sa: भू
+    - id: i9
+      sa: बुभूषति
+    - id: i10
+      sa: सन्
 - id: p7
   kind: practice
   depth: core
@@ -160,8 +912,14 @@ cards:
   gate: true
   story:
     success:
-      en: '“पठ्यते, पाठयति, पिपठिषति,” you say, and Preraka claps all twelve hands. Every small hand opens and lets go: the book, the spoon, the cup, the path. “It was read, I read, I wanted to read,” he says, jumbling it all in his delight. “गत्वा!” he cries suddenly, springing back: “Having gone! गन्तुम्! To go! गतः! Gone!” He streaks off into the dark with the rose light behind him, shouting the three words over and over, and the trees take them up.'
-      hi: '“पठ्यते, पाठयति, पिपठिषति,” आप कहते हैं, और प्रेरक बारहों हाथों से ताली बजाता है। हर नन्हा हाथ खुलकर छोड़ देता है: पुस्तक, चम्मच, प्याला, राह। “पढ़ी गई, मैंने पढ़वाई, मैं पढ़ना चाहता था,” वह आनन्द में सब गड्डमड्ड कर देता है। “गत्वा!” वह अचानक पीछे उछलकर चिल्लाता है: “जाकर! गन्तुम्! जाने के लिए! गतः! गया हुआ!” वह गुलाबी रोशनी पीछे छोड़ता अँधेरे में दौड़ जाता है, तीनों शब्द बार-बार चिल्लाता हुआ, और वृक्ष उन्हें दोहराने लगते हैं।'
+      en: '“पठ्यते, पाठयति, पिपठिषति,” you say, and Preraka claps all twelve hands. Every small hand opens and lets go: the
+        book, the spoon, the cup, the path. “It was read, I read, I wanted to read,” he says, jumbling it all in his delight.
+        “गत्वा!” he cries suddenly, springing back: “Having gone! गन्तुम्! To go! गतः! Gone!” He streaks off into the dark
+        with the rose light behind him, shouting the three words over and over, and the trees take them up.'
+      hi: '“पठ्यते, पाठयति, पिपठिषति,” आप कहते हैं, और प्रेरक बारहों हाथों से ताली बजाता है। हर नन्हा हाथ खुलकर छोड़ देता
+        है: पुस्तक, चम्मच, प्याला, राह। “पढ़ी गई, मैंने पढ़वाई, मैं पढ़ना चाहता था,” वह आनन्द में सब गड्डमड्ड कर देता है।
+        “गत्वा!” वह अचानक पीछे उछलकर चिल्लाता है: “जाकर! गन्तुम्! जाने के लिए! गतः! गया हुआ!” वह गुलाबी रोशनी पीछे छोड़ता
+        अँधेरे में दौड़ जाता है, तीनों शब्द बार-बार चिल्लाता हुआ, और वृक्ष उन्हें दोहराने लगते हैं।'
     failure:
       en: 'A hand still holds on. The three: {{पठ्यते पाठयति पिपठिषति}}.'
       hi: 'एक हाथ अब भी पकड़े है। तीनों: {{पठ्यते पाठयति पिपठिषति}}।'
@@ -169,3 +927,153 @@ cards:
   - पठ्यते
   - पाठयति
   - पिपठिषति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामेण पुस्तकम् पठ्यते।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The book is read by Rāma.
+        hi: पुस्तक राम द्वारा पढ़ी जाती है।
+      words:
+      - sa: रामेण
+        gloss:
+          en: by Rāma
+          hi: राम द्वारा
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: the book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठ्यते
+        gloss:
+          en: is read
+          hi: पढ़ी जाती है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prayoga: Karmani
+    - id: i1
+      sa: रामेण
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by Rāma
+        hi: राम द्वारा
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+    - id: i2
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: पठ्यते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is read
+        hi: पढ़ी जाती है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prayoga: Karmani
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Active: {{रामः पुस्तकं पठति}}, Rāma reads the book. Passive: {{रामेण पुस्तकं पठ्यते}}, the book is read by Rāma.
+          The doer goes into the third case, the object becomes the subject, and the verb takes {{-य-}} and the endings for
+          oneself: {{पठ्}} gives {{पठ्यते}}.'
+        hi: 'कर्तृवाच्य: {{रामः पुस्तकं पठति}}, राम पुस्तक पढ़ता है। कर्मवाच्य: {{रामेण पुस्तकं पठ्यते}}, पुस्तक राम द्वारा
+          पढ़ी जाती है। कर्ता तृतीया में जाता है, कर्म उद्देश्य बन जाता है, और क्रिया {{-य-}} तथा अपने लिए वाले प्रत्यय लेती
+          है: {{पठ्}} से {{पठ्यते}}।'
+    - id: i6
+      sa: रामेण पुस्तकम् पठ्यते।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The book is read by Rāma.
+        hi: पुस्तक राम द्वारा पढ़ी जाती है।
+      words:
+      - sa: रामेण
+        gloss:
+          en: by Rāma
+          hi: राम द्वारा
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: the book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठ्यते
+        gloss:
+          en: is read
+          hi: पढ़ी जाती है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prayoga: Karmani

@@ -28,6 +28,151 @@ cards:
   - sa: गृहेण
   - correct: true
     sa: गृहे
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: कूपे जलम् अस्ति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: There is water in the well.
+        hi: कुएँ में जल है।
+      words:
+      - sa: कूपे
+        gloss:
+          en: in the well
+          hi: कुएँ में
+        check:
+          type: subanta
+          stem: कूप
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: कूपे
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: in the well
+        hi: कुएँ में
+      check:
+        type: subanta
+        stem: कूप
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कूप}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{कूप}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: जलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: water
+        hi: जल
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{जल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{जल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: अस्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The place or support where something is or happens takes the seventh case, {{सप्तमी}}: {{कूपे जलम्}} (water in
+          the well), {{गृहे दीपः}} (a lamp in the house), {{वृक्षे शुकः}} (a parrot in the tree).'
+        hi: 'जो स्थान या आधार जहाँ कुछ होता है, वह सप्तमी में आता है: {{कूपे जलम्}} (कुएँ में जल), {{गृहे दीपः}} (घर में दीपक),
+          {{वृक्षे शुकः}} (पेड़ पर तोता)।'
+    - id: i6
+      sa: कूपे जलम् अस्ति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: There is water in the well.
+        hi: कुएँ में जल है।
+      words:
+      - sa: कूपे
+        gloss:
+          en: in the well
+          hi: कुएँ में
+        check:
+          type: subanta
+          stem: कूप
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -60,6 +205,151 @@ cards:
       text:
         en: in the river
         hi: नदी में
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: कूपे जलम् अस्ति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: There is water in the well.
+        hi: कुएँ में जल है।
+      words:
+      - sa: कूपे
+        gloss:
+          en: in the well
+          hi: कुएँ में
+        check:
+          type: subanta
+          stem: कूप
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: कूपे
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: in the well
+        hi: कुएँ में
+      check:
+        type: subanta
+        stem: कूप
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कूप}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{कूप}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: जलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: water
+        hi: जल
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{जल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{जल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: अस्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The place or support where something is or happens takes the seventh case, {{सप्तमी}}: {{कूपे जलम्}} (water in
+          the well), {{गृहे दीपः}} (a lamp in the house), {{वृक्षे शुकः}} (a parrot in the tree).'
+        hi: 'जो स्थान या आधार जहाँ कुछ होता है, वह सप्तमी में आता है: {{कूपे जलम्}} (कुएँ में जल), {{गृहे दीपः}} (घर में दीपक),
+          {{वृक्षे शुकः}} (पेड़ पर तोता)।'
+    - id: i6
+      sa: कूपे जलम् अस्ति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: There is water in the well.
+        hi: कुएँ में जल है।
+      words:
+      - sa: कूपे
+        gloss:
+          en: in the well
+          hi: कुएँ में
+        check:
+          type: subanta
+          stem: कूप
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -77,6 +367,151 @@ cards:
   - कूपे
   - जलम्
   - अस्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: कूपे जलम् अस्ति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: There is water in the well.
+        hi: कुएँ में जल है।
+      words:
+      - sa: कूपे
+        gloss:
+          en: in the well
+          hi: कुएँ में
+        check:
+          type: subanta
+          stem: कूप
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: कूपे
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: in the well
+        hi: कुएँ में
+      check:
+        type: subanta
+        stem: कूप
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कूप}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{कूप}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: जलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: water
+        hi: जल
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{जल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{जल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: अस्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The place or support where something is or happens takes the seventh case, {{सप्तमी}}: {{कूपे जलम्}} (water in
+          the well), {{गृहे दीपः}} (a lamp in the house), {{वृक्षे शुकः}} (a parrot in the tree).'
+        hi: 'जो स्थान या आधार जहाँ कुछ होता है, वह सप्तमी में आता है: {{कूपे जलम्}} (कुएँ में जल), {{गृहे दीपः}} (घर में दीपक),
+          {{वृक्षे शुकः}} (पेड़ पर तोता)।'
+    - id: i6
+      sa: कूपे जलम् अस्ति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: There is water in the well.
+        hi: कुएँ में जल है।
+      words:
+      - sa: कूपे
+        gloss:
+          en: in the well
+          hi: कुएँ में
+        check:
+          type: subanta
+          stem: कूप
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -95,6 +530,130 @@ cards:
   - sa: प्रभातेन
   - correct: true
     sa: प्रभाते
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: प्रभाते वयम् पठामः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: At dawn we read.
+        hi: भोर में हम पढ़ते हैं।
+      words:
+      - sa: प्रभाते
+        gloss:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पठामः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+    - id: i1
+      sa: प्रभाते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: at dawn
+        hi: भोर में
+      check:
+        type: subanta
+        stem: प्रभात
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: वयम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: we
+        hi: हम
+    - id: i3
+      sa: पठामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night),
+          {{दिने}} (by day), {{मासे}} (in the month). It answers “when?”.'
+        hi: 'जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}}
+          (महीने में)। यह ‘कब?’ का उत्तर देती है।'
+    - id: i6
+      sa: प्रभाते वयम् पठामः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: At dawn we read.
+        hi: भोर में हम पढ़ते हैं।
+      words:
+      - sa: प्रभाते
+        gloss:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पठामः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
 - id: p5
   kind: practice
   depth: core
@@ -127,6 +686,130 @@ cards:
       text:
         en: in the month
         hi: महीने में
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: प्रभाते वयम् पठामः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: At dawn we read.
+        hi: भोर में हम पढ़ते हैं।
+      words:
+      - sa: प्रभाते
+        gloss:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पठामः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+    - id: i1
+      sa: प्रभाते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: at dawn
+        hi: भोर में
+      check:
+        type: subanta
+        stem: प्रभात
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: वयम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: we
+        hi: हम
+    - id: i3
+      sa: पठामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night),
+          {{दिने}} (by day), {{मासे}} (in the month). It answers “when?”.'
+        hi: 'जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}}
+          (महीने में)। यह ‘कब?’ का उत्तर देती है।'
+    - id: i6
+      sa: प्रभाते वयम् पठामः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: At dawn we read.
+        hi: भोर में हम पढ़ते हैं।
+      words:
+      - sa: प्रभाते
+        gloss:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पठामः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
 - id: p6
   kind: practice
   depth: core
@@ -145,6 +828,151 @@ cards:
   - correct: true
     sa: कुत्र
   - sa: कथम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: कूपे जलम् अस्ति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: There is water in the well.
+        hi: कुएँ में जल है।
+      words:
+      - sa: कूपे
+        gloss:
+          en: in the well
+          hi: कुएँ में
+        check:
+          type: subanta
+          stem: कूप
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: कूपे
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: in the well
+        hi: कुएँ में
+      check:
+        type: subanta
+        stem: कूप
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कूप}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{कूप}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: जलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: water
+        hi: जल
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{जल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{जल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: अस्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The place or support where something is or happens takes the seventh case, {{सप्तमी}}: {{कूपे जलम्}} (water in
+          the well), {{गृहे दीपः}} (a lamp in the house), {{वृक्षे शुकः}} (a parrot in the tree).'
+        hi: 'जो स्थान या आधार जहाँ कुछ होता है, वह सप्तमी में आता है: {{कूपे जलम्}} (कुएँ में जल), {{गृहे दीपः}} (घर में दीपक),
+          {{वृक्षे शुकः}} (पेड़ पर तोता)।'
+    - id: i6
+      sa: कूपे जलम् अस्ति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: There is water in the well.
+        hi: कुएँ में जल है।
+      words:
+      - sa: कूपे
+        gloss:
+          en: in the well
+          hi: कुएँ में
+        check:
+          type: subanta
+          stem: कूप
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p7
   kind: practice
   depth: core
@@ -163,6 +991,151 @@ cards:
     params:
       sentence: बालकः गृहे पठति
     seed: 8
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: कूपे जलम् अस्ति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: There is water in the well.
+        hi: कुएँ में जल है।
+      words:
+      - sa: कूपे
+        gloss:
+          en: in the well
+          hi: कुएँ में
+        check:
+          type: subanta
+          stem: कूप
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: कूपे
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: in the well
+        hi: कुएँ में
+      check:
+        type: subanta
+        stem: कूप
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कूप}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{कूप}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: जलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: water
+        hi: जल
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{जल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{जल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: अस्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The place or support where something is or happens takes the seventh case, {{सप्तमी}}: {{कूपे जलम्}} (water in
+          the well), {{गृहे दीपः}} (a lamp in the house), {{वृक्षे शुकः}} (a parrot in the tree).'
+        hi: 'जो स्थान या आधार जहाँ कुछ होता है, वह सप्तमी में आता है: {{कूपे जलम्}} (कुएँ में जल), {{गृहे दीपः}} (घर में दीपक),
+          {{वृक्षे शुकः}} (पेड़ पर तोता)।'
+    - id: i6
+      sa: कूपे जलम् अस्ति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: There is water in the well.
+        hi: कुएँ में जल है।
+      words:
+      - sa: कूपे
+        gloss:
+          en: in the well
+          hi: कुएँ में
+        check:
+          type: subanta
+          stem: कूप
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p8
   kind: practice
   depth: core
@@ -180,8 +1153,12 @@ cards:
   gate: true
   story:
     success:
-      en: '“रात्रौ गृहे दीपः अस्ति.” The flame-coloured spirit gives a joyful flicker and rises from his lamp into the night, a thread of amber light. “कूपे जलम् अस्ति। गृहे दीपः अस्ति,” he says, in a voice as warm as a hearth. Then, from the dark lanes beyond the school wall, a faint voice calls, and he turns: “हे मित्र! कुत्र असि?”'
-      hi: '“रात्रौ गृहे दीपः अस्ति।” लौ के रंग का भूत ख़ुशी से टिमटिमाता है और अपने दीपक से रात में ऊपर उठता है, अम्बर रोशनी का एक धागा। “कूपे जलम् अस्ति। गृहे दीपः अस्ति,” वह चूल्हे जैसी गर्म आवाज़ में कहता है। फिर पाठशाला की दीवार के पार की अँधेरी गलियों से एक धीमी आवाज़ पुकारती है, और वह मुड़ता है: “हे मित्र! कुत्र असि?”'
+      en: '“रात्रौ गृहे दीपः अस्ति.” The flame-coloured spirit gives a joyful flicker and rises from his lamp into the night,
+        a thread of amber light. “कूपे जलम् अस्ति। गृहे दीपः अस्ति,” he says, in a voice as warm as a hearth. Then, from the
+        dark lanes beyond the school wall, a faint voice calls, and he turns: “हे मित्र! कुत्र असि?”'
+      hi: '“रात्रौ गृहे दीपः अस्ति।” लौ के रंग का भूत ख़ुशी से टिमटिमाता है और अपने दीपक से रात में ऊपर उठता है, अम्बर रोशनी
+        का एक धागा। “कूपे जलम् अस्ति। गृहे दीपः अस्ति,” वह चूल्हे जैसी गर्म आवाज़ में कहता है। फिर पाठशाला की दीवार के पार
+        की अँधेरी गलियों से एक धीमी आवाज़ पुकारती है, और वह मुड़ता है: “हे मित्र! कुत्र असि?”'
     failure:
       en: The lamp flickers uncertainly. Time and place both go in the seventh case.
       hi: दीपक अनिश्चित-सा टिमटिमाता है। समय और स्थान, दोनों सप्तमी में।
@@ -190,3 +1167,148 @@ cards:
   - गृहे
   - दीपः
   - अस्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: कूपे जलम् अस्ति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: There is water in the well.
+        hi: कुएँ में जल है।
+      words:
+      - sa: कूपे
+        gloss:
+          en: in the well
+          hi: कुएँ में
+        check:
+          type: subanta
+          stem: कूप
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: कूपे
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: in the well
+        hi: कुएँ में
+      check:
+        type: subanta
+        stem: कूप
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कूप}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{कूप}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: जलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: water
+        hi: जल
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{जल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{जल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: अस्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The place or support where something is or happens takes the seventh case, {{सप्तमी}}: {{कूपे जलम्}} (water in
+          the well), {{गृहे दीपः}} (a lamp in the house), {{वृक्षे शुकः}} (a parrot in the tree).'
+        hi: 'जो स्थान या आधार जहाँ कुछ होता है, वह सप्तमी में आता है: {{कूपे जलम्}} (कुएँ में जल), {{गृहे दीपः}} (घर में दीपक),
+          {{वृक्षे शुकः}} (पेड़ पर तोता)।'
+    - id: i6
+      sa: कूपे जलम् अस्ति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: There is water in the well.
+        hi: कुएँ में जल है।
+      words:
+      - sa: कूपे
+        gloss:
+          en: in the well
+          hi: कुएँ में
+        check:
+          type: subanta
+          stem: कूप
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka

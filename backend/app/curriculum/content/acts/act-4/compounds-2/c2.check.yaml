@@ -34,6 +34,30 @@ cards:
   - text:
       en: of the yellow cloth
       hi: पीले वस्त्र का
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'In a {{बहुव्रीहिः}} the whole compound describes a third person: {{नीलः कण्ठः यस्य सः}}, “he whose throat is blue”,
+        is {{नीलकण्ठः}}, Śiva. {{पीतम् अम्बरम् यस्य सः}} is {{पीताम्बरः}}, Viṣṇu. A bahuvrīhi is an adjective, and takes the
+        gender of the person it describes.'
+      hi: '{{बहुव्रीहिः}} में पूरा समास किसी तीसरे का वर्णन करता है: {{नीलः कण्ठः यस्य सः}}, ‘जिसका कण्ठ नीला है’, {{नीलकण्ठः}}
+        है, शिव। {{पीतम् अम्बरम् यस्य सः}} {{पीताम्बरः}} है, विष्णु। बहुव्रीहि विशेषण है, और वह जिस व्यक्ति का वर्णन करता
+        है उसी का लिंग लेता है।'
+    items:
+    - id: i0
+      sa: बहुव्रीहिः
+    - id: i1
+      sa: नीलः कण्ठः यस्य सः
+    - id: i2
+      sa: नीलकण्ठः
+    - id: i3
+      sa: पीतम् अम्बरम् यस्य सः
+    - id: i4
+      sa: पीताम्बरः
 - id: p2
   kind: practice
   depth: core
@@ -58,6 +82,30 @@ cards:
   - text:
       en: of ten faces
       hi: दस मुखों का
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'In a {{बहुव्रीहिः}} the whole compound describes a third person: {{नीलः कण्ठः यस्य सः}}, “he whose throat is blue”,
+        is {{नीलकण्ठः}}, Śiva. {{पीतम् अम्बरम् यस्य सः}} is {{पीताम्बरः}}, Viṣṇu. A bahuvrīhi is an adjective, and takes the
+        gender of the person it describes.'
+      hi: '{{बहुव्रीहिः}} में पूरा समास किसी तीसरे का वर्णन करता है: {{नीलः कण्ठः यस्य सः}}, ‘जिसका कण्ठ नीला है’, {{नीलकण्ठः}}
+        है, शिव। {{पीतम् अम्बरम् यस्य सः}} {{पीताम्बरः}} है, विष्णु। बहुव्रीहि विशेषण है, और वह जिस व्यक्ति का वर्णन करता
+        है उसी का लिंग लेता है।'
+    items:
+    - id: i0
+      sa: बहुव्रीहिः
+    - id: i1
+      sa: नीलः कण्ठः यस्य सः
+    - id: i2
+      sa: नीलकण्ठः
+    - id: i3
+      sa: पीतम् अम्बरम् यस्य सः
+    - id: i4
+      sa: पीताम्बरः
 - id: p3
   kind: practice
   depth: core
@@ -82,6 +130,148 @@ cards:
   - text:
       en: of the day
       hi: दिन का
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः यथाशक्ति कर्म करोति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He does the work as far as he can.
+        hi: वह यथाशक्ति कर्म करता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: यथाशक्ति
+        gloss:
+          en: as far as he can
+          hi: जितनी शक्ति हो
+      - sa: कर्म
+        gloss:
+          en: work
+          hi: कर्म
+        check:
+          type: subanta
+          stem: कर्मन्
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: करोति
+        gloss:
+          en: does
+          hi: करता है
+        check:
+          type: tinanta
+          dhatu: कृ
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: यथाशक्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: as far as he can
+        hi: जितनी शक्ति हो
+    - id: i3
+      sa: कर्म
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: work
+        hi: कर्म
+      check:
+        type: subanta
+        stem: कर्मन्
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कर्मन्}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{कर्मन्}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: करोति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: does
+        hi: करता है
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{कृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'In an {{अव्ययीभावः}} the first word is an indeclinable, and the whole is an indeclinable: {{यथा + शक्ति}} gives
+          {{यथाशक्ति}} (as far as one can); {{प्रति + दिनम्}} gives {{प्रतिदिनम्}} (every day); {{आ + मरणम्}} gives {{आमरणम्}}
+          (until death); {{उप + कृष्णम्}} gives {{उपकृष्णम्}} (near Kṛṣṇa). Such words never change.'
+        hi: '{{अव्ययीभावः}} में पहला शब्द अव्यय होता है, और पूरा भी अव्यय बन जाता है: {{यथा + शक्ति}} से {{यथाशक्ति}} (जितनी
+          शक्ति हो); {{प्रति + दिनम्}} से {{प्रतिदिनम्}} (हर दिन); {{आ + मरणम्}} से {{आमरणम्}} (मृत्यु तक); {{उप + कृष्णम्}}
+          से {{उपकृष्णम्}} (कृष्ण के पास)। ऐसे शब्द कभी नहीं बदलते।'
+    - id: i7
+      sa: सः यथाशक्ति कर्म करोति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He does the work as far as he can.
+        hi: वह यथाशक्ति कर्म करता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: यथाशक्ति
+        gloss:
+          en: as far as he can
+          hi: जितनी शक्ति हो
+      - sa: कर्म
+        gloss:
+          en: work
+          hi: कर्म
+        check:
+          type: subanta
+          stem: कर्मन्
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: करोति
+        gloss:
+          en: does
+          hi: करता है
+        check:
+          type: tinanta
+          dhatu: कृ
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -106,6 +296,148 @@ cards:
   - text:
       en: after death
       hi: मृत्यु के बाद
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः यथाशक्ति कर्म करोति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He does the work as far as he can.
+        hi: वह यथाशक्ति कर्म करता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: यथाशक्ति
+        gloss:
+          en: as far as he can
+          hi: जितनी शक्ति हो
+      - sa: कर्म
+        gloss:
+          en: work
+          hi: कर्म
+        check:
+          type: subanta
+          stem: कर्मन्
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: करोति
+        gloss:
+          en: does
+          hi: करता है
+        check:
+          type: tinanta
+          dhatu: कृ
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: यथाशक्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: as far as he can
+        hi: जितनी शक्ति हो
+    - id: i3
+      sa: कर्म
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: work
+        hi: कर्म
+      check:
+        type: subanta
+        stem: कर्मन्
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कर्मन्}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{कर्मन्}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: करोति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: does
+        hi: करता है
+      check:
+        type: tinanta
+        dhatu: कृ
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{कृ}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'In an {{अव्ययीभावः}} the first word is an indeclinable, and the whole is an indeclinable: {{यथा + शक्ति}} gives
+          {{यथाशक्ति}} (as far as one can); {{प्रति + दिनम्}} gives {{प्रतिदिनम्}} (every day); {{आ + मरणम्}} gives {{आमरणम्}}
+          (until death); {{उप + कृष्णम्}} gives {{उपकृष्णम्}} (near Kṛṣṇa). Such words never change.'
+        hi: '{{अव्ययीभावः}} में पहला शब्द अव्यय होता है, और पूरा भी अव्यय बन जाता है: {{यथा + शक्ति}} से {{यथाशक्ति}} (जितनी
+          शक्ति हो); {{प्रति + दिनम्}} से {{प्रतिदिनम्}} (हर दिन); {{आ + मरणम्}} से {{आमरणम्}} (मृत्यु तक); {{उप + कृष्णम्}}
+          से {{उपकृष्णम्}} (कृष्ण के पास)। ऐसे शब्द कभी नहीं बदलते।'
+    - id: i7
+      sa: सः यथाशक्ति कर्म करोति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He does the work as far as he can.
+        hi: वह यथाशक्ति कर्म करता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: यथाशक्ति
+        gloss:
+          en: as far as he can
+          hi: जितनी शक्ति हो
+      - sa: कर्म
+        gloss:
+          en: work
+          hi: कर्म
+        check:
+          type: subanta
+          stem: कर्मन्
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: करोति
+        gloss:
+          en: does
+          hi: करता है
+        check:
+          type: tinanta
+          dhatu: कृ
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p5
   kind: practice
   depth: core
@@ -170,6 +502,30 @@ cards:
       text:
         en: shining like ten million suns
         hi: करोड़ सूर्यों-सा चमकने वाला
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'In a {{बहुव्रीहिः}} the whole compound describes a third person: {{नीलः कण्ठः यस्य सः}}, “he whose throat is blue”,
+        is {{नीलकण्ठः}}, Śiva. {{पीतम् अम्बरम् यस्य सः}} is {{पीताम्बरः}}, Viṣṇu. A bahuvrīhi is an adjective, and takes the
+        gender of the person it describes.'
+      hi: '{{बहुव्रीहिः}} में पूरा समास किसी तीसरे का वर्णन करता है: {{नीलः कण्ठः यस्य सः}}, ‘जिसका कण्ठ नीला है’, {{नीलकण्ठः}}
+        है, शिव। {{पीतम् अम्बरम् यस्य सः}} {{पीताम्बरः}} है, विष्णु। बहुव्रीहि विशेषण है, और वह जिस व्यक्ति का वर्णन करता
+        है उसी का लिंग लेता है।'
+    items:
+    - id: i0
+      sa: बहुव्रीहिः
+    - id: i1
+      sa: नीलः कण्ठः यस्य सः
+    - id: i2
+      sa: नीलकण्ठः
+    - id: i3
+      sa: पीतम् अम्बरम् यस्य सः
+    - id: i4
+      sa: पीताम्बरः
 - id: p7
   kind: practice
   depth: core
@@ -187,8 +543,14 @@ cards:
   gate: true
   story:
     success:
-      en: '“नीलकण्ठः, यथाशक्ति, प्रतिदिनम्,” you say, and Mālikā, the garland spirit, steps down and takes off her garland. Each flower, laid on the floor, opens like a hand and rests. “All my life,” she says, “I held them together.” She looks at the long chain on the floor, and then up at you. “राघवः,” she says, “कौन्तेयः. These are the sons: Raghu''s, Kuntī''s. I have never been able to say how.” In the lamplight, further off, the next two statues stir.'
-      hi: '“नीलकण्ठः, यथाशक्ति, प्रतिदिनम्,” आप कहते हैं, और मालिका, माला-भूत, उतरती है और अपनी माला उतार देती है। फर्श पर रखा हर फूल हाथ की तरह खुलकर विश्राम करता है। “सारी उम्र,” वह कहती है, “मैंने इन्हें साथ थामा।” वह फर्श की लम्बी श्रृंखला को देखती है, और फिर आपको। “राघवः,” वह कहती है, “कौन्तेयः। ये पुत्र हैं: रघु के, कुन्ती के। मैं कभी बता नहीं पाई कैसे।” दीपक की रोशनी में, कुछ दूर, अगली दो प्रतिमाएँ हिलती हैं।'
+      en: '“नीलकण्ठः, यथाशक्ति, प्रतिदिनम्,” you say, and Mālikā, the garland spirit, steps down and takes off her garland.
+        Each flower, laid on the floor, opens like a hand and rests. “All my life,” she says, “I held them together.” She
+        looks at the long chain on the floor, and then up at you. “राघवः,” she says, “कौन्तेयः. These are the sons: Raghu''s,
+        Kuntī''s. I have never been able to say how.” In the lamplight, further off, the next two statues stir.'
+      hi: '“नीलकण्ठः, यथाशक्ति, प्रतिदिनम्,” आप कहते हैं, और मालिका, माला-भूत, उतरती है और अपनी माला उतार देती है। फर्श पर
+        रखा हर फूल हाथ की तरह खुलकर विश्राम करता है। “सारी उम्र,” वह कहती है, “मैंने इन्हें साथ थामा।” वह फर्श की लम्बी श्रृंखला
+        को देखती है, और फिर आपको। “राघवः,” वह कहती है, “कौन्तेयः। ये पुत्र हैं: रघु के, कुन्ती के। मैं कभी बता नहीं पाई कैसे।”
+        दीपक की रोशनी में, कुछ दूर, अगली दो प्रतिमाएँ हिलती हैं।'
     failure:
       en: 'The garland stays on. Her three: {{नीलकण्ठः यथाशक्ति प्रतिदिनम्}}.'
       hi: 'माला पहनी रहती है। उसके तीन: {{नीलकण्ठः यथाशक्ति प्रतिदिनम्}}।'
@@ -196,3 +558,27 @@ cards:
   - नीलकण्ठः
   - यथाशक्ति
   - प्रतिदिनम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'In a {{बहुव्रीहिः}} the whole compound describes a third person: {{नीलः कण्ठः यस्य सः}}, “he whose throat is blue”,
+        is {{नीलकण्ठः}}, Śiva. {{पीतम् अम्बरम् यस्य सः}} is {{पीताम्बरः}}, Viṣṇu. A bahuvrīhi is an adjective, and takes the
+        gender of the person it describes.'
+      hi: '{{बहुव्रीहिः}} में पूरा समास किसी तीसरे का वर्णन करता है: {{नीलः कण्ठः यस्य सः}}, ‘जिसका कण्ठ नीला है’, {{नीलकण्ठः}}
+        है, शिव। {{पीतम् अम्बरम् यस्य सः}} {{पीताम्बरः}} है, विष्णु। बहुव्रीहि विशेषण है, और वह जिस व्यक्ति का वर्णन करता
+        है उसी का लिंग लेता है।'
+    items:
+    - id: i0
+      sa: बहुव्रीहिः
+    - id: i1
+      sa: नीलः कण्ठः यस्य सः
+    - id: i2
+      sa: नीलकण्ठः
+    - id: i3
+      sa: पीतम् अम्बरम् यस्य सः
+    - id: i4
+      sa: पीताम्बरः

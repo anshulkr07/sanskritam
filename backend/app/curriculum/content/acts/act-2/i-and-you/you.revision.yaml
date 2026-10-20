@@ -66,7 +66,8 @@ cards:
   - skill: pron.i-we
     rule:
       en: The pronoun is often dropped because the verb ending shows the person; it is kept for emphasis or contrast.
-      hi: क्रिया का प्रत्यय पुरुष बता देता है, इसलिए सर्वनाम अक्सर छोड़ा जाता है; ज़ोर देने या अन्तर दिखाने के लिए रखा जाता है।
+      hi: क्रिया का प्रत्यय पुरुष बता देता है, इसलिए सर्वनाम अक्सर छोड़ा जाता है; ज़ोर देने या अन्तर दिखाने के लिए रखा जाता
+        है।
     example:
       sa: पठामि
       meaning:
@@ -74,6 +75,37 @@ cards:
         hi: मैं पढ़ता हूँ ({{अहम्}} की ज़रूरत नहीं)
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: पठामि
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: I read (no {{अहम्}} needed)
+          hi: मैं पढ़ता हूँ ({{अहम्}} की ज़रूरत नहीं)
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: The pronoun is often dropped because the verb ending shows the person; it is kept for emphasis or contrast.
+          hi: क्रिया का प्रत्यय पुरुष बता देता है, इसलिए सर्वनाम अक्सर छोड़ा जाता है; ज़ोर देने या अन्तर दिखाने के लिए रखा
+            जाता है।
+      - id: i3
+        sa: पठामि
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: I read (no {{अहम्}} needed)
+          hi: मैं पढ़ता हूँ ({{अहम्}} की ज़रूरत नहीं)
   - skill: verb.as
     rule:
       en: With a pronoun {{अस्}} is used freely; between two nouns it is usually left out.
@@ -105,6 +137,36 @@ cards:
         hi: श्रीमान्, आर्य
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: आर्य
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: sir, noble one
+          hi: श्रीमान्, आर्य
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: Older speakers also use {{आर्य}} (sir) and {{देवि}} (madam) as polite address in speech.
+          hi: पुराने वक्ता आदर के सम्बोधन के रूप में {{आर्य}} (श्रीमान्) और {{देवि}} (देवी) भी बोलते हैं।
+      - id: i3
+        sa: आर्य
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: sir, noble one
+          hi: श्रीमान्, आर्य
 - id: mistakes
   kind: revision
   title:

@@ -24,7 +24,8 @@ cards:
     hi: अठारहवीं प्रतिमा
   depth: core
   image:
-    brief: The eighteenth statue holding a clay pot, tapping it with one finger; a potter's wheel carved at her feet; Śuka cocking his head; Lubdhaka's foreman holding up his notebook to show a column of compounds.
+    brief: The eighteenth statue holding a clay pot, tapping it with one finger; a potter's wheel carved at her feet; Śuka
+      cocking his head; Lubdhaka's foreman holding up his notebook to show a column of compounds.
     alt:
       en: A statue taps a clay pot beside a carved potter's wheel while a man holds up a notebook of compounds
       hi: मिट्टी के घड़े पर थपथपाती प्रतिमा, कुम्हार का चाक, समासों की पुस्तिका दिखाता आदमी
@@ -37,10 +38,17 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: c1-nan-s1
-    text_in_image: ["असत्यम्", "अधर्मः", "अनन्तः"]
+    text_in_image:
+    - असत्यम्
+    - अधर्मः
+    - अनन्तः
   narration:
-    en: 'The eighteenth statue holds a clay pot. “कुम्भकारः,” she says, tapping it: “the pot-maker.” “असत्यम्,” and she shakes her head: “not true.” “These are the last two kinds,” says Dādī. “A न before a word makes its opposite, अ-. And a word like -कारः after a thing means ‘the one who makes it’, a compound with the doer in the second place.”'
-    hi: 'अठारहवीं प्रतिमा के हाथ में मिट्टी का घड़ा है। “कुम्भकारः,” वह कहती है, उस पर थपथपाते हुए: “घड़ा बनाने वाला।” “असत्यम्,” और वह सिर हिलाती है: “सच नहीं।” “ये अन्तिम दो प्रकार हैं,” दादी कहती हैं। “शब्द के आगे न उसका उलटा बनाता है, अ-। और किसी वस्तु के बाद -कारः जैसा शब्द ‘उसे बनाने वाला’ का अर्थ देता है, दूसरे स्थान पर कर्ता वाला समास।”'
+    en: 'The eighteenth statue holds a clay pot. “कुम्भकारः,” she says, tapping it: “the pot-maker.” “असत्यम्,” and she shakes
+      her head: “not true.” “These are the last two kinds,” says Dādī. “A न before a word makes its opposite, अ-. And a word
+      like -कारः after a thing means ‘the one who makes it’, a compound with the doer in the second place.”'
+    hi: 'अठारहवीं प्रतिमा के हाथ में मिट्टी का घड़ा है। “कुम्भकारः,” वह कहती है, उस पर थपथपाते हुए: “घड़ा बनाने वाला।” “असत्यम्,”
+      और वह सिर हिलाती है: “सच नहीं।” “ये अन्तिम दो प्रकार हैं,” दादी कहती हैं। “शब्द के आगे न उसका उलटा बनाता है, अ-। और
+      किसी वस्तु के बाद -कारः जैसा शब्द ‘उसे बनाने वाला’ का अर्थ देता है, दूसरे स्थान पर कर्ता वाला समास।”'
   lines:
   - speaker: samasika
     sa: कुम्भकारः
@@ -62,13 +70,51 @@ cards:
   skills:
   - sam.nan-upapada
   body:
-    en: 'A {{न}} before a word makes the opposite: {{न सत्यम्}} gives {{असत्यम्}} (untrue); before a vowel it is {{अन्}}: {{न अन्तः}} gives {{अनन्तः}} (endless). A word before a doer-word names the thing done: {{कुम्भं करोति}} gives {{कुम्भकारः}} (pot-maker); {{शास्त्रं जानाति}} gives {{शास्त्रज्ञः}} (knower of the śāstras).'
-    hi: 'शब्द के आगे {{न}} उसका उलटा बनाता है: {{न सत्यम्}} से {{असत्यम्}} (झूठ); स्वर से पहले वह {{अन्}} होता है: {{न अन्तः}} से {{अनन्तः}} (अनन्त)। कर्ता-शब्द के आगे का शब्द बताता है कि क्या किया जाता है: {{कुम्भं करोति}} से {{कुम्भकारः}} (घड़ा बनाने वाला); {{शास्त्रं जानाति}} से {{शास्त्रज्ञः}} (शास्त्रों का ज्ञाता)।'
+    en: 'A {{न}} before a word makes the opposite: {{न सत्यम्}} gives {{असत्यम्}} (untrue); before a vowel it is {{अन्}}:
+      {{न अन्तः}} gives {{अनन्तः}} (endless). A word before a doer-word names the thing done: {{कुम्भं करोति}} gives {{कुम्भकारः}}
+      (pot-maker); {{शास्त्रं जानाति}} gives {{शास्त्रज्ञः}} (knower of the śāstras).'
+    hi: 'शब्द के आगे {{न}} उसका उलटा बनाता है: {{न सत्यम्}} से {{असत्यम्}} (झूठ); स्वर से पहले वह {{अन्}} होता है: {{न अन्तः}}
+      से {{अनन्तः}} (अनन्त)। कर्ता-शब्द के आगे का शब्द बताता है कि क्या किया जाता है: {{कुम्भं करोति}} से {{कुम्भकारः}} (घड़ा
+      बनाने वाला); {{शास्त्रं जानाति}} से {{शास्त्रज्ञः}} (शास्त्रों का ज्ञाता)।'
   term:
     sa: नञ्तत्पुरुषः
     meaning:
       en: a compound with न, “not”
       hi: न, ‘नहीं’ वाला समास
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'A {{न}} before a word makes the opposite: {{न सत्यम्}} gives {{असत्यम्}} (untrue); before a vowel it is {{अन्}}:
+        {{न अन्तः}} gives {{अनन्तः}} (endless). A word before a doer-word names the thing done: {{कुम्भं करोति}} gives {{कुम्भकारः}}
+        (pot-maker); {{शास्त्रं जानाति}} gives {{शास्त्रज्ञः}} (knower of the śāstras).'
+      hi: 'शब्द के आगे {{न}} उसका उलटा बनाता है: {{न सत्यम्}} से {{असत्यम्}} (झूठ); स्वर से पहले वह {{अन्}} होता है: {{न अन्तः}}
+        से {{अनन्तः}} (अनन्त)। कर्ता-शब्द के आगे का शब्द बताता है कि क्या किया जाता है: {{कुम्भं करोति}} से {{कुम्भकारः}}
+        (घड़ा बनाने वाला); {{शास्त्रं जानाति}} से {{शास्त्रज्ञः}} (शास्त्रों का ज्ञाता)।'
+    items:
+    - id: i0
+      sa: न
+    - id: i1
+      sa: न सत्यम्
+    - id: i2
+      sa: असत्यम्
+    - id: i3
+      sa: अन्
+    - id: i4
+      sa: न अन्तः
+    - id: i5
+      sa: अनन्तः
+    - id: i6
+      sa: कुम्भं करोति
+    - id: i7
+      sa: कुम्भकारः
+    - id: i8
+      sa: शास्त्रं जानाति
+    - id: i9
+      sa: शास्त्रज्ञः
 - id: tb1
   kind: table
   title:
@@ -211,6 +257,40 @@ cards:
   - text:
       en: of the truth
       hi: सत्य का
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A {{न}} before a word makes the opposite: {{न सत्यम्}} gives {{असत्यम्}} (untrue); before a vowel it is {{अन्}}:
+        {{न अन्तः}} gives {{अनन्तः}} (endless). A word before a doer-word names the thing done: {{कुम्भं करोति}} gives {{कुम्भकारः}}
+        (pot-maker); {{शास्त्रं जानाति}} gives {{शास्त्रज्ञः}} (knower of the śāstras).'
+      hi: 'शब्द के आगे {{न}} उसका उलटा बनाता है: {{न सत्यम्}} से {{असत्यम्}} (झूठ); स्वर से पहले वह {{अन्}} होता है: {{न अन्तः}}
+        से {{अनन्तः}} (अनन्त)। कर्ता-शब्द के आगे का शब्द बताता है कि क्या किया जाता है: {{कुम्भं करोति}} से {{कुम्भकारः}}
+        (घड़ा बनाने वाला); {{शास्त्रं जानाति}} से {{शास्त्रज्ञः}} (शास्त्रों का ज्ञाता)।'
+    items:
+    - id: i0
+      sa: न
+    - id: i1
+      sa: न सत्यम्
+    - id: i2
+      sa: असत्यम्
+    - id: i3
+      sa: अन्
+    - id: i4
+      sa: न अन्तः
+    - id: i5
+      sa: अनन्तः
+    - id: i6
+      sa: कुम्भं करोति
+    - id: i7
+      sa: कुम्भकारः
+    - id: i8
+      sa: शास्त्रं जानाति
+    - id: i9
+      sa: शास्त्रज्ञः
 - id: p2
   kind: practice
   depth: core
@@ -241,6 +321,40 @@ cards:
       sa: शास्त्रज्ञः
     right:
       sa: शास्त्रं जानाति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A {{न}} before a word makes the opposite: {{न सत्यम्}} gives {{असत्यम्}} (untrue); before a vowel it is {{अन्}}:
+        {{न अन्तः}} gives {{अनन्तः}} (endless). A word before a doer-word names the thing done: {{कुम्भं करोति}} gives {{कुम्भकारः}}
+        (pot-maker); {{शास्त्रं जानाति}} gives {{शास्त्रज्ञः}} (knower of the śāstras).'
+      hi: 'शब्द के आगे {{न}} उसका उलटा बनाता है: {{न सत्यम्}} से {{असत्यम्}} (झूठ); स्वर से पहले वह {{अन्}} होता है: {{न अन्तः}}
+        से {{अनन्तः}} (अनन्त)। कर्ता-शब्द के आगे का शब्द बताता है कि क्या किया जाता है: {{कुम्भं करोति}} से {{कुम्भकारः}}
+        (घड़ा बनाने वाला); {{शास्त्रं जानाति}} से {{शास्त्रज्ञः}} (शास्त्रों का ज्ञाता)।'
+    items:
+    - id: i0
+      sa: न
+    - id: i1
+      sa: न सत्यम्
+    - id: i2
+      sa: असत्यम्
+    - id: i3
+      sa: अन्
+    - id: i4
+      sa: न अन्तः
+    - id: i5
+      sa: अनन्तः
+    - id: i6
+      sa: कुम्भं करोति
+    - id: i7
+      sa: कुम्भकारः
+    - id: i8
+      sa: शास्त्रं जानाति
+    - id: i9
+      sa: शास्त्रज्ञः
 - id: e1
   kind: explore
   depth: core
@@ -299,6 +413,40 @@ cards:
   tokens:
   - कुम्भकारः
   - आगच्छति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A {{न}} before a word makes the opposite: {{न सत्यम्}} gives {{असत्यम्}} (untrue); before a vowel it is {{अन्}}:
+        {{न अन्तः}} gives {{अनन्तः}} (endless). A word before a doer-word names the thing done: {{कुम्भं करोति}} gives {{कुम्भकारः}}
+        (pot-maker); {{शास्त्रं जानाति}} gives {{शास्त्रज्ञः}} (knower of the śāstras).'
+      hi: 'शब्द के आगे {{न}} उसका उलटा बनाता है: {{न सत्यम्}} से {{असत्यम्}} (झूठ); स्वर से पहले वह {{अन्}} होता है: {{न अन्तः}}
+        से {{अनन्तः}} (अनन्त)। कर्ता-शब्द के आगे का शब्द बताता है कि क्या किया जाता है: {{कुम्भं करोति}} से {{कुम्भकारः}}
+        (घड़ा बनाने वाला); {{शास्त्रं जानाति}} से {{शास्त्रज्ञः}} (शास्त्रों का ज्ञाता)।'
+    items:
+    - id: i0
+      sa: न
+    - id: i1
+      sa: न सत्यम्
+    - id: i2
+      sa: असत्यम्
+    - id: i3
+      sa: अन्
+    - id: i4
+      sa: न अन्तः
+    - id: i5
+      sa: अनन्तः
+    - id: i6
+      sa: कुम्भं करोति
+    - id: i7
+      sa: कुम्भकारः
+    - id: i8
+      sa: शास्त्रं जानाति
+    - id: i9
+      sa: शास्त्रज्ञः
 - id: p4
   kind: practice
   title:
@@ -318,8 +466,14 @@ cards:
   gate: true
   story:
     success:
-      en: “न अन्तः, अनन्तः,” you say, “endless,” and the clay pot in the statue's hand, which has been closed at the mouth for a thousand years, opens. Out of it comes not water, nor grain, but a long, soft, smooth sound, rising, without edge or end. “असत्यम्,” she says, shaking her head, once more, smiling now. “Nothing here is not true.” Samāsikā steps out of the pair behind her, a small granite figure with two lotuses, and takes her hand.
-      hi: “न अन्तः, अनन्तः,” आप कहते हैं, “अनन्त,” और प्रतिमा के हाथ का मिट्टी का घड़ा, जो हज़ार वर्षों से मुँह बन्द था, खुल जाता है। उसमें से न पानी निकलता है, न अनाज, बल्कि एक लम्बी, कोमल, चिकनी ध्वनि, ऊपर उठती, बिना किनारे या अन्त के। “असत्यम्,” वह कहती है, एक बार फिर सिर हिलाते, अब मुस्कराते हुए। “यहाँ कुछ भी असत्य नहीं।” समासिका उसके पीछे की जोड़ी से बाहर आती है, दो कमलों वाली नन्ही ग्रेनाइट आकृति, और उसका हाथ थाम लेती है।
+      en: “न अन्तः, अनन्तः,” you say, “endless,” and the clay pot in the statue's hand, which has been closed at the mouth
+        for a thousand years, opens. Out of it comes not water, nor grain, but a long, soft, smooth sound, rising, without
+        edge or end. “असत्यम्,” she says, shaking her head, once more, smiling now. “Nothing here is not true.” Samāsikā steps
+        out of the pair behind her, a small granite figure with two lotuses, and takes her hand.
+      hi: “न अन्तः, अनन्तः,” आप कहते हैं, “अनन्त,” और प्रतिमा के हाथ का मिट्टी का घड़ा, जो हज़ार वर्षों से मुँह बन्द था, खुल
+        जाता है। उसमें से न पानी निकलता है, न अनाज, बल्कि एक लम्बी, कोमल, चिकनी ध्वनि, ऊपर उठती, बिना किनारे या अन्त के। “असत्यम्,”
+        वह कहती है, एक बार फिर सिर हिलाते, अब मुस्कराते हुए। “यहाँ कुछ भी असत्य नहीं।” समासिका उसके पीछे की जोड़ी से बाहर
+        आती है, दो कमलों वाली नन्ही ग्रेनाइट आकृति, और उसका हाथ थाम लेती है।
     failure:
       en: The pot stays closed. {{न}} + {{अन्तः}} gives {{अनन्तः}}.
       hi: घड़ा बन्द रहता है। {{न}} + {{अन्तः}} से {{अनन्तः}}।
@@ -328,6 +482,40 @@ cards:
   - sa: अ अन्तः
   - correct: true
     sa: न अन्तः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A {{न}} before a word makes the opposite: {{न सत्यम्}} gives {{असत्यम्}} (untrue); before a vowel it is {{अन्}}:
+        {{न अन्तः}} gives {{अनन्तः}} (endless). A word before a doer-word names the thing done: {{कुम्भं करोति}} gives {{कुम्भकारः}}
+        (pot-maker); {{शास्त्रं जानाति}} gives {{शास्त्रज्ञः}} (knower of the śāstras).'
+      hi: 'शब्द के आगे {{न}} उसका उलटा बनाता है: {{न सत्यम्}} से {{असत्यम्}} (झूठ); स्वर से पहले वह {{अन्}} होता है: {{न अन्तः}}
+        से {{अनन्तः}} (अनन्त)। कर्ता-शब्द के आगे का शब्द बताता है कि क्या किया जाता है: {{कुम्भं करोति}} से {{कुम्भकारः}}
+        (घड़ा बनाने वाला); {{शास्त्रं जानाति}} से {{शास्त्रज्ञः}} (शास्त्रों का ज्ञाता)।'
+    items:
+    - id: i0
+      sa: न
+    - id: i1
+      sa: न सत्यम्
+    - id: i2
+      sa: असत्यम्
+    - id: i3
+      sa: अन्
+    - id: i4
+      sa: न अन्तः
+    - id: i5
+      sa: अनन्तः
+    - id: i6
+      sa: कुम्भं करोति
+    - id: i7
+      sa: कुम्भकारः
+    - id: i8
+      sa: शास्त्रं जानाति
+    - id: i9
+      sa: शास्त्रज्ञः
 - id: pn
   kind: teach
   title:
@@ -343,8 +531,40 @@ cards:
   - 2.2.19
   - 3.2.1
   body:
-    en: 'Sūtra 2.2.6, {{नञ्}}, joins {{नञ्}}, “not”, to the following word as a compound. 6.3.73, {{नलोपो नञः}}, drops its {{न्}}, and 6.3.74, {{तस्मान्नुडचि}}, adds {{न्}} before a vowel. For the maker, 2.2.19, {{उपपदमतिङ्}}, joins the word that stands next to a verb-noun, and 3.2.1, {{कर्मण्यण्}}, makes the doer: {{कुम्भकारः}}.'
-    hi: 'सूत्र 2.2.6, {{नञ्}}, {{नञ्}}, ‘नहीं’, को अगले शब्द से समास में जोड़ता है। 6.3.73, {{नलोपो नञः}}, उसका {{न्}} हटाता है, और 6.3.74, {{तस्मान्नुडचि}}, स्वर से पहले {{न्}} जोड़ता है। बनाने वाले के लिए 2.2.19, {{उपपदमतिङ्}}, कृदन्त के पास खड़े शब्द को जोड़ता है, और 3.2.1, {{कर्मण्यण्}}, कर्ता बनाता है: {{कुम्भकारः}}।'
+    en: 'Sūtra 2.2.6, {{नञ्}}, joins {{नञ्}}, “not”, to the following word as a compound. 6.3.73, {{नलोपो नञः}}, drops its
+      {{न्}}, and 6.3.74, {{तस्मान्नुडचि}}, adds {{न्}} before a vowel. For the maker, 2.2.19, {{उपपदमतिङ्}}, joins the word
+      that stands next to a verb-noun, and 3.2.1, {{कर्मण्यण्}}, makes the doer: {{कुम्भकारः}}.'
+    hi: 'सूत्र 2.2.6, {{नञ्}}, {{नञ्}}, ‘नहीं’, को अगले शब्द से समास में जोड़ता है। 6.3.73, {{नलोपो नञः}}, उसका {{न्}} हटाता
+      है, और 6.3.74, {{तस्मान्नुडचि}}, स्वर से पहले {{न्}} जोड़ता है। बनाने वाले के लिए 2.2.19, {{उपपदमतिङ्}}, कृदन्त के पास
+      खड़े शब्द को जोड़ता है, और 3.2.1, {{कर्मण्यण्}}, कर्ता बनाता है: {{कुम्भकारः}}।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Sūtra 2.2.6, {{नञ्}}, joins {{नञ्}}, “not”, to the following word as a compound. 6.3.73, {{नलोपो नञः}}, drops its
+        {{न्}}, and 6.3.74, {{तस्मान्नुडचि}}, adds {{न्}} before a vowel. For the maker, 2.2.19, {{उपपदमतिङ्}}, joins the
+        word that stands next to a verb-noun, and 3.2.1, {{कर्मण्यण्}}, makes the doer: {{कुम्भकारः}}.'
+      hi: 'सूत्र 2.2.6, {{नञ्}}, {{नञ्}}, ‘नहीं’, को अगले शब्द से समास में जोड़ता है। 6.3.73, {{नलोपो नञः}}, उसका {{न्}} हटाता
+        है, और 6.3.74, {{तस्मान्नुडचि}}, स्वर से पहले {{न्}} जोड़ता है। बनाने वाले के लिए 2.2.19, {{उपपदमतिङ्}}, कृदन्त के
+        पास खड़े शब्द को जोड़ता है, और 3.2.1, {{कर्मण्यण्}}, कर्ता बनाता है: {{कुम्भकारः}}।'
+    items:
+    - id: i0
+      sa: नञ्
+    - id: i1
+      sa: नलोपो नञः
+    - id: i2
+      sa: न्
+    - id: i3
+      sa: तस्मान्नुडचि
+    - id: i4
+      sa: उपपदमतिङ्
+    - id: i5
+      sa: कर्मण्यण्
+    - id: i6
+      sa: कुम्भकारः
 - id: sum
   kind: summary
   title:

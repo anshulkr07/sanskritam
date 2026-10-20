@@ -24,7 +24,8 @@ cards:
     hi: दूसरी प्रतिमा
   depth: core
   image:
-    brief: The second statue, a woman holding a conch, with Śuka on Dādī's shoulder counting on his claws; Lubdhaka's foreman looking on with arms folded; the first statue beside her with a lotus; morning light on the dig.
+    brief: The second statue, a woman holding a conch, with Śuka on Dādī's shoulder counting on his claws; Lubdhaka's foreman
+      looking on with arms folded; the first statue beside her with a lotus; morning light on the dig.
     alt:
       en: A stone statue holding a conch while a parrot counts on his claws and a foreman watches
       hi: शंख थामे पत्थर की प्रतिमा, पंजों पर गिनता तोता, देखता मुखिया
@@ -38,8 +39,12 @@ cards:
     ratio: '4:3'
     id: vs-guna-s1
   narration:
-    en: 'The second statue holds a conch. “गणेशः,” she says, and “महोत्सवः,” and “सप्तर्षयः.” “These are different,” says Śuka, who has been counting. “In the first, two vowels became one long one. Here, a vowel turned into something else.” “Yes,” says Dādī. “When अ meets इ or उ, it does not merge: it strengthens.”'
-    hi: 'दूसरी प्रतिमा के हाथ में शंख है। “गणेशः,” वह कहती है, और “महोत्सवः,” और “सप्तर्षयः।” “ये अलग हैं,” शुक कहता है, जो गिन रहा था। “पहले में दो स्वर मिलकर एक दीर्घ बने थे। यहाँ एक स्वर कुछ और बन गया है।” “हाँ,” दादी कहती हैं। “जब अ इ या उ से मिलता है, तो वह मिलता नहीं: वह बलवान् हो जाता है।”'
+    en: 'The second statue holds a conch. “गणेशः,” she says, and “महोत्सवः,” and “सप्तर्षयः.” “These are different,” says
+      Śuka, who has been counting. “In the first, two vowels became one long one. Here, a vowel turned into something else.”
+      “Yes,” says Dādī. “When अ meets इ or उ, it does not merge: it strengthens.”'
+    hi: 'दूसरी प्रतिमा के हाथ में शंख है। “गणेशः,” वह कहती है, और “महोत्सवः,” और “सप्तर्षयः।” “ये अलग हैं,” शुक कहता है, जो
+      गिन रहा था। “पहले में दो स्वर मिलकर एक दीर्घ बने थे। यहाँ एक स्वर कुछ और बन गया है।” “हाँ,” दादी कहती हैं। “जब अ इ या
+      उ से मिलता है, तो वह मिलता नहीं: वह बलवान् हो जाता है।”'
   lines:
   - speaker: svarika
     sa: गणेशः
@@ -60,14 +65,66 @@ cards:
   skills:
   - sandhi.guna
   body:
-    en: When {{अ}} or {{आ}} meets {{इ}} or {{ई}}, the result is {{ए}}; with {{उ}} or {{ऊ}}, it is {{ओ}}; with {{ऋ}}, it is {{अर्}}. {{गण + ईशः}} gives {{गणेशः}}, {{महा + उत्सवः}} gives {{महोत्सवः}}, {{सप्त + ऋषयः}} gives {{सप्तर्षयः}}. This is {{गुणः}}.
-    hi: जब {{अ}} या {{आ}}, {{इ}} या {{ई}} से मिलते हैं तो {{ए}} बनता है; {{उ}} या {{ऊ}} से {{ओ}}; {{ऋ}} से {{अर्}}। {{गण + ईशः}} से {{गणेशः}}, {{महा + उत्सवः}} से {{महोत्सवः}}, {{सप्त + ऋषयः}} से {{सप्तर्षयः}}। यह {{गुणः}} है।
+    en: When {{अ}} or {{आ}} meets {{इ}} or {{ई}}, the result is {{ए}}; with {{उ}} or {{ऊ}}, it is {{ओ}}; with {{ऋ}}, it is
+      {{अर्}}. {{गण + ईशः}} gives {{गणेशः}}, {{महा + उत्सवः}} gives {{महोत्सवः}}, {{सप्त + ऋषयः}} gives {{सप्तर्षयः}}. This
+      is {{गुणः}}.
+    hi: जब {{अ}} या {{आ}}, {{इ}} या {{ई}} से मिलते हैं तो {{ए}} बनता है; {{उ}} या {{ऊ}} से {{ओ}}; {{ऋ}} से {{अर्}}। {{गण +
+      ईशः}} से {{गणेशः}}, {{महा + उत्सवः}} से {{महोत्सवः}}, {{सप्त + ऋषयः}} से {{सप्तर्षयः}}। यह {{गुणः}} है।
   term:
     sa: गुणः
     meaning:
       en: 'strengthening: अ→अ, इ→ए, उ→ओ, ऋ→अर्'
       hi: 'बलवान् होना: इ→ए, उ→ओ, ऋ→अर्'
   formula: अ + इ → ए · अ + उ → ओ · अ + ऋ → अर्
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{इ}} or {{ई}}, the result is {{ए}}; with {{उ}} or {{ऊ}}, it is {{ओ}}; with {{ऋ}}, it
+        is {{अर्}}. {{गण + ईशः}} gives {{गणेशः}}, {{महा + उत्सवः}} gives {{महोत्सवः}}, {{सप्त + ऋषयः}} gives {{सप्तर्षयः}}.
+        This is {{गुणः}}.
+      hi: जब {{अ}} या {{आ}}, {{इ}} या {{ई}} से मिलते हैं तो {{ए}} बनता है; {{उ}} या {{ऊ}} से {{ओ}}; {{ऋ}} से {{अर्}}। {{गण
+        + ईशः}} से {{गणेशः}}, {{महा + उत्सवः}} से {{महोत्सवः}}, {{सप्त + ऋषयः}} से {{सप्तर्षयः}}। यह {{गुणः}} है।
+    items:
+    - id: i0
+      sa: अ + इ → ए · अ + उ → ओ · अ + ऋ → अर्
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: ए
+    - id: i6
+      sa: उ
+    - id: i7
+      sa: ऊ
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: ऋ
+    - id: i10
+      sa: अर्
+    - id: i11
+      sa: गण + ईशः
+    - id: i12
+      sa: गणेशः
+    - id: i13
+      sa: महा + उत्सवः
+    - id: i14
+      sa: महोत्सवः
+    - id: i15
+      sa: सप्त + ऋषयः
+    - id: i16
+      sa: सप्तर्षयः
+    - id: i17
+      sa: गुणः
 - id: tb1
   kind: table
   title:
@@ -171,6 +228,55 @@ cards:
     sa: गण + ईशः
   - sa: गणि + ईशः
   - sa: गणु + ईशः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{इ}} or {{ई}}, the result is {{ए}}; with {{उ}} or {{ऊ}}, it is {{ओ}}; with {{ऋ}}, it
+        is {{अर्}}. {{गण + ईशः}} gives {{गणेशः}}, {{महा + उत्सवः}} gives {{महोत्सवः}}, {{सप्त + ऋषयः}} gives {{सप्तर्षयः}}.
+        This is {{गुणः}}.
+      hi: जब {{अ}} या {{आ}}, {{इ}} या {{ई}} से मिलते हैं तो {{ए}} बनता है; {{उ}} या {{ऊ}} से {{ओ}}; {{ऋ}} से {{अर्}}। {{गण
+        + ईशः}} से {{गणेशः}}, {{महा + उत्सवः}} से {{महोत्सवः}}, {{सप्त + ऋषयः}} से {{सप्तर्षयः}}। यह {{गुणः}} है।
+    items:
+    - id: i0
+      sa: अ + इ → ए · अ + उ → ओ · अ + ऋ → अर्
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: ए
+    - id: i6
+      sa: उ
+    - id: i7
+      sa: ऊ
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: ऋ
+    - id: i10
+      sa: अर्
+    - id: i11
+      sa: गण + ईशः
+    - id: i12
+      sa: गणेशः
+    - id: i13
+      sa: महा + उत्सवः
+    - id: i14
+      sa: महोत्सवः
+    - id: i15
+      sa: सप्त + ऋषयः
+    - id: i16
+      sa: सप्तर्षयः
+    - id: i17
+      sa: गुणः
 - id: p2
   kind: practice
   depth: core
@@ -189,6 +295,55 @@ cards:
   - sa: महौत्सवः
   - correct: true
     sa: महोत्सवः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{इ}} or {{ई}}, the result is {{ए}}; with {{उ}} or {{ऊ}}, it is {{ओ}}; with {{ऋ}}, it
+        is {{अर्}}. {{गण + ईशः}} gives {{गणेशः}}, {{महा + उत्सवः}} gives {{महोत्सवः}}, {{सप्त + ऋषयः}} gives {{सप्तर्षयः}}.
+        This is {{गुणः}}.
+      hi: जब {{अ}} या {{आ}}, {{इ}} या {{ई}} से मिलते हैं तो {{ए}} बनता है; {{उ}} या {{ऊ}} से {{ओ}}; {{ऋ}} से {{अर्}}। {{गण
+        + ईशः}} से {{गणेशः}}, {{महा + उत्सवः}} से {{महोत्सवः}}, {{सप्त + ऋषयः}} से {{सप्तर्षयः}}। यह {{गुणः}} है।
+    items:
+    - id: i0
+      sa: अ + इ → ए · अ + उ → ओ · अ + ऋ → अर्
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: ए
+    - id: i6
+      sa: उ
+    - id: i7
+      sa: ऊ
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: ऋ
+    - id: i10
+      sa: अर्
+    - id: i11
+      sa: गण + ईशः
+    - id: i12
+      sa: गणेशः
+    - id: i13
+      sa: महा + उत्सवः
+    - id: i14
+      sa: महोत्सवः
+    - id: i15
+      sa: सप्त + ऋषयः
+    - id: i16
+      sa: सप्तर्षयः
+    - id: i17
+      sa: गुणः
 - id: p3
   kind: practice
   depth: core
@@ -209,6 +364,55 @@ cards:
   - शः
   - ईशः
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{इ}} or {{ई}}, the result is {{ए}}; with {{उ}} or {{ऊ}}, it is {{ओ}}; with {{ऋ}}, it
+        is {{अर्}}. {{गण + ईशः}} gives {{गणेशः}}, {{महा + उत्सवः}} gives {{महोत्सवः}}, {{सप्त + ऋषयः}} gives {{सप्तर्षयः}}.
+        This is {{गुणः}}.
+      hi: जब {{अ}} या {{आ}}, {{इ}} या {{ई}} से मिलते हैं तो {{ए}} बनता है; {{उ}} या {{ऊ}} से {{ओ}}; {{ऋ}} से {{अर्}}। {{गण
+        + ईशः}} से {{गणेशः}}, {{महा + उत्सवः}} से {{महोत्सवः}}, {{सप्त + ऋषयः}} से {{सप्तर्षयः}}। यह {{गुणः}} है।
+    items:
+    - id: i0
+      sa: अ + इ → ए · अ + उ → ओ · अ + ऋ → अर्
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: ए
+    - id: i6
+      sa: उ
+    - id: i7
+      sa: ऊ
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: ऋ
+    - id: i10
+      sa: अर्
+    - id: i11
+      sa: गण + ईशः
+    - id: i12
+      sa: गणेशः
+    - id: i13
+      sa: महा + उत्सवः
+    - id: i14
+      sa: महोत्सवः
+    - id: i15
+      sa: सप्त + ऋषयः
+    - id: i16
+      sa: सप्तर्षयः
+    - id: i17
+      sa: गुणः
 - id: p4
   kind: practice
   depth: core
@@ -239,6 +443,55 @@ cards:
       sa: सप्तर्षयः
     right:
       sa: सप्त + ऋषयः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{इ}} or {{ई}}, the result is {{ए}}; with {{उ}} or {{ऊ}}, it is {{ओ}}; with {{ऋ}}, it
+        is {{अर्}}. {{गण + ईशः}} gives {{गणेशः}}, {{महा + उत्सवः}} gives {{महोत्सवः}}, {{सप्त + ऋषयः}} gives {{सप्तर्षयः}}.
+        This is {{गुणः}}.
+      hi: जब {{अ}} या {{आ}}, {{इ}} या {{ई}} से मिलते हैं तो {{ए}} बनता है; {{उ}} या {{ऊ}} से {{ओ}}; {{ऋ}} से {{अर्}}। {{गण
+        + ईशः}} से {{गणेशः}}, {{महा + उत्सवः}} से {{महोत्सवः}}, {{सप्त + ऋषयः}} से {{सप्तर्षयः}}। यह {{गुणः}} है।
+    items:
+    - id: i0
+      sa: अ + इ → ए · अ + उ → ओ · अ + ऋ → अर्
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: ए
+    - id: i6
+      sa: उ
+    - id: i7
+      sa: ऊ
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: ऋ
+    - id: i10
+      sa: अर्
+    - id: i11
+      sa: गण + ईशः
+    - id: i12
+      sa: गणेशः
+    - id: i13
+      sa: महा + उत्सवः
+    - id: i14
+      sa: महोत्सवः
+    - id: i15
+      sa: सप्त + ऋषयः
+    - id: i16
+      sa: सप्तर्षयः
+    - id: i17
+      sa: गुणः
 - id: e1
   kind: explore
   depth: core
@@ -312,8 +565,12 @@ cards:
   gate: true
   story:
     success:
-      en: “देवर्षिः,” you say, “a sage of the gods,” and the conch statue lifts her shell to her lips. A low sound spreads through the dig, so deep that the ropes and lamps tremble. Lubdhaka's foreman looks at his own hands. “She said it,” he says, uneasily, “before you did.” “No,” says Dādī, gently. “You were listening.”
-      hi: “देवर्षिः,” आप कहते हैं, “देवताओं के ऋषि,” और शंख वाली प्रतिमा अपना शंख होंठों तक उठाती है। एक गहरी ध्वनि खुदाई में फैलती है, इतनी गहरी कि रस्सियाँ और दीपक काँप उठते हैं। लुब्धक का मुखिया अपने हाथों को देखता है। “उसने पहले कहा,” वह बेचैनी से कहता है, “आपके कहने से पहले।” “नहीं,” दादी कोमलता से कहती हैं। “आप सुन रहे थे।”
+      en: “देवर्षिः,” you say, “a sage of the gods,” and the conch statue lifts her shell to her lips. A low sound spreads
+        through the dig, so deep that the ropes and lamps tremble. Lubdhaka's foreman looks at his own hands. “She said it,”
+        he says, uneasily, “before you did.” “No,” says Dādī, gently. “You were listening.”
+      hi: “देवर्षिः,” आप कहते हैं, “देवताओं के ऋषि,” और शंख वाली प्रतिमा अपना शंख होंठों तक उठाती है। एक गहरी ध्वनि खुदाई
+        में फैलती है, इतनी गहरी कि रस्सियाँ और दीपक काँप उठते हैं। लुब्धक का मुखिया अपने हाथों को देखता है। “उसने पहले कहा,”
+        वह बेचैनी से कहता है, “आपके कहने से पहले।” “नहीं,” दादी कोमलता से कहती हैं। “आप सुन रहे थे।”
     failure:
       en: 'No sound comes. {{अ}} + {{ऋ}} = {{अर्}}: {{देवर्षिः}}.'
       hi: 'कोई ध्वनि नहीं आती। {{अ}} + {{ऋ}} = {{अर्}}: {{देवर्षिः}}।'
@@ -322,6 +579,55 @@ cards:
   - sa: देवैषिः
   - correct: true
     sa: देवर्षिः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{इ}} or {{ई}}, the result is {{ए}}; with {{उ}} or {{ऊ}}, it is {{ओ}}; with {{ऋ}}, it
+        is {{अर्}}. {{गण + ईशः}} gives {{गणेशः}}, {{महा + उत्सवः}} gives {{महोत्सवः}}, {{सप्त + ऋषयः}} gives {{सप्तर्षयः}}.
+        This is {{गुणः}}.
+      hi: जब {{अ}} या {{आ}}, {{इ}} या {{ई}} से मिलते हैं तो {{ए}} बनता है; {{उ}} या {{ऊ}} से {{ओ}}; {{ऋ}} से {{अर्}}। {{गण
+        + ईशः}} से {{गणेशः}}, {{महा + उत्सवः}} से {{महोत्सवः}}, {{सप्त + ऋषयः}} से {{सप्तर्षयः}}। यह {{गुणः}} है।
+    items:
+    - id: i0
+      sa: अ + इ → ए · अ + उ → ओ · अ + ऋ → अर्
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: ए
+    - id: i6
+      sa: उ
+    - id: i7
+      sa: ऊ
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: ऋ
+    - id: i10
+      sa: अर्
+    - id: i11
+      sa: गण + ईशः
+    - id: i12
+      sa: गणेशः
+    - id: i13
+      sa: महा + उत्सवः
+    - id: i14
+      sa: महोत्सवः
+    - id: i15
+      sa: सप्त + ऋषयः
+    - id: i16
+      sa: सप्तर्षयः
+    - id: i17
+      sa: गुणः
 - id: p6
   kind: practice
   depth: core
@@ -338,6 +644,55 @@ cards:
     kind: sandhi_join
     params: {}
     seed: 2
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{इ}} or {{ई}}, the result is {{ए}}; with {{उ}} or {{ऊ}}, it is {{ओ}}; with {{ऋ}}, it
+        is {{अर्}}. {{गण + ईशः}} gives {{गणेशः}}, {{महा + उत्सवः}} gives {{महोत्सवः}}, {{सप्त + ऋषयः}} gives {{सप्तर्षयः}}.
+        This is {{गुणः}}.
+      hi: जब {{अ}} या {{आ}}, {{इ}} या {{ई}} से मिलते हैं तो {{ए}} बनता है; {{उ}} या {{ऊ}} से {{ओ}}; {{ऋ}} से {{अर्}}। {{गण
+        + ईशः}} से {{गणेशः}}, {{महा + उत्सवः}} से {{महोत्सवः}}, {{सप्त + ऋषयः}} से {{सप्तर्षयः}}। यह {{गुणः}} है।
+    items:
+    - id: i0
+      sa: अ + इ → ए · अ + उ → ओ · अ + ऋ → अर्
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: ए
+    - id: i6
+      sa: उ
+    - id: i7
+      sa: ऊ
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: ऋ
+    - id: i10
+      sa: अर्
+    - id: i11
+      sa: गण + ईशः
+    - id: i12
+      sa: गणेशः
+    - id: i13
+      sa: महा + उत्सवः
+    - id: i14
+      sa: महोत्सवः
+    - id: i15
+      sa: सप्त + ऋषयः
+    - id: i16
+      sa: सप्तर्षयः
+    - id: i17
+      sa: गुणः
 - id: pn
   kind: teach
   title:
@@ -350,8 +705,38 @@ cards:
   - 6.1.87
   - 1.1.2
   body:
-    en: Sūtra 6.1.87, {{आद्गुणः}}, says that after {{अ}} or {{आ}}, a following vowel merges with it into its guṇa. 1.1.2, {{अदेङ् गुणः}}, names {{अ}}, {{ए}}, {{ओ}} guṇa. So {{अ + इ}} gives {{ए}}, {{अ + उ}} gives {{ओ}}.
-    hi: सूत्र 6.1.87, {{आद्गुणः}}, कहता है कि {{अ}} या {{आ}} के बाद आने वाला स्वर उसके साथ मिलकर अपने गुण में बदल जाता है। 1.1.2, {{अदेङ् गुणः}}, {{अ}}, {{ए}}, {{ओ}} को गुण कहता है। इसलिए {{अ + इ}} से {{ए}}, {{अ + उ}} से {{ओ}}।
+    en: Sūtra 6.1.87, {{आद्गुणः}}, says that after {{अ}} or {{आ}}, a following vowel merges with it into its guṇa. 1.1.2,
+      {{अदेङ् गुणः}}, names {{अ}}, {{ए}}, {{ओ}} guṇa. So {{अ + इ}} gives {{ए}}, {{अ + उ}} gives {{ओ}}.
+    hi: सूत्र 6.1.87, {{आद्गुणः}}, कहता है कि {{अ}} या {{आ}} के बाद आने वाला स्वर उसके साथ मिलकर अपने गुण में बदल जाता है।
+      1.1.2, {{अदेङ् गुणः}}, {{अ}}, {{ए}}, {{ओ}} को गुण कहता है। इसलिए {{अ + इ}} से {{ए}}, {{अ + उ}} से {{ओ}}।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 6.1.87, {{आद्गुणः}}, says that after {{अ}} or {{आ}}, a following vowel merges with it into its guṇa. 1.1.2,
+        {{अदेङ् गुणः}}, names {{अ}}, {{ए}}, {{ओ}} guṇa. So {{अ + इ}} gives {{ए}}, {{अ + उ}} gives {{ओ}}.
+      hi: सूत्र 6.1.87, {{आद्गुणः}}, कहता है कि {{अ}} या {{आ}} के बाद आने वाला स्वर उसके साथ मिलकर अपने गुण में बदल जाता है।
+        1.1.2, {{अदेङ् गुणः}}, {{अ}}, {{ए}}, {{ओ}} को गुण कहता है। इसलिए {{अ + इ}} से {{ए}}, {{अ + उ}} से {{ओ}}।
+    items:
+    - id: i0
+      sa: आद्गुणः
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: अदेङ् गुणः
+    - id: i4
+      sa: ए
+    - id: i5
+      sa: ओ
+    - id: i6
+      sa: अ + इ
+    - id: i7
+      sa: अ + उ
 - id: sum
   kind: summary
   title:

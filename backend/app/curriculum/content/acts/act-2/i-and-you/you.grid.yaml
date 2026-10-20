@@ -25,7 +25,9 @@ cards:
     hi: पानी पर तालिका
   depth: core
   image:
-    brief: A grid of nine glowing words laid out in light on the surface of the river, three rows by three columns, rippling; the boat drifting through it, you and Dādī leaning over the side to read it; the silvery spirit spreading his arms over the water.
+    brief: A grid of nine glowing words laid out in light on the surface of the river, three rows by three columns, rippling;
+      the boat drifting through it, you and Dādī leaning over the side to read it; the silvery spirit spreading his arms over
+      the water.
     alt:
       en: A grid of nine glowing verb forms on the river water
       hi: नदी के जल पर चमकती नौ क्रियाओं की तालिका
@@ -38,10 +40,16 @@ cards:
     place: nauka
     ratio: '4:3'
     id: you-grid-s1
-    text_in_image: ["पठति पठतः पठन्ति", "पठसि पठथः पठथ", "पठामि पठावः पठामः"]
+    text_in_image:
+    - पठति पठतः पठन्ति
+    - पठसि पठथः पठथ
+    - पठामि पठावः पठामः
   narration:
-    en: 'As the boat drifts, the reflection spirit ripples across the water and lays out a grid in light: three rows, three columns. In each box a verb form of {{पठ्}}. “Three persons, three numbers,” says Dādī. “Nine forms. Know the grid and you know every verb.”'
-    hi: 'नाव बहती है तो प्रतिबिम्ब-भूत पानी पर लहराता है और प्रकाश की एक तालिका बिछा देता है: तीन पंक्तियाँ, तीन स्तम्भ। हर खाने में {{पठ्}} का एक क्रियापद। दादी कहती हैं, “तीन पुरुष, तीन वचन। नौ रूप। तालिका जान ली तो हर क्रिया जान ली।”'
+    en: 'As the boat drifts, the reflection spirit ripples across the water and lays out a grid in light: three rows, three
+      columns. In each box a verb form of {{पठ्}}. “Three persons, three numbers,” says Dādī. “Nine forms. Know the grid and
+      you know every verb.”'
+    hi: 'नाव बहती है तो प्रतिबिम्ब-भूत पानी पर लहराता है और प्रकाश की एक तालिका बिछा देता है: तीन पंक्तियाँ, तीन स्तम्भ। हर
+      खाने में {{पठ्}} का एक क्रियापद। दादी कहती हैं, “तीन पुरुष, तीन वचन। नौ रूप। तालिका जान ली तो हर क्रिया जान ली।”'
 - id: t1
   kind: teach
   title:
@@ -53,8 +61,10 @@ cards:
   sutras:
   - 3.4.78
   body:
-    en: 'Every verb has three persons (he/she/it, you, I) and three numbers (one, two, many): nine forms. The endings are {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}.'
-    hi: 'हर क्रिया के तीन पुरुष (वह, तुम, मैं) और तीन वचन (एक, दो, अनेक) होते हैं: नौ रूप। प्रत्यय हैं {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}।'
+    en: 'Every verb has three persons (he/she/it, you, I) and three numbers (one, two, many): nine forms. The endings are
+      {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}.'
+    hi: 'हर क्रिया के तीन पुरुष (वह, तुम, मैं) और तीन वचन (एक, दो, अनेक) होते हैं: नौ रूप। प्रत्यय हैं {{ति तः न्ति}}, {{सि
+      थः थ}}, {{मि वः मः}}।'
   examples:
   - sa: गच्छति
     meaning:
@@ -86,6 +96,154 @@ cards:
       lakara: Lat
       purusha: Uttama
       vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: गच्छति
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: he goes
+        hi: वह जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Every verb has three persons (he/she/it, you, I) and three numbers (one, two, many): nine forms. The endings
+          are {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}.'
+        hi: 'हर क्रिया के तीन पुरुष (वह, तुम, मैं) और तीन वचन (एक, दो, अनेक) होते हैं: नौ रूप। प्रत्यय हैं {{ति तः न्ति}},
+          {{सि थः थ}}, {{मि वः मः}}।'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: he goes
+        hi: वह जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: गच्छसि
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: you go
+        hi: तुम जाते हो
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Every verb has three persons (he/she/it, you, I) and three numbers (one, two, many): nine forms. The endings
+          are {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}.'
+        hi: 'हर क्रिया के तीन पुरुष (वह, तुम, मैं) और तीन वचन (एक, दो, अनेक) होते हैं: नौ रूप। प्रत्यय हैं {{ति तः न्ति}},
+          {{सि थः थ}}, {{मि वः मः}}।'
+    - id: i3
+      sa: गच्छसि
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: you go
+        hi: तुम जाते हो
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: गच्छामि
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I go
+        hi: मैं जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Every verb has three persons (he/she/it, you, I) and three numbers (one, two, many): nine forms. The endings
+          are {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}.'
+        hi: 'हर क्रिया के तीन पुरुष (वह, तुम, मैं) और तीन वचन (एक, दो, अनेक) होते हैं: नौ रूप। प्रत्यय हैं {{ति तः न्ति}},
+          {{सि थः थ}}, {{मि वः मः}}।'
+    - id: i3
+      sa: गच्छामि
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I go
+        hi: मैं जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
 - id: tb1
   kind: table
   title:
@@ -314,6 +472,56 @@ cards:
   - correct: true
     sa: पठथः
   - sa: पठावः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गच्छति
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: he goes
+        hi: वह जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Every verb has three persons (he/she/it, you, I) and three numbers (one, two, many): nine forms. The endings
+          are {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}.'
+        hi: 'हर क्रिया के तीन पुरुष (वह, तुम, मैं) और तीन वचन (एक, दो, अनेक) होते हैं: नौ रूप। प्रत्यय हैं {{ति तः न्ति}},
+          {{सि थः थ}}, {{मि वः मः}}।'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: he goes
+        hi: वह जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
 - id: p2
   kind: practice
   depth: core
@@ -352,6 +560,56 @@ cards:
       text:
         en: we read
         hi: हम पढ़ते हैं
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गच्छति
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: he goes
+        hi: वह जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Every verb has three persons (he/she/it, you, I) and three numbers (one, two, many): nine forms. The endings
+          are {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}.'
+        hi: 'हर क्रिया के तीन पुरुष (वह, तुम, मैं) और तीन वचन (एक, दो, अनेक) होते हैं: नौ रूप। प्रत्यय हैं {{ति तः न्ति}},
+          {{सि थः थ}}, {{मि वः मः}}।'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: he goes
+        hi: वह जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
 - id: p3
   kind: practice
   depth: core
@@ -372,6 +630,56 @@ cards:
   - वः
   - तः
   - मः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गच्छति
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: he goes
+        hi: वह जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Every verb has three persons (he/she/it, you, I) and three numbers (one, two, many): nine forms. The endings
+          are {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}.'
+        hi: 'हर क्रिया के तीन पुरुष (वह, तुम, मैं) और तीन वचन (एक, दो, अनेक) होते हैं: नौ रूप। प्रत्यय हैं {{ति तः न्ति}},
+          {{सि थः थ}}, {{मि वः मः}}।'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: he goes
+        hi: वह जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
 - id: e2
   kind: explore
   depth: core
@@ -413,8 +721,10 @@ cards:
   gate: true
   story:
     success:
-      en: Eight boxes glow. You name the ninth and the grid lights from edge to edge. The reflection spirit shivers with delight; for the first time he has a shape of his own.
-      hi: आठ खाने चमकते हैं। आप नौवें का नाम लेते हैं और तालिका किनारे से किनारे तक जगमगा उठती है। प्रतिबिम्ब-भूत ख़ुशी से सिहरता है; पहली बार उसका अपना एक आकार है।
+      en: Eight boxes glow. You name the ninth and the grid lights from edge to edge. The reflection spirit shivers with delight;
+        for the first time he has a shape of his own.
+      hi: आठ खाने चमकते हैं। आप नौवें का नाम लेते हैं और तालिका किनारे से किनारे तक जगमगा उठती है। प्रतिबिम्ब-भूत ख़ुशी से
+        सिहरता है; पहली बार उसका अपना एक आकार है।
     failure:
       en: 'A box stays dark. Third person, many: look for {{न्ति}}.'
       hi: 'एक खाना अँधेरा रहता है। प्रथम पुरुष, अनेक: {{न्ति}} खोजिए।'
@@ -423,6 +733,56 @@ cards:
     sa: पठन्ति
   - sa: पठथ
   - sa: पठामः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गच्छति
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: he goes
+        hi: वह जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Every verb has three persons (he/she/it, you, I) and three numbers (one, two, many): nine forms. The endings
+          are {{ति तः न्ति}}, {{सि थः थ}}, {{मि वः मः}}.'
+        hi: 'हर क्रिया के तीन पुरुष (वह, तुम, मैं) और तीन वचन (एक, दो, अनेक) होते हैं: नौ रूप। प्रत्यय हैं {{ति तः न्ति}},
+          {{सि थः थ}}, {{मि वः मः}}।'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: he goes
+        hi: वह जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
 - id: sum
   kind: summary
   title:

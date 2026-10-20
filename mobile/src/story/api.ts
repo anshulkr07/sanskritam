@@ -1,4 +1,4 @@
-import {resolvePicture} from './artwork';
+import {resolvePicture,cardPictures} from './artwork';
 import { ApiError, request } from '../api/client';
 import { prefetchArtwork } from '../services/artworkCache';
 import { cachedIndex, saveIndex, cachedLesson, saveLesson } from './cache';
@@ -24,7 +24,7 @@ export function lessonSummaries(index: StoryIndex): LessonSummary[] {
 export async function prefetchLessons(summaries: LessonSummary[], tablet: boolean, characters: Character[] = []) {
  await Promise.allSettled(summaries.slice(0,3).map(async summary => {
   const lesson = await getLesson(summary.id, summary.hash);
-  const pictures = lesson.cards.flatMap(card => [card.image, ...(card.kind === 'story' ? card.lines.map(line => characters.find(ch => ch.id === line.speaker)?.portrait) : [])]);
+  const pictures = lesson.cards.slice(0,2).flatMap(card => [...cardPictures(card), ...(card.kind === 'story' ? card.lines.map(line => characters.find(ch => ch.id === line.speaker)?.portrait) : [])]).slice(0,8);
   prefetchArtwork(pictures.map(resolvePicture).flatMap(p => { const uri = p?.delivered ? (tablet ? p.tablet ?? p.phone : p.phone) : undefined; return uri ? [uri] : []; }));
  }));
 }

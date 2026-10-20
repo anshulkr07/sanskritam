@@ -114,6 +114,56 @@ cards:
         vacana: Eka
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: भगवान्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: possessing fortune
+          hi: ऐश्वर्यवान्
+        check:
+          type: taddhita
+          stem: भग
+          taddhita: matup
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{भग}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{भग}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{भगवान्}} and {{हनुमान्}} look like {{-वत्}}/{{-मत्}} words but have their own stems.'
+          hi: '{{भगवान्}} और {{हनुमान्}} {{-वत्}}/{{-मत्}} शब्द लगते हैं पर उनके अपने आधार हैं।'
+      - id: i3
+        sa: भगवान्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: possessing fortune
+          hi: ऐश्वर्यवान्
+        check:
+          type: taddhita
+          stem: भग
+          taddhita: matup
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{भग}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{भग}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
   - skill: tad.comparison
     rule:
       en: 'Some comparatives are quite irregular: {{ज्यायान्}} (elder), {{श्रेयान्}} (better).'
@@ -132,6 +182,56 @@ cards:
         vacana: Eka
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: श्रेयान्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: better
+          hi: बेहतर
+        check:
+          type: taddhita
+          stem: प्रशस्य
+          taddhita: Iyasun
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{प्रशस्य}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{प्रशस्य}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Some comparatives are quite irregular: {{ज्यायान्}} (elder), {{श्रेयान्}} (better).'
+          hi: 'कुछ तुलनात्मक रूप बहुत अनियमित हैं: {{ज्यायान्}} (बड़ा), {{श्रेयान्}} (बेहतर)।'
+      - id: i3
+        sa: श्रेयान्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: better
+          hi: बेहतर
+        check:
+          type: taddhita
+          stem: प्रशस्य
+          taddhita: Iyasun
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{प्रशस्य}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{प्रशस्य}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: mistakes
   kind: revision
   title:

@@ -24,7 +24,9 @@ cards:
     hi: सिंहासन का कक्ष
   depth: core
   image:
-    brief: 'A hill above Ujjayinī at dawn: workmen''s tents and ropes around a half-uncovered stone throne ringed by thirty-two weathered statues of women; the first statue, holding a lotus, close to the viewer; Lubdhaka''s foreman frowning at her; you, Dādī and Śuka at the edge of the dig.'
+    brief: 'A hill above Ujjayinī at dawn: workmen''s tents and ropes around a half-uncovered stone throne ringed by thirty-two
+      weathered statues of women; the first statue, holding a lotus, close to the viewer; Lubdhaka''s foreman frowning at
+      her; you, Dādī and Śuka at the edge of the dig.'
     alt:
       en: A dig site with a stone throne ringed by thirty-two statues, the first holding a lotus
       hi: पत्थर के सिंहासन के चारों ओर बत्तीस प्रतिमाएँ, पहली कमल थामे
@@ -38,8 +40,13 @@ cards:
     ratio: '4:3'
     id: vs-like-s1
   narration:
-    en: 'A day''s walk from the grove, on a hill above Ujjayinī, workmen have uncovered a throne ringed by thirty-two stone women. Lubdhaka''s tents are everywhere. The first statue, a woman holding a lotus, says one word: “विद्यालयः.” His foreman frowns: “Nonsense.” “Two words,” says Dādī. “विद्या and आलयः, run together. Learn how they join and every statue will speak.”'
-    hi: 'वन से एक दिन की दूरी पर, उज्जयिनी के ऊपर एक पहाड़ी पर, मज़दूरों ने बत्तीस पत्थर की नारियों से घिरा एक सिंहासन खोद निकाला है। लुब्धक के तम्बू चारों ओर हैं। पहली प्रतिमा, कमल थामे एक नारी, एक शब्द कहती है: “विद्यालयः।” उसका मुखिया भौंहें चढ़ाता है: “बकवास।” “दो शब्द,” दादी कहती हैं। “विद्या और आलयः, घुले-मिले। जोड़ना सीख लो तो हर प्रतिमा बोलेगी।”'
+    en: 'A day''s walk from the grove, on a hill above Ujjayinī, workmen have uncovered a throne ringed by thirty-two stone
+      women. Lubdhaka''s tents are everywhere. The first statue, a woman holding a lotus, says one word: “विद्यालयः.” His
+      foreman frowns: “Nonsense.” “Two words,” says Dādī. “विद्या and आलयः, run together. Learn how they join and every statue
+      will speak.”'
+    hi: 'वन से एक दिन की दूरी पर, उज्जयिनी के ऊपर एक पहाड़ी पर, मज़दूरों ने बत्तीस पत्थर की नारियों से घिरा एक सिंहासन खोद
+      निकाला है। लुब्धक के तम्बू चारों ओर हैं। पहली प्रतिमा, कमल थामे एक नारी, एक शब्द कहती है: “विद्यालयः।” उसका मुखिया भौंहें
+      चढ़ाता है: “बकवास।” “दो शब्द,” दादी कहती हैं। “विद्या और आलयः, घुले-मिले। जोड़ना सीख लो तो हर प्रतिमा बोलेगी।”'
   lines:
   - speaker: dadi
     sa: विद्या + आलयः = विद्यालयः।
@@ -61,13 +68,49 @@ cards:
   skills:
   - sandhi.savarna
   body:
-    en: 'When two words meet, the last sound of the first and the first sound of the second may join. This is {{सन्धिः}}. When two vowels of the same family meet, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, they merge into one long vowel: {{विद्या + आलयः}} gives {{विद्यालयः}}.'
-    hi: 'जब दो शब्द मिलते हैं, तो पहले शब्द की अन्तिम और दूसरे की पहली ध्वनि जुड़ सकती हैं। यह {{सन्धिः}} है। जब एक ही कुल के दो स्वर मिलते हैं, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, तो वे मिलकर एक दीर्घ स्वर बन जाते हैं: {{विद्या + आलयः}} से {{विद्यालयः}}।'
+    en: 'When two words meet, the last sound of the first and the first sound of the second may join. This is {{सन्धिः}}.
+      When two vowels of the same family meet, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, they merge into one long vowel: {{विद्या
+      + आलयः}} gives {{विद्यालयः}}.'
+    hi: 'जब दो शब्द मिलते हैं, तो पहले शब्द की अन्तिम और दूसरे की पहली ध्वनि जुड़ सकती हैं। यह {{सन्धिः}} है। जब एक ही कुल
+      के दो स्वर मिलते हैं, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, तो वे मिलकर एक दीर्घ स्वर बन जाते हैं: {{विद्या + आलयः}}
+      से {{विद्यालयः}}।'
   term:
     sa: सन्धिः
     meaning:
       en: the joining of sounds
       hi: ध्वनियों का जुड़ना
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'When two words meet, the last sound of the first and the first sound of the second may join. This is {{सन्धिः}}.
+        When two vowels of the same family meet, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, they merge into one long vowel: {{विद्या
+        + आलयः}} gives {{विद्यालयः}}.'
+      hi: 'जब दो शब्द मिलते हैं, तो पहले शब्द की अन्तिम और दूसरे की पहली ध्वनि जुड़ सकती हैं। यह {{सन्धिः}} है। जब एक ही कुल
+        के दो स्वर मिलते हैं, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, तो वे मिलकर एक दीर्घ स्वर बन जाते हैं: {{विद्या + आलयः}}
+        से {{विद्यालयः}}।'
+    items:
+    - id: i0
+      sa: सन्धिः
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: उ
+    - id: i6
+      sa: ऊ
+    - id: i7
+      sa: विद्या + आलयः
+    - id: i8
+      sa: विद्यालयः
 - id: tb1
   kind: table
   title:
@@ -171,6 +214,38 @@ cards:
   - sa: विद्यै + आलयः
   - correct: true
     sa: विद्या + आलयः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'When two words meet, the last sound of the first and the first sound of the second may join. This is {{सन्धिः}}.
+        When two vowels of the same family meet, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, they merge into one long vowel: {{विद्या
+        + आलयः}} gives {{विद्यालयः}}.'
+      hi: 'जब दो शब्द मिलते हैं, तो पहले शब्द की अन्तिम और दूसरे की पहली ध्वनि जुड़ सकती हैं। यह {{सन्धिः}} है। जब एक ही कुल
+        के दो स्वर मिलते हैं, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, तो वे मिलकर एक दीर्घ स्वर बन जाते हैं: {{विद्या + आलयः}}
+        से {{विद्यालयः}}।'
+    items:
+    - id: i0
+      sa: सन्धिः
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: उ
+    - id: i6
+      sa: ऊ
+    - id: i7
+      sa: विद्या + आलयः
+    - id: i8
+      sa: विद्यालयः
 - id: p2
   kind: practice
   depth: core
@@ -189,6 +264,38 @@ cards:
   - sa: हिमैलयः
   - correct: true
     sa: हिमालयः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'When two words meet, the last sound of the first and the first sound of the second may join. This is {{सन्धिः}}.
+        When two vowels of the same family meet, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, they merge into one long vowel: {{विद्या
+        + आलयः}} gives {{विद्यालयः}}.'
+      hi: 'जब दो शब्द मिलते हैं, तो पहले शब्द की अन्तिम और दूसरे की पहली ध्वनि जुड़ सकती हैं। यह {{सन्धिः}} है। जब एक ही कुल
+        के दो स्वर मिलते हैं, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, तो वे मिलकर एक दीर्घ स्वर बन जाते हैं: {{विद्या + आलयः}}
+        से {{विद्यालयः}}।'
+    items:
+    - id: i0
+      sa: सन्धिः
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: उ
+    - id: i6
+      sa: ऊ
+    - id: i7
+      sa: विद्या + आलयः
+    - id: i8
+      sa: विद्यालयः
 - id: p3
   kind: practice
   depth: core
@@ -209,6 +316,38 @@ cards:
   - त्मा
   - आत्मा
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'When two words meet, the last sound of the first and the first sound of the second may join. This is {{सन्धिः}}.
+        When two vowels of the same family meet, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, they merge into one long vowel: {{विद्या
+        + आलयः}} gives {{विद्यालयः}}.'
+      hi: 'जब दो शब्द मिलते हैं, तो पहले शब्द की अन्तिम और दूसरे की पहली ध्वनि जुड़ सकती हैं। यह {{सन्धिः}} है। जब एक ही कुल
+        के दो स्वर मिलते हैं, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, तो वे मिलकर एक दीर्घ स्वर बन जाते हैं: {{विद्या + आलयः}}
+        से {{विद्यालयः}}।'
+    items:
+    - id: i0
+      sa: सन्धिः
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: उ
+    - id: i6
+      sa: ऊ
+    - id: i7
+      sa: विद्या + आलयः
+    - id: i8
+      sa: विद्यालयः
 - id: p4
   kind: practice
   depth: core
@@ -239,6 +378,38 @@ cards:
       sa: नास्ति
     right:
       sa: न + अस्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'When two words meet, the last sound of the first and the first sound of the second may join. This is {{सन्धिः}}.
+        When two vowels of the same family meet, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, they merge into one long vowel: {{विद्या
+        + आलयः}} gives {{विद्यालयः}}.'
+      hi: 'जब दो शब्द मिलते हैं, तो पहले शब्द की अन्तिम और दूसरे की पहली ध्वनि जुड़ सकती हैं। यह {{सन्धिः}} है। जब एक ही कुल
+        के दो स्वर मिलते हैं, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, तो वे मिलकर एक दीर्घ स्वर बन जाते हैं: {{विद्या + आलयः}}
+        से {{विद्यालयः}}।'
+    items:
+    - id: i0
+      sa: सन्धिः
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: उ
+    - id: i6
+      sa: ऊ
+    - id: i7
+      sa: विद्या + आलयः
+    - id: i8
+      sa: विद्यालयः
 - id: e1
   kind: explore
   depth: core
@@ -317,8 +488,12 @@ cards:
   gate: true
   story:
     success:
-      en: “सूक्तम्,” you say, “su-uktam, a good saying,” and the lotus statue turns her head, with a small grinding sound, towards you. Her fine crack closes a little. “विद्यालयः,” she says, to Lubdhaka's foreman. “महात्मा. सूक्तम्.” She lowers her lotus, and the foreman takes a step back. He did not know that stone could speak.
-      hi: “सूक्तम्,” आप कहते हैं, “सु-उक्तम्, सुभाषित,” और कमल वाली प्रतिमा हल्की घिसने की आवाज़ के साथ आपकी ओर सिर घुमाती है। उसकी बारीक दरार थोड़ी भर जाती है। “विद्यालयः,” वह लुब्धक के मुखिया से कहती है। “महात्मा। सूक्तम्।” वह अपना कमल नीचे करती है, और मुखिया एक क़दम पीछे हटता है। उसे पता नहीं था कि पत्थर बोल सकता है।
+      en: “सूक्तम्,” you say, “su-uktam, a good saying,” and the lotus statue turns her head, with a small grinding sound,
+        towards you. Her fine crack closes a little. “विद्यालयः,” she says, to Lubdhaka's foreman. “महात्मा. सूक्तम्.” She
+        lowers her lotus, and the foreman takes a step back. He did not know that stone could speak.
+      hi: “सूक्तम्,” आप कहते हैं, “सु-उक्तम्, सुभाषित,” और कमल वाली प्रतिमा हल्की घिसने की आवाज़ के साथ आपकी ओर सिर घुमाती
+        है। उसकी बारीक दरार थोड़ी भर जाती है। “विद्यालयः,” वह लुब्धक के मुखिया से कहती है। “महात्मा। सूक्तम्।” वह अपना कमल
+        नीचे करती है, और मुखिया एक क़दम पीछे हटता है। उसे पता नहीं था कि पत्थर बोल सकता है।
     failure:
       en: 'The statue stays still. {{उ}} + {{उ}} = {{ऊ}}: {{सूक्तम्}}.'
       hi: 'प्रतिमा स्थिर रहती है। {{उ}} + {{उ}} = {{ऊ}}: {{सूक्तम्}}।'
@@ -327,6 +502,38 @@ cards:
   - sa: सोक्तम्
   - correct: true
     sa: सूक्तम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'When two words meet, the last sound of the first and the first sound of the second may join. This is {{सन्धिः}}.
+        When two vowels of the same family meet, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, they merge into one long vowel: {{विद्या
+        + आलयः}} gives {{विद्यालयः}}.'
+      hi: 'जब दो शब्द मिलते हैं, तो पहले शब्द की अन्तिम और दूसरे की पहली ध्वनि जुड़ सकती हैं। यह {{सन्धिः}} है। जब एक ही कुल
+        के दो स्वर मिलते हैं, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, तो वे मिलकर एक दीर्घ स्वर बन जाते हैं: {{विद्या + आलयः}}
+        से {{विद्यालयः}}।'
+    items:
+    - id: i0
+      sa: सन्धिः
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: उ
+    - id: i6
+      sa: ऊ
+    - id: i7
+      sa: विद्या + आलयः
+    - id: i8
+      sa: विद्यालयः
 - id: pn
   kind: teach
   title:
@@ -339,8 +546,38 @@ cards:
   - 6.1.101
   - 1.1.9
   body:
-    en: 'Sūtra 6.1.101, {{अकः सवर्णे दीर्घः}}, says that when {{अ}}, {{इ}}, {{उ}} or {{ऋ}} (short or long) meets a vowel of its own family, the two become one long vowel. 1.1.9, {{तुल्यास्यप्रयत्नं सवर्णम्}}, defines “own family”: sounds made in the same place with the same effort.'
-    hi: 'सूत्र 6.1.101, {{अकः सवर्णे दीर्घः}}, कहता है कि जब {{अ}}, {{इ}}, {{उ}} या {{ऋ}} (ह्रस्व या दीर्घ) अपने कुल के स्वर से मिलता है, तो दोनों एक दीर्घ स्वर बन जाते हैं। 1.1.9, {{तुल्यास्यप्रयत्नं सवर्णम्}}, ‘अपने कुल’ की परिभाषा देता है: एक स्थान और एक प्रयत्न से बनी ध्वनियाँ।'
+    en: 'Sūtra 6.1.101, {{अकः सवर्णे दीर्घः}}, says that when {{अ}}, {{इ}}, {{उ}} or {{ऋ}} (short or long) meets a vowel of
+      its own family, the two become one long vowel. 1.1.9, {{तुल्यास्यप्रयत्नं सवर्णम्}}, defines “own family”: sounds made
+      in the same place with the same effort.'
+    hi: 'सूत्र 6.1.101, {{अकः सवर्णे दीर्घः}}, कहता है कि जब {{अ}}, {{इ}}, {{उ}} या {{ऋ}} (ह्रस्व या दीर्घ) अपने कुल के स्वर
+      से मिलता है, तो दोनों एक दीर्घ स्वर बन जाते हैं। 1.1.9, {{तुल्यास्यप्रयत्नं सवर्णम्}}, ‘अपने कुल’ की परिभाषा देता है:
+      एक स्थान और एक प्रयत्न से बनी ध्वनियाँ।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Sūtra 6.1.101, {{अकः सवर्णे दीर्घः}}, says that when {{अ}}, {{इ}}, {{उ}} or {{ऋ}} (short or long) meets a vowel
+        of its own family, the two become one long vowel. 1.1.9, {{तुल्यास्यप्रयत्नं सवर्णम्}}, defines “own family”: sounds
+        made in the same place with the same effort.'
+      hi: 'सूत्र 6.1.101, {{अकः सवर्णे दीर्घः}}, कहता है कि जब {{अ}}, {{इ}}, {{उ}} या {{ऋ}} (ह्रस्व या दीर्घ) अपने कुल के
+        स्वर से मिलता है, तो दोनों एक दीर्घ स्वर बन जाते हैं। 1.1.9, {{तुल्यास्यप्रयत्नं सवर्णम्}}, ‘अपने कुल’ की परिभाषा
+        देता है: एक स्थान और एक प्रयत्न से बनी ध्वनियाँ।'
+    items:
+    - id: i0
+      sa: अकः सवर्णे दीर्घः
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: इ
+    - id: i3
+      sa: उ
+    - id: i4
+      sa: ऋ
+    - id: i5
+      sa: तुल्यास्यप्रयत्नं सवर्णम्
 - id: sum
   kind: summary
   title:

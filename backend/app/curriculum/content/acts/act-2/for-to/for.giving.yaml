@@ -24,7 +24,9 @@ cards:
     hi: आचार्य का घाट
   depth: core
   image:
-    brief: A small village ghat with a whitewashed school among neem trees above it; at the gate a very old scholar with a white beard and a palm-leaf book under his arm, smiling; you, Dādī and Śuka coming up the steps with fruit, a lamp and a length of cloth; a small golden spirit with cupped hands following.
+    brief: A small village ghat with a whitewashed school among neem trees above it; at the gate a very old scholar with a
+      white beard and a palm-leaf book under his arm, smiling; you, Dādī and Śuka coming up the steps with fruit, a lamp and
+      a length of cloth; a small golden spirit with cupped hands following.
     alt:
       en: Arriving at a village school where an old scholar waits at the gate
       hi: गाँव की पाठशाला पर पहुँचना, फाटक पर प्रतीक्षा करते बूढ़े आचार्य
@@ -38,8 +40,14 @@ cards:
     ratio: '4:3'
     id: for-giving-s1
   narration:
-    en: 'The boat bumps against the steps of a small village ghat. Above it, among neem trees, stands a whitewashed school, and at its gate waits a very old scholar with a white beard and a palm-leaf book under his arm: the Ācārya, Dādī''s teacher. You have brought gifts: fruit, a lamp, a length of cloth. Dānaka, a small golden spirit, has followed you ashore, hands cupped, hoping.'
-    hi: 'नाव एक छोटे गाँव के घाट की सीढ़ियों से टकराती है। ऊपर नीम के पेड़ों के बीच चूने से पुती एक पाठशाला खड़ी है, और उसके फाटक पर बहुत बूढ़े, सफ़ेद दाढ़ी वाले एक विद्वान प्रतीक्षा करते हैं, बग़ल में ताड़पत्र की पुस्तक दबाए: आचार्य, दादी के गुरु। आप उपहार लाए हैं: फल, दीपक, कपड़े का एक थान। दानक, एक नन्हा सुनहरा भूत, हाथ फैलाए, आशा में, आपके पीछे किनारे तक आ गया है।'
+    en: 'The boat bumps against the steps of a small village ghat. Above it, among neem trees, stands a whitewashed school,
+      and at its gate waits a very old scholar with a white beard and a palm-leaf book under his arm: the Ācārya, Dādī''s
+      teacher. You have brought gifts: fruit, a lamp, a length of cloth. Dānaka, a small golden spirit, has followed you ashore,
+      hands cupped, hoping.'
+    hi: 'नाव एक छोटे गाँव के घाट की सीढ़ियों से टकराती है। ऊपर नीम के पेड़ों के बीच चूने से पुती एक पाठशाला खड़ी है, और उसके
+      फाटक पर बहुत बूढ़े, सफ़ेद दाढ़ी वाले एक विद्वान प्रतीक्षा करते हैं, बग़ल में ताड़पत्र की पुस्तक दबाए: आचार्य, दादी के
+      गुरु। आप उपहार लाए हैं: फल, दीपक, कपड़े का एक थान। दानक, एक नन्हा सुनहरा भूत, हाथ फैलाए, आशा में, आपके पीछे किनारे तक
+      आ गया है।'
   lines:
   - speaker: dadi
     sa: आचार्याय फलं ददामि।
@@ -58,7 +66,8 @@ cards:
   - 2.3.13
   - 1.4.32
   body:
-    en: 'The one a thing is given to takes the fourth case, {{चतुर्थी}}, the recipient ({{सम्प्रदानम्}}): {{आचार्याय फलं ददाति}} (he gives fruit to the teacher).'
+    en: 'The one a thing is given to takes the fourth case, {{चतुर्थी}}, the recipient ({{सम्प्रदानम्}}): {{आचार्याय फलं ददाति}}
+      (he gives fruit to the teacher).'
     hi: 'जिसे कोई वस्तु दी जाती है वह चतुर्थी में आता है, सम्प्रदान: {{आचार्याय फलं ददाति}} (वह आचार्य को फल देता है)।'
   examples:
   - sa: अहम् आचार्याय फलम् ददामि।
@@ -195,6 +204,526 @@ cards:
     meaning:
       en: 'the fourth case: to, for'
       hi: 'चौथी विभक्ति: को, के लिए'
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: अहम् आचार्याय फलम् ददामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I give fruit to the teacher.
+        hi: मैं आचार्य को फल देता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: आचार्याय
+        gloss:
+          en: to the teacher
+          hi: आचार्य को
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: ददामि
+        gloss:
+          en: give
+          hi: देता हूँ
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: आचार्याय
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the teacher
+        hi: आचार्य को
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: i3
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: ददामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: give
+        hi: देता हूँ
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The one a thing is given to takes the fourth case, {{चतुर्थी}}, the recipient ({{सम्प्रदानम्}}): {{आचार्याय फलं
+          ददाति}} (he gives fruit to the teacher).'
+        hi: 'जिसे कोई वस्तु दी जाती है वह चतुर्थी में आता है, सम्प्रदान: {{आचार्याय फलं ददाति}} (वह आचार्य को फल देता है)।'
+    - id: i7
+      sa: अहम् आचार्याय फलम् ददामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I give fruit to the teacher.
+        hi: मैं आचार्य को फल देता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: आचार्याय
+        gloss:
+          en: to the teacher
+          hi: आचार्य को
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: ददामि
+        gloss:
+          en: give
+          hi: देता हूँ
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: माता बालकाय पुस्तकम् ददाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The mother gives the boy a book.
+        hi: माता बालक को पुस्तक देती है।
+      words:
+      - sa: माता
+        gloss:
+          en: mother
+          hi: माता
+        check:
+          type: subanta
+          stem: माता
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकाय
+        gloss:
+          en: to the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: ददाति
+        gloss:
+          en: gives
+          hi: देती है
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: माता
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: mother
+        hi: माता
+      check:
+        type: subanta
+        stem: माता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{माता}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{माता}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकाय
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the boy
+        hi: बालक को
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: i3
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: ददाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: gives
+        hi: देती है
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The one a thing is given to takes the fourth case, {{चतुर्थी}}, the recipient ({{सम्प्रदानम्}}): {{आचार्याय फलं
+          ददाति}} (he gives fruit to the teacher).'
+        hi: 'जिसे कोई वस्तु दी जाती है वह चतुर्थी में आता है, सम्प्रदान: {{आचार्याय फलं ददाति}} (वह आचार्य को फल देता है)।'
+    - id: i7
+      sa: माता बालकाय पुस्तकम् ददाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The mother gives the boy a book.
+        hi: माता बालक को पुस्तक देती है।
+      words:
+      - sa: माता
+        gloss:
+          en: mother
+          hi: माता
+        check:
+          type: subanta
+          stem: माता
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकाय
+        gloss:
+          en: to the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: ददाति
+        gloss:
+          en: gives
+          hi: देती है
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकः बालिकायै जलम् ददाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy gives the girl water.
+        hi: बालक बालिका को जल देता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालिकायै
+        gloss:
+          en: to the girl
+          hi: बालिका को
+        check:
+          type: subanta
+          stem: बालिका
+          linga: Stri
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: ददाति
+        gloss:
+          en: gives
+          hi: देता है
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालिकायै
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the girl
+        hi: बालिका को
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: i3
+      sa: जलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: water
+        hi: जल
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{जल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{जल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: ददाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: gives
+        hi: देता है
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The one a thing is given to takes the fourth case, {{चतुर्थी}}, the recipient ({{सम्प्रदानम्}}): {{आचार्याय फलं
+          ददाति}} (he gives fruit to the teacher).'
+        hi: 'जिसे कोई वस्तु दी जाती है वह चतुर्थी में आता है, सम्प्रदान: {{आचार्याय फलं ददाति}} (वह आचार्य को फल देता है)।'
+    - id: i7
+      sa: बालकः बालिकायै जलम् ददाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy gives the girl water.
+        hi: बालक बालिका को जल देता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालिकायै
+        gloss:
+          en: to the girl
+          hi: बालिका को
+        check:
+          type: subanta
+          stem: बालिका
+          linga: Stri
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: ददाति
+        gloss:
+          en: gives
+          hi: देता है
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: tb1
   kind: table
   title:
@@ -316,8 +845,10 @@ cards:
   skills:
   - case.dat
   body:
-    en: 'Some words ask for the fourth case: {{नमः}} (homage) and {{स्वस्ति}} (well-being). {{नमः आचार्याय}}: homage to the teacher. {{स्वस्ति बालकाय}}: blessings on the boy.'
-    hi: 'कुछ शब्द चतुर्थी माँगते हैं: {{नमः}} (प्रणाम) और {{स्वस्ति}} (कल्याण)। {{नमः आचार्याय}}: आचार्य को प्रणाम। {{स्वस्ति बालकाय}}: बालक का कल्याण हो।'
+    en: 'Some words ask for the fourth case: {{नमः}} (homage) and {{स्वस्ति}} (well-being). {{नमः आचार्याय}}: homage to the
+      teacher. {{स्वस्ति बालकाय}}: blessings on the boy.'
+    hi: 'कुछ शब्द चतुर्थी माँगते हैं: {{नमः}} (प्रणाम) और {{स्वस्ति}} (कल्याण)। {{नमः आचार्याय}}: आचार्य को प्रणाम। {{स्वस्ति
+      बालकाय}}: बालक का कल्याण हो।'
   examples:
   - sa: नमः आचार्याय।
     meaning:
@@ -363,6 +894,200 @@ cards:
         linga: Pum
         vibhakti: Caturthi
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: नमः आचार्याय।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Homage to the teacher.
+        hi: आचार्य को प्रणाम।
+      words:
+      - sa: नमः
+        gloss:
+          en: homage
+          hi: प्रणाम
+        check:
+          type: subanta
+          stem: नमस्
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: आचार्याय
+        gloss:
+          en: to the teacher
+          hi: आचार्य को
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+    - id: i1
+      sa: नमः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: homage
+        hi: प्रणाम
+      check:
+        type: subanta
+        stem: नमस्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नमस्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नमस्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: आचार्याय
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the teacher
+        hi: आचार्य को
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Some words ask for the fourth case: {{नमः}} (homage) and {{स्वस्ति}} (well-being). {{नमः आचार्याय}}: homage to
+          the teacher. {{स्वस्ति बालकाय}}: blessings on the boy.'
+        hi: 'कुछ शब्द चतुर्थी माँगते हैं: {{नमः}} (प्रणाम) और {{स्वस्ति}} (कल्याण)। {{नमः आचार्याय}}: आचार्य को प्रणाम। {{स्वस्ति
+          बालकाय}}: बालक का कल्याण हो।'
+    - id: i5
+      sa: नमः आचार्याय।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Homage to the teacher.
+        hi: आचार्य को प्रणाम।
+      words:
+      - sa: नमः
+        gloss:
+          en: homage
+          hi: प्रणाम
+        check:
+          type: subanta
+          stem: नमस्
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: आचार्याय
+        gloss:
+          en: to the teacher
+          hi: आचार्य को
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: स्वस्ति बालकाय।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Blessings on the boy.
+        hi: बालक का कल्याण हो।
+      words:
+      - sa: स्वस्ति
+        gloss:
+          en: well-being
+          hi: कल्याण
+      - sa: बालकाय
+        gloss:
+          en: to the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+    - id: i1
+      sa: स्वस्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: well-being
+        hi: कल्याण
+    - id: i2
+      sa: बालकाय
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the boy
+        hi: बालक को
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Some words ask for the fourth case: {{नमः}} (homage) and {{स्वस्ति}} (well-being). {{नमः आचार्याय}}: homage to
+          the teacher. {{स्वस्ति बालकाय}}: blessings on the boy.'
+        hi: 'कुछ शब्द चतुर्थी माँगते हैं: {{नमः}} (प्रणाम) और {{स्वस्ति}} (कल्याण)। {{नमः आचार्याय}}: आचार्य को प्रणाम। {{स्वस्ति
+          बालकाय}}: बालक का कल्याण हो।'
+    - id: i5
+      sa: स्वस्ति बालकाय।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Blessings on the boy.
+        hi: बालक का कल्याण हो।
+      words:
+      - sa: स्वस्ति
+        gloss:
+          en: well-being
+          hi: कल्याण
+      - sa: बालकाय
+        gloss:
+          en: to the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
 - id: p1
   kind: practice
   depth: core
@@ -381,6 +1106,166 @@ cards:
   - sa: आचार्येण
   - correct: true
     sa: आचार्याय
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: अहम् आचार्याय फलम् ददामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I give fruit to the teacher.
+        hi: मैं आचार्य को फल देता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: आचार्याय
+        gloss:
+          en: to the teacher
+          hi: आचार्य को
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: ददामि
+        gloss:
+          en: give
+          hi: देता हूँ
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: आचार्याय
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the teacher
+        hi: आचार्य को
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: i3
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: ददामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: give
+        hi: देता हूँ
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The one a thing is given to takes the fourth case, {{चतुर्थी}}, the recipient ({{सम्प्रदानम्}}): {{आचार्याय फलं
+          ददाति}} (he gives fruit to the teacher).'
+        hi: 'जिसे कोई वस्तु दी जाती है वह चतुर्थी में आता है, सम्प्रदान: {{आचार्याय फलं ददाति}} (वह आचार्य को फल देता है)।'
+    - id: i7
+      sa: अहम् आचार्याय फलम् ददामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I give fruit to the teacher.
+        hi: मैं आचार्य को फल देता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: आचार्याय
+        gloss:
+          en: to the teacher
+          hi: आचार्य को
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: ददामि
+        gloss:
+          en: give
+          hi: देता हूँ
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -419,6 +1304,166 @@ cards:
       text:
         en: to the river
         hi: नदी को
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: अहम् आचार्याय फलम् ददामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I give fruit to the teacher.
+        hi: मैं आचार्य को फल देता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: आचार्याय
+        gloss:
+          en: to the teacher
+          hi: आचार्य को
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: ददामि
+        gloss:
+          en: give
+          hi: देता हूँ
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: आचार्याय
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the teacher
+        hi: आचार्य को
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: i3
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: ददामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: give
+        hi: देता हूँ
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The one a thing is given to takes the fourth case, {{चतुर्थी}}, the recipient ({{सम्प्रदानम्}}): {{आचार्याय फलं
+          ददाति}} (he gives fruit to the teacher).'
+        hi: 'जिसे कोई वस्तु दी जाती है वह चतुर्थी में आता है, सम्प्रदान: {{आचार्याय फलं ददाति}} (वह आचार्य को फल देता है)।'
+    - id: i7
+      sa: अहम् आचार्याय फलम् ददामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I give fruit to the teacher.
+        hi: मैं आचार्य को फल देता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: आचार्याय
+        gloss:
+          en: to the teacher
+          hi: आचार्य को
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: ददामि
+        gloss:
+          en: give
+          hi: देता हूँ
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -460,8 +1505,10 @@ cards:
   gate: true
   story:
     success:
-      en: “आचार्याय दीपं ददामि,” you say, and the old scholar takes the little lamp with both hands. Beside you Dānaka makes a soft sound of longing. The Ācārya notices him, and lays a single grain of rice in the spirit's cupped palms.
-      hi: “आचार्याय दीपं ददामि,” आप कहते हैं, और बूढ़े विद्वान दोनों हाथों से छोटा दीपक लेते हैं। आपके पास दानक ललक की धीमी ध्वनि निकालता है। आचार्य उसे देख लेते हैं और भूत की फैली हथेलियों में चावल का एक दाना रख देते हैं।
+      en: “आचार्याय दीपं ददामि,” you say, and the old scholar takes the little lamp with both hands. Beside you Dānaka makes
+        a soft sound of longing. The Ācārya notices him, and lays a single grain of rice in the spirit's cupped palms.
+      hi: “आचार्याय दीपं ददामि,” आप कहते हैं, और बूढ़े विद्वान दोनों हाथों से छोटा दीपक लेते हैं। आपके पास दानक ललक की धीमी
+        ध्वनि निकालता है। आचार्य उसे देख लेते हैं और भूत की फैली हथेलियों में चावल का एक दाना रख देते हैं।
     failure:
       en: The Ācārya waits. The one who receives, {{आचार्याय}}, comes before the thing given.
       hi: आचार्य प्रतीक्षा करते हैं। पाने वाला {{आचार्याय}} दी जाने वाली वस्तु से पहले आता है।
@@ -470,6 +1517,166 @@ cards:
   - आचार्याय
   - दीपम्
   - ददामि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: अहम् आचार्याय फलम् ददामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I give fruit to the teacher.
+        hi: मैं आचार्य को फल देता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: आचार्याय
+        gloss:
+          en: to the teacher
+          hi: आचार्य को
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: ददामि
+        gloss:
+          en: give
+          hi: देता हूँ
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: आचार्याय
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the teacher
+        hi: आचार्य को
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: i3
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: ददामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: give
+        hi: देता हूँ
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The one a thing is given to takes the fourth case, {{चतुर्थी}}, the recipient ({{सम्प्रदानम्}}): {{आचार्याय फलं
+          ददाति}} (he gives fruit to the teacher).'
+        hi: 'जिसे कोई वस्तु दी जाती है वह चतुर्थी में आता है, सम्प्रदान: {{आचार्याय फलं ददाति}} (वह आचार्य को फल देता है)।'
+    - id: i7
+      sa: अहम् आचार्याय फलम् ददामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I give fruit to the teacher.
+        hi: मैं आचार्य को फल देता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: आचार्याय
+        gloss:
+          en: to the teacher
+          hi: आचार्य को
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: ददामि
+        gloss:
+          en: give
+          hi: देता हूँ
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
 - id: pn
   kind: teach
   title:
@@ -482,13 +1689,29 @@ cards:
   - 1.4.32
   - 2.3.13
   body:
-    en: 'Sūtra 1.4.32, {{कर्मणा यमभिप्रैति स सम्प्रदानम्}}: the recipient is the one the doer aims at with the object. Sūtra 2.3.13 gives it the fourth case.'
-    hi: 'सूत्र 1.4.32, {{कर्मणा यमभिप्रैति स सम्प्रदानम्}}: सम्प्रदान वह है जिसे कर्ता कर्म के द्वारा पाना चाहता है। सूत्र 2.3.13 उसे चतुर्थी देता है।'
+    en: 'Sūtra 1.4.32, {{कर्मणा यमभिप्रैति स सम्प्रदानम्}}: the recipient is the one the doer aims at with the object. Sūtra
+      2.3.13 gives it the fourth case.'
+    hi: 'सूत्र 1.4.32, {{कर्मणा यमभिप्रैति स सम्प्रदानम्}}: सम्प्रदान वह है जिसे कर्ता कर्म के द्वारा पाना चाहता है। सूत्र
+      2.3.13 उसे चतुर्थी देता है।'
   term:
     sa: सम्प्रदानम्
     meaning:
       en: the recipient
       hi: 'सम्प्रदान: पाने वाला'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Sūtra 1.4.32, {{कर्मणा यमभिप्रैति स सम्प्रदानम्}}: the recipient is the one the doer aims at with the object. Sūtra
+        2.3.13 gives it the fourth case.'
+      hi: 'सूत्र 1.4.32, {{कर्मणा यमभिप्रैति स सम्प्रदानम्}}: सम्प्रदान वह है जिसे कर्ता कर्म के द्वारा पाना चाहता है। सूत्र
+        2.3.13 उसे चतुर्थी देता है।'
+    items:
+    - id: i0
+      sa: कर्मणा यमभिप्रैति स सम्प्रदानम्
 - id: sum
   kind: summary
   title:

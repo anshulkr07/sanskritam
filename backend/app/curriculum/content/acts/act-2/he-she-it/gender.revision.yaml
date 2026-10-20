@@ -66,8 +66,10 @@ cards:
   rows:
   - skill: pron.tad
     rule:
-      en: '{{सः}} replaces a masculine noun already named, {{सा}} a feminine, {{तत्}} a neuter. For people of unknown sex use the neuter or masculine by custom.'
-      hi: '{{सः}} पहले आए पुंलिंग का स्थान लेता है, {{सा}} स्त्रीलिंग का, {{तत्}} नपुंसक का। अज्ञात लिंग वाले व्यक्ति के लिए रीति से पुंलिंग या नपुंसक आता है।'
+      en: '{{सः}} replaces a masculine noun already named, {{सा}} a feminine, {{तत्}} a neuter. For people of unknown sex
+        use the neuter or masculine by custom.'
+      hi: '{{सः}} पहले आए पुंलिंग का स्थान लेता है, {{सा}} स्त्रीलिंग का, {{तत्}} नपुंसक का। अज्ञात लिंग वाले व्यक्ति के लिए
+        रीति से पुंलिंग या नपुंसक आता है।'
     tag: good
     taught_in: gender.tad#t2
   - skill: gen.agreement
@@ -81,6 +83,36 @@ cards:
         hi: 'मीठा फल: पहले विशेषण'
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: मधुरं फलम्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'a sweet fruit: adjective first'
+          hi: 'मीठा फल: पहले विशेषण'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: The adjective usually stands before its noun, but may follow it.
+          hi: विशेषण प्रायः संज्ञा से पहले आता है, पर बाद में भी आ सकता है।
+      - id: i3
+        sa: मधुरं फलम्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'a sweet fruit: adjective first'
+          hi: 'मीठा फल: पहले विशेषण'
 - id: exceptions
   kind: revision
   title:
@@ -112,6 +144,36 @@ cards:
         hi: 'वह बालक: व्यंजन से पहले {{सः}}'
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-2
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: स बालकः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'that boy: {{सः}} before a consonant'
+          hi: 'वह बालक: व्यंजन से पहले {{सः}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'In texts with sandhi {{सः}} loses its visarga before most consonants: {{स बालकः}}. You will see why later.'
+          hi: 'सन्धि वाले पाठों में अधिकतर व्यंजनों से पहले {{सः}} का विसर्ग हट जाता है: {{स बालकः}}। क्यों, यह आगे दिखेगा।'
+      - id: i3
+        sa: स बालकः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'that boy: {{सः}} before a consonant'
+          hi: 'वह बालक: व्यंजन से पहले {{सः}}'
 - id: mistakes
   kind: revision
   title:

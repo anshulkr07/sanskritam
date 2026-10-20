@@ -22,7 +22,8 @@ cards:
     hi: दूर से आया मित्र
   depth: core
   image:
-    brief: Dādī reading a letter written in Roman letters with dots and bars over them, beside the register; Śuka peering at it upside down; the tall silent spirit leaning in; warm lamplight.
+    brief: Dādī reading a letter written in Roman letters with dots and bars over them, beside the register; Śuka peering
+      at it upside down; the tall silent spirit leaning in; warm lamplight.
     alt:
       en: A grandmother reads a letter in Roman letters with dots and bars while a parrot peers at it
       hi: बिन्दु और रेखा वाले रोमन अक्षरों का पत्र पढ़ती दादी
@@ -34,10 +35,15 @@ cards:
     place: granthalaya
     ratio: '4:3'
     id: reading-iast-s1
-    text_in_image: ["ā ś ṣ ṭ ṃ ḥ"]
+    text_in_image:
+    - ā ś ṣ ṭ ṃ ḥ
   narration:
-    en: 'A letter arrives in the library from a friend abroad. It is written in Roman letters with little dots and bars on them: ā, ś, ṣ, ṛ. “It is called IAST,” says Dādī. “A helper, so that people who cannot read Devanagari yet can still say our words. But the leaf is read in Devanagari.”'
-    hi: 'पुस्तकालय में विदेश से एक मित्र का पत्र आता है। वह रोमन अक्षरों में है, जिन पर छोटे बिन्दु और रेखाएँ हैं: ā, ś, ṣ, ṛ। दादी कहती हैं, “इसे IAST कहते हैं। यह एक सहायक है, ताकि जो अभी देवनागरी नहीं पढ़ सकते, वे भी हमारे शब्द बोल सकें। पर पत्र देवनागरी में पढ़ा जाता है।”'
+    en: 'A letter arrives in the library from a friend abroad. It is written in Roman letters with little dots and bars on
+      them: ā, ś, ṣ, ṛ. “It is called IAST,” says Dādī. “A helper, so that people who cannot read Devanagari yet can still
+      say our words. But the leaf is read in Devanagari.”'
+    hi: 'पुस्तकालय में विदेश से एक मित्र का पत्र आता है। वह रोमन अक्षरों में है, जिन पर छोटे बिन्दु और रेखाएँ हैं: ā, ś, ṣ,
+      ṛ। दादी कहती हैं, “इसे IAST कहते हैं। यह एक सहायक है, ताकि जो अभी देवनागरी नहीं पढ़ सकते, वे भी हमारे शब्द बोल सकें।
+      पर पत्र देवनागरी में पढ़ा जाता है।”'
 - id: t1
   kind: teach
   title:
@@ -47,13 +53,39 @@ cards:
   skills:
   - read.iast
   body:
-    en: 'In IAST every sign stands for exactly one Devanagari sound. A bar means long: {{आ}} is ā. A dot below means retroflex: {{ट}} is ṭ. {{श}} is ś, {{ष}} is ṣ, {{ङ}} is ṅ, {{ञ}} is ñ.'
-    hi: 'IAST में हर चिह्न देवनागरी की ठीक एक ध्वनि के लिए है। ऊपर की रेखा का अर्थ दीर्घ: {{आ}} यानी ā। नीचे का बिन्दु मूर्धन्य दिखाता है: {{ट}} यानी ṭ। {{श}} यानी ś, {{ष}} यानी ṣ, {{ङ}} यानी ṅ, {{ञ}} यानी ñ।'
+    en: 'In IAST every sign stands for exactly one Devanagari sound. A bar means long: {{आ}} is ā. A dot below means retroflex:
+      {{ट}} is ṭ. {{श}} is ś, {{ष}} is ṣ, {{ङ}} is ṅ, {{ञ}} is ñ.'
+    hi: 'IAST में हर चिह्न देवनागरी की ठीक एक ध्वनि के लिए है। ऊपर की रेखा का अर्थ दीर्घ: {{आ}} यानी ā। नीचे का बिन्दु मूर्धन्य
+      दिखाता है: {{ट}} यानी ṭ। {{श}} यानी ś, {{ष}} यानी ṣ, {{ङ}} यानी ṅ, {{ञ}} यानी ñ।'
   term:
     sa: रोमनलिप्यन्तरम्
     meaning:
       en: 'IAST: the standard Roman letters for Sanskrit'
       hi: 'IAST: संस्कृत के लिए मानक रोमन अक्षर'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'In IAST every sign stands for exactly one Devanagari sound. A bar means long: {{आ}} is ā. A dot below means retroflex:
+        {{ट}} is ṭ. {{श}} is ś, {{ष}} is ṣ, {{ङ}} is ṅ, {{ञ}} is ñ.'
+      hi: 'IAST में हर चिह्न देवनागरी की ठीक एक ध्वनि के लिए है। ऊपर की रेखा का अर्थ दीर्घ: {{आ}} यानी ā। नीचे का बिन्दु मूर्धन्य
+        दिखाता है: {{ट}} यानी ṭ। {{श}} यानी ś, {{ष}} यानी ṣ, {{ङ}} यानी ṅ, {{ञ}} यानी ñ।'
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: ट
+    - id: i2
+      sa: श
+    - id: i3
+      sa: ष
+    - id: i4
+      sa: ङ
+    - id: i5
+      sa: ञ
 - id: tb1
   kind: table
   title:
@@ -164,6 +196,30 @@ cards:
     sa: श
   - sa: ष
   - sa: स
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'In IAST every sign stands for exactly one Devanagari sound. A bar means long: {{आ}} is ā. A dot below means retroflex:
+        {{ट}} is ṭ. {{श}} is ś, {{ष}} is ṣ, {{ङ}} is ṅ, {{ञ}} is ñ.'
+      hi: 'IAST में हर चिह्न देवनागरी की ठीक एक ध्वनि के लिए है। ऊपर की रेखा का अर्थ दीर्घ: {{आ}} यानी ā। नीचे का बिन्दु मूर्धन्य
+        दिखाता है: {{ट}} यानी ṭ। {{श}} यानी ś, {{ष}} यानी ṣ, {{ङ}} यानी ṅ, {{ञ}} यानी ñ।'
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: ट
+    - id: i2
+      sa: श
+    - id: i3
+      sa: ष
+    - id: i4
+      sa: ङ
+    - id: i5
+      sa: ञ
 - id: p2
   kind: practice
   depth: core
@@ -202,6 +258,30 @@ cards:
       text:
         en: ṣ, the curled hiss
         hi: ṣ, मुड़ी फुफकार
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'In IAST every sign stands for exactly one Devanagari sound. A bar means long: {{आ}} is ā. A dot below means retroflex:
+        {{ट}} is ṭ. {{श}} is ś, {{ष}} is ṣ, {{ङ}} is ṅ, {{ञ}} is ñ.'
+      hi: 'IAST में हर चिह्न देवनागरी की ठीक एक ध्वनि के लिए है। ऊपर की रेखा का अर्थ दीर्घ: {{आ}} यानी ā। नीचे का बिन्दु मूर्धन्य
+        दिखाता है: {{ट}} यानी ṭ। {{श}} यानी ś, {{ष}} यानी ṣ, {{ङ}} यानी ṅ, {{ञ}} यानी ñ।'
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: ट
+    - id: i2
+      sa: श
+    - id: i3
+      sa: ष
+    - id: i4
+      sa: ङ
+    - id: i5
+      sa: ञ
 - id: t2
   kind: teach
   title:
@@ -211,8 +291,10 @@ cards:
   skills:
   - read.iast
   body:
-    en: 'Say the Devanagari word first. The Roman helper is a check, not a crutch: {{कृष्णः}} is kṛṣṇaḥ, {{गङ्गा}} is gaṅgā, {{संस्कृतम्}} is saṃskṛtam. Note ṃ for the hum and ḥ for the breath.'
-    hi: 'पहले देवनागरी शब्द बोलिए। रोमन सहायक जाँच है, बैसाखी नहीं: {{कृष्णः}} यानी kṛṣṇaḥ, {{गङ्गा}} यानी gaṅgā, {{संस्कृतम्}} यानी saṃskṛtam। ध्यान दीजिए: ṃ गूँज के लिए और ḥ साँस के लिए है।'
+    en: 'Say the Devanagari word first. The Roman helper is a check, not a crutch: {{कृष्णः}} is kṛṣṇaḥ, {{गङ्गा}} is gaṅgā,
+      {{संस्कृतम्}} is saṃskṛtam. Note ṃ for the hum and ḥ for the breath.'
+    hi: 'पहले देवनागरी शब्द बोलिए। रोमन सहायक जाँच है, बैसाखी नहीं: {{कृष्णः}} यानी kṛṣṇaḥ, {{गङ्गा}} यानी gaṅgā, {{संस्कृतम्}}
+      यानी saṃskṛtam। ध्यान दीजिए: ṃ गूँज के लिए और ḥ साँस के लिए है।'
   examples:
   - sa: कृष्णः
     meaning:
@@ -228,6 +310,87 @@ cards:
     meaning:
       en: Sanskrit
       hi: संस्कृत
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: कृष्णः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Kṛṣṇa
+        hi: कृष्ण
+      check:
+        type: subanta
+        stem: कृष्ण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कृष्ण}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कृष्ण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Say the Devanagari word first. The Roman helper is a check, not a crutch: {{कृष्णः}} is kṛṣṇaḥ, {{गङ्गा}} is
+          gaṅgā, {{संस्कृतम्}} is saṃskṛtam. Note ṃ for the hum and ḥ for the breath.'
+        hi: 'पहले देवनागरी शब्द बोलिए। रोमन सहायक जाँच है, बैसाखी नहीं: {{कृष्णः}} यानी kṛṣṇaḥ, {{गङ्गा}} यानी gaṅgā, {{संस्कृतम्}}
+          यानी saṃskṛtam। ध्यान दीजिए: ṃ गूँज के लिए और ḥ साँस के लिए है।'
+    - id: i3
+      sa: कृष्णः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Kṛṣṇa
+        hi: कृष्ण
+      check:
+        type: subanta
+        stem: कृष्ण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कृष्ण}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कृष्ण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: संस्कृतम्
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Sanskrit
+        hi: संस्कृत
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Say the Devanagari word first. The Roman helper is a check, not a crutch: {{कृष्णः}} is kṛṣṇaḥ, {{गङ्गा}} is
+          gaṅgā, {{संस्कृतम्}} is saṃskṛtam. Note ṃ for the hum and ḥ for the breath.'
+        hi: 'पहले देवनागरी शब्द बोलिए। रोमन सहायक जाँच है, बैसाखी नहीं: {{कृष्णः}} यानी kṛṣṇaḥ, {{गङ्गा}} यानी gaṅgā, {{संस्कृतम्}}
+          यानी saṃskṛtam। ध्यान दीजिए: ṃ गूँज के लिए और ḥ साँस के लिए है।'
+    - id: i3
+      sa: संस्कृतम्
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Sanskrit
+        hi: संस्कृत
 - id: e1
   kind: explore
   depth: core
@@ -270,8 +433,10 @@ cards:
   gate: true
   story:
     success:
-      en: “धर्मः!” Maunī reads it off the paper with you, his mouth forming each sound exactly. A pale-gold glow runs up his scroll.
-      hi: “धर्मः!” मौनी आपके साथ काग़ज़ से उसे पढ़ता है, मुँह हर ध्वनि को ठीक आकार देता है। उसके खर्रे पर हल्की सुनहरी चमक दौड़ जाती है।
+      en: “धर्मः!” Maunī reads it off the paper with you, his mouth forming each sound exactly. A pale-gold glow runs up his
+        scroll.
+      hi: “धर्मः!” मौनी आपके साथ काग़ज़ से उसे पढ़ता है, मुँह हर ध्वनि को ठीक आकार देता है। उसके खर्रे पर हल्की सुनहरी चमक
+        दौड़ जाती है।
     failure:
       en: 'The word does not match. Read the Roman letters one by one: dha, r, ma, ḥ.'
       hi: 'शब्द मेल नहीं खाता। रोमन अक्षर एक-एक करके पढ़िए: dha, r, ma, ḥ।'
@@ -280,6 +445,30 @@ cards:
     sa: धर्मः
   - sa: धर्मम्
   - sa: ध्रमः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'In IAST every sign stands for exactly one Devanagari sound. A bar means long: {{आ}} is ā. A dot below means retroflex:
+        {{ट}} is ṭ. {{श}} is ś, {{ष}} is ṣ, {{ङ}} is ṅ, {{ञ}} is ñ.'
+      hi: 'IAST में हर चिह्न देवनागरी की ठीक एक ध्वनि के लिए है। ऊपर की रेखा का अर्थ दीर्घ: {{आ}} यानी ā। नीचे का बिन्दु मूर्धन्य
+        दिखाता है: {{ट}} यानी ṭ। {{श}} यानी ś, {{ष}} यानी ṣ, {{ङ}} यानी ṅ, {{ञ}} यानी ñ।'
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: ट
+    - id: i2
+      sa: श
+    - id: i3
+      sa: ष
+    - id: i4
+      sa: ङ
+    - id: i5
+      sa: ञ
 - id: sum
   kind: summary
   title:

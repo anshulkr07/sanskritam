@@ -21,7 +21,9 @@ cards:
     hi: एक कथा शुरू होती है
   depth: core
   image:
-    brief: The Vetāla seated on a tree root, folded like a long grey umbrella, eyes closed, telling a tale; Dādī and Śuka sitting before him; the faint backwards-walking spirit crouched beside; at the dark edge of the trees Lubdhaka leaning in to listen, the lantern low.
+    brief: The Vetāla seated on a tree root, folded like a long grey umbrella, eyes closed, telling a tale; Dādī and Śuka
+      sitting before him; the faint backwards-walking spirit crouched beside; at the dark edge of the trees Lubdhaka leaning
+      in to listen, the lantern low.
     alt:
       en: A grey spirit sits on a root telling a tale while travellers listen and a man leans in from the dark
       hi: जड़ पर बैठा भूत कथा सुनाता, श्रोता यात्री और अँधेरे से झुकता एक आदमी
@@ -36,8 +38,12 @@ cards:
     ratio: '4:3'
     id: past-tell-s1
   narration:
-    en: '“Good,” says the Vetāla, and drops from his branch to sit on a root, folded like a long grey umbrella. “Now a tale. Every tale of mine begins the same way: आसीत्. ‘There was.’” His eyes close. “आसीत् कश्चित् राजा.” A king. In the trees Lubdhaka, listening from the dark, leans closer.'
-    hi: '“अच्छा,” वेताल कहता है, और शाखा से उतरकर जड़ पर बैठ जाता है, एक लम्बे भूरे छाते की तरह मुड़ा हुआ। “अब एक कथा। मेरी हर कथा एक ही तरह शुरू होती है: आसीत्। ‘था।’” उसकी आँखें बन्द हो जाती हैं। “आसीत् कश्चित् राजा।” एक राजा। पेड़ों में अँधेरे से सुनता लुब्धक आगे झुक आता है।'
+    en: '“Good,” says the Vetāla, and drops from his branch to sit on a root, folded like a long grey umbrella. “Now a tale.
+      Every tale of mine begins the same way: आसीत्. ‘There was.’” His eyes close. “आसीत् कश्चित् राजा.” A king. In the trees
+      Lubdhaka, listening from the dark, leans closer.'
+    hi: '“अच्छा,” वेताल कहता है, और शाखा से उतरकर जड़ पर बैठ जाता है, एक लम्बे भूरे छाते की तरह मुड़ा हुआ। “अब एक कथा। मेरी
+      हर कथा एक ही तरह शुरू होती है: आसीत्। ‘था।’” उसकी आँखें बन्द हो जाती हैं। “आसीत् कश्चित् राजा।” एक राजा। पेड़ों में
+      अँधेरे से सुनता लुब्धक आगे झुक आता है।'
   lines:
   - speaker: vetala
     sa: आसीत्
@@ -59,8 +65,10 @@ cards:
   skills:
   - verb.lan
   body:
-    en: '{{आसीत्}} (he, she, it was; there was) is the past of {{अस्}}. A tale begins {{आसीत् कश्चित् राजा}}, “there was a king”. The other forms: {{आसन्}} (they were), {{आसम्}} (I was). {{अभवत्}} is the past of {{भू}}: “he became”.'
-    hi: '{{आसीत्}} ({{अस्}} का भूतकाल) का अर्थ ‘था’ है। कथा यों शुरू होती है: {{आसीत् कश्चित् राजा}}, ‘एक राजा था’। अन्य रूप: {{आसन्}} (वे थे), {{आसम्}} (मैं था)। {{अभवत्}} {{भू}} का भूतकाल है: ‘वह बन गया’।'
+    en: '{{आसीत्}} (he, she, it was; there was) is the past of {{अस्}}. A tale begins {{आसीत् कश्चित् राजा}}, “there was a
+      king”. The other forms: {{आसन्}} (they were), {{आसम्}} (I was). {{अभवत्}} is the past of {{भू}}: “he became”.'
+    hi: '{{आसीत्}} ({{अस्}} का भूतकाल) का अर्थ ‘था’ है। कथा यों शुरू होती है: {{आसीत् कश्चित् राजा}}, ‘एक राजा था’। अन्य रूप:
+      {{आसन्}} (वे थे), {{आसम्}} (मैं था)। {{अभवत्}} {{भू}} का भूतकाल है: ‘वह बन गया’।'
   examples:
   - sa: पुरा एकः राजा आसीत्।
     meaning:
@@ -124,6 +132,269 @@ cards:
         lakara: Lan
         purusha: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: पुरा एकः राजा आसीत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Long ago there was a king.
+        hi: पुराने समय में एक राजा था।
+      words:
+      - sa: पुरा
+        gloss:
+          en: long ago
+          hi: पुराने समय में
+      - sa: एकः
+        gloss:
+          en: a
+          hi: एक
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: आसीत्
+        gloss:
+          en: was
+          hi: था
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: पुरा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: long ago
+        hi: पुराने समय में
+    - id: i2
+      sa: एकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: a
+        hi: एक
+    - id: i3
+      sa: राजा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i4
+      sa: आसीत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: was
+        hi: था
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{आसीत्}} (he, she, it was; there was) is the past of {{अस्}}. A tale begins {{आसीत् कश्चित् राजा}}, “there was
+          a king”. The other forms: {{आसन्}} (they were), {{आसम्}} (I was). {{अभवत्}} is the past of {{भू}}: “he became”.'
+        hi: '{{आसीत्}} ({{अस्}} का भूतकाल) का अर्थ ‘था’ है। कथा यों शुरू होती है: {{आसीत् कश्चित् राजा}}, ‘एक राजा था’। अन्य
+          रूप: {{आसन्}} (वे थे), {{आसम्}} (मैं था)। {{अभवत्}} {{भू}} का भूतकाल है: ‘वह बन गया’।'
+    - id: i7
+      sa: पुरा एकः राजा आसीत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Long ago there was a king.
+        hi: पुराने समय में एक राजा था।
+      words:
+      - sa: पुरा
+        gloss:
+          en: long ago
+          hi: पुराने समय में
+      - sa: एकः
+        gloss:
+          en: a
+          hi: एक
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: आसीत्
+        gloss:
+          en: was
+          hi: था
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सः सुखी अभवत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He became happy.
+        hi: वह सुखी हो गया।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: सुखी
+        gloss:
+          en: happy
+          hi: सुखी
+        check:
+          type: subanta
+          stem: सुखिन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अभवत्
+        gloss:
+          en: became
+          hi: बन गया
+        check:
+          type: tinanta
+          dhatu: भू
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: सुखी
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: happy
+        hi: सुखी
+      check:
+        type: subanta
+        stem: सुखिन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सुखिन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सुखिन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: अभवत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: became
+        hi: बन गया
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भू}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{आसीत्}} (he, she, it was; there was) is the past of {{अस्}}. A tale begins {{आसीत् कश्चित् राजा}}, “there was
+          a king”. The other forms: {{आसन्}} (they were), {{आसम्}} (I was). {{अभवत्}} is the past of {{भू}}: “he became”.'
+        hi: '{{आसीत्}} ({{अस्}} का भूतकाल) का अर्थ ‘था’ है। कथा यों शुरू होती है: {{आसीत् कश्चित् राजा}}, ‘एक राजा था’। अन्य
+          रूप: {{आसन्}} (वे थे), {{आसम्}} (मैं था)। {{अभवत्}} {{भू}} का भूतकाल है: ‘वह बन गया’।'
+    - id: i6
+      sa: सः सुखी अभवत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He became happy.
+        hi: वह सुखी हो गया।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: सुखी
+        gloss:
+          en: happy
+          hi: सुखी
+        check:
+          type: subanta
+          stem: सुखिन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अभवत्
+        gloss:
+          en: became
+          hi: बन गया
+        check:
+          type: tinanta
+          dhatu: भू
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
 - id: tb1
   kind: table
   title:
@@ -229,7 +500,8 @@ cards:
   skills:
   - verb.lan
   image:
-    brief: An old king in a forest looking up at a tree where a corpse hangs and a lamp-lit face seems to speak; ink-and-watercolour illustration in the style of old Indian manuscripts, soft ivory paper.
+    brief: An old king in a forest looking up at a tree where a corpse hangs and a lamp-lit face seems to speak; ink-and-watercolour
+      illustration in the style of old Indian manuscripts, soft ivory paper.
     alt:
       en: A king looks up at a talking corpse hanging in a tree
       hi: वृक्ष पर लटके बोलते शव को ऊपर देखता राजा
@@ -427,6 +699,472 @@ cards:
         lakara: Lan
         purusha: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-line-0
+    kind: reading
+    title:
+      en: Follow the line word by word
+      hi: पंक्ति को शब्द-शब्द समझें
+    items:
+    - id: i0
+      sa: पुरा एकः राजा आसीत्।
+      label:
+        en: The complete line
+        hi: पूरी पंक्ति
+      meaning:
+        en: Long ago there was a king.
+        hi: पुराने समय में एक राजा था।
+      words:
+      - sa: पुरा
+        gloss:
+          en: long ago
+          hi: पुराने समय में
+      - sa: एकः
+        gloss:
+          en: a
+          hi: एक
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: आसीत्
+        gloss:
+          en: was
+          hi: था
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: पुरा
+      meaning:
+        en: long ago
+        hi: पुराने समय में
+    - id: i2
+      sa: एकः
+      meaning:
+        en: a
+        hi: एक
+    - id: i3
+      sa: राजा
+      meaning:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i4
+      sa: आसीत्
+      meaning:
+        en: was
+        hi: था
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+  - id: v-source-line-1
+    kind: reading
+    title:
+      en: Follow the line word by word
+      hi: पंक्ति को शब्द-शब्द समझें
+    items:
+    - id: i0
+      sa: सः नगरे अवसत्।
+      label:
+        en: The complete line
+        hi: पूरी पंक्ति
+      meaning:
+        en: He lived in the city.
+        hi: वह नगर में रहता था।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: नगरे
+        gloss:
+          en: in the city
+          hi: नगर में
+        check:
+          type: subanta
+          stem: नगर
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: अवसत्
+        gloss:
+          en: lived
+          hi: रहता था
+        check:
+          type: tinanta
+          dhatu: वस्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: नगरे
+      meaning:
+        en: in the city
+        hi: नगर में
+      check:
+        type: subanta
+        stem: नगर
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नगर}} · neuter · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{नगर}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i3
+      sa: अवसत्
+      meaning:
+        en: lived
+        hi: रहता था
+      check:
+        type: tinanta
+        dhatu: वस्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वस्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वस्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+  - id: v-source-line-2
+    kind: reading
+    title:
+      en: Follow the line word by word
+      hi: पंक्ति को शब्द-शब्द समझें
+    items:
+    - id: i0
+      sa: एकदा सः वनम् अगच्छत्।
+      label:
+        en: The complete line
+        hi: पूरी पंक्ति
+      meaning:
+        en: Once he went to the forest.
+        hi: एक बार वह वन गया।
+      words:
+      - sa: एकदा
+        gloss:
+          en: once
+          hi: एक बार
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: वनम्
+        gloss:
+          en: forest
+          hi: वन
+        check:
+          type: subanta
+          stem: वन
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: एकदा
+      meaning:
+        en: once
+        hi: एक बार
+    - id: i2
+      sa: सः
+      meaning:
+        en: he
+        hi: वह
+    - id: i3
+      sa: वनम्
+      meaning:
+        en: forest
+        hi: वन
+      check:
+        type: subanta
+        stem: वन
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{वन}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{वन}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: अगच्छत्
+      meaning:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+  - id: v-source-line-3
+    kind: reading
+    title:
+      en: Follow the line word by word
+      hi: पंक्ति को शब्द-शब्द समझें
+    items:
+    - id: i0
+      sa: तत्र सः वृक्षम् अपश्यत्।
+      label:
+        en: The complete line
+        hi: पूरी पंक्ति
+      meaning:
+        en: There he saw a tree.
+        hi: वहाँ उसने एक वृक्ष देखा।
+      words:
+      - sa: तत्र
+        gloss:
+          en: there
+          hi: वहाँ
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: वृक्षम्
+        gloss:
+          en: tree
+          hi: वृक्ष
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अपश्यत्
+        gloss:
+          en: saw
+          hi: देखा
+        check:
+          type: tinanta
+          dhatu: दृश्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: तत्र
+      meaning:
+        en: there
+        hi: वहाँ
+    - id: i2
+      sa: सः
+      meaning:
+        en: he
+        hi: वह
+    - id: i3
+      sa: वृक्षम्
+      meaning:
+        en: tree
+        hi: वृक्ष
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: अपश्यत्
+      meaning:
+        en: saw
+        hi: देखा
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दृश्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+  - id: v-source-line-4
+    kind: reading
+    title:
+      en: Follow the line word by word
+      hi: पंक्ति को शब्द-शब्द समझें
+    items:
+    - id: i0
+      sa: वृक्षे शवः आसीत्।
+      label:
+        en: The complete line
+        hi: पूरी पंक्ति
+      meaning:
+        en: On the tree there was a corpse.
+        hi: वृक्ष पर एक शव था।
+      words:
+      - sa: वृक्षे
+        gloss:
+          en: on the tree
+          hi: वृक्ष पर
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: शवः
+        gloss:
+          en: a corpse
+          hi: एक शव
+        check:
+          type: subanta
+          stem: शव
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: आसीत्
+        gloss:
+          en: was
+          hi: था
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: वृक्षे
+      meaning:
+        en: on the tree
+        hi: वृक्ष पर
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: शवः
+      meaning:
+        en: a corpse
+        hi: एक शव
+      check:
+        type: subanta
+        stem: शव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{शव}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{शव}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: आसीत्
+      meaning:
+        en: was
+        hi: था
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+  - id: v-source-line-5
+    kind: reading
+    title:
+      en: Follow the line word by word
+      hi: पंक्ति को शब्द-शब्द समझें
+    items:
+    - id: i0
+      sa: शवः अवदत्।
+      label:
+        en: The complete line
+        hi: पूरी पंक्ति
+      meaning:
+        en: The corpse spoke.
+        hi: शव बोला।
+      words:
+      - sa: शवः
+        gloss:
+          en: the corpse
+          hi: शव
+        check:
+          type: subanta
+          stem: शव
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अवदत्
+        gloss:
+          en: spoke
+          hi: बोला
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: शवः
+      meaning:
+        en: the corpse
+        hi: शव
+      check:
+        type: subanta
+        stem: शव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{शव}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{शव}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: अवदत्
+      meaning:
+        en: spoke
+        hi: बोला
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
 - id: p1
   kind: practice
   depth: core
@@ -457,6 +1195,167 @@ cards:
       sa: अस्ति
     right:
       sa: आसीत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: ह्यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: yesterday
+        hi: कल (बीता)
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: अगच्छत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}}
+          (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment, {{अट्}}.'
+        hi: 'जो आज से पहले हुआ, उसके लिए धातु के आगे {{अ}} लगाइए और भूतकाल के प्रत्यय लीजिए: {{अगच्छत्}} (वह गया), {{अपठत्}}
+          (उसने पढ़ा), {{अवदत्}} (उसने कहा)। इस काल का नाम {{लङ्}} है। {{अ}} को आगम {{अट्}} कहते हैं।'
+    - id: i7
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -475,6 +1374,167 @@ cards:
   - correct: true
     sa: राजा आसीत्
   - sa: राजा भविष्यति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: ह्यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: yesterday
+        hi: कल (बीता)
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: अगच्छत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}}
+          (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment, {{अट्}}.'
+        hi: 'जो आज से पहले हुआ, उसके लिए धातु के आगे {{अ}} लगाइए और भूतकाल के प्रत्यय लीजिए: {{अगच्छत्}} (वह गया), {{अपठत्}}
+          (उसने पढ़ा), {{अवदत्}} (उसने कहा)। इस काल का नाम {{लङ्}} है। {{अ}} को आगम {{अट्}} कहते हैं।'
+    - id: i7
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -515,6 +1575,167 @@ cards:
   - सः
   - वनम्
   - अगच्छत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: ह्यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: yesterday
+        hi: कल (बीता)
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: अगच्छत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}}
+          (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment, {{अट्}}.'
+        hi: 'जो आज से पहले हुआ, उसके लिए धातु के आगे {{अ}} लगाइए और भूतकाल के प्रत्यय लीजिए: {{अगच्छत्}} (वह गया), {{अपठत्}}
+          (उसने पढ़ा), {{अवदत्}} (उसने कहा)। इस काल का नाम {{लङ्}} है। {{अ}} को आगम {{अट्}} कहते हैं।'
+    - id: i7
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   title:
@@ -534,8 +1755,12 @@ cards:
   gate: true
   story:
     success:
-      en: '“आसन्,” you say: “they were,” and the old spirit steps out of the dark one last time. Behind him, along the whole path, small lamps of memory kindle one by one: a king, a city, a forest, a tree. “Now it is true,” he says, and sits down on the root beside the Vetāla.'
-      hi: '“आसन्,” आप कहते हैं: “वे थे,” और बूढ़ा भूत एक बार और अँधेरे से बाहर कदम रखता है। उसके पीछे पूरे रास्ते पर स्मृति के नन्हे दीप एक-एक करके जल उठते हैं: एक राजा, एक नगर, एक वन, एक वृक्ष। “अब यह सच है,” वह कहता है, और वेताल के पास जड़ पर बैठ जाता है।'
+      en: '“आसन्,” you say: “they were,” and the old spirit steps out of the dark one last time. Behind him, along the whole
+        path, small lamps of memory kindle one by one: a king, a city, a forest, a tree. “Now it is true,” he says, and sits
+        down on the root beside the Vetāla.'
+      hi: '“आसन्,” आप कहते हैं: “वे थे,” और बूढ़ा भूत एक बार और अँधेरे से बाहर कदम रखता है। उसके पीछे पूरे रास्ते पर स्मृति
+        के नन्हे दीप एक-एक करके जल उठते हैं: एक राजा, एक नगर, एक वन, एक वृक्ष। “अब यह सच है,” वह कहता है, और वेताल के पास
+        जड़ पर बैठ जाता है।'
     failure:
       en: 'The lamps stay dark. “They were”: {{आसन्}}.'
       hi: 'दीप बुझे रहते हैं। ‘वे थे’: {{आसन्}}।'
@@ -544,6 +1769,167 @@ cards:
   - sa: आस्ताम्
   - correct: true
     sa: आसन्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: ह्यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: yesterday
+        hi: कल (बीता)
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: अगच्छत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}}
+          (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment, {{अट्}}.'
+        hi: 'जो आज से पहले हुआ, उसके लिए धातु के आगे {{अ}} लगाइए और भूतकाल के प्रत्यय लीजिए: {{अगच्छत्}} (वह गया), {{अपठत्}}
+          (उसने पढ़ा), {{अवदत्}} (उसने कहा)। इस काल का नाम {{लङ्}} है। {{अ}} को आगम {{अट्}} कहते हैं।'
+    - id: i7
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
 - id: sum
   kind: summary
   title:

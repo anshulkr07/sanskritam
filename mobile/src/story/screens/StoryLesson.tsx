@@ -3,7 +3,9 @@ import {consumeTestOut} from '../session';
 import type {PracticeProgress} from '../cards/Practice';
 import {RomanContext} from '../text';
 import React,{useEffect,useState} from 'react';
-import {View,Text} from 'react-native';
+import {View,Text,useWindowDimensions} from 'react-native';
+import {cardPictures,resolvePicture} from '../artwork';
+import {prefetchArtwork} from '../../services/artworkCache';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import type {RootStackParamList} from '../../navigation/types';
 import {LessonPlayer} from '../../screens/LearnV2Lesson';
@@ -42,6 +44,11 @@ export function StoryLessonPlayer({lesson,characters=[],sceneNumber=()=>null,onC
  useEffect(()=>{startCards.delete(lesson.id);},[lesson.id]);
 
  useAudioWindow(cards,Math.min(index,cards.length-1));
+ const window=useWindowDimensions(),tablet=Math.min(window.width,window.height)>=600;
+ useEffect(()=>{
+  const pictures=cards.slice(index,index+3).flatMap(card=>cardPictures(card)).slice(0,8);
+  prefetchArtwork(pictures.map(resolvePicture).flatMap(p=>{const uri=p?.delivered?(tablet?p.tablet??p.phone:p.phone):undefined;return uri?[uri]:[];}));
+ },[cards,index,tablet]);
  useEffect(()=>{void stopClips();},[index]);
  useEffect(()=>()=>{void stopClips();},[]);
  const firstPractice=cards.findIndex(c=>c.kind==='practice'),canSkip=lesson.template==='scene'&&firstPractice>=0&&index<firstPractice;

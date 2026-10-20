@@ -63,8 +63,10 @@ cards:
   rows:
   - skill: case.abl
     rule:
-      en: 'Plural: {{एभ्यः}} (masculine, neuter -अ), {{आभ्यः}} (feminine); dual {{आभ्याम्}} for all. These are the same as the fourth case.'
-      hi: 'बहुवचन: {{एभ्यः}} (पुंलिंग, नपुंसक -अ), {{आभ्यः}} (स्त्रीलिंग); द्विवचन सबके लिए {{आभ्याम्}}। ये चतुर्थी जैसे ही हैं।'
+      en: 'Plural: {{एभ्यः}} (masculine, neuter -अ), {{आभ्यः}} (feminine); dual {{आभ्याम्}} for all. These are the same as
+        the fourth case.'
+      hi: 'बहुवचन: {{एभ्यः}} (पुंलिंग, नपुंसक -अ), {{आभ्यः}} (स्त्रीलिंग); द्विवचन सबके लिए {{आभ्याम्}}। ये चतुर्थी जैसे ही
+        हैं।'
     example:
       sa: वृक्षेभ्यः
       meaning:
@@ -78,6 +80,56 @@ cards:
         vacana: Bahu
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: वृक्षेभ्यः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: from the trees
+          hi: पेड़ों से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · plural'
+          hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{बहुवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Plural: {{एभ्यः}} (masculine, neuter -अ), {{आभ्यः}} (feminine); dual {{आभ्याम्}} for all. These are the same
+            as the fourth case.'
+          hi: 'बहुवचन: {{एभ्यः}} (पुंलिंग, नपुंसक -अ), {{आभ्यः}} (स्त्रीलिंग); द्विवचन सबके लिए {{आभ्याम्}}। ये चतुर्थी जैसे
+            ही हैं।'
+      - id: i3
+        sa: वृक्षेभ्यः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: from the trees
+          hi: पेड़ों से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · plural'
+          hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{बहुवचन}}'
 - id: exceptions
   kind: revision
   title:
@@ -103,6 +155,54 @@ cards:
         vacana: Eka
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: भयात्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: out of fear
+          hi: भय के कारण
+        check:
+          type: subanta
+          stem: भय
+          linga: Napumsaka
+          vibhakti: Panchami
+          vacana: Eka
+        feature:
+          en: 'Stem: {{भय}} · neuter · {{पञ्चमी}} · singular'
+          hi: 'प्रातिपदिक: {{भय}} · {{नपुंसकलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'The fifth case can also give a cause: {{भयात् पलायते}}, “runs away out of fear”.'
+          hi: 'पञ्चमी कारण भी बता सकती है: {{भयात् पलायते}}, ‘भय से भागता है’।'
+      - id: i3
+        sa: भयात्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: out of fear
+          hi: भय के कारण
+        check:
+          type: subanta
+          stem: भय
+          linga: Napumsaka
+          vibhakti: Panchami
+          vacana: Eka
+        feature:
+          en: 'Stem: {{भय}} · neuter · {{पञ्चमी}} · singular'
+          hi: 'प्रातिपदिक: {{भय}} · {{नपुंसकलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
   - skill: case.abl
     rule:
       en: 'Feminine singular fifth and sixth look the same: {{नद्याः}}. The verb and the other words tell which.'

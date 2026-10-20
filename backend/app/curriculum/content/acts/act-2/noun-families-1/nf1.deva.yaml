@@ -24,7 +24,9 @@ cards:
     hi: पाठशाला का पुस्तकालय
   depth: core
   image:
-    brief: 'The school library: tall shelves of palm-leaf bundles tied with coloured threads, a low reading desk with Dādī''s open notebook; beside the desk a small tree of green mist hung with tiny leaf-shaped name tags, standing up; you and Śuka looking on.'
+    brief: 'The school library: tall shelves of palm-leaf bundles tied with coloured threads, a low reading desk with Dādī''s
+      open notebook; beside the desk a small tree of green mist hung with tiny leaf-shaped name tags, standing up; you and
+      Śuka looking on.'
     alt:
       en: A library with a small tree of green mist hung with name-tags standing beside a desk
       hi: नाम-पत्तों वाला हरे धुंध का नन्हा पेड़ पुस्तकालय में मेज़ के पास
@@ -37,10 +39,17 @@ cards:
     place: pathashala
     ratio: '4:3'
     id: nf1-deva-s1
-    text_in_image: ["देवः", "देवौ", "देवाः"]
+    text_in_image:
+    - देवः
+    - देवौ
+    - देवाः
   narration:
-    en: 'In the Ācārya''s library, shelves of palm-leaf bundles rise to the rafters, each tied with a coloured thread. Dādī lays her notebook open on the low desk. “Here is a secret,” she says. “Words come in families. Once you know one member, you know thousands.” Beside the desk a small tree of green mist stands up, hung with tiny leaf-tags: names, all waiting.'
-    hi: 'आचार्य के पुस्तकालय में ताड़पत्रों के गट्ठर कड़ियों तक ऊँचे रखे हैं, हर एक रंगीन धागे से बँधा। दादी अपनी कॉपी नीची मेज़ पर खोलती हैं। “एक रहस्य सुनो,” वे कहती हैं। “शब्द कुलों में आते हैं। एक सदस्य जान लिया, तो हज़ारों जान लिए।” मेज़ के पास हरे धुंध का एक नन्हा पेड़ खड़ा हो जाता है, जिस पर छोटे पत्ते-टैग टँगे हैं: नाम, सब प्रतीक्षा में।'
+    en: 'In the Ācārya''s library, shelves of palm-leaf bundles rise to the rafters, each tied with a coloured thread. Dādī
+      lays her notebook open on the low desk. “Here is a secret,” she says. “Words come in families. Once you know one member,
+      you know thousands.” Beside the desk a small tree of green mist stands up, hung with tiny leaf-tags: names, all waiting.'
+    hi: 'आचार्य के पुस्तकालय में ताड़पत्रों के गट्ठर कड़ियों तक ऊँचे रखे हैं, हर एक रंगीन धागे से बँधा। दादी अपनी कॉपी नीची
+      मेज़ पर खोलती हैं। “एक रहस्य सुनो,” वे कहती हैं। “शब्द कुलों में आते हैं। एक सदस्य जान लिया, तो हज़ारों जान लिए।” मेज़
+      के पास हरे धुंध का एक नन्हा पेड़ खड़ा हो जाता है, जिस पर छोटे पत्ते-टैग टँगे हैं: नाम, सब प्रतीक्षा में।'
   lines:
   - speaker: dadi
     sa: पुस्तकालये शब्दरूपाणि सन्ति।
@@ -56,13 +65,31 @@ cards:
   skills:
   - noun.deva
   body:
-    en: 'A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands of masculine words ending in -{{अ}}. Learn it once.'
-    hi: '{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।'
+    en: 'A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands of
+      masculine words ending in -{{अ}}. Learn it once.'
+    hi: '{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों
+      पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।'
   term:
     sa: शब्दरूपम्
     meaning:
       en: the table of a word's forms
       hi: शब्द के रूपों की तालिका
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands
+        of masculine words ending in -{{अ}}. Learn it once.'
+      hi: '{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों
+        पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।'
+    items:
+    - id: i0
+      sa: देव
+    - id: i1
+      sa: अ
 - id: tb1
   kind: table
   title:
@@ -290,8 +317,10 @@ cards:
   sutras:
   - 7.1.9
   body:
-    en: 'Every masculine word in -{{अ}} follows {{देव}}: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}. Change the stem, keep the endings.'
-    hi: '-{{अ}} वाला हर पुंलिंग शब्द {{देव}} जैसा चलता है: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}। मूल बदलिए, प्रत्यय वही रखिए।'
+    en: 'Every masculine word in -{{अ}} follows {{देव}}: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}. Change
+      the stem, keep the endings.'
+    hi: '-{{अ}} वाला हर पुंलिंग शब्द {{देव}} जैसा चलता है: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}। मूल
+      बदलिए, प्रत्यय वही रखिए।'
   examples:
   - sa: रामाः
     meaning:
@@ -333,6 +362,203 @@ cards:
       linga: Pum
       vibhakti: Saptami
       vacana: Bahu
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: रामाः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāmas (plural)
+        hi: राम (अनेक)
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Every masculine word in -{{अ}} follows {{देव}}: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}.
+          Change the stem, keep the endings.'
+        hi: '-{{अ}} वाला हर पुंलिंग शब्द {{देव}} जैसा चलता है: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}।
+          मूल बदलिए, प्रत्यय वही रखिए।'
+    - id: i3
+      sa: रामाः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāmas (plural)
+        hi: राम (अनेक)
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: वृक्षैः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: by trees
+        hi: पेड़ों द्वारा
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Every masculine word in -{{अ}} follows {{देव}}: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}.
+          Change the stem, keep the endings.'
+        hi: '-{{अ}} वाला हर पुंलिंग शब्द {{देव}} जैसा चलता है: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}।
+          मूल बदलिए, प्रत्यय वही रखिए।'
+    - id: i3
+      sa: वृक्षैः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: by trees
+        hi: पेड़ों द्वारा
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: शुकयोः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: of two parrots
+        hi: दो तोतों का
+      check:
+        type: subanta
+        stem: शुक
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{शुक}} · masculine · {{षष्ठी}} · dual'
+        hi: 'प्रातिपदिक: {{शुक}} · {{पुंलिंग}} · {{षष्ठी}} · {{द्विवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Every masculine word in -{{अ}} follows {{देव}}: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}.
+          Change the stem, keep the endings.'
+        hi: '-{{अ}} वाला हर पुंलिंग शब्द {{देव}} जैसा चलता है: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}।
+          मूल बदलिए, प्रत्यय वही रखिए।'
+    - id: i3
+      sa: शुकयोः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: of two parrots
+        hi: दो तोतों का
+      check:
+        type: subanta
+        stem: शुक
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{शुक}} · masculine · {{षष्ठी}} · dual'
+        hi: 'प्रातिपदिक: {{शुक}} · {{पुंलिंग}} · {{षष्ठी}} · {{द्विवचन}}'
+  - id: v-source-example-3
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: ग्रामेषु
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: in villages
+        hi: गाँवों में
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{ग्राम}} · masculine · {{सप्तमी}} · plural'
+        hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Every masculine word in -{{अ}} follows {{देव}}: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}.
+          Change the stem, keep the endings.'
+        hi: '-{{अ}} वाला हर पुंलिंग शब्द {{देव}} जैसा चलता है: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}।
+          मूल बदलिए, प्रत्यय वही रखिए।'
+    - id: i3
+      sa: ग्रामेषु
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: in villages
+        hi: गाँवों में
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{ग्राम}} · masculine · {{सप्तमी}} · plural'
+        hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
 - id: p1
   kind: practice
   depth: core
@@ -353,6 +579,22 @@ cards:
       linga: Pum
       blanks: 3
     seed: 0
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands
+        of masculine words ending in -{{अ}}. Learn it once.'
+      hi: '{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों
+        पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।'
+    items:
+    - id: i0
+      sa: देव
+    - id: i1
+      sa: अ
 - id: p2
   kind: practice
   depth: core
@@ -373,6 +615,22 @@ cards:
       linga: Pum
       blanks: 3
     seed: 1
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands
+        of masculine words ending in -{{अ}}. Learn it once.'
+      hi: '{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों
+        पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।'
+    items:
+    - id: i0
+      sa: देव
+    - id: i1
+      sa: अ
 - id: p3
   kind: practice
   depth: core
@@ -391,6 +649,22 @@ cards:
   - sa: वृक्षाभ्याम्
   - correct: true
     sa: वृक्षैः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands
+        of masculine words ending in -{{अ}}. Learn it once.'
+      hi: '{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों
+        पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।'
+    items:
+    - id: i0
+      sa: देव
+    - id: i1
+      sa: अ
 - id: p4
   kind: practice
   depth: core
@@ -429,6 +703,22 @@ cards:
       text:
         en: 6th, one
         hi: षष्ठी, एक
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands
+        of masculine words ending in -{{अ}}. Learn it once.'
+      hi: '{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों
+        पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।'
+    items:
+    - id: i0
+      sa: देव
+    - id: i1
+      sa: अ
 - id: e1
   kind: explore
   depth: core
@@ -466,8 +756,10 @@ cards:
   gate: true
   story:
     success:
-      en: “देवौ,” you say, and the green tree of names shivers. A small white flower opens on one branch. “देवाः,” you add, and a second blooms. Vṛkṣaka's trunk straightens, as if his name were beginning to hold.
-      hi: “देवौ,” आप कहते हैं, और नामों का हरा पेड़ सिहरता है। एक शाखा पर एक नन्हा सफ़ेद फूल खिलता है। “देवाः,” आप जोड़ते हैं, और दूसरा खिलता है। वृक्षक का तना सीधा होता है, मानो उसका नाम टिकना शुरू हो गया हो।
+      en: “देवौ,” you say, and the green tree of names shivers. A small white flower opens on one branch. “देवाः,” you add,
+        and a second blooms. Vṛkṣaka's trunk straightens, as if his name were beginning to hold.
+      hi: “देवौ,” आप कहते हैं, और नामों का हरा पेड़ सिहरता है। एक शाखा पर एक नन्हा सफ़ेद फूल खिलता है। “देवाः,” आप जोड़ते
+        हैं, और दूसरा खिलता है। वृक्षक का तना सीधा होता है, मानो उसका नाम टिकना शुरू हो गया हो।
     failure:
       en: 'The tree droops. Three cells share one form in the dual: the one with {{औ}}.'
       hi: 'पेड़ झुक जाता है। द्विवचन में तीन खाने एक रूप साझा करते हैं: {{औ}} वाला।'
@@ -476,6 +768,22 @@ cards:
   - sa: देवयोः
   - correct: true
     sa: देवौ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands
+        of masculine words ending in -{{अ}}. Learn it once.'
+      hi: '{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों
+        पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।'
+    items:
+    - id: i0
+      sa: देव
+    - id: i1
+      sa: अ
 - id: p6
   kind: practice
   depth: core
@@ -483,8 +791,8 @@ cards:
   - noun.deva
   mode: engine
   prompt:
-    en: 'Choose the doer form for two gods.'
-    hi: 'दो देवों के लिए कर्ता का रूप चुनिए।'
+    en: Choose the doer form for two gods.
+    hi: दो देवों के लिए कर्ता का रूप चुनिए।
   explain:
     en: '{{देवौ}} names two gods as the doer; {{देवः}} names one.'
     hi: '{{देवौ}} कर्ता के रूप में दो देवों को बताता है; {{देवः}} एक देव को।'
@@ -494,6 +802,22 @@ cards:
       pratipadika: देव
       linga: Pum
     seed: 25
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands
+        of masculine words ending in -{{अ}}. Learn it once.'
+      hi: '{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों
+        पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।'
+    items:
+    - id: i0
+      sa: देव
+    - id: i1
+      sa: अ
 - id: pn
   kind: teach
   title:
@@ -506,8 +830,56 @@ cards:
   - 7.1.9
   - 7.1.12
   body:
-    en: 'Pāṇini''s sūtra 7.1.9, {{अतो भिस ऐस्}}, changes the ending {{भिस्}} to {{ऐस्}} after a word in -{{अ}}: {{देव}} + {{भिस्}} → {{देवैः}}. And 7.1.12 turns {{टा}} into {{इन}}, {{ङसि}} into {{आत्}} and {{ङस्}} into {{स्य}}: {{देवेन}}, {{देवात्}}, {{देवस्य}}.'
-    hi: 'पाणिनि का सूत्र 7.1.9, {{अतो भिस ऐस्}}, -{{अ}} वाले शब्द के बाद {{भिस्}} को {{ऐस्}} कर देता है: {{देव}} + {{भिस्}} → {{देवैः}}। और 7.1.12 {{टा}} को {{इन}}, {{ङसि}} को {{आत्}} और {{ङस्}} को {{स्य}} बना देता है: {{देवेन}}, {{देवात्}}, {{देवस्य}}।'
+    en: 'Pāṇini''s sūtra 7.1.9, {{अतो भिस ऐस्}}, changes the ending {{भिस्}} to {{ऐस्}} after a word in -{{अ}}: {{देव}} +
+      {{भिस्}} → {{देवैः}}. And 7.1.12 turns {{टा}} into {{इन}}, {{ङसि}} into {{आत्}} and {{ङस्}} into {{स्य}}: {{देवेन}},
+      {{देवात्}}, {{देवस्य}}.'
+    hi: 'पाणिनि का सूत्र 7.1.9, {{अतो भिस ऐस्}}, -{{अ}} वाले शब्द के बाद {{भिस्}} को {{ऐस्}} कर देता है: {{देव}} + {{भिस्}}
+      → {{देवैः}}। और 7.1.12 {{टा}} को {{इन}}, {{ङसि}} को {{आत्}} और {{ङस्}} को {{स्य}} बना देता है: {{देवेन}}, {{देवात्}},
+      {{देवस्य}}।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Pāṇini''s sūtra 7.1.9, {{अतो भिस ऐस्}}, changes the ending {{भिस्}} to {{ऐस्}} after a word in -{{अ}}: {{देव}}
+        + {{भिस्}} → {{देवैः}}. And 7.1.12 turns {{टा}} into {{इन}}, {{ङसि}} into {{आत्}} and {{ङस्}} into {{स्य}}: {{देवेन}},
+        {{देवात्}}, {{देवस्य}}.'
+      hi: 'पाणिनि का सूत्र 7.1.9, {{अतो भिस ऐस्}}, -{{अ}} वाले शब्द के बाद {{भिस्}} को {{ऐस्}} कर देता है: {{देव}} + {{भिस्}}
+        → {{देवैः}}। और 7.1.12 {{टा}} को {{इन}}, {{ङसि}} को {{आत्}} और {{ङस्}} को {{स्य}} बना देता है: {{देवेन}}, {{देवात्}},
+        {{देवस्य}}।'
+    items:
+    - id: i0
+      sa: अतो भिस ऐस्
+    - id: i1
+      sa: भिस्
+    - id: i2
+      sa: ऐस्
+    - id: i3
+      sa: अ
+    - id: i4
+      sa: देव
+    - id: i5
+      sa: देवैः
+    - id: i6
+      sa: टा
+    - id: i7
+      sa: इन
+    - id: i8
+      sa: ङसि
+    - id: i9
+      sa: आत्
+    - id: i10
+      sa: ङस्
+    - id: i11
+      sa: स्य
+    - id: i12
+      sa: देवेन
+    - id: i13
+      sa: देवात्
+    - id: i14
+      sa: देवस्य
 - id: sum
   kind: summary
   title:

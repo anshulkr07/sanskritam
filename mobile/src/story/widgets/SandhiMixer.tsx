@@ -5,6 +5,7 @@ import {Sa} from '../text';
 import {useStoryTheme} from '../theme';
 import {Button,Label,Panel} from '../ui';
 import type {SandhiMixerBuilt} from '../types';
+import FormChange from '../cards/FormChange';
 /** Pick a pair, join it, and read the new word and the sūtra behind the change; pull it apart again. */
 export default function SandhiMixer({params,onInteracted}:{params:SandhiMixerBuilt;onInteracted:()=>void}){
  const {lang}=useGuideLang(),hi=lang==='hi',c=useStoryTheme(),[index,setIndex]=useState(0),[joined,setJoined]=useState(false),[tried,setTried]=useState<string[]>([]);
@@ -21,6 +22,7 @@ export default function SandhiMixer({params,onInteracted}:{params:SandhiMixerBui
     :<View accessibilityLiveRegion="polite" style={{gap:8}}>
       <Label>{pair.first} + {pair.second} →</Label>
       <Sa sa={pair.joined} iast={params.iast[pair.joined]} size={44}/>
+      <FormChange before={pair.first+' '+pair.second} after={pair.joined}/>
       {pair.sutras.map(s=><View key={s.ref}><Label>{hi?'सूत्र ':'Sūtra '}{s.ref}</Label><Sa sa={s.sa} iast={s.iast} size={22}/></View>)}</View>}
   </Panel>
   <Button primary label={joined?(hi?'फिर अलग करें':'Pull apart'):(hi?'जोड़ें':'Join them')} onPress={toggle}/>

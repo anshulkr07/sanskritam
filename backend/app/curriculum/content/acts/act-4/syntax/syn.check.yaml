@@ -28,6 +28,148 @@ cards:
   - correct: true
     sa: यः … सः
   - sa: या … सा
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: who
+        hi: जो
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i3
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i4
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair
+          agrees in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} …
+          {{तस्य}}. The {{यद्}}-half usually comes first.'
+        hi: '{{यः}} (जो) वाले वाक्य का उत्तर {{सः}} (वह) देता है: {{यः पठति सः जानाति}}, ‘जो पढ़ता है, वह जानता है’। जोड़ी
+          लिंग और वचन में मेल खाती है, और कोई भी किसी भी विभक्ति में आ सकता है: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}}
+          … {{तस्य}}। {{यद्}}-भाग प्रायः पहले आता है।'
+    - id: i7
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -46,6 +188,148 @@ cards:
   - correct: true
     sa: यस्य … तस्य
   - sa: येन … तेन
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: who
+        hi: जो
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i3
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i4
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair
+          agrees in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} …
+          {{तस्य}}. The {{यद्}}-half usually comes first.'
+        hi: '{{यः}} (जो) वाले वाक्य का उत्तर {{सः}} (वह) देता है: {{यः पठति सः जानाति}}, ‘जो पढ़ता है, वह जानता है’। जोड़ी
+          लिंग और वचन में मेल खाती है, और कोई भी किसी भी विभक्ति में आ सकता है: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}}
+          … {{तस्य}}। {{यद्}}-भाग प्रायः पहले आता है।'
+    - id: i7
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -64,6 +348,199 @@ cards:
   - correct: true
     sa: सूर्ये उदिते
   - sa: सूर्यं उदितम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामे गते लक्ष्मणः आगच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma having gone, Lakṣmaṇa comes.
+        hi: राम के जाने पर लक्ष्मण आता है।
+      words:
+      - sa: रामे
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: गते
+        gloss:
+          en: having gone
+          hi: जाने पर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: kta
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: लक्ष्मणः
+        gloss:
+          en: Lakṣmaṇa
+          hi: लक्ष्मण
+        check:
+          type: subanta
+          stem: लक्ष्मण
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+    - id: i1
+      sa: रामे
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: गते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: having gone
+        hi: जाने पर
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: kta
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · masculine · {{सप्तमी}} · singular'
+        hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i3
+      sa: लक्ष्मणः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Lakṣmaṇa
+        hi: लक्ष्मण
+      check:
+        type: subanta
+        stem: लक्ष्मण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{लक्ष्मण}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{लक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i4
+      sa: आगच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: comes
+        hi: आता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A word and its participle, both in the seventh case, set the scene: {{सूर्ये उदिते}}, “the sun having risen”;
+          {{रामे गते}}, “Rāma having gone”. If a present sense is meant, use {{शतृ}} or {{सति}}: {{बालके पठति}}, “while the
+          boy reads”. This is {{सति सप्तमी}}, the absolute locative. The main clause has a different subject.'
+        hi: 'एक शब्द और उसका कृदन्त, दोनों सप्तमी में, दृश्य रचते हैं: {{सूर्ये उदिते}}, ‘सूर्य के उदित होने पर’; {{रामे गते}},
+          ‘राम के जाने पर’। वर्तमान का भाव हो तो {{शतृ}} या {{सति}} लीजिए: {{बालके पठति}}, ‘बालक के पढ़ते हुए’। यह {{सति सप्तमी}}
+          है। मुख्य वाक्य का कर्ता अलग होता है।'
+    - id: i7
+      sa: रामे गते लक्ष्मणः आगच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma having gone, Lakṣmaṇa comes.
+        hi: राम के जाने पर लक्ष्मण आता है।
+      words:
+      - sa: रामे
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: गते
+        gloss:
+          en: having gone
+          hi: जाने पर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: kta
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: लक्ष्मणः
+        gloss:
+          en: Lakṣmaṇa
+          hi: लक्ष्मण
+        check:
+          type: subanta
+          stem: लक्ष्मण
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
 - id: p4
   kind: practice
   depth: core
@@ -88,6 +565,199 @@ cards:
     text:
       en: seventh case
       hi: सप्तमी में
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामे गते लक्ष्मणः आगच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma having gone, Lakṣmaṇa comes.
+        hi: राम के जाने पर लक्ष्मण आता है।
+      words:
+      - sa: रामे
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: गते
+        gloss:
+          en: having gone
+          hi: जाने पर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: kta
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: लक्ष्मणः
+        gloss:
+          en: Lakṣmaṇa
+          hi: लक्ष्मण
+        check:
+          type: subanta
+          stem: लक्ष्मण
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+    - id: i1
+      sa: रामे
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: गते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: having gone
+        hi: जाने पर
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: kta
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · masculine · {{सप्तमी}} · singular'
+        hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i3
+      sa: लक्ष्मणः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Lakṣmaṇa
+        hi: लक्ष्मण
+      check:
+        type: subanta
+        stem: लक्ष्मण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{लक्ष्मण}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{लक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i4
+      sa: आगच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: comes
+        hi: आता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A word and its participle, both in the seventh case, set the scene: {{सूर्ये उदिते}}, “the sun having risen”;
+          {{रामे गते}}, “Rāma having gone”. If a present sense is meant, use {{शतृ}} or {{सति}}: {{बालके पठति}}, “while the
+          boy reads”. This is {{सति सप्तमी}}, the absolute locative. The main clause has a different subject.'
+        hi: 'एक शब्द और उसका कृदन्त, दोनों सप्तमी में, दृश्य रचते हैं: {{सूर्ये उदिते}}, ‘सूर्य के उदित होने पर’; {{रामे गते}},
+          ‘राम के जाने पर’। वर्तमान का भाव हो तो {{शतृ}} या {{सति}} लीजिए: {{बालके पठति}}, ‘बालक के पढ़ते हुए’। यह {{सति सप्तमी}}
+          है। मुख्य वाक्य का कर्ता अलग होता है।'
+    - id: i7
+      sa: रामे गते लक्ष्मणः आगच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma having gone, Lakṣmaṇa comes.
+        hi: राम के जाने पर लक्ष्मण आता है।
+      words:
+      - sa: रामे
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: गते
+        gloss:
+          en: having gone
+          hi: जाने पर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: kta
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: लक्ष्मणः
+        gloss:
+          en: Lakṣmaṇa
+          hi: लक्ष्मण
+        check:
+          type: subanta
+          stem: लक्ष्मण
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
 - id: p5
   kind: practice
   depth: core
@@ -106,6 +776,180 @@ cards:
   - sa: पठिष्यति … ज्ञास्यति
   - correct: true
     sa: पठेत् … जानीयात्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: यदि सः पठति तर्हि सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: If he reads, then he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यदि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: if
+        hi: यदि
+    - id: i2
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i3
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i4
+      sa: तर्हि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: then
+        hi: तो
+    - id: i5
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i6
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{यदि}} (if) opens the condition, and {{तर्हि}} or {{तदा}} (then) opens the result: {{यदि सः पठति, तर्हि जानाति}}.
+          A condition about the future takes the future: {{यदि वदसि, तर्हि यास्यति}}. A condition that is only supposed takes
+          {{विधिलिङ्}}: {{यदि पठेत्, तर्हि जानीयात्}}. A negative condition adds {{न}}.'
+        hi: '{{यदि}} (अगर) शर्त खोलता है, और {{तर्हि}} या {{तदा}} (तब) परिणाम खोलता है: {{यदि सः पठति, तर्हि जानाति}}। भविष्य
+          की शर्त भविष्यत् लेती है: {{यदि वदसि, तर्हि यास्यति}}। केवल मानी हुई शर्त {{विधिलिङ्}} लेती है: {{यदि पठेत्, तर्हि
+          जानीयात्}}। नकारात्मक शर्त में {{न}} जुड़ता है।'
+    - id: i9
+      sa: यदि सः पठति तर्हि सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: If he reads, then he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p6
   kind: practice
   depth: core
@@ -124,6 +968,24 @@ cards:
   - राजानम्
   - न
   - पश्येत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Verse puts words in the order of the metre; prose puts them in the order of sense. To find the {{अन्वयः}}: first
+        split the joins (padaccheda); then find the verb; then its doer; then the object, and describing words next to the
+        words they describe. {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: who, whom, what, how.'
+      hi: 'श्लोक शब्दों को छन्द के क्रम में रखता है; गद्य अर्थ के क्रम में। {{अन्वयः}} खोजने के लिए: पहले सन्धि खोलिए (पदच्छेद);
+        फिर क्रिया खोजिए; फिर उसका कर्ता; फिर कर्म, और विशेषण उन शब्दों के पास जिनका वे वर्णन करते हैं। {{रिक्तपाणिः राजानं
+        भिषजं गुरुं न पश्येत्}}: कौन, किसे, कैसे।'
+    items:
+    - id: i0
+      sa: अन्वयः
+    - id: i1
+      sa: रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्
 - id: p7
   kind: practice
   depth: core
@@ -165,6 +1027,148 @@ cards:
       text:
         en: prose order
         hi: गद्य का क्रम
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: who
+        hi: जो
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i3
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i4
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair
+          agrees in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} …
+          {{तस्य}}. The {{यद्}}-half usually comes first.'
+        hi: '{{यः}} (जो) वाले वाक्य का उत्तर {{सः}} (वह) देता है: {{यः पठति सः जानाति}}, ‘जो पढ़ता है, वह जानता है’। जोड़ी
+          लिंग और वचन में मेल खाती है, और कोई भी किसी भी विभक्ति में आ सकता है: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}}
+          … {{तस्य}}। {{यद्}}-भाग प्रायः पहले आता है।'
+    - id: i7
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p8
   kind: practice
   depth: core
@@ -181,8 +1185,16 @@ cards:
   gate: true
   story:
     success:
-      en: “यः पठति, सः जानाति,” you say, and Vākyikā, the heavy little basalt spirit, rolls up her scroll, which has no end, and finds the end. She sets it down. “At last,” she says. “Who reads, he knows.” The thirty-two statues step down, one by one, into the light of the throne, and become thirty-two small figures standing together, no longer carved, and the throne, plain and warm, is only a seat. In the stone of its base, a long-sealed slab has slid aside, and in the dark space behind it lies a palm leaf, whole, glowing, the fifth.
-      hi: “यः पठति, सः जानाति,” आप कहते हैं, और वाक्यिका, भारी नन्ही बेसाल्ट भूत, अपना पत्र लपेटती है, जिसका कोई अन्त नहीं था, और अन्त पा लेती है। वह उसे रख देती है। “आख़िर,” वह कहती है। “जो पढ़ता है, वह जानता है।” बत्तीसों प्रतिमाएँ एक-एक करके सिंहासन के प्रकाश में उतरती हैं, और बत्तीस नन्ही आकृतियाँ बन जाती हैं जो साथ खड़ी हैं, अब तराशी हुई नहीं, और सिंहासन, सादा और गरम, केवल एक आसन है। उसके आधार के पत्थर में, बहुत समय से बन्द एक पटिया सरक गई है, और पीछे के अँधेरे स्थान में एक ताड़पत्र पड़ा है, पूरा, चमकता, पाँचवाँ।
+      en: “यः पठति, सः जानाति,” you say, and Vākyikā, the heavy little basalt spirit, rolls up her scroll, which has no end,
+        and finds the end. She sets it down. “At last,” she says. “Who reads, he knows.” The thirty-two statues step down,
+        one by one, into the light of the throne, and become thirty-two small figures standing together, no longer carved,
+        and the throne, plain and warm, is only a seat. In the stone of its base, a long-sealed slab has slid aside, and in
+        the dark space behind it lies a palm leaf, whole, glowing, the fifth.
+      hi: “यः पठति, सः जानाति,” आप कहते हैं, और वाक्यिका, भारी नन्ही बेसाल्ट भूत, अपना पत्र लपेटती है, जिसका कोई अन्त नहीं
+        था, और अन्त पा लेती है। वह उसे रख देती है। “आख़िर,” वह कहती है। “जो पढ़ता है, वह जानता है।” बत्तीसों प्रतिमाएँ एक-एक
+        करके सिंहासन के प्रकाश में उतरती हैं, और बत्तीस नन्ही आकृतियाँ बन जाती हैं जो साथ खड़ी हैं, अब तराशी हुई नहीं, और
+        सिंहासन, सादा और गरम, केवल एक आसन है। उसके आधार के पत्थर में, बहुत समय से बन्द एक पटिया सरक गई है, और पीछे के अँधेरे
+        स्थान में एक ताड़पत्र पड़ा है, पूरा, चमकता, पाँचवाँ।
     failure:
       en: 'She cannot find the end. Her sentence: {{यः पठति सः जानाति}}.'
       hi: 'उसे अन्त नहीं मिलता। उसका वाक्य: {{यः पठति सः जानाति}}।'
@@ -191,3 +1203,145 @@ cards:
   - पठति
   - सः
   - जानाति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: who
+        hi: जो
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i3
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i4
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair
+          agrees in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} …
+          {{तस्य}}. The {{यद्}}-half usually comes first.'
+        hi: '{{यः}} (जो) वाले वाक्य का उत्तर {{सः}} (वह) देता है: {{यः पठति सः जानाति}}, ‘जो पढ़ता है, वह जानता है’। जोड़ी
+          लिंग और वचन में मेल खाती है, और कोई भी किसी भी विभक्ति में आ सकता है: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}}
+          … {{तस्य}}। {{यद्}}-भाग प्रायः पहले आता है।'
+    - id: i7
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka

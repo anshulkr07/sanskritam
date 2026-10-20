@@ -21,7 +21,8 @@ cards:
     hi: हर वक्तव्य से पहले का शब्द
   depth: core
   image:
-    brief: The Vetāla seated near a small fire telling a tale with a raised finger; the storybook spirit beating a drum-roll on his spine; Lubdhaka stopping at the edge of the firelight, pulled in by the drum; you, Dādī and Śuka around the fire.
+    brief: The Vetāla seated near a small fire telling a tale with a raised finger; the storybook spirit beating a drum-roll
+      on his spine; Lubdhaka stopping at the edge of the firelight, pulled in by the drum; you, Dādī and Śuka around the fire.
     alt:
       en: A grey spirit tells a tale by a fire while a man stops at the edge of the light
       hi: अलाव के पास कथा सुनाता भूत, रोशनी के किनारे रुका आदमी
@@ -36,8 +37,12 @@ cards:
     ratio: '4:3'
     id: lit-said-s1
   narration:
-    en: '“Every speech in my tales begins the same way,” says the Vetāla. “उवाच. ‘He said.’” The little storyteller beats a roll on his spine. Lubdhaka, drawn in by the drum, stops at the edge of the firelight. “उवाच कः?” asks the Vetāla pleasantly. “Who said?” Dādī nods at you: “Say it, and speak for the tale.”'
-    hi: '“मेरी कथाओं में हर वक्तव्य एक ही तरह शुरू होता है,” वेताल कहता है। “उवाच। ‘उसने कहा।’” नन्हा कथावाचक रीढ़ पर ढोल की झड़ी बजाता है। ढोल से खिंचा लुब्धक अलाव की रोशनी के किनारे रुक जाता है। “उवाच कः?” वेताल मीठे स्वर में पूछता है। “किसने कहा?” दादी आपकी ओर सिर हिलाती हैं: “कहिए, और कथा की ओर से बोलिए।”'
+    en: '“Every speech in my tales begins the same way,” says the Vetāla. “उवाच. ‘He said.’” The little storyteller beats
+      a roll on his spine. Lubdhaka, drawn in by the drum, stops at the edge of the firelight. “उवाच कः?” asks the Vetāla
+      pleasantly. “Who said?” Dādī nods at you: “Say it, and speak for the tale.”'
+    hi: '“मेरी कथाओं में हर वक्तव्य एक ही तरह शुरू होता है,” वेताल कहता है। “उवाच। ‘उसने कहा।’” नन्हा कथावाचक रीढ़ पर ढोल
+      की झड़ी बजाता है। ढोल से खिंचा लुब्धक अलाव की रोशनी के किनारे रुक जाता है। “उवाच कः?” वेताल मीठे स्वर में पूछता है।
+      “किसने कहा?” दादी आपकी ओर सिर हिलाती हैं: “कहिए, और कथा की ओर से बोलिए।”'
   quote:
     sa: तच्छ्रुत्वा प्रणतो हृष्टः काणभूतिरुवाच तम्
     gloss:
@@ -65,8 +70,10 @@ cards:
   skills:
   - verb.lit
   body:
-    en: '{{वच्}} (say) has an irregular story past: {{उवाच}} (he said), {{ऊचतुः}} (the two said), {{ऊचुः}} (they said). {{उवाच}} introduces a speech: {{सः उवाच}}, “he said”. {{जगाद}} (from {{गद्}}) also means “he said”.'
-    hi: '{{वच्}} (कहना) का कथा-भूतकाल अनियमित है: {{उवाच}} (उसने कहा), {{ऊचतुः}} (दोनों ने कहा), {{ऊचुः}} (उन्होंने कहा)। {{उवाच}} वक्तव्य का आरम्भ करता है: {{सः उवाच}}, ‘उसने कहा’। {{जगाद}} ({{गद्}} से) का भी अर्थ ‘उसने कहा’ है।'
+    en: '{{वच्}} (say) has an irregular story past: {{उवाच}} (he said), {{ऊचतुः}} (the two said), {{ऊचुः}} (they said). {{उवाच}}
+      introduces a speech: {{सः उवाच}}, “he said”. {{जगाद}} (from {{गद्}}) also means “he said”.'
+    hi: '{{वच्}} (कहना) का कथा-भूतकाल अनियमित है: {{उवाच}} (उसने कहा), {{ऊचतुः}} (दोनों ने कहा), {{ऊचुः}} (उन्होंने कहा)।
+      {{उवाच}} वक्तव्य का आरम्भ करता है: {{सः उवाच}}, ‘उसने कहा’। {{जगाद}} ({{गद्}} से) का भी अर्थ ‘उसने कहा’ है।'
   examples:
   - sa: काणभूतिः तम् उवाच।
     meaning:
@@ -110,6 +117,195 @@ cards:
         lakara: Lit
         purusha: Prathama
         vacana: Bahu
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: काणभूतिः तम् उवाच।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Kāṇabhūti said to him.
+        hi: काणभूति ने उससे कहा।
+      words:
+      - sa: काणभूतिः
+        gloss:
+          en: Kāṇabhūti
+          hi: काणभूति
+      - sa: तम्
+        gloss:
+          en: to him
+          hi: उससे
+      - sa: उवाच
+        gloss:
+          en: said
+          hi: बोला
+        check:
+          type: tinanta
+          dhatu: वच्
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: काणभूतिः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Kāṇabhūti
+        hi: काणभूति
+    - id: i2
+      sa: तम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to him
+        hi: उससे
+    - id: i3
+      sa: उवाच
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: said
+        hi: बोला
+      check:
+        type: tinanta
+        dhatu: वच्
+        lakara: Lit
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वच्}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वच्}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{वच्}} (say) has an irregular story past: {{उवाच}} (he said), {{ऊचतुः}} (the two said), {{ऊचुः}} (they said).
+          {{उवाच}} introduces a speech: {{सः उवाच}}, “he said”. {{जगाद}} (from {{गद्}}) also means “he said”.'
+        hi: '{{वच्}} (कहना) का कथा-भूतकाल अनियमित है: {{उवाच}} (उसने कहा), {{ऊचतुः}} (दोनों ने कहा), {{ऊचुः}} (उन्होंने कहा)।
+          {{उवाच}} वक्तव्य का आरम्भ करता है: {{सः उवाच}}, ‘उसने कहा’। {{जगाद}} ({{गद्}} से) का भी अर्थ ‘उसने कहा’ है।'
+    - id: i6
+      sa: काणभूतिः तम् उवाच।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Kāṇabhūti said to him.
+        hi: काणभूति ने उससे कहा।
+      words:
+      - sa: काणभूतिः
+        gloss:
+          en: Kāṇabhūti
+          hi: काणभूति
+      - sa: तम्
+        gloss:
+          en: to him
+          hi: उससे
+      - sa: उवाच
+        gloss:
+          en: said
+          hi: बोला
+        check:
+          type: tinanta
+          dhatu: वच्
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: ते ऊचुः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: They said.
+        hi: वे बोले।
+      words:
+      - sa: ते
+        gloss:
+          en: they
+          hi: वे
+      - sa: ऊचुः
+        gloss:
+          en: said
+          hi: बोले
+        check:
+          type: tinanta
+          dhatu: वच्
+          lakara: Lit
+          purusha: Prathama
+          vacana: Bahu
+    - id: i1
+      sa: ते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: they
+        hi: वे
+    - id: i2
+      sa: ऊचुः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: said
+        hi: बोले
+      check:
+        type: tinanta
+        dhatu: वच्
+        lakara: Lit
+        purusha: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{वच्}} · plural · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वच्}} · {{बहुवचन}} · {{लिट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{वच्}} (say) has an irregular story past: {{उवाच}} (he said), {{ऊचतुः}} (the two said), {{ऊचुः}} (they said).
+          {{उवाच}} introduces a speech: {{सः उवाच}}, “he said”. {{जगाद}} (from {{गद्}}) also means “he said”.'
+        hi: '{{वच्}} (कहना) का कथा-भूतकाल अनियमित है: {{उवाच}} (उसने कहा), {{ऊचतुः}} (दोनों ने कहा), {{ऊचुः}} (उन्होंने कहा)।
+          {{उवाच}} वक्तव्य का आरम्भ करता है: {{सः उवाच}}, ‘उसने कहा’। {{जगाद}} ({{गद्}} से) का भी अर्थ ‘उसने कहा’ है।'
+    - id: i5
+      sa: ते ऊचुः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: They said.
+        hi: वे बोले।
+      words:
+      - sa: ते
+        gloss:
+          en: they
+          hi: वे
+      - sa: ऊचुः
+        gloss:
+          en: said
+          hi: बोले
+        check:
+          type: tinanta
+          dhatu: वच्
+          lakara: Lit
+          purusha: Prathama
+          vacana: Bahu
 - id: tb1
   kind: table
   title:
@@ -216,8 +412,26 @@ cards:
   skills:
   - verb.lit
   body:
-    en: 'Compare: {{अवदत्}} is “he said” for something you know; {{उवाच}} is “he said” as the old teller narrates. In everyday Sanskrit you will find both; the epics prefer {{उवाच}}.'
-    hi: 'तुलना कीजिए: {{अवदत्}} उसके लिए ‘उसने कहा’ है जो आप जानते हैं; {{उवाच}} पुराने कथावाचक का ‘उसने कहा’ है। रोज़ की संस्कृत में दोनों मिलेंगे; महाकाव्य {{उवाच}} पसन्द करते हैं।'
+    en: 'Compare: {{अवदत्}} is “he said” for something you know; {{उवाच}} is “he said” as the old teller narrates. In everyday
+      Sanskrit you will find both; the epics prefer {{उवाच}}.'
+    hi: 'तुलना कीजिए: {{अवदत्}} उसके लिए ‘उसने कहा’ है जो आप जानते हैं; {{उवाच}} पुराने कथावाचक का ‘उसने कहा’ है। रोज़ की
+      संस्कृत में दोनों मिलेंगे; महाकाव्य {{उवाच}} पसन्द करते हैं।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Compare: {{अवदत्}} is “he said” for something you know; {{उवाच}} is “he said” as the old teller narrates. In everyday
+        Sanskrit you will find both; the epics prefer {{उवाच}}.'
+      hi: 'तुलना कीजिए: {{अवदत्}} उसके लिए ‘उसने कहा’ है जो आप जानते हैं; {{उवाच}} पुराने कथावाचक का ‘उसने कहा’ है। रोज़ की
+        संस्कृत में दोनों मिलेंगे; महाकाव्य {{उवाच}} पसन्द करते हैं।'
+    items:
+    - id: i0
+      sa: अवदत्
+    - id: i1
+      sa: उवाच
 - id: p1
   kind: practice
   depth: core
@@ -236,6 +450,132 @@ cards:
   - correct: true
     sa: उवाच
   - sa: वदति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पुरा राजा बभूव।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Long ago a king came to be.
+        hi: बहुत पहले एक राजा हुआ।
+      words:
+      - sa: पुरा
+        gloss:
+          en: long ago
+          hi: पुराने समय में
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बभूव
+        gloss:
+          en: became
+          hi: हुआ
+        check:
+          type: tinanta
+          dhatu: भू
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: पुरा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: long ago
+        hi: पुराने समय में
+    - id: i2
+      sa: राजा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: बभूव
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: became
+        hi: हुआ
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{लिट्}} is the past of old tales and epics, for what the teller did not see. The beginning of the root is doubled:
+          {{भू}} gives {{बभूव}} (he became), {{गम्}} gives {{जगाम}} (he went), {{कृ}} gives {{चकार}} (he did), {{पठ्}} gives
+          {{पपाठ}} (he read).'
+        hi: '{{लिट्}} पुरानी कथाओं और महाकाव्यों का भूतकाल है, उसका जो कहने वाले ने नहीं देखा। धातु का आरम्भ दुगुना हो जाता
+          है: {{भू}} से {{बभूव}} (वह हुआ), {{गम्}} से {{जगाम}} (वह गया), {{कृ}} से {{चकार}} (उसने किया), {{पठ्}} से {{पपाठ}}
+          (उसने पढ़ा)।'
+    - id: i6
+      sa: पुरा राजा बभूव।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Long ago a king came to be.
+        hi: बहुत पहले एक राजा हुआ।
+      words:
+      - sa: पुरा
+        gloss:
+          en: long ago
+          hi: पुराने समय में
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बभूव
+        gloss:
+          en: became
+          hi: हुआ
+        check:
+          type: tinanta
+          dhatu: भू
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -256,6 +596,132 @@ cards:
   - वाच
   - वद
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पुरा राजा बभूव।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Long ago a king came to be.
+        hi: बहुत पहले एक राजा हुआ।
+      words:
+      - sa: पुरा
+        gloss:
+          en: long ago
+          hi: पुराने समय में
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बभूव
+        gloss:
+          en: became
+          hi: हुआ
+        check:
+          type: tinanta
+          dhatu: भू
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: पुरा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: long ago
+        hi: पुराने समय में
+    - id: i2
+      sa: राजा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: बभूव
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: became
+        hi: हुआ
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{लिट्}} is the past of old tales and epics, for what the teller did not see. The beginning of the root is doubled:
+          {{भू}} gives {{बभूव}} (he became), {{गम्}} gives {{जगाम}} (he went), {{कृ}} gives {{चकार}} (he did), {{पठ्}} gives
+          {{पपाठ}} (he read).'
+        hi: '{{लिट्}} पुरानी कथाओं और महाकाव्यों का भूतकाल है, उसका जो कहने वाले ने नहीं देखा। धातु का आरम्भ दुगुना हो जाता
+          है: {{भू}} से {{बभूव}} (वह हुआ), {{गम्}} से {{जगाम}} (वह गया), {{कृ}} से {{चकार}} (उसने किया), {{पठ्}} से {{पपाठ}}
+          (उसने पढ़ा)।'
+    - id: i6
+      sa: पुरा राजा बभूव।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Long ago a king came to be.
+        hi: बहुत पहले एक राजा हुआ।
+      words:
+      - sa: पुरा
+        gloss:
+          en: long ago
+          hi: पुराने समय में
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बभूव
+        gloss:
+          en: became
+          hi: हुआ
+        check:
+          type: tinanta
+          dhatu: भू
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -294,6 +760,132 @@ cards:
       text:
         en: he went
         hi: वह गया
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पुरा राजा बभूव।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Long ago a king came to be.
+        hi: बहुत पहले एक राजा हुआ।
+      words:
+      - sa: पुरा
+        gloss:
+          en: long ago
+          hi: पुराने समय में
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बभूव
+        gloss:
+          en: became
+          hi: हुआ
+        check:
+          type: tinanta
+          dhatu: भू
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: पुरा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: long ago
+        hi: पुराने समय में
+    - id: i2
+      sa: राजा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: बभूव
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: became
+        hi: हुआ
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{लिट्}} is the past of old tales and epics, for what the teller did not see. The beginning of the root is doubled:
+          {{भू}} gives {{बभूव}} (he became), {{गम्}} gives {{जगाम}} (he went), {{कृ}} gives {{चकार}} (he did), {{पठ्}} gives
+          {{पपाठ}} (he read).'
+        hi: '{{लिट्}} पुरानी कथाओं और महाकाव्यों का भूतकाल है, उसका जो कहने वाले ने नहीं देखा। धातु का आरम्भ दुगुना हो जाता
+          है: {{भू}} से {{बभूव}} (वह हुआ), {{गम्}} से {{जगाम}} (वह गया), {{कृ}} से {{चकार}} (उसने किया), {{पठ्}} से {{पपाठ}}
+          (उसने पढ़ा)।'
+    - id: i6
+      sa: पुरा राजा बभूव।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Long ago a king came to be.
+        hi: बहुत पहले एक राजा हुआ।
+      words:
+      - sa: पुरा
+        gloss:
+          en: long ago
+          hi: पुराने समय में
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बभूव
+        gloss:
+          en: became
+          hi: हुआ
+        check:
+          type: tinanta
+          dhatu: भू
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -333,6 +925,132 @@ cards:
   - काणभूतिः
   - उवाच
   - तम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पुरा राजा बभूव।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Long ago a king came to be.
+        hi: बहुत पहले एक राजा हुआ।
+      words:
+      - sa: पुरा
+        gloss:
+          en: long ago
+          hi: पुराने समय में
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बभूव
+        gloss:
+          en: became
+          hi: हुआ
+        check:
+          type: tinanta
+          dhatu: भू
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: पुरा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: long ago
+        hi: पुराने समय में
+    - id: i2
+      sa: राजा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: बभूव
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: became
+        hi: हुआ
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{लिट्}} is the past of old tales and epics, for what the teller did not see. The beginning of the root is doubled:
+          {{भू}} gives {{बभूव}} (he became), {{गम्}} gives {{जगाम}} (he went), {{कृ}} gives {{चकार}} (he did), {{पठ्}} gives
+          {{पपाठ}} (he read).'
+        hi: '{{लिट्}} पुरानी कथाओं और महाकाव्यों का भूतकाल है, उसका जो कहने वाले ने नहीं देखा। धातु का आरम्भ दुगुना हो जाता
+          है: {{भू}} से {{बभूव}} (वह हुआ), {{गम्}} से {{जगाम}} (वह गया), {{कृ}} से {{चकार}} (उसने किया), {{पठ्}} से {{पपाठ}}
+          (उसने पढ़ा)।'
+    - id: i6
+      sa: पुरा राजा बभूव।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Long ago a king came to be.
+        hi: बहुत पहले एक राजा हुआ।
+      words:
+      - sa: पुरा
+        gloss:
+          en: long ago
+          hi: पुराने समय में
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बभूव
+        gloss:
+          en: became
+          hi: हुआ
+        check:
+          type: tinanta
+          dhatu: भू
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
 - id: p5
   kind: practice
   title:
@@ -352,8 +1070,12 @@ cards:
   gate: true
   story:
     success:
-      en: '“ऊचुः,” you say, and the fire crackles as if many voices had spoken at once. The storybook spirit unrolls himself, delighted, and his pages are full of speeches, each starting with the same word: उवाच, उवाच, उवाच. “I forgot how to begin,” he says. “You have reminded me.”'
-      hi: '“ऊचुः,” आप कहते हैं, और अलाव ऐसे चटकता है जैसे कई आवाज़ें एक साथ बोली हों। पोथी-भूत आनन्द से स्वयं को खोल देता है, और उसके पन्ने वक्तव्यों से भरे हैं, हर एक उसी शब्द से शुरू: उवाच, उवाच, उवाच। “मैं शुरू करना भूल गया था,” वह कहता है। “आपने मुझे याद दिला दिया।”'
+      en: '“ऊचुः,” you say, and the fire crackles as if many voices had spoken at once. The storybook spirit unrolls himself,
+        delighted, and his pages are full of speeches, each starting with the same word: उवाच, उवाच, उवाच. “I forgot how to
+        begin,” he says. “You have reminded me.”'
+      hi: '“ऊचुः,” आप कहते हैं, और अलाव ऐसे चटकता है जैसे कई आवाज़ें एक साथ बोली हों। पोथी-भूत आनन्द से स्वयं को खोल देता
+        है, और उसके पन्ने वक्तव्यों से भरे हैं, हर एक उसी शब्द से शुरू: उवाच, उवाच, उवाच। “मैं शुरू करना भूल गया था,” वह कहता
+        है। “आपने मुझे याद दिला दिया।”'
     failure:
       en: 'The fire stays quiet. “They said”: {{ऊचुः}}.'
       hi: 'अलाव शान्त रहता है। ‘उन्होंने कहा’: {{ऊचुः}}।'
@@ -362,6 +1084,132 @@ cards:
   - sa: ऊचतुः
   - correct: true
     sa: ऊचुः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पुरा राजा बभूव।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Long ago a king came to be.
+        hi: बहुत पहले एक राजा हुआ।
+      words:
+      - sa: पुरा
+        gloss:
+          en: long ago
+          hi: पुराने समय में
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बभूव
+        gloss:
+          en: became
+          hi: हुआ
+        check:
+          type: tinanta
+          dhatu: भू
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: पुरा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: long ago
+        hi: पुराने समय में
+    - id: i2
+      sa: राजा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: बभूव
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: became
+        hi: हुआ
+      check:
+        type: tinanta
+        dhatu: भू
+        lakara: Lit
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भू}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भू}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{लिट्}} is the past of old tales and epics, for what the teller did not see. The beginning of the root is doubled:
+          {{भू}} gives {{बभूव}} (he became), {{गम्}} gives {{जगाम}} (he went), {{कृ}} gives {{चकार}} (he did), {{पठ्}} gives
+          {{पपाठ}} (he read).'
+        hi: '{{लिट्}} पुरानी कथाओं और महाकाव्यों का भूतकाल है, उसका जो कहने वाले ने नहीं देखा। धातु का आरम्भ दुगुना हो जाता
+          है: {{भू}} से {{बभूव}} (वह हुआ), {{गम्}} से {{जगाम}} (वह गया), {{कृ}} से {{चकार}} (उसने किया), {{पठ्}} से {{पपाठ}}
+          (उसने पढ़ा)।'
+    - id: i6
+      sa: पुरा राजा बभूव।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Long ago a king came to be.
+        hi: बहुत पहले एक राजा हुआ।
+      words:
+      - sa: पुरा
+        gloss:
+          en: long ago
+          hi: पुराने समय में
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बभूव
+        gloss:
+          en: became
+          hi: हुआ
+        check:
+          type: tinanta
+          dhatu: भू
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
 - id: sum
   kind: summary
   title:

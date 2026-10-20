@@ -24,7 +24,8 @@ cards:
     hi: तेरहवीं प्रतिमा
   depth: core
   image:
-    brief: The thirteenth statue holding a thin chisel; Lubdhaka's foreman crouched at an inscription on the plinth with his lamp beside him, frowning; Dādī kneeling beside him and pointing to one letter; Śuka on the plinth.
+    brief: The thirteenth statue holding a thin chisel; Lubdhaka's foreman crouched at an inscription on the plinth with his
+      lamp beside him, frowning; Dādī kneeling beside him and pointing to one letter; Śuka on the plinth.
     alt:
       en: A statue with a thin chisel while an old woman points at one letter and a frowning man crouches by his lamp
       hi: पतली छेनी वाली प्रतिमा, एक अक्षर की ओर इशारा करती दादी, दीपक के पास झुका उलझा आदमी
@@ -37,10 +38,15 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: split-back-s1
-    text_in_image: ["विद्यालयः"]
+    text_in_image:
+    - विद्यालयः
   narration:
-    en: 'The thirteenth statue holds a thin chisel. Lubdhaka''s foreman has put his lamp on the plinth and is staring at the nearest inscription: “विद्यालयः”. He cannot read it. “You have to take it apart,” says Dādī, not unkindly. “Look at the sound that has changed, and work backwards to what must have been there. Then check that both halves are real words.”'
-    hi: तेरहवीं प्रतिमा के हाथ में पतली छेनी है। लुब्धक के मुखिया ने अपना दीपक आसन पर रख दिया है और निकटतम अभिलेख “विद्यालयः” को घूर रहा है। वह उसे पढ़ नहीं पाता। “उसे अलग करना होगा,” दादी बिना कठोरता के कहती हैं। “जो ध्वनि बदली है उसे देखिए, और पीछे चलकर सोचिए कि वहाँ क्या रहा होगा। फिर जाँचिए कि दोनों भाग असली शब्द हैं।”
+    en: 'The thirteenth statue holds a thin chisel. Lubdhaka''s foreman has put his lamp on the plinth and is staring at the
+      nearest inscription: “विद्यालयः”. He cannot read it. “You have to take it apart,” says Dādī, not unkindly. “Look at
+      the sound that has changed, and work backwards to what must have been there. Then check that both halves are real words.”'
+    hi: तेरहवीं प्रतिमा के हाथ में पतली छेनी है। लुब्धक के मुखिया ने अपना दीपक आसन पर रख दिया है और निकटतम अभिलेख “विद्यालयः”
+      को घूर रहा है। वह उसे पढ़ नहीं पाता। “उसे अलग करना होगा,” दादी बिना कठोरता के कहती हैं। “जो ध्वनि बदली है उसे देखिए,
+      और पीछे चलकर सोचिए कि वहाँ क्या रहा होगा। फिर जाँचिए कि दोनों भाग असली शब्द हैं।”
 - id: t1
   kind: teach
   title:
@@ -50,13 +56,59 @@ cards:
   skills:
   - sandhi.split
   body:
-    en: To split, look for the sound that gave the join away. A long {{आ}} may be {{अ/आ + अ/आ}}; {{ए}} may be {{अ + इ}}; {{ओ}} may be {{अ + उ}}; {{य्}} or {{व्}} between a consonant and a vowel may be {{इ}} or {{उ}}; {{ज्ज}} may be {{त् + ज}}; {{ोऽ}} may be {{अः + अ}}. Then test both halves as words.
-    hi: अलग करने के लिए वह ध्वनि खोजिए जिसने सन्धि का भेद खोला। दीर्घ {{आ}} {{अ/आ + अ/आ}} हो सकता है; {{ए}} {{अ + इ}} हो सकता है; {{ओ}} {{अ + उ}} हो सकता है; व्यंजन और स्वर के बीच {{य्}} या {{व्}} {{इ}} या {{उ}} हो सकता है; {{ज्ज}} {{त् + ज}} हो सकता है; {{ोऽ}} {{अः + अ}} हो सकता है। फिर दोनों भागों को शब्द की तरह परखिए।
+    en: To split, look for the sound that gave the join away. A long {{आ}} may be {{अ/आ + अ/आ}}; {{ए}} may be {{अ + इ}}; {{ओ}}
+      may be {{अ + उ}}; {{य्}} or {{व्}} between a consonant and a vowel may be {{इ}} or {{उ}}; {{ज्ज}} may be {{त् + ज}};
+      {{ोऽ}} may be {{अः + अ}}. Then test both halves as words.
+    hi: अलग करने के लिए वह ध्वनि खोजिए जिसने सन्धि का भेद खोला। दीर्घ {{आ}} {{अ/आ + अ/आ}} हो सकता है; {{ए}} {{अ + इ}} हो सकता
+      है; {{ओ}} {{अ + उ}} हो सकता है; व्यंजन और स्वर के बीच {{य्}} या {{व्}} {{इ}} या {{उ}} हो सकता है; {{ज्ज}} {{त् + ज}}
+      हो सकता है; {{ोऽ}} {{अः + अ}} हो सकता है। फिर दोनों भागों को शब्द की तरह परखिए।
   term:
     sa: सन्धिविच्छेदः
     meaning:
       en: taking a join apart
       hi: सन्धि को अलग करना
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: To split, look for the sound that gave the join away. A long {{आ}} may be {{अ/आ + अ/आ}}; {{ए}} may be {{अ + इ}};
+        {{ओ}} may be {{अ + उ}}; {{य्}} or {{व्}} between a consonant and a vowel may be {{इ}} or {{उ}}; {{ज्ज}} may be {{त्
+        + ज}}; {{ोऽ}} may be {{अः + अ}}. Then test both halves as words.
+      hi: अलग करने के लिए वह ध्वनि खोजिए जिसने सन्धि का भेद खोला। दीर्घ {{आ}} {{अ/आ + अ/आ}} हो सकता है; {{ए}} {{अ + इ}} हो
+        सकता है; {{ओ}} {{अ + उ}} हो सकता है; व्यंजन और स्वर के बीच {{य्}} या {{व्}} {{इ}} या {{उ}} हो सकता है; {{ज्ज}} {{त्
+        + ज}} हो सकता है; {{ोऽ}} {{अः + अ}} हो सकता है। फिर दोनों भागों को शब्द की तरह परखिए।
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: अ/आ + अ/आ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: अ + इ
+    - id: i4
+      sa: ओ
+    - id: i5
+      sa: अ + उ
+    - id: i6
+      sa: य्
+    - id: i7
+      sa: व्
+    - id: i8
+      sa: इ
+    - id: i9
+      sa: उ
+    - id: i10
+      sa: ज्ज
+    - id: i11
+      sa: त् + ज
+    - id: i12
+      sa: ोऽ
+    - id: i13
+      sa: अः + अ
 - id: tb1
   kind: table
   title:
@@ -120,6 +172,48 @@ cards:
   - sa: महि + आत्मा
   - correct: true
     sa: महा + आत्मा
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: To split, look for the sound that gave the join away. A long {{आ}} may be {{अ/आ + अ/आ}}; {{ए}} may be {{अ + इ}};
+        {{ओ}} may be {{अ + उ}}; {{य्}} or {{व्}} between a consonant and a vowel may be {{इ}} or {{उ}}; {{ज्ज}} may be {{त्
+        + ज}}; {{ोऽ}} may be {{अः + अ}}. Then test both halves as words.
+      hi: अलग करने के लिए वह ध्वनि खोजिए जिसने सन्धि का भेद खोला। दीर्घ {{आ}} {{अ/आ + अ/आ}} हो सकता है; {{ए}} {{अ + इ}} हो
+        सकता है; {{ओ}} {{अ + उ}} हो सकता है; व्यंजन और स्वर के बीच {{य्}} या {{व्}} {{इ}} या {{उ}} हो सकता है; {{ज्ज}} {{त्
+        + ज}} हो सकता है; {{ोऽ}} {{अः + अ}} हो सकता है। फिर दोनों भागों को शब्द की तरह परखिए।
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: अ/आ + अ/आ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: अ + इ
+    - id: i4
+      sa: ओ
+    - id: i5
+      sa: अ + उ
+    - id: i6
+      sa: य्
+    - id: i7
+      sa: व्
+    - id: i8
+      sa: इ
+    - id: i9
+      sa: उ
+    - id: i10
+      sa: ज्ज
+    - id: i11
+      sa: त् + ज
+    - id: i12
+      sa: ोऽ
+    - id: i13
+      sa: अः + अ
 - id: p2
   kind: practice
   depth: core
@@ -138,6 +232,48 @@ cards:
   - correct: true
     sa: सत् + जनः
   - sa: सः + जनः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: To split, look for the sound that gave the join away. A long {{आ}} may be {{अ/आ + अ/आ}}; {{ए}} may be {{अ + इ}};
+        {{ओ}} may be {{अ + उ}}; {{य्}} or {{व्}} between a consonant and a vowel may be {{इ}} or {{उ}}; {{ज्ज}} may be {{त्
+        + ज}}; {{ोऽ}} may be {{अः + अ}}. Then test both halves as words.
+      hi: अलग करने के लिए वह ध्वनि खोजिए जिसने सन्धि का भेद खोला। दीर्घ {{आ}} {{अ/आ + अ/आ}} हो सकता है; {{ए}} {{अ + इ}} हो
+        सकता है; {{ओ}} {{अ + उ}} हो सकता है; व्यंजन और स्वर के बीच {{य्}} या {{व्}} {{इ}} या {{उ}} हो सकता है; {{ज्ज}} {{त्
+        + ज}} हो सकता है; {{ोऽ}} {{अः + अ}} हो सकता है। फिर दोनों भागों को शब्द की तरह परखिए।
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: अ/आ + अ/आ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: अ + इ
+    - id: i4
+      sa: ओ
+    - id: i5
+      sa: अ + उ
+    - id: i6
+      sa: य्
+    - id: i7
+      sa: व्
+    - id: i8
+      sa: इ
+    - id: i9
+      sa: उ
+    - id: i10
+      sa: ज्ज
+    - id: i11
+      sa: त् + ज
+    - id: i12
+      sa: ोऽ
+    - id: i13
+      sa: अः + अ
 - id: p3
   kind: practice
   depth: core
@@ -156,6 +292,48 @@ cards:
   - correct: true
     sa: सु + उक्तम्
   - sa: सि + उक्तम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: To split, look for the sound that gave the join away. A long {{आ}} may be {{अ/आ + अ/आ}}; {{ए}} may be {{अ + इ}};
+        {{ओ}} may be {{अ + उ}}; {{य्}} or {{व्}} between a consonant and a vowel may be {{इ}} or {{उ}}; {{ज्ज}} may be {{त्
+        + ज}}; {{ोऽ}} may be {{अः + अ}}. Then test both halves as words.
+      hi: अलग करने के लिए वह ध्वनि खोजिए जिसने सन्धि का भेद खोला। दीर्घ {{आ}} {{अ/आ + अ/आ}} हो सकता है; {{ए}} {{अ + इ}} हो
+        सकता है; {{ओ}} {{अ + उ}} हो सकता है; व्यंजन और स्वर के बीच {{य्}} या {{व्}} {{इ}} या {{उ}} हो सकता है; {{ज्ज}} {{त्
+        + ज}} हो सकता है; {{ोऽ}} {{अः + अ}} हो सकता है। फिर दोनों भागों को शब्द की तरह परखिए।
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: अ/आ + अ/आ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: अ + इ
+    - id: i4
+      sa: ओ
+    - id: i5
+      sa: अ + उ
+    - id: i6
+      sa: य्
+    - id: i7
+      sa: व्
+    - id: i8
+      sa: इ
+    - id: i9
+      sa: उ
+    - id: i10
+      sa: ज्ज
+    - id: i11
+      sa: त् + ज
+    - id: i12
+      sa: ोऽ
+    - id: i13
+      sa: अः + अ
 - id: p4
   kind: practice
   depth: core
@@ -174,6 +352,48 @@ cards:
   - sa: इतु + आदि
   - correct: true
     sa: इति + आदि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: To split, look for the sound that gave the join away. A long {{आ}} may be {{अ/आ + अ/आ}}; {{ए}} may be {{अ + इ}};
+        {{ओ}} may be {{अ + उ}}; {{य्}} or {{व्}} between a consonant and a vowel may be {{इ}} or {{उ}}; {{ज्ज}} may be {{त्
+        + ज}}; {{ोऽ}} may be {{अः + अ}}. Then test both halves as words.
+      hi: अलग करने के लिए वह ध्वनि खोजिए जिसने सन्धि का भेद खोला। दीर्घ {{आ}} {{अ/आ + अ/आ}} हो सकता है; {{ए}} {{अ + इ}} हो
+        सकता है; {{ओ}} {{अ + उ}} हो सकता है; व्यंजन और स्वर के बीच {{य्}} या {{व्}} {{इ}} या {{उ}} हो सकता है; {{ज्ज}} {{त्
+        + ज}} हो सकता है; {{ोऽ}} {{अः + अ}} हो सकता है। फिर दोनों भागों को शब्द की तरह परखिए।
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: अ/आ + अ/आ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: अ + इ
+    - id: i4
+      sa: ओ
+    - id: i5
+      sa: अ + उ
+    - id: i6
+      sa: य्
+    - id: i7
+      sa: व्
+    - id: i8
+      sa: इ
+    - id: i9
+      sa: उ
+    - id: i10
+      sa: ज्ज
+    - id: i11
+      sa: त् + ज
+    - id: i12
+      sa: ोऽ
+    - id: i13
+      sa: अः + अ
 - id: p5
   kind: practice
   depth: core
@@ -204,6 +424,48 @@ cards:
       sa: नास्ति
     right:
       sa: न + अस्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: To split, look for the sound that gave the join away. A long {{आ}} may be {{अ/आ + अ/आ}}; {{ए}} may be {{अ + इ}};
+        {{ओ}} may be {{अ + उ}}; {{य्}} or {{व्}} between a consonant and a vowel may be {{इ}} or {{उ}}; {{ज्ज}} may be {{त्
+        + ज}}; {{ोऽ}} may be {{अः + अ}}. Then test both halves as words.
+      hi: अलग करने के लिए वह ध्वनि खोजिए जिसने सन्धि का भेद खोला। दीर्घ {{आ}} {{अ/आ + अ/आ}} हो सकता है; {{ए}} {{अ + इ}} हो
+        सकता है; {{ओ}} {{अ + उ}} हो सकता है; व्यंजन और स्वर के बीच {{य्}} या {{व्}} {{इ}} या {{उ}} हो सकता है; {{ज्ज}} {{त्
+        + ज}} हो सकता है; {{ोऽ}} {{अः + अ}} हो सकता है। फिर दोनों भागों को शब्द की तरह परखिए।
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: अ/आ + अ/आ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: अ + इ
+    - id: i4
+      sa: ओ
+    - id: i5
+      sa: अ + उ
+    - id: i6
+      sa: य्
+    - id: i7
+      sa: व्
+    - id: i8
+      sa: इ
+    - id: i9
+      sa: उ
+    - id: i10
+      sa: ज्ज
+    - id: i11
+      sa: त् + ज
+    - id: i12
+      sa: ोऽ
+    - id: i13
+      sa: अः + अ
 - id: e1
   kind: explore
   depth: core
@@ -245,8 +507,13 @@ cards:
   gate: true
   story:
     success:
-      en: '“उत् + ज्वलः,” you say, and the thirteenth statue lays the thin chisel on the word, and the word comes apart, cleanly, with a sound like a thread parting: उत्, ज्वलः. The foreman gives a small shaky laugh. “Two words,” he says. “It was two words all the time.” He writes them in his notebook, and for the first time, crossly, he asks Dādī: “And that one?”'
-      hi: '“उत् + ज्वलः,” आप कहते हैं, और तेरहवीं प्रतिमा पतली छेनी शब्द पर रखती है, और शब्द साफ़ दो टुकड़े हो जाता है, धागा टूटने की ध्वनि के साथ: उत्, ज्वलः। मुखिया हल्की काँपती हँसी हँसता है। “दो शब्द,” वह कहता है। “यह हमेशा से दो शब्द थे।” वह उन्हें अपनी पुस्तिका में लिखता है, और पहली बार, चिढ़कर, दादी से पूछता है: “और वह वाला?”'
+      en: '“उत् + ज्वलः,” you say, and the thirteenth statue lays the thin chisel on the word, and the word comes apart, cleanly,
+        with a sound like a thread parting: उत्, ज्वलः. The foreman gives a small shaky laugh. “Two words,” he says. “It was
+        two words all the time.” He writes them in his notebook, and for the first time, crossly, he asks Dādī: “And that
+        one?”'
+      hi: '“उत् + ज्वलः,” आप कहते हैं, और तेरहवीं प्रतिमा पतली छेनी शब्द पर रखती है, और शब्द साफ़ दो टुकड़े हो जाता है, धागा
+        टूटने की ध्वनि के साथ: उत्, ज्वलः। मुखिया हल्की काँपती हँसी हँसता है। “दो शब्द,” वह कहता है। “यह हमेशा से दो शब्द
+        थे।” वह उन्हें अपनी पुस्तिका में लिखता है, और पहली बार, चिढ़कर, दादी से पूछता है: “और वह वाला?”'
     failure:
       en: 'The word stays whole. {{ज्ज}} from {{त् + ज}}: {{उत् + ज्वलः}}.'
       hi: 'शब्द साबुत रहता है। {{ज्ज}}, {{त् + ज}} से: {{उत् + ज्वलः}}।'
@@ -255,6 +522,48 @@ cards:
   - sa: उक् + ज्वलः
   - correct: true
     sa: उत् + ज्वलः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: To split, look for the sound that gave the join away. A long {{आ}} may be {{अ/आ + अ/आ}}; {{ए}} may be {{अ + इ}};
+        {{ओ}} may be {{अ + उ}}; {{य्}} or {{व्}} between a consonant and a vowel may be {{इ}} or {{उ}}; {{ज्ज}} may be {{त्
+        + ज}}; {{ोऽ}} may be {{अः + अ}}. Then test both halves as words.
+      hi: अलग करने के लिए वह ध्वनि खोजिए जिसने सन्धि का भेद खोला। दीर्घ {{आ}} {{अ/आ + अ/आ}} हो सकता है; {{ए}} {{अ + इ}} हो
+        सकता है; {{ओ}} {{अ + उ}} हो सकता है; व्यंजन और स्वर के बीच {{य्}} या {{व्}} {{इ}} या {{उ}} हो सकता है; {{ज्ज}} {{त्
+        + ज}} हो सकता है; {{ोऽ}} {{अः + अ}} हो सकता है। फिर दोनों भागों को शब्द की तरह परखिए।
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: अ/आ + अ/आ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: अ + इ
+    - id: i4
+      sa: ओ
+    - id: i5
+      sa: अ + उ
+    - id: i6
+      sa: य्
+    - id: i7
+      sa: व्
+    - id: i8
+      sa: इ
+    - id: i9
+      sa: उ
+    - id: i10
+      sa: ज्ज
+    - id: i11
+      sa: त् + ज
+    - id: i12
+      sa: ोऽ
+    - id: i13
+      sa: अः + अ
 - id: pn
   kind: teach
   title:
@@ -268,8 +577,40 @@ cards:
   - 6.1.87
   - 8.2.39
   body:
-    en: Pāṇini's sūtras only join; the splitting is the reader's work, done by undoing each rule. {{अकः सवर्णे दीर्घः}} tells you a long {{आ}} may hide two {{अ/आ}}. {{आद्गुणः}} tells you {{ए}} may hide {{अ + इ}}. {{झलां जशोऽन्ते}} tells you a soft stop may be a hard one.
-    hi: पाणिनि के सूत्र केवल जोड़ते हैं; विच्छेद पाठक का काम है, जो हर नियम को उलटकर किया जाता है। {{अकः सवर्णे दीर्घः}} बताता है कि दीर्घ {{आ}} दो {{अ/आ}} छिपा सकता है। {{आद्गुणः}} बताता है कि {{ए}} {{अ + इ}} छिपा सकता है। {{झलां जशोऽन्ते}} बताता है कि कोमल स्पर्श कठोर हो सकता है।
+    en: Pāṇini's sūtras only join; the splitting is the reader's work, done by undoing each rule. {{अकः सवर्णे दीर्घः}} tells
+      you a long {{आ}} may hide two {{अ/आ}}. {{आद्गुणः}} tells you {{ए}} may hide {{अ + इ}}. {{झलां जशोऽन्ते}} tells you a
+      soft stop may be a hard one.
+    hi: पाणिनि के सूत्र केवल जोड़ते हैं; विच्छेद पाठक का काम है, जो हर नियम को उलटकर किया जाता है। {{अकः सवर्णे दीर्घः}} बताता
+      है कि दीर्घ {{आ}} दो {{अ/आ}} छिपा सकता है। {{आद्गुणः}} बताता है कि {{ए}} {{अ + इ}} छिपा सकता है। {{झलां जशोऽन्ते}} बताता
+      है कि कोमल स्पर्श कठोर हो सकता है।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Pāṇini's sūtras only join; the splitting is the reader's work, done by undoing each rule. {{अकः सवर्णे दीर्घः}}
+        tells you a long {{आ}} may hide two {{अ/आ}}. {{आद्गुणः}} tells you {{ए}} may hide {{अ + इ}}. {{झलां जशोऽन्ते}} tells
+        you a soft stop may be a hard one.
+      hi: पाणिनि के सूत्र केवल जोड़ते हैं; विच्छेद पाठक का काम है, जो हर नियम को उलटकर किया जाता है। {{अकः सवर्णे दीर्घः}}
+        बताता है कि दीर्घ {{आ}} दो {{अ/आ}} छिपा सकता है। {{आद्गुणः}} बताता है कि {{ए}} {{अ + इ}} छिपा सकता है। {{झलां जशोऽन्ते}}
+        बताता है कि कोमल स्पर्श कठोर हो सकता है।
+    items:
+    - id: i0
+      sa: अकः सवर्णे दीर्घः
+    - id: i1
+      sa: आ
+    - id: i2
+      sa: अ/आ
+    - id: i3
+      sa: आद्गुणः
+    - id: i4
+      sa: ए
+    - id: i5
+      sa: अ + इ
+    - id: i6
+      sa: झलां जशोऽन्ते
 - id: sum
   kind: summary
   title:

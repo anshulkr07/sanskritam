@@ -23,7 +23,8 @@ cards:
     hi: पाँव पर एक रेखा
   depth: core
   image:
-    brief: Dādī's finger resting on one carved letter of the temple door that has a small slanted stroke at its foot; Chāyikā, a slim lavender shadow with a gold thread in her hair, standing in the open beside her and nodding.
+    brief: Dādī's finger resting on one carved letter of the temple door that has a small slanted stroke at its foot; Chāyikā,
+      a slim lavender shadow with a gold thread in her hair, standing in the open beside her and nodding.
     alt:
       en: A grandmother's finger on a carved letter with a stroke at its foot, beside a nodding shadow
       hi: पाँव पर रेखा वाले खुदे अक्षर पर दादी की उँगली
@@ -35,10 +36,13 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: cons-virama-s1
-    text_in_image: ["क्"]
+    text_in_image:
+    - क्
   narration:
-    en: Some carved letters wear a small slanted stroke at their foot. Dādī lays a finger on one. “Every consonant carries a hidden {{अ}}. This stroke tells the {{अ}} to be quiet.” Chāyikā, now standing in the open, nods.
-    hi: कुछ खुदे अक्षरों के पाँव पर एक छोटी तिरछी रेखा है। दादी एक पर उँगली रखती हैं, “हर व्यंजन में एक छिपा {{अ}} रहता है। यह रेखा उस {{अ}} को चुप करा देती है।” अब खुले में खड़ी छायिका सिर हिलाती है।
+    en: Some carved letters wear a small slanted stroke at their foot. Dādī lays a finger on one. “Every consonant carries
+      a hidden {{अ}}. This stroke tells the {{अ}} to be quiet.” Chāyikā, now standing in the open, nods.
+    hi: कुछ खुदे अक्षरों के पाँव पर एक छोटी तिरछी रेखा है। दादी एक पर उँगली रखती हैं, “हर व्यंजन में एक छिपा {{अ}} रहता है।
+      यह रेखा उस {{अ}} को चुप करा देती है।” अब खुले में खड़ी छायिका सिर हिलाती है।
 - id: t1
   kind: teach
   title:
@@ -48,8 +52,10 @@ cards:
   skills:
   - script.cons.inherent-a
   body:
-    en: 'Write {{क}} and you say ka: the consonant carries {{अ}}. To take the {{अ}} away, add the stroke {{्}}, the {{हलन्तः}} or virāma: {{क्}} is just k.'
-    hi: '{{क}} लिखिए तो बोला जाता है क + अ: व्यंजन में {{अ}} रहता है। {{अ}} हटाने के लिए रेखा {{्}} लगाइए, इसे {{हलन्तः}} या विराम कहते हैं: {{क्}} केवल ‘क्’ है।'
+    en: 'Write {{क}} and you say ka: the consonant carries {{अ}}. To take the {{अ}} away, add the stroke {{्}}, the {{हलन्तः}}
+      or virāma: {{क्}} is just k.'
+    hi: '{{क}} लिखिए तो बोला जाता है क + अ: व्यंजन में {{अ}} रहता है। {{अ}} हटाने के लिए रेखा {{्}} लगाइए, इसे {{हलन्तः}}
+      या विराम कहते हैं: {{क्}} केवल ‘क्’ है।'
   steps:
   - sa: क्
     label:
@@ -68,6 +74,28 @@ cards:
     meaning:
       en: a consonant with no vowel
       hi: बिना स्वर का व्यंजन
+  visuals:
+  - id: v-source-forms
+    kind: comparison
+    title:
+      en: Follow the forms
+      hi: रूपों पर ध्यान दें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: 'k alone: the stroke removes {{अ}}'
+        hi: 'अकेला क्: रेखा {{अ}} हटा देती है'
+    - id: i1
+      sa: क
+      meaning:
+        en: k + a = ka
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: k + ā = kā
+        hi: क् + आ = का
 - id: t2
   kind: teach
   title:
@@ -77,8 +105,10 @@ cards:
   skills:
   - script.cons.inherent-a
   body:
-    en: 'Many Sanskrit words end in a consonant with the stroke: {{जगत्}} (world), {{तत्}} (that). Words that end in plain {{अ}} are different: {{राम}} is rāma, with the final a said aloud. Hindi drops it; Sanskrit does not.'
-    hi: 'संस्कृत के कई शब्द रेखा वाले व्यंजन पर समाप्त होते हैं: {{जगत्}} (संसार), {{तत्}} (वह)। अन्त में सादा {{अ}} वाले शब्द अलग हैं: {{राम}} बोला जाता है रा-म, अन्त का अ सुनाई देता है। हिन्दी इसे छोड़ देती है; संस्कृत नहीं।'
+    en: 'Many Sanskrit words end in a consonant with the stroke: {{जगत्}} (world), {{तत्}} (that). Words that end in plain
+      {{अ}} are different: {{राम}} is rāma, with the final a said aloud. Hindi drops it; Sanskrit does not.'
+    hi: 'संस्कृत के कई शब्द रेखा वाले व्यंजन पर समाप्त होते हैं: {{जगत्}} (संसार), {{तत्}} (वह)। अन्त में सादा {{अ}} वाले
+      शब्द अलग हैं: {{राम}} बोला जाता है रा-म, अन्त का अ सुनाई देता है। हिन्दी इसे छोड़ देती है; संस्कृत नहीं।'
   examples:
   - sa: रामः
     meaning:
@@ -100,6 +130,105 @@ cards:
       linga: Napumsaka
       vibhakti: Prathama
       vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: रामः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'Rāma: say the final {{अ}}'
+        hi: 'राम: अन्त का {{अ}} बोलिए'
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Many Sanskrit words end in a consonant with the stroke: {{जगत्}} (world), {{तत्}} (that). Words that end in plain
+          {{अ}} are different: {{राम}} is rāma, with the final a said aloud. Hindi drops it; Sanskrit does not.'
+        hi: 'संस्कृत के कई शब्द रेखा वाले व्यंजन पर समाप्त होते हैं: {{जगत्}} (संसार), {{तत्}} (वह)। अन्त में सादा {{अ}} वाले
+          शब्द अलग हैं: {{राम}} बोला जाता है रा-म, अन्त का अ सुनाई देता है। हिन्दी इसे छोड़ देती है; संस्कृत नहीं।'
+    - id: i3
+      sa: रामः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'Rāma: say the final {{अ}}'
+        hi: 'राम: अन्त का {{अ}} बोलिए'
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: जगत्
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'the world: ends in {{त्}}, no vowel'
+        hi: 'संसार: {{त्}} पर समाप्त, कोई स्वर नहीं'
+      check:
+        type: subanta
+        stem: जगत्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{जगत्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{जगत्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Many Sanskrit words end in a consonant with the stroke: {{जगत्}} (world), {{तत्}} (that). Words that end in plain
+          {{अ}} are different: {{राम}} is rāma, with the final a said aloud. Hindi drops it; Sanskrit does not.'
+        hi: 'संस्कृत के कई शब्द रेखा वाले व्यंजन पर समाप्त होते हैं: {{जगत्}} (संसार), {{तत्}} (वह)। अन्त में सादा {{अ}} वाले
+          शब्द अलग हैं: {{राम}} बोला जाता है रा-म, अन्त का अ सुनाई देता है। हिन्दी इसे छोड़ देती है; संस्कृत नहीं।'
+    - id: i3
+      sa: जगत्
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'the world: ends in {{त्}}, no vowel'
+        hi: 'संसार: {{त्}} पर समाप्त, कोई स्वर नहीं'
+      check:
+        type: subanta
+        stem: जगत्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{जगत्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{जगत्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p1
   kind: practice
   depth: core
@@ -118,6 +247,28 @@ cards:
   - correct: true
     sa: क्
   - sa: का
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: 'k alone: the stroke removes {{अ}}'
+        hi: 'अकेला क्: रेखा {{अ}} हटा देती है'
+    - id: i1
+      sa: क
+      meaning:
+        en: k + a = ka
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: k + ā = kā
+        hi: क् + आ = का
 - id: p2
   kind: practice
   depth: core
@@ -138,6 +289,28 @@ cards:
   - ्
   - ा
   - ि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: 'k alone: the stroke removes {{अ}}'
+        hi: 'अकेला क्: रेखा {{अ}} हटा देती है'
+    - id: i1
+      sa: क
+      meaning:
+        en: k + a = ka
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: k + ā = kā
+        hi: क् + आ = का
 - id: p3
   kind: practice
   depth: core
@@ -170,6 +343,28 @@ cards:
       text:
         en: mā
         hi: म + आ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: 'k alone: the stroke removes {{अ}}'
+        hi: 'अकेला क्: रेखा {{अ}} हटा देती है'
+    - id: i1
+      sa: क
+      meaning:
+        en: k + a = ka
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: k + ā = kā
+        hi: क् + आ = का
 - id: e1
   kind: explore
   depth: core
@@ -211,8 +406,10 @@ cards:
   gate: true
   story:
     success:
-      en: Chāyikā hears her own name read aloud. The gold thread in her hair blazes. “छायिका!” she whispers. It is a very small, very happy sound.
-      hi: छायिका अपना नाम ज़ोर से पढ़ा जाता सुनती है। उसके बालों का सुनहरा धागा दमक उठता है। “छायिका!” वह फुसफुसाती है। बहुत छोटी, बहुत ख़ुश आवाज़।
+      en: Chāyikā hears her own name read aloud. The gold thread in her hair blazes. “छायिका!” she whispers. It is a very
+        small, very happy sound.
+      hi: छायिका अपना नाम ज़ोर से पढ़ा जाता सुनती है। उसके बालों का सुनहरा धागा दमक उठता है। “छायिका!” वह फुसफुसाती है। बहुत
+        छोटी, बहुत ख़ुश आवाज़।
     failure:
       en: 'The name will not settle. Read the pieces left to right: {{छा}} first.'
       hi: 'नाम जमता नहीं। टुकड़ों को बाएँ से दाएँ पढ़िए: पहले {{छा}}।'
@@ -220,6 +417,28 @@ cards:
   - छा
   - यि
   - का
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: 'k alone: the stroke removes {{अ}}'
+        hi: 'अकेला क्: रेखा {{अ}} हटा देती है'
+    - id: i1
+      sa: क
+      meaning:
+        en: k + a = ka
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: k + ā = kā
+        hi: क् + आ = का
 - id: p5
   kind: practice
   depth: core
@@ -241,6 +460,28 @@ cards:
     text:
       en: '{{म}} with its {{अ}}, aloud'
       hi: अपने {{अ}} के साथ, सुनाई देता हुआ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: 'k alone: the stroke removes {{अ}}'
+        hi: 'अकेला क्: रेखा {{अ}} हटा देती है'
+    - id: i1
+      sa: क
+      meaning:
+        en: k + a = ka
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: k + ā = kā
+        hi: क् + आ = का
 - id: sum
   kind: summary
   title:

@@ -28,6 +28,151 @@ cards:
   - sa: ग्रामम्
   - correct: true
     sa: ग्रामात्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: वृक्षात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tree
+        hi: पेड़ से
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: पत्रम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaf
+        hi: पत्ता
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: पतति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: falls
+        hi: गिरता है
+      check:
+        type: tinanta
+        dhatu: पत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The point something moves away from takes the fifth case, {{पञ्चमी}}, the source ({{अपादानम्}}): {{वृक्षात् पत्रं
+          पतति}} (a leaf falls from the tree), {{ग्रामात् आगच्छति}} (he comes from the village).'
+        hi: 'जहाँ से कोई चीज़ अलग होती है वह पञ्चमी में आता है, अपादान: {{वृक्षात् पत्रं पतति}} (पेड़ से पत्ता गिरता है),
+          {{ग्रामात् आगच्छति}} (वह गाँव से आता है)।'
+    - id: i6
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -60,6 +205,151 @@ cards:
       text:
         en: from the river
         hi: नदी से
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: वृक्षात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tree
+        hi: पेड़ से
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: पत्रम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaf
+        hi: पत्ता
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: पतति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: falls
+        hi: गिरता है
+      check:
+        type: tinanta
+        dhatu: पत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The point something moves away from takes the fifth case, {{पञ्चमी}}, the source ({{अपादानम्}}): {{वृक्षात् पत्रं
+          पतति}} (a leaf falls from the tree), {{ग्रामात् आगच्छति}} (he comes from the village).'
+        hi: 'जहाँ से कोई चीज़ अलग होती है वह पञ्चमी में आता है, अपादान: {{वृक्षात् पत्रं पतति}} (पेड़ से पत्ता गिरता है),
+          {{ग्रामात् आगच्छति}} (वह गाँव से आता है)।'
+    - id: i6
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -77,6 +367,151 @@ cards:
   - वृक्षात्
   - पत्रम्
   - पतति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: वृक्षात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tree
+        hi: पेड़ से
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: पत्रम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaf
+        hi: पत्ता
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: पतति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: falls
+        hi: गिरता है
+      check:
+        type: tinanta
+        dhatu: पत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The point something moves away from takes the fifth case, {{पञ्चमी}}, the source ({{अपादानम्}}): {{वृक्षात् पत्रं
+          पतति}} (a leaf falls from the tree), {{ग्रामात् आगच्छति}} (he comes from the village).'
+        hi: 'जहाँ से कोई चीज़ अलग होती है वह पञ्चमी में आता है, अपादान: {{वृक्षात् पत्रं पतति}} (पेड़ से पत्ता गिरता है),
+          {{ग्रामात् आगच्छति}} (वह गाँव से आता है)।'
+    - id: i6
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -95,6 +530,114 @@ cards:
   - sa: सर्पः
   - correct: true
     sa: सर्पात्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: व्याघ्रात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tiger
+        hi: बाघ से
+      check:
+        type: subanta
+        stem: व्याघ्र
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{व्याघ्र}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{व्याघ्र}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: बिभेति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fears
+        hi: डरता है
+      check:
+        type: tinanta
+        dhatu: भी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of fear and protection, the thing feared or guarded against stands in the fifth case: {{व्याघ्रात्
+          बिभेति}} (he fears the tiger), {{बालकं सर्पात् रक्षति}} (he protects the boy from the snake).'
+        hi: 'भय और रक्षा की क्रियाओं के साथ जिससे भय हो या रक्षा की जाए वह पञ्चमी में आता है: {{व्याघ्रात् बिभेति}} (वह बाघ
+          से डरता है), {{बालकं सर्पात् रक्षति}} (वह बालक को साँप से बचाता है)।'
+    - id: i5
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p5
   kind: practice
   depth: core
@@ -128,6 +671,114 @@ cards:
       text:
         en: comes from the house
         hi: घर से आता है
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: व्याघ्रात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tiger
+        hi: बाघ से
+      check:
+        type: subanta
+        stem: व्याघ्र
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{व्याघ्र}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{व्याघ्र}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: बिभेति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fears
+        hi: डरता है
+      check:
+        type: tinanta
+        dhatu: भी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of fear and protection, the thing feared or guarded against stands in the fifth case: {{व्याघ्रात्
+          बिभेति}} (he fears the tiger), {{बालकं सर्पात् रक्षति}} (he protects the boy from the snake).'
+        hi: 'भय और रक्षा की क्रियाओं के साथ जिससे भय हो या रक्षा की जाए वह पञ्चमी में आता है: {{व्याघ्रात् बिभेति}} (वह बाघ
+          से डरता है), {{बालकं सर्पात् रक्षति}} (वह बालक को साँप से बचाता है)।'
+    - id: i5
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p6
   kind: practice
   depth: core
@@ -149,6 +800,114 @@ cards:
     text:
       en: Śyāma
       hi: श्याम
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: व्याघ्रात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tiger
+        hi: बाघ से
+      check:
+        type: subanta
+        stem: व्याघ्र
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{व्याघ्र}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{व्याघ्र}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: बिभेति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fears
+        hi: डरता है
+      check:
+        type: tinanta
+        dhatu: भी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of fear and protection, the thing feared or guarded against stands in the fifth case: {{व्याघ्रात्
+          बिभेति}} (he fears the tiger), {{बालकं सर्पात् रक्षति}} (he protects the boy from the snake).'
+        hi: 'भय और रक्षा की क्रियाओं के साथ जिससे भय हो या रक्षा की जाए वह पञ्चमी में आता है: {{व्याघ्रात् बिभेति}} (वह बाघ
+          से डरता है), {{बालकं सर्पात् रक्षति}} (वह बालक को साँप से बचाता है)।'
+    - id: i5
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p7
   kind: practice
   depth: core
@@ -167,6 +926,151 @@ cards:
     params:
       sentence: बालकः ग्रामात् आगच्छति
     seed: 6
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: वृक्षात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tree
+        hi: पेड़ से
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: पत्रम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaf
+        hi: पत्ता
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: पतति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: falls
+        hi: गिरता है
+      check:
+        type: tinanta
+        dhatu: पत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The point something moves away from takes the fifth case, {{पञ्चमी}}, the source ({{अपादानम्}}): {{वृक्षात् पत्रं
+          पतति}} (a leaf falls from the tree), {{ग्रामात् आगच्छति}} (he comes from the village).'
+        hi: 'जहाँ से कोई चीज़ अलग होती है वह पञ्चमी में आता है, अपादान: {{वृक्षात् पत्रं पतति}} (पेड़ से पत्ता गिरता है),
+          {{ग्रामात् आगच्छति}} (वह गाँव से आता है)।'
+    - id: i6
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p8
   kind: practice
   depth: core
@@ -184,8 +1088,12 @@ cards:
   gate: true
   story:
     success:
-      en: '“अहं झञ्झावातात् बिभेमि,” you say. The wind spirit, hearing a name for what you fear, stops being the storm and becomes a grey-green breeze, laughing. “ग्रामात् ग्रामं गच्छामि,” he sings, spinning away over the thatch, and ends on a word as soft as a leaf falling: “आचार्यस्य गृहम् अस्ति.”'
-      hi: '“अहं झञ्झावातात् बिभेमि,” आप कहते हैं। पवन-भूत, जिससे आप डरते हैं उसका नाम सुनकर, आँधी होना छोड़ देता है और धूसर-हरा समीर बनकर हँसता है। “ग्रामात् ग्रामं गच्छामि,” वह गाता है, छप्परों के ऊपर घूमता हुआ, और गिरते पत्ते जैसे कोमल शब्द पर रुकता है: “आचार्यस्य गृहम् अस्ति।”'
+      en: '“अहं झञ्झावातात् बिभेमि,” you say. The wind spirit, hearing a name for what you fear, stops being the storm and
+        becomes a grey-green breeze, laughing. “ग्रामात् ग्रामं गच्छामि,” he sings, spinning away over the thatch, and ends
+        on a word as soft as a leaf falling: “आचार्यस्य गृहम् अस्ति.”'
+      hi: '“अहं झञ्झावातात् बिभेमि,” आप कहते हैं। पवन-भूत, जिससे आप डरते हैं उसका नाम सुनकर, आँधी होना छोड़ देता है और धूसर-हरा
+        समीर बनकर हँसता है। “ग्रामात् ग्रामं गच्छामि,” वह गाता है, छप्परों के ऊपर घूमता हुआ, और गिरते पत्ते जैसे कोमल शब्द
+        पर रुकता है: “आचार्यस्य गृहम् अस्ति।”'
     failure:
       en: The wind keeps howling. What you fear, {{झञ्झावातात्}}, takes the fifth case.
       hi: पवन गरजता रहता है। जिससे डर है, {{झञ्झावातात्}}, वह पञ्चमी लेता है।
@@ -193,3 +1101,111 @@ cards:
   - अहम्
   - झञ्झावातात्
   - बिभेमि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: व्याघ्रात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tiger
+        hi: बाघ से
+      check:
+        type: subanta
+        stem: व्याघ्र
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{व्याघ्र}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{व्याघ्र}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: बिभेति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fears
+        hi: डरता है
+      check:
+        type: tinanta
+        dhatu: भी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of fear and protection, the thing feared or guarded against stands in the fifth case: {{व्याघ्रात्
+          बिभेति}} (he fears the tiger), {{बालकं सर्पात् रक्षति}} (he protects the boy from the snake).'
+        hi: 'भय और रक्षा की क्रियाओं के साथ जिससे भय हो या रक्षा की जाए वह पञ्चमी में आता है: {{व्याघ्रात् बिभेति}} (वह बाघ
+          से डरता है), {{बालकं सर्पात् रक्षति}} (वह बालक को साँप से बचाता है)।'
+    - id: i5
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka

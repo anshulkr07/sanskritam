@@ -28,6 +28,56 @@ cards:
   - correct: true
     sa: बकौ
   - sa: बकाः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बकः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: one heron
+        hi: एक बगुला
+      check:
+        type: subanta
+        stem: बक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Sanskrit counts one, two and many. Exactly two has its own ending, the dual ({{द्विवचनम्}}). A masculine word
+          in -अ ends in {{औ}}: {{बकः}} (one heron), {{बकौ}} (two herons).'
+        hi: 'संस्कृत एक, दो और अनेक गिनती है। ठीक दो का अपना प्रत्यय है, द्विवचन। अकारान्त पुंलिंग शब्द {{औ}} पर समाप्त होता
+          है: {{बकः}} (एक बगुला), {{बकौ}} (दो बगुले)।'
+    - id: i3
+      sa: बकः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: one heron
+        hi: एक बगुला
+      check:
+        type: subanta
+        stem: बक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p2
   kind: practice
   depth: core
@@ -60,6 +110,56 @@ cards:
       text:
         en: two boys
         hi: दो बालक
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बकः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: one heron
+        hi: एक बगुला
+      check:
+        type: subanta
+        stem: बक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Sanskrit counts one, two and many. Exactly two has its own ending, the dual ({{द्विवचनम्}}). A masculine word
+          in -अ ends in {{औ}}: {{बकः}} (one heron), {{बकौ}} (two herons).'
+        hi: 'संस्कृत एक, दो और अनेक गिनती है। ठीक दो का अपना प्रत्यय है, द्विवचन। अकारान्त पुंलिंग शब्द {{औ}} पर समाप्त होता
+          है: {{बकः}} (एक बगुला), {{बकौ}} (दो बगुले)।'
+    - id: i3
+      sa: बकः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: one heron
+        hi: एक बगुला
+      check:
+        type: subanta
+        stem: बक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p3
   kind: practice
   depth: core
@@ -78,6 +178,56 @@ cards:
   - sa: नौके
   - correct: true
     sa: नौकाः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकाः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: boys
+        hi: बालक (अनेक)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Three or more things take the plural ({{बहुवचनम्}}). A masculine or feminine word in -अ/-आ ends in {{आः}}: {{बालकाः}}
+          (boys), {{नौकाः}} (boats). A neuter word ends in {{आनि}}: {{फलानि}} (fruits).'
+        hi: 'तीन या अधिक वस्तुएँ बहुवचन लेती हैं। -अ/-आ वाले पुंलिंग और स्त्रीलिंग शब्द {{आः}} पर समाप्त होते हैं: {{बालकाः}}
+          (बालक), {{नौकाः}} (नावें)। नपुंसक शब्द {{आनि}} पर: {{फलानि}} (फल)।'
+    - id: i3
+      sa: बालकाः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: boys
+        hi: बालक (अनेक)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
 - id: p4
   kind: practice
   depth: core
@@ -96,6 +246,56 @@ cards:
   - sa: फले
   - correct: true
     sa: फलानि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकाः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: boys
+        hi: बालक (अनेक)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Three or more things take the plural ({{बहुवचनम्}}). A masculine or feminine word in -अ/-आ ends in {{आः}}: {{बालकाः}}
+          (boys), {{नौकाः}} (boats). A neuter word ends in {{आनि}}: {{फलानि}} (fruits).'
+        hi: 'तीन या अधिक वस्तुएँ बहुवचन लेती हैं। -अ/-आ वाले पुंलिंग और स्त्रीलिंग शब्द {{आः}} पर समाप्त होते हैं: {{बालकाः}}
+          (बालक), {{नौकाः}} (नावें)। नपुंसक शब्द {{आनि}} पर: {{फलानि}} (फल)।'
+    - id: i3
+      sa: बालकाः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: boys
+        hi: बालक (अनेक)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
 - id: p5
   kind: practice
   depth: core
@@ -114,6 +314,28 @@ cards:
   - correct: true
     sa: पठतः
   - sa: पठन्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पठति
+      meaning:
+        en: one reads
+        hi: एक पढ़ता है
+    - id: i1
+      sa: पठतः
+      meaning:
+        en: two read
+        hi: दो पढ़ते हैं
+    - id: i2
+      sa: पठन्ति
+      meaning:
+        en: many read
+        hi: अनेक पढ़ते हैं
 - id: p6
   kind: practice
   depth: core
@@ -134,6 +356,28 @@ cards:
   - न्ति
   - ति
   - तः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पठति
+      meaning:
+        en: one reads
+        hi: एक पढ़ता है
+    - id: i1
+      sa: पठतः
+      meaning:
+        en: two read
+        hi: दो पढ़ते हैं
+    - id: i2
+      sa: पठन्ति
+      meaning:
+        en: many read
+        hi: अनेक पढ़ते हैं
 - id: p7
   kind: practice
   depth: core
@@ -152,6 +396,114 @@ cards:
   - correct: true
     sa: नौकाः सन्ति
   - sa: नौकाः स्तः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The verb agrees with its doer in number: one doer, one-ending; two, two-ending; many, many-ending. {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}.'
+        hi: 'क्रिया अपने कर्ता से संख्या में मेल खाती है: एक कर्ता, एक का प्रत्यय; दो, दो का; अनेक, अनेक का। {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}।'
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p8
   kind: practice
   depth: core
@@ -169,11 +521,63 @@ cards:
   gate: true
   story:
     success:
-      en: '“बकौ तिष्ठतः!” The two herons lift together and become two white breaths of light: “द्वौ बकौ मुक्तौ।” They point toward the boats: “नौकायाम् नाविकः अस्ति।”'
-      hi: '“बकौ तिष्ठतः!” दोनों बगुले साथ उठते हैं और प्रकाश की दो सफ़ेद साँसें बन जाते हैं: “द्वौ बकौ मुक्तौ।” वे नावों की ओर इशारा करते हैं: “नौकायाम् नाविकः अस्ति।”'
+      en: '“बकौ तिष्ठतः!” The two herons lift together and become two white breaths of light: “द्वौ बकौ मुक्तौ।” They point
+        toward the boats: “नौकायाम् नाविकः अस्ति।”'
+      hi: '“बकौ तिष्ठतः!” दोनों बगुले साथ उठते हैं और प्रकाश की दो सफ़ेद साँसें बन जाते हैं: “द्वौ बकौ मुक्तौ।” वे नावों की
+        ओर इशारा करते हैं: “नौकायाम् नाविकः अस्ति।”'
     failure:
       en: The herons wait. Dual doer, dual verb.
       hi: बगुले प्रतीक्षा करते हैं। द्विवचन कर्ता, द्विवचन क्रिया।
   tokens:
   - बकौ
   - तिष्ठतः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बकः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: one heron
+        hi: एक बगुला
+      check:
+        type: subanta
+        stem: बक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Sanskrit counts one, two and many. Exactly two has its own ending, the dual ({{द्विवचनम्}}). A masculine word
+          in -अ ends in {{औ}}: {{बकः}} (one heron), {{बकौ}} (two herons).'
+        hi: 'संस्कृत एक, दो और अनेक गिनती है। ठीक दो का अपना प्रत्यय है, द्विवचन। अकारान्त पुंलिंग शब्द {{औ}} पर समाप्त होता
+          है: {{बकः}} (एक बगुला), {{बकौ}} (दो बगुले)।'
+    - id: i3
+      sa: बकः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: one heron
+        hi: एक बगुला
+      check:
+        type: subanta
+        stem: बक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'

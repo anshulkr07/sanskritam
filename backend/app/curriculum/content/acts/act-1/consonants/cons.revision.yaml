@@ -84,6 +84,38 @@ cards:
         hi: 'गंगा नदी: शब्द के भीतर {{ङ}}'
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: गङ्गा
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'the river Gaṅgā: {{ङ}} inside the word'
+          hi: 'गंगा नदी: शब्द के भीतर {{ङ}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: The nasals {{ङ}} and {{ञ}} never begin a word, and {{ण}} almost never does; they stand inside words, after a
+            vowel.
+          hi: नासिक्य {{ङ}} और {{ञ}} किसी शब्द के आरम्भ में नहीं आते, {{ण}} भी लगभग नहीं; ये शब्द के भीतर, स्वर के बाद आते
+            हैं।
+      - id: i3
+        sa: गङ्गा
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'the river Gaṅgā: {{ङ}} inside the word'
+          hi: 'गंगा नदी: शब्द के भीतर {{ङ}}'
 - id: exceptions
   kind: revision
   title:
@@ -95,8 +127,10 @@ cards:
   - skill: script.cons.grid
     formula: ड → ळ
     rule:
-      en: In the Vedas a retroflex {{ळ}} stands where classical Sanskrit has {{ड}} between vowels; classical Sanskrit does not use it.
-      hi: वेदों में दो स्वरों के बीच जहाँ लौकिक संस्कृत में {{ड}} होता है, वहाँ मूर्धन्य {{ळ}} आता है; लौकिक संस्कृत इसे नहीं बरतती।
+      en: In the Vedas a retroflex {{ळ}} stands where classical Sanskrit has {{ड}} between vowels; classical Sanskrit does
+        not use it.
+      hi: वेदों में दो स्वरों के बीच जहाँ लौकिक संस्कृत में {{ड}} होता है, वहाँ मूर्धन्य {{ळ}} आता है; लौकिक संस्कृत इसे नहीं
+        बरतती।
     example:
       sa: ईळे
       meaning:
@@ -105,10 +139,43 @@ cards:
       source: Ṛgveda 1.1.1
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: ईळे
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: '“I praise”: {{ळ}} in the first hymn of the Ṛgveda'
+          hi: '‘मैं स्तुति करता हूँ’: ऋग्वेद के पहले सूक्त में {{ळ}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: In the Vedas a retroflex {{ळ}} stands where classical Sanskrit has {{ड}} between vowels; classical Sanskrit
+            does not use it.
+          hi: वेदों में दो स्वरों के बीच जहाँ लौकिक संस्कृत में {{ड}} होता है, वहाँ मूर्धन्य {{ळ}} आता है; लौकिक संस्कृत इसे
+            नहीं बरतती।
+      - id: i3
+        sa: ईळे
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: '“I praise”: {{ळ}} in the first hymn of the Ṛgveda'
+          hi: '‘मैं स्तुति करता हूँ’: ऋग्वेद के पहले सूक्त में {{ळ}}'
   - skill: script.cons.voice
     rule:
       en: Hindi's dotted {{ख़}} {{ग़}} {{ज़}} are not Sanskrit letters. Sanskrit {{ख}} is {{क}} with a puff, never a rasp.
-      hi: हिन्दी के बिन्दु वाले {{ख़}} {{ग़}} {{ज़}} संस्कृत के अक्षर नहीं हैं। संस्कृत का {{ख}} झोंके वाला {{क}} है, खुरदरी ध्वनि नहीं।
+      hi: हिन्दी के बिन्दु वाले {{ख़}} {{ग़}} {{ज़}} संस्कृत के अक्षर नहीं हैं। संस्कृत का {{ख}} झोंके वाला {{क}} है, खुरदरी
+        ध्वनि नहीं।
     tag: good
     taught_in: cons.breath#t2
 - id: mistakes

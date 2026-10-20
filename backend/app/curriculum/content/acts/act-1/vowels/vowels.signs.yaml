@@ -1,175 +1,542 @@
 id: vowels.signs
 template: scene
-title: {en: "The second line", hi: "दूसरी पंक्ति"}
-title_sa: "स्वरचिह्नानि"
+title:
+  en: The second line
+  hi: दूसरी पंक्ति
+title_sa: स्वरचिह्नानि
 minutes: 7
-teaches: [script.matra]
-needs: [script.vowel.short, script.vowel.long, script.vowel.compound]
+teaches:
+- script.matra
+needs:
+- script.vowel.short
+- script.vowel.long
+- script.vowel.compound
 review: scholar_ok
 sources:
-  - title: "Lesson text and story"
-    licence: "original"
+- title: Lesson text and story
+  licence: original
 cards:
-  - id: s1
-    kind: story
-    title: {en: "Letters wearing marks", hi: "चिह्न पहने अक्षर"}
-    image:
-      id: vowels-signs-second-line
-      text_in_image: ["अ इ उ", "ऋ ऌ", "ए ओ", "ऐ औ", "का कि की कु कू कृ के कै को कौ"]
-      brief: "The glowing palm leaf shows its established first line in four clear vowel groups, and beneath it a second clear line of Devanagari syllables with vowel signs. The marks above, below, before and after the consonants are legible and correctly placed. Dhūmaka points at the second line; Dādī leans in, spectacles on."
-      alt: {en: "The glowing leaf shows vowel groups and a clear line of syllables with vowel signs, while the little ghost points and the grandmother looks on", hi: "चमकते पत्र पर स्वर-समूह और मात्राओं वाले स्पष्ट अक्षर हैं; नन्हा भूत संकेत करता है और दादी देखती हैं।"}
-      ratio: "4:3"
-      cast: [dhumaka, dadi]
-      place: granthalaya
-    narration:
-      en: "As the first line glows, a second line wakes beneath it. Its letters wear small marks: above, below, before, after. Dādī nods slowly. “Inside a word, a vowel does not stand alone. It rides on the letter before it, as a sign.” Dhūmaka points at one word and trembles."
-      hi: "जैसे ही पहली पंक्ति चमकती है, उसके नीचे एक दूसरी पंक्ति जाग उठती है। उसके अक्षरों पर छोटे-छोटे चिह्न हैं: ऊपर, नीचे, आगे, पीछे। दादी धीरे से सिर हिलाती हैं, “शब्द के भीतर स्वर अकेला नहीं रहता। वह अपने से पहले वाले अक्षर पर मात्रा बनकर बैठता है।” धूमक एक शब्द की ओर इशारा करता है और काँपने लगता है।"
-
-  - id: t1
-    kind: teach
-    title: {en: "A letter always carries अ", hi: "हर अक्षर में अ छिपा है"}
-    skills: [script.matra]
-    body:
-      en: "Take the consonant {{क}}. It is never bare: it always carries {{अ}}, so {{क}} is {{क्}} + {{अ}}, ka. To give it another vowel, add that vowel's sign. The sign replaces the {{अ}}: {{क्}} + {{आ}} = {{का}}, {{क्}} + {{इ}} = {{कि}}."
-      hi: "व्यंजन {{क}} लीजिए। यह कभी अकेला नहीं होता: इसमें सदा {{अ}} रहता है, इसलिए {{क}} को क् + अ पढ़ते हैं। इसे कोई दूसरा स्वर देना हो, तो उस स्वर की मात्रा लगाइए। मात्रा {{अ}} की जगह ले लेती है: {{का}}, {{कि}}।"
-    steps:
-      - sa: "क्"
-        label: {en: "{{क्}} alone, with no vowel (rare)", hi: "अकेला क्, बिना स्वर (कम दिखता है)"}
-      - sa: "क"
-        label: {en: "{{क्}} + {{अ}} = {{क}}, ka", hi: "क् + अ = क"}
-      - sa: "का"
-        label: {en: "{{क्}} + {{आ}} = {{का}}, kā", hi: "क् + आ = का"}
-
-  - id: t2
-    kind: table
-    title: {en: "Every vowel on {{क}}", hi: "{{क}} पर हर स्वर"}
-    skills: [script.matra]
-    caption: {en: "The vowel, its sign, and the sign on {{क}}", hi: "स्वर, उसकी मात्रा, और {{क}} पर वह मात्रा"}
-    columns:
-      - {en: "Vowel", hi: "स्वर"}
-      - {en: "Sign", hi: "मात्रा"}
-      - {en: "On {{क}}", hi: "{{क}} पर"}
-      - {en: "Where it sits", hi: "कहाँ लगती है"}
-    rows:
-      - [{sa: "अ"}, {text: {en: "no sign", hi: "मात्रा नहीं"}}, {sa: "क"}, {text: {en: "nothing is added", hi: "कुछ नहीं जुड़ता"}}]
-      - [{sa: "आ"}, {sa: "ा"}, {sa: "का"}, {text: {en: "after", hi: "बाद में"}}]
-      - [{sa: "इ"}, {sa: "ि"}, {sa: "कि", highlight: true}, {text: {en: "before, but said after", hi: "पहले, पर बोली बाद में"}, highlight: true}]
-      - [{sa: "ई"}, {sa: "ी"}, {sa: "की"}, {text: {en: "after", hi: "बाद में"}}]
-      - [{sa: "उ"}, {sa: "ु"}, {sa: "कु"}, {text: {en: "below", hi: "नीचे"}}]
-      - [{sa: "ऊ"}, {sa: "ू"}, {sa: "कू"}, {text: {en: "below", hi: "नीचे"}}]
-      - [{sa: "ऋ"}, {sa: "ृ"}, {sa: "कृ"}, {text: {en: "below", hi: "नीचे"}}]
-      - [{sa: "ए"}, {sa: "े"}, {sa: "के"}, {text: {en: "above", hi: "ऊपर"}}]
-      - [{sa: "ऐ"}, {sa: "ै"}, {sa: "कै"}, {text: {en: "above", hi: "ऊपर"}}]
-      - [{sa: "ओ"}, {sa: "ो"}, {sa: "को"}, {text: {en: "after, with a stroke above", hi: "बाद में, ऊपर रेखा के साथ"}}]
-      - [{sa: "औ"}, {sa: "ौ"}, {sa: "कौ"}, {text: {en: "after, with a stroke above", hi: "बाद में, ऊपर रेखा के साथ"}}]
-    note: {en: "{{ॠ}} and {{ऌ}} have signs too ({{कॄ}}, {{कॢ}}), but you will almost never meet them.", hi: "{{ॠ}} और {{ऌ}} की भी मात्राएँ हैं ({{कॄ}}, {{कॢ}}), पर ये लगभग कभी नहीं मिलतीं।"}
-
-  - id: e1
-    kind: explore
-    title: {en: "Build on {{क}}", hi: "{{क}} पर बनाइए"}
-    skills: [script.matra]
-    widget: letter_builder
-    prompt: {en: "Pick a sign, then tap {{क}} to attach it. Read what you made, and try to make every target.", hi: "कोई मात्रा चुनिए, फिर {{क}} को छूकर उसे जोड़िए। जो बना उसे पढ़िए और हर लक्ष्य बनाइए।"}
-    params:
-      bases: ["क"]
-      signs: ["ा", "ि", "ी", "ु", "ू", "ृ", "े", "ै", "ो", "ौ"]
-      targets: ["कि", "कू", "के", "कौ"]
-
-  - id: p1
-    kind: practice
-    mode: choice
-    skills: [script.matra]
-    roman: after
-    prompt: {en: "Which one is {{क्}} + {{इ}}?", hi: "इनमें से {{क्}} + {{इ}} कौन-सा है?"}
-    options:
-      - sa: "कि"
-        correct: true
-      - sa: "की"
-        why: {en: "{{की}} has the long {{ई}} sign.", hi: "{{की}} में दीर्घ ई की मात्रा है।"}
-      - sa: "के"
-        why: {en: "{{के}}: the sign above is {{ए}}.", hi: "{{के}} में ऊपर {{ए}} की मात्रा है।"}
-    explain: {en: "{{ि}} is written before the letter but said after it: {{कि}} is {{क्}} + {{इ}}.", hi: "{{ि}} अक्षर से पहले लिखी जाती है, पर बोली बाद में जाती है: {{कि}} = क् + इ।"}
-
-  - id: t3
-    kind: teach
-    title: {en: "Written first, said last", hi: "पहले लिखी, बाद में बोली"}
-    skills: [script.matra]
-    body:
-      en: "One sign breaks the left-to-right rule. {{ि}} is written before its letter but said after it: in {{कि}} you see the sign first, yet you say {{क्}}, then {{इ}}. Its long twin {{ी}} comes after, as you would expect. In {{दिनम्}} the sign stands before {{द}}: di-nam."
-      hi: "एक मात्रा बाएँ-से-दाएँ के नियम को तोड़ती है। {{ि}} अपने अक्षर से पहले लिखी जाती है, पर बोली बाद में जाती है: {{कि}} में मात्रा पहले दिखती है, फिर भी पहले क् बोलते हैं, फिर इ। उसकी दीर्घ जुड़वाँ {{ी}} सीधी चलती है: अक्षर के बाद। {{दिनम्}} में मात्रा {{द}} से पहले खड़ी है: दि-नम्।"
-    examples:
-      - sa: "दिनम्"
-        meaning: {en: "a day: di-nam", hi: "दिन: दि-नम्"}
-        check: {type: subanta, stem: "दिन", linga: Napumsaka, vibhakti: Prathama, vacana: Eka}
-
-  - id: p2
-    kind: practice
-    mode: type
-    skills: [script.matra]
-    roman: after
-    prompt: {en: "Build {{क्}} + {{ऊ}}: {{क}} with the long {{ऊ}} sign.", hi: "बनाइए: {{क}} पर दीर्घ ऊ की मात्रा।"}
-    answers: ["कू"]
-    tiles: ["क", "ू", "ु", "ृ"]
-    explain: {en: "{{ू}} sits below the letter: {{कू}}. Look closely: {{ु}} and {{ू}} curl in opposite directions.", hi: "{{ू}} अक्षर के नीचे लगती है: {{कू}}। ध्यान से देखिए: {{ु}} और {{ू}} उलटी दिशाओं में मुड़ती हैं।"}
-
-  - id: p3
-    kind: practice
-    mode: match
-    skills: [script.matra]
-    roman: after
-    prompt: {en: "Match each sign with its vowel.", hi: "हर मात्रा को उसके स्वर से मिलाइए।"}
-    pairs:
-      - left: {sa: "ा"}
-        right: {sa: "आ"}
-      - left: {sa: "ि"}
-        right: {sa: "इ"}
-      - left: {sa: "ु"}
-        right: {sa: "उ"}
-      - left: {sa: "े"}
-        right: {sa: "ए"}
-      - left: {sa: "ौ"}
-        right: {sa: "औ"}
-    explain: {en: "Each sign is a short form of its vowel; only {{अ}} has none.", hi: "हर मात्रा अपने स्वर का छोटा रूप है; केवल {{अ}} की कोई मात्रा नहीं।"}
-
-  - id: e2
-    kind: explore
-    title: {en: "Find the long ī", hi: "दीर्घ ई खोजिए"}
-    skills: [script.matra, script.vowel.long]
-    widget: mark_words
-    roman: after
-    prompt: {en: "Tap every word with the long ī sign {{ी}}.", hi: "हर उस शब्द को छुइए जिसमें दीर्घ ई की मात्रा {{ी}} है।"}
-    params:
-      passage: ["दिनम्", "दीनः", "दीपः", "कुलम्", "नदी", "कूलम्"]
-      targets: ["दीनः", "दीपः", "नदी"]
-
-  - id: p4
-    kind: practice
-    mode: choice
-    title: {en: "A name on the leaf", hi: "पत्र पर एक नाम"}
-    skills: [script.matra]
-    roman: after
-    gate: true
-    prompt: {en: "Dhūmaka points at a word with one sign burnt away. It is his own name, with a long {{ऊ}} on its first letter. Which is it?", hi: "धूमक जिस शब्द की ओर इशारा कर रहा है, उसकी एक मात्रा जल गई है। वह उसका अपना नाम है, जिसके पहले अक्षर पर दीर्घ ऊ है। सही रूप कौन-सा है?"}
-    options:
-      - sa: "धूमकः"
-        correct: true
-      - sa: "धुमकः"
-        why: {en: "That is the short {{उ}} sign. His name has the long {{ऊ}}.", hi: "इसमें ह्रस्व उ है। उसके नाम में दीर्घ ऊ है।"}
-      - sa: "धीमकः"
-        why: {en: "That sign is {{ई}}. His name has {{ऊ}}.", hi: "यह ई की मात्रा है। उसके नाम में ऊ है।"}
-    explain: {en: "{{धूमकः}}: {{ू}} under {{ध}} makes {{धू}}. {{धूमः}} is smoke; {{धूमकः}}, little smoke.", hi: "{{धूमकः}}: {{ध}} के नीचे {{ू}} से ‘धू’ बनता है। {{धूमः}} यानी धुआँ; {{धूमकः}}, नन्हा धुआँ।"}
-    story:
-      success: {en: "धूमकः glows on the leaf. The little ghost stares at his own name, and his smoke turns silver.", hi: "पत्र पर धूमकः चमक उठता है। नन्हा भूत अपना ही नाम देखता रह जाता है, और उसका धुआँ चाँदी-सा हो जाता है।"}
-      failure: {en: "The word flickers out. Dhūmaka sighs a little puff. Look under the first letter: the long {{ऊ}}.", hi: "शब्द टिमटिमाकर बुझ जाता है। धूमक धुएँ का एक छोटा-सा कश छोड़ता है। पहले अक्षर के नीचे देखिए: दीर्घ ऊ।"}
-
-  - id: sum
-    kind: summary
-    title: {en: "Vowel signs", hi: "मात्राएँ"}
-    points:
-      - sa: "क"
-        text: {en: "A consonant carries {{अ}}: {{क}} is ka.", hi: "व्यंजन में {{अ}} रहता है: {{क}} = क् + अ।"}
-      - sa: "का कि की कु कू कृ के कै को कौ"
-        text: {en: "Each vowel has its sign; {{अ}} has none.", hi: "हर स्वर की मात्रा है; {{अ}} की नहीं।"}
-      - sa: "ि"
-        text: {en: "Written before the letter, said after it.", hi: "अक्षर से पहले लिखी, बाद में बोली।"}
-      - text: {en: "{{ु}} {{ू}} {{ृ}} sit below; {{े}} {{ै}} above; {{ा}} {{ी}} {{ो}} {{ौ}} after.", hi: "{{ु}} {{ू}} {{ृ}} नीचे; {{े}} {{ै}} ऊपर; {{ा}} {{ी}} {{ो}} {{ौ}} बाद में।"}
+- id: s1
+  kind: story
+  title:
+    en: Letters wearing marks
+    hi: चिह्न पहने अक्षर
+  image:
+    id: vowels-signs-second-line
+    text_in_image:
+    - अ इ उ
+    - ऋ ऌ
+    - ए ओ
+    - ऐ औ
+    - का कि की कु कू कृ के कै को कौ
+    brief: The glowing palm leaf shows its established first line in four clear vowel groups, and beneath it a second clear
+      line of Devanagari syllables with vowel signs. The marks above, below, before and after the consonants are legible and
+      correctly placed. Dhūmaka points at the second line; Dādī leans in, spectacles on.
+    alt:
+      en: The glowing leaf shows vowel groups and a clear line of syllables with vowel signs, while the little ghost points
+        and the grandmother looks on
+      hi: चमकते पत्र पर स्वर-समूह और मात्राओं वाले स्पष्ट अक्षर हैं; नन्हा भूत संकेत करता है और दादी देखती हैं।
+    ratio: '4:3'
+    cast:
+    - dhumaka
+    - dadi
+    place: granthalaya
+  narration:
+    en: 'As the first line glows, a second line wakes beneath it. Its letters wear small marks: above, below, before, after.
+      Dādī nods slowly. “Inside a word, a vowel does not stand alone. It rides on the letter before it, as a sign.” Dhūmaka
+      points at one word and trembles.'
+    hi: 'जैसे ही पहली पंक्ति चमकती है, उसके नीचे एक दूसरी पंक्ति जाग उठती है। उसके अक्षरों पर छोटे-छोटे चिह्न हैं: ऊपर, नीचे,
+      आगे, पीछे। दादी धीरे से सिर हिलाती हैं, “शब्द के भीतर स्वर अकेला नहीं रहता। वह अपने से पहले वाले अक्षर पर मात्रा बनकर
+      बैठता है।” धूमक एक शब्द की ओर इशारा करता है और काँपने लगता है।'
+- id: t1
+  kind: teach
+  title:
+    en: A letter always carries अ
+    hi: हर अक्षर में अ छिपा है
+  skills:
+  - script.matra
+  body:
+    en: 'Take the consonant {{क}}. It is never bare: it always carries {{अ}}, so {{क}} is {{क्}} + {{अ}}, ka. To give it another
+      vowel, add that vowel''s sign. The sign replaces the {{अ}}: {{क्}} + {{आ}} = {{का}}, {{क्}} + {{इ}} = {{कि}}.'
+    hi: 'व्यंजन {{क}} लीजिए। यह कभी अकेला नहीं होता: इसमें सदा {{अ}} रहता है, इसलिए {{क}} को क् + अ पढ़ते हैं। इसे कोई दूसरा
+      स्वर देना हो, तो उस स्वर की मात्रा लगाइए। मात्रा {{अ}} की जगह ले लेती है: {{का}}, {{कि}}।'
+  steps:
+  - sa: क्
+    label:
+      en: '{{क्}} alone, with no vowel (rare)'
+      hi: अकेला क्, बिना स्वर (कम दिखता है)
+  - sa: क
+    label:
+      en: '{{क्}} + {{अ}} = {{क}}, ka'
+      hi: क् + अ = क
+  - sa: का
+    label:
+      en: '{{क्}} + {{आ}} = {{का}}, kā'
+      hi: क् + आ = का
+  visuals:
+  - id: v-source-forms
+    kind: comparison
+    title:
+      en: Follow the forms
+      hi: रूपों पर ध्यान दें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: '{{क्}} alone, with no vowel (rare)'
+        hi: अकेला क्, बिना स्वर (कम दिखता है)
+    - id: i1
+      sa: क
+      meaning:
+        en: '{{क्}} + {{अ}} = {{क}}, ka'
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: '{{क्}} + {{आ}} = {{का}}, kā'
+        hi: क् + आ = का
+- id: t2
+  kind: table
+  title:
+    en: Every vowel on {{क}}
+    hi: '{{क}} पर हर स्वर'
+  skills:
+  - script.matra
+  caption:
+    en: The vowel, its sign, and the sign on {{क}}
+    hi: स्वर, उसकी मात्रा, और {{क}} पर वह मात्रा
+  columns:
+  - en: Vowel
+    hi: स्वर
+  - en: Sign
+    hi: मात्रा
+  - en: On {{क}}
+    hi: '{{क}} पर'
+  - en: Where it sits
+    hi: कहाँ लगती है
+  rows:
+  - - sa: अ
+    - text:
+        en: no sign
+        hi: मात्रा नहीं
+    - sa: क
+    - text:
+        en: nothing is added
+        hi: कुछ नहीं जुड़ता
+  - - sa: आ
+    - sa: ा
+    - sa: का
+    - text:
+        en: after
+        hi: बाद में
+  - - sa: इ
+    - sa: ि
+    - sa: कि
+      highlight: true
+    - text:
+        en: before, but said after
+        hi: पहले, पर बोली बाद में
+      highlight: true
+  - - sa: ई
+    - sa: ी
+    - sa: की
+    - text:
+        en: after
+        hi: बाद में
+  - - sa: उ
+    - sa: ु
+    - sa: कु
+    - text:
+        en: below
+        hi: नीचे
+  - - sa: ऊ
+    - sa: ू
+    - sa: कू
+    - text:
+        en: below
+        hi: नीचे
+  - - sa: ऋ
+    - sa: ृ
+    - sa: कृ
+    - text:
+        en: below
+        hi: नीचे
+  - - sa: ए
+    - sa: े
+    - sa: के
+    - text:
+        en: above
+        hi: ऊपर
+  - - sa: ऐ
+    - sa: ै
+    - sa: कै
+    - text:
+        en: above
+        hi: ऊपर
+  - - sa: ओ
+    - sa: ो
+    - sa: को
+    - text:
+        en: after, with a stroke above
+        hi: बाद में, ऊपर रेखा के साथ
+  - - sa: औ
+    - sa: ौ
+    - sa: कौ
+    - text:
+        en: after, with a stroke above
+        hi: बाद में, ऊपर रेखा के साथ
+  note:
+    en: '{{ॠ}} and {{ऌ}} have signs too ({{कॄ}}, {{कॢ}}), but you will almost never meet them.'
+    hi: '{{ॠ}} और {{ऌ}} की भी मात्राएँ हैं ({{कॄ}}, {{कॢ}}), पर ये लगभग कभी नहीं मिलतीं।'
+- id: e1
+  kind: explore
+  title:
+    en: Build on {{क}}
+    hi: '{{क}} पर बनाइए'
+  skills:
+  - script.matra
+  widget: letter_builder
+  prompt:
+    en: Pick a sign, then tap {{क}} to attach it. Read what you made, and try to make every target.
+    hi: कोई मात्रा चुनिए, फिर {{क}} को छूकर उसे जोड़िए। जो बना उसे पढ़िए और हर लक्ष्य बनाइए।
+  params:
+    bases:
+    - क
+    signs:
+    - ा
+    - ि
+    - ी
+    - ु
+    - ू
+    - ृ
+    - े
+    - ै
+    - ो
+    - ौ
+    targets:
+    - कि
+    - कू
+    - के
+    - कौ
+- id: p1
+  kind: practice
+  mode: choice
+  skills:
+  - script.matra
+  roman: after
+  prompt:
+    en: Which one is {{क्}} + {{इ}}?
+    hi: इनमें से {{क्}} + {{इ}} कौन-सा है?
+  options:
+  - sa: कि
+    correct: true
+  - sa: की
+    why:
+      en: '{{की}} has the long {{ई}} sign.'
+      hi: '{{की}} में दीर्घ ई की मात्रा है।'
+  - sa: के
+    why:
+      en: '{{के}}: the sign above is {{ए}}.'
+      hi: '{{के}} में ऊपर {{ए}} की मात्रा है।'
+  explain:
+    en: '{{ि}} is written before the letter but said after it: {{कि}} is {{क्}} + {{इ}}.'
+    hi: '{{ि}} अक्षर से पहले लिखी जाती है, पर बोली बाद में जाती है: {{कि}} = क् + इ।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: '{{क्}} alone, with no vowel (rare)'
+        hi: अकेला क्, बिना स्वर (कम दिखता है)
+    - id: i1
+      sa: क
+      meaning:
+        en: '{{क्}} + {{अ}} = {{क}}, ka'
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: '{{क्}} + {{आ}} = {{का}}, kā'
+        hi: क् + आ = का
+- id: t3
+  kind: teach
+  title:
+    en: Written first, said last
+    hi: पहले लिखी, बाद में बोली
+  skills:
+  - script.matra
+  body:
+    en: 'One sign breaks the left-to-right rule. {{ि}} is written before its letter but said after it: in {{कि}} you see the
+      sign first, yet you say {{क्}}, then {{इ}}. Its long twin {{ी}} comes after, as you would expect. In {{दिनम्}} the sign
+      stands before {{द}}: di-nam.'
+    hi: 'एक मात्रा बाएँ-से-दाएँ के नियम को तोड़ती है। {{ि}} अपने अक्षर से पहले लिखी जाती है, पर बोली बाद में जाती है: {{कि}}
+      में मात्रा पहले दिखती है, फिर भी पहले क् बोलते हैं, फिर इ। उसकी दीर्घ जुड़वाँ {{ी}} सीधी चलती है: अक्षर के बाद। {{दिनम्}}
+      में मात्रा {{द}} से पहले खड़ी है: दि-नम्।'
+  examples:
+  - sa: दिनम्
+    meaning:
+      en: 'a day: di-nam'
+      hi: 'दिन: दि-नम्'
+    check:
+      type: subanta
+      stem: दिन
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: दिनम्
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'a day: di-nam'
+        hi: 'दिन: दि-नम्'
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'One sign breaks the left-to-right rule. {{ि}} is written before its letter but said after it: in {{कि}} you see
+          the sign first, yet you say {{क्}}, then {{इ}}. Its long twin {{ी}} comes after, as you would expect. In {{दिनम्}}
+          the sign stands before {{द}}: di-nam.'
+        hi: 'एक मात्रा बाएँ-से-दाएँ के नियम को तोड़ती है। {{ि}} अपने अक्षर से पहले लिखी जाती है, पर बोली बाद में जाती है:
+          {{कि}} में मात्रा पहले दिखती है, फिर भी पहले क् बोलते हैं, फिर इ। उसकी दीर्घ जुड़वाँ {{ी}} सीधी चलती है: अक्षर के
+          बाद। {{दिनम्}} में मात्रा {{द}} से पहले खड़ी है: दि-नम्।'
+    - id: i3
+      sa: दिनम्
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'a day: di-nam'
+        hi: 'दिन: दि-नम्'
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{दिन}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+- id: p2
+  kind: practice
+  mode: type
+  skills:
+  - script.matra
+  roman: after
+  prompt:
+    en: 'Build {{क्}} + {{ऊ}}: {{क}} with the long {{ऊ}} sign.'
+    hi: 'बनाइए: {{क}} पर दीर्घ ऊ की मात्रा।'
+  answers:
+  - कू
+  tiles:
+  - क
+  - ू
+  - ु
+  - ृ
+  explain:
+    en: '{{ू}} sits below the letter: {{कू}}. Look closely: {{ु}} and {{ू}} curl in opposite directions.'
+    hi: '{{ू}} अक्षर के नीचे लगती है: {{कू}}। ध्यान से देखिए: {{ु}} और {{ू}} उलटी दिशाओं में मुड़ती हैं।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: '{{क्}} alone, with no vowel (rare)'
+        hi: अकेला क्, बिना स्वर (कम दिखता है)
+    - id: i1
+      sa: क
+      meaning:
+        en: '{{क्}} + {{अ}} = {{क}}, ka'
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: '{{क्}} + {{आ}} = {{का}}, kā'
+        hi: क् + आ = का
+- id: p3
+  kind: practice
+  mode: match
+  skills:
+  - script.matra
+  roman: after
+  prompt:
+    en: Match each sign with its vowel.
+    hi: हर मात्रा को उसके स्वर से मिलाइए।
+  pairs:
+  - left:
+      sa: ा
+    right:
+      sa: आ
+  - left:
+      sa: ि
+    right:
+      sa: इ
+  - left:
+      sa: ु
+    right:
+      sa: उ
+  - left:
+      sa: े
+    right:
+      sa: ए
+  - left:
+      sa: ौ
+    right:
+      sa: औ
+  explain:
+    en: Each sign is a short form of its vowel; only {{अ}} has none.
+    hi: हर मात्रा अपने स्वर का छोटा रूप है; केवल {{अ}} की कोई मात्रा नहीं।
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: '{{क्}} alone, with no vowel (rare)'
+        hi: अकेला क्, बिना स्वर (कम दिखता है)
+    - id: i1
+      sa: क
+      meaning:
+        en: '{{क्}} + {{अ}} = {{क}}, ka'
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: '{{क्}} + {{आ}} = {{का}}, kā'
+        hi: क् + आ = का
+- id: e2
+  kind: explore
+  title:
+    en: Find the long ī
+    hi: दीर्घ ई खोजिए
+  skills:
+  - script.matra
+  - script.vowel.long
+  widget: mark_words
+  roman: after
+  prompt:
+    en: Tap every word with the long ī sign {{ी}}.
+    hi: हर उस शब्द को छुइए जिसमें दीर्घ ई की मात्रा {{ी}} है।
+  params:
+    passage:
+    - दिनम्
+    - दीनः
+    - दीपः
+    - कुलम्
+    - नदी
+    - कूलम्
+    targets:
+    - दीनः
+    - दीपः
+    - नदी
+- id: p4
+  kind: practice
+  mode: choice
+  title:
+    en: A name on the leaf
+    hi: पत्र पर एक नाम
+  skills:
+  - script.matra
+  roman: after
+  gate: true
+  prompt:
+    en: Dhūmaka points at a word with one sign burnt away. It is his own name, with a long {{ऊ}} on its first letter. Which
+      is it?
+    hi: धूमक जिस शब्द की ओर इशारा कर रहा है, उसकी एक मात्रा जल गई है। वह उसका अपना नाम है, जिसके पहले अक्षर पर दीर्घ ऊ है।
+      सही रूप कौन-सा है?
+  options:
+  - sa: धूमकः
+    correct: true
+  - sa: धुमकः
+    why:
+      en: That is the short {{उ}} sign. His name has the long {{ऊ}}.
+      hi: इसमें ह्रस्व उ है। उसके नाम में दीर्घ ऊ है।
+  - sa: धीमकः
+    why:
+      en: That sign is {{ई}}. His name has {{ऊ}}.
+      hi: यह ई की मात्रा है। उसके नाम में ऊ है।
+  explain:
+    en: '{{धूमकः}}: {{ू}} under {{ध}} makes {{धू}}. {{धूमः}} is smoke; {{धूमकः}}, little smoke.'
+    hi: '{{धूमकः}}: {{ध}} के नीचे {{ू}} से ‘धू’ बनता है। {{धूमः}} यानी धुआँ; {{धूमकः}}, नन्हा धुआँ।'
+  story:
+    success:
+      en: धूमकः glows on the leaf. The little ghost stares at his own name, and his smoke turns silver.
+      hi: पत्र पर धूमकः चमक उठता है। नन्हा भूत अपना ही नाम देखता रह जाता है, और उसका धुआँ चाँदी-सा हो जाता है।
+    failure:
+      en: 'The word flickers out. Dhūmaka sighs a little puff. Look under the first letter: the long {{ऊ}}.'
+      hi: 'शब्द टिमटिमाकर बुझ जाता है। धूमक धुएँ का एक छोटा-सा कश छोड़ता है। पहले अक्षर के नीचे देखिए: दीर्घ ऊ।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: '{{क्}} alone, with no vowel (rare)'
+        hi: अकेला क्, बिना स्वर (कम दिखता है)
+    - id: i1
+      sa: क
+      meaning:
+        en: '{{क्}} + {{अ}} = {{क}}, ka'
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: '{{क्}} + {{आ}} = {{का}}, kā'
+        hi: क् + आ = का
+- id: sum
+  kind: summary
+  title:
+    en: Vowel signs
+    hi: मात्राएँ
+  points:
+  - sa: क
+    text:
+      en: 'A consonant carries {{अ}}: {{क}} is ka.'
+      hi: 'व्यंजन में {{अ}} रहता है: {{क}} = क् + अ।'
+  - sa: का कि की कु कू कृ के कै को कौ
+    text:
+      en: Each vowel has its sign; {{अ}} has none.
+      hi: हर स्वर की मात्रा है; {{अ}} की नहीं।
+  - sa: ि
+    text:
+      en: Written before the letter, said after it.
+      hi: अक्षर से पहले लिखी, बाद में बोली।
+  - text:
+      en: '{{ु}} {{ू}} {{ृ}} sit below; {{े}} {{ै}} above; {{ा}} {{ी}} {{ो}} {{ौ}} after.'
+      hi: '{{ु}} {{ू}} {{ृ}} नीचे; {{े}} {{ै}} ऊपर; {{ा}} {{ी}} {{ो}} {{ौ}} बाद में।'

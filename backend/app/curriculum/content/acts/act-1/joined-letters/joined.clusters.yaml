@@ -21,7 +21,9 @@ cards:
     hi: भीड़ भरा स्तम्भ
   depth: core
   image:
-    brief: A tall carved stone pillar in the temple courtyard covered in crowded joined Devanagari-style letters; curled up in the carving a sleeping pale sage-green round spirit with a tiny nightcap of mist; you, Dādī and Śuka looking up at it.
+    brief: A tall carved stone pillar in the temple courtyard covered in crowded joined Devanagari-style letters; curled up
+      in the carving a sleeping pale sage-green round spirit with a tiny nightcap of mist; you, Dādī and Śuka looking up at
+      it.
     alt:
       en: A stone pillar crowded with joined letters and a sleeping green spirit in a nightcap
       hi: संयुक्ताक्षरों से भरा पत्थर का स्तम्भ और टोपी पहने सोया हरा भूत
@@ -33,10 +35,13 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: joined-clusters-s1
-    text_in_image: ["क्ष त्र ज्ञ श्र"]
+    text_in_image:
+    - क्ष त्र ज्ञ श्र
   narration:
-    en: Chāyikā's clue leads you into the temple courtyard, to a stone pillar covered in letters. They crowd so close they seem to hold hands. In the carving, curled up like a cat, sleeps a pale green spirit in a nightcap of mist.
-    hi: छायिका का संकेत आपको मंदिर के आँगन में एक पत्थर के स्तम्भ तक ले जाता है, जो अक्षरों से ढका है। वे इतने पास-पास हैं मानो हाथ थामे हों। नक्काशी में बिल्ली की तरह सिमटा, धुंध की टोपी पहने, एक हल्का हरा भूत सो रहा है।
+    en: Chāyikā's clue leads you into the temple courtyard, to a stone pillar covered in letters. They crowd so close they
+      seem to hold hands. In the carving, curled up like a cat, sleeps a pale green spirit in a nightcap of mist.
+    hi: छायिका का संकेत आपको मंदिर के आँगन में एक पत्थर के स्तम्भ तक ले जाता है, जो अक्षरों से ढका है। वे इतने पास-पास हैं
+      मानो हाथ थामे हों। नक्काशी में बिल्ली की तरह सिमटा, धुंध की टोपी पहने, एक हल्का हरा भूत सो रहा है।
   lines:
   - speaker: dadi
     sa: स्तम्भे संयुक्ताक्षराणि सन्ति।
@@ -52,8 +57,10 @@ cards:
   skills:
   - script.conjunct
   body:
-    en: 'When two consonants meet with no vowel between them, they join into one shape, a {{संयुक्ताक्षरम्}}. The first drops its vowel, the second keeps it: {{क्}} + {{ष}} = {{क्ष}}.'
-    hi: 'जब दो व्यंजन बिना स्वर के मिलते हैं, तो वे एक आकृति में जुड़ जाते हैं, {{संयुक्ताक्षरम्}}। पहला अपना स्वर छोड़ देता है, दूसरा रखता है: {{क्}} + {{ष}} = {{क्ष}}।'
+    en: 'When two consonants meet with no vowel between them, they join into one shape, a {{संयुक्ताक्षरम्}}. The first drops
+      its vowel, the second keeps it: {{क्}} + {{ष}} = {{क्ष}}.'
+    hi: 'जब दो व्यंजन बिना स्वर के मिलते हैं, तो वे एक आकृति में जुड़ जाते हैं, {{संयुक्ताक्षरम्}}। पहला अपना स्वर छोड़ देता
+      है, दूसरा रखता है: {{क्}} + {{ष}} = {{क्ष}}।'
   steps:
   - sa: क्
     label:
@@ -72,6 +79,28 @@ cards:
     meaning:
       en: a joined letter
       hi: जुड़ा हुआ अक्षर
+  visuals:
+  - id: v-source-forms
+    kind: comparison
+    title:
+      en: Follow the forms
+      hi: रूपों पर ध्यान दें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: the first, with no vowel
+        hi: पहला, बिना स्वर
+    - id: i1
+      sa: ष
+      meaning:
+        en: the second keeps its vowel
+        hi: दूसरा अपना स्वर रखता है
+    - id: i2
+      sa: क्ष
+      meaning:
+        en: one joined letter
+        hi: एक संयुक्ताक्षर
 - id: tb1
   kind: table
   title:
@@ -176,6 +205,28 @@ cards:
     sa: क्ष
   - sa: ष्क
   - sa: कष
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: the first, with no vowel
+        hi: पहला, बिना स्वर
+    - id: i1
+      sa: ष
+      meaning:
+        en: the second keeps its vowel
+        hi: दूसरा अपना स्वर रखता है
+    - id: i2
+      sa: क्ष
+      meaning:
+        en: one joined letter
+        hi: एक संयुक्ताक्षर
 - id: p2
   kind: practice
   depth: core
@@ -206,6 +257,28 @@ cards:
       sa: श्र
     right:
       sa: श् + र
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: the first, with no vowel
+        hi: पहला, बिना स्वर
+    - id: i1
+      sa: ष
+      meaning:
+        en: the second keeps its vowel
+        hi: दूसरा अपना स्वर रखता है
+    - id: i2
+      sa: क्ष
+      meaning:
+        en: one joined letter
+        hi: एक संयुक्ताक्षर
 - id: t2
   kind: teach
   title:
@@ -215,8 +288,10 @@ cards:
   skills:
   - script.conjunct
   body:
-    en: 'Letters with an upright bar lose it as the first half: {{स्}} + {{त}} = {{स्त}}. Letters without a bar sit on top of the next: {{ट्}} + {{ट}} = {{ट्ट}}. A joined letter is still read left to right, top to bottom.'
-    hi: 'खड़ी पाई वाले अक्षर पहले आधे के रूप में उसे खो देते हैं: {{स्}} + {{त}} = {{स्त}}। बिना पाई वाले अगले अक्षर के ऊपर बैठते हैं: {{ट्}} + {{ट}} = {{ट्ट}}। संयुक्ताक्षर बाएँ से दाएँ, ऊपर से नीचे पढ़ा जाता है।'
+    en: 'Letters with an upright bar lose it as the first half: {{स्}} + {{त}} = {{स्त}}. Letters without a bar sit on top
+      of the next: {{ट्}} + {{ट}} = {{ट्ट}}. A joined letter is still read left to right, top to bottom.'
+    hi: 'खड़ी पाई वाले अक्षर पहले आधे के रूप में उसे खो देते हैं: {{स्}} + {{त}} = {{स्त}}। बिना पाई वाले अगले अक्षर के ऊपर
+      बैठते हैं: {{ट्}} + {{ट}} = {{ट्ट}}। संयुक्ताक्षर बाएँ से दाएँ, ऊपर से नीचे पढ़ा जाता है।'
   examples:
   - sa: अस्ति
     meaning:
@@ -242,6 +317,136 @@ cards:
       linga: Napumsaka
       vibhakti: Prathama
       vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: अस्ति
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: is, exists
+        hi: है, विद्यमान है
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Letters with an upright bar lose it as the first half: {{स्}} + {{त}} = {{स्त}}. Letters without a bar sit on
+          top of the next: {{ट्}} + {{ट}} = {{ट्ट}}. A joined letter is still read left to right, top to bottom.'
+        hi: 'खड़ी पाई वाले अक्षर पहले आधे के रूप में उसे खो देते हैं: {{स्}} + {{त}} = {{स्त}}। बिना पाई वाले अगले अक्षर के
+          ऊपर बैठते हैं: {{ट्}} + {{ट}} = {{ट्ट}}। संयुक्ताक्षर बाएँ से दाएँ, ऊपर से नीचे पढ़ा जाता है।'
+    - id: i3
+      sa: अस्ति
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: is, exists
+        hi: है, विद्यमान है
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: पुत्रः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'a son: {{त्}} + {{र}}'
+        hi: 'पुत्र: {{त्}} + {{र}}'
+      check:
+        type: subanta
+        stem: पुत्र
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुत्र}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पुत्र}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Letters with an upright bar lose it as the first half: {{स्}} + {{त}} = {{स्त}}. Letters without a bar sit on
+          top of the next: {{ट्}} + {{ट}} = {{ट्ट}}. A joined letter is still read left to right, top to bottom.'
+        hi: 'खड़ी पाई वाले अक्षर पहले आधे के रूप में उसे खो देते हैं: {{स्}} + {{त}} = {{स्त}}। बिना पाई वाले अगले अक्षर के
+          ऊपर बैठते हैं: {{ट्}} + {{ट}} = {{ट्ट}}। संयुक्ताक्षर बाएँ से दाएँ, ऊपर से नीचे पढ़ा जाता है।'
+    - id: i3
+      sa: पुत्रः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'a son: {{त्}} + {{र}}'
+        hi: 'पुत्र: {{त्}} + {{र}}'
+      check:
+        type: subanta
+        stem: पुत्र
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुत्र}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पुत्र}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सत्यम्
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'truth: {{त्}} + {{य}}'
+        hi: 'सत्य: {{त्}} + {{य}}'
+      check:
+        type: subanta
+        stem: सत्य
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सत्य}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सत्य}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Letters with an upright bar lose it as the first half: {{स्}} + {{त}} = {{स्त}}. Letters without a bar sit on
+          top of the next: {{ट्}} + {{ट}} = {{ट्ट}}. A joined letter is still read left to right, top to bottom.'
+        hi: 'खड़ी पाई वाले अक्षर पहले आधे के रूप में उसे खो देते हैं: {{स्}} + {{त}} = {{स्त}}। बिना पाई वाले अगले अक्षर के
+          ऊपर बैठते हैं: {{ट्}} + {{ट}} = {{ट्ट}}। संयुक्ताक्षर बाएँ से दाएँ, ऊपर से नीचे पढ़ा जाता है।'
+    - id: i3
+      sa: सत्यम्
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'truth: {{त्}} + {{य}}'
+        hi: 'सत्य: {{त्}} + {{य}}'
+      check:
+        type: subanta
+        stem: सत्य
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सत्य}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सत्य}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: e2
   kind: explore
   depth: core
@@ -298,6 +503,28 @@ cards:
   - नम्
   - ज्ञ
   - म्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: the first, with no vowel
+        hi: पहला, बिना स्वर
+    - id: i1
+      sa: ष
+      meaning:
+        en: the second keeps its vowel
+        hi: दूसरा अपना स्वर रखता है
+    - id: i2
+      sa: क्ष
+      meaning:
+        en: one joined letter
+        hi: एक संयुक्ताक्षर
 - id: p4
   kind: practice
   depth: core
@@ -316,6 +543,28 @@ cards:
     sa: '{{त्}} + {{र}}'
   - sa: '{{म्}} + {{त}}'
   - sa: '{{र}} + {{म}}'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: the first, with no vowel
+        hi: पहला, बिना स्वर
+    - id: i1
+      sa: ष
+      meaning:
+        en: the second keeps its vowel
+        hi: दूसरा अपना स्वर रखता है
+    - id: i2
+      sa: क्ष
+      meaning:
+        en: one joined letter
+        hi: एक संयुक्ताक्षर
 - id: sum
   kind: summary
   title:

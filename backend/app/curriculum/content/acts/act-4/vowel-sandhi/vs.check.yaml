@@ -28,6 +28,38 @@ cards:
   - correct: true
     sa: विद्यालयः
   - sa: विद्योलयः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'When two words meet, the last sound of the first and the first sound of the second may join. This is {{सन्धिः}}.
+        When two vowels of the same family meet, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, they merge into one long vowel: {{विद्या
+        + आलयः}} gives {{विद्यालयः}}.'
+      hi: 'जब दो शब्द मिलते हैं, तो पहले शब्द की अन्तिम और दूसरे की पहली ध्वनि जुड़ सकती हैं। यह {{सन्धिः}} है। जब एक ही कुल
+        के दो स्वर मिलते हैं, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, तो वे मिलकर एक दीर्घ स्वर बन जाते हैं: {{विद्या + आलयः}}
+        से {{विद्यालयः}}।'
+    items:
+    - id: i0
+      sa: सन्धिः
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: उ
+    - id: i6
+      sa: ऊ
+    - id: i7
+      sa: विद्या + आलयः
+    - id: i8
+      sa: विद्यालयः
 - id: p2
   kind: practice
   depth: core
@@ -46,6 +78,55 @@ cards:
   - sa: सप्तैषयः
   - correct: true
     sa: सप्तर्षयः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{इ}} or {{ई}}, the result is {{ए}}; with {{उ}} or {{ऊ}}, it is {{ओ}}; with {{ऋ}}, it
+        is {{अर्}}. {{गण + ईशः}} gives {{गणेशः}}, {{महा + उत्सवः}} gives {{महोत्सवः}}, {{सप्त + ऋषयः}} gives {{सप्तर्षयः}}.
+        This is {{गुणः}}.
+      hi: जब {{अ}} या {{आ}}, {{इ}} या {{ई}} से मिलते हैं तो {{ए}} बनता है; {{उ}} या {{ऊ}} से {{ओ}}; {{ऋ}} से {{अर्}}। {{गण
+        + ईशः}} से {{गणेशः}}, {{महा + उत्सवः}} से {{महोत्सवः}}, {{सप्त + ऋषयः}} से {{सप्तर्षयः}}। यह {{गुणः}} है।
+    items:
+    - id: i0
+      sa: अ + इ → ए · अ + उ → ओ · अ + ऋ → अर्
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: ए
+    - id: i6
+      sa: उ
+    - id: i7
+      sa: ऊ
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: ऋ
+    - id: i10
+      sa: अर्
+    - id: i11
+      sa: गण + ईशः
+    - id: i12
+      sa: गणेशः
+    - id: i13
+      sa: महा + उत्सवः
+    - id: i14
+      sa: महोत्सवः
+    - id: i15
+      sa: सप्त + ऋषयः
+    - id: i16
+      sa: सप्तर्षयः
+    - id: i17
+      sa: गुणः
 - id: p3
   kind: practice
   depth: core
@@ -64,6 +145,40 @@ cards:
   - sa: सदोव
   - correct: true
     sa: सदैव
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{ए}} or {{ऐ}}, the result is {{ऐ}}; when it meets {{ओ}} or {{औ}}, it is {{औ}}. {{सदा
+        + एव}} gives {{सदैव}}; {{जल + ओघः}} gives {{जलौघः}}. This is {{वृद्धिः}}, the strongest grade.
+      hi: जब {{अ}} या {{आ}}, {{ए}} या {{ऐ}} से मिलते हैं तो {{ऐ}} बनता है; {{ओ}} या {{औ}} से {{औ}}। {{सदा + एव}} से {{सदैव}};
+        {{जल + ओघः}} से {{जलौघः}}। यह {{वृद्धिः}} है, सबसे प्रबल दर्जा।
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: आ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: ऐ
+    - id: i4
+      sa: ओ
+    - id: i5
+      sa: औ
+    - id: i6
+      sa: सदा + एव
+    - id: i7
+      sa: सदैव
+    - id: i8
+      sa: जल + ओघः
+    - id: i9
+      sa: जलौघः
+    - id: i10
+      sa: वृद्धिः
 - id: p4
   kind: practice
   depth: core
@@ -82,6 +197,48 @@ cards:
   - correct: true
     sa: इत्यादि
   - sa: इतेदि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'When {{इ}}/{{ई}}, {{उ}}/{{ऊ}} or {{ऋ}} meets a different vowel, it becomes {{य्}}, {{व्}} or {{र्}}: {{इति + आदि}}
+        gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}, {{पितृ + आज्ञा}} gives {{पित्राज्ञा}}. This is {{यण्}}.'
+      hi: 'जब {{इ}}/{{ई}}, {{उ}}/{{ऊ}} या {{ऋ}} किसी भिन्न स्वर से मिलते हैं, तो वे {{य्}}, {{व्}} या {{र्}} बन जाते हैं:
+        {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}, {{पितृ + आज्ञा}} से {{पित्राज्ञा}}। यह {{यण्}} है।'
+    items:
+    - id: i0
+      sa: इ
+    - id: i1
+      sa: ई
+    - id: i2
+      sa: उ
+    - id: i3
+      sa: ऊ
+    - id: i4
+      sa: ऋ
+    - id: i5
+      sa: य्
+    - id: i6
+      sa: व्
+    - id: i7
+      sa: र्
+    - id: i8
+      sa: इति + आदि
+    - id: i9
+      sa: इत्यादि
+    - id: i10
+      sa: सु + आगतम्
+    - id: i11
+      sa: स्वागतम्
+    - id: i12
+      sa: पितृ + आज्ञा
+    - id: i13
+      sa: पित्राज्ञा
+    - id: i14
+      sa: यण्
 - id: p5
   kind: practice
   depth: core
@@ -100,6 +257,54 @@ cards:
   - correct: true
     sa: नाविकः
   - sa: नविकः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{औ}} before a vowel becomes {{आव्}}: {{नौ + इकः}} gives {{नाविकः}}. {{ऐ}} becomes {{आय्}} (often written {{आ}}
+        before a vowel: {{तस्मै + इदम्}} gives {{तस्मा इदम्}}). {{ए}} before {{इ}} or {{आ}} drops to {{अ}}: {{हरे + इह}} gives
+        {{हर इह}}. Before {{अ}} it leaves {{ऽ}}: {{वने + अस्ति}} gives {{वनेऽस्ति}}.'
+      hi: 'स्वर से पहले {{औ}} {{आव्}} बन जाता है: {{नौ + इकः}} से {{नाविकः}}। {{ऐ}} {{आय्}} बनता है (स्वर से पहले अक्सर {{आ}}
+        लिखा जाता है: {{तस्मै + इदम्}} से {{तस्मा इदम्}})। {{इ}} या {{आ}} से पहले {{ए}} घटकर {{अ}} हो जाता है: {{हरे + इह}}
+        से {{हर इह}}। {{अ}} से पहले वह {{ऽ}} छोड़ जाता है: {{वने + अस्ति}} से {{वनेऽस्ति}}।'
+    items:
+    - id: i0
+      sa: औ
+    - id: i1
+      sa: आव्
+    - id: i2
+      sa: नौ + इकः
+    - id: i3
+      sa: नाविकः
+    - id: i4
+      sa: ऐ
+    - id: i5
+      sa: आय्
+    - id: i6
+      sa: आ
+    - id: i7
+      sa: तस्मै + इदम्
+    - id: i8
+      sa: तस्मा इदम्
+    - id: i9
+      sa: ए
+    - id: i10
+      sa: इ
+    - id: i11
+      sa: अ
+    - id: i12
+      sa: हरे + इह
+    - id: i13
+      sa: हर इह
+    - id: i14
+      sa: ऽ
+    - id: i15
+      sa: वने + अस्ति
+    - id: i16
+      sa: वनेऽस्ति
 - id: p6
   kind: practice
   depth: core
@@ -118,6 +323,38 @@ cards:
   - correct: true
     sa: हरी एतौ
   - sa: इति आदि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Some words never join. The dual forms ending in {{ई}}, {{ऊ}} or {{ए}} stay apart before a vowel: {{हरी + एतौ}}
+        stays {{हरी एतौ}}; {{ते + अत्र}} stays {{ते अत्र}}. These are {{प्रगृह्याः}}. Interjections such as {{अहो}} also stand
+        apart.'
+      hi: 'कुछ शब्द कभी नहीं जुड़ते। {{ई}}, {{ऊ}} या {{ए}} पर समाप्त द्विवचन के रूप स्वर से पहले भी अलग रहते हैं: {{हरी +
+        एतौ}} {{हरी एतौ}} ही रहता है; {{ते + अत्र}} {{ते अत्र}} ही रहता है। ये {{प्रगृह्याः}} हैं। {{अहो}} जैसे विस्मयादिबोधक
+        भी अलग रहते हैं।'
+    items:
+    - id: i0
+      sa: ई
+    - id: i1
+      sa: ऊ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: हरी + एतौ
+    - id: i4
+      sa: हरी एतौ
+    - id: i5
+      sa: ते + अत्र
+    - id: i6
+      sa: ते अत्र
+    - id: i7
+      sa: प्रगृह्याः
+    - id: i8
+      sa: अहो
 - id: p7
   kind: practice
   depth: core
@@ -151,6 +388,55 @@ cards:
       sa: वनेऽस्ति
     right:
       sa: वने + अस्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: When {{अ}} or {{आ}} meets {{इ}} or {{ई}}, the result is {{ए}}; with {{उ}} or {{ऊ}}, it is {{ओ}}; with {{ऋ}}, it
+        is {{अर्}}. {{गण + ईशः}} gives {{गणेशः}}, {{महा + उत्सवः}} gives {{महोत्सवः}}, {{सप्त + ऋषयः}} gives {{सप्तर्षयः}}.
+        This is {{गुणः}}.
+      hi: जब {{अ}} या {{आ}}, {{इ}} या {{ई}} से मिलते हैं तो {{ए}} बनता है; {{उ}} या {{ऊ}} से {{ओ}}; {{ऋ}} से {{अर्}}। {{गण
+        + ईशः}} से {{गणेशः}}, {{महा + उत्सवः}} से {{महोत्सवः}}, {{सप्त + ऋषयः}} से {{सप्तर्षयः}}। यह {{गुणः}} है।
+    items:
+    - id: i0
+      sa: अ + इ → ए · अ + उ → ओ · अ + ऋ → अर्
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: ए
+    - id: i6
+      sa: उ
+    - id: i7
+      sa: ऊ
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: ऋ
+    - id: i10
+      sa: अर्
+    - id: i11
+      sa: गण + ईशः
+    - id: i12
+      sa: गणेशः
+    - id: i13
+      sa: महा + उत्सवः
+    - id: i14
+      sa: महोत्सवः
+    - id: i15
+      sa: सप्त + ऋषयः
+    - id: i16
+      sa: सप्तर्षयः
+    - id: i17
+      sa: गुणः
 - id: p8
   kind: practice
   depth: core
@@ -167,8 +453,16 @@ cards:
   gate: true
   story:
     success:
-      en: '“विद्यालयः, महात्मा, सूक्तम्,” you say, and Svarikā, the small stone spirit at the lotus statue''s feet, is released: she steps out of the hall''s shadow with a rustle of dust, a very small woman of grey stone. “I have been saying it for a thousand years,” she says, “and no one heard the words inside the word.” She puts down her lotus. “रामोऽस्ति,” she says, listening for the answer. “Rāma is.” But the next word is not for her to join. The next statue is already breathing.'
-      hi: '“विद्यालयः, महात्मा, सूक्तम्,” आप कहते हैं, और स्वरिका, कमल वाली प्रतिमा के पैरों के पास का नन्हा पत्थर का भूत, मुक्त हो जाती है: वह धूल की सरसराहट के साथ कक्ष की छाया से बाहर आती है, ग्रे पत्थर की बहुत छोटी स्त्री। “मैं हज़ार वर्षों से यह कहती रही,” वह कहती है, “और किसी ने शब्द के भीतर के शब्द नहीं सुने।” वह अपना कमल रख देती है। “रामोऽस्ति,” वह उत्तर की प्रतीक्षा में कहती है। “राम है।” पर अगला शब्द उसके जोड़ने का नहीं है। अगली प्रतिमा पहले ही साँस ले रही है।'
+      en: '“विद्यालयः, महात्मा, सूक्तम्,” you say, and Svarikā, the small stone spirit at the lotus statue''s feet, is released:
+        she steps out of the hall''s shadow with a rustle of dust, a very small woman of grey stone. “I have been saying it
+        for a thousand years,” she says, “and no one heard the words inside the word.” She puts down her lotus. “रामोऽस्ति,”
+        she says, listening for the answer. “Rāma is.” But the next word is not for her to join. The next statue is already
+        breathing.'
+      hi: '“विद्यालयः, महात्मा, सूक्तम्,” आप कहते हैं, और स्वरिका, कमल वाली प्रतिमा के पैरों के पास का नन्हा पत्थर का भूत,
+        मुक्त हो जाती है: वह धूल की सरसराहट के साथ कक्ष की छाया से बाहर आती है, ग्रे पत्थर की बहुत छोटी स्त्री। “मैं हज़ार
+        वर्षों से यह कहती रही,” वह कहती है, “और किसी ने शब्द के भीतर के शब्द नहीं सुने।” वह अपना कमल रख देती है। “रामोऽस्ति,”
+        वह उत्तर की प्रतीक्षा में कहती है। “राम है।” पर अगला शब्द उसके जोड़ने का नहीं है। अगली प्रतिमा पहले ही साँस ले रही
+        है।'
     failure:
       en: 'The statue waits. Her three joins: {{विद्यालयः महात्मा सूक्तम्}}.'
       hi: 'प्रतिमा प्रतीक्षा करती है। उसकी तीन सन्धियाँ: {{विद्यालयः महात्मा सूक्तम्}}।'
@@ -176,3 +470,35 @@ cards:
   - विद्यालयः
   - महात्मा
   - सूक्तम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'When two words meet, the last sound of the first and the first sound of the second may join. This is {{सन्धिः}}.
+        When two vowels of the same family meet, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, they merge into one long vowel: {{विद्या
+        + आलयः}} gives {{विद्यालयः}}.'
+      hi: 'जब दो शब्द मिलते हैं, तो पहले शब्द की अन्तिम और दूसरे की पहली ध्वनि जुड़ सकती हैं। यह {{सन्धिः}} है। जब एक ही कुल
+        के दो स्वर मिलते हैं, {{अ}}/{{आ}}, {{इ}}/{{ई}}, {{उ}}/{{ऊ}}, तो वे मिलकर एक दीर्घ स्वर बन जाते हैं: {{विद्या + आलयः}}
+        से {{विद्यालयः}}।'
+    items:
+    - id: i0
+      sa: सन्धिः
+    - id: i1
+      sa: अ
+    - id: i2
+      sa: आ
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: ई
+    - id: i5
+      sa: उ
+    - id: i6
+      sa: ऊ
+    - id: i7
+      sa: विद्या + आलयः
+    - id: i8
+      sa: विद्यालयः

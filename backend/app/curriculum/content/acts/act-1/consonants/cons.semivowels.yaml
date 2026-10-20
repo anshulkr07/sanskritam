@@ -25,7 +25,8 @@ cards:
     hi: पंक्तियों के बीच
   depth: core
   image:
-    brief: 'Close-up of the carved door below its five rows: one extra line of four letters set slightly apart, two lavender eyes glinting from the carving beside them, Dādī''s finger pointing.'
+    brief: 'Close-up of the carved door below its five rows: one extra line of four letters set slightly apart, two lavender
+      eyes glinting from the carving beside them, Dādī''s finger pointing.'
     alt:
       en: A line of four carved letters under five rows, with two eyes glinting beside them
       hi: पाँच पंक्तियों के नीचे चार खुदे अक्षर, पास में चमकती दो आँखें
@@ -35,10 +36,15 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: cons-semivowels-s1
-    text_in_image: ["य र ल व"]
+    text_in_image:
+    - य र ल व
   narration:
-    en: Under the five rows, the door has one more line of four letters that fit no row. Chāyikā's eyes glint between them. “These stand in between,” says Dādī. “Half vowel, half consonant. The old name is {{अन्तःस्थाः}}, the ones that stand within.”
-    hi: पाँच पंक्तियों के नीचे द्वार पर चार अक्षरों की एक और पंक्ति है जो किसी वर्ग में नहीं आती। उनके बीच छायिका की आँखें चमकती हैं। दादी कहती हैं, “ये बीच में खड़े हैं। आधे स्वर, आधे व्यंजन। पुराना नाम {{अन्तःस्थाः}} है, यानी भीतर खड़े होने वाले।”
+    en: Under the five rows, the door has one more line of four letters that fit no row. Chāyikā's eyes glint between them.
+      “These stand in between,” says Dādī. “Half vowel, half consonant. The old name is {{अन्तःस्थाः}}, the ones that stand
+      within.”
+    hi: पाँच पंक्तियों के नीचे द्वार पर चार अक्षरों की एक और पंक्ति है जो किसी वर्ग में नहीं आती। उनके बीच छायिका की आँखें
+      चमकती हैं। दादी कहती हैं, “ये बीच में खड़े हैं। आधे स्वर, आधे व्यंजन। पुराना नाम {{अन्तःस्थाः}} है, यानी भीतर खड़े होने
+      वाले।”
 - id: t1
   kind: teach
   title:
@@ -48,8 +54,10 @@ cards:
   skills:
   - script.cons.semivowels
   body:
-    en: '{{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly. Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}.'
-    hi: '{{य}} {{र}} {{ल}} {{व}} स्वर {{इ}} {{ऋ}} {{ऌ}} {{उ}} की तरह बनते हैं, बस जीभ या होंठ हल्के से छूते हैं। {{इ}} बोलकर {{अ}} में फिसलिए: {{य}} बन गया। {{उ}} बोलकर फिसलिए: {{व}}।'
+    en: '{{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly.
+      Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}.'
+    hi: '{{य}} {{र}} {{ल}} {{व}} स्वर {{इ}} {{ऋ}} {{ऌ}} {{उ}} की तरह बनते हैं, बस जीभ या होंठ हल्के से छूते हैं। {{इ}} बोलकर
+      {{अ}} में फिसलिए: {{य}} बन गया। {{उ}} बोलकर फिसलिए: {{व}}।'
   rows:
   - sa: य
     gloss:
@@ -67,6 +75,38 @@ cards:
     gloss:
       en: 'between v and w: teeth and lips, like {{उ}}'
       hi: '‘व’ और ‘w’ के बीच: दाँत और होंठ, {{उ}} की तरह'
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: '{{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly.
+        Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}.'
+      hi: '{{य}} {{र}} {{ल}} {{व}} स्वर {{इ}} {{ऋ}} {{ऌ}} {{उ}} की तरह बनते हैं, बस जीभ या होंठ हल्के से छूते हैं। {{इ}} बोलकर
+        {{अ}} में फिसलिए: {{य}} बन गया। {{उ}} बोलकर फिसलिए: {{व}}।'
+    items:
+    - id: i0
+      sa: य
+      meaning:
+        en: 'y in “yes”: palate, like {{इ}}'
+        hi: 'यश के ‘य’ जैसा: तालु, {{इ}} की तरह'
+    - id: i1
+      sa: र
+      meaning:
+        en: 'tapped r: roof of the mouth, like {{ऋ}}'
+        hi: 'जीभ की नोक से ‘र’: मूर्धा, {{ऋ}} की तरह'
+    - id: i2
+      sa: ल
+      meaning:
+        en: 'l: teeth, like {{ऌ}}'
+        hi: '‘ल’: दन्त, {{ऌ}} की तरह'
+    - id: i3
+      sa: व
+      meaning:
+        en: 'between v and w: teeth and lips, like {{उ}}'
+        hi: '‘व’ और ‘w’ के बीच: दाँत और होंठ, {{उ}} की तरह'
 - id: e1
   kind: explore
   depth: core
@@ -113,6 +153,38 @@ cards:
       sa: उ
     right:
       sa: व
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly.
+        Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}.'
+      hi: '{{य}} {{र}} {{ल}} {{व}} स्वर {{इ}} {{ऋ}} {{ऌ}} {{उ}} की तरह बनते हैं, बस जीभ या होंठ हल्के से छूते हैं। {{इ}} बोलकर
+        {{अ}} में फिसलिए: {{य}} बन गया। {{उ}} बोलकर फिसलिए: {{व}}।'
+    items:
+    - id: i0
+      sa: य
+      meaning:
+        en: 'y in “yes”: palate, like {{इ}}'
+        hi: 'यश के ‘य’ जैसा: तालु, {{इ}} की तरह'
+    - id: i1
+      sa: र
+      meaning:
+        en: 'tapped r: roof of the mouth, like {{ऋ}}'
+        hi: 'जीभ की नोक से ‘र’: मूर्धा, {{ऋ}} की तरह'
+    - id: i2
+      sa: ल
+      meaning:
+        en: 'l: teeth, like {{ऌ}}'
+        hi: '‘ल’: दन्त, {{ऌ}} की तरह'
+    - id: i3
+      sa: व
+      meaning:
+        en: 'between v and w: teeth and lips, like {{उ}}'
+        hi: '‘व’ और ‘w’ के बीच: दाँत और होंठ, {{उ}} की तरह'
 - id: p2
   kind: practice
   depth: core
@@ -131,6 +203,38 @@ cards:
   - correct: true
     sa: र
   - sa: म
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly.
+        Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}.'
+      hi: '{{य}} {{र}} {{ल}} {{व}} स्वर {{इ}} {{ऋ}} {{ऌ}} {{उ}} की तरह बनते हैं, बस जीभ या होंठ हल्के से छूते हैं। {{इ}} बोलकर
+        {{अ}} में फिसलिए: {{य}} बन गया। {{उ}} बोलकर फिसलिए: {{व}}।'
+    items:
+    - id: i0
+      sa: य
+      meaning:
+        en: 'y in “yes”: palate, like {{इ}}'
+        hi: 'यश के ‘य’ जैसा: तालु, {{इ}} की तरह'
+    - id: i1
+      sa: र
+      meaning:
+        en: 'tapped r: roof of the mouth, like {{ऋ}}'
+        hi: 'जीभ की नोक से ‘र’: मूर्धा, {{ऋ}} की तरह'
+    - id: i2
+      sa: ल
+      meaning:
+        en: 'l: teeth, like {{ऌ}}'
+        hi: '‘ल’: दन्त, {{ऌ}} की तरह'
+    - id: i3
+      sa: व
+      meaning:
+        en: 'between v and w: teeth and lips, like {{उ}}'
+        hi: '‘व’ और ‘w’ के बीच: दाँत और होंठ, {{उ}} की तरह'
 - id: e2
   kind: explore
   depth: core
@@ -184,6 +288,38 @@ cards:
   - र
   - ल
   - व
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly.
+        Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}.'
+      hi: '{{य}} {{र}} {{ल}} {{व}} स्वर {{इ}} {{ऋ}} {{ऌ}} {{उ}} की तरह बनते हैं, बस जीभ या होंठ हल्के से छूते हैं। {{इ}} बोलकर
+        {{अ}} में फिसलिए: {{य}} बन गया। {{उ}} बोलकर फिसलिए: {{व}}।'
+    items:
+    - id: i0
+      sa: य
+      meaning:
+        en: 'y in “yes”: palate, like {{इ}}'
+        hi: 'यश के ‘य’ जैसा: तालु, {{इ}} की तरह'
+    - id: i1
+      sa: र
+      meaning:
+        en: 'tapped r: roof of the mouth, like {{ऋ}}'
+        hi: 'जीभ की नोक से ‘र’: मूर्धा, {{ऋ}} की तरह'
+    - id: i2
+      sa: ल
+      meaning:
+        en: 'l: teeth, like {{ऌ}}'
+        hi: '‘ल’: दन्त, {{ऌ}} की तरह'
+    - id: i3
+      sa: व
+      meaning:
+        en: 'between v and w: teeth and lips, like {{उ}}'
+        hi: '‘व’ और ‘w’ के बीच: दाँत और होंठ, {{उ}} की तरह'
 - id: p4
   kind: practice
   depth: core
@@ -205,6 +341,38 @@ cards:
   - text:
       en: '{{वर्गाः}}: the rows'
       hi: '{{वर्गाः}}: पंक्तियाँ'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly.
+        Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}.'
+      hi: '{{य}} {{र}} {{ल}} {{व}} स्वर {{इ}} {{ऋ}} {{ऌ}} {{उ}} की तरह बनते हैं, बस जीभ या होंठ हल्के से छूते हैं। {{इ}} बोलकर
+        {{अ}} में फिसलिए: {{य}} बन गया। {{उ}} बोलकर फिसलिए: {{व}}।'
+    items:
+    - id: i0
+      sa: य
+      meaning:
+        en: 'y in “yes”: palate, like {{इ}}'
+        hi: 'यश के ‘य’ जैसा: तालु, {{इ}} की तरह'
+    - id: i1
+      sa: र
+      meaning:
+        en: 'tapped r: roof of the mouth, like {{ऋ}}'
+        hi: 'जीभ की नोक से ‘र’: मूर्धा, {{ऋ}} की तरह'
+    - id: i2
+      sa: ल
+      meaning:
+        en: 'l: teeth, like {{ऌ}}'
+        hi: '‘ल’: दन्त, {{ऌ}} की तरह'
+    - id: i3
+      sa: व
+      meaning:
+        en: 'between v and w: teeth and lips, like {{उ}}'
+        hi: '‘व’ और ‘w’ के बीच: दाँत और होंठ, {{उ}} की तरह'
 - id: pn
   kind: teach
   title:
@@ -217,13 +385,45 @@ cards:
   - SS.5
   - SS.6
   body:
-    en: 'Pāṇini''s Śiva sūtras 5 and 6 are {{हयवरट्}} and {{लण्}}. Drop the marker letters {{ट्}} and {{ण्}}, and {{य}} {{व}} {{र}} {{ल}} remain. He calls this group {{यण्}}: from {{य}} up to the marker {{ण्}}.'
-    hi: 'पाणिनि के शिवसूत्र 5 और 6 हैं {{हयवरट्}} और {{लण्}}। चिह्न {{ट्}} और {{ण्}} हटाइए, तो {{य}} {{व}} {{र}} {{ल}} बचते हैं। वे इस समूह को {{यण्}} कहते हैं: {{य}} से चिह्न {{ण्}} तक।'
+    en: 'Pāṇini''s Śiva sūtras 5 and 6 are {{हयवरट्}} and {{लण्}}. Drop the marker letters {{ट्}} and {{ण्}}, and {{य}} {{व}}
+      {{र}} {{ल}} remain. He calls this group {{यण्}}: from {{य}} up to the marker {{ण्}}.'
+    hi: 'पाणिनि के शिवसूत्र 5 और 6 हैं {{हयवरट्}} और {{लण्}}। चिह्न {{ट्}} और {{ण्}} हटाइए, तो {{य}} {{व}} {{र}} {{ल}} बचते
+      हैं। वे इस समूह को {{यण्}} कहते हैं: {{य}} से चिह्न {{ण्}} तक।'
   term:
     sa: यण्
     meaning:
       en: the four semivowels
       hi: चारों अन्तःस्थ
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Pāṇini''s Śiva sūtras 5 and 6 are {{हयवरट्}} and {{लण्}}. Drop the marker letters {{ट्}} and {{ण्}}, and {{य}}
+        {{व}} {{र}} {{ल}} remain. He calls this group {{यण्}}: from {{य}} up to the marker {{ण्}}.'
+      hi: 'पाणिनि के शिवसूत्र 5 और 6 हैं {{हयवरट्}} और {{लण्}}। चिह्न {{ट्}} और {{ण्}} हटाइए, तो {{य}} {{व}} {{र}} {{ल}} बचते
+        हैं। वे इस समूह को {{यण्}} कहते हैं: {{य}} से चिह्न {{ण्}} तक।'
+    items:
+    - id: i0
+      sa: हयवरट्
+    - id: i1
+      sa: लण्
+    - id: i2
+      sa: ट्
+    - id: i3
+      sa: ण्
+    - id: i4
+      sa: य
+    - id: i5
+      sa: व
+    - id: i6
+      sa: र
+    - id: i7
+      sa: ल
+    - id: i8
+      sa: यण्
 - id: sum
   kind: summary
   title:

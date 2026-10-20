@@ -23,7 +23,8 @@ cards:
     hi: आख़िरी पंक्तियाँ
   depth: core
   image:
-    brief: 'The foot of the temple pillar with carved marks: a small avagraha curl, a tall single bar and a double bar, the sacred Om sign, and a row of Devanagari numerals; the green spirit stirring awake above them, Dādī pointing.'
+    brief: 'The foot of the temple pillar with carved marks: a small avagraha curl, a tall single bar and a double bar, the
+      sacred Om sign, and a row of Devanagari numerals; the green spirit stirring awake above them, Dādī pointing.'
     alt:
       en: The foot of a pillar with carved marks, the Om sign and numbers, and a spirit stirring
       hi: चिह्नों, ॐ और अंकों वाला स्तम्भ का पाँव, हिलता हुआ भूत
@@ -35,10 +36,17 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: joined-marks-s1
-    text_in_image: ["ऽ", "।", "॥", "ॐ", "० १ २ ३ ४ ५ ६ ७ ८ ९"]
+    text_in_image:
+    - ऽ
+    - ।
+    - ॥
+    - ॐ
+    - ० १ २ ३ ४ ५ ६ ७ ८ ९
   narration:
-    en: 'At the pillar''s foot, below the letters, stand strange marks: a small curl like an S, tall bars, a great round sign, and a row of numbers. The green spirit stirs. “Read the last line,” says Dādī, “and he will wake.”'
-    hi: 'स्तम्भ के पाँव पर, अक्षरों के नीचे, अजीब चिह्न खुदे हैं: ‘S’ जैसा छोटा मोड़, ऊँची खड़ी रेखाएँ, एक बड़ा गोल चिह्न, और अंकों की एक पंक्ति। हरा भूत हिलता है। दादी कहती हैं, “आख़िरी पंक्ति पढ़ो, वह जाग जाएगा।”'
+    en: 'At the pillar''s foot, below the letters, stand strange marks: a small curl like an S, tall bars, a great round sign,
+      and a row of numbers. The green spirit stirs. “Read the last line,” says Dādī, “and he will wake.”'
+    hi: 'स्तम्भ के पाँव पर, अक्षरों के नीचे, अजीब चिह्न खुदे हैं: ‘S’ जैसा छोटा मोड़, ऊँची खड़ी रेखाएँ, एक बड़ा गोल चिह्न,
+      और अंकों की एक पंक्ति। हरा भूत हिलता है। दादी कहती हैं, “आख़िरी पंक्ति पढ़ो, वह जाग जाएगा।”'
   quote:
     sa: सत्यमेव जयते नानृतं
     gloss:
@@ -55,8 +63,10 @@ cards:
   - script.signs
   - script.numerals
   body:
-    en: '{{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}: {{सोऽहम्}}. {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}.'
-    hi: '{{।}} {{दण्डः}} पंक्ति या वाक्य का अन्त करता है; {{॥}} श्लोक का अन्त। {{ऽ}}, अवग्रह, छूटे हुए {{अ}} का चिह्न है: {{सोऽहम्}}। {{ॐ}} पवित्र अक्षर है, {{अ}} + {{उ}} + {{म्}}।'
+    en: '{{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}: {{सोऽहम्}}.
+      {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}.'
+    hi: '{{।}} {{दण्डः}} पंक्ति या वाक्य का अन्त करता है; {{॥}} श्लोक का अन्त। {{ऽ}}, अवग्रह, छूटे हुए {{अ}} का चिह्न है:
+      {{सोऽहम्}}। {{ॐ}} पवित्र अक्षर है, {{अ}} + {{उ}} + {{म्}}।'
   rows:
   - sa: ।
     gloss:
@@ -74,6 +84,38 @@ cards:
     gloss:
       en: the sacred syllable
       hi: पवित्र अक्षर
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: '{{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}: {{सोऽहम्}}.
+        {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}.'
+      hi: '{{।}} {{दण्डः}} पंक्ति या वाक्य का अन्त करता है; {{॥}} श्लोक का अन्त। {{ऽ}}, अवग्रह, छूटे हुए {{अ}} का चिह्न है:
+        {{सोऽहम्}}। {{ॐ}} पवित्र अक्षर है, {{अ}} + {{उ}} + {{म्}}।'
+    items:
+    - id: i0
+      sa: ।
+      meaning:
+        en: ends a line or sentence
+        hi: पंक्ति या वाक्य का अन्त
+    - id: i1
+      sa: ॥
+      meaning:
+        en: ends a verse
+        hi: श्लोक का अन्त
+    - id: i2
+      sa: ऽ
+      meaning:
+        en: a dropped {{अ}} (avagraha)
+        hi: छूटा हुआ {{अ}} (अवग्रह)
+    - id: i3
+      sa: ॐ
+      meaning:
+        en: the sacred syllable
+        hi: पवित्र अक्षर
 - id: tb1
   kind: table
   title:
@@ -174,6 +216,38 @@ cards:
       text:
         en: the sacred syllable
         hi: पवित्र अक्षर
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}: {{सोऽहम्}}.
+        {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}.'
+      hi: '{{।}} {{दण्डः}} पंक्ति या वाक्य का अन्त करता है; {{॥}} श्लोक का अन्त। {{ऽ}}, अवग्रह, छूटे हुए {{अ}} का चिह्न है:
+        {{सोऽहम्}}। {{ॐ}} पवित्र अक्षर है, {{अ}} + {{उ}} + {{म्}}।'
+    items:
+    - id: i0
+      sa: ।
+      meaning:
+        en: ends a line or sentence
+        hi: पंक्ति या वाक्य का अन्त
+    - id: i1
+      sa: ॥
+      meaning:
+        en: ends a verse
+        hi: श्लोक का अन्त
+    - id: i2
+      sa: ऽ
+      meaning:
+        en: a dropped {{अ}} (avagraha)
+        hi: छूटा हुआ {{अ}} (अवग्रह)
+    - id: i3
+      sa: ॐ
+      meaning:
+        en: the sacred syllable
+        hi: पवित्र अक्षर
 - id: p2
   kind: practice
   depth: core
@@ -213,6 +287,38 @@ cards:
       text:
         en: nine
         hi: नौ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}: {{सोऽहम्}}.
+        {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}.'
+      hi: '{{।}} {{दण्डः}} पंक्ति या वाक्य का अन्त करता है; {{॥}} श्लोक का अन्त। {{ऽ}}, अवग्रह, छूटे हुए {{अ}} का चिह्न है:
+        {{सोऽहम्}}। {{ॐ}} पवित्र अक्षर है, {{अ}} + {{उ}} + {{म्}}।'
+    items:
+    - id: i0
+      sa: ।
+      meaning:
+        en: ends a line or sentence
+        hi: पंक्ति या वाक्य का अन्त
+    - id: i1
+      sa: ॥
+      meaning:
+        en: ends a verse
+        hi: श्लोक का अन्त
+    - id: i2
+      sa: ऽ
+      meaning:
+        en: a dropped {{अ}} (avagraha)
+        hi: छूटा हुआ {{अ}} (अवग्रह)
+    - id: i3
+      sa: ॐ
+      meaning:
+        en: the sacred syllable
+        hi: पवित्र अक्षर
 - id: p3
   kind: practice
   depth: core
@@ -234,6 +340,38 @@ cards:
   - ०
   - ८
   - ९
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}: {{सोऽहम्}}.
+        {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}.'
+      hi: '{{।}} {{दण्डः}} पंक्ति या वाक्य का अन्त करता है; {{॥}} श्लोक का अन्त। {{ऽ}}, अवग्रह, छूटे हुए {{अ}} का चिह्न है:
+        {{सोऽहम्}}। {{ॐ}} पवित्र अक्षर है, {{अ}} + {{उ}} + {{म्}}।'
+    items:
+    - id: i0
+      sa: ।
+      meaning:
+        en: ends a line or sentence
+        hi: पंक्ति या वाक्य का अन्त
+    - id: i1
+      sa: ॥
+      meaning:
+        en: ends a verse
+        hi: श्लोक का अन्त
+    - id: i2
+      sa: ऽ
+      meaning:
+        en: a dropped {{अ}} (avagraha)
+        hi: छूटा हुआ {{अ}} (अवग्रह)
+    - id: i3
+      sa: ॐ
+      meaning:
+        en: the sacred syllable
+        hi: पवित्र अक्षर
 - id: e1
   kind: explore
   depth: core
@@ -279,8 +417,10 @@ cards:
   gate: true
   story:
     success:
-      en: 'You read the line aloud, bars and all. The green spirit yawns, stretches, and opens both eyes: “जागर्मि!” His nightcap pops like a bubble.'
-      hi: 'आप पूरी पंक्ति, रेखाओं सहित, ज़ोर से पढ़ते हैं। हरा भूत उबासी लेता है, अँगड़ाई लेता है और दोनों आँखें खोल देता है: “जागर्मि!” उसकी टोपी बुलबुले की तरह फूट जाती है।'
+      en: 'You read the line aloud, bars and all. The green spirit yawns, stretches, and opens both eyes: “जागर्मि!” His nightcap
+        pops like a bubble.'
+      hi: 'आप पूरी पंक्ति, रेखाओं सहित, ज़ोर से पढ़ते हैं। हरा भूत उबासी लेता है, अँगड़ाई लेता है और दोनों आँखें खोल देता
+        है: “जागर्मि!” उसकी टोपी बुलबुले की तरह फूट जाती है।'
     failure:
       en: 'The line will not wake him. Say it as you read it: {{सत्यमेव}} first.'
       hi: 'पंक्ति उसे जगा नहीं पाती। पढ़ते हुए बोलिए: पहले {{सत्यमेव}}।'
@@ -288,6 +428,38 @@ cards:
   - सत्यमेव
   - जयते
   - नानृतं
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}: {{सोऽहम्}}.
+        {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}.'
+      hi: '{{।}} {{दण्डः}} पंक्ति या वाक्य का अन्त करता है; {{॥}} श्लोक का अन्त। {{ऽ}}, अवग्रह, छूटे हुए {{अ}} का चिह्न है:
+        {{सोऽहम्}}। {{ॐ}} पवित्र अक्षर है, {{अ}} + {{उ}} + {{म्}}।'
+    items:
+    - id: i0
+      sa: ।
+      meaning:
+        en: ends a line or sentence
+        hi: पंक्ति या वाक्य का अन्त
+    - id: i1
+      sa: ॥
+      meaning:
+        en: ends a verse
+        hi: श्लोक का अन्त
+    - id: i2
+      sa: ऽ
+      meaning:
+        en: a dropped {{अ}} (avagraha)
+        hi: छूटा हुआ {{अ}} (अवग्रह)
+    - id: i3
+      sa: ॐ
+      meaning:
+        en: the sacred syllable
+        hi: पवित्र अक्षर
 - id: p5
   kind: practice
   depth: core
@@ -313,6 +485,38 @@ cards:
   - text:
       en: a breath
       hi: साँस की
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}: {{सोऽहम्}}.
+        {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}.'
+      hi: '{{।}} {{दण्डः}} पंक्ति या वाक्य का अन्त करता है; {{॥}} श्लोक का अन्त। {{ऽ}}, अवग्रह, छूटे हुए {{अ}} का चिह्न है:
+        {{सोऽहम्}}। {{ॐ}} पवित्र अक्षर है, {{अ}} + {{उ}} + {{म्}}।'
+    items:
+    - id: i0
+      sa: ।
+      meaning:
+        en: ends a line or sentence
+        hi: पंक्ति या वाक्य का अन्त
+    - id: i1
+      sa: ॥
+      meaning:
+        en: ends a verse
+        hi: श्लोक का अन्त
+    - id: i2
+      sa: ऽ
+      meaning:
+        en: a dropped {{अ}} (avagraha)
+        hi: छूटा हुआ {{अ}} (अवग्रह)
+    - id: i3
+      sa: ॐ
+      meaning:
+        en: the sacred syllable
+        hi: पवित्र अक्षर
 - id: sum
   kind: summary
   title:

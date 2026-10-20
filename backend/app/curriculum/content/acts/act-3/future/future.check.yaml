@@ -28,6 +28,148 @@ cards:
   - sa: गच्छति
   - correct: true
     sa: गमिष्यति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: अहम् न पत्राणि दास्यामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I will not give the leaves.
+        hi: मैं पत्र नहीं दूँगा।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पत्राणि
+        gloss:
+          en: leaves
+          hi: पत्र
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Bahu
+      - sa: दास्यामि
+        gloss:
+          en: will give
+          hi: दूँगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i3
+      sa: पत्राणि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaves
+        hi: पत्र
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+    - id: i4
+      sa: दास्यामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: will give
+        hi: दूँगा
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lrt
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The first person ends in {{-मि}} for “I” and {{-मः}} for “we”: {{करिष्यामि}} (I will do), {{करिष्यामः}} (we will
+          do). With {{न}} it is a promise to refuse: {{न दास्यामि}}, “I will not give”. A question: {{किं करिष्यसि}}, “what
+          will you do?”'
+        hi: 'उत्तम पुरुष में ‘मैं’ के लिए {{-मि}} और ‘हम’ के लिए {{-मः}} है: {{करिष्यामि}} (मैं करूँगा), {{करिष्यामः}} (हम
+          करेंगे)। {{न}} के साथ यह मना करने का वचन है: {{न दास्यामि}}, ‘मैं नहीं दूँगा’। प्रश्न: {{किं करिष्यसि}}, ‘तुम क्या
+          करोगे?’'
+    - id: i7
+      sa: अहम् न पत्राणि दास्यामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I will not give the leaves.
+        hi: मैं पत्र नहीं दूँगा।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पत्राणि
+        gloss:
+          en: leaves
+          hi: पत्र
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Bahu
+      - sa: दास्यामि
+        gloss:
+          en: will give
+          hi: दूँगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -46,6 +188,148 @@ cards:
   - correct: true
     sa: पठिष्यति
   - sa: अपठत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: अहम् न पत्राणि दास्यामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I will not give the leaves.
+        hi: मैं पत्र नहीं दूँगा।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पत्राणि
+        gloss:
+          en: leaves
+          hi: पत्र
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Bahu
+      - sa: दास्यामि
+        gloss:
+          en: will give
+          hi: दूँगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i3
+      sa: पत्राणि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaves
+        hi: पत्र
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+    - id: i4
+      sa: दास्यामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: will give
+        hi: दूँगा
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lrt
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The first person ends in {{-मि}} for “I” and {{-मः}} for “we”: {{करिष्यामि}} (I will do), {{करिष्यामः}} (we will
+          do). With {{न}} it is a promise to refuse: {{न दास्यामि}}, “I will not give”. A question: {{किं करिष्यसि}}, “what
+          will you do?”'
+        hi: 'उत्तम पुरुष में ‘मैं’ के लिए {{-मि}} और ‘हम’ के लिए {{-मः}} है: {{करिष्यामि}} (मैं करूँगा), {{करिष्यामः}} (हम
+          करेंगे)। {{न}} के साथ यह मना करने का वचन है: {{न दास्यामि}}, ‘मैं नहीं दूँगा’। प्रश्न: {{किं करिष्यसि}}, ‘तुम क्या
+          करोगे?’'
+    - id: i7
+      sa: अहम् न पत्राणि दास्यामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I will not give the leaves.
+        hi: मैं पत्र नहीं दूँगा।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पत्राणि
+        gloss:
+          en: leaves
+          hi: पत्र
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Bahu
+      - sa: दास्यामि
+        gloss:
+          en: will give
+          hi: दूँगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -76,6 +360,148 @@ cards:
       sa: भवति
     right:
       sa: भविष्यति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: अहम् न पत्राणि दास्यामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I will not give the leaves.
+        hi: मैं पत्र नहीं दूँगा।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पत्राणि
+        gloss:
+          en: leaves
+          hi: पत्र
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Bahu
+      - sa: दास्यामि
+        gloss:
+          en: will give
+          hi: दूँगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i3
+      sa: पत्राणि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaves
+        hi: पत्र
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+    - id: i4
+      sa: दास्यामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: will give
+        hi: दूँगा
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lrt
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The first person ends in {{-मि}} for “I” and {{-मः}} for “we”: {{करिष्यामि}} (I will do), {{करिष्यामः}} (we will
+          do). With {{न}} it is a promise to refuse: {{न दास्यामि}}, “I will not give”. A question: {{किं करिष्यसि}}, “what
+          will you do?”'
+        hi: 'उत्तम पुरुष में ‘मैं’ के लिए {{-मि}} और ‘हम’ के लिए {{-मः}} है: {{करिष्यामि}} (मैं करूँगा), {{करिष्यामः}} (हम
+          करेंगे)। {{न}} के साथ यह मना करने का वचन है: {{न दास्यामि}}, ‘मैं नहीं दूँगा’। प्रश्न: {{किं करिष्यसि}}, ‘तुम क्या
+          करोगे?’'
+    - id: i7
+      sa: अहम् न पत्राणि दास्यामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I will not give the leaves.
+        hi: मैं पत्र नहीं दूँगा।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पत्राणि
+        gloss:
+          en: leaves
+          hi: पत्र
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Bahu
+      - sa: दास्यामि
+        gloss:
+          en: will give
+          hi: दूँगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -94,6 +520,148 @@ cards:
   - correct: true
     sa: गमिष्यामि
   - sa: गमिष्यामः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: अहम् न पत्राणि दास्यामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I will not give the leaves.
+        hi: मैं पत्र नहीं दूँगा।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पत्राणि
+        gloss:
+          en: leaves
+          hi: पत्र
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Bahu
+      - sa: दास्यामि
+        gloss:
+          en: will give
+          hi: दूँगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i3
+      sa: पत्राणि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaves
+        hi: पत्र
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+    - id: i4
+      sa: दास्यामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: will give
+        hi: दूँगा
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lrt
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The first person ends in {{-मि}} for “I” and {{-मः}} for “we”: {{करिष्यामि}} (I will do), {{करिष्यामः}} (we will
+          do). With {{न}} it is a promise to refuse: {{न दास्यामि}}, “I will not give”. A question: {{किं करिष्यसि}}, “what
+          will you do?”'
+        hi: 'उत्तम पुरुष में ‘मैं’ के लिए {{-मि}} और ‘हम’ के लिए {{-मः}} है: {{करिष्यामि}} (मैं करूँगा), {{करिष्यामः}} (हम
+          करेंगे)। {{न}} के साथ यह मना करने का वचन है: {{न दास्यामि}}, ‘मैं नहीं दूँगा’। प्रश्न: {{किं करिष्यसि}}, ‘तुम क्या
+          करोगे?’'
+    - id: i7
+      sa: अहम् न पत्राणि दास्यामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I will not give the leaves.
+        hi: मैं पत्र नहीं दूँगा।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पत्राणि
+        gloss:
+          en: leaves
+          hi: पत्र
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Bahu
+      - sa: दास्यामि
+        gloss:
+          en: will give
+          hi: दूँगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka
 - id: p5
   kind: practice
   depth: core
@@ -112,6 +680,148 @@ cards:
   - correct: true
     sa: पठिष्यामः
   - sa: पठिष्यन्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: अहम् न पत्राणि दास्यामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I will not give the leaves.
+        hi: मैं पत्र नहीं दूँगा।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पत्राणि
+        gloss:
+          en: leaves
+          hi: पत्र
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Bahu
+      - sa: दास्यामि
+        gloss:
+          en: will give
+          hi: दूँगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i3
+      sa: पत्राणि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaves
+        hi: पत्र
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+    - id: i4
+      sa: दास्यामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: will give
+        hi: दूँगा
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lrt
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The first person ends in {{-मि}} for “I” and {{-मः}} for “we”: {{करिष्यामि}} (I will do), {{करिष्यामः}} (we will
+          do). With {{न}} it is a promise to refuse: {{न दास्यामि}}, “I will not give”. A question: {{किं करिष्यसि}}, “what
+          will you do?”'
+        hi: 'उत्तम पुरुष में ‘मैं’ के लिए {{-मि}} और ‘हम’ के लिए {{-मः}} है: {{करिष्यामि}} (मैं करूँगा), {{करिष्यामः}} (हम
+          करेंगे)। {{न}} के साथ यह मना करने का वचन है: {{न दास्यामि}}, ‘मैं नहीं दूँगा’। प्रश्न: {{किं करिष्यसि}}, ‘तुम क्या
+          करोगे?’'
+    - id: i7
+      sa: अहम् न पत्राणि दास्यामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I will not give the leaves.
+        hi: मैं पत्र नहीं दूँगा।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पत्राणि
+        gloss:
+          en: leaves
+          hi: पत्र
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Bahu
+      - sa: दास्यामि
+        gloss:
+          en: will give
+          hi: दूँगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka
 - id: p6
   kind: practice
   depth: core
@@ -129,6 +839,148 @@ cards:
   - अहम्
   - न
   - दास्यामि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: अहम् न पत्राणि दास्यामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I will not give the leaves.
+        hi: मैं पत्र नहीं दूँगा।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पत्राणि
+        gloss:
+          en: leaves
+          hi: पत्र
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Bahu
+      - sa: दास्यामि
+        gloss:
+          en: will give
+          hi: दूँगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i3
+      sa: पत्राणि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaves
+        hi: पत्र
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+    - id: i4
+      sa: दास्यामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: will give
+        hi: दूँगा
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lrt
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The first person ends in {{-मि}} for “I” and {{-मः}} for “we”: {{करिष्यामि}} (I will do), {{करिष्यामः}} (we will
+          do). With {{न}} it is a promise to refuse: {{न दास्यामि}}, “I will not give”. A question: {{किं करिष्यसि}}, “what
+          will you do?”'
+        hi: 'उत्तम पुरुष में ‘मैं’ के लिए {{-मि}} और ‘हम’ के लिए {{-मः}} है: {{करिष्यामि}} (मैं करूँगा), {{करिष्यामः}} (हम
+          करेंगे)। {{न}} के साथ यह मना करने का वचन है: {{न दास्यामि}}, ‘मैं नहीं दूँगा’। प्रश्न: {{किं करिष्यसि}}, ‘तुम क्या
+          करोगे?’'
+    - id: i7
+      sa: अहम् न पत्राणि दास्यामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I will not give the leaves.
+        hi: मैं पत्र नहीं दूँगा।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पत्राणि
+        gloss:
+          en: leaves
+          hi: पत्र
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Bahu
+      - sa: दास्यामि
+        gloss:
+          en: will give
+          hi: दूँगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka
 - id: p7
   kind: practice
   depth: core
@@ -145,8 +997,14 @@ cards:
   gate: true
   story:
     success:
-      en: “श्वः सः गमिष्यति,” you say, and Bhāvika, who had been leaning for a thousand years, straightens up. “Tomorrow,” he says, as if tasting the word. “How good. I thought it would never come.” The light of dawn that was always about to break actually breaks, on his shoulders. “सः गच्छेत्,” he says, softer. “He should go.” The Vetāla's eyes snap open. “Careful,” he says. “That is not a promise. That is an opinion.”
-      hi: “श्वः सः गमिष्यति,” आप कहते हैं, और भाविक, जो हज़ार वर्षों से झुका था, सीधा हो जाता है। “कल,” वह कहता है, मानो शब्द चख रहा हो। “कितना अच्छा। मैंने सोचा था यह कभी नहीं आएगा।” भोर की जो रोशनी हमेशा फूटने को थी, वह सचमुच उसके कंधों पर फूट पड़ती है। “सः गच्छेत्,” वह धीमे से कहता है। “उसे जाना चाहिए।” वेताल की आँखें खुल जाती हैं। “सावधान,” वह कहता है। “यह वचन नहीं है। यह राय है।”
+      en: “श्वः सः गमिष्यति,” you say, and Bhāvika, who had been leaning for a thousand years, straightens up. “Tomorrow,”
+        he says, as if tasting the word. “How good. I thought it would never come.” The light of dawn that was always about
+        to break actually breaks, on his shoulders. “सः गच्छेत्,” he says, softer. “He should go.” The Vetāla's eyes snap
+        open. “Careful,” he says. “That is not a promise. That is an opinion.”
+      hi: “श्वः सः गमिष्यति,” आप कहते हैं, और भाविक, जो हज़ार वर्षों से झुका था, सीधा हो जाता है। “कल,” वह कहता है, मानो शब्द
+        चख रहा हो। “कितना अच्छा। मैंने सोचा था यह कभी नहीं आएगा।” भोर की जो रोशनी हमेशा फूटने को थी, वह सचमुच उसके कंधों पर
+        फूट पड़ती है। “सः गच्छेत्,” वह धीमे से कहता है। “उसे जाना चाहिए।” वेताल की आँखें खुल जाती हैं। “सावधान,” वह कहता है।
+        “यह वचन नहीं है। यह राय है।”
     failure:
       en: 'Bhāvika keeps leaning. His sentence: {{श्वः सः गमिष्यति}}.'
       hi: 'भाविक झुका रहता है। उसका वाक्य: {{श्वः सः गमिष्यति}}।'
@@ -154,3 +1012,145 @@ cards:
   - श्वः
   - सः
   - गमिष्यति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: अहम् न पत्राणि दास्यामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I will not give the leaves.
+        hi: मैं पत्र नहीं दूँगा।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पत्राणि
+        gloss:
+          en: leaves
+          hi: पत्र
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Bahu
+      - sa: दास्यामि
+        gloss:
+          en: will give
+          hi: दूँगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i3
+      sa: पत्राणि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaves
+        hi: पत्र
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{द्वितीया}} · plural'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+    - id: i4
+      sa: दास्यामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: will give
+        hi: दूँगा
+      check:
+        type: tinanta
+        dhatu: दा
+        lakara: Lrt
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दा}} · singular · {{लृट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The first person ends in {{-मि}} for “I” and {{-मः}} for “we”: {{करिष्यामि}} (I will do), {{करिष्यामः}} (we will
+          do). With {{न}} it is a promise to refuse: {{न दास्यामि}}, “I will not give”. A question: {{किं करिष्यसि}}, “what
+          will you do?”'
+        hi: 'उत्तम पुरुष में ‘मैं’ के लिए {{-मि}} और ‘हम’ के लिए {{-मः}} है: {{करिष्यामि}} (मैं करूँगा), {{करिष्यामः}} (हम
+          करेंगे)। {{न}} के साथ यह मना करने का वचन है: {{न दास्यामि}}, ‘मैं नहीं दूँगा’। प्रश्न: {{किं करिष्यसि}}, ‘तुम क्या
+          करोगे?’'
+    - id: i7
+      sa: अहम् न पत्राणि दास्यामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I will not give the leaves.
+        hi: मैं पत्र नहीं दूँगा।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पत्राणि
+        gloss:
+          en: leaves
+          hi: पत्र
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Bahu
+      - sa: दास्यामि
+        gloss:
+          en: will give
+          hi: दूँगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Uttama
+          vacana: Eka

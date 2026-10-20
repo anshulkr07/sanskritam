@@ -26,7 +26,8 @@ cards:
     hi: सीढ़ियों पर पढ़ने वाले
   depth: core
   image:
-    brief: 'Three groups of readers on the ghat steps: one boy reading alone, two girls sharing a palm leaf, and a row of children reading aloud together; the small grey-blue spirit leaning in with a hand cupped to his ear.'
+    brief: 'Three groups of readers on the ghat steps: one boy reading alone, two girls sharing a palm leaf, and a row of
+      children reading aloud together; the small grey-blue spirit leaning in with a hand cupped to his ear.'
     alt:
       en: One reader, two readers and a row of readers on the ghat steps
       hi: एक पाठक, दो पाठक और पाठकों की पंक्ति
@@ -38,10 +39,16 @@ cards:
     place: naditira
     ratio: '4:3'
     id: num-verbs-s1
-    text_in_image: ["पठति", "पठतः", "पठन्ति"]
+    text_in_image:
+    - पठति
+    - पठतः
+    - पठन्ति
   narration:
-    en: 'Along the steps sit readers. One reads alone. Two sit together over one leaf. A whole class reads aloud in a row. The spirit listens to their voices and notices something: the sound at the end of the verb changes with how many there are.'
-    hi: 'सीढ़ियों पर पाठक बैठे हैं। एक अकेला पढ़ता है। दो एक पत्र पर साथ बैठे हैं। पूरी कक्षा एक पंक्ति में ज़ोर से पढ़ती है। भूत उनकी आवाज़ें सुनता है और कुछ ध्यान देता है: क्रिया के अन्त की ध्वनि बदलती है जैसे ही संख्या बदलती है।'
+    en: 'Along the steps sit readers. One reads alone. Two sit together over one leaf. A whole class reads aloud in a row.
+      The spirit listens to their voices and notices something: the sound at the end of the verb changes with how many there
+      are.'
+    hi: 'सीढ़ियों पर पाठक बैठे हैं। एक अकेला पढ़ता है। दो एक पत्र पर साथ बैठे हैं। पूरी कक्षा एक पंक्ति में ज़ोर से पढ़ती
+      है। भूत उनकी आवाज़ें सुनता है और कुछ ध्यान देता है: क्रिया के अन्त की ध्वनि बदलती है जैसे ही संख्या बदलती है।'
 - id: t1
   kind: teach
   title:
@@ -53,8 +60,10 @@ cards:
   sutras:
   - 3.4.78
   body:
-    en: 'The verb has three endings for he, she or it: {{ति}} for one doer, {{तः}} for two, {{न्ति}} for many. {{पठति}} (he reads), {{पठतः}} (the two read), {{पठन्ति}} (they read).'
-    hi: 'वह के लिए क्रिया के तीन प्रत्यय हैं: एक कर्ता के लिए {{ति}}, दो के लिए {{तः}}, अनेक के लिए {{न्ति}}। {{पठति}} (वह पढ़ता है), {{पठतः}} (दो पढ़ते हैं), {{पठन्ति}} (वे पढ़ते हैं)।'
+    en: 'The verb has three endings for he, she or it: {{ति}} for one doer, {{तः}} for two, {{न्ति}} for many. {{पठति}} (he
+      reads), {{पठतः}} (the two read), {{पठन्ति}} (they read).'
+    hi: 'वह के लिए क्रिया के तीन प्रत्यय हैं: एक कर्ता के लिए {{ति}}, दो के लिए {{तः}}, अनेक के लिए {{न्ति}}। {{पठति}} (वह
+      पढ़ता है), {{पठतः}} (दो पढ़ते हैं), {{पठन्ति}} (वे पढ़ते हैं)।'
   steps:
   - sa: पठति
     label:
@@ -68,6 +77,28 @@ cards:
     label:
       en: many read
       hi: अनेक पढ़ते हैं
+  visuals:
+  - id: v-source-forms
+    kind: comparison
+    title:
+      en: Follow the forms
+      hi: रूपों पर ध्यान दें
+    items:
+    - id: i0
+      sa: पठति
+      meaning:
+        en: one reads
+        hi: एक पढ़ता है
+    - id: i1
+      sa: पठतः
+      meaning:
+        en: two read
+        hi: दो पढ़ते हैं
+    - id: i2
+      sa: पठन्ति
+      meaning:
+        en: many read
+        hi: अनेक पढ़ते हैं
 - id: tb1
   kind: table
   title:
@@ -247,6 +278,28 @@ cards:
   - correct: true
     sa: पठतः
   - sa: पठन्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पठति
+      meaning:
+        en: one reads
+        hi: एक पढ़ता है
+    - id: i1
+      sa: पठतः
+      meaning:
+        en: two read
+        hi: दो पढ़ते हैं
+    - id: i2
+      sa: पठन्ति
+      meaning:
+        en: many read
+        hi: अनेक पढ़ते हैं
 - id: p2
   kind: practice
   depth: core
@@ -285,6 +338,28 @@ cards:
       text:
         en: many
         hi: अनेक
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पठति
+      meaning:
+        en: one reads
+        hi: एक पढ़ता है
+    - id: i1
+      sa: पठतः
+      meaning:
+        en: two read
+        hi: दो पढ़ते हैं
+    - id: i2
+      sa: पठन्ति
+      meaning:
+        en: many read
+        hi: अनेक पढ़ते हैं
 - id: p3
   kind: practice
   depth: core
@@ -305,6 +380,28 @@ cards:
   - तः
   - ति
   - न्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पठति
+      meaning:
+        en: one reads
+        hi: एक पढ़ता है
+    - id: i1
+      sa: पठतः
+      meaning:
+        en: two read
+        hi: दो पढ़ते हैं
+    - id: i2
+      sa: पठन्ति
+      meaning:
+        en: many read
+        hi: अनेक पढ़ते हैं
 - id: e2
   kind: explore
   depth: core
@@ -346,8 +443,10 @@ cards:
   gate: true
   story:
     success:
-      en: “गच्छन्ति,” you say, and the whole row of readers rises and files off along the ghat, their voices fading in a long happy chain.
-      hi: “गच्छन्ति,” आप कहते हैं, और पाठकों की पूरी पंक्ति उठकर घाट के किनारे-किनारे चल पड़ती है, उनकी आवाज़ें एक लम्बी, ख़ुश कड़ी में धीमी होती हुई।
+      en: “गच्छन्ति,” you say, and the whole row of readers rises and files off along the ghat, their voices fading in a long
+        happy chain.
+      hi: “गच्छन्ति,” आप कहते हैं, और पाठकों की पूरी पंक्ति उठकर घाट के किनारे-किनारे चल पड़ती है, उनकी आवाज़ें एक लम्बी,
+        ख़ुश कड़ी में धीमी होती हुई।
     failure:
       en: 'The readers stay seated. Many: look for {{न्ति}}.'
       hi: 'पाठक बैठे रहते हैं। अनेक: {{न्ति}} खोजिए।'
@@ -356,6 +455,28 @@ cards:
   - sa: गच्छतः
   - correct: true
     sa: गच्छन्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पठति
+      meaning:
+        en: one reads
+        hi: एक पढ़ता है
+    - id: i1
+      sa: पठतः
+      meaning:
+        en: two read
+        hi: दो पढ़ते हैं
+    - id: i2
+      sa: पठन्ति
+      meaning:
+        en: many read
+        hi: अनेक पढ़ते हैं
 - id: sum
   kind: summary
   title:

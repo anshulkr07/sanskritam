@@ -28,6 +28,168 @@ cards:
   - correct: true
     sa: च
   - sa: तु
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः लक्ष्मणः च गच्छतः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma and Lakṣmaṇa go.
+        hi: राम और लक्ष्मण जाते हैं।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: लक्ष्मणः
+        gloss:
+          en: Lakṣmaṇa
+          hi: लक्ष्मण
+        check:
+          type: subanta
+          stem: लक्ष्मण
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: च
+        gloss:
+          en: and
+          hi: और
+      - sa: गच्छतः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Dvi
+    - id: i1
+      sa: रामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: लक्ष्मणः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Lakṣmaṇa
+        hi: लक्ष्मण
+      check:
+        type: subanta
+        stem: लक्ष्मण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{लक्ष्मण}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{लक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: च
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: and
+        hi: और
+    - id: i4
+      sa: गच्छतः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाते हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Root: {{गम्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Some words have no endings: they are indeclinable, {{अव्ययम्}}. {{च}} (and), {{वा}} (or), {{अपि}} (also, even),
+          {{एव}} (only, just), {{तु}} (but), {{हि}} (for, indeed), {{न}} (not), {{इव}} (like). They follow the word they belong
+          to.'
+        hi: 'कुछ शब्दों में प्रत्यय नहीं होते: वे अव्यय हैं, {{अव्ययम्}}। {{च}} (और), {{वा}} (या), {{अपि}} (भी), {{एव}} (ही),
+          {{तु}} (परन्तु), {{हि}} (क्योंकि), {{न}} (नहीं), {{इव}} (जैसे)। वे उस शब्द के बाद आते हैं जिससे जुड़े हों।'
+    - id: i7
+      sa: रामः लक्ष्मणः च गच्छतः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma and Lakṣmaṇa go.
+        hi: राम और लक्ष्मण जाते हैं।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: लक्ष्मणः
+        gloss:
+          en: Lakṣmaṇa
+          hi: लक्ष्मण
+        check:
+          type: subanta
+          stem: लक्ष्मण
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: च
+        gloss:
+          en: and
+          hi: और
+      - sa: गच्छतः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Dvi
 - id: p2
   kind: practice
   depth: core
@@ -46,6 +208,168 @@ cards:
   - correct: true
     sa: एव
   - sa: इव
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः लक्ष्मणः च गच्छतः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma and Lakṣmaṇa go.
+        hi: राम और लक्ष्मण जाते हैं।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: लक्ष्मणः
+        gloss:
+          en: Lakṣmaṇa
+          hi: लक्ष्मण
+        check:
+          type: subanta
+          stem: लक्ष्मण
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: च
+        gloss:
+          en: and
+          hi: और
+      - sa: गच्छतः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Dvi
+    - id: i1
+      sa: रामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: लक्ष्मणः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Lakṣmaṇa
+        hi: लक्ष्मण
+      check:
+        type: subanta
+        stem: लक्ष्मण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{लक्ष्मण}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{लक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: च
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: and
+        hi: और
+    - id: i4
+      sa: गच्छतः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाते हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Root: {{गम्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Some words have no endings: they are indeclinable, {{अव्ययम्}}. {{च}} (and), {{वा}} (or), {{अपि}} (also, even),
+          {{एव}} (only, just), {{तु}} (but), {{हि}} (for, indeed), {{न}} (not), {{इव}} (like). They follow the word they belong
+          to.'
+        hi: 'कुछ शब्दों में प्रत्यय नहीं होते: वे अव्यय हैं, {{अव्ययम्}}। {{च}} (और), {{वा}} (या), {{अपि}} (भी), {{एव}} (ही),
+          {{तु}} (परन्तु), {{हि}} (क्योंकि), {{न}} (नहीं), {{इव}} (जैसे)। वे उस शब्द के बाद आते हैं जिससे जुड़े हों।'
+    - id: i7
+      sa: रामः लक्ष्मणः च गच्छतः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma and Lakṣmaṇa go.
+        hi: राम और लक्ष्मण जाते हैं।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: लक्ष्मणः
+        gloss:
+          en: Lakṣmaṇa
+          hi: लक्ष्मण
+        check:
+          type: subanta
+          stem: लक्ष्मण
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: च
+        gloss:
+          en: and
+          hi: और
+      - sa: गच्छतः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Dvi
 - id: p3
   kind: practice
   depth: core
@@ -64,6 +388,164 @@ cards:
   - sa: एव
   - correct: true
     sa: इति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i3
+      sa: गच्छामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: i4
+      sa: इति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: thus
+        hi: ऐसा
+    - id: i5
+      sa: वदति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: says
+        hi: कहता है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{इति}} comes after a quoted word, thought or sentence: {{सः वदति ‘अहं गच्छामि’ इति}}, “he says: ‘I go’”. It
+          also means “so”: {{इति उक्त्वा}}, “having said so”. In epics it joins with the next word: {{इत्युवाच}}, “saying
+          so, he said”.'
+        hi: '{{इति}} उद्धृत शब्द, विचार या वाक्य के बाद आता है: {{सः वदति ‘अहं गच्छामि’ इति}}, ‘वह कहता है: “मैं जाता हूँ”’।
+          इसका अर्थ ‘ऐसा’ भी है: {{इति उक्त्वा}}, ‘ऐसा कहकर’। महाकाव्यों में वह अगले शब्द से जुड़ जाता है: {{इत्युवाच}}, ‘ऐसा
+          कहकर बोला’।'
+    - id: i8
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -83,6 +565,164 @@ cards:
   - गच्छामि
   - इति
   - वदति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i3
+      sa: गच्छामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: i4
+      sa: इति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: thus
+        hi: ऐसा
+    - id: i5
+      sa: वदति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: says
+        hi: कहता है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{इति}} comes after a quoted word, thought or sentence: {{सः वदति ‘अहं गच्छामि’ इति}}, “he says: ‘I go’”. It
+          also means “so”: {{इति उक्त्वा}}, “having said so”. In epics it joins with the next word: {{इत्युवाच}}, “saying
+          so, he said”.'
+        hi: '{{इति}} उद्धृत शब्द, विचार या वाक्य के बाद आता है: {{सः वदति ‘अहं गच्छामि’ इति}}, ‘वह कहता है: “मैं जाता हूँ”’।
+          इसका अर्थ ‘ऐसा’ भी है: {{इति उक्त्वा}}, ‘ऐसा कहकर’। महाकाव्यों में वह अगले शब्द से जुड़ जाता है: {{इत्युवाच}}, ‘ऐसा
+          कहकर बोला’।'
+    - id: i8
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p5
   kind: practice
   depth: core
@@ -101,6 +741,111 @@ cards:
   - correct: true
     sa: तत्र
   - sa: यत्र
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: अत्र पुस्तकम् अस्ति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Here is a book.
+        hi: यहाँ पुस्तक है।
+      words:
+      - sa: अत्र
+        gloss:
+          en: here
+          hi: यहाँ
+      - sa: पुस्तकम्
+        gloss:
+          en: a book
+          hi: पुस्तक
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: अत्र
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: here
+        hi: यहाँ
+    - id: i2
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: a book
+        hi: पुस्तक
+    - id: i3
+      sa: अस्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Place words end in {{-त्र}}: {{अत्र}} (here), {{तत्र}} (there), {{यत्र}} (where), {{कुत्र}} (where?), {{सर्वत्र}}
+          (everywhere). Time words end in {{-दा}}: {{यदा}} (when), {{तदा}} (then), {{कदा}} (when?), {{सर्वदा}} (always), {{एकदा}}
+          (once). Manner words end in {{-था}}: {{यथा}} (as), {{तथा}} (so), {{कथम्}} (how?).'
+        hi: 'स्थान के शब्द {{-त्र}} पर समाप्त होते हैं: {{अत्र}} (यहाँ), {{तत्र}} (वहाँ), {{यत्र}} (जहाँ), {{कुत्र}} (कहाँ?),
+          {{सर्वत्र}} (सब जगह)। समय के शब्द {{-दा}} पर: {{यदा}} (जब), {{तदा}} (तब), {{कदा}} (कब?), {{सर्वदा}} (सदा), {{एकदा}}
+          (एक बार)। रीति के शब्द {{-था}} पर: {{यथा}} (जैसे), {{तथा}} (वैसे), {{कथम्}} (कैसे?)।'
+    - id: i6
+      sa: अत्र पुस्तकम् अस्ति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Here is a book.
+        hi: यहाँ पुस्तक है।
+      words:
+      - sa: अत्र
+        gloss:
+          en: here
+          hi: यहाँ
+      - sa: पुस्तकम्
+        gloss:
+          en: a book
+          hi: पुस्तक
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p6
   kind: practice
   depth: core
@@ -139,6 +884,111 @@ cards:
       text:
         en: so
         hi: वैसे
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: अत्र पुस्तकम् अस्ति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Here is a book.
+        hi: यहाँ पुस्तक है।
+      words:
+      - sa: अत्र
+        gloss:
+          en: here
+          hi: यहाँ
+      - sa: पुस्तकम्
+        gloss:
+          en: a book
+          hi: पुस्तक
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: अत्र
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: here
+        hi: यहाँ
+    - id: i2
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: a book
+        hi: पुस्तक
+    - id: i3
+      sa: अस्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Place words end in {{-त्र}}: {{अत्र}} (here), {{तत्र}} (there), {{यत्र}} (where), {{कुत्र}} (where?), {{सर्वत्र}}
+          (everywhere). Time words end in {{-दा}}: {{यदा}} (when), {{तदा}} (then), {{कदा}} (when?), {{सर्वदा}} (always), {{एकदा}}
+          (once). Manner words end in {{-था}}: {{यथा}} (as), {{तथा}} (so), {{कथम्}} (how?).'
+        hi: 'स्थान के शब्द {{-त्र}} पर समाप्त होते हैं: {{अत्र}} (यहाँ), {{तत्र}} (वहाँ), {{यत्र}} (जहाँ), {{कुत्र}} (कहाँ?),
+          {{सर्वत्र}} (सब जगह)। समय के शब्द {{-दा}} पर: {{यदा}} (जब), {{तदा}} (तब), {{कदा}} (कब?), {{सर्वदा}} (सदा), {{एकदा}}
+          (एक बार)। रीति के शब्द {{-था}} पर: {{यथा}} (जैसे), {{तथा}} (वैसे), {{कथम्}} (कैसे?)।'
+    - id: i6
+      sa: अत्र पुस्तकम् अस्ति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Here is a book.
+        hi: यहाँ पुस्तक है।
+      words:
+      - sa: अत्र
+        gloss:
+          en: here
+          hi: यहाँ
+      - sa: पुस्तकम्
+        gloss:
+          en: a book
+          hi: पुस्तक
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p7
   kind: practice
   depth: core
@@ -155,8 +1005,14 @@ cards:
   gate: true
   story:
     success:
-      en: '“च, वा, अपि, एव, तु, हि,” you say, and Avyayaka, perfectly round and smooth, rolls once around your feet, then rises a hand''s breadth into the air, turning slowly, and begins to give off a quiet white light. “तत्र अस्ति,” he says, and then, very softly, as if to himself: “तत्रास्ति.” He has joined the two words; the vowels have flowed into one another, and the sentence is not broken but smoother. “That,” says the Vetāla, “is the next thing. But first.”'
-      hi: '“च, वा, अपि, एव, तु, हि,” आप कहते हैं, और अव्यय, पूर्णतः गोल और चिकना, आपके पैरों के चारों ओर एक बार लुढ़कता है, फिर हथेली भर ऊपर हवा में उठकर धीरे-धीरे घूमता है और एक शान्त सफ़ेद प्रकाश देने लगता है। “तत्र अस्ति,” वह कहता है, और फिर बहुत धीमे, मानो अपने-आप से: “तत्रास्ति।” उसने दोनों शब्द जोड़ दिए हैं; स्वर एक-दूसरे में बह गए हैं, और वाक्य टूटा नहीं बल्कि और चिकना हो गया है। “वही अगली चीज़ है,” वेताल कहता है। “पर पहले।”'
+      en: '“च, वा, अपि, एव, तु, हि,” you say, and Avyayaka, perfectly round and smooth, rolls once around your feet, then
+        rises a hand''s breadth into the air, turning slowly, and begins to give off a quiet white light. “तत्र अस्ति,” he
+        says, and then, very softly, as if to himself: “तत्रास्ति.” He has joined the two words; the vowels have flowed into
+        one another, and the sentence is not broken but smoother. “That,” says the Vetāla, “is the next thing. But first.”'
+      hi: '“च, वा, अपि, एव, तु, हि,” आप कहते हैं, और अव्यय, पूर्णतः गोल और चिकना, आपके पैरों के चारों ओर एक बार लुढ़कता है,
+        फिर हथेली भर ऊपर हवा में उठकर धीरे-धीरे घूमता है और एक शान्त सफ़ेद प्रकाश देने लगता है। “तत्र अस्ति,” वह कहता है,
+        और फिर बहुत धीमे, मानो अपने-आप से: “तत्रास्ति।” उसने दोनों शब्द जोड़ दिए हैं; स्वर एक-दूसरे में बह गए हैं, और वाक्य
+        टूटा नहीं बल्कि और चिकना हो गया है। “वही अगली चीज़ है,” वेताल कहता है। “पर पहले।”'
     failure:
       en: 'He keeps patting himself. His six words: {{च वा अपि एव तु हि}}.'
       hi: 'वह स्वयं को थपथपाता रहता है। उसके छह शब्द: {{च वा अपि एव तु हि}}।'
@@ -167,3 +1023,165 @@ cards:
   - एव
   - तु
   - हि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः लक्ष्मणः च गच्छतः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma and Lakṣmaṇa go.
+        hi: राम और लक्ष्मण जाते हैं।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: लक्ष्मणः
+        gloss:
+          en: Lakṣmaṇa
+          hi: लक्ष्मण
+        check:
+          type: subanta
+          stem: लक्ष्मण
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: च
+        gloss:
+          en: and
+          hi: और
+      - sa: गच्छतः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Dvi
+    - id: i1
+      sa: रामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: लक्ष्मणः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Lakṣmaṇa
+        hi: लक्ष्मण
+      check:
+        type: subanta
+        stem: लक्ष्मण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{लक्ष्मण}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{लक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: च
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: and
+        hi: और
+    - id: i4
+      sa: गच्छतः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाते हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Root: {{गम्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Some words have no endings: they are indeclinable, {{अव्ययम्}}. {{च}} (and), {{वा}} (or), {{अपि}} (also, even),
+          {{एव}} (only, just), {{तु}} (but), {{हि}} (for, indeed), {{न}} (not), {{इव}} (like). They follow the word they belong
+          to.'
+        hi: 'कुछ शब्दों में प्रत्यय नहीं होते: वे अव्यय हैं, {{अव्ययम्}}। {{च}} (और), {{वा}} (या), {{अपि}} (भी), {{एव}} (ही),
+          {{तु}} (परन्तु), {{हि}} (क्योंकि), {{न}} (नहीं), {{इव}} (जैसे)। वे उस शब्द के बाद आते हैं जिससे जुड़े हों।'
+    - id: i7
+      sa: रामः लक्ष्मणः च गच्छतः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma and Lakṣmaṇa go.
+        hi: राम और लक्ष्मण जाते हैं।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: लक्ष्मणः
+        gloss:
+          en: Lakṣmaṇa
+          hi: लक्ष्मण
+        check:
+          type: subanta
+          stem: लक्ष्मण
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: च
+        gloss:
+          en: and
+          hi: और
+      - sa: गच्छतः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Dvi

@@ -111,6 +111,50 @@ cards:
         krt: ktvA
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: दृष्ट्वा
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: having seen
+          hi: देखकर
+        check:
+          type: krdanta
+          dhatu: दृश्
+          krt: ktvA
+        feature:
+          en: 'Root: {{दृश्}}'
+          hi: 'धातु: {{दृश्}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'The root changes before {{-त्वा}}: {{दृश्}} gives {{दृष्ट्वा}}, {{वच्}} gives {{उक्त्वा}}, {{दा}} gives {{दत्त्वा}}.'
+          hi: '{{-त्वा}} से पहले धातु बदलती है: {{दृश्}} से {{दृष्ट्वा}}, {{वच्}} से {{उक्त्वा}}, {{दा}} से {{दत्त्वा}}।'
+      - id: i3
+        sa: दृष्ट्वा
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: having seen
+          hi: देखकर
+        check:
+          type: krdanta
+          dhatu: दृश्
+          krt: ktvA
+        feature:
+          en: 'Root: {{दृश्}}'
+          hi: 'धातु: {{दृश्}}'
   - skill: krt.kta
     rule:
       en: 'Some {{-त}} words are quite irregular: {{पच्}} gives {{पक्वः}}, {{धा}} gives {{हितः}}.'
@@ -129,6 +173,56 @@ cards:
         vacana: Eka
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: पक्वः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: cooked
+          hi: पका हुआ
+        check:
+          type: krdanta
+          dhatu: पच्
+          krt: kta
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{पच्}} · masculine · {{प्रथमा}} · singular'
+          hi: 'धातु: {{पच्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Some {{-त}} words are quite irregular: {{पच्}} gives {{पक्वः}}, {{धा}} gives {{हितः}}.'
+          hi: 'कुछ {{-त}} शब्द बहुत अनियमित हैं: {{पच्}} से {{पक्वः}}, {{धा}} से {{हितः}}।'
+      - id: i3
+        sa: पक्वः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: cooked
+          hi: पका हुआ
+        check:
+          type: krdanta
+          dhatu: पच्
+          krt: kta
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{पच्}} · masculine · {{प्रथमा}} · singular'
+          hi: 'धातु: {{पच्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: mistakes
   kind: revision
   title:

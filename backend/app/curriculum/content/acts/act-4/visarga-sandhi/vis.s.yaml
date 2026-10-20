@@ -24,7 +24,8 @@ cards:
     hi: आठवीं प्रतिमा
   depth: core
   image:
-    brief: The eighth statue with her lips slightly parted as if hissing, a faint curl of breath; Śuka counting on his claws; Dādī pointing at three inscribed words on a pillar; Lubdhaka's foreman holding his lamp higher.
+    brief: The eighth statue with her lips slightly parted as if hissing, a faint curl of breath; Śuka counting on his claws;
+      Dādī pointing at three inscribed words on a pillar; Lubdhaka's foreman holding his lamp higher.
     alt:
       en: A statue with parted lips faintly hissing while a parrot counts and an old woman points at an inscribed pillar
       hi: हल्की फुफकारती प्रतिमा, गिनता तोता, अभिलेख वाले स्तम्भ की ओर इशारा करती दादी
@@ -37,10 +38,17 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: vis-s-s1
-    text_in_image: ["रामश्च", "रामस्तत्र", "रामष्टीकते"]
+    text_in_image:
+    - रामश्च
+    - रामस्तत्र
+    - रामष्टीकते
   narration:
-    en: 'The eighth statue hisses faintly. “रामश्च,” she says: “and Rāma.” “रामस्तत्र”: “Rāma is there.” “Where did the visarga go?” asks Śuka. “It turned into a hiss,” says Dādī. “Before च it becomes श्. Before त it becomes स्. Before ट it becomes ष्. The breath takes on the place of the sound that follows.”'
-    hi: 'आठवीं प्रतिमा हल्की फुफकारती है। “रामश्च,” वह कहती है: “और राम।” “रामस्तत्र”: “राम वहाँ है।” “विसर्ग कहाँ गया?” शुक पूछता है। “वह फुफकार बन गया,” दादी कहती हैं। “च से पहले वह श् बनता है। त से पहले स्। ट से पहले ष्। श्वास अपने बाद आने वाली ध्वनि के स्थान को अपना लेता है।”'
+    en: 'The eighth statue hisses faintly. “रामश्च,” she says: “and Rāma.” “रामस्तत्र”: “Rāma is there.” “Where did the visarga
+      go?” asks Śuka. “It turned into a hiss,” says Dādī. “Before च it becomes श्. Before त it becomes स्. Before ट it becomes
+      ष्. The breath takes on the place of the sound that follows.”'
+    hi: 'आठवीं प्रतिमा हल्की फुफकारती है। “रामश्च,” वह कहती है: “और राम।” “रामस्तत्र”: “राम वहाँ है।” “विसर्ग कहाँ गया?” शुक
+      पूछता है। “वह फुफकार बन गया,” दादी कहती हैं। “च से पहले वह श् बनता है। त से पहले स्। ट से पहले ष्। श्वास अपने बाद आने
+      वाली ध्वनि के स्थान को अपना लेता है।”'
   lines:
   - speaker: visargika
     sa: रामश्च
@@ -61,8 +69,60 @@ cards:
   skills:
   - sandhi.visarga-s
   body:
-    en: 'Before a hard consonant the visarga turns into a hiss in the same place as that consonant: before {{च}}/{{छ}} it is {{श्}}, before {{त}}/{{थ}} it is {{स्}}, before {{ट}}/{{ठ}} it is {{ष्}}. {{रामः + च}} gives {{रामश्च}}; {{रामः + तत्र}} gives {{रामस्तत्र}}. Before {{क}}, {{ख}}, {{प}}, {{फ}} the visarga stays.'
-    hi: 'कठोर व्यंजन से पहले विसर्ग उसी स्थान की फुफकार बन जाता है: {{च}}/{{छ}} से पहले {{श्}}, {{त}}/{{थ}} से पहले {{स्}}, {{ट}}/{{ठ}} से पहले {{ष्}}। {{रामः + च}} से {{रामश्च}}; {{रामः + तत्र}} से {{रामस्तत्र}}। {{क}}, {{ख}}, {{प}}, {{फ}} से पहले विसर्ग रहता है।'
+    en: 'Before a hard consonant the visarga turns into a hiss in the same place as that consonant: before {{च}}/{{छ}} it
+      is {{श्}}, before {{त}}/{{थ}} it is {{स्}}, before {{ट}}/{{ठ}} it is {{ष्}}. {{रामः + च}} gives {{रामश्च}}; {{रामः +
+      तत्र}} gives {{रामस्तत्र}}. Before {{क}}, {{ख}}, {{प}}, {{फ}} the visarga stays.'
+    hi: 'कठोर व्यंजन से पहले विसर्ग उसी स्थान की फुफकार बन जाता है: {{च}}/{{छ}} से पहले {{श्}}, {{त}}/{{थ}} से पहले {{स्}},
+      {{ट}}/{{ठ}} से पहले {{ष्}}। {{रामः + च}} से {{रामश्च}}; {{रामः + तत्र}} से {{रामस्तत्र}}। {{क}}, {{ख}}, {{प}}, {{फ}}
+      से पहले विसर्ग रहता है।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Before a hard consonant the visarga turns into a hiss in the same place as that consonant: before {{च}}/{{छ}} it
+        is {{श्}}, before {{त}}/{{थ}} it is {{स्}}, before {{ट}}/{{ठ}} it is {{ष्}}. {{रामः + च}} gives {{रामश्च}}; {{रामः
+        + तत्र}} gives {{रामस्तत्र}}. Before {{क}}, {{ख}}, {{प}}, {{फ}} the visarga stays.'
+      hi: 'कठोर व्यंजन से पहले विसर्ग उसी स्थान की फुफकार बन जाता है: {{च}}/{{छ}} से पहले {{श्}}, {{त}}/{{थ}} से पहले {{स्}},
+        {{ट}}/{{ठ}} से पहले {{ष्}}। {{रामः + च}} से {{रामश्च}}; {{रामः + तत्र}} से {{रामस्तत्र}}। {{क}}, {{ख}}, {{प}}, {{फ}}
+        से पहले विसर्ग रहता है।'
+    items:
+    - id: i0
+      sa: च
+    - id: i1
+      sa: छ
+    - id: i2
+      sa: श्
+    - id: i3
+      sa: त
+    - id: i4
+      sa: थ
+    - id: i5
+      sa: स्
+    - id: i6
+      sa: ट
+    - id: i7
+      sa: ठ
+    - id: i8
+      sa: ष्
+    - id: i9
+      sa: रामः + च
+    - id: i10
+      sa: रामश्च
+    - id: i11
+      sa: रामः + तत्र
+    - id: i12
+      sa: रामस्तत्र
+    - id: i13
+      sa: क
+    - id: i14
+      sa: ख
+    - id: i15
+      sa: प
+    - id: i16
+      sa: फ
 - id: tb1
   kind: table
   title:
@@ -184,6 +244,54 @@ cards:
   - correct: true
     sa: रामः + च
   - sa: रामे + च
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Before a hard consonant the visarga turns into a hiss in the same place as that consonant: before {{च}}/{{छ}} it
+        is {{श्}}, before {{त}}/{{थ}} it is {{स्}}, before {{ट}}/{{ठ}} it is {{ष्}}. {{रामः + च}} gives {{रामश्च}}; {{रामः
+        + तत्र}} gives {{रामस्तत्र}}. Before {{क}}, {{ख}}, {{प}}, {{फ}} the visarga stays.'
+      hi: 'कठोर व्यंजन से पहले विसर्ग उसी स्थान की फुफकार बन जाता है: {{च}}/{{छ}} से पहले {{श्}}, {{त}}/{{थ}} से पहले {{स्}},
+        {{ट}}/{{ठ}} से पहले {{ष्}}। {{रामः + च}} से {{रामश्च}}; {{रामः + तत्र}} से {{रामस्तत्र}}। {{क}}, {{ख}}, {{प}}, {{फ}}
+        से पहले विसर्ग रहता है।'
+    items:
+    - id: i0
+      sa: च
+    - id: i1
+      sa: छ
+    - id: i2
+      sa: श्
+    - id: i3
+      sa: त
+    - id: i4
+      sa: थ
+    - id: i5
+      sa: स्
+    - id: i6
+      sa: ट
+    - id: i7
+      sa: ठ
+    - id: i8
+      sa: ष्
+    - id: i9
+      sa: रामः + च
+    - id: i10
+      sa: रामश्च
+    - id: i11
+      sa: रामः + तत्र
+    - id: i12
+      sa: रामस्तत्र
+    - id: i13
+      sa: क
+    - id: i14
+      sa: ख
+    - id: i15
+      sa: प
+    - id: i16
+      sa: फ
 - id: p2
   kind: practice
   depth: core
@@ -202,6 +310,54 @@ cards:
   - sa: रामसच
   - correct: true
     sa: रामश्च
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Before a hard consonant the visarga turns into a hiss in the same place as that consonant: before {{च}}/{{छ}} it
+        is {{श्}}, before {{त}}/{{थ}} it is {{स्}}, before {{ट}}/{{ठ}} it is {{ष्}}. {{रामः + च}} gives {{रामश्च}}; {{रामः
+        + तत्र}} gives {{रामस्तत्र}}. Before {{क}}, {{ख}}, {{प}}, {{फ}} the visarga stays.'
+      hi: 'कठोर व्यंजन से पहले विसर्ग उसी स्थान की फुफकार बन जाता है: {{च}}/{{छ}} से पहले {{श्}}, {{त}}/{{थ}} से पहले {{स्}},
+        {{ट}}/{{ठ}} से पहले {{ष्}}। {{रामः + च}} से {{रामश्च}}; {{रामः + तत्र}} से {{रामस्तत्र}}। {{क}}, {{ख}}, {{प}}, {{फ}}
+        से पहले विसर्ग रहता है।'
+    items:
+    - id: i0
+      sa: च
+    - id: i1
+      sa: छ
+    - id: i2
+      sa: श्
+    - id: i3
+      sa: त
+    - id: i4
+      sa: थ
+    - id: i5
+      sa: स्
+    - id: i6
+      sa: ट
+    - id: i7
+      sa: ठ
+    - id: i8
+      sa: ष्
+    - id: i9
+      sa: रामः + च
+    - id: i10
+      sa: रामश्च
+    - id: i11
+      sa: रामः + तत्र
+    - id: i12
+      sa: रामस्तत्र
+    - id: i13
+      sa: क
+    - id: i14
+      sa: ख
+    - id: i15
+      sa: प
+    - id: i16
+      sa: फ
 - id: p3
   kind: practice
   depth: core
@@ -222,6 +378,54 @@ cards:
   - तत्र
   - कविः
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Before a hard consonant the visarga turns into a hiss in the same place as that consonant: before {{च}}/{{छ}} it
+        is {{श्}}, before {{त}}/{{थ}} it is {{स्}}, before {{ट}}/{{ठ}} it is {{ष्}}. {{रामः + च}} gives {{रामश्च}}; {{रामः
+        + तत्र}} gives {{रामस्तत्र}}. Before {{क}}, {{ख}}, {{प}}, {{फ}} the visarga stays.'
+      hi: 'कठोर व्यंजन से पहले विसर्ग उसी स्थान की फुफकार बन जाता है: {{च}}/{{छ}} से पहले {{श्}}, {{त}}/{{थ}} से पहले {{स्}},
+        {{ट}}/{{ठ}} से पहले {{ष्}}। {{रामः + च}} से {{रामश्च}}; {{रामः + तत्र}} से {{रामस्तत्र}}। {{क}}, {{ख}}, {{प}}, {{फ}}
+        से पहले विसर्ग रहता है।'
+    items:
+    - id: i0
+      sa: च
+    - id: i1
+      sa: छ
+    - id: i2
+      sa: श्
+    - id: i3
+      sa: त
+    - id: i4
+      sa: थ
+    - id: i5
+      sa: स्
+    - id: i6
+      sa: ट
+    - id: i7
+      sa: ठ
+    - id: i8
+      sa: ष्
+    - id: i9
+      sa: रामः + च
+    - id: i10
+      sa: रामश्च
+    - id: i11
+      sa: रामः + तत्र
+    - id: i12
+      sa: रामस्तत्र
+    - id: i13
+      sa: क
+    - id: i14
+      sa: ख
+    - id: i15
+      sa: प
+    - id: i16
+      sa: फ
 - id: p4
   kind: practice
   depth: core
@@ -252,6 +456,54 @@ cards:
       sa: रामः करोति
     right:
       sa: रामः + करोति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Before a hard consonant the visarga turns into a hiss in the same place as that consonant: before {{च}}/{{छ}} it
+        is {{श्}}, before {{त}}/{{थ}} it is {{स्}}, before {{ट}}/{{ठ}} it is {{ष्}}. {{रामः + च}} gives {{रामश्च}}; {{रामः
+        + तत्र}} gives {{रामस्तत्र}}. Before {{क}}, {{ख}}, {{प}}, {{फ}} the visarga stays.'
+      hi: 'कठोर व्यंजन से पहले विसर्ग उसी स्थान की फुफकार बन जाता है: {{च}}/{{छ}} से पहले {{श्}}, {{त}}/{{थ}} से पहले {{स्}},
+        {{ट}}/{{ठ}} से पहले {{ष्}}। {{रामः + च}} से {{रामश्च}}; {{रामः + तत्र}} से {{रामस्तत्र}}। {{क}}, {{ख}}, {{प}}, {{फ}}
+        से पहले विसर्ग रहता है।'
+    items:
+    - id: i0
+      sa: च
+    - id: i1
+      sa: छ
+    - id: i2
+      sa: श्
+    - id: i3
+      sa: त
+    - id: i4
+      sa: थ
+    - id: i5
+      sa: स्
+    - id: i6
+      sa: ट
+    - id: i7
+      sa: ठ
+    - id: i8
+      sa: ष्
+    - id: i9
+      sa: रामः + च
+    - id: i10
+      sa: रामश्च
+    - id: i11
+      sa: रामः + तत्र
+    - id: i12
+      sa: रामस्तत्र
+    - id: i13
+      sa: क
+    - id: i14
+      sa: ख
+    - id: i15
+      sa: प
+    - id: i16
+      sa: फ
 - id: e1
   kind: explore
   depth: core
@@ -328,8 +580,12 @@ cards:
   gate: true
   story:
     success:
-      en: “कविश्च,” you say, “and the poet,” and the statue's faint hiss swells and clears into a full, cool, rushing sound, like wind through a very long hall. The oil lamps all lean one way. “रामश्च, कविश्च,” she says. “And and and.” She laughs, a little unevenly, because she has not laughed in a thousand years.
-      hi: “कविश्च,” आप कहते हैं, “और कवि,” और प्रतिमा की हल्की फुफकार बढ़कर पूरी, ठंडी, बहती ध्वनि में साफ़ हो जाती है, किसी बहुत लम्बे कक्ष में हवा की तरह। सारे तेल-दीपक एक ओर झुक जाते हैं। “रामश्च, कविश्च,” वह कहती है। “और और और।” वह हँसती है, कुछ असमान-सी, क्योंकि वह हज़ार वर्षों से नहीं हँसी।
+      en: “कविश्च,” you say, “and the poet,” and the statue's faint hiss swells and clears into a full, cool, rushing sound,
+        like wind through a very long hall. The oil lamps all lean one way. “रामश्च, कविश्च,” she says. “And and and.” She
+        laughs, a little unevenly, because she has not laughed in a thousand years.
+      hi: “कविश्च,” आप कहते हैं, “और कवि,” और प्रतिमा की हल्की फुफकार बढ़कर पूरी, ठंडी, बहती ध्वनि में साफ़ हो जाती है, किसी
+        बहुत लम्बे कक्ष में हवा की तरह। सारे तेल-दीपक एक ओर झुक जाते हैं। “रामश्च, कविश्च,” वह कहती है। “और और और।” वह हँसती
+        है, कुछ असमान-सी, क्योंकि वह हज़ार वर्षों से नहीं हँसी।
     failure:
       en: 'The hiss stays faint. Before {{च}}: {{श्}}: {{कविश्च}}.'
       hi: 'फुफकार हल्की रहती है। {{च}} से पहले: {{श्}}: {{कविश्च}}।'
@@ -338,6 +594,54 @@ cards:
   - sa: कविसच
   - correct: true
     sa: कविश्च
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Before a hard consonant the visarga turns into a hiss in the same place as that consonant: before {{च}}/{{छ}} it
+        is {{श्}}, before {{त}}/{{थ}} it is {{स्}}, before {{ट}}/{{ठ}} it is {{ष्}}. {{रामः + च}} gives {{रामश्च}}; {{रामः
+        + तत्र}} gives {{रामस्तत्र}}. Before {{क}}, {{ख}}, {{प}}, {{फ}} the visarga stays.'
+      hi: 'कठोर व्यंजन से पहले विसर्ग उसी स्थान की फुफकार बन जाता है: {{च}}/{{छ}} से पहले {{श्}}, {{त}}/{{थ}} से पहले {{स्}},
+        {{ट}}/{{ठ}} से पहले {{ष्}}। {{रामः + च}} से {{रामश्च}}; {{रामः + तत्र}} से {{रामस्तत्र}}। {{क}}, {{ख}}, {{प}}, {{फ}}
+        से पहले विसर्ग रहता है।'
+    items:
+    - id: i0
+      sa: च
+    - id: i1
+      sa: छ
+    - id: i2
+      sa: श्
+    - id: i3
+      sa: त
+    - id: i4
+      sa: थ
+    - id: i5
+      sa: स्
+    - id: i6
+      sa: ट
+    - id: i7
+      sa: ठ
+    - id: i8
+      sa: ष्
+    - id: i9
+      sa: रामः + च
+    - id: i10
+      sa: रामश्च
+    - id: i11
+      sa: रामः + तत्र
+    - id: i12
+      sa: रामस्तत्र
+    - id: i13
+      sa: क
+    - id: i14
+      sa: ख
+    - id: i15
+      sa: प
+    - id: i16
+      sa: फ
 - id: pn
   kind: teach
   title:
@@ -352,8 +656,44 @@ cards:
   - 8.4.41
   - 8.3.35
   body:
-    en: Sūtra 8.3.34, {{विसर्जनीयस्य सः}}, turns a visarga into {{स्}} before a hard consonant; 8.4.40, {{स्तोः श्चुना श्चुः}}, makes that {{स्}} into {{श्}} before {{च}}; and 8.4.41, {{ष्टुना ष्टुः}}, into {{ष्}} before {{ट}}. 8.3.35, {{शर्परे विसर्जनीयः}}, keeps it when a hard consonant is followed by a hiss.
-    hi: सूत्र 8.3.34, {{विसर्जनीयस्य सः}}, कठोर व्यंजन से पहले विसर्ग को {{स्}} बनाता है; 8.4.40, {{स्तोः श्चुना श्चुः}}, उस {{स्}} को {{च}} से पहले {{श्}} बनाता है; और 8.4.41, {{ष्टुना ष्टुः}}, {{ट}} से पहले {{ष्}}। 8.3.35, {{शर्परे विसर्जनीयः}}, उसे तब रखता है जब कठोर व्यंजन के बाद फुफकार हो।
+    en: Sūtra 8.3.34, {{विसर्जनीयस्य सः}}, turns a visarga into {{स्}} before a hard consonant; 8.4.40, {{स्तोः श्चुना श्चुः}},
+      makes that {{स्}} into {{श्}} before {{च}}; and 8.4.41, {{ष्टुना ष्टुः}}, into {{ष्}} before {{ट}}. 8.3.35, {{शर्परे
+      विसर्जनीयः}}, keeps it when a hard consonant is followed by a hiss.
+    hi: सूत्र 8.3.34, {{विसर्जनीयस्य सः}}, कठोर व्यंजन से पहले विसर्ग को {{स्}} बनाता है; 8.4.40, {{स्तोः श्चुना श्चुः}},
+      उस {{स्}} को {{च}} से पहले {{श्}} बनाता है; और 8.4.41, {{ष्टुना ष्टुः}}, {{ट}} से पहले {{ष्}}। 8.3.35, {{शर्परे विसर्जनीयः}},
+      उसे तब रखता है जब कठोर व्यंजन के बाद फुफकार हो।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 8.3.34, {{विसर्जनीयस्य सः}}, turns a visarga into {{स्}} before a hard consonant; 8.4.40, {{स्तोः श्चुना श्चुः}},
+        makes that {{स्}} into {{श्}} before {{च}}; and 8.4.41, {{ष्टुना ष्टुः}}, into {{ष्}} before {{ट}}. 8.3.35, {{शर्परे
+        विसर्जनीयः}}, keeps it when a hard consonant is followed by a hiss.
+      hi: सूत्र 8.3.34, {{विसर्जनीयस्य सः}}, कठोर व्यंजन से पहले विसर्ग को {{स्}} बनाता है; 8.4.40, {{स्तोः श्चुना श्चुः}},
+        उस {{स्}} को {{च}} से पहले {{श्}} बनाता है; और 8.4.41, {{ष्टुना ष्टुः}}, {{ट}} से पहले {{ष्}}। 8.3.35, {{शर्परे विसर्जनीयः}},
+        उसे तब रखता है जब कठोर व्यंजन के बाद फुफकार हो।
+    items:
+    - id: i0
+      sa: विसर्जनीयस्य सः
+    - id: i1
+      sa: स्
+    - id: i2
+      sa: स्तोः श्चुना श्चुः
+    - id: i3
+      sa: श्
+    - id: i4
+      sa: च
+    - id: i5
+      sa: ष्टुना ष्टुः
+    - id: i6
+      sa: ष्
+    - id: i7
+      sa: ट
+    - id: i8
+      sa: शर्परे विसर्जनीयः
 - id: sum
   kind: summary
   title:

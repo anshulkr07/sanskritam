@@ -24,7 +24,8 @@ cards:
     hi: चौथी प्रतिमा
   depth: core
   image:
-    brief: The fourth statue holding a polished bronze mirror, in which the three travellers are reflected; Śuka peering into it; Dādī smiling; the earlier three statues behind; Lubdhaka's foreman in the background with a notebook.
+    brief: The fourth statue holding a polished bronze mirror, in which the three travellers are reflected; Śuka peering into
+      it; Dādī smiling; the earlier three statues behind; Lubdhaka's foreman in the background with a notebook.
     alt:
       en: A stone statue holds a mirror in which three travellers are reflected
       hi: दर्पण थामे पत्थर की प्रतिमा, जिसमें तीन यात्रियों का प्रतिबिम्ब दिखता है
@@ -38,8 +39,12 @@ cards:
     ratio: '4:3'
     id: vs-glide-s1
   narration:
-    en: The fourth statue holds a mirror. “इत्यादि,” she says. “यद्यपि.” “स्वागतम्.” “Those have a य, a द्य, a व,” says Śuka. “Something is wearing a different vowel.” “The इ turns into य्,” says Dādī, “the उ into व्, the ऋ into र्. A vowel becomes a glide when another, different, vowel follows.”
-    hi: चौथी प्रतिमा के हाथ में दर्पण है। “इत्यादि,” वह कहती है। “यद्यपि।” “स्वागतम्।” “इनमें य है, द्य है, व है,” शुक कहता है। “कोई स्वर दूसरा रूप पहने हुए है।” “इ य् बन जाता है,” दादी कहती हैं, “उ व्, ऋ र्। एक स्वर अर्धस्वर बन जाता है जब उसके बाद कोई और, भिन्न स्वर आता है।”
+    en: The fourth statue holds a mirror. “इत्यादि,” she says. “यद्यपि.” “स्वागतम्.” “Those have a य, a द्य, a व,” says Śuka.
+      “Something is wearing a different vowel.” “The इ turns into य्,” says Dādī, “the उ into व्, the ऋ into र्. A vowel becomes
+      a glide when another, different, vowel follows.”
+    hi: चौथी प्रतिमा के हाथ में दर्पण है। “इत्यादि,” वह कहती है। “यद्यपि।” “स्वागतम्।” “इनमें य है, द्य है, व है,” शुक कहता
+      है। “कोई स्वर दूसरा रूप पहने हुए है।” “इ य् बन जाता है,” दादी कहती हैं, “उ व्, ऋ र्। एक स्वर अर्धस्वर बन जाता है जब
+      उसके बाद कोई और, भिन्न स्वर आता है।”
   lines:
   - speaker: svarika
     sa: इत्यादि
@@ -60,13 +65,57 @@ cards:
   skills:
   - sandhi.yan
   body:
-    en: 'When {{इ}}/{{ई}}, {{उ}}/{{ऊ}} or {{ऋ}} meets a different vowel, it becomes {{य्}}, {{व्}} or {{र्}}: {{इति + आदि}} gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}, {{पितृ + आज्ञा}} gives {{पित्राज्ञा}}. This is {{यण्}}.'
-    hi: 'जब {{इ}}/{{ई}}, {{उ}}/{{ऊ}} या {{ऋ}} किसी भिन्न स्वर से मिलते हैं, तो वे {{य्}}, {{व्}} या {{र्}} बन जाते हैं: {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}, {{पितृ + आज्ञा}} से {{पित्राज्ञा}}। यह {{यण्}} है।'
+    en: 'When {{इ}}/{{ई}}, {{उ}}/{{ऊ}} or {{ऋ}} meets a different vowel, it becomes {{य्}}, {{व्}} or {{र्}}: {{इति + आदि}}
+      gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}, {{पितृ + आज्ञा}} gives {{पित्राज्ञा}}. This is {{यण्}}.'
+    hi: 'जब {{इ}}/{{ई}}, {{उ}}/{{ऊ}} या {{ऋ}} किसी भिन्न स्वर से मिलते हैं, तो वे {{य्}}, {{व्}} या {{र्}} बन जाते हैं: {{इति
+      + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}, {{पितृ + आज्ञा}} से {{पित्राज्ञा}}। यह {{यण्}} है।'
   term:
     sa: यण्
     meaning:
       en: the glides य्, व्, र्, ल्
       hi: अर्धस्वर य्, व्, र्, ल्
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'When {{इ}}/{{ई}}, {{उ}}/{{ऊ}} or {{ऋ}} meets a different vowel, it becomes {{य्}}, {{व्}} or {{र्}}: {{इति + आदि}}
+        gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}, {{पितृ + आज्ञा}} gives {{पित्राज्ञा}}. This is {{यण्}}.'
+      hi: 'जब {{इ}}/{{ई}}, {{उ}}/{{ऊ}} या {{ऋ}} किसी भिन्न स्वर से मिलते हैं, तो वे {{य्}}, {{व्}} या {{र्}} बन जाते हैं:
+        {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}, {{पितृ + आज्ञा}} से {{पित्राज्ञा}}। यह {{यण्}} है।'
+    items:
+    - id: i0
+      sa: इ
+    - id: i1
+      sa: ई
+    - id: i2
+      sa: उ
+    - id: i3
+      sa: ऊ
+    - id: i4
+      sa: ऋ
+    - id: i5
+      sa: य्
+    - id: i6
+      sa: व्
+    - id: i7
+      sa: र्
+    - id: i8
+      sa: इति + आदि
+    - id: i9
+      sa: इत्यादि
+    - id: i10
+      sa: सु + आगतम्
+    - id: i11
+      sa: स्वागतम्
+    - id: i12
+      sa: पितृ + आज्ञा
+    - id: i13
+      sa: पित्राज्ञा
+    - id: i14
+      sa: यण्
 - id: tb1
   kind: table
   title:
@@ -179,6 +228,48 @@ cards:
     sa: इति + आदि
   - sa: इते + आदि
   - sa: इतु + आदि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'When {{इ}}/{{ई}}, {{उ}}/{{ऊ}} or {{ऋ}} meets a different vowel, it becomes {{य्}}, {{व्}} or {{र्}}: {{इति + आदि}}
+        gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}, {{पितृ + आज्ञा}} gives {{पित्राज्ञा}}. This is {{यण्}}.'
+      hi: 'जब {{इ}}/{{ई}}, {{उ}}/{{ऊ}} या {{ऋ}} किसी भिन्न स्वर से मिलते हैं, तो वे {{य्}}, {{व्}} या {{र्}} बन जाते हैं:
+        {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}, {{पितृ + आज्ञा}} से {{पित्राज्ञा}}। यह {{यण्}} है।'
+    items:
+    - id: i0
+      sa: इ
+    - id: i1
+      sa: ई
+    - id: i2
+      sa: उ
+    - id: i3
+      sa: ऊ
+    - id: i4
+      sa: ऋ
+    - id: i5
+      sa: य्
+    - id: i6
+      sa: व्
+    - id: i7
+      sa: र्
+    - id: i8
+      sa: इति + आदि
+    - id: i9
+      sa: इत्यादि
+    - id: i10
+      sa: सु + आगतम्
+    - id: i11
+      sa: स्वागतम्
+    - id: i12
+      sa: पितृ + आज्ञा
+    - id: i13
+      sa: पित्राज्ञा
+    - id: i14
+      sa: यण्
 - id: p2
   kind: practice
   depth: core
@@ -197,6 +288,48 @@ cards:
   - sa: सौगतम्
   - correct: true
     sa: स्वागतम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'When {{इ}}/{{ई}}, {{उ}}/{{ऊ}} or {{ऋ}} meets a different vowel, it becomes {{य्}}, {{व्}} or {{र्}}: {{इति + आदि}}
+        gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}, {{पितृ + आज्ञा}} gives {{पित्राज्ञा}}. This is {{यण्}}.'
+      hi: 'जब {{इ}}/{{ई}}, {{उ}}/{{ऊ}} या {{ऋ}} किसी भिन्न स्वर से मिलते हैं, तो वे {{य्}}, {{व्}} या {{र्}} बन जाते हैं:
+        {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}, {{पितृ + आज्ञा}} से {{पित्राज्ञा}}। यह {{यण्}} है।'
+    items:
+    - id: i0
+      sa: इ
+    - id: i1
+      sa: ई
+    - id: i2
+      sa: उ
+    - id: i3
+      sa: ऊ
+    - id: i4
+      sa: ऋ
+    - id: i5
+      sa: य्
+    - id: i6
+      sa: व्
+    - id: i7
+      sa: र्
+    - id: i8
+      sa: इति + आदि
+    - id: i9
+      sa: इत्यादि
+    - id: i10
+      sa: सु + आगतम्
+    - id: i11
+      sa: स्वागतम्
+    - id: i12
+      sa: पितृ + आज्ञा
+    - id: i13
+      sa: पित्राज्ञा
+    - id: i14
+      sa: यण्
 - id: p3
   kind: practice
   depth: core
@@ -217,6 +350,48 @@ cards:
   - यपि
   - अपि
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'When {{इ}}/{{ई}}, {{उ}}/{{ऊ}} or {{ऋ}} meets a different vowel, it becomes {{य्}}, {{व्}} or {{र्}}: {{इति + आदि}}
+        gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}, {{पितृ + आज्ञा}} gives {{पित्राज्ञा}}. This is {{यण्}}.'
+      hi: 'जब {{इ}}/{{ई}}, {{उ}}/{{ऊ}} या {{ऋ}} किसी भिन्न स्वर से मिलते हैं, तो वे {{य्}}, {{व्}} या {{र्}} बन जाते हैं:
+        {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}, {{पितृ + आज्ञा}} से {{पित्राज्ञा}}। यह {{यण्}} है।'
+    items:
+    - id: i0
+      sa: इ
+    - id: i1
+      sa: ई
+    - id: i2
+      sa: उ
+    - id: i3
+      sa: ऊ
+    - id: i4
+      sa: ऋ
+    - id: i5
+      sa: य्
+    - id: i6
+      sa: व्
+    - id: i7
+      sa: र्
+    - id: i8
+      sa: इति + आदि
+    - id: i9
+      sa: इत्यादि
+    - id: i10
+      sa: सु + आगतम्
+    - id: i11
+      sa: स्वागतम्
+    - id: i12
+      sa: पितृ + आज्ञा
+    - id: i13
+      sa: पित्राज्ञा
+    - id: i14
+      sa: यण्
 - id: p4
   kind: practice
   depth: core
@@ -247,6 +422,48 @@ cards:
       sa: पित्राज्ञा
     right:
       sa: पितृ + आज्ञा
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'When {{इ}}/{{ई}}, {{उ}}/{{ऊ}} or {{ऋ}} meets a different vowel, it becomes {{य्}}, {{व्}} or {{र्}}: {{इति + आदि}}
+        gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}, {{पितृ + आज्ञा}} gives {{पित्राज्ञा}}. This is {{यण्}}.'
+      hi: 'जब {{इ}}/{{ई}}, {{उ}}/{{ऊ}} या {{ऋ}} किसी भिन्न स्वर से मिलते हैं, तो वे {{य्}}, {{व्}} या {{र्}} बन जाते हैं:
+        {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}, {{पितृ + आज्ञा}} से {{पित्राज्ञा}}। यह {{यण्}} है।'
+    items:
+    - id: i0
+      sa: इ
+    - id: i1
+      sa: ई
+    - id: i2
+      sa: उ
+    - id: i3
+      sa: ऊ
+    - id: i4
+      sa: ऋ
+    - id: i5
+      sa: य्
+    - id: i6
+      sa: व्
+    - id: i7
+      sa: र्
+    - id: i8
+      sa: इति + आदि
+    - id: i9
+      sa: इत्यादि
+    - id: i10
+      sa: सु + आगतम्
+    - id: i11
+      sa: स्वागतम्
+    - id: i12
+      sa: पितृ + आज्ञा
+    - id: i13
+      sa: पित्राज्ञा
+    - id: i14
+      sa: यण्
 - id: e1
   kind: explore
   depth: core
@@ -320,8 +537,12 @@ cards:
   gate: true
   story:
     success:
-      en: “पित्राज्ञा,” you say, “a father's command,” and the mirror in the statue's hand clears. In it the travellers are reflected, and behind them, in the glass, a long procession of other people, walking up the hill to the throne for a thousand years, each saying a word of welcome. “स्वागतम्,” the statue says. “Welcome.”
-      hi: “पित्राज्ञा,” आप कहते हैं, “पिता की आज्ञा,” और प्रतिमा के हाथ का दर्पण साफ़ हो जाता है। उसमें यात्री दिखते हैं, और उनके पीछे काँच में, अन्य लोगों की लम्बी शोभायात्रा, हज़ार वर्षों से पहाड़ी चढ़कर सिंहासन तक आते, हर एक स्वागत का एक शब्द कहता हुआ। “स्वागतम्,” प्रतिमा कहती है। “स्वागत है।”
+      en: “पित्राज्ञा,” you say, “a father's command,” and the mirror in the statue's hand clears. In it the travellers are
+        reflected, and behind them, in the glass, a long procession of other people, walking up the hill to the throne for
+        a thousand years, each saying a word of welcome. “स्वागतम्,” the statue says. “Welcome.”
+      hi: “पित्राज्ञा,” आप कहते हैं, “पिता की आज्ञा,” और प्रतिमा के हाथ का दर्पण साफ़ हो जाता है। उसमें यात्री दिखते हैं,
+        और उनके पीछे काँच में, अन्य लोगों की लम्बी शोभायात्रा, हज़ार वर्षों से पहाड़ी चढ़कर सिंहासन तक आते, हर एक स्वागत का
+        एक शब्द कहता हुआ। “स्वागतम्,” प्रतिमा कहती है। “स्वागत है।”
     failure:
       en: 'The mirror stays dim. {{ऋ}} → {{र्}}: {{पित्राज्ञा}}.'
       hi: 'दर्पण धुँधला रहता है। {{ऋ}} → {{र्}}: {{पित्राज्ञा}}।'
@@ -330,6 +551,48 @@ cards:
   - sa: पितराज्ञा
   - correct: true
     sa: पित्राज्ञा
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'When {{इ}}/{{ई}}, {{उ}}/{{ऊ}} or {{ऋ}} meets a different vowel, it becomes {{य्}}, {{व्}} or {{र्}}: {{इति + आदि}}
+        gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}, {{पितृ + आज्ञा}} gives {{पित्राज्ञा}}. This is {{यण्}}.'
+      hi: 'जब {{इ}}/{{ई}}, {{उ}}/{{ऊ}} या {{ऋ}} किसी भिन्न स्वर से मिलते हैं, तो वे {{य्}}, {{व्}} या {{र्}} बन जाते हैं:
+        {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}, {{पितृ + आज्ञा}} से {{पित्राज्ञा}}। यह {{यण्}} है।'
+    items:
+    - id: i0
+      sa: इ
+    - id: i1
+      sa: ई
+    - id: i2
+      sa: उ
+    - id: i3
+      sa: ऊ
+    - id: i4
+      sa: ऋ
+    - id: i5
+      sa: य्
+    - id: i6
+      sa: व्
+    - id: i7
+      sa: र्
+    - id: i8
+      sa: इति + आदि
+    - id: i9
+      sa: इत्यादि
+    - id: i10
+      sa: सु + आगतम्
+    - id: i11
+      sa: स्वागतम्
+    - id: i12
+      sa: पितृ + आज्ञा
+    - id: i13
+      sa: पित्राज्ञा
+    - id: i14
+      sa: यण्
 - id: pn
   kind: teach
   title:
@@ -341,8 +604,52 @@ cards:
   sutras:
   - 6.1.77
   body:
-    en: Sūtra 6.1.77, {{इको यणचि}}, says that {{इक्}} (the vowels {{इ}}, {{उ}}, {{ऋ}}, {{ऌ}}) is replaced by {{यण्}} ({{य्}}, {{व्}}, {{र्}}, {{ल्}}) before a vowel. So {{इति + आदि}} gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}.
-    hi: सूत्र 6.1.77, {{इको यणचि}}, कहता है कि स्वर के पहले {{इक्}} ({{इ}}, {{उ}}, {{ऋ}}, {{ऌ}}) की जगह {{यण्}} ({{य्}}, {{व्}}, {{र्}}, {{ल्}}) हो जाता है। इसलिए {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}।
+    en: Sūtra 6.1.77, {{इको यणचि}}, says that {{इक्}} (the vowels {{इ}}, {{उ}}, {{ऋ}}, {{ऌ}}) is replaced by {{यण्}} ({{य्}},
+      {{व्}}, {{र्}}, {{ल्}}) before a vowel. So {{इति + आदि}} gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}.
+    hi: सूत्र 6.1.77, {{इको यणचि}}, कहता है कि स्वर के पहले {{इक्}} ({{इ}}, {{उ}}, {{ऋ}}, {{ऌ}}) की जगह {{यण्}} ({{य्}}, {{व्}},
+      {{र्}}, {{ल्}}) हो जाता है। इसलिए {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 6.1.77, {{इको यणचि}}, says that {{इक्}} (the vowels {{इ}}, {{उ}}, {{ऋ}}, {{ऌ}}) is replaced by {{यण्}} ({{य्}},
+        {{व्}}, {{र्}}, {{ल्}}) before a vowel. So {{इति + आदि}} gives {{इत्यादि}}, {{सु + आगतम्}} gives {{स्वागतम्}}.
+      hi: सूत्र 6.1.77, {{इको यणचि}}, कहता है कि स्वर के पहले {{इक्}} ({{इ}}, {{उ}}, {{ऋ}}, {{ऌ}}) की जगह {{यण्}} ({{य्}},
+        {{व्}}, {{र्}}, {{ल्}}) हो जाता है। इसलिए {{इति + आदि}} से {{इत्यादि}}, {{सु + आगतम्}} से {{स्वागतम्}}।
+    items:
+    - id: i0
+      sa: इको यणचि
+    - id: i1
+      sa: इक्
+    - id: i2
+      sa: इ
+    - id: i3
+      sa: उ
+    - id: i4
+      sa: ऋ
+    - id: i5
+      sa: ऌ
+    - id: i6
+      sa: यण्
+    - id: i7
+      sa: य्
+    - id: i8
+      sa: व्
+    - id: i9
+      sa: र्
+    - id: i10
+      sa: ल्
+    - id: i11
+      sa: इति + आदि
+    - id: i12
+      sa: इत्यादि
+    - id: i13
+      sa: सु + आगतम्
+    - id: i14
+      sa: स्वागतम्
 - id: sum
   kind: summary
   title:

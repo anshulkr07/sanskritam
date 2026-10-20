@@ -84,6 +84,58 @@ cards:
         - प्र
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: प्रतिष्ठते
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he sets out
+          hi: वह प्रस्थान करता है
+        check:
+          type: tinanta
+          dhatu: स्था
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - प्र
+        feature:
+          en: 'Root: {{स्था}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{स्था}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A prefix may fix the set: {{विजयते}}, {{पराजयते}}, {{प्रतिष्ठते}}.'
+          hi: 'उपसर्ग समूह तय कर सकता है: {{विजयते}}, {{पराजयते}}, {{प्रतिष्ठते}}।'
+      - id: i3
+        sa: प्रतिष्ठते
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he sets out
+          hi: वह प्रस्थान करता है
+        check:
+          type: tinanta
+          dhatu: स्था
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - प्र
+        feature:
+          en: 'Root: {{स्था}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{स्था}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
   - skill: verb.atmane
     rule:
       en: 'Some roots of class 4 are only ātmanepada: {{जन्}} gives {{जायते}}, {{युध्}} gives {{युध्यते}}.'
@@ -102,6 +154,56 @@ cards:
         gana: Divadi
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: जायते
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he is born
+          hi: वह जन्म लेता है
+        check:
+          type: tinanta
+          dhatu: जन्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Divadi
+        feature:
+          en: 'Root: {{जन्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{जन्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Some roots of class 4 are only ātmanepada: {{जन्}} gives {{जायते}}, {{युध्}} gives {{युध्यते}}.'
+          hi: 'गण 4 की कुछ धातुएँ केवल आत्मनेपद की हैं: {{जन्}} से {{जायते}}, {{युध्}} से {{युध्यते}}।'
+      - id: i3
+        sa: जायते
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he is born
+          hi: वह जन्म लेता है
+        check:
+          type: tinanta
+          dhatu: जन्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Divadi
+        feature:
+          en: 'Root: {{जन्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{जन्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
 - id: mistakes
   kind: revision
   title:
@@ -133,7 +235,8 @@ cards:
   - skill: verb.atmane
     rule:
       en: '{{तङानावात्मनेपदम्}} names the endings; {{अनुदात्तङित आत्मनेपदम्}} says which roots take them.'
-      hi: '{{तङानावात्मनेपदम्}} प्रत्ययों का नाम देता है; {{अनुदात्तङित आत्मनेपदम्}} बताता है कि कौन-सी धातुएँ उन्हें लेती हैं।'
+      hi: '{{तङानावात्मनेपदम्}} प्रत्ययों का नाम देता है; {{अनुदात्तङित आत्मनेपदम्}} बताता है कि कौन-सी धातुएँ उन्हें लेती
+        हैं।'
     sutras:
     - 1.4.100
     - 1.3.12

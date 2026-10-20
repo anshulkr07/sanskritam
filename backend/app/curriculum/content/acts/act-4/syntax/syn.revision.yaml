@@ -114,6 +114,102 @@ cards:
           hi: जानता है
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: सः पठति यः जानाति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: He reads who knows.
+          hi: वह पढ़ता है जो जानता है।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+        - sa: यः
+          gloss:
+            en: who
+            hi: जो
+        - sa: जानाति
+          gloss:
+            en: knows
+            hi: जानता है
+      - id: i1
+        sa: सः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: he
+          hi: वह
+      - id: i2
+        sa: पठति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: reads
+          hi: पढ़ता है
+      - id: i3
+        sa: यः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: who
+          hi: जो
+      - id: i4
+        sa: जानाति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: knows
+          hi: जानता है
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'In verse the {{सः}}-half may come first: {{सः … यः}}.'
+          hi: 'श्लोक में {{सः}}-भाग पहले भी आ सकता है: {{सः … यः}}।'
+      - id: i7
+        sa: सः पठति यः जानाति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: He reads who knows.
+          hi: वह पढ़ता है जो जानता है।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+        - sa: यः
+          gloss:
+            en: who
+            hi: जो
+        - sa: जानाति
+          gloss:
+            en: knows
+            hi: जानता है
   - skill: syn.conditional
     rule:
       en: '{{चेत्}} also means “if” and stands second in its clause: {{सः पठति चेत्}}.'
@@ -142,6 +238,102 @@ cards:
           hi: जानता है
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: सः पठति चेत् जानाति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: If he reads, he knows.
+          hi: यदि वह पढ़ता है, तो जानता है।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+        - sa: चेत्
+          gloss:
+            en: if
+            hi: यदि
+        - sa: जानाति
+          gloss:
+            en: knows
+            hi: जानता है
+      - id: i1
+        sa: सः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: he
+          hi: वह
+      - id: i2
+        sa: पठति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: reads
+          hi: पढ़ता है
+      - id: i3
+        sa: चेत्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: if
+          hi: यदि
+      - id: i4
+        sa: जानाति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: knows
+          hi: जानता है
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{चेत्}} also means “if” and stands second in its clause: {{सः पठति चेत्}}.'
+          hi: '{{चेत्}} का भी अर्थ ‘यदि’ है और वह अपने वाक्यांश में दूसरे स्थान पर रहता है: {{सः पठति चेत्}}।'
+      - id: i7
+        sa: सः पठति चेत् जानाति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: If he reads, he knows.
+          hi: यदि वह पढ़ता है, तो जानता है।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+        - sa: चेत्
+          gloss:
+            en: if
+            hi: यदि
+        - sa: जानाति
+          gloss:
+            en: knows
+            hi: जानता है
 - id: mistakes
   kind: revision
   title:

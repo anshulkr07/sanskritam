@@ -28,6 +28,45 @@ cards:
   - correct: true
     sa: एति
   - sa: अयति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 2, {{अदादि}}, adds no sign: the ending joins the root directly, and the root often changes inside. {{अस्}}
+        gives {{अस्ति}}, {{स्तः}}, {{सन्ति}}; {{इ}} gives {{एति}}, {{इतः}}, {{यन्ति}}; {{या}} gives {{याति}}; {{ब्रू}} gives
+        {{ब्रवीति}}.'
+      hi: 'गण 2, {{अदादि}}, कोई चिह्न नहीं जोड़ता: प्रत्यय सीधे धातु से जुड़ता है, और धातु भीतर से अक्सर बदलती है। {{अस्}}
+        से {{अस्ति}}, {{स्तः}}, {{सन्ति}}; {{इ}} से {{एति}}, {{इतः}}, {{यन्ति}}; {{या}} से {{याति}}; {{ब्रू}} से {{ब्रवीति}}।'
+    items:
+    - id: i0
+      sa: अदादि
+    - id: i1
+      sa: अस्
+    - id: i2
+      sa: अस्ति
+    - id: i3
+      sa: स्तः
+    - id: i4
+      sa: सन्ति
+    - id: i5
+      sa: इ
+    - id: i6
+      sa: एति
+    - id: i7
+      sa: इतः
+    - id: i8
+      sa: यन्ति
+    - id: i9
+      sa: या
+    - id: i10
+      sa: याति
+    - id: i11
+      sa: ब्रू
+    - id: i12
+      sa: ब्रवीति
 - id: p2
   kind: practice
   depth: core
@@ -46,6 +85,46 @@ cards:
   - correct: true
     sa: ददाति
   - sa: देति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 3, {{जुहोत्यादि}}, doubles the beginning of the root: {{दा}} gives {{ददाति}} (gives), {{धा}} gives {{दधाति}}
+        (places), {{हु}} gives {{जुहोति}} (offers), {{भी}} gives {{बिभेति}} (fears), {{भृ}} gives {{बिभर्ति}} (carries). The
+        plural ends in {{-ति}} after the doubled root: {{ददति}}.'
+      hi: 'गण 3, {{जुहोत्यादि}}, धातु का आरम्भ दुगुना कर देता है: {{दा}} से {{ददाति}} (देता है), {{धा}} से {{दधाति}} (रखता
+        है), {{हु}} से {{जुहोति}} (हवन करता है), {{भी}} से {{बिभेति}} (डरता है), {{भृ}} से {{बिभर्ति}} (धारण करता है)। बहुवचन
+        दुगुनी धातु के बाद {{-ति}} पर समाप्त होता है: {{ददति}}।'
+    items:
+    - id: i0
+      sa: जुहोत्यादि
+    - id: i1
+      sa: दा
+    - id: i2
+      sa: ददाति
+    - id: i3
+      sa: धा
+    - id: i4
+      sa: दधाति
+    - id: i5
+      sa: हु
+    - id: i6
+      sa: जुहोति
+    - id: i7
+      sa: भी
+    - id: i8
+      sa: बिभेति
+    - id: i9
+      sa: भृ
+    - id: i10
+      sa: बिभर्ति
+    - id: i11
+      sa: -ति
+    - id: i12
+      sa: ददति
 - id: p3
   kind: practice
   depth: core
@@ -64,6 +143,56 @@ cards:
   - correct: true
     sa: शृणोति
   - sa: श्रुति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 5, {{स्वादि}}, adds {{-नु-}} (strong {{-नो-}}): {{आप्}} gives {{आप्नोति}} (gets), {{चि}} gives {{चिनोति}}
+        (gathers), {{शक्}} gives {{शक्नोति}} (is able). {{श्रु}} follows it by a special rule: {{शृणोति}}. Class 8, {{तनादि}},
+        adds {{-उ-}} (strong {{-ओ-}}): {{कृ}} gives {{करोति}}, {{तन्}} gives {{तनोति}} (stretches).'
+      hi: 'गण 5, {{स्वादि}}, {{-नु-}} जोड़ता है (बलवान् {{-नो-}}): {{आप्}} से {{आप्नोति}} (पाता है), {{चि}} से {{चिनोति}}
+        (चुनता है), {{शक्}} से {{शक्नोति}} (समर्थ है)। {{श्रु}} विशेष नियम से इसी का अनुसरण करता है: {{शृणोति}}। गण 8, {{तनादि}},
+        {{-उ-}} जोड़ता है (बलवान् {{-ओ-}}): {{कृ}} से {{करोति}}, {{तन्}} से {{तनोति}} (फैलाता है)।'
+    items:
+    - id: i0
+      sa: स्वादि
+    - id: i1
+      sa: -नु-
+    - id: i2
+      sa: -नो-
+    - id: i3
+      sa: आप्
+    - id: i4
+      sa: आप्नोति
+    - id: i5
+      sa: चि
+    - id: i6
+      sa: चिनोति
+    - id: i7
+      sa: शक्
+    - id: i8
+      sa: शक्नोति
+    - id: i9
+      sa: श्रु
+    - id: i10
+      sa: शृणोति
+    - id: i11
+      sa: तनादि
+    - id: i12
+      sa: -उ-
+    - id: i13
+      sa: -ओ-
+    - id: i14
+      sa: कृ
+    - id: i15
+      sa: करोति
+    - id: i16
+      sa: तन्
+    - id: i17
+      sa: तनोति
 - id: p4
   kind: practice
   depth: core
@@ -82,6 +211,56 @@ cards:
   - sa: कुरुन्ति
   - correct: true
     sa: कुर्वन्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 5, {{स्वादि}}, adds {{-नु-}} (strong {{-नो-}}): {{आप्}} gives {{आप्नोति}} (gets), {{चि}} gives {{चिनोति}}
+        (gathers), {{शक्}} gives {{शक्नोति}} (is able). {{श्रु}} follows it by a special rule: {{शृणोति}}. Class 8, {{तनादि}},
+        adds {{-उ-}} (strong {{-ओ-}}): {{कृ}} gives {{करोति}}, {{तन्}} gives {{तनोति}} (stretches).'
+      hi: 'गण 5, {{स्वादि}}, {{-नु-}} जोड़ता है (बलवान् {{-नो-}}): {{आप्}} से {{आप्नोति}} (पाता है), {{चि}} से {{चिनोति}}
+        (चुनता है), {{शक्}} से {{शक्नोति}} (समर्थ है)। {{श्रु}} विशेष नियम से इसी का अनुसरण करता है: {{शृणोति}}। गण 8, {{तनादि}},
+        {{-उ-}} जोड़ता है (बलवान् {{-ओ-}}): {{कृ}} से {{करोति}}, {{तन्}} से {{तनोति}} (फैलाता है)।'
+    items:
+    - id: i0
+      sa: स्वादि
+    - id: i1
+      sa: -नु-
+    - id: i2
+      sa: -नो-
+    - id: i3
+      sa: आप्
+    - id: i4
+      sa: आप्नोति
+    - id: i5
+      sa: चि
+    - id: i6
+      sa: चिनोति
+    - id: i7
+      sa: शक्
+    - id: i8
+      sa: शक्नोति
+    - id: i9
+      sa: श्रु
+    - id: i10
+      sa: शृणोति
+    - id: i11
+      sa: तनादि
+    - id: i12
+      sa: -उ-
+    - id: i13
+      sa: -ओ-
+    - id: i14
+      sa: कृ
+    - id: i15
+      sa: करोति
+    - id: i16
+      sa: तन्
+    - id: i17
+      sa: तनोति
 - id: p5
   kind: practice
   depth: core
@@ -100,6 +279,54 @@ cards:
   - correct: true
     sa: जानाति
   - sa: जनति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 7, {{रुधादि}}, puts a nasal inside the root before its last letter: {{रुध्}} gives {{रुणद्धि}} (blocks),
+        {{भिद्}} gives {{भिनत्ति}} (splits), {{छिद्}} gives {{छिनत्ति}} (cuts), {{युज्}} gives {{युनक्ति}} (joins). Class
+        9, {{क्र्यादि}}, adds {{-ना-}}: {{ज्ञा}} gives {{जानाति}}, {{ग्रह्}} gives {{गृह्णाति}}, {{क्री}} gives {{क्रीणाति}}.'
+      hi: 'गण 7, {{रुधादि}}, धातु के अन्तिम अक्षर से पहले भीतर एक नासिक्य रखता है: {{रुध्}} से {{रुणद्धि}} (रोकता है), {{भिद्}}
+        से {{भिनत्ति}} (तोड़ता है), {{छिद्}} से {{छिनत्ति}} (काटता है), {{युज्}} से {{युनक्ति}} (जोड़ता है)। गण 9, {{क्र्यादि}},
+        {{-ना-}} जोड़ता है: {{ज्ञा}} से {{जानाति}}, {{ग्रह्}} से {{गृह्णाति}}, {{क्री}} से {{क्रीणाति}}।'
+    items:
+    - id: i0
+      sa: रुधादि
+    - id: i1
+      sa: रुध्
+    - id: i2
+      sa: रुणद्धि
+    - id: i3
+      sa: भिद्
+    - id: i4
+      sa: भिनत्ति
+    - id: i5
+      sa: छिद्
+    - id: i6
+      sa: छिनत्ति
+    - id: i7
+      sa: युज्
+    - id: i8
+      sa: युनक्ति
+    - id: i9
+      sa: क्र्यादि
+    - id: i10
+      sa: -ना-
+    - id: i11
+      sa: ज्ञा
+    - id: i12
+      sa: जानाति
+    - id: i13
+      sa: ग्रह्
+    - id: i14
+      sa: गृह्णाति
+    - id: i15
+      sa: क्री
+    - id: i16
+      sa: क्रीणाति
 - id: p6
   kind: practice
   depth: core
@@ -141,6 +368,45 @@ cards:
       text:
         en: class 7
         hi: गण 7
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 2, {{अदादि}}, adds no sign: the ending joins the root directly, and the root often changes inside. {{अस्}}
+        gives {{अस्ति}}, {{स्तः}}, {{सन्ति}}; {{इ}} gives {{एति}}, {{इतः}}, {{यन्ति}}; {{या}} gives {{याति}}; {{ब्रू}} gives
+        {{ब्रवीति}}.'
+      hi: 'गण 2, {{अदादि}}, कोई चिह्न नहीं जोड़ता: प्रत्यय सीधे धातु से जुड़ता है, और धातु भीतर से अक्सर बदलती है। {{अस्}}
+        से {{अस्ति}}, {{स्तः}}, {{सन्ति}}; {{इ}} से {{एति}}, {{इतः}}, {{यन्ति}}; {{या}} से {{याति}}; {{ब्रू}} से {{ब्रवीति}}।'
+    items:
+    - id: i0
+      sa: अदादि
+    - id: i1
+      sa: अस्
+    - id: i2
+      sa: अस्ति
+    - id: i3
+      sa: स्तः
+    - id: i4
+      sa: सन्ति
+    - id: i5
+      sa: इ
+    - id: i6
+      sa: एति
+    - id: i7
+      sa: इतः
+    - id: i8
+      sa: यन्ति
+    - id: i9
+      sa: या
+    - id: i10
+      sa: याति
+    - id: i11
+      sa: ब्रू
+    - id: i12
+      sa: ब्रवीति
 - id: p7
   kind: practice
   depth: core
@@ -160,8 +426,15 @@ cards:
   gate: true
   story:
     success:
-      en: “अस्ति, एति, ददाति, करोति, जानाति,” you say, and Astika, who had spent a thousand years patting himself, stops. “I am,” he says wonderingly. “I go. I give. I do. I know.” He puts his hands in front of him and looks at them, and the plain grey of his edges takes on a faint warm colour, as if each verb had left a little of its own. “सेवते,” he says shyly, trying the word. “लभते.” “He serves, he obtains,” Dādī whispers. “Those are for oneself.”
-      hi: “अस्ति, एति, ददाति, करोति, जानाति,” आप कहते हैं, और अस्तिक, जिसने हज़ार वर्ष स्वयं को थपथपाते बिताए, रुक जाता है। “मैं हूँ,” वह विस्मय से कहता है। “मैं जाता हूँ। मैं देता हूँ। मैं करता हूँ। मैं जानता हूँ।” वह अपने हाथ सामने रखकर उन्हें देखता है, और उसके किनारों का सादा धूसर रंग हल्के गर्म रंग में बदल जाता है, मानो हर क्रिया अपना थोड़ा-सा रंग छोड़ गई हो। “सेवते,” वह झिझकते हुए शब्द आज़माता है। “लभते।” “वह सेवा करता है, वह पाता है,” दादी फुसफुसाती हैं। “ये अपने लिए हैं।”
+      en: “अस्ति, एति, ददाति, करोति, जानाति,” you say, and Astika, who had spent a thousand years patting himself, stops.
+        “I am,” he says wonderingly. “I go. I give. I do. I know.” He puts his hands in front of him and looks at them, and
+        the plain grey of his edges takes on a faint warm colour, as if each verb had left a little of its own. “सेवते,” he
+        says shyly, trying the word. “लभते.” “He serves, he obtains,” Dādī whispers. “Those are for oneself.”
+      hi: “अस्ति, एति, ददाति, करोति, जानाति,” आप कहते हैं, और अस्तिक, जिसने हज़ार वर्ष स्वयं को थपथपाते बिताए, रुक जाता है।
+        “मैं हूँ,” वह विस्मय से कहता है। “मैं जाता हूँ। मैं देता हूँ। मैं करता हूँ। मैं जानता हूँ।” वह अपने हाथ सामने रखकर
+        उन्हें देखता है, और उसके किनारों का सादा धूसर रंग हल्के गर्म रंग में बदल जाता है, मानो हर क्रिया अपना थोड़ा-सा रंग
+        छोड़ गई हो। “सेवते,” वह झिझकते हुए शब्द आज़माता है। “लभते।” “वह सेवा करता है, वह पाता है,” दादी फुसफुसाती हैं। “ये
+        अपने लिए हैं।”
     failure:
       en: 'Astika waits. The five verbs: {{अस्ति एति ददाति करोति जानाति}}.'
       hi: 'अस्तिक प्रतीक्षा करता है। पाँच क्रियाएँ: {{अस्ति एति ददाति करोति जानाति}}।'
@@ -171,3 +444,42 @@ cards:
   - ददाति
   - करोति
   - जानाति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 2, {{अदादि}}, adds no sign: the ending joins the root directly, and the root often changes inside. {{अस्}}
+        gives {{अस्ति}}, {{स्तः}}, {{सन्ति}}; {{इ}} gives {{एति}}, {{इतः}}, {{यन्ति}}; {{या}} gives {{याति}}; {{ब्रू}} gives
+        {{ब्रवीति}}.'
+      hi: 'गण 2, {{अदादि}}, कोई चिह्न नहीं जोड़ता: प्रत्यय सीधे धातु से जुड़ता है, और धातु भीतर से अक्सर बदलती है। {{अस्}}
+        से {{अस्ति}}, {{स्तः}}, {{सन्ति}}; {{इ}} से {{एति}}, {{इतः}}, {{यन्ति}}; {{या}} से {{याति}}; {{ब्रू}} से {{ब्रवीति}}।'
+    items:
+    - id: i0
+      sa: अदादि
+    - id: i1
+      sa: अस्
+    - id: i2
+      sa: अस्ति
+    - id: i3
+      sa: स्तः
+    - id: i4
+      sa: सन्ति
+    - id: i5
+      sa: इ
+    - id: i6
+      sa: एति
+    - id: i7
+      sa: इतः
+    - id: i8
+      sa: यन्ति
+    - id: i9
+      sa: या
+    - id: i10
+      sa: याति
+    - id: i11
+      sa: ब्रू
+    - id: i12
+      sa: ब्रवीति

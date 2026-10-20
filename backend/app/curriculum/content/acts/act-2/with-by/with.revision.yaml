@@ -60,6 +60,54 @@ cards:
         vacana: Bahu
     tag: core
     new_here: true
+    visuals:
+    - id: v-source-new-3
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: मित्रैः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: with friends
+          hi: मित्रों के साथ
+        check:
+          type: subanta
+          stem: मित्र
+          linga: Napumsaka
+          vibhakti: Trtiya
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · plural'
+          hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Plural companions: {{ऐः}} for masculine and neuter -अ, {{भिः}} for feminine.'
+          hi: 'अनेक साथी: पुंलिंग और नपुंसक -अ में {{ऐः}}, स्त्रीलिंग में {{भिः}}।'
+      - id: i3
+        sa: मित्रैः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: with friends
+          hi: मित्रों के साथ
+        check:
+          type: subanta
+          stem: मित्र
+          linga: Napumsaka
+          vibhakti: Trtiya
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · plural'
+          hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{बहुवचन}}'
 - id: conditions
   kind: revision
   title:
@@ -99,6 +147,54 @@ cards:
         vacana: Eka
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: रामेण
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: by Rāma
+          hi: राम के द्वारा
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'The doer of a passive verb is also in the third case: {{रामेण फलं खाद्यते}}, “the fruit is eaten by Rāma”.'
+          hi: 'कर्मवाच्य क्रिया का कर्ता भी तृतीया में आता है: {{रामेण फलं खाद्यते}}, ‘राम द्वारा फल खाया जाता है’।'
+      - id: i3
+        sa: रामेण
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: by Rāma
+          hi: राम के द्वारा
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
 - id: mistakes
   kind: revision
   title:

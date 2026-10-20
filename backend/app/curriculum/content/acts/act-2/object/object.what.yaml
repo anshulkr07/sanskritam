@@ -25,7 +25,9 @@ cards:
     hi: बाज़ार
   depth: core
   image:
-    brief: 'A riverside market under striped awnings: baskets of fruit, heaps of red and yellow spice, swinging brass scales; a small saffron-yellow spirit darting between stalls pointing at things, a round cheerful spice seller watching him, you, Dādī and Śuka among the shoppers.'
+    brief: 'A riverside market under striped awnings: baskets of fruit, heaps of red and yellow spice, swinging brass scales;
+      a small saffron-yellow spirit darting between stalls pointing at things, a round cheerful spice seller watching him,
+      you, Dādī and Śuka among the shoppers.'
     alt:
       en: A busy market with a small yellow spirit pointing at everything
       hi: व्यस्त बाज़ार, हर चीज़ की ओर इशारा करता नन्हा पीला भूत
@@ -39,8 +41,14 @@ cards:
     ratio: '4:3'
     id: object-what-s1
   narration:
-    en: The fair ends in a market under striped awnings. Baskets of fruit, heaps of red and yellow spice, brass scales swinging. A small saffron-yellow spirit darts from stall to stall, pointing at things, wanting them, unable to say what. A round, cheerful spice seller watches him with narrowed eyes. “Everybody wants something,” says Dādī. “Say what, and you have a sentence.”
-    hi: मेला एक बाज़ार में ख़त्म होता है, धारीदार शामियानों के नीचे। फलों की टोकरियाँ, लाल-पीले मसालों के ढेर, झूलती पीतल की तराज़ू। एक नन्हा केसरिया-पीला भूत दुकान-दुकान भागता है, चीज़ों की ओर इशारा करता है, उन्हें चाहता है, पर कह नहीं पाता कि क्या। एक गोल-मटोल हँसमुख मसाले वाला उसे आँखें सिकोड़कर देखता है। दादी कहती हैं, “हर किसी को कुछ चाहिए। बता दो क्या, तो वाक्य बन गया।”
+    en: The fair ends in a market under striped awnings. Baskets of fruit, heaps of red and yellow spice, brass scales swinging.
+      A small saffron-yellow spirit darts from stall to stall, pointing at things, wanting them, unable to say what. A round,
+      cheerful spice seller watches him with narrowed eyes. “Everybody wants something,” says Dādī. “Say what, and you have
+      a sentence.”
+    hi: मेला एक बाज़ार में ख़त्म होता है, धारीदार शामियानों के नीचे। फलों की टोकरियाँ, लाल-पीले मसालों के ढेर, झूलती पीतल
+      की तराज़ू। एक नन्हा केसरिया-पीला भूत दुकान-दुकान भागता है, चीज़ों की ओर इशारा करता है, उन्हें चाहता है, पर कह नहीं पाता
+      कि क्या। एक गोल-मटोल हँसमुख मसाले वाला उसे आँखें सिकोड़कर देखता है। दादी कहती हैं, “हर किसी को कुछ चाहिए। बता दो क्या,
+      तो वाक्य बन गया।”
   lines:
   - speaker: dadi
     sa: आपणे फलानि सन्ति।
@@ -59,8 +67,10 @@ cards:
   - 2.3.2
   - 1.4.49
   body:
-    en: 'What the doer most wants to reach, what is eaten, read, seen, takes the second case, {{द्वितीया}}. It is the object, {{कर्म}}. {{रामः फलं खादति}}: Rāma eats a fruit. {{फलम्}} is the object.'
-    hi: 'कर्ता जिसे सबसे अधिक पाना चाहता है, जो खाया, पढ़ा, देखा जाता है, वह द्वितीया विभक्ति में आता है। वह कर्म है। {{रामः फलं खादति}}: राम फल खाता है। {{फलम्}} कर्म है।'
+    en: 'What the doer most wants to reach, what is eaten, read, seen, takes the second case, {{द्वितीया}}. It is the object,
+      {{कर्म}}. {{रामः फलं खादति}}: Rāma eats a fruit. {{फलम्}} is the object.'
+    hi: 'कर्ता जिसे सबसे अधिक पाना चाहता है, जो खाया, पढ़ा, देखा जाता है, वह द्वितीया विभक्ति में आता है। वह कर्म है। {{रामः
+      फलं खादति}}: राम फल खाता है। {{फलम्}} कर्म है।'
   examples:
   - sa: रामः फलम् खादति।
     meaning:
@@ -172,6 +182,439 @@ cards:
     meaning:
       en: 'the object: what the doer reaches'
       hi: 'कर्म: जिसे कर्ता पाता है'
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: रामः फलम् खादति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma eats a fruit.
+        hi: राम फल खाता है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit (object)
+          hi: फल (कर्म)
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादति
+        gloss:
+          en: eats
+          hi: खाता है
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: रामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit (object)
+        hi: फल (कर्म)
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: खादति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: eats
+        hi: खाता है
+      check:
+        type: tinanta
+        dhatu: खाद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{खाद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{खाद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'What the doer most wants to reach, what is eaten, read, seen, takes the second case, {{द्वितीया}}. It is the
+          object, {{कर्म}}. {{रामः फलं खादति}}: Rāma eats a fruit. {{फलम्}} is the object.'
+        hi: 'कर्ता जिसे सबसे अधिक पाना चाहता है, जो खाया, पढ़ा, देखा जाता है, वह द्वितीया विभक्ति में आता है। वह कर्म है।
+          {{रामः फलं खादति}}: राम फल खाता है। {{फलम्}} कर्म है।'
+    - id: i6
+      sa: रामः फलम् खादति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma eats a fruit.
+        hi: राम फल खाता है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit (object)
+          hi: फल (कर्म)
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादति
+        gloss:
+          en: eats
+          hi: खाता है
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकः पुस्तकम् पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads a book.
+        hi: बालक पुस्तक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: book (object)
+          hi: पुस्तक (कर्म)
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: book (object)
+        hi: पुस्तक (कर्म)
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'What the doer most wants to reach, what is eaten, read, seen, takes the second case, {{द्वितीया}}. It is the
+          object, {{कर्म}}. {{रामः फलं खादति}}: Rāma eats a fruit. {{फलम्}} is the object.'
+        hi: 'कर्ता जिसे सबसे अधिक पाना चाहता है, जो खाया, पढ़ा, देखा जाता है, वह द्वितीया विभक्ति में आता है। वह कर्म है।
+          {{रामः फलं खादति}}: राम फल खाता है। {{फलम्}} कर्म है।'
+    - id: i6
+      sa: बालकः पुस्तकम् पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads a book.
+        hi: बालक पुस्तक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: book (object)
+          hi: पुस्तक (कर्म)
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सीता नदीम् पश्यति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Sītā sees the river.
+        hi: सीता नदी देखती है।
+      words:
+      - sa: सीता
+        gloss:
+          en: Sītā
+          hi: सीता
+        check:
+          type: subanta
+          stem: सीता
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: नदीम्
+        gloss:
+          en: river (object)
+          hi: नदी (कर्म)
+        check:
+          type: subanta
+          stem: नदी
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पश्यति
+        gloss:
+          en: sees
+          hi: देखती है
+        check:
+          type: tinanta
+          dhatu: दृश्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सीता
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Sītā
+        hi: सीता
+      check:
+        type: subanta
+        stem: सीता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सीता}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सीता}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: नदीम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: river (object)
+        hi: नदी (कर्म)
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पश्यति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: sees
+        hi: देखती है
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दृश्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'What the doer most wants to reach, what is eaten, read, seen, takes the second case, {{द्वितीया}}. It is the
+          object, {{कर्म}}. {{रामः फलं खादति}}: Rāma eats a fruit. {{फलम्}} is the object.'
+        hi: 'कर्ता जिसे सबसे अधिक पाना चाहता है, जो खाया, पढ़ा, देखा जाता है, वह द्वितीया विभक्ति में आता है। वह कर्म है।
+          {{रामः फलं खादति}}: राम फल खाता है। {{फलम्}} कर्म है।'
+    - id: i6
+      sa: सीता नदीम् पश्यति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Sītā sees the river.
+        hi: सीता नदी देखती है।
+      words:
+      - sa: सीता
+        gloss:
+          en: Sītā
+          hi: सीता
+        check:
+          type: subanta
+          stem: सीता
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: नदीम्
+        gloss:
+          en: river (object)
+          hi: नदी (कर्म)
+        check:
+          type: subanta
+          stem: नदी
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पश्यति
+        gloss:
+          en: sees
+          hi: देखती है
+        check:
+          type: tinanta
+          dhatu: दृश्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: tb1
   kind: table
   title:
@@ -264,8 +707,10 @@ cards:
         vacana: Eka
       highlight: true
   note:
-    en: 'Singular object: {{अम्}} for most words, {{आम्}} after -{{आ}}, {{ईम्}} after -{{ई}}. A neuter word looks the same in the first and second case.'
-    hi: 'एकवचन कर्म: अधिकांश शब्दों में {{अम्}}, -{{आ}} के बाद {{आम्}}, -{{ई}} के बाद {{ईम्}}। नपुंसक शब्द प्रथमा और द्वितीया में एक-सा दिखता है।'
+    en: 'Singular object: {{अम्}} for most words, {{आम्}} after -{{आ}}, {{ईम्}} after -{{ई}}. A neuter word looks the same
+      in the first and second case.'
+    hi: 'एकवचन कर्म: अधिकांश शब्दों में {{अम्}}, -{{आ}} के बाद {{आम्}}, -{{ई}} के बाद {{ईम्}}। नपुंसक शब्द प्रथमा और द्वितीया
+      में एक-सा दिखता है।'
 - id: e1
   kind: explore
   depth: core
@@ -332,6 +777,151 @@ cards:
   - correct: true
     sa: पुस्तकम्
   - sa: पठति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः फलम् खादति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma eats a fruit.
+        hi: राम फल खाता है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit (object)
+          hi: फल (कर्म)
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादति
+        gloss:
+          en: eats
+          hi: खाता है
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: रामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit (object)
+        hi: फल (कर्म)
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: खादति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: eats
+        hi: खाता है
+      check:
+        type: tinanta
+        dhatu: खाद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{खाद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{खाद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'What the doer most wants to reach, what is eaten, read, seen, takes the second case, {{द्वितीया}}. It is the
+          object, {{कर्म}}. {{रामः फलं खादति}}: Rāma eats a fruit. {{फलम्}} is the object.'
+        hi: 'कर्ता जिसे सबसे अधिक पाना चाहता है, जो खाया, पढ़ा, देखा जाता है, वह द्वितीया विभक्ति में आता है। वह कर्म है।
+          {{रामः फलं खादति}}: राम फल खाता है। {{फलम्}} कर्म है।'
+    - id: i6
+      sa: रामः फलम् खादति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma eats a fruit.
+        hi: राम फल खाता है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit (object)
+          hi: फल (कर्म)
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादति
+        gloss:
+          en: eats
+          hi: खाता है
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -362,6 +952,151 @@ cards:
       sa: फलम्
     right:
       sa: फल
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः फलम् खादति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma eats a fruit.
+        hi: राम फल खाता है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit (object)
+          hi: फल (कर्म)
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादति
+        gloss:
+          en: eats
+          hi: खाता है
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: रामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit (object)
+        hi: फल (कर्म)
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: खादति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: eats
+        hi: खाता है
+      check:
+        type: tinanta
+        dhatu: खाद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{खाद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{खाद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'What the doer most wants to reach, what is eaten, read, seen, takes the second case, {{द्वितीया}}. It is the
+          object, {{कर्म}}. {{रामः फलं खादति}}: Rāma eats a fruit. {{फलम्}} is the object.'
+        hi: 'कर्ता जिसे सबसे अधिक पाना चाहता है, जो खाया, पढ़ा, देखा जाता है, वह द्वितीया विभक्ति में आता है। वह कर्म है।
+          {{रामः फलं खादति}}: राम फल खाता है। {{फलम्}} कर्म है।'
+    - id: i6
+      sa: रामः फलम् खादति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma eats a fruit.
+        hi: राम फल खाता है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit (object)
+          hi: फल (कर्म)
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादति
+        gloss:
+          en: eats
+          hi: खाता है
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -380,6 +1115,151 @@ cards:
     params:
       sentence: बालकः फलं खादति
     seed: 0
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः फलम् खादति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma eats a fruit.
+        hi: राम फल खाता है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit (object)
+          hi: फल (कर्म)
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादति
+        gloss:
+          en: eats
+          hi: खाता है
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: रामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit (object)
+        hi: फल (कर्म)
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: खादति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: eats
+        hi: खाता है
+      check:
+        type: tinanta
+        dhatu: खाद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{खाद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{खाद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'What the doer most wants to reach, what is eaten, read, seen, takes the second case, {{द्वितीया}}. It is the
+          object, {{कर्म}}. {{रामः फलं खादति}}: Rāma eats a fruit. {{फलम्}} is the object.'
+        hi: 'कर्ता जिसे सबसे अधिक पाना चाहता है, जो खाया, पढ़ा, देखा जाता है, वह द्वितीया विभक्ति में आता है। वह कर्म है।
+          {{रामः फलं खादति}}: राम फल खाता है। {{फलम्}} कर्म है।'
+    - id: i6
+      sa: रामः फलम् खादति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma eats a fruit.
+        hi: राम फल खाता है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit (object)
+          hi: फल (कर्म)
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादति
+        gloss:
+          en: eats
+          hi: खाता है
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   title:
@@ -399,8 +1279,10 @@ cards:
   gate: true
   story:
     success:
-      en: “फलम्!” the little spirit gasps, and for the first time he knows the word for the thing he wants. He pats the fruit and then himself, delighted.
-      hi: “फलम्!” नन्हा भूत हाँफता है, और पहली बार उसे अपनी चाही हुई वस्तु का शब्द पता है। वह फल को थपथपाता है, फिर ख़ुद को, ख़ुशी से।
+      en: “फलम्!” the little spirit gasps, and for the first time he knows the word for the thing he wants. He pats the fruit
+        and then himself, delighted.
+      hi: “फलम्!” नन्हा भूत हाँफता है, और पहली बार उसे अपनी चाही हुई वस्तु का शब्द पता है। वह फल को थपथपाता है, फिर ख़ुद को,
+        ख़ुशी से।
     failure:
       en: 'He keeps pointing. Say what you see: the object comes before the verb.'
       hi: 'वह इशारा करता रहता है। बताइए आप क्या देखते हैं: कर्म क्रिया से पहले आता है।'
@@ -408,6 +1290,151 @@ cards:
   - अहम्
   - फलम्
   - पश्यामि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः फलम् खादति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma eats a fruit.
+        hi: राम फल खाता है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit (object)
+          hi: फल (कर्म)
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादति
+        gloss:
+          en: eats
+          hi: खाता है
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: रामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit (object)
+        hi: फल (कर्म)
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: खादति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: eats
+        hi: खाता है
+      check:
+        type: tinanta
+        dhatu: खाद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{खाद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{खाद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'What the doer most wants to reach, what is eaten, read, seen, takes the second case, {{द्वितीया}}. It is the
+          object, {{कर्म}}. {{रामः फलं खादति}}: Rāma eats a fruit. {{फलम्}} is the object.'
+        hi: 'कर्ता जिसे सबसे अधिक पाना चाहता है, जो खाया, पढ़ा, देखा जाता है, वह द्वितीया विभक्ति में आता है। वह कर्म है।
+          {{रामः फलं खादति}}: राम फल खाता है। {{फलम्}} कर्म है।'
+    - id: i6
+      sa: रामः फलम् खादति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma eats a fruit.
+        hi: राम फल खाता है।
+      words:
+      - sa: रामः
+        gloss:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit (object)
+          hi: फल (कर्म)
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: खादति
+        gloss:
+          en: eats
+          hi: खाता है
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: pn
   kind: teach
   title:
@@ -420,8 +1447,26 @@ cards:
   - 1.4.49
   - 2.3.2
   body:
-    en: Sūtra 1.4.49, {{कर्तुरीप्सिततमं कर्म}}, calls the object “what the doer most wishes to reach”. Sūtra 2.3.2, {{कर्मणि द्वितीया}}, puts it in the second case.
-    hi: सूत्र 1.4.49, {{कर्तुरीप्सिततमं कर्म}}, कर्म को ‘वह जिसे कर्ता सबसे अधिक पाना चाहे’ कहता है। सूत्र 2.3.2, {{कर्मणि द्वितीया}}, उसे द्वितीया में रखता है।
+    en: Sūtra 1.4.49, {{कर्तुरीप्सिततमं कर्म}}, calls the object “what the doer most wishes to reach”. Sūtra 2.3.2, {{कर्मणि
+      द्वितीया}}, puts it in the second case.
+    hi: सूत्र 1.4.49, {{कर्तुरीप्सिततमं कर्म}}, कर्म को ‘वह जिसे कर्ता सबसे अधिक पाना चाहे’ कहता है। सूत्र 2.3.2, {{कर्मणि
+      द्वितीया}}, उसे द्वितीया में रखता है।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 1.4.49, {{कर्तुरीप्सिततमं कर्म}}, calls the object “what the doer most wishes to reach”. Sūtra 2.3.2, {{कर्मणि
+        द्वितीया}}, puts it in the second case.
+      hi: सूत्र 1.4.49, {{कर्तुरीप्सिततमं कर्म}}, कर्म को ‘वह जिसे कर्ता सबसे अधिक पाना चाहे’ कहता है। सूत्र 2.3.2, {{कर्मणि
+        द्वितीया}}, उसे द्वितीया में रखता है।
+    items:
+    - id: i0
+      sa: कर्तुरीप्सिततमं कर्म
+    - id: i1
+      sa: कर्मणि द्वितीया
 - id: sum
   kind: summary
   title:

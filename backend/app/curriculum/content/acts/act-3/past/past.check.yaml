@@ -28,6 +28,167 @@ cards:
   - correct: true
     sa: अपठत्
   - sa: पठतु
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: ह्यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: yesterday
+        hi: कल (बीता)
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: अगच्छत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}}
+          (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment, {{अट्}}.'
+        hi: 'जो आज से पहले हुआ, उसके लिए धातु के आगे {{अ}} लगाइए और भूतकाल के प्रत्यय लीजिए: {{अगच्छत्}} (वह गया), {{अपठत्}}
+          (उसने पढ़ा), {{अवदत्}} (उसने कहा)। इस काल का नाम {{लङ्}} है। {{अ}} को आगम {{अट्}} कहते हैं।'
+    - id: i7
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -48,6 +209,167 @@ cards:
   - वद
   - त्
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: ह्यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: yesterday
+        hi: कल (बीता)
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: अगच्छत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}}
+          (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment, {{अट्}}.'
+        hi: 'जो आज से पहले हुआ, उसके लिए धातु के आगे {{अ}} लगाइए और भूतकाल के प्रत्यय लीजिए: {{अगच्छत्}} (वह गया), {{अपठत्}}
+          (उसने पढ़ा), {{अवदत्}} (उसने कहा)। इस काल का नाम {{लङ्}} है। {{अ}} को आगम {{अट्}} कहते हैं।'
+    - id: i7
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -78,6 +400,167 @@ cards:
       sa: वसति
     right:
       sa: अवसत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: ह्यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: yesterday
+        hi: कल (बीता)
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: अगच्छत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}}
+          (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment, {{अट्}}.'
+        hi: 'जो आज से पहले हुआ, उसके लिए धातु के आगे {{अ}} लगाइए और भूतकाल के प्रत्यय लीजिए: {{अगच्छत्}} (वह गया), {{अपठत्}}
+          (उसने पढ़ा), {{अवदत्}} (उसने कहा)। इस काल का नाम {{लङ्}} है। {{अ}} को आगम {{अट्}} कहते हैं।'
+    - id: i7
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -96,6 +579,167 @@ cards:
   - sa: अपश्यताम्
   - correct: true
     sa: अपश्यन्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: ह्यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: yesterday
+        hi: कल (बीता)
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: अगच्छत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}}
+          (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment, {{अट्}}.'
+        hi: 'जो आज से पहले हुआ, उसके लिए धातु के आगे {{अ}} लगाइए और भूतकाल के प्रत्यय लीजिए: {{अगच्छत्}} (वह गया), {{अपठत्}}
+          (उसने पढ़ा), {{अवदत्}} (उसने कहा)। इस काल का नाम {{लङ्}} है। {{अ}} को आगम {{अट्}} कहते हैं।'
+    - id: i7
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
 - id: p5
   kind: practice
   depth: core
@@ -114,6 +758,167 @@ cards:
   - sa: राजा अभवत्
   - correct: true
     sa: राजा आसीत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: ह्यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: yesterday
+        hi: कल (बीता)
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: अगच्छत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}}
+          (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment, {{अट्}}.'
+        hi: 'जो आज से पहले हुआ, उसके लिए धातु के आगे {{अ}} लगाइए और भूतकाल के प्रत्यय लीजिए: {{अगच्छत्}} (वह गया), {{अपठत्}}
+          (उसने पढ़ा), {{अवदत्}} (उसने कहा)। इस काल का नाम {{लङ्}} है। {{अ}} को आगम {{अट्}} कहते हैं।'
+    - id: i7
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
 - id: p6
   kind: practice
   depth: core
@@ -132,6 +937,167 @@ cards:
   - correct: true
     sa: आगच्छत्
   - sa: आगच्छति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: ह्यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: yesterday
+        hi: कल (बीता)
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: अगच्छत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}}
+          (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment, {{अट्}}.'
+        hi: 'जो आज से पहले हुआ, उसके लिए धातु के आगे {{अ}} लगाइए और भूतकाल के प्रत्यय लीजिए: {{अगच्छत्}} (वह गया), {{अपठत्}}
+          (उसने पढ़ा), {{अवदत्}} (उसने कहा)। इस काल का नाम {{लङ्}} है। {{अ}} को आगम {{अट्}} कहते हैं।'
+    - id: i7
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
 - id: p7
   kind: practice
   depth: core
@@ -148,8 +1114,12 @@ cards:
   gate: true
   story:
     success:
-      en: “ह्यः सः अगच्छत्,” you say. Atītaka lifts his head. “Yes,” he says, as if finishing a sentence he began a hundred years ago. “And today? He is not here. Where did he go?” He gestures into the trees, then smiles, almost cheerfully. “श्वः सः गमिष्यति.” “Tomorrow he will go.” Dādī glances at the Vetāla. “That is not past at all.”
-      hi: “ह्यः सः अगच्छत्,” आप कहते हैं। अतीतक सिर उठाता है। “हाँ,” वह कहता है, मानो सौ वर्ष पहले शुरू किया वाक्य पूरा कर रहा हो। “और आज? वह यहाँ नहीं है। कहाँ गया?” वह पेड़ों की ओर इशारा करता है, फिर लगभग हँसते हुए मुस्कराता है। “श्वः सः गमिष्यति।” “कल वह जाएगा।” दादी वेताल की ओर देखती हैं। “यह तो भूतकाल है ही नहीं।”
+      en: “ह्यः सः अगच्छत्,” you say. Atītaka lifts his head. “Yes,” he says, as if finishing a sentence he began a hundred
+        years ago. “And today? He is not here. Where did he go?” He gestures into the trees, then smiles, almost cheerfully.
+        “श्वः सः गमिष्यति.” “Tomorrow he will go.” Dādī glances at the Vetāla. “That is not past at all.”
+      hi: “ह्यः सः अगच्छत्,” आप कहते हैं। अतीतक सिर उठाता है। “हाँ,” वह कहता है, मानो सौ वर्ष पहले शुरू किया वाक्य पूरा कर
+        रहा हो। “और आज? वह यहाँ नहीं है। कहाँ गया?” वह पेड़ों की ओर इशारा करता है, फिर लगभग हँसते हुए मुस्कराता है। “श्वः
+        सः गमिष्यति।” “कल वह जाएगा।” दादी वेताल की ओर देखती हैं। “यह तो भूतकाल है ही नहीं।”
     failure:
       en: 'The old spirit shakes his head. His sentence: {{ह्यः सः अगच्छत्}}.'
       hi: 'बूढ़ा भूत सिर हिलाता है। उसका वाक्य: {{ह्यः सः अगच्छत्}}।'
@@ -157,3 +1127,164 @@ cards:
   - ह्यः
   - सः
   - अगच्छत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: ह्यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: yesterday
+        hi: कल (बीता)
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: अगच्छत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}}
+          (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment, {{अट्}}.'
+        hi: 'जो आज से पहले हुआ, उसके लिए धातु के आगे {{अ}} लगाइए और भूतकाल के प्रत्यय लीजिए: {{अगच्छत्}} (वह गया), {{अपठत्}}
+          (उसने पढ़ा), {{अवदत्}} (उसने कहा)। इस काल का नाम {{लङ्}} है। {{अ}} को आगम {{अट्}} कहते हैं।'
+    - id: i7
+      sa: ह्यः बालकः गृहम् अगच्छत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Yesterday the boy went home.
+        hi: कल बालक घर गया।
+      words:
+      - sa: ह्यः
+        gloss:
+          en: yesterday
+          hi: कल (बीता)
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: अगच्छत्
+        gloss:
+          en: went
+          hi: गया
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka

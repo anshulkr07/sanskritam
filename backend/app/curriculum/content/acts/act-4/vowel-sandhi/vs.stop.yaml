@@ -24,7 +24,8 @@ cards:
     hi: छठी प्रतिमा
   depth: core
   image:
-    brief: The sixth statue standing with open empty hands, a closed carved door behind her base; Śuka narrowing his eyes; Dādī pointing at an inscription with two words kept apart by a small gap; Lubdhaka's foreman scratching his head.
+    brief: The sixth statue standing with open empty hands, a closed carved door behind her base; Śuka narrowing his eyes;
+      Dādī pointing at an inscription with two words kept apart by a small gap; Lubdhaka's foreman scratching his head.
     alt:
       en: A statue with open empty hands before a closed carved door, a parrot narrowing his eyes
       hi: ख़ाली खुले हाथों वाली प्रतिमा, बन्द नक्काशीदार द्वार के सामने, आँखें सिकोड़ता तोता
@@ -37,10 +38,15 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: vs-stop-s1
-    text_in_image: ["हरी एतौ"]
+    text_in_image:
+    - हरी एतौ
   narration:
-    en: 'The sixth statue holds nothing. “हरी एतौ,” she says: “these two Haris.” “ते अत्र.” “मुनी इमौ.” Śuka narrows his eyes. “Those are not joined. Look, two vowels meet and nothing happens.” “Some words are like that,” says Dādī. “Dual forms ending in ई, ऊ, ए stay apart. They are pragṛhya: the door is shut.”'
-    hi: 'छठी प्रतिमा के हाथ ख़ाली हैं। “हरी एतौ,” वह कहती है: “ये दो हरि।” “ते अत्र।” “मुनी इमौ।” शुक आँखें सिकोड़ता है। “ये जुड़े नहीं हैं। देखिए, दो स्वर मिलते हैं और कुछ नहीं होता।” “कुछ शब्द ऐसे ही होते हैं,” दादी कहती हैं। “ई, ऊ, ए पर समाप्त द्विवचन के रूप अलग रहते हैं। वे प्रगृह्य हैं: दरवाज़ा बन्द है।”'
+    en: 'The sixth statue holds nothing. “हरी एतौ,” she says: “these two Haris.” “ते अत्र.” “मुनी इमौ.” Śuka narrows his eyes.
+      “Those are not joined. Look, two vowels meet and nothing happens.” “Some words are like that,” says Dādī. “Dual forms
+      ending in ई, ऊ, ए stay apart. They are pragṛhya: the door is shut.”'
+    hi: 'छठी प्रतिमा के हाथ ख़ाली हैं। “हरी एतौ,” वह कहती है: “ये दो हरि।” “ते अत्र।” “मुनी इमौ।” शुक आँखें सिकोड़ता है। “ये
+      जुड़े नहीं हैं। देखिए, दो स्वर मिलते हैं और कुछ नहीं होता।” “कुछ शब्द ऐसे ही होते हैं,” दादी कहती हैं। “ई, ऊ, ए पर समाप्त
+      द्विवचन के रूप अलग रहते हैं। वे प्रगृह्य हैं: दरवाज़ा बन्द है।”'
 - id: t1
   kind: teach
   title:
@@ -50,13 +56,48 @@ cards:
   skills:
   - sandhi.blocked
   body:
-    en: 'Some words never join. The dual forms ending in {{ई}}, {{ऊ}} or {{ए}} stay apart before a vowel: {{हरी + एतौ}} stays {{हरी एतौ}}; {{ते + अत्र}} stays {{ते अत्र}}. These are {{प्रगृह्याः}}. Interjections such as {{अहो}} also stand apart.'
-    hi: 'कुछ शब्द कभी नहीं जुड़ते। {{ई}}, {{ऊ}} या {{ए}} पर समाप्त द्विवचन के रूप स्वर से पहले भी अलग रहते हैं: {{हरी + एतौ}} {{हरी एतौ}} ही रहता है; {{ते + अत्र}} {{ते अत्र}} ही रहता है। ये {{प्रगृह्याः}} हैं। {{अहो}} जैसे विस्मयादिबोधक भी अलग रहते हैं।'
+    en: 'Some words never join. The dual forms ending in {{ई}}, {{ऊ}} or {{ए}} stay apart before a vowel: {{हरी + एतौ}} stays
+      {{हरी एतौ}}; {{ते + अत्र}} stays {{ते अत्र}}. These are {{प्रगृह्याः}}. Interjections such as {{अहो}} also stand apart.'
+    hi: 'कुछ शब्द कभी नहीं जुड़ते। {{ई}}, {{ऊ}} या {{ए}} पर समाप्त द्विवचन के रूप स्वर से पहले भी अलग रहते हैं: {{हरी + एतौ}}
+      {{हरी एतौ}} ही रहता है; {{ते + अत्र}} {{ते अत्र}} ही रहता है। ये {{प्रगृह्याः}} हैं। {{अहो}} जैसे विस्मयादिबोधक भी अलग
+      रहते हैं।'
   term:
     sa: प्रगृह्यम्
     meaning:
       en: a word that does not join
       hi: वह शब्द जो नहीं जुड़ता
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Some words never join. The dual forms ending in {{ई}}, {{ऊ}} or {{ए}} stay apart before a vowel: {{हरी + एतौ}}
+        stays {{हरी एतौ}}; {{ते + अत्र}} stays {{ते अत्र}}. These are {{प्रगृह्याः}}. Interjections such as {{अहो}} also stand
+        apart.'
+      hi: 'कुछ शब्द कभी नहीं जुड़ते। {{ई}}, {{ऊ}} या {{ए}} पर समाप्त द्विवचन के रूप स्वर से पहले भी अलग रहते हैं: {{हरी +
+        एतौ}} {{हरी एतौ}} ही रहता है; {{ते + अत्र}} {{ते अत्र}} ही रहता है। ये {{प्रगृह्याः}} हैं। {{अहो}} जैसे विस्मयादिबोधक
+        भी अलग रहते हैं।'
+    items:
+    - id: i0
+      sa: ई
+    - id: i1
+      sa: ऊ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: हरी + एतौ
+    - id: i4
+      sa: हरी एतौ
+    - id: i5
+      sa: ते + अत्र
+    - id: i6
+      sa: ते अत्र
+    - id: i7
+      sa: प्रगृह्याः
+    - id: i8
+      sa: अहो
 - id: tb1
   kind: table
   title:
@@ -129,6 +170,38 @@ cards:
   - correct: true
     sa: हरी एतौ
   - sa: न अस्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Some words never join. The dual forms ending in {{ई}}, {{ऊ}} or {{ए}} stay apart before a vowel: {{हरी + एतौ}}
+        stays {{हरी एतौ}}; {{ते + अत्र}} stays {{ते अत्र}}. These are {{प्रगृह्याः}}. Interjections such as {{अहो}} also stand
+        apart.'
+      hi: 'कुछ शब्द कभी नहीं जुड़ते। {{ई}}, {{ऊ}} या {{ए}} पर समाप्त द्विवचन के रूप स्वर से पहले भी अलग रहते हैं: {{हरी +
+        एतौ}} {{हरी एतौ}} ही रहता है; {{ते + अत्र}} {{ते अत्र}} ही रहता है। ये {{प्रगृह्याः}} हैं। {{अहो}} जैसे विस्मयादिबोधक
+        भी अलग रहते हैं।'
+    items:
+    - id: i0
+      sa: ई
+    - id: i1
+      sa: ऊ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: हरी + एतौ
+    - id: i4
+      sa: हरी एतौ
+    - id: i5
+      sa: ते + अत्र
+    - id: i6
+      sa: ते अत्र
+    - id: i7
+      sa: प्रगृह्याः
+    - id: i8
+      sa: अहो
 - id: p2
   kind: practice
   depth: core
@@ -167,6 +240,38 @@ cards:
       text:
         en: stays apart
         hi: अलग रहता है
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Some words never join. The dual forms ending in {{ई}}, {{ऊ}} or {{ए}} stay apart before a vowel: {{हरी + एतौ}}
+        stays {{हरी एतौ}}; {{ते + अत्र}} stays {{ते अत्र}}. These are {{प्रगृह्याः}}. Interjections such as {{अहो}} also stand
+        apart.'
+      hi: 'कुछ शब्द कभी नहीं जुड़ते। {{ई}}, {{ऊ}} या {{ए}} पर समाप्त द्विवचन के रूप स्वर से पहले भी अलग रहते हैं: {{हरी +
+        एतौ}} {{हरी एतौ}} ही रहता है; {{ते + अत्र}} {{ते अत्र}} ही रहता है। ये {{प्रगृह्याः}} हैं। {{अहो}} जैसे विस्मयादिबोधक
+        भी अलग रहते हैं।'
+    items:
+    - id: i0
+      sa: ई
+    - id: i1
+      sa: ऊ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: हरी + एतौ
+    - id: i4
+      sa: हरी एतौ
+    - id: i5
+      sa: ते + अत्र
+    - id: i6
+      sa: ते अत्र
+    - id: i7
+      sa: प्रगृह्याः
+    - id: i8
+      sa: अहो
 - id: e1
   kind: explore
   depth: core
@@ -208,8 +313,12 @@ cards:
   gate: true
   story:
     success:
-      en: “मुनी इमौ,” you say, “these two sages,” and you leave a clear gap between the words, as you would between two people at a door. The empty-handed statue smiles, for the first time, a little crookedly. “Yes,” she says. “Not everything joins. Sometimes the right thing is to leave the door shut.” Behind her, quietly, six statues begin to hum together.
-      hi: “मुनी इमौ,” आप कहते हैं, “ये दो मुनि,” और शब्दों के बीच साफ़ अन्तराल छोड़ते हैं, जैसे द्वार पर खड़े दो लोगों के बीच। ख़ाली हाथ वाली प्रतिमा पहली बार हल्का-सा टेढ़ा मुस्कराती है। “हाँ,” वह कहती है। “हर चीज़ जुड़ती नहीं। कभी-कभी सही यही है कि द्वार बन्द रहने दिया जाए।” उसके पीछे, धीमे से, छह प्रतिमाएँ एक साथ गुनगुनाने लगती हैं।
+      en: “मुनी इमौ,” you say, “these two sages,” and you leave a clear gap between the words, as you would between two people
+        at a door. The empty-handed statue smiles, for the first time, a little crookedly. “Yes,” she says. “Not everything
+        joins. Sometimes the right thing is to leave the door shut.” Behind her, quietly, six statues begin to hum together.
+      hi: “मुनी इमौ,” आप कहते हैं, “ये दो मुनि,” और शब्दों के बीच साफ़ अन्तराल छोड़ते हैं, जैसे द्वार पर खड़े दो लोगों के
+        बीच। ख़ाली हाथ वाली प्रतिमा पहली बार हल्का-सा टेढ़ा मुस्कराती है। “हाँ,” वह कहती है। “हर चीज़ जुड़ती नहीं। कभी-कभी
+        सही यही है कि द्वार बन्द रहने दिया जाए।” उसके पीछे, धीमे से, छह प्रतिमाएँ एक साथ गुनगुनाने लगती हैं।
     failure:
       en: 'The statue stays grave. A dual in {{-ई}} does not join: {{मुनी इमौ}}.'
       hi: 'प्रतिमा गम्भीर रहती है। {{-ई}} वाला द्विवचन नहीं जुड़ता: {{मुनी इमौ}}।'
@@ -218,6 +327,38 @@ cards:
   - sa: मुनीमौ
   - correct: true
     sa: मुनी इमौ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Some words never join. The dual forms ending in {{ई}}, {{ऊ}} or {{ए}} stay apart before a vowel: {{हरी + एतौ}}
+        stays {{हरी एतौ}}; {{ते + अत्र}} stays {{ते अत्र}}. These are {{प्रगृह्याः}}. Interjections such as {{अहो}} also stand
+        apart.'
+      hi: 'कुछ शब्द कभी नहीं जुड़ते। {{ई}}, {{ऊ}} या {{ए}} पर समाप्त द्विवचन के रूप स्वर से पहले भी अलग रहते हैं: {{हरी +
+        एतौ}} {{हरी एतौ}} ही रहता है; {{ते + अत्र}} {{ते अत्र}} ही रहता है। ये {{प्रगृह्याः}} हैं। {{अहो}} जैसे विस्मयादिबोधक
+        भी अलग रहते हैं।'
+    items:
+    - id: i0
+      sa: ई
+    - id: i1
+      sa: ऊ
+    - id: i2
+      sa: ए
+    - id: i3
+      sa: हरी + एतौ
+    - id: i4
+      sa: हरी एतौ
+    - id: i5
+      sa: ते + अत्र
+    - id: i6
+      sa: ते अत्र
+    - id: i7
+      sa: प्रगृह्याः
+    - id: i8
+      sa: अहो
 - id: pn
   kind: teach
   title:
@@ -230,8 +371,36 @@ cards:
   - 1.1.11
   - 6.1.125
   body:
-    en: Sūtra 1.1.11, {{ईदूदेद्द्विवचनं प्रगृह्यम्}}, names the dual forms ending in {{ई}}, {{ऊ}}, {{ए}} {{प्रगृह्य}}. And 6.1.125, {{प्लुतप्रगृह्या अचि नित्यम्}}, says a {{प्रगृह्य}} stays as it is before a vowel. So there is no sandhi.
-    hi: सूत्र 1.1.11, {{ईदूदेद्द्विवचनं प्रगृह्यम्}}, {{ई}}, {{ऊ}}, {{ए}} पर समाप्त द्विवचन के रूपों को {{प्रगृह्य}} नाम देता है। और 6.1.125, {{प्लुतप्रगृह्या अचि नित्यम्}}, कहता है कि {{प्रगृह्य}} स्वर से पहले जैसा है वैसा ही रहता है। इसलिए सन्धि नहीं होती।
+    en: Sūtra 1.1.11, {{ईदूदेद्द्विवचनं प्रगृह्यम्}}, names the dual forms ending in {{ई}}, {{ऊ}}, {{ए}} {{प्रगृह्य}}. And
+      6.1.125, {{प्लुतप्रगृह्या अचि नित्यम्}}, says a {{प्रगृह्य}} stays as it is before a vowel. So there is no sandhi.
+    hi: सूत्र 1.1.11, {{ईदूदेद्द्विवचनं प्रगृह्यम्}}, {{ई}}, {{ऊ}}, {{ए}} पर समाप्त द्विवचन के रूपों को {{प्रगृह्य}} नाम देता
+      है। और 6.1.125, {{प्लुतप्रगृह्या अचि नित्यम्}}, कहता है कि {{प्रगृह्य}} स्वर से पहले जैसा है वैसा ही रहता है। इसलिए
+      सन्धि नहीं होती।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 1.1.11, {{ईदूदेद्द्विवचनं प्रगृह्यम्}}, names the dual forms ending in {{ई}}, {{ऊ}}, {{ए}} {{प्रगृह्य}}. And
+        6.1.125, {{प्लुतप्रगृह्या अचि नित्यम्}}, says a {{प्रगृह्य}} stays as it is before a vowel. So there is no sandhi.
+      hi: सूत्र 1.1.11, {{ईदूदेद्द्विवचनं प्रगृह्यम्}}, {{ई}}, {{ऊ}}, {{ए}} पर समाप्त द्विवचन के रूपों को {{प्रगृह्य}} नाम
+        देता है। और 6.1.125, {{प्लुतप्रगृह्या अचि नित्यम्}}, कहता है कि {{प्रगृह्य}} स्वर से पहले जैसा है वैसा ही रहता है।
+        इसलिए सन्धि नहीं होती।
+    items:
+    - id: i0
+      sa: ईदूदेद्द्विवचनं प्रगृह्यम्
+    - id: i1
+      sa: ई
+    - id: i2
+      sa: ऊ
+    - id: i3
+      sa: ए
+    - id: i4
+      sa: प्रगृह्य
+    - id: i5
+      sa: प्लुतप्रगृह्या अचि नित्यम्
 - id: sum
   kind: summary
   title:

@@ -26,7 +26,9 @@ cards:
     hi: लटकने वाला
   depth: core
   image:
-    brief: 'An old grove at night at the edge of a burning ground: a śiṃśapā tree with a long, thin ash-grey spirit hanging upside down from a branch, eyes closed, arms folded; below, you, Dādī and Śuka looking up; far back among the trunks the faint glow of a lantern and the tall silhouette of Lubdhaka; a tiny bright-red spirit pointing a long finger.'
+    brief: 'An old grove at night at the edge of a burning ground: a śiṃśapā tree with a long, thin ash-grey spirit hanging
+      upside down from a branch, eyes closed, arms folded; below, you, Dādī and Śuka looking up; far back among the trunks
+      the faint glow of a lantern and the tall silhouette of Lubdhaka; a tiny bright-red spirit pointing a long finger.'
     alt:
       en: A grey spirit hangs upside down in a tree while three travellers look up and a lantern glows far behind
       hi: पेड़ पर उलटा लटका भूरा भूत, नीचे तीन यात्री, पीछे दूर लालटेन की झलक
@@ -41,8 +43,12 @@ cards:
     ratio: '4:3'
     id: cmd-go-s1
   narration:
-    en: 'An old grove at the edge of a burning ground. In a śiṃśapā tree something hangs upside down like a great grey bat: the Vetāla. “गच्छ!” he drawls at you, without opening his eyes. “पठ!” A lantern winks far back among the trunks. Lubdhaka has followed you here. Dādī whispers: “He only gives orders. Answer in Sanskrit and he will help.”'
-    hi: 'बीहड़ श्मशान के छोर पर एक पुराना वन। शिंशपा के वृक्ष पर कोई बड़े भूरे चमगादड़ की तरह उलटा लटका है: वेताल। “गच्छ!” वह आँखें बन्द किए ही सुस्ती से कहता है। “पठ!” पीछे तनों के बीच एक लालटेन टिमटिमाती है। लुब्धक आपके पीछे यहाँ तक आ गया है। दादी फुसफुसाती हैं: “वह केवल आज्ञा देता है। संस्कृत में उत्तर दो तो वह मदद करेगा।”'
+    en: 'An old grove at the edge of a burning ground. In a śiṃśapā tree something hangs upside down like a great grey bat:
+      the Vetāla. “गच्छ!” he drawls at you, without opening his eyes. “पठ!” A lantern winks far back among the trunks. Lubdhaka
+      has followed you here. Dādī whispers: “He only gives orders. Answer in Sanskrit and he will help.”'
+    hi: 'बीहड़ श्मशान के छोर पर एक पुराना वन। शिंशपा के वृक्ष पर कोई बड़े भूरे चमगादड़ की तरह उलटा लटका है: वेताल। “गच्छ!”
+      वह आँखें बन्द किए ही सुस्ती से कहता है। “पठ!” पीछे तनों के बीच एक लालटेन टिमटिमाती है। लुब्धक आपके पीछे यहाँ तक आ गया
+      है। दादी फुसफुसाती हैं: “वह केवल आज्ञा देता है। संस्कृत में उत्तर दो तो वह मदद करेगा।”'
   lines:
   - speaker: dadi
     sa: गच्छ! पठ! वद!
@@ -64,8 +70,10 @@ cards:
   skills:
   - verb.lot
   body:
-    en: 'To tell one person “you do it!”, use the root with its class sign and no ending: {{गच्छ}} (go!), {{पठ}} (read!), {{वद}} (speak!), {{पश्य}} (look!), {{लिख}} (write!), {{पिब}} (drink!). This is the command mood, {{लोट्}}.'
-    hi: 'किसी एक को ‘तुम करो!’ कहने के लिए धातु को उसके गण-चिह्न के साथ बिना प्रत्यय के रखिए: {{गच्छ}} (जाओ!), {{पठ}} (पढ़ो!), {{वद}} (बोलो!), {{पश्य}} (देखो!), {{लिख}} (लिखो!), {{पिब}} (पियो!)। यह आज्ञा का काल-विधान है, {{लोट्}}।'
+    en: 'To tell one person “you do it!”, use the root with its class sign and no ending: {{गच्छ}} (go!), {{पठ}} (read!),
+      {{वद}} (speak!), {{पश्य}} (look!), {{लिख}} (write!), {{पिब}} (drink!). This is the command mood, {{लोट्}}.'
+    hi: 'किसी एक को ‘तुम करो!’ कहने के लिए धातु को उसके गण-चिह्न के साथ बिना प्रत्यय के रखिए: {{गच्छ}} (जाओ!), {{पठ}} (पढ़ो!),
+      {{वद}} (बोलो!), {{पश्य}} (देखो!), {{लिख}} (लिखो!), {{पिब}} (पियो!)। यह आज्ञा का काल-विधान है, {{लोट्}}।'
   examples:
   - sa: बालक गृहम् गच्छ।
     meaning:
@@ -167,6 +175,402 @@ cards:
     meaning:
       en: the command mood
       hi: आज्ञा का काल-विधान
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालक गृहम् गच्छ।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Boy, go home!
+        hi: बालक, घर जाओ!
+      words:
+      - sa: बालक
+        gloss:
+          en: boy!
+          hi: बालक!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छ
+        gloss:
+          en: go!
+          hi: जाओ!
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+    - id: i1
+      sa: बालक
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy!
+        hi: बालक!
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छ
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go!
+        hi: जाओ!
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lot
+        purusha: Madhyama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To tell one person “you do it!”, use the root with its class sign and no ending: {{गच्छ}} (go!), {{पठ}} (read!),
+          {{वद}} (speak!), {{पश्य}} (look!), {{लिख}} (write!), {{पिब}} (drink!). This is the command mood, {{लोट्}}.'
+        hi: 'किसी एक को ‘तुम करो!’ कहने के लिए धातु को उसके गण-चिह्न के साथ बिना प्रत्यय के रखिए: {{गच्छ}} (जाओ!), {{पठ}}
+          (पढ़ो!), {{वद}} (बोलो!), {{पश्य}} (देखो!), {{लिख}} (लिखो!), {{पिब}} (पियो!)। यह आज्ञा का काल-विधान है, {{लोट्}}।'
+    - id: i6
+      sa: बालक गृहम् गच्छ।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Boy, go home!
+        hi: बालक, घर जाओ!
+      words:
+      - sa: बालक
+        gloss:
+          en: boy!
+          hi: बालक!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छ
+        gloss:
+          en: go!
+          hi: जाओ!
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालक पुस्तकम् पठ।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Boy, read the book!
+        hi: बालक, पुस्तक पढ़ो!
+      words:
+      - sa: बालक
+        gloss:
+          en: boy!
+          hi: बालक!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठ
+        gloss:
+          en: read!
+          hi: पढ़ो!
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+    - id: i1
+      sa: बालक
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy!
+        hi: बालक!
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+    - id: i2
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पठ
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read!
+        hi: पढ़ो!
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lot
+        purusha: Madhyama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To tell one person “you do it!”, use the root with its class sign and no ending: {{गच्छ}} (go!), {{पठ}} (read!),
+          {{वद}} (speak!), {{पश्य}} (look!), {{लिख}} (write!), {{पिब}} (drink!). This is the command mood, {{लोट्}}.'
+        hi: 'किसी एक को ‘तुम करो!’ कहने के लिए धातु को उसके गण-चिह्न के साथ बिना प्रत्यय के रखिए: {{गच्छ}} (जाओ!), {{पठ}}
+          (पढ़ो!), {{वद}} (बोलो!), {{पश्य}} (देखो!), {{लिख}} (लिखो!), {{पिब}} (पियो!)। यह आज्ञा का काल-विधान है, {{लोट्}}।'
+    - id: i6
+      sa: बालक पुस्तकम् पठ।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Boy, read the book!
+        hi: बालक, पुस्तक पढ़ो!
+      words:
+      - sa: बालक
+        gloss:
+          en: boy!
+          hi: बालक!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Eka
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठ
+        gloss:
+          en: read!
+          hi: पढ़ो!
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: जलम् पिब।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Drink water!
+        hi: जल पियो!
+      words:
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पिब
+        gloss:
+          en: drink!
+          hi: पियो!
+        check:
+          type: tinanta
+          dhatu: पा
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+    - id: i1
+      sa: जलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: water
+        hi: जल
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{जल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{जल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i2
+      sa: पिब
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: drink!
+        hi: पियो!
+      check:
+        type: tinanta
+        dhatu: पा
+        lakara: Lot
+        purusha: Madhyama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पा}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पा}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To tell one person “you do it!”, use the root with its class sign and no ending: {{गच्छ}} (go!), {{पठ}} (read!),
+          {{वद}} (speak!), {{पश्य}} (look!), {{लिख}} (write!), {{पिब}} (drink!). This is the command mood, {{लोट्}}.'
+        hi: 'किसी एक को ‘तुम करो!’ कहने के लिए धातु को उसके गण-चिह्न के साथ बिना प्रत्यय के रखिए: {{गच्छ}} (जाओ!), {{पठ}}
+          (पढ़ो!), {{वद}} (बोलो!), {{पश्य}} (देखो!), {{लिख}} (लिखो!), {{पिब}} (पियो!)। यह आज्ञा का काल-विधान है, {{लोट्}}।'
+    - id: i5
+      sa: जलम् पिब।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Drink water!
+        hi: जल पियो!
+      words:
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पिब
+        gloss:
+          en: drink!
+          hi: पियो!
+        check:
+          type: tinanta
+          dhatu: पा
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
 - id: tb1
   kind: table
   title:
@@ -273,8 +677,10 @@ cards:
   skills:
   - verb.lot
   body:
-    en: 'The third person is “let him …”: {{पठतु}}, {{गच्छतु}}. The first person is “let me …” or “let us …”: {{पठानि}}, {{गच्छाम}}. The command to several people ends in {{-त}}: {{पठत}}, “read, all of you”.'
-    hi: 'प्रथम पुरुष ‘वह … करे’ है: {{पठतु}}, {{गच्छतु}}। उत्तम पुरुष ‘मैं … करूँ’ या ‘हम … करें’ है: {{पठानि}}, {{गच्छाम}}। कई लोगों को आज्ञा {{-त}} पर समाप्त होती है: {{पठत}}, ‘तुम सब पढ़ो’।'
+    en: 'The third person is “let him …”: {{पठतु}}, {{गच्छतु}}. The first person is “let me …” or “let us …”: {{पठानि}}, {{गच्छाम}}.
+      The command to several people ends in {{-त}}: {{पठत}}, “read, all of you”.'
+    hi: 'प्रथम पुरुष ‘वह … करे’ है: {{पठतु}}, {{गच्छतु}}। उत्तम पुरुष ‘मैं … करूँ’ या ‘हम … करें’ है: {{पठानि}}, {{गच्छाम}}।
+      कई लोगों को आज्ञा {{-त}} पर समाप्त होती है: {{पठत}}, ‘तुम सब पढ़ो’।'
   examples:
   - sa: सः पठतु।
     meaning:
@@ -349,6 +755,323 @@ cards:
         lakara: Lot
         purusha: Madhyama
         vacana: Bahu
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सः पठतु।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Let him read.
+        hi: वह पढ़े।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठतु
+        gloss:
+          en: let him read
+          hi: वह पढ़े
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lot
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: पठतु
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: let him read
+        hi: वह पढ़े
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lot
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लोट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लोट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The third person is “let him …”: {{पठतु}}, {{गच्छतु}}. The first person is “let me …” or “let us …”: {{पठानि}},
+          {{गच्छाम}}. The command to several people ends in {{-त}}: {{पठत}}, “read, all of you”.'
+        hi: 'प्रथम पुरुष ‘वह … करे’ है: {{पठतु}}, {{गच्छतु}}। उत्तम पुरुष ‘मैं … करूँ’ या ‘हम … करें’ है: {{पठानि}}, {{गच्छाम}}।
+          कई लोगों को आज्ञा {{-त}} पर समाप्त होती है: {{पठत}}, ‘तुम सब पढ़ो’।'
+    - id: i5
+      sa: सः पठतु।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Let him read.
+        hi: वह पढ़े।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठतु
+        gloss:
+          en: let him read
+          hi: वह पढ़े
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lot
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: वयम् गृहम् गच्छाम।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Let us go home.
+        hi: हम घर चलें।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छाम
+        gloss:
+          en: let us go
+          hi: हम चलें
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Uttama
+          vacana: Bahu
+    - id: i1
+      sa: वयम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: we
+        hi: हम
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छाम
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: let us go
+        hi: हम चलें
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lot
+        purusha: Uttama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{गम्}} · plural · {{लोट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लोट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The third person is “let him …”: {{पठतु}}, {{गच्छतु}}. The first person is “let me …” or “let us …”: {{पठानि}},
+          {{गच्छाम}}. The command to several people ends in {{-त}}: {{पठत}}, “read, all of you”.'
+        hi: 'प्रथम पुरुष ‘वह … करे’ है: {{पठतु}}, {{गच्छतु}}। उत्तम पुरुष ‘मैं … करूँ’ या ‘हम … करें’ है: {{पठानि}}, {{गच्छाम}}।
+          कई लोगों को आज्ञा {{-त}} पर समाप्त होती है: {{पठत}}, ‘तुम सब पढ़ो’।'
+    - id: i6
+      sa: वयम् गृहम् गच्छाम।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Let us go home.
+        hi: हम घर चलें।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छाम
+        gloss:
+          en: let us go
+          hi: हम चलें
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Uttama
+          vacana: Bahu
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकाः पठत।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Boys, read!
+        hi: बालको, पढ़ो!
+      words:
+      - sa: बालकाः
+        gloss:
+          en: boys!
+          hi: बालको!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Bahu
+      - sa: पठत
+        gloss:
+          en: read!
+          hi: पढ़ो!
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Bahu
+    - id: i1
+      sa: बालकाः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boys!
+        hi: बालको!
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{सम्बोधन}} · plural'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{सम्बोधन}} · {{बहुवचन}}'
+    - id: i2
+      sa: पठत
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read!
+        hi: पढ़ो!
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lot
+        purusha: Madhyama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लोट्}} · मध्यमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The third person is “let him …”: {{पठतु}}, {{गच्छतु}}. The first person is “let me …” or “let us …”: {{पठानि}},
+          {{गच्छाम}}. The command to several people ends in {{-त}}: {{पठत}}, “read, all of you”.'
+        hi: 'प्रथम पुरुष ‘वह … करे’ है: {{पठतु}}, {{गच्छतु}}। उत्तम पुरुष ‘मैं … करूँ’ या ‘हम … करें’ है: {{पठानि}}, {{गच्छाम}}।
+          कई लोगों को आज्ञा {{-त}} पर समाप्त होती है: {{पठत}}, ‘तुम सब पढ़ो’।'
+    - id: i5
+      sa: बालकाः पठत।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Boys, read!
+        hi: बालको, पढ़ो!
+      words:
+      - sa: बालकाः
+        gloss:
+          en: boys!
+          hi: बालको!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Bahu
+      - sa: पठत
+        gloss:
+          en: read!
+          hi: पढ़ो!
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Bahu
 - id: p1
   kind: practice
   depth: core
@@ -367,6 +1090,151 @@ cards:
   - correct: true
     sa: गच्छ
   - sa: गच्छामि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालक गृहम् गच्छ।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Boy, go home!
+        hi: बालक, घर जाओ!
+      words:
+      - sa: बालक
+        gloss:
+          en: boy!
+          hi: बालक!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छ
+        gloss:
+          en: go!
+          hi: जाओ!
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+    - id: i1
+      sa: बालक
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy!
+        hi: बालक!
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छ
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go!
+        hi: जाओ!
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lot
+        purusha: Madhyama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To tell one person “you do it!”, use the root with its class sign and no ending: {{गच्छ}} (go!), {{पठ}} (read!),
+          {{वद}} (speak!), {{पश्य}} (look!), {{लिख}} (write!), {{पिब}} (drink!). This is the command mood, {{लोट्}}.'
+        hi: 'किसी एक को ‘तुम करो!’ कहने के लिए धातु को उसके गण-चिह्न के साथ बिना प्रत्यय के रखिए: {{गच्छ}} (जाओ!), {{पठ}}
+          (पढ़ो!), {{वद}} (बोलो!), {{पश्य}} (देखो!), {{लिख}} (लिखो!), {{पिब}} (पियो!)। यह आज्ञा का काल-विधान है, {{लोट्}}।'
+    - id: i6
+      sa: बालक गृहम् गच्छ।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Boy, go home!
+        hi: बालक, घर जाओ!
+      words:
+      - sa: बालक
+        gloss:
+          en: boy!
+          hi: बालक!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छ
+        gloss:
+          en: go!
+          hi: जाओ!
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -387,6 +1255,151 @@ cards:
   - ख
   - ति
   - पठ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालक गृहम् गच्छ।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Boy, go home!
+        hi: बालक, घर जाओ!
+      words:
+      - sa: बालक
+        gloss:
+          en: boy!
+          hi: बालक!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छ
+        gloss:
+          en: go!
+          hi: जाओ!
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+    - id: i1
+      sa: बालक
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy!
+        hi: बालक!
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छ
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go!
+        hi: जाओ!
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lot
+        purusha: Madhyama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To tell one person “you do it!”, use the root with its class sign and no ending: {{गच्छ}} (go!), {{पठ}} (read!),
+          {{वद}} (speak!), {{पश्य}} (look!), {{लिख}} (write!), {{पिब}} (drink!). This is the command mood, {{लोट्}}.'
+        hi: 'किसी एक को ‘तुम करो!’ कहने के लिए धातु को उसके गण-चिह्न के साथ बिना प्रत्यय के रखिए: {{गच्छ}} (जाओ!), {{पठ}}
+          (पढ़ो!), {{वद}} (बोलो!), {{पश्य}} (देखो!), {{लिख}} (लिखो!), {{पिब}} (पियो!)। यह आज्ञा का काल-विधान है, {{लोट्}}।'
+    - id: i6
+      sa: बालक गृहम् गच्छ।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Boy, go home!
+        hi: बालक, घर जाओ!
+      words:
+      - sa: बालक
+        gloss:
+          en: boy!
+          hi: बालक!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छ
+        gloss:
+          en: go!
+          hi: जाओ!
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -425,6 +1438,151 @@ cards:
       text:
         en: drink!
         hi: पियो!
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालक गृहम् गच्छ।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Boy, go home!
+        hi: बालक, घर जाओ!
+      words:
+      - sa: बालक
+        gloss:
+          en: boy!
+          hi: बालक!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छ
+        gloss:
+          en: go!
+          hi: जाओ!
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+    - id: i1
+      sa: बालक
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy!
+        hi: बालक!
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छ
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go!
+        hi: जाओ!
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lot
+        purusha: Madhyama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To tell one person “you do it!”, use the root with its class sign and no ending: {{गच्छ}} (go!), {{पठ}} (read!),
+          {{वद}} (speak!), {{पश्य}} (look!), {{लिख}} (write!), {{पिब}} (drink!). This is the command mood, {{लोट्}}.'
+        hi: 'किसी एक को ‘तुम करो!’ कहने के लिए धातु को उसके गण-चिह्न के साथ बिना प्रत्यय के रखिए: {{गच्छ}} (जाओ!), {{पठ}}
+          (पढ़ो!), {{वद}} (बोलो!), {{पश्य}} (देखो!), {{लिख}} (लिखो!), {{पिब}} (पियो!)। यह आज्ञा का काल-विधान है, {{लोट्}}।'
+    - id: i6
+      sa: बालक गृहम् गच्छ।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Boy, go home!
+        hi: बालक, घर जाओ!
+      words:
+      - sa: बालक
+        gloss:
+          en: boy!
+          hi: बालक!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छ
+        gloss:
+          en: go!
+          hi: जाओ!
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -464,6 +1622,151 @@ cards:
   - बालक
   - पुस्तकम्
   - पठ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालक गृहम् गच्छ।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Boy, go home!
+        hi: बालक, घर जाओ!
+      words:
+      - sa: बालक
+        gloss:
+          en: boy!
+          hi: बालक!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छ
+        gloss:
+          en: go!
+          hi: जाओ!
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+    - id: i1
+      sa: बालक
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy!
+        hi: बालक!
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छ
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go!
+        hi: जाओ!
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lot
+        purusha: Madhyama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To tell one person “you do it!”, use the root with its class sign and no ending: {{गच्छ}} (go!), {{पठ}} (read!),
+          {{वद}} (speak!), {{पश्य}} (look!), {{लिख}} (write!), {{पिब}} (drink!). This is the command mood, {{लोट्}}.'
+        hi: 'किसी एक को ‘तुम करो!’ कहने के लिए धातु को उसके गण-चिह्न के साथ बिना प्रत्यय के रखिए: {{गच्छ}} (जाओ!), {{पठ}}
+          (पढ़ो!), {{वद}} (बोलो!), {{पश्य}} (देखो!), {{लिख}} (लिखो!), {{पिब}} (पियो!)। यह आज्ञा का काल-विधान है, {{लोट्}}।'
+    - id: i6
+      sa: बालक गृहम् गच्छ।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Boy, go home!
+        hi: बालक, घर जाओ!
+      words:
+      - sa: बालक
+        gloss:
+          en: boy!
+          hi: बालक!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छ
+        gloss:
+          en: go!
+          hi: जाओ!
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
 - id: p5
   kind: practice
   title:
@@ -483,8 +1786,12 @@ cards:
   gate: true
   story:
     success:
-      en: '“पठत!” you call, and the Vetāla''s eyes open a slit. “Hm,” he says. “Someone who gives orders back.” He swings, delighted, and a small bright-red spirit drops from his shawl: a tiny finger as long as itself, shaking at you. “आदेशकः,” says Dādī. “He has not been obeyed in a hundred years.”'
-      hi: '“पठत!” आप पुकारते हैं और वेताल की आँखें एक दरार भर खुलती हैं। “हूँ,” वह कहता है। “कोई जो उलटे आदेश देता है।” वह खुश होकर झूलता है, और उसके शॉल से एक नन्हा चमकीला लाल भूत गिरता है: अपने ही जितनी लम्बी उँगली आपकी ओर हिलाता हुआ। “आदेशकः,” दादी कहती हैं। “सौ वर्षों से किसी ने उसकी आज्ञा नहीं मानी।”'
+      en: '“पठत!” you call, and the Vetāla''s eyes open a slit. “Hm,” he says. “Someone who gives orders back.” He swings,
+        delighted, and a small bright-red spirit drops from his shawl: a tiny finger as long as itself, shaking at you. “आदेशकः,”
+        says Dādī. “He has not been obeyed in a hundred years.”'
+      hi: '“पठत!” आप पुकारते हैं और वेताल की आँखें एक दरार भर खुलती हैं। “हूँ,” वह कहता है। “कोई जो उलटे आदेश देता है।” वह
+        खुश होकर झूलता है, और उसके शॉल से एक नन्हा चमकीला लाल भूत गिरता है: अपने ही जितनी लम्बी उँगली आपकी ओर हिलाता हुआ।
+        “आदेशकः,” दादी कहती हैं। “सौ वर्षों से किसी ने उसकी आज्ञा नहीं मानी।”'
     failure:
       en: 'The Vetāla stays asleep. To several people: {{पठत}}.'
       hi: 'वेताल सोया रहता है। कई लोगों से: {{पठत}}।'
@@ -493,6 +1800,151 @@ cards:
   - sa: पठतु
   - correct: true
     sa: पठत
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालक गृहम् गच्छ।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Boy, go home!
+        hi: बालक, घर जाओ!
+      words:
+      - sa: बालक
+        gloss:
+          en: boy!
+          hi: बालक!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छ
+        gloss:
+          en: go!
+          hi: जाओ!
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+    - id: i1
+      sa: बालक
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy!
+        hi: बालक!
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Sambodhana
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{सम्बोधन}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छ
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go!
+        hi: जाओ!
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lot
+        purusha: Madhyama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To tell one person “you do it!”, use the root with its class sign and no ending: {{गच्छ}} (go!), {{पठ}} (read!),
+          {{वद}} (speak!), {{पश्य}} (look!), {{लिख}} (write!), {{पिब}} (drink!). This is the command mood, {{लोट्}}.'
+        hi: 'किसी एक को ‘तुम करो!’ कहने के लिए धातु को उसके गण-चिह्न के साथ बिना प्रत्यय के रखिए: {{गच्छ}} (जाओ!), {{पठ}}
+          (पढ़ो!), {{वद}} (बोलो!), {{पश्य}} (देखो!), {{लिख}} (लिखो!), {{पिब}} (पियो!)। यह आज्ञा का काल-विधान है, {{लोट्}}।'
+    - id: i6
+      sa: बालक गृहम् गच्छ।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Boy, go home!
+        hi: बालक, घर जाओ!
+      words:
+      - sa: बालक
+        gloss:
+          en: boy!
+          hi: बालक!
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Sambodhana
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गच्छ
+        gloss:
+          en: go!
+          hi: जाओ!
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
 - id: pn
   kind: teach
   title:
@@ -507,8 +1959,53 @@ cards:
   - 6.4.105
   - 3.4.92
   body:
-    en: 'Sūtra 3.3.162, {{लोट् च}}, gives {{लोट्}} for commands and requests. Then 3.4.86, {{एरुः}}, turns {{-ति}} into {{-तु}}: {{पठतु}}. In the second person {{हि}} comes and 6.4.105, {{अतो हेः}}, drops it after {{अ}}: {{पठ}}. In the first person 3.4.92, {{आडुत्तमस्य पिच्च}}, adds {{आ}}: {{पठानि}}.'
-    hi: 'सूत्र 3.3.162, {{लोट् च}}, कहता है कि {{लोट्}} के प्रत्यय आज्ञा और प्रार्थना में आते हैं। प्रथम पुरुष में 3.4.86, {{एरुः}}, {{-ति}} प्रत्यय को {{-तु}} कर देता है: {{पठति}} से {{पठतु}}। मध्यम पुरुष में {{हि}} आता है, और 6.4.105, {{अतो हेः}}, ह्रस्व {{अ}} के बाद उसे हटा देता है: {{पठ}}। उत्तम पुरुष में 3.4.92, {{आडुत्तमस्य पिच्च}}, {{आ}} जोड़ता है: {{पठानि}}।'
+    en: 'Sūtra 3.3.162, {{लोट् च}}, gives {{लोट्}} for commands and requests. Then 3.4.86, {{एरुः}}, turns {{-ति}} into {{-तु}}:
+      {{पठतु}}. In the second person {{हि}} comes and 6.4.105, {{अतो हेः}}, drops it after {{अ}}: {{पठ}}. In the first person
+      3.4.92, {{आडुत्तमस्य पिच्च}}, adds {{आ}}: {{पठानि}}.'
+    hi: 'सूत्र 3.3.162, {{लोट् च}}, कहता है कि {{लोट्}} के प्रत्यय आज्ञा और प्रार्थना में आते हैं। प्रथम पुरुष में 3.4.86,
+      {{एरुः}}, {{-ति}} प्रत्यय को {{-तु}} कर देता है: {{पठति}} से {{पठतु}}। मध्यम पुरुष में {{हि}} आता है, और 6.4.105, {{अतो
+      हेः}}, ह्रस्व {{अ}} के बाद उसे हटा देता है: {{पठ}}। उत्तम पुरुष में 3.4.92, {{आडुत्तमस्य पिच्च}}, {{आ}} जोड़ता है: {{पठानि}}।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Sūtra 3.3.162, {{लोट् च}}, gives {{लोट्}} for commands and requests. Then 3.4.86, {{एरुः}}, turns {{-ति}} into
+        {{-तु}}: {{पठतु}}. In the second person {{हि}} comes and 6.4.105, {{अतो हेः}}, drops it after {{अ}}: {{पठ}}. In the
+        first person 3.4.92, {{आडुत्तमस्य पिच्च}}, adds {{आ}}: {{पठानि}}.'
+      hi: 'सूत्र 3.3.162, {{लोट् च}}, कहता है कि {{लोट्}} के प्रत्यय आज्ञा और प्रार्थना में आते हैं। प्रथम पुरुष में 3.4.86,
+        {{एरुः}}, {{-ति}} प्रत्यय को {{-तु}} कर देता है: {{पठति}} से {{पठतु}}। मध्यम पुरुष में {{हि}} आता है, और 6.4.105,
+        {{अतो हेः}}, ह्रस्व {{अ}} के बाद उसे हटा देता है: {{पठ}}। उत्तम पुरुष में 3.4.92, {{आडुत्तमस्य पिच्च}}, {{आ}} जोड़ता
+        है: {{पठानि}}।'
+    items:
+    - id: i0
+      sa: लोट् च
+    - id: i1
+      sa: लोट्
+    - id: i2
+      sa: एरुः
+    - id: i3
+      sa: -ति
+    - id: i4
+      sa: -तु
+    - id: i5
+      sa: पठतु
+    - id: i6
+      sa: हि
+    - id: i7
+      sa: अतो हेः
+    - id: i8
+      sa: अ
+    - id: i9
+      sa: पठ
+    - id: i10
+      sa: आडुत्तमस्य पिच्च
+    - id: i11
+      sa: आ
+    - id: i12
+      sa: पठानि
 - id: sum
   kind: summary
   title:

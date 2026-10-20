@@ -24,7 +24,8 @@ cards:
     hi: द्वित्व वाला दराज़
   depth: core
   image:
-    brief: A small spirit emerging from an open drawer, bowing and handing an apple to you, with two more apples in its other hand; Dhātuka beside it ticking a list; Dādī laughing; Śuka eyeing an apple.
+    brief: A small spirit emerging from an open drawer, bowing and handing an apple to you, with two more apples in its other
+      hand; Dhātuka beside it ticking a list; Dādī laughing; Śuka eyeing an apple.
     alt:
       en: A small spirit from a drawer bows and hands over apples while a parrot eyes one
       hi: दराज़ से निकला नन्हा भूत झुककर सेब देता, तोता एक पर नज़र टिकाए
@@ -38,10 +39,18 @@ cards:
     place: smashana
     ratio: '4:3'
     id: vc2-da-s1
-    text_in_image: ["दा", "ददाति", "धा", "दधाति"]
+    text_in_image:
+    - दा
+    - ददाति
+    - धा
+    - दधाति
   narration:
-    en: 'Drawer three rattles. It holds a small spirit that says everything twice, and bows, and gives: दद-दद. “ददाति,” says the Vetāla, “he gives.” The spirit offers you an apple, then another, then another, each time repeating the word. Dādī laughs. “Class 3 doubles the first syllable of the root, so that it is easy to remember: दा becomes दद, हु becomes जुहु.”'
-    hi: 'तीसरा दराज़ खड़खड़ाता है। उसमें एक नन्हा भूत है जो हर बात दो बार कहता है, झुकता है और देता है: दद-दद। “ददाति,” वेताल कहता है, “वह देता है।” भूत आपको एक सेब देता है, फिर दूसरा, फिर तीसरा, हर बार शब्द दोहराता हुआ। दादी हँस पड़ती हैं। “गण 3 धातु का पहला अक्षर दोहरा देता है, ताकि याद रखना आसान हो: दा से दद बनता है, हु से जुहु।”'
+    en: 'Drawer three rattles. It holds a small spirit that says everything twice, and bows, and gives: दद-दद. “ददाति,” says
+      the Vetāla, “he gives.” The spirit offers you an apple, then another, then another, each time repeating the word. Dādī
+      laughs. “Class 3 doubles the first syllable of the root, so that it is easy to remember: दा becomes दद, हु becomes जुहु.”'
+    hi: 'तीसरा दराज़ खड़खड़ाता है। उसमें एक नन्हा भूत है जो हर बात दो बार कहता है, झुकता है और देता है: दद-दद। “ददाति,” वेताल
+      कहता है, “वह देता है।” भूत आपको एक सेब देता है, फिर दूसरा, फिर तीसरा, हर बार शब्द दोहराता हुआ। दादी हँस पड़ती हैं। “गण
+      3 धातु का पहला अक्षर दोहरा देता है, ताकि याद रखना आसान हो: दा से दद बनता है, हु से जुहु।”'
   lines:
   - speaker: vetala
     sa: ददाति
@@ -64,8 +73,52 @@ cards:
   skills:
   - verb.class-3
   body:
-    en: 'Class 3, {{जुहोत्यादि}}, doubles the beginning of the root: {{दा}} gives {{ददाति}} (gives), {{धा}} gives {{दधाति}} (places), {{हु}} gives {{जुहोति}} (offers), {{भी}} gives {{बिभेति}} (fears), {{भृ}} gives {{बिभर्ति}} (carries). The plural ends in {{-ति}} after the doubled root: {{ददति}}.'
-    hi: 'गण 3, {{जुहोत्यादि}}, धातु का आरम्भ दुगुना कर देता है: {{दा}} से {{ददाति}} (देता है), {{धा}} से {{दधाति}} (रखता है), {{हु}} से {{जुहोति}} (हवन करता है), {{भी}} से {{बिभेति}} (डरता है), {{भृ}} से {{बिभर्ति}} (धारण करता है)। बहुवचन दुगुनी धातु के बाद {{-ति}} पर समाप्त होता है: {{ददति}}।'
+    en: 'Class 3, {{जुहोत्यादि}}, doubles the beginning of the root: {{दा}} gives {{ददाति}} (gives), {{धा}} gives {{दधाति}}
+      (places), {{हु}} gives {{जुहोति}} (offers), {{भी}} gives {{बिभेति}} (fears), {{भृ}} gives {{बिभर्ति}} (carries). The
+      plural ends in {{-ति}} after the doubled root: {{ददति}}.'
+    hi: 'गण 3, {{जुहोत्यादि}}, धातु का आरम्भ दुगुना कर देता है: {{दा}} से {{ददाति}} (देता है), {{धा}} से {{दधाति}} (रखता है),
+      {{हु}} से {{जुहोति}} (हवन करता है), {{भी}} से {{बिभेति}} (डरता है), {{भृ}} से {{बिभर्ति}} (धारण करता है)। बहुवचन दुगुनी
+      धातु के बाद {{-ति}} पर समाप्त होता है: {{ददति}}।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Class 3, {{जुहोत्यादि}}, doubles the beginning of the root: {{दा}} gives {{ददाति}} (gives), {{धा}} gives {{दधाति}}
+        (places), {{हु}} gives {{जुहोति}} (offers), {{भी}} gives {{बिभेति}} (fears), {{भृ}} gives {{बिभर्ति}} (carries). The
+        plural ends in {{-ति}} after the doubled root: {{ददति}}.'
+      hi: 'गण 3, {{जुहोत्यादि}}, धातु का आरम्भ दुगुना कर देता है: {{दा}} से {{ददाति}} (देता है), {{धा}} से {{दधाति}} (रखता
+        है), {{हु}} से {{जुहोति}} (हवन करता है), {{भी}} से {{बिभेति}} (डरता है), {{भृ}} से {{बिभर्ति}} (धारण करता है)। बहुवचन
+        दुगुनी धातु के बाद {{-ति}} पर समाप्त होता है: {{ददति}}।'
+    items:
+    - id: i0
+      sa: जुहोत्यादि
+    - id: i1
+      sa: दा
+    - id: i2
+      sa: ददाति
+    - id: i3
+      sa: धा
+    - id: i4
+      sa: दधाति
+    - id: i5
+      sa: हु
+    - id: i6
+      sa: जुहोति
+    - id: i7
+      sa: भी
+    - id: i8
+      sa: बिभेति
+    - id: i9
+      sa: भृ
+    - id: i10
+      sa: बिभर्ति
+    - id: i11
+      sa: -ति
+    - id: i12
+      sa: ददति
 - id: tb1
   kind: table
   title:
@@ -272,6 +325,46 @@ cards:
   - correct: true
     sa: ददाति
   - sa: दययति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 3, {{जुहोत्यादि}}, doubles the beginning of the root: {{दा}} gives {{ददाति}} (gives), {{धा}} gives {{दधाति}}
+        (places), {{हु}} gives {{जुहोति}} (offers), {{भी}} gives {{बिभेति}} (fears), {{भृ}} gives {{बिभर्ति}} (carries). The
+        plural ends in {{-ति}} after the doubled root: {{ददति}}.'
+      hi: 'गण 3, {{जुहोत्यादि}}, धातु का आरम्भ दुगुना कर देता है: {{दा}} से {{ददाति}} (देता है), {{धा}} से {{दधाति}} (रखता
+        है), {{हु}} से {{जुहोति}} (हवन करता है), {{भी}} से {{बिभेति}} (डरता है), {{भृ}} से {{बिभर्ति}} (धारण करता है)। बहुवचन
+        दुगुनी धातु के बाद {{-ति}} पर समाप्त होता है: {{ददति}}।'
+    items:
+    - id: i0
+      sa: जुहोत्यादि
+    - id: i1
+      sa: दा
+    - id: i2
+      sa: ददाति
+    - id: i3
+      sa: धा
+    - id: i4
+      sa: दधाति
+    - id: i5
+      sa: हु
+    - id: i6
+      sa: जुहोति
+    - id: i7
+      sa: भी
+    - id: i8
+      sa: बिभेति
+    - id: i9
+      sa: भृ
+    - id: i10
+      sa: बिभर्ति
+    - id: i11
+      sa: -ति
+    - id: i12
+      sa: ददति
 - id: p2
   kind: practice
   depth: core
@@ -292,6 +385,46 @@ cards:
   - होति
   - हु
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 3, {{जुहोत्यादि}}, doubles the beginning of the root: {{दा}} gives {{ददाति}} (gives), {{धा}} gives {{दधाति}}
+        (places), {{हु}} gives {{जुहोति}} (offers), {{भी}} gives {{बिभेति}} (fears), {{भृ}} gives {{बिभर्ति}} (carries). The
+        plural ends in {{-ति}} after the doubled root: {{ददति}}.'
+      hi: 'गण 3, {{जुहोत्यादि}}, धातु का आरम्भ दुगुना कर देता है: {{दा}} से {{ददाति}} (देता है), {{धा}} से {{दधाति}} (रखता
+        है), {{हु}} से {{जुहोति}} (हवन करता है), {{भी}} से {{बिभेति}} (डरता है), {{भृ}} से {{बिभर्ति}} (धारण करता है)। बहुवचन
+        दुगुनी धातु के बाद {{-ति}} पर समाप्त होता है: {{ददति}}।'
+    items:
+    - id: i0
+      sa: जुहोत्यादि
+    - id: i1
+      sa: दा
+    - id: i2
+      sa: ददाति
+    - id: i3
+      sa: धा
+    - id: i4
+      sa: दधाति
+    - id: i5
+      sa: हु
+    - id: i6
+      sa: जुहोति
+    - id: i7
+      sa: भी
+    - id: i8
+      sa: बिभेति
+    - id: i9
+      sa: भृ
+    - id: i10
+      sa: बिभर्ति
+    - id: i11
+      sa: -ति
+    - id: i12
+      sa: ददति
 - id: p3
   kind: practice
   depth: core
@@ -322,6 +455,46 @@ cards:
       sa: भृ
     right:
       sa: बिभर्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 3, {{जुहोत्यादि}}, doubles the beginning of the root: {{दा}} gives {{ददाति}} (gives), {{धा}} gives {{दधाति}}
+        (places), {{हु}} gives {{जुहोति}} (offers), {{भी}} gives {{बिभेति}} (fears), {{भृ}} gives {{बिभर्ति}} (carries). The
+        plural ends in {{-ति}} after the doubled root: {{ददति}}.'
+      hi: 'गण 3, {{जुहोत्यादि}}, धातु का आरम्भ दुगुना कर देता है: {{दा}} से {{ददाति}} (देता है), {{धा}} से {{दधाति}} (रखता
+        है), {{हु}} से {{जुहोति}} (हवन करता है), {{भी}} से {{बिभेति}} (डरता है), {{भृ}} से {{बिभर्ति}} (धारण करता है)। बहुवचन
+        दुगुनी धातु के बाद {{-ति}} पर समाप्त होता है: {{ददति}}।'
+    items:
+    - id: i0
+      sa: जुहोत्यादि
+    - id: i1
+      sa: दा
+    - id: i2
+      sa: ददाति
+    - id: i3
+      sa: धा
+    - id: i4
+      sa: दधाति
+    - id: i5
+      sa: हु
+    - id: i6
+      sa: जुहोति
+    - id: i7
+      sa: भी
+    - id: i8
+      sa: बिभेति
+    - id: i9
+      sa: भृ
+    - id: i10
+      sa: बिभर्ति
+    - id: i11
+      sa: -ति
+    - id: i12
+      sa: ददति
 - id: e1
   kind: explore
   depth: core
@@ -363,8 +536,12 @@ cards:
   gate: true
   story:
     success:
-      en: “बिभेति,” you say, and the giving spirit's apples all fall, one after another, and roll away. He stands there, empty-handed, with the first look of fear his drawer has ever seen. Then he laughs. “Of course,” he says. “Even a giver fears. I give, therefore I fear.” He picks the apples up again, one by one, and gives them to you.
-      hi: “बिभेति,” आप कहते हैं, और देने वाले भूत के सारे सेब एक के बाद एक गिरकर लुढ़क जाते हैं। वह ख़ाली हाथ खड़ा रह जाता है, भय का वह पहला भाव लिए जो उसके दराज़ ने कभी देखा। फिर वह हँसता है। “स्वाभाविक है,” वह कहता है। “देने वाला भी डरता है। मैं देता हूँ, इसलिए डरता हूँ।” वह सेब एक-एक करके फिर उठाता है और आपको दे देता है।
+      en: “बिभेति,” you say, and the giving spirit's apples all fall, one after another, and roll away. He stands there, empty-handed,
+        with the first look of fear his drawer has ever seen. Then he laughs. “Of course,” he says. “Even a giver fears. I
+        give, therefore I fear.” He picks the apples up again, one by one, and gives them to you.
+      hi: “बिभेति,” आप कहते हैं, और देने वाले भूत के सारे सेब एक के बाद एक गिरकर लुढ़क जाते हैं। वह ख़ाली हाथ खड़ा रह जाता
+        है, भय का वह पहला भाव लिए जो उसके दराज़ ने कभी देखा। फिर वह हँसता है। “स्वाभाविक है,” वह कहता है। “देने वाला भी डरता
+        है। मैं देता हूँ, इसलिए डरता हूँ।” वह सेब एक-एक करके फिर उठाता है और आपको दे देता है।
     failure:
       en: 'The apples stay on the ground. {{भी}} doubled: {{बिभेति}}.'
       hi: 'सेब ज़मीन पर पड़े रहते हैं। {{भी}} दुगुना: {{बिभेति}}।'
@@ -373,6 +550,46 @@ cards:
   - sa: भेति
   - correct: true
     sa: बिभेति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 3, {{जुहोत्यादि}}, doubles the beginning of the root: {{दा}} gives {{ददाति}} (gives), {{धा}} gives {{दधाति}}
+        (places), {{हु}} gives {{जुहोति}} (offers), {{भी}} gives {{बिभेति}} (fears), {{भृ}} gives {{बिभर्ति}} (carries). The
+        plural ends in {{-ति}} after the doubled root: {{ददति}}.'
+      hi: 'गण 3, {{जुहोत्यादि}}, धातु का आरम्भ दुगुना कर देता है: {{दा}} से {{ददाति}} (देता है), {{धा}} से {{दधाति}} (रखता
+        है), {{हु}} से {{जुहोति}} (हवन करता है), {{भी}} से {{बिभेति}} (डरता है), {{भृ}} से {{बिभर्ति}} (धारण करता है)। बहुवचन
+        दुगुनी धातु के बाद {{-ति}} पर समाप्त होता है: {{ददति}}।'
+    items:
+    - id: i0
+      sa: जुहोत्यादि
+    - id: i1
+      sa: दा
+    - id: i2
+      sa: ददाति
+    - id: i3
+      sa: धा
+    - id: i4
+      sa: दधाति
+    - id: i5
+      sa: हु
+    - id: i6
+      sa: जुहोति
+    - id: i7
+      sa: भी
+    - id: i8
+      sa: बिभेति
+    - id: i9
+      sa: भृ
+    - id: i10
+      sa: बिभर्ति
+    - id: i11
+      sa: -ति
+    - id: i12
+      sa: ददति
 - id: pn
   kind: teach
   title:
@@ -386,8 +603,38 @@ cards:
   - 6.1.10
   - 7.4.58
   body:
-    en: Sūtra 2.4.75, {{जुहोत्यादिभ्यः श्लुः}}, replaces the sign {{शप्}} with {{श्लु}}, which is deleted but leaves the root doubled. 6.1.10, {{श्लौ}}, orders the doubling. And 7.4.58, {{अत्र लोपोऽभ्यासस्य}}, shortens the doubled start, giving {{दद-}}.
-    hi: सूत्र 2.4.75, {{जुहोत्यादिभ्यः श्लुः}}, चिह्न {{शप्}} की जगह {{श्लु}} रखता है, जो लुप्त हो जाता है पर धातु को दुगुना छोड़ जाता है। 6.1.10, {{श्लौ}}, द्वित्व का आदेश देता है। और 7.4.58, {{अत्र लोपोऽभ्यासस्य}}, दुगुने आरम्भ को छोटा करता है और {{दद-}} देता है।
+    en: Sūtra 2.4.75, {{जुहोत्यादिभ्यः श्लुः}}, replaces the sign {{शप्}} with {{श्लु}}, which is deleted but leaves the root
+      doubled. 6.1.10, {{श्लौ}}, orders the doubling. And 7.4.58, {{अत्र लोपोऽभ्यासस्य}}, shortens the doubled start, giving
+      {{दद-}}.
+    hi: सूत्र 2.4.75, {{जुहोत्यादिभ्यः श्लुः}}, चिह्न {{शप्}} की जगह {{श्लु}} रखता है, जो लुप्त हो जाता है पर धातु को दुगुना
+      छोड़ जाता है। 6.1.10, {{श्लौ}}, द्वित्व का आदेश देता है। और 7.4.58, {{अत्र लोपोऽभ्यासस्य}}, दुगुने आरम्भ को छोटा करता
+      है और {{दद-}} देता है।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 2.4.75, {{जुहोत्यादिभ्यः श्लुः}}, replaces the sign {{शप्}} with {{श्लु}}, which is deleted but leaves the
+        root doubled. 6.1.10, {{श्लौ}}, orders the doubling. And 7.4.58, {{अत्र लोपोऽभ्यासस्य}}, shortens the doubled start,
+        giving {{दद-}}.
+      hi: सूत्र 2.4.75, {{जुहोत्यादिभ्यः श्लुः}}, चिह्न {{शप्}} की जगह {{श्लु}} रखता है, जो लुप्त हो जाता है पर धातु को दुगुना
+        छोड़ जाता है। 6.1.10, {{श्लौ}}, द्वित्व का आदेश देता है। और 7.4.58, {{अत्र लोपोऽभ्यासस्य}}, दुगुने आरम्भ को छोटा करता
+        है और {{दद-}} देता है।
+    items:
+    - id: i0
+      sa: जुहोत्यादिभ्यः श्लुः
+    - id: i1
+      sa: शप्
+    - id: i2
+      sa: श्लु
+    - id: i3
+      sa: श्लौ
+    - id: i4
+      sa: अत्र लोपोऽभ्यासस्य
+    - id: i5
+      sa: दद-
 - id: sum
   kind: summary
   title:

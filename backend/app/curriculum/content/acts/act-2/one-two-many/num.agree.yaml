@@ -21,7 +21,8 @@ cards:
     hi: संख्या मिलाना
   depth: core
   image:
-    brief: The small grey-blue spirit arranging word-cards into three sentences on the ghat steps, shaking his head at one wrong one that Śuka placed; Dādī watching with arms folded and a smile.
+    brief: The small grey-blue spirit arranging word-cards into three sentences on the ghat steps, shaking his head at one
+      wrong one that Śuka placed; Dādī watching with arms folded and a smile.
     alt:
       en: A small spirit rejects a mismatched sentence while a parrot grins
       hi: बेमेल वाक्य पर सिर हिलाता भूत और मुस्कुराता तोता
@@ -33,10 +34,15 @@ cards:
     place: naditira
     ratio: '4:3'
     id: num-agree-s1
-    text_in_image: ["बालकः पठति।", "बालकौ पठतः।", "बालकाः पठन्ति।"]
+    text_in_image:
+    - बालकः पठति।
+    - बालकौ पठतः।
+    - बालकाः पठन्ति।
   narration:
-    en: 'The spirit builds sentences. One boy reads: बालकः पठति. Two boys read together. Many boys read together. The verb must match its doer in number. Śuka gets it wrong on purpose, and the spirit shakes his head like a wet dog.'
-    hi: 'भूत वाक्य बनाता है। एक बालक पढ़ता है: बालकः पठति। दो बालक साथ पढ़ते हैं। अनेक बालक साथ पढ़ते हैं। क्रिया को अपने कर्ता की संख्या से मेल खाना चाहिए। शुक जान-बूझकर ग़लत बोलता है, और भूत गीले कुत्ते की तरह सिर हिलाता है।'
+    en: 'The spirit builds sentences. One boy reads: बालकः पठति. Two boys read together. Many boys read together. The verb
+      must match its doer in number. Śuka gets it wrong on purpose, and the spirit shakes his head like a wet dog.'
+    hi: 'भूत वाक्य बनाता है। एक बालक पढ़ता है: बालकः पठति। दो बालक साथ पढ़ते हैं। अनेक बालक साथ पढ़ते हैं। क्रिया को अपने
+      कर्ता की संख्या से मेल खाना चाहिए। शुक जान-बूझकर ग़लत बोलता है, और भूत गीले कुत्ते की तरह सिर हिलाता है।'
 - id: t1
   kind: teach
   title:
@@ -46,8 +52,10 @@ cards:
   skills:
   - sent.agree-number
   body:
-    en: 'The verb agrees with its doer in number: one doer, one-ending; two, two-ending; many, many-ending. {{बालकः पठति}}, {{बालकौ पठतः}}, {{बालकाः पठन्ति}}.'
-    hi: 'क्रिया अपने कर्ता से संख्या में मेल खाती है: एक कर्ता, एक का प्रत्यय; दो, दो का; अनेक, अनेक का। {{बालकः पठति}}, {{बालकौ पठतः}}, {{बालकाः पठन्ति}}।'
+    en: 'The verb agrees with its doer in number: one doer, one-ending; two, two-ending; many, many-ending. {{बालकः पठति}},
+      {{बालकौ पठतः}}, {{बालकाः पठन्ति}}.'
+    hi: 'क्रिया अपने कर्ता से संख्या में मेल खाती है: एक कर्ता, एक का प्रत्यय; दो, दो का; अनेक, अनेक का। {{बालकः पठति}}, {{बालकौ
+      पठतः}}, {{बालकाः पठन्ति}}।'
   examples:
   - sa: बालकः पठति।
     meaning:
@@ -149,6 +157,435 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Bahu
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The verb agrees with its doer in number: one doer, one-ending; two, two-ending; many, many-ending. {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}.'
+        hi: 'क्रिया अपने कर्ता से संख्या में मेल खाती है: एक कर्ता, एक का प्रत्यय; दो, दो का; अनेक, अनेक का। {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}।'
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकौ पठतः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The two boys read.
+        hi: दो बालक पढ़ते हैं।
+      words:
+      - sa: बालकौ
+        gloss:
+          en: two boys
+          hi: दो बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Dvi
+      - sa: पठतः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Dvi
+    - id: i1
+      sa: बालकौ
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: two boys
+        hi: दो बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+    - id: i2
+      sa: पठतः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Root: {{पठ्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The verb agrees with its doer in number: one doer, one-ending; two, two-ending; many, many-ending. {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}.'
+        hi: 'क्रिया अपने कर्ता से संख्या में मेल खाती है: एक कर्ता, एक का प्रत्यय; दो, दो का; अनेक, अनेक का। {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}।'
+    - id: i5
+      sa: बालकौ पठतः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The two boys read.
+        hi: दो बालक पढ़ते हैं।
+      words:
+      - sa: बालकौ
+        gloss:
+          en: two boys
+          hi: दो बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Dvi
+      - sa: पठतः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Dvi
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकाः पठन्ति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boys read.
+        hi: बालक पढ़ते हैं।
+      words:
+      - sa: बालकाः
+        gloss:
+          en: boys
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Bahu
+      - sa: पठन्ति
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Bahu
+    - id: i1
+      sa: बालकाः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boys
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+    - id: i2
+      sa: पठन्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The verb agrees with its doer in number: one doer, one-ending; two, two-ending; many, many-ending. {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}.'
+        hi: 'क्रिया अपने कर्ता से संख्या में मेल खाती है: एक कर्ता, एक का प्रत्यय; दो, दो का; अनेक, अनेक का। {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}।'
+    - id: i5
+      sa: बालकाः पठन्ति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boys read.
+        hi: बालक पढ़ते हैं।
+      words:
+      - sa: बालकाः
+        gloss:
+          en: boys
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Bahu
+      - sa: पठन्ति
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Bahu
+  - id: v-source-example-3
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: नौकाः सन्ति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: There are boats.
+        hi: नावें हैं।
+      words:
+      - sa: नौकाः
+        gloss:
+          en: boats
+          hi: नावें
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Bahu
+      - sa: सन्ति
+        gloss:
+          en: are
+          hi: हैं
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Bahu
+    - id: i1
+      sa: नौकाः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boats
+        hi: नावें
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
+    - id: i2
+      sa: सन्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: are
+        hi: हैं
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{अस्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The verb agrees with its doer in number: one doer, one-ending; two, two-ending; many, many-ending. {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}.'
+        hi: 'क्रिया अपने कर्ता से संख्या में मेल खाती है: एक कर्ता, एक का प्रत्यय; दो, दो का; अनेक, अनेक का। {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}।'
+    - id: i5
+      sa: नौकाः सन्ति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: There are boats.
+        hi: नावें हैं।
+      words:
+      - sa: नौकाः
+        gloss:
+          en: boats
+          hi: नावें
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Bahu
+      - sa: सन्ति
+        gloss:
+          en: are
+          hi: हैं
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Bahu
 - id: t2
   kind: teach
   title:
@@ -158,8 +595,10 @@ cards:
   skills:
   - sent.agree-number
   body:
-    en: '{{अस्ति}} (there is) also counts: {{अस्ति}} for one, {{स्तः}} for two, {{सन्ति}} for many. {{नौकाः सन्ति}}: there are boats.'
-    hi: '{{अस्ति}} (है) भी गिनती है: एक के लिए {{अस्ति}}, दो के लिए {{स्तः}}, अनेक के लिए {{सन्ति}}। {{नौकाः सन्ति}}: नावें हैं।'
+    en: '{{अस्ति}} (there is) also counts: {{अस्ति}} for one, {{स्तः}} for two, {{सन्ति}} for many. {{नौकाः सन्ति}}: there
+      are boats.'
+    hi: '{{अस्ति}} (है) भी गिनती है: एक के लिए {{अस्ति}}, दो के लिए {{स्तः}}, अनेक के लिए {{सन्ति}}। {{नौकाः सन्ति}}: नावें
+      हैं।'
   rows:
   - sa: अस्ति
     gloss:
@@ -191,6 +630,60 @@ cards:
       lakara: Lat
       purusha: Prathama
       vacana: Bahu
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: '{{अस्ति}} (there is) also counts: {{अस्ति}} for one, {{स्तः}} for two, {{सन्ति}} for many. {{नौकाः सन्ति}}: there
+        are boats.'
+      hi: '{{अस्ति}} (है) भी गिनती है: एक के लिए {{अस्ति}}, दो के लिए {{स्तः}}, अनेक के लिए {{सन्ति}}। {{नौकाः सन्ति}}: नावें
+        हैं।'
+    items:
+    - id: i0
+      sa: अस्ति
+      meaning:
+        en: 'one: there is'
+        hi: 'एक: है'
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i1
+      sa: स्तः
+      meaning:
+        en: 'two: there are'
+        hi: 'दो: हैं'
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Root: {{अस्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i2
+      sa: सन्ति
+      meaning:
+        en: 'many: there are'
+        hi: 'अनेक: हैं'
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{अस्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
 - id: p1
   kind: practice
   depth: core
@@ -209,6 +702,114 @@ cards:
   - correct: true
     sa: बालकाः पठन्ति
   - sa: बालकाः पठतः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The verb agrees with its doer in number: one doer, one-ending; two, two-ending; many, many-ending. {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}.'
+        hi: 'क्रिया अपने कर्ता से संख्या में मेल खाती है: एक कर्ता, एक का प्रत्यय; दो, दो का; अनेक, अनेक का। {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}।'
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -227,6 +828,114 @@ cards:
     sa: बकौ तिष्ठतः
   - sa: बकौ तिष्ठति
   - sa: बकौ तिष्ठन्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The verb agrees with its doer in number: one doer, one-ending; two, two-ending; many, many-ending. {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}.'
+        hi: 'क्रिया अपने कर्ता से संख्या में मेल खाती है: एक कर्ता, एक का प्रत्यय; दो, दो का; अनेक, अनेक का। {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}।'
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -257,6 +966,114 @@ cards:
       sa: नौकाः
     right:
       sa: सन्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The verb agrees with its doer in number: one doer, one-ending; two, two-ending; many, many-ending. {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}.'
+        hi: 'क्रिया अपने कर्ता से संख्या में मेल खाती है: एक कर्ता, एक का प्रत्यय; दो, दो का; अनेक, अनेक का। {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}।'
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -275,6 +1092,114 @@ cards:
     params:
       sentence: बालकौ पठतः
     seed: 0
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The verb agrees with its doer in number: one doer, one-ending; two, two-ending; many, many-ending. {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}.'
+        hi: 'क्रिया अपने कर्ता से संख्या में मेल खाती है: एक कर्ता, एक का प्रत्यय; दो, दो का; अनेक, अनेक का। {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}।'
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p5
   kind: practice
   title:
@@ -294,14 +1219,124 @@ cards:
   gate: true
   story:
     success:
-      en: “बकौ तिष्ठतः,” you say, and the two herons turn, bow once to the left and once to the right, and dissolve into two soft white breaths. “द्वौ बकौ मुक्तौ,” they say in one voice, and drift off over the boats.
-      hi: “बकौ तिष्ठतः,” आप कहते हैं, और दोनों बगुले मुड़ते हैं, एक बार बाएँ और एक बार दाएँ झुकते हैं, और दो कोमल सफ़ेद साँसों में घुल जाते हैं। “द्वौ बकौ मुक्तौ,” वे एक स्वर में कहते हैं और नावों के ऊपर बह जाते हैं।
+      en: “बकौ तिष्ठतः,” you say, and the two herons turn, bow once to the left and once to the right, and dissolve into two
+        soft white breaths. “द्वौ बकौ मुक्तौ,” they say in one voice, and drift off over the boats.
+      hi: “बकौ तिष्ठतः,” आप कहते हैं, और दोनों बगुले मुड़ते हैं, एक बार बाएँ और एक बार दाएँ झुकते हैं, और दो कोमल सफ़ेद साँसों
+        में घुल जाते हैं। “द्वौ बकौ मुक्तौ,” वे एक स्वर में कहते हैं और नावों के ऊपर बह जाते हैं।
     failure:
       en: The herons keep still. Two doers need the two-ending verb.
       hi: बगुले स्थिर रहते हैं। दो कर्ताओं के लिए द्विवचन की क्रिया चाहिए।
   tokens:
   - बकौ
   - तिष्ठतः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The verb agrees with its doer in number: one doer, one-ending; two, two-ending; many, many-ending. {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}.'
+        hi: 'क्रिया अपने कर्ता से संख्या में मेल खाती है: एक कर्ता, एक का प्रत्यय; दो, दो का; अनेक, अनेक का। {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}।'
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p6
   kind: practice
   depth: core
@@ -323,6 +1358,114 @@ cards:
   - text:
       en: '{{बकौ}} is a verb'
       hi: '{{बकौ}} क्रिया है'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The verb agrees with its doer in number: one doer, one-ending; two, two-ending; many, many-ending. {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}.'
+        hi: 'क्रिया अपने कर्ता से संख्या में मेल खाती है: एक कर्ता, एक का प्रत्यय; दो, दो का; अनेक, अनेक का। {{बालकः पठति}},
+          {{बालकौ पठतः}}, {{बालकाः पठन्ति}}।'
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: sum
   kind: summary
   title:

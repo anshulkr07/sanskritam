@@ -34,6 +34,42 @@ cards:
   - text:
       en: Raghu's house
       hi: रघु का घर
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'To say “son or descendant of X”, take X, make its first vowel grow (vṛddhi) and add an ending: {{रघु}} gives {{राघवः}},
+        {{पाण्डु}} gives {{पाण्डवः}}, {{कुरु}} gives {{कौरवः}}. For a mother''s name in {{-ई}} or {{-आ}} it is {{-एय}}: {{कुन्ती}}
+        gives {{कौन्तेयः}}.'
+      hi: '‘X का पुत्र या वंशज’ कहने के लिए X लीजिए, उसका पहला स्वर बढ़ाइए (वृद्धि) और प्रत्यय जोड़िए: {{रघु}} से {{राघवः}},
+        {{पाण्डु}} से {{पाण्डवः}}, {{कुरु}} से {{कौरवः}}। {{-ई}} या {{-आ}} वाले माता के नाम से {{-एय}} बनता है: {{कुन्ती}}
+        से {{कौन्तेयः}}।'
+    items:
+    - id: i0
+      sa: रघु
+    - id: i1
+      sa: राघवः
+    - id: i2
+      sa: पाण्डु
+    - id: i3
+      sa: पाण्डवः
+    - id: i4
+      sa: कुरु
+    - id: i5
+      sa: कौरवः
+    - id: i6
+      sa: -ई
+    - id: i7
+      sa: -आ
+    - id: i8
+      sa: -एय
+    - id: i9
+      sa: कुन्ती
+    - id: i10
+      sa: कौन्तेयः
 - id: p2
   kind: practice
   depth: core
@@ -58,6 +94,42 @@ cards:
   - text:
       en: of a god
       hi: देव का
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{-त्वम्}} (neuter) and {{-ता}} (feminine) make a word that names the state of being something: {{मनुष्य}} gives
+        {{मनुष्यत्वम्}} or {{मनुष्यता}}, “humanity”; {{देव}} gives {{देवत्वम्}} or {{देवता}}, “divinity”; {{गुरु}} gives {{गुरुत्वम्}}
+        or {{गुरुता}}, “weight, greatness”. Both mean the same.'
+      hi: '{{-त्वम्}} (नपुंसक) और {{-ता}} (स्त्रीलिंग) किसी शब्द से उसके होने की अवस्था का नाम बनाते हैं: {{मनुष्य}} से {{मनुष्यत्वम्}}
+        या {{मनुष्यता}}, ‘मनुष्यता’; {{देव}} से {{देवत्वम्}} या {{देवता}}, ‘देवत्व’; {{गुरु}} से {{गुरुत्वम्}} या {{गुरुता}},
+        ‘भार, महत्ता’। दोनों का अर्थ एक है।'
+    items:
+    - id: i0
+      sa: -त्वम्
+    - id: i1
+      sa: -ता
+    - id: i2
+      sa: मनुष्य
+    - id: i3
+      sa: मनुष्यत्वम्
+    - id: i4
+      sa: मनुष्यता
+    - id: i5
+      sa: देव
+    - id: i6
+      sa: देवत्वम्
+    - id: i7
+      sa: देवता
+    - id: i8
+      sa: गुरु
+    - id: i9
+      sa: गुरुत्वम्
+    - id: i10
+      sa: गुरुता
 - id: p3
   kind: practice
   depth: core
@@ -82,6 +154,52 @@ cards:
   - text:
       en: of intelligence
       hi: बुद्धि का
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{-वत्}} or {{-मत्}} means “having”: {{धन}} gives {{धनवान्}} (wealthy), {{बुद्धि}} gives {{बुद्धिमान्}} (intelligent);
+        the feminine is {{-वती}}, {{-मती}}. After a stem in {{-इ}}, {{-ई}}, {{-उ}} it is {{-मत्}}, otherwise {{-वत्}}. {{-इक}}
+        means “related to”: {{धर्म}} gives {{धार्मिकः}}, {{दिन}} gives {{दैनिकः}} (daily).'
+      hi: '{{-वत्}} या {{-मत्}} का अर्थ ‘वाला’ है: {{धन}} से {{धनवान्}} (धनी), {{बुद्धि}} से {{बुद्धिमान्}} (बुद्धिमान्);
+        स्त्रीलिंग {{-वती}}, {{-मती}}। {{-इ}}, {{-ई}}, {{-उ}} वाले आधार के बाद {{-मत्}} होता है, अन्यथा {{-वत्}}। {{-इक}}
+        का अर्थ ‘सम्बन्धी’ है: {{धर्म}} से {{धार्मिकः}}, {{दिन}} से {{दैनिकः}} (दैनिक)।'
+    items:
+    - id: i0
+      sa: -वत्
+    - id: i1
+      sa: -मत्
+    - id: i2
+      sa: धन
+    - id: i3
+      sa: धनवान्
+    - id: i4
+      sa: बुद्धि
+    - id: i5
+      sa: बुद्धिमान्
+    - id: i6
+      sa: -वती
+    - id: i7
+      sa: -मती
+    - id: i8
+      sa: -इ
+    - id: i9
+      sa: -ई
+    - id: i10
+      sa: -उ
+    - id: i11
+      sa: -इक
+    - id: i12
+      sa: धर्म
+    - id: i13
+      sa: धार्मिकः
+    - id: i14
+      sa: दिन
+    - id: i15
+      sa: दैनिकः
 - id: p4
   kind: practice
   depth: core
@@ -106,6 +224,52 @@ cards:
   - text:
       en: of dharma
       hi: धर्म का
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{-वत्}} or {{-मत्}} means “having”: {{धन}} gives {{धनवान्}} (wealthy), {{बुद्धि}} gives {{बुद्धिमान्}} (intelligent);
+        the feminine is {{-वती}}, {{-मती}}. After a stem in {{-इ}}, {{-ई}}, {{-उ}} it is {{-मत्}}, otherwise {{-वत्}}. {{-इक}}
+        means “related to”: {{धर्म}} gives {{धार्मिकः}}, {{दिन}} gives {{दैनिकः}} (daily).'
+      hi: '{{-वत्}} या {{-मत्}} का अर्थ ‘वाला’ है: {{धन}} से {{धनवान्}} (धनी), {{बुद्धि}} से {{बुद्धिमान्}} (बुद्धिमान्);
+        स्त्रीलिंग {{-वती}}, {{-मती}}। {{-इ}}, {{-ई}}, {{-उ}} वाले आधार के बाद {{-मत्}} होता है, अन्यथा {{-वत्}}। {{-इक}}
+        का अर्थ ‘सम्बन्धी’ है: {{धर्म}} से {{धार्मिकः}}, {{दिन}} से {{दैनिकः}} (दैनिक)।'
+    items:
+    - id: i0
+      sa: -वत्
+    - id: i1
+      sa: -मत्
+    - id: i2
+      sa: धन
+    - id: i3
+      sa: धनवान्
+    - id: i4
+      sa: बुद्धि
+    - id: i5
+      sa: बुद्धिमान्
+    - id: i6
+      sa: -वती
+    - id: i7
+      sa: -मती
+    - id: i8
+      sa: -इ
+    - id: i9
+      sa: -ई
+    - id: i10
+      sa: -उ
+    - id: i11
+      sa: -इक
+    - id: i12
+      sa: धर्म
+    - id: i13
+      sa: धार्मिकः
+    - id: i14
+      sa: दिन
+    - id: i15
+      sa: दैनिकः
 - id: p5
   kind: practice
   depth: core
@@ -130,6 +294,48 @@ cards:
   - text:
       en: highest
       hi: सबसे ऊँचा
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{-तरः}} means “more”, for two things; {{-तमः}} means “most”, for many: {{लघु}} gives {{लघुतरः}}, {{लघुतमः}}. A
+        few adjectives have older forms: {{गुरु}} gives {{गरीयान्}} (heavier), {{गरिष्ठः}} (heaviest); {{प्रिय}} gives {{प्रेयान्}},
+        {{प्रेष्ठः}}; {{बहु}} gives {{भूयान्}}, {{भूयिष्ठः}}.'
+      hi: '{{-तरः}} का अर्थ ‘अधिक’ है, दो वस्तुओं के लिए; {{-तमः}} का अर्थ ‘सबसे अधिक’ है, कई के लिए: {{लघु}} से {{लघुतरः}},
+        {{लघुतमः}}। कुछ विशेषणों के पुराने रूप हैं: {{गुरु}} से {{गरीयान्}} (अधिक भारी), {{गरिष्ठः}} (सबसे भारी); {{प्रिय}}
+        से {{प्रेयान्}}, {{प्रेष्ठः}}; {{बहु}} से {{भूयान्}}, {{भूयिष्ठः}}।'
+    items:
+    - id: i0
+      sa: -तरः
+    - id: i1
+      sa: -तमः
+    - id: i2
+      sa: लघु
+    - id: i3
+      sa: लघुतरः
+    - id: i4
+      sa: लघुतमः
+    - id: i5
+      sa: गुरु
+    - id: i6
+      sa: गरीयान्
+    - id: i7
+      sa: गरिष्ठः
+    - id: i8
+      sa: प्रिय
+    - id: i9
+      sa: प्रेयान्
+    - id: i10
+      sa: प्रेष्ठः
+    - id: i11
+      sa: बहु
+    - id: i12
+      sa: भूयान्
+    - id: i13
+      sa: भूयिष्ठः
 - id: p6
   kind: practice
   depth: core
@@ -171,6 +377,42 @@ cards:
       text:
         en: heaviest
         hi: सबसे भारी
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'To say “son or descendant of X”, take X, make its first vowel grow (vṛddhi) and add an ending: {{रघु}} gives {{राघवः}},
+        {{पाण्डु}} gives {{पाण्डवः}}, {{कुरु}} gives {{कौरवः}}. For a mother''s name in {{-ई}} or {{-आ}} it is {{-एय}}: {{कुन्ती}}
+        gives {{कौन्तेयः}}.'
+      hi: '‘X का पुत्र या वंशज’ कहने के लिए X लीजिए, उसका पहला स्वर बढ़ाइए (वृद्धि) और प्रत्यय जोड़िए: {{रघु}} से {{राघवः}},
+        {{पाण्डु}} से {{पाण्डवः}}, {{कुरु}} से {{कौरवः}}। {{-ई}} या {{-आ}} वाले माता के नाम से {{-एय}} बनता है: {{कुन्ती}}
+        से {{कौन्तेयः}}।'
+    items:
+    - id: i0
+      sa: रघु
+    - id: i1
+      sa: राघवः
+    - id: i2
+      sa: पाण्डु
+    - id: i3
+      sa: पाण्डवः
+    - id: i4
+      sa: कुरु
+    - id: i5
+      sa: कौरवः
+    - id: i6
+      sa: -ई
+    - id: i7
+      sa: -आ
+    - id: i8
+      sa: -एय
+    - id: i9
+      sa: कुन्ती
+    - id: i10
+      sa: कौन्तेयः
 - id: p7
   kind: practice
   depth: core
@@ -189,8 +431,14 @@ cards:
   gate: true
   story:
     success:
-      en: “राघवः, मनुष्यत्वम्, धनवान्,” you say, and Taddhitikā, the green-bronze spirit, lowers her tiny crown, and the little letters on it, one by one, loosen and settle into her hair like leaves. “Every word I made,” she says, “was made for something. Now it knows what.” She looks past you into the next alcove, where a heavy stone statue is holding up a hand. “यः पठति,” it says, “सः जानाति.” “Who reads, he knows.” “The last one,” says Dādī, very quietly.
-      hi: “राघवः, मनुष्यत्वम्, धनवान्,” आप कहते हैं, और तद्धितिका, हरे काँसे की भूत, अपना नन्हा मुकुट नीचे करती है, और उस पर के छोटे अक्षर, एक-एक करके, ढीले होकर उसके बालों में पत्तों की तरह बैठ जाते हैं। “मैंने जो भी शब्द बनाया,” वह कहती है, “किसी के लिए बनाया। अब वह जानता है किसके लिए।” वह आपके पार अगले आले की ओर देखती है, जहाँ एक भारी पत्थर की प्रतिमा हाथ उठाए खड़ी है। “यः पठति,” वह कहती है, “सः जानाति।” “जो पढ़ता है, वह जानता है।” “अन्तिम,” दादी बहुत धीमे कहती हैं।
+      en: “राघवः, मनुष्यत्वम्, धनवान्,” you say, and Taddhitikā, the green-bronze spirit, lowers her tiny crown, and the little
+        letters on it, one by one, loosen and settle into her hair like leaves. “Every word I made,” she says, “was made for
+        something. Now it knows what.” She looks past you into the next alcove, where a heavy stone statue is holding up a
+        hand. “यः पठति,” it says, “सः जानाति.” “Who reads, he knows.” “The last one,” says Dādī, very quietly.
+      hi: “राघवः, मनुष्यत्वम्, धनवान्,” आप कहते हैं, और तद्धितिका, हरे काँसे की भूत, अपना नन्हा मुकुट नीचे करती है, और उस
+        पर के छोटे अक्षर, एक-एक करके, ढीले होकर उसके बालों में पत्तों की तरह बैठ जाते हैं। “मैंने जो भी शब्द बनाया,” वह कहती
+        है, “किसी के लिए बनाया। अब वह जानता है किसके लिए।” वह आपके पार अगले आले की ओर देखती है, जहाँ एक भारी पत्थर की प्रतिमा
+        हाथ उठाए खड़ी है। “यः पठति,” वह कहती है, “सः जानाति।” “जो पढ़ता है, वह जानता है।” “अन्तिम,” दादी बहुत धीमे कहती हैं।
     failure:
       en: 'Her crown stays on. Her three: {{राघवः मनुष्यत्वम् धनवान्}}.'
       hi: 'उसका मुकुट बना रहता है। उसके तीन: {{राघवः मनुष्यत्वम् धनवान्}}।'
@@ -198,3 +446,39 @@ cards:
   - राघवः
   - मनुष्यत्वम्
   - धनवान्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'To say “son or descendant of X”, take X, make its first vowel grow (vṛddhi) and add an ending: {{रघु}} gives {{राघवः}},
+        {{पाण्डु}} gives {{पाण्डवः}}, {{कुरु}} gives {{कौरवः}}. For a mother''s name in {{-ई}} or {{-आ}} it is {{-एय}}: {{कुन्ती}}
+        gives {{कौन्तेयः}}.'
+      hi: '‘X का पुत्र या वंशज’ कहने के लिए X लीजिए, उसका पहला स्वर बढ़ाइए (वृद्धि) और प्रत्यय जोड़िए: {{रघु}} से {{राघवः}},
+        {{पाण्डु}} से {{पाण्डवः}}, {{कुरु}} से {{कौरवः}}। {{-ई}} या {{-आ}} वाले माता के नाम से {{-एय}} बनता है: {{कुन्ती}}
+        से {{कौन्तेयः}}।'
+    items:
+    - id: i0
+      sa: रघु
+    - id: i1
+      sa: राघवः
+    - id: i2
+      sa: पाण्डु
+    - id: i3
+      sa: पाण्डवः
+    - id: i4
+      sa: कुरु
+    - id: i5
+      sa: कौरवः
+    - id: i6
+      sa: -ई
+    - id: i7
+      sa: -आ
+    - id: i8
+      sa: -एय
+    - id: i9
+      sa: कुन्ती
+    - id: i10
+      sa: कौन्तेयः

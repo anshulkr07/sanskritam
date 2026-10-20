@@ -25,7 +25,8 @@ cards:
     hi: चौबीसवीं प्रतिमा
   depth: core
   image:
-    brief: The twenty-fourth statue holding a small purse of coins that clink; Dādī counting a few on her palm; Śuka trying words aloud; Lubdhaka's foreman eyeing the purse hungrily.
+    brief: The twenty-fourth statue holding a small purse of coins that clink; Dādī counting a few on her palm; Śuka trying
+      words aloud; Lubdhaka's foreman eyeing the purse hungrily.
     alt:
       en: A statue holds a purse of clinking coins while a man eyes it hungrily
       hi: खनकते सिक्कों की थैली थामे प्रतिमा, लालच से देखता आदमी
@@ -39,8 +40,12 @@ cards:
     ratio: '4:3'
     id: tad-having-s1
   narration:
-    en: 'The twenty-fourth statue holds a purse of coins. “धनवान्,” she says, and the coins clink: “the one who has wealth.” “बुद्धिमान्”: “the one who has intelligence.” “धार्मिकः”: “related to dharma, righteous.” Śuka tries one: “श्रीमान्.” “Yes,” says Dādī. “Two small endings. One names the owner of something. The other names what belongs to it.”'
-    hi: 'चौबीसवीं प्रतिमा के हाथ में सिक्कों की थैली है। “धनवान्,” वह कहती है, और सिक्के खनकते हैं: “जिसके पास धन है।” “बुद्धिमान्”: “जिसके पास बुद्धि है।” “धार्मिकः”: “धर्म से सम्बन्धित, धर्मात्मा।” शुक एक आज़माता है: “श्रीमान्।” “हाँ,” दादी कहती हैं। “दो छोटे प्रत्यय। एक किसी वस्तु के स्वामी का नाम बताता है। दूसरा उससे सम्बन्धित का।”'
+    en: 'The twenty-fourth statue holds a purse of coins. “धनवान्,” she says, and the coins clink: “the one who has wealth.”
+      “बुद्धिमान्”: “the one who has intelligence.” “धार्मिकः”: “related to dharma, righteous.” Śuka tries one: “श्रीमान्.”
+      “Yes,” says Dādī. “Two small endings. One names the owner of something. The other names what belongs to it.”'
+    hi: 'चौबीसवीं प्रतिमा के हाथ में सिक्कों की थैली है। “धनवान्,” वह कहती है, और सिक्के खनकते हैं: “जिसके पास धन है।” “बुद्धिमान्”:
+      “जिसके पास बुद्धि है।” “धार्मिकः”: “धर्म से सम्बन्धित, धर्मात्मा।” शुक एक आज़माता है: “श्रीमान्।” “हाँ,” दादी कहती हैं।
+      “दो छोटे प्रत्यय। एक किसी वस्तु के स्वामी का नाम बताता है। दूसरा उससे सम्बन्धित का।”'
   lines:
   - speaker: taddhitika
     sa: धनवान्
@@ -64,13 +69,63 @@ cards:
   - tad.matup
   - tad.ika
   body:
-    en: '{{-वत्}} or {{-मत्}} means “having”: {{धन}} gives {{धनवान्}} (wealthy), {{बुद्धि}} gives {{बुद्धिमान्}} (intelligent); the feminine is {{-वती}}, {{-मती}}. After a stem in {{-इ}}, {{-ई}}, {{-उ}} it is {{-मत्}}, otherwise {{-वत्}}. {{-इक}} means “related to”: {{धर्म}} gives {{धार्मिकः}}, {{दिन}} gives {{दैनिकः}} (daily).'
-    hi: '{{-वत्}} या {{-मत्}} का अर्थ ‘वाला’ है: {{धन}} से {{धनवान्}} (धनी), {{बुद्धि}} से {{बुद्धिमान्}} (बुद्धिमान्); स्त्रीलिंग {{-वती}}, {{-मती}}। {{-इ}}, {{-ई}}, {{-उ}} वाले आधार के बाद {{-मत्}} होता है, अन्यथा {{-वत्}}। {{-इक}} का अर्थ ‘सम्बन्धी’ है: {{धर्म}} से {{धार्मिकः}}, {{दिन}} से {{दैनिकः}} (दैनिक)।'
+    en: '{{-वत्}} or {{-मत्}} means “having”: {{धन}} gives {{धनवान्}} (wealthy), {{बुद्धि}} gives {{बुद्धिमान्}} (intelligent);
+      the feminine is {{-वती}}, {{-मती}}. After a stem in {{-इ}}, {{-ई}}, {{-उ}} it is {{-मत्}}, otherwise {{-वत्}}. {{-इक}}
+      means “related to”: {{धर्म}} gives {{धार्मिकः}}, {{दिन}} gives {{दैनिकः}} (daily).'
+    hi: '{{-वत्}} या {{-मत्}} का अर्थ ‘वाला’ है: {{धन}} से {{धनवान्}} (धनी), {{बुद्धि}} से {{बुद्धिमान्}} (बुद्धिमान्); स्त्रीलिंग
+      {{-वती}}, {{-मती}}। {{-इ}}, {{-ई}}, {{-उ}} वाले आधार के बाद {{-मत्}} होता है, अन्यथा {{-वत्}}। {{-इक}} का अर्थ ‘सम्बन्धी’
+      है: {{धर्म}} से {{धार्मिकः}}, {{दिन}} से {{दैनिकः}} (दैनिक)।'
   term:
     sa: मतुप्
     meaning:
       en: the “having” suffix
       hi: ‘वाला’ प्रत्यय
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: '{{-वत्}} or {{-मत्}} means “having”: {{धन}} gives {{धनवान्}} (wealthy), {{बुद्धि}} gives {{बुद्धिमान्}} (intelligent);
+        the feminine is {{-वती}}, {{-मती}}. After a stem in {{-इ}}, {{-ई}}, {{-उ}} it is {{-मत्}}, otherwise {{-वत्}}. {{-इक}}
+        means “related to”: {{धर्म}} gives {{धार्मिकः}}, {{दिन}} gives {{दैनिकः}} (daily).'
+      hi: '{{-वत्}} या {{-मत्}} का अर्थ ‘वाला’ है: {{धन}} से {{धनवान्}} (धनी), {{बुद्धि}} से {{बुद्धिमान्}} (बुद्धिमान्);
+        स्त्रीलिंग {{-वती}}, {{-मती}}। {{-इ}}, {{-ई}}, {{-उ}} वाले आधार के बाद {{-मत्}} होता है, अन्यथा {{-वत्}}। {{-इक}}
+        का अर्थ ‘सम्बन्धी’ है: {{धर्म}} से {{धार्मिकः}}, {{दिन}} से {{दैनिकः}} (दैनिक)।'
+    items:
+    - id: i0
+      sa: -वत्
+    - id: i1
+      sa: -मत्
+    - id: i2
+      sa: धन
+    - id: i3
+      sa: धनवान्
+    - id: i4
+      sa: बुद्धि
+    - id: i5
+      sa: बुद्धिमान्
+    - id: i6
+      sa: -वती
+    - id: i7
+      sa: -मती
+    - id: i8
+      sa: -इ
+    - id: i9
+      sa: -ई
+    - id: i10
+      sa: -उ
+    - id: i11
+      sa: -इक
+    - id: i12
+      sa: धर्म
+    - id: i13
+      sa: धार्मिकः
+    - id: i14
+      sa: दिन
+    - id: i15
+      sa: दैनिकः
 - id: tb1
   kind: table
   title:
@@ -417,6 +472,52 @@ cards:
     text:
       en: one who has wealth
       hi: जिसके पास धन है
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{-वत्}} or {{-मत्}} means “having”: {{धन}} gives {{धनवान्}} (wealthy), {{बुद्धि}} gives {{बुद्धिमान्}} (intelligent);
+        the feminine is {{-वती}}, {{-मती}}. After a stem in {{-इ}}, {{-ई}}, {{-उ}} it is {{-मत्}}, otherwise {{-वत्}}. {{-इक}}
+        means “related to”: {{धर्म}} gives {{धार्मिकः}}, {{दिन}} gives {{दैनिकः}} (daily).'
+      hi: '{{-वत्}} या {{-मत्}} का अर्थ ‘वाला’ है: {{धन}} से {{धनवान्}} (धनी), {{बुद्धि}} से {{बुद्धिमान्}} (बुद्धिमान्);
+        स्त्रीलिंग {{-वती}}, {{-मती}}। {{-इ}}, {{-ई}}, {{-उ}} वाले आधार के बाद {{-मत्}} होता है, अन्यथा {{-वत्}}। {{-इक}}
+        का अर्थ ‘सम्बन्धी’ है: {{धर्म}} से {{धार्मिकः}}, {{दिन}} से {{दैनिकः}} (दैनिक)।'
+    items:
+    - id: i0
+      sa: -वत्
+    - id: i1
+      sa: -मत्
+    - id: i2
+      sa: धन
+    - id: i3
+      sa: धनवान्
+    - id: i4
+      sa: बुद्धि
+    - id: i5
+      sa: बुद्धिमान्
+    - id: i6
+      sa: -वती
+    - id: i7
+      sa: -मती
+    - id: i8
+      sa: -इ
+    - id: i9
+      sa: -ई
+    - id: i10
+      sa: -उ
+    - id: i11
+      sa: -इक
+    - id: i12
+      sa: धर्म
+    - id: i13
+      sa: धार्मिकः
+    - id: i14
+      sa: दिन
+    - id: i15
+      sa: दैनिकः
 - id: p2
   kind: practice
   depth: core
@@ -438,6 +539,52 @@ cards:
   - मान्
   - वान्
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{-वत्}} or {{-मत्}} means “having”: {{धन}} gives {{धनवान्}} (wealthy), {{बुद्धि}} gives {{बुद्धिमान्}} (intelligent);
+        the feminine is {{-वती}}, {{-मती}}. After a stem in {{-इ}}, {{-ई}}, {{-उ}} it is {{-मत्}}, otherwise {{-वत्}}. {{-इक}}
+        means “related to”: {{धर्म}} gives {{धार्मिकः}}, {{दिन}} gives {{दैनिकः}} (daily).'
+      hi: '{{-वत्}} या {{-मत्}} का अर्थ ‘वाला’ है: {{धन}} से {{धनवान्}} (धनी), {{बुद्धि}} से {{बुद्धिमान्}} (बुद्धिमान्);
+        स्त्रीलिंग {{-वती}}, {{-मती}}। {{-इ}}, {{-ई}}, {{-उ}} वाले आधार के बाद {{-मत्}} होता है, अन्यथा {{-वत्}}। {{-इक}}
+        का अर्थ ‘सम्बन्धी’ है: {{धर्म}} से {{धार्मिकः}}, {{दिन}} से {{दैनिकः}} (दैनिक)।'
+    items:
+    - id: i0
+      sa: -वत्
+    - id: i1
+      sa: -मत्
+    - id: i2
+      sa: धन
+    - id: i3
+      sa: धनवान्
+    - id: i4
+      sa: बुद्धि
+    - id: i5
+      sa: बुद्धिमान्
+    - id: i6
+      sa: -वती
+    - id: i7
+      sa: -मती
+    - id: i8
+      sa: -इ
+    - id: i9
+      sa: -ई
+    - id: i10
+      sa: -उ
+    - id: i11
+      sa: -इक
+    - id: i12
+      sa: धर्म
+    - id: i13
+      sa: धार्मिकः
+    - id: i14
+      sa: दिन
+    - id: i15
+      sa: दैनिकः
 - id: p3
   kind: practice
   depth: core
@@ -477,6 +624,52 @@ cards:
       text:
         en: daily
         hi: दैनिक
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{-वत्}} or {{-मत्}} means “having”: {{धन}} gives {{धनवान्}} (wealthy), {{बुद्धि}} gives {{बुद्धिमान्}} (intelligent);
+        the feminine is {{-वती}}, {{-मती}}. After a stem in {{-इ}}, {{-ई}}, {{-उ}} it is {{-मत्}}, otherwise {{-वत्}}. {{-इक}}
+        means “related to”: {{धर्म}} gives {{धार्मिकः}}, {{दिन}} gives {{दैनिकः}} (daily).'
+      hi: '{{-वत्}} या {{-मत्}} का अर्थ ‘वाला’ है: {{धन}} से {{धनवान्}} (धनी), {{बुद्धि}} से {{बुद्धिमान्}} (बुद्धिमान्);
+        स्त्रीलिंग {{-वती}}, {{-मती}}। {{-इ}}, {{-ई}}, {{-उ}} वाले आधार के बाद {{-मत्}} होता है, अन्यथा {{-वत्}}। {{-इक}}
+        का अर्थ ‘सम्बन्धी’ है: {{धर्म}} से {{धार्मिकः}}, {{दिन}} से {{दैनिकः}} (दैनिक)।'
+    items:
+    - id: i0
+      sa: -वत्
+    - id: i1
+      sa: -मत्
+    - id: i2
+      sa: धन
+    - id: i3
+      sa: धनवान्
+    - id: i4
+      sa: बुद्धि
+    - id: i5
+      sa: बुद्धिमान्
+    - id: i6
+      sa: -वती
+    - id: i7
+      sa: -मती
+    - id: i8
+      sa: -इ
+    - id: i9
+      sa: -ई
+    - id: i10
+      sa: -उ
+    - id: i11
+      sa: -इक
+    - id: i12
+      sa: धर्म
+    - id: i13
+      sa: धार्मिकः
+    - id: i14
+      sa: दिन
+    - id: i15
+      sa: दैनिकः
 - id: e1
   kind: explore
   depth: core
@@ -520,8 +713,14 @@ cards:
   gate: true
   story:
     success:
-      en: '“वैदिकः,” you say, “related to the Veda,” and the purse in the statue''s hand opens, and out of it pour, not coins, but small bright letters, which hang a moment in the air and assemble: धनवान्, बुद्धिमान्, श्रीमान्, धार्मिकः. “All of these,” she says, “carry what they own, or what is theirs.” Lubdhaka''s foreman, who has been looking at the purse for some time, reaches for it, then thinks better of it.'
-      hi: '“वैदिकः,” आप कहते हैं, “वेद से सम्बन्धित,” और प्रतिमा के हाथ की थैली खुल जाती है, और उसमें से सिक्के नहीं, छोटे चमकदार अक्षर बहते हैं, जो क्षण भर हवा में टँगे रहते हैं और जुड़ जाते हैं: धनवान्, बुद्धिमान्, श्रीमान्, धार्मिकः। “ये सब,” वह कहती है, “वह ढोते हैं जो इनका है।” लुब्धक का मुखिया, जो काफ़ी देर से थैली को देख रहा था, उसकी ओर हाथ बढ़ाता है, फिर बेहतर सोचकर रुक जाता है।'
+      en: '“वैदिकः,” you say, “related to the Veda,” and the purse in the statue''s hand opens, and out of it pour, not coins,
+        but small bright letters, which hang a moment in the air and assemble: धनवान्, बुद्धिमान्, श्रीमान्, धार्मिकः. “All
+        of these,” she says, “carry what they own, or what is theirs.” Lubdhaka''s foreman, who has been looking at the purse
+        for some time, reaches for it, then thinks better of it.'
+      hi: '“वैदिकः,” आप कहते हैं, “वेद से सम्बन्धित,” और प्रतिमा के हाथ की थैली खुल जाती है, और उसमें से सिक्के नहीं, छोटे
+        चमकदार अक्षर बहते हैं, जो क्षण भर हवा में टँगे रहते हैं और जुड़ जाते हैं: धनवान्, बुद्धिमान्, श्रीमान्, धार्मिकः।
+        “ये सब,” वह कहती है, “वह ढोते हैं जो इनका है।” लुब्धक का मुखिया, जो काफ़ी देर से थैली को देख रहा था, उसकी ओर हाथ बढ़ाता
+        है, फिर बेहतर सोचकर रुक जाता है।'
     failure:
       en: 'The purse stays shut. {{-इक}}: related to: {{वैदिकः}}.'
       hi: 'थैली बन्द रहती है। {{-इक}}: सम्बन्धी: {{वैदिकः}}।'
@@ -536,6 +735,52 @@ cards:
   - text:
       en: the Veda's son
       hi: वेद का पुत्र
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{-वत्}} or {{-मत्}} means “having”: {{धन}} gives {{धनवान्}} (wealthy), {{बुद्धि}} gives {{बुद्धिमान्}} (intelligent);
+        the feminine is {{-वती}}, {{-मती}}. After a stem in {{-इ}}, {{-ई}}, {{-उ}} it is {{-मत्}}, otherwise {{-वत्}}. {{-इक}}
+        means “related to”: {{धर्म}} gives {{धार्मिकः}}, {{दिन}} gives {{दैनिकः}} (daily).'
+      hi: '{{-वत्}} या {{-मत्}} का अर्थ ‘वाला’ है: {{धन}} से {{धनवान्}} (धनी), {{बुद्धि}} से {{बुद्धिमान्}} (बुद्धिमान्);
+        स्त्रीलिंग {{-वती}}, {{-मती}}। {{-इ}}, {{-ई}}, {{-उ}} वाले आधार के बाद {{-मत्}} होता है, अन्यथा {{-वत्}}। {{-इक}}
+        का अर्थ ‘सम्बन्धी’ है: {{धर्म}} से {{धार्मिकः}}, {{दिन}} से {{दैनिकः}} (दैनिक)।'
+    items:
+    - id: i0
+      sa: -वत्
+    - id: i1
+      sa: -मत्
+    - id: i2
+      sa: धन
+    - id: i3
+      sa: धनवान्
+    - id: i4
+      sa: बुद्धि
+    - id: i5
+      sa: बुद्धिमान्
+    - id: i6
+      sa: -वती
+    - id: i7
+      sa: -मती
+    - id: i8
+      sa: -इ
+    - id: i9
+      sa: -ई
+    - id: i10
+      sa: -उ
+    - id: i11
+      sa: -इक
+    - id: i12
+      sa: धर्म
+    - id: i13
+      sa: धार्मिकः
+    - id: i14
+      sa: दिन
+    - id: i15
+      sa: दैनिकः
 - id: pn
   kind: teach
   title:
@@ -551,8 +796,48 @@ cards:
   - 5.1.18
   - 7.3.50
   body:
-    en: Sūtra 5.2.94, {{तदस्यास्त्यस्मिन्निति मतुप्}}, gives {{मतुप्}} to say “he has it”; 8.2.9, {{मादुपधायाश्च मतोर्वोऽयवादिभ्यः}}, makes it {{वत्}} after a stem with {{म्}}, {{अ}} or {{आ}} before the end. For “related to”, 5.1.18, {{प्राग्वतेष्ठञ्}}, gives {{ठञ्}}, which 7.3.50, {{ठस्येकः}}, turns into {{इक}}.
-    hi: सूत्र 5.2.94, {{तदस्यास्त्यस्मिन्निति मतुप्}}, ‘उसके पास है’ कहने के लिए {{मतुप्}} देता है; 8.2.9, {{मादुपधायाश्च मतोर्वोऽयवादिभ्यः}}, म्, अ या आ वाले आधार के बाद उसे {{वत्}} बनाता है। ‘सम्बन्धी’ के लिए 5.1.18, {{प्राग्वतेष्ठञ्}}, {{ठञ्}} देता है, जिसे 7.3.50, {{ठस्येकः}}, {{इक}} बना देता है।
+    en: Sūtra 5.2.94, {{तदस्यास्त्यस्मिन्निति मतुप्}}, gives {{मतुप्}} to say “he has it”; 8.2.9, {{मादुपधायाश्च मतोर्वोऽयवादिभ्यः}},
+      makes it {{वत्}} after a stem with {{म्}}, {{अ}} or {{आ}} before the end. For “related to”, 5.1.18, {{प्राग्वतेष्ठञ्}},
+      gives {{ठञ्}}, which 7.3.50, {{ठस्येकः}}, turns into {{इक}}.
+    hi: सूत्र 5.2.94, {{तदस्यास्त्यस्मिन्निति मतुप्}}, ‘उसके पास है’ कहने के लिए {{मतुप्}} देता है; 8.2.9, {{मादुपधायाश्च
+      मतोर्वोऽयवादिभ्यः}}, म्, अ या आ वाले आधार के बाद उसे {{वत्}} बनाता है। ‘सम्बन्धी’ के लिए 5.1.18, {{प्राग्वतेष्ठञ्}},
+      {{ठञ्}} देता है, जिसे 7.3.50, {{ठस्येकः}}, {{इक}} बना देता है।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 5.2.94, {{तदस्यास्त्यस्मिन्निति मतुप्}}, gives {{मतुप्}} to say “he has it”; 8.2.9, {{मादुपधायाश्च मतोर्वोऽयवादिभ्यः}},
+        makes it {{वत्}} after a stem with {{म्}}, {{अ}} or {{आ}} before the end. For “related to”, 5.1.18, {{प्राग्वतेष्ठञ्}},
+        gives {{ठञ्}}, which 7.3.50, {{ठस्येकः}}, turns into {{इक}}.
+      hi: सूत्र 5.2.94, {{तदस्यास्त्यस्मिन्निति मतुप्}}, ‘उसके पास है’ कहने के लिए {{मतुप्}} देता है; 8.2.9, {{मादुपधायाश्च
+        मतोर्वोऽयवादिभ्यः}}, म्, अ या आ वाले आधार के बाद उसे {{वत्}} बनाता है। ‘सम्बन्धी’ के लिए 5.1.18, {{प्राग्वतेष्ठञ्}},
+        {{ठञ्}} देता है, जिसे 7.3.50, {{ठस्येकः}}, {{इक}} बना देता है।
+    items:
+    - id: i0
+      sa: तदस्यास्त्यस्मिन्निति मतुप्
+    - id: i1
+      sa: मतुप्
+    - id: i2
+      sa: मादुपधायाश्च मतोर्वोऽयवादिभ्यः
+    - id: i3
+      sa: वत्
+    - id: i4
+      sa: म्
+    - id: i5
+      sa: अ
+    - id: i6
+      sa: आ
+    - id: i7
+      sa: प्राग्वतेष्ठञ्
+    - id: i8
+      sa: ठञ्
+    - id: i9
+      sa: ठस्येकः
+    - id: i10
+      sa: इक
 - id: sum
   kind: summary
   title:

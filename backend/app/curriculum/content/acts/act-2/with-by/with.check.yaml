@@ -28,6 +28,129 @@ cards:
   - sa: नौकाम्
   - correct: true
     sa: नौकया
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: वयम् नौकया गच्छामः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: We go by boat.
+        hi: हम नाव से जाते हैं।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: नौकया
+        gloss:
+          en: by boat
+          hi: नाव से
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: गच्छामः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+    - id: i1
+      sa: वयम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: we
+        hi: हम
+    - id: i2
+      sa: नौकया
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by boat
+        hi: नाव से
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाते हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The tool or means by which something is done takes the third case, {{तृतीया}}: {{नौकया}} (by boat), {{दण्डेन}}
+          (with a pole), {{हस्तेन}} (with the hand).'
+        hi: 'जिस साधन से कोई काम होता है वह तृतीया में आता है: {{नौकया}} (नाव से), {{दण्डेन}} (डंडी से), {{हस्तेन}} (हाथ से)।'
+    - id: i6
+      sa: वयम् नौकया गच्छामः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: We go by boat.
+        hi: हम नाव से जाते हैं।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: नौकया
+        gloss:
+          en: by boat
+          hi: नाव से
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: गच्छामः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
 - id: p2
   kind: practice
   depth: core
@@ -60,6 +183,129 @@ cards:
       text:
         en: with a pen
         hi: कलम से
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: वयम् नौकया गच्छामः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: We go by boat.
+        hi: हम नाव से जाते हैं।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: नौकया
+        gloss:
+          en: by boat
+          hi: नाव से
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: गच्छामः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+    - id: i1
+      sa: वयम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: we
+        hi: हम
+    - id: i2
+      sa: नौकया
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by boat
+        hi: नाव से
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाते हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The tool or means by which something is done takes the third case, {{तृतीया}}: {{नौकया}} (by boat), {{दण्डेन}}
+          (with a pole), {{हस्तेन}} (with the hand).'
+        hi: 'जिस साधन से कोई काम होता है वह तृतीया में आता है: {{नौकया}} (नाव से), {{दण्डेन}} (डंडी से), {{हस्तेन}} (हाथ से)।'
+    - id: i6
+      sa: वयम् नौकया गच्छामः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: We go by boat.
+        hi: हम नाव से जाते हैं।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: नौकया
+        gloss:
+          en: by boat
+          hi: नाव से
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: गच्छामः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
 - id: p3
   kind: practice
   depth: core
@@ -78,6 +324,146 @@ cards:
   - correct: true
     sa: मित्रेण सह
   - sa: मित्राय सह
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: अहम् मित्रेण सह गच्छामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I go together with a friend.
+        hi: मैं मित्र के साथ जाता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: मित्रेण
+        gloss:
+          en: with a friend
+          hi: मित्र के साथ
+        check:
+          type: subanta
+          stem: मित्र
+          linga: Napumsaka
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: सह
+        gloss:
+          en: together with
+          hi: साथ
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: मित्रेण
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: with a friend
+        hi: मित्र के साथ
+      check:
+        type: subanta
+        stem: मित्र
+        linga: Napumsaka
+        vibhakti: Trtiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+    - id: i3
+      sa: सह
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: together with
+        hi: साथ
+    - id: i4
+      sa: गच्छामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To say “together with”, use the third case and the little word {{सह}}: {{मित्रेण सह}} (with a friend), {{शुकेन
+          सह}}. The person you accompany stands in the third case.'
+        hi: '‘के साथ’ कहने के लिए तृतीया और छोटा शब्द {{सह}} लगाइए: {{मित्रेण सह}} (मित्र के साथ), {{शुकेन सह}}। जिसके साथ
+          जाते हैं वह तृतीया में आता है।'
+    - id: i7
+      sa: अहम् मित्रेण सह गच्छामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I go together with a friend.
+        hi: मैं मित्र के साथ जाता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: मित्रेण
+        gloss:
+          en: with a friend
+          hi: मित्र के साथ
+        check:
+          type: subanta
+          stem: मित्र
+          linga: Napumsaka
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: सह
+        gloss:
+          en: together with
+          hi: साथ
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -96,6 +482,146 @@ cards:
   - आचार्येण
   - सह
   - गच्छति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: अहम् मित्रेण सह गच्छामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I go together with a friend.
+        hi: मैं मित्र के साथ जाता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: मित्रेण
+        gloss:
+          en: with a friend
+          hi: मित्र के साथ
+        check:
+          type: subanta
+          stem: मित्र
+          linga: Napumsaka
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: सह
+        gloss:
+          en: together with
+          hi: साथ
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: मित्रेण
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: with a friend
+        hi: मित्र के साथ
+      check:
+        type: subanta
+        stem: मित्र
+        linga: Napumsaka
+        vibhakti: Trtiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
+    - id: i3
+      sa: सह
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: together with
+        hi: साथ
+    - id: i4
+      sa: गच्छामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To say “together with”, use the third case and the little word {{सह}}: {{मित्रेण सह}} (with a friend), {{शुकेन
+          सह}}. The person you accompany stands in the third case.'
+        hi: '‘के साथ’ कहने के लिए तृतीया और छोटा शब्द {{सह}} लगाइए: {{मित्रेण सह}} (मित्र के साथ), {{शुकेन सह}}। जिसके साथ
+          जाते हैं वह तृतीया में आता है।'
+    - id: i7
+      sa: अहम् मित्रेण सह गच्छामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I go together with a friend.
+        hi: मैं मित्र के साथ जाता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: मित्रेण
+        gloss:
+          en: with a friend
+          hi: मित्र के साथ
+        check:
+          type: subanta
+          stem: मित्र
+          linga: Napumsaka
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: सह
+        gloss:
+          en: together with
+          hi: साथ
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
 - id: p5
   kind: practice
   depth: core
@@ -114,6 +640,129 @@ cards:
     params:
       sentence: नाविकः दण्डेन गच्छति
     seed: 4
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: वयम् नौकया गच्छामः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: We go by boat.
+        hi: हम नाव से जाते हैं।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: नौकया
+        gloss:
+          en: by boat
+          hi: नाव से
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: गच्छामः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+    - id: i1
+      sa: वयम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: we
+        hi: हम
+    - id: i2
+      sa: नौकया
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by boat
+        hi: नाव से
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाते हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The tool or means by which something is done takes the third case, {{तृतीया}}: {{नौकया}} (by boat), {{दण्डेन}}
+          (with a pole), {{हस्तेन}} (with the hand).'
+        hi: 'जिस साधन से कोई काम होता है वह तृतीया में आता है: {{नौकया}} (नाव से), {{दण्डेन}} (डंडी से), {{हस्तेन}} (हाथ से)।'
+    - id: i6
+      sa: वयम् नौकया गच्छामः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: We go by boat.
+        hi: हम नाव से जाते हैं।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: नौकया
+        gloss:
+          en: by boat
+          hi: नाव से
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: गच्छामः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
 - id: p6
   kind: practice
   depth: core
@@ -132,6 +781,129 @@ cards:
   - correct: true
     sa: लेखन्या
   - sa: लिखति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: वयम् नौकया गच्छामः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: We go by boat.
+        hi: हम नाव से जाते हैं।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: नौकया
+        gloss:
+          en: by boat
+          hi: नाव से
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: गच्छामः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+    - id: i1
+      sa: वयम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: we
+        hi: हम
+    - id: i2
+      sa: नौकया
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by boat
+        hi: नाव से
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाते हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The tool or means by which something is done takes the third case, {{तृतीया}}: {{नौकया}} (by boat), {{दण्डेन}}
+          (with a pole), {{हस्तेन}} (with the hand).'
+        hi: 'जिस साधन से कोई काम होता है वह तृतीया में आता है: {{नौकया}} (नाव से), {{दण्डेन}} (डंडी से), {{हस्तेन}} (हाथ से)।'
+    - id: i6
+      sa: वयम् नौकया गच्छामः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: We go by boat.
+        hi: हम नाव से जाते हैं।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: नौकया
+        gloss:
+          en: by boat
+          hi: नाव से
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: गच्छामः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
 - id: p7
   kind: practice
   depth: core
@@ -149,8 +921,12 @@ cards:
   gate: true
   story:
     success:
-      en: “वयं नौकया मित्रेण सह गच्छामः.” Tarikā rises from the water as a clear blue light and bows. “मित्रेण सह गच्छामि,” she says, in a voice like a bell over water. “आचार्याय फलं ददामि।” She nods towards the far bank, where a whitewashed school waits among neem trees.
-      hi: “वयं नौकया मित्रेण सह गच्छामः।” तरिका पानी से साफ़ नीली रोशनी बनकर उठती है और झुकती है। “मित्रेण सह गच्छामि,” वह पानी पर घंटी जैसी आवाज़ में कहती है। “आचार्याय फलं ददामि।” वह दूर के तट की ओर सिर हिलाती है, जहाँ नीम के पेड़ों के बीच एक चूने से पुती पाठशाला प्रतीक्षा कर रही है।
+      en: “वयं नौकया मित्रेण सह गच्छामः.” Tarikā rises from the water as a clear blue light and bows. “मित्रेण सह गच्छामि,”
+        she says, in a voice like a bell over water. “आचार्याय फलं ददामि।” She nods towards the far bank, where a whitewashed
+        school waits among neem trees.
+      hi: “वयं नौकया मित्रेण सह गच्छामः।” तरिका पानी से साफ़ नीली रोशनी बनकर उठती है और झुकती है। “मित्रेण सह गच्छामि,” वह
+        पानी पर घंटी जैसी आवाज़ में कहती है। “आचार्याय फलं ददामि।” वह दूर के तट की ओर सिर हिलाती है, जहाँ नीम के पेड़ों के
+        बीच एक चूने से पुती पाठशाला प्रतीक्षा कर रही है।
     failure:
       en: Tarikā circles, waiting. The means comes first, the companion with {{सह}} second.
       hi: तरिका चक्कर लगाती प्रतीक्षा करती है। पहले साधन, फिर {{सह}} के साथ साथी।
@@ -160,3 +936,126 @@ cards:
   - मित्रेण
   - सह
   - गच्छामः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: वयम् नौकया गच्छामः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: We go by boat.
+        hi: हम नाव से जाते हैं।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: नौकया
+        gloss:
+          en: by boat
+          hi: नाव से
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: गच्छामः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+    - id: i1
+      sa: वयम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: we
+        hi: हम
+    - id: i2
+      sa: नौकया
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by boat
+        hi: नाव से
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाते हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The tool or means by which something is done takes the third case, {{तृतीया}}: {{नौकया}} (by boat), {{दण्डेन}}
+          (with a pole), {{हस्तेन}} (with the hand).'
+        hi: 'जिस साधन से कोई काम होता है वह तृतीया में आता है: {{नौकया}} (नाव से), {{दण्डेन}} (डंडी से), {{हस्तेन}} (हाथ से)।'
+    - id: i6
+      sa: वयम् नौकया गच्छामः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: We go by boat.
+        hi: हम नाव से जाते हैं।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: नौकया
+        gloss:
+          en: by boat
+          hi: नाव से
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: गच्छामः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu

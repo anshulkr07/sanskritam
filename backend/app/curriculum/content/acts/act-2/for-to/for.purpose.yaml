@@ -21,7 +21,9 @@ cards:
     hi: क्यों आए हो?
   depth: core
   image:
-    brief: The courtyard of a village school with a neem tree and children at their slates; the old Ācārya walking beside you and Dādī, listening with a raised hand; Śuka on a low wall; the small golden spirit trailing with a grain of rice in his palms.
+    brief: The courtyard of a village school with a neem tree and children at their slates; the old Ācārya walking beside
+      you and Dādī, listening with a raised hand; Śuka on a low wall; the small golden spirit trailing with a grain of rice
+      in his palms.
     alt:
       en: An old teacher leads visitors through a school courtyard
       hi: पाठशाला के आँगन में अतिथियों को ले जाते वृद्ध आचार्य
@@ -35,8 +37,12 @@ cards:
     ratio: '4:3'
     id: for-purpose-s1
   narration:
-    en: The Ācārya leads you into the school courtyard. “Why have you come, child? For what?” he asks. “For learning,” says Dādī on your behalf. “For the leaves,” you say. The old man's eyes light up. Dānaka, the golden spirit, trails behind with his tiny grain, working out what a gift is for.
-    hi: आचार्य आपको पाठशाला के आँगन में ले जाते हैं। “क्यों आए हो, बच्चे? किसलिए?” वे पूछते हैं। “पढ़ने के लिए,” दादी आपकी ओर से कहती हैं। “पत्रों के लिए,” आप कहते हैं। बूढ़े की आँखें चमक उठती हैं। सुनहरा भूत दानक अपना नन्हा दाना लिए पीछे-पीछे चलता है, यह सोचता हुआ कि उपहार किसलिए होता है।
+    en: The Ācārya leads you into the school courtyard. “Why have you come, child? For what?” he asks. “For learning,” says
+      Dādī on your behalf. “For the leaves,” you say. The old man's eyes light up. Dānaka, the golden spirit, trails behind
+      with his tiny grain, working out what a gift is for.
+    hi: आचार्य आपको पाठशाला के आँगन में ले जाते हैं। “क्यों आए हो, बच्चे? किसलिए?” वे पूछते हैं। “पढ़ने के लिए,” दादी आपकी
+      ओर से कहती हैं। “पत्रों के लिए,” आप कहते हैं। बूढ़े की आँखें चमक उठती हैं। सुनहरा भूत दानक अपना नन्हा दाना लिए पीछे-पीछे
+      चलता है, यह सोचता हुआ कि उपहार किसलिए होता है।
   lines:
   - speaker: acarya
     sa: किमर्थम् आगतः असि?
@@ -52,8 +58,10 @@ cards:
   skills:
   - case.dat-purpose
   body:
-    en: 'The fourth case also gives the purpose, the thing something is for: {{पठनाय गच्छति}} (he goes for study), {{भोजनाय आगच्छति}} (he comes for a meal). It answers “for what?”.'
-    hi: 'चतुर्थी उद्देश्य भी बताती है, जिसके लिए कोई काम होता है: {{पठनाय गच्छति}} (वह पढ़ने के लिए जाता है), {{भोजनाय आगच्छति}} (वह भोजन के लिए आता है)। यह ‘किसलिए?’ का उत्तर देती है।'
+    en: 'The fourth case also gives the purpose, the thing something is for: {{पठनाय गच्छति}} (he goes for study), {{भोजनाय
+      आगच्छति}} (he comes for a meal). It answers “for what?”.'
+    hi: 'चतुर्थी उद्देश्य भी बताती है, जिसके लिए कोई काम होता है: {{पठनाय गच्छति}} (वह पढ़ने के लिए जाता है), {{भोजनाय आगच्छति}}
+      (वह भोजन के लिए आता है)। यह ‘किसलिए?’ का उत्तर देती है।'
   examples:
   - sa: बालकः पठनाय गच्छति।
     meaning:
@@ -150,6 +158,403 @@ cards:
         lakara: Lat
         purusha: Uttama
         vacana: Bahu
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकः पठनाय गच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy goes for study.
+        hi: बालक पढ़ने के लिए जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठनाय
+        gloss:
+          en: for study
+          hi: पढ़ने के लिए
+        check:
+          type: subanta
+          stem: पठन
+          linga: Napumsaka
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठनाय
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: for study
+        hi: पढ़ने के लिए
+      check:
+        type: subanta
+        stem: पठन
+        linga: Napumsaka
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पठन}} · neuter · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{पठन}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The fourth case also gives the purpose, the thing something is for: {{पठनाय गच्छति}} (he goes for study), {{भोजनाय
+          आगच्छति}} (he comes for a meal). It answers “for what?”.'
+        hi: 'चतुर्थी उद्देश्य भी बताती है, जिसके लिए कोई काम होता है: {{पठनाय गच्छति}} (वह पढ़ने के लिए जाता है), {{भोजनाय
+          आगच्छति}} (वह भोजन के लिए आता है)। यह ‘किसलिए?’ का उत्तर देती है।'
+    - id: i6
+      sa: बालकः पठनाय गच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy goes for study.
+        hi: बालक पढ़ने के लिए जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठनाय
+        gloss:
+          en: for study
+          hi: पढ़ने के लिए
+        check:
+          type: subanta
+          stem: पठन
+          linga: Napumsaka
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सः भोजनाय आगच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He comes for a meal.
+        hi: वह भोजन के लिए आता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: भोजनाय
+        gloss:
+          en: for a meal
+          hi: भोजन के लिए
+        check:
+          type: subanta
+          stem: भोजन
+          linga: Napumsaka
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: भोजनाय
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: for a meal
+        hi: भोजन के लिए
+      check:
+        type: subanta
+        stem: भोजन
+        linga: Napumsaka
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{भोजन}} · neuter · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{भोजन}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: i3
+      sa: आगच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: comes
+        hi: आता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The fourth case also gives the purpose, the thing something is for: {{पठनाय गच्छति}} (he goes for study), {{भोजनाय
+          आगच्छति}} (he comes for a meal). It answers “for what?”.'
+        hi: 'चतुर्थी उद्देश्य भी बताती है, जिसके लिए कोई काम होता है: {{पठनाय गच्छति}} (वह पढ़ने के लिए जाता है), {{भोजनाय
+          आगच्छति}} (वह भोजन के लिए आता है)। यह ‘किसलिए?’ का उत्तर देती है।'
+    - id: i6
+      sa: सः भोजनाय आगच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He comes for a meal.
+        hi: वह भोजन के लिए आता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: भोजनाय
+        gloss:
+          en: for a meal
+          hi: भोजन के लिए
+        check:
+          type: subanta
+          stem: भोजन
+          linga: Napumsaka
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: वयम् पत्रेभ्यः गच्छामः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: We go for the leaves.
+        hi: हम पत्रों के लिए जाते हैं।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पत्रेभ्यः
+        gloss:
+          en: for the leaves
+          hi: पत्रों के लिए
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Caturthi
+          vacana: Bahu
+      - sa: गच्छामः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+    - id: i1
+      sa: वयम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: we
+        hi: हम
+    - id: i2
+      sa: पत्रेभ्यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: for the leaves
+        hi: पत्रों के लिए
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Caturthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{चतुर्थी}} · plural'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{बहुवचन}}'
+    - id: i3
+      sa: गच्छामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाते हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The fourth case also gives the purpose, the thing something is for: {{पठनाय गच्छति}} (he goes for study), {{भोजनाय
+          आगच्छति}} (he comes for a meal). It answers “for what?”.'
+        hi: 'चतुर्थी उद्देश्य भी बताती है, जिसके लिए कोई काम होता है: {{पठनाय गच्छति}} (वह पढ़ने के लिए जाता है), {{भोजनाय
+          आगच्छति}} (वह भोजन के लिए आता है)। यह ‘किसलिए?’ का उत्तर देती है।'
+    - id: i6
+      sa: वयम् पत्रेभ्यः गच्छामः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: We go for the leaves.
+        hi: हम पत्रों के लिए जाते हैं।
+      words:
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पत्रेभ्यः
+        gloss:
+          en: for the leaves
+          hi: पत्रों के लिए
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Caturthi
+          vacana: Bahu
+      - sa: गच्छामः
+        gloss:
+          en: go
+          hi: जाते हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
 - id: tb1
   kind: table
   title:
@@ -253,8 +658,10 @@ cards:
   skills:
   - case.dat-purpose
   body:
-    en: 'With {{रुच्}} (to please), the person pleased is in the fourth case and the thing that pleases is the doer: {{बालकाय फलं रोचते}}, “the fruit pleases the boy”, that is, the boy likes fruit.'
-    hi: '{{रुच्}} (भाना) के साथ जिसे कुछ भाता है वह चतुर्थी में आता है और जो भाता है वह कर्ता बनता है: {{बालकाय फलं रोचते}}, ‘बालक को फल भाता है’, यानी बालक को फल पसन्द है।'
+    en: 'With {{रुच्}} (to please), the person pleased is in the fourth case and the thing that pleases is the doer: {{बालकाय
+      फलं रोचते}}, “the fruit pleases the boy”, that is, the boy likes fruit.'
+    hi: '{{रुच्}} (भाना) के साथ जिसे कुछ भाता है वह चतुर्थी में आता है और जो भाता है वह कर्ता बनता है: {{बालकाय फलं रोचते}},
+      ‘बालक को फल भाता है’, यानी बालक को फल पसन्द है।'
   examples:
   - sa: बालकाय फलम् रोचते।
     meaning:
@@ -291,6 +698,151 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकाय फलम् रोचते।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy likes fruit (the fruit pleases the boy).
+        hi: बालक को फल पसन्द है।
+      words:
+      - sa: बालकाय
+        gloss:
+          en: to the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: रोचते
+        gloss:
+          en: pleases
+          hi: भाता है
+        check:
+          type: tinanta
+          dhatu: रुच्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकाय
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to the boy
+        hi: बालक को
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: i2
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: रोचते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: pleases
+        hi: भाता है
+      check:
+        type: tinanta
+        dhatu: रुच्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{रुच्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{रुच्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With {{रुच्}} (to please), the person pleased is in the fourth case and the thing that pleases is the doer: {{बालकाय
+          फलं रोचते}}, “the fruit pleases the boy”, that is, the boy likes fruit.'
+        hi: '{{रुच्}} (भाना) के साथ जिसे कुछ भाता है वह चतुर्थी में आता है और जो भाता है वह कर्ता बनता है: {{बालकाय फलं रोचते}},
+          ‘बालक को फल भाता है’, यानी बालक को फल पसन्द है।'
+    - id: i6
+      sa: बालकाय फलम् रोचते।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy likes fruit (the fruit pleases the boy).
+        hi: बालक को फल पसन्द है।
+      words:
+      - sa: बालकाय
+        gloss:
+          en: to the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: रोचते
+        gloss:
+          en: pleases
+          hi: भाता है
+        check:
+          type: tinanta
+          dhatu: रुच्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p1
   kind: practice
   depth: core
@@ -309,6 +861,151 @@ cards:
   - sa: पठनेन
   - correct: true
     sa: पठनाय
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठनाय गच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy goes for study.
+        hi: बालक पढ़ने के लिए जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठनाय
+        gloss:
+          en: for study
+          hi: पढ़ने के लिए
+        check:
+          type: subanta
+          stem: पठन
+          linga: Napumsaka
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठनाय
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: for study
+        hi: पढ़ने के लिए
+      check:
+        type: subanta
+        stem: पठन
+        linga: Napumsaka
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पठन}} · neuter · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{पठन}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The fourth case also gives the purpose, the thing something is for: {{पठनाय गच्छति}} (he goes for study), {{भोजनाय
+          आगच्छति}} (he comes for a meal). It answers “for what?”.'
+        hi: 'चतुर्थी उद्देश्य भी बताती है, जिसके लिए कोई काम होता है: {{पठनाय गच्छति}} (वह पढ़ने के लिए जाता है), {{भोजनाय
+          आगच्छति}} (वह भोजन के लिए आता है)। यह ‘किसलिए?’ का उत्तर देती है।'
+    - id: i6
+      sa: बालकः पठनाय गच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy goes for study.
+        hi: बालक पढ़ने के लिए जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठनाय
+        gloss:
+          en: for study
+          hi: पढ़ने के लिए
+        check:
+          type: subanta
+          stem: पठन
+          linga: Napumsaka
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -347,6 +1044,151 @@ cards:
       text:
         en: for happiness
         hi: सुख के लिए
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठनाय गच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy goes for study.
+        hi: बालक पढ़ने के लिए जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठनाय
+        gloss:
+          en: for study
+          hi: पढ़ने के लिए
+        check:
+          type: subanta
+          stem: पठन
+          linga: Napumsaka
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठनाय
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: for study
+        hi: पढ़ने के लिए
+      check:
+        type: subanta
+        stem: पठन
+        linga: Napumsaka
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पठन}} · neuter · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{पठन}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The fourth case also gives the purpose, the thing something is for: {{पठनाय गच्छति}} (he goes for study), {{भोजनाय
+          आगच्छति}} (he comes for a meal). It answers “for what?”.'
+        hi: 'चतुर्थी उद्देश्य भी बताती है, जिसके लिए कोई काम होता है: {{पठनाय गच्छति}} (वह पढ़ने के लिए जाता है), {{भोजनाय
+          आगच्छति}} (वह भोजन के लिए आता है)। यह ‘किसलिए?’ का उत्तर देती है।'
+    - id: i6
+      sa: बालकः पठनाय गच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy goes for study.
+        hi: बालक पढ़ने के लिए जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठनाय
+        gloss:
+          en: for study
+          hi: पढ़ने के लिए
+        check:
+          type: subanta
+          stem: पठन
+          linga: Napumsaka
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -388,8 +1230,12 @@ cards:
   gate: true
   story:
     success:
-      en: '“वयं पत्रेभ्यः गच्छामः,” you say, and the Ācārya stops walking. “Then you are who I have been waiting for.” At the end of the courtyard the school''s door stands open. Dānaka sets his grain gently on the threshold: “नमः आचार्याय,” he whispers, and fades into golden light.'
-      hi: '“वयं पत्रेभ्यः गच्छामः,” आप कहते हैं, और आचार्य चलना रोक देते हैं। “तब तुम वही हो जिसकी मैं प्रतीक्षा करता था।” आँगन के छोर पर पाठशाला का द्वार खुला है। दानक अपना दाना धीरे से देहली पर रखता है: “नमः आचार्याय,” वह फुसफुसाता है, और सुनहरी रोशनी में घुल जाता है।'
+      en: '“वयं पत्रेभ्यः गच्छामः,” you say, and the Ācārya stops walking. “Then you are who I have been waiting for.” At
+        the end of the courtyard the school''s door stands open. Dānaka sets his grain gently on the threshold: “नमः आचार्याय,”
+        he whispers, and fades into golden light.'
+      hi: '“वयं पत्रेभ्यः गच्छामः,” आप कहते हैं, और आचार्य चलना रोक देते हैं। “तब तुम वही हो जिसकी मैं प्रतीक्षा करता था।”
+        आँगन के छोर पर पाठशाला का द्वार खुला है। दानक अपना दाना धीरे से देहली पर रखता है: “नमः आचार्याय,” वह फुसफुसाता है,
+        और सुनहरी रोशनी में घुल जाता है।'
     failure:
       en: The Ācārya waits. The purpose, {{पत्रेभ्यः}}, takes the fourth case.
       hi: आचार्य प्रतीक्षा करते हैं। उद्देश्य {{पत्रेभ्यः}} चतुर्थी लेता है।
@@ -397,6 +1243,151 @@ cards:
   - वयम्
   - पत्रेभ्यः
   - गच्छामः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः पठनाय गच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy goes for study.
+        hi: बालक पढ़ने के लिए जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठनाय
+        gloss:
+          en: for study
+          hi: पढ़ने के लिए
+        check:
+          type: subanta
+          stem: पठन
+          linga: Napumsaka
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठनाय
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: for study
+        hi: पढ़ने के लिए
+      check:
+        type: subanta
+        stem: पठन
+        linga: Napumsaka
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पठन}} · neuter · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{पठन}} · {{नपुंसकलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: i3
+      sa: गच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The fourth case also gives the purpose, the thing something is for: {{पठनाय गच्छति}} (he goes for study), {{भोजनाय
+          आगच्छति}} (he comes for a meal). It answers “for what?”.'
+        hi: 'चतुर्थी उद्देश्य भी बताती है, जिसके लिए कोई काम होता है: {{पठनाय गच्छति}} (वह पढ़ने के लिए जाता है), {{भोजनाय
+          आगच्छति}} (वह भोजन के लिए आता है)। यह ‘किसलिए?’ का उत्तर देती है।'
+    - id: i6
+      sa: बालकः पठनाय गच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy goes for study.
+        hi: बालक पढ़ने के लिए जाता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठनाय
+        gloss:
+          en: for study
+          hi: पढ़ने के लिए
+        check:
+          type: subanta
+          stem: पठन
+          linga: Napumsaka
+          vibhakti: Caturthi
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: sum
   kind: summary
   title:

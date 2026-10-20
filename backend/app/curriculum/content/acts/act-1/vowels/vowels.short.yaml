@@ -1,199 +1,591 @@
-# Scene 1 of the reference unit. Shape: two story cards, then one idea per
-# teach card, each followed at once by something to do; a gate puzzle that
-# moves the story; a Pāṇini card for those who want depth; the summary last.
 id: vowels.short
 template: scene
-title: {en: "The smoke that could not speak", hi: "वह धुआँ जो बोल नहीं सकता था"}
-title_sa: "ह्रस्वाः स्वराः"
+title:
+  en: The smoke that could not speak
+  hi: वह धुआँ जो बोल नहीं सकता था
+title_sa: ह्रस्वाः स्वराः
 minutes: 6
-teaches: [script.vowel.short]
+teaches:
+- script.vowel.short
 review: scholar_ok
 sources:
-  - title: "Śiva sūtras and Aṣṭādhyāyī sūtra text (vidyut-prakriya data)"
-    url: "https://github.com/ambuda-org/vidyut"
-    licence: "MIT"
-  - title: "Lesson text and story"
-    licence: "original"
+- title: Śiva sūtras and Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
+  url: https://github.com/ambuda-org/vidyut
+  licence: MIT
+- title: Lesson text and story
+  licence: original
 cards:
-  - id: s1
-    kind: story
-    title: {en: "Smoke from the lamp", hi: "दीपक का धुआँ"}
-    image:
-      id: vowels-short-smoke
-      text_in_image: ["अ इ उ", "ऋ ऌ", "ए ओ", "ऐ औ"]
-      brief: "Evening in the temple library. On the low reading desk the half-burnt palm leaf glows gold. Smoke from a brass oil lamp curls upward and gathers into Dhūmaka, a small round smoke-grey ghost with big kind eyes, pointing at the leaf. You (seen from behind) and Dādī lean in; Śuka on your shoulder puffs his feathers in surprise."
-      alt: {en: "A small smoky ghost rising from a lamp points at a glowing leaf while a grandmother, a young person and a parrot watch", hi: "दीपक से उठता नन्हा धुएँ-सा भूत चमकते पत्र की ओर इशारा करता है; दादी, एक युवा और तोता देख रहे हैं"}
-      ratio: "4:3"
-      cast: [you, dadi, shuka, dhumaka]
-      place: granthalaya
-    narration:
-      en: "That evening, smoke from the brass lamp curls into a shape: a small ghost with big, kind eyes. He opens his mouth, but no sound comes. He points at the glowing leaf. Dādī smiles. “He missed Guṇāḍhya's reading long ago. He is waiting to hear this leaf read aloud.”"
-      hi: "उस शाम पीतल के दीपक का धुआँ एक आकार में सिमट जाता है: बड़ी-बड़ी, दयालु आँखों वाला एक नन्हा भूत। वह मुँह खोलता है, पर कोई ध्वनि नहीं निकलती। वह चमकते पत्र की ओर इशारा करता है। दादी मुस्कुराती हैं, “यह बहुत पहले गुणाढ्य का पाठ सुनने से चूक गया था। अब यह इस पत्र को ज़ोर से पढ़ा जाता सुनना चाहता है।”"
-    lines:
-      - speaker: dadi
-        sa: "पश्य! धूमकः।"
-        gloss: {en: "“Look! Dhūmaka, the little smoke.”", hi: "“देखो! धूमक, नन्हा धुआँ।”"}
-
-  - id: s2
-    kind: story
-    title: {en: "The first line", hi: "पहली पंक्ति"}
-    image:
-      id: vowels-short-line
-      brief: "Close-up of the half-burnt palm leaf on the reading desk in warm lamplight. Along its top runs one line of glowing Devanagari in four groups, each followed by a small charred gap: अ इ उ, then ऋ ऌ, then ए ओ, then ऐ औ. Dhūmaka's small smoky hand points at the first group."
-      alt: {en: "A palm leaf with one glowing line of letters in four groups, each followed by a burnt gap", hi: "एक ताड़पत्र जिस पर अक्षरों की एक चमकती पंक्ति चार समूहों में है, हर समूह के बाद जला हुआ खाली स्थान"}
-      text_in_image: ["अ इ उ", "ऋ ऌ", "ए ओ", "ऐ औ"]
-      ratio: "4:3"
-      cast: [dhumaka]
-      place: granthalaya
-    narration:
-      en: "Dādī holds the lamp close to the leaf. “The first line has four groups of letters. See the burnt gap after each group? The fire took one letter from each. What is left are vowels: sounds you can hold with your mouth open.”"
-      hi: "दादी दीपक को पत्र के पास लाती हैं। “पहली पंक्ति में अक्षरों के चार समूह हैं। हर समूह के बाद जला हुआ खाली स्थान देखा? आग ने हर समूह से एक अक्षर ले लिया। जो बचे हैं वे स्वर हैं: ऐसी ध्वनियाँ जिन्हें मुँह खोलकर देर तक बोला जा सकता है।”"
-
-  - id: t1
-    kind: teach
-    title: {en: "A vowel stands on its own", hi: "स्वर अपने आप बोला जाता है"}
-    skills: [script.vowel.short]
-    sutras: [SS.1]
-    term:
-      sa: "स्वरः"
-      meaning: {en: "a vowel: a sound you can hold", hi: "स्वर: ऐसी ध्वनि जिसे देर तक बोला जा सके"}
-    body:
-      en: "A vowel, {{स्वरः}}, is a sound you can hold with your mouth open. Sanskrit gives each vowel its own letter. The leaf's first group holds three of them, all short: say each one quickly, in one beat."
-      hi: "स्वर ({{स्वरः}}) वह ध्वनि है जिसे मुँह खोलकर देर तक बोला जा सकता है। संस्कृत में हर स्वर का अपना अक्षर है। पत्र के पहले समूह में ऐसे तीन स्वर हैं, तीनों ह्रस्व: हर एक को जल्दी, एक मात्रा में बोलिए।"
-    rows:
-      - sa: "अ"
-        gloss: {en: "a, like the u in “but”", hi: "अ, जैसे ‘अब’ में"}
-      - sa: "इ"
-        gloss: {en: "i, like the i in “sit”", hi: "इ, जैसे ‘इमली’ में"}
-      - sa: "उ"
-        gloss: {en: "u, like the u in “put”", hi: "उ, जैसे ‘उधर’ में"}
-    image:
-      id: vowels-short-aiu
-      brief: "Three large Devanagari letters अ, इ and उ painted in ochre ink on a cream palm leaf, spaced apart. Beside each letter a tiny drawing of a mouth shows how it is said: relaxed and open for अ, lips spread in a slight smile for इ, lips rounded for उ."
-      alt: {en: "The letters अ, इ and उ, each beside a small drawing of the mouth shape that says it", hi: "अ, इ और उ अक्षर, हर एक के पास उसे बोलने वाले मुँह का छोटा चित्र"}
-      text_in_image: ["अ", "इ", "उ"]
-      ratio: "4:3"
-
-  - id: e1
-    kind: explore
-    title: {en: "Where the sound is made", hi: "ध्वनि कहाँ बनती है"}
-    skills: [script.vowel.short]
-    widget: mouth_map
-    prompt: {en: "Tap each vowel and see where your mouth makes it. Say it softly as the place lights up.", hi: "हर स्वर को छूकर देखिए कि मुँह में वह कहाँ बनता है। स्थान चमके, तब धीरे से बोलिए।"}
-    params:
-      letters: ["अ", "इ", "उ"]
-
-  - id: p1
-    kind: practice
-    mode: choice
-    skills: [script.vowel.short]
-    roman: after
-    prompt: {en: "Which one sounds like the i in “sit”?", hi: "इनमें से कौन-सा स्वर तालु से बोला जाता है?"}
-    options:
-      - sa: "अ"
-        why: {en: "{{अ}} is a, the sound in “but”.", hi: "{{अ}} कण्ठ से बोला जाता है।"}
-      - sa: "इ"
-        correct: true
-      - sa: "उ"
-        why: {en: "{{उ}} is u, as in “put”.", hi: "{{उ}} होंठों से बोला जाता है।"}
-    explain: {en: "{{इ}} is short, made at the palate.", hi: "{{इ}} ह्रस्व स्वर है, जो तालु से बोला जाता है।"}
-
-  - id: t2
-    kind: teach
-    title: {en: "Two vowels made with r and l", hi: "र और ल वाले दो स्वर"}
-    skills: [script.vowel.short]
-    sutras: [SS.2]
-    body:
-      en: "The second group holds two unusual vowels. For {{ऋ}}, curl your tongue up toward the roof of your mouth, as if to say r, and let that sound carry the syllable, like the r in an American “bird”. Keep it one quick sound. {{ऌ}} does the same with l, at the teeth; it is very rare."
-      hi: "दूसरे समूह में दो अनोखे स्वर हैं। {{ऋ}} के लिए जीभ को मुँह की छत (मूर्धा) की ओर मोड़िए, मानो ‘र’ कहना हो, और वही ध्वनि पूरा अक्षर बन जाए। इसे एक छोटी ध्वनि रखिए। {{ऌ}} यही काम दाँतों के पास ‘ल’ के साथ करता है; यह बहुत दुर्लभ है।"
-    rows:
-      - sa: "ऋ"
-        gloss: {en: "ṛ, a vowel r", hi: "ऋ, स्वर के रूप में ‘र’"}
-      - sa: "ऌ"
-        gloss: {en: "ḷ, a vowel l (rare)", hi: "ऌ, स्वर के रूप में ‘ल’ (दुर्लभ)"}
-    examples:
-      - sa: "ऋषिः"
-        meaning: {en: "a sage; it begins with {{ऋ}}", hi: "ऋषि; आरम्भ में {{ऋ}}"}
-        check: {type: subanta, stem: "ऋषि", linga: Pum, vibhakti: Prathama, vacana: Eka}
-
-  - id: p2
-    kind: practice
-    mode: match
-    skills: [script.vowel.short]
-    roman: after
-    prompt: {en: "Match each vowel with the place where the mouth makes it.", hi: "हर स्वर को उसके उच्चारण-स्थान से मिलाइए।"}
-    pairs:
-      - left: {sa: "अ"}
-        right: {text: {en: "throat", hi: "कण्ठ (गला)"}}
-      - left: {sa: "इ"}
-        right: {text: {en: "palate", hi: "तालु"}}
-      - left: {sa: "उ"}
-        right: {text: {en: "lips", hi: "होंठ"}}
-      - left: {sa: "ऋ"}
-        right: {text: {en: "roof of the mouth", hi: "मूर्धा (मुँह की छत)"}}
-    explain: {en: "The vowels follow the mouth: {{अ}} at the throat, {{इ}} at the palate, {{ऋ}} at the roof, {{उ}} at the lips.", hi: "स्वर मुँह के क्रम पर चलते हैं: {{अ}} कण्ठ से, {{इ}} तालु से, {{ऋ}} मूर्धा से, {{उ}} होंठों से।"}
-
-  - id: e2
-    kind: explore
-    title: {en: "Spot the first letter", hi: "पहला अक्षर पहचानिए"}
-    skills: [script.vowel.short]
-    widget: mark_words
-    roman: after
-    prompt: {en: "Look only at the first letter of each word. Tap every word that begins with {{उ}}.", hi: "हर शब्द का केवल पहला अक्षर देखिए। जो शब्द {{उ}} से शुरू होते हैं, उन सबको छुइए।"}
-    params:
-      passage: ["अग्निः", "उषा", "इन्द्रः", "उदकम्", "ऋषिः", "इति"]
-      targets: ["उषा", "उदकम्"]
-
-  - id: p3
-    kind: practice
-    mode: order
-    title: {en: "Put the line back", hi: "पंक्ति को फिर से जोड़िए"}
-    skills: [script.vowel.short]
-    sutras: [SS.1, SS.2]
-    roman: after
-    gate: true
-    prompt: {en: "The fire scattered the first two groups. Put the five short vowels back in the leaf's order.", hi: "आग ने पहले दो समूह बिखेर दिए हैं। पाँचों ह्रस्व स्वरों को पत्र के क्रम में फिर से लगाइए।"}
-    tokens: ["अ", "इ", "उ", "ऋ", "ऌ"]
-    explain: {en: "The leaf follows the oldest order of Sanskrit sounds: {{अ}} {{इ}} {{उ}}, then {{ऋ}} {{ऌ}}. These are the first two of the fourteen sound-groups that open Pāṇini's grammar.", hi: "पत्र संस्कृत ध्वनियों के सबसे पुराने क्रम पर चलता है: {{अ}} {{इ}} {{उ}}, फिर {{ऋ}} {{ऌ}}। पाणिनि के व्याकरण के आरम्भ में जो चौदह ध्वनि-समूह हैं, ये उनके पहले दो समूह हैं।"}
-    story:
-      success: {en: "The first marks of the line flare gold. Dhūmaka bobs up and down, and a thin sound comes from him: “अ… इ… उ…”", hi: "पंक्ति के पहले अक्षर सुनहरे चमक उठते हैं। धूमक ऊपर-नीचे उछलता है, और उसमें से एक पतली-सी ध्वनि निकलती है: “अ… इ… उ…”"}
-      failure: {en: "The marks flicker and go dark. Dhūmaka waits, patient as smoke. Look again at the order.", hi: "अक्षर टिमटिमाकर बुझ जाते हैं। धूमक धुएँ जैसे धैर्य से प्रतीक्षा करता है। क्रम फिर से देखिए।"}
-
-  - id: p4
-    kind: practice
-    mode: choice
-    skills: [script.vowel.short]
-    roman: after
-    prompt: {en: "Which of these is not one of the five short vowels?", hi: "इनमें से कौन-सा पाँच ह्रस्व स्वरों में नहीं है?"}
-    options:
-      - sa: "इ"
-      - sa: "ऋ"
-      - sa: "ए"
-        correct: true
-      - sa: "उ"
-    explain: {en: "{{ए}} is a vowel too, but not a short one. It waits in the leaf's third group.", hi: "{{ए}} भी स्वर है, पर ह्रस्व नहीं। वह पत्र के तीसरे समूह में है।"}
-
-  - id: pn
-    kind: teach
-    depth: panini
-    title: {en: "Pāṇini measures a vowel", hi: "पाणिनि स्वर को मापते हैं"}
-    skills: [script.vowel.short]
-    sutras: [1.2.27]
-    term:
-      sa: "ह्रस्वः"
-      meaning: {en: "short: lasting one beat", hi: "ह्रस्व: एक मात्रा का"}
-    body:
-      en: "Pāṇini names vowels by how long they last. In sūtra 1.2.27 a vowel lasting as long as {{उ}} is {{ह्रस्वः}}, short; as long as {{ऊ}}, {{दीर्घः}}, long; held for three beats, {{प्लुतः}}. All five vowels of the leaf's first two groups are {{ह्रस्वः}}."
-      hi: "पाणिनि स्वरों का नाम उनकी अवधि से रखते हैं। सूत्र 1.2.27 के अनुसार जो स्वर {{उ}} जितना समय ले वह {{ह्रस्वः}} है, जो {{ऊ}} जितना ले वह {{दीर्घः}}, और जो तीन मात्रा तक खिंचे वह {{प्लुतः}}। पत्र के पहले दो समूहों के पाँचों स्वर {{ह्रस्वः}} हैं।"
-
-  - id: sum
-    kind: summary
-    title: {en: "The short vowels", hi: "ह्रस्व स्वर"}
-    points:
-      - sa: "अ इ उ ऋ ऌ"
-        text: {en: "The five short vowels: one beat each.", hi: "पाँच ह्रस्व स्वर: हर एक की एक मात्रा।"}
-      - sa: "ऋ"
-        text: {en: "A vowel r: one quick sound, never written {{रि}}.", hi: "स्वर ऋ: एक छोटी ध्वनि; इसे {{रि}} मत लिखिए।"}
-      - sa: "ऌ"
-        text: {en: "A vowel l: very rare.", hi: "स्वर ऌ: बहुत दुर्लभ।"}
-      - text: {en: "The leaf's first groups: {{अ}} {{इ}} {{उ}}, then {{ऋ}} {{ऌ}}.", hi: "पत्र के पहले समूह: {{अ}} {{इ}} {{उ}}, फिर {{ऋ}} {{ऌ}}।"}
+- id: s1
+  kind: story
+  title:
+    en: Smoke from the lamp
+    hi: दीपक का धुआँ
+  image:
+    id: vowels-short-smoke
+    text_in_image:
+    - अ इ उ
+    - ऋ ऌ
+    - ए ओ
+    - ऐ औ
+    brief: Evening in the temple library. On the low reading desk the half-burnt palm leaf glows gold. Smoke from a brass
+      oil lamp curls upward and gathers into Dhūmaka, a small round smoke-grey ghost with big kind eyes, pointing at the leaf.
+      You (seen from behind) and Dādī lean in; Śuka on your shoulder puffs his feathers in surprise.
+    alt:
+      en: A small smoky ghost rising from a lamp points at a glowing leaf while a grandmother, a young person and a parrot
+        watch
+      hi: दीपक से उठता नन्हा धुएँ-सा भूत चमकते पत्र की ओर इशारा करता है; दादी, एक युवा और तोता देख रहे हैं
+    ratio: '4:3'
+    cast:
+    - you
+    - dadi
+    - shuka
+    - dhumaka
+    place: granthalaya
+  narration:
+    en: 'That evening, smoke from the brass lamp curls into a shape: a small ghost with big, kind eyes. He opens his mouth,
+      but no sound comes. He points at the glowing leaf. Dādī smiles. “He missed Guṇāḍhya''s reading long ago. He is waiting
+      to hear this leaf read aloud.”'
+    hi: 'उस शाम पीतल के दीपक का धुआँ एक आकार में सिमट जाता है: बड़ी-बड़ी, दयालु आँखों वाला एक नन्हा भूत। वह मुँह खोलता है,
+      पर कोई ध्वनि नहीं निकलती। वह चमकते पत्र की ओर इशारा करता है। दादी मुस्कुराती हैं, “यह बहुत पहले गुणाढ्य का पाठ सुनने
+      से चूक गया था। अब यह इस पत्र को ज़ोर से पढ़ा जाता सुनना चाहता है।”'
+  lines:
+  - speaker: dadi
+    sa: पश्य! धूमकः।
+    gloss:
+      en: “Look! Dhūmaka, the little smoke.”
+      hi: “देखो! धूमक, नन्हा धुआँ।”
+- id: s2
+  kind: story
+  title:
+    en: The first line
+    hi: पहली पंक्ति
+  image:
+    id: vowels-short-line
+    brief: 'Close-up of the half-burnt palm leaf on the reading desk in warm lamplight. Along its top runs one line of glowing
+      Devanagari in four groups, each followed by a small charred gap: अ इ उ, then ऋ ऌ, then ए ओ, then ऐ औ. Dhūmaka''s small
+      smoky hand points at the first group.'
+    alt:
+      en: A palm leaf with one glowing line of letters in four groups, each followed by a burnt gap
+      hi: एक ताड़पत्र जिस पर अक्षरों की एक चमकती पंक्ति चार समूहों में है, हर समूह के बाद जला हुआ खाली स्थान
+    text_in_image:
+    - अ इ उ
+    - ऋ ऌ
+    - ए ओ
+    - ऐ औ
+    ratio: '4:3'
+    cast:
+    - dhumaka
+    place: granthalaya
+  narration:
+    en: 'Dādī holds the lamp close to the leaf. “The first line has four groups of letters. See the burnt gap after each group?
+      The fire took one letter from each. What is left are vowels: sounds you can hold with your mouth open.”'
+    hi: 'दादी दीपक को पत्र के पास लाती हैं। “पहली पंक्ति में अक्षरों के चार समूह हैं। हर समूह के बाद जला हुआ खाली स्थान देखा?
+      आग ने हर समूह से एक अक्षर ले लिया। जो बचे हैं वे स्वर हैं: ऐसी ध्वनियाँ जिन्हें मुँह खोलकर देर तक बोला जा सकता है।”'
+- id: t1
+  kind: teach
+  title:
+    en: A vowel stands on its own
+    hi: स्वर अपने आप बोला जाता है
+  skills:
+  - script.vowel.short
+  sutras:
+  - SS.1
+  term:
+    sa: स्वरः
+    meaning:
+      en: 'a vowel: a sound you can hold'
+      hi: 'स्वर: ऐसी ध्वनि जिसे देर तक बोला जा सके'
+  body:
+    en: 'A vowel, {{स्वरः}}, is a sound you can hold with your mouth open. Sanskrit gives each vowel its own letter. The leaf''s
+      first group holds three of them, all short: say each one quickly, in one beat.'
+    hi: 'स्वर ({{स्वरः}}) वह ध्वनि है जिसे मुँह खोलकर देर तक बोला जा सकता है। संस्कृत में हर स्वर का अपना अक्षर है। पत्र के
+      पहले समूह में ऐसे तीन स्वर हैं, तीनों ह्रस्व: हर एक को जल्दी, एक मात्रा में बोलिए।'
+  rows:
+  - sa: अ
+    gloss:
+      en: a, like the u in “but”
+      hi: अ, जैसे ‘अब’ में
+  - sa: इ
+    gloss:
+      en: i, like the i in “sit”
+      hi: इ, जैसे ‘इमली’ में
+  - sa: उ
+    gloss:
+      en: u, like the u in “put”
+      hi: उ, जैसे ‘उधर’ में
+  image:
+    id: vowels-short-aiu
+    brief: 'Three large Devanagari letters अ, इ and उ painted in ochre ink on a cream palm leaf, spaced apart. Beside each
+      letter a tiny drawing of a mouth shows how it is said: relaxed and open for अ, lips spread in a slight smile for इ,
+      lips rounded for उ.'
+    alt:
+      en: The letters अ, इ and उ, each beside a small drawing of the mouth shape that says it
+      hi: अ, इ और उ अक्षर, हर एक के पास उसे बोलने वाले मुँह का छोटा चित्र
+    text_in_image:
+    - अ
+    - इ
+    - उ
+    ratio: '4:3'
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: 'A vowel, {{स्वरः}}, is a sound you can hold with your mouth open. Sanskrit gives each vowel its own letter. The
+        leaf''s first group holds three of them, all short: say each one quickly, in one beat.'
+      hi: 'स्वर ({{स्वरः}}) वह ध्वनि है जिसे मुँह खोलकर देर तक बोला जा सकता है। संस्कृत में हर स्वर का अपना अक्षर है। पत्र
+        के पहले समूह में ऐसे तीन स्वर हैं, तीनों ह्रस्व: हर एक को जल्दी, एक मात्रा में बोलिए।'
+    items:
+    - id: i0
+      sa: अ
+      meaning:
+        en: a, like the u in “but”
+        hi: अ, जैसे ‘अब’ में
+    - id: i1
+      sa: इ
+      meaning:
+        en: i, like the i in “sit”
+        hi: इ, जैसे ‘इमली’ में
+    - id: i2
+      sa: उ
+      meaning:
+        en: u, like the u in “put”
+        hi: उ, जैसे ‘उधर’ में
+- id: e1
+  kind: explore
+  title:
+    en: Where the sound is made
+    hi: ध्वनि कहाँ बनती है
+  skills:
+  - script.vowel.short
+  widget: mouth_map
+  prompt:
+    en: Tap each vowel and see where your mouth makes it. Say it softly as the place lights up.
+    hi: हर स्वर को छूकर देखिए कि मुँह में वह कहाँ बनता है। स्थान चमके, तब धीरे से बोलिए।
+  params:
+    letters:
+    - अ
+    - इ
+    - उ
+- id: p1
+  kind: practice
+  mode: choice
+  skills:
+  - script.vowel.short
+  roman: after
+  prompt:
+    en: Which one sounds like the i in “sit”?
+    hi: इनमें से कौन-सा स्वर तालु से बोला जाता है?
+  options:
+  - sa: अ
+    why:
+      en: '{{अ}} is a, the sound in “but”.'
+      hi: '{{अ}} कण्ठ से बोला जाता है।'
+  - sa: इ
+    correct: true
+  - sa: उ
+    why:
+      en: '{{उ}} is u, as in “put”.'
+      hi: '{{उ}} होंठों से बोला जाता है।'
+  explain:
+    en: '{{इ}} is short, made at the palate.'
+    hi: '{{इ}} ह्रस्व स्वर है, जो तालु से बोला जाता है।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A vowel, {{स्वरः}}, is a sound you can hold with your mouth open. Sanskrit gives each vowel its own letter. The
+        leaf''s first group holds three of them, all short: say each one quickly, in one beat.'
+      hi: 'स्वर ({{स्वरः}}) वह ध्वनि है जिसे मुँह खोलकर देर तक बोला जा सकता है। संस्कृत में हर स्वर का अपना अक्षर है। पत्र
+        के पहले समूह में ऐसे तीन स्वर हैं, तीनों ह्रस्व: हर एक को जल्दी, एक मात्रा में बोलिए।'
+    items:
+    - id: i0
+      sa: अ
+      meaning:
+        en: a, like the u in “but”
+        hi: अ, जैसे ‘अब’ में
+    - id: i1
+      sa: इ
+      meaning:
+        en: i, like the i in “sit”
+        hi: इ, जैसे ‘इमली’ में
+    - id: i2
+      sa: उ
+      meaning:
+        en: u, like the u in “put”
+        hi: उ, जैसे ‘उधर’ में
+- id: t2
+  kind: teach
+  title:
+    en: Two vowels made with r and l
+    hi: र और ल वाले दो स्वर
+  skills:
+  - script.vowel.short
+  sutras:
+  - SS.2
+  body:
+    en: The second group holds two unusual vowels. For {{ऋ}}, curl your tongue up toward the roof of your mouth, as if to
+      say r, and let that sound carry the syllable, like the r in an American “bird”. Keep it one quick sound. {{ऌ}} does
+      the same with l, at the teeth; it is very rare.
+    hi: दूसरे समूह में दो अनोखे स्वर हैं। {{ऋ}} के लिए जीभ को मुँह की छत (मूर्धा) की ओर मोड़िए, मानो ‘र’ कहना हो, और वही ध्वनि
+      पूरा अक्षर बन जाए। इसे एक छोटी ध्वनि रखिए। {{ऌ}} यही काम दाँतों के पास ‘ल’ के साथ करता है; यह बहुत दुर्लभ है।
+  rows:
+  - sa: ऋ
+    gloss:
+      en: ṛ, a vowel r
+      hi: ऋ, स्वर के रूप में ‘र’
+  - sa: ऌ
+    gloss:
+      en: ḷ, a vowel l (rare)
+      hi: ऌ, स्वर के रूप में ‘ल’ (दुर्लभ)
+  examples:
+  - sa: ऋषिः
+    meaning:
+      en: a sage; it begins with {{ऋ}}
+      hi: ऋषि; आरम्भ में {{ऋ}}
+    check:
+      type: subanta
+      stem: ऋषि
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: The second group holds two unusual vowels. For {{ऋ}}, curl your tongue up toward the roof of your mouth, as if to
+        say r, and let that sound carry the syllable, like the r in an American “bird”. Keep it one quick sound. {{ऌ}} does
+        the same with l, at the teeth; it is very rare.
+      hi: दूसरे समूह में दो अनोखे स्वर हैं। {{ऋ}} के लिए जीभ को मुँह की छत (मूर्धा) की ओर मोड़िए, मानो ‘र’ कहना हो, और वही
+        ध्वनि पूरा अक्षर बन जाए। इसे एक छोटी ध्वनि रखिए। {{ऌ}} यही काम दाँतों के पास ‘ल’ के साथ करता है; यह बहुत दुर्लभ है।
+    items:
+    - id: i0
+      sa: ऋ
+      meaning:
+        en: ṛ, a vowel r
+        hi: ऋ, स्वर के रूप में ‘र’
+    - id: i1
+      sa: ऌ
+      meaning:
+        en: ḷ, a vowel l (rare)
+        hi: ऌ, स्वर के रूप में ‘ल’ (दुर्लभ)
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: ऋषिः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a sage; it begins with {{ऋ}}
+        hi: ऋषि; आरम्भ में {{ऋ}}
+      check:
+        type: subanta
+        stem: ऋषि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{ऋषि}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{ऋषि}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: The second group holds two unusual vowels. For {{ऋ}}, curl your tongue up toward the roof of your mouth, as if
+          to say r, and let that sound carry the syllable, like the r in an American “bird”. Keep it one quick sound. {{ऌ}}
+          does the same with l, at the teeth; it is very rare.
+        hi: दूसरे समूह में दो अनोखे स्वर हैं। {{ऋ}} के लिए जीभ को मुँह की छत (मूर्धा) की ओर मोड़िए, मानो ‘र’ कहना हो, और वही
+          ध्वनि पूरा अक्षर बन जाए। इसे एक छोटी ध्वनि रखिए। {{ऌ}} यही काम दाँतों के पास ‘ल’ के साथ करता है; यह बहुत दुर्लभ
+          है।
+    - id: i3
+      sa: ऋषिः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a sage; it begins with {{ऋ}}
+        hi: ऋषि; आरम्भ में {{ऋ}}
+      check:
+        type: subanta
+        stem: ऋषि
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{ऋषि}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{ऋषि}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+- id: p2
+  kind: practice
+  mode: match
+  skills:
+  - script.vowel.short
+  roman: after
+  prompt:
+    en: Match each vowel with the place where the mouth makes it.
+    hi: हर स्वर को उसके उच्चारण-स्थान से मिलाइए।
+  pairs:
+  - left:
+      sa: अ
+    right:
+      text:
+        en: throat
+        hi: कण्ठ (गला)
+  - left:
+      sa: इ
+    right:
+      text:
+        en: palate
+        hi: तालु
+  - left:
+      sa: उ
+    right:
+      text:
+        en: lips
+        hi: होंठ
+  - left:
+      sa: ऋ
+    right:
+      text:
+        en: roof of the mouth
+        hi: मूर्धा (मुँह की छत)
+  explain:
+    en: 'The vowels follow the mouth: {{अ}} at the throat, {{इ}} at the palate, {{ऋ}} at the roof, {{उ}} at the lips.'
+    hi: 'स्वर मुँह के क्रम पर चलते हैं: {{अ}} कण्ठ से, {{इ}} तालु से, {{ऋ}} मूर्धा से, {{उ}} होंठों से।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A vowel, {{स्वरः}}, is a sound you can hold with your mouth open. Sanskrit gives each vowel its own letter. The
+        leaf''s first group holds three of them, all short: say each one quickly, in one beat.'
+      hi: 'स्वर ({{स्वरः}}) वह ध्वनि है जिसे मुँह खोलकर देर तक बोला जा सकता है। संस्कृत में हर स्वर का अपना अक्षर है। पत्र
+        के पहले समूह में ऐसे तीन स्वर हैं, तीनों ह्रस्व: हर एक को जल्दी, एक मात्रा में बोलिए।'
+    items:
+    - id: i0
+      sa: अ
+      meaning:
+        en: a, like the u in “but”
+        hi: अ, जैसे ‘अब’ में
+    - id: i1
+      sa: इ
+      meaning:
+        en: i, like the i in “sit”
+        hi: इ, जैसे ‘इमली’ में
+    - id: i2
+      sa: उ
+      meaning:
+        en: u, like the u in “put”
+        hi: उ, जैसे ‘उधर’ में
+- id: e2
+  kind: explore
+  title:
+    en: Spot the first letter
+    hi: पहला अक्षर पहचानिए
+  skills:
+  - script.vowel.short
+  widget: mark_words
+  roman: after
+  prompt:
+    en: Look only at the first letter of each word. Tap every word that begins with {{उ}}.
+    hi: हर शब्द का केवल पहला अक्षर देखिए। जो शब्द {{उ}} से शुरू होते हैं, उन सबको छुइए।
+  params:
+    passage:
+    - अग्निः
+    - उषा
+    - इन्द्रः
+    - उदकम्
+    - ऋषिः
+    - इति
+    targets:
+    - उषा
+    - उदकम्
+- id: p3
+  kind: practice
+  mode: order
+  title:
+    en: Put the line back
+    hi: पंक्ति को फिर से जोड़िए
+  skills:
+  - script.vowel.short
+  sutras:
+  - SS.1
+  - SS.2
+  roman: after
+  gate: true
+  prompt:
+    en: The fire scattered the first two groups. Put the five short vowels back in the leaf's order.
+    hi: आग ने पहले दो समूह बिखेर दिए हैं। पाँचों ह्रस्व स्वरों को पत्र के क्रम में फिर से लगाइए।
+  tokens:
+  - अ
+  - इ
+  - उ
+  - ऋ
+  - ऌ
+  explain:
+    en: 'The leaf follows the oldest order of Sanskrit sounds: {{अ}} {{इ}} {{उ}}, then {{ऋ}} {{ऌ}}. These are the first two
+      of the fourteen sound-groups that open Pāṇini''s grammar.'
+    hi: 'पत्र संस्कृत ध्वनियों के सबसे पुराने क्रम पर चलता है: {{अ}} {{इ}} {{उ}}, फिर {{ऋ}} {{ऌ}}। पाणिनि के व्याकरण के आरम्भ
+      में जो चौदह ध्वनि-समूह हैं, ये उनके पहले दो समूह हैं।'
+  story:
+    success:
+      en: 'The first marks of the line flare gold. Dhūmaka bobs up and down, and a thin sound comes from him: “अ… इ… उ…”'
+      hi: 'पंक्ति के पहले अक्षर सुनहरे चमक उठते हैं। धूमक ऊपर-नीचे उछलता है, और उसमें से एक पतली-सी ध्वनि निकलती है: “अ… इ…
+        उ…”'
+    failure:
+      en: The marks flicker and go dark. Dhūmaka waits, patient as smoke. Look again at the order.
+      hi: अक्षर टिमटिमाकर बुझ जाते हैं। धूमक धुएँ जैसे धैर्य से प्रतीक्षा करता है। क्रम फिर से देखिए।
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A vowel, {{स्वरः}}, is a sound you can hold with your mouth open. Sanskrit gives each vowel its own letter. The
+        leaf''s first group holds three of them, all short: say each one quickly, in one beat.'
+      hi: 'स्वर ({{स्वरः}}) वह ध्वनि है जिसे मुँह खोलकर देर तक बोला जा सकता है। संस्कृत में हर स्वर का अपना अक्षर है। पत्र
+        के पहले समूह में ऐसे तीन स्वर हैं, तीनों ह्रस्व: हर एक को जल्दी, एक मात्रा में बोलिए।'
+    items:
+    - id: i0
+      sa: अ
+      meaning:
+        en: a, like the u in “but”
+        hi: अ, जैसे ‘अब’ में
+    - id: i1
+      sa: इ
+      meaning:
+        en: i, like the i in “sit”
+        hi: इ, जैसे ‘इमली’ में
+    - id: i2
+      sa: उ
+      meaning:
+        en: u, like the u in “put”
+        hi: उ, जैसे ‘उधर’ में
+- id: p4
+  kind: practice
+  mode: choice
+  skills:
+  - script.vowel.short
+  roman: after
+  prompt:
+    en: Which of these is not one of the five short vowels?
+    hi: इनमें से कौन-सा पाँच ह्रस्व स्वरों में नहीं है?
+  options:
+  - sa: इ
+  - sa: ऋ
+  - sa: ए
+    correct: true
+  - sa: उ
+  explain:
+    en: '{{ए}} is a vowel too, but not a short one. It waits in the leaf''s third group.'
+    hi: '{{ए}} भी स्वर है, पर ह्रस्व नहीं। वह पत्र के तीसरे समूह में है।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A vowel, {{स्वरः}}, is a sound you can hold with your mouth open. Sanskrit gives each vowel its own letter. The
+        leaf''s first group holds three of them, all short: say each one quickly, in one beat.'
+      hi: 'स्वर ({{स्वरः}}) वह ध्वनि है जिसे मुँह खोलकर देर तक बोला जा सकता है। संस्कृत में हर स्वर का अपना अक्षर है। पत्र
+        के पहले समूह में ऐसे तीन स्वर हैं, तीनों ह्रस्व: हर एक को जल्दी, एक मात्रा में बोलिए।'
+    items:
+    - id: i0
+      sa: अ
+      meaning:
+        en: a, like the u in “but”
+        hi: अ, जैसे ‘अब’ में
+    - id: i1
+      sa: इ
+      meaning:
+        en: i, like the i in “sit”
+        hi: इ, जैसे ‘इमली’ में
+    - id: i2
+      sa: उ
+      meaning:
+        en: u, like the u in “put”
+        hi: उ, जैसे ‘उधर’ में
+- id: pn
+  kind: teach
+  depth: panini
+  title:
+    en: Pāṇini measures a vowel
+    hi: पाणिनि स्वर को मापते हैं
+  skills:
+  - script.vowel.short
+  sutras:
+  - 1.2.27
+  term:
+    sa: ह्रस्वः
+    meaning:
+      en: 'short: lasting one beat'
+      hi: 'ह्रस्व: एक मात्रा का'
+  body:
+    en: Pāṇini names vowels by how long they last. In sūtra 1.2.27 a vowel lasting as long as {{उ}} is {{ह्रस्वः}}, short;
+      as long as {{ऊ}}, {{दीर्घः}}, long; held for three beats, {{प्लुतः}}. All five vowels of the leaf's first two groups
+      are {{ह्रस्वः}}.
+    hi: पाणिनि स्वरों का नाम उनकी अवधि से रखते हैं। सूत्र 1.2.27 के अनुसार जो स्वर {{उ}} जितना समय ले वह {{ह्रस्वः}} है, जो
+      {{ऊ}} जितना ले वह {{दीर्घः}}, और जो तीन मात्रा तक खिंचे वह {{प्लुतः}}। पत्र के पहले दो समूहों के पाँचों स्वर {{ह्रस्वः}}
+      हैं।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Pāṇini names vowels by how long they last. In sūtra 1.2.27 a vowel lasting as long as {{उ}} is {{ह्रस्वः}}, short;
+        as long as {{ऊ}}, {{दीर्घः}}, long; held for three beats, {{प्लुतः}}. All five vowels of the leaf's first two groups
+        are {{ह्रस्वः}}.
+      hi: पाणिनि स्वरों का नाम उनकी अवधि से रखते हैं। सूत्र 1.2.27 के अनुसार जो स्वर {{उ}} जितना समय ले वह {{ह्रस्वः}} है,
+        जो {{ऊ}} जितना ले वह {{दीर्घः}}, और जो तीन मात्रा तक खिंचे वह {{प्लुतः}}। पत्र के पहले दो समूहों के पाँचों स्वर {{ह्रस्वः}}
+        हैं।
+    items:
+    - id: i0
+      sa: उ
+    - id: i1
+      sa: ह्रस्वः
+    - id: i2
+      sa: ऊ
+    - id: i3
+      sa: दीर्घः
+    - id: i4
+      sa: प्लुतः
+- id: sum
+  kind: summary
+  title:
+    en: The short vowels
+    hi: ह्रस्व स्वर
+  points:
+  - sa: अ इ उ ऋ ऌ
+    text:
+      en: 'The five short vowels: one beat each.'
+      hi: 'पाँच ह्रस्व स्वर: हर एक की एक मात्रा।'
+  - sa: ऋ
+    text:
+      en: 'A vowel r: one quick sound, never written {{रि}}.'
+      hi: 'स्वर ऋ: एक छोटी ध्वनि; इसे {{रि}} मत लिखिए।'
+  - sa: ऌ
+    text:
+      en: 'A vowel l: very rare.'
+      hi: 'स्वर ऌ: बहुत दुर्लभ।'
+  - text:
+      en: 'The leaf''s first groups: {{अ}} {{इ}} {{उ}}, then {{ऋ}} {{ऌ}}.'
+      hi: 'पत्र के पहले समूह: {{अ}} {{इ}} {{उ}}, फिर {{ऋ}} {{ऌ}}।'

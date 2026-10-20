@@ -24,7 +24,8 @@ cards:
     hi: घाट पर सब लोग
   depth: core
   image:
-    brief: 'The ghat steps full of morning life: a boy reading, a girl singing, a boatman resting beside his boat, a heron in the shallows; the small grey-blue spirit sweeping his arm over the scene while Dādī asks a question.'
+    brief: 'The ghat steps full of morning life: a boy reading, a girl singing, a boatman resting beside his boat, a heron
+      in the shallows; the small grey-blue spirit sweeping his arm over the scene while Dādī asks a question.'
     alt:
       en: A busy ghat with a reading boy, a singing girl, a boatman and a heron
       hi: 'व्यस्त घाट: पढ़ता बालक, गाती बालिका, नाविक और बगुला'
@@ -37,8 +38,10 @@ cards:
     ratio: '4:3'
     id: who-doer-s1
   narration:
-    en: 'The small spirit sweeps his arm over the steps. A boy reads, a girl sings, the boatman rests, a heron stands in the shallows. “Who is doing what?” Dādī asks. “First, name the doers: the ones who do.”'
-    hi: 'नन्हा भूत सीढ़ियों पर हाथ फेरता है। एक बालक पढ़ता है, एक बालिका गाती है, नाविक विश्राम करता है, एक बगुला उथले पानी में खड़ा है। दादी पूछती हैं, “कौन क्या कर रहा है? पहले कर्ताओं के नाम बताओ: जो करते हैं।”'
+    en: 'The small spirit sweeps his arm over the steps. A boy reads, a girl sings, the boatman rests, a heron stands in the
+      shallows. “Who is doing what?” Dādī asks. “First, name the doers: the ones who do.”'
+    hi: 'नन्हा भूत सीढ़ियों पर हाथ फेरता है। एक बालक पढ़ता है, एक बालिका गाती है, नाविक विश्राम करता है, एक बगुला उथले पानी
+      में खड़ा है। दादी पूछती हैं, “कौन क्या कर रहा है? पहले कर्ताओं के नाम बताओ: जो करते हैं।”'
 - id: t1
   kind: teach
   title:
@@ -51,7 +54,8 @@ cards:
   - 2.3.46
   - 1.4.54
   body:
-    en: The one who does is the doer, {{कर्ता}}. In a sentence it stands in the first case, {{प्रथमा}}. The dictionary gives the stem {{बालक}}; the sentence needs {{बालकः}}.
+    en: The one who does is the doer, {{कर्ता}}. In a sentence it stands in the first case, {{प्रथमा}}. The dictionary gives
+      the stem {{बालक}}; the sentence needs {{बालकः}}.
     hi: जो करता है वह कर्ता है। वाक्य में वह प्रथमा विभक्ति में खड़ा होता है। कोश मूल {{बालक}} देता है; वाक्य को चाहिए {{बालकः}}।
   examples:
   - sa: बालकः
@@ -89,6 +93,154 @@ cards:
     meaning:
       en: 'the first case: the doer'
       hi: 'पहली विभक्ति: कर्ता'
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: the boy (doer)
+        hi: बालक (कर्ता)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: The one who does is the doer, {{कर्ता}}. In a sentence it stands in the first case, {{प्रथमा}}. The dictionary
+          gives the stem {{बालक}}; the sentence needs {{बालकः}}.
+        hi: जो करता है वह कर्ता है। वाक्य में वह प्रथमा विभक्ति में खड़ा होता है। कोश मूल {{बालक}} देता है; वाक्य को चाहिए
+          {{बालकः}}।
+    - id: i3
+      sa: बालकः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: the boy (doer)
+        hi: बालक (कर्ता)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालिका
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: the girl (doer)
+        hi: बालिका (कर्ता)
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: The one who does is the doer, {{कर्ता}}. In a sentence it stands in the first case, {{प्रथमा}}. The dictionary
+          gives the stem {{बालक}}; the sentence needs {{बालकः}}.
+        hi: जो करता है वह कर्ता है। वाक्य में वह प्रथमा विभक्ति में खड़ा होता है। कोश मूल {{बालक}} देता है; वाक्य को चाहिए
+          {{बालकः}}।
+    - id: i3
+      sa: बालिका
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: the girl (doer)
+        hi: बालिका (कर्ता)
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: नाविकः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: the boatman (doer)
+        hi: नाविक (कर्ता)
+      check:
+        type: subanta
+        stem: नाविक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: The one who does is the doer, {{कर्ता}}. In a sentence it stands in the first case, {{प्रथमा}}. The dictionary
+          gives the stem {{बालक}}; the sentence needs {{बालकः}}.
+        hi: जो करता है वह कर्ता है। वाक्य में वह प्रथमा विभक्ति में खड़ा होता है। कोश मूल {{बालक}} देता है; वाक्य को चाहिए
+          {{बालकः}}।
+    - id: i3
+      sa: नाविकः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: the boatman (doer)
+        hi: नाविक (कर्ता)
+      check:
+        type: subanta
+        stem: नाविक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नाविक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नाविक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: tb1
   kind: table
   title:
@@ -184,6 +336,56 @@ cards:
   - correct: true
     sa: बालकः
   - sa: बालकौ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: the boy (doer)
+        hi: बालक (कर्ता)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: The one who does is the doer, {{कर्ता}}. In a sentence it stands in the first case, {{प्रथमा}}. The dictionary
+          gives the stem {{बालक}}; the sentence needs {{बालकः}}.
+        hi: जो करता है वह कर्ता है। वाक्य में वह प्रथमा विभक्ति में खड़ा होता है। कोश मूल {{बालक}} देता है; वाक्य को चाहिए
+          {{बालकः}}।
+    - id: i3
+      sa: बालकः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: the boy (doer)
+        hi: बालक (कर्ता)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p2
   kind: practice
   depth: core
@@ -214,6 +416,56 @@ cards:
       sa: नदी
     right:
       sa: नदी
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: the boy (doer)
+        hi: बालक (कर्ता)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: The one who does is the doer, {{कर्ता}}. In a sentence it stands in the first case, {{प्रथमा}}. The dictionary
+          gives the stem {{बालक}}; the sentence needs {{बालकः}}.
+        hi: जो करता है वह कर्ता है। वाक्य में वह प्रथमा विभक्ति में खड़ा होता है। कोश मूल {{बालक}} देता है; वाक्य को चाहिए
+          {{बालकः}}।
+    - id: i3
+      sa: बालकः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: the boy (doer)
+        hi: बालक (कर्ता)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: e1
   kind: explore
   depth: core
@@ -255,8 +507,10 @@ cards:
   gate: true
   story:
     success:
-      en: “बकः!” The little spirit points, delighted. The heron lifts one leg and a faint ripple of light runs up the spirit's arm.
-      hi: “बकः!” नन्हा भूत ख़ुशी से इशारा करता है। बगुला एक पैर उठाता है और भूत की बाँह पर प्रकाश की एक हल्की लहर दौड़ जाती है।
+      en: “बकः!” The little spirit points, delighted. The heron lifts one leg and a faint ripple of light runs up the spirit's
+        arm.
+      hi: “बकः!” नन्हा भूत ख़ुशी से इशारा करता है। बगुला एक पैर उठाता है और भूत की बाँह पर प्रकाश की एक हल्की लहर दौड़ जाती
+        है।
     failure:
       en: The heron does not move. Look for the doer's ending {{ः}}.
       hi: बगुला नहीं हिलता। कर्ता का प्रत्यय {{ः}} खोजिए।
@@ -265,6 +519,56 @@ cards:
     sa: बकः
   - sa: बकम्
   - sa: बक
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: the boy (doer)
+        hi: बालक (कर्ता)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: The one who does is the doer, {{कर्ता}}. In a sentence it stands in the first case, {{प्रथमा}}. The dictionary
+          gives the stem {{बालक}}; the sentence needs {{बालकः}}.
+        hi: जो करता है वह कर्ता है। वाक्य में वह प्रथमा विभक्ति में खड़ा होता है। कोश मूल {{बालक}} देता है; वाक्य को चाहिए
+          {{बालकः}}।
+    - id: i3
+      sa: बालकः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: the boy (doer)
+        hi: बालक (कर्ता)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: pn
   kind: teach
   title:
@@ -277,13 +581,29 @@ cards:
   - 1.4.54
   - 2.3.46
   body:
-    en: 'Sūtra 1.4.54, {{स्वतन्त्रः कर्ता}}, calls the doer “the independent one”: the one who is free to act. Sūtra 2.3.46 says the first case shows the bare meaning of the word.'
-    hi: 'सूत्र 1.4.54, {{स्वतन्त्रः कर्ता}}, कर्ता को ‘स्वतन्त्र’ कहता है: जो करने में स्वतन्त्र हो। सूत्र 2.3.46 कहता है कि प्रथमा शब्द का केवल अर्थ बताती है।'
+    en: 'Sūtra 1.4.54, {{स्वतन्त्रः कर्ता}}, calls the doer “the independent one”: the one who is free to act. Sūtra 2.3.46
+      says the first case shows the bare meaning of the word.'
+    hi: 'सूत्र 1.4.54, {{स्वतन्त्रः कर्ता}}, कर्ता को ‘स्वतन्त्र’ कहता है: जो करने में स्वतन्त्र हो। सूत्र 2.3.46 कहता है
+      कि प्रथमा शब्द का केवल अर्थ बताती है।'
   term:
     sa: कर्ता
     meaning:
       en: the independent doer
       hi: स्वतन्त्र करने वाला
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Sūtra 1.4.54, {{स्वतन्त्रः कर्ता}}, calls the doer “the independent one”: the one who is free to act. Sūtra 2.3.46
+        says the first case shows the bare meaning of the word.'
+      hi: 'सूत्र 1.4.54, {{स्वतन्त्रः कर्ता}}, कर्ता को ‘स्वतन्त्र’ कहता है: जो करने में स्वतन्त्र हो। सूत्र 2.3.46 कहता है
+        कि प्रथमा शब्द का केवल अर्थ बताती है।'
+    items:
+    - id: i0
+      sa: स्वतन्त्रः कर्ता
 - id: sum
   kind: summary
   title:

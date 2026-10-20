@@ -39,7 +39,8 @@ cards:
     taught_in: vis.s#tb1
   - skill: sandhi.visarga-r
     rule:
-      en: '-इः, -उः + vowel/soft = र्: {{कविरस्ति}}; -अः, -आः + other vowel: breath vanishes: {{राम इह}}; {{सः}} + consonant: {{स गच्छति}}.'
+      en: '-इः, -उः + vowel/soft = र्: {{कविरस्ति}}; -अः, -आः + other vowel: breath vanishes: {{राम इह}}; {{सः}} + consonant:
+        {{स गच्छति}}.'
       hi: '-इः, -उः + स्वर/कोमल = र्: {{कविरस्ति}}; -अः, -आः + अन्य स्वर: श्वास लुप्त: {{राम इह}}; {{सः}} + व्यंजन: {{स गच्छति}}।'
     sutras:
     - 8.2.66
@@ -58,7 +59,8 @@ cards:
   rows:
   - skill: sandhi.visarga-o
     rule:
-      en: 'Look at the vowel before the breath: {{अः}} gives {{ओ}}; {{इः}}/{{उः}} give {{र्}}; {{आः}} before a vowel just drops it.'
+      en: 'Look at the vowel before the breath: {{अः}} gives {{ओ}}; {{इः}}/{{उः}} give {{र्}}; {{आः}} before a vowel just
+        drops it.'
       hi: 'श्वास से पहले का स्वर देखिए: {{अः}} से {{ओ}}; {{इः}}/{{उः}} से {{र्}}; {{आः}} स्वर से पहले उसे गिरा देता है।'
     tag: good
     taught_in: vis.o#t1
@@ -96,6 +98,70 @@ cards:
           hi: फिर
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: पुनः पुनः।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Again and again.
+          hi: बार-बार।
+        words:
+        - sa: पुनः
+          gloss:
+            en: again
+            hi: फिर
+        - sa: पुनः
+          gloss:
+            en: again
+            hi: फिर
+      - id: i1
+        sa: पुनः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: again
+          hi: फिर
+      - id: i2
+        sa: पुनः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: again
+          hi: फिर
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A few words keep the breath: {{पुनः पुनः}}, {{प्रातः}} before a hard consonant.'
+          hi: 'कुछ शब्द श्वास रखते हैं: कठोर व्यंजन से पहले {{पुनः पुनः}}, {{प्रातः}}।'
+      - id: i5
+        sa: पुनः पुनः।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Again and again.
+          hi: बार-बार।
+        words:
+        - sa: पुनः
+          gloss:
+            en: again
+            hi: फिर
+        - sa: पुनः
+          gloss:
+            en: again
+            hi: फिर
   - skill: sandhi.visarga-r
     rule:
       en: In the Veda, {{र्}} may appear where classical Sanskrit has the breath; follow the classical rules.
@@ -116,6 +182,70 @@ cards:
           hi: है
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: हरिः अस्ति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Hari is.
+          hi: हरि है।
+        words:
+        - sa: हरिः
+          gloss:
+            en: Hari
+            hi: हरि
+        - sa: अस्ति
+          gloss:
+            en: is
+            hi: है
+      - id: i1
+        sa: हरिः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: Hari
+          hi: हरि
+      - id: i2
+        sa: अस्ति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: is
+          hi: है
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: In the Veda, {{र्}} may appear where classical Sanskrit has the breath; follow the classical rules.
+          hi: वेद में जहाँ लौकिक संस्कृत में श्वास है, वहाँ {{र्}} आ सकता है; लौकिक नियम मानिए।
+      - id: i5
+        sa: हरिः अस्ति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Hari is.
+          hi: हरि है।
+        words:
+        - sa: हरिः
+          gloss:
+            en: Hari
+            hi: हरि
+        - sa: अस्ति
+          gloss:
+            en: is
+            hi: है
 - id: mistakes
   kind: revision
   title:

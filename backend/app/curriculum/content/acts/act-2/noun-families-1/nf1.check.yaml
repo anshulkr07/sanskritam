@@ -30,6 +30,22 @@ cards:
       linga: Pum
       blanks: 3
     seed: 6
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands
+        of masculine words ending in -{{अ}}. Learn it once.'
+      hi: '{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों
+        पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।'
+    items:
+    - id: i0
+      sa: देव
+    - id: i1
+      sa: अ
 - id: p2
   kind: practice
   depth: core
@@ -48,6 +64,22 @@ cards:
   - sa: वृक्षाभ्याम्
   - correct: true
     sa: वृक्षैः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands
+        of masculine words ending in -{{अ}}. Learn it once.'
+      hi: '{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों
+        पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।'
+    items:
+    - id: i0
+      sa: देव
+    - id: i1
+      sa: अ
 - id: p3
   kind: practice
   depth: core
@@ -68,6 +100,28 @@ cards:
       linga: Napumsaka
       blanks: 3
     seed: 7
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A neuter word in -{{अ}} is like {{देव}} except where the doer and object come in: in the first, second and call
+        cases, singular {{फलम्}}, dual {{फले}}, plural {{फलानि}}. All the other cells are the same as {{देव}}.'
+      hi: '-{{अ}} वाला नपुंसक शब्द {{देव}} जैसा ही है, सिवाय कर्ता और कर्म वाली जगहों के: प्रथमा, द्वितीया और सम्बोधन में
+        एकवचन {{फलम्}}, द्विवचन {{फले}}, बहुवचन {{फलानि}}। बाक़ी सब खाने {{देव}} जैसे हैं।'
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: देव
+    - id: i2
+      sa: फलम्
+    - id: i3
+      sa: फले
+    - id: i4
+      sa: फलानि
 - id: p4
   kind: practice
   depth: core
@@ -86,6 +140,28 @@ cards:
   - sa: फलम्
   - correct: true
     sa: फलानि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A neuter word in -{{अ}} is like {{देव}} except where the doer and object come in: in the first, second and call
+        cases, singular {{फलम्}}, dual {{फले}}, plural {{फलानि}}. All the other cells are the same as {{देव}}.'
+      hi: '-{{अ}} वाला नपुंसक शब्द {{देव}} जैसा ही है, सिवाय कर्ता और कर्म वाली जगहों के: प्रथमा, द्वितीया और सम्बोधन में
+        एकवचन {{फलम्}}, द्विवचन {{फले}}, बहुवचन {{फलानि}}। बाक़ी सब खाने {{देव}} जैसे हैं।'
+    items:
+    - id: i0
+      sa: अ
+    - id: i1
+      sa: देव
+    - id: i2
+      sa: फलम्
+    - id: i3
+      sa: फले
+    - id: i4
+      sa: फलानि
 - id: p5
   kind: practice
   depth: core
@@ -106,6 +182,34 @@ cards:
       linga: Stri
       blanks: 3
     seed: 8
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A feminine word in -{{आ}} has its own pattern: {{लता}} (first), {{लताम्}} (object), {{लतया}} (by), {{लतायै}} (to),
+        {{लतायाः}} (from, of), {{लतायाम्}} (in), {{हे लते}} (call). The long {{आ}} runs through almost everything.'
+      hi: '-{{आ}} वाले स्त्रीलिंग शब्द का अपना ढाँचा है: {{लता}} (प्रथमा), {{लताम्}} (कर्म), {{लतया}} (से), {{लतायै}} (को),
+        {{लतायाः}} (से, का), {{लतायाम्}} (में), {{हे लते}} (पुकार)। दीर्घ {{आ}} लगभग सब जगह चलता है।'
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: लता
+    - id: i2
+      sa: लताम्
+    - id: i3
+      sa: लतया
+    - id: i4
+      sa: लतायै
+    - id: i5
+      sa: लतायाः
+    - id: i6
+      sa: लतायाम्
+    - id: i7
+      sa: हे लते
 - id: p6
   kind: practice
   depth: core
@@ -124,6 +228,34 @@ cards:
   - sa: बालिकाम्
   - correct: true
     sa: बालिके
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A feminine word in -{{आ}} has its own pattern: {{लता}} (first), {{लताम्}} (object), {{लतया}} (by), {{लतायै}} (to),
+        {{लतायाः}} (from, of), {{लतायाम्}} (in), {{हे लते}} (call). The long {{आ}} runs through almost everything.'
+      hi: '-{{आ}} वाले स्त्रीलिंग शब्द का अपना ढाँचा है: {{लता}} (प्रथमा), {{लताम्}} (कर्म), {{लतया}} (से), {{लतायै}} (को),
+        {{लतायाः}} (से, का), {{लतायाम्}} (में), {{हे लते}} (पुकार)। दीर्घ {{आ}} लगभग सब जगह चलता है।'
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: लता
+    - id: i2
+      sa: लताम्
+    - id: i3
+      sa: लतया
+    - id: i4
+      sa: लतायै
+    - id: i5
+      sa: लतायाः
+    - id: i6
+      sa: लतायाम्
+    - id: i7
+      sa: हे लते
 - id: p7
   kind: practice
   depth: core
@@ -164,6 +296,22 @@ cards:
       text:
         en: 3rd plural
         hi: तृतीया बहुवचन
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands
+        of masculine words ending in -{{अ}}. Learn it once.'
+      hi: '{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों
+        पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।'
+    items:
+    - id: i0
+      sa: देव
+    - id: i1
+      sa: अ
 - id: p8
   kind: practice
   depth: core
@@ -180,8 +328,12 @@ cards:
   gate: true
   story:
     success:
-      en: '“देवः, देवौ, देवाः.” The tree of names bursts into leaf, every tag a green leaf, every leaf a name. Vṛkṣaka bows his crown of branches, and out of the rustling comes a clear voice: “देवः, देवौ, देवाः।” He tilts toward the shelves, where a trio of figures stands at the far end of the aisle: “कविः गुरुः पिता च सन्ति।”'
-      hi: '“देवः, देवौ, देवाः।” नामों का पेड़ पत्तों से भर उठता है, हर टैग हरा पत्ता, हर पत्ता एक नाम। वृक्षक अपनी शाखाओं का मुकुट झुकाता है, और सरसराहट से एक साफ़ आवाज़ आती है: “देवः, देवौ, देवाः।” वह अलमारियों की ओर झुकता है, जहाँ गलियारे के दूर छोर पर तीन आकृतियाँ खड़ी हैं: “कविः गुरुः पिता च सन्ति।”'
+      en: '“देवः, देवौ, देवाः.” The tree of names bursts into leaf, every tag a green leaf, every leaf a name. Vṛkṣaka bows
+        his crown of branches, and out of the rustling comes a clear voice: “देवः, देवौ, देवाः।” He tilts toward the shelves,
+        where a trio of figures stands at the far end of the aisle: “कविः गुरुः पिता च सन्ति।”'
+      hi: '“देवः, देवौ, देवाः।” नामों का पेड़ पत्तों से भर उठता है, हर टैग हरा पत्ता, हर पत्ता एक नाम। वृक्षक अपनी शाखाओं
+        का मुकुट झुकाता है, और सरसराहट से एक साफ़ आवाज़ आती है: “देवः, देवौ, देवाः।” वह अलमारियों की ओर झुकता है, जहाँ गलियारे
+        के दूर छोर पर तीन आकृतियाँ खड़ी हैं: “कविः गुरुः पिता च सन्ति।”'
     failure:
       en: The tree waits. The same word, in three numbers.
       hi: पेड़ प्रतीक्षा करता है। वही शब्द, तीन वचनों में।
@@ -189,3 +341,19 @@ cards:
   - देवः
   - देवौ
   - देवाः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands
+        of masculine words ending in -{{अ}}. Learn it once.'
+      hi: '{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों
+        पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।'
+    items:
+    - id: i0
+      sa: देव
+    - id: i1
+      sa: अ

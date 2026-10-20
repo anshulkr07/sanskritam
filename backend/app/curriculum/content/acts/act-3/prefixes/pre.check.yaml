@@ -28,6 +28,159 @@ cards:
   - correct: true
     sa: निर्गच्छति
   - sa: उपगच्छति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः गृहम् आगच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy comes home.
+        hi: बालक घर आता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: आगच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: comes
+        hi: आता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A prefix is a short word set in front of a verb root, and it changes the meaning: {{गच्छति}} (he goes) becomes
+          {{आगच्छति}} (he comes), {{निर्गच्छति}} (he goes out), {{उपगच्छति}} (he approaches). The prefix stays in front; the
+          ending is the same. These prefixes are called {{उपसर्गाः}}.'
+        hi: 'उपसर्ग धातु के आगे रखा छोटा शब्द है, और वह अर्थ बदल देता है: {{गच्छति}} (वह जाता है) से {{आगच्छति}} (वह आता है),
+          {{निर्गच्छति}} (वह बाहर जाता है), {{उपगच्छति}} (वह पास जाता है)। उपसर्ग आगे रहता है; प्रत्यय वही रहता है। इन्हें
+          {{उपसर्गाः}} कहते हैं।'
+    - id: i6
+      sa: बालकः गृहम् आगच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy comes home.
+        hi: बालक घर आता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
 - id: p2
   kind: practice
   depth: core
@@ -46,6 +199,159 @@ cards:
   - correct: true
     sa: अवगच्छति
   - sa: अतिगच्छति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः गृहम् आगच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy comes home.
+        hi: बालक घर आता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: आगच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: comes
+        hi: आता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A prefix is a short word set in front of a verb root, and it changes the meaning: {{गच्छति}} (he goes) becomes
+          {{आगच्छति}} (he comes), {{निर्गच्छति}} (he goes out), {{उपगच्छति}} (he approaches). The prefix stays in front; the
+          ending is the same. These prefixes are called {{उपसर्गाः}}.'
+        hi: 'उपसर्ग धातु के आगे रखा छोटा शब्द है, और वह अर्थ बदल देता है: {{गच्छति}} (वह जाता है) से {{आगच्छति}} (वह आता है),
+          {{निर्गच्छति}} (वह बाहर जाता है), {{उपगच्छति}} (वह पास जाता है)। उपसर्ग आगे रहता है; प्रत्यय वही रहता है। इन्हें
+          {{उपसर्गाः}} कहते हैं।'
+    - id: i6
+      sa: बालकः गृहम् आगच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy comes home.
+        hi: बालक घर आता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
 - id: p3
   kind: practice
   depth: core
@@ -84,6 +390,64 @@ cards:
       text:
         en: around
         hi: चारों ओर
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'There are twenty-two prefixes: {{प्र}}, {{परा}}, {{अप}}, {{सम्}}, {{अनु}}, {{अव}}, {{निस्}}, {{निर्}}, {{दुस्}},
+        {{दुर्}}, {{वि}}, {{आ}}, {{नि}}, {{अधि}}, {{अपि}}, {{अति}}, {{सु}}, {{उत्}}, {{अभि}}, {{प्रति}}, {{परि}}, {{उप}}.
+        Each carries a direction or a shade.'
+      hi: 'उपसर्ग बाईस हैं: {{प्र}}, {{परा}}, {{अप}}, {{सम्}}, {{अनु}}, {{अव}}, {{निस्}}, {{निर्}}, {{दुस्}}, {{दुर्}}, {{वि}},
+        {{आ}}, {{नि}}, {{अधि}}, {{अपि}}, {{अति}}, {{सु}}, {{उत्}}, {{अभि}}, {{प्रति}}, {{परि}}, {{उप}}। हर एक एक दिशा या रंग
+        लाता है।'
+    items:
+    - id: i0
+      sa: प्र
+    - id: i1
+      sa: परा
+    - id: i2
+      sa: अप
+    - id: i3
+      sa: सम्
+    - id: i4
+      sa: अनु
+    - id: i5
+      sa: अव
+    - id: i6
+      sa: निस्
+    - id: i7
+      sa: निर्
+    - id: i8
+      sa: दुस्
+    - id: i9
+      sa: दुर्
+    - id: i10
+      sa: वि
+    - id: i11
+      sa: आ
+    - id: i12
+      sa: नि
+    - id: i13
+      sa: अधि
+    - id: i14
+      sa: अपि
+    - id: i15
+      sa: अति
+    - id: i16
+      sa: सु
+    - id: i17
+      sa: उत्
+    - id: i18
+      sa: अभि
+    - id: i19
+      sa: प्रति
+    - id: i20
+      sa: परि
+    - id: i21
+      sa: उप
 - id: p4
   kind: practice
   depth: core
@@ -102,6 +466,64 @@ cards:
   - correct: true
     sa: पराभवति
   - sa: सम्भवति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'There are twenty-two prefixes: {{प्र}}, {{परा}}, {{अप}}, {{सम्}}, {{अनु}}, {{अव}}, {{निस्}}, {{निर्}}, {{दुस्}},
+        {{दुर्}}, {{वि}}, {{आ}}, {{नि}}, {{अधि}}, {{अपि}}, {{अति}}, {{सु}}, {{उत्}}, {{अभि}}, {{प्रति}}, {{परि}}, {{उप}}.
+        Each carries a direction or a shade.'
+      hi: 'उपसर्ग बाईस हैं: {{प्र}}, {{परा}}, {{अप}}, {{सम्}}, {{अनु}}, {{अव}}, {{निस्}}, {{निर्}}, {{दुस्}}, {{दुर्}}, {{वि}},
+        {{आ}}, {{नि}}, {{अधि}}, {{अपि}}, {{अति}}, {{सु}}, {{उत्}}, {{अभि}}, {{प्रति}}, {{परि}}, {{उप}}। हर एक एक दिशा या रंग
+        लाता है।'
+    items:
+    - id: i0
+      sa: प्र
+    - id: i1
+      sa: परा
+    - id: i2
+      sa: अप
+    - id: i3
+      sa: सम्
+    - id: i4
+      sa: अनु
+    - id: i5
+      sa: अव
+    - id: i6
+      sa: निस्
+    - id: i7
+      sa: निर्
+    - id: i8
+      sa: दुस्
+    - id: i9
+      sa: दुर्
+    - id: i10
+      sa: वि
+    - id: i11
+      sa: आ
+    - id: i12
+      sa: नि
+    - id: i13
+      sa: अधि
+    - id: i14
+      sa: अपि
+    - id: i15
+      sa: अति
+    - id: i16
+      sa: सु
+    - id: i17
+      sa: उत्
+    - id: i18
+      sa: अभि
+    - id: i19
+      sa: प्रति
+    - id: i20
+      sa: परि
+    - id: i21
+      sa: उप
 - id: p5
   kind: practice
   depth: core
@@ -121,6 +543,159 @@ cards:
   - sa: आहरति
   - correct: true
     sa: परिहरति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः गृहम् आगच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy comes home.
+        hi: बालक घर आता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: आगच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: comes
+        hi: आता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A prefix is a short word set in front of a verb root, and it changes the meaning: {{गच्छति}} (he goes) becomes
+          {{आगच्छति}} (he comes), {{निर्गच्छति}} (he goes out), {{उपगच्छति}} (he approaches). The prefix stays in front; the
+          ending is the same. These prefixes are called {{उपसर्गाः}}.'
+        hi: 'उपसर्ग धातु के आगे रखा छोटा शब्द है, और वह अर्थ बदल देता है: {{गच्छति}} (वह जाता है) से {{आगच्छति}} (वह आता है),
+          {{निर्गच्छति}} (वह बाहर जाता है), {{उपगच्छति}} (वह पास जाता है)। उपसर्ग आगे रहता है; प्रत्यय वही रहता है। इन्हें
+          {{उपसर्गाः}} कहते हैं।'
+    - id: i6
+      sa: बालकः गृहम् आगच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy comes home.
+        hi: बालक घर आता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
 - id: p6
   kind: practice
   depth: core
@@ -138,6 +713,159 @@ cards:
   - आगच्छति
   - निर्गच्छति
   - उपगच्छति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः गृहम् आगच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy comes home.
+        hi: बालक घर आता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: आगच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: comes
+        hi: आता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A prefix is a short word set in front of a verb root, and it changes the meaning: {{गच्छति}} (he goes) becomes
+          {{आगच्छति}} (he comes), {{निर्गच्छति}} (he goes out), {{उपगच्छति}} (he approaches). The prefix stays in front; the
+          ending is the same. These prefixes are called {{उपसर्गाः}}.'
+        hi: 'उपसर्ग धातु के आगे रखा छोटा शब्द है, और वह अर्थ बदल देता है: {{गच्छति}} (वह जाता है) से {{आगच्छति}} (वह आता है),
+          {{निर्गच्छति}} (वह बाहर जाता है), {{उपगच्छति}} (वह पास जाता है)। उपसर्ग आगे रहता है; प्रत्यय वही रहता है। इन्हें
+          {{उपसर्गाः}} कहते हैं।'
+    - id: i6
+      sa: बालकः गृहम् आगच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy comes home.
+        hi: बालक घर आता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
 - id: p7
   kind: practice
   depth: core
@@ -154,8 +882,14 @@ cards:
   gate: true
   story:
     success:
-      en: '“पठ्यते,” you say, to see what will happen. Yojaka''s beads all stop clicking at once. He leans very close and whispers: “That is not one of mine. That is a different kind of change. I hear it from the Vetāla and from the old ones.” He bows. “आगच्छति, निर्गच्छति, उपगच्छति. Take them, they are yours.” He gives you a bead. Then he clicks his string closed and calls into the dark: “पठ्यते! पाठयति!” and something answers from deep in the trees.'
-      hi: '“पठ्यते,” आप कहते हैं, यह देखने कि क्या होता है। योजक के सारे मनके एक साथ खटखटाना बन्द कर देते हैं। वह बहुत पास झुककर फुसफुसाता है: “यह मेरा नहीं है। यह किसी और तरह का परिवर्तन है। मैंने इसे वेताल और पुराने भूतों से सुना है।” वह झुकता है। “आगच्छति, निर्गच्छति, उपगच्छति। लो, ये आपके हैं।” वह आपको एक मनका देता है। फिर वह अपनी माला बन्द करता है और अँधेरे में पुकारता है: “पठ्यते! पाठयति!” और पेड़ों के गहरे से कुछ उत्तर देता है।'
+      en: '“पठ्यते,” you say, to see what will happen. Yojaka''s beads all stop clicking at once. He leans very close and
+        whispers: “That is not one of mine. That is a different kind of change. I hear it from the Vetāla and from the old
+        ones.” He bows. “आगच्छति, निर्गच्छति, उपगच्छति. Take them, they are yours.” He gives you a bead. Then he clicks his
+        string closed and calls into the dark: “पठ्यते! पाठयति!” and something answers from deep in the trees.'
+      hi: '“पठ्यते,” आप कहते हैं, यह देखने कि क्या होता है। योजक के सारे मनके एक साथ खटखटाना बन्द कर देते हैं। वह बहुत पास
+        झुककर फुसफुसाता है: “यह मेरा नहीं है। यह किसी और तरह का परिवर्तन है। मैंने इसे वेताल और पुराने भूतों से सुना है।”
+        वह झुकता है। “आगच्छति, निर्गच्छति, उपगच्छति। लो, ये आपके हैं।” वह आपको एक मनका देता है। फिर वह अपनी माला बन्द करता
+        है और अँधेरे में पुकारता है: “पठ्यते! पाठयति!” और पेड़ों के गहरे से कुछ उत्तर देता है।'
     failure:
       en: 'The beads keep waiting. {{पठ्यते}}: “it is read”.'
       hi: 'मनके प्रतीक्षा करते रहते हैं। {{पठ्यते}}: ‘वह पढ़ा जाता है’।'
@@ -164,3 +898,156 @@ cards:
   - sa: निर्गच्छति
   - correct: true
     sa: पठ्यते
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः गृहम् आगच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy comes home.
+        hi: बालक घर आता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: आगच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: comes
+        hi: आता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A prefix is a short word set in front of a verb root, and it changes the meaning: {{गच्छति}} (he goes) becomes
+          {{आगच्छति}} (he comes), {{निर्गच्छति}} (he goes out), {{उपगच्छति}} (he approaches). The prefix stays in front; the
+          ending is the same. These prefixes are called {{उपसर्गाः}}.'
+        hi: 'उपसर्ग धातु के आगे रखा छोटा शब्द है, और वह अर्थ बदल देता है: {{गच्छति}} (वह जाता है) से {{आगच्छति}} (वह आता है),
+          {{निर्गच्छति}} (वह बाहर जाता है), {{उपगच्छति}} (वह पास जाता है)। उपसर्ग आगे रहता है; प्रत्यय वही रहता है। इन्हें
+          {{उपसर्गाः}} कहते हैं।'
+    - id: i6
+      sa: बालकः गृहम् आगच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy comes home.
+        hi: बालक घर आता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ

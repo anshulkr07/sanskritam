@@ -22,7 +22,9 @@ cards:
     hi: सबसे पुराने बोलते हैं
   depth: core
   image:
-    brief: 'The very edge of the old grove at night: four ancient grey spirits seated in a half-circle, faint and wise, like carved figures worn smooth by time; the Vetāla introducing them with an open hand; you, Dādī and Śuka standing respectfully in front.'
+    brief: 'The very edge of the old grove at night: four ancient grey spirits seated in a half-circle, faint and wise, like
+      carved figures worn smooth by time; the Vetāla introducing them with an open hand; you, Dādī and Śuka standing respectfully
+      in front.'
     alt:
       en: Four ancient grey spirits sit in a half-circle while the Vetāla introduces them
       hi: अर्धवृत्त में बैठे चार प्राचीन भूरे भूत, परिचय कराता वेताल
@@ -35,8 +37,12 @@ cards:
     ratio: '4:3'
     id: aor-four-s1
   narration:
-    en: At the very edge of the grove, the oldest spirits gather, whose speech has not been used in a thousand years. They speak in four rare forms, one for the far future, one for blessings, one for what would have happened, and one the Vedas keep. “You will not need them to speak,” says the Vetāla. “But a reader must know them when they pass.”
-    hi: 'वन के ठीक छोर पर सबसे पुराने भूत जुटते हैं, जिनकी भाषा हज़ार वर्ष से प्रयोग में नहीं आई। वे चार दुर्लभ रूपों में बोलते हैं: एक दूर के भविष्य के लिए, एक आशीर्वाद के लिए, एक उसके लिए जो होता, और एक जिसे वेद सँभालते हैं। “बोलने के लिए तुम्हें इनकी ज़रूरत नहीं होगी,” वेताल कहता है। “पर पढ़ने वाले को पहचानना आना चाहिए जब वे गुज़रें।”'
+    en: At the very edge of the grove, the oldest spirits gather, whose speech has not been used in a thousand years. They
+      speak in four rare forms, one for the far future, one for blessings, one for what would have happened, and one the Vedas
+      keep. “You will not need them to speak,” says the Vetāla. “But a reader must know them when they pass.”
+    hi: 'वन के ठीक छोर पर सबसे पुराने भूत जुटते हैं, जिनकी भाषा हज़ार वर्ष से प्रयोग में नहीं आई। वे चार दुर्लभ रूपों में
+      बोलते हैं: एक दूर के भविष्य के लिए, एक आशीर्वाद के लिए, एक उसके लिए जो होता, और एक जिसे वेद सँभालते हैं। “बोलने के लिए
+      तुम्हें इनकी ज़रूरत नहीं होगी,” वेताल कहता है। “पर पढ़ने वाले को पहचानना आना चाहिए जब वे गुज़रें।”'
 - id: t1
   kind: teach
   title:
@@ -46,13 +52,43 @@ cards:
   skills:
   - verb.rare-four
   body:
-    en: '{{लुट्}} is the far future, “not today”: {{भविता}}, {{कर्ता}}. {{आशीर्लिङ्}} is the blessing: {{भूयात्}}, “may he be”. {{लृङ्}} is “would have happened”: {{अभविष्यत्}}. And {{लेट्}} is found only in the Veda; you can skip it.'
-    hi: '{{लुट्}} दूर का भविष्य है, ‘आज नहीं’: {{भविता}}, {{कर्ता}}। {{आशीर्लिङ्}} आशीर्वाद है: {{भूयात्}}, ‘वह हो’। {{लृङ्}} का अर्थ ‘होता’ है: {{अभविष्यत्}}। और {{लेट्}} केवल वेद में मिलता है; उसे छोड़ सकते हैं।'
+    en: '{{लुट्}} is the far future, “not today”: {{भविता}}, {{कर्ता}}. {{आशीर्लिङ्}} is the blessing: {{भूयात्}}, “may he
+      be”. {{लृङ्}} is “would have happened”: {{अभविष्यत्}}. And {{लेट्}} is found only in the Veda; you can skip it.'
+    hi: '{{लुट्}} दूर का भविष्य है, ‘आज नहीं’: {{भविता}}, {{कर्ता}}। {{आशीर्लिङ्}} आशीर्वाद है: {{भूयात्}}, ‘वह हो’। {{लृङ्}}
+      का अर्थ ‘होता’ है: {{अभविष्यत्}}। और {{लेट्}} केवल वेद में मिलता है; उसे छोड़ सकते हैं।'
   term:
     sa: आशीर्लिङ्
     meaning:
       en: the blessing form
       hi: आशीर्वाद का रूप
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: '{{लुट्}} is the far future, “not today”: {{भविता}}, {{कर्ता}}. {{आशीर्लिङ्}} is the blessing: {{भूयात्}}, “may
+        he be”. {{लृङ्}} is “would have happened”: {{अभविष्यत्}}. And {{लेट्}} is found only in the Veda; you can skip it.'
+      hi: '{{लुट्}} दूर का भविष्य है, ‘आज नहीं’: {{भविता}}, {{कर्ता}}। {{आशीर्लिङ्}} आशीर्वाद है: {{भूयात्}}, ‘वह हो’। {{लृङ्}}
+        का अर्थ ‘होता’ है: {{अभविष्यत्}}। और {{लेट्}} केवल वेद में मिलता है; उसे छोड़ सकते हैं।'
+    items:
+    - id: i0
+      sa: लुट्
+    - id: i1
+      sa: भविता
+    - id: i2
+      sa: कर्ता
+    - id: i3
+      sa: आशीर्लिङ्
+    - id: i4
+      sa: भूयात्
+    - id: i5
+      sa: लृङ्
+    - id: i6
+      sa: अभविष्यत्
+    - id: i7
+      sa: लेट्
 - id: tb1
   kind: table
   title:
@@ -158,8 +194,10 @@ cards:
   skills:
   - verb.rare-four
   body:
-    en: '{{श्वः भविता}}: tomorrow, or later, he will be. {{चिरं जीव्यात्}}: may he live long. {{यदि पठेत् …}} uses {{लिङ्}}, while {{यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} says “had he read, he would have known”: both halves take {{लृङ्}}.'
-    hi: '{{श्वः भविता}}: कल या बाद में वह होगा। {{चिरं जीव्यात्}}: वह चिरंजीवी हो। {{यदि पठेत् …}} में {{लिङ्}} है, जबकि {{यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} कहता है ‘पढ़ता तो जान जाता’: दोनों भाग {{लृङ्}} लेते हैं।'
+    en: '{{श्वः भविता}}: tomorrow, or later, he will be. {{चिरं जीव्यात्}}: may he live long. {{यदि पठेत् …}} uses {{लिङ्}},
+      while {{यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} says “had he read, he would have known”: both halves take {{लृङ्}}.'
+    hi: '{{श्वः भविता}}: कल या बाद में वह होगा। {{चिरं जीव्यात्}}: वह चिरंजीवी हो। {{यदि पठेत् …}} में {{लिङ्}} है, जबकि {{यदि
+      सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} कहता है ‘पढ़ता तो जान जाता’: दोनों भाग {{लृङ्}} लेते हैं।'
   examples:
   - sa: श्वः सः गन्ता।
     meaning:
@@ -244,6 +282,366 @@ cards:
         lakara: Lrn
         purusha: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: श्वः सः गन्ता।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Tomorrow or later he will go.
+        hi: कल या बाद में वह जाएगा।
+      words:
+      - sa: श्वः
+        gloss:
+          en: tomorrow
+          hi: कल
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: गन्ता
+        gloss:
+          en: will go (far future)
+          hi: जाएगा (दूर का भविष्य)
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lut
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: श्वः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: tomorrow
+        hi: कल
+    - id: i2
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i3
+      sa: गन्ता
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: will go (far future)
+        hi: जाएगा (दूर का भविष्य)
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lut
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लुट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लुट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{श्वः भविता}}: tomorrow, or later, he will be. {{चिरं जीव्यात्}}: may he live long. {{यदि पठेत् …}} uses {{लिङ्}},
+          while {{यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} says “had he read, he would have known”: both halves take {{लृङ्}}.'
+        hi: '{{श्वः भविता}}: कल या बाद में वह होगा। {{चिरं जीव्यात्}}: वह चिरंजीवी हो। {{यदि पठेत् …}} में {{लिङ्}} है, जबकि
+          {{यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} कहता है ‘पढ़ता तो जान जाता’: दोनों भाग {{लृङ्}} लेते हैं।'
+    - id: i6
+      sa: श्वः सः गन्ता।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Tomorrow or later he will go.
+        hi: कल या बाद में वह जाएगा।
+      words:
+      - sa: श्वः
+        gloss:
+          en: tomorrow
+          hi: कल
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: गन्ता
+        gloss:
+          en: will go (far future)
+          hi: जाएगा (दूर का भविष्य)
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lut
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: चिरम् जीव्यात्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: May he live long.
+        hi: वह चिरकाल जिए।
+      words:
+      - sa: चिरम्
+        gloss:
+          en: long
+          hi: चिरकाल
+      - sa: जीव्यात्
+        gloss:
+          en: may he live
+          hi: जिए
+        check:
+          type: tinanta
+          dhatu: जीव्
+          lakara: AshirLin
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: चिरम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: long
+        hi: चिरकाल
+    - id: i2
+      sa: जीव्यात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: may he live
+        hi: जिए
+      check:
+        type: tinanta
+        dhatu: जीव्
+        lakara: AshirLin
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{जीव्}} · singular · {{आशीर्लिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{जीव्}} · {{एकवचन}} · {{आशीर्लिङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{श्वः भविता}}: tomorrow, or later, he will be. {{चिरं जीव्यात्}}: may he live long. {{यदि पठेत् …}} uses {{लिङ्}},
+          while {{यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} says “had he read, he would have known”: both halves take {{लृङ्}}.'
+        hi: '{{श्वः भविता}}: कल या बाद में वह होगा। {{चिरं जीव्यात्}}: वह चिरंजीवी हो। {{यदि पठेत् …}} में {{लिङ्}} है, जबकि
+          {{यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} कहता है ‘पढ़ता तो जान जाता’: दोनों भाग {{लृङ्}} लेते हैं।'
+    - id: i5
+      sa: चिरम् जीव्यात्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: May he live long.
+        hi: वह चिरकाल जिए।
+      words:
+      - sa: चिरम्
+        gloss:
+          en: long
+          hi: चिरकाल
+      - sa: जीव्यात्
+        gloss:
+          en: may he live
+          hi: जिए
+        check:
+          type: tinanta
+          dhatu: जीव्
+          lakara: AshirLin
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: If he had read, he would have known.
+        hi: अगर वह पढ़ता, तो जान जाता।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अपठिष्यत्
+        gloss:
+          en: had read
+          hi: पढ़ता
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lrn
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अज्ञास्यत्
+        gloss:
+          en: would have known
+          hi: जान जाता
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lrn
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यदि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: if
+        hi: यदि
+    - id: i2
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i3
+      sa: अपठिष्यत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: had read
+        hi: पढ़ता
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lrn
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लृङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लृङ्}} · प्रथमपुरुष'
+    - id: i4
+      sa: तर्हि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: then
+        hi: तो
+    - id: i5
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i6
+      sa: अज्ञास्यत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: would have known
+        hi: जान जाता
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lrn
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लृङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लृङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{श्वः भविता}}: tomorrow, or later, he will be. {{चिरं जीव्यात्}}: may he live long. {{यदि पठेत् …}} uses {{लिङ्}},
+          while {{यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} says “had he read, he would have known”: both halves take {{लृङ्}}.'
+        hi: '{{श्वः भविता}}: कल या बाद में वह होगा। {{चिरं जीव्यात्}}: वह चिरंजीवी हो। {{यदि पठेत् …}} में {{लिङ्}} है, जबकि
+          {{यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्}} कहता है ‘पढ़ता तो जान जाता’: दोनों भाग {{लृङ्}} लेते हैं।'
+    - id: i9
+      sa: यदि सः अपठिष्यत् तर्हि सः अज्ञास्यत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: If he had read, he would have known.
+        hi: अगर वह पढ़ता, तो जान जाता।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अपठिष्यत्
+        gloss:
+          en: had read
+          hi: पढ़ता
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lrn
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अज्ञास्यत्
+        gloss:
+          en: would have known
+          hi: जान जाता
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lrn
+          purusha: Prathama
+          vacana: Eka
 - id: p1
   kind: practice
   depth: core
@@ -262,6 +660,34 @@ cards:
   - sa: जीवतु
   - correct: true
     sa: जीव्यात्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{लुट्}} is the far future, “not today”: {{भविता}}, {{कर्ता}}. {{आशीर्लिङ्}} is the blessing: {{भूयात्}}, “may
+        he be”. {{लृङ्}} is “would have happened”: {{अभविष्यत्}}. And {{लेट्}} is found only in the Veda; you can skip it.'
+      hi: '{{लुट्}} दूर का भविष्य है, ‘आज नहीं’: {{भविता}}, {{कर्ता}}। {{आशीर्लिङ्}} आशीर्वाद है: {{भूयात्}}, ‘वह हो’। {{लृङ्}}
+        का अर्थ ‘होता’ है: {{अभविष्यत्}}। और {{लेट्}} केवल वेद में मिलता है; उसे छोड़ सकते हैं।'
+    items:
+    - id: i0
+      sa: लुट्
+    - id: i1
+      sa: भविता
+    - id: i2
+      sa: कर्ता
+    - id: i3
+      sa: आशीर्लिङ्
+    - id: i4
+      sa: भूयात्
+    - id: i5
+      sa: लृङ्
+    - id: i6
+      sa: अभविष्यत्
+    - id: i7
+      sa: लेट्
 - id: p2
   kind: practice
   depth: core
@@ -300,6 +726,34 @@ cards:
       text:
         en: the aorist
         hi: लुङ्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{लुट्}} is the far future, “not today”: {{भविता}}, {{कर्ता}}. {{आशीर्लिङ्}} is the blessing: {{भूयात्}}, “may
+        he be”. {{लृङ्}} is “would have happened”: {{अभविष्यत्}}. And {{लेट्}} is found only in the Veda; you can skip it.'
+      hi: '{{लुट्}} दूर का भविष्य है, ‘आज नहीं’: {{भविता}}, {{कर्ता}}। {{आशीर्लिङ्}} आशीर्वाद है: {{भूयात्}}, ‘वह हो’। {{लृङ्}}
+        का अर्थ ‘होता’ है: {{अभविष्यत्}}। और {{लेट्}} केवल वेद में मिलता है; उसे छोड़ सकते हैं।'
+    items:
+    - id: i0
+      sa: लुट्
+    - id: i1
+      sa: भविता
+    - id: i2
+      sa: कर्ता
+    - id: i3
+      sa: आशीर्लिङ्
+    - id: i4
+      sa: भूयात्
+    - id: i5
+      sa: लृङ्
+    - id: i6
+      sa: अभविष्यत्
+    - id: i7
+      sa: लेट्
 - id: e1
   kind: explore
   depth: core
@@ -341,6 +795,34 @@ cards:
   - अपठिष्यत्
   - तर्हि
   - अज्ञास्यत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{लुट्}} is the far future, “not today”: {{भविता}}, {{कर्ता}}. {{आशीर्लिङ्}} is the blessing: {{भूयात्}}, “may
+        he be”. {{लृङ्}} is “would have happened”: {{अभविष्यत्}}. And {{लेट्}} is found only in the Veda; you can skip it.'
+      hi: '{{लुट्}} दूर का भविष्य है, ‘आज नहीं’: {{भविता}}, {{कर्ता}}। {{आशीर्लिङ्}} आशीर्वाद है: {{भूयात्}}, ‘वह हो’। {{लृङ्}}
+        का अर्थ ‘होता’ है: {{अभविष्यत्}}। और {{लेट्}} केवल वेद में मिलता है; उसे छोड़ सकते हैं।'
+    items:
+    - id: i0
+      sa: लुट्
+    - id: i1
+      sa: भविता
+    - id: i2
+      sa: कर्ता
+    - id: i3
+      sa: आशीर्लिङ्
+    - id: i4
+      sa: भूयात्
+    - id: i5
+      sa: लृङ्
+    - id: i6
+      sa: अभविष्यत्
+    - id: i7
+      sa: लेट्
 - id: p4
   kind: practice
   title:
@@ -360,8 +842,12 @@ cards:
   gate: true
   story:
     success:
-      en: “अभविष्यत्,” you say. The four old spirits stir. The oldest, the faintest, lifts a hand like a leaf and lets it fall, and the whole grove sighs, once, as if a long story had at last been understood. “भूयात्,” whispers the Vetāla. “May you be.” “May you all be,” you say.
-      hi: “अभविष्यत्,” आप कहते हैं। चारों पुराने भूत हिलते हैं। सबसे पुराना, सबसे धुँधला, पत्ते जैसा हाथ उठाकर गिरा देता है, और पूरा वन एक बार साँस लेता है, मानो कोई लम्बी कथा अन्ततः समझ ली गई हो। “भूयात्,” वेताल फुसफुसाता है। “तुम हो।” “आप सब हों,” आप कहते हैं।
+      en: “अभविष्यत्,” you say. The four old spirits stir. The oldest, the faintest, lifts a hand like a leaf and lets it
+        fall, and the whole grove sighs, once, as if a long story had at last been understood. “भूयात्,” whispers the Vetāla.
+        “May you be.” “May you all be,” you say.
+      hi: “अभविष्यत्,” आप कहते हैं। चारों पुराने भूत हिलते हैं। सबसे पुराना, सबसे धुँधला, पत्ते जैसा हाथ उठाकर गिरा देता है,
+        और पूरा वन एक बार साँस लेता है, मानो कोई लम्बी कथा अन्ततः समझ ली गई हो। “भूयात्,” वेताल फुसफुसाता है। “तुम हो।” “आप
+        सब हों,” आप कहते हैं।
     failure:
       en: 'The old spirits keep still. “He would have become”: {{अभविष्यत्}}.'
       hi: 'पुराने भूत स्थिर रहते हैं। ‘वह हो जाता’: {{अभविष्यत्}}।'
@@ -370,15 +856,73 @@ cards:
   - sa: भूयात्
   - correct: true
     sa: अभविष्यत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{लुट्}} is the far future, “not today”: {{भविता}}, {{कर्ता}}. {{आशीर्लिङ्}} is the blessing: {{भूयात्}}, “may
+        he be”. {{लृङ्}} is “would have happened”: {{अभविष्यत्}}. And {{लेट्}} is found only in the Veda; you can skip it.'
+      hi: '{{लुट्}} दूर का भविष्य है, ‘आज नहीं’: {{भविता}}, {{कर्ता}}। {{आशीर्लिङ्}} आशीर्वाद है: {{भूयात्}}, ‘वह हो’। {{लृङ्}}
+        का अर्थ ‘होता’ है: {{अभविष्यत्}}। और {{लेट्}} केवल वेद में मिलता है; उसे छोड़ सकते हैं।'
+    items:
+    - id: i0
+      sa: लुट्
+    - id: i1
+      sa: भविता
+    - id: i2
+      sa: कर्ता
+    - id: i3
+      sa: आशीर्लिङ्
+    - id: i4
+      sa: भूयात्
+    - id: i5
+      sa: लृङ्
+    - id: i6
+      sa: अभविष्यत्
+    - id: i7
+      sa: लेट्
 - id: pn
   kind: teach
   depth: panini
-  title: {en: "The rules behind the rare forms", hi: "दुर्लभ रूपों के पीछे के सूत्र"}
-  skills: [verb.rare-four]
-  sutras: [3.3.15, 3.3.173, 3.3.139]
+  title:
+    en: The rules behind the rare forms
+    hi: दुर्लभ रूपों के पीछे के सूत्र
+  skills:
+  - verb.rare-four
+  sutras:
+  - 3.3.15
+  - 3.3.173
+  - 3.3.139
   body:
-    en: "{{लुट्}} places an action beyond today. {{आशीर्लिङ्}} expresses a blessing. {{लृङ्}} describes an action that did not come about when its condition failed. These rules explain the three forms in the table; {{लेट्}} belongs to Vedic usage."
-    hi: "{{लुट्}} आज से आगे की क्रिया बताता है। {{आशीर्लिङ्}} आशीर्वाद व्यक्त करता है। {{लृङ्}} उस क्रिया को बताता है जो शर्त पूरी न होने से नहीं हुई। ये सूत्र तालिका के तीन रूपों को समझाते हैं; {{लेट्}} वैदिक प्रयोग है।"
+    en: '{{लुट्}} places an action beyond today. {{आशीर्लिङ्}} expresses a blessing. {{लृङ्}} describes an action that did
+      not come about when its condition failed. These rules explain the three forms in the table; {{लेट्}} belongs to Vedic
+      usage.'
+    hi: '{{लुट्}} आज से आगे की क्रिया बताता है। {{आशीर्लिङ्}} आशीर्वाद व्यक्त करता है। {{लृङ्}} उस क्रिया को बताता है जो शर्त
+      पूरी न होने से नहीं हुई। ये सूत्र तालिका के तीन रूपों को समझाते हैं; {{लेट्}} वैदिक प्रयोग है।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: '{{लुट्}} places an action beyond today. {{आशीर्लिङ्}} expresses a blessing. {{लृङ्}} describes an action that did
+        not come about when its condition failed. These rules explain the three forms in the table; {{लेट्}} belongs to Vedic
+        usage.'
+      hi: '{{लुट्}} आज से आगे की क्रिया बताता है। {{आशीर्लिङ्}} आशीर्वाद व्यक्त करता है। {{लृङ्}} उस क्रिया को बताता है जो
+        शर्त पूरी न होने से नहीं हुई। ये सूत्र तालिका के तीन रूपों को समझाते हैं; {{लेट्}} वैदिक प्रयोग है।'
+    items:
+    - id: i0
+      sa: लुट्
+    - id: i1
+      sa: आशीर्लिङ्
+    - id: i2
+      sa: लृङ्
+    - id: i3
+      sa: लेट्
 - id: sum
   kind: summary
   title:

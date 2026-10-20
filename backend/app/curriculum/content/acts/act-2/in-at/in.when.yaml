@@ -21,7 +21,8 @@ cards:
     hi: घर के पहर
   depth: core
   image:
-    brief: 'The Ācārya counting on his fingers in the lamplit house, four small scenes above him: dawn reading, noon meal, evening singing, night sleeping; the flame-shaped spirit flickering a different colour for each; Dādī nodding.'
+    brief: 'The Ācārya counting on his fingers in the lamplit house, four small scenes above him: dawn reading, noon meal,
+      evening singing, night sleeping; the flame-shaped spirit flickering a different colour for each; Dādī nodding.'
     alt:
       en: An old teacher counts the hours of the day on his fingers while a flame-spirit changes colour
       hi: दिन के पहर उँगलियों पर गिनते आचार्य और रंग बदलता लौ-भूत
@@ -35,8 +36,12 @@ cards:
     ratio: '4:3'
     id: in-when-s1
   narration:
-    en: 'The little spirit asks: “And when?” The Ācārya counts it out on his fingers. “At dawn we read. At noon we eat. In the evening we sing. At night we sleep.” Each time he says it, the lamp flickers a different colour. Dādī nods: “The same case that says where also says when.”'
-    hi: 'नन्हा भूत पूछता है: “और कब?” आचार्य उँगलियों पर गिनते हैं। “भोर में हम पढ़ते हैं। दोपहर में खाते हैं। साँझ को गाते हैं। रात में सोते हैं।” हर बार वे कहते हैं तो दीपक अलग रंग में टिमटिमाता है। दादी सिर हिलाती हैं: “जो विभक्ति ‘कहाँ’ कहती है वही ‘कब’ भी कहती है।”'
+    en: 'The little spirit asks: “And when?” The Ācārya counts it out on his fingers. “At dawn we read. At noon we eat. In
+      the evening we sing. At night we sleep.” Each time he says it, the lamp flickers a different colour. Dādī nods: “The
+      same case that says where also says when.”'
+    hi: 'नन्हा भूत पूछता है: “और कब?” आचार्य उँगलियों पर गिनते हैं। “भोर में हम पढ़ते हैं। दोपहर में खाते हैं। साँझ को गाते
+      हैं। रात में सोते हैं।” हर बार वे कहते हैं तो दीपक अलग रंग में टिमटिमाता है। दादी सिर हिलाती हैं: “जो विभक्ति ‘कहाँ’
+      कहती है वही ‘कब’ भी कहती है।”'
   lines:
   - speaker: acarya
     sa: रात्रौ स्वपिमि।
@@ -52,8 +57,10 @@ cards:
   skills:
   - case.loc-time
   body:
-    en: 'A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night), {{दिने}} (by day), {{मासे}} (in the month). It answers “when?”.'
-    hi: 'जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}} (महीने में)। यह ‘कब?’ का उत्तर देती है।'
+    en: 'A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night), {{दिने}}
+      (by day), {{मासे}} (in the month). It answers “when?”.'
+    hi: 'जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}}
+      (महीने में)। यह ‘कब?’ का उत्तर देती है।'
   examples:
   - sa: प्रभाते वयम् पठामः।
     meaning:
@@ -158,6 +165,434 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: प्रभाते वयम् पठामः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: At dawn we read.
+        hi: भोर में हम पढ़ते हैं।
+      words:
+      - sa: प्रभाते
+        gloss:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पठामः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+    - id: i1
+      sa: प्रभाते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: at dawn
+        hi: भोर में
+      check:
+        type: subanta
+        stem: प्रभात
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: वयम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: we
+        hi: हम
+    - id: i3
+      sa: पठामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night),
+          {{दिने}} (by day), {{मासे}} (in the month). It answers “when?”.'
+        hi: 'जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}}
+          (महीने में)। यह ‘कब?’ का उत्तर देती है।'
+    - id: i6
+      sa: प्रभाते वयम् पठामः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: At dawn we read.
+        hi: भोर में हम पढ़ते हैं।
+      words:
+      - sa: प्रभाते
+        gloss:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पठामः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: रात्रौ अहम् स्वपिमि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: At night I sleep.
+        hi: रात में मैं सोता हूँ।
+      words:
+      - sa: रात्रौ
+        gloss:
+          en: at night
+          hi: रात में
+        check:
+          type: subanta
+          stem: रात्रि
+          linga: Stri
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: स्वपिमि
+        gloss:
+          en: sleep
+          hi: सोता हूँ
+        check:
+          type: tinanta
+          dhatu: स्वप्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: रात्रौ
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: at night
+        hi: रात में
+      check:
+        type: subanta
+        stem: रात्रि
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{रात्रि}} · feminine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{रात्रि}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i3
+      sa: स्वपिमि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: sleep
+        hi: सोता हूँ
+      check:
+        type: tinanta
+        dhatu: स्वप्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{स्वप्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{स्वप्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night),
+          {{दिने}} (by day), {{मासे}} (in the month). It answers “when?”.'
+        hi: 'जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}}
+          (महीने में)। यह ‘कब?’ का उत्तर देती है।'
+    - id: i6
+      sa: रात्रौ अहम् स्वपिमि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: At night I sleep.
+        hi: रात में मैं सोता हूँ।
+      words:
+      - sa: रात्रौ
+        gloss:
+          en: at night
+          hi: रात में
+        check:
+          type: subanta
+          stem: रात्रि
+          linga: Stri
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: स्वपिमि
+        gloss:
+          en: sleep
+          hi: सोता हूँ
+        check:
+          type: tinanta
+          dhatu: स्वप्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: दिने दिने शुकः वदति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Day by day the parrot speaks.
+        hi: दिन-दिन तोता बोलता है।
+      words:
+      - sa: दिने
+        gloss:
+          en: by day
+          hi: दिन में
+        check:
+          type: subanta
+          stem: दिन
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: दिने
+        gloss:
+          en: by day
+          hi: दिन में
+        check:
+          type: subanta
+          stem: दिन
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: शुकः
+        gloss:
+          en: parrot
+          hi: तोता
+        check:
+          type: subanta
+          stem: शुक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: वदति
+        gloss:
+          en: speaks
+          hi: बोलता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: दिने
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by day
+        hi: दिन में
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{दिन}} · neuter · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: दिने
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by day
+        hi: दिन में
+      check:
+        type: subanta
+        stem: दिन
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{दिन}} · neuter · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{दिन}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i3
+      sa: शुकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: parrot
+        hi: तोता
+      check:
+        type: subanta
+        stem: शुक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{शुक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{शुक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i4
+      sa: वदति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: speaks
+        hi: बोलता है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night),
+          {{दिने}} (by day), {{मासे}} (in the month). It answers “when?”.'
+        hi: 'जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}}
+          (महीने में)। यह ‘कब?’ का उत्तर देती है।'
+    - id: i7
+      sa: दिने दिने शुकः वदति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Day by day the parrot speaks.
+        hi: दिन-दिन तोता बोलता है।
+      words:
+      - sa: दिने
+        gloss:
+          en: by day
+          hi: दिन में
+        check:
+          type: subanta
+          stem: दिन
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: दिने
+        gloss:
+          en: by day
+          hi: दिन में
+        check:
+          type: subanta
+          stem: दिन
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: शुकः
+        gloss:
+          en: parrot
+          hi: तोता
+        check:
+          type: subanta
+          stem: शुक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: वदति
+        gloss:
+          en: speaks
+          hi: बोलता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: tb1
   kind: table
   title:
@@ -306,6 +741,130 @@ cards:
   - sa: रात्रिम्
   - correct: true
     sa: रात्रौ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: प्रभाते वयम् पठामः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: At dawn we read.
+        hi: भोर में हम पढ़ते हैं।
+      words:
+      - sa: प्रभाते
+        gloss:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पठामः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+    - id: i1
+      sa: प्रभाते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: at dawn
+        hi: भोर में
+      check:
+        type: subanta
+        stem: प्रभात
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: वयम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: we
+        hi: हम
+    - id: i3
+      sa: पठामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night),
+          {{दिने}} (by day), {{मासे}} (in the month). It answers “when?”.'
+        hi: 'जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}}
+          (महीने में)। यह ‘कब?’ का उत्तर देती है।'
+    - id: i6
+      sa: प्रभाते वयम् पठामः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: At dawn we read.
+        hi: भोर में हम पढ़ते हैं।
+      words:
+      - sa: प्रभाते
+        gloss:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पठामः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
 - id: p2
   kind: practice
   depth: core
@@ -344,6 +903,130 @@ cards:
       text:
         en: by day
         hi: दिन में
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: प्रभाते वयम् पठामः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: At dawn we read.
+        hi: भोर में हम पढ़ते हैं।
+      words:
+      - sa: प्रभाते
+        gloss:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पठामः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+    - id: i1
+      sa: प्रभाते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: at dawn
+        hi: भोर में
+      check:
+        type: subanta
+        stem: प्रभात
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: वयम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: we
+        hi: हम
+    - id: i3
+      sa: पठामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night),
+          {{दिने}} (by day), {{मासे}} (in the month). It answers “when?”.'
+        hi: 'जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}}
+          (महीने में)। यह ‘कब?’ का उत्तर देती है।'
+    - id: i6
+      sa: प्रभाते वयम् पठामः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: At dawn we read.
+        hi: भोर में हम पढ़ते हैं।
+      words:
+      - sa: प्रभाते
+        gloss:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पठामः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
 - id: e1
   kind: explore
   depth: core
@@ -385,8 +1068,10 @@ cards:
   gate: true
   story:
     success:
-      en: “प्रभाते वयं पठामः,” you say, and the lamp-spirit blinks, as if he were already a little afraid of dawn. “रात्रौ… दीपः अस्ति,” he says slowly, the first sentence he has ever made himself, and the whole courtyard hushes.
-      hi: “प्रभाते वयं पठामः,” आप कहते हैं, और दीप-भूत पलकें झपकाता है, मानो भोर से पहले ही थोड़ा डर रहा हो। “रात्रौ… दीपः अस्ति,” वह धीरे-धीरे कहता है, उसका अपना बनाया पहला वाक्य, और पूरा आँगन चुप हो जाता है।
+      en: “प्रभाते वयं पठामः,” you say, and the lamp-spirit blinks, as if he were already a little afraid of dawn. “रात्रौ…
+        दीपः अस्ति,” he says slowly, the first sentence he has ever made himself, and the whole courtyard hushes.
+      hi: “प्रभाते वयं पठामः,” आप कहते हैं, और दीप-भूत पलकें झपकाता है, मानो भोर से पहले ही थोड़ा डर रहा हो। “रात्रौ… दीपः
+        अस्ति,” वह धीरे-धीरे कहता है, उसका अपना बनाया पहला वाक्य, और पूरा आँगन चुप हो जाता है।
     failure:
       en: The lamp flickers. “When” goes in the seventh case, before the rest.
       hi: दीपक टिमटिमाता है। ‘कब’ सप्तमी में, बाक़ी से पहले।
@@ -394,6 +1079,130 @@ cards:
   - प्रभाते
   - वयम्
   - पठामः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: प्रभाते वयम् पठामः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: At dawn we read.
+        hi: भोर में हम पढ़ते हैं।
+      words:
+      - sa: प्रभाते
+        gloss:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पठामः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+    - id: i1
+      sa: प्रभाते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: at dawn
+        hi: भोर में
+      check:
+        type: subanta
+        stem: प्रभात
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रभात}} · neuter · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{प्रभात}} · {{नपुंसकलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: i2
+      sa: वयम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: we
+        hi: हम
+    - id: i3
+      sa: पठामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Bahu
+      feature:
+        en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night),
+          {{दिने}} (by day), {{मासे}} (in the month). It answers “when?”.'
+        hi: 'जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}}
+          (महीने में)। यह ‘कब?’ का उत्तर देती है।'
+    - id: i6
+      sa: प्रभाते वयम् पठामः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: At dawn we read.
+        hi: भोर में हम पढ़ते हैं।
+      words:
+      - sa: प्रभाते
+        gloss:
+          en: at dawn
+          hi: भोर में
+        check:
+          type: subanta
+          stem: प्रभात
+          linga: Napumsaka
+          vibhakti: Saptami
+          vacana: Eka
+      - sa: वयम्
+        gloss:
+          en: we
+          hi: हम
+      - sa: पठामः
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
 - id: pn
   kind: teach
   title:
@@ -403,13 +1212,45 @@ cards:
   skills:
   - case.loc-time
   body:
-    en: A seventh-case word can also say “while this was happening”. It is the “absolute” construction, {{सति सप्तमी}}, and you will meet it in the syntax chapter.
+    en: A seventh-case word can also say “while this was happening”. It is the “absolute” construction, {{सति सप्तमी}}, and
+      you will meet it in the syntax chapter.
     hi: सप्तमी वाला शब्द ‘जब यह हो रहा था’ भी कह सकता है। यह ‘सति सप्तमी’ है, जो वाक्य-रचना के अध्याय में मिलेगा।
   examples:
   - sa: सूर्ये उदिते
     meaning:
       en: 'the sun having risen: “when the sun has risen”'
       hi: सूर्य के उदय होने पर
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सूर्ये उदिते
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'the sun having risen: “when the sun has risen”'
+        hi: सूर्य के उदय होने पर
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: A seventh-case word can also say “while this was happening”. It is the “absolute” construction, {{सति सप्तमी}},
+          and you will meet it in the syntax chapter.
+        hi: सप्तमी वाला शब्द ‘जब यह हो रहा था’ भी कह सकता है। यह ‘सति सप्तमी’ है, जो वाक्य-रचना के अध्याय में मिलेगा।
+    - id: i3
+      sa: सूर्ये उदिते
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'the sun having risen: “when the sun has risen”'
+        hi: सूर्य के उदय होने पर
 - id: sum
   kind: summary
   title:

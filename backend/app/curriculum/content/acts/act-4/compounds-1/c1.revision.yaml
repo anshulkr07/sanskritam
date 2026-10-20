@@ -107,10 +107,60 @@ cards:
           hi: माता और पिता
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: मातापितरौ।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Mother and father.
+          hi: माता और पिता।
+        words:
+        - sa: मातापितरौ
+          gloss:
+            en: mother and father
+            hi: माता और पिता
+      - id: i1
+        sa: मातापितरौ
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: mother and father
+          hi: माता और पिता
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'In a few dvandvas the order is fixed by custom: {{मातापितरौ}}, not {{पितामातरौ}}.'
+          hi: 'कुछ द्वन्द्वों में क्रम परम्परा से तय है: {{मातापितरौ}}, {{पितामातरौ}} नहीं।'
+      - id: i4
+        sa: मातापितरौ।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Mother and father.
+          hi: माता और पिता।
+        words:
+        - sa: मातापितरौ
+          gloss:
+            en: mother and father
+            hi: माता और पिता
   - skill: sam.karmadharaya
     rule:
-      en: 'A compound can be read two ways: {{सज्जनः}} is “good person” (karmadhāraya), though its first member looks like a past participle.'
-      hi: 'एक समास दो प्रकार से पढ़ा जा सकता है: {{सज्जनः}} ‘भला मनुष्य’ है (कर्मधारय), यद्यपि उसका पहला सदस्य कृदन्त जैसा दिखता है।'
+      en: 'A compound can be read two ways: {{सज्जनः}} is “good person” (karmadhāraya), though its first member looks like
+        a past participle.'
+      hi: 'एक समास दो प्रकार से पढ़ा जा सकता है: {{सज्जनः}} ‘भला मनुष्य’ है (कर्मधारय), यद्यपि उसका पहला सदस्य कृदन्त जैसा
+        दिखता है।'
     example:
       sa: सज्जनः।
       meaning:
@@ -123,6 +173,56 @@ cards:
           hi: भला मनुष्य
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: सज्जनः।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: A good person.
+          hi: भला मनुष्य।
+        words:
+        - sa: सज्जनः
+          gloss:
+            en: a good person
+            hi: भला मनुष्य
+      - id: i1
+        sa: सज्जनः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: a good person
+          hi: भला मनुष्य
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A compound can be read two ways: {{सज्जनः}} is “good person” (karmadhāraya), though its first member looks
+            like a past participle.'
+          hi: 'एक समास दो प्रकार से पढ़ा जा सकता है: {{सज्जनः}} ‘भला मनुष्य’ है (कर्मधारय), यद्यपि उसका पहला सदस्य कृदन्त
+            जैसा दिखता है।'
+      - id: i4
+        sa: सज्जनः।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: A good person.
+          hi: भला मनुष्य।
+        words:
+        - sa: सज्जनः
+          gloss:
+            en: a good person
+            hi: भला मनुष्य
 - id: mistakes
   kind: revision
   title:
@@ -154,7 +254,8 @@ cards:
   - skill: sam.dvandva
     rule:
       en: '{{चार्थे द्वन्द्वः}}: dvandva. {{तत्पुरुषः}}, {{षष्ठी}}: tatpuruṣa. {{संख्यापूर्वो द्विगुः}}: dvigu. {{नञ्}}: nañ.'
-      hi: '{{चार्थे द्वन्द्वः}}: द्वन्द्व। {{तत्पुरुषः}}, {{षष्ठी}}: तत्पुरुष। {{संख्यापूर्वो द्विगुः}}: द्विगु। {{नञ्}}: नञ्।'
+      hi: '{{चार्थे द्वन्द्वः}}: द्वन्द्व। {{तत्पुरुषः}}, {{षष्ठी}}: तत्पुरुष। {{संख्यापूर्वो द्विगुः}}: द्विगु। {{नञ्}}:
+        नञ्।'
     sutras:
     - 2.2.29
     - 2.1.22

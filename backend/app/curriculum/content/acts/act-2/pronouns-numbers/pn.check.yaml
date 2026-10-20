@@ -30,6 +30,44 @@ cards:
       linga: Pum
       blanks: 3
     seed: 4
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Only the first-case forms {{सः}} and {{सा}} show an {{स्}}; everything else starts with {{त्}}. Pronouns also borrow
+        odd endings: for a masculine or neuter, {{तस्मै}} (for), {{तस्मात्}} (from) and {{तस्मिन्}} (in); for a feminine,
+        {{तस्यै}}, {{तस्याः}} and {{तस्याम्}}. The plural genitive is {{तेषाम्}} and {{तासाम्}}.'
+      hi: 'केवल प्रथमा के रूप {{सः}} और {{सा}} में {{स्}} दिखता है; बाक़ी सब {{त्}} से शुरू होते हैं। सर्वनाम कुछ विचित्र
+        प्रत्यय भी लेते हैं: पुंलिंग और नपुंसक में {{तस्मै}} (के लिए), {{तस्मात्}} (से) और {{तस्मिन्}} (में); स्त्रीलिंग में
+        {{तस्यै}}, {{तस्याः}} और {{तस्याम्}}। षष्ठी बहुवचन {{तेषाम्}} और {{तासाम्}} है।'
+    items:
+    - id: i0
+      sa: सः
+    - id: i1
+      sa: सा
+    - id: i2
+      sa: स्
+    - id: i3
+      sa: त्
+    - id: i4
+      sa: तस्मै
+    - id: i5
+      sa: तस्मात्
+    - id: i6
+      sa: तस्मिन्
+    - id: i7
+      sa: तस्यै
+    - id: i8
+      sa: तस्याः
+    - id: i9
+      sa: तस्याम्
+    - id: i10
+      sa: तेषाम्
+    - id: i11
+      sa: तासाम्
 - id: p2
   kind: practice
   depth: core
@@ -48,6 +86,44 @@ cards:
   - sa: तस्य
   - correct: true
     sa: तस्मै
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Only the first-case forms {{सः}} and {{सा}} show an {{स्}}; everything else starts with {{त्}}. Pronouns also borrow
+        odd endings: for a masculine or neuter, {{तस्मै}} (for), {{तस्मात्}} (from) and {{तस्मिन्}} (in); for a feminine,
+        {{तस्यै}}, {{तस्याः}} and {{तस्याम्}}. The plural genitive is {{तेषाम्}} and {{तासाम्}}.'
+      hi: 'केवल प्रथमा के रूप {{सः}} और {{सा}} में {{स्}} दिखता है; बाक़ी सब {{त्}} से शुरू होते हैं। सर्वनाम कुछ विचित्र
+        प्रत्यय भी लेते हैं: पुंलिंग और नपुंसक में {{तस्मै}} (के लिए), {{तस्मात्}} (से) और {{तस्मिन्}} (में); स्त्रीलिंग में
+        {{तस्यै}}, {{तस्याः}} और {{तस्याम्}}। षष्ठी बहुवचन {{तेषाम्}} और {{तासाम्}} है।'
+    items:
+    - id: i0
+      sa: सः
+    - id: i1
+      sa: सा
+    - id: i2
+      sa: स्
+    - id: i3
+      sa: त्
+    - id: i4
+      sa: तस्मै
+    - id: i5
+      sa: तस्मात्
+    - id: i6
+      sa: तस्मिन्
+    - id: i7
+      sa: तस्यै
+    - id: i8
+      sa: तस्याः
+    - id: i9
+      sa: तस्याम्
+    - id: i10
+      sa: तेषाम्
+    - id: i11
+      sa: तासाम्
 - id: p3
   kind: practice
   depth: core
@@ -68,6 +144,116 @@ cards:
       linga: Pum
       blanks: 3
     seed: 5
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: कः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Who reads?
+        hi: कौन पढ़ता है?
+      words:
+      - sa: कः
+        gloss:
+          en: who
+          hi: कौन
+        check:
+          type: subanta
+          stem: किम्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: कः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: who
+        hi: कौन
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{किम्}} asks “who? what? which?” Its forms are the forms of {{तद्}} with {{क-}} in place of {{त-}}: {{कः}} (who,
+          masculine), {{का}} (who, feminine), {{किम्}} (what). {{यद्}} is “who, which, that”, and goes with {{तद्}}: {{यः
+          … सः}}, “who … he”.'
+        hi: '{{किम्}} पूछता है ‘कौन? क्या? कौन-सा?’ उसके रूप {{तद्}} के रूप हैं, जिनमें {{त-}} की जगह {{क-}} है: {{कः}} (कौन,
+          पुंलिंग), {{का}} (कौन, स्त्रीलिंग), {{किम्}} (क्या)। {{यद्}} का अर्थ ‘जो’ है, और वह {{तद्}} के साथ चलता है: {{यः
+          … सः}}, ‘जो … वह’।'
+    - id: i5
+      sa: कः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Who reads?
+        hi: कौन पढ़ता है?
+      words:
+      - sa: कः
+        gloss:
+          en: who
+          hi: कौन
+        check:
+          type: subanta
+          stem: किम्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -86,6 +272,116 @@ cards:
   - sa: कस्मै
   - correct: true
     sa: कस्मिन्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: कः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Who reads?
+        hi: कौन पढ़ता है?
+      words:
+      - sa: कः
+        gloss:
+          en: who
+          hi: कौन
+        check:
+          type: subanta
+          stem: किम्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: कः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: who
+        hi: कौन
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{किम्}} asks “who? what? which?” Its forms are the forms of {{तद्}} with {{क-}} in place of {{त-}}: {{कः}} (who,
+          masculine), {{का}} (who, feminine), {{किम्}} (what). {{यद्}} is “who, which, that”, and goes with {{तद्}}: {{यः
+          … सः}}, “who … he”.'
+        hi: '{{किम्}} पूछता है ‘कौन? क्या? कौन-सा?’ उसके रूप {{तद्}} के रूप हैं, जिनमें {{त-}} की जगह {{क-}} है: {{कः}} (कौन,
+          पुंलिंग), {{का}} (कौन, स्त्रीलिंग), {{किम्}} (क्या)। {{यद्}} का अर्थ ‘जो’ है, और वह {{तद्}} के साथ चलता है: {{यः
+          … सः}}, ‘जो … वह’।'
+    - id: i5
+      sa: कः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Who reads?
+        hi: कौन पढ़ता है?
+      words:
+      - sa: कः
+        gloss:
+          en: who
+          hi: कौन
+        check:
+          type: subanta
+          stem: किम्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p5
   kind: practice
   depth: core
@@ -104,6 +400,38 @@ cards:
   - sa: चतस्रः फलानि
   - correct: true
     sa: चत्वारि फलानि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{एक}} is “one” and acts like a pronoun: {{एकः}}, {{एका}}, {{एकम्}}. {{द्वि}} (two) is dual only. {{त्रि}} (three)
+        and {{चतुर्}} (four) have a different word for the feminine: {{तिस्रः}}, {{चतस्रः}}. These words agree with the noun,
+        like an adjective.'
+      hi: '{{एक}} का अर्थ ‘एक’ है और वह सर्वनाम की तरह चलता है: {{एकः}}, {{एका}}, {{एकम्}}। {{द्वि}} (दो) केवल द्विवचन है।
+        {{त्रि}} (तीन) और {{चतुर्}} (चार) के स्त्रीलिंग का रूप अलग है: {{तिस्रः}}, {{चतस्रः}}। ये शब्द विशेषण की तरह संज्ञा
+        से मेल खाते हैं।'
+    items:
+    - id: i0
+      sa: एक
+    - id: i1
+      sa: एकः
+    - id: i2
+      sa: एका
+    - id: i3
+      sa: एकम्
+    - id: i4
+      sa: द्वि
+    - id: i5
+      sa: त्रि
+    - id: i6
+      sa: चतुर्
+    - id: i7
+      sa: तिस्रः
+    - id: i8
+      sa: चतस्रः
 - id: p6
   kind: practice
   depth: core
@@ -143,6 +471,38 @@ cards:
         hi: १२
     right:
       sa: द्वादश
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{एक}} is “one” and acts like a pronoun: {{एकः}}, {{एका}}, {{एकम्}}. {{द्वि}} (two) is dual only. {{त्रि}} (three)
+        and {{चतुर्}} (four) have a different word for the feminine: {{तिस्रः}}, {{चतस्रः}}. These words agree with the noun,
+        like an adjective.'
+      hi: '{{एक}} का अर्थ ‘एक’ है और वह सर्वनाम की तरह चलता है: {{एकः}}, {{एका}}, {{एकम्}}। {{द्वि}} (दो) केवल द्विवचन है।
+        {{त्रि}} (तीन) और {{चतुर्}} (चार) के स्त्रीलिंग का रूप अलग है: {{तिस्रः}}, {{चतस्रः}}। ये शब्द विशेषण की तरह संज्ञा
+        से मेल खाते हैं।'
+    items:
+    - id: i0
+      sa: एक
+    - id: i1
+      sa: एकः
+    - id: i2
+      sa: एका
+    - id: i3
+      sa: एकम्
+    - id: i4
+      sa: द्वि
+    - id: i5
+      sa: त्रि
+    - id: i6
+      sa: चतुर्
+    - id: i7
+      sa: तिस्रः
+    - id: i8
+      sa: चतस्रः
 - id: p7
   kind: practice
   depth: core
@@ -161,6 +521,58 @@ cards:
   - sa: अद्य
   - correct: true
     sa: ह्यः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'From eleven to nineteen: the unit and then {{दश}}: {{एकादश}}, {{द्वादश}}, {{त्रयोदश}}, {{चतुर्दश}}, {{पञ्चदश}},
+        {{षोडश}}, {{सप्तदश}}, {{अष्टादश}}. The tens are {{विंशतिः}} (20), {{त्रिंशत्}} (30), {{चत्वारिंशत्}} (40), {{पञ्चाशत्}}
+        (50), {{षष्टिः}} (60), {{सप्ततिः}} (70), {{अशीतिः}} (80), {{नवतिः}} (90). Then {{शतम्}} (100) and {{सहस्रम्}} (1000).'
+      hi: 'ग्यारह से उन्नीस तक: इकाई और फिर {{दश}}: {{एकादश}}, {{द्वादश}}, {{त्रयोदश}}, {{चतुर्दश}}, {{पञ्चदश}}, {{षोडश}},
+        {{सप्तदश}}, {{अष्टादश}}। दहाइयाँ ये हैं: {{विंशतिः}} (20), {{त्रिंशत्}} (30), {{चत्वारिंशत्}} (40), {{पञ्चाशत्}} (50),
+        {{षष्टिः}} (60), {{सप्ततिः}} (70), {{अशीतिः}} (80), {{नवतिः}} (90)। फिर {{शतम्}} (100) और {{सहस्रम्}} (1000)।'
+    items:
+    - id: i0
+      sa: दश
+    - id: i1
+      sa: एकादश
+    - id: i2
+      sa: द्वादश
+    - id: i3
+      sa: त्रयोदश
+    - id: i4
+      sa: चतुर्दश
+    - id: i5
+      sa: पञ्चदश
+    - id: i6
+      sa: षोडश
+    - id: i7
+      sa: सप्तदश
+    - id: i8
+      sa: अष्टादश
+    - id: i9
+      sa: विंशतिः
+    - id: i10
+      sa: त्रिंशत्
+    - id: i11
+      sa: चत्वारिंशत्
+    - id: i12
+      sa: पञ्चाशत्
+    - id: i13
+      sa: षष्टिः
+    - id: i14
+      sa: सप्ततिः
+    - id: i15
+      sa: अशीतिः
+    - id: i16
+      sa: नवतिः
+    - id: i17
+      sa: शतम्
+    - id: i18
+      sa: सहस्रम्
 - id: p8
   kind: practice
   depth: core
@@ -179,6 +591,116 @@ cards:
   - पठति
   - सः
   - पण्डितः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: कः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Who reads?
+        hi: कौन पढ़ता है?
+      words:
+      - sa: कः
+        gloss:
+          en: who
+          hi: कौन
+        check:
+          type: subanta
+          stem: किम्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: कः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: who
+        hi: कौन
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{किम्}} asks “who? what? which?” Its forms are the forms of {{तद्}} with {{क-}} in place of {{त-}}: {{कः}} (who,
+          masculine), {{का}} (who, feminine), {{किम्}} (what). {{यद्}} is “who, which, that”, and goes with {{तद्}}: {{यः
+          … सः}}, “who … he”.'
+        hi: '{{किम्}} पूछता है ‘कौन? क्या? कौन-सा?’ उसके रूप {{तद्}} के रूप हैं, जिनमें {{त-}} की जगह {{क-}} है: {{कः}} (कौन,
+          पुंलिंग), {{का}} (कौन, स्त्रीलिंग), {{किम्}} (क्या)। {{यद्}} का अर्थ ‘जो’ है, और वह {{तद्}} के साथ चलता है: {{यः
+          … सः}}, ‘जो … वह’।'
+    - id: i5
+      sa: कः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Who reads?
+        hi: कौन पढ़ता है?
+      words:
+      - sa: कः
+        gloss:
+          en: who
+          hi: कौन
+        check:
+          type: subanta
+          stem: किम्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p9
   kind: practice
   depth: core
@@ -195,8 +717,14 @@ cards:
   gate: true
   story:
     success:
-      en: “एकम्, द्वे, त्रीणि, चत्वारि.” Ganaka ties the last knot, and every cord in the room goes taut and glows, one after another, down the shelves. “एकः, द्वौ, त्रयः, चत्वारः,” he adds, a gift, and then points, with a hand of knots, to the lowest shelf. There, between two books, a third leaf. “वेतालः श्मशाने वदति,” he says. “The Vetāla speaks in the burning ground.”
-      hi: “एकम्, द्वे, त्रीणि, चत्वारि।” गणक आख़िरी गाँठ लगाता है, और कमरे की हर डोरी तन जाती है और एक के बाद एक अलमारियों में चमक उठती है। “एकः, द्वौ, त्रयः, चत्वारः,” वह उपहार में जोड़ता है, और फिर गाँठों के हाथ से सबसे निचली अलमारी की ओर इशारा करता है। वहाँ दो पुस्तकों के बीच एक तीसरा पत्र। “वेतालः श्मशाने वदति,” वह कहता है। “वेताल श्मशान में बोलता है।”
+      en: “एकम्, द्वे, त्रीणि, चत्वारि.” Ganaka ties the last knot, and every cord in the room goes taut and glows, one after
+        another, down the shelves. “एकः, द्वौ, त्रयः, चत्वारः,” he adds, a gift, and then points, with a hand of knots, to
+        the lowest shelf. There, between two books, a third leaf. “वेतालः श्मशाने वदति,” he says. “The Vetāla speaks in the
+        burning ground.”
+      hi: “एकम्, द्वे, त्रीणि, चत्वारि।” गणक आख़िरी गाँठ लगाता है, और कमरे की हर डोरी तन जाती है और एक के बाद एक अलमारियों
+        में चमक उठती है। “एकः, द्वौ, त्रयः, चत्वारः,” वह उपहार में जोड़ता है, और फिर गाँठों के हाथ से सबसे निचली अलमारी की
+        ओर इशारा करता है। वहाँ दो पुस्तकों के बीच एक तीसरा पत्र। “वेतालः श्मशाने वदति,” वह कहता है। “वेताल श्मशान में बोलता
+        है।”
     failure:
       en: A cord slips. The neuter count is {{एकम् द्वे त्रीणि चत्वारि}}.
       hi: एक डोरी फिसलती है। नपुंसक गिनती है {{एकम् द्वे त्रीणि चत्वारि}}।
@@ -205,3 +733,35 @@ cards:
   - द्वे
   - त्रीणि
   - चत्वारि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{एक}} is “one” and acts like a pronoun: {{एकः}}, {{एका}}, {{एकम्}}. {{द्वि}} (two) is dual only. {{त्रि}} (three)
+        and {{चतुर्}} (four) have a different word for the feminine: {{तिस्रः}}, {{चतस्रः}}. These words agree with the noun,
+        like an adjective.'
+      hi: '{{एक}} का अर्थ ‘एक’ है और वह सर्वनाम की तरह चलता है: {{एकः}}, {{एका}}, {{एकम्}}। {{द्वि}} (दो) केवल द्विवचन है।
+        {{त्रि}} (तीन) और {{चतुर्}} (चार) के स्त्रीलिंग का रूप अलग है: {{तिस्रः}}, {{चतस्रः}}। ये शब्द विशेषण की तरह संज्ञा
+        से मेल खाते हैं।'
+    items:
+    - id: i0
+      sa: एक
+    - id: i1
+      sa: एकः
+    - id: i2
+      sa: एका
+    - id: i3
+      sa: एकम्
+    - id: i4
+      sa: द्वि
+    - id: i5
+      sa: त्रि
+    - id: i6
+      sa: चतुर्
+    - id: i7
+      sa: तिस्रः
+    - id: i8
+      sa: चतस्रः

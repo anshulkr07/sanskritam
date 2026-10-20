@@ -28,6 +28,28 @@ cards:
     sa: त्र
   - sa: र्त
   - sa: तर
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: the first, with no vowel
+        hi: पहला, बिना स्वर
+    - id: i1
+      sa: ष
+      meaning:
+        en: the second keeps its vowel
+        hi: दूसरा अपना स्वर रखता है
+    - id: i2
+      sa: क्ष
+      meaning:
+        en: one joined letter
+        hi: एक संयुक्ताक्षर
 - id: p2
   kind: practice
   depth: core
@@ -48,6 +70,28 @@ cards:
   - त्यम्
   - त्य
   - म्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: the first, with no vowel
+        hi: पहला, बिना स्वर
+    - id: i1
+      sa: ष
+      meaning:
+        en: the second keeps its vowel
+        hi: दूसरा अपना स्वर रखता है
+    - id: i2
+      sa: क्ष
+      meaning:
+        en: one joined letter
+        hi: एक संयुक्ताक्षर
 - id: p3
   kind: practice
   depth: core
@@ -86,6 +130,56 @@ cards:
       text:
         en: below
         hi: नीचे
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: धर्मः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'duty: {{ध}} + {{र्म}}'
+        hi: 'धर्म: {{ध}} + {{र्म}}'
+      check:
+        type: subanta
+        stem: धर्म
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'When {{र}} comes first in a joined letter, it becomes a small curl on top of the next letter: {{र्}} + {{म}}
+          = {{र्म}}. It is called {{रेफः}}. You say it first, but write it last, above the end of the syllable.'
+        hi: 'जब {{र}} संयुक्ताक्षर में पहले आता है, तो अगले अक्षर के ऊपर छोटा मोड़ बन जाता है: {{र्}} + {{म}} = {{र्म}}। इसे
+          {{रेफः}} कहते हैं। बोला जाता है पहले, पर लिखा जाता है अन्त में, अक्षर के सिरे पर।'
+    - id: i3
+      sa: धर्मः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'duty: {{ध}} + {{र्म}}'
+        hi: 'धर्म: {{ध}} + {{र्म}}'
+      check:
+        type: subanta
+        stem: धर्म
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p4
   kind: practice
   depth: core
@@ -104,6 +198,56 @@ cards:
   - correct: true
     sa: कर्म
   - sa: मित्रम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: धर्मः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'duty: {{ध}} + {{र्म}}'
+        hi: 'धर्म: {{ध}} + {{र्म}}'
+      check:
+        type: subanta
+        stem: धर्म
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'When {{र}} comes first in a joined letter, it becomes a small curl on top of the next letter: {{र्}} + {{म}}
+          = {{र्म}}. It is called {{रेफः}}. You say it first, but write it last, above the end of the syllable.'
+        hi: 'जब {{र}} संयुक्ताक्षर में पहले आता है, तो अगले अक्षर के ऊपर छोटा मोड़ बन जाता है: {{र्}} + {{म}} = {{र्म}}। इसे
+          {{रेफः}} कहते हैं। बोला जाता है पहले, पर लिखा जाता है अन्त में, अक्षर के सिरे पर।'
+    - id: i3
+      sa: धर्मः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'duty: {{ध}} + {{र्म}}'
+        hi: 'धर्म: {{ध}} + {{र्म}}'
+      check:
+        type: subanta
+        stem: धर्म
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p5
   kind: practice
   depth: core
@@ -122,6 +266,38 @@ cards:
   - correct: true
     sa: ं
   - sa: ऽ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गंगा
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+        hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The dot above a letter, the {{अनुस्वारः}}, is a nasal hum through the nose: {{अं}}. At the end of a word it stands
+          for {{म्}}: {{रामम्}} may be written {{रामं}}. Inside a word it hums like the nasal of the letter after it.'
+        hi: 'अक्षर के ऊपर का बिन्दु, {{अनुस्वारः}}, नाक से निकलने वाली नासिक्य गूँज है: {{अं}}। शब्द के अन्त में यह {{म्}}
+          का काम करता है: {{रामम्}} को {{रामं}} भी लिखते हैं। शब्द के भीतर यह अगले अक्षर के नासिक्य की तरह गूँजता है।'
+    - id: i3
+      sa: गंगा
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+        hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
 - id: p6
   kind: practice
   depth: core
@@ -142,6 +318,38 @@ cards:
   - मः
   - म
   - ः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गंगा
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+        hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The dot above a letter, the {{अनुस्वारः}}, is a nasal hum through the nose: {{अं}}. At the end of a word it stands
+          for {{म्}}: {{रामम्}} may be written {{रामं}}. Inside a word it hums like the nasal of the letter after it.'
+        hi: 'अक्षर के ऊपर का बिन्दु, {{अनुस्वारः}}, नाक से निकलने वाली नासिक्य गूँज है: {{अं}}। शब्द के अन्त में यह {{म्}}
+          का काम करता है: {{रामम्}} को {{रामं}} भी लिखते हैं। शब्द के भीतर यह अगले अक्षर के नासिक्य की तरह गूँजता है।'
+    - id: i3
+      sa: गंगा
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+        hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
 - id: p7
   kind: practice
   depth: core
@@ -178,6 +386,38 @@ cards:
       sa: ॐ
     right:
       text:
+        en: the sacred syllable
+        hi: पवित्र अक्षर
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}: {{सोऽहम्}}.
+        {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}.'
+      hi: '{{।}} {{दण्डः}} पंक्ति या वाक्य का अन्त करता है; {{॥}} श्लोक का अन्त। {{ऽ}}, अवग्रह, छूटे हुए {{अ}} का चिह्न है:
+        {{सोऽहम्}}। {{ॐ}} पवित्र अक्षर है, {{अ}} + {{उ}} + {{म्}}।'
+    items:
+    - id: i0
+      sa: ।
+      meaning:
+        en: ends a line or sentence
+        hi: पंक्ति या वाक्य का अन्त
+    - id: i1
+      sa: ॥
+      meaning:
+        en: ends a verse
+        hi: श्लोक का अन्त
+    - id: i2
+      sa: ऽ
+      meaning:
+        en: a dropped {{अ}} (avagraha)
+        hi: छूटा हुआ {{अ}} (अवग्रह)
+    - id: i3
+      sa: ॐ
+      meaning:
         en: the sacred syllable
         hi: पवित्र अक्षर
 - id: p8
@@ -218,6 +458,38 @@ cards:
       text:
         en: zero
         hi: शून्य
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}: {{सोऽहम्}}.
+        {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}.'
+      hi: '{{।}} {{दण्डः}} पंक्ति या वाक्य का अन्त करता है; {{॥}} श्लोक का अन्त। {{ऽ}}, अवग्रह, छूटे हुए {{अ}} का चिह्न है:
+        {{सोऽहम्}}। {{ॐ}} पवित्र अक्षर है, {{अ}} + {{उ}} + {{म्}}।'
+    items:
+    - id: i0
+      sa: ।
+      meaning:
+        en: ends a line or sentence
+        hi: पंक्ति या वाक्य का अन्त
+    - id: i1
+      sa: ॥
+      meaning:
+        en: ends a verse
+        hi: श्लोक का अन्त
+    - id: i2
+      sa: ऽ
+      meaning:
+        en: a dropped {{अ}} (avagraha)
+        hi: छूटा हुआ {{अ}} (अवग्रह)
+    - id: i3
+      sa: ॐ
+      meaning:
+        en: the sacred syllable
+        hi: पवित्र अक्षर
 - id: p9
   kind: practice
   depth: core
@@ -235,8 +507,10 @@ cards:
   gate: true
   story:
     success:
-      en: 'The line rings out. Nidrālu, the green spirit, springs up, his nightcap gone: “जागर्मि! जागर्मि!” He bows to you, then flutters toward the courtyard door, where the old register waits in the library.'
-      hi: 'पंक्ति गूँज उठती है। हरा भूत, निद्रालु, टोपी गँवाकर उछल पड़ता है: “जागर्मि! जागर्मि!” वह आपको प्रणाम करता है और आँगन के द्वार की ओर उड़ चलता है, जहाँ पुस्तकालय में पुराना रजिस्टर प्रतीक्षा कर रहा है।'
+      en: 'The line rings out. Nidrālu, the green spirit, springs up, his nightcap gone: “जागर्मि! जागर्मि!” He bows to you,
+        then flutters toward the courtyard door, where the old register waits in the library.'
+      hi: 'पंक्ति गूँज उठती है। हरा भूत, निद्रालु, टोपी गँवाकर उछल पड़ता है: “जागर्मि! जागर्मि!” वह आपको प्रणाम करता है और
+        आँगन के द्वार की ओर उड़ चलता है, जहाँ पुस्तकालय में पुराना रजिस्टर प्रतीक्षा कर रहा है।'
     failure:
       en: The pillar stays silent. Read the pieces in order, from {{सत्यमेव}}.
       hi: स्तम्भ चुप रहता है। {{सत्यमेव}} से शुरू कर टुकड़े क्रम से पढ़िए।
@@ -244,3 +518,25 @@ cards:
   - सत्यमेव
   - जयते
   - नानृतं
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: the first, with no vowel
+        hi: पहला, बिना स्वर
+    - id: i1
+      sa: ष
+      meaning:
+        en: the second keeps its vowel
+        hi: दूसरा अपना स्वर रखता है
+    - id: i2
+      sa: क्ष
+      meaning:
+        en: one joined letter
+        hi: एक संयुक्ताक्षर

@@ -73,8 +73,10 @@ cards:
   rows:
   - skill: case.acc
     rule:
-      en: Verbs of eating, reading, seeing, writing, drinking, speaking take an object; verbs of going and coming take a goal in the same case.
-      hi: खाना, पढ़ना, देखना, लिखना, पीना, बोलना क्रियाएँ कर्म लेती हैं; जाना और आना क्रियाएँ उसी विभक्ति में गन्तव्य लेती हैं।
+      en: Verbs of eating, reading, seeing, writing, drinking, speaking take an object; verbs of going and coming take a goal
+        in the same case.
+      hi: खाना, पढ़ना, देखना, लिखना, पीना, बोलना क्रियाएँ कर्म लेती हैं; जाना और आना क्रियाएँ उसी विभक्ति में गन्तव्य लेती
+        हैं।
     tag: core
     taught_in: object.what#t1
   - skill: sent.negation
@@ -94,7 +96,8 @@ cards:
   - skill: case.acc
     formula: बालकान् · बालिकाः · फलानि
     rule:
-      en: 'Plural objects: {{आन्}} for masculine -अ ({{बालकान्}}), {{आः}} for feminine -आ ({{बालिकाः}}), {{आनि}} for neuter ({{फलानि}}).'
+      en: 'Plural objects: {{आन्}} for masculine -अ ({{बालकान्}}), {{आः}} for feminine -आ ({{बालिकाः}}), {{आनि}} for neuter
+        ({{फलानि}}).'
       hi: 'बहुवचन कर्म: पुंलिंग -अ में {{आन्}} ({{बालकान्}}), स्त्रीलिंग -आ में {{आः}} ({{बालिकाः}}), नपुंसक में {{आनि}} ({{फलानि}})।'
     example:
       sa: बालकान्
@@ -109,6 +112,56 @@ cards:
         vacana: Bahu
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: बालकान्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: boys, as objects
+          hi: बालक, कर्म के रूप में
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · plural'
+          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Plural objects: {{आन्}} for masculine -अ ({{बालकान्}}), {{आः}} for feminine -आ ({{बालिकाः}}), {{आनि}} for neuter
+            ({{फलानि}}).'
+          hi: 'बहुवचन कर्म: पुंलिंग -अ में {{आन्}} ({{बालकान्}}), स्त्रीलिंग -आ में {{आः}} ({{बालिकाः}}), नपुंसक में {{आनि}}
+            ({{फलानि}})।'
+      - id: i3
+        sa: बालकान्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: boys, as objects
+          hi: बालक, कर्म के रूप में
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · plural'
+          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{बहुवचन}}'
   - skill: sent.negation
     rule:
       en: 'Prohibition uses {{मा}}, not {{न}}: {{मा गच्छ}}, “do not go”. You will meet it with the commands.'
@@ -120,6 +173,36 @@ cards:
         hi: मत जाओ
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: मा गच्छ
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: do not go
+          hi: मत जाओ
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Prohibition uses {{मा}}, not {{न}}: {{मा गच्छ}}, “do not go”. You will meet it with the commands.'
+          hi: 'निषेध-आज्ञा में {{न}} नहीं {{मा}} आता है: {{मा गच्छ}}, ‘मत जाओ’। आज्ञार्थ के साथ यह मिलेगा।'
+      - id: i3
+        sa: मा गच्छ
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: do not go
+          hi: मत जाओ
 - id: mistakes
   kind: revision
   title:
@@ -156,7 +239,8 @@ cards:
   rows:
   - skill: case.acc
     rule:
-      en: '{{कर्तुरीप्सिततमं कर्म}}: the object is what the doer most wishes to reach; {{कर्मणि द्वितीया}}: it takes the second case.'
+      en: '{{कर्तुरीप्सिततमं कर्म}}: the object is what the doer most wishes to reach; {{कर्मणि द्वितीया}}: it takes the second
+        case.'
       hi: '{{कर्तुरीप्सिततमं कर्म}}: कर्म वह है जिसे कर्ता सबसे अधिक पाना चाहे; {{कर्मणि द्वितीया}}: वह द्वितीया लेता है।'
     sutras:
     - 1.4.49

@@ -24,7 +24,9 @@ cards:
     hi: पाठशाला के भीतर
   depth: core
   image:
-    brief: Children huddled together in a lamplit school hall while a storm hammers the shutters, a small girl clinging to the old Ācārya who sits among them; at the window a grinning grey-green spirit pressing its face against the shutter slats.
+    brief: Children huddled together in a lamplit school hall while a storm hammers the shutters, a small girl clinging to
+      the old Ācārya who sits among them; at the window a grinning grey-green spirit pressing its face against the shutter
+      slats.
     alt:
       en: Children huddle in a school hall during a storm with a grinning wind spirit at the window
       hi: आँधी में पाठशाला के कक्ष में दुबके बच्चे और खिड़की पर मुस्कुराता पवन-भूत
@@ -38,8 +40,12 @@ cards:
     ratio: '4:3'
     id: from-fear-s1
   narration:
-    en: 'Everyone crowds into the school hall as the storm hammers the shutters. Children huddle. A small girl whispers: “I am afraid of the thunder.” The Ācārya sits down among them. “What you fear, Sanskrit puts in the fifth case, as if you were backing away from it.” Outside, the wind spirit presses a grinning face to the window.'
-    hi: आँधी खिड़कियों के किवाड़ों पर प्रहार करती है और सब पाठशाला के कक्ष में सिमट आते हैं। बच्चे दुबक जाते हैं। एक नन्ही बालिका फुसफुसाती है, “मुझे बादल की गड़गड़ाहट से डर लगता है।” आचार्य उनके बीच बैठ जाते हैं। “जिससे डरो उसे संस्कृत पञ्चमी में रखती है, मानो तुम उससे पीछे हट रहे हो।” बाहर पवन-भूत खिड़की पर मुस्कुराता चेहरा सटा देता है।
+    en: 'Everyone crowds into the school hall as the storm hammers the shutters. Children huddle. A small girl whispers: “I
+      am afraid of the thunder.” The Ācārya sits down among them. “What you fear, Sanskrit puts in the fifth case, as if you
+      were backing away from it.” Outside, the wind spirit presses a grinning face to the window.'
+    hi: आँधी खिड़कियों के किवाड़ों पर प्रहार करती है और सब पाठशाला के कक्ष में सिमट आते हैं। बच्चे दुबक जाते हैं। एक नन्ही
+      बालिका फुसफुसाती है, “मुझे बादल की गड़गड़ाहट से डर लगता है।” आचार्य उनके बीच बैठ जाते हैं। “जिससे डरो उसे संस्कृत पञ्चमी
+      में रखती है, मानो तुम उससे पीछे हट रहे हो।” बाहर पवन-भूत खिड़की पर मुस्कुराता चेहरा सटा देता है।
 - id: t1
   kind: teach
   title:
@@ -51,8 +57,10 @@ cards:
   sutras:
   - 1.4.25
   body:
-    en: 'With verbs of fear and protection, the thing feared or guarded against stands in the fifth case: {{व्याघ्रात् बिभेति}} (he fears the tiger), {{बालकं सर्पात् रक्षति}} (he protects the boy from the snake).'
-    hi: 'भय और रक्षा की क्रियाओं के साथ जिससे भय हो या रक्षा की जाए वह पञ्चमी में आता है: {{व्याघ्रात् बिभेति}} (वह बाघ से डरता है), {{बालकं सर्पात् रक्षति}} (वह बालक को साँप से बचाता है)।'
+    en: 'With verbs of fear and protection, the thing feared or guarded against stands in the fifth case: {{व्याघ्रात् बिभेति}}
+      (he fears the tiger), {{बालकं सर्पात् रक्षति}} (he protects the boy from the snake).'
+    hi: 'भय और रक्षा की क्रियाओं के साथ जिससे भय हो या रक्षा की जाए वह पञ्चमी में आता है: {{व्याघ्रात् बिभेति}} (वह बाघ से
+      डरता है), {{बालकं सर्पात् रक्षति}} (वह बालक को साँप से बचाता है)।'
   examples:
   - sa: व्याघ्रात् बिभेति।
     meaning:
@@ -118,6 +126,274 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: व्याघ्रात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tiger
+        hi: बाघ से
+      check:
+        type: subanta
+        stem: व्याघ्र
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{व्याघ्र}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{व्याघ्र}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: बिभेति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fears
+        hi: डरता है
+      check:
+        type: tinanta
+        dhatu: भी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of fear and protection, the thing feared or guarded against stands in the fifth case: {{व्याघ्रात्
+          बिभेति}} (he fears the tiger), {{बालकं सर्पात् रक्षति}} (he protects the boy from the snake).'
+        hi: 'भय और रक्षा की क्रियाओं के साथ जिससे भय हो या रक्षा की जाए वह पञ्चमी में आता है: {{व्याघ्रात् बिभेति}} (वह बाघ
+          से डरता है), {{बालकं सर्पात् रक्षति}} (वह बालक को साँप से बचाता है)।'
+    - id: i5
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सः बालकम् सर्पात् रक्षति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He protects the boy from the snake.
+        hi: वह बालक को साँप से बचाता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: बालकम्
+        gloss:
+          en: boy (object)
+          hi: बालक (कर्म)
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: सर्पात्
+        gloss:
+          en: from the snake
+          hi: साँप से
+        check:
+          type: subanta
+          stem: सर्प
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: रक्षति
+        gloss:
+          en: protects
+          hi: बचाता है
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: बालकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy (object)
+        hi: बालक (कर्म)
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: सर्पात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the snake
+        hi: साँप से
+      check:
+        type: subanta
+        stem: सर्प
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सर्प}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{सर्प}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i4
+      sa: रक्षति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: protects
+        hi: बचाता है
+      check:
+        type: tinanta
+        dhatu: रक्ष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{रक्ष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of fear and protection, the thing feared or guarded against stands in the fifth case: {{व्याघ्रात्
+          बिभेति}} (he fears the tiger), {{बालकं सर्पात् रक्षति}} (he protects the boy from the snake).'
+        hi: 'भय और रक्षा की क्रियाओं के साथ जिससे भय हो या रक्षा की जाए वह पञ्चमी में आता है: {{व्याघ्रात् बिभेति}} (वह बाघ
+          से डरता है), {{बालकं सर्पात् रक्षति}} (वह बालक को साँप से बचाता है)।'
+    - id: i7
+      sa: सः बालकम् सर्पात् रक्षति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He protects the boy from the snake.
+        hi: वह बालक को साँप से बचाता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: बालकम्
+        gloss:
+          en: boy (object)
+          hi: बालक (कर्म)
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: सर्पात्
+        gloss:
+          en: from the snake
+          hi: साँप से
+        check:
+          type: subanta
+          stem: सर्प
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: रक्षति
+        gloss:
+          en: protects
+          hi: बचाता है
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: t2
   kind: teach
   title:
@@ -129,8 +405,10 @@ cards:
   sutras:
   - 2.3.42
   body:
-    en: 'To say “more than”, put the thing compared with in the fifth case and add {{तर}} to the quality: {{रामात् श्यामः दीर्घतरः}}, “Śyāma is taller than Rāma”. The ending {{तर}} means “more”.'
-    hi: '‘से अधिक’ कहने के लिए जिससे तुलना हो उसे पञ्चमी में रखिए और गुण में {{तर}} जोड़िए: {{रामात् श्यामः दीर्घतरः}}, ‘श्याम राम से लम्बा है’। प्रत्यय {{तर}} का अर्थ ‘अधिक’ है।'
+    en: 'To say “more than”, put the thing compared with in the fifth case and add {{तर}} to the quality: {{रामात् श्यामः
+      दीर्घतरः}}, “Śyāma is taller than Rāma”. The ending {{तर}} means “more”.'
+    hi: '‘से अधिक’ कहने के लिए जिससे तुलना हो उसे पञ्चमी में रखिए और गुण में {{तर}} जोड़िए: {{रामात् श्यामः दीर्घतरः}}, ‘श्याम
+      राम से लम्बा है’। प्रत्यय {{तर}} का अर्थ ‘अधिक’ है।'
   examples:
   - sa: रामात् श्यामः दीर्घतरः।
     meaning:
@@ -168,6 +446,154 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: रामात् श्यामः दीर्घतरः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Śyāma is taller than Rāma.
+        hi: श्याम राम से लम्बा है।
+      words:
+      - sa: रामात्
+        gloss:
+          en: than Rāma
+          hi: राम से
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: श्यामः
+        gloss:
+          en: Śyāma
+          hi: श्याम
+        check:
+          type: subanta
+          stem: श्याम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: दीर्घतरः
+        gloss:
+          en: taller
+          hi: अधिक लम्बा
+        check:
+          type: taddhita
+          stem: दीर्घ
+          taddhita: tarap
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: रामात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: than Rāma
+        hi: राम से
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: श्यामः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: Śyāma
+        hi: श्याम
+      check:
+        type: subanta
+        stem: श्याम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{श्याम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{श्याम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: दीर्घतरः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: taller
+        hi: अधिक लम्बा
+      check:
+        type: taddhita
+        stem: दीर्घ
+        taddhita: tarap
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{दीर्घ}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{दीर्घ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To say “more than”, put the thing compared with in the fifth case and add {{तर}} to the quality: {{रामात् श्यामः
+          दीर्घतरः}}, “Śyāma is taller than Rāma”. The ending {{तर}} means “more”.'
+        hi: '‘से अधिक’ कहने के लिए जिससे तुलना हो उसे पञ्चमी में रखिए और गुण में {{तर}} जोड़िए: {{रामात् श्यामः दीर्घतरः}},
+          ‘श्याम राम से लम्बा है’। प्रत्यय {{तर}} का अर्थ ‘अधिक’ है।'
+    - id: i6
+      sa: रामात् श्यामः दीर्घतरः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Śyāma is taller than Rāma.
+        hi: श्याम राम से लम्बा है।
+      words:
+      - sa: रामात्
+        gloss:
+          en: than Rāma
+          hi: राम से
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: श्यामः
+        gloss:
+          en: Śyāma
+          hi: श्याम
+        check:
+          type: subanta
+          stem: श्याम
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: दीर्घतरः
+        gloss:
+          en: taller
+          hi: अधिक लम्बा
+        check:
+          type: taddhita
+          stem: दीर्घ
+          taddhita: tarap
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
 - id: p1
   kind: practice
   depth: core
@@ -186,6 +612,114 @@ cards:
   - sa: व्याघ्रेण
   - correct: true
     sa: व्याघ्रात्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: व्याघ्रात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tiger
+        hi: बाघ से
+      check:
+        type: subanta
+        stem: व्याघ्र
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{व्याघ्र}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{व्याघ्र}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: बिभेति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fears
+        hi: डरता है
+      check:
+        type: tinanta
+        dhatu: भी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of fear and protection, the thing feared or guarded against stands in the fifth case: {{व्याघ्रात्
+          बिभेति}} (he fears the tiger), {{बालकं सर्पात् रक्षति}} (he protects the boy from the snake).'
+        hi: 'भय और रक्षा की क्रियाओं के साथ जिससे भय हो या रक्षा की जाए वह पञ्चमी में आता है: {{व्याघ्रात् बिभेति}} (वह बाघ
+          से डरता है), {{बालकं सर्पात् रक्षति}} (वह बालक को साँप से बचाता है)।'
+    - id: i5
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -224,6 +758,114 @@ cards:
       text:
         en: comes from the village
         hi: गाँव से आता है
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: व्याघ्रात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tiger
+        hi: बाघ से
+      check:
+        type: subanta
+        stem: व्याघ्र
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{व्याघ्र}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{व्याघ्र}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: बिभेति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fears
+        hi: डरता है
+      check:
+        type: tinanta
+        dhatu: भी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of fear and protection, the thing feared or guarded against stands in the fifth case: {{व्याघ्रात्
+          बिभेति}} (he fears the tiger), {{बालकं सर्पात् रक्षति}} (he protects the boy from the snake).'
+        hi: 'भय और रक्षा की क्रियाओं के साथ जिससे भय हो या रक्षा की जाए वह पञ्चमी में आता है: {{व्याघ्रात् बिभेति}} (वह बाघ
+          से डरता है), {{बालकं सर्पात् रक्षति}} (वह बालक को साँप से बचाता है)।'
+    - id: i5
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -265,8 +907,11 @@ cards:
   gate: true
   story:
     success:
-      en: “अहं मेघात् बिभेमि,” you say, and the little girl nods so hard her plait bounces. The Ācārya smiles. “And now say what protects you.” “आचार्यस्य गृहम्,” says Dādī softly. At the window the wind spirit goes still, listening.
-      hi: “अहं मेघात् बिभेमि,” आप कहते हैं, और नन्ही बालिका इतनी ज़ोर से सिर हिलाती है कि उसकी चोटी उछल जाती है। आचार्य मुस्कुराते हैं। “और अब कहो कि तुम्हें किसने बचाया है।” “आचार्यस्य गृहम्,” दादी धीमे से कहती हैं। खिड़की पर पवन-भूत शान्त होकर सुनने लगता है।
+      en: “अहं मेघात् बिभेमि,” you say, and the little girl nods so hard her plait bounces. The Ācārya smiles. “And now say
+        what protects you.” “आचार्यस्य गृहम्,” says Dādī softly. At the window the wind spirit goes still, listening.
+      hi: “अहं मेघात् बिभेमि,” आप कहते हैं, और नन्ही बालिका इतनी ज़ोर से सिर हिलाती है कि उसकी चोटी उछल जाती है। आचार्य मुस्कुराते
+        हैं। “और अब कहो कि तुम्हें किसने बचाया है।” “आचार्यस्य गृहम्,” दादी धीमे से कहती हैं। खिड़की पर पवन-भूत शान्त होकर
+        सुनने लगता है।
     failure:
       en: 'The girl waits. What you fear goes in the fifth case: {{मेघात्}}.'
       hi: 'बालिका प्रतीक्षा करती है। जिससे डरें वह पञ्चमी में: {{मेघात्}}।'
@@ -274,6 +919,114 @@ cards:
   - अहम्
   - मेघात्
   - बिभेमि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: व्याघ्रात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tiger
+        hi: बाघ से
+      check:
+        type: subanta
+        stem: व्याघ्र
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{व्याघ्र}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{व्याघ्र}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: बिभेति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fears
+        hi: डरता है
+      check:
+        type: tinanta
+        dhatu: भी
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{भी}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{भी}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'With verbs of fear and protection, the thing feared or guarded against stands in the fifth case: {{व्याघ्रात्
+          बिभेति}} (he fears the tiger), {{बालकं सर्पात् रक्षति}} (he protects the boy from the snake).'
+        hi: 'भय और रक्षा की क्रियाओं के साथ जिससे भय हो या रक्षा की जाए वह पञ्चमी में आता है: {{व्याघ्रात् बिभेति}} (वह बाघ
+          से डरता है), {{बालकं सर्पात् रक्षति}} (वह बालक को साँप से बचाता है)।'
+    - id: i5
+      sa: व्याघ्रात् बिभेति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He fears the tiger.
+        hi: वह बाघ से डरता है।
+      words:
+      - sa: व्याघ्रात्
+        gloss:
+          en: from the tiger
+          hi: बाघ से
+        check:
+          type: subanta
+          stem: व्याघ्र
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: बिभेति
+        gloss:
+          en: fears
+          hi: डरता है
+        check:
+          type: tinanta
+          dhatu: भी
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: sum
   kind: summary
   title:

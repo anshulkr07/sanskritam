@@ -25,7 +25,8 @@ cards:
     hi: कर्तव्य का शब्द
   depth: core
   image:
-    brief: The Vetāla seated straight on a root with a solemn expression; the paper-fan spirit unfolding his last fold, which carries three lines of writing; Dādī and Śuka listening; firelight.
+    brief: The Vetāla seated straight on a root with a solemn expression; the paper-fan spirit unfolding his last fold, which
+      carries three lines of writing; Dādī and Śuka listening; firelight.
     alt:
       en: A grey spirit sits straight and solemn while a paper-fan spirit opens its last fold
       hi: सीधा और गम्भीर बैठा भूरा भूत, अन्तिम तह खोलता पंखे-सा भूत
@@ -38,10 +39,17 @@ cards:
     place: smashana
     ratio: '4:3'
     id: part-krtya-s1
-    text_in_image: ["कर्तव्यम्", "करणीयम्", "कार्यम्"]
+    text_in_image:
+    - कर्तव्यम्
+    - करणीयम्
+    - कार्यम्
   narration:
-    en: 'The Vetāla straightens up. “Now the word every king must know,” he says. “कर्तव्यम्. What must be done.” The paper-fan spirit nods and unfolds the last fold: “गन्तव्यम्, पठनीयम्, देयम्.” “To be gone to, to be read, to be given.” “These are the duty words,” says Dādī. “They say not what is done, but what ought to be.”'
-    hi: 'वेताल सीधा हो जाता है। “अब वह शब्द जो हर राजा को जानना चाहिए,” वह कहता है। “कर्तव्यम्। जो किया जाना चाहिए।” काग़ज़ी पंखे वाला भूत सिर हिलाता है और अन्तिम तह खोलता है: “गन्तव्यम्, पठनीयम्, देयम्।” “जहाँ जाना है, जो पढ़ना है, जो देना है।” “ये कर्तव्य के शब्द हैं,” दादी कहती हैं। “ये बताते हैं कि क्या किया जा चुका नहीं, बल्कि क्या किया जाना चाहिए।”'
+    en: 'The Vetāla straightens up. “Now the word every king must know,” he says. “कर्तव्यम्. What must be done.” The paper-fan
+      spirit nods and unfolds the last fold: “गन्तव्यम्, पठनीयम्, देयम्.” “To be gone to, to be read, to be given.” “These
+      are the duty words,” says Dādī. “They say not what is done, but what ought to be.”'
+    hi: 'वेताल सीधा हो जाता है। “अब वह शब्द जो हर राजा को जानना चाहिए,” वह कहता है। “कर्तव्यम्। जो किया जाना चाहिए।” काग़ज़ी
+      पंखे वाला भूत सिर हिलाता है और अन्तिम तह खोलता है: “गन्तव्यम्, पठनीयम्, देयम्।” “जहाँ जाना है, जो पढ़ना है, जो देना
+      है।” “ये कर्तव्य के शब्द हैं,” दादी कहती हैं। “ये बताते हैं कि क्या किया जा चुका नहीं, बल्कि क्या किया जाना चाहिए।”'
   quote:
     sa: तस्माद् असक्तः सततं कार्यं कर्म समाचर
     gloss:
@@ -70,8 +78,12 @@ cards:
   skills:
   - krt.krtya
   body:
-    en: '{{-तव्य}}, {{-अनीय}} and {{-य}} (with a lengthened vowel) make “to be done”: {{कृ}} gives {{कर्तव्यम्}}, {{करणीयम्}}, {{कार्यम्}}; {{दा}} gives {{दातव्यम्}}, {{देयम्}}; {{गम्}} gives {{गन्तव्यम्}}. The doer is in the third case: {{मया गन्तव्यम्}}, “I must go”.'
-    hi: '{{-तव्य}}, {{-अनीय}} और {{-य}} (दीर्घ स्वर के साथ) ‘किया जाना चाहिए’ बनाते हैं: {{कृ}} से {{कर्तव्यम्}}, {{करणीयम्}}, {{कार्यम्}}; {{दा}} से {{दातव्यम्}}, {{देयम्}}; {{गम्}} से {{गन्तव्यम्}}। कर्ता तृतीया में रहता है: {{मया गन्तव्यम्}}, ‘मुझे जाना है’।'
+    en: '{{-तव्य}}, {{-अनीय}} and {{-य}} (with a lengthened vowel) make “to be done”: {{कृ}} gives {{कर्तव्यम्}}, {{करणीयम्}},
+      {{कार्यम्}}; {{दा}} gives {{दातव्यम्}}, {{देयम्}}; {{गम्}} gives {{गन्तव्यम्}}. The doer is in the third case: {{मया
+      गन्तव्यम्}}, “I must go”.'
+    hi: '{{-तव्य}}, {{-अनीय}} और {{-य}} (दीर्घ स्वर के साथ) ‘किया जाना चाहिए’ बनाते हैं: {{कृ}} से {{कर्तव्यम्}}, {{करणीयम्}},
+      {{कार्यम्}}; {{दा}} से {{दातव्यम्}}, {{देयम्}}; {{गम्}} से {{गन्तव्यम्}}। कर्ता तृतीया में रहता है: {{मया गन्तव्यम्}},
+      ‘मुझे जाना है’।'
   examples:
   - sa: मया गन्तव्यम्।
     meaning:
@@ -154,6 +166,338 @@ cards:
     meaning:
       en: a “must be done” word
       hi: ‘करना चाहिए’ शब्द
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: मया गन्तव्यम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I must go.
+        hi: मुझे जाना है।
+      words:
+      - sa: मया
+        gloss:
+          en: by me
+          hi: मेरे द्वारा
+      - sa: गन्तव्यम्
+        gloss:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मया
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by me
+        hi: मेरे द्वारा
+    - id: i2
+      sa: गन्तव्यम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: must be gone
+        hi: जाना है
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: tavya
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{-तव्य}}, {{-अनीय}} and {{-य}} (with a lengthened vowel) make “to be done”: {{कृ}} gives {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} gives {{दातव्यम्}}, {{देयम्}}; {{गम्}} gives {{गन्तव्यम्}}. The doer is in the third case: {{मया
+          गन्तव्यम्}}, “I must go”.'
+        hi: '{{-तव्य}}, {{-अनीय}} और {{-य}} (दीर्घ स्वर के साथ) ‘किया जाना चाहिए’ बनाते हैं: {{कृ}} से {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} से {{दातव्यम्}}, {{देयम्}}; {{गम्}} से {{गन्तव्यम्}}। कर्ता तृतीया में रहता है: {{मया गन्तव्यम्}},
+          ‘मुझे जाना है’।'
+    - id: i5
+      sa: मया गन्तव्यम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I must go.
+        hi: मुझे जाना है।
+      words:
+      - sa: मया
+        gloss:
+          en: by me
+          hi: मेरे द्वारा
+      - sa: गन्तव्यम्
+        gloss:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सत्यम् वक्तव्यम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The truth must be spoken.
+        hi: सत्य बोलना चाहिए।
+      words:
+      - sa: सत्यम्
+        gloss:
+          en: the truth
+          hi: सत्य
+      - sa: वक्तव्यम्
+        gloss:
+          en: must be spoken
+          hi: बोलना चाहिए
+        check:
+          type: krdanta
+          dhatu: वच्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सत्यम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: the truth
+        hi: सत्य
+    - id: i2
+      sa: वक्तव्यम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: must be spoken
+        hi: बोलना चाहिए
+      check:
+        type: krdanta
+        dhatu: वच्
+        krt: tavya
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वच्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{वच्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{-तव्य}}, {{-अनीय}} and {{-य}} (with a lengthened vowel) make “to be done”: {{कृ}} gives {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} gives {{दातव्यम्}}, {{देयम्}}; {{गम्}} gives {{गन्तव्यम्}}. The doer is in the third case: {{मया
+          गन्तव्यम्}}, “I must go”.'
+        hi: '{{-तव्य}}, {{-अनीय}} और {{-य}} (दीर्घ स्वर के साथ) ‘किया जाना चाहिए’ बनाते हैं: {{कृ}} से {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} से {{दातव्यम्}}, {{देयम्}}; {{गम्}} से {{गन्तव्यम्}}। कर्ता तृतीया में रहता है: {{मया गन्तव्यम्}},
+          ‘मुझे जाना है’।'
+    - id: i5
+      sa: सत्यम् वक्तव्यम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The truth must be spoken.
+        hi: सत्य बोलना चाहिए।
+      words:
+      - sa: सत्यम्
+        gloss:
+          en: the truth
+          hi: सत्य
+      - sa: वक्तव्यम्
+        gloss:
+          en: must be spoken
+          hi: बोलना चाहिए
+        check:
+          type: krdanta
+          dhatu: वच्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकेन कर्म कार्यम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The duty must be done by the boy.
+        hi: बालक को कर्म करना चाहिए।
+      words:
+      - sa: बालकेन
+        gloss:
+          en: by the boy
+          hi: बालक द्वारा
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: कर्म
+        gloss:
+          en: duty
+          hi: कर्म
+        check:
+          type: subanta
+          stem: कर्मन्
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: कार्यम्
+        gloss:
+          en: to be done
+          hi: करने योग्य
+        check:
+          type: krdanta
+          dhatu: कृ
+          krt: Ryat
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकेन
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by the boy
+        hi: बालक द्वारा
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Trtiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{तृतीया}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+    - id: i2
+      sa: कर्म
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: duty
+        hi: कर्म
+      check:
+        type: subanta
+        stem: कर्मन्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कर्मन्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कर्मन्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: कार्यम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to be done
+        hi: करने योग्य
+      check:
+        type: krdanta
+        dhatu: कृ
+        krt: Ryat
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{कृ}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{कृ}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{-तव्य}}, {{-अनीय}} and {{-य}} (with a lengthened vowel) make “to be done”: {{कृ}} gives {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} gives {{दातव्यम्}}, {{देयम्}}; {{गम्}} gives {{गन्तव्यम्}}. The doer is in the third case: {{मया
+          गन्तव्यम्}}, “I must go”.'
+        hi: '{{-तव्य}}, {{-अनीय}} और {{-य}} (दीर्घ स्वर के साथ) ‘किया जाना चाहिए’ बनाते हैं: {{कृ}} से {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} से {{दातव्यम्}}, {{देयम्}}; {{गम्}} से {{गन्तव्यम्}}। कर्ता तृतीया में रहता है: {{मया गन्तव्यम्}},
+          ‘मुझे जाना है’।'
+    - id: i6
+      sa: बालकेन कर्म कार्यम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The duty must be done by the boy.
+        hi: बालक को कर्म करना चाहिए।
+      words:
+      - sa: बालकेन
+        gloss:
+          en: by the boy
+          hi: बालक द्वारा
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+      - sa: कर्म
+        gloss:
+          en: duty
+          hi: कर्म
+        check:
+          type: subanta
+          stem: कर्मन्
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: कार्यम्
+        gloss:
+          en: to be done
+          hi: करने योग्य
+        check:
+          type: krdanta
+          dhatu: कृ
+          krt: Ryat
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
 - id: tb1
   kind: table
   title:
@@ -346,6 +690,98 @@ cards:
   - sa: कृत्वा
   - correct: true
     sa: कर्तव्यम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: मया गन्तव्यम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I must go.
+        hi: मुझे जाना है।
+      words:
+      - sa: मया
+        gloss:
+          en: by me
+          hi: मेरे द्वारा
+      - sa: गन्तव्यम्
+        gloss:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मया
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by me
+        hi: मेरे द्वारा
+    - id: i2
+      sa: गन्तव्यम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: must be gone
+        hi: जाना है
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: tavya
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{-तव्य}}, {{-अनीय}} and {{-य}} (with a lengthened vowel) make “to be done”: {{कृ}} gives {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} gives {{दातव्यम्}}, {{देयम्}}; {{गम्}} gives {{गन्तव्यम्}}. The doer is in the third case: {{मया
+          गन्तव्यम्}}, “I must go”.'
+        hi: '{{-तव्य}}, {{-अनीय}} और {{-य}} (दीर्घ स्वर के साथ) ‘किया जाना चाहिए’ बनाते हैं: {{कृ}} से {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} से {{दातव्यम्}}, {{देयम्}}; {{गम्}} से {{गन्तव्यम्}}। कर्ता तृतीया में रहता है: {{मया गन्तव्यम्}},
+          ‘मुझे जाना है’।'
+    - id: i5
+      sa: मया गन्तव्यम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I must go.
+        hi: मुझे जाना है।
+      words:
+      - sa: मया
+        gloss:
+          en: by me
+          hi: मेरे द्वारा
+      - sa: गन्तव्यम्
+        gloss:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -366,6 +802,98 @@ cards:
   - नीयम्
   - पठि
   - तव्यम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: मया गन्तव्यम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I must go.
+        hi: मुझे जाना है।
+      words:
+      - sa: मया
+        gloss:
+          en: by me
+          hi: मेरे द्वारा
+      - sa: गन्तव्यम्
+        gloss:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मया
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by me
+        hi: मेरे द्वारा
+    - id: i2
+      sa: गन्तव्यम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: must be gone
+        hi: जाना है
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: tavya
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{-तव्य}}, {{-अनीय}} and {{-य}} (with a lengthened vowel) make “to be done”: {{कृ}} gives {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} gives {{दातव्यम्}}, {{देयम्}}; {{गम्}} gives {{गन्तव्यम्}}. The doer is in the third case: {{मया
+          गन्तव्यम्}}, “I must go”.'
+        hi: '{{-तव्य}}, {{-अनीय}} और {{-य}} (दीर्घ स्वर के साथ) ‘किया जाना चाहिए’ बनाते हैं: {{कृ}} से {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} से {{दातव्यम्}}, {{देयम्}}; {{गम्}} से {{गन्तव्यम्}}। कर्ता तृतीया में रहता है: {{मया गन्तव्यम्}},
+          ‘मुझे जाना है’।'
+    - id: i5
+      sa: मया गन्तव्यम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I must go.
+        hi: मुझे जाना है।
+      words:
+      - sa: मया
+        gloss:
+          en: by me
+          hi: मेरे द्वारा
+      - sa: गन्तव्यम्
+        gloss:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -396,6 +924,98 @@ cards:
       sa: श्रु
     right:
       sa: श्रवणीयम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: मया गन्तव्यम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I must go.
+        hi: मुझे जाना है।
+      words:
+      - sa: मया
+        gloss:
+          en: by me
+          hi: मेरे द्वारा
+      - sa: गन्तव्यम्
+        gloss:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मया
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by me
+        hi: मेरे द्वारा
+    - id: i2
+      sa: गन्तव्यम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: must be gone
+        hi: जाना है
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: tavya
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{-तव्य}}, {{-अनीय}} and {{-य}} (with a lengthened vowel) make “to be done”: {{कृ}} gives {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} gives {{दातव्यम्}}, {{देयम्}}; {{गम्}} gives {{गन्तव्यम्}}. The doer is in the third case: {{मया
+          गन्तव्यम्}}, “I must go”.'
+        hi: '{{-तव्य}}, {{-अनीय}} और {{-य}} (दीर्घ स्वर के साथ) ‘किया जाना चाहिए’ बनाते हैं: {{कृ}} से {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} से {{दातव्यम्}}, {{देयम्}}; {{गम्}} से {{गन्तव्यम्}}। कर्ता तृतीया में रहता है: {{मया गन्तव्यम्}},
+          ‘मुझे जाना है’।'
+    - id: i5
+      sa: मया गन्तव्यम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I must go.
+        hi: मुझे जाना है।
+      words:
+      - sa: मया
+        gloss:
+          en: by me
+          hi: मेरे द्वारा
+      - sa: गन्तव्यम्
+        gloss:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -476,6 +1096,98 @@ cards:
   tokens:
   - मया
   - गन्तव्यम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: मया गन्तव्यम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I must go.
+        hi: मुझे जाना है।
+      words:
+      - sa: मया
+        gloss:
+          en: by me
+          hi: मेरे द्वारा
+      - sa: गन्तव्यम्
+        gloss:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मया
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by me
+        hi: मेरे द्वारा
+    - id: i2
+      sa: गन्तव्यम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: must be gone
+        hi: जाना है
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: tavya
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{-तव्य}}, {{-अनीय}} and {{-य}} (with a lengthened vowel) make “to be done”: {{कृ}} gives {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} gives {{दातव्यम्}}, {{देयम्}}; {{गम्}} gives {{गन्तव्यम्}}. The doer is in the third case: {{मया
+          गन्तव्यम्}}, “I must go”.'
+        hi: '{{-तव्य}}, {{-अनीय}} और {{-य}} (दीर्घ स्वर के साथ) ‘किया जाना चाहिए’ बनाते हैं: {{कृ}} से {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} से {{दातव्यम्}}, {{देयम्}}; {{गम्}} से {{गन्तव्यम्}}। कर्ता तृतीया में रहता है: {{मया गन्तव्यम्}},
+          ‘मुझे जाना है’।'
+    - id: i5
+      sa: मया गन्तव्यम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I must go.
+        hi: मुझे जाना है।
+      words:
+      - sa: मया
+        gloss:
+          en: by me
+          hi: मेरे द्वारा
+      - sa: गन्तव्यम्
+        gloss:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
 - id: p5
   kind: practice
   title:
@@ -495,8 +1207,12 @@ cards:
   gate: true
   story:
     success:
-      en: “सत्यं वक्तव्यम्,” you say, and the Vetāla, who has not stopped smiling for four nights, stops. “The truth must be spoken,” he says slowly. “Yes.” The paper-fan spirit shuts all his folds at once and holds them closed. “Gone, going, done, to do, having done,” he says. “All in one word, each. You have opened me.”
-      hi: “सत्यं वक्तव्यम्,” आप कहते हैं, और वेताल, जो चार रातों से मुस्कराना नहीं रोक पाया था, रुक जाता है। “सत्य बोलना चाहिए,” वह धीरे से कहता है। “हाँ।” काग़ज़ी पंखे वाला भूत अपनी सब तहें एक साथ बन्द करके पकड़े रहता है। “गया, जाता हुआ, किया, करने को, करके,” वह कहता है। “हर एक एक शब्द में। आपने मुझे खोल दिया।”
+      en: “सत्यं वक्तव्यम्,” you say, and the Vetāla, who has not stopped smiling for four nights, stops. “The truth must
+        be spoken,” he says slowly. “Yes.” The paper-fan spirit shuts all his folds at once and holds them closed. “Gone,
+        going, done, to do, having done,” he says. “All in one word, each. You have opened me.”
+      hi: “सत्यं वक्तव्यम्,” आप कहते हैं, और वेताल, जो चार रातों से मुस्कराना नहीं रोक पाया था, रुक जाता है। “सत्य बोलना चाहिए,”
+        वह धीरे से कहता है। “हाँ।” काग़ज़ी पंखे वाला भूत अपनी सब तहें एक साथ बन्द करके पकड़े रहता है। “गया, जाता हुआ, किया,
+        करने को, करके,” वह कहता है। “हर एक एक शब्द में। आपने मुझे खोल दिया।”
     failure:
       en: 'The folds stay open. “The truth must be spoken”: {{सत्यं वक्तव्यम्}}.'
       hi: 'तहें खुली रहती हैं। ‘सत्य बोलना चाहिए’: {{सत्यं वक्तव्यम्}}।'
@@ -505,6 +1221,98 @@ cards:
   - sa: सत्यं वदति
   - correct: true
     sa: सत्यं वक्तव्यम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: मया गन्तव्यम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I must go.
+        hi: मुझे जाना है।
+      words:
+      - sa: मया
+        gloss:
+          en: by me
+          hi: मेरे द्वारा
+      - sa: गन्तव्यम्
+        gloss:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मया
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by me
+        hi: मेरे द्वारा
+    - id: i2
+      sa: गन्तव्यम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: must be gone
+        hi: जाना है
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: tavya
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{-तव्य}}, {{-अनीय}} and {{-य}} (with a lengthened vowel) make “to be done”: {{कृ}} gives {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} gives {{दातव्यम्}}, {{देयम्}}; {{गम्}} gives {{गन्तव्यम्}}. The doer is in the third case: {{मया
+          गन्तव्यम्}}, “I must go”.'
+        hi: '{{-तव्य}}, {{-अनीय}} और {{-य}} (दीर्घ स्वर के साथ) ‘किया जाना चाहिए’ बनाते हैं: {{कृ}} से {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} से {{दातव्यम्}}, {{देयम्}}; {{गम्}} से {{गन्तव्यम्}}। कर्ता तृतीया में रहता है: {{मया गन्तव्यम्}},
+          ‘मुझे जाना है’।'
+    - id: i5
+      sa: मया गन्तव्यम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I must go.
+        hi: मुझे जाना है।
+      words:
+      - sa: मया
+        gloss:
+          en: by me
+          hi: मेरे द्वारा
+      - sa: गन्तव्यम्
+        gloss:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
 - id: pn
   kind: teach
   title:
@@ -519,8 +1327,44 @@ cards:
   - 3.1.124
   - 3.4.70
   body:
-    en: Sūtra 3.1.96, {{तव्यत्तव्यानीयरः}}, gives {{तव्यत्}}, {{तव्य}} and {{अनीयर्}}; 3.1.97, {{अचो यत्}}, gives {{यत्}} after a root ending in a vowel, and 3.1.124, {{ऋहलोर्ण्यत्}}, gives {{ण्यत्}}. 3.4.70, {{तयोरेव कृत्यक्तखलर्थाः}}, says the “must” words state the object or the bare action.
-    hi: सूत्र 3.1.96, {{तव्यत्तव्यानीयरः}}, {{तव्यत्}}, {{तव्य}} और {{अनीयर्}} देता है; 3.1.97, {{अचो यत्}}, स्वरान्त धातु के बाद {{यत्}} देता है, और 3.1.124, {{ऋहलोर्ण्यत्}}, {{ण्यत्}} देता है। 3.4.70, {{तयोरेव कृत्यक्तखलर्थाः}}, कहता है कि ‘चाहिए’ वाले शब्द कर्म या केवल क्रिया को कहते हैं।
+    en: Sūtra 3.1.96, {{तव्यत्तव्यानीयरः}}, gives {{तव्यत्}}, {{तव्य}} and {{अनीयर्}}; 3.1.97, {{अचो यत्}}, gives {{यत्}}
+      after a root ending in a vowel, and 3.1.124, {{ऋहलोर्ण्यत्}}, gives {{ण्यत्}}. 3.4.70, {{तयोरेव कृत्यक्तखलर्थाः}}, says
+      the “must” words state the object or the bare action.
+    hi: सूत्र 3.1.96, {{तव्यत्तव्यानीयरः}}, {{तव्यत्}}, {{तव्य}} और {{अनीयर्}} देता है; 3.1.97, {{अचो यत्}}, स्वरान्त धातु
+      के बाद {{यत्}} देता है, और 3.1.124, {{ऋहलोर्ण्यत्}}, {{ण्यत्}} देता है। 3.4.70, {{तयोरेव कृत्यक्तखलर्थाः}}, कहता है
+      कि ‘चाहिए’ वाले शब्द कर्म या केवल क्रिया को कहते हैं।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 3.1.96, {{तव्यत्तव्यानीयरः}}, gives {{तव्यत्}}, {{तव्य}} and {{अनीयर्}}; 3.1.97, {{अचो यत्}}, gives {{यत्}}
+        after a root ending in a vowel, and 3.1.124, {{ऋहलोर्ण्यत्}}, gives {{ण्यत्}}. 3.4.70, {{तयोरेव कृत्यक्तखलर्थाः}},
+        says the “must” words state the object or the bare action.
+      hi: सूत्र 3.1.96, {{तव्यत्तव्यानीयरः}}, {{तव्यत्}}, {{तव्य}} और {{अनीयर्}} देता है; 3.1.97, {{अचो यत्}}, स्वरान्त धातु
+        के बाद {{यत्}} देता है, और 3.1.124, {{ऋहलोर्ण्यत्}}, {{ण्यत्}} देता है। 3.4.70, {{तयोरेव कृत्यक्तखलर्थाः}}, कहता है
+        कि ‘चाहिए’ वाले शब्द कर्म या केवल क्रिया को कहते हैं।
+    items:
+    - id: i0
+      sa: तव्यत्तव्यानीयरः
+    - id: i1
+      sa: तव्यत्
+    - id: i2
+      sa: तव्य
+    - id: i3
+      sa: अनीयर्
+    - id: i4
+      sa: अचो यत्
+    - id: i5
+      sa: यत्
+    - id: i6
+      sa: ऋहलोर्ण्यत्
+    - id: i7
+      sa: ण्यत्
+    - id: i8
+      sa: तयोरेव कृत्यक्तखलर्थाः
 - id: sum
   kind: summary
   title:

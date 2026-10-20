@@ -82,6 +82,58 @@ cards:
         - सम्
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: संगच्छते
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he meets
+          hi: वह मिलता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - सम्
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A prefix may change the set: {{गम्}} gives {{गच्छति}} but {{सम् + गम्}} can give {{संगच्छते}}.'
+          hi: 'उपसर्ग समूह बदल सकता है: {{गम्}} से {{गच्छति}}, पर {{सम् + गम्}} से {{संगच्छते}} भी बन सकता है।'
+      - id: i3
+        sa: संगच्छते
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he meets
+          hi: वह मिलता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - सम्
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
   - skill: verb.upasarga-list
     rule:
       en: 'Some prefixes join in sandhi: {{उत्}} + {{गच्छति}} gives {{उद्गच्छति}}.'
@@ -101,6 +153,58 @@ cards:
         - उत्
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: उद्गच्छति
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he goes up
+          hi: वह ऊपर जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - उत्
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Some prefixes join in sandhi: {{उत्}} + {{गच्छति}} gives {{उद्गच्छति}}.'
+          hi: 'कुछ उपसर्ग सन्धि से जुड़ते हैं: {{उत्}} + {{गच्छति}} से {{उद्गच्छति}}।'
+      - id: i3
+        sa: उद्गच्छति
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he goes up
+          hi: वह ऊपर जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - उत्
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
 - id: mistakes
   kind: revision
   title:

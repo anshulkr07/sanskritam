@@ -21,7 +21,8 @@ cards:
     hi: शुक की साँस के झोंके
   depth: core
   image:
-    brief: Śuka the parrot on Dādī's shoulder squawking beside the carved temple door, a hand held up in front of his open beak to feel the puff of air; Dādī covering her ears, amused; a lavender shadow giggling in the carving.
+    brief: Śuka the parrot on Dādī's shoulder squawking beside the carved temple door, a hand held up in front of his open
+      beak to feel the puff of air; Dādī covering her ears, amused; a lavender shadow giggling in the carving.
     alt:
       en: A parrot squawks beside a carved door while a grandmother covers her ears
       hi: नक्काशीदार द्वार के पास चिल्लाता तोता, कान ढकती दादी
@@ -34,8 +35,10 @@ cards:
     ratio: '4:3'
     id: cons-breath-s1
   narration:
-    en: Śuka wants to help read the door. He squawks {{खरः}} for every {{करः}}. Dādī covers her ears. “One puff of breath, Śuka, and a hand becomes a donkey.” Behind the carving, a lavender giggle.
-    hi: शुक द्वार पढ़ने में मदद करना चाहता है। वह हर {{करः}} को {{खरः}} चिल्लाता है। दादी कान बन्द कर लेती हैं, “शुक, साँस के एक झोंके से हाथ गधा बन जाता है।” नक्काशी के पीछे बैंगनी हँसी गूँजती है।
+    en: Śuka wants to help read the door. He squawks {{खरः}} for every {{करः}}. Dādī covers her ears. “One puff of breath,
+      Śuka, and a hand becomes a donkey.” Behind the carving, a lavender giggle.
+    hi: शुक द्वार पढ़ने में मदद करना चाहता है। वह हर {{करः}} को {{खरः}} चिल्लाता है। दादी कान बन्द कर लेती हैं, “शुक, साँस
+      के एक झोंके से हाथ गधा बन जाता है।” नक्काशी के पीछे बैंगनी हँसी गूँजती है।
   lines:
   - speaker: shuka
     sa: खरः! खरः!
@@ -51,8 +54,10 @@ cards:
   skills:
   - script.cons.voice
   body:
-    en: 'Every row runs in the same order: plain, breathy, voiced, voiced and breathy, nasal. Put your hand before your mouth: {{ख}} is {{क}} with a puff of air. Touch your throat: {{ग}} buzzes, {{क}} does not.'
-    hi: 'हर पंक्ति एक ही क्रम में चलती है: सादा, साँस वाला, नाद वाला, नाद और साँस वाला, नासिक्य। हाथ मुँह के आगे रखिए: {{ख}} यानी {{क}} पर साँस का झोंका। गले को छुइए: {{ग}} में गूँज है, {{क}} में नहीं।'
+    en: 'Every row runs in the same order: plain, breathy, voiced, voiced and breathy, nasal. Put your hand before your mouth:
+      {{ख}} is {{क}} with a puff of air. Touch your throat: {{ग}} buzzes, {{क}} does not.'
+    hi: 'हर पंक्ति एक ही क्रम में चलती है: सादा, साँस वाला, नाद वाला, नाद और साँस वाला, नासिक्य। हाथ मुँह के आगे रखिए: {{ख}}
+      यानी {{क}} पर साँस का झोंका। गले को छुइए: {{ग}} में गूँज है, {{क}} में नहीं।'
   rows:
   - sa: क
     gloss:
@@ -74,6 +79,43 @@ cards:
     gloss:
       en: 'nasal: ng in “sing”'
       hi: 'नासिक्य: नाक से'
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: 'Every row runs in the same order: plain, breathy, voiced, voiced and breathy, nasal. Put your hand before your
+        mouth: {{ख}} is {{क}} with a puff of air. Touch your throat: {{ग}} buzzes, {{क}} does not.'
+      hi: 'हर पंक्ति एक ही क्रम में चलती है: सादा, साँस वाला, नाद वाला, नाद और साँस वाला, नासिक्य। हाथ मुँह के आगे रखिए: {{ख}}
+        यानी {{क}} पर साँस का झोंका। गले को छुइए: {{ग}} में गूँज है, {{क}} में नहीं।'
+    items:
+    - id: i0
+      sa: क
+      meaning:
+        en: 'plain: k in “skin”, no buzz, no puff'
+        hi: 'अल्पप्राण, अघोष: सादा, न गूँज, न झोंका'
+    - id: i1
+      sa: ख
+      meaning:
+        en: 'breathy: {{क}} with a puff of air'
+        hi: 'महाप्राण, अघोष: {{क}} पर साँस का झोंका'
+    - id: i2
+      sa: ग
+      meaning:
+        en: 'voiced: g in “go”, the throat buzzes'
+        hi: 'अल्पप्राण, घोष: गले में गूँज'
+    - id: i3
+      sa: घ
+      meaning:
+        en: 'voiced and breathy: {{ग}} with a puff'
+        hi: 'महाप्राण, घोष: {{ग}} पर झोंका'
+    - id: i4
+      sa: ङ
+      meaning:
+        en: 'nasal: ng in “sing”'
+        hi: 'नासिक्य: नाक से'
 - id: tb1
   kind: table
   title:
@@ -143,6 +185,43 @@ cards:
     sa: क
   - sa: ख
   - sa: ग
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every row runs in the same order: plain, breathy, voiced, voiced and breathy, nasal. Put your hand before your
+        mouth: {{ख}} is {{क}} with a puff of air. Touch your throat: {{ग}} buzzes, {{क}} does not.'
+      hi: 'हर पंक्ति एक ही क्रम में चलती है: सादा, साँस वाला, नाद वाला, नाद और साँस वाला, नासिक्य। हाथ मुँह के आगे रखिए: {{ख}}
+        यानी {{क}} पर साँस का झोंका। गले को छुइए: {{ग}} में गूँज है, {{क}} में नहीं।'
+    items:
+    - id: i0
+      sa: क
+      meaning:
+        en: 'plain: k in “skin”, no buzz, no puff'
+        hi: 'अल्पप्राण, अघोष: सादा, न गूँज, न झोंका'
+    - id: i1
+      sa: ख
+      meaning:
+        en: 'breathy: {{क}} with a puff of air'
+        hi: 'महाप्राण, अघोष: {{क}} पर साँस का झोंका'
+    - id: i2
+      sa: ग
+      meaning:
+        en: 'voiced: g in “go”, the throat buzzes'
+        hi: 'अल्पप्राण, घोष: गले में गूँज'
+    - id: i3
+      sa: घ
+      meaning:
+        en: 'voiced and breathy: {{ग}} with a puff'
+        hi: 'महाप्राण, घोष: {{ग}} पर झोंका'
+    - id: i4
+      sa: ङ
+      meaning:
+        en: 'nasal: ng in “sing”'
+        hi: 'नासिक्य: नाक से'
 - id: p2
   kind: practice
   depth: core
@@ -187,6 +266,43 @@ cards:
       text:
         en: through the nose
         hi: नाक से
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every row runs in the same order: plain, breathy, voiced, voiced and breathy, nasal. Put your hand before your
+        mouth: {{ख}} is {{क}} with a puff of air. Touch your throat: {{ग}} buzzes, {{क}} does not.'
+      hi: 'हर पंक्ति एक ही क्रम में चलती है: सादा, साँस वाला, नाद वाला, नाद और साँस वाला, नासिक्य। हाथ मुँह के आगे रखिए: {{ख}}
+        यानी {{क}} पर साँस का झोंका। गले को छुइए: {{ग}} में गूँज है, {{क}} में नहीं।'
+    items:
+    - id: i0
+      sa: क
+      meaning:
+        en: 'plain: k in “skin”, no buzz, no puff'
+        hi: 'अल्पप्राण, अघोष: सादा, न गूँज, न झोंका'
+    - id: i1
+      sa: ख
+      meaning:
+        en: 'breathy: {{क}} with a puff of air'
+        hi: 'महाप्राण, अघोष: {{क}} पर साँस का झोंका'
+    - id: i2
+      sa: ग
+      meaning:
+        en: 'voiced: g in “go”, the throat buzzes'
+        hi: 'अल्पप्राण, घोष: गले में गूँज'
+    - id: i3
+      sa: घ
+      meaning:
+        en: 'voiced and breathy: {{ग}} with a puff'
+        hi: 'महाप्राण, घोष: {{ग}} पर झोंका'
+    - id: i4
+      sa: ङ
+      meaning:
+        en: 'nasal: ng in “sing”'
+        hi: 'नासिक्य: नाक से'
 - id: t2
   kind: teach
   title:
@@ -196,7 +312,8 @@ cards:
   skills:
   - script.cons.voice
   body:
-    en: 'Keep the puff, or lose it: the word changes. Hindi speakers know this from {{कल}} and {{खल}}; Sanskrit keeps the difference everywhere.'
+    en: 'Keep the puff, or lose it: the word changes. Hindi speakers know this from {{कल}} and {{खल}}; Sanskrit keeps the
+      difference everywhere.'
     hi: 'झोंका रखिए या हटाइए: शब्द बदल जाता है। हिन्दी बोलने वाले इसे जानते हैं; संस्कृत हर जगह यह अन्तर रखती है।'
   examples:
   - sa: करः
@@ -239,6 +356,199 @@ cards:
       linga: Napumsaka
       vibhakti: Prathama
       vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: करः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a hand; a ray of light (plain {{क}})
+        hi: हाथ; किरण (सादा {{क}})
+      check:
+        type: subanta
+        stem: कर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कर}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Keep the puff, or lose it: the word changes. Hindi speakers know this from {{कल}} and {{खल}}; Sanskrit keeps
+          the difference everywhere.'
+        hi: 'झोंका रखिए या हटाइए: शब्द बदल जाता है। हिन्दी बोलने वाले इसे जानते हैं; संस्कृत हर जगह यह अन्तर रखती है।'
+    - id: i3
+      sa: करः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a hand; a ray of light (plain {{क}})
+        hi: हाथ; किरण (सादा {{क}})
+      check:
+        type: subanta
+        stem: कर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कर}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: खरः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a donkey (breathy {{ख}})
+        hi: गधा (महाप्राण {{ख}})
+      check:
+        type: subanta
+        stem: खर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{खर}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{खर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Keep the puff, or lose it: the word changes. Hindi speakers know this from {{कल}} and {{खल}}; Sanskrit keeps
+          the difference everywhere.'
+        hi: 'झोंका रखिए या हटाइए: शब्द बदल जाता है। हिन्दी बोलने वाले इसे जानते हैं; संस्कृत हर जगह यह अन्तर रखती है।'
+    - id: i3
+      sa: खरः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a donkey (breathy {{ख}})
+        hi: गधा (महाप्राण {{ख}})
+      check:
+        type: subanta
+        stem: खर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{खर}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{खर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: पलम्
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a moment (plain {{प}})
+        hi: पल, क्षण (सादा {{प}})
+      check:
+        type: subanta
+        stem: पल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Keep the puff, or lose it: the word changes. Hindi speakers know this from {{कल}} and {{खल}}; Sanskrit keeps
+          the difference everywhere.'
+        hi: 'झोंका रखिए या हटाइए: शब्द बदल जाता है। हिन्दी बोलने वाले इसे जानते हैं; संस्कृत हर जगह यह अन्तर रखती है।'
+    - id: i3
+      sa: पलम्
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a moment (plain {{प}})
+        hi: पल, क्षण (सादा {{प}})
+      check:
+        type: subanta
+        stem: पल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-3
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: फलम्
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a fruit (breathy {{फ}})
+        hi: फल (महाप्राण {{फ}})
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Keep the puff, or lose it: the word changes. Hindi speakers know this from {{कल}} and {{खल}}; Sanskrit keeps
+          the difference everywhere.'
+        hi: 'झोंका रखिए या हटाइए: शब्द बदल जाता है। हिन्दी बोलने वाले इसे जानते हैं; संस्कृत हर जगह यह अन्तर रखती है।'
+    - id: i3
+      sa: फलम्
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a fruit (breathy {{फ}})
+        hi: फल (महाप्राण {{फ}})
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: e1
   kind: explore
   depth: core
@@ -294,6 +604,43 @@ cards:
   - sa: पलम्
   - correct: true
     sa: फलम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every row runs in the same order: plain, breathy, voiced, voiced and breathy, nasal. Put your hand before your
+        mouth: {{ख}} is {{क}} with a puff of air. Touch your throat: {{ग}} buzzes, {{क}} does not.'
+      hi: 'हर पंक्ति एक ही क्रम में चलती है: सादा, साँस वाला, नाद वाला, नाद और साँस वाला, नासिक्य। हाथ मुँह के आगे रखिए: {{ख}}
+        यानी {{क}} पर साँस का झोंका। गले को छुइए: {{ग}} में गूँज है, {{क}} में नहीं।'
+    items:
+    - id: i0
+      sa: क
+      meaning:
+        en: 'plain: k in “skin”, no buzz, no puff'
+        hi: 'अल्पप्राण, अघोष: सादा, न गूँज, न झोंका'
+    - id: i1
+      sa: ख
+      meaning:
+        en: 'breathy: {{क}} with a puff of air'
+        hi: 'महाप्राण, अघोष: {{क}} पर साँस का झोंका'
+    - id: i2
+      sa: ग
+      meaning:
+        en: 'voiced: g in “go”, the throat buzzes'
+        hi: 'अल्पप्राण, घोष: गले में गूँज'
+    - id: i3
+      sa: घ
+      meaning:
+        en: 'voiced and breathy: {{ग}} with a puff'
+        hi: 'महाप्राण, घोष: {{ग}} पर झोंका'
+    - id: i4
+      sa: ङ
+      meaning:
+        en: 'nasal: ng in “sing”'
+        hi: 'नासिक्य: नाक से'
 - id: p4
   kind: practice
   depth: core
@@ -314,6 +661,43 @@ cards:
   - रः
   - क
   - ग
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every row runs in the same order: plain, breathy, voiced, voiced and breathy, nasal. Put your hand before your
+        mouth: {{ख}} is {{क}} with a puff of air. Touch your throat: {{ग}} buzzes, {{क}} does not.'
+      hi: 'हर पंक्ति एक ही क्रम में चलती है: सादा, साँस वाला, नाद वाला, नाद और साँस वाला, नासिक्य। हाथ मुँह के आगे रखिए: {{ख}}
+        यानी {{क}} पर साँस का झोंका। गले को छुइए: {{ग}} में गूँज है, {{क}} में नहीं।'
+    items:
+    - id: i0
+      sa: क
+      meaning:
+        en: 'plain: k in “skin”, no buzz, no puff'
+        hi: 'अल्पप्राण, अघोष: सादा, न गूँज, न झोंका'
+    - id: i1
+      sa: ख
+      meaning:
+        en: 'breathy: {{क}} with a puff of air'
+        hi: 'महाप्राण, अघोष: {{क}} पर साँस का झोंका'
+    - id: i2
+      sa: ग
+      meaning:
+        en: 'voiced: g in “go”, the throat buzzes'
+        hi: 'अल्पप्राण, घोष: गले में गूँज'
+    - id: i3
+      sa: घ
+      meaning:
+        en: 'voiced and breathy: {{ग}} with a puff'
+        hi: 'महाप्राण, घोष: {{ग}} पर झोंका'
+    - id: i4
+      sa: ङ
+      meaning:
+        en: 'nasal: ng in “sing”'
+        hi: 'नासिक्य: नाक से'
 - id: sum
   kind: summary
   title:

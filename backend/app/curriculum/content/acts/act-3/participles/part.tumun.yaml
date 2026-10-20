@@ -24,7 +24,8 @@ cards:
     hi: चाहने वाला शब्द
   depth: core
   image:
-    brief: The paper-fan spirit folding his answer into a single word on one fold; Śuka testing words with a raised wing; Dādī smiling; the Vetāla listening with half-closed eyes; firelight.
+    brief: The paper-fan spirit folding his answer into a single word on one fold; Śuka testing words with a raised wing;
+      Dādī smiling; the Vetāla listening with half-closed eyes; firelight.
     alt:
       en: A paper-fan spirit folds an answer into one word while a parrot tests words
       hi: काग़ज़ी पंखे जैसा भूत उत्तर को एक शब्द में समेटता, शब्द परखता तोता
@@ -37,10 +38,15 @@ cards:
     place: smashana
     ratio: '4:3'
     id: part-tumun-s1
-    text_in_image: ["पठितुम्"]
+    text_in_image:
+    - पठितुम्
   narration:
-    en: '“Why did you come?” the Vetāla asks, and the paper-fan spirit folds his answer into a single word: “द्रष्टुम्.” “To see.” Śuka tests it. “गन्तुम् इच्छामि.” “I want to go.” “पठितुम् शक्नोमि.” “I am able to read.” “One word,” says Dādī, “and the purpose is done. No ‘in order that’, no ‘so as to’.”'
-    hi: '“तुम क्यों आए?” वेताल पूछता है, और काग़ज़ी पंखे वाला भूत अपना उत्तर एक शब्द में समेट देता है: “द्रष्टुम्।” “देखने के लिए।” शुक परखता है। “गन्तुम् इच्छामि।” “मैं जाना चाहता हूँ।” “पठितुम् शक्नोमि।” “मैं पढ़ सकता हूँ।” “एक शब्द,” दादी कहती हैं, “और प्रयोजन पूरा। न ‘ताकि’, न ‘इस उद्देश्य से’।”'
+    en: '“Why did you come?” the Vetāla asks, and the paper-fan spirit folds his answer into a single word: “द्रष्टुम्.” “To
+      see.” Śuka tests it. “गन्तुम् इच्छामि.” “I want to go.” “पठितुम् शक्नोमि.” “I am able to read.” “One word,” says Dādī,
+      “and the purpose is done. No ‘in order that’, no ‘so as to’.”'
+    hi: '“तुम क्यों आए?” वेताल पूछता है, और काग़ज़ी पंखे वाला भूत अपना उत्तर एक शब्द में समेट देता है: “द्रष्टुम्।” “देखने
+      के लिए।” शुक परखता है। “गन्तुम् इच्छामि।” “मैं जाना चाहता हूँ।” “पठितुम् शक्नोमि।” “मैं पढ़ सकता हूँ।” “एक शब्द,” दादी
+      कहती हैं, “और प्रयोजन पूरा। न ‘ताकि’, न ‘इस उद्देश्य से’।”'
   quote:
     sa: अहमप्यवदं मातर्द्रष्टुमेतद्व्रजाम्यहम्
     gloss:
@@ -66,8 +72,12 @@ cards:
   skills:
   - krt.tumun
   body:
-    en: 'Add {{-तुम्}} to the root to say “to do, in order to do”: {{गम्}} gives {{गन्तुम्}}, {{पठ्}} gives {{पठितुम्}}, {{कृ}} gives {{कर्तुम्}}, {{दृश्}} gives {{द्रष्टुम्}}. It goes with verbs of wanting and being able: {{इच्छति}}, {{शक्नोति}}, and with “goes”: {{द्रष्टुं गच्छति}}.'
-    hi: '‘करना, करने के लिए’ कहने के लिए धातु में {{-तुम्}} जोड़िए: {{गम्}} से {{गन्तुम्}}, {{पठ्}} से {{पठितुम्}}, {{कृ}} से {{कर्तुम्}}, {{दृश्}} से {{द्रष्टुम्}}। यह चाहने और समर्थ होने वाली क्रियाओं के साथ चलता है: {{इच्छति}}, {{शक्नोति}}, और ‘जाता है’ के साथ: {{द्रष्टुं गच्छति}}।'
+    en: 'Add {{-तुम्}} to the root to say “to do, in order to do”: {{गम्}} gives {{गन्तुम्}}, {{पठ्}} gives {{पठितुम्}}, {{कृ}}
+      gives {{कर्तुम्}}, {{दृश्}} gives {{द्रष्टुम्}}. It goes with verbs of wanting and being able: {{इच्छति}}, {{शक्नोति}},
+      and with “goes”: {{द्रष्टुं गच्छति}}.'
+    hi: '‘करना, करने के लिए’ कहने के लिए धातु में {{-तुम्}} जोड़िए: {{गम्}} से {{गन्तुम्}}, {{पठ्}} से {{पठितुम्}}, {{कृ}}
+      से {{कर्तुम्}}, {{दृश्}} से {{द्रष्टुम्}}। यह चाहने और समर्थ होने वाली क्रियाओं के साथ चलता है: {{इच्छति}}, {{शक्नोति}},
+      और ‘जाता है’ के साथ: {{द्रष्टुं गच्छति}}।'
   examples:
   - sa: सः पुस्तकम् पठितुम् इच्छति।
     meaning:
@@ -177,6 +187,444 @@ cards:
     meaning:
       en: the “in order to” ending
       hi: ‘के लिए’ प्रत्यय
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सः पुस्तकम् पठितुम् इच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He wants to read the book.
+        hi: वह पुस्तक पढ़ना चाहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठितुम्
+        gloss:
+          en: to read
+          hi: पढ़ने
+        check:
+          type: krdanta
+          dhatu: पठ्
+          krt: tumun
+      - sa: इच्छति
+        gloss:
+          en: wants
+          hi: चाहता है
+        check:
+          type: tinanta
+          dhatu: इष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Tudadi
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पठितुम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to read
+        hi: पढ़ने
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: tumun
+      feature:
+        en: 'Root: {{पठ्}}'
+        hi: 'धातु: {{पठ्}}'
+    - id: i4
+      sa: इच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: wants
+        hi: चाहता है
+      check:
+        type: tinanta
+        dhatu: इष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tudadi
+      feature:
+        en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Add {{-तुम्}} to the root to say “to do, in order to do”: {{गम्}} gives {{गन्तुम्}}, {{पठ्}} gives {{पठितुम्}},
+          {{कृ}} gives {{कर्तुम्}}, {{दृश्}} gives {{द्रष्टुम्}}. It goes with verbs of wanting and being able: {{इच्छति}},
+          {{शक्नोति}}, and with “goes”: {{द्रष्टुं गच्छति}}.'
+        hi: '‘करना, करने के लिए’ कहने के लिए धातु में {{-तुम्}} जोड़िए: {{गम्}} से {{गन्तुम्}}, {{पठ्}} से {{पठितुम्}}, {{कृ}}
+          से {{कर्तुम्}}, {{दृश्}} से {{द्रष्टुम्}}। यह चाहने और समर्थ होने वाली क्रियाओं के साथ चलता है: {{इच्छति}}, {{शक्नोति}},
+          और ‘जाता है’ के साथ: {{द्रष्टुं गच्छति}}।'
+    - id: i7
+      sa: सः पुस्तकम् पठितुम् इच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He wants to read the book.
+        hi: वह पुस्तक पढ़ना चाहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठितुम्
+        gloss:
+          en: to read
+          hi: पढ़ने
+        check:
+          type: krdanta
+          dhatu: पठ्
+          krt: tumun
+      - sa: इच्छति
+        gloss:
+          en: wants
+          hi: चाहता है
+        check:
+          type: tinanta
+          dhatu: इष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Tudadi
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: अहम् तम् द्रष्टुम् गच्छामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I go to see him.
+        hi: मैं उसे देखने जाता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: तम्
+        gloss:
+          en: him
+          hi: उसे
+        check:
+          type: subanta
+          stem: तद्
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: द्रष्टुम्
+        gloss:
+          en: to see
+          hi: देखने
+        check:
+          type: krdanta
+          dhatu: दृश्
+          krt: tumun
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: तम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: him
+        hi: उसे
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: द्रष्टुम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to see
+        hi: देखने
+      check:
+        type: krdanta
+        dhatu: दृश्
+        krt: tumun
+      feature:
+        en: 'Root: {{दृश्}}'
+        hi: 'धातु: {{दृश्}}'
+    - id: i4
+      sa: गच्छामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Add {{-तुम्}} to the root to say “to do, in order to do”: {{गम्}} gives {{गन्तुम्}}, {{पठ्}} gives {{पठितुम्}},
+          {{कृ}} gives {{कर्तुम्}}, {{दृश्}} gives {{द्रष्टुम्}}. It goes with verbs of wanting and being able: {{इच्छति}},
+          {{शक्नोति}}, and with “goes”: {{द्रष्टुं गच्छति}}.'
+        hi: '‘करना, करने के लिए’ कहने के लिए धातु में {{-तुम्}} जोड़िए: {{गम्}} से {{गन्तुम्}}, {{पठ्}} से {{पठितुम्}}, {{कृ}}
+          से {{कर्तुम्}}, {{दृश्}} से {{द्रष्टुम्}}। यह चाहने और समर्थ होने वाली क्रियाओं के साथ चलता है: {{इच्छति}}, {{शक्नोति}},
+          और ‘जाता है’ के साथ: {{द्रष्टुं गच्छति}}।'
+    - id: i7
+      sa: अहम् तम् द्रष्टुम् गच्छामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I go to see him.
+        hi: मैं उसे देखने जाता हूँ।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: तम्
+        gloss:
+          en: him
+          hi: उसे
+        check:
+          type: subanta
+          stem: तद्
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: द्रष्टुम्
+        gloss:
+          en: to see
+          hi: देखने
+        check:
+          type: krdanta
+          dhatu: दृश्
+          krt: tumun
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सः गन्तुम् शक्नोति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He is able to go.
+        hi: वह जा सकता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: गन्तुम्
+        gloss:
+          en: to go
+          hi: जाने
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tumun
+      - sa: शक्नोति
+        gloss:
+          en: is able
+          hi: समर्थ है
+        check:
+          type: tinanta
+          dhatu: शक्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Svadi
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: गन्तुम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to go
+        hi: जाने
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: tumun
+      feature:
+        en: 'Root: {{गम्}}'
+        hi: 'धातु: {{गम्}}'
+    - id: i3
+      sa: शक्नोति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is able
+        hi: समर्थ है
+      check:
+        type: tinanta
+        dhatu: शक्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Svadi
+      feature:
+        en: 'Root: {{शक्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{शक्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Add {{-तुम्}} to the root to say “to do, in order to do”: {{गम्}} gives {{गन्तुम्}}, {{पठ्}} gives {{पठितुम्}},
+          {{कृ}} gives {{कर्तुम्}}, {{दृश्}} gives {{द्रष्टुम्}}. It goes with verbs of wanting and being able: {{इच्छति}},
+          {{शक्नोति}}, and with “goes”: {{द्रष्टुं गच्छति}}.'
+        hi: '‘करना, करने के लिए’ कहने के लिए धातु में {{-तुम्}} जोड़िए: {{गम्}} से {{गन्तुम्}}, {{पठ्}} से {{पठितुम्}}, {{कृ}}
+          से {{कर्तुम्}}, {{दृश्}} से {{द्रष्टुम्}}। यह चाहने और समर्थ होने वाली क्रियाओं के साथ चलता है: {{इच्छति}}, {{शक्नोति}},
+          और ‘जाता है’ के साथ: {{द्रष्टुं गच्छति}}।'
+    - id: i6
+      sa: सः गन्तुम् शक्नोति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He is able to go.
+        hi: वह जा सकता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: गन्तुम्
+        gloss:
+          en: to go
+          hi: जाने
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tumun
+      - sa: शक्नोति
+        gloss:
+          en: is able
+          hi: समर्थ है
+        check:
+          type: tinanta
+          dhatu: शक्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Svadi
 - id: tb1
   kind: table
   title:
@@ -280,6 +728,166 @@ cards:
   - sa: पठितः
   - correct: true
     sa: पठितुम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः पुस्तकम् पठितुम् इच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He wants to read the book.
+        hi: वह पुस्तक पढ़ना चाहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठितुम्
+        gloss:
+          en: to read
+          hi: पढ़ने
+        check:
+          type: krdanta
+          dhatu: पठ्
+          krt: tumun
+      - sa: इच्छति
+        gloss:
+          en: wants
+          hi: चाहता है
+        check:
+          type: tinanta
+          dhatu: इष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Tudadi
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पठितुम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to read
+        hi: पढ़ने
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: tumun
+      feature:
+        en: 'Root: {{पठ्}}'
+        hi: 'धातु: {{पठ्}}'
+    - id: i4
+      sa: इच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: wants
+        hi: चाहता है
+      check:
+        type: tinanta
+        dhatu: इष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tudadi
+      feature:
+        en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Add {{-तुम्}} to the root to say “to do, in order to do”: {{गम्}} gives {{गन्तुम्}}, {{पठ्}} gives {{पठितुम्}},
+          {{कृ}} gives {{कर्तुम्}}, {{दृश्}} gives {{द्रष्टुम्}}. It goes with verbs of wanting and being able: {{इच्छति}},
+          {{शक्नोति}}, and with “goes”: {{द्रष्टुं गच्छति}}.'
+        hi: '‘करना, करने के लिए’ कहने के लिए धातु में {{-तुम्}} जोड़िए: {{गम्}} से {{गन्तुम्}}, {{पठ्}} से {{पठितुम्}}, {{कृ}}
+          से {{कर्तुम्}}, {{दृश्}} से {{द्रष्टुम्}}। यह चाहने और समर्थ होने वाली क्रियाओं के साथ चलता है: {{इच्छति}}, {{शक्नोति}},
+          और ‘जाता है’ के साथ: {{द्रष्टुं गच्छति}}।'
+    - id: i7
+      sa: सः पुस्तकम् पठितुम् इच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He wants to read the book.
+        hi: वह पुस्तक पढ़ना चाहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठितुम्
+        gloss:
+          en: to read
+          hi: पढ़ने
+        check:
+          type: krdanta
+          dhatu: पठ्
+          krt: tumun
+      - sa: इच्छति
+        gloss:
+          en: wants
+          hi: चाहता है
+        check:
+          type: tinanta
+          dhatu: इष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Tudadi
 - id: p2
   kind: practice
   depth: core
@@ -300,6 +908,166 @@ cards:
   - म्
   - दृश
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः पुस्तकम् पठितुम् इच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He wants to read the book.
+        hi: वह पुस्तक पढ़ना चाहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठितुम्
+        gloss:
+          en: to read
+          hi: पढ़ने
+        check:
+          type: krdanta
+          dhatu: पठ्
+          krt: tumun
+      - sa: इच्छति
+        gloss:
+          en: wants
+          hi: चाहता है
+        check:
+          type: tinanta
+          dhatu: इष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Tudadi
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पठितुम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to read
+        hi: पढ़ने
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: tumun
+      feature:
+        en: 'Root: {{पठ्}}'
+        hi: 'धातु: {{पठ्}}'
+    - id: i4
+      sa: इच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: wants
+        hi: चाहता है
+      check:
+        type: tinanta
+        dhatu: इष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tudadi
+      feature:
+        en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Add {{-तुम्}} to the root to say “to do, in order to do”: {{गम्}} gives {{गन्तुम्}}, {{पठ्}} gives {{पठितुम्}},
+          {{कृ}} gives {{कर्तुम्}}, {{दृश्}} gives {{द्रष्टुम्}}. It goes with verbs of wanting and being able: {{इच्छति}},
+          {{शक्नोति}}, and with “goes”: {{द्रष्टुं गच्छति}}.'
+        hi: '‘करना, करने के लिए’ कहने के लिए धातु में {{-तुम्}} जोड़िए: {{गम्}} से {{गन्तुम्}}, {{पठ्}} से {{पठितुम्}}, {{कृ}}
+          से {{कर्तुम्}}, {{दृश्}} से {{द्रष्टुम्}}। यह चाहने और समर्थ होने वाली क्रियाओं के साथ चलता है: {{इच्छति}}, {{शक्नोति}},
+          और ‘जाता है’ के साथ: {{द्रष्टुं गच्छति}}।'
+    - id: i7
+      sa: सः पुस्तकम् पठितुम् इच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He wants to read the book.
+        hi: वह पुस्तक पढ़ना चाहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठितुम्
+        gloss:
+          en: to read
+          hi: पढ़ने
+        check:
+          type: krdanta
+          dhatu: पठ्
+          krt: tumun
+      - sa: इच्छति
+        gloss:
+          en: wants
+          hi: चाहता है
+        check:
+          type: tinanta
+          dhatu: इष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Tudadi
 - id: p3
   kind: practice
   depth: core
@@ -330,6 +1098,166 @@ cards:
       sa: दा
     right:
       sa: दातुम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः पुस्तकम् पठितुम् इच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He wants to read the book.
+        hi: वह पुस्तक पढ़ना चाहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठितुम्
+        gloss:
+          en: to read
+          hi: पढ़ने
+        check:
+          type: krdanta
+          dhatu: पठ्
+          krt: tumun
+      - sa: इच्छति
+        gloss:
+          en: wants
+          hi: चाहता है
+        check:
+          type: tinanta
+          dhatu: इष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Tudadi
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पठितुम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to read
+        hi: पढ़ने
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: tumun
+      feature:
+        en: 'Root: {{पठ्}}'
+        hi: 'धातु: {{पठ्}}'
+    - id: i4
+      sa: इच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: wants
+        hi: चाहता है
+      check:
+        type: tinanta
+        dhatu: इष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tudadi
+      feature:
+        en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Add {{-तुम्}} to the root to say “to do, in order to do”: {{गम्}} gives {{गन्तुम्}}, {{पठ्}} gives {{पठितुम्}},
+          {{कृ}} gives {{कर्तुम्}}, {{दृश्}} gives {{द्रष्टुम्}}. It goes with verbs of wanting and being able: {{इच्छति}},
+          {{शक्नोति}}, and with “goes”: {{द्रष्टुं गच्छति}}.'
+        hi: '‘करना, करने के लिए’ कहने के लिए धातु में {{-तुम्}} जोड़िए: {{गम्}} से {{गन्तुम्}}, {{पठ्}} से {{पठितुम्}}, {{कृ}}
+          से {{कर्तुम्}}, {{दृश्}} से {{द्रष्टुम्}}। यह चाहने और समर्थ होने वाली क्रियाओं के साथ चलता है: {{इच्छति}}, {{शक्नोति}},
+          और ‘जाता है’ के साथ: {{द्रष्टुं गच्छति}}।'
+    - id: i7
+      sa: सः पुस्तकम् पठितुम् इच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He wants to read the book.
+        hi: वह पुस्तक पढ़ना चाहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठितुम्
+        gloss:
+          en: to read
+          hi: पढ़ने
+        check:
+          type: krdanta
+          dhatu: पठ्
+          krt: tumun
+      - sa: इच्छति
+        gloss:
+          en: wants
+          hi: चाहता है
+        check:
+          type: tinanta
+          dhatu: इष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Tudadi
 - id: e1
   kind: explore
   depth: core
@@ -406,6 +1334,166 @@ cards:
   - अहम्
   - गन्तुम्
   - इच्छामि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः पुस्तकम् पठितुम् इच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He wants to read the book.
+        hi: वह पुस्तक पढ़ना चाहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठितुम्
+        gloss:
+          en: to read
+          hi: पढ़ने
+        check:
+          type: krdanta
+          dhatu: पठ्
+          krt: tumun
+      - sa: इच्छति
+        gloss:
+          en: wants
+          hi: चाहता है
+        check:
+          type: tinanta
+          dhatu: इष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Tudadi
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पठितुम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to read
+        hi: पढ़ने
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: tumun
+      feature:
+        en: 'Root: {{पठ्}}'
+        hi: 'धातु: {{पठ्}}'
+    - id: i4
+      sa: इच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: wants
+        hi: चाहता है
+      check:
+        type: tinanta
+        dhatu: इष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tudadi
+      feature:
+        en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Add {{-तुम्}} to the root to say “to do, in order to do”: {{गम्}} gives {{गन्तुम्}}, {{पठ्}} gives {{पठितुम्}},
+          {{कृ}} gives {{कर्तुम्}}, {{दृश्}} gives {{द्रष्टुम्}}. It goes with verbs of wanting and being able: {{इच्छति}},
+          {{शक्नोति}}, and with “goes”: {{द्रष्टुं गच्छति}}.'
+        hi: '‘करना, करने के लिए’ कहने के लिए धातु में {{-तुम्}} जोड़िए: {{गम्}} से {{गन्तुम्}}, {{पठ्}} से {{पठितुम्}}, {{कृ}}
+          से {{कर्तुम्}}, {{दृश्}} से {{द्रष्टुम्}}। यह चाहने और समर्थ होने वाली क्रियाओं के साथ चलता है: {{इच्छति}}, {{शक्नोति}},
+          और ‘जाता है’ के साथ: {{द्रष्टुं गच्छति}}।'
+    - id: i7
+      sa: सः पुस्तकम् पठितुम् इच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He wants to read the book.
+        hi: वह पुस्तक पढ़ना चाहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठितुम्
+        gloss:
+          en: to read
+          hi: पढ़ने
+        check:
+          type: krdanta
+          dhatu: पठ्
+          krt: tumun
+      - sa: इच्छति
+        gloss:
+          en: wants
+          hi: चाहता है
+        check:
+          type: tinanta
+          dhatu: इष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Tudadi
 - id: p5
   kind: practice
   title:
@@ -425,8 +1513,12 @@ cards:
   gate: true
   story:
     success:
-      en: '“सः पठितुं शक्नोति,” you say. The folded spirit unfolds one of his folds all the way to the edge of the page, and on it there is a single line, in handwriting that is not his: “द्रष्टुम्. To see. For this I came.” “That is mine,” he says, in wonder. “I wrote it before I forgot how.”'
-      hi: '“सः पठितुं शक्नोति,” आप कहते हैं। तहदार भूत अपनी एक तह पन्ने के छोर तक खोल देता है, और उस पर एक पंक्ति है, ऐसी लिखावट में जो उसकी नहीं: “द्रष्टुम्। देखने के लिए। इसी के लिए मैं आया।” “यह मेरा है,” वह विस्मय से कहता है। “मैंने इसे भूलने से पहले लिखा था।”'
+      en: '“सः पठितुं शक्नोति,” you say. The folded spirit unfolds one of his folds all the way to the edge of the page, and
+        on it there is a single line, in handwriting that is not his: “द्रष्टुम्. To see. For this I came.” “That is mine,”
+        he says, in wonder. “I wrote it before I forgot how.”'
+      hi: '“सः पठितुं शक्नोति,” आप कहते हैं। तहदार भूत अपनी एक तह पन्ने के छोर तक खोल देता है, और उस पर एक पंक्ति है, ऐसी
+        लिखावट में जो उसकी नहीं: “द्रष्टुम्। देखने के लिए। इसी के लिए मैं आया।” “यह मेरा है,” वह विस्मय से कहता है। “मैंने
+        इसे भूलने से पहले लिखा था।”'
     failure:
       en: 'The fold stays blank. “He is able to read”: {{सः पठितुं शक्नोति}}.'
       hi: 'तह कोरी रहती है। ‘वह पढ़ सकता है’: {{सः पठितुं शक्नोति}}।'
@@ -435,6 +1527,166 @@ cards:
   - correct: true
     sa: सः पठितुं शक्नोति
   - sa: सः पठितः शक्नोति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः पुस्तकम् पठितुम् इच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He wants to read the book.
+        hi: वह पुस्तक पढ़ना चाहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठितुम्
+        gloss:
+          en: to read
+          hi: पढ़ने
+        check:
+          type: krdanta
+          dhatu: पठ्
+          krt: tumun
+      - sa: इच्छति
+        gloss:
+          en: wants
+          hi: चाहता है
+        check:
+          type: tinanta
+          dhatu: इष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Tudadi
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पठितुम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to read
+        hi: पढ़ने
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: tumun
+      feature:
+        en: 'Root: {{पठ्}}'
+        hi: 'धातु: {{पठ्}}'
+    - id: i4
+      sa: इच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: wants
+        hi: चाहता है
+      check:
+        type: tinanta
+        dhatu: इष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tudadi
+      feature:
+        en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Add {{-तुम्}} to the root to say “to do, in order to do”: {{गम्}} gives {{गन्तुम्}}, {{पठ्}} gives {{पठितुम्}},
+          {{कृ}} gives {{कर्तुम्}}, {{दृश्}} gives {{द्रष्टुम्}}. It goes with verbs of wanting and being able: {{इच्छति}},
+          {{शक्नोति}}, and with “goes”: {{द्रष्टुं गच्छति}}.'
+        hi: '‘करना, करने के लिए’ कहने के लिए धातु में {{-तुम्}} जोड़िए: {{गम्}} से {{गन्तुम्}}, {{पठ्}} से {{पठितुम्}}, {{कृ}}
+          से {{कर्तुम्}}, {{दृश्}} से {{द्रष्टुम्}}। यह चाहने और समर्थ होने वाली क्रियाओं के साथ चलता है: {{इच्छति}}, {{शक्नोति}},
+          और ‘जाता है’ के साथ: {{द्रष्टुं गच्छति}}।'
+    - id: i7
+      sa: सः पुस्तकम् पठितुम् इच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He wants to read the book.
+        hi: वह पुस्तक पढ़ना चाहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठितुम्
+        gloss:
+          en: to read
+          hi: पढ़ने
+        check:
+          type: krdanta
+          dhatu: पठ्
+          krt: tumun
+      - sa: इच्छति
+        gloss:
+          en: wants
+          hi: चाहता है
+        check:
+          type: tinanta
+          dhatu: इष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Tudadi
 - id: pn
   kind: teach
   title:
@@ -447,8 +1699,28 @@ cards:
   - 3.3.10
   - 3.3.158
   body:
-    en: Sūtra 3.3.10, {{तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम्}}, gives {{तुमुन्}} when one action is for another action. And 3.3.158, {{समानकर्तृकेषु तुमुन्}}, gives it with verbs of wanting when the doer is the same.
-    hi: सूत्र 3.3.10, {{तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम्}}, जब एक क्रिया दूसरी के लिए हो तब {{तुमुन्}} देता है। और 3.3.158, {{समानकर्तृकेषु तुमुन्}}, चाहने की क्रियाओं के साथ उसे देता है जब कर्ता वही हो।
+    en: Sūtra 3.3.10, {{तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम्}}, gives {{तुमुन्}} when one action is for another action. And
+      3.3.158, {{समानकर्तृकेषु तुमुन्}}, gives it with verbs of wanting when the doer is the same.
+    hi: सूत्र 3.3.10, {{तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम्}}, जब एक क्रिया दूसरी के लिए हो तब {{तुमुन्}} देता है। और 3.3.158,
+      {{समानकर्तृकेषु तुमुन्}}, चाहने की क्रियाओं के साथ उसे देता है जब कर्ता वही हो।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 3.3.10, {{तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम्}}, gives {{तुमुन्}} when one action is for another action.
+        And 3.3.158, {{समानकर्तृकेषु तुमुन्}}, gives it with verbs of wanting when the doer is the same.
+      hi: सूत्र 3.3.10, {{तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम्}}, जब एक क्रिया दूसरी के लिए हो तब {{तुमुन्}} देता है। और
+        3.3.158, {{समानकर्तृकेषु तुमुन्}}, चाहने की क्रियाओं के साथ उसे देता है जब कर्ता वही हो।
+    items:
+    - id: i0
+      sa: तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम्
+    - id: i1
+      sa: तुमुन्
+    - id: i2
+      sa: समानकर्तृकेषु तुमुन्
 - id: sum
   kind: summary
   title:

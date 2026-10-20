@@ -24,7 +24,8 @@ cards:
     hi: बन्द करने वाला शब्द
   depth: core
   image:
-    brief: The round white stone spirit stopping mid-pat with a thoughtful look; the Vetāla raising an eyebrow from his branch; Dādī and Śuka smiling; a faint glowing speech-mark shape in the air around the spirit's words.
+    brief: The round white stone spirit stopping mid-pat with a thoughtful look; the Vetāla raising an eyebrow from his branch;
+      Dādī and Śuka smiling; a faint glowing speech-mark shape in the air around the spirit's words.
     alt:
       en: A smooth white stone spirit stops mid-pat in thought while a grey spirit raises an eyebrow above
       hi: सोच में थमा चिकना सफ़ेद पत्थर का भूत, ऊपर भौंह उठाता भूरा भूत
@@ -37,10 +38,15 @@ cards:
     place: smashana
     ratio: '4:3'
     id: avy-iti-s1
-    text_in_image: ["इति"]
+    text_in_image:
+    - इति
   narration:
-    en: 'Avyayaka pats himself once more, then stops, pleased, at a thought. “I am whole,” he says, “इति.” “Thus.” The Vetāla raises an eyebrow. “Say it once more, but this time as a thought.” “अहं पूर्णः इति चिन्तयामि.” “I think: ‘I am whole’.” “That is it,” says Dādī. “इति closes a quotation or a thought, like a pair of marks round it.”'
-    hi: 'अव्यय एक बार फिर स्वयं को थपथपाता है, फिर एक विचार पर प्रसन्न होकर रुक जाता है। “मैं पूर्ण हूँ,” वह कहता है, “इति।” “ऐसा।” वेताल भौंह उठाता है। “एक बार और कहो, पर इस बार विचार की तरह।” “अहं पूर्णः इति चिन्तयामि।” “मैं सोचता हूँ: ‘मैं पूर्ण हूँ’।” “वही,” दादी कहती हैं। “इति उद्धरण या विचार को बन्द करता है, उसके चारों ओर दो चिह्नों की तरह।”'
+    en: 'Avyayaka pats himself once more, then stops, pleased, at a thought. “I am whole,” he says, “इति.” “Thus.” The Vetāla
+      raises an eyebrow. “Say it once more, but this time as a thought.” “अहं पूर्णः इति चिन्तयामि.” “I think: ‘I am whole’.”
+      “That is it,” says Dādī. “इति closes a quotation or a thought, like a pair of marks round it.”'
+    hi: 'अव्यय एक बार फिर स्वयं को थपथपाता है, फिर एक विचार पर प्रसन्न होकर रुक जाता है। “मैं पूर्ण हूँ,” वह कहता है, “इति।”
+      “ऐसा।” वेताल भौंह उठाता है। “एक बार और कहो, पर इस बार विचार की तरह।” “अहं पूर्णः इति चिन्तयामि।” “मैं सोचता हूँ: ‘मैं
+      पूर्ण हूँ’।” “वही,” दादी कहती हैं। “इति उद्धरण या विचार को बन्द करता है, उसके चारों ओर दो चिह्नों की तरह।”'
   quote:
     sa: इत्युक्त्वा सावयोः साध्वी कथामेतामवर्णयत्
     gloss:
@@ -56,8 +62,11 @@ cards:
   skills:
   - avy.iti
   body:
-    en: '{{इति}} comes after a quoted word, thought or sentence: {{सः वदति ‘अहं गच्छामि’ इति}}, “he says: ‘I go’”. It also means “so”: {{इति उक्त्वा}}, “having said so”. In epics it joins with the next word: {{इत्युवाच}}, “saying so, he said”.'
-    hi: '{{इति}} उद्धृत शब्द, विचार या वाक्य के बाद आता है: {{सः वदति ‘अहं गच्छामि’ इति}}, ‘वह कहता है: “मैं जाता हूँ”’। इसका अर्थ ‘ऐसा’ भी है: {{इति उक्त्वा}}, ‘ऐसा कहकर’। महाकाव्यों में वह अगले शब्द से जुड़ जाता है: {{इत्युवाच}}, ‘ऐसा कहकर बोला’।'
+    en: '{{इति}} comes after a quoted word, thought or sentence: {{सः वदति ‘अहं गच्छामि’ इति}}, “he says: ‘I go’”. It also
+      means “so”: {{इति उक्त्वा}}, “having said so”. In epics it joins with the next word: {{इत्युवाच}}, “saying so, he said”.'
+    hi: '{{इति}} उद्धृत शब्द, विचार या वाक्य के बाद आता है: {{सः वदति ‘अहं गच्छामि’ इति}}, ‘वह कहता है: “मैं जाता हूँ”’। इसका
+      अर्थ ‘ऐसा’ भी है: {{इति उक्त्वा}}, ‘ऐसा कहकर’। महाकाव्यों में वह अगले शब्द से जुड़ जाता है: {{इत्युवाच}}, ‘ऐसा कहकर
+      बोला’।'
   examples:
   - sa: सः अहम् गच्छामि इति वदति।
     meaning:
@@ -194,6 +203,544 @@ cards:
     meaning:
       en: the closing word of a quotation
       hi: उद्धरण को बन्द करने वाला शब्द
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i3
+      sa: गच्छामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: i4
+      sa: इति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: thus
+        hi: ऐसा
+    - id: i5
+      sa: वदति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: says
+        hi: कहता है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{इति}} comes after a quoted word, thought or sentence: {{सः वदति ‘अहं गच्छामि’ इति}}, “he says: ‘I go’”. It
+          also means “so”: {{इति उक्त्वा}}, “having said so”. In epics it joins with the next word: {{इत्युवाच}}, “saying
+          so, he said”.'
+        hi: '{{इति}} उद्धृत शब्द, विचार या वाक्य के बाद आता है: {{सः वदति ‘अहं गच्छामि’ इति}}, ‘वह कहता है: “मैं जाता हूँ”’।
+          इसका अर्थ ‘ऐसा’ भी है: {{इति उक्त्वा}}, ‘ऐसा कहकर’। महाकाव्यों में वह अगले शब्द से जुड़ जाता है: {{इत्युवाच}}, ‘ऐसा
+          कहकर बोला’।'
+    - id: i8
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: माता पठ इति वदति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'The mother says: “Read!”'
+        hi: 'माता कहती है: “पढ़ो!”'
+      words:
+      - sa: माता
+        gloss:
+          en: mother
+          hi: माता
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठ
+        gloss:
+          en: read!
+          hi: पढ़ो!
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहती है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: माता
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: mother
+        hi: माता
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मातृ}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठ
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read!
+        hi: पढ़ो!
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lot
+        purusha: Madhyama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
+    - id: i3
+      sa: इति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: thus
+        hi: ऐसा
+    - id: i4
+      sa: वदति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: says
+        hi: कहती है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{इति}} comes after a quoted word, thought or sentence: {{सः वदति ‘अहं गच्छामि’ इति}}, “he says: ‘I go’”. It
+          also means “so”: {{इति उक्त्वा}}, “having said so”. In epics it joins with the next word: {{इत्युवाच}}, “saying
+          so, he said”.'
+        hi: '{{इति}} उद्धृत शब्द, विचार या वाक्य के बाद आता है: {{सः वदति ‘अहं गच्छामि’ इति}}, ‘वह कहता है: “मैं जाता हूँ”’।
+          इसका अर्थ ‘ऐसा’ भी है: {{इति उक्त्वा}}, ‘ऐसा कहकर’। महाकाव्यों में वह अगले शब्द से जुड़ जाता है: {{इत्युवाच}}, ‘ऐसा
+          कहकर बोला’।'
+    - id: i7
+      sa: माता पठ इति वदति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'The mother says: “Read!”'
+        hi: 'माता कहती है: “पढ़ो!”'
+      words:
+      - sa: माता
+        gloss:
+          en: mother
+          hi: माता
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठ
+        gloss:
+          en: read!
+          hi: पढ़ो!
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहती है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकः अहम् पण्डितः अस्मि इति चिन्तयति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'The boy thinks: “I am a scholar.”'
+        hi: 'बालक सोचता है: “मैं विद्वान् हूँ।”'
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: पण्डितः
+        gloss:
+          en: scholar
+          hi: विद्वान्
+        check:
+          type: subanta
+          stem: पण्डित
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्मि
+        gloss:
+          en: am
+          hi: हूँ
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: चिन्तयति
+        gloss:
+          en: thinks
+          hi: सोचता है
+        check:
+          type: tinanta
+          dhatu: चिन्त्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Curadi
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i3
+      sa: पण्डितः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: scholar
+        hi: विद्वान्
+      check:
+        type: subanta
+        stem: पण्डित
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पण्डित}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पण्डित}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i4
+      sa: अस्मि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: am
+        hi: हूँ
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: i5
+      sa: इति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: thus
+        hi: ऐसा
+    - id: i6
+      sa: चिन्तयति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: thinks
+        hi: सोचता है
+      check:
+        type: tinanta
+        dhatu: चिन्त्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Curadi
+      feature:
+        en: 'Root: {{चिन्त्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{चिन्त्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{इति}} comes after a quoted word, thought or sentence: {{सः वदति ‘अहं गच्छामि’ इति}}, “he says: ‘I go’”. It
+          also means “so”: {{इति उक्त्वा}}, “having said so”. In epics it joins with the next word: {{इत्युवाच}}, “saying
+          so, he said”.'
+        hi: '{{इति}} उद्धृत शब्द, विचार या वाक्य के बाद आता है: {{सः वदति ‘अहं गच्छामि’ इति}}, ‘वह कहता है: “मैं जाता हूँ”’।
+          इसका अर्थ ‘ऐसा’ भी है: {{इति उक्त्वा}}, ‘ऐसा कहकर’। महाकाव्यों में वह अगले शब्द से जुड़ जाता है: {{इत्युवाच}}, ‘ऐसा
+          कहकर बोला’।'
+    - id: i9
+      sa: बालकः अहम् पण्डितः अस्मि इति चिन्तयति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'The boy thinks: “I am a scholar.”'
+        hi: 'बालक सोचता है: “मैं विद्वान् हूँ।”'
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: पण्डितः
+        gloss:
+          en: scholar
+          hi: विद्वान्
+        check:
+          type: subanta
+          stem: पण्डित
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्मि
+        gloss:
+          en: am
+          hi: हूँ
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: चिन्तयति
+        gloss:
+          en: thinks
+          hi: सोचता है
+        check:
+          type: tinanta
+          dhatu: चिन्त्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Curadi
 - id: p1
   kind: practice
   depth: core
@@ -212,6 +759,164 @@ cards:
   - sa: एव
   - correct: true
     sa: इति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i3
+      sa: गच्छामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: i4
+      sa: इति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: thus
+        hi: ऐसा
+    - id: i5
+      sa: वदति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: says
+        hi: कहता है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{इति}} comes after a quoted word, thought or sentence: {{सः वदति ‘अहं गच्छामि’ इति}}, “he says: ‘I go’”. It
+          also means “so”: {{इति उक्त्वा}}, “having said so”. In epics it joins with the next word: {{इत्युवाच}}, “saying
+          so, he said”.'
+        hi: '{{इति}} उद्धृत शब्द, विचार या वाक्य के बाद आता है: {{सः वदति ‘अहं गच्छामि’ इति}}, ‘वह कहता है: “मैं जाता हूँ”’।
+          इसका अर्थ ‘ऐसा’ भी है: {{इति उक्त्वा}}, ‘ऐसा कहकर’। महाकाव्यों में वह अगले शब्द से जुड़ जाता है: {{इत्युवाच}}, ‘ऐसा
+          कहकर बोला’।'
+    - id: i8
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -250,6 +955,164 @@ cards:
       text:
         en: gives a choice
         hi: विकल्प देता है
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i3
+      sa: गच्छामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: i4
+      sa: इति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: thus
+        hi: ऐसा
+    - id: i5
+      sa: वदति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: says
+        hi: कहता है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{इति}} comes after a quoted word, thought or sentence: {{सः वदति ‘अहं गच्छामि’ इति}}, “he says: ‘I go’”. It
+          also means “so”: {{इति उक्त्वा}}, “having said so”. In epics it joins with the next word: {{इत्युवाच}}, “saying
+          so, he said”.'
+        hi: '{{इति}} उद्धृत शब्द, विचार या वाक्य के बाद आता है: {{सः वदति ‘अहं गच्छामि’ इति}}, ‘वह कहता है: “मैं जाता हूँ”’।
+          इसका अर्थ ‘ऐसा’ भी है: {{इति उक्त्वा}}, ‘ऐसा कहकर’। महाकाव्यों में वह अगले शब्द से जुड़ जाता है: {{इत्युवाच}}, ‘ऐसा
+          कहकर बोला’।'
+    - id: i8
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -289,6 +1152,164 @@ cards:
   - गच्छामि
   - इति
   - वदति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i3
+      sa: गच्छामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: i4
+      sa: इति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: thus
+        hi: ऐसा
+    - id: i5
+      sa: वदति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: says
+        hi: कहता है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{इति}} comes after a quoted word, thought or sentence: {{सः वदति ‘अहं गच्छामि’ इति}}, “he says: ‘I go’”. It
+          also means “so”: {{इति उक्त्वा}}, “having said so”. In epics it joins with the next word: {{इत्युवाच}}, “saying
+          so, he said”.'
+        hi: '{{इति}} उद्धृत शब्द, विचार या वाक्य के बाद आता है: {{सः वदति ‘अहं गच्छामि’ इति}}, ‘वह कहता है: “मैं जाता हूँ”’।
+          इसका अर्थ ‘ऐसा’ भी है: {{इति उक्त्वा}}, ‘ऐसा कहकर’। महाकाव्यों में वह अगले शब्द से जुड़ जाता है: {{इत्युवाच}}, ‘ऐसा
+          कहकर बोला’।'
+    - id: i8
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   title:
@@ -308,8 +1329,11 @@ cards:
   gate: true
   story:
     success:
-      en: “माता पठ इति वदति,” you say. “Thus,” says Avyayaka, and he rolls round and settles, like a stone in a stream. “I thought I was nothing but a pebble,” he says. “But I am the closing of a thought, and a quote cannot be said without me.”
-      hi: “माता पठ इति वदति,” आप कहते हैं। “ऐसा,” अव्यय कहता है, और वह धारा में पत्थर की तरह लुढ़ककर बैठ जाता है। “मैंने सोचा था मैं बस एक कंकड़ हूँ,” वह कहता है। “पर मैं विचार का समापन हूँ, और मेरे बिना कोई उद्धरण नहीं कहा जा सकता।”
+      en: “माता पठ इति वदति,” you say. “Thus,” says Avyayaka, and he rolls round and settles, like a stone in a stream. “I
+        thought I was nothing but a pebble,” he says. “But I am the closing of a thought, and a quote cannot be said without
+        me.”
+      hi: “माता पठ इति वदति,” आप कहते हैं। “ऐसा,” अव्यय कहता है, और वह धारा में पत्थर की तरह लुढ़ककर बैठ जाता है। “मैंने सोचा
+        था मैं बस एक कंकड़ हूँ,” वह कहता है। “पर मैं विचार का समापन हूँ, और मेरे बिना कोई उद्धरण नहीं कहा जा सकता।”
     failure:
       en: He keeps rolling. The quote needs {{इति}}.
       hi: वह लुढ़कता रहता है। उद्धरण को {{इति}} चाहिए।
@@ -318,6 +1342,164 @@ cards:
   - sa: माता पठ तु वदति
   - correct: true
     sa: माता पठ इति वदति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i3
+      sa: गच्छामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाता हूँ
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: i4
+      sa: इति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: thus
+        hi: ऐसा
+    - id: i5
+      sa: वदति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: says
+        hi: कहता है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{इति}} comes after a quoted word, thought or sentence: {{सः वदति ‘अहं गच्छामि’ इति}}, “he says: ‘I go’”. It
+          also means “so”: {{इति उक्त्वा}}, “having said so”. In epics it joins with the next word: {{इत्युवाच}}, “saying
+          so, he said”.'
+        hi: '{{इति}} उद्धृत शब्द, विचार या वाक्य के बाद आता है: {{सः वदति ‘अहं गच्छामि’ इति}}, ‘वह कहता है: “मैं जाता हूँ”’।
+          इसका अर्थ ‘ऐसा’ भी है: {{इति उक्त्वा}}, ‘ऐसा कहकर’। महाकाव्यों में वह अगले शब्द से जुड़ जाता है: {{इत्युवाच}}, ‘ऐसा
+          कहकर बोला’।'
+    - id: i8
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: pn
   kind: teach
   title:
@@ -330,8 +1512,34 @@ cards:
   - 1.4.57
   - 1.1.37
   body:
-    en: '{{इति}} is a {{निपात}}, a particle, listed with {{च}} and {{वा}} in the grammarians'' lists of {{चादि}}. By 1.4.57, {{चादयोऽसत्त्वे}}, it has the name {{निपात}} and, by 1.1.37, it is indeclinable.'
-    hi: '{{इति}} {{निपात}} है, वैयाकरणों की {{चादि}} सूचियों में {{च}} और {{वा}} के साथ गिना जाने वाला। 1.4.57, {{चादयोऽसत्त्वे}}, से उसकी {{निपात}} संज्ञा है और 1.1.37 से वह अव्यय है।'
+    en: '{{इति}} is a {{निपात}}, a particle, listed with {{च}} and {{वा}} in the grammarians'' lists of {{चादि}}. By 1.4.57,
+      {{चादयोऽसत्त्वे}}, it has the name {{निपात}} and, by 1.1.37, it is indeclinable.'
+    hi: '{{इति}} {{निपात}} है, वैयाकरणों की {{चादि}} सूचियों में {{च}} और {{वा}} के साथ गिना जाने वाला। 1.4.57, {{चादयोऽसत्त्वे}},
+      से उसकी {{निपात}} संज्ञा है और 1.1.37 से वह अव्यय है।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: '{{इति}} is a {{निपात}}, a particle, listed with {{च}} and {{वा}} in the grammarians'' lists of {{चादि}}. By 1.4.57,
+        {{चादयोऽसत्त्वे}}, it has the name {{निपात}} and, by 1.1.37, it is indeclinable.'
+      hi: '{{इति}} {{निपात}} है, वैयाकरणों की {{चादि}} सूचियों में {{च}} और {{वा}} के साथ गिना जाने वाला। 1.4.57, {{चादयोऽसत्त्वे}},
+        से उसकी {{निपात}} संज्ञा है और 1.1.37 से वह अव्यय है।'
+    items:
+    - id: i0
+      sa: इति
+    - id: i1
+      sa: निपात
+    - id: i2
+      sa: च
+    - id: i3
+      sa: वा
+    - id: i4
+      sa: चादि
+    - id: i5
+      sa: चादयोऽसत्त्वे
 - id: sum
   kind: summary
   title:

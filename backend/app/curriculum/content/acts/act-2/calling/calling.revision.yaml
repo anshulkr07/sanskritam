@@ -65,8 +65,10 @@ cards:
   rows:
   - skill: case.voc
     rule:
-      en: 'Neuter words call like their first case ({{हे फल}}); the call of a word in -अन् or -वत् drops its {{त्}}: {{राजन्}}, {{भगवन्}}.'
-      hi: 'नपुंसक शब्द अपनी प्रथमा जैसे पुकारे जाते हैं ({{हे फल}}); -अन् या -वत् वाले शब्द की पुकार में {{त्}} हटता है: {{राजन्}}, {{भगवन्}}।'
+      en: 'Neuter words call like their first case ({{हे फल}}); the call of a word in -अन् or -वत् drops its {{त्}}: {{राजन्}},
+        {{भगवन्}}.'
+      hi: 'नपुंसक शब्द अपनी प्रथमा जैसे पुकारे जाते हैं ({{हे फल}}); -अन् या -वत् वाले शब्द की पुकार में {{त्}} हटता है: {{राजन्}},
+        {{भगवन्}}।'
     example:
       sa: फल
       meaning:
@@ -80,6 +82,56 @@ cards:
         vacana: Eka
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: फल
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: O fruit!
+          hi: हे फल!
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Sambodhana
+          vacana: Eka
+        feature:
+          en: 'Stem: {{फल}} · neuter · {{सम्बोधन}} · singular'
+          hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Neuter words call like their first case ({{हे फल}}); the call of a word in -अन् or -वत् drops its {{त्}}: {{राजन्}},
+            {{भगवन्}}.'
+          hi: 'नपुंसक शब्द अपनी प्रथमा जैसे पुकारे जाते हैं ({{हे फल}}); -अन् या -वत् वाले शब्द की पुकार में {{त्}} हटता है:
+            {{राजन्}}, {{भगवन्}}।'
+      - id: i3
+        sa: फल
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: O fruit!
+          hi: हे फल!
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Sambodhana
+          vacana: Eka
+        feature:
+          en: 'Stem: {{फल}} · neuter · {{सम्बोधन}} · singular'
+          hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{सम्बोधन}} · {{एकवचन}}'
   - skill: case.overview
     rule:
       en: Every sentence combines roles, but most sentences use only two or three of them.
@@ -105,6 +157,36 @@ cards:
         hi: अरे आचार्य!
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: भोः आचार्य!
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: hey, teacher!
+          hi: अरे आचार्य!
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{भोः}} (hey!) and {{अयि}} (O!) are calling words too; {{भोः}} often precedes a call: {{भोः आचार्य}}.'
+          hi: '{{भोः}} (अरे!) और {{अयि}} (अहो!) भी पुकार के शब्द हैं; {{भोः}} अक्सर पुकार से पहले आता है: {{भोः आचार्य}}।'
+      - id: i3
+        sa: भोः आचार्य!
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: hey, teacher!
+          hi: अरे आचार्य!
 - id: mistakes
   kind: revision
   title:

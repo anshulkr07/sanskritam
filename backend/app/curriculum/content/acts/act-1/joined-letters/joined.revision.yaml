@@ -80,8 +80,10 @@ cards:
   - skill: script.anusvara
     formula: गं = गङ्ग
     rule:
-      en: 'Inside a word the dot hums as the nasal of the next letter''s row: {{ङ्}} before {{ग}}, {{ञ्}} before {{ज}}, {{न्}} before {{त}}, {{म्}} before {{ब}}.'
-      hi: 'शब्द के भीतर बिन्दु अगले अक्षर की पंक्ति के नासिक्य की तरह गूँजता है: {{ग}} से पहले {{ङ्}}, {{ज}} से पहले {{ञ्}}, {{त}} से पहले {{न्}}, {{ब}} से पहले {{म्}}।'
+      en: 'Inside a word the dot hums as the nasal of the next letter''s row: {{ङ्}} before {{ग}}, {{ञ्}} before {{ज}}, {{न्}}
+        before {{त}}, {{म्}} before {{ब}}.'
+      hi: 'शब्द के भीतर बिन्दु अगले अक्षर की पंक्ति के नासिक्य की तरह गूँजता है: {{ग}} से पहले {{ङ्}}, {{ज}} से पहले {{ञ्}},
+        {{त}} से पहले {{न्}}, {{ब}} से पहले {{म्}}।'
     example:
       sa: गंगा
       meaning:
@@ -89,6 +91,38 @@ cards:
         hi: 'गंगा: बिन्दु {{ङ्}} की तरह गूँजता है'
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: गंगा
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'Gaṅgā: the dot hums as {{ङ्}}'
+          hi: 'गंगा: बिन्दु {{ङ्}} की तरह गूँजता है'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Inside a word the dot hums as the nasal of the next letter''s row: {{ङ्}} before {{ग}}, {{ञ्}} before {{ज}},
+            {{न्}} before {{त}}, {{म्}} before {{ब}}.'
+          hi: 'शब्द के भीतर बिन्दु अगले अक्षर की पंक्ति के नासिक्य की तरह गूँजता है: {{ग}} से पहले {{ङ्}}, {{ज}} से पहले {{ञ्}},
+            {{त}} से पहले {{न्}}, {{ब}} से पहले {{म्}}।'
+      - id: i3
+        sa: गंगा
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'Gaṅgā: the dot hums as {{ङ्}}'
+          hi: 'गंगा: बिन्दु {{ङ्}} की तरह गूँजता है'
   - skill: script.reph
     formula: कीर्ति
     rule:
@@ -101,6 +135,36 @@ cards:
         hi: 'यश: मोड़ {{ति}} के ऊपर बैठता है'
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: कीर्तिः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'fame: the curl sits over {{ति}}'
+          hi: 'यश: मोड़ {{ति}} के ऊपर बैठता है'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: The curl on top is written above the last letter of its syllable, though it is said before that letter.
+          hi: ऊपर का मोड़ अक्षर के अन्तिम वर्ण के ऊपर लिखा जाता है, पर उस वर्ण से पहले बोला जाता है।
+      - id: i3
+        sa: कीर्तिः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'fame: the curl sits over {{ति}}'
+          hi: 'यश: मोड़ {{ति}} के ऊपर बैठता है'
 - id: exceptions
   kind: revision
   title:
@@ -127,6 +191,36 @@ cards:
         hi: 'युद्ध: {{द्}} + {{ध}}'
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: युद्धम्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'war: {{द्}} + {{ध}}'
+          hi: 'युद्ध: {{द्}} + {{ध}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: Some print styles write {{क्त}} {{द्ध}} {{ङ्ग}} as stacked or ligature forms; they read the same.
+          hi: कुछ छापे {{क्त}} {{द्ध}} {{ङ्ग}} को ढेर या जोड़ के रूप में लिखते हैं; पढ़ने में वे समान हैं।
+      - id: i3
+        sa: युद्धम्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'war: {{द्}} + {{ध}}'
+          hi: 'युद्ध: {{द्}} + {{ध}}'
   - skill: script.anusvara
     formula: ँ
     rule:
@@ -139,6 +233,37 @@ cards:
         hi: चिह्न सहित धातु {{कृप्}}
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-2
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: कृपूँ
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: the root {{कृप्}} with its marker
+          hi: चिह्न सहित धातु {{कृप्}}
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: The moon-dot {{ँ}} marks a nasalised vowel; it is Vedic and Hindi, and appears in the root list as a marker.
+          hi: चन्द्रबिन्दु {{ँ}} नासिक्य स्वर का चिह्न है; यह वैदिक और हिन्दी में है, और धातुपाठ में चिह्न के रूप में आता
+            है।
+      - id: i3
+        sa: कृपूँ
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: the root {{कृप्}} with its marker
+          hi: चिह्न सहित धातु {{कृप्}}
   - skill: script.visarga
     formula: ः
     rule:

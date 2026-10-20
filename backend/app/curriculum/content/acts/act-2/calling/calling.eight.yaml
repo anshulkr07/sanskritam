@@ -21,7 +21,8 @@ cards:
     hi: मिल गया
   depth: core
   image:
-    brief: 'A procession returning through a lamplit village lane: the Ācārya with a lamp, the rescued pupil wrapped in Dādī''s shawl, you and Śuka beside them; a faint blue-grey echo-spirit walking quietly alongside; the school gate ahead.'
+    brief: 'A procession returning through a lamplit village lane: the Ācārya with a lamp, the rescued pupil wrapped in Dādī''s
+      shawl, you and Śuka beside them; a faint blue-grey echo-spirit walking quietly alongside; the school gate ahead.'
     alt:
       en: A group walking home through a lamplit lane with a rescued pupil and an echo-spirit
       hi: दीपक की रोशनी में गली से घर लौटता समूह, बचाया हुआ शिष्य और गूँज-भूत
@@ -35,8 +36,12 @@ cards:
     ratio: '4:3'
     id: calling-eight-s1
   narration:
-    en: 'The boy is found curled up in a doorway, safe and cold. Everyone walks home through the lanes together: you, Dādī, the pupil, the Ācārya with his lamp, and a blue-grey echo that has stopped repeating and started to listen. At the school gate Dādī stops. “Eight cases. You have met all eight. Let us put them side by side.”'
-    hi: 'बालक एक द्वार में सिमटा मिलता है, सुरक्षित और ठिठुरा। सब मिलकर गलियों से घर लौटते हैं: आप, दादी, शिष्य, दीपक लिए आचार्य, और एक नीली-धूसर गूँज जो दोहराना छोड़कर सुनने लगी है। पाठशाला के फाटक पर दादी रुकती हैं। “आठ विभक्तियाँ। तुम आठों से मिल चुके हो। आओ उन्हें साथ-साथ रखें।”'
+    en: 'The boy is found curled up in a doorway, safe and cold. Everyone walks home through the lanes together: you, Dādī,
+      the pupil, the Ācārya with his lamp, and a blue-grey echo that has stopped repeating and started to listen. At the school
+      gate Dādī stops. “Eight cases. You have met all eight. Let us put them side by side.”'
+    hi: 'बालक एक द्वार में सिमटा मिलता है, सुरक्षित और ठिठुरा। सब मिलकर गलियों से घर लौटते हैं: आप, दादी, शिष्य, दीपक लिए
+      आचार्य, और एक नीली-धूसर गूँज जो दोहराना छोड़कर सुनने लगी है। पाठशाला के फाटक पर दादी रुकती हैं। “आठ विभक्तियाँ। तुम
+      आठों से मिल चुके हो। आओ उन्हें साथ-साथ रखें।”'
 - id: tb1
   kind: table
   title:
@@ -172,8 +177,10 @@ cards:
   skills:
   - case.overview
   body:
-    en: 'Pāṇini sees six roles in an action, the kārakas: the doer {{कर्ता}}, the object {{कर्म}}, the means {{करणम्}}, the recipient {{सम्प्रदानम्}}, the source {{अपादानम्}}, and the locus {{अधिकरणम्}}. Each takes its own case.'
-    hi: 'पाणिनि क्रिया में छह भूमिकाएँ देखते हैं, कारक: कर्ता, कर्म, करण, सम्प्रदान, अपादान और अधिकरण। हर एक अपनी विभक्ति लेती है।'
+    en: 'Pāṇini sees six roles in an action, the kārakas: the doer {{कर्ता}}, the object {{कर्म}}, the means {{करणम्}}, the
+      recipient {{सम्प्रदानम्}}, the source {{अपादानम्}}, and the locus {{अधिकरणम्}}. Each takes its own case.'
+    hi: 'पाणिनि क्रिया में छह भूमिकाएँ देखते हैं, कारक: कर्ता, कर्म, करण, सम्प्रदान, अपादान और अधिकरण। हर एक अपनी विभक्ति
+      लेती है।'
   rows:
   - sa: कर्ता
     gloss:
@@ -204,6 +211,48 @@ cards:
     meaning:
       en: a role in an action
       hi: क्रिया में भूमिका
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: 'Pāṇini sees six roles in an action, the kārakas: the doer {{कर्ता}}, the object {{कर्म}}, the means {{करणम्}},
+        the recipient {{सम्प्रदानम्}}, the source {{अपादानम्}}, and the locus {{अधिकरणम्}}. Each takes its own case.'
+      hi: 'पाणिनि क्रिया में छह भूमिकाएँ देखते हैं, कारक: कर्ता, कर्म, करण, सम्प्रदान, अपादान और अधिकरण। हर एक अपनी विभक्ति
+        लेती है।'
+    items:
+    - id: i0
+      sa: कर्ता
+      meaning:
+        en: 'the doer: first case'
+        hi: 'करने वाला: प्रथमा'
+    - id: i1
+      sa: कर्म
+      meaning:
+        en: 'the object: second case'
+        hi: 'जिस पर क्रिया: द्वितीया'
+    - id: i2
+      sa: करणम्
+      meaning:
+        en: 'the means: third case'
+        hi: 'साधन: तृतीया'
+    - id: i3
+      sa: सम्प्रदानम्
+      meaning:
+        en: 'the recipient: fourth case'
+        hi: 'पाने वाला: चतुर्थी'
+    - id: i4
+      sa: अपादानम्
+      meaning:
+        en: 'the source: fifth case'
+        hi: 'स्रोत: पञ्चमी'
+    - id: i5
+      sa: अधिकरणम्
+      meaning:
+        en: 'the locus: seventh case'
+        hi: 'आधार: सप्तमी'
 - id: e1
   kind: explore
   depth: core
@@ -303,6 +352,48 @@ cards:
   - correct: true
     sa: नौकया
   - sa: आचार्याय
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Pāṇini sees six roles in an action, the kārakas: the doer {{कर्ता}}, the object {{कर्म}}, the means {{करणम्}},
+        the recipient {{सम्प्रदानम्}}, the source {{अपादानम्}}, and the locus {{अधिकरणम्}}. Each takes its own case.'
+      hi: 'पाणिनि क्रिया में छह भूमिकाएँ देखते हैं, कारक: कर्ता, कर्म, करण, सम्प्रदान, अपादान और अधिकरण। हर एक अपनी विभक्ति
+        लेती है।'
+    items:
+    - id: i0
+      sa: कर्ता
+      meaning:
+        en: 'the doer: first case'
+        hi: 'करने वाला: प्रथमा'
+    - id: i1
+      sa: कर्म
+      meaning:
+        en: 'the object: second case'
+        hi: 'जिस पर क्रिया: द्वितीया'
+    - id: i2
+      sa: करणम्
+      meaning:
+        en: 'the means: third case'
+        hi: 'साधन: तृतीया'
+    - id: i3
+      sa: सम्प्रदानम्
+      meaning:
+        en: 'the recipient: fourth case'
+        hi: 'पाने वाला: चतुर्थी'
+    - id: i4
+      sa: अपादानम्
+      meaning:
+        en: 'the source: fifth case'
+        hi: 'स्रोत: पञ्चमी'
+    - id: i5
+      sa: अधिकरणम्
+      meaning:
+        en: 'the locus: seventh case'
+        hi: 'आधार: सप्तमी'
 - id: p2
   kind: practice
   depth: core
@@ -353,6 +444,48 @@ cards:
       text:
         en: the place
         hi: स्थान
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Pāṇini sees six roles in an action, the kārakas: the doer {{कर्ता}}, the object {{कर्म}}, the means {{करणम्}},
+        the recipient {{सम्प्रदानम्}}, the source {{अपादानम्}}, and the locus {{अधिकरणम्}}. Each takes its own case.'
+      hi: 'पाणिनि क्रिया में छह भूमिकाएँ देखते हैं, कारक: कर्ता, कर्म, करण, सम्प्रदान, अपादान और अधिकरण। हर एक अपनी विभक्ति
+        लेती है।'
+    items:
+    - id: i0
+      sa: कर्ता
+      meaning:
+        en: 'the doer: first case'
+        hi: 'करने वाला: प्रथमा'
+    - id: i1
+      sa: कर्म
+      meaning:
+        en: 'the object: second case'
+        hi: 'जिस पर क्रिया: द्वितीया'
+    - id: i2
+      sa: करणम्
+      meaning:
+        en: 'the means: third case'
+        hi: 'साधन: तृतीया'
+    - id: i3
+      sa: सम्प्रदानम्
+      meaning:
+        en: 'the recipient: fourth case'
+        hi: 'पाने वाला: चतुर्थी'
+    - id: i4
+      sa: अपादानम्
+      meaning:
+        en: 'the source: fifth case'
+        hi: 'स्रोत: पञ्चमी'
+    - id: i5
+      sa: अधिकरणम्
+      meaning:
+        en: 'the locus: seventh case'
+        hi: 'आधार: सप्तमी'
 - id: p3
   kind: practice
   depth: core
@@ -391,6 +524,48 @@ cards:
       text:
         en: seventh
         hi: सप्तमी
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Pāṇini sees six roles in an action, the kārakas: the doer {{कर्ता}}, the object {{कर्म}}, the means {{करणम्}},
+        the recipient {{सम्प्रदानम्}}, the source {{अपादानम्}}, and the locus {{अधिकरणम्}}. Each takes its own case.'
+      hi: 'पाणिनि क्रिया में छह भूमिकाएँ देखते हैं, कारक: कर्ता, कर्म, करण, सम्प्रदान, अपादान और अधिकरण। हर एक अपनी विभक्ति
+        लेती है।'
+    items:
+    - id: i0
+      sa: कर्ता
+      meaning:
+        en: 'the doer: first case'
+        hi: 'करने वाला: प्रथमा'
+    - id: i1
+      sa: कर्म
+      meaning:
+        en: 'the object: second case'
+        hi: 'जिस पर क्रिया: द्वितीया'
+    - id: i2
+      sa: करणम्
+      meaning:
+        en: 'the means: third case'
+        hi: 'साधन: तृतीया'
+    - id: i3
+      sa: सम्प्रदानम्
+      meaning:
+        en: 'the recipient: fourth case'
+        hi: 'पाने वाला: चतुर्थी'
+    - id: i4
+      sa: अपादानम्
+      meaning:
+        en: 'the source: fifth case'
+        hi: 'स्रोत: पञ्चमी'
+    - id: i5
+      sa: अधिकरणम्
+      meaning:
+        en: 'the locus: seventh case'
+        hi: 'आधार: सप्तमी'
 - id: p4
   kind: practice
   title:
@@ -410,8 +585,10 @@ cards:
   gate: true
   story:
     success:
-      en: '“बालकः ग्रामात् आगच्छति,” you say, and the little echo, hearing a full sentence for the first time, hums along: “…ग्रामात् आगच्छति…” Then she says, shyly, in her own voice, “अहम् अस्मि.”'
-      hi: '“बालकः ग्रामात् आगच्छति,” आप कहते हैं, और नन्ही गूँज, पहली बार पूरा वाक्य सुनकर, साथ-साथ गुनगुनाती है: “…ग्रामात् आगच्छति…” फिर वह शर्माकर अपनी ही आवाज़ में कहती है, “अहम् अस्मि।”'
+      en: '“बालकः ग्रामात् आगच्छति,” you say, and the little echo, hearing a full sentence for the first time, hums along:
+        “…ग्रामात् आगच्छति…” Then she says, shyly, in her own voice, “अहम् अस्मि.”'
+      hi: '“बालकः ग्रामात् आगच्छति,” आप कहते हैं, और नन्ही गूँज, पहली बार पूरा वाक्य सुनकर, साथ-साथ गुनगुनाती है: “…ग्रामात्
+        आगच्छति…” फिर वह शर्माकर अपनी ही आवाज़ में कहती है, “अहम् अस्मि।”'
     failure:
       en: The echo waits. Doer, then source, then the verb.
       hi: गूँज प्रतीक्षा करती है। कर्ता, फिर स्रोत, फिर क्रिया।
@@ -419,6 +596,48 @@ cards:
   - बालकः
   - ग्रामात्
   - आगच्छति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Pāṇini sees six roles in an action, the kārakas: the doer {{कर्ता}}, the object {{कर्म}}, the means {{करणम्}},
+        the recipient {{सम्प्रदानम्}}, the source {{अपादानम्}}, and the locus {{अधिकरणम्}}. Each takes its own case.'
+      hi: 'पाणिनि क्रिया में छह भूमिकाएँ देखते हैं, कारक: कर्ता, कर्म, करण, सम्प्रदान, अपादान और अधिकरण। हर एक अपनी विभक्ति
+        लेती है।'
+    items:
+    - id: i0
+      sa: कर्ता
+      meaning:
+        en: 'the doer: first case'
+        hi: 'करने वाला: प्रथमा'
+    - id: i1
+      sa: कर्म
+      meaning:
+        en: 'the object: second case'
+        hi: 'जिस पर क्रिया: द्वितीया'
+    - id: i2
+      sa: करणम्
+      meaning:
+        en: 'the means: third case'
+        hi: 'साधन: तृतीया'
+    - id: i3
+      sa: सम्प्रदानम्
+      meaning:
+        en: 'the recipient: fourth case'
+        hi: 'पाने वाला: चतुर्थी'
+    - id: i4
+      sa: अपादानम्
+      meaning:
+        en: 'the source: fifth case'
+        hi: 'स्रोत: पञ्चमी'
+    - id: i5
+      sa: अधिकरणम्
+      meaning:
+        en: 'the locus: seventh case'
+        hi: 'आधार: सप्तमी'
 - id: sum
   kind: summary
   title:

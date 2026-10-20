@@ -71,7 +71,8 @@ cards:
   rows:
   - skill: verb.lot
     rule:
-      en: '{{अस्}} (be) gives {{एधि}}; {{दा}} gives {{देहि}}; {{कृ}} gives {{कुरु}}; {{श्रु}} gives {{शृणु}}. These do not use the bare root.'
+      en: '{{अस्}} (be) gives {{एधि}}; {{दा}} gives {{देहि}}; {{कृ}} gives {{कुरु}}; {{श्रु}} gives {{शृणु}}. These do not
+        use the bare root.'
       hi: '{{अस्}} (होना) से {{एधि}}; {{दा}} से {{देहि}}; {{कृ}} से {{कुरु}}; {{श्रु}} से {{शृणु}}। ये केवल धातु नहीं लेते।'
     example:
       sa: एधि
@@ -86,6 +87,56 @@ cards:
         vacana: Eka
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: एधि
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: be!
+          hi: रहो!
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+        feature:
+          en: 'Root: {{अस्}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+          hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{अस्}} (be) gives {{एधि}}; {{दा}} gives {{देहि}}; {{कृ}} gives {{कुरु}}; {{श्रु}} gives {{शृणु}}. These do
+            not use the bare root.'
+          hi: '{{अस्}} (होना) से {{एधि}}; {{दा}} से {{देहि}}; {{कृ}} से {{कुरु}}; {{श्रु}} से {{शृणु}}। ये केवल धातु नहीं
+            लेते।'
+      - id: i3
+        sa: एधि
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: be!
+          hi: रहो!
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+        feature:
+          en: 'Root: {{अस्}} · singular · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+          hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लोट्}} · मध्यमपुरुष'
   - skill: verb.lot
     rule:
       en: 'In the dual and plural the endings are plain: {{कुरुतम्}}, {{कुरुत}}; only the singular is odd.'
@@ -103,6 +154,54 @@ cards:
         vacana: Bahu
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: कुरुत
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: do, all of you
+          hi: तुम सब करो
+        check:
+          type: tinanta
+          dhatu: कृ
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Bahu
+        feature:
+          en: 'Root: {{कृ}} · plural · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+          hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लोट्}} · मध्यमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'In the dual and plural the endings are plain: {{कुरुतम्}}, {{कुरुत}}; only the singular is odd.'
+          hi: 'द्विवचन और बहुवचन में प्रत्यय सीधे हैं: {{कुरुतम्}}, {{कुरुत}}; केवल एकवचन विचित्र है।'
+      - id: i3
+        sa: कुरुत
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: do, all of you
+          hi: तुम सब करो
+        check:
+          type: tinanta
+          dhatu: कृ
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Bahu
+        feature:
+          en: 'Root: {{कृ}} · plural · {{लोट्}} · Second person ({{मध्यमपुरुष}})'
+          hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लोट्}} · मध्यमपुरुष'
 - id: mistakes
   kind: revision
   title:
@@ -133,8 +232,10 @@ cards:
   rows:
   - skill: verb.lot
     rule:
-      en: '{{लोट् च}} gives the {{लोट्}} for commands; {{एरुः}} makes {{-ति}} into {{-तु}}; {{अतो हेः}} drops {{हि}} after {{अ}}; {{आडुत्तमस्य पिच्च}} gives {{पठानि}}.'
-      hi: '{{लोट् च}} आज्ञा के लिए {{लोट्}} देता है; {{एरुः}} {{-ति}} को {{-तु}} करता है; {{अतो हेः}} {{अ}} के बाद {{हि}} को हटाता है; {{आडुत्तमस्य पिच्च}} से {{पठानि}} बनता है।'
+      en: '{{लोट् च}} gives the {{लोट्}} for commands; {{एरुः}} makes {{-ति}} into {{-तु}}; {{अतो हेः}} drops {{हि}} after
+        {{अ}}; {{आडुत्तमस्य पिच्च}} gives {{पठानि}}.'
+      hi: '{{लोट् च}} आज्ञा के लिए {{लोट्}} देता है; {{एरुः}} {{-ति}} को {{-तु}} करता है; {{अतो हेः}} {{अ}} के बाद {{हि}}
+        को हटाता है; {{आडुत्तमस्य पिच्च}} से {{पठानि}} बनता है।'
     sutras:
     - 3.3.162
     - 3.4.86

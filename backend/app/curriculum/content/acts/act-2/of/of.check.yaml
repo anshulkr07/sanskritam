@@ -28,6 +28,114 @@ cards:
   - sa: आचार्यम्
   - correct: true
     sa: आचार्यस्य
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: आचार्यस्य गृहम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: the teacher's house
+        hi: आचार्य का घर
+      words:
+      - sa: आचार्यस्य
+        gloss:
+          en: of the teacher
+          hi: आचार्य का
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Sasthi
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: house
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: आचार्यस्य
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: of the teacher
+        hi: आचार्य का
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: house
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For “of” and “belonging to”, use the sixth case, {{षष्ठी}}: {{आचार्यस्य गृहम्}} (the teacher''s house), {{रामस्य
+          पुस्तकम्}} (Rāma''s book). It joins one noun to another.'
+        hi: '‘का, की, के’ के लिए षष्ठी विभक्ति: {{आचार्यस्य गृहम्}} (आचार्य का घर), {{रामस्य पुस्तकम्}} (राम की पुस्तक)। यह
+          एक संज्ञा को दूसरी से जोड़ती है।'
+    - id: i5
+      sa: आचार्यस्य गृहम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: the teacher's house
+        hi: आचार्य का घर
+      words:
+      - sa: आचार्यस्य
+        gloss:
+          en: of the teacher
+          hi: आचार्य का
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Sasthi
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: house
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -60,6 +168,114 @@ cards:
       text:
         en: of the river
         hi: नदी का
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: आचार्यस्य गृहम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: the teacher's house
+        hi: आचार्य का घर
+      words:
+      - sa: आचार्यस्य
+        gloss:
+          en: of the teacher
+          hi: आचार्य का
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Sasthi
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: house
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: आचार्यस्य
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: of the teacher
+        hi: आचार्य का
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: house
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For “of” and “belonging to”, use the sixth case, {{षष्ठी}}: {{आचार्यस्य गृहम्}} (the teacher''s house), {{रामस्य
+          पुस्तकम्}} (Rāma''s book). It joins one noun to another.'
+        hi: '‘का, की, के’ के लिए षष्ठी विभक्ति: {{आचार्यस्य गृहम्}} (आचार्य का घर), {{रामस्य पुस्तकम्}} (राम की पुस्तक)। यह
+          एक संज्ञा को दूसरी से जोड़ती है।'
+    - id: i5
+      sa: आचार्यस्य गृहम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: the teacher's house
+        hi: आचार्य का घर
+      words:
+      - sa: आचार्यस्य
+        gloss:
+          en: of the teacher
+          hi: आचार्य का
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Sasthi
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: house
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -76,6 +292,114 @@ cards:
   tokens:
   - कस्य
   - पुस्तकम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: आचार्यस्य गृहम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: the teacher's house
+        hi: आचार्य का घर
+      words:
+      - sa: आचार्यस्य
+        gloss:
+          en: of the teacher
+          hi: आचार्य का
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Sasthi
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: house
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: आचार्यस्य
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: of the teacher
+        hi: आचार्य का
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: house
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For “of” and “belonging to”, use the sixth case, {{षष्ठी}}: {{आचार्यस्य गृहम्}} (the teacher''s house), {{रामस्य
+          पुस्तकम्}} (Rāma''s book). It joins one noun to another.'
+        hi: '‘का, की, के’ के लिए षष्ठी विभक्ति: {{आचार्यस्य गृहम्}} (आचार्य का घर), {{रामस्य पुस्तकम्}} (राम की पुस्तक)। यह
+          एक संज्ञा को दूसरी से जोड़ती है।'
+    - id: i5
+      sa: आचार्यस्य गृहम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: the teacher's house
+        hi: आचार्य का घर
+      words:
+      - sa: आचार्यस्य
+        gloss:
+          en: of the teacher
+          hi: आचार्य का
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Sasthi
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: house
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -94,6 +418,102 @@ cards:
     sa: मम पिता
   - sa: अहं पिता
   - sa: मयि पिता
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'The sixth case of the pronouns says “my”, “your”, “his”, “her”: {{मम}} (my), {{तव}} (your), {{तस्य}} (his), {{तस्याः}}
+        (her), {{अस्माकम्}} (our), {{युष्माकम्}} (your, many).'
+      hi: 'सर्वनामों की षष्ठी ‘मेरा’, ‘तेरा’, ‘उसका’ बताती है: {{मम}} (मेरा), {{तव}} (तेरा), {{तस्य}} (उसका), {{तस्याः}} (उसकी),
+        {{अस्माकम्}} (हमारा), {{युष्माकम्}} (तुम सबका)।'
+    items:
+    - id: i0
+      sa: मम
+      meaning:
+        en: my, of me
+        hi: मेरा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i1
+      sa: तव
+      meaning:
+        en: your, of you
+        hi: तेरा
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i2
+      sa: तस्य
+      meaning:
+        en: his, of him
+        hi: उसका
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i3
+      sa: तस्याः
+      meaning:
+        en: her, of her
+        hi: उसकी
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i4
+      sa: अस्माकम्
+      meaning:
+        en: our, of us
+        hi: हमारा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+    - id: i5
+      sa: युष्माकम्
+      meaning:
+        en: your, of you all
+        hi: तुम सबका
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
 - id: p5
   kind: practice
   depth: core
@@ -132,6 +552,102 @@ cards:
       text:
         en: our
         hi: हमारा
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'The sixth case of the pronouns says “my”, “your”, “his”, “her”: {{मम}} (my), {{तव}} (your), {{तस्य}} (his), {{तस्याः}}
+        (her), {{अस्माकम्}} (our), {{युष्माकम्}} (your, many).'
+      hi: 'सर्वनामों की षष्ठी ‘मेरा’, ‘तेरा’, ‘उसका’ बताती है: {{मम}} (मेरा), {{तव}} (तेरा), {{तस्य}} (उसका), {{तस्याः}} (उसकी),
+        {{अस्माकम्}} (हमारा), {{युष्माकम्}} (तुम सबका)।'
+    items:
+    - id: i0
+      sa: मम
+      meaning:
+        en: my, of me
+        hi: मेरा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i1
+      sa: तव
+      meaning:
+        en: your, of you
+        hi: तेरा
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i2
+      sa: तस्य
+      meaning:
+        en: his, of him
+        hi: उसका
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i3
+      sa: तस्याः
+      meaning:
+        en: her, of her
+        hi: उसकी
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i4
+      sa: अस्माकम्
+      meaning:
+        en: our, of us
+        hi: हमारा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+    - id: i5
+      sa: युष्माकम्
+      meaning:
+        en: your, of you all
+        hi: तुम सबका
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
 - id: p6
   kind: practice
   depth: core
@@ -149,6 +665,102 @@ cards:
   - correct: true
     sa: पितामही
   - sa: मातामही
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'The sixth case of the pronouns says “my”, “your”, “his”, “her”: {{मम}} (my), {{तव}} (your), {{तस्य}} (his), {{तस्याः}}
+        (her), {{अस्माकम्}} (our), {{युष्माकम्}} (your, many).'
+      hi: 'सर्वनामों की षष्ठी ‘मेरा’, ‘तेरा’, ‘उसका’ बताती है: {{मम}} (मेरा), {{तव}} (तेरा), {{तस्य}} (उसका), {{तस्याः}} (उसकी),
+        {{अस्माकम्}} (हमारा), {{युष्माकम्}} (तुम सबका)।'
+    items:
+    - id: i0
+      sa: मम
+      meaning:
+        en: my, of me
+        hi: मेरा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i1
+      sa: तव
+      meaning:
+        en: your, of you
+        hi: तेरा
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i2
+      sa: तस्य
+      meaning:
+        en: his, of him
+        hi: उसका
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i3
+      sa: तस्याः
+      meaning:
+        en: her, of her
+        hi: उसकी
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i4
+      sa: अस्माकम्
+      meaning:
+        en: our, of us
+        hi: हमारा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+    - id: i5
+      sa: युष्माकम्
+      meaning:
+        en: your, of you all
+        hi: तुम सबका
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
 - id: p7
   kind: practice
   depth: core
@@ -167,6 +779,114 @@ cards:
     params:
       sentence: आचार्यस्य गृहं गच्छति
     seed: 7
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: आचार्यस्य गृहम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: the teacher's house
+        hi: आचार्य का घर
+      words:
+      - sa: आचार्यस्य
+        gloss:
+          en: of the teacher
+          hi: आचार्य का
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Sasthi
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: house
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: आचार्यस्य
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: of the teacher
+        hi: आचार्य का
+      check:
+        type: subanta
+        stem: आचार्य
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{आचार्य}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{आचार्य}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: house
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'For “of” and “belonging to”, use the sixth case, {{षष्ठी}}: {{आचार्यस्य गृहम्}} (the teacher''s house), {{रामस्य
+          पुस्तकम्}} (Rāma''s book). It joins one noun to another.'
+        hi: '‘का, की, के’ के लिए षष्ठी विभक्ति: {{आचार्यस्य गृहम्}} (आचार्य का घर), {{रामस्य पुस्तकम्}} (राम की पुस्तक)। यह
+          एक संज्ञा को दूसरी से जोड़ती है।'
+    - id: i5
+      sa: आचार्यस्य गृहम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: the teacher's house
+        hi: आचार्य का घर
+      words:
+      - sa: आचार्यस्य
+        gloss:
+          en: of the teacher
+          hi: आचार्य का
+        check:
+          type: subanta
+          stem: आचार्य
+          linga: Pum
+          vibhakti: Sasthi
+          vacana: Eka
+      - sa: गृहम्
+        gloss:
+          en: house
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
 - id: p8
   kind: practice
   depth: core
@@ -184,8 +904,12 @@ cards:
   gate: true
   story:
     success:
-      en: “मम माता, मम पिता, मम गृहम्.” Smṛtikā breathes the words in like warm air. Her lamp flares gold and she rises, light as the memory of a song. “रात्रौ गृहे दीपः अस्ति,” she says, and the lamp she has carried so long she places in your hands. Outside, the last of the storm clouds slide off the sky, and a lamp-lit night begins.
-      hi: “मम माता, मम पिता, मम गृहम्।” स्मृतिका शब्दों को गर्म हवा की तरह भीतर लेती है। उसका दीपक सुनहरा भड़क उठता है और वह किसी गीत की स्मृति-सी हल्की उठती है। “रात्रौ गृहे दीपः अस्ति,” वह कहती है, और जो दीपक इतने समय से थामे थी वह आपके हाथों में रख देती है। बाहर आँधी के आख़िरी बादल आकाश से सरक जाते हैं, और दीपों से जगमग रात शुरू होती है।
+      en: “मम माता, मम पिता, मम गृहम्.” Smṛtikā breathes the words in like warm air. Her lamp flares gold and she rises, light
+        as the memory of a song. “रात्रौ गृहे दीपः अस्ति,” she says, and the lamp she has carried so long she places in your
+        hands. Outside, the last of the storm clouds slide off the sky, and a lamp-lit night begins.
+      hi: “मम माता, मम पिता, मम गृहम्।” स्मृतिका शब्दों को गर्म हवा की तरह भीतर लेती है। उसका दीपक सुनहरा भड़क उठता है और
+        वह किसी गीत की स्मृति-सी हल्की उठती है। “रात्रौ गृहे दीपः अस्ति,” वह कहती है, और जो दीपक इतने समय से थामे थी वह आपके
+        हाथों में रख देती है। बाहर आँधी के आख़िरी बादल आकाश से सरक जाते हैं, और दीपों से जगमग रात शुरू होती है।
     failure:
       en: The lamp stays low. Three “my”-phrases, each with a name of kin or home.
       hi: दीपक मद्धम रहता है। तीन ‘मेरा’-वाक्यांश, हर एक में नाते या घर का नाम।
@@ -196,3 +920,99 @@ cards:
   - पिता
   - मम
   - गृहम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'The sixth case of the pronouns says “my”, “your”, “his”, “her”: {{मम}} (my), {{तव}} (your), {{तस्य}} (his), {{तस्याः}}
+        (her), {{अस्माकम्}} (our), {{युष्माकम्}} (your, many).'
+      hi: 'सर्वनामों की षष्ठी ‘मेरा’, ‘तेरा’, ‘उसका’ बताती है: {{मम}} (मेरा), {{तव}} (तेरा), {{तस्य}} (उसका), {{तस्याः}} (उसकी),
+        {{अस्माकम्}} (हमारा), {{युष्माकम्}} (तुम सबका)।'
+    items:
+    - id: i0
+      sa: मम
+      meaning:
+        en: my, of me
+        hi: मेरा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i1
+      sa: तव
+      meaning:
+        en: your, of you
+        hi: तेरा
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i2
+      sa: तस्य
+      meaning:
+        en: his, of him
+        hi: उसका
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i3
+      sa: तस्याः
+      meaning:
+        en: her, of her
+        hi: उसकी
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i4
+      sa: अस्माकम्
+      meaning:
+        en: our, of us
+        hi: हमारा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+    - id: i5
+      sa: युष्माकम्
+      meaning:
+        en: your, of you all
+        hi: तुम सबका
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'

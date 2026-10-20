@@ -80,6 +80,55 @@ cards:
         vacana: Eka
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: दास्यति
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he will give
+          hi: वह देगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{दा}} · singular · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Some roots take {{-स्य-}} without {{इ}}: {{दा}} gives {{दास्यति}}, {{पा}} gives {{पास्यति}}, {{स्था}} gives
+            {{स्थास्यति}}.'
+          hi: 'कुछ धातुएँ {{इ}} के बिना {{-स्य-}} लेती हैं: {{दा}} से {{दास्यति}}, {{पा}} से {{पास्यति}}, {{स्था}} से {{स्थास्यति}}।'
+      - id: i3
+        sa: दास्यति
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he will give
+          hi: वह देगा
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lrt
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{दा}} · singular · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{दा}} · {{एकवचन}} · {{लृट्}} · प्रथमपुरुष'
   - skill: verb.lrt
     rule:
       en: 'Some roots change their middle: {{दृश्}} gives {{द्रक्ष्यति}}, {{श्रु}} gives {{श्रोष्यति}}, {{वच्}} gives {{वक्ष्यति}}.'
@@ -97,6 +146,55 @@ cards:
         vacana: Eka
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: द्रक्ष्यति
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he will see
+          hi: वह देखेगा
+        check:
+          type: tinanta
+          dhatu: दृश्
+          lakara: Lrt
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{दृश्}} · singular · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लृट्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Some roots change their middle: {{दृश्}} gives {{द्रक्ष्यति}}, {{श्रु}} gives {{श्रोष्यति}}, {{वच्}} gives
+            {{वक्ष्यति}}.'
+          hi: 'कुछ धातुओं का बीच बदलता है: {{दृश्}} से {{द्रक्ष्यति}}, {{श्रु}} से {{श्रोष्यति}}, {{वच्}} से {{वक्ष्यति}}।'
+      - id: i3
+        sa: द्रक्ष्यति
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he will see
+          hi: वह देखेगा
+        check:
+          type: tinanta
+          dhatu: दृश्
+          lakara: Lrt
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{दृश्}} · singular · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लृट्}} · प्रथमपुरुष'
 - id: mistakes
   kind: revision
   title:
@@ -127,8 +225,10 @@ cards:
   rows:
   - skill: verb.lrt
     rule:
-      en: '{{लृट् शेषे च}} and {{स्यतासी लृलुटोः}}: the tense and its sign {{स्य}}. {{आर्धधातुकस्येड् वलादेः}} and {{आदेशप्रत्यययोः}}: the {{इ}} and the {{ष्}}.'
-      hi: '{{लृट् शेषे च}} और {{स्यतासी लृलुटोः}}: काल और उसका चिह्न {{स्य}}। {{आर्धधातुकस्येड् वलादेः}} और {{आदेशप्रत्यययोः}}: {{इ}} और {{ष्}}।'
+      en: '{{लृट् शेषे च}} and {{स्यतासी लृलुटोः}}: the tense and its sign {{स्य}}. {{आर्धधातुकस्येड् वलादेः}} and {{आदेशप्रत्यययोः}}:
+        the {{इ}} and the {{ष्}}.'
+      hi: '{{लृट् शेषे च}} और {{स्यतासी लृलुटोः}}: काल और उसका चिह्न {{स्य}}। {{आर्धधातुकस्येड् वलादेः}} और {{आदेशप्रत्यययोः}}:
+        {{इ}} और {{ष्}}।'
     sutras:
     - 3.3.13
     - 3.1.33

@@ -115,6 +115,56 @@ cards:
         gana: Adadi
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: ब्रवीति
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he says
+          hi: वह कहता है
+        check:
+          type: tinanta
+          dhatu: ब्रू
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Adadi
+        feature:
+          en: 'Root: {{ब्रू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{ब्रू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{ब्रू}} has two forms, {{ब्रवीति}} and {{आह}}: {{आह}} is old and used only in a few forms.'
+          hi: '{{ब्रू}} के दो रूप हैं, {{ब्रवीति}} और {{आह}}: {{आह}} पुराना है और कुछ ही रूपों में चलता है।'
+      - id: i3
+        sa: ब्रवीति
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he says
+          hi: वह कहता है
+        check:
+          type: tinanta
+          dhatu: ब्रू
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Adadi
+        feature:
+          en: 'Root: {{ब्रू}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{ब्रू}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
   - skill: verb.class-5-8
     rule:
       en: '{{कृ}} has a short weak stem {{कुर्-}} in some forms: {{कुर्वः}}, {{कुर्मः}}.'
@@ -133,6 +183,56 @@ cards:
         gana: Tanadi
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: कुर्मः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: we do
+          hi: हम करते हैं
+        check:
+          type: tinanta
+          dhatu: कृ
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+          gana: Tanadi
+        feature:
+          en: 'Root: {{कृ}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{कृ}} has a short weak stem {{कुर्-}} in some forms: {{कुर्वः}}, {{कुर्मः}}.'
+          hi: '{{कृ}} के कुछ रूपों में छोटा निर्बल अंग {{कुर्-}} है: {{कुर्वः}}, {{कुर्मः}}।'
+      - id: i3
+        sa: कुर्मः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: we do
+          hi: हम करते हैं
+        check:
+          type: tinanta
+          dhatu: कृ
+          lakara: Lat
+          purusha: Uttama
+          vacana: Bahu
+          gana: Tanadi
+        feature:
+          en: 'Root: {{कृ}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
+          hi: 'धातु: {{कृ}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
 - id: mistakes
   kind: revision
   title:

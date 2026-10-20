@@ -85,6 +85,54 @@ cards:
         vacana: Eka
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: आदत्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he ate
+          hi: उसने खाया
+        check:
+          type: tinanta
+          dhatu: अद्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{अद्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{अद्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A root beginning with a vowel lengthens it: {{अद्}} (eat) gives {{आदत्}}, not {{अअदत्}}.'
+          hi: 'स्वर से शुरू होने वाली धातु उसे दीर्घ करती है: {{अद्}} (खाना) से {{आदत्}} बनता है, {{अअदत्}} नहीं।'
+      - id: i3
+        sa: आदत्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he ate
+          hi: उसने खाया
+        check:
+          type: tinanta
+          dhatu: अद्
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{अद्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{अद्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
   - skill: verb.lan
     rule:
       en: '{{कृ}} (do) and {{दा}} (give) have odd roots in the past: {{अकरोत्}}, {{अददात्}}.'
@@ -102,6 +150,54 @@ cards:
         vacana: Eka
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: अददात्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he gave
+          hi: उसने दिया
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{दा}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{दा}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{कृ}} (do) and {{दा}} (give) have odd roots in the past: {{अकरोत्}}, {{अददात्}}.'
+          hi: '{{कृ}} (करना) और {{दा}} (देना) के भूतकाल में धातु विचित्र है: {{अकरोत्}}, {{अददात्}}।'
+      - id: i3
+        sa: अददात्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he gave
+          hi: उसने दिया
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lan
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{दा}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{दा}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
 - id: mistakes
   kind: revision
   title:

@@ -26,7 +26,9 @@ cards:
     hi: सातवीं रात
   depth: core
   image:
-    brief: A flat stone in the grove with the Vetāla opening a worn ledger; a small round honey-brown spirit with ten tiny brass-handled drawers in his body hopping out and tugging drawers open, a pencil behind his ear; you, Dādī and Śuka watching; firelight.
+    brief: A flat stone in the grove with the Vetāla opening a worn ledger; a small round honey-brown spirit with ten tiny
+      brass-handled drawers in his body hopping out and tugging drawers open, a pencil behind his ear; you, Dādī and Śuka
+      watching; firelight.
     alt:
       en: A drawer-bodied spirit tugs his drawers open beside a grey spirit with a worn ledger
       hi: दराज़ों वाला भूत अपने दराज़ खींचता, घिसी बही के साथ भूरा भूत
@@ -39,10 +41,20 @@ cards:
     place: smashana
     ratio: '4:3'
     id: vc1-bhu-s1
-    text_in_image: ["भू", "भवति", "नी", "नयति", "जि", "जयति"]
+    text_in_image:
+    - भू
+    - भवति
+    - नी
+    - नयति
+    - जि
+    - जयति
   narration:
-    en: 'On a flat stone the Vetāla opens a worn ledger. A little spirit with ten tiny brass drawers set into his body hops out and begins yanking them open, stuffing roots in and out, muddled. “दश गणाः,” says the Vetāla patiently. “Ten classes. A verb''s class decides the small sign before its ending. Tonight, four of them. First: the one that gives भवति.”'
-    hi: 'एक चपटे पत्थर पर वेताल एक घिसी बही खोलता है। शरीर में दस नन्हे पीतल के दराज़ों वाला एक छोटा भूत कूदकर बाहर आता है और उन्हें खींचने-ठूँसने लगता है, उलझा हुआ। “दश गणाः,” वेताल धैर्य से कहता है। “दस गण। क्रिया का गण तय करता है कि प्रत्यय से पहले कौन-सा छोटा चिह्न आए। आज उनमें से चार। पहला: जो भवति देता है।”'
+    en: 'On a flat stone the Vetāla opens a worn ledger. A little spirit with ten tiny brass drawers set into his body hops
+      out and begins yanking them open, stuffing roots in and out, muddled. “दश गणाः,” says the Vetāla patiently. “Ten classes.
+      A verb''s class decides the small sign before its ending. Tonight, four of them. First: the one that gives भवति.”'
+    hi: 'एक चपटे पत्थर पर वेताल एक घिसी बही खोलता है। शरीर में दस नन्हे पीतल के दराज़ों वाला एक छोटा भूत कूदकर बाहर आता है
+      और उन्हें खींचने-ठूँसने लगता है, उलझा हुआ। “दश गणाः,” वेताल धैर्य से कहता है। “दस गण। क्रिया का गण तय करता है कि प्रत्यय
+      से पहले कौन-सा छोटा चिह्न आए। आज उनमें से चार। पहला: जो भवति देता है।”'
   lines:
   - speaker: dadi
     sa: भवति। नयति। जयति।
@@ -58,13 +70,51 @@ cards:
   skills:
   - verb.class-1
   body:
-    en: 'Every verb has a root and a class; a dictionary lists both. Class 1, {{भ्वादि}}, adds {{-अ-}} after the root and strengthens its vowel: {{भू}} gives {{भवति}}, {{नी}} gives {{नयति}}, {{जि}} gives {{जयति}}, {{शुच्}} gives {{शोचति}}. Most verbs you know are class 1.'
-    hi: 'हर क्रिया की एक धातु और एक गण होता है; कोश दोनों बताता है। गण 1, {{भ्वादि}}, धातु के बाद {{-अ-}} जोड़ता है और धातु का स्वर बलवान् कर देता है: {{भू}} से {{भवति}}, {{नी}} से {{नयति}}, {{जि}} से {{जयति}}, {{शुच्}} से {{शोचति}}। आपकी जानी हुई अधिकतर क्रियाएँ गण 1 की हैं।'
+    en: 'Every verb has a root and a class; a dictionary lists both. Class 1, {{भ्वादि}}, adds {{-अ-}} after the root and
+      strengthens its vowel: {{भू}} gives {{भवति}}, {{नी}} gives {{नयति}}, {{जि}} gives {{जयति}}, {{शुच्}} gives {{शोचति}}.
+      Most verbs you know are class 1.'
+    hi: 'हर क्रिया की एक धातु और एक गण होता है; कोश दोनों बताता है। गण 1, {{भ्वादि}}, धातु के बाद {{-अ-}} जोड़ता है और धातु
+      का स्वर बलवान् कर देता है: {{भू}} से {{भवति}}, {{नी}} से {{नयति}}, {{जि}} से {{जयति}}, {{शुच्}} से {{शोचति}}। आपकी जानी
+      हुई अधिकतर क्रियाएँ गण 1 की हैं।'
   term:
     sa: गणः
     meaning:
       en: a class of verb roots
       hi: धातुओं का वर्ग
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Every verb has a root and a class; a dictionary lists both. Class 1, {{भ्वादि}}, adds {{-अ-}} after the root and
+        strengthens its vowel: {{भू}} gives {{भवति}}, {{नी}} gives {{नयति}}, {{जि}} gives {{जयति}}, {{शुच्}} gives {{शोचति}}.
+        Most verbs you know are class 1.'
+      hi: 'हर क्रिया की एक धातु और एक गण होता है; कोश दोनों बताता है। गण 1, {{भ्वादि}}, धातु के बाद {{-अ-}} जोड़ता है और धातु
+        का स्वर बलवान् कर देता है: {{भू}} से {{भवति}}, {{नी}} से {{नयति}}, {{जि}} से {{जयति}}, {{शुच्}} से {{शोचति}}। आपकी
+        जानी हुई अधिकतर क्रियाएँ गण 1 की हैं।'
+    items:
+    - id: i0
+      sa: भ्वादि
+    - id: i1
+      sa: -अ-
+    - id: i2
+      sa: भू
+    - id: i3
+      sa: भवति
+    - id: i4
+      sa: नी
+    - id: i5
+      sa: नयति
+    - id: i6
+      sa: जि
+    - id: i7
+      sa: जयति
+    - id: i8
+      sa: शुच्
+    - id: i9
+      sa: शोचति
 - id: tb1
   kind: table
   title:
@@ -280,6 +330,40 @@ cards:
   - correct: true
     sa: नयति
   - sa: निति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every verb has a root and a class; a dictionary lists both. Class 1, {{भ्वादि}}, adds {{-अ-}} after the root and
+        strengthens its vowel: {{भू}} gives {{भवति}}, {{नी}} gives {{नयति}}, {{जि}} gives {{जयति}}, {{शुच्}} gives {{शोचति}}.
+        Most verbs you know are class 1.'
+      hi: 'हर क्रिया की एक धातु और एक गण होता है; कोश दोनों बताता है। गण 1, {{भ्वादि}}, धातु के बाद {{-अ-}} जोड़ता है और धातु
+        का स्वर बलवान् कर देता है: {{भू}} से {{भवति}}, {{नी}} से {{नयति}}, {{जि}} से {{जयति}}, {{शुच्}} से {{शोचति}}। आपकी
+        जानी हुई अधिकतर क्रियाएँ गण 1 की हैं।'
+    items:
+    - id: i0
+      sa: भ्वादि
+    - id: i1
+      sa: -अ-
+    - id: i2
+      sa: भू
+    - id: i3
+      sa: भवति
+    - id: i4
+      sa: नी
+    - id: i5
+      sa: नयति
+    - id: i6
+      sa: जि
+    - id: i7
+      sa: जयति
+    - id: i8
+      sa: शुच्
+    - id: i9
+      sa: शोचति
 - id: p2
   kind: practice
   depth: core
@@ -300,6 +384,40 @@ cards:
   - यति
   - जि
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every verb has a root and a class; a dictionary lists both. Class 1, {{भ्वादि}}, adds {{-अ-}} after the root and
+        strengthens its vowel: {{भू}} gives {{भवति}}, {{नी}} gives {{नयति}}, {{जि}} gives {{जयति}}, {{शुच्}} gives {{शोचति}}.
+        Most verbs you know are class 1.'
+      hi: 'हर क्रिया की एक धातु और एक गण होता है; कोश दोनों बताता है। गण 1, {{भ्वादि}}, धातु के बाद {{-अ-}} जोड़ता है और धातु
+        का स्वर बलवान् कर देता है: {{भू}} से {{भवति}}, {{नी}} से {{नयति}}, {{जि}} से {{जयति}}, {{शुच्}} से {{शोचति}}। आपकी
+        जानी हुई अधिकतर क्रियाएँ गण 1 की हैं।'
+    items:
+    - id: i0
+      sa: भ्वादि
+    - id: i1
+      sa: -अ-
+    - id: i2
+      sa: भू
+    - id: i3
+      sa: भवति
+    - id: i4
+      sa: नी
+    - id: i5
+      sa: नयति
+    - id: i6
+      sa: जि
+    - id: i7
+      sa: जयति
+    - id: i8
+      sa: शुच्
+    - id: i9
+      sa: शोचति
 - id: p3
   kind: practice
   depth: core
@@ -329,6 +447,40 @@ cards:
   - left:
       sa: शुच्
     right:
+      sa: शोचति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every verb has a root and a class; a dictionary lists both. Class 1, {{भ्वादि}}, adds {{-अ-}} after the root and
+        strengthens its vowel: {{भू}} gives {{भवति}}, {{नी}} gives {{नयति}}, {{जि}} gives {{जयति}}, {{शुच्}} gives {{शोचति}}.
+        Most verbs you know are class 1.'
+      hi: 'हर क्रिया की एक धातु और एक गण होता है; कोश दोनों बताता है। गण 1, {{भ्वादि}}, धातु के बाद {{-अ-}} जोड़ता है और धातु
+        का स्वर बलवान् कर देता है: {{भू}} से {{भवति}}, {{नी}} से {{नयति}}, {{जि}} से {{जयति}}, {{शुच्}} से {{शोचति}}। आपकी
+        जानी हुई अधिकतर क्रियाएँ गण 1 की हैं।'
+    items:
+    - id: i0
+      sa: भ्वादि
+    - id: i1
+      sa: -अ-
+    - id: i2
+      sa: भू
+    - id: i3
+      sa: भवति
+    - id: i4
+      sa: नी
+    - id: i5
+      sa: नयति
+    - id: i6
+      sa: जि
+    - id: i7
+      sa: जयति
+    - id: i8
+      sa: शुच्
+    - id: i9
       sa: शोचति
 - id: e1
   kind: explore
@@ -371,8 +523,11 @@ cards:
   gate: true
   story:
     success:
-      en: “शोचति,” you say, and the little spirit's first drawer slides open. Out comes a neat slip, labelled भवति, नयति, जयति, शोचति, all in one tidy row. He fits it back, delighted. “One drawer,” he says, “and it shuts.”
-      hi: “शोचति,” आप कहते हैं, और नन्हे भूत का पहला दराज़ खिसककर खुल जाता है। उसमें से एक सुघड़ पर्ची निकलती है, जिस पर भवति, नयति, जयति, शोचति एक सुव्यवस्थित पंक्ति में लिखे हैं। वह उसे आनन्द से वापस लगा देता है। “एक दराज़,” वह कहता है, “और बन्द।”
+      en: “शोचति,” you say, and the little spirit's first drawer slides open. Out comes a neat slip, labelled भवति, नयति,
+        जयति, शोचति, all in one tidy row. He fits it back, delighted. “One drawer,” he says, “and it shuts.”
+      hi: “शोचति,” आप कहते हैं, और नन्हे भूत का पहला दराज़ खिसककर खुल जाता है। उसमें से एक सुघड़ पर्ची निकलती है, जिस पर भवति,
+        नयति, जयति, शोचति एक सुव्यवस्थित पंक्ति में लिखे हैं। वह उसे आनन्द से वापस लगा देता है। “एक दराज़,” वह कहता है, “और
+        बन्द।”
     failure:
       en: The drawer sticks. {{शुच्}} becomes {{शोचति}}.
       hi: दराज़ अटक जाता है। {{शुच्}} से {{शोचति}} बनता है।
@@ -381,6 +536,40 @@ cards:
   - sa: शूचति
   - correct: true
     sa: शोचति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every verb has a root and a class; a dictionary lists both. Class 1, {{भ्वादि}}, adds {{-अ-}} after the root and
+        strengthens its vowel: {{भू}} gives {{भवति}}, {{नी}} gives {{नयति}}, {{जि}} gives {{जयति}}, {{शुच्}} gives {{शोचति}}.
+        Most verbs you know are class 1.'
+      hi: 'हर क्रिया की एक धातु और एक गण होता है; कोश दोनों बताता है। गण 1, {{भ्वादि}}, धातु के बाद {{-अ-}} जोड़ता है और धातु
+        का स्वर बलवान् कर देता है: {{भू}} से {{भवति}}, {{नी}} से {{नयति}}, {{जि}} से {{जयति}}, {{शुच्}} से {{शोचति}}। आपकी
+        जानी हुई अधिकतर क्रियाएँ गण 1 की हैं।'
+    items:
+    - id: i0
+      sa: भ्वादि
+    - id: i1
+      sa: -अ-
+    - id: i2
+      sa: भू
+    - id: i3
+      sa: भवति
+    - id: i4
+      sa: नी
+    - id: i5
+      sa: नयति
+    - id: i6
+      sa: जि
+    - id: i7
+      sa: जयति
+    - id: i8
+      sa: शुच्
+    - id: i9
+      sa: शोचति
 - id: pn
   kind: teach
   title:
@@ -394,8 +583,46 @@ cards:
   - 7.3.84
   - 6.1.78
   body:
-    en: 'Sūtra 3.1.68, {{कर्तरि शप्}}, adds {{शप्}} (which leaves {{अ}}) after a root when the doer is named. 7.3.84, {{सार्वधातुकार्धधातुकयोः}}, strengthens the root''s last vowel: {{भू}} becomes {{भो}}. Then 6.1.78, {{एचोऽयवायावः}}, makes {{ओ}} before a vowel into {{अव्}}: {{भवति}}.'
-    hi: 'सूत्र 3.1.68, {{कर्तरि शप्}}, कर्ता कहा जाने पर धातु के बाद {{शप्}} (जिसमें {{अ}} बचता है) जोड़ता है। 7.3.84, {{सार्वधातुकार्धधातुकयोः}}, धातु के अन्तिम स्वर को बलवान् करता है: {{भू}} से {{भो}}। फिर 6.1.78, {{एचोऽयवायावः}}, स्वर से पहले {{ओ}} को {{अव्}} कर देता है: {{भवति}}।'
+    en: 'Sūtra 3.1.68, {{कर्तरि शप्}}, adds {{शप्}} (which leaves {{अ}}) after a root when the doer is named. 7.3.84, {{सार्वधातुकार्धधातुकयोः}},
+      strengthens the root''s last vowel: {{भू}} becomes {{भो}}. Then 6.1.78, {{एचोऽयवायावः}}, makes {{ओ}} before a vowel
+      into {{अव्}}: {{भवति}}.'
+    hi: 'सूत्र 3.1.68, {{कर्तरि शप्}}, कर्ता कहा जाने पर धातु के बाद {{शप्}} (जिसमें {{अ}} बचता है) जोड़ता है। 7.3.84, {{सार्वधातुकार्धधातुकयोः}},
+      धातु के अन्तिम स्वर को बलवान् करता है: {{भू}} से {{भो}}। फिर 6.1.78, {{एचोऽयवायावः}}, स्वर से पहले {{ओ}} को {{अव्}}
+      कर देता है: {{भवति}}।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Sūtra 3.1.68, {{कर्तरि शप्}}, adds {{शप्}} (which leaves {{अ}}) after a root when the doer is named. 7.3.84, {{सार्वधातुकार्धधातुकयोः}},
+        strengthens the root''s last vowel: {{भू}} becomes {{भो}}. Then 6.1.78, {{एचोऽयवायावः}}, makes {{ओ}} before a vowel
+        into {{अव्}}: {{भवति}}.'
+      hi: 'सूत्र 3.1.68, {{कर्तरि शप्}}, कर्ता कहा जाने पर धातु के बाद {{शप्}} (जिसमें {{अ}} बचता है) जोड़ता है। 7.3.84, {{सार्वधातुकार्धधातुकयोः}},
+        धातु के अन्तिम स्वर को बलवान् करता है: {{भू}} से {{भो}}। फिर 6.1.78, {{एचोऽयवायावः}}, स्वर से पहले {{ओ}} को {{अव्}}
+        कर देता है: {{भवति}}।'
+    items:
+    - id: i0
+      sa: कर्तरि शप्
+    - id: i1
+      sa: शप्
+    - id: i2
+      sa: अ
+    - id: i3
+      sa: सार्वधातुकार्धधातुकयोः
+    - id: i4
+      sa: भू
+    - id: i5
+      sa: भो
+    - id: i6
+      sa: एचोऽयवायावः
+    - id: i7
+      sa: ओ
+    - id: i8
+      sa: अव्
+    - id: i9
+      sa: भवति
 - id: sum
   kind: summary
   title:

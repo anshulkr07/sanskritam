@@ -25,7 +25,8 @@ cards:
     hi: फुफकारती नक्काशी
   depth: core
   image:
-    brief: The last carved line of the temple door with four letters; Śuka hissing with his beak narrowed, Dādī pointing at the letters, a lavender shadow laughing in the open, no longer hiding.
+    brief: The last carved line of the temple door with four letters; Śuka hissing with his beak narrowed, Dādī pointing at
+      the letters, a lavender shadow laughing in the open, no longer hiding.
     alt:
       en: A parrot hissing at four carved letters while a shy shadow laughs
       hi: चार खुदे अक्षरों पर फुफकारता तोता, खुलकर हँसती छाया
@@ -37,10 +38,13 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: cons-sibilants-s1
-    text_in_image: ["श ष स ह"]
+    text_in_image:
+    - श ष स ह
   narration:
-    en: 'On the door''s last line Śuka starts to hiss. Four letters hiss or sigh: three like a snake, one like a breath. He tries each one and gets them all wrong. Chāyikā forgets to hide and laughs out loud.'
-    hi: 'द्वार की आख़िरी पंक्ति पर शुक फुफकारने लगता है। चार अक्षर फुफकारते या साँस छोड़ते हैं: तीन साँप की तरह, एक साँस की तरह। वह हर एक आज़माता है और सब ग़लत बोलता है। छायिका छिपना भूलकर ज़ोर से हँस पड़ती है।'
+    en: 'On the door''s last line Śuka starts to hiss. Four letters hiss or sigh: three like a snake, one like a breath. He
+      tries each one and gets them all wrong. Chāyikā forgets to hide and laughs out loud.'
+    hi: 'द्वार की आख़िरी पंक्ति पर शुक फुफकारने लगता है। चार अक्षर फुफकारते या साँस छोड़ते हैं: तीन साँप की तरह, एक साँस की
+      तरह। वह हर एक आज़माता है और सब ग़लत बोलता है। छायिका छिपना भूलकर ज़ोर से हँस पड़ती है।'
 - id: t1
   kind: teach
   title:
@@ -50,8 +54,10 @@ cards:
   skills:
   - script.cons.sibilants
   body:
-    en: '{{श}} is a soft hiss at the palate, like “sh” in “ship”. {{ष}} is the same hiss with the tongue curled back to the roof. {{स}} is the “s” of “sun”, at the teeth. {{ह}} is a plain breath from the throat.'
-    hi: '{{श}} तालु की कोमल फुफकार है, अंग्रेज़ी ‘sh’ जैसी। {{ष}} वही फुफकार है, पर जीभ मुड़कर मूर्धा पर। {{स}} दाँतों वाला ‘स’ है। {{ह}} गले से निकलती साफ़ साँस है।'
+    en: '{{श}} is a soft hiss at the palate, like “sh” in “ship”. {{ष}} is the same hiss with the tongue curled back to the
+      roof. {{स}} is the “s” of “sun”, at the teeth. {{ह}} is a plain breath from the throat.'
+    hi: '{{श}} तालु की कोमल फुफकार है, अंग्रेज़ी ‘sh’ जैसी। {{ष}} वही फुफकार है, पर जीभ मुड़कर मूर्धा पर। {{स}} दाँतों वाला
+      ‘स’ है। {{ह}} गले से निकलती साफ़ साँस है।'
   rows:
   - sa: श
     gloss:
@@ -69,6 +75,38 @@ cards:
     gloss:
       en: throat, a breath
       hi: कण्ठ, साँस
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: '{{श}} is a soft hiss at the palate, like “sh” in “ship”. {{ष}} is the same hiss with the tongue curled back to
+        the roof. {{स}} is the “s” of “sun”, at the teeth. {{ह}} is a plain breath from the throat.'
+      hi: '{{श}} तालु की कोमल फुफकार है, अंग्रेज़ी ‘sh’ जैसी। {{ष}} वही फुफकार है, पर जीभ मुड़कर मूर्धा पर। {{स}} दाँतों वाला
+        ‘स’ है। {{ह}} गले से निकलती साफ़ साँस है।'
+    items:
+    - id: i0
+      sa: श
+      meaning:
+        en: palate, “sh” in “ship”
+        hi: तालु, ‘श’
+    - id: i1
+      sa: ष
+      meaning:
+        en: roof, tongue curled back
+        hi: मूर्धा, जीभ मुड़ी हुई
+    - id: i2
+      sa: स
+      meaning:
+        en: teeth, “s” in “sun”
+        hi: दन्त, ‘स’
+    - id: i3
+      sa: ह
+      meaning:
+        en: throat, a breath
+        hi: कण्ठ, साँस
 - id: e1
   kind: explore
   depth: core
@@ -123,6 +161,38 @@ cards:
       text:
         en: throat
         hi: कण्ठ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{श}} is a soft hiss at the palate, like “sh” in “ship”. {{ष}} is the same hiss with the tongue curled back to
+        the roof. {{स}} is the “s” of “sun”, at the teeth. {{ह}} is a plain breath from the throat.'
+      hi: '{{श}} तालु की कोमल फुफकार है, अंग्रेज़ी ‘sh’ जैसी। {{ष}} वही फुफकार है, पर जीभ मुड़कर मूर्धा पर। {{स}} दाँतों वाला
+        ‘स’ है। {{ह}} गले से निकलती साफ़ साँस है।'
+    items:
+    - id: i0
+      sa: श
+      meaning:
+        en: palate, “sh” in “ship”
+        hi: तालु, ‘श’
+    - id: i1
+      sa: ष
+      meaning:
+        en: roof, tongue curled back
+        hi: मूर्धा, जीभ मुड़ी हुई
+    - id: i2
+      sa: स
+      meaning:
+        en: teeth, “s” in “sun”
+        hi: दन्त, ‘स’
+    - id: i3
+      sa: ह
+      meaning:
+        en: throat, a breath
+        hi: कण्ठ, साँस
 - id: t2
   kind: teach
   title:
@@ -132,8 +202,10 @@ cards:
   skills:
   - script.cons.sibilants
   body:
-    en: 'Śiva, a name of the god, begins with {{श}}; {{विष्णुः}} has {{ष}} in the middle; {{सूर्यः}}, the sun, starts with {{स}}. In Hindi {{श}} and {{ष}} sound alike. In Sanskrit keep them apart: curl the tongue for {{ष}}.'
-    hi: 'देवता का नाम {{शिवः}} {{श}} से शुरू होता है; {{विष्णुः}} के बीच में {{ष}} है; {{सूर्यः}} {{स}} से शुरू होता है। हिन्दी में {{श}} और {{ष}} एक-से सुनाई देते हैं। संस्कृत में इन्हें अलग रखिए: {{ष}} के लिए जीभ मोड़िए।'
+    en: 'Śiva, a name of the god, begins with {{श}}; {{विष्णुः}} has {{ष}} in the middle; {{सूर्यः}}, the sun, starts with
+      {{स}}. In Hindi {{श}} and {{ष}} sound alike. In Sanskrit keep them apart: curl the tongue for {{ष}}.'
+    hi: 'देवता का नाम {{शिवः}} {{श}} से शुरू होता है; {{विष्णुः}} के बीच में {{ष}} है; {{सूर्यः}} {{स}} से शुरू होता है। हिन्दी
+      में {{श}} और {{ष}} एक-से सुनाई देते हैं। संस्कृत में इन्हें अलग रखिए: {{ष}} के लिए जीभ मोड़िए।'
   examples:
   - sa: शिवः
     meaning:
@@ -165,6 +237,154 @@ cards:
       linga: Pum
       vibhakti: Prathama
       vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: शिवः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'Śiva: palatal {{श}}'
+        hi: 'शिव: तालव्य {{श}}'
+      check:
+        type: subanta
+        stem: शिव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{शिव}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{शिव}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Śiva, a name of the god, begins with {{श}}; {{विष्णुः}} has {{ष}} in the middle; {{सूर्यः}}, the sun, starts
+          with {{स}}. In Hindi {{श}} and {{ष}} sound alike. In Sanskrit keep them apart: curl the tongue for {{ष}}.'
+        hi: 'देवता का नाम {{शिवः}} {{श}} से शुरू होता है; {{विष्णुः}} के बीच में {{ष}} है; {{सूर्यः}} {{स}} से शुरू होता है।
+          हिन्दी में {{श}} और {{ष}} एक-से सुनाई देते हैं। संस्कृत में इन्हें अलग रखिए: {{ष}} के लिए जीभ मोड़िए।'
+    - id: i3
+      sa: शिवः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'Śiva: palatal {{श}}'
+        hi: 'शिव: तालव्य {{श}}'
+      check:
+        type: subanta
+        stem: शिव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{शिव}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{शिव}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: विष्णुः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'Viṣṇu: curled {{ष}}'
+        hi: 'विष्णु: मूर्धन्य {{ष}}'
+      check:
+        type: subanta
+        stem: विष्णु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{विष्णु}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{विष्णु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Śiva, a name of the god, begins with {{श}}; {{विष्णुः}} has {{ष}} in the middle; {{सूर्यः}}, the sun, starts
+          with {{स}}. In Hindi {{श}} and {{ष}} sound alike. In Sanskrit keep them apart: curl the tongue for {{ष}}.'
+        hi: 'देवता का नाम {{शिवः}} {{श}} से शुरू होता है; {{विष्णुः}} के बीच में {{ष}} है; {{सूर्यः}} {{स}} से शुरू होता है।
+          हिन्दी में {{श}} और {{ष}} एक-से सुनाई देते हैं। संस्कृत में इन्हें अलग रखिए: {{ष}} के लिए जीभ मोड़िए।'
+    - id: i3
+      sa: विष्णुः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'Viṣṇu: curled {{ष}}'
+        hi: 'विष्णु: मूर्धन्य {{ष}}'
+      check:
+        type: subanta
+        stem: विष्णु
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{विष्णु}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{विष्णु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सूर्यः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'the sun: dental {{स}}'
+        hi: 'सूर्य: दन्त्य {{स}}'
+      check:
+        type: subanta
+        stem: सूर्य
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सूर्य}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सूर्य}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Śiva, a name of the god, begins with {{श}}; {{विष्णुः}} has {{ष}} in the middle; {{सूर्यः}}, the sun, starts
+          with {{स}}. In Hindi {{श}} and {{ष}} sound alike. In Sanskrit keep them apart: curl the tongue for {{ष}}.'
+        hi: 'देवता का नाम {{शिवः}} {{श}} से शुरू होता है; {{विष्णुः}} के बीच में {{ष}} है; {{सूर्यः}} {{स}} से शुरू होता है।
+          हिन्दी में {{श}} और {{ष}} एक-से सुनाई देते हैं। संस्कृत में इन्हें अलग रखिए: {{ष}} के लिए जीभ मोड़िए।'
+    - id: i3
+      sa: सूर्यः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'the sun: dental {{स}}'
+        hi: 'सूर्य: दन्त्य {{स}}'
+      check:
+        type: subanta
+        stem: सूर्य
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सूर्य}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सूर्य}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: e2
   kind: explore
   depth: core
@@ -205,6 +425,38 @@ cards:
   - sa: स
   - correct: true
     sa: ह
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{श}} is a soft hiss at the palate, like “sh” in “ship”. {{ष}} is the same hiss with the tongue curled back to
+        the roof. {{स}} is the “s” of “sun”, at the teeth. {{ह}} is a plain breath from the throat.'
+      hi: '{{श}} तालु की कोमल फुफकार है, अंग्रेज़ी ‘sh’ जैसी। {{ष}} वही फुफकार है, पर जीभ मुड़कर मूर्धा पर। {{स}} दाँतों वाला
+        ‘स’ है। {{ह}} गले से निकलती साफ़ साँस है।'
+    items:
+    - id: i0
+      sa: श
+      meaning:
+        en: palate, “sh” in “ship”
+        hi: तालु, ‘श’
+    - id: i1
+      sa: ष
+      meaning:
+        en: roof, tongue curled back
+        hi: मूर्धा, जीभ मुड़ी हुई
+    - id: i2
+      sa: स
+      meaning:
+        en: teeth, “s” in “sun”
+        hi: दन्त, ‘स’
+    - id: i3
+      sa: ह
+      meaning:
+        en: throat, a breath
+        hi: कण्ठ, साँस
 - id: p3
   kind: practice
   title:
@@ -224,8 +476,10 @@ cards:
   gate: true
   story:
     success:
-      en: 'The last line glows. Chāyikā steps halfway out of the carving: a slim lavender shadow with a gold thread in her hair. She still cannot say her name.'
-      hi: 'आख़िरी पंक्ति चमक उठती है। छायिका आधी नक्काशी से बाहर आ जाती है: बालों में सुनहरे धागे वाली दुबली बैंगनी छाया। फिर भी वह अपना नाम नहीं बोल पाती।'
+      en: 'The last line glows. Chāyikā steps halfway out of the carving: a slim lavender shadow with a gold thread in her
+        hair. She still cannot say her name.'
+      hi: 'आख़िरी पंक्ति चमक उठती है। छायिका आधी नक्काशी से बाहर आ जाती है: बालों में सुनहरे धागे वाली दुबली बैंगनी छाया।
+        फिर भी वह अपना नाम नहीं बोल पाती।'
     failure:
       en: The letters flicker. Hiss, hiss, hiss, then the breath.
       hi: अक्षर टिमटिमाते हैं। फुफकार, फुफकार, फुफकार, फिर साँस।
@@ -234,6 +488,38 @@ cards:
   - ष
   - स
   - ह
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{श}} is a soft hiss at the palate, like “sh” in “ship”. {{ष}} is the same hiss with the tongue curled back to
+        the roof. {{स}} is the “s” of “sun”, at the teeth. {{ह}} is a plain breath from the throat.'
+      hi: '{{श}} तालु की कोमल फुफकार है, अंग्रेज़ी ‘sh’ जैसी। {{ष}} वही फुफकार है, पर जीभ मुड़कर मूर्धा पर। {{स}} दाँतों वाला
+        ‘स’ है। {{ह}} गले से निकलती साफ़ साँस है।'
+    items:
+    - id: i0
+      sa: श
+      meaning:
+        en: palate, “sh” in “ship”
+        hi: तालु, ‘श’
+    - id: i1
+      sa: ष
+      meaning:
+        en: roof, tongue curled back
+        hi: मूर्धा, जीभ मुड़ी हुई
+    - id: i2
+      sa: स
+      meaning:
+        en: teeth, “s” in “sun”
+        hi: दन्त, ‘स’
+    - id: i3
+      sa: ह
+      meaning:
+        en: throat, a breath
+        hi: कण्ठ, साँस
 - id: pn
   kind: teach
   title:
@@ -246,13 +532,45 @@ cards:
   - SS.13
   - SS.14
   body:
-    en: The Śiva sūtra {{शषसर्}} (13) ends in the marker {{र्}}; {{हल्}} (14) ends in {{ल्}}. From {{श}} to that {{ल्}} Pāṇini's group {{शल्}} holds exactly {{श}} {{ष}} {{स}} {{ह}}. And {{हल्}}, from the {{ह}} of sūtra 5, is every consonant.
-    hi: शिवसूत्र {{शषसर्}} (13) का अन्तिम चिह्न {{र्}} है; {{हल्}} (14) का {{ल्}}। {{श}} से उस {{ल्}} तक पाणिनि का समूह {{शल्}} ठीक {{श}} {{ष}} {{स}} {{ह}} है। और {{हल्}}, सूत्र 5 के {{ह}} से, सभी व्यंजन हैं।
+    en: The Śiva sūtra {{शषसर्}} (13) ends in the marker {{र्}}; {{हल्}} (14) ends in {{ल्}}. From {{श}} to that {{ल्}} Pāṇini's
+      group {{शल्}} holds exactly {{श}} {{ष}} {{स}} {{ह}}. And {{हल्}}, from the {{ह}} of sūtra 5, is every consonant.
+    hi: शिवसूत्र {{शषसर्}} (13) का अन्तिम चिह्न {{र्}} है; {{हल्}} (14) का {{ल्}}। {{श}} से उस {{ल्}} तक पाणिनि का समूह {{शल्}}
+      ठीक {{श}} {{ष}} {{स}} {{ह}} है। और {{हल्}}, सूत्र 5 के {{ह}} से, सभी व्यंजन हैं।
   term:
     sa: शल्
     meaning:
       en: the hissing group {{श}} {{ष}} {{स}} {{ह}}
       hi: ऊष्म समूह {{श}} {{ष}} {{स}} {{ह}}
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: The Śiva sūtra {{शषसर्}} (13) ends in the marker {{र्}}; {{हल्}} (14) ends in {{ल्}}. From {{श}} to that {{ल्}}
+        Pāṇini's group {{शल्}} holds exactly {{श}} {{ष}} {{स}} {{ह}}. And {{हल्}}, from the {{ह}} of sūtra 5, is every consonant.
+      hi: शिवसूत्र {{शषसर्}} (13) का अन्तिम चिह्न {{र्}} है; {{हल्}} (14) का {{ल्}}। {{श}} से उस {{ल्}} तक पाणिनि का समूह
+        {{शल्}} ठीक {{श}} {{ष}} {{स}} {{ह}} है। और {{हल्}}, सूत्र 5 के {{ह}} से, सभी व्यंजन हैं।
+    items:
+    - id: i0
+      sa: शषसर्
+    - id: i1
+      sa: र्
+    - id: i2
+      sa: हल्
+    - id: i3
+      sa: ल्
+    - id: i4
+      sa: श
+    - id: i5
+      sa: शल्
+    - id: i6
+      sa: ष
+    - id: i7
+      sa: स
+    - id: i8
+      sa: ह
 - id: sum
   kind: summary
   title:

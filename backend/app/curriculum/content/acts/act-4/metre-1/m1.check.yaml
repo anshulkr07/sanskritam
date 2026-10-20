@@ -28,6 +28,24 @@ cards:
   - sa: कु
   - correct: true
     sa: का
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: Every syllable is light ({{लघु}}) or heavy ({{गुरु}}). It is light when its vowel is short and nothing joined follows.
+        It is heavy when its vowel is long, or when a short vowel is followed by a joined letter, an anusvāra or a visarga.
+        Light takes one beat; heavy takes two.
+      hi: हर अक्षर लघु ({{लघु}}) होता है या गुरु ({{गुरु}})। स्वर ह्रस्व हो और आगे संयुक्त अक्षर न हो, तो वह लघु है। स्वर
+        दीर्घ हो, या ह्रस्व स्वर के बाद संयुक्त अक्षर, अनुस्वार या विसर्ग हो, तो वह गुरु है। लघु में एक मात्रा लगती है; गुरु
+        में दो।
+    items:
+    - id: i0
+      sa: लघु
+    - id: i1
+      sa: गुरु
 - id: p2
   kind: practice
   depth: core
@@ -46,6 +64,24 @@ cards:
     sa: ल ग
   - sa: ग ल
   - sa: ल ल
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: Every syllable is light ({{लघु}}) or heavy ({{गुरु}}). It is light when its vowel is short and nothing joined follows.
+        It is heavy when its vowel is long, or when a short vowel is followed by a joined letter, an anusvāra or a visarga.
+        Light takes one beat; heavy takes two.
+      hi: हर अक्षर लघु ({{लघु}}) होता है या गुरु ({{गुरु}})। स्वर ह्रस्व हो और आगे संयुक्त अक्षर न हो, तो वह लघु है। स्वर
+        दीर्घ हो, या ह्रस्व स्वर के बाद संयुक्त अक्षर, अनुस्वार या विसर्ग हो, तो वह गुरु है। लघु में एक मात्रा लगती है; गुरु
+        में दो।
+    items:
+    - id: i0
+      sa: लघु
+    - id: i1
+      sa: गुरु
 - id: p3
   kind: practice
   depth: core
@@ -67,6 +103,24 @@ cards:
     text:
       en: heavy
       hi: गुरु
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: Every syllable is light ({{लघु}}) or heavy ({{गुरु}}). It is light when its vowel is short and nothing joined follows.
+        It is heavy when its vowel is long, or when a short vowel is followed by a joined letter, an anusvāra or a visarga.
+        Light takes one beat; heavy takes two.
+      hi: हर अक्षर लघु ({{लघु}}) होता है या गुरु ({{गुरु}})। स्वर ह्रस्व हो और आगे संयुक्त अक्षर न हो, तो वह लघु है। स्वर
+        दीर्घ हो, या ह्रस्व स्वर के बाद संयुक्त अक्षर, अनुस्वार या विसर्ग हो, तो वह गुरु है। लघु में एक मात्रा लगती है; गुरु
+        में दो।
+    items:
+    - id: i0
+      sa: लघु
+    - id: i1
+      sa: गुरु
 - id: p4
   kind: practice
   depth: core
@@ -85,6 +139,24 @@ cards:
     params:
       text: धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः
     seed: 4
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: Every syllable is light ({{लघु}}) or heavy ({{गुरु}}). It is light when its vowel is short and nothing joined follows.
+        It is heavy when its vowel is long, or when a short vowel is followed by a joined letter, an anusvāra or a visarga.
+        Light takes one beat; heavy takes two.
+      hi: हर अक्षर लघु ({{लघु}}) होता है या गुरु ({{गुरु}})। स्वर ह्रस्व हो और आगे संयुक्त अक्षर न हो, तो वह लघु है। स्वर
+        दीर्घ हो, या ह्रस्व स्वर के बाद संयुक्त अक्षर, अनुस्वार या विसर्ग हो, तो वह गुरु है। लघु में एक मात्रा लगती है; गुरु
+        में दो।
+    items:
+    - id: i0
+      sa: लघु
+    - id: i1
+      sa: गुरु
 - id: p5
   kind: practice
   depth: core
@@ -109,6 +181,21 @@ cards:
   - text:
       en: '32'
       hi: ३२
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A śloka has four quarters ({{पाद}}) of eight syllables: 32 in all, or 16 in each half. The first four syllables
+        and the eighth are free. In the middle the pattern is fixed: the fifth light, the sixth heavy, and the seventh heavy
+        in quarters one and three, light in two and four.'
+      hi: 'श्लोक में चार चरण ({{पाद}}) होते हैं, आठ-आठ अक्षर के: कुल 32, या हर आधे में 16। पहले चार अक्षर और आठवाँ स्वतन्त्र
+        हैं। बीच में ढाँचा बँधा है: पाँचवाँ लघु, छठा गुरु, और सातवाँ पहले-तीसरे चरण में गुरु, दूसरे-चौथे में लघु।'
+    items:
+    - id: i0
+      sa: पाद
 - id: p6
   kind: practice
   depth: core
@@ -133,6 +220,21 @@ cards:
   - text:
       en: either
       hi: दोनों में से कोई
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A śloka has four quarters ({{पाद}}) of eight syllables: 32 in all, or 16 in each half. The first four syllables
+        and the eighth are free. In the middle the pattern is fixed: the fifth light, the sixth heavy, and the seventh heavy
+        in quarters one and three, light in two and four.'
+      hi: 'श्लोक में चार चरण ({{पाद}}) होते हैं, आठ-आठ अक्षर के: कुल 32, या हर आधे में 16। पहले चार अक्षर और आठवाँ स्वतन्त्र
+        हैं। बीच में ढाँचा बँधा है: पाँचवाँ लघु, छठा गुरु, और सातवाँ पहले-तीसरे चरण में गुरु, दूसरे-चौथे में लघु।'
+    items:
+    - id: i0
+      sa: पाद
 - id: p7
   kind: practice
   depth: core
@@ -151,6 +253,21 @@ cards:
     params:
       text: समाक्षरैश्चतुर्भिर्यः पादैर्गीतो महर्षिणा
     seed: 5
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A śloka has four quarters ({{पाद}}) of eight syllables: 32 in all, or 16 in each half. The first four syllables
+        and the eighth are free. In the middle the pattern is fixed: the fifth light, the sixth heavy, and the seventh heavy
+        in quarters one and three, light in two and four.'
+      hi: 'श्लोक में चार चरण ({{पाद}}) होते हैं, आठ-आठ अक्षर के: कुल 32, या हर आधे में 16। पहले चार अक्षर और आठवाँ स्वतन्त्र
+        हैं। बीच में ढाँचा बँधा है: पाँचवाँ लघु, छठा गुरु, और सातवाँ पहले-तीसरे चरण में गुरु, दूसरे-चौथे में लघु।'
+    items:
+    - id: i0
+      sa: पाद
 - id: p8
   kind: practice
   depth: core
@@ -167,8 +284,14 @@ cards:
   gate: true
   story:
     success:
-      en: '“अनुष्टुप्,” says Chandikā, and for the first time her drum names the beat before she plays it. The stone panel across the hall slides open: behind it, set into the wall, a line in a clear, deeper hand, a longer measure than any you have chanted: इन्द्रवज्रा उपजाति। The spirit lays her drum in your hands, gently, and fades into the throne''s hum, light as a note.'
-      hi: '“अनुष्टुप्,” छन्दिका कहती है, और पहली बार उसका ढोल ताल को बजाने से पहले उसका नाम लेता है। कक्ष के पार पत्थर का फलक खुल जाता है: उसके पीछे दीवार में जड़ी, गहरे स्पष्ट अक्षरों की एक पंक्ति, आपके पढ़े किसी भी छन्द से लम्बी माप की: इन्द्रवज्रा उपजाति। भूत अपना ढोल धीरे से आपके हाथों में रखती है और सिंहासन की गुनगुनाहट में घुल जाती है, किसी स्वर की तरह हल्की।'
+      en: '“अनुष्टुप्,” says Chandikā, and for the first time her drum names the beat before she plays it. The stone panel
+        across the hall slides open: behind it, set into the wall, a line in a clear, deeper hand, a longer measure than any
+        you have chanted: इन्द्रवज्रा उपजाति। The spirit lays her drum in your hands, gently, and fades into the throne''s
+        hum, light as a note.'
+      hi: '“अनुष्टुप्,” छन्दिका कहती है, और पहली बार उसका ढोल ताल को बजाने से पहले उसका नाम लेता है। कक्ष के पार पत्थर का
+        फलक खुल जाता है: उसके पीछे दीवार में जड़ी, गहरे स्पष्ट अक्षरों की एक पंक्ति, आपके पढ़े किसी भी छन्द से लम्बी माप की:
+        इन्द्रवज्रा उपजाति। भूत अपना ढोल धीरे से आपके हाथों में रखती है और सिंहासन की गुनगुनाहट में घुल जाती है, किसी स्वर
+        की तरह हल्की।'
     failure:
       en: Her drum is silent. The seventh place of quarter two is light.
       hi: उसका ढोल मौन है। दूसरे चरण का सातवाँ स्थान लघु है।
@@ -183,3 +306,18 @@ cards:
   - text:
       en: either
       hi: दोनों में से कोई
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A śloka has four quarters ({{पाद}}) of eight syllables: 32 in all, or 16 in each half. The first four syllables
+        and the eighth are free. In the middle the pattern is fixed: the fifth light, the sixth heavy, and the seventh heavy
+        in quarters one and three, light in two and four.'
+      hi: 'श्लोक में चार चरण ({{पाद}}) होते हैं, आठ-आठ अक्षर के: कुल 32, या हर आधे में 16। पहले चार अक्षर और आठवाँ स्वतन्त्र
+        हैं। बीच में ढाँचा बँधा है: पाँचवाँ लघु, छठा गुरु, और सातवाँ पहले-तीसरे चरण में गुरु, दूसरे-चौथे में लघु।'
+    items:
+    - id: i0
+      sa: पाद

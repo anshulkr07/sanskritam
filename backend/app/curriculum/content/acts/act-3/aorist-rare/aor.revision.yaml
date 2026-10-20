@@ -84,8 +84,10 @@ cards:
   rows:
   - skill: verb.lun
     rule:
-      en: 'Roots of different kinds make their aorist in different ways: {{अगमत्}} (no {{ष}}), {{अकार्षीत्}} (with {{ष}}), {{अदात्}} (from {{दा}}).'
-      hi: 'अलग प्रकार की धातुएँ अलग ढंग से लुङ् बनाती हैं: {{अगमत्}} ({{ष}} नहीं), {{अकार्षीत्}} ({{ष}} सहित), {{अदात्}} ({{दा}} से)।'
+      en: 'Roots of different kinds make their aorist in different ways: {{अगमत्}} (no {{ष}}), {{अकार्षीत्}} (with {{ष}}),
+        {{अदात्}} (from {{दा}}).'
+      hi: 'अलग प्रकार की धातुएँ अलग ढंग से लुङ् बनाती हैं: {{अगमत्}} ({{ष}} नहीं), {{अकार्षीत्}} ({{ष}} सहित), {{अदात्}} ({{दा}}
+        से)।'
     example:
       sa: अदात्
       meaning:
@@ -99,6 +101,56 @@ cards:
         vacana: Eka
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: अदात्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he gave
+          hi: उसने दिया
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lun
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{दा}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{दा}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Roots of different kinds make their aorist in different ways: {{अगमत्}} (no {{ष}}), {{अकार्षीत्}} (with {{ष}}),
+            {{अदात्}} (from {{दा}}).'
+          hi: 'अलग प्रकार की धातुएँ अलग ढंग से लुङ् बनाती हैं: {{अगमत्}} ({{ष}} नहीं), {{अकार्षीत्}} ({{ष}} सहित), {{अदात्}}
+            ({{दा}} से)।'
+      - id: i3
+        sa: अदात्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he gave
+          hi: उसने दिया
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lun
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{दा}} · singular · {{लुङ्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{दा}} · {{एकवचन}} · {{लुङ्}} · प्रथमपुरुष'
   - skill: verb.rare-four
     rule:
       en: 'In the Veda, a fifth form {{लेट्}} (the subjunctive) appears: you will only meet it in the Ṛgveda.'
@@ -116,6 +168,54 @@ cards:
         vacana: Eka
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: कर्ता
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he will do (not today)
+          hi: वह करेगा (आज नहीं)
+        check:
+          type: tinanta
+          dhatu: कृ
+          lakara: Lut
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{कृ}} · singular · {{लुट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लुट्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'In the Veda, a fifth form {{लेट्}} (the subjunctive) appears: you will only meet it in the Ṛgveda.'
+          hi: 'वेद में पाँचवाँ रूप {{लेट्}} मिलता है: वह आपको केवल ऋग्वेद में मिलेगा।'
+      - id: i3
+        sa: कर्ता
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he will do (not today)
+          hi: वह करेगा (आज नहीं)
+        check:
+          type: tinanta
+          dhatu: कृ
+          lakara: Lut
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{कृ}} · singular · {{लुट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{कृ}} · {{एकवचन}} · {{लुट्}} · प्रथमपुरुष'
 - id: mistakes
   kind: revision
   title:
@@ -146,7 +246,8 @@ cards:
   rows:
   - skill: verb.lun
     rule:
-      en: '{{लुङ्}}, {{च्लि लुङि}}, {{च्लेः सिच्}} and {{सिचि वृद्धिः परस्मैपदेषु}}: the tense, {{च्लि}}, {{सिच्}} and the lengthening.'
+      en: '{{लुङ्}}, {{च्लि लुङि}}, {{च्लेः सिच्}} and {{सिचि वृद्धिः परस्मैपदेषु}}: the tense, {{च्लि}}, {{सिच्}} and the
+        lengthening.'
       hi: '{{लुङ्}}, {{च्लि लुङि}}, {{च्लेः सिच्}} और {{सिचि वृद्धिः परस्मैपदेषु}}: काल, {{च्लि}}, {{सिच्}} और वृद्धि।'
     sutras:
     - 3.2.110

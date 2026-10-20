@@ -22,7 +22,8 @@ cards:
     hi: विक्रेता की पहेली
   depth: core
   image:
-    brief: The round spice seller with arms folded firing questions at the small yellow spirit, who shrinks behind your leg; Dādī holding up four fingers; Śuka cocking his head; spice heaps in the foreground.
+    brief: The round spice seller with arms folded firing questions at the small yellow spirit, who shrinks behind your leg;
+      Dādī holding up four fingers; Śuka cocking his head; spice heaps in the foreground.
     alt:
       en: A spice seller fires questions at a shy yellow spirit
       hi: मसाले वाला शर्मीले पीले भूत पर प्रश्न दागता है
@@ -36,8 +37,11 @@ cards:
     ratio: '4:3'
     id: object-ask-s1
   narration:
-    en: The spice seller crosses his arms. “What do you want?” he asks the spirit. “Who sent you? Where are you going? When will you leave?” The spirit cannot answer a single one. “To ask,” says Dādī, “Sanskrit has a family of words that begin with क.”
-    hi: मसाले वाला बाँहें मोड़ लेता है। वह भूत से पूछता है, “तुम्हें क्या चाहिए? किसने भेजा? कहाँ जा रहे हो? कब जाओगे?” भूत एक का भी उत्तर नहीं दे पाता। दादी कहती हैं, “पूछने के लिए संस्कृत में क से शुरू होने वाले शब्दों का एक कुल है।”
+    en: The spice seller crosses his arms. “What do you want?” he asks the spirit. “Who sent you? Where are you going? When
+      will you leave?” The spirit cannot answer a single one. “To ask,” says Dādī, “Sanskrit has a family of words that begin
+      with क.”
+    hi: मसाले वाला बाँहें मोड़ लेता है। वह भूत से पूछता है, “तुम्हें क्या चाहिए? किसने भेजा? कहाँ जा रहे हो? कब जाओगे?” भूत
+      एक का भी उत्तर नहीं दे पाता। दादी कहती हैं, “पूछने के लिए संस्कृत में क से शुरू होने वाले शब्दों का एक कुल है।”
   lines:
   - speaker: vanik
     sa: किं पश्यसि?
@@ -53,8 +57,10 @@ cards:
   skills:
   - sent.questions
   body:
-    en: '{{कः}} (who), {{का}} (who, feminine), {{किम्}} (what): they take the endings you know. And four little words that never change: {{कुत्र}} (where), {{कदा}} (when), {{कथम्}} (how), {{कुतः}} (from where).'
-    hi: '{{कः}} (कौन), {{का}} (कौन, स्त्री), {{किम्}} (क्या): ये परिचित प्रत्यय लेते हैं। और चार छोटे शब्द जो कभी नहीं बदलते: {{कुत्र}} (कहाँ), {{कदा}} (कब), {{कथम्}} (कैसे), {{कुतः}} (कहाँ से)।'
+    en: '{{कः}} (who), {{का}} (who, feminine), {{किम्}} (what): they take the endings you know. And four little words that
+      never change: {{कुत्र}} (where), {{कदा}} (when), {{कथम्}} (how), {{कुतः}} (from where).'
+    hi: '{{कः}} (कौन), {{का}} (कौन, स्त्री), {{किम्}} (क्या): ये परिचित प्रत्यय लेते हैं। और चार छोटे शब्द जो कभी नहीं बदलते:
+      {{कुत्र}} (कहाँ), {{कदा}} (कब), {{कथम्}} (कैसे), {{कुतः}} (कहाँ से)।'
   rows:
   - sa: कः
     gloss:
@@ -102,6 +108,80 @@ cards:
     gloss:
       en: from where?
       hi: कहाँ से?
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: '{{कः}} (who), {{का}} (who, feminine), {{किम्}} (what): they take the endings you know. And four little words that
+        never change: {{कुत्र}} (where), {{कदा}} (when), {{कथम्}} (how), {{कुतः}} (from where).'
+      hi: '{{कः}} (कौन), {{का}} (कौन, स्त्री), {{किम्}} (क्या): ये परिचित प्रत्यय लेते हैं। और चार छोटे शब्द जो कभी नहीं बदलते:
+        {{कुत्र}} (कहाँ), {{कदा}} (कब), {{कथम्}} (कैसे), {{कुतः}} (कहाँ से)।'
+    items:
+    - id: i0
+      sa: कः
+      meaning:
+        en: who?
+        hi: कौन?
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: का
+      meaning:
+        en: who? (f)
+        hi: कौन? (स्त्री.)
+      check:
+        type: subanta
+        stem: किम्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: किम्
+      meaning:
+        en: what?
+        hi: क्या?
+      check:
+        type: subanta
+        stem: किम्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: कुत्र
+      meaning:
+        en: where?
+        hi: कहाँ?
+    - id: i4
+      sa: कदा
+      meaning:
+        en: when?
+        hi: कब?
+    - id: i5
+      sa: कथम्
+      meaning:
+        en: how?
+        hi: कैसे?
+    - id: i6
+      sa: कुतः
+      meaning:
+        en: from where?
+        hi: कहाँ से?
 - id: t2
   kind: teach
   title:
@@ -111,8 +191,10 @@ cards:
   skills:
   - sent.questions
   body:
-    en: A question word takes the place of the thing asked. {{कः पठति?}} (who reads?), {{किं पश्यसि?}} (what do you see?), {{कुत्र गच्छसि?}} (where do you go?). For a yes/no question, begin with {{किम्}}.
-    hi: प्रश्नवाचक शब्द उस वस्तु की जगह आता है जिसके बारे में पूछा जा रहा है। {{कः पठति?}} (कौन पढ़ता है?), {{किं पश्यसि?}} (तुम क्या देखते हो?), {{कुत्र गच्छसि?}} (तुम कहाँ जाते हो?)। हाँ-या-नहीं के प्रश्न के लिए {{किम्}} से शुरू कीजिए।
+    en: A question word takes the place of the thing asked. {{कः पठति?}} (who reads?), {{किं पश्यसि?}} (what do you see?),
+      {{कुत्र गच्छसि?}} (where do you go?). For a yes/no question, begin with {{किम्}}.
+    hi: प्रश्नवाचक शब्द उस वस्तु की जगह आता है जिसके बारे में पूछा जा रहा है। {{कः पठति?}} (कौन पढ़ता है?), {{किं पश्यसि?}}
+      (तुम क्या देखते हो?), {{कुत्र गच्छसि?}} (तुम कहाँ जाते हो?)। हाँ-या-नहीं के प्रश्न के लिए {{किम्}} से शुरू कीजिए।
   examples:
   - sa: कः पठति?
     meaning:
@@ -190,6 +272,351 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: कः पठति?
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Who reads?
+        hi: कौन पढ़ता है?
+      words:
+      - sa: कः
+        gloss:
+          en: who
+          hi: कौन
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: कः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: who
+        hi: कौन
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: A question word takes the place of the thing asked. {{कः पठति?}} (who reads?), {{किं पश्यसि?}} (what do you see?),
+          {{कुत्र गच्छसि?}} (where do you go?). For a yes/no question, begin with {{किम्}}.
+        hi: प्रश्नवाचक शब्द उस वस्तु की जगह आता है जिसके बारे में पूछा जा रहा है। {{कः पठति?}} (कौन पढ़ता है?), {{किं पश्यसि?}}
+          (तुम क्या देखते हो?), {{कुत्र गच्छसि?}} (तुम कहाँ जाते हो?)। हाँ-या-नहीं के प्रश्न के लिए {{किम्}} से शुरू कीजिए।
+    - id: i5
+      sa: कः पठति?
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Who reads?
+        hi: कौन पढ़ता है?
+      words:
+      - sa: कः
+        gloss:
+          en: who
+          hi: कौन
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: किम् पश्यसि?
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: What do you see?
+        hi: तुम क्या देखते हो?
+      words:
+      - sa: किम्
+        gloss:
+          en: what
+          hi: क्या
+      - sa: पश्यसि
+        gloss:
+          en: do you see
+          hi: तुम देखते हो
+        check:
+          type: tinanta
+          dhatu: दृश्
+          lakara: Lat
+          purusha: Madhyama
+          vacana: Eka
+    - id: i1
+      sa: किम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: what
+        hi: क्या
+    - id: i2
+      sa: पश्यसि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: do you see
+        hi: तुम देखते हो
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+      feature:
+        en: 'Root: {{दृश्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{दृश्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: A question word takes the place of the thing asked. {{कः पठति?}} (who reads?), {{किं पश्यसि?}} (what do you see?),
+          {{कुत्र गच्छसि?}} (where do you go?). For a yes/no question, begin with {{किम्}}.
+        hi: प्रश्नवाचक शब्द उस वस्तु की जगह आता है जिसके बारे में पूछा जा रहा है। {{कः पठति?}} (कौन पढ़ता है?), {{किं पश्यसि?}}
+          (तुम क्या देखते हो?), {{कुत्र गच्छसि?}} (तुम कहाँ जाते हो?)। हाँ-या-नहीं के प्रश्न के लिए {{किम्}} से शुरू कीजिए।
+    - id: i5
+      sa: किम् पश्यसि?
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: What do you see?
+        hi: तुम क्या देखते हो?
+      words:
+      - sa: किम्
+        gloss:
+          en: what
+          hi: क्या
+      - sa: पश्यसि
+        gloss:
+          en: do you see
+          hi: तुम देखते हो
+        check:
+          type: tinanta
+          dhatu: दृश्
+          lakara: Lat
+          purusha: Madhyama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: कुत्र गच्छसि?
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Where do you go?
+        hi: तुम कहाँ जाते हो?
+      words:
+      - sa: कुत्र
+        gloss:
+          en: where
+          hi: कहाँ
+      - sa: गच्छसि
+        gloss:
+          en: do you go
+          hi: तुम जाते हो
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Madhyama
+          vacana: Eka
+    - id: i1
+      sa: कुत्र
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: where
+        hi: कहाँ
+    - id: i2
+      sa: गच्छसि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: do you go
+        hi: तुम जाते हो
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Madhyama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: A question word takes the place of the thing asked. {{कः पठति?}} (who reads?), {{किं पश्यसि?}} (what do you see?),
+          {{कुत्र गच्छसि?}} (where do you go?). For a yes/no question, begin with {{किम्}}.
+        hi: प्रश्नवाचक शब्द उस वस्तु की जगह आता है जिसके बारे में पूछा जा रहा है। {{कः पठति?}} (कौन पढ़ता है?), {{किं पश्यसि?}}
+          (तुम क्या देखते हो?), {{कुत्र गच्छसि?}} (तुम कहाँ जाते हो?)। हाँ-या-नहीं के प्रश्न के लिए {{किम्}} से शुरू कीजिए।
+    - id: i5
+      sa: कुत्र गच्छसि?
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Where do you go?
+        hi: तुम कहाँ जाते हो?
+      words:
+      - sa: कुत्र
+        gloss:
+          en: where
+          hi: कहाँ
+      - sa: गच्छसि
+        gloss:
+          en: do you go
+          hi: तुम जाते हो
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Madhyama
+          vacana: Eka
+  - id: v-source-example-3
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: कदा गच्छति?
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: When does he go?
+        hi: वह कब जाता है?
+      words:
+      - sa: कदा
+        gloss:
+          en: when
+          hi: कब
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: कदा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: when
+        hi: कब
+    - id: i2
+      sa: गच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: goes
+        hi: जाता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: A question word takes the place of the thing asked. {{कः पठति?}} (who reads?), {{किं पश्यसि?}} (what do you see?),
+          {{कुत्र गच्छसि?}} (where do you go?). For a yes/no question, begin with {{किम्}}.
+        hi: प्रश्नवाचक शब्द उस वस्तु की जगह आता है जिसके बारे में पूछा जा रहा है। {{कः पठति?}} (कौन पढ़ता है?), {{किं पश्यसि?}}
+          (तुम क्या देखते हो?), {{कुत्र गच्छसि?}} (तुम कहाँ जाते हो?)। हाँ-या-नहीं के प्रश्न के लिए {{किम्}} से शुरू कीजिए।
+    - id: i5
+      sa: कदा गच्छति?
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: When does he go?
+        hi: वह कब जाता है?
+      words:
+      - sa: कदा
+        gloss:
+          en: when
+          hi: कब
+      - sa: गच्छति
+        gloss:
+          en: goes
+          hi: जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p1
   kind: practice
   depth: core
@@ -208,6 +635,80 @@ cards:
   - correct: true
     sa: कुत्र
   - sa: कथम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{कः}} (who), {{का}} (who, feminine), {{किम्}} (what): they take the endings you know. And four little words that
+        never change: {{कुत्र}} (where), {{कदा}} (when), {{कथम्}} (how), {{कुतः}} (from where).'
+      hi: '{{कः}} (कौन), {{का}} (कौन, स्त्री), {{किम्}} (क्या): ये परिचित प्रत्यय लेते हैं। और चार छोटे शब्द जो कभी नहीं बदलते:
+        {{कुत्र}} (कहाँ), {{कदा}} (कब), {{कथम्}} (कैसे), {{कुतः}} (कहाँ से)।'
+    items:
+    - id: i0
+      sa: कः
+      meaning:
+        en: who?
+        hi: कौन?
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: का
+      meaning:
+        en: who? (f)
+        hi: कौन? (स्त्री.)
+      check:
+        type: subanta
+        stem: किम्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: किम्
+      meaning:
+        en: what?
+        hi: क्या?
+      check:
+        type: subanta
+        stem: किम्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: कुत्र
+      meaning:
+        en: where?
+        hi: कहाँ?
+    - id: i4
+      sa: कदा
+      meaning:
+        en: when?
+        hi: कब?
+    - id: i5
+      sa: कथम्
+      meaning:
+        en: how?
+        hi: कैसे?
+    - id: i6
+      sa: कुतः
+      meaning:
+        en: from where?
+        hi: कहाँ से?
 - id: p2
   kind: practice
   depth: core
@@ -246,6 +747,80 @@ cards:
       text:
         en: how
         hi: कैसे
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{कः}} (who), {{का}} (who, feminine), {{किम्}} (what): they take the endings you know. And four little words that
+        never change: {{कुत्र}} (where), {{कदा}} (when), {{कथम्}} (how), {{कुतः}} (from where).'
+      hi: '{{कः}} (कौन), {{का}} (कौन, स्त्री), {{किम्}} (क्या): ये परिचित प्रत्यय लेते हैं। और चार छोटे शब्द जो कभी नहीं बदलते:
+        {{कुत्र}} (कहाँ), {{कदा}} (कब), {{कथम्}} (कैसे), {{कुतः}} (कहाँ से)।'
+    items:
+    - id: i0
+      sa: कः
+      meaning:
+        en: who?
+        hi: कौन?
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: का
+      meaning:
+        en: who? (f)
+        hi: कौन? (स्त्री.)
+      check:
+        type: subanta
+        stem: किम्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: किम्
+      meaning:
+        en: what?
+        hi: क्या?
+      check:
+        type: subanta
+        stem: किम्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: कुत्र
+      meaning:
+        en: where?
+        hi: कहाँ?
+    - id: i4
+      sa: कदा
+      meaning:
+        en: when?
+        hi: कब?
+    - id: i5
+      sa: कथम्
+      meaning:
+        en: how?
+        hi: कैसे?
+    - id: i6
+      sa: कुतः
+      meaning:
+        en: from where?
+        hi: कहाँ से?
 - id: e1
   kind: explore
   depth: core
@@ -289,14 +864,90 @@ cards:
   gate: true
   story:
     success:
-      en: “कुत्र गच्छसि?” you ask. The spice seller blinks, then laughs and lets his arms drop. “Nowhere. I sit here all day.” He pats the old chest at his feet, the lid green with age.
-      hi: “कुत्र गच्छसि?” आप पूछते हैं। मसाले वाला पलकें झपकाता है, फिर हँसकर बाँहें खोल देता है। “कहीं नहीं। मैं दिन भर यहीं बैठता हूँ।” वह अपने पैरों के पास के पुराने संदूक को थपथपाता है, जिसका ढक्कन उम्र से हरा हो चुका है।
+      en: “कुत्र गच्छसि?” you ask. The spice seller blinks, then laughs and lets his arms drop. “Nowhere. I sit here all day.”
+        He pats the old chest at his feet, the lid green with age.
+      hi: “कुत्र गच्छसि?” आप पूछते हैं। मसाले वाला पलकें झपकाता है, फिर हँसकर बाँहें खोल देता है। “कहीं नहीं। मैं दिन भर यहीं
+        बैठता हूँ।” वह अपने पैरों के पास के पुराने संदूक को थपथपाता है, जिसका ढक्कन उम्र से हरा हो चुका है।
     failure:
       en: The seller shakes his head. “Where” is {{कुत्र}}, then the verb.
       hi: विक्रेता सिर हिलाता है। ‘कहाँ’ है {{कुत्र}}, फिर क्रिया।
   tokens:
   - कुत्र
   - गच्छसि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{कः}} (who), {{का}} (who, feminine), {{किम्}} (what): they take the endings you know. And four little words that
+        never change: {{कुत्र}} (where), {{कदा}} (when), {{कथम्}} (how), {{कुतः}} (from where).'
+      hi: '{{कः}} (कौन), {{का}} (कौन, स्त्री), {{किम्}} (क्या): ये परिचित प्रत्यय लेते हैं। और चार छोटे शब्द जो कभी नहीं बदलते:
+        {{कुत्र}} (कहाँ), {{कदा}} (कब), {{कथम्}} (कैसे), {{कुतः}} (कहाँ से)।'
+    items:
+    - id: i0
+      sa: कः
+      meaning:
+        en: who?
+        hi: कौन?
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: का
+      meaning:
+        en: who? (f)
+        hi: कौन? (स्त्री.)
+      check:
+        type: subanta
+        stem: किम्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: किम्
+      meaning:
+        en: what?
+        hi: क्या?
+      check:
+        type: subanta
+        stem: किम्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: कुत्र
+      meaning:
+        en: where?
+        hi: कहाँ?
+    - id: i4
+      sa: कदा
+      meaning:
+        en: when?
+        hi: कब?
+    - id: i5
+      sa: कथम्
+      meaning:
+        en: how?
+        hi: कैसे?
+    - id: i6
+      sa: कुतः
+      meaning:
+        en: from where?
+        hi: कहाँ से?
 - id: p4
   kind: practice
   depth: core
@@ -318,6 +969,80 @@ cards:
   - text:
       en: a “who” question
       hi: ‘कौन’ का प्रश्न
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{कः}} (who), {{का}} (who, feminine), {{किम्}} (what): they take the endings you know. And four little words that
+        never change: {{कुत्र}} (where), {{कदा}} (when), {{कथम्}} (how), {{कुतः}} (from where).'
+      hi: '{{कः}} (कौन), {{का}} (कौन, स्त्री), {{किम्}} (क्या): ये परिचित प्रत्यय लेते हैं। और चार छोटे शब्द जो कभी नहीं बदलते:
+        {{कुत्र}} (कहाँ), {{कदा}} (कब), {{कथम्}} (कैसे), {{कुतः}} (कहाँ से)।'
+    items:
+    - id: i0
+      sa: कः
+      meaning:
+        en: who?
+        hi: कौन?
+      check:
+        type: subanta
+        stem: किम्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: का
+      meaning:
+        en: who? (f)
+        hi: कौन? (स्त्री.)
+      check:
+        type: subanta
+        stem: किम्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: किम्
+      meaning:
+        en: what?
+        hi: क्या?
+      check:
+        type: subanta
+        stem: किम्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{किम्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{किम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: कुत्र
+      meaning:
+        en: where?
+        hi: कहाँ?
+    - id: i4
+      sa: कदा
+      meaning:
+        en: when?
+        hi: कब?
+    - id: i5
+      sa: कथम्
+      meaning:
+        en: how?
+        hi: कैसे?
+    - id: i6
+      sa: कुतः
+      meaning:
+        en: from where?
+        hi: कहाँ से?
 - id: sum
   kind: summary
   title:

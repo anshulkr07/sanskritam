@@ -25,7 +25,8 @@ cards:
     hi: बत्तीसवीं प्रतिमा
   depth: core
   image:
-    brief: The thirty-second statue, the last, stern-faced, with a very small hand held up showing two fingers; at her feet the throne itself, bare and plain; Dādī and Śuka looking up at her; Lubdhaka's foreman at the back, quiet.
+    brief: The thirty-second statue, the last, stern-faced, with a very small hand held up showing two fingers; at her feet
+      the throne itself, bare and plain; Dādī and Śuka looking up at her; Lubdhaka's foreman at the back, quiet.
     alt:
       en: The last statue with a stern face and two raised fingers before a plain stone throne
       hi: कठोर मुख, उठी दो उँगलियों वाली अन्तिम प्रतिमा, सादे पत्थर के सिंहासन के सामने
@@ -39,8 +40,12 @@ cards:
     ratio: '4:3'
     id: syn-if-s1
   narration:
-    en: 'The thirty-second statue has a stern face and a very small hand holding up two fingers. “यदि सः पठति, तर्हि सः जानाति,” she says: “if he reads, then he knows.” “And if he does not?” “यदि न पठति, तर्हि न जानाति.” Dādī: “Three flavours of if: what is, what will be, what would be. The words यदि and तर्हि stay the same.”'
-    hi: 'बत्तीसवीं प्रतिमा का मुख कठोर है और उसके बहुत छोटे हाथ में दो उँगलियाँ उठी हैं। “यदि सः पठति, तर्हि सः जानाति,” वह कहती है: “अगर वह पढ़ता है, तो वह जानता है।” “और यदि नहीं?” “यदि न पठति, तर्हि न जानाति।” दादी: “‘अगर’ के तीन स्वाद हैं: जो होता है (वर्तमान), जो होगा (भविष्यत्), जो होता (विधिलिङ्)। शब्द यदि और तर्हि वही रहते हैं।”'
+    en: 'The thirty-second statue has a stern face and a very small hand holding up two fingers. “यदि सः पठति, तर्हि सः जानाति,”
+      she says: “if he reads, then he knows.” “And if he does not?” “यदि न पठति, तर्हि न जानाति.” Dādī: “Three flavours of
+      if: what is, what will be, what would be. The words यदि and तर्हि stay the same.”'
+    hi: 'बत्तीसवीं प्रतिमा का मुख कठोर है और उसके बहुत छोटे हाथ में दो उँगलियाँ उठी हैं। “यदि सः पठति, तर्हि सः जानाति,” वह
+      कहती है: “अगर वह पढ़ता है, तो वह जानता है।” “और यदि नहीं?” “यदि न पठति, तर्हि न जानाति।” दादी: “‘अगर’ के तीन स्वाद हैं:
+      जो होता है (वर्तमान), जो होगा (भविष्यत्), जो होता (विधिलिङ्)। शब्द यदि और तर्हि वही रहते हैं।”'
   quote:
     sa: यदि वदसि तर्हि तन्मृतकं पुनर् वृक्षे यास्यति
     gloss:
@@ -56,8 +61,12 @@ cards:
   skills:
   - syn.conditional
   body:
-    en: '{{यदि}} (if) opens the condition, and {{तर्हि}} or {{तदा}} (then) opens the result: {{यदि सः पठति, तर्हि जानाति}}. A condition about the future takes the future: {{यदि वदसि, तर्हि यास्यति}}. A condition that is only supposed takes {{विधिलिङ्}}: {{यदि पठेत्, तर्हि जानीयात्}}. A negative condition adds {{न}}.'
-    hi: '{{यदि}} (अगर) शर्त खोलता है, और {{तर्हि}} या {{तदा}} (तब) परिणाम खोलता है: {{यदि सः पठति, तर्हि जानाति}}। भविष्य की शर्त भविष्यत् लेती है: {{यदि वदसि, तर्हि यास्यति}}। केवल मानी हुई शर्त {{विधिलिङ्}} लेती है: {{यदि पठेत्, तर्हि जानीयात्}}। नकारात्मक शर्त में {{न}} जुड़ता है।'
+    en: '{{यदि}} (if) opens the condition, and {{तर्हि}} or {{तदा}} (then) opens the result: {{यदि सः पठति, तर्हि जानाति}}.
+      A condition about the future takes the future: {{यदि वदसि, तर्हि यास्यति}}. A condition that is only supposed takes
+      {{विधिलिङ्}}: {{यदि पठेत्, तर्हि जानीयात्}}. A negative condition adds {{न}}.'
+    hi: '{{यदि}} (अगर) शर्त खोलता है, और {{तर्हि}} या {{तदा}} (तब) परिणाम खोलता है: {{यदि सः पठति, तर्हि जानाति}}। भविष्य
+      की शर्त भविष्यत् लेती है: {{यदि वदसि, तर्हि यास्यति}}। केवल मानी हुई शर्त {{विधिलिङ्}} लेती है: {{यदि पठेत्, तर्हि जानीयात्}}।
+      नकारात्मक शर्त में {{न}} जुड़ता है।'
   examples:
   - sa: यदि सः पठति तर्हि सः जानाति।
     meaning:
@@ -188,6 +197,529 @@ cards:
     meaning:
       en: if … then
       hi: यदि … तो
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: यदि सः पठति तर्हि सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: If he reads, then he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यदि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: if
+        hi: यदि
+    - id: i2
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i3
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i4
+      sa: तर्हि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: then
+        hi: तो
+    - id: i5
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i6
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{यदि}} (if) opens the condition, and {{तर्हि}} or {{तदा}} (then) opens the result: {{यदि सः पठति, तर्हि जानाति}}.
+          A condition about the future takes the future: {{यदि वदसि, तर्हि यास्यति}}. A condition that is only supposed takes
+          {{विधिलिङ्}}: {{यदि पठेत्, तर्हि जानीयात्}}. A negative condition adds {{न}}.'
+        hi: '{{यदि}} (अगर) शर्त खोलता है, और {{तर्हि}} या {{तदा}} (तब) परिणाम खोलता है: {{यदि सः पठति, तर्हि जानाति}}। भविष्य
+          की शर्त भविष्यत् लेती है: {{यदि वदसि, तर्हि यास्यति}}। केवल मानी हुई शर्त {{विधिलिङ्}} लेती है: {{यदि पठेत्, तर्हि
+          जानीयात्}}। नकारात्मक शर्त में {{न}} जुड़ता है।'
+    - id: i9
+      sa: यदि सः पठति तर्हि सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: If he reads, then he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: यदि त्वम् वदिष्यसि तर्हि सः यास्यति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: If you speak, then it will go.
+        hi: यदि तुम बोलोगे, तो वह जाएगा।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: त्वम्
+        gloss:
+          en: you
+          hi: तुम
+      - sa: वदिष्यसि
+        gloss:
+          en: speak
+          hi: बोलोगे
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lrt
+          purusha: Madhyama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: it
+          hi: वह
+      - sa: यास्यति
+        gloss:
+          en: will go
+          hi: जाएगा
+        check:
+          type: tinanta
+          dhatu: या
+          lakara: Lrt
+          purusha: Prathama
+          vacana: Eka
+          gana: Adadi
+    - id: i1
+      sa: यदि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: if
+        hi: यदि
+    - id: i2
+      sa: त्वम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: you
+        hi: तुम
+    - id: i3
+      sa: वदिष्यसि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: speak
+        hi: बोलोगे
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lrt
+        purusha: Madhyama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लृट्}} · Second person ({{मध्यमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लृट्}} · मध्यमपुरुष'
+    - id: i4
+      sa: तर्हि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: then
+        hi: तो
+    - id: i5
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: it
+        hi: वह
+    - id: i6
+      sa: यास्यति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: will go
+        hi: जाएगा
+      check:
+        type: tinanta
+        dhatu: या
+        lakara: Lrt
+        purusha: Prathama
+        vacana: Eka
+        gana: Adadi
+      feature:
+        en: 'Root: {{या}} · singular · {{लृट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{या}} · {{एकवचन}} · {{लृट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{यदि}} (if) opens the condition, and {{तर्हि}} or {{तदा}} (then) opens the result: {{यदि सः पठति, तर्हि जानाति}}.
+          A condition about the future takes the future: {{यदि वदसि, तर्हि यास्यति}}. A condition that is only supposed takes
+          {{विधिलिङ्}}: {{यदि पठेत्, तर्हि जानीयात्}}. A negative condition adds {{न}}.'
+        hi: '{{यदि}} (अगर) शर्त खोलता है, और {{तर्हि}} या {{तदा}} (तब) परिणाम खोलता है: {{यदि सः पठति, तर्हि जानाति}}। भविष्य
+          की शर्त भविष्यत् लेती है: {{यदि वदसि, तर्हि यास्यति}}। केवल मानी हुई शर्त {{विधिलिङ्}} लेती है: {{यदि पठेत्, तर्हि
+          जानीयात्}}। नकारात्मक शर्त में {{न}} जुड़ता है।'
+    - id: i9
+      sa: यदि त्वम् वदिष्यसि तर्हि सः यास्यति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: If you speak, then it will go.
+        hi: यदि तुम बोलोगे, तो वह जाएगा।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: त्वम्
+        gloss:
+          en: you
+          hi: तुम
+      - sa: वदिष्यसि
+        gloss:
+          en: speak
+          hi: बोलोगे
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lrt
+          purusha: Madhyama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: it
+          hi: वह
+      - sa: यास्यति
+        gloss:
+          en: will go
+          hi: जाएगा
+        check:
+          type: tinanta
+          dhatu: या
+          lakara: Lrt
+          purusha: Prathama
+          vacana: Eka
+          gana: Adadi
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: यदि सः पठेत् तर्हि सः जानीयात्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: If he were to read, he would know.
+        hi: यदि वह पढ़े, तो जान जाए।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठेत्
+        gloss:
+          en: were to read
+          hi: पढ़े
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानीयात्
+        gloss:
+          en: would know
+          hi: जान जाए
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यदि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: if
+        hi: यदि
+    - id: i2
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i3
+      sa: पठेत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: were to read
+        hi: पढ़े
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+    - id: i4
+      sa: तर्हि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: then
+        hi: तो
+    - id: i5
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i6
+      sa: जानीयात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: would know
+        hi: जान जाए
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{यदि}} (if) opens the condition, and {{तर्हि}} or {{तदा}} (then) opens the result: {{यदि सः पठति, तर्हि जानाति}}.
+          A condition about the future takes the future: {{यदि वदसि, तर्हि यास्यति}}. A condition that is only supposed takes
+          {{विधिलिङ्}}: {{यदि पठेत्, तर्हि जानीयात्}}. A negative condition adds {{न}}.'
+        hi: '{{यदि}} (अगर) शर्त खोलता है, और {{तर्हि}} या {{तदा}} (तब) परिणाम खोलता है: {{यदि सः पठति, तर्हि जानाति}}। भविष्य
+          की शर्त भविष्यत् लेती है: {{यदि वदसि, तर्हि यास्यति}}। केवल मानी हुई शर्त {{विधिलिङ्}} लेती है: {{यदि पठेत्, तर्हि
+          जानीयात्}}। नकारात्मक शर्त में {{न}} जुड़ता है।'
+    - id: i9
+      sa: यदि सः पठेत् तर्हि सः जानीयात्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: If he were to read, he would know.
+        hi: यदि वह पढ़े, तो जान जाए।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठेत्
+        gloss:
+          en: were to read
+          hi: पढ़े
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानीयात्
+        gloss:
+          en: would know
+          hi: जान जाए
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
 - id: tb1
   kind: table
   title:
@@ -285,6 +817,180 @@ cards:
   - sa: यदा … तदा
   - correct: true
     sa: यदि … तर्हि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: यदि सः पठति तर्हि सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: If he reads, then he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यदि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: if
+        hi: यदि
+    - id: i2
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i3
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i4
+      sa: तर्हि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: then
+        hi: तो
+    - id: i5
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i6
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{यदि}} (if) opens the condition, and {{तर्हि}} or {{तदा}} (then) opens the result: {{यदि सः पठति, तर्हि जानाति}}.
+          A condition about the future takes the future: {{यदि वदसि, तर्हि यास्यति}}. A condition that is only supposed takes
+          {{विधिलिङ्}}: {{यदि पठेत्, तर्हि जानीयात्}}. A negative condition adds {{न}}.'
+        hi: '{{यदि}} (अगर) शर्त खोलता है, और {{तर्हि}} या {{तदा}} (तब) परिणाम खोलता है: {{यदि सः पठति, तर्हि जानाति}}। भविष्य
+          की शर्त भविष्यत् लेती है: {{यदि वदसि, तर्हि यास्यति}}। केवल मानी हुई शर्त {{विधिलिङ्}} लेती है: {{यदि पठेत्, तर्हि
+          जानीयात्}}। नकारात्मक शर्त में {{न}} जुड़ता है।'
+    - id: i9
+      sa: यदि सः पठति तर्हि सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: If he reads, then he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -323,6 +1029,180 @@ cards:
       text:
         en: who … he
         hi: जो … वह
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: यदि सः पठति तर्हि सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: If he reads, then he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यदि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: if
+        hi: यदि
+    - id: i2
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i3
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i4
+      sa: तर्हि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: then
+        hi: तो
+    - id: i5
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i6
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{यदि}} (if) opens the condition, and {{तर्हि}} or {{तदा}} (then) opens the result: {{यदि सः पठति, तर्हि जानाति}}.
+          A condition about the future takes the future: {{यदि वदसि, तर्हि यास्यति}}. A condition that is only supposed takes
+          {{विधिलिङ्}}: {{यदि पठेत्, तर्हि जानीयात्}}. A negative condition adds {{न}}.'
+        hi: '{{यदि}} (अगर) शर्त खोलता है, और {{तर्हि}} या {{तदा}} (तब) परिणाम खोलता है: {{यदि सः पठति, तर्हि जानाति}}। भविष्य
+          की शर्त भविष्यत् लेती है: {{यदि वदसि, तर्हि यास्यति}}। केवल मानी हुई शर्त {{विधिलिङ्}} लेती है: {{यदि पठेत्, तर्हि
+          जानीयात्}}। नकारात्मक शर्त में {{न}} जुड़ता है।'
+    - id: i9
+      sa: यदि सः पठति तर्हि सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: If he reads, then he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -362,6 +1242,180 @@ cards:
   - वदसि
   - तर्हि
   - यास्यति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: यदि सः पठति तर्हि सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: If he reads, then he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यदि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: if
+        hi: यदि
+    - id: i2
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i3
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i4
+      sa: तर्हि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: then
+        hi: तो
+    - id: i5
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i6
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{यदि}} (if) opens the condition, and {{तर्हि}} or {{तदा}} (then) opens the result: {{यदि सः पठति, तर्हि जानाति}}.
+          A condition about the future takes the future: {{यदि वदसि, तर्हि यास्यति}}. A condition that is only supposed takes
+          {{विधिलिङ्}}: {{यदि पठेत्, तर्हि जानीयात्}}. A negative condition adds {{न}}.'
+        hi: '{{यदि}} (अगर) शर्त खोलता है, और {{तर्हि}} या {{तदा}} (तब) परिणाम खोलता है: {{यदि सः पठति, तर्हि जानाति}}। भविष्य
+          की शर्त भविष्यत् लेती है: {{यदि वदसि, तर्हि यास्यति}}। केवल मानी हुई शर्त {{विधिलिङ्}} लेती है: {{यदि पठेत्, तर्हि
+          जानीयात्}}। नकारात्मक शर्त में {{न}} जुड़ता है।'
+    - id: i9
+      sa: यदि सः पठति तर्हि सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: If he reads, then he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   title:
@@ -381,8 +1435,12 @@ cards:
   gate: true
   story:
     success:
-      en: “पठेत् … जानीयात्,” you say, and the thirty-second statue's raised fingers come down together, and the throne behind her, bare and plain for a thousand years, shines, from within, as if someone had at last turned a lamp on in it. “If he were to read,” she says, in the plainest voice of all the statues, “he would know. यदि… तर्हि. That is the throne.”
-      hi: “पठेत् … जानीयात्,” आप कहते हैं, और बत्तीसवीं प्रतिमा की उठी उँगलियाँ साथ-साथ नीचे आती हैं, और उसके पीछे का सिंहासन, हज़ार वर्षों से सादा और नंगा, भीतर से चमक उठता है, मानो किसी ने आख़िरकार उसमें दीपक जला दिया हो। “यदि वह पढ़े,” वह सब प्रतिमाओं में सबसे सादी आवाज़ में कहती है, “तो वह जान जाए। यदि… तर्हि। यही सिंहासन है।”
+      en: “पठेत् … जानीयात्,” you say, and the thirty-second statue's raised fingers come down together, and the throne behind
+        her, bare and plain for a thousand years, shines, from within, as if someone had at last turned a lamp on in it. “If
+        he were to read,” she says, in the plainest voice of all the statues, “he would know. यदि… तर्हि. That is the throne.”
+      hi: “पठेत् … जानीयात्,” आप कहते हैं, और बत्तीसवीं प्रतिमा की उठी उँगलियाँ साथ-साथ नीचे आती हैं, और उसके पीछे का सिंहासन,
+        हज़ार वर्षों से सादा और नंगा, भीतर से चमक उठता है, मानो किसी ने आख़िरकार उसमें दीपक जला दिया हो। “यदि वह पढ़े,” वह
+        सब प्रतिमाओं में सबसे सादी आवाज़ में कहती है, “तो वह जान जाए। यदि… तर्हि। यही सिंहासन है।”
     failure:
       en: 'Her fingers stay raised. A supposition takes the optative: {{पठेत् … जानीयात्}}.'
       hi: 'उसकी उँगलियाँ उठी रहती हैं। कल्पना विधिलिङ् लेती है: {{पठेत् … जानीयात्}}।'
@@ -391,6 +1449,180 @@ cards:
   - sa: पठिष्यति … ज्ञास्यति
   - correct: true
     sa: पठेत् … जानीयात्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: यदि सः पठति तर्हि सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: If he reads, then he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यदि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: if
+        hi: यदि
+    - id: i2
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i3
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i4
+      sa: तर्हि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: then
+        hi: तो
+    - id: i5
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i6
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{यदि}} (if) opens the condition, and {{तर्हि}} or {{तदा}} (then) opens the result: {{यदि सः पठति, तर्हि जानाति}}.
+          A condition about the future takes the future: {{यदि वदसि, तर्हि यास्यति}}. A condition that is only supposed takes
+          {{विधिलिङ्}}: {{यदि पठेत्, तर्हि जानीयात्}}. A negative condition adds {{न}}.'
+        hi: '{{यदि}} (अगर) शर्त खोलता है, और {{तर्हि}} या {{तदा}} (तब) परिणाम खोलता है: {{यदि सः पठति, तर्हि जानाति}}। भविष्य
+          की शर्त भविष्यत् लेती है: {{यदि वदसि, तर्हि यास्यति}}। केवल मानी हुई शर्त {{विधिलिङ्}} लेती है: {{यदि पठेत्, तर्हि
+          जानीयात्}}। नकारात्मक शर्त में {{न}} जुड़ता है।'
+    - id: i9
+      sa: यदि सः पठति तर्हि सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: If he reads, then he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: pn
   kind: teach
   title:
@@ -403,8 +1635,38 @@ cards:
   - 3.3.156
   - 3.3.139
   body:
-    en: Sūtra 3.3.156, {{हेतुहेतुमतोर्लिङ्}}, gives {{लिङ्}} to both the condition and its result. 3.3.139, {{लिङ्निमित्ते लृङ् क्रियातिपत्तौ}}, gives {{लृङ्}} when the condition was not met. {{यदि}} and {{तर्हि}} are particles, {{निपात}}s, so they never change.
-    hi: सूत्र 3.3.156, {{हेतुहेतुमतोर्लिङ्}}, शर्त और उसके परिणाम दोनों को {{लिङ्}} देता है। 3.3.139, {{लिङ्निमित्ते लृङ् क्रियातिपत्तौ}}, जब शर्त पूरी नहीं हुई तब {{लृङ्}} देता है। {{यदि}} और {{तर्हि}} निपात हैं, इसलिए कभी नहीं बदलते।
+    en: Sūtra 3.3.156, {{हेतुहेतुमतोर्लिङ्}}, gives {{लिङ्}} to both the condition and its result. 3.3.139, {{लिङ्निमित्ते
+      लृङ् क्रियातिपत्तौ}}, gives {{लृङ्}} when the condition was not met. {{यदि}} and {{तर्हि}} are particles, {{निपात}}s,
+      so they never change.
+    hi: सूत्र 3.3.156, {{हेतुहेतुमतोर्लिङ्}}, शर्त और उसके परिणाम दोनों को {{लिङ्}} देता है। 3.3.139, {{लिङ्निमित्ते लृङ्
+      क्रियातिपत्तौ}}, जब शर्त पूरी नहीं हुई तब {{लृङ्}} देता है। {{यदि}} और {{तर्हि}} निपात हैं, इसलिए कभी नहीं बदलते।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 3.3.156, {{हेतुहेतुमतोर्लिङ्}}, gives {{लिङ्}} to both the condition and its result. 3.3.139, {{लिङ्निमित्ते
+        लृङ् क्रियातिपत्तौ}}, gives {{लृङ्}} when the condition was not met. {{यदि}} and {{तर्हि}} are particles, {{निपात}}s,
+        so they never change.
+      hi: सूत्र 3.3.156, {{हेतुहेतुमतोर्लिङ्}}, शर्त और उसके परिणाम दोनों को {{लिङ्}} देता है। 3.3.139, {{लिङ्निमित्ते लृङ्
+        क्रियातिपत्तौ}}, जब शर्त पूरी नहीं हुई तब {{लृङ्}} देता है। {{यदि}} और {{तर्हि}} निपात हैं, इसलिए कभी नहीं बदलते।
+    items:
+    - id: i0
+      sa: हेतुहेतुमतोर्लिङ्
+    - id: i1
+      sa: लिङ्
+    - id: i2
+      sa: लिङ्निमित्ते लृङ् क्रियातिपत्तौ
+    - id: i3
+      sa: लृङ्
+    - id: i4
+      sa: यदि
+    - id: i5
+      sa: तर्हि
+    - id: i6
+      sa: निपात
 - id: sum
   kind: summary
   title:

@@ -100,6 +100,56 @@ cards:
         prayoga: Karmani
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: गम्यते
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: it is gone
+          hi: जाया जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prayoga: Karmani
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A root with no object has an impersonal passive: {{मया गम्यते}} “it is gone by me”, that is, “I go”.'
+          hi: 'बिना कर्म वाली धातु का भाववाच्य होता है: {{मया गम्यते}} ‘मुझसे जाया जाता है’, अर्थात् ‘मैं जाता हूँ’।'
+      - id: i3
+        sa: गम्यते
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: it is gone
+          hi: जाया जाता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prayoga: Karmani
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
   - skill: verb.desiderative
     rule:
       en: 'A few desideratives change the root: {{दा}} gives {{दित्सति}}, {{हन्}} gives {{जिघांसति}}, {{पा}} gives {{पिपासति}}.'
@@ -119,6 +169,58 @@ cards:
         - San
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: दित्सति
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: he wants to give
+          hi: वह देना चाहता है
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - San
+        feature:
+          en: 'Root: {{दा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A few desideratives change the root: {{दा}} gives {{दित्सति}}, {{हन्}} gives {{जिघांसति}}, {{पा}} gives {{पिपासति}}.'
+          hi: 'कुछ इच्छार्थक में धातु बदलती है: {{दा}} से {{दित्सति}}, {{हन्}} से {{जिघांसति}}, {{पा}} से {{पिपासति}}।'
+      - id: i3
+        sa: दित्सति
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: he wants to give
+          hi: वह देना चाहता है
+        check:
+          type: tinanta
+          dhatu: दा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - San
+        feature:
+          en: 'Root: {{दा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{दा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
 - id: mistakes
   kind: revision
   title:

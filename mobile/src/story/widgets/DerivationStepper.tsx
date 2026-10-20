@@ -5,6 +5,7 @@ import {Sa} from '../text';
 import {useStoryTheme} from '../theme';
 import {Button,Label,Panel} from '../ui';
 import {clampSteps,stepChanged} from './logic';
+import FormChange from '../cards/FormChange';
 import type {DerivationStepperBuilt} from '../types';
 /** A word built one sūtra at a time: every step, its number and the form after it come from the engine. */
 export default function DerivationStepper({params,onInteracted}:{params:DerivationStepperBuilt;onInteracted:()=>void}){
@@ -16,6 +17,7 @@ export default function DerivationStepper({params,onInteracted}:{params:Derivati
   <Label>{hi?'चरण ':'Step '}{at}/{steps.length}</Label>
   <Panel>
    <Sa sa={step.result} iast={params.iast[step.result]} size={40}/>
+   {at>1?<><Label>{hi?'पिछला रूप':'Previous form'}</Label><Sa sa={steps[at-2].result} iast={params.iast[steps[at-2].result]} size={26}/><FormChange before={steps[at-2].result} after={step.result}/></>:null}
    <Label>{hi?'सूत्र ':'Sūtra '}{step.sutra}</Label>
    <Sa sa={step.sa} iast={step.iast} size={24}/>
    {!changed?<Label>{hi?'इस चरण में रूप नहीं बदलता: यह केवल संकेत या नाम तय करता है।':'The form does not change here: this step only marks or names something.'}</Label>:null}

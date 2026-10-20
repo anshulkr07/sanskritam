@@ -25,7 +25,8 @@ cards:
     hi: सीढ़ियों पर क्रियाएँ
   depth: core
   image:
-    brief: 'Four small scenes along the ghat steps: a boy reading, a girl writing on a slate, a heron standing, a boat gliding; Śuka on Dādī''s shoulder squawking happily; the small spirit counting on his fingers.'
+    brief: 'Four small scenes along the ghat steps: a boy reading, a girl writing on a slate, a heron standing, a boat gliding;
+      Śuka on Dādī''s shoulder squawking happily; the small spirit counting on his fingers.'
     alt:
       en: Four actions on the ghat with a parrot squawking along
       hi: घाट पर चार क्रियाएँ, साथ में चहकता तोता
@@ -37,10 +38,13 @@ cards:
     place: naditira
     ratio: '4:3'
     id: who-does-s1
-    text_in_image: ["लिखति"]
+    text_in_image:
+    - लिखति
   narration:
-    en: The spirit wants to hear what everyone does. The boy reads, the girl writes, the heron stands, the boat moves. Each action is a word of its own, and each ends in the same small sound. Śuka repeats every one in a happy squawk.
-    hi: भूत सुनना चाहता है कि हर कोई क्या करता है। बालक पढ़ता है, बालिका लिखती है, बगुला खड़ा है, नाव चलती है। हर क्रिया एक अलग शब्द है, और सबके अन्त में वही छोटी ध्वनि है। शुक ख़ुशी से हर एक को दोहराता है।
+    en: The spirit wants to hear what everyone does. The boy reads, the girl writes, the heron stands, the boat moves. Each
+      action is a word of its own, and each ends in the same small sound. Śuka repeats every one in a happy squawk.
+    hi: भूत सुनना चाहता है कि हर कोई क्या करता है। बालक पढ़ता है, बालिका लिखती है, बगुला खड़ा है, नाव चलती है। हर क्रिया एक
+      अलग शब्द है, और सबके अन्त में वही छोटी ध्वनि है। शुक ख़ुशी से हर एक को दोहराता है।
 - id: t1
   kind: teach
   title:
@@ -52,8 +56,10 @@ cards:
   sutras:
   - 3.2.123
   body:
-    en: 'A verb names an action. For he, she or it, in the present, the root takes {{ति}}: {{पठ्}} + {{ति}} = {{पठति}}. The same form serves for a boy, a girl or a boat.'
-    hi: 'क्रिया किसी काम का नाम है। वर्तमान काल में वह, वह (स्त्री) या वह (वस्तु) के लिए धातु में {{ति}} लगता है: {{पठ्}} + {{ति}} = {{पठति}}। यही रूप बालक, बालिका या नाव, तीनों के लिए चलता है।'
+    en: 'A verb names an action. For he, she or it, in the present, the root takes {{ति}}: {{पठ्}} + {{ति}} = {{पठति}}. The
+      same form serves for a boy, a girl or a boat.'
+    hi: 'क्रिया किसी काम का नाम है। वर्तमान काल में वह, वह (स्त्री) या वह (वस्तु) के लिए धातु में {{ति}} लगता है: {{पठ्}}
+      + {{ति}} = {{पठति}}। यही रूप बालक, बालिका या नाव, तीनों के लिए चलता है।'
   steps:
   - sa: पठ्
     label:
@@ -67,6 +73,28 @@ cards:
     label:
       en: '+ {{ति}}: he, she, it reads'
       hi: '+ {{ति}}: वह पढ़ता है'
+  visuals:
+  - id: v-source-forms
+    kind: comparison
+    title:
+      en: Follow the forms
+      hi: रूपों पर ध्यान दें
+    items:
+    - id: i0
+      sa: पठ्
+      meaning:
+        en: 'root: read'
+        hi: 'धातु: पढ़ना'
+    - id: i1
+      sa: पठ
+      meaning:
+        en: with the joining vowel {{अ}}
+        hi: जोड़ने वाले स्वर {{अ}} के साथ
+    - id: i2
+      sa: पठति
+      meaning:
+        en: '+ {{ति}}: he, she, it reads'
+        hi: '+ {{ति}}: वह पढ़ता है'
 - id: tb1
   kind: table
   title:
@@ -197,8 +225,10 @@ cards:
         en: stands
         hi: खड़ा है
   note:
-    en: 'A few roots change shape: {{गम्}} → {{गच्छति}}, {{दृश्}} → {{पश्यति}}, {{पा}} → {{पिबति}}, {{स्था}} → {{तिष्ठति}}. Learn these four as they are.'
-    hi: 'कुछ धातुएँ रूप बदलती हैं: {{गम्}} → {{गच्छति}}, {{दृश्}} → {{पश्यति}}, {{पा}} → {{पिबति}}, {{स्था}} → {{तिष्ठति}}। इन चारों को जैसे हैं वैसे याद कीजिए।'
+    en: 'A few roots change shape: {{गम्}} → {{गच्छति}}, {{दृश्}} → {{पश्यति}}, {{पा}} → {{पिबति}}, {{स्था}} → {{तिष्ठति}}.
+      Learn these four as they are.'
+    hi: 'कुछ धातुएँ रूप बदलती हैं: {{गम्}} → {{गच्छति}}, {{दृश्}} → {{पश्यति}}, {{पा}} → {{पिबति}}, {{स्था}} → {{तिष्ठति}}।
+      इन चारों को जैसे हैं वैसे याद कीजिए।'
 - id: t2
   kind: teach
   title:
@@ -311,6 +341,427 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Put the doer and the verb together: a sentence. The verb stays {{ति}} for any single doer.'
+        hi: 'कर्ता और क्रिया को साथ रखिए: वाक्य बन गया। एक कर्ता के लिए क्रिया में {{ति}} ही रहता है।'
+    - id: i5
+      sa: बालकः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads.
+        hi: बालक पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालिका लिखति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The girl writes.
+        hi: बालिका लिखती है।
+      words:
+      - sa: बालिका
+        gloss:
+          en: girl
+          hi: बालिका
+        check:
+          type: subanta
+          stem: बालिका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: लिखति
+        gloss:
+          en: writes
+          hi: लिखती है
+        check:
+          type: tinanta
+          dhatu: लिख्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालिका
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: girl
+        hi: बालिका
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: लिखति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: writes
+        hi: लिखती है
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Put the doer and the verb together: a sentence. The verb stays {{ति}} for any single doer.'
+        hi: 'कर्ता और क्रिया को साथ रखिए: वाक्य बन गया। एक कर्ता के लिए क्रिया में {{ति}} ही रहता है।'
+    - id: i5
+      sa: बालिका लिखति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The girl writes.
+        hi: बालिका लिखती है।
+      words:
+      - sa: बालिका
+        gloss:
+          en: girl
+          hi: बालिका
+        check:
+          type: subanta
+          stem: बालिका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: लिखति
+        gloss:
+          en: writes
+          hi: लिखती है
+        check:
+          type: tinanta
+          dhatu: लिख्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बकः तिष्ठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The heron stands.
+        hi: बगुला खड़ा है।
+      words:
+      - sa: बकः
+        gloss:
+          en: heron
+          hi: बगुला
+        check:
+          type: subanta
+          stem: बक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: तिष्ठति
+        gloss:
+          en: stands
+          hi: खड़ा है
+        check:
+          type: tinanta
+          dhatu: स्था
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: heron
+        hi: बगुला
+      check:
+        type: subanta
+        stem: बक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: तिष्ठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: stands
+        hi: खड़ा है
+      check:
+        type: tinanta
+        dhatu: स्था
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{स्था}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{स्था}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Put the doer and the verb together: a sentence. The verb stays {{ति}} for any single doer.'
+        hi: 'कर्ता और क्रिया को साथ रखिए: वाक्य बन गया। एक कर्ता के लिए क्रिया में {{ति}} ही रहता है।'
+    - id: i5
+      sa: बकः तिष्ठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The heron stands.
+        hi: बगुला खड़ा है।
+      words:
+      - sa: बकः
+        gloss:
+          en: heron
+          hi: बगुला
+        check:
+          type: subanta
+          stem: बक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: तिष्ठति
+        gloss:
+          en: stands
+          hi: खड़ा है
+        check:
+          type: tinanta
+          dhatu: स्था
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-3
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: नौका चलति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boat moves.
+        hi: नाव चलती है।
+      words:
+      - sa: नौका
+        gloss:
+          en: boat
+          hi: नाव
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: चलति
+        gloss:
+          en: moves
+          hi: चलती है
+        check:
+          type: tinanta
+          dhatu: चल्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: नौका
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boat
+        hi: नाव
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: चलति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: moves
+        hi: चलती है
+      check:
+        type: tinanta
+        dhatu: चल्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{चल्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{चल्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Put the doer and the verb together: a sentence. The verb stays {{ति}} for any single doer.'
+        hi: 'कर्ता और क्रिया को साथ रखिए: वाक्य बन गया। एक कर्ता के लिए क्रिया में {{ति}} ही रहता है।'
+    - id: i5
+      sa: नौका चलति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boat moves.
+        hi: नाव चलती है।
+      words:
+      - sa: नौका
+        gloss:
+          en: boat
+          hi: नाव
+        check:
+          type: subanta
+          stem: नौका
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: चलति
+        gloss:
+          en: moves
+          hi: चलती है
+        check:
+          type: tinanta
+          dhatu: चल्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p1
   kind: practice
   depth: core
@@ -329,6 +780,28 @@ cards:
   - correct: true
     sa: लिखति
   - sa: नौका
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पठ्
+      meaning:
+        en: 'root: read'
+        hi: 'धातु: पढ़ना'
+    - id: i1
+      sa: पठ
+      meaning:
+        en: with the joining vowel {{अ}}
+        hi: जोड़ने वाले स्वर {{अ}} के साथ
+    - id: i2
+      sa: पठति
+      meaning:
+        en: '+ {{ति}}: he, she, it reads'
+        hi: '+ {{ति}}: वह पढ़ता है'
 - id: p2
   kind: practice
   depth: core
@@ -349,6 +822,28 @@ cards:
   - ति
   - पठ्
   - ते
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पठ्
+      meaning:
+        en: 'root: read'
+        hi: 'धातु: पढ़ना'
+    - id: i1
+      sa: पठ
+      meaning:
+        en: with the joining vowel {{अ}}
+        hi: जोड़ने वाले स्वर {{अ}} के साथ
+    - id: i2
+      sa: पठति
+      meaning:
+        en: '+ {{ति}}: he, she, it reads'
+        hi: '+ {{ति}}: वह पढ़ता है'
 - id: e1
   kind: explore
   depth: core
@@ -391,7 +886,8 @@ cards:
   story:
     success:
       en: Everyone on the ghat is named and busy. The spirit leans back on the step and laughs, a sound like water over pebbles.
-      hi: घाट पर सबके नाम लिए जा चुके हैं और सब अपने काम में लगे हैं। भूत सीढ़ी पर पीछे झुककर हँसता है, कंकड़ों पर बहते पानी जैसी हँसी।
+      hi: घाट पर सबके नाम लिए जा चुके हैं और सब अपने काम में लगे हैं। भूत सीढ़ी पर पीछे झुककर हँसता है, कंकड़ों पर बहते पानी
+        जैसी हँसी।
     failure:
       en: The sentence does not settle. Try the doer first, then what he does.
       hi: वाक्य जमता नहीं। पहले कर्ता, फिर वह क्या करता है।
@@ -400,6 +896,28 @@ cards:
     params:
       sentence: बालकः पठति
     seed: 0
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पठ्
+      meaning:
+        en: 'root: read'
+        hi: 'धातु: पढ़ना'
+    - id: i1
+      sa: पठ
+      meaning:
+        en: with the joining vowel {{अ}}
+        hi: जोड़ने वाले स्वर {{अ}} के साथ
+    - id: i2
+      sa: पठति
+      meaning:
+        en: '+ {{ति}}: he, she, it reads'
+        hi: '+ {{ति}}: वह पढ़ता है'
 - id: sum
   kind: summary
   title:

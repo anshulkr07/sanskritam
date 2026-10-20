@@ -21,7 +21,8 @@ cards:
     hi: पुराना संदूक
   depth: core
   image:
-    brief: The spice seller sitting behind his stall with a very old green-lidded wooden chest at his feet, shaking his head with a smile; the small yellow spirit hovering above the lid; you and Dādī looking at it with curiosity.
+    brief: The spice seller sitting behind his stall with a very old green-lidded wooden chest at his feet, shaking his head
+      with a smile; the small yellow spirit hovering above the lid; you and Dādī looking at it with curiosity.
     alt:
       en: A spice seller shakes his head over an old chest while a spirit hovers above it
       hi: पुराने संदूक पर सिर हिलाता मसाले वाला और ऊपर मँडराता भूत
@@ -35,8 +36,12 @@ cards:
     ratio: '4:3'
     id: object-no-s1
   narration:
-    en: “Can we see what is in the chest?” you ask. “No,” says the spice seller. “It is not for sale. It is not mine.” He glances at the little yellow spirit, who is hovering over the lid. “It is not for him either.” Dādī smiles. “A good moment to learn how to say no.”
-    hi: “क्या हम देख सकते हैं कि संदूक में क्या है?” आप पूछते हैं। मसाले वाला कहता है, “नहीं। यह बिकाऊ नहीं है। यह मेरा नहीं है।” वह पीले भूत की ओर देखता है, जो ढक्कन पर मँडरा रहा है। “इसके लिए भी नहीं।” दादी मुस्कुराती हैं। “नहीं कहना सीखने का अच्छा समय।”
+    en: “Can we see what is in the chest?” you ask. “No,” says the spice seller. “It is not for sale. It is not mine.” He
+      glances at the little yellow spirit, who is hovering over the lid. “It is not for him either.” Dādī smiles. “A good
+      moment to learn how to say no.”
+    hi: “क्या हम देख सकते हैं कि संदूक में क्या है?” आप पूछते हैं। मसाले वाला कहता है, “नहीं। यह बिकाऊ नहीं है। यह मेरा नहीं
+      है।” वह पीले भूत की ओर देखता है, जो ढक्कन पर मँडरा रहा है। “इसके लिए भी नहीं।” दादी मुस्कुराती हैं। “नहीं कहना सीखने
+      का अच्छा समय।”
   lines:
   - speaker: vanik
     sa: न विक्रेयम्।
@@ -52,8 +57,10 @@ cards:
   skills:
   - sent.negation
   body:
-    en: To say “not”, put {{न}} before the word you deny, usually the verb. {{बालकः पठति}} (the boy reads), {{बालकः न पठति}} (the boy does not read).
-    hi: ‘नहीं’ कहने के लिए जिस शब्द का निषेध करना हो, प्रायः क्रिया, उससे पहले {{न}} रखिए। {{बालकः पठति}} (बालक पढ़ता है), {{बालकः न पठति}} (बालक नहीं पढ़ता)।
+    en: To say “not”, put {{न}} before the word you deny, usually the verb. {{बालकः पठति}} (the boy reads), {{बालकः न पठति}}
+      (the boy does not read).
+    hi: ‘नहीं’ कहने के लिए जिस शब्द का निषेध करना हो, प्रायः क्रिया, उससे पहले {{न}} रखिए। {{बालकः पठति}} (बालक पढ़ता है),
+      {{बालकः न पठति}} (बालक नहीं पढ़ता)।
   examples:
   - sa: बालकः न पठति।
     meaning:
@@ -149,6 +156,420 @@ cards:
       gloss:
         en: for sale
         hi: बिकाऊ
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकः न पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy does not read.
+        hi: बालक नहीं पढ़ता।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i3
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “not”, put {{न}} before the word you deny, usually the verb. {{बालकः पठति}} (the boy reads), {{बालकः न
+          पठति}} (the boy does not read).
+        hi: ‘नहीं’ कहने के लिए जिस शब्द का निषेध करना हो, प्रायः क्रिया, उससे पहले {{न}} रखिए। {{बालकः पठति}} (बालक पढ़ता
+          है), {{बालकः न पठति}} (बालक नहीं पढ़ता)।
+    - id: i6
+      sa: बालकः न पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy does not read.
+        hi: बालक नहीं पढ़ता।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: अहम् फलम् न खादामि।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I do not eat a fruit.
+        hi: मैं फल नहीं खाता।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: खादामि
+        gloss:
+          en: eat
+          hi: खाता हूँ
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+    - id: i1
+      sa: अहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: I
+        hi: मैं
+    - id: i2
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i4
+      sa: खादामि
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: eat
+        hi: खाता हूँ
+      check:
+        type: tinanta
+        dhatu: खाद्
+        lakara: Lat
+        purusha: Uttama
+        vacana: Eka
+      feature:
+        en: 'Root: {{खाद्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
+        hi: 'धातु: {{खाद्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “not”, put {{न}} before the word you deny, usually the verb. {{बालकः पठति}} (the boy reads), {{बालकः न
+          पठति}} (the boy does not read).
+        hi: ‘नहीं’ कहने के लिए जिस शब्द का निषेध करना हो, प्रायः क्रिया, उससे पहले {{न}} रखिए। {{बालकः पठति}} (बालक पढ़ता
+          है), {{बालकः न पठति}} (बालक नहीं पढ़ता)।
+    - id: i7
+      sa: अहम् फलम् न खादामि।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I do not eat a fruit.
+        hi: मैं फल नहीं खाता।
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: खादामि
+        gloss:
+          en: eat
+          hi: खाता हूँ
+        check:
+          type: tinanta
+          dhatu: खाद्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: न अस्ति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: There is not.
+        hi: नहीं है।
+      words:
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i2
+      sa: अस्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “not”, put {{न}} before the word you deny, usually the verb. {{बालकः पठति}} (the boy reads), {{बालकः न
+          पठति}} (the boy does not read).
+        hi: ‘नहीं’ कहने के लिए जिस शब्द का निषेध करना हो, प्रायः क्रिया, उससे पहले {{न}} रखिए। {{बालकः पठति}} (बालक पढ़ता
+          है), {{बालकः न पठति}} (बालक नहीं पढ़ता)।
+    - id: i5
+      sa: न अस्ति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: There is not.
+        hi: नहीं है।
+      words:
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-3
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: न विक्रेयम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Not for sale.
+        hi: बिकाऊ नहीं।
+      words:
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: विक्रेयम्
+        gloss:
+          en: for sale
+          hi: बिकाऊ
+    - id: i1
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i2
+      sa: विक्रेयम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: for sale
+        hi: बिकाऊ
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “not”, put {{न}} before the word you deny, usually the verb. {{बालकः पठति}} (the boy reads), {{बालकः न
+          पठति}} (the boy does not read).
+        hi: ‘नहीं’ कहने के लिए जिस शब्द का निषेध करना हो, प्रायः क्रिया, उससे पहले {{न}} रखिए। {{बालकः पठति}} (बालक पढ़ता
+          है), {{बालकः न पठति}} (बालक नहीं पढ़ता)।
+    - id: i5
+      sa: न विक्रेयम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Not for sale.
+        hi: बिकाऊ नहीं।
+      words:
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: विक्रेयम्
+        gloss:
+          en: for sale
+          hi: बिकाऊ
 - id: t2
   kind: teach
   title:
@@ -158,13 +579,46 @@ cards:
   skills:
   - sent.negation
   body:
-    en: 'You will see {{नास्ति}} everywhere: it is {{न}} + {{अस्ति}} joined, “there is not”. The two words melt together, a sandhi you will meet later.'
+    en: 'You will see {{नास्ति}} everywhere: it is {{न}} + {{अस्ति}} joined, “there is not”. The two words melt together,
+      a sandhi you will meet later.'
     hi: 'आपको {{नास्ति}} हर जगह दिखेगा: यह {{न}} + {{अस्ति}} का मेल है, ‘नहीं है’। दोनों शब्द मिल जाते हैं, यह सन्धि आगे मिलेगी।'
   examples:
   - sa: नास्ति
     meaning:
       en: 'there is not: {{न}} + {{अस्ति}}'
       hi: 'नहीं है: {{न}} + {{अस्ति}}'
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: नास्ति
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'there is not: {{न}} + {{अस्ति}}'
+        hi: 'नहीं है: {{न}} + {{अस्ति}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'You will see {{नास्ति}} everywhere: it is {{न}} + {{अस्ति}} joined, “there is not”. The two words melt together,
+          a sandhi you will meet later.'
+        hi: 'आपको {{नास्ति}} हर जगह दिखेगा: यह {{न}} + {{अस्ति}} का मेल है, ‘नहीं है’। दोनों शब्द मिल जाते हैं, यह सन्धि आगे
+          मिलेगी।'
+    - id: i3
+      sa: नास्ति
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'there is not: {{न}} + {{अस्ति}}'
+        hi: 'नहीं है: {{न}} + {{अस्ति}}'
 - id: p1
   kind: practice
   depth: core
@@ -183,6 +637,130 @@ cards:
     sa: बालिका न लिखति
   - sa: न बालिका लिखति
   - sa: बालिका लिखति न
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः न पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy does not read.
+        hi: बालक नहीं पढ़ता।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i3
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “not”, put {{न}} before the word you deny, usually the verb. {{बालकः पठति}} (the boy reads), {{बालकः न
+          पठति}} (the boy does not read).
+        hi: ‘नहीं’ कहने के लिए जिस शब्द का निषेध करना हो, प्रायः क्रिया, उससे पहले {{न}} रखिए। {{बालकः पठति}} (बालक पढ़ता
+          है), {{बालकः न पठति}} (बालक नहीं पढ़ता)।
+    - id: i6
+      sa: बालकः न पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy does not read.
+        hi: बालक नहीं पढ़ता।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -221,6 +799,130 @@ cards:
       text:
         en: there is not
         hi: नहीं है
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः न पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy does not read.
+        hi: बालक नहीं पढ़ता।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i3
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “not”, put {{न}} before the word you deny, usually the verb. {{बालकः पठति}} (the boy reads), {{बालकः न
+          पठति}} (the boy does not read).
+        hi: ‘नहीं’ कहने के लिए जिस शब्द का निषेध करना हो, प्रायः क्रिया, उससे पहले {{न}} रखिए। {{बालकः पठति}} (बालक पढ़ता
+          है), {{बालकः न पठति}} (बालक नहीं पढ़ता)।
+    - id: i6
+      sa: बालकः न पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy does not read.
+        hi: बालक नहीं पढ़ता।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -259,14 +961,142 @@ cards:
   gate: true
   story:
     success:
-      en: “न विक्रेयम्,” you say gravely, and the spice seller bursts out laughing. “You speak like my grandfather!” He lifts the green lid. Inside, on a bed of dry marigolds, lies a half-burnt palm leaf, softly glowing. “It was left here by a boatman long ago,” he says. “Nobody could read it.”
-      hi: “न विक्रेयम्,” आप गम्भीरता से कहते हैं, और मसाले वाला ठहाका लगाता है। “तुम तो मेरे दादा की तरह बोलते हो!” वह हरा ढक्कन उठाता है। भीतर, सूखे गेंदे के बिछौने पर, एक अधजला ताड़पत्र हल्का चमक रहा है। “बहुत पहले एक नाविक इसे यहाँ छोड़ गया था,” वह कहता है। “कोई इसे पढ़ न सका।”
+      en: “न विक्रेयम्,” you say gravely, and the spice seller bursts out laughing. “You speak like my grandfather!” He lifts
+        the green lid. Inside, on a bed of dry marigolds, lies a half-burnt palm leaf, softly glowing. “It was left here by
+        a boatman long ago,” he says. “Nobody could read it.”
+      hi: “न विक्रेयम्,” आप गम्भीरता से कहते हैं, और मसाले वाला ठहाका लगाता है। “तुम तो मेरे दादा की तरह बोलते हो!” वह हरा
+        ढक्कन उठाता है। भीतर, सूखे गेंदे के बिछौने पर, एक अधजला ताड़पत्र हल्का चमक रहा है। “बहुत पहले एक नाविक इसे यहाँ छोड़
+        गया था,” वह कहता है। “कोई इसे पढ़ न सका।”
     failure:
       en: The lid stays shut. Put {{न}} first, then the thing denied.
       hi: ढक्कन बन्द रहता है। पहले {{न}}, फिर जिसका निषेध है।
   tokens:
   - न
   - विक्रेयम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः न पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy does not read.
+        hi: बालक नहीं पढ़ता।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i3
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “not”, put {{न}} before the word you deny, usually the verb. {{बालकः पठति}} (the boy reads), {{बालकः न
+          पठति}} (the boy does not read).
+        hi: ‘नहीं’ कहने के लिए जिस शब्द का निषेध करना हो, प्रायः क्रिया, उससे पहले {{न}} रखिए। {{बालकः पठति}} (बालक पढ़ता
+          है), {{बालकः न पठति}} (बालक नहीं पढ़ता)।
+    - id: i6
+      sa: बालकः न पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy does not read.
+        hi: बालक नहीं पढ़ता।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -285,6 +1115,130 @@ cards:
   - correct: true
     sa: अहं न पश्यामि
   - sa: अहं पश्यसि न
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः न पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy does not read.
+        hi: बालक नहीं पढ़ता।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: न
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: not
+        hi: नहीं
+    - id: i3
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: To say “not”, put {{न}} before the word you deny, usually the verb. {{बालकः पठति}} (the boy reads), {{बालकः न
+          पठति}} (the boy does not read).
+        hi: ‘नहीं’ कहने के लिए जिस शब्द का निषेध करना हो, प्रायः क्रिया, उससे पहले {{न}} रखिए। {{बालकः पठति}} (बालक पढ़ता
+          है), {{बालकः न पठति}} (बालक नहीं पढ़ता)।
+    - id: i6
+      sa: बालकः न पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy does not read.
+        hi: बालक नहीं पढ़ता।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: न
+        gloss:
+          en: not
+          hi: नहीं
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: sum
   kind: summary
   title:

@@ -28,6 +28,163 @@ cards:
   - sa: गन्तुम्
   - correct: true
     sa: गत्वा
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः गृहम् गत्वा पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Having gone home, he reads.
+        hi: घर जाकर वह पढ़ता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गत्वा
+        gloss:
+          en: having gone
+          hi: जाकर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: ktvA
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गत्वा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: having gone
+        hi: जाकर
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: ktvA
+      feature:
+        en: 'Root: {{गम्}}'
+        hi: 'धातु: {{गम्}}'
+    - id: i4
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To say “having done X, he does Y” with the same doer, add {{-त्वा}} to the root: {{गम्}} gives {{गत्वा}} (having
+          gone), {{कृ}} gives {{कृत्वा}}, {{श्रु}} gives {{श्रुत्वा}}, {{पठ्}} gives {{पठित्वा}}. With a prefix it is {{-य}}:
+          {{आ + गम्}} gives {{आगत्य}}. These never change; they are indeclinable.'
+        hi: '‘X करके वह Y करता है’ कहने के लिए, कर्ता वही हो तो, धातु में {{-त्वा}} जोड़िए: {{गम्}} से {{गत्वा}} (जाकर), {{कृ}}
+          से {{कृत्वा}}, {{श्रु}} से {{श्रुत्वा}}, {{पठ्}} से {{पठित्वा}}। उपसर्ग हो तो {{-य}}: {{आ + गम्}} से {{आगत्य}}।
+          ये कभी नहीं बदलते; ये अव्यय हैं।'
+    - id: i7
+      sa: सः गृहम् गत्वा पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Having gone home, he reads.
+        hi: घर जाकर वह पढ़ता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गत्वा
+        gloss:
+          en: having gone
+          hi: जाकर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: ktvA
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -46,6 +203,166 @@ cards:
     sa: गन्तुम्
   - sa: गत्वा
   - sa: गच्छन्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः पुस्तकम् पठितुम् इच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He wants to read the book.
+        hi: वह पुस्तक पढ़ना चाहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठितुम्
+        gloss:
+          en: to read
+          hi: पढ़ने
+        check:
+          type: krdanta
+          dhatu: पठ्
+          krt: tumun
+      - sa: इच्छति
+        gloss:
+          en: wants
+          hi: चाहता है
+        check:
+          type: tinanta
+          dhatu: इष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Tudadi
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: पुस्तकम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: book
+        hi: पुस्तक
+      check:
+        type: subanta
+        stem: पुस्तक
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पुस्तक}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: पठितुम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: to read
+        hi: पढ़ने
+      check:
+        type: krdanta
+        dhatu: पठ्
+        krt: tumun
+      feature:
+        en: 'Root: {{पठ्}}'
+        hi: 'धातु: {{पठ्}}'
+    - id: i4
+      sa: इच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: wants
+        hi: चाहता है
+      check:
+        type: tinanta
+        dhatu: इष्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Tudadi
+      feature:
+        en: 'Root: {{इष्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{इष्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Add {{-तुम्}} to the root to say “to do, in order to do”: {{गम्}} gives {{गन्तुम्}}, {{पठ्}} gives {{पठितुम्}},
+          {{कृ}} gives {{कर्तुम्}}, {{दृश्}} gives {{द्रष्टुम्}}. It goes with verbs of wanting and being able: {{इच्छति}},
+          {{शक्नोति}}, and with “goes”: {{द्रष्टुं गच्छति}}.'
+        hi: '‘करना, करने के लिए’ कहने के लिए धातु में {{-तुम्}} जोड़िए: {{गम्}} से {{गन्तुम्}}, {{पठ्}} से {{पठितुम्}}, {{कृ}}
+          से {{कर्तुम्}}, {{दृश्}} से {{द्रष्टुम्}}। यह चाहने और समर्थ होने वाली क्रियाओं के साथ चलता है: {{इच्छति}}, {{शक्नोति}},
+          और ‘जाता है’ के साथ: {{द्रष्टुं गच्छति}}।'
+    - id: i7
+      sa: सः पुस्तकम् पठितुम् इच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He wants to read the book.
+        hi: वह पुस्तक पढ़ना चाहता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पुस्तकम्
+        gloss:
+          en: book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: पठितुम्
+        gloss:
+          en: to read
+          hi: पढ़ने
+        check:
+          type: krdanta
+          dhatu: पठ्
+          krt: tumun
+      - sa: इच्छति
+        gloss:
+          en: wants
+          hi: चाहता है
+        check:
+          type: tinanta
+          dhatu: इष्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Tudadi
 - id: p3
   kind: practice
   depth: core
@@ -64,6 +381,119 @@ cards:
   - sa: गच्छन्
   - correct: true
     sa: गतः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः गतः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy has gone.
+        hi: बालक गया।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गतः
+        gloss:
+          en: gone
+          hi: गया
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: kta
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: गतः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: gone
+        hi: गया
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: kta
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{-त}} makes “done”, an adjective: {{गतः}} (gone), {{कृतः}} (done), {{उक्तः}} (said), {{श्रुतः}} (heard). It
+          often has a passive sense: {{रामेण पुस्तकं पठितम्}}, “the book was read by Rāma”. {{-तवत्}} makes the active “has
+          done”: {{रामः पुस्तकं पठितवान्}}.'
+        hi: '{{-त}} ‘किया हुआ’ बनाता है, एक विशेषण: {{गतः}} (गया हुआ), {{कृतः}} (किया हुआ), {{उक्तः}} (कहा हुआ), {{श्रुतः}}
+          (सुना हुआ)। उसमें अक्सर कर्मवाच्य का भाव होता है: {{रामेण पुस्तकं पठितम्}}, ‘पुस्तक राम द्वारा पढ़ी गई’। {{-तवत्}}
+          कर्तृवाची ‘कर चुका’ बनाता है: {{रामः पुस्तकं पठितवान्}}।'
+    - id: i5
+      sa: बालकः गतः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy has gone.
+        hi: बालक गया।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गतः
+        gloss:
+          en: gone
+          hi: गया
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: kta
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -82,6 +512,156 @@ cards:
   - sa: गत्वा
   - correct: true
     sa: गच्छन्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालकः गच्छन् पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy reads while going.
+        hi: बालक जाते हुए पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गच्छन्
+        gloss:
+          en: going
+          hi: जाता हुआ
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: Satf
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: गच्छन्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: going
+        hi: जाता हुआ
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: Satf
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{-अत्}} (after the sign {{-अ-}}) or {{-मान}} makes “while doing”: {{गम्}} gives {{गच्छन्}} (going), {{पठ्}}
+          gives {{पठन्}} (reading), {{कृ}} gives {{कुर्वन्}} (doing), {{सेव्}} gives {{सेवमानः}} (serving, for oneself). It
+          agrees with its noun: {{गच्छन् बालकः}}, {{गच्छन्ती बालिका}}.'
+        hi: '{{-अत्}} ({{-अ-}} चिह्न के बाद) या {{-मान}} ‘करते हुए’ बनाता है: {{गम्}} से {{गच्छन्}} (जाता हुआ), {{पठ्}} से
+          {{पठन्}} (पढ़ता हुआ), {{कृ}} से {{कुर्वन्}} (करता हुआ), {{सेव्}} से {{सेवमानः}} (सेवा करता हुआ, अपने लिए)। यह अपनी
+          संज्ञा से मेल खाता है: {{गच्छन् बालकः}}, {{गच्छन्ती बालिका}}।'
+    - id: i6
+      sa: बालकः गच्छन् पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy reads while going.
+        hi: बालक जाते हुए पढ़ता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गच्छन्
+        gloss:
+          en: going
+          hi: जाता हुआ
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: Satf
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p5
   kind: practice
   depth: core
@@ -100,6 +680,98 @@ cards:
   - correct: true
     sa: कर्तव्यम्
   - sa: कुर्वन्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: मया गन्तव्यम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: I must go.
+        hi: मुझे जाना है।
+      words:
+      - sa: मया
+        gloss:
+          en: by me
+          hi: मेरे द्वारा
+      - sa: गन्तव्यम्
+        gloss:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मया
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: by me
+        hi: मेरे द्वारा
+    - id: i2
+      sa: गन्तव्यम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: must be gone
+        hi: जाना है
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: tavya
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'धातु: {{गम्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{-तव्य}}, {{-अनीय}} and {{-य}} (with a lengthened vowel) make “to be done”: {{कृ}} gives {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} gives {{दातव्यम्}}, {{देयम्}}; {{गम्}} gives {{गन्तव्यम्}}. The doer is in the third case: {{मया
+          गन्तव्यम्}}, “I must go”.'
+        hi: '{{-तव्य}}, {{-अनीय}} और {{-य}} (दीर्घ स्वर के साथ) ‘किया जाना चाहिए’ बनाते हैं: {{कृ}} से {{कर्तव्यम्}}, {{करणीयम्}},
+          {{कार्यम्}}; {{दा}} से {{दातव्यम्}}, {{देयम्}}; {{गम्}} से {{गन्तव्यम्}}। कर्ता तृतीया में रहता है: {{मया गन्तव्यम्}},
+          ‘मुझे जाना है’।'
+    - id: i5
+      sa: मया गन्तव्यम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: I must go.
+        hi: मुझे जाना है।
+      words:
+      - sa: मया
+        gloss:
+          en: by me
+          hi: मेरे द्वारा
+      - sa: गन्तव्यम्
+        gloss:
+          en: must be gone
+          hi: जाना है
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: tavya
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
 - id: p6
   kind: practice
   depth: core
@@ -141,6 +813,163 @@ cards:
       text:
         en: going
         hi: जाता हुआ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः गृहम् गत्वा पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Having gone home, he reads.
+        hi: घर जाकर वह पढ़ता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गत्वा
+        gloss:
+          en: having gone
+          hi: जाकर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: ktvA
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गत्वा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: having gone
+        hi: जाकर
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: ktvA
+      feature:
+        en: 'Root: {{गम्}}'
+        hi: 'धातु: {{गम्}}'
+    - id: i4
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To say “having done X, he does Y” with the same doer, add {{-त्वा}} to the root: {{गम्}} gives {{गत्वा}} (having
+          gone), {{कृ}} gives {{कृत्वा}}, {{श्रु}} gives {{श्रुत्वा}}, {{पठ्}} gives {{पठित्वा}}. With a prefix it is {{-य}}:
+          {{आ + गम्}} gives {{आगत्य}}. These never change; they are indeclinable.'
+        hi: '‘X करके वह Y करता है’ कहने के लिए, कर्ता वही हो तो, धातु में {{-त्वा}} जोड़िए: {{गम्}} से {{गत्वा}} (जाकर), {{कृ}}
+          से {{कृत्वा}}, {{श्रु}} से {{श्रुत्वा}}, {{पठ्}} से {{पठित्वा}}। उपसर्ग हो तो {{-य}}: {{आ + गम्}} से {{आगत्य}}।
+          ये कभी नहीं बदलते; ये अव्यय हैं।'
+    - id: i7
+      sa: सः गृहम् गत्वा पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Having gone home, he reads.
+        hi: घर जाकर वह पढ़ता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गत्वा
+        gloss:
+          en: having gone
+          hi: जाकर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: ktvA
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p7
   kind: practice
   depth: core
@@ -160,8 +989,16 @@ cards:
   gate: true
   story:
     success:
-      en: '“गत्वा, गन्तुम्, गतः, गच्छन्,” you say, and Sankshepaka opens and opens until he is a great fan, a screen, a window onto a distance. “A whole sentence,” he says, “in each,” and the folds, all of them, are written in a close, neat hand. He bows and spreads himself over the trees like a sheet of paper over a table, and all the pages read, together, softly: “च. वा. अपि. एव.” “And, or, also, only: the little words that never change.” The Vetāla looks at the ground. “The last night. I have something for you.”'
-      hi: '“गत्वा, गन्तुम्, गतः, गच्छन्,” आप कहते हैं, और सङ्क्षेपक खुलता जाता है, खुलता जाता है, जब तक वह एक विशाल पंखा, एक पर्दा, दूरी की ओर खुलती खिड़की न बन जाए। “हर एक में,” वह कहता है, “एक पूरा वाक्य,” और तहें, सब की सब, सघन सुघड़ लिखावट में लिखी हैं। वह झुकता है और वृक्षों के ऊपर मेज़ पर काग़ज़ की चादर की तरह फैल जाता है, और सारे पन्ने साथ-साथ धीमे से पढ़ते हैं: “च। वा। अपि। एव।” “और, या, भी, ही: वे छोटे शब्द जो कभी नहीं बदलते।” वेताल ज़मीन की ओर देखता है। “अन्तिम रात। मेरे पास आपके लिए कुछ है।”'
+      en: '“गत्वा, गन्तुम्, गतः, गच्छन्,” you say, and Sankshepaka opens and opens until he is a great fan, a screen, a window
+        onto a distance. “A whole sentence,” he says, “in each,” and the folds, all of them, are written in a close, neat
+        hand. He bows and spreads himself over the trees like a sheet of paper over a table, and all the pages read, together,
+        softly: “च. वा. अपि. एव.” “And, or, also, only: the little words that never change.” The Vetāla looks at the ground.
+        “The last night. I have something for you.”'
+      hi: '“गत्वा, गन्तुम्, गतः, गच्छन्,” आप कहते हैं, और सङ्क्षेपक खुलता जाता है, खुलता जाता है, जब तक वह एक विशाल पंखा,
+        एक पर्दा, दूरी की ओर खुलती खिड़की न बन जाए। “हर एक में,” वह कहता है, “एक पूरा वाक्य,” और तहें, सब की सब, सघन सुघड़
+        लिखावट में लिखी हैं। वह झुकता है और वृक्षों के ऊपर मेज़ पर काग़ज़ की चादर की तरह फैल जाता है, और सारे पन्ने साथ-साथ
+        धीमे से पढ़ते हैं: “च। वा। अपि। एव।” “और, या, भी, ही: वे छोटे शब्द जो कभी नहीं बदलते।” वेताल ज़मीन की ओर देखता है।
+        “अन्तिम रात। मेरे पास आपके लिए कुछ है।”'
     failure:
       en: 'The fan stays folded. The four: {{गत्वा गन्तुम् गतः गच्छन्}}.'
       hi: 'पंखा तह रहता है। चारों: {{गत्वा गन्तुम् गतः गच्छन्}}।'
@@ -170,3 +1007,160 @@ cards:
   - गन्तुम्
   - गतः
   - गच्छन्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सः गृहम् गत्वा पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Having gone home, he reads.
+        hi: घर जाकर वह पढ़ता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गत्वा
+        gloss:
+          en: having gone
+          hi: जाकर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: ktvA
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: गृहम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: home
+        hi: घर
+      check:
+        type: subanta
+        stem: गृह
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: गत्वा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: having gone
+        hi: जाकर
+      check:
+        type: krdanta
+        dhatu: गम्
+        krt: ktvA
+      feature:
+        en: 'Root: {{गम्}}'
+        hi: 'धातु: {{गम्}}'
+    - id: i4
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To say “having done X, he does Y” with the same doer, add {{-त्वा}} to the root: {{गम्}} gives {{गत्वा}} (having
+          gone), {{कृ}} gives {{कृत्वा}}, {{श्रु}} gives {{श्रुत्वा}}, {{पठ्}} gives {{पठित्वा}}. With a prefix it is {{-य}}:
+          {{आ + गम्}} gives {{आगत्य}}. These never change; they are indeclinable.'
+        hi: '‘X करके वह Y करता है’ कहने के लिए, कर्ता वही हो तो, धातु में {{-त्वा}} जोड़िए: {{गम्}} से {{गत्वा}} (जाकर), {{कृ}}
+          से {{कृत्वा}}, {{श्रु}} से {{श्रुत्वा}}, {{पठ्}} से {{पठित्वा}}। उपसर्ग हो तो {{-य}}: {{आ + गम्}} से {{आगत्य}}।
+          ये कभी नहीं बदलते; ये अव्यय हैं।'
+    - id: i7
+      sa: सः गृहम् गत्वा पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Having gone home, he reads.
+        hi: घर जाकर वह पढ़ता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: गृहम्
+        gloss:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गत्वा
+        gloss:
+          en: having gone
+          hi: जाकर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: ktvA
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka

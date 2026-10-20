@@ -98,6 +98,91 @@ cards:
           vacana: Eka
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: एवम् अस्ति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: It is so.
+          hi: ऐसा है।
+        words:
+        - sa: एवम्
+          gloss:
+            en: thus
+            hi: ऐसे
+        - sa: अस्ति
+          gloss:
+            en: is
+            hi: है
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+      - id: i1
+        sa: एवम्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: thus
+          hi: ऐसे
+      - id: i2
+        sa: अस्ति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{कथम्}} (how?) and {{एवम्}} (thus) end in {{-म्}} but never change.'
+          hi: '{{कथम्}} (कैसे?) और {{एवम्}} (ऐसे) {{-म्}} पर समाप्त होते हैं पर कभी नहीं बदलते।'
+      - id: i5
+        sa: एवम् अस्ति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: It is so.
+          hi: ऐसा है।
+        words:
+        - sa: एवम्
+          gloss:
+            en: thus
+            hi: ऐसे
+        - sa: अस्ति
+          gloss:
+            en: is
+            hi: है
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
   - skill: avy.iti
     rule:
       en: '{{इति}} joins with the following vowel: {{इति + उवाच}} gives {{इत्युवाच}}.'
@@ -124,6 +209,91 @@ cards:
           vacana: Eka
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: इत्युवाच।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Saying so, he said.
+          hi: ऐसा कहकर बोला।
+        words:
+        - sa: इति
+          gloss:
+            en: thus
+            hi: ऐसा
+        - sa: उवाच
+          gloss:
+            en: said
+            hi: बोला
+          check:
+            type: tinanta
+            dhatu: वच्
+            lakara: Lit
+            purusha: Prathama
+            vacana: Eka
+      - id: i1
+        sa: इति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: thus
+          hi: ऐसा
+      - id: i2
+        sa: उवाच
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: said
+          hi: बोला
+        check:
+          type: tinanta
+          dhatu: वच्
+          lakara: Lit
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{वच्}} · singular · {{लिट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{वच्}} · {{एकवचन}} · {{लिट्}} · प्रथमपुरुष'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{इति}} joins with the following vowel: {{इति + उवाच}} gives {{इत्युवाच}}.'
+          hi: '{{इति}} अगले स्वर से जुड़ जाता है: {{इति + उवाच}} से {{इत्युवाच}}।'
+      - id: i5
+        sa: इत्युवाच।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Saying so, he said.
+          hi: ऐसा कहकर बोला।
+        words:
+        - sa: इति
+          gloss:
+            en: thus
+            hi: ऐसा
+        - sa: उवाच
+          gloss:
+            en: said
+            hi: बोला
+          check:
+            type: tinanta
+            dhatu: वच्
+            lakara: Lit
+            purusha: Prathama
+            vacana: Eka
 - id: mistakes
   kind: revision
   title:

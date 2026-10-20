@@ -58,6 +58,54 @@ cards:
           hi: राम और लक्ष्मण
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: रामलक्ष्मणौ।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Rāma and Lakṣmaṇa.
+          hi: राम और लक्ष्मण।
+        words:
+        - sa: रामलक्ष्मणौ
+          gloss:
+            en: Rāma and Lakṣmaṇa
+            hi: राम और लक्ष्मण
+      - id: i1
+        sa: रामलक्ष्मणौ
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: Rāma and Lakṣmaṇa
+          hi: राम और लक्ष्मण
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A compound is joined too: {{रामलक्ष्मणौ}} is two words in a compound, not a sandhi; you will meet that next.'
+          hi: 'समास भी जुड़ा हुआ है: {{रामलक्ष्मणौ}} समास में दो शब्द हैं, सन्धि नहीं; वह आगे मिलेगा।'
+      - id: i4
+        sa: रामलक्ष्मणौ।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Rāma and Lakṣmaṇa.
+          hi: राम और लक्ष्मण।
+        words:
+        - sa: रामलक्ष्मणौ
+          gloss:
+            en: Rāma and Lakṣmaṇa
+            hi: राम और लक्ष्मण
   - skill: sandhi.padaccheda
     rule:
       en: In verse the metre may force a join the prose would not make.
@@ -78,6 +126,70 @@ cards:
           hi: बीतता है
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: कालो गच्छति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Time passes.
+          hi: समय बीतता है।
+        words:
+        - sa: कालो
+          gloss:
+            en: time
+            hi: समय
+        - sa: गच्छति
+          gloss:
+            en: passes
+            hi: बीतता है
+      - id: i1
+        sa: कालो
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: time
+          hi: समय
+      - id: i2
+        sa: गच्छति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: passes
+          hi: बीतता है
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: In verse the metre may force a join the prose would not make.
+          hi: श्लोक में छन्द वह सन्धि करा सकता है जो गद्य नहीं करता।
+      - id: i5
+        sa: कालो गच्छति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Time passes.
+          hi: समय बीतता है।
+        words:
+        - sa: कालो
+          gloss:
+            en: time
+            hi: समय
+        - sa: गच्छति
+          gloss:
+            en: passes
+            hi: बीतता है
 - id: conditions
   kind: revision
   title:

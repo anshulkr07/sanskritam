@@ -21,7 +21,8 @@ cards:
     hi: कौन-सा?
   depth: core
   image:
-    brief: A sweet-seller's brass tray heaped with sweets at the fair; the boatman, the old man and Dādī each pointing at a different one, near and far; Śuka perched on the tray's edge eyeing a sweet.
+    brief: A sweet-seller's brass tray heaped with sweets at the fair; the boatman, the old man and Dādī each pointing at
+      a different one, near and far; Śuka perched on the tray's edge eyeing a sweet.
     alt:
       en: People at a sweet stall pointing at different sweets, near and far
       hi: मिठाई की थाली पर पास और दूर की अलग-अलग चीज़ें दिखाते लोग
@@ -34,8 +35,11 @@ cards:
     ratio: '4:3'
     id: gender-this-s1
   narration:
-    en: At a sweet-seller's tray the boatman, the old man and Dādī all point at different things. “That one!” “This one!” Dādī taps the tray. “For something right here in front of you, Sanskrit says एषः, एषा, एतत्. For something over there, सः, सा, तत्.”
-    hi: मिठाई वाले की थाली पर नाविक, बुज़ुर्ग और दादी अलग-अलग चीज़ों की ओर इशारा करते हैं। “वह वाली!” “यह वाली!” दादी थाली थपथपाती हैं। “जो ठीक सामने है, उसके लिए संस्कृत कहती है एषः, एषा, एतत्। जो वहाँ दूर है, उसके लिए सः, सा, तत्।”
+    en: At a sweet-seller's tray the boatman, the old man and Dādī all point at different things. “That one!” “This one!”
+      Dādī taps the tray. “For something right here in front of you, Sanskrit says एषः, एषा, एतत्. For something over there,
+      सः, सा, तत्.”
+    hi: मिठाई वाले की थाली पर नाविक, बुज़ुर्ग और दादी अलग-अलग चीज़ों की ओर इशारा करते हैं। “वह वाली!” “यह वाली!” दादी थाली
+      थपथपाती हैं। “जो ठीक सामने है, उसके लिए संस्कृत कहती है एषः, एषा, एतत्। जो वहाँ दूर है, उसके लिए सः, सा, तत्।”
 - id: t1
   kind: teach
   title:
@@ -45,8 +49,10 @@ cards:
   skills:
   - pron.etad
   body:
-    en: '{{एषः}} (masculine), {{एषा}} (feminine), {{एतत्}} (neuter) mean “this”, close by. Use {{सः सा तत्}} for something farther off, or already mentioned.'
-    hi: '{{एषः}} (पुंलिंग), {{एषा}} (स्त्रीलिंग), {{एतत्}} (नपुंसक) का अर्थ ‘यह’, पास का। जो दूर है या पहले कहा जा चुका है, उसके लिए {{सः सा तत्}}।'
+    en: '{{एषः}} (masculine), {{एषा}} (feminine), {{एतत्}} (neuter) mean “this”, close by. Use {{सः सा तत्}} for something
+      farther off, or already mentioned.'
+    hi: '{{एषः}} (पुंलिंग), {{एषा}} (स्त्रीलिंग), {{एतत्}} (नपुंसक) का अर्थ ‘यह’, पास का। जो दूर है या पहले कहा जा चुका है,
+      उसके लिए {{सः सा तत्}}।'
   rows:
   - sa: एषः
     gloss:
@@ -78,6 +84,60 @@ cards:
       linga: Napumsaka
       vibhakti: Prathama
       vacana: Eka
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: '{{एषः}} (masculine), {{एषा}} (feminine), {{एतत्}} (neuter) mean “this”, close by. Use {{सः सा तत्}} for something
+        farther off, or already mentioned.'
+      hi: '{{एषः}} (पुंलिंग), {{एषा}} (स्त्रीलिंग), {{एतत्}} (नपुंसक) का अर्थ ‘यह’, पास का। जो दूर है या पहले कहा जा चुका
+        है, उसके लिए {{सः सा तत्}}।'
+    items:
+    - id: i0
+      sa: एषः
+      meaning:
+        en: this (m)
+        hi: यह (पुं.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: एषा
+      meaning:
+        en: this (f)
+        hi: यह (स्त्री.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: एतत्
+      meaning:
+        en: this (n)
+        hi: यह (नपुं.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: tb1
   kind: table
   title:
@@ -169,6 +229,60 @@ cards:
   - correct: true
     sa: एतत्
   - sa: सः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{एषः}} (masculine), {{एषा}} (feminine), {{एतत्}} (neuter) mean “this”, close by. Use {{सः सा तत्}} for something
+        farther off, or already mentioned.'
+      hi: '{{एषः}} (पुंलिंग), {{एषा}} (स्त्रीलिंग), {{एतत्}} (नपुंसक) का अर्थ ‘यह’, पास का। जो दूर है या पहले कहा जा चुका
+        है, उसके लिए {{सः सा तत्}}।'
+    items:
+    - id: i0
+      sa: एषः
+      meaning:
+        en: this (m)
+        hi: यह (पुं.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: एषा
+      meaning:
+        en: this (f)
+        hi: यह (स्त्री.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: एतत्
+      meaning:
+        en: this (n)
+        hi: यह (नपुं.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p2
   kind: practice
   depth: core
@@ -207,6 +321,60 @@ cards:
       text:
         en: that (n)
         hi: वह (नपुं.)
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{एषः}} (masculine), {{एषा}} (feminine), {{एतत्}} (neuter) mean “this”, close by. Use {{सः सा तत्}} for something
+        farther off, or already mentioned.'
+      hi: '{{एषः}} (पुंलिंग), {{एषा}} (स्त्रीलिंग), {{एतत्}} (नपुंसक) का अर्थ ‘यह’, पास का। जो दूर है या पहले कहा जा चुका
+        है, उसके लिए {{सः सा तत्}}।'
+    items:
+    - id: i0
+      sa: एषः
+      meaning:
+        en: this (m)
+        hi: यह (पुं.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: एषा
+      meaning:
+        en: this (f)
+        hi: यह (स्त्री.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: एतत्
+      meaning:
+        en: this (n)
+        hi: यह (नपुं.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: e1
   kind: explore
   depth: core
@@ -248,14 +416,70 @@ cards:
   gate: true
   story:
     success:
-      en: '“एतत् फलम्,” you say, taking one from the tray. The seller beams. The multi-coloured spirit, hiding in the shadow of the tray, whispers: “एषः… एषा… एतत्…” as if counting himself.'
-      hi: '“एतत् फलम्,” आप थाली से एक उठाते हैं। विक्रेता खिल उठता है। थाली की छाया में छिपा रंग-बिरंगा भूत फुसफुसाता है: “एषः… एषा… एतत्…” मानो ख़ुद को गिन रहा हो।'
+      en: '“एतत् फलम्,” you say, taking one from the tray. The seller beams. The multi-coloured spirit, hiding in the shadow
+        of the tray, whispers: “एषः… एषा… एतत्…” as if counting himself.'
+      hi: '“एतत् फलम्,” आप थाली से एक उठाते हैं। विक्रेता खिल उठता है। थाली की छाया में छिपा रंग-बिरंगा भूत फुसफुसाता है:
+        “एषः… एषा… एतत्…” मानो ख़ुद को गिन रहा हो।'
     failure:
       en: 'The seller shrugs. For a neuter thing close by: {{एतत्}}.'
       hi: 'विक्रेता कंधे उचकाता है। पास की नपुंसक वस्तु के लिए: {{एतत्}}।'
   tokens:
   - एतत्
   - फलम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{एषः}} (masculine), {{एषा}} (feminine), {{एतत्}} (neuter) mean “this”, close by. Use {{सः सा तत्}} for something
+        farther off, or already mentioned.'
+      hi: '{{एषः}} (पुंलिंग), {{एषा}} (स्त्रीलिंग), {{एतत्}} (नपुंसक) का अर्थ ‘यह’, पास का। जो दूर है या पहले कहा जा चुका
+        है, उसके लिए {{सः सा तत्}}।'
+    items:
+    - id: i0
+      sa: एषः
+      meaning:
+        en: this (m)
+        hi: यह (पुं.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: एषा
+      meaning:
+        en: this (f)
+        hi: यह (स्त्री.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: एतत्
+      meaning:
+        en: this (n)
+        hi: यह (नपुं.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: sum
   kind: summary
   title:

@@ -1,131 +1,456 @@
-# The unit check: practice only, every skill at least once, ending with the
-# gate that frees the ghost. A learner who already reads Devanagari can take
-# it first; passing it finishes the unit's lessons for them.
 id: vowels.check
 template: check
-title: {en: "Read the first line", hi: "पहली पंक्ति पढ़िए"}
-title_sa: "परीक्षा"
+title:
+  en: Read the first line
+  hi: पहली पंक्ति पढ़िए
+title_sa: परीक्षा
 minutes: 4
 review: scholar_ok
 sources:
-  - title: "Lesson text"
-    licence: "original"
+- title: Lesson text
+  licence: original
 cards:
-  - id: c1
-    kind: practice
-    mode: choice
-    skills: [script.vowel.short]
-    roman: after
-    prompt: {en: "Which is a short vowel?", hi: "इनमें से ह्रस्व स्वर कौन-सा है?"}
-    options:
-      - sa: "आ"
-      - sa: "उ"
-        correct: true
-      - sa: "ए"
-    explain: {en: "{{उ}} is short; {{आ}} and {{ए}} are long.", hi: "{{उ}} ह्रस्व है; {{आ}} और {{ए}} दीर्घ हैं।"}
-
-  - id: c2
-    kind: practice
-    mode: choice
-    skills: [script.vowel.long]
-    prompt: {en: "Which word means “a riverbank”?", hi: "‘नदी का किनारा’ किस शब्द का अर्थ है?"}
-    options:
-      - sa: "कुलम्"
-        why: {en: "{{कुलम्}}, short {{उ}}: a family.", hi: "{{कुलम्}} में ह्रस्व उ: परिवार।"}
-      - sa: "कूलम्"
-        correct: true
-    explain: {en: "{{कूलम्}} has the long {{ऊ}}: a riverbank.", hi: "{{कूलम्}} में दीर्घ ऊ है: नदी का किनारा।"}
-
-  - id: c3
-    kind: practice
-    mode: match
-    skills: [script.vowel.long]
-    roman: after
-    prompt: {en: "Match each short vowel with its long twin.", hi: "हर ह्रस्व स्वर को उसके दीर्घ जुड़वाँ से मिलाइए।"}
-    pairs:
-      - left: {sa: "अ"}
-        right: {sa: "आ"}
-      - left: {sa: "इ"}
-        right: {sa: "ई"}
-      - left: {sa: "उ"}
-        right: {sa: "ऊ"}
-    explain: {en: "Twins are made at one place; the long one lasts two beats.", hi: "जुड़वाँ एक ही स्थान से बनते हैं; दीर्घ दो मात्रा का होता है।"}
-
-  - id: c4
-    kind: practice
-    mode: choice
-    skills: [script.vowel.compound]
-    roman: after
-    prompt: {en: "Which vowel is always long?", hi: "कौन-सा स्वर सदा दीर्घ होता है?"}
-    options:
-      - sa: "इ"
-      - sa: "ओ"
-        correct: true
-      - sa: "उ"
-    explain: {en: "{{ओ}}, like all four joined vowels, always lasts two beats.", hi: "{{ओ}}, चारों संयुक्त स्वरों की तरह, सदा दो मात्रा का होता है।"}
-
-  - id: c5
-    kind: practice
-    mode: type
-    skills: [script.matra]
-    roman: after
-    prompt: {en: "Build {{क्}} + {{ऐ}}: {{क}} with the sign for {{ऐ}}.", hi: "बनाइए: {{क}} पर {{ऐ}} की मात्रा।"}
-    answers: ["कै"]
-    tiles: ["क", "ै", "े", "ा"]
-    explain: {en: "{{ै}}, two strokes above the letter: {{कै}}. One stroke, {{े}}, is {{ए}}.", hi: "{{ै}}, अक्षर के ऊपर दो रेखाएँ: {{कै}}। एक रेखा, {{े}}, {{ए}} की मात्रा है।"}
-
-  - id: c6
-    kind: practice
-    mode: choice
-    skills: [script.matra]
-    roman: after
-    prompt: {en: "How is {{क्}} + {{इ}} written?", hi: "{{क्}} + {{इ}} कैसे लिखा जाता है?"}
-    options:
-      - sa: "कि"
-        correct: true
-      - sa: "की"
-        why: {en: "{{की}} is {{क्}} + {{ई}}, the long sign.", hi: "{{की}} क् + ई है, दीर्घ मात्रा।"}
-      - sa: "के"
-        why: {en: "{{के}} is {{क्}} + {{ए}}.", hi: "{{के}} क् + ए है।"}
-    explain: {en: "Short i is the sign written before the letter: {{कि}}.", hi: "ह्रस्व इ की मात्रा अक्षर से पहले लिखी जाती है: {{कि}}।"}
-
-  - id: c7
-    kind: practice
-    mode: choice
-    skills: [script.matra, script.vowel.long]
-    roman: after
-    prompt: {en: "Which word has the long ī sign?", hi: "किस शब्द में दीर्घ ई की मात्रा है?"}
-    options:
-      - sa: "दिनम्"
-      - sa: "दीनः"
-        correct: true
-      - sa: "कुलम्"
-    explain: {en: "{{दीनः}}: the sign {{ी}} stands after {{द}}.", hi: "{{दीनः}}: {{ी}} की मात्रा {{द}} के बाद है।"}
-
-  - id: c8
-    kind: practice
-    mode: choice
-    skills: [script.vowel.short]
-    prompt: {en: "How do you say {{ऋ}}?", hi: "{{ऋ}} कैसे बोलते हैं?"}
-    options:
-      - text: {en: "One quick vowel r", hi: "एक छोटी ध्वनि, स्वर के रूप में ‘र’"}
-        correct: true
-      - text: {en: "r followed by a full i, “ri-i”", hi: "‘र’ के बाद पूरा ‘इ’"}
-        why: {en: "That is two sounds, {{र}} + {{इ}}. {{ऋ}} is one.", hi: "यह दो ध्वनियाँ हैं, {{र}} + {{इ}}। {{ऋ}} एक है।"}
-      - text: {en: "A long “ree”", hi: "लम्बा ‘री’"}
-        why: {en: "{{ऋ}} is short: one beat.", hi: "{{ऋ}} ह्रस्व है: एक मात्रा।"}
-    explain: {en: "{{ऋ}} is a single short vowel: an r that carries the syllable.", hi: "{{ऋ}} एक ह्रस्व स्वर है: ‘र’ जो स्वयं अक्षर बनता है।"}
-
-  - id: c9
-    kind: practice
-    mode: order
-    title: {en: "Read the whole line", hi: "पूरी पंक्ति पढ़िए"}
-    skills: [script.vowel.short, script.vowel.compound]
-    roman: after
-    gate: true
-    prompt: {en: "Read the first line aloud for Dhūmaka: put all nine vowels in the leaf's order.", hi: "धूमक के लिए पहली पंक्ति ज़ोर से पढ़िए: नौ स्वरों को पत्र के क्रम में लगाइए।"}
-    tokens: ["अ", "इ", "उ", "ऋ", "ऌ", "ए", "ओ", "ऐ", "औ"]
-    explain: {en: "Four groups: {{अ}} {{इ}} {{उ}}, {{ऋ}} {{ऌ}}, {{ए}} {{ओ}}, {{ऐ}} {{औ}}.", hi: "चार समूह: {{अ}} {{इ}} {{उ}}, {{ऋ}} {{ऌ}}, {{ए}} {{ओ}}, {{ऐ}} {{औ}}।"}
-    story:
-      success: {en: "You read the line aloud, from अ to औ. The leaf blazes gold, and Dhūmaka rises like smoke from a lamp just put out, smiling.", hi: "आप पंक्ति ज़ोर से पढ़ते हैं, अ से औ तक। पत्र सुनहरा दमक उठता है, और धूमक अभी-अभी बुझे दीपक के धुएँ की तरह मुस्कुराता हुआ ऊपर उठता है।"}
-      failure: {en: "The line flickers. Dhūmaka waits. Take it group by group: अ इ उ, ऋ ऌ, ए ओ, ऐ औ.", hi: "पंक्ति टिमटिमाती है। धूमक प्रतीक्षा करता है। समूह-दर-समूह चलिए: अ इ उ, ऋ ऌ, ए ओ, ऐ औ।"}
+- id: c1
+  kind: practice
+  mode: choice
+  skills:
+  - script.vowel.short
+  roman: after
+  prompt:
+    en: Which is a short vowel?
+    hi: इनमें से ह्रस्व स्वर कौन-सा है?
+  options:
+  - sa: आ
+  - sa: उ
+    correct: true
+  - sa: ए
+  explain:
+    en: '{{उ}} is short; {{आ}} and {{ए}} are long.'
+    hi: '{{उ}} ह्रस्व है; {{आ}} और {{ए}} दीर्घ हैं।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A vowel, {{स्वरः}}, is a sound you can hold with your mouth open. Sanskrit gives each vowel its own letter. The
+        leaf''s first group holds three of them, all short: say each one quickly, in one beat.'
+      hi: 'स्वर ({{स्वरः}}) वह ध्वनि है जिसे मुँह खोलकर देर तक बोला जा सकता है। संस्कृत में हर स्वर का अपना अक्षर है। पत्र
+        के पहले समूह में ऐसे तीन स्वर हैं, तीनों ह्रस्व: हर एक को जल्दी, एक मात्रा में बोलिए।'
+    items:
+    - id: i0
+      sa: अ
+      meaning:
+        en: a, like the u in “but”
+        hi: अ, जैसे ‘अब’ में
+    - id: i1
+      sa: इ
+      meaning:
+        en: i, like the i in “sit”
+        hi: इ, जैसे ‘इमली’ में
+    - id: i2
+      sa: उ
+      meaning:
+        en: u, like the u in “put”
+        hi: उ, जैसे ‘उधर’ में
+- id: c2
+  kind: practice
+  mode: choice
+  skills:
+  - script.vowel.long
+  prompt:
+    en: Which word means “a riverbank”?
+    hi: ‘नदी का किनारा’ किस शब्द का अर्थ है?
+  options:
+  - sa: कुलम्
+    why:
+      en: '{{कुलम्}}, short {{उ}}: a family.'
+      hi: '{{कुलम्}} में ह्रस्व उ: परिवार।'
+  - sa: कूलम्
+    correct: true
+  explain:
+    en: '{{कूलम्}} has the long {{ऊ}}: a riverbank.'
+    hi: '{{कूलम्}} में दीर्घ ऊ है: नदी का किनारा।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Three short vowels have a long twin, held for two beats: {{आ}} ā, {{ई}} ī, {{ऊ}} ū. {{ऋ}} has one too, {{ॠ}} ṝ,
+        but you will rarely see it. A long vowel is made at the same place as its short twin, only held twice as long.'
+      hi: 'तीन ह्रस्व स्वरों का एक दीर्घ जुड़वाँ है, जो दो मात्रा तक बोला जाता है: {{आ}}, {{ई}}, {{ऊ}}। {{ऋ}} का भी है, {{ॠ}},
+        पर वह कम ही दिखता है। दीर्घ स्वर उसी स्थान से बनता है जहाँ से उसका ह्रस्व जुड़वाँ, बस दुगुने समय तक बोला जाता है।'
+    items:
+    - id: i0
+      sa: अ → आ
+      meaning:
+        en: a → ā, as in “father”
+        hi: अ → आ, जैसे ‘आम’ में
+    - id: i1
+      sa: इ → ई
+      meaning:
+        en: i → ī, as in “see”
+        hi: इ → ई, जैसे ‘ईख’ में
+    - id: i2
+      sa: उ → ऊ
+      meaning:
+        en: u → ū, as in “moon”
+        hi: उ → ऊ, जैसे ‘ऊन’ में
+    - id: i3
+      sa: ऋ → ॠ
+      meaning:
+        en: ṛ → ṝ, held longer (rare)
+        hi: ऋ → ॠ, लम्बा खिंचा (दुर्लभ)
+- id: c3
+  kind: practice
+  mode: match
+  skills:
+  - script.vowel.long
+  roman: after
+  prompt:
+    en: Match each short vowel with its long twin.
+    hi: हर ह्रस्व स्वर को उसके दीर्घ जुड़वाँ से मिलाइए।
+  pairs:
+  - left:
+      sa: अ
+    right:
+      sa: आ
+  - left:
+      sa: इ
+    right:
+      sa: ई
+  - left:
+      sa: उ
+    right:
+      sa: ऊ
+  explain:
+    en: Twins are made at one place; the long one lasts two beats.
+    hi: जुड़वाँ एक ही स्थान से बनते हैं; दीर्घ दो मात्रा का होता है।
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Three short vowels have a long twin, held for two beats: {{आ}} ā, {{ई}} ī, {{ऊ}} ū. {{ऋ}} has one too, {{ॠ}} ṝ,
+        but you will rarely see it. A long vowel is made at the same place as its short twin, only held twice as long.'
+      hi: 'तीन ह्रस्व स्वरों का एक दीर्घ जुड़वाँ है, जो दो मात्रा तक बोला जाता है: {{आ}}, {{ई}}, {{ऊ}}। {{ऋ}} का भी है, {{ॠ}},
+        पर वह कम ही दिखता है। दीर्घ स्वर उसी स्थान से बनता है जहाँ से उसका ह्रस्व जुड़वाँ, बस दुगुने समय तक बोला जाता है।'
+    items:
+    - id: i0
+      sa: अ → आ
+      meaning:
+        en: a → ā, as in “father”
+        hi: अ → आ, जैसे ‘आम’ में
+    - id: i1
+      sa: इ → ई
+      meaning:
+        en: i → ī, as in “see”
+        hi: इ → ई, जैसे ‘ईख’ में
+    - id: i2
+      sa: उ → ऊ
+      meaning:
+        en: u → ū, as in “moon”
+        hi: उ → ऊ, जैसे ‘ऊन’ में
+    - id: i3
+      sa: ऋ → ॠ
+      meaning:
+        en: ṛ → ṝ, held longer (rare)
+        hi: ऋ → ॠ, लम्बा खिंचा (दुर्लभ)
+- id: c4
+  kind: practice
+  mode: choice
+  skills:
+  - script.vowel.compound
+  roman: after
+  prompt:
+    en: Which vowel is always long?
+    hi: कौन-सा स्वर सदा दीर्घ होता है?
+  options:
+  - sa: इ
+  - sa: ओ
+    correct: true
+  - sa: उ
+  explain:
+    en: '{{ओ}}, like all four joined vowels, always lasts two beats.'
+    hi: '{{ओ}}, चारों संयुक्त स्वरों की तरह, सदा दो मात्रा का होता है।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'When {{अ}} meets {{इ}}, they press into one smooth sound, {{ए}}: e as in “they”. {{अ}} with {{उ}} gives {{ओ}}:
+        o as in “go”. {{ऐ}} and {{औ}} glide instead: ai as in “aisle”, au as in “out”.'
+      hi: 'जब {{अ}} और {{इ}} मिलते हैं, तो वे एक चिकनी ध्वनि {{ए}} बन जाते हैं। {{अ}} और {{उ}} मिलकर {{ओ}} बनते हैं। {{ऐ}}
+        और {{औ}} फिसलते हुए बोले जाते हैं: ‘अ’ से ‘इ’ की ओर, और ‘अ’ से ‘उ’ की ओर।'
+    items:
+    - id: i0
+      sa: अ + इ → ए
+      meaning:
+        en: e, as in “they”
+        hi: ए, जैसे ‘एक’ में
+    - id: i1
+      sa: अ + उ → ओ
+      meaning:
+        en: o, as in “go”
+        hi: ओ, जैसे ‘ओस’ में
+    - id: i2
+      sa: ऐ
+      meaning:
+        en: ai, a glide, as in “aisle”
+        hi: ऐ, ‘अ’ से ‘इ’ की ओर फिसलता
+    - id: i3
+      sa: औ
+      meaning:
+        en: au, a glide, as in “out”
+        hi: औ, ‘अ’ से ‘उ’ की ओर फिसलता
+- id: c5
+  kind: practice
+  mode: type
+  skills:
+  - script.matra
+  roman: after
+  prompt:
+    en: 'Build {{क्}} + {{ऐ}}: {{क}} with the sign for {{ऐ}}.'
+    hi: 'बनाइए: {{क}} पर {{ऐ}} की मात्रा।'
+  answers:
+  - कै
+  tiles:
+  - क
+  - ै
+  - े
+  - ा
+  explain:
+    en: '{{ै}}, two strokes above the letter: {{कै}}. One stroke, {{े}}, is {{ए}}.'
+    hi: '{{ै}}, अक्षर के ऊपर दो रेखाएँ: {{कै}}। एक रेखा, {{े}}, {{ए}} की मात्रा है।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: '{{क्}} alone, with no vowel (rare)'
+        hi: अकेला क्, बिना स्वर (कम दिखता है)
+    - id: i1
+      sa: क
+      meaning:
+        en: '{{क्}} + {{अ}} = {{क}}, ka'
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: '{{क्}} + {{आ}} = {{का}}, kā'
+        hi: क् + आ = का
+- id: c6
+  kind: practice
+  mode: choice
+  skills:
+  - script.matra
+  roman: after
+  prompt:
+    en: How is {{क्}} + {{इ}} written?
+    hi: '{{क्}} + {{इ}} कैसे लिखा जाता है?'
+  options:
+  - sa: कि
+    correct: true
+  - sa: की
+    why:
+      en: '{{की}} is {{क्}} + {{ई}}, the long sign.'
+      hi: '{{की}} क् + ई है, दीर्घ मात्रा।'
+  - sa: के
+    why:
+      en: '{{के}} is {{क्}} + {{ए}}.'
+      hi: '{{के}} क् + ए है।'
+  explain:
+    en: 'Short i is the sign written before the letter: {{कि}}.'
+    hi: 'ह्रस्व इ की मात्रा अक्षर से पहले लिखी जाती है: {{कि}}।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: '{{क्}} alone, with no vowel (rare)'
+        hi: अकेला क्, बिना स्वर (कम दिखता है)
+    - id: i1
+      sa: क
+      meaning:
+        en: '{{क्}} + {{अ}} = {{क}}, ka'
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: '{{क्}} + {{आ}} = {{का}}, kā'
+        hi: क् + आ = का
+- id: c7
+  kind: practice
+  mode: choice
+  skills:
+  - script.matra
+  - script.vowel.long
+  roman: after
+  prompt:
+    en: Which word has the long ī sign?
+    hi: किस शब्द में दीर्घ ई की मात्रा है?
+  options:
+  - sa: दिनम्
+  - sa: दीनः
+    correct: true
+  - sa: कुलम्
+  explain:
+    en: '{{दीनः}}: the sign {{ी}} stands after {{द}}.'
+    hi: '{{दीनः}}: {{ी}} की मात्रा {{द}} के बाद है।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: '{{क्}} alone, with no vowel (rare)'
+        hi: अकेला क्, बिना स्वर (कम दिखता है)
+    - id: i1
+      sa: क
+      meaning:
+        en: '{{क्}} + {{अ}} = {{क}}, ka'
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: '{{क्}} + {{आ}} = {{का}}, kā'
+        hi: क् + आ = का
+- id: c8
+  kind: practice
+  mode: choice
+  skills:
+  - script.vowel.short
+  prompt:
+    en: How do you say {{ऋ}}?
+    hi: '{{ऋ}} कैसे बोलते हैं?'
+  options:
+  - text:
+      en: One quick vowel r
+      hi: एक छोटी ध्वनि, स्वर के रूप में ‘र’
+    correct: true
+  - text:
+      en: r followed by a full i, “ri-i”
+      hi: ‘र’ के बाद पूरा ‘इ’
+    why:
+      en: That is two sounds, {{र}} + {{इ}}. {{ऋ}} is one.
+      hi: यह दो ध्वनियाँ हैं, {{र}} + {{इ}}। {{ऋ}} एक है।
+  - text:
+      en: A long “ree”
+      hi: लम्बा ‘री’
+    why:
+      en: '{{ऋ}} is short: one beat.'
+      hi: '{{ऋ}} ह्रस्व है: एक मात्रा।'
+  explain:
+    en: '{{ऋ}} is a single short vowel: an r that carries the syllable.'
+    hi: '{{ऋ}} एक ह्रस्व स्वर है: ‘र’ जो स्वयं अक्षर बनता है।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A vowel, {{स्वरः}}, is a sound you can hold with your mouth open. Sanskrit gives each vowel its own letter. The
+        leaf''s first group holds three of them, all short: say each one quickly, in one beat.'
+      hi: 'स्वर ({{स्वरः}}) वह ध्वनि है जिसे मुँह खोलकर देर तक बोला जा सकता है। संस्कृत में हर स्वर का अपना अक्षर है। पत्र
+        के पहले समूह में ऐसे तीन स्वर हैं, तीनों ह्रस्व: हर एक को जल्दी, एक मात्रा में बोलिए।'
+    items:
+    - id: i0
+      sa: अ
+      meaning:
+        en: a, like the u in “but”
+        hi: अ, जैसे ‘अब’ में
+    - id: i1
+      sa: इ
+      meaning:
+        en: i, like the i in “sit”
+        hi: इ, जैसे ‘इमली’ में
+    - id: i2
+      sa: उ
+      meaning:
+        en: u, like the u in “put”
+        hi: उ, जैसे ‘उधर’ में
+- id: c9
+  kind: practice
+  mode: order
+  title:
+    en: Read the whole line
+    hi: पूरी पंक्ति पढ़िए
+  skills:
+  - script.vowel.short
+  - script.vowel.compound
+  roman: after
+  gate: true
+  prompt:
+    en: 'Read the first line aloud for Dhūmaka: put all nine vowels in the leaf''s order.'
+    hi: 'धूमक के लिए पहली पंक्ति ज़ोर से पढ़िए: नौ स्वरों को पत्र के क्रम में लगाइए।'
+  tokens:
+  - अ
+  - इ
+  - उ
+  - ऋ
+  - ऌ
+  - ए
+  - ओ
+  - ऐ
+  - औ
+  explain:
+    en: 'Four groups: {{अ}} {{इ}} {{उ}}, {{ऋ}} {{ऌ}}, {{ए}} {{ओ}}, {{ऐ}} {{औ}}.'
+    hi: 'चार समूह: {{अ}} {{इ}} {{उ}}, {{ऋ}} {{ऌ}}, {{ए}} {{ओ}}, {{ऐ}} {{औ}}।'
+  story:
+    success:
+      en: You read the line aloud, from अ to औ. The leaf blazes gold, and Dhūmaka rises like smoke from a lamp just put out,
+        smiling.
+      hi: आप पंक्ति ज़ोर से पढ़ते हैं, अ से औ तक। पत्र सुनहरा दमक उठता है, और धूमक अभी-अभी बुझे दीपक के धुएँ की तरह मुस्कुराता
+        हुआ ऊपर उठता है।
+    failure:
+      en: 'The line flickers. Dhūmaka waits. Take it group by group: अ इ उ, ऋ ऌ, ए ओ, ऐ औ.'
+      hi: 'पंक्ति टिमटिमाती है। धूमक प्रतीक्षा करता है। समूह-दर-समूह चलिए: अ इ उ, ऋ ऌ, ए ओ, ऐ औ।'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A vowel, {{स्वरः}}, is a sound you can hold with your mouth open. Sanskrit gives each vowel its own letter. The
+        leaf''s first group holds three of them, all short: say each one quickly, in one beat.'
+      hi: 'स्वर ({{स्वरः}}) वह ध्वनि है जिसे मुँह खोलकर देर तक बोला जा सकता है। संस्कृत में हर स्वर का अपना अक्षर है। पत्र
+        के पहले समूह में ऐसे तीन स्वर हैं, तीनों ह्रस्व: हर एक को जल्दी, एक मात्रा में बोलिए।'
+    items:
+    - id: i0
+      sa: अ
+      meaning:
+        en: a, like the u in “but”
+        hi: अ, जैसे ‘अब’ में
+    - id: i1
+      sa: इ
+      meaning:
+        en: i, like the i in “sit”
+        hi: इ, जैसे ‘इमली’ में
+    - id: i2
+      sa: उ
+      meaning:
+        en: u, like the u in “put”
+        hi: उ, जैसे ‘उधर’ में

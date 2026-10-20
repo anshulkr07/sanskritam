@@ -23,7 +23,10 @@ TARGET = ROOT / "backend/app/curriculum/content/images/deliveries.yaml"
 def selected_deliveries():
     manifest = json.loads((APP / "manifest.json").read_text(encoding="utf-8"))
     records = []
-    for source in (APP / "deliveries.json", ROOT / "specs/learn-art-20261020/deliveries.json"):
+    for source in (APP / "deliveries.json", ROOT / "specs/learn-art-20261020/deliveries.json",
+                   ROOT / "specs/learn-art-20261020/teaching-course-plan/implementation/artwork/deliveries.json"):
+        if not source.exists():
+            continue
         records.extend(json.loads(source.read_text(encoding="utf-8")))
     out = []
     for key, selected in sorted(manifest.items()):

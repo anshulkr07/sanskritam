@@ -25,7 +25,8 @@ cards:
     hi: गूँज और आह
   depth: core
   image:
-    brief: The pillar with two carved marks highlighted, a single dot above one letter and a pair of dots after another; the sleeping green spirit humming, with tiny wavy lines of sound drifting from his nose and a puff of breath from his mouth.
+    brief: The pillar with two carved marks highlighted, a single dot above one letter and a pair of dots after another; the
+      sleeping green spirit humming, with tiny wavy lines of sound drifting from his nose and a puff of breath from his mouth.
     alt:
       en: A pillar with a dot above one letter and two dots after another, and a sleeping spirit humming and sighing
       hi: एक बिन्दु और दो बिन्दुओं वाला स्तम्भ, गुनगुनाता सोया भूत
@@ -37,10 +38,14 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: joined-hum-breath-s1
-    text_in_image: ["गंगा", "रामः"]
+    text_in_image:
+    - गंगा
+    - रामः
   narration:
-    en: The green spirit hums in his sleep, a soft nasal sound, then sighs out a little breath. Above one letter on the pillar sits a dot, after another two dots, just like his hum and sigh. “The pillar is breathing,” whispers Śuka.
-    hi: हरा भूत नींद में गुनगुनाता है, एक कोमल नासिक्य ध्वनि, फिर हल्की साँस छोड़ता है। स्तम्भ पर एक अक्षर के ऊपर एक बिन्दु है, दूसरे के बाद दो बिन्दु, ठीक उसकी गूँज और आह की तरह। “स्तम्भ साँस ले रहा है,” शुक फुसफुसाता है।
+    en: The green spirit hums in his sleep, a soft nasal sound, then sighs out a little breath. Above one letter on the pillar
+      sits a dot, after another two dots, just like his hum and sigh. “The pillar is breathing,” whispers Śuka.
+    hi: हरा भूत नींद में गुनगुनाता है, एक कोमल नासिक्य ध्वनि, फिर हल्की साँस छोड़ता है। स्तम्भ पर एक अक्षर के ऊपर एक बिन्दु
+      है, दूसरे के बाद दो बिन्दु, ठीक उसकी गूँज और आह की तरह। “स्तम्भ साँस ले रहा है,” शुक फुसफुसाता है।
 - id: t1
   kind: teach
   title:
@@ -53,8 +58,10 @@ cards:
   sutras:
   - 8.3.23
   body:
-    en: 'The dot above a letter, the {{अनुस्वारः}}, is a nasal hum through the nose: {{अं}}. At the end of a word it stands for {{म्}}: {{रामम्}} may be written {{रामं}}. Inside a word it hums like the nasal of the letter after it.'
-    hi: 'अक्षर के ऊपर का बिन्दु, {{अनुस्वारः}}, नाक से निकलने वाली नासिक्य गूँज है: {{अं}}। शब्द के अन्त में यह {{म्}} का काम करता है: {{रामम्}} को {{रामं}} भी लिखते हैं। शब्द के भीतर यह अगले अक्षर के नासिक्य की तरह गूँजता है।'
+    en: 'The dot above a letter, the {{अनुस्वारः}}, is a nasal hum through the nose: {{अं}}. At the end of a word it stands
+      for {{म्}}: {{रामम्}} may be written {{रामं}}. Inside a word it hums like the nasal of the letter after it.'
+    hi: 'अक्षर के ऊपर का बिन्दु, {{अनुस्वारः}}, नाक से निकलने वाली नासिक्य गूँज है: {{अं}}। शब्द के अन्त में यह {{म्}} का
+      काम करता है: {{रामम्}} को {{रामं}} भी लिखते हैं। शब्द के भीतर यह अगले अक्षर के नासिक्य की तरह गूँजता है।'
   examples:
   - sa: गंगा
     meaning:
@@ -69,6 +76,69 @@ cards:
     meaning:
       en: 'the dot: a nasal hum'
       hi: 'बिन्दु: नासिक्य गूँज'
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: गंगा
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+        hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The dot above a letter, the {{अनुस्वारः}}, is a nasal hum through the nose: {{अं}}. At the end of a word it stands
+          for {{म्}}: {{रामम्}} may be written {{रामं}}. Inside a word it hums like the nasal of the letter after it.'
+        hi: 'अक्षर के ऊपर का बिन्दु, {{अनुस्वारः}}, नाक से निकलने वाली नासिक्य गूँज है: {{अं}}। शब्द के अन्त में यह {{म्}}
+          का काम करता है: {{रामम्}} को {{रामं}} भी लिखते हैं। शब्द के भीतर यह अगले अक्षर के नासिक्य की तरह गूँजता है।'
+    - id: i3
+      sa: गंगा
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+        hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: संस्कृतम्
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'Sanskrit: {{सं}} hums before {{स्}}'
+        hi: 'संस्कृत: {{स्}} से पहले {{सं}} गूँजता है'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The dot above a letter, the {{अनुस्वारः}}, is a nasal hum through the nose: {{अं}}. At the end of a word it stands
+          for {{म्}}: {{रामम्}} may be written {{रामं}}. Inside a word it hums like the nasal of the letter after it.'
+        hi: 'अक्षर के ऊपर का बिन्दु, {{अनुस्वारः}}, नाक से निकलने वाली नासिक्य गूँज है: {{अं}}। शब्द के अन्त में यह {{म्}}
+          का काम करता है: {{रामम्}} को {{रामं}} भी लिखते हैं। शब्द के भीतर यह अगले अक्षर के नासिक्य की तरह गूँजता है।'
+    - id: i3
+      sa: संस्कृतम्
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'Sanskrit: {{सं}} hums before {{स्}}'
+        hi: 'संस्कृत: {{स्}} से पहले {{सं}} गूँजता है'
 - id: t2
   kind: teach
   title:
@@ -79,8 +149,10 @@ cards:
   - script.anusvara
   - script.visarga
   body:
-    en: 'Two dots after a vowel, the {{विसर्गः}}, are a soft breath that echoes the vowel: {{रामः}} ends in a light “ha”. It is never a letter of its own at the start of a word.'
-    hi: 'स्वर के बाद दो बिन्दु, {{विसर्गः}}, हल्की साँस हैं जो उस स्वर की गूँज बनती है: {{रामः}} अन्त में हल्के ‘ह’ पर रुकता है। यह कभी शब्द के आरम्भ का अक्षर नहीं होता।'
+    en: 'Two dots after a vowel, the {{विसर्गः}}, are a soft breath that echoes the vowel: {{रामः}} ends in a light “ha”.
+      It is never a letter of its own at the start of a word.'
+    hi: 'स्वर के बाद दो बिन्दु, {{विसर्गः}}, हल्की साँस हैं जो उस स्वर की गूँज बनती है: {{रामः}} अन्त में हल्के ‘ह’ पर रुकता
+      है। यह कभी शब्द के आरम्भ का अक्षर नहीं होता।'
   examples:
   - sa: रामः
     meaning:
@@ -107,6 +179,105 @@ cards:
     meaning:
       en: 'the two dots: a soft breath'
       hi: 'दो बिन्दु: हल्की साँस'
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: रामः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'Rāma: ends in a breath'
+        hi: 'राम: साँस पर समाप्त'
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Two dots after a vowel, the {{विसर्गः}}, are a soft breath that echoes the vowel: {{रामः}} ends in a light “ha”.
+          It is never a letter of its own at the start of a word.'
+        hi: 'स्वर के बाद दो बिन्दु, {{विसर्गः}}, हल्की साँस हैं जो उस स्वर की गूँज बनती है: {{रामः}} अन्त में हल्के ‘ह’ पर
+          रुकता है। यह कभी शब्द के आरम्भ का अक्षर नहीं होता।'
+    - id: i3
+      sa: रामः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'Rāma: ends in a breath'
+        hi: 'राम: साँस पर समाप्त'
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: नमः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'homage: {{नमः}}'
+        hi: 'नमन: {{नमः}}'
+      check:
+        type: subanta
+        stem: नमस्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नमस्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नमस्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Two dots after a vowel, the {{विसर्गः}}, are a soft breath that echoes the vowel: {{रामः}} ends in a light “ha”.
+          It is never a letter of its own at the start of a word.'
+        hi: 'स्वर के बाद दो बिन्दु, {{विसर्गः}}, हल्की साँस हैं जो उस स्वर की गूँज बनती है: {{रामः}} अन्त में हल्के ‘ह’ पर
+          रुकता है। यह कभी शब्द के आरम्भ का अक्षर नहीं होता।'
+    - id: i3
+      sa: नमः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'homage: {{नमः}}'
+        hi: 'नमन: {{नमः}}'
+      check:
+        type: subanta
+        stem: नमस्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नमस्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नमस्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p1
   kind: practice
   depth: core
@@ -140,6 +311,38 @@ cards:
       text:
         en: no vowel
         hi: बिना स्वर
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गंगा
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+        hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The dot above a letter, the {{अनुस्वारः}}, is a nasal hum through the nose: {{अं}}. At the end of a word it stands
+          for {{म्}}: {{रामम्}} may be written {{रामं}}. Inside a word it hums like the nasal of the letter after it.'
+        hi: 'अक्षर के ऊपर का बिन्दु, {{अनुस्वारः}}, नाक से निकलने वाली नासिक्य गूँज है: {{अं}}। शब्द के अन्त में यह {{म्}}
+          का काम करता है: {{रामम्}} को {{रामं}} भी लिखते हैं। शब्द के भीतर यह अगले अक्षर के नासिक्य की तरह गूँजता है।'
+    - id: i3
+      sa: गंगा
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+        hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
 - id: p2
   kind: practice
   depth: core
@@ -159,6 +362,38 @@ cards:
     sa: ं
   - sa: ः
   - sa: ऽ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गंगा
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+        hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The dot above a letter, the {{अनुस्वारः}}, is a nasal hum through the nose: {{अं}}. At the end of a word it stands
+          for {{म्}}: {{रामम्}} may be written {{रामं}}. Inside a word it hums like the nasal of the letter after it.'
+        hi: 'अक्षर के ऊपर का बिन्दु, {{अनुस्वारः}}, नाक से निकलने वाली नासिक्य गूँज है: {{अं}}। शब्द के अन्त में यह {{म्}}
+          का काम करता है: {{रामम्}} को {{रामं}} भी लिखते हैं। शब्द के भीतर यह अगले अक्षर के नासिक्य की तरह गूँजता है।'
+    - id: i3
+      sa: गंगा
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+        hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
 - id: e1
   kind: explore
   depth: core
@@ -204,6 +439,38 @@ cards:
   - मः
   - म
   - ः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गंगा
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+        hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The dot above a letter, the {{अनुस्वारः}}, is a nasal hum through the nose: {{अं}}. At the end of a word it stands
+          for {{म्}}: {{रामम्}} may be written {{रामं}}. Inside a word it hums like the nasal of the letter after it.'
+        hi: 'अक्षर के ऊपर का बिन्दु, {{अनुस्वारः}}, नाक से निकलने वाली नासिक्य गूँज है: {{अं}}। शब्द के अन्त में यह {{म्}}
+          का काम करता है: {{रामम्}} को {{रामं}} भी लिखते हैं। शब्द के भीतर यह अगले अक्षर के नासिक्य की तरह गूँजता है।'
+    - id: i3
+      sa: गंगा
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+        hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
 - id: p4
   kind: practice
   title:
@@ -224,8 +491,10 @@ cards:
   gate: true
   story:
     success:
-      en: 'The pillar hums with you: “संस्कृतम्”. The green spirit''s nightcap slides over one eye as he stretches. “Hmm… breath… hum…”'
-      hi: 'स्तम्भ आपके साथ गूँजता है: “संस्कृतम्”। हरे भूत की टोपी एक आँख पर खिसक जाती है और वह अँगड़ाई लेता है। “हम्म… साँस… गूँज…”'
+      en: 'The pillar hums with you: “संस्कृतम्”. The green spirit''s nightcap slides over one eye as he stretches. “Hmm…
+        breath… hum…”'
+      hi: 'स्तम्भ आपके साथ गूँजता है: “संस्कृतम्”। हरे भूत की टोपी एक आँख पर खिसक जाती है और वह अँगड़ाई लेता है। “हम्म… साँस…
+        गूँज…”'
     failure:
       en: 'The pillar goes quiet. Start with the hum: {{सं}}.'
       hi: 'स्तम्भ चुप हो जाता है। गूँज से शुरू कीजिए: {{सं}}।'
@@ -233,6 +502,38 @@ cards:
   - सं
   - स्कृ
   - तम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: गंगा
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+        hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The dot above a letter, the {{अनुस्वारः}}, is a nasal hum through the nose: {{अं}}. At the end of a word it stands
+          for {{म्}}: {{रामम्}} may be written {{रामं}}. Inside a word it hums like the nasal of the letter after it.'
+        hi: 'अक्षर के ऊपर का बिन्दु, {{अनुस्वारः}}, नाक से निकलने वाली नासिक्य गूँज है: {{अं}}। शब्द के अन्त में यह {{म्}}
+          का काम करता है: {{रामम्}} को {{रामं}} भी लिखते हैं। शब्द के भीतर यह अगले अक्षर के नासिक्य की तरह गूँजता है।'
+    - id: i3
+      sa: गंगा
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'the river Gaṅgā: the dot hums as {{ङ्}} before {{ग}}'
+        hi: 'गंगा नदी: {{ग}} से पहले बिन्दु {{ङ्}} की तरह गूँजता है'
 - id: pn
   kind: teach
   title:
@@ -244,8 +545,32 @@ cards:
   sutras:
   - 8.3.23
   body:
-    en: 'Sūtra 8.3.23, {{मोऽनुस्वारः}}: a final {{म्}} before a consonant becomes the dot. So {{रामम्}} + {{नमति}} is written {{रामं नमति}}.'
-    hi: 'सूत्र 8.3.23, {{मोऽनुस्वारः}}: व्यंजन से पहले अन्त का {{म्}} बिन्दु बन जाता है। इसलिए {{रामम्}} + {{नमति}} लिखा जाता है {{रामं नमति}}।'
+    en: 'Sūtra 8.3.23, {{मोऽनुस्वारः}}: a final {{म्}} before a consonant becomes the dot. So {{रामम्}} + {{नमति}} is written
+      {{रामं नमति}}.'
+    hi: 'सूत्र 8.3.23, {{मोऽनुस्वारः}}: व्यंजन से पहले अन्त का {{म्}} बिन्दु बन जाता है। इसलिए {{रामम्}} + {{नमति}} लिखा जाता
+      है {{रामं नमति}}।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Sūtra 8.3.23, {{मोऽनुस्वारः}}: a final {{म्}} before a consonant becomes the dot. So {{रामम्}} + {{नमति}} is written
+        {{रामं नमति}}.'
+      hi: 'सूत्र 8.3.23, {{मोऽनुस्वारः}}: व्यंजन से पहले अन्त का {{म्}} बिन्दु बन जाता है। इसलिए {{रामम्}} + {{नमति}} लिखा
+        जाता है {{रामं नमति}}।'
+    items:
+    - id: i0
+      sa: मोऽनुस्वारः
+    - id: i1
+      sa: म्
+    - id: i2
+      sa: रामम्
+    - id: i3
+      sa: नमति
+    - id: i4
+      sa: रामं नमति
 - id: sum
   kind: summary
   title:

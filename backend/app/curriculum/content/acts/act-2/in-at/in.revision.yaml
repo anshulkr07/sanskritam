@@ -73,6 +73,54 @@ cards:
         vacana: Bahu
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: वृक्षेषु
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: in the trees
+          hi: पेड़ों पर
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{वृक्ष}} · masculine · {{सप्तमी}} · plural'
+          hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: Plural {{एषु}} (masculine, neuter -अ), {{आसु}} (feminine -आ), dual {{योः}}.
+          hi: बहुवचन {{एषु}} (पुंलिंग, नपुंसक -अ), {{आसु}} (स्त्रीलिंग -आ), द्विवचन {{योः}}।
+      - id: i3
+        sa: वृक्षेषु
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: in the trees
+          hi: पेड़ों पर
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Bahu
+        feature:
+          en: 'Stem: {{वृक्ष}} · masculine · {{सप्तमी}} · plural'
+          hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{सप्तमी}} · {{बहुवचन}}'
 - id: exceptions
   kind: revision
   title:
@@ -83,8 +131,10 @@ cards:
   rows:
   - skill: case.loc
     rule:
-      en: 'The seventh case also says “among” and “towards”: {{कवीनां मध्ये}} is “among the poets” (the sixth case with {{मध्ये}}); {{मयि स्नेहः}}, “affection towards me”.'
-      hi: 'सप्तमी ‘के बीच’ और ‘के प्रति’ भी कहती है: {{कवीनां मध्ये}} (षष्ठी के साथ {{मध्ये}}) ‘कवियों के बीच’; {{मयि स्नेहः}}, ‘मेरे प्रति स्नेह’।'
+      en: 'The seventh case also says “among” and “towards”: {{कवीनां मध्ये}} is “among the poets” (the sixth case with {{मध्ये}});
+        {{मयि स्नेहः}}, “affection towards me”.'
+      hi: 'सप्तमी ‘के बीच’ और ‘के प्रति’ भी कहती है: {{कवीनां मध्ये}} (षष्ठी के साथ {{मध्ये}}) ‘कवियों के बीच’; {{मयि स्नेहः}},
+        ‘मेरे प्रति स्नेह’।'
     example:
       sa: मयि
       meaning:
@@ -92,6 +142,38 @@ cards:
         hi: मेरे प्रति, मुझमें
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: मयि
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: towards me, in me
+          hi: मेरे प्रति, मुझमें
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'The seventh case also says “among” and “towards”: {{कवीनां मध्ये}} is “among the poets” (the sixth case with
+            {{मध्ये}}); {{मयि स्नेहः}}, “affection towards me”.'
+          hi: 'सप्तमी ‘के बीच’ और ‘के प्रति’ भी कहती है: {{कवीनां मध्ये}} (षष्ठी के साथ {{मध्ये}}) ‘कवियों के बीच’; {{मयि
+            स्नेहः}}, ‘मेरे प्रति स्नेह’।'
+      - id: i3
+        sa: मयि
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: towards me, in me
+          hi: मेरे प्रति, मुझमें
 - id: mistakes
   kind: revision
   title:

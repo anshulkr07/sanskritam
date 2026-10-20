@@ -34,8 +34,10 @@ cards:
     taught_in: reading.syllables#t2
   - skill: read.places
     rule:
-      en: Every sound has a place (throat, palate, roof, teeth, lips, nose) and an effort (open, almost touching, touching lightly, touching fully).
-      hi: हर ध्वनि का एक स्थान (कण्ठ, तालु, मूर्धा, दन्त, ओष्ठ, नासिका) और एक प्रयत्न (खुला, लगभग छूता, हल्का छूता, पूरा छूता) है।
+      en: Every sound has a place (throat, palate, roof, teeth, lips, nose) and an effort (open, almost touching, touching
+        lightly, touching fully).
+      hi: हर ध्वनि का एक स्थान (कण्ठ, तालु, मूर्धा, दन्त, ओष्ठ, नासिका) और एक प्रयत्न (खुला, लगभग छूता, हल्का छूता, पूरा छूता)
+        है।
     tag: core
     taught_in: reading.mouth#t1
   - skill: read.places
@@ -67,8 +69,10 @@ cards:
   rows:
   - skill: read.syllables
     rule:
-      en: The last syllable of a word can end in a consonant with the stroke ({{जगत्}}), the hum ({{संस्कृतम्}}) or the breath ({{रामः}}); the vowel before it still counts as one syllable.
-      hi: शब्द का अन्तिम अक्षर रेखा वाले व्यंजन ({{जगत्}}), गूँज ({{संस्कृतम्}}) या साँस ({{रामः}}) पर समाप्त हो सकता है; उससे पहले का स्वर फिर भी एक अक्षर है।
+      en: The last syllable of a word can end in a consonant with the stroke ({{जगत्}}), the hum ({{संस्कृतम्}}) or the breath
+        ({{रामः}}); the vowel before it still counts as one syllable.
+      hi: शब्द का अन्तिम अक्षर रेखा वाले व्यंजन ({{जगत्}}), गूँज ({{संस्कृतम्}}) या साँस ({{रामः}}) पर समाप्त हो सकता है;
+        उससे पहले का स्वर फिर भी एक अक्षर है।
     example:
       sa: जगत्
       meaning:
@@ -76,6 +80,38 @@ cards:
         hi: 'संसार: दो अक्षर, ज-गत्'
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: जगत्
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'the world: two syllables, ja-gat'
+          hi: 'संसार: दो अक्षर, ज-गत्'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: The last syllable of a word can end in a consonant with the stroke ({{जगत्}}), the hum ({{संस्कृतम्}}) or the
+            breath ({{रामः}}); the vowel before it still counts as one syllable.
+          hi: शब्द का अन्तिम अक्षर रेखा वाले व्यंजन ({{जगत्}}), गूँज ({{संस्कृतम्}}) या साँस ({{रामः}}) पर समाप्त हो सकता
+            है; उससे पहले का स्वर फिर भी एक अक्षर है।
+      - id: i3
+        sa: जगत्
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'the world: two syllables, ja-gat'
+          hi: 'संसार: दो अक्षर, ज-गत्'
 - id: exceptions
   kind: revision
   title:
@@ -95,6 +131,36 @@ cards:
         hi: रोमन अक्षरों में इसे सही ढंग से Kṛṣṇa लिखा जाता है
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: कृष्णः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Kṛṣṇa, not Krishna
+          hi: रोमन अक्षरों में इसे सही ढंग से Kṛṣṇa लिखा जाता है
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: Older books write ṃ as ṁ, and some print {{ऋ}} as ri. IAST itself keeps ṃ and ṛ.
+          hi: पुरानी पुस्तकें ṃ को ṁ लिखती हैं, और कुछ {{ऋ}} को ri छापती हैं। IAST स्वयं ṃ और ṛ रखता है।
+      - id: i3
+        sa: कृष्णः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Kṛṣṇa, not Krishna
+          hi: रोमन अक्षरों में इसे सही ढंग से Kṛṣṇa लिखा जाता है
   - skill: read.places
     rule:
       en: Classical teachers also list {{ह}} and the breath {{ः}} as throat sounds, and the hum as a nose sound.

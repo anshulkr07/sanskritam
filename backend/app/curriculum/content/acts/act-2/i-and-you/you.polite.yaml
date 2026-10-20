@@ -21,7 +21,8 @@ cards:
     hi: नाव पर एक बुज़ुर्ग
   depth: core
   image:
-    brief: A white-bearded old man being helped into the boat at a bend of the river by the boatman, Dādī whispering to you with a finger raised, Śuka bowing his head, the silver spirit peering over the side.
+    brief: A white-bearded old man being helped into the boat at a bend of the river by the boatman, Dādī whispering to you
+      with a finger raised, Śuka bowing his head, the silver spirit peering over the side.
     alt:
       en: An old man is helped into the boat while Dādī whispers advice
       hi: बुज़ुर्ग को नाव में चढ़ाते नाविक और कान में सलाह देती दादी
@@ -35,8 +36,11 @@ cards:
     ratio: '4:3'
     id: you-polite-s1
   narration:
-    en: At a bend a white-bearded old man asks for a lift. The boatman helps him in. “Do not say त्वम् to him,” whispers Dādī. “Say भवान्, ‘your honour’. It looks like ‘you’, but it takes the verb for ‘he’.” The old man smiles into his beard.
-    hi: एक मोड़ पर सफ़ेद दाढ़ी वाले एक बुज़ुर्ग नाव में बैठने के लिए पूछते हैं। नाविक उन्हें चढ़ाता है। दादी फुसफुसाती हैं, “उनसे त्वम् मत कहना। कहो भवान्, ‘आप’। यह ‘तुम’ जैसा दिखता है, पर इसके साथ ‘वह’ की क्रिया लगती है।” बुज़ुर्ग दाढ़ी में मुस्कुराते हैं।
+    en: At a bend a white-bearded old man asks for a lift. The boatman helps him in. “Do not say त्वम् to him,” whispers Dādī.
+      “Say भवान्, ‘your honour’. It looks like ‘you’, but it takes the verb for ‘he’.” The old man smiles into his beard.
+    hi: एक मोड़ पर सफ़ेद दाढ़ी वाले एक बुज़ुर्ग नाव में बैठने के लिए पूछते हैं। नाविक उन्हें चढ़ाता है। दादी फुसफुसाती हैं,
+      “उनसे त्वम् मत कहना। कहो भवान्, ‘आप’। यह ‘तुम’ जैसा दिखता है, पर इसके साथ ‘वह’ की क्रिया लगती है।” बुज़ुर्ग दाढ़ी में
+      मुस्कुराते हैं।
 - id: t1
   kind: teach
   title:
@@ -46,8 +50,10 @@ cards:
   skills:
   - pron.polite
   body:
-    en: 'To someone you respect, say {{भवान्}} (to a man) or {{भवती}} (to a woman) instead of {{त्वम्}}. They mean “you”, but the verb is the third person: {{भवान् पठति}}.'
-    hi: 'जिनका आप आदर करते हैं उनसे {{त्वम्}} की जगह {{भवान्}} (पुरुष से) या {{भवती}} (स्त्री से) कहिए। अर्थ ‘आप’ है, पर क्रिया प्रथम पुरुष की लगती है: {{भवान् पठति}}।'
+    en: 'To someone you respect, say {{भवान्}} (to a man) or {{भवती}} (to a woman) instead of {{त्वम्}}. They mean “you”,
+      but the verb is the third person: {{भवान् पठति}}.'
+    hi: 'जिनका आप आदर करते हैं उनसे {{त्वम्}} की जगह {{भवान्}} (पुरुष से) या {{भवती}} (स्त्री से) कहिए। अर्थ ‘आप’ है, पर क्रिया
+      प्रथम पुरुष की लगती है: {{भवान् पठति}}।'
   examples:
   - sa: भवान् पठति।
     meaning:
@@ -98,6 +104,200 @@ cards:
     meaning:
       en: '“your honour”: polite you'
       hi: '‘आप’: आदरपूर्ण तुम'
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: भवान् पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: You (sir) read.
+        hi: आप पढ़ते हैं।
+      words:
+      - sa: भवान्
+        gloss:
+          en: you (to a man, polite)
+          hi: आप (पुरुष से, आदरार्थ)
+      - sa: पठति
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: भवान्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: you (to a man, polite)
+        hi: आप (पुरुष से, आदरार्थ)
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To someone you respect, say {{भवान्}} (to a man) or {{भवती}} (to a woman) instead of {{त्वम्}}. They mean “you”,
+          but the verb is the third person: {{भवान् पठति}}.'
+        hi: 'जिनका आप आदर करते हैं उनसे {{त्वम्}} की जगह {{भवान्}} (पुरुष से) या {{भवती}} (स्त्री से) कहिए। अर्थ ‘आप’ है,
+          पर क्रिया प्रथम पुरुष की लगती है: {{भवान् पठति}}।'
+    - id: i5
+      sa: भवान् पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: You (sir) read.
+        hi: आप पढ़ते हैं।
+      words:
+      - sa: भवान्
+        gloss:
+          en: you (to a man, polite)
+          hi: आप (पुरुष से, आदरार्थ)
+      - sa: पठति
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: भवती गच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: You (madam) go.
+        hi: आप जाती हैं।
+      words:
+      - sa: भवती
+        gloss:
+          en: you (to a woman, polite)
+          hi: आप (स्त्री से, आदरार्थ)
+        check:
+          type: subanta
+          stem: भवती
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: go
+          hi: जाती हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: भवती
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: you (to a woman, polite)
+        hi: आप (स्त्री से, आदरार्थ)
+      check:
+        type: subanta
+        stem: भवती
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{भवती}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{भवती}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: गच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: go
+        hi: जाती हैं
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To someone you respect, say {{भवान्}} (to a man) or {{भवती}} (to a woman) instead of {{त्वम्}}. They mean “you”,
+          but the verb is the third person: {{भवान् पठति}}.'
+        hi: 'जिनका आप आदर करते हैं उनसे {{त्वम्}} की जगह {{भवान्}} (पुरुष से) या {{भवती}} (स्त्री से) कहिए। अर्थ ‘आप’ है,
+          पर क्रिया प्रथम पुरुष की लगती है: {{भवान् पठति}}।'
+    - id: i5
+      sa: भवती गच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: You (madam) go.
+        hi: आप जाती हैं।
+      words:
+      - sa: भवती
+        gloss:
+          en: you (to a woman, polite)
+          hi: आप (स्त्री से, आदरार्थ)
+        check:
+          type: subanta
+          stem: भवती
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गच्छति
+        gloss:
+          en: go
+          hi: जाती हैं
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: tb1
   kind: table
   title:
@@ -171,6 +371,93 @@ cards:
   - correct: true
     sa: भवान्
   - sa: अहम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: भवान् पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: You (sir) read.
+        hi: आप पढ़ते हैं।
+      words:
+      - sa: भवान्
+        gloss:
+          en: you (to a man, polite)
+          hi: आप (पुरुष से, आदरार्थ)
+      - sa: पठति
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: भवान्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: you (to a man, polite)
+        hi: आप (पुरुष से, आदरार्थ)
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To someone you respect, say {{भवान्}} (to a man) or {{भवती}} (to a woman) instead of {{त्वम्}}. They mean “you”,
+          but the verb is the third person: {{भवान् पठति}}.'
+        hi: 'जिनका आप आदर करते हैं उनसे {{त्वम्}} की जगह {{भवान्}} (पुरुष से) या {{भवती}} (स्त्री से) कहिए। अर्थ ‘आप’ है,
+          पर क्रिया प्रथम पुरुष की लगती है: {{भवान् पठति}}।'
+    - id: i5
+      sa: भवान् पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: You (sir) read.
+        hi: आप पढ़ते हैं।
+      words:
+      - sa: भवान्
+        gloss:
+          en: you (to a man, polite)
+          hi: आप (पुरुष से, आदरार्थ)
+      - sa: पठति
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -189,6 +476,93 @@ cards:
   - correct: true
     sa: पठति
   - sa: पठामि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: भवान् पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: You (sir) read.
+        hi: आप पढ़ते हैं।
+      words:
+      - sa: भवान्
+        gloss:
+          en: you (to a man, polite)
+          hi: आप (पुरुष से, आदरार्थ)
+      - sa: पठति
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: भवान्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: you (to a man, polite)
+        hi: आप (पुरुष से, आदरार्थ)
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To someone you respect, say {{भवान्}} (to a man) or {{भवती}} (to a woman) instead of {{त्वम्}}. They mean “you”,
+          but the verb is the third person: {{भवान् पठति}}.'
+        hi: 'जिनका आप आदर करते हैं उनसे {{त्वम्}} की जगह {{भवान्}} (पुरुष से) या {{भवती}} (स्त्री से) कहिए। अर्थ ‘आप’ है,
+          पर क्रिया प्रथम पुरुष की लगती है: {{भवान् पठति}}।'
+    - id: i5
+      sa: भवान् पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: You (sir) read.
+        hi: आप पढ़ते हैं।
+      words:
+      - sa: भवान्
+        gloss:
+          en: you (to a man, polite)
+          hi: आप (पुरुष से, आदरार्थ)
+      - sa: पठति
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -221,6 +595,93 @@ cards:
         hi: एक बूढ़ी
     right:
       sa: भवती
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: भवान् पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: You (sir) read.
+        hi: आप पढ़ते हैं।
+      words:
+      - sa: भवान्
+        gloss:
+          en: you (to a man, polite)
+          hi: आप (पुरुष से, आदरार्थ)
+      - sa: पठति
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: भवान्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: you (to a man, polite)
+        hi: आप (पुरुष से, आदरार्थ)
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To someone you respect, say {{भवान्}} (to a man) or {{भवती}} (to a woman) instead of {{त्वम्}}. They mean “you”,
+          but the verb is the third person: {{भवान् पठति}}.'
+        hi: 'जिनका आप आदर करते हैं उनसे {{त्वम्}} की जगह {{भवान्}} (पुरुष से) या {{भवती}} (स्त्री से) कहिए। अर्थ ‘आप’ है,
+          पर क्रिया प्रथम पुरुष की लगती है: {{भवान् पठति}}।'
+    - id: i5
+      sa: भवान् पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: You (sir) read.
+        hi: आप पढ़ते हैं।
+      words:
+      - sa: भवान्
+        gloss:
+          en: you (to a man, polite)
+          hi: आप (पुरुष से, आदरार्थ)
+      - sa: पठति
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   title:
@@ -240,14 +701,103 @@ cards:
   gate: true
   story:
     success:
-      en: “भवान् गच्छति,” you say, bowing a little. The old man laughs and lays a hand on your head. Behind you the silver spirit bows too, copying you exactly, and a little too low.
-      hi: “भवान् गच्छति,” आप थोड़ा झुककर कहते हैं। बुज़ुर्ग हँसकर आपके सिर पर हाथ रखते हैं। आपके पीछे चाँदी-सा भूत भी झुकता है, ठीक आपकी नक़ल में, थोड़ा ज़्यादा नीचे।
+      en: “भवान् गच्छति,” you say, bowing a little. The old man laughs and lays a hand on your head. Behind you the silver
+        spirit bows too, copying you exactly, and a little too low.
+      hi: “भवान् गच्छति,” आप थोड़ा झुककर कहते हैं। बुज़ुर्ग हँसकर आपके सिर पर हाथ रखते हैं। आपके पीछे चाँदी-सा भूत भी झुकता
+        है, ठीक आपकी नक़ल में, थोड़ा ज़्यादा नीचे।
     failure:
       en: He frowns kindly. {{भवान्}} takes the verb for “he”.
       hi: वे प्रेम से भौंहें सिकोड़ते हैं। {{भवान्}} के साथ ‘वह’ की क्रिया लगती है।
   tokens:
   - भवान्
   - गच्छति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: भवान् पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: You (sir) read.
+        hi: आप पढ़ते हैं।
+      words:
+      - sa: भवान्
+        gloss:
+          en: you (to a man, polite)
+          hi: आप (पुरुष से, आदरार्थ)
+      - sa: पठति
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: भवान्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: you (to a man, polite)
+        hi: आप (पुरुष से, आदरार्थ)
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: read
+        hi: पढ़ते हैं
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To someone you respect, say {{भवान्}} (to a man) or {{भवती}} (to a woman) instead of {{त्वम्}}. They mean “you”,
+          but the verb is the third person: {{भवान् पठति}}.'
+        hi: 'जिनका आप आदर करते हैं उनसे {{त्वम्}} की जगह {{भवान्}} (पुरुष से) या {{भवती}} (स्त्री से) कहिए। अर्थ ‘आप’ है,
+          पर क्रिया प्रथम पुरुष की लगती है: {{भवान् पठति}}।'
+    - id: i5
+      sa: भवान् पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: You (sir) read.
+        hi: आप पढ़ते हैं।
+      words:
+      - sa: भवान्
+        gloss:
+          en: you (to a man, polite)
+          hi: आप (पुरुष से, आदरार्थ)
+      - sa: पठति
+        gloss:
+          en: read
+          hi: पढ़ते हैं
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: t2
   kind: teach
   title:
@@ -257,8 +807,10 @@ cards:
   skills:
   - pron.polite
   body:
-    en: '{{नमः}} means “bow, homage”. {{नमस्ते}} is {{नमः}} joined with {{ते}} (“to you”): “homage to you”. You will learn why the two words melt together in the sandhi chapters.'
-    hi: '{{नमः}} का अर्थ है ‘प्रणाम’। {{नमस्ते}} {{नमः}} और {{ते}} (‘तुम्हें’) का मेल है: ‘तुम्हें प्रणाम’। दोनों शब्द क्यों मिल जाते हैं, यह सन्धि के अध्यायों में आएगा।'
+    en: '{{नमः}} means “bow, homage”. {{नमस्ते}} is {{नमः}} joined with {{ते}} (“to you”): “homage to you”. You will learn
+      why the two words melt together in the sandhi chapters.'
+    hi: '{{नमः}} का अर्थ है ‘प्रणाम’। {{नमस्ते}} {{नमः}} और {{ते}} (‘तुम्हें’) का मेल है: ‘तुम्हें प्रणाम’। दोनों शब्द क्यों
+      मिल जाते हैं, यह सन्धि के अध्यायों में आएगा।'
   examples:
   - sa: नमः
     meaning:
@@ -274,6 +826,87 @@ cards:
     meaning:
       en: 'homage to you: the everyday greeting'
       hi: 'तुम्हें प्रणाम: रोज़ का अभिवादन'
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: नमः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: '{{नमः}}: homage'
+        hi: '{{नमः}}: प्रणाम'
+      check:
+        type: subanta
+        stem: नमस्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नमस्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नमस्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{नमः}} means “bow, homage”. {{नमस्ते}} is {{नमः}} joined with {{ते}} (“to you”): “homage to you”. You will learn
+          why the two words melt together in the sandhi chapters.'
+        hi: '{{नमः}} का अर्थ है ‘प्रणाम’। {{नमस्ते}} {{नमः}} और {{ते}} (‘तुम्हें’) का मेल है: ‘तुम्हें प्रणाम’। दोनों शब्द
+          क्यों मिल जाते हैं, यह सन्धि के अध्यायों में आएगा।'
+    - id: i3
+      sa: नमः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: '{{नमः}}: homage'
+        hi: '{{नमः}}: प्रणाम'
+      check:
+        type: subanta
+        stem: नमस्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नमस्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{नमस्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: नमस्ते
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'homage to you: the everyday greeting'
+        hi: 'तुम्हें प्रणाम: रोज़ का अभिवादन'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{नमः}} means “bow, homage”. {{नमस्ते}} is {{नमः}} joined with {{ते}} (“to you”): “homage to you”. You will learn
+          why the two words melt together in the sandhi chapters.'
+        hi: '{{नमः}} का अर्थ है ‘प्रणाम’। {{नमस्ते}} {{नमः}} और {{ते}} (‘तुम्हें’) का मेल है: ‘तुम्हें प्रणाम’। दोनों शब्द
+          क्यों मिल जाते हैं, यह सन्धि के अध्यायों में आएगा।'
+    - id: i3
+      sa: नमस्ते
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'homage to you: the everyday greeting'
+        hi: 'तुम्हें प्रणाम: रोज़ का अभिवादन'
 - id: sum
   kind: summary
   title:

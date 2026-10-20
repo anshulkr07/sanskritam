@@ -24,7 +24,8 @@ cards:
     hi: घाट पर भोर
   depth: core
   image:
-    brief: 'Dawn on the stone ghat steps of a calm river: people bathing, a boy reading on the steps, and on the lowest step a small grey-blue spirit like river mist with his feet in the water, pointing; you, Dādī and Śuka coming down the steps.'
+    brief: 'Dawn on the stone ghat steps of a calm river: people bathing, a boy reading on the steps, and on the lowest step
+      a small grey-blue spirit like river mist with his feet in the water, pointing; you, Dādī and Śuka coming down the steps.'
     alt:
       en: Dawn at the river steps with a boy reading and a small mist-spirit pointing
       hi: 'भोर में नदी की सीढ़ियाँ: पढ़ता बालक और इशारा करता नन्हा भूत'
@@ -37,8 +38,12 @@ cards:
     ratio: '4:3'
     id: who-endings-s1
   narration:
-    en: Dawn at the river ghats. Wide stone steps run down to the water, and people wash, read and sing. On the lowest step a small grey-blue spirit sits with his feet in the river. He points at a boy reading, then at you. “A sentence,” says Dādī. “Your first.”
-    hi: नदी के घाट पर भोर है। चौड़ी पत्थर की सीढ़ियाँ पानी तक उतरती हैं, और लोग नहाते, पढ़ते और गाते हैं। सबसे निचली सीढ़ी पर एक नन्हा नीला-भूरा भूत पैर नदी में डाले बैठा है। वह पढ़ते हुए बालक की ओर, फिर आपकी ओर इशारा करता है। दादी कहती हैं, “एक वाक्य। तुम्हारा पहला।”
+    en: Dawn at the river ghats. Wide stone steps run down to the water, and people wash, read and sing. On the lowest step
+      a small grey-blue spirit sits with his feet in the river. He points at a boy reading, then at you. “A sentence,” says
+      Dādī. “Your first.”
+    hi: नदी के घाट पर भोर है। चौड़ी पत्थर की सीढ़ियाँ पानी तक उतरती हैं, और लोग नहाते, पढ़ते और गाते हैं। सबसे निचली सीढ़ी
+      पर एक नन्हा नीला-भूरा भूत पैर नदी में डाले बैठा है। वह पढ़ते हुए बालक की ओर, फिर आपकी ओर इशारा करता है। दादी कहती हैं,
+      “एक वाक्य। तुम्हारा पहला।”
   lines:
   - speaker: dadi
     sa: बालकः पठति।
@@ -54,8 +59,10 @@ cards:
   skills:
   - sent.stem-ending
   body:
-    en: Every Sanskrit word is a stem plus an ending, and the ending does the work. {{बालक}} (boy) with {{ः}} is {{बालकः}}. {{पठ्}} (read) with {{ति}} is {{पठति}}. The stem carries the meaning; the ending says the job.
-    hi: संस्कृत का हर शब्द मूल रूप और प्रत्यय से बनता है, और प्रत्यय ही काम करता है। {{बालक}} में {{ः}} लगा तो {{बालकः}}। {{पठ्}} में {{ति}} लगा तो {{पठति}}। मूल रूप अर्थ देता है; प्रत्यय बताता है कि शब्द का काम क्या है।
+    en: Every Sanskrit word is a stem plus an ending, and the ending does the work. {{बालक}} (boy) with {{ः}} is {{बालकः}}.
+      {{पठ्}} (read) with {{ति}} is {{पठति}}. The stem carries the meaning; the ending says the job.
+    hi: संस्कृत का हर शब्द मूल रूप और प्रत्यय से बनता है, और प्रत्यय ही काम करता है। {{बालक}} में {{ः}} लगा तो {{बालकः}}।
+      {{पठ्}} में {{ति}} लगा तो {{पठति}}। मूल रूप अर्थ देता है; प्रत्यय बताता है कि शब्द का काम क्या है।
   examples:
   - sa: पठति
     meaning:
@@ -80,6 +87,77 @@ cards:
     label:
       en: 'word: the boy (who does)'
       hi: 'शब्द: बालक (जो करता है)'
+  visuals:
+  - id: v-source-forms
+    kind: comparison
+    title:
+      en: Follow the forms
+      hi: रूपों पर ध्यान दें
+    items:
+    - id: i0
+      sa: बालक
+      meaning:
+        en: 'stem: boy'
+        hi: 'मूल रूप: बालक'
+    - id: i1
+      sa: ः
+      meaning:
+        en: 'ending: the doer'
+        hi: 'प्रत्यय: कर्ता'
+    - id: i2
+      sa: बालकः
+      meaning:
+        en: 'word: the boy (who does)'
+        hi: 'शब्द: बालक (जो करता है)'
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: पठति
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: '{{पठ्}} + {{ति}}: he reads'
+        hi: '{{पठ्}} + {{ति}}: वह पढ़ता है'
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: Every Sanskrit word is a stem plus an ending, and the ending does the work. {{बालक}} (boy) with {{ः}} is {{बालकः}}.
+          {{पठ्}} (read) with {{ति}} is {{पठति}}. The stem carries the meaning; the ending says the job.
+        hi: संस्कृत का हर शब्द मूल रूप और प्रत्यय से बनता है, और प्रत्यय ही काम करता है। {{बालक}} में {{ः}} लगा तो {{बालकः}}।
+          {{पठ्}} में {{ति}} लगा तो {{पठति}}। मूल रूप अर्थ देता है; प्रत्यय बताता है कि शब्द का काम क्या है।
+    - id: i3
+      sa: पठति
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: '{{पठ्}} + {{ति}}: he reads'
+        hi: '{{पठ्}} + {{ति}}: वह पढ़ता है'
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
 - id: tb1
   kind: table
   title:
@@ -186,6 +264,28 @@ cards:
   - sa: लक
   - correct: true
     sa: ः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालक
+      meaning:
+        en: 'stem: boy'
+        hi: 'मूल रूप: बालक'
+    - id: i1
+      sa: ः
+      meaning:
+        en: 'ending: the doer'
+        hi: 'प्रत्यय: कर्ता'
+    - id: i2
+      sa: बालकः
+      meaning:
+        en: 'word: the boy (who does)'
+        hi: 'शब्द: बालक (जो करता है)'
 - id: p2
   kind: practice
   depth: core
@@ -216,6 +316,28 @@ cards:
       sa: हसति
     right:
       sa: हस्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालक
+      meaning:
+        en: 'stem: boy'
+        hi: 'मूल रूप: बालक'
+    - id: i1
+      sa: ः
+      meaning:
+        en: 'ending: the doer'
+        hi: 'प्रत्यय: कर्ता'
+    - id: i2
+      sa: बालकः
+      meaning:
+        en: 'word: the boy (who does)'
+        hi: 'शब्द: बालक (जो करता है)'
 - id: p3
   kind: practice
   depth: core
@@ -237,6 +359,28 @@ cards:
   - text:
       en: '{{पठति}}, because it comes last'
       hi: '{{पठति}}, क्योंकि वह अन्त में है'
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालक
+      meaning:
+        en: 'stem: boy'
+        hi: 'मूल रूप: बालक'
+    - id: i1
+      sa: ः
+      meaning:
+        en: 'ending: the doer'
+        hi: 'प्रत्यय: कर्ता'
+    - id: i2
+      sa: बालकः
+      meaning:
+        en: 'word: the boy (who does)'
+        hi: 'शब्द: बालक (जो करता है)'
 - id: p4
   kind: practice
   title:
@@ -264,6 +408,28 @@ cards:
   tokens:
   - बालकः
   - पठति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: बालक
+      meaning:
+        en: 'stem: boy'
+        hi: 'मूल रूप: बालक'
+    - id: i1
+      sa: ः
+      meaning:
+        en: 'ending: the doer'
+        hi: 'प्रत्यय: कर्ता'
+    - id: i2
+      sa: बालकः
+      meaning:
+        en: 'word: the boy (who does)'
+        hi: 'शब्द: बालक (जो करता है)'
 - id: pn
   kind: teach
   title:
@@ -275,13 +441,43 @@ cards:
   sutras:
   - 1.4.14
   body:
-    en: 'Sūtra 1.4.14, {{सुप्तिङन्तं पदम्}}: a word ({{पदम्}}) is what ends in a noun ending ({{सुप्}}) or a verb ending ({{तिङ्}}). So {{बालकः}} and {{पठति}} are words; the bare stems {{बालक}} and {{पठ्}} are not yet.'
-    hi: 'सूत्र 1.4.14, {{सुप्तिङन्तं पदम्}}: पद वह है जो सुप् (नाम का प्रत्यय) या तिङ् (क्रिया का प्रत्यय) पर समाप्त हो। इसलिए {{बालकः}} और {{पठति}} पद हैं; केवल मूल {{बालक}} और {{पठ्}} अभी पद नहीं।'
+    en: 'Sūtra 1.4.14, {{सुप्तिङन्तं पदम्}}: a word ({{पदम्}}) is what ends in a noun ending ({{सुप्}}) or a verb ending ({{तिङ्}}).
+      So {{बालकः}} and {{पठति}} are words; the bare stems {{बालक}} and {{पठ्}} are not yet.'
+    hi: 'सूत्र 1.4.14, {{सुप्तिङन्तं पदम्}}: पद वह है जो सुप् (नाम का प्रत्यय) या तिङ् (क्रिया का प्रत्यय) पर समाप्त हो। इसलिए
+      {{बालकः}} और {{पठति}} पद हैं; केवल मूल {{बालक}} और {{पठ्}} अभी पद नहीं।'
   term:
     sa: पदम्
     meaning:
       en: 'a word: stem + ending'
       hi: 'पद: मूल + प्रत्यय'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Sūtra 1.4.14, {{सुप्तिङन्तं पदम्}}: a word ({{पदम्}}) is what ends in a noun ending ({{सुप्}}) or a verb ending
+        ({{तिङ्}}). So {{बालकः}} and {{पठति}} are words; the bare stems {{बालक}} and {{पठ्}} are not yet.'
+      hi: 'सूत्र 1.4.14, {{सुप्तिङन्तं पदम्}}: पद वह है जो सुप् (नाम का प्रत्यय) या तिङ् (क्रिया का प्रत्यय) पर समाप्त हो।
+        इसलिए {{बालकः}} और {{पठति}} पद हैं; केवल मूल {{बालक}} और {{पठ्}} अभी पद नहीं।'
+    items:
+    - id: i0
+      sa: सुप्तिङन्तं पदम्
+    - id: i1
+      sa: पदम्
+    - id: i2
+      sa: सुप्
+    - id: i3
+      sa: तिङ्
+    - id: i4
+      sa: बालकः
+    - id: i5
+      sa: पठति
+    - id: i6
+      sa: बालक
+    - id: i7
+      sa: पठ्
 - id: sum
   kind: summary
   title:

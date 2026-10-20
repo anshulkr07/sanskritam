@@ -28,6 +28,153 @@ cards:
   - correct: true
     sa: लभते
   - sa: लभन्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सेवकः गुरुम् सेवते।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The servant serves the teacher.
+        hi: सेवक गुरु की सेवा करता है।
+      words:
+      - sa: सेवकः
+        gloss:
+          en: servant
+          hi: सेवक
+        check:
+          type: subanta
+          stem: सेवक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गुरुम्
+        gloss:
+          en: teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: सेवते
+        gloss:
+          en: serves
+          hi: सेवा करता है
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सेवकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: servant
+        hi: सेवक
+      check:
+        type: subanta
+        stem: सेवक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सेवक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सेवक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: गुरुम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: सेवते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: serves
+        hi: सेवा करता है
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{सेव्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'So far all your verbs ended in {{-ति}}: {{परस्मैपदम्}}, “word for another”. The other set is {{आत्मनेपदम्}},
+          “word for oneself”: {{-ते}}, {{-एते}}, {{-न्ते}}. Some roots take only these: {{सेव्}} gives {{सेवते}}, {{लभ्}}
+          gives {{लभते}}, {{वृत्}} gives {{वर्तते}}.'
+        hi: 'अब तक आपकी क्रियाएँ {{-ति}} पर समाप्त होती थीं: {{परस्मैपदम्}}, ‘दूसरे के लिए शब्द’। दूसरा समूह {{आत्मनेपदम्}}
+          है, ‘अपने लिए शब्द’: {{-ते}}, {{-एते}}, {{-न्ते}}। कुछ धातुएँ केवल यही लेती हैं: {{सेव्}} से {{सेवते}}, {{लभ्}}
+          से {{लभते}}, {{वृत्}} से {{वर्तते}}।'
+    - id: i6
+      sa: सेवकः गुरुम् सेवते।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The servant serves the teacher.
+        hi: सेवक गुरु की सेवा करता है।
+      words:
+      - sa: सेवकः
+        gloss:
+          en: servant
+          hi: सेवक
+        check:
+          type: subanta
+          stem: सेवक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गुरुम्
+        gloss:
+          en: teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: सेवते
+        gloss:
+          en: serves
+          hi: सेवा करता है
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -46,6 +193,153 @@ cards:
     sa: सेवते
   - sa: सेवति
   - sa: असेवत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सेवकः गुरुम् सेवते।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The servant serves the teacher.
+        hi: सेवक गुरु की सेवा करता है।
+      words:
+      - sa: सेवकः
+        gloss:
+          en: servant
+          hi: सेवक
+        check:
+          type: subanta
+          stem: सेवक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गुरुम्
+        gloss:
+          en: teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: सेवते
+        gloss:
+          en: serves
+          hi: सेवा करता है
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सेवकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: servant
+        hi: सेवक
+      check:
+        type: subanta
+        stem: सेवक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सेवक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सेवक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: गुरुम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: सेवते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: serves
+        hi: सेवा करता है
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{सेव्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'So far all your verbs ended in {{-ति}}: {{परस्मैपदम्}}, “word for another”. The other set is {{आत्मनेपदम्}},
+          “word for oneself”: {{-ते}}, {{-एते}}, {{-न्ते}}. Some roots take only these: {{सेव्}} gives {{सेवते}}, {{लभ्}}
+          gives {{लभते}}, {{वृत्}} gives {{वर्तते}}.'
+        hi: 'अब तक आपकी क्रियाएँ {{-ति}} पर समाप्त होती थीं: {{परस्मैपदम्}}, ‘दूसरे के लिए शब्द’। दूसरा समूह {{आत्मनेपदम्}}
+          है, ‘अपने लिए शब्द’: {{-ते}}, {{-एते}}, {{-न्ते}}। कुछ धातुएँ केवल यही लेती हैं: {{सेव्}} से {{सेवते}}, {{लभ्}}
+          से {{लभते}}, {{वृत्}} से {{वर्तते}}।'
+    - id: i6
+      sa: सेवकः गुरुम् सेवते।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The servant serves the teacher.
+        hi: सेवक गुरु की सेवा करता है।
+      words:
+      - sa: सेवकः
+        gloss:
+          en: servant
+          hi: सेवक
+        check:
+          type: subanta
+          stem: सेवक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गुरुम्
+        gloss:
+          en: teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: सेवते
+        gloss:
+          en: serves
+          hi: सेवा करता है
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -76,6 +370,153 @@ cards:
       sa: ईक्ष्
     right:
       sa: ईक्षते
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सेवकः गुरुम् सेवते।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The servant serves the teacher.
+        hi: सेवक गुरु की सेवा करता है।
+      words:
+      - sa: सेवकः
+        gloss:
+          en: servant
+          hi: सेवक
+        check:
+          type: subanta
+          stem: सेवक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गुरुम्
+        gloss:
+          en: teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: सेवते
+        gloss:
+          en: serves
+          hi: सेवा करता है
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सेवकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: servant
+        hi: सेवक
+      check:
+        type: subanta
+        stem: सेवक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सेवक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सेवक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: गुरुम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: सेवते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: serves
+        hi: सेवा करता है
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{सेव्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'So far all your verbs ended in {{-ति}}: {{परस्मैपदम्}}, “word for another”. The other set is {{आत्मनेपदम्}},
+          “word for oneself”: {{-ते}}, {{-एते}}, {{-न्ते}}. Some roots take only these: {{सेव्}} gives {{सेवते}}, {{लभ्}}
+          gives {{लभते}}, {{वृत्}} gives {{वर्तते}}.'
+        hi: 'अब तक आपकी क्रियाएँ {{-ति}} पर समाप्त होती थीं: {{परस्मैपदम्}}, ‘दूसरे के लिए शब्द’। दूसरा समूह {{आत्मनेपदम्}}
+          है, ‘अपने लिए शब्द’: {{-ते}}, {{-एते}}, {{-न्ते}}। कुछ धातुएँ केवल यही लेती हैं: {{सेव्}} से {{सेवते}}, {{लभ्}}
+          से {{लभते}}, {{वृत्}} से {{वर्तते}}।'
+    - id: i6
+      sa: सेवकः गुरुम् सेवते।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The servant serves the teacher.
+        hi: सेवक गुरु की सेवा करता है।
+      words:
+      - sa: सेवकः
+        gloss:
+          en: servant
+          hi: सेवक
+        check:
+          type: subanta
+          stem: सेवक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गुरुम्
+        gloss:
+          en: teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: सेवते
+        gloss:
+          en: serves
+          hi: सेवा करता है
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -94,6 +535,32 @@ cards:
   - correct: true
     sa: पचते
   - sa: पचतु
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Many roots take both sets. The set can say who gets the benefit: {{पचति}} (he cooks, for others), {{पचते}} (he
+        cooks for himself); {{यजति}} / {{यजते}} (he sacrifices for another / for himself); {{करोति}} / {{कुरुते}} (he does
+        / he does for himself). In everyday Sanskrit the difference is often slight.'
+      hi: 'अनेक धातुएँ दोनों समूह लेती हैं। समूह बता सकता है कि लाभ किसे मिलता है: {{पचति}} (वह पकाता है, दूसरों के लिए),
+        {{पचते}} (वह अपने लिए पकाता है); {{यजति}} / {{यजते}} (वह दूसरे के लिए / अपने लिए यज्ञ करता है); {{करोति}} / {{कुरुते}}
+        (वह करता है / अपने लिए करता है)। रोज़ की संस्कृत में यह भेद अक्सर हल्का होता है।'
+    items:
+    - id: i0
+      sa: पचति
+    - id: i1
+      sa: पचते
+    - id: i2
+      sa: यजति
+    - id: i3
+      sa: यजते
+    - id: i4
+      sa: करोति
+    - id: i5
+      sa: कुरुते
 - id: p5
   kind: practice
   depth: core
@@ -132,6 +599,32 @@ cards:
       text:
         en: sacrifices for himself
         hi: अपने लिए यज्ञ करता है
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Many roots take both sets. The set can say who gets the benefit: {{पचति}} (he cooks, for others), {{पचते}} (he
+        cooks for himself); {{यजति}} / {{यजते}} (he sacrifices for another / for himself); {{करोति}} / {{कुरुते}} (he does
+        / he does for himself). In everyday Sanskrit the difference is often slight.'
+      hi: 'अनेक धातुएँ दोनों समूह लेती हैं। समूह बता सकता है कि लाभ किसे मिलता है: {{पचति}} (वह पकाता है, दूसरों के लिए),
+        {{पचते}} (वह अपने लिए पकाता है); {{यजति}} / {{यजते}} (वह दूसरे के लिए / अपने लिए यज्ञ करता है); {{करोति}} / {{कुरुते}}
+        (वह करता है / अपने लिए करता है)। रोज़ की संस्कृत में यह भेद अक्सर हल्का होता है।'
+    items:
+    - id: i0
+      sa: पचति
+    - id: i1
+      sa: पचते
+    - id: i2
+      sa: यजति
+    - id: i3
+      sa: यजते
+    - id: i4
+      sa: करोति
+    - id: i5
+      sa: कुरुते
 - id: p6
   kind: practice
   depth: core
@@ -150,6 +643,32 @@ cards:
   - sa: जयति
   - correct: true
     sa: पराजयते
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Many roots take both sets. The set can say who gets the benefit: {{पचति}} (he cooks, for others), {{पचते}} (he
+        cooks for himself); {{यजति}} / {{यजते}} (he sacrifices for another / for himself); {{करोति}} / {{कुरुते}} (he does
+        / he does for himself). In everyday Sanskrit the difference is often slight.'
+      hi: 'अनेक धातुएँ दोनों समूह लेती हैं। समूह बता सकता है कि लाभ किसे मिलता है: {{पचति}} (वह पकाता है, दूसरों के लिए),
+        {{पचते}} (वह अपने लिए पकाता है); {{यजति}} / {{यजते}} (वह दूसरे के लिए / अपने लिए यज्ञ करता है); {{करोति}} / {{कुरुते}}
+        (वह करता है / अपने लिए करता है)। रोज़ की संस्कृत में यह भेद अक्सर हल्का होता है।'
+    items:
+    - id: i0
+      sa: पचति
+    - id: i1
+      sa: पचते
+    - id: i2
+      sa: यजति
+    - id: i3
+      sa: यजते
+    - id: i4
+      sa: करोति
+    - id: i5
+      sa: कुरुते
 - id: p7
   kind: practice
   depth: core
@@ -166,8 +685,14 @@ cards:
   gate: true
   story:
     success:
-      en: '“सेवते, लभते, वर्तते,” you say, and Sevaka lays down his tray, which is no longer empty, and places a cup of warm broth in your hands. “For you,” he says, in the other set, with a smile: “ददाति.” The Vetāla laughs outright. “A servant,” he says, “who has learned to give and to keep. Now watch him go.” Sevaka walks off, lighter, and as he goes, a short line of light hangs in the air behind him: “आगच्छति, निर्गच्छति.”'
-      hi: '“सेवते, लभते, वर्तते,” आप कहते हैं, और सेवक अपना थाल रख देता है, जो अब ख़ाली नहीं है, और आपके हाथों में गर्म शोरबे का कटोरा थमा देता है। “आपके लिए,” वह दूसरे समूह में मुस्कराकर कहता है: “ददाति।” वेताल ठहाका मारकर हँसता है। “एक सेवक,” वह कहता है, “जिसने देना और रखना सीख लिया। अब देखो वह कैसे जाता है।” सेवक हल्का होकर चल देता है, और जाते हुए उसके पीछे हवा में प्रकाश की एक छोटी पंक्ति टँगी रहती है: “आगच्छति, निर्गच्छति।”'
+      en: '“सेवते, लभते, वर्तते,” you say, and Sevaka lays down his tray, which is no longer empty, and places a cup of warm
+        broth in your hands. “For you,” he says, in the other set, with a smile: “ददाति.” The Vetāla laughs outright. “A servant,”
+        he says, “who has learned to give and to keep. Now watch him go.” Sevaka walks off, lighter, and as he goes, a short
+        line of light hangs in the air behind him: “आगच्छति, निर्गच्छति.”'
+      hi: '“सेवते, लभते, वर्तते,” आप कहते हैं, और सेवक अपना थाल रख देता है, जो अब ख़ाली नहीं है, और आपके हाथों में गर्म शोरबे
+        का कटोरा थमा देता है। “आपके लिए,” वह दूसरे समूह में मुस्कराकर कहता है: “ददाति।” वेताल ठहाका मारकर हँसता है। “एक सेवक,”
+        वह कहता है, “जिसने देना और रखना सीख लिया। अब देखो वह कैसे जाता है।” सेवक हल्का होकर चल देता है, और जाते हुए उसके पीछे
+        हवा में प्रकाश की एक छोटी पंक्ति टँगी रहती है: “आगच्छति, निर्गच्छति।”'
     failure:
       en: 'Sevaka waits. Three verbs for oneself: {{सेवते लभते वर्तते}}.'
       hi: 'सेवक प्रतीक्षा करता है। अपने लिए तीन क्रियाएँ: {{सेवते लभते वर्तते}}।'
@@ -175,3 +700,150 @@ cards:
   - सेवते
   - लभते
   - वर्तते
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: सेवकः गुरुम् सेवते।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The servant serves the teacher.
+        hi: सेवक गुरु की सेवा करता है।
+      words:
+      - sa: सेवकः
+        gloss:
+          en: servant
+          hi: सेवक
+        check:
+          type: subanta
+          stem: सेवक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गुरुम्
+        gloss:
+          en: teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: सेवते
+        gloss:
+          en: serves
+          hi: सेवा करता है
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सेवकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: servant
+        hi: सेवक
+      check:
+        type: subanta
+        stem: सेवक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सेवक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सेवक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: गुरुम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: teacher
+        hi: गुरु
+      check:
+        type: subanta
+        stem: गुरु
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गुरु}} · masculine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: सेवते
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: serves
+        hi: सेवा करता है
+      check:
+        type: tinanta
+        dhatu: सेव्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{सेव्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{सेव्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'So far all your verbs ended in {{-ति}}: {{परस्मैपदम्}}, “word for another”. The other set is {{आत्मनेपदम्}},
+          “word for oneself”: {{-ते}}, {{-एते}}, {{-न्ते}}. Some roots take only these: {{सेव्}} gives {{सेवते}}, {{लभ्}}
+          gives {{लभते}}, {{वृत्}} gives {{वर्तते}}.'
+        hi: 'अब तक आपकी क्रियाएँ {{-ति}} पर समाप्त होती थीं: {{परस्मैपदम्}}, ‘दूसरे के लिए शब्द’। दूसरा समूह {{आत्मनेपदम्}}
+          है, ‘अपने लिए शब्द’: {{-ते}}, {{-एते}}, {{-न्ते}}। कुछ धातुएँ केवल यही लेती हैं: {{सेव्}} से {{सेवते}}, {{लभ्}}
+          से {{लभते}}, {{वृत्}} से {{वर्तते}}।'
+    - id: i6
+      sa: सेवकः गुरुम् सेवते।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The servant serves the teacher.
+        hi: सेवक गुरु की सेवा करता है।
+      words:
+      - sa: सेवकः
+        gloss:
+          en: servant
+          hi: सेवक
+        check:
+          type: subanta
+          stem: सेवक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: गुरुम्
+        gloss:
+          en: teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: सेवते
+        gloss:
+          en: serves
+          hi: सेवा करता है
+        check:
+          type: tinanta
+          dhatu: सेव्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka

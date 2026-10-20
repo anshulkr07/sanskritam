@@ -34,6 +34,28 @@ cards:
   - text:
       en: the Lakṣmaṇa who is Rāma
       hi: वह लक्ष्मण जो राम है
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A compound is a word made of two or more words, with the endings of the first left off. A {{द्वन्द्वः}} means “and”:
+        {{रामः च लक्ष्मणः च}} becomes {{रामलक्ष्मणौ}}. The compound takes the number of the whole: dual for two, plural for
+        several. A set of things is neuter singular: {{पाणिपादम्}}, “hands and feet”.'
+      hi: 'समास दो या अधिक शब्दों से बना एक शब्द है, जिसमें पहले शब्दों के प्रत्यय छूट जाते हैं। {{द्वन्द्वः}} का अर्थ ‘और’
+        है: {{रामः च लक्ष्मणः च}} से {{रामलक्ष्मणौ}}। समास पूरे का वचन लेता है: दो के लिए द्विवचन, कई के लिए बहुवचन। वस्तुओं
+        का समूह नपुंसक एकवचन होता है: {{पाणिपादम्}}, ‘हाथ और पैर’।'
+    items:
+    - id: i0
+      sa: द्वन्द्वः
+    - id: i1
+      sa: रामः च लक्ष्मणः च
+    - id: i2
+      sa: रामलक्ष्मणौ
+    - id: i3
+      sa: पाणिपादम्
 - id: p2
   kind: practice
   depth: core
@@ -58,6 +80,32 @@ cards:
   - text:
       en: a man like a king
       hi: राजा जैसा पुरुष
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'In a {{तत्पुरुषः}} the first word relates to the second as a case would: {{राज्ञः पुरुषः}}, “the king''s man”,
+        becomes {{राजपुरुषः}}. The case may be any of seven: {{ग्रामगतः}} (gone to the village), {{वृक्षमूलम्}} (root of a
+        tree), {{विद्यालयः}} (house of learning). The second word gives the gender and ending.'
+      hi: '{{तत्पुरुषः}} में पहला शब्द दूसरे से वैसे सम्बन्धित होता है जैसे कोई विभक्ति: {{राज्ञः पुरुषः}}, ‘राजा का पुरुष’,
+        से {{राजपुरुषः}}। विभक्ति सात में से कोई भी हो सकती है: {{ग्रामगतः}} (गाँव गया हुआ), {{वृक्षमूलम्}} (वृक्ष की जड़),
+        {{विद्यालयः}} (विद्या का घर)। दूसरा शब्द लिंग और प्रत्यय देता है।'
+    items:
+    - id: i0
+      sa: तत्पुरुषः
+    - id: i1
+      sa: राज्ञः पुरुषः
+    - id: i2
+      sa: राजपुरुषः
+    - id: i3
+      sa: ग्रामगतः
+    - id: i4
+      sa: वृक्षमूलम्
+    - id: i5
+      sa: विद्यालयः
 - id: p3
   kind: practice
   depth: core
@@ -82,6 +130,41 @@ cards:
   - text:
       en: blue and lotus
       hi: नीला और कमल
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'In a {{कर्मधारयः}} the first word describes the second: {{नीलम् उत्पलम्}} gives {{नीलोत्पलम्}} (blue lotus); {{महान्
+        आत्मा}} gives {{महात्मा}} (great soul). In a {{द्विगुः}} a number counts a group: {{त्रयाणां लोकानां समाहारः}} gives
+        {{त्रिलोकी}} (the three worlds), {{अष्टानाम् अध्यायानां समाहारः}} gives {{अष्टाध्यायी}} (the eight chapters, Pāṇini''s
+        book).'
+      hi: '{{कर्मधारयः}} में पहला शब्द दूसरे का वर्णन करता है: {{नीलम् उत्पलम्}} से {{नीलोत्पलम्}} (नीला कमल); {{महान् आत्मा}}
+        से {{महात्मा}} (महान् आत्मा)। {{द्विगुः}} में संख्या एक समूह गिनती है: {{त्रयाणां लोकानां समाहारः}} से {{त्रिलोकी}}
+        (तीन लोक), {{अष्टानाम् अध्यायानां समाहारः}} से {{अष्टाध्यायी}} (आठ अध्याय, पाणिनि की पुस्तक)।'
+    items:
+    - id: i0
+      sa: कर्मधारयः
+    - id: i1
+      sa: नीलम् उत्पलम्
+    - id: i2
+      sa: नीलोत्पलम्
+    - id: i3
+      sa: महान् आत्मा
+    - id: i4
+      sa: महात्मा
+    - id: i5
+      sa: द्विगुः
+    - id: i6
+      sa: त्रयाणां लोकानां समाहारः
+    - id: i7
+      sa: त्रिलोकी
+    - id: i8
+      sa: अष्टानाम् अध्यायानां समाहारः
+    - id: i9
+      sa: अष्टाध्यायी
 - id: p4
   kind: practice
   depth: core
@@ -106,6 +189,41 @@ cards:
   - text:
       en: of three worlds
       hi: तीन लोकों का
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'In a {{कर्मधारयः}} the first word describes the second: {{नीलम् उत्पलम्}} gives {{नीलोत्पलम्}} (blue lotus); {{महान्
+        आत्मा}} gives {{महात्मा}} (great soul). In a {{द्विगुः}} a number counts a group: {{त्रयाणां लोकानां समाहारः}} gives
+        {{त्रिलोकी}} (the three worlds), {{अष्टानाम् अध्यायानां समाहारः}} gives {{अष्टाध्यायी}} (the eight chapters, Pāṇini''s
+        book).'
+      hi: '{{कर्मधारयः}} में पहला शब्द दूसरे का वर्णन करता है: {{नीलम् उत्पलम्}} से {{नीलोत्पलम्}} (नीला कमल); {{महान् आत्मा}}
+        से {{महात्मा}} (महान् आत्मा)। {{द्विगुः}} में संख्या एक समूह गिनती है: {{त्रयाणां लोकानां समाहारः}} से {{त्रिलोकी}}
+        (तीन लोक), {{अष्टानाम् अध्यायानां समाहारः}} से {{अष्टाध्यायी}} (आठ अध्याय, पाणिनि की पुस्तक)।'
+    items:
+    - id: i0
+      sa: कर्मधारयः
+    - id: i1
+      sa: नीलम् उत्पलम्
+    - id: i2
+      sa: नीलोत्पलम्
+    - id: i3
+      sa: महान् आत्मा
+    - id: i4
+      sa: महात्मा
+    - id: i5
+      sa: द्विगुः
+    - id: i6
+      sa: त्रयाणां लोकानां समाहारः
+    - id: i7
+      sa: त्रिलोकी
+    - id: i8
+      sa: अष्टानाम् अध्यायानां समाहारः
+    - id: i9
+      sa: अष्टाध्यायी
 - id: p5
   kind: practice
   depth: core
@@ -124,6 +242,40 @@ cards:
   - correct: true
     sa: न सत्यम्
   - sa: सत्यस्य
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A {{न}} before a word makes the opposite: {{न सत्यम्}} gives {{असत्यम्}} (untrue); before a vowel it is {{अन्}}:
+        {{न अन्तः}} gives {{अनन्तः}} (endless). A word before a doer-word names the thing done: {{कुम्भं करोति}} gives {{कुम्भकारः}}
+        (pot-maker); {{शास्त्रं जानाति}} gives {{शास्त्रज्ञः}} (knower of the śāstras).'
+      hi: 'शब्द के आगे {{न}} उसका उलटा बनाता है: {{न सत्यम्}} से {{असत्यम्}} (झूठ); स्वर से पहले वह {{अन्}} होता है: {{न अन्तः}}
+        से {{अनन्तः}} (अनन्त)। कर्ता-शब्द के आगे का शब्द बताता है कि क्या किया जाता है: {{कुम्भं करोति}} से {{कुम्भकारः}}
+        (घड़ा बनाने वाला); {{शास्त्रं जानाति}} से {{शास्त्रज्ञः}} (शास्त्रों का ज्ञाता)।'
+    items:
+    - id: i0
+      sa: न
+    - id: i1
+      sa: न सत्यम्
+    - id: i2
+      sa: असत्यम्
+    - id: i3
+      sa: अन्
+    - id: i4
+      sa: न अन्तः
+    - id: i5
+      sa: अनन्तः
+    - id: i6
+      sa: कुम्भं करोति
+    - id: i7
+      sa: कुम्भकारः
+    - id: i8
+      sa: शास्त्रं जानाति
+    - id: i9
+      sa: शास्त्रज्ञः
 - id: p6
   kind: practice
   depth: core
@@ -157,6 +309,28 @@ cards:
       sa: कुम्भकारः
     right:
       sa: कुम्भं करोति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A compound is a word made of two or more words, with the endings of the first left off. A {{द्वन्द्वः}} means “and”:
+        {{रामः च लक्ष्मणः च}} becomes {{रामलक्ष्मणौ}}. The compound takes the number of the whole: dual for two, plural for
+        several. A set of things is neuter singular: {{पाणिपादम्}}, “hands and feet”.'
+      hi: 'समास दो या अधिक शब्दों से बना एक शब्द है, जिसमें पहले शब्दों के प्रत्यय छूट जाते हैं। {{द्वन्द्वः}} का अर्थ ‘और’
+        है: {{रामः च लक्ष्मणः च}} से {{रामलक्ष्मणौ}}। समास पूरे का वचन लेता है: दो के लिए द्विवचन, कई के लिए बहुवचन। वस्तुओं
+        का समूह नपुंसक एकवचन होता है: {{पाणिपादम्}}, ‘हाथ और पैर’।'
+    items:
+    - id: i0
+      sa: द्वन्द्वः
+    - id: i1
+      sa: रामः च लक्ष्मणः च
+    - id: i2
+      sa: रामलक्ष्मणौ
+    - id: i3
+      sa: पाणिपादम्
 - id: p7
   kind: practice
   depth: core
@@ -175,8 +349,15 @@ cards:
   gate: true
   story:
     success:
-      en: '“रामलक्ष्मणौ, राजपुरुषः, नीलोत्पलम्,” you say, and Samāsikā, the two-figured granite spirit, steps down, and for the first time the two figures do not hold on to one another. They stand side by side, one with a lotus, one with a bow, and smile. “We are two,” they say, “and we are one name.” In the next alcove a statue lifts her head: a woman with a pale blue throat, carved in a stone the colour of the sky before rain. “नीलकण्ठः,” she says. “Not the blue throat. The one who has it.”'
-      hi: '“रामलक्ष्मणौ, राजपुरुषः, नीलोत्पलम्,” आप कहते हैं, और समासिका, दो आकृतियों वाली ग्रेनाइट भूत, उतरती है, और पहली बार दोनों आकृतियाँ एक-दूसरे को थामे नहीं हैं। वे साथ-साथ खड़ी हैं, एक कमल लिए, एक धनुष, और मुस्कराती हैं। “हम दो हैं,” वे कहती हैं, “और हम एक नाम हैं।” अगले आले में एक प्रतिमा सिर उठाती है: हल्के नीले कण्ठ वाली स्त्री, वर्षा से पहले के आकाश के रंग के पत्थर में तराशी हुई। “नीलकण्ठः,” वह कहती है। “नीला कण्ठ नहीं। वह जिसके पास वह है।”'
+      en: '“रामलक्ष्मणौ, राजपुरुषः, नीलोत्पलम्,” you say, and Samāsikā, the two-figured granite spirit, steps down, and for
+        the first time the two figures do not hold on to one another. They stand side by side, one with a lotus, one with
+        a bow, and smile. “We are two,” they say, “and we are one name.” In the next alcove a statue lifts her head: a woman
+        with a pale blue throat, carved in a stone the colour of the sky before rain. “नीलकण्ठः,” she says. “Not the blue
+        throat. The one who has it.”'
+      hi: '“रामलक्ष्मणौ, राजपुरुषः, नीलोत्पलम्,” आप कहते हैं, और समासिका, दो आकृतियों वाली ग्रेनाइट भूत, उतरती है, और पहली
+        बार दोनों आकृतियाँ एक-दूसरे को थामे नहीं हैं। वे साथ-साथ खड़ी हैं, एक कमल लिए, एक धनुष, और मुस्कराती हैं। “हम दो हैं,”
+        वे कहती हैं, “और हम एक नाम हैं।” अगले आले में एक प्रतिमा सिर उठाती है: हल्के नीले कण्ठ वाली स्त्री, वर्षा से पहले
+        के आकाश के रंग के पत्थर में तराशी हुई। “नीलकण्ठः,” वह कहती है। “नीला कण्ठ नहीं। वह जिसके पास वह है।”'
     failure:
       en: 'The pair stays joined. Her three: {{रामलक्ष्मणौ राजपुरुषः नीलोत्पलम्}}.'
       hi: 'जोड़ी जुड़ी रहती है। उसके तीन: {{रामलक्ष्मणौ राजपुरुषः नीलोत्पलम्}}।'
@@ -184,3 +365,25 @@ cards:
   - रामलक्ष्मणौ
   - राजपुरुषः
   - नीलोत्पलम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A compound is a word made of two or more words, with the endings of the first left off. A {{द्वन्द्वः}} means “and”:
+        {{रामः च लक्ष्मणः च}} becomes {{रामलक्ष्मणौ}}. The compound takes the number of the whole: dual for two, plural for
+        several. A set of things is neuter singular: {{पाणिपादम्}}, “hands and feet”.'
+      hi: 'समास दो या अधिक शब्दों से बना एक शब्द है, जिसमें पहले शब्दों के प्रत्यय छूट जाते हैं। {{द्वन्द्वः}} का अर्थ ‘और’
+        है: {{रामः च लक्ष्मणः च}} से {{रामलक्ष्मणौ}}। समास पूरे का वचन लेता है: दो के लिए द्विवचन, कई के लिए बहुवचन। वस्तुओं
+        का समूह नपुंसक एकवचन होता है: {{पाणिपादम्}}, ‘हाथ और पैर’।'
+    items:
+    - id: i0
+      sa: द्वन्द्वः
+    - id: i1
+      sa: रामः च लक्ष्मणः च
+    - id: i2
+      sa: रामलक्ष्मणौ
+    - id: i3
+      sa: पाणिपादम्

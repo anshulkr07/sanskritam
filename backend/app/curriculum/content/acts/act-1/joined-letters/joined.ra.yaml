@@ -21,7 +21,9 @@ cards:
     hi: निद्रालु बड़बड़ाता है
   depth: core
   image:
-    brief: The stone pillar in close-up with several joined letters containing the letter ra in different forms, a small curl above one and a hook below another; Śuka on Dādī's shoulder cross-eyed with effort; the sleeping green spirit mumbling in the background.
+    brief: The stone pillar in close-up with several joined letters containing the letter ra in different forms, a small curl
+      above one and a hook below another; Śuka on Dādī's shoulder cross-eyed with effort; the sleeping green spirit mumbling
+      in the background.
     alt:
       en: A pillar with joined letters containing many shapes of ra, and a parrot cross-eyed with effort
       hi: र के कई रूपों वाला स्तम्भ और जीभ उलझाता तोता
@@ -33,10 +35,15 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: joined-ra-s1
-    text_in_image: ["धर्मः", "प्रियः", "क्रमः"]
+    text_in_image:
+    - धर्मः
+    - प्रियः
+    - क्रमः
   narration:
-    en: 'The sleeping spirit mumbles in his dream: “र… र…”. On the pillar the letter {{र}} wears many costumes: a curl on top, a hook below, even a new shape. Śuka tries to read them aloud and gets his tongue in a knot.'
-    hi: 'सोया हुआ भूत सपने में बड़बड़ाता है: “र… र…”। स्तम्भ पर {{र}} कई रूप धरता है: ऊपर एक मोड़, नीचे एक काँटा, कभी बिलकुल नया आकार। शुक उन्हें ज़ोर से पढ़ने की कोशिश करता है और जीभ उलझा बैठता है।'
+    en: 'The sleeping spirit mumbles in his dream: “र… र…”. On the pillar the letter {{र}} wears many costumes: a curl on
+      top, a hook below, even a new shape. Śuka tries to read them aloud and gets his tongue in a knot.'
+    hi: 'सोया हुआ भूत सपने में बड़बड़ाता है: “र… र…”। स्तम्भ पर {{र}} कई रूप धरता है: ऊपर एक मोड़, नीचे एक काँटा, कभी बिलकुल
+      नया आकार। शुक उन्हें ज़ोर से पढ़ने की कोशिश करता है और जीभ उलझा बैठता है।'
 - id: t1
   kind: teach
   title:
@@ -46,8 +53,10 @@ cards:
   skills:
   - script.reph
   body:
-    en: 'When {{र}} comes first in a joined letter, it becomes a small curl on top of the next letter: {{र्}} + {{म}} = {{र्म}}. It is called {{रेफः}}. You say it first, but write it last, above the end of the syllable.'
-    hi: 'जब {{र}} संयुक्ताक्षर में पहले आता है, तो अगले अक्षर के ऊपर छोटा मोड़ बन जाता है: {{र्}} + {{म}} = {{र्म}}। इसे {{रेफः}} कहते हैं। बोला जाता है पहले, पर लिखा जाता है अन्त में, अक्षर के सिरे पर।'
+    en: 'When {{र}} comes first in a joined letter, it becomes a small curl on top of the next letter: {{र्}} + {{म}} = {{र्म}}.
+      It is called {{रेफः}}. You say it first, but write it last, above the end of the syllable.'
+    hi: 'जब {{र}} संयुक्ताक्षर में पहले आता है, तो अगले अक्षर के ऊपर छोटा मोड़ बन जाता है: {{र्}} + {{म}} = {{र्म}}। इसे {{रेफः}}
+      कहते हैं। बोला जाता है पहले, पर लिखा जाता है अन्त में, अक्षर के सिरे पर।'
   examples:
   - sa: धर्मः
     meaning:
@@ -74,6 +83,105 @@ cards:
     meaning:
       en: the curl for r at the start of a join
       hi: संयोग के आरम्भ के र का मोड़
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: धर्मः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'duty: {{ध}} + {{र्म}}'
+        hi: 'धर्म: {{ध}} + {{र्म}}'
+      check:
+        type: subanta
+        stem: धर्म
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'When {{र}} comes first in a joined letter, it becomes a small curl on top of the next letter: {{र्}} + {{म}}
+          = {{र्म}}. It is called {{रेफः}}. You say it first, but write it last, above the end of the syllable.'
+        hi: 'जब {{र}} संयुक्ताक्षर में पहले आता है, तो अगले अक्षर के ऊपर छोटा मोड़ बन जाता है: {{र्}} + {{म}} = {{र्म}}। इसे
+          {{रेफः}} कहते हैं। बोला जाता है पहले, पर लिखा जाता है अन्त में, अक्षर के सिरे पर।'
+    - id: i3
+      sa: धर्मः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'duty: {{ध}} + {{र्म}}'
+        hi: 'धर्म: {{ध}} + {{र्म}}'
+      check:
+        type: subanta
+        stem: धर्म
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: कर्म
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'action: {{क}} + {{र्म}}'
+        hi: 'कर्म: {{क}} + {{र्म}}'
+      check:
+        type: subanta
+        stem: कर्मन्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कर्मन्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कर्मन्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'When {{र}} comes first in a joined letter, it becomes a small curl on top of the next letter: {{र्}} + {{म}}
+          = {{र्म}}. It is called {{रेफः}}. You say it first, but write it last, above the end of the syllable.'
+        hi: 'जब {{र}} संयुक्ताक्षर में पहले आता है, तो अगले अक्षर के ऊपर छोटा मोड़ बन जाता है: {{र्}} + {{म}} = {{र्म}}। इसे
+          {{रेफः}} कहते हैं। बोला जाता है पहले, पर लिखा जाता है अन्त में, अक्षर के सिरे पर।'
+    - id: i3
+      sa: कर्म
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'action: {{क}} + {{र्म}}'
+        hi: 'कर्म: {{क}} + {{र्म}}'
+      check:
+        type: subanta
+        stem: कर्मन्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कर्मन्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कर्मन्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: t2
   kind: teach
   title:
@@ -83,8 +191,10 @@ cards:
   skills:
   - script.reph
   body:
-    en: 'When {{र}} comes second, it hangs below the first letter as a small hook: {{प्}} + {{र}} = {{प्र}}, {{क्}} + {{र}} = {{क्र}}. Two have their own shapes: {{त्र}} and {{श्र}}.'
-    hi: 'जब {{र}} दूसरा आता है, तो पहले अक्षर के नीचे छोटे काँटे की तरह लटकता है: {{प्}} + {{र}} = {{प्र}}, {{क्}} + {{र}} = {{क्र}}। दो के अपने आकार हैं: {{त्र}} और {{श्र}}।'
+    en: 'When {{र}} comes second, it hangs below the first letter as a small hook: {{प्}} + {{र}} = {{प्र}}, {{क्}} + {{र}}
+      = {{क्र}}. Two have their own shapes: {{त्र}} and {{श्र}}.'
+    hi: 'जब {{र}} दूसरा आता है, तो पहले अक्षर के नीचे छोटे काँटे की तरह लटकता है: {{प्}} + {{र}} = {{प्र}}, {{क्}} + {{र}}
+      = {{क्र}}। दो के अपने आकार हैं: {{त्र}} और {{श्र}}।'
   examples:
   - sa: प्रियः
     meaning:
@@ -106,6 +216,105 @@ cards:
       linga: Pum
       vibhakti: Prathama
       vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: प्रियः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'dear: {{प्र}}'
+        hi: 'प्रिय: {{प्र}}'
+      check:
+        type: subanta
+        stem: प्रिय
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रिय}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{प्रिय}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'When {{र}} comes second, it hangs below the first letter as a small hook: {{प्}} + {{र}} = {{प्र}}, {{क्}} +
+          {{र}} = {{क्र}}. Two have their own shapes: {{त्र}} and {{श्र}}.'
+        hi: 'जब {{र}} दूसरा आता है, तो पहले अक्षर के नीचे छोटे काँटे की तरह लटकता है: {{प्}} + {{र}} = {{प्र}}, {{क्}} + {{र}}
+          = {{क्र}}। दो के अपने आकार हैं: {{त्र}} और {{श्र}}।'
+    - id: i3
+      sa: प्रियः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'dear: {{प्र}}'
+        hi: 'प्रिय: {{प्र}}'
+      check:
+        type: subanta
+        stem: प्रिय
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रिय}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{प्रिय}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: क्रमः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'order: {{क्र}}'
+        hi: 'क्रम: {{क्र}}'
+      check:
+        type: subanta
+        stem: क्रम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{क्रम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{क्रम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'When {{र}} comes second, it hangs below the first letter as a small hook: {{प्}} + {{र}} = {{प्र}}, {{क्}} +
+          {{र}} = {{क्र}}. Two have their own shapes: {{त्र}} and {{श्र}}.'
+        hi: 'जब {{र}} दूसरा आता है, तो पहले अक्षर के नीचे छोटे काँटे की तरह लटकता है: {{प्}} + {{र}} = {{प्र}}, {{क्}} + {{र}}
+          = {{क्र}}। दो के अपने आकार हैं: {{त्र}} और {{श्र}}।'
+    - id: i3
+      sa: क्रमः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'order: {{क्र}}'
+        hi: 'क्रम: {{क्र}}'
+      check:
+        type: subanta
+        stem: क्रम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{क्रम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{क्रम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: e1
   kind: explore
   depth: core
@@ -173,6 +382,56 @@ cards:
       text:
         en: curl on top
         hi: ऊपर का मोड़
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: धर्मः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'duty: {{ध}} + {{र्म}}'
+        hi: 'धर्म: {{ध}} + {{र्म}}'
+      check:
+        type: subanta
+        stem: धर्म
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'When {{र}} comes first in a joined letter, it becomes a small curl on top of the next letter: {{र्}} + {{म}}
+          = {{र्म}}. It is called {{रेफः}}. You say it first, but write it last, above the end of the syllable.'
+        hi: 'जब {{र}} संयुक्ताक्षर में पहले आता है, तो अगले अक्षर के ऊपर छोटा मोड़ बन जाता है: {{र्}} + {{म}} = {{र्म}}। इसे
+          {{रेफः}} कहते हैं। बोला जाता है पहले, पर लिखा जाता है अन्त में, अक्षर के सिरे पर।'
+    - id: i3
+      sa: धर्मः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'duty: {{ध}} + {{र्म}}'
+        hi: 'धर्म: {{ध}} + {{र्म}}'
+      check:
+        type: subanta
+        stem: धर्म
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: e2
   kind: explore
   depth: core
@@ -213,6 +472,56 @@ cards:
   - correct: true
     sa: प्रियः
   - sa: कर्म
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: धर्मः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'duty: {{ध}} + {{र्म}}'
+        hi: 'धर्म: {{ध}} + {{र्म}}'
+      check:
+        type: subanta
+        stem: धर्म
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'When {{र}} comes first in a joined letter, it becomes a small curl on top of the next letter: {{र्}} + {{म}}
+          = {{र्म}}. It is called {{रेफः}}. You say it first, but write it last, above the end of the syllable.'
+        hi: 'जब {{र}} संयुक्ताक्षर में पहले आता है, तो अगले अक्षर के ऊपर छोटा मोड़ बन जाता है: {{र्}} + {{म}} = {{र्म}}। इसे
+          {{रेफः}} कहते हैं। बोला जाता है पहले, पर लिखा जाता है अन्त में, अक्षर के सिरे पर।'
+    - id: i3
+      sa: धर्मः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'duty: {{ध}} + {{र्म}}'
+        hi: 'धर्म: {{ध}} + {{र्म}}'
+      check:
+        type: subanta
+        stem: धर्म
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p3
   kind: practice
   title:
@@ -244,6 +553,56 @@ cards:
   - र्मः
   - र्
   - म
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: धर्मः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'duty: {{ध}} + {{र्म}}'
+        hi: 'धर्म: {{ध}} + {{र्म}}'
+      check:
+        type: subanta
+        stem: धर्म
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'When {{र}} comes first in a joined letter, it becomes a small curl on top of the next letter: {{र्}} + {{म}}
+          = {{र्म}}. It is called {{रेफः}}. You say it first, but write it last, above the end of the syllable.'
+        hi: 'जब {{र}} संयुक्ताक्षर में पहले आता है, तो अगले अक्षर के ऊपर छोटा मोड़ बन जाता है: {{र्}} + {{म}} = {{र्म}}। इसे
+          {{रेफः}} कहते हैं। बोला जाता है पहले, पर लिखा जाता है अन्त में, अक्षर के सिरे पर।'
+    - id: i3
+      sa: धर्मः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'duty: {{ध}} + {{र्म}}'
+        hi: 'धर्म: {{ध}} + {{र्म}}'
+      check:
+        type: subanta
+        stem: धर्म
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{धर्म}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{धर्म}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: t3
   kind: teach
   title:
@@ -253,8 +612,10 @@ cards:
   skills:
   - script.reph
   body:
-    en: '{{ट्र}} and {{ड्र}} take a different mark, not the hook: {{राष्ट्रम्}} (nation). And {{ऋ}} is a vowel, not {{र}} with a sign. Read {{ऋषिः}} as ṛ-ṣi, never ri-ṣi.'
-    hi: '{{ट्र}} और {{ड्र}} काँटे की जगह दूसरा चिह्न लेते हैं: {{राष्ट्रम्}} (राष्ट्र)। और {{ऋ}} स्वर है, चिह्न लगा {{र}} नहीं। {{ऋषिः}} को ऋ-षि पढ़िए, रि-षि नहीं।'
+    en: '{{ट्र}} and {{ड्र}} take a different mark, not the hook: {{राष्ट्रम्}} (nation). And {{ऋ}} is a vowel, not {{र}}
+      with a sign. Read {{ऋषिः}} as ṛ-ṣi, never ri-ṣi.'
+    hi: '{{ट्र}} और {{ड्र}} काँटे की जगह दूसरा चिह्न लेते हैं: {{राष्ट्रम्}} (राष्ट्र)। और {{ऋ}} स्वर है, चिह्न लगा {{र}}
+      नहीं। {{ऋषिः}} को ऋ-षि पढ़िए, रि-षि नहीं।'
   examples:
   - sa: राष्ट्रम्
     meaning:
@@ -266,6 +627,56 @@ cards:
       linga: Napumsaka
       vibhakti: Prathama
       vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: राष्ट्रम्
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'a nation: {{ष्ट्र}}'
+        hi: 'राष्ट्र: {{ष्ट्र}}'
+      check:
+        type: subanta
+        stem: राष्ट्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राष्ट्र}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राष्ट्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{ट्र}} and {{ड्र}} take a different mark, not the hook: {{राष्ट्रम्}} (nation). And {{ऋ}} is a vowel, not {{र}}
+          with a sign. Read {{ऋषिः}} as ṛ-ṣi, never ri-ṣi.'
+        hi: '{{ट्र}} और {{ड्र}} काँटे की जगह दूसरा चिह्न लेते हैं: {{राष्ट्रम्}} (राष्ट्र)। और {{ऋ}} स्वर है, चिह्न लगा {{र}}
+          नहीं। {{ऋषिः}} को ऋ-षि पढ़िए, रि-षि नहीं।'
+    - id: i3
+      sa: राष्ट्रम्
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'a nation: {{ष्ट्र}}'
+        hi: 'राष्ट्र: {{ष्ट्र}}'
+      check:
+        type: subanta
+        stem: राष्ट्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राष्ट्र}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राष्ट्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: sum
   kind: summary
   title:

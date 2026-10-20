@@ -25,7 +25,8 @@ cards:
     hi: तीसरी शाखा
   depth: core
   image:
-    brief: The tree of green mist with a third thick branch bowing toward the desk, tags rustling; Śuka scattering three tags with his wing and reading them aloud proudly; Dādī laughing; you copying into a notebook.
+    brief: The tree of green mist with a third thick branch bowing toward the desk, tags rustling; Śuka scattering three tags
+      with his wing and reading them aloud proudly; Dādī laughing; you copying into a notebook.
     alt:
       en: A parrot reads tags from the third branch of a tree of names
       hi: नामों के पेड़ की तीसरी शाखा के टैग पढ़ता तोता
@@ -38,10 +39,17 @@ cards:
     place: pathashala
     ratio: '4:3'
     id: nf1-lata-s1
-    text_in_image: ["लता", "लते", "लताः"]
+    text_in_image:
+    - लता
+    - लते
+    - लताः
   narration:
-    en: 'A third branch, thick with leaf-tags in a different rhythm, bows toward the desk. “The feminines in -आ,” says Dādī. Śuka scatters three tags with his wing and reads them back, pleased with himself. The tree of names is almost whole now: it has found its masculine, its neuter, and now its feminine.'
-    hi: 'तीसरी शाखा, अलग लय में पत्ते-टैगों से लदी, मेज़ की ओर झुकती है। “-आ वाले स्त्रीलिंग,” दादी कहती हैं। शुक अपने पंख से तीन टैग बिखेरता है और उन्हें वापस पढ़ता है, अपने पर प्रसन्न। नामों का पेड़ अब लगभग पूरा है: उसे अपना पुंलिंग मिला, नपुंसक मिला, और अब स्त्रीलिंग।'
+    en: 'A third branch, thick with leaf-tags in a different rhythm, bows toward the desk. “The feminines in -आ,” says Dādī.
+      Śuka scatters three tags with his wing and reads them back, pleased with himself. The tree of names is almost whole
+      now: it has found its masculine, its neuter, and now its feminine.'
+    hi: 'तीसरी शाखा, अलग लय में पत्ते-टैगों से लदी, मेज़ की ओर झुकती है। “-आ वाले स्त्रीलिंग,” दादी कहती हैं। शुक अपने पंख
+      से तीन टैग बिखेरता है और उन्हें वापस पढ़ता है, अपने पर प्रसन्न। नामों का पेड़ अब लगभग पूरा है: उसे अपना पुंलिंग मिला,
+      नपुंसक मिला, और अब स्त्रीलिंग।'
 - id: t1
   kind: teach
   title:
@@ -54,13 +62,43 @@ cards:
   - 4.1.4
   - 7.3.106
   body:
-    en: 'A feminine word in -{{आ}} has its own pattern: {{लता}} (first), {{लताम्}} (object), {{लतया}} (by), {{लतायै}} (to), {{लतायाः}} (from, of), {{लतायाम्}} (in), {{हे लते}} (call). The long {{आ}} runs through almost everything.'
-    hi: '-{{आ}} वाले स्त्रीलिंग शब्द का अपना ढाँचा है: {{लता}} (प्रथमा), {{लताम्}} (कर्म), {{लतया}} (से), {{लतायै}} (को), {{लतायाः}} (से, का), {{लतायाम्}} (में), {{हे लते}} (पुकार)। दीर्घ {{आ}} लगभग सब जगह चलता है।'
+    en: 'A feminine word in -{{आ}} has its own pattern: {{लता}} (first), {{लताम्}} (object), {{लतया}} (by), {{लतायै}} (to),
+      {{लतायाः}} (from, of), {{लतायाम्}} (in), {{हे लते}} (call). The long {{आ}} runs through almost everything.'
+    hi: '-{{आ}} वाले स्त्रीलिंग शब्द का अपना ढाँचा है: {{लता}} (प्रथमा), {{लताम्}} (कर्म), {{लतया}} (से), {{लतायै}} (को),
+      {{लतायाः}} (से, का), {{लतायाम्}} (में), {{हे लते}} (पुकार)। दीर्घ {{आ}} लगभग सब जगह चलता है।'
   term:
     sa: आकारान्तम्
     meaning:
       en: a word ending in -आ
       hi: -आ पर समाप्त शब्द
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'A feminine word in -{{आ}} has its own pattern: {{लता}} (first), {{लताम्}} (object), {{लतया}} (by), {{लतायै}} (to),
+        {{लतायाः}} (from, of), {{लतायाम्}} (in), {{हे लते}} (call). The long {{आ}} runs through almost everything.'
+      hi: '-{{आ}} वाले स्त्रीलिंग शब्द का अपना ढाँचा है: {{लता}} (प्रथमा), {{लताम्}} (कर्म), {{लतया}} (से), {{लतायै}} (को),
+        {{लतायाः}} (से, का), {{लतायाम्}} (में), {{हे लते}} (पुकार)। दीर्घ {{आ}} लगभग सब जगह चलता है।'
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: लता
+    - id: i2
+      sa: लताम्
+    - id: i3
+      sa: लतया
+    - id: i4
+      sa: लतायै
+    - id: i5
+      sa: लतायाः
+    - id: i6
+      sa: लतायाम्
+    - id: i7
+      sa: हे लते
 - id: tb1
   kind: table
   title:
@@ -286,8 +324,10 @@ cards:
   skills:
   - noun.lata
   body:
-    en: '{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} all follow {{लता}}. Learn the table once and say any of them.'
-    hi: '{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} सब {{लता}} जैसे चलते हैं। तालिका एक बार सीखिए और इनमें से कोई भी बोलिए।'
+    en: '{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} all follow {{लता}}. Learn the table once
+      and say any of them.'
+    hi: '{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} सब {{लता}} जैसे चलते हैं। तालिका एक बार
+      सीखिए और इनमें से कोई भी बोलिए।'
   examples:
   - sa: बालिकायै
     meaning:
@@ -329,6 +369,203 @@ cards:
       linga: Stri
       vibhakti: Sasthi
       vacana: Bahu
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालिकायै
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: to the girl
+        hi: बालिका को
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} all follow {{लता}}. Learn the table
+          once and say any of them.'
+        hi: '{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} सब {{लता}} जैसे चलते हैं। तालिका
+          एक बार सीखिए और इनमें से कोई भी बोलिए।'
+    - id: i3
+      sa: बालिकायै
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: to the girl
+        hi: बालिका को
+      check:
+        type: subanta
+        stem: बालिका
+        linga: Stri
+        vibhakti: Caturthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालिका}} · feminine · {{चतुर्थी}} · singular'
+        hi: 'प्रातिपदिक: {{बालिका}} · {{स्त्रीलिंग}} · {{चतुर्थी}} · {{एकवचन}}'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: नौकाभिः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: by boats
+        hi: नावों से
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} all follow {{लता}}. Learn the table
+          once and say any of them.'
+        hi: '{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} सब {{लता}} जैसे चलते हैं। तालिका
+          एक बार सीखिए और इनमें से कोई भी बोलिए।'
+    - id: i3
+      sa: नौकाभिः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: by boats
+        hi: नावों से
+      check:
+        type: subanta
+        stem: नौका
+        linga: Stri
+        vibhakti: Trtiya
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · plural'
+        hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{बहुवचन}}'
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: गङ्गायाम्
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: in the Gaṅgā
+        hi: गंगा में
+      check:
+        type: subanta
+        stem: गङ्गा
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गङ्गा}} · feminine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{गङ्गा}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} all follow {{लता}}. Learn the table
+          once and say any of them.'
+        hi: '{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} सब {{लता}} जैसे चलते हैं। तालिका
+          एक बार सीखिए और इनमें से कोई भी बोलिए।'
+    - id: i3
+      sa: गङ्गायाम्
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: in the Gaṅgā
+        hi: गंगा में
+      check:
+        type: subanta
+        stem: गङ्गा
+        linga: Stri
+        vibhakti: Saptami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{गङ्गा}} · feminine · {{सप्तमी}} · singular'
+        hi: 'प्रातिपदिक: {{गङ्गा}} · {{स्त्रीलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+  - id: v-source-example-3
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: पाठशालानाम्
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: of schools
+        hi: पाठशालाओं का
+      check:
+        type: subanta
+        stem: पाठशाला
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{पाठशाला}} · feminine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{पाठशाला}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} all follow {{लता}}. Learn the table
+          once and say any of them.'
+        hi: '{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} सब {{लता}} जैसे चलते हैं। तालिका
+          एक बार सीखिए और इनमें से कोई भी बोलिए।'
+    - id: i3
+      sa: पाठशालानाम्
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: of schools
+        hi: पाठशालाओं का
+      check:
+        type: subanta
+        stem: पाठशाला
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{पाठशाला}} · feminine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{पाठशाला}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
 - id: p1
   kind: practice
   depth: core
@@ -349,6 +586,34 @@ cards:
       linga: Stri
       blanks: 3
     seed: 4
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A feminine word in -{{आ}} has its own pattern: {{लता}} (first), {{लताम्}} (object), {{लतया}} (by), {{लतायै}} (to),
+        {{लतायाः}} (from, of), {{लतायाम्}} (in), {{हे लते}} (call). The long {{आ}} runs through almost everything.'
+      hi: '-{{आ}} वाले स्त्रीलिंग शब्द का अपना ढाँचा है: {{लता}} (प्रथमा), {{लताम्}} (कर्म), {{लतया}} (से), {{लतायै}} (को),
+        {{लतायाः}} (से, का), {{लतायाम्}} (में), {{हे लते}} (पुकार)। दीर्घ {{आ}} लगभग सब जगह चलता है।'
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: लता
+    - id: i2
+      sa: लताम्
+    - id: i3
+      sa: लतया
+    - id: i4
+      sa: लतायै
+    - id: i5
+      sa: लतायाः
+    - id: i6
+      sa: लतायाम्
+    - id: i7
+      sa: हे लते
 - id: p2
   kind: practice
   depth: core
@@ -369,6 +634,34 @@ cards:
       linga: Stri
       blanks: 3
     seed: 5
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A feminine word in -{{आ}} has its own pattern: {{लता}} (first), {{लताम्}} (object), {{लतया}} (by), {{लतायै}} (to),
+        {{लतायाः}} (from, of), {{लतायाम्}} (in), {{हे लते}} (call). The long {{आ}} runs through almost everything.'
+      hi: '-{{आ}} वाले स्त्रीलिंग शब्द का अपना ढाँचा है: {{लता}} (प्रथमा), {{लताम्}} (कर्म), {{लतया}} (से), {{लतायै}} (को),
+        {{लतायाः}} (से, का), {{लतायाम्}} (में), {{हे लते}} (पुकार)। दीर्घ {{आ}} लगभग सब जगह चलता है।'
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: लता
+    - id: i2
+      sa: लताम्
+    - id: i3
+      sa: लतया
+    - id: i4
+      sa: लतायै
+    - id: i5
+      sa: लतायाः
+    - id: i6
+      sa: लतायाम्
+    - id: i7
+      sa: हे लते
 - id: p3
   kind: practice
   depth: core
@@ -387,6 +680,34 @@ cards:
   - sa: लताम्
   - correct: true
     sa: लते
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A feminine word in -{{आ}} has its own pattern: {{लता}} (first), {{लताम्}} (object), {{लतया}} (by), {{लतायै}} (to),
+        {{लतायाः}} (from, of), {{लतायाम्}} (in), {{हे लते}} (call). The long {{आ}} runs through almost everything.'
+      hi: '-{{आ}} वाले स्त्रीलिंग शब्द का अपना ढाँचा है: {{लता}} (प्रथमा), {{लताम्}} (कर्म), {{लतया}} (से), {{लतायै}} (को),
+        {{लतायाः}} (से, का), {{लतायाम्}} (में), {{हे लते}} (पुकार)। दीर्घ {{आ}} लगभग सब जगह चलता है।'
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: लता
+    - id: i2
+      sa: लताम्
+    - id: i3
+      sa: लतया
+    - id: i4
+      sa: लतायै
+    - id: i5
+      sa: लतायाः
+    - id: i6
+      sa: लतायाम्
+    - id: i7
+      sa: हे लते
 - id: p4
   kind: practice
   depth: core
@@ -425,6 +746,34 @@ cards:
       text:
         en: 7th
         hi: सप्तमी
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A feminine word in -{{आ}} has its own pattern: {{लता}} (first), {{लताम्}} (object), {{लतया}} (by), {{लतायै}} (to),
+        {{लतायाः}} (from, of), {{लतायाम्}} (in), {{हे लते}} (call). The long {{आ}} runs through almost everything.'
+      hi: '-{{आ}} वाले स्त्रीलिंग शब्द का अपना ढाँचा है: {{लता}} (प्रथमा), {{लताम्}} (कर्म), {{लतया}} (से), {{लतायै}} (को),
+        {{लतायाः}} (से, का), {{लतायाम्}} (में), {{हे लते}} (पुकार)। दीर्घ {{आ}} लगभग सब जगह चलता है।'
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: लता
+    - id: i2
+      sa: लताम्
+    - id: i3
+      sa: लतया
+    - id: i4
+      sa: लतायै
+    - id: i5
+      sa: लतायाः
+    - id: i6
+      sa: लतायाम्
+    - id: i7
+      sa: हे लते
 - id: e1
   kind: explore
   depth: core
@@ -466,8 +815,11 @@ cards:
   gate: true
   story:
     success:
-      en: “लतायाम्,” you say, and all along the third branch small blue flowers open, one after the other, as if the tree were counting. Vṛkṣaka stands whole, a full tree, his tags turning to leaves. “देवः, देवौ, देवाः,” he says in a green rustle. “मुक्तः।”
-      hi: “लतायाम्,” आप कहते हैं, और पूरी तीसरी शाखा पर नन्हे नीले फूल एक के बाद एक खिलते हैं, मानो पेड़ गिन रहा हो। वृक्षक पूरा खड़ा है, एक भरा हुआ पेड़, उसके टैग पत्तों में बदलते हुए। “देवः, देवौ, देवाः,” वह हरी सरसराहट में कहता है। “मुक्तः।”
+      en: “लतायाम्,” you say, and all along the third branch small blue flowers open, one after the other, as if the tree
+        were counting. Vṛkṣaka stands whole, a full tree, his tags turning to leaves. “देवः, देवौ, देवाः,” he says in a green
+        rustle. “मुक्तः।”
+      hi: “लतायाम्,” आप कहते हैं, और पूरी तीसरी शाखा पर नन्हे नीले फूल एक के बाद एक खिलते हैं, मानो पेड़ गिन रहा हो। वृक्षक
+        पूरा खड़ा है, एक भरा हुआ पेड़, उसके टैग पत्तों में बदलते हुए। “देवः, देवौ, देवाः,” वह हरी सरसराहट में कहता है। “मुक्तः।”
     failure:
       en: 'The branch stays bare. “In” is the seventh case: look for {{आयाम्}}.'
       hi: 'शाखा सूनी रहती है। ‘में’ सप्तमी है: {{आयाम्}} खोजिए।'
@@ -476,6 +828,34 @@ cards:
   - sa: लतायै
   - correct: true
     sa: लतायाम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A feminine word in -{{आ}} has its own pattern: {{लता}} (first), {{लताम्}} (object), {{लतया}} (by), {{लतायै}} (to),
+        {{लतायाः}} (from, of), {{लतायाम्}} (in), {{हे लते}} (call). The long {{आ}} runs through almost everything.'
+      hi: '-{{आ}} वाले स्त्रीलिंग शब्द का अपना ढाँचा है: {{लता}} (प्रथमा), {{लताम्}} (कर्म), {{लतया}} (से), {{लतायै}} (को),
+        {{लतायाः}} (से, का), {{लतायाम्}} (में), {{हे लते}} (पुकार)। दीर्घ {{आ}} लगभग सब जगह चलता है।'
+    items:
+    - id: i0
+      sa: आ
+    - id: i1
+      sa: लता
+    - id: i2
+      sa: लताम्
+    - id: i3
+      sa: लतया
+    - id: i4
+      sa: लतायै
+    - id: i5
+      sa: लतायाः
+    - id: i6
+      sa: लतायाम्
+    - id: i7
+      sa: हे लते
 - id: sum
   kind: summary
   title:

@@ -24,7 +24,9 @@ cards:
     hi: आँधी
   depth: core
   image:
-    brief: 'A sudden storm at the river: leaves torn from the neem trees, boats straining at their ropes, children running toward the school, the old Ācārya waving everyone away from the water; in the whirl of wind a swirling grey-green spirit made of leaves and gust dancing.'
+    brief: 'A sudden storm at the river: leaves torn from the neem trees, boats straining at their ropes, children running
+      toward the school, the old Ācārya waving everyone away from the water; in the whirl of wind a swirling grey-green spirit
+      made of leaves and gust dancing.'
     alt:
       en: A storm sweeps the riverbank as everyone runs for the school
       hi: नदी तट पर आँधी और पाठशाला की ओर भागते सब लोग
@@ -38,8 +40,12 @@ cards:
     ratio: '4:3'
     id: from-away-s1
   narration:
-    en: 'The sky turns the colour of slate. A roaring wind tears down the river: leaves rip from the neem trees, the boats strain at their ropes, children run for the school. The Ācārya shouts: “From the river! Come away from the river!” In the middle of the whirl dances a grey-green spirit made of leaves and wind.'
-    hi: 'आकाश स्लेटी रंग का हो जाता है। एक गर्जता पवन नदी पर टूट पड़ता है: नीम के पेड़ों से पत्ते टूटकर उड़ते हैं, नावें रस्सियों पर तनती हैं, बच्चे पाठशाला की ओर भागते हैं। आचार्य चिल्लाते हैं: “नदी से! नदी से दूर आओ!” भँवर के बीच पत्तों और हवा से बना एक धूसर-हरा भूत नाचता है।'
+    en: 'The sky turns the colour of slate. A roaring wind tears down the river: leaves rip from the neem trees, the boats
+      strain at their ropes, children run for the school. The Ācārya shouts: “From the river! Come away from the river!” In
+      the middle of the whirl dances a grey-green spirit made of leaves and wind.'
+    hi: 'आकाश स्लेटी रंग का हो जाता है। एक गर्जता पवन नदी पर टूट पड़ता है: नीम के पेड़ों से पत्ते टूटकर उड़ते हैं, नावें रस्सियों
+      पर तनती हैं, बच्चे पाठशाला की ओर भागते हैं। आचार्य चिल्लाते हैं: “नदी से! नदी से दूर आओ!” भँवर के बीच पत्तों और हवा
+      से बना एक धूसर-हरा भूत नाचता है।'
   lines:
   - speaker: acarya
     sa: नद्याः आगच्छत!
@@ -58,8 +64,10 @@ cards:
   - 2.3.28
   - 1.4.24
   body:
-    en: 'The point something moves away from takes the fifth case, {{पञ्चमी}}, the source ({{अपादानम्}}): {{वृक्षात् पत्रं पतति}} (a leaf falls from the tree), {{ग्रामात् आगच्छति}} (he comes from the village).'
-    hi: 'जहाँ से कोई चीज़ अलग होती है वह पञ्चमी में आता है, अपादान: {{वृक्षात् पत्रं पतति}} (पेड़ से पत्ता गिरता है), {{ग्रामात् आगच्छति}} (वह गाँव से आता है)।'
+    en: 'The point something moves away from takes the fifth case, {{पञ्चमी}}, the source ({{अपादानम्}}): {{वृक्षात् पत्रं
+      पतति}} (a leaf falls from the tree), {{ग्रामात् आगच्छति}} (he comes from the village).'
+    hi: 'जहाँ से कोई चीज़ अलग होती है वह पञ्चमी में आता है, अपादान: {{वृक्षात् पत्रं पतति}} (पेड़ से पत्ता गिरता है), {{ग्रामात्
+      आगच्छति}} (वह गाँव से आता है)।'
   examples:
   - sa: वृक्षात् पत्रम् पतति।
     meaning:
@@ -177,6 +185,461 @@ cards:
     meaning:
       en: 'the fifth case: from'
       hi: 'पाँचवीं विभक्ति: से (अलग होना)'
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: वृक्षात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tree
+        hi: पेड़ से
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: पत्रम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaf
+        hi: पत्ता
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: पतति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: falls
+        hi: गिरता है
+      check:
+        type: tinanta
+        dhatu: पत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The point something moves away from takes the fifth case, {{पञ्चमी}}, the source ({{अपादानम्}}): {{वृक्षात् पत्रं
+          पतति}} (a leaf falls from the tree), {{ग्रामात् आगच्छति}} (he comes from the village).'
+        hi: 'जहाँ से कोई चीज़ अलग होती है वह पञ्चमी में आता है, अपादान: {{वृक्षात् पत्रं पतति}} (पेड़ से पत्ता गिरता है),
+          {{ग्रामात् आगच्छति}} (वह गाँव से आता है)।'
+    - id: i6
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: बालकः ग्रामात् आगच्छति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: The boy comes from the village.
+        hi: बालक गाँव से आता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: ग्रामात्
+        gloss:
+          en: from the village
+          hi: गाँव से
+        check:
+          type: subanta
+          stem: ग्राम
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+    - id: i1
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: ग्रामात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the village
+        hi: गाँव से
+      check:
+        type: subanta
+        stem: ग्राम
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{ग्राम}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{ग्राम}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i3
+      sa: आगच्छति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: comes
+        hi: आता है
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        prefixes:
+        - आ
+      feature:
+        en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The point something moves away from takes the fifth case, {{पञ्चमी}}, the source ({{अपादानम्}}): {{वृक्षात् पत्रं
+          पतति}} (a leaf falls from the tree), {{ग्रामात् आगच्छति}} (he comes from the village).'
+        hi: 'जहाँ से कोई चीज़ अलग होती है वह पञ्चमी में आता है, अपादान: {{वृक्षात् पत्रं पतति}} (पेड़ से पत्ता गिरता है),
+          {{ग्रामात् आगच्छति}} (वह गाँव से आता है)।'
+    - id: i6
+      sa: बालकः ग्रामात् आगच्छति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: The boy comes from the village.
+        hi: बालक गाँव से आता है।
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: ग्रामात्
+        gloss:
+          en: from the village
+          hi: गाँव से
+        check:
+          type: subanta
+          stem: ग्राम
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: आगच्छति
+        gloss:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सः नद्याः जलम् गृह्णाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He takes water from the river.
+        hi: वह नदी से जल लेता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: नद्याः
+        gloss:
+          en: from the river
+          hi: नदी से
+        check:
+          type: subanta
+          stem: नदी
+          linga: Stri
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गृह्णाति
+        gloss:
+          en: takes
+          hi: लेता है
+        check:
+          type: tinanta
+          dhatu: ग्रह्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: नद्याः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the river
+        hi: नदी से
+      check:
+        type: subanta
+        stem: नदी
+        linga: Stri
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{नदी}} · feminine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{नदी}} · {{स्त्रीलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i3
+      sa: जलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: water
+        hi: जल
+      check:
+        type: subanta
+        stem: जल
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{जल}} · neuter · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{जल}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i4
+      sa: गृह्णाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: takes
+        hi: लेता है
+      check:
+        type: tinanta
+        dhatu: ग्रह्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ग्रह्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ग्रह्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The point something moves away from takes the fifth case, {{पञ्चमी}}, the source ({{अपादानम्}}): {{वृक्षात् पत्रं
+          पतति}} (a leaf falls from the tree), {{ग्रामात् आगच्छति}} (he comes from the village).'
+        hi: 'जहाँ से कोई चीज़ अलग होती है वह पञ्चमी में आता है, अपादान: {{वृक्षात् पत्रं पतति}} (पेड़ से पत्ता गिरता है),
+          {{ग्रामात् आगच्छति}} (वह गाँव से आता है)।'
+    - id: i7
+      sa: सः नद्याः जलम् गृह्णाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He takes water from the river.
+        hi: वह नदी से जल लेता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: नद्याः
+        gloss:
+          en: from the river
+          hi: नदी से
+        check:
+          type: subanta
+          stem: नदी
+          linga: Stri
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: जलम्
+        gloss:
+          en: water
+          hi: जल
+        check:
+          type: subanta
+          stem: जल
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: गृह्णाति
+        gloss:
+          en: takes
+          hi: लेता है
+        check:
+          type: tinanta
+          dhatu: ग्रह्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: tb1
   kind: table
   title:
@@ -287,8 +750,10 @@ cards:
         vacana: Eka
       highlight: true
   note:
-    en: 'Masculine and neuter -अ: {{आत्}}. Feminine -आ: {{आयाः}}. Feminine -ई: {{ई}} → {{याः}}. Feminine fifth looks like the sixth case.'
-    hi: पुंलिंग और नपुंसक -अ में {{आत्}}। स्त्रीलिंग -आ में {{आयाः}}। स्त्रीलिंग -ई में {{ई}} → {{याः}}। स्त्रीलिंग पञ्चमी षष्ठी जैसी दिखती है।
+    en: 'Masculine and neuter -अ: {{आत्}}. Feminine -आ: {{आयाः}}. Feminine -ई: {{ई}} → {{याः}}. Feminine fifth looks like
+      the sixth case.'
+    hi: पुंलिंग और नपुंसक -अ में {{आत्}}। स्त्रीलिंग -आ में {{आयाः}}। स्त्रीलिंग -ई में {{ई}} → {{याः}}। स्त्रीलिंग पञ्चमी
+      षष्ठी जैसी दिखती है।
 - id: p1
   kind: practice
   depth: core
@@ -307,6 +772,151 @@ cards:
   - sa: वृक्षेण
   - correct: true
     sa: वृक्षात्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: वृक्षात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tree
+        hi: पेड़ से
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: पत्रम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaf
+        hi: पत्ता
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: पतति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: falls
+        hi: गिरता है
+      check:
+        type: tinanta
+        dhatu: पत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The point something moves away from takes the fifth case, {{पञ्चमी}}, the source ({{अपादानम्}}): {{वृक्षात् पत्रं
+          पतति}} (a leaf falls from the tree), {{ग्रामात् आगच्छति}} (he comes from the village).'
+        hi: 'जहाँ से कोई चीज़ अलग होती है वह पञ्चमी में आता है, अपादान: {{वृक्षात् पत्रं पतति}} (पेड़ से पत्ता गिरता है),
+          {{ग्रामात् आगच्छति}} (वह गाँव से आता है)।'
+    - id: i6
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -345,6 +955,151 @@ cards:
       text:
         en: from the river
         hi: नदी से
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: वृक्षात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tree
+        hi: पेड़ से
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: पत्रम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaf
+        hi: पत्ता
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: पतति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: falls
+        hi: गिरता है
+      check:
+        type: tinanta
+        dhatu: पत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The point something moves away from takes the fifth case, {{पञ्चमी}}, the source ({{अपादानम्}}): {{वृक्षात् पत्रं
+          पतति}} (a leaf falls from the tree), {{ग्रामात् आगच्छति}} (he comes from the village).'
+        hi: 'जहाँ से कोई चीज़ अलग होती है वह पञ्चमी में आता है, अपादान: {{वृक्षात् पत्रं पतति}} (पेड़ से पत्ता गिरता है),
+          {{ग्रामात् आगच्छति}} (वह गाँव से आता है)।'
+    - id: i6
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -386,8 +1141,10 @@ cards:
   gate: true
   story:
     success:
-      en: “बालकाः नद्याः आगच्छन्ति!” you shout, and the last children dash up the bank into the school. The grey-green spirit whirls once around you, tugging at your hair, and the wind becomes a laugh.
-      hi: “बालकाः नद्याः आगच्छन्ति!” आप चिल्लाते हैं, और आख़िरी बच्चे किनारे से दौड़कर पाठशाला में पहुँच जाते हैं। धूसर-हरा भूत एक बार आपके चारों ओर घूमकर आपके बाल खींचता है, और हवा हँसी बन जाती है।
+      en: “बालकाः नद्याः आगच्छन्ति!” you shout, and the last children dash up the bank into the school. The grey-green spirit
+        whirls once around you, tugging at your hair, and the wind becomes a laugh.
+      hi: “बालकाः नद्याः आगच्छन्ति!” आप चिल्लाते हैं, और आख़िरी बच्चे किनारे से दौड़कर पाठशाला में पहुँच जाते हैं। धूसर-हरा
+        भूत एक बार आपके चारों ओर घूमकर आपके बाल खींचता है, और हवा हँसी बन जाती है।
     failure:
       en: 'The wind pushes you back. The river is where they come from: put it in the fifth case.'
       hi: 'हवा आपको पीछे धकेलती है। नदी वह है जहाँ से वे आते हैं: उसे पञ्चमी में रखिए।'
@@ -395,6 +1152,151 @@ cards:
   - बालकाः
   - नद्याः
   - आगच्छन्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: वृक्षात्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: from the tree
+        hi: पेड़ से
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Panchami
+        vacana: Eka
+      feature:
+        en: 'Stem: {{वृक्ष}} · masculine · {{पञ्चमी}} · singular'
+        hi: 'प्रातिपदिक: {{वृक्ष}} · {{पुंलिंग}} · {{पञ्चमी}} · {{एकवचन}}'
+    - id: i2
+      sa: पत्रम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: leaf
+        hi: पत्ता
+      check:
+        type: subanta
+        stem: पत्र
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पत्र}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पत्र}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: पतति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: falls
+        hi: गिरता है
+      check:
+        type: tinanta
+        dhatu: पत्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पत्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पत्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'The point something moves away from takes the fifth case, {{पञ्चमी}}, the source ({{अपादानम्}}): {{वृक्षात् पत्रं
+          पतति}} (a leaf falls from the tree), {{ग्रामात् आगच्छति}} (he comes from the village).'
+        hi: 'जहाँ से कोई चीज़ अलग होती है वह पञ्चमी में आता है, अपादान: {{वृक्षात् पत्रं पतति}} (पेड़ से पत्ता गिरता है),
+          {{ग्रामात् आगच्छति}} (वह गाँव से आता है)।'
+    - id: i6
+      sa: वृक्षात् पत्रम् पतति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A leaf falls from the tree.
+        hi: पेड़ से पत्ता गिरता है।
+      words:
+      - sa: वृक्षात्
+        gloss:
+          en: from the tree
+          hi: पेड़ से
+        check:
+          type: subanta
+          stem: वृक्ष
+          linga: Pum
+          vibhakti: Panchami
+          vacana: Eka
+      - sa: पत्रम्
+        gloss:
+          en: leaf
+          hi: पत्ता
+        check:
+          type: subanta
+          stem: पत्र
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पतति
+        gloss:
+          en: falls
+          hi: गिरता है
+        check:
+          type: tinanta
+          dhatu: पत्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: pn
   kind: teach
   title:
@@ -407,13 +1309,29 @@ cards:
   - 1.4.24
   - 2.3.28
   body:
-    en: 'Sūtra 1.4.24, {{ध्रुवमपायेऽपादानम्}}: when two things move apart, the fixed one is the source. A leaf falls from a tree; the tree stays. Sūtra 2.3.28 gives the source the fifth case.'
-    hi: 'सूत्र 1.4.24, {{ध्रुवमपायेऽपादानम्}}: जब दो वस्तुएँ अलग होती हैं तो स्थिर रहने वाली स्रोत है। पत्ता पेड़ से गिरता है; पेड़ वहीं रहता है। सूत्र 2.3.28 स्रोत को पञ्चमी देता है।'
+    en: 'Sūtra 1.4.24, {{ध्रुवमपायेऽपादानम्}}: when two things move apart, the fixed one is the source. A leaf falls from
+      a tree; the tree stays. Sūtra 2.3.28 gives the source the fifth case.'
+    hi: 'सूत्र 1.4.24, {{ध्रुवमपायेऽपादानम्}}: जब दो वस्तुएँ अलग होती हैं तो स्थिर रहने वाली स्रोत है। पत्ता पेड़ से गिरता
+      है; पेड़ वहीं रहता है। सूत्र 2.3.28 स्रोत को पञ्चमी देता है।'
   term:
     sa: अपादानम्
     meaning:
       en: the fixed point things move away from
       hi: 'अपादान: स्थिर बिन्दु जिससे वस्तुएँ दूर होती हैं'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Sūtra 1.4.24, {{ध्रुवमपायेऽपादानम्}}: when two things move apart, the fixed one is the source. A leaf falls from
+        a tree; the tree stays. Sūtra 2.3.28 gives the source the fifth case.'
+      hi: 'सूत्र 1.4.24, {{ध्रुवमपायेऽपादानम्}}: जब दो वस्तुएँ अलग होती हैं तो स्थिर रहने वाली स्रोत है। पत्ता पेड़ से गिरता
+        है; पेड़ वहीं रहता है। सूत्र 2.3.28 स्रोत को पञ्चमी देता है।'
+    items:
+    - id: i0
+      sa: ध्रुवमपायेऽपादानम्
 - id: sum
   kind: summary
   title:

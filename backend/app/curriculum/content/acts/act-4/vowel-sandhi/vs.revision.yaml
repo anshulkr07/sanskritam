@@ -69,8 +69,10 @@ cards:
   rows:
   - skill: sandhi.savarna
     rule:
-      en: 'Same family: long vowel. {{अ}} with {{इ}}/{{उ}}/{{ऋ}}: guṇa. {{अ}} with {{ए}}/{{ओ}}: vṛddhi. {{इ}}/{{उ}}/{{ऋ}} with another vowel: glide.'
-      hi: 'एक कुल: दीर्घ स्वर। {{अ}} के साथ {{इ}}/{{उ}}/{{ऋ}}: गुण। {{अ}} के साथ {{ए}}/{{ओ}}: वृद्धि। {{इ}}/{{उ}}/{{ऋ}} के साथ अन्य स्वर: अर्धस्वर।'
+      en: 'Same family: long vowel. {{अ}} with {{इ}}/{{उ}}/{{ऋ}}: guṇa. {{अ}} with {{ए}}/{{ओ}}: vṛddhi. {{इ}}/{{उ}}/{{ऋ}}
+        with another vowel: glide.'
+      hi: 'एक कुल: दीर्घ स्वर। {{अ}} के साथ {{इ}}/{{उ}}/{{ऋ}}: गुण। {{अ}} के साथ {{ए}}/{{ओ}}: वृद्धि। {{इ}}/{{उ}}/{{ऋ}} के
+        साथ अन्य स्वर: अर्धस्वर।'
     tag: good
     taught_in: vs.like#t1
   - skill: sandhi.ayadi
@@ -103,9 +105,58 @@ cards:
           hi: पहुँचता है
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-0
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: उपार्च्छति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: He approaches.
+          hi: वह पहुँचता है।
+        words:
+        - sa: उपार्च्छति
+          gloss:
+            en: approaches
+            hi: पहुँचता है
+      - id: i1
+        sa: उपार्च्छति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: approaches
+          hi: पहुँचता है
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A prefix ending in {{अ}} before a root starting with {{ऋ}} gives {{आर्}}: {{उप + ऋच्छति}} gives {{उपार्च्छति}}.'
+          hi: '{{अ}} पर समाप्त उपसर्ग के बाद {{ऋ}} से शुरू होने वाली धातु हो तो {{आर्}} बनता है: {{उप + ऋच्छति}} से {{उपार्च्छति}}।'
+      - id: i4
+        sa: उपार्च्छति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: He approaches.
+          hi: वह पहुँचता है।
+        words:
+        - sa: उपार्च्छति
+          gloss:
+            en: approaches
+            hi: पहुँचता है
   - skill: sandhi.yan
     rule:
-      en: '{{ए}}-ending or {{ओ}}-ending words in the Veda may behave differently; for the classical language, follow the rules above.'
+      en: '{{ए}}-ending or {{ओ}}-ending words in the Veda may behave differently; for the classical language, follow the rules
+        above.'
       hi: वेद में {{ए}} या {{ओ}} पर समाप्त शब्द अलग व्यवहार कर सकते हैं; लौकिक भाषा के लिए ऊपर के नियम मानिए।
     example:
       sa: वने अस्ति।
@@ -123,6 +174,71 @@ cards:
           hi: है
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: वने अस्ति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: He is in the forest.
+          hi: वह वन में है।
+        words:
+        - sa: वने
+          gloss:
+            en: in the forest
+            hi: वन में
+        - sa: अस्ति
+          gloss:
+            en: is
+            hi: है
+      - id: i1
+        sa: वने
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: in the forest
+          hi: वन में
+      - id: i2
+        sa: अस्ति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: is
+          hi: है
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{ए}}-ending or {{ओ}}-ending words in the Veda may behave differently; for the classical language, follow the
+            rules above.'
+          hi: वेद में {{ए}} या {{ओ}} पर समाप्त शब्द अलग व्यवहार कर सकते हैं; लौकिक भाषा के लिए ऊपर के नियम मानिए।
+      - id: i5
+        sa: वने अस्ति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: He is in the forest.
+          hi: वह वन में है।
+        words:
+        - sa: वने
+          gloss:
+            en: in the forest
+            hi: वन में
+        - sa: अस्ति
+          gloss:
+            en: is
+            hi: है
 - id: blocked
   kind: revision
   title:

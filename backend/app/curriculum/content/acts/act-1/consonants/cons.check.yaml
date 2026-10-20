@@ -28,6 +28,45 @@ cards:
   - sa: च
   - correct: true
     sa: म
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A consonant, {{व्यञ्जनम्}}, is a sound made by closing or narrowing the mouth. The door''s five rows follow your
+        mouth from the back to the front: throat, palate, roof, teeth, lips. Say {{क}} {{च}} {{ट}} {{त}} {{प}} and feel the
+        sound move forward.'
+      hi: 'व्यंजन ({{व्यञ्जनम्}}) वह ध्वनि है जो मुँह को बन्द या तंग करके बनती है। द्वार की पाँच पंक्तियाँ मुँह के पिछले भाग
+        से अगले भाग तक चलती हैं: कण्ठ, तालु, मूर्धा, दाँत, होंठ। {{क}} {{च}} {{ट}} {{त}} {{प}} बोलिए और ध्वनि को आगे बढ़ते
+        महसूस कीजिए।'
+    items:
+    - id: i0
+      sa: क
+      meaning:
+        en: throat (कण्ठ)
+        hi: कण्ठ (गला)
+    - id: i1
+      sa: च
+      meaning:
+        en: palate (तालु)
+        hi: तालु
+    - id: i2
+      sa: ट
+      meaning:
+        en: roof of the mouth, tongue curled back (मूर्धा)
+        hi: मूर्धा, जीभ मुड़ी हुई
+    - id: i3
+      sa: त
+      meaning:
+        en: teeth (दन्त)
+        hi: दन्त (दाँत)
+    - id: i4
+      sa: प
+      meaning:
+        en: lips (ओष्ठ)
+        hi: ओष्ठ (होंठ)
 - id: p2
   kind: practice
   depth: core
@@ -72,6 +111,45 @@ cards:
       text:
         en: lips
         hi: ओष्ठ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A consonant, {{व्यञ्जनम्}}, is a sound made by closing or narrowing the mouth. The door''s five rows follow your
+        mouth from the back to the front: throat, palate, roof, teeth, lips. Say {{क}} {{च}} {{ट}} {{त}} {{प}} and feel the
+        sound move forward.'
+      hi: 'व्यंजन ({{व्यञ्जनम्}}) वह ध्वनि है जो मुँह को बन्द या तंग करके बनती है। द्वार की पाँच पंक्तियाँ मुँह के पिछले भाग
+        से अगले भाग तक चलती हैं: कण्ठ, तालु, मूर्धा, दाँत, होंठ। {{क}} {{च}} {{ट}} {{त}} {{प}} बोलिए और ध्वनि को आगे बढ़ते
+        महसूस कीजिए।'
+    items:
+    - id: i0
+      sa: क
+      meaning:
+        en: throat (कण्ठ)
+        hi: कण्ठ (गला)
+    - id: i1
+      sa: च
+      meaning:
+        en: palate (तालु)
+        hi: तालु
+    - id: i2
+      sa: ट
+      meaning:
+        en: roof of the mouth, tongue curled back (मूर्धा)
+        hi: मूर्धा, जीभ मुड़ी हुई
+    - id: i3
+      sa: त
+      meaning:
+        en: teeth (दन्त)
+        hi: दन्त (दाँत)
+    - id: i4
+      sa: प
+      meaning:
+        en: lips (ओष्ठ)
+        hi: ओष्ठ (होंठ)
 - id: p3
   kind: practice
   depth: core
@@ -90,6 +168,43 @@ cards:
   - correct: true
     sa: घ
   - sa: ङ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every row runs in the same order: plain, breathy, voiced, voiced and breathy, nasal. Put your hand before your
+        mouth: {{ख}} is {{क}} with a puff of air. Touch your throat: {{ग}} buzzes, {{क}} does not.'
+      hi: 'हर पंक्ति एक ही क्रम में चलती है: सादा, साँस वाला, नाद वाला, नाद और साँस वाला, नासिक्य। हाथ मुँह के आगे रखिए: {{ख}}
+        यानी {{क}} पर साँस का झोंका। गले को छुइए: {{ग}} में गूँज है, {{क}} में नहीं।'
+    items:
+    - id: i0
+      sa: क
+      meaning:
+        en: 'plain: k in “skin”, no buzz, no puff'
+        hi: 'अल्पप्राण, अघोष: सादा, न गूँज, न झोंका'
+    - id: i1
+      sa: ख
+      meaning:
+        en: 'breathy: {{क}} with a puff of air'
+        hi: 'महाप्राण, अघोष: {{क}} पर साँस का झोंका'
+    - id: i2
+      sa: ग
+      meaning:
+        en: 'voiced: g in “go”, the throat buzzes'
+        hi: 'अल्पप्राण, घोष: गले में गूँज'
+    - id: i3
+      sa: घ
+      meaning:
+        en: 'voiced and breathy: {{ग}} with a puff'
+        hi: 'महाप्राण, घोष: {{ग}} पर झोंका'
+    - id: i4
+      sa: ङ
+      meaning:
+        en: 'nasal: ng in “sing”'
+        hi: 'नासिक्य: नाक से'
 - id: p4
   kind: practice
   depth: core
@@ -107,6 +222,43 @@ cards:
   - sa: पलम्
   - correct: true
     sa: फलम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every row runs in the same order: plain, breathy, voiced, voiced and breathy, nasal. Put your hand before your
+        mouth: {{ख}} is {{क}} with a puff of air. Touch your throat: {{ग}} buzzes, {{क}} does not.'
+      hi: 'हर पंक्ति एक ही क्रम में चलती है: सादा, साँस वाला, नाद वाला, नाद और साँस वाला, नासिक्य। हाथ मुँह के आगे रखिए: {{ख}}
+        यानी {{क}} पर साँस का झोंका। गले को छुइए: {{ग}} में गूँज है, {{क}} में नहीं।'
+    items:
+    - id: i0
+      sa: क
+      meaning:
+        en: 'plain: k in “skin”, no buzz, no puff'
+        hi: 'अल्पप्राण, अघोष: सादा, न गूँज, न झोंका'
+    - id: i1
+      sa: ख
+      meaning:
+        en: 'breathy: {{क}} with a puff of air'
+        hi: 'महाप्राण, अघोष: {{क}} पर साँस का झोंका'
+    - id: i2
+      sa: ग
+      meaning:
+        en: 'voiced: g in “go”, the throat buzzes'
+        hi: 'अल्पप्राण, घोष: गले में गूँज'
+    - id: i3
+      sa: घ
+      meaning:
+        en: 'voiced and breathy: {{ग}} with a puff'
+        hi: 'महाप्राण, घोष: {{ग}} पर झोंका'
+    - id: i4
+      sa: ङ
+      meaning:
+        en: 'nasal: ng in “sing”'
+        hi: 'नासिक्य: नाक से'
 - id: p5
   kind: practice
   depth: core
@@ -125,6 +277,38 @@ cards:
   - correct: true
     sa: व
   - sa: स
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly.
+        Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}.'
+      hi: '{{य}} {{र}} {{ल}} {{व}} स्वर {{इ}} {{ऋ}} {{ऌ}} {{उ}} की तरह बनते हैं, बस जीभ या होंठ हल्के से छूते हैं। {{इ}} बोलकर
+        {{अ}} में फिसलिए: {{य}} बन गया। {{उ}} बोलकर फिसलिए: {{व}}।'
+    items:
+    - id: i0
+      sa: य
+      meaning:
+        en: 'y in “yes”: palate, like {{इ}}'
+        hi: 'यश के ‘य’ जैसा: तालु, {{इ}} की तरह'
+    - id: i1
+      sa: र
+      meaning:
+        en: 'tapped r: roof of the mouth, like {{ऋ}}'
+        hi: 'जीभ की नोक से ‘र’: मूर्धा, {{ऋ}} की तरह'
+    - id: i2
+      sa: ल
+      meaning:
+        en: 'l: teeth, like {{ऌ}}'
+        hi: '‘ल’: दन्त, {{ऌ}} की तरह'
+    - id: i3
+      sa: व
+      meaning:
+        en: 'between v and w: teeth and lips, like {{उ}}'
+        hi: '‘व’ और ‘w’ के बीच: दाँत और होंठ, {{उ}} की तरह'
 - id: p6
   kind: practice
   depth: core
@@ -155,6 +339,38 @@ cards:
       sa: ल
     right:
       sa: ऌ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly.
+        Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}.'
+      hi: '{{य}} {{र}} {{ल}} {{व}} स्वर {{इ}} {{ऋ}} {{ऌ}} {{उ}} की तरह बनते हैं, बस जीभ या होंठ हल्के से छूते हैं। {{इ}} बोलकर
+        {{अ}} में फिसलिए: {{य}} बन गया। {{उ}} बोलकर फिसलिए: {{व}}।'
+    items:
+    - id: i0
+      sa: य
+      meaning:
+        en: 'y in “yes”: palate, like {{इ}}'
+        hi: 'यश के ‘य’ जैसा: तालु, {{इ}} की तरह'
+    - id: i1
+      sa: र
+      meaning:
+        en: 'tapped r: roof of the mouth, like {{ऋ}}'
+        hi: 'जीभ की नोक से ‘र’: मूर्धा, {{ऋ}} की तरह'
+    - id: i2
+      sa: ल
+      meaning:
+        en: 'l: teeth, like {{ऌ}}'
+        hi: '‘ल’: दन्त, {{ऌ}} की तरह'
+    - id: i3
+      sa: व
+      meaning:
+        en: 'between v and w: teeth and lips, like {{उ}}'
+        hi: '‘व’ और ‘w’ के बीच: दाँत और होंठ, {{उ}} की तरह'
 - id: p7
   kind: practice
   depth: core
@@ -173,6 +389,38 @@ cards:
   - correct: true
     sa: ष
   - sa: स
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{श}} is a soft hiss at the palate, like “sh” in “ship”. {{ष}} is the same hiss with the tongue curled back to
+        the roof. {{स}} is the “s” of “sun”, at the teeth. {{ह}} is a plain breath from the throat.'
+      hi: '{{श}} तालु की कोमल फुफकार है, अंग्रेज़ी ‘sh’ जैसी। {{ष}} वही फुफकार है, पर जीभ मुड़कर मूर्धा पर। {{स}} दाँतों वाला
+        ‘स’ है। {{ह}} गले से निकलती साफ़ साँस है।'
+    items:
+    - id: i0
+      sa: श
+      meaning:
+        en: palate, “sh” in “ship”
+        hi: तालु, ‘श’
+    - id: i1
+      sa: ष
+      meaning:
+        en: roof, tongue curled back
+        hi: मूर्धा, जीभ मुड़ी हुई
+    - id: i2
+      sa: स
+      meaning:
+        en: teeth, “s” in “sun”
+        hi: दन्त, ‘स’
+    - id: i3
+      sa: ह
+      meaning:
+        en: throat, a breath
+        hi: कण्ठ, साँस
 - id: p8
   kind: practice
   depth: core
@@ -193,6 +441,28 @@ cards:
   - ्
   - ा
   - ि
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: 'k alone: the stroke removes {{अ}}'
+        hi: 'अकेला क्: रेखा {{अ}} हटा देती है'
+    - id: i1
+      sa: क
+      meaning:
+        en: k + a = ka
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: k + ā = kā
+        hi: क् + आ = का
 - id: p9
   kind: practice
   depth: core
@@ -210,8 +480,10 @@ cards:
   gate: true
   story:
     success:
-      en: 'You read the name from the door, letter by letter. Chāyikā steps out of the carvings, whole and bright, and smiles: “मुक्ता अस्मि!” Her gold thread lifts like smoke, and she points at the pillar.'
-      hi: 'आप द्वार से अक्षर-अक्षर नाम पढ़ते हैं। छायिका नक्काशी से पूरी और उजली बाहर आती है और मुस्कुराती है: “मुक्ता अस्मि!” उसका सुनहरा धागा धुएँ-सा उठता है, और वह स्तम्भ की ओर इशारा करती है।'
+      en: 'You read the name from the door, letter by letter. Chāyikā steps out of the carvings, whole and bright, and smiles:
+        “मुक्ता अस्मि!” Her gold thread lifts like smoke, and she points at the pillar.'
+      hi: 'आप द्वार से अक्षर-अक्षर नाम पढ़ते हैं। छायिका नक्काशी से पूरी और उजली बाहर आती है और मुस्कुराती है: “मुक्ता अस्मि!”
+        उसका सुनहरा धागा धुएँ-सा उठता है, और वह स्तम्भ की ओर इशारा करती है।'
     failure:
       en: 'The name does not hold. Read it again: {{छा}}, {{यि}}, {{का}}.'
       hi: 'नाम नहीं टिकता। फिर पढ़िए: {{छा}}, {{यि}}, {{का}}।'
@@ -219,3 +491,25 @@ cards:
   - छा
   - यि
   - का
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: क्
+      meaning:
+        en: 'k alone: the stroke removes {{अ}}'
+        hi: 'अकेला क्: रेखा {{अ}} हटा देती है'
+    - id: i1
+      sa: क
+      meaning:
+        en: k + a = ka
+        hi: क् + अ = क
+    - id: i2
+      sa: का
+      meaning:
+        en: k + ā = kā
+        hi: क् + आ = का

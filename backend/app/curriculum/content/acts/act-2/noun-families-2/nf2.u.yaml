@@ -21,7 +21,8 @@ cards:
     hi: गुरु का शब्द
   depth: core
   image:
-    brief: The Ācārya tiptoeing into the library with a lamp and bowing gravely to Śuka who has puffed himself up on a shelf; Dādī suppressing a laugh; the ink-stained blue-black spirit waving its pen at the next shelf.
+    brief: The Ācārya tiptoeing into the library with a lamp and bowing gravely to Śuka who has puffed himself up on a shelf;
+      Dādī suppressing a laugh; the ink-stained blue-black spirit waving its pen at the next shelf.
     alt:
       en: An old teacher bows gravely to a puffed-up parrot in a library
       hi: फूले हुए तोते को गम्भीरता से प्रणाम करते बूढ़े आचार्य
@@ -35,8 +36,11 @@ cards:
     ratio: '4:3'
     id: nf2-u-s1
   narration:
-    en: The poet spirit waves his pen at the next shelf. “Words in -उ,” says Dādī, “the family of the teacher.” Śuka puffs up at once. “गुरुः!” he squawks, and the Ācārya, who has tiptoed in with a lamp to see what the noise is, bows gravely to him.
-    hi: कवि-भूत अपनी कलम से अगली अलमारी की ओर इशारा करता है। “-उ वाले शब्द,” दादी कहती हैं, “गुरु का कुल।” शुक तुरन्त फूल उठता है। “गुरुः!” वह चहकता है, और आचार्य, जो शोर देखने दीपक लिए दबे पाँव अन्दर आए हैं, उसे गम्भीरता से प्रणाम करते हैं।
+    en: The poet spirit waves his pen at the next shelf. “Words in -उ,” says Dādī, “the family of the teacher.” Śuka puffs
+      up at once. “गुरुः!” he squawks, and the Ācārya, who has tiptoed in with a lamp to see what the noise is, bows gravely
+      to him.
+    hi: कवि-भूत अपनी कलम से अगली अलमारी की ओर इशारा करता है। “-उ वाले शब्द,” दादी कहती हैं, “गुरु का कुल।” शुक तुरन्त फूल
+      उठता है। “गुरुः!” वह चहकता है, और आचार्य, जो शोर देखने दीपक लिए दबे पाँव अन्दर आए हैं, उसे गम्भीरता से प्रणाम करते हैं।
   lines:
   - speaker: shuka
     sa: गुरुः
@@ -58,13 +62,53 @@ cards:
   skills:
   - noun.u-stems
   body:
-    en: 'A short -{{उ}} works like -{{इ}}: {{गुरु}} (teacher) and {{भानु}} (sun) are masculine, {{धेनु}} (cow) and {{रज्जु}} (rope) feminine, {{मधु}} (honey) and {{वस्तु}} (thing) neuter. The {{उ}} becomes {{ओ}} or {{अव्}} where {{इ}} became {{ए}} or {{अय्}}.'
-    hi: 'ह्रस्व -{{उ}} -{{इ}} की तरह चलता है: {{गुरु}} और {{भानु}} पुंलिंग हैं, {{धेनु}} और {{रज्जु}} स्त्रीलिंग, {{मधु}} और {{वस्तु}} नपुंसक। जहाँ {{इ}} {{ए}} या {{अय्}} बना, वहाँ {{उ}} {{ओ}} या {{अव्}} बनता है।'
+    en: 'A short -{{उ}} works like -{{इ}}: {{गुरु}} (teacher) and {{भानु}} (sun) are masculine, {{धेनु}} (cow) and {{रज्जु}}
+      (rope) feminine, {{मधु}} (honey) and {{वस्तु}} (thing) neuter. The {{उ}} becomes {{ओ}} or {{अव्}} where {{इ}} became
+      {{ए}} or {{अय्}}.'
+    hi: 'ह्रस्व -{{उ}} -{{इ}} की तरह चलता है: {{गुरु}} और {{भानु}} पुंलिंग हैं, {{धेनु}} और {{रज्जु}} स्त्रीलिंग, {{मधु}}
+      और {{वस्तु}} नपुंसक। जहाँ {{इ}} {{ए}} या {{अय्}} बना, वहाँ {{उ}} {{ओ}} या {{अव्}} बनता है।'
   term:
     sa: उकारान्तम्
     meaning:
       en: a word ending in -उ
       hi: -उ पर समाप्त शब्द
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'A short -{{उ}} works like -{{इ}}: {{गुरु}} (teacher) and {{भानु}} (sun) are masculine, {{धेनु}} (cow) and {{रज्जु}}
+        (rope) feminine, {{मधु}} (honey) and {{वस्तु}} (thing) neuter. The {{उ}} becomes {{ओ}} or {{अव्}} where {{इ}} became
+        {{ए}} or {{अय्}}.'
+      hi: 'ह्रस्व -{{उ}} -{{इ}} की तरह चलता है: {{गुरु}} और {{भानु}} पुंलिंग हैं, {{धेनु}} और {{रज्जु}} स्त्रीलिंग, {{मधु}}
+        और {{वस्तु}} नपुंसक। जहाँ {{इ}} {{ए}} या {{अय्}} बना, वहाँ {{उ}} {{ओ}} या {{अव्}} बनता है।'
+    items:
+    - id: i0
+      sa: उ
+    - id: i1
+      sa: इ
+    - id: i2
+      sa: गुरु
+    - id: i3
+      sa: भानु
+    - id: i4
+      sa: धेनु
+    - id: i5
+      sa: रज्जु
+    - id: i6
+      sa: मधु
+    - id: i7
+      sa: वस्तु
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: अव्
+    - id: i10
+      sa: ए
+    - id: i11
+      sa: अय्
 - id: tb1
   kind: table
   title:
@@ -492,8 +536,10 @@ cards:
         vibhakti: Sambodhana
         vacana: Bahu
   note:
-    en: 'Like {{मति}}, {{धेनु}} has optional singular forms: {{धेनवे}} or {{धेन्वै}}, {{धेनोः}} or {{धेन्वाः}}, {{धेनौ}} or {{धेन्वाम्}}.'
-    hi: '{{मति}} की तरह {{धेनु}} के एकवचन में वैकल्पिक रूप हैं: {{धेनवे}} या {{धेन्वै}}, {{धेनोः}} या {{धेन्वाः}}, {{धेनौ}} या {{धेन्वाम्}}।'
+    en: 'Like {{मति}}, {{धेनु}} has optional singular forms: {{धेनवे}} or {{धेन्वै}}, {{धेनोः}} or {{धेन्वाः}}, {{धेनौ}} or
+      {{धेन्वाम्}}.'
+    hi: '{{मति}} की तरह {{धेनु}} के एकवचन में वैकल्पिक रूप हैं: {{धेनवे}} या {{धेन्वै}}, {{धेनोः}} या {{धेन्वाः}}, {{धेनौ}}
+      या {{धेन्वाम्}}।'
 - id: tb3
   kind: table
   title:
@@ -730,6 +776,43 @@ cards:
       linga: Pum
       blanks: 3
     seed: 2
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A short -{{उ}} works like -{{इ}}: {{गुरु}} (teacher) and {{भानु}} (sun) are masculine, {{धेनु}} (cow) and {{रज्जु}}
+        (rope) feminine, {{मधु}} (honey) and {{वस्तु}} (thing) neuter. The {{उ}} becomes {{ओ}} or {{अव्}} where {{इ}} became
+        {{ए}} or {{अय्}}.'
+      hi: 'ह्रस्व -{{उ}} -{{इ}} की तरह चलता है: {{गुरु}} और {{भानु}} पुंलिंग हैं, {{धेनु}} और {{रज्जु}} स्त्रीलिंग, {{मधु}}
+        और {{वस्तु}} नपुंसक। जहाँ {{इ}} {{ए}} या {{अय्}} बना, वहाँ {{उ}} {{ओ}} या {{अव्}} बनता है।'
+    items:
+    - id: i0
+      sa: उ
+    - id: i1
+      sa: इ
+    - id: i2
+      sa: गुरु
+    - id: i3
+      sa: भानु
+    - id: i4
+      sa: धेनु
+    - id: i5
+      sa: रज्जु
+    - id: i6
+      sa: मधु
+    - id: i7
+      sa: वस्तु
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: अव्
+    - id: i10
+      sa: ए
+    - id: i11
+      sa: अय्
 - id: p2
   kind: practice
   depth: core
@@ -750,6 +833,43 @@ cards:
       linga: Napumsaka
       blanks: 3
     seed: 3
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A short -{{उ}} works like -{{इ}}: {{गुरु}} (teacher) and {{भानु}} (sun) are masculine, {{धेनु}} (cow) and {{रज्जु}}
+        (rope) feminine, {{मधु}} (honey) and {{वस्तु}} (thing) neuter. The {{उ}} becomes {{ओ}} or {{अव्}} where {{इ}} became
+        {{ए}} or {{अय्}}.'
+      hi: 'ह्रस्व -{{उ}} -{{इ}} की तरह चलता है: {{गुरु}} और {{भानु}} पुंलिंग हैं, {{धेनु}} और {{रज्जु}} स्त्रीलिंग, {{मधु}}
+        और {{वस्तु}} नपुंसक। जहाँ {{इ}} {{ए}} या {{अय्}} बना, वहाँ {{उ}} {{ओ}} या {{अव्}} बनता है।'
+    items:
+    - id: i0
+      sa: उ
+    - id: i1
+      sa: इ
+    - id: i2
+      sa: गुरु
+    - id: i3
+      sa: भानु
+    - id: i4
+      sa: धेनु
+    - id: i5
+      sa: रज्जु
+    - id: i6
+      sa: मधु
+    - id: i7
+      sa: वस्तु
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: अव्
+    - id: i10
+      sa: ए
+    - id: i11
+      sa: अय्
 - id: p3
   kind: practice
   depth: core
@@ -768,6 +888,43 @@ cards:
   - sa: गुरुम्
   - correct: true
     sa: गुरो
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A short -{{उ}} works like -{{इ}}: {{गुरु}} (teacher) and {{भानु}} (sun) are masculine, {{धेनु}} (cow) and {{रज्जु}}
+        (rope) feminine, {{मधु}} (honey) and {{वस्तु}} (thing) neuter. The {{उ}} becomes {{ओ}} or {{अव्}} where {{इ}} became
+        {{ए}} or {{अय्}}.'
+      hi: 'ह्रस्व -{{उ}} -{{इ}} की तरह चलता है: {{गुरु}} और {{भानु}} पुंलिंग हैं, {{धेनु}} और {{रज्जु}} स्त्रीलिंग, {{मधु}}
+        और {{वस्तु}} नपुंसक। जहाँ {{इ}} {{ए}} या {{अय्}} बना, वहाँ {{उ}} {{ओ}} या {{अव्}} बनता है।'
+    items:
+    - id: i0
+      sa: उ
+    - id: i1
+      sa: इ
+    - id: i2
+      sa: गुरु
+    - id: i3
+      sa: भानु
+    - id: i4
+      sa: धेनु
+    - id: i5
+      sa: रज्जु
+    - id: i6
+      sa: मधु
+    - id: i7
+      sa: वस्तु
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: अव्
+    - id: i10
+      sa: ए
+    - id: i11
+      sa: अय्
 - id: p4
   kind: practice
   depth: core
@@ -806,6 +963,43 @@ cards:
       text:
         en: 1st or call, many
         hi: प्रथमा या सम्बोधन, अनेक
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A short -{{उ}} works like -{{इ}}: {{गुरु}} (teacher) and {{भानु}} (sun) are masculine, {{धेनु}} (cow) and {{रज्जु}}
+        (rope) feminine, {{मधु}} (honey) and {{वस्तु}} (thing) neuter. The {{उ}} becomes {{ओ}} or {{अव्}} where {{इ}} became
+        {{ए}} or {{अय्}}.'
+      hi: 'ह्रस्व -{{उ}} -{{इ}} की तरह चलता है: {{गुरु}} और {{भानु}} पुंलिंग हैं, {{धेनु}} और {{रज्जु}} स्त्रीलिंग, {{मधु}}
+        और {{वस्तु}} नपुंसक। जहाँ {{इ}} {{ए}} या {{अय्}} बना, वहाँ {{उ}} {{ओ}} या {{अव्}} बनता है।'
+    items:
+    - id: i0
+      sa: उ
+    - id: i1
+      sa: इ
+    - id: i2
+      sa: गुरु
+    - id: i3
+      sa: भानु
+    - id: i4
+      sa: धेनु
+    - id: i5
+      sa: रज्जु
+    - id: i6
+      sa: मधु
+    - id: i7
+      sa: वस्तु
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: अव्
+    - id: i10
+      sa: ए
+    - id: i11
+      sa: अय्
 - id: e1
   kind: explore
   depth: core
@@ -846,8 +1040,10 @@ cards:
   gate: true
   story:
     success:
-      en: '“गुरुणा,” you say, and the Ācārya''s lamp flares. Śuka, with great dignity, repeats it: “गुरुणा सह!” The ink-stained spirit applauds with his pen, scattering sparks of ink.'
-      hi: '“गुरुणा,” आप कहते हैं, और आचार्य का दीपक भड़कता है। शुक अत्यन्त गरिमा से दोहराता है: “गुरुणा सह!” स्याही से सना भूत कलम से ताली बजाता है, स्याही की चिंगारियाँ बिखेरता।'
+      en: '“गुरुणा,” you say, and the Ācārya''s lamp flares. Śuka, with great dignity, repeats it: “गुरुणा सह!” The ink-stained
+        spirit applauds with his pen, scattering sparks of ink.'
+      hi: '“गुरुणा,” आप कहते हैं, और आचार्य का दीपक भड़कता है। शुक अत्यन्त गरिमा से दोहराता है: “गुरुणा सह!” स्याही से सना
+        भूत कलम से ताली बजाता है, स्याही की चिंगारियाँ बिखेरता।'
     failure:
       en: 'The lamp dims. “By a teacher”: the third case, {{गुरुणा}}.'
       hi: 'दीपक मद्धम होता है। ‘गुरु से’: तृतीया, {{गुरुणा}}।'
@@ -856,6 +1052,43 @@ cards:
   - sa: गुरुम्
   - correct: true
     sa: गुरुणा
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A short -{{उ}} works like -{{इ}}: {{गुरु}} (teacher) and {{भानु}} (sun) are masculine, {{धेनु}} (cow) and {{रज्जु}}
+        (rope) feminine, {{मधु}} (honey) and {{वस्तु}} (thing) neuter. The {{उ}} becomes {{ओ}} or {{अव्}} where {{इ}} became
+        {{ए}} or {{अय्}}.'
+      hi: 'ह्रस्व -{{उ}} -{{इ}} की तरह चलता है: {{गुरु}} और {{भानु}} पुंलिंग हैं, {{धेनु}} और {{रज्जु}} स्त्रीलिंग, {{मधु}}
+        और {{वस्तु}} नपुंसक। जहाँ {{इ}} {{ए}} या {{अय्}} बना, वहाँ {{उ}} {{ओ}} या {{अव्}} बनता है।'
+    items:
+    - id: i0
+      sa: उ
+    - id: i1
+      sa: इ
+    - id: i2
+      sa: गुरु
+    - id: i3
+      sa: भानु
+    - id: i4
+      sa: धेनु
+    - id: i5
+      sa: रज्जु
+    - id: i6
+      sa: मधु
+    - id: i7
+      sa: वस्तु
+    - id: i8
+      sa: ओ
+    - id: i9
+      sa: अव्
+    - id: i10
+      sa: ए
+    - id: i11
+      sa: अय्
 - id: sum
   kind: summary
   title:

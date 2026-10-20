@@ -42,6 +42,31 @@ cards:
       text:
         en: neuter
         hi: नपुंसक
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every noun is masculine ({{पुंलिङ्गम्}}), feminine ({{स्त्रीलिङ्गम्}}) or neuter ({{नपुंसकलिङ्गम्}}). The typical
+        endings: {{बालकः}} (masculine), {{बालिका}} (feminine), {{फलम्}} (neuter). People follow their sex; things take whatever
+        gender their word has.'
+      hi: 'हर संज्ञा पुंलिंग, स्त्रीलिंग या नपुंसकलिंग होती है। विशिष्ट प्रत्यय: {{बालकः}} (पुंलिंग), {{बालिका}} (स्त्रीलिंग),
+        {{फलम्}} (नपुंसकलिंग)। मनुष्य अपने लिंग के अनुसार चलते हैं; वस्तुएँ अपने शब्द का लिंग लेती हैं।'
+    items:
+    - id: i0
+      sa: पुंलिङ्गम्
+    - id: i1
+      sa: स्त्रीलिङ्गम्
+    - id: i2
+      sa: नपुंसकलिङ्गम्
+    - id: i3
+      sa: बालकः
+    - id: i4
+      sa: बालिका
+    - id: i5
+      sa: फलम्
 - id: p2
   kind: practice
   depth: core
@@ -60,6 +85,31 @@ cards:
   - correct: true
     sa: कन्या
   - sa: पर्वतः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every noun is masculine ({{पुंलिङ्गम्}}), feminine ({{स्त्रीलिङ्गम्}}) or neuter ({{नपुंसकलिङ्गम्}}). The typical
+        endings: {{बालकः}} (masculine), {{बालिका}} (feminine), {{फलम्}} (neuter). People follow their sex; things take whatever
+        gender their word has.'
+      hi: 'हर संज्ञा पुंलिंग, स्त्रीलिंग या नपुंसकलिंग होती है। विशिष्ट प्रत्यय: {{बालकः}} (पुंलिंग), {{बालिका}} (स्त्रीलिंग),
+        {{फलम्}} (नपुंसकलिंग)। मनुष्य अपने लिंग के अनुसार चलते हैं; वस्तुएँ अपने शब्द का लिंग लेती हैं।'
+    items:
+    - id: i0
+      sa: पुंलिङ्गम्
+    - id: i1
+      sa: स्त्रीलिङ्गम्
+    - id: i2
+      sa: नपुंसकलिङ्गम्
+    - id: i3
+      sa: बालकः
+    - id: i4
+      sa: बालिका
+    - id: i5
+      sa: फलम्
 - id: p3
   kind: practice
   depth: core
@@ -78,6 +128,60 @@ cards:
   - correct: true
     sa: सा
   - sa: तत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{सः}} means “he”, {{सा}} “she”, {{तत्}} “it”. They stand for a masculine, a feminine and a neuter noun: {{सः बालकः}}
+        (that boy), {{सा बालिका}}, {{तत् फलम्}}.'
+      hi: '{{सः}} का अर्थ ‘वह (पुं.)’, {{सा}} ‘वह (स्त्री.)’, {{तत्}} ‘वह (नपुं.)’। ये पुंलिंग, स्त्रीलिंग और नपुंसक संज्ञा
+        के स्थान पर आते हैं: {{सः बालकः}} (वह बालक), {{सा बालिका}}, {{तत् फलम्}}।'
+    items:
+    - id: i0
+      sa: सः
+      meaning:
+        en: he, that
+        hi: वह
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: सा
+      meaning:
+        en: she, that
+        hi: वह (स्त्री)
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: तत्
+      meaning:
+        en: it, that
+        hi: वह (नपुं.)
+      check:
+        type: subanta
+        stem: तद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p4
   kind: practice
   depth: core
@@ -104,6 +208,60 @@ cards:
       sa: तत्
     right:
       sa: फलम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{सः}} means “he”, {{सा}} “she”, {{तत्}} “it”. They stand for a masculine, a feminine and a neuter noun: {{सः बालकः}}
+        (that boy), {{सा बालिका}}, {{तत् फलम्}}.'
+      hi: '{{सः}} का अर्थ ‘वह (पुं.)’, {{सा}} ‘वह (स्त्री.)’, {{तत्}} ‘वह (नपुं.)’। ये पुंलिंग, स्त्रीलिंग और नपुंसक संज्ञा
+        के स्थान पर आते हैं: {{सः बालकः}} (वह बालक), {{सा बालिका}}, {{तत् फलम्}}।'
+    items:
+    - id: i0
+      sa: सः
+      meaning:
+        en: he, that
+        hi: वह
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: सा
+      meaning:
+        en: she, that
+        hi: वह (स्त्री)
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: तत्
+      meaning:
+        en: it, that
+        hi: वह (नपुं.)
+      check:
+        type: subanta
+        stem: तद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p5
   kind: practice
   depth: core
@@ -122,6 +280,60 @@ cards:
   - correct: true
     sa: एतत्
   - sa: एषा
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{एषः}} (masculine), {{एषा}} (feminine), {{एतत्}} (neuter) mean “this”, close by. Use {{सः सा तत्}} for something
+        farther off, or already mentioned.'
+      hi: '{{एषः}} (पुंलिंग), {{एषा}} (स्त्रीलिंग), {{एतत्}} (नपुंसक) का अर्थ ‘यह’, पास का। जो दूर है या पहले कहा जा चुका
+        है, उसके लिए {{सः सा तत्}}।'
+    items:
+    - id: i0
+      sa: एषः
+      meaning:
+        en: this (m)
+        hi: यह (पुं.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: एषा
+      meaning:
+        en: this (f)
+        hi: यह (स्त्री.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: एतत्
+      meaning:
+        en: this (n)
+        hi: यह (नपुं.)
+      check:
+        type: subanta
+        stem: एतद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{एतद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{एतद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p6
   kind: practice
   depth: core
@@ -140,6 +352,114 @@ cards:
   - sa: मधुरा फलम्
   - correct: true
     sa: मधुरं फलम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: मधुरः बालकः।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a sweet boy
+        hi: एक मधुर बालक
+      words:
+      - sa: मधुरः
+        gloss:
+          en: sweet
+          hi: मीठा
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मधुरः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: sweet
+        hi: मीठा
+      check:
+        type: subanta
+        stem: मधुर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मधुर}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मधुर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: बालकः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: A describing word, an adjective ({{विशेषणम्}}), agrees with its noun in gender, number and case. {{मधुरः}} {{बालकः}},
+          {{मधुरा}} {{बालिका}}, {{मधुरम्}} {{फलम्}}.
+        hi: वर्णन करने वाला शब्द, विशेषण, अपनी संज्ञा से लिंग, वचन और विभक्ति में मेल खाता है। {{मधुरः}} {{बालकः}}, {{मधुरा}}
+          {{बालिका}}, {{मधुरम्}} {{फलम्}}।
+    - id: i5
+      sa: मधुरः बालकः।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a sweet boy
+        hi: एक मधुर बालक
+      words:
+      - sa: मधुरः
+        gloss:
+          en: sweet
+          hi: मीठा
+        check:
+          type: subanta
+          stem: मधुर
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
 - id: p7
   kind: practice
   depth: core
@@ -166,6 +486,56 @@ cards:
       sa: बालकः
     right:
       sa: बालिका
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: लता
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: a creeper
+        hi: लता
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'Many feminine words end in {{आ}}: {{लता}} (creeper), {{कन्या}} (girl), {{बालिका}}, {{माला}} (garland). You can
+          make a feminine from a masculine by adding {{आ}}: {{छात्रः}} → {{छात्रा}}.'
+        hi: 'अनेक स्त्रीलिंग शब्द {{आ}} पर समाप्त होते हैं: {{लता}}, {{कन्या}}, {{बालिका}}, {{माला}}। पुंलिंग में {{आ}} जोड़कर
+          स्त्रीलिंग बनाया जा सकता है: {{छात्रः}} → {{छात्रा}}।'
+    - id: i3
+      sa: लता
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: a creeper
+        hi: लता
+      check:
+        type: subanta
+        stem: लता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{लता}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{लता}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p8
   kind: practice
   depth: core
@@ -184,8 +554,12 @@ cards:
   gate: true
   story:
     success:
-      en: '“सा मधुरा बालिका छात्रा,” you say, and every puppet in the booth turns to bow. The multi-coloured spirit stops flickering and glows one clear gold: “सः मुक्तः, सा मुक्ता, तत् मुक्तम्.” He points to the market stalls: “आपणे फलानि सन्ति।”'
-      hi: '“सा मधुरा बालिका छात्रा,” आप कहते हैं, और मंडली की हर कठपुतली झुककर प्रणाम करती है। इन्द्रधनुषी भूत झिलमिलाना छोड़ एक साफ़ सुनहरे रंग में दमकता है: “सः मुक्तः, सा मुक्ता, तत् मुक्तम्।” वह बाज़ार की दुकानों की ओर इशारा करता है: “आपणे फलानि सन्ति।”'
+      en: '“सा मधुरा बालिका छात्रा,” you say, and every puppet in the booth turns to bow. The multi-coloured spirit stops
+        flickering and glows one clear gold: “सः मुक्तः, सा मुक्ता, तत् मुक्तम्.” He points to the market stalls: “आपणे फलानि
+        सन्ति।”'
+      hi: '“सा मधुरा बालिका छात्रा,” आप कहते हैं, और मंडली की हर कठपुतली झुककर प्रणाम करती है। इन्द्रधनुषी भूत झिलमिलाना छोड़
+        एक साफ़ सुनहरे रंग में दमकता है: “सः मुक्तः, सा मुक्ता, तत् मुक्तम्।” वह बाज़ार की दुकानों की ओर इशारा करता है: “आपणे
+        फलानि सन्ति।”'
     failure:
       en: The booth waits. Four feminine words in a row.
       hi: मंडली प्रतीक्षा करती है। एक पंक्ति में चार स्त्रीलिंग शब्द।
@@ -194,3 +568,57 @@ cards:
   - मधुरा
   - बालिका
   - छात्रा
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{सः}} means “he”, {{सा}} “she”, {{तत्}} “it”. They stand for a masculine, a feminine and a neuter noun: {{सः बालकः}}
+        (that boy), {{सा बालिका}}, {{तत् फलम्}}.'
+      hi: '{{सः}} का अर्थ ‘वह (पुं.)’, {{सा}} ‘वह (स्त्री.)’, {{तत्}} ‘वह (नपुं.)’। ये पुंलिंग, स्त्रीलिंग और नपुंसक संज्ञा
+        के स्थान पर आते हैं: {{सः बालकः}} (वह बालक), {{सा बालिका}}, {{तत् फलम्}}।'
+    items:
+    - id: i0
+      sa: सः
+      meaning:
+        en: he, that
+        hi: वह
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: सा
+      meaning:
+        en: she, that
+        hi: वह (स्त्री)
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: तत्
+      meaning:
+        en: it, that
+        hi: वह (नपुं.)
+      check:
+        type: subanta
+        stem: तद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'

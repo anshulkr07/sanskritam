@@ -24,7 +24,8 @@ cards:
     hi: बारहवीं प्रतिमा
   depth: core
   image:
-    brief: The twelfth statue humming with her mouth closed and her hand lightly against her nose, a hint of resonance; Śuka listening with a tilted head; Dādī smiling; lamplight on carved stone.
+    brief: The twelfth statue humming with her mouth closed and her hand lightly against her nose, a hint of resonance; Śuka
+      listening with a tilted head; Dādī smiling; lamplight on carved stone.
     alt:
       en: A statue hums with her hand lightly at her nose while a parrot listens
       hi: मुँह बन्द कर गुनगुनाती प्रतिमा, हाथ नाक के पास; सुनता तोता
@@ -38,8 +39,12 @@ cards:
     ratio: '4:3'
     id: cs-nasal-s1
   narration:
-    en: 'The twelfth statue hums. “सन्मार्गः,” she says: “the good road.” “वाङ्मयम्”: “literature.” “संस्कृतम्”: “Sanskrit.” Dādī: “The last of the three. When a stop meets a nasal, it becomes a nasal too. And a final म् before a consonant turns into a dot, the anusvāra, ं, a nasal in the same place as the sound that follows.”'
-    hi: 'बारहवीं प्रतिमा गुनगुनाती है। “सन्मार्गः,” वह कहती है: “भली राह।” “वाङ्मयम्”: “साहित्य।” “संस्कृतम्”: “संस्कृत।” दादी: “तीनों में अन्तिम। जब कोई स्पर्श किसी नासिक्य से मिलता है, तो वह भी नासिक्य बन जाता है। और व्यंजन से पहले अन्त का म् एक बिन्दु बन जाता है, अनुस्वार, ं, अगली ध्वनि के स्थान की नासिक्य ध्वनि।”'
+    en: 'The twelfth statue hums. “सन्मार्गः,” she says: “the good road.” “वाङ्मयम्”: “literature.” “संस्कृतम्”: “Sanskrit.”
+      Dādī: “The last of the three. When a stop meets a nasal, it becomes a nasal too. And a final म् before a consonant turns
+      into a dot, the anusvāra, ं, a nasal in the same place as the sound that follows.”'
+    hi: 'बारहवीं प्रतिमा गुनगुनाती है। “सन्मार्गः,” वह कहती है: “भली राह।” “वाङ्मयम्”: “साहित्य।” “संस्कृतम्”: “संस्कृत।”
+      दादी: “तीनों में अन्तिम। जब कोई स्पर्श किसी नासिक्य से मिलता है, तो वह भी नासिक्य बन जाता है। और व्यंजन से पहले अन्त
+      का म् एक बिन्दु बन जाता है, अनुस्वार, ं, अगली ध्वनि के स्थान की नासिक्य ध्वनि।”'
   lines:
   - speaker: vyanjanika
     sa: सन्मार्गः
@@ -60,13 +65,57 @@ cards:
   skills:
   - sandhi.nasal
   body:
-    en: 'A stop before a nasal ({{न}} or {{म}}) becomes the nasal of its own class: {{तत् + मात्रम्}} gives {{तन्मात्रम्}}; {{वाक् + मयम्}} gives {{वाङ्मयम्}}. A final {{म्}} before a consonant becomes the dot {{ं}}: {{त्वम् + गच्छसि}} gives {{त्वं गच्छसि}}. Inside {{संस्कृतम्}} it is the same. Before a vowel {{म्}} stays: {{अहम् + अपि}} gives {{अहमपि}}.'
-    hi: '{{न}} या {{म}} से पहले स्पर्श अपने वर्ग का नासिक्य बन जाता है: {{तत् + मात्रम्}} से {{तन्मात्रम्}}; {{वाक् + मयम्}} से {{वाङ्मयम्}}। व्यंजन से पहले अन्त का {{म्}} बिन्दु {{ं}} बन जाता है: {{त्वम् + गच्छसि}} से {{त्वं गच्छसि}}। {{संस्कृतम्}} में भी यही है। स्वर से पहले {{म्}} रहता है: {{अहम् + अपि}} से {{अहमपि}}।'
+    en: 'A stop before a nasal ({{न}} or {{म}}) becomes the nasal of its own class: {{तत् + मात्रम्}} gives {{तन्मात्रम्}};
+      {{वाक् + मयम्}} gives {{वाङ्मयम्}}. A final {{म्}} before a consonant becomes the dot {{ं}}: {{त्वम् + गच्छसि}} gives
+      {{त्वं गच्छसि}}. Inside {{संस्कृतम्}} it is the same. Before a vowel {{म्}} stays: {{अहम् + अपि}} gives {{अहमपि}}.'
+    hi: '{{न}} या {{म}} से पहले स्पर्श अपने वर्ग का नासिक्य बन जाता है: {{तत् + मात्रम्}} से {{तन्मात्रम्}}; {{वाक् + मयम्}}
+      से {{वाङ्मयम्}}। व्यंजन से पहले अन्त का {{म्}} बिन्दु {{ं}} बन जाता है: {{त्वम् + गच्छसि}} से {{त्वं गच्छसि}}। {{संस्कृतम्}}
+      में भी यही है। स्वर से पहले {{म्}} रहता है: {{अहम् + अपि}} से {{अहमपि}}।'
   term:
     sa: अनुस्वारः
     meaning:
       en: the nasal dot ं
       hi: नासिक्य बिन्दु ं
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'A stop before a nasal ({{न}} or {{म}}) becomes the nasal of its own class: {{तत् + मात्रम्}} gives {{तन्मात्रम्}};
+        {{वाक् + मयम्}} gives {{वाङ्मयम्}}. A final {{म्}} before a consonant becomes the dot {{ं}}: {{त्वम् + गच्छसि}} gives
+        {{त्वं गच्छसि}}. Inside {{संस्कृतम्}} it is the same. Before a vowel {{म्}} stays: {{अहम् + अपि}} gives {{अहमपि}}.'
+      hi: '{{न}} या {{म}} से पहले स्पर्श अपने वर्ग का नासिक्य बन जाता है: {{तत् + मात्रम्}} से {{तन्मात्रम्}}; {{वाक् + मयम्}}
+        से {{वाङ्मयम्}}। व्यंजन से पहले अन्त का {{म्}} बिन्दु {{ं}} बन जाता है: {{त्वम् + गच्छसि}} से {{त्वं गच्छसि}}। {{संस्कृतम्}}
+        में भी यही है। स्वर से पहले {{म्}} रहता है: {{अहम् + अपि}} से {{अहमपि}}।'
+    items:
+    - id: i0
+      sa: न
+    - id: i1
+      sa: म
+    - id: i2
+      sa: तत् + मात्रम्
+    - id: i3
+      sa: तन्मात्रम्
+    - id: i4
+      sa: वाक् + मयम्
+    - id: i5
+      sa: वाङ्मयम्
+    - id: i6
+      sa: म्
+    - id: i7
+      sa: ं
+    - id: i8
+      sa: त्वम् + गच्छसि
+    - id: i9
+      sa: त्वं गच्छसि
+    - id: i10
+      sa: संस्कृतम्
+    - id: i11
+      sa: अहम् + अपि
+    - id: i12
+      sa: अहमपि
 - id: tb1
   kind: table
   title:
@@ -188,6 +237,46 @@ cards:
     sa: सत् + मार्गः
   - sa: सः + मार्गः
   - sa: सस् + मार्गः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A stop before a nasal ({{न}} or {{म}}) becomes the nasal of its own class: {{तत् + मात्रम्}} gives {{तन्मात्रम्}};
+        {{वाक् + मयम्}} gives {{वाङ्मयम्}}. A final {{म्}} before a consonant becomes the dot {{ं}}: {{त्वम् + गच्छसि}} gives
+        {{त्वं गच्छसि}}. Inside {{संस्कृतम्}} it is the same. Before a vowel {{म्}} stays: {{अहम् + अपि}} gives {{अहमपि}}.'
+      hi: '{{न}} या {{म}} से पहले स्पर्श अपने वर्ग का नासिक्य बन जाता है: {{तत् + मात्रम्}} से {{तन्मात्रम्}}; {{वाक् + मयम्}}
+        से {{वाङ्मयम्}}। व्यंजन से पहले अन्त का {{म्}} बिन्दु {{ं}} बन जाता है: {{त्वम् + गच्छसि}} से {{त्वं गच्छसि}}। {{संस्कृतम्}}
+        में भी यही है। स्वर से पहले {{म्}} रहता है: {{अहम् + अपि}} से {{अहमपि}}।'
+    items:
+    - id: i0
+      sa: न
+    - id: i1
+      sa: म
+    - id: i2
+      sa: तत् + मात्रम्
+    - id: i3
+      sa: तन्मात्रम्
+    - id: i4
+      sa: वाक् + मयम्
+    - id: i5
+      sa: वाङ्मयम्
+    - id: i6
+      sa: म्
+    - id: i7
+      sa: ं
+    - id: i8
+      sa: त्वम् + गच्छसि
+    - id: i9
+      sa: त्वं गच्छसि
+    - id: i10
+      sa: संस्कृतम्
+    - id: i11
+      sa: अहम् + अपि
+    - id: i12
+      sa: अहमपि
 - id: p2
   kind: practice
   depth: core
@@ -206,6 +295,46 @@ cards:
   - sa: सद्मार्गः
   - correct: true
     sa: सन्मार्गः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A stop before a nasal ({{न}} or {{म}}) becomes the nasal of its own class: {{तत् + मात्रम्}} gives {{तन्मात्रम्}};
+        {{वाक् + मयम्}} gives {{वाङ्मयम्}}. A final {{म्}} before a consonant becomes the dot {{ं}}: {{त्वम् + गच्छसि}} gives
+        {{त्वं गच्छसि}}. Inside {{संस्कृतम्}} it is the same. Before a vowel {{म्}} stays: {{अहम् + अपि}} gives {{अहमपि}}.'
+      hi: '{{न}} या {{म}} से पहले स्पर्श अपने वर्ग का नासिक्य बन जाता है: {{तत् + मात्रम्}} से {{तन्मात्रम्}}; {{वाक् + मयम्}}
+        से {{वाङ्मयम्}}। व्यंजन से पहले अन्त का {{म्}} बिन्दु {{ं}} बन जाता है: {{त्वम् + गच्छसि}} से {{त्वं गच्छसि}}। {{संस्कृतम्}}
+        में भी यही है। स्वर से पहले {{म्}} रहता है: {{अहम् + अपि}} से {{अहमपि}}।'
+    items:
+    - id: i0
+      sa: न
+    - id: i1
+      sa: म
+    - id: i2
+      sa: तत् + मात्रम्
+    - id: i3
+      sa: तन्मात्रम्
+    - id: i4
+      sa: वाक् + मयम्
+    - id: i5
+      sa: वाङ्मयम्
+    - id: i6
+      sa: म्
+    - id: i7
+      sa: ं
+    - id: i8
+      sa: त्वम् + गच्छसि
+    - id: i9
+      sa: त्वं गच्छसि
+    - id: i10
+      sa: संस्कृतम्
+    - id: i11
+      sa: अहम् + अपि
+    - id: i12
+      sa: अहमपि
 - id: p3
   kind: practice
   depth: core
@@ -226,6 +355,46 @@ cards:
   - सारः
   - सम्
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A stop before a nasal ({{न}} or {{म}}) becomes the nasal of its own class: {{तत् + मात्रम्}} gives {{तन्मात्रम्}};
+        {{वाक् + मयम्}} gives {{वाङ्मयम्}}. A final {{म्}} before a consonant becomes the dot {{ं}}: {{त्वम् + गच्छसि}} gives
+        {{त्वं गच्छसि}}. Inside {{संस्कृतम्}} it is the same. Before a vowel {{म्}} stays: {{अहम् + अपि}} gives {{अहमपि}}.'
+      hi: '{{न}} या {{म}} से पहले स्पर्श अपने वर्ग का नासिक्य बन जाता है: {{तत् + मात्रम्}} से {{तन्मात्रम्}}; {{वाक् + मयम्}}
+        से {{वाङ्मयम्}}। व्यंजन से पहले अन्त का {{म्}} बिन्दु {{ं}} बन जाता है: {{त्वम् + गच्छसि}} से {{त्वं गच्छसि}}। {{संस्कृतम्}}
+        में भी यही है। स्वर से पहले {{म्}} रहता है: {{अहम् + अपि}} से {{अहमपि}}।'
+    items:
+    - id: i0
+      sa: न
+    - id: i1
+      sa: म
+    - id: i2
+      sa: तत् + मात्रम्
+    - id: i3
+      sa: तन्मात्रम्
+    - id: i4
+      sa: वाक् + मयम्
+    - id: i5
+      sa: वाङ्मयम्
+    - id: i6
+      sa: म्
+    - id: i7
+      sa: ं
+    - id: i8
+      sa: त्वम् + गच्छसि
+    - id: i9
+      sa: त्वं गच्छसि
+    - id: i10
+      sa: संस्कृतम्
+    - id: i11
+      sa: अहम् + अपि
+    - id: i12
+      sa: अहमपि
 - id: p4
   kind: practice
   depth: core
@@ -256,6 +425,46 @@ cards:
       sa: संस्कृतम्
     right:
       sa: सम् + स्कृतम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A stop before a nasal ({{न}} or {{म}}) becomes the nasal of its own class: {{तत् + मात्रम्}} gives {{तन्मात्रम्}};
+        {{वाक् + मयम्}} gives {{वाङ्मयम्}}. A final {{म्}} before a consonant becomes the dot {{ं}}: {{त्वम् + गच्छसि}} gives
+        {{त्वं गच्छसि}}. Inside {{संस्कृतम्}} it is the same. Before a vowel {{म्}} stays: {{अहम् + अपि}} gives {{अहमपि}}.'
+      hi: '{{न}} या {{म}} से पहले स्पर्श अपने वर्ग का नासिक्य बन जाता है: {{तत् + मात्रम्}} से {{तन्मात्रम्}}; {{वाक् + मयम्}}
+        से {{वाङ्मयम्}}। व्यंजन से पहले अन्त का {{म्}} बिन्दु {{ं}} बन जाता है: {{त्वम् + गच्छसि}} से {{त्वं गच्छसि}}। {{संस्कृतम्}}
+        में भी यही है। स्वर से पहले {{म्}} रहता है: {{अहम् + अपि}} से {{अहमपि}}।'
+    items:
+    - id: i0
+      sa: न
+    - id: i1
+      sa: म
+    - id: i2
+      sa: तत् + मात्रम्
+    - id: i3
+      sa: तन्मात्रम्
+    - id: i4
+      sa: वाक् + मयम्
+    - id: i5
+      sa: वाङ्मयम्
+    - id: i6
+      sa: म्
+    - id: i7
+      sa: ं
+    - id: i8
+      sa: त्वम् + गच्छसि
+    - id: i9
+      sa: त्वं गच्छसि
+    - id: i10
+      sa: संस्कृतम्
+    - id: i11
+      sa: अहम् + अपि
+    - id: i12
+      sa: अहमपि
 - id: e1
   kind: explore
   depth: core
@@ -329,8 +538,14 @@ cards:
   gate: true
   story:
     success:
-      en: '“संस्कृतम्,” you say, “perfected speech,” and the twelfth statue stops humming. In the quiet, she says it, and each of the twelve statues you have freed or heard repeats it from its plinth: संस्कृतम्, संस्कृतम्. It goes round the hall, not as a word but as a long soft note, like a bell being rung a very long way off. Vyañjanikā, the consonant statue, is the third to step down.'
-      hi: '“संस्कृतम्,” आप कहते हैं, “परिष्कृत वाणी,” और बारहवीं प्रतिमा गुनगुनाना बन्द करती है। शान्ति में वह उसे कहती है, और जिन बारह प्रतिमाओं को आपने मुक्त किया या सुना, हर एक अपने आसन से उसे दोहराती है: संस्कृतम्, संस्कृतम्। वह कक्ष का चक्कर लगाता है, शब्द नहीं बल्कि लम्बे कोमल स्वर की तरह, बहुत दूर बजती घण्टी की तरह। व्यञ्जनिका, व्यञ्जन-प्रतिमा, तीसरी है जो उतरती है।'
+      en: '“संस्कृतम्,” you say, “perfected speech,” and the twelfth statue stops humming. In the quiet, she says it, and
+        each of the twelve statues you have freed or heard repeats it from its plinth: संस्कृतम्, संस्कृतम्. It goes round
+        the hall, not as a word but as a long soft note, like a bell being rung a very long way off. Vyañjanikā, the consonant
+        statue, is the third to step down.'
+      hi: '“संस्कृतम्,” आप कहते हैं, “परिष्कृत वाणी,” और बारहवीं प्रतिमा गुनगुनाना बन्द करती है। शान्ति में वह उसे कहती है,
+        और जिन बारह प्रतिमाओं को आपने मुक्त किया या सुना, हर एक अपने आसन से उसे दोहराती है: संस्कृतम्, संस्कृतम्। वह कक्ष
+        का चक्कर लगाता है, शब्द नहीं बल्कि लम्बे कोमल स्वर की तरह, बहुत दूर बजती घण्टी की तरह। व्यञ्जनिका, व्यञ्जन-प्रतिमा,
+        तीसरी है जो उतरती है।'
     failure:
       en: 'The hum continues. {{म्}} before a consonant becomes {{ं}}: {{संस्कृतम्}}.'
       hi: 'गुनगुनाहट चलती रहती है। व्यंजन से पहले {{म्}} बनता है {{ं}}: {{संस्कृतम्}}।'
@@ -339,6 +554,46 @@ cards:
   - sa: सनस्कृतम्
   - correct: true
     sa: संस्कृतम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A stop before a nasal ({{न}} or {{म}}) becomes the nasal of its own class: {{तत् + मात्रम्}} gives {{तन्मात्रम्}};
+        {{वाक् + मयम्}} gives {{वाङ्मयम्}}. A final {{म्}} before a consonant becomes the dot {{ं}}: {{त्वम् + गच्छसि}} gives
+        {{त्वं गच्छसि}}. Inside {{संस्कृतम्}} it is the same. Before a vowel {{म्}} stays: {{अहम् + अपि}} gives {{अहमपि}}.'
+      hi: '{{न}} या {{म}} से पहले स्पर्श अपने वर्ग का नासिक्य बन जाता है: {{तत् + मात्रम्}} से {{तन्मात्रम्}}; {{वाक् + मयम्}}
+        से {{वाङ्मयम्}}। व्यंजन से पहले अन्त का {{म्}} बिन्दु {{ं}} बन जाता है: {{त्वम् + गच्छसि}} से {{त्वं गच्छसि}}। {{संस्कृतम्}}
+        में भी यही है। स्वर से पहले {{म्}} रहता है: {{अहम् + अपि}} से {{अहमपि}}।'
+    items:
+    - id: i0
+      sa: न
+    - id: i1
+      sa: म
+    - id: i2
+      sa: तत् + मात्रम्
+    - id: i3
+      sa: तन्मात्रम्
+    - id: i4
+      sa: वाक् + मयम्
+    - id: i5
+      sa: वाङ्मयम्
+    - id: i6
+      sa: म्
+    - id: i7
+      sa: ं
+    - id: i8
+      sa: त्वम् + गच्छसि
+    - id: i9
+      sa: त्वं गच्छसि
+    - id: i10
+      sa: संस्कृतम्
+    - id: i11
+      sa: अहम् + अपि
+    - id: i12
+      sa: अहमपि
 - id: pn
   kind: teach
   title:
@@ -352,8 +607,38 @@ cards:
   - 8.3.23
   - 8.4.58
   body:
-    en: 'Sūtra 8.4.45, {{यरोऽनुनासिकेऽनुनासिको वा}}, lets a stop before a nasal become the nasal of its class. 8.3.23, {{मोऽनुस्वारः}}, turns a final {{म्}} before a consonant into the dot. 8.4.58, {{अनुस्वारस्य ययि परसवर्णः}}, lets that dot take the nasal of the following class: {{संकल्पः}} or {{सङ्कल्पः}}.'
-    hi: 'सूत्र 8.4.45, {{यरोऽनुनासिकेऽनुनासिको वा}}, नासिक्य से पहले स्पर्श को अपने वर्ग का नासिक्य बनने देता है। 8.3.23, {{मोऽनुस्वारः}}, व्यंजन से पहले अन्त के {{म्}} को बिन्दु बनाता है। 8.4.58, {{अनुस्वारस्य ययि परसवर्णः}}, उस बिन्दु को आगे के वर्ग का नासिक्य लेने देता है: {{संकल्पः}} या {{सङ्कल्पः}}।'
+    en: 'Sūtra 8.4.45, {{यरोऽनुनासिकेऽनुनासिको वा}}, lets a stop before a nasal become the nasal of its class. 8.3.23, {{मोऽनुस्वारः}},
+      turns a final {{म्}} before a consonant into the dot. 8.4.58, {{अनुस्वारस्य ययि परसवर्णः}}, lets that dot take the nasal
+      of the following class: {{संकल्पः}} or {{सङ्कल्पः}}.'
+    hi: 'सूत्र 8.4.45, {{यरोऽनुनासिकेऽनुनासिको वा}}, नासिक्य से पहले स्पर्श को अपने वर्ग का नासिक्य बनने देता है। 8.3.23,
+      {{मोऽनुस्वारः}}, व्यंजन से पहले अन्त के {{म्}} को बिन्दु बनाता है। 8.4.58, {{अनुस्वारस्य ययि परसवर्णः}}, उस बिन्दु को
+      आगे के वर्ग का नासिक्य लेने देता है: {{संकल्पः}} या {{सङ्कल्पः}}।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Sūtra 8.4.45, {{यरोऽनुनासिकेऽनुनासिको वा}}, lets a stop before a nasal become the nasal of its class. 8.3.23, {{मोऽनुस्वारः}},
+        turns a final {{म्}} before a consonant into the dot. 8.4.58, {{अनुस्वारस्य ययि परसवर्णः}}, lets that dot take the
+        nasal of the following class: {{संकल्पः}} or {{सङ्कल्पः}}.'
+      hi: 'सूत्र 8.4.45, {{यरोऽनुनासिकेऽनुनासिको वा}}, नासिक्य से पहले स्पर्श को अपने वर्ग का नासिक्य बनने देता है। 8.3.23,
+        {{मोऽनुस्वारः}}, व्यंजन से पहले अन्त के {{म्}} को बिन्दु बनाता है। 8.4.58, {{अनुस्वारस्य ययि परसवर्णः}}, उस बिन्दु
+        को आगे के वर्ग का नासिक्य लेने देता है: {{संकल्पः}} या {{सङ्कल्पः}}।'
+    items:
+    - id: i0
+      sa: यरोऽनुनासिकेऽनुनासिको वा
+    - id: i1
+      sa: मोऽनुस्वारः
+    - id: i2
+      sa: म्
+    - id: i3
+      sa: अनुस्वारस्य ययि परसवर्णः
+    - id: i4
+      sa: संकल्पः
+    - id: i5
+      sa: सङ्कल्पः
 - id: sum
   kind: summary
   title:

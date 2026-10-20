@@ -28,6 +28,28 @@ cards:
     sa: पदच्छेदः
   - sa: अन्वयः
   - sa: अर्थः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पदच्छेदः
+      meaning:
+        en: split the joins
+        hi: जोड़ खोलना
+    - id: i1
+      sa: अन्वयः
+      meaning:
+        en: prose order
+        hi: गद्य का क्रम
+    - id: i2
+      sa: अर्थः
+      meaning:
+        en: the meaning
+        hi: अर्थ
 - id: p2
   kind: practice
   depth: core
@@ -46,6 +68,28 @@ cards:
     sa: विनयात् + याति
   - sa: विनयान् + याति
   - sa: विनयाः + याति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पदच्छेदः
+      meaning:
+        en: split the joins
+        hi: जोड़ खोलना
+    - id: i1
+      sa: अन्वयः
+      meaning:
+        en: prose order
+        hi: गद्य का क्रम
+    - id: i2
+      sa: अर्थः
+      meaning:
+        en: the meaning
+        hi: अर्थ
 - id: p3
   kind: practice
   depth: core
@@ -64,6 +108,28 @@ cards:
     params:
       sentence: विद्या विनयं ददाति
     seed: 25
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पदच्छेदः
+      meaning:
+        en: split the joins
+        hi: जोड़ खोलना
+    - id: i1
+      sa: अन्वयः
+      meaning:
+        en: prose order
+        hi: गद्य का क्रम
+    - id: i2
+      sa: अर्थः
+      meaning:
+        en: the meaning
+        hi: अर्थ
 - id: p4
   kind: practice
   depth: core
@@ -82,6 +148,28 @@ cards:
   - correct: true
     sa: ददाति
   - sa: विनयम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पदच्छेदः
+      meaning:
+        en: split the joins
+        hi: जोड़ खोलना
+    - id: i1
+      sa: अन्वयः
+      meaning:
+        en: prose order
+        hi: गद्य का क्रम
+    - id: i2
+      sa: अर्थः
+      meaning:
+        en: the meaning
+        hi: अर्थ
 - id: p5
   kind: practice
   depth: core
@@ -106,6 +194,28 @@ cards:
   - text:
       en: One loses worthiness
       hi: पात्रता खो जाती है
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पदच्छेदः
+      meaning:
+        en: split the joins
+        hi: जोड़ खोलना
+    - id: i1
+      sa: अन्वयः
+      meaning:
+        en: prose order
+        hi: गद्य का क्रम
+    - id: i2
+      sa: अर्थः
+      meaning:
+        en: the meaning
+        hi: अर्थ
 - id: p6
   kind: practice
   depth: core
@@ -132,6 +242,28 @@ cards:
       sa: मा गृधः
     right:
       sa: गृधिं मा कार्षीः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: A commentary ({{टीका}}) walks along the verse. It repeats a word, gives another with the same meaning, and closes
+        with {{इत्यर्थः}}, “that is the meaning”. It asks {{कस्मात्}}, “why?”, and answers. {{अथवा}}, “or else”, offers a
+        second reading. Read it for the sense, not word for word.
+      hi: टीका श्लोक के साथ-साथ चलती है। वह एक शब्द दोहराती है, उसी अर्थ का दूसरा शब्द देती है, और {{इत्यर्थः}}, ‘यही अर्थ
+        है’, पर बन्द करती है। वह {{कस्मात्}}, ‘क्यों?’, पूछती है और उत्तर देती है। {{अथवा}}, ‘या फिर’, दूसरा पाठ देता है।
+        उसे अर्थ के लिए पढ़िए, शब्द-दर-शब्द नहीं।
+    items:
+    - id: i0
+      sa: टीका
+    - id: i1
+      sa: इत्यर्थः
+    - id: i2
+      sa: कस्मात्
+    - id: i3
+      sa: अथवा
 - id: p7
   kind: practice
   depth: core
@@ -156,6 +288,28 @@ cards:
   - text:
       en: The verse ends here
       hi: श्लोक यहाँ समाप्त होता है
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: A commentary ({{टीका}}) walks along the verse. It repeats a word, gives another with the same meaning, and closes
+        with {{इत्यर्थः}}, “that is the meaning”. It asks {{कस्मात्}}, “why?”, and answers. {{अथवा}}, “or else”, offers a
+        second reading. Read it for the sense, not word for word.
+      hi: टीका श्लोक के साथ-साथ चलती है। वह एक शब्द दोहराती है, उसी अर्थ का दूसरा शब्द देती है, और {{इत्यर्थः}}, ‘यही अर्थ
+        है’, पर बन्द करती है। वह {{कस्मात्}}, ‘क्यों?’, पूछती है और उत्तर देती है। {{अथवा}}, ‘या फिर’, दूसरा पाठ देता है।
+        उसे अर्थ के लिए पढ़िए, शब्द-दर-शब्द नहीं।
+    items:
+    - id: i0
+      sa: टीका
+    - id: i1
+      sa: इत्यर्थः
+    - id: i2
+      sa: कस्मात्
+    - id: i3
+      sa: अथवा
 - id: p8
   kind: practice
   depth: core
@@ -180,6 +334,28 @@ cards:
     text:
       en: a reason
       hi: एक कारण
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: A commentary ({{टीका}}) walks along the verse. It repeats a word, gives another with the same meaning, and closes
+        with {{इत्यर्थः}}, “that is the meaning”. It asks {{कस्मात्}}, “why?”, and answers. {{अथवा}}, “or else”, offers a
+        second reading. Read it for the sense, not word for word.
+      hi: टीका श्लोक के साथ-साथ चलती है। वह एक शब्द दोहराती है, उसी अर्थ का दूसरा शब्द देती है, और {{इत्यर्थः}}, ‘यही अर्थ
+        है’, पर बन्द करती है। वह {{कस्मात्}}, ‘क्यों?’, पूछती है और उत्तर देती है। {{अथवा}}, ‘या फिर’, दूसरा पाठ देता है।
+        उसे अर्थ के लिए पढ़िए, शब्द-दर-शब्द नहीं।
+    items:
+    - id: i0
+      sa: टीका
+    - id: i1
+      sa: इत्यर्थः
+    - id: i2
+      sa: कस्मात्
+    - id: i3
+      sa: अथवा
 - id: p9
   kind: practice
   depth: core
@@ -196,8 +372,14 @@ cards:
   gate: true
   story:
     success:
-      en: '“पदच्छेदः, अन्वयः, अर्थः,” says Ślokikā, in one breath, and the cord that bound her falls away like a thread of ink in water. She stands, small and upright, with her verse in the air round her: विद्या ददाति विनयम्, every word standing clear. Behind her, in the wall of the vault, a glass-fronted case swings open, and in it lies a palm leaf, whole, glowing: the sixth. Written on its edge, in a quick hand: कथा, महाकथा।'
-      hi: '“पदच्छेदः, अन्वयः, अर्थः,” श्लोकिका एक साँस में कहती है, और उसे बाँधने वाली डोरी पानी में स्याही के धागे की तरह गिर जाती है। वह खड़ी होती है, छोटी और सीधी, उसका श्लोक उसके चारों ओर हवा में: विद्या ददाति विनयम्, हर शब्द साफ़ खड़ा हुआ। उसके पीछे, तहख़ाने की दीवार में, काँच-जड़ा एक सन्दूक खुल जाता है, और उसमें एक ताड़पत्र पड़ा है, पूरा, चमकता: छठा। उसके किनारे पर, तेज़ हाथ से लिखा: कथा, महाकथा।'
+      en: '“पदच्छेदः, अन्वयः, अर्थः,” says Ślokikā, in one breath, and the cord that bound her falls away like a thread of
+        ink in water. She stands, small and upright, with her verse in the air round her: विद्या ददाति विनयम्, every word
+        standing clear. Behind her, in the wall of the vault, a glass-fronted case swings open, and in it lies a palm leaf,
+        whole, glowing: the sixth. Written on its edge, in a quick hand: कथा, महाकथा।'
+      hi: '“पदच्छेदः, अन्वयः, अर्थः,” श्लोकिका एक साँस में कहती है, और उसे बाँधने वाली डोरी पानी में स्याही के धागे की तरह
+        गिर जाती है। वह खड़ी होती है, छोटी और सीधी, उसका श्लोक उसके चारों ओर हवा में: विद्या ददाति विनयम्, हर शब्द साफ़ खड़ा
+        हुआ। उसके पीछे, तहख़ाने की दीवार में, काँच-जड़ा एक सन्दूक खुल जाता है, और उसमें एक ताड़पत्र पड़ा है, पूरा, चमकता:
+        छठा। उसके किनारे पर, तेज़ हाथ से लिखा: कथा, महाकथा।'
     failure:
       en: 'The cord holds. Splitting comes first: {{पदच्छेदः}}.'
       hi: 'डोरी कसी रहती है। तोड़ना पहले आता है: {{पदच्छेदः}}।'
@@ -206,3 +388,25 @@ cards:
   - sa: अर्थः
   - correct: true
     sa: पदच्छेदः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: पदच्छेदः
+      meaning:
+        en: split the joins
+        hi: जोड़ खोलना
+    - id: i1
+      sa: अन्वयः
+      meaning:
+        en: prose order
+        hi: गद्य का क्रम
+    - id: i2
+      sa: अर्थः
+      meaning:
+        en: the meaning
+        hi: अर्थ

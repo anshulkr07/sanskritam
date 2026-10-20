@@ -24,7 +24,9 @@ cards:
     hi: पन्द्रहवीं प्रतिमा
   depth: core
   image:
-    brief: 'The fifteenth statue: two stone figures standing back to back on one plinth, one holding a lotus, the other a bow; Śuka reading the long carved name on the plinth; Dādī with her hand on the stone; Lubdhaka''s foreman copying it down.'
+    brief: 'The fifteenth statue: two stone figures standing back to back on one plinth, one holding a lotus, the other a
+      bow; Śuka reading the long carved name on the plinth; Dādī with her hand on the stone; Lubdhaka''s foreman copying it
+      down.'
     alt:
       en: Two stone figures back to back on one plinth, one with a lotus and one with a bow
       hi: एक आसन पर पीठ से पीठ टिकाए दो पत्थर की आकृतियाँ, एक कमल लिए, दूसरी धनुष लिए
@@ -37,10 +39,15 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: c1-dvandva-s1
-    text_in_image: ["रामलक्ष्मणौ"]
+    text_in_image:
+    - रामलक्ष्मणौ
   narration:
-    en: 'The fifteenth statue is two figures standing back to back, one holding a lotus, the other a bow. Their plinth reads one long name: “रामलक्ष्मणौ.” “One name,” says Śuka, “for two people.” “It is a compound,” says Dādī. “Two words packed into one so that they walk together. This kind means ‘and’: Rāma and Lakṣmaṇa. We call it dvandva, the pair.”'
-    hi: 'पन्द्रहवीं प्रतिमा पीठ से पीठ टिकाए दो आकृतियाँ हैं, एक के हाथ में कमल, दूसरी के हाथ में धनुष। उनके आसन पर एक लम्बा नाम लिखा है: “रामलक्ष्मणौ।” “एक नाम,” शुक कहता है, “दो व्यक्तियों के लिए।” “यह समास है,” दादी कहती हैं। “दो शब्द एक में बँधे ताकि वे साथ चलें। इस प्रकार का अर्थ ‘और’ है: राम और लक्ष्मण। इसे द्वन्द्व कहते हैं, जोड़ी।”'
+    en: 'The fifteenth statue is two figures standing back to back, one holding a lotus, the other a bow. Their plinth reads
+      one long name: “रामलक्ष्मणौ.” “One name,” says Śuka, “for two people.” “It is a compound,” says Dādī. “Two words packed
+      into one so that they walk together. This kind means ‘and’: Rāma and Lakṣmaṇa. We call it dvandva, the pair.”'
+    hi: 'पन्द्रहवीं प्रतिमा पीठ से पीठ टिकाए दो आकृतियाँ हैं, एक के हाथ में कमल, दूसरी के हाथ में धनुष। उनके आसन पर एक लम्बा
+      नाम लिखा है: “रामलक्ष्मणौ।” “एक नाम,” शुक कहता है, “दो व्यक्तियों के लिए।” “यह समास है,” दादी कहती हैं। “दो शब्द एक
+      में बँधे ताकि वे साथ चलें। इस प्रकार का अर्थ ‘और’ है: राम और लक्ष्मण। इसे द्वन्द्व कहते हैं, जोड़ी।”'
   lines:
   - speaker: dadi
     sa: रामः च लक्ष्मणः च = रामलक्ष्मणौ।
@@ -56,13 +63,39 @@ cards:
   skills:
   - sam.dvandva
   body:
-    en: 'A compound is a word made of two or more words, with the endings of the first left off. A {{द्वन्द्वः}} means “and”: {{रामः च लक्ष्मणः च}} becomes {{रामलक्ष्मणौ}}. The compound takes the number of the whole: dual for two, plural for several. A set of things is neuter singular: {{पाणिपादम्}}, “hands and feet”.'
-    hi: 'समास दो या अधिक शब्दों से बना एक शब्द है, जिसमें पहले शब्दों के प्रत्यय छूट जाते हैं। {{द्वन्द्वः}} का अर्थ ‘और’ है: {{रामः च लक्ष्मणः च}} से {{रामलक्ष्मणौ}}। समास पूरे का वचन लेता है: दो के लिए द्विवचन, कई के लिए बहुवचन। वस्तुओं का समूह नपुंसक एकवचन होता है: {{पाणिपादम्}}, ‘हाथ और पैर’।'
+    en: 'A compound is a word made of two or more words, with the endings of the first left off. A {{द्वन्द्वः}} means “and”:
+      {{रामः च लक्ष्मणः च}} becomes {{रामलक्ष्मणौ}}. The compound takes the number of the whole: dual for two, plural for
+      several. A set of things is neuter singular: {{पाणिपादम्}}, “hands and feet”.'
+    hi: 'समास दो या अधिक शब्दों से बना एक शब्द है, जिसमें पहले शब्दों के प्रत्यय छूट जाते हैं। {{द्वन्द्वः}} का अर्थ ‘और’
+      है: {{रामः च लक्ष्मणः च}} से {{रामलक्ष्मणौ}}। समास पूरे का वचन लेता है: दो के लिए द्विवचन, कई के लिए बहुवचन। वस्तुओं
+      का समूह नपुंसक एकवचन होता है: {{पाणिपादम्}}, ‘हाथ और पैर’।'
   term:
     sa: समासः
     meaning:
       en: a compound word
       hi: समस्त शब्द
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'A compound is a word made of two or more words, with the endings of the first left off. A {{द्वन्द्वः}} means “and”:
+        {{रामः च लक्ष्मणः च}} becomes {{रामलक्ष्मणौ}}. The compound takes the number of the whole: dual for two, plural for
+        several. A set of things is neuter singular: {{पाणिपादम्}}, “hands and feet”.'
+      hi: 'समास दो या अधिक शब्दों से बना एक शब्द है, जिसमें पहले शब्दों के प्रत्यय छूट जाते हैं। {{द्वन्द्वः}} का अर्थ ‘और’
+        है: {{रामः च लक्ष्मणः च}} से {{रामलक्ष्मणौ}}। समास पूरे का वचन लेता है: दो के लिए द्विवचन, कई के लिए बहुवचन। वस्तुओं
+        का समूह नपुंसक एकवचन होता है: {{पाणिपादम्}}, ‘हाथ और पैर’।'
+    items:
+    - id: i0
+      sa: द्वन्द्वः
+    - id: i1
+      sa: रामः च लक्ष्मणः च
+    - id: i2
+      sa: रामलक्ष्मणौ
+    - id: i3
+      sa: पाणिपादम्
 - id: tb1
   kind: table
   title:
@@ -181,6 +214,28 @@ cards:
     text:
       en: Rāma and Lakṣmaṇa
       hi: राम और लक्ष्मण
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A compound is a word made of two or more words, with the endings of the first left off. A {{द्वन्द्वः}} means “and”:
+        {{रामः च लक्ष्मणः च}} becomes {{रामलक्ष्मणौ}}. The compound takes the number of the whole: dual for two, plural for
+        several. A set of things is neuter singular: {{पाणिपादम्}}, “hands and feet”.'
+      hi: 'समास दो या अधिक शब्दों से बना एक शब्द है, जिसमें पहले शब्दों के प्रत्यय छूट जाते हैं। {{द्वन्द्वः}} का अर्थ ‘और’
+        है: {{रामः च लक्ष्मणः च}} से {{रामलक्ष्मणौ}}। समास पूरे का वचन लेता है: दो के लिए द्विवचन, कई के लिए बहुवचन। वस्तुओं
+        का समूह नपुंसक एकवचन होता है: {{पाणिपादम्}}, ‘हाथ और पैर’।'
+    items:
+    - id: i0
+      sa: द्वन्द्वः
+    - id: i1
+      sa: रामः च लक्ष्मणः च
+    - id: i2
+      sa: रामलक्ष्मणौ
+    - id: i3
+      sa: पाणिपादम्
 - id: p2
   kind: practice
   depth: core
@@ -201,6 +256,28 @@ cards:
   - पितरौ
   - पिता
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A compound is a word made of two or more words, with the endings of the first left off. A {{द्वन्द्वः}} means “and”:
+        {{रामः च लक्ष्मणः च}} becomes {{रामलक्ष्मणौ}}. The compound takes the number of the whole: dual for two, plural for
+        several. A set of things is neuter singular: {{पाणिपादम्}}, “hands and feet”.'
+      hi: 'समास दो या अधिक शब्दों से बना एक शब्द है, जिसमें पहले शब्दों के प्रत्यय छूट जाते हैं। {{द्वन्द्वः}} का अर्थ ‘और’
+        है: {{रामः च लक्ष्मणः च}} से {{रामलक्ष्मणौ}}। समास पूरे का वचन लेता है: दो के लिए द्विवचन, कई के लिए बहुवचन। वस्तुओं
+        का समूह नपुंसक एकवचन होता है: {{पाणिपादम्}}, ‘हाथ और पैर’।'
+    items:
+    - id: i0
+      sa: द्वन्द्वः
+    - id: i1
+      sa: रामः च लक्ष्मणः च
+    - id: i2
+      sa: रामलक्ष्मणौ
+    - id: i3
+      sa: पाणिपादम्
 - id: p3
   kind: practice
   depth: core
@@ -231,6 +308,28 @@ cards:
       sa: सुखदुःखे
     right:
       sa: सुखं च दुःखं च
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A compound is a word made of two or more words, with the endings of the first left off. A {{द्वन्द्वः}} means “and”:
+        {{रामः च लक्ष्मणः च}} becomes {{रामलक्ष्मणौ}}. The compound takes the number of the whole: dual for two, plural for
+        several. A set of things is neuter singular: {{पाणिपादम्}}, “hands and feet”.'
+      hi: 'समास दो या अधिक शब्दों से बना एक शब्द है, जिसमें पहले शब्दों के प्रत्यय छूट जाते हैं। {{द्वन्द्वः}} का अर्थ ‘और’
+        है: {{रामः च लक्ष्मणः च}} से {{रामलक्ष्मणौ}}। समास पूरे का वचन लेता है: दो के लिए द्विवचन, कई के लिए बहुवचन। वस्तुओं
+        का समूह नपुंसक एकवचन होता है: {{पाणिपादम्}}, ‘हाथ और पैर’।'
+    items:
+    - id: i0
+      sa: द्वन्द्वः
+    - id: i1
+      sa: रामः च लक्ष्मणः च
+    - id: i2
+      sa: रामलक्ष्मणौ
+    - id: i3
+      sa: पाणिपादम्
 - id: e1
   kind: explore
   depth: core
@@ -292,8 +391,12 @@ cards:
   gate: true
   story:
     success:
-      en: “धर्मार्थकाममोक्षाः,” you say, reading the four, and the two figures on the plinth turn, back to back, and look at each other. “Four goals of life,” the first one says. “In one word,” says the second. “We are only two,” they say together, “but we know how to stand for many.” They step apart, and the plinth does not break.
-      hi: “धर्मार्थकाममोक्षाः,” आप चारों को पढ़ते हुए कहते हैं, और आसन पर की दोनों आकृतियाँ पीठ से पीठ टिकाए मुड़ती हैं और एक-दूसरे को देखती हैं। “जीवन के चार लक्ष्य,” पहली कहती है। “एक शब्द में,” दूसरी कहती है। “हम केवल दो हैं,” वे एक साथ कहती हैं, “पर कई के लिए खड़े होना जानती हैं।” वे अलग होती हैं, और आसन नहीं टूटता।
+      en: “धर्मार्थकाममोक्षाः,” you say, reading the four, and the two figures on the plinth turn, back to back, and look
+        at each other. “Four goals of life,” the first one says. “In one word,” says the second. “We are only two,” they say
+        together, “but we know how to stand for many.” They step apart, and the plinth does not break.
+      hi: “धर्मार्थकाममोक्षाः,” आप चारों को पढ़ते हुए कहते हैं, और आसन पर की दोनों आकृतियाँ पीठ से पीठ टिकाए मुड़ती हैं और
+        एक-दूसरे को देखती हैं। “जीवन के चार लक्ष्य,” पहली कहती है। “एक शब्द में,” दूसरी कहती है। “हम केवल दो हैं,” वे एक साथ
+        कहती हैं, “पर कई के लिए खड़े होना जानती हैं।” वे अलग होती हैं, और आसन नहीं टूटता।
     failure:
       en: 'The figures stay back to back. Four members make a plural: {{धर्मार्थकाममोक्षाः}}.'
       hi: 'आकृतियाँ पीठ से पीठ टिकाए रहती हैं। चार सदस्य बहुवचन बनाते हैं: {{धर्मार्थकाममोक्षाः}}।'
@@ -308,6 +411,28 @@ cards:
     text:
       en: Four
       hi: चार
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A compound is a word made of two or more words, with the endings of the first left off. A {{द्वन्द्वः}} means “and”:
+        {{रामः च लक्ष्मणः च}} becomes {{रामलक्ष्मणौ}}. The compound takes the number of the whole: dual for two, plural for
+        several. A set of things is neuter singular: {{पाणिपादम्}}, “hands and feet”.'
+      hi: 'समास दो या अधिक शब्दों से बना एक शब्द है, जिसमें पहले शब्दों के प्रत्यय छूट जाते हैं। {{द्वन्द्वः}} का अर्थ ‘और’
+        है: {{रामः च लक्ष्मणः च}} से {{रामलक्ष्मणौ}}। समास पूरे का वचन लेता है: दो के लिए द्विवचन, कई के लिए बहुवचन। वस्तुओं
+        का समूह नपुंसक एकवचन होता है: {{पाणिपादम्}}, ‘हाथ और पैर’।'
+    items:
+    - id: i0
+      sa: द्वन्द्वः
+    - id: i1
+      sa: रामः च लक्ष्मणः च
+    - id: i2
+      sa: रामलक्ष्मणौ
+    - id: i3
+      sa: पाणिपादम्
 - id: pn
   kind: teach
   title:
@@ -321,8 +446,38 @@ cards:
   - 2.2.30
   - 2.1.4
   body:
-    en: Sūtra 2.2.29, {{चार्थे द्वन्द्वः}}, says that words joined with the sense of {{च}} (and) form a {{द्वन्द्वः}}. 2.2.30, {{उपसर्जनं पूर्वम्}}, says the subordinate word goes first; and 2.1.22, {{तत्पुरुषः}}, 2.1.4, {{सह सुपा}}, say every compound is made by joining with the case endings.
-    hi: सूत्र 2.2.29, {{चार्थे द्वन्द्वः}}, कहता है कि {{च}} (और) के अर्थ में जुड़े शब्द {{द्वन्द्वः}} बनाते हैं। 2.2.30, {{उपसर्जनं पूर्वम्}}, कहता है कि गौण शब्द पहले रखा जाता है; और 2.1.4, {{सह सुपा}}, कहता है कि हर समास विभक्ति-सहित शब्दों को जोड़कर बनता है।
+    en: Sūtra 2.2.29, {{चार्थे द्वन्द्वः}}, says that words joined with the sense of {{च}} (and) form a {{द्वन्द्वः}}. 2.2.30,
+      {{उपसर्जनं पूर्वम्}}, says the subordinate word goes first; and 2.1.22, {{तत्पुरुषः}}, 2.1.4, {{सह सुपा}}, say every
+      compound is made by joining with the case endings.
+    hi: सूत्र 2.2.29, {{चार्थे द्वन्द्वः}}, कहता है कि {{च}} (और) के अर्थ में जुड़े शब्द {{द्वन्द्वः}} बनाते हैं। 2.2.30,
+      {{उपसर्जनं पूर्वम्}}, कहता है कि गौण शब्द पहले रखा जाता है; और 2.1.4, {{सह सुपा}}, कहता है कि हर समास विभक्ति-सहित शब्दों
+      को जोड़कर बनता है।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 2.2.29, {{चार्थे द्वन्द्वः}}, says that words joined with the sense of {{च}} (and) form a {{द्वन्द्वः}}. 2.2.30,
+        {{उपसर्जनं पूर्वम्}}, says the subordinate word goes first; and 2.1.22, {{तत्पुरुषः}}, 2.1.4, {{सह सुपा}}, say every
+        compound is made by joining with the case endings.
+      hi: सूत्र 2.2.29, {{चार्थे द्वन्द्वः}}, कहता है कि {{च}} (और) के अर्थ में जुड़े शब्द {{द्वन्द्वः}} बनाते हैं। 2.2.30,
+        {{उपसर्जनं पूर्वम्}}, कहता है कि गौण शब्द पहले रखा जाता है; और 2.1.4, {{सह सुपा}}, कहता है कि हर समास विभक्ति-सहित
+        शब्दों को जोड़कर बनता है।
+    items:
+    - id: i0
+      sa: चार्थे द्वन्द्वः
+    - id: i1
+      sa: च
+    - id: i2
+      sa: द्वन्द्वः
+    - id: i3
+      sa: उपसर्जनं पूर्वम्
+    - id: i4
+      sa: तत्पुरुषः
+    - id: i5
+      sa: सह सुपा
 - id: sum
   kind: summary
   title:

@@ -28,6 +28,151 @@ cards:
   - sa: गमिष्यति
   - correct: true
     sa: गच्छेत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: राजा प्रजाम् रक्षेत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A king should protect his people.
+        hi: राजा को प्रजा की रक्षा करनी चाहिए।
+      words:
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: प्रजाम्
+        gloss:
+          en: his people
+          hi: प्रजा
+        check:
+          type: subanta
+          stem: प्रजा
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: रक्षेत्
+        gloss:
+          en: should protect
+          hi: रक्षा करे
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: राजा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: प्रजाम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: his people
+        hi: प्रजा
+      check:
+        type: subanta
+        stem: प्रजा
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: रक्षेत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: should protect
+        hi: रक्षा करे
+      check:
+        type: tinanta
+        dhatu: रक्ष्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{विधिलिङ्}} gives advice, rules and what is fitting: {{पठेत्}} (he should read), {{गच्छेत्}} (he should go),
+          {{वदेत्}} (he should say). The sign is {{-ए-}} between the root and the ending: {{पठ + ए + त्}}.'
+        hi: '{{विधिलिङ्}} सलाह, नियम और जो उचित है, वह बताता है: {{पठेत्}} (उसे पढ़ना चाहिए), {{गच्छेत्}} (उसे जाना चाहिए),
+          {{वदेत्}} (उसे कहना चाहिए)। चिह्न {{-ए-}} है, धातु और प्रत्यय के बीच: {{पठ + ए + त्}}।'
+    - id: i6
+      sa: राजा प्रजाम् रक्षेत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A king should protect his people.
+        hi: राजा को प्रजा की रक्षा करनी चाहिए।
+      words:
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: प्रजाम्
+        gloss:
+          en: his people
+          hi: प्रजा
+        check:
+          type: subanta
+          stem: प्रजा
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: रक्षेत्
+        gloss:
+          en: should protect
+          hi: रक्षा करे
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -48,6 +193,151 @@ cards:
   - त्
   - ति
   - ः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: राजा प्रजाम् रक्षेत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A king should protect his people.
+        hi: राजा को प्रजा की रक्षा करनी चाहिए।
+      words:
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: प्रजाम्
+        gloss:
+          en: his people
+          hi: प्रजा
+        check:
+          type: subanta
+          stem: प्रजा
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: रक्षेत्
+        gloss:
+          en: should protect
+          hi: रक्षा करे
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: राजा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: प्रजाम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: his people
+        hi: प्रजा
+      check:
+        type: subanta
+        stem: प्रजा
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: रक्षेत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: should protect
+        hi: रक्षा करे
+      check:
+        type: tinanta
+        dhatu: रक्ष्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{विधिलिङ्}} gives advice, rules and what is fitting: {{पठेत्}} (he should read), {{गच्छेत्}} (he should go),
+          {{वदेत्}} (he should say). The sign is {{-ए-}} between the root and the ending: {{पठ + ए + त्}}.'
+        hi: '{{विधिलिङ्}} सलाह, नियम और जो उचित है, वह बताता है: {{पठेत्}} (उसे पढ़ना चाहिए), {{गच्छेत्}} (उसे जाना चाहिए),
+          {{वदेत्}} (उसे कहना चाहिए)। चिह्न {{-ए-}} है, धातु और प्रत्यय के बीच: {{पठ + ए + त्}}।'
+    - id: i6
+      sa: राजा प्रजाम् रक्षेत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A king should protect his people.
+        hi: राजा को प्रजा की रक्षा करनी चाहिए।
+      words:
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: प्रजाम्
+        gloss:
+          en: his people
+          hi: प्रजा
+        check:
+          type: subanta
+          stem: प्रजा
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: रक्षेत्
+        gloss:
+          en: should protect
+          hi: रक्षा करे
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
 - id: p3
   kind: practice
   depth: core
@@ -86,6 +376,151 @@ cards:
       text:
         en: they should read
         hi: उन्हें पढ़ना चाहिए
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: राजा प्रजाम् रक्षेत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A king should protect his people.
+        hi: राजा को प्रजा की रक्षा करनी चाहिए।
+      words:
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: प्रजाम्
+        gloss:
+          en: his people
+          hi: प्रजा
+        check:
+          type: subanta
+          stem: प्रजा
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: रक्षेत्
+        gloss:
+          en: should protect
+          hi: रक्षा करे
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: राजा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: प्रजाम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: his people
+        hi: प्रजा
+      check:
+        type: subanta
+        stem: प्रजा
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: रक्षेत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: should protect
+        hi: रक्षा करे
+      check:
+        type: tinanta
+        dhatu: रक्ष्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{विधिलिङ्}} gives advice, rules and what is fitting: {{पठेत्}} (he should read), {{गच्छेत्}} (he should go),
+          {{वदेत्}} (he should say). The sign is {{-ए-}} between the root and the ending: {{पठ + ए + त्}}.'
+        hi: '{{विधिलिङ्}} सलाह, नियम और जो उचित है, वह बताता है: {{पठेत्}} (उसे पढ़ना चाहिए), {{गच्छेत्}} (उसे जाना चाहिए),
+          {{वदेत्}} (उसे कहना चाहिए)। चिह्न {{-ए-}} है, धातु और प्रत्यय के बीच: {{पठ + ए + त्}}।'
+    - id: i6
+      sa: राजा प्रजाम् रक्षेत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A king should protect his people.
+        hi: राजा को प्रजा की रक्षा करनी चाहिए।
+      words:
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: प्रजाम्
+        gloss:
+          en: his people
+          hi: प्रजा
+        check:
+          type: subanta
+          stem: प्रजा
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: रक्षेत्
+        gloss:
+          en: should protect
+          hi: रक्षा करे
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   depth: core
@@ -104,6 +539,151 @@ cards:
   - sa: आसीत्
   - correct: true
     sa: स्यात्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: राजा प्रजाम् रक्षेत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A king should protect his people.
+        hi: राजा को प्रजा की रक्षा करनी चाहिए।
+      words:
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: प्रजाम्
+        gloss:
+          en: his people
+          hi: प्रजा
+        check:
+          type: subanta
+          stem: प्रजा
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: रक्षेत्
+        gloss:
+          en: should protect
+          hi: रक्षा करे
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: राजा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: प्रजाम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: his people
+        hi: प्रजा
+      check:
+        type: subanta
+        stem: प्रजा
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: रक्षेत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: should protect
+        hi: रक्षा करे
+      check:
+        type: tinanta
+        dhatu: रक्ष्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{विधिलिङ्}} gives advice, rules and what is fitting: {{पठेत्}} (he should read), {{गच्छेत्}} (he should go),
+          {{वदेत्}} (he should say). The sign is {{-ए-}} between the root and the ending: {{पठ + ए + त्}}.'
+        hi: '{{विधिलिङ्}} सलाह, नियम और जो उचित है, वह बताता है: {{पठेत्}} (उसे पढ़ना चाहिए), {{गच्छेत्}} (उसे जाना चाहिए),
+          {{वदेत्}} (उसे कहना चाहिए)। चिह्न {{-ए-}} है, धातु और प्रत्यय के बीच: {{पठ + ए + त्}}।'
+    - id: i6
+      sa: राजा प्रजाम् रक्षेत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A king should protect his people.
+        hi: राजा को प्रजा की रक्षा करनी चाहिए।
+      words:
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: प्रजाम्
+        gloss:
+          en: his people
+          hi: प्रजा
+        check:
+          type: subanta
+          stem: प्रजा
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: रक्षेत्
+        gloss:
+          en: should protect
+          hi: रक्षा करे
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
 - id: p5
   kind: practice
   depth: core
@@ -122,6 +702,151 @@ cards:
   - correct: true
     sa: ब्रूयात्
   - sa: अब्रवीत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: राजा प्रजाम् रक्षेत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A king should protect his people.
+        hi: राजा को प्रजा की रक्षा करनी चाहिए।
+      words:
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: प्रजाम्
+        gloss:
+          en: his people
+          hi: प्रजा
+        check:
+          type: subanta
+          stem: प्रजा
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: रक्षेत्
+        gloss:
+          en: should protect
+          hi: रक्षा करे
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: राजा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: प्रजाम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: his people
+        hi: प्रजा
+      check:
+        type: subanta
+        stem: प्रजा
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: रक्षेत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: should protect
+        hi: रक्षा करे
+      check:
+        type: tinanta
+        dhatu: रक्ष्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{विधिलिङ्}} gives advice, rules and what is fitting: {{पठेत्}} (he should read), {{गच्छेत्}} (he should go),
+          {{वदेत्}} (he should say). The sign is {{-ए-}} between the root and the ending: {{पठ + ए + त्}}.'
+        hi: '{{विधिलिङ्}} सलाह, नियम और जो उचित है, वह बताता है: {{पठेत्}} (उसे पढ़ना चाहिए), {{गच्छेत्}} (उसे जाना चाहिए),
+          {{वदेत्}} (उसे कहना चाहिए)। चिह्न {{-ए-}} है, धातु और प्रत्यय के बीच: {{पठ + ए + त्}}।'
+    - id: i6
+      sa: राजा प्रजाम् रक्षेत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A king should protect his people.
+        hi: राजा को प्रजा की रक्षा करनी चाहिए।
+      words:
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: प्रजाम्
+        gloss:
+          en: his people
+          hi: प्रजा
+        check:
+          type: subanta
+          stem: प्रजा
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: रक्षेत्
+        gloss:
+          en: should protect
+          hi: रक्षा करे
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
 - id: p6
   kind: practice
   depth: core
@@ -139,6 +864,151 @@ cards:
   - न
   - असत्यम्
   - ब्रूयात्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: राजा प्रजाम् रक्षेत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A king should protect his people.
+        hi: राजा को प्रजा की रक्षा करनी चाहिए।
+      words:
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: प्रजाम्
+        gloss:
+          en: his people
+          hi: प्रजा
+        check:
+          type: subanta
+          stem: प्रजा
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: रक्षेत्
+        gloss:
+          en: should protect
+          hi: रक्षा करे
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: राजा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: प्रजाम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: his people
+        hi: प्रजा
+      check:
+        type: subanta
+        stem: प्रजा
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: रक्षेत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: should protect
+        hi: रक्षा करे
+      check:
+        type: tinanta
+        dhatu: रक्ष्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{विधिलिङ्}} gives advice, rules and what is fitting: {{पठेत्}} (he should read), {{गच्छेत्}} (he should go),
+          {{वदेत्}} (he should say). The sign is {{-ए-}} between the root and the ending: {{पठ + ए + त्}}.'
+        hi: '{{विधिलिङ्}} सलाह, नियम और जो उचित है, वह बताता है: {{पठेत्}} (उसे पढ़ना चाहिए), {{गच्छेत्}} (उसे जाना चाहिए),
+          {{वदेत्}} (उसे कहना चाहिए)। चिह्न {{-ए-}} है, धातु और प्रत्यय के बीच: {{पठ + ए + त्}}।'
+    - id: i6
+      sa: राजा प्रजाम् रक्षेत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A king should protect his people.
+        hi: राजा को प्रजा की रक्षा करनी चाहिए।
+      words:
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: प्रजाम्
+        gloss:
+          en: his people
+          hi: प्रजा
+        check:
+          type: subanta
+          stem: प्रजा
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: रक्षेत्
+        gloss:
+          en: should protect
+          hi: रक्षा करे
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
 - id: p7
   kind: practice
   depth: core
@@ -155,8 +1025,16 @@ cards:
   gate: true
   story:
     success:
-      en: '“राजा प्रजां रक्षेत्,” you say, and Vidhika drops all his scrolls. They roll across the leaves and unroll by themselves, and every one is blank except one line: the rule you just spoke. “Mine,” he breathes. “I wrote it a thousand years ago and no one would read it.” The Vetāla grins at the ceiling of branches. “That is my answer to the riddle,” he says. “The king should feed the beggar.” Then, as the little spirit hurries off with his scrolls: “स उवाच,” says the Vetāla, to no one. “He said.”'
-      hi: '“राजा प्रजां रक्षेत्,” आप कहते हैं, और विधिक अपनी सारी पोथियाँ गिरा देता है। वे पत्तों पर लुढ़कती हैं और अपने-आप खुल जाती हैं, और हर एक कोरी है सिवाय एक पंक्ति के: जो नियम आपने अभी कहा। “मेरा,” वह साँस लेते हुए कहता है। “मैंने इसे हज़ार वर्ष पहले लिखा था और किसी ने नहीं पढ़ा।” वेताल शाखाओं की छत पर मुस्कराता है। “यही मेरी पहेली का उत्तर है,” वह कहता है। “राजा को भिखारी को भोजन देना चाहिए।” फिर, जब नन्हा भूत अपनी पोथियाँ लिए दौड़ जाता है: “स उवाच,” वेताल किसी से नहीं कहता। “उसने कहा।”'
+      en: '“राजा प्रजां रक्षेत्,” you say, and Vidhika drops all his scrolls. They roll across the leaves and unroll by themselves,
+        and every one is blank except one line: the rule you just spoke. “Mine,” he breathes. “I wrote it a thousand years
+        ago and no one would read it.” The Vetāla grins at the ceiling of branches. “That is my answer to the riddle,” he
+        says. “The king should feed the beggar.” Then, as the little spirit hurries off with his scrolls: “स उवाच,” says the
+        Vetāla, to no one. “He said.”'
+      hi: '“राजा प्रजां रक्षेत्,” आप कहते हैं, और विधिक अपनी सारी पोथियाँ गिरा देता है। वे पत्तों पर लुढ़कती हैं और अपने-आप
+        खुल जाती हैं, और हर एक कोरी है सिवाय एक पंक्ति के: जो नियम आपने अभी कहा। “मेरा,” वह साँस लेते हुए कहता है। “मैंने
+        इसे हज़ार वर्ष पहले लिखा था और किसी ने नहीं पढ़ा।” वेताल शाखाओं की छत पर मुस्कराता है। “यही मेरी पहेली का उत्तर है,”
+        वह कहता है। “राजा को भिखारी को भोजन देना चाहिए।” फिर, जब नन्हा भूत अपनी पोथियाँ लिए दौड़ जाता है: “स उवाच,” वेताल
+        किसी से नहीं कहता। “उसने कहा।”'
     failure:
       en: 'The scrolls stay rolled. The rule: {{राजा प्रजां रक्षेत्}}.'
       hi: 'पोथियाँ बँधी रहती हैं। नियम: {{राजा प्रजां रक्षेत्}}।'
@@ -164,3 +1042,148 @@ cards:
   - राजा
   - प्रजाम्
   - रक्षेत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: राजा प्रजाम् रक्षेत्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: A king should protect his people.
+        hi: राजा को प्रजा की रक्षा करनी चाहिए।
+      words:
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: प्रजाम्
+        gloss:
+          en: his people
+          hi: प्रजा
+        check:
+          type: subanta
+          stem: प्रजा
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: रक्षेत्
+        gloss:
+          en: should protect
+          hi: रक्षा करे
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: राजा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राजन्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राजन्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: प्रजाम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: his people
+        hi: प्रजा
+      check:
+        type: subanta
+        stem: प्रजा
+        linga: Stri
+        vibhakti: Dvitiya
+        vacana: Eka
+      feature:
+        en: 'Stem: {{प्रजा}} · feminine · {{द्वितीया}} · singular'
+        hi: 'प्रातिपदिक: {{प्रजा}} · {{स्त्रीलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+    - id: i3
+      sa: रक्षेत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: should protect
+        hi: रक्षा करे
+      check:
+        type: tinanta
+        dhatu: रक्ष्
+        lakara: VidhiLin
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{रक्ष्}} · singular · {{विधिलिङ्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{रक्ष्}} · {{एकवचन}} · {{विधिलिङ्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: '{{विधिलिङ्}} gives advice, rules and what is fitting: {{पठेत्}} (he should read), {{गच्छेत्}} (he should go),
+          {{वदेत्}} (he should say). The sign is {{-ए-}} between the root and the ending: {{पठ + ए + त्}}.'
+        hi: '{{विधिलिङ्}} सलाह, नियम और जो उचित है, वह बताता है: {{पठेत्}} (उसे पढ़ना चाहिए), {{गच्छेत्}} (उसे जाना चाहिए),
+          {{वदेत्}} (उसे कहना चाहिए)। चिह्न {{-ए-}} है, धातु और प्रत्यय के बीच: {{पठ + ए + त्}}।'
+    - id: i6
+      sa: राजा प्रजाम् रक्षेत्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: A king should protect his people.
+        hi: राजा को प्रजा की रक्षा करनी चाहिए।
+      words:
+      - sa: राजा
+        gloss:
+          en: king
+          hi: राजा
+        check:
+          type: subanta
+          stem: राजन्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: प्रजाम्
+        gloss:
+          en: his people
+          hi: प्रजा
+        check:
+          type: subanta
+          stem: प्रजा
+          linga: Stri
+          vibhakti: Dvitiya
+          vacana: Eka
+      - sa: रक्षेत्
+        gloss:
+          en: should protect
+          hi: रक्षा करे
+        check:
+          type: tinanta
+          dhatu: रक्ष्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka

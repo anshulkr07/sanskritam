@@ -21,7 +21,8 @@ cards:
     hi: वह कौन है?
   depth: core
   image:
-    brief: 'Śuka on Dādī''s shoulder pointing a wing at three puppets in turn: a king, a queen and a golden crown; the puppeteer''s wife laughing and holding up the crown; the small rainbow-coloured spirit peeking.'
+    brief: 'Śuka on Dādī''s shoulder pointing a wing at three puppets in turn: a king, a queen and a golden crown; the puppeteer''s
+      wife laughing and holding up the crown; the small rainbow-coloured spirit peeking.'
     alt:
       en: A parrot points at a king, a queen and a crown puppet in turn
       hi: राजा, रानी और मुकुट की कठपुतली की ओर बारी-बारी इशारा करता तोता
@@ -34,8 +35,10 @@ cards:
     ratio: '4:3'
     id: gender-tad-s1
   narration:
-    en: 'Śuka points at the puppets. “He!” “She!” “It!” The puppeteer''s wife laughs and holds up the crown. Dādī says: “Instead of repeating a noun, use a short word that matches its gender. Sanskrit has one for each.”'
-    hi: शुक कठपुतलियों की ओर इशारा करता है। “वह!” “वह!” “वह!” कठपुतली वाले की पत्नी हँसकर मुकुट उठाती है। दादी कहती हैं, “संज्ञा दोहराने की जगह उसी के लिंग से मेल खाता छोटा शब्द बोलिए। संस्कृत में हर लिंग के लिए एक है।”
+    en: 'Śuka points at the puppets. “He!” “She!” “It!” The puppeteer''s wife laughs and holds up the crown. Dādī says: “Instead
+      of repeating a noun, use a short word that matches its gender. Sanskrit has one for each.”'
+    hi: शुक कठपुतलियों की ओर इशारा करता है। “वह!” “वह!” “वह!” कठपुतली वाले की पत्नी हँसकर मुकुट उठाती है। दादी कहती हैं, “संज्ञा
+      दोहराने की जगह उसी के लिंग से मेल खाता छोटा शब्द बोलिए। संस्कृत में हर लिंग के लिए एक है।”
 - id: t1
   kind: teach
   title:
@@ -45,8 +48,10 @@ cards:
   skills:
   - pron.tad
   body:
-    en: '{{सः}} means “he”, {{सा}} “she”, {{तत्}} “it”. They stand for a masculine, a feminine and a neuter noun: {{सः बालकः}} (that boy), {{सा बालिका}}, {{तत् फलम्}}.'
-    hi: '{{सः}} का अर्थ ‘वह (पुं.)’, {{सा}} ‘वह (स्त्री.)’, {{तत्}} ‘वह (नपुं.)’। ये पुंलिंग, स्त्रीलिंग और नपुंसक संज्ञा के स्थान पर आते हैं: {{सः बालकः}} (वह बालक), {{सा बालिका}}, {{तत् फलम्}}।'
+    en: '{{सः}} means “he”, {{सा}} “she”, {{तत्}} “it”. They stand for a masculine, a feminine and a neuter noun: {{सः बालकः}}
+      (that boy), {{सा बालिका}}, {{तत् फलम्}}.'
+    hi: '{{सः}} का अर्थ ‘वह (पुं.)’, {{सा}} ‘वह (स्त्री.)’, {{तत्}} ‘वह (नपुं.)’। ये पुंलिंग, स्त्रीलिंग और नपुंसक संज्ञा
+      के स्थान पर आते हैं: {{सः बालकः}} (वह बालक), {{सा बालिका}}, {{तत् फलम्}}।'
   rows:
   - sa: सः
     gloss:
@@ -78,6 +83,60 @@ cards:
       linga: Napumsaka
       vibhakti: Prathama
       vacana: Eka
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: '{{सः}} means “he”, {{सा}} “she”, {{तत्}} “it”. They stand for a masculine, a feminine and a neuter noun: {{सः बालकः}}
+        (that boy), {{सा बालिका}}, {{तत् फलम्}}.'
+      hi: '{{सः}} का अर्थ ‘वह (पुं.)’, {{सा}} ‘वह (स्त्री.)’, {{तत्}} ‘वह (नपुं.)’। ये पुंलिंग, स्त्रीलिंग और नपुंसक संज्ञा
+        के स्थान पर आते हैं: {{सः बालकः}} (वह बालक), {{सा बालिका}}, {{तत् फलम्}}।'
+    items:
+    - id: i0
+      sa: सः
+      meaning:
+        en: he, that
+        hi: वह
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: सा
+      meaning:
+        en: she, that
+        hi: वह (स्त्री)
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: तत्
+      meaning:
+        en: it, that
+        hi: वह (नपुं.)
+      check:
+        type: subanta
+        stem: तद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: tb1
   kind: table
   title:
@@ -183,8 +242,10 @@ cards:
   skills:
   - pron.tad
   body:
-    en: 'A pronoun replaces a noun: {{बालकः पठति}} becomes {{सः पठति}}; {{बालिका पठति}} becomes {{सा पठति}}. The verb does not change.'
-    hi: 'सर्वनाम संज्ञा की जगह आता है: {{बालकः पठति}} का {{सः पठति}} हो जाता है; {{बालिका पठति}} का {{सा पठति}}। क्रिया नहीं बदलती।'
+    en: 'A pronoun replaces a noun: {{बालकः पठति}} becomes {{सः पठति}}; {{बालिका पठति}} becomes {{सा पठति}}. The verb does
+      not change.'
+    hi: 'सर्वनाम संज्ञा की जगह आता है: {{बालकः पठति}} का {{सः पठति}} हो जाता है; {{बालिका पठति}} का {{सा पठति}}। क्रिया नहीं
+      बदलती।'
   examples:
   - sa: सः पठति।
     meaning:
@@ -253,6 +314,302 @@ cards:
         lakara: Lat
         purusha: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सः पठति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: He reads.
+        hi: वह पढ़ता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A pronoun replaces a noun: {{बालकः पठति}} becomes {{सः पठति}}; {{बालिका पठति}} becomes {{सा पठति}}. The verb
+          does not change.'
+        hi: 'सर्वनाम संज्ञा की जगह आता है: {{बालकः पठति}} का {{सः पठति}} हो जाता है; {{बालिका पठति}} का {{सा पठति}}। क्रिया
+          नहीं बदलती।'
+    - id: i5
+      sa: सः पठति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: He reads.
+        hi: वह पढ़ता है।
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सा लिखति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: She writes.
+        hi: वह लिखती है।
+      words:
+      - sa: सा
+        gloss:
+          en: she
+          hi: वह
+      - sa: लिखति
+        gloss:
+          en: writes
+          hi: लिखती है
+        check:
+          type: tinanta
+          dhatu: लिख्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: सा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: she
+        hi: वह
+    - id: i2
+      sa: लिखति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: writes
+        hi: लिखती है
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A pronoun replaces a noun: {{बालकः पठति}} becomes {{सः पठति}}; {{बालिका पठति}} becomes {{सा पठति}}. The verb
+          does not change.'
+        hi: 'सर्वनाम संज्ञा की जगह आता है: {{बालकः पठति}} का {{सः पठति}} हो जाता है; {{बालिका पठति}} का {{सा पठति}}। क्रिया
+          नहीं बदलती।'
+    - id: i5
+      sa: सा लिखति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: She writes.
+        hi: वह लिखती है।
+      words:
+      - sa: सा
+        gloss:
+          en: she
+          hi: वह
+      - sa: लिखति
+        gloss:
+          en: writes
+          hi: लिखती है
+        check:
+          type: tinanta
+          dhatu: लिख्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: तत् फलम् अस्ति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: That is a fruit.
+        hi: वह फल है।
+      words:
+      - sa: तत्
+        gloss:
+          en: it
+          hi: वह
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: तत्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: it
+        hi: वह
+    - id: i2
+      sa: फलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: fruit
+        hi: फल
+      check:
+        type: subanta
+        stem: फल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{फल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{फल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: अस्ति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: is
+        hi: है
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A pronoun replaces a noun: {{बालकः पठति}} becomes {{सः पठति}}; {{बालिका पठति}} becomes {{सा पठति}}. The verb
+          does not change.'
+        hi: 'सर्वनाम संज्ञा की जगह आता है: {{बालकः पठति}} का {{सः पठति}} हो जाता है; {{बालिका पठति}} का {{सा पठति}}। क्रिया
+          नहीं बदलती।'
+    - id: i6
+      sa: तत् फलम् अस्ति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: That is a fruit.
+        hi: वह फल है।
+      words:
+      - sa: तत्
+        gloss:
+          en: it
+          hi: वह
+      - sa: फलम्
+        gloss:
+          en: fruit
+          hi: फल
+        check:
+          type: subanta
+          stem: फल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्ति
+        gloss:
+          en: is
+          hi: है
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p1
   kind: practice
   depth: core
@@ -271,6 +628,60 @@ cards:
   - correct: true
     sa: सा
   - sa: तत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{सः}} means “he”, {{सा}} “she”, {{तत्}} “it”. They stand for a masculine, a feminine and a neuter noun: {{सः बालकः}}
+        (that boy), {{सा बालिका}}, {{तत् फलम्}}.'
+      hi: '{{सः}} का अर्थ ‘वह (पुं.)’, {{सा}} ‘वह (स्त्री.)’, {{तत्}} ‘वह (नपुं.)’। ये पुंलिंग, स्त्रीलिंग और नपुंसक संज्ञा
+        के स्थान पर आते हैं: {{सः बालकः}} (वह बालक), {{सा बालिका}}, {{तत् फलम्}}।'
+    items:
+    - id: i0
+      sa: सः
+      meaning:
+        en: he, that
+        hi: वह
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: सा
+      meaning:
+        en: she, that
+        hi: वह (स्त्री)
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: तत्
+      meaning:
+        en: it, that
+        hi: वह (नपुं.)
+      check:
+        type: subanta
+        stem: तद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p2
   kind: practice
   depth: core
@@ -301,6 +712,60 @@ cards:
       sa: ताः
     right:
       sa: नद्यः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{सः}} means “he”, {{सा}} “she”, {{तत्}} “it”. They stand for a masculine, a feminine and a neuter noun: {{सः बालकः}}
+        (that boy), {{सा बालिका}}, {{तत् फलम्}}.'
+      hi: '{{सः}} का अर्थ ‘वह (पुं.)’, {{सा}} ‘वह (स्त्री.)’, {{तत्}} ‘वह (नपुं.)’। ये पुंलिंग, स्त्रीलिंग और नपुंसक संज्ञा
+        के स्थान पर आते हैं: {{सः बालकः}} (वह बालक), {{सा बालिका}}, {{तत् फलम्}}।'
+    items:
+    - id: i0
+      sa: सः
+      meaning:
+        en: he, that
+        hi: वह
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: सा
+      meaning:
+        en: she, that
+        hi: वह (स्त्री)
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: तत्
+      meaning:
+        en: it, that
+        hi: वह (नपुं.)
+      check:
+        type: subanta
+        stem: तद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: e1
   kind: explore
   depth: core
@@ -342,8 +807,10 @@ cards:
   gate: true
   story:
     success:
-      en: “सः! सा! तत्!” You point at king, queen and crown in turn, and each puppet bows. A little round face with a painted smile pops over the curtain.
-      hi: “सः! सा! तत्!” आप राजा, रानी और मुकुट की ओर बारी-बारी इशारा करते हैं और हर कठपुतली झुकती है। परदे के ऊपर चित्रित मुस्कान वाला एक नन्हा गोल चेहरा उभर आता है।
+      en: “सः! सा! तत्!” You point at king, queen and crown in turn, and each puppet bows. A little round face with a painted
+        smile pops over the curtain.
+      hi: “सः! सा! तत्!” आप राजा, रानी और मुकुट की ओर बारी-बारी इशारा करते हैं और हर कठपुतली झुकती है। परदे के ऊपर चित्रित
+        मुस्कान वाला एक नन्हा गोल चेहरा उभर आता है।
     failure:
       en: 'The puppets stay still. The crown is neuter: {{तत्}}.'
       hi: 'कठपुतलियाँ स्थिर रहती हैं। मुकुट नपुंसक है: {{तत्}}।'
@@ -352,6 +819,60 @@ cards:
   - sa: सा
   - correct: true
     sa: तत्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '{{सः}} means “he”, {{सा}} “she”, {{तत्}} “it”. They stand for a masculine, a feminine and a neuter noun: {{सः बालकः}}
+        (that boy), {{सा बालिका}}, {{तत् फलम्}}.'
+      hi: '{{सः}} का अर्थ ‘वह (पुं.)’, {{सा}} ‘वह (स्त्री.)’, {{तत्}} ‘वह (नपुं.)’। ये पुंलिंग, स्त्रीलिंग और नपुंसक संज्ञा
+        के स्थान पर आते हैं: {{सः बालकः}} (वह बालक), {{सा बालिका}}, {{तत् फलम्}}।'
+    items:
+    - id: i0
+      sa: सः
+      meaning:
+        en: he, that
+        hi: वह
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: सा
+      meaning:
+        en: she, that
+        hi: वह (स्त्री)
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i2
+      sa: तत्
+      meaning:
+        en: it, that
+        hi: वह (नपुं.)
+      check:
+        type: subanta
+        stem: तद्
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: sum
   kind: summary
   title:

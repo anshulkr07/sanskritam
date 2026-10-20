@@ -25,7 +25,8 @@ cards:
     hi: ओ बोलने वाला दराज़
   depth: core
   image:
-    brief: A circle of small spirits with hands cupped to their ears around the Vetāla who is also listening, head tilted; Śuka hopping; Dādī smiling; Dhātuka ticking his ledger; firelight.
+    brief: A circle of small spirits with hands cupped to their ears around the Vetāla who is also listening, head tilted;
+      Śuka hopping; Dādī smiling; Dhātuka ticking his ledger; firelight.
     alt:
       en: A circle of small spirits cup their ears while a grey spirit listens with a tilted head
       hi: कान पर हाथ रखे नन्हे भूतों का घेरा, सिर टेढ़ा कर सुनता भूरा भूत
@@ -39,10 +40,18 @@ cards:
     place: smashana
     ratio: '4:3'
     id: vc2-kr-s1
-    text_in_image: ["श्रु", "शृणोति", "कृ", "करोति"]
+    text_in_image:
+    - श्रु
+    - शृणोति
+    - कृ
+    - करोति
   narration:
-    en: 'Two drawers at once, the fifth and the eighth, because they sound alike. “Listen,” says the Vetāla, cupping a hand to his ear. “शृणोति. करोति.” The hands of every spirit in the circle go to their ears; a ring of small shapes echoes “-ओति, -ओति.” Śuka hops: “It is the hearing and the doing. He hears, he does.”'
-    hi: 'एक साथ दो दराज़, पाँचवाँ और आठवाँ, क्योंकि वे एक जैसे सुनाई देते हैं। “सुनो,” वेताल कान पर हाथ रखकर कहता है। “शृणोति। करोति।” घेरे के हर भूत का हाथ कान पर जाता है; नन्ही आकृतियों का घेरा गूँजता है “-ओति, -ओति।” शुक उछलता है: “यह सुनना और करना है। वह सुनता है, वह करता है।”'
+    en: 'Two drawers at once, the fifth and the eighth, because they sound alike. “Listen,” says the Vetāla, cupping a hand
+      to his ear. “शृणोति. करोति.” The hands of every spirit in the circle go to their ears; a ring of small shapes echoes
+      “-ओति, -ओति.” Śuka hops: “It is the hearing and the doing. He hears, he does.”'
+    hi: 'एक साथ दो दराज़, पाँचवाँ और आठवाँ, क्योंकि वे एक जैसे सुनाई देते हैं। “सुनो,” वेताल कान पर हाथ रखकर कहता है। “शृणोति।
+      करोति।” घेरे के हर भूत का हाथ कान पर जाता है; नन्ही आकृतियों का घेरा गूँजता है “-ओति, -ओति।” शुक उछलता है: “यह सुनना
+      और करना है। वह सुनता है, वह करता है।”'
   lines:
   - speaker: vetala
     sa: शृणोति
@@ -64,8 +73,62 @@ cards:
   skills:
   - verb.class-5-8
   body:
-    en: 'Class 5, {{स्वादि}}, adds {{-नु-}} (strong {{-नो-}}): {{आप्}} gives {{आप्नोति}} (gets), {{चि}} gives {{चिनोति}} (gathers), {{शक्}} gives {{शक्नोति}} (is able). {{श्रु}} follows it by a special rule: {{शृणोति}}. Class 8, {{तनादि}}, adds {{-उ-}} (strong {{-ओ-}}): {{कृ}} gives {{करोति}}, {{तन्}} gives {{तनोति}} (stretches).'
-    hi: 'गण 5, {{स्वादि}}, {{-नु-}} जोड़ता है (बलवान् {{-नो-}}): {{आप्}} से {{आप्नोति}} (पाता है), {{चि}} से {{चिनोति}} (चुनता है), {{शक्}} से {{शक्नोति}} (समर्थ है)। {{श्रु}} विशेष नियम से इसी का अनुसरण करता है: {{शृणोति}}। गण 8, {{तनादि}}, {{-उ-}} जोड़ता है (बलवान् {{-ओ-}}): {{कृ}} से {{करोति}}, {{तन्}} से {{तनोति}} (फैलाता है)।'
+    en: 'Class 5, {{स्वादि}}, adds {{-नु-}} (strong {{-नो-}}): {{आप्}} gives {{आप्नोति}} (gets), {{चि}} gives {{चिनोति}} (gathers),
+      {{शक्}} gives {{शक्नोति}} (is able). {{श्रु}} follows it by a special rule: {{शृणोति}}. Class 8, {{तनादि}}, adds {{-उ-}}
+      (strong {{-ओ-}}): {{कृ}} gives {{करोति}}, {{तन्}} gives {{तनोति}} (stretches).'
+    hi: 'गण 5, {{स्वादि}}, {{-नु-}} जोड़ता है (बलवान् {{-नो-}}): {{आप्}} से {{आप्नोति}} (पाता है), {{चि}} से {{चिनोति}} (चुनता
+      है), {{शक्}} से {{शक्नोति}} (समर्थ है)। {{श्रु}} विशेष नियम से इसी का अनुसरण करता है: {{शृणोति}}। गण 8, {{तनादि}}, {{-उ-}}
+      जोड़ता है (बलवान् {{-ओ-}}): {{कृ}} से {{करोति}}, {{तन्}} से {{तनोति}} (फैलाता है)।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Class 5, {{स्वादि}}, adds {{-नु-}} (strong {{-नो-}}): {{आप्}} gives {{आप्नोति}} (gets), {{चि}} gives {{चिनोति}}
+        (gathers), {{शक्}} gives {{शक्नोति}} (is able). {{श्रु}} follows it by a special rule: {{शृणोति}}. Class 8, {{तनादि}},
+        adds {{-उ-}} (strong {{-ओ-}}): {{कृ}} gives {{करोति}}, {{तन्}} gives {{तनोति}} (stretches).'
+      hi: 'गण 5, {{स्वादि}}, {{-नु-}} जोड़ता है (बलवान् {{-नो-}}): {{आप्}} से {{आप्नोति}} (पाता है), {{चि}} से {{चिनोति}}
+        (चुनता है), {{शक्}} से {{शक्नोति}} (समर्थ है)। {{श्रु}} विशेष नियम से इसी का अनुसरण करता है: {{शृणोति}}। गण 8, {{तनादि}},
+        {{-उ-}} जोड़ता है (बलवान् {{-ओ-}}): {{कृ}} से {{करोति}}, {{तन्}} से {{तनोति}} (फैलाता है)।'
+    items:
+    - id: i0
+      sa: स्वादि
+    - id: i1
+      sa: -नु-
+    - id: i2
+      sa: -नो-
+    - id: i3
+      sa: आप्
+    - id: i4
+      sa: आप्नोति
+    - id: i5
+      sa: चि
+    - id: i6
+      sa: चिनोति
+    - id: i7
+      sa: शक्
+    - id: i8
+      sa: शक्नोति
+    - id: i9
+      sa: श्रु
+    - id: i10
+      sa: शृणोति
+    - id: i11
+      sa: तनादि
+    - id: i12
+      sa: -उ-
+    - id: i13
+      sa: -ओ-
+    - id: i14
+      sa: कृ
+    - id: i15
+      sa: करोति
+    - id: i16
+      sa: तन्
+    - id: i17
+      sa: तनोति
 - id: tb1
   kind: table
   title:
@@ -283,6 +346,56 @@ cards:
   - sa: श्रुति
   - correct: true
     sa: शृणोति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 5, {{स्वादि}}, adds {{-नु-}} (strong {{-नो-}}): {{आप्}} gives {{आप्नोति}} (gets), {{चि}} gives {{चिनोति}}
+        (gathers), {{शक्}} gives {{शक्नोति}} (is able). {{श्रु}} follows it by a special rule: {{शृणोति}}. Class 8, {{तनादि}},
+        adds {{-उ-}} (strong {{-ओ-}}): {{कृ}} gives {{करोति}}, {{तन्}} gives {{तनोति}} (stretches).'
+      hi: 'गण 5, {{स्वादि}}, {{-नु-}} जोड़ता है (बलवान् {{-नो-}}): {{आप्}} से {{आप्नोति}} (पाता है), {{चि}} से {{चिनोति}}
+        (चुनता है), {{शक्}} से {{शक्नोति}} (समर्थ है)। {{श्रु}} विशेष नियम से इसी का अनुसरण करता है: {{शृणोति}}। गण 8, {{तनादि}},
+        {{-उ-}} जोड़ता है (बलवान् {{-ओ-}}): {{कृ}} से {{करोति}}, {{तन्}} से {{तनोति}} (फैलाता है)।'
+    items:
+    - id: i0
+      sa: स्वादि
+    - id: i1
+      sa: -नु-
+    - id: i2
+      sa: -नो-
+    - id: i3
+      sa: आप्
+    - id: i4
+      sa: आप्नोति
+    - id: i5
+      sa: चि
+    - id: i6
+      sa: चिनोति
+    - id: i7
+      sa: शक्
+    - id: i8
+      sa: शक्नोति
+    - id: i9
+      sa: श्रु
+    - id: i10
+      sa: शृणोति
+    - id: i11
+      sa: तनादि
+    - id: i12
+      sa: -उ-
+    - id: i13
+      sa: -ओ-
+    - id: i14
+      sa: कृ
+    - id: i15
+      sa: करोति
+    - id: i16
+      sa: तन्
+    - id: i17
+      sa: तनोति
 - id: p2
   kind: practice
   depth: core
@@ -303,6 +416,56 @@ cards:
   - रोति
   - कृ
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 5, {{स्वादि}}, adds {{-नु-}} (strong {{-नो-}}): {{आप्}} gives {{आप्नोति}} (gets), {{चि}} gives {{चिनोति}}
+        (gathers), {{शक्}} gives {{शक्नोति}} (is able). {{श्रु}} follows it by a special rule: {{शृणोति}}. Class 8, {{तनादि}},
+        adds {{-उ-}} (strong {{-ओ-}}): {{कृ}} gives {{करोति}}, {{तन्}} gives {{तनोति}} (stretches).'
+      hi: 'गण 5, {{स्वादि}}, {{-नु-}} जोड़ता है (बलवान् {{-नो-}}): {{आप्}} से {{आप्नोति}} (पाता है), {{चि}} से {{चिनोति}}
+        (चुनता है), {{शक्}} से {{शक्नोति}} (समर्थ है)। {{श्रु}} विशेष नियम से इसी का अनुसरण करता है: {{शृणोति}}। गण 8, {{तनादि}},
+        {{-उ-}} जोड़ता है (बलवान् {{-ओ-}}): {{कृ}} से {{करोति}}, {{तन्}} से {{तनोति}} (फैलाता है)।'
+    items:
+    - id: i0
+      sa: स्वादि
+    - id: i1
+      sa: -नु-
+    - id: i2
+      sa: -नो-
+    - id: i3
+      sa: आप्
+    - id: i4
+      sa: आप्नोति
+    - id: i5
+      sa: चि
+    - id: i6
+      sa: चिनोति
+    - id: i7
+      sa: शक्
+    - id: i8
+      sa: शक्नोति
+    - id: i9
+      sa: श्रु
+    - id: i10
+      sa: शृणोति
+    - id: i11
+      sa: तनादि
+    - id: i12
+      sa: -उ-
+    - id: i13
+      sa: -ओ-
+    - id: i14
+      sa: कृ
+    - id: i15
+      sa: करोति
+    - id: i16
+      sa: तन्
+    - id: i17
+      sa: तनोति
 - id: p3
   kind: practice
   depth: core
@@ -332,6 +495,56 @@ cards:
   - left:
       sa: तन्
     right:
+      sa: तनोति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 5, {{स्वादि}}, adds {{-नु-}} (strong {{-नो-}}): {{आप्}} gives {{आप्नोति}} (gets), {{चि}} gives {{चिनोति}}
+        (gathers), {{शक्}} gives {{शक्नोति}} (is able). {{श्रु}} follows it by a special rule: {{शृणोति}}. Class 8, {{तनादि}},
+        adds {{-उ-}} (strong {{-ओ-}}): {{कृ}} gives {{करोति}}, {{तन्}} gives {{तनोति}} (stretches).'
+      hi: 'गण 5, {{स्वादि}}, {{-नु-}} जोड़ता है (बलवान् {{-नो-}}): {{आप्}} से {{आप्नोति}} (पाता है), {{चि}} से {{चिनोति}}
+        (चुनता है), {{शक्}} से {{शक्नोति}} (समर्थ है)। {{श्रु}} विशेष नियम से इसी का अनुसरण करता है: {{शृणोति}}। गण 8, {{तनादि}},
+        {{-उ-}} जोड़ता है (बलवान् {{-ओ-}}): {{कृ}} से {{करोति}}, {{तन्}} से {{तनोति}} (फैलाता है)।'
+    items:
+    - id: i0
+      sa: स्वादि
+    - id: i1
+      sa: -नु-
+    - id: i2
+      sa: -नो-
+    - id: i3
+      sa: आप्
+    - id: i4
+      sa: आप्नोति
+    - id: i5
+      sa: चि
+    - id: i6
+      sa: चिनोति
+    - id: i7
+      sa: शक्
+    - id: i8
+      sa: शक्नोति
+    - id: i9
+      sa: श्रु
+    - id: i10
+      sa: शृणोति
+    - id: i11
+      sa: तनादि
+    - id: i12
+      sa: -उ-
+    - id: i13
+      sa: -ओ-
+    - id: i14
+      sa: कृ
+    - id: i15
+      sa: करोति
+    - id: i16
+      sa: तन्
+    - id: i17
       sa: तनोति
 - id: e1
   kind: explore
@@ -374,8 +587,12 @@ cards:
   gate: true
   story:
     success:
-      en: '“कुर्वन्ति,” you say, and every spirit in the circle drops its hands from its ears. A hush, and then a sound like a great number of very small tools being laid down at once: they have heard, they are doing. Drawers five and eight shut, one after the other, with the softest clicks of all.'
-      hi: '“कुर्वन्ति,” आप कहते हैं, और घेरे का हर भूत अपने कान से हाथ हटा लेता है। एक सन्नाटा, और फिर ऐसी आवाज़ जैसे बहुत-से नन्हे औज़ार एक साथ रखे जा रहे हों: उन्होंने सुना, वे कर रहे हैं। दराज़ पाँच और आठ बारी-बारी बन्द होते हैं, सबसे मुलायम खट के साथ।'
+      en: '“कुर्वन्ति,” you say, and every spirit in the circle drops its hands from its ears. A hush, and then a sound like
+        a great number of very small tools being laid down at once: they have heard, they are doing. Drawers five and eight
+        shut, one after the other, with the softest clicks of all.'
+      hi: '“कुर्वन्ति,” आप कहते हैं, और घेरे का हर भूत अपने कान से हाथ हटा लेता है। एक सन्नाटा, और फिर ऐसी आवाज़ जैसे बहुत-से
+        नन्हे औज़ार एक साथ रखे जा रहे हों: उन्होंने सुना, वे कर रहे हैं। दराज़ पाँच और आठ बारी-बारी बन्द होते हैं, सबसे मुलायम
+        खट के साथ।'
     failure:
       en: 'The circle keeps listening. They do: {{कुर्वन्ति}}.'
       hi: 'घेरा सुनता रहता है। वे करते हैं: {{कुर्वन्ति}}।'
@@ -384,6 +601,56 @@ cards:
   - sa: कुरुन्ति
   - correct: true
     sa: कुर्वन्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 5, {{स्वादि}}, adds {{-नु-}} (strong {{-नो-}}): {{आप्}} gives {{आप्नोति}} (gets), {{चि}} gives {{चिनोति}}
+        (gathers), {{शक्}} gives {{शक्नोति}} (is able). {{श्रु}} follows it by a special rule: {{शृणोति}}. Class 8, {{तनादि}},
+        adds {{-उ-}} (strong {{-ओ-}}): {{कृ}} gives {{करोति}}, {{तन्}} gives {{तनोति}} (stretches).'
+      hi: 'गण 5, {{स्वादि}}, {{-नु-}} जोड़ता है (बलवान् {{-नो-}}): {{आप्}} से {{आप्नोति}} (पाता है), {{चि}} से {{चिनोति}}
+        (चुनता है), {{शक्}} से {{शक्नोति}} (समर्थ है)। {{श्रु}} विशेष नियम से इसी का अनुसरण करता है: {{शृणोति}}। गण 8, {{तनादि}},
+        {{-उ-}} जोड़ता है (बलवान् {{-ओ-}}): {{कृ}} से {{करोति}}, {{तन्}} से {{तनोति}} (फैलाता है)।'
+    items:
+    - id: i0
+      sa: स्वादि
+    - id: i1
+      sa: -नु-
+    - id: i2
+      sa: -नो-
+    - id: i3
+      sa: आप्
+    - id: i4
+      sa: आप्नोति
+    - id: i5
+      sa: चि
+    - id: i6
+      sa: चिनोति
+    - id: i7
+      sa: शक्
+    - id: i8
+      sa: शक्नोति
+    - id: i9
+      sa: श्रु
+    - id: i10
+      sa: शृणोति
+    - id: i11
+      sa: तनादि
+    - id: i12
+      sa: -उ-
+    - id: i13
+      sa: -ओ-
+    - id: i14
+      sa: कृ
+    - id: i15
+      sa: करोति
+    - id: i16
+      sa: तन्
+    - id: i17
+      sa: तनोति
 - id: pn
   kind: teach
   title:
@@ -397,8 +664,40 @@ cards:
   - 3.1.79
   - 3.1.74
   body:
-    en: 'Sūtra 3.1.73, {{स्वादिभ्यः श्नुः}}, adds {{श्नु}} to class 5, and 3.1.79, {{तनादिकृञ्भ्य उः}}, adds {{उ}} to class 8 and to {{कृ}}. And 3.1.74, {{श्रुवः शृ च}}, gives {{श्रु}} the {{श्नु}} sign and turns it into {{शृ}}: {{शृणोति}}.'
-    hi: 'सूत्र 3.1.73, {{स्वादिभ्यः श्नुः}}, गण 5 में {{श्नु}} जोड़ता है, और 3.1.79, {{तनादिकृञ्भ्य उः}}, गण 8 और {{कृ}} में {{उ}} जोड़ता है। और 3.1.74, {{श्रुवः शृ च}}, {{श्रु}} को {{श्नु}} चिह्न देता है और उसे {{शृ}} बना देता है: {{शृणोति}}।'
+    en: 'Sūtra 3.1.73, {{स्वादिभ्यः श्नुः}}, adds {{श्नु}} to class 5, and 3.1.79, {{तनादिकृञ्भ्य उः}}, adds {{उ}} to class
+      8 and to {{कृ}}. And 3.1.74, {{श्रुवः शृ च}}, gives {{श्रु}} the {{श्नु}} sign and turns it into {{शृ}}: {{शृणोति}}.'
+    hi: 'सूत्र 3.1.73, {{स्वादिभ्यः श्नुः}}, गण 5 में {{श्नु}} जोड़ता है, और 3.1.79, {{तनादिकृञ्भ्य उः}}, गण 8 और {{कृ}} में
+      {{उ}} जोड़ता है। और 3.1.74, {{श्रुवः शृ च}}, {{श्रु}} को {{श्नु}} चिह्न देता है और उसे {{शृ}} बना देता है: {{शृणोति}}।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Sūtra 3.1.73, {{स्वादिभ्यः श्नुः}}, adds {{श्नु}} to class 5, and 3.1.79, {{तनादिकृञ्भ्य उः}}, adds {{उ}} to class
+        8 and to {{कृ}}. And 3.1.74, {{श्रुवः शृ च}}, gives {{श्रु}} the {{श्नु}} sign and turns it into {{शृ}}: {{शृणोति}}.'
+      hi: 'सूत्र 3.1.73, {{स्वादिभ्यः श्नुः}}, गण 5 में {{श्नु}} जोड़ता है, और 3.1.79, {{तनादिकृञ्भ्य उः}}, गण 8 और {{कृ}}
+        में {{उ}} जोड़ता है। और 3.1.74, {{श्रुवः शृ च}}, {{श्रु}} को {{श्नु}} चिह्न देता है और उसे {{शृ}} बना देता है: {{शृणोति}}।'
+    items:
+    - id: i0
+      sa: स्वादिभ्यः श्नुः
+    - id: i1
+      sa: श्नु
+    - id: i2
+      sa: तनादिकृञ्भ्य उः
+    - id: i3
+      sa: उ
+    - id: i4
+      sa: कृ
+    - id: i5
+      sa: श्रुवः शृ च
+    - id: i6
+      sa: श्रु
+    - id: i7
+      sa: शृ
+    - id: i8
+      sa: शृणोति
 - id: sum
   kind: summary
   title:

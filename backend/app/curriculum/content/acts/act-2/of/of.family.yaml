@@ -21,7 +21,9 @@ cards:
     hi: दादी वृक्ष बनाती हैं
   depth: core
   image:
-    brief: Dādī on the floor mat of the Ācārya's lamplit house drawing a family tree in her cloth-bound notebook with a reed pen, a trunk with many named branches; you leaning over her shoulder; the slim golden spirit's lamp glowing brighter as each name is read; Śuka on the shelf.
+    brief: Dādī on the floor mat of the Ācārya's lamplit house drawing a family tree in her cloth-bound notebook with a reed
+      pen, a trunk with many named branches; you leaning over her shoulder; the slim golden spirit's lamp glowing brighter
+      as each name is read; Śuka on the shelf.
     alt:
       en: A grandmother draws a family tree in her notebook while a golden spirit's lamp brightens
       hi: कॉपी में वंशवृक्ष बनाती दादी और उज्ज्वल होता भूत का दीपक
@@ -34,10 +36,20 @@ cards:
     place: pathashala
     ratio: '4:3'
     id: of-family-s1
-    text_in_image: ["पिता", "माता", "भ्राता", "भगिनी", "पुत्रः", "पितामही"]
+    text_in_image:
+    - पिता
+    - माता
+    - भ्राता
+    - भगिनी
+    - पुत्रः
+    - पितामही
   narration:
-    en: 'That evening Dādī takes out her cloth-bound notebook and draws a tree for you: a trunk and many branches, each with a name. “Mother. Father. Brother. Sister. Grandmother. Whose are they? Yours.” The golden spirit Smṛtikā watches, and each name she reads makes her lamp burn a little brighter.'
-    hi: 'उस शाम दादी अपनी कपड़े में बँधी कॉपी निकालती हैं और आपके लिए एक वृक्ष बनाती हैं: एक तना और कई शाखाएँ, हर एक पर एक नाम। “माता। पिता। भाई। बहन। दादी। ये किसके हैं? तुम्हारे।” सुनहरी स्मृतिका देखती है, और हर नाम पढ़ने पर उसका दीपक कुछ और उज्ज्वल हो उठता है।'
+    en: 'That evening Dādī takes out her cloth-bound notebook and draws a tree for you: a trunk and many branches, each with
+      a name. “Mother. Father. Brother. Sister. Grandmother. Whose are they? Yours.” The golden spirit Smṛtikā watches, and
+      each name she reads makes her lamp burn a little brighter.'
+    hi: 'उस शाम दादी अपनी कपड़े में बँधी कॉपी निकालती हैं और आपके लिए एक वृक्ष बनाती हैं: एक तना और कई शाखाएँ, हर एक पर एक
+      नाम। “माता। पिता। भाई। बहन। दादी। ये किसके हैं? तुम्हारे।” सुनहरी स्मृतिका देखती है, और हर नाम पढ़ने पर उसका दीपक कुछ
+      और उज्ज्वल हो उठता है।'
 - id: t1
   kind: teach
   title:
@@ -47,8 +59,10 @@ cards:
   skills:
   - case.gen-family
   body:
-    en: 'The sixth case of the pronouns says “my”, “your”, “his”, “her”: {{मम}} (my), {{तव}} (your), {{तस्य}} (his), {{तस्याः}} (her), {{अस्माकम्}} (our), {{युष्माकम्}} (your, many).'
-    hi: 'सर्वनामों की षष्ठी ‘मेरा’, ‘तेरा’, ‘उसका’ बताती है: {{मम}} (मेरा), {{तव}} (तेरा), {{तस्य}} (उसका), {{तस्याः}} (उसकी), {{अस्माकम्}} (हमारा), {{युष्माकम्}} (तुम सबका)।'
+    en: 'The sixth case of the pronouns says “my”, “your”, “his”, “her”: {{मम}} (my), {{तव}} (your), {{तस्य}} (his), {{तस्याः}}
+      (her), {{अस्माकम्}} (our), {{युष्माकम्}} (your, many).'
+    hi: 'सर्वनामों की षष्ठी ‘मेरा’, ‘तेरा’, ‘उसका’ बताती है: {{मम}} (मेरा), {{तव}} (तेरा), {{तस्य}} (उसका), {{तस्याः}} (उसकी),
+      {{अस्माकम्}} (हमारा), {{युष्माकम्}} (तुम सबका)।'
   rows:
   - sa: मम
     gloss:
@@ -110,6 +124,102 @@ cards:
       linga: Pum
       vibhakti: Sasthi
       vacana: Bahu
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: 'The sixth case of the pronouns says “my”, “your”, “his”, “her”: {{मम}} (my), {{तव}} (your), {{तस्य}} (his), {{तस्याः}}
+        (her), {{अस्माकम्}} (our), {{युष्माकम्}} (your, many).'
+      hi: 'सर्वनामों की षष्ठी ‘मेरा’, ‘तेरा’, ‘उसका’ बताती है: {{मम}} (मेरा), {{तव}} (तेरा), {{तस्य}} (उसका), {{तस्याः}} (उसकी),
+        {{अस्माकम्}} (हमारा), {{युष्माकम्}} (तुम सबका)।'
+    items:
+    - id: i0
+      sa: मम
+      meaning:
+        en: my, of me
+        hi: मेरा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i1
+      sa: तव
+      meaning:
+        en: your, of you
+        hi: तेरा
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i2
+      sa: तस्य
+      meaning:
+        en: his, of him
+        hi: उसका
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i3
+      sa: तस्याः
+      meaning:
+        en: her, of her
+        hi: उसकी
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i4
+      sa: अस्माकम्
+      meaning:
+        en: our, of us
+        hi: हमारा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+    - id: i5
+      sa: युष्माकम्
+      meaning:
+        en: your, of you all
+        hi: तुम सबका
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
 - id: tb1
   kind: table
   title:
@@ -249,8 +359,10 @@ cards:
   skills:
   - case.gen-family
   body:
-    en: Link names with the sixth case. {{मम माता}} (my mother), {{पितुः माता}} (father's mother) is {{पितामही}} (grandmother). {{मातुः पिता}} is {{मातामहः}} (mother's father).
-    hi: नामों को षष्ठी से जोड़िए। {{मम माता}} (मेरी माता), {{पितुः माता}} (पिता की माता) यानी {{पितामही}} (दादी)। {{मातुः पिता}} यानी {{मातामहः}} (नाना)।
+    en: Link names with the sixth case. {{मम माता}} (my mother), {{पितुः माता}} (father's mother) is {{पितामही}} (grandmother).
+      {{मातुः पिता}} is {{मातामहः}} (mother's father).
+    hi: नामों को षष्ठी से जोड़िए। {{मम माता}} (मेरी माता), {{पितुः माता}} (पिता की माता) यानी {{पितामही}} (दादी)। {{मातुः
+      पिता}} यानी {{मातामहः}} (नाना)।
   examples:
   - sa: मम माता।
     meaning:
@@ -321,6 +433,307 @@ cards:
         linga: Pum
         vibhakti: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: मम माता।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: my mother
+        hi: मेरी माता
+      words:
+      - sa: मम
+        gloss:
+          en: my
+          hi: मेरी
+      - sa: माता
+        gloss:
+          en: mother
+          hi: माता
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मम
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: my
+        hi: मेरी
+    - id: i2
+      sa: माता
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: mother
+        hi: माता
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मातृ}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: Link names with the sixth case. {{मम माता}} (my mother), {{पितुः माता}} (father's mother) is {{पितामही}} (grandmother).
+          {{मातुः पिता}} is {{मातामहः}} (mother's father).
+        hi: नामों को षष्ठी से जोड़िए। {{मम माता}} (मेरी माता), {{पितुः माता}} (पिता की माता) यानी {{पितामही}} (दादी)। {{मातुः
+          पिता}} यानी {{मातामहः}} (नाना)।
+    - id: i5
+      sa: मम माता।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: my mother
+        hi: मेरी माता
+      words:
+      - sa: मम
+        gloss:
+          en: my
+          hi: मेरी
+      - sa: माता
+        gloss:
+          en: mother
+          hi: माता
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: पितुः माता।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'the father''s mother: grandmother'
+        hi: 'पिता की माता: दादी'
+      words:
+      - sa: पितुः
+        gloss:
+          en: of the father
+          hi: पिता की
+        check:
+          type: subanta
+          stem: पितृ
+          linga: Pum
+          vibhakti: Sasthi
+          vacana: Eka
+      - sa: माता
+        gloss:
+          en: mother
+          hi: माता
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: पितुः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: of the father
+        hi: पिता की
+      check:
+        type: subanta
+        stem: पितृ
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पितृ}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{पितृ}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i2
+      sa: माता
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: mother
+        hi: माता
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मातृ}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: Link names with the sixth case. {{मम माता}} (my mother), {{पितुः माता}} (father's mother) is {{पितामही}} (grandmother).
+          {{मातुः पिता}} is {{मातामहः}} (mother's father).
+        hi: नामों को षष्ठी से जोड़िए। {{मम माता}} (मेरी माता), {{पितुः माता}} (पिता की माता) यानी {{पितामही}} (दादी)। {{मातुः
+          पिता}} यानी {{मातामहः}} (नाना)।
+    - id: i5
+      sa: पितुः माता।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'the father''s mother: grandmother'
+        hi: 'पिता की माता: दादी'
+      words:
+      - sa: पितुः
+        gloss:
+          en: of the father
+          hi: पिता की
+        check:
+          type: subanta
+          stem: पितृ
+          linga: Pum
+          vibhakti: Sasthi
+          vacana: Eka
+      - sa: माता
+        gloss:
+          en: mother
+          hi: माता
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: मातुः पिता।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: 'the mother''s father: maternal grandfather'
+        hi: 'माता के पिता: नाना'
+      words:
+      - sa: मातुः
+        gloss:
+          en: of the mother
+          hi: माता का
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Sasthi
+          vacana: Eka
+      - sa: पिता
+        gloss:
+          en: father
+          hi: पिता
+        check:
+          type: subanta
+          stem: पितृ
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: मातुः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: of the mother
+        hi: माता का
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मातृ}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i2
+      sa: पिता
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: father
+        hi: पिता
+      check:
+        type: subanta
+        stem: पितृ
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{पितृ}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{पितृ}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: Link names with the sixth case. {{मम माता}} (my mother), {{पितुः माता}} (father's mother) is {{पितामही}} (grandmother).
+          {{मातुः पिता}} is {{मातामहः}} (mother's father).
+        hi: नामों को षष्ठी से जोड़िए। {{मम माता}} (मेरी माता), {{पितुः माता}} (पिता की माता) यानी {{पितामही}} (दादी)। {{मातुः
+          पिता}} यानी {{मातामहः}} (नाना)।
+    - id: i5
+      sa: मातुः पिता।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: 'the mother''s father: maternal grandfather'
+        hi: 'माता के पिता: नाना'
+      words:
+      - sa: मातुः
+        gloss:
+          en: of the mother
+          hi: माता का
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Sasthi
+          vacana: Eka
+      - sa: पिता
+        gloss:
+          en: father
+          hi: पिता
+        check:
+          type: subanta
+          stem: पितृ
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
 - id: p1
   kind: practice
   depth: core
@@ -339,6 +752,102 @@ cards:
   - correct: true
     sa: मम माता
   - sa: माम् माता
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'The sixth case of the pronouns says “my”, “your”, “his”, “her”: {{मम}} (my), {{तव}} (your), {{तस्य}} (his), {{तस्याः}}
+        (her), {{अस्माकम्}} (our), {{युष्माकम्}} (your, many).'
+      hi: 'सर्वनामों की षष्ठी ‘मेरा’, ‘तेरा’, ‘उसका’ बताती है: {{मम}} (मेरा), {{तव}} (तेरा), {{तस्य}} (उसका), {{तस्याः}} (उसकी),
+        {{अस्माकम्}} (हमारा), {{युष्माकम्}} (तुम सबका)।'
+    items:
+    - id: i0
+      sa: मम
+      meaning:
+        en: my, of me
+        hi: मेरा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i1
+      sa: तव
+      meaning:
+        en: your, of you
+        hi: तेरा
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i2
+      sa: तस्य
+      meaning:
+        en: his, of him
+        hi: उसका
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i3
+      sa: तस्याः
+      meaning:
+        en: her, of her
+        hi: उसकी
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i4
+      sa: अस्माकम्
+      meaning:
+        en: our, of us
+        hi: हमारा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+    - id: i5
+      sa: युष्माकम्
+      meaning:
+        en: your, of you all
+        hi: तुम सबका
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
 - id: p2
   kind: practice
   depth: core
@@ -377,6 +886,102 @@ cards:
       text:
         en: sister
         hi: बहन
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'The sixth case of the pronouns says “my”, “your”, “his”, “her”: {{मम}} (my), {{तव}} (your), {{तस्य}} (his), {{तस्याः}}
+        (her), {{अस्माकम्}} (our), {{युष्माकम्}} (your, many).'
+      hi: 'सर्वनामों की षष्ठी ‘मेरा’, ‘तेरा’, ‘उसका’ बताती है: {{मम}} (मेरा), {{तव}} (तेरा), {{तस्य}} (उसका), {{तस्याः}} (उसकी),
+        {{अस्माकम्}} (हमारा), {{युष्माकम्}} (तुम सबका)।'
+    items:
+    - id: i0
+      sa: मम
+      meaning:
+        en: my, of me
+        hi: मेरा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i1
+      sa: तव
+      meaning:
+        en: your, of you
+        hi: तेरा
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i2
+      sa: तस्य
+      meaning:
+        en: his, of him
+        hi: उसका
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i3
+      sa: तस्याः
+      meaning:
+        en: her, of her
+        hi: उसकी
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i4
+      sa: अस्माकम्
+      meaning:
+        en: our, of us
+        hi: हमारा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+    - id: i5
+      sa: युष्माकम्
+      meaning:
+        en: your, of you all
+        hi: तुम सबका
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
 - id: e1
   kind: explore
   depth: core
@@ -418,8 +1023,10 @@ cards:
   gate: true
   story:
     success:
-      en: “मम पितामही आचार्यस्य शिष्या,” you say, and the old Ācārya laughs aloud. “So she is.” Dādī tears up a little. Smṛtikā's lamp burns so bright that every name on the tree shows through the page.
-      hi: “मम पितामही आचार्यस्य शिष्या,” आप कहते हैं, और बूढ़े आचार्य खुलकर हँस पड़ते हैं। “हाँ, वे हैं।” दादी की आँखें भर आती हैं। स्मृतिका का दीपक इतना उज्ज्वल जलता है कि वृक्ष का हर नाम पन्ने के आर-पार दिखता है।
+      en: “मम पितामही आचार्यस्य शिष्या,” you say, and the old Ācārya laughs aloud. “So she is.” Dādī tears up a little. Smṛtikā's
+        lamp burns so bright that every name on the tree shows through the page.
+      hi: “मम पितामही आचार्यस्य शिष्या,” आप कहते हैं, और बूढ़े आचार्य खुलकर हँस पड़ते हैं। “हाँ, वे हैं।” दादी की आँखें भर
+        आती हैं। स्मृतिका का दीपक इतना उज्ज्वल जलता है कि वृक्ष का हर नाम पन्ने के आर-पार दिखता है।
     failure:
       en: The tree stays dim. “My” is {{मम}}; then the person; then the teacher's pupil.
       hi: वृक्ष धुँधला रहता है। ‘मेरी’ है {{मम}}; फिर व्यक्ति; फिर आचार्य की शिष्या।
@@ -428,6 +1035,102 @@ cards:
   - पितामही
   - आचार्यस्य
   - शिष्या
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'The sixth case of the pronouns says “my”, “your”, “his”, “her”: {{मम}} (my), {{तव}} (your), {{तस्य}} (his), {{तस्याः}}
+        (her), {{अस्माकम्}} (our), {{युष्माकम्}} (your, many).'
+      hi: 'सर्वनामों की षष्ठी ‘मेरा’, ‘तेरा’, ‘उसका’ बताती है: {{मम}} (मेरा), {{तव}} (तेरा), {{तस्य}} (उसका), {{तस्याः}} (उसकी),
+        {{अस्माकम्}} (हमारा), {{युष्माकम्}} (तुम सबका)।'
+    items:
+    - id: i0
+      sa: मम
+      meaning:
+        en: my, of me
+        hi: मेरा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i1
+      sa: तव
+      meaning:
+        en: your, of you
+        hi: तेरा
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i2
+      sa: तस्य
+      meaning:
+        en: his, of him
+        hi: उसका
+      check:
+        type: subanta
+        stem: तद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · masculine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i3
+      sa: तस्याः
+      meaning:
+        en: her, of her
+        hi: उसकी
+      check:
+        type: subanta
+        stem: तद्
+        linga: Stri
+        vibhakti: Sasthi
+        vacana: Eka
+      feature:
+        en: 'Stem: {{तद्}} · feminine · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{तद्}} · {{स्त्रीलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+    - id: i4
+      sa: अस्माकम्
+      meaning:
+        en: our, of us
+        hi: हमारा
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+    - id: i5
+      sa: युष्माकम्
+      meaning:
+        en: your, of you all
+        hi: तुम सबका
+      check:
+        type: subanta
+        stem: युष्मद्
+        linga: Pum
+        vibhakti: Sasthi
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
 - id: sum
   kind: summary
   title:

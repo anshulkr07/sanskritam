@@ -28,6 +28,23 @@ cards:
   - correct: true
     sa: अच्
   - sa: यण्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Pāṇini needs short names for groups of sounds. Take a letter and a later marker: the name stands for that letter
+        and every sound between them, markers left out. So {{अच्}}, from अ to च्, is all the vowels; {{हल्}}, from ह to ल्,
+        is all the consonants.'
+      hi: 'पाणिनि को ध्वनि-समूहों के छोटे नाम चाहिए। एक अक्षर और उसके बाद का एक संकेत लीजिए: नाम उस अक्षर और बीच की हर ध्वनि
+        का है, संकेत छोड़कर। इसलिए {{अच्}}, अ से च् तक, सब स्वर है; {{हल्}}, ह से ल् तक, सब व्यञ्जन है।'
+    items:
+    - id: i0
+      sa: अच्
+    - id: i1
+      sa: हल्
 - id: p2
   kind: practice
   depth: core
@@ -66,6 +83,23 @@ cards:
       text:
         en: the four diphthongs
         hi: चार सन्ध्यक्षर
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Pāṇini needs short names for groups of sounds. Take a letter and a later marker: the name stands for that letter
+        and every sound between them, markers left out. So {{अच्}}, from अ to च्, is all the vowels; {{हल्}}, from ह to ल्,
+        is all the consonants.'
+      hi: 'पाणिनि को ध्वनि-समूहों के छोटे नाम चाहिए। एक अक्षर और उसके बाद का एक संकेत लीजिए: नाम उस अक्षर और बीच की हर ध्वनि
+        का है, संकेत छोड़कर। इसलिए {{अच्}}, अ से च् तक, सब स्वर है; {{हल्}}, ह से ल् तक, सब व्यञ्जन है।'
+    items:
+    - id: i0
+      sa: अच्
+    - id: i1
+      sa: हल्
 - id: p3
   kind: practice
   depth: core
@@ -84,6 +118,23 @@ cards:
   - correct: true
     sa: इ उ ऋ ऌ
   - sa: ऋ ऌ ए ओ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Pāṇini needs short names for groups of sounds. Take a letter and a later marker: the name stands for that letter
+        and every sound between them, markers left out. So {{अच्}}, from अ to च्, is all the vowels; {{हल्}}, from ह to ल्,
+        is all the consonants.'
+      hi: 'पाणिनि को ध्वनि-समूहों के छोटे नाम चाहिए। एक अक्षर और उसके बाद का एक संकेत लीजिए: नाम उस अक्षर और बीच की हर ध्वनि
+        का है, संकेत छोड़कर। इसलिए {{अच्}}, अ से च् तक, सब स्वर है; {{हल्}}, ह से ल् तक, सब व्यञ्जन है।'
+    items:
+    - id: i0
+      sa: अच्
+    - id: i1
+      sa: हल्
 - id: p4
   kind: practice
   depth: core
@@ -102,6 +153,31 @@ cards:
     sa: तस्य लोपः
   - sa: हलन्त्यम्
   - sa: आदिरन्त्येन सहेता
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A marker ({{इत्}}) is a sound that tells a rule what to do and then goes. 1.3.2: a nasalised vowel in the original
+        teaching is one. 1.3.3: so is a last consonant. 1.3.9 drops it ({{लोपः}}). So {{तिप्}} becomes {{ति}}, and {{लँट्}}
+        becomes {{ल्}}.'
+      hi: 'इत् वह ध्वनि है जो सूत्र को बताती है कि क्या करना है, और फिर चली जाती है। 1.3.2: मूल उपदेश में अनुनासिक स्वर इत्
+        है। 1.3.3: अन्तिम व्यञ्जन भी। 1.3.9 उसे हटाता है ({{लोपः}})। इसलिए {{तिप्}} से {{ति}} और {{लँट्}} से {{ल्}} बनता है।'
+    items:
+    - id: i0
+      sa: इत्
+    - id: i1
+      sa: लोपः
+    - id: i2
+      sa: तिप्
+    - id: i3
+      sa: ति
+    - id: i4
+      sa: लँट्
+    - id: i5
+      sa: ल्
 - id: p5
   kind: practice
   depth: core
@@ -132,6 +208,31 @@ cards:
       sa: सुँ
     right:
       sa: स्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A marker ({{इत्}}) is a sound that tells a rule what to do and then goes. 1.3.2: a nasalised vowel in the original
+        teaching is one. 1.3.3: so is a last consonant. 1.3.9 drops it ({{लोपः}}). So {{तिप्}} becomes {{ति}}, and {{लँट्}}
+        becomes {{ल्}}.'
+      hi: 'इत् वह ध्वनि है जो सूत्र को बताती है कि क्या करना है, और फिर चली जाती है। 1.3.2: मूल उपदेश में अनुनासिक स्वर इत्
+        है। 1.3.3: अन्तिम व्यञ्जन भी। 1.3.9 उसे हटाता है ({{लोपः}})। इसलिए {{तिप्}} से {{ति}} और {{लँट्}} से {{ल्}} बनता है।'
+    items:
+    - id: i0
+      sa: इत्
+    - id: i1
+      sa: लोपः
+    - id: i2
+      sa: तिप्
+    - id: i3
+      sa: ति
+    - id: i4
+      sa: लँट्
+    - id: i5
+      sa: ल्
 - id: p6
   kind: practice
   depth: core
@@ -156,6 +257,48 @@ cards:
   - text:
       en: in any order
       hi: किसी भी क्रम में
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: भू
+      meaning:
+        en: the root (1.3.1)
+        hi: धातु (1.3.1)
+    - id: i1
+      sa: भू + ल्
+      meaning:
+        en: 'the tense: present (3.2.123)'
+        hi: 'काल: वर्तमान (3.2.123)'
+    - id: i2
+      sa: भू + ति
+      meaning:
+        en: the ending for “he” (3.4.78)
+        hi: ‘वह’ का प्रत्यय (3.4.78)
+    - id: i3
+      sa: भू + अ + ति
+      meaning:
+        en: the joining {{अ}} (3.1.68)
+        hi: जोड़ने वाला {{अ}} (3.1.68)
+    - id: i4
+      sa: भो + अ + ति
+      meaning:
+        en: strengthening (7.3.84)
+        hi: गुण (7.3.84)
+    - id: i5
+      sa: भव् + अ + ति
+      meaning:
+        en: '{{ओ}} before {{अ}} becomes {{अव्}} (6.1.78)'
+        hi: '{{अ}} से पहले {{ओ}} का {{अव्}} (6.1.78)'
+    - id: i6
+      sa: भवति
+      meaning:
+        en: the word
+        hi: शब्द
 - id: p7
   kind: practice
   depth: core
@@ -183,6 +326,48 @@ cards:
   - ति
   - भू
   - अ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: भू
+      meaning:
+        en: the root (1.3.1)
+        hi: धातु (1.3.1)
+    - id: i1
+      sa: भू + ल्
+      meaning:
+        en: 'the tense: present (3.2.123)'
+        hi: 'काल: वर्तमान (3.2.123)'
+    - id: i2
+      sa: भू + ति
+      meaning:
+        en: the ending for “he” (3.4.78)
+        hi: ‘वह’ का प्रत्यय (3.4.78)
+    - id: i3
+      sa: भू + अ + ति
+      meaning:
+        en: the joining {{अ}} (3.1.68)
+        hi: जोड़ने वाला {{अ}} (3.1.68)
+    - id: i4
+      sa: भो + अ + ति
+      meaning:
+        en: strengthening (7.3.84)
+        hi: गुण (7.3.84)
+    - id: i5
+      sa: भव् + अ + ति
+      meaning:
+        en: '{{ओ}} before {{अ}} becomes {{अव्}} (6.1.78)'
+        hi: '{{अ}} से पहले {{ओ}} का {{अव्}} (6.1.78)'
+    - id: i6
+      sa: भवति
+      meaning:
+        en: the word
+        hi: शब्द
 - id: p8
   kind: practice
   depth: core
@@ -199,8 +384,18 @@ cards:
   gate: true
   story:
     success:
-      en: '“भवति,” you say, in the voice of one who has laid every stone, and the last alcove opens. Padikā steps into it, whole now, all four quarters of her, and turns. On the rim of the arch the line of the seers has risen in the stone: एकं सद् विप्रा बहुधा वदन्ति (Ṛgveda 1.164.46). “What is, is one,” she says. “The wise speak of it in many ways.” Inside the alcove there is no leaf. There is a lamp, and the sound of your own voice, which the cave has kept. Lubdhaka stands at the arch with his satchel in his hand. He looks at the lamp for a long time. Then he sets the satchel down on the floor, and sits, and says to Dādī, quietly: “Teach me the first line.”'
-      hi: '“भवति,” आप कहते हैं, उस की आवाज़ में जिसने हर पत्थर बिछाया है, और अन्तिम आला खुल जाता है। पदिका उसमें प्रवेश करती है, अब पूरी, अपने चारों चरणों के साथ, और मुड़ती है। मेहराब के किनारे पर द्रष्टाओं की पंक्ति पत्थर में उभर आई है: एकं सद् विप्रा बहुधा वदन्ति (ऋग्वेद 1.164.46)। “जो है, वह एक है,” वह कहती है। “ज्ञानी उसे अनेक प्रकार से कहते हैं।” आले के भीतर कोई पत्र नहीं है। एक दीपक है, और आपकी अपनी आवाज़ की गूँज, जिसे गुफा ने सँजो रखा है। लुब्धक मेहराब पर अपना झोला हाथ में लिए खड़ा है। वह देर तक दीपक को देखता है। फिर वह झोला फर्श पर रख देता है, और बैठ जाता है, और दादी से धीरे से कहता है: “मुझे पहली पंक्ति सिखाइए।”'
+      en: '“भवति,” you say, in the voice of one who has laid every stone, and the last alcove opens. Padikā steps into it,
+        whole now, all four quarters of her, and turns. On the rim of the arch the line of the seers has risen in the stone:
+        एकं सद् विप्रा बहुधा वदन्ति (Ṛgveda 1.164.46). “What is, is one,” she says. “The wise speak of it in many ways.” Inside
+        the alcove there is no leaf. There is a lamp, and the sound of your own voice, which the cave has kept. Lubdhaka stands
+        at the arch with his satchel in his hand. He looks at the lamp for a long time. Then he sets the satchel down on the
+        floor, and sits, and says to Dādī, quietly: “Teach me the first line.”'
+      hi: '“भवति,” आप कहते हैं, उस की आवाज़ में जिसने हर पत्थर बिछाया है, और अन्तिम आला खुल जाता है। पदिका उसमें प्रवेश करती
+        है, अब पूरी, अपने चारों चरणों के साथ, और मुड़ती है। मेहराब के किनारे पर द्रष्टाओं की पंक्ति पत्थर में उभर आई है: एकं
+        सद् विप्रा बहुधा वदन्ति (ऋग्वेद 1.164.46)। “जो है, वह एक है,” वह कहती है। “ज्ञानी उसे अनेक प्रकार से कहते हैं।” आले
+        के भीतर कोई पत्र नहीं है। एक दीपक है, और आपकी अपनी आवाज़ की गूँज, जिसे गुफा ने सँजो रखा है। लुब्धक मेहराब पर अपना
+        झोला हाथ में लिए खड़ा है। वह देर तक दीपक को देखता है। फिर वह झोला फर्श पर रख देता है, और बैठ जाता है, और दादी से धीरे
+        से कहता है: “मुझे पहली पंक्ति सिखाइए।”'
     failure:
       en: 'The stones stay dark. The order is: root, tense, ending, joining {{अ}}, strengthening, {{ओ}} → {{अव्}}.'
       hi: 'पत्थर अँधेरे रहते हैं। क्रम है: धातु, काल, प्रत्यय, जोड़ने वाला {{अ}}, गुण, {{ओ}} → {{अव्}}।'
@@ -211,3 +406,45 @@ cards:
   - भू + अ + ति
   - भो + अ + ति
   - भव् + अ + ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: भू
+      meaning:
+        en: the root (1.3.1)
+        hi: धातु (1.3.1)
+    - id: i1
+      sa: भू + ल्
+      meaning:
+        en: 'the tense: present (3.2.123)'
+        hi: 'काल: वर्तमान (3.2.123)'
+    - id: i2
+      sa: भू + ति
+      meaning:
+        en: the ending for “he” (3.4.78)
+        hi: ‘वह’ का प्रत्यय (3.4.78)
+    - id: i3
+      sa: भू + अ + ति
+      meaning:
+        en: the joining {{अ}} (3.1.68)
+        hi: जोड़ने वाला {{अ}} (3.1.68)
+    - id: i4
+      sa: भो + अ + ति
+      meaning:
+        en: strengthening (7.3.84)
+        hi: गुण (7.3.84)
+    - id: i5
+      sa: भव् + अ + ति
+      meaning:
+        en: '{{ओ}} before {{अ}} becomes {{अव्}} (6.1.78)'
+        hi: '{{अ}} से पहले {{ओ}} का {{अव्}} (6.1.78)'
+    - id: i6
+      sa: भवति
+      meaning:
+        en: the word
+        hi: शब्द

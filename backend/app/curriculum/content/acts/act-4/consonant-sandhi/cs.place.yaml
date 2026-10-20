@@ -24,7 +24,8 @@ cards:
     hi: ग्यारहवीं प्रतिमा
   depth: core
   image:
-    brief: The eleventh statue, smooth and smiling calmly, with her palm turned up; Śuka looking at the stone beside her; Dādī tracing a letter in the dust with one finger; the long hall lit by oil lamps.
+    brief: The eleventh statue, smooth and smiling calmly, with her palm turned up; Śuka looking at the stone beside her;
+      Dādī tracing a letter in the dust with one finger; the long hall lit by oil lamps.
     alt:
       en: A smooth smiling statue with her palm turned up while an old woman traces a letter in the dust
       hi: चिकनी मुस्कराती प्रतिमा, हथेली ऊपर किए; धूल में अक्षर खींचती दादी
@@ -37,10 +38,15 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: cs-place-s1
-    text_in_image: ["च"]
+    text_in_image:
+    - च
   narration:
-    en: 'The eleventh statue is smooth and wears a calm smile. “सज्जनः,” she says: “a good person.” “तच्च”: “and that.” Śuka looks at the stone. “In सज्जनः there was a त from सत्. Now there is a ज. In तच्च there was a त. Now there is a च.” “It has moved,” says Dādī. “A त beside a palatal sound becomes palatal too. The place spreads.”'
-    hi: 'ग्यारहवीं प्रतिमा चिकनी है और शान्त मुस्कान पहने है। “सज्जनः,” वह कहती है: “भला मनुष्य।” “तच्च”: “और वह।” शुक पत्थर को देखता है। “सज्जनः में सत् का त था। अब ज है। तच्च में त था। अब च है।” “वह खिसक गया है,” दादी कहती हैं। “तालव्य ध्वनि के पास त भी तालव्य हो जाता है। स्थान फैलता है।”'
+    en: 'The eleventh statue is smooth and wears a calm smile. “सज्जनः,” she says: “a good person.” “तच्च”: “and that.” Śuka
+      looks at the stone. “In सज्जनः there was a त from सत्. Now there is a ज. In तच्च there was a त. Now there is a च.” “It
+      has moved,” says Dādī. “A त beside a palatal sound becomes palatal too. The place spreads.”'
+    hi: 'ग्यारहवीं प्रतिमा चिकनी है और शान्त मुस्कान पहने है। “सज्जनः,” वह कहती है: “भला मनुष्य।” “तच्च”: “और वह।” शुक पत्थर
+      को देखता है। “सज्जनः में सत् का त था। अब ज है। तच्च में त था। अब च है।” “वह खिसक गया है,” दादी कहती हैं। “तालव्य ध्वनि
+      के पास त भी तालव्य हो जाता है। स्थान फैलता है।”'
   lines:
   - speaker: vyanjanika
     sa: सज्जनः
@@ -61,13 +67,65 @@ cards:
   skills:
   - sandhi.place
   body:
-    en: 'A dental {{त्}} or {{न्}} moves to the place of the sound that follows: before {{च}}/{{छ}}/{{ज}}/{{श}} it becomes {{च्}}/{{ज्}}, before {{ट}} it becomes {{ट्}}, before {{ल}} it becomes {{ल्}}. {{सत् + जनः}} gives {{सज्जनः}}; {{तत् + च}} gives {{तच्च}}; {{तत् + लीनः}} gives {{तल्लीनः}}.'
-    hi: 'दन्त्य {{त्}} या {{न्}} अगली ध्वनि के स्थान पर चला जाता है: {{च}}/{{छ}}/{{ज}}/{{श}} से पहले {{च्}}/{{ज्}}, {{ट}} से पहले {{ट्}}, {{ल}} से पहले {{ल्}}। {{सत् + जनः}} से {{सज्जनः}}; {{तत् + च}} से {{तच्च}}; {{तत् + लीनः}} से {{तल्लीनः}}।'
+    en: 'A dental {{त्}} or {{न्}} moves to the place of the sound that follows: before {{च}}/{{छ}}/{{ज}}/{{श}} it becomes
+      {{च्}}/{{ज्}}, before {{ट}} it becomes {{ट्}}, before {{ल}} it becomes {{ल्}}. {{सत् + जनः}} gives {{सज्जनः}}; {{तत्
+      + च}} gives {{तच्च}}; {{तत् + लीनः}} gives {{तल्लीनः}}.'
+    hi: 'दन्त्य {{त्}} या {{न्}} अगली ध्वनि के स्थान पर चला जाता है: {{च}}/{{छ}}/{{ज}}/{{श}} से पहले {{च्}}/{{ज्}}, {{ट}}
+      से पहले {{ट्}}, {{ल}} से पहले {{ल्}}। {{सत् + जनः}} से {{सज्जनः}}; {{तत् + च}} से {{तच्च}}; {{तत् + लीनः}} से {{तल्लीनः}}।'
   term:
     sa: श्चुत्वम्
     meaning:
       en: dentals becoming palatals
       hi: दन्त्य का तालव्य बनना
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'A dental {{त्}} or {{न्}} moves to the place of the sound that follows: before {{च}}/{{छ}}/{{ज}}/{{श}} it becomes
+        {{च्}}/{{ज्}}, before {{ट}} it becomes {{ट्}}, before {{ल}} it becomes {{ल्}}. {{सत् + जनः}} gives {{सज्जनः}}; {{तत्
+        + च}} gives {{तच्च}}; {{तत् + लीनः}} gives {{तल्लीनः}}.'
+      hi: 'दन्त्य {{त्}} या {{न्}} अगली ध्वनि के स्थान पर चला जाता है: {{च}}/{{छ}}/{{ज}}/{{श}} से पहले {{च्}}/{{ज्}}, {{ट}}
+        से पहले {{ट्}}, {{ल}} से पहले {{ल्}}। {{सत् + जनः}} से {{सज्जनः}}; {{तत् + च}} से {{तच्च}}; {{तत् + लीनः}} से {{तल्लीनः}}।'
+    items:
+    - id: i0
+      sa: त्
+    - id: i1
+      sa: न्
+    - id: i2
+      sa: च
+    - id: i3
+      sa: छ
+    - id: i4
+      sa: ज
+    - id: i5
+      sa: श
+    - id: i6
+      sa: च्
+    - id: i7
+      sa: ज्
+    - id: i8
+      sa: ट
+    - id: i9
+      sa: ट्
+    - id: i10
+      sa: ल
+    - id: i11
+      sa: ल्
+    - id: i12
+      sa: सत् + जनः
+    - id: i13
+      sa: सज्जनः
+    - id: i14
+      sa: तत् + च
+    - id: i15
+      sa: तच्च
+    - id: i16
+      sa: तत् + लीनः
+    - id: i17
+      sa: तल्लीनः
 - id: tb1
   kind: table
   title:
@@ -189,6 +247,55 @@ cards:
   - correct: true
     sa: सत् + जनः
   - sa: सः + जनः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A dental {{त्}} or {{न्}} moves to the place of the sound that follows: before {{च}}/{{छ}}/{{ज}}/{{श}} it becomes
+        {{च्}}/{{ज्}}, before {{ट}} it becomes {{ट्}}, before {{ल}} it becomes {{ल्}}. {{सत् + जनः}} gives {{सज्जनः}}; {{तत्
+        + च}} gives {{तच्च}}; {{तत् + लीनः}} gives {{तल्लीनः}}.'
+      hi: 'दन्त्य {{त्}} या {{न्}} अगली ध्वनि के स्थान पर चला जाता है: {{च}}/{{छ}}/{{ज}}/{{श}} से पहले {{च्}}/{{ज्}}, {{ट}}
+        से पहले {{ट्}}, {{ल}} से पहले {{ल्}}। {{सत् + जनः}} से {{सज्जनः}}; {{तत् + च}} से {{तच्च}}; {{तत् + लीनः}} से {{तल्लीनः}}।'
+    items:
+    - id: i0
+      sa: त्
+    - id: i1
+      sa: न्
+    - id: i2
+      sa: च
+    - id: i3
+      sa: छ
+    - id: i4
+      sa: ज
+    - id: i5
+      sa: श
+    - id: i6
+      sa: च्
+    - id: i7
+      sa: ज्
+    - id: i8
+      sa: ट
+    - id: i9
+      sa: ट्
+    - id: i10
+      sa: ल
+    - id: i11
+      sa: ल्
+    - id: i12
+      sa: सत् + जनः
+    - id: i13
+      sa: सज्जनः
+    - id: i14
+      sa: तत् + च
+    - id: i15
+      sa: तच्च
+    - id: i16
+      sa: तत् + लीनः
+    - id: i17
+      sa: तल्लीनः
 - id: p2
   kind: practice
   depth: core
@@ -207,6 +314,55 @@ cards:
   - sa: तद्च
   - correct: true
     sa: तच्च
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A dental {{त्}} or {{न्}} moves to the place of the sound that follows: before {{च}}/{{छ}}/{{ज}}/{{श}} it becomes
+        {{च्}}/{{ज्}}, before {{ट}} it becomes {{ट्}}, before {{ल}} it becomes {{ल्}}. {{सत् + जनः}} gives {{सज्जनः}}; {{तत्
+        + च}} gives {{तच्च}}; {{तत् + लीनः}} gives {{तल्लीनः}}.'
+      hi: 'दन्त्य {{त्}} या {{न्}} अगली ध्वनि के स्थान पर चला जाता है: {{च}}/{{छ}}/{{ज}}/{{श}} से पहले {{च्}}/{{ज्}}, {{ट}}
+        से पहले {{ट्}}, {{ल}} से पहले {{ल्}}। {{सत् + जनः}} से {{सज्जनः}}; {{तत् + च}} से {{तच्च}}; {{तत् + लीनः}} से {{तल्लीनः}}।'
+    items:
+    - id: i0
+      sa: त्
+    - id: i1
+      sa: न्
+    - id: i2
+      sa: च
+    - id: i3
+      sa: छ
+    - id: i4
+      sa: ज
+    - id: i5
+      sa: श
+    - id: i6
+      sa: च्
+    - id: i7
+      sa: ज्
+    - id: i8
+      sa: ट
+    - id: i9
+      sa: ट्
+    - id: i10
+      sa: ल
+    - id: i11
+      sa: ल्
+    - id: i12
+      sa: सत् + जनः
+    - id: i13
+      sa: सज्जनः
+    - id: i14
+      sa: तत् + च
+    - id: i15
+      sa: तच्च
+    - id: i16
+      sa: तत् + लीनः
+    - id: i17
+      sa: तल्लीनः
 - id: p3
   kind: practice
   depth: core
@@ -227,6 +383,55 @@ cards:
   - जनः
   - सत्
   - ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A dental {{त्}} or {{न्}} moves to the place of the sound that follows: before {{च}}/{{छ}}/{{ज}}/{{श}} it becomes
+        {{च्}}/{{ज्}}, before {{ट}} it becomes {{ट्}}, before {{ल}} it becomes {{ल्}}. {{सत् + जनः}} gives {{सज्जनः}}; {{तत्
+        + च}} gives {{तच्च}}; {{तत् + लीनः}} gives {{तल्लीनः}}.'
+      hi: 'दन्त्य {{त्}} या {{न्}} अगली ध्वनि के स्थान पर चला जाता है: {{च}}/{{छ}}/{{ज}}/{{श}} से पहले {{च्}}/{{ज्}}, {{ट}}
+        से पहले {{ट्}}, {{ल}} से पहले {{ल्}}। {{सत् + जनः}} से {{सज्जनः}}; {{तत् + च}} से {{तच्च}}; {{तत् + लीनः}} से {{तल्लीनः}}।'
+    items:
+    - id: i0
+      sa: त्
+    - id: i1
+      sa: न्
+    - id: i2
+      sa: च
+    - id: i3
+      sa: छ
+    - id: i4
+      sa: ज
+    - id: i5
+      sa: श
+    - id: i6
+      sa: च्
+    - id: i7
+      sa: ज्
+    - id: i8
+      sa: ट
+    - id: i9
+      sa: ट्
+    - id: i10
+      sa: ल
+    - id: i11
+      sa: ल्
+    - id: i12
+      sa: सत् + जनः
+    - id: i13
+      sa: सज्जनः
+    - id: i14
+      sa: तत् + च
+    - id: i15
+      sa: तच्च
+    - id: i16
+      sa: तत् + लीनः
+    - id: i17
+      sa: तल्लीनः
 - id: p4
   kind: practice
   depth: core
@@ -257,6 +462,55 @@ cards:
       sa: तट्टीका
     right:
       sa: तत् + टीका
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A dental {{त्}} or {{न्}} moves to the place of the sound that follows: before {{च}}/{{छ}}/{{ज}}/{{श}} it becomes
+        {{च्}}/{{ज्}}, before {{ट}} it becomes {{ट्}}, before {{ल}} it becomes {{ल्}}. {{सत् + जनः}} gives {{सज्जनः}}; {{तत्
+        + च}} gives {{तच्च}}; {{तत् + लीनः}} gives {{तल्लीनः}}.'
+      hi: 'दन्त्य {{त्}} या {{न्}} अगली ध्वनि के स्थान पर चला जाता है: {{च}}/{{छ}}/{{ज}}/{{श}} से पहले {{च्}}/{{ज्}}, {{ट}}
+        से पहले {{ट्}}, {{ल}} से पहले {{ल्}}। {{सत् + जनः}} से {{सज्जनः}}; {{तत् + च}} से {{तच्च}}; {{तत् + लीनः}} से {{तल्लीनः}}।'
+    items:
+    - id: i0
+      sa: त्
+    - id: i1
+      sa: न्
+    - id: i2
+      sa: च
+    - id: i3
+      sa: छ
+    - id: i4
+      sa: ज
+    - id: i5
+      sa: श
+    - id: i6
+      sa: च्
+    - id: i7
+      sa: ज्
+    - id: i8
+      sa: ट
+    - id: i9
+      sa: ट्
+    - id: i10
+      sa: ल
+    - id: i11
+      sa: ल्
+    - id: i12
+      sa: सत् + जनः
+    - id: i13
+      sa: सज्जनः
+    - id: i14
+      sa: तत् + च
+    - id: i15
+      sa: तच्च
+    - id: i16
+      sa: तत् + लीनः
+    - id: i17
+      sa: तल्लीनः
 - id: e1
   kind: explore
   depth: core
@@ -330,8 +584,12 @@ cards:
   gate: true
   story:
     success:
-      en: “उल्लेखः,” you say, “a mention,” and the eleventh statue turns her palm over, and in it, very small, lies a seed. “सज्जनः,” she says. “तच्च. उल्लेखः.” She closes her hand, and her calm smile deepens, because somewhere, on her very smooth stone, a sound has found its place.
-      hi: “उल्लेखः,” आप कहते हैं, “उल्लेख,” और ग्यारहवीं प्रतिमा हथेली पलटती है, और उसमें, बहुत छोटा, एक बीज रखा है। “सज्जनः,” वह कहती है। “तच्च। उल्लेखः।” वह मुट्ठी बन्द करती है, और उसकी शान्त मुस्कान गहरी हो जाती है, क्योंकि कहीं, उसके बहुत चिकने पत्थर पर, एक ध्वनि को अपना स्थान मिल गया है।
+      en: “उल्लेखः,” you say, “a mention,” and the eleventh statue turns her palm over, and in it, very small, lies a seed.
+        “सज्जनः,” she says. “तच्च. उल्लेखः.” She closes her hand, and her calm smile deepens, because somewhere, on her very
+        smooth stone, a sound has found its place.
+      hi: “उल्लेखः,” आप कहते हैं, “उल्लेख,” और ग्यारहवीं प्रतिमा हथेली पलटती है, और उसमें, बहुत छोटा, एक बीज रखा है। “सज्जनः,”
+        वह कहती है। “तच्च। उल्लेखः।” वह मुट्ठी बन्द करती है, और उसकी शान्त मुस्कान गहरी हो जाती है, क्योंकि कहीं, उसके बहुत
+        चिकने पत्थर पर, एक ध्वनि को अपना स्थान मिल गया है।
     failure:
       en: 'The palm stays empty. {{त्}} becomes {{ल्}} before {{ल}}: {{उल्लेखः}}.'
       hi: 'हथेली ख़ाली रहती है। {{ल}} से पहले {{त्}} बनता है {{ल्}}: {{उल्लेखः}}।'
@@ -340,6 +598,55 @@ cards:
   - sa: उद्लेखः
   - correct: true
     sa: उल्लेखः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A dental {{त्}} or {{न्}} moves to the place of the sound that follows: before {{च}}/{{छ}}/{{ज}}/{{श}} it becomes
+        {{च्}}/{{ज्}}, before {{ट}} it becomes {{ट्}}, before {{ल}} it becomes {{ल्}}. {{सत् + जनः}} gives {{सज्जनः}}; {{तत्
+        + च}} gives {{तच्च}}; {{तत् + लीनः}} gives {{तल्लीनः}}.'
+      hi: 'दन्त्य {{त्}} या {{न्}} अगली ध्वनि के स्थान पर चला जाता है: {{च}}/{{छ}}/{{ज}}/{{श}} से पहले {{च्}}/{{ज्}}, {{ट}}
+        से पहले {{ट्}}, {{ल}} से पहले {{ल्}}। {{सत् + जनः}} से {{सज्जनः}}; {{तत् + च}} से {{तच्च}}; {{तत् + लीनः}} से {{तल्लीनः}}।'
+    items:
+    - id: i0
+      sa: त्
+    - id: i1
+      sa: न्
+    - id: i2
+      sa: च
+    - id: i3
+      sa: छ
+    - id: i4
+      sa: ज
+    - id: i5
+      sa: श
+    - id: i6
+      sa: च्
+    - id: i7
+      sa: ज्
+    - id: i8
+      sa: ट
+    - id: i9
+      sa: ट्
+    - id: i10
+      sa: ल
+    - id: i11
+      sa: ल्
+    - id: i12
+      sa: सत् + जनः
+    - id: i13
+      sa: सज्जनः
+    - id: i14
+      sa: तत् + च
+    - id: i15
+      sa: तच्च
+    - id: i16
+      sa: तत् + लीनः
+    - id: i17
+      sa: तल्लीनः
 - id: pn
   kind: teach
   title:
@@ -353,8 +660,44 @@ cards:
   - 8.4.41
   - 8.4.60
   body:
-    en: Sūtra 8.4.40, {{स्तोः श्चुना श्चुः}}, says that {{स्}} or a dental ({{तवर्ग}}) next to a palatal ({{श्चु}}) becomes palatal. 8.4.41, {{ष्टुना ष्टुः}}, makes it cerebral next to a cerebral. Next to {{ल}}, 8.4.60, {{तोर्लि}}, makes {{त्}} into {{ल्}}.
-    hi: सूत्र 8.4.40, {{स्तोः श्चुना श्चुः}}, कहता है कि तालव्य ({{श्चु}}) के पास {{स्}} या दन्त्य ({{तवर्ग}}) तालव्य हो जाता है। 8.4.41, {{ष्टुना ष्टुः}}, मूर्धन्य के पास उसे मूर्धन्य बनाता है। {{ल}} के पास 8.4.60, {{तोर्लि}}, {{त्}} को {{ल्}} बनाता है।
+    en: Sūtra 8.4.40, {{स्तोः श्चुना श्चुः}}, says that {{स्}} or a dental ({{तवर्ग}}) next to a palatal ({{श्चु}}) becomes
+      palatal. 8.4.41, {{ष्टुना ष्टुः}}, makes it cerebral next to a cerebral. Next to {{ल}}, 8.4.60, {{तोर्लि}}, makes {{त्}}
+      into {{ल्}}.
+    hi: सूत्र 8.4.40, {{स्तोः श्चुना श्चुः}}, कहता है कि तालव्य ({{श्चु}}) के पास {{स्}} या दन्त्य ({{तवर्ग}}) तालव्य हो जाता
+      है। 8.4.41, {{ष्टुना ष्टुः}}, मूर्धन्य के पास उसे मूर्धन्य बनाता है। {{ल}} के पास 8.4.60, {{तोर्लि}}, {{त्}} को {{ल्}}
+      बनाता है।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 8.4.40, {{स्तोः श्चुना श्चुः}}, says that {{स्}} or a dental ({{तवर्ग}}) next to a palatal ({{श्चु}}) becomes
+        palatal. 8.4.41, {{ष्टुना ष्टुः}}, makes it cerebral next to a cerebral. Next to {{ल}}, 8.4.60, {{तोर्लि}}, makes
+        {{त्}} into {{ल्}}.
+      hi: सूत्र 8.4.40, {{स्तोः श्चुना श्चुः}}, कहता है कि तालव्य ({{श्चु}}) के पास {{स्}} या दन्त्य ({{तवर्ग}}) तालव्य हो
+        जाता है। 8.4.41, {{ष्टुना ष्टुः}}, मूर्धन्य के पास उसे मूर्धन्य बनाता है। {{ल}} के पास 8.4.60, {{तोर्लि}}, {{त्}}
+        को {{ल्}} बनाता है।
+    items:
+    - id: i0
+      sa: स्तोः श्चुना श्चुः
+    - id: i1
+      sa: स्
+    - id: i2
+      sa: तवर्ग
+    - id: i3
+      sa: श्चु
+    - id: i4
+      sa: ष्टुना ष्टुः
+    - id: i5
+      sa: ल
+    - id: i6
+      sa: तोर्लि
+    - id: i7
+      sa: त्
+    - id: i8
+      sa: ल्
 - id: sum
   kind: summary
   title:

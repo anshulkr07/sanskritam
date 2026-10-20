@@ -90,6 +90,36 @@ cards:
         hi: 'राम और सीता जाते हैं: दो कर्ता, द्विवचन क्रिया'
     tag: good
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: रामः सीता च गच्छतः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'Rāma and Sītā go: two doers, dual verb'
+          hi: 'राम और सीता जाते हैं: दो कर्ता, द्विवचन क्रिया'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: Two or more doers joined by {{च}} (and) take the dual or the plural verb, by their total.
+          hi: '{{च}} (और) से जुड़े दो या अधिक कर्ता कुल संख्या के अनुसार द्विवचन या बहुवचन क्रिया लेते हैं।'
+      - id: i3
+        sa: रामः सीता च गच्छतः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'Rāma and Sītā go: two doers, dual verb'
+          hi: 'राम और सीता जाते हैं: दो कर्ता, द्विवचन क्रिया'
 - id: exceptions
   kind: revision
   title:
@@ -108,7 +138,8 @@ cards:
     taught_in: num.many#pn
   - skill: num.dual
     rule:
-      en: 'Some words are always plural in meaning (water, rice-grains, “the lots”): {{दाराः}} (wife). Their number does not follow counting.'
+      en: 'Some words are always plural in meaning (water, rice-grains, “the lots”): {{दाराः}} (wife). Their number does not
+        follow counting.'
       hi: कुछ शब्द अर्थ में सदा बहुवचन होते हैं ({{दाराः}} यानी पत्नी)। उनका वचन गिनती से नहीं चलता।
     example:
       sa: दाराः
@@ -117,6 +148,37 @@ cards:
         hi: 'पत्नी: सदा बहुवचन'
     tag: rare
     new_here: true
+    visuals:
+    - id: v-source-new-1
+      kind: worked
+      title:
+        en: Read, examine, understand
+        hi: पढ़ें, समझें, फिर पढ़ें
+      items:
+      - id: i0
+        sa: दाराः
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: 'wife: always plural'
+          hi: 'पत्नी: सदा बहुवचन'
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Some words are always plural in meaning (water, rice-grains, “the lots”): {{दाराः}} (wife). Their number does
+            not follow counting.'
+          hi: कुछ शब्द अर्थ में सदा बहुवचन होते हैं ({{दाराः}} यानी पत्नी)। उनका वचन गिनती से नहीं चलता।
+      - id: i3
+        sa: दाराः
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: 'wife: always plural'
+          hi: 'पत्नी: सदा बहुवचन'
 - id: mistakes
   kind: revision
   title:

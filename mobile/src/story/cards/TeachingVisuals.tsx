@@ -9,7 +9,10 @@ import Picture from './Picture';
 /** Figures are ordinary accessible app content. A matrix retains every source
  * cell, with a focused phone view as well as the complete reference table. */
 export default function TeachingVisuals({visuals,placement}:{visuals?:TeachingVisual[];placement?:'before'|'after'}){
- return <>{(visuals??[]).filter(v=>!placement||v.placement===placement).map(visual=><TeachingFigure key={visual.id} visual={visual}/>)}</>;
+ const [at,setAt]=useState(0),hi=useCopy(),figures=(visuals??[]).filter(v=>!placement||v.placement===placement);
+ if(!figures.length)return null;
+ const selected=Math.min(at,figures.length-1);
+ return <View style={{gap:10}}>{figures.length>1?<><Label>{hi?'व्याख्या ':'Explanation '}{selected+1} / {figures.length}</Label><View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>{figures.map((figure,i)=><Button key={figure.id} label={figure.title[hi?'hi':'en']||figure.title.en} selected={selected===i} onPress={()=>setAt(i)}><Label>{i+1}</Label><Bi value={figure.title} size={15}/></Button>)}</View></>:null}<TeachingFigure key={figures[selected].id} visual={figures[selected]}/></View>;
 }
 
 function Item({item,compact=false}:{item:VisualItem;compact?:boolean}){

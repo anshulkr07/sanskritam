@@ -25,7 +25,8 @@ cards:
     hi: तीसवीं प्रतिमा
   depth: core
   image:
-    brief: The thirtieth statue holding a long unrolled scroll that trails behind her; Śuka reading it aloud with a raised wing; Dādī smiling; Lubdhaka's foreman following the words with his finger.
+    brief: The thirtieth statue holding a long unrolled scroll that trails behind her; Śuka reading it aloud with a raised
+      wing; Dādī smiling; Lubdhaka's foreman following the words with his finger.
     alt:
       en: A statue holds a long scroll while a parrot reads aloud and a man follows with his finger
       hi: लम्बा पत्र थामे प्रतिमा, ज़ोर से पढ़ता तोता, उँगली से पढ़ता आदमी
@@ -38,10 +39,16 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: syn-who-s1
-    text_in_image: ["यः पठति सः जानाति।"]
+    text_in_image:
+    - यः पठति सः जानाति।
   narration:
-    en: 'The thirtieth statue holds a long scroll. “यः पठति, सः जानाति,” she says. Śuka, who has been getting good at this, says: “Who reads, he knows.” “It comes in two halves,” says Dādī. “The first, with यः (who), says who we mean. The second, with सः (he), says what we say about him. They always pair: यः… सः, या… सा, यत्… तत्. It works for any case.”'
-    hi: 'तीसवीं प्रतिमा के हाथ में लम्बा पत्र है। “यः पठति, सः जानाति,” वह कहती है। शुक, जो इसमें माहिर होता जा रहा है, कहता है: “जो पढ़ता है, वह जानता है।” “यह दो भागों में आता है,” दादी कहती हैं। “पहला, यः (जो) के साथ, बताता है कि हम किसकी बात कर रहे हैं। दूसरा, सः (वह) के साथ, बताता है कि हम उसके बारे में क्या कहते हैं। वे सदा जोड़ी में आते हैं: यः… सः, या… सा, यत्… तत्। यह किसी भी विभक्ति में चलता है।”'
+    en: 'The thirtieth statue holds a long scroll. “यः पठति, सः जानाति,” she says. Śuka, who has been getting good at this,
+      says: “Who reads, he knows.” “It comes in two halves,” says Dādī. “The first, with यः (who), says who we mean. The second,
+      with सः (he), says what we say about him. They always pair: यः… सः, या… सा, यत्… तत्. It works for any case.”'
+    hi: 'तीसवीं प्रतिमा के हाथ में लम्बा पत्र है। “यः पठति, सः जानाति,” वह कहती है। शुक, जो इसमें माहिर होता जा रहा है, कहता
+      है: “जो पढ़ता है, वह जानता है।” “यह दो भागों में आता है,” दादी कहती हैं। “पहला, यः (जो) के साथ, बताता है कि हम किसकी
+      बात कर रहे हैं। दूसरा, सः (वह) के साथ, बताता है कि हम उसके बारे में क्या कहते हैं। वे सदा जोड़ी में आते हैं: यः… सः,
+      या… सा, यत्… तत्। यह किसी भी विभक्ति में चलता है।”'
   quote:
     sa: यद् यद् आचरति श्रेष्ठस् तत् तद् एवेतरो जनः स यत् प्रमाणं कुरुते लोकस् तद् अनुवर्तते
     gloss:
@@ -57,8 +64,12 @@ cards:
   skills:
   - syn.relative
   body:
-    en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair agrees in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} … {{तस्य}}. The {{यद्}}-half usually comes first.'
-    hi: '{{यः}} (जो) वाले वाक्य का उत्तर {{सः}} (वह) देता है: {{यः पठति सः जानाति}}, ‘जो पढ़ता है, वह जानता है’। जोड़ी लिंग और वचन में मेल खाती है, और कोई भी किसी भी विभक्ति में आ सकता है: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} … {{तस्य}}। {{यद्}}-भाग प्रायः पहले आता है।'
+    en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair agrees
+      in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} … {{तस्य}}. The
+      {{यद्}}-half usually comes first.'
+    hi: '{{यः}} (जो) वाले वाक्य का उत्तर {{सः}} (वह) देता है: {{यः पठति सः जानाति}}, ‘जो पढ़ता है, वह जानता है’। जोड़ी लिंग
+      और वचन में मेल खाती है, और कोई भी किसी भी विभक्ति में आ सकता है: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} … {{तस्य}}।
+      {{यद्}}-भाग प्रायः पहले आता है।'
   examples:
   - sa: यः पठति सः जानाति।
     meaning:
@@ -159,6 +170,430 @@ cards:
         linga: Napumsaka
         vibhakti: Prathama
         vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: who
+        hi: जो
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i3
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i4
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair
+          agrees in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} …
+          {{तस्य}}. The {{यद्}}-half usually comes first.'
+        hi: '{{यः}} (जो) वाले वाक्य का उत्तर {{सः}} (वह) देता है: {{यः पठति सः जानाति}}, ‘जो पढ़ता है, वह जानता है’। जोड़ी
+          लिंग और वचन में मेल खाती है, और कोई भी किसी भी विभक्ति में आ सकता है: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}}
+          … {{तस्य}}। {{यद्}}-भाग प्रायः पहले आता है।'
+    - id: i7
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: या लिखति सा कन्या।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: She who writes is the girl.
+        hi: जो लिखती है, वह कन्या है।
+      words:
+      - sa: या
+        gloss:
+          en: who
+          hi: जो
+      - sa: लिखति
+        gloss:
+          en: writes
+          hi: लिखती है
+        check:
+          type: tinanta
+          dhatu: लिख्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सा
+        gloss:
+          en: she
+          hi: वह
+      - sa: कन्या
+        gloss:
+          en: girl
+          hi: कन्या
+        check:
+          type: subanta
+          stem: कन्या
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: या
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: who
+        hi: जो
+    - id: i2
+      sa: लिखति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: writes
+        hi: लिखती है
+      check:
+        type: tinanta
+        dhatu: लिख्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{लिख्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{लिख्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i3
+      sa: सा
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: she
+        hi: वह
+    - id: i4
+      sa: कन्या
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: girl
+        hi: कन्या
+      check:
+        type: subanta
+        stem: कन्या
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कन्या}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कन्या}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair
+          agrees in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} …
+          {{तस्य}}. The {{यद्}}-half usually comes first.'
+        hi: '{{यः}} (जो) वाले वाक्य का उत्तर {{सः}} (वह) देता है: {{यः पठति सः जानाति}}, ‘जो पढ़ता है, वह जानता है’। जोड़ी
+          लिंग और वचन में मेल खाती है, और कोई भी किसी भी विभक्ति में आ सकता है: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}}
+          … {{तस्य}}। {{यद्}}-भाग प्रायः पहले आता है।'
+    - id: i7
+      sa: या लिखति सा कन्या।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: She who writes is the girl.
+        hi: जो लिखती है, वह कन्या है।
+      words:
+      - sa: या
+        gloss:
+          en: who
+          hi: जो
+      - sa: लिखति
+        gloss:
+          en: writes
+          hi: लिखती है
+        check:
+          type: tinanta
+          dhatu: लिख्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सा
+        gloss:
+          en: she
+          hi: वह
+      - sa: कन्या
+        gloss:
+          en: girl
+          hi: कन्या
+        check:
+          type: subanta
+          stem: कन्या
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: यस्य बुद्धिः तस्य बलम्।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Whose intellect, his strength.
+        hi: जिसकी बुद्धि, उसका बल।
+      words:
+      - sa: यस्य
+        gloss:
+          en: whose
+          hi: जिसकी
+      - sa: बुद्धिः
+        gloss:
+          en: intellect
+          hi: बुद्धि
+        check:
+          type: subanta
+          stem: बुद्धि
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: तस्य
+        gloss:
+          en: his
+          hi: उसका
+      - sa: बलम्
+        gloss:
+          en: strength
+          hi: बल
+        check:
+          type: subanta
+          stem: बल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यस्य
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: whose
+        hi: जिसकी
+    - id: i2
+      sa: बुद्धिः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: intellect
+        hi: बुद्धि
+      check:
+        type: subanta
+        stem: बुद्धि
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बुद्धि}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बुद्धि}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i3
+      sa: तस्य
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: his
+        hi: उसका
+    - id: i4
+      sa: बलम्
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: strength
+        hi: बल
+      check:
+        type: subanta
+        stem: बल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair
+          agrees in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} …
+          {{तस्य}}. The {{यद्}}-half usually comes first.'
+        hi: '{{यः}} (जो) वाले वाक्य का उत्तर {{सः}} (वह) देता है: {{यः पठति सः जानाति}}, ‘जो पढ़ता है, वह जानता है’। जोड़ी
+          लिंग और वचन में मेल खाती है, और कोई भी किसी भी विभक्ति में आ सकता है: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}}
+          … {{तस्य}}। {{यद्}}-भाग प्रायः पहले आता है।'
+    - id: i7
+      sa: यस्य बुद्धिः तस्य बलम्।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Whose intellect, his strength.
+        hi: जिसकी बुद्धि, उसका बल।
+      words:
+      - sa: यस्य
+        gloss:
+          en: whose
+          hi: जिसकी
+      - sa: बुद्धिः
+        gloss:
+          en: intellect
+          hi: बुद्धि
+        check:
+          type: subanta
+          stem: बुद्धि
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: तस्य
+        gloss:
+          en: his
+          hi: उसका
+      - sa: बलम्
+        gloss:
+          en: strength
+          hi: बल
+        check:
+          type: subanta
+          stem: बल
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
 - id: tb1
   kind: table
   title:
@@ -325,6 +760,148 @@ cards:
   - sa: यत् … तत्
   - correct: true
     sa: या … सा
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: who
+        hi: जो
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i3
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i4
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair
+          agrees in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} …
+          {{तस्य}}. The {{यद्}}-half usually comes first.'
+        hi: '{{यः}} (जो) वाले वाक्य का उत्तर {{सः}} (वह) देता है: {{यः पठति सः जानाति}}, ‘जो पढ़ता है, वह जानता है’। जोड़ी
+          लिंग और वचन में मेल खाती है, और कोई भी किसी भी विभक्ति में आ सकता है: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}}
+          … {{तस्य}}। {{यद्}}-भाग प्रायः पहले आता है।'
+    - id: i7
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p2
   kind: practice
   depth: core
@@ -355,6 +932,148 @@ cards:
       sa: येन
     right:
       sa: तेन
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: who
+        hi: जो
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i3
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i4
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair
+          agrees in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} …
+          {{तस्य}}. The {{यद्}}-half usually comes first.'
+        hi: '{{यः}} (जो) वाले वाक्य का उत्तर {{सः}} (वह) देता है: {{यः पठति सः जानाति}}, ‘जो पढ़ता है, वह जानता है’। जोड़ी
+          लिंग और वचन में मेल खाती है, और कोई भी किसी भी विभक्ति में आ सकता है: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}}
+          … {{तस्य}}। {{यद्}}-भाग प्रायः पहले आता है।'
+    - id: i7
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: e1
   kind: explore
   depth: core
@@ -394,6 +1113,148 @@ cards:
   - पठति
   - सः
   - जानाति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: who
+        hi: जो
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i3
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i4
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair
+          agrees in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} …
+          {{तस्य}}. The {{यद्}}-half usually comes first.'
+        hi: '{{यः}} (जो) वाले वाक्य का उत्तर {{सः}} (वह) देता है: {{यः पठति सः जानाति}}, ‘जो पढ़ता है, वह जानता है’। जोड़ी
+          लिंग और वचन में मेल खाती है, और कोई भी किसी भी विभक्ति में आ सकता है: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}}
+          … {{तस्य}}। {{यद्}}-भाग प्रायः पहले आता है।'
+    - id: i7
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: p4
   kind: practice
   title:
@@ -413,8 +1274,13 @@ cards:
   gate: true
   story:
     success:
-      en: “यस्य बुद्धिः, तस्य बलम्,” you say. The thirtieth statue unrolls her scroll a little further and lets you read the line she has been carrying. Her sentence is long, in two halves, but the halves answer each other, यः… सः, यत्… तत्, and for the first time she reads it through to the end. “Who… he,” she says, breathless. “And I did not know where to stop.”
-      hi: “यस्य बुद्धिः, तस्य बलम्,” आप कहते हैं। तीसवीं प्रतिमा अपना पत्र थोड़ा और खोलती है और आपको वह पंक्ति पढ़ने देती है जो वह ढोती रही है। उसका वाक्य लम्बा है, दो भागों में, पर भाग एक-दूसरे का उत्तर देते हैं, यः… सः, यत्… तत्, और पहली बार वह उसे अन्त तक पढ़ जाती है। “जो… वह,” वह हाँफते हुए कहती है। “और मुझे नहीं पता था कि कहाँ रुकना है।”
+      en: “यस्य बुद्धिः, तस्य बलम्,” you say. The thirtieth statue unrolls her scroll a little further and lets you read the
+        line she has been carrying. Her sentence is long, in two halves, but the halves answer each other, यः… सः, यत्… तत्,
+        and for the first time she reads it through to the end. “Who… he,” she says, breathless. “And I did not know where
+        to stop.”
+      hi: “यस्य बुद्धिः, तस्य बलम्,” आप कहते हैं। तीसवीं प्रतिमा अपना पत्र थोड़ा और खोलती है और आपको वह पंक्ति पढ़ने देती
+        है जो वह ढोती रही है। उसका वाक्य लम्बा है, दो भागों में, पर भाग एक-दूसरे का उत्तर देते हैं, यः… सः, यत्… तत्, और पहली
+        बार वह उसे अन्त तक पढ़ जाती है। “जो… वह,” वह हाँफते हुए कहती है। “और मुझे नहीं पता था कि कहाँ रुकना है।”
     failure:
       en: 'The scroll stays rolled. The sixth case: {{यस्य}} … {{तस्य}}.'
       hi: 'पत्र लिपटा रहता है। षष्ठी: {{यस्य}} … {{तस्य}}।'
@@ -423,6 +1289,148 @@ cards:
   - correct: true
     sa: यस्य … तस्य
   - sa: येन … तेन
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i1
+      sa: यः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: who
+        hi: जो
+    - id: i2
+      sa: पठति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: reads
+        hi: पढ़ता है
+      check:
+        type: tinanta
+        dhatu: पठ्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: i3
+      sa: सः
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: he
+        hi: वह
+    - id: i4
+      sa: जानाति
+      label:
+        en: Follow this word
+        hi: इस शब्द पर ध्यान दें
+      meaning:
+        en: knows
+        hi: जानता है
+      check:
+        type: tinanta
+        dhatu: ज्ञा
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'A sentence with {{यः}} (who) is answered by {{सः}} (he): {{यः पठति सः जानाति}}, “who reads, he knows”. The pair
+          agrees in gender and number, and either can stand in any case: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}} …
+          {{तस्य}}. The {{यद्}}-half usually comes first.'
+        hi: '{{यः}} (जो) वाले वाक्य का उत्तर {{सः}} (वह) देता है: {{यः पठति सः जानाति}}, ‘जो पढ़ता है, वह जानता है’। जोड़ी
+          लिंग और वचन में मेल खाती है, और कोई भी किसी भी विभक्ति में आ सकता है: {{यम्}} … {{तम्}}, {{येन}} … {{तेन}}, {{यस्य}}
+          … {{तस्य}}। {{यद्}}-भाग प्रायः पहले आता है।'
+    - id: i7
+      sa: यः पठति सः जानाति।
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Who reads, he knows.
+        hi: जो पढ़ता है, वह जानता है।
+      words:
+      - sa: यः
+        gloss:
+          en: who
+          hi: जो
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
 - id: pn
   kind: teach
   title:
@@ -436,8 +1444,40 @@ cards:
   - 7.1.15
   - 7.2.106
   body:
-    en: 'Pāṇini does not give a rule for the pair itself: it is part of how {{यद्}} and {{तद्}} are defined. {{यद्}} is {{सर्वनाम}}, taking the odd endings {{यस्मै}}, {{यस्मात्}}, {{यस्मिन्}} by 7.1.14 and 7.1.15; {{तद्}} answers it, and 7.2.106 gives {{सः}}.'
-    hi: 'पाणिनि जोड़ी के लिए स्वतन्त्र नियम नहीं देते: वह {{यद्}} और {{तद्}} की परिभाषा का भाग है। {{यद्}} {{सर्वनाम}} है, जो 7.1.14 और 7.1.15 से {{यस्मै}}, {{यस्मात्}}, {{यस्मिन्}} जैसे विचित्र प्रत्यय लेता है; {{तद्}} उसका उत्तर देता है, और 7.2.106 से {{सः}} बनता है।'
+    en: 'Pāṇini does not give a rule for the pair itself: it is part of how {{यद्}} and {{तद्}} are defined. {{यद्}} is {{सर्वनाम}},
+      taking the odd endings {{यस्मै}}, {{यस्मात्}}, {{यस्मिन्}} by 7.1.14 and 7.1.15; {{तद्}} answers it, and 7.2.106 gives
+      {{सः}}.'
+    hi: 'पाणिनि जोड़ी के लिए स्वतन्त्र नियम नहीं देते: वह {{यद्}} और {{तद्}} की परिभाषा का भाग है। {{यद्}} {{सर्वनाम}} है,
+      जो 7.1.14 और 7.1.15 से {{यस्मै}}, {{यस्मात्}}, {{यस्मिन्}} जैसे विचित्र प्रत्यय लेता है; {{तद्}} उसका उत्तर देता है,
+      और 7.2.106 से {{सः}} बनता है।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Pāṇini does not give a rule for the pair itself: it is part of how {{यद्}} and {{तद्}} are defined. {{यद्}} is
+        {{सर्वनाम}}, taking the odd endings {{यस्मै}}, {{यस्मात्}}, {{यस्मिन्}} by 7.1.14 and 7.1.15; {{तद्}} answers it,
+        and 7.2.106 gives {{सः}}.'
+      hi: 'पाणिनि जोड़ी के लिए स्वतन्त्र नियम नहीं देते: वह {{यद्}} और {{तद्}} की परिभाषा का भाग है। {{यद्}} {{सर्वनाम}} है,
+        जो 7.1.14 और 7.1.15 से {{यस्मै}}, {{यस्मात्}}, {{यस्मिन्}} जैसे विचित्र प्रत्यय लेता है; {{तद्}} उसका उत्तर देता है,
+        और 7.2.106 से {{सः}} बनता है।'
+    items:
+    - id: i0
+      sa: यद्
+    - id: i1
+      sa: तद्
+    - id: i2
+      sa: सर्वनाम
+    - id: i3
+      sa: यस्मै
+    - id: i4
+      sa: यस्मात्
+    - id: i5
+      sa: यस्मिन्
+    - id: i6
+      sa: सः
 - id: sum
   kind: summary
   title:

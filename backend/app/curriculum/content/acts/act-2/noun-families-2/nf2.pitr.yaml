@@ -24,7 +24,8 @@ cards:
     hi: आख़िरी अलमारी
   depth: core
   image:
-    brief: The last library shelf with small mist figures of a father, a mother, a brother and a giver holding out his hands; the ink-stained spirit hopping onto the shelf and waving its pen; Śuka murmuring family words like a lullaby; Dādī listening.
+    brief: The last library shelf with small mist figures of a father, a mother, a brother and a giver holding out his hands;
+      the ink-stained spirit hopping onto the shelf and waving its pen; Śuka murmuring family words like a lullaby; Dādī listening.
     alt:
       en: A shelf of mist figures of kin, a father, a mother, a brother and a giver
       hi: 'अलमारी पर नातों की धुंध-आकृतियाँ: पिता, माता, भाई और दाता'
@@ -38,8 +39,12 @@ cards:
     ratio: '4:3'
     id: nf2-pitr-s1
   narration:
-    en: 'The last shelf holds the words of kin: father, mother, brother, giver. The ink-stained spirit hops onto it and waves his pen. “These end in {{ऋ}},” says Dādī. “The vowel that is almost an r. Where it can, it turns into {{अर्}}; elsewhere into {{र्}}.” Śuka mutters “पिता, माता, भ्राता” as though trying out a lullaby.'
-    hi: 'आख़िरी अलमारी में नातों के शब्द हैं: पिता, माता, भाई, दाता। स्याही से सना भूत उस पर कूदकर कलम हिलाता है। “ये {{ऋ}} पर समाप्त होते हैं,” दादी कहती हैं। “वह स्वर जो लगभग र है। जहाँ हो सके वह {{अर्}} बन जाता है; और कहीं {{र्}}।” शुक “पिता, माता, भ्राता” बुदबुदाता है मानो लोरी आज़मा रहा हो।'
+    en: 'The last shelf holds the words of kin: father, mother, brother, giver. The ink-stained spirit hops onto it and waves
+      his pen. “These end in {{ऋ}},” says Dādī. “The vowel that is almost an r. Where it can, it turns into {{अर्}}; elsewhere
+      into {{र्}}.” Śuka mutters “पिता, माता, भ्राता” as though trying out a lullaby.'
+    hi: 'आख़िरी अलमारी में नातों के शब्द हैं: पिता, माता, भाई, दाता। स्याही से सना भूत उस पर कूदकर कलम हिलाता है। “ये {{ऋ}}
+      पर समाप्त होते हैं,” दादी कहती हैं। “वह स्वर जो लगभग र है। जहाँ हो सके वह {{अर्}} बन जाता है; और कहीं {{र्}}।” शुक “पिता,
+      माता, भ्राता” बुदबुदाता है मानो लोरी आज़मा रहा हो।'
 - id: t1
   kind: teach
   title:
@@ -52,13 +57,47 @@ cards:
   - 7.1.94
   - 7.3.110
   body:
-    en: 'Words in -{{ऋ}} are mostly kin and agents: {{पितृ}} (father), {{मातृ}} (mother, feminine), {{भ्रातृ}} (brother), {{दातृ}} (giver), {{नेतृ}} (leader). The first singular lengthens to {{आ}}: {{पिता}}, {{माता}}, {{दाता}}.'
-    hi: '-{{ऋ}} वाले शब्द अधिकतर नाते और कर्ता हैं: {{पितृ}} (पिता), {{मातृ}} (माता, स्त्रीलिंग), {{भ्रातृ}} (भाई), {{दातृ}} (देने वाला), {{नेतृ}} (नेता)। प्रथमा एकवचन में {{आ}} दीर्घ होता है: {{पिता}}, {{माता}}, {{दाता}}।'
+    en: 'Words in -{{ऋ}} are mostly kin and agents: {{पितृ}} (father), {{मातृ}} (mother, feminine), {{भ्रातृ}} (brother),
+      {{दातृ}} (giver), {{नेतृ}} (leader). The first singular lengthens to {{आ}}: {{पिता}}, {{माता}}, {{दाता}}.'
+    hi: '-{{ऋ}} वाले शब्द अधिकतर नाते और कर्ता हैं: {{पितृ}} (पिता), {{मातृ}} (माता, स्त्रीलिंग), {{भ्रातृ}} (भाई), {{दातृ}}
+      (देने वाला), {{नेतृ}} (नेता)। प्रथमा एकवचन में {{आ}} दीर्घ होता है: {{पिता}}, {{माता}}, {{दाता}}।'
   term:
     sa: ऋकारान्तम्
     meaning:
       en: a word ending in -ऋ
       hi: -ऋ पर समाप्त शब्द
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Words in -{{ऋ}} are mostly kin and agents: {{पितृ}} (father), {{मातृ}} (mother, feminine), {{भ्रातृ}} (brother),
+        {{दातृ}} (giver), {{नेतृ}} (leader). The first singular lengthens to {{आ}}: {{पिता}}, {{माता}}, {{दाता}}.'
+      hi: '-{{ऋ}} वाले शब्द अधिकतर नाते और कर्ता हैं: {{पितृ}} (पिता), {{मातृ}} (माता, स्त्रीलिंग), {{भ्रातृ}} (भाई), {{दातृ}}
+        (देने वाला), {{नेतृ}} (नेता)। प्रथमा एकवचन में {{आ}} दीर्घ होता है: {{पिता}}, {{माता}}, {{दाता}}।'
+    items:
+    - id: i0
+      sa: ऋ
+    - id: i1
+      sa: पितृ
+    - id: i2
+      sa: मातृ
+    - id: i3
+      sa: भ्रातृ
+    - id: i4
+      sa: दातृ
+    - id: i5
+      sa: नेतृ
+    - id: i6
+      sa: आ
+    - id: i7
+      sa: पिता
+    - id: i8
+      sa: माता
+    - id: i9
+      sa: दाता
 - id: tb1
   kind: table
   title:
@@ -273,8 +312,10 @@ cards:
         vibhakti: Sambodhana
         vacana: Bahu
   note:
-    en: '{{पिता}}, {{पितरौ}}, {{पितरः}}; then {{पित्रा}} (by), {{पित्रे}} (to), {{पितुः}} (from, of), {{पितरि}} (in). {{पितरौ}} also means “the two parents”.'
-    hi: '{{पिता}}, {{पितरौ}}, {{पितरः}}; फिर {{पित्रा}} (से), {{पित्रे}} (को), {{पितुः}} (से, का), {{पितरि}} (में)। {{पितरौ}} का अर्थ ‘माता-पिता’ भी है।'
+    en: '{{पिता}}, {{पितरौ}}, {{पितरः}}; then {{पित्रा}} (by), {{पित्रे}} (to), {{पितुः}} (from, of), {{पितरि}} (in). {{पितरौ}}
+      also means “the two parents”.'
+    hi: '{{पिता}}, {{पितरौ}}, {{पितरः}}; फिर {{पित्रा}} (से), {{पित्रे}} (को), {{पितुः}} (से, का), {{पितरि}} (में)। {{पितरौ}}
+      का अर्थ ‘माता-पिता’ भी है।'
 - id: tb2
   kind: table
   title:
@@ -583,6 +624,38 @@ cards:
       linga: Pum
       blanks: 3
     seed: 6
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Words in -{{ऋ}} are mostly kin and agents: {{पितृ}} (father), {{मातृ}} (mother, feminine), {{भ्रातृ}} (brother),
+        {{दातृ}} (giver), {{नेतृ}} (leader). The first singular lengthens to {{आ}}: {{पिता}}, {{माता}}, {{दाता}}.'
+      hi: '-{{ऋ}} वाले शब्द अधिकतर नाते और कर्ता हैं: {{पितृ}} (पिता), {{मातृ}} (माता, स्त्रीलिंग), {{भ्रातृ}} (भाई), {{दातृ}}
+        (देने वाला), {{नेतृ}} (नेता)। प्रथमा एकवचन में {{आ}} दीर्घ होता है: {{पिता}}, {{माता}}, {{दाता}}।'
+    items:
+    - id: i0
+      sa: ऋ
+    - id: i1
+      sa: पितृ
+    - id: i2
+      sa: मातृ
+    - id: i3
+      sa: भ्रातृ
+    - id: i4
+      sa: दातृ
+    - id: i5
+      sa: नेतृ
+    - id: i6
+      sa: आ
+    - id: i7
+      sa: पिता
+    - id: i8
+      sa: माता
+    - id: i9
+      sa: दाता
 - id: p2
   kind: practice
   depth: core
@@ -603,6 +676,38 @@ cards:
       linga: Stri
       blanks: 3
     seed: 7
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Words in -{{ऋ}} are mostly kin and agents: {{पितृ}} (father), {{मातृ}} (mother, feminine), {{भ्रातृ}} (brother),
+        {{दातृ}} (giver), {{नेतृ}} (leader). The first singular lengthens to {{आ}}: {{पिता}}, {{माता}}, {{दाता}}.'
+      hi: '-{{ऋ}} वाले शब्द अधिकतर नाते और कर्ता हैं: {{पितृ}} (पिता), {{मातृ}} (माता, स्त्रीलिंग), {{भ्रातृ}} (भाई), {{दातृ}}
+        (देने वाला), {{नेतृ}} (नेता)। प्रथमा एकवचन में {{आ}} दीर्घ होता है: {{पिता}}, {{माता}}, {{दाता}}।'
+    items:
+    - id: i0
+      sa: ऋ
+    - id: i1
+      sa: पितृ
+    - id: i2
+      sa: मातृ
+    - id: i3
+      sa: भ्रातृ
+    - id: i4
+      sa: दातृ
+    - id: i5
+      sa: नेतृ
+    - id: i6
+      sa: आ
+    - id: i7
+      sa: पिता
+    - id: i8
+      sa: माता
+    - id: i9
+      sa: दाता
 - id: p3
   kind: practice
   depth: core
@@ -621,6 +726,38 @@ cards:
   - sa: पितरौ
   - correct: true
     sa: पितरः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Words in -{{ऋ}} are mostly kin and agents: {{पितृ}} (father), {{मातृ}} (mother, feminine), {{भ्रातृ}} (brother),
+        {{दातृ}} (giver), {{नेतृ}} (leader). The first singular lengthens to {{आ}}: {{पिता}}, {{माता}}, {{दाता}}.'
+      hi: '-{{ऋ}} वाले शब्द अधिकतर नाते और कर्ता हैं: {{पितृ}} (पिता), {{मातृ}} (माता, स्त्रीलिंग), {{भ्रातृ}} (भाई), {{दातृ}}
+        (देने वाला), {{नेतृ}} (नेता)। प्रथमा एकवचन में {{आ}} दीर्घ होता है: {{पिता}}, {{माता}}, {{दाता}}।'
+    items:
+    - id: i0
+      sa: ऋ
+    - id: i1
+      sa: पितृ
+    - id: i2
+      sa: मातृ
+    - id: i3
+      sa: भ्रातृ
+    - id: i4
+      sa: दातृ
+    - id: i5
+      sa: नेतृ
+    - id: i6
+      sa: आ
+    - id: i7
+      sa: पिता
+    - id: i8
+      sa: माता
+    - id: i9
+      sa: दाता
 - id: p4
   kind: practice
   depth: core
@@ -659,6 +796,38 @@ cards:
       text:
         en: 7th, one
         hi: सप्तमी, एक
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Words in -{{ऋ}} are mostly kin and agents: {{पितृ}} (father), {{मातृ}} (mother, feminine), {{भ्रातृ}} (brother),
+        {{दातृ}} (giver), {{नेतृ}} (leader). The first singular lengthens to {{आ}}: {{पिता}}, {{माता}}, {{दाता}}.'
+      hi: '-{{ऋ}} वाले शब्द अधिकतर नाते और कर्ता हैं: {{पितृ}} (पिता), {{मातृ}} (माता, स्त्रीलिंग), {{भ्रातृ}} (भाई), {{दातृ}}
+        (देने वाला), {{नेतृ}} (नेता)। प्रथमा एकवचन में {{आ}} दीर्घ होता है: {{पिता}}, {{माता}}, {{दाता}}।'
+    items:
+    - id: i0
+      sa: ऋ
+    - id: i1
+      sa: पितृ
+    - id: i2
+      sa: मातृ
+    - id: i3
+      sa: भ्रातृ
+    - id: i4
+      sa: दातृ
+    - id: i5
+      sa: नेतृ
+    - id: i6
+      sa: आ
+    - id: i7
+      sa: पिता
+    - id: i8
+      sa: माता
+    - id: i9
+      sa: दाता
 - id: e1
   kind: explore
   depth: core
@@ -700,8 +869,12 @@ cards:
   gate: true
   story:
     success:
-      en: '“मातुः,” you say. The mist-figures on the last shelf lean into one another: father, mother, brother, giver, a family. The ink-stained spirit sets down his pen, and for the first time he is not writing. “कविः कवी कवयः,” he recites, a gift. “एकं पत्रम्, द्वे पत्रे, त्रीणि पत्राणि।”'
-      hi: '“मातुः,” आप कहते हैं। आख़िरी अलमारी की धुंध-आकृतियाँ एक-दूसरे की ओर झुकती हैं: पिता, माता, भाई, दाता, एक परिवार। स्याही से सना भूत अपनी कलम रख देता है, और पहली बार वह लिख नहीं रहा। “कविः कवी कवयः,” वह उपहार के रूप में सुनाता है। “एकं पत्रम्, द्वे पत्रे, त्रीणि पत्राणि।”'
+      en: '“मातुः,” you say. The mist-figures on the last shelf lean into one another: father, mother, brother, giver, a family.
+        The ink-stained spirit sets down his pen, and for the first time he is not writing. “कविः कवी कवयः,” he recites, a
+        gift. “एकं पत्रम्, द्वे पत्रे, त्रीणि पत्राणि।”'
+      hi: '“मातुः,” आप कहते हैं। आख़िरी अलमारी की धुंध-आकृतियाँ एक-दूसरे की ओर झुकती हैं: पिता, माता, भाई, दाता, एक परिवार।
+        स्याही से सना भूत अपनी कलम रख देता है, और पहली बार वह लिख नहीं रहा। “कविः कवी कवयः,” वह उपहार के रूप में सुनाता है।
+        “एकं पत्रम्, द्वे पत्रे, त्रीणि पत्राणि।”'
     failure:
       en: 'The figures stay apart. “Of the mother”: the sixth case, {{मातुः}}.'
       hi: 'आकृतियाँ अलग रहती हैं। ‘माता का’: षष्ठी, {{मातुः}}।'
@@ -710,6 +883,38 @@ cards:
   - sa: मातरम्
   - correct: true
     sa: मातुः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Words in -{{ऋ}} are mostly kin and agents: {{पितृ}} (father), {{मातृ}} (mother, feminine), {{भ्रातृ}} (brother),
+        {{दातृ}} (giver), {{नेतृ}} (leader). The first singular lengthens to {{आ}}: {{पिता}}, {{माता}}, {{दाता}}.'
+      hi: '-{{ऋ}} वाले शब्द अधिकतर नाते और कर्ता हैं: {{पितृ}} (पिता), {{मातृ}} (माता, स्त्रीलिंग), {{भ्रातृ}} (भाई), {{दातृ}}
+        (देने वाला), {{नेतृ}} (नेता)। प्रथमा एकवचन में {{आ}} दीर्घ होता है: {{पिता}}, {{माता}}, {{दाता}}।'
+    items:
+    - id: i0
+      sa: ऋ
+    - id: i1
+      sa: पितृ
+    - id: i2
+      sa: मातृ
+    - id: i3
+      sa: भ्रातृ
+    - id: i4
+      sa: दातृ
+    - id: i5
+      sa: नेतृ
+    - id: i6
+      sa: आ
+    - id: i7
+      sa: पिता
+    - id: i8
+      sa: माता
+    - id: i9
+      sa: दाता
 - id: pn
   kind: teach
   title:
@@ -722,8 +927,41 @@ cards:
   - 7.3.110
   - 7.1.94
   body:
-    en: 'Sūtra 7.3.110, {{ऋतो ङिसर्वनामस्थानयोः}}, gives {{ऋ}} its strong form {{अर्}} before {{ङि}} and the strong endings: {{पितरि}}, {{पितरौ}}, {{पितरः}}. Sūtra 7.1.94 makes the first singular {{पिता}} by turning {{ऋ}} into {{अन्}} and lengthening.'
-    hi: 'सूत्र 7.3.110, {{ऋतो ङिसर्वनामस्थानयोः}}, {{ङि}} और बलवान् प्रत्ययों से पहले {{ऋ}} को उसका प्रबल रूप {{अर्}} देता है: {{पितरि}}, {{पितरौ}}, {{पितरः}}। सूत्र 7.1.94 प्रथमा एकवचन {{पिता}} बनाता है, {{ऋ}} को {{अन्}} करके और दीर्घ करके।'
+    en: 'Sūtra 7.3.110, {{ऋतो ङिसर्वनामस्थानयोः}}, gives {{ऋ}} its strong form {{अर्}} before {{ङि}} and the strong endings:
+      {{पितरि}}, {{पितरौ}}, {{पितरः}}. Sūtra 7.1.94 makes the first singular {{पिता}} by turning {{ऋ}} into {{अन्}} and lengthening.'
+    hi: 'सूत्र 7.3.110, {{ऋतो ङिसर्वनामस्थानयोः}}, {{ङि}} और बलवान् प्रत्ययों से पहले {{ऋ}} को उसका प्रबल रूप {{अर्}} देता
+      है: {{पितरि}}, {{पितरौ}}, {{पितरः}}। सूत्र 7.1.94 प्रथमा एकवचन {{पिता}} बनाता है, {{ऋ}} को {{अन्}} करके और दीर्घ करके।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Sūtra 7.3.110, {{ऋतो ङिसर्वनामस्थानयोः}}, gives {{ऋ}} its strong form {{अर्}} before {{ङि}} and the strong endings:
+        {{पितरि}}, {{पितरौ}}, {{पितरः}}. Sūtra 7.1.94 makes the first singular {{पिता}} by turning {{ऋ}} into {{अन्}} and
+        lengthening.'
+      hi: 'सूत्र 7.3.110, {{ऋतो ङिसर्वनामस्थानयोः}}, {{ङि}} और बलवान् प्रत्ययों से पहले {{ऋ}} को उसका प्रबल रूप {{अर्}} देता
+        है: {{पितरि}}, {{पितरौ}}, {{पितरः}}। सूत्र 7.1.94 प्रथमा एकवचन {{पिता}} बनाता है, {{ऋ}} को {{अन्}} करके और दीर्घ करके।'
+    items:
+    - id: i0
+      sa: ऋतो ङिसर्वनामस्थानयोः
+    - id: i1
+      sa: ऋ
+    - id: i2
+      sa: अर्
+    - id: i3
+      sa: ङि
+    - id: i4
+      sa: पितरि
+    - id: i5
+      sa: पितरौ
+    - id: i6
+      sa: पितरः
+    - id: i7
+      sa: पिता
+    - id: i8
+      sa: अन्
 - id: sum
   kind: summary
   title:

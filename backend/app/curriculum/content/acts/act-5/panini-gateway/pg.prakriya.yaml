@@ -26,7 +26,9 @@ cards:
     hi: तीसरा आला
   depth: core
   image:
-    brief: The third alcove opened a hand's breadth, with a plain line of script over it; Dādī kneeling and chalking a single root-letter on the stone floor, a neat row of seven flat stones laid beside it like the steps of a wall; the silver spirit nearly whole, watching; Lubdhaka stepping in from the cave mouth with his satchel; Śuka on the stone row.
+    brief: The third alcove opened a hand's breadth, with a plain line of script over it; Dādī kneeling and chalking a single
+      root-letter on the stone floor, a neat row of seven flat stones laid beside it like the steps of a wall; the silver
+      spirit nearly whole, watching; Lubdhaka stepping in from the cave mouth with his satchel; Śuka on the stone row.
     alt:
       en: A woman chalks a root on the floor beside a row of seven laid stones as a man steps in
       hi: फर्श पर धातु लिखती स्त्री और सात बिछे पत्थरों की कतार, भीतर आता आदमी
@@ -39,10 +41,15 @@ cards:
     place: guha
     ratio: '4:3'
     id: pg-prakriya-s1
-    text_in_image: ["भू"]
+    text_in_image:
+    - भू
   narration:
-    en: 'The third alcove opens a hand''s breadth, a plain line cut over it. Padikā is nearly whole. “These are not three locks,” says Dādī. “They are one road. Pāṇini builds a word as a mason builds a wall: one stone, one rule, in order.” She chalks a root on the floor: भू. Lubdhaka comes in. “Then I shall build it faster,” he says.'
-    hi: 'तीसरा आला हाथ भर खुल जाता है, और उसके ऊपर एक सादी पंक्ति खुदी है। पदिका लगभग पूरी हो चुकी है। “ये तीन ताले नहीं हैं,” दादी कहती हैं। “ये एक ही मार्ग हैं। पाणिनि शब्द वैसे बनाते हैं जैसे राजमिस्त्री दीवार: एक पत्थर, एक नियम, क्रम से।” वे फर्श पर एक धातु लिखती हैं: भू। लुब्धक गुफा के द्वार से भीतर आता है। “तो मैं इसे और जल्दी बनाऊँगा,” वह कहता है।'
+    en: 'The third alcove opens a hand''s breadth, a plain line cut over it. Padikā is nearly whole. “These are not three
+      locks,” says Dādī. “They are one road. Pāṇini builds a word as a mason builds a wall: one stone, one rule, in order.”
+      She chalks a root on the floor: भू. Lubdhaka comes in. “Then I shall build it faster,” he says.'
+    hi: 'तीसरा आला हाथ भर खुल जाता है, और उसके ऊपर एक सादी पंक्ति खुदी है। पदिका लगभग पूरी हो चुकी है। “ये तीन ताले नहीं हैं,”
+      दादी कहती हैं। “ये एक ही मार्ग हैं। पाणिनि शब्द वैसे बनाते हैं जैसे राजमिस्त्री दीवार: एक पत्थर, एक नियम, क्रम से।”
+      वे फर्श पर एक धातु लिखती हैं: भू। लुब्धक गुफा के द्वार से भीतर आता है। “तो मैं इसे और जल्दी बनाऊँगा,” वह कहता है।'
   quote:
     sa: भूवादयो धातवः वर्तमाने लट्
     gloss:
@@ -65,8 +72,12 @@ cards:
   - 7.3.84
   - 6.1.78
   body:
-    en: 'To make {{भवति}}, Pāṇini starts from the root {{भू}} and adds what each rule asks, one at a time: the tense, the ending for “he”, the joining {{अ}}. The markers drop away. Then two sound changes. Each step has its sūtra number, and the steps run in order.'
-    hi: '{{भवति}} बनाने के लिए पाणिनि धातु {{भू}} से आरम्भ करते हैं और हर नियम जो माँगता है उसे एक-एक करके जोड़ते हैं: काल, ‘वह’ का प्रत्यय, जोड़ने वाला {{अ}}। संकेत हटते जाते हैं। फिर दो ध्वनि-परिवर्तन। हर चरण का अपना सूत्र-क्रमांक है, और चरण क्रम से चलते हैं।'
+    en: 'To make {{भवति}}, Pāṇini starts from the root {{भू}} and adds what each rule asks, one at a time: the tense, the
+      ending for “he”, the joining {{अ}}. The markers drop away. Then two sound changes. Each step has its sūtra number, and
+      the steps run in order.'
+    hi: '{{भवति}} बनाने के लिए पाणिनि धातु {{भू}} से आरम्भ करते हैं और हर नियम जो माँगता है उसे एक-एक करके जोड़ते हैं: काल,
+      ‘वह’ का प्रत्यय, जोड़ने वाला {{अ}}। संकेत हटते जाते हैं। फिर दो ध्वनि-परिवर्तन। हर चरण का अपना सूत्र-क्रमांक है, और
+      चरण क्रम से चलते हैं।'
   steps:
   - sa: भू
     label:
@@ -96,6 +107,48 @@ cards:
     label:
       en: the word
       hi: शब्द
+  visuals:
+  - id: v-source-forms
+    kind: comparison
+    title:
+      en: Follow the forms
+      hi: रूपों पर ध्यान दें
+    items:
+    - id: i0
+      sa: भू
+      meaning:
+        en: the root (1.3.1)
+        hi: धातु (1.3.1)
+    - id: i1
+      sa: भू + ल्
+      meaning:
+        en: 'the tense: present (3.2.123)'
+        hi: 'काल: वर्तमान (3.2.123)'
+    - id: i2
+      sa: भू + ति
+      meaning:
+        en: the ending for “he” (3.4.78)
+        hi: ‘वह’ का प्रत्यय (3.4.78)
+    - id: i3
+      sa: भू + अ + ति
+      meaning:
+        en: the joining {{अ}} (3.1.68)
+        hi: जोड़ने वाला {{अ}} (3.1.68)
+    - id: i4
+      sa: भो + अ + ति
+      meaning:
+        en: strengthening (7.3.84)
+        hi: गुण (7.3.84)
+    - id: i5
+      sa: भव् + अ + ति
+      meaning:
+        en: '{{ओ}} before {{अ}} becomes {{अव्}} (6.1.78)'
+        hi: '{{अ}} से पहले {{ओ}} का {{अव्}} (6.1.78)'
+    - id: i6
+      sa: भवति
+      meaning:
+        en: the word
+        hi: शब्द
 - id: tb1
   kind: table
   title:
@@ -206,6 +259,48 @@ cards:
       text:
         en: o + a becomes av + a
         hi: ओ + अ से अव् + अ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: भू
+      meaning:
+        en: the root (1.3.1)
+        hi: धातु (1.3.1)
+    - id: i1
+      sa: भू + ल्
+      meaning:
+        en: 'the tense: present (3.2.123)'
+        hi: 'काल: वर्तमान (3.2.123)'
+    - id: i2
+      sa: भू + ति
+      meaning:
+        en: the ending for “he” (3.4.78)
+        hi: ‘वह’ का प्रत्यय (3.4.78)
+    - id: i3
+      sa: भू + अ + ति
+      meaning:
+        en: the joining {{अ}} (3.1.68)
+        hi: जोड़ने वाला {{अ}} (3.1.68)
+    - id: i4
+      sa: भो + अ + ति
+      meaning:
+        en: strengthening (7.3.84)
+        hi: गुण (7.3.84)
+    - id: i5
+      sa: भव् + अ + ति
+      meaning:
+        en: '{{ओ}} before {{अ}} becomes {{अव्}} (6.1.78)'
+        hi: '{{अ}} से पहले {{ओ}} का {{अव्}} (6.1.78)'
+    - id: i6
+      sa: भवति
+      meaning:
+        en: the word
+        hi: शब्द
 - id: p2
   kind: practice
   depth: core
@@ -213,8 +308,10 @@ cards:
   - panini.prakriya
   mode: choice
   prompt:
-    en: From 8.2.1 {{पूर्वत्रासिद्धम्}}, a rule counts as not yet applied for the rules before it. So the sound changes there come…
-    hi: 8.2.1 {{पूर्वत्रासिद्धम्}} से, एक नियम अपने से पहले के नियमों के लिए अभी लागू नहीं माना जाता। इसलिए वहाँ के ध्वनि-परिवर्तन आते हैं…
+    en: From 8.2.1 {{पूर्वत्रासिद्धम्}}, a rule counts as not yet applied for the rules before it. So the sound changes there
+      come…
+    hi: 8.2.1 {{पूर्वत्रासिद्धम्}} से, एक नियम अपने से पहले के नियमों के लिए अभी लागू नहीं माना जाता। इसलिए वहाँ के ध्वनि-परिवर्तन
+      आते हैं…
   explain:
     en: The order of the rules matters.
     hi: नियमों का क्रम महत्त्व रखता है।
@@ -230,6 +327,48 @@ cards:
   - text:
       en: in any order
       hi: किसी भी क्रम में
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: भू
+      meaning:
+        en: the root (1.3.1)
+        hi: धातु (1.3.1)
+    - id: i1
+      sa: भू + ल्
+      meaning:
+        en: 'the tense: present (3.2.123)'
+        hi: 'काल: वर्तमान (3.2.123)'
+    - id: i2
+      sa: भू + ति
+      meaning:
+        en: the ending for “he” (3.4.78)
+        hi: ‘वह’ का प्रत्यय (3.4.78)
+    - id: i3
+      sa: भू + अ + ति
+      meaning:
+        en: the joining {{अ}} (3.1.68)
+        hi: जोड़ने वाला {{अ}} (3.1.68)
+    - id: i4
+      sa: भो + अ + ति
+      meaning:
+        en: strengthening (7.3.84)
+        hi: गुण (7.3.84)
+    - id: i5
+      sa: भव् + अ + ति
+      meaning:
+        en: '{{ओ}} before {{अ}} becomes {{अव्}} (6.1.78)'
+        hi: '{{अ}} से पहले {{ओ}} का {{अव्}} (6.1.78)'
+    - id: i6
+      sa: भवति
+      meaning:
+        en: the word
+        hi: शब्द
 - id: p3
   kind: practice
   depth: core
@@ -257,6 +396,48 @@ cards:
   - ति
   - भू
   - अ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: भू
+      meaning:
+        en: the root (1.3.1)
+        hi: धातु (1.3.1)
+    - id: i1
+      sa: भू + ल्
+      meaning:
+        en: 'the tense: present (3.2.123)'
+        hi: 'काल: वर्तमान (3.2.123)'
+    - id: i2
+      sa: भू + ति
+      meaning:
+        en: the ending for “he” (3.4.78)
+        hi: ‘वह’ का प्रत्यय (3.4.78)
+    - id: i3
+      sa: भू + अ + ति
+      meaning:
+        en: the joining {{अ}} (3.1.68)
+        hi: जोड़ने वाला {{अ}} (3.1.68)
+    - id: i4
+      sa: भो + अ + ति
+      meaning:
+        en: strengthening (7.3.84)
+        hi: गुण (7.3.84)
+    - id: i5
+      sa: भव् + अ + ति
+      meaning:
+        en: '{{ओ}} before {{अ}} becomes {{अव्}} (6.1.78)'
+        hi: '{{अ}} से पहले {{ओ}} का {{अव्}} (6.1.78)'
+    - id: i6
+      sa: भवति
+      meaning:
+        en: the word
+        hi: शब्द
 - id: p4
   kind: practice
   title:
@@ -276,8 +457,14 @@ cards:
   gate: true
   story:
     success:
-      en: “भू, भू + ल्, भू + ति,” you say, laying them down in order, and the flat stones along the floor light, one after another, as you name them, until the sixth, भव् + अ + ति, and the seventh, भवति. Lubdhaka, who has been building his own row beside yours, quicker, with stones from the wrong end, finds his wall will not stand. He looks at it. Padikā is whole. “The road has an order,” she says. “One cannot start at the top of the wall.”
-      hi: “भू, भू + ल्, भू + ति,” आप उन्हें क्रम में बिछाते हुए कहते हैं, और फर्श के चपटे पत्थर एक-एक कर चमकते हैं जैसे आप उनके नाम लेते हैं, छठे, भव् + अ + ति, और सातवें, भवति, तक। लुब्धक, जो अपनी अलग कतार तेज़ी से बना रहा था, गलत सिरे के पत्थरों से, देखता है कि उसकी दीवार खड़ी नहीं होती। वह उसे देखता है। पदिका पूरी हो गई है। “मार्ग का एक क्रम है,” वह कहती है। “दीवार को ऊपर से शुरू नहीं किया जा सकता।”
+      en: “भू, भू + ल्, भू + ति,” you say, laying them down in order, and the flat stones along the floor light, one after
+        another, as you name them, until the sixth, भव् + अ + ति, and the seventh, भवति. Lubdhaka, who has been building his
+        own row beside yours, quicker, with stones from the wrong end, finds his wall will not stand. He looks at it. Padikā
+        is whole. “The road has an order,” she says. “One cannot start at the top of the wall.”
+      hi: “भू, भू + ल्, भू + ति,” आप उन्हें क्रम में बिछाते हुए कहते हैं, और फर्श के चपटे पत्थर एक-एक कर चमकते हैं जैसे आप
+        उनके नाम लेते हैं, छठे, भव् + अ + ति, और सातवें, भवति, तक। लुब्धक, जो अपनी अलग कतार तेज़ी से बना रहा था, गलत सिरे
+        के पत्थरों से, देखता है कि उसकी दीवार खड़ी नहीं होती। वह उसे देखता है। पदिका पूरी हो गई है। “मार्ग का एक क्रम है,”
+        वह कहती है। “दीवार को ऊपर से शुरू नहीं किया जा सकता।”
     failure:
       en: 'The stones stay dark. The order is: root, tense, ending, joining {{अ}}, strengthening, {{ओ}} → {{अव्}}.'
       hi: 'पत्थर अँधेरे रहते हैं। क्रम है: धातु, काल, प्रत्यय, जोड़ने वाला {{अ}}, गुण, {{ओ}} → {{अव्}}।'
@@ -288,6 +475,48 @@ cards:
   - भू + अ + ति
   - भो + अ + ति
   - भव् + अ + ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: भू
+      meaning:
+        en: the root (1.3.1)
+        hi: धातु (1.3.1)
+    - id: i1
+      sa: भू + ल्
+      meaning:
+        en: 'the tense: present (3.2.123)'
+        hi: 'काल: वर्तमान (3.2.123)'
+    - id: i2
+      sa: भू + ति
+      meaning:
+        en: the ending for “he” (3.4.78)
+        hi: ‘वह’ का प्रत्यय (3.4.78)
+    - id: i3
+      sa: भू + अ + ति
+      meaning:
+        en: the joining {{अ}} (3.1.68)
+        hi: जोड़ने वाला {{अ}} (3.1.68)
+    - id: i4
+      sa: भो + अ + ति
+      meaning:
+        en: strengthening (7.3.84)
+        hi: गुण (7.3.84)
+    - id: i5
+      sa: भव् + अ + ति
+      meaning:
+        en: '{{ओ}} before {{अ}} becomes {{अव्}} (6.1.78)'
+        hi: '{{अ}} से पहले {{ओ}} का {{अव्}} (6.1.78)'
+    - id: i6
+      sa: भवति
+      meaning:
+        en: the word
+        hi: शब्द
 - id: pn
   kind: teach
   title:
@@ -299,8 +528,28 @@ cards:
   sutras:
   - 8.2.1
   body:
-    en: Sūtra 8.2.1, {{पूर्वत्रासिद्धम्}}, opens the last three quarters of the Aṣṭādhyāyī. From there, each rule counts as not yet applied when an earlier rule looks at the word, and when a rule before it in that part does. So the sound changes there wait until the end, and the order of the rules decides the word.
-    hi: सूत्र 8.2.1, {{पूर्वत्रासिद्धम्}}, अष्टाध्यायी के अन्तिम तीन पादों को खोलता है। वहाँ से हर नियम पहले के नियम के लिए, और उस भाग में अपने से पहले के नियम के लिए, अभी लागू नहीं माना जाता। इसलिए वहाँ के ध्वनि-परिवर्तन अन्त तक रुके रहते हैं, और नियमों का क्रम शब्द तय करता है।
+    en: Sūtra 8.2.1, {{पूर्वत्रासिद्धम्}}, opens the last three quarters of the Aṣṭādhyāyī. From there, each rule counts as
+      not yet applied when an earlier rule looks at the word, and when a rule before it in that part does. So the sound changes
+      there wait until the end, and the order of the rules decides the word.
+    hi: सूत्र 8.2.1, {{पूर्वत्रासिद्धम्}}, अष्टाध्यायी के अन्तिम तीन पादों को खोलता है। वहाँ से हर नियम पहले के नियम के लिए,
+      और उस भाग में अपने से पहले के नियम के लिए, अभी लागू नहीं माना जाता। इसलिए वहाँ के ध्वनि-परिवर्तन अन्त तक रुके रहते हैं,
+      और नियमों का क्रम शब्द तय करता है।
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Sūtra 8.2.1, {{पूर्वत्रासिद्धम्}}, opens the last three quarters of the Aṣṭādhyāyī. From there, each rule counts
+        as not yet applied when an earlier rule looks at the word, and when a rule before it in that part does. So the sound
+        changes there wait until the end, and the order of the rules decides the word.
+      hi: सूत्र 8.2.1, {{पूर्वत्रासिद्धम्}}, अष्टाध्यायी के अन्तिम तीन पादों को खोलता है। वहाँ से हर नियम पहले के नियम के
+        लिए, और उस भाग में अपने से पहले के नियम के लिए, अभी लागू नहीं माना जाता। इसलिए वहाँ के ध्वनि-परिवर्तन अन्त तक रुके
+        रहते हैं, और नियमों का क्रम शब्द तय करता है।
+    items:
+    - id: i0
+      sa: पूर्वत्रासिद्धम्
 - id: sum
   kind: summary
   title:

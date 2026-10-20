@@ -26,7 +26,9 @@ cards:
     hi: रात का कवि
   depth: core
   image:
-    brief: 'The school library at night, moonlight through a window: a small blue-black spirit with ink-stained wisps writing in the air with a reed pen, faint glowing lines of verse trailing behind it; you, Dādī and Śuka peering round a shelf; the tree of names glowing softly in a corner.'
+    brief: 'The school library at night, moonlight through a window: a small blue-black spirit with ink-stained wisps writing
+      in the air with a reed pen, faint glowing lines of verse trailing behind it; you, Dādī and Śuka peering round a shelf;
+      the tree of names glowing softly in a corner.'
     alt:
       en: An ink-stained spirit writing glowing verse in the air in a moonlit library
       hi: चाँदनी में पुस्तकालय में हवा पर चमकते श्लोक लिखता स्याही से सना भूत
@@ -39,10 +41,15 @@ cards:
     place: pathashala
     ratio: '4:3'
     id: nf2-i-s1
-    text_in_image: ["कविः कवी कवयः।"]
+    text_in_image:
+    - कविः कवी कवयः।
   narration:
-    en: Late that night, while the school sleeps, scratching comes from the library. A small blue-black spirit with ink on every wisp is writing on the air with a reed pen, muttering verses. Every line ends the same way, in -इ. “कविः,” he says, tapping his own chest. “कवयः,” he adds, looking round hopefully at a shelf of silent bundles.
-    hi: उस रात देर से, जब पाठशाला सोती है, पुस्तकालय से खरोंच की आवाज़ आती है। हर लट पर स्याही लगा एक नन्हा नीला-काला भूत सरकंडे की कलम से हवा पर लिख रहा है, श्लोक बुदबुदाते हुए। हर पंक्ति एक ही ढंग से समाप्त होती है, -इ पर। “कविः,” वह अपनी छाती थपथपाकर कहता है। “कवयः,” वह जोड़ता है, चुप गट्ठरों की अलमारी की ओर आशा से देखता हुआ।
+    en: Late that night, while the school sleeps, scratching comes from the library. A small blue-black spirit with ink on
+      every wisp is writing on the air with a reed pen, muttering verses. Every line ends the same way, in -इ. “कविः,” he
+      says, tapping his own chest. “कवयः,” he adds, looking round hopefully at a shelf of silent bundles.
+    hi: उस रात देर से, जब पाठशाला सोती है, पुस्तकालय से खरोंच की आवाज़ आती है। हर लट पर स्याही लगा एक नन्हा नीला-काला भूत
+      सरकंडे की कलम से हवा पर लिख रहा है, श्लोक बुदबुदाते हुए। हर पंक्ति एक ही ढंग से समाप्त होती है, -इ पर। “कविः,” वह अपनी
+      छाती थपथपाकर कहता है। “कवयः,” वह जोड़ता है, चुप गट्ठरों की अलमारी की ओर आशा से देखता हुआ।
   lines:
   - speaker: dadi
     sa: कविः कवी कवयः।
@@ -58,13 +65,51 @@ cards:
   skills:
   - noun.i-stems
   body:
-    en: 'Many words end in a short -{{इ}}: {{कवि}} (poet), {{अग्नि}} (fire), {{मुनि}} (sage) are masculine; {{मति}} (thought), {{भूमि}} (earth), {{रात्रि}} (night) are feminine. Their patterns are close to {{देव}} and {{लता}}, with the {{इ}} sometimes turning to {{ए}} or {{य्}}.'
-    hi: 'अनेक शब्द ह्रस्व -{{इ}} पर समाप्त होते हैं: {{कवि}}, {{अग्नि}}, {{मुनि}} पुंलिंग हैं; {{मति}}, {{भूमि}}, {{रात्रि}} स्त्रीलिंग हैं। उनका ढाँचा {{देव}} और {{लता}} के क़रीब है, जिसमें {{इ}} कभी {{ए}} या {{य्}} बन जाता है।'
+    en: 'Many words end in a short -{{इ}}: {{कवि}} (poet), {{अग्नि}} (fire), {{मुनि}} (sage) are masculine; {{मति}} (thought),
+      {{भूमि}} (earth), {{रात्रि}} (night) are feminine. Their patterns are close to {{देव}} and {{लता}}, with the {{इ}} sometimes
+      turning to {{ए}} or {{य्}}.'
+    hi: 'अनेक शब्द ह्रस्व -{{इ}} पर समाप्त होते हैं: {{कवि}}, {{अग्नि}}, {{मुनि}} पुंलिंग हैं; {{मति}}, {{भूमि}}, {{रात्रि}}
+      स्त्रीलिंग हैं। उनका ढाँचा {{देव}} और {{लता}} के क़रीब है, जिसमें {{इ}} कभी {{ए}} या {{य्}} बन जाता है।'
   term:
     sa: इकारान्तम्
     meaning:
       en: a word ending in -इ
       hi: -इ पर समाप्त शब्द
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: 'Many words end in a short -{{इ}}: {{कवि}} (poet), {{अग्नि}} (fire), {{मुनि}} (sage) are masculine; {{मति}} (thought),
+        {{भूमि}} (earth), {{रात्रि}} (night) are feminine. Their patterns are close to {{देव}} and {{लता}}, with the {{इ}}
+        sometimes turning to {{ए}} or {{य्}}.'
+      hi: 'अनेक शब्द ह्रस्व -{{इ}} पर समाप्त होते हैं: {{कवि}}, {{अग्नि}}, {{मुनि}} पुंलिंग हैं; {{मति}}, {{भूमि}}, {{रात्रि}}
+        स्त्रीलिंग हैं। उनका ढाँचा {{देव}} और {{लता}} के क़रीब है, जिसमें {{इ}} कभी {{ए}} या {{य्}} बन जाता है।'
+    items:
+    - id: i0
+      sa: इ
+    - id: i1
+      sa: कवि
+    - id: i2
+      sa: अग्नि
+    - id: i3
+      sa: मुनि
+    - id: i4
+      sa: मति
+    - id: i5
+      sa: भूमि
+    - id: i6
+      sa: रात्रि
+    - id: i7
+      sa: देव
+    - id: i8
+      sa: लता
+    - id: i9
+      sa: ए
+    - id: i10
+      sa: य्
 - id: tb1
   kind: table
   title:
@@ -495,8 +540,10 @@ cards:
         vibhakti: Sambodhana
         vacana: Bahu
   note:
-    en: 'The feminine has optional forms in the singular: {{मतये}} or {{मत्यै}}, {{मतेः}} or {{मत्याः}}, {{मतौ}} or {{मत्याम्}}. The first of each is shown.'
-    hi: 'स्त्रीलिंग में एकवचन के वैकल्पिक रूप हैं: {{मतये}} या {{मत्यै}}, {{मतेः}} या {{मत्याः}}, {{मतौ}} या {{मत्याम्}}। हर एक का पहला रूप दिखाया है।'
+    en: 'The feminine has optional forms in the singular: {{मतये}} or {{मत्यै}}, {{मतेः}} or {{मत्याः}}, {{मतौ}} or {{मत्याम्}}.
+      The first of each is shown.'
+    hi: 'स्त्रीलिंग में एकवचन के वैकल्पिक रूप हैं: {{मतये}} या {{मत्यै}}, {{मतेः}} या {{मत्याः}}, {{मतौ}} या {{मत्याम्}}।
+      हर एक का पहला रूप दिखाया है।'
 - id: p1
   kind: practice
   depth: core
@@ -517,6 +564,41 @@ cards:
       linga: Pum
       blanks: 3
     seed: 0
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Many words end in a short -{{इ}}: {{कवि}} (poet), {{अग्नि}} (fire), {{मुनि}} (sage) are masculine; {{मति}} (thought),
+        {{भूमि}} (earth), {{रात्रि}} (night) are feminine. Their patterns are close to {{देव}} and {{लता}}, with the {{इ}}
+        sometimes turning to {{ए}} or {{य्}}.'
+      hi: 'अनेक शब्द ह्रस्व -{{इ}} पर समाप्त होते हैं: {{कवि}}, {{अग्नि}}, {{मुनि}} पुंलिंग हैं; {{मति}}, {{भूमि}}, {{रात्रि}}
+        स्त्रीलिंग हैं। उनका ढाँचा {{देव}} और {{लता}} के क़रीब है, जिसमें {{इ}} कभी {{ए}} या {{य्}} बन जाता है।'
+    items:
+    - id: i0
+      sa: इ
+    - id: i1
+      sa: कवि
+    - id: i2
+      sa: अग्नि
+    - id: i3
+      sa: मुनि
+    - id: i4
+      sa: मति
+    - id: i5
+      sa: भूमि
+    - id: i6
+      sa: रात्रि
+    - id: i7
+      sa: देव
+    - id: i8
+      sa: लता
+    - id: i9
+      sa: ए
+    - id: i10
+      sa: य्
 - id: p2
   kind: practice
   depth: core
@@ -537,6 +619,41 @@ cards:
       linga: Stri
       blanks: 3
     seed: 1
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Many words end in a short -{{इ}}: {{कवि}} (poet), {{अग्नि}} (fire), {{मुनि}} (sage) are masculine; {{मति}} (thought),
+        {{भूमि}} (earth), {{रात्रि}} (night) are feminine. Their patterns are close to {{देव}} and {{लता}}, with the {{इ}}
+        sometimes turning to {{ए}} or {{य्}}.'
+      hi: 'अनेक शब्द ह्रस्व -{{इ}} पर समाप्त होते हैं: {{कवि}}, {{अग्नि}}, {{मुनि}} पुंलिंग हैं; {{मति}}, {{भूमि}}, {{रात्रि}}
+        स्त्रीलिंग हैं। उनका ढाँचा {{देव}} और {{लता}} के क़रीब है, जिसमें {{इ}} कभी {{ए}} या {{य्}} बन जाता है।'
+    items:
+    - id: i0
+      sa: इ
+    - id: i1
+      sa: कवि
+    - id: i2
+      sa: अग्नि
+    - id: i3
+      sa: मुनि
+    - id: i4
+      sa: मति
+    - id: i5
+      sa: भूमि
+    - id: i6
+      sa: रात्रि
+    - id: i7
+      sa: देव
+    - id: i8
+      sa: लता
+    - id: i9
+      sa: ए
+    - id: i10
+      sa: य्
 - id: p3
   kind: practice
   depth: core
@@ -555,6 +672,41 @@ cards:
   - sa: कविम्
   - correct: true
     sa: कवे
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Many words end in a short -{{इ}}: {{कवि}} (poet), {{अग्नि}} (fire), {{मुनि}} (sage) are masculine; {{मति}} (thought),
+        {{भूमि}} (earth), {{रात्रि}} (night) are feminine. Their patterns are close to {{देव}} and {{लता}}, with the {{इ}}
+        sometimes turning to {{ए}} or {{य्}}.'
+      hi: 'अनेक शब्द ह्रस्व -{{इ}} पर समाप्त होते हैं: {{कवि}}, {{अग्नि}}, {{मुनि}} पुंलिंग हैं; {{मति}}, {{भूमि}}, {{रात्रि}}
+        स्त्रीलिंग हैं। उनका ढाँचा {{देव}} और {{लता}} के क़रीब है, जिसमें {{इ}} कभी {{ए}} या {{य्}} बन जाता है।'
+    items:
+    - id: i0
+      sa: इ
+    - id: i1
+      sa: कवि
+    - id: i2
+      sa: अग्नि
+    - id: i3
+      sa: मुनि
+    - id: i4
+      sa: मति
+    - id: i5
+      sa: भूमि
+    - id: i6
+      sa: रात्रि
+    - id: i7
+      sa: देव
+    - id: i8
+      sa: लता
+    - id: i9
+      sa: ए
+    - id: i10
+      sa: य्
 - id: p4
   kind: practice
   depth: core
@@ -593,6 +745,41 @@ cards:
       text:
         en: 7th, one
         hi: सप्तमी, एक
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Many words end in a short -{{इ}}: {{कवि}} (poet), {{अग्नि}} (fire), {{मुनि}} (sage) are masculine; {{मति}} (thought),
+        {{भूमि}} (earth), {{रात्रि}} (night) are feminine. Their patterns are close to {{देव}} and {{लता}}, with the {{इ}}
+        sometimes turning to {{ए}} or {{य्}}.'
+      hi: 'अनेक शब्द ह्रस्व -{{इ}} पर समाप्त होते हैं: {{कवि}}, {{अग्नि}}, {{मुनि}} पुंलिंग हैं; {{मति}}, {{भूमि}}, {{रात्रि}}
+        स्त्रीलिंग हैं। उनका ढाँचा {{देव}} और {{लता}} के क़रीब है, जिसमें {{इ}} कभी {{ए}} या {{य्}} बन जाता है।'
+    items:
+    - id: i0
+      sa: इ
+    - id: i1
+      sa: कवि
+    - id: i2
+      sa: अग्नि
+    - id: i3
+      sa: मुनि
+    - id: i4
+      sa: मति
+    - id: i5
+      sa: भूमि
+    - id: i6
+      sa: रात्रि
+    - id: i7
+      sa: देव
+    - id: i8
+      sa: लता
+    - id: i9
+      sa: ए
+    - id: i10
+      sa: य्
 - id: e1
   kind: explore
   depth: core
@@ -633,8 +820,10 @@ cards:
   gate: true
   story:
     success:
-      en: '“कवयः,” you say, and the shelf of silent bundles trembles. A dozen faint voices, long dead poets, answer in chorus: “कवयः!” The little spirit beams, ink dripping from his chin.'
-      hi: '“कवयः,” आप कहते हैं, और चुप गट्ठरों की अलमारी काँपती है। एक दर्जन धीमी आवाज़ें, कब के मरे कवि, सामूहिक रूप से उत्तर देती हैं: “कवयः!” नन्हा भूत खिल उठता है, ठुड्डी से स्याही टपकती हुई।'
+      en: '“कवयः,” you say, and the shelf of silent bundles trembles. A dozen faint voices, long dead poets, answer in chorus:
+        “कवयः!” The little spirit beams, ink dripping from his chin.'
+      hi: '“कवयः,” आप कहते हैं, और चुप गट्ठरों की अलमारी काँपती है। एक दर्जन धीमी आवाज़ें, कब के मरे कवि, सामूहिक रूप से उत्तर
+        देती हैं: “कवयः!” नन्हा भूत खिल उठता है, ठुड्डी से स्याही टपकती हुई।'
     failure:
       en: 'The shelf stays silent. Plural: the {{इ}} becomes {{अय्}} and takes {{अः}}.'
       hi: 'अलमारी चुप रहती है। बहुवचन: {{इ}} {{अय्}} बनता है और {{अः}} लेता है।'
@@ -643,6 +832,41 @@ cards:
   - sa: कवीन्
   - correct: true
     sa: कवयः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Many words end in a short -{{इ}}: {{कवि}} (poet), {{अग्नि}} (fire), {{मुनि}} (sage) are masculine; {{मति}} (thought),
+        {{भूमि}} (earth), {{रात्रि}} (night) are feminine. Their patterns are close to {{देव}} and {{लता}}, with the {{इ}}
+        sometimes turning to {{ए}} or {{य्}}.'
+      hi: 'अनेक शब्द ह्रस्व -{{इ}} पर समाप्त होते हैं: {{कवि}}, {{अग्नि}}, {{मुनि}} पुंलिंग हैं; {{मति}}, {{भूमि}}, {{रात्रि}}
+        स्त्रीलिंग हैं। उनका ढाँचा {{देव}} और {{लता}} के क़रीब है, जिसमें {{इ}} कभी {{ए}} या {{य्}} बन जाता है।'
+    items:
+    - id: i0
+      sa: इ
+    - id: i1
+      sa: कवि
+    - id: i2
+      sa: अग्नि
+    - id: i3
+      sa: मुनि
+    - id: i4
+      sa: मति
+    - id: i5
+      sa: भूमि
+    - id: i6
+      sa: रात्रि
+    - id: i7
+      sa: देव
+    - id: i8
+      sa: लता
+    - id: i9
+      sa: ए
+    - id: i10
+      sa: य्
 - id: pn
   kind: teach
   title:
@@ -656,8 +880,46 @@ cards:
   - 6.1.69
   - 7.3.120
   body:
-    en: Why {{कवयः}} and not {{कविः}} again? Sūtra 7.3.109, {{जसि च}}, strengthens a final {{इ}}/{{उ}} to {{ए}}/{{ओ}} before the plural ending {{जस्}}; and {{ए}} becomes {{अय्}} before a vowel. In the singular call, 6.1.69, {{एङ्ह्रस्वात् सम्बुद्धेः}}, drops the ending after {{ए}}.
-    hi: '{{कवयः}} क्यों, फिर {{कविः}} क्यों नहीं? सूत्र 7.3.109, {{जसि च}}, बहुवचन प्रत्यय {{जस्}} से पहले अन्तिम {{इ}}/{{उ}} को {{ए}}/{{ओ}} बना देता है; और {{ए}} स्वर से पहले {{अय्}} हो जाता है। सम्बोधन एकवचन में 6.1.69, {{एङ्ह्रस्वात् सम्बुद्धेः}}, {{ए}} के बाद प्रत्यय हटा देता है।'
+    en: Why {{कवयः}} and not {{कविः}} again? Sūtra 7.3.109, {{जसि च}}, strengthens a final {{इ}}/{{उ}} to {{ए}}/{{ओ}} before
+      the plural ending {{जस्}}; and {{ए}} becomes {{अय्}} before a vowel. In the singular call, 6.1.69, {{एङ्ह्रस्वात् सम्बुद्धेः}},
+      drops the ending after {{ए}}.
+    hi: '{{कवयः}} क्यों, फिर {{कविः}} क्यों नहीं? सूत्र 7.3.109, {{जसि च}}, बहुवचन प्रत्यय {{जस्}} से पहले अन्तिम {{इ}}/{{उ}}
+      को {{ए}}/{{ओ}} बना देता है; और {{ए}} स्वर से पहले {{अय्}} हो जाता है। सम्बोधन एकवचन में 6.1.69, {{एङ्ह्रस्वात् सम्बुद्धेः}},
+      {{ए}} के बाद प्रत्यय हटा देता है।'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Why {{कवयः}} and not {{कविः}} again? Sūtra 7.3.109, {{जसि च}}, strengthens a final {{इ}}/{{उ}} to {{ए}}/{{ओ}} before
+        the plural ending {{जस्}}; and {{ए}} becomes {{अय्}} before a vowel. In the singular call, 6.1.69, {{एङ्ह्रस्वात्
+        सम्बुद्धेः}}, drops the ending after {{ए}}.
+      hi: '{{कवयः}} क्यों, फिर {{कविः}} क्यों नहीं? सूत्र 7.3.109, {{जसि च}}, बहुवचन प्रत्यय {{जस्}} से पहले अन्तिम {{इ}}/{{उ}}
+        को {{ए}}/{{ओ}} बना देता है; और {{ए}} स्वर से पहले {{अय्}} हो जाता है। सम्बोधन एकवचन में 6.1.69, {{एङ्ह्रस्वात् सम्बुद्धेः}},
+        {{ए}} के बाद प्रत्यय हटा देता है।'
+    items:
+    - id: i0
+      sa: कवयः
+    - id: i1
+      sa: कविः
+    - id: i2
+      sa: जसि च
+    - id: i3
+      sa: इ
+    - id: i4
+      sa: उ
+    - id: i5
+      sa: ए
+    - id: i6
+      sa: ओ
+    - id: i7
+      sa: जस्
+    - id: i8
+      sa: अय्
+    - id: i9
+      sa: एङ्ह्रस्वात् सम्बुद्धेः
 - id: sum
   kind: summary
   title:

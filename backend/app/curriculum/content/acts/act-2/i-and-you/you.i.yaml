@@ -24,7 +24,8 @@ cards:
     hi: नाविक
   depth: core
   image:
-    brief: A long wooden river boat nosing up to the ghat steps; a lean sun-browned boatman in a faded blue dhoti leaning on his bamboo pole and smiling; you, Dādī and Śuka on the steps; the small grey-blue spirit hanging back behind you.
+    brief: A long wooden river boat nosing up to the ghat steps; a lean sun-browned boatman in a faded blue dhoti leaning
+      on his bamboo pole and smiling; you, Dādī and Śuka on the steps; the small grey-blue spirit hanging back behind you.
     alt:
       en: A boatman leaning on his pole beside a boat at the ghat steps
       hi: घाट की सीढ़ियों पर नाव के पास डंडी पर झुका नाविक
@@ -37,8 +38,12 @@ cards:
     ratio: '4:3'
     id: you-i-s1
   narration:
-    en: A boat noses up to the steps. The boatman, lean and sun-browned, leans on his pole. “Downstream, to the fair? Room for three and a parrot.” Śuka bristles. “Who are you?” the boatman asks the little ghat spirit, who has been following you. The spirit just points at you. Time to say “I”.
-    hi: एक नाव सीढ़ियों तक आती है। नाविक, दुबला और धूप में तपा, अपनी बाँस की डंडी पर झुकता है। “नीचे मेले तक? तीन लोगों और एक तोते की जगह है।” शुक फुफकारता है। नाविक घाट के नन्हे भूत से पूछता है जो आपके पीछे चला आया है, “तुम कौन हो?” भूत बस आपकी ओर इशारा करता है। ‘मैं’ कहने का समय आ गया।
+    en: A boat noses up to the steps. The boatman, lean and sun-browned, leans on his pole. “Downstream, to the fair? Room
+      for three and a parrot.” Śuka bristles. “Who are you?” the boatman asks the little ghat spirit, who has been following
+      you. The spirit just points at you. Time to say “I”.
+    hi: एक नाव सीढ़ियों तक आती है। नाविक, दुबला और धूप में तपा, अपनी बाँस की डंडी पर झुकता है। “नीचे मेले तक? तीन लोगों और
+      एक तोते की जगह है।” शुक फुफकारता है। नाविक घाट के नन्हे भूत से पूछता है जो आपके पीछे चला आया है, “तुम कौन हो?” भूत बस
+      आपकी ओर इशारा करता है। ‘मैं’ कहने का समय आ गया।
   lines:
   - speaker: navika
     sa: कः त्वम्?
@@ -54,8 +59,10 @@ cards:
   skills:
   - pron.i-we
   body:
-    en: '“I” is {{अहम्}}. For two it is {{आवाम्}} (we two), for many {{वयम्}} (we). The verb shows it too: {{अहं पठामि}} (I read), {{आवां पठावः}} (we two read), {{वयं पठामः}} (we read).'
-    hi: '‘मैं’ है {{अहम्}}। दो के लिए {{आवाम्}} (हम दोनों), अनेक के लिए {{वयम्}} (हम)। क्रिया भी यही बताती है: {{अहं पठामि}} (मैं पढ़ता हूँ), {{आवां पठावः}} (हम दोनों पढ़ते हैं), {{वयं पठामः}} (हम पढ़ते हैं)।'
+    en: '“I” is {{अहम्}}. For two it is {{आवाम्}} (we two), for many {{वयम्}} (we). The verb shows it too: {{अहं पठामि}} (I
+      read), {{आवां पठावः}} (we two read), {{वयं पठामः}} (we read).'
+    hi: '‘मैं’ है {{अहम्}}। दो के लिए {{आवाम्}} (हम दोनों), अनेक के लिए {{वयम्}} (हम)। क्रिया भी यही बताती है: {{अहं पठामि}}
+      (मैं पढ़ता हूँ), {{आवां पठावः}} (हम दोनों पढ़ते हैं), {{वयं पठामः}} (हम पढ़ते हैं)।'
   rows:
   - sa: अहम्
     gloss:
@@ -92,6 +99,60 @@ cards:
     meaning:
       en: 'first person: I, we'
       hi: 'उत्तम पुरुष: मैं, हम'
+  visuals:
+  - id: v-source-compare
+    kind: comparison
+    title:
+      en: Compare the examples
+      hi: उदाहरणों की तुलना करें
+    explanation:
+      en: '“I” is {{अहम्}}. For two it is {{आवाम्}} (we two), for many {{वयम्}} (we). The verb shows it too: {{अहं पठामि}}
+        (I read), {{आवां पठावः}} (we two read), {{वयं पठामः}} (we read).'
+      hi: '‘मैं’ है {{अहम्}}। दो के लिए {{आवाम्}} (हम दोनों), अनेक के लिए {{वयम्}} (हम)। क्रिया भी यही बताती है: {{अहं पठामि}}
+        (मैं पढ़ता हूँ), {{आवां पठावः}} (हम दोनों पढ़ते हैं), {{वयं पठामः}} (हम पढ़ते हैं)।'
+    items:
+    - id: i0
+      sa: अहम्
+      meaning:
+        en: I
+        hi: मैं
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: आवाम्
+      meaning:
+        en: we two
+        hi: हम दोनों
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+    - id: i2
+      sa: वयम्
+      meaning:
+        en: we (many)
+        hi: हम (अनेक)
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
 - id: tb1
   kind: table
   title:
@@ -164,7 +225,8 @@ cards:
         vacana: Bahu
   note:
     en: 'The verb ending already says “I” or “we”, so the pronoun is often left out: {{पठामि}} alone means “I read”.'
-    hi: 'क्रिया का प्रत्यय ही ‘मैं’ या ‘हम’ बता देता है, इसलिए सर्वनाम अक्सर छोड़ दिया जाता है: अकेला {{पठामि}} का अर्थ ‘मैं पढ़ता हूँ’।'
+    hi: 'क्रिया का प्रत्यय ही ‘मैं’ या ‘हम’ बता देता है, इसलिए सर्वनाम अक्सर छोड़ दिया जाता है: अकेला {{पठामि}} का अर्थ ‘मैं
+      पढ़ता हूँ’।'
 - id: p1
   kind: practice
   depth: core
@@ -183,6 +245,60 @@ cards:
   - correct: true
     sa: अहम्
   - sa: वयम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '“I” is {{अहम्}}. For two it is {{आवाम्}} (we two), for many {{वयम्}} (we). The verb shows it too: {{अहं पठामि}}
+        (I read), {{आवां पठावः}} (we two read), {{वयं पठामः}} (we read).'
+      hi: '‘मैं’ है {{अहम्}}। दो के लिए {{आवाम्}} (हम दोनों), अनेक के लिए {{वयम्}} (हम)। क्रिया भी यही बताती है: {{अहं पठामि}}
+        (मैं पढ़ता हूँ), {{आवां पठावः}} (हम दोनों पढ़ते हैं), {{वयं पठामः}} (हम पढ़ते हैं)।'
+    items:
+    - id: i0
+      sa: अहम्
+      meaning:
+        en: I
+        hi: मैं
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: आवाम्
+      meaning:
+        en: we two
+        hi: हम दोनों
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+    - id: i2
+      sa: वयम्
+      meaning:
+        en: we (many)
+        hi: हम (अनेक)
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
 - id: p2
   kind: practice
   depth: core
@@ -215,6 +331,60 @@ cards:
       text:
         en: we (many)
         hi: हम (अनेक)
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '“I” is {{अहम्}}. For two it is {{आवाम्}} (we two), for many {{वयम्}} (we). The verb shows it too: {{अहं पठामि}}
+        (I read), {{आवां पठावः}} (we two read), {{वयं पठामः}} (we read).'
+      hi: '‘मैं’ है {{अहम्}}। दो के लिए {{आवाम्}} (हम दोनों), अनेक के लिए {{वयम्}} (हम)। क्रिया भी यही बताती है: {{अहं पठामि}}
+        (मैं पढ़ता हूँ), {{आवां पठावः}} (हम दोनों पढ़ते हैं), {{वयं पठामः}} (हम पढ़ते हैं)।'
+    items:
+    - id: i0
+      sa: अहम्
+      meaning:
+        en: I
+        hi: मैं
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: आवाम्
+      meaning:
+        en: we two
+        hi: हम दोनों
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+    - id: i2
+      sa: वयम्
+      meaning:
+        en: we (many)
+        hi: हम (अनेक)
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
 - id: p3
   kind: practice
   depth: core
@@ -235,6 +405,60 @@ cards:
   - मि
   - ति
   - मः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '“I” is {{अहम्}}. For two it is {{आवाम्}} (we two), for many {{वयम्}} (we). The verb shows it too: {{अहं पठामि}}
+        (I read), {{आवां पठावः}} (we two read), {{वयं पठामः}} (we read).'
+      hi: '‘मैं’ है {{अहम्}}। दो के लिए {{आवाम्}} (हम दोनों), अनेक के लिए {{वयम्}} (हम)। क्रिया भी यही बताती है: {{अहं पठामि}}
+        (मैं पढ़ता हूँ), {{आवां पठावः}} (हम दोनों पढ़ते हैं), {{वयं पठामः}} (हम पढ़ते हैं)।'
+    items:
+    - id: i0
+      sa: अहम्
+      meaning:
+        en: I
+        hi: मैं
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: आवाम्
+      meaning:
+        en: we two
+        hi: हम दोनों
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+    - id: i2
+      sa: वयम्
+      meaning:
+        en: we (many)
+        hi: हम (अनेक)
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
 - id: e1
   kind: explore
   depth: core
@@ -276,8 +500,10 @@ cards:
   gate: true
   story:
     success:
-      en: “आवां गच्छावः,” you tell the boatman. He grins and holds out a hand. Beside you the little spirit gives a shiver, as if wondering what he himself should say.
-      hi: “आवां गच्छावः,” आप नाविक से कहते हैं। वह मुस्कुराकर हाथ बढ़ाता है। आपके पास नन्हा भूत सिहरता है, मानो सोच रहा हो कि स्वयं क्या कहे।
+      en: “आवां गच्छावः,” you tell the boatman. He grins and holds out a hand. Beside you the little spirit gives a shiver,
+        as if wondering what he himself should say.
+      hi: “आवां गच्छावः,” आप नाविक से कहते हैं। वह मुस्कुराकर हाथ बढ़ाता है। आपके पास नन्हा भूत सिहरता है, मानो सोच रहा हो
+        कि स्वयं क्या कहे।
     failure:
       en: 'The boatman waits. Two people going together: {{आवाम्}}.'
       hi: 'नाविक प्रतीक्षा करता है। दो लोग साथ जा रहे हैं: {{आवाम्}}।'
@@ -286,6 +512,60 @@ cards:
   - correct: true
     sa: गच्छावः
   - sa: गच्छन्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: '“I” is {{अहम्}}. For two it is {{आवाम्}} (we two), for many {{वयम्}} (we). The verb shows it too: {{अहं पठामि}}
+        (I read), {{आवां पठावः}} (we two read), {{वयं पठामः}} (we read).'
+      hi: '‘मैं’ है {{अहम्}}। दो के लिए {{आवाम्}} (हम दोनों), अनेक के लिए {{वयम्}} (हम)। क्रिया भी यही बताती है: {{अहं पठामि}}
+        (मैं पढ़ता हूँ), {{आवां पठावः}} (हम दोनों पढ़ते हैं), {{वयं पठामः}} (हम पढ़ते हैं)।'
+    items:
+    - id: i0
+      sa: अहम्
+      meaning:
+        en: I
+        hi: मैं
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: i1
+      sa: आवाम्
+      meaning:
+        en: we two
+        hi: हम दोनों
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Dvi
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
+    - id: i2
+      sa: वयम्
+      meaning:
+        en: we (many)
+        hi: हम (अनेक)
+      check:
+        type: subanta
+        stem: अस्मद्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Bahu
+      feature:
+        en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
 - id: pn
   kind: teach
   title:
@@ -299,13 +579,33 @@ cards:
   - 1.4.108
   - 1.4.101
   body:
-    en: Pāṇini calls the “I” person {{उत्तमः}}, “the highest”, and the “you” person {{मध्यमः}}, “the middle”. The “he, she, it” person, which you know already, is {{प्रथमः}}, “the first”. The names go in an order opposite to Hindi's.
-    hi: पाणिनि ‘मैं’ वाले पुरुष को {{उत्तमः}}, ‘तुम’ वाले को {{मध्यमः}} और ‘वह’ वाले को, जो आप जानते हैं, {{प्रथमः}} कहते हैं। नामों का क्रम हिन्दी के क्रम से उलटा है।
+    en: Pāṇini calls the “I” person {{उत्तमः}}, “the highest”, and the “you” person {{मध्यमः}}, “the middle”. The “he, she,
+      it” person, which you know already, is {{प्रथमः}}, “the first”. The names go in an order opposite to Hindi's.
+    hi: पाणिनि ‘मैं’ वाले पुरुष को {{उत्तमः}}, ‘तुम’ वाले को {{मध्यमः}} और ‘वह’ वाले को, जो आप जानते हैं, {{प्रथमः}} कहते
+      हैं। नामों का क्रम हिन्दी के क्रम से उलटा है।
   term:
     sa: पुरुषः
     meaning:
       en: 'person: first, middle, last'
       hi: 'पुरुष: प्रथम, मध्यम, उत्तम'
+  visuals:
+  - id: v-source-terms
+    kind: comparison
+    title:
+      en: Read the forms in the explanation
+      hi: व्याख्या के रूप पढ़ें
+    explanation:
+      en: Pāṇini calls the “I” person {{उत्तमः}}, “the highest”, and the “you” person {{मध्यमः}}, “the middle”. The “he, she,
+        it” person, which you know already, is {{प्रथमः}}, “the first”. The names go in an order opposite to Hindi's.
+      hi: पाणिनि ‘मैं’ वाले पुरुष को {{उत्तमः}}, ‘तुम’ वाले को {{मध्यमः}} और ‘वह’ वाले को, जो आप जानते हैं, {{प्रथमः}} कहते
+        हैं। नामों का क्रम हिन्दी के क्रम से उलटा है।
+    items:
+    - id: i0
+      sa: उत्तमः
+    - id: i1
+      sa: मध्यमः
+    - id: i2
+      sa: प्रथमः
 - id: sum
   kind: summary
   title:

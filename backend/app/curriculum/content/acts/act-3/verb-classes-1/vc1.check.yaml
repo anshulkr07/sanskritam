@@ -28,6 +28,40 @@ cards:
   - correct: true
     sa: भवति
   - sa: भोति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every verb has a root and a class; a dictionary lists both. Class 1, {{भ्वादि}}, adds {{-अ-}} after the root and
+        strengthens its vowel: {{भू}} gives {{भवति}}, {{नी}} gives {{नयति}}, {{जि}} gives {{जयति}}, {{शुच्}} gives {{शोचति}}.
+        Most verbs you know are class 1.'
+      hi: 'हर क्रिया की एक धातु और एक गण होता है; कोश दोनों बताता है। गण 1, {{भ्वादि}}, धातु के बाद {{-अ-}} जोड़ता है और धातु
+        का स्वर बलवान् कर देता है: {{भू}} से {{भवति}}, {{नी}} से {{नयति}}, {{जि}} से {{जयति}}, {{शुच्}} से {{शोचति}}। आपकी
+        जानी हुई अधिकतर क्रियाएँ गण 1 की हैं।'
+    items:
+    - id: i0
+      sa: भ्वादि
+    - id: i1
+      sa: -अ-
+    - id: i2
+      sa: भू
+    - id: i3
+      sa: भवति
+    - id: i4
+      sa: नी
+    - id: i5
+      sa: नयति
+    - id: i6
+      sa: जि
+    - id: i7
+      sa: जयति
+    - id: i8
+      sa: शुच्
+    - id: i9
+      sa: शोचति
 - id: p2
   kind: practice
   depth: core
@@ -46,6 +80,44 @@ cards:
   - correct: true
     sa: नृत्यति
   - sa: नृतयति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 4, {{दिवादि}}, puts {{-य-}} between the root and the ending, and the root keeps its own vowel: {{नृत्}} gives
+        {{नृत्यति}} (dances), {{दिव्}} gives {{दीव्यति}} (plays), {{नश्}} gives {{नश्यति}} (is lost), {{कुप्}} gives {{कुप्यति}}
+        (is angry). {{शम्}} lengthens: {{शाम्यति}}.'
+      hi: 'गण 4, {{दिवादि}}, धातु और प्रत्यय के बीच {{-य-}} रखता है, और धातु अपना स्वर रखती है: {{नृत्}} से {{नृत्यति}} (नाचता
+        है), {{दिव्}} से {{दीव्यति}} (खेलता है), {{नश्}} से {{नश्यति}} (नष्ट होता है), {{कुप्}} से {{कुप्यति}} (क्रोध करता
+        है)। {{शम्}} दीर्घ होता है: {{शाम्यति}}।'
+    items:
+    - id: i0
+      sa: दिवादि
+    - id: i1
+      sa: -य-
+    - id: i2
+      sa: नृत्
+    - id: i3
+      sa: नृत्यति
+    - id: i4
+      sa: दिव्
+    - id: i5
+      sa: दीव्यति
+    - id: i6
+      sa: नश्
+    - id: i7
+      sa: नश्यति
+    - id: i8
+      sa: कुप्
+    - id: i9
+      sa: कुप्यति
+    - id: i10
+      sa: शम्
+    - id: i11
+      sa: शाम्यति
 - id: p3
   kind: practice
   depth: core
@@ -64,6 +136,48 @@ cards:
   - correct: true
     sa: लिखति
   - sa: लिख्यति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 6, {{तुदादि}}, adds {{-अ-}} but does not strengthen the root: {{तुद्}} gives {{तुदति}} (strikes), {{लिख्}}
+        gives {{लिखति}} (writes), {{विश्}} gives {{विशति}} (enters). Compare class 1, where {{भू}} becomes {{भवति}}. A few
+        roots change: {{मुच्}} gives {{मुञ्चति}}, {{इष्}} gives {{इच्छति}}.'
+      hi: 'गण 6, {{तुदादि}}, {{-अ-}} जोड़ता है पर धातु को बलवान् नहीं करता: {{तुद्}} से {{तुदति}} (मारता है), {{लिख्}} से
+        {{लिखति}} (लिखता है), {{विश्}} से {{विशति}} (प्रवेश करता है)। गण 1 से तुलना कीजिए, जहाँ {{भू}} से {{भवति}} बनता है।
+        कुछ धातुएँ बदलती हैं: {{मुच्}} से {{मुञ्चति}}, {{इष्}} से {{इच्छति}}।'
+    items:
+    - id: i0
+      sa: तुदादि
+    - id: i1
+      sa: -अ-
+    - id: i2
+      sa: तुद्
+    - id: i3
+      sa: तुदति
+    - id: i4
+      sa: लिख्
+    - id: i5
+      sa: लिखति
+    - id: i6
+      sa: विश्
+    - id: i7
+      sa: विशति
+    - id: i8
+      sa: भू
+    - id: i9
+      sa: भवति
+    - id: i10
+      sa: मुच्
+    - id: i11
+      sa: मुञ्चति
+    - id: i12
+      sa: इष्
+    - id: i13
+      sa: इच्छति
 - id: p4
   kind: practice
   depth: core
@@ -82,6 +196,48 @@ cards:
   - correct: true
     sa: चोरयति
   - sa: चुर्यति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 10, {{चुरादि}}, adds {{-अय-}} after the root: {{चुर्}} gives {{चोरयति}} (steals), {{कथ्}} gives {{कथयति}}
+        (tells), {{चिन्त्}} gives {{चिन्तयति}} (thinks), {{पूज्}} gives {{पूजयति}} (honours), {{रच्}} gives {{रचयति}} (composes),
+        {{गण्}} gives {{गणयति}} (counts). A short middle vowel is strengthened.'
+      hi: 'गण 10, {{चुरादि}}, धातु के बाद {{-अय-}} जोड़ता है: {{चुर्}} से {{चोरयति}} (चुराता है), {{कथ्}} से {{कथयति}} (कहता
+        है), {{चिन्त्}} से {{चिन्तयति}} (सोचता है), {{पूज्}} से {{पूजयति}} (पूजता है), {{रच्}} से {{रचयति}} (रचता है), {{गण्}}
+        से {{गणयति}} (गिनता है)। छोटा मध्य स्वर बलवान् होता है।'
+    items:
+    - id: i0
+      sa: चुरादि
+    - id: i1
+      sa: -अय-
+    - id: i2
+      sa: चुर्
+    - id: i3
+      sa: चोरयति
+    - id: i4
+      sa: कथ्
+    - id: i5
+      sa: कथयति
+    - id: i6
+      sa: चिन्त्
+    - id: i7
+      sa: चिन्तयति
+    - id: i8
+      sa: पूज्
+    - id: i9
+      sa: पूजयति
+    - id: i10
+      sa: रच्
+    - id: i11
+      sa: रचयति
+    - id: i12
+      sa: गण्
+    - id: i13
+      sa: गणयति
 - id: p5
   kind: practice
   depth: core
@@ -123,6 +279,40 @@ cards:
       text:
         en: class 10
         hi: गण 10
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every verb has a root and a class; a dictionary lists both. Class 1, {{भ्वादि}}, adds {{-अ-}} after the root and
+        strengthens its vowel: {{भू}} gives {{भवति}}, {{नी}} gives {{नयति}}, {{जि}} gives {{जयति}}, {{शुच्}} gives {{शोचति}}.
+        Most verbs you know are class 1.'
+      hi: 'हर क्रिया की एक धातु और एक गण होता है; कोश दोनों बताता है। गण 1, {{भ्वादि}}, धातु के बाद {{-अ-}} जोड़ता है और धातु
+        का स्वर बलवान् कर देता है: {{भू}} से {{भवति}}, {{नी}} से {{नयति}}, {{जि}} से {{जयति}}, {{शुच्}} से {{शोचति}}। आपकी
+        जानी हुई अधिकतर क्रियाएँ गण 1 की हैं।'
+    items:
+    - id: i0
+      sa: भ्वादि
+    - id: i1
+      sa: -अ-
+    - id: i2
+      sa: भू
+    - id: i3
+      sa: भवति
+    - id: i4
+      sa: नी
+    - id: i5
+      sa: नयति
+    - id: i6
+      sa: जि
+    - id: i7
+      sa: जयति
+    - id: i8
+      sa: शुच्
+    - id: i9
+      sa: शोचति
 - id: p6
   kind: practice
   depth: core
@@ -142,6 +332,44 @@ cards:
   - correct: true
     sa: कथयति
   - sa: भवति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Class 4, {{दिवादि}}, puts {{-य-}} between the root and the ending, and the root keeps its own vowel: {{नृत्}} gives
+        {{नृत्यति}} (dances), {{दिव्}} gives {{दीव्यति}} (plays), {{नश्}} gives {{नश्यति}} (is lost), {{कुप्}} gives {{कुप्यति}}
+        (is angry). {{शम्}} lengthens: {{शाम्यति}}.'
+      hi: 'गण 4, {{दिवादि}}, धातु और प्रत्यय के बीच {{-य-}} रखता है, और धातु अपना स्वर रखती है: {{नृत्}} से {{नृत्यति}} (नाचता
+        है), {{दिव्}} से {{दीव्यति}} (खेलता है), {{नश्}} से {{नश्यति}} (नष्ट होता है), {{कुप्}} से {{कुप्यति}} (क्रोध करता
+        है)। {{शम्}} दीर्घ होता है: {{शाम्यति}}।'
+    items:
+    - id: i0
+      sa: दिवादि
+    - id: i1
+      sa: -य-
+    - id: i2
+      sa: नृत्
+    - id: i3
+      sa: नृत्यति
+    - id: i4
+      sa: दिव्
+    - id: i5
+      sa: दीव्यति
+    - id: i6
+      sa: नश्
+    - id: i7
+      sa: नश्यति
+    - id: i8
+      sa: कुप्
+    - id: i9
+      sa: कुप्यति
+    - id: i10
+      sa: शम्
+    - id: i11
+      sa: शाम्यति
 - id: p7
   kind: practice
   depth: core
@@ -161,8 +389,14 @@ cards:
   gate: true
   story:
     success:
-      en: '“भवति, नृत्यति, तुदति, चोरयति,” you say, and Dhātuka''s drawers click shut one after another, four neat clicks. He beams, with all ten of him in order. “Ten drawers,” he says. “But there are six more, and they are the odd ones.” He flips open his ledger and reads from the top: “अस्ति. एति. ददाति. शृणोति.” “He is, he goes, he gives, he hears,” Dādī translates. “Those are the verbs that do not follow the pattern.”'
-      hi: '“भवति, नृत्यति, तुदति, चोरयति,” आप कहते हैं, और धातुक के दराज़ एक के बाद एक बन्द होते हैं, चार सुघड़ खट-खट। वह खिल उठता है, अपने दसों दराज़ों को क्रम में पाकर। “दस दराज़,” वह कहता है। “पर छह और हैं, और वे विचित्र वाले हैं।” वह बही खोलकर ऊपर से पढ़ता है: “अस्ति। एति। ददाति। शृणोति।” “वह है, वह जाता है, वह देता है, वह सुनता है,” दादी अनुवाद करती हैं। “ये वे क्रियाएँ हैं जो ढाँचे पर नहीं चलतीं।”'
+      en: '“भवति, नृत्यति, तुदति, चोरयति,” you say, and Dhātuka''s drawers click shut one after another, four neat clicks.
+        He beams, with all ten of him in order. “Ten drawers,” he says. “But there are six more, and they are the odd ones.”
+        He flips open his ledger and reads from the top: “अस्ति. एति. ददाति. शृणोति.” “He is, he goes, he gives, he hears,”
+        Dādī translates. “Those are the verbs that do not follow the pattern.”'
+      hi: '“भवति, नृत्यति, तुदति, चोरयति,” आप कहते हैं, और धातुक के दराज़ एक के बाद एक बन्द होते हैं, चार सुघड़ खट-खट। वह
+        खिल उठता है, अपने दसों दराज़ों को क्रम में पाकर। “दस दराज़,” वह कहता है। “पर छह और हैं, और वे विचित्र वाले हैं।” वह
+        बही खोलकर ऊपर से पढ़ता है: “अस्ति। एति। ददाति। शृणोति।” “वह है, वह जाता है, वह देता है, वह सुनता है,” दादी अनुवाद
+        करती हैं। “ये वे क्रियाएँ हैं जो ढाँचे पर नहीं चलतीं।”'
     failure:
       en: 'One drawer stays open. His four verbs: {{भवति नृत्यति तुदति चोरयति}}.'
       hi: 'एक दराज़ खुला रहता है। उसकी चार क्रियाएँ: {{भवति नृत्यति तुदति चोरयति}}।'
@@ -171,3 +405,37 @@ cards:
   - नृत्यति
   - तुदति
   - चोरयति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'Every verb has a root and a class; a dictionary lists both. Class 1, {{भ्वादि}}, adds {{-अ-}} after the root and
+        strengthens its vowel: {{भू}} gives {{भवति}}, {{नी}} gives {{नयति}}, {{जि}} gives {{जयति}}, {{शुच्}} gives {{शोचति}}.
+        Most verbs you know are class 1.'
+      hi: 'हर क्रिया की एक धातु और एक गण होता है; कोश दोनों बताता है। गण 1, {{भ्वादि}}, धातु के बाद {{-अ-}} जोड़ता है और धातु
+        का स्वर बलवान् कर देता है: {{भू}} से {{भवति}}, {{नी}} से {{नयति}}, {{जि}} से {{जयति}}, {{शुच्}} से {{शोचति}}। आपकी
+        जानी हुई अधिकतर क्रियाएँ गण 1 की हैं।'
+    items:
+    - id: i0
+      sa: भ्वादि
+    - id: i1
+      sa: -अ-
+    - id: i2
+      sa: भू
+    - id: i3
+      sa: भवति
+    - id: i4
+      sa: नी
+    - id: i5
+      sa: नयति
+    - id: i6
+      sa: जि
+    - id: i7
+      sa: जयति
+    - id: i8
+      sa: शुच्
+    - id: i9
+      sa: शोचति

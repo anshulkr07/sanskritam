@@ -23,7 +23,9 @@ cards:
     hi: द्वार पर एक छाया
   depth: core
   image:
-    brief: 'The temple library''s arched doorway: a tall man in an expensive dark coat over a kurta with rings on his fingers and a leather satchel stands half in shadow, watching the glowing leaf on the desk; in the foreground Dādī reads the open register to you and Maunī.'
+    brief: 'The temple library''s arched doorway: a tall man in an expensive dark coat over a kurta with rings on his fingers
+      and a leather satchel stands half in shadow, watching the glowing leaf on the desk; in the foreground Dādī reads the
+      open register to you and Maunī.'
     alt:
       en: A tall man in a dark coat watches from a library doorway as a grandmother reads a register
       hi: दरवाज़े से देखता गहरे कोट वाला आदमी, रजिस्टर पढ़ती दादी
@@ -35,10 +37,17 @@ cards:
     place: granthalaya
     ratio: '4:3'
     id: reading-names-s1
-    text_in_image: ["रामः", "सीता", "लक्ष्मणः"]
+    text_in_image:
+    - रामः
+    - सीता
+    - लक्ष्मणः
   narration:
-    en: The register is open, names in long columns. Dādī reads the first aloud, and the second, and the third. In the arched doorway a tall man in a dark coat watches, rings on his fingers, a leather satchel on his shoulder. He says nothing. His eyes are on the glowing leaf.
-    hi: रजिस्टर खुला है, लम्बे स्तम्भों में नाम। दादी पहला नाम ज़ोर से पढ़ती हैं, फिर दूसरा, फिर तीसरा। मेहराबदार द्वार पर गहरे कोट में एक लम्बा आदमी देख रहा है, उँगलियों में अँगूठियाँ, कंधे पर चमड़े का थैला। वह कुछ नहीं बोलता। उसकी नज़र चमकते पत्र पर है।
+    en: The register is open, names in long columns. Dādī reads the first aloud, and the second, and the third. In the arched
+      doorway a tall man in a dark coat watches, rings on his fingers, a leather satchel on his shoulder. He says nothing.
+      His eyes are on the glowing leaf.
+    hi: रजिस्टर खुला है, लम्बे स्तम्भों में नाम। दादी पहला नाम ज़ोर से पढ़ती हैं, फिर दूसरा, फिर तीसरा। मेहराबदार द्वार पर
+      गहरे कोट में एक लम्बा आदमी देख रहा है, उँगलियों में अँगूठियाँ, कंधे पर चमड़े का थैला। वह कुछ नहीं बोलता। उसकी नज़र चमकते
+      पत्र पर है।
 - id: t1
   kind: teach
   title:
@@ -48,8 +57,10 @@ cards:
   skills:
   - read.words
   body:
-    en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
-    hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+    en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column of names:
+      {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+    hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का एक स्तम्भ
+      आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
   examples:
   - sa: रामः
     meaning:
@@ -91,6 +102,203 @@ cards:
       linga: Pum
       vibhakti: Prathama
       vacana: Eka
+  visuals:
+  - id: v-source-example-0
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: रामः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column
+          of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+        hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का
+          एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+    - id: i3
+      sa: रामः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-1
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: सीता
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Sītā
+        hi: सीता
+      check:
+        type: subanta
+        stem: सीता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सीता}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सीता}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column
+          of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+        hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का
+          एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+    - id: i3
+      sa: सीता
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Sītā
+        hi: सीता
+      check:
+        type: subanta
+        stem: सीता
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{सीता}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{सीता}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-2
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: लक्ष्मणः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Lakṣmaṇa
+        hi: लक्ष्मण
+      check:
+        type: subanta
+        stem: लक्ष्मण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{लक्ष्मण}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{लक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column
+          of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+        hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का
+          एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+    - id: i3
+      sa: लक्ष्मणः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Lakṣmaṇa
+        hi: लक्ष्मण
+      check:
+        type: subanta
+        stem: लक्ष्मण
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{लक्ष्मण}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{लक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+  - id: v-source-example-3
+    kind: worked
+    title:
+      en: Read, examine, understand
+      hi: पढ़ें, समझें, फिर पढ़ें
+    items:
+    - id: i0
+      sa: भरतः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Bharata
+        hi: भरत
+      check:
+        type: subanta
+        stem: भरत
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{भरत}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{भरत}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column
+          of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+        hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का
+          एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+    - id: i3
+      sa: भरतः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Bharata
+        hi: भरत
+      check:
+        type: subanta
+        stem: भरत
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{भरत}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{भरत}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p1
   kind: practice
   depth: core
@@ -109,6 +317,56 @@ cards:
     sa: सीता
   - sa: शीता
   - sa: सिता
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column
+          of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+        hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का
+          एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+    - id: i3
+      sa: रामः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p2
   kind: practice
   depth: core
@@ -127,6 +385,56 @@ cards:
   - correct: true
     sa: लक्ष्मणः
   - sa: लक्ष्मनः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column
+          of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+        hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का
+          एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+    - id: i3
+      sa: रामः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: e1
   kind: explore
   depth: core
@@ -187,6 +495,56 @@ cards:
       text:
         en: throat
         hi: कण्ठ
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column
+          of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+        hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का
+          एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+    - id: i3
+      sa: रामः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p4
   kind: practice
   title:
@@ -206,14 +564,66 @@ cards:
   gate: true
   story:
     success:
-      en: “मौनी,” you read, and the pale-gold spirit's finger leaves his lips. “मौनी अस्मि,” he says, in a voice like old paper. “वदामि!”
-      hi: “मौनी,” आप पढ़ते हैं, और सुनहरे भूत की उँगली होंठों से हट जाती है। “मौनी अस्मि,” वह पुराने कागज़ जैसी आवाज़ में कहता है। “वदामि!”
+      en: “मौनी,” you read, and the pale-gold spirit's finger leaves his lips. “मौनी अस्मि,” he says, in a voice like old
+        paper. “वदामि!”
+      hi: “मौनी,” आप पढ़ते हैं, और सुनहरे भूत की उँगली होंठों से हट जाती है। “मौनी अस्मि,” वह पुराने कागज़ जैसी आवाज़ में
+        कहता है। “वदामि!”
     failure:
       en: 'His name will not settle. Two syllables: {{मौ}} first.'
       hi: 'उसका नाम जमता नहीं। दो अक्षर: पहले {{मौ}}।'
   tokens:
   - मौ
   - नी
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column
+          of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+        hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का
+          एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+    - id: i3
+      sa: रामः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: p5
   kind: practice
   depth: core
@@ -235,6 +645,56 @@ cards:
   - text:
       en: The register was closed
       hi: रजिस्टर बन्द हो गया
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: worked
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    items:
+    - id: i0
+      sa: रामः
+      label:
+        en: Read the whole example
+        hi: पूरा उदाहरण पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: rule
+      label:
+        en: Connect the form and the rule
+        hi: रूप को नियम से जोड़ें
+      meaning:
+        en: 'To read a word aloud, split it into syllables, check each sound''s place, then say it smoothly. Try a column
+          of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}.'
+        hi: 'शब्द ज़ोर से पढ़ने के लिए उसे अक्षरों में बाँटिए, हर ध्वनि का स्थान देखिए, फिर एक प्रवाह में बोलिए। नामों का
+          एक स्तम्भ आज़माइए: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}।'
+    - id: i3
+      sa: रामः
+      label:
+        en: Read it again with the meaning
+        hi: अर्थ समझकर फिर पढ़ें
+      meaning:
+        en: Rāma
+        hi: राम
+      check:
+        type: subanta
+        stem: राम
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{राम}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
 - id: sum
   kind: summary
   title:

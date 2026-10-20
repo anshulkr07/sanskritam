@@ -28,6 +28,48 @@ cards:
   - sa: तत्अस्ति
   - correct: true
     sa: तदस्ति
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A final hard stop ({{क्}}, {{ट्}}, {{त्}}, {{प्}}) becomes its soft partner ({{ग्}}, {{ड्}}, {{द्}}, {{ब्}}) when
+        a soft sound or a vowel follows: {{तत् + अस्ति}} gives {{तदस्ति}}; {{जगत् + ईशः}} gives {{जगदीशः}}; {{दिक् + गजः}}
+        gives {{दिग्गजः}}. Voice spreads from the next sound.'
+      hi: 'अन्त का कठोर स्पर्श ({{क्}}, {{ट्}}, {{त्}}, {{प्}}) अपने कोमल जोड़ीदार ({{ग्}}, {{ड्}}, {{द्}}, {{ब्}}) में बदल
+        जाता है जब आगे कोमल ध्वनि या स्वर हो: {{तत् + अस्ति}} से {{तदस्ति}}; {{जगत् + ईशः}} से {{जगदीशः}}; {{दिक् + गजः}}
+        से {{दिग्गजः}}। घोष अगली ध्वनि से फैलता है।'
+    items:
+    - id: i0
+      sa: क्
+    - id: i1
+      sa: ट्
+    - id: i2
+      sa: त्
+    - id: i3
+      sa: प्
+    - id: i4
+      sa: ग्
+    - id: i5
+      sa: ड्
+    - id: i6
+      sa: द्
+    - id: i7
+      sa: ब्
+    - id: i8
+      sa: तत् + अस्ति
+    - id: i9
+      sa: तदस्ति
+    - id: i10
+      sa: जगत् + ईशः
+    - id: i11
+      sa: जगदीशः
+    - id: i12
+      sa: दिक् + गजः
+    - id: i13
+      sa: दिग्गजः
 - id: p2
   kind: practice
   depth: core
@@ -46,6 +88,48 @@ cards:
   - sa: दिघ्गजः
   - correct: true
     sa: दिग्गजः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A final hard stop ({{क्}}, {{ट्}}, {{त्}}, {{प्}}) becomes its soft partner ({{ग्}}, {{ड्}}, {{द्}}, {{ब्}}) when
+        a soft sound or a vowel follows: {{तत् + अस्ति}} gives {{तदस्ति}}; {{जगत् + ईशः}} gives {{जगदीशः}}; {{दिक् + गजः}}
+        gives {{दिग्गजः}}. Voice spreads from the next sound.'
+      hi: 'अन्त का कठोर स्पर्श ({{क्}}, {{ट्}}, {{त्}}, {{प्}}) अपने कोमल जोड़ीदार ({{ग्}}, {{ड्}}, {{द्}}, {{ब्}}) में बदल
+        जाता है जब आगे कोमल ध्वनि या स्वर हो: {{तत् + अस्ति}} से {{तदस्ति}}; {{जगत् + ईशः}} से {{जगदीशः}}; {{दिक् + गजः}}
+        से {{दिग्गजः}}। घोष अगली ध्वनि से फैलता है।'
+    items:
+    - id: i0
+      sa: क्
+    - id: i1
+      sa: ट्
+    - id: i2
+      sa: त्
+    - id: i3
+      sa: प्
+    - id: i4
+      sa: ग्
+    - id: i5
+      sa: ड्
+    - id: i6
+      sa: द्
+    - id: i7
+      sa: ब्
+    - id: i8
+      sa: तत् + अस्ति
+    - id: i9
+      sa: तदस्ति
+    - id: i10
+      sa: जगत् + ईशः
+    - id: i11
+      sa: जगदीशः
+    - id: i12
+      sa: दिक् + गजः
+    - id: i13
+      sa: दिग्गजः
 - id: p3
   kind: practice
   depth: core
@@ -64,6 +148,55 @@ cards:
   - sa: सद्जनः
   - correct: true
     sa: सज्जनः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A dental {{त्}} or {{न्}} moves to the place of the sound that follows: before {{च}}/{{छ}}/{{ज}}/{{श}} it becomes
+        {{च्}}/{{ज्}}, before {{ट}} it becomes {{ट्}}, before {{ल}} it becomes {{ल्}}. {{सत् + जनः}} gives {{सज्जनः}}; {{तत्
+        + च}} gives {{तच्च}}; {{तत् + लीनः}} gives {{तल्लीनः}}.'
+      hi: 'दन्त्य {{त्}} या {{न्}} अगली ध्वनि के स्थान पर चला जाता है: {{च}}/{{छ}}/{{ज}}/{{श}} से पहले {{च्}}/{{ज्}}, {{ट}}
+        से पहले {{ट्}}, {{ल}} से पहले {{ल्}}। {{सत् + जनः}} से {{सज्जनः}}; {{तत् + च}} से {{तच्च}}; {{तत् + लीनः}} से {{तल्लीनः}}।'
+    items:
+    - id: i0
+      sa: त्
+    - id: i1
+      sa: न्
+    - id: i2
+      sa: च
+    - id: i3
+      sa: छ
+    - id: i4
+      sa: ज
+    - id: i5
+      sa: श
+    - id: i6
+      sa: च्
+    - id: i7
+      sa: ज्
+    - id: i8
+      sa: ट
+    - id: i9
+      sa: ट्
+    - id: i10
+      sa: ल
+    - id: i11
+      sa: ल्
+    - id: i12
+      sa: सत् + जनः
+    - id: i13
+      sa: सज्जनः
+    - id: i14
+      sa: तत् + च
+    - id: i15
+      sa: तच्च
+    - id: i16
+      sa: तत् + लीनः
+    - id: i17
+      sa: तल्लीनः
 - id: p4
   kind: practice
   depth: core
@@ -82,6 +215,55 @@ cards:
   - sa: उद्चारणम्
   - correct: true
     sa: उच्चारणम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A dental {{त्}} or {{न्}} moves to the place of the sound that follows: before {{च}}/{{छ}}/{{ज}}/{{श}} it becomes
+        {{च्}}/{{ज्}}, before {{ट}} it becomes {{ट्}}, before {{ल}} it becomes {{ल्}}. {{सत् + जनः}} gives {{सज्जनः}}; {{तत्
+        + च}} gives {{तच्च}}; {{तत् + लीनः}} gives {{तल्लीनः}}.'
+      hi: 'दन्त्य {{त्}} या {{न्}} अगली ध्वनि के स्थान पर चला जाता है: {{च}}/{{छ}}/{{ज}}/{{श}} से पहले {{च्}}/{{ज्}}, {{ट}}
+        से पहले {{ट्}}, {{ल}} से पहले {{ल्}}। {{सत् + जनः}} से {{सज्जनः}}; {{तत् + च}} से {{तच्च}}; {{तत् + लीनः}} से {{तल्लीनः}}।'
+    items:
+    - id: i0
+      sa: त्
+    - id: i1
+      sa: न्
+    - id: i2
+      sa: च
+    - id: i3
+      sa: छ
+    - id: i4
+      sa: ज
+    - id: i5
+      sa: श
+    - id: i6
+      sa: च्
+    - id: i7
+      sa: ज्
+    - id: i8
+      sa: ट
+    - id: i9
+      sa: ट्
+    - id: i10
+      sa: ल
+    - id: i11
+      sa: ल्
+    - id: i12
+      sa: सत् + जनः
+    - id: i13
+      sa: सज्जनः
+    - id: i14
+      sa: तत् + च
+    - id: i15
+      sa: तच्च
+    - id: i16
+      sa: तत् + लीनः
+    - id: i17
+      sa: तल्लीनः
 - id: p5
   kind: practice
   depth: core
@@ -100,6 +282,46 @@ cards:
   - sa: सद्मार्गः
   - correct: true
     sa: सन्मार्गः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A stop before a nasal ({{न}} or {{म}}) becomes the nasal of its own class: {{तत् + मात्रम्}} gives {{तन्मात्रम्}};
+        {{वाक् + मयम्}} gives {{वाङ्मयम्}}. A final {{म्}} before a consonant becomes the dot {{ं}}: {{त्वम् + गच्छसि}} gives
+        {{त्वं गच्छसि}}. Inside {{संस्कृतम्}} it is the same. Before a vowel {{म्}} stays: {{अहम् + अपि}} gives {{अहमपि}}.'
+      hi: '{{न}} या {{म}} से पहले स्पर्श अपने वर्ग का नासिक्य बन जाता है: {{तत् + मात्रम्}} से {{तन्मात्रम्}}; {{वाक् + मयम्}}
+        से {{वाङ्मयम्}}। व्यंजन से पहले अन्त का {{म्}} बिन्दु {{ं}} बन जाता है: {{त्वम् + गच्छसि}} से {{त्वं गच्छसि}}। {{संस्कृतम्}}
+        में भी यही है। स्वर से पहले {{म्}} रहता है: {{अहम् + अपि}} से {{अहमपि}}।'
+    items:
+    - id: i0
+      sa: न
+    - id: i1
+      sa: म
+    - id: i2
+      sa: तत् + मात्रम्
+    - id: i3
+      sa: तन्मात्रम्
+    - id: i4
+      sa: वाक् + मयम्
+    - id: i5
+      sa: वाङ्मयम्
+    - id: i6
+      sa: म्
+    - id: i7
+      sa: ं
+    - id: i8
+      sa: त्वम् + गच्छसि
+    - id: i9
+      sa: त्वं गच्छसि
+    - id: i10
+      sa: संस्कृतम्
+    - id: i11
+      sa: अहम् + अपि
+    - id: i12
+      sa: अहमपि
 - id: p6
   kind: practice
   depth: core
@@ -118,6 +340,46 @@ cards:
   - sa: सन्सारः
   - correct: true
     sa: संसारः
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A stop before a nasal ({{न}} or {{म}}) becomes the nasal of its own class: {{तत् + मात्रम्}} gives {{तन्मात्रम्}};
+        {{वाक् + मयम्}} gives {{वाङ्मयम्}}. A final {{म्}} before a consonant becomes the dot {{ं}}: {{त्वम् + गच्छसि}} gives
+        {{त्वं गच्छसि}}. Inside {{संस्कृतम्}} it is the same. Before a vowel {{म्}} stays: {{अहम् + अपि}} gives {{अहमपि}}.'
+      hi: '{{न}} या {{म}} से पहले स्पर्श अपने वर्ग का नासिक्य बन जाता है: {{तत् + मात्रम्}} से {{तन्मात्रम्}}; {{वाक् + मयम्}}
+        से {{वाङ्मयम्}}। व्यंजन से पहले अन्त का {{म्}} बिन्दु {{ं}} बन जाता है: {{त्वम् + गच्छसि}} से {{त्वं गच्छसि}}। {{संस्कृतम्}}
+        में भी यही है। स्वर से पहले {{म्}} रहता है: {{अहम् + अपि}} से {{अहमपि}}।'
+    items:
+    - id: i0
+      sa: न
+    - id: i1
+      sa: म
+    - id: i2
+      sa: तत् + मात्रम्
+    - id: i3
+      sa: तन्मात्रम्
+    - id: i4
+      sa: वाक् + मयम्
+    - id: i5
+      sa: वाङ्मयम्
+    - id: i6
+      sa: म्
+    - id: i7
+      sa: ं
+    - id: i8
+      sa: त्वम् + गच्छसि
+    - id: i9
+      sa: त्वं गच्छसि
+    - id: i10
+      sa: संस्कृतम्
+    - id: i11
+      sa: अहम् + अपि
+    - id: i12
+      sa: अहमपि
 - id: p7
   kind: practice
   depth: core
@@ -150,6 +412,48 @@ cards:
       sa: संस्कृतम्
     right:
       sa: सम् + स्कृतम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A final hard stop ({{क्}}, {{ट्}}, {{त्}}, {{प्}}) becomes its soft partner ({{ग्}}, {{ड्}}, {{द्}}, {{ब्}}) when
+        a soft sound or a vowel follows: {{तत् + अस्ति}} gives {{तदस्ति}}; {{जगत् + ईशः}} gives {{जगदीशः}}; {{दिक् + गजः}}
+        gives {{दिग्गजः}}. Voice spreads from the next sound.'
+      hi: 'अन्त का कठोर स्पर्श ({{क्}}, {{ट्}}, {{त्}}, {{प्}}) अपने कोमल जोड़ीदार ({{ग्}}, {{ड्}}, {{द्}}, {{ब्}}) में बदल
+        जाता है जब आगे कोमल ध्वनि या स्वर हो: {{तत् + अस्ति}} से {{तदस्ति}}; {{जगत् + ईशः}} से {{जगदीशः}}; {{दिक् + गजः}}
+        से {{दिग्गजः}}। घोष अगली ध्वनि से फैलता है।'
+    items:
+    - id: i0
+      sa: क्
+    - id: i1
+      sa: ट्
+    - id: i2
+      sa: त्
+    - id: i3
+      sa: प्
+    - id: i4
+      sa: ग्
+    - id: i5
+      sa: ड्
+    - id: i6
+      sa: द्
+    - id: i7
+      sa: ब्
+    - id: i8
+      sa: तत् + अस्ति
+    - id: i9
+      sa: तदस्ति
+    - id: i10
+      sa: जगत् + ईशः
+    - id: i11
+      sa: जगदीशः
+    - id: i12
+      sa: दिक् + गजः
+    - id: i13
+      sa: दिग्गजः
 - id: p8
   kind: practice
   depth: core
@@ -168,8 +472,14 @@ cards:
   gate: true
   story:
     success:
-      en: “सज्जनः, तद्धि, संस्कृतम्,” you say, and Vyañjanikā, with a clink, steps down from her plinth, rough sandstone gone soft at the edges. “All my life,” she says, “I have been one sound off from the next one.” She touches the nearest statue's shoulder and her outline softens into it, like a word meeting a word. “विद्यालयः,” she says. “I can say it, but I cannot take it apart. That is for the thirteenth.”
-      hi: “सज्जनः, तद्धि, संस्कृतम्,” आप कहते हैं, और व्यञ्जनिका, खनक के साथ, अपने आसन से उतरती है, खुरदरा बलुआ पत्थर अब किनारों पर नरम। “सारी उम्र,” वह कहती है, “मैं अगली ध्वनि से एक ध्वनि दूर रही।” वह निकटतम प्रतिमा के कंधे को छूती है और उसकी रूपरेखा उसमें पिघल जाती है, शब्द से मिलते शब्द की तरह। “विद्यालयः,” वह कहती है। “मैं इसे कह सकती हूँ, पर अलग नहीं कर सकती। वह तेरहवीं का काम है।”
+      en: “सज्जनः, तद्धि, संस्कृतम्,” you say, and Vyañjanikā, with a clink, steps down from her plinth, rough sandstone gone
+        soft at the edges. “All my life,” she says, “I have been one sound off from the next one.” She touches the nearest
+        statue's shoulder and her outline softens into it, like a word meeting a word. “विद्यालयः,” she says. “I can say it,
+        but I cannot take it apart. That is for the thirteenth.”
+      hi: “सज्जनः, तद्धि, संस्कृतम्,” आप कहते हैं, और व्यञ्जनिका, खनक के साथ, अपने आसन से उतरती है, खुरदरा बलुआ पत्थर अब किनारों
+        पर नरम। “सारी उम्र,” वह कहती है, “मैं अगली ध्वनि से एक ध्वनि दूर रही।” वह निकटतम प्रतिमा के कंधे को छूती है और उसकी
+        रूपरेखा उसमें पिघल जाती है, शब्द से मिलते शब्द की तरह। “विद्यालयः,” वह कहती है। “मैं इसे कह सकती हूँ, पर अलग नहीं
+        कर सकती। वह तेरहवीं का काम है।”
     failure:
       en: 'Her edges stay sharp. Her three: {{सज्जनः तद्धि संस्कृतम्}}.'
       hi: 'उसके किनारे तीखे रहते हैं। उसके तीन: {{सज्जनः तद्धि संस्कृतम्}}।'
@@ -177,3 +487,45 @@ cards:
   - सज्जनः
   - तद्धि
   - संस्कृतम्
+  feedback_visuals:
+  - id: v-source-feedback
+    kind: comparison
+    title:
+      en: Compare with a taught example
+      hi: सीखे हुए उदाहरण से तुलना करें
+    explanation:
+      en: 'A final hard stop ({{क्}}, {{ट्}}, {{त्}}, {{प्}}) becomes its soft partner ({{ग्}}, {{ड्}}, {{द्}}, {{ब्}}) when
+        a soft sound or a vowel follows: {{तत् + अस्ति}} gives {{तदस्ति}}; {{जगत् + ईशः}} gives {{जगदीशः}}; {{दिक् + गजः}}
+        gives {{दिग्गजः}}. Voice spreads from the next sound.'
+      hi: 'अन्त का कठोर स्पर्श ({{क्}}, {{ट्}}, {{त्}}, {{प्}}) अपने कोमल जोड़ीदार ({{ग्}}, {{ड्}}, {{द्}}, {{ब्}}) में बदल
+        जाता है जब आगे कोमल ध्वनि या स्वर हो: {{तत् + अस्ति}} से {{तदस्ति}}; {{जगत् + ईशः}} से {{जगदीशः}}; {{दिक् + गजः}}
+        से {{दिग्गजः}}। घोष अगली ध्वनि से फैलता है।'
+    items:
+    - id: i0
+      sa: क्
+    - id: i1
+      sa: ट्
+    - id: i2
+      sa: त्
+    - id: i3
+      sa: प्
+    - id: i4
+      sa: ग्
+    - id: i5
+      sa: ड्
+    - id: i6
+      sa: द्
+    - id: i7
+      sa: ब्
+    - id: i8
+      sa: तत् + अस्ति
+    - id: i9
+      sa: तदस्ति
+    - id: i10
+      sa: जगत् + ईशः
+    - id: i11
+      sa: जगदीशः
+    - id: i12
+      sa: दिक् + गजः
+    - id: i13
+      sa: दिग्गजः
