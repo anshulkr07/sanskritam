@@ -11,6 +11,7 @@ import { Pressable, StyleSheet, Text, View, useWindowDimensions } from "react-na
 
 import { useGuideLang } from "../hooks/useGuide";
 import { useTypeScale } from "../hooks/useTypeScale";
+import { useDailyHint } from "../services/dailyHint";
 import { haptics } from "../services/haptics";
 import { T, sa, ui } from "../trail/theme";
 import { announce } from "../utils/announce";
@@ -164,21 +165,49 @@ function Practice({ card, onAnswer }: { card: LearnV2Card; onAnswer?: (correct: 
   const { lang } = useGuideLang();
   const { sized } = useTypeScale();
   const [picked, setPicked] = useState<number | null>(null);
+  const hint = useDailyHint();
+  const [hinted, setHinted] = useState(false);
+  const [asking, setAsking] = useState(false);
+  const [spent, setSpent] = useState(false);
   const p = card.practice;
   if (!p) return null;
+  const hi = lang === "hi";
   const answered = picked !== null;
   const correct = answered && p.choices[picked].correct;
   return (
     <View style={{ gap: 8, marginTop: 4 }}>
-      <InlineText text={lang === "hi" ? p.prompt.hi : p.prompt.en} lang={lang} style={[ui("semibold"), { color: T.ink, fontSize: sized(19), lineHeight: sized(26) }]} />
+      <View style={{ flexDirection: "row", alignItems: "flex-start", gap: 8 }}>
+        <View style={{ flex: 1 }}><InlineText text={lang === "hi" ? p.prompt.hi : p.prompt.en} lang={lang} style={[ui("semibold"), { color: T.ink, fontSize: sized(19), lineHeight: sized(26) }]} /></View>
+        {!answered && !hinted ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={hint.available ? (hi ? "संकेत: उत्तर दिखाता है। दिन में एक मुफ़्त।" : "Hint: shows the answer. One free hint a day.") : hi ? "आज का संकेत इस्तेमाल हो चुका। कल नया मिलेगा।" : "Today's hint is used. A new one tomorrow."}
+            hitSlop={6}
+            onPress={() => { if (hint.available) { setAsking(a => !a); setSpent(false); } else { setSpent(s => !s); setAsking(false); } }}
+            style={{ width: 36, height: 36, alignItems: "center", justifyContent: "center", borderWidth: asking || spent ? 2 : 1, borderColor: asking || spent ? T.action : T.lineStrong, backgroundColor: T.surface }}
+          >
+            <Ionicons name="bulb-outline" size={20} color={hint.available ? T.action : T.ink3} />
+          </Pressable>
+        ) : null}
+      </View>
+      {asking ? (
+        <View style={[styles.feedback, { backgroundColor: T.surface, gap: 10 }]}>
+          <Text style={[ui("regular"), { color: T.ink, fontSize: sized(15) }]}>{hi ? "आज का संकेत इस्तेमाल करें? यह इस प्रश्न का उत्तर दिखा देगा। पूरे ऐप में दिन में एक ही मिलता है।" : "Use today's hint? It shows the answer to this question. You get one a day, across the whole app."}</Text>
+          <View style={{ flexDirection: "row", gap: 8 }}>
+            <Pressable accessibilityRole="button" onPress={() => { setAsking(false); void hint.use().then(ok => { if (ok) setHinted(true); }); }} style={{ flex: 1, minHeight: 44, alignItems: "center", justifyContent: "center", backgroundColor: T.action }}><Text style={[ui("semibold"), { color: T.white, fontSize: sized(16) }]}>{hi ? "उत्तर दिखाएँ" : "Show the answer"}</Text></Pressable>
+            <Pressable accessibilityRole="button" onPress={() => setAsking(false)} style={{ minHeight: 44, paddingHorizontal: 14, alignItems: "center", justifyContent: "center", borderWidth: 1, borderColor: T.lineStrong }}><Text style={[ui("semibold"), { color: T.ink, fontSize: sized(16) }]}>{hi ? "अभी नहीं" : "Not now"}</Text></Pressable>
+          </View>
+        </View>
+      ) : null}
+      {spent ? <Text style={[ui("medium"), { color: T.ink2, fontSize: sized(14) }]}>{hi ? "आज का संकेत इस्तेमाल हो चुका। कल नया मिलेगा।" : "Today's hint is used. You get a new one tomorrow."}</Text> : null}
       {p.choices.map((c, i) => {
-        const right = answered && c.correct;
+        const right = (answered || hinted) && c.correct;
         const wrong = answered && picked === i && !c.correct;
         const label = lang === "hi" ? c.label.hi : c.label.en;
         return (
           <Pressable
             key={i}
-            disabled={answered}
+            disabled={answered || hinted}
             onPress={() => {
               haptics.tap();
               setPicked(i);
@@ -196,6 +225,12 @@ function Practice({ card, onAnswer }: { card: LearnV2Card; onAnswer?: (correct: 
           </Pressable>
         );
       })}
+      {hinted && !answered ? (
+        <View style={[styles.feedback, { backgroundColor: T.doneBg }]} accessibilityLiveRegion="polite">
+          <Text style={[ui("bold"), { color: T.doneInk, fontSize: sized(16) }]}>{hi ? "उत्तर दिखाया गया:" : "Answer shown:"}</Text>
+          <InlineText text={lang === "hi" ? p.explain.hi : p.explain.en} lang={lang} style={[ui("regular"), { color: T.ink, fontSize: sized(15.5), lineHeight: sized(22) }]} />
+        </View>
+      ) : null}
       {answered ? (
         <View style={[styles.feedback, { backgroundColor: correct ? T.doneBg : T.wrongBg }]} accessibilityLiveRegion="polite">
           <Text style={[ui("bold"), { color: correct ? T.doneInk : T.wrongInk, fontSize: sized(16) }]}>{correct ? (lang === "hi" ? "सही।" : "Right.") : lang === "hi" ? "अभी नहीं। कारण पढ़ें:" : "Not quite. Here is why:"}</Text>

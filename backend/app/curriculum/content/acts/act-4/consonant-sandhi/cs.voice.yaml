@@ -9,7 +9,7 @@ teaches:
 - sandhi.voice
 needs:
 - sandhi.visarga-r
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: cs-voice-s1
+    text_in_image: ["तदस्ति"]
   narration:
     en: 'The tenth statue has hard stone edges and a stone bell in her hand. “तदस्ति,” she says: “that is.” Śuka peers at the inscription on her base. “The word was तत्, with a त्. Now it has a द. Why did the sound go soft?” “Because it is next to a soft one,” says Dādī. “The अ after it is voiced, and the voice has spread backwards.”'
     hi: 'दसवीं प्रतिमा के किनारे कठोर पत्थर के हैं और हाथ में पत्थर की घण्टी। “तदस्ति,” वह कहती है: “वह है।” शुक उसके आसन पर लिखे अभिलेख को झाँकता है। “शब्द तत् था, त के साथ। अब उसमें द है। ध्वनि कोमल क्यों हो गई?” “क्योंकि वह कोमल ध्वनि के पास है,” दादी कहती हैं। “उसके बाद का अ घोष है, और घोष पीछे की ओर फैल गया है।”'
@@ -219,8 +220,8 @@ cards:
   - sandhi.voice
   mode: match
   prompt:
-    en: Join each word to its parts.
-    hi: हर शब्द को उसके भागों से जोड़िए।
+    en: Match each word with its parts.
+    hi: हर शब्द को उसके भागों से मिलाइए।
   explain:
     en: The hard stop turns soft.
     hi: कठोर स्पर्श कोमल हो जाता है।

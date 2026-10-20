@@ -10,7 +10,7 @@ teaches:
 needs:
 - syn.conditional
 - sandhi.padaccheda
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -38,6 +38,7 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: syn-order-s1
+    text_in_image: ["रिक्तपाणिर् न पश्येत राजानं भिषजं गुरुम्"]
   narration:
     en: 'The thirty-two statues stand in a ring, the throne lit from within. Lubdhaka steps forward and puts one foot on the first step. “Wait,” says Vākyikā, the basalt spirit. “To sit here you must read the last word. It is in verse.” She holds out a line. “Verse puts words in the order of the metre. Read it in the order of sense: that is anvaya.”'
     hi: 'बत्तीस प्रतिमाएँ घेरे में खड़ी हैं, और सिंहासन भीतर से प्रकाशित है। लुब्धक आगे बढ़ता है, उसका मुखिया उसके पास, और पहली सीढ़ी पर एक पैर रखता है। “रुकिए,” वाक्यिका, बेसाल्ट की भूत, पत्र से कहती है। “यहाँ बैठने के लिए अन्तिम शब्द पढ़ना होगा। और वह श्लोक में है।” वह एक पंक्ति आगे बढ़ाती है। “शब्द छन्द के क्रम में हैं। उन्हें अर्थ के क्रम में पढ़िए: उसे अन्वय कहते हैं।”'
@@ -202,8 +203,8 @@ cards:
   - syn.anvaya
   mode: match
   prompt:
-    en: Join each word to its job in the verse.
-    hi: हर शब्द को श्लोक में उसके काम से जोड़िए।
+    en: Match each word with its job in the verse.
+    hi: हर शब्द को श्लोक में उसके काम से मिलाइए।
   explain:
     en: Find the verb first, then the doer.
     hi: पहले क्रिया खोजिए, फिर कर्ता।

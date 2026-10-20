@@ -1,0 +1,261 @@
+id: past.reading
+template: episode
+title:
+  en: Read the Vetāla's opening
+  hi: वेताल की कथा का आरम्भ पढ़ें
+minutes: 4
+needs: &id001
+- verb.lan
+review: scholar_ok
+sources:
+- title: Lesson text and story
+  licence: original
+cards:
+- id: r1
+  kind: reading
+  title:
+    en: Read the scene
+    hi: दृश्य पढ़ें
+  passage:
+  - sa: पुरा एकः राजा आसीत्।
+    meaning:
+      en: Long ago there was a king.
+      hi: पुराने समय में एक राजा था।
+    words:
+    - sa: पुरा
+      gloss:
+        en: long ago
+        hi: पुराने समय में
+    - sa: एकः
+      gloss:
+        en: a
+        hi: एक
+    - sa: राजा
+      gloss:
+        en: king
+        hi: राजा
+      check:
+        type: subanta
+        stem: राजन्
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: आसीत्
+      gloss:
+        en: was
+        hi: था
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+  - sa: सः नगरे अवसत्।
+    meaning:
+      en: He lived in the city.
+      hi: वह नगर में रहता था।
+    words:
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: नगरे
+      gloss:
+        en: in the city
+        hi: नगर में
+      check:
+        type: subanta
+        stem: नगर
+        linga: Napumsaka
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: अवसत्
+      gloss:
+        en: lived
+        hi: रहता था
+      check:
+        type: tinanta
+        dhatu: वस्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+  - sa: एकदा सः वनम् अगच्छत्।
+    meaning:
+      en: Once he went to the forest.
+      hi: एक बार वह वन गया।
+    words:
+    - sa: एकदा
+      gloss:
+        en: once
+        hi: एक बार
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: वनम्
+      gloss:
+        en: forest
+        hi: वन
+      check:
+        type: subanta
+        stem: वन
+        linga: Napumsaka
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: अगच्छत्
+      gloss:
+        en: went
+        hi: गया
+      check:
+        type: tinanta
+        dhatu: गम्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+- id: p1
+  kind: practice
+  mode: choice
+  skills: *id001
+  prompt:
+    en: Where did the king live before going to the forest?
+    hi: वन जाने से पहले राजा कहाँ रहता था?
+  explain:
+    en: The second sentence says that he lived in the city. He went to the forest later.
+    hi: दूसरे वाक्य में वह नगर में रहता था। बाद में वह वन गया।
+  options:
+  - text:
+      en: In the city
+      hi: नगर में
+    correct: true
+  - text:
+      en: In a tree
+      hi: पेड़ पर
+    why:
+      en: The second sentence says that he lived in the city. He went to the forest later.
+      hi: दूसरे वाक्य में वह नगर में रहता था। बाद में वह वन गया।
+- id: r2
+  kind: reading
+  title:
+    en: Read on
+    hi: आगे पढ़ें
+  passage:
+  - sa: तत्र सः वृक्षम् अपश्यत्।
+    meaning:
+      en: There he saw a tree.
+      hi: वहाँ उसने एक वृक्ष देखा।
+    words:
+    - sa: तत्र
+      gloss:
+        en: there
+        hi: वहाँ
+    - sa: सः
+      gloss:
+        en: he
+        hi: वह
+    - sa: वृक्षम्
+      gloss:
+        en: tree
+        hi: वृक्ष
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Dvitiya
+        vacana: Eka
+    - sa: अपश्यत्
+      gloss:
+        en: saw
+        hi: देखा
+      check:
+        type: tinanta
+        dhatu: दृश्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+  - sa: वृक्षे शवः आसीत्।
+    meaning:
+      en: On the tree there was a corpse.
+      hi: वृक्ष पर एक शव था।
+    words:
+    - sa: वृक्षे
+      gloss:
+        en: on the tree
+        hi: वृक्ष पर
+      check:
+        type: subanta
+        stem: वृक्ष
+        linga: Pum
+        vibhakti: Saptami
+        vacana: Eka
+    - sa: शवः
+      gloss:
+        en: a corpse
+        hi: एक शव
+      check:
+        type: subanta
+        stem: शव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: आसीत्
+      gloss:
+        en: was
+        hi: था
+      check:
+        type: tinanta
+        dhatu: अस्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+  - sa: शवः अवदत्।
+    meaning:
+      en: The corpse spoke.
+      hi: शव बोला।
+    words:
+    - sa: शवः
+      gloss:
+        en: the corpse
+        hi: शव
+      check:
+        type: subanta
+        stem: शव
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+    - sa: अवदत्
+      gloss:
+        en: spoke
+        hi: बोला
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lan
+        purusha: Prathama
+        vacana: Eka
+- id: p2
+  kind: practice
+  mode: choice
+  skills: *id001
+  prompt:
+    en: Who speaks at the end of the passage?
+    hi: अंश के अन्त में कौन बोलता है?
+  explain:
+    en: The corpse was in the tree, and the final sentence says that the corpse spoke.
+    hi: पेड़ पर शव था, और अन्तिम वाक्य में शव बोला।
+  options:
+  - text:
+      en: The corpse
+      hi: शव
+    correct: true
+  - text:
+      en: The tree
+      hi: पेड़
+    why:
+      en: The corpse was in the tree, and the final sentence says that the corpse spoke.
+      hi: पेड़ पर शव था, और अन्तिम वाक्य में शव बोला।
+- id: end
+  kind: summary
+  points:
+  - text:
+      en: You followed the king from the city into the forest and understood the surprise at the end.
+      hi: आपने नगर से वन तक राजा की कथा पढ़ी और अन्त का आश्चर्य समझा।

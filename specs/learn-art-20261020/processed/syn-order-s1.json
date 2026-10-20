@@ -1,0 +1,713 @@
+{
+  "id": "syn-order-s1",
+  "where": "syn.order#s1",
+  "ratio": "4:3",
+  "expected": [
+    "रिक्तपाणिर् न पश्येत राजानं भिषजं गुरुम्"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The thirty-two statues standing in a ring around a lit stone throne; Lubdhaka with one foot on the first step and his foreman beside him; a small basalt spirit holding out a scroll with a line on it to the travellers; Dādī and Śuka stepping forward; warm light from inside the throne.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvakyika: A small, heavy spirit of dark basalt holding a long unrolled scroll that trails behind her, with a single sentence written across it in a close, tidy hand.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nरिक्तपाणिर् न पश्येत राजानं भिषजं गुरुम्",
+  "source": {
+    "id": "syn.order",
+    "template": "scene",
+    "title": {
+      "en": "Prose order",
+      "hi": "गद्य का क्रम"
+    },
+    "title_sa": "अन्वयः",
+    "minutes": 6,
+    "teaches": [
+      "syn.anvaya"
+    ],
+    "needs": [
+      "syn.conditional",
+      "sandhi.padaccheda"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The throne",
+          "hi": "सिंहासन"
+        },
+        "image": {
+          "id": "syn-order-s1",
+          "brief": "The thirty-two statues standing in a ring around a lit stone throne; Lubdhaka with one foot on the first step and his foreman beside him; a small basalt spirit holding out a scroll with a line on it to the travellers; Dādī and Śuka stepping forward; warm light from inside the throne.",
+          "alt": {
+            "en": "Thirty-two statues ring a lit throne as a man puts a foot on the step and a small spirit holds out a line",
+            "hi": "प्रकाशित सिंहासन के चारों ओर बत्तीस प्रतिमाएँ, सीढ़ी पर पैर रखता आदमी, पंक्ति बढ़ाती नन्ही भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "vakyika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The thirty-two statues stand in a ring, the throne lit from within. Lubdhaka steps forward and puts one foot on the first step. “Wait,” says Vākyikā, the basalt spirit. “To sit here you must read the last word. It is in verse.” She holds out a line. “Verse puts words in the order of the metre. Read it in the order of sense: that is anvaya.”",
+          "hi": "बत्तीस प्रतिमाएँ घेरे में खड़ी हैं, और सिंहासन भीतर से प्रकाशित है। लुब्धक आगे बढ़ता है, उसका मुखिया उसके पास, और पहली सीढ़ी पर एक पैर रखता है। “रुकिए,” वाक्यिका, बेसाल्ट की भूत, पत्र से कहती है। “यहाँ बैठने के लिए अन्तिम शब्द पढ़ना होगा। और वह श्लोक में है।” वह एक पंक्ति आगे बढ़ाती है। “शब्द छन्द के क्रम में हैं। उन्हें अर्थ के क्रम में पढ़िए: उसे अन्वय कहते हैं।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "रिक्तपाणिर् न पश्येत राजानं भिषजं गुरुम्",
+          "gloss": {
+            "en": "One should not go empty-handed to see a king, a doctor or a teacher.",
+            "hi": "राजा, वैद्य या गुरु से खाली हाथ नहीं मिलना चाहिए।"
+          },
+          "source": "Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Anvaya",
+          "hi": "अन्वय"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.anvaya"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Verse puts words in the order of the metre; prose puts them in the order of sense. To find the {{अन्वयः}}: first split the joins (padaccheda); then find the verb; then its doer; then the object, and describing words next to the words they describe. {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: who, whom, what, how.",
+          "hi": "श्लोक शब्दों को छन्द के क्रम में रखता है; गद्य अर्थ के क्रम में। {{अन्वयः}} खोजने के लिए: पहले सन्धि खोलिए (पदच्छेद); फिर क्रिया खोजिए; फिर उसका कर्ता; फिर कर्म, और विशेषण उन शब्दों के पास जिनका वे वर्णन करते हैं। {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: कौन, किसे, कैसे।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "अन्वयः",
+          "meaning": {
+            "en": "the prose order of a verse",
+            "hi": "श्लोक का गद्य-क्रम"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Anvaya in four steps",
+          "hi": "चार चरणों में अन्वय"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.anvaya"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "From verse order to prose order",
+          "hi": "श्लोक के क्रम से गद्य के क्रम तक"
+        },
+        "columns": [
+          {
+            "en": "Step",
+            "hi": "चरण"
+          },
+          {
+            "en": "What you do",
+            "hi": "क्या करें"
+          },
+          {
+            "en": "For {{रिक्तपाणिः …}}",
+            "hi": "{{रिक्तपाणिः …}} के लिए"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "1",
+                "hi": "१"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "Split the joins",
+                "hi": "सन्धि खोलिए"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "रिक्तपाणिः न पश्येत् राजानं भिषजं गुरुम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "2",
+                "hi": "२"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "Find the verb",
+                "hi": "क्रिया खोजिए"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "पश्येत् (should see)",
+                "hi": "पश्येत् (देखे)"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "3",
+                "hi": "३"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "Find the doer",
+                "hi": "कर्ता खोजिए"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "रिक्तपाणिः (one empty-handed)",
+                "hi": "रिक्तपाणिः (खाली हाथ वाला)"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "4",
+                "hi": "४"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "Order the rest",
+                "hi": "शेष को क्रम दीजिए"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "The prose order is: doer, object, verb; a negative before the verb.",
+          "hi": "गद्य का क्रम: कर्ता, कर्म, क्रिया; निषेध क्रिया से पहले।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.anvaya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Put the words in the right order.",
+          "hi": "शब्दों को सही क्रम में रखिए।"
+        },
+        "explain": {
+          "en": "The doer, the object, the verb.",
+          "hi": "कर्ता, कर्म, क्रिया।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "reorder",
+          "params": {
+            "sentence": "बालकः ग्रामं गच्छति"
+          },
+          "seed": 13
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.anvaya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Put the words in the right order.",
+          "hi": "शब्दों को सही क्रम में रखिए।"
+        },
+        "explain": {
+          "en": "The doer, the object, the verb.",
+          "hi": "कर्ता, कर्म, क्रिया।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "reorder",
+          "params": {
+            "sentence": "रामः फलम् खादति"
+          },
+          "seed": 14
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.anvaya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "In prose order, the verb usually comes…",
+          "hi": "गद्य के क्रम में क्रिया प्रायः आती है…"
+        },
+        "explain": {
+          "en": "Doer, object, verb.",
+          "hi": "कर्ता, कर्म, क्रिया।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "first",
+              "hi": "पहले"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "in the middle",
+              "hi": "बीच में"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "last",
+              "hi": "अन्त में"
+            },
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.anvaya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Put the line in prose order: “धीमताम् … कालः … काव्यशास्त्रविनोदेन … गच्छति”.",
+          "hi": "पंक्ति को गद्य के क्रम में रखिए: “धीमताम् … कालः … काव्यशास्त्रविनोदेन … गच्छति”।"
+        },
+        "explain": {
+          "en": "{{धीमताम् कालः काव्यशास्त्रविनोदेन गच्छति}}: of the wise, time, in the delight of poetry, passes.",
+          "hi": "{{धीमताम् कालः काव्यशास्त्रविनोदेन गच्छति}}: बुद्धिमानों का, समय, काव्य-शास्त्र के आनन्द में, बीतता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "धीमताम्",
+          "कालः",
+          "काव्यशास्त्रविनोदेन",
+          "गच्छति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.anvaya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its job in the verse.",
+          "hi": "हर शब्द को श्लोक में उसके काम से जोड़िए।"
+        },
+        "explain": {
+          "en": "Find the verb first, then the doer.",
+          "hi": "पहले क्रिया खोजिए, फिर कर्ता।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "रिक्तपाणिः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "the doer",
+                "hi": "कर्ता"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "राजानम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "the object",
+                "hi": "कर्म"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "न",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "the negative",
+                "hi": "निषेध"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पश्येत्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "the verb",
+                "hi": "क्रिया"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p6",
+        "title": {
+          "en": "The last word",
+          "hi": "अन्तिम शब्द"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "syn.anvaya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "In “रिक्तपाणिः न पश्येत् राजानम्”, who is the doer?",
+          "hi": "“रिक्तपाणिः न पश्येत् राजानम्” में कर्ता कौन है?"
+        },
+        "explain": {
+          "en": "{{रिक्तपाणिः}}: the one empty-handed.",
+          "hi": "{{रिक्तपाणिः}}: खाली हाथ वाला।"
+        },
+        "options": [
+          {
+            "sa": "राजानम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पश्येत्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "रिक्तपाणिः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्,” you say, in the order of sense, “one empty-handed should not see a king, a doctor, a teacher.” Vākyikā lowers her scroll, and the throne's light brightens, so that the whole hall is gold. “Whoever sits here,” she says, “must know that the last word is not a command. It is an order: the order that makes sense.” Lubdhaka's foot comes off the step. In the stone of the throne's base, a slab, long sealed, slides gently aside.",
+            "hi": "“रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्,” आप अर्थ के क्रम में कहते हैं, “खाली हाथ वाला राजा, वैद्य, गुरु से न मिले।” वाक्यिका अपना पत्र नीचे करती है, और सिंहासन का प्रकाश तेज़ हो जाता है, पूरा कक्ष सुनहरा हो जाता है। “जो भी यहाँ बैठे,” वह कहती है, “उसे जानना चाहिए कि अन्तिम शब्द आज्ञा नहीं है। वह क्रम है: वह क्रम जिसका अर्थ बनता है।” लुब्धक का पैर सीढ़ी से हट जाता है। सिंहासन के आधार के पत्थर में, बहुत समय से बन्द एक पटिया धीरे से सरक जाती है।"
+          },
+          "failure": {
+            "en": "The light stays dim. The doer is {{रिक्तपाणिः}}.",
+            "hi": "प्रकाश मद्धम रहता है। कर्ता {{रिक्तपाणिः}} है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's order",
+          "hi": "पाणिनि का क्रम"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "syn.anvaya"
+        ],
+        "sutras": [
+          "2.3.1"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Pāṇini does not fix a word order, because a case ending already says each word's job: 2.3.1, {{अनभिहिते}}, says a case is used for the relation not already expressed by the verb. So prose order is for the reader's comfort, and verse may use any order.",
+          "hi": "पाणिनि शब्द-क्रम तय नहीं करते, क्योंकि विभक्ति प्रत्यय पहले से हर शब्द का काम बताता है: 2.3.1, {{अनभिहिते}}, कहता है कि विभक्ति उस सम्बन्ध के लिए आती है जो क्रिया ने पहले से नहीं कहा। इसलिए गद्य का क्रम पाठक की सुविधा के लिए है, और श्लोक कोई भी क्रम ले सकता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Prose order",
+          "hi": "गद्य का क्रम"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "अन्वयः",
+            "text": {
+              "en": "The prose order of a verse.",
+              "hi": "श्लोक का गद्य-क्रम।"
+            }
+          },
+          {
+            "sa": "कर्ता, कर्म, क्रिया",
+            "text": {
+              "en": "Doer, object, verb.",
+              "hi": "कर्ता, कर्म, क्रिया।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Split first, then find the verb.",
+              "hi": "पहले सन्धि खोलिए, फिर क्रिया खोजिए।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "syn-order-s1",
+    "brief": "The thirty-two statues standing in a ring around a lit stone throne; Lubdhaka with one foot on the first step and his foreman beside him; a small basalt spirit holding out a scroll with a line on it to the travellers; Dādī and Śuka stepping forward; warm light from inside the throne.",
+    "alt": {
+      "en": "Thirty-two statues ring a lit throne as a man puts a foot on the step and a small spirit holds out a line",
+      "hi": "प्रकाशित सिंहासन के चारों ओर बत्तीस प्रतिमाएँ, सीढ़ी पर पैर रखता आदमी, पंक्ति बढ़ाती नन्ही भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "vakyika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The thirty-two statues standing in a ring around a lit stone throne; Lubdhaka with one foot on the first step and his foreman beside him; a small basalt spirit holding out a scroll with a line on it to the travellers; Dādī and Śuka stepping forward; warm light from inside the throne.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvakyika: A small, heavy spirit of dark basalt holding a long unrolled scroll that trails behind her, with a single sentence written across it in a close, tidy hand.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-8ca46b60-bfc3-4a00-a9fe-3efe5467f071.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "30c956dba8006654f165efda82dbf1322b32bfa44f64cfc3cc4fda109bf86b52",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\syn-order-s1-phone-000381ea.webp",
+      "key": "learn/syn-order-s1-phone-000381ea.webp",
+      "sha256": "000381ea39716e6628a469a8232194a094cbc92e49ec9392a5ce4217acc8cce9",
+      "bytes": 116410,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/syn-order-s1-phone-000381ea.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\syn-order-s1-tablet-98d2184f.webp",
+      "key": "learn/syn-order-s1-tablet-98d2184f.webp",
+      "sha256": "98d2184f7f0f0e0afb4398315621752f71cd78fa3142ebcd1baa9fae9e27c294",
+      "bytes": 448050,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/syn-order-s1-tablet-98d2184f.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

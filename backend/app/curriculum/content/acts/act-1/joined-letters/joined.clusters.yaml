@@ -9,7 +9,7 @@ teaches:
 - script.conjunct
 needs:
 - script.cons.inherent-a
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -33,6 +33,7 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: joined-clusters-s1
+    text_in_image: ["क्ष त्र ज्ञ श्र"]
   narration:
     en: Chāyikā's clue leads you into the temple courtyard, to a stone pillar covered in letters. They crowd so close they seem to hold hands. In the carving, curled up like a cat, sleeps a pale green spirit in a nightcap of mist.
     hi: छायिका का संकेत आपको मंदिर के आँगन में एक पत्थर के स्तम्भ तक ले जाता है, जो अक्षरों से ढका है। वे इतने पास-पास हैं मानो हाथ थामे हों। नक्काशी में बिल्ली की तरह सिमटा, धुंध की टोपी पहने, एक हल्का हरा भूत सो रहा है।
@@ -182,8 +183,8 @@ cards:
   - script.conjunct
   mode: match
   prompt:
-    en: Join each joined letter to its parts.
-    hi: हर संयुक्ताक्षर को उसके भागों से जोड़िए।
+    en: Match each joined letter with its parts.
+    hi: हर संयुक्ताक्षर को उसके भागों से मिलाइए।
   explain:
     en: Each joined letter is its first half plus its second letter.
     hi: हर संयुक्ताक्षर पहला आधा और दूसरा अक्षर है।

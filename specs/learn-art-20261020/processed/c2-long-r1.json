@@ -1,0 +1,787 @@
+{
+  "id": "c2-long-r1",
+  "where": "c2.long#r1",
+  "ratio": "4:3",
+  "expected": [
+    "सूर्य",
+    "कोटिः",
+    "सम",
+    "आभासः"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A long garland of carved stone flowers laid along a table, each flower holding one tiny Sanskrit syllable-group; a brass lamp beside it; ink-and-watercolour illustration, soft ivory paper.\nCharacter appearances:\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nसूर्य\nकोटिः\nसम\nआभासः All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "c2.long",
+    "template": "scene",
+    "title": {
+      "en": "Long compounds",
+      "hi": "लम्बे समास"
+    },
+    "title_sa": "सूर्यकोटिसमाभासः",
+    "minutes": 6,
+    "teaches": [
+      "sam.long"
+    ],
+    "needs": [
+      "sam.avyayibhava"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The twenty-first statue",
+          "hi": "इक्कीसवीं प्रतिमा"
+        },
+        "image": {
+          "id": "c2-long-s1",
+          "brief": "The twenty-first statue wearing a long garland of carved stone flowers, each a different shape, trailing to the floor; Śuka counting on his claws; Dādī tracing the garland from its last flower back to its first; Lubdhaka's foreman following her finger.",
+          "alt": {
+            "en": "A statue wears a long stone garland while an old woman traces it from the last flower to the first",
+            "hi": "लम्बी पत्थर की माला पहने प्रतिमा, अन्तिम फूल से पहले तक उसे खोजती दादी"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "malika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The twenty-first statue wears a garland of stone flowers trailing to the floor, each a different shape. “सूर्यकोटिसमाभासः,” she says, and takes a breath. “One word: ‘shining like ten million suns’.” Śuka counts on his claws. “Five pieces!” “Read it from the end,” says Dādī. “The last member gives the case and gender. Then take each piece from the right.”",
+          "hi": "इक्कीसवीं प्रतिमा पत्थर के फूलों की माला पहने है जो ज़मीन तक लटकती है, और हर फूल का रूप अलग है। “सूर्यकोटिसमाभासः,” वह कहती है, और साँस लेती है। “यह एक शब्द है। इसका अर्थ है ‘करोड़ सूर्यों-सा चमकने वाला’।” शुक पंजों पर गिनता है। “पाँच टुकड़े!” “अन्त से पढ़िए,” दादी कहती हैं। “अन्तिम सदस्य विभक्ति और लिंग देता है। फिर हर टुकड़े को दाईं ओर से लीजिए।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "सूर्यकोटिसमाभासो विद्युज्ज्योतिःसमप्रभः",
+          "gloss": {
+            "en": "Shining like ten million suns, radiant like the light of lightning.",
+            "hi": "करोड़ सूर्यों-सा चमकने वाला, बिजली की ज्योति-सी प्रभा वाला।"
+          },
+          "source": "Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Read from the end",
+          "hi": "अन्त से पढ़िए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.long"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A long compound is built from the left, so read it from the right. First, the last member gives the ending and gender. Then take the compound in two big halves, and again in halves, until each is a single word. Finally decide each join: and, of, describing, whose.",
+          "hi": "लम्बा समास बाईं ओर से बनता है, इसलिए उसे दाईं ओर से पढ़िए। पहले, अन्तिम सदस्य प्रत्यय और लिंग देता है। फिर समास को दो बड़े भागों में लीजिए, फिर और दो-दो भागों में, जब तक हर एक एक शब्द न रह जाए। अन्त में हर जोड़ को पहचानिए: और, का, वर्णन, जिसका।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "समासविग्रहः",
+          "meaning": {
+            "en": "unpacking a compound",
+            "hi": "समास को खोलना"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Unpacking a long compound",
+          "hi": "लम्बे समास को खोलना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.long"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "From the end to the beginning",
+          "hi": "अन्त से शुरू तक"
+        },
+        "columns": [
+          {
+            "en": "Step",
+            "hi": "चरण"
+          },
+          {
+            "en": "What you do",
+            "hi": "क्या करें"
+          },
+          {
+            "en": "Result",
+            "hi": "परिणाम"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "1",
+                "hi": "१"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "Take the last member",
+                "hi": "अन्तिम सदस्य लीजिए"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "आभासः: shining",
+                "hi": "आभासः: चमकने वाला"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "2",
+                "hi": "२"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "Cut the rest in two",
+                "hi": "शेष को दो में काटिए"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सूर्यकोटिसम + आभासः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "3",
+                "hi": "३"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "Cut again",
+                "hi": "फिर काटिए"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सूर्यकोटिः + सम + आभासः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "4",
+                "hi": "४"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "Cut the first part",
+                "hi": "पहले भाग को काटिए"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सूर्य + कोटिः + सम + आभासः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "5",
+                "hi": "५"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "Decide the joins",
+                "hi": "जोड़ तय कीजिए"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "“whose brilliance is like ten million suns”",
+                "hi": "‘जिसकी चमक करोड़ सूर्यों-सी है’"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "The whole compound is a bahuvrīhi: it names the king.",
+          "hi": "पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।"
+        }
+      },
+      {
+        "id": "r1",
+        "title": {
+          "en": "A long chain, read",
+          "hi": "एक लम्बी श्रृंखला, पढ़ी हुई"
+        },
+        "image": {
+          "id": "c2-long-r1",
+          "brief": "A long garland of carved stone flowers laid along a table, each flower holding one tiny Sanskrit syllable-group; a brass lamp beside it; ink-and-watercolour illustration, soft ivory paper.",
+          "alt": {
+            "en": "A long stone garland laid on a table, each flower holding a word",
+            "hi": "मेज़ पर फैली पत्थर के फूलों की लम्बी माला, हर फूल में एक शब्द"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "dadi"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [
+          "sam.long"
+        ],
+        "sutras": [],
+        "kind": "reading",
+        "passage": [
+          {
+            "sa": "सूर्यकोटिसमाभासो विद्युज्ज्योतिःसमप्रभः",
+            "meaning": {
+              "en": "“Shining like ten million suns, radiant like the light of lightning.” (Vetālapañcaviṃśatikā, introduction)",
+              "hi": "“करोड़ सूर्यों-सा चमकने वाला, बिजली की ज्योति-सी प्रभा वाला।” (वेतालपञ्चविंशतिका, भूमिका)"
+            },
+            "words": [
+              {
+                "sa": "सूर्यकोटिसमाभासः",
+                "gloss": {
+                  "en": "shining like ten million suns",
+                  "hi": "करोड़ सूर्यों-सा चमकने वाला"
+                },
+                "check": null
+              },
+              {
+                "sa": "विद्युज्ज्योतिःसमप्रभः",
+                "gloss": {
+                  "en": "radiant like the light of lightning",
+                  "hi": "बिजली की ज्योति-सी प्रभा वाला"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "मृणालनालललितभुजा पीनस्तनोज्ज्वला",
+            "meaning": {
+              "en": "“Her arms graceful like lotus-stalks, shining with a full figure.” (Kathāsaritsāgara 1.4)",
+              "hi": "“कमलनाल-सी सुकोमल भुजाओं वाली, भरे वक्ष से दीप्त।” (कथासरित्सागर 1.4)"
+            },
+            "words": [
+              {
+                "sa": "मृणालनालललितभुजा",
+                "gloss": {
+                  "en": "arms graceful as a lotus-stalk",
+                  "hi": "कमलनाल-सी सुकोमल भुजाओं वाली"
+                },
+                "check": null
+              },
+              {
+                "sa": "पीनस्तनोज्ज्वला",
+                "gloss": {
+                  "en": "shining with a full figure",
+                  "hi": "भरे वक्ष से दीप्त"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          }
+        ]
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.long"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "To unpack a long compound, start…",
+          "hi": "लम्बे समास को खोलने के लिए शुरू कीजिए…"
+        },
+        "explain": {
+          "en": "The last member gives the ending and gender.",
+          "hi": "अन्तिम सदस्य प्रत्यय और लिंग देता है।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "from the first member",
+              "hi": "पहले सदस्य से"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "from the last member",
+              "hi": "अन्तिम सदस्य से"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "from the middle",
+              "hi": "बीच से"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.long"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each long compound to its meaning.",
+          "hi": "हर लम्बे समास को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "All four describe a person.",
+          "hi": "चारों किसी व्यक्ति का वर्णन करते हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "सूर्यकोटिसमाभासः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "shining like ten million suns",
+                "hi": "करोड़ सूर्यों-सा चमकने वाला"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "विद्युज्ज्योतिःसमप्रभः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "radiant like lightning",
+                "hi": "बिजली-सी प्रभा वाला"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "मृणालनालललितभुजा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "arms graceful as a lotus-stalk",
+                "hi": "कमलनाल-सी भुजाओं वाली"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पीनस्तनोज्ज्वला",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "shining with a full figure",
+                "hi": "भरे वक्ष से दीप्त"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.long"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap the long compounds.",
+          "hi": "लम्बे समास छुइए।"
+        },
+        "params": {
+          "passage": [
+            "सूर्यकोटिसमाभासः",
+            "राजा",
+            "विद्युज्ज्योतिःसमप्रभः",
+            "नगरम्",
+            "पीनस्तनोज्ज्वला",
+            "बालिका"
+          ],
+          "targets": [
+            "सूर्यकोटिसमाभासः",
+            "विद्युज्ज्योतिःसमप्रभः",
+            "पीनस्तनोज्ज्वला"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.long"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Order the steps of unpacking: first the last member, then cut, then decide.",
+          "hi": "खोलने के चरणों को क्रम दीजिए: पहले अन्तिम सदस्य, फिर काटना, फिर तय करना।"
+        },
+        "explain": {
+          "en": "{{अन्तिमः छेदः निर्णयः}}: the last member, the cuts, the decision.",
+          "hi": "{{अन्तिमः छेदः निर्णयः}}: अन्तिम सदस्य, काटना, निर्णय।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "अन्तिमः",
+          "छेदः",
+          "निर्णयः"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "The garland",
+          "hi": "माला"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.long"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{पीनस्तनोज्ज्वला}} ends in {{-ज्ज्वला}}. This tells you it is…",
+          "hi": "{{पीनस्तनोज्ज्वला}} {{-ज्ज्वला}} पर समाप्त होता है। इससे पता चलता है कि यह है…"
+        },
+        "explain": {
+          "en": "The last member {{उज्ज्वला}} is feminine.",
+          "hi": "अन्तिम सदस्य {{उज्ज्वला}} स्त्रीलिंग है।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "masculine",
+              "hi": "पुंलिंग"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "neuter",
+              "hi": "नपुंसक"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "feminine, describing a woman",
+              "hi": "स्त्रीलिंग, स्त्री का वर्णन करता"
+            },
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“सूर्यकोटिसमाभासः,” you say, and the twenty-first statue slips her garland over her head and lays it on the plinth. It is not stone but a chain of small, perfect, separate flowers, and you read it, from the end, flower by flower: shining, like, ten million, sun. When you reach the first, the garland begins to glow, quietly, the colour of her sandstone, rose. “That was my name,” she says, “and my work: to hold a long thing together.”",
+            "hi": "“सूर्यकोटिसमाभासः,” आप कहते हैं, और इक्कीसवीं प्रतिमा अपनी माला सिर से उतारकर आसन पर रख देती है। वह पत्थर की नहीं, छोटे, पूर्ण, अलग-अलग फूलों की श्रृंखला है, और आप उसे अन्त से, फूल-फूल पढ़ते हैं: चमकने वाला, जैसा, करोड़, सूर्य। जब आप पहले तक पहुँचते हैं, माला हल्के-हल्के चमकने लगती है, उसके बलुआ पत्थर के रंग में, गुलाबी। “यही मेरा नाम था,” वह कहती है, “और मेरा काम: लम्बी चीज़ को साथ थामना।”"
+          },
+          "failure": {
+            "en": "The garland stays stone. The last member is feminine: {{उज्ज्वला}}.",
+            "hi": "माला पत्थर रहती है। अन्तिम सदस्य स्त्रीलिंग है: {{उज्ज्वला}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's long compounds",
+          "hi": "पाणिनि के लम्बे समास"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sam.long"
+        ],
+        "sutras": [
+          "2.1.3",
+          "2.2.30"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 2.1.3, {{प्राक् कडारात् समासः}}, says compounding is allowed before {{कडार}} in the order of the sūtras, which gives the grammar's own order of types. And 2.2.30, {{उपसर्जनं पूर्वम्}}, puts the subordinate member first. Long compounds are made by repeating the same rules.",
+          "hi": "सूत्र 2.1.3, {{प्राक् कडारात् समासः}}, कहता है कि {{कडार}} से पहले तक समास की अनुमति है, जिससे व्याकरण के अपने प्रकारों का क्रम मिलता है। और 2.2.30, {{उपसर्जनं पूर्वम्}}, गौण सदस्य को पहले रखता है। लम्बे समास उन्हीं नियमों को दोहराने से बनते हैं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Long compounds",
+          "hi": "लम्बे समास"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "सूर्यकोटिसमाभासः",
+            "text": {
+              "en": "Shining like ten million suns.",
+              "hi": "करोड़ सूर्यों-सा चमकने वाला।"
+            }
+          },
+          {
+            "sa": "अन्त से",
+            "text": {
+              "en": "Start at the last member.",
+              "hi": "अन्तिम सदस्य से शुरू कीजिए।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Cut in halves, then decide the joins.",
+              "hi": "दो-दो भागों में काटिए, फिर जोड़ तय कीजिए।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "c2-long-r1",
+    "brief": "A long garland of carved stone flowers laid along a table, each flower holding one tiny Sanskrit syllable-group; a brass lamp beside it; ink-and-watercolour illustration, soft ivory paper.",
+    "alt": {
+      "en": "A long stone garland laid on a table, each flower holding a word",
+      "hi": "मेज़ पर फैली पत्थर के फूलों की लम्बी माला, हर फूल में एक शब्द"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "dadi"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A long garland of carved stone flowers laid along a table, each flower holding one tiny Sanskrit syllable-group; a brass lamp beside it; ink-and-watercolour illustration, soft ivory paper.\nCharacter appearances:\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-984f6eda-87e9-407f-8d5b-8b4ff9ce6557.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "fd4ecf68d211fdfb01bdf432fa3e203de179415ae9da40f4c9043e7d589d90fa",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\c2-long-r1-phone-8b2bdccf.webp",
+      "key": "learn/c2-long-r1-phone-8b2bdccf.webp",
+      "sha256": "8b2bdccff402d1f7491149d4081103462cf7ba7f08e8dd8ef7a7ce7ab7a9fcea",
+      "bytes": 95350,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/c2-long-r1-phone-8b2bdccf.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\c2-long-r1-tablet-f16088ee.webp",
+      "key": "learn/c2-long-r1-tablet-f16088ee.webp",
+      "sha256": "f16088ee64f5c4dea7ebcf5128f676a98231aa5b0801a6c1fda606d5d9bd3312",
+      "bytes": 334524,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/c2-long-r1-tablet-f16088ee.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

@@ -311,7 +311,7 @@ def test_grammar_and_rhythm_questions_stay_with_the_engines(client, model):
     assert model.calls == []
 
 
-def test_spent_gemini_budget_falls_back_without_calling_the_model(client, model, monkeypatch):
+def test_spent_gemini_budget_returns_reset_information_without_a_model_call(client, model, monkeypatch):
     lid, headers = _login(client)
     _, text = _verse()
     db = SessionLocal()
@@ -322,9 +322,11 @@ def test_spent_gemini_budget_falls_back_without_calling_the_model(client, model,
         db.close()
     monkeypatch.setattr(settings, "gemini_daily_budget_inr", spent + 0.0001)
     r = _ask(client, headers, text, "What does this verse mean?")
-    # No Gemini, no stored meaning and no Sarvam key in the suite: the old
-    # path's honest 503, and above all no model call.
-    assert r.status_code == 503, r.text
+    # The shared-budget contract now surfaces 429 and a reset time. It must
+    # not invoke another model or record a charge for the refused request.
+    assert r.status_code == 429, r.text
+    assert r.json()["detail"]["kind"] == "gemini_budget"
+    assert r.json()["detail"]["retry_after_s"] > 0
     assert model.calls == []
     assert _gemini_spend(lid) == pytest.approx(0.0)
 

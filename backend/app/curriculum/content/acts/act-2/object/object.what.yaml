@@ -10,7 +10,7 @@ teaches:
 needs:
 - sent.nom-sg
 - gen.three
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -273,8 +273,8 @@ cards:
   - case.acc
   widget: role_arrows
   prompt:
-    en: Draw an arrow from each word to the action and name its job.
-    hi: हर शब्द से क्रिया तक तीर खींचिए और उसका काम बताइए।
+    en: Tap each word and choose its job. An arrow joins it to the action.
+    hi: हर शब्द को छूकर उसका काम चुनिए। तीर उसे क्रिया से जोड़ देगा।
   params:
     sentence:
     - sa: रामः
@@ -339,8 +339,8 @@ cards:
   - case.acc
   mode: match
   prompt:
-    en: Join each object to its stem.
-    hi: हर कर्म को उसके मूल रूप से जोड़िए।
+    en: Match each object with its stem.
+    hi: हर कर्म को उसके मूल रूप से मिलाइए।
   explain:
     en: '{{अम्}}, {{आम्}}, {{ईम्}}: the singular object endings.'
     hi: '{{अम्}}, {{आम्}}, {{ईम्}}: एकवचन कर्म के प्रत्यय।'

@@ -1,0 +1,1078 @@
+{
+  "id": "vis-r-s1",
+  "where": "vis.r#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The ninth statue with a calm, steady expression, one hand lifted as if to hold a thought; Śuka checking words on his claws; Dādī nodding; the earlier eight statues behind her in the lamplight; the first stars outside the hall.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvisargika: A small spirit of pale marble in the shape of a young woman with a finger lifted to her lips, a faint trail of breath like mist leaving her mouth.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "vis.r",
+    "template": "scene",
+    "title": {
+      "en": "र् and the vanishing breath",
+      "hi": "र् और लुप्त श्वास"
+    },
+    "title_sa": "कविरस्ति स गच्छति",
+    "minutes": 6,
+    "teaches": [
+      "sandhi.visarga-r"
+    ],
+    "needs": [
+      "sandhi.visarga-s"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The ninth statue",
+          "hi": "नौवीं प्रतिमा"
+        },
+        "image": {
+          "id": "vis-r-s1",
+          "brief": "The ninth statue with a calm, steady expression, one hand lifted as if to hold a thought; Śuka checking words on his claws; Dādī nodding; the earlier eight statues behind her in the lamplight; the first stars outside the hall.",
+          "alt": {
+            "en": "A calm statue with one hand lifted as the lamp-lit hall fills with earlier statues",
+            "hi": "शान्त प्रतिमा, एक हाथ उठाए, दीपक-प्रकाशित कक्ष में पिछली प्रतिमाएँ"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "visargika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The ninth statue speaks in a low, sure voice. “कविरस्ति,” she says: “the poet is.” “स गच्छति”: “he goes.” “Two more things,” says Dādī. “After इ or उ the breath becomes र् before a vowel or a soft sound. And after other vowels it sometimes just vanishes: सः does not keep its breath before most consonants.”",
+          "hi": "नौवीं प्रतिमा नीची और दृढ़ आवाज़ में बोलती है। “कविरस्ति,” वह कहती है: “कवि है।” “स गच्छति”: “वह जाता है।” “दो बातें और,” दादी कहती हैं। “इ या उ के बाद श्वास स्वर या कोमल ध्वनि से पहले र् बन जाता है। और अन्य स्वरों के बाद वह कभी-कभी बस लुप्त हो जाता है: सः अधिकतर व्यंजनों से पहले अपनी श्वास नहीं रखता।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "र् and gone",
+          "hi": "र् और लुप्त"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.visarga-r"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "After {{-इः}} or {{-उः}}, the visarga becomes {{र्}} before a vowel or a soft sound: {{कविः + अस्ति}} gives {{कविरस्ति}}; {{गुरुः + ददाति}} gives {{गुरुर्ददाति}}. After {{-अः}} and {{-आः}}, before a vowel other than {{अ}}, it vanishes: {{रामः + इह}} gives {{राम इह}}. {{सः}} and {{एषः}} lose it before consonants: {{स गच्छति}}.",
+          "hi": "{{-इः}} या {{-उः}} के बाद विसर्ग स्वर या कोमल ध्वनि से पहले {{र्}} बन जाता है: {{कविः + अस्ति}} से {{कविरस्ति}}; {{गुरुः + ददाति}} से {{गुरुर्ददाति}}। {{-अः}} और {{-आः}} के बाद, {{अ}} को छोड़कर किसी स्वर से पहले, वह लुप्त हो जाता है: {{रामः + इह}} से {{राम इह}}। {{सः}} और {{एषः}} व्यंजन से पहले उसे खो देते हैं: {{स गच्छति}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "र् and the vanishing breath",
+          "hi": "र् और लुप्त श्वास"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.visarga-r"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "After इ, उ; after अ, आ; and सः",
+          "hi": "इ, उ के बाद; अ, आ के बाद; और सः"
+        },
+        "columns": [
+          {
+            "en": "First word",
+            "hi": "पहला शब्द"
+          },
+          {
+            "en": "Second word",
+            "hi": "दूसरा शब्द"
+          },
+          {
+            "en": "Joined",
+            "hi": "जुड़ा हुआ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "कविः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अस्ति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "कविरस्ति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "कविः",
+                "second": "अस्ति",
+                "joined": "कविरस्ति",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "गुरुः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अपि",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गुरुरपि",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "गुरुः",
+                "second": "अपि",
+                "joined": "गुरुरपि",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "मुनिः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गच्छति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "मुनिर्गच्छति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "मुनिः",
+                "second": "गच्छति",
+                "joined": "मुनिर्गच्छति",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "कविः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "वदति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "कविर्वदति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "कविः",
+                "second": "वदति",
+                "joined": "कविर्वदति",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "गुरुः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ददाति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गुरुर्ददाति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "गुरुः",
+                "second": "ददाति",
+                "joined": "गुरुर्ददाति",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "रामः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "इह",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "राम इह",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "रामः",
+                "second": "इह",
+                "joined": "राम इह",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "रामाः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "इह",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "रामा इह",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "रामाः",
+                "second": "इह",
+                "joined": "रामा इह",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "अतः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एव",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अत एव",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "अतः",
+                "second": "एव",
+                "joined": "अत एव",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "सः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गच्छति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "स गच्छति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "सः",
+                "second": "गच्छति",
+                "joined": "स गच्छति",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "सः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "बालकः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "स बालकः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "सः",
+                "second": "बालकः",
+                "joined": "स बालकः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "एषः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "दत्तः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एष दत्तः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "एषः",
+                "second": "दत्तः",
+                "joined": "एष दत्तः",
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Only {{सः}} and {{एषः}} lose the visarga before a consonant. Other {{-अः}} words become {{-ओ}}.",
+          "hi": "केवल {{सः}} और {{एषः}} व्यंजन से पहले विसर्ग खोते हैं। अन्य {{-अः}} शब्द {{-ओ}} बनते हैं।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.visarga-r"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Split the joined word {{कविरस्ति}}.",
+          "hi": "जुड़े शब्द {{कविरस्ति}} को तोड़िए।"
+        },
+        "explain": {
+          "en": "{{कविः}} + {{अस्ति}}.",
+          "hi": "{{कविः}} + {{अस्ति}}।"
+        },
+        "options": [
+          {
+            "sa": "कविः + अस्ति",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "कवे + अस्ति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "कवी + अस्ति",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.visarga-r"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{गुरुः + अपि}} gives…",
+          "hi": "{{गुरुः + अपि}} से…"
+        },
+        "explain": {
+          "en": "After {{उः}}, {{र्}}.",
+          "hi": "{{उः}} के बाद, {{र्}}।"
+        },
+        "options": [
+          {
+            "sa": "गुरुअपि",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "गुरोऽपि",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "गुरुरपि",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.visarga-r"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Join: {{कविः}} + {{वदति}}.",
+          "hi": "जोड़िए: {{कविः}} + {{वदति}}।"
+        },
+        "explain": {
+          "en": "{{कविर्वदति}}.",
+          "hi": "{{कविर्वदति}}।"
+        },
+        "options": [],
+        "answers": [
+          "कविर्वदति"
+        ],
+        "tiles": [
+          "कविर्",
+          "वदति",
+          "कविः",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.visarga-r"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its parts.",
+          "hi": "हर शब्द को उसके भागों से जोड़िए।"
+        },
+        "explain": {
+          "en": "After {{इः}}: {{र्}}; after {{अः}}: it vanishes.",
+          "hi": "{{इः}} के बाद: {{र्}}; {{अः}} के बाद: वह लुप्त।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "कविरस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "कविः + अस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "राम इह",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "रामः + इह",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "स गच्छति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "सः + गच्छति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "अत एव",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "अतः + एव",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.visarga-r"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word where the breath has become {{र्}}.",
+          "hi": "हर वह शब्द छुइए जहाँ श्वास {{र्}} बन गया है।"
+        },
+        "params": {
+          "passage": [
+            "कविरस्ति",
+            "कविः",
+            "गुरुर्ददाति",
+            "गुरुः",
+            "मुनिर्गच्छति",
+            "मुनिः"
+          ],
+          "targets": [
+            "कविरस्ति",
+            "गुरुर्ददाति",
+            "मुनिर्गच्छति"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.visarga-r"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "sandhi_mixer",
+        "prompt": {
+          "en": "Pick a pair and join it: see the word and the rule.",
+          "hi": "एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।"
+        },
+        "params": {
+          "pairs": [
+            {
+              "first": "कविः",
+              "second": "अस्ति",
+              "joined": "कविरस्ति",
+              "sutras": [
+                "8.2.66",
+                "8.3.15"
+              ]
+            },
+            {
+              "first": "गुरुः",
+              "second": "अपि",
+              "joined": "गुरुरपि",
+              "sutras": [
+                "8.2.66",
+                "8.3.15"
+              ]
+            },
+            {
+              "first": "मुनिः",
+              "second": "गच्छति",
+              "joined": "मुनिर्गच्छति",
+              "sutras": [
+                "8.2.66",
+                "8.3.15"
+              ]
+            },
+            {
+              "first": "रामः",
+              "second": "इह",
+              "joined": "राम इह",
+              "sutras": [
+                "8.3.17",
+                "8.3.19"
+              ]
+            }
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The vanishing breath",
+          "hi": "लुप्त श्वास"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.visarga-r"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{सः + बालकः}} gives…",
+          "hi": "{{सः + बालकः}} से…"
+        },
+        "explain": {
+          "en": "{{सः}} drops its visarga before a consonant.",
+          "hi": "{{सः}} व्यंजन से पहले विसर्ग छोड़ देता है।"
+        },
+        "options": [
+          {
+            "sa": "सः बालकः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सो बालकः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "स बालकः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“स बालकः,” you say, “that boy,” and the ninth statue closes her eyes. The breath that she has carried for a thousand years leaves her all at once, not as mist but as a faint warmth, like the last of a sunset. “कविरस्ति,” she says. “The poet is. And I.” She steps down from her plinth, as a spirit of grey marble, and stands beside the other two, who are already waiting.",
+            "hi": "“स बालकः,” आप कहते हैं, “वह बालक,” और नौवीं प्रतिमा आँखें बन्द कर लेती है। जो श्वास उसने हज़ार वर्ष ढोई, वह एक साथ उससे निकल जाती है, धुंध नहीं बल्कि हल्की ऊष्मा बनकर, सूर्यास्त के अन्तिम क्षण की तरह। “कविरस्ति,” वह कहती है। “कवि है। और मैं भी।” वह अपने आसन से उतरती है, ग्रे संगमरमर का भूत बनकर, और उन दो के पास खड़ी हो जाती है जो पहले से प्रतीक्षा में हैं।"
+          },
+          "failure": {
+            "en": "She does not move. {{सः}} before a consonant drops its breath: {{स बालकः}}.",
+            "hi": "वह हिलती नहीं। व्यंजन से पहले {{सः}} श्वास छोड़ देता है: {{स बालकः}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's r and gone",
+          "hi": "पाणिनि का र् और लोप"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sandhi.visarga-r"
+        ],
+        "sutras": [
+          "8.2.66",
+          "8.3.15",
+          "8.3.17",
+          "8.3.19",
+          "6.1.132"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "The visarga is a changed {{रु}}, so after {{इ}} or {{उ}} the {{र्}} stays before a soft sound (8.2.66, 8.3.15). After {{अ}}, {{आ}}, 8.3.17, {{भोभगघपूर्वस्य योऽशि}}, makes it {{य्}} before a soft sound and 8.3.19, {{लोपः शाकल्यस्य}}, drops it. 6.1.132, {{एतत्तदोः सुलोपोऽकोरनञ्समासे हलि}}, drops the {{सु}} of {{सः}} and {{एषः}} before a consonant.",
+          "hi": "विसर्ग बदला हुआ {{रु}} है, इसलिए {{इ}} या {{उ}} के बाद {{र्}} कोमल ध्वनि से पहले रहता है (8.2.66, 8.3.15)। {{अ}}, {{आ}} के बाद 8.3.17, {{भोभगघपूर्वस्य योऽशि}}, उसे कोमल ध्वनि से पहले {{य्}} बनाता है और 8.3.19, {{लोपः शाकल्यस्य}}, उसे हटा देता है। 6.1.132, {{एतत्तदोः सुलोपोऽकोरनञ्समासे हलि}}, व्यंजन से पहले {{सः}} और {{एषः}} का {{सु}} हटा देता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "र् and gone",
+          "hi": "र् और लोप"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "कविरस्ति",
+            "text": {
+              "en": "After इः or उः: र्.",
+              "hi": "इः या उः के बाद: र्।"
+            }
+          },
+          {
+            "sa": "राम इह",
+            "text": {
+              "en": "After अः before another vowel: gone.",
+              "hi": "अः के बाद अन्य स्वर से पहले: लुप्त।"
+            }
+          },
+          {
+            "sa": "स गच्छति",
+            "text": {
+              "en": "सः loses its breath before a consonant.",
+              "hi": "सः व्यंजन से पहले श्वास खोता है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "vis-r-s1",
+    "brief": "The ninth statue with a calm, steady expression, one hand lifted as if to hold a thought; Śuka checking words on his claws; Dādī nodding; the earlier eight statues behind her in the lamplight; the first stars outside the hall.",
+    "alt": {
+      "en": "A calm statue with one hand lifted as the lamp-lit hall fills with earlier statues",
+      "hi": "शान्त प्रतिमा, एक हाथ उठाए, दीपक-प्रकाशित कक्ष में पिछली प्रतिमाएँ"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "visargika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The ninth statue with a calm, steady expression, one hand lifted as if to hold a thought; Śuka checking words on his claws; Dādī nodding; the earlier eight statues behind her in the lamplight; the first stars outside the hall.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvisargika: A small spirit of pale marble in the shape of a young woman with a finger lifted to her lips, a faint trail of breath like mist leaving her mouth.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-fc5b9a08-4c39-44a8-94af-da43debde5b5.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "da2cc503c99882533326c1e8915c38bb0bc2f3a3d18397c8e8b2c175ec03edfd",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vis-r-s1-phone-f7543d43.webp",
+      "key": "learn/vis-r-s1-phone-f7543d43.webp",
+      "sha256": "f7543d4324d6f7d17eaeaba96aaf621db5d573a99c3ca93e07af857461bb9af2",
+      "bytes": 83956,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/vis-r-s1-phone-f7543d43.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vis-r-s1-tablet-3cc4aecd.webp",
+      "key": "learn/vis-r-s1-tablet-3cc4aecd.webp",
+      "sha256": "3cc4aecd1e359e152912171fa053a8b8125c3edf6a9b404f33e0217742cec26d",
+      "bytes": 333072,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/vis-r-s1-tablet-3cc4aecd.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

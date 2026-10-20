@@ -9,7 +9,7 @@ teaches:
 - num.dual
 needs:
 - sent.nom-sg
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -285,8 +285,8 @@ cards:
   - num.dual
   mode: match
   prompt:
-    en: Join each dual to its meaning.
-    hi: हर द्विवचन को उसके अर्थ से जोड़िए।
+    en: Match each dual with its meaning.
+    hi: हर द्विवचन को उसके अर्थ से मिलाइए।
   explain:
     en: The dual ends in {{औ}} or {{ए}}, or {{औ}} after {{ई}}.
     hi: द्विवचन {{औ}} या {{ए}} पर समाप्त होता है, {{ई}} के बाद {{औ}}।

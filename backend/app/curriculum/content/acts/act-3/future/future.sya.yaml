@@ -10,7 +10,7 @@ teaches:
 needs:
 - verb.lan
 - verb.pres-3sg
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -397,8 +397,8 @@ cards:
   - verb.lrt
   mode: match
   prompt:
-    en: Join present to future.
-    hi: वर्तमान को भविष्यत् से जोड़िए।
+    en: Match each present form with its future form.
+    hi: हर वर्तमान रूप को उसके भविष्यत् रूप से मिलाइए।
   explain:
     en: The sign {{-ष्य-}} appears in each.
     hi: हर एक में चिह्न {{-ष्य-}} दिखता है।
@@ -449,8 +449,8 @@ cards:
   - verb.lrt
   widget: time_slider
   prompt:
-    en: Slide through time and watch the verb change.
-    hi: समय में खिसकाइए और देखिए कि क्रिया कैसे बदलती है।
+    en: Tap a point on the line, or use the arrows, and watch the verb change.
+    hi: रेखा पर किसी बिंदु को छूइए, या तीरों का उपयोग कीजिए, और देखिए कि क्रिया कैसे बदलती है।
   params:
     forms:
     - label:

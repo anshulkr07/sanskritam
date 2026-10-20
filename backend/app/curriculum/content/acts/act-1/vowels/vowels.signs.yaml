@@ -5,7 +5,7 @@ title_sa: "स्वरचिह्नानि"
 minutes: 7
 teaches: [script.matra]
 needs: [script.vowel.short, script.vowel.long, script.vowel.compound]
-review: engine_ok
+review: scholar_ok
 sources:
   - title: "Lesson text and story"
     licence: "original"
@@ -15,8 +15,9 @@ cards:
     title: {en: "Letters wearing marks", hi: "चिह्न पहने अक्षर"}
     image:
       id: vowels-signs-second-line
-      brief: "The glowing palm leaf: beneath the bright first line, a second line of small Devanagari words is beginning to glow, the little vowel marks above and below the letters catching the light first. The words are small and soft-focus, with no legible text. Dhūmaka trembles, pointing at one word; Dādī leans in, spectacles on."
-      alt: {en: "A second line of small words begins to glow on the leaf while the little ghost points at one word", hi: "पत्र पर छोटे शब्दों की दूसरी पंक्ति चमकने लगती है; नन्हा भूत एक शब्द की ओर इशारा करता है"}
+      text_in_image: ["अ इ उ", "ऋ ऌ", "ए ओ", "ऐ औ", "का कि की कु कू कृ के कै को कौ"]
+      brief: "The glowing palm leaf shows its established first line in four clear vowel groups, and beneath it a second clear line of Devanagari syllables with vowel signs. The marks above, below, before and after the consonants are legible and correctly placed. Dhūmaka points at the second line; Dādī leans in, spectacles on."
+      alt: {en: "The glowing leaf shows vowel groups and a clear line of syllables with vowel signs, while the little ghost points and the grandmother looks on", hi: "चमकते पत्र पर स्वर-समूह और मात्राओं वाले स्पष्ट अक्षर हैं; नन्हा भूत संकेत करता है और दादी देखती हैं।"}
       ratio: "4:3"
       cast: [dhumaka, dadi]
       place: granthalaya
@@ -68,7 +69,7 @@ cards:
     title: {en: "Build on {{क}}", hi: "{{क}} पर बनाइए"}
     skills: [script.matra]
     widget: letter_builder
-    prompt: {en: "Drag a sign onto {{क}} and read what you made. Try to make every target.", hi: "किसी मात्रा को {{क}} पर खींचिए और जो बना उसे पढ़िए। हर लक्ष्य बनाने की कोशिश कीजिए।"}
+    prompt: {en: "Pick a sign, then tap {{क}} to attach it. Read what you made, and try to make every target.", hi: "कोई मात्रा चुनिए, फिर {{क}} को छूकर उसे जोड़िए। जो बना उसे पढ़िए और हर लक्ष्य बनाइए।"}
     params:
       bases: ["क"]
       signs: ["ा", "ि", "ी", "ु", "ू", "ृ", "े", "ै", "ो", "ौ"]
@@ -116,7 +117,7 @@ cards:
     mode: match
     skills: [script.matra]
     roman: after
-    prompt: {en: "Join each sign to its vowel.", hi: "हर मात्रा को उसके स्वर से जोड़िए।"}
+    prompt: {en: "Match each sign with its vowel.", hi: "हर मात्रा को उसके स्वर से मिलाइए।"}
     pairs:
       - left: {sa: "ा"}
         right: {sa: "आ"}

@@ -10,7 +10,7 @@ teaches:
 needs:
 - read.syllables
 - read.places
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -34,6 +34,7 @@ cards:
     place: granthalaya
     ratio: '4:3'
     id: reading-iast-s1
+    text_in_image: ["ā ś ṣ ṭ ṃ ḥ"]
   narration:
     en: 'A letter arrives in the library from a friend abroad. It is written in Roman letters with little dots and bars on them: ā, ś, ṣ, ṛ. “It is called IAST,” says Dādī. “A helper, so that people who cannot read Devanagari yet can still say our words. But the leaf is read in Devanagari.”'
     hi: 'पुस्तकालय में विदेश से एक मित्र का पत्र आता है। वह रोमन अक्षरों में है, जिन पर छोटे बिन्दु और रेखाएँ हैं: ā, ś, ṣ, ṛ। दादी कहती हैं, “इसे IAST कहते हैं। यह एक सहायक है, ताकि जो अभी देवनागरी नहीं पढ़ सकते, वे भी हमारे शब्द बोल सकें। पर पत्र देवनागरी में पढ़ा जाता है।”'
@@ -170,8 +171,8 @@ cards:
   - read.iast
   mode: match
   prompt:
-    en: Join each Roman letter to its Devanagari letter.
-    hi: हर रोमन अक्षर को उसके देवनागरी अक्षर से जोड़िए।
+    en: Match each Roman letter with its Devanagari letter.
+    hi: हर रोमन अक्षर को उसके देवनागरी अक्षर से मिलाइए।
   explain:
     en: A bar means long; a dot below means retroflex; ñ and ṅ are nasals.
     hi: रेखा यानी दीर्घ; नीचे बिन्दु यानी मूर्धन्य; ñ और ṅ नासिक्य हैं।

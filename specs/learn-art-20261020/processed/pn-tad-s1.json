@@ -1,0 +1,1895 @@
+{
+  "id": "pn-tad-s1",
+  "where": "pn.tad#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The inner room of the village school library at morning: the Ācārya unlocking a carved door; high on a shelf a small grey spirit made of knotted cords and pebbles pointing at rows of books and muttering; Dādī and Śuka looking up at it; sunbeams full of dust.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nganaka: A small grey spirit made of knotted cords, with two round pebbles for eyes and a cord of beads trailing behind.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "pn.tad",
+    "template": "scene",
+    "title": {
+      "en": "That one, in every case",
+      "hi": "वह, हर विभक्ति में"
+    },
+    "title_sa": "तद्",
+    "minutes": 6,
+    "teaches": [
+      "pron.tad-full"
+    ],
+    "needs": [
+      "pron.tad",
+      "noun.deva"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The one who loses count",
+          "hi": "गिनती भूलने वाला"
+        },
+        "image": {
+          "id": "pn-tad-s1",
+          "brief": "The inner room of the village school library at morning: the Ācārya unlocking a carved door; high on a shelf a small grey spirit made of knotted cords and pebbles pointing at rows of books and muttering; Dādī and Śuka looking up at it; sunbeams full of dust.",
+          "alt": {
+            "en": "A knotted-cord spirit on a high library shelf points at rows of books while Dādī and a parrot look up",
+            "hi": "ऊँची अलमारी पर गाँठदार डोरियों का भूत पुस्तकों की ओर इशारा करता, दादी और तोता ऊपर देखते"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "acarya",
+            "ganaka"
+          ],
+          "place": "pathashala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Next morning the Ācārya unlocks the inner room of the library. High on a shelf, a knot of cords and pebbles is counting books, losing count and starting again. “That book, those books, that leaf,” it mutters, pointing at everything and naming nothing. Dādī says softly: “He needs a word for ‘that’ in every case.”",
+          "hi": "अगली सुबह आचार्य पुस्तकालय का भीतरी कक्ष खोलते हैं। ऊँची अलमारी पर डोरियों और कंकड़ों की एक गाँठ पुस्तकें गिन रही है, गिनती भूल रही है, फिर शुरू कर रही है। “वह पुस्तक, वे पुस्तकें, वह पत्र,” वह बुदबुदाता है, हर चीज़ की ओर इशारा करता और किसी का नाम न लेता। दादी धीमे से कहती हैं: “उसे ‘वह’ के लिए हर विभक्ति में शब्द चाहिए।”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "तत्, तानि, तस्य, तस्मै।",
+            "gloss": {
+              "en": "That, those, of that, for that.",
+              "hi": "वह, वे, उसका, उसके लिए।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "{{सः}} has more than it shows",
+          "hi": "{{सः}} के और भी रूप हैं"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad-full"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Only the first-case forms {{सः}} and {{सा}} show an {{स्}}; everything else starts with {{त्}}. Pronouns also borrow odd endings: for a masculine or neuter, {{तस्मै}} (for), {{तस्मात्}} (from) and {{तस्मिन्}} (in); for a feminine, {{तस्यै}}, {{तस्याः}} and {{तस्याम्}}. The plural genitive is {{तेषाम्}} and {{तासाम्}}.",
+          "hi": "केवल प्रथमा के रूप {{सः}} और {{सा}} में {{स्}} दिखता है; बाक़ी सब {{त्}} से शुरू होते हैं। सर्वनाम कुछ विचित्र प्रत्यय भी लेते हैं: पुंलिंग और नपुंसक में {{तस्मै}} (के लिए), {{तस्मात्}} (से) और {{तस्मिन्}} (में); स्त्रीलिंग में {{तस्यै}}, {{तस्याः}} और {{तस्याम्}}। षष्ठी बहुवचन {{तेषाम्}} और {{तासाम्}} है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "सर्वनाम",
+          "meaning": {
+            "en": "a word that stands for a noun",
+            "hi": "संज्ञा की जगह आने वाला शब्द"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "तद् masculine",
+          "hi": "तद् पुंलिंग"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad-full"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“That”, masculine, in every case",
+          "hi": "‘वह’, पुंलिंग, हर विभक्ति में"
+        },
+        "columns": [
+          {
+            "en": "Case",
+            "hi": "विभक्ति"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "1 · 1st (doer)",
+                "hi": "1 · प्रथमा"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तौ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ते",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "2 · 2nd (object)",
+                "hi": "2 · द्वितीया"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तौ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Dvitiya",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तान्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Dvitiya",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "3 · 3rd (by, with)",
+                "hi": "3 · तृतीया"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तेन",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Trtiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ताभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Trtiya",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तैः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Trtiya",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "4 · 4th (to, for)",
+                "hi": "4 · चतुर्थी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तस्मै",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Caturthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ताभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Caturthi",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तेभ्यः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Caturthi",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "5 · 5th (from)",
+                "hi": "5 · पञ्चमी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तस्मात्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Panchami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ताभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Panchami",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तेभ्यः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Panchami",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "6 · 6th (of)",
+                "hi": "6 · षष्ठी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तस्य",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तयोः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Sasthi",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तेषाम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Sasthi",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "7 · 7th (in, at)",
+                "hi": "7 · सप्तमी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तस्मिन्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तयोः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तेषु",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "The coloured forms are the odd ones: {{तस्मै}}, {{तस्मात्}}, {{तस्मिन्}}, {{तेषाम्}}. The neuter is the same except {{तत्}}, {{ते}}, {{तानि}} in the first and second cases.",
+          "hi": "रंगीन रूप विचित्र हैं: {{तस्मै}}, {{तस्मात्}}, {{तस्मिन्}}, {{तेषाम्}}। नपुंसक वैसा ही है, केवल प्रथमा और द्वितीया में {{तत्}}, {{ते}}, {{तानि}}।"
+        }
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "तद् feminine",
+          "hi": "तद् स्त्रीलिंग"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad-full"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“That”, feminine, in every case",
+          "hi": "‘वह’, स्त्रीलिंग, हर विभक्ति में"
+        },
+        "columns": [
+          {
+            "en": "Case",
+            "hi": "विभक्ति"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "1 · 1st (doer)",
+                "hi": "1 · प्रथमा"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सा",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ते",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ताः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "2 · 2nd (object)",
+                "hi": "2 · द्वितीया"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ताम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ते",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Dvitiya",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ताः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Dvitiya",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "3 · 3rd (by, with)",
+                "hi": "3 · तृतीया"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तया",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Trtiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ताभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Trtiya",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ताभिः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Trtiya",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "4 · 4th (to, for)",
+                "hi": "4 · चतुर्थी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तस्यै",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Caturthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ताभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Caturthi",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ताभ्यः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Caturthi",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "5 · 5th (from)",
+                "hi": "5 · पञ्चमी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तस्याः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Panchami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ताभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Panchami",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ताभ्यः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Panchami",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "6 · 6th (of)",
+                "hi": "6 · षष्ठी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तस्याः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तयोः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Sasthi",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तासाम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Sasthi",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "7 · 7th (in, at)",
+                "hi": "7 · सप्तमी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तस्याम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तयोः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Saptami",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "तासु",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "तद्",
+                "linga": "Stri",
+                "vibhakti": "Saptami",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Four singular forms end in {{स्याः}} or {{स्यै}} or {{स्याम्}}; the others are like {{लता}}.",
+          "hi": "एकवचन के चार रूप {{स्याः}}, {{स्यै}} या {{स्याम्}} पर समाप्त होते हैं; बाक़ी {{लता}} जैसे हैं।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad-full"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Fill in the missing forms of that table.",
+          "hi": "उस तालिका के छूटे रूप भरिए।"
+        },
+        "explain": {
+          "en": "Every form is in the masculine table above.",
+          "hi": "हर रूप ऊपर की पुंलिंग तालिका में है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "grid_fill",
+          "params": {
+            "pratipadika": "तद्",
+            "linga": "Pum",
+            "blanks": 3
+          },
+          "seed": 0
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad-full"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Fill in the missing forms of the feminine.",
+          "hi": "स्त्रीलिंग के छूटे रूप भरिए।"
+        },
+        "explain": {
+          "en": "Look for {{स्यै}}, {{स्याः}}, {{स्याम्}} in the singular.",
+          "hi": "एकवचन में {{स्यै}}, {{स्याः}}, {{स्याम्}} देखिए।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "grid_fill",
+          "params": {
+            "pratipadika": "तद्",
+            "linga": "Stri",
+            "blanks": 3
+          },
+          "seed": 1
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad-full"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“For her.” Which form?",
+          "hi": "‘उसके लिए’ (स्त्री)। कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{तस्यै}}: the fourth case, feminine.",
+          "hi": "{{तस्यै}}: चतुर्थी, स्त्रीलिंग।"
+        },
+        "options": [
+          {
+            "sa": "तस्मै",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "तस्यै",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "तया",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad-full"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each form to its meaning.",
+          "hi": "हर रूप को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{तस्मै}}, {{तस्मात्}}, {{तस्य}}, {{तस्मिन्}}: the masculine singular.",
+          "hi": "{{तस्मै}}, {{तस्मात्}}, {{तस्य}}, {{तस्मिन्}}: पुंलिंग एकवचन।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "तस्मै",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "for him",
+                "hi": "उसके लिए"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "तस्मात्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "from him",
+                "hi": "उससे"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "तस्य",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "of him",
+                "hi": "उसका"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "तस्मिन्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "in him",
+                "hi": "उसमें"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad-full"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every form of “that” in the feminine.",
+          "hi": "स्त्रीलिंग ‘वह’ का हर रूप छुइए।"
+        },
+        "params": {
+          "passage": [
+            "सा",
+            "ताम्",
+            "तेन",
+            "तया",
+            "तस्मै",
+            "तस्याः"
+          ],
+          "targets": [
+            "सा",
+            "ताम्",
+            "तया",
+            "तस्याः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "Of those",
+          "hi": "उनका"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.tad-full"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“Of those (women).” Which form?",
+          "hi": "‘उन (स्त्रियों) का।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{तासाम्}}: the sixth case plural, feminine.",
+          "hi": "{{तासाम्}}: षष्ठी बहुवचन, स्त्रीलिंग।"
+        },
+        "options": [
+          {
+            "sa": "तेषाम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "तयोः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "तासाम्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“तासाम्,” you say, and the knot of cords loosens a little. It points at the shelf of poetry and at last names it: “तासाम् कवितानाम्…” Dādī nods. “Now he can count what is not in front of him.”",
+            "hi": "“तासाम्,” आप कहते हैं, और डोरियों की गाँठ कुछ ढीली पड़ती है। वह कविता की अलमारी की ओर इशारा करता है और अन्ततः उसका नाम लेता है। दादी सिर हिलाती हैं। “अब वह उसे भी गिन सकता है जो सामने नहीं।”"
+          },
+          "failure": {
+            "en": "The cords stay knotted. “Of those”, feminine plural: {{तासाम्}}.",
+            "hi": "डोरियाँ गठी रहती हैं। ‘उनका’, स्त्रीलिंग बहुवचन: {{तासाम्}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's pronoun rules",
+          "hi": "पाणिनि के सर्वनाम-नियम"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "pron.tad-full"
+        ],
+        "sutras": [
+          "7.2.102",
+          "7.2.106",
+          "7.1.14",
+          "7.1.15",
+          "7.1.17",
+          "7.1.52"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 7.2.102, {{त्यदादीनामः}}, makes the stem {{तद्}} end in {{अ}}; 7.2.106, {{तदोः सः सावनन्त्ययोः}}, turns its {{त्}} into {{स्}} before the first-case ending, giving {{सः}}. Then 7.1.14, {{सर्वनाम्नः स्मै}}, gives {{तस्मै}}; 7.1.15, {{ङसिङ्योः स्मात्स्मिनौ}}, gives {{तस्मात्}} and {{तस्मिन्}}; 7.1.17, {{जसः शी}}, gives {{ते}}; and 7.1.52, {{आमि सर्वनाम्नः सुट्}}, gives {{तेषाम्}}.",
+          "hi": "सूत्र 7.2.102, {{त्यदादीनामः}}, {{तद्}} को {{अ}}-अन्त बनाता है; 7.2.106, {{तदोः सः सावनन्त्ययोः}}, प्रथमा के प्रत्यय से पहले उसके {{त्}} को {{स्}} कर देता है, जिससे {{सः}} बनता है। फिर 7.1.14, {{सर्वनाम्नः स्मै}}, {{तस्मै}} देता है; 7.1.15, {{ङसिङ्योः स्मात्स्मिनौ}}, {{तस्मात्}} और {{तस्मिन्}} देता है; 7.1.17, {{जसः शी}}, {{ते}} देता है; और 7.1.52, {{आमि सर्वनाम्नः सुट्}}, {{तेषाम्}} देता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "That one in every case",
+          "hi": "वह हर विभक्ति में"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "तस्मै · तस्मात् · तस्मिन्",
+            "text": {
+              "en": "The odd masculine and neuter endings.",
+              "hi": "पुंलिंग और नपुंसक के विचित्र प्रत्यय।"
+            }
+          },
+          {
+            "sa": "तस्यै · तस्याः · तस्याम्",
+            "text": {
+              "en": "The odd feminine endings.",
+              "hi": "स्त्रीलिंग के विचित्र प्रत्यय।"
+            }
+          },
+          {
+            "sa": "तेषाम् · तासाम्",
+            "text": {
+              "en": "“Of those”, masculine and feminine.",
+              "hi": "‘उनका’, पुंलिंग और स्त्रीलिंग।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "pn-tad-s1",
+    "brief": "The inner room of the village school library at morning: the Ācārya unlocking a carved door; high on a shelf a small grey spirit made of knotted cords and pebbles pointing at rows of books and muttering; Dādī and Śuka looking up at it; sunbeams full of dust.",
+    "alt": {
+      "en": "A knotted-cord spirit on a high library shelf points at rows of books while Dādī and a parrot look up",
+      "hi": "ऊँची अलमारी पर गाँठदार डोरियों का भूत पुस्तकों की ओर इशारा करता, दादी और तोता ऊपर देखते"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "acarya",
+      "ganaka"
+    ],
+    "place": "pathashala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The inner room of the village school library at morning: the Ācārya unlocking a carved door; high on a shelf a small grey spirit made of knotted cords and pebbles pointing at rows of books and muttering; Dādī and Śuka looking up at it; sunbeams full of dust.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nganaka: A small grey spirit made of knotted cords, with two round pebbles for eyes and a cord of beads trailing behind.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-f303c248-e8c9-41a8-935e-82e8e2eb3bb8.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "f90d518bfddc266bccfb313367d33f1d1bdbc13099e21ea9f1b7d3f4b3ab7ffc",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\pn-tad-s1-phone-011dcbf2.webp",
+      "key": "learn/pn-tad-s1-phone-011dcbf2.webp",
+      "sha256": "011dcbf2054fc48beae87bf5fe8faa8524a9a80ac975587fbbc5d3be028b68af",
+      "bytes": 97622,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/pn-tad-s1-phone-011dcbf2.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\pn-tad-s1-tablet-10407998.webp",
+      "key": "learn/pn-tad-s1-tablet-10407998.webp",
+      "sha256": "1040799809d724cc4b9f13989f3054f3b15b50a36ca3f6150579a37d13cfabd0",
+      "bytes": 382286,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/pn-tad-s1-tablet-10407998.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

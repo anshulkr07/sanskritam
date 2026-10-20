@@ -9,7 +9,7 @@ teaches:
 - sent.agree-number
 needs:
 - verb.pres-3-du-pl
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -33,6 +33,7 @@ cards:
     place: naditira
     ratio: '4:3'
     id: num-agree-s1
+    text_in_image: ["बालकः पठति।", "बालकौ पठतः।", "बालकाः पठन्ति।"]
   narration:
     en: 'The spirit builds sentences. One boy reads: बालकः पठति. Two boys read together. Many boys read together. The verb must match its doer in number. Śuka gets it wrong on purpose, and the spirit shakes his head like a wet dog.'
     hi: 'भूत वाक्य बनाता है। एक बालक पढ़ता है: बालकः पठति। दो बालक साथ पढ़ते हैं। अनेक बालक साथ पढ़ते हैं। क्रिया को अपने कर्ता की संख्या से मेल खाना चाहिए। शुक जान-बूझकर ग़लत बोलता है, और भूत गीले कुत्ते की तरह सिर हिलाता है।'
@@ -233,8 +234,8 @@ cards:
   - sent.agree-number
   mode: match
   prompt:
-    en: Join each doer to its verb.
-    hi: हर कर्ता को उसकी क्रिया से जोड़िए।
+    en: Match each doer with its verb.
+    hi: हर कर्ता को उसकी क्रिया से मिलाइए।
   explain:
     en: The verb matches its doer's number.
     hi: क्रिया कर्ता की संख्या से मेल खाती है।

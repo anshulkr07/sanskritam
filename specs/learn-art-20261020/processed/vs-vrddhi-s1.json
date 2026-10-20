@@ -1,0 +1,884 @@
+{
+  "id": "vs-vrddhi-s1",
+  "where": "vs.vrddhi#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The third statue holding a small drum, her fingers poised to tap; the first two statues beside her; Śuka squinting up at her; Lubdhaka's foreman wiping his brow; morning light.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsvarika: A small spirit of cool grey stone in the shape of a young woman holding a lotus, with a fine crack down one cheek and eyes of pale gold.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "vs.vrddhi",
+    "template": "scene",
+    "title": {
+      "en": "When अ meets ए or ओ",
+      "hi": "जब अ ए या ओ से मिले"
+    },
+    "title_sa": "सदैव",
+    "minutes": 6,
+    "teaches": [
+      "sandhi.vrddhi"
+    ],
+    "needs": [
+      "sandhi.guna"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The third statue",
+          "hi": "तीसरी प्रतिमा"
+        },
+        "image": {
+          "id": "vs-vrddhi-s1",
+          "brief": "The third statue holding a small drum, her fingers poised to tap; the first two statues beside her; Śuka squinting up at her; Lubdhaka's foreman wiping his brow; morning light.",
+          "alt": {
+            "en": "A stone statue with a small drum poised to tap while a parrot squints up",
+            "hi": "छोटा ढोल थामे पत्थर की प्रतिमा, ऊपर देखता तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "svarika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The third statue holds a small drum. “सदैव,” she says: “always.” “तथैव”: “just so.” “जलौघः”: “a flood of water.” Śuka squints. “Those have an ऐ and an औ in the middle. Where did they come from?” “From a vowel that grew twice,” says Dādī. “अ meeting ए or ओ does not just strengthen: it grows to the top.”",
+          "hi": "तीसरी प्रतिमा के हाथ में छोटा ढोल है। “सदैव,” वह कहती है: “हमेशा।” “तथैव”: “वैसे ही।” “जलौघः”: “जल की बाढ़।” शुक आँखें सिकोड़ता है। “इनके बीच में ऐ और औ हैं। ये कहाँ से आए?” “एक ऐसे स्वर से जो दो बार बढ़ा,” दादी कहती हैं। “अ का ए या ओ से मिलना केवल बलवान् करना नहीं है: वह चरम तक बढ़ जाता है।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "कात्यायनो जगादैनमुपविष्टः क्षणान्तरे",
+          "gloss": {
+            "en": "Kātyāyana, sitting down, said to him a moment later.",
+            "hi": "बैठकर कात्यायन ने क्षण भर बाद उससे कहा।"
+          },
+          "source": "Kathāsaritsāgara 1.2 (read in the Digital Corpus of Sanskrit); jagādainam is jagāda + enam"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Growing to the top",
+          "hi": "चरम तक बढ़ना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.vrddhi"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "When {{अ}} or {{आ}} meets {{ए}} or {{ऐ}}, the result is {{ऐ}}; when it meets {{ओ}} or {{औ}}, it is {{औ}}. {{सदा + एव}} gives {{सदैव}}; {{जल + ओघः}} gives {{जलौघः}}. This is {{वृद्धिः}}, the strongest grade.",
+          "hi": "जब {{अ}} या {{आ}}, {{ए}} या {{ऐ}} से मिलते हैं तो {{ऐ}} बनता है; {{ओ}} या {{औ}} से {{औ}}। {{सदा + एव}} से {{सदैव}}; {{जल + ओघः}} से {{जलौघः}}। यह {{वृद्धिः}} है, सबसे प्रबल दर्जा।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "वृद्धिः",
+          "meaning": {
+            "en": "growth: आ, ऐ, औ",
+            "hi": "वृद्धि: आ, ऐ, औ"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Vṛddhi",
+          "hi": "वृद्धि"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.vrddhi"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "अ meets ए or ओ",
+          "hi": "अ का ए या ओ से मिलना"
+        },
+        "columns": [
+          {
+            "en": "First word",
+            "hi": "पहला शब्द"
+          },
+          {
+            "en": "Second word",
+            "hi": "दूसरा शब्द"
+          },
+          {
+            "en": "Joined",
+            "hi": "जुड़ा हुआ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "एक",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एकम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एकैकम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "एक",
+                "second": "एकम्",
+                "joined": "एकैकम्",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "सदा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एव",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सदैव",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "सदा",
+                "second": "एव",
+                "joined": "सदैव",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "तथा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एव",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तथैव",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "तथा",
+                "second": "एव",
+                "joined": "तथैव",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "महा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ऐश्वर्यम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "महैश्वर्यम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "महा",
+                "second": "ऐश्वर्यम्",
+                "joined": "महैश्वर्यम्",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "जल",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ओघः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "जलौघः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "जल",
+                "second": "ओघः",
+                "joined": "जलौघः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "वन",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "औषधिः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "वनौषधिः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "वन",
+                "second": "औषधिः",
+                "joined": "वनौषधिः",
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{अ}} + {{ए}} = {{ऐ}}; {{अ}} + {{ओ}} = {{औ}}.",
+          "hi": "{{अ}} + {{ए}} = {{ऐ}}; {{अ}} + {{ओ}} = {{औ}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.vrddhi"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Split the joined word {{सदैव}}.",
+          "hi": "जुड़े शब्द {{सदैव}} को तोड़िए।"
+        },
+        "explain": {
+          "en": "{{सदा}} + {{एव}}.",
+          "hi": "{{सदा}} + {{एव}}।"
+        },
+        "options": [
+          {
+            "sa": "सदा + एव",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "सदे + एव",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सदि + एव",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.vrddhi"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{तथा + एव}} gives…",
+          "hi": "{{तथा + एव}} से…"
+        },
+        "explain": {
+          "en": "{{आ}} + {{ए}} = {{ऐ}}.",
+          "hi": "{{आ}} + {{ए}} = {{ऐ}}।"
+        },
+        "options": [
+          {
+            "sa": "तथेव",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "तथोव",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "तथैव",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.vrddhi"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Join: {{जल}} + {{ओघः}}.",
+          "hi": "जोड़िए: {{जल}} + {{ओघः}}।"
+        },
+        "explain": {
+          "en": "{{जलौघः}}: a flood.",
+          "hi": "{{जलौघः}}: बाढ़।"
+        },
+        "options": [],
+        "answers": [
+          "जलौघः"
+        ],
+        "tiles": [
+          "जलौ",
+          "घः",
+          "ओघः",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.vrddhi"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its parts.",
+          "hi": "हर शब्द को उसके भागों से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{ऐ}} and {{औ}} show vṛddhi.",
+          "hi": "{{ऐ}} और {{औ}} वृद्धि दिखाते हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "सदैव",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "सदा + एव",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "एकैकम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "एक + एकम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "वनौषधिः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "वन + औषधिः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "महैश्वर्यम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "महा + ऐश्वर्यम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.vrddhi"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word with vṛddhi ({{ऐ}} or {{औ}} made by joining).",
+          "hi": "वृद्धि वाला हर शब्द छुइए (जुड़ने से बना {{ऐ}} या {{औ}})।"
+        },
+        "params": {
+          "passage": [
+            "सदैव",
+            "गणेशः",
+            "जलौघः",
+            "महोत्सवः",
+            "वनौषधिः",
+            "सूक्तम्"
+          ],
+          "targets": [
+            "सदैव",
+            "जलौघः",
+            "वनौषधिः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.vrddhi"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "sandhi_mixer",
+        "prompt": {
+          "en": "Pick a pair and join it: see the word and the rule.",
+          "hi": "एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।"
+        },
+        "params": {
+          "pairs": [
+            {
+              "first": "सदा",
+              "second": "एव",
+              "joined": "सदैव",
+              "sutras": [
+                "6.1.88"
+              ]
+            },
+            {
+              "first": "जल",
+              "second": "ओघः",
+              "joined": "जलौघः",
+              "sutras": [
+                "6.1.88"
+              ]
+            },
+            {
+              "first": "वन",
+              "second": "औषधिः",
+              "joined": "वनौषधिः",
+              "sutras": [
+                "6.1.88"
+              ]
+            },
+            {
+              "first": "महा",
+              "second": "ऐश्वर्यम्",
+              "joined": "महैश्वर्यम्",
+              "sutras": [
+                "6.1.88"
+              ]
+            }
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The drum",
+          "hi": "ढोल"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.vrddhi"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{वन + औषधिः}} gives…",
+          "hi": "{{वन + औषधिः}} से…"
+        },
+        "explain": {
+          "en": "{{अ}} + {{औ}} = {{औ}}.",
+          "hi": "{{अ}} + {{औ}} = {{औ}}।"
+        },
+        "options": [
+          {
+            "sa": "वनोषधिः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "वनाओषधिः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "वनौषधिः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“वनौषधिः,” you say, and the drum statue taps, once. The note is dry and bright, like a branch breaking in frost. “Forest herbs,” she says, and taps again. “जलौघः, a flood. सदैव, always.” Lubdhaka's foreman has stopped writing. He is staring at a wall of statues that are all, quietly, speaking.",
+            "hi": "“वनौषधिः,” आप कहते हैं, और ढोल वाली प्रतिमा एक बार थाप देती है। ध्वनि सूखी और उजली है, पाले में टूटती डाल की तरह। “वन की औषधियाँ,” वह कहती है, और फिर थाप देती है। “जलौघः, बाढ़। सदैव, हमेशा।” लुब्धक का मुखिया लिखना बन्द कर चुका है। वह प्रतिमाओं की उस दीवार को घूर रहा है जो सब चुपचाप बोल रही हैं।"
+          },
+          "failure": {
+            "en": "The drum stays silent. {{अ}} + {{औ}} = {{औ}}: {{वनौषधिः}}.",
+            "hi": "ढोल चुप रहता है। {{अ}} + {{औ}} = {{औ}}: {{वनौषधिः}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's growth",
+          "hi": "पाणिनि की वृद्धि"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sandhi.vrddhi"
+        ],
+        "sutras": [
+          "6.1.88",
+          "1.1.1"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 6.1.88, {{वृद्धिरेचि}}, says that when {{अ}} or {{आ}} meets an {{एच्}} vowel ({{ए}}, {{ओ}}, {{ऐ}}, {{औ}}) the result is vṛddhi. 1.1.1, {{वृद्धिरादैच्}}, names {{आ}}, {{ऐ}}, {{औ}} vṛddhi. So {{अ + ए}} gives {{ऐ}} and {{अ + ओ}} gives {{औ}}.",
+          "hi": "सूत्र 6.1.88, {{वृद्धिरेचि}}, कहता है कि जब {{अ}} या {{आ}} {{एच्}} स्वर ({{ए}}, {{ओ}}, {{ऐ}}, {{औ}}) से मिलते हैं तो वृद्धि होती है। 1.1.1, {{वृद्धिरादैच्}}, {{आ}}, {{ऐ}}, {{औ}} को वृद्धि कहता है। इसलिए {{अ + ए}} से {{ऐ}} और {{अ + ओ}} से {{औ}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Vṛddhi",
+          "hi": "वृद्धि"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "अ + ए = ऐ",
+            "text": {
+              "en": "सदैव, तथैव.",
+              "hi": "सदैव, तथैव।"
+            }
+          },
+          {
+            "sa": "अ + ओ = औ",
+            "text": {
+              "en": "जलौघः, वनौषधिः.",
+              "hi": "जलौघः, वनौषधिः।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "The vowel grows to the top.",
+              "hi": "स्वर चरम तक बढ़ता है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "vs-vrddhi-s1",
+    "brief": "The third statue holding a small drum, her fingers poised to tap; the first two statues beside her; Śuka squinting up at her; Lubdhaka's foreman wiping his brow; morning light.",
+    "alt": {
+      "en": "A stone statue with a small drum poised to tap while a parrot squints up",
+      "hi": "छोटा ढोल थामे पत्थर की प्रतिमा, ऊपर देखता तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "svarika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The third statue holding a small drum, her fingers poised to tap; the first two statues beside her; Śuka squinting up at her; Lubdhaka's foreman wiping his brow; morning light.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsvarika: A small spirit of cool grey stone in the shape of a young woman holding a lotus, with a fine crack down one cheek and eyes of pale gold.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-dd674c52-6238-4b29-bed9-19e2d341b12e.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "876dae06cff7a5260d67d372ef437689ae4f62c732510f3bb4236ddc84e30a4c",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vs-vrddhi-s1-phone-d0ac9f5d.webp",
+      "key": "learn/vs-vrddhi-s1-phone-d0ac9f5d.webp",
+      "sha256": "d0ac9f5db3c8c14b430d5d361a5f4acddba2d1430f023e4f2836609d791590b5",
+      "bytes": 120412,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/vs-vrddhi-s1-phone-d0ac9f5d.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vs-vrddhi-s1-tablet-effe40ce.webp",
+      "key": "learn/vs-vrddhi-s1-tablet-effe40ce.webp",
+      "sha256": "effe40cee86c8886fd1431dd1deded890eb7e8dcb1c35fe51afbd99d7cddca31",
+      "bytes": 474906,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/vs-vrddhi-s1-tablet-effe40ce.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

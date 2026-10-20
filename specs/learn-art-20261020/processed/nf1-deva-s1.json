@@ -1,0 +1,1464 @@
+{
+  "id": "nf1-deva-s1",
+  "where": "nf1.deva#s1",
+  "ratio": "4:3",
+  "expected": [
+    "देवः",
+    "देवौ",
+    "देवाः"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The school library: tall shelves of palm-leaf bundles tied with coloured threads, a low reading desk with Dādī's open notebook; beside the desk a small tree of green mist hung with tiny leaf-shaped name tags, standing up; you and Śuka looking on.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nvrikshaka: A small tree-shaped spirit of green mist with tiny palm-leaf tags hanging from its branches like names.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nदेवः\nदेवौ\nदेवाः\nMake exactly THREE large foreground name tags, each bearing one approved form, clearly readable. Other foliage is natural leaves, not additional blank tags. Keep all three labelled tags unobscured. All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "nf1.deva",
+    "template": "scene",
+    "title": {
+      "en": "The देव family",
+      "hi": "देव का कुल"
+    },
+    "title_sa": "देवशब्दः",
+    "minutes": 6,
+    "teaches": [
+      "noun.deva"
+    ],
+    "needs": [
+      "case.overview"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The school's library",
+          "hi": "पाठशाला का पुस्तकालय"
+        },
+        "image": {
+          "id": "nf1-deva-s1",
+          "brief": "The school library: tall shelves of palm-leaf bundles tied with coloured threads, a low reading desk with Dādī's open notebook; beside the desk a small tree of green mist hung with tiny leaf-shaped name tags, standing up; you and Śuka looking on.",
+          "alt": {
+            "en": "A library with a small tree of green mist hung with name-tags standing beside a desk",
+            "hi": "नाम-पत्तों वाला हरे धुंध का नन्हा पेड़ पुस्तकालय में मेज़ के पास"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "acarya",
+            "vrikshaka"
+          ],
+          "place": "pathashala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "In the Ācārya's library, shelves of palm-leaf bundles rise to the rafters, each tied with a coloured thread. Dādī lays her notebook open on the low desk. “Here is a secret,” she says. “Words come in families. Once you know one member, you know thousands.” Beside the desk a small tree of green mist stands up, hung with tiny leaf-tags: names, all waiting.",
+          "hi": "आचार्य के पुस्तकालय में ताड़पत्रों के गट्ठर कड़ियों तक ऊँचे रखे हैं, हर एक रंगीन धागे से बँधा। दादी अपनी कॉपी नीची मेज़ पर खोलती हैं। “एक रहस्य सुनो,” वे कहती हैं। “शब्द कुलों में आते हैं। एक सदस्य जान लिया, तो हज़ारों जान लिए।” मेज़ के पास हरे धुंध का एक नन्हा पेड़ खड़ा हो जाता है, जिस पर छोटे पत्ते-टैग टँगे हैं: नाम, सब प्रतीक्षा में।"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "पुस्तकालये शब्दरूपाणि सन्ति।",
+            "gloss": {
+              "en": "In the library there are word-forms.",
+              "hi": "पुस्तकालय में शब्दरूप हैं।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "One word, twenty-four forms",
+          "hi": "एक शब्द, चौबीस रूप"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.deva"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A word like {{देव}} has eight cases in three numbers: twenty-four forms. This table is the pattern of thousands of masculine words ending in -{{अ}}. Learn it once.",
+          "hi": "{{देव}} जैसे शब्द की आठ विभक्तियाँ तीन वचनों में होती हैं: चौबीस रूप। यह तालिका -{{अ}} पर समाप्त होने वाले हज़ारों पुंलिंग शब्दों का ढाँचा है। इसे एक बार सीख लीजिए।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "शब्दरूपम्",
+          "meaning": {
+            "en": "the table of a word's forms",
+            "hi": "शब्द के रूपों की तालिका"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "देव: the full table",
+          "hi": "देव: पूरी तालिका"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.deva"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "A god, in every case and number",
+          "hi": "देवता, हर विभक्ति और वचन में"
+        },
+        "columns": [
+          {
+            "en": "Case",
+            "hi": "विभक्ति"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "1 · 1st (doer)",
+                "hi": "1 · प्रथमा"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "देवः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवौ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवाः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "2 · 2nd (object)",
+                "hi": "2 · द्वितीया"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "देवम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवौ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Dvitiya",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवान्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Dvitiya",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "3 · 3rd (by, with)",
+                "hi": "3 · तृतीया"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "देवेन",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Trtiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवाभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Trtiya",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवैः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Trtiya",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "4 · 4th (to, for)",
+                "hi": "4 · चतुर्थी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "देवाय",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Caturthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवाभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Caturthi",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवेभ्यः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Caturthi",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "5 · 5th (from)",
+                "hi": "5 · पञ्चमी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "देवात्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Panchami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवाभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Panchami",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवेभ्यः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Panchami",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "6 · 6th (of)",
+                "hi": "6 · षष्ठी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "देवस्य",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवयोः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Sasthi",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवानाम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Sasthi",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "7 · 7th (in, at)",
+                "hi": "7 · सप्तमी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "देवे",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवयोः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवेषु",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "8 · calling",
+                "hi": "8 · सम्बोधन"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "देव",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Sambodhana",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवौ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Sambodhana",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "देवाः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "देव",
+                "linga": "Pum",
+                "vibhakti": "Sambodhana",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Watch the repeats: the dual has three forms for eight cells, and {{देवेभ्यः}} serves two cases.",
+          "hi": "दोहराव देखिए: द्विवचन में आठ खानों के लिए तीन रूप हैं, और {{देवेभ्यः}} दो विभक्तियों का काम करता है।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Other members of the family",
+          "hi": "कुल के अन्य सदस्य"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.deva"
+        ],
+        "sutras": [
+          "7.1.9"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Every masculine word in -{{अ}} follows {{देव}}: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}. Change the stem, keep the endings.",
+          "hi": "-{{अ}} वाला हर पुंलिंग शब्द {{देव}} जैसा चलता है: {{बालक}}, {{वृक्ष}}, {{नाविक}}, {{राम}}, {{ग्राम}}, {{शुक}}। मूल बदलिए, प्रत्यय वही रखिए।"
+        },
+        "examples": [
+          {
+            "sa": "रामाः",
+            "meaning": {
+              "en": "Rāmas (plural)",
+              "hi": "राम (अनेक)"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "राम",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Bahu",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "वृक्षैः",
+            "meaning": {
+              "en": "by trees",
+              "hi": "पेड़ों द्वारा"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "वृक्ष",
+              "linga": "Pum",
+              "vibhakti": "Trtiya",
+              "vacana": "Bahu",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "शुकयोः",
+            "meaning": {
+              "en": "of two parrots",
+              "hi": "दो तोतों का"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "शुक",
+              "linga": "Pum",
+              "vibhakti": "Sasthi",
+              "vacana": "Dvi",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "ग्रामेषु",
+            "meaning": {
+              "en": "in villages",
+              "hi": "गाँवों में"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "ग्राम",
+              "linga": "Pum",
+              "vibhakti": "Saptami",
+              "vacana": "Bahu",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.deva"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Fill in the missing forms of the table.",
+          "hi": "तालिका के छूटे रूप भरिए।"
+        },
+        "explain": {
+          "en": "Every form is in the table you just read.",
+          "hi": "हर रूप उसी तालिका में है जो अभी पढ़ी।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "grid_fill",
+          "params": {
+            "pratipadika": "देव",
+            "linga": "Pum",
+            "blanks": 3
+          },
+          "seed": 0
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.deva"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Fill in the missing forms of a family member.",
+          "hi": "कुल के एक सदस्य के छूटे रूप भरिए।"
+        },
+        "explain": {
+          "en": "{{बालक}} takes the same endings as {{देव}}.",
+          "hi": "{{बालक}} वही प्रत्यय लेता है जो {{देव}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "grid_fill",
+          "params": {
+            "pratipadika": "बालक",
+            "linga": "Pum",
+            "blanks": 3
+          },
+          "seed": 1
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.deva"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which is the plural of {{वृक्षः}} in the third case, “by trees”?",
+          "hi": "{{वृक्षः}} का तृतीया बहुवचन, ‘पेड़ों से’, कौन-सा है?"
+        },
+        "explain": {
+          "en": "Third case plural: {{ऐः}}.",
+          "hi": "तृतीया बहुवचन: {{ऐः}}।"
+        },
+        "options": [
+          {
+            "sa": "वृक्षेण",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "वृक्षाभ्याम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "वृक्षैः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.deva"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each form to its case and number.",
+          "hi": "हर रूप को उसकी विभक्ति और वचन से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{म्}}, {{एन}}, {{आय}}, {{स्य}}.",
+          "hi": "{{म्}}, {{एन}}, {{आय}}, {{स्य}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "देवम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "2nd, one",
+                "hi": "द्वितीया, एक"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "देवेन",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "3rd, one",
+                "hi": "तृतीया, एक"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "देवाय",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "4th, one",
+                "hi": "चतुर्थी, एक"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "देवस्य",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "6th, one",
+                "hi": "षष्ठी, एक"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.deva"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "form_explorer",
+        "prompt": {
+          "en": "Switch the word and the case, and watch the ending change.",
+          "hi": "शब्द और विभक्ति बदलिए और देखिए कि प्रत्यय कैसे बदलता है।"
+        },
+        "params": {
+          "stems": [
+            {
+              "stem": "देव",
+              "linga": "Pum"
+            },
+            {
+              "stem": "बालक",
+              "linga": "Pum"
+            },
+            {
+              "stem": "वृक्ष",
+              "linga": "Pum"
+            }
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The tree flowers",
+          "hi": "पेड़ में फूल आते हैं"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.deva"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which form is the same in the dual for the first, second and call?",
+          "hi": "द्विवचन में प्रथमा, द्वितीया और सम्बोधन में कौन-सा रूप एक ही है?"
+        },
+        "explain": {
+          "en": "{{देवौ}} fills three cells of the dual.",
+          "hi": "{{देवौ}} द्विवचन के तीन खाने भरता है।"
+        },
+        "options": [
+          {
+            "sa": "देवाभ्याम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "देवयोः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "देवौ",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“देवौ,” you say, and the green tree of names shivers. A small white flower opens on one branch. “देवाः,” you add, and a second blooms. Vṛkṣaka's trunk straightens, as if his name were beginning to hold.",
+            "hi": "“देवौ,” आप कहते हैं, और नामों का हरा पेड़ सिहरता है। एक शाखा पर एक नन्हा सफ़ेद फूल खिलता है। “देवाः,” आप जोड़ते हैं, और दूसरा खिलता है। वृक्षक का तना सीधा होता है, मानो उसका नाम टिकना शुरू हो गया हो।"
+          },
+          "failure": {
+            "en": "The tree droops. Three cells share one form in the dual: the one with {{औ}}.",
+            "hi": "पेड़ झुक जाता है। द्विवचन में तीन खाने एक रूप साझा करते हैं: {{औ}} वाला।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Why {{देवैः}}?",
+          "hi": "{{देवैः}} क्यों?"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "noun.deva"
+        ],
+        "sutras": [
+          "7.1.9",
+          "7.1.12"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Pāṇini's sūtra 7.1.9, {{अतो भिस ऐस्}}, changes the ending {{भिस्}} to {{ऐस्}} after a word in -{{अ}}: {{देव}} + {{भिस्}} → {{देवैः}}. And 7.1.12 turns {{टा}} into {{इन}}, {{ङसि}} into {{आत्}} and {{ङस्}} into {{स्य}}: {{देवेन}}, {{देवात्}}, {{देवस्य}}.",
+          "hi": "पाणिनि का सूत्र 7.1.9, {{अतो भिस ऐस्}}, -{{अ}} वाले शब्द के बाद {{भिस्}} को {{ऐस्}} कर देता है: {{देव}} + {{भिस्}} → {{देवैः}}। और 7.1.12 {{टा}} को {{इन}}, {{ङसि}} को {{आत्}} और {{ङस्}} को {{स्य}} बना देता है: {{देवेन}}, {{देवात्}}, {{देवस्य}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The देव family",
+          "hi": "देव का कुल"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "देवः देवौ देवाः",
+            "text": {
+              "en": "First case, three numbers.",
+              "hi": "प्रथमा, तीन वचन।"
+            }
+          },
+          {
+            "sa": "बालक · वृक्ष · राम · ग्राम",
+            "text": {
+              "en": "Thousands of words follow it.",
+              "hi": "हज़ारों शब्द इसी पर चलते हैं।"
+            }
+          },
+          {
+            "sa": "औ · एभ्यः · ऐः",
+            "text": {
+              "en": "Watch the shared forms.",
+              "hi": "साझा रूपों पर ध्यान दीजिए।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "nf1-deva-s1",
+    "brief": "The school library: tall shelves of palm-leaf bundles tied with coloured threads, a low reading desk with Dādī's open notebook; beside the desk a small tree of green mist hung with tiny leaf-shaped name tags, standing up; you and Śuka looking on.",
+    "alt": {
+      "en": "A library with a small tree of green mist hung with name-tags standing beside a desk",
+      "hi": "नाम-पत्तों वाला हरे धुंध का नन्हा पेड़ पुस्तकालय में मेज़ के पास"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "acarya",
+      "vrikshaka"
+    ],
+    "place": "pathashala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The school library: tall shelves of palm-leaf bundles tied with coloured threads, a low reading desk with Dādī's open notebook; beside the desk a small tree of green mist hung with tiny leaf-shaped name tags, standing up; you and Śuka looking on.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nvrikshaka: A small tree-shaped spirit of green mist with tiny palm-leaf tags hanging from its branches like names.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-6091fabb-84c8-455f-bb68-ec149f581aa3.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "24b5bd69b1a31be74aa8b1d16e8e50abfb604621f33e53b31e2fa5236d9da9bb",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\nf1-deva-s1-phone-a2d69ce3.webp",
+      "key": "learn/nf1-deva-s1-phone-a2d69ce3.webp",
+      "sha256": "a2d69ce3cceb303b59530fad1843e186e1954cab3515a3668cc49ea4059b4280",
+      "bytes": 104646,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/nf1-deva-s1-phone-a2d69ce3.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\nf1-deva-s1-tablet-29e2df65.webp",
+      "key": "learn/nf1-deva-s1-tablet-29e2df65.webp",
+      "sha256": "29e2df651233197c2d75408088a5db68a3554cc289e1570cb6646d863bccdbb8",
+      "bytes": 394644,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/nf1-deva-s1-tablet-29e2df65.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

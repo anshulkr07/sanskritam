@@ -10,7 +10,7 @@ teaches:
 needs:
 - chandas.vrtta
 - chandas.weight
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -35,6 +35,7 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: m2-arya-s1
+    text_in_image: ["दानं भोगो नाशस्", "तिस्रो गतयो भवन्ति वित्तस्य", "यो न ददाति न भुङ्क्ते", "तस्य तृतीया गतिर्भवति"]
   narration:
     en: 'At the foot of the stair stands a stone balance. Dādī puts a verse on it. “Some metres do not count syllables; they count time. A light syllable weighs one grain, a heavy one two. This is Āryā.” She reads: दानं भोगो नाशस्… Vṛttikā, drifting past, watches the pans tip. “Twelve, eighteen, twelve, fifteen,” Dādī says. “Weigh it yourself.”'
     hi: 'सीढ़ी के नीचे पत्थर की एक तराज़ू खड़ी है। दादी उस पर एक श्लोक रखती हैं। “कुछ छन्द अक्षर नहीं गिनते; वे समय गिनते हैं। लघु अक्षर का वज़न एक दाना, गुरु का दो। यह आर्या है।” वे पढ़ती हैं: दानं भोगो नाशस्… वृत्तिका, पास से तैरती हुई, पलड़ों को झुकते देखती है। “बारह, अठारह, बारह, पन्द्रह,” दादी कहती हैं। “आप स्वयं तौलिए।”'
@@ -184,8 +185,8 @@ cards:
   - chandas.arya
   mode: match
   prompt:
-    en: Join each Āryā quarter to its mātrās.
-    hi: आर्या के हर चरण को उसकी मात्राओं से जोड़िए।
+    en: Match each Āryā quarter with its mātrās.
+    hi: आर्या के हर चरण को उसकी मात्राओं से मिलाइए।
   explain:
     en: 12, 18, 12, 15.
     hi: 12, 18, 12, 15।

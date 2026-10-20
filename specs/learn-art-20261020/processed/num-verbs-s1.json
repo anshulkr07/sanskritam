@@ -1,0 +1,1015 @@
+{
+  "id": "num-verbs-s1",
+  "where": "num.verbs#s1",
+  "ratio": "4:3",
+  "expected": [
+    "पठति",
+    "पठतः",
+    "पठन्ति"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Three groups of readers on the ghat steps: one boy reading alone, two girls sharing a palm leaf, and a row of children reading aloud together; the small grey-blue spirit leaning in with a hand cupped to his ear.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nbakau: Two tall white spirits shaped like herons, standing side by side on one leg each, their feathers soft as mist.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nपठति\nपठतः\nपठन्ति All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "num.verbs",
+    "template": "scene",
+    "title": {
+      "en": "One, two and many readers",
+      "hi": "एक, दो और अनेक पढ़ने वाले"
+    },
+    "title_sa": "क्रियावचनम्",
+    "minutes": 6,
+    "teaches": [
+      "verb.pres-3-du-pl"
+    ],
+    "needs": [
+      "num.dual",
+      "num.plural",
+      "verb.pres-3sg"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Readers on the steps",
+          "hi": "सीढ़ियों पर पढ़ने वाले"
+        },
+        "image": {
+          "id": "num-verbs-s1",
+          "brief": "Three groups of readers on the ghat steps: one boy reading alone, two girls sharing a palm leaf, and a row of children reading aloud together; the small grey-blue spirit leaning in with a hand cupped to his ear.",
+          "alt": {
+            "en": "One reader, two readers and a row of readers on the ghat steps",
+            "hi": "एक पाठक, दो पाठक और पाठकों की पंक्ति"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "bakau"
+          ],
+          "place": "naditira"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Along the steps sit readers. One reads alone. Two sit together over one leaf. A whole class reads aloud in a row. The spirit listens to their voices and notices something: the sound at the end of the verb changes with how many there are.",
+          "hi": "सीढ़ियों पर पाठक बैठे हैं। एक अकेला पढ़ता है। दो एक पत्र पर साथ बैठे हैं। पूरी कक्षा एक पंक्ति में ज़ोर से पढ़ती है। भूत उनकी आवाज़ें सुनता है और कुछ ध्यान देता है: क्रिया के अन्त की ध्वनि बदलती है जैसे ही संख्या बदलती है।"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The verb counts, too",
+          "hi": "क्रिया भी गिनती है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3-du-pl"
+        ],
+        "sutras": [
+          "3.4.78"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "The verb has three endings for he, she or it: {{ति}} for one doer, {{तः}} for two, {{न्ति}} for many. {{पठति}} (he reads), {{पठतः}} (the two read), {{पठन्ति}} (they read).",
+          "hi": "वह के लिए क्रिया के तीन प्रत्यय हैं: एक कर्ता के लिए {{ति}}, दो के लिए {{तः}}, अनेक के लिए {{न्ति}}। {{पठति}} (वह पढ़ता है), {{पठतः}} (दो पढ़ते हैं), {{पठन्ति}} (वे पढ़ते हैं)।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [
+          {
+            "sa": "पठति",
+            "label": {
+              "en": "one reads",
+              "hi": "एक पढ़ता है"
+            }
+          },
+          {
+            "sa": "पठतः",
+            "label": {
+              "en": "two read",
+              "hi": "दो पढ़ते हैं"
+            }
+          },
+          {
+            "sa": "पठन्ति",
+            "label": {
+              "en": "many read",
+              "hi": "अनेक पढ़ते हैं"
+            }
+          }
+        ],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Three verbs, three numbers",
+          "hi": "तीन क्रियाएँ, तीन वचन"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3-du-pl"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "He, she or it, in the three numbers",
+          "hi": "वह, तीनों वचनों में"
+        },
+        "columns": [
+          {
+            "en": "Root",
+            "hi": "धातु"
+          },
+          {
+            "en": "One",
+            "hi": "एक"
+          },
+          {
+            "en": "Two",
+            "hi": "दो"
+          },
+          {
+            "en": "Many",
+            "hi": "अनेक"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "पठ्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठतः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठन्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "लिख्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लिखति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "लिख्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लिखतः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "लिख्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लिखन्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "लिख्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "हस्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "हसति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "हस्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "हसतः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "हस्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "हसन्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "हस्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "चल्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "चलति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "चल्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "चलतः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "चल्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "चलन्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "चल्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "वद्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "वदति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "वद्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "वदतः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "वद्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "वदन्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "वद्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "One {{ति}}, two {{तः}}, many {{न्ति}}: the same three endings for every verb you know.",
+          "hi": "एक {{ति}}, दो {{तः}}, अनेक {{न्ति}}: हर परिचित क्रिया के लिए वही तीन प्रत्यय।"
+        }
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3-du-pl"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "form_explorer",
+        "prompt": {
+          "en": "Switch between one, two and many and watch the ending change.",
+          "hi": "एक, दो और अनेक के बीच बदलिए और देखिए कि प्रत्यय कैसे बदलता है।"
+        },
+        "params": {
+          "roots": [
+            {
+              "dhatu": "पठ्",
+              "lakaras": [
+                "Lat"
+              ]
+            },
+            {
+              "dhatu": "लिख्",
+              "lakaras": [
+                "Lat"
+              ]
+            }
+          ],
+          "vacanas": [
+            "Eka",
+            "Dvi",
+            "Bahu"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3-du-pl"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Two girls read together. Which verb?",
+          "hi": "दो बालिकाएँ साथ पढ़ती हैं। कौन-सी क्रिया?"
+        },
+        "explain": {
+          "en": "Two doers: {{पठतः}}.",
+          "hi": "दो कर्ता: {{पठतः}}।"
+        },
+        "options": [
+          {
+            "sa": "पठति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठतः",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "पठन्ति",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3-du-pl"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each verb to its number.",
+          "hi": "हर क्रिया को उसके वचन से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{ति}} one, {{तः}} two, {{न्ति}} many.",
+          "hi": "{{ति}} एक, {{तः}} दो, {{न्ति}} अनेक।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "पठति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "one",
+                "hi": "एक"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पठतः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "two",
+                "hi": "दो"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पठन्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "many",
+                "hi": "अनेक"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "हसन्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "many",
+                "hi": "अनेक"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3-du-pl"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Build “the two write”.",
+          "hi": "‘दो लिखते हैं’ बनाइए।"
+        },
+        "explain": {
+          "en": "{{लिख}} + {{तः}}: {{लिखतः}}.",
+          "hi": "{{लिख}} + {{तः}}: {{लिखतः}}।"
+        },
+        "options": [],
+        "answers": [
+          "लिखतः"
+        ],
+        "tiles": [
+          "लिख",
+          "तः",
+          "ति",
+          "न्ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3-du-pl"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every verb for many doers.",
+          "hi": "अनेक कर्ताओं की हर क्रिया को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "पठति",
+            "हसन्ति",
+            "लिखतः",
+            "वदन्ति",
+            "चलति",
+            "गच्छन्ति"
+          ],
+          "targets": [
+            "हसन्ति",
+            "वदन्ति",
+            "गच्छन्ति"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Call the class",
+          "hi": "कक्षा को पुकारिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3-du-pl"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which verb means “they go”?",
+          "hi": "‘वे जाते हैं’ के लिए कौन-सी क्रिया है?"
+        },
+        "explain": {
+          "en": "Many doers: {{गच्छन्ति}}.",
+          "hi": "अनेक कर्ता: {{गच्छन्ति}}।"
+        },
+        "options": [
+          {
+            "sa": "गच्छति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "गच्छतः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "गच्छन्ति",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“गच्छन्ति,” you say, and the whole row of readers rises and files off along the ghat, their voices fading in a long happy chain.",
+            "hi": "“गच्छन्ति,” आप कहते हैं, और पाठकों की पूरी पंक्ति उठकर घाट के किनारे-किनारे चल पड़ती है, उनकी आवाज़ें एक लम्बी, ख़ुश कड़ी में धीमी होती हुई।"
+          },
+          "failure": {
+            "en": "The readers stay seated. Many: look for {{न्ति}}.",
+            "hi": "पाठक बैठे रहते हैं। अनेक: {{न्ति}} खोजिए।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The verb counts",
+          "hi": "क्रिया गिनती है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "पठति · पठतः · पठन्ति",
+            "text": {
+              "en": "One, two, many.",
+              "hi": "एक, दो, अनेक।"
+            }
+          },
+          {
+            "sa": "ति · तः · न्ति",
+            "text": {
+              "en": "The three endings.",
+              "hi": "तीन प्रत्यय।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "The same for every verb.",
+              "hi": "हर क्रिया के लिए वही।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "num-verbs-s1",
+    "brief": "Three groups of readers on the ghat steps: one boy reading alone, two girls sharing a palm leaf, and a row of children reading aloud together; the small grey-blue spirit leaning in with a hand cupped to his ear.",
+    "alt": {
+      "en": "One reader, two readers and a row of readers on the ghat steps",
+      "hi": "एक पाठक, दो पाठक और पाठकों की पंक्ति"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "bakau"
+    ],
+    "place": "naditira"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Three groups of readers on the ghat steps: one boy reading alone, two girls sharing a palm leaf, and a row of children reading aloud together; the small grey-blue spirit leaning in with a hand cupped to his ear.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nbakau: Two tall white spirits shaped like herons, standing side by side on one leg each, their feathers soft as mist.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-63c6b667-d6a1-4594-8423-6ceb01403444.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "7f4e1e1ca43461f6e8976e8d5047af9b8d0248f3fa04323296eb202f2542ffbe",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\num-verbs-s1-phone-2786ae12.webp",
+      "key": "learn/num-verbs-s1-phone-2786ae12.webp",
+      "sha256": "2786ae12abc4499ff6d969d34bde66402c568a14f591ca303988b603c42bd0b5",
+      "bytes": 113794,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/num-verbs-s1-phone-2786ae12.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\num-verbs-s1-tablet-21c9f2b9.webp",
+      "key": "learn/num-verbs-s1-tablet-21c9f2b9.webp",
+      "sha256": "21c9f2b9d03c9471a59ebf0b44c4c431d158766bb835a07c372fc4ca44ef2f44",
+      "bytes": 450034,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/num-verbs-s1-tablet-21c9f2b9.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

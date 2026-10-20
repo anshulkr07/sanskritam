@@ -18,7 +18,7 @@ export function refreshCourse(tablet=false):Promise<void> {
    if(remote) await mergeFinishes(remote.finished);
    publish(index,await localFinishes());
    const current=snapshot.state?.current?.lesson_id;
-   const road=courseOrder(index).filter(s=>s.role!=='revision'); const at=road.findIndex(s=>s.lesson_id===current);
+   const road=courseOrder(index).filter(s=>s.role!=='revision'&&s.role!=='reading'); const at=road.findIndex(s=>s.lesson_id===current);
    const ids=at<0?[]:road.slice(at,at+3).flatMap(s=>s.lesson_id?[s.lesson_id]:[]);
    const summaries=lessonSummaries(index); await prefetchLessons(ids.flatMap(id=>{const s=summaries.find(l=>l.id===id);return s?[s]:[];}),tablet,index.characters);
   } catch { snapshot={...snapshot,error:true}; listeners.forEach(f=>f()); }

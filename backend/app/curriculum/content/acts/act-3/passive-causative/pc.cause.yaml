@@ -10,7 +10,7 @@ teaches:
 needs:
 - verb.passive
 - verb.class-10
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -41,6 +41,20 @@ cards:
   narration:
     en: 'The pusher claps all twelve hands. “पाठयति!” says the Vetāla, pointing: one hand has taken a boy''s head and tilted it to a book. “भोजयति!” Another has lifted a spoon to the lips of a sleepy ghost. “गमयति!” A third has set a foot on a path. “He makes read, makes eat, makes go,” says Dādī. “He does not do the thing himself: he gets it done.”'
     hi: 'प्रेरक बारहों हाथ ताली में मिलाता है। “पाठयति!” वेताल इशारा करता है: एक हाथ ने एक बालक का सिर पुस्तक की ओर झुका दिया है। “भोजयति!” दूसरे ने एक ऊँघते भूत के होंठों तक चम्मच उठाया है। “गमयति!” तीसरे ने राह पर एक पैर रखा है। “वह पढ़वाता है, खिलाता है, भेजता है,” दादी कहती हैं। “वह स्वयं नहीं करता: वह करवाता है।”'
+  lines:
+  - speaker: vetala
+    sa: पाठयति
+    gloss:
+      en: He makes someone read.
+      hi: वह किसी को पढ़ाता है।
+    check:
+      type: tinanta
+      dhatu: पठ्
+      lakara: Lat
+      purusha: Prathama
+      vacana: Eka
+      sanadi:
+      - Nic
 - id: t1
   kind: teach
   title:
@@ -412,8 +426,8 @@ cards:
   - verb.causative
   mode: match
   prompt:
-    en: Join each root to its causative.
-    hi: हर धातु को उसके प्रेरणार्थक से जोड़िए।
+    en: Match each root with its causative.
+    hi: हर धातु को उसके प्रेरणार्थक से मिलाइए।
   explain:
     en: The vowel is strengthened in each.
     hi: हर एक में स्वर दृढ़ होता है।

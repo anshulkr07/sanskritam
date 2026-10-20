@@ -25,6 +25,7 @@ from typing import Optional
 import yaml
 from pydantic import ValidationError
 
+from .audio import load_deliveries as load_audio_deliveries
 from .schema import Act, Bible, Course, ImageDelivery, Lesson, Unit
 
 CONTENT_DIR = Path(__file__).with_name("content")
@@ -58,6 +59,7 @@ class CourseData:
     unit_act: dict[str, str] = field(default_factory=dict)
     lessons: dict[str, Located] = field(default_factory=dict)
     deliveries: dict[str, object] = field(default_factory=dict)
+    audio: dict[str, dict] = field(default_factory=dict)  # clip key → delivery (content/audio/deliveries.json)
     issues: list[Issue] = field(default_factory=list)
 
     def lesson(self, lesson_id: str) -> Optional[Lesson]:
@@ -129,6 +131,8 @@ def load(root: Path = CONTENT_DIR) -> CourseData:
                 if d.id in data.deliveries:
                     data.issues.append(Issue("error", _rel(root, deliveries_p), f"image {d.id} delivered twice"))
                 data.deliveries[d.id] = d
+
+    data.audio = load_audio_deliveries(root / "audio" / "deliveries.json")
 
     for path in sorted(root.rglob("*.yaml")):
         rel = _rel(root, path)

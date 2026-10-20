@@ -1,0 +1,1569 @@
+{
+  "id": "part-shatr-s1",
+  "where": "part.shatr#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A hurrying figure crossing a moonlit clearing, murmuring to himself as he goes, a paper-fan spirit pointing at him from the roots; the Vetāla and Dādī watching; Śuka perched on a stump.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nsankshepaka: A small, slim spirit like a folded paper fan, whose sides fold and unfold as he speaks, each fold holding a tiny line of writing.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "part.shatr",
+    "template": "scene",
+    "title": {
+      "en": "While going",
+      "hi": "जाते हुए"
+    },
+    "title_sa": "गच्छन् सेवमानः",
+    "minutes": 6,
+    "teaches": [
+      "krt.shatr"
+    ],
+    "needs": [
+      "krt.kta"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The one who is going",
+          "hi": "जो जा रहा है"
+        },
+        "image": {
+          "id": "part-shatr-s1",
+          "brief": "A hurrying figure crossing a moonlit clearing, murmuring to himself as he goes, a paper-fan spirit pointing at him from the roots; the Vetāla and Dādī watching; Śuka perched on a stump.",
+          "alt": {
+            "en": "A figure crosses a moonlit clearing murmuring as he goes while a paper-fan spirit points",
+            "hi": "चाँदनी में खुले स्थान को पार करती आकृति, बुदबुदाती हुई, पंखे जैसा भूत इशारा करता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "sankshepaka"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "A figure crosses the clearing, hurrying, murmuring to himself as he goes. “गच्छन्,” says the paper-fan spirit. “Going.” “पठन्.” “Reading.” “Not he went, not he will go, but he is going while he does something else.” Dādī: “It is the word for ‘while’. It always goes with another verb.”",
+          "hi": "एक आकृति खुले स्थान को पार करती है, जल्दी में, चलते हुए अपने-आप से बुदबुदाती। “गच्छन्,” काग़ज़ी पंखे वाला भूत कहता है। “जाता हुआ।” “पठन्।” “पढ़ता हुआ।” “वह गया नहीं, वह जाएगा नहीं, बल्कि वह जाते हुए कुछ और कर रहा है।” दादी: “यह ‘जबकि’ का शब्द है। यह हमेशा दूसरी क्रिया के साथ आता है।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "इति संचिन्तयामास योगनन्दः क्रुधा ज्वलन्",
+          "gloss": {
+            "en": "So Yogananda thought, blazing with anger.",
+            "hi": "इस प्रकार योगनन्द ने क्रोध से जलते हुए सोचा।"
+          },
+          "source": "Kathāsaritsāgara 1.5 (read in the Digital Corpus of Sanskrit)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "While doing",
+          "hi": "करते हुए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.shatr"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{-अत्}} (after the sign {{-अ-}}) or {{-मान}} makes “while doing”: {{गम्}} gives {{गच्छन्}} (going), {{पठ्}} gives {{पठन्}} (reading), {{कृ}} gives {{कुर्वन्}} (doing), {{सेव्}} gives {{सेवमानः}} (serving, for oneself). It agrees with its noun: {{गच्छन् बालकः}}, {{गच्छन्ती बालिका}}.",
+          "hi": "{{-अत्}} ({{-अ-}} चिह्न के बाद) या {{-मान}} ‘करते हुए’ बनाता है: {{गम्}} से {{गच्छन्}} (जाता हुआ), {{पठ्}} से {{पठन्}} (पढ़ता हुआ), {{कृ}} से {{कुर्वन्}} (करता हुआ), {{सेव्}} से {{सेवमानः}} (सेवा करता हुआ, अपने लिए)। यह अपनी संज्ञा से मेल खाता है: {{गच्छन् बालकः}}, {{गच्छन्ती बालिका}}।"
+        },
+        "examples": [
+          {
+            "sa": "बालकः गच्छन् पठति।",
+            "meaning": {
+              "en": "The boy reads while going.",
+              "hi": "बालक जाते हुए पढ़ता है।"
+            },
+            "words": [
+              {
+                "sa": "बालकः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छन्",
+                "gloss": {
+                  "en": "going",
+                  "hi": "जाता हुआ"
+                },
+                "check": {
+                  "type": "krdanta",
+                  "stem": null,
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": "Satf",
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठति",
+                "gloss": {
+                  "en": "reads",
+                  "hi": "पढ़ता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "बालिका गच्छन्ती पठति।",
+            "meaning": {
+              "en": "The girl reads while going.",
+              "hi": "बालिका जाते हुए पढ़ती है।"
+            },
+            "words": [
+              {
+                "sa": "बालिका",
+                "gloss": {
+                  "en": "girl",
+                  "hi": "बालिका"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालिका",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छन्ती",
+                "gloss": {
+                  "en": "going",
+                  "hi": "जाती हुई"
+                },
+                "check": {
+                  "type": "krdanta",
+                  "stem": null,
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": "Satf",
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठति",
+                "gloss": {
+                  "en": "reads",
+                  "hi": "पढ़ती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "शिष्यः सेवमानः वर्तते।",
+            "meaning": {
+              "en": "The pupil abides serving.",
+              "hi": "शिष्य सेवा करता हुआ रहता है।"
+            },
+            "words": [
+              {
+                "sa": "शिष्यः",
+                "gloss": {
+                  "en": "pupil",
+                  "hi": "शिष्य"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "शिष्य",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "सेवमानः",
+                "gloss": {
+                  "en": "serving",
+                  "hi": "सेवा करता हुआ"
+                },
+                "check": {
+                  "type": "krdanta",
+                  "stem": null,
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "सेव्",
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": "SAnac",
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वर्तते",
+                "gloss": {
+                  "en": "abides",
+                  "hi": "रहता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वृत्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "शतृ / शानच्",
+          "meaning": {
+            "en": "the “while doing” endings",
+            "hi": "‘करते हुए’ प्रत्यय"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "While doing",
+          "hi": "करते हुए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.shatr"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Root, “doing” in three genders",
+          "hi": "धातु, तीनों लिंगों में ‘करता हुआ’"
+        },
+        "columns": [
+          {
+            "en": "Root",
+            "hi": "धातु"
+          },
+          {
+            "en": "Masculine",
+            "hi": "पुंलिंग"
+          },
+          {
+            "en": "Feminine",
+            "hi": "स्त्रीलिंग"
+          },
+          {
+            "en": "Neuter",
+            "hi": "नपुंसक"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "गम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गच्छन्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "Satf",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गच्छन्ती",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "Satf",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गच्छत्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "Satf",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "पठ्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठन्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "Satf",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठन्ती",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "Satf",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठत्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "Satf",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "कृ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "कुर्वन्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "Satf",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "कुर्वती",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "Satf",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "कुर्वत्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "Satf",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "श्रु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "शृण्वन्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "श्रु",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "Satf",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "शृण्वती",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "श्रु",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "Satf",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "शृण्वत्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "श्रु",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "Satf",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "The masculine ends in {{-न्}}, the feminine in {{-न्ती}}, the neuter in {{-त्}}.",
+          "hi": "पुंलिंग {{-न्}} पर, स्त्रीलिंग {{-न्ती}} पर, नपुंसक {{-त्}} पर समाप्त होता है।"
+        }
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "For oneself",
+          "hi": "अपने लिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.shatr"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The “-मान” form for ātmanepada roots",
+          "hi": "आत्मनेपदी धातुओं का ‘-मान’ रूप"
+        },
+        "columns": [
+          {
+            "en": "Root",
+            "hi": "धातु"
+          },
+          {
+            "en": "Masculine",
+            "hi": "पुंलिंग"
+          },
+          {
+            "en": "Feminine",
+            "hi": "स्त्रीलिंग"
+          },
+          {
+            "en": "Neuter",
+            "hi": "नपुंसक"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "सेव्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सेवमानः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "सेव्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "SAnac",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "सेवमाना",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "सेव्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "SAnac",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "सेवमानम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "सेव्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "SAnac",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "वृत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "वर्तमानः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "वृत्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "SAnac",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "वर्तमाना",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "वृत्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "SAnac",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "वर्तमानम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "वृत्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "SAnac",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "लभ्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लभमानः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "लभ्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "SAnac",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लभमाना",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "लभ्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "SAnac",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लभमानम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "लभ्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "SAnac",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{-मानः}}, {{-माना}}, {{-मानम्}}: like {{देव}}, {{लता}}, {{फल}}.",
+          "hi": "{{-मानः}}, {{-माना}}, {{-मानम्}}: {{देव}}, {{लता}}, {{फल}} की तरह।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.shatr"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“Going” (masculine). Which form?",
+          "hi": "‘जाता हुआ’ (पुंलिंग)। कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{गच्छन्}}: while going.",
+          "hi": "{{गच्छन्}}: जाते हुए।"
+        },
+        "options": [
+          {
+            "sa": "गतः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "गत्वा",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "गच्छन्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.shatr"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “Reading” (masculine).",
+          "hi": "कहिए: ‘पढ़ता हुआ’ (पुंलिंग)।"
+        },
+        "explain": {
+          "en": "{{पठन्}}.",
+          "hi": "{{पठन्}}।"
+        },
+        "options": [],
+        "answers": [
+          "पठन्"
+        ],
+        "tiles": [
+          "पठ",
+          "न्",
+          "पठि",
+          "तः"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.shatr"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each root to its “while …” form.",
+          "hi": "हर धातु को उसके ‘… हुए’ रूप से जोड़िए।"
+        },
+        "explain": {
+          "en": "The class sign shows: {{गच्छ}}, {{कुर्व}}.",
+          "hi": "गण-चिह्न दिखता है: {{गच्छ}}, {{कुर्व}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "गम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "गच्छन्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "कृ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "कुर्वन्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "श्रु",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "शृण्वन्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "दृश्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "पश्यन्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.shatr"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every “while …” word.",
+          "hi": "हर ‘… हुए’ शब्द छुइए।"
+        },
+        "params": {
+          "passage": [
+            "गच्छन्",
+            "गतः",
+            "पठन्",
+            "पठितः",
+            "सेवमानः",
+            "सेवितः"
+          ],
+          "targets": [
+            "गच्छन्",
+            "पठन्",
+            "सेवमानः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.shatr"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "word_factory",
+        "prompt": {
+          "en": "Snap a suffix onto a root and see the word it makes.",
+          "hi": "धातु पर प्रत्यय जोड़िए और देखिए कि कौन-सा शब्द बनता है।"
+        },
+        "params": {
+          "roots": [
+            {
+              "dhatu": "पठ्",
+              "gloss": {
+                "en": "read",
+                "hi": "पढ़ना"
+              }
+            },
+            {
+              "dhatu": "गम्",
+              "gloss": {
+                "en": "go",
+                "hi": "जाना"
+              }
+            },
+            {
+              "dhatu": "कृ",
+              "gloss": {
+                "en": "do",
+                "hi": "करना"
+              }
+            },
+            {
+              "dhatu": "दृश्",
+              "gloss": {
+                "en": "see",
+                "hi": "देखना"
+              }
+            }
+          ],
+          "suffixes": [
+            {
+              "krt": "Satf",
+              "label": {
+                "en": "while …ing",
+                "hi": "… हुए"
+              }
+            }
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.shatr"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “The boy reads while going.”",
+          "hi": "कहिए: ‘बालक जाते हुए पढ़ता है।’"
+        },
+        "explain": {
+          "en": "{{बालकः गच्छन् पठति}}.",
+          "hi": "{{बालकः गच्छन् पठति}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "बालकः",
+          "गच्छन्",
+          "पठति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "Going",
+          "hi": "जाते हुए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.shatr"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“The girl, going.” Which form agrees?",
+          "hi": "‘बालिका, जाती हुई।’ कौन-सा रूप मेल खाता है?"
+        },
+        "explain": {
+          "en": "{{गच्छन्ती}}: feminine.",
+          "hi": "{{गच्छन्ती}}: स्त्रीलिंग।"
+        },
+        "options": [
+          {
+            "sa": "गच्छन्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "गच्छन्ती",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "गच्छत्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“गच्छन्ती,” you say, and the hurrying figure slows, turns, and looks at you: a woman, with a bundle on her back and the beginning of a smile. “Going,” she says, and nods, and goes on across the clearing, no longer in a hurry. The paper-fan spirit folds himself closed, pleased, and unfolds again: “च. वा. अपि. एव.”",
+            "hi": "“गच्छन्ती,” आप कहते हैं, और जल्दी वाली आकृति धीमी होती है, मुड़ती है, और आपको देखती है: एक स्त्री, पीठ पर गठरी और मुस्कान की शुरुआत लिए। “जा रही हूँ,” वह कहती है, सिर हिलाती है, और खुले स्थान को पार करती आगे बढ़ती है, अब जल्दी में नहीं। काग़ज़ी पंखे वाला भूत प्रसन्न होकर स्वयं को बन्द करता है और फिर खुलता है: “च। वा। अपि। एव।”"
+          },
+          "failure": {
+            "en": "The figure hurries on. The girl, going: {{गच्छन्ती}}.",
+            "hi": "आकृति जल्दी में आगे बढ़ती है। बालिका, जाती हुई: {{गच्छन्ती}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's “while”",
+          "hi": "पाणिनि का ‘हुए’"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "krt.shatr"
+        ],
+        "sutras": [
+          "3.2.124",
+          "7.1.78",
+          "6.4.14"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 3.2.124, {{लटः शतृशानचावप्रथमासमानाधिकरणे}}, replaces the present endings with {{शतृ}} or {{शानच्}}, “while doing”, when the word is not in the first case with the verb. 7.1.78, {{नाभ्यस्ताच्छतुः}}, and 6.4.14, {{अत्वसन्तस्य चाधातोः}}, give the forms {{गच्छन्}} and {{गच्छत्}}.",
+          "hi": "सूत्र 3.2.124, {{लटः शतृशानचावप्रथमासमानाधिकरणे}}, वर्तमान के प्रत्ययों की जगह {{शतृ}} या {{शानच्}} रखता है, ‘करते हुए’, जब शब्द क्रिया के साथ प्रथमा में न हो। 7.1.78, {{नाभ्यस्ताच्छतुः}}, और 6.4.14, {{अत्वसन्तस्य चाधातोः}}, {{गच्छन्}} और {{गच्छत्}} रूप देते हैं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "While doing",
+          "hi": "करते हुए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "गच्छन् · पठन् · कुर्वन्",
+            "text": {
+              "en": "Going; reading; doing.",
+              "hi": "जाता; पढ़ता; करता हुआ।"
+            }
+          },
+          {
+            "sa": "गच्छन्ती · गच्छत्",
+            "text": {
+              "en": "Feminine and neuter.",
+              "hi": "स्त्रीलिंग और नपुंसक।"
+            }
+          },
+          {
+            "sa": "सेवमानः · वर्तमानः",
+            "text": {
+              "en": "For roots of the second set.",
+              "hi": "दूसरे समूह की धातुओं के लिए।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "part-shatr-s1",
+    "brief": "A hurrying figure crossing a moonlit clearing, murmuring to himself as he goes, a paper-fan spirit pointing at him from the roots; the Vetāla and Dādī watching; Śuka perched on a stump.",
+    "alt": {
+      "en": "A figure crosses a moonlit clearing murmuring as he goes while a paper-fan spirit points",
+      "hi": "चाँदनी में खुले स्थान को पार करती आकृति, बुदबुदाती हुई, पंखे जैसा भूत इशारा करता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "sankshepaka"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A hurrying figure crossing a moonlit clearing, murmuring to himself as he goes, a paper-fan spirit pointing at him from the roots; the Vetāla and Dādī watching; Śuka perched on a stump.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nsankshepaka: A small, slim spirit like a folded paper fan, whose sides fold and unfold as he speaks, each fold holding a tiny line of writing.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-86382690-eb3e-45d5-9a83-9f7f9a7e21b6.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "6c352ab949be6e69fc058aff931b70fbd1176021e0df758954b2c67a91289593",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\part-shatr-s1-phone-1481fd5a.webp",
+      "key": "learn/part-shatr-s1-phone-1481fd5a.webp",
+      "sha256": "1481fd5a838bc793dad622ce43d85ecc16de21d0807d409d101262cc0b9d90dc",
+      "bytes": 141122,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/part-shatr-s1-phone-1481fd5a.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\part-shatr-s1-tablet-e35b6993.webp",
+      "key": "learn/part-shatr-s1-tablet-e35b6993.webp",
+      "sha256": "e35b69935eb8cd3859b1d8b883b26e8fe639a18a93ab16c4ceaf41ecfdc7c194",
+      "bytes": 555104,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/part-shatr-s1-tablet-e35b6993.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

@@ -9,7 +9,7 @@ teaches:
 - noun.deva
 needs:
 - case.overview
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: pathashala
     ratio: '4:3'
     id: nf1-deva-s1
+    text_in_image: ["देवः", "देवौ", "देवाः"]
   narration:
     en: 'In the Ācārya''s library, shelves of palm-leaf bundles rise to the rafters, each tied with a coloured thread. Dādī lays her notebook open on the low desk. “Here is a secret,” she says. “Words come in families. Once you know one member, you know thousands.” Beside the desk a small tree of green mist stands up, hung with tiny leaf-tags: names, all waiting.'
     hi: 'आचार्य के पुस्तकालय में ताड़पत्रों के गट्ठर कड़ियों तक ऊँचे रखे हैं, हर एक रंगीन धागे से बँधा। दादी अपनी कॉपी नीची मेज़ पर खोलती हैं। “एक रहस्य सुनो,” वे कहती हैं। “शब्द कुलों में आते हैं। एक सदस्य जान लिया, तो हज़ारों जान लिए।” मेज़ के पास हरे धुंध का एक नन्हा पेड़ खड़ा हो जाता है, जिस पर छोटे पत्ते-टैग टँगे हैं: नाम, सब प्रतीक्षा में।'
@@ -397,8 +398,8 @@ cards:
   - noun.deva
   mode: match
   prompt:
-    en: Join each form to its case and number.
-    hi: हर रूप को उसकी विभक्ति और वचन से जोड़िए।
+    en: Match each form with its case and number.
+    hi: हर रूप को उसकी विभक्ति और वचन से मिलाइए।
   explain:
     en: '{{म्}}, {{एन}}, {{आय}}, {{स्य}}.'
     hi: '{{म्}}, {{एन}}, {{आय}}, {{स्य}}।'
@@ -475,6 +476,24 @@ cards:
   - sa: देवयोः
   - correct: true
     sa: देवौ
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - noun.deva
+  mode: engine
+  prompt:
+    en: 'Choose the doer form for two gods.'
+    hi: 'दो देवों के लिए कर्ता का रूप चुनिए।'
+  explain:
+    en: '{{देवौ}} names two gods as the doer; {{देवः}} names one.'
+    hi: '{{देवौ}} कर्ता के रूप में दो देवों को बताता है; {{देवः}} एक देव को।'
+  exercise:
+    kind: contrast
+    params:
+      pratipadika: देव
+      linga: Pum
+    seed: 25
 - id: pn
   kind: teach
   title:

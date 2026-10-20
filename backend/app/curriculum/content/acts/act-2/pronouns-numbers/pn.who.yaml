@@ -10,7 +10,7 @@ teaches:
 needs:
 - pron.tad-full
 - sent.questions
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -35,6 +35,7 @@ cards:
     place: pathashala
     ratio: '4:3'
     id: pn-who-s1
+    text_in_image: ["?"]
   narration:
     en: 'Ganaka stops pointing and starts asking. “Who wrote this? What is in that? Which one is lost?” He asks it of every shelf, and each time Dādī answers with the same small word, one that the shelves seem to enjoy: कः, का, किम्. Śuka whispers to you: “Same ending as ‘that’, but with a K.”'
     hi: 'गणक इशारा करना छोड़कर पूछने लगता है। “यह किसने लिखा? उसमें क्या है? कौन-सा खो गया है?” वह हर अलमारी से पूछता है, और हर बार दादी एक ही छोटे शब्द से उत्तर देती हैं, जो अलमारियों को भाता है: कः, का, किम्। शुक आपके कान में फुसफुसाता है: “‘वह’ जैसे ही प्रत्यय, पर क से शुरू।”'
@@ -552,8 +553,8 @@ cards:
   - pron.kim-yad
   mode: match
   prompt:
-    en: Join each question word to its meaning.
-    hi: हर प्रश्नवाचक शब्द को उसके अर्थ से जोड़िए।
+    en: Match each question word with its meaning.
+    hi: हर प्रश्नवाचक शब्द को उसके अर्थ से मिलाइए।
   explain:
     en: '{{क-}} forms follow {{त-}} forms.'
     hi: '{{क-}} के रूप {{त-}} के रूपों जैसे हैं।'

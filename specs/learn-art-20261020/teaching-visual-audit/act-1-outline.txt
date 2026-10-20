@@ -1,0 +1,193 @@
+ACT 1: The Leaf
+
+UNIT vowels — Vowels
+
+vowels.short [scene] The smoke that could not speak
+s1 story [IMAGE vowels-short-smoke] Smoke from the lamp
+s2 story [IMAGE vowels-short-line] The first line
+t1 teach [IMAGE vowels-short-aiu] A vowel stands on its own | A vowel, {{स्वरः}}, is a sound you can hold with your mouth open. Sanskrit gives each vowel its own letter. The leaf's first group holds three of them, all short: say each one quickly, in one beat. | rows: अ; इ; उ
+e1 explore Where the sound is made | mouth_map {"letters": ["अ", "इ", "उ"]}
+t2 teach Two vowels made with r and l | The second group holds two unusual vowels. For {{ऋ}}, curl your tongue up toward the roof of your mouth, as if to say r, and let that sound carry the syllable, like the r in an American “bird”. Keep it one quick sound. {{ऌ}} does the same with l, at the teeth; it is very rare. | examples: ऋषिः | rows: ऋ; ऌ
+e2 explore Spot the first letter | mark_words {"passage": ["अग्निः", "उषा", "इन्द्रः", "उदकम्", "ऋषिः", "इति"], "targets": ["उषा", "उदकम्"]}
+pn teach Pāṇini measures a vowel | Pāṇini names vowels by how long they last. In sūtra 1.2.27 a vowel lasting as long as {{उ}} is {{ह्रस्वः}}, short; as long as {{ऊ}}, {{दीर्घः}}, long; held for three beats, {{प्लुतः}}. All five vowels of the leaf's first two groups are {{ह्रस्वः}}.
+sum summary The short vowels
+
+vowels.long [scene] Śuka's long words
+s1 story [IMAGE vowels-long-shuka] Śuka stretches everything
+t1 teach The long twins | Three short vowels have a long twin, held for two beats: {{आ}} ā, {{ई}} ī, {{ऊ}} ū. {{ऋ}} has one too, {{ॠ}} ṝ, but you will rarely see it. A long vowel is made at the same place as its short twin, only held twice as long. | rows: अ → आ; इ → ई; उ → ऊ; ऋ → ॠ
+e1 explore Same place, longer sound | mouth_map {"letters": ["अ", "आ", "इ", "ई", "उ", "ऊ"]}
+t2 teach [IMAGE vowels-long-pairs] One beat or two | Hold a vowel too long, or clip it too short, and you say a different word. Each pair below differs only in one vowel's length. Inside a word a vowel is written as a small sign, which you will meet on the leaf's second line. For now, compare the Roman letters. | examples: दिनम्; दीनः; कुलम्; कूलम्
+e2 explore Tap the beats | rhythm_tapper {"lines": ["अ आ इ ई उ ऊ ऋ ॠ"]}
+pn teach Twins in Pāṇini | Sūtra 1.1.9 calls sounds made at one place with one effort {{सवर्ण}}, “of one kind”: {{इ}} and {{ई}} are {{सवर्ण}}. By sūtra 1.1.69 a short vowel in a rule stands for its twins too. So the leaf, like Pāṇini's list, writes only {{अ}} {{इ}} {{उ}}, never {{आ}} {{ई}} {{ऊ}}.
+sum summary The long vowels
+
+vowels.compound [scene] The last two groups
+s1 story [IMAGE vowels-compound-end] Two shapes pressed together
+t1 teach Two sounds in one | When {{अ}} meets {{इ}}, they press into one smooth sound, {{ए}}: e as in “they”. {{अ}} with {{उ}} gives {{ओ}}: o as in “go”. {{ऐ}} and {{औ}} glide instead: ai as in “aisle”, au as in “out”. | rows: अ + इ → ए; अ + उ → ओ; ऐ; औ
+e1 explore Two places at once | mouth_map {"letters": ["ए", "ऐ", "ओ", "औ"]}
+t2 teach Always two beats | Sanskrit has no short {{ए}} or {{ओ}}. All four joined vowels last two beats, like {{आ}}. So {{देवः}}, a god, has a long e, and {{लोकः}}, a world, a long o. Never clip them. | examples: देवः; लोकः
+t3 teach [IMAGE vowels-compound-lamp] Let ऐ and औ glide | In Hindi, {{ऐ}} and {{औ}} are often said flat, as in है and और. In Sanskrit they glide: start at {{अ}} and slide to {{इ}} or {{उ}}, in one syllable. Dādī fills the lamp with {{तैलम्}}, oil: “tai-lam”, as in “aisle”. A cow is {{गौः}}: “gau”, as in “now”. | examples: तैलम्; गौः
+e2 explore Words that open with a joined vowel | mark_words {"passage": ["एकः", "इन्द्रः", "ओदनः", "उषा", "ऐरावतः", "औषधम्", "अग्निः"], "targets": ["एकः", "ओदनः", "ऐरावतः", "औषधम्"]}
+pn teach Pāṇini's names for these vowels | The first two sūtras of the Aṣṭādhyāyī name vowels you now know. {{आ}} {{ऐ}} {{औ}} are {{वृद्धि}} (1.1.1); {{अ}} {{ए}} {{ओ}} are {{गुण}} (1.1.2). Many later rules say “becomes guṇa” or “becomes vṛddhi”, and when words join you will watch these vowels appear.
+sum summary The joined vowels
+
+vowels.signs [scene] The second line
+s1 story [IMAGE vowels-signs-second-line] Letters wearing marks
+t1 teach A letter always carries अ | Take the consonant {{क}}. It is never bare: it always carries {{अ}}, so {{क}} is {{क्}} + {{अ}}, ka. To give it another vowel, add that vowel's sign. The sign replaces the {{अ}}: {{क्}} + {{आ}} = {{का}}, {{क्}} + {{इ}} = {{कि}}.
+t2 table Every vowel on {{क}} | The vowel, its sign, and the sign on {{क}} | 11 rows x 4 cols
+e1 explore Build on {{क}} | letter_builder {"bases": ["क"], "signs": ["ा", "ि", "ी", "ु", "ू", "ृ", "े", "ै", "ो", "ौ"], "targets": ["कि", "कू", "के", "कौ"]}
+t3 teach Written first, said last | One sign breaks the left-to-right rule. {{ि}} is written before its letter but said after it: in {{कि}} you see the sign first, yet you say {{क्}}, then {{इ}}. Its long twin {{ी}} comes after, as you would expect. In {{दिनम्}} the sign stands before {{द}}: di-nam. | examples: दिनम्
+e2 explore Find the long ī | mark_words {"passage": ["दिनम्", "दीनः", "दीपः", "कुलम्", "नदी", "कूलम्"], "targets": ["दीनः", "दीपः", "नदी"]}
+sum summary Vowel signs
+
+vowels.revision [revision] Everything about vowels
+core revision The rules | 9 revision rules
+conditions revision Letter or sign? | 1 revision rules
+exceptions revision Odd shapes and rare letters | 5 revision rules
+mistakes revision Common mistakes | 5 revision rules
+panini revision In Pāṇini's words | 6 revision rules
+sheet revision Quick sheet | 5 revision rules
+
+vowels.check [check] Read the first line
+
+UNIT consonants — Consonants
+
+cons.grid [scene] Five rows on the carved door
+s1 story [IMAGE cons-grid-s1] The carved door
+t1 teach Where the mouth touches | A consonant, {{व्यञ्जनम्}}, is a sound made by closing or narrowing the mouth. The door's five rows follow your mouth from the back to the front: throat, palate, roof, teeth, lips. Say {{क}} {{च}} {{ट}} {{त}} {{प}} and feel the sound move forward. | rows: क; च; ट; त; प
+tb1 table The whole door | The five rows, from throat to lips | 5 rows x 6 cols
+e1 explore | mouth_map {"letters": ["क", "च", "ट", "त", "प"]}
+e2 explore | mark_words {"passage": ["पत्रम्", "कमलम्", "फलम्", "चन्द्रः", "बालः", "तारा", "भक्तः", "नदी"], "targets": ["पत्रम्", "फलम्", "बालः", "भक्तः"]}
+pn teach The row names | Pāṇini names each row by its first letter plus {{उ}}: {{कु}} is the throat row, {{चु}} the palate row, {{टु}} the roof row, {{तु}} the teeth row, {{पु}} the lip row. By sūtra 1.1.69 a letter with {{उ}} stands for its whole row.
+sum summary The five rows
+
+cons.breath [scene] Breath and voice: क ख ग घ ङ
+s1 story [IMAGE cons-breath-s1] Śuka's puffs of air
+t1 teach Five sounds in a row | Every row runs in the same order: plain, breathy, voiced, voiced and breathy, nasal. Put your hand before your mouth: {{ख}} is {{क}} with a puff of air. Touch your throat: {{ग}} buzzes, {{क}} does not. | rows: क; ख; ग; घ; ङ
+tb1 table Reading the grid | What the five places of every row mean | 5 rows x 5 cols
+t2 teach A puff makes a new word | Keep the puff, or lose it: the word changes. Hindi speakers know this from {{कल}} and {{खल}}; Sanskrit keeps the difference everywhere. | examples: करः; खरः; पलम्; फलम्
+e1 explore | mark_words {"passage": ["क", "ख", "ग", "घ", "ङ", "च", "छ", "ज", "झ", "ञ"], "targets": ["ख", "घ", "छ", "झ"]}
+sum summary Breath and voice
+
+cons.semivowels [scene] The in-between sounds: य र ल व
+s1 story [IMAGE cons-semivowels-s1] Between the rows
+t1 teach Half vowel, half consonant | {{य}} {{र}} {{ल}} {{व}} are made like the vowels {{इ}} {{ऋ}} {{ऌ}} {{उ}}, only the tongue or lip touches lightly. Say {{इ}}, then slide into {{अ}}: you have said {{य}}. Say {{उ}} and slide: {{व}}. | rows: य; र; ल; व
+e1 explore | mouth_map {"letters": ["य", "र", "ल", "व"]}
+e2 explore | mark_words {"passage": ["यवः", "रथः", "लता", "वनम्", "कमलम्", "नगरम्", "सूर्यः"], "targets": ["यवः", "रथः", "लता", "वनम्"]}
+pn teach Pāṇini's name for them | Pāṇini's Śiva sūtras 5 and 6 are {{हयवरट्}} and {{लण्}}. Drop the marker letters {{ट्}} and {{ण्}}, and {{य}} {{व}} {{र}} {{ल}} remain. He calls this group {{यण्}}: from {{य}} up to the marker {{ण्}}.
+sum summary The in-between sounds
+
+cons.sibilants [scene] Three hisses and a breath
+s1 story [IMAGE cons-sibilants-s1] The hissing carvings
+t1 teach Hiss and breath | {{श}} is a soft hiss at the palate, like “sh” in “ship”. {{ष}} is the same hiss with the tongue curled back to the roof. {{स}} is the “s” of “sun”, at the teeth. {{ह}} is a plain breath from the throat. | rows: श; ष; स; ह
+e1 explore | mouth_map {"letters": ["श", "ष", "स", "ह"]}
+t2 teach Same hiss, three places | Śiva, a name of the god, begins with {{श}}; {{विष्णुः}} has {{ष}} in the middle; {{सूर्यः}}, the sun, starts with {{स}}. In Hindi {{श}} and {{ष}} sound alike. In Sanskrit keep them apart: curl the tongue for {{ष}}. | examples: शिवः; विष्णुः; सूर्यः
+e2 explore | mark_words {"passage": ["शिवः", "षट्", "सुखम्", "कृष्णः", "विष्णुः", "शान्तिः"], "targets": ["षट्", "कृष्णः", "विष्णुः"]}
+pn teach Pāṇini's names | The Śiva sūtra {{शषसर्}} (13) ends in the marker {{र्}}; {{हल्}} (14) ends in {{ल्}}. From {{श}} to that {{ल्}} Pāṇini's group {{शल्}} holds exactly {{श}} {{ष}} {{स}} {{ह}}. And {{हल्}}, from the {{ह}} of sūtra 5, is every consonant.
+sum summary Hisses and the breath
+
+cons.virama [scene] The silent stroke
+s1 story [IMAGE cons-virama-s1] A stroke at the foot
+t1 teach A hidden {{अ}} | Write {{क}} and you say ka: the consonant carries {{अ}}. To take the {{अ}} away, add the stroke {{्}}, the {{हलन्तः}} or virāma: {{क्}} is just k.
+t2 teach The final sound counts | Many Sanskrit words end in a consonant with the stroke: {{जगत्}} (world), {{तत्}} (that). Words that end in plain {{अ}} are different: {{राम}} is rāma, with the final a said aloud. Hindi drops it; Sanskrit does not. | examples: रामः; जगत्
+e1 explore | mark_words {"passage": ["जगत्", "रामः", "तत्", "फलम्", "मरुत्", "लता"], "targets": ["जगत्", "तत्", "मरुत्"]}
+sum summary The silent stroke
+
+cons.revision [revision] Everything about consonants
+core revision The rules | 6 revision rules
+conditions revision Where sounds may stand | 1 revision rules
+exceptions revision Odd letters | 2 revision rules
+mistakes revision Common mistakes | 4 revision rules
+panini revision In Pāṇini's words | 3 revision rules
+sheet revision Quick sheet | 5 revision rules
+
+cons.check [check] Read her name
+
+UNIT joined-letters — Joined letters
+
+joined.clusters [scene] Letters that hold hands
+s1 story [IMAGE joined-clusters-s1] The crowded pillar
+t1 teach Two consonants, one shape | When two consonants meet with no vowel between them, they join into one shape, a {{संयुक्ताक्षरम्}}. The first drops its vowel, the second keeps it: {{क्}} + {{ष}} = {{क्ष}}.
+tb1 table Four famous joins | Four joined letters you will meet everywhere | 4 rows x 3 cols
+e1 explore | letter_builder {"bases": ["ष", "र", "ञ", "त"], "halves": ["क्", "त्", "ज्", "श्", "स्"], "targets": ["क्ष", "त्र", "ज्ञ", "श्र", "स्त"]}
+t2 teach Half letters and stacks | Letters with an upright bar lose it as the first half: {{स्}} + {{त}} = {{स्त}}. Letters without a bar sit on top of the next: {{ट्}} + {{ट}} = {{ट्ट}}. A joined letter is still read left to right, top to bottom. | examples: अस्ति; पुत्रः; सत्यम्
+e2 explore | mark_words {"passage": ["सत्यम्", "कमलम्", "मित्रम्", "नगरम्", "शास्त्रम्", "बालः", "पुत्रः", "फलम्"], "targets": ["सत्यम्", "मित्रम्", "शास्त्रम्", "पुत्रः"]}
+sum summary Joined letters
+
+joined.ra [scene] The many shapes of र
+s1 story [IMAGE joined-ra-s1] Nidrālu mumbles
+t1 teach The curl on top | When {{र}} comes first in a joined letter, it becomes a small curl on top of the next letter: {{र्}} + {{म}} = {{र्म}}. It is called {{रेफः}}. You say it first, but write it last, above the end of the syllable. | examples: धर्मः; कर्म
+t2 teach The hook below | When {{र}} comes second, it hangs below the first letter as a small hook: {{प्}} + {{र}} = {{प्र}}, {{क्}} + {{र}} = {{क्र}}. Two have their own shapes: {{त्र}} and {{श्र}}. | examples: प्रियः; क्रमः
+e1 explore | letter_builder {"bases": ["म", "त", "र", "य"], "halves": ["र्", "प्", "क्", "ग्", "द्"], "targets": ["र्म", "र्त", "प्र", "क्र", "ग्र", "द्र"]}
+e2 explore | mark_words {"passage": ["धर्मः", "पत्रम्", "कर्म", "मित्रम्", "सर्वम्", "प्रियः"], "targets": ["धर्मः", "कर्म", "सर्वम्"]}
+t3 teach Odd ones | {{ट्र}} and {{ड्र}} take a different mark, not the hook: {{राष्ट्रम्}} (nation). And {{ऋ}} is a vowel, not {{र}} with a sign. Read {{ऋषिः}} as ṛ-ṣi, never ri-ṣi. | examples: राष्ट्रम्
+sum summary The shapes of र
+
+joined.hum-breath [scene] The hum and the breath
+s1 story [IMAGE joined-hum-breath-s1] Hum and sigh
+t1 teach The hum: ं | The dot above a letter, the {{अनुस्वारः}}, is a nasal hum through the nose: {{अं}}. At the end of a word it stands for {{म्}}: {{रामम्}} may be written {{रामं}}. Inside a word it hums like the nasal of the letter after it. | examples: गंगा; संस्कृतम्
+t2 teach The breath: ः | Two dots after a vowel, the {{विसर्गः}}, are a soft breath that echoes the vowel: {{रामः}} ends in a light “ha”. It is never a letter of its own at the start of a word. | examples: रामः; नमः
+e1 explore | mark_words {"passage": ["रामः", "फलम्", "बालः", "नमः", "पत्रम्", "देवः"], "targets": ["रामः", "बालः", "नमः", "देवः"]}
+pn teach Pāṇini's rule for the hum | Sūtra 8.3.23, {{मोऽनुस्वारः}}: a final {{म्}} before a consonant becomes the dot. So {{रामम्}} + {{नमति}} is written {{रामं नमति}}.
+sum summary The hum and the breath
+
+joined.marks [scene] Marks and numbers on the pillar
+s1 story [IMAGE joined-marks-s1] The last lines
+t1 teach Bars, a curl and a sacred sound | {{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}: {{सोऽहम्}}. {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}. | rows: ।; ॥; ऽ; ॐ
+tb1 table Numbers | The ten Devanagari numerals | 10 rows x 2 cols
+e1 explore | mark_words {"passage": ["१", "रामः", "७", "ॐ", "४", "सत्यम्", "९"], "targets": ["१", "७", "४", "९"]}
+sum summary Marks and numbers
+
+joined.revision [revision] Everything about joined letters
+core revision The rules | 7 revision rules
+conditions revision When and where | 2 revision rules
+exceptions revision Odd cases | 4 revision rules
+mistakes revision Common mistakes | 4 revision rules
+panini revision In Pāṇini's words | 1 revision rules
+sheet revision Quick sheet | 6 revision rules
+
+joined.check [check] Wake the pillar
+
+UNIT reading — Reading words
+
+reading.syllables [scene] One vowel, one syllable
+s1 story [IMAGE reading-syllables-s1] The old register
+t1 teach Count the vowels | A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and you have counted the syllables: {{रा}}-{{मः}} has two. | rows: रामः; सीता; लक्ष्मणः
+t2 teach Joined letters count once | A joined letter has no vowel inside it, so it adds no syllable. {{सत्यम्}} has two vowels, two syllables: {{सत्}}-{{यम्}}. | examples: सत्यम्; लक्ष्मणः
+e1 explore | mark_words {"passage": ["रामः", "लक्ष्मणः", "सीता", "हनुमान्", "भरतः", "गङ्गा"], "targets": ["लक्ष्मणः", "हनुमान्", "भरतः"]}
+sum summary Syllables
+
+reading.mouth [scene] Where every sound is made
+s1 story [IMAGE reading-mouth-s1] The mouth lesson
+t1 teach Place and effort | Every sound has a place, where the tongue or lips work, and an effort, how closely they work. Vowels leave the mouth open. Semivowels barely touch. Hisses almost touch. The five rows touch fully.
+tb1 table The four efforts | How closely the mouth works | 4 rows x 3 cols
+e1 explore | mouth_map {"letters": ["अ", "इ", "उ", "ए", "ओ", "व", "ङ", "म"]}
+t2 teach Two places at once | Some sounds use two places. {{ए}} is throat + palate; {{ओ}} is throat + lips; {{व}} is teeth + lips. Each nasal uses the nose and its own row: {{ङ}} throat + nose, {{म}} lips + nose. | rows: ए; ओ; व; ङ
+e2 explore | mark_words {"passage": ["प", "क", "फ", "त", "ब", "च", "भ", "म"], "targets": ["प", "फ", "ब", "भ", "म"]}
+pn teach The test for ‘same kind’ | Sūtra 1.1.9 says sounds with the same place and the same effort are {{सवर्ण}}, of one kind: {{इ}} and {{ई}} differ only in length; {{क}} and {{ख}} share a place but not an effort.
+sum summary Place and effort
+
+reading.iast [scene] Roman letters as a helper
+s1 story [IMAGE reading-iast-s1] A friend from far away
+t1 teach One sign, one sound | In IAST every sign stands for exactly one Devanagari sound. A bar means long: {{आ}} is ā. A dot below means retroflex: {{ट}} is ṭ. {{श}} is ś, {{ष}} is ṣ, {{ङ}} is ṅ, {{ञ}} is ñ.
+tb1 table Vowels with their Roman helper | Under each letter the app shows its Roman helper | 7 rows x 2 cols
+tb2 table Consonants with their Roman helper | The five rows and the rest | 7 rows x 5 cols
+t2 teach Read aloud, then check | Say the Devanagari word first. The Roman helper is a check, not a crutch: {{कृष्णः}} is kṛṣṇaḥ, {{गङ्गा}} is gaṅgā, {{संस्कृतम्}} is saṃskṛtam. Note ṃ for the hum and ḥ for the breath. | examples: कृष्णः; संस्कृतम्
+e1 explore | mark_words {"passage": ["रामः", "सीता", "लता", "कमलम्", "बालः", "फलम्"], "targets": ["रामः", "सीता", "लता", "बालः"]}
+sum summary Roman helper
+
+reading.names [scene] The register of names
+s1 story [IMAGE reading-names-s1] A shadow in the doorway
+t1 teach Read it whole | To read a word aloud, split it into syllables, check each sound's place, then say it smoothly. Try a column of names: {{रामः}} {{सीता}} {{लक्ष्मणः}} {{भरतः}}. | examples: रामः; सीता; लक्ष्मणः; भरतः
+e1 explore | mark_words {"passage": ["रामः", "पत्रम्", "सीता", "फलम्", "भरतः", "वनम्"], "targets": ["रामः", "सीता", "भरतः"]}
+sum summary Reading names
+
+reading.revision [revision] Everything about reading words
+core revision The rules | 6 revision rules
+conditions revision Where it matters | 1 revision rules
+exceptions revision Odd cases | 2 revision rules
+mistakes revision Common mistakes | 3 revision rules
+panini revision In Pāṇini's words | 1 revision rules
+sheet revision Quick sheet | 4 revision rules
+
+reading.check [check] Read his name

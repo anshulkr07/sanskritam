@@ -1,0 +1,1150 @@
+{
+  "id": "who-does-s1",
+  "where": "who.does#s1",
+  "ratio": "4:3",
+  "expected": [
+    "लिखति"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Four small scenes along the ghat steps: a boy reading, a girl writing on a slate, a heron standing, a boat gliding; Śuka on Dādī's shoulder squawking happily; the small spirit counting on his fingers.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nghataka: A small grey-blue spirit like river mist, sitting on the lowest stone step with his wispy feet trailing in the water, big curious eyes.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nलिखति All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "who.does",
+    "template": "scene",
+    "title": {
+      "en": "What he does: पठति",
+      "hi": "वह क्या करता है: पठति"
+    },
+    "title_sa": "क्रिया",
+    "minutes": 6,
+    "teaches": [
+      "verb.pres-3sg"
+    ],
+    "needs": [
+      "sent.stem-ending",
+      "sent.nom-sg"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Verbs on the steps",
+          "hi": "सीढ़ियों पर क्रियाएँ"
+        },
+        "image": {
+          "id": "who-does-s1",
+          "brief": "Four small scenes along the ghat steps: a boy reading, a girl writing on a slate, a heron standing, a boat gliding; Śuka on Dādī's shoulder squawking happily; the small spirit counting on his fingers.",
+          "alt": {
+            "en": "Four actions on the ghat with a parrot squawking along",
+            "hi": "घाट पर चार क्रियाएँ, साथ में चहकता तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "ghataka"
+          ],
+          "place": "naditira"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The spirit wants to hear what everyone does. The boy reads, the girl writes, the heron stands, the boat moves. Each action is a word of its own, and each ends in the same small sound. Śuka repeats every one in a happy squawk.",
+          "hi": "भूत सुनना चाहता है कि हर कोई क्या करता है। बालक पढ़ता है, बालिका लिखती है, बगुला खड़ा है, नाव चलती है। हर क्रिया एक अलग शब्द है, और सबके अन्त में वही छोटी ध्वनि है। शुक ख़ुशी से हर एक को दोहराता है।"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "He does: -ति",
+          "hi": "वह करता है: -ति"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3sg"
+        ],
+        "sutras": [
+          "3.2.123"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "A verb names an action. For he, she or it, in the present, the root takes {{ति}}: {{पठ्}} + {{ति}} = {{पठति}}. The same form serves for a boy, a girl or a boat.",
+          "hi": "क्रिया किसी काम का नाम है। वर्तमान काल में वह, वह (स्त्री) या वह (वस्तु) के लिए धातु में {{ति}} लगता है: {{पठ्}} + {{ति}} = {{पठति}}। यही रूप बालक, बालिका या नाव, तीनों के लिए चलता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [
+          {
+            "sa": "पठ्",
+            "label": {
+              "en": "root: read",
+              "hi": "धातु: पढ़ना"
+            }
+          },
+          {
+            "sa": "पठ",
+            "label": {
+              "en": "with the joining vowel {{अ}}",
+              "hi": "जोड़ने वाले स्वर {{अ}} के साथ"
+            }
+          },
+          {
+            "sa": "पठति",
+            "label": {
+              "en": "+ {{ति}}: he, she, it reads",
+              "hi": "+ {{ति}}: वह पढ़ता है"
+            }
+          }
+        ],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Ten everyday verbs",
+          "hi": "दस रोज़ के क्रियापद"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3sg"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Root and what he, she or it does",
+          "hi": "धातु और वह क्या करता है"
+        },
+        "columns": [
+          {
+            "en": "Root",
+            "hi": "धातु"
+          },
+          {
+            "en": "He does",
+            "hi": "वह करता है"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "पठ्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "reads",
+                "hi": "पढ़ता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "लिख्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लिखति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "लिख्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "writes",
+                "hi": "लिखता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "वद्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "वदति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "वद्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "speaks",
+                "hi": "बोलता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "हस्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "हसति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "हस्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "laughs",
+                "hi": "हँसता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "चल्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "चलति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "चल्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "moves, walks",
+                "hi": "चलता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "खाद्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "खादति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "खाद्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "eats",
+                "hi": "खाता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "गम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गच्छति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "goes",
+                "hi": "जाता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "दृश्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पश्यति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "दृश्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "sees",
+                "hi": "देखता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "पा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पिबति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पा",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "drinks",
+                "hi": "पीता है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "स्था",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तिष्ठति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "स्था",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "stands",
+                "hi": "खड़ा है"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "A few roots change shape: {{गम्}} → {{गच्छति}}, {{दृश्}} → {{पश्यति}}, {{पा}} → {{पिबति}}, {{स्था}} → {{तिष्ठति}}. Learn these four as they are.",
+          "hi": "कुछ धातुएँ रूप बदलती हैं: {{गम्}} → {{गच्छति}}, {{दृश्}} → {{पश्यति}}, {{पा}} → {{पिबति}}, {{स्था}} → {{तिष्ठति}}। इन चारों को जैसे हैं वैसे याद कीजिए।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "A whole sentence",
+          "hi": "पूरा वाक्य"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3sg"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Put the doer and the verb together: a sentence. The verb stays {{ति}} for any single doer.",
+          "hi": "कर्ता और क्रिया को साथ रखिए: वाक्य बन गया। एक कर्ता के लिए क्रिया में {{ति}} ही रहता है।"
+        },
+        "examples": [
+          {
+            "sa": "बालकः पठति।",
+            "meaning": {
+              "en": "The boy reads.",
+              "hi": "बालक पढ़ता है।"
+            },
+            "words": [
+              {
+                "sa": "बालकः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठति",
+                "gloss": {
+                  "en": "reads",
+                  "hi": "पढ़ता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "बालिका लिखति।",
+            "meaning": {
+              "en": "The girl writes.",
+              "hi": "बालिका लिखती है।"
+            },
+            "words": [
+              {
+                "sa": "बालिका",
+                "gloss": {
+                  "en": "girl",
+                  "hi": "बालिका"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालिका",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "लिखति",
+                "gloss": {
+                  "en": "writes",
+                  "hi": "लिखती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "लिख्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "बकः तिष्ठति।",
+            "meaning": {
+              "en": "The heron stands.",
+              "hi": "बगुला खड़ा है।"
+            },
+            "words": [
+              {
+                "sa": "बकः",
+                "gloss": {
+                  "en": "heron",
+                  "hi": "बगुला"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "तिष्ठति",
+                "gloss": {
+                  "en": "stands",
+                  "hi": "खड़ा है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "स्था",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "नौका चलति।",
+            "meaning": {
+              "en": "The boat moves.",
+              "hi": "नाव चलती है।"
+            },
+            "words": [
+              {
+                "sa": "नौका",
+                "gloss": {
+                  "en": "boat",
+                  "hi": "नाव"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नौका",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "चलति",
+                "gloss": {
+                  "en": "moves",
+                  "hi": "चलती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "चल्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3sg"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which word is a verb?",
+          "hi": "क्रिया कौन-सा शब्द है?"
+        },
+        "explain": {
+          "en": "{{लिखति}} ends in {{ति}}: a verb.",
+          "hi": "{{लिखति}} {{ति}} पर समाप्त होता है: क्रिया।"
+        },
+        "options": [
+          {
+            "sa": "बालकः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "लिखति",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "नौका",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3sg"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Build the verb “he reads”.",
+          "hi": "क्रिया ‘वह पढ़ता है’ बनाइए।"
+        },
+        "explain": {
+          "en": "{{पठ}} + {{ति}}: {{पठति}}.",
+          "hi": "{{पठ}} + {{ति}}: {{पठति}}।"
+        },
+        "options": [],
+        "answers": [
+          "पठति"
+        ],
+        "tiles": [
+          "पठ",
+          "ति",
+          "पठ्",
+          "ते"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3sg"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every sentence that has a verb of going.",
+          "hi": "जाने की क्रिया वाले हर वाक्य को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "बालकः",
+            "गच्छति",
+            "बालिका",
+            "वदति",
+            "नाविकः",
+            "चलति",
+            "बकः",
+            "तिष्ठति"
+          ],
+          "targets": [
+            "गच्छति"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "The ghat speaks",
+          "hi": "घाट बोलता है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.pres-3sg"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Put the words in an order that keeps the meaning.",
+          "hi": "शब्दों को ऐसे क्रम में रखिए कि अर्थ वही रहे।"
+        },
+        "explain": {
+          "en": "Either order is a correct sentence: the endings carry the meaning.",
+          "hi": "दोनों क्रम सही वाक्य हैं: अर्थ प्रत्यय में है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "reorder",
+          "params": {
+            "sentence": "बालकः पठति"
+          },
+          "seed": 0
+        },
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "Everyone on the ghat is named and busy. The spirit leans back on the step and laughs, a sound like water over pebbles.",
+            "hi": "घाट पर सबके नाम लिए जा चुके हैं और सब अपने काम में लगे हैं। भूत सीढ़ी पर पीछे झुककर हँसता है, कंकड़ों पर बहते पानी जैसी हँसी।"
+          },
+          "failure": {
+            "en": "The sentence does not settle. Try the doer first, then what he does.",
+            "hi": "वाक्य जमता नहीं। पहले कर्ता, फिर वह क्या करता है।"
+          }
+        },
+        "roman": "show"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The present, he does",
+          "hi": "वर्तमान, वह करता है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "पठति",
+            "text": {
+              "en": "Root + {{ति}}: he, she or it does.",
+              "hi": "धातु + {{ति}}: वह करता/करती है।"
+            }
+          },
+          {
+            "sa": "बालकः पठति",
+            "text": {
+              "en": "Doer + verb: a sentence.",
+              "hi": "कर्ता + क्रिया: वाक्य।"
+            }
+          },
+          {
+            "sa": "गच्छति · पश्यति · पिबति · तिष्ठति",
+            "text": {
+              "en": "Four roots change shape.",
+              "hi": "चार धातुएँ रूप बदलती हैं।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "who-does-s1",
+    "brief": "Four small scenes along the ghat steps: a boy reading, a girl writing on a slate, a heron standing, a boat gliding; Śuka on Dādī's shoulder squawking happily; the small spirit counting on his fingers.",
+    "alt": {
+      "en": "Four actions on the ghat with a parrot squawking along",
+      "hi": "घाट पर चार क्रियाएँ, साथ में चहकता तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "ghataka"
+    ],
+    "place": "naditira"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Four small scenes along the ghat steps: a boy reading, a girl writing on a slate, a heron standing, a boat gliding; Śuka on Dādī's shoulder squawking happily; the small spirit counting on his fingers.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nghataka: A small grey-blue spirit like river mist, sitting on the lowest stone step with his wispy feet trailing in the water, big curious eyes.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-1733af00-c976-406a-a715-95d0e280c591.png",
+  "policy_version": "2026-10-20-full-text-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "67861dcadcf2e30d9ef8e65a39736772ca30e718a426c325db3630e712119c31",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\who-does-s1-phone-72badb65.webp",
+      "key": "learn/who-does-s1-phone-72badb65.webp",
+      "sha256": "72badb65063e7a60020c514fc983e8346007ff28b9c4585f0e202ff547bde1ca",
+      "bytes": 97588,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/who-does-s1-phone-72badb65.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\who-does-s1-tablet-62f357cf.webp",
+      "key": "learn/who-does-s1-tablet-62f357cf.webp",
+      "sha256": "62f357cfedb1ac52ca71db6252d71e373d41af4b366ed38996c4e147f9cbd609",
+      "bytes": 370222,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/who-does-s1-tablet-62f357cf.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

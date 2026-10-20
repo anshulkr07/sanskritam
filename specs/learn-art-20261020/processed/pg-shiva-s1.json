@@ -1,0 +1,1107 @@
+{
+  "id": "pg-shiva-s1",
+  "where": "pg.shiva#s1",
+  "ratio": "4:3",
+  "expected": [
+    "अइउण्",
+    "ऋऌक्",
+    "एओङ्",
+    "ऐऔच्",
+    "हयवरट्",
+    "लण्",
+    "ञमङणनम्",
+    "झभञ्",
+    "घढधष्",
+    "जबगडदश्",
+    "खफछठथचटतव्",
+    "कपय्",
+    "शषसर्",
+    "हल्"
+  ],
+  "prompt": "Edit the cave illustration in the FIRST image. Replace the entire carved inscription with EXACTLY the fourteen lines in the SECOND typography reference, copying every glyph and every final halant stroke accurately. Enlarge and flatten the inscription area on the right wall so all fourteen lines are clearly visible at phone size. Retain cave, four alcoves, grandmother, back-facing learner, green parrot, dark-coated man, quarter-visible silver spirit and warm stone light. Do not add line numbers or other text. Critical: each line ends with a visible virama/halant; retain vocalic L ऌ in line2 and correct ञ, ङ, ढ, ण. The SECOND reference is the ground truth. Fourteen exact lines:\nअइउण्\nऋऌक्\nएओङ्\nऐऔच्\nहयवरट्\nलण्\nञमङणनम्\nझभञ्\nघढधष्\nजबगडदश्\nखफछठथचटतव्\nकपय्\nशषसर्\nहल्\nPreserve the 4:3 landscape composition and complete painting.",
+  "source": {
+    "id": "pg.shiva",
+    "template": "scene",
+    "title": {
+      "en": "Fourteen lines of sound",
+      "hi": "ध्वनि की चौदह पंक्तियाँ"
+    },
+    "title_sa": "माहेश्वराणि सूत्राणि",
+    "minutes": 6,
+    "teaches": [
+      "panini.shiva-sutras"
+    ],
+    "needs": [
+      "script.cons.grid",
+      "script.vowel.long"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The last alcove",
+          "hi": "अन्तिम आला"
+        },
+        "image": {
+          "id": "pg-shiva-s1",
+          "brief": "A mountain cave with four alcoves in the far wall, three dark and the last one glowing behind a sealed round stone; fourteen short lines of script carved above it in a neat row; a small silver spirit of whom only a crescent quarter is visible sitting beside the stone; Dādī and Śuka looking up at the carving; Lubdhaka at the cave mouth with one hand raised, commanding.",
+          "alt": {
+            "en": "A glowing alcove behind a sealed stone with fourteen short carved lines above it",
+            "hi": "बन्द पत्थर के पीछे चमकता आला और उसके ऊपर खुदी चौदह छोटी पंक्तियाँ"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "padika"
+          ],
+          "place": "guha"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The last alcove glows behind a sealed stone, with fourteen short lines of script above it. Beside it sits Padikā, a spirit of whom only a quarter can be seen. “Speech has four quarters,” says Dādī. “Three lie hidden in the cave; people speak the fourth. Pāṇini's grammar finds the hidden ones, beginning with these lines.” Lubdhaka, at the cave mouth, says: “Open it.”",
+          "hi": "अन्तिम आला एक बन्द पत्थर के पीछे चमक रहा है, और उसके ऊपर लिपि की चौदह छोटी पंक्तियाँ हैं। उसके पास पदिका बैठी है, एक भूत जिसका केवल चौथाई भाग दिखता है। “वाणी के चार चरण हैं,” दादी कहती हैं। “तीन गुफा में छिपे हैं; चौथा लोग बोलते हैं। पाणिनि का व्याकरण छिपे हुओं को खोजता है, इन्हीं पंक्तियों से आरम्भ करके।” गुफा के द्वार पर लुब्धक कहता है: “इसे खोलो।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "चत्वारि वाक् परिमिता पदानि तानि विदुर् ब्राह्मणा ये मनीषिणः गुहा त्रीणि निहिता नेङ्गयन्ति तुरीयं वाचो मनुष्या वदन्ति",
+          "gloss": {
+            "en": "Speech has four measured quarters; the wise know them. Three, hidden in the cave, do not stir; the fourth quarter of speech is what people speak.",
+            "hi": "वाणी के चार नपे-तुले चरण हैं; ज्ञानी उन्हें जानते हैं। तीन, गुफा में छिपे, हिलते नहीं; वाणी का चौथा चरण मनुष्य बोलते हैं।"
+          },
+          "source": "Ṛgveda 1.164.45 (read at GRETIL, Aufrecht's edition)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Fourteen lines",
+          "hi": "चौदह पंक्तियाँ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.shiva-sutras"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "The Śiva sūtras list every sound of Sanskrit in fourteen short lines; tradition ascribes them to Śiva. Each line ends with a marker, a letter that is not itself a sound: ण् क् ङ् च् ट् ण् म् ञ् ष् श् व् य् र् ल्. They are Pāṇini's alphabet, arranged so that groups of sounds stand side by side.",
+          "hi": "शिवसूत्र संस्कृत की हर ध्वनि को चौदह छोटी पंक्तियों में गिनाते हैं; परम्परा उन्हें शिव से जोड़ती है। हर पंक्ति एक संकेत पर समाप्त होती है, एक ऐसा अक्षर जो स्वयं ध्वनि नहीं है: ण् क् ङ् च् ट् ण् म् ञ् ष् श् व् य् र् ल्। वे पाणिनि की वर्णमाला हैं, इस क्रम में कि ध्वनियों के समूह साथ-साथ आएँ।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "The fourteen lines",
+          "hi": "चौदह पंक्तियाँ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.shiva-sutras"
+        ],
+        "sutras": [
+          "SS.1",
+          "SS.14"
+        ],
+        "kind": "table",
+        "caption": {
+          "en": "Each line, and the sounds before its marker",
+          "hi": "हर पंक्ति, और संकेत से पहले की ध्वनियाँ"
+        },
+        "columns": [
+          {
+            "en": "No.",
+            "hi": "क्र."
+          },
+          {
+            "en": "The line",
+            "hi": "पंक्ति"
+          },
+          {
+            "en": "Sounds",
+            "hi": "ध्वनियाँ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "1",
+                "hi": "१"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अइउण्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अ इ उ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "2",
+                "hi": "२"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ऋऌक्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ऋ ऌ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "3",
+                "hi": "३"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एओङ्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ए ओ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "4",
+                "hi": "४"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ऐऔच्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ऐ औ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "5",
+                "hi": "५"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "हयवरट्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ह य व र",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "6",
+                "hi": "६"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लण्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ल",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "7",
+                "hi": "७"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ञमङणनम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ञ म ङ ण न",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "8",
+                "hi": "८"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "झभञ्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "झ भ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "9",
+                "hi": "९"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "घढधष्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "घ ढ ध",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "10",
+                "hi": "१०"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "जबगडदश्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ज ब ग ड द",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "11",
+                "hi": "११"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "खफछठथचटतव्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ख फ छ ठ थ च ट त",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "12",
+                "hi": "१२"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "कपय्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "क प",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "13",
+                "hi": "१३"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "शषसर्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "श ष स",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "14",
+                "hi": "१४"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "हल्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ह",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "The marker is dropped: it names the group, it is not a sound.",
+          "hi": "संकेत हटा दिया जाता है: वह समूह का नाम बताता है, ध्वनि नहीं है।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Two-letter names",
+          "hi": "दो अक्षरों के नाम"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.shiva-sutras"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Pāṇini needs short names for groups of sounds. Take a letter and a later marker: the name stands for that letter and every sound between them, markers left out. So {{अच्}}, from अ to च्, is all the vowels; {{हल्}}, from ह to ल्, is all the consonants.",
+          "hi": "पाणिनि को ध्वनि-समूहों के छोटे नाम चाहिए। एक अक्षर और उसके बाद का एक संकेत लीजिए: नाम उस अक्षर और बीच की हर ध्वनि का है, संकेत छोड़कर। इसलिए {{अच्}}, अ से च् तक, सब स्वर है; {{हल्}}, ह से ल् तक, सब व्यञ्जन है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "प्रत्याहारः",
+          "meaning": {
+            "en": "a short name for a group of sounds",
+            "hi": "ध्वनि-समूह का संक्षिप्त नाम"
+          }
+        }
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "Names made from the lines",
+          "hi": "पंक्तियों से बने नाम"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.shiva-sutras"
+        ],
+        "sutras": [
+          "1.1.71"
+        ],
+        "kind": "table",
+        "caption": {
+          "en": "From a letter to a marker",
+          "hi": "एक अक्षर से एक संकेत तक"
+        },
+        "columns": [
+          {
+            "en": "Name",
+            "hi": "नाम"
+          },
+          {
+            "en": "From … to",
+            "hi": "से … तक"
+          },
+          {
+            "en": "Sounds",
+            "hi": "ध्वनियाँ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "अच्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अ … च्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अ इ उ ऋ ऌ ए ओ ऐ औ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "इक्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "इ … क्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "इ उ ऋ ऌ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "एच्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ए … च्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ए ओ ऐ औ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "यण्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "य … ण्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "य व र ल",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "जश्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ज … श्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ज ब ग ड द",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "शल्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "श … ल्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "श ष स ह",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "हल्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ह … ल्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ह य व र ल ञ म ङ ण न झ भ घ ढ ध ज ब ग ड द ख फ छ ठ थ च ट त क प श ष स",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "Each letter also stands for its long and nasal forms.",
+          "hi": "हर अक्षर अपने दीर्घ और अनुनासिक रूपों का भी बोध कराता है।"
+        }
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.shiva-sutras"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap the sounds inside the name {{इक्}}.",
+          "hi": "नाम {{इक्}} के भीतर की ध्वनियाँ छुइए।"
+        },
+        "params": {
+          "passage": [
+            "अ",
+            "इ",
+            "उ",
+            "ऋ",
+            "ऌ",
+            "ए",
+            "ओ"
+          ],
+          "targets": [
+            "इ",
+            "उ",
+            "ऋ",
+            "ऌ"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.shiva-sutras"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which name stands for all the vowels?",
+          "hi": "कौन-सा नाम सब स्वरों का है?"
+        },
+        "explain": {
+          "en": "{{अच्}}: from अ to the marker च्, the nine vowels.",
+          "hi": "{{अच्}}: अ से संकेत च् तक, नौ स्वर।"
+        },
+        "options": [
+          {
+            "sa": "अच्",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "हल्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "यण्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.shiva-sutras"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each name to its sounds.",
+          "hi": "हर नाम को उसकी ध्वनियों से जोड़िए।"
+        },
+        "explain": {
+          "en": "Each name is a letter and a marker.",
+          "hi": "हर नाम एक अक्षर और एक संकेत है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "अच्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "all the vowels",
+                "hi": "सब स्वर"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "हल्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "all the consonants",
+                "hi": "सब व्यञ्जन"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "यण्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "the four semivowels",
+                "hi": "चार अन्तःस्थ"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "एच्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "the four diphthongs",
+                "hi": "चार सन्ध्यक्षर"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.shiva-sutras"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Build the name of the four diphthongs {{ए ओ ऐ औ}}.",
+          "hi": "चार सन्ध्यक्षरों {{ए ओ ऐ औ}} का नाम बनाइए।"
+        },
+        "explain": {
+          "en": "From ए to the marker च्: {{एच्}}.",
+          "hi": "ए से संकेत च् तक: {{एच्}}।"
+        },
+        "options": [],
+        "answers": [
+          "एच्"
+        ],
+        "tiles": [
+          "ए",
+          "च्",
+          "ङ्",
+          "ण्"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "The first line",
+          "hi": "पहली पंक्ति"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "panini.shiva-sutras"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which name stands for {{अ इ उ ऋ ऌ}}?",
+          "hi": "कौन-सा नाम {{अ इ उ ऋ ऌ}} का है?"
+        },
+        "explain": {
+          "en": "From अ to the marker क् of the second line: {{अक्}}.",
+          "hi": "अ से दूसरी पंक्ति के संकेत क् तक: {{अक्}}।"
+        },
+        "options": [
+          {
+            "sa": "अच्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अक्",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "इक्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“अक्,” you say, and the first line of the carving, अइउण्, brightens, and then the second, and the third, line after line, like a row of lamps taken from one flame. Padikā, who has been a crescent, grows to a half. “Every sound has its place,” she says, “and a short name in the order.” At the cave mouth, Lubdhaka says: “Faster.”",
+            "hi": "“अक्,” आप कहते हैं, और खुदी पंक्तियों की पहली, अइउण्, चमक उठती है, फिर दूसरी, फिर तीसरी, पंक्ति पर पंक्ति, जैसे एक ही लौ से जलाए दीपों की कतार। पदिका, जो अब तक अर्धचन्द्र थी, आधी हो जाती है। “हर ध्वनि का अपना स्थान है,” वह कहती है, “और क्रम में एक छोटा नाम।” गुफा के द्वार पर लुब्धक कहता है: “और तेज़।”"
+          },
+          "failure": {
+            "en": "The lines stay dim. {{अक्}} runs from अ to the marker क्.",
+            "hi": "पंक्तियाँ मद्धम रहती हैं। {{अक्}} अ से संकेत क् तक जाता है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's names",
+          "hi": "पाणिनि के नाम"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "panini.shiva-sutras"
+        ],
+        "sutras": [
+          "1.1.71",
+          "1.1.69"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 1.1.71, {{आदिरन्त्येन सहेता}}, makes these names: a first letter, together with the last marker, stands for itself and the letters between. And 1.1.69, which you met with the vowels, lets each letter stand for its twins as well.",
+          "hi": "सूत्र 1.1.71, {{आदिरन्त्येन सहेता}}, ये नाम बनाता है: पहला अक्षर, अन्तिम संकेत के साथ, अपना और बीच के अक्षरों का बोध कराता है। और 1.1.69, जो आप स्वरों के साथ मिल चुके हैं, हर अक्षर को उसके जुड़वाँ रूपों का भी बोधक बनाता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Fourteen lines of sound",
+          "hi": "ध्वनि की चौदह पंक्तियाँ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "१४",
+            "text": {
+              "en": "Fourteen lines, each ending in a marker.",
+              "hi": "चौदह पंक्तियाँ, हर एक संकेत पर समाप्त।"
+            }
+          },
+          {
+            "sa": "अच् · हल् · यण्",
+            "text": {
+              "en": "Names: a letter and a marker.",
+              "hi": "नाम: एक अक्षर और एक संकेत।"
+            }
+          },
+          {
+            "sa": "आदिरन्त्येन सहेता",
+            "text": {
+              "en": "1.1.71 makes the names.",
+              "hi": "1.1.71 नाम बनाता है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "pg-shiva-s1",
+    "brief": "A mountain cave with four alcoves in the far wall, three dark and the last one glowing behind a sealed round stone; fourteen short lines of script carved above it in a neat row; a small silver spirit of whom only a crescent quarter is visible sitting beside the stone; Dādī and Śuka looking up at the carving; Lubdhaka at the cave mouth with one hand raised, commanding.",
+    "alt": {
+      "en": "A glowing alcove behind a sealed stone with fourteen short carved lines above it",
+      "hi": "बन्द पत्थर के पीछे चमकता आला और उसके ऊपर खुदी चौदह छोटी पंक्तियाँ"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "padika"
+    ],
+    "place": "guha"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A mountain cave with four alcoves in the far wall, three dark and the last one glowing behind a sealed round stone; fourteen short lines of script carved above it in a neat row; a small silver spirit of whom only a crescent quarter is visible sitting beside the stone; Dādī and Śuka looking up at the carving; Lubdhaka at the cave mouth with one hand raised, commanding.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\npadika: A small spirit of pale silver light of whom only one quarter is visible, like a crescent, the rest a faint outline in the dark beside the last, glowing alcove.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-f6e7ef77-cd5b-49b5-9f84-241f992e8fef.png",
+  "history": [
+    {
+      "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-66de2e26-bcd9-434d-8003-3e9d4c9c3f91.png",
+      "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A mountain cave with four alcoves in the far wall, three dark and the last one glowing behind a sealed round stone; fourteen short lines of script carved above it in a neat row; a small silver spirit of whom only a crescent quarter is visible sitting beside the stone; Dādī and Śuka looking up at the carving; Lubdhaka at the cave mouth with one hand raised, commanding.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\npadika: A small spirit of pale silver light of whom only one quarter is visible, like a crescent, the rest a faint outline in the dark beside the last, glowing alcove.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nअइउण्\nऋऌक्\nएओङ्\nऐऔच्\nहयवरट्\nलण्\nञमङणनम्\nझभञ्\nघढधष्\nजबगडदश्\nखफछठथचटतव्\nकपय्\nशषसर्\nहल्",
+      "sha256": "10897b799eb6de1c6f68d29d7db0310cd158af98fa2e0c692fd423d1a9d9c5c3",
+      "master_retained": false
+    }
+  ],
+  "policy_version": "2026-10-20-complete-source-audit",
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "742cd551cd045a6c580dac1e52450be17b774de8c66c16221cd05ab5140035bf",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\pg-shiva-s1-phone-16e01e11.webp",
+      "key": "learn/pg-shiva-s1-phone-16e01e11.webp",
+      "sha256": "16e01e117ef3692e4967290371f17cc211e8536989e713df917ffe144935b917",
+      "bytes": 107094,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/pg-shiva-s1-phone-16e01e11.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\pg-shiva-s1-tablet-bd165692.webp",
+      "key": "learn/pg-shiva-s1-tablet-bd165692.webp",
+      "sha256": "bd165692e60ec031d4981652d1fc3ea1e5ea3369c653bbc3cfe7db648009e18f",
+      "bytes": 406480,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/pg-shiva-s1-tablet-bd165692.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

@@ -9,6 +9,17 @@ function load(file, imports = {}) {
  return module.exports;
 }
 const {index, lessons} = JSON.parse(readFileSync(new URL('../src/story/__fixtures__/pack.json',import.meta.url),'utf8'));
+const readingFixtures=JSON.parse(readFileSync(new URL('../src/story/__fixtures__/readings.json',import.meta.url),'utf8'));
+Object.assign(lessons,readingFixtures.lessons);
+// Stand-in recorded clips (a fake host) for two fixture lessons, so the browser run can prove speakers, tap-to-hear cells, letter sounds and the buffering window.
+const clipTexts=card=>{const t=[],add=x=>{if(typeof x==='string'&&x.trim())t.push(x);};
+ if(card.kind==='story'){card.lines.forEach(l=>add(l.sa));add(card.quote?.sa);}
+ if(card.kind==='teach'){add(card.term?.sa);card.rows.forEach(r=>add(r.sa));card.steps.forEach(r=>add(r.sa));card.examples.forEach(e=>{add(e.sa);e.words.forEach(w=>add(w.sa));});}
+ if(card.kind==='summary')card.points.forEach(p=>add(p.sa));
+ if(card.kind==='table')card.rows.forEach(r=>r.forEach(c=>add(c.sa)));
+ if(card.kind==='explore'&&card.widget==='mouth_map')(card.params.letters||[]).forEach(add);
+ return [...new Set(t.map(x=>x.normalize('NFC').split(/\s+/).filter(Boolean).join(' ')))];};
+for(const id of ['vowels.short','vowels.signs']){const map={};for(const card of lessons[id].cards){const urls=[];for(const text of clipTexts(card)){map[text]??='https://clips.test/'+Object.keys(map).length+'.mp3';if(!urls.includes(map[text]))urls.push(map[text]);}if(urls.length)card.audio=urls;}lessons[id].audio=map;}
 const {derive, courseOrder} = load('state.ts');
 const vowels = ['vowels.short','vowels.long','vowels.compound','vowels.signs'];
 let state = derive(index, []);
@@ -22,6 +33,14 @@ assert.equal(courseOrder(index)[0].role,'prologue'); assert.ok(courseOrder(index
 assert.deepEqual(derive(index,['unknown','prologue','prologue']).finished,['prologue']);
 const recovered=structuredClone(index); recovered.acts[0].parts[0].units=[recovered.acts[0].parts[0].units[0]];
 assert.equal(derive(recovered,['prologue',...vowels,'vowels.check']).leaves[0].recovered,true);
+const optionalReading=structuredClone(recovered), optionalUnit=optionalReading.acts[0].parts[0].units[0];
+optionalUnit.reading={...optionalUnit.lessons[0],id:'vowels.reading',template:'episode'};
+const withoutReading=derive(optionalReading,['prologue',...vowels,'vowels.check']);
+const withReading=derive(optionalReading,['prologue',...vowels,'vowels.check','vowels.reading']);
+assert.ok(courseOrder(optionalReading).some(s=>s.role==='reading'&&s.lesson_id==='vowels.reading'));
+assert.equal(withoutReading.units.vowels.done,true);assert.equal(withoutReading.leaves[0].recovered,true);
+assert.ok(withReading.finished.includes('vowels.reading'));assert.deepEqual(withReading.current,withoutReading.current);
+assert.deepEqual(withReading.units,withoutReading.units);assert.deepEqual(withReading.ghosts_freed,withoutReading.ghosts_freed);
 console.log('Story state parity cases passed');
 
 const {parseMarkup}=load('markup.ts');
@@ -54,14 +73,14 @@ assert.equal(grade(engine('grid_fill',grid),{cells:[grid[0]]}),'unsure');
 assert.equal(grade(engine('contrast',{pick:'a'},{abstained:true}),{pick:'b'}),'unsure');
 console.log(practiced+' fixture practice cards and all seven engine grading kinds passed');
 
-const {markResult,joinLetter,heldWeight,rhythmResult,splitEnding,roleResult,naturalOrder,allOrders,naturalOrders,swapWords,shuffled,clampIndex,factoryResult,nextStage,kindResult,stepChanged,clampSteps}=load('widgets/logic.ts');
+const {markResult,joinLetter,rhythmResult,splitEnding,roleResult,naturalOrder,allOrders,naturalOrders,swapWords,shuffled,clampIndex,factoryResult,nextStage,kindResult,stepChanged,clampSteps}=load('widgets/logic.ts');
 for(const lesson of Object.values(lessons))for(const card of lesson.cards.filter(c=>c.kind==='explore')){
  if(card.widget==='mark_words'){const selected=card.params.passage.flatMap((w,i)=>card.params.targets.includes(w)?[i]:[]);assert.ok(markResult(card.params,selected).every(s=>s==='found'||s==='neutral'));assert.equal(markResult(card.params,[]).filter(s=>s==='missed').length,selected.length);}
  if(card.widget==='letter_builder')for(const target of card.params.targets){const possible=card.params.bases.flatMap(base=>[...card.params.signs,...card.params.halves].map(chip=>joinLetter(base,chip,card.params.halves)));assert.ok(possible.includes(target));assert.ok(card.params.iast[target]);}
  if(card.widget==='mouth_map')for(const letter of card.params.letters)assert.ok(card.params.places[letter].every(p=>card.params.place_names[p]));
  if(card.widget==='rhythm_tapper')for(const scan of card.params.scan){assert.equal(scan.weights.length,scan.syllables.length);assert.ok(rhythmResult(scan.weights,scan.weights));}
 }
-assert.equal(joinLetter('ष','क्',['क्']),'क्ष');assert.equal(joinLetter('क','ि',[]),'कि');assert.equal(heldWeight(350),'L');assert.equal(heldWeight(351),'G');
+assert.equal(joinLetter('ष','क्',['क्']),'क्ष');assert.equal(joinLetter('क','ि',[]),'कि');
 // form_explorer, role_arrows, word_shuffle: the logic that labels what the engine supplied
 assert.deepEqual(splitEnding('देव','देवेन'),{head:'देव',tail:'ेन',shown:'◌ेन'});
 assert.equal(splitEnding('देव','देवः').shown,'◌ः');assert.equal(splitEnding('बालक','बालकस्य').shown,'स्य');assert.equal(splitEnding('पठ्','पठति').shown,'ति');
@@ -86,6 +105,7 @@ let online=true;const calls=[];class ApiError extends Error{constructor(status){
 const client={ApiError,request:async(path,init={})=>{if(!online)throw new ApiError(0);calls.push({path,...init});if(path==='/learn/index'){if(init.headers?.['If-None-Match'])throw new ApiError(304);return index;}if(path.startsWith('/learn/lessons/'))return lessons[decodeURIComponent(path.split('/').pop())];return {};}};
 const cache=load('cache.ts',{'@react-native-async-storage/async-storage':storage,'../api/client':client});
 const images=[];const api=load('api.ts',{'../api/client':client,'./cache':cache,'../services/artworkCache':{prefetchArtwork:uris=>images.push(...uris)},'./artwork':{resolvePicture:p=>p}});
+assert.ok(api.lessonSummaries(optionalReading).some(l=>l.id==='vowels.reading'));
 assert.deepEqual(await api.getIndex(),index);assert.deepEqual(await api.getIndex(),index);assert.ok(calls.some(c=>c.headers?.['If-None-Match']==='"'+index.version+'"'));
 await api.prefetchLessons([index.course.prologue,...index.acts[0].parts[0].units[0].lessons],false);
 online=false;
@@ -105,6 +125,66 @@ console.log('Offline index/map/next-three cache, ETag, hash cleanup, ordered fin
 const engineFixtures=JSON.parse(readFileSync(new URL('../src/story/__fixtures__/engine.json',import.meta.url),'utf8'));
 for(const exercise of engineFixtures){const card={...base,mode:'engine',exercise};const answer=exercise.kind==='grid_fill'?{cells:exercise.answer}:exercise.kind==='reorder'?{order:exercise.answer.equivalent_orders[0]}:exercise.answer;assert.equal(grade(card,answer),'correct',exercise.kind);}
 console.log('All seven real backend-generated engine fixtures grade correctly');
+
+// Home unit-check label, end-of-course state and the scan_metre verse (pure logic behind the screens)
+const sel=load('selectors.ts');
+assert.equal(sel.testOutLabel(1).en,'I know these letters: take the unit check');assert.ok(sel.testOutLabel(1).hi.includes('अक्षर'));
+for(const act of [2,3,4,5,undefined]){assert.equal(sel.testOutLabel(act).en,'I know this unit: take the unit check');assert.ok(!/letters/i.test(sel.testOutLabel(act).en)&&!sel.testOutLabel(act).hi.includes('अक्षर'));}
+assert.equal(sel.currentContext(index,derive(index,[])).unit.id,'vowels','during the prologue the road shows the first unit');
+assert.equal(sel.courseComplete(index,derive(index,['prologue',...vowels,'vowels.check'])),false,'planned units ahead means the course is not complete');
+const whole=structuredClone(index);whole.acts=[whole.acts[0]];whole.acts[0].parts=[whole.acts[0].parts[0]];whole.acts[0].parts[0].units=[whole.acts[0].parts[0].units[0]];
+const wholeDone=derive(whole,['prologue',...vowels,'vowels.check']),wholeMid=derive(whole,['prologue',...vowels]);
+assert.equal(wholeDone.current,null);assert.equal(wholeDone.coming_soon,null);
+assert.equal(sel.courseComplete(whole,wholeDone),true);assert.equal(sel.currentContext(whole,wholeDone),undefined,'a finished course has no unit to be "here"');
+assert.equal(sel.courseComplete(whole,wholeMid),false);assert.equal(sel.currentContext(whole,wholeMid).unit.id,'vowels');
+assert.equal(sel.courseComplete(whole,derive(whole,[])),false);
+const empty={...whole,acts:[],course:null};assert.equal(sel.courseComplete(empty,derive(empty,[])),false,'an empty index is not a finished course');
+const metre=load('metre.ts'),scanned=engineFixtures.find(x=>x.kind==='scan_metre'),scanLines=scanned.item.syllables;
+const verse=metre.verseLayout(scanned.item.text,scanLines);
+assert.deepEqual(verse[0].map(w=>w.map(c=>c.sa).join('')),scanned.item.text.split(' '));assert.deepEqual(verse[0].map(w=>w.length),[4,4,4,4]);assert.deepEqual(verse.flat(2).map(c=>c.i),[...Array(16).keys()]);
+const kss=metre.verseLayout('कामदेवावतारोऽयं राजञ्जातस्तवात्मजः',[['का','म','दे','वा','व','ता','रो','यं','रा','ज','ञ्जा','त','स्त','वा','त्म','जः']]);
+assert.deepEqual(kss[0].map(w=>w.length),[8,8],'the avagraha is not a syllable');
+assert.deepEqual(metre.verseLayout('अ आ इ ई',[['अ','आ'],['इ','ई']]).map(l=>l.map(w=>w.map(c=>c.i))),[[[0],[1]],[[2],[3]]]);
+for(const [text,lines] of [[undefined,[['अ','इ']]],['',[['अ','इ']]],['अ आ',[['अ','इ']]],['अइ उ',[['अ','इ']]],['अ इ उ',[['अ','इ']]],['अ इ',[['अ'],['इ']]],['अइ',[['अ'],['इ']]]]){const out=metre.verseLayout(text,lines);assert.deepEqual(out.map(l=>l.length),lines.map(()=>1),String(text));assert.deepEqual(out.flat(2).map(c=>c.sa),lines.flat(),'the whole verse stays visible when words and syllables disagree');}
+assert.equal(metre.weightMark(0),'◡');assert.equal(metre.weightMark(1),'—');
+assert.deepEqual(metre.weightsFromOrder([['अ','इ'],['उ']],[0,1,0]),[['L','G'],['L']]);assert.equal(metre.orderFromWeights(undefined),null);assert.equal(metre.orderFromWeights(['L']),null);assert.deepEqual(metre.orderFromWeights([['L','G'],['G']]),[0,1,1]);
+const scanOrder=metre.orderFromWeights(scanned.answer.weights),scanCard=engine('scan_metre',scanned.answer,scanned.item);
+assert.deepEqual(metre.weightsFromOrder(scanLines,scanOrder),scanned.answer.weights);assert.equal(grade(scanCard,{weights:metre.weightsFromOrder(scanLines,scanOrder)}),'correct');
+assert.equal(grade(scanCard,{weights:metre.weightsFromOrder(scanLines,scanOrder.map((w,i)=>i===0?1-w:w))}),'off_by_one');
+console.log('Unit-check label, course-complete state and scan_metre verse layout and submit payload passed');
+// Practice help: the match board, the one-line instructions and the daily hint rules
+const help=load('cards/practiceHelp.ts'),hintRules=load('../services/dailyHintLogic.ts');
+{
+ const none=[null,null,null,null];
+ let r=help.tapPair(null,none,'L',1);assert.deepEqual(r,{tile:{side:'L',at:1},pairs:none},'first tap only selects');
+ r=help.tapPair(r.tile,r.pairs,'L',1);assert.equal(r.tile,null,'the same tile again deselects');
+ r=help.tapPair({side:'L',at:1},none,'L',2);assert.deepEqual(r.tile,{side:'L',at:2},'another left tile replaces the selection');
+ r=help.tapPair({side:'L',at:1},none,'R',3);assert.deepEqual(r,{tile:null,pairs:[null,3,null,null]},'left then right pairs them');
+ r=help.tapPair({side:'R',at:3},none,'L',0);assert.deepEqual(r,{tile:null,pairs:[3,null,null,null]},'right then left pairs them too');
+ r=help.tapPair({side:'L',at:2},[null,3,null,null],'R',3);assert.deepEqual(r.pairs,[null,null,3,null],'a new left takes a right over from an older pair');
+ r=help.tapPair({side:'L',at:1},[null,0,null,null],'R',2);assert.deepEqual(r.pairs,[null,2,null,null],'a left that is re-paired moves');
+ r=help.tapPair(null,[null,3,null,null],'L',1);assert.deepEqual(r,{tile:{side:'L',at:1},pairs:none},'tapping a paired left lifts the pair');
+ r=help.tapPair(null,[null,3,null,null],'R',3);assert.deepEqual(r,{tile:{side:'R',at:3},pairs:none},'tapping a paired right lifts the pair');
+ assert.ok(help.matchStatus(null,none,false).includes('0/4'));assert.ok(help.matchStatus({side:'L',at:0},none,false).includes('right'));assert.ok(help.matchStatus({side:'R',at:0},none,true).includes('बाईं'));assert.ok(help.matchStatus(null,[0,1,2,3],false).startsWith('All paired'));
+ const modeOf=m=>({mode:m,exercise:undefined});
+ assert.equal(help.howTo(modeOf('choice'),false),null);assert.equal(help.howTo(modeOf('match'),false),null);
+ for(const m of ['order','type'])for(const hi of [false,true])assert.ok(help.howTo(modeOf(m),hi).length>10);
+ for(const kind of ['reorder','grid_fill','scan_metre','contrast','sandhi_join'])for(const hi of [false,true])assert.ok(help.howTo({mode:'engine',exercise:{kind}},hi));
+ assert.equal(hintRules.hintDay(new Date(2026,9,5,23,59)),'2026-10-05');assert.equal(hintRules.hintDay(new Date(2026,11,31)),'2026-12-31');
+ assert.equal(hintRules.hintAvailable(null,'2026-10-20'),true);assert.equal(hintRules.hintAvailable({day:'2026-10-20',used:true},'2026-10-20'),false,'spent today');assert.equal(hintRules.hintAvailable({day:'2026-10-19',used:true},'2026-10-20'),true,'a new day, a new hint');assert.equal(hintRules.hintAvailable({day:'2026-10-20',used:false},'2026-10-20'),true);
+ assert.deepEqual(hintRules.parseHintRecord('{"day":"2026-10-20","used":true}'),{day:'2026-10-20',used:true});for(const bad of [null,'','x','{}','{"day":1,"used":true}'])assert.equal(hintRules.parseHintRecord(bad),null);
+}
+// Audio window: the card on screen, three ahead, three behind
+{
+ const w=load('audioWindow.ts');
+ assert.deepEqual(w.audioWindow(5,12),[5,6,7,8,4,3,2],'three each way, nearest first, ahead before behind');
+ assert.deepEqual(w.audioWindow(0,12),[0,1,2,3]);assert.deepEqual(w.audioWindow(11,12),[11,10,9,8]);assert.deepEqual(w.audioWindow(1,3),[1,2,0]);
+ assert.deepEqual(w.audioWindow(99,5),[4,3,2,1],'an index past the end clamps');assert.deepEqual(w.audioWindow(-4,5),[0,1,2,3]);assert.deepEqual(w.audioWindow(0,0),[]);assert.deepEqual(w.audioWindow(0,1),[0]);
+ const deck=Array.from({length:10},(_,i)=>({audio:i%2?[`c${i}a`,`c${i}b`]:undefined}));deck[3].audio.push('c1a');
+ assert.deepEqual(w.windowClips(deck,4),['c5a','c5b','c7a','c7b','c3a','c3b','c1a','c1b'],'cards with no audio add nothing; nearest first; a clip two cards share is held once');
+ assert.deepEqual(w.windowClips([],0),[]);
+}
+console.log('Match board, instructions, daily-hint rules and the audio window passed');
 
 if(process.argv.includes('--backend'))await checkRealBackend();
 async function checkRealBackend(){
@@ -133,7 +213,7 @@ async function checkRealBackend(){
  assert.equal((await actualClient.request('/learn/review?limit=12')).items.length,0);
  fs.writeFileSync(path.join(mobile,'src/story/__fixtures__/backend-verification.json'),JSON.stringify({backend:'FastAPI TestClient with isolated SQLite',testOut:'passed after offline replay',ghostFreed:'dhumaka',reviewItems:session.items.length,reviewAfter:0,orderedPosts:actualPosts},null,2));
  console.log('REAL FastAPI: offline test-out replay, Dhūmaka freed, earned XP, and offline review replay passed');
- }finally{if(child.exitCode===null){const closed=new Promise(resolve=>child.once('close',resolve));child.kill();await closed;}if(path.dirname(temporary)!==path.join(mobile,'src/story'))throw Error('Unexpected QA folder');fs.rmSync(temporary,{recursive:true,force:true});}
+ }finally{if(child.exitCode===null){const closed=new Promise(resolve=>child.once('close',resolve));child.kill();await closed;}if(path.dirname(temporary)!==path.join(mobile,'src/story'))throw Error('Unexpected QA folder');fs.rmSync(temporary,{recursive:true,force:true,maxRetries:8,retryDelay:150});}
 }
 
 // Optional browser acceptance harness. It bundles the production TSX with web
@@ -152,11 +232,13 @@ async function visualChecks(){
  const guide=put('guide.ts',"import {useSyncExternalStore} from 'react';let lang='en';const listeners=new Set();export function useGuideLang(){const value=useSyncExternalStore(fn=>{listeners.add(fn);return()=>listeners.delete(fn)},()=>lang,()=>lang);return {lang:value,t:bi=>bi?.[value]||'',setLang:l=>{lang=l;listeners.forEach(f=>f())}};}");
  const storage=put('storage.ts',"export default {getItem:async k=>localStorage.getItem(k),setItem:async(k,v)=>localStorage.setItem(k,v),getAllKeys:async()=>Object.keys(localStorage),multiRemove:async keys=>keys.forEach(k=>localStorage.removeItem(k))};");
  const client=put('client.ts',"export class ApiError extends Error {constructor(public status:number){super(String(status));}}export const api={};export async function request(path,init={}){if(localStorage.getItem('qa.offline')==='true')throw new ApiError(0);const response=await fetch(path,{...init,headers:{'Content-Type':'application/json',...init.headers}});if(!response.ok)throw new ApiError(response.status);return response.json();}");
- const stub=put('stub.tsx',"export default function Stub(){return null;}export const Skeleton=()=>null;export const lessonArtworkSources=()=>[];export const getLearnV2Lesson=()=>null;export const loadCardLesson=()=>null;export const haptics={tap(){},correct(){}};export const findStopByCards=()=>null;export const stopAfter=()=>null;export const IconButton=()=>null;export const LangSwitch=()=>null;export const PrimaryButton=()=>null;export const Segments=()=>null;export const TextButton=()=>null;export const prefetchArtwork=()=>{};");
+ const auth=put('auth.tsx',"import {createContext} from 'react';export const AuthContext=createContext(undefined);export function useAuth(){return {};}");
+ const stub=put('stub.tsx',"export default function Stub(){return null;}export const Skeleton=()=>null;export const lessonArtworkSources=()=>[];export const getLearnV2Lesson=()=>null;export const loadCardLesson=()=>null;export const haptics={tap(){},correct(){}};export const findStopByCards=()=>null;export const stopAfter=()=>null;export const IconButton=()=>null;export const LangSwitch=()=>null;export const PrimaryButton=()=>null;export const Segments=()=>null;export const TextButton=()=>null;export const prefetchArtwork=()=>{};export const holdClips=async(urls)=>{(globalThis.__held=globalThis.__held||[]).push(urls);};export const playClip=async(url)=>{(globalThis.__played=globalThis.__played||[]).push(url);return {stop:async()=>{},durationHint:1};};");
  const artwork=put('artwork.tsx',"export {Image as ArtworkImage} from 'react-native';");
- const entry=put('entry.tsx',"import React,{useState} from 'react';import {createRoot} from 'react-dom/client';import {View,ScrollView} from 'react-native';import pack from '../__fixtures__/pack.json';import StoryCardView from '../cards';import StoryLessonScreen,{StoryLessonPlayer} from '../screens/StoryLesson';import StoryHome,{JourneyMap,StoryHomeView} from '../screens/StoryHome';import {derive} from '../state';import {lessonSummaries} from '../api';import {UnitEndView,LeafShelfView,GhostsView,Cast} from '../screens/Collections';import StoryReview from '../screens/StoryReview';import Settings from '../Settings';import {useStoryFlag} from '../flags';import {setStoryAppearance,useStoryTheme} from '../theme';import {useGuideLang} from '../../hooks/useGuide';import {RomanContext} from '../text';function App(){const [mode,setMode]=useState('home'),[lesson,setLesson]=useState('vowels.short'),[cardId,setCard]=useState('s1'),[progress,setProgress]=useState({}),[done,setDone]=useState(false),[point,setPoint]=useState('new');const fixtureState=derive(pack.index,point==='new'?[]:point==='mid'?['prologue','vowels.short']:['prologue',...pack.index.acts[0].parts[0].units[0].lessons.map(l=>l.id),'vowels.check']);const fixtureSummary=lessonSummaries(pack.index).find(l=>l.id===fixtureState.current?.lesson_id);const enabled=useStoryFlag(),theme=useStoryTheme(),{setLang}=useGuideLang();window.storyNavigate=(name,params)=>{if(name==='StoryLesson'){setLesson(params.lessonId);setMode('route');setDone(false);}else if(name==='StoryMap')setMode('map');else if(name==='StoryReview')setMode('review');else setMode('home');};window.qa={fixture:(mode,point)=>{setPoint(point);setMode(mode);},showCard:(id,card)=>{setLesson(id);setCard(card);setProgress({});setMode('card');},showLesson:id=>{setLesson(id);setMode('lesson');setDone(false);},show:mode=>setMode(mode),theme:setStoryAppearance,lang:setLang,enabled};const l=pack.lessons[lesson],card=l.cards.find(c=>c.id===cardId)||l.cards[0];return <View style={{flex:1,backgroundColor:theme.paper}}><div id='qa-state' data-theme={theme.dark?'dark':'light'} data-enabled={enabled} data-done={done}/>{mode==='review'?<StoryReview/>:mode==='fixtureHome'?<StoryHomeView index={pack.index} state={fixtureState} summary={fixtureSummary} lesson={pack.lessons[fixtureSummary?.id]} onLesson={()=>{}} onMap={()=>setMode('map')} onLeaves={()=>setMode('leaves')} onGhosts={()=>setMode('ghosts')} onReview={()=>{}} onCast={()=>setMode('cast')} onLibrary={()=>{}}/>:mode==='unitEnd'?<UnitEndView index={pack.index} state={fixtureState} unitId='vowels' receipt={{xp:10}} onGhosts={()=>setMode('ghosts')} onContinue={()=>setMode('fixtureHome')}/>:mode==='leaves'?<LeafShelfView index={pack.index} state={fixtureState} onBack={()=>setMode('home')} onLeaf={()=>{}}/>:mode==='ghosts'?<GhostsView index={pack.index} state={fixtureState} onBack={()=>setMode('home')}/>:mode==='cast'?<Cast/>:mode==='settings'?<Settings/>:mode==='home'?<StoryHome autoStart={false}/>:mode==='map'?<JourneyMap/>:mode==='flag'?<div>{enabled?<StoryHome autoStart={false}/>:<span>Legacy Learn</span>}</div>:mode==='route'?<StoryLessonScreen route={{params:{lessonId:lesson}}} navigation={{goBack:()=>setMode('home'),push:(name,params)=>window.storyNavigate(name,params)}}/>:mode==='lesson'?<StoryLessonPlayer key={lesson} lesson={l} characters={pack.index.characters} onClose={()=>setDone(true)}/>:<ScrollView style={{flex:1}} contentContainerStyle={{padding:16,gap:12}}><RomanContext.Provider value={card.kind!=='practice'||card.roman==='show'||!!progress[card.id]}><StoryCardView key={lesson+cardId} card={card} characters={pack.index.characters} progress={progress[card.id]} onAnswer={verdict=>setProgress(old=>({...old,[card.id]:{first:old[card.id]?.first??verdict,latest:verdict,solved:old[card.id]?.solved||verdict==='correct'}}))}/></RomanContext.Provider></ScrollView>}</View>;}createRoot(document.getElementById('root')).render(<App/>);");
+ put('pack-audio.json',JSON.stringify({index,lessons}));
+ const entry=put('entry.tsx',"import React,{useState} from 'react';import {createRoot} from 'react-dom/client';import {View,ScrollView} from 'react-native';import pack from './pack-audio.json';import readingPack from '../__fixtures__/readings.json';import UnitSheet from '../screens/UnitSheet';import {courseOrder} from '../state';Object.assign(pack.lessons,readingPack.lessons);import StoryCardView from '../cards';import StoryLessonScreen,{StoryLessonPlayer} from '../screens/StoryLesson';import StoryHome,{JourneyMap,StoryHomeView} from '../screens/StoryHome';import {derive} from '../state';import {lessonSummaries} from '../api';import {UnitEndView,LeafShelfView,GhostsView,Cast} from '../screens/Collections';import StoryReview from '../screens/StoryReview';import Settings from '../Settings';import {useStoryFlag} from '../flags';import {setStoryAppearance,useStoryTheme} from '../theme';import {useGuideLang} from '../../hooks/useGuide';import {RomanContext} from '../text';import {ClipContext} from '../audio';function App(){const [mode,setMode]=useState('home'),[lesson,setLesson]=useState('vowels.short'),[cardId,setCard]=useState('s1'),[progress,setProgress]=useState({}),[done,setDone]=useState(false),[point,setPoint]=useState('new'),[readingUnit,setReadingUnit]=useState('who-does');const allRequired=courseOrder(readingPack.index).filter(s=>s.lesson_id&&s.role!=='reading'&&s.role!=='revision').map(s=>s.lesson_id);const readingState=derive(readingPack.index,allRequired);const fixtureState=derive(pack.index,point==='new'?[]:point==='mid'?['prologue','vowels.short']:['prologue',...pack.index.acts[0].parts[0].units[0].lessons.map(l=>l.id),'vowels.check']);const fixtureSummary=lessonSummaries(pack.index).find(l=>l.id===fixtureState.current?.lesson_id);const enabled=useStoryFlag(),theme=useStoryTheme(),{setLang}=useGuideLang();window.storyNavigate=(name,params)=>{if(name==='StoryLesson'){setLesson(params.lessonId);setMode('route');setDone(false);}else if(name==='StoryMap')setMode('map');else if(name==='StoryReview')setMode('review');else setMode('home');};window.qa={showUnitReading:id=>{setReadingUnit(id);setMode('readingUnit');},fixture:(mode,point)=>{setPoint(point);setMode(mode);},showCard:(id,card)=>{setLesson(id);setCard(card);setProgress({});setMode('card');},showLesson:id=>{setLesson(id);setMode('lesson');setDone(false);},show:mode=>setMode(mode),theme:setStoryAppearance,lang:setLang,enabled};const l=pack.lessons[lesson],card=l.cards.find(c=>c.id===cardId)||l.cards[0];return <View style={{flex:1,backgroundColor:theme.paper}}><div id='qa-state' data-theme={theme.dark?'dark':'light'} data-enabled={enabled} data-done={done}/>{mode==='readingUnit'?<UnitSheet index={readingPack.index} state={readingState} unitId={readingUnit} onClose={()=>setMode('home')} onLesson={id=>{setLesson(id);setMode('lesson');setDone(false);}}/>:mode==='review'?<StoryReview/>:mode==='fixtureHome'?<StoryHomeView index={pack.index} state={fixtureState} summary={fixtureSummary} lesson={pack.lessons[fixtureSummary?.id]} onLesson={()=>{}} onMap={()=>setMode('map')} onLeaves={()=>setMode('leaves')} onGhosts={()=>setMode('ghosts')} onReview={()=>{}} onCast={()=>setMode('cast')} onLibrary={()=>{}}/>:mode==='unitEnd'?<UnitEndView index={pack.index} state={fixtureState} unitId='vowels' receipt={{xp:10}} onGhosts={()=>setMode('ghosts')} onContinue={()=>setMode('fixtureHome')}/>:mode==='leaves'?<LeafShelfView index={pack.index} state={fixtureState} onBack={()=>setMode('home')} onLeaf={()=>{}}/>:mode==='ghosts'?<GhostsView index={pack.index} state={fixtureState} onBack={()=>setMode('home')}/>:mode==='cast'?<Cast/>:mode==='settings'?<Settings/>:mode==='home'?<StoryHome autoStart={false}/>:mode==='map'?<JourneyMap/>:mode==='flag'?<div>{enabled?<StoryHome autoStart={false}/>:<span>Legacy Learn</span>}</div>:mode==='route'?<StoryLessonScreen route={{params:{lessonId:lesson}}} navigation={{goBack:()=>setMode('home'),push:(name,params)=>window.storyNavigate(name,params)}}/>:mode==='lesson'?<StoryLessonPlayer key={lesson} lesson={l} characters={pack.index.characters} onClose={()=>setDone(true)}/>:<ScrollView style={{flex:1}} contentContainerStyle={{padding:16,gap:12}}><ClipContext.Provider value={l.audio||{}}><RomanContext.Provider value={card.kind!=='practice'||card.roman==='show'||!!progress[card.id]}><StoryCardView key={lesson+cardId} card={card} characters={pack.index.characters} progress={progress[card.id]} onAnswer={verdict=>setProgress(old=>({...old,[card.id]:{first:old[card.id]?.first??verdict,latest:verdict,solved:old[card.id]?.solved||verdict==='correct'}}))}/></RomanContext.Provider></ClipContext.Provider></ScrollView>}</View>;}createRoot(document.getElementById('root')).render(<App/>);");
  const alias={'react-native$':'react-native-web','@react-native-async-storage/async-storage$':storage,'react-native-safe-area-context$':native,'@react-navigation/native$':native,'@react-native-vector-icons/ionicons$':native,'react-native-youtube-iframe$':stub};
- for(const name of ['hooks/useTypeScale','hooks/useGuide','hooks/useReducedMotion','ask/AskProvider','api/client','components/artwork/ArtworkImage','services/artworkCache','components/FetchError','components/Skeleton','learnv2/LearnCard','learnv2/catalogue','learnv2/loadLesson','learnv2/progress','services/haptics','services/grammarGuide','trail/course','trail/progress','trail/ui','utils/streak']){alias[path.join(mobile,'src',name)]=name==='hooks/useGuide'?guide:name==='api/client'?client:name==='components/artwork/ArtworkImage'?artwork:name==='hooks/useTypeScale'||name==='hooks/useReducedMotion'||name==='ask/AskProvider'||name==='components/Skeleton'?native:stub;}
+ for(const name of ['hooks/useTypeScale','hooks/useGuide','hooks/useReducedMotion','ask/AskProvider','api/client','components/artwork/ArtworkImage','services/artworkCache','components/FetchError','components/Skeleton','learnv2/LearnCard','learnv2/catalogue','learnv2/loadLesson','learnv2/progress','services/haptics','services/grammarGuide','trail/course','trail/progress','trail/ui','utils/streak','store/auth','services/speech']){alias[path.join(mobile,'src',name)]=name==='store/auth'?auth:name==='hooks/useGuide'?guide:name==='api/client'?client:name==='components/artwork/ArtworkImage'?artwork:name==='hooks/useTypeScale'||name==='hooks/useReducedMotion'||name==='ask/AskProvider'||name==='components/Skeleton'?native:stub;}
  const webpack=require('webpack');
  await new Promise((resolve,reject)=>webpack({mode:'development',context:mobile,entry,output:{path:temp,filename:'bundle.js'},devtool:false,resolve:{extensions:['.web.tsx','.web.ts','.tsx','.ts','.web.js','.js','.json'],alias},module:{rules:[{test:/\.tsx?$/,exclude:/node_modules/,use:loader}]},plugins:[new webpack.DefinePlugin({__DEV__:'false','process.env.NODE_ENV':JSON.stringify('development')})],performance:{hints:false}},(err,stats)=>err?reject(err):stats.hasErrors()?reject(Error(stats.toString({all:false,errors:true}))):resolve()));
  const fonts=['Mukta_400Regular','Mukta_600SemiBold','Mukta_700Bold','TiroDevanagariSanskrit_400Regular'];const fontFiles=fonts.map(name=>require.resolve(name.startsWith('Mukta')?'@expo-google-fonts/mukta/'+name.split('_')[1]+'/'+name+'.ttf':'@expo-google-fonts/tiro-devanagari-sanskrit/400Regular/'+name+'.ttf'));
@@ -181,17 +263,18 @@ async function visualChecks(){
  console.log('Browser preview ready at 360px');
  // Acceptance steps are below; production components remain interactive.
  await runBrowserCases({page,out,posts,errors,fs,path});
- } finally {if(browser)await browser.close();if(server)await new Promise(resolve=>server.close(resolve));if(path.dirname(temp)!==path.join(mobile,'src/story'))throw Error('Unexpected temporary directory');fs.rmSync(temp,{recursive:true,force:true});}
+ } finally {if(browser)await browser.close();if(server)await new Promise(resolve=>server.close(resolve));if(path.dirname(temp)!==path.join(mobile,'src/story'))throw Error('Unexpected temporary directory');fs.rmSync(temp,{recursive:true,force:true,maxRetries:8,retryDelay:150});}
 }
 async function runBrowserCases({page,out,posts,errors,fs,path}){
  const showCard=async(id,card)=>{await page.evaluate(([id,card])=>window.qa.showCard(id,card),[id,card]);await page.waitForTimeout(45);};
  const button=(name,scope=page)=>scope.getByRole('button',{name,exact:true});
- const shot=async name=>{await page.waitForFunction(()=>[...document.images].every(i=>i.complete),{},{timeout:15000});return page.screenshot({path:path.join(out,name+'-360.png'),fullPage:true});};
+ const shot=async name=>{await page.waitForFunction(()=>[...document.images].every(i=>i.complete),{},{timeout:15000});const bytes=await page.screenshot({fullPage:true});for(let attempt=0;;attempt++){try{fs.writeFileSync(path.join(out,name+'-360.png'),bytes);return;}catch(error){if(process.platform!=='win32'||!['EPERM','EACCES','EBUSY','UNKNOWN'].includes(error.code)||attempt>=7)throw error;await new Promise(resolve=>setTimeout(resolve,150*(attempt+1)));}}};
  await page.waitForFunction(()=>Object.keys(localStorage).filter(k=>k.startsWith('story.lesson.')).length>=3);
- await page.evaluate(()=>window.qa.show('settings'));await page.getByRole('switch',{name:'Try the new Learn (preview)'}).click();await page.waitForFunction(()=>window.qa.enabled===true);await page.reload();await page.waitForFunction(()=>window.qa?.enabled===true);
+ await page.waitForFunction(()=>window.qa.enabled===true);
  await page.evaluate(()=>window.qa.show('flag'));assert.equal(await page.getByText('Legacy Learn',{exact:true}).count(),0);
- await page.evaluate(()=>window.qa.show('settings'));await page.getByRole('switch',{name:'Try the new Learn (preview)'}).click();await page.waitForFunction(()=>window.qa.enabled===false);
+ await page.evaluate(()=>window.qa.show('settings'));await page.getByRole('switch',{name:'Try the new Learn (preview)'}).click();await page.waitForFunction(()=>window.qa.enabled===false);await page.reload();await page.waitForFunction(()=>window.qa?.enabled===false);
  await page.evaluate(()=>window.qa.show('flag'));assert.equal(await page.getByText('Legacy Learn',{exact:true}).count(),1);
+ await page.evaluate(()=>window.qa.show('settings'));await page.getByRole('switch',{name:'Try the new Learn (preview)'}).click();await page.waitForFunction(()=>window.qa.enabled===true);await page.reload();await page.waitForFunction(()=>window.qa?.enabled===true);
  await page.evaluate(()=>window.qa.show('settings'));await page.getByRole('radio',{name:'Dark',exact:true}).click();await page.reload();await page.waitForFunction(()=>!!window.qa && document.querySelector('#qa-state').dataset.theme==='dark');
  console.log('Live preview toggle and appearance persistence passed');
  // The API adapter simulates a disconnected network; HTML is served locally.
@@ -216,7 +299,7 @@ async function runBrowserCases({page,out,posts,errors,fs,path}){
   await page.evaluate(()=>window.qa.show('settings'));await shot('settings-'+theme);await page.evaluate(()=>window.qa.show('home'));await shot('home-shell-'+theme);await page.evaluate(()=>window.qa.show('map'));await shot('map-shell-'+theme);await button(index.acts[0].parts[0].units[0].title.en).click();await shot('unit-sheet-'+theme);await button('Close').last().click();
  }
  // Play the complete short-vowel scene in the shared player. Retrying does
- // not change first verdicts; Continue and swipe both respect the gate.
+ // not change first verdicts; swipe and the arrow keys both respect the gate (the story player has no Continue button).
  await page.evaluate(()=>window.qa.showLesson('vowels.short'));await page.waitForTimeout(100);
  const cards=lessons['vowels.short'].cards.filter(c=>c.depth!=='panini');
  for(let i=0;i<cards.length;i++){
@@ -225,13 +308,13 @@ async function runBrowserCases({page,out,posts,errors,fs,path}){
    if(card.mode==='choice'){const chosen=card.options.find(o=>o.correct);if(card.id==='p1'){await button('अ',scope).click();await scope.getByText('अ is a, the sound in “but”.',{exact:false}).waitFor();await button('Try again',scope).click();}await button(chosen.sa??chosen.text.en,scope).click();}
    if(card.mode==='match'){for(const pair of card.pairs){await button('Left: '+pair.left.sa,scope).click();await button('Right: '+(pair.right.sa??pair.right.text.en),scope).click();}await button('Check',scope).click();}
    if(card.mode==='order'){
-    assert.equal(await button('Continue').isDisabled(),true);assert.equal(await scope.getByText('aiuṇ',{exact:true}).count(),0);await page.getByLabel('Lesson cards',{exact:true}).evaluate(el=>{el.scrollLeft+=360;el.dispatchEvent(new Event('scroll',{bubbles:true}));});await page.waitForTimeout(300);assert.ok(Math.abs((await scope.boundingBox()).x)<2,'Swipe cannot pass an unsolved gate');
+    await page.getByText('Answer this to go on',{exact:true}).waitFor();assert.equal(await page.getByRole('button',{name:'Continue',exact:true}).count()+await page.getByRole('button',{name:'Previous card',exact:true}).count(),0,'The story player has no Back or Continue buttons');assert.equal(await scope.getByText('aiuṇ',{exact:true}).count(),0);await page.getByLabel('Lesson cards',{exact:true}).evaluate(el=>{el.scrollLeft+=360;el.dispatchEvent(new Event('scroll',{bubbles:true}));});await page.waitForTimeout(300);assert.ok(Math.abs((await scope.boundingBox()).x)<2,'Swipe cannot pass an unsolved gate');
     // First, a wrong order produces the story's failure beat.
-    for(const token of [...card.tokens].reverse())await button('Add: '+token,scope).click();await button('Check',scope).click();await scope.getByText(card.story.failure.en,{exact:true}).waitFor();assert.equal(await button('Continue').isDisabled(),true);await button('Try again',scope).click();
-    for(const token of card.tokens)await button('Add: '+token,scope).click();await button('Check',scope).click();await scope.getByText(card.story.success.en,{exact:true}).waitFor();assert.equal(await button('Continue').isDisabled(),false);
+    for(const token of [...card.tokens].reverse())await button('Add: '+token,scope).click();await button('Check',scope).click();await scope.getByText(card.story.failure.en,{exact:true}).waitFor();await page.getByText('Answer this to go on',{exact:true}).waitFor();await button('Try again',scope).click();
+    for(const token of card.tokens)await button('Add: '+token,scope).click();await button('Check',scope).click();await scope.getByText(card.story.success.en,{exact:true}).waitFor();assert.equal(await page.getByText('Answer this to go on',{exact:true}).count(),0);
    }
   }
-  if(i===cards.length-1)await button('Finish lesson').click();else await button('Continue').click();
+  if(i===cards.length-1)await button('Finish lesson').click();else await page.keyboard.press('ArrowRight');
  }
  await page.waitForFunction(()=>document.querySelector('#qa-state').dataset.done==='true');await page.waitForTimeout(100);
  const sent=posts.filter(p=>p.body.lesson_id==='vowels.short');assert.deepEqual(sent.map(p=>p.path),['/progress/card-lesson','/learn/attempts']);assert.equal(sent[0].body.checks_right,2);assert.equal(sent[0].body.checks_total,4);assert.equal(sent[1].body.results.find(r=>r.card_id==='p1').verdict,'incorrect');assert.equal(sent[1].body.results.find(r=>r.card_id==='p3').verdict,'incorrect');
@@ -239,9 +322,59 @@ async function runBrowserCases({page,out,posts,errors,fs,path}){
  // Tile typing and the keyboard alternative both use accepted NFC values.
  await showCard('vowels.signs','p2');await button('Add: क').click();await button('Add: ू').click();await button('Check').click();await page.getByText('Correct',{exact:true}).waitFor();
  await showCard('vowels.signs','p2');await page.getByRole('textbox',{name:'Type your answer with the keyboard'}).fill(' कू ');await button('Check').click();await page.getByText('Correct',{exact:true}).waitFor();
+ // Recorded audio: the buffering window, speakers, tap-to-hear table cells and letter sounds
+ {
+  const win=load('audioWindow.ts'),deck=lessons['vowels.short'].cards.filter(c=>c.depth!=='panini'),clips=lessons['vowels.short'].audio;
+  await page.evaluate(()=>{globalThis.__held=[];globalThis.__played=[];});
+  await page.evaluate(()=>window.qa.showLesson('vowels.short'));await page.getByTestId('lesson-card-0').waitFor();await page.waitForTimeout(200);
+  assert.deepEqual(await page.evaluate(()=>globalThis.__held.at(-1)),win.windowClips(deck,0),'card 1 buffers itself and the three cards ahead');
+  await page.keyboard.press('ArrowRight');await page.waitForTimeout(400);await page.keyboard.press('ArrowRight');await page.waitForTimeout(400);
+  assert.deepEqual(await page.evaluate(()=>globalThis.__held.at(-1)),win.windowClips(deck,2),'card 3 buffers its own, three ahead and two behind');
+  const listen=page.getByTestId('lesson-card-2').getByRole('button',{name:/^Listen: /});assert.ok(await listen.count()>=3,'a teach card gives its term, rows and examples a speaker');
+  await listen.first().click();await page.waitForTimeout(150);
+  const first=await page.evaluate(()=>globalThis.__played.at(-1));assert.ok(first?.startsWith('https://clips.test/'),'the speaker plays its clip');
+  await listen.first().click();await page.waitForTimeout(150);assert.equal(await page.evaluate(()=>globalThis.__played.length),1,'tapping the speaker again stops it instead of replaying');
+  await page.keyboard.press('ArrowRight');await page.waitForTimeout(400);
+  assert.deepEqual(await page.evaluate(()=>globalThis.__held.at(-1)),win.windowClips(deck,3),'the window slides with the card');
+  await button('अ',page.getByTestId('lesson-card-3')).click();await page.waitForTimeout(150);
+  assert.equal(await page.evaluate(()=>globalThis.__played.at(-1)),clips['अ'],'choosing a letter on the mouth map sounds it');
+  const before=await page.evaluate(()=>globalThis.__played.length);
+  await page.evaluate(()=>window.qa.showCard('vowels.signs','t2'));await page.waitForTimeout(300);
+  await page.getByText('Tap a form to hear it.',{exact:true}).waitFor();
+  const cell=page.getByRole('button',{name:/^Listen: /}).first();await cell.click();await page.waitForTimeout(150);
+  assert.equal(await page.evaluate(()=>globalThis.__played.length),before+1,'tapping a table cell plays it');
+  await page.evaluate(()=>window.qa.showCard('vowels.short','p1'));await page.waitForTimeout(250);
+  assert.equal(await page.getByRole('button',{name:/^Listen: /}).count(),0,'practice cards never offer a recording (it would give the answer away)');
+ }
+ console.log('Recorded audio: buffering window, speakers, tap-to-hear cells, letter sounds and silent practice cards passed');
  for(const viewport of [{width:320,height:740},{width:430,height:900},{width:768,height:1024},{width:800,height:360}]){await page.setViewportSize(viewport);await page.evaluate(()=>window.qa.fixture('fixtureHome','mid'));await page.waitForTimeout(150);await shot('responsive-'+viewport.width+'x'+viewport.height);assert.equal(await page.evaluate(()=>document.body.scrollWidth>innerWidth),false,'No horizontal page overflow');}await page.setViewportSize({width:360,height:800});
+ // Optional readings remain available in completed units and open the shared player.
+ for(const [id,kind] of [['nf1.deva','contrast'],['vs.guna','sandhi_join']]){
+  await showCard(id,'p6');const exercise=lessons[id].cards.find(c=>c.id==='p6').exercise;
+  const correct=kind==='contrast'?exercise.item[exercise.answer.pick].form:exercise.answer.joined;
+  const wrong=kind==='contrast'?exercise.item[exercise.answer.pick==='a'?'b':'a'].form:exercise.item.options.find(o=>o!==correct);
+  await button(wrong).click();await button('Try again').click();await button(correct).click();await page.getByText('Correct',{exact:true}).waitFor();await shot('engine-'+kind+'-dark');
+ }
+ for(const theme of ['light','dark']){
+  await page.evaluate(theme=>window.qa.theme(theme),theme);
+  await page.evaluate(()=>window.qa.showUnitReading('who-does'));await button(readingFixtures.lessons['who.reading'].title.en).waitFor();await shot('unit-reading-'+theme);await button(readingFixtures.lessons['who.reading'].title.en).click();await page.getByTestId('lesson-card-0').waitFor();await button('Gloss: बालकः',page.getByTestId('lesson-card-0')).click();await page.getByText('boy',{exact:true}).waitFor();assert.ok(await page.locator('[aria-live="polite"]').filter({hasText:'boy'}).count());await shot('reading-gloss-'+theme);await button('Close word meaning').click();assert.equal(await page.getByText('boy',{exact:true}).count(),0);
+ }
+ for(const [id,l] of Object.entries(readingFixtures.lessons).filter(([,l])=>l.template==='episode')){
+  await page.evaluate(id=>window.qa.showLesson(id),id);
+  for(let i=0;i<l.cards.length;i++){
+   const card=l.cards[i],scope=page.getByTestId('lesson-card-'+i);await scope.waitFor();
+   if(card.kind==='practice'){const correct=card.options.find(o=>o.correct);await button(correct.text.en,scope).click();}
+   if(i===l.cards.length-1)await button('Finish lesson').click();else await page.keyboard.press('ArrowRight');
+  }
+  await page.waitForFunction(()=>document.querySelector('#qa-state').dataset.done==='true');await page.waitForTimeout(100);
+  const writes=posts.filter(p=>p.body.lesson_id===id);assert.deepEqual(writes.map(w=>w.path),['/progress/card-lesson','/learn/attempts']);assert.equal(writes[0].body.checks_right,2);assert.equal(writes[0].body.checks_total,2);
+ }
+ for(const [id,card] of [['vs.revision','blocked'],['m1.revision','exceptions'],['split.revision','conditions']]){await showCard(id,card);await shot('revision-'+readingFixtures.lessons[id].cards.find(c=>c.id===card).section+'-dark');}
+ for(const width of [320,430]){await page.setViewportSize({width,height:800});await showCard('kss.reading','r2');assert.equal(await page.evaluate(()=>document.body.scrollWidth>innerWidth),false,'Sanskrit passage fits phone width');await shot('reading-kss-'+width);}
+ await page.setViewportSize({width:360,height:800});
+ console.log('Four real Sanskrit episodes, glosses, optional links, three revision sections, contrast and join exercises passed');
  // A Hindi, enlarged-text sample remains scrollable at phone width.
  await page.evaluate(()=>{localStorage.setItem('qa.scale','1.6');window.qa.lang('hi');});await showCard('vowels.signs','e1');await shot('letter_builder-hindi-large-dark');
- assert.deepEqual(errors,[]);fs.writeFileSync(path.join(out,'verification.json'),JSON.stringify({width:360,themes:['light','dark'],fixtureLessons:Object.keys(lessons).length,fixtureCards:Object.values(lessons).reduce((n,l)=>n+l.cards.length,0),posts:sent,browserErrors:errors,checks:['flag persistence','theme persistence','offline home/map/lesson','all cards','four widgets','gate failure/retry/success','first verdicts','ordered posts','tile and keyboard input','Hindi large text','home new/mid/done','unit end frees Dhumaka','leaves/ghosts/cast','44 map units and measured spacing','review attempts only','320/430/tablet/landscape fitting']},null,2));
+ assert.deepEqual(errors,[]);fs.writeFileSync(path.join(out,'verification.json'),JSON.stringify({width:360,themes:['light','dark'],fixtureLessons:Object.keys(lessons).length,fixtureCards:Object.values(lessons).reduce((n,l)=>n+l.cards.length,0),posts:sent,browserErrors:errors,checks:['flag persistence','theme persistence','offline home/map/lesson','all cards','four widgets','gate failure/retry/success','first verdicts','ordered posts','tile and keyboard input','Hindi large text','home new/mid/done','unit end frees Dhumaka','leaves/ghosts/cast','44 map units and measured spacing','review attempts only','four optional Sanskrit episodes and glosses','optional/blocked/splitting revision sections','320/430/tablet/landscape fitting']},null,2));
  console.log('All cards, widgets in both themes, vowels.short completion and both ordered posts passed at 360px');
 }

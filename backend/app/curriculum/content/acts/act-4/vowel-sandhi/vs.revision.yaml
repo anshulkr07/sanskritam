@@ -5,7 +5,7 @@ title:
   hi: स्वरसन्धि के बारे में सब कुछ
 title_sa: स्वरसन्धिसङ्ग्रहः
 minutes: 6
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -13,8 +13,8 @@ cards:
 - id: core
   kind: revision
   title:
-    en: The six rules
-    hi: छह नियम
+    en: The joining rules
+    hi: जोड़ने के नियम
   depth: core
   section: core
   rows:
@@ -59,15 +59,6 @@ cards:
     - 6.1.109
     tag: core
     taught_in: vs.e-o#tb1
-  - skill: sandhi.blocked
-    rule:
-      en: 'Duals in {{-ई}}, {{-ऊ}}, {{-ए}} never join: {{हरी एतौ}}.'
-      hi: '{{-ई}}, {{-ऊ}}, {{-ए}} वाले द्विवचन कभी नहीं जुड़ते: {{हरी एतौ}}।'
-    sutras:
-    - 1.1.11
-    - 6.1.125
-    tag: core
-    taught_in: vs.stop#tb1
 - id: conditions
   kind: revision
   title:
@@ -132,6 +123,23 @@ cards:
           hi: है
     tag: rare
     new_here: true
+- id: blocked
+  kind: revision
+  title:
+    en: When the join is blocked
+    hi: जहाँ सन्धि नहीं होती
+  depth: core
+  section: blocked
+  rows:
+  - skill: sandhi.blocked
+    rule:
+      en: 'Duals in {{-ई}}, {{-ऊ}}, {{-ए}} never join: {{हरी एतौ}}.'
+      hi: '{{-ई}}, {{-ऊ}}, {{-ए}} वाले द्विवचन कभी नहीं जुड़ते: {{हरी एतौ}}।'
+    sutras:
+    - 1.1.11
+    - 6.1.125
+    tag: core
+    taught_in: vs.stop#tb1
 - id: mistakes
   kind: revision
   title:

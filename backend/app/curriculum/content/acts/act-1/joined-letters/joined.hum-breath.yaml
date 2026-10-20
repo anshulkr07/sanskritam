@@ -10,7 +10,7 @@ teaches:
 - script.visarga
 needs:
 - script.conjunct
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: joined-hum-breath-s1
+    text_in_image: ["गंगा", "रामः"]
   narration:
     en: The green spirit hums in his sleep, a soft nasal sound, then sighs out a little breath. Above one letter on the pillar sits a dot, after another two dots, just like his hum and sigh. “The pillar is breathing,” whispers Śuka.
     hi: हरा भूत नींद में गुनगुनाता है, एक कोमल नासिक्य ध्वनि, फिर हल्की साँस छोड़ता है। स्तम्भ पर एक अक्षर के ऊपर एक बिन्दु है, दूसरे के बाद दो बिन्दु, ठीक उसकी गूँज और आह की तरह। “स्तम्भ साँस ले रहा है,” शुक फुसफुसाता है।
@@ -114,8 +115,8 @@ cards:
   - script.visarga
   mode: match
   prompt:
-    en: Join each mark to its sound.
-    hi: हर चिह्न को उसकी ध्वनि से जोड़िए।
+    en: Match each mark with its sound.
+    hi: हर चिह्न को उसकी ध्वनि से मिलाइए।
   explain:
     en: '{{ं}} hums, {{ः}} breathes, {{्}} silences the vowel.'
     hi: '{{ं}} गूँजता है, {{ः}} साँस लेता है, {{्}} स्वर को चुप कराता है।'

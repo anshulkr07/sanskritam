@@ -9,7 +9,7 @@ teaches:
 - sent.nom-sg
 needs:
 - sent.stem-ending
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -191,8 +191,8 @@ cards:
   - sent.nom-sg
   mode: match
   prompt:
-    en: Join each doer to its stem.
-    hi: हर कर्ता को उसके मूल रूप से जोड़िए।
+    en: Match each doer with its stem.
+    hi: हर कर्ता को उसके मूल रूप से मिलाइए।
   explain:
     en: The first case of a masculine -a word is the stem plus {{ः}}.
     hi: अकारान्त पुंलिंग शब्द की प्रथमा मूल में {{ः}} जोड़ने से बनती है।

@@ -9,7 +9,7 @@ teaches:
 - num.big-time
 needs:
 - num.one-ten
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -34,6 +34,7 @@ cards:
     place: pathashala
     ratio: '4:3'
     id: pn-time-s1
+    text_in_image: ["एकादश", "द्वादश", "त्रयोदश"]
   narration:
     en: 'Ganaka''s cords are long now. “How many days of the road? Eleven? A hundred?” Dādī sits him down with a clay slate and writes a ladder of numbers: eleven, twelve, twenty, a hundred, a thousand. Then she draws a day on the slate, cut into eight equal slices. “The old way of keeping time: eight watches, four of day and four of night.”'
     hi: 'गणक की डोरियाँ अब लम्बी हो गई हैं। “मार्ग के कितने दिन? ग्यारह? सौ?” दादी उसे मिट्टी की पाटी के पास बिठाती हैं और संख्याओं की सीढ़ी लिखती हैं: ग्यारह, बारह, बीस, सौ, हज़ार। फिर वे पाटी पर एक दिन खींचती हैं, आठ बराबर फाँकों में कटा हुआ। “समय गिनने का पुराना ढंग: आठ पहर, चार दिन के और चार रात के।”'
@@ -294,8 +295,8 @@ cards:
   - num.big-time
   mode: match
   prompt:
-    en: Join each number to its word.
-    hi: हर संख्या को उसके शब्द से जोड़िए।
+    en: Match each number with its word.
+    hi: हर संख्या को उसके शब्द से मिलाइए।
   explain:
     en: The tens grow from {{विंशतिः}} (20).
     hi: दहाइयाँ {{विंशतिः}} (20) से आगे बढ़ती हैं।
@@ -372,8 +373,8 @@ cards:
   - num.big-time
   mode: match
   prompt:
-    en: Join each ordinal to its place.
-    hi: हर क्रमवाचक को उसके स्थान से जोड़िए।
+    en: Match each ordinal with its place.
+    hi: हर क्रमवाचक को उसके स्थान से मिलाइए।
   explain:
     en: '{{द्वितीयः}} and {{तृतीयः}} are the case names too.'
     hi: '{{द्वितीयः}} और {{तृतीयः}} विभक्तियों के नाम भी हैं।'

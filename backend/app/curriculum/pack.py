@@ -25,6 +25,7 @@ import json
 from dataclasses import dataclass, field
 from typing import Any, Optional
 
+from . import audio as story_audio
 from .loader import CourseData
 from .schema import ExploreCard, ImageRef, Lesson, PracticeCard
 from .validate import sutra_table
@@ -127,6 +128,7 @@ def lesson_payload(lesson: Lesson, data: CourseData) -> dict:
             if card.mode == "type":
                 raw["accept"] = sorted({v for a in card.answers for v in _variants(a)})
         cards.append(_decorate(raw))
+    clip_map = story_audio.attach(cards, data.audio)  # a card gains `audio` only for clips that exist
     body = {
         "id": lesson.id,
         "template": lesson.template,
@@ -140,6 +142,8 @@ def lesson_payload(lesson: Lesson, data: CourseData) -> dict:
     }
     body = _decorate(body)
     body["cards"] = cards
+    if clip_map:
+        body["audio"] = clip_map  # Sanskrit text → clip url, for the speaker beside each line
     body["hash"] = _hash(body)
     return body
 
@@ -229,6 +233,7 @@ def build(data: CourseData) -> Pack:
                        + ([] if ready else [{"id": l, "title": data.lesson(l).title.model_dump()}
                                             for l in unit.lessons if data.lesson(l)]),
             "revision": ship(unit.revision) if ready else None,
+            "reading": ship(unit.reading) if ready else None,
             "check": ship(unit.check) if ready else None,
             "video": unit.video.model_dump(exclude_none=True) if unit.video else None,
         })

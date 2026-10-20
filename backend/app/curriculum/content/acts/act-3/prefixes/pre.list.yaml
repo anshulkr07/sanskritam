@@ -9,7 +9,7 @@ teaches:
 - verb.upasarga-list
 needs:
 - verb.upasarga
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -418,8 +418,8 @@ cards:
   - verb.upasarga-list
   mode: match
   prompt:
-    en: Join each prefix to its meaning.
-    hi: हर उपसर्ग को उसके अर्थ से जोड़िए।
+    en: Match each prefix with its meaning.
+    hi: हर उपसर्ग को उसके अर्थ से मिलाइए।
   explain:
     en: Look at the beads you know.
     hi: जो मनके आप जानते हैं, उन्हें देखिए।

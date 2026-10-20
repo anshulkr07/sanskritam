@@ -9,7 +9,7 @@ teaches:
 - sandhi.visarga-r
 needs:
 - sandhi.visarga-s
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -40,6 +40,17 @@ cards:
   narration:
     en: 'The ninth statue speaks in a low, sure voice. “कविरस्ति,” she says: “the poet is.” “स गच्छति”: “he goes.” “Two more things,” says Dādī. “After इ or उ the breath becomes र् before a vowel or a soft sound. And after other vowels it sometimes just vanishes: सः does not keep its breath before most consonants.”'
     hi: 'नौवीं प्रतिमा नीची और दृढ़ आवाज़ में बोलती है। “कविरस्ति,” वह कहती है: “कवि है।” “स गच्छति”: “वह जाता है।” “दो बातें और,” दादी कहती हैं। “इ या उ के बाद श्वास स्वर या कोमल ध्वनि से पहले र् बन जाता है। और अन्य स्वरों के बाद वह कभी-कभी बस लुप्त हो जाता है: सः अधिकतर व्यंजनों से पहले अपनी श्वास नहीं रखता।”'
+  lines:
+  - speaker: visargika
+    sa: कविरस्ति
+    gloss:
+      en: The poet is.
+      hi: कवि है।
+    check:
+      type: sandhi
+      first: कविः
+      second: अस्ति
+      joined: कविरस्ति
 - id: t1
   kind: teach
   title:
@@ -235,8 +246,8 @@ cards:
   - sandhi.visarga-r
   mode: match
   prompt:
-    en: Join each word to its parts.
-    hi: हर शब्द को उसके भागों से जोड़िए।
+    en: Match each word with its parts.
+    hi: हर शब्द को उसके भागों से मिलाइए।
   explain:
     en: 'After {{इः}}: {{र्}}; after {{अः}}: it vanishes.'
     hi: '{{इः}} के बाद: {{र्}}; {{अः}} के बाद: वह लुप्त।'

@@ -9,7 +9,7 @@ teaches:
 - sam.long
 needs:
 - sam.avyayibhava
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -141,6 +141,7 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: c2-long-r1
+    text_in_image: ["सूर्य", "कोटिः", "सम", "आभासः"]
   passage:
   - sa: सूर्यकोटिसमाभासो विद्युज्ज्योतिःसमप्रभः
     meaning:
@@ -199,8 +200,8 @@ cards:
   - sam.long
   mode: match
   prompt:
-    en: Join each long compound to its meaning.
-    hi: हर लम्बे समास को उसके अर्थ से जोड़िए।
+    en: Match each long compound with its meaning.
+    hi: हर लम्बे समास को उसके अर्थ से मिलाइए।
   explain:
     en: All four describe a person.
     hi: चारों किसी व्यक्ति का वर्णन करते हैं।

@@ -1,0 +1,2146 @@
+{
+  "id": "tale-leaf-5-r2",
+  "where": "tale.leaf-5#r2",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The wide pale Gaṅgā at morning with a hand with five spread fingers rising from the water; a proud king in red and gold on the brick steps pointing in astonishment; a calm tall scholar-minister beside him holding up two fingers of one hand; a lean grey-bearded man a little behind, looking downcast.\nCharacter appearances:\nyogananda: A heavy king in rich red and gold, a thick jewelled necklace, rings on every finger, a restless proud look; shown human, never monstrous.\nvararuci-elder: A tall, calm, middle-aged scholar-minister in a clean white dhoti and shawl, a thin sacred thread, quick bright eyes and a steady half-smile; the same eyes as the boy.\nshakatala: A middle-aged minister, lean and grey-bearded, in a once-fine but now dusty cream robe, with a long patient face and the bent back of someone who has learned to bow.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "tale.leaf-5",
+    "template": "tale",
+    "title": {
+      "en": "The minister in the dark well",
+      "hi": "अन्धकूप का मन्त्री"
+    },
+    "title_sa": "शकटालकथा",
+    "minutes": 7,
+    "teaches": [],
+    "needs": [],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Kathāsaritsāgara, taraṅga 5 (Digital Corpus of Sanskrit file KSS, 1, 5), the story retold in new, simple sentences with three real half-verses quoted",
+        "url": "https://github.com/OliverHellwig/sanskrit",
+        "licence": "CC BY 4.0",
+        "note": "The plot follows Somadeva's text, told by Vararuci: the proud King Yoganandā has his minister Śakaṭāla in a blind well; Vararuci rescues him; the king sees a hand with five fingers in the Gaṅgā and Vararuci answers it with two fingers; Śakaṭāla resolves to bend like a reed and wait. The quoted lines are Somadeva's own words; the rest is new Sanskrit in the present tense."
+      }
+    ],
+    "cards": [
+      {
+        "id": "r1",
+        "title": {
+          "en": "The blind well",
+          "hi": "अन्धकूप"
+        },
+        "image": {
+          "id": "tale-leaf-5-r1",
+          "brief": "A deep dry well in a palace courtyard: a lean grey-bearded minister in a dusty cream robe being slowly hauled up on a rope by two guards, blinking in the light; a calm tall scholar-minister in white standing at the rim watching; a proud king in red and gold looking on from a balcony in the background.",
+          "alt": {
+            "en": "A grey-bearded minister is hauled from a deep dry well while a calm scholar watches at the rim",
+            "hi": "गहरे सूखे कुएँ से खींचा जाता धूसर दाढ़ी वाला मन्त्री, किनारे पर शान्त विद्वान्"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "shakatala",
+            "vararuci-elder",
+            "yogananda"
+          ],
+          "place": "andhakupa"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "reading",
+        "passage": [
+          {
+            "sa": "कालेन योगनन्दः मत्तः भवति।",
+            "meaning": {
+              "en": "With time Yoganandā becomes proud.",
+              "hi": "समय के साथ योगनन्द मदमत्त हो जाता है।"
+            },
+            "words": [
+              {
+                "sa": "कालेन",
+                "gloss": {
+                  "en": "with time",
+                  "hi": "समय के साथ"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "काल",
+                  "linga": "Pum",
+                  "vibhakti": "Trtiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "योगनन्दः",
+                "gloss": {
+                  "en": "Yoganandā",
+                  "hi": "योगनन्द"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "योगनन्द",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "मत्तः",
+                "gloss": {
+                  "en": "proud",
+                  "hi": "मदमत्त"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "मत्त",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "भवति",
+                "gloss": {
+                  "en": "becomes",
+                  "hi": "हो जाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "भू",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "शकटालः अन्धकूपे अस्ति।",
+            "meaning": {
+              "en": "Śakaṭāla is in the blind well.",
+              "hi": "शकटाल अन्धकूप में है।"
+            },
+            "words": [
+              {
+                "sa": "शकटालः",
+                "gloss": {
+                  "en": "Śakaṭāla",
+                  "hi": "शकटाल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "शकटाल",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अन्धकूपे",
+                "gloss": {
+                  "en": "in the blind well",
+                  "hi": "अन्धकूप में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "अन्धकूप",
+                  "linga": "Pum",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अस्ति",
+                "gloss": {
+                  "en": "is",
+                  "hi": "है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "वररुचिः राजानम् वदति।",
+            "meaning": {
+              "en": "Vararuci speaks to the king.",
+              "hi": "वररुचि राजा से कहता है।"
+            },
+            "words": [
+              {
+                "sa": "वररुचिः",
+                "gloss": {
+                  "en": "Vararuci",
+                  "hi": "वररुचि"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वररुचि",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "राजानम्",
+                "gloss": {
+                  "en": "the king",
+                  "hi": "राजा से"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "राजन्",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वदति",
+                "gloss": {
+                  "en": "speaks to",
+                  "hi": "कहता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "वररुचिः शकटालम् अन्धकूपात् समुद्धरति।",
+            "meaning": {
+              "en": "Vararuci lifts Śakaṭāla out of the well.",
+              "hi": "वररुचि शकटाल को कुएँ से बाहर निकालता है।"
+            },
+            "words": [
+              {
+                "sa": "वररुचिः",
+                "gloss": {
+                  "en": "Vararuci",
+                  "hi": "वररुचि"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वररुचि",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "शकटालम्",
+                "gloss": {
+                  "en": "Śakaṭāla",
+                  "hi": "शकटाल को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "शकटाल",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अन्धकूपात्",
+                "gloss": {
+                  "en": "from the well",
+                  "hi": "कुएँ से"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "अन्धकूप",
+                  "linga": "Pum",
+                  "vibhakti": "Panchami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "समुद्धरति",
+                "gloss": {
+                  "en": "lifts out",
+                  "hi": "उठा लाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "हृ",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "सम्",
+                    "उद्"
+                  ],
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "निश्चित्यैतन्मयाभ्यर्थ्य राजानं सो ऽन्धकूपतः उद्धृतः शकटालो ऽथ मृदवो हि द्विजातयः",
+            "meaning": {
+              "en": "“Having decided this and asked the king, I had Śakaṭāla lifted out of the blind well, for Brahmins are gentle.” (Somadeva, Kathāsaritsāgara 1.5)",
+              "hi": "“यह निश्चय कर और राजा से प्रार्थना कर, मैंने शकटाल को अन्धकूप से निकलवाया, क्योंकि ब्राह्मण कोमल होते हैं।” (सोमदेव, कथासरित्सागर 1.5)"
+            },
+            "words": [
+              {
+                "sa": "निश्चित्य",
+                "gloss": {
+                  "en": "having decided",
+                  "hi": "निश्चय करके"
+                },
+                "check": null
+              },
+              {
+                "sa": "एतत्",
+                "gloss": {
+                  "en": "this",
+                  "hi": "यह"
+                },
+                "check": null
+              },
+              {
+                "sa": "राजानम्",
+                "gloss": {
+                  "en": "the king",
+                  "hi": "राजा से"
+                },
+                "check": null
+              },
+              {
+                "sa": "अभ्यर्थ्य",
+                "gloss": {
+                  "en": "having asked",
+                  "hi": "प्रार्थना करके"
+                },
+                "check": null
+              },
+              {
+                "sa": "अन्धकूपतः",
+                "gloss": {
+                  "en": "from the blind well",
+                  "hi": "अन्धकूप से"
+                },
+                "check": null
+              },
+              {
+                "sa": "उद्धृतः",
+                "gloss": {
+                  "en": "lifted out",
+                  "hi": "निकाला गया"
+                },
+                "check": null
+              },
+              {
+                "sa": "शकटालः",
+                "gloss": {
+                  "en": "Śakaṭāla",
+                  "hi": "शकटाल"
+                },
+                "check": null
+              },
+              {
+                "sa": "मृदवः",
+                "gloss": {
+                  "en": "gentle",
+                  "hi": "कोमल"
+                },
+                "check": null
+              },
+              {
+                "sa": "द्विजातयः",
+                "gloss": {
+                  "en": "Brahmins",
+                  "hi": "ब्राह्मण"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "शकटालः मन्त्री भवति पुनः।",
+            "meaning": {
+              "en": "Śakaṭāla becomes a minister again.",
+              "hi": "शकटाल फिर मन्त्री बनता है।"
+            },
+            "words": [
+              {
+                "sa": "शकटालः",
+                "gloss": {
+                  "en": "Śakaṭāla",
+                  "hi": "शकटाल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "शकटाल",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "मन्त्री",
+                "gloss": {
+                  "en": "minister",
+                  "hi": "मन्त्री"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "मन्त्रिन्",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "भवति",
+                "gloss": {
+                  "en": "becomes",
+                  "hi": "बनता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "भू",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पुनः",
+                "gloss": {
+                  "en": "again",
+                  "hi": "फिर"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "title": {
+          "en": "Five fingers",
+          "hi": "पाँच उँगलियाँ"
+        },
+        "image": {
+          "id": "tale-leaf-5-r2",
+          "brief": "The wide pale Gaṅgā at morning with a hand with five spread fingers rising from the water; a proud king in red and gold on the brick steps pointing in astonishment; a calm tall scholar-minister beside him holding up two fingers of one hand; a lean grey-bearded man a little behind, looking downcast.",
+          "alt": {
+            "en": "A hand with five fingers rises from the river as a scholar holds up two fingers",
+            "hi": "नदी से उठता पाँच उँगलियों वाला हाथ, दो उँगलियाँ उठाए विद्वान्"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "yogananda",
+            "vararuci-elder",
+            "shakatala"
+          ],
+          "place": "gangatira"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "reading",
+        "passage": [
+          {
+            "sa": "एकदा योगनन्दः गङ्गातीरम् गच्छति।",
+            "meaning": {
+              "en": "Once Yoganandā goes to the bank of the Gaṅgā.",
+              "hi": "एक बार योगनन्द गङ्गा के तट पर जाता है।"
+            },
+            "words": [
+              {
+                "sa": "एकदा",
+                "gloss": {
+                  "en": "once",
+                  "hi": "एक बार"
+                },
+                "check": null
+              },
+              {
+                "sa": "योगनन्दः",
+                "gloss": {
+                  "en": "Yoganandā",
+                  "hi": "योगनन्द"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "योगनन्द",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गङ्गातीरम्",
+                "gloss": {
+                  "en": "the bank of the Gaṅgā",
+                  "hi": "गङ्गा के तट पर"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गङ्गातीर",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छति",
+                "gloss": {
+                  "en": "goes",
+                  "hi": "जाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "गङ्गायाम् हस्तः दृश्यते।",
+            "meaning": {
+              "en": "A hand is seen in the Gaṅgā.",
+              "hi": "गङ्गा में एक हाथ दिखता है।"
+            },
+            "words": [
+              {
+                "sa": "गङ्गायाम्",
+                "gloss": {
+                  "en": "in the Gaṅgā",
+                  "hi": "गङ्गा में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गङ्गा",
+                  "linga": "Stri",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "हस्तः",
+                "gloss": {
+                  "en": "a hand",
+                  "hi": "एक हाथ"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "हस्त",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "दृश्यते",
+                "gloss": {
+                  "en": "is seen",
+                  "hi": "दिखता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दृश्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": "Karmani",
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "हस्ते पञ्च अङ्गुलयः सन्ति।",
+            "meaning": {
+              "en": "On the hand there are five fingers.",
+              "hi": "हाथ पर पाँच उँगलियाँ हैं।"
+            },
+            "words": [
+              {
+                "sa": "हस्ते",
+                "gloss": {
+                  "en": "on the hand",
+                  "hi": "हाथ पर"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "हस्त",
+                  "linga": "Pum",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पञ्च",
+                "gloss": {
+                  "en": "five",
+                  "hi": "पाँच"
+                },
+                "check": null
+              },
+              {
+                "sa": "अङ्गुलयः",
+                "gloss": {
+                  "en": "fingers",
+                  "hi": "उँगलियाँ"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "अङ्गुलि",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "सन्ति",
+                "gloss": {
+                  "en": "are",
+                  "hi": "हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "राजा वररुचिम् आह्वयति।",
+            "meaning": {
+              "en": "The king calls Vararuci.",
+              "hi": "राजा वररुचि को बुलाता है।"
+            },
+            "words": [
+              {
+                "sa": "राजा",
+                "gloss": {
+                  "en": "the king",
+                  "hi": "राजा"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "राजन्",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वररुचिम्",
+                "gloss": {
+                  "en": "Vararuci",
+                  "hi": "वररुचि को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वररुचि",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "आह्वयति",
+                "gloss": {
+                  "en": "calls",
+                  "hi": "बुलाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "ह्वे",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "आ"
+                  ],
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "वररुचिः द्वे अङ्गुली दर्शयति।",
+            "meaning": {
+              "en": "Vararuci shows two fingers.",
+              "hi": "वररुचि दो उँगलियाँ दिखाता है।"
+            },
+            "words": [
+              {
+                "sa": "वररुचिः",
+                "gloss": {
+                  "en": "Vararuci",
+                  "hi": "वररुचि"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वररुचि",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "द्वे",
+                "gloss": {
+                  "en": "two",
+                  "hi": "दो"
+                },
+                "check": null
+              },
+              {
+                "sa": "अङ्गुली",
+                "gloss": {
+                  "en": "fingers",
+                  "hi": "उँगलियाँ"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "अङ्गुलि",
+                  "linga": "Stri",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "दर्शयति",
+                "gloss": {
+                  "en": "shows",
+                  "hi": "दिखाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दृश्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": [
+                    "Nic"
+                  ],
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "हस्तः न दृश्यते।",
+            "meaning": {
+              "en": "The hand is no longer seen.",
+              "hi": "हाथ अब नहीं दिखता।"
+            },
+            "words": [
+              {
+                "sa": "हस्तः",
+                "gloss": {
+                  "en": "the hand",
+                  "hi": "हाथ"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "हस्त",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "न",
+                "gloss": {
+                  "en": "not",
+                  "hi": "नहीं"
+                },
+                "check": null
+              },
+              {
+                "sa": "दृश्यते",
+                "gloss": {
+                  "en": "is seen",
+                  "hi": "दिखता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दृश्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": "Karmani",
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "ऐकचित्ये द्वयोरेव किमसाध्यं भवेदिति",
+            "meaning": {
+              "en": "“What would be impossible for two who are of one mind?” (Somadeva, Kathāsaritsāgara 1.5)",
+              "hi": "“एक मन वाले दो लोगों के लिए क्या असाध्य होगा?” (सोमदेव, कथासरित्सागर 1.5)"
+            },
+            "words": [
+              {
+                "sa": "ऐकचित्ये",
+                "gloss": {
+                  "en": "in unity of mind",
+                  "hi": "एकमन होने पर"
+                },
+                "check": null
+              },
+              {
+                "sa": "द्वयोः",
+                "gloss": {
+                  "en": "of the two",
+                  "hi": "दोनों के लिए"
+                },
+                "check": null
+              },
+              {
+                "sa": "एव",
+                "gloss": {
+                  "en": "indeed",
+                  "hi": "ही"
+                },
+                "check": null
+              },
+              {
+                "sa": "किम्",
+                "gloss": {
+                  "en": "what",
+                  "hi": "क्या"
+                },
+                "check": null
+              },
+              {
+                "sa": "असाध्यम्",
+                "gloss": {
+                  "en": "impossible",
+                  "hi": "असाध्य"
+                },
+                "check": null
+              },
+              {
+                "sa": "भवेत्",
+                "gloss": {
+                  "en": "would be",
+                  "hi": "होगा"
+                },
+                "check": null
+              },
+              {
+                "sa": "इति",
+                "gloss": {
+                  "en": "thus",
+                  "hi": "ऐसा"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "राजा तुष्यति।",
+            "meaning": {
+              "en": "The king is pleased.",
+              "hi": "राजा प्रसन्न होता है।"
+            },
+            "words": [
+              {
+                "sa": "राजा",
+                "gloss": {
+                  "en": "the king",
+                  "hi": "राजा"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "राजन्",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "तुष्यति",
+                "gloss": {
+                  "en": "is pleased",
+                  "hi": "प्रसन्न होता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "तुष्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": "Divadi",
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "शकटालः खिन्नः भवति।",
+            "meaning": {
+              "en": "Śakaṭāla becomes downcast.",
+              "hi": "शकटाल उदास हो जाता है।"
+            },
+            "words": [
+              {
+                "sa": "शकटालः",
+                "gloss": {
+                  "en": "Śakaṭāla",
+                  "hi": "शकटाल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "शकटाल",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "खिन्नः",
+                "gloss": {
+                  "en": "downcast",
+                  "hi": "उदास"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "खिन्न",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "भवति",
+                "gloss": {
+                  "en": "becomes",
+                  "hi": "हो जाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "भू",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          }
+        ]
+      },
+      {
+        "id": "r3",
+        "title": {
+          "en": "The reed",
+          "hi": "सरकण्डा"
+        },
+        "image": {
+          "id": "tale-leaf-5-r3",
+          "brief": "A lean grey-bearded minister bowing deeply before a proud king in a pillared hall, his bent back like a reed in a breeze; behind him through an arch the calm tall scholar-minister watching him with narrowed eyes; a long reed bending in a vase on a table in the foreground.",
+          "alt": {
+            "en": "A grey-bearded minister bows low like a reed before a proud king as a scholar watches",
+            "hi": "घमण्डी राजा के आगे सरकण्डे की तरह झुकता मन्त्री, देखता विद्वान्"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "shakatala",
+            "yogananda",
+            "vararuci-elder"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "reading",
+        "passage": [
+          {
+            "sa": "शकटालः राजकार्याणि करोति।",
+            "meaning": {
+              "en": "Śakaṭāla does the king's work.",
+              "hi": "शकटाल राजा के काम करता है।"
+            },
+            "words": [
+              {
+                "sa": "शकटालः",
+                "gloss": {
+                  "en": "Śakaṭāla",
+                  "hi": "शकटाल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "शकटाल",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "राजकार्याणि",
+                "gloss": {
+                  "en": "the king's work",
+                  "hi": "राजा के काम"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "राजकार्य",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "करोति",
+                "gloss": {
+                  "en": "does",
+                  "hi": "करता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "कृ",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "शकटालः वेतसः इव नमति।",
+            "meaning": {
+              "en": "Śakaṭāla bends like a reed.",
+              "hi": "शकटाल सरकण्डे की तरह झुकता है।"
+            },
+            "words": [
+              {
+                "sa": "शकटालः",
+                "gloss": {
+                  "en": "Śakaṭāla",
+                  "hi": "शकटाल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "शकटाल",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वेतसः",
+                "gloss": {
+                  "en": "a reed",
+                  "hi": "सरकण्डा"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वेतस",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "इव",
+                "gloss": {
+                  "en": "like",
+                  "hi": "जैसे"
+                },
+                "check": null
+              },
+              {
+                "sa": "नमति",
+                "gloss": {
+                  "en": "bends",
+                  "hi": "झुकता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "नम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "अहम् वेतसीम् वृत्तिम् आश्रयामि।",
+            "meaning": {
+              "en": "Śakaṭāla thinks: “I adopt the reed's way.”",
+              "hi": "शकटाल सोचता है: “मैं सरकण्डे की रीति अपनाता हूँ।”"
+            },
+            "words": [
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "वेतसीम्",
+                "gloss": {
+                  "en": "the reed's",
+                  "hi": "सरकण्डे की"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वेतसी",
+                  "linga": "Stri",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वृत्तिम्",
+                "gloss": {
+                  "en": "way",
+                  "hi": "रीति"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वृत्ति",
+                  "linga": "Stri",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "आश्रयामि",
+                "gloss": {
+                  "en": "adopt",
+                  "hi": "अपनाता हूँ"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "श्रि",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "आ"
+                  ],
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "आश्रये वैतसीं वृत्तिं कालं तावत्प्रतीक्षितुम्",
+            "meaning": {
+              "en": "“I shall adopt the reed's way, to wait for the time.” (Somadeva, Kathāsaritsāgara 1.5)",
+              "hi": "“मैं सरकण्डे की रीति अपनाऊँगा, समय की प्रतीक्षा करने के लिए।” (सोमदेव, कथासरित्सागर 1.5)"
+            },
+            "words": [
+              {
+                "sa": "आश्रये",
+                "gloss": {
+                  "en": "I take up",
+                  "hi": "मैं अपनाता हूँ"
+                },
+                "check": null
+              },
+              {
+                "sa": "वैतसीम्",
+                "gloss": {
+                  "en": "the reed's",
+                  "hi": "सरकण्डे की"
+                },
+                "check": null
+              },
+              {
+                "sa": "वृत्तिम्",
+                "gloss": {
+                  "en": "way",
+                  "hi": "रीति"
+                },
+                "check": null
+              },
+              {
+                "sa": "कालम्",
+                "gloss": {
+                  "en": "the time",
+                  "hi": "समय की"
+                },
+                "check": null
+              },
+              {
+                "sa": "तावत्",
+                "gloss": {
+                  "en": "meanwhile",
+                  "hi": "तब तक"
+                },
+                "check": null
+              },
+              {
+                "sa": "प्रतीक्षितुम्",
+                "gloss": {
+                  "en": "to wait for",
+                  "hi": "प्रतीक्षा करने के लिए"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "वररुचिः तम् पश्यति।",
+            "meaning": {
+              "en": "Vararuci watches him.",
+              "hi": "वररुचि उसे देखता है।"
+            },
+            "words": [
+              {
+                "sa": "वररुचिः",
+                "gloss": {
+                  "en": "Vararuci",
+                  "hi": "वररुचि"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वररुचि",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "तम्",
+                "gloss": {
+                  "en": "him",
+                  "hi": "उसे"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "तद्",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पश्यति",
+                "gloss": {
+                  "en": "watches",
+                  "hi": "देखता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दृश्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "शकटालः कालम् प्रतीक्षते।",
+            "meaning": {
+              "en": "Śakaṭāla waits for the time.",
+              "hi": "शकटाल समय की प्रतीक्षा करता है।"
+            },
+            "words": [
+              {
+                "sa": "शकटालः",
+                "gloss": {
+                  "en": "Śakaṭāla",
+                  "hi": "शकटाल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "शकटाल",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "कालम्",
+                "gloss": {
+                  "en": "the time",
+                  "hi": "समय की"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "काल",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "प्रतीक्षते",
+                "gloss": {
+                  "en": "waits for",
+                  "hi": "प्रतीक्षा करता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "ईक्ष्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "प्रति"
+                  ],
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "tale-leaf-5-r2",
+    "brief": "The wide pale Gaṅgā at morning with a hand with five spread fingers rising from the water; a proud king in red and gold on the brick steps pointing in astonishment; a calm tall scholar-minister beside him holding up two fingers of one hand; a lean grey-bearded man a little behind, looking downcast.",
+    "alt": {
+      "en": "A hand with five fingers rises from the river as a scholar holds up two fingers",
+      "hi": "नदी से उठता पाँच उँगलियों वाला हाथ, दो उँगलियाँ उठाए विद्वान्"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "yogananda",
+      "vararuci-elder",
+      "shakatala"
+    ],
+    "place": "gangatira"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The wide pale Gaṅgā at morning with a hand with five spread fingers rising from the water; a proud king in red and gold on the brick steps pointing in astonishment; a calm tall scholar-minister beside him holding up two fingers of one hand; a lean grey-bearded man a little behind, looking downcast.\nCharacter appearances:\nyogananda: A heavy king in rich red and gold, a thick jewelled necklace, rings on every finger, a restless proud look; shown human, never monstrous.\nvararuci-elder: A tall, calm, middle-aged scholar-minister in a clean white dhoti and shawl, a thin sacred thread, quick bright eyes and a steady half-smile; the same eyes as the boy.\nshakatala: A middle-aged minister, lean and grey-bearded, in a once-fine but now dusty cream robe, with a long patient face and the bent back of someone who has learned to bow.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-03da9831-19fc-40cd-9bfe-dd913d2ed556.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "ab998e2e49ecfb42f6ae769984b0ff22ffe48b428557b88c358ecbc16beb3e91",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\tale-leaf-5-r2-phone-bef2a193.webp",
+      "key": "learn/tale-leaf-5-r2-phone-bef2a193.webp",
+      "sha256": "bef2a19328b41edcc16107f9af58d075b0e683c5b774c3d05e1cb7cd74bfd863",
+      "bytes": 100598,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/tale-leaf-5-r2-phone-bef2a193.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\tale-leaf-5-r2-tablet-e7634727.webp",
+      "key": "learn/tale-leaf-5-r2-tablet-e7634727.webp",
+      "sha256": "e763472716ed1e579d98248e3b96bc2cd1648082041414e9f448303ab573dd38",
+      "bytes": 392798,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/tale-leaf-5-r2-tablet-e7634727.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

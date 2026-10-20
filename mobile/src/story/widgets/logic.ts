@@ -1,7 +1,6 @@
 import type {MarkWordsBuilt, LetterBuilderBuilt} from '../types';
 export function markResult(params:MarkWordsBuilt,selected:number[]){return params.passage.map((word,i)=>{const wanted=params.targets.includes(word),picked=selected.includes(i);return wanted?(picked?'found':'missed'):(picked?'wrong':'neutral');});}
 export function joinLetter(base:string,chip:string,halves:string[]){return (halves.includes(chip)?chip+base:base+chip).normalize('NFC');}
-export function heldWeight(milliseconds:number){return milliseconds>350?'G':'L';}
 export function rhythmResult(expected:string,given:string){return expected===given;}
 
 // ─── form_explorer ───

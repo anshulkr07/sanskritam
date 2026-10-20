@@ -10,7 +10,7 @@ teaches:
 needs:
 - pron.tad
 - noun.deva
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -521,8 +521,8 @@ cards:
   - pron.tad-full
   mode: match
   prompt:
-    en: Join each form to its meaning.
-    hi: हर रूप को उसके अर्थ से जोड़िए।
+    en: Match each form with its meaning.
+    hi: हर रूप को उसके अर्थ से मिलाइए।
   explain:
     en: '{{तस्मै}}, {{तस्मात्}}, {{तस्य}}, {{तस्मिन्}}: the masculine singular.'
     hi: '{{तस्मै}}, {{तस्मात्}}, {{तस्य}}, {{तस्मिन्}}: पुंलिंग एकवचन।'

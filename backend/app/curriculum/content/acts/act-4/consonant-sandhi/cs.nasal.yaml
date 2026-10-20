@@ -9,7 +9,7 @@ teaches:
 - sandhi.nasal
 needs:
 - sandhi.place
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -40,6 +40,17 @@ cards:
   narration:
     en: 'The twelfth statue hums. “सन्मार्गः,” she says: “the good road.” “वाङ्मयम्”: “literature.” “संस्कृतम्”: “Sanskrit.” Dādī: “The last of the three. When a stop meets a nasal, it becomes a nasal too. And a final म् before a consonant turns into a dot, the anusvāra, ं, a nasal in the same place as the sound that follows.”'
     hi: 'बारहवीं प्रतिमा गुनगुनाती है। “सन्मार्गः,” वह कहती है: “भली राह।” “वाङ्मयम्”: “साहित्य।” “संस्कृतम्”: “संस्कृत।” दादी: “तीनों में अन्तिम। जब कोई स्पर्श किसी नासिक्य से मिलता है, तो वह भी नासिक्य बन जाता है। और व्यंजन से पहले अन्त का म् एक बिन्दु बन जाता है, अनुस्वार, ं, अगली ध्वनि के स्थान की नासिक्य ध्वनि।”'
+  lines:
+  - speaker: vyanjanika
+    sa: सन्मार्गः
+    gloss:
+      en: The good road.
+      hi: अच्छा मार्ग।
+    check:
+      type: sandhi
+      first: सत्
+      second: मार्गः
+      joined: सन्मार्गः
 - id: t1
   kind: teach
   title:
@@ -222,8 +233,8 @@ cards:
   - sandhi.nasal
   mode: match
   prompt:
-    en: Join each word to its parts.
-    hi: हर शब्द को उसके भागों से जोड़िए।
+    en: Match each word with its parts.
+    hi: हर शब्द को उसके भागों से मिलाइए।
   explain:
     en: The nasal and the dot.
     hi: नासिक्य और बिन्दु।

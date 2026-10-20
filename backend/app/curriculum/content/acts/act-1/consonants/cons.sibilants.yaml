@@ -10,7 +10,7 @@ teaches:
 needs:
 - script.cons.grid
 - script.cons.semivowels
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: devalaya
     ratio: '4:3'
     id: cons-sibilants-s1
+    text_in_image: ["श ष स ह"]
   narration:
     en: 'On the door''s last line Śuka starts to hiss. Four letters hiss or sigh: three like a snake, one like a breath. He tries each one and gets them all wrong. Chāyikā forgets to hide and laughs out loud.'
     hi: 'द्वार की आख़िरी पंक्ति पर शुक फुफकारने लगता है। चार अक्षर फुफकारते या साँस छोड़ते हैं: तीन साँप की तरह, एक साँस की तरह। वह हर एक आज़माता है और सब ग़लत बोलता है। छायिका छिपना भूलकर ज़ोर से हँस पड़ती है।'
@@ -91,8 +92,8 @@ cards:
   - script.cons.sibilants
   mode: match
   prompt:
-    en: Join each letter to its place.
-    hi: हर अक्षर को उसके स्थान से जोड़िए।
+    en: Match each letter with its place.
+    hi: हर अक्षर को उसके स्थान से मिलाइए।
   explain:
     en: '{{श}} palate, {{ष}} roof, {{स}} teeth, {{ह}} throat.'
     hi: '{{श}} तालु, {{ष}} मूर्धा, {{स}} दन्त, {{ह}} कण्ठ।'

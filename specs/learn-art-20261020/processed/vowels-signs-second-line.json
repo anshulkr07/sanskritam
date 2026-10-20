@@ -1,0 +1,2557 @@
+{
+  "id": "vowels-signs-second-line",
+  "where": "vowels.signs#s1",
+  "ratio": "4:3",
+  "expected": [
+    "अ इ उ",
+    "ऋ ऌ",
+    "ए ओ",
+    "ऐ औ",
+    "का कि की कु कू कृ के कै को कौ"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 painting for The Burnt Book Sanskrit learning story. Use the highest supported native resolution in that exact aspect ratio. Refined Indian watercolor with restrained gouache on warm ivory, quiet ochre, sage, dusty terracotta and muted indigo. Warm and gentle, consistent character design.\nCanonical scene brief: The glowing palm leaf: beneath the bright first line, a second line of small Devanagari words is beginning to glow, the little vowel marks above and below the letters catching the light first. The words are small and soft-focus, with no legible text. Dhūmaka trembles, pointing at one word; Dādī leans in, spectacles on.\nCharacter appearances:\ndhumaka: A small, round, smoke-grey spirit about the height of a child's knee, with big kind dark eyes and a wavy, wispy lower edge like lamp smoke.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nPhone-first composition: compact clear central grouping, essential faces, hands and narrative objects comfortably inside all edges. Keep the entire painting visible with contain fitting. No collage, UI or decorative border.\nOwner update: replace the earlier soft-focus/unreadable writing direction with clear, accurate Devanagari vowel-mark examples. Owner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nअ इ उ\nऋ ऌ\nए ओ\nऐ औ\nका कि की कु कू कृ के कै को कौ\nPut the first four approved groups together on the established FIRST line of the leaf; the final approved string is the SECOND line, with each vowel sign clearly and correctly placed. Both lines are legible.",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 painting for The Burnt Book Sanskrit learning story. Use the highest supported native resolution in that exact aspect ratio. Refined Indian watercolor with restrained gouache on warm ivory, quiet ochre, sage, dusty terracotta and muted indigo. Warm and gentle, consistent character design.\nCanonical scene brief: The glowing palm leaf: beneath the bright first line, a second line of small Devanagari words is beginning to glow, the little vowel marks above and below the letters catching the light first. The words are small and soft-focus, with no legible text. Dhūmaka trembles, pointing at one word; Dādī leans in, spectacles on.\nCharacter appearances:\ndhumaka: A small, round, smoke-grey spirit about the height of a child's knee, with big kind dark eyes and a wavy, wispy lower edge like lamp smoke.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nPhone-first composition: compact clear central grouping, essential faces, hands and narrative objects comfortably inside all edges. Keep the entire painting visible with contain fitting. No collage, UI or decorative border.\nOwner update: replace the earlier soft-focus/unreadable writing direction with clear, accurate Devanagari vowel-mark examples. ",
+  "source": {
+    "scene": {
+      "id": "vowels.signs",
+      "template": "scene",
+      "title": {
+        "en": "The second line",
+        "hi": "दूसरी पंक्ति"
+      },
+      "title_sa": "स्वरचिह्नानि",
+      "minutes": 7,
+      "teaches": [
+        "script.matra"
+      ],
+      "needs": [
+        "script.vowel.short",
+        "script.vowel.long",
+        "script.vowel.compound"
+      ],
+      "review": "engine_ok",
+      "sources": [
+        {
+          "title": "Lesson text and story",
+          "url": null,
+          "licence": "original",
+          "note": null
+        }
+      ],
+      "cards": [
+        {
+          "id": "s1",
+          "title": {
+            "en": "Letters wearing marks",
+            "hi": "चिह्न पहने अक्षर"
+          },
+          "image": {
+            "id": "vowels-signs-second-line",
+            "brief": "The glowing palm leaf: beneath the bright first line, a second line of small Devanagari words is beginning to glow, the little vowel marks above and below the letters catching the light first. The words are small and soft-focus, with no legible text. Dhūmaka trembles, pointing at one word; Dādī leans in, spectacles on.",
+            "alt": {
+              "en": "A second line of small words begins to glow on the leaf while the little ghost points at one word",
+              "hi": "पत्र पर छोटे शब्दों की दूसरी पंक्ति चमकने लगती है; नन्हा भूत एक शब्द की ओर इशारा करता है"
+            },
+            "text_in_image": [],
+            "ratio": "4:3",
+            "cast": [
+              "dhumaka",
+              "dadi"
+            ],
+            "place": "granthalaya"
+          },
+          "depth": "core",
+          "skills": [],
+          "sutras": [],
+          "kind": "story",
+          "narration": {
+            "en": "As the first line glows, a second line wakes beneath it. Its letters wear small marks: above, below, before, after. Dādī nods slowly. “Inside a word, a vowel does not stand alone. It rides on the letter before it, as a sign.” Dhūmaka points at one word and trembles.",
+            "hi": "जैसे ही पहली पंक्ति चमकती है, उसके नीचे एक दूसरी पंक्ति जाग उठती है। उसके अक्षरों पर छोटे-छोटे चिह्न हैं: ऊपर, नीचे, आगे, पीछे। दादी धीरे से सिर हिलाती हैं, “शब्द के भीतर स्वर अकेला नहीं रहता। वह अपने से पहले वाले अक्षर पर मात्रा बनकर बैठता है।” धूमक एक शब्द की ओर इशारा करता है और काँपने लगता है।"
+          },
+          "lines": [],
+          "quote": null
+        },
+        {
+          "id": "t1",
+          "title": {
+            "en": "A letter always carries अ",
+            "hi": "हर अक्षर में अ छिपा है"
+          },
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.matra"
+          ],
+          "sutras": [],
+          "kind": "teach",
+          "body": {
+            "en": "Take the consonant {{क}}. It is never bare: it always carries {{अ}}, so {{क}} is {{क्}} + {{अ}}, ka. To give it another vowel, add that vowel's sign. The sign replaces the {{अ}}: {{क्}} + {{आ}} = {{का}}, {{क्}} + {{इ}} = {{कि}}.",
+            "hi": "व्यंजन {{क}} लीजिए। यह कभी अकेला नहीं होता: इसमें सदा {{अ}} रहता है, इसलिए {{क}} को क् + अ पढ़ते हैं। इसे कोई दूसरा स्वर देना हो, तो उस स्वर की मात्रा लगाइए। मात्रा {{अ}} की जगह ले लेती है: {{का}}, {{कि}}।"
+          },
+          "examples": [],
+          "rows": [],
+          "steps": [
+            {
+              "sa": "क्",
+              "label": {
+                "en": "{{क्}} alone, with no vowel (rare)",
+                "hi": "अकेला क्, बिना स्वर (कम दिखता है)"
+              }
+            },
+            {
+              "sa": "क",
+              "label": {
+                "en": "{{क्}} + {{अ}} = {{क}}, ka",
+                "hi": "क् + अ = क"
+              }
+            },
+            {
+              "sa": "का",
+              "label": {
+                "en": "{{क्}} + {{आ}} = {{का}}, kā",
+                "hi": "क् + आ = का"
+              }
+            }
+          ],
+          "formula": null,
+          "term": null
+        },
+        {
+          "id": "t2",
+          "title": {
+            "en": "Every vowel on {{क}}",
+            "hi": "{{क}} पर हर स्वर"
+          },
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.matra"
+          ],
+          "sutras": [],
+          "kind": "table",
+          "caption": {
+            "en": "The vowel, its sign, and the sign on {{क}}",
+            "hi": "स्वर, उसकी मात्रा, और {{क}} पर वह मात्रा"
+          },
+          "columns": [
+            {
+              "en": "Vowel",
+              "hi": "स्वर"
+            },
+            {
+              "en": "Sign",
+              "hi": "मात्रा"
+            },
+            {
+              "en": "On {{क}}",
+              "hi": "{{क}} पर"
+            },
+            {
+              "en": "Where it sits",
+              "hi": "कहाँ लगती है"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "sa": "अ",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "no sign",
+                  "hi": "मात्रा नहीं"
+                },
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "क",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "nothing is added",
+                  "hi": "कुछ नहीं जुड़ता"
+                },
+                "highlight": false,
+                "check": null
+              }
+            ],
+            [
+              {
+                "sa": "आ",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "ा",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "का",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "after",
+                  "hi": "बाद में"
+                },
+                "highlight": false,
+                "check": null
+              }
+            ],
+            [
+              {
+                "sa": "इ",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "ि",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "कि",
+                "text": null,
+                "highlight": true,
+                "check": null
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "before, but said after",
+                  "hi": "पहले, पर बोली बाद में"
+                },
+                "highlight": true,
+                "check": null
+              }
+            ],
+            [
+              {
+                "sa": "ई",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "ी",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "की",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "after",
+                  "hi": "बाद में"
+                },
+                "highlight": false,
+                "check": null
+              }
+            ],
+            [
+              {
+                "sa": "उ",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "ु",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "कु",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "below",
+                  "hi": "नीचे"
+                },
+                "highlight": false,
+                "check": null
+              }
+            ],
+            [
+              {
+                "sa": "ऊ",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "ू",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "कू",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "below",
+                  "hi": "नीचे"
+                },
+                "highlight": false,
+                "check": null
+              }
+            ],
+            [
+              {
+                "sa": "ऋ",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "ृ",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "कृ",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "below",
+                  "hi": "नीचे"
+                },
+                "highlight": false,
+                "check": null
+              }
+            ],
+            [
+              {
+                "sa": "ए",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "े",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "के",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "above",
+                  "hi": "ऊपर"
+                },
+                "highlight": false,
+                "check": null
+              }
+            ],
+            [
+              {
+                "sa": "ऐ",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "ै",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "कै",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "above",
+                  "hi": "ऊपर"
+                },
+                "highlight": false,
+                "check": null
+              }
+            ],
+            [
+              {
+                "sa": "ओ",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "ो",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "को",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "after, with a stroke above",
+                  "hi": "बाद में, ऊपर रेखा के साथ"
+                },
+                "highlight": false,
+                "check": null
+              }
+            ],
+            [
+              {
+                "sa": "औ",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "ौ",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": "कौ",
+                "text": null,
+                "highlight": false,
+                "check": null
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "after, with a stroke above",
+                  "hi": "बाद में, ऊपर रेखा के साथ"
+                },
+                "highlight": false,
+                "check": null
+              }
+            ]
+          ],
+          "note": {
+            "en": "{{ॠ}} and {{ऌ}} have signs too ({{कॄ}}, {{कॢ}}), but you will almost never meet them.",
+            "hi": "{{ॠ}} और {{ऌ}} की भी मात्राएँ हैं ({{कॄ}}, {{कॢ}}), पर ये लगभग कभी नहीं मिलतीं।"
+          }
+        },
+        {
+          "id": "e1",
+          "title": {
+            "en": "Build on {{क}}",
+            "hi": "{{क}} पर बनाइए"
+          },
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.matra"
+          ],
+          "sutras": [],
+          "kind": "explore",
+          "widget": "letter_builder",
+          "prompt": {
+            "en": "Drag a sign onto {{क}} and read what you made. Try to make every target.",
+            "hi": "किसी मात्रा को {{क}} पर खींचिए और जो बना उसे पढ़िए। हर लक्ष्य बनाने की कोशिश कीजिए।"
+          },
+          "params": {
+            "bases": [
+              "क"
+            ],
+            "signs": [
+              "ा",
+              "ि",
+              "ी",
+              "ु",
+              "ू",
+              "ृ",
+              "े",
+              "ै",
+              "ो",
+              "ौ"
+            ],
+            "targets": [
+              "कि",
+              "कू",
+              "के",
+              "कौ"
+            ]
+          },
+          "roman": "show"
+        },
+        {
+          "id": "p1",
+          "title": null,
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.matra"
+          ],
+          "sutras": [],
+          "kind": "practice",
+          "mode": "choice",
+          "prompt": {
+            "en": "Which one is {{क्}} + {{इ}}?",
+            "hi": "इनमें से {{क्}} + {{इ}} कौन-सा है?"
+          },
+          "explain": {
+            "en": "{{ि}} is written before the letter but said after it: {{कि}} is {{क्}} + {{इ}}.",
+            "hi": "{{ि}} अक्षर से पहले लिखी जाती है, पर बोली बाद में जाती है: {{कि}} = क् + इ।"
+          },
+          "options": [
+            {
+              "sa": "कि",
+              "text": null,
+              "correct": true,
+              "why": null
+            },
+            {
+              "sa": "की",
+              "text": null,
+              "correct": false,
+              "why": {
+                "en": "{{की}} has the long {{ई}} sign.",
+                "hi": "{{की}} में दीर्घ ई की मात्रा है।"
+              }
+            },
+            {
+              "sa": "के",
+              "text": null,
+              "correct": false,
+              "why": {
+                "en": "{{के}}: the sign above is {{ए}}.",
+                "hi": "{{के}} में ऊपर {{ए}} की मात्रा है।"
+              }
+            }
+          ],
+          "answers": [],
+          "tiles": [],
+          "tokens": [],
+          "pairs": [],
+          "exercise": null,
+          "check": null,
+          "gate": false,
+          "story": null,
+          "roman": "after"
+        },
+        {
+          "id": "t3",
+          "title": {
+            "en": "Written first, said last",
+            "hi": "पहले लिखी, बाद में बोली"
+          },
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.matra"
+          ],
+          "sutras": [],
+          "kind": "teach",
+          "body": {
+            "en": "One sign breaks the left-to-right rule. {{ि}} is written before its letter but said after it: in {{कि}} you see the sign first, yet you say {{क्}}, then {{इ}}. Its long twin {{ी}} comes after, as you would expect. In {{दिनम्}} the sign stands before {{द}}: di-nam.",
+            "hi": "एक मात्रा बाएँ-से-दाएँ के नियम को तोड़ती है। {{ि}} अपने अक्षर से पहले लिखी जाती है, पर बोली बाद में जाती है: {{कि}} में मात्रा पहले दिखती है, फिर भी पहले क् बोलते हैं, फिर इ। उसकी दीर्घ जुड़वाँ {{ी}} सीधी चलती है: अक्षर के बाद। {{दिनम्}} में मात्रा {{द}} से पहले खड़ी है: दि-नम्।"
+          },
+          "examples": [
+            {
+              "sa": "दिनम्",
+              "meaning": {
+                "en": "a day: di-nam",
+                "hi": "दिन: दि-नम्"
+              },
+              "words": [],
+              "source": null,
+              "check": {
+                "type": "subanta",
+                "stem": "दिन",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          "rows": [],
+          "steps": [],
+          "formula": null,
+          "term": null
+        },
+        {
+          "id": "p2",
+          "title": null,
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.matra"
+          ],
+          "sutras": [],
+          "kind": "practice",
+          "mode": "type",
+          "prompt": {
+            "en": "Build {{क्}} + {{ऊ}}: {{क}} with the long {{ऊ}} sign.",
+            "hi": "बनाइए: {{क}} पर दीर्घ ऊ की मात्रा।"
+          },
+          "explain": {
+            "en": "{{ू}} sits below the letter: {{कू}}. Look closely: {{ु}} and {{ू}} curl in opposite directions.",
+            "hi": "{{ू}} अक्षर के नीचे लगती है: {{कू}}। ध्यान से देखिए: {{ु}} और {{ू}} उलटी दिशाओं में मुड़ती हैं।"
+          },
+          "options": [],
+          "answers": [
+            "कू"
+          ],
+          "tiles": [
+            "क",
+            "ू",
+            "ु",
+            "ृ"
+          ],
+          "tokens": [],
+          "pairs": [],
+          "exercise": null,
+          "check": null,
+          "gate": false,
+          "story": null,
+          "roman": "after"
+        },
+        {
+          "id": "p3",
+          "title": null,
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.matra"
+          ],
+          "sutras": [],
+          "kind": "practice",
+          "mode": "match",
+          "prompt": {
+            "en": "Join each sign to its vowel.",
+            "hi": "हर मात्रा को उसके स्वर से जोड़िए।"
+          },
+          "explain": {
+            "en": "Each sign is a short form of its vowel; only {{अ}} has none.",
+            "hi": "हर मात्रा अपने स्वर का छोटा रूप है; केवल {{अ}} की कोई मात्रा नहीं।"
+          },
+          "options": [],
+          "answers": [],
+          "tiles": [],
+          "tokens": [],
+          "pairs": [
+            {
+              "left": {
+                "sa": "ा",
+                "text": null,
+                "correct": false,
+                "why": null
+              },
+              "right": {
+                "sa": "आ",
+                "text": null,
+                "correct": false,
+                "why": null
+              }
+            },
+            {
+              "left": {
+                "sa": "ि",
+                "text": null,
+                "correct": false,
+                "why": null
+              },
+              "right": {
+                "sa": "इ",
+                "text": null,
+                "correct": false,
+                "why": null
+              }
+            },
+            {
+              "left": {
+                "sa": "ु",
+                "text": null,
+                "correct": false,
+                "why": null
+              },
+              "right": {
+                "sa": "उ",
+                "text": null,
+                "correct": false,
+                "why": null
+              }
+            },
+            {
+              "left": {
+                "sa": "े",
+                "text": null,
+                "correct": false,
+                "why": null
+              },
+              "right": {
+                "sa": "ए",
+                "text": null,
+                "correct": false,
+                "why": null
+              }
+            },
+            {
+              "left": {
+                "sa": "ौ",
+                "text": null,
+                "correct": false,
+                "why": null
+              },
+              "right": {
+                "sa": "औ",
+                "text": null,
+                "correct": false,
+                "why": null
+              }
+            }
+          ],
+          "exercise": null,
+          "check": null,
+          "gate": false,
+          "story": null,
+          "roman": "after"
+        },
+        {
+          "id": "e2",
+          "title": {
+            "en": "Find the long ī",
+            "hi": "दीर्घ ई खोजिए"
+          },
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.matra",
+            "script.vowel.long"
+          ],
+          "sutras": [],
+          "kind": "explore",
+          "widget": "mark_words",
+          "prompt": {
+            "en": "Tap every word with the long ī sign {{ी}}.",
+            "hi": "हर उस शब्द को छुइए जिसमें दीर्घ ई की मात्रा {{ी}} है।"
+          },
+          "params": {
+            "passage": [
+              "दिनम्",
+              "दीनः",
+              "दीपः",
+              "कुलम्",
+              "नदी",
+              "कूलम्"
+            ],
+            "targets": [
+              "दीनः",
+              "दीपः",
+              "नदी"
+            ]
+          },
+          "roman": "after"
+        },
+        {
+          "id": "p4",
+          "title": {
+            "en": "A name on the leaf",
+            "hi": "पत्र पर एक नाम"
+          },
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.matra"
+          ],
+          "sutras": [],
+          "kind": "practice",
+          "mode": "choice",
+          "prompt": {
+            "en": "Dhūmaka points at a word with one sign burnt away. It is his own name, with a long {{ऊ}} on its first letter. Which is it?",
+            "hi": "धूमक जिस शब्द की ओर इशारा कर रहा है, उसकी एक मात्रा जल गई है। वह उसका अपना नाम है, जिसके पहले अक्षर पर दीर्घ ऊ है। सही रूप कौन-सा है?"
+          },
+          "explain": {
+            "en": "{{धूमकः}}: {{ू}} under {{ध}} makes {{धू}}. {{धूमः}} is smoke; {{धूमकः}}, little smoke.",
+            "hi": "{{धूमकः}}: {{ध}} के नीचे {{ू}} से ‘धू’ बनता है। {{धूमः}} यानी धुआँ; {{धूमकः}}, नन्हा धुआँ।"
+          },
+          "options": [
+            {
+              "sa": "धूमकः",
+              "text": null,
+              "correct": true,
+              "why": null
+            },
+            {
+              "sa": "धुमकः",
+              "text": null,
+              "correct": false,
+              "why": {
+                "en": "That is the short {{उ}} sign. His name has the long {{ऊ}}.",
+                "hi": "इसमें ह्रस्व उ है। उसके नाम में दीर्घ ऊ है।"
+              }
+            },
+            {
+              "sa": "धीमकः",
+              "text": null,
+              "correct": false,
+              "why": {
+                "en": "That sign is {{ई}}. His name has {{ऊ}}.",
+                "hi": "यह ई की मात्रा है। उसके नाम में ऊ है।"
+              }
+            }
+          ],
+          "answers": [],
+          "tiles": [],
+          "tokens": [],
+          "pairs": [],
+          "exercise": null,
+          "check": null,
+          "gate": true,
+          "story": {
+            "success": {
+              "en": "धूमकः glows on the leaf. The little ghost stares at his own name, and his smoke turns silver.",
+              "hi": "पत्र पर धूमकः चमक उठता है। नन्हा भूत अपना ही नाम देखता रह जाता है, और उसका धुआँ चाँदी-सा हो जाता है।"
+            },
+            "failure": {
+              "en": "The word flickers out. Dhūmaka sighs a little puff. Look under the first letter: the long {{ऊ}}.",
+              "hi": "शब्द टिमटिमाकर बुझ जाता है। धूमक धुएँ का एक छोटा-सा कश छोड़ता है। पहले अक्षर के नीचे देखिए: दीर्घ ऊ।"
+            }
+          },
+          "roman": "after"
+        },
+        {
+          "id": "sum",
+          "title": {
+            "en": "Vowel signs",
+            "hi": "मात्राएँ"
+          },
+          "image": null,
+          "depth": "core",
+          "skills": [],
+          "sutras": [],
+          "kind": "summary",
+          "points": [
+            {
+              "sa": "क",
+              "text": {
+                "en": "A consonant carries {{अ}}: {{क}} is ka.",
+                "hi": "व्यंजन में {{अ}} रहता है: {{क}} = क् + अ।"
+              }
+            },
+            {
+              "sa": "का कि की कु कू कृ के कै को कौ",
+              "text": {
+                "en": "Each vowel has its sign; {{अ}} has none.",
+                "hi": "हर स्वर की मात्रा है; {{अ}} की नहीं।"
+              }
+            },
+            {
+              "sa": "ि",
+              "text": {
+                "en": "Written before the letter, said after it.",
+                "hi": "अक्षर से पहले लिखी, बाद में बोली।"
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "{{ु}} {{ू}} {{ृ}} sit below; {{े}} {{ै}} above; {{ा}} {{ी}} {{ो}} {{ौ}} after.",
+                "hi": "{{ु}} {{ू}} {{ृ}} नीचे; {{े}} {{ै}} ऊपर; {{ा}} {{ी}} {{ो}} {{ौ}} बाद में।"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shared_leaf_source": {
+      "vowels.short": {
+        "id": "vowels.short",
+        "template": "scene",
+        "title": {
+          "en": "The smoke that could not speak",
+          "hi": "वह धुआँ जो बोल नहीं सकता था"
+        },
+        "title_sa": "ह्रस्वाः स्वराः",
+        "minutes": 6,
+        "teaches": [
+          "script.vowel.short"
+        ],
+        "needs": [],
+        "review": "engine_ok",
+        "sources": [
+          {
+            "title": "Śiva sūtras and Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+            "url": "https://github.com/ambuda-org/vidyut",
+            "licence": "MIT",
+            "note": null
+          },
+          {
+            "title": "Lesson text and story",
+            "url": null,
+            "licence": "original",
+            "note": null
+          }
+        ],
+        "cards": [
+          {
+            "id": "s1",
+            "title": {
+              "en": "Smoke from the lamp",
+              "hi": "दीपक का धुआँ"
+            },
+            "image": {
+              "id": "vowels-short-smoke",
+              "brief": "Evening in the temple library. On the low reading desk the half-burnt palm leaf glows gold. Smoke from a brass oil lamp curls upward and gathers into Dhūmaka, a small round smoke-grey ghost with big kind eyes, pointing at the leaf. You (seen from behind) and Dādī lean in; Śuka on your shoulder puffs his feathers in surprise.",
+              "alt": {
+                "en": "A small smoky ghost rising from a lamp points at a glowing leaf while a grandmother, a young person and a parrot watch",
+                "hi": "दीपक से उठता नन्हा धुएँ-सा भूत चमकते पत्र की ओर इशारा करता है; दादी, एक युवा और तोता देख रहे हैं"
+              },
+              "text_in_image": [],
+              "ratio": "4:3",
+              "cast": [
+                "you",
+                "dadi",
+                "shuka",
+                "dhumaka"
+              ],
+              "place": "granthalaya"
+            },
+            "depth": "core",
+            "skills": [],
+            "sutras": [],
+            "kind": "story",
+            "narration": {
+              "en": "That evening, smoke from the brass lamp curls into a shape: a small ghost with big, kind eyes. He opens his mouth, but no sound comes. He points at the glowing leaf. Dādī smiles. “He missed Guṇāḍhya's reading long ago. He is waiting to hear this leaf read aloud.”",
+              "hi": "उस शाम पीतल के दीपक का धुआँ एक आकार में सिमट जाता है: बड़ी-बड़ी, दयालु आँखों वाला एक नन्हा भूत। वह मुँह खोलता है, पर कोई ध्वनि नहीं निकलती। वह चमकते पत्र की ओर इशारा करता है। दादी मुस्कुराती हैं, “यह बहुत पहले गुणाढ्य का पाठ सुनने से चूक गया था। अब यह इस पत्र को ज़ोर से पढ़ा जाता सुनना चाहता है।”"
+            },
+            "lines": [
+              {
+                "speaker": "dadi",
+                "sa": "पश्य! धूमकः।",
+                "gloss": {
+                  "en": "“Look! Dhūmaka, the little smoke.”",
+                  "hi": "“देखो! धूमक, नन्हा धुआँ।”"
+                },
+                "text": null,
+                "check": null
+              }
+            ],
+            "quote": null
+          },
+          {
+            "id": "s2",
+            "title": {
+              "en": "The first line",
+              "hi": "पहली पंक्ति"
+            },
+            "image": {
+              "id": "vowels-short-line",
+              "brief": "Close-up of the half-burnt palm leaf on the reading desk in warm lamplight. Along its top runs one line of glowing Devanagari in four groups, each followed by a small charred gap: अ इ उ, then ऋ ऌ, then ए ओ, then ऐ औ. Dhūmaka's small smoky hand points at the first group.",
+              "alt": {
+                "en": "A palm leaf with one glowing line of letters in four groups, each followed by a burnt gap",
+                "hi": "एक ताड़पत्र जिस पर अक्षरों की एक चमकती पंक्ति चार समूहों में है, हर समूह के बाद जला हुआ खाली स्थान"
+              },
+              "text_in_image": [
+                "अ इ उ",
+                "ऋ ऌ",
+                "ए ओ",
+                "ऐ औ"
+              ],
+              "ratio": "4:3",
+              "cast": [
+                "dhumaka"
+              ],
+              "place": "granthalaya"
+            },
+            "depth": "core",
+            "skills": [],
+            "sutras": [],
+            "kind": "story",
+            "narration": {
+              "en": "Dādī holds the lamp close to the leaf. “The first line has four groups of letters. See the burnt gap after each group? The fire took one letter from each. What is left are vowels: sounds you can hold with your mouth open.”",
+              "hi": "दादी दीपक को पत्र के पास लाती हैं। “पहली पंक्ति में अक्षरों के चार समूह हैं। हर समूह के बाद जला हुआ खाली स्थान देखा? आग ने हर समूह से एक अक्षर ले लिया। जो बचे हैं वे स्वर हैं: ऐसी ध्वनियाँ जिन्हें मुँह खोलकर देर तक बोला जा सकता है।”"
+            },
+            "lines": [],
+            "quote": null
+          },
+          {
+            "id": "t1",
+            "title": {
+              "en": "A vowel stands on its own",
+              "hi": "स्वर अपने आप बोला जाता है"
+            },
+            "image": {
+              "id": "vowels-short-aiu",
+              "brief": "Three large Devanagari letters अ, इ and उ painted in ochre ink on a cream palm leaf, spaced apart. Beside each letter a tiny drawing of a mouth shows how it is said: relaxed and open for अ, lips spread in a slight smile for इ, lips rounded for उ.",
+              "alt": {
+                "en": "The letters अ, इ and उ, each beside a small drawing of the mouth shape that says it",
+                "hi": "अ, इ और उ अक्षर, हर एक के पास उसे बोलने वाले मुँह का छोटा चित्र"
+              },
+              "text_in_image": [
+                "अ",
+                "इ",
+                "उ"
+              ],
+              "ratio": "4:3",
+              "cast": [],
+              "place": null
+            },
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [
+              "SS.1"
+            ],
+            "kind": "teach",
+            "body": {
+              "en": "A vowel, {{स्वरः}}, is a sound you can hold with your mouth open. Sanskrit gives each vowel its own letter. The leaf's first group holds three of them, all short: say each one quickly, in one beat.",
+              "hi": "स्वर ({{स्वरः}}) वह ध्वनि है जिसे मुँह खोलकर देर तक बोला जा सकता है। संस्कृत में हर स्वर का अपना अक्षर है। पत्र के पहले समूह में ऐसे तीन स्वर हैं, तीनों ह्रस्व: हर एक को जल्दी, एक मात्रा में बोलिए।"
+            },
+            "examples": [],
+            "rows": [
+              {
+                "sa": "अ",
+                "gloss": {
+                  "en": "a, like the u in “but”",
+                  "hi": "अ, जैसे ‘अब’ में"
+                },
+                "check": null
+              },
+              {
+                "sa": "इ",
+                "gloss": {
+                  "en": "i, like the i in “sit”",
+                  "hi": "इ, जैसे ‘इमली’ में"
+                },
+                "check": null
+              },
+              {
+                "sa": "उ",
+                "gloss": {
+                  "en": "u, like the u in “put”",
+                  "hi": "उ, जैसे ‘उधर’ में"
+                },
+                "check": null
+              }
+            ],
+            "steps": [],
+            "formula": null,
+            "term": {
+              "sa": "स्वरः",
+              "meaning": {
+                "en": "a vowel: a sound you can hold",
+                "hi": "स्वर: ऐसी ध्वनि जिसे देर तक बोला जा सके"
+              }
+            }
+          },
+          {
+            "id": "e1",
+            "title": {
+              "en": "Where the sound is made",
+              "hi": "ध्वनि कहाँ बनती है"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [],
+            "kind": "explore",
+            "widget": "mouth_map",
+            "prompt": {
+              "en": "Tap each vowel and see where your mouth makes it. Say it softly as the place lights up.",
+              "hi": "हर स्वर को छूकर देखिए कि मुँह में वह कहाँ बनता है। स्थान चमके, तब धीरे से बोलिए।"
+            },
+            "params": {
+              "letters": [
+                "अ",
+                "इ",
+                "उ"
+              ]
+            },
+            "roman": "show"
+          },
+          {
+            "id": "p1",
+            "title": null,
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [],
+            "kind": "practice",
+            "mode": "choice",
+            "prompt": {
+              "en": "Which one sounds like the i in “sit”?",
+              "hi": "इनमें से कौन-सा स्वर तालु से बोला जाता है?"
+            },
+            "explain": {
+              "en": "{{इ}} is short, made at the palate.",
+              "hi": "{{इ}} ह्रस्व स्वर है, जो तालु से बोला जाता है।"
+            },
+            "options": [
+              {
+                "sa": "अ",
+                "text": null,
+                "correct": false,
+                "why": {
+                  "en": "{{अ}} is a, the sound in “but”.",
+                  "hi": "{{अ}} कण्ठ से बोला जाता है।"
+                }
+              },
+              {
+                "sa": "इ",
+                "text": null,
+                "correct": true,
+                "why": null
+              },
+              {
+                "sa": "उ",
+                "text": null,
+                "correct": false,
+                "why": {
+                  "en": "{{उ}} is u, as in “put”.",
+                  "hi": "{{उ}} होंठों से बोला जाता है।"
+                }
+              }
+            ],
+            "answers": [],
+            "tiles": [],
+            "tokens": [],
+            "pairs": [],
+            "exercise": null,
+            "check": null,
+            "gate": false,
+            "story": null,
+            "roman": "after"
+          },
+          {
+            "id": "t2",
+            "title": {
+              "en": "Two vowels made with r and l",
+              "hi": "र और ल वाले दो स्वर"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [
+              "SS.2"
+            ],
+            "kind": "teach",
+            "body": {
+              "en": "The second group holds two unusual vowels. For {{ऋ}}, curl your tongue up toward the roof of your mouth, as if to say r, and let that sound carry the syllable, like the r in an American “bird”. Keep it one quick sound. {{ऌ}} does the same with l, at the teeth; it is very rare.",
+              "hi": "दूसरे समूह में दो अनोखे स्वर हैं। {{ऋ}} के लिए जीभ को मुँह की छत (मूर्धा) की ओर मोड़िए, मानो ‘र’ कहना हो, और वही ध्वनि पूरा अक्षर बन जाए। इसे एक छोटी ध्वनि रखिए। {{ऌ}} यही काम दाँतों के पास ‘ल’ के साथ करता है; यह बहुत दुर्लभ है।"
+            },
+            "examples": [
+              {
+                "sa": "ऋषिः",
+                "meaning": {
+                  "en": "a sage; it begins with {{ऋ}}",
+                  "hi": "ऋषि; आरम्भ में {{ऋ}}"
+                },
+                "words": [],
+                "source": null,
+                "check": {
+                  "type": "subanta",
+                  "stem": "ऋषि",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "rows": [
+              {
+                "sa": "ऋ",
+                "gloss": {
+                  "en": "ṛ, a vowel r",
+                  "hi": "ऋ, स्वर के रूप में ‘र’"
+                },
+                "check": null
+              },
+              {
+                "sa": "ऌ",
+                "gloss": {
+                  "en": "ḷ, a vowel l (rare)",
+                  "hi": "ऌ, स्वर के रूप में ‘ल’ (दुर्लभ)"
+                },
+                "check": null
+              }
+            ],
+            "steps": [],
+            "formula": null,
+            "term": null
+          },
+          {
+            "id": "p2",
+            "title": null,
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [],
+            "kind": "practice",
+            "mode": "match",
+            "prompt": {
+              "en": "Join each vowel to the place where the mouth makes it.",
+              "hi": "हर स्वर को उसके उच्चारण-स्थान से जोड़िए।"
+            },
+            "explain": {
+              "en": "The vowels follow the mouth: {{अ}} at the throat, {{इ}} at the palate, {{ऋ}} at the roof, {{उ}} at the lips.",
+              "hi": "स्वर मुँह के क्रम पर चलते हैं: {{अ}} कण्ठ से, {{इ}} तालु से, {{ऋ}} मूर्धा से, {{उ}} होंठों से।"
+            },
+            "options": [],
+            "answers": [],
+            "tiles": [],
+            "tokens": [],
+            "pairs": [
+              {
+                "left": {
+                  "sa": "अ",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                },
+                "right": {
+                  "sa": null,
+                  "text": {
+                    "en": "throat",
+                    "hi": "कण्ठ (गला)"
+                  },
+                  "correct": false,
+                  "why": null
+                }
+              },
+              {
+                "left": {
+                  "sa": "इ",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                },
+                "right": {
+                  "sa": null,
+                  "text": {
+                    "en": "palate",
+                    "hi": "तालु"
+                  },
+                  "correct": false,
+                  "why": null
+                }
+              },
+              {
+                "left": {
+                  "sa": "उ",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                },
+                "right": {
+                  "sa": null,
+                  "text": {
+                    "en": "lips",
+                    "hi": "होंठ"
+                  },
+                  "correct": false,
+                  "why": null
+                }
+              },
+              {
+                "left": {
+                  "sa": "ऋ",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                },
+                "right": {
+                  "sa": null,
+                  "text": {
+                    "en": "roof of the mouth",
+                    "hi": "मूर्धा (मुँह की छत)"
+                  },
+                  "correct": false,
+                  "why": null
+                }
+              }
+            ],
+            "exercise": null,
+            "check": null,
+            "gate": false,
+            "story": null,
+            "roman": "after"
+          },
+          {
+            "id": "e2",
+            "title": {
+              "en": "Spot the first letter",
+              "hi": "पहला अक्षर पहचानिए"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [],
+            "kind": "explore",
+            "widget": "mark_words",
+            "prompt": {
+              "en": "Look only at the first letter of each word. Tap every word that begins with {{उ}}.",
+              "hi": "हर शब्द का केवल पहला अक्षर देखिए। जो शब्द {{उ}} से शुरू होते हैं, उन सबको छुइए।"
+            },
+            "params": {
+              "passage": [
+                "अग्निः",
+                "उषा",
+                "इन्द्रः",
+                "उदकम्",
+                "ऋषिः",
+                "इति"
+              ],
+              "targets": [
+                "उषा",
+                "उदकम्"
+              ]
+            },
+            "roman": "after"
+          },
+          {
+            "id": "p3",
+            "title": {
+              "en": "Put the line back",
+              "hi": "पंक्ति को फिर से जोड़िए"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [
+              "SS.1",
+              "SS.2"
+            ],
+            "kind": "practice",
+            "mode": "order",
+            "prompt": {
+              "en": "The fire scattered the first two groups. Put the five short vowels back in the leaf's order.",
+              "hi": "आग ने पहले दो समूह बिखेर दिए हैं। पाँचों ह्रस्व स्वरों को पत्र के क्रम में फिर से लगाइए।"
+            },
+            "explain": {
+              "en": "The leaf follows the oldest order of Sanskrit sounds: {{अ}} {{इ}} {{उ}}, then {{ऋ}} {{ऌ}}. These are the first two of the fourteen sound-groups that open Pāṇini's grammar.",
+              "hi": "पत्र संस्कृत ध्वनियों के सबसे पुराने क्रम पर चलता है: {{अ}} {{इ}} {{उ}}, फिर {{ऋ}} {{ऌ}}। पाणिनि के व्याकरण के आरम्भ में जो चौदह ध्वनि-समूह हैं, ये उनके पहले दो समूह हैं।"
+            },
+            "options": [],
+            "answers": [],
+            "tiles": [],
+            "tokens": [
+              "अ",
+              "इ",
+              "उ",
+              "ऋ",
+              "ऌ"
+            ],
+            "pairs": [],
+            "exercise": null,
+            "check": null,
+            "gate": true,
+            "story": {
+              "success": {
+                "en": "The first marks of the line flare gold. Dhūmaka bobs up and down, and a thin sound comes from him: “अ… इ… उ…”",
+                "hi": "पंक्ति के पहले अक्षर सुनहरे चमक उठते हैं। धूमक ऊपर-नीचे उछलता है, और उसमें से एक पतली-सी ध्वनि निकलती है: “अ… इ… उ…”"
+              },
+              "failure": {
+                "en": "The marks flicker and go dark. Dhūmaka waits, patient as smoke. Look again at the order.",
+                "hi": "अक्षर टिमटिमाकर बुझ जाते हैं। धूमक धुएँ जैसे धैर्य से प्रतीक्षा करता है। क्रम फिर से देखिए।"
+              }
+            },
+            "roman": "after"
+          },
+          {
+            "id": "p4",
+            "title": null,
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [],
+            "kind": "practice",
+            "mode": "choice",
+            "prompt": {
+              "en": "Which of these is not one of the five short vowels?",
+              "hi": "इनमें से कौन-सा पाँच ह्रस्व स्वरों में नहीं है?"
+            },
+            "explain": {
+              "en": "{{ए}} is a vowel too, but not a short one. It waits in the leaf's third group.",
+              "hi": "{{ए}} भी स्वर है, पर ह्रस्व नहीं। वह पत्र के तीसरे समूह में है।"
+            },
+            "options": [
+              {
+                "sa": "इ",
+                "text": null,
+                "correct": false,
+                "why": null
+              },
+              {
+                "sa": "ऋ",
+                "text": null,
+                "correct": false,
+                "why": null
+              },
+              {
+                "sa": "ए",
+                "text": null,
+                "correct": true,
+                "why": null
+              },
+              {
+                "sa": "उ",
+                "text": null,
+                "correct": false,
+                "why": null
+              }
+            ],
+            "answers": [],
+            "tiles": [],
+            "tokens": [],
+            "pairs": [],
+            "exercise": null,
+            "check": null,
+            "gate": false,
+            "story": null,
+            "roman": "after"
+          },
+          {
+            "id": "pn",
+            "title": {
+              "en": "Pāṇini measures a vowel",
+              "hi": "पाणिनि स्वर को मापते हैं"
+            },
+            "image": null,
+            "depth": "panini",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [
+              "1.2.27"
+            ],
+            "kind": "teach",
+            "body": {
+              "en": "Pāṇini names vowels by how long they last. In sūtra 1.2.27 a vowel lasting as long as {{उ}} is {{ह्रस्वः}}, short; as long as {{ऊ}}, {{दीर्घः}}, long; held for three beats, {{प्लुतः}}. All five vowels of the leaf's first two groups are {{ह्रस्वः}}.",
+              "hi": "पाणिनि स्वरों का नाम उनकी अवधि से रखते हैं। सूत्र 1.2.27 के अनुसार जो स्वर {{उ}} जितना समय ले वह {{ह्रस्वः}} है, जो {{ऊ}} जितना ले वह {{दीर्घः}}, और जो तीन मात्रा तक खिंचे वह {{प्लुतः}}। पत्र के पहले दो समूहों के पाँचों स्वर {{ह्रस्वः}} हैं।"
+            },
+            "examples": [],
+            "rows": [],
+            "steps": [],
+            "formula": null,
+            "term": {
+              "sa": "ह्रस्वः",
+              "meaning": {
+                "en": "short: lasting one beat",
+                "hi": "ह्रस्व: एक मात्रा का"
+              }
+            }
+          },
+          {
+            "id": "sum",
+            "title": {
+              "en": "The short vowels",
+              "hi": "ह्रस्व स्वर"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [],
+            "sutras": [],
+            "kind": "summary",
+            "points": [
+              {
+                "sa": "अ इ उ ऋ ऌ",
+                "text": {
+                  "en": "The five short vowels: one beat each.",
+                  "hi": "पाँच ह्रस्व स्वर: हर एक की एक मात्रा।"
+                }
+              },
+              {
+                "sa": "ऋ",
+                "text": {
+                  "en": "A vowel r: one quick sound, never written {{रि}}.",
+                  "hi": "स्वर ऋ: एक छोटी ध्वनि; इसे {{रि}} मत लिखिए।"
+                }
+              },
+              {
+                "sa": "ऌ",
+                "text": {
+                  "en": "A vowel l: very rare.",
+                  "hi": "स्वर ऌ: बहुत दुर्लभ।"
+                }
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "The leaf's first groups: {{अ}} {{इ}} {{उ}}, then {{ऋ}} {{ऌ}}.",
+                  "hi": "पत्र के पहले समूह: {{अ}} {{इ}} {{उ}}, फिर {{ऋ}} {{ऌ}}।"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "course": {
+        "id": "burnt-book",
+        "title": {
+          "en": "The Burnt Book",
+          "hi": "जली हुई पुस्तक"
+        },
+        "title_sa": "दग्धा बृहत्कथा",
+        "prologue": "prologue",
+        "acts": [
+          "act-1",
+          "act-2",
+          "act-3",
+          "act-4",
+          "act-5"
+        ]
+      },
+      "vowels.signs": {
+        "id": "vowels.signs",
+        "template": "scene",
+        "title": {
+          "en": "The second line",
+          "hi": "दूसरी पंक्ति"
+        },
+        "title_sa": "स्वरचिह्नानि",
+        "minutes": 7,
+        "teaches": [
+          "script.matra"
+        ],
+        "needs": [
+          "script.vowel.short",
+          "script.vowel.long",
+          "script.vowel.compound"
+        ],
+        "review": "engine_ok",
+        "sources": [
+          {
+            "title": "Lesson text and story",
+            "url": null,
+            "licence": "original",
+            "note": null
+          }
+        ],
+        "cards": [
+          {
+            "id": "s1",
+            "title": {
+              "en": "Letters wearing marks",
+              "hi": "चिह्न पहने अक्षर"
+            },
+            "image": {
+              "id": "vowels-signs-second-line",
+              "brief": "The glowing palm leaf: beneath the bright first line, a second line of small Devanagari words is beginning to glow, the little vowel marks above and below the letters catching the light first. The words are small and soft-focus, with no legible text. Dhūmaka trembles, pointing at one word; Dādī leans in, spectacles on.",
+              "alt": {
+                "en": "A second line of small words begins to glow on the leaf while the little ghost points at one word",
+                "hi": "पत्र पर छोटे शब्दों की दूसरी पंक्ति चमकने लगती है; नन्हा भूत एक शब्द की ओर इशारा करता है"
+              },
+              "text_in_image": [],
+              "ratio": "4:3",
+              "cast": [
+                "dhumaka",
+                "dadi"
+              ],
+              "place": "granthalaya"
+            },
+            "depth": "core",
+            "skills": [],
+            "sutras": [],
+            "kind": "story",
+            "narration": {
+              "en": "As the first line glows, a second line wakes beneath it. Its letters wear small marks: above, below, before, after. Dādī nods slowly. “Inside a word, a vowel does not stand alone. It rides on the letter before it, as a sign.” Dhūmaka points at one word and trembles.",
+              "hi": "जैसे ही पहली पंक्ति चमकती है, उसके नीचे एक दूसरी पंक्ति जाग उठती है। उसके अक्षरों पर छोटे-छोटे चिह्न हैं: ऊपर, नीचे, आगे, पीछे। दादी धीरे से सिर हिलाती हैं, “शब्द के भीतर स्वर अकेला नहीं रहता। वह अपने से पहले वाले अक्षर पर मात्रा बनकर बैठता है।” धूमक एक शब्द की ओर इशारा करता है और काँपने लगता है।"
+            },
+            "lines": [],
+            "quote": null
+          },
+          {
+            "id": "t1",
+            "title": {
+              "en": "A letter always carries अ",
+              "hi": "हर अक्षर में अ छिपा है"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.matra"
+            ],
+            "sutras": [],
+            "kind": "teach",
+            "body": {
+              "en": "Take the consonant {{क}}. It is never bare: it always carries {{अ}}, so {{क}} is {{क्}} + {{अ}}, ka. To give it another vowel, add that vowel's sign. The sign replaces the {{अ}}: {{क्}} + {{आ}} = {{का}}, {{क्}} + {{इ}} = {{कि}}.",
+              "hi": "व्यंजन {{क}} लीजिए। यह कभी अकेला नहीं होता: इसमें सदा {{अ}} रहता है, इसलिए {{क}} को क् + अ पढ़ते हैं। इसे कोई दूसरा स्वर देना हो, तो उस स्वर की मात्रा लगाइए। मात्रा {{अ}} की जगह ले लेती है: {{का}}, {{कि}}।"
+            },
+            "examples": [],
+            "rows": [],
+            "steps": [
+              {
+                "sa": "क्",
+                "label": {
+                  "en": "{{क्}} alone, with no vowel (rare)",
+                  "hi": "अकेला क्, बिना स्वर (कम दिखता है)"
+                }
+              },
+              {
+                "sa": "क",
+                "label": {
+                  "en": "{{क्}} + {{अ}} = {{क}}, ka",
+                  "hi": "क् + अ = क"
+                }
+              },
+              {
+                "sa": "का",
+                "label": {
+                  "en": "{{क्}} + {{आ}} = {{का}}, kā",
+                  "hi": "क् + आ = का"
+                }
+              }
+            ],
+            "formula": null,
+            "term": null
+          },
+          {
+            "id": "t2",
+            "title": {
+              "en": "Every vowel on {{क}}",
+              "hi": "{{क}} पर हर स्वर"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.matra"
+            ],
+            "sutras": [],
+            "kind": "table",
+            "caption": {
+              "en": "The vowel, its sign, and the sign on {{क}}",
+              "hi": "स्वर, उसकी मात्रा, और {{क}} पर वह मात्रा"
+            },
+            "columns": [
+              {
+                "en": "Vowel",
+                "hi": "स्वर"
+              },
+              {
+                "en": "Sign",
+                "hi": "मात्रा"
+              },
+              {
+                "en": "On {{क}}",
+                "hi": "{{क}} पर"
+              },
+              {
+                "en": "Where it sits",
+                "hi": "कहाँ लगती है"
+              }
+            ],
+            "rows": [
+              [
+                {
+                  "sa": "अ",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": null,
+                  "text": {
+                    "en": "no sign",
+                    "hi": "मात्रा नहीं"
+                  },
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "क",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": null,
+                  "text": {
+                    "en": "nothing is added",
+                    "hi": "कुछ नहीं जुड़ता"
+                  },
+                  "highlight": false,
+                  "check": null
+                }
+              ],
+              [
+                {
+                  "sa": "आ",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "ा",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "का",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": null,
+                  "text": {
+                    "en": "after",
+                    "hi": "बाद में"
+                  },
+                  "highlight": false,
+                  "check": null
+                }
+              ],
+              [
+                {
+                  "sa": "इ",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "ि",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "कि",
+                  "text": null,
+                  "highlight": true,
+                  "check": null
+                },
+                {
+                  "sa": null,
+                  "text": {
+                    "en": "before, but said after",
+                    "hi": "पहले, पर बोली बाद में"
+                  },
+                  "highlight": true,
+                  "check": null
+                }
+              ],
+              [
+                {
+                  "sa": "ई",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "ी",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "की",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": null,
+                  "text": {
+                    "en": "after",
+                    "hi": "बाद में"
+                  },
+                  "highlight": false,
+                  "check": null
+                }
+              ],
+              [
+                {
+                  "sa": "उ",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "ु",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "कु",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": null,
+                  "text": {
+                    "en": "below",
+                    "hi": "नीचे"
+                  },
+                  "highlight": false,
+                  "check": null
+                }
+              ],
+              [
+                {
+                  "sa": "ऊ",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "ू",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "कू",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": null,
+                  "text": {
+                    "en": "below",
+                    "hi": "नीचे"
+                  },
+                  "highlight": false,
+                  "check": null
+                }
+              ],
+              [
+                {
+                  "sa": "ऋ",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "ृ",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "कृ",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": null,
+                  "text": {
+                    "en": "below",
+                    "hi": "नीचे"
+                  },
+                  "highlight": false,
+                  "check": null
+                }
+              ],
+              [
+                {
+                  "sa": "ए",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "े",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "के",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": null,
+                  "text": {
+                    "en": "above",
+                    "hi": "ऊपर"
+                  },
+                  "highlight": false,
+                  "check": null
+                }
+              ],
+              [
+                {
+                  "sa": "ऐ",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "ै",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "कै",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": null,
+                  "text": {
+                    "en": "above",
+                    "hi": "ऊपर"
+                  },
+                  "highlight": false,
+                  "check": null
+                }
+              ],
+              [
+                {
+                  "sa": "ओ",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "ो",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "को",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": null,
+                  "text": {
+                    "en": "after, with a stroke above",
+                    "hi": "बाद में, ऊपर रेखा के साथ"
+                  },
+                  "highlight": false,
+                  "check": null
+                }
+              ],
+              [
+                {
+                  "sa": "औ",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "ौ",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": "कौ",
+                  "text": null,
+                  "highlight": false,
+                  "check": null
+                },
+                {
+                  "sa": null,
+                  "text": {
+                    "en": "after, with a stroke above",
+                    "hi": "बाद में, ऊपर रेखा के साथ"
+                  },
+                  "highlight": false,
+                  "check": null
+                }
+              ]
+            ],
+            "note": {
+              "en": "{{ॠ}} and {{ऌ}} have signs too ({{कॄ}}, {{कॢ}}), but you will almost never meet them.",
+              "hi": "{{ॠ}} और {{ऌ}} की भी मात्राएँ हैं ({{कॄ}}, {{कॢ}}), पर ये लगभग कभी नहीं मिलतीं।"
+            }
+          },
+          {
+            "id": "e1",
+            "title": {
+              "en": "Build on {{क}}",
+              "hi": "{{क}} पर बनाइए"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.matra"
+            ],
+            "sutras": [],
+            "kind": "explore",
+            "widget": "letter_builder",
+            "prompt": {
+              "en": "Drag a sign onto {{क}} and read what you made. Try to make every target.",
+              "hi": "किसी मात्रा को {{क}} पर खींचिए और जो बना उसे पढ़िए। हर लक्ष्य बनाने की कोशिश कीजिए।"
+            },
+            "params": {
+              "bases": [
+                "क"
+              ],
+              "signs": [
+                "ा",
+                "ि",
+                "ी",
+                "ु",
+                "ू",
+                "ृ",
+                "े",
+                "ै",
+                "ो",
+                "ौ"
+              ],
+              "targets": [
+                "कि",
+                "कू",
+                "के",
+                "कौ"
+              ]
+            },
+            "roman": "show"
+          },
+          {
+            "id": "p1",
+            "title": null,
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.matra"
+            ],
+            "sutras": [],
+            "kind": "practice",
+            "mode": "choice",
+            "prompt": {
+              "en": "Which one is {{क्}} + {{इ}}?",
+              "hi": "इनमें से {{क्}} + {{इ}} कौन-सा है?"
+            },
+            "explain": {
+              "en": "{{ि}} is written before the letter but said after it: {{कि}} is {{क्}} + {{इ}}.",
+              "hi": "{{ि}} अक्षर से पहले लिखी जाती है, पर बोली बाद में जाती है: {{कि}} = क् + इ।"
+            },
+            "options": [
+              {
+                "sa": "कि",
+                "text": null,
+                "correct": true,
+                "why": null
+              },
+              {
+                "sa": "की",
+                "text": null,
+                "correct": false,
+                "why": {
+                  "en": "{{की}} has the long {{ई}} sign.",
+                  "hi": "{{की}} में दीर्घ ई की मात्रा है।"
+                }
+              },
+              {
+                "sa": "के",
+                "text": null,
+                "correct": false,
+                "why": {
+                  "en": "{{के}}: the sign above is {{ए}}.",
+                  "hi": "{{के}} में ऊपर {{ए}} की मात्रा है।"
+                }
+              }
+            ],
+            "answers": [],
+            "tiles": [],
+            "tokens": [],
+            "pairs": [],
+            "exercise": null,
+            "check": null,
+            "gate": false,
+            "story": null,
+            "roman": "after"
+          },
+          {
+            "id": "t3",
+            "title": {
+              "en": "Written first, said last",
+              "hi": "पहले लिखी, बाद में बोली"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.matra"
+            ],
+            "sutras": [],
+            "kind": "teach",
+            "body": {
+              "en": "One sign breaks the left-to-right rule. {{ि}} is written before its letter but said after it: in {{कि}} you see the sign first, yet you say {{क्}}, then {{इ}}. Its long twin {{ी}} comes after, as you would expect. In {{दिनम्}} the sign stands before {{द}}: di-nam.",
+              "hi": "एक मात्रा बाएँ-से-दाएँ के नियम को तोड़ती है। {{ि}} अपने अक्षर से पहले लिखी जाती है, पर बोली बाद में जाती है: {{कि}} में मात्रा पहले दिखती है, फिर भी पहले क् बोलते हैं, फिर इ। उसकी दीर्घ जुड़वाँ {{ी}} सीधी चलती है: अक्षर के बाद। {{दिनम्}} में मात्रा {{द}} से पहले खड़ी है: दि-नम्।"
+            },
+            "examples": [
+              {
+                "sa": "दिनम्",
+                "meaning": {
+                  "en": "a day: di-nam",
+                  "hi": "दिन: दि-नम्"
+                },
+                "words": [],
+                "source": null,
+                "check": {
+                  "type": "subanta",
+                  "stem": "दिन",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "rows": [],
+            "steps": [],
+            "formula": null,
+            "term": null
+          },
+          {
+            "id": "p2",
+            "title": null,
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.matra"
+            ],
+            "sutras": [],
+            "kind": "practice",
+            "mode": "type",
+            "prompt": {
+              "en": "Build {{क्}} + {{ऊ}}: {{क}} with the long {{ऊ}} sign.",
+              "hi": "बनाइए: {{क}} पर दीर्घ ऊ की मात्रा।"
+            },
+            "explain": {
+              "en": "{{ू}} sits below the letter: {{कू}}. Look closely: {{ु}} and {{ू}} curl in opposite directions.",
+              "hi": "{{ू}} अक्षर के नीचे लगती है: {{कू}}। ध्यान से देखिए: {{ु}} और {{ू}} उलटी दिशाओं में मुड़ती हैं।"
+            },
+            "options": [],
+            "answers": [
+              "कू"
+            ],
+            "tiles": [
+              "क",
+              "ू",
+              "ु",
+              "ृ"
+            ],
+            "tokens": [],
+            "pairs": [],
+            "exercise": null,
+            "check": null,
+            "gate": false,
+            "story": null,
+            "roman": "after"
+          },
+          {
+            "id": "p3",
+            "title": null,
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.matra"
+            ],
+            "sutras": [],
+            "kind": "practice",
+            "mode": "match",
+            "prompt": {
+              "en": "Join each sign to its vowel.",
+              "hi": "हर मात्रा को उसके स्वर से जोड़िए।"
+            },
+            "explain": {
+              "en": "Each sign is a short form of its vowel; only {{अ}} has none.",
+              "hi": "हर मात्रा अपने स्वर का छोटा रूप है; केवल {{अ}} की कोई मात्रा नहीं।"
+            },
+            "options": [],
+            "answers": [],
+            "tiles": [],
+            "tokens": [],
+            "pairs": [
+              {
+                "left": {
+                  "sa": "ा",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                },
+                "right": {
+                  "sa": "आ",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                }
+              },
+              {
+                "left": {
+                  "sa": "ि",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                },
+                "right": {
+                  "sa": "इ",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                }
+              },
+              {
+                "left": {
+                  "sa": "ु",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                },
+                "right": {
+                  "sa": "उ",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                }
+              },
+              {
+                "left": {
+                  "sa": "े",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                },
+                "right": {
+                  "sa": "ए",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                }
+              },
+              {
+                "left": {
+                  "sa": "ौ",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                },
+                "right": {
+                  "sa": "औ",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                }
+              }
+            ],
+            "exercise": null,
+            "check": null,
+            "gate": false,
+            "story": null,
+            "roman": "after"
+          },
+          {
+            "id": "e2",
+            "title": {
+              "en": "Find the long ī",
+              "hi": "दीर्घ ई खोजिए"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.matra",
+              "script.vowel.long"
+            ],
+            "sutras": [],
+            "kind": "explore",
+            "widget": "mark_words",
+            "prompt": {
+              "en": "Tap every word with the long ī sign {{ी}}.",
+              "hi": "हर उस शब्द को छुइए जिसमें दीर्घ ई की मात्रा {{ी}} है।"
+            },
+            "params": {
+              "passage": [
+                "दिनम्",
+                "दीनः",
+                "दीपः",
+                "कुलम्",
+                "नदी",
+                "कूलम्"
+              ],
+              "targets": [
+                "दीनः",
+                "दीपः",
+                "नदी"
+              ]
+            },
+            "roman": "after"
+          },
+          {
+            "id": "p4",
+            "title": {
+              "en": "A name on the leaf",
+              "hi": "पत्र पर एक नाम"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.matra"
+            ],
+            "sutras": [],
+            "kind": "practice",
+            "mode": "choice",
+            "prompt": {
+              "en": "Dhūmaka points at a word with one sign burnt away. It is his own name, with a long {{ऊ}} on its first letter. Which is it?",
+              "hi": "धूमक जिस शब्द की ओर इशारा कर रहा है, उसकी एक मात्रा जल गई है। वह उसका अपना नाम है, जिसके पहले अक्षर पर दीर्घ ऊ है। सही रूप कौन-सा है?"
+            },
+            "explain": {
+              "en": "{{धूमकः}}: {{ू}} under {{ध}} makes {{धू}}. {{धूमः}} is smoke; {{धूमकः}}, little smoke.",
+              "hi": "{{धूमकः}}: {{ध}} के नीचे {{ू}} से ‘धू’ बनता है। {{धूमः}} यानी धुआँ; {{धूमकः}}, नन्हा धुआँ।"
+            },
+            "options": [
+              {
+                "sa": "धूमकः",
+                "text": null,
+                "correct": true,
+                "why": null
+              },
+              {
+                "sa": "धुमकः",
+                "text": null,
+                "correct": false,
+                "why": {
+                  "en": "That is the short {{उ}} sign. His name has the long {{ऊ}}.",
+                  "hi": "इसमें ह्रस्व उ है। उसके नाम में दीर्घ ऊ है।"
+                }
+              },
+              {
+                "sa": "धीमकः",
+                "text": null,
+                "correct": false,
+                "why": {
+                  "en": "That sign is {{ई}}. His name has {{ऊ}}.",
+                  "hi": "यह ई की मात्रा है। उसके नाम में ऊ है।"
+                }
+              }
+            ],
+            "answers": [],
+            "tiles": [],
+            "tokens": [],
+            "pairs": [],
+            "exercise": null,
+            "check": null,
+            "gate": true,
+            "story": {
+              "success": {
+                "en": "धूमकः glows on the leaf. The little ghost stares at his own name, and his smoke turns silver.",
+                "hi": "पत्र पर धूमकः चमक उठता है। नन्हा भूत अपना ही नाम देखता रह जाता है, और उसका धुआँ चाँदी-सा हो जाता है।"
+              },
+              "failure": {
+                "en": "The word flickers out. Dhūmaka sighs a little puff. Look under the first letter: the long {{ऊ}}.",
+                "hi": "शब्द टिमटिमाकर बुझ जाता है। धूमक धुएँ का एक छोटा-सा कश छोड़ता है। पहले अक्षर के नीचे देखिए: दीर्घ ऊ।"
+              }
+            },
+            "roman": "after"
+          },
+          {
+            "id": "sum",
+            "title": {
+              "en": "Vowel signs",
+              "hi": "मात्राएँ"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [],
+            "sutras": [],
+            "kind": "summary",
+            "points": [
+              {
+                "sa": "क",
+                "text": {
+                  "en": "A consonant carries {{अ}}: {{क}} is ka.",
+                  "hi": "व्यंजन में {{अ}} रहता है: {{क}} = क् + अ।"
+                }
+              },
+              {
+                "sa": "का कि की कु कू कृ के कै को कौ",
+                "text": {
+                  "en": "Each vowel has its sign; {{अ}} has none.",
+                  "hi": "हर स्वर की मात्रा है; {{अ}} की नहीं।"
+                }
+              },
+              {
+                "sa": "ि",
+                "text": {
+                  "en": "Written before the letter, said after it.",
+                  "hi": "अक्षर से पहले लिखी, बाद में बोली।"
+                }
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "{{ु}} {{ू}} {{ृ}} sit below; {{े}} {{ै}} above; {{ा}} {{ी}} {{ो}} {{ौ}} after.",
+                  "hi": "{{ु}} {{ू}} {{ृ}} नीचे; {{े}} {{ै}} ऊपर; {{ा}} {{ी}} {{ो}} {{ौ}} बाद में।"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "brief": {
+    "id": "vowels-signs-second-line",
+    "brief": "The glowing palm leaf: beneath the bright first line, a second line of small Devanagari words is beginning to glow, the little vowel marks above and below the letters catching the light first. The words are small and soft-focus, with no legible text. Dhūmaka trembles, pointing at one word; Dādī leans in, spectacles on.",
+    "alt": {
+      "en": "A second line of small words begins to glow on the leaf while the little ghost points at one word",
+      "hi": "पत्र पर छोटे शब्दों की दूसरी पंक्ति चमकने लगती है; नन्हा भूत एक शब्द की ओर इशारा करता है"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "dhumaka",
+      "dadi"
+    ],
+    "place": "granthalaya"
+  },
+  "generator": "built-in image_gen",
+  "replaces_earlier_delivery": true,
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-b3bf9612-ddda-4363-aa33-0d2095f2f410.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "db86f4f9a3a1256a3763eb145e19a8a925684491fc239f01db92d477c8e4630b",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vowels-signs-second-line-phone-f5ebec47.webp",
+      "key": "learn/vowels-signs-second-line-phone-f5ebec47.webp",
+      "sha256": "f5ebec47238a178e9c775302dc1d5e1152283dd141b6095c21178803152db9cf",
+      "bytes": 77588,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/vowels-signs-second-line-phone-f5ebec47.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vowels-signs-second-line-tablet-eefa6503.webp",
+      "key": "learn/vowels-signs-second-line-tablet-eefa6503.webp",
+      "sha256": "eefa65032b3791d4364eea4c3c7799740a6ef55dbb89eabe527f3ded26ceed95",
+      "bytes": 280984,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/vowels-signs-second-line-tablet-eefa6503.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

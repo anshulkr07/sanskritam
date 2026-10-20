@@ -9,7 +9,7 @@ teaches:
 - sam.dvandva
 needs:
 - sandhi.padaccheda
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: c1-dvandva-s1
+    text_in_image: ["रामलक्ष्मणौ"]
   narration:
     en: 'The fifteenth statue is two figures standing back to back, one holding a lotus, the other a bow. Their plinth reads one long name: “रामलक्ष्मणौ.” “One name,” says Śuka, “for two people.” “It is a compound,” says Dādī. “Two words packed into one so that they walk together. This kind means ‘and’: Rāma and Lakṣmaṇa. We call it dvandva, the pair.”'
     hi: 'पन्द्रहवीं प्रतिमा पीठ से पीठ टिकाए दो आकृतियाँ हैं, एक के हाथ में कमल, दूसरी के हाथ में धनुष। उनके आसन पर एक लम्बा नाम लिखा है: “रामलक्ष्मणौ।” “एक नाम,” शुक कहता है, “दो व्यक्तियों के लिए।” “यह समास है,” दादी कहती हैं। “दो शब्द एक में बँधे ताकि वे साथ चलें। इस प्रकार का अर्थ ‘और’ है: राम और लक्ष्मण। इसे द्वन्द्व कहते हैं, जोड़ी।”'
@@ -207,8 +208,8 @@ cards:
   - sam.dvandva
   mode: match
   prompt:
-    en: Join each compound to its unpacking.
-    hi: हर समास को उसके विग्रह से जोड़िए।
+    en: Match each compound with its unpacking.
+    hi: हर समास को उसके विग्रह से मिलाइए।
   explain:
     en: Every one means “and”.
     hi: हर एक का अर्थ ‘और’ है।

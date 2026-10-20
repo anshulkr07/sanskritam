@@ -1,0 +1,1469 @@
+{
+  "id": "nf1-phala-s1",
+  "where": "nf1.phala#s1",
+  "ratio": "4:3",
+  "expected": [
+    "फलम्",
+    "फले",
+    "फलानि"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The tree of green mist in the library with a second lower branch hung with a different set of leaf-tags, Dādī pointing to it with her pen and comparing it to the upper branch; Śuka on a shelf pulling at a tag.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nvrikshaka: A small tree-shaped spirit of green mist with tiny palm-leaf tags hanging from its branches like names.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nफलम्\nफले\nफलानि\nMake exactly THREE large foreground name tags, each bearing one approved form, clearly readable. Other foliage is natural leaves, not additional blank tags. Keep all three labelled tags unobscured. All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "nf1.phala",
+    "template": "scene",
+    "title": {
+      "en": "The फल family",
+      "hi": "फल का कुल"
+    },
+    "title_sa": "फलशब्दः",
+    "minutes": 6,
+    "teaches": [
+      "noun.phala"
+    ],
+    "needs": [
+      "noun.deva"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The neuter branch",
+          "hi": "नपुंसक शाखा"
+        },
+        "image": {
+          "id": "nf1-phala-s1",
+          "brief": "The tree of green mist in the library with a second lower branch hung with a different set of leaf-tags, Dādī pointing to it with her pen and comparing it to the upper branch; Śuka on a shelf pulling at a tag.",
+          "alt": {
+            "en": "A tree of name-tags with two branches, one pointing to the other",
+            "hi": "दो शाखाओं वाला नाम-पत्तों का पेड़, एक शाखा की ओर इशारा"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "acarya",
+            "vrikshaka"
+          ],
+          "place": "pathashala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "On a lower branch of the green tree hangs a second set of leaf-tags, close to the first but a little different. “Neuters,” says Dādī. “Almost the same as the masculines. The family resemblance is strong, and only a few places differ.” Vṛkṣaka shakes a branch and the tags rustle, delighted.",
+          "hi": "हरे पेड़ की एक नीची शाखा पर पत्ते-टैगों का दूसरा समूह लटका है, पहले के क़रीब पर थोड़ा अलग। “नपुंसक,” दादी कहती हैं। “पुंलिंग से लगभग वही। पारिवारिक समानता गहरी है, बस कुछ जगहों पर अन्तर है।” वृक्षक एक शाखा हिलाता है और टैग ख़ुशी से सरसराते हैं।"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The neuter, फल",
+          "hi": "नपुंसक, फल"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.phala"
+        ],
+        "sutras": [
+          "7.1.19",
+          "7.1.72"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "A neuter word in -{{अ}} is like {{देव}} except where the doer and object come in: in the first, second and call cases, singular {{फलम्}}, dual {{फले}}, plural {{फलानि}}. All the other cells are the same as {{देव}}.",
+          "hi": "-{{अ}} वाला नपुंसक शब्द {{देव}} जैसा ही है, सिवाय कर्ता और कर्म वाली जगहों के: प्रथमा, द्वितीया और सम्बोधन में एकवचन {{फलम्}}, द्विवचन {{फले}}, बहुवचन {{फलानि}}। बाक़ी सब खाने {{देव}} जैसे हैं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "नपुंसकम्",
+          "meaning": {
+            "en": "neuter",
+            "hi": "नपुंसक"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "फल: the full table",
+          "hi": "फल: पूरी तालिका"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.phala"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "A fruit, in every case and number",
+          "hi": "फल, हर विभक्ति और वचन में"
+        },
+        "columns": [
+          {
+            "en": "Case",
+            "hi": "विभक्ति"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "1 · 1st (doer)",
+                "hi": "1 · प्रथमा"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "फलम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फले",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलानि",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "2 · 2nd (object)",
+                "hi": "2 · द्वितीया"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "फलम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फले",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Dvitiya",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलानि",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Dvitiya",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "3 · 3rd (by, with)",
+                "hi": "3 · तृतीया"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "फलेन",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Trtiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलाभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Trtiya",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलैः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Trtiya",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "4 · 4th (to, for)",
+                "hi": "4 · चतुर्थी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "फलाय",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Caturthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलाभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Caturthi",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलेभ्यः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Caturthi",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "5 · 5th (from)",
+                "hi": "5 · पञ्चमी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "फलात्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Panchami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलाभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Panchami",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलेभ्यः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Panchami",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "6 · 6th (of)",
+                "hi": "6 · षष्ठी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "फलस्य",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलयोः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Sasthi",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलानाम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Sasthi",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "7 · 7th (in, at)",
+                "hi": "7 · सप्तमी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "फले",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलयोः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Saptami",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलेषु",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Saptami",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "8 · calling",
+                "hi": "8 · सम्बोधन"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "फल",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Sambodhana",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फले",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Sambodhana",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलानि",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Sambodhana",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "The highlighted cells are the three that differ from {{देव}}: first, second and the call share one form in each number.",
+          "hi": "रंगीन खाने वे हैं जो {{देव}} से अलग हैं: हर वचन में प्रथमा, द्वितीया और सम्बोधन का एक ही रूप।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Same form, three jobs",
+          "hi": "एक रूप, तीन काम"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.phala"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "In a neuter the doer and the object look the same: {{फलम्}} can be the first case or the second. Context tells which: {{फलं पतति}} (the fruit falls), {{रामः फलं खादति}} (Rāma eats the fruit).",
+          "hi": "नपुंसक में कर्ता और कर्म एक-से दिखते हैं: {{फलम्}} प्रथमा भी हो सकता है और द्वितीया भी। प्रसंग बताता है कि कौन-सा: {{फलं पतति}} (फल गिरता है), {{रामः फलं खादति}} (राम फल खाता है)।"
+        },
+        "examples": [
+          {
+            "sa": "फलम् पतति।",
+            "meaning": {
+              "en": "The fruit falls.",
+              "hi": "फल गिरता है।"
+            },
+            "words": [
+              {
+                "sa": "फलम्",
+                "gloss": {
+                  "en": "fruit",
+                  "hi": "फल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "फल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पतति",
+                "gloss": {
+                  "en": "falls",
+                  "hi": "गिरता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पत्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "रामः फलम् खादति।",
+            "meaning": {
+              "en": "Rāma eats the fruit.",
+              "hi": "राम फल खाता है।"
+            },
+            "words": [
+              {
+                "sa": "रामः",
+                "gloss": {
+                  "en": "Rāma",
+                  "hi": "राम"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "राम",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "फलम्",
+                "gloss": {
+                  "en": "fruit",
+                  "hi": "फल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "फल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "खादति",
+                "gloss": {
+                  "en": "eats",
+                  "hi": "खाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "खाद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.phala"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Fill in the missing forms of the table.",
+          "hi": "तालिका के छूटे रूप भरिए।"
+        },
+        "explain": {
+          "en": "The neuter differs from {{देव}} only in the first, second and call.",
+          "hi": "नपुंसक {{देव}} से केवल प्रथमा, द्वितीया और सम्बोधन में अलग है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "grid_fill",
+          "params": {
+            "pratipadika": "फल",
+            "linga": "Napumsaka",
+            "blanks": 3
+          },
+          "seed": 2
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.phala"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Fill in the missing forms of a family member.",
+          "hi": "कुल के एक सदस्य के छूटे रूप भरिए।"
+        },
+        "explain": {
+          "en": "{{पत्र}} follows {{फल}}; mind the {{ण}} in {{पत्राणि}}.",
+          "hi": "{{पत्र}} {{फल}} जैसा चलता है; {{पत्राणि}} का {{ण}} ध्यान में रखिए।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "grid_fill",
+          "params": {
+            "pratipadika": "पत्र",
+            "linga": "Napumsaka",
+            "blanks": 3
+          },
+          "seed": 3
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.phala"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which is the plural of {{गृहम्}}, “houses”, as the first case?",
+          "hi": "{{गृहम्}} का प्रथमा बहुवचन, ‘घर’, कौन-सा है?"
+        },
+        "explain": {
+          "en": "Neuter plural: {{आनि}} (with {{ण}} after {{र}}).",
+          "hi": "नपुंसक बहुवचन: {{आनि}} ({{र}} के बाद {{ण}} के साथ)।"
+        },
+        "options": [
+          {
+            "sa": "गृहाः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "गृहे",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "गृहाणि",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.phala"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each form to its case and number.",
+          "hi": "हर रूप को उसकी विभक्ति और वचन से जोड़िए।"
+        },
+        "explain": {
+          "en": "The neuter's three shared cells.",
+          "hi": "नपुंसक के तीन साझा खाने।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "फलम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "1st or 2nd, one",
+                "hi": "प्रथमा या द्वितीया, एक"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "फले",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "1st, 2nd or call, two",
+                "hi": "प्रथमा, द्वितीया या सम्बोधन, दो"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "फलानि",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "1st, 2nd or call, many",
+                "hi": "प्रथमा, द्वितीया या सम्बोधन, अनेक"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "फलेन",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "3rd, one",
+                "hi": "तृतीया, एक"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.phala"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every neuter plural.",
+          "hi": "हर नपुंसक बहुवचन को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "फलानि",
+            "फलम्",
+            "पत्राणि",
+            "बालकाः",
+            "गृहाणि",
+            "वृक्षाः"
+          ],
+          "targets": [
+            "फलानि",
+            "पत्राणि",
+            "गृहाणि"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The neuter branch",
+          "hi": "नपुंसक शाखा"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.phala"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which neuter form is the dual?",
+          "hi": "नपुंसक का द्विवचन कौन-सा रूप है?"
+        },
+        "explain": {
+          "en": "{{फले}}: dual of {{फल}}.",
+          "hi": "{{फले}}: {{फल}} का द्विवचन।"
+        },
+        "options": [
+          {
+            "sa": "फलानि",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "फलम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "फले",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“फले,” you say, and on the lower branch, two small golden fruits ripen at once. Vṛkṣaka sighs, the leaf-tags settling like birds.",
+            "hi": "“फले,” आप कहते हैं, और नीची शाखा पर दो नन्हे सुनहरे फल एक साथ पक जाते हैं। वृक्षक साँस छोड़ता है, पत्ते-टैग पक्षियों की तरह बैठ जाते हैं।"
+          },
+          "failure": {
+            "en": "The branch stays bare. The neuter dual ends in {{ए}}.",
+            "hi": "शाखा सूनी रहती है। नपुंसक द्विवचन {{ए}} पर समाप्त होता है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The फल family",
+          "hi": "फल का कुल"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "फलम् फले फलानि",
+            "text": {
+              "en": "First, second and call: one form each.",
+              "hi": "प्रथमा, द्वितीया और सम्बोधन: एक-एक रूप।"
+            }
+          },
+          {
+            "sa": "देव = फल",
+            "text": {
+              "en": "Everywhere else, the same as {{देव}}.",
+              "hi": "बाक़ी सब जगह {{देव}} जैसा।"
+            }
+          },
+          {
+            "sa": "फल · पत्र · गृह · जल",
+            "text": {
+              "en": "Thousands of neuters follow it.",
+              "hi": "हज़ारों नपुंसक इसी पर चलते हैं।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "nf1-phala-s1",
+    "brief": "The tree of green mist in the library with a second lower branch hung with a different set of leaf-tags, Dādī pointing to it with her pen and comparing it to the upper branch; Śuka on a shelf pulling at a tag.",
+    "alt": {
+      "en": "A tree of name-tags with two branches, one pointing to the other",
+      "hi": "दो शाखाओं वाला नाम-पत्तों का पेड़, एक शाखा की ओर इशारा"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "acarya",
+      "vrikshaka"
+    ],
+    "place": "pathashala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The tree of green mist in the library with a second lower branch hung with a different set of leaf-tags, Dādī pointing to it with her pen and comparing it to the upper branch; Śuka on a shelf pulling at a tag.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nvrikshaka: A small tree-shaped spirit of green mist with tiny palm-leaf tags hanging from its branches like names.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-7e362be4-34e7-4cc8-8a2e-2727ed01c466.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "5b036cf35b09bd03d3e44e27666c6d43efefe4370d8c4294d8e37783efb344b9",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\nf1-phala-s1-phone-87d698d3.webp",
+      "key": "learn/nf1-phala-s1-phone-87d698d3.webp",
+      "sha256": "87d698d3beb3b0ba2c437ea1dec3283596ed16ba01d3d603d8e3a7b4ab1e1468",
+      "bytes": 104480,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/nf1-phala-s1-phone-87d698d3.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\nf1-phala-s1-tablet-f673c025.webp",
+      "key": "learn/nf1-phala-s1-tablet-f673c025.webp",
+      "sha256": "f673c0251f8fa87a45b54db806f37dd3d25c4c04bffa48a3c12b7ce8150c1acc",
+      "bytes": 392364,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/nf1-phala-s1-tablet-f673c025.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

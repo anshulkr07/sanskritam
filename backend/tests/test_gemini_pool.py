@@ -504,14 +504,17 @@ def test_when_free_is_spent_paid_answers_and_is_charged(client, tiered):
     assert _spent(learner_id) > 0
 
 
-def test_a_spent_paid_budget_still_gets_a_free_answer(client, tiered, monkeypatch):
+def test_shared_gemini_budget_stops_before_any_provider_call(client, tiered, monkeypatch):
     from tests.test_ask_live import _login, _word
 
     tier, pool, paid, made = tiered
     monkeypatch.setattr(settings, "gemini_daily_budget_inr", 0.0001)
     _id, headers = _login(client)
     r = client.post("/ask/talk", json={"question": f"What is the {_word()} vrata?", "lang": "en"}, headers=headers)
-    assert r.status_code == 200 and r.json()["provider"] == "gemini-free:m-a" and paid.calls == 0
+    assert r.status_code == 429, r.text
+    assert r.json()["detail"]["kind"] == "gemini_budget"
+    assert paid.calls == 0 and not made
+    assert _spent(_id) == pytest.approx(0.0)
 
 
 def test_a_chart_request_never_goes_to_the_free_keys(client, tiered):

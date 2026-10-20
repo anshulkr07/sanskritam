@@ -11,7 +11,7 @@ needs:
 - panini.it
 - sandhi.guna
 - sandhi.ayadi
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -39,6 +39,7 @@ cards:
     place: guha
     ratio: '4:3'
     id: pg-prakriya-s1
+    text_in_image: ["भू"]
   narration:
     en: 'The third alcove opens a hand''s breadth, a plain line cut over it. Padikā is nearly whole. “These are not three locks,” says Dādī. “They are one road. Pāṇini builds a word as a mason builds a wall: one stone, one rule, in order.” She chalks a root on the floor: भू. Lubdhaka comes in. “Then I shall build it faster,” he says.'
     hi: 'तीसरा आला हाथ भर खुल जाता है, और उसके ऊपर एक सादी पंक्ति खुदी है। पदिका लगभग पूरी हो चुकी है। “ये तीन ताले नहीं हैं,” दादी कहती हैं। “ये एक ही मार्ग हैं। पाणिनि शब्द वैसे बनाते हैं जैसे राजमिस्त्री दीवार: एक पत्थर, एक नियम, क्रम से।” वे फर्श पर एक धातु लिखती हैं: भू। लुब्धक गुफा के द्वार से भीतर आता है। “तो मैं इसे और जल्दी बनाऊँगा,” वह कहता है।'
@@ -174,8 +175,8 @@ cards:
   - panini.prakriya
   mode: match
   prompt:
-    en: Join each sūtra to its job.
-    hi: हर सूत्र को उसके काम से जोड़िए।
+    en: Match each sūtra with its job.
+    hi: हर सूत्र को उसके काम से मिलाइए।
   explain:
     en: Four of the seven stages.
     hi: सात चरणों में से चार।

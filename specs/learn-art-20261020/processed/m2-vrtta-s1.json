@@ -1,0 +1,627 @@
+{
+  "id": "m2-vrtta-s1",
+  "where": "m2.vrtta#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Behind a slid-open stone panel, a tall thin spirit of pale smoke drifting in a ring around the golden throne, her long sleeves trailing, one hand counting on her fingers; Dādī and Śuka watching from the opening; Chandikā's small drum resting on the throne's arm; warm light.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvrttika: A tall thin spirit of pale smoke, drifting in a slow ring round a golden throne, her long sleeves trailing, one hand lightly counting on her fingers as she goes.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "m2.vrtta",
+    "template": "scene",
+    "title": {
+      "en": "The great metres",
+      "hi": "प्रमुख छन्द"
+    },
+    "title_sa": "वृत्तानि",
+    "minutes": 6,
+    "teaches": [
+      "chandas.vrtta"
+    ],
+    "needs": [
+      "chandas.shloka"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The circling spirit",
+          "hi": "घेरे में घूमती भूत"
+        },
+        "image": {
+          "id": "m2-vrtta-s1",
+          "brief": "Behind a slid-open stone panel, a tall thin spirit of pale smoke drifting in a ring around the golden throne, her long sleeves trailing, one hand counting on her fingers; Dādī and Śuka watching from the opening; Chandikā's small drum resting on the throne's arm; warm light.",
+          "alt": {
+            "en": "A smoky spirit drifts in a ring around a golden throne counting on her fingers",
+            "hi": "धुएँ जैसी भूत सोने के सिंहासन के चारों ओर घेरे में उँगलियों पर गिनती हुई"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "vrttika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Behind the opened panel, a smoky spirit walks round and round the throne, humming a line far longer than a śloka. “These are the vṛttas, the great metres,” says Dādī. “Every quarter has the same number of syllables in the same pattern. Count the syllables of one quarter, and you can name the metre.” Vṛttikā begins again. She has never reached the end of her song.",
+          "hi": "खुले फलक के पीछे धुएँ जैसी एक भूत सिंहासन के चारों ओर घूमती हुई श्लोक से कहीं लम्बी पंक्ति गुनगुना रही है। “ये वृत्त हैं, बड़े छन्द,” दादी कहती हैं। “हर चरण में अक्षरों की संख्या बराबर होती है और ढाँचा भी वही। एक चरण के अक्षर गिन लीजिए, तो छन्द का नाम बता सकते हैं।” वृत्तिका फिर शुरू करती है। वह अपने गीत के अन्त तक कभी नहीं पहुँची।"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "कश्चित् कान्ताविरहगुरुणा स्वाधिकारात् प्रमत्तः शापेनास्तंगमितमहिमा वर्षभोग्येण भर्तुः यक्षश् चक्रे जनकतनयास्नानपुण्योदकेषु स्निग्धछायातरुषु वसतिं रामगिर्याश्रमेषु",
+          "gloss": {
+            "en": "A certain yakṣa, careless in his duty and heavy with parting from his beloved, was cursed by his master to a year away from his power; he made his home in the hermitages of Rāmagiri, where the waters are holy from Sītā's bathing and the trees give soft shade.",
+            "hi": "एक यक्ष, कर्तव्य में प्रमत्त और प्रिया के विरह से भारी, स्वामी के शाप से एक वर्ष के लिए अपनी महिमा से वंचित हुआ; उसने रामगिरि के आश्रमों में निवास किया, जहाँ के जल सीता के स्नान से पवित्र हैं और वृक्षों की छाया स्निग्ध है।"
+          },
+          "source": "Meghadūta, Pūrvamegha 1 (read in the Digital Corpus of Sanskrit); the verse is in mandākrāntā"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Counting the quarter",
+          "hi": "चरण की गिनती"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.vrtta"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A {{वृत्तम्}} is a metre counted in syllables: all four quarters have the same number, in the same pattern. Count one quarter. Eleven: {{इन्द्रवज्रा}} or {{उपेन्द्रवज्रा}}. Fourteen: {{वसन्ततिलका}}. Seventeen: {{मन्दाक्रान्ता}}. Nineteen: {{शार्दूलविक्रीडित}}.",
+          "hi": "{{वृत्तम्}} अक्षरों से गिना जाने वाला छन्द है: चारों चरणों में संख्या बराबर और ढाँचा वही। एक चरण गिनिए। ग्यारह: {{इन्द्रवज्रा}} या {{उपेन्द्रवज्रा}}। चौदह: {{वसन्ततिलका}}। सत्रह: {{मन्दाक्रान्ता}}। उन्नीस: {{शार्दूलविक्रीडित}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "वृत्तम्",
+          "meaning": {
+            "en": "a metre counted in syllables",
+            "hi": "अक्षरों से गिना जाने वाला छन्द"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "The great metres",
+          "hi": "प्रमुख छन्द"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.vrtta"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "One quarter of each (ल = light, ग = heavy)",
+          "hi": "हर एक का एक चरण (ल = लघु, ग = गुरु)"
+        },
+        "columns": [
+          {
+            "en": "Metre",
+            "hi": "छन्द"
+          },
+          {
+            "en": "Syllables",
+            "hi": "अक्षर"
+          },
+          {
+            "en": "Pattern",
+            "hi": "ढाँचा"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "इन्द्रवज्रा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "11",
+                "hi": "११"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ग ग ल ग ग ल ल ग ल ग ग",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "उपेन्द्रवज्रा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "11",
+                "hi": "११"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ल ग ल ग ग ल ल ग ल ग ग",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "वसन्ततिलका",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "14",
+                "hi": "१४"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ग ग ल ग ल ल ल ग ल ल ग ल ग ग",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "मन्दाक्रान्ता",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "17",
+                "hi": "१७"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ग ग ग ग ल ल ल ल ल ग ग ल ग ग ल ग ग",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "शार्दूलविक्रीडित",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "19",
+                "hi": "१९"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ग ग ग ल ल ग ल ग ल ल ल ग ग ग ल ग ग ल ग",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "The last syllable of a quarter counts either way.",
+          "hi": "चरण का अन्तिम अक्षर दोनों तरह गिना जाता है।"
+        }
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.vrtta"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "rhythm_tapper",
+        "prompt": {
+          "en": "Tap two quarters from one verse. They differ only in the first syllable.",
+          "hi": "एक ही श्लोक के दो चरणों की ताल दीजिए। वे केवल पहले अक्षर में भिन्न हैं।"
+        },
+        "params": {
+          "lines": [
+            "अस्त्युत्तरस्यां दिशि देवतात्मा",
+            "हिमालयो नाम नगाधिराजः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.vrtta"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "A quarter has 14 syllables. Which metre?",
+          "hi": "एक चरण में 14 अक्षर हैं। कौन-सा छन्द?"
+        },
+        "explain": {
+          "en": "Fourteen syllables: {{वसन्ततिलका}}.",
+          "hi": "चौदह अक्षर: {{वसन्ततिलका}}।"
+        },
+        "options": [
+          {
+            "sa": "इन्द्रवज्रा",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "वसन्ततिलका",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "मन्दाक्रान्ता",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.vrtta"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each metre to the syllables in a quarter.",
+          "hi": "हर छन्द को चरण के अक्षरों की संख्या से जोड़िए।"
+        },
+        "explain": {
+          "en": "Count one quarter, and the list is short.",
+          "hi": "एक चरण गिनिए, तो सूची छोटी हो जाती है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "इन्द्रवज्रा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "11",
+                "hi": "११"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "वसन्ततिलका",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "14",
+                "hi": "१४"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "मन्दाक्रान्ता",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "17",
+                "hi": "१७"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "शार्दूलविक्रीडित",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "19",
+                "hi": "१९"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.vrtta"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Mark each syllable of this quarter.",
+          "hi": "इस चरण के हर अक्षर को चिह्नित कीजिए।"
+        },
+        "explain": {
+          "en": "It starts light, heavy, light, heavy, heavy.",
+          "hi": "यह लघु, गुरु, लघु, गुरु, गुरु से शुरू होता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "scan_metre",
+          "params": {
+            "text": "हिमालयो नाम नगाधिराजः"
+          },
+          "seed": 6
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "The mixed verse",
+          "hi": "मिला हुआ श्लोक"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.vrtta"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "A quarter begins {{ग ग ल ग ग}}; another, in the same verse, begins {{ल ग ल ग ग}}. What is the verse?",
+          "hi": "एक चरण {{ग ग ल ग ग}} से शुरू होता है; उसी श्लोक का दूसरा {{ल ग ल ग ग}} से। वह श्लोक क्या है?"
+        },
+        "explain": {
+          "en": "A verse that mixes indravajrā and upendravajrā quarters is {{उपजाति}}.",
+          "hi": "जिस श्लोक में इन्द्रवज्रा और उपेन्द्रवज्रा के चरण मिले हों, वह {{उपजाति}} है।"
+        },
+        "options": [
+          {
+            "sa": "वसन्ततिलका",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "उपजाति",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "अनुष्टुप्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“उपजाति,” you say, and Vṛttikā, who has circled the throne since before the statues stood, stops, for one breath, with her sleeve in the air. “Two kinds of eleven,” she says, “in the same verse. I had thought they were my mistakes.” She looks at her fingers, which have been counting all this while, and begins to count aloud.",
+            "hi": "“उपजाति,” आप कहते हैं, और वृत्तिका, जो प्रतिमाओं के खड़े होने से पहले से सिंहासन का चक्कर लगा रही है, एक साँस के लिए, हवा में आस्तीन उठाए रुक जाती है। “एक ही श्लोक में दो तरह के ग्यारह,” वह कहती है। “मैं सोचती थी कि वे मेरी भूलें हैं।” वह अपनी उँगलियों को देखती है, जो इतनी देर से गिन रही थीं, और ज़ोर से गिनना शुरू करती है।"
+          },
+          "failure": {
+            "en": "She keeps circling. A verse mixing the two elevens is {{उपजाति}}.",
+            "hi": "वह घूमती रहती है। दोनों ग्यारहों को मिलाने वाला श्लोक {{उपजाति}} है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The great metres",
+          "hi": "प्रमुख छन्द"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "वृत्तम्",
+            "text": {
+              "en": "Counted in syllables.",
+              "hi": "अक्षरों से गिना जाता है।"
+            }
+          },
+          {
+            "sa": "११ · १४ · १७ · १९",
+            "text": {
+              "en": "Syllables in a quarter.",
+              "hi": "एक चरण में अक्षर।"
+            }
+          },
+          {
+            "sa": "उपजाति",
+            "text": {
+              "en": "A mix of the two elevens.",
+              "hi": "दो ग्यारहों का मेल।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "m2-vrtta-s1",
+    "brief": "Behind a slid-open stone panel, a tall thin spirit of pale smoke drifting in a ring around the golden throne, her long sleeves trailing, one hand counting on her fingers; Dādī and Śuka watching from the opening; Chandikā's small drum resting on the throne's arm; warm light.",
+    "alt": {
+      "en": "A smoky spirit drifts in a ring around a golden throne counting on her fingers",
+      "hi": "धुएँ जैसी भूत सोने के सिंहासन के चारों ओर घेरे में उँगलियों पर गिनती हुई"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "vrttika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Behind a slid-open stone panel, a tall thin spirit of pale smoke drifting in a ring around the golden throne, her long sleeves trailing, one hand counting on her fingers; Dādī and Śuka watching from the opening; Chandikā's small drum resting on the throne's arm; warm light.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvrttika: A tall thin spirit of pale smoke, drifting in a slow ring round a golden throne, her long sleeves trailing, one hand lightly counting on her fingers as she goes.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-5b9d804c-15db-46aa-bf67-e1cdcb31420d.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "5975047bfa08c4e6fa5d824006ad79b1ea9f8aba0b1762cf441d9a57ef1975d1",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\m2-vrtta-s1-phone-77f5ff7e.webp",
+      "key": "learn/m2-vrtta-s1-phone-77f5ff7e.webp",
+      "sha256": "77f5ff7ee48faad6c7c652539566e4bdad466eabc5b98f3bc768b2f065748448",
+      "bytes": 99598,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/m2-vrtta-s1-phone-77f5ff7e.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\m2-vrtta-s1-tablet-96d3856c.webp",
+      "key": "learn/m2-vrtta-s1-tablet-96d3856c.webp",
+      "sha256": "96d3856c5b8b290ac0ad896b386987d7b5578902b0670c971ee1502fccd9304b",
+      "bytes": 390416,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/m2-vrtta-s1-tablet-96d3856c.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

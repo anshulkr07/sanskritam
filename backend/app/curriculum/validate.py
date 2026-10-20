@@ -300,6 +300,8 @@ class Checker:
             roles = [(lid, "lesson") for lid in unit.lessons]
             if unit.revision:
                 roles.append((unit.revision, "revision"))
+            if unit.reading:
+                roles.append((unit.reading, "reading"))
             if unit.check:
                 roles.append((unit.check, "check"))
             for lid, role in roles:
@@ -311,7 +313,7 @@ class Checker:
                 if lesson is None:
                     self.err(where, f"{role} {lid} has no file {lid}.yaml")
                     continue
-                want = {"lesson": {"scene", "episode"}, "revision": {"revision"}, "check": {"check"}}[role]
+                want = {"lesson": {"scene", "episode"}, "revision": {"revision"}, "reading": {"episode"}, "check": {"check"}}[role]
                 if lesson.template not in want:
                     self.err(where, f"{role} {lid} uses template {lesson.template}, expected {'/'.join(sorted(want))}")
                 lpath = self.d.lessons[lid].path
@@ -681,6 +683,13 @@ class Checker:
                             if sid not in taught:
                                 self.err(self.d.lessons[lid].path, f"needs {sid}, which is not taught before it")
                         taught |= set(lesson.teaches)
+                    if unit.reading:
+                        reading = self.d.lesson(unit.reading)
+                        if reading:
+                            for sid in reading.needs:
+                                if sid not in taught:
+                                    self.err(self.d.lessons[unit.reading].path, f"needs {sid}, which is not taught before it")
+                            # Optional readings cannot supply required skills to later units.
                     for p in unit.planned:
                         taught |= set(p.teaches)
                     self._coverage(unit_id)

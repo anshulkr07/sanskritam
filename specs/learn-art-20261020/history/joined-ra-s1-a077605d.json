@@ -1,0 +1,659 @@
+{
+  "id": "joined-ra-s1",
+  "where": "joined.ra#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The stone pillar in close-up with several joined letters containing the letter ra in different forms, a small curl above one and a hook below another; Śuka on Dādī's shoulder cross-eyed with effort; the sleeping green spirit mumbling in the background.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nnidralu: A pale sage-green round spirit with half-closed eyes and a tiny nightcap of mist, often yawning.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "source": {
+    "id": "joined.ra",
+    "template": "scene",
+    "title": {
+      "en": "The many shapes of र",
+      "hi": "र के कई रूप"
+    },
+    "title_sa": "रेफः",
+    "minutes": 6,
+    "teaches": [
+      "script.reph"
+    ],
+    "needs": [
+      "script.conjunct"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Nidrālu mumbles",
+          "hi": "निद्रालु बड़बड़ाता है"
+        },
+        "image": {
+          "id": "joined-ra-s1",
+          "brief": "The stone pillar in close-up with several joined letters containing the letter ra in different forms, a small curl above one and a hook below another; Śuka on Dādī's shoulder cross-eyed with effort; the sleeping green spirit mumbling in the background.",
+          "alt": {
+            "en": "A pillar with joined letters containing many shapes of ra, and a parrot cross-eyed with effort",
+            "hi": "र के कई रूपों वाला स्तम्भ और जीभ उलझाता तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "nidralu"
+          ],
+          "place": "devalaya"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The sleeping spirit mumbles in his dream: “र… र…”. On the pillar the letter {{र}} wears many costumes: a curl on top, a hook below, even a new shape. Śuka tries to read them aloud and gets his tongue in a knot.",
+          "hi": "सोया हुआ भूत सपने में बड़बड़ाता है: “र… र…”। स्तम्भ पर {{र}} कई रूप धरता है: ऊपर एक मोड़, नीचे एक काँटा, कभी बिलकुल नया आकार। शुक उन्हें ज़ोर से पढ़ने की कोशिश करता है और जीभ उलझा बैठता है।"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The curl on top",
+          "hi": "ऊपर का मोड़"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.reph"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "When {{र}} comes first in a joined letter, it becomes a small curl on top of the next letter: {{र्}} + {{म}} = {{र्म}}. It is called {{रेफः}}. You say it first, but write it last, above the end of the syllable.",
+          "hi": "जब {{र}} संयुक्ताक्षर में पहले आता है, तो अगले अक्षर के ऊपर छोटा मोड़ बन जाता है: {{र्}} + {{म}} = {{र्म}}। इसे {{रेफः}} कहते हैं। बोला जाता है पहले, पर लिखा जाता है अन्त में, अक्षर के सिरे पर।"
+        },
+        "examples": [
+          {
+            "sa": "धर्मः",
+            "meaning": {
+              "en": "duty: {{ध}} + {{र्म}}",
+              "hi": "धर्म: {{ध}} + {{र्म}}"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "धर्म",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "कर्म",
+            "meaning": {
+              "en": "action: {{क}} + {{र्म}}",
+              "hi": "कर्म: {{क}} + {{र्म}}"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "कर्मन्",
+              "linga": "Napumsaka",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "रेफः",
+          "meaning": {
+            "en": "the curl for r at the start of a join",
+            "hi": "संयोग के आरम्भ के र का मोड़"
+          }
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "The hook below",
+          "hi": "नीचे का काँटा"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.reph"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "When {{र}} comes second, it hangs below the first letter as a small hook: {{प्}} + {{र}} = {{प्र}}, {{क्}} + {{र}} = {{क्र}}. Two have their own shapes: {{त्र}} and {{श्र}}.",
+          "hi": "जब {{र}} दूसरा आता है, तो पहले अक्षर के नीचे छोटे काँटे की तरह लटकता है: {{प्}} + {{र}} = {{प्र}}, {{क्}} + {{र}} = {{क्र}}। दो के अपने आकार हैं: {{त्र}} और {{श्र}}।"
+        },
+        "examples": [
+          {
+            "sa": "प्रियः",
+            "meaning": {
+              "en": "dear: {{प्र}}",
+              "hi": "प्रिय: {{प्र}}"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "प्रिय",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "क्रमः",
+            "meaning": {
+              "en": "order: {{क्र}}",
+              "hi": "क्रम: {{क्र}}"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "क्रम",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.reph"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "letter_builder",
+        "prompt": {
+          "en": "Put the curl on top, or the hook below, and read each join.",
+          "hi": "ऊपर का मोड़ या नीचे का काँटा लगाइए और हर संयोग को पढ़िए।"
+        },
+        "params": {
+          "bases": [
+            "म",
+            "त",
+            "र",
+            "य"
+          ],
+          "halves": [
+            "र्",
+            "प्",
+            "क्",
+            "ग्",
+            "द्"
+          ],
+          "targets": [
+            "र्म",
+            "र्त",
+            "प्र",
+            "क्र",
+            "ग्र",
+            "द्र"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.reph"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each shape to where the {{र}} sits.",
+          "hi": "हर आकार को उस स्थान से जोड़िए जहाँ {{र}} बैठा है।"
+        },
+        "explain": {
+          "en": "In {{र्म}} the {{र}} comes first and curls on top; in {{प्र}} it comes second and hangs below.",
+          "hi": "{{र्म}} में {{र}} पहले है और ऊपर मुड़ता है; {{प्र}} में दूसरा है और नीचे लटकता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "र्म",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "curl on top",
+                "hi": "ऊपर का मोड़"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "प्र",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "hook below",
+                "hi": "नीचे का काँटा"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "क्र",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "hook below",
+                "hi": "नीचे का काँटा"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "र्त",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "curl on top",
+                "hi": "ऊपर का मोड़"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.reph"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word with a curl on top.",
+          "hi": "ऊपर मोड़ वाले हर शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "धर्मः",
+            "पत्रम्",
+            "कर्म",
+            "मित्रम्",
+            "सर्वम्",
+            "प्रियः"
+          ],
+          "targets": [
+            "धर्मः",
+            "कर्म",
+            "सर्वम्"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.reph"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which word has the hook below its first letter?",
+          "hi": "किस शब्द के पहले अक्षर के नीचे काँटा है?"
+        },
+        "explain": {
+          "en": "In {{प्रियः}} the {{र}} hangs below {{प}}.",
+          "hi": "{{प्रियः}} में {{र}} {{प}} के नीचे लटकता है।"
+        },
+        "options": [
+          {
+            "sa": "धर्मः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "प्रियः",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "कर्म",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "Another word",
+          "hi": "एक और शब्द"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.reph"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Wake the pillar again: build {{धर्मः}} from the pieces.",
+          "hi": "स्तम्भ को फिर जगाइए: टुकड़ों से {{धर्मः}} बनाइए।"
+        },
+        "explain": {
+          "en": "{{ध}} + {{र्मः}}: {{धर्मः}}.",
+          "hi": "{{ध}} + {{र्मः}}: {{धर्मः}}।"
+        },
+        "options": [],
+        "answers": [
+          "धर्मः"
+        ],
+        "tiles": [
+          "ध",
+          "र्मः",
+          "र्",
+          "म"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "{{धर्मः}} lights up. The green spirit sits up halfway, rubs his eyes, and says one word in his sleep: “धर्मः”.",
+            "hi": "{{धर्मः}} जगमगा उठता है। हरा भूत आधा उठ बैठता है, आँखें मलता है, और नींद में एक शब्द बोलता है: “धर्मः”।"
+          },
+          "failure": {
+            "en": "The pillar stays dark. Put the curl-carrying syllable last: {{र्मः}}.",
+            "hi": "स्तम्भ अँधेरा रहता है। मोड़ वाला अक्षर आख़िर में रखिए: {{र्मः}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "t3",
+        "title": {
+          "en": "Odd ones",
+          "hi": "कुछ विचित्र"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.reph"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{ट्र}} and {{ड्र}} take a different mark, not the hook: {{राष्ट्रम्}} (nation). And {{ऋ}} is a vowel, not {{र}} with a sign. Read {{ऋषिः}} as ṛ-ṣi, never ri-ṣi.",
+          "hi": "{{ट्र}} और {{ड्र}} काँटे की जगह दूसरा चिह्न लेते हैं: {{राष्ट्रम्}} (राष्ट्र)। और {{ऋ}} स्वर है, चिह्न लगा {{र}} नहीं। {{ऋषिः}} को ऋ-षि पढ़िए, रि-षि नहीं।"
+        },
+        "examples": [
+          {
+            "sa": "राष्ट्रम्",
+            "meaning": {
+              "en": "a nation: {{ष्ट्र}}",
+              "hi": "राष्ट्र: {{ष्ट्र}}"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "राष्ट्र",
+              "linga": "Napumsaka",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The shapes of र",
+          "hi": "र के रूप"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "र्म",
+            "text": {
+              "en": "First: a curl on top (रेफः).",
+              "hi": "पहले: ऊपर का मोड़ (रेफः)।"
+            }
+          },
+          {
+            "sa": "प्र",
+            "text": {
+              "en": "Second: a hook below.",
+              "hi": "दूसरा: नीचे का काँटा।"
+            }
+          },
+          {
+            "sa": "त्र श्र",
+            "text": {
+              "en": "Two with their own shapes.",
+              "hi": "दो के अपने आकार।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "joined-ra-s1",
+    "brief": "The stone pillar in close-up with several joined letters containing the letter ra in different forms, a small curl above one and a hook below another; Śuka on Dādī's shoulder cross-eyed with effort; the sleeping green spirit mumbling in the background.",
+    "alt": {
+      "en": "A pillar with joined letters containing many shapes of ra, and a parrot cross-eyed with effort",
+      "hi": "र के कई रूपों वाला स्तम्भ और जीभ उलझाता तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "nidralu"
+    ],
+    "place": "devalaya"
+  },
+  "generator": "built-in image_gen",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-87c2e888-2124-4b55-b492-eb96f2fc5d0d.png",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "a077605db56ce71b80062b2738327d14318390b1380ac4092232283700e5f0f4",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\joined-ra-s1-phone-60a332bf.webp",
+      "key": "learn/joined-ra-s1-phone-60a332bf.webp",
+      "sha256": "60a332bfe05b6d10d234de0deecba903e48e80a34cb4496551c912f5af87c139",
+      "bytes": 99886,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/joined-ra-s1-phone-60a332bf.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\joined-ra-s1-tablet-8676aa19.webp",
+      "key": "learn/joined-ra-s1-tablet-8676aa19.webp",
+      "sha256": "8676aa192cff751aef5d45710fcfd883cad38529e7edecdca0436bb5988a2a13",
+      "bytes": 391652,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/joined-ra-s1-tablet-8676aa19.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

@@ -31,7 +31,7 @@ const Mukta_400Regular = require("@expo-google-fonts/mukta/400Regular/Mukta_400R
 const Mukta_500Medium = require("@expo-google-fonts/mukta/500Medium/Mukta_500Medium.ttf");
 const Mukta_600SemiBold = require("@expo-google-fonts/mukta/600SemiBold/Mukta_600SemiBold.ttf");
 const Mukta_700Bold = require("@expo-google-fonts/mukta/700Bold/Mukta_700Bold.ttf");
-import { NavigationContainer, useNavigationContainerRef } from "@react-navigation/native";
+import { DarkTheme, DefaultTheme, NavigationContainer, useNavigationContainerRef, type Theme as NavTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import AppErrorBoundary from "./src/components/AppErrorBoundary";
@@ -44,7 +44,8 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaProvider, SafeAreaView, initialWindowMetrics } from "react-native-safe-area-context";
 
-import { color } from "./src/theme";
+import { color, isDarkScheme } from "./src/theme";
+import { takeReopen } from "./src/services/colorScheme";
 import type { RootStackParamList } from "./src/navigation/types";
 import UpdateBanner from "./src/components/UpdateBanner";import { AuthProvider, useAuth } from "./src/store/auth";
 import { TypeScaleProvider } from "./src/hooks/useTypeScale";
@@ -111,6 +112,23 @@ const HEADER_OPTS = {
   headerTitleStyle: {
     fontFamily: "Nunito_800ExtraBold",
     fontWeight: "800" as const,
+  },
+  contentStyle: { backgroundColor: color.bg },
+};
+
+// Navigator chrome (card grounds, the drawer, headers) in the same palette
+// as the screens, light or dark.
+const NAV_THEME: NavTheme = {
+  ...(isDarkScheme() ? DarkTheme : DefaultTheme),
+  dark: isDarkScheme(),
+  colors: {
+    ...(isDarkScheme() ? DarkTheme : DefaultTheme).colors,
+    primary: color.saffron,
+    background: color.bg,
+    card: color.bg,
+    text: color.ink,
+    border: color.border,
+    notification: color.saffron,
   },
 };
 
@@ -259,6 +277,13 @@ export default function App() {
     const name = navRef.getCurrentRoute()?.name;
     setRouteName(name); setSpeechRoute(name || "");
   };
+  // A Light / Dark change restarts the app; it comes back to Settings.
+  const onNavReady = () => {
+    trackRoute();
+    void takeReopen().then((route) => {
+      if (route && navRef.isReady()) (navRef.navigate as (r: string, p?: object) => void)("MainTabs", { screen: route });
+    });
+  };
 
   if (!fontsLoaded) {
     return (
@@ -276,7 +301,7 @@ export default function App() {
 
               <LearningProgressSync />
               <AppErrorBoundary routeName={routeName}>
-              <NavigationContainer ref={navRef} onReady={trackRoute} onStateChange={trackRoute}>
+              <NavigationContainer ref={navRef} theme={NAV_THEME} onReady={onNavReady} onStateChange={trackRoute}>
 
                 <AskProvider routeName={routeName}>
                   {/* Play share links (handover_games_daily_multiplayer §11). */}
@@ -289,7 +314,7 @@ export default function App() {
 
               </NavigationContainer>
               </AppErrorBoundary>
-              <StatusBar style="dark" />
+              <StatusBar style={isDarkScheme() ? "light" : "dark"} />
             </AuthProvider>
           </TypeScaleProvider>
         </KeyboardProvider>

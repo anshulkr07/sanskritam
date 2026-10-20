@@ -9,7 +9,7 @@ teaches:
 - case.voc
 needs:
 - case.loc
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -349,8 +349,8 @@ cards:
   - case.voc
   mode: match
   prompt:
-    en: Join each word to its call.
-    hi: हर शब्द को उसकी पुकार से जोड़िए।
+    en: Match each word with its call.
+    hi: हर शब्द को उसकी पुकार से मिलाइए।
   explain:
     en: The final vowel changes in these four.
     hi: इन चारों में अन्तिम स्वर बदलता है।

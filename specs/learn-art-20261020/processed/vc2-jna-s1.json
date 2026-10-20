@@ -1,0 +1,1173 @@
+{
+  "id": "vc2-jna-s1",
+  "where": "vc2.jna#s1",
+  "ratio": "4:3",
+  "expected": [
+    "छिद्",
+    "छिनत्ति",
+    "क्री",
+    "क्रीणाति"
+  ],
+  "prompt": "Edit only the lower-right cell's word on the first painting's board. It must read exactly क्रीणाति, matching the SECOND reference typography. Correct its initial vowel to LONG ī (क्री), with the vowel stroke to the RIGHT, rather than short ि before it. Preserve every other pixel, including the now-correct upper-right छिनत्ति, upper-left छिद् and lower-left क्री. Do not redraw or change any other letters. Keep 4:3 full frame.",
+  "source": {
+    "id": "vc2.jna",
+    "template": "scene",
+    "title": {
+      "en": "Classes 7 and 9: रुणद्धि, जानाति",
+      "hi": "गण 7 और 9: रुणद्धि, जानाति"
+    },
+    "title_sa": "रुणद्धि जानाति गृह्णाति",
+    "minutes": 6,
+    "teaches": [
+      "verb.class-7-9"
+    ],
+    "needs": [
+      "verb.class-5-8"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The knowing drawer",
+          "hi": "जानने वाला दराज़"
+        },
+        "image": {
+          "id": "vc2-jna-s1",
+          "brief": "Two small hands reaching out of two opened drawers: one cutting a thread with tiny scissors, the other holding a little scale; the Vetāla leaning back with a pleased look; Dādī reciting; Dhātuka ticking his ledger.",
+          "alt": {
+            "en": "Two tiny hands from open drawers, one cutting a thread, one weighing on a small scale",
+            "hi": "खुले दराज़ों से दो नन्हे हाथ: एक धागा काटता, एक तराज़ू पर तौलता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "dhatuka",
+            "astika"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The last two drawers open together. From one a small hand reaches out and carefully cuts a thread with scissors: “छिनत्ति.” From the other a small figure knocks, takes and weighs: “जानाति, गृह्णाति.” The Vetāla leans back. “He cuts, he knows, he takes. There is a verse that gathers six of these verbs; Dādī can say it.” She does.",
+          "hi": "अन्तिम दो दराज़ साथ खुलते हैं। एक से नन्हा हाथ बाहर निकलकर सावधानी से कैंची से धागा काटता है: “छिनत्ति।” दूसरे से एक नन्ही आकृति दस्तक देती है, लेती है और तौलती है: “जानाति, गृह्णाति।” वेताल पीछे झुकता है। “वह काटता है, जानता है, लेता है। एक श्लोक है जो इनमें से छह क्रियाओं को एक साथ लाता है; दादी उसे सुना सकती हैं।” वे सुनाती हैं।"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "ददाति प्रतिगृह्णाति गुह्यम् आख्याति पृच्छति भुङ्क्ते भोजयते चैव षड्विधं प्रीतिलक्षणम्",
+          "gloss": {
+            "en": "He gives, he takes, he tells a secret, he asks, he eats, he feeds: these are the six marks of affection.",
+            "hi": "वह देता है, लेता है, गुप्त बात बताता है, पूछता है, खाता है, खिलाता है: ये प्रीति के छह लक्षण हैं।"
+          },
+          "source": "Pañcatantra 2.50 and 4.13 (read at GRETIL)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The nasal and the -ना-",
+          "hi": "नासिक्य और -ना-"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-7-9"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Class 7, {{रुधादि}}, puts a nasal inside the root before its last letter: {{रुध्}} gives {{रुणद्धि}} (blocks), {{भिद्}} gives {{भिनत्ति}} (splits), {{छिद्}} gives {{छिनत्ति}} (cuts), {{युज्}} gives {{युनक्ति}} (joins). Class 9, {{क्र्यादि}}, adds {{-ना-}}: {{ज्ञा}} gives {{जानाति}}, {{ग्रह्}} gives {{गृह्णाति}}, {{क्री}} gives {{क्रीणाति}}.",
+          "hi": "गण 7, {{रुधादि}}, धातु के अन्तिम अक्षर से पहले भीतर एक नासिक्य रखता है: {{रुध्}} से {{रुणद्धि}} (रोकता है), {{भिद्}} से {{भिनत्ति}} (तोड़ता है), {{छिद्}} से {{छिनत्ति}} (काटता है), {{युज्}} से {{युनक्ति}} (जोड़ता है)। गण 9, {{क्र्यादि}}, {{-ना-}} जोड़ता है: {{ज्ञा}} से {{जानाति}}, {{ग्रह्}} से {{गृह्णाति}}, {{क्री}} से {{क्रीणाति}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Class 7 and 9 roots",
+          "hi": "गण 7 और 9 की धातुएँ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-7-9"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Root, meaning and “he …”",
+          "hi": "धातु, अर्थ और ‘वह …’"
+        },
+        "columns": [
+          {
+            "en": "Root",
+            "hi": "धातु"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          },
+          {
+            "en": "He",
+            "hi": "वह"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "रुध्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "block",
+                "hi": "रोकना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "रुणद्धि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "रुध्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Rudhadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "भिद्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "split",
+                "hi": "तोड़ना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "भिनत्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "भिद्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Rudhadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "छिद्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "cut",
+                "hi": "काटना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "छिनत्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "छिद्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Rudhadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "युज्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "join",
+                "hi": "जोड़ना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "युनक्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "युज्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Rudhadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "ज्ञा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "know",
+                "hi": "जानना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "जानाति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "ज्ञा",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Kryadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "ग्रह्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "take",
+                "hi": "लेना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गृह्णाति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "ग्रह्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Kryadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "क्री",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "buy",
+                "hi": "ख़रीदना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "क्रीणाति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "क्री",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Kryadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Class 7 hides its {{न}} inside; class 9 shows {{-ना-}} at the end.",
+          "hi": "गण 7 अपना {{न}} भीतर छिपाता है; गण 9 {{-ना-}} अन्त में दिखाता है।"
+        }
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "ज्ञा: all persons",
+          "hi": "ज्ञा: सभी पुरुष"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-7-9"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“He knows, you know, I know”",
+          "hi": "‘वह जानता है, तुम जानते हो, मैं जानता हूँ’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "जानाति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "ज्ञा",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Kryadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "जानीतः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "ज्ञा",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Kryadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "जानन्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "ज्ञा",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Kryadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "जानासि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "ज्ञा",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Kryadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "जानीथः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "ज्ञा",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Kryadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "जानीथ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "ज्ञा",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Kryadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "जानामि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "ज्ञा",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Kryadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "जानीवः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "ज्ञा",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Kryadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "जानीमः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "ज्ञा",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Kryadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{-ना-}} in the singular, {{-नी-}} in the dual, {{-न्-}} in the plural.",
+          "hi": "एकवचन में {{-ना-}}, द्विवचन में {{-नी-}}, बहुवचन में {{-न्-}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-7-9"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He knows.” Which form?",
+          "hi": "‘वह जानता है।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{जानाति}}: {{ज्ञा}} + {{-ना-}}.",
+          "hi": "{{जानाति}}: {{ज्ञा}} + {{-ना-}}।"
+        },
+        "options": [
+          {
+            "sa": "ज्ञाति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "जनति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "जानाति",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-7-9"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “He takes.”",
+          "hi": "कहिए: ‘वह लेता है।’"
+        },
+        "explain": {
+          "en": "{{गृह्णाति}}.",
+          "hi": "{{गृह्णाति}}।"
+        },
+        "options": [],
+        "answers": [
+          "गृह्णाति"
+        ],
+        "tiles": [
+          "गृ",
+          "ह्णाति",
+          "ग्रह",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-7-9"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each root to its “he” form.",
+          "hi": "हर धातु को उसके ‘वह’ रूप से जोड़िए।"
+        },
+        "explain": {
+          "en": "A nasal inside, or {{-ना-}} at the end.",
+          "hi": "भीतर नासिक्य, या अन्त में {{-ना-}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "रुध्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "रुणद्धि",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "भिद्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "भिनत्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ज्ञा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "जानाति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "क्री",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "क्रीणाति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-7-9"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every verb of class 9 (with {{-ना-}}).",
+          "hi": "गण 9 की हर क्रिया (जिनमें {{-ना-}} है) छुइए।"
+        },
+        "params": {
+          "passage": [
+            "जानाति",
+            "भवति",
+            "गृह्णाति",
+            "पठति",
+            "क्रीणाति",
+            "रुणद्धि"
+          ],
+          "targets": [
+            "जानाति",
+            "गृह्णाति",
+            "क्रीणाति"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Drawers seven and nine",
+          "hi": "दराज़ सात और नौ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-7-9"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He cuts.” Which form of {{छिद्}}?",
+          "hi": "‘वह काटता है।’ {{छिद्}} का कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{छिनत्ति}}: the nasal inside.",
+          "hi": "{{छिनत्ति}}: भीतर नासिक्य।"
+        },
+        "options": [
+          {
+            "sa": "छिदति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "छिन्नति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "छिनत्ति",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“छिनत्ति,” you say, and the small hand snips its thread, cleanly, and lets the ends float away on the air, like a ribbon being let go. The other figure, having knocked, taken and weighed, writes on the stone, in a tiny hand: जानाति. “That is how to know,” it says. “One must be willing to cut.” All ten drawers are shut; the ledger is complete.",
+            "hi": "“छिनत्ति,” आप कहते हैं, और नन्हा हाथ अपना धागा साफ़ काट देता है और सिरों को हवा में तैरने देता है, जैसे कोई फीता छोड़ा गया हो। दूसरी आकृति, दस्तक देकर, लेकर और तौलकर, पत्थर पर नन्हे अक्षरों में लिखती है: जानाति। “जानने का यही तरीक़ा है,” वह कहती है। “काटने को तैयार रहना पड़ता है।” सभी दस दराज़ बन्द हैं; बही पूरी है।"
+          },
+          "failure": {
+            "en": "The thread stays whole. The nasal inside: {{छिनत्ति}}.",
+            "hi": "धागा साबुत रहता है। भीतर नासिक्य: {{छिनत्ति}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's two signs",
+          "hi": "पाणिनि के दो चिह्न"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "verb.class-7-9"
+        ],
+        "sutras": [
+          "3.1.78",
+          "3.1.81",
+          "6.4.112"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 3.1.78, {{रुधादिभ्यः श्नम्}}, puts the infix {{श्नम्}} inside the root of class 7: {{रुध् + न + ध्}}. 3.1.81, {{क्र्यादिभ्यः श्ना}}, adds {{श्ना}} to class 9, which gives {{-ना-}}; and 6.4.112, {{श्नाऽभ्यस्तयोरातः}}, drops its {{आ}} before a weak ending: {{जानीतः}}.",
+          "hi": "सूत्र 3.1.78, {{रुधादिभ्यः श्नम्}}, गण 7 की धातु के भीतर {{श्नम्}} रखता है: {{रुध् + न + ध्}}। 3.1.81, {{क्र्यादिभ्यः श्ना}}, गण 9 में {{श्ना}} जोड़ता है, जिससे {{-ना-}} बनता है; और 6.4.112, {{श्नाऽभ्यस्तयोरातः}}, निर्बल प्रत्यय से पहले उसका {{आ}} हटा देता है: {{जानीतः}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Classes 7 and 9",
+          "hi": "गण 7 और 9"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "रुणद्धि · भिनत्ति · छिनत्ति",
+            "text": {
+              "en": "He blocks; he splits; he cuts.",
+              "hi": "वह रोकता है; वह तोड़ता है; वह काटता है।"
+            }
+          },
+          {
+            "sa": "जानाति · गृह्णाति · क्रीणाति",
+            "text": {
+              "en": "He knows; he takes; he buys.",
+              "hi": "वह जानता है; वह लेता है; वह ख़रीदता है।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "A nasal inside, or {{-ना-}} at the end.",
+              "hi": "भीतर नासिक्य, या अन्त में {{-ना-}}।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "vc2-jna-s1",
+    "brief": "Two small hands reaching out of two opened drawers: one cutting a thread with tiny scissors, the other holding a little scale; the Vetāla leaning back with a pleased look; Dādī reciting; Dhātuka ticking his ledger.",
+    "alt": {
+      "en": "Two tiny hands from open drawers, one cutting a thread, one weighing on a small scale",
+      "hi": "खुले दराज़ों से दो नन्हे हाथ: एक धागा काटता, एक तराज़ू पर तौलता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "dhatuka",
+      "astika"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Two small hands reaching out of two opened drawers: one cutting a thread with tiny scissors, the other holding a little scale; the Vetāla leaning back with a pleased look; Dādī reciting; Dhātuka ticking his ledger.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\ndhatuka: A small, round, honey-brown spirit with ten tiny brass-handled drawers set into his body, a pencil behind one ear, forever hurrying.\nastika: A small, plain, ash-coloured spirit without any marks or ornament, who keeps patting himself to check he is there.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-9940e7d9-ce9b-448e-a53c-09a5e0661093.png",
+  "history": [
+    {
+      "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-f46a3344-d7e5-4d4a-9c47-6152ef8612da.png",
+      "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Two small hands reaching out of two opened drawers: one cutting a thread with tiny scissors, the other holding a little scale; the Vetāla leaning back with a pleased look; Dādī reciting; Dhātuka ticking his ledger.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\ndhatuka: A small, round, honey-brown spirit with ten tiny brass-handled drawers set into his body, a pencil behind one ear, forever hurrying.\nastika: A small, plain, ash-coloured spirit without any marks or ornament, who keeps patting himself to check he is there.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nछिद्\nछिनत्ति\nक्री\nक्रीणाति\nPut the approved roots and corresponding forms in a clear, short ledger list, one root/form pair per row. No additional writing. All human and humanoid figures wear complete opaque traditional clothing or robes.",
+      "sha256": "3e4b57d4efa4f5a197eb950977b9d447e86c78de4e40e628ad69a2d4fea19633",
+      "master_retained": false
+    },
+    {
+      "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-5db827db-a24b-423c-802a-6743fbc16bc7.png",
+      "prompt": "Edit the first illustration, preserving its full 4:3 composition, scene, characters, palette and all four table cells. Correct only the upper-right written word to EXACTLY छिनत्ति. It currently incorrectly says छिनति. The required doubled त्त is essential; do not shorten it. The second reference is accurate app-font typography: copy the upper-right glyph sequence exactly. Keep the other cells exactly छिद् , क्री , क्रीणाति. No extra writing or other edits.",
+      "sha256": "871e352d92b33c98c133a5044131b4ca63d58a429f23bad025c31ab82093f5e6",
+      "master_retained": false
+    },
+    {
+      "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-f45b3398-1aef-4fe7-8da4-b9014eb6db9a.png",
+      "prompt": "Create a new 4:3 Sanskrit story illustration, using the FIRST reference as the exact typography master for the four table cells, and the SECOND reference only for scene and character appearance. Repaint the entire board, copying all four words and glyph contours from the FIRST image exactly. Especially छिनत्ति: छि + न + त्ति, with a doubled त्त conjunct, whose descending diagonal/stacked hook is visible in the reference. Do NOT copy the incorrect upper-right text from the second image. Board rows must be छिद् | छिनत्ति and क्री | क्रीणाति. Keep the warm library-grove scene, grandmother, learner seen from behind, green parrot, upside-down grey spirit, honey-brown drawer-bodied spirit holding scissors and small scales. Generous large black calligraphy, no other lettering. All figures fully clothed, refined Indian watercolor and gouache on ivory paper.",
+      "sha256": "83a99b8a424b35ce9905e41ab8f84e4d39b03dd8ce5fff8ecf2f646b0b99909f",
+      "master_retained": false
+    }
+  ],
+  "policy_version": "2026-10-20-complete-source-audit",
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "afaf674f08a044a3d74ab21e4569d49a889011d5066295feda6699b9344c0109",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vc2-jna-s1-phone-8e63020b.webp",
+      "key": "learn/vc2-jna-s1-phone-8e63020b.webp",
+      "sha256": "8e63020b4776b70a6626f5ebb0fd12b6a5310e666efb61c51002d4e3a5edfe5d",
+      "bytes": 114680,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/vc2-jna-s1-phone-8e63020b.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vc2-jna-s1-tablet-4ce8ac5b.webp",
+      "key": "learn/vc2-jna-s1-tablet-4ce8ac5b.webp",
+      "sha256": "4ce8ac5b87f2ee53b6a3014a8bf18ef2dc86f8b6dd041e191b0672ab8da7fccd",
+      "bytes": 362216,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/vc2-jna-s1-tablet-4ce8ac5b.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

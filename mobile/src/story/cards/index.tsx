@@ -8,7 +8,7 @@ import type { Card, Character } from '../types';
 import {Bi,Sa,RomanContext} from '../text';
 import {Story,Teach,Table,Summary,Reading,Revision,Video} from './content';
 import {Label} from '../ui';
-export default function StoryCardView({card,characters=[],sceneNumber=()=>null,onScene=()=>{},progress,onAnswer=()=>{}}:{card:Card;characters?:Character[];sceneNumber?:(id:string)=>number|null;onScene?:(id:string,cardId:string)=>void;progress?:PracticeProgress;onAnswer?:(verdict:Verdict)=>void}) {
+export default function StoryCardView({card,characters=[],sceneNumber=()=>null,onScene=()=>{},progress,onAnswer=()=>{}}:{card:Card;characters?:Character[];sceneNumber?:(id:string)=>number|null;onScene?:(id:string,cardId:string)=>void;progress?:PracticeProgress;onAnswer?:(verdict:Verdict,hinted?:boolean)=>void}) {
  const [explored,setExplored]=useState(false), inherited=useContext(RomanContext);
  const roman=inherited && !(card.kind==='explore'&&card.roman==='after'&&!explored);
  let content:React.ReactNode;

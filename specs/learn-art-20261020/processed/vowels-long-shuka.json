@@ -1,0 +1,1422 @@
+{
+  "id": "vowels-long-shuka",
+  "where": "vowels.long#s1",
+  "ratio": "4:3",
+  "expected": [
+    "अ इ उ",
+    "ऋ ऌ",
+    "ए ओ",
+    "ऐ औ"
+  ],
+  "prompt": "Edit only the second row's second letter on the manuscript in the FIRST painting. It must be independent vocalic L ऌ, not consonant ल. Copy the distinctive CURLED DESCENDER from the SECOND reference's top-middle character: its right leg descends below the baseline and curls outward right. Preserve the complete composition, all other letters and characters. Final four rows exactly अ इ उ / ऋ ऌ / ए ओ / ऐ औ. No other text or changes. The comparison reference's top-right ल is the WRONG shape; do not use it.",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 painting for The Burnt Book Sanskrit learning story. Use the highest supported native resolution in that exact aspect ratio. Refined Indian watercolor with restrained gouache on warm ivory, quiet ochre, sage, dusty terracotta and muted indigo. Warm and gentle, consistent character design.\nCanonical scene brief: Early morning in the temple library: Śuka the parrot at an open window with the sunrise behind him, beak wide open mid-squawk, wings half spread; Dādī at the reading desk lowering her round spectacles with one eyebrow raised, amused; Dhūmaka giggling as a little puff of smoke beside the glowing leaf.\nCharacter appearances:\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\ndhumaka: A small, round, smoke-grey spirit about the height of a child's knee, with big kind dark eyes and a wavy, wispy lower edge like lamp smoke.\nPhone-first composition: compact clear central grouping, essential faces, hands and narrative objects comfortably inside all edges. Keep the entire painting visible with contain fitting. No collage, UI or decorative border.\n",
+  "source": {
+    "scene": {
+      "id": "vowels.long",
+      "template": "scene",
+      "title": {
+        "en": "Śuka's long words",
+        "hi": "शुक के लम्बे शब्द"
+      },
+      "title_sa": "दीर्घाः स्वराः",
+      "minutes": 6,
+      "teaches": [
+        "script.vowel.long"
+      ],
+      "needs": [
+        "script.vowel.short"
+      ],
+      "review": "engine_ok",
+      "sources": [
+        {
+          "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+          "url": "https://github.com/ambuda-org/vidyut",
+          "licence": "MIT",
+          "note": null
+        },
+        {
+          "title": "Lesson text and story",
+          "url": null,
+          "licence": "original",
+          "note": null
+        }
+      ],
+      "cards": [
+        {
+          "id": "s1",
+          "title": {
+            "en": "Śuka stretches everything",
+            "hi": "शुक सब कुछ खींच देता है"
+          },
+          "image": {
+            "id": "vowels-long-shuka",
+            "brief": "Early morning in the temple library: Śuka the parrot at an open window with the sunrise behind him, beak wide open mid-squawk, wings half spread; Dādī at the reading desk lowering her round spectacles with one eyebrow raised, amused; Dhūmaka giggling as a little puff of smoke beside the glowing leaf.",
+            "alt": {
+              "en": "A parrot squawking at a sunrise window while a grandmother raises an eyebrow and a small ghost giggles",
+              "hi": "सूर्योदय की खिड़की पर चिल्लाता तोता, भौंहें उठाती दादी और खिलखिलाता नन्हा भूत"
+            },
+            "text_in_image": [],
+            "ratio": "4:3",
+            "cast": [
+              "shuka",
+              "dadi",
+              "dhumaka"
+            ],
+            "place": "granthalaya"
+          },
+          "depth": "core",
+          "skills": [],
+          "sutras": [],
+          "kind": "story",
+          "narration": {
+            "en": "Śuka wants to help. Every sound Dādī reads, he repeats, but stretched out long. Then morning comes, and he flies to the window to greet the day. Dādī puts down her spectacles. “Śuka, why are you calling me poor?”",
+            "hi": "शुक मदद करना चाहता है। दादी जो भी ध्वनि पढ़ती हैं, वह उसे दोहराता है, पर खींचकर, लम्बा करके। फिर सुबह होती है, और वह दिन का स्वागत करने खिड़की पर उड़ जाता है। दादी अपना चश्मा नीचे रखती हैं, “शुक, तुम मुझे दीन क्यों कह रहे हो?”"
+          },
+          "lines": [
+            {
+              "speaker": "shuka",
+              "sa": "दीनः! दीनः!",
+              "gloss": {
+                "en": "“Poor one! Poor one!”",
+                "hi": "“दीन! दीन!”"
+              },
+              "text": null,
+              "check": null
+            }
+          ],
+          "quote": null
+        },
+        {
+          "id": "t1",
+          "title": {
+            "en": "The long twins",
+            "hi": "दीर्घ जुड़वाँ"
+          },
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.vowel.long"
+          ],
+          "sutras": [
+            "1.2.27"
+          ],
+          "kind": "teach",
+          "body": {
+            "en": "Three short vowels have a long twin, held for two beats: {{आ}} ā, {{ई}} ī, {{ऊ}} ū. {{ऋ}} has one too, {{ॠ}} ṝ, but you will rarely see it. A long vowel is made at the same place as its short twin, only held twice as long.",
+            "hi": "तीन ह्रस्व स्वरों का एक दीर्घ जुड़वाँ है, जो दो मात्रा तक बोला जाता है: {{आ}}, {{ई}}, {{ऊ}}। {{ऋ}} का भी है, {{ॠ}}, पर वह कम ही दिखता है। दीर्घ स्वर उसी स्थान से बनता है जहाँ से उसका ह्रस्व जुड़वाँ, बस दुगुने समय तक बोला जाता है।"
+          },
+          "examples": [],
+          "rows": [
+            {
+              "sa": "अ → आ",
+              "gloss": {
+                "en": "a → ā, as in “father”",
+                "hi": "अ → आ, जैसे ‘आम’ में"
+              },
+              "check": null
+            },
+            {
+              "sa": "इ → ई",
+              "gloss": {
+                "en": "i → ī, as in “see”",
+                "hi": "इ → ई, जैसे ‘ईख’ में"
+              },
+              "check": null
+            },
+            {
+              "sa": "उ → ऊ",
+              "gloss": {
+                "en": "u → ū, as in “moon”",
+                "hi": "उ → ऊ, जैसे ‘ऊन’ में"
+              },
+              "check": null
+            },
+            {
+              "sa": "ऋ → ॠ",
+              "gloss": {
+                "en": "ṛ → ṝ, held longer (rare)",
+                "hi": "ऋ → ॠ, लम्बा खिंचा (दुर्लभ)"
+              },
+              "check": null
+            }
+          ],
+          "steps": [],
+          "formula": null,
+          "term": null
+        },
+        {
+          "id": "e1",
+          "title": {
+            "en": "Same place, longer sound",
+            "hi": "वही स्थान, लम्बी ध्वनि"
+          },
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.vowel.long"
+          ],
+          "sutras": [],
+          "kind": "explore",
+          "widget": "mouth_map",
+          "prompt": {
+            "en": "Tap a short vowel, then its long twin. Do they light the same place?",
+            "hi": "पहले ह्रस्व स्वर को छुइए, फिर उसके दीर्घ जुड़वाँ को। क्या दोनों एक ही स्थान को चमकाते हैं?"
+          },
+          "params": {
+            "letters": [
+              "अ",
+              "आ",
+              "इ",
+              "ई",
+              "उ",
+              "ऊ"
+            ]
+          },
+          "roman": "show"
+        },
+        {
+          "id": "p1",
+          "title": null,
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.vowel.long"
+          ],
+          "sutras": [],
+          "kind": "practice",
+          "mode": "choice",
+          "prompt": {
+            "en": "Which is the long twin of {{इ}}?",
+            "hi": "{{इ}} का दीर्घ जुड़वाँ कौन-सा है?"
+          },
+          "explain": {
+            "en": "{{ई}} is {{इ}} held for two beats, at the same place: the palate.",
+            "hi": "{{ई}} वही {{इ}} है, दो मात्रा तक, उसी स्थान से: तालु।"
+          },
+          "options": [
+            {
+              "sa": "ई",
+              "text": null,
+              "correct": true,
+              "why": null
+            },
+            {
+              "sa": "ए",
+              "text": null,
+              "correct": false,
+              "why": {
+                "en": "{{ए}} is a different vowel, made at two places; it is not {{इ}} held longer.",
+                "hi": "{{ए}} अलग स्वर है, जो दो स्थानों से बनता है; यह {{इ}} का लम्बा रूप नहीं।"
+              }
+            },
+            {
+              "sa": "ऊ",
+              "text": null,
+              "correct": false,
+              "why": {
+                "en": "{{ऊ}} is the long twin of {{उ}}.",
+                "hi": "{{ऊ}} तो {{उ}} का दीर्घ रूप है।"
+              }
+            }
+          ],
+          "answers": [],
+          "tiles": [],
+          "tokens": [],
+          "pairs": [],
+          "exercise": null,
+          "check": null,
+          "gate": false,
+          "story": null,
+          "roman": "after"
+        },
+        {
+          "id": "t2",
+          "title": {
+            "en": "One beat or two",
+            "hi": "एक मात्रा या दो"
+          },
+          "image": {
+            "id": "vowels-long-pairs",
+            "brief": "A watercolour in two panels side by side, divided by a thin painted border. Left panel: the riverside village bathed in bright morning sun, labelled दिनम् underneath. Right panel: a thin, humble old man sitting quietly against a whitewashed wall with an empty brass bowl, painted with dignity and warmth, labelled दीनः underneath.",
+            "alt": {
+              "en": "Two panels: a sunny village labelled दिनम् and a humble old man labelled दीनः",
+              "hi": "दो चित्र: धूप में नहाया गाँव (दिनम्) और एक विनम्र बूढ़ा व्यक्ति (दीनः)"
+            },
+            "text_in_image": [
+              "दिनम्",
+              "दीनः"
+            ],
+            "ratio": "4:3",
+            "cast": [],
+            "place": "grama"
+          },
+          "depth": "core",
+          "skills": [
+            "script.vowel.long"
+          ],
+          "sutras": [],
+          "kind": "teach",
+          "body": {
+            "en": "Hold a vowel too long, or clip it too short, and you say a different word. Each pair below differs only in one vowel's length. Inside a word a vowel is written as a small sign, which you will meet on the leaf's second line. For now, compare the Roman letters.",
+            "hi": "स्वर को ज़रूरत से ज़्यादा खींचिए या छोटा कर दीजिए, तो शब्द ही बदल जाता है। नीचे के हर जोड़े में केवल एक स्वर की लम्बाई का अन्तर है। शब्द के भीतर स्वर एक छोटी मात्रा बनकर लिखा जाता है, जिसे आप पत्र की दूसरी पंक्ति में देखेंगे।"
+          },
+          "examples": [
+            {
+              "sa": "दिनम्",
+              "meaning": {
+                "en": "a day (short {{इ}})",
+                "hi": "दिन (ह्रस्व इ)"
+              },
+              "words": [],
+              "source": null,
+              "check": {
+                "type": "subanta",
+                "stem": "दिन",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "दीनः",
+              "meaning": {
+                "en": "a poor, humble person (long {{ई}})",
+                "hi": "दीन व्यक्ति (दीर्घ ई)"
+              },
+              "words": [],
+              "source": null,
+              "check": {
+                "type": "subanta",
+                "stem": "दीन",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "कुलम्",
+              "meaning": {
+                "en": "a family (short {{उ}})",
+                "hi": "कुल, परिवार (ह्रस्व उ)"
+              },
+              "words": [],
+              "source": null,
+              "check": {
+                "type": "subanta",
+                "stem": "कुल",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "कूलम्",
+              "meaning": {
+                "en": "a riverbank (long {{ऊ}})",
+                "hi": "नदी का किनारा (दीर्घ ऊ)"
+              },
+              "words": [],
+              "source": null,
+              "check": {
+                "type": "subanta",
+                "stem": "कूल",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          "rows": [],
+          "steps": [],
+          "formula": null,
+          "term": null
+        },
+        {
+          "id": "p2",
+          "title": {
+            "en": "Greet the day",
+            "hi": "दिन का स्वागत"
+          },
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.vowel.long"
+          ],
+          "sutras": [],
+          "kind": "practice",
+          "mode": "choice",
+          "prompt": {
+            "en": "Help Śuka greet the morning properly. Which word means “day”?",
+            "hi": "शुक को सुबह का ठीक से स्वागत करने में मदद कीजिए। ‘दिन’ के लिए कौन-सा शब्द है?"
+          },
+          "explain": {
+            "en": "{{दिनम्}}, with a short {{इ}}: a day.",
+            "hi": "{{दिनम्}} में ह्रस्व इ है: दिन।"
+          },
+          "options": [
+            {
+              "sa": "दिनम्",
+              "text": null,
+              "correct": true,
+              "why": null
+            },
+            {
+              "sa": "दीनः",
+              "text": null,
+              "correct": false,
+              "why": {
+                "en": "{{दीनः}} has the long {{ई}}: a poor person. That is how Śuka got into trouble.",
+                "hi": "{{दीनः}} में दीर्घ ई है: दीन व्यक्ति। शुक इसी से मुसीबत में पड़ा।"
+              }
+            }
+          ],
+          "answers": [],
+          "tiles": [],
+          "tokens": [],
+          "pairs": [],
+          "exercise": null,
+          "check": null,
+          "gate": true,
+          "story": {
+            "success": {
+              "en": "Śuka puffs up his feathers and calls, “दिनम्! दिनम्!” Dādī laughs and puts her spectacles back on. Dhūmaka's outline grows a little sharper.",
+              "hi": "शुक पंख फुलाकर पुकारता है, “दिनम्! दिनम्!” दादी हँसकर फिर से चश्मा लगा लेती हैं। धूमक की आकृति थोड़ी और साफ़ हो जाती है।"
+            },
+            "failure": {
+              "en": "“दीनः!” squawks Śuka again. Dādī raises an eyebrow: “Still poor, am I?” Listen for the short {{इ}}.",
+              "hi": "“दीनः!” शुक फिर चिल्लाता है। दादी भौंहें उठाती हैं, “अब भी मैं दीन हूँ?” ह्रस्व इ पर ध्यान दीजिए।"
+            }
+          },
+          "roman": "show"
+        },
+        {
+          "id": "p3",
+          "title": null,
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.vowel.long"
+          ],
+          "sutras": [],
+          "kind": "practice",
+          "mode": "match",
+          "prompt": {
+            "en": "Join each short vowel to its long twin.",
+            "hi": "हर ह्रस्व स्वर को उसके दीर्घ जुड़वाँ से जोड़िए।"
+          },
+          "explain": {
+            "en": "Each pair is made at one place in the mouth; the long one is held for two beats.",
+            "hi": "हर जोड़ा मुँह के एक ही स्थान से बनता है; दीर्घ स्वर दो मात्रा तक बोला जाता है।"
+          },
+          "options": [],
+          "answers": [],
+          "tiles": [],
+          "tokens": [],
+          "pairs": [
+            {
+              "left": {
+                "sa": "अ",
+                "text": null,
+                "correct": false,
+                "why": null
+              },
+              "right": {
+                "sa": "आ",
+                "text": null,
+                "correct": false,
+                "why": null
+              }
+            },
+            {
+              "left": {
+                "sa": "इ",
+                "text": null,
+                "correct": false,
+                "why": null
+              },
+              "right": {
+                "sa": "ई",
+                "text": null,
+                "correct": false,
+                "why": null
+              }
+            },
+            {
+              "left": {
+                "sa": "उ",
+                "text": null,
+                "correct": false,
+                "why": null
+              },
+              "right": {
+                "sa": "ऊ",
+                "text": null,
+                "correct": false,
+                "why": null
+              }
+            },
+            {
+              "left": {
+                "sa": "ऋ",
+                "text": null,
+                "correct": false,
+                "why": null
+              },
+              "right": {
+                "sa": "ॠ",
+                "text": null,
+                "correct": false,
+                "why": null
+              }
+            }
+          ],
+          "exercise": null,
+          "check": null,
+          "gate": false,
+          "story": null,
+          "roman": "after"
+        },
+        {
+          "id": "e2",
+          "title": {
+            "en": "Tap the beats",
+            "hi": "मात्राएँ थपथपाइए"
+          },
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.vowel.long"
+          ],
+          "sutras": [],
+          "kind": "explore",
+          "widget": "rhythm_tapper",
+          "prompt": {
+            "en": "Tap once for a short vowel; press and hold for a long one. Short is light, long is heavy.",
+            "hi": "ह्रस्व स्वर पर एक बार थपथपाइए; दीर्घ पर दबाकर रखिए। ह्रस्व लघु है, दीर्घ गुरु।"
+          },
+          "params": {
+            "lines": [
+              "अ आ इ ई उ ऊ ऋ ॠ"
+            ]
+          },
+          "roman": "show"
+        },
+        {
+          "id": "p4",
+          "title": null,
+          "image": null,
+          "depth": "core",
+          "skills": [
+            "script.vowel.long"
+          ],
+          "sutras": [],
+          "kind": "practice",
+          "mode": "choice",
+          "prompt": {
+            "en": "Which word means “riverbank”?",
+            "hi": "‘नदी का किनारा’ किस शब्द का अर्थ है?"
+          },
+          "explain": {
+            "en": "{{कूलम्}}, with a long {{ऊ}}: a riverbank.",
+            "hi": "{{कूलम्}} में दीर्घ ऊ है: नदी का किनारा।"
+          },
+          "options": [
+            {
+              "sa": "कुलम्",
+              "text": null,
+              "correct": false,
+              "why": {
+                "en": "{{कुलम्}}, short {{उ}}: a family.",
+                "hi": "{{कुलम्}} में ह्रस्व उ: कुल, परिवार।"
+              }
+            },
+            {
+              "sa": "कूलम्",
+              "text": null,
+              "correct": true,
+              "why": null
+            }
+          ],
+          "answers": [],
+          "tiles": [],
+          "tokens": [],
+          "pairs": [],
+          "exercise": null,
+          "check": null,
+          "gate": false,
+          "story": null,
+          "roman": "show"
+        },
+        {
+          "id": "pn",
+          "title": {
+            "en": "Twins in Pāṇini",
+            "hi": "पाणिनि में जुड़वाँ"
+          },
+          "image": null,
+          "depth": "panini",
+          "skills": [
+            "script.vowel.long"
+          ],
+          "sutras": [
+            "1.1.9",
+            "1.1.69"
+          ],
+          "kind": "teach",
+          "body": {
+            "en": "Sūtra 1.1.9 calls sounds made at one place with one effort {{सवर्ण}}, “of one kind”: {{इ}} and {{ई}} are {{सवर्ण}}. By sūtra 1.1.69 a short vowel in a rule stands for its twins too. So the leaf, like Pāṇini's list, writes only {{अ}} {{इ}} {{उ}}, never {{आ}} {{ई}} {{ऊ}}.",
+            "hi": "सूत्र 1.1.9 एक ही स्थान और एक ही प्रयत्न से बनी ध्वनियों को {{सवर्ण}} कहता है: {{इ}} और {{ई}} सवर्ण हैं। सूत्र 1.1.69 के अनुसार नियम में लिखा ह्रस्व स्वर अपने सवर्णों का भी बोध कराता है। इसीलिए पत्र, पाणिनि की सूची की तरह, केवल {{अ}} {{इ}} {{उ}} लिखता है, {{आ}} {{ई}} {{ऊ}} कभी नहीं।"
+          },
+          "examples": [],
+          "rows": [],
+          "steps": [],
+          "formula": null,
+          "term": {
+            "sa": "सवर्णम्",
+            "meaning": {
+              "en": "sounds of one kind: same place, same effort",
+              "hi": "एक ही स्थान और प्रयत्न वाली ध्वनियाँ"
+            }
+          }
+        },
+        {
+          "id": "sum",
+          "title": {
+            "en": "The long vowels",
+            "hi": "दीर्घ स्वर"
+          },
+          "image": null,
+          "depth": "core",
+          "skills": [],
+          "sutras": [],
+          "kind": "summary",
+          "points": [
+            {
+              "sa": "आ ई ऊ ॠ",
+              "text": {
+                "en": "Long vowels: two beats each.",
+                "hi": "दीर्घ स्वर: हर एक की दो मात्राएँ।"
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "A long vowel is made where its short twin is made.",
+                "hi": "दीर्घ स्वर वहीं बनता है जहाँ उसका ह्रस्व जुड़वाँ।"
+              }
+            },
+            {
+              "sa": "दिनम् · दीनः",
+              "text": {
+                "en": "Length changes the word: a day, a poor person.",
+                "hi": "लम्बाई से शब्द बदलता है: दिन, दीन व्यक्ति।"
+              }
+            },
+            {
+              "sa": "कुलम् · कूलम्",
+              "text": {
+                "en": "A family, a riverbank.",
+                "hi": "कुल, नदी का किनारा।"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shared_leaf_source": {
+      "vowels.short": {
+        "id": "vowels.short",
+        "template": "scene",
+        "title": {
+          "en": "The smoke that could not speak",
+          "hi": "वह धुआँ जो बोल नहीं सकता था"
+        },
+        "title_sa": "ह्रस्वाः स्वराः",
+        "minutes": 6,
+        "teaches": [
+          "script.vowel.short"
+        ],
+        "needs": [],
+        "review": "engine_ok",
+        "sources": [
+          {
+            "title": "Śiva sūtras and Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+            "url": "https://github.com/ambuda-org/vidyut",
+            "licence": "MIT",
+            "note": null
+          },
+          {
+            "title": "Lesson text and story",
+            "url": null,
+            "licence": "original",
+            "note": null
+          }
+        ],
+        "cards": [
+          {
+            "id": "s1",
+            "title": {
+              "en": "Smoke from the lamp",
+              "hi": "दीपक का धुआँ"
+            },
+            "image": {
+              "id": "vowels-short-smoke",
+              "brief": "Evening in the temple library. On the low reading desk the half-burnt palm leaf glows gold. Smoke from a brass oil lamp curls upward and gathers into Dhūmaka, a small round smoke-grey ghost with big kind eyes, pointing at the leaf. You (seen from behind) and Dādī lean in; Śuka on your shoulder puffs his feathers in surprise.",
+              "alt": {
+                "en": "A small smoky ghost rising from a lamp points at a glowing leaf while a grandmother, a young person and a parrot watch",
+                "hi": "दीपक से उठता नन्हा धुएँ-सा भूत चमकते पत्र की ओर इशारा करता है; दादी, एक युवा और तोता देख रहे हैं"
+              },
+              "text_in_image": [],
+              "ratio": "4:3",
+              "cast": [
+                "you",
+                "dadi",
+                "shuka",
+                "dhumaka"
+              ],
+              "place": "granthalaya"
+            },
+            "depth": "core",
+            "skills": [],
+            "sutras": [],
+            "kind": "story",
+            "narration": {
+              "en": "That evening, smoke from the brass lamp curls into a shape: a small ghost with big, kind eyes. He opens his mouth, but no sound comes. He points at the glowing leaf. Dādī smiles. “He missed Guṇāḍhya's reading long ago. He is waiting to hear this leaf read aloud.”",
+              "hi": "उस शाम पीतल के दीपक का धुआँ एक आकार में सिमट जाता है: बड़ी-बड़ी, दयालु आँखों वाला एक नन्हा भूत। वह मुँह खोलता है, पर कोई ध्वनि नहीं निकलती। वह चमकते पत्र की ओर इशारा करता है। दादी मुस्कुराती हैं, “यह बहुत पहले गुणाढ्य का पाठ सुनने से चूक गया था। अब यह इस पत्र को ज़ोर से पढ़ा जाता सुनना चाहता है।”"
+            },
+            "lines": [
+              {
+                "speaker": "dadi",
+                "sa": "पश्य! धूमकः।",
+                "gloss": {
+                  "en": "“Look! Dhūmaka, the little smoke.”",
+                  "hi": "“देखो! धूमक, नन्हा धुआँ।”"
+                },
+                "text": null,
+                "check": null
+              }
+            ],
+            "quote": null
+          },
+          {
+            "id": "s2",
+            "title": {
+              "en": "The first line",
+              "hi": "पहली पंक्ति"
+            },
+            "image": {
+              "id": "vowels-short-line",
+              "brief": "Close-up of the half-burnt palm leaf on the reading desk in warm lamplight. Along its top runs one line of glowing Devanagari in four groups, each followed by a small charred gap: अ इ उ, then ऋ ऌ, then ए ओ, then ऐ औ. Dhūmaka's small smoky hand points at the first group.",
+              "alt": {
+                "en": "A palm leaf with one glowing line of letters in four groups, each followed by a burnt gap",
+                "hi": "एक ताड़पत्र जिस पर अक्षरों की एक चमकती पंक्ति चार समूहों में है, हर समूह के बाद जला हुआ खाली स्थान"
+              },
+              "text_in_image": [
+                "अ इ उ",
+                "ऋ ऌ",
+                "ए ओ",
+                "ऐ औ"
+              ],
+              "ratio": "4:3",
+              "cast": [
+                "dhumaka"
+              ],
+              "place": "granthalaya"
+            },
+            "depth": "core",
+            "skills": [],
+            "sutras": [],
+            "kind": "story",
+            "narration": {
+              "en": "Dādī holds the lamp close to the leaf. “The first line has four groups of letters. See the burnt gap after each group? The fire took one letter from each. What is left are vowels: sounds you can hold with your mouth open.”",
+              "hi": "दादी दीपक को पत्र के पास लाती हैं। “पहली पंक्ति में अक्षरों के चार समूह हैं। हर समूह के बाद जला हुआ खाली स्थान देखा? आग ने हर समूह से एक अक्षर ले लिया। जो बचे हैं वे स्वर हैं: ऐसी ध्वनियाँ जिन्हें मुँह खोलकर देर तक बोला जा सकता है।”"
+            },
+            "lines": [],
+            "quote": null
+          },
+          {
+            "id": "t1",
+            "title": {
+              "en": "A vowel stands on its own",
+              "hi": "स्वर अपने आप बोला जाता है"
+            },
+            "image": {
+              "id": "vowels-short-aiu",
+              "brief": "Three large Devanagari letters अ, इ and उ painted in ochre ink on a cream palm leaf, spaced apart. Beside each letter a tiny drawing of a mouth shows how it is said: relaxed and open for अ, lips spread in a slight smile for इ, lips rounded for उ.",
+              "alt": {
+                "en": "The letters अ, इ and उ, each beside a small drawing of the mouth shape that says it",
+                "hi": "अ, इ और उ अक्षर, हर एक के पास उसे बोलने वाले मुँह का छोटा चित्र"
+              },
+              "text_in_image": [
+                "अ",
+                "इ",
+                "उ"
+              ],
+              "ratio": "4:3",
+              "cast": [],
+              "place": null
+            },
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [
+              "SS.1"
+            ],
+            "kind": "teach",
+            "body": {
+              "en": "A vowel, {{स्वरः}}, is a sound you can hold with your mouth open. Sanskrit gives each vowel its own letter. The leaf's first group holds three of them, all short: say each one quickly, in one beat.",
+              "hi": "स्वर ({{स्वरः}}) वह ध्वनि है जिसे मुँह खोलकर देर तक बोला जा सकता है। संस्कृत में हर स्वर का अपना अक्षर है। पत्र के पहले समूह में ऐसे तीन स्वर हैं, तीनों ह्रस्व: हर एक को जल्दी, एक मात्रा में बोलिए।"
+            },
+            "examples": [],
+            "rows": [
+              {
+                "sa": "अ",
+                "gloss": {
+                  "en": "a, like the u in “but”",
+                  "hi": "अ, जैसे ‘अब’ में"
+                },
+                "check": null
+              },
+              {
+                "sa": "इ",
+                "gloss": {
+                  "en": "i, like the i in “sit”",
+                  "hi": "इ, जैसे ‘इमली’ में"
+                },
+                "check": null
+              },
+              {
+                "sa": "उ",
+                "gloss": {
+                  "en": "u, like the u in “put”",
+                  "hi": "उ, जैसे ‘उधर’ में"
+                },
+                "check": null
+              }
+            ],
+            "steps": [],
+            "formula": null,
+            "term": {
+              "sa": "स्वरः",
+              "meaning": {
+                "en": "a vowel: a sound you can hold",
+                "hi": "स्वर: ऐसी ध्वनि जिसे देर तक बोला जा सके"
+              }
+            }
+          },
+          {
+            "id": "e1",
+            "title": {
+              "en": "Where the sound is made",
+              "hi": "ध्वनि कहाँ बनती है"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [],
+            "kind": "explore",
+            "widget": "mouth_map",
+            "prompt": {
+              "en": "Tap each vowel and see where your mouth makes it. Say it softly as the place lights up.",
+              "hi": "हर स्वर को छूकर देखिए कि मुँह में वह कहाँ बनता है। स्थान चमके, तब धीरे से बोलिए।"
+            },
+            "params": {
+              "letters": [
+                "अ",
+                "इ",
+                "उ"
+              ]
+            },
+            "roman": "show"
+          },
+          {
+            "id": "p1",
+            "title": null,
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [],
+            "kind": "practice",
+            "mode": "choice",
+            "prompt": {
+              "en": "Which one sounds like the i in “sit”?",
+              "hi": "इनमें से कौन-सा स्वर तालु से बोला जाता है?"
+            },
+            "explain": {
+              "en": "{{इ}} is short, made at the palate.",
+              "hi": "{{इ}} ह्रस्व स्वर है, जो तालु से बोला जाता है।"
+            },
+            "options": [
+              {
+                "sa": "अ",
+                "text": null,
+                "correct": false,
+                "why": {
+                  "en": "{{अ}} is a, the sound in “but”.",
+                  "hi": "{{अ}} कण्ठ से बोला जाता है।"
+                }
+              },
+              {
+                "sa": "इ",
+                "text": null,
+                "correct": true,
+                "why": null
+              },
+              {
+                "sa": "उ",
+                "text": null,
+                "correct": false,
+                "why": {
+                  "en": "{{उ}} is u, as in “put”.",
+                  "hi": "{{उ}} होंठों से बोला जाता है।"
+                }
+              }
+            ],
+            "answers": [],
+            "tiles": [],
+            "tokens": [],
+            "pairs": [],
+            "exercise": null,
+            "check": null,
+            "gate": false,
+            "story": null,
+            "roman": "after"
+          },
+          {
+            "id": "t2",
+            "title": {
+              "en": "Two vowels made with r and l",
+              "hi": "र और ल वाले दो स्वर"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [
+              "SS.2"
+            ],
+            "kind": "teach",
+            "body": {
+              "en": "The second group holds two unusual vowels. For {{ऋ}}, curl your tongue up toward the roof of your mouth, as if to say r, and let that sound carry the syllable, like the r in an American “bird”. Keep it one quick sound. {{ऌ}} does the same with l, at the teeth; it is very rare.",
+              "hi": "दूसरे समूह में दो अनोखे स्वर हैं। {{ऋ}} के लिए जीभ को मुँह की छत (मूर्धा) की ओर मोड़िए, मानो ‘र’ कहना हो, और वही ध्वनि पूरा अक्षर बन जाए। इसे एक छोटी ध्वनि रखिए। {{ऌ}} यही काम दाँतों के पास ‘ल’ के साथ करता है; यह बहुत दुर्लभ है।"
+            },
+            "examples": [
+              {
+                "sa": "ऋषिः",
+                "meaning": {
+                  "en": "a sage; it begins with {{ऋ}}",
+                  "hi": "ऋषि; आरम्भ में {{ऋ}}"
+                },
+                "words": [],
+                "source": null,
+                "check": {
+                  "type": "subanta",
+                  "stem": "ऋषि",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "rows": [
+              {
+                "sa": "ऋ",
+                "gloss": {
+                  "en": "ṛ, a vowel r",
+                  "hi": "ऋ, स्वर के रूप में ‘र’"
+                },
+                "check": null
+              },
+              {
+                "sa": "ऌ",
+                "gloss": {
+                  "en": "ḷ, a vowel l (rare)",
+                  "hi": "ऌ, स्वर के रूप में ‘ल’ (दुर्लभ)"
+                },
+                "check": null
+              }
+            ],
+            "steps": [],
+            "formula": null,
+            "term": null
+          },
+          {
+            "id": "p2",
+            "title": null,
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [],
+            "kind": "practice",
+            "mode": "match",
+            "prompt": {
+              "en": "Join each vowel to the place where the mouth makes it.",
+              "hi": "हर स्वर को उसके उच्चारण-स्थान से जोड़िए।"
+            },
+            "explain": {
+              "en": "The vowels follow the mouth: {{अ}} at the throat, {{इ}} at the palate, {{ऋ}} at the roof, {{उ}} at the lips.",
+              "hi": "स्वर मुँह के क्रम पर चलते हैं: {{अ}} कण्ठ से, {{इ}} तालु से, {{ऋ}} मूर्धा से, {{उ}} होंठों से।"
+            },
+            "options": [],
+            "answers": [],
+            "tiles": [],
+            "tokens": [],
+            "pairs": [
+              {
+                "left": {
+                  "sa": "अ",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                },
+                "right": {
+                  "sa": null,
+                  "text": {
+                    "en": "throat",
+                    "hi": "कण्ठ (गला)"
+                  },
+                  "correct": false,
+                  "why": null
+                }
+              },
+              {
+                "left": {
+                  "sa": "इ",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                },
+                "right": {
+                  "sa": null,
+                  "text": {
+                    "en": "palate",
+                    "hi": "तालु"
+                  },
+                  "correct": false,
+                  "why": null
+                }
+              },
+              {
+                "left": {
+                  "sa": "उ",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                },
+                "right": {
+                  "sa": null,
+                  "text": {
+                    "en": "lips",
+                    "hi": "होंठ"
+                  },
+                  "correct": false,
+                  "why": null
+                }
+              },
+              {
+                "left": {
+                  "sa": "ऋ",
+                  "text": null,
+                  "correct": false,
+                  "why": null
+                },
+                "right": {
+                  "sa": null,
+                  "text": {
+                    "en": "roof of the mouth",
+                    "hi": "मूर्धा (मुँह की छत)"
+                  },
+                  "correct": false,
+                  "why": null
+                }
+              }
+            ],
+            "exercise": null,
+            "check": null,
+            "gate": false,
+            "story": null,
+            "roman": "after"
+          },
+          {
+            "id": "e2",
+            "title": {
+              "en": "Spot the first letter",
+              "hi": "पहला अक्षर पहचानिए"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [],
+            "kind": "explore",
+            "widget": "mark_words",
+            "prompt": {
+              "en": "Look only at the first letter of each word. Tap every word that begins with {{उ}}.",
+              "hi": "हर शब्द का केवल पहला अक्षर देखिए। जो शब्द {{उ}} से शुरू होते हैं, उन सबको छुइए।"
+            },
+            "params": {
+              "passage": [
+                "अग्निः",
+                "उषा",
+                "इन्द्रः",
+                "उदकम्",
+                "ऋषिः",
+                "इति"
+              ],
+              "targets": [
+                "उषा",
+                "उदकम्"
+              ]
+            },
+            "roman": "after"
+          },
+          {
+            "id": "p3",
+            "title": {
+              "en": "Put the line back",
+              "hi": "पंक्ति को फिर से जोड़िए"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [
+              "SS.1",
+              "SS.2"
+            ],
+            "kind": "practice",
+            "mode": "order",
+            "prompt": {
+              "en": "The fire scattered the first two groups. Put the five short vowels back in the leaf's order.",
+              "hi": "आग ने पहले दो समूह बिखेर दिए हैं। पाँचों ह्रस्व स्वरों को पत्र के क्रम में फिर से लगाइए।"
+            },
+            "explain": {
+              "en": "The leaf follows the oldest order of Sanskrit sounds: {{अ}} {{इ}} {{उ}}, then {{ऋ}} {{ऌ}}. These are the first two of the fourteen sound-groups that open Pāṇini's grammar.",
+              "hi": "पत्र संस्कृत ध्वनियों के सबसे पुराने क्रम पर चलता है: {{अ}} {{इ}} {{उ}}, फिर {{ऋ}} {{ऌ}}। पाणिनि के व्याकरण के आरम्भ में जो चौदह ध्वनि-समूह हैं, ये उनके पहले दो समूह हैं।"
+            },
+            "options": [],
+            "answers": [],
+            "tiles": [],
+            "tokens": [
+              "अ",
+              "इ",
+              "उ",
+              "ऋ",
+              "ऌ"
+            ],
+            "pairs": [],
+            "exercise": null,
+            "check": null,
+            "gate": true,
+            "story": {
+              "success": {
+                "en": "The first marks of the line flare gold. Dhūmaka bobs up and down, and a thin sound comes from him: “अ… इ… उ…”",
+                "hi": "पंक्ति के पहले अक्षर सुनहरे चमक उठते हैं। धूमक ऊपर-नीचे उछलता है, और उसमें से एक पतली-सी ध्वनि निकलती है: “अ… इ… उ…”"
+              },
+              "failure": {
+                "en": "The marks flicker and go dark. Dhūmaka waits, patient as smoke. Look again at the order.",
+                "hi": "अक्षर टिमटिमाकर बुझ जाते हैं। धूमक धुएँ जैसे धैर्य से प्रतीक्षा करता है। क्रम फिर से देखिए।"
+              }
+            },
+            "roman": "after"
+          },
+          {
+            "id": "p4",
+            "title": null,
+            "image": null,
+            "depth": "core",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [],
+            "kind": "practice",
+            "mode": "choice",
+            "prompt": {
+              "en": "Which of these is not one of the five short vowels?",
+              "hi": "इनमें से कौन-सा पाँच ह्रस्व स्वरों में नहीं है?"
+            },
+            "explain": {
+              "en": "{{ए}} is a vowel too, but not a short one. It waits in the leaf's third group.",
+              "hi": "{{ए}} भी स्वर है, पर ह्रस्व नहीं। वह पत्र के तीसरे समूह में है।"
+            },
+            "options": [
+              {
+                "sa": "इ",
+                "text": null,
+                "correct": false,
+                "why": null
+              },
+              {
+                "sa": "ऋ",
+                "text": null,
+                "correct": false,
+                "why": null
+              },
+              {
+                "sa": "ए",
+                "text": null,
+                "correct": true,
+                "why": null
+              },
+              {
+                "sa": "उ",
+                "text": null,
+                "correct": false,
+                "why": null
+              }
+            ],
+            "answers": [],
+            "tiles": [],
+            "tokens": [],
+            "pairs": [],
+            "exercise": null,
+            "check": null,
+            "gate": false,
+            "story": null,
+            "roman": "after"
+          },
+          {
+            "id": "pn",
+            "title": {
+              "en": "Pāṇini measures a vowel",
+              "hi": "पाणिनि स्वर को मापते हैं"
+            },
+            "image": null,
+            "depth": "panini",
+            "skills": [
+              "script.vowel.short"
+            ],
+            "sutras": [
+              "1.2.27"
+            ],
+            "kind": "teach",
+            "body": {
+              "en": "Pāṇini names vowels by how long they last. In sūtra 1.2.27 a vowel lasting as long as {{उ}} is {{ह्रस्वः}}, short; as long as {{ऊ}}, {{दीर्घः}}, long; held for three beats, {{प्लुतः}}. All five vowels of the leaf's first two groups are {{ह्रस्वः}}.",
+              "hi": "पाणिनि स्वरों का नाम उनकी अवधि से रखते हैं। सूत्र 1.2.27 के अनुसार जो स्वर {{उ}} जितना समय ले वह {{ह्रस्वः}} है, जो {{ऊ}} जितना ले वह {{दीर्घः}}, और जो तीन मात्रा तक खिंचे वह {{प्लुतः}}। पत्र के पहले दो समूहों के पाँचों स्वर {{ह्रस्वः}} हैं।"
+            },
+            "examples": [],
+            "rows": [],
+            "steps": [],
+            "formula": null,
+            "term": {
+              "sa": "ह्रस्वः",
+              "meaning": {
+                "en": "short: lasting one beat",
+                "hi": "ह्रस्व: एक मात्रा का"
+              }
+            }
+          },
+          {
+            "id": "sum",
+            "title": {
+              "en": "The short vowels",
+              "hi": "ह्रस्व स्वर"
+            },
+            "image": null,
+            "depth": "core",
+            "skills": [],
+            "sutras": [],
+            "kind": "summary",
+            "points": [
+              {
+                "sa": "अ इ उ ऋ ऌ",
+                "text": {
+                  "en": "The five short vowels: one beat each.",
+                  "hi": "पाँच ह्रस्व स्वर: हर एक की एक मात्रा।"
+                }
+              },
+              {
+                "sa": "ऋ",
+                "text": {
+                  "en": "A vowel r: one quick sound, never written {{रि}}.",
+                  "hi": "स्वर ऋ: एक छोटी ध्वनि; इसे {{रि}} मत लिखिए।"
+                }
+              },
+              {
+                "sa": "ऌ",
+                "text": {
+                  "en": "A vowel l: very rare.",
+                  "hi": "स्वर ऌ: बहुत दुर्लभ।"
+                }
+              },
+              {
+                "sa": null,
+                "text": {
+                  "en": "The leaf's first groups: {{अ}} {{इ}} {{उ}}, then {{ऋ}} {{ऌ}}.",
+                  "hi": "पत्र के पहले समूह: {{अ}} {{इ}} {{उ}}, फिर {{ऋ}} {{ऌ}}।"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "course": {
+        "id": "burnt-book",
+        "title": {
+          "en": "The Burnt Book",
+          "hi": "जली हुई पुस्तक"
+        },
+        "title_sa": "दग्धा बृहत्कथा",
+        "prologue": "prologue",
+        "acts": [
+          "act-1",
+          "act-2",
+          "act-3",
+          "act-4",
+          "act-5"
+        ]
+      }
+    }
+  },
+  "brief": {
+    "id": "vowels-long-shuka",
+    "brief": "Early morning in the temple library: Śuka the parrot at an open window with the sunrise behind him, beak wide open mid-squawk, wings half spread; Dādī at the reading desk lowering her round spectacles with one eyebrow raised, amused; Dhūmaka giggling as a little puff of smoke beside the glowing leaf.",
+    "alt": {
+      "en": "A parrot squawking at a sunrise window while a grandmother raises an eyebrow and a small ghost giggles",
+      "hi": "सूर्योदय की खिड़की पर चिल्लाता तोता, भौंहें उठाती दादी और खिलखिलाता नन्हा भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "shuka",
+      "dadi",
+      "dhumaka"
+    ],
+    "place": "granthalaya"
+  },
+  "generator": "built-in image_gen",
+  "replaces_earlier_delivery": true,
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-cd12ba67-5dc2-4ab6-9770-d688920a84a0.png",
+  "history": [
+    {
+      "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-ab094225-c971-4dbd-96e8-28f9a6740699.png",
+      "prompt": "Use case: illustration-story. Asset: one 4:3 painting for The Burnt Book Sanskrit learning story. Use the highest supported native resolution in that exact aspect ratio. Refined Indian watercolor with restrained gouache on warm ivory, quiet ochre, sage, dusty terracotta and muted indigo. Warm and gentle, consistent character design.\nCanonical scene brief: Early morning in the temple library: Śuka the parrot at an open window with the sunrise behind him, beak wide open mid-squawk, wings half spread; Dādī at the reading desk lowering her round spectacles with one eyebrow raised, amused; Dhūmaka giggling as a little puff of smoke beside the glowing leaf.\nCharacter appearances:\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\ndhumaka: A small, round, smoke-grey spirit about the height of a child's knee, with big kind dark eyes and a wavy, wispy lower edge like lamp smoke.\nPhone-first composition: compact clear central grouping, essential faces, hands and narrative objects comfortably inside all edges. Keep the entire painting visible with contain fitting. No collage, UI or decorative border.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nअ इ उ\nऋ ऌ\nए ओ\nऐ औ",
+      "sha256": "925ae174dc8ec59c261c822fce099af450f171c453d7cb55b27d8aafe12da530",
+      "master_retained": false
+    }
+  ],
+  "policy_version": "2026-10-20-complete-source-audit",
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "10f8b5578a6dfc7da14f20b0aa657d3af5fd330977c44ac2f49117528574d91e",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vowels-long-shuka-phone-c5050dea.webp",
+      "key": "learn/vowels-long-shuka-phone-c5050dea.webp",
+      "sha256": "c5050deaf268fdf154fa82eff1261819cfe354622f3f7a82077947049436cbe8",
+      "bytes": 82278,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/vowels-long-shuka-phone-c5050dea.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vowels-long-shuka-tablet-29cc24ad.webp",
+      "key": "learn/vowels-long-shuka-tablet-29cc24ad.webp",
+      "sha256": "29cc24ad1c8f109b07af3eb58ee3efdcd25073dcc221d4db1f9a5003d4a74f8d",
+      "bytes": 274548,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/vowels-long-shuka-tablet-29cc24ad.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

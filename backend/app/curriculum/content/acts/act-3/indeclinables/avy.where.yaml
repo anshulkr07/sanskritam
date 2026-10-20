@@ -9,7 +9,7 @@ teaches:
 - avy.adverbs
 needs:
 - avy.iti
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: smashana
     ratio: '4:3'
     id: avy-where-s1
+    text_in_image: ["अत्र", "तत्र", "कुत्र"]
   narration:
     en: '“Where?” asks the Vetāla. “अत्र,” says Avyayaka. “Here.” “And there?” “तत्र.” “When?” “यदा.” “And then?” “तदा.” “How?” “यथा.” “And so?” “तथा.” Śuka laughs. “They all end in the same three sounds: -त्र for ‘where’, -दा for ‘when’, -था for ‘how’.” The Vetāla leans back, satisfied.'
     hi: '“कहाँ?” वेताल पूछता है। “अत्र,” अव्यय कहता है। “यहाँ।” “और वहाँ?” “तत्र।” “कब?” “यदा।” “और तब?” “तदा।” “कैसे?” “यथा।” “और वैसे?” “तथा।” शुक हँस पड़ता है। “सब एक ही तीन ध्वनियों पर समाप्त होते हैं: ‘कहाँ’ के लिए -त्र, ‘कब’ के लिए -दा, ‘कैसे’ के लिए -था।” वेताल संतुष्ट होकर पीछे झुकता है।'
@@ -243,8 +244,8 @@ cards:
   - avy.adverbs
   mode: match
   prompt:
-    en: Join each word to its meaning.
-    hi: हर शब्द को उसके अर्थ से जोड़िए।
+    en: Match each word with its meaning.
+    hi: हर शब्द को उसके अर्थ से मिलाइए।
   explain:
     en: '{{-त्र}} place, {{-दा}} time.'
     hi: '{{-त्र}} स्थान, {{-दा}} समय।'

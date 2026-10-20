@@ -1,0 +1,661 @@
+{
+  "id": "vs-stop-s1",
+  "where": "vs.stop#s1",
+  "ratio": "4:3",
+  "expected": [
+    "हरी एतौ"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The sixth statue standing with open empty hands, a closed carved door behind her base; Śuka narrowing his eyes; Dādī pointing at an inscription with two words kept apart by a small gap; Lubdhaka's foreman scratching his head.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsvarika: A small spirit of cool grey stone in the shape of a young woman holding a lotus, with a fine crack down one cheek and eyes of pale gold.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nहरी एतौ",
+  "source": {
+    "id": "vs.stop",
+    "template": "scene",
+    "title": {
+      "en": "When the rule stops",
+      "hi": "जब नियम रुक जाए"
+    },
+    "title_sa": "हरी एतौ",
+    "minutes": 6,
+    "teaches": [
+      "sandhi.blocked"
+    ],
+    "needs": [
+      "sandhi.ayadi"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The sixth statue",
+          "hi": "छठी प्रतिमा"
+        },
+        "image": {
+          "id": "vs-stop-s1",
+          "brief": "The sixth statue standing with open empty hands, a closed carved door behind her base; Śuka narrowing his eyes; Dādī pointing at an inscription with two words kept apart by a small gap; Lubdhaka's foreman scratching his head.",
+          "alt": {
+            "en": "A statue with open empty hands before a closed carved door, a parrot narrowing his eyes",
+            "hi": "ख़ाली खुले हाथों वाली प्रतिमा, बन्द नक्काशीदार द्वार के सामने, आँखें सिकोड़ता तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "svarika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The sixth statue holds nothing. “हरी एतौ,” she says: “these two Haris.” “ते अत्र.” “मुनी इमौ.” Śuka narrows his eyes. “Those are not joined. Look, two vowels meet and nothing happens.” “Some words are like that,” says Dādī. “Dual forms ending in ई, ऊ, ए stay apart. They are pragṛhya: the door is shut.”",
+          "hi": "छठी प्रतिमा के हाथ ख़ाली हैं। “हरी एतौ,” वह कहती है: “ये दो हरि।” “ते अत्र।” “मुनी इमौ।” शुक आँखें सिकोड़ता है। “ये जुड़े नहीं हैं। देखिए, दो स्वर मिलते हैं और कुछ नहीं होता।” “कुछ शब्द ऐसे ही होते हैं,” दादी कहती हैं। “ई, ऊ, ए पर समाप्त द्विवचन के रूप अलग रहते हैं। वे प्रगृह्य हैं: दरवाज़ा बन्द है।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Words that stay apart",
+          "hi": "जो अलग रहते हैं"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.blocked"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Some words never join. The dual forms ending in {{ई}}, {{ऊ}} or {{ए}} stay apart before a vowel: {{हरी + एतौ}} stays {{हरी एतौ}}; {{ते + अत्र}} stays {{ते अत्र}}. These are {{प्रगृह्याः}}. Interjections such as {{अहो}} also stand apart.",
+          "hi": "कुछ शब्द कभी नहीं जुड़ते। {{ई}}, {{ऊ}} या {{ए}} पर समाप्त द्विवचन के रूप स्वर से पहले भी अलग रहते हैं: {{हरी + एतौ}} {{हरी एतौ}} ही रहता है; {{ते + अत्र}} {{ते अत्र}} ही रहता है। ये {{प्रगृह्याः}} हैं। {{अहो}} जैसे विस्मयादिबोधक भी अलग रहते हैं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "प्रगृह्यम्",
+          "meaning": {
+            "en": "a word that does not join",
+            "hi": "वह शब्द जो नहीं जुड़ता"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Words that do not join",
+          "hi": "जो नहीं जुड़ते"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.blocked"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "These stay apart",
+          "hi": "ये अलग रहते हैं"
+        },
+        "columns": [
+          {
+            "en": "First word",
+            "hi": "पहला शब्द"
+          },
+          {
+            "en": "Second word",
+            "hi": "दूसरा शब्द"
+          },
+          {
+            "en": "Stays",
+            "hi": "रहता है"
+          },
+          {
+            "en": "Why",
+            "hi": "क्यों"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "हरी",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एतौ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "हरी एतौ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "dual in -ई",
+                "hi": "-ई वाला द्विवचन"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "मुनी",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "इमौ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "मुनी इमौ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "dual in -ई",
+                "hi": "-ई वाला द्विवचन"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "साधू",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "आगतौ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "साधू आगतौ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "dual in -ऊ",
+                "hi": "-ऊ वाला द्विवचन"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "ते",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अत्र",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ते अत्र",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "dual in -ए",
+                "hi": "-ए वाला द्विवचन"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "लते",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एते",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लते एते",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "dual in -ए",
+                "hi": "-ए वाला द्विवचन"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "Check the form: if it is a dual in {{-ई}}, {{-ऊ}} or {{-ए}}, leave it alone.",
+          "hi": "रूप देखिए: यदि वह {{-ई}}, {{-ऊ}} या {{-ए}} वाला द्विवचन है, तो उसे वैसा ही रहने दीजिए।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.blocked"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which pair does NOT join?",
+          "hi": "कौन-सी जोड़ी नहीं जुड़ती?"
+        },
+        "explain": {
+          "en": "{{हरी}} is a dual in {{-ई}}: {{प्रगृह्यम्}}.",
+          "hi": "{{हरी}} {{-ई}} वाला द्विवचन है: {{प्रगृह्यम्}}।"
+        },
+        "options": [
+          {
+            "sa": "विद्या आलयः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "हरी एतौ",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "न अस्ति",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.blocked"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each pair to what happens.",
+          "hi": "हर जोड़ी को उससे जोड़िए जो होता है।"
+        },
+        "explain": {
+          "en": "Duals in {{-ई}}, {{-ऊ}}, {{-ए}} stay apart.",
+          "hi": "{{-ई}}, {{-ऊ}}, {{-ए}} वाले द्विवचन अलग रहते हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "विद्या + आलयः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "joins: विद्यालयः",
+                "hi": "जुड़ता है: विद्यालयः"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "हरी + एतौ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "stays apart",
+                "hi": "अलग रहता है"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "गण + ईशः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "joins: गणेशः",
+                "hi": "जुड़ता है: गणेशः"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ते + अत्र",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "stays apart",
+                "hi": "अलग रहता है"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.blocked"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every dual form that stays apart.",
+          "hi": "अलग रहने वाला हर द्विवचन रूप छुइए।"
+        },
+        "params": {
+          "passage": [
+            "हरी",
+            "हरिः",
+            "मुनी",
+            "मुनिः",
+            "ते",
+            "सः"
+          ],
+          "targets": [
+            "हरी",
+            "मुनी",
+            "ते"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "The closed door",
+          "hi": "बन्द द्वार"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.blocked"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{मुनी + इमौ}} gives…",
+          "hi": "{{मुनी + इमौ}} से…"
+        },
+        "explain": {
+          "en": "A dual in {{-ई}} does not join.",
+          "hi": "{{-ई}} वाला द्विवचन नहीं जुड़ता।"
+        },
+        "options": [
+          {
+            "sa": "मुन्यिमौ",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "मुनीमौ",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "मुनी इमौ",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“मुनी इमौ,” you say, “these two sages,” and you leave a clear gap between the words, as you would between two people at a door. The empty-handed statue smiles, for the first time, a little crookedly. “Yes,” she says. “Not everything joins. Sometimes the right thing is to leave the door shut.” Behind her, quietly, six statues begin to hum together.",
+            "hi": "“मुनी इमौ,” आप कहते हैं, “ये दो मुनि,” और शब्दों के बीच साफ़ अन्तराल छोड़ते हैं, जैसे द्वार पर खड़े दो लोगों के बीच। ख़ाली हाथ वाली प्रतिमा पहली बार हल्का-सा टेढ़ा मुस्कराती है। “हाँ,” वह कहती है। “हर चीज़ जुड़ती नहीं। कभी-कभी सही यही है कि द्वार बन्द रहने दिया जाए।” उसके पीछे, धीमे से, छह प्रतिमाएँ एक साथ गुनगुनाने लगती हैं।"
+          },
+          "failure": {
+            "en": "The statue stays grave. A dual in {{-ई}} does not join: {{मुनी इमौ}}.",
+            "hi": "प्रतिमा गम्भीर रहती है। {{-ई}} वाला द्विवचन नहीं जुड़ता: {{मुनी इमौ}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's closed door",
+          "hi": "पाणिनि का बन्द द्वार"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sandhi.blocked"
+        ],
+        "sutras": [
+          "1.1.11",
+          "6.1.125"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 1.1.11, {{ईदूदेद्द्विवचनं प्रगृह्यम्}}, names the dual forms ending in {{ई}}, {{ऊ}}, {{ए}} {{प्रगृह्य}}. And 6.1.125, {{प्लुतप्रगृह्या अचि नित्यम्}}, says a {{प्रगृह्य}} stays as it is before a vowel. So there is no sandhi.",
+          "hi": "सूत्र 1.1.11, {{ईदूदेद्द्विवचनं प्रगृह्यम्}}, {{ई}}, {{ऊ}}, {{ए}} पर समाप्त द्विवचन के रूपों को {{प्रगृह्य}} नाम देता है। और 6.1.125, {{प्लुतप्रगृह्या अचि नित्यम्}}, कहता है कि {{प्रगृह्य}} स्वर से पहले जैसा है वैसा ही रहता है। इसलिए सन्धि नहीं होती।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "When the rule stops",
+          "hi": "जब नियम रुक जाए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "हरी एतौ",
+            "text": {
+              "en": "A dual in -ई stays apart.",
+              "hi": "-ई वाला द्विवचन अलग रहता है।"
+            }
+          },
+          {
+            "sa": "ते अत्र",
+            "text": {
+              "en": "A dual in -ए stays apart.",
+              "hi": "-ए वाला द्विवचन अलग रहता है।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "{{प्रगृह्यम्}}: the closed door.",
+              "hi": "{{प्रगृह्यम्}}: बन्द द्वार।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "vs-stop-s1",
+    "brief": "The sixth statue standing with open empty hands, a closed carved door behind her base; Śuka narrowing his eyes; Dādī pointing at an inscription with two words kept apart by a small gap; Lubdhaka's foreman scratching his head.",
+    "alt": {
+      "en": "A statue with open empty hands before a closed carved door, a parrot narrowing his eyes",
+      "hi": "ख़ाली खुले हाथों वाली प्रतिमा, बन्द नक्काशीदार द्वार के सामने, आँखें सिकोड़ता तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "svarika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The sixth statue standing with open empty hands, a closed carved door behind her base; Śuka narrowing his eyes; Dādī pointing at an inscription with two words kept apart by a small gap; Lubdhaka's foreman scratching his head.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsvarika: A small spirit of cool grey stone in the shape of a young woman holding a lotus, with a fine crack down one cheek and eyes of pale gold.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-0c3d0f37-7750-4695-81a6-99229c4298ce.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "27da886769ef66adc6fd479fb4fe4c4bdbd1a2cf2d3d66ff667e133fa3c8f74a",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vs-stop-s1-phone-95a350d2.webp",
+      "key": "learn/vs-stop-s1-phone-95a350d2.webp",
+      "sha256": "95a350d271c5a196ba4b534f811a0c8468e78b60aaad5173fc914a0b85e21e50",
+      "bytes": 99044,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/vs-stop-s1-phone-95a350d2.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vs-stop-s1-tablet-0b17aa39.webp",
+      "key": "learn/vs-stop-s1-tablet-0b17aa39.webp",
+      "sha256": "0b17aa39980cc8cee7bdb10d7b9d6f191859aeb0d4d05d8380880fb7a1532fef",
+      "bytes": 379504,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/vs-stop-s1-tablet-0b17aa39.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

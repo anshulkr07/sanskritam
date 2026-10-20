@@ -1,0 +1,836 @@
+{
+  "id": "m1-shloka-s1",
+  "where": "m1.shloka#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Dādī telling the legend with a hand raised; behind her, a faint painted vision of a sage by a river looking up at a hunter who has lowered his bow, and a pair of cranes, one fallen, one crying; Chandikā listening with her drum in her lap; Śuka perched wide-eyed on the throne; Lubdhaka at the back, no longer smiling.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nchandika: A tiny spirit of grey-blue stone, round as a pebble, with a small drum hung at her waist and two thin sticks tucked in her hair like hairpins; she taps with both hands.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "m1.shloka",
+    "template": "scene",
+    "title": {
+      "en": "Four quarters of eight",
+      "hi": "आठ-आठ के चार चरण"
+    },
+    "title_sa": "श्लोकः",
+    "minutes": 6,
+    "teaches": [
+      "chandas.shloka"
+    ],
+    "needs": [
+      "chandas.weight"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Grief into verse",
+          "hi": "शोक से श्लोक"
+        },
+        "image": {
+          "id": "m1-shloka-s1",
+          "brief": "Dādī telling the legend with a hand raised; behind her, a faint painted vision of a sage by a river looking up at a hunter who has lowered his bow, and a pair of cranes, one fallen, one crying; Chandikā listening with her drum in her lap; Śuka perched wide-eyed on the throne; Lubdhaka at the back, no longer smiling.",
+          "alt": {
+            "en": "Dādī tells a legend while a faint vision shows a sage, a hunter and two cranes",
+            "hi": "दादी कथा सुनाती हैं, पीछे ऋषि, व्याध और दो सारस की धुँधली छवि"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "chandika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Chandikā's drum is steady now. “Do you know where the śloka was born?” says Dādī. “A sage saw a hunter shoot one of two birds, and his grief came out in measured words: मा निषाद, hunter, may you find no rest! It had four quarters of eight syllables, and he said: the grief had become śloka.” At the back, Lubdhaka stops smiling.",
+          "hi": "छन्दिका का ढोल अब स्थिर है। “क्या आप जानते हैं श्लोक का जन्म कहाँ हुआ?” दादी कहती हैं। “एक ऋषि ने देखा कि व्याध ने दो पक्षियों में से एक को मार दिया, और उनका शोक नपे-तुले शब्दों में फूट पड़ा: मा निषाद, व्याध, तुझे चैन न मिले! उसके चार चरण थे, आठ-आठ अक्षर के, और उन्होंने कहा: शोक ही श्लोक बन गया।” पीछे, लुब्धक की मुस्कान रुक जाती है।"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "समाक्षरैश् चतुर्भिर् यः पादैर् गीतो महर्षिणा सो ऽनुव्याहरणाद् भूयः शोकः श्लोकत्वम् आगतः",
+          "gloss": {
+            "en": "What the great sage sang in four quarters of equal syllables: by his saying it again, that grief became a śloka.",
+            "hi": "महर्षि ने जो चार समान अक्षरों वाले चरणों में गाया: उसे दोबारा कहने से वह शोक श्लोक बन गया।"
+          },
+          "source": "Rāmāyaṇa, Bālakāṇḍa 2 (read in the Digital Corpus of Sanskrit)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Four quarters of eight",
+          "hi": "आठ-आठ के चार चरण"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.shloka"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A śloka has four quarters ({{पाद}}) of eight syllables: 32 in all, or 16 in each half. The first four syllables and the eighth are free. In the middle the pattern is fixed: the fifth light, the sixth heavy, and the seventh heavy in quarters one and three, light in two and four.",
+          "hi": "श्लोक में चार चरण ({{पाद}}) होते हैं, आठ-आठ अक्षर के: कुल 32, या हर आधे में 16। पहले चार अक्षर और आठवाँ स्वतन्त्र हैं। बीच में ढाँचा बँधा है: पाँचवाँ लघु, छठा गुरु, और सातवाँ पहले-तीसरे चरण में गुरु, दूसरे-चौथे में लघु।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "पादः",
+          "meaning": {
+            "en": "a quarter of a verse",
+            "hi": "श्लोक का चरण"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "The pattern",
+          "hi": "ढाँचा"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.shloka"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Eight places in each quarter",
+          "hi": "हर चरण में आठ स्थान"
+        },
+        "columns": [
+          {
+            "en": "Quarter",
+            "hi": "चरण"
+          },
+          {
+            "en": "1–4",
+            "hi": "१–४"
+          },
+          {
+            "en": "5th",
+            "hi": "५वाँ"
+          },
+          {
+            "en": "6th",
+            "hi": "६ठा"
+          },
+          {
+            "en": "7th",
+            "hi": "७वाँ"
+          },
+          {
+            "en": "8th",
+            "hi": "८वाँ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "1",
+                "hi": "१"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "any",
+                "hi": "कोई भी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ल",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ग",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ग",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "any",
+                "hi": "कोई भी"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "2",
+                "hi": "२"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "any",
+                "hi": "कोई भी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ल",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ग",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ल",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "any",
+                "hi": "कोई भी"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "3",
+                "hi": "३"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "any",
+                "hi": "कोई भी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ल",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ग",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ग",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "any",
+                "hi": "कोई भी"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "4",
+                "hi": "४"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "any",
+                "hi": "कोई भी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ल",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ग",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ल",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "any",
+                "hi": "कोई भी"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "ल = light, ग = heavy. The last syllable of a quarter is counted either way.",
+          "hi": "ल = लघु, ग = गुरु। चरण का अन्तिम अक्षर दोनों तरह गिना जाता है।"
+        }
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.shloka"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "rhythm_tapper",
+        "prompt": {
+          "en": "Tap the two lines of the first śloka: look at places five to seven.",
+          "hi": "पहले श्लोक की दो पंक्तियों की ताल दीजिए: पाँच से सात स्थानों को देखिए।"
+        },
+        "params": {
+          "lines": [
+            "मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीं समाः",
+            "यत्क्रौञ्चमिथुनादेकमवधीः काममोहितम्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.shloka"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "How many syllables are in one half of a śloka?",
+          "hi": "श्लोक के एक आधे में कितने अक्षर होते हैं?"
+        },
+        "explain": {
+          "en": "Two quarters of eight: 16.",
+          "hi": "आठ-आठ के दो चरण: 16।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "8",
+              "hi": "८"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "16",
+              "hi": "१६"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "32",
+              "hi": "३२"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.shloka"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which syllables of a quarter are fixed?",
+          "hi": "चरण के कौन-से अक्षर बँधे हैं?"
+        },
+        "explain": {
+          "en": "The middle three; the rest are free.",
+          "hi": "बीच के तीन; बाकी स्वतन्त्र हैं।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "the first four",
+              "hi": "पहले चार"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "the fifth, sixth and seventh",
+              "hi": "पाँचवाँ, छठा और सातवाँ"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "the eighth only",
+              "hi": "केवल आठवाँ"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.shloka"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each place to its weight.",
+          "hi": "हर स्थान को उसके भार से जोड़िए।"
+        },
+        "explain": {
+          "en": "Fifth light, sixth heavy, seventh alternating.",
+          "hi": "पाँचवाँ लघु, छठा गुरु, सातवाँ बारी-बारी।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": null,
+              "text": {
+                "en": "the 5th",
+                "hi": "५वाँ"
+              },
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "light",
+                "hi": "लघु"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": null,
+              "text": {
+                "en": "the 6th",
+                "hi": "६ठा"
+              },
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "heavy",
+                "hi": "गुरु"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": null,
+              "text": {
+                "en": "the 7th, quarters 1 and 3",
+                "hi": "७वाँ, चरण १ और ३"
+              },
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "heavy in these",
+                "hi": "इनमें गुरु"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": null,
+              "text": {
+                "en": "the 7th, quarters 2 and 4",
+                "hi": "७वाँ, चरण २ और ४"
+              },
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "light in these",
+                "hi": "इनमें लघु"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.shloka"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Mark each syllable of the hunter verse.",
+          "hi": "व्याध-श्लोक के हर अक्षर को चिह्नित कीजिए।"
+        },
+        "explain": {
+          "en": "Look at places five to seven in each quarter.",
+          "hi": "हर चरण के पाँच से सात स्थानों को देखिए।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "scan_metre",
+          "params": {
+            "text": "मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीं समाः"
+          },
+          "seed": 2
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.shloka"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Mark each syllable of the sage's line.",
+          "hi": "ऋषि की पंक्ति के हर अक्षर को चिह्नित कीजिए।"
+        },
+        "explain": {
+          "en": "A śloka line is 16 syllables.",
+          "hi": "श्लोक की पंक्ति 16 अक्षरों की होती है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "scan_metre",
+          "params": {
+            "text": "समाक्षरैश्चतुर्भिर्यः पादैर्गीतो महर्षिणा"
+          },
+          "seed": 3
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p6",
+        "title": {
+          "en": "The first śloka",
+          "hi": "पहला श्लोक"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.shloka"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "In {{मा निषाद प्रतिष्ठाम्}} the seventh syllable is heavy. Which quarter is it?",
+          "hi": "{{मा निषाद प्रतिष्ठाम्}} में सातवाँ अक्षर गुरु है। यह कौन-सा चरण है?"
+        },
+        "explain": {
+          "en": "Heavy in the seventh place belongs to quarters one and three.",
+          "hi": "सातवें स्थान पर गुरु चरण एक और तीन का है।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "an odd quarter (1 or 3)",
+              "hi": "विषम चरण (१ या ३)"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "an even quarter (2 or 4)",
+              "hi": "सम चरण (२ या ४)"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "any quarter",
+              "hi": "कोई भी चरण"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीं समाः,” you chant, and Chandikā beats it with you, beat for beat, and the half-verse closes square on its sixteenth syllable. The spirit lets her sticks fall. “That is the shape,” she says. “Grief had to be held.” Across the hall, a long-sealed stone panel with a carved line on it slides open a hand's breadth.",
+            "hi": "“मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीं समाः,” आप पढ़ते हैं, और छन्दिका आपके साथ ताल पर ताल देती है, और आधा श्लोक अपने सोलहवें अक्षर पर ठीक बैठ जाता है। भूत अपनी डंडियाँ छोड़ देती है। “यही आकार है,” वह कहती है। “शोक को थामना था।” कक्ष के पार, एक बन्द पत्थर का फलक, जिस पर पंक्ति खुदी है, हाथ भर सरक जाता है।"
+          },
+          "failure": {
+            "en": "Her sticks stay up. The seventh place: heavy in quarters one and three.",
+            "hi": "उसकी डंडियाँ उठी रहती हैं। सातवाँ स्थान: चरण एक और तीन में गुरु।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Four quarters of eight",
+          "hi": "आठ-आठ के चार चरण"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "पादः",
+            "text": {
+              "en": "A quarter: eight syllables.",
+              "hi": "चरण: आठ अक्षर।"
+            }
+          },
+          {
+            "sa": "ल ग",
+            "text": {
+              "en": "Fifth light, sixth heavy.",
+              "hi": "पाँचवाँ लघु, छठा गुरु।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Seventh: heavy in quarters 1 and 3, light in 2 and 4.",
+              "hi": "सातवाँ: चरण 1 और 3 में गुरु, 2 और 4 में लघु।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "m1-shloka-s1",
+    "brief": "Dādī telling the legend with a hand raised; behind her, a faint painted vision of a sage by a river looking up at a hunter who has lowered his bow, and a pair of cranes, one fallen, one crying; Chandikā listening with her drum in her lap; Śuka perched wide-eyed on the throne; Lubdhaka at the back, no longer smiling.",
+    "alt": {
+      "en": "Dādī tells a legend while a faint vision shows a sage, a hunter and two cranes",
+      "hi": "दादी कथा सुनाती हैं, पीछे ऋषि, व्याध और दो सारस की धुँधली छवि"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "chandika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Dādī telling the legend with a hand raised; behind her, a faint painted vision of a sage by a river looking up at a hunter who has lowered his bow, and a pair of cranes, one fallen, one crying; Chandikā listening with her drum in her lap; Śuka perched wide-eyed on the throne; Lubdhaka at the back, no longer smiling.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nchandika: A tiny spirit of grey-blue stone, round as a pebble, with a small drum hung at her waist and two thin sticks tucked in her hair like hairpins; she taps with both hands.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-9c3421a7-8911-44fa-931d-23fa45817e34.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "e6e9ecfcbe6f76b33834e68dc3dd08cbbf232606e2b5318d73609135e3785c46",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\m1-shloka-s1-phone-38b656ab.webp",
+      "key": "learn/m1-shloka-s1-phone-38b656ab.webp",
+      "sha256": "38b656ab21bdf474235f2613b02b78622568c01b93c26f42804c97fa7570df91",
+      "bytes": 105972,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/m1-shloka-s1-phone-38b656ab.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\m1-shloka-s1-tablet-a934b04e.webp",
+      "key": "learn/m1-shloka-s1-tablet-a934b04e.webp",
+      "sha256": "a934b04e1892a28f83d8413010c1a3d17e4c3ca5f81212310fe8afa69dad3e88",
+      "bytes": 401130,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/m1-shloka-s1-tablet-a934b04e.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

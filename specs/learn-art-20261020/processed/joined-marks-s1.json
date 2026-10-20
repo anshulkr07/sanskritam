@@ -1,0 +1,824 @@
+{
+  "id": "joined-marks-s1",
+  "where": "joined.marks#s1",
+  "ratio": "4:3",
+  "expected": [
+    "ऽ",
+    "।",
+    "॥",
+    "ॐ",
+    "० १ २ ३ ४ ५ ६ ७ ८ ९"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The foot of the temple pillar with carved marks: a small avagraha curl, a tall single bar and a double bar, the sacred Om sign, and a row of Devanagari numerals; the green spirit stirring awake above them, Dādī pointing.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nnidralu: A pale sage-green round spirit with half-closed eyes and a tiny nightcap of mist, often yawning.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nऽ\n।\n॥\nॐ\n० १ २ ३ ४ ५ ६ ७ ८ ९",
+  "source": {
+    "id": "joined.marks",
+    "template": "scene",
+    "title": {
+      "en": "Marks and numbers on the pillar",
+      "hi": "स्तम्भ के चिह्न और अंक"
+    },
+    "title_sa": "चिह्नान्यङ्काश्च",
+    "minutes": 6,
+    "teaches": [
+      "script.signs",
+      "script.numerals"
+    ],
+    "needs": [
+      "script.anusvara",
+      "script.visarga"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The last lines",
+          "hi": "आख़िरी पंक्तियाँ"
+        },
+        "image": {
+          "id": "joined-marks-s1",
+          "brief": "The foot of the temple pillar with carved marks: a small avagraha curl, a tall single bar and a double bar, the sacred Om sign, and a row of Devanagari numerals; the green spirit stirring awake above them, Dādī pointing.",
+          "alt": {
+            "en": "The foot of a pillar with carved marks, the Om sign and numbers, and a spirit stirring",
+            "hi": "चिह्नों, ॐ और अंकों वाला स्तम्भ का पाँव, हिलता हुआ भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "nidralu"
+          ],
+          "place": "devalaya"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "At the pillar's foot, below the letters, stand strange marks: a small curl like an S, tall bars, a great round sign, and a row of numbers. The green spirit stirs. “Read the last line,” says Dādī, “and he will wake.”",
+          "hi": "स्तम्भ के पाँव पर, अक्षरों के नीचे, अजीब चिह्न खुदे हैं: ‘S’ जैसा छोटा मोड़, ऊँची खड़ी रेखाएँ, एक बड़ा गोल चिह्न, और अंकों की एक पंक्ति। हरा भूत हिलता है। दादी कहती हैं, “आख़िरी पंक्ति पढ़ो, वह जाग जाएगा।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "सत्यमेव जयते नानृतं",
+          "gloss": {
+            "en": "Truth alone prevails, not falsehood.",
+            "hi": "सत्य की ही जीत होती है, असत्य की नहीं।"
+          },
+          "source": "Muṇḍaka Upaniṣad 3.1.6"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Bars, a curl and a sacred sound",
+          "hi": "रेखाएँ, एक मोड़ और एक पवित्र ध्वनि"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.signs",
+          "script.numerals"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{।}} the {{दण्डः}} ends a line or sentence; {{॥}} ends a verse. {{ऽ}}, the avagraha, marks a dropped {{अ}}: {{सोऽहम्}}. {{ॐ}} is the sacred syllable, {{अ}} + {{उ}} + {{म्}}.",
+          "hi": "{{।}} {{दण्डः}} पंक्ति या वाक्य का अन्त करता है; {{॥}} श्लोक का अन्त। {{ऽ}}, अवग्रह, छूटे हुए {{अ}} का चिह्न है: {{सोऽहम्}}। {{ॐ}} पवित्र अक्षर है, {{अ}} + {{उ}} + {{म्}}।"
+        },
+        "examples": [],
+        "rows": [
+          {
+            "sa": "।",
+            "gloss": {
+              "en": "ends a line or sentence",
+              "hi": "पंक्ति या वाक्य का अन्त"
+            },
+            "check": null
+          },
+          {
+            "sa": "॥",
+            "gloss": {
+              "en": "ends a verse",
+              "hi": "श्लोक का अन्त"
+            },
+            "check": null
+          },
+          {
+            "sa": "ऽ",
+            "gloss": {
+              "en": "a dropped {{अ}} (avagraha)",
+              "hi": "छूटा हुआ {{अ}} (अवग्रह)"
+            },
+            "check": null
+          },
+          {
+            "sa": "ॐ",
+            "gloss": {
+              "en": "the sacred syllable",
+              "hi": "पवित्र अक्षर"
+            },
+            "check": null
+          }
+        ],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Numbers",
+          "hi": "अंक"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.signs",
+          "script.numerals"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The ten Devanagari numerals",
+          "hi": "दस देवनागरी अंक"
+        },
+        "columns": [
+          {
+            "en": "Numeral",
+            "hi": "अंक"
+          },
+          {
+            "en": "Number",
+            "hi": "संख्या"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "०",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "zero",
+                "hi": "शून्य"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "१",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "one",
+                "hi": "एक"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "२",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "two",
+                "hi": "दो"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "३",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "three",
+                "hi": "तीन"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "४",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "four",
+                "hi": "चार"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "५",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "five",
+                "hi": "पाँच"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "६",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "six",
+                "hi": "छह"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "७",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "seven",
+                "hi": "सात"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "८",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "eight",
+                "hi": "आठ"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "९",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "nine",
+                "hi": "नौ"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "Numbers are written left to right like words: {{१०८}} is one hundred and eight.",
+          "hi": "अंक शब्दों की तरह बाएँ से दाएँ लिखे जाते हैं: {{१०८}} यानी एक सौ आठ।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.signs",
+          "script.numerals"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each mark to its job.",
+          "hi": "हर चिह्न को उसके काम से जोड़िए।"
+        },
+        "explain": {
+          "en": "Each mark does one job.",
+          "hi": "हर चिह्न का एक काम है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "।",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "ends a line",
+                "hi": "पंक्ति का अन्त"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "॥",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "ends a verse",
+                "hi": "श्लोक का अन्त"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ऽ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "a dropped {{अ}}",
+                "hi": "छूटा {{अ}}"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ॐ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "the sacred syllable",
+                "hi": "पवित्र अक्षर"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.signs",
+          "script.numerals"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each numeral to its number.",
+          "hi": "हर अंक को उसकी संख्या से जोड़िए।"
+        },
+        "explain": {
+          "en": "Learn the ten once and you can read any number.",
+          "hi": "दस अंक एक बार सीख लिए, तो कोई भी संख्या पढ़ सकते हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "३",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "three",
+                "hi": "तीन"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "५",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "five",
+                "hi": "पाँच"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "८",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "eight",
+                "hi": "आठ"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "९",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "nine",
+                "hi": "नौ"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.signs",
+          "script.numerals"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Build {{१०८}}, the number of beads on a prayer garland.",
+          "hi": "{{१०८}} बनाइए, माला के मनकों की संख्या।"
+        },
+        "explain": {
+          "en": "{{१}} {{०}} {{८}}: one hundred and eight.",
+          "hi": "{{१}} {{०}} {{८}}: एक सौ आठ।"
+        },
+        "options": [],
+        "answers": [
+          "१०८"
+        ],
+        "tiles": [
+          "१",
+          "०",
+          "८",
+          "९"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.signs",
+          "script.numerals"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every numeral.",
+          "hi": "हर अंक को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "१",
+            "रामः",
+            "७",
+            "ॐ",
+            "४",
+            "सत्यम्",
+            "९"
+          ],
+          "targets": [
+            "१",
+            "७",
+            "४",
+            "९"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "The last line",
+          "hi": "आख़िरी पंक्ति"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.signs",
+          "script.numerals"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Read the pillar's last line. Put its three pieces in order.",
+          "hi": "स्तम्भ की आख़िरी पंक्ति पढ़िए। उसके तीन टुकड़े क्रम में लगाइए।"
+        },
+        "explain": {
+          "en": "{{सत्यमेव जयते नानृतं}}: truth alone prevails, not falsehood (Muṇḍaka Upaniṣad 3.1.6).",
+          "hi": "{{सत्यमेव जयते नानृतं}}: सत्य की ही जीत होती है, असत्य की नहीं (मुण्डक उपनिषद् 3.1.6)।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "सत्यमेव",
+          "जयते",
+          "नानृतं"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "You read the line aloud, bars and all. The green spirit yawns, stretches, and opens both eyes: “जागर्मि!” His nightcap pops like a bubble.",
+            "hi": "आप पूरी पंक्ति, रेखाओं सहित, ज़ोर से पढ़ते हैं। हरा भूत उबासी लेता है, अँगड़ाई लेता है और दोनों आँखें खोल देता है: “जागर्मि!” उसकी टोपी बुलबुले की तरह फूट जाती है।"
+          },
+          "failure": {
+            "en": "The line will not wake him. Say it as you read it: {{सत्यमेव}} first.",
+            "hi": "पंक्ति उसे जगा नहीं पाती। पढ़ते हुए बोलिए: पहले {{सत्यमेव}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "script.signs",
+          "script.numerals"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "What does the curl {{ऽ}} in {{सोऽहम्}} stand for?",
+          "hi": "{{सोऽहम्}} में मोड़ {{ऽ}} किसकी जगह है?"
+        },
+        "explain": {
+          "en": "{{सोऽहम्}} is {{सः}} + {{अहम्}}: the {{अ}} is dropped and marked by {{ऽ}}.",
+          "hi": "{{सोऽहम्}} यानी {{सः}} + {{अहम्}}: {{अ}} छूट गया और {{ऽ}} से दिखाया गया।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "a dropped {{अ}}",
+              "hi": "छूटे हुए {{अ}} की"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "a hum",
+              "hi": "गूँज की"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "a breath",
+              "hi": "साँस की"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Marks and numbers",
+          "hi": "चिह्न और अंक"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "। ॥",
+            "text": {
+              "en": "End of a line; end of a verse.",
+              "hi": "पंक्ति का अन्त; श्लोक का अन्त।"
+            }
+          },
+          {
+            "sa": "ऽ ॐ",
+            "text": {
+              "en": "A dropped {{अ}}; the sacred syllable.",
+              "hi": "छूटा {{अ}}; पवित्र अक्षर।"
+            }
+          },
+          {
+            "sa": "० १ २ ३ ४ ५ ६ ७ ८ ९",
+            "text": {
+              "en": "The ten numerals.",
+              "hi": "दस अंक।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "joined-marks-s1",
+    "brief": "The foot of the temple pillar with carved marks: a small avagraha curl, a tall single bar and a double bar, the sacred Om sign, and a row of Devanagari numerals; the green spirit stirring awake above them, Dādī pointing.",
+    "alt": {
+      "en": "The foot of a pillar with carved marks, the Om sign and numbers, and a spirit stirring",
+      "hi": "चिह्नों, ॐ और अंकों वाला स्तम्भ का पाँव, हिलता हुआ भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "nidralu"
+    ],
+    "place": "devalaya"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The foot of the temple pillar with carved marks: a small avagraha curl, a tall single bar and a double bar, the sacred Om sign, and a row of Devanagari numerals; the green spirit stirring awake above them, Dādī pointing.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nnidralu: A pale sage-green round spirit with half-closed eyes and a tiny nightcap of mist, often yawning.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-cca968cd-93a4-455a-88ac-b76547649a1a.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "17a219d225449b1c85d58014cd969e9179986e49e49d35ca0f514d228b89016f",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\joined-marks-s1-phone-92fdd4d7.webp",
+      "key": "learn/joined-marks-s1-phone-92fdd4d7.webp",
+      "sha256": "92fdd4d730242e90772acc7b2803e6d6771f0562246e8559898e89c004a92537",
+      "bytes": 100850,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/joined-marks-s1-phone-92fdd4d7.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\joined-marks-s1-tablet-a7a3aec5.webp",
+      "key": "learn/joined-marks-s1-tablet-a7a3aec5.webp",
+      "sha256": "a7a3aec574651ceb13a204912f3b909a23bd88171617943dd6c143488bcc3f13",
+      "bytes": 384604,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/joined-marks-s1-tablet-a7a3aec5.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

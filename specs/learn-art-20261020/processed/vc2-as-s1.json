@@ -1,0 +1,1373 @@
+{
+  "id": "vc2-as-s1",
+  "where": "vc2.as#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A small plain ash-coloured spirit stepping out of an opened drawer, without any marks or ornaments, patting itself to check it is there; Dhātuka holding his ledger a little pale; the Vetāla and Dādī watching; firelight.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\ndhatuka: A small, round, honey-brown spirit with ten tiny brass-handled drawers set into his body, a pencil behind one ear, forever hurrying.\nastika: A small, plain, ash-coloured spirit without any marks or ornament, who keeps patting himself to check he is there.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.\nPut the approved roots and corresponding forms in a clear, short ledger list, one root/form pair per row. No additional writing. All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "vc2.as",
+    "template": "scene",
+    "title": {
+      "en": "Class 2: अस्ति, एति",
+      "hi": "गण 2: अस्ति, एति"
+    },
+    "title_sa": "अस्ति एति",
+    "minutes": 6,
+    "teaches": [
+      "verb.class-2"
+    ],
+    "needs": [
+      "verb.class-1",
+      "verb.as"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The six odd drawers",
+          "hi": "छह विचित्र दराज़"
+        },
+        "image": {
+          "id": "vc2-as-s1",
+          "brief": "A small plain ash-coloured spirit stepping out of an opened drawer, without any marks or ornaments, patting itself to check it is there; Dhātuka holding his ledger a little pale; the Vetāla and Dādī watching; firelight.",
+          "alt": {
+            "en": "A plain ash-coloured spirit steps out of a drawer and pats itself to check it exists",
+            "hi": "दराज़ से निकलता सादा राख-रंगा भूत, स्वयं को थपथपाकर जाँचता कि वह है"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "dhatuka",
+            "astika"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The eighth night. Dhātuka holds up his ledger, rather pale. “Six drawers left. They are the odd ones, where verbs do not follow the pattern.” He opens the second. Out of it steps a small plain spirit, with no marks or ornaments at all, patting himself to check he is there. “अस्ति,” says the Vetāla. “He is.” Dādī: “And ‘he goes’ is एति.”",
+          "hi": "आठवीं रात। धातुक अपनी बही उठाता है, कुछ पीला-सा। “छह दराज़ बचे हैं। वे विचित्र वाले हैं, जहाँ क्रियाएँ ढाँचे पर नहीं चलतीं।” वह दूसरा खोलता है। उसमें से एक छोटा सादा भूत निकलता है, जिस पर कोई चिह्न या सजावट नहीं, और वह स्वयं को थपथपाकर जाँचता है कि वह है। “अस्ति,” वेताल कहता है। “वह है।” दादी: “और ‘वह जाता है’ एति है।”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "अस्ति। एति।",
+            "gloss": {
+              "en": "He is. He goes.",
+              "hi": "वह है। वह जाता है।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "No sign at all",
+          "hi": "कोई चिह्न नहीं"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-2"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Class 2, {{अदादि}}, adds no sign: the ending joins the root directly, and the root often changes inside. {{अस्}} gives {{अस्ति}}, {{स्तः}}, {{सन्ति}}; {{इ}} gives {{एति}}, {{इतः}}, {{यन्ति}}; {{या}} gives {{याति}}; {{ब्रू}} gives {{ब्रवीति}}.",
+          "hi": "गण 2, {{अदादि}}, कोई चिह्न नहीं जोड़ता: प्रत्यय सीधे धातु से जुड़ता है, और धातु भीतर से अक्सर बदलती है। {{अस्}} से {{अस्ति}}, {{स्तः}}, {{सन्ति}}; {{इ}} से {{एति}}, {{इतः}}, {{यन्ति}}; {{या}} से {{याति}}; {{ब्रू}} से {{ब्रवीति}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "अस्: to be",
+          "hi": "अस्: होना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-2"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“He is, you are, I am”",
+          "hi": "‘वह है, तुम हो, मैं हूँ’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अस्ति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "स्तः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "सन्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "असि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "स्थः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "स्थ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अस्मि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "स्वः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "स्मः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "अस्",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": null
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "इ: to go",
+          "hi": "इ: जाना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-2"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“He goes, you go, I go”",
+          "hi": "‘वह जाता है, तुम जाते हो, मैं जाता हूँ’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "इ",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "इतः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "इ",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "यन्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "इ",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एषि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "इ",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "इथः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "इ",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "इथ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "इ",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "एमि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "इ",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "इवः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "इ",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "इमः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "इ",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "The {{इ}} strengthens to {{ए}} in the singular and stays short in the dual: {{एति}}, {{इतः}}.",
+          "hi": "एकवचन में {{इ}} बलवान् होकर {{ए}} बनता है और द्विवचन में छोटा रहता है: {{एति}}, {{इतः}}।"
+        }
+      },
+      {
+        "id": "tb3",
+        "title": {
+          "en": "Class 2 roots",
+          "hi": "गण 2 की धातुएँ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-2"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Root, meaning and “he …”",
+          "hi": "धातु, अर्थ और ‘वह …’"
+        },
+        "columns": [
+          {
+            "en": "Root",
+            "hi": "धातु"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          },
+          {
+            "en": "He",
+            "hi": "वह"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "या",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "go",
+                "hi": "जाना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "याति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "या",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "हन्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "strike, kill",
+                "hi": "मारना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "हन्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "हन्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "अद्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "eat",
+                "hi": "खाना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अत्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "अद्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "रुद्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "weep",
+                "hi": "रोना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "रोदिति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "रुद्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "ब्रू",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "say",
+                "hi": "कहना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ब्रवीति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "ब्रू",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Adadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "These are common verbs. Learn each by heart.",
+          "hi": "ये बहुत प्रचलित क्रियाएँ हैं। हर एक को याद कीजिए।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-2"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He goes.” Which form?",
+          "hi": "‘वह जाता है।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{एति}}: {{इ}} + {{ति}}, strengthened.",
+          "hi": "{{एति}}: {{इ}} + {{ति}}, बलवान्।"
+        },
+        "options": [
+          {
+            "sa": "इति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "एति",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "अयति",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-2"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “They are.”",
+          "hi": "कहिए: ‘वे हैं।’"
+        },
+        "explain": {
+          "en": "{{सन्ति}}: the {{अ}} of {{अस्}} drops.",
+          "hi": "{{सन्ति}}: {{अस्}} का {{अ}} हट जाता है।"
+        },
+        "options": [],
+        "answers": [
+          "सन्ति"
+        ],
+        "tiles": [
+          "स",
+          "न्ति",
+          "ति",
+          "अस"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-2"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each root to its “he” form.",
+          "hi": "हर धातु को उसके ‘वह’ रूप से जोड़िए।"
+        },
+        "explain": {
+          "en": "No sign between root and ending.",
+          "hi": "धातु और प्रत्यय के बीच कोई चिह्न नहीं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "अस्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "अस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "इ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "एति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "या",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "याति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "हन्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "हन्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-2"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every verb with no sign before the ending.",
+          "hi": "प्रत्यय से पहले चिह्न रहित हर क्रिया छुइए।"
+        },
+        "params": {
+          "passage": [
+            "एति",
+            "भवति",
+            "याति",
+            "नयति",
+            "हन्ति",
+            "जयति"
+          ],
+          "targets": [
+            "एति",
+            "याति",
+            "हन्ति"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Drawer two",
+          "hi": "दूसरा दराज़"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-2"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“They are.” Which form?",
+          "hi": "‘वे हैं।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{सन्ति}}: they, many.",
+          "hi": "{{सन्ति}}: वे, अनेक।"
+        },
+        "options": [
+          {
+            "sa": "अस्ति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "स्तः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सन्ति",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“सन्ति,” you say, and the plain spirit stops patting himself. Behind him, in the dark, there are other small shapes: they are, they are. “They are,” he whispers. “I did not know there were others.” He steps back into his drawer and, for the first time, shuts it himself, with a click.",
+            "hi": "“सन्ति,” आप कहते हैं, और सादा भूत स्वयं को थपथपाना छोड़ देता है। उसके पीछे अँधेरे में और भी नन्ही आकृतियाँ हैं: वे हैं, वे हैं। “वे हैं,” वह फुसफुसाता है। “मुझे नहीं पता था कि और भी हैं।” वह अपने दराज़ में लौट जाता है और पहली बार स्वयं उसे खट से बन्द कर देता है।"
+          },
+          "failure": {
+            "en": "He keeps patting himself. They, many: {{सन्ति}}.",
+            "hi": "वह स्वयं को थपथपाता रहता है। वे, अनेक: {{सन्ति}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's no-sign class",
+          "hi": "बिना चिह्न का गण"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "verb.class-2"
+        ],
+        "sutras": [
+          "2.4.72",
+          "6.4.111"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 2.4.72, {{अदिप्रभृतिभ्यः शपः}}, deletes the sign {{शप्}} after {{अद्}} and its class, so the ending joins the root. 6.4.111, {{श्नसोरल्लोपः}}, drops the {{अ}} of {{अस्}} before a weak ending: {{स्तः}}, {{सन्ति}}.",
+          "hi": "सूत्र 2.4.72, {{अदिप्रभृतिभ्यः शपः}}, {{अद्}} आदि धातुओं के बाद चिह्न {{शप्}} का लोप कर देता है, इसलिए प्रत्यय धातु से सीधे जुड़ता है। 6.4.111, {{श्नसोरल्लोपः}}, निर्बल प्रत्यय से पहले {{अस्}} का {{अ}} हटा देता है: {{स्तः}}, {{सन्ति}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Class 2",
+          "hi": "गण 2"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "अस्ति · स्तः · सन्ति",
+            "text": {
+              "en": "He is; the two are; they are.",
+              "hi": "वह है; दोनों हैं; वे हैं।"
+            }
+          },
+          {
+            "sa": "एति · याति · हन्ति",
+            "text": {
+              "en": "He goes; he goes; he strikes.",
+              "hi": "वह जाता है; वह जाता है; वह मारता है।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "No sign; the root changes.",
+              "hi": "चिह्न नहीं; धातु बदलती है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "vc2-as-s1",
+    "brief": "A small plain ash-coloured spirit stepping out of an opened drawer, without any marks or ornaments, patting itself to check it is there; Dhātuka holding his ledger a little pale; the Vetāla and Dādī watching; firelight.",
+    "alt": {
+      "en": "A plain ash-coloured spirit steps out of a drawer and pats itself to check it exists",
+      "hi": "दराज़ से निकलता सादा राख-रंगा भूत, स्वयं को थपथपाकर जाँचता कि वह है"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "dhatuka",
+      "astika"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A small plain ash-coloured spirit stepping out of an opened drawer, without any marks or ornaments, patting itself to check it is there; Dhātuka holding his ledger a little pale; the Vetāla and Dādī watching; firelight.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\ndhatuka: A small, round, honey-brown spirit with ten tiny brass-handled drawers set into his body, a pencil behind one ear, forever hurrying.\nastika: A small, plain, ash-coloured spirit without any marks or ornament, who keeps patting himself to check he is there.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-6b4a31e4-2428-4d9f-b914-3a5dec9090d3.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "947c8371718c8c9cc323d6cf3a8214c2d9f3955973b0c1ef21d80a8446d40154",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vc2-as-s1-phone-678d0972.webp",
+      "key": "learn/vc2-as-s1-phone-678d0972.webp",
+      "sha256": "678d0972a4fb2a10f5baac8bceb50b241d8e250bf3ec881e31ba1faa1baba373",
+      "bytes": 99584,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/vc2-as-s1-phone-678d0972.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vc2-as-s1-tablet-4887de8a.webp",
+      "key": "learn/vc2-as-s1-tablet-4887de8a.webp",
+      "sha256": "4887de8a150b340303b4cdcad6c32d30adb7110b6b225cfd1b69f6e98c79800a",
+      "bytes": 391718,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/vc2-as-s1-tablet-4887de8a.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

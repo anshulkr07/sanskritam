@@ -10,7 +10,7 @@ teaches:
 needs:
 - krt.ktva
 - krt.tumun
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -38,6 +38,7 @@ cards:
     place: smashana
     ratio: '4:3'
     id: part-kta-s1
+    text_in_image: ["गतः", "पठितम्", "कृतम्"]
   narration:
     en: '“Who is it that has gone?” the Vetāla asks. The paper-fan spirit lifts one folded hand: “गतः.” “Gone.” A word that is also a person, a thing that has happened to someone. “उक्तः,” he adds: “said.” “कृतः”: “done.” Dādī: “It is an adjective made from a verb. It says what has been done, and it agrees with its noun, like any adjective.”'
     hi: '“कौन है जो गया है?” वेताल पूछता है। काग़ज़ी पंखे वाला भूत अपना एक तहदार हाथ उठाता है: “गतः।” “गया हुआ।” एक शब्द जो एक व्यक्ति भी है, कोई बात जो किसी पर बीत चुकी है। “उक्तः,” वह जोड़ता है: “कहा गया।” “कृतः”: “किया गया।” दादी: “यह क्रिया से बना विशेषण है। यह बताता है कि क्या किया जा चुका है, और किसी भी विशेषण की तरह अपनी संज्ञा से मेल खाता है।”'
@@ -47,6 +48,19 @@ cards:
       en: Hearing his words, the king summoned the treasurer.
       hi: उसकी वह बात सुनकर राजा ने भण्डारी को बुलाया।
     source: Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit)
+  lines:
+  - speaker: sankshepaka
+    sa: गतः
+    gloss:
+      en: Gone.
+      hi: गया हुआ।
+    check:
+      type: krdanta
+      dhatu: गम्
+      krt: kta
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
 - id: t1
   kind: teach
   title:
@@ -480,8 +494,8 @@ cards:
   - krt.kta
   mode: match
   prompt:
-    en: Join each root to its “done” form.
-    hi: हर धातु को उसके ‘किया हुआ’ रूप से जोड़िए।
+    en: Match each root with its “done” form.
+    hi: हर धातु को उसके ‘किया हुआ’ रूप से मिलाइए।
   explain:
     en: '{{-त}} after the changed root.'
     hi: बदली हुई धातु के बाद {{-त}}।
@@ -532,8 +546,8 @@ cards:
   - krt.kta
   widget: word_factory
   prompt:
-    en: Snap a suffix onto a root and see the word it makes.
-    hi: धातु पर प्रत्यय जोड़िए और देखिए कि कौन-सा शब्द बनता है।
+    en: Pick a root and a suffix, and see the word they make.
+    hi: एक धातु और एक प्रत्यय चुनिए और देखिए कि कौन-सा शब्द बनता है।
   params:
     roots:
     - dhatu: पठ्

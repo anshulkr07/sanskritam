@@ -9,7 +9,7 @@ teaches:
 - sam.avyayibhava
 needs:
 - sam.bahuvrihi
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,9 +37,16 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: c2-avyayi-s1
+    text_in_image: ["यथाशक्ति", "प्रतिदिनम्", "आमरणम्"]
   narration:
     en: 'The twentieth statue holds a lantern. “यथाशक्ति,” she says: “as far as possible.” “प्रतिदिनम्”: “every day.” “आमरणम्”: “until death.” Śuka tests: “Does it change?” “No,” says Dādī. “The first word is a little word, an indeclinable, and it gives the whole its sense. The result never takes endings. It is an adverb. They are called avyayībhāva.”'
     hi: 'बीसवीं प्रतिमा के हाथ में लालटेन है। “यथाशक्ति,” वह कहती है: “जितना सम्भव हो।” “प्रतिदिनम्”: “हर दिन।” “आमरणम्”: “मृत्यु तक।” शुक परखता है: “क्या यह बदलता है?” “नहीं,” दादी कहती हैं। “पहला शब्द एक छोटा अव्यय है, और वही पूरे को अर्थ देता है। परिणाम कभी प्रत्यय नहीं लेता। वह क्रियाविशेषण है। इन्हें अव्ययीभाव कहते हैं।”'
+  lines:
+  - speaker: malika
+    sa: यथाशक्ति
+    gloss:
+      en: As far as one's strength allows.
+      hi: शक्ति के अनुसार।
 - id: t1
   kind: teach
   title:
@@ -201,8 +208,8 @@ cards:
   - sam.avyayibhava
   mode: match
   prompt:
-    en: Join each compound to its meaning.
-    hi: हर समास को उसके अर्थ से जोड़िए।
+    en: Match each compound with its meaning.
+    hi: हर समास को उसके अर्थ से मिलाइए।
   explain:
     en: The first word gives the sense.
     hi: पहला शब्द अर्थ देता है।

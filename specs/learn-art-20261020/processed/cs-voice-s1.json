@@ -1,0 +1,970 @@
+{
+  "id": "cs-voice-s1",
+  "where": "cs.voice#s1",
+  "ratio": "4:3",
+  "expected": [
+    "तदस्ति"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The tenth statue with sharp sandstone edges holding a small stone bell, an inscription on her plinth; Śuka peering at it; Dādī pointing at a single letter; Lubdhaka's foreman holding up a lamp behind them; early evening light.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvyanjanika: A small spirit of rough sandstone with sharp edges, in the shape of a young woman with a stone bell in one hand; her outline seems to soften wherever she touches something.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nतदस्ति All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "cs.voice",
+    "template": "scene",
+    "title": {
+      "en": "Voice spreads",
+      "hi": "स्वर-तन्त्री का प्रभाव"
+    },
+    "title_sa": "तदस्ति",
+    "minutes": 6,
+    "teaches": [
+      "sandhi.voice"
+    ],
+    "needs": [
+      "sandhi.visarga-r"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The tenth statue",
+          "hi": "दसवीं प्रतिमा"
+        },
+        "image": {
+          "id": "cs-voice-s1",
+          "brief": "The tenth statue with sharp sandstone edges holding a small stone bell, an inscription on her plinth; Śuka peering at it; Dādī pointing at a single letter; Lubdhaka's foreman holding up a lamp behind them; early evening light.",
+          "alt": {
+            "en": "A statue with sharp edges holding a stone bell while a parrot peers at the inscription on her plinth",
+            "hi": "तीखे किनारों वाली प्रतिमा पत्थर की घण्टी थामे, आसन के अभिलेख को झाँकता तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "vyanjanika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The tenth statue has hard stone edges and a stone bell in her hand. “तदस्ति,” she says: “that is.” Śuka peers at the inscription on her base. “The word was तत्, with a त्. Now it has a द. Why did the sound go soft?” “Because it is next to a soft one,” says Dādī. “The अ after it is voiced, and the voice has spread backwards.”",
+          "hi": "दसवीं प्रतिमा के किनारे कठोर पत्थर के हैं और हाथ में पत्थर की घण्टी। “तदस्ति,” वह कहती है: “वह है।” शुक उसके आसन पर लिखे अभिलेख को झाँकता है। “शब्द तत् था, त के साथ। अब उसमें द है। ध्वनि कोमल क्यों हो गई?” “क्योंकि वह कोमल ध्वनि के पास है,” दादी कहती हैं। “उसके बाद का अ घोष है, और घोष पीछे की ओर फैल गया है।”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "तत् + अस्ति = तदस्ति।",
+            "gloss": {
+              "en": "That + is = that is.",
+              "hi": "वह + है = वह है।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Hard becomes soft",
+          "hi": "कठोर बनता है कोमल"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.voice"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A final hard stop ({{क्}}, {{ट्}}, {{त्}}, {{प्}}) becomes its soft partner ({{ग्}}, {{ड्}}, {{द्}}, {{ब्}}) when a soft sound or a vowel follows: {{तत् + अस्ति}} gives {{तदस्ति}}; {{जगत् + ईशः}} gives {{जगदीशः}}; {{दिक् + गजः}} gives {{दिग्गजः}}. Voice spreads from the next sound.",
+          "hi": "अन्त का कठोर स्पर्श ({{क्}}, {{ट्}}, {{त्}}, {{प्}}) अपने कोमल जोड़ीदार ({{ग्}}, {{ड्}}, {{द्}}, {{ब्}}) में बदल जाता है जब आगे कोमल ध्वनि या स्वर हो: {{तत् + अस्ति}} से {{तदस्ति}}; {{जगत् + ईशः}} से {{जगदीशः}}; {{दिक् + गजः}} से {{दिग्गजः}}। घोष अगली ध्वनि से फैलता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "जश्त्वम्",
+          "meaning": {
+            "en": "hard to soft at the end of a word",
+            "hi": "पद के अन्त में कठोर से कोमल"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Voice spreads",
+          "hi": "घोष फैलता है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.voice"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Hard to soft before a soft sound or vowel",
+          "hi": "कोमल ध्वनि या स्वर से पहले कठोर से कोमल"
+        },
+        "columns": [
+          {
+            "en": "First word",
+            "hi": "पहला शब्द"
+          },
+          {
+            "en": "Second word",
+            "hi": "दूसरा शब्द"
+          },
+          {
+            "en": "Joined",
+            "hi": "जुड़ा हुआ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "तत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अस्ति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तदस्ति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "तत्",
+                "second": "अस्ति",
+                "joined": "तदस्ति",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "जगत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ईशः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "जगदीशः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "जगत्",
+                "second": "ईशः",
+                "joined": "जगदीशः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "सत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "आचारः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सदाचारः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "सत्",
+                "second": "आचारः",
+                "joined": "सदाचारः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "दिक्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गजः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "दिग्गजः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "दिक्",
+                "second": "गजः",
+                "joined": "दिग्गजः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "अप्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "जम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अब्जम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "अप्",
+                "second": "जम्",
+                "joined": "अब्जम्",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "तत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गच्छति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तद्गच्छति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "तत्",
+                "second": "गच्छति",
+                "joined": "तद्गच्छति",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "वाक्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "दानम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "वाग्दानम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "वाक्",
+                "second": "दानम्",
+                "joined": "वाग्दानम्",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "तत्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "हि",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तद्धि",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "तत्",
+                "second": "हि",
+                "joined": "तद्धि",
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{तत् + हि}} gives {{तद्धि}}: the {{ह}} also becomes soft-aspirated {{ध}}.",
+          "hi": "{{तत् + हि}} से {{तद्धि}}: {{ह}} भी कोमल महाप्राण {{ध}} बन जाता है।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.voice"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Split the joined word {{तदस्ति}}.",
+          "hi": "जुड़े शब्द {{तदस्ति}} को तोड़िए।"
+        },
+        "explain": {
+          "en": "{{तत्}} + {{अस्ति}}.",
+          "hi": "{{तत्}} + {{अस्ति}}।"
+        },
+        "options": [
+          {
+            "sa": "तत् + अस्ति",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "तस् + अस्ति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "तन् + अस्ति",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.voice"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{सत् + आचारः}} gives…",
+          "hi": "{{सत् + आचारः}} से…"
+        },
+        "explain": {
+          "en": "{{त्}} becomes {{द्}} before a vowel.",
+          "hi": "स्वर से पहले {{त्}} बनता है {{द्}}।"
+        },
+        "options": [
+          {
+            "sa": "सत्आचारः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सताचारः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सदाचारः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.voice"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Join: {{दिक्}} + {{गजः}}.",
+          "hi": "जोड़िए: {{दिक्}} + {{गजः}}।"
+        },
+        "explain": {
+          "en": "{{दिग्गजः}}: “elephant of the quarters”.",
+          "hi": "{{दिग्गजः}}: ‘दिशाओं का हाथी’।"
+        },
+        "options": [],
+        "answers": [
+          "दिग्गजः"
+        ],
+        "tiles": [
+          "दिग्",
+          "गजः",
+          "दिक्",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.voice"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its parts.",
+          "hi": "हर शब्द को उसके भागों से जोड़िए।"
+        },
+        "explain": {
+          "en": "The hard stop turns soft.",
+          "hi": "कठोर स्पर्श कोमल हो जाता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "जगदीशः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "जगत् + ईशः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "दिग्गजः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "दिक् + गजः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "अब्जम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "अप् + जम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "तद्गच्छति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "तत् + गच्छति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.voice"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word where a hard stop went soft.",
+          "hi": "हर वह शब्द छुइए जहाँ कठोर स्पर्श कोमल हो गया।"
+        },
+        "params": {
+          "passage": [
+            "तदस्ति",
+            "तत्",
+            "जगदीशः",
+            "जगत्",
+            "दिग्गजः",
+            "दिक्"
+          ],
+          "targets": [
+            "तदस्ति",
+            "जगदीशः",
+            "दिग्गजः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.voice"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "sandhi_mixer",
+        "prompt": {
+          "en": "Pick a pair and join it: see the word and the rule.",
+          "hi": "एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।"
+        },
+        "params": {
+          "pairs": [
+            {
+              "first": "तत्",
+              "second": "अस्ति",
+              "joined": "तदस्ति",
+              "sutras": [
+                "8.2.39"
+              ]
+            },
+            {
+              "first": "जगत्",
+              "second": "ईशः",
+              "joined": "जगदीशः",
+              "sutras": [
+                "8.2.39"
+              ]
+            },
+            {
+              "first": "दिक्",
+              "second": "गजः",
+              "joined": "दिग्गजः",
+              "sutras": [
+                "8.2.39"
+              ]
+            },
+            {
+              "first": "अप्",
+              "second": "जम्",
+              "joined": "अब्जम्",
+              "sutras": [
+                "8.2.39"
+              ]
+            }
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The stone bell",
+          "hi": "पत्थर की घण्टी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.voice"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{वाक् + दानम्}} gives…",
+          "hi": "{{वाक् + दानम्}} से…"
+        },
+        "explain": {
+          "en": "{{क्}} becomes {{ग्}} before {{द}}.",
+          "hi": "{{द}} से पहले {{क्}} बनता है {{ग्}}।"
+        },
+        "options": [
+          {
+            "sa": "वाक्दानम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "वाघदानम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "वाग्दानम्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“वाग्दानम्,” you say, “a promise of speech,” and the stone bell in the statue's hand rings, once, clear, a soft round note, not the hard clack it made before. “तदस्ति,” she says. “That is.” Her sharp edges, one by one, grow a little less sharp, as if the voice had run back through the stone.",
+            "hi": "“वाग्दानम्,” आप कहते हैं, “वाणी का वचन,” और प्रतिमा के हाथ की पत्थर की घण्टी एक बार बजती है, साफ़, कोमल गोल स्वर, पहले की कठोर टकराहट नहीं। “तदस्ति,” वह कहती है। “वह है।” उसके तीखे किनारे एक-एक करके कुछ कम तीखे हो जाते हैं, मानो घोष पत्थर में पीछे की ओर दौड़ गया हो।"
+          },
+          "failure": {
+            "en": "The bell stays hard. {{क्}} becomes {{ग्}} before {{द}}: {{वाग्दानम्}}.",
+            "hi": "घण्टी कठोर रहती है। {{द}} से पहले {{क्}} बनता है {{ग्}}: {{वाग्दानम्}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's voicing",
+          "hi": "पाणिनि का घोष"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sandhi.voice"
+        ],
+        "sutras": [
+          "8.2.39",
+          "8.4.53"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 8.2.39, {{झलां जशोऽन्ते}}, says that at the end of a word, any hard or aspirated stop ({{झल्}}) becomes the soft unaspirated stop ({{जश्}}) of its own class: {{त्}} becomes {{द्}}, {{क्}} becomes {{ग्}}. 8.4.53, {{झलां जश् झशि}}, does the same inside a word before a soft aspirate.",
+          "hi": "सूत्र 8.2.39, {{झलां जशोऽन्ते}}, कहता है कि पद के अन्त में कोई भी कठोर या महाप्राण स्पर्श ({{झल्}}) अपने वर्ग का कोमल अल्पप्राण ({{जश्}}) बन जाता है: {{त्}} से {{द्}}, {{क्}} से {{ग्}}। 8.4.53, {{झलां जश् झशि}}, पद के भीतर कोमल महाप्राण से पहले वही करता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Voice spreads",
+          "hi": "घोष फैलता है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "त् → द्",
+            "text": {
+              "en": "तदस्ति, जगदीशः.",
+              "hi": "तदस्ति, जगदीशः।"
+            }
+          },
+          {
+            "sa": "क् → ग्",
+            "text": {
+              "en": "दिग्गजः, वाग्दानम्.",
+              "hi": "दिग्गजः, वाग्दानम्।"
+            }
+          },
+          {
+            "sa": "प् → ब्",
+            "text": {
+              "en": "अब्जम्.",
+              "hi": "अब्जम्।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "cs-voice-s1",
+    "brief": "The tenth statue with sharp sandstone edges holding a small stone bell, an inscription on her plinth; Śuka peering at it; Dādī pointing at a single letter; Lubdhaka's foreman holding up a lamp behind them; early evening light.",
+    "alt": {
+      "en": "A statue with sharp edges holding a stone bell while a parrot peers at the inscription on her plinth",
+      "hi": "तीखे किनारों वाली प्रतिमा पत्थर की घण्टी थामे, आसन के अभिलेख को झाँकता तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "vyanjanika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The tenth statue with sharp sandstone edges holding a small stone bell, an inscription on her plinth; Śuka peering at it; Dādī pointing at a single letter; Lubdhaka's foreman holding up a lamp behind them; early evening light.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvyanjanika: A small spirit of rough sandstone with sharp edges, in the shape of a young woman with a stone bell in one hand; her outline seems to soften wherever she touches something.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-8039757d-03c0-48af-b0b8-6973b1053949.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "5b3282044a723ef15f05318799b63d577d4ad03905d926011db0d35d0bf624f7",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cs-voice-s1-phone-85ced019.webp",
+      "key": "learn/cs-voice-s1-phone-85ced019.webp",
+      "sha256": "85ced019a0f8965379aee08f194968e0e30a854a2c5b3f34ef70f353a5d6e53f",
+      "bytes": 98682,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/cs-voice-s1-phone-85ced019.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\cs-voice-s1-tablet-101a9737.webp",
+      "key": "learn/cs-voice-s1-tablet-101a9737.webp",
+      "sha256": "101a97372e75367a50dd5f340a0fb268e7fffa2aca9c98e94d4bc694fb48122b",
+      "bytes": 361254,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/cs-voice-s1-tablet-101a9737.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

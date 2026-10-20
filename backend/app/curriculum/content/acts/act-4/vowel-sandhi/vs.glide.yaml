@@ -9,7 +9,7 @@ teaches:
 - sandhi.yan
 needs:
 - sandhi.vrddhi
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -40,6 +40,17 @@ cards:
   narration:
     en: The fourth statue holds a mirror. “इत्यादि,” she says. “यद्यपि.” “स्वागतम्.” “Those have a य, a द्य, a व,” says Śuka. “Something is wearing a different vowel.” “The इ turns into य्,” says Dādī, “the उ into व्, the ऋ into र्. A vowel becomes a glide when another, different, vowel follows.”
     hi: चौथी प्रतिमा के हाथ में दर्पण है। “इत्यादि,” वह कहती है। “यद्यपि।” “स्वागतम्।” “इनमें य है, द्य है, व है,” शुक कहता है। “कोई स्वर दूसरा रूप पहने हुए है।” “इ य् बन जाता है,” दादी कहती हैं, “उ व्, ऋ र्। एक स्वर अर्धस्वर बन जाता है जब उसके बाद कोई और, भिन्न स्वर आता है।”
+  lines:
+  - speaker: svarika
+    sa: इत्यादि
+    gloss:
+      en: And so on.
+      hi: इत्यादि।
+    check:
+      type: sandhi
+      first: इति
+      second: आदि
+      joined: इत्यादि
 - id: t1
   kind: teach
   title:
@@ -213,8 +224,8 @@ cards:
   - sandhi.yan
   mode: match
   prompt:
-    en: Join each word to its parts.
-    hi: हर शब्द को उसके भागों से जोड़िए।
+    en: Match each word with its parts.
+    hi: हर शब्द को उसके भागों से मिलाइए।
   explain:
     en: The glide shows where the vowel was.
     hi: अर्धस्वर बताता है कि स्वर कहाँ था।

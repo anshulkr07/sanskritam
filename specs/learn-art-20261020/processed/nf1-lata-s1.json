@@ -1,0 +1,1428 @@
+{
+  "id": "nf1-lata-s1",
+  "where": "nf1.lata#s1",
+  "ratio": "4:3",
+  "expected": [
+    "लता",
+    "लते",
+    "लताः"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The tree of green mist with a third thick branch bowing toward the desk, tags rustling; Śuka scattering three tags with his wing and reading them aloud proudly; Dādī laughing; you copying into a notebook.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nvrikshaka: A small tree-shaped spirit of green mist with tiny palm-leaf tags hanging from its branches like names.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nलता\nलते\nलताः\nMake exactly THREE large foreground name tags, each bearing one approved form, clearly readable. Other foliage is natural leaves, not additional blank tags. Keep all three labelled tags unobscured. All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "nf1.lata",
+    "template": "scene",
+    "title": {
+      "en": "The लता family",
+      "hi": "लता का कुल"
+    },
+    "title_sa": "लताशब्दः",
+    "minutes": 6,
+    "teaches": [
+      "noun.lata"
+    ],
+    "needs": [
+      "noun.phala",
+      "gen.feminine-a"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The third branch",
+          "hi": "तीसरी शाखा"
+        },
+        "image": {
+          "id": "nf1-lata-s1",
+          "brief": "The tree of green mist with a third thick branch bowing toward the desk, tags rustling; Śuka scattering three tags with his wing and reading them aloud proudly; Dādī laughing; you copying into a notebook.",
+          "alt": {
+            "en": "A parrot reads tags from the third branch of a tree of names",
+            "hi": "नामों के पेड़ की तीसरी शाखा के टैग पढ़ता तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "acarya",
+            "vrikshaka"
+          ],
+          "place": "pathashala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "A third branch, thick with leaf-tags in a different rhythm, bows toward the desk. “The feminines in -आ,” says Dādī. Śuka scatters three tags with his wing and reads them back, pleased with himself. The tree of names is almost whole now: it has found its masculine, its neuter, and now its feminine.",
+          "hi": "तीसरी शाखा, अलग लय में पत्ते-टैगों से लदी, मेज़ की ओर झुकती है। “-आ वाले स्त्रीलिंग,” दादी कहती हैं। शुक अपने पंख से तीन टैग बिखेरता है और उन्हें वापस पढ़ता है, अपने पर प्रसन्न। नामों का पेड़ अब लगभग पूरा है: उसे अपना पुंलिंग मिला, नपुंसक मिला, और अब स्त्रीलिंग।"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The feminine, लता",
+          "hi": "स्त्रीलिंग, लता"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.lata"
+        ],
+        "sutras": [
+          "4.1.4",
+          "7.3.106"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "A feminine word in -{{आ}} has its own pattern: {{लता}} (first), {{लताम्}} (object), {{लतया}} (by), {{लतायै}} (to), {{लतायाः}} (from, of), {{लतायाम्}} (in), {{हे लते}} (call). The long {{आ}} runs through almost everything.",
+          "hi": "-{{आ}} वाले स्त्रीलिंग शब्द का अपना ढाँचा है: {{लता}} (प्रथमा), {{लताम्}} (कर्म), {{लतया}} (से), {{लतायै}} (को), {{लतायाः}} (से, का), {{लतायाम्}} (में), {{हे लते}} (पुकार)। दीर्घ {{आ}} लगभग सब जगह चलता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "आकारान्तम्",
+          "meaning": {
+            "en": "a word ending in -आ",
+            "hi": "-आ पर समाप्त शब्द"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "लता: the full table",
+          "hi": "लता: पूरी तालिका"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.lata"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "A creeper, in every case and number",
+          "hi": "लता, हर विभक्ति और वचन में"
+        },
+        "columns": [
+          {
+            "en": "Case",
+            "hi": "विभक्ति"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "1 · 1st (doer)",
+                "hi": "1 · प्रथमा"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लता",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लते",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लताः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "2 · 2nd (object)",
+                "hi": "2 · द्वितीया"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लताम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Dvitiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लते",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Dvitiya",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लताः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Dvitiya",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "3 · 3rd (by, with)",
+                "hi": "3 · तृतीया"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लतया",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Trtiya",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लताभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Trtiya",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लताभिः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Trtiya",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "4 · 4th (to, for)",
+                "hi": "4 · चतुर्थी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लतायै",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Caturthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लताभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Caturthi",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लताभ्यः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Caturthi",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "5 · 5th (from)",
+                "hi": "5 · पञ्चमी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लतायाः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Panchami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लताभ्याम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Panchami",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लताभ्यः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Panchami",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "6 · 6th (of)",
+                "hi": "6 · षष्ठी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लतायाः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लतयोः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Sasthi",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लतानाम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Sasthi",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "7 · 7th (in, at)",
+                "hi": "7 · सप्तमी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लतायाम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लतयोः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Saptami",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लतासु",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Saptami",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "8 · calling",
+                "hi": "8 · सम्बोधन"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "लते",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Sambodhana",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लते",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Sambodhana",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "लताः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "लता",
+                "linga": "Stri",
+                "vibhakti": "Sambodhana",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "The fifth and sixth singular are the same: {{लतायाः}}. The first and call differ: {{लता}}, {{हे लते}}.",
+          "hi": "एकवचन में पञ्चमी और षष्ठी एक-सी हैं: {{लतायाः}}। प्रथमा और सम्बोधन अलग हैं: {{लता}}, {{हे लते}}।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Other members of the family",
+          "hi": "कुल के अन्य सदस्य"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.lata"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} all follow {{लता}}. Learn the table once and say any of them.",
+          "hi": "{{बालिका}}, {{कन्या}}, {{नौका}}, {{माला}}, {{सीता}}, {{गङ्गा}}, {{पाठशाला}} सब {{लता}} जैसे चलते हैं। तालिका एक बार सीखिए और इनमें से कोई भी बोलिए।"
+        },
+        "examples": [
+          {
+            "sa": "बालिकायै",
+            "meaning": {
+              "en": "to the girl",
+              "hi": "बालिका को"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "बालिका",
+              "linga": "Stri",
+              "vibhakti": "Caturthi",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "नौकाभिः",
+            "meaning": {
+              "en": "by boats",
+              "hi": "नावों से"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "नौका",
+              "linga": "Stri",
+              "vibhakti": "Trtiya",
+              "vacana": "Bahu",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "गङ्गायाम्",
+            "meaning": {
+              "en": "in the Gaṅgā",
+              "hi": "गंगा में"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "गङ्गा",
+              "linga": "Stri",
+              "vibhakti": "Saptami",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "पाठशालानाम्",
+            "meaning": {
+              "en": "of schools",
+              "hi": "पाठशालाओं का"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "पाठशाला",
+              "linga": "Stri",
+              "vibhakti": "Sasthi",
+              "vacana": "Bahu",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.lata"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Fill in the missing forms of the table.",
+          "hi": "तालिका के छूटे रूप भरिए।"
+        },
+        "explain": {
+          "en": "Every form is in the table you just read.",
+          "hi": "हर रूप उसी तालिका में है जो अभी पढ़ी।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "grid_fill",
+          "params": {
+            "pratipadika": "लता",
+            "linga": "Stri",
+            "blanks": 3
+          },
+          "seed": 4
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.lata"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Fill in the missing forms of a family member.",
+          "hi": "कुल के एक सदस्य के छूटे रूप भरिए।"
+        },
+        "explain": {
+          "en": "{{बालिका}} takes the same endings as {{लता}}.",
+          "hi": "{{बालिका}} वही प्रत्यय लेती है जो {{लता}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "grid_fill",
+          "params": {
+            "pratipadika": "बालिका",
+            "linga": "Stri",
+            "blanks": 3
+          },
+          "seed": 5
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.lata"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which is the call of {{लता}}?",
+          "hi": "{{लता}} की पुकार कौन-सी है?"
+        },
+        "explain": {
+          "en": "{{हे लते}}: -आ → {{ए}}.",
+          "hi": "{{हे लते}}: -आ → {{ए}}।"
+        },
+        "options": [
+          {
+            "sa": "लता",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "लताम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "लते",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.lata"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each form to its case.",
+          "hi": "हर रूप को उसकी विभक्ति से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{ाम्}}, {{या}}, {{ायै}}, {{ायाम्}}.",
+          "hi": "{{ाम्}}, {{या}}, {{ायै}}, {{ायाम्}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "लताम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "2nd",
+                "hi": "द्वितीया"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "लतया",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "3rd",
+                "hi": "तृतीया"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "लतायै",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "4th",
+                "hi": "चतुर्थी"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "लतायाम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "7th",
+                "hi": "सप्तमी"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.lata"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every form that ends in {{आयाः}}.",
+          "hi": "{{आयाः}} पर समाप्त होने वाले हर रूप को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "लतायाः",
+            "लतायै",
+            "बालिकायाः",
+            "बालिकाम्",
+            "नौकायाः",
+            "नौकया"
+          ],
+          "targets": [
+            "लतायाः",
+            "बालिकायाः",
+            "नौकायाः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The third branch flowers",
+          "hi": "तीसरी शाखा में फूल"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "noun.lata"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which form means “in the creeper”?",
+          "hi": "‘लता में’ किस रूप का अर्थ है?"
+        },
+        "explain": {
+          "en": "The seventh case: {{लतायाम्}}.",
+          "hi": "सप्तमी: {{लतायाम्}}।"
+        },
+        "options": [
+          {
+            "sa": "लतायाः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "लतायै",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "लतायाम्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“लतायाम्,” you say, and all along the third branch small blue flowers open, one after the other, as if the tree were counting. Vṛkṣaka stands whole, a full tree, his tags turning to leaves. “देवः, देवौ, देवाः,” he says in a green rustle. “मुक्तः।”",
+            "hi": "“लतायाम्,” आप कहते हैं, और पूरी तीसरी शाखा पर नन्हे नीले फूल एक के बाद एक खिलते हैं, मानो पेड़ गिन रहा हो। वृक्षक पूरा खड़ा है, एक भरा हुआ पेड़, उसके टैग पत्तों में बदलते हुए। “देवः, देवौ, देवाः,” वह हरी सरसराहट में कहता है। “मुक्तः।”"
+          },
+          "failure": {
+            "en": "The branch stays bare. “In” is the seventh case: look for {{आयाम्}}.",
+            "hi": "शाखा सूनी रहती है। ‘में’ सप्तमी है: {{आयाम्}} खोजिए।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The लता family",
+          "hi": "लता का कुल"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "लता लते लताः",
+            "text": {
+              "en": "First case, three numbers.",
+              "hi": "प्रथमा, तीन वचन।"
+            }
+          },
+          {
+            "sa": "लतायाः",
+            "text": {
+              "en": "Fifth and sixth singular are the same.",
+              "hi": "एकवचन पञ्चमी और षष्ठी एक-सी।"
+            }
+          },
+          {
+            "sa": "बालिका · नौका · माला · गङ्गा",
+            "text": {
+              "en": "Thousands follow it.",
+              "hi": "हज़ारों इसी पर चलते हैं।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "nf1-lata-s1",
+    "brief": "The tree of green mist with a third thick branch bowing toward the desk, tags rustling; Śuka scattering three tags with his wing and reading them aloud proudly; Dādī laughing; you copying into a notebook.",
+    "alt": {
+      "en": "A parrot reads tags from the third branch of a tree of names",
+      "hi": "नामों के पेड़ की तीसरी शाखा के टैग पढ़ता तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "acarya",
+      "vrikshaka"
+    ],
+    "place": "pathashala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The tree of green mist with a third thick branch bowing toward the desk, tags rustling; Śuka scattering three tags with his wing and reading them aloud proudly; Dādī laughing; you copying into a notebook.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nvrikshaka: A small tree-shaped spirit of green mist with tiny palm-leaf tags hanging from its branches like names.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-8bc39895-6261-456f-9639-a413a4644355.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "eef9f856ee810a2d73ae3e0fc2155ac53012774a8fcd94bb9a795b64e50d61fe",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\nf1-lata-s1-phone-0416ed12.webp",
+      "key": "learn/nf1-lata-s1-phone-0416ed12.webp",
+      "sha256": "0416ed12f0d78fce256c26875235044b1cb768a224f773967396470a68c02335",
+      "bytes": 110640,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/nf1-lata-s1-phone-0416ed12.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\nf1-lata-s1-tablet-9c959de0.webp",
+      "key": "learn/nf1-lata-s1-tablet-9c959de0.webp",
+      "sha256": "9c959de05747c0b891a6c70d04391ea5b7fa4ddde4778de9a7b3eb46ea2a7c1a",
+      "bytes": 410426,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/nf1-lata-s1-tablet-9c959de0.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

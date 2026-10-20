@@ -1,0 +1,1254 @@
+{
+  "id": "of-whose-s1",
+  "where": "of.whose#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The Ācārya's small, lamplit house behind the school: a low desk with a palm-leaf book, a reed pen, a folded saffron shawl and a string of beads; a slim warm-gold spirit holding a tiny lamp touching each thing softly; you and Dādī sitting on the floor mat.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nsmritika: A slim warm-gold spirit holding a tiny lamp, her wisps trailing like the fringe of an old shawl.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "of.whose",
+    "template": "scene",
+    "title": {
+      "en": "Whose is it?",
+      "hi": "यह किसका है?"
+    },
+    "title_sa": "षष्ठी",
+    "minutes": 6,
+    "teaches": [
+      "case.gen"
+    ],
+    "needs": [
+      "case.abl"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The Ācārya's house",
+          "hi": "आचार्य का घर"
+        },
+        "image": {
+          "id": "of-whose-s1",
+          "brief": "The Ācārya's small, lamplit house behind the school: a low desk with a palm-leaf book, a reed pen, a folded saffron shawl and a string of beads; a slim warm-gold spirit holding a tiny lamp touching each thing softly; you and Dādī sitting on the floor mat.",
+          "alt": {
+            "en": "A slim golden spirit with a tiny lamp touches old belongings in a teacher's house",
+            "hi": "आचार्य के घर में पुरानी चीज़ों को छूता दीपक थामे भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "acarya",
+            "smritika"
+          ],
+          "place": "pathashala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The storm blows itself out. In the Ācārya's own small house behind the school, a warm lamp is lit. Everything is old and full of use: a book, a pen, a shawl, a string of beads. A slim golden spirit with a tiny lamp moves among the things, touching each one softly, as if asking whose it was.",
+          "hi": "आँधी थम जाती है। पाठशाला के पीछे आचार्य के छोटे-से घर में एक गर्म दीपक जलता है। हर चीज़ पुरानी है और काम में आती हुई: एक पुस्तक, एक कलम, एक शॉल, मनकों की एक माला। छोटा दीपक थामे एक दुबला सुनहरा भूत चीज़ों के बीच घूमता है, हर एक को कोमलता से छूता है, मानो पूछ रहा हो कि यह किसकी थी।"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "आचार्यस्य गृहम् अस्ति।",
+            "gloss": {
+              "en": "This is the teacher's house.",
+              "hi": "यह आचार्य का घर है।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Of, belonging to: the sixth case",
+          "hi": "का, की, के: षष्ठी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.gen"
+        ],
+        "sutras": [
+          "2.3.50"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "For “of” and “belonging to”, use the sixth case, {{षष्ठी}}: {{आचार्यस्य गृहम्}} (the teacher's house), {{रामस्य पुस्तकम्}} (Rāma's book). It joins one noun to another.",
+          "hi": "‘का, की, के’ के लिए षष्ठी विभक्ति: {{आचार्यस्य गृहम्}} (आचार्य का घर), {{रामस्य पुस्तकम्}} (राम की पुस्तक)। यह एक संज्ञा को दूसरी से जोड़ती है।"
+        },
+        "examples": [
+          {
+            "sa": "आचार्यस्य गृहम्।",
+            "meaning": {
+              "en": "the teacher's house",
+              "hi": "आचार्य का घर"
+            },
+            "words": [
+              {
+                "sa": "आचार्यस्य",
+                "gloss": {
+                  "en": "of the teacher",
+                  "hi": "आचार्य का"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "आचार्य",
+                  "linga": "Pum",
+                  "vibhakti": "Sasthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गृहम्",
+                "gloss": {
+                  "en": "house",
+                  "hi": "घर"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गृह",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "रामस्य पुस्तकम्।",
+            "meaning": {
+              "en": "Rāma's book",
+              "hi": "राम की पुस्तक"
+            },
+            "words": [
+              {
+                "sa": "रामस्य",
+                "gloss": {
+                  "en": "of Rāma",
+                  "hi": "राम की"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "राम",
+                  "linga": "Pum",
+                  "vibhakti": "Sasthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पुस्तकम्",
+                "gloss": {
+                  "en": "book",
+                  "hi": "पुस्तक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पुस्तक",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "वृक्षस्य पत्रम्।",
+            "meaning": {
+              "en": "the tree's leaf",
+              "hi": "पेड़ का पत्ता"
+            },
+            "words": [
+              {
+                "sa": "वृक्षस्य",
+                "gloss": {
+                  "en": "of the tree",
+                  "hi": "पेड़ का"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वृक्ष",
+                  "linga": "Pum",
+                  "vibhakti": "Sasthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पत्रम्",
+                "gloss": {
+                  "en": "leaf",
+                  "hi": "पत्ता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पत्र",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "नद्याः जलम्।",
+            "meaning": {
+              "en": "the river's water",
+              "hi": "नदी का जल"
+            },
+            "words": [
+              {
+                "sa": "नद्याः",
+                "gloss": {
+                  "en": "of the river",
+                  "hi": "नदी का"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नदी",
+                  "linga": "Stri",
+                  "vibhakti": "Sasthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "जलम्",
+                "gloss": {
+                  "en": "water",
+                  "hi": "जल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "जल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "षष्ठी",
+          "meaning": {
+            "en": "the sixth case: of",
+            "hi": "छठी विभक्ति: का, की, के"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "First case and sixth case",
+          "hi": "प्रथमा और षष्ठी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.gen"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The same word as itself and as an owner",
+          "hi": "वही शब्द स्वयं और स्वामी के रूप में"
+        },
+        "columns": [
+          {
+            "en": "Word",
+            "hi": "शब्द"
+          },
+          {
+            "en": "1st: itself",
+            "hi": "प्रथमा: स्वयं"
+          },
+          {
+            "en": "6th: of",
+            "hi": "षष्ठी: का, की"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "teacher",
+                "hi": "आचार्य"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "आचार्यः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "आचार्य",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "आचार्यस्य",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "आचार्य",
+                "linga": "Pum",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "boy",
+                "hi": "बालक"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "बालकः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालक",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "बालकस्य",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "बालक",
+                "linga": "Pum",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "fruit",
+                "hi": "फल"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "फलम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "फलस्य",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "फल",
+                "linga": "Napumsaka",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "girl",
+                "hi": "बालिका"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "बालिका",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालिका",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "बालिकायाः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "बालिका",
+                "linga": "Stri",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "river",
+                "hi": "नदी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नदी",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नद्याः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Sasthi",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Masculine and neuter -अ: {{अस्य}}. Feminine -आ: {{आयाः}}. Feminine -ई: {{ई}} → {{याः}}.",
+          "hi": "पुंलिंग और नपुंसक -अ में {{स्य}}। स्त्रीलिंग -आ में {{आयाः}}। स्त्रीलिंग -ई में {{ई}} → {{याः}}।"
+        }
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Whose?",
+          "hi": "किसका?"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.gen"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{कस्य}} means “whose?” (masculine) and {{कस्याः}} (feminine). {{कस्य पुस्तकम्?}} Whose book? The sixth case also names a part of a whole and any other link the other cases do not cover.",
+          "hi": "{{कस्य}} का अर्थ ‘किसका?’ (पुंलिंग) और {{कस्याः}} (स्त्रीलिंग)। {{कस्य पुस्तकम्?}} किसकी पुस्तक? षष्ठी पूरे का भाग और अन्य सम्बन्ध भी बताती है जिन्हें दूसरी विभक्तियाँ नहीं कहतीं।"
+        },
+        "examples": [
+          {
+            "sa": "कस्य पुस्तकम्?",
+            "meaning": {
+              "en": "Whose book?",
+              "hi": "किसकी पुस्तक?"
+            },
+            "words": [
+              {
+                "sa": "कस्य",
+                "gloss": {
+                  "en": "whose?",
+                  "hi": "किसका?"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "किम्",
+                  "linga": "Pum",
+                  "vibhakti": "Sasthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पुस्तकम्",
+                "gloss": {
+                  "en": "book",
+                  "hi": "पुस्तक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पुस्तक",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "कस्याः गृहम्?",
+            "meaning": {
+              "en": "Whose house?",
+              "hi": "किसका घर?"
+            },
+            "words": [
+              {
+                "sa": "कस्याः",
+                "gloss": {
+                  "en": "whose? (f)",
+                  "hi": "किसकी?"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "किम्",
+                  "linga": "Stri",
+                  "vibhakti": "Sasthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गृहम्",
+                "gloss": {
+                  "en": "house",
+                  "hi": "घर"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गृह",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.gen"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“Rāma's book.” Which word for “Rāma”?",
+          "hi": "‘राम की पुस्तक।’ ‘राम’ के लिए कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "Owner: sixth case.",
+          "hi": "स्वामी: षष्ठी।"
+        },
+        "options": [
+          {
+            "sa": "रामः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "रामम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "रामस्य",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.gen"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each owner to its meaning.",
+          "hi": "हर स्वामी को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{स्य}} and {{याः}}: the sixth-case endings.",
+          "hi": "{{स्य}} और {{याः}}: षष्ठी के प्रत्यय।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "आचार्यस्य",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "of the teacher",
+                "hi": "आचार्य का"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "बालिकायाः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "of the girl",
+                "hi": "बालिका की"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "वृक्षस्य",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "of the tree",
+                "hi": "पेड़ का"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "नद्याः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "of the river",
+                "hi": "नदी का"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.gen"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that says “of …”.",
+          "hi": "‘…का’ बताने वाले हर शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "आचार्यस्य",
+            "आचार्यः",
+            "रामस्य",
+            "रामः",
+            "बालिकायाः",
+            "बालिका"
+          ],
+          "targets": [
+            "आचार्यस्य",
+            "रामस्य",
+            "बालिकायाः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "The teacher's book",
+          "hi": "आचार्य की पुस्तक"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.gen"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “This is the teacher's book.”",
+          "hi": "कहिए: ‘यह आचार्य की पुस्तक है।’"
+        },
+        "explain": {
+          "en": "{{आचार्यस्य पुस्तकम्}}: the owner in the sixth case.",
+          "hi": "{{आचार्यस्य पुस्तकम्}}: स्वामी षष्ठी में।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "आचार्यस्य",
+          "पुस्तकम्"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“आचार्यस्य पुस्तकम्,” you say, touching the old palm-leaf book. The golden spirit lifts her tiny lamp and the book's pages glow, remembering. “आचार्यस्य लेखनी,” says Dādī. The glow runs to the pen.",
+            "hi": "“आचार्यस्य पुस्तकम्,” आप कहते हैं, पुराने ताड़पत्र की पुस्तक को छूते हुए। सुनहरा भूत अपना छोटा दीपक उठाती है और पुस्तक के पन्ने चमक उठते हैं, याद करते हुए। “आचार्यस्य लेखनी,” दादी कहती हैं। चमक कलम तक दौड़ जाती है।"
+          },
+          "failure": {
+            "en": "The book stays dim. The owner comes first, in the sixth case.",
+            "hi": "पुस्तक धुँधली रहती है। पहले स्वामी, षष्ठी में।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's “rest”",
+          "hi": "पाणिनि का ‘शेष’"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "case.gen"
+        ],
+        "sutras": [
+          "2.3.50"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 2.3.50, {{षष्ठी शेषे}}, gives the sixth case to “the rest”: every link between two nouns that the other kāraka-cases do not express. That is why it covers owner, part, kin and more.",
+          "hi": "सूत्र 2.3.50, {{षष्ठी शेषे}}, ‘शेष’ को षष्ठी देता है: दो संज्ञाओं के बीच का हर वह सम्बन्ध जिसे अन्य कारक-विभक्तियाँ नहीं कहतीं। इसीलिए वह स्वामी, भाग, नाते और बहुत कुछ को ढकती है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "शेषः",
+          "meaning": {
+            "en": "the remainder: other relations",
+            "hi": "शेष: अन्य सम्बन्ध"
+          }
+        }
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Of",
+          "hi": "का, की, के"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "आचार्यस्य गृहम्",
+            "text": {
+              "en": "The sixth case: of, belonging to.",
+              "hi": "षष्ठी: का, की, के।"
+            }
+          },
+          {
+            "sa": "कस्य · कस्याः",
+            "text": {
+              "en": "Whose?",
+              "hi": "किसका? किसकी?"
+            }
+          },
+          {
+            "sa": "स्य · आयाः · याः",
+            "text": {
+              "en": "The singular endings.",
+              "hi": "एकवचन प्रत्यय।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "of-whose-s1",
+    "brief": "The Ācārya's small, lamplit house behind the school: a low desk with a palm-leaf book, a reed pen, a folded saffron shawl and a string of beads; a slim warm-gold spirit holding a tiny lamp touching each thing softly; you and Dādī sitting on the floor mat.",
+    "alt": {
+      "en": "A slim golden spirit with a tiny lamp touches old belongings in a teacher's house",
+      "hi": "आचार्य के घर में पुरानी चीज़ों को छूता दीपक थामे भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "acarya",
+      "smritika"
+    ],
+    "place": "pathashala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The Ācārya's small, lamplit house behind the school: a low desk with a palm-leaf book, a reed pen, a folded saffron shawl and a string of beads; a slim warm-gold spirit holding a tiny lamp touching each thing softly; you and Dādī sitting on the floor mat.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\nsmritika: A slim warm-gold spirit holding a tiny lamp, her wisps trailing like the fringe of an old shawl.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-8a15eec5-1912-4e0b-b3fd-6307e68c05b4.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "aebbef2d9c4fba1065b2f9e37a4257b5e69ae1575a997b434754545ebec9e405",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\of-whose-s1-phone-4037fc21.webp",
+      "key": "learn/of-whose-s1-phone-4037fc21.webp",
+      "sha256": "4037fc2185048c01e3f7002496b9e6b2ab3ee6a9a04873e60b5923b554141058",
+      "bytes": 106372,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/of-whose-s1-phone-4037fc21.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\of-whose-s1-tablet-696155c9.webp",
+      "key": "learn/of-whose-s1-tablet-696155c9.webp",
+      "sha256": "696155c905afb0c385a29bbcdc69d290a71f51d2e02e98ab3f2fba3dbd427cd2",
+      "bytes": 404240,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/of-whose-s1-tablet-696155c9.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

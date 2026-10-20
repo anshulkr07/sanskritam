@@ -9,7 +9,7 @@ teaches:
 - noun.r-stems
 needs:
 - noun.ii-uu
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -628,8 +628,8 @@ cards:
   - noun.r-stems
   mode: match
   prompt:
-    en: Join each form to its case and number.
-    hi: हर रूप को उसकी विभक्ति और वचन से जोड़िए।
+    en: Match each form with its case and number.
+    hi: हर रूप को उसकी विभक्ति और वचन से मिलाइए।
   explain:
     en: '{{ऋ}} becomes {{र्}} or {{अर्}} before the ending.'
     hi: प्रत्यय से पहले {{ऋ}} {{र्}} या {{अर्}} बन जाता है।

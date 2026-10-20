@@ -9,7 +9,7 @@ teaches:
 - gen.feminine-a
 needs:
 - gen.agreement
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -239,8 +239,8 @@ cards:
   - gen.feminine-a
   mode: match
   prompt:
-    en: Join each masculine to its feminine.
-    hi: हर पुंलिंग को उसके स्त्रीलिंग से जोड़िए।
+    en: Match each masculine with its feminine.
+    hi: हर पुंलिंग को उसके स्त्रीलिंग से मिलाइए।
   explain:
     en: Add {{आ}} or {{ई}} to make a feminine.
     hi: स्त्रीलिंग बनाने के लिए {{आ}} या {{ई}} जोड़िए।

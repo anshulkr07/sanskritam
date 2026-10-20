@@ -10,7 +10,7 @@ teaches:
 needs:
 - verb.lot
 - verb.pres-3sg
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -453,8 +453,8 @@ cards:
   - verb.lan
   widget: time_slider
   prompt:
-    en: Slide through time and watch the verb change.
-    hi: समय में खिसकाइए और देखिए कि क्रिया कैसे बदलती है।
+    en: Tap a point on the line, or use the arrows, and watch the verb change.
+    hi: रेखा पर किसी बिंदु को छूइए, या तीरों का उपयोग कीजिए, और देखिए कि क्रिया कैसे बदलती है।
   params:
     forms:
     - label:
@@ -493,8 +493,8 @@ cards:
   - verb.lan
   mode: match
   prompt:
-    en: Join each past form to its meaning.
-    hi: हर भूतकाल के रूप को उसके अर्थ से जोड़िए।
+    en: Match each past form with its meaning.
+    hi: हर भूतकाल के रूप को उसके अर्थ से मिलाइए।
   explain:
     en: Each is {{अ}} + root + {{त्}}.
     hi: हर एक {{अ}} + धातु + {{त्}} है।

@@ -1,0 +1,2125 @@
+{
+  "id": "tale-leaf-7-r2",
+  "where": "tale.leaf-7#r2",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A palace lying-in chamber with latticed windows and lamps; a young queen in deep red lying back with a tired smile, a tiny baby in saffron cloth in her arms; a handsome king in pale gold bending over them, wonder and joy on his face; a soft glow around the baby.\nCharacter appearances:\nvasavadatta: A calm young queen in a deep-red sari with a gold border, dark hair in a long plait with jasmine, a thoughtful anxious face that softens into joy.\nvatsaraja: A handsome young king in a pale gold robe with a simple crown and a lute slung at his shoulder, warm eyes and a ready smile.\nnaravahanadatta: A baby with large bright eyes and a smiling mouth, wrapped in a saffron cloth with a thin gold edge; later a small laughing child.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "tale.leaf-7",
+    "template": "tale",
+    "title": {
+      "en": "The tale that survived",
+      "hi": "वह कथा जो बच गई"
+    },
+    "title_sa": "नरवाहनदत्तकथा",
+    "minutes": 8,
+    "teaches": [],
+    "needs": [],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Kathāsaritsāgara, taraṅga 4.3 (Digital Corpus of Sanskrit file KSS, 4, 3), the story retold in new, simple sentences with six real lines quoted",
+        "url": "https://github.com/OliverHellwig/sanskrit",
+        "licence": "CC BY 4.0",
+        "note": "The plot follows Somadeva's text: the pregnant queen Vāsavadattā is told in a dream by Śiva to have no fear for her child; the boy is born; a voice from the sky says he is an incarnation of Kāmadeva and names him Naravāhanadatta; flowers fall from the sky, drums sound, there is a great festival, and six ministers' sons are given to him as companions. The quoted lines are Somadeva's own words; the rest is new Sanskrit in the present tense. The closing line, 'the leaf shines', echoes the course's own prologue."
+      }
+    ],
+    "cards": [
+      {
+        "id": "r1",
+        "title": {
+          "en": "The dream",
+          "hi": "स्वप्न"
+        },
+        "image": {
+          "id": "tale-leaf-7-r1",
+          "brief": "A young queen in a deep-red sari asleep on a low bed in a lamp-lit palace chamber, one hand on her belly; at the foot of the bed, a tall figure of matted hair, ash-smeared body and a crescent moon, smiling kindly with a trident held loosely, as if in a dream; moonlight through lattice windows.",
+          "alt": {
+            "en": "A queen sleeps with a hand on her belly while a kindly figure with a crescent moon appears in her dream",
+            "hi": "पेट पर हाथ रखे सोती रानी, स्वप्न में अर्धचन्द्रधारी दयालु आकृति"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "vasavadatta",
+            "shiva"
+          ],
+          "place": "vatsagrha"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "reading",
+        "passage": [
+          {
+            "sa": "वासवदत्ता वत्सराजस्य देवी अस्ति।",
+            "meaning": {
+              "en": "Vāsavadattā is the queen of the king of Vatsa.",
+              "hi": "वासवदत्ता वत्सराज की रानी है।"
+            },
+            "words": [
+              {
+                "sa": "वासवदत्ता",
+                "gloss": {
+                  "en": "Vāsavadattā",
+                  "hi": "वासवदत्ता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वासवदत्ता",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वत्सराजस्य",
+                "gloss": {
+                  "en": "of the king of Vatsa",
+                  "hi": "वत्सराज की"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वत्सराज",
+                  "linga": "Pum",
+                  "vibhakti": "Sasthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "देवी",
+                "gloss": {
+                  "en": "the queen",
+                  "hi": "रानी"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "देवी",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अस्ति",
+                "gloss": {
+                  "en": "is",
+                  "hi": "है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "सा गर्भम् धरति।",
+            "meaning": {
+              "en": "She carries a child.",
+              "hi": "वह गर्भ धारण करती है।"
+            },
+            "words": [
+              {
+                "sa": "सा",
+                "gloss": {
+                  "en": "she",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "गर्भम्",
+                "gloss": {
+                  "en": "a child in the womb",
+                  "hi": "गर्भ को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गर्भ",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "धरति",
+                "gloss": {
+                  "en": "carries",
+                  "hi": "धारण करती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "धृ",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": "Bhvadi",
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "देवी चिन्ताम् करोति।",
+            "meaning": {
+              "en": "The queen worries.",
+              "hi": "रानी चिन्ता करती है।"
+            },
+            "words": [
+              {
+                "sa": "देवी",
+                "gloss": {
+                  "en": "the queen",
+                  "hi": "रानी"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "देवी",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "चिन्ताम्",
+                "gloss": {
+                  "en": "worry",
+                  "hi": "चिन्ता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "चिन्ता",
+                  "linga": "Stri",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "करोति",
+                "gloss": {
+                  "en": "feels",
+                  "hi": "करती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "कृ",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "रात्रौ सा शिवम् स्वप्ने पश्यति।",
+            "meaning": {
+              "en": "At night she sees Śiva in a dream.",
+              "hi": "रात में वह स्वप्न में शिव को देखती है।"
+            },
+            "words": [
+              {
+                "sa": "रात्रौ",
+                "gloss": {
+                  "en": "at night",
+                  "hi": "रात में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "रात्रि",
+                  "linga": "Stri",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "सा",
+                "gloss": {
+                  "en": "she",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "शिवम्",
+                "gloss": {
+                  "en": "Śiva",
+                  "hi": "शिव को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "शिव",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "स्वप्ने",
+                "gloss": {
+                  "en": "in a dream",
+                  "hi": "स्वप्न में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "स्वप्न",
+                  "linga": "Pum",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पश्यति",
+                "gloss": {
+                  "en": "sees",
+                  "hi": "देखती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दृश्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "पुत्रि गर्भकृते चिन्ता न कार्या काचन त्वया अहं तवैनं रक्षामि दत्तो ह्येष मयैव ते",
+            "meaning": {
+              "en": "“Daughter, you must not worry at all about the child. I protect him: he was given to you by me.” (Śiva, in Somadeva, Kathāsaritsāgara 4.3)",
+              "hi": "“पुत्री, गर्भ के विषय में तुम्हें कोई चिन्ता नहीं करनी चाहिए। मैं इसकी रक्षा करता हूँ: यह मेरे ही द्वारा तुम्हें दिया गया है।” (शिव, सोमदेव, कथासरित्सागर 4.3)"
+            },
+            "words": [
+              {
+                "sa": "पुत्रि",
+                "gloss": {
+                  "en": "daughter",
+                  "hi": "पुत्री"
+                },
+                "check": null
+              },
+              {
+                "sa": "गर्भकृते",
+                "gloss": {
+                  "en": "for the child's sake",
+                  "hi": "गर्भ के लिए"
+                },
+                "check": null
+              },
+              {
+                "sa": "चिन्ता",
+                "gloss": {
+                  "en": "worry",
+                  "hi": "चिन्ता"
+                },
+                "check": null
+              },
+              {
+                "sa": "न",
+                "gloss": {
+                  "en": "not",
+                  "hi": "नहीं"
+                },
+                "check": null
+              },
+              {
+                "sa": "कार्या",
+                "gloss": {
+                  "en": "to be made",
+                  "hi": "करनी चाहिए"
+                },
+                "check": null
+              },
+              {
+                "sa": "काचन",
+                "gloss": {
+                  "en": "any",
+                  "hi": "कोई"
+                },
+                "check": null
+              },
+              {
+                "sa": "त्वया",
+                "gloss": {
+                  "en": "by you",
+                  "hi": "तुम्हारे द्वारा"
+                },
+                "check": null
+              },
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "तव",
+                "gloss": {
+                  "en": "your",
+                  "hi": "तुम्हारे"
+                },
+                "check": null
+              },
+              {
+                "sa": "एनम्",
+                "gloss": {
+                  "en": "him",
+                  "hi": "इसकी"
+                },
+                "check": null
+              },
+              {
+                "sa": "रक्षामि",
+                "gloss": {
+                  "en": "protect",
+                  "hi": "रक्षा करता हूँ"
+                },
+                "check": null
+              },
+              {
+                "sa": "दत्तः",
+                "gloss": {
+                  "en": "given",
+                  "hi": "दिया गया"
+                },
+                "check": null
+              },
+              {
+                "sa": "हि",
+                "gloss": {
+                  "en": "for",
+                  "hi": "क्योंकि"
+                },
+                "check": null
+              },
+              {
+                "sa": "एषः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "यह"
+                },
+                "check": null
+              },
+              {
+                "sa": "मया",
+                "gloss": {
+                  "en": "by me",
+                  "hi": "मेरे द्वारा"
+                },
+                "check": null
+              },
+              {
+                "sa": "एव",
+                "gloss": {
+                  "en": "indeed",
+                  "hi": "ही"
+                },
+                "check": null
+              },
+              {
+                "sa": "ते",
+                "gloss": {
+                  "en": "to you",
+                  "hi": "तुम्हें"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "title": {
+          "en": "The birth",
+          "hi": "जन्म"
+        },
+        "image": {
+          "id": "tale-leaf-7-r2",
+          "brief": "A palace lying-in chamber with latticed windows and lamps; a young queen in deep red lying back with a tired smile, a tiny baby in saffron cloth in her arms; a handsome king in pale gold bending over them, wonder and joy on his face; a soft glow around the baby.",
+          "alt": {
+            "en": "A king bends over a queen and her newborn son with wonder and joy",
+            "hi": "रानी और नवजात पुत्र पर आश्चर्य और आनन्द से झुका राजा"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "vasavadatta",
+            "vatsaraja",
+            "naravahanadatta"
+          ],
+          "place": "vatsagrha"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "reading",
+        "passage": [
+          {
+            "sa": "देवी कुमारम् जनयति।",
+            "meaning": {
+              "en": "The queen bears a son.",
+              "hi": "रानी पुत्र को जन्म देती है।"
+            },
+            "words": [
+              {
+                "sa": "देवी",
+                "gloss": {
+                  "en": "the queen",
+                  "hi": "रानी"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "देवी",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "कुमारम्",
+                "gloss": {
+                  "en": "a son",
+                  "hi": "पुत्र को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "कुमार",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "जनयति",
+                "gloss": {
+                  "en": "brings forth",
+                  "hi": "जन्म देती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "जन्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": [
+                    "Nic"
+                  ],
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "तत्रासूत च सा काले कुमारं कान्तदर्शनम् द्यौर् इन्दुम् इव निर्गच्छद् अच्छामृतमयद्युतिम्",
+            "meaning": {
+              "en": "There, in due time, she bore a son lovely to see, like the sky giving forth the moon, whose light was pure nectar. (Somadeva, Kathāsaritsāgara 4.3)",
+              "hi": "वहाँ, समय आने पर, उसने सुन्दर दर्शन वाले पुत्र को जन्म दिया, मानो आकाश चन्द्रमा को निकाल रहा हो, जिसकी कान्ति निर्मल अमृत-सी थी। (सोमदेव, कथासरित्सागर 4.3)"
+            },
+            "words": [
+              {
+                "sa": "तत्र",
+                "gloss": {
+                  "en": "there",
+                  "hi": "वहाँ"
+                },
+                "check": null
+              },
+              {
+                "sa": "असूत",
+                "gloss": {
+                  "en": "bore",
+                  "hi": "जन्म दिया"
+                },
+                "check": null
+              },
+              {
+                "sa": "च",
+                "gloss": {
+                  "en": "and",
+                  "hi": "और"
+                },
+                "check": null
+              },
+              {
+                "sa": "सा",
+                "gloss": {
+                  "en": "she",
+                  "hi": "उसने"
+                },
+                "check": null
+              },
+              {
+                "sa": "काले",
+                "gloss": {
+                  "en": "in due time",
+                  "hi": "समय पर"
+                },
+                "check": null
+              },
+              {
+                "sa": "कुमारम्",
+                "gloss": {
+                  "en": "a son",
+                  "hi": "पुत्र को"
+                },
+                "check": null
+              },
+              {
+                "sa": "कान्तदर्शनम्",
+                "gloss": {
+                  "en": "lovely to see",
+                  "hi": "सुन्दर दर्शन वाले"
+                },
+                "check": null
+              },
+              {
+                "sa": "द्यौः",
+                "gloss": {
+                  "en": "the sky",
+                  "hi": "आकाश"
+                },
+                "check": null
+              },
+              {
+                "sa": "इन्दुम्",
+                "gloss": {
+                  "en": "the moon",
+                  "hi": "चन्द्रमा को"
+                },
+                "check": null
+              },
+              {
+                "sa": "इव",
+                "gloss": {
+                  "en": "like",
+                  "hi": "जैसे"
+                },
+                "check": null
+              },
+              {
+                "sa": "निर्गच्छत्",
+                "gloss": {
+                  "en": "going forth",
+                  "hi": "निकालता हुआ"
+                },
+                "check": null
+              },
+              {
+                "sa": "अच्छामृतमयद्युतिम्",
+                "gloss": {
+                  "en": "whose light was pure nectar",
+                  "hi": "जिसकी कान्ति निर्मल अमृत-सी थी"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "राजा पुत्रम् पश्यति।",
+            "meaning": {
+              "en": "The king sees his son.",
+              "hi": "राजा पुत्र को देखता है।"
+            },
+            "words": [
+              {
+                "sa": "राजा",
+                "gloss": {
+                  "en": "the king",
+                  "hi": "राजा"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "राजन्",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पुत्रम्",
+                "gloss": {
+                  "en": "his son",
+                  "hi": "पुत्र को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पुत्र",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पश्यति",
+                "gloss": {
+                  "en": "sees",
+                  "hi": "देखता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दृश्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "एत्य चान्तःपुरं सद्यो बद्धौत्सुक्येन चेतसा चिरात् फलितसंकल्पः स ददर्श सुतं नृपः",
+            "meaning": {
+              "en": "Coming at once to the women's quarters with an eager mind, the king, his long-held wish fulfilled, saw his son. (Somadeva, Kathāsaritsāgara 4.3)",
+              "hi": "उत्सुक चित्त से तुरन्त अन्तःपुर आकर, चिरकाल से रखा संकल्प फलित होने पर, राजा ने अपने पुत्र को देखा। (सोमदेव, कथासरित्सागर 4.3)"
+            },
+            "words": [
+              {
+                "sa": "एत्य",
+                "gloss": {
+                  "en": "having come",
+                  "hi": "आकर"
+                },
+                "check": null
+              },
+              {
+                "sa": "च",
+                "gloss": {
+                  "en": "and",
+                  "hi": "और"
+                },
+                "check": null
+              },
+              {
+                "sa": "अन्तःपुरम्",
+                "gloss": {
+                  "en": "to the women's quarters",
+                  "hi": "अन्तःपुर में"
+                },
+                "check": null
+              },
+              {
+                "sa": "सद्यः",
+                "gloss": {
+                  "en": "at once",
+                  "hi": "तुरन्त"
+                },
+                "check": null
+              },
+              {
+                "sa": "बद्धौत्सुक्येन",
+                "gloss": {
+                  "en": "bound with eagerness",
+                  "hi": "उत्सुकता से बँधे"
+                },
+                "check": null
+              },
+              {
+                "sa": "चेतसा",
+                "gloss": {
+                  "en": "with his mind",
+                  "hi": "चित्त से"
+                },
+                "check": null
+              },
+              {
+                "sa": "चिरात्",
+                "gloss": {
+                  "en": "after long",
+                  "hi": "चिरकाल से"
+                },
+                "check": null
+              },
+              {
+                "sa": "फलितसंकल्पः",
+                "gloss": {
+                  "en": "his wish fulfilled",
+                  "hi": "जिसका संकल्प फलित हुआ"
+                },
+                "check": null
+              },
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "उसने"
+                },
+                "check": null
+              },
+              {
+                "sa": "ददर्श",
+                "gloss": {
+                  "en": "saw",
+                  "hi": "देखा"
+                },
+                "check": null
+              },
+              {
+                "sa": "सुतम्",
+                "gloss": {
+                  "en": "son",
+                  "hi": "पुत्र को"
+                },
+                "check": null
+              },
+              {
+                "sa": "नृपः",
+                "gloss": {
+                  "en": "the king",
+                  "hi": "राजा"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "राजा हर्षम् प्राप्नोति।",
+            "meaning": {
+              "en": "The king reaches joy.",
+              "hi": "राजा हर्ष प्राप्त करता है।"
+            },
+            "words": [
+              {
+                "sa": "राजा",
+                "gloss": {
+                  "en": "the king",
+                  "hi": "राजा"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "राजन्",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "हर्षम्",
+                "gloss": {
+                  "en": "joy",
+                  "hi": "हर्ष को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "हर्ष",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "प्राप्नोति",
+                "gloss": {
+                  "en": "reaches",
+                  "hi": "प्राप्त करता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "आप्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "प्र"
+                  ],
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          }
+        ]
+      },
+      {
+        "id": "r3",
+        "title": {
+          "en": "The name",
+          "hi": "नाम"
+        },
+        "image": {
+          "id": "tale-leaf-7-r3",
+          "brief": "A palace courtyard at dusk; the king holding up his baby son in saffron cloth toward the open sky, the queen beside him; pale flower petals falling from above like rain; drummers on the rooftops; lamps lit along the walls; a faint luminous cloud above the courtyard where a voice seems to come from.",
+          "alt": {
+            "en": "A king lifts his baby son to the sky as flower petals fall and drums sound",
+            "hi": "आकाश की ओर पुत्र को उठाता राजा, गिरती फूलों की पंखुड़ियाँ और बजते नगाड़े"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "vatsaraja",
+            "vasavadatta",
+            "naravahanadatta"
+          ],
+          "place": "vatsagrha"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "reading",
+        "passage": [
+          {
+            "sa": "गगनात् वाणी भवति।",
+            "meaning": {
+              "en": "A voice comes from the sky.",
+              "hi": "आकाश से वाणी आती है।"
+            },
+            "words": [
+              {
+                "sa": "गगनात्",
+                "gloss": {
+                  "en": "from the sky",
+                  "hi": "आकाश से"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गगन",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Panchami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वाणी",
+                "gloss": {
+                  "en": "a voice",
+                  "hi": "वाणी"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वाणी",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "भवति",
+                "gloss": {
+                  "en": "comes",
+                  "hi": "आती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "भू",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "कामदेवावतारो ऽयं राजञ् जातस् तवात्मजः नरवाहनदत्तं च जानीह्य् एनम् इहाख्यया",
+            "meaning": {
+              "en": "“This son born to you, O king, is an incarnation of Kāmadeva. And know him here by the name Naravāhanadatta.” (the voice, Somadeva, Kathāsaritsāgara 4.3)",
+              "hi": "“हे राजन्, तुम्हारा यह उत्पन्न पुत्र कामदेव का अवतार है। और उसे यहाँ नरवाहनदत्त नाम से जानो।” (वाणी, सोमदेव, कथासरित्सागर 4.3)"
+            },
+            "words": [
+              {
+                "sa": "कामदेवावतारः",
+                "gloss": {
+                  "en": "an incarnation of Kāmadeva",
+                  "hi": "कामदेव का अवतार"
+                },
+                "check": null
+              },
+              {
+                "sa": "अयम्",
+                "gloss": {
+                  "en": "this",
+                  "hi": "यह"
+                },
+                "check": null
+              },
+              {
+                "sa": "राजन्",
+                "gloss": {
+                  "en": "O king",
+                  "hi": "हे राजन्"
+                },
+                "check": null
+              },
+              {
+                "sa": "जातः",
+                "gloss": {
+                  "en": "born",
+                  "hi": "उत्पन्न"
+                },
+                "check": null
+              },
+              {
+                "sa": "तव",
+                "gloss": {
+                  "en": "your",
+                  "hi": "तुम्हारा"
+                },
+                "check": null
+              },
+              {
+                "sa": "आत्मजः",
+                "gloss": {
+                  "en": "son",
+                  "hi": "पुत्र"
+                },
+                "check": null
+              },
+              {
+                "sa": "नरवाहनदत्तम्",
+                "gloss": {
+                  "en": "Naravāhanadatta",
+                  "hi": "नरवाहनदत्त को"
+                },
+                "check": null
+              },
+              {
+                "sa": "च",
+                "gloss": {
+                  "en": "and",
+                  "hi": "और"
+                },
+                "check": null
+              },
+              {
+                "sa": "जानीहि",
+                "gloss": {
+                  "en": "know",
+                  "hi": "जानो"
+                },
+                "check": null
+              },
+              {
+                "sa": "एनम्",
+                "gloss": {
+                  "en": "him",
+                  "hi": "उसे"
+                },
+                "check": null
+              },
+              {
+                "sa": "इह",
+                "gloss": {
+                  "en": "here",
+                  "hi": "यहाँ"
+                },
+                "check": null
+              },
+              {
+                "sa": "आख्यया",
+                "gloss": {
+                  "en": "by the name",
+                  "hi": "नाम से"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "पुत्रः नरवाहनदत्तः इति नाम लभते।",
+            "meaning": {
+              "en": "The son receives the name Naravāhanadatta.",
+              "hi": "पुत्र नरवाहनदत्त यह नाम पाता है।"
+            },
+            "words": [
+              {
+                "sa": "पुत्रः",
+                "gloss": {
+                  "en": "the son",
+                  "hi": "पुत्र"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पुत्र",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "नरवाहनदत्तः",
+                "gloss": {
+                  "en": "Naravāhanadatta",
+                  "hi": "नरवाहनदत्त"
+                },
+                "check": null
+              },
+              {
+                "sa": "इति",
+                "gloss": {
+                  "en": "thus",
+                  "hi": "यह"
+                },
+                "check": null
+              },
+              {
+                "sa": "नाम",
+                "gloss": {
+                  "en": "the name",
+                  "hi": "नाम"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नामन्",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "लभते",
+                "gloss": {
+                  "en": "receives",
+                  "hi": "पाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "लभ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "पुष्पवर्षैर् निपतितं प्रसृतं दुन्दुभिस्वनैः",
+            "meaning": {
+              "en": "From the sky a fall of flower-showers came down, and the sound of drums spread. (Somadeva, Kathāsaritsāgara 4.3)",
+              "hi": "आकाश से पुष्पवृष्टि गिरी और दुन्दुभियों की ध्वनि फैल गई। (सोमदेव, कथासरित्सागर 4.3)"
+            },
+            "words": [
+              {
+                "sa": "पुष्पवर्षैः",
+                "gloss": {
+                  "en": "with showers of flowers",
+                  "hi": "पुष्पवृष्टि के साथ"
+                },
+                "check": null
+              },
+              {
+                "sa": "निपतितम्",
+                "gloss": {
+                  "en": "fell",
+                  "hi": "गिरा"
+                },
+                "check": null
+              },
+              {
+                "sa": "प्रसृतम्",
+                "gloss": {
+                  "en": "spread",
+                  "hi": "फैला"
+                },
+                "check": null
+              },
+              {
+                "sa": "दुन्दुभिस्वनैः",
+                "gloss": {
+                  "en": "with the sounds of drums",
+                  "hi": "दुन्दुभियों की ध्वनि के साथ"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "नगरे उत्सवः भवति।",
+            "meaning": {
+              "en": "There is a festival in the city.",
+              "hi": "नगर में उत्सव होता है।"
+            },
+            "words": [
+              {
+                "sa": "नगरे",
+                "gloss": {
+                  "en": "in the city",
+                  "hi": "नगर में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नगर",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "उत्सवः",
+                "gloss": {
+                  "en": "a festival",
+                  "hi": "उत्सव"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "उत्सव",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "भवति",
+                "gloss": {
+                  "en": "takes place",
+                  "hi": "होता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "भू",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          }
+        ]
+      },
+      {
+        "id": "r4",
+        "title": {
+          "en": "The six friends",
+          "hi": "छह मित्र"
+        },
+        "image": {
+          "id": "tale-leaf-7-r4",
+          "brief": "A sunlit palace garden beside a lotus pool; a small laughing child in saffron playing with six boys of different sizes in plain bright clothes, a ball and a toy cart on the grass; a king and a queen watching from a pillared verandah, smiling; a glowing palm leaf resting on the verandah rail.",
+          "alt": {
+            "en": "A small laughing prince plays with six boys by a lotus pool while the king and queen watch",
+            "hi": "कमल-सरोवर के पास छह बालकों के साथ खेलता हँसता छोटा राजकुमार"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "naravahanadatta",
+            "vatsaraja",
+            "vasavadatta"
+          ],
+          "place": "vatsagrha"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "reading",
+        "passage": [
+          {
+            "sa": "षट् मन्त्रिपुत्राः कुमारम् सेवन्ते।",
+            "meaning": {
+              "en": "Six ministers' sons serve the prince.",
+              "hi": "छह मन्त्रि-पुत्र कुमार की सेवा करते हैं।"
+            },
+            "words": [
+              {
+                "sa": "षट्",
+                "gloss": {
+                  "en": "six",
+                  "hi": "छह"
+                },
+                "check": null
+              },
+              {
+                "sa": "मन्त्रिपुत्राः",
+                "gloss": {
+                  "en": "the ministers' sons",
+                  "hi": "मन्त्रियों के पुत्र"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "मन्त्रिपुत्र",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "कुमारम्",
+                "gloss": {
+                  "en": "the prince",
+                  "hi": "कुमार की"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "कुमार",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "सेवन्ते",
+                "gloss": {
+                  "en": "serve",
+                  "hi": "सेवा करते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "सेव्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "कुमारः तैः सह क्रीडति।",
+            "meaning": {
+              "en": "The prince plays with them.",
+              "hi": "कुमार उनके साथ खेलता है।"
+            },
+            "words": [
+              {
+                "sa": "कुमारः",
+                "gloss": {
+                  "en": "the prince",
+                  "hi": "कुमार"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "कुमार",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "तैः",
+                "gloss": {
+                  "en": "with them",
+                  "hi": "उनके"
+                },
+                "check": null
+              },
+              {
+                "sa": "सह",
+                "gloss": {
+                  "en": "together",
+                  "hi": "साथ"
+                },
+                "check": null
+              },
+              {
+                "sa": "क्रीडति",
+                "gloss": {
+                  "en": "plays",
+                  "hi": "खेलता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "क्रीड्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "दिवसाः गच्छन्ति।",
+            "meaning": {
+              "en": "The days pass.",
+              "hi": "दिन बीतते हैं।"
+            },
+            "words": [
+              {
+                "sa": "दिवसाः",
+                "gloss": {
+                  "en": "the days",
+                  "hi": "दिन"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "दिवस",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छन्ति",
+                "gloss": {
+                  "en": "pass",
+                  "hi": "बीतते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "पुत्रं स्मेराननसरसिजं सादरं पश्यतस् ते बद्धानन्दाः किमपि दिवसा वत्सराजस्य जग्मुः",
+            "meaning": {
+              "en": "Those days of the king of Vatsa passed, bound in joy, as he gazed lovingly at his son, whose smiling face was a lotus. (Somadeva, Kathāsaritsāgara 4.3)",
+              "hi": "वत्सराज के वे दिन आनन्द से बँधे बीते, जब वह अपने पुत्र को, जिसका मुस्कराता मुख कमल था, प्रेम से देखता था। (सोमदेव, कथासरित्सागर 4.3)"
+            },
+            "words": [
+              {
+                "sa": "पुत्रम्",
+                "gloss": {
+                  "en": "his son",
+                  "hi": "पुत्र को"
+                },
+                "check": null
+              },
+              {
+                "sa": "स्मेराननसरसिजम्",
+                "gloss": {
+                  "en": "whose smiling face was a lotus",
+                  "hi": "जिसका मुस्कराता मुख कमल था"
+                },
+                "check": null
+              },
+              {
+                "sa": "सादरम्",
+                "gloss": {
+                  "en": "lovingly",
+                  "hi": "प्रेम से"
+                },
+                "check": null
+              },
+              {
+                "sa": "पश्यतः",
+                "gloss": {
+                  "en": "of him gazing",
+                  "hi": "देखते हुए"
+                },
+                "check": null
+              },
+              {
+                "sa": "ते",
+                "gloss": {
+                  "en": "those",
+                  "hi": "वे"
+                },
+                "check": null
+              },
+              {
+                "sa": "बद्धानन्दाः",
+                "gloss": {
+                  "en": "bound in joy",
+                  "hi": "आनन्द से बँधे"
+                },
+                "check": null
+              },
+              {
+                "sa": "किमपि",
+                "gloss": {
+                  "en": "somehow",
+                  "hi": "किसी प्रकार"
+                },
+                "check": null
+              },
+              {
+                "sa": "दिवसाः",
+                "gloss": {
+                  "en": "days",
+                  "hi": "दिन"
+                },
+                "check": null
+              },
+              {
+                "sa": "वत्सराजस्य",
+                "gloss": {
+                  "en": "of the king of Vatsa",
+                  "hi": "वत्सराज के"
+                },
+                "check": null
+              },
+              {
+                "sa": "जग्मुः",
+                "gloss": {
+                  "en": "passed",
+                  "hi": "बीते"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "पत्रम् दीप्यते।",
+            "meaning": {
+              "en": "The leaf shines.",
+              "hi": "पत्र चमकता है।"
+            },
+            "words": [
+              {
+                "sa": "पत्रम्",
+                "gloss": {
+                  "en": "the leaf",
+                  "hi": "पत्र"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पत्र",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "दीप्यते",
+                "gloss": {
+                  "en": "shines",
+                  "hi": "चमकता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दीप्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "tale-leaf-7-r2",
+    "brief": "A palace lying-in chamber with latticed windows and lamps; a young queen in deep red lying back with a tired smile, a tiny baby in saffron cloth in her arms; a handsome king in pale gold bending over them, wonder and joy on his face; a soft glow around the baby.",
+    "alt": {
+      "en": "A king bends over a queen and her newborn son with wonder and joy",
+      "hi": "रानी और नवजात पुत्र पर आश्चर्य और आनन्द से झुका राजा"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "vasavadatta",
+      "vatsaraja",
+      "naravahanadatta"
+    ],
+    "place": "vatsagrha"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A palace lying-in chamber with latticed windows and lamps; a young queen in deep red lying back with a tired smile, a tiny baby in saffron cloth in her arms; a handsome king in pale gold bending over them, wonder and joy on his face; a soft glow around the baby.\nCharacter appearances:\nvasavadatta: A calm young queen in a deep-red sari with a gold border, dark hair in a long plait with jasmine, a thoughtful anxious face that softens into joy.\nvatsaraja: A handsome young king in a pale gold robe with a simple crown and a lute slung at his shoulder, warm eyes and a ready smile.\nnaravahanadatta: A baby with large bright eyes and a smiling mouth, wrapped in a saffron cloth with a thin gold edge; later a small laughing child.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-90afb060-0ef7-4590-a734-42454b6f7905.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "04210d2be56dfce8936e8cf4ada8bb65801df3f718dfdd515c4c79883fe1f476",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\tale-leaf-7-r2-phone-7fe3d0fa.webp",
+      "key": "learn/tale-leaf-7-r2-phone-7fe3d0fa.webp",
+      "sha256": "7fe3d0fabd98ef902d35dba387b7f4526795364f6c1123e696d53c799045b2f8",
+      "bytes": 111698,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/tale-leaf-7-r2-phone-7fe3d0fa.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\tale-leaf-7-r2-tablet-91cbf864.webp",
+      "key": "learn/tale-leaf-7-r2-tablet-91cbf864.webp",
+      "sha256": "91cbf864b5b80b3af9d460345f3e5987cd6fd4559253a8799f24a8310a85f79c",
+      "bytes": 414292,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/tale-leaf-7-r2-tablet-91cbf864.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

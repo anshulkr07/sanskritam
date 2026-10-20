@@ -7,7 +7,7 @@ Hierarchy
     Course ─ acts (story acts, shown as map regions)
       Act ─ parts (each part ends with one leaf of the lost book)
         Part ─ units (one grammar chapter + one story episode + one ghost)
-          Unit ─ lessons (scenes), one revision lesson, one check
+          Unit ─ lessons (scenes), revision, optional reading, one check
             Lesson ─ cards (the shared swipeable card player renders them)
 
 Rules the shapes encode
@@ -670,6 +670,7 @@ class Unit(Identified):
     lessons: list[str] = []          # written lessons, in order
     planned: list[PlannedLesson] = []  # not yet written, in order
     revision: Optional[str] = None
+    reading: Optional[str] = None    # optional episode; never required to free a ghost
     check: Optional[str] = None
     video: Optional[UnitVideo] = None
 

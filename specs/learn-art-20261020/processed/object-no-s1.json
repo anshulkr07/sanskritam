@@ -1,0 +1,742 @@
+{
+  "id": "object-no-s1",
+  "where": "object.no#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The spice seller sitting behind his stall with a very old green-lidded wooden chest at his feet, shaking his head with a smile; the small yellow spirit hovering above the lid; you and Dādī looking at it with curiosity.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nharidraka: A small round saffron-yellow spirit dusted with spice powder, a tiny brass scale hanging from one wisp.\nvanik: A round, cheerful man in a mustard-yellow shawl with a thick moustache, brass scales hanging from his stall, heaps of spices in front of him.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "object.no",
+    "template": "scene",
+    "title": {
+      "en": "Saying no",
+      "hi": "नहीं कहना"
+    },
+    "title_sa": "निषेधः",
+    "minutes": 6,
+    "teaches": [
+      "sent.negation"
+    ],
+    "needs": [
+      "sent.questions"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The old chest",
+          "hi": "पुराना संदूक"
+        },
+        "image": {
+          "id": "object-no-s1",
+          "brief": "The spice seller sitting behind his stall with a very old green-lidded wooden chest at his feet, shaking his head with a smile; the small yellow spirit hovering above the lid; you and Dādī looking at it with curiosity.",
+          "alt": {
+            "en": "A spice seller shakes his head over an old chest while a spirit hovers above it",
+            "hi": "पुराने संदूक पर सिर हिलाता मसाले वाला और ऊपर मँडराता भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "haridraka",
+            "vanik"
+          ],
+          "place": "apana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "“Can we see what is in the chest?” you ask. “No,” says the spice seller. “It is not for sale. It is not mine.” He glances at the little yellow spirit, who is hovering over the lid. “It is not for him either.” Dādī smiles. “A good moment to learn how to say no.”",
+          "hi": "“क्या हम देख सकते हैं कि संदूक में क्या है?” आप पूछते हैं। मसाले वाला कहता है, “नहीं। यह बिकाऊ नहीं है। यह मेरा नहीं है।” वह पीले भूत की ओर देखता है, जो ढक्कन पर मँडरा रहा है। “इसके लिए भी नहीं।” दादी मुस्कुराती हैं। “नहीं कहना सीखने का अच्छा समय।”"
+        },
+        "lines": [
+          {
+            "speaker": "vanik",
+            "sa": "न विक्रेयम्।",
+            "gloss": {
+              "en": "It is not for sale.",
+              "hi": "यह बिकाऊ नहीं है।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "{{न}} before the word",
+          "hi": "शब्द से पहले {{न}}"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.negation"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "To say “not”, put {{न}} before the word you deny, usually the verb. {{बालकः पठति}} (the boy reads), {{बालकः न पठति}} (the boy does not read).",
+          "hi": "‘नहीं’ कहने के लिए जिस शब्द का निषेध करना हो, प्रायः क्रिया, उससे पहले {{न}} रखिए। {{बालकः पठति}} (बालक पढ़ता है), {{बालकः न पठति}} (बालक नहीं पढ़ता)।"
+        },
+        "examples": [
+          {
+            "sa": "बालकः न पठति।",
+            "meaning": {
+              "en": "The boy does not read.",
+              "hi": "बालक नहीं पढ़ता।"
+            },
+            "words": [
+              {
+                "sa": "बालकः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "न",
+                "gloss": {
+                  "en": "not",
+                  "hi": "नहीं"
+                },
+                "check": null
+              },
+              {
+                "sa": "पठति",
+                "gloss": {
+                  "en": "reads",
+                  "hi": "पढ़ता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "अहम् फलम् न खादामि।",
+            "meaning": {
+              "en": "I do not eat a fruit.",
+              "hi": "मैं फल नहीं खाता।"
+            },
+            "words": [
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "फलम्",
+                "gloss": {
+                  "en": "fruit",
+                  "hi": "फल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "फल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "न",
+                "gloss": {
+                  "en": "not",
+                  "hi": "नहीं"
+                },
+                "check": null
+              },
+              {
+                "sa": "खादामि",
+                "gloss": {
+                  "en": "eat",
+                  "hi": "खाता हूँ"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "खाद्",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "न अस्ति।",
+            "meaning": {
+              "en": "There is not.",
+              "hi": "नहीं है।"
+            },
+            "words": [
+              {
+                "sa": "न",
+                "gloss": {
+                  "en": "not",
+                  "hi": "नहीं"
+                },
+                "check": null
+              },
+              {
+                "sa": "अस्ति",
+                "gloss": {
+                  "en": "is",
+                  "hi": "है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "न विक्रेयम्।",
+            "meaning": {
+              "en": "Not for sale.",
+              "hi": "बिकाऊ नहीं।"
+            },
+            "words": [
+              {
+                "sa": "न",
+                "gloss": {
+                  "en": "not",
+                  "hi": "नहीं"
+                },
+                "check": null
+              },
+              {
+                "sa": "विक्रेयम्",
+                "gloss": {
+                  "en": "for sale",
+                  "hi": "बिकाऊ"
+                },
+                "check": null
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "The word {{नास्ति}}",
+          "hi": "शब्द {{नास्ति}}"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.negation"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "You will see {{नास्ति}} everywhere: it is {{न}} + {{अस्ति}} joined, “there is not”. The two words melt together, a sandhi you will meet later.",
+          "hi": "आपको {{नास्ति}} हर जगह दिखेगा: यह {{न}} + {{अस्ति}} का मेल है, ‘नहीं है’। दोनों शब्द मिल जाते हैं, यह सन्धि आगे मिलेगी।"
+        },
+        "examples": [
+          {
+            "sa": "नास्ति",
+            "meaning": {
+              "en": "there is not: {{न}} + {{अस्ति}}",
+              "hi": "नहीं है: {{न}} + {{अस्ति}}"
+            },
+            "words": [],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.negation"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "How do you say “the girl does not write”?",
+          "hi": "‘बालिका नहीं लिखती’ कैसे कहेंगे?"
+        },
+        "explain": {
+          "en": "{{न}} stands right before the verb.",
+          "hi": "{{न}} क्रिया से ठीक पहले आता है।"
+        },
+        "options": [
+          {
+            "sa": "बालिका न लिखति",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "न बालिका लिखति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "बालिका लिखति न",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.negation"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each sentence to its meaning.",
+          "hi": "हर वाक्य को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{न}} turns a statement into its opposite.",
+          "hi": "{{न}} कथन को उसके उलटे में बदल देता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "सः पठति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "he reads",
+                "hi": "वह पढ़ता है"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "सः न पठति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "he does not read",
+                "hi": "वह नहीं पढ़ता"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "अहं न गच्छामि",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "I do not go",
+                "hi": "मैं नहीं जाता"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "न अस्ति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "there is not",
+                "hi": "नहीं है"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.negation"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that says no.",
+          "hi": "‘नहीं’ कहने वाले हर शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "न",
+            "पठति",
+            "न",
+            "गच्छति",
+            "फलम्"
+          ],
+          "targets": [
+            "न"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "Not for sale",
+          "hi": "बिकाऊ नहीं"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.negation"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “It is not for sale.”",
+          "hi": "कहिए: ‘यह बिकाऊ नहीं है।’"
+        },
+        "explain": {
+          "en": "{{न विक्रेयम्}}: not for sale.",
+          "hi": "{{न विक्रेयम्}}: बिकाऊ नहीं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "न",
+          "विक्रेयम्"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“न विक्रेयम्,” you say gravely, and the spice seller bursts out laughing. “You speak like my grandfather!” He lifts the green lid. Inside, on a bed of dry marigolds, lies a half-burnt palm leaf, softly glowing. “It was left here by a boatman long ago,” he says. “Nobody could read it.”",
+            "hi": "“न विक्रेयम्,” आप गम्भीरता से कहते हैं, और मसाले वाला ठहाका लगाता है। “तुम तो मेरे दादा की तरह बोलते हो!” वह हरा ढक्कन उठाता है। भीतर, सूखे गेंदे के बिछौने पर, एक अधजला ताड़पत्र हल्का चमक रहा है। “बहुत पहले एक नाविक इसे यहाँ छोड़ गया था,” वह कहता है। “कोई इसे पढ़ न सका।”"
+          },
+          "failure": {
+            "en": "The lid stays shut. Put {{न}} first, then the thing denied.",
+            "hi": "ढक्कन बन्द रहता है। पहले {{न}}, फिर जिसका निषेध है।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.negation"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which sentence means “I do not see”?",
+          "hi": "‘मैं नहीं देखता’ का वाक्य कौन-सा है?"
+        },
+        "explain": {
+          "en": "{{न}} before the verb: {{न पश्यामि}}.",
+          "hi": "क्रिया से पहले {{न}}: {{न पश्यामि}}।"
+        },
+        "options": [
+          {
+            "sa": "अहं पश्यामि",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अहं न पश्यामि",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "अहं पश्यसि न",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Saying no",
+          "hi": "नहीं कहना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "सः न पठति",
+            "text": {
+              "en": "{{न}} before the verb.",
+              "hi": "क्रिया से पहले {{न}}।"
+            }
+          },
+          {
+            "sa": "नास्ति",
+            "text": {
+              "en": "{{न}} + {{अस्ति}}: there is not.",
+              "hi": "{{न}} + {{अस्ति}}: नहीं है।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "One small word reverses a sentence.",
+              "hi": "एक छोटा शब्द वाक्य को उलट देता है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "object-no-s1",
+    "brief": "The spice seller sitting behind his stall with a very old green-lidded wooden chest at his feet, shaking his head with a smile; the small yellow spirit hovering above the lid; you and Dādī looking at it with curiosity.",
+    "alt": {
+      "en": "A spice seller shakes his head over an old chest while a spirit hovers above it",
+      "hi": "पुराने संदूक पर सिर हिलाता मसाले वाला और ऊपर मँडराता भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "haridraka",
+      "vanik"
+    ],
+    "place": "apana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The spice seller sitting behind his stall with a very old green-lidded wooden chest at his feet, shaking his head with a smile; the small yellow spirit hovering above the lid; you and Dādī looking at it with curiosity.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nharidraka: A small round saffron-yellow spirit dusted with spice powder, a tiny brass scale hanging from one wisp.\nvanik: A round, cheerful man in a mustard-yellow shawl with a thick moustache, brass scales hanging from his stall, heaps of spices in front of him.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-06c795f6-2ff9-48f8-b175-1c6d48699414.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "2142f2bb789933d850847fe777acfce7f6cff7c58cad651f47bd092305ceb701",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\object-no-s1-phone-993e5b73.webp",
+      "key": "learn/object-no-s1-phone-993e5b73.webp",
+      "sha256": "993e5b73f13bded1285a65cdf1d5a21e00600d3c10aa3e81ef4180fb8cc140ea",
+      "bytes": 123138,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/object-no-s1-phone-993e5b73.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\object-no-s1-tablet-1b52b7d3.webp",
+      "key": "learn/object-no-s1-tablet-1b52b7d3.webp",
+      "sha256": "1b52b7d399230a6209481410dc5c5c179b8b7d9d8b7552eac4f7e67b4274aed7",
+      "bytes": 457848,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/object-no-s1-tablet-1b52b7d3.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

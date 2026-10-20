@@ -7,7 +7,7 @@ title: {en: "The smoke that could not speak", hi: "वह धुआँ जो �
 title_sa: "ह्रस्वाः स्वराः"
 minutes: 6
 teaches: [script.vowel.short]
-review: engine_ok
+review: scholar_ok
 sources:
   - title: "Śiva sūtras and Aṣṭādhyāyī sūtra text (vidyut-prakriya data)"
     url: "https://github.com/ambuda-org/vidyut"
@@ -20,6 +20,7 @@ cards:
     title: {en: "Smoke from the lamp", hi: "दीपक का धुआँ"}
     image:
       id: vowels-short-smoke
+      text_in_image: ["अ इ उ", "ऋ ऌ", "ए ओ", "ऐ औ"]
       brief: "Evening in the temple library. On the low reading desk the half-burnt palm leaf glows gold. Smoke from a brass oil lamp curls upward and gathers into Dhūmaka, a small round smoke-grey ghost with big kind eyes, pointing at the leaf. You (seen from behind) and Dādī lean in; Śuka on your shoulder puffs his feathers in surprise."
       alt: {en: "A small smoky ghost rising from a lamp points at a glowing leaf while a grandmother, a young person and a parrot watch", hi: "दीपक से उठता नन्हा धुएँ-सा भूत चमकते पत्र की ओर इशारा करता है; दादी, एक युवा और तोता देख रहे हैं"}
       ratio: "4:3"
@@ -120,7 +121,7 @@ cards:
     mode: match
     skills: [script.vowel.short]
     roman: after
-    prompt: {en: "Join each vowel to the place where the mouth makes it.", hi: "हर स्वर को उसके उच्चारण-स्थान से जोड़िए।"}
+    prompt: {en: "Match each vowel with the place where the mouth makes it.", hi: "हर स्वर को उसके उच्चारण-स्थान से मिलाइए।"}
     pairs:
       - left: {sa: "अ"}
         right: {text: {en: "throat", hi: "कण्ठ (गला)"}}

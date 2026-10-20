@@ -9,7 +9,7 @@ teaches:
 - case.dat
 needs:
 - case.inst
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -388,8 +388,8 @@ cards:
   - case.dat
   mode: match
   prompt:
-    en: Join each recipient to its meaning.
-    hi: हर पाने वाले को उसके अर्थ से जोड़िए।
+    en: Match each recipient with its meaning.
+    hi: हर पाने वाले को उसके अर्थ से मिलाइए।
   explain:
     en: '{{आय}}, {{आयै}}, {{यै}}: the fourth-case endings.'
     hi: '{{आय}}, {{आयै}}, {{यै}}: चतुर्थी के प्रत्यय।'

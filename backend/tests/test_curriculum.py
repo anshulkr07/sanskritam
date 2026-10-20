@@ -47,9 +47,19 @@ def test_every_engine_claim_and_widget_holds(data):
 
 
 def test_release_gate_blocks_unreviewed_lessons_and_missing_pictures(data):
-    msgs = "\n".join(_messages(errors(validate(data, release=True))))
+    import copy
+    unreviewed = copy.deepcopy(data)
+    unreviewed.lessons["vowels.short"].obj.review = "engine_ok"
+    unreviewed.deliveries.clear()
+    msgs = "\n".join(_messages(errors(validate(unreviewed, release=True))))
     assert "a release needs scholar_ok" in msgs
     assert "not delivered" in msgs
+
+
+def test_current_owner_approved_content_passes_release_gates(data):
+    bad = errors(validate(data, release=True))
+    assert not bad, "\n".join(_messages(bad))
+    assert all(loc.obj.review == "scholar_ok" for loc in data.lessons.values())
 
 
 def _broken_copy(tmp_path, lesson_rel: str, edit) -> object:
@@ -140,6 +150,18 @@ def test_pack_adds_iast_and_engine_inputs(pack):
     assert typed["accept"] == ["कू"] and typed["answers_iast"] == ["kū"]
 
 
+def test_authored_contrast_and_join_match_their_prompts(pack):
+    contrast = next(c for c in pack.lessons["nf1.deva"]["cards"] if c["id"] == "p6")["exercise"]
+    assert not contrast["item"]["abstained"]
+    assert contrast["item"]["a"]["form"] != contrast["item"]["b"]["form"]
+    target = contrast["item"][contrast["answer"]["pick"]]
+    assert (target["form"], target["vibhakti"], target["vacana"]) == ("देवौ", "Prathama", "Dvi")
+    joined = next(c for c in pack.lessons["vs.guna"]["cards"] if c["id"] == "p6")["exercise"]
+    assert not joined["item"]["abstained"]
+    assert (joined["item"]["first"], joined["item"]["second"], joined["answer"]["joined"]) == ("तथा", "इति", "तथेति")
+    assert joined["item"]["options"].count(joined["answer"]["joined"]) == 1
+
+
 def test_index_keeps_each_unit_check_and_marks_planned_units(pack):
     units = {u["id"]: u for a in pack.index["acts"] for p in a["parts"] for u in p["units"]}
     vowels = units["vowels"]
@@ -151,6 +173,38 @@ def test_index_keeps_each_unit_check_and_marks_planned_units(pack):
     for unit in units.values():
         if unit["status"] == "planned":
             assert not unit["lessons"] and unit["revision"] is None and unit["check"] is None
+            assert unit["reading"] is None
+
+
+def test_optional_readings_ship_with_glosses_and_do_not_reset_progress(data, pack):
+    units = [u for a in pack.index["acts"] for p in a["parts"] for u in p["units"]]
+    readings = [u for u in units if u.get("reading")]
+    assert {u["id"] for u in readings} >= {"who-does", "one-two-many", "past", "reading-kss"}
+    required = [s["lesson_id"] for s in course_order(pack.index) if s["role"] not in ("reading", "revision", "coming_soon")]
+    before = derive(pack.index, required)
+    assert before["current"] is None and all(u["done"] for u in before["units"].values())
+    for unit in readings:
+        lid = unit["reading"]["id"]
+        lesson = pack.lessons[lid]
+        assert lesson["template"] == "episode"
+        assert lid not in {l["id"] for l in unit["lessons"]}
+        assert any(c["kind"] == "practice" for c in lesson["cards"])
+        sentences = [s for c in lesson["cards"] if c["kind"] == "reading" for s in c["passage"]]
+        assert sentences and all(s["words"] and s["iast"] for s in sentences)
+        after = derive(pack.index, [*required, lid])
+        assert lid in after["finished"]
+        for key in ("current", "units", "ghosts_freed", "leaves", "acts"):
+            assert after[key] == before[key]
+
+
+def test_checker_requires_episode_template_for_optional_reading(tmp_path):
+    d = _broken_copy(tmp_path, "acts/act-3/past/unit.yaml", lambda raw: raw.update(reading="past.tell"))
+    assert any("reading past.tell uses template scene, expected episode" in m for m in _messages(errors(validate(d))))
+
+
+def test_optional_reading_cannot_need_future_skills(tmp_path):
+    d = _broken_copy(tmp_path, "acts/act-3/past/past.reading.yaml", lambda raw: raw.update(needs=["verb.lrt"]))
+    assert any("needs verb.lrt, which is not taught before it" in m for m in _messages(errors(validate(d))))
 
 
 # ─── Story state ────────────────────────────────────────────────────────────
@@ -228,6 +282,23 @@ def test_state_follows_finished_lessons(client):
     assert client.post("/progress/card-lesson", json={"lesson_id": "prologue"}, headers=h).status_code == 200
     s = client.get("/learn/state", headers=h).json()
     assert s["current"]["lesson_id"] == "vowels.short" and s["version"].startswith("learn-")
+
+
+def test_optional_reading_completion_is_saved_without_advancing_the_road(client):
+    h = _learner(client)
+    before = client.get("/learn/state", headers=h).json()
+    index = _pack_index(client)
+    unit = next(u for a in index["acts"] for p in a["parts"] for u in p["units"] if u["id"] == "past")
+    lid = unit["reading"]["id"]
+    response = client.get("/learn/lessons/" + lid)
+    assert response.status_code == 200 and response.json()["template"] == "episode"
+    assert client.get("/learn/lessons/" + lid, headers={"If-None-Match": response.headers["etag"]}).status_code == 304
+    assert client.post("/progress/card-lesson", json={"lesson_id": lid, "checks_right": 2, "checks_total": 2}, headers=h).status_code == 200
+    assert client.post("/learn/attempts", json={"lesson_id": lid, "results": [{"card_id": "p1", "verdict": "correct"}]}, headers=h).status_code == 200
+    after = client.get("/learn/state", headers=h).json()
+    assert lid in after["finished"]
+    for key in ("current", "units", "ghosts_freed", "leaves", "acts"):
+        assert after[key] == before[key]
 
 
 def test_attempts_schedule_practice_cards_only(client):

@@ -9,7 +9,7 @@ teaches:
 - verb.lit
 needs:
 - verb.lit
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -44,6 +44,18 @@ cards:
       en: Hearing that, bowing, delighted, Kāṇabhūti said to him.
       hi: यह सुनकर, प्रणाम करके, प्रसन्न काणभूति ने उससे कहा।
     source: Kathāsaritsāgara 1.6 (read in the Digital Corpus of Sanskrit)
+  lines:
+  - speaker: vetala
+    sa: उवाच
+    gloss:
+      en: He said.
+      hi: उसने कहा।
+    check:
+      type: tinanta
+      dhatu: वच्
+      lakara: Lit
+      purusha: Prathama
+      vacana: Eka
 - id: t1
   kind: teach
   title:
@@ -251,8 +263,8 @@ cards:
   - verb.lit
   mode: match
   prompt:
-    en: Join each form to its meaning.
-    hi: हर रूप को उसके अर्थ से जोड़िए।
+    en: Match each form with its meaning.
+    hi: हर रूप को उसके अर्थ से मिलाइए।
   explain:
     en: Four story-past verbs.
     hi: कथा के भूतकाल की चार क्रियाएँ।

@@ -10,7 +10,7 @@ teaches:
 needs:
 - script.cons.grid
 - script.vowel.long
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -38,6 +38,7 @@ cards:
     place: guha
     ratio: '4:3'
     id: pg-shiva-s1
+    text_in_image: ["अइउण्", "ऋऌक्", "एओङ्", "ऐऔच्", "हयवरट्", "लण्", "ञमङणनम्", "झभञ्", "घढधष्", "जबगडदश्", "खफछठथचटतव्", "कपय्", "शषसर्", "हल्"]
   narration:
     en: 'The last alcove glows behind a sealed stone, with fourteen short lines of script above it. Beside it sits Padikā, a spirit of whom only a quarter can be seen. “Speech has four quarters,” says Dādī. “Three lie hidden in the cave; people speak the fourth. Pāṇini''s grammar finds the hidden ones, beginning with these lines.” Lubdhaka, at the cave mouth, says: “Open it.”'
     hi: 'अन्तिम आला एक बन्द पत्थर के पीछे चमक रहा है, और उसके ऊपर लिपि की चौदह छोटी पंक्तियाँ हैं। उसके पास पदिका बैठी है, एक भूत जिसका केवल चौथाई भाग दिखता है। “वाणी के चार चरण हैं,” दादी कहती हैं। “तीन गुफा में छिपे हैं; चौथा लोग बोलते हैं। पाणिनि का व्याकरण छिपे हुओं को खोजता है, इन्हीं पंक्तियों से आरम्भ करके।” गुफा के द्वार पर लुब्धक कहता है: “इसे खोलो।”'
@@ -263,8 +264,8 @@ cards:
   - panini.shiva-sutras
   mode: match
   prompt:
-    en: Join each name to its sounds.
-    hi: हर नाम को उसकी ध्वनियों से जोड़िए।
+    en: Match each name with its sounds.
+    hi: हर नाम को उसकी ध्वनियों से मिलाइए।
   explain:
     en: Each name is a letter and a marker.
     hi: हर नाम एक अक्षर और एक संकेत है।

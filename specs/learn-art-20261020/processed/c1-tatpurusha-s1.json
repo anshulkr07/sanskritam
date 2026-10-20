@@ -1,0 +1,840 @@
+{
+  "id": "c1-tatpurusha-s1",
+  "where": "c1.tatpurusha#s1",
+  "ratio": "4:3",
+  "expected": [
+    "राजपुरुषः"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The sixteenth statue holding a staff, a king's crown carved at her feet; Lubdhaka's foreman writing in his notebook; Dādī shaking her head gently and tapping the word; Śuka reading over his shoulder.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsamasika: A small spirit of pale granite made of two slender figures joined at the back, each with a different lotus in hand, who finish each other's sentences.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nराजपुरुषः All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "c1.tatpurusha",
+    "template": "scene",
+    "title": {
+      "en": "X's Y",
+      "hi": "क का ख"
+    },
+    "title_sa": "राजपुरुषः",
+    "minutes": 6,
+    "teaches": [
+      "sam.tatpurusha"
+    ],
+    "needs": [
+      "sam.dvandva"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The sixteenth statue",
+          "hi": "सोलहवीं प्रतिमा"
+        },
+        "image": {
+          "id": "c1-tatpurusha-s1",
+          "brief": "The sixteenth statue holding a staff, a king's crown carved at her feet; Lubdhaka's foreman writing in his notebook; Dādī shaking her head gently and tapping the word; Śuka reading over his shoulder.",
+          "alt": {
+            "en": "A statue holds a staff while an old woman gently corrects a man's notebook",
+            "hi": "दण्ड थामे प्रतिमा, आदमी की पुस्तिका सुधारती दादी"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "samasika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The sixteenth statue holds a staff. “राजपुरुषः,” she says. “Rāja-puruṣaḥ.” Lubdhaka's foreman, who has begun to follow along with his notebook, writes: ‘the king, the man’. “No,” says Dādī. “The king's man. The first word stands for a case ending that has been left off: here, ‘of’. Each of the seven cases can hide in the first half of a compound like this.”",
+          "hi": "सोलहवीं प्रतिमा के हाथ में दण्ड है। “राजपुरुषः,” वह कहती है। “राज-पुरुषः।” लुब्धक का मुखिया, जो अब अपनी पुस्तिका लिए पीछे-पीछे चलने लगा है, लिखता है: ‘राजा, पुरुष’। “नहीं,” दादी कहती हैं। “राजा का पुरुष। पहला शब्द एक ऐसे विभक्ति-प्रत्यय का स्थान लेता है जो छूट गया है: यहाँ, ‘का’। सातों विभक्तियाँ इस तरह के समास के पहले भाग में छिप सकती हैं।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "X's Y",
+          "hi": "क का ख"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.tatpurusha"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "In a {{तत्पुरुषः}} the first word relates to the second as a case would: {{राज्ञः पुरुषः}}, “the king's man”, becomes {{राजपुरुषः}}. The case may be any of seven: {{ग्रामगतः}} (gone to the village), {{वृक्षमूलम्}} (root of a tree), {{विद्यालयः}} (house of learning). The second word gives the gender and ending.",
+          "hi": "{{तत्पुरुषः}} में पहला शब्द दूसरे से वैसे सम्बन्धित होता है जैसे कोई विभक्ति: {{राज्ञः पुरुषः}}, ‘राजा का पुरुष’, से {{राजपुरुषः}}। विभक्ति सात में से कोई भी हो सकती है: {{ग्रामगतः}} (गाँव गया हुआ), {{वृक्षमूलम्}} (वृक्ष की जड़), {{विद्यालयः}} (विद्या का घर)। दूसरा शब्द लिंग और प्रत्यय देता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "तत्पुरुषः",
+          "meaning": {
+            "en": "a compound where the first word stands for a case",
+            "hi": "वह समास जिसमें पहला शब्द किसी विभक्ति का स्थान लेता है"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "X's Y",
+          "hi": "क का ख"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.tatpurusha"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The first word hides a case ending",
+          "hi": "पहला शब्द एक विभक्ति-प्रत्यय छिपाता है"
+        },
+        "columns": [
+          {
+            "en": "Compound",
+            "hi": "समास"
+          },
+          {
+            "en": "Unpacked",
+            "hi": "विग्रह"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "राजपुरुषः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "राजपुरुष",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "राज्ञः पुरुषः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "the king's man (of)",
+                "hi": "राजा का पुरुष (का)"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "विद्यालयः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "विद्यालय",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "विद्यायाः आलयः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "a school, house of learning (of)",
+                "hi": "विद्यालय, विद्या का घर (का)"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "वृक्षमूलम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "वृक्षमूल",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "वृक्षस्य मूलम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "root of a tree (of)",
+                "hi": "वृक्ष की जड़ (की)"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "ग्रामगतः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "ग्रामगत",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ग्रामं गतः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "gone to the village (to)",
+                "hi": "गाँव गया हुआ (को)"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "रामबाणः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "रामबाण",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "रामस्य बाणः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "Rāma's arrow (of)",
+                "hi": "राम का बाण (का)"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "पर्णशाला",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "पर्णशाला",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पर्णैः निर्मिता शाला",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "a hut of leaves (by, with)",
+                "hi": "पत्तों से बनी कुटिया (से)"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "The coloured word is the compound; the second column shows its unpacking, the {{विग्रहः}}.",
+          "hi": "रंगीन शब्द समास है; दूसरा स्तम्भ उसका खोलना दिखाता है, {{विग्रहः}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.tatpurusha"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{राजपुरुषः}} means…",
+          "hi": "{{राजपुरुषः}} का अर्थ…"
+        },
+        "explain": {
+          "en": "The first word stands for “of the king”.",
+          "hi": "पहला शब्द ‘राजा का’ के स्थान पर है।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "the king and the man",
+              "hi": "राजा और पुरुष"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "the king's man",
+              "hi": "राजा का पुरुष"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "the man who is a king",
+              "hi": "वह पुरुष जो राजा है"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.tatpurusha"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each compound to its unpacking.",
+          "hi": "हर समास को उसके विग्रह से जोड़िए।"
+        },
+        "explain": {
+          "en": "Each hides a case ending.",
+          "hi": "हर एक में एक विभक्ति-प्रत्यय छिपा है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "राजपुरुषः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "राज्ञः पुरुषः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "वृक्षमूलम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "वृक्षस्य मूलम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "रामबाणः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "रामस्य बाणः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ग्रामगतः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "ग्रामं गतः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.tatpurusha"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every tatpuruṣa.",
+          "hi": "हर तत्पुरुष छुइए।"
+        },
+        "params": {
+          "passage": [
+            "राजपुरुषः",
+            "राजा",
+            "वृक्षमूलम्",
+            "वृक्षः",
+            "विद्यालयः",
+            "विद्या"
+          ],
+          "targets": [
+            "राजपुरुषः",
+            "वृक्षमूलम्",
+            "विद्यालयः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.tatpurusha"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "compound_unpacker",
+        "prompt": {
+          "en": "Unpack the compound, then name its kind.",
+          "hi": "समास को खोलिए, फिर उसका प्रकार बताइए।"
+        },
+        "params": {
+          "compound": "राजपुरुषः",
+          "parts": [
+            "राज",
+            "पुरुष"
+          ],
+          "kind": "tatpurusha",
+          "vigraha": "राज्ञः पुरुषः",
+          "meaning": {
+            "en": "the king's man",
+            "hi": "राजा का पुरुष"
+          }
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.tatpurusha"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “the king's man comes.”",
+          "hi": "कहिए: ‘राजा का पुरुष आता है।’"
+        },
+        "explain": {
+          "en": "{{राजपुरुषः आगच्छति}}.",
+          "hi": "{{राजपुरुषः आगच्छति}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "राजपुरुषः",
+          "आगच्छति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "The staff",
+          "hi": "दण्ड"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.tatpurusha"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{ग्रामगतः}} means…",
+          "hi": "{{ग्रामगतः}} का अर्थ…"
+        },
+        "explain": {
+          "en": "The first word stands for “to the village” (the second case).",
+          "hi": "पहला शब्द ‘गाँव को’ (द्वितीया) के स्थान पर है।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "village and gone",
+              "hi": "गाँव और गया"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "of the village, gone",
+              "hi": "गाँव का, गया"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "gone to the village",
+              "hi": "गाँव को गया हुआ"
+            },
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“ग्रामगतः,” you say, “gone to the village,” and the staff in her hand begins to bud. A single green shoot unfurls at its tip, as if it had remembered that it was once a branch. “राजपुरुषः,” she says. “The king's man. And I am not any longer a thing he holds but a thing that grows.” Lubdhaka's foreman closes his notebook and, after a moment, opens it again to the first page.",
+            "hi": "“ग्रामगतः,” आप कहते हैं, “गाँव गया हुआ,” और उसके हाथ का दण्ड अंकुरित होने लगता है। उसकी नोक पर एक हरा अंकुर खुलता है, मानो उसे याद आ गया हो कि वह कभी डाल था। “राजपुरुषः,” वह कहती है। “राजा का पुरुष। और अब मैं उसके हाथ की वस्तु नहीं रही, बल्कि उगने वाली वस्तु हूँ।” लुब्धक का मुखिया अपनी पुस्तिका बन्द करता है और, एक क्षण के बाद, उसे फिर पहले पृष्ठ पर खोलता है।"
+          },
+          "failure": {
+            "en": "The staff stays bare. The first word is “to the village”: {{ग्रामगतः}}.",
+            "hi": "दण्ड सूना रहता है। पहला शब्द ‘गाँव को’ है: {{ग्रामगतः}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's X's Y",
+          "hi": "पाणिनि का क का ख"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sam.tatpurusha"
+        ],
+        "sutras": [
+          "2.1.22",
+          "2.2.8",
+          "2.1.24"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 2.1.22, {{तत्पुरुषः}}, names the class. 2.2.8, {{षष्ठी}}, makes the second case-pair for “of” into a compound: {{राज्ञः पुरुषः}} gives {{राजपुरुषः}}. And 2.1.24, {{द्वितीया श्रितातीतपतितगतात्यस्तप्राप्तापन्नैः}}, joins the second case with words like {{गत}}: {{ग्रामगतः}}.",
+          "hi": "सूत्र 2.1.22, {{तत्पुरुषः}}, वर्ग का नाम देता है। 2.2.8, {{षष्ठी}}, ‘का’ वाली षष्ठी को समास बनाता है: {{राज्ञः पुरुषः}} से {{राजपुरुषः}}। और 2.1.24, {{द्वितीया श्रितातीतपतितगतात्यस्तप्राप्तापन्नैः}}, द्वितीया को {{गत}} जैसे शब्दों से जोड़ता है: {{ग्रामगतः}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "X's Y",
+          "hi": "क का ख"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "राजपुरुषः",
+            "text": {
+              "en": "The king's man.",
+              "hi": "राजा का पुरुष।"
+            }
+          },
+          {
+            "sa": "विद्यालयः · वृक्षमूलम्",
+            "text": {
+              "en": "House of learning; root of a tree.",
+              "hi": "विद्या का घर; वृक्ष की जड़।"
+            }
+          },
+          {
+            "sa": "ग्रामगतः",
+            "text": {
+              "en": "Gone to the village.",
+              "hi": "गाँव गया हुआ।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "c1-tatpurusha-s1",
+    "brief": "The sixteenth statue holding a staff, a king's crown carved at her feet; Lubdhaka's foreman writing in his notebook; Dādī shaking her head gently and tapping the word; Śuka reading over his shoulder.",
+    "alt": {
+      "en": "A statue holds a staff while an old woman gently corrects a man's notebook",
+      "hi": "दण्ड थामे प्रतिमा, आदमी की पुस्तिका सुधारती दादी"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "samasika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The sixteenth statue holding a staff, a king's crown carved at her feet; Lubdhaka's foreman writing in his notebook; Dādī shaking her head gently and tapping the word; Śuka reading over his shoulder.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsamasika: A small spirit of pale granite made of two slender figures joined at the back, each with a different lotus in hand, who finish each other's sentences.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-25f1c3fb-07c2-4660-a799-028c05526dad.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "946ecd76c6e228e59695fc74af2fda4adf3ccca12c05b0742f60533b9251d367",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\c1-tatpurusha-s1-phone-894fccc6.webp",
+      "key": "learn/c1-tatpurusha-s1-phone-894fccc6.webp",
+      "sha256": "894fccc6ac3bf1b773a4538d2088455d6313bb8a11c672c18e1e243d3c01853a",
+      "bytes": 96972,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/c1-tatpurusha-s1-phone-894fccc6.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\c1-tatpurusha-s1-tablet-dd46689f.webp",
+      "key": "learn/c1-tatpurusha-s1-tablet-dd46689f.webp",
+      "sha256": "dd46689fed032ca47f7a5878183b1edcfe6c5dc42de71a95f59a8f66f852a9ef",
+      "bytes": 363410,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/c1-tatpurusha-s1-tablet-dd46689f.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

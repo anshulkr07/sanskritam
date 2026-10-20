@@ -1,0 +1,604 @@
+{
+  "id": "reading-syllables-s1",
+  "where": "reading.syllables#s1",
+  "ratio": "4:3",
+  "expected": [
+    "मौनी"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The temple library: Dādī lowers a huge cloth-bound register onto the low reading desk; between the shelves a tall thin pale-gold spirit stands with one finger to his lips and a scroll under his arm; you and Śuka watching.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nmauni: A tall, thin, pale-gold spirit with a finger to his lips and a scroll tucked under his arm.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nमौनी All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "reading.syllables",
+    "template": "scene",
+    "title": {
+      "en": "One vowel, one syllable",
+      "hi": "एक स्वर, एक अक्षर"
+    },
+    "title_sa": "अक्षराणि",
+    "minutes": 6,
+    "teaches": [
+      "read.syllables"
+    ],
+    "needs": [
+      "script.numerals",
+      "script.conjunct"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The old register",
+          "hi": "पुराना रजिस्टर"
+        },
+        "image": {
+          "id": "reading-syllables-s1",
+          "brief": "The temple library: Dādī lowers a huge cloth-bound register onto the low reading desk; between the shelves a tall thin pale-gold spirit stands with one finger to his lips and a scroll under his arm; you and Śuka watching.",
+          "alt": {
+            "en": "A grandmother lowers a huge register while a tall pale-gold spirit stands with a finger to his lips",
+            "hi": "विशाल रजिस्टर उतारती दादी और होंठों पर उँगली रखे सुनहरा भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "mauni"
+          ],
+          "place": "granthalaya"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Back in the temple library, Dādī lifts down a huge cloth-bound register: names, names, names, in columns. Nidrālu's carved clue brought you here. Between the shelves stands a tall, thin, pale-gold spirit with a finger pressed to his lips. He cannot say a word.",
+          "hi": "मंदिर के ग्रंथालय में दादी कपड़े में बँधा एक विशाल रजिस्टर उतारती हैं: नाम, नाम, नाम, स्तम्भों में। निद्रालु का खुदा संकेत आपको यहीं लाया। अलमारियों के बीच एक लम्बा, दुबला, हल्का सुनहरा भूत खड़ा है, उँगली होंठों पर रखे। वह एक शब्द नहीं बोल पाता।"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "पश्य। मौनी।",
+            "gloss": {
+              "en": "Look. Maunī, the silent one.",
+              "hi": "देखो। मौनी, चुप रहने वाला।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Count the vowels",
+          "hi": "स्वर गिनिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.syllables"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A syllable, an {{अक्षरम्}}, has exactly one vowel, with the consonants that go with it. Count the vowels and you have counted the syllables: {{रा}}-{{मः}} has two.",
+          "hi": "अक्षर में ठीक एक स्वर होता है, और उसके साथ के व्यंजन। स्वर गिन लीजिए तो अक्षर गिन लिए: {{रा}}-{{मः}} में दो अक्षर हैं।"
+        },
+        "examples": [],
+        "rows": [
+          {
+            "sa": "रामः",
+            "gloss": {
+              "en": "{{रा}} {{मः}}: 2",
+              "hi": "{{रा}} {{मः}}: 2 अक्षर"
+            },
+            "check": null
+          },
+          {
+            "sa": "सीता",
+            "gloss": {
+              "en": "{{सी}} {{ता}}: 2",
+              "hi": "{{सी}} {{ता}}: 2 अक्षर"
+            },
+            "check": null
+          },
+          {
+            "sa": "लक्ष्मणः",
+            "gloss": {
+              "en": "{{लक्}} {{ष्म}} {{णः}}: 3",
+              "hi": "{{लक्}} {{ष्म}} {{णः}}: 3 अक्षर"
+            },
+            "check": null
+          }
+        ],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "अक्षरम्",
+          "meaning": {
+            "en": "a syllable (also: a letter)",
+            "hi": "अक्षर (वर्ण भी)"
+          }
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.syllables"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "How many syllables does {{सीता}} have?",
+          "hi": "{{सीता}} में कितने अक्षर हैं?"
+        },
+        "explain": {
+          "en": "{{सी}}-{{ता}}: two vowels, two syllables.",
+          "hi": "{{सी}}-{{ता}}: दो स्वर, दो अक्षर।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "one",
+              "hi": "एक"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "two",
+              "hi": "दो"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "three",
+              "hi": "तीन"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "show"
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Joined letters count once",
+          "hi": "संयुक्ताक्षर एक बार गिने जाते हैं"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.syllables"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A joined letter has no vowel inside it, so it adds no syllable. {{सत्यम्}} has two vowels, two syllables: {{सत्}}-{{यम्}}.",
+          "hi": "संयुक्ताक्षर के भीतर स्वर नहीं होता, इसलिए वह अक्षर नहीं बढ़ाता। {{सत्यम्}} में दो स्वर हैं, दो अक्षर: {{सत्}}-{{यम्}}।"
+        },
+        "examples": [
+          {
+            "sa": "सत्यम्",
+            "meaning": {
+              "en": "truth: two syllables",
+              "hi": "सत्य: दो अक्षर"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "सत्य",
+              "linga": "Napumsaka",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "लक्ष्मणः",
+            "meaning": {
+              "en": "Lakṣmaṇa: three syllables",
+              "hi": "लक्ष्मण: तीन अक्षर"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "लक्ष्मण",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.syllables"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every name with exactly three syllables.",
+          "hi": "ठीक तीन अक्षरों वाले हर नाम को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "रामः",
+            "लक्ष्मणः",
+            "सीता",
+            "हनुमान्",
+            "भरतः",
+            "गङ्गा"
+          ],
+          "targets": [
+            "लक्ष्मणः",
+            "हनुमान्",
+            "भरतः"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.syllables"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each name to its number of syllables.",
+          "hi": "हर नाम को उसके अक्षरों की संख्या से जोड़िए।"
+        },
+        "explain": {
+          "en": "Count the vowels.",
+          "hi": "स्वर गिनिए।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "रामः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "two",
+                "hi": "दो"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "लक्ष्मणः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "three",
+                "hi": "तीन"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "सीता",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "two",
+                "hi": "दो"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "हनुमान्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "three",
+                "hi": "तीन"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "A name aloud",
+          "hi": "एक नाम ज़ोर से"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.syllables"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Maunī taps the register. Put the syllables of {{हनुमान्}} in order.",
+          "hi": "मौनी रजिस्टर थपथपाता है। {{हनुमान्}} के अक्षर क्रम में लगाइए।"
+        },
+        "explain": {
+          "en": "{{ह}}-{{नु}}-{{मान्}}: three vowels, three syllables.",
+          "hi": "{{ह}}-{{नु}}-{{मान्}}: तीन स्वर, तीन अक्षर।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "ह",
+          "नु",
+          "मान्"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "You say it slowly: ha, nu, mān. The tall spirit's lips tremble as if he nearly spoke.",
+            "hi": "आप धीरे-धीरे बोलते हैं: ह, नु, मान्। लम्बे भूत के होंठ काँपते हैं मानो वह बोलने ही वाला हो।"
+          },
+          "failure": {
+            "en": "The word comes out tangled. Say one vowel at a time: {{ह}} first.",
+            "hi": "शब्द उलझा निकलता है। एक-एक स्वर बोलिए: पहले {{ह}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.syllables"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which word has two syllables?",
+          "hi": "किस शब्द में दो अक्षर हैं?"
+        },
+        "explain": {
+          "en": "{{रा}}-{{मः}}: two vowels.",
+          "hi": "{{रा}}-{{मः}}: दो स्वर।"
+        },
+        "options": [
+          {
+            "sa": "रामः",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "लक्ष्मणः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "हनुमान्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Syllables",
+          "hi": "अक्षर"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": null,
+            "text": {
+              "en": "One vowel, one syllable.",
+              "hi": "एक स्वर, एक अक्षर।"
+            }
+          },
+          {
+            "sa": "रा-मः",
+            "text": {
+              "en": "Count the vowels to count the syllables.",
+              "hi": "अक्षर गिनने के लिए स्वर गिनिए।"
+            }
+          },
+          {
+            "sa": "सत्-यम्",
+            "text": {
+              "en": "A joined letter adds no syllable.",
+              "hi": "संयुक्ताक्षर अक्षर नहीं बढ़ाता।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "reading-syllables-s1",
+    "brief": "The temple library: Dādī lowers a huge cloth-bound register onto the low reading desk; between the shelves a tall thin pale-gold spirit stands with one finger to his lips and a scroll under his arm; you and Śuka watching.",
+    "alt": {
+      "en": "A grandmother lowers a huge register while a tall pale-gold spirit stands with a finger to his lips",
+      "hi": "विशाल रजिस्टर उतारती दादी और होंठों पर उँगली रखे सुनहरा भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "mauni"
+    ],
+    "place": "granthalaya"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The temple library: Dādī lowers a huge cloth-bound register onto the low reading desk; between the shelves a tall thin pale-gold spirit stands with one finger to his lips and a scroll under his arm; you and Śuka watching.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nmauni: A tall, thin, pale-gold spirit with a finger to his lips and a scroll tucked under his arm.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-0175684c-0061-4752-962b-7bb64d64161c.png",
+  "policy_version": "2026-10-20-full-text-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "e8381f0a3cfe3bd2fed25b71453e77fb674bac85e8fc67d1269d915223fe842e",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\reading-syllables-s1-phone-6d5ed090.webp",
+      "key": "learn/reading-syllables-s1-phone-6d5ed090.webp",
+      "sha256": "6d5ed090e899313f43580c634666d13cf004e914dfcef866aabfedccfe80e157",
+      "bytes": 103432,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/reading-syllables-s1-phone-6d5ed090.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\reading-syllables-s1-tablet-85f64166.webp",
+      "key": "learn/reading-syllables-s1-tablet-85f64166.webp",
+      "sha256": "85f641669525c5672c6b3412d57a97e03d5cf0127875b94bf2a7b83efe0d96ce",
+      "bytes": 417842,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/reading-syllables-s1-tablet-85f64166.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

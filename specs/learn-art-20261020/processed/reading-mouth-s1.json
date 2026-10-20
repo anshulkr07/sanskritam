@@ -1,0 +1,651 @@
+{
+  "id": "reading-mouth-s1",
+  "where": "reading.mouth#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Dādī setting a small brass hand mirror on the low reading desk beside the register; the pale-gold spirit Maunī pointing from the register to his own mouth; Śuka on the shelf looking at himself in the mirror.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nmauni: A tall, thin, pale-gold spirit with a finger to his lips and a scroll tucked under his arm.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "source": {
+    "id": "reading.mouth",
+    "template": "scene",
+    "title": {
+      "en": "Where every sound is made",
+      "hi": "हर ध्वनि का स्थान"
+    },
+    "title_sa": "स्थानप्रयत्नौ",
+    "minutes": 6,
+    "teaches": [
+      "read.places"
+    ],
+    "needs": [
+      "script.cons.grid",
+      "script.vowel.compound"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The mouth lesson",
+          "hi": "मुँह का पाठ"
+        },
+        "image": {
+          "id": "reading-mouth-s1",
+          "brief": "Dādī setting a small brass hand mirror on the low reading desk beside the register; the pale-gold spirit Maunī pointing from the register to his own mouth; Śuka on the shelf looking at himself in the mirror.",
+          "alt": {
+            "en": "A grandmother sets a brass mirror on a desk while a silent spirit points to his mouth",
+            "hi": "पीतल का दर्पण रखती दादी और अपने मुँह की ओर इशारा करता भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "mauni"
+          ],
+          "place": "granthalaya"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Maunī points at the register and then at his own mouth. Dādī understands: “To read his name properly you must know how each sound is made, where the mouth is, and what it does.” She sets a small brass mirror on the desk.",
+          "hi": "मौनी रजिस्टर की ओर, फिर अपने मुँह की ओर इशारा करता है। दादी समझ जाती हैं, “उसका नाम ठीक से पढ़ने के लिए जानना होगा कि हर ध्वनि कैसे बनती है, मुँह कहाँ है और क्या करता है।” वह मेज़ पर एक छोटा पीतल का दर्पण रख देती हैं।"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Place and effort",
+          "hi": "स्थान और प्रयत्न"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.places"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Every sound has a place, where the tongue or lips work, and an effort, how closely they work. Vowels leave the mouth open. Semivowels barely touch. Hisses almost touch. The five rows touch fully.",
+          "hi": "हर ध्वनि का एक स्थान होता है, जहाँ जीभ या होंठ काम करते हैं, और एक प्रयत्न, यानी वे कितना पास आते हैं। स्वर मुँह खुला रखते हैं। अन्तःस्थ बस छूते हैं। ऊष्म लगभग छूते हैं। पाँच वर्ग पूरी तरह छूते हैं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "प्रयत्नः",
+          "meaning": {
+            "en": "effort: how closely the mouth works",
+            "hi": "प्रयत्न: मुँह कितना पास आता है"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "The four efforts",
+          "hi": "चार प्रयत्न"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.places"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "How closely the mouth works",
+          "hi": "मुँह कितना पास आता है"
+        },
+        "columns": [
+          {
+            "en": "Group",
+            "hi": "समूह"
+          },
+          {
+            "en": "The mouth",
+            "hi": "मुँह"
+          },
+          {
+            "en": "Letters",
+            "hi": "अक्षर"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "vowels",
+                "hi": "स्वर"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "open, nothing touches",
+                "hi": "खुला, कुछ नहीं छूता"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अ इ उ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "hisses",
+                "hi": "ऊष्म"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "almost touches",
+                "hi": "लगभग छूता"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "श ष स ह",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "semivowels",
+                "hi": "अन्तःस्थ"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "touches lightly",
+                "hi": "हल्का छूता"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "य र ल व",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "the five rows",
+                "hi": "पाँच वर्ग"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "touches fully",
+                "hi": "पूरा छूता"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "क च ट त प",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": null
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.places"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mouth_map",
+        "prompt": {
+          "en": "Tap the sounds that use two places, and watch both light up.",
+          "hi": "दो स्थानों वाली ध्वनियों को छुइए और दोनों को जलते देखिए।"
+        },
+        "params": {
+          "letters": [
+            "अ",
+            "इ",
+            "उ",
+            "ए",
+            "ओ",
+            "व",
+            "ङ",
+            "म"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Two places at once",
+          "hi": "एक साथ दो स्थान"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.places"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Some sounds use two places. {{ए}} is throat + palate; {{ओ}} is throat + lips; {{व}} is teeth + lips. Each nasal uses the nose and its own row: {{ङ}} throat + nose, {{म}} lips + nose.",
+          "hi": "कुछ ध्वनियाँ दो स्थानों का उपयोग करती हैं। {{ए}} कण्ठ + तालु है; {{ओ}} कण्ठ + ओष्ठ; {{व}} दन्त + ओष्ठ। हर नासिक्य नाक और अपनी पंक्ति का स्थान लेता है: {{ङ}} कण्ठ + नाक, {{म}} ओष्ठ + नाक।"
+        },
+        "examples": [],
+        "rows": [
+          {
+            "sa": "ए",
+            "gloss": {
+              "en": "throat and palate",
+              "hi": "कण्ठ और तालु"
+            },
+            "check": null
+          },
+          {
+            "sa": "ओ",
+            "gloss": {
+              "en": "throat and lips",
+              "hi": "कण्ठ और ओष्ठ"
+            },
+            "check": null
+          },
+          {
+            "sa": "व",
+            "gloss": {
+              "en": "teeth and lips",
+              "hi": "दन्त और ओष्ठ"
+            },
+            "check": null
+          },
+          {
+            "sa": "ङ",
+            "gloss": {
+              "en": "throat and nose",
+              "hi": "कण्ठ और नाक"
+            },
+            "check": null
+          }
+        ],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.places"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each sound to its places.",
+          "hi": "हर ध्वनि को उसके स्थानों से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{ए}} {{ओ}} {{व}} {{म}} each use two places.",
+          "hi": "{{ए}} {{ओ}} {{व}} {{म}} हर एक दो स्थानों का उपयोग करता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "ए",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "throat and palate",
+                "hi": "कण्ठ और तालु"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ओ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "throat and lips",
+                "hi": "कण्ठ और ओष्ठ"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "व",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "teeth and lips",
+                "hi": "दन्त और ओष्ठ"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "म",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "lips and nose",
+                "hi": "ओष्ठ और नाक"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": {
+          "en": "The mirror",
+          "hi": "दर्पण"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.places"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which sound is made at the throat and the lips together?",
+          "hi": "कौन-सी ध्वनि कण्ठ और होंठ दोनों से बनती है?"
+        },
+        "explain": {
+          "en": "{{ओ}}: throat + lips. {{ए}} and {{ऐ}} use the throat + palate.",
+          "hi": "{{ओ}}: कण्ठ + ओष्ठ। {{ए}} और {{ऐ}} कण्ठ + तालु लेते हैं।"
+        },
+        "options": [
+          {
+            "sa": "ए",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "ओ",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "ऐ",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "Maunī shapes his lips into an ‘o’ in the mirror. A breath comes out, the first sound he has made in a very long time: “ओ…”",
+            "hi": "मौनी दर्पण में होंठों को ‘ओ’ का आकार देता है। साँस निकलती है, बहुत लम्बे समय में उसकी पहली ध्वनि: “ओ…”"
+          },
+          "failure": {
+            "en": "The mirror shows nothing new. Try again, with the throat and the lips.",
+            "hi": "दर्पण में कुछ नया नहीं दिखता। फिर कोशिश कीजिए: कण्ठ और होंठ से।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.places"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every letter made with the lips.",
+          "hi": "होंठों से बनने वाले हर अक्षर को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "प",
+            "क",
+            "फ",
+            "त",
+            "ब",
+            "च",
+            "भ",
+            "म"
+          ],
+          "targets": [
+            "प",
+            "फ",
+            "ब",
+            "भ",
+            "म"
+          ]
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "The test for ‘same kind’",
+          "hi": "‘एक-सा’ की कसौटी"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "read.places"
+        ],
+        "sutras": [
+          "1.1.9"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 1.1.9 says sounds with the same place and the same effort are {{सवर्ण}}, of one kind: {{इ}} and {{ई}} differ only in length; {{क}} and {{ख}} share a place but not an effort.",
+          "hi": "सूत्र 1.1.9 कहता है कि जिन ध्वनियों का स्थान और प्रयत्न एक हो, वे {{सवर्ण}} हैं: {{इ}} और {{ई}} केवल लम्बाई में अलग हैं; {{क}} और {{ख}} का स्थान एक है, पर प्रयत्न नहीं।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "सवर्णम्",
+          "meaning": {
+            "en": "of one kind: same place and effort",
+            "hi": "एक-सा: वही स्थान और प्रयत्न"
+          }
+        }
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Place and effort",
+          "hi": "स्थान और प्रयत्न"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": null,
+            "text": {
+              "en": "Every sound has a place and an effort.",
+              "hi": "हर ध्वनि का स्थान और प्रयत्न होता है।"
+            }
+          },
+          {
+            "sa": "ए ओ व",
+            "text": {
+              "en": "Some sounds use two places.",
+              "hi": "कुछ ध्वनियाँ दो स्थान लेती हैं।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Vowels open; hisses almost touch; semivowels touch lightly; rows touch fully.",
+              "hi": "स्वर खुले; ऊष्म लगभग छूते; अन्तःस्थ हल्का; वर्ग पूरा।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "reading-mouth-s1",
+    "brief": "Dādī setting a small brass hand mirror on the low reading desk beside the register; the pale-gold spirit Maunī pointing from the register to his own mouth; Śuka on the shelf looking at himself in the mirror.",
+    "alt": {
+      "en": "A grandmother sets a brass mirror on a desk while a silent spirit points to his mouth",
+      "hi": "पीतल का दर्पण रखती दादी और अपने मुँह की ओर इशारा करता भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "mauni"
+    ],
+    "place": "granthalaya"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Dādī setting a small brass hand mirror on the low reading desk beside the register; the pale-gold spirit Maunī pointing from the register to his own mouth; Śuka on the shelf looking at himself in the mirror.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nmauni: A tall, thin, pale-gold spirit with a finger to his lips and a scroll tucked under his arm.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-0553245d-483c-4ac1-9c98-ba1944da71e0.png",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "881c02e20d503572c868b8f64372d2c854344c7554c36696da9bf3b1b1201d36",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\reading-mouth-s1-phone-36cc52d1.webp",
+      "key": "learn/reading-mouth-s1-phone-36cc52d1.webp",
+      "sha256": "36cc52d15c73033dfaabca2e6f2c48bdee6781d695b3355251b3166a8ddf316c",
+      "bytes": 103026,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/reading-mouth-s1-phone-36cc52d1.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\reading-mouth-s1-tablet-598bc5c5.webp",
+      "key": "learn/reading-mouth-s1-tablet-598bc5c5.webp",
+      "sha256": "598bc5c5793d0d6278cee35b1f9d3d1242acb1084074df8e6c773e9516085674",
+      "bytes": 407990,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/reading-mouth-s1-tablet-598bc5c5.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

@@ -9,7 +9,7 @@ teaches:
 - krt.shatr
 needs:
 - krt.kta
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -46,6 +46,19 @@ cards:
       en: So Yogananda thought, blazing with anger.
       hi: इस प्रकार योगनन्द ने क्रोध से जलते हुए सोचा।
     source: Kathāsaritsāgara 1.5 (read in the Digital Corpus of Sanskrit)
+  lines:
+  - speaker: sankshepaka
+    sa: गच्छन्
+    gloss:
+      en: Going.
+      hi: जाता हुआ।
+    check:
+      type: krdanta
+      dhatu: गम्
+      krt: Satf
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
 - id: t1
   kind: teach
   title:
@@ -439,8 +452,8 @@ cards:
   - krt.shatr
   mode: match
   prompt:
-    en: Join each root to its “while …” form.
-    hi: हर धातु को उसके ‘… हुए’ रूप से जोड़िए।
+    en: Match each root with its “while …” form.
+    hi: हर धातु को उसके ‘… हुए’ रूप से मिलाइए।
   explain:
     en: 'The class sign shows: {{गच्छ}}, {{कुर्व}}.'
     hi: 'गण-चिह्न दिखता है: {{गच्छ}}, {{कुर्व}}।'
@@ -491,8 +504,8 @@ cards:
   - krt.shatr
   widget: word_factory
   prompt:
-    en: Snap a suffix onto a root and see the word it makes.
-    hi: धातु पर प्रत्यय जोड़िए और देखिए कि कौन-सा शब्द बनता है।
+    en: Pick a root and a suffix, and see the word they make.
+    hi: एक धातु और एक प्रत्यय चुनिए और देखिए कि कौन-सा शब्द बनता है।
   params:
     roots:
     - dhatu: पठ्

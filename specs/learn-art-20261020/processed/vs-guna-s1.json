@@ -1,0 +1,917 @@
+{
+  "id": "vs-guna-s1",
+  "where": "vs.guna#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The second statue, a woman holding a conch, with Śuka on Dādī's shoulder counting on his claws; Lubdhaka's foreman looking on with arms folded; the first statue beside her with a lotus; morning light on the dig.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsvarika: A small spirit of cool grey stone in the shape of a young woman holding a lotus, with a fine crack down one cheek and eyes of pale gold.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "vs.guna",
+    "template": "scene",
+    "title": {
+      "en": "When अ meets इ or उ",
+      "hi": "जब अ इ या उ से मिले"
+    },
+    "title_sa": "गणेशः",
+    "minutes": 6,
+    "teaches": [
+      "sandhi.guna"
+    ],
+    "needs": [
+      "sandhi.savarna"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The second statue",
+          "hi": "दूसरी प्रतिमा"
+        },
+        "image": {
+          "id": "vs-guna-s1",
+          "brief": "The second statue, a woman holding a conch, with Śuka on Dādī's shoulder counting on his claws; Lubdhaka's foreman looking on with arms folded; the first statue beside her with a lotus; morning light on the dig.",
+          "alt": {
+            "en": "A stone statue holding a conch while a parrot counts on his claws and a foreman watches",
+            "hi": "शंख थामे पत्थर की प्रतिमा, पंजों पर गिनता तोता, देखता मुखिया"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "svarika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The second statue holds a conch. “गणेशः,” she says, and “महोत्सवः,” and “सप्तर्षयः.” “These are different,” says Śuka, who has been counting. “In the first, two vowels became one long one. Here, a vowel turned into something else.” “Yes,” says Dādī. “When अ meets इ or उ, it does not merge: it strengthens.”",
+          "hi": "दूसरी प्रतिमा के हाथ में शंख है। “गणेशः,” वह कहती है, और “महोत्सवः,” और “सप्तर्षयः।” “ये अलग हैं,” शुक कहता है, जो गिन रहा था। “पहले में दो स्वर मिलकर एक दीर्घ बने थे। यहाँ एक स्वर कुछ और बन गया है।” “हाँ,” दादी कहती हैं। “जब अ इ या उ से मिलता है, तो वह मिलता नहीं: वह बलवान् हो जाता है।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Strengthening",
+          "hi": "बलवान् होना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.guna"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "When {{अ}} or {{आ}} meets {{इ}} or {{ई}}, the result is {{ए}}; with {{उ}} or {{ऊ}}, it is {{ओ}}; with {{ऋ}}, it is {{अर्}}. {{गण + ईशः}} gives {{गणेशः}}, {{महा + उत्सवः}} gives {{महोत्सवः}}, {{सप्त + ऋषयः}} gives {{सप्तर्षयः}}. This is {{गुणः}}.",
+          "hi": "जब {{अ}} या {{आ}}, {{इ}} या {{ई}} से मिलते हैं तो {{ए}} बनता है; {{उ}} या {{ऊ}} से {{ओ}}; {{ऋ}} से {{अर्}}। {{गण + ईशः}} से {{गणेशः}}, {{महा + उत्सवः}} से {{महोत्सवः}}, {{सप्त + ऋषयः}} से {{सप्तर्षयः}}। यह {{गुणः}} है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "गुणः",
+          "meaning": {
+            "en": "strengthening: अ→अ, इ→ए, उ→ओ, ऋ→अर्",
+            "hi": "बलवान् होना: इ→ए, उ→ओ, ऋ→अर्"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Guṇa",
+          "hi": "गुण"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.guna"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "अ meets इ, उ or ऋ",
+          "hi": "अ का इ, उ या ऋ से मिलना"
+        },
+        "columns": [
+          {
+            "en": "First word",
+            "hi": "पहला शब्द"
+          },
+          {
+            "en": "Second word",
+            "hi": "दूसरा शब्द"
+          },
+          {
+            "en": "Joined",
+            "hi": "जुड़ा हुआ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "उप",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "इन्द्रः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "उपेन्द्रः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "उप",
+                "second": "इन्द्रः",
+                "joined": "उपेन्द्रः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "महा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ईश्वरः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "महेश्वरः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "महा",
+                "second": "ईश्वरः",
+                "joined": "महेश्वरः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "गण",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ईशः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गणेशः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "गण",
+                "second": "ईशः",
+                "joined": "गणेशः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "सूर्य",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "उदयः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सूर्योदयः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "सूर्य",
+                "second": "उदयः",
+                "joined": "सूर्योदयः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "महा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "उत्सवः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "महोत्सवः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "महा",
+                "second": "उत्सवः",
+                "joined": "महोत्सवः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "देव",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ऋषिः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "देवर्षिः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "देव",
+                "second": "ऋषिः",
+                "joined": "देवर्षिः",
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "सप्त",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ऋषयः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "सप्तर्षयः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "sandhi",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": "सप्त",
+                "second": "ऋषयः",
+                "joined": "सप्तर्षयः",
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{अ}}/{{आ}} + {{इ}}/{{ई}} = {{ए}}; + {{उ}}/{{ऊ}} = {{ओ}}; + {{ऋ}} = {{अर्}}.",
+          "hi": "{{अ}}/{{आ}} + {{इ}}/{{ई}} = {{ए}}; + {{उ}}/{{ऊ}} = {{ओ}}; + {{ऋ}} = {{अर्}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.guna"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Split the joined word {{गणेशः}}.",
+          "hi": "जुड़े शब्द {{गणेशः}} को तोड़िए।"
+        },
+        "explain": {
+          "en": "{{गण}} + {{ईशः}}.",
+          "hi": "{{गण}} + {{ईशः}}।"
+        },
+        "options": [
+          {
+            "sa": "गण + ईशः",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "गणि + ईशः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "गणु + ईशः",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.guna"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{महा + उत्सवः}} gives…",
+          "hi": "{{महा + उत्सवः}} से…"
+        },
+        "explain": {
+          "en": "{{आ}} + {{उ}} = {{ओ}}.",
+          "hi": "{{आ}} + {{उ}} = {{ओ}}।"
+        },
+        "options": [
+          {
+            "sa": "महाउत्सवः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "महौत्सवः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "महोत्सवः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.guna"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Join: {{गण}} + {{ईशः}}.",
+          "hi": "जोड़िए: {{गण}} + {{ईशः}}।"
+        },
+        "explain": {
+          "en": "{{गणेशः}}: “lord of the hosts”.",
+          "hi": "{{गणेशः}}: ‘गणों का स्वामी’।"
+        },
+        "options": [],
+        "answers": [
+          "गणेशः"
+        ],
+        "tiles": [
+          "गणे",
+          "शः",
+          "ईशः",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.guna"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each word to its parts.",
+          "hi": "हर शब्द को उसके भागों से जोड़िए।"
+        },
+        "explain": {
+          "en": "The vowel strengthens.",
+          "hi": "स्वर बलवान् हो जाता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "उपेन्द्रः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "उप + इन्द्रः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "सूर्योदयः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "सूर्य + उदयः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "महर्षिः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "महा + ऋषिः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "सप्तर्षयः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "सप्त + ऋषयः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.guna"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word with guṇa (an {{ए}}, {{ओ}} or {{अर्}} made by joining).",
+          "hi": "गुण वाला हर शब्द छुइए (जुड़ने से बना {{ए}}, {{ओ}} या {{अर्}})।"
+        },
+        "params": {
+          "passage": [
+            "गणेशः",
+            "विद्यालयः",
+            "महोत्सवः",
+            "महात्मा",
+            "सप्तर्षयः",
+            "सूक्तम्"
+          ],
+          "targets": [
+            "गणेशः",
+            "महोत्सवः",
+            "सप्तर्षयः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.guna"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "sandhi_mixer",
+        "prompt": {
+          "en": "Pick a pair and join it: see the word and the rule.",
+          "hi": "एक जोड़ी चुनिए और जोड़िए: शब्द और नियम देखिए।"
+        },
+        "params": {
+          "pairs": [
+            {
+              "first": "उप",
+              "second": "इन्द्रः",
+              "joined": "उपेन्द्रः",
+              "sutras": [
+                "6.1.87"
+              ]
+            },
+            {
+              "first": "महा",
+              "second": "ईश्वरः",
+              "joined": "महेश्वरः",
+              "sutras": [
+                "6.1.87"
+              ]
+            },
+            {
+              "first": "सूर्य",
+              "second": "उदयः",
+              "joined": "सूर्योदयः",
+              "sutras": [
+                "6.1.87"
+              ]
+            },
+            {
+              "first": "देव",
+              "second": "ऋषिः",
+              "joined": "देवर्षिः",
+              "sutras": [
+                "6.1.87"
+              ]
+            }
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The conch",
+          "hi": "शंख"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.guna"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{देव + ऋषिः}} gives…",
+          "hi": "{{देव + ऋषिः}} से…"
+        },
+        "explain": {
+          "en": "{{अ}} + {{ऋ}} = {{अर्}}.",
+          "hi": "{{अ}} + {{ऋ}} = {{अर्}}।"
+        },
+        "options": [
+          {
+            "sa": "देवृषिः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "देवैषिः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "देवर्षिः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“देवर्षिः,” you say, “a sage of the gods,” and the conch statue lifts her shell to her lips. A low sound spreads through the dig, so deep that the ropes and lamps tremble. Lubdhaka's foreman looks at his own hands. “She said it,” he says, uneasily, “before you did.” “No,” says Dādī, gently. “You were listening.”",
+            "hi": "“देवर्षिः,” आप कहते हैं, “देवताओं के ऋषि,” और शंख वाली प्रतिमा अपना शंख होंठों तक उठाती है। एक गहरी ध्वनि खुदाई में फैलती है, इतनी गहरी कि रस्सियाँ और दीपक काँप उठते हैं। लुब्धक का मुखिया अपने हाथों को देखता है। “उसने पहले कहा,” वह बेचैनी से कहता है, “आपके कहने से पहले।” “नहीं,” दादी कोमलता से कहती हैं। “आप सुन रहे थे।”"
+          },
+          "failure": {
+            "en": "No sound comes. {{अ}} + {{ऋ}} = {{अर्}}: {{देवर्षिः}}.",
+            "hi": "कोई ध्वनि नहीं आती। {{अ}} + {{ऋ}} = {{अर्}}: {{देवर्षिः}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's guṇa",
+          "hi": "पाणिनि का गुण"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sandhi.guna"
+        ],
+        "sutras": [
+          "6.1.87",
+          "1.1.2"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 6.1.87, {{आद्गुणः}}, says that after {{अ}} or {{आ}}, a following vowel merges with it into its guṇa. 1.1.2, {{अदेङ् गुणः}}, names {{अ}}, {{ए}}, {{ओ}} guṇa. So {{अ + इ}} gives {{ए}}, {{अ + उ}} gives {{ओ}}.",
+          "hi": "सूत्र 6.1.87, {{आद्गुणः}}, कहता है कि {{अ}} या {{आ}} के बाद आने वाला स्वर उसके साथ मिलकर अपने गुण में बदल जाता है। 1.1.2, {{अदेङ् गुणः}}, {{अ}}, {{ए}}, {{ओ}} को गुण कहता है। इसलिए {{अ + इ}} से {{ए}}, {{अ + उ}} से {{ओ}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Guṇa",
+          "hi": "गुण"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "अ + इ = ए",
+            "text": {
+              "en": "गणेशः, उपेन्द्रः.",
+              "hi": "गणेशः, उपेन्द्रः।"
+            }
+          },
+          {
+            "sa": "अ + उ = ओ",
+            "text": {
+              "en": "सूर्योदयः, महोत्सवः.",
+              "hi": "सूर्योदयः, महोत्सवः।"
+            }
+          },
+          {
+            "sa": "अ + ऋ = अर्",
+            "text": {
+              "en": "देवर्षिः, महर्षिः.",
+              "hi": "देवर्षिः, महर्षिः।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "vs-guna-s1",
+    "brief": "The second statue, a woman holding a conch, with Śuka on Dādī's shoulder counting on his claws; Lubdhaka's foreman looking on with arms folded; the first statue beside her with a lotus; morning light on the dig.",
+    "alt": {
+      "en": "A stone statue holding a conch while a parrot counts on his claws and a foreman watches",
+      "hi": "शंख थामे पत्थर की प्रतिमा, पंजों पर गिनता तोता, देखता मुखिया"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "svarika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The second statue, a woman holding a conch, with Śuka on Dādī's shoulder counting on his claws; Lubdhaka's foreman looking on with arms folded; the first statue beside her with a lotus; morning light on the dig.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsvarika: A small spirit of cool grey stone in the shape of a young woman holding a lotus, with a fine crack down one cheek and eyes of pale gold.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-d92c2bb5-0cfd-441c-86b6-7763eb769ff1.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "aecfc06ddb90cbb7f585ee1438df5cd67530f42e4b1e6a4cf8a511c512088b4a",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vs-guna-s1-phone-80d0d5d4.webp",
+      "key": "learn/vs-guna-s1-phone-80d0d5d4.webp",
+      "sha256": "80d0d5d47ca003789e5782cf0f2cb71e60cbd849340799dfe1d27af84eec9460",
+      "bytes": 105230,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/vs-guna-s1-phone-80d0d5d4.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vs-guna-s1-tablet-9b93d841.webp",
+      "key": "learn/vs-guna-s1-tablet-9b93d841.webp",
+      "sha256": "9b93d841c6aeaf3edd38d679d45a9b8ee1a5ce02231746ecd944a86e03d9e210",
+      "bytes": 374576,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/vs-guna-s1-tablet-9b93d841.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

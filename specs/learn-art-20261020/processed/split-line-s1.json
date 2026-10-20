@@ -1,0 +1,709 @@
+{
+  "id": "split-line-s1",
+  "where": "split.line#s1",
+  "ratio": "4:3",
+  "expected": [
+    "काव्यशास्त्रविनोदेन कालो गच्छति धीमताम्"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The fourteenth statue with a long carved line running across her stone base; Dādī taking the chisel from the statue's hand and marking gaps between words; Lubdhaka's foreman standing back with his arms folded; Śuka reading over her shoulder.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvicchedika: A small spirit of fine white limestone with a thin chisel in one hand and a faint line running down the middle of her face, like a word waiting to be divided.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nकाव्यशास्त्रविनोदेन कालो गच्छति धीमताम्",
+  "source": {
+    "id": "split.line",
+    "template": "scene",
+    "title": {
+      "en": "A whole line, word by word",
+      "hi": "पूरी पंक्ति, शब्द-शब्द"
+    },
+    "title_sa": "पदच्छेदः",
+    "minutes": 6,
+    "teaches": [
+      "sandhi.padaccheda"
+    ],
+    "needs": [
+      "sandhi.split"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The fourteenth statue",
+          "hi": "चौदहवीं प्रतिमा"
+        },
+        "image": {
+          "id": "split-line-s1",
+          "brief": "The fourteenth statue with a long carved line running across her stone base; Dādī taking the chisel from the statue's hand and marking gaps between words; Lubdhaka's foreman standing back with his arms folded; Śuka reading over her shoulder.",
+          "alt": {
+            "en": "An old woman marks gaps between words in a carved line across a statue's base",
+            "hi": "दादी प्रतिमा के आसन पर खुदी पंक्ति में शब्दों के बीच अन्तराल बनाती"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "vicchedika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The fourteenth statue holds a whole line, carved across her base. “Not one word,” she says. “A line. A real one, from the old tales.” Lubdhaka's foreman steps back. “That is a sentence,” he says, and nobody laughs, because he is right: it is joined all the way along. Dādī takes the chisel. “Word by word. That is called padaccheda.”",
+          "hi": "चौदहवीं प्रतिमा के आसन पर आर-पार एक पूरी पंक्ति खुदी है। “एक शब्द नहीं,” वह कहती है। “एक पंक्ति। पुरानी कथाओं से, असली।” लुब्धक का मुखिया पीछे हटता है। “यह तो पूरा वाक्य है,” वह कहता है, और कोई नहीं हँसता, क्योंकि वह ठीक कहता है: वह पूरी लम्बाई में जुड़ा है। दादी छेनी लेती हैं। “शब्द-शब्द। इसे पदच्छेद कहते हैं।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Padaccheda",
+          "hi": "पदच्छेद"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.padaccheda"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A real line often has several joins. Take them one at a time, from the left: find the first joined sound, split it, check both words, and carry on. Then write the line with spaces. This is {{पदच्छेदः}}. After it comes the meaning.",
+          "hi": "असली पंक्ति में अक्सर कई सन्धियाँ होती हैं। उन्हें बाएँ से एक-एक करके लीजिए: पहली जुड़ी ध्वनि खोजिए, उसे तोड़िए, दोनों शब्द जाँचिए, और आगे बढ़िए। फिर पंक्ति को अन्तराल के साथ लिखिए। यह {{पदच्छेदः}} है। उसके बाद अर्थ आता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "पदच्छेदः",
+          "meaning": {
+            "en": "splitting a line into words",
+            "hi": "पंक्ति को शब्दों में तोड़ना"
+          }
+        }
+      },
+      {
+        "id": "r1",
+        "title": {
+          "en": "Three real lines, split",
+          "hi": "तीन असली पंक्तियाँ, तोड़कर"
+        },
+        "image": {
+          "id": "split-line-r1",
+          "brief": "Three palm-leaf lines lying across a stone base, each with small gaps marked in red between the words; a brass lamp at one side; ink-and-watercolour in the style of old manuscripts.",
+          "alt": {
+            "en": "Three palm-leaf lines with red marks between the words",
+            "hi": "तीन ताड़पत्र-पंक्तियाँ, शब्दों के बीच लाल चिह्न"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "dadi"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [
+          "sandhi.padaccheda"
+        ],
+        "sutras": [],
+        "kind": "reading",
+        "passage": [
+          {
+            "sa": "काव्यशास्त्रविनोदेन कालो गच्छति धीमताम्",
+            "meaning": {
+              "en": "“The wise pass their time in the delight of poetry and learning.” (Vetālapañcaviṃśatikā, introduction)",
+              "hi": "“बुद्धिमानों का समय काव्य और शास्त्र के आनन्द में बीतता है।” (वेतालपञ्चविंशतिका, भूमिका)"
+            },
+            "words": [
+              {
+                "sa": "काव्यशास्त्रविनोदेन",
+                "gloss": {
+                  "en": "by the delight of poetry and learning",
+                  "hi": "काव्य-शास्त्र के आनन्द से"
+                },
+                "check": null
+              },
+              {
+                "sa": "कालः",
+                "gloss": {
+                  "en": "time",
+                  "hi": "समय (कालः + गच्छति → कालो गच्छति)"
+                },
+                "check": null
+              },
+              {
+                "sa": "गच्छति",
+                "gloss": {
+                  "en": "goes, passes",
+                  "hi": "बीतता है"
+                },
+                "check": null
+              },
+              {
+                "sa": "धीमताम्",
+                "gloss": {
+                  "en": "of the wise",
+                  "hi": "बुद्धिमानों का"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "तदा राजा साश्चर्यो बभूव",
+            "meaning": {
+              "en": "“Then the king was astonished.” (Vetālapañcaviṃśatikā, introduction)",
+              "hi": "“तब राजा आश्चर्य से भर गया।” (वेतालपञ्चविंशतिका, भूमिका)"
+            },
+            "words": [
+              {
+                "sa": "तदा",
+                "gloss": {
+                  "en": "then",
+                  "hi": "तब"
+                },
+                "check": null
+              },
+              {
+                "sa": "राजा",
+                "gloss": {
+                  "en": "the king",
+                  "hi": "राजा"
+                },
+                "check": null
+              },
+              {
+                "sa": "साश्चर्यः",
+                "gloss": {
+                  "en": "astonished (सः + आश्चर्यः)",
+                  "hi": "चकित (स + आश्चर्य)"
+                },
+                "check": null
+              },
+              {
+                "sa": "बभूव",
+                "gloss": {
+                  "en": "became",
+                  "hi": "हो गया"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "एकश्रुतधरः प्राप्तो बालो ऽयं तनयस्तव",
+            "meaning": {
+              "en": "“A boy who holds what he hears once has been found: this son of yours.” (Kathāsaritsāgara 1.2)",
+              "hi": "“एक बार सुना धारण करने वाला बालक मिल गया: यह तुम्हारा पुत्र।” (कथासरित्सागर 1.2)"
+            },
+            "words": [
+              {
+                "sa": "एकश्रुतधरः",
+                "gloss": {
+                  "en": "who holds what he hears once",
+                  "hi": "एक बार सुना धारण करने वाला"
+                },
+                "check": null
+              },
+              {
+                "sa": "प्राप्तः",
+                "gloss": {
+                  "en": "found",
+                  "hi": "मिला"
+                },
+                "check": null
+              },
+              {
+                "sa": "बालः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": null
+              },
+              {
+                "sa": "अयम्",
+                "gloss": {
+                  "en": "this",
+                  "hi": "यह"
+                },
+                "check": null
+              },
+              {
+                "sa": "तनयः",
+                "gloss": {
+                  "en": "son",
+                  "hi": "पुत्र"
+                },
+                "check": null
+              },
+              {
+                "sa": "तव",
+                "gloss": {
+                  "en": "your",
+                  "hi": "तुम्हारा"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          }
+        ]
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.padaccheda"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{कालो गच्छति}} splits as…",
+          "hi": "{{कालो गच्छति}} का विच्छेद…"
+        },
+        "explain": {
+          "en": "{{कालो}} is {{कालः}} before a soft {{ग}}.",
+          "hi": "कोमल {{ग}} से पहले {{कालः}} {{कालो}} बनता है।"
+        },
+        "options": [
+          {
+            "sa": "कालः + गच्छति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "कालः गच्छति",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "कालु गच्छति",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.padaccheda"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{साश्चर्यः}} splits as…",
+          "hi": "{{साश्चर्यः}} का विच्छेद…"
+        },
+        "explain": {
+          "en": "{{अ}} + {{आ}} = {{आ}}.",
+          "hi": "{{अ}} + {{आ}} = {{आ}}।"
+        },
+        "options": [
+          {
+            "sa": "सा + श्चर्यः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "स + आश्चर्यः",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "सः + चर्यः",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.padaccheda"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each joined word to its split.",
+          "hi": "हर जुड़े शब्द को उसके विच्छेद से जोड़िए।"
+        },
+        "explain": {
+          "en": "Three of these are breath joins.",
+          "hi": "इनमें से तीन श्वास की सन्धियाँ हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "बालोऽयम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "बालः + अयम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "तनयस्तव",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "तनयः + तव",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "साश्चर्यः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "स + आश्चर्यः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "कालो गच्छति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "कालः + गच्छति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.padaccheda"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that is already split.",
+          "hi": "हर वह शब्द छुइए जो पहले से अलग है।"
+        },
+        "params": {
+          "passage": [
+            "तदा",
+            "राजा",
+            "साश्चर्यः",
+            "बभूव",
+            "धीमताम्",
+            "तनयस्तव"
+          ],
+          "targets": [
+            "तदा",
+            "राजा",
+            "बभूव",
+            "धीमताम्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.padaccheda"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Put the words in order: “Then the king was astonished.”",
+          "hi": "शब्दों को क्रम में रखिए: ‘तब राजा आश्चर्य से भर गया।’"
+        },
+        "explain": {
+          "en": "{{तदा राजा साश्चर्यः बभूव}}.",
+          "hi": "{{तदा राजा साश्चर्यः बभूव}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "तदा",
+          "राजा",
+          "साश्चर्यः",
+          "बभूव"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The whole line",
+          "hi": "पूरी पंक्ति"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sandhi.padaccheda"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{बालोऽयम्}} comes from…",
+          "hi": "{{बालोऽयम्}} बना है…"
+        },
+        "explain": {
+          "en": "{{ओऽ}} from {{अः + अ}}.",
+          "hi": "{{ओऽ}}, {{अः + अ}} से।"
+        },
+        "options": [
+          {
+            "sa": "बालम् + अयम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "बालु + अयम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "बालः + अयम्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“बालः अयम्,” you say, “this boy,” and the statue's carved line falls apart, all down its length, into separate, clear words, each with its own small gap, like beads on a string that has been cut. The statue steps down from her base. “Now I can read my own line,” she says. “There was always a space between. I could not see it for the stone.”",
+            "hi": "“बालः अयम्,” आप कहते हैं, “यह बालक,” और प्रतिमा की खुदी पंक्ति अपनी पूरी लम्बाई में अलग, साफ़ शब्दों में बिखर जाती है, हर एक के बीच अपना छोटा अन्तराल, कटी माला के मनकों की तरह। प्रतिमा अपने आसन से उतरती है। “अब मैं अपनी ही पंक्ति पढ़ सकती हूँ,” वह कहती है। “बीच में हमेशा जगह थी। मैं उसे पत्थर के कारण देख नहीं पाती थी।”"
+          },
+          "failure": {
+            "en": "The line stays joined. {{ओऽ}} from {{अः + अ}}: {{बालः अयम्}}.",
+            "hi": "पंक्ति जुड़ी रहती है। {{ओऽ}}, {{अः + अ}} से: {{बालः अयम्}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Reading order",
+          "hi": "पढ़ने का क्रम"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sandhi.padaccheda"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "After padaccheda comes {{अन्वयः}}, putting the words in prose order, and then the meaning. For now, you have the first step: you can see where every word begins and ends.",
+          "hi": "पदच्छेद के बाद {{अन्वयः}} आता है, शब्दों को गद्य के क्रम में रखना, और फिर अर्थ। अभी आपके पास पहला चरण है: आप देख सकते हैं कि हर शब्द कहाँ शुरू और कहाँ समाप्त होता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "A whole line",
+          "hi": "पूरी पंक्ति"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "पदच्छेदः",
+            "text": {
+              "en": "Split a line word by word.",
+              "hi": "पंक्ति को शब्द-शब्द तोड़ना।"
+            }
+          },
+          {
+            "sa": "कालो गच्छति",
+            "text": {
+              "en": "कालः + गच्छति.",
+              "hi": "कालः + गच्छति।"
+            }
+          },
+          {
+            "sa": "तदा राजा साश्चर्यः बभूव",
+            "text": {
+              "en": "A line, split.",
+              "hi": "तोड़ी हुई पंक्ति।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "split-line-s1",
+    "brief": "The fourteenth statue with a long carved line running across her stone base; Dādī taking the chisel from the statue's hand and marking gaps between words; Lubdhaka's foreman standing back with his arms folded; Śuka reading over her shoulder.",
+    "alt": {
+      "en": "An old woman marks gaps between words in a carved line across a statue's base",
+      "hi": "दादी प्रतिमा के आसन पर खुदी पंक्ति में शब्दों के बीच अन्तराल बनाती"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "vicchedika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The fourteenth statue with a long carved line running across her stone base; Dādī taking the chisel from the statue's hand and marking gaps between words; Lubdhaka's foreman standing back with his arms folded; Śuka reading over her shoulder.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvicchedika: A small spirit of fine white limestone with a thin chisel in one hand and a faint line running down the middle of her face, like a word waiting to be divided.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-1ef6aa81-8b3a-4c8d-ba54-290d0df33b5b.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "4b79c1c1e71d796c272a180cd6188b3d5e20c9243a1391740ae4ee6f724ecc94",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\split-line-s1-phone-c72d040e.webp",
+      "key": "learn/split-line-s1-phone-c72d040e.webp",
+      "sha256": "c72d040efb67245577bed33f267ea5b137a260c7ed6a155b38deacd3323e88d1",
+      "bytes": 96506,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/split-line-s1-phone-c72d040e.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\split-line-s1-tablet-dbc10433.webp",
+      "key": "learn/split-line-s1-tablet-dbc10433.webp",
+      "sha256": "dbc1043342a83b0b8e1b5a02fe3eb60256d27c403bbf3941b012000b623300d6",
+      "bytes": 345638,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/split-line-s1-tablet-dbc10433.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

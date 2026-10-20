@@ -11,7 +11,7 @@ needs:
 - verb.persons
 - verb.pres-3sg
 - case.voc
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -394,8 +394,8 @@ cards:
   - verb.lot
   mode: match
   prompt:
-    en: Join each command to its meaning.
-    hi: हर आज्ञा को उसके अर्थ से जोड़िए।
+    en: Match each command with its meaning.
+    hi: हर आज्ञा को उसके अर्थ से मिलाइए।
   explain:
     en: Each is the root plus its class sign.
     hi: हर एक धातु और उसका गण-चिह्न है।

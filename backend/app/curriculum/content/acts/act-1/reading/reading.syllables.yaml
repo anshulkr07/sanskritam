@@ -10,7 +10,7 @@ teaches:
 needs:
 - script.numerals
 - script.conjunct
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -34,6 +34,7 @@ cards:
     place: granthalaya
     ratio: '4:3'
     id: reading-syllables-s1
+    text_in_image: ["मौनी"]
   narration:
     en: 'Back in the temple library, Dādī lifts down a huge cloth-bound register: names, names, names, in columns. Nidrālu''s carved clue brought you here. Between the shelves stands a tall, thin, pale-gold spirit with a finger pressed to his lips. He cannot say a word.'
     hi: 'मंदिर के ग्रंथालय में दादी कपड़े में बँधा एक विशाल रजिस्टर उतारती हैं: नाम, नाम, नाम, स्तम्भों में। निद्रालु का खुदा संकेत आपको यहीं लाया। अलमारियों के बीच एक लम्बा, दुबला, हल्का सुनहरा भूत खड़ा है, उँगली होंठों पर रखे। वह एक शब्द नहीं बोल पाता।'
@@ -157,8 +158,8 @@ cards:
   - read.syllables
   mode: match
   prompt:
-    en: Join each name to its number of syllables.
-    hi: हर नाम को उसके अक्षरों की संख्या से जोड़िए।
+    en: Match each name with its number of syllables.
+    hi: हर नाम को उसके अक्षरों की संख्या से मिलाइए।
   explain:
     en: Count the vowels.
     hi: स्वर गिनिए।

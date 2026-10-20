@@ -1,0 +1,1332 @@
+{
+  "id": "aor-abhut-s1",
+  "where": "aor.abhut#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Deep in the grove at night: a single tiny golden spark flickering on and off in the dark with a thin trail of smoke; the Vetāla seated on a root watching it with a gentle expression; you, Dādī and Śuka kneeling to look; ancient gnarled trunks around.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nabhutaka: A tiny golden spark that flickers on and off, trailing a thin thread of smoke, forever unsure whether it ever really lit.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "aor.abhut",
+    "template": "scene",
+    "title": {
+      "en": "The aorist",
+      "hi": "लुङ्"
+    },
+    "title_sa": "अभूत् अकार्षीत्",
+    "minutes": 6,
+    "teaches": [
+      "verb.lun"
+    ],
+    "needs": [
+      "verb.lan",
+      "verb.lit"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The sixth night",
+          "hi": "छठी रात"
+        },
+        "image": {
+          "id": "aor-abhut-s1",
+          "brief": "Deep in the grove at night: a single tiny golden spark flickering on and off in the dark with a thin trail of smoke; the Vetāla seated on a root watching it with a gentle expression; you, Dādī and Śuka kneeling to look; ancient gnarled trunks around.",
+          "alt": {
+            "en": "A tiny flickering spark in the dark of an old grove, watched gently by a grey spirit",
+            "hi": "पुराने वन के अँधेरे में एक नन्हा टिमटिमाता स्फुलिंग, कोमलता से देखता भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "abhutaka"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Deeper in the grove the spirits are older. A single spark flickers on and off in the dark, trailing a thread of smoke, as though it could not decide whether it had ever lit. “अभूत्,” says the Vetāla gently. “It has become.” The spark flares, steady for one breath. “Yes,” Dādī says. “That is the aorist: the past of what has just come to be.”",
+          "hi": "वन में और भीतर भूत अधिक पुराने हैं। अँधेरे में एक अकेला स्फुलिंग जलता-बुझता है, धुएँ का धागा पीछे छोड़ता, मानो तय न कर पा रहा हो कि कभी जला भी था। “अभूत्,” वेताल कोमलता से कहता है। “हो गया।” स्फुलिंग एक साँस भर स्थिर चमक उठता है। “हाँ,” दादी कहती हैं। “यही लुङ् है: उसका भूतकाल जो अभी-अभी हुआ।”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "अभूत्। अकार्षीत्।",
+            "gloss": {
+              "en": "It has become. He has done it.",
+              "hi": "हो गया। उसने कर दिया।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "What has just happened",
+          "hi": "जो अभी हुआ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lun"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{लुङ्}} is the aorist, a past that says something has come to be, a done event. It wears the augment {{अ}}, like {{लङ्}}, but the middle is different: {{अभूत्}} (it became), {{अकार्षीत्}} (he did), {{अगमत्}} (he went). The forms vary by root, so learn them as they come.",
+          "hi": "{{लुङ्}} (आशुभूत) भूतकाल है जो बताता है कि कुछ हो चुका है, पूरी हुई घटना। वह {{लङ्}} की तरह आगम {{अ}} पहनता है, पर बीच का भाग अलग है: {{अभूत्}} (हुआ), {{अकार्षीत्}} (उसने किया), {{अगमत्}} (वह गया)। रूप धातु के अनुसार बदलते हैं, इसलिए जैसे-जैसे आएँ सीखिए।"
+        },
+        "examples": [
+          {
+            "sa": "प्रकाशः अभूत्।",
+            "meaning": {
+              "en": "The light has come to be.",
+              "hi": "प्रकाश हो गया।"
+            },
+            "words": [
+              {
+                "sa": "प्रकाशः",
+                "gloss": {
+                  "en": "light",
+                  "hi": "प्रकाश"
+                },
+                "check": null
+              },
+              {
+                "sa": "अभूत्",
+                "gloss": {
+                  "en": "has come to be",
+                  "hi": "हो गया"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "भू",
+                  "lakara": "Lun",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "सः कर्म अकार्षीत्।",
+            "meaning": {
+              "en": "He did the deed.",
+              "hi": "उसने कर्म किया।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "कर्म",
+                "gloss": {
+                  "en": "deed",
+                  "hi": "कर्म"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "कर्मन्",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अकार्षीत्",
+                "gloss": {
+                  "en": "did",
+                  "hi": "किया"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "कृ",
+                  "lakara": "Lun",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "ते अगमन्।",
+            "meaning": {
+              "en": "They went.",
+              "hi": "वे गए।"
+            },
+            "words": [
+              {
+                "sa": "ते",
+                "gloss": {
+                  "en": "they",
+                  "hi": "वे"
+                },
+                "check": null
+              },
+              {
+                "sa": "अगमन्",
+                "gloss": {
+                  "en": "went",
+                  "hi": "गए"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lun",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "लुङ्",
+          "meaning": {
+            "en": "the aorist, a past of what has come to be",
+            "hi": "आशुभूत, जो हो चुका उसका भूतकाल"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "भू: the aorist",
+          "hi": "भू: लुङ्"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lun"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“It has become, you have become, I have become”",
+          "hi": "‘हो गया, तुम हुए, मैं हुआ’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अभूत्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lun",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अभूताम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lun",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अभूवन्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lun",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अभूः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lun",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अभूतम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lun",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अभूत",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lun",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अभूवम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lun",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अभूव",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lun",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अभूम",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": "Lun",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{अभूत्}} is {{अ}} + {{भू}} + {{त्}}; the plural is {{अभूवन्}}.",
+          "hi": "{{अभूत्}} में {{अ}} + {{भू}} + {{त्}} है; बहुवचन {{अभूवन्}} है।"
+        }
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "कृ: the aorist",
+          "hi": "कृ: लुङ्"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lun"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“He did, you did, I did”",
+          "hi": "‘उसने किया, तुमने किया, मैंने किया’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अकार्षीत्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lun",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अकार्ष्टाम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lun",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अकार्षुः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lun",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अकार्षीः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lun",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अकार्ष्टम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lun",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अकार्ष्ट",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lun",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "अकार्षम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lun",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अकार्ष्व",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lun",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अकार्ष्म",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lun",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "The {{ऋ}} grows to {{आर्}} and {{ष}} appears: {{अकार्षीत्}}.",
+          "hi": "{{ऋ}} बढ़कर {{आर्}} होता है और {{ष}} आता है: {{अकार्षीत्}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lun"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He did it.” Which form is the aorist?",
+          "hi": "‘उसने कर दिया।’ लुङ् का रूप कौन-सा है?"
+        },
+        "explain": {
+          "en": "{{अकार्षीत्}}: the aorist of {{कृ}}.",
+          "hi": "{{अकार्षीत्}}: {{कृ}} का लुङ्।"
+        },
+        "options": [
+          {
+            "sa": "करोति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अकरोत्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अकार्षीत्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lun"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “It has become.”",
+          "hi": "कहिए: ‘हो गया।’"
+        },
+        "explain": {
+          "en": "{{अभूत्}}.",
+          "hi": "{{अभूत्}}।"
+        },
+        "options": [],
+        "answers": [
+          "अभूत्"
+        ],
+        "tiles": [
+          "अ",
+          "भू",
+          "त्",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lun"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each present to its aorist.",
+          "hi": "हर वर्तमान को उसके लुङ् से जोड़िए।"
+        },
+        "explain": {
+          "en": "The aorist rarely follows the present.",
+          "hi": "लुङ् बहुत कम वर्तमान के पीछे चलता है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "भवति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "अभूत्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "करोति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "अकार्षीत्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "शृणोति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "अश्रौषीत्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "गच्छति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "अगमत्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lun"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every aorist.",
+          "hi": "हर लुङ् का रूप छुइए।"
+        },
+        "params": {
+          "passage": [
+            "अभूत्",
+            "भवति",
+            "अकार्षीत्",
+            "करोति",
+            "अश्रौषीत्",
+            "शृणोति"
+          ],
+          "targets": [
+            "अभूत्",
+            "अकार्षीत्",
+            "अश्रौषीत्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lun"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “The light has come to be.”",
+          "hi": "कहिए: ‘प्रकाश हो गया।’"
+        },
+        "explain": {
+          "en": "{{प्रकाशः अभूत्}}.",
+          "hi": "{{प्रकाशः अभूत्}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "प्रकाशः",
+          "अभूत्"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "They became",
+          "hi": "वे हुए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.lun"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“They became.” Which aorist?",
+          "hi": "‘वे हुए।’ कौन-सा लुङ्?"
+        },
+        "explain": {
+          "en": "{{अभूवन्}}: they, many.",
+          "hi": "{{अभूवन्}}: वे, अनेक।"
+        },
+        "options": [
+          {
+            "sa": "अभूत्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अभूताम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अभूवन्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“अभूवन्,” you say. The spark holds. Then, one by one, more sparks come up out of the dark around it, a dozen, a hundred, and settle in a slow ring, each steady. “They did become,” the little spark says, almost laughing. “I thought I was alone.”",
+            "hi": "“अभूवन्,” आप कहते हैं। स्फुलिंग टिका रहता है। फिर, एक-एक करके, उसके चारों ओर अँधेरे से और स्फुलिंग उठते हैं, दर्जन, सैकड़ा, और धीमे घेरे में जम जाते हैं, हर एक स्थिर। “सचमुच हुए,” नन्हा स्फुलिंग लगभग हँसते हुए कहता है। “मैंने सोचा था मैं अकेला हूँ।”"
+          },
+          "failure": {
+            "en": "The spark flickers on. “They became”: {{अभूवन्}}.",
+            "hi": "स्फुलिंग जलता-बुझता रहता है। ‘वे हुए’: {{अभूवन्}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's aorist",
+          "hi": "पाणिनि का लुङ्"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "verb.lun"
+        ],
+        "sutras": [
+          "3.2.110",
+          "3.1.43",
+          "3.1.44",
+          "7.2.1"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 3.2.110, {{लुङ्}}, gives the aorist for what is past. 3.1.43, {{च्लि लुङि}}, puts {{च्लि}} before it, and 3.1.44, {{च्लेः सिच्}}, turns it into {{सिच्}}. 7.2.1, {{सिचि वृद्धिः परस्मैपदेषु}}, lengthens the root vowel, so {{कृ}} becomes {{कार्}}: {{अकार्षीत्}}.",
+          "hi": "सूत्र 3.2.110, {{लुङ्}}, भूतकाल में आशुभूत देता है। 3.1.43, {{च्लि लुङि}}, उसके आगे {{च्लि}} रखता है और 3.1.44, {{च्लेः सिच्}}, उसे {{सिच्}} बना देता है। 7.2.1, {{सिचि वृद्धिः परस्मैपदेषु}}, धातु का स्वर दीर्घ-वृद्धि करता है, इसलिए {{कृ}} से {{कार्}}: {{अकार्षीत्}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The aorist",
+          "hi": "लुङ्"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "अभूत् · अकार्षीत्",
+            "text": {
+              "en": "It has become; he did.",
+              "hi": "हो गया; उसने किया।"
+            }
+          },
+          {
+            "sa": "अ + धातु + ...",
+            "text": {
+              "en": "The augment {{अ}} comes in front.",
+              "hi": "आगम {{अ}} आगे आता है।"
+            }
+          },
+          {
+            "sa": "अभूवन्",
+            "text": {
+              "en": "They became.",
+              "hi": "वे हुए।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "aor-abhut-s1",
+    "brief": "Deep in the grove at night: a single tiny golden spark flickering on and off in the dark with a thin trail of smoke; the Vetāla seated on a root watching it with a gentle expression; you, Dādī and Śuka kneeling to look; ancient gnarled trunks around.",
+    "alt": {
+      "en": "A tiny flickering spark in the dark of an old grove, watched gently by a grey spirit",
+      "hi": "पुराने वन के अँधेरे में एक नन्हा टिमटिमाता स्फुलिंग, कोमलता से देखता भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "abhutaka"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Deep in the grove at night: a single tiny golden spark flickering on and off in the dark with a thin trail of smoke; the Vetāla seated on a root watching it with a gentle expression; you, Dādī and Śuka kneeling to look; ancient gnarled trunks around.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nabhutaka: A tiny golden spark that flickers on and off, trailing a thin thread of smoke, forever unsure whether it ever really lit.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-2fc05105-dee9-4fff-af24-0c2f3bf32df5.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "6f03e2c7aeb95b27b154cb862fcabf3295e19154f75a86ae63b63d3d6b7643a7",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\aor-abhut-s1-phone-95ea89e0.webp",
+      "key": "learn/aor-abhut-s1-phone-95ea89e0.webp",
+      "sha256": "95ea89e009982399abb518147b5e996629401693a429dbda89fdd49a33efe89b",
+      "bytes": 112188,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/aor-abhut-s1-phone-95ea89e0.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\aor-abhut-s1-tablet-b6ea6fd4.webp",
+      "key": "learn/aor-abhut-s1-tablet-b6ea6fd4.webp",
+      "sha256": "b6ea6fd47f0930b29fdbd3383244007fef7fd5b9321fbcdb98371b95dae5bea2",
+      "bytes": 448152,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/aor-abhut-s1-tablet-b6ea6fd4.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

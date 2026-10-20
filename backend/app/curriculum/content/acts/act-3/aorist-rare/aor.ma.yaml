@@ -9,7 +9,7 @@ teaches:
 - verb.ma
 needs:
 - verb.lun
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -212,8 +212,8 @@ cards:
   - verb.ma
   mode: match
   prompt:
-    en: Join each plea to its meaning.
-    hi: हर विनती को उसके अर्थ से जोड़िए।
+    en: Match each plea with its meaning.
+    hi: हर विनती को उसके अर्थ से मिलाइए।
   explain:
     en: '{{मा}} + the form without {{अ}}.'
     hi: '{{मा}} + {{अ}} के बिना रूप।'

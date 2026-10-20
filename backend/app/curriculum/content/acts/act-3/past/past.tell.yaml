@@ -9,7 +9,7 @@ teaches:
 - verb.lan
 needs:
 - verb.lan
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -38,6 +38,18 @@ cards:
   narration:
     en: '“Good,” says the Vetāla, and drops from his branch to sit on a root, folded like a long grey umbrella. “Now a tale. Every tale of mine begins the same way: आसीत्. ‘There was.’” His eyes close. “आसीत् कश्चित् राजा.” A king. In the trees Lubdhaka, listening from the dark, leans closer.'
     hi: '“अच्छा,” वेताल कहता है, और शाखा से उतरकर जड़ पर बैठ जाता है, एक लम्बे भूरे छाते की तरह मुड़ा हुआ। “अब एक कथा। मेरी हर कथा एक ही तरह शुरू होती है: आसीत्। ‘था।’” उसकी आँखें बन्द हो जाती हैं। “आसीत् कश्चित् राजा।” एक राजा। पेड़ों में अँधेरे से सुनता लुब्धक आगे झुक आता है।'
+  lines:
+  - speaker: vetala
+    sa: आसीत्
+    gloss:
+      en: There was.
+      hi: था।
+    check:
+      type: tinanta
+      dhatu: अस्
+      lakara: Lan
+      purusha: Prathama
+      vacana: Eka
 - id: t1
   kind: teach
   title:
@@ -422,7 +434,7 @@ cards:
   - verb.lan
   mode: match
   prompt:
-    en: 'Join each pair: today ↔ before.'
+    en: 'Match each pair: today ↔ before.'
     hi: 'जोड़ियाँ बनाइए: आज ↔ पहले।'
   explain:
     en: Present on the left; past on the right.

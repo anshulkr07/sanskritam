@@ -9,7 +9,7 @@ teaches:
 - sandhi.guna
 needs:
 - sandhi.savarna
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -40,6 +40,17 @@ cards:
   narration:
     en: 'The second statue holds a conch. “गणेशः,” she says, and “महोत्सवः,” and “सप्तर्षयः.” “These are different,” says Śuka, who has been counting. “In the first, two vowels became one long one. Here, a vowel turned into something else.” “Yes,” says Dādī. “When अ meets इ or उ, it does not merge: it strengthens.”'
     hi: 'दूसरी प्रतिमा के हाथ में शंख है। “गणेशः,” वह कहती है, और “महोत्सवः,” और “सप्तर्षयः।” “ये अलग हैं,” शुक कहता है, जो गिन रहा था। “पहले में दो स्वर मिलकर एक दीर्घ बने थे। यहाँ एक स्वर कुछ और बन गया है।” “हाँ,” दादी कहती हैं। “जब अ इ या उ से मिलता है, तो वह मिलता नहीं: वह बलवान् हो जाता है।”'
+  lines:
+  - speaker: svarika
+    sa: गणेशः
+    gloss:
+      en: Gaṇeśa.
+      hi: गणेश।
+    check:
+      type: sandhi
+      first: गण
+      second: ईशः
+      joined: गणेशः
 - id: t1
   kind: teach
   title:
@@ -56,6 +67,7 @@ cards:
     meaning:
       en: 'strengthening: अ→अ, इ→ए, उ→ओ, ऋ→अर्'
       hi: 'बलवान् होना: इ→ए, उ→ओ, ऋ→अर्'
+  formula: अ + इ → ए · अ + उ → ओ · अ + ऋ → अर्
 - id: tb1
   kind: table
   title:
@@ -204,8 +216,8 @@ cards:
   - sandhi.guna
   mode: match
   prompt:
-    en: Join each word to its parts.
-    hi: हर शब्द को उसके भागों से जोड़िए।
+    en: Match each word with its parts.
+    hi: हर शब्द को उसके भागों से मिलाइए।
   explain:
     en: The vowel strengthens.
     hi: स्वर बलवान् हो जाता है।
@@ -310,6 +322,22 @@ cards:
   - sa: देवैषिः
   - correct: true
     sa: देवर्षिः
+- id: p6
+  kind: practice
+  depth: core
+  skills:
+  - sandhi.guna
+  mode: engine
+  prompt:
+    en: Join these two words.
+    hi: इन दोनों शब्दों की सन्धि कीजिए।
+  explain:
+    en: '{{आ}} and {{इ}} give {{ए}}: {{तथा + इति = तथेति}}.'
+    hi: '{{आ}} और {{इ}} से {{ए}} बनता है: {{तथा + इति = तथेति}}।'
+  exercise:
+    kind: sandhi_join
+    params: {}
+    seed: 2
 - id: pn
   kind: teach
   title:

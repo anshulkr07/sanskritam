@@ -9,7 +9,7 @@ teaches:
 - verb.class-4
 needs:
 - verb.class-1
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -40,6 +40,19 @@ cards:
   narration:
     en: 'Drawer number four springs open by itself and a very small dance spills out of it: a tiny figure of mist turning on one foot, arms wide. “नृत्यति,” says the Vetāla, with satisfaction. “He dances.” The ledger-spirit looks at his own drawer in amazement. “It is the class of the sign -य-,” Dādī says. “The root stays as it is, and a य walks in.”'
     hi: 'चौथा दराज़ अपने-आप खुल जाता है और उसमें से एक बहुत नन्हा नृत्य बाहर बिखर पड़ता है: धुंध की एक छोटी आकृति, एक पैर पर घूमती, बाहें फैलाए। “नृत्यति,” वेताल संतोष से कहता है। “वह नाचता है।” बही-भूत अपने ही दराज़ को आश्चर्य से देखता है। “यह -य- चिह्न वाला गण है,” दादी कहती हैं। “धातु जैसी है वैसी रहती है, और एक य भीतर आ जाता है।”'
+  lines:
+  - speaker: vetala
+    sa: नृत्यति
+    gloss:
+      en: He dances.
+      hi: वह नाचता है।
+    check:
+      type: tinanta
+      dhatu: नृत्
+      lakara: Lat
+      purusha: Prathama
+      vacana: Eka
+      gana: Divadi
 - id: t1
   kind: teach
   title:
@@ -305,8 +318,8 @@ cards:
   - verb.class-4
   mode: match
   prompt:
-    en: Join each root to its “he” form.
-    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+    en: Match each root with its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से मिलाइए।
   explain:
     en: The sign {{-य-}} appears in each.
     hi: हर एक में चिह्न {{-य-}} दिखता है।

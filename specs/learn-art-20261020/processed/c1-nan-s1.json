@@ -1,0 +1,921 @@
+{
+  "id": "c1-nan-s1",
+  "where": "c1.nan#s1",
+  "ratio": "4:3",
+  "expected": [
+    "असत्यम्",
+    "अधर्मः",
+    "अनन्तः"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The eighteenth statue holding a clay pot, tapping it with one finger; a potter's wheel carved at her feet; Śuka cocking his head; Lubdhaka's foreman holding up his notebook to show a column of compounds.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsamasika: A small spirit of pale granite made of two slender figures joined at the back, each with a different lotus in hand, who finish each other's sentences.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nअसत्यम्\nअधर्मः\nअनन्तः All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "c1.nan",
+    "template": "scene",
+    "title": {
+      "en": "Untrue, pot-maker",
+      "hi": "असत्य, घड़ा बनाने वाला"
+    },
+    "title_sa": "असत्यम् कुम्भकारः",
+    "minutes": 6,
+    "teaches": [
+      "sam.nan-upapada"
+    ],
+    "needs": [
+      "sam.karmadharaya"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The eighteenth statue",
+          "hi": "अठारहवीं प्रतिमा"
+        },
+        "image": {
+          "id": "c1-nan-s1",
+          "brief": "The eighteenth statue holding a clay pot, tapping it with one finger; a potter's wheel carved at her feet; Śuka cocking his head; Lubdhaka's foreman holding up his notebook to show a column of compounds.",
+          "alt": {
+            "en": "A statue taps a clay pot beside a carved potter's wheel while a man holds up a notebook of compounds",
+            "hi": "मिट्टी के घड़े पर थपथपाती प्रतिमा, कुम्हार का चाक, समासों की पुस्तिका दिखाता आदमी"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "samasika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The eighteenth statue holds a clay pot. “कुम्भकारः,” she says, tapping it: “the pot-maker.” “असत्यम्,” and she shakes her head: “not true.” “These are the last two kinds,” says Dādī. “A न before a word makes its opposite, अ-. And a word like -कारः after a thing means ‘the one who makes it’, a compound with the doer in the second place.”",
+          "hi": "अठारहवीं प्रतिमा के हाथ में मिट्टी का घड़ा है। “कुम्भकारः,” वह कहती है, उस पर थपथपाते हुए: “घड़ा बनाने वाला।” “असत्यम्,” और वह सिर हिलाती है: “सच नहीं।” “ये अन्तिम दो प्रकार हैं,” दादी कहती हैं। “शब्द के आगे न उसका उलटा बनाता है, अ-। और किसी वस्तु के बाद -कारः जैसा शब्द ‘उसे बनाने वाला’ का अर्थ देता है, दूसरे स्थान पर कर्ता वाला समास।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Not-X and X-maker",
+          "hi": "क नहीं और क बनाने वाला"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.nan-upapada"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A {{न}} before a word makes the opposite: {{न सत्यम्}} gives {{असत्यम्}} (untrue); before a vowel it is {{अन्}}: {{न अन्तः}} gives {{अनन्तः}} (endless). A word before a doer-word names the thing done: {{कुम्भं करोति}} gives {{कुम्भकारः}} (pot-maker); {{शास्त्रं जानाति}} gives {{शास्त्रज्ञः}} (knower of the śāstras).",
+          "hi": "शब्द के आगे {{न}} उसका उलटा बनाता है: {{न सत्यम्}} से {{असत्यम्}} (झूठ); स्वर से पहले वह {{अन्}} होता है: {{न अन्तः}} से {{अनन्तः}} (अनन्त)। कर्ता-शब्द के आगे का शब्द बताता है कि क्या किया जाता है: {{कुम्भं करोति}} से {{कुम्भकारः}} (घड़ा बनाने वाला); {{शास्त्रं जानाति}} से {{शास्त्रज्ञः}} (शास्त्रों का ज्ञाता)।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "नञ्तत्पुरुषः",
+          "meaning": {
+            "en": "a compound with न, “not”",
+            "hi": "न, ‘नहीं’ वाला समास"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Not-X and X-maker",
+          "hi": "क नहीं और क बनाने वाला"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.nan-upapada"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "नञ्-तत्पुरुषः and the doer",
+          "hi": "नञ्-तत्पुरुष और कर्ता"
+        },
+        "columns": [
+          {
+            "en": "Compound",
+            "hi": "समास"
+          },
+          {
+            "en": "Unpacked",
+            "hi": "विग्रह"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "असत्यम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "असत्य",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "न सत्यम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "untrue",
+                "hi": "असत्य"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "अधर्मः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "अधर्म",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "न धर्मः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "not-duty, wrong",
+                "hi": "अधर्म, अनुचित"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "अनन्तः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "अनन्त",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "न अन्तः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "endless",
+                "hi": "अनन्त"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "अज्ञानम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "अज्ञान",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "न ज्ञानम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "ignorance",
+                "hi": "अज्ञान"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "अहिंसा",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "अहिंसा",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "न हिंसा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "non-violence",
+                "hi": "अहिंसा"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "कुम्भकारः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "कुम्भकार",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "कुम्भं करोति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "pot-maker",
+                "hi": "घड़ा बनाने वाला"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "ग्रन्थकारः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "ग्रन्थकार",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "ग्रन्थं करोति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "author, maker of a book",
+                "hi": "लेखक, ग्रन्थ रचने वाला"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "शास्त्रज्ञः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "शास्त्रज्ञ",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "शास्त्रं जानाति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "knower of the śāstras",
+                "hi": "शास्त्रों का ज्ञाता"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{अ-}} before a consonant, {{अन्-}} before a vowel.",
+          "hi": "व्यंजन से पहले {{अ-}}, स्वर से पहले {{अन्-}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.nan-upapada"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{असत्यम्}} means…",
+          "hi": "{{असत्यम्}} का अर्थ…"
+        },
+        "explain": {
+          "en": "{{अ-}} makes the opposite.",
+          "hi": "{{अ-}} उलटा बनाता है।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "the truth",
+              "hi": "सत्य"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "not true",
+              "hi": "सच नहीं"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "of the truth",
+              "hi": "सत्य का"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.nan-upapada"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each compound to its unpacking.",
+          "hi": "हर समास को उसके विग्रह से जोड़िए।"
+        },
+        "explain": {
+          "en": "A न, or a doer.",
+          "hi": "एक न, या एक कर्ता।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "असत्यम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "न सत्यम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "अनन्तः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "न अन्तः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "कुम्भकारः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "कुम्भं करोति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "शास्त्रज्ञः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "शास्त्रं जानाति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.nan-upapada"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that means “not-”.",
+          "hi": "हर वह शब्द छुइए जिसका अर्थ ‘न-’ है।"
+        },
+        "params": {
+          "passage": [
+            "असत्यम्",
+            "सत्यम्",
+            "अधर्मः",
+            "धर्मः",
+            "अज्ञानम्",
+            "ज्ञानम्"
+          ],
+          "targets": [
+            "असत्यम्",
+            "अधर्मः",
+            "अज्ञानम्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.nan-upapada"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "compound_unpacker",
+        "prompt": {
+          "en": "Unpack the compound, then name its kind.",
+          "hi": "समास को खोलिए, फिर उसका प्रकार बताइए।"
+        },
+        "params": {
+          "compound": "असत्यम्",
+          "parts": [
+            "अ",
+            "सत्य"
+          ],
+          "kind": "tatpurusha",
+          "vigraha": "न सत्यम्",
+          "meaning": {
+            "en": "untrue",
+            "hi": "असत्य"
+          }
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.nan-upapada"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “the pot-maker comes.”",
+          "hi": "कहिए: ‘घड़ा बनाने वाला आता है।’"
+        },
+        "explain": {
+          "en": "{{कुम्भकारः आगच्छति}}.",
+          "hi": "{{कुम्भकारः आगच्छति}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "कुम्भकारः",
+          "आगच्छति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "The pot",
+          "hi": "घड़ा"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.nan-upapada"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{अनन्तः}} unpacks as…",
+          "hi": "{{अनन्तः}} का विग्रह…"
+        },
+        "explain": {
+          "en": "{{न}} + {{अन्तः}}: {{अन्-}} before a vowel.",
+          "hi": "{{न}} + {{अन्तः}}: स्वर से पहले {{अन्-}}।"
+        },
+        "options": [
+          {
+            "sa": "न नन्तः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "अ अन्तः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "न अन्तः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“न अन्तः, अनन्तः,” you say, “endless,” and the clay pot in the statue's hand, which has been closed at the mouth for a thousand years, opens. Out of it comes not water, nor grain, but a long, soft, smooth sound, rising, without edge or end. “असत्यम्,” she says, shaking her head, once more, smiling now. “Nothing here is not true.” Samāsikā steps out of the pair behind her, a small granite figure with two lotuses, and takes her hand.",
+            "hi": "“न अन्तः, अनन्तः,” आप कहते हैं, “अनन्त,” और प्रतिमा के हाथ का मिट्टी का घड़ा, जो हज़ार वर्षों से मुँह बन्द था, खुल जाता है। उसमें से न पानी निकलता है, न अनाज, बल्कि एक लम्बी, कोमल, चिकनी ध्वनि, ऊपर उठती, बिना किनारे या अन्त के। “असत्यम्,” वह कहती है, एक बार फिर सिर हिलाते, अब मुस्कराते हुए। “यहाँ कुछ भी असत्य नहीं।” समासिका उसके पीछे की जोड़ी से बाहर आती है, दो कमलों वाली नन्ही ग्रेनाइट आकृति, और उसका हाथ थाम लेती है।"
+          },
+          "failure": {
+            "en": "The pot stays closed. {{न}} + {{अन्तः}} gives {{अनन्तः}}.",
+            "hi": "घड़ा बन्द रहता है। {{न}} + {{अन्तः}} से {{अनन्तः}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's not and maker",
+          "hi": "पाणिनि का न और बनाने वाला"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sam.nan-upapada"
+        ],
+        "sutras": [
+          "2.2.6",
+          "6.3.73",
+          "6.3.74",
+          "2.2.19",
+          "3.2.1"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 2.2.6, {{नञ्}}, joins {{नञ्}}, “not”, to the following word as a compound. 6.3.73, {{नलोपो नञः}}, drops its {{न्}}, and 6.3.74, {{तस्मान्नुडचि}}, adds {{न्}} before a vowel. For the maker, 2.2.19, {{उपपदमतिङ्}}, joins the word that stands next to a verb-noun, and 3.2.1, {{कर्मण्यण्}}, makes the doer: {{कुम्भकारः}}.",
+          "hi": "सूत्र 2.2.6, {{नञ्}}, {{नञ्}}, ‘नहीं’, को अगले शब्द से समास में जोड़ता है। 6.3.73, {{नलोपो नञः}}, उसका {{न्}} हटाता है, और 6.3.74, {{तस्मान्नुडचि}}, स्वर से पहले {{न्}} जोड़ता है। बनाने वाले के लिए 2.2.19, {{उपपदमतिङ्}}, कृदन्त के पास खड़े शब्द को जोड़ता है, और 3.2.1, {{कर्मण्यण्}}, कर्ता बनाता है: {{कुम्भकारः}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Not and maker",
+          "hi": "न और बनाने वाला"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "असत्यम् · अनन्तः",
+            "text": {
+              "en": "Untrue; endless.",
+              "hi": "असत्य; अनन्त।"
+            }
+          },
+          {
+            "sa": "कुम्भकारः · ग्रन्थकारः",
+            "text": {
+              "en": "Pot-maker; author.",
+              "hi": "घड़ा बनाने वाला; लेखक।"
+            }
+          },
+          {
+            "sa": "शास्त्रज्ञः",
+            "text": {
+              "en": "Knower of the śāstras.",
+              "hi": "शास्त्रों का ज्ञाता।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "c1-nan-s1",
+    "brief": "The eighteenth statue holding a clay pot, tapping it with one finger; a potter's wheel carved at her feet; Śuka cocking his head; Lubdhaka's foreman holding up his notebook to show a column of compounds.",
+    "alt": {
+      "en": "A statue taps a clay pot beside a carved potter's wheel while a man holds up a notebook of compounds",
+      "hi": "मिट्टी के घड़े पर थपथपाती प्रतिमा, कुम्हार का चाक, समासों की पुस्तिका दिखाता आदमी"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "samasika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The eighteenth statue holding a clay pot, tapping it with one finger; a potter's wheel carved at her feet; Śuka cocking his head; Lubdhaka's foreman holding up his notebook to show a column of compounds.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsamasika: A small spirit of pale granite made of two slender figures joined at the back, each with a different lotus in hand, who finish each other's sentences.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-e629fc56-6634-4ce7-abc8-bc6e34a4cde2.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "2b1bb25ebdebacb4f8be9c8200bf86b2bc2d4143fbd6f23e9634a037f1689a69",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\c1-nan-s1-phone-ff6b1c4c.webp",
+      "key": "learn/c1-nan-s1-phone-ff6b1c4c.webp",
+      "sha256": "ff6b1c4cd70bef2d40e16dc700fde68569f78df8a6f2b04c57f75fa914a1402b",
+      "bytes": 97102,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/c1-nan-s1-phone-ff6b1c4c.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\c1-nan-s1-tablet-85b64993.webp",
+      "key": "learn/c1-nan-s1-tablet-85b64993.webp",
+      "sha256": "85b649931668d3206f75a4f6b98b037f1968e9fff712c1cc69b02ad707bc01ba",
+      "bytes": 366142,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/c1-nan-s1-tablet-85b64993.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

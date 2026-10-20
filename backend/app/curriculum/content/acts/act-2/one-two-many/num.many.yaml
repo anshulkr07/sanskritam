@@ -9,7 +9,7 @@ teaches:
 - num.plural
 needs:
 - num.dual
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -237,8 +237,8 @@ cards:
   - num.plural
   mode: match
   prompt:
-    en: Join each plural to its meaning.
-    hi: हर बहुवचन को उसके अर्थ से जोड़िए।
+    en: Match each plural with its meaning.
+    hi: हर बहुवचन को उसके अर्थ से मिलाइए।
   explain:
     en: '{{आः}}, {{आनि}}, {{यः}}: the three plural endings you have met.'
     hi: '{{आः}}, {{आनि}}, {{यः}}: अब तक मिले तीन बहुवचन प्रत्यय।'

@@ -1,0 +1,1516 @@
+{
+  "id": "pc-passive-r1",
+  "where": "pc.passive#r1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A quiet image of a small clay lamp whose flame stays steady while a cracked clay body beside it falls apart; ink-and-watercolour in the style of old Indian manuscripts, soft ivory paper.\nCharacter appearances:\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI. All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "pc.passive",
+    "template": "scene",
+    "title": {
+      "en": "Is read by",
+      "hi": "पढ़ा जाता है"
+    },
+    "title_sa": "पठ्यते",
+    "minutes": 6,
+    "teaches": [
+      "verb.passive"
+    ],
+    "needs": [
+      "verb.atmane",
+      "case.inst"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The eleventh night",
+          "hi": "ग्यारहवीं रात"
+        },
+        "image": {
+          "id": "pc-passive-s1",
+          "brief": "A small round spirit of warm rose-coloured mist with a dozen tiny hands, like a starfish, bustling in: one hand pushing a book towards you, one a spoon, one setting a foot on a path; the Vetāla seated on a root beginning a tale with a raised finger; Dādī and Śuka watching.",
+          "alt": {
+            "en": "A rose-coloured spirit with a dozen tiny hands pushes a book, a spoon and a path towards a child",
+            "hi": "गुलाबी भूत दर्जन भर हाथों से बच्चे की ओर पुस्तक, चम्मच और राह धकेलता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "preraka"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Tonight the Vetāla tells a tale in which things happen to people. “राजन्, श्रूयताम्,” he begins. “Let it be heard.” A small rose-mist spirit with a dozen tiny hands pushes a book towards you, a spoon to your lips, a foot on a path. “It is done,” Dādī says. “Not ‘he does’: ‘it is done by him’. That is the passive.”",
+          "hi": "आज वेताल एक कथा सुनाता है जिसमें लोगों पर बातें घटती हैं। “राजन्, श्रूयताम्,” वह राजा से कहे जाने वाले स्वर में शुरू करता है। “सुनी जाए।” गुलाबी धुंध का एक नन्हा भूत, दर्जन भर नन्हे हाथों वाला, प्रकट होकर आपकी ओर एक पुस्तक धकेलता है, होंठों की ओर एक चम्मच, राह पर एक पैर। “किया जाता है,” दादी कहती हैं। “‘वह करता है’ नहीं: ‘उसके द्वारा किया जाता है’। यही कर्मवाच्य है।”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "पठ्यते। क्रियते।",
+            "gloss": {
+              "en": "It is read. It is done.",
+              "hi": "वह पढ़ा जाता है। वह किया जाता है।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": {
+          "sa": "राजन् श्रूयताम् तावत् कथाम् एकां कथयामि",
+          "gloss": {
+            "en": "O king, let it be heard: I tell one tale.",
+            "hi": "हे राजन्, सुनिए: मैं एक कथा कहता हूँ।"
+          },
+          "source": "Vetālapañcaviṃśatikā, introduction (read in the Digital Corpus of Sanskrit)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "By and is",
+          "hi": "‘द्वारा’ और ‘जाता है’"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.passive"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Active: {{रामः पुस्तकं पठति}}, Rāma reads the book. Passive: {{रामेण पुस्तकं पठ्यते}}, the book is read by Rāma. The doer goes into the third case, the object becomes the subject, and the verb takes {{-य-}} and the endings for oneself: {{पठ्}} gives {{पठ्यते}}.",
+          "hi": "कर्तृवाच्य: {{रामः पुस्तकं पठति}}, राम पुस्तक पढ़ता है। कर्मवाच्य: {{रामेण पुस्तकं पठ्यते}}, पुस्तक राम द्वारा पढ़ी जाती है। कर्ता तृतीया में जाता है, कर्म उद्देश्य बन जाता है, और क्रिया {{-य-}} तथा अपने लिए वाले प्रत्यय लेती है: {{पठ्}} से {{पठ्यते}}।"
+        },
+        "examples": [
+          {
+            "sa": "रामेण पुस्तकम् पठ्यते।",
+            "meaning": {
+              "en": "The book is read by Rāma.",
+              "hi": "पुस्तक राम द्वारा पढ़ी जाती है।"
+            },
+            "words": [
+              {
+                "sa": "रामेण",
+                "gloss": {
+                  "en": "by Rāma",
+                  "hi": "राम द्वारा"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "राम",
+                  "linga": "Pum",
+                  "vibhakti": "Trtiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पुस्तकम्",
+                "gloss": {
+                  "en": "the book",
+                  "hi": "पुस्तक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पुस्तक",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठ्यते",
+                "gloss": {
+                  "en": "is read",
+                  "hi": "पढ़ी जाती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": "Karmani",
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "बालकेन फलम् खाद्यते।",
+            "meaning": {
+              "en": "The fruit is eaten by the boy.",
+              "hi": "फल बालक द्वारा खाया जाता है।"
+            },
+            "words": [
+              {
+                "sa": "बालकेन",
+                "gloss": {
+                  "en": "by the boy",
+                  "hi": "बालक द्वारा"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बालक",
+                  "linga": "Pum",
+                  "vibhakti": "Trtiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "फलम्",
+                "gloss": {
+                  "en": "the fruit",
+                  "hi": "फल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "फल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "खाद्यते",
+                "gloss": {
+                  "en": "is eaten",
+                  "hi": "खाया जाता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "खाद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": "Karmani",
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "कर्मवाच्यम्",
+          "meaning": {
+            "en": "the passive voice",
+            "hi": "कर्मवाच्य"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "पठ्: the passive",
+          "hi": "पठ्: कर्मवाच्य"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.passive"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“It is read, you are read, I am read”",
+          "hi": "‘वह पढ़ा जाता है, तुम पढ़े जाते हो, मैं पढ़ा जाता हूँ’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठ्यते",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठ्येते",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठ्यन्ते",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठ्यसे",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठ्येथे",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठ्यध्वे",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठ्ये",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठ्यावहे",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठ्यामहे",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Most often you will meet the third person.",
+          "hi": "अधिकतर आपको प्रथम पुरुष मिलेगा।"
+        }
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "Active and passive",
+          "hi": "कर्तरि और कर्मणि"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.passive"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“He …” and “it is … by him”",
+          "hi": "‘वह …’ और ‘उसके द्वारा … किया जाता है’"
+        },
+        "columns": [
+          {
+            "en": "Root",
+            "hi": "धातु"
+          },
+          {
+            "en": "Active",
+            "hi": "कर्तरि"
+          },
+          {
+            "en": "Passive",
+            "hi": "कर्मणि"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "गम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गच्छति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गम्यते",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "कृ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "करोति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "क्रियते",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "दा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ददाति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "दा",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "दीयते",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "दा",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "श्रु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "शृणोति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "श्रु",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "श्रूयते",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "श्रु",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "दृश्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पश्यति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "दृश्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "दृश्यते",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "दृश्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "वद्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "वदति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "वद्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "उद्यते",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "वद्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": "Karmani",
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Some roots change: {{कृ}} → {{क्रियते}}, {{दा}} → {{दीयते}}, {{श्रु}} → {{श्रूयते}}, {{वद्}} → {{उद्यते}}.",
+          "hi": "कुछ धातुएँ बदलती हैं: {{कृ}} → {{क्रियते}}, {{दा}} → {{दीयते}}, {{श्रु}} → {{श्रूयते}}, {{वद्}} → {{उद्यते}}।"
+        }
+      },
+      {
+        "id": "r1",
+        "title": {
+          "en": "A line that uses it",
+          "hi": "इसका प्रयोग करने वाली पंक्ति"
+        },
+        "image": {
+          "id": "pc-passive-r1",
+          "brief": "A quiet image of a small clay lamp whose flame stays steady while a cracked clay body beside it falls apart; ink-and-watercolour in the style of old Indian manuscripts, soft ivory paper.",
+          "alt": {
+            "en": "A steady lamp flame beside a cracked clay figure",
+            "hi": "दरार वाली मिट्टी की आकृति के पास स्थिर दीपक की लौ"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "vetala"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [
+          "verb.passive"
+        ],
+        "sutras": [],
+        "kind": "reading",
+        "passage": [
+          {
+            "sa": "न हन्यते हन्यमाने शरीरे",
+            "meaning": {
+              "en": "“(The self) is not killed when the body is killed.” (Bhagavadgītā 2.20, read at GRETIL)",
+              "hi": "“शरीर के मारे जाने पर (आत्मा) नहीं मारा जाता।” (भगवद्गीता 2.20, GRETIL में पढ़ा)"
+            },
+            "words": [
+              {
+                "sa": "न",
+                "gloss": {
+                  "en": "not",
+                  "hi": "नहीं"
+                },
+                "check": null
+              },
+              {
+                "sa": "हन्यते",
+                "gloss": {
+                  "en": "is killed",
+                  "hi": "मारा जाता है"
+                },
+                "check": null
+              },
+              {
+                "sa": "हन्यमाने",
+                "gloss": {
+                  "en": "while being killed",
+                  "hi": "मारे जाते हुए"
+                },
+                "check": null
+              },
+              {
+                "sa": "शरीरे",
+                "gloss": {
+                  "en": "in the body",
+                  "hi": "शरीर में"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          }
+        ]
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.passive"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“The book is read by Rāma.” Which sentence?",
+          "hi": "‘पुस्तक राम द्वारा पढ़ी जाती है।’ कौन-सा वाक्य?"
+        },
+        "explain": {
+          "en": "The doer in the 3rd case, the verb in the passive.",
+          "hi": "कर्ता तृतीया में, क्रिया कर्मवाच्य में।"
+        },
+        "options": [
+          {
+            "sa": "रामः पुस्तकं पठति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "रामेण पुस्तकं पठ्यते",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "रामं पुस्तकं पठति",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.passive"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “It is done.”",
+          "hi": "कहिए: ‘वह किया जाता है।’"
+        },
+        "explain": {
+          "en": "{{क्रियते}}: the passive of {{कृ}}.",
+          "hi": "{{क्रियते}}: {{कृ}} का कर्मवाच्य।"
+        },
+        "options": [],
+        "answers": [
+          "क्रियते"
+        ],
+        "tiles": [
+          "क्रि",
+          "यते",
+          "कृ",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.passive"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join active to passive.",
+          "hi": "कर्तरि को कर्मणि से जोड़िए।"
+        },
+        "explain": {
+          "en": "The sign {{-य-}} and the endings for oneself.",
+          "hi": "चिह्न {{-य-}} और अपने लिए वाले प्रत्यय।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "गच्छति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "गम्यते",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "करोति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "क्रियते",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "शृणोति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "श्रूयते",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पश्यति",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "दृश्यते",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.passive"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every passive verb.",
+          "hi": "हर कर्मवाच्य क्रिया छुइए।"
+        },
+        "params": {
+          "passage": [
+            "पठ्यते",
+            "पठति",
+            "क्रियते",
+            "करोति",
+            "श्रूयते",
+            "शृणोति"
+          ],
+          "targets": [
+            "पठ्यते",
+            "क्रियते",
+            "श्रूयते"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.passive"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “The book is read by Rāma.”",
+          "hi": "कहिए: ‘पुस्तक राम द्वारा पढ़ी जाती है।’"
+        },
+        "explain": {
+          "en": "{{रामेण पुस्तकं पठ्यते}}.",
+          "hi": "{{रामेण पुस्तकं पठ्यते}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "रामेण",
+          "पुस्तकम्",
+          "पठ्यते"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "It is given",
+          "hi": "दिया जाता है"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.passive"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“It is given.” Which passive of {{दा}}?",
+          "hi": "‘वह दिया जाता है।’ {{दा}} का कौन-सा कर्मवाच्य?"
+        },
+        "explain": {
+          "en": "{{दीयते}}: {{दा}} → {{दी-}} + {{-यते}}.",
+          "hi": "{{दीयते}}: {{दा}} → {{दी-}} + {{-यते}}।"
+        },
+        "options": [
+          {
+            "sa": "दाति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "ददाते",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "दीयते",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“दीयते,” you say, and one of the pusher's twelve tiny hands lets go of what it holds. A fruit rolls gently across the ground towards you. “It is given,” he says in a rosy voice, “and I did not give it. It simply was given.” He looks at his other eleven hands with great interest, as if he had never counted them.",
+            "hi": "“दीयते,” आप कहते हैं, और प्रेरक के बारह नन्हे हाथों में से एक अपनी पकड़ छोड़ देता है। एक फल हल्के से ज़मीन पर लुढ़कता आपकी ओर आता है। “दिया जाता है,” वह गुलाबी आवाज़ में कहता है, “और मैंने नहीं दिया। वह बस दिया गया।” वह अपने बाक़ी ग्यारह हाथों को बड़ी रुचि से देखता है, मानो उन्हें कभी गिना ही न हो।"
+          },
+          "failure": {
+            "en": "The hand keeps hold. “It is given”: {{दीयते}}.",
+            "hi": "हाथ पकड़े रहता है। ‘दिया जाता है’: {{दीयते}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's passive",
+          "hi": "पाणिनि का कर्मवाच्य"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "verb.passive"
+        ],
+        "sutras": [
+          "3.4.69",
+          "3.1.67",
+          "1.3.13"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 3.4.69, {{लः कर्मणि च भावे चाकर्मकेभ्यः}}, says the verb endings can state the object, or the action itself for roots with no object. 3.1.67, {{सार्वधातुके यक्}}, adds {{यक्}}; and 1.3.13, {{भावकर्मणोः}}, gives the endings for oneself: {{पठ्यते}}.",
+          "hi": "सूत्र 3.4.69, {{लः कर्मणि च भावे चाकर्मकेभ्यः}}, कहता है कि क्रिया-प्रत्यय कर्म को कह सकते हैं, या बिना कर्म वाली धातुओं में क्रिया को ही। 3.1.67, {{सार्वधातुके यक्}}, {{यक्}} जोड़ता है; और 1.3.13, {{भावकर्मणोः}}, अपने लिए वाले प्रत्यय देता है: {{पठ्यते}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The passive",
+          "hi": "कर्मवाच्य"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "रामेण पुस्तकं पठ्यते",
+            "text": {
+              "en": "The book is read by Rāma.",
+              "hi": "पुस्तक राम द्वारा पढ़ी जाती है।"
+            }
+          },
+          {
+            "sa": "क्रियते · दीयते · श्रूयते",
+            "text": {
+              "en": "It is done; given; heard.",
+              "hi": "किया जाता है; दिया जाता है; सुना जाता है।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Doer: 3rd case; verb: {{-यते}}.",
+              "hi": "कर्ता: तृतीया; क्रिया: {{-यते}}।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "pc-passive-r1",
+    "brief": "A quiet image of a small clay lamp whose flame stays steady while a cracked clay body beside it falls apart; ink-and-watercolour in the style of old Indian manuscripts, soft ivory paper.",
+    "alt": {
+      "en": "A steady lamp flame beside a cracked clay figure",
+      "hi": "दरार वाली मिट्टी की आकृति के पास स्थिर दीपक की लौ"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "vetala"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A quiet image of a small clay lamp whose flame stays steady while a cracked clay body beside it falls apart; ink-and-watercolour in the style of old Indian manuscripts, soft ivory paper.\nCharacter appearances:\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-a114dea3-d23e-43b4-aa14-bf970fd9885a.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "6a82aebf5e38170769f8241a02e092517d176a63d4d5a294f8decb9d0d6abe7d",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\pc-passive-r1-phone-11f48cbe.webp",
+      "key": "learn/pc-passive-r1-phone-11f48cbe.webp",
+      "sha256": "11f48cbe0a14150bb51784d1a6f394d6172295823e44c8bb3f364bbe0b0c3fff",
+      "bytes": 118176,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/pc-passive-r1-phone-11f48cbe.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\pc-passive-r1-tablet-bc9b768b.webp",
+      "key": "learn/pc-passive-r1-tablet-bc9b768b.webp",
+      "sha256": "bc9b768bc1e2ee8eb15097d67baba745f33833baae069fcc53a1a6c65170c523",
+      "bytes": 501862,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/pc-passive-r1-tablet-bc9b768b.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

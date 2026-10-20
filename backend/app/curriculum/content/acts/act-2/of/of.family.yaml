@@ -9,7 +9,7 @@ teaches:
 - case.gen-family
 needs:
 - case.gen
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -34,6 +34,7 @@ cards:
     place: pathashala
     ratio: '4:3'
     id: of-family-s1
+    text_in_image: ["पिता", "माता", "भ्राता", "भगिनी", "पुत्रः", "पितामही"]
   narration:
     en: 'That evening Dādī takes out her cloth-bound notebook and draws a tree for you: a trunk and many branches, each with a name. “Mother. Father. Brother. Sister. Grandmother. Whose are they? Yours.” The golden spirit Smṛtikā watches, and each name she reads makes her lamp burn a little brighter.'
     hi: 'उस शाम दादी अपनी कपड़े में बँधी कॉपी निकालती हैं और आपके लिए एक वृक्ष बनाती हैं: एक तना और कई शाखाएँ, हर एक पर एक नाम। “माता। पिता। भाई। बहन। दादी। ये किसके हैं? तुम्हारे।” सुनहरी स्मृतिका देखती है, और हर नाम पढ़ने पर उसका दीपक कुछ और उज्ज्वल हो उठता है।'
@@ -345,8 +346,8 @@ cards:
   - case.gen-family
   mode: match
   prompt:
-    en: Join each word to its meaning.
-    hi: हर शब्द को उसके अर्थ से जोड़िए।
+    en: Match each word with its meaning.
+    hi: हर शब्द को उसके अर्थ से मिलाइए।
   explain:
     en: The words in -ऋ have {{आ}} in the first case.
     hi: -ऋ वाले शब्दों की प्रथमा में {{आ}} होता है।

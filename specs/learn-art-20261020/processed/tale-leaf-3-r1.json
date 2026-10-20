@@ -1,0 +1,2969 @@
+{
+  "id": "tale-leaf-3-r1",
+  "where": "tale.leaf-3#r1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A village house at night: two dusty travelling scholars with cloth bundles sitting in the courtyard with a lamp; in the lane beyond, a travelling actor dancing to a drum, torch-lit; a small boy of seven watching from the doorway, head tilted, listening; his mother in the doorway beside him.\nCharacter appearances:\nvararuci: A small, bright-eyed boy of about seven in a plain white dhoti, a thin sacred thread, hair in a short tuft, always listening with his head tilted.\nvasudatta: A slim young widow in a plain white-grey sari, tired kind eyes, a clay lamp always near her hand.\nvyadi: A lean scholar in a travel-worn ochre dhoti, dusty feet, a cloth bundle of palm leaves on one shoulder, tired but eager eyes.\nindradatta: A broad, quiet scholar in a faded saffron wrap, a staff, a thoughtful frown, walking beside Vyāḍi.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "tale.leaf-3",
+    "template": "tale",
+    "title": {
+      "en": "The boy who heard once",
+      "hi": "एक बार सुनने वाला बालक"
+    },
+    "title_sa": "श्रुतधरकथा",
+    "minutes": 7,
+    "teaches": [],
+    "needs": [],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Kathāsaritsāgara, taraṅga 2 (Digital Corpus of Sanskrit file KSS, 1, 2), the story retold in new, simple sentences with two real verses quoted",
+        "url": "https://github.com/OliverHellwig/sanskrit",
+        "licence": "CC BY 4.0",
+        "note": "The plot follows Somadeva's text: two scholars seek a pupil who holds what he hears once; they find a boy; a voice from the sky foretells his future; they take him to the teacher Varṣa. The two quoted verses are Somadeva's own words; the rest is new Sanskrit in the present tense."
+      }
+    ],
+    "cards": [
+      {
+        "id": "r1",
+        "title": {
+          "en": "The drum at night",
+          "hi": "रात का मृदंग"
+        },
+        "image": {
+          "id": "tale-leaf-3-r1",
+          "brief": "A village house at night: two dusty travelling scholars with cloth bundles sitting in the courtyard with a lamp; in the lane beyond, a travelling actor dancing to a drum, torch-lit; a small boy of seven watching from the doorway, head tilted, listening; his mother in the doorway beside him.",
+          "alt": {
+            "en": "Two travelling scholars in a courtyard at night as a small boy listens to a drum in the lane",
+            "hi": "रात में आँगन में दो यात्री विद्वान्, गली में मृदंग सुनता नन्हा बालक"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "vararuci",
+            "vasudatta",
+            "vyadi",
+            "indradatta"
+          ],
+          "place": "grama"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "reading",
+        "passage": [
+          {
+            "sa": "द्वौ विप्रौ गृहम् आगच्छतः।",
+            "meaning": {
+              "en": "Two scholars come to the house.",
+              "hi": "दो विद्वान् घर आते हैं।"
+            },
+            "words": [
+              {
+                "sa": "द्वौ",
+                "gloss": {
+                  "en": "two",
+                  "hi": "दो"
+                },
+                "check": null
+              },
+              {
+                "sa": "विप्रौ",
+                "gloss": {
+                  "en": "scholars",
+                  "hi": "विद्वान्"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "विप्र",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गृहम्",
+                "gloss": {
+                  "en": "house (object)",
+                  "hi": "घर (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गृह",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "आगच्छतः",
+                "gloss": {
+                  "en": "come",
+                  "hi": "आते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "आ"
+                  ],
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "तौ रात्रौ गृहे वसतः।",
+            "meaning": {
+              "en": "They stay in the house at night.",
+              "hi": "वे रात में घर में ठहरते हैं।"
+            },
+            "words": [
+              {
+                "sa": "तौ",
+                "gloss": {
+                  "en": "they two",
+                  "hi": "वे दोनों"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "तद्",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "रात्रौ",
+                "gloss": {
+                  "en": "at night",
+                  "hi": "रात में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "रात्रि",
+                  "linga": "Stri",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गृहे",
+                "gloss": {
+                  "en": "in the house",
+                  "hi": "घर में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गृह",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वसतः",
+                "gloss": {
+                  "en": "stay",
+                  "hi": "ठहरते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": "वस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "मुरजस्य ध्वनिः भवति।",
+            "meaning": {
+              "en": "There is the sound of a drum.",
+              "hi": "मृदंग की ध्वनि होती है।"
+            },
+            "words": [
+              {
+                "sa": "मुरजस्य",
+                "gloss": {
+                  "en": "of the drum",
+                  "hi": "मृदंग की"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "मुरज",
+                  "linga": "Pum",
+                  "vibhakti": "Sasthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "ध्वनिः",
+                "gloss": {
+                  "en": "sound",
+                  "hi": "ध्वनि"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "ध्वनि",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "भवति",
+                "gloss": {
+                  "en": "is",
+                  "hi": "होती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "भू",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "माता वदति।",
+            "meaning": {
+              "en": "The mother says:",
+              "hi": "माता कहती है:"
+            },
+            "words": [
+              {
+                "sa": "माता",
+                "gloss": {
+                  "en": "mother",
+                  "hi": "माता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "मातृ",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वदति",
+                "gloss": {
+                  "en": "says",
+                  "hi": "कहती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "नटः नृत्यति।",
+            "meaning": {
+              "en": "“The actor dances.”",
+              "hi": "“नट नाचता है।”"
+            },
+            "words": [
+              {
+                "sa": "नटः",
+                "gloss": {
+                  "en": "the actor",
+                  "hi": "नट"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नट",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "नृत्यति",
+                "gloss": {
+                  "en": "dances",
+                  "hi": "नाचता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "नृत्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "बालः वदति अहम् गच्छामि।",
+            "meaning": {
+              "en": "The boy says: “I go.”",
+              "hi": "बालक कहता है: “मैं जाता हूँ।”"
+            },
+            "words": [
+              {
+                "sa": "बालः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बाल",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वदति",
+                "gloss": {
+                  "en": "says",
+                  "hi": "कहता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "गच्छामि",
+                "gloss": {
+                  "en": "go",
+                  "hi": "जाता हूँ"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "बालः नटम् पश्यति।",
+            "meaning": {
+              "en": "The boy sees the actor.",
+              "hi": "बालक नट को देखता है।"
+            },
+            "words": [
+              {
+                "sa": "बालः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बाल",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "नटम्",
+                "gloss": {
+                  "en": "actor (object)",
+                  "hi": "नट (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नट",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पश्यति",
+                "gloss": {
+                  "en": "sees",
+                  "hi": "देखता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दृश्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "बालः सकृत् शृणोति।",
+            "meaning": {
+              "en": "The boy hears it once.",
+              "hi": "बालक एक बार सुनता है।"
+            },
+            "words": [
+              {
+                "sa": "बालः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बाल",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "सकृत्",
+                "gloss": {
+                  "en": "once",
+                  "hi": "एक बार"
+                },
+                "check": null
+              },
+              {
+                "sa": "शृणोति",
+                "gloss": {
+                  "en": "hears",
+                  "hi": "सुनता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "श्रु",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "सः सर्वम् स्मरति।",
+            "meaning": {
+              "en": "He remembers everything.",
+              "hi": "वह सब कुछ याद रखता है।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "सर्वम्",
+                "gloss": {
+                  "en": "everything (object)",
+                  "hi": "सब कुछ (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "सर्व",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "स्मरति",
+                "gloss": {
+                  "en": "remembers",
+                  "hi": "याद रखता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "स्मृ",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "title": {
+          "en": "A voice from the sky",
+          "hi": "आकाश से एक वाणी"
+        },
+        "image": {
+          "id": "tale-leaf-3-r2",
+          "brief": "The mother standing at the door of the small house at night with her hand on her small son's shoulder, looking up at the night sky where faint golden lines of script and a soft glow gather above the roof; the two scholars at her feet looking up in wonder; the boy listening with his head tilted.",
+          "alt": {
+            "en": "A mother and her small son look up at a golden glow in the night sky, two scholars beside them",
+            "hi": "माता और नन्हा बालक रात के आकाश में सुनहरी आभा देखते, पास में दो विद्वान्"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "vararuci",
+            "vasudatta",
+            "vyadi",
+            "indradatta"
+          ],
+          "place": "grama"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "reading",
+        "passage": [
+          {
+            "sa": "विप्रौ पाठम् वदतः।",
+            "meaning": {
+              "en": "The scholars say a lesson.",
+              "hi": "विद्वान् एक पाठ बोलते हैं।"
+            },
+            "words": [
+              {
+                "sa": "विप्रौ",
+                "gloss": {
+                  "en": "scholars",
+                  "hi": "विद्वान्"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "विप्र",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पाठम्",
+                "gloss": {
+                  "en": "lesson (object)",
+                  "hi": "पाठ (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पाठ",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वदतः",
+                "gloss": {
+                  "en": "say",
+                  "hi": "बोलते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "बालः पाठम् वदति पुनः।",
+            "meaning": {
+              "en": "The boy says the lesson again.",
+              "hi": "बालक वह पाठ फिर बोलता है।"
+            },
+            "words": [
+              {
+                "sa": "बालः",
+                "gloss": {
+                  "en": "boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बाल",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पाठम्",
+                "gloss": {
+                  "en": "lesson (object)",
+                  "hi": "पाठ (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पाठ",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वदति",
+                "gloss": {
+                  "en": "says",
+                  "hi": "बोलता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पुनः",
+                "gloss": {
+                  "en": "again",
+                  "hi": "फिर"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "विप्रौ विस्मयम् गच्छतः।",
+            "meaning": {
+              "en": "The scholars are amazed.",
+              "hi": "विद्वान् विस्मय में पड़ जाते हैं।"
+            },
+            "words": [
+              {
+                "sa": "विप्रौ",
+                "gloss": {
+                  "en": "scholars",
+                  "hi": "विद्वान्"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "विप्र",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "विस्मयम्",
+                "gloss": {
+                  "en": "amazement",
+                  "hi": "विस्मय"
+                },
+                "check": null
+              },
+              {
+                "sa": "गच्छतः",
+                "gloss": {
+                  "en": "go",
+                  "hi": "पहुँचते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "विप्रौ वदतः आवाम् श्रुतधरम् इष्यावः।",
+            "meaning": {
+              "en": "The scholars say: “We two seek one who holds what he hears.”",
+              "hi": "विद्वान् कहते हैं: “हम दोनों सुना हुआ धारण करने वाले को खोज रहे हैं।”"
+            },
+            "words": [
+              {
+                "sa": "विप्रौ",
+                "gloss": {
+                  "en": "scholars",
+                  "hi": "विद्वान्"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "विप्र",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वदतः",
+                "gloss": {
+                  "en": "say",
+                  "hi": "कहते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "आवाम्",
+                "gloss": {
+                  "en": "we two",
+                  "hi": "हम दोनों"
+                },
+                "check": null
+              },
+              {
+                "sa": "श्रुतधरम्",
+                "gloss": {
+                  "en": "one who holds what he hears",
+                  "hi": "सुना हुआ धारण करने वाला"
+                },
+                "check": null
+              },
+              {
+                "sa": "इष्यावः",
+                "gloss": {
+                  "en": "seek",
+                  "hi": "चाहते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": "इष्",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "वर्षः पाटलिपुत्रे वसति।",
+            "meaning": {
+              "en": "Varṣa lives in Pāṭaliputra.",
+              "hi": "वर्ष पाटलिपुत्र में रहते हैं।"
+            },
+            "words": [
+              {
+                "sa": "वर्षः",
+                "gloss": {
+                  "en": "Varṣa",
+                  "hi": "वर्ष"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वर्ष",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पाटलिपुत्रे",
+                "gloss": {
+                  "en": "in Pāṭaliputra",
+                  "hi": "पाटलिपुत्र में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पाटलिपुत्र",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वसति",
+                "gloss": {
+                  "en": "lives",
+                  "hi": "रहते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "जनाः वदन्ति वर्षः मूर्खः।",
+            "meaning": {
+              "en": "People say: “Varṣa is a fool.”",
+              "hi": "लोग कहते हैं: “वर्ष मूर्ख हैं।”"
+            },
+            "words": [
+              {
+                "sa": "जनाः",
+                "gloss": {
+                  "en": "people",
+                  "hi": "लोग"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "जन",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वदन्ति",
+                "gloss": {
+                  "en": "say",
+                  "hi": "कहते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वर्षः",
+                "gloss": {
+                  "en": "Varṣa",
+                  "hi": "वर्ष"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वर्ष",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "मूर्खः",
+                "gloss": {
+                  "en": "foolish",
+                  "hi": "मूर्ख"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "मूर्ख",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "माता वदति।",
+            "meaning": {
+              "en": "The mother says:",
+              "hi": "माता कहती है:"
+            },
+            "words": [
+              {
+                "sa": "माता",
+                "gloss": {
+                  "en": "mother",
+                  "hi": "माता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "मातृ",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वदति",
+                "gloss": {
+                  "en": "says",
+                  "hi": "कहती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "आकाशात् वाणी भवति।",
+            "meaning": {
+              "en": "“A voice comes from the sky.”",
+              "hi": "“आकाश से एक वाणी आती है।”"
+            },
+            "words": [
+              {
+                "sa": "आकाशात्",
+                "gloss": {
+                  "en": "from the sky",
+                  "hi": "आकाश से"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "आकाश",
+                  "linga": "Pum",
+                  "vibhakti": "Panchami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वाणी",
+                "gloss": {
+                  "en": "a voice",
+                  "hi": "एक वाणी"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वाणी",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "भवति",
+                "gloss": {
+                  "en": "comes",
+                  "hi": "आती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "भू",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "एष श्रुतधरो जातो विद्यां वर्षादवाप्स्यति किंच व्याकरणं लोके प्रतिष्ठां प्रापयिष्यति",
+            "meaning": {
+              "en": "“This one holds what he hears, he will get knowledge from Varṣa, and he will give grammar its place in the world.” (Somadeva, Kathāsaritsāgara, taraṅga 2)",
+              "hi": "“यह सुना हुआ धारण करता है; वह वर्ष से विद्या पाएगा, और व्याकरण को संसार में प्रतिष्ठा दिलाएगा।” (सोमदेव, कथासरित्सागर, तरंग 2)"
+            },
+            "words": [
+              {
+                "sa": "एषः",
+                "gloss": {
+                  "en": "this",
+                  "hi": "यह"
+                },
+                "check": null
+              },
+              {
+                "sa": "श्रुतधरः",
+                "gloss": {
+                  "en": "holds what he hears",
+                  "hi": "सुना धारण करने वाला"
+                },
+                "check": null
+              },
+              {
+                "sa": "जातः",
+                "gloss": {
+                  "en": "was born",
+                  "hi": "पैदा हुआ"
+                },
+                "check": null
+              },
+              {
+                "sa": "विद्याम्",
+                "gloss": {
+                  "en": "knowledge",
+                  "hi": "विद्या"
+                },
+                "check": null
+              },
+              {
+                "sa": "वर्षात्",
+                "gloss": {
+                  "en": "from Varṣa",
+                  "hi": "वर्ष से"
+                },
+                "check": null
+              },
+              {
+                "sa": "अवाप्स्यति",
+                "gloss": {
+                  "en": "will get",
+                  "hi": "पाएगा"
+                },
+                "check": null
+              },
+              {
+                "sa": "व्याकरणम्",
+                "gloss": {
+                  "en": "grammar",
+                  "hi": "व्याकरण"
+                },
+                "check": null
+              },
+              {
+                "sa": "लोके",
+                "gloss": {
+                  "en": "in the world",
+                  "hi": "संसार में"
+                },
+                "check": null
+              },
+              {
+                "sa": "प्रतिष्ठाम्",
+                "gloss": {
+                  "en": "standing",
+                  "hi": "प्रतिष्ठा"
+                },
+                "check": null
+              },
+              {
+                "sa": "प्रापयिष्यति",
+                "gloss": {
+                  "en": "will bring",
+                  "hi": "पहुँचाएगा"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "बालस्य नाम वररुचिः।",
+            "meaning": {
+              "en": "The boy's name is Vararuci.",
+              "hi": "बालक का नाम वररुचि है।"
+            },
+            "words": [
+              {
+                "sa": "बालस्य",
+                "gloss": {
+                  "en": "the boy's",
+                  "hi": "बालक का"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बाल",
+                  "linga": "Pum",
+                  "vibhakti": "Sasthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "नाम",
+                "gloss": {
+                  "en": "name",
+                  "hi": "नाम"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नामन्",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वररुचिः",
+                "gloss": {
+                  "en": "Vararuci",
+                  "hi": "वररुचि"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "माता बालम् विप्राभ्याम् ददाति।",
+            "meaning": {
+              "en": "The mother gives the boy to the two scholars.",
+              "hi": "माता बालक को दोनों विद्वानों को सौंप देती है।"
+            },
+            "words": [
+              {
+                "sa": "माता",
+                "gloss": {
+                  "en": "mother",
+                  "hi": "माता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "मातृ",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "बालम्",
+                "gloss": {
+                  "en": "boy (object)",
+                  "hi": "बालक (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बाल",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "विप्राभ्याम्",
+                "gloss": {
+                  "en": "to the two scholars",
+                  "hi": "दोनों विद्वानों को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "विप्र",
+                  "linga": "Pum",
+                  "vibhakti": "Caturthi",
+                  "vacana": "Dvi",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "ददाति",
+                "gloss": {
+                  "en": "gives",
+                  "hi": "देती है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दा",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          }
+        ]
+      },
+      {
+        "id": "r3",
+        "title": {
+          "en": "Once, twice, thrice",
+          "hi": "एक बार, दो बार, तीन बार"
+        },
+        "image": {
+          "id": "tale-leaf-3-r3",
+          "brief": "The courtyard of a poor mud-walled house in Pāṭaliputra: the thin teacher Varṣa seated on swept ground speaking, three boys sitting cross-legged before him with a small boy in front, eyes closed, listening; townsfolk gathering at the gate with folded hands; a royal messenger with a gift tray arriving.",
+          "alt": {
+            "en": "A teacher speaks to three pupils in a poor courtyard as townsfolk gather with folded hands",
+            "hi": "गरीब आँगन में तीन शिष्यों को पढ़ाते गुरु, हाथ जोड़े जुटते नगरवासी"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "varsha",
+            "vararuci",
+            "vyadi",
+            "indradatta"
+          ],
+          "place": "pataliputra"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "reading",
+        "passage": [
+          {
+            "sa": "ते त्रयः पाटलिपुत्रम् गच्छन्ति।",
+            "meaning": {
+              "en": "The three go to Pāṭaliputra.",
+              "hi": "वे तीनों पाटलिपुत्र जाते हैं।"
+            },
+            "words": [
+              {
+                "sa": "ते",
+                "gloss": {
+                  "en": "they",
+                  "hi": "वे"
+                },
+                "check": null
+              },
+              {
+                "sa": "त्रयः",
+                "gloss": {
+                  "en": "three",
+                  "hi": "तीन"
+                },
+                "check": null
+              },
+              {
+                "sa": "पाटलिपुत्रम्",
+                "gloss": {
+                  "en": "Pāṭaliputra (object)",
+                  "hi": "पाटलिपुत्र (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पाटलिपुत्र",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छन्ति",
+                "gloss": {
+                  "en": "go",
+                  "hi": "जाते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "ते वर्षस्य गृहम् आगच्छन्ति।",
+            "meaning": {
+              "en": "They come to Varṣa's house.",
+              "hi": "वे वर्ष के घर पहुँचते हैं।"
+            },
+            "words": [
+              {
+                "sa": "ते",
+                "gloss": {
+                  "en": "they",
+                  "hi": "वे"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "तद्",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वर्षस्य",
+                "gloss": {
+                  "en": "of Varṣa",
+                  "hi": "वर्ष के"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वर्ष",
+                  "linga": "Pum",
+                  "vibhakti": "Sasthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गृहम्",
+                "gloss": {
+                  "en": "house (object)",
+                  "hi": "घर (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गृह",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "आगच्छन्ति",
+                "gloss": {
+                  "en": "come to",
+                  "hi": "पहुँचते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "आ"
+                  ],
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "वर्षः ओंकारम् वदति।",
+            "meaning": {
+              "en": "Varṣa utters the syllable Om.",
+              "hi": "वर्ष ओंकार का उच्चारण करते हैं।"
+            },
+            "words": [
+              {
+                "sa": "वर्षः",
+                "gloss": {
+                  "en": "Varṣa",
+                  "hi": "वर्ष"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वर्ष",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "ओंकारम्",
+                "gloss": {
+                  "en": "the syllable Om",
+                  "hi": "ओंकार"
+                },
+                "check": null
+              },
+              {
+                "sa": "वदति",
+                "gloss": {
+                  "en": "utters",
+                  "hi": "उच्चारते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "वर्षः पाठम् वदति।",
+            "meaning": {
+              "en": "Varṣa says the lesson.",
+              "hi": "वर्ष पाठ बोलते हैं।"
+            },
+            "words": [
+              {
+                "sa": "वर्षः",
+                "gloss": {
+                  "en": "Varṣa",
+                  "hi": "वर्ष"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वर्ष",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पाठम्",
+                "gloss": {
+                  "en": "lesson (object)",
+                  "hi": "पाठ (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पाठ",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वदति",
+                "gloss": {
+                  "en": "says",
+                  "hi": "बोलते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "बालः सकृत् शृणोति।",
+            "meaning": {
+              "en": "The boy hears it once.",
+              "hi": "बालक एक बार सुनता है।"
+            },
+            "words": [
+              {
+                "sa": "बालः",
+                "gloss": {
+                  "en": "the boy",
+                  "hi": "बालक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "बाल",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "सकृत्",
+                "gloss": {
+                  "en": "once",
+                  "hi": "एक बार"
+                },
+                "check": null
+              },
+              {
+                "sa": "शृणोति",
+                "gloss": {
+                  "en": "hears",
+                  "hi": "सुनता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "श्रु",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "व्याडिः द्विः शृणोति।",
+            "meaning": {
+              "en": "Vyāḍi hears it twice.",
+              "hi": "व्याडि दो बार सुनता है।"
+            },
+            "words": [
+              {
+                "sa": "व्याडिः",
+                "gloss": {
+                  "en": "Vyāḍi",
+                  "hi": "व्याडि"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "व्याडि",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "द्विः",
+                "gloss": {
+                  "en": "twice",
+                  "hi": "दो बार"
+                },
+                "check": null
+              },
+              {
+                "sa": "शृणोति",
+                "gloss": {
+                  "en": "hears",
+                  "hi": "सुनता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "श्रु",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "इन्द्रदत्तः त्रिः शृणोति।",
+            "meaning": {
+              "en": "Indradatta hears it three times.",
+              "hi": "इन्द्रदत्त तीन बार सुनता है।"
+            },
+            "words": [
+              {
+                "sa": "इन्द्रदत्तः",
+                "gloss": {
+                  "en": "Indradatta",
+                  "hi": "इन्द्रदत्त"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "इन्द्रदत्त",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "त्रिः",
+                "gloss": {
+                  "en": "thrice",
+                  "hi": "तीन बार"
+                },
+                "check": null
+              },
+              {
+                "sa": "शृणोति",
+                "gloss": {
+                  "en": "hears",
+                  "hi": "सुनता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "श्रु",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "सकृच्छ्रुतं मया तत्र द्विःश्रुतं व्याडिना तथा त्रिश्रुतं चेन्द्रदत्तेन गुरुणोक्तमगृह्यत",
+            "meaning": {
+              "en": "“What the teacher said was taken in: by me after one hearing, by Vyāḍi after two, and by Indradatta after three.” (Somadeva, Kathāsaritsāgara, taraṅga 2)",
+              "hi": "“गुरु ने जो कहा वह ग्रहण किया गया: मुझसे एक बार सुनने पर, व्याडि से दो बार सुनने पर, और इन्द्रदत्त से तीन बार सुनने पर।” (सोमदेव, कथासरित्सागर, तरंग 2)"
+            },
+            "words": [
+              {
+                "sa": "सकृच्छ्रुतम्",
+                "gloss": {
+                  "en": "heard once",
+                  "hi": "एक बार सुना"
+                },
+                "check": null
+              },
+              {
+                "sa": "मया",
+                "gloss": {
+                  "en": "by me",
+                  "hi": "मेरे द्वारा"
+                },
+                "check": null
+              },
+              {
+                "sa": "तत्र",
+                "gloss": {
+                  "en": "there",
+                  "hi": "वहाँ"
+                },
+                "check": null
+              },
+              {
+                "sa": "द्विःश्रुतम्",
+                "gloss": {
+                  "en": "heard twice",
+                  "hi": "दो बार सुना"
+                },
+                "check": null
+              },
+              {
+                "sa": "व्याडिना",
+                "gloss": {
+                  "en": "by Vyāḍi",
+                  "hi": "व्याडि के द्वारा"
+                },
+                "check": null
+              },
+              {
+                "sa": "तथा",
+                "gloss": {
+                  "en": "and so",
+                  "hi": "वैसे ही"
+                },
+                "check": null
+              },
+              {
+                "sa": "त्रिश्रुतम्",
+                "gloss": {
+                  "en": "heard thrice",
+                  "hi": "तीन बार सुना"
+                },
+                "check": null
+              },
+              {
+                "sa": "च",
+                "gloss": {
+                  "en": "and",
+                  "hi": "और"
+                },
+                "check": null
+              },
+              {
+                "sa": "इन्द्रदत्तेन",
+                "gloss": {
+                  "en": "by Indradatta",
+                  "hi": "इन्द्रदत्त के द्वारा"
+                },
+                "check": null
+              },
+              {
+                "sa": "गुरुणा",
+                "gloss": {
+                  "en": "by the teacher",
+                  "hi": "गुरु के द्वारा"
+                },
+                "check": null
+              },
+              {
+                "sa": "उक्तम्",
+                "gloss": {
+                  "en": "what was said",
+                  "hi": "जो कहा गया"
+                },
+                "check": null
+              },
+              {
+                "sa": "अगृह्यत",
+                "gloss": {
+                  "en": "was taken in",
+                  "hi": "ग्रहण किया गया"
+                },
+                "check": null
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "नृपः नन्दः वर्षाय धनम् ददाति।",
+            "meaning": {
+              "en": "King Nanda gives wealth to Varṣa.",
+              "hi": "राजा नन्द वर्ष को धन देता है।"
+            },
+            "words": [
+              {
+                "sa": "नृपः",
+                "gloss": {
+                  "en": "the king",
+                  "hi": "राजा"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नृप",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "नन्दः",
+                "gloss": {
+                  "en": "Nanda",
+                  "hi": "नन्द"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नन्द",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वर्षाय",
+                "gloss": {
+                  "en": "to Varṣa",
+                  "hi": "वर्ष को"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वर्ष",
+                  "linga": "Pum",
+                  "vibhakti": "Caturthi",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "धनम्",
+                "gloss": {
+                  "en": "wealth (object)",
+                  "hi": "धन (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "धन",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "ददाति",
+                "gloss": {
+                  "en": "gives",
+                  "hi": "देता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "दा",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          },
+          {
+            "sa": "जनाः वर्षम् नमन्ति।",
+            "meaning": {
+              "en": "The people bow to Varṣa.",
+              "hi": "लोग वर्ष को प्रणाम करते हैं।"
+            },
+            "words": [
+              {
+                "sa": "जनाः",
+                "gloss": {
+                  "en": "people",
+                  "hi": "लोग"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "जन",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वर्षम्",
+                "gloss": {
+                  "en": "Varṣa (object)",
+                  "hi": "वर्ष (कर्म)"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वर्ष",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "नमन्ति",
+                "gloss": {
+                  "en": "bow to",
+                  "hi": "प्रणाम करते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "नम्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "check": null
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "tale-leaf-3-r1",
+    "brief": "A village house at night: two dusty travelling scholars with cloth bundles sitting in the courtyard with a lamp; in the lane beyond, a travelling actor dancing to a drum, torch-lit; a small boy of seven watching from the doorway, head tilted, listening; his mother in the doorway beside him.",
+    "alt": {
+      "en": "Two travelling scholars in a courtyard at night as a small boy listens to a drum in the lane",
+      "hi": "रात में आँगन में दो यात्री विद्वान्, गली में मृदंग सुनता नन्हा बालक"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "vararuci",
+      "vasudatta",
+      "vyadi",
+      "indradatta"
+    ],
+    "place": "grama"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A village house at night: two dusty travelling scholars with cloth bundles sitting in the courtyard with a lamp; in the lane beyond, a travelling actor dancing to a drum, torch-lit; a small boy of seven watching from the doorway, head tilted, listening; his mother in the doorway beside him.\nCharacter appearances:\nvararuci: A small, bright-eyed boy of about seven in a plain white dhoti, a thin sacred thread, hair in a short tuft, always listening with his head tilted.\nvasudatta: A slim young widow in a plain white-grey sari, tired kind eyes, a clay lamp always near her hand.\nvyadi: A lean scholar in a travel-worn ochre dhoti, dusty feet, a cloth bundle of palm leaves on one shoulder, tired but eager eyes.\nindradatta: A broad, quiet scholar in a faded saffron wrap, a staff, a thoughtful frown, walking beside Vyāḍi.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-dbbab48c-e220-4831-92f0-e8b3d52ad2d0.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "da9642c0301ab053a2b59c5f2eeba0e29f9dee7054376e8d4933f38cf9c4e717",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\tale-leaf-3-r1-phone-7e02e2b6.webp",
+      "key": "learn/tale-leaf-3-r1-phone-7e02e2b6.webp",
+      "sha256": "7e02e2b672bb7423d012c5176963aa67af5dc6cb548928ca39408a8bd4e76a90",
+      "bytes": 97942,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/tale-leaf-3-r1-phone-7e02e2b6.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\tale-leaf-3-r1-tablet-328285b6.webp",
+      "key": "learn/tale-leaf-3-r1-tablet-328285b6.webp",
+      "sha256": "328285b605d7a1ebeb44cc4e3abc508b32525f4e9870e89bc463cd0a8e0bc3f3",
+      "bytes": 370612,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/tale-leaf-3-r1-tablet-328285b6.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

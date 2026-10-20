@@ -10,7 +10,7 @@ teaches:
 needs:
 - verb.class-2
 - verb.class-3
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -39,9 +39,22 @@ cards:
     place: smashana
     ratio: '4:3'
     id: vc2-kr-s1
+    text_in_image: ["श्रु", "शृणोति", "कृ", "करोति"]
   narration:
     en: 'Two drawers at once, the fifth and the eighth, because they sound alike. “Listen,” says the Vetāla, cupping a hand to his ear. “शृणोति. करोति.” The hands of every spirit in the circle go to their ears; a ring of small shapes echoes “-ओति, -ओति.” Śuka hops: “It is the hearing and the doing. He hears, he does.”'
     hi: 'एक साथ दो दराज़, पाँचवाँ और आठवाँ, क्योंकि वे एक जैसे सुनाई देते हैं। “सुनो,” वेताल कान पर हाथ रखकर कहता है। “शृणोति। करोति।” घेरे के हर भूत का हाथ कान पर जाता है; नन्ही आकृतियों का घेरा गूँजता है “-ओति, -ओति।” शुक उछलता है: “यह सुनना और करना है। वह सुनता है, वह करता है।”'
+  lines:
+  - speaker: vetala
+    sa: शृणोति
+    gloss:
+      en: He hears.
+      hi: वह सुनता है।
+    check:
+      type: tinanta
+      dhatu: श्रु
+      lakara: Lat
+      purusha: Prathama
+      vacana: Eka
 - id: t1
   kind: teach
   title:
@@ -297,8 +310,8 @@ cards:
   - verb.class-5-8
   mode: match
   prompt:
-    en: Join each root to its “he” form.
-    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+    en: Match each root with its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से मिलाइए।
   explain:
     en: '{{-नो-}} for class 5; {{-ओ-}} for class 8.'
     hi: गण 5 के लिए {{-नो-}}; गण 8 के लिए {{-ओ-}}।

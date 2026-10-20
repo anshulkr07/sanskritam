@@ -1,0 +1,689 @@
+{
+  "id": "m2-arya-s1",
+  "where": "m2.arya#s1",
+  "ratio": "4:3",
+  "expected": [
+    "दानं भोगो नाशस्",
+    "तिस्रो गतयो भवन्ति वित्तस्य",
+    "यो न ददाति न भुङ्क्ते",
+    "तस्य तृतीया गतिर्भवति"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A stone balance with two pans at the foot of a spiral stair; Dādī laying a palm-leaf verse on one pan and small stone grains on the other; Vṛttikā drifting past; Śuka reading the pans; Lubdhaka at a distance, taking notes.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvrttika: A tall thin spirit of pale smoke, drifting in a slow ring round a golden throne, her long sleeves trailing, one hand lightly counting on her fingers as she goes.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nदानं भोगो नाशस्\nतिस्रो गतयो भवन्ति वित्तस्य\nयो न ददाति न भुङ्क्ते\nतस्य तृतीया गतिर्भवति",
+  "source": {
+    "id": "m2.arya",
+    "template": "scene",
+    "title": {
+      "en": "Counting time",
+      "hi": "मात्राओं की गिनती"
+    },
+    "title_sa": "आर्या",
+    "minutes": 6,
+    "teaches": [
+      "chandas.arya"
+    ],
+    "needs": [
+      "chandas.vrtta",
+      "chandas.weight"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The scales",
+          "hi": "तराज़ू"
+        },
+        "image": {
+          "id": "m2-arya-s1",
+          "brief": "A stone balance with two pans at the foot of a spiral stair; Dādī laying a palm-leaf verse on one pan and small stone grains on the other; Vṛttikā drifting past; Śuka reading the pans; Lubdhaka at a distance, taking notes.",
+          "alt": {
+            "en": "A stone balance at the foot of a stair, a verse in one pan and grains in the other",
+            "hi": "सीढ़ी के नीचे पत्थर की तराज़ू, एक पलड़े में श्लोक और दूसरे में दाने"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "vrttika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "At the foot of the stair stands a stone balance. Dādī puts a verse on it. “Some metres do not count syllables; they count time. A light syllable weighs one grain, a heavy one two. This is Āryā.” She reads: दानं भोगो नाशस्… Vṛttikā, drifting past, watches the pans tip. “Twelve, eighteen, twelve, fifteen,” Dādī says. “Weigh it yourself.”",
+          "hi": "सीढ़ी के नीचे पत्थर की एक तराज़ू खड़ी है। दादी उस पर एक श्लोक रखती हैं। “कुछ छन्द अक्षर नहीं गिनते; वे समय गिनते हैं। लघु अक्षर का वज़न एक दाना, गुरु का दो। यह आर्या है।” वे पढ़ती हैं: दानं भोगो नाशस्… वृत्तिका, पास से तैरती हुई, पलड़ों को झुकते देखती है। “बारह, अठारह, बारह, पन्द्रह,” दादी कहती हैं। “आप स्वयं तौलिए।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "दानं भोगो नाशस् तिस्रो गतयो भवन्ति वित्तस्य यो न ददाति न भुङ्क्ते तस्य तृतीया गतिर् भवति",
+          "gloss": {
+            "en": "Giving, enjoying and losing are the three courses of wealth; for one who neither gives nor enjoys, the third course is the one that comes.",
+            "hi": "दान, भोग और नाश: धन की ये तीन गतियाँ हैं; जो न देता है न भोगता है, उसकी तीसरी गति होती है।"
+          },
+          "source": "Bhartṛhari, Nītiśataka (GRETIL numbering 1.43); the verse is in Āryā"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Counting time",
+          "hi": "समय की गिनती"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.arya"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Some metres count time, not syllables: a light syllable is one {{मात्रा}}, a heavy one two. These are called {{जाति}}. In the {{आर्या}} the four quarters have 12, 18, 12 and 15 mātrās. The last syllable of a quarter may be counted heavy to make the sum.",
+          "hi": "कुछ छन्द अक्षर नहीं, समय गिनते हैं: लघु अक्षर एक {{मात्रा}}, गुरु दो। इन्हें {{जाति}} कहते हैं। {{आर्या}} के चार चरणों में 12, 18, 12 और 15 मात्राएँ होती हैं। योग पूरा करने के लिए चरण का अन्तिम अक्षर गुरु गिना जा सकता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "मात्रा",
+          "meaning": {
+            "en": "a beat of time: light 1, heavy 2",
+            "hi": "समय की इकाई: लघु 1, गुरु 2"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "The verse weighed",
+          "hi": "श्लोक का तौल"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.arya"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Light 1, heavy 2",
+          "hi": "लघु 1, गुरु 2"
+        },
+        "columns": [
+          {
+            "en": "Quarter",
+            "hi": "चरण"
+          },
+          {
+            "en": "Text",
+            "hi": "पाठ"
+          },
+          {
+            "en": "Mātrās",
+            "hi": "मात्राएँ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "1",
+                "hi": "१"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "दानं भोगो नाशस्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "12",
+                "hi": "१२"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "2",
+                "hi": "२"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तिस्रो गतयो भवन्ति वित्तस्य",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "18",
+                "hi": "१८"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "3",
+                "hi": "३"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "यो न ददाति न भुङ्क्ते",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "12",
+                "hi": "१२"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "4",
+                "hi": "४"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तस्य तृतीया गतिर्भवति",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "15",
+                "hi": "१५"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "Quarters two and four end light: counted heavy, they give 18 and 15.",
+          "hi": "चरण दो और चार लघु पर समाप्त होते हैं: गुरु गिनने पर 18 और 15।"
+        }
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.arya"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "rhythm_tapper",
+        "prompt": {
+          "en": "Tap the whole verse: one beat for light, hold for heavy.",
+          "hi": "पूरे श्लोक की ताल दीजिए: लघु पर एक थाप, गुरु पर दबाकर।"
+        },
+        "params": {
+          "lines": [
+            "दानं भोगो नाशस्\nतिस्रो गतयो भवन्ति वित्तस्य\nयो न ददाति न भुङ्क्ते\nतस्य तृतीया गतिर्भवति"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.arya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "How many mātrās in {{राम}}?",
+          "hi": "{{राम}} में कितनी मात्राएँ हैं?"
+        },
+        "explain": {
+          "en": "{{रा}} heavy 2, {{म}} light 1: 3.",
+          "hi": "{{रा}} गुरु 2, {{म}} लघु 1: 3।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "2",
+              "hi": "२"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "3",
+              "hi": "३"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "4",
+              "hi": "४"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.arya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "How many mātrās in {{विद्या}}?",
+          "hi": "{{विद्या}} में कितनी मात्राएँ हैं?"
+        },
+        "explain": {
+          "en": "Both syllables are heavy: 2 + 2 = 4.",
+          "hi": "दोनों अक्षर गुरु हैं: 2 + 2 = 4।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "3",
+              "hi": "३"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "4",
+              "hi": "४"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "5",
+              "hi": "५"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.arya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each Āryā quarter to its mātrās.",
+          "hi": "आर्या के हर चरण को उसकी मात्राओं से जोड़िए।"
+        },
+        "explain": {
+          "en": "12, 18, 12, 15.",
+          "hi": "12, 18, 12, 15।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": null,
+              "text": {
+                "en": "quarters 1 and 3",
+                "hi": "चरण १ और ३"
+              },
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "12",
+                "hi": "१२"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": null,
+              "text": {
+                "en": "quarter 2",
+                "hi": "चरण २"
+              },
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "18",
+                "hi": "१८"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": null,
+              "text": {
+                "en": "quarter 4",
+                "hi": "चरण ४"
+              },
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "15",
+                "hi": "१५"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.arya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "engine",
+        "prompt": {
+          "en": "Mark each syllable of this quarter.",
+          "hi": "इस चरण के हर अक्षर को चिह्नित कीजिए।"
+        },
+        "explain": {
+          "en": "Heavy, light, light, heavy, light, light, heavy, heavy.",
+          "hi": "गुरु, लघु, लघु, गुरु, लघु, लघु, गुरु, गुरु।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": {
+          "kind": "scan_metre",
+          "params": {
+            "text": "यो न ददाति न भुङ्क्ते"
+          },
+          "seed": 7
+        },
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "The scales",
+          "hi": "तराज़ू"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "chandas.arya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{यो न ददाति न भुङ्क्ते}} is heavy, light, light, heavy, light, light, heavy, heavy. How many mātrās?",
+          "hi": "{{यो न ददाति न भुङ्क्ते}} है गुरु, लघु, लघु, गुरु, लघु, लघु, गुरु, गुरु। कितनी मात्राएँ?"
+        },
+        "explain": {
+          "en": "2+1+1+2+1+1+2+2 = 12.",
+          "hi": "2+1+1+2+1+1+2+2 = 12।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "10",
+              "hi": "१०"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "12",
+              "hi": "१२"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "15",
+              "hi": "१५"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“Twelve,” you say, and the pan with the third quarter in it sinks, slowly, to rest on the grains: exactly level. Dādī nods. Vṛttikā, drifting past, reaches out and touches the beam of the scales with one smoky finger, and the beam rocks gently, in time, like a pendulum. “Time,” she says, “not syllables. That is why my song never ended: I was counting the wrong thing.”",
+            "hi": "“बारह,” आप कहते हैं, और तीसरे चरण वाला पलड़ा धीरे-धीरे दानों पर ठहर जाता है: ठीक बराबर। दादी सिर हिलाती हैं। वृत्तिका, पास से तैरती हुई, तराज़ू की डंडी को अपनी धुएँ-सी उँगली से छूती है, और डंडी लोलक की तरह लय में हौले-हौले डोलती है। “समय,” वह कहती है, “अक्षर नहीं। इसीलिए मेरा गीत कभी पूरा नहीं हुआ: मैं गलत चीज़ गिन रही थी।”"
+          },
+          "failure": {
+            "en": "The pan stays up. Add the beats: 2+1+1+2+1+1+2+2.",
+            "hi": "पलड़ा ऊपर रहता है। ताल जोड़िए: 2+1+1+2+1+1+2+2।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Counting time",
+          "hi": "मात्राओं की गिनती"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "मात्रा",
+            "text": {
+              "en": "Light 1, heavy 2.",
+              "hi": "लघु 1, गुरु 2।"
+            }
+          },
+          {
+            "sa": "जाति",
+            "text": {
+              "en": "A metre counted in time.",
+              "hi": "समय से गिना जाने वाला छन्द।"
+            }
+          },
+          {
+            "sa": "आर्या",
+            "text": {
+              "en": "Quarters of 12, 18, 12, 15.",
+              "hi": "चरण 12, 18, 12, 15 के।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "m2-arya-s1",
+    "brief": "A stone balance with two pans at the foot of a spiral stair; Dādī laying a palm-leaf verse on one pan and small stone grains on the other; Vṛttikā drifting past; Śuka reading the pans; Lubdhaka at a distance, taking notes.",
+    "alt": {
+      "en": "A stone balance at the foot of a stair, a verse in one pan and grains in the other",
+      "hi": "सीढ़ी के नीचे पत्थर की तराज़ू, एक पलड़े में श्लोक और दूसरे में दाने"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "vrttika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A stone balance with two pans at the foot of a spiral stair; Dādī laying a palm-leaf verse on one pan and small stone grains on the other; Vṛttikā drifting past; Śuka reading the pans; Lubdhaka at a distance, taking notes.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nvrttika: A tall thin spirit of pale smoke, drifting in a slow ring round a golden throne, her long sleeves trailing, one hand lightly counting on her fingers as she goes.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-0773603d-43c2-4ec2-942c-c900bef6b5af.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "238fb7880257f66e3be54af08ca8e653ab4fa9c901d99d7526d2bdfbf2a1cf53",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\m2-arya-s1-phone-718369cf.webp",
+      "key": "learn/m2-arya-s1-phone-718369cf.webp",
+      "sha256": "718369cf43af1b35beab0ba7baa320427c05d5c40dd896efe31e15d9e5507168",
+      "bytes": 110820,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/m2-arya-s1-phone-718369cf.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\m2-arya-s1-tablet-e3b9d13b.webp",
+      "key": "learn/m2-arya-s1-tablet-e3b9d13b.webp",
+      "sha256": "e3b9d13bcc60c3fc88096d78724c26a4390ba932ca5f65ea3e2c79a5341d2c9d",
+      "bytes": 427294,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/m2-arya-s1-tablet-e3b9d13b.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

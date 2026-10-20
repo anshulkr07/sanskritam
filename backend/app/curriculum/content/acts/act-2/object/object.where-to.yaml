@@ -9,7 +9,7 @@ teaches:
 - case.acc-goal
 needs:
 - case.acc
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -275,8 +275,8 @@ cards:
   - case.acc-goal
   mode: match
   prompt:
-    en: Join each place to “to …”.
-    hi: हर स्थान को ‘…को’ से जोड़िए।
+    en: Match each place with “to …”.
+    hi: हर स्थान को ‘…को’ से मिलाइए।
   explain:
     en: The second case marks where you go.
     hi: द्वितीया बताती है कि कहाँ जाते हैं।

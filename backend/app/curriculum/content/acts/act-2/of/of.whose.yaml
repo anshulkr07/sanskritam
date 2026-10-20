@@ -9,7 +9,7 @@ teaches:
 - case.gen
 needs:
 - case.abl
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -364,8 +364,8 @@ cards:
   - case.gen
   mode: match
   prompt:
-    en: Join each owner to its meaning.
-    hi: हर स्वामी को उसके अर्थ से जोड़िए।
+    en: Match each owner with its meaning.
+    hi: हर स्वामी को उसके अर्थ से मिलाइए।
   explain:
     en: '{{स्य}} and {{याः}}: the sixth-case endings.'
     hi: '{{स्य}} और {{याः}}: षष्ठी के प्रत्यय।'

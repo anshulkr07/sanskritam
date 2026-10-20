@@ -1,0 +1,1546 @@
+{
+  "id": "should-advice-s1",
+  "where": "should.advice#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The burning-ground grove at night: the Vetāla seated on a root rubbing his hands; a tiny round spirit of old paper in round spectacles with scrolls under both arms and one finger wagging at the sky; Dādī and Śuka beside you; a faint image in the smoke of a king and a hungry beggar on a lane.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nvidhika: A small round spirit of old paper with tiny round spectacles and rolled palm-leaf scrolls under both arms, one finger always wagging.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI. All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "should.advice",
+    "template": "scene",
+    "title": {
+      "en": "He should read",
+      "hi": "उसे पढ़ना चाहिए"
+    },
+    "title_sa": "पठेत्",
+    "minutes": 6,
+    "teaches": [
+      "verb.vidhilin"
+    ],
+    "needs": [
+      "verb.lrt",
+      "verb.lot"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The fourth night",
+          "hi": "चौथी रात"
+        },
+        "image": {
+          "id": "should-advice-s1",
+          "brief": "The burning-ground grove at night: the Vetāla seated on a root rubbing his hands; a tiny round spirit of old paper in round spectacles with scrolls under both arms and one finger wagging at the sky; Dādī and Śuka beside you; a faint image in the smoke of a king and a hungry beggar on a lane.",
+          "alt": {
+            "en": "A tiny paper spirit with spectacles wags a finger at the sky while the Vetāla rubs his hands",
+            "hi": "चश्मे वाला नन्हा काग़ज़ी भूत आकाश की ओर उँगली हिलाता, हाथ मलता वेताल"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "vidhika"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "“A riddle,” says the Vetāla, and rubs his hands. “A king walks alone at night and meets a beggar who is hungry. What should he do?” Before you can think, a tiny round spirit in round spectacles waves a finger at the sky: “गच्छेत्! पठेत्! वदेत्!” “Should go, should read, should say,” Dādī translates. “He gives rules, not facts.”",
+          "hi": "“एक पहेली,” वेताल कहता है, और हाथ मलता है। “एक राजा रात को अकेला चलता है और एक भूखे भिखारी से मिलता है। उसे क्या करना चाहिए?” आप कुछ सोचें, उससे पहले गोल चश्मे वाला एक नन्हा गोल भूत आकाश की ओर उँगली हिलाता है: “गच्छेत्! पठेत्! वदेत्!” “जाना चाहिए, पढ़ना चाहिए, कहना चाहिए,” दादी अनुवाद करती हैं। “वह नियम देता है, तथ्य नहीं।”"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "सः गच्छेत्। सः पठेत्।",
+            "gloss": {
+              "en": "He should go. He should read.",
+              "hi": "उसे जाना चाहिए। उसे पढ़ना चाहिए।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The mood of “should”",
+          "hi": "‘चाहिए’ का काल-विधान"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.vidhilin"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "{{विधिलिङ्}} gives advice, rules and what is fitting: {{पठेत्}} (he should read), {{गच्छेत्}} (he should go), {{वदेत्}} (he should say). The sign is {{-ए-}} between the root and the ending: {{पठ + ए + त्}}.",
+          "hi": "{{विधिलिङ्}} सलाह, नियम और जो उचित है, वह बताता है: {{पठेत्}} (उसे पढ़ना चाहिए), {{गच्छेत्}} (उसे जाना चाहिए), {{वदेत्}} (उसे कहना चाहिए)। चिह्न {{-ए-}} है, धातु और प्रत्यय के बीच: {{पठ + ए + त्}}।"
+        },
+        "examples": [
+          {
+            "sa": "राजा प्रजाम् रक्षेत्।",
+            "meaning": {
+              "en": "A king should protect his people.",
+              "hi": "राजा को प्रजा की रक्षा करनी चाहिए।"
+            },
+            "words": [
+              {
+                "sa": "राजा",
+                "gloss": {
+                  "en": "king",
+                  "hi": "राजा"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "राजन्",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "प्रजाम्",
+                "gloss": {
+                  "en": "his people",
+                  "hi": "प्रजा"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "प्रजा",
+                  "linga": "Stri",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "रक्षेत्",
+                "gloss": {
+                  "en": "should protect",
+                  "hi": "रक्षा करे"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "रक्ष्",
+                  "lakara": "VidhiLin",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "त्वम् गृहम् गच्छेः।",
+            "meaning": {
+              "en": "You should go home.",
+              "hi": "तुम्हें घर जाना चाहिए।"
+            },
+            "words": [
+              {
+                "sa": "त्वम्",
+                "gloss": {
+                  "en": "you",
+                  "hi": "तुम"
+                },
+                "check": null
+              },
+              {
+                "sa": "गृहम्",
+                "gloss": {
+                  "en": "home",
+                  "hi": "घर"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गृह",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छेः",
+                "gloss": {
+                  "en": "should go",
+                  "hi": "जाओ"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "VidhiLin",
+                  "purusha": "Madhyama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "वयम् सत्यम् वदेम।",
+            "meaning": {
+              "en": "We should speak the truth.",
+              "hi": "हमें सत्य बोलना चाहिए।"
+            },
+            "words": [
+              {
+                "sa": "वयम्",
+                "gloss": {
+                  "en": "we",
+                  "hi": "हम"
+                },
+                "check": null
+              },
+              {
+                "sa": "सत्यम्",
+                "gloss": {
+                  "en": "truth",
+                  "hi": "सत्य"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "सत्य",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वदेम",
+                "gloss": {
+                  "en": "should speak",
+                  "hi": "बोलें"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "VidhiLin",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "विधिलिङ्",
+          "meaning": {
+            "en": "the mood of should and may",
+            "hi": "चाहिए और सकता है का काल-विधान"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "पठ्: “should read”",
+          "hi": "पठ्: ‘पढ़ना चाहिए’"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.vidhilin"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“He should read, you should read, I should read”",
+          "hi": "‘उसे, तुम्हें, मुझे पढ़ना चाहिए’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठेत्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "VidhiLin",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठेताम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "VidhiLin",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठेयुः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "VidhiLin",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठेः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "VidhiLin",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठेतम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "VidhiLin",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठेत",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "VidhiLin",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठेयम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "VidhiLin",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठेव",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "VidhiLin",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठेम",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "VidhiLin",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Third person ends {{-एत्}}, {{-एताम्}}, {{-एयुः}}; second {{-एः}}, {{-एतम्}}, {{-एत}}; first {{-एयम्}}, {{-एव}}, {{-एम}}.",
+          "hi": "प्रथम पुरुष {{-एत्}}, {{-एताम्}}, {{-एयुः}}; मध्यम {{-एः}}, {{-एतम्}}, {{-एत}}; उत्तम {{-एयम्}}, {{-एव}}, {{-एम}}।"
+        }
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "गम्: “should go”",
+          "hi": "गम्: ‘जाना चाहिए’"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.vidhilin"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“He should go, you should go, I should go”",
+          "hi": "‘उसे, तुम्हें, मुझे जाना चाहिए’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गच्छेत्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "VidhiLin",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गच्छेताम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "VidhiLin",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गच्छेयुः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "VidhiLin",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गच्छेः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "VidhiLin",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गच्छेतम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "VidhiLin",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गच्छेत",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "VidhiLin",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गच्छेयम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "VidhiLin",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गच्छेव",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "VidhiLin",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गच्छेम",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": "VidhiLin",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": null
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "May, might, would",
+          "hi": "सकता है, शायद, होता"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.vidhilin"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "The same forms also say what may be: {{सः आगच्छेत्}}, “he may come”; and ask for advice: {{किम् अहं गच्छेयम्}}, “should I go?” Context tells whether it is advice, possibility or a question.",
+          "hi": "वही रूप जो हो सकता है, वह भी कहते हैं: {{सः आगच्छेत्}}, ‘वह आ सकता है’; और सलाह माँगते हैं: {{किम् अहं गच्छेयम्}}, ‘क्या मैं जाऊँ?’ प्रसंग बताता है कि सलाह है, सम्भावना है या प्रश्न।"
+        },
+        "examples": [
+          {
+            "sa": "सः आगच्छेत्।",
+            "meaning": {
+              "en": "He may come.",
+              "hi": "वह आ सकता है।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "आगच्छेत्",
+                "gloss": {
+                  "en": "may come",
+                  "hi": "आ सकता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "VidhiLin",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": [
+                    "आ"
+                  ],
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "किम् अहम् गच्छेयम्।",
+            "meaning": {
+              "en": "Should I go?",
+              "hi": "क्या मैं जाऊँ?"
+            },
+            "words": [
+              {
+                "sa": "किम्",
+                "gloss": {
+                  "en": "whether",
+                  "hi": "क्या"
+                },
+                "check": null
+              },
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "गच्छेयम्",
+                "gloss": {
+                  "en": "should go",
+                  "hi": "जाऊँ"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "VidhiLin",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.vidhilin"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He should read.” Which form?",
+          "hi": "‘उसे पढ़ना चाहिए।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{पठेत्}}: {{-एत्}}, the sign of “should”.",
+          "hi": "{{पठेत्}}: {{-एत्}}, ‘चाहिए’ का चिह्न।"
+        },
+        "options": [
+          {
+            "sa": "पठति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठतु",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठेत्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.vidhilin"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “He should go.”",
+          "hi": "कहिए: ‘उसे जाना चाहिए।’"
+        },
+        "explain": {
+          "en": "{{गच्छेत्}}.",
+          "hi": "{{गच्छेत्}}।"
+        },
+        "options": [],
+        "answers": [
+          "गच्छेत्"
+        ],
+        "tiles": [
+          "गच्छे",
+          "त्",
+          "ति",
+          "ः"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.vidhilin"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each form to its meaning.",
+          "hi": "हर रूप को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "The ending tells who: {{-एत्}} he, {{-एः}} you, {{-एयम्}} I, {{-एयुः}} they.",
+          "hi": "प्रत्यय बताता है कौन: {{-एत्}} वह, {{-एः}} तुम, {{-एयम्}} मैं, {{-एयुः}} वे।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "पठेत्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "he should read",
+                "hi": "उसे पढ़ना चाहिए"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पठेः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "you should read",
+                "hi": "तुम्हें पढ़ना चाहिए"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पठेयम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "I should read",
+                "hi": "मुझे पढ़ना चाहिए"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पठेयुः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "they should read",
+                "hi": "उन्हें पढ़ना चाहिए"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.vidhilin"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that says “should”.",
+          "hi": "‘चाहिए’ कहने वाले हर शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "पठेत्",
+            "पठति",
+            "गच्छेत्",
+            "गच्छति",
+            "वदेत्",
+            "वदति"
+          ],
+          "targets": [
+            "पठेत्",
+            "गच्छेत्",
+            "वदेत्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.vidhilin"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “A king should protect his people.”",
+          "hi": "कहिए: ‘राजा को प्रजा की रक्षा करनी चाहिए।’"
+        },
+        "explain": {
+          "en": "{{राजा प्रजां रक्षेत्}}.",
+          "hi": "{{राजा प्रजां रक्षेत्}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "राजा",
+          "प्रजाम्",
+          "रक्षेत्"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "What they should do",
+          "hi": "उन्हें क्या करना चाहिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.vidhilin"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“They should read.” Which form?",
+          "hi": "‘उन्हें पढ़ना चाहिए।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{पठेयुः}}: they, many.",
+          "hi": "{{पठेयुः}}: वे, अनेक।"
+        },
+        "options": [
+          {
+            "sa": "पठेत्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठेताम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठेयुः",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“पठेयुः,” you say. The little round spirit stops wagging his finger, takes off his spectacles, wipes them on a scroll, and puts them on again, as if he cannot quite believe it. “Correct,” he says in a very small voice. “A rule, correctly stated.” The Vetāla nods slowly. “And the king? I will not tell you yet.”",
+            "hi": "“पठेयुः,” आप कहते हैं। नन्हा गोल भूत उँगली हिलाना रोक देता है, चश्मा उतारता है, किसी पोथी से पोंछता है, और फिर पहन लेता है, मानो विश्वास न हो रहा हो। “सही,” वह बहुत धीमी आवाज़ में कहता है। “एक नियम, ठीक कहा हुआ।” वेताल धीरे से सिर हिलाता है। “और राजा? अभी मैं नहीं बताऊँगा।”"
+          },
+          "failure": {
+            "en": "He keeps wagging his finger. They, many: {{पठेयुः}}.",
+            "hi": "वह उँगली हिलाता रहता है। वे, अनेक: {{पठेयुः}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's “should”",
+          "hi": "पाणिनि का ‘चाहिए’"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "verb.vidhilin"
+        ],
+        "sutras": [
+          "3.3.161",
+          "3.4.103",
+          "7.2.80",
+          "6.1.87"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 3.3.161, {{विधिनिमन्त्रणामन्त्रणाधीष्टसंप्रश्नप्रार्थनेषु लिङ्}}, gives {{लिङ्}} for advice, invitation and request. 3.4.103, {{यासुट् परस्मैपदेषूदात्तो ङिच्च}}, adds {{यास्}}; 7.2.80, {{अतो येयः}}, makes {{या}} into {{इय्}}; 6.1.87, {{आद्गुणः}}, joins {{अ + इ}} into {{ए}}: {{पठेत्}}.",
+          "hi": "सूत्र 3.3.161, {{विधिनिमन्त्रणामन्त्रणाधीष्टसंप्रश्नप्रार्थनेषु लिङ्}}, सलाह, निमन्त्रण और प्रार्थना के लिए {{लिङ्}} देता है। 3.4.103, {{यासुट् परस्मैपदेषूदात्तो ङिच्च}}, {{यास्}} जोड़ता है; 7.2.80, {{अतो येयः}}, {{या}} को {{इय्}} कर देता है; 6.1.87, {{आद्गुणः}}, {{अ + इ}} को {{ए}} बना देता है: {{पठेत्}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Should",
+          "hi": "चाहिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "पठेत् · गच्छेत् · वदेत्",
+            "text": {
+              "en": "He should read, go, say.",
+              "hi": "उसे पढ़ना, जाना, कहना चाहिए।"
+            }
+          },
+          {
+            "sa": "-एत् · -एः · -एयम्",
+            "text": {
+              "en": "He, you, I.",
+              "hi": "वह, तुम, मैं।"
+            }
+          },
+          {
+            "sa": "आगच्छेत्",
+            "text": {
+              "en": "He may come.",
+              "hi": "वह आ सकता है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "should-advice-s1",
+    "brief": "The burning-ground grove at night: the Vetāla seated on a root rubbing his hands; a tiny round spirit of old paper in round spectacles with scrolls under both arms and one finger wagging at the sky; Dādī and Śuka beside you; a faint image in the smoke of a king and a hungry beggar on a lane.",
+    "alt": {
+      "en": "A tiny paper spirit with spectacles wags a finger at the sky while the Vetāla rubs his hands",
+      "hi": "चश्मे वाला नन्हा काग़ज़ी भूत आकाश की ओर उँगली हिलाता, हाथ मलता वेताल"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "vidhika"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The burning-ground grove at night: the Vetāla seated on a root rubbing his hands; a tiny round spirit of old paper in round spectacles with scrolls under both arms and one finger wagging at the sky; Dādī and Śuka beside you; a faint image in the smoke of a king and a hungry beggar on a lane.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nvidhika: A small round spirit of old paper with tiny round spectacles and rolled palm-leaf scrolls under both arms, one finger always wagging.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-2184ddcc-81bc-49b9-9213-627d0d5ad27e.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "f2942019a100a771dba9c7fc1f6f5125768f311c6725cb826b94cd101cba2190",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\should-advice-s1-phone-12269d23.webp",
+      "key": "learn/should-advice-s1-phone-12269d23.webp",
+      "sha256": "12269d23471669c0aaa102ba479c316132b61f6335a823b32642d7bc2865344b",
+      "bytes": 122034,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/should-advice-s1-phone-12269d23.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\should-advice-s1-tablet-375fbeb1.webp",
+      "key": "learn/should-advice-s1-tablet-375fbeb1.webp",
+      "sha256": "375fbeb13d86a5edef020cb1fbcb27aaf655485c027da6d1f05f91917566de10",
+      "bytes": 467432,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/should-advice-s1-tablet-375fbeb1.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

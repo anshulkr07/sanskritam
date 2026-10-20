@@ -9,7 +9,7 @@ teaches:
 - avy.iti
 needs:
 - avy.particles
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: smashana
     ratio: '4:3'
     id: avy-iti-s1
+    text_in_image: ["इति"]
   narration:
     en: 'Avyayaka pats himself once more, then stops, pleased, at a thought. “I am whole,” he says, “इति.” “Thus.” The Vetāla raises an eyebrow. “Say it once more, but this time as a thought.” “अहं पूर्णः इति चिन्तयामि.” “I think: ‘I am whole’.” “That is it,” says Dādī. “इति closes a quotation or a thought, like a pair of marks round it.”'
     hi: 'अव्यय एक बार फिर स्वयं को थपथपाता है, फिर एक विचार पर प्रसन्न होकर रुक जाता है। “मैं पूर्ण हूँ,” वह कहता है, “इति।” “ऐसा।” वेताल भौंह उठाता है। “एक बार और कहो, पर इस बार विचार की तरह।” “अहं पूर्णः इति चिन्तयामि।” “मैं सोचता हूँ: ‘मैं पूर्ण हूँ’।” “वही,” दादी कहती हैं। “इति उद्धरण या विचार को बन्द करता है, उसके चारों ओर दो चिह्नों की तरह।”'
@@ -218,8 +219,8 @@ cards:
   - avy.iti
   mode: match
   prompt:
-    en: Join each word to its job.
-    hi: हर शब्द को उसके काम से जोड़िए।
+    en: Match each word with its job.
+    hi: हर शब्द को उसके काम से मिलाइए।
   explain:
     en: Each little word has its place.
     hi: हर छोटे शब्द का अपना स्थान है।

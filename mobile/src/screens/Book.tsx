@@ -27,7 +27,7 @@ import { useChant } from "../hooks/useChant";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useAsk } from "../ask/AskProvider";
 import { READER_THEMES, READER_SIZES, type ReaderThemeName } from "./readerTheme";
-import { sanskritText } from "../theme";
+import { color, isDarkScheme, sanskritText } from "../theme";
 import { plain } from "../utils/text";
 import { resolveReadingStart } from "../services/readingProgress";
 import { pageId, savePageActivity } from "../services/bookActivity";
@@ -64,7 +64,7 @@ export default function BookScreen(props: Props) {
       .catch(() => { if (alive) setResolved({ key: requestKey, chapter, index: 0 }); });
     return () => { alive = false; };
   }, [requestKey, bookKey, chapter, index]);
-  if (!resolved || resolved.key !== requestKey) return <View style={{ flex: 1, backgroundColor: "#F8F4EB" }} />;
+  if (!resolved || resolved.key !== requestKey) return <View style={{ flex: 1, backgroundColor: color.bg }} />;
   return <BookReader {...props} route={{ ...props.route, params: { ...props.route.params, chapter: resolved.chapter, index: resolved.index } }} />;
 }
 
@@ -79,7 +79,8 @@ function BookReader({ navigation, route }: Props) {
   const [indexOpen, setIndexOpen] = useState(false);
   const [indexTab, setIndexTab] = useState<"pages" | "chapters" | "bookmarks">("pages");
   const activity = useBookActivity()[bookKey] ?? [];
-  const [themeName, setThemeName] = useState<ReaderThemeName>("light");
+  // Paper follows the app (Light or Dark) until the reader picks one in Aa.
+  const [themeName, setThemeName] = useState<ReaderThemeName>(isDarkScheme() ? "dark" : "light");
   const [sizeStep, setSizeStep] = useState(1);
   const { appearance, updateAppearance } = useReadingAppearance();
   const roman = appearance.roman;
@@ -213,6 +214,23 @@ function BookReader({ navigation, route }: Props) {
 
   const chantOn = startMode === "chant" && hasChant;
 
+  // The folio: where the reader is, and the bookmark for this page.
+  const folioRef = pages.length > 0 && showAt >= pages.length && nextCh
+    ? `Next: chapter ${nextCh.chapter}`
+    : pages[showAt]?.source_ref ?? "";
+  const folioCount = pages[showAt] ? `${showAt + 1} / ${pages.length}` : "";
+  const bookmarkButton = currentPage ? (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={currentMark?.bookmarked ? "Remove bookmark" : "Bookmark this page"}
+      accessibilityState={{ selected: !!currentMark?.bookmarked }}
+      onPress={() => { void savePageActivity(bookKey, pagedChapter, currentPage, showAt, "bookmark", !currentMark?.bookmarked).catch(() => {}); }}
+      style={styles.folioIcon}
+    >
+      <Ionicons name={currentMark?.bookmarked ? "bookmark" : "bookmark-outline"} size={18} color={theme.accent} />
+    </Pressable>
+  ) : null;
+
   return (
     <View style={[styles.root, { backgroundColor: theme.page, paddingTop: insets.top, paddingBottom: insets.bottom, paddingLeft: insets.left, paddingRight: insets.right }]}>
       <StatusBar style={themeName === "dark" ? "light" : "dark"} />
@@ -258,7 +276,8 @@ function BookReader({ navigation, route }: Props) {
           key={pagedChapter ?? "book"}
           index={showAt}
           count={Math.max(1, pageCount)}
-          onIndexChange={setAt}
+          // A turned page puts the bars away, as a book's margins go quiet.
+          onIndexChange={(i) => { setAt(i); setControls(false); }}
           reducedMotion={reduced}
           labelFor={(i) => pages[i]?.source_ref ?? (nextCh ? "Next chapter" : "")}
           renderPage={(i) => {
@@ -294,39 +313,18 @@ function BookReader({ navigation, route }: Props) {
           }}
         />
       )}
-      {/* Folio + progress */}
-      <View style={[styles.folio, { borderColor: theme.line }]}>
-        {/* Back a chapter, offered on its first page (a swipe back inside a
-            chapter stays inside it). Floats over the page's foot: showing it
-            must not resize the book mid-turn. */}
-        {!chantOn && showAt === 0 && prevCh && (
-          <Pressable
-            onPress={() => openChapter(prevCh.chapter)}
-            accessibilityRole="button"
-            accessibilityLabel={`Previous chapter, chapter ${prevCh.chapter}`}
-            style={styles.prevCh}
-          >
-            <Ionicons name="arrow-back" size={14} color={theme.soft} />
-            <Text style={[styles.prevChText, { color: theme.soft }]}>Previous chapter</Text>
-          </Pressable>
-        )}
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 8, paddingHorizontal: 12 }}>
-        <Text style={[styles.folioText, { color: theme.soft, flexShrink: 1 }]}>
-          {pages.length > 0 && showAt >= pages.length && nextCh
-            ? `Next chapter · ${nextCh.chapter}`
-            : pages[showAt]
-              ? `${pages[showAt].source_ref} · ${showAt + 1} of ${pages.length}`
-              : ""}
-        </Text>
-        {currentPage && <Pressable accessibilityRole="button" accessibilityLabel={currentMark?.bookmarked ? "Remove bookmark" : "Bookmark this page"} accessibilityState={{ selected: !!currentMark?.bookmarked }} onPress={() => { void savePageActivity(bookKey, pagedChapter, currentPage, showAt, "bookmark", !currentMark?.bookmarked).catch(() => {}); }} style={{ minWidth: 44, minHeight: 36, alignItems: "center", justifyContent: "center" }}>
-          <Ionicons name={currentMark?.bookmarked ? "bookmark" : "bookmark-outline"} size={19} color={theme.accent} />
-        </Pressable>}
-        </View>
-        {!chantOn && <ReaderSlider compact accentColor={theme.accent} trackColor={theme.line} thumbColor={theme.bar} textColor={theme.soft}
-          index={showAt} count={Math.max(1, pageCount)} labelFor={(i) => pages[i]?.source_ref ?? "Next chapter"} onScrubEnd={setAt} />}
-      </View>
+      {/* Chanting keeps its folio line above the player. */}
       {chantOn && (
-        <View style={[styles.playerWrap, { backgroundColor: theme.page }]}>
+        <View style={[styles.folio, { borderColor: theme.line }]}>
+          <View style={styles.folioRow}>
+            <Text style={[styles.folioRef, { color: theme.text }]} numberOfLines={1}>{folioRef}</Text>
+            <Text style={[styles.folioCount, { color: theme.soft }]}>{folioCount}</Text>
+            {bookmarkButton}
+          </View>
+        </View>
+      )}
+      {chantOn && (
+        <View style={[styles.playerWrap, { backgroundColor: theme.page, borderTopColor: theme.line }]}>
           <ChantPlayer
             onPrev={() => step(-1)}
             onToggle={toggle}
@@ -361,17 +359,45 @@ function BookReader({ navigation, route }: Props) {
         accessibilityLabel={controls ? "Hide controls" : "Show controls"}
         style={styles.middleTap}
       />}
-      {controls && <View style={[styles.topBar, { top: insets.top + 6, left: insets.left + 12, right: insets.right + 12, backgroundColor: theme.bar, borderColor: theme.line }]}>
-        <Pressable onPress={() => setIndexOpen(true)} accessibilityRole="button" accessibilityLabel="Book index" style={styles.toolbarAction}>
-          <Ionicons name="list-outline" size={20} color={theme.text} /><Text style={{ color: theme.text, fontSize: 12 }}>Index</Text>
-        </Pressable>
-        <Pressable onPress={() => ask.open({ surface: "read", subject: verse?.devanagari ?? "" })} accessibilityRole="button" accessibilityLabel="Ask anything about this verse" style={styles.toolbarAction}>
-          <Ionicons name="chatbubble-ellipses-outline" size={20} color={theme.text} /><Text style={{ color: theme.text, fontSize: 12 }}>Ask anything</Text>
-        </Pressable>
-        <Pressable onPress={() => setAaOpen(true)} accessibilityRole="button" accessibilityLabel="Format reading page" style={styles.toolbarAction}>
-          <Text style={{ color: theme.text, fontSize: 20, fontWeight: "700" }}>Aa</Text><Text style={{ color: theme.text, fontSize: 12 }}>Format</Text>
-        </Pressable>
+      {/* Tap the page for the bars; they float over it, so the page never
+          shrinks to make room, and a page turn puts them away. */}
+      {controls && <View style={[styles.topBar, { paddingTop: insets.top, paddingLeft: insets.left, paddingRight: insets.right, backgroundColor: theme.bar, borderColor: theme.line }]}>
+        <View style={styles.topRow}>
+          <Pressable onPress={() => setIndexOpen(true)} accessibilityRole="button" accessibilityLabel="Book index" style={styles.toolbarAction}>
+            <Ionicons name="list-outline" size={18} color={theme.text} /><Text style={[styles.toolbarText, { color: theme.text }]}>Index</Text>
+          </Pressable>
+          <Pressable onPress={() => ask.open({ surface: "read", subject: verse?.devanagari ?? "" })} accessibilityRole="button" accessibilityLabel="Ask anything about this verse" style={styles.toolbarAction}>
+            <Ionicons name="chatbubble-ellipses-outline" size={18} color={theme.text} /><Text style={[styles.toolbarText, { color: theme.text }]}>Ask anything</Text>
+          </Pressable>
+          <Pressable onPress={() => setAaOpen(true)} accessibilityRole="button" accessibilityLabel="Format reading page" style={styles.toolbarAction}>
+            <Text style={{ color: theme.text, fontSize: 17, fontFamily: "Nunito_800ExtraBold", fontWeight: "800" }}>Aa</Text><Text style={[styles.toolbarText, { color: theme.text }]}>Format</Text>
+          </Pressable>
+        </View>
       </View>}
+      {controls && !chantOn && (
+        <View style={[styles.bottomBar, { paddingBottom: insets.bottom + 8, paddingLeft: insets.left + 20, paddingRight: insets.right + 20, backgroundColor: theme.bar, borderColor: theme.line }]}>
+          {/* Back a chapter, offered on its first page (a swipe back inside
+              a chapter stays inside it). */}
+          {showAt === 0 && prevCh && (
+            <Pressable
+              onPress={() => openChapter(prevCh.chapter)}
+              accessibilityRole="button"
+              accessibilityLabel={`Previous chapter, chapter ${prevCh.chapter}`}
+              style={styles.prevCh}
+            >
+              <Ionicons name="arrow-back" size={14} color={theme.soft} />
+              <Text style={[styles.prevChText, { color: theme.soft }]}>Chapter {prevCh.chapter}</Text>
+            </Pressable>
+          )}
+          <View style={styles.folioRow}>
+            <Text style={[styles.folioRef, { color: theme.text }]} numberOfLines={1}>{folioRef}</Text>
+            <Text style={[styles.folioCount, { color: theme.soft }]}>{folioCount}</Text>
+            {bookmarkButton}
+          </View>
+          <ReaderSlider compact accentColor={theme.accent} trackColor={theme.line} tipColor={theme.text} tipTextColor={theme.page}
+            index={showAt} count={Math.max(1, pageCount)} labelFor={(i) => pages[i]?.source_ref ?? "Next chapter"} onScrubEnd={setAt} />
+        </View>
+      )}
       <Modal visible={indexOpen} transparent animationType="fade" onRequestClose={() => setIndexOpen(false)}>
         <Pressable style={styles.scrim} onPress={() => setIndexOpen(false)} accessibilityRole="button" accessibilityLabel="Close book index" />
         <View style={[styles.indexPanel, { height: Math.min(window.height * .8, 650), backgroundColor: theme.bar, paddingBottom: 16 + insets.bottom }]}>
@@ -379,7 +405,7 @@ function BookReader({ navigation, route }: Props) {
             <Pressable accessibilityRole="button" accessibilityLabel="Close index" onPress={() => setIndexOpen(false)} style={styles.iconBtn}><Ionicons name="close" size={22} color={theme.text} /></Pressable>
           </View>
           <View style={{ flexDirection: "row", gap: 8, marginVertical: 14 }}>
-            {(["pages", ...(pagedChapter !== null ? ["chapters"] : []), "bookmarks"] as const).map(tab => <Pressable key={tab} onPress={() => setIndexTab(tab as typeof indexTab)} accessibilityRole="button" accessibilityState={{ selected: indexTab === tab }} style={{ padding: 10, borderRadius: 12, backgroundColor: indexTab === tab ? theme.line : "transparent" }}><Text style={{ color: theme.text, fontWeight: "700" }}>{tab === "pages" ? "Pages" : tab === "chapters" ? "Chapters" : "Bookmarks"}</Text></Pressable>)}
+            {(["pages", ...(pagedChapter !== null ? ["chapters"] : []), "bookmarks"] as const).map(tab => <Pressable key={tab} onPress={() => setIndexTab(tab as typeof indexTab)} accessibilityRole="button" accessibilityState={{ selected: indexTab === tab }} style={{ paddingHorizontal: 12, minHeight: 40, justifyContent: "center", borderBottomWidth: 2, borderBottomColor: indexTab === tab ? theme.accent : "transparent" }}><Text style={{ color: theme.text, fontWeight: "700" }}>{tab === "pages" ? "Pages" : tab === "chapters" ? "Chapters" : "Bookmarks"}</Text></Pressable>)}
           </View>
           {indexTab === "chapters" ? <FlatList data={chapters ?? []} keyExtractor={item => item.chapter}
             renderItem={({ item }) => { const read = activity.filter(mark => mark.chapter === item.chapter && mark.read).length; return <Pressable accessibilityRole="button" onPress={() => { openChapter(item.chapter); setIndexOpen(false); }} style={[styles.indexRow, { borderColor: theme.line }]}>
@@ -391,7 +417,7 @@ function BookReader({ navigation, route }: Props) {
               else navigation.setParams({ chapter: item.chapter ?? undefined, index: item.index });
               setIndexOpen(false);
             }} style={[styles.indexRow, { borderColor: theme.line }]}><Ionicons name="bookmark" size={18} color={theme.accent} /><Text style={{ flex: 1, color: theme.text }}>{item.ref}</Text><Text style={{ color: theme.soft }}>{item.read ? "Read" : "Saved"}</Text></Pressable>} /> : <FlatList data={pages} keyExtractor={item => item.id} initialNumToRender={12}
-            renderItem={({ item, index: pageIndex }) => { const mark = activity.find(mark => mark.chapter === pagedChapter && mark.id === pageId(item)); return <Pressable accessibilityRole="button" accessibilityLabel={`Read ${item.source_ref}${mark?.read ? ", already read" : ""}${mark?.bookmarked ? ", bookmarked" : ""}`} accessibilityState={{ selected: pageIndex === showAt }} onPress={() => { setAt(pageIndex); setIndexOpen(false); }} style={[styles.indexRow, { borderColor: theme.line, backgroundColor: mark?.read ? theme.line : "transparent", borderRadius: 10, paddingHorizontal: 10 }]}>
+            renderItem={({ item, index: pageIndex }) => { const mark = activity.find(mark => mark.chapter === pagedChapter && mark.id === pageId(item)); return <Pressable accessibilityRole="button" accessibilityLabel={`Read ${item.source_ref}${mark?.read ? ", already read" : ""}${mark?.bookmarked ? ", bookmarked" : ""}`} accessibilityState={{ selected: pageIndex === showAt }} onPress={() => { setAt(pageIndex); setIndexOpen(false); }} style={[styles.indexRow, { borderColor: theme.line, backgroundColor: mark?.read ? theme.line : "transparent", paddingHorizontal: 10 }]}>
               <View style={{ flex: 1 }}><Text style={{ color: theme.soft, fontSize: 12 }}>{item.source_ref}{mark?.read ? " · Read" : ""}</Text><Text numberOfLines={1} style={[sanskritText(18), { color: theme.text }]}>{item.devanagari}</Text></View>
               {mark?.bookmarked && <Ionicons name="bookmark" size={18} color={theme.accent} />}<Ionicons name={mark?.read ? "checkmark-circle" : pageIndex === showAt ? "location-outline" : "chevron-forward"} size={18} color={theme.accent} />
             </Pressable>; }} />}
@@ -493,10 +519,11 @@ export function ReaderPageView({
       {!!(verse as { translation_hi?: string }).translation_hi && (
         <Text style={[styles.transHi, sectionStyle("hindi", 16, 26)]}>{plain((verse as { translation_hi?: string }).translation_hi ?? "")}</Text>
       )}
-      <Pressable onTouchEnd={e => e.stopPropagation()} onPress={onLearn} accessibilityRole="button" accessibilityLabel="Learn & Recite this Shloka yourself" style={[styles.learnButton, { backgroundColor: theme.text }]}>
-        <Ionicons name="mic-outline" size={21} color={theme.page} />
-        <Text style={[styles.learnText, { color: theme.page }]}>Learn & Recite this Shloka yourself</Text>
-        <Ionicons name="arrow-forward" size={18} color={theme.page} />
+      {/* Owner's pick (2026-10-20, option B): a small square outline. */}
+      <Pressable onTouchEnd={e => e.stopPropagation()} onPress={onLearn} accessibilityRole="button" accessibilityLabel="Learn & Recite this verse"
+        style={({ pressed }) => [styles.learnButton, { borderColor: textColor, opacity: appearance.textOpacity }, pressed && { backgroundColor: theme.line }]}>
+        <Ionicons name="mic-outline" size={16} color={textColor} />
+        <Text style={[styles.learnText, { color: textColor }]}>Learn & Recite this verse</Text>
       </Pressable>
     </ScrollView>
     </View>
@@ -561,25 +588,31 @@ const styles = StyleSheet.create({
   endNext: { fontSize: 24, fontWeight: "800", textAlign: "center" },
   endBtn: { minHeight: 48, justifyContent: "center", paddingHorizontal: 20 },
   endBtnText: { fontSize: 16, fontWeight: "700" },
-  folio: { paddingVertical: 6, alignItems: "center", borderTopWidth: 1 },
-  prevCh: { position: "absolute", top: -44, left: 0, right: 0, height: 44, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6 },
-  prevChText: { fontSize: 12, fontWeight: "600" },
-  folioText: { fontSize: 12 },
-  topBar: { position: "absolute", zIndex: 5, elevation: 6, flexDirection: "row", alignItems: "center", borderWidth: 1, borderRadius: 18, paddingHorizontal: 4, shadowColor: "#000", shadowOpacity: .08, shadowRadius: 12, shadowOffset: { width: 0, height: 3 } },
-  toolbarAction: { flex: 1, minHeight: 48, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6 },
-  learnButton: { width: "100%", flexDirection: "row", alignItems: "center", gap: 10, padding: 16, marginTop: 16, borderRadius: 16, minHeight: 56 },
-  learnText: { flex: 1, fontFamily: "Nunito_800ExtraBold", fontSize: 14, lineHeight: 21 },
-  playerWrap: { borderTopWidth: 1, borderTopColor: "#EFE3CE" },
+  folio: { paddingVertical: 2, paddingHorizontal: 20, borderTopWidth: 1 },
+  folioRow: { flexDirection: "row", alignItems: "center", gap: 8, minHeight: 40 },
+  folioRef: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 13 },
+  folioCount: { fontFamily: "Nunito_600SemiBold", fontWeight: "600", fontSize: 12 },
+  folioIcon: { width: 44, height: 40, marginRight: -12, alignItems: "center", justifyContent: "center" },
+  prevCh: { alignSelf: "flex-start", minHeight: 36, flexDirection: "row", alignItems: "center", gap: 6 },
+  prevChText: { fontFamily: "Nunito_700Bold", fontSize: 12, fontWeight: "700" },
+  topBar: { position: "absolute", top: 0, left: 0, right: 0, zIndex: 5, elevation: 6, borderBottomWidth: 1 },
+  topRow: { flexDirection: "row", alignItems: "stretch", height: 52 },
+  toolbarAction: { flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6 },
+  toolbarText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12 },
+  bottomBar: { position: "absolute", left: 0, right: 0, bottom: 0, zIndex: 5, elevation: 6, borderTopWidth: 1, paddingTop: 4 },
+  learnButton: { flexDirection: "row", alignItems: "center", gap: 8, height: 40, paddingHorizontal: 14, marginTop: 12, borderWidth: 1, borderRadius: 0 },
+  learnText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 14 },
+  playerWrap: { borderTopWidth: 1 },
   iconBtn: { width: 44, height: 44, alignItems: "center", justifyContent: "center" },
   middleTap: { position: "absolute", left: "25%", right: "25%", top: "30%", bottom: "30%" },
   scrim: { flex: 1, backgroundColor: "rgba(0,0,0,0.3)" },
-  indexPanel: { position: "absolute", bottom: 0, left: 0, right: 0, padding: 20, gap: 12, borderTopLeftRadius: 28, borderTopRightRadius: 28 },
+  indexPanel: { position: "absolute", bottom: 0, left: 0, right: 0, padding: 20, gap: 12 },
   indexRow: { minHeight: 64, paddingVertical: 12, borderBottomWidth: 1, flexDirection: "row", alignItems: "center", gap: 12 },
   closeBook: { minHeight: 48, alignItems: "center", justifyContent: "center" },
-  aaPanel: { position: "absolute", bottom: 0, left: 0, right: 0, padding: 16, gap: 12, borderTopLeftRadius: 28, borderTopRightRadius: 28 },
+  aaPanel: { position: "absolute", bottom: 0, left: 0, right: 0, padding: 16, gap: 12 },
   aaTitle: { fontFamily: "Nunito_800ExtraBold", fontSize: 23 },
   aaRow: { flexDirection: "row", gap: 8 },
   aaRowBetween: { flexDirection: "row", justifyContent: "space-between", minHeight: 44, alignItems: "center" },
-  swatch: { flex: 1, minHeight: 48, borderRadius: 10, borderWidth: 2, alignItems: "center", justifyContent: "center" },
-  sizeBtn: { flex: 1, minHeight: 44, borderRadius: 8, alignItems: "center", justifyContent: "center" },
+  swatch: { flex: 1, minHeight: 44, borderWidth: 2, alignItems: "center", justifyContent: "center" },
+  sizeBtn: { flex: 1, minHeight: 44, alignItems: "center", justifyContent: "center" },
 });

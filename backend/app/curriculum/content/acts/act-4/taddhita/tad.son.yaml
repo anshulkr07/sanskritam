@@ -9,7 +9,7 @@ teaches:
 - tad.apatya
 needs:
 - sam.long
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -37,6 +37,7 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: tad-son-s1
+    text_in_image: ["राघवः", "पाण्डवः", "कौरवः"]
   narration:
     en: 'The twenty-second statue holds a small mirror. In it, not her face, but a row of names: “राघवः,” she says. “पाण्डवः. कौरवः. कौन्तेयः.” “All someone''s children,” says Dādī. “Raghu''s, Pāṇḍu''s, Kuru''s, Kuntī''s. A word can carry its parent inside it: the first vowel grows, and an ending is added. These are taddhita words.”'
     hi: 'बाईसवीं प्रतिमा के हाथ में एक छोटा दर्पण है। उसमें उसका अपना मुख नहीं, नामों की एक पंक्ति है: “राघवः,” वह कहती है। “पाण्डवः। कौरवः। कौन्तेयः।” “ये सब किसी की सन्तान हैं,” दादी कहती हैं। “रघु की, पाण्डु की, कुरु की, कुन्ती की। शब्द अपने भीतर अपने माता-पिता को लिए रह सकता है: पहला स्वर बढ़ता है, और एक प्रत्यय जुड़ता है। इन्हें तद्धित शब्द कहते हैं, ‘उसके लिए बने शब्द’।”'
@@ -46,6 +47,19 @@ cards:
       en: 'O son of Kuntī, contacts with the senses give cold and heat, pleasure and pain; they come and go, they are not lasting: bear them, O descendant of Bharata.'
       hi: 'हे कुन्तीपुत्र, इन्द्रियों के स्पर्श शीत-उष्ण, सुख-दुःख देते हैं; वे आते-जाते हैं, स्थायी नहीं: हे भारत, उन्हें सहो।'
     source: Bhagavadgītā 2.14 (read at GRETIL)
+  lines:
+  - speaker: taddhitika
+    sa: राघवः
+    gloss:
+      en: A descendant of Raghu.
+      hi: रघु का वंशज।
+    check:
+      type: taddhita
+      stem: रघु
+      taddhita: aR
+      linga: Pum
+      vibhakti: Prathama
+      vacana: Eka
 - id: t1
   kind: teach
   title:
@@ -239,8 +253,8 @@ cards:
   - tad.apatya
   mode: match
   prompt:
-    en: Join each name to its descendant.
-    hi: हर नाम को उसके वंशज से जोड़िए।
+    en: Match each name with its descendant.
+    hi: हर नाम को उसके वंशज से मिलाइए।
   explain:
     en: The first vowel grows.
     hi: पहला स्वर बढ़ता है।

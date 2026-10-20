@@ -46,9 +46,9 @@ take precedence; update this policy when the owner changes a decision.
 5. For the currently approved style, use refined Indian watercolor with
    restrained gouache on warm ivory paper, organic detail, quiet ochre, sage,
    dusty terracotta, and muted indigo. Keep the series visually consistent.
-6. Generate no typography, verse numbers, watermark, decorative border, UI,
+6. For verse paintings, generate no typography, verse numbers, watermark, decorative border, UI,
    fabricated Sanskrit, or printed explanation in the painting.
-7. Review for lettering on flags/books and explanatory marks such as red Xs or
+7. For verse paintings, review for lettering on flags/books and explanatory marks such as red Xs or
    checkmarks. Reject these drafts, including painted sacred syllables; sacred
    text belongs in the app's live text. Correct with a versioned master and an
    exact new prompt record while preserving the rejected draft's provenance.
@@ -186,10 +186,20 @@ Owner decisions 2026-10-19, for the story course ("The Burnt Book",
 Learn story pictures only; verse artwork keeps every rule above.
 
 - Generated in **ChatGPT** (the owner's choice of method).
-- Pictures **may contain writing** when the card's `text_in_image` lists it.
-  A verifier compares the drawn text with that list exactly (NFC Devanagari)
-  before delivery; a mismatch is regenerated. Pictures with an empty list
-  must carry no lettering, fake script or watermark (rule 7 above applies).
+- Owner update **2026-10-20**: Learn illustrations **may contain text**. This
+  supersedes the earlier ban on writing and the restriction that an empty
+  `text_in_image` list forbids all lettering. Use exact Sanskrit or other text
+  from the lesson source when writing helps the scene or teaching. Record the
+  intended strings in generation/provenance metadata (and `text_in_image`
+  when authoring content). Verify all visible writing at the end against those
+  strings, using NFC Devanagari; correct or regenerate mismatches before final
+  delivery. Do not accept invented script, unintended lettering or watermarks.
+- Owner follow-up **2026-10-20**: regenerate and replace earlier pictures that
+  needed writing but were generated without it. Include names on tags and
+  family trees, ledgers, word cards, inscriptions, verses, commentary notes and
+  manuscript pages in the audit. Do not substitute blank writing surfaces for
+  the source's intended teaching text. Verify the complete written result before
+  replacing the app references, and keep the same teaching as live app content.
 - The same Sanskrit is always also live text on the card: a picture never
   replaces app content.
 - Ratios come from the content: story cards 4:3, portraits 1:1, leaves 3:4,

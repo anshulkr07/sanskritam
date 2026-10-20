@@ -1,0 +1,1210 @@
+{
+  "id": "in-where-s1",
+  "where": "in.where#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The school courtyard at night: the old Ācārya hanging a lit brass lamp beside a stone well, pupils in a ring, a small flickering amber spirit shaped like a flame leaping up from the lamp; stars overhead; you and Dādī at the edge.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\ndipaka: A small flickering amber spirit shaped like a lamp's flame, with a bright pair of eyes and a thin trail of smoke.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "source": {
+    "id": "in.where",
+    "template": "scene",
+    "title": {
+      "en": "In, on, at",
+      "hi": "में, पर, पास"
+    },
+    "title_sa": "अधिकरणम्",
+    "minutes": 6,
+    "teaches": [
+      "case.loc"
+    ],
+    "needs": [
+      "case.gen"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Night in the courtyard",
+          "hi": "आँगन में रात"
+        },
+        "image": {
+          "id": "in-where-s1",
+          "brief": "The school courtyard at night: the old Ācārya hanging a lit brass lamp beside a stone well, pupils in a ring, a small flickering amber spirit shaped like a flame leaping up from the lamp; stars overhead; you and Dādī at the edge.",
+          "alt": {
+            "en": "Night in a school courtyard, a lamp hung by the well and a flame-shaped spirit leaping up",
+            "hi": "आँगन में रात, कुएँ पर टँगा दीपक और उछलता लौ-भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "acarya",
+            "dipaka"
+          ],
+          "place": "pathashala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Night falls over the school. The Ācārya hangs a lamp by the well in the courtyard. “Where is the water?” he asks. “In the well,” says a pupil. “Where is the lamp?” “At the well.” “Where is the boy?” A flame-coloured spirit leaps up from the lamp: “Here!”",
+          "hi": "पाठशाला पर रात उतरती है। आचार्य आँगन में कुएँ के पास एक दीपक टाँगते हैं। “जल कहाँ है?” वे पूछते हैं। “कुएँ में,” एक शिष्य कहता है। “दीपक कहाँ है?” “कुएँ पर।” “बालक कहाँ है?” दीपक से एक लौ के रंग का भूत उछलता है: “यहाँ!”"
+        },
+        "lines": [
+          {
+            "speaker": "acarya",
+            "sa": "कूपे जलम् अस्ति।",
+            "gloss": {
+              "en": "There is water in the well.",
+              "hi": "कुएँ में जल है।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Where: the seventh case",
+          "hi": "कहाँ: सप्तमी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.loc"
+        ],
+        "sutras": [
+          "2.3.36",
+          "1.4.45"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "The place or support where something is or happens takes the seventh case, {{सप्तमी}}: {{कूपे जलम्}} (water in the well), {{गृहे दीपः}} (a lamp in the house), {{वृक्षे शुकः}} (a parrot in the tree).",
+          "hi": "जो स्थान या आधार जहाँ कुछ होता है, वह सप्तमी में आता है: {{कूपे जलम्}} (कुएँ में जल), {{गृहे दीपः}} (घर में दीपक), {{वृक्षे शुकः}} (पेड़ पर तोता)।"
+        },
+        "examples": [
+          {
+            "sa": "कूपे जलम् अस्ति।",
+            "meaning": {
+              "en": "There is water in the well.",
+              "hi": "कुएँ में जल है।"
+            },
+            "words": [
+              {
+                "sa": "कूपे",
+                "gloss": {
+                  "en": "in the well",
+                  "hi": "कुएँ में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "कूप",
+                  "linga": "Pum",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "जलम्",
+                "gloss": {
+                  "en": "water",
+                  "hi": "जल"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "जल",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अस्ति",
+                "gloss": {
+                  "en": "is",
+                  "hi": "है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "गृहे दीपः अस्ति।",
+            "meaning": {
+              "en": "There is a lamp in the house.",
+              "hi": "घर में दीपक है।"
+            },
+            "words": [
+              {
+                "sa": "गृहे",
+                "gloss": {
+                  "en": "in the house",
+                  "hi": "घर में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "गृह",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "दीपः",
+                "gloss": {
+                  "en": "lamp",
+                  "hi": "दीपक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "दीप",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अस्ति",
+                "gloss": {
+                  "en": "is",
+                  "hi": "है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "वृक्षे शुकः तिष्ठति।",
+            "meaning": {
+              "en": "A parrot sits in the tree.",
+              "hi": "पेड़ पर तोता बैठा है।"
+            },
+            "words": [
+              {
+                "sa": "वृक्षे",
+                "gloss": {
+                  "en": "in the tree",
+                  "hi": "पेड़ पर"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "वृक्ष",
+                  "linga": "Pum",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "शुकः",
+                "gloss": {
+                  "en": "parrot",
+                  "hi": "तोता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "शुक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "तिष्ठति",
+                "gloss": {
+                  "en": "sits",
+                  "hi": "बैठा है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "स्था",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "नद्याम् नौका अस्ति।",
+            "meaning": {
+              "en": "The boat is on the river.",
+              "hi": "नाव नदी में है।"
+            },
+            "words": [
+              {
+                "sa": "नद्याम्",
+                "gloss": {
+                  "en": "in the river",
+                  "hi": "नदी में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नदी",
+                  "linga": "Stri",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "नौका",
+                "gloss": {
+                  "en": "boat",
+                  "hi": "नाव"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "नौका",
+                  "linga": "Stri",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अस्ति",
+                "gloss": {
+                  "en": "is",
+                  "hi": "है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "अस्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "सप्तमी",
+          "meaning": {
+            "en": "the seventh case: in, on, at",
+            "hi": "सातवीं विभक्ति: में, पर, पास"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "First case and seventh case",
+          "hi": "प्रथमा और सप्तमी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.loc"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The same word as itself and as a place",
+          "hi": "वही शब्द स्वयं और स्थान के रूप में"
+        },
+        "columns": [
+          {
+            "en": "Word",
+            "hi": "शब्द"
+          },
+          {
+            "en": "1st: itself",
+            "hi": "प्रथमा: स्वयं"
+          },
+          {
+            "en": "7th: in, on, at",
+            "hi": "सप्तमी: में, पर"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "house",
+                "hi": "घर"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गृहम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "गृह",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "गृहे",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "गृह",
+                "linga": "Napumsaka",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "well",
+                "hi": "कुआँ"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "कूपः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "कूप",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "कूपे",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "कूप",
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "tree",
+                "hi": "पेड़"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "वृक्षः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "वृक्ष",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "वृक्षे",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "वृक्ष",
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "school",
+                "hi": "पाठशाला"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पाठशाला",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "पाठशाला",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पाठशालायाम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "पाठशाला",
+                "linga": "Stri",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "river",
+                "hi": "नदी"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नदी",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नद्याम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Masculine and neuter -अ: {{ए}}. Feminine -आ: {{आयाम्}}. Feminine -ई: {{ई}} → {{याम्}}.",
+          "hi": "पुंलिंग और नपुंसक -अ में {{ए}}। स्त्रीलिंग -आ में {{आयाम्}}। स्त्रीलिंग -ई में {{ई}} → {{याम्}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.loc"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“The water is in the well.” Which word for “well”?",
+          "hi": "‘जल कुएँ में है।’ ‘कुआँ’ के लिए कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "The place: seventh case.",
+          "hi": "स्थान: सप्तमी।"
+        },
+        "options": [
+          {
+            "sa": "कूपः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "कूपम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "कूपे",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.loc"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each place to its meaning.",
+          "hi": "हर स्थान को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{ए}}, {{आयाम्}}, {{याम्}}: the seventh-case endings.",
+          "hi": "{{ए}}, {{आयाम्}}, {{याम्}}: सप्तमी के प्रत्यय।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "गृहे",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "in the house",
+                "hi": "घर में"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "कूपे",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "in the well",
+                "hi": "कुएँ में"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "पाठशालायाम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "in the school",
+                "hi": "पाठशाला में"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "नद्याम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "in the river",
+                "hi": "नदी में"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.loc"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that says “in” or “on”.",
+          "hi": "‘में’ या ‘पर’ बताने वाले हर शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "गृहे",
+            "गृहम्",
+            "वृक्षे",
+            "वृक्षः",
+            "कूपे",
+            "कूपः"
+          ],
+          "targets": [
+            "गृहे",
+            "वृक्षे",
+            "कूपे"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "Where is the light?",
+          "hi": "प्रकाश कहाँ है?"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.loc"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “There is a lamp in the house.”",
+          "hi": "कहिए: ‘घर में दीपक है।’"
+        },
+        "explain": {
+          "en": "{{गृहे दीपः अस्ति}}: the place in the seventh case.",
+          "hi": "{{गृहे दीपः अस्ति}}: स्थान सप्तमी में।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "गृहे",
+          "दीपः",
+          "अस्ति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“गृहे दीपः अस्ति,” you say, and the flame-coloured spirit darts through the open door and back, trailing sparks. “कूपे जलम्,” says Dādī, and the spirit dives toward the well, looking down into the dark water as if checking.",
+            "hi": "“गृहे दीपः अस्ति,” आप कहते हैं, और लौ के रंग का भूत खुले द्वार से अन्दर-बाहर झपटता है, चिंगारियाँ बिखेरता। “कूपे जलम्,” दादी कहती हैं, और भूत कुएँ की ओर गोता लगाता है, काले जल में झाँकता हुआ मानो जाँच रहा हो।"
+          },
+          "failure": {
+            "en": "The spirit hovers. The place goes in the seventh case, first.",
+            "hi": "भूत मँडराता है। स्थान सप्तमी में, पहले।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's locus",
+          "hi": "पाणिनि का अधिकरण"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "case.loc"
+        ],
+        "sutras": [
+          "1.4.45",
+          "2.3.36"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 1.4.45, {{आधारोऽधिकरणम्}}: the locus is the support. Sūtra 2.3.36, {{सप्तम्यधिकरणे च}}: it takes the seventh case.",
+          "hi": "सूत्र 1.4.45, {{आधारोऽधिकरणम्}}: अधिकरण आधार है। सूत्र 2.3.36, {{सप्तम्यधिकरणे च}}: वह सप्तमी लेता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "अधिकरणम्",
+          "meaning": {
+            "en": "the locus: where something is",
+            "hi": "अधिकरण: जहाँ कुछ है"
+          }
+        }
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "In, on, at",
+          "hi": "में, पर, पास"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "गृहे · कूपे · नद्याम्",
+            "text": {
+              "en": "The seventh case: where.",
+              "hi": "सप्तमी: कहाँ।"
+            }
+          },
+          {
+            "sa": "ए · आयाम् · याम्",
+            "text": {
+              "en": "The singular endings.",
+              "hi": "एकवचन प्रत्यय।"
+            }
+          },
+          {
+            "sa": "कुत्र?",
+            "text": {
+              "en": "“Where?” asks for this case.",
+              "hi": "‘कहाँ?’ इसी विभक्ति को माँगता है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "in-where-s1",
+    "brief": "The school courtyard at night: the old Ācārya hanging a lit brass lamp beside a stone well, pupils in a ring, a small flickering amber spirit shaped like a flame leaping up from the lamp; stars overhead; you and Dādī at the edge.",
+    "alt": {
+      "en": "Night in a school courtyard, a lamp hung by the well and a flame-shaped spirit leaping up",
+      "hi": "आँगन में रात, कुएँ पर टँगा दीपक और उछलता लौ-भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "acarya",
+      "dipaka"
+    ],
+    "place": "pathashala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The school courtyard at night: the old Ācārya hanging a lit brass lamp beside a stone well, pupils in a ring, a small flickering amber spirit shaped like a flame leaping up from the lamp; stars overhead; you and Dādī at the edge.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\ndipaka: A small flickering amber spirit shaped like a lamp's flame, with a bright pair of eyes and a thin trail of smoke.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-dd7ebd28-711f-4f4c-afb8-5ac431fd4670.png",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "2837b21be2118a5f164ca46a941a2ba4d08fb5180023a0b6dd86b2c18e0b2ffb",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\in-where-s1-phone-9ef7249f.webp",
+      "key": "learn/in-where-s1-phone-9ef7249f.webp",
+      "sha256": "9ef7249f6eb567ab3a84fdc2a13bff3117933af082d17730fa888bcb9b399f79",
+      "bytes": 102260,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/in-where-s1-phone-9ef7249f.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\in-where-s1-tablet-5908d699.webp",
+      "key": "learn/in-where-s1-tablet-5908d699.webp",
+      "sha256": "5908d6999ce030fd3d9e2b14751df1aef1055f5e6324c0f691672dbbda9cf403",
+      "bytes": 377558,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/in-where-s1-tablet-5908d699.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

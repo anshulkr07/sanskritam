@@ -1,0 +1,915 @@
+{
+  "id": "reading-iast-s1",
+  "where": "reading.iast#s1",
+  "ratio": "4:3",
+  "expected": [
+    "ā ś ṣ ṭ ṃ ḥ"
+  ],
+  "prompt": "Correct ONLY the lettering on the sheet held by the grandmother in Image 1. Image 2 shows the exact correct LATIN alphabet glyphs to copy. Replace every existing mark on that sheet with exactly this single Latin-script line: ā ś ṣ ṭ ṃ ḥ. These are Latin a with macron, Latin s with acute, Latin s with underdot, Latin t with underdot, Latin m with underdot, Latin h with underdot. COPY the shapes in Image 2 faithfully in dark ink. They are NOT Devanagari: do not transliterate or convert them into Sanskrit characters. No other lettering on the sheet. Keep its paper texture, hands, grandmother, learner, parrot, gold spirit, library, lighting and 4:3 composition unchanged. No added text, watermark or UI.",
+  "source": {
+    "id": "reading.iast",
+    "template": "scene",
+    "title": {
+      "en": "Roman letters as a helper",
+      "hi": "रोमन अक्षर सहायक"
+    },
+    "title_sa": "रोमनलिप्यन्तरम्",
+    "minutes": 6,
+    "teaches": [
+      "read.iast"
+    ],
+    "needs": [
+      "read.syllables",
+      "read.places"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "A friend from far away",
+          "hi": "दूर से आया मित्र"
+        },
+        "image": {
+          "id": "reading-iast-s1",
+          "brief": "Dādī reading a letter written in Roman letters with dots and bars over them, beside the register; Śuka peering at it upside down; the tall silent spirit leaning in; warm lamplight.",
+          "alt": {
+            "en": "A grandmother reads a letter in Roman letters with dots and bars while a parrot peers at it",
+            "hi": "बिन्दु और रेखा वाले रोमन अक्षरों का पत्र पढ़ती दादी"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "mauni"
+          ],
+          "place": "granthalaya"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "A letter arrives in the library from a friend abroad. It is written in Roman letters with little dots and bars on them: ā, ś, ṣ, ṛ. “It is called IAST,” says Dādī. “A helper, so that people who cannot read Devanagari yet can still say our words. But the leaf is read in Devanagari.”",
+          "hi": "पुस्तकालय में विदेश से एक मित्र का पत्र आता है। वह रोमन अक्षरों में है, जिन पर छोटे बिन्दु और रेखाएँ हैं: ā, ś, ṣ, ṛ। दादी कहती हैं, “इसे IAST कहते हैं। यह एक सहायक है, ताकि जो अभी देवनागरी नहीं पढ़ सकते, वे भी हमारे शब्द बोल सकें। पर पत्र देवनागरी में पढ़ा जाता है।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "One sign, one sound",
+          "hi": "एक चिह्न, एक ध्वनि"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.iast"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "In IAST every sign stands for exactly one Devanagari sound. A bar means long: {{आ}} is ā. A dot below means retroflex: {{ट}} is ṭ. {{श}} is ś, {{ष}} is ṣ, {{ङ}} is ṅ, {{ञ}} is ñ.",
+          "hi": "IAST में हर चिह्न देवनागरी की ठीक एक ध्वनि के लिए है। ऊपर की रेखा का अर्थ दीर्घ: {{आ}} यानी ā। नीचे का बिन्दु मूर्धन्य दिखाता है: {{ट}} यानी ṭ। {{श}} यानी ś, {{ष}} यानी ṣ, {{ङ}} यानी ṅ, {{ञ}} यानी ñ।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "रोमनलिप्यन्तरम्",
+          "meaning": {
+            "en": "IAST: the standard Roman letters for Sanskrit",
+            "hi": "IAST: संस्कृत के लिए मानक रोमन अक्षर"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Vowels with their Roman helper",
+          "hi": "स्वर और उनका रोमन सहायक"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.iast"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Under each letter the app shows its Roman helper",
+          "hi": "हर अक्षर के नीचे ऐप उसका रोमन सहायक दिखाता है"
+        },
+        "columns": [
+          {
+            "en": "Short",
+            "hi": "ह्रस्व"
+          },
+          {
+            "en": "Long",
+            "hi": "दीर्घ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "अ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "आ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "इ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ई",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "उ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ऊ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "ऋ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ॠ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "ऌ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ॡ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "ए",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ऐ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "ओ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "औ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "Long vowels carry a bar; {{ऋ}} is ṛ and {{ऌ}} is ḷ.",
+          "hi": "दीर्घ स्वरों पर रेखा होती है; {{ऋ}} यानी ṛ और {{ऌ}} यानी ḷ।"
+        }
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "Consonants with their Roman helper",
+          "hi": "व्यंजन और उनका रोमन सहायक"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.iast"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "The five rows and the rest",
+          "hi": "पाँच वर्ग और शेष"
+        },
+        "columns": [
+          {
+            "en": "1",
+            "hi": "१"
+          },
+          {
+            "en": "2",
+            "hi": "२"
+          },
+          {
+            "en": "3",
+            "hi": "३"
+          },
+          {
+            "en": "4",
+            "hi": "४"
+          },
+          {
+            "en": "5",
+            "hi": "५"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "क",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ख",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ग",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "घ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ङ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "च",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "छ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ज",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "झ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ञ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "ट",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ठ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ड",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ढ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ण",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "त",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "थ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "द",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ध",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "न",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "प",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "फ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ब",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "भ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "म",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "य",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "र",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ल",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "व",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "श",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "ष",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "स",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ह",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ं",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "ः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.iast"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which letter is ś (as in Śiva)?",
+          "hi": "कौन-सा अक्षर ś (जैसे Śiva में) है?"
+        },
+        "explain": {
+          "en": "{{श}} is ś, the palatal hiss; ṣ is {{ष}}.",
+          "hi": "{{श}} यानी ś, तालव्य ऊष्म; ṣ यानी {{ष}}।"
+        },
+        "options": [
+          {
+            "sa": "श",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "ष",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "स",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.iast"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each Roman letter to its Devanagari letter.",
+          "hi": "हर रोमन अक्षर को उसके देवनागरी अक्षर से जोड़िए।"
+        },
+        "explain": {
+          "en": "A bar means long; a dot below means retroflex; ñ and ṅ are nasals.",
+          "hi": "रेखा यानी दीर्घ; नीचे बिन्दु यानी मूर्धन्य; ñ और ṅ नासिक्य हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "आ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "ā, a long vowel",
+                "hi": "ā, दीर्घ स्वर"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ट",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "ṭ, a retroflex",
+                "hi": "ṭ, मूर्धन्य"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ञ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "ñ, a palatal nasal",
+                "hi": "ñ, तालव्य नासिक्य"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "ष",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "ṣ, the curled hiss",
+                "hi": "ṣ, मुड़ी फुफकार"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "t2",
+        "title": {
+          "en": "Read aloud, then check",
+          "hi": "पहले ज़ोर से पढ़िए, फिर देखिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.iast"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Say the Devanagari word first. The Roman helper is a check, not a crutch: {{कृष्णः}} is kṛṣṇaḥ, {{गङ्गा}} is gaṅgā, {{संस्कृतम्}} is saṃskṛtam. Note ṃ for the hum and ḥ for the breath.",
+          "hi": "पहले देवनागरी शब्द बोलिए। रोमन सहायक जाँच है, बैसाखी नहीं: {{कृष्णः}} यानी kṛṣṇaḥ, {{गङ्गा}} यानी gaṅgā, {{संस्कृतम्}} यानी saṃskṛtam। ध्यान दीजिए: ṃ गूँज के लिए और ḥ साँस के लिए है।"
+        },
+        "examples": [
+          {
+            "sa": "कृष्णः",
+            "meaning": {
+              "en": "Kṛṣṇa",
+              "hi": "कृष्ण"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "कृष्ण",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "संस्कृतम्",
+            "meaning": {
+              "en": "Sanskrit",
+              "hi": "संस्कृत"
+            },
+            "words": [],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.iast"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word with a long ā.",
+          "hi": "दीर्घ ā वाले हर शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "रामः",
+            "सीता",
+            "लता",
+            "कमलम्",
+            "बालः",
+            "फलम्"
+          ],
+          "targets": [
+            "रामः",
+            "सीता",
+            "लता",
+            "बालः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "The friend's letter",
+          "hi": "मित्र का पत्र"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "read.iast"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "A friend writes “dharmaḥ”. Which Devanagari word is it?",
+          "hi": "मित्र ने “dharmaḥ” लिखा। यह कौन-सा देवनागरी शब्द है?"
+        },
+        "explain": {
+          "en": "dha-r-ma-ḥ: {{धर्मः}}.",
+          "hi": "ध-र्-म-ः: {{धर्मः}}।"
+        },
+        "options": [
+          {
+            "sa": "धर्मः",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "धर्मम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "ध्रमः",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“धर्मः!” Maunī reads it off the paper with you, his mouth forming each sound exactly. A pale-gold glow runs up his scroll.",
+            "hi": "“धर्मः!” मौनी आपके साथ काग़ज़ से उसे पढ़ता है, मुँह हर ध्वनि को ठीक आकार देता है। उसके खर्रे पर हल्की सुनहरी चमक दौड़ जाती है।"
+          },
+          "failure": {
+            "en": "The word does not match. Read the Roman letters one by one: dha, r, ma, ḥ.",
+            "hi": "शब्द मेल नहीं खाता। रोमन अक्षर एक-एक करके पढ़िए: dha, r, ma, ḥ।"
+          }
+        },
+        "roman": "show"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Roman helper",
+          "hi": "रोमन सहायक"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": null,
+            "text": {
+              "en": "IAST: one sign, one sound.",
+              "hi": "रोमन लिपि (IAST): एक चिह्न, एक ध्वनि।"
+            }
+          },
+          {
+            "sa": "ā ś ṣ ṭ ṃ ḥ",
+            "text": {
+              "en": "A bar is long, a dot below is retroflex.",
+              "hi": "रेखा दीर्घ, नीचे बिन्दु मूर्धन्य।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "The Roman letters help; the leaf is read in Devanagari.",
+              "hi": "रोमन अक्षर सहायक हैं; पत्र देवनागरी में पढ़ा जाता है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "reading-iast-s1",
+    "brief": "Dādī reading a letter written in Roman letters with dots and bars over them, beside the register; Śuka peering at it upside down; the tall silent spirit leaning in; warm lamplight.",
+    "alt": {
+      "en": "A grandmother reads a letter in Roman letters with dots and bars while a parrot peers at it",
+      "hi": "बिन्दु और रेखा वाले रोमन अक्षरों का पत्र पढ़ती दादी"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "mauni"
+    ],
+    "place": "granthalaya"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Dādī reading a letter written in Roman letters with dots and bars over them, beside the register; Śuka peering at it upside down; the tall silent spirit leaning in; warm lamplight.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nmauni: A tall, thin, pale-gold spirit with a finger to his lips and a scroll tucked under his arm.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-3b40ad52-dbb9-4e3d-862e-3d1c1a52b092.png",
+  "history": [
+    {
+      "id": "reading-iast-s1",
+      "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-1382ea04-2cf7-4911-a580-85806c4b3547.png",
+      "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: Dādī reading a letter written in Roman letters with dots and bars over them, beside the register; Śuka peering at it upside down; the tall silent spirit leaning in; warm lamplight.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nmauni: A tall, thin, pale-gold spirit with a finger to his lips and a scroll tucked under his arm.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nā ś ṣ ṭ ṃ ḥ All human and humanoid figures wear complete opaque traditional clothing or robes.",
+      "generator": "built-in image_gen",
+      "policy_version": "2026-10-20-full-text-audit",
+      "rejection": "Wrong script: Devanagari used instead of the source's Latin IAST characters.",
+      "sha256": "7472c31d8a1287c855661eb5511b0790d6ad2a8825897c1b4965c957d0c324c2",
+      "master_retained": false
+    }
+  ],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "64b8843b4b09d43cabe5597e5fe5b785870547497f6d468fea71883b2451bf65",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\reading-iast-s1-phone-b53332a8.webp",
+      "key": "learn/reading-iast-s1-phone-b53332a8.webp",
+      "sha256": "b53332a82ffbcfa95cb4f5d7ad0cf30c4a6e8cf11261f6ba5d1c910a9a18ae3e",
+      "bytes": 79212,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/reading-iast-s1-phone-b53332a8.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\reading-iast-s1-tablet-d498f264.webp",
+      "key": "learn/reading-iast-s1-tablet-d498f264.webp",
+      "sha256": "d498f264af6cc5112b5825251efe3a753c190cb3e8b645002c8f5d8c24bbbada",
+      "bytes": 269268,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/reading-iast-s1-tablet-d498f264.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

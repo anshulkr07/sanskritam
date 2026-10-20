@@ -1,0 +1,1105 @@
+{
+  "id": "vc2-kr-s1",
+  "where": "vc2.kr#s1",
+  "ratio": "4:3",
+  "expected": [
+    "श्रु",
+    "शृणोति",
+    "कृ",
+    "करोति"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A circle of small spirits with hands cupped to their ears around the Vetāla who is also listening, head tilted; Śuka hopping; Dādī smiling; Dhātuka ticking his ledger; firelight.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\ndhatuka: A small, round, honey-brown spirit with ten tiny brass-handled drawers set into his body, a pencil behind one ear, forever hurrying.\nastika: A small, plain, ash-coloured spirit without any marks or ornament, who keeps patting himself to check he is there.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nश्रु\nशृणोति\nकृ\nकरोति\nPut the approved roots and corresponding forms in a clear, short ledger list, one root/form pair per row. No additional writing. All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "vc2.kr",
+    "template": "scene",
+    "title": {
+      "en": "Classes 5 and 8: शृणोति, करोति",
+      "hi": "गण 5 और 8: शृणोति, करोति"
+    },
+    "title_sa": "शृणोति करोति",
+    "minutes": 6,
+    "teaches": [
+      "verb.class-5-8"
+    ],
+    "needs": [
+      "verb.class-2",
+      "verb.class-3"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The drawer that says o",
+          "hi": "ओ बोलने वाला दराज़"
+        },
+        "image": {
+          "id": "vc2-kr-s1",
+          "brief": "A circle of small spirits with hands cupped to their ears around the Vetāla who is also listening, head tilted; Śuka hopping; Dādī smiling; Dhātuka ticking his ledger; firelight.",
+          "alt": {
+            "en": "A circle of small spirits cup their ears while a grey spirit listens with a tilted head",
+            "hi": "कान पर हाथ रखे नन्हे भूतों का घेरा, सिर टेढ़ा कर सुनता भूरा भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "dhatuka",
+            "astika"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "Two drawers at once, the fifth and the eighth, because they sound alike. “Listen,” says the Vetāla, cupping a hand to his ear. “शृणोति. करोति.” The hands of every spirit in the circle go to their ears; a ring of small shapes echoes “-ओति, -ओति.” Śuka hops: “It is the hearing and the doing. He hears, he does.”",
+          "hi": "एक साथ दो दराज़, पाँचवाँ और आठवाँ, क्योंकि वे एक जैसे सुनाई देते हैं। “सुनो,” वेताल कान पर हाथ रखकर कहता है। “शृणोति। करोति।” घेरे के हर भूत का हाथ कान पर जाता है; नन्ही आकृतियों का घेरा गूँजता है “-ओति, -ओति।” शुक उछलता है: “यह सुनना और करना है। वह सुनता है, वह करता है।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The sign -नु- and -उ-",
+          "hi": "चिह्न -नु- और -उ-"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-5-8"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Class 5, {{स्वादि}}, adds {{-नु-}} (strong {{-नो-}}): {{आप्}} gives {{आप्नोति}} (gets), {{चि}} gives {{चिनोति}} (gathers), {{शक्}} gives {{शक्नोति}} (is able). {{श्रु}} follows it by a special rule: {{शृणोति}}. Class 8, {{तनादि}}, adds {{-उ-}} (strong {{-ओ-}}): {{कृ}} gives {{करोति}}, {{तन्}} gives {{तनोति}} (stretches).",
+          "hi": "गण 5, {{स्वादि}}, {{-नु-}} जोड़ता है (बलवान् {{-नो-}}): {{आप्}} से {{आप्नोति}} (पाता है), {{चि}} से {{चिनोति}} (चुनता है), {{शक्}} से {{शक्नोति}} (समर्थ है)। {{श्रु}} विशेष नियम से इसी का अनुसरण करता है: {{शृणोति}}। गण 8, {{तनादि}}, {{-उ-}} जोड़ता है (बलवान् {{-ओ-}}): {{कृ}} से {{करोति}}, {{तन्}} से {{तनोति}} (फैलाता है)।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Class 5 and 8 roots",
+          "hi": "गण 5 और 8 की धातुएँ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-5-8"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Root, meaning and “he …”",
+          "hi": "धातु, अर्थ और ‘वह …’"
+        },
+        "columns": [
+          {
+            "en": "Root",
+            "hi": "धातु"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          },
+          {
+            "en": "He",
+            "hi": "वह"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "आप्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "get",
+                "hi": "पाना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "आप्नोति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "आप्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Svadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "चि",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "gather",
+                "hi": "चुनना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "चिनोति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "चि",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Svadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "शक्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "be able",
+                "hi": "समर्थ होना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "शक्नोति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "शक्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Svadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "श्रु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "hear",
+                "hi": "सुनना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "शृणोति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "श्रु",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "कृ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "do",
+                "hi": "करना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "करोति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Tanadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": "तन्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "stretch",
+                "hi": "फैलाना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "तनोति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "तन्",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Tanadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "All end in {{-ओति}}.",
+          "hi": "सब {{-ओति}} पर समाप्त होती हैं।"
+        }
+      },
+      {
+        "id": "tb2",
+        "title": {
+          "en": "कृ: all persons",
+          "hi": "कृ: सभी पुरुष"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-5-8"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "“He does, you do, I do”",
+          "hi": "‘वह करता है, तुम करते हो, मैं करता हूँ’"
+        },
+        "columns": [
+          {
+            "en": "Person",
+            "hi": "पुरुष"
+          },
+          {
+            "en": "One",
+            "hi": "एकवचन"
+          },
+          {
+            "en": "Two",
+            "hi": "द्विवचन"
+          },
+          {
+            "en": "Many",
+            "hi": "बहुवचन"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "he, she, it",
+                "hi": "वह (प्रथम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "करोति",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Tanadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "कुरुतः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Tanadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "कुर्वन्ति",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lat",
+                "purusha": "Prathama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Tanadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम (मध्यम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "करोषि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Tanadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "कुरुथः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Tanadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "कुरुथ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Tanadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "I, we",
+                "hi": "मैं (उत्तम पुरुष)"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "करोमि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Tanadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "कुर्वः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Tanadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "कुर्मः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": "Lat",
+                "purusha": "Uttama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": "Tanadi",
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "Strong {{करो-}} in the singular, weak {{कुरु-}} or {{कुर्-}} in the dual and plural.",
+          "hi": "एकवचन में बलवान् {{करो-}}, द्विवचन-बहुवचन में निर्बल {{कुरु-}} या {{कुर्-}}।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-5-8"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He hears.” Which form?",
+          "hi": "‘वह सुनता है।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{शृणोति}}: {{श्रु}} with {{-नो-}}.",
+          "hi": "{{शृणोति}}: {{श्रु}} और {{-नो-}}।"
+        },
+        "options": [
+          {
+            "sa": "श्रवति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "श्रुति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "शृणोति",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-5-8"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “He does.”",
+          "hi": "कहिए: ‘वह करता है।’"
+        },
+        "explain": {
+          "en": "{{करोति}}.",
+          "hi": "{{करोति}}।"
+        },
+        "options": [],
+        "answers": [
+          "करोति"
+        ],
+        "tiles": [
+          "क",
+          "रोति",
+          "कृ",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-5-8"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each root to its “he” form.",
+          "hi": "हर धातु को उसके ‘वह’ रूप से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{-नो-}} for class 5; {{-ओ-}} for class 8.",
+          "hi": "गण 5 के लिए {{-नो-}}; गण 8 के लिए {{-ओ-}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "आप्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "आप्नोति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "शक्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "शक्नोति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "कृ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "करोति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "तन्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "तनोति",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-5-8"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every verb that ends in {{-ओति}}.",
+          "hi": "{{-ओति}} पर समाप्त होने वाली हर क्रिया छुइए।"
+        },
+        "params": {
+          "passage": [
+            "शृणोति",
+            "भवति",
+            "करोति",
+            "पठति",
+            "आप्नोति",
+            "जयति"
+          ],
+          "targets": [
+            "शृणोति",
+            "करोति",
+            "आप्नोति"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Drawers five and eight",
+          "hi": "दराज़ पाँच और आठ"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "verb.class-5-8"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“They do.” Which form of {{कृ}}?",
+          "hi": "‘वे करते हैं।’ {{कृ}} का कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{कुर्वन्ति}}: the weak stem {{कुर्व-}}.",
+          "hi": "{{कुर्वन्ति}}: निर्बल अंग {{कुर्व-}}।"
+        },
+        "options": [
+          {
+            "sa": "करोन्ति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "कुरुन्ति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "कुर्वन्ति",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“कुर्वन्ति,” you say, and every spirit in the circle drops its hands from its ears. A hush, and then a sound like a great number of very small tools being laid down at once: they have heard, they are doing. Drawers five and eight shut, one after the other, with the softest clicks of all.",
+            "hi": "“कुर्वन्ति,” आप कहते हैं, और घेरे का हर भूत अपने कान से हाथ हटा लेता है। एक सन्नाटा, और फिर ऐसी आवाज़ जैसे बहुत-से नन्हे औज़ार एक साथ रखे जा रहे हों: उन्होंने सुना, वे कर रहे हैं। दराज़ पाँच और आठ बारी-बारी बन्द होते हैं, सबसे मुलायम खट के साथ।"
+          },
+          "failure": {
+            "en": "The circle keeps listening. They do: {{कुर्वन्ति}}.",
+            "hi": "घेरा सुनता रहता है। वे करते हैं: {{कुर्वन्ति}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's {{नु}} and {{उ}}",
+          "hi": "पाणिनि के {{नु}} और {{उ}}"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "verb.class-5-8"
+        ],
+        "sutras": [
+          "3.1.73",
+          "3.1.79",
+          "3.1.74"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 3.1.73, {{स्वादिभ्यः श्नुः}}, adds {{श्नु}} to class 5, and 3.1.79, {{तनादिकृञ्भ्य उः}}, adds {{उ}} to class 8 and to {{कृ}}. And 3.1.74, {{श्रुवः शृ च}}, gives {{श्रु}} the {{श्नु}} sign and turns it into {{शृ}}: {{शृणोति}}.",
+          "hi": "सूत्र 3.1.73, {{स्वादिभ्यः श्नुः}}, गण 5 में {{श्नु}} जोड़ता है, और 3.1.79, {{तनादिकृञ्भ्य उः}}, गण 8 और {{कृ}} में {{उ}} जोड़ता है। और 3.1.74, {{श्रुवः शृ च}}, {{श्रु}} को {{श्नु}} चिह्न देता है और उसे {{शृ}} बना देता है: {{शृणोति}}।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Classes 5 and 8",
+          "hi": "गण 5 और 8"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "आप्नोति · शक्नोति",
+            "text": {
+              "en": "He gets; he is able.",
+              "hi": "वह पाता है; वह समर्थ है।"
+            }
+          },
+          {
+            "sa": "शृणोति · करोति",
+            "text": {
+              "en": "He hears; he does.",
+              "hi": "वह सुनता है; वह करता है।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Strong {{-ओ-}} in the singular; weak in the plural.",
+              "hi": "एकवचन में बलवान् {{-ओ-}}; बहुवचन में निर्बल।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "vc2-kr-s1",
+    "brief": "A circle of small spirits with hands cupped to their ears around the Vetāla who is also listening, head tilted; Śuka hopping; Dādī smiling; Dhātuka ticking his ledger; firelight.",
+    "alt": {
+      "en": "A circle of small spirits cup their ears while a grey spirit listens with a tilted head",
+      "hi": "कान पर हाथ रखे नन्हे भूतों का घेरा, सिर टेढ़ा कर सुनता भूरा भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "dhatuka",
+      "astika"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: A circle of small spirits with hands cupped to their ears around the Vetāla who is also listening, head tilted; Śuka hopping; Dādī smiling; Dhātuka ticking his ledger; firelight.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\ndhatuka: A small, round, honey-brown spirit with ten tiny brass-handled drawers set into his body, a pencil behind one ear, forever hurrying.\nastika: A small, plain, ash-coloured spirit without any marks or ornament, who keeps patting himself to check he is there.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-2c13519d-8a58-4581-b223-775003278f1e.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "8cacb322e1a2728d1ceebf4249b6ed853d55d30a35f8ecfcf4d5c77b938ed1de",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vc2-kr-s1-phone-07770d63.webp",
+      "key": "learn/vc2-kr-s1-phone-07770d63.webp",
+      "sha256": "07770d63ba8f3e2a7363c4f01d6420ab0a9bc22bab547b5d52662ad24a970da4",
+      "bytes": 104076,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/vc2-kr-s1-phone-07770d63.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\vc2-kr-s1-tablet-c5472e87.webp",
+      "key": "learn/vc2-kr-s1-tablet-c5472e87.webp",
+      "sha256": "c5472e874dcc64d771b9fcb7e0950c50c9dbc8a9fe3258f3dc982a2664683915",
+      "bytes": 409344,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/vc2-kr-s1-tablet-c5472e87.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

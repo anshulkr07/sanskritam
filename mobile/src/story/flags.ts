@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSyncExternalStore, useEffect } from 'react';
-export const STORY_COURSE_DEFAULT = false;
+export const STORY_COURSE_DEFAULT = true;
 let enabled = STORY_COURSE_DEFAULT;
 const listeners = new Set<() => void>();
 let loaded: Promise<void> | undefined;

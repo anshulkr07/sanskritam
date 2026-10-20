@@ -9,7 +9,7 @@ teaches:
 - verb.class-3
 needs:
 - verb.class-2
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -38,9 +38,23 @@ cards:
     place: smashana
     ratio: '4:3'
     id: vc2-da-s1
+    text_in_image: ["दा", "ददाति", "धा", "दधाति"]
   narration:
     en: 'Drawer three rattles. It holds a small spirit that says everything twice, and bows, and gives: दद-दद. “ददाति,” says the Vetāla, “he gives.” The spirit offers you an apple, then another, then another, each time repeating the word. Dādī laughs. “Class 3 doubles the first syllable of the root, so that it is easy to remember: दा becomes दद, हु becomes जुहु.”'
     hi: 'तीसरा दराज़ खड़खड़ाता है। उसमें एक नन्हा भूत है जो हर बात दो बार कहता है, झुकता है और देता है: दद-दद। “ददाति,” वेताल कहता है, “वह देता है।” भूत आपको एक सेब देता है, फिर दूसरा, फिर तीसरा, हर बार शब्द दोहराता हुआ। दादी हँस पड़ती हैं। “गण 3 धातु का पहला अक्षर दोहरा देता है, ताकि याद रखना आसान हो: दा से दद बनता है, हु से जुहु।”'
+  lines:
+  - speaker: vetala
+    sa: ददाति
+    gloss:
+      en: He gives.
+      hi: वह देता है।
+    check:
+      type: tinanta
+      dhatu: दा
+      lakara: Lat
+      purusha: Prathama
+      vacana: Eka
+      gana: Juhotyadi
 - id: t1
   kind: teach
   title:
@@ -285,8 +299,8 @@ cards:
   - verb.class-3
   mode: match
   prompt:
-    en: Join each root to its “he” form.
-    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+    en: Match each root with its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से मिलाइए।
   explain:
     en: Look for the doubled start.
     hi: दुगुना आरम्भ देखिए।

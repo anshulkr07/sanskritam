@@ -10,7 +10,7 @@ teaches:
 needs:
 - num.plural
 - pron.kim-yad
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Lesson text and story
   licence: original
@@ -38,6 +38,12 @@ cards:
   narration:
     en: 'Ganaka unwinds one of his cords and ties a knot. “एकम्.” Another. “द्वे.” Another. “त्रीणि.” He is very proud. “And these?” He holds up a row of old leaves. Dādī laughs. “Count them properly: the numbers up to four change with the gender of what you count, and from five they never do.”'
     hi: 'गणक अपनी एक डोरी खोलकर गाँठ लगाता है। “एकम्।” दूसरी। “द्वे।” तीसरी। “त्रीणि।” वह बहुत गर्वित है। “और ये?” वह पुराने पत्रों की एक पंक्ति उठाता है। दादी हँसती हैं। “ठीक से गिनो: चार तक की संख्याएँ गिनी जाने वाली चीज़ के लिंग से बदलती हैं, पाँच से आगे कभी नहीं।”'
+  lines:
+  - speaker: ganaka
+    sa: एकम्
+    gloss:
+      en: One.
+      hi: एक।
 - id: t1
   kind: teach
   title:
@@ -265,8 +271,8 @@ cards:
   - num.one-ten
   mode: match
   prompt:
-    en: Join each number to its word.
-    hi: हर संख्या को उसके शब्द से जोड़िए।
+    en: Match each number with its word.
+    hi: हर संख्या को उसके शब्द से मिलाइए।
   explain:
     en: Five to ten are the same in every gender.
     hi: पाँच से दस हर लिंग में एक-से हैं।

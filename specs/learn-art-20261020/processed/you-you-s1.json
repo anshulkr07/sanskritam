@@ -1,0 +1,790 @@
+{
+  "id": "you-you-s1",
+  "where": "you.you#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The boat sliding out from the ghat steps with you, Dādī, Śuka, the boatman and the small silvery spirit aboard; Dādī turned toward the spirit with a kind direct look as if speaking to him.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nnavika: A lean, sun-browned boatman in a faded blue dhoti and a cloth headwrap, kind creased eyes, a long bamboo pole in his hands.\npratibimbaka: A pale silver spirit that looks like a rippling reflection of whoever stands near; his edges shimmer like water.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "source": {
+    "id": "you.you",
+    "template": "scene",
+    "title": {
+      "en": "You",
+      "hi": "तुम"
+    },
+    "title_sa": "त्वं युवां यूयम्",
+    "minutes": 6,
+    "teaches": [
+      "pron.you"
+    ],
+    "needs": [
+      "pron.i-we"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The question",
+          "hi": "प्रश्न"
+        },
+        "image": {
+          "id": "you-you-s1",
+          "brief": "The boat sliding out from the ghat steps with you, Dādī, Śuka, the boatman and the small silvery spirit aboard; Dādī turned toward the spirit with a kind direct look as if speaking to him.",
+          "alt": {
+            "en": "A grandmother speaks kindly to a small spirit as the boat leaves the ghat",
+            "hi": "नाव के घाट छोड़ते समय नन्हे भूत से कोमलता से बोलती दादी"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "navika",
+            "pratibimbaka"
+          ],
+          "place": "nauka"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The boat slides out from the steps. “And you?” the boatman asks Dādī. “And you, little one?” he asks the spirit. The spirit cannot answer: no one has ever said “you” to him and meant it. Dādī says it first: a clear, kind word, aimed straight at him.",
+          "hi": "नाव सीढ़ियों से सरकती है। नाविक दादी से पूछता है, “और आप?” फिर भूत से, “और तुम, नन्हे?” भूत उत्तर नहीं दे पाता: किसी ने कभी उसे ‘तुम’ कहकर सचमुच नहीं पुकारा। दादी पहले कहती हैं: साफ़, कोमल शब्द, ठीक उसकी ओर।"
+        },
+        "lines": [
+          {
+            "speaker": "dadi",
+            "sa": "त्वं कः असि?",
+            "gloss": {
+              "en": "Who are you?",
+              "hi": "तुम कौन हो?"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "You, you two, you all",
+          "hi": "तुम, तुम दोनों, तुम सब"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.you"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "“You” is {{त्वम्}}. For two it is {{युवाम्}}, for many {{यूयम्}}. The verb ends in {{सि}}, {{थः}} or {{थ}}: {{त्वं पठसि}} (you read), {{युवां पठथः}}, {{यूयं पठथ}}.",
+          "hi": "‘तुम’ है {{त्वम्}}। दो के लिए {{युवाम्}}, अनेक के लिए {{यूयम्}}। क्रिया {{सि}}, {{थः}} या {{थ}} पर समाप्त होती है: {{त्वं पठसि}} (तुम पढ़ते हो), {{युवां पठथः}}, {{यूयं पठथ}}।"
+        },
+        "examples": [],
+        "rows": [
+          {
+            "sa": "त्वम्",
+            "gloss": {
+              "en": "you",
+              "hi": "तुम"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "युष्मद्",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "युवाम्",
+            "gloss": {
+              "en": "you two",
+              "hi": "तुम दोनों"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "युष्मद्",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Dvi",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "यूयम्",
+            "gloss": {
+              "en": "you all",
+              "hi": "तुम सब"
+            },
+            "check": {
+              "type": "subanta",
+              "stem": "युष्मद्",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Bahu",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "मध्यमपुरुषः",
+          "meaning": {
+            "en": "second person: you",
+            "hi": "मध्यम पुरुष: तुम"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Speaking to someone",
+          "hi": "किसी से बोलना"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.you"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "You, with the verb “read”",
+          "hi": "तुम, क्रिया ‘पढ़ना’ के साथ"
+        },
+        "columns": [
+          {
+            "en": "Who",
+            "hi": "कौन"
+          },
+          {
+            "en": "Pronoun",
+            "hi": "सर्वनाम"
+          },
+          {
+            "en": "Verb",
+            "hi": "क्रिया"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you",
+                "hi": "तुम"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "त्वम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "युष्मद्",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठसि",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you two",
+                "hi": "तुम दोनों"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "युवाम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "युष्मद्",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठथः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Dvi",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "you all",
+                "hi": "तुम सब"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "यूयम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "युष्मद्",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पठथ",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "tinanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": "Bahu",
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": "Lat",
+                "purusha": "Madhyama",
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": null
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.you"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "You speak to one friend. Which word?",
+          "hi": "आप एक मित्र से बोलते हैं। कौन-सा शब्द?"
+        },
+        "explain": {
+          "en": "{{त्वम्}}: you (one).",
+          "hi": "{{त्वम्}}: तुम (एक)।"
+        },
+        "options": [
+          {
+            "sa": "अहम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "त्वम्",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "यूयम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.you"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each pronoun to its meaning.",
+          "hi": "हर सर्वनाम को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "Learn the six: I, we two, we; you, you two, you all.",
+          "hi": "छह याद रखिए: मैं, हम दोनों, हम; तुम, तुम दोनों, तुम सब।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "त्वम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "you (one)",
+                "hi": "तुम (एक)"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "युवाम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "you two",
+                "hi": "तुम दोनों"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "यूयम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "you all",
+                "hi": "तुम सब"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "अहम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "I",
+                "hi": "मैं"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.you"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every verb for “you”.",
+          "hi": "‘तुम’ की हर क्रिया को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "पठसि",
+            "पठामि",
+            "गच्छथः",
+            "गच्छामः",
+            "वदथ",
+            "वदन्ति"
+          ],
+          "targets": [
+            "पठसि",
+            "गच्छथः",
+            "वदथ"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.you"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "The boatman asks you and Dādī, “Where do you two go?” Which verb is that?",
+          "hi": "नाविक आपसे और दादी से पूछता है, “तुम दोनों कहाँ जाते हो?” वह कौन-सी क्रिया है?"
+        },
+        "explain": {
+          "en": "“You two”: {{गच्छथः}}.",
+          "hi": "‘तुम दोनों’: {{गच्छथः}}।"
+        },
+        "options": [
+          {
+            "sa": "गच्छसि",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "गच्छथः",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "गच्छावः",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Say “you”",
+          "hi": "‘तुम’ कहिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "pron.you"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say it to the spirit: “You are a friend.”",
+          "hi": "भूत से कहिए: ‘तुम मित्र हो।’"
+        },
+        "explain": {
+          "en": "{{त्वं मित्रम् असि}}: you are a friend.",
+          "hi": "{{त्वं मित्रम् असि}}: तुम मित्र हो।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "त्वम्",
+          "मित्रम्",
+          "असि"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“त्वं मित्रम् असि,” you say. The silver spirit's outline wavers like a reflection when a stone is dropped, then settles into your own face, smiling back.",
+            "hi": "“त्वं मित्रम् असि,” आप कहते हैं। चाँदी-सा भूत पत्थर गिरे प्रतिबिम्ब की तरह काँपता है, फिर आपके ही चेहरे में ठहर जाता है, जो मुस्कुराकर लौटता है।"
+          },
+          "failure": {
+            "en": "The reflection stays blank. Say “you are a friend”: start with {{त्वम्}}.",
+            "hi": "प्रतिबिम्ब खाली रहता है। ‘तुम मित्र हो’ कहिए: {{त्वम्}} से शुरू कीजिए।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "You",
+          "hi": "तुम"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "त्वम् युवाम् यूयम्",
+            "text": {
+              "en": "You, you two, you all.",
+              "hi": "तुम, तुम दोनों, तुम सब।"
+            }
+          },
+          {
+            "sa": "पठसि · पठथः · पठथ",
+            "text": {
+              "en": "The verb for “you”.",
+              "hi": "‘तुम’ की क्रिया।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "Keep “you” and “I” apart.",
+              "hi": "‘तुम’ और ‘मैं’ को अलग रखिए।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "you-you-s1",
+    "brief": "The boat sliding out from the ghat steps with you, Dādī, Śuka, the boatman and the small silvery spirit aboard; Dādī turned toward the spirit with a kind direct look as if speaking to him.",
+    "alt": {
+      "en": "A grandmother speaks kindly to a small spirit as the boat leaves the ghat",
+      "hi": "नाव के घाट छोड़ते समय नन्हे भूत से कोमलता से बोलती दादी"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "navika",
+      "pratibimbaka"
+    ],
+    "place": "nauka"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The boat sliding out from the ghat steps with you, Dādī, Śuka, the boatman and the small silvery spirit aboard; Dādī turned toward the spirit with a kind direct look as if speaking to him.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nnavika: A lean, sun-browned boatman in a faded blue dhoti and a cloth headwrap, kind creased eyes, a long bamboo pole in his hands.\npratibimbaka: A pale silver spirit that looks like a rippling reflection of whoever stands near; his edges shimmer like water.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-7f651cf1-42c3-4937-bb9c-6c526a4079fb.png",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "06a1e43a4fffe6221238ee6e852a69287a3e50aca4d3414f4e18e4d3e15e319e",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\you-you-s1-phone-0f62d185.webp",
+      "key": "learn/you-you-s1-phone-0f62d185.webp",
+      "sha256": "0f62d185d5d1d5cff1a7f58744d5b93afb0299e98d6934421ab9a6dffcb04f73",
+      "bytes": 104230,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/you-you-s1-phone-0f62d185.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\you-you-s1-tablet-ab8e1e80.webp",
+      "key": "learn/you-you-s1-tablet-ab8e1e80.webp",
+      "sha256": "ab8e1e80562a8e793a0565e4f33b3a2b89e3943ba68e396b7df5d8ae0a0bf998",
+      "bytes": 383486,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/you-you-s1-tablet-ab8e1e80.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

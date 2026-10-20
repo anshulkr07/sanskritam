@@ -1,0 +1,1226 @@
+{
+  "id": "part-tumun-s1",
+  "where": "part.tumun#s1",
+  "ratio": "4:3",
+  "expected": [
+    "पठितुम्"
+  ],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The paper-fan spirit folding his answer into a single word on one fold; Śuka testing words with a raised wing; Dādī smiling; the Vetāla listening with half-closed eyes; firelight.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nsankshepaka: A small, slim spirit like a folded paper fan, whose sides fold and unfold as he speaks, each fold holding a tiny line of writing.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nOwner-approved writing: render the following EXACT text, and no other writing, on the physical surface described in the scene. Use generous size, clear orthographic shapes and accurate Devanagari. The same text remains live app content. Do not substitute, omit, add or invent letters. No watermark, UI or extra labels.\nपठितुम् All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "part.tumun",
+    "template": "scene",
+    "title": {
+      "en": "To go",
+      "hi": "जाने के लिए"
+    },
+    "title_sa": "गन्तुम् पठितुम्",
+    "minutes": 6,
+    "teaches": [
+      "krt.tumun"
+    ],
+    "needs": [
+      "krt.ktva"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "A word that wants",
+          "hi": "चाहने वाला शब्द"
+        },
+        "image": {
+          "id": "part-tumun-s1",
+          "brief": "The paper-fan spirit folding his answer into a single word on one fold; Śuka testing words with a raised wing; Dādī smiling; the Vetāla listening with half-closed eyes; firelight.",
+          "alt": {
+            "en": "A paper-fan spirit folds an answer into one word while a parrot tests words",
+            "hi": "काग़ज़ी पंखे जैसा भूत उत्तर को एक शब्द में समेटता, शब्द परखता तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "vetala",
+            "sankshepaka"
+          ],
+          "place": "smashana"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "“Why did you come?” the Vetāla asks, and the paper-fan spirit folds his answer into a single word: “द्रष्टुम्.” “To see.” Śuka tests it. “गन्तुम् इच्छामि.” “I want to go.” “पठितुम् शक्नोमि.” “I am able to read.” “One word,” says Dādī, “and the purpose is done. No ‘in order that’, no ‘so as to’.”",
+          "hi": "“तुम क्यों आए?” वेताल पूछता है, और काग़ज़ी पंखे वाला भूत अपना उत्तर एक शब्द में समेट देता है: “द्रष्टुम्।” “देखने के लिए।” शुक परखता है। “गन्तुम् इच्छामि।” “मैं जाना चाहता हूँ।” “पठितुम् शक्नोमि।” “मैं पढ़ सकता हूँ।” “एक शब्द,” दादी कहती हैं, “और प्रयोजन पूरा। न ‘ताकि’, न ‘इस उद्देश्य से’।”"
+        },
+        "lines": [],
+        "quote": {
+          "sa": "अहमप्यवदं मातर्द्रष्टुमेतद्व्रजाम्यहम्",
+          "gloss": {
+            "en": "I too said: “Mother, I go to see this.”",
+            "hi": "मैंने भी कहा: “माँ, मैं इसे देखने जाता हूँ।”"
+          },
+          "source": "Kathāsaritsāgara 1.2 (read in the Digital Corpus of Sanskrit)"
+        }
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "In order to",
+          "hi": "के लिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.tumun"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "Add {{-तुम्}} to the root to say “to do, in order to do”: {{गम्}} gives {{गन्तुम्}}, {{पठ्}} gives {{पठितुम्}}, {{कृ}} gives {{कर्तुम्}}, {{दृश्}} gives {{द्रष्टुम्}}. It goes with verbs of wanting and being able: {{इच्छति}}, {{शक्नोति}}, and with “goes”: {{द्रष्टुं गच्छति}}.",
+          "hi": "‘करना, करने के लिए’ कहने के लिए धातु में {{-तुम्}} जोड़िए: {{गम्}} से {{गन्तुम्}}, {{पठ्}} से {{पठितुम्}}, {{कृ}} से {{कर्तुम्}}, {{दृश्}} से {{द्रष्टुम्}}। यह चाहने और समर्थ होने वाली क्रियाओं के साथ चलता है: {{इच्छति}}, {{शक्नोति}}, और ‘जाता है’ के साथ: {{द्रष्टुं गच्छति}}।"
+        },
+        "examples": [
+          {
+            "sa": "सः पुस्तकम् पठितुम् इच्छति।",
+            "meaning": {
+              "en": "He wants to read the book.",
+              "hi": "वह पुस्तक पढ़ना चाहता है।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "पुस्तकम्",
+                "gloss": {
+                  "en": "book",
+                  "hi": "पुस्तक"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "पुस्तक",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "पठितुम्",
+                "gloss": {
+                  "en": "to read",
+                  "hi": "पढ़ने"
+                },
+                "check": {
+                  "type": "krdanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": null,
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": "tumun",
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "इच्छति",
+                "gloss": {
+                  "en": "wants",
+                  "hi": "चाहता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "इष्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": "Tudadi",
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "अहम् तम् द्रष्टुम् गच्छामि।",
+            "meaning": {
+              "en": "I go to see him.",
+              "hi": "मैं उसे देखने जाता हूँ।"
+            },
+            "words": [
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "तम्",
+                "gloss": {
+                  "en": "him",
+                  "hi": "उसे"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "तद्",
+                  "linga": "Pum",
+                  "vibhakti": "Dvitiya",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "द्रष्टुम्",
+                "gloss": {
+                  "en": "to see",
+                  "hi": "देखने"
+                },
+                "check": {
+                  "type": "krdanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": null,
+                  "stem_type": null,
+                  "dhatu": "दृश्",
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": "tumun",
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "गच्छामि",
+                "gloss": {
+                  "en": "go",
+                  "hi": "जाता हूँ"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "सः गन्तुम् शक्नोति।",
+            "meaning": {
+              "en": "He is able to go.",
+              "hi": "वह जा सकता है।"
+            },
+            "words": [
+              {
+                "sa": "सः",
+                "gloss": {
+                  "en": "he",
+                  "hi": "वह"
+                },
+                "check": null
+              },
+              {
+                "sa": "गन्तुम्",
+                "gloss": {
+                  "en": "to go",
+                  "hi": "जाने"
+                },
+                "check": {
+                  "type": "krdanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": null,
+                  "stem_type": null,
+                  "dhatu": "गम्",
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": "tumun",
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "शक्नोति",
+                "gloss": {
+                  "en": "is able",
+                  "hi": "समर्थ है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "शक्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": "Svadi",
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "तुमुन्",
+          "meaning": {
+            "en": "the “in order to” ending",
+            "hi": "‘के लिए’ प्रत्यय"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "In order to",
+          "hi": "के लिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.tumun"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Root and “to …”",
+          "hi": "धातु और ‘… के लिए’"
+        },
+        "columns": [
+          {
+            "en": "Root",
+            "hi": "धातु"
+          },
+          {
+            "en": "To …",
+            "hi": "… के लिए"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "गम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "गन्तुम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "गम्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "tumun",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "to go",
+                "hi": "जाने के लिए"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "पठ्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "पठितुम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "पठ्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "tumun",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "to read",
+                "hi": "पढ़ने के लिए"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "कृ",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "कर्तुम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "कृ",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "tumun",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "to do",
+                "hi": "करने के लिए"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "दृश्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "द्रष्टुम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "दृश्",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "tumun",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "to see",
+                "hi": "देखने के लिए"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "श्रु",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "श्रोतुम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "श्रु",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "tumun",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "to hear",
+                "hi": "सुनने के लिए"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "दा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "दातुम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "दा",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "tumun",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "to give",
+                "hi": "देने के लिए"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "भू",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "भवितुम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "krdanta",
+                "stem": null,
+                "linga": null,
+                "vibhakti": null,
+                "vacana": null,
+                "stem_type": null,
+                "dhatu": "भू",
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": "tumun",
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "to be",
+                "hi": "होने के लिए"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "Like {{-त्वा}}, it never changes.",
+          "hi": "{{-त्वा}} की तरह यह कभी नहीं बदलता।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.tumun"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“To read.” Which form?",
+          "hi": "‘पढ़ने के लिए।’ कौन-सा रूप?"
+        },
+        "explain": {
+          "en": "{{पठितुम्}}: {{पठ्}} + {{-तुम्}}.",
+          "hi": "{{पठितुम्}}: {{पठ्}} + {{-तुम्}}।"
+        },
+        "options": [
+          {
+            "sa": "पठित्वा",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठितः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "पठितुम्",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.tumun"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "type",
+        "prompt": {
+          "en": "Say: “To see.”",
+          "hi": "कहिए: ‘देखने के लिए।’"
+        },
+        "explain": {
+          "en": "{{द्रष्टुम्}}.",
+          "hi": "{{द्रष्टुम्}}।"
+        },
+        "options": [],
+        "answers": [
+          "द्रष्टुम्"
+        ],
+        "tiles": [
+          "द्रष्टु",
+          "म्",
+          "दृश",
+          "ति"
+        ],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.tumun"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each root to its “to …” form.",
+          "hi": "हर धातु को उसके ‘… के लिए’ रूप से जोड़िए।"
+        },
+        "explain": {
+          "en": "Mind the strengthened vowel.",
+          "hi": "दृढ़ हुए स्वर का ध्यान रखिए।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "गम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "गन्तुम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "कृ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "कर्तुम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "श्रु",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "श्रोतुम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "दा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "दातुम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.tumun"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every “to …” word.",
+          "hi": "हर ‘… के लिए’ शब्द छुइए।"
+        },
+        "params": {
+          "passage": [
+            "गन्तुम्",
+            "गत्वा",
+            "कर्तुम्",
+            "कृत्वा",
+            "द्रष्टुम्",
+            "दृष्ट्वा"
+          ],
+          "targets": [
+            "गन्तुम्",
+            "कर्तुम्",
+            "द्रष्टुम्"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.tumun"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "word_factory",
+        "prompt": {
+          "en": "Snap a suffix onto a root and see the word it makes.",
+          "hi": "धातु पर प्रत्यय जोड़िए और देखिए कि कौन-सा शब्द बनता है।"
+        },
+        "params": {
+          "roots": [
+            {
+              "dhatu": "पठ्",
+              "gloss": {
+                "en": "read",
+                "hi": "पढ़ना"
+              }
+            },
+            {
+              "dhatu": "गम्",
+              "gloss": {
+                "en": "go",
+                "hi": "जाना"
+              }
+            },
+            {
+              "dhatu": "कृ",
+              "gloss": {
+                "en": "do",
+                "hi": "करना"
+              }
+            },
+            {
+              "dhatu": "दृश्",
+              "gloss": {
+                "en": "see",
+                "hi": "देखना"
+              }
+            }
+          ],
+          "suffixes": [
+            {
+              "krt": "tumun",
+              "label": {
+                "en": "to …",
+                "hi": "… के लिए"
+              }
+            },
+            {
+              "krt": "ktvA",
+              "label": {
+                "en": "having …",
+                "hi": "… करके"
+              }
+            }
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p4",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.tumun"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “I want to go.”",
+          "hi": "कहिए: ‘मैं जाना चाहता हूँ।’"
+        },
+        "explain": {
+          "en": "{{अहं गन्तुम् इच्छामि}}.",
+          "hi": "{{अहं गन्तुम् इच्छामि}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "अहम्",
+          "गन्तुम्",
+          "इच्छामि"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p5",
+        "title": {
+          "en": "To read",
+          "hi": "पढ़ने के लिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "krt.tumun"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“He is able to read.” Which sentence?",
+          "hi": "‘वह पढ़ सकता है।’ कौन-सा वाक्य?"
+        },
+        "explain": {
+          "en": "{{पठितुं शक्नोति}}: {{-तुम्}} with {{शक्नोति}}.",
+          "hi": "{{पठितुं शक्नोति}}: {{शक्नोति}} के साथ {{-तुम्}}।"
+        },
+        "options": [
+          {
+            "sa": "सः पठित्वा शक्नोति",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "सः पठितुं शक्नोति",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "सः पठितः शक्नोति",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“सः पठितुं शक्नोति,” you say. The folded spirit unfolds one of his folds all the way to the edge of the page, and on it there is a single line, in handwriting that is not his: “द्रष्टुम्. To see. For this I came.” “That is mine,” he says, in wonder. “I wrote it before I forgot how.”",
+            "hi": "“सः पठितुं शक्नोति,” आप कहते हैं। तहदार भूत अपनी एक तह पन्ने के छोर तक खोल देता है, और उस पर एक पंक्ति है, ऐसी लिखावट में जो उसकी नहीं: “द्रष्टुम्। देखने के लिए। इसी के लिए मैं आया।” “यह मेरा है,” वह विस्मय से कहता है। “मैंने इसे भूलने से पहले लिखा था।”"
+          },
+          "failure": {
+            "en": "The fold stays blank. “He is able to read”: {{सः पठितुं शक्नोति}}.",
+            "hi": "तह कोरी रहती है। ‘वह पढ़ सकता है’: {{सः पठितुं शक्नोति}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's purpose",
+          "hi": "पाणिनि का प्रयोजन"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "krt.tumun"
+        ],
+        "sutras": [
+          "3.3.10",
+          "3.3.158"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 3.3.10, {{तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम्}}, gives {{तुमुन्}} when one action is for another action. And 3.3.158, {{समानकर्तृकेषु तुमुन्}}, gives it with verbs of wanting when the doer is the same.",
+          "hi": "सूत्र 3.3.10, {{तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम्}}, जब एक क्रिया दूसरी के लिए हो तब {{तुमुन्}} देता है। और 3.3.158, {{समानकर्तृकेषु तुमुन्}}, चाहने की क्रियाओं के साथ उसे देता है जब कर्ता वही हो।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "In order to",
+          "hi": "के लिए"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "गन्तुम् · कर्तुम् · द्रष्टुम्",
+            "text": {
+              "en": "To go; to do; to see.",
+              "hi": "जाने के लिए; करने के लिए; देखने के लिए।"
+            }
+          },
+          {
+            "sa": "इच्छति · शक्नोति + तुम्",
+            "text": {
+              "en": "Wants to; is able to.",
+              "hi": "चाहता है; समर्थ है।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "It never changes.",
+              "hi": "यह कभी नहीं बदलता।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "part-tumun-s1",
+    "brief": "The paper-fan spirit folding his answer into a single word on one fold; Śuka testing words with a raised wing; Dādī smiling; the Vetāla listening with half-closed eyes; firelight.",
+    "alt": {
+      "en": "A paper-fan spirit folds an answer into one word while a parrot tests words",
+      "hi": "काग़ज़ी पंखे जैसा भूत उत्तर को एक शब्द में समेटता, शब्द परखता तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "vetala",
+      "sankshepaka"
+    ],
+    "place": "smashana"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The paper-fan spirit folding his answer into a single word on one fold; Śuka testing words with a raised wing; Dādī smiling; the Vetāla listening with half-closed eyes; firelight.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nvetala: A long, thin, ash-grey spirit hanging upside down from a śiṃśapā branch by its ankles, arms folded across its chest, bright amused eyes, a shawl of mist trailing downwards; strange, never frightening.\nsankshepaka: A small, slim spirit like a folded paper fan, whose sides fold and unfold as he speaks, each fold holding a tiny line of writing.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-3bbf2d79-1776-4608-ab07-a3a0d90b092b.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "1394059c57401da28f99932ba5ad00a645e9ae22f5cafe5db39d9d3b431080d0",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\part-tumun-s1-phone-6359ef0b.webp",
+      "key": "learn/part-tumun-s1-phone-6359ef0b.webp",
+      "sha256": "6359ef0b361cb95b8e53d2c473937b370949cf9ffb320aeb121f0717373a683e",
+      "bytes": 108692,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/part-tumun-s1-phone-6359ef0b.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\part-tumun-s1-tablet-5b089342.webp",
+      "key": "learn/part-tumun-s1-tablet-5b089342.webp",
+      "sha256": "5b0893425a69ec24ae7600e37e10c519308c1c8d87d68fcf3006c012e05af8a2",
+      "bytes": 415730,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/part-tumun-s1-tablet-5b089342.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

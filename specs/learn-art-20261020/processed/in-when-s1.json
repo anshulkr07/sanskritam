@@ -1,0 +1,1154 @@
+{
+  "id": "in-when-s1",
+  "where": "in.when#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The Ācārya counting on his fingers in the lamplit house, four small scenes above him: dawn reading, noon meal, evening singing, night sleeping; the flame-shaped spirit flickering a different colour for each; Dādī nodding.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\ndipaka: A small flickering amber spirit shaped like a lamp's flame, with a bright pair of eyes and a thin trail of smoke.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "in.when",
+    "template": "scene",
+    "title": {
+      "en": "At night, in the morning",
+      "hi": "रात में, सुबह में"
+    },
+    "title_sa": "कालः",
+    "minutes": 6,
+    "teaches": [
+      "case.loc-time"
+    ],
+    "needs": [
+      "case.loc"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The hours of the house",
+          "hi": "घर के पहर"
+        },
+        "image": {
+          "id": "in-when-s1",
+          "brief": "The Ācārya counting on his fingers in the lamplit house, four small scenes above him: dawn reading, noon meal, evening singing, night sleeping; the flame-shaped spirit flickering a different colour for each; Dādī nodding.",
+          "alt": {
+            "en": "An old teacher counts the hours of the day on his fingers while a flame-spirit changes colour",
+            "hi": "दिन के पहर उँगलियों पर गिनते आचार्य और रंग बदलता लौ-भूत"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "acarya",
+            "dipaka"
+          ],
+          "place": "pathashala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The little spirit asks: “And when?” The Ācārya counts it out on his fingers. “At dawn we read. At noon we eat. In the evening we sing. At night we sleep.” Each time he says it, the lamp flickers a different colour. Dādī nods: “The same case that says where also says when.”",
+          "hi": "नन्हा भूत पूछता है: “और कब?” आचार्य उँगलियों पर गिनते हैं। “भोर में हम पढ़ते हैं। दोपहर में खाते हैं। साँझ को गाते हैं। रात में सोते हैं।” हर बार वे कहते हैं तो दीपक अलग रंग में टिमटिमाता है। दादी सिर हिलाती हैं: “जो विभक्ति ‘कहाँ’ कहती है वही ‘कब’ भी कहती है।”"
+        },
+        "lines": [
+          {
+            "speaker": "acarya",
+            "sa": "रात्रौ स्वपिमि।",
+            "gloss": {
+              "en": "At night I sleep.",
+              "hi": "रात में मैं सोता हूँ।"
+            },
+            "text": null,
+            "check": null
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "When: the seventh case again",
+          "hi": "कब: फिर सप्तमी"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.loc-time"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A time when something happens takes the seventh case too: {{प्रभाते}} (in the morning), {{रात्रौ}} (at night), {{दिने}} (by day), {{मासे}} (in the month). It answers “when?”.",
+          "hi": "जब कुछ होता है वह समय भी सप्तमी में आता है: {{प्रभाते}} (सुबह), {{रात्रौ}} (रात में), {{दिने}} (दिन में), {{मासे}} (महीने में)। यह ‘कब?’ का उत्तर देती है।"
+        },
+        "examples": [
+          {
+            "sa": "प्रभाते वयम् पठामः।",
+            "meaning": {
+              "en": "At dawn we read.",
+              "hi": "भोर में हम पढ़ते हैं।"
+            },
+            "words": [
+              {
+                "sa": "प्रभाते",
+                "gloss": {
+                  "en": "at dawn",
+                  "hi": "भोर में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "प्रभात",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वयम्",
+                "gloss": {
+                  "en": "we",
+                  "hi": "हम"
+                },
+                "check": null
+              },
+              {
+                "sa": "पठामः",
+                "gloss": {
+                  "en": "read",
+                  "hi": "पढ़ते हैं"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Bahu",
+                  "stem_type": null,
+                  "dhatu": "पठ्",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "रात्रौ अहम् स्वपिमि।",
+            "meaning": {
+              "en": "At night I sleep.",
+              "hi": "रात में मैं सोता हूँ।"
+            },
+            "words": [
+              {
+                "sa": "रात्रौ",
+                "gloss": {
+                  "en": "at night",
+                  "hi": "रात में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "रात्रि",
+                  "linga": "Stri",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "अहम्",
+                "gloss": {
+                  "en": "I",
+                  "hi": "मैं"
+                },
+                "check": null
+              },
+              {
+                "sa": "स्वपिमि",
+                "gloss": {
+                  "en": "sleep",
+                  "hi": "सोता हूँ"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "स्वप्",
+                  "lakara": "Lat",
+                  "purusha": "Uttama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          },
+          {
+            "sa": "दिने दिने शुकः वदति।",
+            "meaning": {
+              "en": "Day by day the parrot speaks.",
+              "hi": "दिन-दिन तोता बोलता है।"
+            },
+            "words": [
+              {
+                "sa": "दिने",
+                "gloss": {
+                  "en": "by day",
+                  "hi": "दिन में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "दिन",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "दिने",
+                "gloss": {
+                  "en": "by day",
+                  "hi": "दिन में"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "दिन",
+                  "linga": "Napumsaka",
+                  "vibhakti": "Saptami",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "शुकः",
+                "gloss": {
+                  "en": "parrot",
+                  "hi": "तोता"
+                },
+                "check": {
+                  "type": "subanta",
+                  "stem": "शुक",
+                  "linga": "Pum",
+                  "vibhakti": "Prathama",
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": null,
+                  "lakara": null,
+                  "purusha": null,
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              },
+              {
+                "sa": "वदति",
+                "gloss": {
+                  "en": "speaks",
+                  "hi": "बोलता है"
+                },
+                "check": {
+                  "type": "tinanta",
+                  "stem": null,
+                  "linga": null,
+                  "vibhakti": null,
+                  "vacana": "Eka",
+                  "stem_type": null,
+                  "dhatu": "वद्",
+                  "lakara": "Lat",
+                  "purusha": "Prathama",
+                  "prayoga": null,
+                  "sanadi": null,
+                  "prefixes": null,
+                  "gana": null,
+                  "krt": null,
+                  "taddhita": null,
+                  "first": null,
+                  "second": null,
+                  "joined": null,
+                  "form": null
+                }
+              }
+            ],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Times of the day",
+          "hi": "दिन के समय"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.loc-time"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Times, first and seventh case",
+          "hi": "समय, प्रथमा और सप्तमी"
+        },
+        "columns": [
+          {
+            "en": "Time",
+            "hi": "समय"
+          },
+          {
+            "en": "1st",
+            "hi": "प्रथमा"
+          },
+          {
+            "en": "7th: at",
+            "hi": "सप्तमी: में"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "dawn",
+                "hi": "भोर"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "प्रभातम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "प्रभात",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "प्रभाते",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "प्रभात",
+                "linga": "Napumsaka",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "noon",
+                "hi": "दोपहर"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "मध्याह्नः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "मध्याह्न",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "मध्याह्ने",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "मध्याह्न",
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "night",
+                "hi": "रात"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "रात्रिः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "रात्रि",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "रात्रौ",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "रात्रि",
+                "linga": "Stri",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "day",
+                "hi": "दिन"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "दिनम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "दिन",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "दिने",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "दिन",
+                "linga": "Napumsaka",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "month",
+                "hi": "महीना"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "मासः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "मास",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "मासि",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "मास",
+                "linga": "Pum",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ],
+          [
+            {
+              "sa": null,
+              "text": {
+                "en": "year",
+                "hi": "वर्ष"
+              },
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "वर्षम्",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "वर्ष",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "वर्षे",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "वर्ष",
+                "linga": "Napumsaka",
+                "vibhakti": "Saptami",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            }
+          ]
+        ],
+        "note": {
+          "en": "{{रात्रि}}, an -इ word, makes {{रात्रौ}} in the seventh case; you will meet its family later.",
+          "hi": "-इ वाला {{रात्रि}} सप्तमी में {{रात्रौ}} बनाता है; इसका कुल आगे मिलेगा।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.loc-time"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "“At night.” Which word?",
+          "hi": "‘रात में।’ कौन-सा शब्द?"
+        },
+        "explain": {
+          "en": "A time: seventh case.",
+          "hi": "समय: सप्तमी।"
+        },
+        "options": [
+          {
+            "sa": "रात्रिः",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "रात्रिम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "रात्रौ",
+            "text": null,
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.loc-time"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each time to its meaning.",
+          "hi": "हर समय को उसके अर्थ से जोड़िए।"
+        },
+        "explain": {
+          "en": "{{ए}} for -अ words, {{औ}} for -इ words.",
+          "hi": "-अ शब्दों में {{ए}}, -इ शब्दों में {{औ}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "प्रभाते",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "at dawn",
+                "hi": "भोर में"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "मध्याह्ने",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "at noon",
+                "hi": "दोपहर में"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "रात्रौ",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "at night",
+                "hi": "रात में"
+              },
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "दिने",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": null,
+              "text": {
+                "en": "by day",
+                "hi": "दिन में"
+              },
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.loc-time"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every word that tells when.",
+          "hi": "‘कब’ बताने वाले हर शब्द को छुइए।"
+        },
+        "params": {
+          "passage": [
+            "प्रभाते",
+            "प्रभातम्",
+            "रात्रौ",
+            "रात्रिः",
+            "दिने",
+            "दिनम्"
+          ],
+          "targets": [
+            "प्रभाते",
+            "रात्रौ",
+            "दिने"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "At dawn",
+          "hi": "भोर में"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "case.loc-time"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “At dawn we read.”",
+          "hi": "कहिए: ‘भोर में हम पढ़ते हैं।’"
+        },
+        "explain": {
+          "en": "{{प्रभाते वयं पठामः}}: the time in the seventh case.",
+          "hi": "{{प्रभाते वयं पठामः}}: समय सप्तमी में।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "प्रभाते",
+          "वयम्",
+          "पठामः"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“प्रभाते वयं पठामः,” you say, and the lamp-spirit blinks, as if he were already a little afraid of dawn. “रात्रौ… दीपः अस्ति,” he says slowly, the first sentence he has ever made himself, and the whole courtyard hushes.",
+            "hi": "“प्रभाते वयं पठामः,” आप कहते हैं, और दीप-भूत पलकें झपकाता है, मानो भोर से पहले ही थोड़ा डर रहा हो। “रात्रौ… दीपः अस्ति,” वह धीरे-धीरे कहता है, उसका अपना बनाया पहला वाक्य, और पूरा आँगन चुप हो जाता है।"
+          },
+          "failure": {
+            "en": "The lamp flickers. “When” goes in the seventh case, before the rest.",
+            "hi": "दीपक टिमटिमाता है। ‘कब’ सप्तमी में, बाक़ी से पहले।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "“When that happens”",
+          "hi": "‘जब वह होता है’"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "case.loc-time"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "A seventh-case word can also say “while this was happening”. It is the “absolute” construction, {{सति सप्तमी}}, and you will meet it in the syntax chapter.",
+          "hi": "सप्तमी वाला शब्द ‘जब यह हो रहा था’ भी कह सकता है। यह ‘सति सप्तमी’ है, जो वाक्य-रचना के अध्याय में मिलेगा।"
+        },
+        "examples": [
+          {
+            "sa": "सूर्ये उदिते",
+            "meaning": {
+              "en": "the sun having risen: “when the sun has risen”",
+              "hi": "सूर्य के उदय होने पर"
+            },
+            "words": [],
+            "source": null,
+            "check": null
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "When",
+          "hi": "कब"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "प्रभाते · रात्रौ · दिने",
+            "text": {
+              "en": "A time takes the seventh case.",
+              "hi": "समय सप्तमी लेता है।"
+            }
+          },
+          {
+            "sa": "कदा?",
+            "text": {
+              "en": "“When?” asks for this case.",
+              "hi": "‘कब?’ इसी विभक्ति को माँगता है।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "One case for place and time.",
+              "hi": "स्थान और समय के लिए एक विभक्ति।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "in-when-s1",
+    "brief": "The Ācārya counting on his fingers in the lamplit house, four small scenes above him: dawn reading, noon meal, evening singing, night sleeping; the flame-shaped spirit flickering a different colour for each; Dādī nodding.",
+    "alt": {
+      "en": "An old teacher counts the hours of the day on his fingers while a flame-spirit changes colour",
+      "hi": "दिन के पहर उँगलियों पर गिनते आचार्य और रंग बदलता लौ-भूत"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "acarya",
+      "dipaka"
+    ],
+    "place": "pathashala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The Ācārya counting on his fingers in the lamplit house, four small scenes above him: dawn reading, noon meal, evening singing, night sleeping; the flame-shaped spirit flickering a different colour for each; Dādī nodding.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nacarya: A very old, serene scholar with a white beard and a saffron shawl, a palm-leaf manuscript always under his arm, kind half-closed eyes.\ndipaka: A small flickering amber spirit shaped like a lamp's flame, with a bright pair of eyes and a thin trail of smoke.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-6e3f90f2-7a94-43b1-86ea-9f90ec7741ab.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "f7d11f69c9233f62c12c6ed73bfd050381a7e03c668528590c9aeb528f1cb5c5",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\in-when-s1-phone-419835d3.webp",
+      "key": "learn/in-when-s1-phone-419835d3.webp",
+      "sha256": "419835d38c357d9821090c28878ccee3641c592ab52d1ff359a3017b4f37a327",
+      "bytes": 98962,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/in-when-s1-phone-419835d3.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\in-when-s1-tablet-2cfadf79.webp",
+      "key": "learn/in-when-s1-tablet-2cfadf79.webp",
+      "sha256": "2cfadf790f03bb4ff6e757f1eba082e2161e27c47dbf90f13e4cd9fdcd3b940d",
+      "bytes": 360550,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/in-when-s1-tablet-2cfadf79.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

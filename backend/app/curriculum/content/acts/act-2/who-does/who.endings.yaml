@@ -9,7 +9,7 @@ teaches:
 - sent.stem-ending
 needs:
 - read.words
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -193,8 +193,8 @@ cards:
   - sent.stem-ending
   mode: match
   prompt:
-    en: Join each word to its stem.
-    hi: हर शब्द को उसके मूल रूप से जोड़िए।
+    en: Match each word with its stem.
+    hi: हर शब्द को उसके मूल रूप से मिलाइए।
   explain:
     en: Take off the ending to find the stem.
     hi: प्रत्यय हटाइए तो मूल रूप मिल जाता है।

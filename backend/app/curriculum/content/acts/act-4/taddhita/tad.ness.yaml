@@ -9,7 +9,7 @@ teaches:
 - tad.tva-ta
 needs:
 - tad.apatya
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -40,6 +40,19 @@ cards:
   narration:
     en: 'The twenty-third statue carries a bowl of still water. “मनुष्यत्वम्,” she says, and the water shivers. “Humanness.” “देवता”: “divinity.” “गुरुता”: “weight.” “They are all names of a state,” says Dādī. “‘Being a man’, ‘being a god’, ‘being heavy’. Add -त्व or -ता to a word and it becomes the name of what it is to be that.”'
     hi: 'तेईसवीं प्रतिमा के हाथ में शान्त जल का कटोरा है। “मनुष्यत्वम्,” वह कहती है, और जल सिहरता है। “मनुष्यता।” “देवता”: “देवत्व।” “गुरुता”: “भारीपन।” “ये सब अवस्था के नाम हैं,” दादी कहती हैं। “‘मनुष्य होना’, ‘देव होना’, ‘भारी होना’। किसी शब्द में -त्व या -ता जोड़िए और वह उस होने का नाम बन जाता है।”'
+  lines:
+  - speaker: taddhitika
+    sa: मनुष्यत्वम्
+    gloss:
+      en: Humanness.
+      hi: मनुष्य होने का भाव।
+    check:
+      type: taddhita
+      stem: मनुष्य
+      taddhita: tva
+      linga: Napumsaka
+      vibhakti: Prathama
+      vacana: Eka
 - id: t1
   kind: teach
   title:
@@ -314,8 +327,8 @@ cards:
   - tad.tva-ta
   mode: match
   prompt:
-    en: Join each word to its state.
-    hi: हर शब्द को उसकी अवस्था से जोड़िए।
+    en: Match each word with its state.
+    hi: हर शब्द को उसकी अवस्था से मिलाइए।
   explain:
     en: '{{-त्वम्}} or {{-ता}}.'
     hi: '{{-त्वम्}} या {{-ता}}।'

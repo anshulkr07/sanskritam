@@ -10,7 +10,7 @@ teaches:
 needs:
 - script.vowel.long
 - script.conjunct
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -38,6 +38,7 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: m1-weight-s1
+    text_in_image: ["धर्मक्षेत्रे कुरुक्षेत्रे"]
   narration:
     en: 'The fifth leaf glows in your hand, but the throne still hums. On its arm sits a stone spirit with a drum, tapping every beat the same: tap, tap, tap. “Every syllable has a weight,” says Dādī. “Light is one beat; heavy is two. Chandikā cannot hear the difference, so she cannot follow a verse.” Śuka tilts his head at a line carved on the seat.'
     hi: 'पाँचवाँ पत्र आपके हाथ में चमक रहा है, पर सिंहासन अब भी गुनगुना रहा है। उसकी बाँह पर पत्थर की एक नन्ही भूत बैठी है, हाथ में ढोल लिए, हर ताल एक-सी बजाती हुई: ठक, ठक, ठक। “हर अक्षर का एक भार होता है,” दादी कहती हैं। “लघु एक ताल है; गुरु दो। छन्दिका को यह अन्तर सुनाई नहीं देता, इसलिए वह श्लोक के साथ नहीं चल पाती।” शुक आसन पर खुदी एक पंक्ति की ओर सिर झुकाता है।'
@@ -173,8 +174,8 @@ cards:
   - chandas.weight
   mode: match
   prompt:
-    en: Join each word to its weights.
-    hi: हर शब्द को उसके भार से जोड़िए।
+    en: Match each word with its weights.
+    hi: हर शब्द को उसके भार से मिलाइए।
   explain:
     en: Weigh each syllable on its own.
     hi: हर अक्षर को अलग से तौलिए।

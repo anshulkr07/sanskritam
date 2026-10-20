@@ -4,8 +4,8 @@ Nothing here is stored: the only fact kept per learner is "lesson X was
 finished" (GameResult rows written by POST /progress/card-lesson). From that
 and the index, the story state follows:
 
-* a unit is done when all its lessons and its check are finished (the
-  revision lesson is reference: open any time, never required);
+* a unit is done when all its lessons and its check are finished (revision
+  and optional reading lessons are never required);
 * its ghost is freed when the unit is done;
 * a leaf is recovered when every unit of its part is done;
 * the current stop is the first unfinished required lesson in course order
@@ -41,6 +41,8 @@ def course_order(index: dict) -> list[dict]:
                     out.append({"lesson_id": lesson["id"], "role": "lesson", "unit_id": unit["id"], "act_id": act["id"]})
                 if unit.get("revision"):
                     out.append({"lesson_id": unit["revision"]["id"], "role": "revision", "unit_id": unit["id"], "act_id": act["id"]})
+                if unit.get("reading"):
+                    out.append({"lesson_id": unit["reading"]["id"], "role": "reading", "unit_id": unit["id"], "act_id": act["id"]})
                 if unit.get("check"):
                     out.append({"lesson_id": unit["check"]["id"], "role": "check", "unit_id": unit["id"], "act_id": act["id"]})
     return out
@@ -89,7 +91,7 @@ def derive(index: dict, finished: Iterable[str]) -> dict:
         if stop["role"] == "coming_soon":
             coming_soon = stop["unit_id"]
             break
-        if stop["role"] == "revision":
+        if stop["role"] in ("revision", "reading"):
             continue
         if stop["lesson_id"] not in done:
             current = stop

@@ -1,0 +1,925 @@
+{
+  "id": "c1-karmadharaya-s1",
+  "where": "c1.karmadharaya#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The seventeenth statue holding a blue lotus; behind her a carved trio of small worlds like three bowls; Śuka looking from one to the other; Dādī counting on her fingers.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsamasika: A small spirit of pale granite made of two slender figures joined at the back, each with a different lotus in hand, who finish each other's sentences.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI. All human and humanoid figures wear complete opaque traditional clothing or robes.",
+  "source": {
+    "id": "c1.karmadharaya",
+    "template": "scene",
+    "title": {
+      "en": "Blue lotus, three worlds",
+      "hi": "नीला कमल, तीन लोक"
+    },
+    "title_sa": "नीलोत्पलम् त्रिलोकी",
+    "minutes": 6,
+    "teaches": [
+      "sam.karmadharaya"
+    ],
+    "needs": [
+      "sam.tatpurusha"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "The seventeenth statue",
+          "hi": "सत्रहवीं प्रतिमा"
+        },
+        "image": {
+          "id": "c1-karmadharaya-s1",
+          "brief": "The seventeenth statue holding a blue lotus; behind her a carved trio of small worlds like three bowls; Śuka looking from one to the other; Dādī counting on her fingers.",
+          "alt": {
+            "en": "A statue holds a blue lotus with three carved bowls behind her while a parrot looks from one to the other",
+            "hi": "नीला कमल थामे प्रतिमा, पीछे तीन कटोरे, उन्हें देखता तोता"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "lubdhaka",
+            "samasika"
+          ],
+          "place": "simhasana-shala"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The seventeenth statue holds a flower. “नीलोत्पलम्,” she says: “a blue lotus.” “महात्मा”: “a great soul.” “त्रिलोकी”: “the three worlds.” “These are different,” says Śuka. “Nothing is ‘of’ anything.” “Right,” says Dādī. “In the first two, the first word describes the second: blue lotus, great soul. In the third, a number counts a group: three worlds.”",
+          "hi": "सत्रहवीं प्रतिमा के हाथ में एक फूल है। “नीलोत्पलम्,” वह कहती है: “नीला कमल।” “महात्मा”: “महान् आत्मा।” “त्रिलोकी”: “तीन लोक।” “ये अलग हैं,” शुक कहता है। “कोई किसी का नहीं है।” “ठीक,” दादी कहती हैं। “पहले दो में पहला शब्द दूसरे का वर्णन करता है: नीला कमल, महान् आत्मा। तीसरे में संख्या एक समूह गिनती है: तीन लोक।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "Describing and counting",
+          "hi": "वर्णन और गिनती"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.karmadharaya"
+        ],
+        "sutras": [],
+        "kind": "teach",
+        "body": {
+          "en": "In a {{कर्मधारयः}} the first word describes the second: {{नीलम् उत्पलम्}} gives {{नीलोत्पलम्}} (blue lotus); {{महान् आत्मा}} gives {{महात्मा}} (great soul). In a {{द्विगुः}} a number counts a group: {{त्रयाणां लोकानां समाहारः}} gives {{त्रिलोकी}} (the three worlds), {{अष्टानाम् अध्यायानां समाहारः}} gives {{अष्टाध्यायी}} (the eight chapters, Pāṇini's book).",
+          "hi": "{{कर्मधारयः}} में पहला शब्द दूसरे का वर्णन करता है: {{नीलम् उत्पलम्}} से {{नीलोत्पलम्}} (नीला कमल); {{महान् आत्मा}} से {{महात्मा}} (महान् आत्मा)। {{द्विगुः}} में संख्या एक समूह गिनती है: {{त्रयाणां लोकानां समाहारः}} से {{त्रिलोकी}} (तीन लोक), {{अष्टानाम् अध्यायानां समाहारः}} से {{अष्टाध्यायी}} (आठ अध्याय, पाणिनि की पुस्तक)।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "कर्मधारयः",
+          "meaning": {
+            "en": "a compound where the first word describes the second",
+            "hi": "वह समास जिसमें पहला शब्द दूसरे का वर्णन करता है"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Describing and counting",
+          "hi": "वर्णन और गिनती"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.karmadharaya"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "कर्मधारयः and द्विगुः",
+          "hi": "कर्मधारय और द्विगु"
+        },
+        "columns": [
+          {
+            "en": "Compound",
+            "hi": "समास"
+          },
+          {
+            "en": "Unpacked",
+            "hi": "विग्रह"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "नीलोत्पलम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "नीलोत्पल",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "नीलम् उत्पलम्",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "a blue lotus",
+                "hi": "नीला कमल"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "महात्मा",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "महात्मन्",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "महान् आत्मा",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "a great soul",
+                "hi": "महान् आत्मा"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "सज्जनः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "सज्जन",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "सन् जनः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "a good person",
+                "hi": "भला मनुष्य"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "कृष्णसर्पः",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "कृष्णसर्प",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "कृष्णः सर्पः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "a black snake",
+                "hi": "काला साँप"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "त्रिलोकी",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "त्रिलोकी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "त्रयाणां लोकानां समाहारः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "the three worlds",
+                "hi": "तीन लोक"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "पञ्चवटी",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "पञ्चवटी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "पञ्चानां वटानां समाहारः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "the five banyan trees",
+                "hi": "पाँच बरगद"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "अष्टाध्यायी",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "अष्टाध्यायी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "अष्टानाम् अध्यायानां समाहारः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "the eight chapters",
+                "hi": "आठ अध्याय"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "त्रिभुवनम्",
+              "text": null,
+              "highlight": true,
+              "check": {
+                "type": "subanta",
+                "stem": "त्रिभुवन",
+                "linga": "Napumsaka",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": "त्रयाणां भुवनानां समाहारः",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "the three worlds",
+                "hi": "तीन भुवन"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "Both halves have the same case: that is why a karmadhāraya is called {{समानाधिकरणः}}.",
+          "hi": "दोनों भागों की विभक्ति एक है: इसीलिए कर्मधारय को {{समानाधिकरणः}} कहते हैं।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.karmadharaya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{नीलोत्पलम्}} means…",
+          "hi": "{{नीलोत्पलम्}} का अर्थ…"
+        },
+        "explain": {
+          "en": "The first word describes the second.",
+          "hi": "पहला शब्द दूसरे का वर्णन करता है।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "a lotus of the blue",
+              "hi": "नील का कमल"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "a blue lotus",
+              "hi": "नीला कमल"
+            },
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "blue and a lotus",
+              "hi": "नीला और कमल"
+            },
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.karmadharaya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each compound to its unpacking.",
+          "hi": "हर समास को उसके विग्रह से जोड़िए।"
+        },
+        "explain": {
+          "en": "Two describe, two count.",
+          "hi": "दो वर्णन करते हैं, दो गिनते हैं।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "नीलोत्पलम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "नीलम् उत्पलम्",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "महात्मा",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "महान् आत्मा",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "त्रिलोकी",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "त्रयाणां लोकानां समाहारः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "अष्टाध्यायी",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "अष्टानाम् अध्यायानां समाहारः",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.karmadharaya"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap every compound that counts a group.",
+          "hi": "समूह गिनने वाला हर समास छुइए।"
+        },
+        "params": {
+          "passage": [
+            "त्रिलोकी",
+            "नीलोत्पलम्",
+            "पञ्चवटी",
+            "महात्मा",
+            "अष्टाध्यायी",
+            "सज्जनः"
+          ],
+          "targets": [
+            "त्रिलोकी",
+            "पञ्चवटी",
+            "अष्टाध्यायी"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "e2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.karmadharaya"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "compound_unpacker",
+        "prompt": {
+          "en": "Unpack the compound, then name its kind.",
+          "hi": "समास को खोलिए, फिर उसका प्रकार बताइए।"
+        },
+        "params": {
+          "compound": "नीलोत्पलम्",
+          "parts": [
+            "नील",
+            "उत्पल"
+          ],
+          "kind": "karmadharaya",
+          "vigraha": "नीलम् उत्पलम्",
+          "meaning": {
+            "en": "a blue lotus",
+            "hi": "एक नीला कमल"
+          }
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.karmadharaya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "order",
+        "prompt": {
+          "en": "Say: “a great soul comes.”",
+          "hi": "कहिए: ‘महान् आत्मा आता है।’"
+        },
+        "explain": {
+          "en": "{{महात्मा आगच्छति}}.",
+          "hi": "{{महात्मा आगच्छति}}।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [
+          "महात्मा",
+          "आगच्छति"
+        ],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p4",
+        "title": {
+          "en": "Eight chapters",
+          "hi": "आठ अध्याय"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sam.karmadharaya"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "{{अष्टाध्यायी}} means…",
+          "hi": "{{अष्टाध्यायी}} का अर्थ…"
+        },
+        "explain": {
+          "en": "A number counts a group: a dvigu. It is Pāṇini's book.",
+          "hi": "संख्या एक समूह गिनती है: द्विगु। यह पाणिनि की पुस्तक है।"
+        },
+        "options": [
+          {
+            "sa": null,
+            "text": {
+              "en": "a chapter of eight",
+              "hi": "आठ का अध्याय"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "eight and a chapter",
+              "hi": "आठ और एक अध्याय"
+            },
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "the group of eight chapters",
+              "hi": "आठ अध्यायों का समूह"
+            },
+            "correct": true,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“अष्टाध्यायी,” you say, and the seventeenth statue's lotus lifts a little, as if at the name of a mountain. “The eight chapters,” she says, in a voice that has changed. “That is the name of the book in the last room. Do not forget it.” Lubdhaka's foreman writes it down, and underlines it twice, though he has no idea why.",
+            "hi": "“अष्टाध्यायी,” आप कहते हैं, और सत्रहवीं प्रतिमा का कमल थोड़ा ऊपर उठ जाता है, मानो किसी पर्वत का नाम सुनकर। “आठ अध्याय,” वह कहती है, बदली हुई आवाज़ में। “यह अन्तिम कक्ष की पुस्तक का नाम है। इसे मत भूलिए।” लुब्धक का मुखिया उसे लिखता है और दो बार रेखांकित करता है, यद्यपि उसे पता नहीं क्यों।"
+          },
+          "failure": {
+            "en": "The lotus stays still. A number counts a group: {{अष्टाध्यायी}}.",
+            "hi": "कमल स्थिर रहता है। संख्या समूह गिनती है: {{अष्टाध्यायी}}।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's describing and counting",
+          "hi": "पाणिनि का वर्णन और गिनती"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sam.karmadharaya"
+        ],
+        "sutras": [
+          "1.2.42",
+          "2.1.57",
+          "2.1.52",
+          "2.1.51"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 1.2.42, {{तत्पुरुषः समानाधिकरणः कर्मधारयः}}, calls a tatpuruṣa whose members share a case a {{कर्मधारयः}}; 2.1.57, {{विशेषणं विशेष्येण बहुलम्}}, joins a describing word to the described. 2.1.52, {{संख्यापूर्वो द्विगुः}}, calls a compound with a number first {{द्विगुः}}; 2.1.51 gives its sense of a group.",
+          "hi": "सूत्र 1.2.42, {{तत्पुरुषः समानाधिकरणः कर्मधारयः}}, उस तत्पुरुष को {{कर्मधारयः}} कहता है जिसके सदस्यों की विभक्ति एक है; 2.1.57, {{विशेषणं विशेष्येण बहुलम्}}, वर्णन करने वाले शब्द को वर्णित से जोड़ता है। 2.1.52, {{संख्यापूर्वो द्विगुः}}, उस समास को {{द्विगुः}} कहता है जिसमें संख्या पहले है; 2.1.51 उसे समूह का अर्थ देता है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": null
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "Describing and counting",
+          "hi": "वर्णन और गिनती"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "नीलोत्पलम् · महात्मा",
+            "text": {
+              "en": "A blue lotus; a great soul.",
+              "hi": "नीला कमल; महान् आत्मा।"
+            }
+          },
+          {
+            "sa": "त्रिलोकी · पञ्चवटी",
+            "text": {
+              "en": "The three worlds; the five banyans.",
+              "hi": "तीन लोक; पाँच बरगद।"
+            }
+          },
+          {
+            "sa": "अष्टाध्यायी",
+            "text": {
+              "en": "Pāṇini's book of eight chapters.",
+              "hi": "पाणिनि की आठ अध्यायों की पुस्तक।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "c1-karmadharaya-s1",
+    "brief": "The seventeenth statue holding a blue lotus; behind her a carved trio of small worlds like three bowls; Śuka looking from one to the other; Dādī counting on her fingers.",
+    "alt": {
+      "en": "A statue holds a blue lotus with three carved bowls behind her while a parrot looks from one to the other",
+      "hi": "नीला कमल थामे प्रतिमा, पीछे तीन कटोरे, उन्हें देखता तोता"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "lubdhaka",
+      "samasika"
+    ],
+    "place": "simhasana-shala"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The seventeenth statue holding a blue lotus; behind her a carved trio of small worlds like three bowls; Śuka looking from one to the other; Dādī counting on her fingers.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nlubdhaka: A tall man in an expensive dark coat over a kurta, rings on his fingers, a leather satchel, usually half in shadow; never monstrous.\nsamasika: A small spirit of pale granite made of two slender figures joined at the back, each with a different lotus in hand, who finish each other's sentences.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-20e35570-4d3b-4d89-a0b3-4a0ab891192d.png",
+  "policy_version": "2026-10-20-complete-source-audit",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "c23382aecdceac872fa34d254741787d37b5c3f976ae6dc10bd16424ea79d224",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\c1-karmadharaya-s1-phone-163b9052.webp",
+      "key": "learn/c1-karmadharaya-s1-phone-163b9052.webp",
+      "sha256": "163b9052a5d05a234674c8cb7cf4f8fc3b9fd0f644130371da85018c02533547",
+      "bytes": 116292,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/c1-karmadharaya-s1-phone-163b9052.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\c1-karmadharaya-s1-tablet-d2efe4b0.webp",
+      "key": "learn/c1-karmadharaya-s1-tablet-d2efe4b0.webp",
+      "sha256": "d2efe4b0c8cdde2c246fe7b19f6021a99aea305cb00f43d8aadfeaafdc1acd38",
+      "bytes": 451996,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/c1-karmadharaya-s1-tablet-d2efe4b0.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

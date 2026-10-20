@@ -1,0 +1,22 @@
+{
+  "id": "cons-grid-s1",
+  "sha256": "7c675918d4c5dd6740302cfd4e2198b4c4fd99044fd6cac029389268b72c978e",
+  "model": "Codex visual inspection",
+  "expected": [
+    "क ख ग घ ङ",
+    "च छ ज झ ञ",
+    "ट ठ ड ढ ण",
+    "त थ द ध न",
+    "प फ ब भ म"
+  ],
+  "detected": [
+    "क ख ग घ ङ",
+    "च छ ज झ ञ",
+    "ट ठ ड ढ ण",
+    "त थ द ध न",
+    "प फ ब भ म"
+  ],
+  "unreadable_lettering": false,
+  "passed": true,
+  "notes": "Direct visual review: source scene, character appearances and full-frame composition. All visible lettering compared with the recorded exact source strings (NFC); no OCR-service result is claimed."
+}

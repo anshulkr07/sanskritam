@@ -10,7 +10,7 @@ teaches:
 needs:
 - script.cons.grid
 - script.vowel.compound
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -158,8 +158,8 @@ cards:
   - read.places
   mode: match
   prompt:
-    en: Join each sound to its places.
-    hi: हर ध्वनि को उसके स्थानों से जोड़िए।
+    en: Match each sound with its places.
+    hi: हर ध्वनि को उसके स्थानों से मिलाइए।
   explain:
     en: '{{ए}} {{ओ}} {{व}} {{म}} each use two places.'
     hi: '{{ए}} {{ओ}} {{व}} {{म}} हर एक दो स्थानों का उपयोग करता है।'

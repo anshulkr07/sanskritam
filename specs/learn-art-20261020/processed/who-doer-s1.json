@@ -1,0 +1,811 @@
+{
+  "id": "who-doer-s1",
+  "where": "who.doer#s1",
+  "ratio": "4:3",
+  "expected": [],
+  "prompt": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The ghat steps full of morning life: a boy reading, a girl singing, a boatman resting beside his boat, a heron in the shallows; the small grey-blue spirit sweeping his arm over the scene while Dādī asks a question.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nghataka: A small grey-blue spirit like river mist, sitting on the lowest stone step with his wispy feet trailing in the water, big curious eyes.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nWriting is permitted by the owner. This particular scene needs no readable inscription; focus on its narrative. Do not invent scripts or fill small objects with pseudo-lettering. No watermark or UI.",
+  "source": {
+    "id": "who.doer",
+    "template": "scene",
+    "title": {
+      "en": "Who does it",
+      "hi": "कौन करता है"
+    },
+    "title_sa": "कर्ता",
+    "minutes": 6,
+    "teaches": [
+      "sent.nom-sg"
+    ],
+    "needs": [
+      "sent.stem-ending"
+    ],
+    "review": "engine_ok",
+    "sources": [
+      {
+        "title": "Aṣṭādhyāyī sūtra text (vidyut-prakriya data)",
+        "url": "https://github.com/ambuda-org/vidyut",
+        "licence": "MIT",
+        "note": null
+      },
+      {
+        "title": "Lesson text and story",
+        "url": null,
+        "licence": "original",
+        "note": null
+      }
+    ],
+    "cards": [
+      {
+        "id": "s1",
+        "title": {
+          "en": "Everyone on the ghat",
+          "hi": "घाट पर सब लोग"
+        },
+        "image": {
+          "id": "who-doer-s1",
+          "brief": "The ghat steps full of morning life: a boy reading, a girl singing, a boatman resting beside his boat, a heron in the shallows; the small grey-blue spirit sweeping his arm over the scene while Dādī asks a question.",
+          "alt": {
+            "en": "A busy ghat with a reading boy, a singing girl, a boatman and a heron",
+            "hi": "व्यस्त घाट: पढ़ता बालक, गाती बालिका, नाविक और बगुला"
+          },
+          "text_in_image": [],
+          "ratio": "4:3",
+          "cast": [
+            "you",
+            "dadi",
+            "shuka",
+            "ghataka"
+          ],
+          "place": "naditira"
+        },
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "story",
+        "narration": {
+          "en": "The small spirit sweeps his arm over the steps. A boy reads, a girl sings, the boatman rests, a heron stands in the shallows. “Who is doing what?” Dādī asks. “First, name the doers: the ones who do.”",
+          "hi": "नन्हा भूत सीढ़ियों पर हाथ फेरता है। एक बालक पढ़ता है, एक बालिका गाती है, नाविक विश्राम करता है, एक बगुला उथले पानी में खड़ा है। दादी पूछती हैं, “कौन क्या कर रहा है? पहले कर्ताओं के नाम बताओ: जो करते हैं।”"
+        },
+        "lines": [],
+        "quote": null
+      },
+      {
+        "id": "t1",
+        "title": {
+          "en": "The doer: the first case",
+          "hi": "कर्ता: प्रथमा विभक्ति"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.nom-sg"
+        ],
+        "sutras": [
+          "2.3.46",
+          "1.4.54"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "The one who does is the doer, {{कर्ता}}. In a sentence it stands in the first case, {{प्रथमा}}. The dictionary gives the stem {{बालक}}; the sentence needs {{बालकः}}.",
+          "hi": "जो करता है वह कर्ता है। वाक्य में वह प्रथमा विभक्ति में खड़ा होता है। कोश मूल {{बालक}} देता है; वाक्य को चाहिए {{बालकः}}।"
+        },
+        "examples": [
+          {
+            "sa": "बालकः",
+            "meaning": {
+              "en": "the boy (doer)",
+              "hi": "बालक (कर्ता)"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "बालक",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "बालिका",
+            "meaning": {
+              "en": "the girl (doer)",
+              "hi": "बालिका (कर्ता)"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "बालिका",
+              "linga": "Stri",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          },
+          {
+            "sa": "नाविकः",
+            "meaning": {
+              "en": "the boatman (doer)",
+              "hi": "नाविक (कर्ता)"
+            },
+            "words": [],
+            "source": null,
+            "check": {
+              "type": "subanta",
+              "stem": "नाविक",
+              "linga": "Pum",
+              "vibhakti": "Prathama",
+              "vacana": "Eka",
+              "stem_type": null,
+              "dhatu": null,
+              "lakara": null,
+              "purusha": null,
+              "prayoga": null,
+              "sanadi": null,
+              "prefixes": null,
+              "gana": null,
+              "krt": null,
+              "taddhita": null,
+              "first": null,
+              "second": null,
+              "joined": null,
+              "form": null
+            }
+          }
+        ],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "प्रथमा",
+          "meaning": {
+            "en": "the first case: the doer",
+            "hi": "पहली विभक्ति: कर्ता"
+          }
+        }
+      },
+      {
+        "id": "tb1",
+        "title": {
+          "en": "Doers",
+          "hi": "कर्ता"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.nom-sg"
+        ],
+        "sutras": [],
+        "kind": "table",
+        "caption": {
+          "en": "Stem and first case, one doer",
+          "hi": "मूल और प्रथमा, एक कर्ता"
+        },
+        "columns": [
+          {
+            "en": "Stem",
+            "hi": "मूल रूप"
+          },
+          {
+            "en": "Doer",
+            "hi": "कर्ता"
+          },
+          {
+            "en": "Meaning",
+            "hi": "अर्थ"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "sa": "बालक",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "बालकः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालक",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "boy",
+                "hi": "बालक"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "बालिका",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "बालिका",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बालिका",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "girl",
+                "hi": "बालिका"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "नाविक",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नाविकः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नाविक",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "boatman",
+                "hi": "नाविक"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "बक",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "बकः",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "बक",
+                "linga": "Pum",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "heron",
+                "hi": "बगुला"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ],
+          [
+            {
+              "sa": "नदी",
+              "text": null,
+              "highlight": false,
+              "check": null
+            },
+            {
+              "sa": "नदी",
+              "text": null,
+              "highlight": false,
+              "check": {
+                "type": "subanta",
+                "stem": "नदी",
+                "linga": "Stri",
+                "vibhakti": "Prathama",
+                "vacana": "Eka",
+                "stem_type": null,
+                "dhatu": null,
+                "lakara": null,
+                "purusha": null,
+                "prayoga": null,
+                "sanadi": null,
+                "prefixes": null,
+                "gana": null,
+                "krt": null,
+                "taddhita": null,
+                "first": null,
+                "second": null,
+                "joined": null,
+                "form": null
+              }
+            },
+            {
+              "sa": null,
+              "text": {
+                "en": "river",
+                "hi": "नदी"
+              },
+              "highlight": false,
+              "check": null
+            }
+          ]
+        ],
+        "note": {
+          "en": "Masculine words in -अ take {{ः}}; feminine words in -आ and -ई look the same as their stems.",
+          "hi": "अकारान्त पुंलिंग शब्दों में {{ः}} लगता है; आकारान्त और ईकारान्त स्त्रीलिंग शब्द अपने मूल जैसे ही दिखते हैं।"
+        }
+      },
+      {
+        "id": "p1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.nom-sg"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "Which word is the doer?",
+          "hi": "कर्ता कौन-सा शब्द है?"
+        },
+        "explain": {
+          "en": "{{बालकः}}: first case, one boy, who does.",
+          "hi": "{{बालकः}}: प्रथमा, एक बालक, जो करता है।"
+        },
+        "options": [
+          {
+            "sa": "बालकम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "बालकः",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "बालकौ",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "p2",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.nom-sg"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "match",
+        "prompt": {
+          "en": "Join each doer to its stem.",
+          "hi": "हर कर्ता को उसके मूल रूप से जोड़िए।"
+        },
+        "explain": {
+          "en": "The first case of a masculine -a word is the stem plus {{ः}}.",
+          "hi": "अकारान्त पुंलिंग शब्द की प्रथमा मूल में {{ः}} जोड़ने से बनती है।"
+        },
+        "options": [],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [
+          {
+            "left": {
+              "sa": "नाविकः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "नाविक",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "बालिका",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "बालिका",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "बकः",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "बक",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          },
+          {
+            "left": {
+              "sa": "नदी",
+              "text": null,
+              "correct": false,
+              "why": null
+            },
+            "right": {
+              "sa": "नदी",
+              "text": null,
+              "correct": false,
+              "why": null
+            }
+          }
+        ],
+        "exercise": null,
+        "check": null,
+        "gate": false,
+        "story": null,
+        "roman": "after"
+      },
+      {
+        "id": "e1",
+        "title": null,
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.nom-sg"
+        ],
+        "sutras": [],
+        "kind": "explore",
+        "widget": "mark_words",
+        "prompt": {
+          "en": "Tap the doers (not the actions).",
+          "hi": "कर्ताओं को छुइए (क्रियाओं को नहीं)।"
+        },
+        "params": {
+          "passage": [
+            "बालकः",
+            "पठति",
+            "बालिका",
+            "गायति",
+            "नाविकः",
+            "तिष्ठति"
+          ],
+          "targets": [
+            "बालकः",
+            "बालिका",
+            "नाविकः"
+          ]
+        },
+        "roman": "show"
+      },
+      {
+        "id": "p3",
+        "title": {
+          "en": "The heron",
+          "hi": "बगुला"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [
+          "sent.nom-sg"
+        ],
+        "sutras": [],
+        "kind": "practice",
+        "mode": "choice",
+        "prompt": {
+          "en": "The heron stands in the shallows. Which word means “the heron” as the doer?",
+          "hi": "बगुला उथले पानी में खड़ा है। कर्ता के रूप में ‘बगुला’ कौन-सा शब्द है?"
+        },
+        "explain": {
+          "en": "{{बकः}}: the first case of {{बक}}.",
+          "hi": "{{बकः}}: {{बक}} की प्रथमा।"
+        },
+        "options": [
+          {
+            "sa": "बकः",
+            "text": null,
+            "correct": true,
+            "why": null
+          },
+          {
+            "sa": "बकम्",
+            "text": null,
+            "correct": false,
+            "why": null
+          },
+          {
+            "sa": "बक",
+            "text": null,
+            "correct": false,
+            "why": null
+          }
+        ],
+        "answers": [],
+        "tiles": [],
+        "tokens": [],
+        "pairs": [],
+        "exercise": null,
+        "check": null,
+        "gate": true,
+        "story": {
+          "success": {
+            "en": "“बकः!” The little spirit points, delighted. The heron lifts one leg and a faint ripple of light runs up the spirit's arm.",
+            "hi": "“बकः!” नन्हा भूत ख़ुशी से इशारा करता है। बगुला एक पैर उठाता है और भूत की बाँह पर प्रकाश की एक हल्की लहर दौड़ जाती है।"
+          },
+          "failure": {
+            "en": "The heron does not move. Look for the doer's ending {{ः}}.",
+            "hi": "बगुला नहीं हिलता। कर्ता का प्रत्यय {{ः}} खोजिए।"
+          }
+        },
+        "roman": "after"
+      },
+      {
+        "id": "pn",
+        "title": {
+          "en": "Pāṇini's doer",
+          "hi": "पाणिनि का कर्ता"
+        },
+        "image": null,
+        "depth": "panini",
+        "skills": [
+          "sent.nom-sg"
+        ],
+        "sutras": [
+          "1.4.54",
+          "2.3.46"
+        ],
+        "kind": "teach",
+        "body": {
+          "en": "Sūtra 1.4.54, {{स्वतन्त्रः कर्ता}}, calls the doer “the independent one”: the one who is free to act. Sūtra 2.3.46 says the first case shows the bare meaning of the word.",
+          "hi": "सूत्र 1.4.54, {{स्वतन्त्रः कर्ता}}, कर्ता को ‘स्वतन्त्र’ कहता है: जो करने में स्वतन्त्र हो। सूत्र 2.3.46 कहता है कि प्रथमा शब्द का केवल अर्थ बताती है।"
+        },
+        "examples": [],
+        "rows": [],
+        "steps": [],
+        "formula": null,
+        "term": {
+          "sa": "कर्ता",
+          "meaning": {
+            "en": "the independent doer",
+            "hi": "स्वतन्त्र करने वाला"
+          }
+        }
+      },
+      {
+        "id": "sum",
+        "title": {
+          "en": "The doer",
+          "hi": "कर्ता"
+        },
+        "image": null,
+        "depth": "core",
+        "skills": [],
+        "sutras": [],
+        "kind": "summary",
+        "points": [
+          {
+            "sa": "प्रथमा",
+            "text": {
+              "en": "The first case names the doer.",
+              "hi": "प्रथमा कर्ता को बताती है।"
+            }
+          },
+          {
+            "sa": "बालकः · बालिका · नदी",
+            "text": {
+              "en": "Masculine -अ: {{ः}}; feminine -आ, -ई: unchanged.",
+              "hi": "पुंलिंग -अ: {{ः}}; स्त्रीलिंग -आ, -ई: वैसे ही।"
+            }
+          },
+          {
+            "sa": null,
+            "text": {
+              "en": "The doer is the independent one.",
+              "hi": "कर्ता स्वतन्त्र है।"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "id": "who-doer-s1",
+    "brief": "The ghat steps full of morning life: a boy reading, a girl singing, a boatman resting beside his boat, a heron in the shallows; the small grey-blue spirit sweeping his arm over the scene while Dādī asks a question.",
+    "alt": {
+      "en": "A busy ghat with a reading boy, a singing girl, a boatman and a heron",
+      "hi": "व्यस्त घाट: पढ़ता बालक, गाती बालिका, नाविक और बगुला"
+    },
+    "text_in_image": [],
+    "ratio": "4:3",
+    "cast": [
+      "you",
+      "dadi",
+      "shuka",
+      "ghataka"
+    ],
+    "place": "naditira"
+  },
+  "generator": "built-in image_gen",
+  "prompt_before_text_permission": "Use case: illustration-story. Asset: one 4:3 landscape painting for The Burnt Book Sanskrit learning story. Request 1536 x 1152 native output or the closest supported native 4:3 resolution. Refined Indian watercolor with restrained gouache on warm ivory paper; organic detail, quiet ochre, sage, dusty terracotta, muted indigo. Warm, gentle, evocative storytelling, consistent character design.\nCanonical scene brief: The ghat steps full of morning life: a boy reading, a girl singing, a boatman resting beside his boat, a heron in the shallows; the small grey-blue spirit sweeping his arm over the scene while Dādī asks a question.\nCharacter appearances:\nyou: Always seen from behind or at a distance, face never detailed, so every learner can be the hero: a young person in a simple ochre kurta with a cloth shoulder bag.\ndadi: A warm, sharp-eyed grandmother in her seventies, silver hair in a low bun, round spectacles, a cream cotton sari with a thin maroon border and a grey shawl; carries a cloth-bound notebook.\nshuka: A bright green rose-ringed parrot with a red beak and a faint pink and black neck ring, a little scruffy, very expressive eyes; usually on your shoulder or Dādī's.\nghataka: A small grey-blue spirit like river mist, sitting on the lowest stone step with his wispy feet trailing in the water, big curious eyes.\nPhone-first composition: clear compact narrative grouping, essential faces, hands and objects comfortably inside all edges. Show the complete scene without border. No collage or multi-panel layout.\nMANDATORY TEXT OVERRIDE: this card authorizes NO writing in the painting. Where the scene brief or character description mentions letters, a register, script, writing, numbers, sacred symbols or letter-shaped objects, show the corresponding physical door, pillar, book, leaf, crown or cord WITHOUT any letters or letterlike marks. Use purely floral carvings and completely blank smooth manuscript surfaces. Teaching letters remain separate live app text. No typography, numerals, Om signs, invented script, explanatory marks, sound lines, watermark or labels anywhere.",
+  "text_policy": "Owner update 2026-10-20: writing allowed; verify all actual lettering against source before delivery.",
+  "shared_text_sources": {
+    "course_title_sa": "दग्धा बृहत्कथा"
+  },
+  "original": "C:\\Users\\AnshulKumar\\.codex\\generated_images\\01a15763-ed53-7072-8dab-a3474e7644af\\exec-c49f52b3-222d-4528-bd03-86579612ab7a.png",
+  "policy_version": "2026-10-20-text-allowed",
+  "history": [],
+  "safe_rect": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "focal_point": [
+    0.5,
+    0.5
+  ],
+  "sha256": "78fc59b4e4872fb6f1e058ebe1accce483d6aac2850ad099561c2edaa4bdbe02",
+  "width": 1448,
+  "height": 1086,
+  "text_verified": true,
+  "master_retained": false,
+  "variants": {
+    "phone": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\who-doer-s1-phone-a88c90f7.webp",
+      "key": "learn/who-doer-s1-phone-a88c90f7.webp",
+      "sha256": "a88c90f740a8a54742d2aca9021371e7750e368eeabfda8ea305ae64e07243bd",
+      "bytes": 117646,
+      "width": 768,
+      "height": 576,
+      "uri": "https://cdn.vedicvalor.com/learn/who-doer-s1-phone-a88c90f7.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    },
+    "tablet": {
+      "file": "C:\\Users\\AnshulKumar\\PycharmProjects\\sanskrit\\specs\\learn-art-20261020\\delivery\\who-doer-s1-tablet-466fd3e1.webp",
+      "key": "learn/who-doer-s1-tablet-466fd3e1.webp",
+      "sha256": "466fd3e1094420eed31d4291f6129e7e961240e98bc15db2984a4768a11494cb",
+      "bytes": 434186,
+      "width": 1448,
+      "height": 1086,
+      "uri": "https://cdn.vedicvalor.com/learn/who-doer-s1-tablet-466fd3e1.webp",
+      "cdn_status": "HIT",
+      "verified": true
+    }
+  }
+}

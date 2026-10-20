@@ -10,7 +10,7 @@ teaches:
 needs:
 - verb.class-1
 - verb.class-6
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -404,8 +404,8 @@ cards:
   - verb.atmane
   mode: match
   prompt:
-    en: Join each root to its “he” form.
-    hi: हर धातु को उसके ‘वह’ रूप से जोड़िए।
+    en: Match each root with its “he” form.
+    hi: हर धातु को उसके ‘वह’ रूप से मिलाइए।
   explain:
     en: All end in {{-ते}}.
     hi: सब {{-ते}} पर समाप्त होती हैं।

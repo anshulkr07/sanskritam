@@ -10,7 +10,7 @@ teaches:
 needs:
 - tad.comparison
 - pron.kim-yad
-review: engine_ok
+review: scholar_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
@@ -38,6 +38,7 @@ cards:
     place: simhasana-shala
     ratio: '4:3'
     id: syn-who-s1
+    text_in_image: ["यः पठति सः जानाति।"]
   narration:
     en: 'The thirtieth statue holds a long scroll. “यः पठति, सः जानाति,” she says. Śuka, who has been getting good at this, says: “Who reads, he knows.” “It comes in two halves,” says Dādī. “The first, with यः (who), says who we mean. The second, with सः (he), says what we say about him. They always pair: यः… सः, या… सा, यत्… तत्. It works for any case.”'
     hi: 'तीसवीं प्रतिमा के हाथ में लम्बा पत्र है। “यः पठति, सः जानाति,” वह कहती है। शुक, जो इसमें माहिर होता जा रहा है, कहता है: “जो पढ़ता है, वह जानता है।” “यह दो भागों में आता है,” दादी कहती हैं। “पहला, यः (जो) के साथ, बताता है कि हम किसकी बात कर रहे हैं। दूसरा, सः (वह) के साथ, बताता है कि हम उसके बारे में क्या कहते हैं। वे सदा जोड़ी में आते हैं: यः… सः, या… सा, यत्… तत्। यह किसी भी विभक्ति में चलता है।”'
@@ -331,8 +332,8 @@ cards:
   - syn.relative
   mode: match
   prompt:
-    en: Join each who-word to its he-word.
-    hi: हर ‘जो’ शब्द को उसके ‘वह’ शब्द से जोड़िए।
+    en: Match each who-word with its he-word.
+    hi: हर ‘जो’ शब्द को उसके ‘वह’ शब्द से मिलाइए।
   explain:
     en: The pair agrees.
     hi: जोड़ी मेल खाती है।
