@@ -1,5 +1,7 @@
 # Learn: where additional visuals would teach more
 
+This initial shortlist is superseded by the owner's broader teaching-first direction and the [complete course plan](../teaching-course-plan/README.md), covering all 44 units and 138 main lessons. The 32 opportunities below are retained as the earlier audit, not a quantity limit.
+
 Reviewed 20 October 2026. This is a source and renderer audit, with inspection of existing phone screenshots. It is a recommendation, not a learner study or a new device-validation run. No artwork or app behavior was changed for this analysis.
 
 ## Finding

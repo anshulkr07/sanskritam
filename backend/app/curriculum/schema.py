@@ -28,7 +28,7 @@ from __future__ import annotations
 import re
 from typing import Annotated, Any, Literal, Optional, Union
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 ID_RE = re.compile(r"^[a-z0-9][a-z0-9.\-]*$")
 LESSON_ID_MAX = 32  # GameResult.mode (progress) and the client cache key
@@ -196,12 +196,72 @@ ALLOWED_LICENCES = {
 }
 
 
+# Structured teaching figures. Sanskrit stays live; pictures are optional parts
+# of an explanation, not a replacement for the source table or sentence.
+class VisualItem(Identified):
+    label: Optional[Text] = None
+    sa: Optional[str] = None
+    meaning: Optional[Text] = None
+    image: Optional[ImageRef] = None
+    words: list[Word] = []
+    check: Optional[Check] = None
+    #: Named feature, e.g. subject/verb, is also printed, never color alone.
+    feature: Optional[Text] = None
+    #: L/G weights only when supplied by a checked metrical scan.
+    weights: Optional[str] = None
+
+
+class VisualEdge(Strict):
+    source: str
+    target: str
+    label: Text
+
+
+class TeachingVisual(Identified):
+    kind: Literal["figures", "comparison", "sequence", "matrix", "relations", "worked", "reading", "beats"]
+    title: Text
+    explanation: Optional[Text] = None
+    items: list[VisualItem] = []
+    edges: list[VisualEdge] = []
+    columns: list[Text] = []
+    rows: list[list[VisualItem]] = []
+    source: Optional[str] = None
+    placement: Literal["before", "after"] = "after"
+
+    @model_validator(mode="after")
+    def coherent_figure(self):
+        if self.kind == "matrix":
+            if not self.columns or not self.rows:
+                raise ValueError("a teaching matrix needs columns and rows")
+            if any(len(row) != len(self.columns) for row in self.rows):
+                raise ValueError("teaching matrix rows must match its columns")
+            nodes = [item for row in self.rows for item in row]
+        else:
+            if not self.items:
+                raise ValueError("a teaching visual needs at least one item")
+            nodes = self.items
+        ids = [item.id for item in nodes]
+        if len(set(ids)) != len(ids):
+            raise ValueError("teaching visual item ids must be unique")
+        if any(edge.source not in ids or edge.target not in ids for edge in self.edges):
+            raise ValueError("teaching visual edge must name existing items")
+        for item in nodes:
+            if not any((item.sa, item.label, item.meaning, item.image, item.words)):
+                raise ValueError("a teaching visual item cannot be empty")
+            if item.weights and (not item.sa or any(w not in "LG" for w in item.weights)):
+                raise ValueError("metrical weights require Sanskrit and only L/G")
+        return self
+
+
 # ─── Cards ───────────────────────────────────────────────────────────────────
 
 class CardBase(Identified):
     id: str
     title: Optional[Text] = None
     image: Optional[ImageRef] = None
+    visuals: list[TeachingVisual] = []
+    #: Shown only after an answer, never above an assessment question.
+    feedback_visuals: list[TeachingVisual] = []
     #: "panini" cards are extra depth, shown only when the learner turns on
     #: Pāṇini depth in Settings. Never a fold-out: a separate card.
     depth: Literal["core", "panini"] = "core"
@@ -559,6 +619,7 @@ class RevisionRow(Strict):
     tag: Literal["core", "good", "rare"] = "core"
     taught_in: Optional[str] = None
     new_here: bool = False
+    visuals: list[TeachingVisual] = []
 
 
 REVISION_SECTIONS = ("core", "conditions", "exceptions", "optional", "blocked",

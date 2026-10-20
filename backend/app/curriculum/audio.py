@@ -97,6 +97,18 @@ def _example_texts(example: dict | None) -> Iterable[tuple[str, str]]:
             yield "word", word["sa"]
 
 
+def visual_sources(node: Any) -> Iterable[tuple[str, str]]:
+    """Only visible Sanskrit nodes, never claims or image briefs."""
+    if isinstance(node, list):
+        for value in node:
+            yield from visual_sources(value)
+    elif isinstance(node, dict):
+        if _sa(node) and is_speakable(node["sa"]):
+            yield "sentence", node["sa"]
+        for key in ("items", "rows", "words"):
+            yield from visual_sources(node.get(key))
+
+
 def card_sources(card: dict) -> list[tuple[str, str]]:
     """``(kind, text)`` for every Sanskrit string on a card that has a speaker
     (or, in a table, a tap target), in reading order. Practice cards have none:
@@ -133,6 +145,11 @@ def card_sources(card: dict) -> list[tuple[str, str]]:
             out.extend(_example_texts(row.get("example")))
     elif kind == "explore" and card.get("widget") == "mouth_map":
         out.extend(("letter", x) for x in (card.get("params") or {}).get("letters") or [] if isinstance(x, str))
+    if kind != "practice":
+        out.extend(visual_sources(card.get("visuals")))
+        if kind == "revision":
+            for row in card.get("rows") or []:
+                out.extend(visual_sources(row.get("visuals")))
     return [(k, t) for k, t in out if is_speakable(t)]
 
 
@@ -208,6 +225,11 @@ def attach(cards: list[dict], clips: dict[str, dict]) -> dict[str, str]:
                     urls.append(clip["url"])
         if urls:
             card["audio"] = urls
+        # Feedback audio must not enter the pre-answer autoplay queue.
+        for _kind, text in visual_sources(card.get("feedback_visuals")):
+            clip = clips.get(clip_key(norm(text)))
+            if clip and clip.get("url"):
+                lesson_map[norm(text)] = clip["url"]
     return lesson_map
 
 

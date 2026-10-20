@@ -369,8 +369,14 @@ class Checker:
                     taught_here.add(sid)
                 for ref in card.sutras:
                     self._sutra(cw, ref)
-                if card.image is not None:
-                    self._image(cw, card.image, strict)
+                for nested_path, node in walk(card):
+                    if isinstance(node, ImageRef):
+                        self._image(f"{cw}.{nested_path}", node, strict)
+                visual_ids = [v.id for v in card.visuals + card.feedback_visuals]
+                if len(set(visual_ids)) != len(visual_ids):
+                    self.err(cw, "teaching visual ids must be unique on a card")
+                if card.feedback_visuals and not isinstance(card, PracticeCard):
+                    self.err(cw, "feedback_visuals belong to practice cards")
                 self._card(cw, card, lesson, strict)
             if lesson.template == "scene":
                 for sid in lesson.teaches:

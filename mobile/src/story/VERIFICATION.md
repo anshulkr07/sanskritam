@@ -66,3 +66,11 @@ Inputs read: HANDOVER, requested IMPLEMENTATION sections, story/types.ts, mobile
 | Audio window: card on screen plus three ahead and three behind | **Run:** `audioWindow`/`windowClips` cases (edges, clamping, duplicates). **Not run:** any clip (none rendered); `holdClips` against real expo-audio on a phone. |
 | Real backend | **Run:** `check-story.mjs --backend` (real FastAPI): passes. Backend tests `test_book_search`, `test_daily_content`, `test_gemini_pool`, `test_verse_study`, `test_curriculum`: 154 passed (the four earlier failures no longer fail). |
 
+## Recorded Sanskrit audio (2026-10-20)
+
+| Work | Evidence |
+| --- | --- |
+| 2,874 clips rendered with Sarvam Bulbul (`sa-IN`, `aditya`) and stored in R2 | **Run:** `python -m app.curriculum audio` 2,874 / 2,874; every URL fetched from the CDN: 200, `audio/mpeg`, byte count equals the renderer's record, immutable cache header; 73 min, 70.4 MB. **Not run:** listening to any clip. |
+| Pack attaches `audio` to lessons and cards | **Run:** 189 of 238 lessons carry audio; keys are NFC with single spaces (Node check against the built pack); `check --engine --release` 0 errors, 0 warnings; 234-lesson end-to-end walk through the real API and 44 test-outs: no problems; `tests/test_story_audio.py` 27 passed; full backend suite 2,165 passed, 16 skipped. |
+| Speakers, tap-to-hear cells, mouth-map letter sounds, buffering window (card on screen + 3 ahead + 3 behind), silent practice cards | **Run:** `node scripts/check-story.mjs --visual` at 360 px with stand-in clips on a fake host (asserts the buffered set after every move, that a speaker plays and a second tap stops it, that a table cell and a letter chip play, that practice cards offer no recording); `--backend` against the real FastAPI also passes. **Not run:** real playback on a phone (expo-audio, lock-screen session, `holdClips`). |
+

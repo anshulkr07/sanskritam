@@ -117,7 +117,7 @@ fi
 if [ -n "$DATABASE_URL" ]; then
   DB_CHECK_PYTHON=""
   for candidate in backend/.venv/bin/python backend/.venv/Scripts/python.exe python3; do
-    if "$candidate" -c 'import psycopg' >/dev/null 2>&1; then
+    if "$candidate" -c 'import psycopg, alembic' >/dev/null 2>&1; then
       DB_CHECK_PYTHON="$candidate"
       break
     fi
@@ -126,11 +126,11 @@ if [ -n "$DATABASE_URL" ]; then
     DB_CHECK_DIR=$(mktemp -d)
     trap 'rm -rf -- "$DB_CHECK_DIR"' EXIT
     if ! python3 -m venv "$DB_CHECK_DIR"; then
-      echo "Database check needs psycopg. Install python3-venv (sudo apt install python3-venv), or restore backend/.venv with psycopg installed, then retry. No secrets uploaded." >&2
+      echo "Database check needs psycopg and Alembic. Install python3-venv (sudo apt install python3-venv), or restore backend/.venv with both installed, then retry. No secrets uploaded." >&2
       exit 1
     fi
     DB_CHECK_PYTHON="$DB_CHECK_DIR/bin/python"
-    "$DB_CHECK_PYTHON" -m pip install --quiet 'psycopg[binary]>=3.1,<4'
+    "$DB_CHECK_PYTHON" -m pip install --quiet 'psycopg[binary]>=3.1,<4' 'alembic>=1.13'
   fi
   # stdin crosses WSL/Windows without relying on WSLENV or exposing secrets
   # in process arguments. Windows Python emits CRLF; remove its trailing CR.

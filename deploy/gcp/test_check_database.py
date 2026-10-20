@@ -2,10 +2,12 @@
 
 import contextlib
 import io
+from pathlib import Path
+import tempfile
 import unittest
 from unittest.mock import MagicMock, patch
 
-from check_database import connection_failure_reason, main, normalize_url, verify_connection
+from check_database import MigrationMismatch, connection_failure_reason, main, normalize_url, verify_connection
 
 
 class DatabasePreflightTests(unittest.TestCase):
@@ -67,6 +69,37 @@ class DatabasePreflightTests(unittest.TestCase):
         self.assertNotIn("secret@", stderr.getvalue())
         self.assertNotIn("URL contains secret", stderr.getvalue())
         self.assertIn("No secrets uploaded", stderr.getvalue())
+
+    def test_stale_checkout_rejects_database_revision_before_deploy(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "versions").mkdir()
+            (root / "versions/old.py").write_text("revision = 'old'\ndown_revision = None\n")
+            connect = MagicMock()
+            cursor = connect.return_value.__enter__.return_value.cursor.return_value.__enter__.return_value
+            cursor.fetchone.side_effect = [(1,), ("alembic_version",)]
+            cursor.fetchall.return_value = [("20261017_launch_safety",)]
+            with self.assertRaisesRegex(MigrationMismatch, "missing from this checkout"):
+                verify_connection("postgresql://u:p@db/app", connect, root)
+
+    def test_current_checkout_accepts_migrated_database_without_writes(self):
+        connect = MagicMock()
+        cursor = connect.return_value.__enter__.return_value.cursor.return_value.__enter__.return_value
+        cursor.fetchone.side_effect = [(1,), ("alembic_version",)]
+        cursor.fetchall.return_value = [("20261017_launch_safety",)]
+        verify_connection("postgresql://u:p@db/app", connect, Path(__file__).resolve().parents[2] / "backend/migrations")
+        self.assertTrue(all(call.args[0].startswith("SELECT ") for call in cursor.execute.call_args_list))
+
+    def test_migration_failure_is_actionable_and_redacted(self):
+        stdout, stderr = io.StringIO(), io.StringIO()
+        with patch.dict("os.environ", {"DATABASE_URL": "postgresql://u:secret@db/app"}), \
+                patch("check_database.verify_connection", side_effect=MigrationMismatch("Database migration is missing from this checkout.")), \
+                contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            self.assertEqual(main(), 1)
+        self.assertEqual(stdout.getvalue(), "")
+        self.assertIn("migration is missing", stderr.getvalue())
+        self.assertIn("No secrets uploaded", stderr.getvalue())
+        self.assertNotIn("secret@", stderr.getvalue())
 
 
 if __name__ == "__main__":

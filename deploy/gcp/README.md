@@ -26,13 +26,20 @@ If it succeeds, the script syncs the database secret (reusing an identical value
 and pins the new revision to that version. Failed validation aborts without changing cloud secrets.
 The deployment also fails if the HTTP health check fails.
 
+Preflight also checks that this checkout recognizes the database's Alembic
+revision. A stale source upload missing an already-applied migration would
+otherwise build successfully but crash before opening the HTTP port. Copy the
+complete current `backend/migrations` directory before retrying; do not reset or
+stamp the database to hide a missing migration. After moving Supabase projects,
+use `--rotate-database-url` to select the new pool connection in `.env.deploy`.
+
 Copy the complete repository changes to Cloud Shell before deploying, including
 `database_secret_binding.py`, `check_database.py` and `sync_secret.py` beside this script. The
 working database password no longer needs to be copied into Cloud Shell for
 normal deployments. Read access to the service, revision and database secret
 is required. The database check reuses the backend's Linux or Windows `.venv`
-when psycopg is installed there, including Windows Python invoked through WSL.
-Otherwise it tries system Python, then installs psycopg in a temporary isolated
+when psycopg and Alembic are installed there, including Windows Python invoked through WSL.
+Otherwise it tries system Python, then installs both in a temporary isolated
 environment. If that system cannot create virtual environments, install its
 `python3-venv` package once, or restore the backend environment before retrying.
 

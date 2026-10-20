@@ -100,6 +100,17 @@ def _image(img: Optional[dict], data: CourseData) -> Optional[dict]:
     return shown
 
 
+def _teaching_images(node: Any, data: CourseData) -> Any:
+    """Resolve nested figure pictures with the same privacy boundary as card art."""
+    if isinstance(node, list):
+        return [_teaching_images(value, data) for value in node]
+    if not isinstance(node, dict):
+        return node
+    return {key: _image(value, data) if key == "image" else _teaching_images(value, data)
+            for key, value in node.items()
+            if not (key in ("visuals", "feedback_visuals") and not value)}
+
+
 def _exercise(card: PracticeCard) -> Optional[dict]:
     from app.services import exercise_gen
 
@@ -115,9 +126,7 @@ def lesson_payload(lesson: Lesson, data: CourseData) -> dict:
     cards = []
     for card in lesson.cards:
         raw = card.model_dump(exclude_none=True, exclude_defaults=False)
-        raw["image"] = _image(raw.get("image"), data)
-        if raw["image"] is None:
-            raw.pop("image")
+        raw = _teaching_images(raw, data)
         if isinstance(card, ExploreCard):
             from .widgets import compute
 

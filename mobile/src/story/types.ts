@@ -196,12 +196,38 @@ interface CardBase {
   id: string;
   title?: Bi;
   image?: Picture;
+  visuals?: TeachingVisual[];
+  feedback_visuals?: TeachingVisual[];
   /** "panini" cards show only when the learner turns on Pāṇini depth. */
   depth: "core" | "panini";
   skills: string[];
   sutras: Sutra[];
   /** Pre-rendered clips of this card's Sanskrit, in reading order (R2 URLs); absent until the audio is rendered. */
   audio?: string[];
+}
+
+export interface VisualItem {
+  id: string;
+  label?: Bi;
+  sa?: string;
+  iast?: string;
+  meaning?: Bi;
+  image?: Picture;
+  words: Word[];
+  feature?: Bi;
+  weights?: string;
+}
+export interface TeachingVisual {
+  id: string;
+  kind: 'figures'|'comparison'|'sequence'|'matrix'|'relations'|'worked'|'reading'|'beats';
+  title: Bi;
+  explanation?: Bi;
+  items: VisualItem[];
+  edges: {source:string;target:string;label:Bi}[];
+  columns: Bi[];
+  rows: VisualItem[][];
+  source?: string;
+  placement: 'before'|'after';
 }
 
 export interface Word {
@@ -305,6 +331,7 @@ export type RevisionSection =
   | "splitting" | "mistakes" | "panini" | "quick_sheet";
 
 export interface RevisionRow {
+  visuals?: TeachingVisual[];
   skill?: string;
   formula?: string;
   formula_iast?: string;

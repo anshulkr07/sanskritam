@@ -1,3 +1,4 @@
+import TeachingVisuals from './TeachingVisuals';
 import React,{useState,useEffect,useContext} from 'react';
 import {View,TextInput,Text,Pressable} from 'react-native';
 import {useGuideLang} from '../../hooks/useGuide';
@@ -53,7 +54,7 @@ export default function Practice({card,progress,onAnswer}: {card:PracticeCard;pr
  <Button primary label={hi?'जाँचें':'Check'} disabled={frozen||pairs.some(p=>p===null)} onPress={()=>submit(pairs)}/></>:null}
  {card.mode==='engine'&&!unsure?<EngineInput card={card} disabled={frozen} onSubmit={submit}/>:null}
  {unsure?<Label>{hi?'यह प्रश्न छोड़ दिया गया है।':'This item is skipped.'}</Label>:null}
- {verdict&&!unsure?<View accessibilityLiveRegion="polite" style={{gap:10,padding:14,borderWidth:1,borderColor:verdict==='correct'?c.done:c.lineStrong}}><Text style={{fontFamily:'Mukta_600SemiBold',fontSize:sized(18),color:verdict==='correct'?c.doneInk:verdict==='unsure'?c.ink2:c.wrongInk}}>{verdict==='correct'?(hi?'सही':'Correct'):verdict==='unsure'?(hinted?(hi?'उत्तर दिखाया गया':'Answer shown'):(hi?'छोड़ा गया':'Skipped')):(hi?'फिर कोशिश करें':'Try again')}</Text>{picked!==null?<Bi value={card.options[picked]?.why}/>:null}<Bi value={card.explain}/>{card.story?<Panel><Bi value={verdict==='correct'?card.story.success:card.story.failure}/></Panel>:null}{verdict!=='correct'&&verdict!=='unsure'?<Button label={hi?'फिर कोशिश करें':'Try again'} onPress={reset}/>:null}</View>:null}
+ {verdict&&!unsure?<View accessibilityLiveRegion="polite" style={{gap:10,padding:14,borderWidth:1,borderColor:verdict==='correct'?c.done:c.lineStrong}}><Text style={{fontFamily:'Mukta_600SemiBold',fontSize:sized(18),color:verdict==='correct'?c.doneInk:verdict==='unsure'?c.ink2:c.wrongInk}}>{verdict==='correct'?(hi?'सही':'Correct'):verdict==='unsure'?(hinted?(hi?'उत्तर दिखाया गया':'Answer shown'):(hi?'छोड़ा गया':'Skipped')):(hi?'फिर कोशिश करें':'Try again')}</Text>{picked!==null?<Bi value={card.options[picked]?.why}/>:null}<Bi value={card.explain}/><TeachingVisuals visuals={card.feedback_visuals}/>{card.story?<Panel><Bi value={verdict==='correct'?card.story.success:card.story.failure}/></Panel>:null}{verdict!=='correct'&&verdict!=='unsure'?<Button label={hi?'फिर कोशिश करें':'Try again'} onPress={reset}/>:null}</View>:null}
  </View></RomanContext.Provider>;
 }
 function pairLabel(option:Option,lang:'en'|'hi'){return option.sa??option.text?.[lang]??'';}

@@ -2,6 +2,7 @@
 
 import argparse
 import os
+from pathlib import Path
 import sys
 from urllib.parse import quote, unquote, urlsplit
 
@@ -29,13 +30,38 @@ def normalize_url(value: str) -> str:
     return normalized
 
 
-def verify_connection(url: str, connect) -> None:
+class MigrationMismatch(RuntimeError):
+    """The selected database cannot be upgraded by this checkout."""
+
+
+def verify_connection(url: str, connect, migrations_dir: Path | None = None) -> None:
+    scripts = None
+    if migrations_dir is not None:
+        from alembic.script import ScriptDirectory
+
+        scripts = ScriptDirectory(str(migrations_dir))
+        if len(scripts.get_heads()) != 1:
+            raise MigrationMismatch("Checkout must contain one complete migration history.")
     # psycopg accepts PostgreSQL URLs directly; the same URL is uploaded.
     with connect(url, connect_timeout=10) as connection:
         with connection.cursor() as cursor:
             cursor.execute("SELECT 1")
             if cursor.fetchone() != (1,):
                 raise RuntimeError("Unexpected database response.")
+            if scripts is not None:
+                from alembic.util.exc import CommandError
+
+                cursor.execute("SELECT to_regclass('public.alembic_version')")
+                if cursor.fetchone()[0] is not None:
+                    cursor.execute("SELECT version_num FROM alembic_version")
+                    for (revision,) in cursor.fetchall():
+                        try:
+                            scripts.get_revision(revision)
+                        except CommandError:
+                            raise MigrationMismatch(
+                                "Database migration is missing from this checkout. "
+                                "Copy the complete current backend/migrations directory and retry."
+                            ) from None
 
 
 def fail(reason: str) -> int:
@@ -64,15 +90,18 @@ def main(argv=()) -> int:
     args = parser.parse_args(argv)
     try:
         import psycopg
+        import alembic
     except ImportError:
-        return fail("Python dependency psycopg is missing; run through deploy.sh to install it.")
+        return fail("Python dependencies psycopg/alembic are missing; run through deploy.sh to install them.")
     try:
         value = sys.stdin.read() if args.stdin else os.environ.get("DATABASE_URL", "")
         normalized = normalize_url(value)
     except Exception:
         return fail("Selected DATABASE_URL is missing or malformed.")
     try:
-        verify_connection(normalized, psycopg.connect)
+        verify_connection(normalized, psycopg.connect, Path(__file__).resolve().parents[2] / "backend/migrations")
+    except MigrationMismatch as exc:
+        return fail(str(exc))
     except Exception as exc:
         return fail(connection_failure_reason(exc))
     print("Database preflight passed.", file=sys.stderr)
