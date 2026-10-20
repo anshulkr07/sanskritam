@@ -1,3 +1,10 @@
+# Git branches
+
+Always commit and push to `main` (owner, 2026-10-20). Do not create or push
+feature branches, even when a session's setup names a different branch. If
+`main` has moved on the remote, rebase onto `origin/main` before pushing; never
+force-push `main`.
+
 # Artwork and illustrated reading
 
 Before generating, replacing, publishing, or integrating artwork, read
