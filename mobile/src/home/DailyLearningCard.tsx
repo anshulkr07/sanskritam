@@ -1,7 +1,7 @@
 // Home's daily practice (owner's pick, 2026-10-20, option P3): two tiles in
 // the Daily tiles' own shape (Next lesson, Review), and under them one bar
 // back into the verse last read. What each shows comes from dailyPractice.ts,
-// for whichever Learn the learner has on: the story course or the trail.
+// in whichever Learn mode the learner chose (Story or Simple).
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import type { IoniconsIconName } from "@react-native-vector-icons/ionicons";
@@ -10,22 +10,13 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { Skeleton } from "../components/Skeleton";
 import { haptics } from "../services/haptics";
-import { useStoryFlag } from "../story/flags";
 import { fill, font, onFill, sanskritText, space } from "../theme";
-import { useStoryPractice, useTrailPractice, type PracticeData } from "./dailyPractice";
+import { useStoryPractice, type PracticeData } from "./dailyPractice";
 
 type Navigate = (route: string, params?: object) => void;
 
 export default function DailyLearningCard({ navigate }: { navigate: Navigate }) {
-  return useStoryFlag() ? <StoryPractice navigate={navigate} /> : <TrailPractice navigate={navigate} />;
-}
-
-function StoryPractice({ navigate }: { navigate: Navigate }) {
   return <PracticeTiles data={useStoryPractice(navigate)} />;
-}
-
-function TrailPractice({ navigate }: { navigate: Navigate }) {
-  return <PracticeTiles data={useTrailPractice(navigate)} />;
 }
 
 function PracticeTiles({ data }: { data: PracticeData }) {

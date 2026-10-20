@@ -40,7 +40,6 @@ import { getLang, setLang, t } from "../i18n";
 import { ensurePermission, isRemindUnavailable } from "../parva/reminders";
 import { applyAppUpdate, checkForAppUpdate } from "../services/ota";
 import { useFocusEffect } from "@react-navigation/native";
-import { useStoryFlag, setStoryFlag } from "../story/flags";
 import { usePanini, setPanini } from "../story/preferences";
 
 const SOUND_KEY = "shabd.pref.sound";
@@ -87,7 +86,6 @@ export default function SettingsScreen() {
   const { logout, deleteAccount } = useAuth();
   const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>();
   const { textSize, setTextSize } = useTypeScale();
-  const storyOn = useStoryFlag();
   const panini = usePanini();
   const [sound, setSound] = useState(true);
   const [hapticsOn, setHapticsOn] = useState(true);
@@ -190,7 +188,6 @@ export default function SettingsScreen() {
         <LinkRow label="Theme, text size, language" value={appearanceSummary} onPress={() => setAppearanceOpen(true)} />
 
         <Heading>Learn</Heading>
-        <ToggleRow label="New Learn course (preview)" value={storyOn} onChange={(v) => void setStoryFlag(v)} />
         <ToggleRow label="Pāṇini depth" value={panini} onChange={(v) => void setPanini(v)} />
 
         <Heading>Sound and motion</Heading>

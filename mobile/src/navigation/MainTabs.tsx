@@ -1,4 +1,3 @@
-import { useStoryFlag } from "../story/flags";
 import StoryNavigation from "../story/Navigation";
 // Main destinations, with the isolated Voice Lab beside Read.
 import {
@@ -14,7 +13,6 @@ import { PixelRatio, useWindowDimensions, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ConversationScreen from "../screens/Conversation";
 import HomeScreen from "../screens/Home";
-import LearnTrailScreen from "../screens/LearnTrail";
 import PlayScreen from "../screens/Play";
 import ReaderScreen from "../screens/Reader";
 import { haptics } from "../services/haptics";
@@ -44,7 +42,6 @@ const LABEL: Record<keyof MainTabParamList, string> = {
   Group: "Group",
 };
 export default function MainTabs() {
-  const storyEnabled = useStoryFlag();
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const iconsOnly = width < 320 || PixelRatio.getFontScale() >= 1.4;
@@ -92,7 +89,9 @@ export default function MainTabs() {
       />
       <Tab.Screen
         name="Learn"
-        component={storyEnabled ? StoryNavigation : LearnTrailScreen}
+        // The story course is Learn (owner, 2026-10-20): it replaces the
+        // old trail, with Story and Simple modes at its top.
+        component={StoryNavigation}
         options={{ tabBarLabel: LABEL.Learn }}
       />
       <Tab.Screen
