@@ -273,9 +273,10 @@ export default function ReaderScreen() {
   );
 
   // ── Loading / error ──────────────────────────────────────────────
-  // The catalogue is enough to show HOME or open a paged book. Classic
-  // contents still wait for their corpus, but no longer hold up every cover.
-  const needsCorpus = bookKey !== null && !bookKey.startsWith("graded-") && !canon.some((c) => c.slug === bookKey && isPaged(c));
+  // The catalogue is enough to open a paged book. HOME and classic contents
+  // wait for the corpus: before it lands every classic book counts 0 verses,
+  // so the shelves would flash only the paged books and then rearrange.
+  const needsCorpus = bookKey === null || (!bookKey.startsWith("graded-") && !canon.some((c) => c.slug === bookKey && isPaged(c)));
   if (versesQ.loading && (canon.length === 0 || needsCorpus)) {
     return (
       <SafeAreaView style={styles.safe} edges={["top"]}>
