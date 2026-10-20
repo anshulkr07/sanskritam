@@ -64,7 +64,11 @@ const uri=n=>'https://art.example/art/v1/'+String(n).padStart(24,'0')+'.webp';
   }
  }
  const appearance=load('services/readingAppearance.ts',{'@react-native-async-storage/async-storage':{},react:{}});
- assert.deepEqual(appearance.normalizeReadingAppearance({illustrated:false,imageOpacity:4,textOpacity:-1,textColor:'bad'}),{...appearance.DEFAULT_READING_APPEARANCE,illustrated:false,imageOpacity:1,textOpacity:.5,textColor:null});
+ assert.deepEqual(appearance.normalizeReadingAppearance({illustrated:false,imageOpacity:4,textOpacity:-1,textColor:'bad'}),{...appearance.DEFAULT_READING_APPEARANCE,layout:'plain',illustrated:false,imageOpacity:1,textOpacity:.5,textColor:null});
+assert.equal(appearance.normalizeReadingAppearance(null).layout,'top','New readers start with the painting on top (option D)');
+assert.equal(appearance.normalizeReadingAppearance({illustrated:true}).layout,'top','A saved Illustrated choice opens as painting on top');
+assert.equal(appearance.normalizeReadingAppearance({layout:'pages'}).layout,'pages','A saved layout survives');
+assert.equal(appearance.normalizeReadingAppearance({layout:'behind'}).layout,'top','An unknown layout falls back to the default');
  assert.equal(appearance.normalizeReadingAppearance(null).imageOpacity,.48,'New readers start with 48% image opacity');
  assert.equal(appearance.normalizeReadingAppearance({imageOpacity:.6}).imageOpacity,.6,'Saved opacity survives a default change');
  assert.equal(appearance.normalizeReadingAppearance(null).roman,false,'Roman defaults to off');

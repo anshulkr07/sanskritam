@@ -11,7 +11,7 @@ import { Ionicons } from "@react-native-vector-icons/ionicons";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useIsFocused } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FlatList, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -33,7 +33,7 @@ import { resolveReadingStart } from "../services/readingProgress";
 import { pageId, savePageActivity } from "../services/bookActivity";
 import { useBookActivity } from "../hooks/useBookActivity";
 import { nextChapter, prevChapter } from "../utils/paged";
-import VerseArtworkBackground from "../components/artwork/VerseArtworkBackground";
+import { VerseArtworkPage, VerseArtworkTop } from "../components/artwork/VerseArtworkViews";
 import ReadingAppearanceSettings from "../components/artwork/ReadingAppearanceSettings";
 import { verseArtworkFor } from "../components/artwork/verseArtwork";
 import { prefetchArtwork } from "../services/artworkCache";
@@ -186,6 +186,20 @@ function BookReader({ navigation, route }: Props) {
   useEffect(() => setLiveChapter(pagedChapter), [pagedChapter]);
   const showAt = !bound ? index ?? 0 : liveChapter === pagedChapter ? at : 0;
   const currentPage = pages[showAt];
+  // Option A gives each painted verse two sheets in the book: its painting,
+  // then the verse. Everything else (slider, index, bookmarks, the saved
+  // position) still counts verses; the book alone counts sheets.
+  const sheets = useMemo(() => {
+    const out: { verse: number; art: boolean }[] = [];
+    pages.forEach((page, i) => {
+      if (appearance.layout === "pages" && verseArtworkFor(page.source_ref)) out.push({ verse: i, art: true });
+      out.push({ verse: i, art: false });
+    });
+    if (nextCh) out.push({ verse: pages.length, art: false });
+    return out;
+  }, [pages, !!nextCh, appearance.layout]); // eslint-disable-line react-hooks/exhaustive-deps
+  const [sheetAt, setSheetAt] = useState(0);
+  const sheetIndex = sheets[sheetAt]?.verse === showAt ? sheetAt : Math.max(0, sheets.findIndex((sheet) => sheet.verse === showAt));
   const currentMark = currentPage ? activity.find(item => item.chapter === pagedChapter && item.id === pageId(currentPage)) : undefined;
   useEffect(() => {
     if (!currentPage || currentMark?.read || !isFocused || indexOpen || aaOpen) return;
@@ -273,14 +287,22 @@ function BookReader({ navigation, route }: Props) {
       ) : (
         <PageCurlBook
           // A chapter switch remounts the book on its first page.
-          key={pagedChapter ?? "book"}
-          index={showAt}
-          count={Math.max(1, pageCount)}
+          key={`${pagedChapter ?? "book"}:${appearance.layout}`}
+          index={sheetIndex}
+          count={Math.max(1, sheets.length)}
           // A turned page puts the bars away, as a book's margins go quiet.
-          onIndexChange={(i) => { setAt(i); setControls(false); }}
+          onIndexChange={(s) => { setSheetAt(s); setAt(sheets[s]?.verse ?? s); setControls(false); }}
           reducedMotion={reduced}
-          labelFor={(i) => pages[i]?.source_ref ?? (nextCh ? "Next chapter" : "")}
-          renderPage={(i) => {
+          labelFor={(s) => pages[sheets[s]?.verse ?? s]?.source_ref ?? (nextCh ? "Next chapter" : "")}
+          renderPage={(s) => {
+            const i = sheets[s]?.verse ?? s;
+            if (sheets[s]?.art && pages[i]) {
+              return (
+                <Pressable style={{ flex: 1 }} onPress={() => setControls(c => !c)} accessibilityRole="button" accessibilityLabel={`Painting for ${pages[i].source_ref}. Turn the page for the verse`}>
+                  <VerseArtworkPage sourceRef={pages[i].source_ref} page={theme.page} soft={theme.soft} />
+                </Pressable>
+              );
+            }
             if (i >= pages.length && nextCh) {
               return (
                 <NextChapterPage
@@ -473,6 +495,7 @@ export function ReaderPageView({
   onToggleControls: () => void;
 }) {
   const theme = READER_THEMES[themeName];
+  const window = useWindowDimensions();
   const { invalidate } = useBookPage();
   const touch = useRef({ x: 0, y: 0, time: 0, moved: false });
   useEffect(() => { invalidate(); }, [invalidate, appearance, roman, readerScale, themeName]);
@@ -484,25 +507,27 @@ export function ReaderPageView({
     );
   }
   const lines = breakVerse(verse.devanagari);
+  const painted = appearance.layout === "top" && !!verseArtworkFor(verse.source_ref);
   const textColor = appearance.textColor ?? theme.text;
   const softColor = appearance.textColor ?? theme.soft;
   const sectionStyle = (key: "verse" | "roman" | "meaning" | "hindi", baseSize: number, baseLine: number) => {
     const value = appearance.sections[key];
-    return { color: value.textColor ?? (key === "roman" || key === "hindi" ? softColor : textColor), opacity: appearance.textOpacity,
+    return { color: value.textColor ?? (key === "roman" || key === "hindi" ? softColor : key === "verse" ? appearance.textColor ?? theme.verse ?? textColor : textColor), opacity: appearance.textOpacity,
       fontSize: Math.round(baseSize * value.scale), lineHeight: Math.round(baseLine * value.scale),
       ...(value.bold ? { fontWeight: "700" as const, ...(key !== "verse" ? { fontFamily: "Nunito_700Bold" } : {}) } : {}),
     };
   };
   return (
     <View style={{ flex: 1, backgroundColor: theme.page }}>
-    {appearance.illustrated && <VerseArtworkBackground sourceRef={verse.source_ref} opacity={appearance.imageOpacity} onReady={invalidate} />}
-    <ScrollView contentContainerStyle={[styles.page, { flexGrow: 1, justifyContent: "center" }]}
+    <ScrollView contentContainerStyle={[styles.page, { flexGrow: 1, justifyContent: appearance.layout === "top" && painted ? "flex-start" : "center" }]}
       onTouchStart={e => { touch.current = { x: e.nativeEvent.pageX, y: e.nativeEvent.pageY, time: Date.now(), moved: false }; }}
       onTouchMove={e => { if (Math.abs(e.nativeEvent.pageX - touch.current.x) + Math.abs(e.nativeEvent.pageY - touch.current.y) > 8) touch.current.moved = true; }}
       onTouchEnd={() => { if (!touch.current.moved && Date.now() - touch.current.time < 300) onToggleControls(); }}
       accessibilityActions={[{ name: "showControls", label: "Show reader controls" }]}
       onAccessibilityAction={() => onToggleControls()}>
 
+      {/* D: the painting heads the page; the verse follows and the page scrolls. */}
+      {painted && <VerseArtworkTop sourceRef={verse.source_ref} maxHeight={Math.round(window.height * 0.62)} onReady={invalidate} />}
       <Text style={[styles.runningHead, { color: softColor, opacity: appearance.textOpacity }]}>{verse.source_ref}</Text>
       <View style={styles.verseBlock}>
         {lines.map((l, i) => (

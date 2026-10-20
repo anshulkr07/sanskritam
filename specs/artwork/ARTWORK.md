@@ -6,13 +6,21 @@ take precedence; update this policy when the owner changes a decision.
 
 ## Reader settings
 
-- Preferred layout: a painting behind the full verse page, with selectable live
-  text over it. Do not use the earlier half-page layout as the default.
-- Offer Illustrated / Plain backgrounds. Plain uses the selected reader theme's
-  paper color and does not fetch verse artwork.
-- Default **image opacity: 48%** (`0.48`). This applies to the image layer only.
+- Owner update 2026-10-20: the reader chooses where the painting goes, in the
+  reader's Aa panel (`layout` in the saved appearance):
+  - **On top** (`top`, the **default**): the complete painting heads the verse
+    page, the live verse text below it; the page scrolls.
+  - **Own page** (`pages`): the painting alone on a page, then the verse on the
+    next page. Verses without artwork get only the verse page.
+  - **No image** (`plain`): the reader theme's paper; no verse artwork is fetched.
+  The earlier painting-behind-text layout (with its 48% image opacity) is
+  retired. A saved Illustrated choice opens as On top; a saved Plain stays No
+  image. `imageOpacity` stays in the saved value but has no control now.
+- Verse text style (owner, 2026-10-20): Light and Sepia set the verse in the
+  theme's ink (T1); Dark sets it in warm amber `#F2B27A` (T2). Per-section
+  color, size and bold controls still override these.
 - Default **text opacity: 100%**; default **text color: the reader theme's own
-  colors**. Image opacity, text opacity, and text color are independent controls.
+  colors**. Text opacity and text color are independent controls.
 - Persist settings across launches using `shabd.read.appearance.v1`. A changed
   default must not overwrite a reader's explicitly saved preference.
 - Preserve existing Light/Sepia/Dark themes, five Sanskrit sizes
@@ -23,7 +31,8 @@ take precedence; update this policy when the owner changes a decision.
 - Sanskrit uses the actual app face, Tiro Devanagari Sanskrit, at the existing
   22px base size and `round(size * 1.75)` line height. Preserve the reader's real
   Roman text, translations, teaching content. Owner update 2026-10-19: remove word-by-word from the
-  reading page and highlight “Learn & Recite this Shloka yourself” instead.
+  reading page and highlight the recite action instead (2026-10-20: a small
+  square outline button, “Learn & Recite this verse”).
 - No Sanskrit, Romanization, meaning, table, or UI may be flattened into a
   generated image as a replacement for actual app content.
 
@@ -102,7 +111,7 @@ take precedence; update this policy when the owner changes a decision.
   (up to 768px width), quality 80. Tablet stays within 1536 × 1536px, quality 88.
   Preserve actual native proportions, never upscale. Keep important subjects in
   a compact central grouping, away from all four edges; no cropping to force a
-  particular phone model's ratio. Preserve the same 48% default and live text.
+  particular phone model's ratio. Preserve live text.
 - Current resolution selection uses the tablet copy when the shorter window
   dimension is at least 600 logical pixels; orientation must not unexpectedly
   switch a phone into a large download. Revisit only with measured evidence.

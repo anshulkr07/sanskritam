@@ -4,9 +4,19 @@ import { useEffect, useRef, useState } from "react";
 export const READING_SECTIONS = ["verse", "roman", "meaning", "hindi"] as const;
 export type ReadingSection = typeof READING_SECTIONS[number];
 export type SectionAppearance = { textColor: string | null; bold: boolean; scale: number };
-export type ReadingAppearance = { illustrated: boolean; imageOpacity: number; textOpacity: number; textColor: string | null; roman: boolean; sections: Record<ReadingSection, SectionAppearance> };
+/**
+ * Where the verse's painting goes (owner, 2026-10-20). "pages": the painting
+ * on a page of its own, then the verse on the next (option A). "top": the
+ * painting at the head of the verse page, the verse below it (option D, the
+ * default). "plain": no painting (option E). The earlier painting-behind-text
+ * layout is retired; a saved Illustrated choice opens as "top", a saved
+ * Plain paper choice stays plain.
+ */
+export const READING_LAYOUTS = ["pages", "top", "plain"] as const;
+export type ReadingLayout = typeof READING_LAYOUTS[number];
+export type ReadingAppearance = { layout: ReadingLayout; illustrated: boolean; imageOpacity: number; textOpacity: number; textColor: string | null; roman: boolean; sections: Record<ReadingSection, SectionAppearance> };
 const defaultSections = (): ReadingAppearance["sections"] => Object.fromEntries(READING_SECTIONS.map(key => [key, { textColor: null, bold: false, scale: 1 }])) as ReadingAppearance["sections"];
-export const DEFAULT_READING_APPEARANCE: ReadingAppearance = { illustrated: true, imageOpacity: 0.48, textOpacity: 1, textColor: null, roman: false, sections: defaultSections() };
+export const DEFAULT_READING_APPEARANCE: ReadingAppearance = { layout: "top", illustrated: true, imageOpacity: 0.48, textOpacity: 1, textColor: null, roman: false, sections: defaultSections() };
 const KEY = "shabd.read.appearance.v1";
 export function normalizeReadingAppearance(value: Partial<ReadingAppearance> | null): ReadingAppearance {
   const number = (n: unknown, fallback: number, min: number) => typeof n === "number" && Number.isFinite(n) ? Math.max(min, Math.min(1, n)) : fallback;
@@ -19,10 +29,14 @@ export function normalizeReadingAppearance(value: Partial<ReadingAppearance> | n
       scale: typeof saved?.scale === "number" && Number.isFinite(saved.scale) ? Math.max(.85, Math.min(1.5, saved.scale)) : 1,
     };
   }
+  const layout: ReadingLayout = READING_LAYOUTS.includes(value?.layout as ReadingLayout) ? value!.layout as ReadingLayout
+    : value?.illustrated === false ? "plain" : "top";
   return {
+    layout,
     roman: value?.roman === true,
     sections,
-    illustrated: typeof value?.illustrated === "boolean" ? value.illustrated : true,
+    // Kept for older readers of the saved value: true unless the layout is plain.
+    illustrated: layout !== "plain",
     imageOpacity: number(value?.imageOpacity, 0.48, 0),
     textOpacity: number(value?.textOpacity, 1, 0.5),
     textColor: typeof value?.textColor === "string" && /^#[a-f\d]{6}$/i.test(value.textColor) ? value.textColor : null,

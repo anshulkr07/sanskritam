@@ -25,7 +25,8 @@ or changing artwork or its integration. Phones are primary: use one temporary
 9:16 portrait original per verse, derive phone/tablet files, verify publication,
 then discard originals without master backups. Preserve the complete painting
 across orientations with contain fitting and explicit measured image bounds.
-The default background image opacity is **48%**, with a persisted Plain option
-and independent text color/text opacity. Keep startup/tutor/fallback art bundled;
+The painting goes On top of the verse page by default, or on its Own page, or
+not at all (No image), persisted per reader, with independent text color/text
+opacity (owner, 2026-10-20; the 48% painting-behind-text layout is retired). Keep startup/tutor/fallback art bundled;
 larger paintings belong in R2 with device caching. Do not reintroduce static
 `require()` references to migrated paintings when regenerating asset registries.

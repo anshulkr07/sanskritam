@@ -9,6 +9,8 @@ export interface ReaderTheme {
   soft: string;
   accent: string;
   line: string;
+  /** The verse's own default colour, when it differs from `text`. */
+  verse?: string;
 }
 
 export const READER_THEMES: Record<ReaderThemeName, ReaderTheme> = {
@@ -35,6 +37,9 @@ export const READER_THEMES: Record<ReaderThemeName, ReaderTheme> = {
     soft: "#A89B8A",
     accent: "#F08A5D",
     line: "#3A322B",
+    // Owner's pick (2026-10-20, text style T2 on dark): the verse in warm
+    // amber, 9.6:1 on the dark page. Light and Sepia keep ink (T1).
+    verse: "#F2B27A",
   },
 };
 
