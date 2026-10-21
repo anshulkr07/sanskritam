@@ -148,8 +148,8 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       feature:
-        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
-        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+        en: 'Stem: {{अस्मद्}} · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{षष्ठी}} · {{एकवचन}}'
       compare_from: अस्मद्
     - id: i1
       sa: तव
@@ -163,8 +163,8 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       feature:
-        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
-        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+        en: 'Stem: {{युष्मद्}} · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{षष्ठी}} · {{एकवचन}}'
       compare_from: युष्मद्
     - id: i2
       sa: तस्य
@@ -208,8 +208,8 @@ cards:
         vibhakti: Sasthi
         vacana: Bahu
       feature:
-        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
-        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+        en: 'Stem: {{अस्मद्}} · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{षष्ठी}} · {{बहुवचन}}'
       compare_from: अस्मद्
     - id: i5
       sa: युष्माकम्
@@ -223,8 +223,8 @@ cards:
         vibhakti: Sasthi
         vacana: Bahu
       feature:
-        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
-        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+        en: 'Stem: {{युष्मद्}} · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{षष्ठी}} · {{बहुवचन}}'
       compare_from: युष्मद्
 - id: tb1
   kind: table
@@ -486,6 +486,88 @@ cards:
         vibhakti: Prathama
         vacana: Eka
   visuals:
+  - id: v-family-path-1
+    kind: relations
+    title:
+      en: Mother’s father
+      hi: माता के पिता
+    items:
+    - id: self
+      label:
+        en: The speaker
+        hi: बोलने वाला
+    - id: parent
+      sa: मातुः
+      meaning:
+        en: mother
+        hi: माता
+    - id: grandparent
+      sa: पिता
+      meaning:
+        en: Mother’s father
+        hi: माता के पिता
+    - id: name
+      sa: मातामहः
+      meaning:
+        en: Name of this relationship
+        hi: इस रिश्ते का नाम
+    edges:
+    - source: self
+      target: parent
+      label:
+        en: First follow this parent
+        hi: पहले इस अभिभावक तक जाएँ
+    - source: parent
+      target: grandparent
+      label:
+        en: Then follow that person’s parent
+        hi: फिर उनके अभिभावक तक जाएँ
+    - source: grandparent
+      target: name
+      label:
+        en: This is the grandparent named here
+        hi: इस पथ से यही रिश्ता मिलता है
+  - id: v-family-path-0
+    kind: relations
+    title:
+      en: Father’s mother
+      hi: पिता की माता
+    items:
+    - id: self
+      label:
+        en: The speaker
+        hi: बोलने वाला
+    - id: parent
+      sa: पितुः
+      meaning:
+        en: father
+        hi: पिता
+    - id: grandparent
+      sa: माता
+      meaning:
+        en: Father’s mother
+        hi: पिता की माता
+    - id: name
+      sa: पितामही
+      meaning:
+        en: Name of this relationship
+        hi: इस रिश्ते का नाम
+    edges:
+    - source: self
+      target: parent
+      label:
+        en: First follow this parent
+        hi: पहले इस अभिभावक तक जाएँ
+    - source: parent
+      target: grandparent
+      label:
+        en: Then follow that person’s parent
+        hi: फिर उनके अभिभावक तक जाएँ
+    - source: grandparent
+      target: name
+      label:
+        en: This is the grandparent named here
+        hi: इस पथ से यही रिश्ता मिलता है
   - id: v-source-example-0
     kind: worked
     title:
@@ -833,8 +915,8 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       feature:
-        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
-        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+        en: 'Stem: {{अस्मद्}} · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{षष्ठी}} · {{एकवचन}}'
       compare_from: अस्मद्
     - id: i1
       sa: तव
@@ -848,8 +930,8 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       feature:
-        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
-        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+        en: 'Stem: {{युष्मद्}} · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{षष्ठी}} · {{एकवचन}}'
       compare_from: युष्मद्
     - id: i2
       sa: तस्य
@@ -893,8 +975,8 @@ cards:
         vibhakti: Sasthi
         vacana: Bahu
       feature:
-        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
-        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+        en: 'Stem: {{अस्मद्}} · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{षष्ठी}} · {{बहुवचन}}'
       compare_from: अस्मद्
     - id: i5
       sa: युष्माकम्
@@ -908,8 +990,8 @@ cards:
         vibhakti: Sasthi
         vacana: Bahu
       feature:
-        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
-        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+        en: 'Stem: {{युष्मद्}} · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{षष्ठी}} · {{बहुवचन}}'
       compare_from: युष्मद्
 - id: p2
   kind: practice
@@ -973,8 +1055,8 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       feature:
-        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
-        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+        en: 'Stem: {{अस्मद्}} · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{षष्ठी}} · {{एकवचन}}'
       compare_from: अस्मद्
     - id: i1
       sa: तव
@@ -988,8 +1070,8 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       feature:
-        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
-        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+        en: 'Stem: {{युष्मद्}} · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{षष्ठी}} · {{एकवचन}}'
       compare_from: युष्मद्
     - id: i2
       sa: तस्य
@@ -1033,8 +1115,8 @@ cards:
         vibhakti: Sasthi
         vacana: Bahu
       feature:
-        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
-        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+        en: 'Stem: {{अस्मद्}} · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{षष्ठी}} · {{बहुवचन}}'
       compare_from: अस्मद्
     - id: i5
       sa: युष्माकम्
@@ -1048,8 +1130,8 @@ cards:
         vibhakti: Sasthi
         vacana: Bahu
       feature:
-        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
-        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+        en: 'Stem: {{युष्मद्}} · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{षष्ठी}} · {{बहुवचन}}'
       compare_from: युष्मद्
 - id: e1
   kind: explore
@@ -1128,8 +1210,8 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       feature:
-        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · singular'
-        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+        en: 'Stem: {{अस्मद्}} · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{षष्ठी}} · {{एकवचन}}'
       compare_from: अस्मद्
     - id: i1
       sa: तव
@@ -1143,8 +1225,8 @@ cards:
         vibhakti: Sasthi
         vacana: Eka
       feature:
-        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · singular'
-        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{एकवचन}}'
+        en: 'Stem: {{युष्मद्}} · {{षष्ठी}} · singular'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{षष्ठी}} · {{एकवचन}}'
       compare_from: युष्मद्
     - id: i2
       sa: तस्य
@@ -1188,8 +1270,8 @@ cards:
         vibhakti: Sasthi
         vacana: Bahu
       feature:
-        en: 'Stem: {{अस्मद्}} · masculine · {{षष्ठी}} · plural'
-        hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+        en: 'Stem: {{अस्मद्}} · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{अस्मद्}} · {{षष्ठी}} · {{बहुवचन}}'
       compare_from: अस्मद्
     - id: i5
       sa: युष्माकम्
@@ -1203,8 +1285,8 @@ cards:
         vibhakti: Sasthi
         vacana: Bahu
       feature:
-        en: 'Stem: {{युष्मद्}} · masculine · {{षष्ठी}} · plural'
-        hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{षष्ठी}} · {{बहुवचन}}'
+        en: 'Stem: {{युष्मद्}} · {{षष्ठी}} · plural'
+        hi: 'प्रातिपदिक: {{युष्मद्}} · {{षष्ठी}} · {{बहुवचन}}'
       compare_from: युष्मद्
 - id: sum
   kind: summary

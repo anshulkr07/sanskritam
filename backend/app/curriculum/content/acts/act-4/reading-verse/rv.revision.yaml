@@ -218,12 +218,56 @@ cards:
       hi: 'जिन शब्दों को अलग नहीं किया उन्हें क्रम मत दीजिए: पहले तोड़िए।'
     tag: core
     taught_in: rv.steps#p5
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      items:
+      - id: i0
+        sa: पदच्छेदः
+        meaning:
+          en: split the joins
+          hi: जोड़ खोलना
+      - id: i1
+        sa: अन्वयः
+        meaning:
+          en: prose order
+          hi: गद्य का क्रम
+      - id: i2
+        sa: अर्थः
+        meaning:
+          en: the meaning
+          hi: अर्थ
   - skill: verse.commentary
     rule:
       en: Do not read the commentator's word as the verse's own.
       hi: टीकाकार के शब्द को श्लोक का अपना शब्द मत पढ़िए।
     tag: core
     taught_in: rv.tika#p4
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: A commentary ({{टीका}}) walks along the verse. It repeats a word, gives another with the same meaning, and closes
+          with {{इत्यर्थः}}, “that is the meaning”. It asks {{कस्मात्}}, “why?”, and answers. {{अथवा}}, “or else”, offers
+          a second reading. Read it for the sense, not word for word.
+        hi: टीका श्लोक के साथ-साथ चलती है। वह एक शब्द दोहराती है, उसी अर्थ का दूसरा शब्द देती है, और {{इत्यर्थः}}, ‘यही अर्थ
+          है’, पर बन्द करती है। वह {{कस्मात्}}, ‘क्यों?’, पूछती है और उत्तर देती है। {{अथवा}}, ‘या फिर’, दूसरा पाठ देता है।
+          उसे अर्थ के लिए पढ़िए, शब्द-दर-शब्द नहीं।
+      items:
+      - id: i0
+        sa: टीका
+      - id: i1
+        sa: इत्यर्थः
+      - id: i2
+        sa: कस्मात्
+      - id: i3
+        sa: अथवा
 - id: sheet
   kind: revision
   title:

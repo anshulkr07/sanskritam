@@ -10,7 +10,7 @@ sources:
 - title: Lesson text and story
   licence: original
 - title: Whitney, Sanskrit Grammar, §§508–512 (relative pronouns)
-  url: https://en.wikisource.org/wiki/Sanskrit_Grammar/Chapter_VII#512
+  url: https://en.wikisource.org/wiki/Sanskrit_Grammar_(Whitney)/Chapter_VII#512
   licence: public domain
   note: Case distinction supported by the relative/correlative examples in §512a; teaching prose and new example are original.
 cards:
@@ -396,8 +396,8 @@ cards:
     - id: v-linked-2
       kind: matrix
       title:
-        en: 1 to 4 by gender
-        hi: 1 से 4 लिंग के अनुसार
+        en: Count the groups and read the word
+        hi: समूह गिनें और शब्द पढ़ें
       columns:
       - en: Number
         hi: संख्या
@@ -412,6 +412,9 @@ cards:
           label:
             en: '1'
             hi: १
+          diagram:
+            kind: count
+            quantity: 1
         - id: r0-c1
           sa: एकः
         - id: r0-c2
@@ -422,6 +425,9 @@ cards:
           label:
             en: '2'
             hi: २
+          diagram:
+            kind: count
+            quantity: 2
         - id: r1-c1
           sa: द्वौ
         - id: r1-c2
@@ -432,6 +438,9 @@ cards:
           label:
             en: '3'
             hi: ३
+          diagram:
+            kind: count
+            quantity: 3
         - id: r2-c1
           sa: त्रयः
         - id: r2-c2
@@ -442,6 +451,9 @@ cards:
           label:
             en: '4'
             hi: ४
+          diagram:
+            kind: count
+            quantity: 4
         - id: r3-c1
           sa: चत्वारः
         - id: r3-c2
@@ -460,8 +472,8 @@ cards:
     - id: v-linked-3
       kind: matrix
       title:
-        en: Eleven to nineteen
-        hi: ग्यारह से उन्नीस
+        en: Count the groups and read the word
+        hi: समूह गिनें और शब्द पढ़ें
       columns:
       - en: Number
         hi: संख्या
@@ -472,48 +484,72 @@ cards:
           label:
             en: '11'
             hi: ११
+          diagram:
+            kind: count
+            quantity: 11
         - id: r0-c1
           sa: एकादश
       - - id: r1-c0
           label:
             en: '12'
             hi: १२
+          diagram:
+            kind: count
+            quantity: 12
         - id: r1-c1
           sa: द्वादश
       - - id: r2-c0
           label:
             en: '13'
             hi: १३
+          diagram:
+            kind: count
+            quantity: 13
         - id: r2-c1
           sa: त्रयोदश
       - - id: r3-c0
           label:
             en: '14'
             hi: १४
+          diagram:
+            kind: count
+            quantity: 14
         - id: r3-c1
           sa: चतुर्दश
       - - id: r4-c0
           label:
             en: '15'
             hi: १५
+          diagram:
+            kind: count
+            quantity: 15
         - id: r4-c1
           sa: पञ्चदश
       - - id: r5-c0
           label:
             en: '16'
             hi: १६
+          diagram:
+            kind: count
+            quantity: 16
         - id: r5-c1
           sa: षोडश
       - - id: r6-c0
           label:
             en: '17'
             hi: १७
+          diagram:
+            kind: count
+            quantity: 17
         - id: r6-c1
           sa: सप्तदश
       - - id: r7-c0
           label:
             en: '18'
             hi: १८
+          diagram:
+            kind: count
+            quantity: 18
         - id: r7-c1
           sa: अष्टादश
 - id: conditions
@@ -956,18 +992,200 @@ cards:
       hi: '{{तस्मे}} या {{तस्मा}} मत लिखिए: पुंलिंग चतुर्थी {{तस्मै}} है।'
     tag: core
     taught_in: pn.tad#p5
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'Only the first-case forms {{सः}} and {{सा}} show an {{स्}}; everything else starts with {{त्}}. Pronouns also
+          borrow odd endings: for a masculine or neuter, {{तस्मै}} (for), {{तस्मात्}} (from) and {{तस्मिन्}} (in); for a feminine,
+          {{तस्यै}}, {{तस्याः}} and {{तस्याम्}}. The plural genitive is {{तेषाम्}} and {{तासाम्}}.'
+        hi: 'केवल प्रथमा के रूप {{सः}} और {{सा}} में {{स्}} दिखता है; बाक़ी सब {{त्}} से शुरू होते हैं। सर्वनाम कुछ विचित्र
+          प्रत्यय भी लेते हैं: पुंलिंग और नपुंसक में {{तस्मै}} (के लिए), {{तस्मात्}} (से) और {{तस्मिन्}} (में); स्त्रीलिंग
+          में {{तस्यै}}, {{तस्याः}} और {{तस्याम्}}। षष्ठी बहुवचन {{तेषाम्}} और {{तासाम्}} है।'
+      items:
+      - id: i0
+        sa: सः
+      - id: i1
+        sa: सा
+      - id: i2
+        sa: स्
+      - id: i3
+        sa: त्
+      - id: i4
+        sa: तस्मै
+      - id: i5
+        sa: तस्मात्
+      - id: i6
+        sa: तस्मिन्
+      - id: i7
+        sa: तस्यै
+      - id: i8
+        sa: तस्याः
+      - id: i9
+        sa: तस्याम्
+      - id: i10
+        sa: तेषाम्
+      - id: i11
+        sa: तासाम्
   - skill: pron.kim-yad
     rule:
       en: 'Do not start {{यः}} and forget {{सः}}: the sentence needs both halves.'
       hi: '{{यः}} से शुरू करके {{सः}} मत भूलिए: वाक्य में दोनों भाग चाहिए।'
     tag: core
     taught_in: pn.who#p5
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      items:
+      - id: i0
+        sa: कः पठति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Who reads?
+          hi: कौन पढ़ता है?
+        words:
+        - sa: कः
+          gloss:
+            en: who
+            hi: कौन
+          check:
+            type: subanta
+            stem: किम्
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+      - id: i1
+        sa: कः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: who
+          hi: कौन
+        check:
+          type: subanta
+          stem: किम्
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{किम्}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{किम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: किम्
+      - id: i2
+        sa: पठति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: पठ्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{किम्}} asks “who? what? which?” Its forms are the forms of {{तद्}} with {{क-}} in place of {{त-}}: {{कः}}
+            (who, masculine), {{का}} (who, feminine), {{किम्}} (what). {{यद्}} is “who, which, that”, and goes with {{तद्}}:
+            {{यः … सः}}, “who … he”.'
+          hi: '{{किम्}} पूछता है ‘कौन? क्या? कौन-सा?’ उसके रूप {{तद्}} के रूप हैं, जिनमें {{त-}} की जगह {{क-}} है: {{कः}}
+            (कौन, पुंलिंग), {{का}} (कौन, स्त्रीलिंग), {{किम्}} (क्या)। {{यद्}} का अर्थ ‘जो’ है, और वह {{तद्}} के साथ चलता
+            है: {{यः … सः}}, ‘जो … वह’।'
+      - id: i5
+        sa: कः पठति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Who reads?
+          hi: कौन पढ़ता है?
+        words:
+        - sa: कः
+          gloss:
+            en: who
+            hi: कौन
+          check:
+            type: subanta
+            stem: किम्
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
   - skill: num.one-ten
     rule:
       en: 'Do not say {{त्रयः लताः}}: a feminine takes {{तिस्रः}}: {{तिस्रः लताः}}.'
       hi: '{{त्रयः लताः}} मत कहिए: स्त्रीलिंग {{तिस्रः}} लेता है: {{तिस्रः लताः}}।'
     tag: core
     taught_in: pn.count#p1
+    visuals:
+    - id: v-linked-2
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: '{{एक}} is “one” and acts like a pronoun: {{एकः}}, {{एका}}, {{एकम्}}. {{द्वि}} (two) is dual only. {{त्रि}} (three)
+          and {{चतुर्}} (four) have a different word for the feminine: {{तिस्रः}}, {{चतस्रः}}. These words agree with the
+          noun, like an adjective.'
+        hi: '{{एक}} का अर्थ ‘एक’ है और वह सर्वनाम की तरह चलता है: {{एकः}}, {{एका}}, {{एकम्}}। {{द्वि}} (दो) केवल द्विवचन है।
+          {{त्रि}} (तीन) और {{चतुर्}} (चार) के स्त्रीलिंग का रूप अलग है: {{तिस्रः}}, {{चतस्रः}}। ये शब्द विशेषण की तरह संज्ञा
+          से मेल खाते हैं।'
+      items:
+      - id: i0
+        sa: एक
+      - id: i1
+        sa: एकः
+      - id: i2
+        sa: एका
+      - id: i3
+        sa: एकम्
+      - id: i4
+        sa: द्वि
+      - id: i5
+        sa: त्रि
+      - id: i6
+        sa: चतुर्
+      - id: i7
+        sa: तिस्रः
+      - id: i8
+        sa: चतस्रः
 - id: panini
   kind: revision
   title:
@@ -1521,8 +1739,8 @@ cards:
     - id: v-linked-2
       kind: matrix
       title:
-        en: 1 to 4 by gender
-        hi: 1 से 4 लिंग के अनुसार
+        en: Count the groups and read the word
+        hi: समूह गिनें और शब्द पढ़ें
       columns:
       - en: Number
         hi: संख्या
@@ -1537,6 +1755,9 @@ cards:
           label:
             en: '1'
             hi: १
+          diagram:
+            kind: count
+            quantity: 1
         - id: r0-c1
           sa: एकः
         - id: r0-c2
@@ -1547,6 +1768,9 @@ cards:
           label:
             en: '2'
             hi: २
+          diagram:
+            kind: count
+            quantity: 2
         - id: r1-c1
           sa: द्वौ
         - id: r1-c2
@@ -1557,6 +1781,9 @@ cards:
           label:
             en: '3'
             hi: ३
+          diagram:
+            kind: count
+            quantity: 3
         - id: r2-c1
           sa: त्रयः
         - id: r2-c2
@@ -1567,6 +1794,9 @@ cards:
           label:
             en: '4'
             hi: ४
+          diagram:
+            kind: count
+            quantity: 4
         - id: r3-c1
           sa: चत्वारः
         - id: r3-c2
@@ -1584,8 +1814,8 @@ cards:
     - id: v-linked-3
       kind: matrix
       title:
-        en: Eleven to nineteen
-        hi: ग्यारह से उन्नीस
+        en: Count the groups and read the word
+        hi: समूह गिनें और शब्द पढ़ें
       columns:
       - en: Number
         hi: संख्या
@@ -1596,47 +1826,71 @@ cards:
           label:
             en: '11'
             hi: ११
+          diagram:
+            kind: count
+            quantity: 11
         - id: r0-c1
           sa: एकादश
       - - id: r1-c0
           label:
             en: '12'
             hi: १२
+          diagram:
+            kind: count
+            quantity: 12
         - id: r1-c1
           sa: द्वादश
       - - id: r2-c0
           label:
             en: '13'
             hi: १३
+          diagram:
+            kind: count
+            quantity: 13
         - id: r2-c1
           sa: त्रयोदश
       - - id: r3-c0
           label:
             en: '14'
             hi: १४
+          diagram:
+            kind: count
+            quantity: 14
         - id: r3-c1
           sa: चतुर्दश
       - - id: r4-c0
           label:
             en: '15'
             hi: १५
+          diagram:
+            kind: count
+            quantity: 15
         - id: r4-c1
           sa: पञ्चदश
       - - id: r5-c0
           label:
             en: '16'
             hi: १६
+          diagram:
+            kind: count
+            quantity: 16
         - id: r5-c1
           sa: षोडश
       - - id: r6-c0
           label:
             en: '17'
             hi: १७
+          diagram:
+            kind: count
+            quantity: 17
         - id: r6-c1
           sa: सप्तदश
       - - id: r7-c0
           label:
             en: '18'
             hi: १८
+          diagram:
+            kind: count
+            quantity: 18
         - id: r7-c1
           sa: अष्टादश

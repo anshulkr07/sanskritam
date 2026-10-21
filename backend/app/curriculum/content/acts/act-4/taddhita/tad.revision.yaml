@@ -972,12 +972,94 @@ cards:
       hi: 'बढ़ा हुआ स्वर मत भूलिए: {{राघवः}}, {{रघवः}} नहीं।'
     tag: core
     taught_in: tad.son#p1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'To say “son or descendant of X”, take X, make its first vowel grow (vṛddhi) and add an ending: {{रघु}} gives
+          {{राघवः}}, {{पाण्डु}} gives {{पाण्डवः}}, {{कुरु}} gives {{कौरवः}}. For a mother''s name in {{-ई}} or {{-आ}} it is
+          {{-एय}}: {{कुन्ती}} gives {{कौन्तेयः}}.'
+        hi: '‘X का पुत्र या वंशज’ कहने के लिए X लीजिए, उसका पहला स्वर बढ़ाइए (वृद्धि) और प्रत्यय जोड़िए: {{रघु}} से {{राघवः}},
+          {{पाण्डु}} से {{पाण्डवः}}, {{कुरु}} से {{कौरवः}}। {{-ई}} या {{-आ}} वाले माता के नाम से {{-एय}} बनता है: {{कुन्ती}}
+          से {{कौन्तेयः}}।'
+      items:
+      - id: i0
+        sa: रघु
+      - id: i1
+        sa: राघवः
+      - id: i2
+        sa: पाण्डु
+      - id: i3
+        sa: पाण्डवः
+      - id: i4
+        sa: कुरु
+      - id: i5
+        sa: कौरवः
+      - id: i6
+        sa: -ई
+      - id: i7
+        sa: -आ
+      - id: i8
+        sa: -एय
+      - id: i9
+        sa: कुन्ती
+      - id: i10
+        sa: कौन्तेयः
   - skill: tad.matup
     rule:
       en: 'Do not say {{बुद्धिवान्}}: it is {{बुद्धिमान्}}.'
       hi: '{{बुद्धिवान्}} मत कहिए: यह {{बुद्धिमान्}} है।'
     tag: core
     taught_in: tad.having#p2
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: '{{-वत्}} or {{-मत्}} means “having”: {{धन}} gives {{धनवान्}} (wealthy), {{बुद्धि}} gives {{बुद्धिमान्}} (intelligent);
+          the feminine is {{-वती}}, {{-मती}}. After a stem in {{-इ}}, {{-ई}}, {{-उ}} it is {{-मत्}}, otherwise {{-वत्}}. {{-इक}}
+          means “related to”: {{धर्म}} gives {{धार्मिकः}}, {{दिन}} gives {{दैनिकः}} (daily).'
+        hi: '{{-वत्}} या {{-मत्}} का अर्थ ‘वाला’ है: {{धन}} से {{धनवान्}} (धनी), {{बुद्धि}} से {{बुद्धिमान्}} (बुद्धिमान्);
+          स्त्रीलिंग {{-वती}}, {{-मती}}। {{-इ}}, {{-ई}}, {{-उ}} वाले आधार के बाद {{-मत्}} होता है, अन्यथा {{-वत्}}। {{-इक}}
+          का अर्थ ‘सम्बन्धी’ है: {{धर्म}} से {{धार्मिकः}}, {{दिन}} से {{दैनिकः}} (दैनिक)।'
+      items:
+      - id: i0
+        sa: -वत्
+      - id: i1
+        sa: -मत्
+      - id: i2
+        sa: धन
+      - id: i3
+        sa: धनवान्
+      - id: i4
+        sa: बुद्धि
+      - id: i5
+        sa: बुद्धिमान्
+      - id: i6
+        sa: -वती
+      - id: i7
+        sa: -मती
+      - id: i8
+        sa: -इ
+      - id: i9
+        sa: -ई
+      - id: i10
+        sa: -उ
+      - id: i11
+        sa: -इक
+      - id: i12
+        sa: धर्म
+      - id: i13
+        sa: धार्मिकः
+      - id: i14
+        sa: दिन
+      - id: i15
+        sa: दैनिकः
 - id: panini
   kind: revision
   title:

@@ -198,6 +198,338 @@ cards:
       en: if … then
       hi: यदि … तो
   visuals:
+  - id: v-structure-2
+    kind: relations
+    title:
+      en: Read the clause boundaries
+      hi: उपवाक्य की सीमाएँ पढ़ें
+    explanation:
+      en: Keep the two clauses distinct. These examples illustrate choices of tense and mood; context determines the intended
+        kind of condition.
+      hi: दोनों उपवाक्यों को अलग पहचानें। ये उदाहरण काल और अर्थवृत्ति के चुनाव दिखाते हैं; शर्त का अभिप्राय सन्दर्भ से तय
+        होता है।
+    items:
+    - id: i99
+      sa: यदि सः पठेत् तर्हि सः जानीयात्।
+      label:
+        en: Unchanged source sentence
+        hi: मूल वाक्य
+      meaning:
+        en: If he were to read, he would know.
+        hi: यदि वह पढ़े, तो जान जाए।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठेत्
+        gloss:
+          en: were to read
+          hi: पढ़े
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानीयात्
+        gloss:
+          en: would know
+          hi: जान जाए
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+    - id: condition
+      sa: यदि सः पठेत्
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठेत्
+        gloss:
+          en: were to read
+          hi: पढ़े
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+      label:
+        en: Condition
+        hi: शर्त
+    - id: result
+      sa: तर्हि सः जानीयात्
+      words:
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानीयात्
+        gloss:
+          en: would know
+          hi: जान जाए
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: VidhiLin
+          purusha: Prathama
+          vacana: Eka
+      label:
+        en: Result within this conditional statement
+        hi: इस शर्त वाले कथन का परिणाम
+    edges:
+    - source: condition
+      target: result
+      label:
+        en: If the condition holds, this is the stated result
+        hi: शर्त पूरी हो तो कथन यह परिणाम बताता है
+  - id: v-structure-1
+    kind: relations
+    title:
+      en: Read the clause boundaries
+      hi: उपवाक्य की सीमाएँ पढ़ें
+    explanation:
+      en: Keep the two clauses distinct. These examples illustrate choices of tense and mood; context determines the intended
+        kind of condition.
+      hi: दोनों उपवाक्यों को अलग पहचानें। ये उदाहरण काल और अर्थवृत्ति के चुनाव दिखाते हैं; शर्त का अभिप्राय सन्दर्भ से तय
+        होता है।
+    items:
+    - id: i99
+      sa: यदि त्वम् वदिष्यसि तर्हि सः यास्यति।
+      label:
+        en: Unchanged source sentence
+        hi: मूल वाक्य
+      meaning:
+        en: If you speak, then it will go.
+        hi: यदि तुम बोलोगे, तो वह जाएगा।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: त्वम्
+        gloss:
+          en: you
+          hi: तुम
+      - sa: वदिष्यसि
+        gloss:
+          en: speak
+          hi: बोलोगे
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lrt
+          purusha: Madhyama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: it
+          hi: वह
+      - sa: यास्यति
+        gloss:
+          en: will go
+          hi: जाएगा
+        check:
+          type: tinanta
+          dhatu: या
+          lakara: Lrt
+          purusha: Prathama
+          vacana: Eka
+          gana: Adadi
+    - id: condition
+      sa: यदि त्वम् वदिष्यसि
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: त्वम्
+        gloss:
+          en: you
+          hi: तुम
+      - sa: वदिष्यसि
+        gloss:
+          en: speak
+          hi: बोलोगे
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lrt
+          purusha: Madhyama
+          vacana: Eka
+      label:
+        en: Condition
+        hi: शर्त
+    - id: result
+      sa: तर्हि सः यास्यति
+      words:
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: it
+          hi: वह
+      - sa: यास्यति
+        gloss:
+          en: will go
+          hi: जाएगा
+        check:
+          type: tinanta
+          dhatu: या
+          lakara: Lrt
+          purusha: Prathama
+          vacana: Eka
+          gana: Adadi
+      label:
+        en: Result within this conditional statement
+        hi: इस शर्त वाले कथन का परिणाम
+    edges:
+    - source: condition
+      target: result
+      label:
+        en: If the condition holds, this is the stated result
+        hi: शर्त पूरी हो तो कथन यह परिणाम बताता है
+  - id: v-structure-0
+    kind: relations
+    title:
+      en: Read the clause boundaries
+      hi: उपवाक्य की सीमाएँ पढ़ें
+    explanation:
+      en: Keep the two clauses distinct. These examples illustrate choices of tense and mood; context determines the intended
+        kind of condition.
+      hi: दोनों उपवाक्यों को अलग पहचानें। ये उदाहरण काल और अर्थवृत्ति के चुनाव दिखाते हैं; शर्त का अभिप्राय सन्दर्भ से तय
+        होता है।
+    items:
+    - id: i99
+      sa: यदि सः पठति तर्हि सः जानाति।
+      label:
+        en: Unchanged source sentence
+        hi: मूल वाक्य
+      meaning:
+        en: If he reads, then he knows.
+        hi: यदि वह पढ़ता है, तो जानता है।
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: condition
+      sa: यदि सः पठति
+      words:
+      - sa: यदि
+        gloss:
+          en: if
+          hi: यदि
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: पठति
+        gloss:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      label:
+        en: Condition
+        hi: शर्त
+    - id: result
+      sa: तर्हि सः जानाति
+      words:
+      - sa: तर्हि
+        gloss:
+          en: then
+          hi: तो
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: जानाति
+        gloss:
+          en: knows
+          hi: जानता है
+        check:
+          type: tinanta
+          dhatu: ज्ञा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+      label:
+        en: Result within this conditional statement
+        hi: इस शर्त वाले कथन का परिणाम
+    edges:
+    - source: condition
+      target: result
+      label:
+        en: If the condition holds, this is the stated result
+        hi: शर्त पूरी हो तो कथन यह परिणाम बताता है
   - id: v-source-example-0
     kind: worked
     title:

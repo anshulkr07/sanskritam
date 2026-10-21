@@ -101,3 +101,14 @@ def test_live_comparison_and_nested_table_picture_ship_without_private_claims():
     assert cell['compare_from_iast']=='deva'
     assert cell['image']['delivered'] and 'brief' not in cell['image']
     assert 'check' not in cell
+
+
+def test_engine_gender_parameter_is_not_taught_as_a_personal_pronoun_property():
+    import runpy
+    author = runpy.run_path(str(Path(__file__).resolve().parents[2] /
+        'specs/learn-art-20261020/teaching-course-plan/implementation/author_source_figures.py'))
+    for stem in ('अस्मद्', 'युष्मद्'):
+        label = author['feature']({'stem':stem,'linga':'Pum','vibhakti':'Prathama','vacana':'Eka'})
+        assert 'masculine' not in label['en'] and 'पुंलिंग' not in label['hi']
+    ordinary = author['feature']({'stem':'बालक','linga':'Pum'})
+    assert 'masculine' in ordinary['en'] and 'पुंलिंग' in ordinary['hi']

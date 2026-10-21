@@ -74,6 +74,56 @@ cards:
       en: a marker sound that is later dropped
       hi: संकेत-ध्वनि जो बाद में हटा दी जाती है
   visuals:
+  - id: v-marker-removal-1
+    kind: sequence
+    title:
+      en: Name the marker, then remove it
+      hi: इत् पहचानें, फिर लोप करें
+    items:
+    - id: taught
+      sa: लँट्
+      label:
+        en: The taught technical form
+        hi: उपदेश का तकनीकी रूप
+    - id: marker
+      sa: अँ + ट्
+      label:
+        en: The marker elements in this example
+        hi: इस उदाहरण के इत् तत्व
+    - id: result
+      sa: ल्
+      compare_from: लँट्
+      label:
+        en: What remains after marker deletion
+        hi: इत्-लोप के बाद शेष रूप
+    explanation:
+      en: These are technical examples. A sound is not deleted merely because the same letter occurs in an ordinary word.
+      hi: ये तकनीकी उदाहरण हैं। सामान्य शब्द में वही अक्षर दिख जाने से उसका लोप नहीं किया जाता।
+  - id: v-marker-removal-0
+    kind: sequence
+    title:
+      en: Name the marker, then remove it
+      hi: इत् पहचानें, फिर लोप करें
+    items:
+    - id: taught
+      sa: तिप्
+      label:
+        en: The taught technical form
+        hi: उपदेश का तकनीकी रूप
+    - id: marker
+      sa: प्
+      label:
+        en: The marker elements in this example
+        hi: इस उदाहरण के इत् तत्व
+    - id: result
+      sa: ति
+      compare_from: तिप्
+      label:
+        en: What remains after marker deletion
+        hi: इत्-लोप के बाद शेष रूप
+    explanation:
+      en: These are technical examples. A sound is not deleted merely because the same letter occurs in an ordinary word.
+      hi: ये तकनीकी उदाहरण हैं। सामान्य शब्द में वही अक्षर दिख जाने से उसका लोप नहीं किया जाता।
   - id: v-source-terms
     kind: comparison
     title:

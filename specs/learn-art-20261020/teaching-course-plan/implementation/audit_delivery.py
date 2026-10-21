@@ -31,6 +31,7 @@ def main():
                 # Model defaults omitted by YAML are equivalent to their old
                 # empty value, not a lost source sentence or answer.
                 if key not in b and value in (None,[],{},False,''):continue
+                if key not in b and (key,value) in (('depth','core'),('roman','show'),('tag','core')):continue
                 if key not in b:changed.append(path+'.'+key+' [missing]')
                 else:compare(value,b[key],path+'.'+key)
         elif isinstance(a,list):
@@ -74,7 +75,8 @@ def main():
     totals['unit_lessons']=len(rows);totals['canonical_lesson_images']=len(art);totals['new_delivered_images']=len(delivered)
     # Expected source prose correction. New examples are additive; original
     # examples/answers are not removed. Any other source difference is flagged.
-    unexpected=[s for s in changed if not s.startswith(('pn.who#','pn.revision#'))]
+    corrections=json.loads((HERE/'grammar-review.json').read_text('utf-8'))['changed_lessons']
+    unexpected=[s for s in changed if s.split('#')[0] not in corrections]
     report={'counts':dict(totals),'source_preservation':{'original_cards_retained':True,'changed_original_fields':changed,'unexpected_original_changes':unexpected,'new_cards':new_cards},'lessons':rows,
             'scope_note':'Counts of implemented figures are not a claim that all 574 proposed teaching jobs have been independently checked.'}
     (HERE/'delivery-inventory.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n','utf-8')

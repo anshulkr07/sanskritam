@@ -204,6 +204,410 @@ cards:
       en: the closing word of a quotation
       hi: उद्धरण को बन्द करने वाला शब्द
   visuals:
+  - id: v-structure-2
+    kind: relations
+    title:
+      en: Read the clause boundaries
+      hi: उपवाक्य की सीमाएँ पढ़ें
+    explanation:
+      en: The words inside the quotation use the quoted speaker’s viewpoint. The narrator’s reporting verb remains outside
+        it.
+      hi: उद्धरण के शब्द उद्धृत वक्ता के दृष्टिकोण से हैं। कथावाचक की कहने वाली क्रिया उसके बाहर रहती है।
+    items:
+    - id: i99
+      sa: बालकः अहम् पण्डितः अस्मि इति चिन्तयति।
+      label:
+        en: Unchanged source sentence
+        hi: मूल वाक्य
+      meaning:
+        en: 'The boy thinks: “I am a scholar.”'
+        hi: 'बालक सोचता है: “मैं विद्वान् हूँ।”'
+      words:
+      - sa: बालकः
+        gloss:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: पण्डितः
+        gloss:
+          en: scholar
+          hi: विद्वान्
+        check:
+          type: subanta
+          stem: पण्डित
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्मि
+        gloss:
+          en: am
+          hi: हूँ
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: चिन्तयति
+        gloss:
+          en: thinks
+          hi: सोचता है
+        check:
+          type: tinanta
+          dhatu: चिन्त्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          gana: Curadi
+    - id: i0
+      sa: बालकः
+      label:
+        en: Speaker or thinker
+        hi: बोलने या सोचने वाला
+      meaning:
+        en: boy
+        hi: बालक
+      check:
+        type: subanta
+        stem: बालक
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: quote
+      sa: अहम् पण्डितः अस्मि
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: पण्डितः
+        gloss:
+          en: scholar
+          hi: विद्वान्
+        check:
+          type: subanta
+          stem: पण्डित
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: अस्मि
+        gloss:
+          en: am
+          hi: हूँ
+        check:
+          type: tinanta
+          dhatu: अस्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      label:
+        en: Quoted words or thought
+        hi: उद्धृत वचन या विचार
+    - id: i2
+      sa: इति
+      label:
+        en: Quotation boundary
+        hi: उद्धरण की सीमा
+      meaning:
+        en: thus
+        hi: ऐसा
+    - id: i3
+      sa: चिन्तयति
+      label:
+        en: Reporting action
+        hi: कहने या सोचने की क्रिया
+      meaning:
+        en: thinks
+        hi: सोचता है
+      check:
+        type: tinanta
+        dhatu: चिन्त्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+        gana: Curadi
+      feature:
+        en: 'Root: {{चिन्त्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{चिन्त्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    edges:
+    - source: quote
+      target: i2
+      label:
+        en: इति follows the quotation
+        hi: उद्धरण के बाद इति
+    - source: i0
+      target: i3
+      label:
+        en: who speaks or thinks
+        hi: जो कहता या सोचता है
+    - source: quote
+      target: i3
+      label:
+        en: the words being reported
+        hi: बताए जा रहे शब्द
+  - id: v-structure-1
+    kind: relations
+    title:
+      en: Read the clause boundaries
+      hi: उपवाक्य की सीमाएँ पढ़ें
+    explanation:
+      en: The words inside the quotation use the quoted speaker’s viewpoint. The narrator’s reporting verb remains outside
+        it.
+      hi: उद्धरण के शब्द उद्धृत वक्ता के दृष्टिकोण से हैं। कथावाचक की कहने वाली क्रिया उसके बाहर रहती है।
+    items:
+    - id: i99
+      sa: माता पठ इति वदति।
+      label:
+        en: Unchanged source sentence
+        hi: मूल वाक्य
+      meaning:
+        en: 'The mother says: “Read!”'
+        hi: 'माता कहती है: “पढ़ो!”'
+      words:
+      - sa: माता
+        gloss:
+          en: mother
+          hi: माता
+        check:
+          type: subanta
+          stem: मातृ
+          linga: Stri
+          vibhakti: Prathama
+          vacana: Eka
+      - sa: पठ
+        gloss:
+          en: read!
+          hi: पढ़ो!
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहती है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i0
+      sa: माता
+      label:
+        en: Speaker or thinker
+        hi: बोलने या सोचने वाला
+      meaning:
+        en: mother
+        hi: माता
+      check:
+        type: subanta
+        stem: मातृ
+        linga: Stri
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{मातृ}} · feminine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{मातृ}} · {{स्त्रीलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+    - id: quote
+      sa: पठ
+      words:
+      - sa: पठ
+        gloss:
+          en: read!
+          hi: पढ़ो!
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lot
+          purusha: Madhyama
+          vacana: Eka
+      label:
+        en: Quoted words or thought
+        hi: उद्धृत वचन या विचार
+    - id: i2
+      sa: इति
+      label:
+        en: Quotation boundary
+        hi: उद्धरण की सीमा
+      meaning:
+        en: thus
+        hi: ऐसा
+    - id: i3
+      sa: वदति
+      label:
+        en: Reporting action
+        hi: कहने या सोचने की क्रिया
+      meaning:
+        en: says
+        hi: कहती है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    edges:
+    - source: quote
+      target: i2
+      label:
+        en: इति follows the quotation
+        hi: उद्धरण के बाद इति
+    - source: i0
+      target: i3
+      label:
+        en: who speaks or thinks
+        hi: जो कहता या सोचता है
+    - source: quote
+      target: i3
+      label:
+        en: the words being reported
+        hi: बताए जा रहे शब्द
+  - id: v-structure-0
+    kind: relations
+    title:
+      en: Read the clause boundaries
+      hi: उपवाक्य की सीमाएँ पढ़ें
+    explanation:
+      en: The words inside the quotation use the quoted speaker’s viewpoint. The narrator’s reporting verb remains outside
+        it.
+      hi: उद्धरण के शब्द उद्धृत वक्ता के दृष्टिकोण से हैं। कथावाचक की कहने वाली क्रिया उसके बाहर रहती है।
+    items:
+    - id: i99
+      sa: सः अहम् गच्छामि इति वदति।
+      label:
+        en: Unchanged source sentence
+        hi: मूल वाक्य
+      meaning:
+        en: 'He says: “I go.”'
+        hi: 'वह कहता है: “मैं जाता हूँ।”'
+      words:
+      - sa: सः
+        gloss:
+          en: he
+          hi: वह
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      - sa: इति
+        gloss:
+          en: thus
+          hi: ऐसा
+      - sa: वदति
+        gloss:
+          en: says
+          hi: कहता है
+        check:
+          type: tinanta
+          dhatu: वद्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+    - id: i0
+      sa: सः
+      label:
+        en: Speaker or thinker
+        hi: बोलने या सोचने वाला
+      meaning:
+        en: he
+        hi: वह
+    - id: quote
+      sa: अहम् गच्छामि
+      words:
+      - sa: अहम्
+        gloss:
+          en: I
+          hi: मैं
+      - sa: गच्छामि
+        gloss:
+          en: go
+          hi: जाता हूँ
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Uttama
+          vacana: Eka
+      label:
+        en: Quoted words or thought
+        hi: उद्धृत वचन या विचार
+    - id: i2
+      sa: इति
+      label:
+        en: Quotation boundary
+        hi: उद्धरण की सीमा
+      meaning:
+        en: thus
+        hi: ऐसा
+    - id: i3
+      sa: वदति
+      label:
+        en: Reporting action
+        hi: कहने या सोचने की क्रिया
+      meaning:
+        en: says
+        hi: कहता है
+      check:
+        type: tinanta
+        dhatu: वद्
+        lakara: Lat
+        purusha: Prathama
+        vacana: Eka
+      feature:
+        en: 'Root: {{वद्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+        hi: 'धातु: {{वद्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+    edges:
+    - source: quote
+      target: i2
+      label:
+        en: इति follows the quotation
+        hi: उद्धरण के बाद इति
+    - source: i0
+      target: i3
+      label:
+        en: who speaks or thinks
+        hi: जो कहता या सोचता है
+    - source: quote
+      target: i3
+      label:
+        en: the words being reported
+        hi: बताए जा रहे शब्द
   - id: v-source-example-0
     kind: worked
     title:

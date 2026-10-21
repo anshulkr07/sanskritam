@@ -223,6 +223,16 @@ async function checkRealBackend(){
  }finally{if(child.exitCode===null){const closed=new Promise(resolve=>child.once('close',resolve));child.kill();await closed;}if(path.dirname(temporary)!==path.join(mobile,'src/story'))throw Error('Unexpected QA folder');fs.rmSync(temporary,{recursive:true,force:true,maxRetries:8,retryDelay:150});}
 }
 
+// The changed-span cue must be lossless and stop at an Indic grapheme boundary.
+const {changeSpan}=load('teachingLogic.ts');
+for(const [before,after] of [['देव','देवेन'],['धर्म','धर्मः'],['क्','क्ष'],['','अ'],['रामः अस्ति','रामोऽस्ति']]){
+ const span=changeSpan(before,after);
+ assert.equal(span.prefix+span.removed+span.suffix,before.normalize('NFC'));
+ assert.equal(span.prefix+span.added+span.suffix,after.normalize('NFC'));
+ const segments=new Set([0,...Array.from(new Intl.Segmenter('sa',{granularity:'grapheme'}).segment(before),s=>s.index),before.length]);
+ assert.ok(segments.has(span.prefix.length)&&segments.has(before.length-span.suffix.length));
+}
+console.log('Lossless Sanskrit grapheme comparisons passed');
 // Optional browser acceptance harness. It bundles the production TSX with web
 // adapters for native platform services; generated harness sources are removed.
 if(process.argv.includes('--visual')) await visualChecks();

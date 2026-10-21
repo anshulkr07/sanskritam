@@ -46,7 +46,7 @@ def main():
                 for n,row in enumerate(card['rows']):
                     if not row.get('taught_in'):continue
                     lid,cid=row['taught_in'].split('#');source=next(c for c in lessons[lid]['cards'] if c['id']==cid)
-                    figures=source.get('visuals',[])
+                    figures=source.get('visuals',[]) or source.get('feedback_visuals',[])
                     if not figures and source['kind']=='table':
                         figures=[{'id':'reference','kind':'matrix','title':source['title'],'columns':source['columns'],
                                   'rows':[[{'id':f'r{i}-c{j}',**{k:v for k,v in cell.items() if k in ('sa','image','feature','compare_from')},

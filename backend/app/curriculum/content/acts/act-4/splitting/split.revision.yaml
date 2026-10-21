@@ -352,6 +352,48 @@ cards:
       hi: 'अशब्दों में मत तोड़िए: {{सज्जनः}} {{सत् + जनः}} है, {{सज् + जनः}} नहीं।'
     tag: core
     taught_in: split.back#p3
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: To split, look for the sound that gave the join away. A long {{आ}} may be {{अ/आ + अ/आ}}; {{ए}} may be {{अ + इ}};
+          {{ओ}} may be {{अ + उ}}; {{य्}} or {{व्}} between a consonant and a vowel may be {{इ}} or {{उ}}; {{ज्ज}} may be {{त्
+          + ज}}; {{ोऽ}} may be {{अः + अ}}. Then test both halves as words.
+        hi: अलग करने के लिए वह ध्वनि खोजिए जिसने सन्धि का भेद खोला। दीर्घ {{आ}} {{अ/आ + अ/आ}} हो सकता है; {{ए}} {{अ + इ}}
+          हो सकता है; {{ओ}} {{अ + उ}} हो सकता है; व्यंजन और स्वर के बीच {{य्}} या {{व्}} {{इ}} या {{उ}} हो सकता है; {{ज्ज}}
+          {{त् + ज}} हो सकता है; {{ोऽ}} {{अः + अ}} हो सकता है। फिर दोनों भागों को शब्द की तरह परखिए।
+      items:
+      - id: i0
+        sa: आ
+      - id: i1
+        sa: अ/आ + अ/आ
+      - id: i2
+        sa: ए
+      - id: i3
+        sa: अ + इ
+      - id: i4
+        sa: ओ
+      - id: i5
+        sa: अ + उ
+      - id: i6
+        sa: य्
+      - id: i7
+        sa: व्
+      - id: i8
+        sa: इ
+      - id: i9
+        sa: उ
+      - id: i10
+        sa: ज्ज
+      - id: i11
+        sa: त् + ज
+      - id: i12
+        sa: ोऽ
+      - id: i13
+        sa: अः + अ
   - skill: sandhi.padaccheda
     rule:
       en: 'Do not stop at the first join: check the whole line.'

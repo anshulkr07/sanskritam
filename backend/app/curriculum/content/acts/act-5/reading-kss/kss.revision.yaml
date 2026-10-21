@@ -26,46 +26,32 @@ cards:
     taught_in: kss.naming#tb1
     visuals:
     - id: v-linked-0
-      kind: matrix
+      kind: sequence
       title:
-        en: The boy's name is given
-        hi: बालक का नाम दिया गया
-      columns:
-      - en: First word
-        hi: पहला शब्द
-      - en: Second word
-        hi: दूसरा शब्द
-      - en: Joined
-        hi: जुड़ा हुआ
-      rows:
-      - - id: r0-c0
-          sa: कामदेवावतारः
-        - id: r0-c1
-          sa: अयम्
-        - id: r0-c2
-          sa: कामदेवावतारोऽयम्
-          compare_from: कामदेवावतारः अयम्
-      - - id: r1-c0
-          sa: राजन्
-        - id: r1-c1
-          sa: जातः
-        - id: r1-c2
-          sa: राजञ्जातः
-          compare_from: राजन् जातः
-      - - id: r2-c0
-          sa: जातः
-        - id: r2-c1
-          sa: तव
-        - id: r2-c2
-          sa: जातस्तव
-          compare_from: जातः तव
-      - - id: r3-c0
-          sa: तव
-        - id: r3-c1
-          sa: आत्मजः
-        - id: r3-c2
-          sa: तवात्मजः
-          compare_from: तव आत्मजः
+        en: Inside कामदेवावतारः
+        hi: कामदेवावतारः के भीतर
+      items:
+      - id: whole
+        sa: कामदेवावतारः
+        meaning:
+          en: An incarnation of Kāmadeva.
+          hi: कामदेव का अवतार।
+      - id: members
+        sa: कामदेव + अवतारः
+        meaning:
+          en: Identify the two members before reading the surrounding sentence.
+          hi: आसपास का वाक्य पढ़ने से पहले दोनों सदस्य पहचानें।
+      - id: join
+        sa: कामदेवावतारः
+        compare_from: कामदेव अवतारः
+        check:
+          type: sandhi
+          first: कामदेव
+          second: अवतारः
+          joined: कामदेवावतारः
+        meaning:
+          en: The adjoining अ vowels merge into आ. Return to the source phrase and its referent.
+          hi: पास-पास आए अ मिलकर आ होते हैं। मूल पद और उसके अभिप्राय पर लौटें।
 - id: conditions
   kind: revision
   title:
@@ -109,6 +95,180 @@ cards:
       hi: 'बिना क्रिया की पंक्ति कर्ता और वह जो है: ‘है’ समझा जाता है।'
     tag: rare
     taught_in: kss.naming#p3
+    visuals:
+    - id: v-linked-0
+      kind: reading
+      title:
+        en: Return to the source line
+        hi: मूल पंक्ति पर लौटें
+      items:
+      - id: i0
+        sa: तत्रासूत च सा काले कुमारं कान्तदर्शनम्
+        meaning:
+          en: There, in due time, she bore a son lovely to see. (Somadeva, Kathāsaritsāgara 4.3)
+          hi: वहाँ, समय आने पर, उसने सुन्दर दर्शन वाले पुत्र को जन्म दिया। (सोमदेव, कथासरित्सागर 4.3)
+        words:
+        - sa: तत्र
+          gloss:
+            en: there
+            hi: वहाँ
+        - sa: असूत
+          gloss:
+            en: bore
+            hi: जन्म दिया
+        - sa: च
+          gloss:
+            en: and
+            hi: और
+        - sa: सा
+          gloss:
+            en: she
+            hi: उसने
+        - sa: काले
+          gloss:
+            en: in due time
+            hi: समय पर
+        - sa: कुमारम्
+          gloss:
+            en: a son
+            hi: पुत्र को
+        - sa: कान्तदर्शनम्
+          gloss:
+            en: lovely to see
+            hi: सुन्दर दर्शन वाले
+      - id: i1
+        sa: गगनाद् उच्चचारैवं काले तस्मिन् सरस्वती
+        meaning:
+          en: At that time a voice spoke thus from the sky. (Somadeva, Kathāsaritsāgara 4.3)
+          hi: उस समय आकाश से वाणी ने ऐसा कहा। (सोमदेव, कथासरित्सागर 4.3)
+        words:
+        - sa: गगनात्
+          gloss:
+            en: from the sky
+            hi: आकाश से
+        - sa: उच्चचार
+          gloss:
+            en: spoke
+            hi: बोली
+        - sa: एवम्
+          gloss:
+            en: thus
+            hi: ऐसे
+        - sa: काले
+          gloss:
+            en: time
+            hi: समय
+        - sa: तस्मिन्
+          gloss:
+            en: that
+            hi: उस
+        - sa: सरस्वती
+          gloss:
+            en: the voice (Sarasvatī)
+            hi: वाणी (सरस्वती)
+      - id: i2
+        sa: कामदेवावतारो ऽयं राजञ् जातस् तवात्मजः
+        meaning:
+          en: “This son born to you, O king, is an incarnation of Kāmadeva.” (Somadeva, Kathāsaritsāgara 4.3)
+          hi: “हे राजन्, तुम्हारा यह उत्पन्न पुत्र कामदेव का अवतार है।” (सोमदेव, कथासरित्सागर 4.3)
+        words:
+        - sa: कामदेवावतारः
+          gloss:
+            en: an incarnation of Kāmadeva
+            hi: कामदेव का अवतार
+        - sa: अयम्
+          gloss:
+            en: this
+            hi: यह
+        - sa: राजन्
+          gloss:
+            en: O king
+            hi: हे राजन्
+        - sa: जातः
+          gloss:
+            en: born
+            hi: उत्पन्न
+        - sa: तव
+          gloss:
+            en: your
+            hi: तुम्हारा
+        - sa: आत्मजः
+          gloss:
+            en: son
+            hi: पुत्र
+      - id: i3
+        sa: नरवाहनदत्तं च जानीह्य् एनम् इहाख्यया
+        meaning:
+          en: “And know him here by the name Naravāhanadatta.” (Somadeva, Kathāsaritsāgara 4.3)
+          hi: “और उसे यहाँ नरवाहनदत्त नाम से जानो।” (सोमदेव, कथासरित्सागर 4.3)
+        words:
+        - sa: नरवाहनदत्तम्
+          gloss:
+            en: Naravāhanadatta
+            hi: नरवाहनदत्त को
+        - sa: च
+          gloss:
+            en: and
+            hi: और
+        - sa: जानीहि
+          gloss:
+            en: know
+            hi: जानो
+        - sa: एनम्
+          gloss:
+            en: him
+            hi: उसे
+        - sa: इह
+          gloss:
+            en: here
+            hi: यहाँ
+        - sa: आख्यया
+          gloss:
+            en: by the name
+            hi: नाम से
+      - id: i4
+        sa: अनेन भवितव्यं च दिव्यं कल्पम् अतन्द्रिणा सर्वविद्याधरेन्द्राणाम् अचिराच् चक्रवर्तिना
+        meaning:
+          en: “Tireless, he will soon be emperor of all the lords of the Vidyādharas, for a divine aeon.” (Somadeva, Kathāsaritsāgara
+            4.3)
+          hi: “वह अथक होकर शीघ्र ही सब विद्याधरेन्द्रों का चक्रवर्ती बनेगा, एक दिव्य कल्प तक।” (सोमदेव, कथासरित्सागर 4.3)
+        words:
+        - sa: अनेन
+          gloss:
+            en: by him
+            hi: उसके द्वारा
+        - sa: भवितव्यम्
+          gloss:
+            en: it shall be
+            hi: होगा
+        - sa: च
+          gloss:
+            en: and
+            hi: और
+        - sa: दिव्यम्
+          gloss:
+            en: divine
+            hi: दिव्य
+        - sa: कल्पम्
+          gloss:
+            en: for an aeon
+            hi: एक कल्प तक
+        - sa: अतन्द्रिणा
+          gloss:
+            en: by the tireless one
+            hi: अथक के द्वारा
+        - sa: सर्वविद्याधरेन्द्राणाम्
+          gloss:
+            en: of all the lords of the Vidyādharas
+            hi: सब विद्याधरेन्द्रों के
+        - sa: अचिरात्
+          gloss:
+            en: soon
+            hi: शीघ्र
+        - sa: चक्रवर्तिना
+          gloss:
+            en: as emperor
+            hi: चक्रवर्ती के रूप में
 - id: mistakes
   kind: revision
   title:

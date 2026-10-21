@@ -214,67 +214,44 @@ cards:
     taught_in: past.augment#t1
     visuals:
     - id: v-linked-0
-      kind: comparison
+      kind: reading
       title:
-        en: See the meaning; read the form
-        hi: अर्थ देखें, रूप पढ़ें
-      explanation:
-        en: Compare the pictures with the live Sanskrit captions.
-        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+        en: Follow the events
+        hi: घटनाओं का क्रम समझें
       items:
-      - id: i1
-        sa: बालकाः पुस्तकम् अपठन्।
+      - id: i0
+        sa: अहम् तम् अपश्यम्।
         meaning:
-          en: The boys read the book.
-          hi: बालकों ने पुस्तक पढ़ी।
+          en: I saw him.
+          hi: मैंने उसे देखा।
         words:
-        - sa: बालकाः
+        - sa: अहम्
           gloss:
-            en: boys
-            hi: बालक
-          check:
-            type: subanta
-            stem: बालक
-            linga: Pum
-            vibhakti: Prathama
-            vacana: Bahu
-        - sa: पुस्तकम्
+            en: I
+            hi: मैं
+        - sa: तम्
           gloss:
-            en: book
-            hi: पुस्तक
-          check:
-            type: subanta
-            stem: पुस्तक
-            linga: Napumsaka
-            vibhakti: Dvitiya
-            vacana: Eka
-        - sa: अपठन्
+            en: him
+            hi: उसे
+        - sa: अपश्यम्
           gloss:
-            en: read
-            hi: पढ़ा
+            en: saw
+            hi: देखा
           check:
             type: tinanta
-            dhatu: पठ्
+            dhatu: दृश्
             lakara: Lan
-            purusha: Prathama
-            vacana: Bahu
-        image:
-          id: teaching-reader-many
-          brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
-            clothing, books, furniture, watercolor style, composition and 4:3 aspect ratio. Change ONLY the writing on ALL
-            open books. Remove every tiny line, squiggle, fake letter and text-like mark. On each open book write the SAME
-            SINGLE SHORT LINE in very large, clean, exact Devanagari: "अ इ उ". These are exactly three characters अ, इ, उ,
-            separated by spaces. Put this line prominently on one page of every book; every other page area must be clean
-            unmarked ivory paper. No other letters anywhere. Do not invent text. The three characters must be legible at phone
-            size. Keep the exact number of human figures unchanged.'
-          alt:
-            en: Three boys reading books with अ इ उ
-            hi: अ इ उ वाली पुस्तकें पढ़ते तीन बालक
-          ratio: '4:3'
-          text_in_image:
-          - अ इ उ
-          - अ इ उ
-          - अ इ उ
+            purusha: Uttama
+            vacana: Eka
+        diagram:
+          kind: timeline
+          events:
+          - label:
+              en: '{{अपश्यम्}} — before the reference time'
+              hi: '{{अपश्यम्}} — सन्दर्भ के समय से पहले'
+            start: 0
+            end: 3
+          anchor: 5
   - skill: verb.lan
     rule:
       en: 'With a prefix the augment sits between prefix and root: {{आगच्छत्}}.'
@@ -283,16 +260,13 @@ cards:
     taught_in: past.augment#t2
     visuals:
     - id: v-linked-1
-      kind: worked
+      kind: reading
       title:
-        en: Read, examine, understand
-        hi: पढ़ें, समझें, फिर पढ़ें
+        en: Follow the events
+        hi: घटनाओं का क्रम समझें
       items:
       - id: i0
         sa: सः आगच्छत्।
-        label:
-          en: Read the whole example
-          hi: पूरा उदाहरण पढ़ें
         meaning:
           en: He came.
           hi: वह आया।
@@ -313,68 +287,15 @@ cards:
             vacana: Eka
             prefixes:
             - आ
-      - id: i1
-        sa: सः
-        label:
-          en: Follow this word
-          hi: इस शब्द पर ध्यान दें
-        meaning:
-          en: he
-          hi: वह
-      - id: i2
-        sa: आगच्छत्
-        label:
-          en: Follow this word
-          hi: इस शब्द पर ध्यान दें
-        meaning:
-          en: came
-          hi: आया
-        check:
-          type: tinanta
-          dhatu: गम्
-          lakara: Lan
-          purusha: Prathama
-          vacana: Eka
-          prefixes:
-          - आ
-        feature:
-          en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
-          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
-        compare_from: गम्
-      - id: rule
-        label:
-          en: Connect the form and the rule
-          hi: रूप को नियम से जोड़ें
-        meaning:
-          en: 'A prefix stays in front and the {{अ}} goes between it and the root: {{आ + गच्छति}} makes {{आगच्छति}}, and its
-            past is {{आगच्छत्}}, “he came”.'
-          hi: 'उपसर्ग आगे ही रहता है और {{अ}} उसके और धातु के बीच आता है: {{आ + गच्छति}} से {{आगच्छति}} बनता है, और उसका भूतकाल
-            {{आगच्छत्}} है, ‘वह आया’।'
-      - id: i5
-        sa: सः आगच्छत्।
-        label:
-          en: Read it again with the meaning
-          hi: अर्थ समझकर फिर पढ़ें
-        meaning:
-          en: He came.
-          hi: वह आया।
-        words:
-        - sa: सः
-          gloss:
-            en: he
-            hi: वह
-        - sa: आगच्छत्
-          gloss:
-            en: came
-            hi: आया
-          check:
-            type: tinanta
-            dhatu: गम्
-            lakara: Lan
-            purusha: Prathama
-            vacana: Eka
-            prefixes:
-            - आ
+        diagram:
+          kind: timeline
+          events:
+          - label:
+              en: '{{आगच्छत्}} — before the reference time'
+              hi: '{{आगच्छत्}} — सन्दर्भ के समय से पहले'
+            start: 0
+            end: 3
+          anchor: 5
   - skill: verb.lan
     rule:
       en: 'Tales begin {{आसीत्}}: “there was”.'
@@ -679,68 +600,114 @@ cards:
       hi: '{{अ}} मत भूलिए: {{गच्छत्}} (इस अर्थ में) शब्द नहीं है; {{अगच्छत्}} है।'
     tag: core
     taught_in: past.augment#p1
-  - skill: verb.lan
-    rule:
-      en: 'Do not put the {{अ}} before a prefix: {{आगच्छत्}}, not {{अआगच्छत्}}.'
-      hi: '{{अ}} को उपसर्ग के आगे मत रखिए: {{आगच्छत्}}, {{अआगच्छत्}} नहीं।'
-    tag: core
-    taught_in: past.augment#t2
     visuals:
-    - id: v-linked-1
+    - id: v-linked-0
       kind: worked
       title:
-        en: Read, examine, understand
-        hi: पढ़ें, समझें, फिर पढ़ें
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
       items:
       - id: i0
-        sa: सः आगच्छत्।
+        sa: ह्यः बालकः गृहम् अगच्छत्।
         label:
           en: Read the whole example
           hi: पूरा उदाहरण पढ़ें
         meaning:
-          en: He came.
-          hi: वह आया।
+          en: Yesterday the boy went home.
+          hi: कल बालक घर गया।
         words:
-        - sa: सः
+        - sa: ह्यः
           gloss:
-            en: he
-            hi: वह
-        - sa: आगच्छत्
+            en: yesterday
+            hi: कल (बीता)
+        - sa: बालकः
           gloss:
-            en: came
-            hi: आया
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: गृहम्
+          gloss:
+            en: home
+            hi: घर
+          check:
+            type: subanta
+            stem: गृह
+            linga: Napumsaka
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: अगच्छत्
+          gloss:
+            en: went
+            hi: गया
           check:
             type: tinanta
             dhatu: गम्
             lakara: Lan
             purusha: Prathama
             vacana: Eka
-            prefixes:
-            - आ
       - id: i1
-        sa: सः
+        sa: ह्यः
         label:
           en: Follow this word
           hi: इस शब्द पर ध्यान दें
         meaning:
-          en: he
-          hi: वह
+          en: yesterday
+          hi: कल (बीता)
       - id: i2
-        sa: आगच्छत्
+        sa: बालकः
         label:
           en: Follow this word
           hi: इस शब्द पर ध्यान दें
         meaning:
-          en: came
-          hi: आया
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: बालक
+      - id: i3
+        sa: गृहम्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+          hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+        compare_from: गृह
+      - id: i4
+        sa: अगच्छत्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: went
+          hi: गया
         check:
           type: tinanta
           dhatu: गम्
           lakara: Lan
           purusha: Prathama
           vacana: Eka
-          prefixes:
-          - आ
         feature:
           en: 'Root: {{गम्}} · singular · {{लङ्}} · Third person ({{प्रथमपुरुष}})'
           hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लङ्}} · प्रथमपुरुष'
@@ -750,15 +717,69 @@ cards:
           en: Connect the form and the rule
           hi: रूप को नियम से जोड़ें
         meaning:
-          en: 'A prefix stays in front and the {{अ}} goes between it and the root: {{आ + गच्छति}} makes {{आगच्छति}}, and its
-            past is {{आगच्छत्}}, “he came”.'
-          hi: 'उपसर्ग आगे ही रहता है और {{अ}} उसके और धातु के बीच आता है: {{आ + गच्छति}} से {{आगच्छति}} बनता है, और उसका भूतकाल
-            {{आगच्छत्}} है, ‘वह आया’।'
-      - id: i5
-        sa: सः आगच्छत्।
+          en: 'For something that happened before today, put {{अ}} in front of the root and use the past endings: {{अगच्छत्}}
+            (he went), {{अपठत्}} (he read), {{अवदत्}} (he spoke). This tense is {{लङ्}}. The {{अ}} is called the augment,
+            {{अट्}}.'
+          hi: 'जो आज से पहले हुआ, उसके लिए धातु के आगे {{अ}} लगाइए और भूतकाल के प्रत्यय लीजिए: {{अगच्छत्}} (वह गया), {{अपठत्}}
+            (उसने पढ़ा), {{अवदत्}} (उसने कहा)। इस काल का नाम {{लङ्}} है। {{अ}} को आगम {{अट्}} कहते हैं।'
+      - id: i7
+        sa: ह्यः बालकः गृहम् अगच्छत्।
         label:
           en: Read it again with the meaning
           hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Yesterday the boy went home.
+          hi: कल बालक घर गया।
+        words:
+        - sa: ह्यः
+          gloss:
+            en: yesterday
+            hi: कल (बीता)
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: गृहम्
+          gloss:
+            en: home
+            hi: घर
+          check:
+            type: subanta
+            stem: गृह
+            linga: Napumsaka
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: अगच्छत्
+          gloss:
+            en: went
+            hi: गया
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lan
+            purusha: Prathama
+            vacana: Eka
+  - skill: verb.lan
+    rule:
+      en: 'Do not put the {{अ}} before a prefix: {{आगच्छत्}}, not {{अआगच्छत्}}.'
+      hi: '{{अ}} को उपसर्ग के आगे मत रखिए: {{आगच्छत्}}, {{अआगच्छत्}} नहीं।'
+    tag: core
+    taught_in: past.augment#t2
+    visuals:
+    - id: v-linked-1
+      kind: reading
+      title:
+        en: Follow the events
+        hi: घटनाओं का क्रम समझें
+      items:
+      - id: i0
+        sa: सः आगच्छत्।
         meaning:
           en: He came.
           hi: वह आया।
@@ -779,6 +800,15 @@ cards:
             vacana: Eka
             prefixes:
             - आ
+        diagram:
+          kind: timeline
+          events:
+          - label:
+              en: '{{आगच्छत्}} — before the reference time'
+              hi: '{{आगच्छत्}} — सन्दर्भ के समय से पहले'
+            start: 0
+            end: 3
+          anchor: 5
 - id: panini
   kind: revision
   title:

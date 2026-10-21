@@ -656,78 +656,98 @@ cards:
     taught_in: part.ktva#t1
     visuals:
     - id: v-linked-0
-      kind: relations
+      kind: sequence
       title:
-        en: How the words are connected
-        hi: शब्द कैसे जुड़े हैं
-      explanation:
-        en: Having gone home, he reads.
-        hi: घर जाकर वह पढ़ता है।
+        en: Same person, one action before another
+        hi: एक ही व्यक्ति, एक काम के बाद दूसरा
       items:
-      - id: i0
-        sa: सः
-        meaning:
-          en: he
-          hi: वह
-      - id: i1
-        sa: गृहम्
-        meaning:
-          en: home
-          hi: घर
-        check:
-          type: subanta
-          stem: गृह
-          linga: Napumsaka
-          vibhakti: Dvitiya
-          vacana: Eka
-        feature:
-          en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
-          hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
-        compare_from: गृह
-      - id: i2
-        sa: गत्वा
-        meaning:
-          en: having gone
-          hi: जाकर
+      - id: first
+        label:
+          en: 'First event: eating, completed before the main action'
+          hi: 'पहला काम: खाना, जो मुख्य क्रिया से पहले पूरा होता है'
+        sa: खादित्वा
+        image:
+          id: teaching-boy-eats
+          brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+            and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+            central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+            letterlike decoration, border or watermark. A school-age boy in an ochre kurta is eating one ripe yellow mango,
+            holding it near his mouth and taking a visible bite. He is seated, empty other hand on his knee. Exactly one fruit,
+            no plate of additional food, no writing or symbols. The eating action must be unmistakable.'
+          alt:
+            en: A boy eats one mango
+            hi: एक आम खाता बालक
+          ratio: '4:3'
+          text_in_image: []
         check:
           type: krdanta
-          dhatu: गम्
+          dhatu: खाद्
           krt: ktvA
-        feature:
-          en: 'Root: {{गम्}}'
-          hi: 'धातु: {{गम्}}'
-        compare_from: गम्
-      - id: i3
-        sa: पठति
-        meaning:
-          en: reads
-          hi: पढ़ता है
+      - id: next
+        label:
+          en: 'Main action: going'
+          hi: 'मुख्य क्रिया: जाना'
+        sa: गच्छति
+        image:
+          id: teaching-boy-walks
+          brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+            and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+            central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+            letterlike decoration, border or watermark. A school-age boy in an ochre kurta walks calmly toward the right on
+            a plain courtyard path, one foot naturally lifted and the other grounded, arms swinging. Full body shown. No house,
+            books, carried objects, arrows, writing or symbols. The walking action must be unmistakable.'
+          alt:
+            en: A boy walks on a path
+            hi: राह पर चलता बालक
+          ratio: '4:3'
+          text_in_image: []
         check:
           type: tinanta
-          dhatu: पठ्
+          dhatu: गम्
           lakara: Lat
           purusha: Prathama
           vacana: Eka
-        feature:
-          en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
-          hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
-        compare_from: पठ्
-      edges:
-      - source: i0
-        target: i2
+      - id: i2
+        sa: सः फलम् खादित्वा गच्छति।
         label:
-          en: same person goes
-          hi: यही व्यक्ति जाता है
-      - source: i0
-        target: i3
-        label:
-          en: same person reads
-          hi: यही व्यक्ति पढ़ता है
-      - source: i2
-        target: i3
-        label:
-          en: having gone, then reads
-          hi: जाकर, फिर पढ़ता है
+          en: Read the complete sequence
+          hi: पूरा क्रम पढ़ें
+        meaning:
+          en: Having eaten fruit, he goes.
+          hi: फल खाकर वह जाता है।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: फलम्
+          gloss:
+            en: fruit
+            hi: फल
+          check:
+            type: subanta
+            stem: फल
+            linga: Napumsaka
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: खादित्वा
+          gloss:
+            en: having eaten
+            hi: खाकर
+          check:
+            type: krdanta
+            dhatu: खाद्
+            krt: ktvA
+        - sa: गच्छति
+          gloss:
+            en: goes
+            hi: जाता है
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
   - skill: krt.kta
     rule:
       en: '{{-त}} for the object or the bare action, {{-तवत्}} for the doer.'
@@ -1101,12 +1121,325 @@ cards:
       hi: 'उपसर्ग के बाद {{-त्वा}} मत लगाइए: {{आगत्य}}, {{आगत्वा}} नहीं।'
     tag: core
     taught_in: part.ktva#p5
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      items:
+      - id: i0
+        sa: सः गृहम् गत्वा पठति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Having gone home, he reads.
+          hi: घर जाकर वह पढ़ता है।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: गृहम्
+          gloss:
+            en: home
+            hi: घर
+          check:
+            type: subanta
+            stem: गृह
+            linga: Napumsaka
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: गत्वा
+          gloss:
+            en: having gone
+            hi: जाकर
+          check:
+            type: krdanta
+            dhatu: गम्
+            krt: ktvA
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+      - id: i1
+        sa: सः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: he
+          hi: वह
+      - id: i2
+        sa: गृहम्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: home
+          hi: घर
+        check:
+          type: subanta
+          stem: गृह
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{गृह}} · neuter · {{द्वितीया}} · singular'
+          hi: 'प्रातिपदिक: {{गृह}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+        compare_from: गृह
+      - id: i3
+        sa: गत्वा
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: having gone
+          hi: जाकर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: ktvA
+        feature:
+          en: 'Root: {{गम्}}'
+          hi: 'धातु: {{गम्}}'
+        compare_from: गम्
+      - id: i4
+        sa: पठति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: पठ्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'To say “having done X, he does Y” with the same doer, add {{-त्वा}} to the root: {{गम्}} gives {{गत्वा}} (having
+            gone), {{कृ}} gives {{कृत्वा}}, {{श्रु}} gives {{श्रुत्वा}}, {{पठ्}} gives {{पठित्वा}}. With a prefix it is {{-य}}:
+            {{आ + गम्}} gives {{आगत्य}}. These never change; they are indeclinable.'
+          hi: '‘X करके वह Y करता है’ कहने के लिए, कर्ता वही हो तो, धातु में {{-त्वा}} जोड़िए: {{गम्}} से {{गत्वा}} (जाकर),
+            {{कृ}} से {{कृत्वा}}, {{श्रु}} से {{श्रुत्वा}}, {{पठ्}} से {{पठित्वा}}। उपसर्ग हो तो {{-य}}: {{आ + गम्}} से {{आगत्य}}।
+            ये कभी नहीं बदलते; ये अव्यय हैं।'
+      - id: i7
+        sa: सः गृहम् गत्वा पठति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Having gone home, he reads.
+          hi: घर जाकर वह पढ़ता है।
+        words:
+        - sa: सः
+          gloss:
+            en: he
+            hi: वह
+        - sa: गृहम्
+          gloss:
+            en: home
+            hi: घर
+          check:
+            type: subanta
+            stem: गृह
+            linga: Napumsaka
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: गत्वा
+          gloss:
+            en: having gone
+            hi: जाकर
+          check:
+            type: krdanta
+            dhatu: गम्
+            krt: ktvA
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
   - skill: krt.shatr
     rule:
       en: 'Do not give a masculine ending to a feminine noun: {{गच्छन्ती बालिका}}.'
       hi: 'स्त्रीलिंग संज्ञा को पुंलिंग रूप मत दीजिए: {{गच्छन्ती बालिका}}।'
     tag: core
     taught_in: part.shatr#p5
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      items:
+      - id: i0
+        sa: बालकः गच्छन् पठति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: The boy reads while going.
+          hi: बालक जाते हुए पढ़ता है।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: गच्छन्
+          gloss:
+            en: going
+            hi: जाता हुआ
+          check:
+            type: krdanta
+            dhatu: गम्
+            krt: Satf
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+      - id: i1
+        sa: बालकः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: boy
+          hi: बालक
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{बालक}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: बालक
+      - id: i2
+        sa: गच्छन्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: going
+          hi: जाता हुआ
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: Satf
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{गम्}} · masculine · {{प्रथमा}} · singular'
+          hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: गम्
+      - id: i3
+        sa: पठति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: reads
+          hi: पढ़ता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: पठ्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: '{{-अत्}} (after the sign {{-अ-}}) or {{-मान}} makes “while doing”: {{गम्}} gives {{गच्छन्}} (going), {{पठ्}}
+            gives {{पठन्}} (reading), {{कृ}} gives {{कुर्वन्}} (doing), {{सेव्}} gives {{सेवमानः}} (serving, for oneself).
+            It agrees with its noun: {{गच्छन् बालकः}}, {{गच्छन्ती बालिका}}.'
+          hi: '{{-अत्}} ({{-अ-}} चिह्न के बाद) या {{-मान}} ‘करते हुए’ बनाता है: {{गम्}} से {{गच्छन्}} (जाता हुआ), {{पठ्}}
+            से {{पठन्}} (पढ़ता हुआ), {{कृ}} से {{कुर्वन्}} (करता हुआ), {{सेव्}} से {{सेवमानः}} (सेवा करता हुआ, अपने लिए)।
+            यह अपनी संज्ञा से मेल खाता है: {{गच्छन् बालकः}}, {{गच्छन्ती बालिका}}।'
+      - id: i6
+        sa: बालकः गच्छन् पठति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: The boy reads while going.
+          hi: बालक जाते हुए पढ़ता है।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: गच्छन्
+          gloss:
+            en: going
+            hi: जाता हुआ
+          check:
+            type: krdanta
+            dhatu: गम्
+            krt: Satf
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
 - id: panini
   kind: revision
   title:

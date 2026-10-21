@@ -768,12 +768,102 @@ cards:
       hi: 'द्वित्व मत भूलिए: {{दाति}} क्रिया नहीं है।'
     tag: core
     taught_in: vc2.da#p1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'Class 3, {{जुहोत्यादि}}, doubles the beginning of the root: {{दा}} gives {{ददाति}} (gives), {{धा}} gives {{दधाति}}
+          (places), {{हु}} gives {{जुहोति}} (offers), {{भी}} gives {{बिभेति}} (fears), {{भृ}} gives {{बिभर्ति}} (carries).
+          The plural ends in {{-ति}} after the doubled root: {{ददति}}.'
+        hi: 'गण 3, {{जुहोत्यादि}}, धातु का आरम्भ दुगुना कर देता है: {{दा}} से {{ददाति}} (देता है), {{धा}} से {{दधाति}} (रखता
+          है), {{हु}} से {{जुहोति}} (हवन करता है), {{भी}} से {{बिभेति}} (डरता है), {{भृ}} से {{बिभर्ति}} (धारण करता है)। बहुवचन
+          दुगुनी धातु के बाद {{-ति}} पर समाप्त होता है: {{ददति}}।'
+      items:
+      - id: i0
+        sa: जुहोत्यादि
+      - id: i1
+        sa: दा
+      - id: i2
+        sa: ददाति
+      - id: i3
+        sa: धा
+      - id: i4
+        sa: दधाति
+      - id: i5
+        sa: हु
+      - id: i6
+        sa: जुहोति
+      - id: i7
+        sa: भी
+      - id: i8
+        sa: बिभेति
+      - id: i9
+        sa: भृ
+      - id: i10
+        sa: बिभर्ति
+      - id: i11
+        sa: -ति
+      - id: i12
+        sa: ददति
   - skill: verb.class-5-8
     rule:
       en: 'Do not say {{करोन्ति}}: the plural is {{कुर्वन्ति}}.'
       hi: '{{करोन्ति}} मत कहिए: बहुवचन {{कुर्वन्ति}} है।'
     tag: core
     taught_in: vc2.kr#p4
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'Class 5, {{स्वादि}}, adds {{-नु-}} (strong {{-नो-}}): {{आप्}} gives {{आप्नोति}} (gets), {{चि}} gives {{चिनोति}}
+          (gathers), {{शक्}} gives {{शक्नोति}} (is able). {{श्रु}} follows it by a special rule: {{शृणोति}}. Class 8, {{तनादि}},
+          adds {{-उ-}} (strong {{-ओ-}}): {{कृ}} gives {{करोति}}, {{तन्}} gives {{तनोति}} (stretches).'
+        hi: 'गण 5, {{स्वादि}}, {{-नु-}} जोड़ता है (बलवान् {{-नो-}}): {{आप्}} से {{आप्नोति}} (पाता है), {{चि}} से {{चिनोति}}
+          (चुनता है), {{शक्}} से {{शक्नोति}} (समर्थ है)। {{श्रु}} विशेष नियम से इसी का अनुसरण करता है: {{शृणोति}}। गण 8, {{तनादि}},
+          {{-उ-}} जोड़ता है (बलवान् {{-ओ-}}): {{कृ}} से {{करोति}}, {{तन्}} से {{तनोति}} (फैलाता है)।'
+      items:
+      - id: i0
+        sa: स्वादि
+      - id: i1
+        sa: -नु-
+      - id: i2
+        sa: -नो-
+      - id: i3
+        sa: आप्
+      - id: i4
+        sa: आप्नोति
+      - id: i5
+        sa: चि
+      - id: i6
+        sa: चिनोति
+      - id: i7
+        sa: शक्
+      - id: i8
+        sa: शक्नोति
+      - id: i9
+        sa: श्रु
+      - id: i10
+        sa: शृणोति
+      - id: i11
+        sa: तनादि
+      - id: i12
+        sa: -उ-
+      - id: i13
+        sa: -ओ-
+      - id: i14
+        sa: कृ
+      - id: i15
+        sa: करोति
+      - id: i16
+        sa: तन्
+      - id: i17
+        sa: तनोति
 - id: panini
   kind: revision
   title:

@@ -568,30 +568,30 @@ cards:
     taught_in: pg.it#t1
     visuals:
     - id: v-linked-1
-      kind: comparison
+      kind: sequence
       title:
-        en: Read the forms in the explanation
-        hi: व्याख्या के रूप पढ़ें
-      explanation:
-        en: 'A marker ({{इत्}}) is a sound that tells a rule what to do and then goes. 1.3.2: a nasalised vowel in the original
-          teaching is one. 1.3.3: so is a last consonant. 1.3.9 drops it ({{लोपः}}). So {{तिप्}} becomes {{ति}}, and {{लँट्}}
-          becomes {{ल्}}.'
-        hi: 'इत् वह ध्वनि है जो सूत्र को बताती है कि क्या करना है, और फिर चली जाती है। 1.3.2: मूल उपदेश में अनुनासिक स्वर
-          इत् है। 1.3.3: अन्तिम व्यञ्जन भी। 1.3.9 उसे हटाता है ({{लोपः}})। इसलिए {{तिप्}} से {{ति}} और {{लँट्}} से {{ल्}}
-          बनता है।'
+        en: Name the marker, then remove it
+        hi: इत् पहचानें, फिर लोप करें
       items:
-      - id: i0
-        sa: इत्
-      - id: i1
-        sa: लोपः
-      - id: i2
-        sa: तिप्
-      - id: i3
-        sa: ति
-      - id: i4
+      - id: taught
         sa: लँट्
-      - id: i5
+        label:
+          en: The taught technical form
+          hi: उपदेश का तकनीकी रूप
+      - id: marker
+        sa: अँ + ट्
+        label:
+          en: The marker elements in this example
+          hi: इस उदाहरण के इत् तत्व
+      - id: result
         sa: ल्
+        compare_from: लँट्
+        label:
+          en: What remains after marker deletion
+          hi: इत्-लोप के बाद शेष रूप
+      explanation:
+        en: These are technical examples. A sound is not deleted merely because the same letter occurs in an ordinary word.
+        hi: ये तकनीकी उदाहरण हैं। सामान्य शब्द में वही अक्षर दिख जाने से उसका लोप नहीं किया जाता।
 - id: exceptions
   kind: revision
   title:
@@ -650,12 +650,71 @@ cards:
       hi: 'संकेत को नाम की ध्वनि मत गिनिए: {{अच्}} में नौ ध्वनियाँ हैं, दस नहीं।'
     tag: core
     taught_in: pg.shiva#p1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'Pāṇini needs short names for groups of sounds. Take a letter and a later marker: the name stands for that letter
+          and every sound between them, markers left out. So {{अच्}}, from अ to च्, is all the vowels; {{हल्}}, from ह to
+          ल्, is all the consonants.'
+        hi: 'पाणिनि को ध्वनि-समूहों के छोटे नाम चाहिए। एक अक्षर और उसके बाद का एक संकेत लीजिए: नाम उस अक्षर और बीच की हर ध्वनि
+          का है, संकेत छोड़कर। इसलिए {{अच्}}, अ से च् तक, सब स्वर है; {{हल्}}, ह से ल् तक, सब व्यञ्जन है।'
+      items:
+      - id: i0
+        sa: अच्
+      - id: i1
+        sa: हल्
   - skill: panini.prakriya
     rule:
       en: 'Do not apply a later rule first: the order of the build decides the word.'
       hi: 'बाद का नियम पहले लागू मत कीजिए: निर्माण का क्रम शब्द तय करता है।'
     tag: core
     taught_in: pg.prakriya#p2
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      items:
+      - id: i0
+        sa: भू
+        meaning:
+          en: the root (1.3.1)
+          hi: धातु (1.3.1)
+      - id: i1
+        sa: भू + ल्
+        meaning:
+          en: 'the tense: present (3.2.123)'
+          hi: 'काल: वर्तमान (3.2.123)'
+      - id: i2
+        sa: भू + ति
+        meaning:
+          en: the ending for “he” (3.4.78)
+          hi: ‘वह’ का प्रत्यय (3.4.78)
+      - id: i3
+        sa: भू + अ + ति
+        meaning:
+          en: the joining {{अ}} (3.1.68)
+          hi: जोड़ने वाला {{अ}} (3.1.68)
+      - id: i4
+        sa: भो + अ + ति
+        meaning:
+          en: strengthening (7.3.84)
+          hi: गुण (7.3.84)
+      - id: i5
+        sa: भव् + अ + ति
+        meaning:
+          en: '{{ओ}} before {{अ}} becomes {{अव्}} (6.1.78)'
+          hi: '{{अ}} से पहले {{ओ}} का {{अव्}} (6.1.78)'
+      - id: i6
+        sa: भवति
+        meaning:
+          en: the word
+          hi: शब्द
 - id: panini
   kind: revision
   title:

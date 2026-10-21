@@ -8,6 +8,23 @@ import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url),mobile=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const fixture=JSON.parse(fs.readFileSync(path.join(mobile,'src/story/__fixtures__/teaching.json'),'utf8'));
+// CI runs every check-*.mjs without browser dependencies. Keep the public-data
+// contract in that fast suite and opt into the local browser adapter explicitly.
+let checkedFigures=0,checkedPictures=0;
+function contract(node){
+ if(Array.isArray(node)){node.forEach(contract);return;}
+ if(!node||typeof node!=='object')return;
+ assert.equal('check' in node,false,'Private engine claims never enter the public fixture');
+ if(node.image){const picture=node.image;assert.ok(picture.delivered);assert.ok(picture.phone.startsWith('https://')&&picture.tablet.startsWith('https://'));assert.equal('brief' in picture,false);checkedPictures++;}
+ if(node.kind==='matrix'){assert.ok(node.columns.length&&node.rows.length);for(const row of node.rows)assert.equal(row.length,node.columns.length);checkedFigures++;}
+ if(node.edges?.length){const ids=new Set(node.items.map(i=>i.id));for(const edge of node.edges)assert.ok(ids.has(edge.source)&&ids.has(edge.target));}
+ for(const value of Object.values(node))contract(value);
+}
+contract(fixture);
+if(!process.argv.includes('--visual')&&!process.argv.includes('--focused')){
+ console.log('Teaching public-data contracts passed: '+Object.keys(fixture.lessons).length+' lessons, '+checkedFigures+' matrices, '+checkedPictures+' delivered picture uses. Browser: add --visual.');
+ process.exit(0);
+}
 const temp=fs.mkdtempSync(path.join(mobile,'src/story/.preview-teaching-'));
 const out=path.resolve(mobile,'../specs/learn-art-20261020/teaching-course-plan/implementation/browser');fs.mkdirSync(out,{recursive:true});
 const put=(name,body)=>{const target=path.join(temp,name);fs.writeFileSync(target,body);return target;};
@@ -16,7 +33,7 @@ try{
  const loader=put('loader.cjs',"const ts=require('typescript');module.exports=function(s){return ts.transpileModule(s,{compilerOptions:{jsx:ts.JsxEmit.React,module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2020,esModuleInterop:true}}).outputText;};");
  const guide=put('guide.ts',"export const useGuideLang=()=>({lang:window.__lang||'en'});");
  const native=put('native.tsx',"export const useTypeScale=()=>({scale:window.__scale||1,sized:n=>n*(window.__scale||1)});export const useDailyHint=()=>({ready:true,available:false,use:async()=>false});export const useAskContext=()=>{};export const useReducedMotion=()=>true;export const useSpeakText=()=>()=>{};export const useNavigation=()=>({navigate(){}});export const prefetchArtwork=()=>{};export const playClip=async()=>({stop:async()=>{}});export default ()=>null;");
- const artwork=put('artwork.tsx',"export {Image as ArtworkImage} from 'react-native';");
+ const artwork=put('artwork.tsx',"import React,{useState} from 'react';import {Image} from 'react-native';export function ArtworkImage(props){const [loaded,setLoaded]=useState(null);return <Image {...props} dataSet={{imageReady:loaded===props.source.uri?'1':'0'}} onLoad={e=>{setLoaded(props.source.uri);props.onLoad?.(e);}} onError={e=>{(window.__imageErrors=window.__imageErrors||[]).push(props.source.uri);props.onError?.(e);}}/>;}");
  const themeSource=fs.readFileSync(path.join(mobile,'src/story/theme.ts'),'utf8');
  const colors=themeSource.slice(themeSource.indexOf('export const light'),themeSource.indexOf('export type StoryTheme')).replace('dark: typeof light','dark');
  const theme=put('theme.ts',colors+"\nexport const useStoryTheme=()=>window.__theme==='dark'?dark:light;");
@@ -47,8 +64,9 @@ try{
  const button=(name,scope=page)=>scope.getByRole('button',{name,exact:true});
  const show=async(lid,cid)=>{await page.evaluate(([l,c])=>window.qa.show(l,c),[lid,cid]);await page.waitForTimeout(35);};
  const fit=async(label='card')=>{let bad=await page.evaluate(()=>document.body.scrollWidth>innerWidth+1);if(bad){await page.waitForFunction(()=>document.body.scrollWidth<=innerWidth+1,{},{timeout:1200}).catch(()=>{});bad=await page.evaluate(()=>document.body.scrollWidth>innerWidth+1);}if(bad){console.error(label,await page.evaluate(()=>({width:innerWidth,overflow:document.body.scrollWidth,elements:[...document.querySelectorAll('div,button,svg')].filter(e=>e.getBoundingClientRect().right>innerWidth+2).slice(-12).map(e=>({tag:e.tagName,text:e.innerText?.slice(0,130),right:e.getBoundingClientRect().right,width:e.getBoundingClientRect().width}))})));await page.screenshot({path:path.join(out,'overflow.png'),fullPage:true});}assert.equal(bad,false,'No horizontal page overflow: '+label);};
- const shot=async name=>{await page.waitForFunction(()=>[...document.images].every(i=>i.complete),{},{timeout:20000});await page.screenshot({path:path.join(out,name+'.png'),fullPage:true});};
+ const shot=async name=>{await page.waitForTimeout(125);await page.waitForFunction(()=>[...document.querySelectorAll('[data-image-ready]')].every(i=>i.dataset.imageReady==='1'),{},{timeout:20000});await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));const bytes=await page.screenshot({fullPage:true});for(let attempt=0;;attempt++){try{fs.writeFileSync(path.join(out,name+'.png'),bytes);break;}catch(error){if(process.platform!=='win32'||!['EPERM','EACCES','EBUSY','UNKNOWN'].includes(error.code)||attempt>=7)throw error;await new Promise(resolve=>setTimeout(resolve,150*(attempt+1)));}}};
  let cards=0,figures=0,stages=0;
+ if(!process.argv.includes('--focused')){
  for(const [lid,lesson]of Object.entries(fixture.lessons))for(const card of lesson.cards){
   if(!['teach','table','reading','summary'].includes(card.kind))continue;
   await show(lid,card.id);cards++;
@@ -64,11 +82,14 @@ try{
    }
   }
  }
+ }
  console.log(cards+' source cards, '+figures+' figures, '+stages+' next-step transitions checked');
  await show('num.verbs','t1');await shot('number-360-light');
+ await show('pn.who','t2');await button('Compare all examples').click();for(const example of fixture.lessons['pn.who'].cards.find(c=>c.id==='t2').examples)assert.ok(await page.getByText(example.sa,{exact:true}).count(),'Every original example remains available');await button('Open word analysis').first().click();await page.getByText('who',{exact:true}).first().waitFor();await button('Focus on one example').click();
  await show('nf1.deva','tb1');await button('Compare spellings').first().click();await page.getByText('The changed span',{exact:true}).waitFor();await shot('paradigm-360-light');await button('Show complete table').click();await fit();
  await show('pg.shiva','t2');const source=fixture.lessons['pg.shiva'].cards.find(c=>c.id==='t2').visuals;const range=source.find(v=>v.kind==='sound_range');if(source.length>1)await button((source.indexOf(range)+1)+'. '+range.title.en).click();await button('हल्').click();await page.getByText('Highlighted sounds are included. Final markers in dashed boxes are excluded.',{exact:true}).waitFor();await shot('sound-ranges-360-light');
  await show('pn.who','t2');const relative=fixture.lessons['pn.who'].cards.find(c=>c.id==='t2').visuals;const graph=relative.find(v=>v.id==='v-relative-cases');if(relative.length>1)await button((relative.indexOf(graph)+1)+'. '+graph.title.en).click();await shot('relative-cases-360-light');
+ await show('pn.revision','mistakes');assert.equal(await page.locator('[data-testid^="teaching-"]').count(),0,'Revision explanations start folded');await button('Open visual explanation').first().click();assert.ok(await page.locator('[data-testid^="teaching-"]').count());await button('Close visual explanation').first().click();assert.equal(await page.locator('[data-testid^="teaching-"]').count(),0);
  // Feedback remains unavailable until a response. Teacher support is free.
  const practice=fixture.lessons['who.does'].cards.find(c=>c.kind==='practice'&&c.mode==='choice');await show('who.does',practice.id);assert.equal(await page.locator('[data-testid^="teaching-"]').count(),0);const correct=practice.options.find(o=>o.correct);await button(correct.sa||correct.text.en).click();await page.getByTestId('teaching-'+practice.feedback_visuals[0].id).waitFor();await shot('post-answer-360-light');
  // The actual letter order is shown for both signs and preceding half letters.
@@ -78,11 +99,13 @@ try{
  const reading=fixture.lessons['kss.reading'].cards.find(c=>c.kind==='reading');await show('kss.reading',reading.id);await button('Read without help').click();assert.equal(await button('Gloss: '+reading.passage[0].words[0].sa).count(),0);await button('Show meanings and word help').click();await button('Gloss: '+reading.passage[0].words[0].sa).click();await shot('reading-help-360-light');
  for(const theme of ['light','dark'])for(const [lang,scale]of [['en',1],['hi',1.6]])for(const width of [320,430,768]){
   await page.setViewportSize({width,height:850});await page.evaluate(([t,l,s])=>window.qa.appearance(t,l,s),[theme,lang,scale]);
-  for(const [lid,cid]of [['num.agree','t2'],['nf2.nadi','tb1'],['pn.who','t2'],['pg.shiva','t2'],['vowels.signs','e1']]){await show(lid,cid);await fit([width,theme,lang,scale,lid,cid].join('/'));}
+  for(const [lid,cid]of [['num.agree','t2'],['nf2.nadi','tb1'],['pn.who','t2'],['pg.shiva','t2'],['vowels.signs','e1'],['you.i','t1'],['pn.count','tb1'],['pn.time','tb2'],['part.shatr','t1'],['syn.if','t1']]){await show(lid,cid);await fit([width,theme,lang,scale,lid,cid].join('/'));}
   await show('num.agree','t2');await shot('count-'+width+'-'+theme+'-'+lang+'-'+scale);
  }
- assert.deepEqual(errors,[]);
- fs.writeFileSync(path.join(out,'verification.json'),JSON.stringify({cards,figures,stages,viewports:[320,360,430,768],themes:['light','dark'],languages:['en','hi'],largestTextScale:1.6,browserErrors:errors,checks:['all selected source cards','all selected figures and stages','exact complete matrix contents','no page overflow','post-answer-only teaching feedback','spelling comparisons','Devanagari letter assembly','voice and aspiration','sound ranges','relative cases','syllable/weight alignment','reading help toggle'],limitations:['web platform adapters; no physical native device or learner study']},null,2));
+ await page.setViewportSize({width:360,height:800});await page.evaluate(()=>window.qa.appearance('light','en',1));
+ for(const [lid,cid,name]of [['you.i','t1','speaker-groups'],['pn.time','tb2','number-groups'],['part.shatr','t1','simultaneous-actions'],['syn.if','t1','condition-result'],['c2.long','tb1','nested-compound']]){await show(lid,cid);await shot(name+'-360-light');}
+ assert.deepEqual(errors,[]);assert.deepEqual(await page.evaluate(()=>window.__imageErrors||[]),[],'All screenshot pictures loaded successfully');
+ fs.writeFileSync(path.join(out,process.argv.includes('--focused')?'focused-verification.json':'verification.json'),JSON.stringify({cards,figures,stages,viewports:[320,360,430,768],themes:['light','dark'],languages:['en','hi'],largestTextScale:1.6,browserErrors:errors,checks:[...(process.argv.includes('--focused')?['focused interaction and responsive checks']:['all selected source cards','all selected figures and stages','exact complete matrix contents']),'no page overflow','post-answer-only teaching feedback','spelling comparisons','Devanagari letter assembly','voice and aspiration','sound ranges','relative cases','syllable/weight alignment','reading help toggle','complete source examples accessible','folded revision figures'],limitations:['web platform adapters; no physical native device or learner study']},null,2));
  console.log('Teaching acceptance passed in both themes, English/Hindi, 320–768px and enlarged text.');
 }finally{
  if(browser)await browser.close();if(server)await new Promise(resolve=>server.close(resolve));

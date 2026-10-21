@@ -9,13 +9,17 @@ teaches:
 - sam.long
 needs:
 - sam.avyayibhava
-review: scholar_ok
+review: engine_ok
 sources:
 - title: Aṣṭādhyāyī sūtra text (vidyut-prakriya data)
   url: https://github.com/ambuda-org/vidyut
   licence: MIT
 - title: Lesson text and story
   licence: original
+- title: Whitney, Sanskrit Grammar, §§1248 and 1292–1293 (compound analysis and possessive adjectives)
+  url: https://en.wikisource.org/wiki/Sanskrit_Grammar_(Whitney)/Chapter_XVIII#1248
+  licence: public domain
+  note: The explanation is original; nested grouping and adjectival reference are supported by these sections.
 cards:
 - id: s1
   kind: story
@@ -61,12 +65,12 @@ cards:
   skills:
   - sam.long
   body:
-    en: 'A long compound is built from the left, so read it from the right. First, the last member gives the ending and gender.
-      Then take the compound in two big halves, and again in halves, until each is a single word. Finally decide each join:
-      and, of, describing, whose.'
-    hi: 'लम्बा समास बाईं ओर से बनता है, इसलिए उसे दाईं ओर से पढ़िए। पहले, अन्तिम सदस्य प्रत्यय और लिंग देता है। फिर समास को
-      दो बड़े भागों में लीजिए, फिर और दो-दो भागों में, जब तक हर एक एक शब्द न रह जाए। अन्त में हर जोड़ को पहचानिए: और, का,
-      वर्णन, जिसका।'
+    en: 'To unpack a long compound, identify its final member, then test meaningful groups in context. A group may itself
+      be a compound. Resolve each relation: coordination, a case relation, description, or an external possessor. The last
+      member is a useful clue; the whole compound’s gender and reference also depend on its construction.'
+    hi: 'लम्बा समास खोलने के लिए अन्तिम सदस्य पहचानें, फिर सन्दर्भ में अर्थपूर्ण समूह जाँचें। कोई समूह स्वयं समास हो सकता
+      है। हर सम्बन्ध पहचानें: समुच्चय, विभक्ति-सम्बन्ध, विशेषण या बाहरी स्वामी। अन्तिम सदस्य उपयोगी संकेत है; पूरे समास का
+      लिंग और अभिप्राय उसकी रचना पर भी निर्भर करते हैं।'
   term:
     sa: समासविग्रहः
     meaning:
@@ -86,12 +90,12 @@ cards:
         hi: समास को खोलना
     - id: explanation
       meaning:
-        en: 'A long compound is built from the left, so read it from the right. First, the last member gives the ending and
-          gender. Then take the compound in two big halves, and again in halves, until each is a single word. Finally decide
-          each join: and, of, describing, whose.'
-        hi: 'लम्बा समास बाईं ओर से बनता है, इसलिए उसे दाईं ओर से पढ़िए। पहले, अन्तिम सदस्य प्रत्यय और लिंग देता है। फिर समास
-          को दो बड़े भागों में लीजिए, फिर और दो-दो भागों में, जब तक हर एक एक शब्द न रह जाए। अन्त में हर जोड़ को पहचानिए: और,
-          का, वर्णन, जिसका।'
+        en: 'To unpack a long compound, identify its final member, then test meaningful groups in context. A group may itself
+          be a compound. Resolve each relation: coordination, a case relation, description, or an external possessor. The
+          last member is a useful clue; the whole compound’s gender and reference also depend on its construction.'
+        hi: 'लम्बा समास खोलने के लिए अन्तिम सदस्य पहचानें, फिर सन्दर्भ में अर्थपूर्ण समूह जाँचें। कोई समूह स्वयं समास हो सकता
+          है। हर सम्बन्ध पहचानें: समुच्चय, विभक्ति-सम्बन्ध, विशेषण या बाहरी स्वामी। अन्तिम सदस्य उपयोगी संकेत है; पूरे समास
+          का लिंग और अभिप्राय उसकी रचना पर भी निर्भर करते हैं।'
 - id: tb1
   kind: table
   title:
@@ -154,6 +158,35 @@ cards:
     en: 'The whole compound is a bahuvrīhi: it names the king.'
     hi: 'पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।'
   visuals:
+  - id: v-nested-constituents
+    kind: sequence
+    title:
+      en: Nested groups, then the whole referent
+      hi: भीतर के समूह, फिर पूरा अभिप्राय
+    explanation:
+      en: Brackets below are reading aids. Identify the relationship at each join and check the whole compound in context.
+      hi: नीचे के कोष्ठक पढ़ने की सहायता हैं। हर जोड़ का सम्बन्ध पहचानें और पूरे समास को सन्दर्भ में जाँचें।
+    items:
+    - id: whole
+      sa: सूर्यकोटिसमाभासः
+      meaning:
+        en: Shining like ten million suns.
+        hi: करोड़ सूर्यों-सा चमकने वाला।
+    - id: parts
+      sa: '[ सूर्य + कोटि ] + सम + आभास'
+      meaning:
+        en: First group sun and ten million. Then connect the comparison and brightness.
+        hi: पहले सूर्य और कोटि को समूहित करें। फिर समानता और आभास को जोड़ें।
+    - id: comparison
+      sa: '[ [ सूर्य + कोटि ] + सम ] + आभास'
+      meaning:
+        en: The comparison belongs to the brightness, not to an isolated word read without context.
+        hi: समानता आभास के सम्बन्ध में है; शब्दों को सन्दर्भ से अलग न पढ़ें।
+    - id: referent
+      sa: सूर्यकोटिसमाभासः
+      meaning:
+        en: Return to the person or thing described by the complete expression.
+        hi: पूरे पद से वर्णित व्यक्ति या वस्तु पर लौटें।
   - id: v-procedure
     kind: worked
     title:

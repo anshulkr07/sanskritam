@@ -2135,6 +2135,67 @@ cards:
       hi: '{{गुरुना}} मत लिखिए: {{र}} के बाद {{गुरुणा}} होता है।'
     tag: core
     taught_in: nf2.u#p5
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'A short -{{उ}} works like -{{इ}}: {{गुरु}} (teacher) and {{भानु}} (sun) are masculine, {{धेनु}} (cow) and {{रज्जु}}
+          (rope) feminine, {{मधु}} (honey) and {{वस्तु}} (thing) neuter. The {{उ}} becomes {{ओ}} or {{अव्}} where {{इ}} became
+          {{ए}} or {{अय्}}.'
+        hi: 'ह्रस्व -{{उ}} -{{इ}} की तरह चलता है: {{गुरु}} और {{भानु}} पुंलिंग हैं, {{धेनु}} और {{रज्जु}} स्त्रीलिंग, {{मधु}}
+          और {{वस्तु}} नपुंसक। जहाँ {{इ}} {{ए}} या {{अय्}} बना, वहाँ {{उ}} {{ओ}} या {{अव्}} बनता है।'
+      items:
+      - id: i0
+        sa: उ
+      - id: i1
+        sa: इ
+      - id: i2
+        sa: गुरु
+      - id: i3
+        sa: भानु
+      - id: i4
+        sa: धेनु
+        image:
+          id: teaching-cow
+          brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+            with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+            subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative
+            border or watermark. Exactly one gentle cream-colored Indian cow standing in profile on a small patch of grass,
+            complete head, horns, tail and all four legs visible. No calf, other animals, people or lettering.'
+          alt:
+            en: One standing cow
+            hi: खड़ी हुई एक गाय
+          ratio: '1:1'
+          text_in_image: []
+      - id: i5
+        sa: रज्जु
+        image:
+          id: teaching-rope
+          brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+            with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+            subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative
+            border or watermark. One coil of natural brown rope with a short loose end, resting on a plain ivory surface.
+            Show the rope texture, no other objects or lettering.'
+          alt:
+            en: One coiled rope
+            hi: लिपटी हुई एक रस्सी
+          ratio: '1:1'
+          text_in_image: []
+      - id: i6
+        sa: मधु
+      - id: i7
+        sa: वस्तु
+      - id: i8
+        sa: ओ
+      - id: i9
+        sa: अव्
+      - id: i10
+        sa: ए
+      - id: i11
+        sa: अय्
   - skill: noun.r-stems
     rule:
       en: 'Do not give {{मातृ}} the masculine {{मातॄन्}}: it is {{मातॄः}}.'

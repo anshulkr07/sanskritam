@@ -44,6 +44,10 @@ def feature(check):
     if check.get('dhatu'):
         values.append(bi('Root: {{'+check['dhatu']+'}}', 'धातु: {{'+check['dhatu']+'}}'))
     for key in ('linga', 'vibhakti', 'vacana', 'lakara', 'prayoga'):
+        # The engine accepts a linga parameter for these paradigms, but first-
+        # and second-person pronouns do not distinguish grammatical gender.
+        if key == 'linga' and check.get('stem') in ('अस्मद्', 'युष्मद्'):
+            continue
         value = check.get(key)
         if value in FEATURES:
             en, hi = FEATURES[value]

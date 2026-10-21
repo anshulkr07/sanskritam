@@ -760,12 +760,96 @@ cards:
       hi: 'गण 6 की धातु को बलवान् मत कीजिए: {{लिखति}}, {{लेखति}} नहीं।'
     tag: core
     taught_in: vc1.tud#p1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'Class 6, {{तुदादि}}, adds {{-अ-}} but does not strengthen the root: {{तुद्}} gives {{तुदति}} (strikes), {{लिख्}}
+          gives {{लिखति}} (writes), {{विश्}} gives {{विशति}} (enters). Compare class 1, where {{भू}} becomes {{भवति}}. A few
+          roots change: {{मुच्}} gives {{मुञ्चति}}, {{इष्}} gives {{इच्छति}}.'
+        hi: 'गण 6, {{तुदादि}}, {{-अ-}} जोड़ता है पर धातु को बलवान् नहीं करता: {{तुद्}} से {{तुदति}} (मारता है), {{लिख्}} से
+          {{लिखति}} (लिखता है), {{विश्}} से {{विशति}} (प्रवेश करता है)। गण 1 से तुलना कीजिए, जहाँ {{भू}} से {{भवति}} बनता
+          है। कुछ धातुएँ बदलती हैं: {{मुच्}} से {{मुञ्चति}}, {{इष्}} से {{इच्छति}}।'
+      items:
+      - id: i0
+        sa: तुदादि
+      - id: i1
+        sa: -अ-
+      - id: i2
+        sa: तुद्
+      - id: i3
+        sa: तुदति
+      - id: i4
+        sa: लिख्
+      - id: i5
+        sa: लिखति
+      - id: i6
+        sa: विश्
+      - id: i7
+        sa: विशति
+      - id: i8
+        sa: भू
+      - id: i9
+        sa: भवति
+      - id: i10
+        sa: मुच्
+      - id: i11
+        sa: मुञ्चति
+      - id: i12
+        sa: इष्
+      - id: i13
+        sa: इच्छति
   - skill: verb.class-10
     rule:
       en: 'Do not drop the {{-अय-}}: {{कथयति}}, not {{कथति}}.'
       hi: '{{-अय-}} मत छोड़िए: {{कथयति}}, {{कथति}} नहीं।'
     tag: core
     taught_in: vc1.cur#p1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'Class 10, {{चुरादि}}, adds {{-अय-}} after the root: {{चुर्}} gives {{चोरयति}} (steals), {{कथ्}} gives {{कथयति}}
+          (tells), {{चिन्त्}} gives {{चिन्तयति}} (thinks), {{पूज्}} gives {{पूजयति}} (honours), {{रच्}} gives {{रचयति}} (composes),
+          {{गण्}} gives {{गणयति}} (counts). A short middle vowel is strengthened.'
+        hi: 'गण 10, {{चुरादि}}, धातु के बाद {{-अय-}} जोड़ता है: {{चुर्}} से {{चोरयति}} (चुराता है), {{कथ्}} से {{कथयति}} (कहता
+          है), {{चिन्त्}} से {{चिन्तयति}} (सोचता है), {{पूज्}} से {{पूजयति}} (पूजता है), {{रच्}} से {{रचयति}} (रचता है), {{गण्}}
+          से {{गणयति}} (गिनता है)। छोटा मध्य स्वर बलवान् होता है।'
+      items:
+      - id: i0
+        sa: चुरादि
+      - id: i1
+        sa: -अय-
+      - id: i2
+        sa: चुर्
+      - id: i3
+        sa: चोरयति
+      - id: i4
+        sa: कथ्
+      - id: i5
+        sa: कथयति
+      - id: i6
+        sa: चिन्त्
+      - id: i7
+        sa: चिन्तयति
+      - id: i8
+        sa: पूज्
+      - id: i9
+        sa: पूजयति
+      - id: i10
+        sa: रच्
+      - id: i11
+        sa: रचयति
+      - id: i12
+        sa: गण्
+      - id: i13
+        sa: गणयति
 - id: panini
   kind: revision
   title:

@@ -1,13 +1,14 @@
 {
   "changed_lessons": [
+    "c2.long",
     "pn.revision",
     "pn.who"
   ],
-  "status": "engine checks pending; independent Sanskrit review not claimed",
+  "status": "Structure and engine validation required; independent Sanskrit review not claimed",
   "reason": "Remove an identical-case generalization for relative/correlative pronouns.",
   "source": {
     "title": "Whitney, Sanskrit Grammar, §§508–512 (relative pronouns)",
-    "url": "https://en.wikisource.org/wiki/Sanskrit_Grammar/Chapter_VII#512",
+    "url": "https://en.wikisource.org/wiki/Sanskrit_Grammar_(Whitney)/Chapter_VII#512",
     "licence": "public domain",
     "note": "Case distinction supported by the relative/correlative examples in §512a; teaching prose and new example are original."
   },
@@ -18,5 +19,27 @@
   "after": {
     "en": "A {{यः}} clause is paired with {{सः}}: {{यः पठति सः पण्डितः}}. They refer to the same person or thing and agree in gender and number. Each takes the case needed in its own clause; the cases need not match. {{यम् अहं पश्यामि सः पठति}}: the one whom I see reads.",
     "hi": "{{यः}} वाले उपवाक्य का सम्बन्ध {{सः}} वाले उपवाक्य से है: {{यः पठति सः पण्डितः}}। दोनों उसी व्यक्ति या वस्तु को बताते हैं और लिंग-वचन में मेल खाते हैं। हर सर्वनाम की विभक्ति उसके अपने उपवाक्य में काम से तय होती है; दोनों की विभक्ति अलग हो सकती है। {{यम् अहं पश्यामि सः पठति}}: जिसे मैं देखता हूँ, वह पढ़ता है।"
-  }
+  },
+  "additional_corrections": [
+    {
+      "changed_lessons": [
+        "c2.long"
+      ],
+      "reason": "Avoid a universal left-branching or last-member gender rule for long compounds.",
+      "before": {
+        "en": "A long compound is built from the left, so read it from the right. First, the last member gives the ending and gender. Then take the compound in two big halves, and again in halves, until each is a single word. Finally decide each join: and, of, describing, whose.",
+        "hi": "लम्बा समास बाईं ओर से बनता है, इसलिए उसे दाईं ओर से पढ़िए। पहले, अन्तिम सदस्य प्रत्यय और लिंग देता है। फिर समास को दो बड़े भागों में लीजिए, फिर और दो-दो भागों में, जब तक हर एक एक शब्द न रह जाए। अन्त में हर जोड़ को पहचानिए: और, का, वर्णन, जिसका।"
+      },
+      "after": {
+        "en": "To unpack a long compound, identify its final member, then test meaningful groups in context. A group may itself be a compound. Resolve each relation: coordination, a case relation, description, or an external possessor. The last member is a useful clue; the whole compound’s gender and reference also depend on its construction.",
+        "hi": "लम्बा समास खोलने के लिए अन्तिम सदस्य पहचानें, फिर सन्दर्भ में अर्थपूर्ण समूह जाँचें। कोई समूह स्वयं समास हो सकता है। हर सम्बन्ध पहचानें: समुच्चय, विभक्ति-सम्बन्ध, विशेषण या बाहरी स्वामी। अन्तिम सदस्य उपयोगी संकेत है; पूरे समास का लिंग और अभिप्राय उसकी रचना पर भी निर्भर करते हैं।"
+      },
+      "source": {
+        "title": "Whitney, Sanskrit Grammar, §§1248 and 1292–1293 (compound analysis and possessive adjectives)",
+        "url": "https://en.wikisource.org/wiki/Sanskrit_Grammar_(Whitney)/Chapter_XVIII#1248",
+        "licence": "public domain",
+        "note": "The explanation is original; nested grouping and adjectival reference are supported by these sections."
+      }
+    }
+  ]
 }

@@ -146,6 +146,34 @@ cards:
   note:
     en: Four joins in one line of a śloka.
     hi: एक श्लोक-पंक्ति में चार जोड़।
+  visuals:
+  - id: v-kss-inner-compound
+    kind: sequence
+    title:
+      en: Inside कामदेवावतारः
+      hi: कामदेवावतारः के भीतर
+    items:
+    - id: whole
+      sa: कामदेवावतारः
+      meaning:
+        en: An incarnation of Kāmadeva.
+        hi: कामदेव का अवतार।
+    - id: members
+      sa: कामदेव + अवतारः
+      meaning:
+        en: Identify the two members before reading the surrounding sentence.
+        hi: आसपास का वाक्य पढ़ने से पहले दोनों सदस्य पहचानें।
+    - id: join
+      sa: कामदेवावतारः
+      compare_from: कामदेव अवतारः
+      check:
+        type: sandhi
+        first: कामदेव
+        second: अवतारः
+        joined: कामदेवावतारः
+      meaning:
+        en: The adjoining अ vowels merge into आ. Return to the source phrase and its referent.
+        hi: पास-पास आए अ मिलकर आ होते हैं। मूल पद और उसके अभिप्राय पर लौटें।
 - id: r1
   kind: reading
   title:

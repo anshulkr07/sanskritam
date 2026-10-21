@@ -215,47 +215,34 @@ cards:
     taught_in: c2.long#tb1
     visuals:
     - id: v-linked-2
-      kind: worked
+      kind: sequence
       title:
-        en: Work through the example
-        hi: उदाहरण को चरण-चरण समझें
+        en: Nested groups, then the whole referent
+        hi: भीतर के समूह, फिर पूरा अभिप्राय
+      explanation:
+        en: Brackets below are reading aids. Identify the relationship at each join and check the whole compound in context.
+        hi: नीचे के कोष्ठक पढ़ने की सहायता हैं। हर जोड़ का सम्बन्ध पहचानें और पूरे समास को सन्दर्भ में जाँचें।
       items:
-      - id: stage-0
-        label:
-          en: Take the last member
-          hi: अन्तिम सदस्य लीजिए
+      - id: whole
+        sa: सूर्यकोटिसमाभासः
         meaning:
-          en: 'आभासः: shining'
-          hi: 'आभासः: चमकने वाला'
-      - id: stage-1
-        label:
-          en: Cut the rest in two
-          hi: शेष को दो में काटिए
-        sa: सूर्यकोटिसम + आभासः
-      - id: stage-2
-        label:
-          en: Cut again
-          hi: फिर काटिए
-        sa: सूर्यकोटिः + सम + आभासः
-      - id: stage-3
-        label:
-          en: Cut the first part
-          hi: पहले भाग को काटिए
-        sa: सूर्य + कोटिः + सम + आभासः
-      - id: stage-4
-        label:
-          en: Decide the joins
-          hi: जोड़ तय कीजिए
+          en: Shining like ten million suns.
+          hi: करोड़ सूर्यों-सा चमकने वाला।
+      - id: parts
+        sa: '[ सूर्य + कोटि ] + सम + आभास'
         meaning:
-          en: “whose brilliance is like ten million suns”
-          hi: ‘जिसकी चमक करोड़ सूर्यों-सी है’
-      - id: conclusion
-        label:
-          en: What the steps show
-          hi: इन चरणों से क्या समझें
+          en: First group sun and ten million. Then connect the comparison and brightness.
+          hi: पहले सूर्य और कोटि को समूहित करें। फिर समानता और आभास को जोड़ें।
+      - id: comparison
+        sa: '[ [ सूर्य + कोटि ] + सम ] + आभास'
         meaning:
-          en: 'The whole compound is a bahuvrīhi: it names the king.'
-          hi: 'पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।'
+          en: The comparison belongs to the brightness, not to an isolated word read without context.
+          hi: समानता आभास के सम्बन्ध में है; शब्दों को सन्दर्भ से अलग न पढ़ें।
+      - id: referent
+        sa: सूर्यकोटिसमाभासः
+        meaning:
+          en: Return to the person or thing described by the complete expression.
+          hi: पूरे पद से वर्णित व्यक्ति या वस्तु पर लौटें।
 - id: conditions
   kind: revision
   title:
@@ -594,12 +581,79 @@ cards:
       hi: '{{पीताम्बरः}} का अनुवाद ‘पीला वस्त्र’ मत कीजिए: यह ‘पीले वस्त्र वाला’ है।'
     tag: core
     taught_in: c2.bahuvrihi#p1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'In a {{बहुव्रीहिः}} the whole compound describes a third person: {{नीलः कण्ठः यस्य सः}}, “he whose throat is
+          blue”, is {{नीलकण्ठः}}, Śiva. {{पीतम् अम्बरम् यस्य सः}} is {{पीताम्बरः}}, Viṣṇu. A bahuvrīhi is an adjective, and
+          takes the gender of the person it describes.'
+        hi: '{{बहुव्रीहिः}} में पूरा समास किसी तीसरे का वर्णन करता है: {{नीलः कण्ठः यस्य सः}}, ‘जिसका कण्ठ नीला है’, {{नीलकण्ठः}}
+          है, शिव। {{पीतम् अम्बरम् यस्य सः}} {{पीताम्बरः}} है, विष्णु। बहुव्रीहि विशेषण है, और वह जिस व्यक्ति का वर्णन करता
+          है उसी का लिंग लेता है।'
+      items:
+      - id: i0
+        sa: बहुव्रीहिः
+      - id: i1
+        sa: नीलः कण्ठः यस्य सः
+      - id: i2
+        sa: नीलकण्ठः
+      - id: i3
+        sa: पीतम् अम्बरम् यस्य सः
+      - id: i4
+        sa: पीताम्बरः
   - skill: sam.long
     rule:
       en: 'Do not read a long compound from the left: start from the last member.'
       hi: 'लम्बे समास को बाईं ओर से मत पढ़िए: अन्तिम सदस्य से शुरू कीजिए।'
     tag: core
     taught_in: c2.long#p1
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Work through the example
+        hi: उदाहरण को चरण-चरण समझें
+      items:
+      - id: stage-0
+        label:
+          en: Take the last member
+          hi: अन्तिम सदस्य लीजिए
+        meaning:
+          en: 'आभासः: shining'
+          hi: 'आभासः: चमकने वाला'
+      - id: stage-1
+        label:
+          en: Cut the rest in two
+          hi: शेष को दो में काटिए
+        sa: सूर्यकोटिसम + आभासः
+      - id: stage-2
+        label:
+          en: Cut again
+          hi: फिर काटिए
+        sa: सूर्यकोटिः + सम + आभासः
+      - id: stage-3
+        label:
+          en: Cut the first part
+          hi: पहले भाग को काटिए
+        sa: सूर्य + कोटिः + सम + आभासः
+      - id: stage-4
+        label:
+          en: Decide the joins
+          hi: जोड़ तय कीजिए
+        meaning:
+          en: “whose brilliance is like ten million suns”
+          hi: ‘जिसकी चमक करोड़ सूर्यों-सी है’
+      - id: conclusion
+        label:
+          en: What the steps show
+          hi: इन चरणों से क्या समझें
+        meaning:
+          en: 'The whole compound is a bahuvrīhi: it names the king.'
+          hi: 'पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।'
 - id: panini
   kind: revision
   title:
@@ -863,44 +917,31 @@ cards:
     taught_in: c2.long#tb1
     visuals:
     - id: v-linked-2
-      kind: worked
+      kind: sequence
       title:
-        en: Work through the example
-        hi: उदाहरण को चरण-चरण समझें
+        en: Nested groups, then the whole referent
+        hi: भीतर के समूह, फिर पूरा अभिप्राय
+      explanation:
+        en: Brackets below are reading aids. Identify the relationship at each join and check the whole compound in context.
+        hi: नीचे के कोष्ठक पढ़ने की सहायता हैं। हर जोड़ का सम्बन्ध पहचानें और पूरे समास को सन्दर्भ में जाँचें।
       items:
-      - id: stage-0
-        label:
-          en: Take the last member
-          hi: अन्तिम सदस्य लीजिए
+      - id: whole
+        sa: सूर्यकोटिसमाभासः
         meaning:
-          en: 'आभासः: shining'
-          hi: 'आभासः: चमकने वाला'
-      - id: stage-1
-        label:
-          en: Cut the rest in two
-          hi: शेष को दो में काटिए
-        sa: सूर्यकोटिसम + आभासः
-      - id: stage-2
-        label:
-          en: Cut again
-          hi: फिर काटिए
-        sa: सूर्यकोटिः + सम + आभासः
-      - id: stage-3
-        label:
-          en: Cut the first part
-          hi: पहले भाग को काटिए
-        sa: सूर्य + कोटिः + सम + आभासः
-      - id: stage-4
-        label:
-          en: Decide the joins
-          hi: जोड़ तय कीजिए
+          en: Shining like ten million suns.
+          hi: करोड़ सूर्यों-सा चमकने वाला।
+      - id: parts
+        sa: '[ सूर्य + कोटि ] + सम + आभास'
         meaning:
-          en: “whose brilliance is like ten million suns”
-          hi: ‘जिसकी चमक करोड़ सूर्यों-सी है’
-      - id: conclusion
-        label:
-          en: What the steps show
-          hi: इन चरणों से क्या समझें
+          en: First group sun and ten million. Then connect the comparison and brightness.
+          hi: पहले सूर्य और कोटि को समूहित करें। फिर समानता और आभास को जोड़ें।
+      - id: comparison
+        sa: '[ [ सूर्य + कोटि ] + सम ] + आभास'
         meaning:
-          en: 'The whole compound is a bahuvrīhi: it names the king.'
-          hi: 'पूरा समास बहुव्रीहि है: वह राजा का नाम बताता है।'
+          en: The comparison belongs to the brightness, not to an isolated word read without context.
+          hi: समानता आभास के सम्बन्ध में है; शब्दों को सन्दर्भ से अलग न पढ़ें।
+      - id: referent
+        sa: सूर्यकोटिसमाभासः
+        meaning:
+          en: Return to the person or thing described by the complete expression.
+          hi: पूरे पद से वर्णित व्यक्ति या वस्तु पर लौटें।

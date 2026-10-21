@@ -357,6 +357,69 @@ cards:
       vibhakti: Prathama
       vacana: Eka
   visuals:
+  - id: v-word-contrast
+    kind: comparison
+    title:
+      en: A sound difference changes the word
+      hi: ध्वनि का अन्तर, अलग शब्द
+    explanation:
+      en: Read each complete word and compare its meaning. The captions, not resemblance alone, identify the words.
+      hi: हर पूरा शब्द पढ़ें और उसका अर्थ मिलाएँ। केवल चित्र के अनुमान से नहीं, लिखे शब्द से पहचानें।
+    items:
+    - id: i0
+      sa: करः
+      meaning:
+        en: a hand; a ray of light (plain {{क}})
+        hi: हाथ; किरण (सादा {{क}})
+      check:
+        type: subanta
+        stem: कर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कर}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-hand
+        brief: 'Use case: scientific-educational. One square 1:1 Sanskrit vocabulary painting. Refined Indian watercolor and
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo. A single clear central subject, complete and
+          uncropped, plain quiet background and generous breathing room, recognizable at 160px. No lettering, numbers, symbols,
+          border or watermark. One anatomically natural adult human right hand and short section of wrist, open palm facing
+          the viewer, five clearly separated fingers including the thumb. Warm medium brown skin, calm neutral gesture, no
+          jewelry, wounds, tools or other objects. The full hand and fingertips visible.'
+        alt:
+          en: One open hand with five digits
+          hi: पाँच उँगलियों वाला एक खुला हाथ
+        ratio: '1:1'
+        text_in_image: []
+    - id: i1
+      sa: खरः
+      meaning:
+        en: a donkey (breathy {{ख}})
+        hi: गधा (महाप्राण {{ख}})
+      check:
+        type: subanta
+        stem: खर
+        linga: Pum
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{खर}} · masculine · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{खर}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-donkey
+        brief: 'Use case: scientific-educational. One square 1:1 Sanskrit vocabulary painting. Refined Indian watercolor and
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo. A single clear central subject, complete and
+          uncropped, plain quiet background and generous breathing room, recognizable at 160px. No lettering, numbers, symbols,
+          border or watermark. Exactly one grey donkey standing in profile, recognizable long upright ears, muzzle and short
+          mane, full body and all four hooves visible on a small patch of ground. No saddle, load, reins, people, other animals
+          or writing.'
+        alt:
+          en: One complete grey donkey
+          hi: एक पूरा धूसर गधा
+        ratio: '1:1'
+        text_in_image: []
   - id: v-picture-examples
     kind: comparison
     title:

@@ -344,49 +344,153 @@ cards:
     - id: v-linked-0
       kind: comparison
       title:
-        en: See the meaning; read the form
-        hi: अर्थ देखें, रूप पढ़ें
+        en: One event, two descriptions
+        hi: एक घटना के दो वर्णन
       explanation:
-        en: Compare the pictures with the live Sanskrit captions.
-        hi: चित्रों की तुलना संस्कृत के रूपों से करें।
+        en: The boy eats in both pictures. In the passive description, फलम् agrees with खाद्यते; बालकेन identifies the actual
+          eater.
+        hi: दोनों चित्रों में खाने वाला बालक ही है। कर्मवाच्य में फलम् का खाद्यते से अन्वय है; बालकेन वास्तविक खाने वाले को
+          बताता है।
       items:
       - id: i0
-        sa: रामेण पुस्तकम् पठ्यते।
+        sa: बालकः फलम् खादति।
         meaning:
-          en: The book is read by Rāma.
-          hi: पुस्तक राम द्वारा पढ़ी जाती है।
+          en: The boy eats a fruit.
+          hi: बालक फल खाता है।
         words:
-        - sa: रामेण
+        - sa: बालकः
           gloss:
-            en: by Rāma
-            hi: राम द्वारा
+            en: boy
+            hi: बालक
           check:
             type: subanta
-            stem: राम
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: फलम्
+          gloss:
+            en: fruit (object)
+            hi: फल (कर्म)
+          check:
+            type: subanta
+            stem: फल
+            linga: Napumsaka
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: खादति
+          gloss:
+            en: eats
+            hi: खाता है
+          check:
+            type: tinanta
+            dhatu: खाद्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-boy-eats
+          brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+            and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+            central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+            letterlike decoration, border or watermark. A school-age boy in an ochre kurta is eating one ripe yellow mango,
+            holding it near his mouth and taking a visible bite. He is seated, empty other hand on his knee. Exactly one fruit,
+            no plate of additional food, no writing or symbols. The eating action must be unmistakable.'
+          alt: &id001
+            en: A boy eats one mango
+            hi: एक आम खाता बालक
+          ratio: '4:3'
+          text_in_image: &id002 []
+      - id: i1
+        sa: बालकेन फलम् खाद्यते।
+        meaning:
+          en: The fruit is eaten by the boy.
+          hi: फल बालक द्वारा खाया जाता है।
+        words:
+        - sa: बालकेन
+          gloss:
+            en: by the boy
+            hi: बालक द्वारा
+          check:
+            type: subanta
+            stem: बालक
             linga: Pum
             vibhakti: Trtiya
             vacana: Eka
-        - sa: पुस्तकम्
+        - sa: फलम्
           gloss:
-            en: the book
-            hi: पुस्तक
+            en: the fruit
+            hi: फल
           check:
             type: subanta
-            stem: पुस्तक
+            stem: फल
             linga: Napumsaka
             vibhakti: Prathama
             vacana: Eka
-        - sa: पठ्यते
+        - sa: खाद्यते
           gloss:
-            en: is read
-            hi: पढ़ी जाती है
+            en: is eaten
+            hi: खाया जाता है
+          check:
+            type: tinanta
+            dhatu: खाद्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+            prayoga: Karmani
+        image:
+          id: teaching-boy-eats
+          brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+            and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+            central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+            letterlike decoration, border or watermark. A school-age boy in an ochre kurta is eating one ripe yellow mango,
+            holding it near his mouth and taking a visible bite. He is seated, empty other hand on his knee. Exactly one fruit,
+            no plate of additional food, no writing or symbols. The eating action must be unmistakable.'
+          alt: *id001
+          ratio: '4:3'
+          text_in_image: *id002
+  - skill: verb.causative
+    rule:
+      en: 'Use the causative when someone gets another to act: {{गुरुः बालं पाठयति}}.'
+      hi: 'जब कोई दूसरे से काम कराए, तब प्रेरणार्थक: {{गुरुः बालं पाठयति}}।'
+    tag: good
+    taught_in: pc.cause#t1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Reading and causing reading
+        hi: पढ़ना और पढ़वाना
+      explanation:
+        en: The teacher is the causer; the boy still performs the reading. The lesson is what is read.
+        hi: गुरु प्रेरक हैं; पढ़ने वाला अब भी बालक है। पाठ पढ़ी जाने वाली वस्तु है।
+      items:
+      - id: i0
+        sa: बालकः पठति।
+        meaning:
+          en: The boy reads.
+          hi: बालक पढ़ता है।
+        words:
+        - sa: बालकः
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reads
+            hi: पढ़ता है
           check:
             type: tinanta
             dhatu: पठ्
             lakara: Lat
             purusha: Prathama
             vacana: Eka
-            prayoga: Karmani
         image:
           id: teaching-reader-one
           brief: 'Edit target: the supplied Sanskrit teaching illustration. Preserve the exact number of boys, their faces,
@@ -402,100 +506,70 @@ cards:
           ratio: '4:3'
           text_in_image:
           - अ इ उ
-  - skill: verb.causative
-    rule:
-      en: 'Use the causative when someone gets another to act: {{गुरुः बालं पाठयति}}.'
-      hi: 'जब कोई दूसरे से काम कराए, तब प्रेरणार्थक: {{गुरुः बालं पाठयति}}।'
-    tag: good
-    taught_in: pc.cause#t1
-    visuals:
-    - id: v-linked-1
-      kind: relations
-      title:
-        en: How the words are connected
-        hi: शब्द कैसे जुड़े हैं
-      explanation:
-        en: The teacher makes the boy read the lesson.
-        hi: गुरु बालक को पाठ पढ़ाता है।
-      items:
-      - id: i0
-        sa: गुरुः
-        meaning:
-          en: the teacher
-          hi: गुरु
-        check:
-          type: subanta
-          stem: गुरु
-          linga: Pum
-          vibhakti: Prathama
-          vacana: Eka
-        feature:
-          en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
-          hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
-        compare_from: गुरु
       - id: i1
-        sa: बालकम्
+        sa: गुरुः बालकम् पाठम् पाठयति।
         meaning:
-          en: the boy
-          hi: बालक को
-        check:
-          type: subanta
-          stem: बालक
-          linga: Pum
-          vibhakti: Dvitiya
-          vacana: Eka
-        feature:
-          en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
-          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
-        compare_from: बालक
-      - id: i2
-        sa: पाठम्
-        meaning:
-          en: the lesson
-          hi: पाठ
-        check:
-          type: subanta
-          stem: पाठ
-          linga: Napumsaka
-          vibhakti: Dvitiya
-          vacana: Eka
-        feature:
-          en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
-          hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
-        compare_from: पाठ
-      - id: i3
-        sa: पाठयति
-        meaning:
-          en: makes read
-          hi: पढ़ाता है
-        check:
-          type: tinanta
-          dhatu: पठ्
-          lakara: Lat
-          purusha: Prathama
-          vacana: Eka
-          sanadi:
-          - Nic
-        feature:
-          en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
-          hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
-        compare_from: पठ्
-      edges:
-      - source: i0
-        target: i3
-        label:
-          en: causes the reading
-          hi: पढ़वाता है
-      - source: i1
-        target: i3
-        label:
-          en: is made to read
-          hi: जिससे पढ़वाया जाता है
-      - source: i2
-        target: i3
-        label:
-          en: lesson read
-          hi: पढ़ा जाने वाला पाठ
+          en: The teacher makes the boy read the lesson.
+          hi: गुरु बालक को पाठ पढ़ाता है।
+        words:
+        - sa: गुरुः
+          gloss:
+            en: the teacher
+            hi: गुरु
+          check:
+            type: subanta
+            stem: गुरु
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: बालकम्
+          gloss:
+            en: the boy
+            hi: बालक को
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: पाठम्
+          gloss:
+            en: the lesson
+            hi: पाठ
+          check:
+            type: subanta
+            stem: पाठ
+            linga: Napumsaka
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: पाठयति
+          gloss:
+            en: makes read
+            hi: पढ़ाता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+            sanadi:
+            - Nic
+        image:
+          id: teaching-cause-reading
+          brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+            with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Complete central people and objects,
+            no cropped bodies, simple quiet courtyard backdrop, readable on a phone. No decorative border, watermark, extra
+            people or letterlike marks. Exactly two people: an older male teacher in plain cream clothes on the left actively
+            teaching one school-age boy in an ochre kurta on the right to read. Both sit at one low desk, the teacher points
+            with one finger to the boy’s open book and the boy follows the line aloud, eyes on the page. The book contains
+            exactly the single large line "अ इ उ", clearly legible, no other writing. The teacher is causing the boy to read,
+            rather than reading alone.'
+          alt:
+            en: A teacher makes a boy read अ इ उ
+            hi: बालक को अ इ उ पढ़वाते गुरु
+          ratio: '4:3'
+          text_in_image:
+          - अ इ उ
   - skill: verb.desiderative
     rule:
       en: Use the desiderative when the subject wants to do the action.
@@ -506,38 +580,69 @@ cards:
     - id: v-linked-2
       kind: comparison
       title:
-        en: Read the forms in the explanation
-        hi: व्याख्या के रूप पढ़ें
+        en: Wanting and doing
+        hi: चाहना और करना
       explanation:
-        en: 'The desiderative doubles the root and adds {{-स-}} (with {{-इ-}} before it for many roots): {{पा}} gives {{पिपासति}}
-          (wants to drink), {{पठ्}} gives {{पिपठिषति}} (wants to read), {{गम्}} gives {{जिगमिषति}} (wants to go), {{भू}} gives
-          {{बुभूषति}} (wants to be). It is called {{सन्}}.'
-        hi: 'इच्छार्थक रूप धातु को दुगुना करता है और {{-स-}} जोड़ता है (अनेक धातुओं में उससे पहले {{-इ-}}): {{पा}} से {{पिपासति}}
-          (पीना चाहता है), {{पठ्}} से {{पिपठिषति}} (पढ़ना चाहता है), {{गम्}} से {{जिगमिषति}} (जाना चाहता है), {{भू}} से {{बुभूषति}}
-          (होना चाहता है)। इसे {{सन्}} कहते हैं।'
+        en: The desire form expresses wanting. By itself it does not tell us that the desired action takes place.
+        hi: इच्छार्थक रूप चाहना बताता है। केवल इस रूप से यह नहीं कहा जाता कि चाहा गया काम हो रहा है।
       items:
       - id: i0
-        sa: -स-
-      - id: i1
-        sa: -इ-
-      - id: i2
-        sa: पा
-      - id: i3
         sa: पिपासति
-      - id: i4
-        sa: पठ्
-      - id: i5
-        sa: पिपठिषति
-      - id: i6
-        sa: गम्
-      - id: i7
-        sa: जिगमिषति
-      - id: i8
-        sa: भू
-      - id: i9
-        sa: बुभूषति
-      - id: i10
-        sa: सन्
+        meaning:
+          en: wants to drink
+          hi: पीना चाहता है
+        check:
+          type: tinanta
+          dhatu: पा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - San
+        feature:
+          en: 'Root: {{पा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{पा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        image:
+          id: teaching-wants-drink
+          brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+            with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Complete central people and objects,
+            no cropped bodies, simple quiet courtyard backdrop, readable on a phone. No decorative border, watermark, extra
+            people or letterlike marks. Exactly one school-age boy in an ochre kurta sitting at a low table, looking longingly
+            at one small plain brass cup of water on the table. One hand reaches toward the cup but does not touch it; mouth
+            closed, cup far away from lips. Make it clear that he wants to drink but is not drinking yet. No thought bubble,
+            icons, writing, extra vessels, food or people.'
+          alt:
+            en: A boy reaches toward a cup, before drinking
+            hi: पीने से पहले प्याले की ओर हाथ बढ़ाता बालक
+          ratio: '4:3'
+          text_in_image: []
+      - id: i1
+        sa: पिबति
+        meaning:
+          en: drinks
+          hi: पीता है
+        check:
+          type: tinanta
+          dhatu: पा
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+        feature:
+          en: 'Root: {{पा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{पा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        image:
+          id: teaching-boy-drinks
+          brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+            and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+            central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+            letterlike decoration, border or watermark. A school-age boy in an ochre kurta is drinking water from one plain
+            brass cup held to his lips. Show the drinking action clearly, with the cup tilted naturally, seated on a low stone
+            step. No jug, food, writing or symbols.'
+          alt:
+            en: A boy drinks from a cup
+            hi: प्याले से पीता बालक
+          ratio: '4:3'
+          text_in_image: []
 - id: exceptions
   kind: revision
   title:
@@ -703,12 +808,371 @@ cards:
       hi: 'कर्ता को प्रथमा में मत छोड़िए: {{रामेण पठ्यते}}, {{रामः पठ्यते}} नहीं।'
     tag: core
     taught_in: pc.passive#p1
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      items:
+      - id: i0
+        sa: रामेण पुस्तकम् पठ्यते।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: The book is read by Rāma.
+          hi: पुस्तक राम द्वारा पढ़ी जाती है।
+        words:
+        - sa: रामेण
+          gloss:
+            en: by Rāma
+            hi: राम द्वारा
+          check:
+            type: subanta
+            stem: राम
+            linga: Pum
+            vibhakti: Trtiya
+            vacana: Eka
+        - sa: पुस्तकम्
+          gloss:
+            en: the book
+            hi: पुस्तक
+          check:
+            type: subanta
+            stem: पुस्तक
+            linga: Napumsaka
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठ्यते
+          gloss:
+            en: is read
+            hi: पढ़ी जाती है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+            prayoga: Karmani
+      - id: i1
+        sa: रामेण
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: by Rāma
+          hi: राम द्वारा
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Trtiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{तृतीया}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{तृतीया}} · {{एकवचन}}'
+        compare_from: राम
+      - id: i2
+        sa: पुस्तकम्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: the book
+          hi: पुस्तक
+        check:
+          type: subanta
+          stem: पुस्तक
+          linga: Napumsaka
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{पुस्तक}} · neuter · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{पुस्तक}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        image:
+          id: teaching-book
+          brief: 'Use case: scientific-educational. Square 1:1 Sanskrit vocabulary illustration. Refined Indian watercolor
+            with restrained gouache on warm ivory paper, muted ochre, sage and indigo, soft natural light. One clear central
+            subject, whole and uncropped, recognizable at 160px. Plain quiet background. No labels, lettering, symbols, decorative
+            border or watermark. One closed traditional cloth-bound book with a plain indigo cover and warm ivory page edges,
+            viewed at a slight angle. No writing on the cover, spine or pages.'
+          alt:
+            en: One closed book with a plain cover
+            hi: सादे आवरण की एक बन्द पुस्तक
+          ratio: '1:1'
+          text_in_image: []
+        compare_from: पुस्तक
+      - id: i3
+        sa: पठ्यते
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: is read
+          hi: पढ़ी जाती है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prayoga: Karmani
+        feature:
+          en: 'Root: {{पठ्}} · singular · {{लट्}} · {{कर्मणि}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · {{कर्मणि}} · प्रथमपुरुष'
+        compare_from: पठ्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'Active: {{रामः पुस्तकं पठति}}, Rāma reads the book. Passive: {{रामेण पुस्तकं पठ्यते}}, the book is read by
+            Rāma. The doer goes into the third case, the object becomes the subject, and the verb takes {{-य-}} and the endings
+            for oneself: {{पठ्}} gives {{पठ्यते}}.'
+          hi: 'कर्तृवाच्य: {{रामः पुस्तकं पठति}}, राम पुस्तक पढ़ता है। कर्मवाच्य: {{रामेण पुस्तकं पठ्यते}}, पुस्तक राम द्वारा
+            पढ़ी जाती है। कर्ता तृतीया में जाता है, कर्म उद्देश्य बन जाता है, और क्रिया {{-य-}} तथा अपने लिए वाले प्रत्यय
+            लेती है: {{पठ्}} से {{पठ्यते}}।'
+      - id: i6
+        sa: रामेण पुस्तकम् पठ्यते।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: The book is read by Rāma.
+          hi: पुस्तक राम द्वारा पढ़ी जाती है।
+        words:
+        - sa: रामेण
+          gloss:
+            en: by Rāma
+            hi: राम द्वारा
+          check:
+            type: subanta
+            stem: राम
+            linga: Pum
+            vibhakti: Trtiya
+            vacana: Eka
+        - sa: पुस्तकम्
+          gloss:
+            en: the book
+            hi: पुस्तक
+          check:
+            type: subanta
+            stem: पुस्तक
+            linga: Napumsaka
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: पठ्यते
+          gloss:
+            en: is read
+            hi: पढ़ी जाती है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+            prayoga: Karmani
   - skill: verb.causative
     rule:
       en: Do not confuse {{पाठयति}} (teaches) with {{पठति}} (reads).
       hi: '{{पाठयति}} (पढ़ाता है) और {{पठति}} (पढ़ता है) को मत मिलाइए।'
     tag: core
     taught_in: pc.cause#p1
+    visuals:
+    - id: v-linked-1
+      kind: worked
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      items:
+      - id: i0
+        sa: गुरुः बालकम् पाठम् पाठयति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: The teacher makes the boy read the lesson.
+          hi: गुरु बालक को पाठ पढ़ाता है।
+        words:
+        - sa: गुरुः
+          gloss:
+            en: the teacher
+            hi: गुरु
+          check:
+            type: subanta
+            stem: गुरु
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: बालकम्
+          gloss:
+            en: the boy
+            hi: बालक को
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: पाठम्
+          gloss:
+            en: the lesson
+            hi: पाठ
+          check:
+            type: subanta
+            stem: पाठ
+            linga: Napumsaka
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: पाठयति
+          gloss:
+            en: makes read
+            hi: पढ़ाता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+            sanadi:
+            - Nic
+      - id: i1
+        sa: गुरुः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: the teacher
+          hi: गुरु
+        check:
+          type: subanta
+          stem: गुरु
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{गुरु}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{गुरु}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: गुरु
+      - id: i2
+        sa: बालकम्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: the boy
+          hi: बालक को
+        check:
+          type: subanta
+          stem: बालक
+          linga: Pum
+          vibhakti: Dvitiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{बालक}} · masculine · {{द्वितीया}} · singular'
+          hi: 'प्रातिपदिक: {{बालक}} · {{पुंलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+        compare_from: बालक
+      - id: i3
+        sa: पाठम्
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: the lesson
+          hi: पाठ
+        check:
+          type: subanta
+          stem: पाठ
+          linga: Napumsaka
+          vibhakti: Dvitiya
+          vacana: Eka
+        feature:
+          en: 'Stem: {{पाठ}} · neuter · {{द्वितीया}} · singular'
+          hi: 'प्रातिपदिक: {{पाठ}} · {{नपुंसकलिंग}} · {{द्वितीया}} · {{एकवचन}}'
+        compare_from: पाठ
+      - id: i4
+        sa: पाठयति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: makes read
+          hi: पढ़ाता है
+        check:
+          type: tinanta
+          dhatu: पठ्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          sanadi:
+          - Nic
+        feature:
+          en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: पठ्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'The causative adds {{-अय-}} after a strengthened root and means “makes do”: {{पठ्}} gives {{पाठयति}} (makes
+            read, teaches), {{कृ}} gives {{कारयति}} (makes do), {{भुज्}} gives {{भोजयति}} (feeds), {{गम्}} gives {{गमयति}}
+            (sends). The one made to act goes in the second case.'
+          hi: 'प्रेरणार्थक रूप दृढ़ किए हुए धातु के बाद {{-अय-}} जोड़ता है और ‘करवाता है’ का अर्थ देता है: {{पठ्}} से {{पाठयति}}
+            (पढ़वाता है, पढ़ाता है), {{कृ}} से {{कारयति}} (करवाता है), {{भुज्}} से {{भोजयति}} (खिलाता है), {{गम्}} से {{गमयति}}
+            (भेजता है)। जिससे कराया जाए, वह द्वितीया में जाता है।'
+      - id: i7
+        sa: गुरुः बालकम् पाठम् पाठयति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: The teacher makes the boy read the lesson.
+          hi: गुरु बालक को पाठ पढ़ाता है।
+        words:
+        - sa: गुरुः
+          gloss:
+            en: the teacher
+            hi: गुरु
+          check:
+            type: subanta
+            stem: गुरु
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: बालकम्
+          gloss:
+            en: the boy
+            hi: बालक को
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: पाठम्
+          gloss:
+            en: the lesson
+            hi: पाठ
+          check:
+            type: subanta
+            stem: पाठ
+            linga: Napumsaka
+            vibhakti: Dvitiya
+            vacana: Eka
+        - sa: पाठयति
+          gloss:
+            en: makes read
+            hi: पढ़ाता है
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+            sanadi:
+            - Nic
 - id: panini
   kind: revision
   title:

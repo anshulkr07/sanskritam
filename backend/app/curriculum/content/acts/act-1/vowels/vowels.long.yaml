@@ -292,6 +292,70 @@ cards:
     ratio: '4:3'
     place: grama
   visuals:
+  - id: v-word-contrast
+    kind: comparison
+    title:
+      en: A sound difference changes the word
+      hi: ध्वनि का अन्तर, अलग शब्द
+    explanation:
+      en: Read each complete word and compare its meaning. The captions, not resemblance alone, identify the words.
+      hi: हर पूरा शब्द पढ़ें और उसका अर्थ मिलाएँ। केवल चित्र के अनुमान से नहीं, लिखे शब्द से पहचानें।
+    items:
+    - id: i2
+      sa: कुलम्
+      meaning:
+        en: a family (short {{उ}})
+        hi: कुल, परिवार (ह्रस्व उ)
+      check:
+        type: subanta
+        stem: कुल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कुल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कुल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-family
+        brief: 'Use case: scientific-educational. One square 1:1 Sanskrit vocabulary painting. Refined Indian watercolor and
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo. A single clear central subject, complete and
+          uncropped, plain quiet background and generous breathing room, recognizable at 160px. No lettering, numbers, symbols,
+          border or watermark. One warm multigenerational Indian family group: two grandparents, two parents and two children,
+          sitting close together in a quiet courtyard, family affection and varied ages clear. Exactly six people, no other
+          people, objects or writing. No individual is singled out as poor or a servant. This illustrates family.'
+        alt:
+          en: A family with two grandparents, two parents and two children
+          hi: दो दादा-दादी, माता-पिता और दो बच्चों वाला परिवार
+        ratio: '1:1'
+        text_in_image: []
+    - id: i3
+      sa: कूलम्
+      meaning:
+        en: a riverbank (long {{ऊ}})
+        hi: नदी का किनारा (दीर्घ ऊ)
+      check:
+        type: subanta
+        stem: कूल
+        linga: Napumsaka
+        vibhakti: Prathama
+        vacana: Eka
+      feature:
+        en: 'Stem: {{कूल}} · neuter · {{प्रथमा}} · singular'
+        hi: 'प्रातिपदिक: {{कूल}} · {{नपुंसकलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+      image:
+        id: teaching-riverbank
+        brief: 'Use case: scientific-educational. One square 1:1 Sanskrit vocabulary painting. Refined Indian watercolor and
+          restrained gouache on warm ivory paper, muted ochre, sage and indigo. A single clear central subject, complete and
+          uncropped, plain quiet background and generous breathing room, recognizable at 160px. No lettering, numbers, symbols,
+          border or watermark. A close, clear view of one gently sloping grassy riverbank, with visible earth and stones at
+          the water''s edge. The bank occupies the lower two thirds of the composition and a narrow strip of flowing blue
+          water occupies the upper third. No people, boats, buildings or letters. Emphasize the river BANK, not the whole
+          river.'
+        alt:
+          en: The grassy bank beside a river
+          hi: नदी के पास घास वाला तट
+        ratio: '1:1'
+        text_in_image: []
   - id: v-source-example-0
     kind: worked
     title:

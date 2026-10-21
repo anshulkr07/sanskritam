@@ -459,93 +459,76 @@ cards:
     taught_in: syn.when#t1
     visuals:
     - id: v-linked-1
-      kind: relations
+      kind: reading
       title:
-        en: How the words are connected
-        hi: शब्द कैसे जुड़े हैं
-      explanation:
-        en: Rāma having gone, Lakṣmaṇa comes.
-        hi: राम के जाने पर लक्ष्मण आता है।
+        en: Follow the events
+        hi: घटनाओं का क्रम समझें
       items:
       - id: i0
-        sa: रामे
+        sa: बालके पठति गुरुः हसति।
         meaning:
-          en: Rāma
-          hi: राम
-        check:
-          type: subanta
-          stem: राम
-          linga: Pum
-          vibhakti: Saptami
-          vacana: Eka
-        feature:
-          en: 'Stem: {{राम}} · masculine · {{सप्तमी}} · singular'
-          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
-        compare_from: राम
-      - id: i1
-        sa: गते
-        meaning:
-          en: having gone
-          hi: जाने पर
-        check:
-          type: krdanta
-          dhatu: गम्
-          krt: kta
-          linga: Pum
-          vibhakti: Saptami
-          vacana: Eka
-        feature:
-          en: 'Root: {{गम्}} · masculine · {{सप्तमी}} · singular'
-          hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
-        compare_from: गम्
-      - id: i2
-        sa: लक्ष्मणः
-        meaning:
-          en: Lakṣmaṇa
-          hi: लक्ष्मण
-        check:
-          type: subanta
-          stem: लक्ष्मण
-          linga: Pum
-          vibhakti: Prathama
-          vacana: Eka
-        feature:
-          en: 'Stem: {{लक्ष्मण}} · masculine · {{प्रथमा}} · singular'
-          hi: 'प्रातिपदिक: {{लक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
-        compare_from: लक्ष्मण
-      - id: i3
-        sa: आगच्छति
-        meaning:
-          en: comes
-          hi: आता है
-        check:
-          type: tinanta
-          dhatu: गम्
-          lakara: Lat
-          purusha: Prathama
-          vacana: Eka
-          prefixes:
-          - आ
-        feature:
-          en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
-          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
-        compare_from: गम्
-      edges:
-      - source: i0
-        target: i1
-        label:
-          en: 'background event: Rāma goes'
-          hi: 'पृष्ठभूमि की घटना: राम जाता है'
-      - source: i2
-        target: i3
-        label:
-          en: 'main event: another subject'
-          hi: 'मुख्य घटना: दूसरा कर्ता'
-      - source: i1
-        target: i3
-        label:
-          en: sets the time for the main event
-          hi: मुख्य घटना का समय बताता है
+          en: While the boy reads, the teacher smiles.
+          hi: बालक के पढ़ते हुए गुरु हँसता है।
+        words:
+        - sa: बालके
+          gloss:
+            en: boy
+            hi: बालक
+          check:
+            type: subanta
+            stem: बालक
+            linga: Pum
+            vibhakti: Saptami
+            vacana: Eka
+        - sa: पठति
+          gloss:
+            en: reading
+            hi: पढ़ते हुए
+          check:
+            type: krdanta
+            dhatu: पठ्
+            krt: Satf
+            linga: Pum
+            vibhakti: Saptami
+            vacana: Eka
+        - sa: गुरुः
+          gloss:
+            en: teacher
+            hi: गुरु
+          check:
+            type: subanta
+            stem: गुरु
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: हसति
+          gloss:
+            en: smiles
+            hi: हँसता है
+          check:
+            type: tinanta
+            dhatu: हस्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        diagram:
+          kind: timeline
+          events:
+          - label:
+              en: '{{बालके पठति}} — background event'
+              hi: '{{बालके पठति}} — पृष्ठभूमि की घटना'
+            start: 0
+            end: 9
+          - label:
+              en: '{{गुरुः हसति}} — main event'
+              hi: '{{गुरुः हसति}} — मुख्य घटना'
+            start: 2
+            end: 7
+      explanation:
+        en: The background phrase and main clause have different subjects. Read the participle to decide whether the background
+          event is completed or ongoing.
+        hi: पृष्ठभूमि के पदसमूह और मुख्य वाक्य के कर्ता अलग हैं। कृदन्त से पहचानें कि पृष्ठभूमि की घटना पूरी हो गई है या चल
+          रही है।
   - skill: syn.conditional
     rule:
       en: 'Fact: present; promise: future; supposition: optative.'
@@ -554,19 +537,24 @@ cards:
     taught_in: syn.if#t1
     visuals:
     - id: v-linked-2
-      kind: worked
+      kind: relations
       title:
-        en: Read, examine, understand
-        hi: पढ़ें, समझें, फिर पढ़ें
+        en: Read the clause boundaries
+        hi: उपवाक्य की सीमाएँ पढ़ें
+      explanation:
+        en: Keep the two clauses distinct. These examples illustrate choices of tense and mood; context determines the intended
+          kind of condition.
+        hi: दोनों उपवाक्यों को अलग पहचानें। ये उदाहरण काल और अर्थवृत्ति के चुनाव दिखाते हैं; शर्त का अभिप्राय सन्दर्भ से तय
+          होता है।
       items:
-      - id: i0
-        sa: यदि सः पठति तर्हि सः जानाति।
+      - id: i99
+        sa: यदि सः पठेत् तर्हि सः जानीयात्।
         label:
-          en: Read the whole example
-          hi: पूरा उदाहरण पढ़ें
+          en: Unchanged source sentence
+          hi: मूल वाक्य
         meaning:
-          en: If he reads, then he knows.
-          hi: यदि वह पढ़ता है, तो जानता है।
+          en: If he were to read, he would know.
+          hi: यदि वह पढ़े, तो जान जाए।
         words:
         - sa: यदि
           gloss:
@@ -576,14 +564,14 @@ cards:
           gloss:
             en: he
             hi: वह
-        - sa: पठति
+        - sa: पठेत्
           gloss:
-            en: reads
-            hi: पढ़ता है
+            en: were to read
+            hi: पढ़े
           check:
             type: tinanta
             dhatu: पठ्
-            lakara: Lat
+            lakara: VidhiLin
             purusha: Prathama
             vacana: Eka
         - sa: तर्हि
@@ -594,103 +582,18 @@ cards:
           gloss:
             en: he
             hi: वह
-        - sa: जानाति
+        - sa: जानीयात्
           gloss:
-            en: knows
-            hi: जानता है
+            en: would know
+            hi: जान जाए
           check:
             type: tinanta
             dhatu: ज्ञा
-            lakara: Lat
+            lakara: VidhiLin
             purusha: Prathama
             vacana: Eka
-      - id: i1
-        sa: यदि
-        label:
-          en: Follow this word
-          hi: इस शब्द पर ध्यान दें
-        meaning:
-          en: if
-          hi: यदि
-      - id: i2
-        sa: सः
-        label:
-          en: Follow this word
-          hi: इस शब्द पर ध्यान दें
-        meaning:
-          en: he
-          hi: वह
-      - id: i3
-        sa: पठति
-        label:
-          en: Follow this word
-          hi: इस शब्द पर ध्यान दें
-        meaning:
-          en: reads
-          hi: पढ़ता है
-        check:
-          type: tinanta
-          dhatu: पठ्
-          lakara: Lat
-          purusha: Prathama
-          vacana: Eka
-        feature:
-          en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
-          hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
-        compare_from: पठ्
-      - id: i4
-        sa: तर्हि
-        label:
-          en: Follow this word
-          hi: इस शब्द पर ध्यान दें
-        meaning:
-          en: then
-          hi: तो
-      - id: i5
-        sa: सः
-        label:
-          en: Follow this word
-          hi: इस शब्द पर ध्यान दें
-        meaning:
-          en: he
-          hi: वह
-      - id: i6
-        sa: जानाति
-        label:
-          en: Follow this word
-          hi: इस शब्द पर ध्यान दें
-        meaning:
-          en: knows
-          hi: जानता है
-        check:
-          type: tinanta
-          dhatu: ज्ञा
-          lakara: Lat
-          purusha: Prathama
-          vacana: Eka
-        feature:
-          en: 'Root: {{ज्ञा}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
-          hi: 'धातु: {{ज्ञा}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
-        compare_from: ज्ञा
-      - id: rule
-        label:
-          en: Connect the form and the rule
-          hi: रूप को नियम से जोड़ें
-        meaning:
-          en: '{{यदि}} (if) opens the condition, and {{तर्हि}} or {{तदा}} (then) opens the result: {{यदि सः पठति, तर्हि जानाति}}.
-            A condition about the future takes the future: {{यदि वदसि, तर्हि यास्यति}}. A condition that is only supposed
-            takes {{विधिलिङ्}}: {{यदि पठेत्, तर्हि जानीयात्}}. A negative condition adds {{न}}.'
-          hi: '{{यदि}} (अगर) शर्त खोलता है, और {{तर्हि}} या {{तदा}} (तब) परिणाम खोलता है: {{यदि सः पठति, तर्हि जानाति}}। भविष्य
-            की शर्त भविष्यत् लेती है: {{यदि वदसि, तर्हि यास्यति}}। केवल मानी हुई शर्त {{विधिलिङ्}} लेती है: {{यदि पठेत्, तर्हि
-            जानीयात्}}। नकारात्मक शर्त में {{न}} जुड़ता है।'
-      - id: i9
-        sa: यदि सः पठति तर्हि सः जानाति।
-        label:
-          en: Read it again with the meaning
-          hi: अर्थ समझकर फिर पढ़ें
-        meaning:
-          en: If he reads, then he knows.
-          hi: यदि वह पढ़ता है, तो जानता है।
+      - id: condition
+        sa: यदि सः पठेत्
         words:
         - sa: यदि
           gloss:
@@ -700,16 +603,22 @@ cards:
           gloss:
             en: he
             hi: वह
-        - sa: पठति
+        - sa: पठेत्
           gloss:
-            en: reads
-            hi: पढ़ता है
+            en: were to read
+            hi: पढ़े
           check:
             type: tinanta
             dhatu: पठ्
-            lakara: Lat
+            lakara: VidhiLin
             purusha: Prathama
             vacana: Eka
+        label:
+          en: Condition
+          hi: शर्त
+      - id: result
+        sa: तर्हि सः जानीयात्
+        words:
         - sa: तर्हि
           gloss:
             en: then
@@ -718,16 +627,25 @@ cards:
           gloss:
             en: he
             hi: वह
-        - sa: जानाति
+        - sa: जानीयात्
           gloss:
-            en: knows
-            hi: जानता है
+            en: would know
+            hi: जान जाए
           check:
             type: tinanta
             dhatu: ज्ञा
-            lakara: Lat
+            lakara: VidhiLin
             purusha: Prathama
             vacana: Eka
+        label:
+          en: Result within this conditional statement
+          hi: इस शर्त वाले कथन का परिणाम
+      edges:
+      - source: condition
+        target: result
+        label:
+          en: If the condition holds, this is the stated result
+          hi: शर्त पूरी हो तो कथन यह परिणाम बताता है
 - id: exceptions
   kind: revision
   title:
@@ -998,12 +916,227 @@ cards:
       hi: 'दृश्य का कर्ता प्रथमा में मत रखिए: {{रामे गते}}, {{रामः गते}} नहीं।'
     tag: core
     taught_in: syn.when#p1
+    visuals:
+    - id: v-linked-0
+      kind: worked
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      items:
+      - id: i0
+        sa: रामे गते लक्ष्मणः आगच्छति।
+        label:
+          en: Read the whole example
+          hi: पूरा उदाहरण पढ़ें
+        meaning:
+          en: Rāma having gone, Lakṣmaṇa comes.
+          hi: राम के जाने पर लक्ष्मण आता है।
+        words:
+        - sa: रामे
+          gloss:
+            en: Rāma
+            hi: राम
+          check:
+            type: subanta
+            stem: राम
+            linga: Pum
+            vibhakti: Saptami
+            vacana: Eka
+        - sa: गते
+          gloss:
+            en: having gone
+            hi: जाने पर
+          check:
+            type: krdanta
+            dhatu: गम्
+            krt: kta
+            linga: Pum
+            vibhakti: Saptami
+            vacana: Eka
+        - sa: लक्ष्मणः
+          gloss:
+            en: Lakṣmaṇa
+            hi: लक्ष्मण
+          check:
+            type: subanta
+            stem: लक्ष्मण
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: आगच्छति
+          gloss:
+            en: comes
+            hi: आता है
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+            prefixes:
+            - आ
+      - id: i1
+        sa: रामे
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: Rāma
+          hi: राम
+        check:
+          type: subanta
+          stem: राम
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+        feature:
+          en: 'Stem: {{राम}} · masculine · {{सप्तमी}} · singular'
+          hi: 'प्रातिपदिक: {{राम}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+        compare_from: राम
+      - id: i2
+        sa: गते
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: having gone
+          hi: जाने पर
+        check:
+          type: krdanta
+          dhatu: गम्
+          krt: kta
+          linga: Pum
+          vibhakti: Saptami
+          vacana: Eka
+        feature:
+          en: 'Root: {{गम्}} · masculine · {{सप्तमी}} · singular'
+          hi: 'धातु: {{गम्}} · {{पुंलिंग}} · {{सप्तमी}} · {{एकवचन}}'
+        compare_from: गम्
+      - id: i3
+        sa: लक्ष्मणः
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: Lakṣmaṇa
+          hi: लक्ष्मण
+        check:
+          type: subanta
+          stem: लक्ष्मण
+          linga: Pum
+          vibhakti: Prathama
+          vacana: Eka
+        feature:
+          en: 'Stem: {{लक्ष्मण}} · masculine · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{लक्ष्मण}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
+        compare_from: लक्ष्मण
+      - id: i4
+        sa: आगच्छति
+        label:
+          en: Follow this word
+          hi: इस शब्द पर ध्यान दें
+        meaning:
+          en: comes
+          hi: आता है
+        check:
+          type: tinanta
+          dhatu: गम्
+          lakara: Lat
+          purusha: Prathama
+          vacana: Eka
+          prefixes:
+          - आ
+        feature:
+          en: 'Root: {{गम्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
+          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
+        compare_from: गम्
+      - id: rule
+        label:
+          en: Connect the form and the rule
+          hi: रूप को नियम से जोड़ें
+        meaning:
+          en: 'A word and its participle, both in the seventh case, set the scene: {{सूर्ये उदिते}}, “the sun having risen”;
+            {{रामे गते}}, “Rāma having gone”. If a present sense is meant, use {{शतृ}} or {{सति}}: {{बालके पठति}}, “while
+            the boy reads”. This is {{सति सप्तमी}}, the absolute locative. The main clause has a different subject.'
+          hi: 'एक शब्द और उसका कृदन्त, दोनों सप्तमी में, दृश्य रचते हैं: {{सूर्ये उदिते}}, ‘सूर्य के उदित होने पर’; {{रामे
+            गते}}, ‘राम के जाने पर’। वर्तमान का भाव हो तो {{शतृ}} या {{सति}} लीजिए: {{बालके पठति}}, ‘बालक के पढ़ते हुए’। यह
+            {{सति सप्तमी}} है। मुख्य वाक्य का कर्ता अलग होता है।'
+      - id: i7
+        sa: रामे गते लक्ष्मणः आगच्छति।
+        label:
+          en: Read it again with the meaning
+          hi: अर्थ समझकर फिर पढ़ें
+        meaning:
+          en: Rāma having gone, Lakṣmaṇa comes.
+          hi: राम के जाने पर लक्ष्मण आता है।
+        words:
+        - sa: रामे
+          gloss:
+            en: Rāma
+            hi: राम
+          check:
+            type: subanta
+            stem: राम
+            linga: Pum
+            vibhakti: Saptami
+            vacana: Eka
+        - sa: गते
+          gloss:
+            en: having gone
+            hi: जाने पर
+          check:
+            type: krdanta
+            dhatu: गम्
+            krt: kta
+            linga: Pum
+            vibhakti: Saptami
+            vacana: Eka
+        - sa: लक्ष्मणः
+          gloss:
+            en: Lakṣmaṇa
+            hi: लक्ष्मण
+          check:
+            type: subanta
+            stem: लक्ष्मण
+            linga: Pum
+            vibhakti: Prathama
+            vacana: Eka
+        - sa: आगच्छति
+          gloss:
+            en: comes
+            hi: आता है
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+            prefixes:
+            - आ
   - skill: syn.anvaya
     rule:
       en: Do not read verse word by word in the order printed.
       hi: श्लोक को छपे क्रम में शब्द-शब्द मत पढ़िए।
     tag: core
     taught_in: syn.order#p3
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'Verse puts words in the order of the metre; prose puts them in the order of sense. To find the {{अन्वयः}}: first
+          split the joins (padaccheda); then find the verb; then its doer; then the object, and describing words next to the
+          words they describe. {{रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्}}: who, whom, what, how.'
+        hi: 'श्लोक शब्दों को छन्द के क्रम में रखता है; गद्य अर्थ के क्रम में। {{अन्वयः}} खोजने के लिए: पहले सन्धि खोलिए (पदच्छेद);
+          फिर क्रिया खोजिए; फिर उसका कर्ता; फिर कर्म, और विशेषण उन शब्दों के पास जिनका वे वर्णन करते हैं। {{रिक्तपाणिः राजानं
+          भिषजं गुरुं न पश्येत्}}: कौन, किसे, कैसे।'
+      items:
+      - id: i0
+        sa: अन्वयः
+      - id: i1
+        sa: रिक्तपाणिः राजानं भिषजं गुरुं न पश्येत्
 - id: panini
   kind: revision
   title:

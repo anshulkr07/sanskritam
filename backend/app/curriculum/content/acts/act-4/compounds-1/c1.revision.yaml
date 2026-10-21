@@ -707,12 +707,72 @@ cards:
       hi: '{{राजपुरुषः}} को ‘राजा और पुरुष’ मत पढ़िए।'
     tag: core
     taught_in: c1.tatpurusha#p1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'In a {{तत्पुरुषः}} the first word relates to the second as a case would: {{राज्ञः पुरुषः}}, “the king''s man”,
+          becomes {{राजपुरुषः}}. The case may be any of seven: {{ग्रामगतः}} (gone to the village), {{वृक्षमूलम्}} (root of
+          a tree), {{विद्यालयः}} (house of learning). The second word gives the gender and ending.'
+        hi: '{{तत्पुरुषः}} में पहला शब्द दूसरे से वैसे सम्बन्धित होता है जैसे कोई विभक्ति: {{राज्ञः पुरुषः}}, ‘राजा का पुरुष’,
+          से {{राजपुरुषः}}। विभक्ति सात में से कोई भी हो सकती है: {{ग्रामगतः}} (गाँव गया हुआ), {{वृक्षमूलम्}} (वृक्ष की जड़),
+          {{विद्यालयः}} (विद्या का घर)। दूसरा शब्द लिंग और प्रत्यय देता है।'
+      items:
+      - id: i0
+        sa: तत्पुरुषः
+      - id: i1
+        sa: राज्ञः पुरुषः
+      - id: i2
+        sa: राजपुरुषः
+      - id: i3
+        sa: ग्रामगतः
+      - id: i4
+        sa: वृक्षमूलम्
+      - id: i5
+        sa: विद्यालयः
   - skill: sam.nan-upapada
     rule:
       en: 'Do not forget the {{अन्-}} before a vowel: {{अनन्तः}}, not {{अअन्तः}}.'
       hi: 'स्वर से पहले {{अन्-}} मत भूलिए: {{अनन्तः}}, {{अअन्तः}} नहीं।'
     tag: core
     taught_in: c1.nan#p4
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'A {{न}} before a word makes the opposite: {{न सत्यम्}} gives {{असत्यम्}} (untrue); before a vowel it is {{अन्}}:
+          {{न अन्तः}} gives {{अनन्तः}} (endless). A word before a doer-word names the thing done: {{कुम्भं करोति}} gives {{कुम्भकारः}}
+          (pot-maker); {{शास्त्रं जानाति}} gives {{शास्त्रज्ञः}} (knower of the śāstras).'
+        hi: 'शब्द के आगे {{न}} उसका उलटा बनाता है: {{न सत्यम्}} से {{असत्यम्}} (झूठ); स्वर से पहले वह {{अन्}} होता है: {{न
+          अन्तः}} से {{अनन्तः}} (अनन्त)। कर्ता-शब्द के आगे का शब्द बताता है कि क्या किया जाता है: {{कुम्भं करोति}} से {{कुम्भकारः}}
+          (घड़ा बनाने वाला); {{शास्त्रं जानाति}} से {{शास्त्रज्ञः}} (शास्त्रों का ज्ञाता)।'
+      items:
+      - id: i0
+        sa: न
+      - id: i1
+        sa: न सत्यम्
+      - id: i2
+        sa: असत्यम्
+      - id: i3
+        sa: अन्
+      - id: i4
+        sa: न अन्तः
+      - id: i5
+        sa: अनन्तः
+      - id: i6
+        sa: कुम्भं करोति
+      - id: i7
+        sa: कुम्भकारः
+      - id: i8
+        sa: शास्त्रं जानाति
+      - id: i9
+        sa: शास्त्रज्ञः
 - id: panini
   kind: revision
   title:

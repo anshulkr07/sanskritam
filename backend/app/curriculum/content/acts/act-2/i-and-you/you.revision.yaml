@@ -29,13 +29,8 @@ cards:
     - id: v-linked-0
       kind: comparison
       title:
-        en: Compare the examples
-        hi: उदाहरणों की तुलना करें
-      explanation:
-        en: '“I” is {{अहम्}}. For two it is {{आवाम्}} (we two), for many {{वयम्}} (we). The verb shows it too: {{अहं पठामि}}
-          (I read), {{आवां पठावः}} (we two read), {{वयं पठामः}} (we read).'
-        hi: '‘मैं’ है {{अहम्}}। दो के लिए {{आवाम्}} (हम दोनों), अनेक के लिए {{वयम्}} (हम)। क्रिया भी यही बताती है: {{अहं पठामि}}
-          (मैं पढ़ता हूँ), {{आवां पठावः}} (हम दोनों पढ़ते हैं), {{वयं पठामः}} (हम पढ़ते हैं)।'
+        en: Whose viewpoint? How many?
+        hi: किसका दृष्टिकोण? कितने?
       items:
       - id: i0
         sa: अहम्
@@ -49,9 +44,13 @@ cards:
           vibhakti: Prathama
           vacana: Eka
         feature:
-          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
-          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
-        compare_from: अस्मद्
+          en: 'Stem: {{अस्मद्}} · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{प्रथमा}} · {{एकवचन}}'
+        diagram:
+          kind: conversation
+          role: speaker
+          quantity: 1
+          plural: false
       - id: i1
         sa: आवाम्
         meaning:
@@ -64,9 +63,13 @@ cards:
           vibhakti: Prathama
           vacana: Dvi
         feature:
-          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
-          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
-        compare_from: अस्मद्
+          en: 'Stem: {{अस्मद्}} · {{प्रथमा}} · dual'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{प्रथमा}} · {{द्विवचन}}'
+        diagram:
+          kind: conversation
+          role: speaker
+          quantity: 2
+          plural: false
       - id: i2
         sa: वयम्
         meaning:
@@ -79,9 +82,13 @@ cards:
           vibhakti: Prathama
           vacana: Bahu
         feature:
-          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
-          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
-        compare_from: अस्मद्
+          en: 'Stem: {{अस्मद्}} · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{प्रथमा}} · {{बहुवचन}}'
+        diagram:
+          kind: conversation
+          role: speaker
+          quantity: 3
+          plural: true
   - skill: pron.you
     formula: त्वम् · युवाम् · यूयम्
     rule:
@@ -93,13 +100,8 @@ cards:
     - id: v-linked-1
       kind: comparison
       title:
-        en: Compare the examples
-        hi: उदाहरणों की तुलना करें
-      explanation:
-        en: '“You” is {{त्वम्}}. For two it is {{युवाम्}}, for many {{यूयम्}}. The verb ends in {{सि}}, {{थः}} or {{थ}}: {{त्वं
-          पठसि}} (you read), {{युवां पठथः}}, {{यूयं पठथ}}.'
-        hi: '‘तुम’ है {{त्वम्}}। दो के लिए {{युवाम्}}, अनेक के लिए {{यूयम्}}। क्रिया {{सि}}, {{थः}} या {{थ}} पर समाप्त होती
-          है: {{त्वं पठसि}} (तुम पढ़ते हो), {{युवां पठथः}}, {{यूयं पठथ}}।'
+        en: Whose viewpoint? How many?
+        hi: किसका दृष्टिकोण? कितने?
       items:
       - id: i0
         sa: त्वम्
@@ -113,9 +115,13 @@ cards:
           vibhakti: Prathama
           vacana: Eka
         feature:
-          en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
-          hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
-        compare_from: युष्मद्
+          en: 'Stem: {{युष्मद्}} · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{युष्मद्}} · {{प्रथमा}} · {{एकवचन}}'
+        diagram:
+          kind: conversation
+          role: listener
+          quantity: 1
+          plural: false
       - id: i1
         sa: युवाम्
         meaning:
@@ -128,9 +134,13 @@ cards:
           vibhakti: Prathama
           vacana: Dvi
         feature:
-          en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
-          hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
-        compare_from: युष्मद्
+          en: 'Stem: {{युष्मद्}} · {{प्रथमा}} · dual'
+          hi: 'प्रातिपदिक: {{युष्मद्}} · {{प्रथमा}} · {{द्विवचन}}'
+        diagram:
+          kind: conversation
+          role: listener
+          quantity: 2
+          plural: false
       - id: i2
         sa: यूयम्
         meaning:
@@ -143,9 +153,13 @@ cards:
           vibhakti: Prathama
           vacana: Bahu
         feature:
-          en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
-          hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
-        compare_from: युष्मद्
+          en: 'Stem: {{युष्मद्}} · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{युष्मद्}} · {{प्रथमा}} · {{बहुवचन}}'
+        diagram:
+          kind: conversation
+          role: listener
+          quantity: 3
+          plural: true
   - skill: verb.persons
     formula: पठति पठसि पठामि
     rule:
@@ -159,8 +173,8 @@ cards:
     - id: v-linked-2
       kind: matrix
       title:
-        en: 'The grid: पठ्'
-        hi: 'तालिका: पठ्'
+        en: Person and number together
+        hi: पुरुष और वचन साथ में
       columns:
       - en: Person
         hi: पुरुष
@@ -177,66 +191,165 @@ cards:
             hi: वह (प्रथम पुरुष)
         - id: r0-c1
           sa: पठति
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
           feature:
             en: 'Root: {{पठ्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
             hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
           compare_from: पठ्
+          diagram:
+            kind: conversation
+            role: referent
+            quantity: 1
+            plural: false
         - id: r0-c2
           sa: पठतः
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Dvi
           feature:
             en: 'Root: {{पठ्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
             hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
           compare_from: पठ्
+          diagram:
+            kind: conversation
+            role: referent
+            quantity: 2
+            plural: false
         - id: r0-c3
           sa: पठन्ति
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Bahu
           feature:
             en: 'Root: {{पठ्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
             hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
           compare_from: पठ्
+          diagram:
+            kind: conversation
+            role: referent
+            quantity: 3
+            plural: true
       - - id: r1-c0
           label:
             en: you
             hi: तुम (मध्यम पुरुष)
         - id: r1-c1
           sa: पठसि
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Madhyama
+            vacana: Eka
           feature:
             en: 'Root: {{पठ्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
             hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
           compare_from: पठ्
+          diagram:
+            kind: conversation
+            role: listener
+            quantity: 1
+            plural: false
         - id: r1-c2
           sa: पठथः
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Madhyama
+            vacana: Dvi
           feature:
             en: 'Root: {{पठ्}} · dual · {{लट्}} · Second person ({{मध्यमपुरुष}})'
             hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · मध्यमपुरुष'
           compare_from: पठ्
+          diagram:
+            kind: conversation
+            role: listener
+            quantity: 2
+            plural: false
         - id: r1-c3
           sa: पठथ
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Madhyama
+            vacana: Bahu
           feature:
             en: 'Root: {{पठ्}} · plural · {{लट्}} · Second person ({{मध्यमपुरुष}})'
             hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · मध्यमपुरुष'
           compare_from: पठ्
+          diagram:
+            kind: conversation
+            role: listener
+            quantity: 3
+            plural: true
       - - id: r2-c0
           label:
             en: I, we
             hi: मैं (उत्तम पुरुष)
         - id: r2-c1
           sa: पठामि
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Eka
           feature:
             en: 'Root: {{पठ्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
             hi: 'धातु: {{पठ्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
           compare_from: पठ्
+          diagram:
+            kind: conversation
+            role: speaker
+            quantity: 1
+            plural: false
         - id: r2-c2
           sa: पठावः
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Dvi
           feature:
             en: 'Root: {{पठ्}} · dual · {{लट्}} · First person ({{उत्तमपुरुष}})'
             hi: 'धातु: {{पठ्}} · {{द्विवचन}} · {{लट्}} · उत्तमपुरुष'
           compare_from: पठ्
+          diagram:
+            kind: conversation
+            role: speaker
+            quantity: 2
+            plural: false
         - id: r2-c3
           sa: पठामः
+          check:
+            type: tinanta
+            dhatu: पठ्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Bahu
           feature:
             en: 'Root: {{पठ्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
             hi: 'धातु: {{पठ्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
           compare_from: पठ्
+          diagram:
+            kind: conversation
+            role: speaker
+            quantity: 3
+            plural: true
   - skill: pron.polite
     formula: भवान् पठति
     rule:
@@ -300,8 +413,8 @@ cards:
     - id: v-linked-4
       kind: matrix
       title:
-        en: The nine forms of अस्
-        hi: अस् के नौ रूप
+        en: Person and number together
+        hi: पुरुष और वचन साथ में
       columns:
       - en: Person
         hi: पुरुष
@@ -318,66 +431,165 @@ cards:
             hi: वह (प्रथम पुरुष)
         - id: r0-c1
           sa: अस्ति
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
           feature:
             en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: referent
+            quantity: 1
+            plural: false
         - id: r0-c2
           sa: स्तः
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Dvi
           feature:
             en: 'Root: {{अस्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: referent
+            quantity: 2
+            plural: false
         - id: r0-c3
           sa: सन्ति
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Bahu
           feature:
             en: 'Root: {{अस्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: referent
+            quantity: 3
+            plural: true
       - - id: r1-c0
           label:
             en: you
             hi: तुम (मध्यम पुरुष)
         - id: r1-c1
           sa: असि
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Madhyama
+            vacana: Eka
           feature:
             en: 'Root: {{अस्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: listener
+            quantity: 1
+            plural: false
         - id: r1-c2
           sa: स्थः
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Madhyama
+            vacana: Dvi
           feature:
             en: 'Root: {{अस्}} · dual · {{लट्}} · Second person ({{मध्यमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · मध्यमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: listener
+            quantity: 2
+            plural: false
         - id: r1-c3
           sa: स्थ
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Madhyama
+            vacana: Bahu
           feature:
             en: 'Root: {{अस्}} · plural · {{लट्}} · Second person ({{मध्यमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · मध्यमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: listener
+            quantity: 3
+            plural: true
       - - id: r2-c0
           label:
             en: I, we
             hi: मैं (उत्तम पुरुष)
         - id: r2-c1
           sa: अस्मि
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Eka
           feature:
             en: 'Root: {{अस्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: speaker
+            quantity: 1
+            plural: false
         - id: r2-c2
           sa: स्वः
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Dvi
           feature:
             en: 'Root: {{अस्}} · dual · {{लट्}} · First person ({{उत्तमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · उत्तमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: speaker
+            quantity: 2
+            plural: false
         - id: r2-c3
           sa: स्मः
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Bahu
           feature:
             en: 'Root: {{अस्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: speaker
+            quantity: 3
+            plural: true
 - id: conditions
   kind: revision
   title:
@@ -737,13 +949,8 @@ cards:
     - id: v-linked-1
       kind: comparison
       title:
-        en: Compare the examples
-        hi: उदाहरणों की तुलना करें
-      explanation:
-        en: '“I” is {{अहम्}}. For two it is {{आवाम्}} (we two), for many {{वयम्}} (we). The verb shows it too: {{अहं पठामि}}
-          (I read), {{आवां पठावः}} (we two read), {{वयं पठामः}} (we read).'
-        hi: '‘मैं’ है {{अहम्}}। दो के लिए {{आवाम्}} (हम दोनों), अनेक के लिए {{वयम्}} (हम)। क्रिया भी यही बताती है: {{अहं पठामि}}
-          (मैं पढ़ता हूँ), {{आवां पठावः}} (हम दोनों पढ़ते हैं), {{वयं पठामः}} (हम पढ़ते हैं)।'
+        en: Whose viewpoint? How many?
+        hi: किसका दृष्टिकोण? कितने?
       items:
       - id: i0
         sa: अहम्
@@ -757,9 +964,13 @@ cards:
           vibhakti: Prathama
           vacana: Eka
         feature:
-          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
-          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
-        compare_from: अस्मद्
+          en: 'Stem: {{अस्मद्}} · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{प्रथमा}} · {{एकवचन}}'
+        diagram:
+          kind: conversation
+          role: speaker
+          quantity: 1
+          plural: false
       - id: i1
         sa: आवाम्
         meaning:
@@ -772,9 +983,13 @@ cards:
           vibhakti: Prathama
           vacana: Dvi
         feature:
-          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
-          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
-        compare_from: अस्मद्
+          en: 'Stem: {{अस्मद्}} · {{प्रथमा}} · dual'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{प्रथमा}} · {{द्विवचन}}'
+        diagram:
+          kind: conversation
+          role: speaker
+          quantity: 2
+          plural: false
       - id: i2
         sa: वयम्
         meaning:
@@ -787,9 +1002,13 @@ cards:
           vibhakti: Prathama
           vacana: Bahu
         feature:
-          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
-          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
-        compare_from: अस्मद्
+          en: 'Stem: {{अस्मद्}} · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{प्रथमा}} · {{बहुवचन}}'
+        diagram:
+          kind: conversation
+          role: speaker
+          quantity: 3
+          plural: true
 - id: panini
   kind: revision
   title:
@@ -905,13 +1124,8 @@ cards:
     - id: v-linked-0
       kind: comparison
       title:
-        en: Compare the examples
-        hi: उदाहरणों की तुलना करें
-      explanation:
-        en: '“I” is {{अहम्}}. For two it is {{आवाम्}} (we two), for many {{वयम्}} (we). The verb shows it too: {{अहं पठामि}}
-          (I read), {{आवां पठावः}} (we two read), {{वयं पठामः}} (we read).'
-        hi: '‘मैं’ है {{अहम्}}। दो के लिए {{आवाम्}} (हम दोनों), अनेक के लिए {{वयम्}} (हम)। क्रिया भी यही बताती है: {{अहं पठामि}}
-          (मैं पढ़ता हूँ), {{आवां पठावः}} (हम दोनों पढ़ते हैं), {{वयं पठामः}} (हम पढ़ते हैं)।'
+        en: Whose viewpoint? How many?
+        hi: किसका दृष्टिकोण? कितने?
       items:
       - id: i0
         sa: अहम्
@@ -925,9 +1139,13 @@ cards:
           vibhakti: Prathama
           vacana: Eka
         feature:
-          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · singular'
-          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
-        compare_from: अस्मद्
+          en: 'Stem: {{अस्मद्}} · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{प्रथमा}} · {{एकवचन}}'
+        diagram:
+          kind: conversation
+          role: speaker
+          quantity: 1
+          plural: false
       - id: i1
         sa: आवाम्
         meaning:
@@ -940,9 +1158,13 @@ cards:
           vibhakti: Prathama
           vacana: Dvi
         feature:
-          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · dual'
-          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
-        compare_from: अस्मद्
+          en: 'Stem: {{अस्मद्}} · {{प्रथमा}} · dual'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{प्रथमा}} · {{द्विवचन}}'
+        diagram:
+          kind: conversation
+          role: speaker
+          quantity: 2
+          plural: false
       - id: i2
         sa: वयम्
         meaning:
@@ -955,9 +1177,13 @@ cards:
           vibhakti: Prathama
           vacana: Bahu
         feature:
-          en: 'Stem: {{अस्मद्}} · masculine · {{प्रथमा}} · plural'
-          hi: 'प्रातिपदिक: {{अस्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
-        compare_from: अस्मद्
+          en: 'Stem: {{अस्मद्}} · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{अस्मद्}} · {{प्रथमा}} · {{बहुवचन}}'
+        diagram:
+          kind: conversation
+          role: speaker
+          quantity: 3
+          plural: true
   - skill: pron.you
     formula: त्वम् युवाम् यूयम्
     rule:
@@ -969,13 +1195,8 @@ cards:
     - id: v-linked-1
       kind: comparison
       title:
-        en: Compare the examples
-        hi: उदाहरणों की तुलना करें
-      explanation:
-        en: '“You” is {{त्वम्}}. For two it is {{युवाम्}}, for many {{यूयम्}}. The verb ends in {{सि}}, {{थः}} or {{थ}}: {{त्वं
-          पठसि}} (you read), {{युवां पठथः}}, {{यूयं पठथ}}.'
-        hi: '‘तुम’ है {{त्वम्}}। दो के लिए {{युवाम्}}, अनेक के लिए {{यूयम्}}। क्रिया {{सि}}, {{थः}} या {{थ}} पर समाप्त होती
-          है: {{त्वं पठसि}} (तुम पढ़ते हो), {{युवां पठथः}}, {{यूयं पठथ}}।'
+        en: Whose viewpoint? How many?
+        hi: किसका दृष्टिकोण? कितने?
       items:
       - id: i0
         sa: त्वम्
@@ -989,9 +1210,13 @@ cards:
           vibhakti: Prathama
           vacana: Eka
         feature:
-          en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · singular'
-          hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{एकवचन}}'
-        compare_from: युष्मद्
+          en: 'Stem: {{युष्मद्}} · {{प्रथमा}} · singular'
+          hi: 'प्रातिपदिक: {{युष्मद्}} · {{प्रथमा}} · {{एकवचन}}'
+        diagram:
+          kind: conversation
+          role: listener
+          quantity: 1
+          plural: false
       - id: i1
         sa: युवाम्
         meaning:
@@ -1004,9 +1229,13 @@ cards:
           vibhakti: Prathama
           vacana: Dvi
         feature:
-          en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · dual'
-          hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{द्विवचन}}'
-        compare_from: युष्मद्
+          en: 'Stem: {{युष्मद्}} · {{प्रथमा}} · dual'
+          hi: 'प्रातिपदिक: {{युष्मद्}} · {{प्रथमा}} · {{द्विवचन}}'
+        diagram:
+          kind: conversation
+          role: listener
+          quantity: 2
+          plural: false
       - id: i2
         sa: यूयम्
         meaning:
@@ -1019,9 +1248,13 @@ cards:
           vibhakti: Prathama
           vacana: Bahu
         feature:
-          en: 'Stem: {{युष्मद्}} · masculine · {{प्रथमा}} · plural'
-          hi: 'प्रातिपदिक: {{युष्मद्}} · {{पुंलिंग}} · {{प्रथमा}} · {{बहुवचन}}'
-        compare_from: युष्मद्
+          en: 'Stem: {{युष्मद्}} · {{प्रथमा}} · plural'
+          hi: 'प्रातिपदिक: {{युष्मद्}} · {{प्रथमा}} · {{बहुवचन}}'
+        diagram:
+          kind: conversation
+          role: listener
+          quantity: 3
+          plural: true
   - skill: verb.persons
     formula: ति तः न्ति · सि थः थ · मि वः मः
     rule:
@@ -1144,8 +1377,8 @@ cards:
     - id: v-linked-4
       kind: matrix
       title:
-        en: The nine forms of अस्
-        hi: अस् के नौ रूप
+        en: Person and number together
+        hi: पुरुष और वचन साथ में
       columns:
       - en: Person
         hi: पुरुष
@@ -1162,63 +1395,162 @@ cards:
             hi: वह (प्रथम पुरुष)
         - id: r0-c1
           sa: अस्ति
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
           feature:
             en: 'Root: {{अस्}} · singular · {{लट्}} · Third person ({{प्रथमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · प्रथमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: referent
+            quantity: 1
+            plural: false
         - id: r0-c2
           sa: स्तः
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Dvi
           feature:
             en: 'Root: {{अस्}} · dual · {{लट्}} · Third person ({{प्रथमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · प्रथमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: referent
+            quantity: 2
+            plural: false
         - id: r0-c3
           sa: सन्ति
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Bahu
           feature:
             en: 'Root: {{अस्}} · plural · {{लट्}} · Third person ({{प्रथमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · प्रथमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: referent
+            quantity: 3
+            plural: true
       - - id: r1-c0
           label:
             en: you
             hi: तुम (मध्यम पुरुष)
         - id: r1-c1
           sa: असि
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Madhyama
+            vacana: Eka
           feature:
             en: 'Root: {{अस्}} · singular · {{लट्}} · Second person ({{मध्यमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · मध्यमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: listener
+            quantity: 1
+            plural: false
         - id: r1-c2
           sa: स्थः
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Madhyama
+            vacana: Dvi
           feature:
             en: 'Root: {{अस्}} · dual · {{लट्}} · Second person ({{मध्यमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · मध्यमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: listener
+            quantity: 2
+            plural: false
         - id: r1-c3
           sa: स्थ
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Madhyama
+            vacana: Bahu
           feature:
             en: 'Root: {{अस्}} · plural · {{लट्}} · Second person ({{मध्यमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · मध्यमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: listener
+            quantity: 3
+            plural: true
       - - id: r2-c0
           label:
             en: I, we
             hi: मैं (उत्तम पुरुष)
         - id: r2-c1
           sa: अस्मि
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Eka
           feature:
             en: 'Root: {{अस्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: speaker
+            quantity: 1
+            plural: false
         - id: r2-c2
           sa: स्वः
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Dvi
           feature:
             en: 'Root: {{अस्}} · dual · {{लट्}} · First person ({{उत्तमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{द्विवचन}} · {{लट्}} · उत्तमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: speaker
+            quantity: 2
+            plural: false
         - id: r2-c3
           sa: स्मः
+          check:
+            type: tinanta
+            dhatu: अस्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Bahu
           feature:
             en: 'Root: {{अस्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
             hi: 'धातु: {{अस्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
           compare_from: अस्
+          diagram:
+            kind: conversation
+            role: speaker
+            quantity: 3
+            plural: true

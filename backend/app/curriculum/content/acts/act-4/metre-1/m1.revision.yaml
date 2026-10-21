@@ -365,12 +365,45 @@ cards:
       hi: 'ह्रस्व स्वर को केवल ह्रस्व होने से लघु मत कहिए: उसके बाद संयुक्त अक्षर उसे भारी बना देता है।'
     tag: core
     taught_in: m1.weight#p2
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: Every syllable is light ({{लघु}}) or heavy ({{गुरु}}). It is light when its vowel is short and nothing joined
+          follows. It is heavy when its vowel is long, or when a short vowel is followed by a joined letter, an anusvāra or
+          a visarga. Light takes one beat; heavy takes two.
+        hi: हर अक्षर लघु ({{लघु}}) होता है या गुरु ({{गुरु}})। स्वर ह्रस्व हो और आगे संयुक्त अक्षर न हो, तो वह लघु है। स्वर
+          दीर्घ हो, या ह्रस्व स्वर के बाद संयुक्त अक्षर, अनुस्वार या विसर्ग हो, तो वह गुरु है। लघु में एक मात्रा लगती है;
+          गुरु में दो।
+      items:
+      - id: i0
+        sa: लघु
+      - id: i1
+        sa: गुरु
   - skill: chandas.shloka
     rule:
       en: 'Do not count the quarters by words: count syllables.'
       hi: 'चरणों को शब्दों से मत गिनिए: अक्षर गिनिए।'
     tag: core
     taught_in: m1.shloka#p1
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'A śloka has four quarters ({{पाद}}) of eight syllables: 32 in all, or 16 in each half. The first four syllables
+          and the eighth are free. In the middle the pattern is fixed: the fifth light, the sixth heavy, and the seventh heavy
+          in quarters one and three, light in two and four.'
+        hi: 'श्लोक में चार चरण ({{पाद}}) होते हैं, आठ-आठ अक्षर के: कुल 32, या हर आधे में 16। पहले चार अक्षर और आठवाँ स्वतन्त्र
+          हैं। बीच में ढाँचा बँधा है: पाँचवाँ लघु, छठा गुरु, और सातवाँ पहले-तीसरे चरण में गुरु, दूसरे-चौथे में लघु।'
+      items:
+      - id: i0
+        sa: पाद
 - id: panini
   kind: revision
   title:

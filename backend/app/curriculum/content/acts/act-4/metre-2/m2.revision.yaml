@@ -216,6 +216,31 @@ cards:
       hi: '{{उपजाति}}: ग्यारह अक्षरों वाले दो छन्दों, {{इन्द्रवज्रा}} और {{उपेन्द्रवज्रा}}, को मिलाने वाला श्लोक।'
     tag: rare
     taught_in: m2.vrtta#p4
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'A {{वृत्तम्}} is a metre counted in syllables: all four quarters have the same number, in the same pattern. Count
+          one quarter. Eleven: {{इन्द्रवज्रा}} or {{उपेन्द्रवज्रा}}. Fourteen: {{वसन्ततिलका}}. Seventeen: {{मन्दाक्रान्ता}}.
+          Nineteen: {{शार्दूलविक्रीडित}}.'
+        hi: '{{वृत्तम्}} अक्षरों से गिना जाने वाला छन्द है: चारों चरणों में संख्या बराबर और ढाँचा वही। एक चरण गिनिए। ग्यारह:
+          {{इन्द्रवज्रा}} या {{उपेन्द्रवज्रा}}। चौदह: {{वसन्ततिलका}}। सत्रह: {{मन्दाक्रान्ता}}। उन्नीस: {{शार्दूलविक्रीडित}}।'
+      items:
+      - id: i0
+        sa: वृत्तम्
+      - id: i1
+        sa: इन्द्रवज्रा
+      - id: i2
+        sa: उपेन्द्रवज्रा
+      - id: i3
+        sa: वसन्ततिलका
+      - id: i4
+        sa: मन्दाक्रान्ता
+      - id: i5
+        sa: शार्दूलविक्रीडित
 - id: mistakes
   kind: revision
   title:
@@ -230,12 +255,56 @@ cards:
       hi: 'केवल चरण के आरम्भ से छन्द का नाम मत लीजिए: पूरा चरण गिनिए।'
     tag: core
     taught_in: m2.vrtta#p1
+    visuals:
+    - id: v-linked-0
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'A {{वृत्तम्}} is a metre counted in syllables: all four quarters have the same number, in the same pattern. Count
+          one quarter. Eleven: {{इन्द्रवज्रा}} or {{उपेन्द्रवज्रा}}. Fourteen: {{वसन्ततिलका}}. Seventeen: {{मन्दाक्रान्ता}}.
+          Nineteen: {{शार्दूलविक्रीडित}}.'
+        hi: '{{वृत्तम्}} अक्षरों से गिना जाने वाला छन्द है: चारों चरणों में संख्या बराबर और ढाँचा वही। एक चरण गिनिए। ग्यारह:
+          {{इन्द्रवज्रा}} या {{उपेन्द्रवज्रा}}। चौदह: {{वसन्ततिलका}}। सत्रह: {{मन्दाक्रान्ता}}। उन्नीस: {{शार्दूलविक्रीडित}}।'
+      items:
+      - id: i0
+        sa: वृत्तम्
+      - id: i1
+        sa: इन्द्रवज्रा
+      - id: i2
+        sa: उपेन्द्रवज्रा
+      - id: i3
+        sa: वसन्ततिलका
+      - id: i4
+        sa: मन्दाक्रान्ता
+      - id: i5
+        sa: शार्दूलविक्रीडित
   - skill: chandas.arya
     rule:
       en: 'Do not count an Āryā by syllables: count mātrās.'
       hi: 'आर्या को अक्षरों से मत गिनिए: मात्राएँ गिनिए।'
     tag: core
     taught_in: m2.arya#p4
+    visuals:
+    - id: v-linked-1
+      kind: comparison
+      title:
+        en: Compare with a taught example
+        hi: सीखे हुए उदाहरण से तुलना करें
+      explanation:
+        en: 'Some metres count time, not syllables: a light syllable is one {{मात्रा}}, a heavy one two. These are called
+          {{जाति}}. In the {{आर्या}} the four quarters have 12, 18, 12 and 15 mātrās. The last syllable of a quarter may be
+          counted heavy to make the sum.'
+        hi: 'कुछ छन्द अक्षर नहीं, समय गिनते हैं: लघु अक्षर एक {{मात्रा}}, गुरु दो। इन्हें {{जाति}} कहते हैं। {{आर्या}} के
+          चार चरणों में 12, 18, 12 और 15 मात्राएँ होती हैं। योग पूरा करने के लिए चरण का अन्तिम अक्षर गुरु गिना जा सकता है।'
+      items:
+      - id: i0
+        sa: मात्रा
+      - id: i1
+        sa: जाति
+      - id: i2
+        sa: आर्या
 - id: sheet
   kind: revision
   title:

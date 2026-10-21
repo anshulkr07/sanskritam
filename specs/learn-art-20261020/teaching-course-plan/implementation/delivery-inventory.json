@@ -4,267 +4,26 @@
     "teach_cards": 279,
     "live_tables": 158,
     "practice_cards": 932,
-    "teaching_figures": 1259,
+    "teaching_figures": 1325,
     "feedback_cards": 932,
     "core_teach_with_figures": 188,
     "depth_teach_with_figures": 91,
     "reading_cards": 15,
     "unit_lessons": 230,
-    "canonical_lesson_images": 176,
-    "new_delivered_images": 29
+    "canonical_lesson_images": 180,
+    "new_delivered_images": 33
   },
   "source_preservation": {
     "original_cards_retained": true,
     "changed_original_fields": [
-      "vowels.check#c1.depth [missing]",
-      "vowels.check#c2.depth [missing]",
-      "vowels.check#c2.roman [missing]",
-      "vowels.check#c3.depth [missing]",
-      "vowels.check#c4.depth [missing]",
-      "vowels.check#c5.depth [missing]",
-      "vowels.check#c6.depth [missing]",
-      "vowels.check#c7.depth [missing]",
-      "vowels.check#c8.depth [missing]",
-      "vowels.check#c8.roman [missing]",
-      "vowels.check#c9.depth [missing]",
-      "vowels.compound#s1.depth [missing]",
-      "vowels.compound#t1.depth [missing]",
-      "vowels.compound#e1.depth [missing]",
-      "vowels.compound#e1.roman [missing]",
-      "vowels.compound#p1.depth [missing]",
-      "vowels.compound#p2.depth [missing]",
-      "vowels.compound#t2.depth [missing]",
-      "vowels.compound#t3.depth [missing]",
-      "vowels.compound#p3.depth [missing]",
-      "vowels.compound#p4.depth [missing]",
-      "vowels.compound#e2.depth [missing]",
-      "vowels.compound#sum.depth [missing]",
-      "vowels.long#s1.depth [missing]",
-      "vowels.long#t1.depth [missing]",
-      "vowels.long#e1.depth [missing]",
-      "vowels.long#e1.roman [missing]",
-      "vowels.long#p1.depth [missing]",
-      "vowels.long#t2.depth [missing]",
-      "vowels.long#p2.depth [missing]",
-      "vowels.long#p2.roman [missing]",
-      "vowels.long#p3.depth [missing]",
-      "vowels.long#e2.depth [missing]",
-      "vowels.long#e2.roman [missing]",
-      "vowels.long#p4.depth [missing]",
-      "vowels.long#p4.roman [missing]",
-      "vowels.long#sum.depth [missing]",
-      "vowels.revision#core.depth [missing]",
-      "vowels.revision#core.rows[0].tag [missing]",
-      "vowels.revision#core.rows[1].tag [missing]",
-      "vowels.revision#core.rows[2].tag [missing]",
-      "vowels.revision#core.rows[3].tag [missing]",
-      "vowels.revision#core.rows[4].tag [missing]",
-      "vowels.revision#core.rows[5].tag [missing]",
-      "vowels.revision#core.rows[6].tag [missing]",
-      "vowels.revision#core.rows[7].tag [missing]",
-      "vowels.revision#core.rows[8].tag [missing]",
-      "vowels.revision#conditions.depth [missing]",
-      "vowels.revision#conditions.rows[0].tag [missing]",
-      "vowels.revision#exceptions.depth [missing]",
-      "vowels.revision#exceptions.rows[0].tag [missing]",
-      "vowels.revision#mistakes.depth [missing]",
-      "vowels.revision#mistakes.rows[0].tag [missing]",
-      "vowels.revision#mistakes.rows[1].tag [missing]",
-      "vowels.revision#mistakes.rows[2].tag [missing]",
-      "vowels.revision#mistakes.rows[3].tag [missing]",
-      "vowels.revision#mistakes.rows[4].tag [missing]",
-      "vowels.revision#panini.rows[0].tag [missing]",
-      "vowels.revision#panini.rows[1].tag [missing]",
-      "vowels.revision#panini.rows[2].tag [missing]",
-      "vowels.revision#panini.rows[3].tag [missing]",
-      "vowels.revision#sheet.depth [missing]",
-      "vowels.revision#sheet.rows[0].tag [missing]",
-      "vowels.revision#sheet.rows[1].tag [missing]",
-      "vowels.revision#sheet.rows[2].tag [missing]",
-      "vowels.revision#sheet.rows[3].tag [missing]",
-      "vowels.revision#sheet.rows[4].tag [missing]",
-      "vowels.short#s1.depth [missing]",
-      "vowels.short#s2.depth [missing]",
-      "vowels.short#t1.depth [missing]",
-      "vowels.short#e1.depth [missing]",
-      "vowels.short#e1.roman [missing]",
-      "vowels.short#p1.depth [missing]",
-      "vowels.short#t2.depth [missing]",
-      "vowels.short#p2.depth [missing]",
-      "vowels.short#e2.depth [missing]",
-      "vowels.short#p3.depth [missing]",
-      "vowels.short#p4.depth [missing]",
-      "vowels.short#sum.depth [missing]",
-      "vowels.signs#s1.depth [missing]",
-      "vowels.signs#t1.depth [missing]",
-      "vowels.signs#t2.depth [missing]",
-      "vowels.signs#e1.depth [missing]",
-      "vowels.signs#e1.roman [missing]",
-      "vowels.signs#p1.depth [missing]",
-      "vowels.signs#t3.depth [missing]",
-      "vowels.signs#p2.depth [missing]",
-      "vowels.signs#p3.depth [missing]",
-      "vowels.signs#e2.depth [missing]",
-      "vowels.signs#p4.depth [missing]",
-      "vowels.signs#sum.depth [missing]",
-      "nf1.deva#p6.roman [missing]",
-      "num.reading#r1.depth [missing]",
-      "num.reading#p1.depth [missing]",
-      "num.reading#p1.roman [missing]",
-      "num.reading#r2.depth [missing]",
-      "num.reading#p2.depth [missing]",
-      "num.reading#p2.roman [missing]",
-      "num.reading#end.depth [missing]",
       "pn.revision#conditions.rows[1].rule.en",
       "pn.revision#conditions.rows[1].rule.hi",
       "pn.who#t2.body.en",
       "pn.who#t2.body.hi",
-      "who.reading#r1.depth [missing]",
-      "who.reading#p1.depth [missing]",
-      "who.reading#p1.roman [missing]",
-      "who.reading#r2.depth [missing]",
-      "who.reading#p2.depth [missing]",
-      "who.reading#p2.roman [missing]",
-      "who.reading#end.depth [missing]",
-      "past.reading#r1.depth [missing]",
-      "past.reading#p1.depth [missing]",
-      "past.reading#p1.roman [missing]",
-      "past.reading#r2.depth [missing]",
-      "past.reading#p2.depth [missing]",
-      "past.reading#p2.roman [missing]",
-      "past.reading#end.depth [missing]",
-      "vs.guna#p6.roman [missing]",
-      "kss.reading#r1.depth [missing]",
-      "kss.reading#p1.depth [missing]",
-      "kss.reading#p1.roman [missing]",
-      "kss.reading#r2.depth [missing]",
-      "kss.reading#p2.depth [missing]",
-      "kss.reading#p2.roman [missing]",
-      "kss.reading#end.depth [missing]"
+      "c2.long#t1.body.en",
+      "c2.long#t1.body.hi"
     ],
-    "unexpected_original_changes": [
-      "vowels.check#c1.depth [missing]",
-      "vowels.check#c2.depth [missing]",
-      "vowels.check#c2.roman [missing]",
-      "vowels.check#c3.depth [missing]",
-      "vowels.check#c4.depth [missing]",
-      "vowels.check#c5.depth [missing]",
-      "vowels.check#c6.depth [missing]",
-      "vowels.check#c7.depth [missing]",
-      "vowels.check#c8.depth [missing]",
-      "vowels.check#c8.roman [missing]",
-      "vowels.check#c9.depth [missing]",
-      "vowels.compound#s1.depth [missing]",
-      "vowels.compound#t1.depth [missing]",
-      "vowels.compound#e1.depth [missing]",
-      "vowels.compound#e1.roman [missing]",
-      "vowels.compound#p1.depth [missing]",
-      "vowels.compound#p2.depth [missing]",
-      "vowels.compound#t2.depth [missing]",
-      "vowels.compound#t3.depth [missing]",
-      "vowels.compound#p3.depth [missing]",
-      "vowels.compound#p4.depth [missing]",
-      "vowels.compound#e2.depth [missing]",
-      "vowels.compound#sum.depth [missing]",
-      "vowels.long#s1.depth [missing]",
-      "vowels.long#t1.depth [missing]",
-      "vowels.long#e1.depth [missing]",
-      "vowels.long#e1.roman [missing]",
-      "vowels.long#p1.depth [missing]",
-      "vowels.long#t2.depth [missing]",
-      "vowels.long#p2.depth [missing]",
-      "vowels.long#p2.roman [missing]",
-      "vowels.long#p3.depth [missing]",
-      "vowels.long#e2.depth [missing]",
-      "vowels.long#e2.roman [missing]",
-      "vowels.long#p4.depth [missing]",
-      "vowels.long#p4.roman [missing]",
-      "vowels.long#sum.depth [missing]",
-      "vowels.revision#core.depth [missing]",
-      "vowels.revision#core.rows[0].tag [missing]",
-      "vowels.revision#core.rows[1].tag [missing]",
-      "vowels.revision#core.rows[2].tag [missing]",
-      "vowels.revision#core.rows[3].tag [missing]",
-      "vowels.revision#core.rows[4].tag [missing]",
-      "vowels.revision#core.rows[5].tag [missing]",
-      "vowels.revision#core.rows[6].tag [missing]",
-      "vowels.revision#core.rows[7].tag [missing]",
-      "vowels.revision#core.rows[8].tag [missing]",
-      "vowels.revision#conditions.depth [missing]",
-      "vowels.revision#conditions.rows[0].tag [missing]",
-      "vowels.revision#exceptions.depth [missing]",
-      "vowels.revision#exceptions.rows[0].tag [missing]",
-      "vowels.revision#mistakes.depth [missing]",
-      "vowels.revision#mistakes.rows[0].tag [missing]",
-      "vowels.revision#mistakes.rows[1].tag [missing]",
-      "vowels.revision#mistakes.rows[2].tag [missing]",
-      "vowels.revision#mistakes.rows[3].tag [missing]",
-      "vowels.revision#mistakes.rows[4].tag [missing]",
-      "vowels.revision#panini.rows[0].tag [missing]",
-      "vowels.revision#panini.rows[1].tag [missing]",
-      "vowels.revision#panini.rows[2].tag [missing]",
-      "vowels.revision#panini.rows[3].tag [missing]",
-      "vowels.revision#sheet.depth [missing]",
-      "vowels.revision#sheet.rows[0].tag [missing]",
-      "vowels.revision#sheet.rows[1].tag [missing]",
-      "vowels.revision#sheet.rows[2].tag [missing]",
-      "vowels.revision#sheet.rows[3].tag [missing]",
-      "vowels.revision#sheet.rows[4].tag [missing]",
-      "vowels.short#s1.depth [missing]",
-      "vowels.short#s2.depth [missing]",
-      "vowels.short#t1.depth [missing]",
-      "vowels.short#e1.depth [missing]",
-      "vowels.short#e1.roman [missing]",
-      "vowels.short#p1.depth [missing]",
-      "vowels.short#t2.depth [missing]",
-      "vowels.short#p2.depth [missing]",
-      "vowels.short#e2.depth [missing]",
-      "vowels.short#p3.depth [missing]",
-      "vowels.short#p4.depth [missing]",
-      "vowels.short#sum.depth [missing]",
-      "vowels.signs#s1.depth [missing]",
-      "vowels.signs#t1.depth [missing]",
-      "vowels.signs#t2.depth [missing]",
-      "vowels.signs#e1.depth [missing]",
-      "vowels.signs#e1.roman [missing]",
-      "vowels.signs#p1.depth [missing]",
-      "vowels.signs#t3.depth [missing]",
-      "vowels.signs#p2.depth [missing]",
-      "vowels.signs#p3.depth [missing]",
-      "vowels.signs#e2.depth [missing]",
-      "vowels.signs#p4.depth [missing]",
-      "vowels.signs#sum.depth [missing]",
-      "nf1.deva#p6.roman [missing]",
-      "num.reading#r1.depth [missing]",
-      "num.reading#p1.depth [missing]",
-      "num.reading#p1.roman [missing]",
-      "num.reading#r2.depth [missing]",
-      "num.reading#p2.depth [missing]",
-      "num.reading#p2.roman [missing]",
-      "num.reading#end.depth [missing]",
-      "who.reading#r1.depth [missing]",
-      "who.reading#p1.depth [missing]",
-      "who.reading#p1.roman [missing]",
-      "who.reading#r2.depth [missing]",
-      "who.reading#p2.depth [missing]",
-      "who.reading#p2.roman [missing]",
-      "who.reading#end.depth [missing]",
-      "past.reading#r1.depth [missing]",
-      "past.reading#p1.depth [missing]",
-      "past.reading#p1.roman [missing]",
-      "past.reading#r2.depth [missing]",
-      "past.reading#p2.depth [missing]",
-      "past.reading#p2.roman [missing]",
-      "past.reading#end.depth [missing]",
-      "vs.guna#p6.roman [missing]",
-      "kss.reading#r1.depth [missing]",
-      "kss.reading#p1.depth [missing]",
-      "kss.reading#p1.roman [missing]",
-      "kss.reading#r2.depth [missing]",
-      "kss.reading#p2.depth [missing]",
-      "kss.reading#p2.roman [missing]",
-      "kss.reading#end.depth [missing]"
-    ],
+    "unexpected_original_changes": [],
     "new_cards": [
       "cons.breath#e-sound"
     ]
@@ -277,13 +36,15 @@
       "title": "Breath and voice: क ख ग घ ङ",
       "template": "scene",
       "figures": {
-        "comparison": 2,
+        "comparison": 3,
         "worked": 4
       },
-      "unique_images": 2,
+      "unique_images": 4,
       "images": [
         "cons-breath-s1",
-        "teaching-fruit-one"
+        "teaching-donkey",
+        "teaching-fruit-one",
+        "teaching-hand"
       ],
       "feedback_cards": 4
     },
@@ -324,9 +85,10 @@
         "matrix": 3,
         "worked": 4
       },
-      "unique_images": 1,
+      "unique_images": 2,
       "images": [
-        "teaching-fruit-one"
+        "teaching-donkey",
+        "teaching-hand"
       ],
       "feedback_cards": 0
     },
@@ -595,11 +357,13 @@
       "template": "scene",
       "figures": {
         "matrix": 1,
-        "comparison": 2,
+        "comparison": 3,
         "worked": 4
       },
-      "unique_images": 2,
+      "unique_images": 4,
       "images": [
+        "teaching-family",
+        "teaching-riverbank",
         "vowels-long-pairs",
         "vowels-long-shuka"
       ],
@@ -612,13 +376,16 @@
       "title": "Everything about vowels",
       "template": "revision",
       "figures": {
-        "comparison": 14,
+        "comparison": 17,
         "matrix": 5,
-        "worked": 9,
-        "sequence": 2
+        "sequence": 2,
+        "worked": 7
       },
-      "unique_images": 0,
-      "images": [],
+      "unique_images": 2,
+      "images": [
+        "teaching-family",
+        "teaching-riverbank"
+      ],
       "feedback_cards": 0
     },
     {
@@ -1324,11 +1091,13 @@
       "figures": {
         "matrix": 14,
         "worked": 3,
-        "comparison": 3
+        "comparison": 4
       },
-      "unique_images": 1,
+      "unique_images": 3,
       "images": [
-        "teaching-river"
+        "teaching-cow",
+        "teaching-river",
+        "teaching-rope"
       ],
       "feedback_cards": 0
     },
@@ -1473,6 +1242,7 @@
       "template": "scene",
       "figures": {
         "comparison": 1,
+        "relations": 2,
         "worked": 3,
         "reading": 1
       },
@@ -1698,9 +1468,9 @@
       "template": "revision",
       "figures": {
         "matrix": 8,
-        "comparison": 4,
+        "comparison": 6,
         "relations": 1,
-        "worked": 3
+        "worked": 4
       },
       "unique_images": 1,
       "images": [
@@ -1938,16 +1708,18 @@
       "title": "Everything about by and with",
       "template": "revision",
       "figures": {
-        "relations": 5,
+        "reading": 5,
         "matrix": 2,
         "worked": 3,
         "comparison": 1
       },
-      "unique_images": 3,
+      "unique_images": 5,
       "images": [
         "teaching-boat-one",
         "teaching-fruit-one",
-        "teaching-pen"
+        "teaching-girl-writes",
+        "teaching-pen",
+        "teaching-walk-friend"
       ],
       "feedback_cards": 0
     },
@@ -2037,8 +1809,8 @@
       "template": "revision",
       "figures": {
         "matrix": 6,
-        "worked": 5,
-        "comparison": 2
+        "worked": 6,
+        "comparison": 3
       },
       "unique_images": 0,
       "images": [],
@@ -2080,8 +1852,8 @@
       "template": "revision",
       "figures": {
         "matrix": 5,
-        "comparison": 3,
-        "worked": 2
+        "comparison": 4,
+        "worked": 3
       },
       "unique_images": 0,
       "images": [],
@@ -2143,7 +1915,7 @@
       "figures": {
         "matrix": 4,
         "comparison": 3,
-        "worked": 3
+        "worked": 5
       },
       "unique_images": 2,
       "images": [
@@ -2206,8 +1978,9 @@
       "template": "revision",
       "figures": {
         "matrix": 4,
-        "comparison": 3,
-        "worked": 2
+        "reading": 1,
+        "comparison": 2,
+        "worked": 4
       },
       "unique_images": 1,
       "images": [
@@ -2254,6 +2027,7 @@
       "title": "इति: quotes and thoughts",
       "template": "scene",
       "figures": {
+        "relations": 3,
         "worked": 3,
         "comparison": 1
       },
@@ -2271,7 +2045,8 @@
       "template": "revision",
       "figures": {
         "matrix": 5,
-        "worked": 6,
+        "relations": 2,
+        "worked": 5,
         "comparison": 2
       },
       "unique_images": 1,
@@ -2390,12 +2165,15 @@
       "template": "revision",
       "figures": {
         "matrix": 10,
-        "relations": 1,
-        "worked": 4,
+        "sequence": 1,
+        "worked": 6,
         "comparison": 2
       },
-      "unique_images": 0,
-      "images": [],
+      "unique_images": 2,
+      "images": [
+        "teaching-boy-eats",
+        "teaching-boy-walks"
+      ],
       "feedback_cards": 0
     },
     {
@@ -2496,13 +2274,17 @@
       "template": "revision",
       "figures": {
         "matrix": 6,
-        "comparison": 5,
-        "relations": 1,
-        "worked": 2
+        "comparison": 6,
+        "worked": 4
       },
-      "unique_images": 1,
+      "unique_images": 6,
       "images": [
-        "teaching-reader-one"
+        "teaching-book",
+        "teaching-boy-drinks",
+        "teaching-boy-eats",
+        "teaching-cause-reading",
+        "teaching-reader-one",
+        "teaching-wants-drink"
       ],
       "feedback_cards": 0
     },
@@ -2577,13 +2359,12 @@
       "template": "revision",
       "figures": {
         "matrix": 4,
-        "comparison": 2,
-        "worked": 5
+        "reading": 3,
+        "worked": 4,
+        "comparison": 1
       },
-      "unique_images": 1,
-      "images": [
-        "teaching-reader-many"
-      ],
+      "unique_images": 0,
+      "images": [],
       "feedback_cards": 0
     },
     {
@@ -2656,7 +2437,7 @@
       "template": "revision",
       "figures": {
         "matrix": 5,
-        "worked": 4,
+        "worked": 5,
         "comparison": 2
       },
       "unique_images": 0,
@@ -2698,7 +2479,7 @@
       "template": "revision",
       "figures": {
         "matrix": 4,
-        "worked": 4,
+        "worked": 6,
         "comparison": 1
       },
       "unique_images": 0,
@@ -2760,7 +2541,7 @@
       "figures": {
         "matrix": 4,
         "comparison": 4,
-        "worked": 2
+        "worked": 3
       },
       "unique_images": 1,
       "images": [
@@ -2850,7 +2631,7 @@
       "template": "revision",
       "figures": {
         "matrix": 9,
-        "comparison": 4,
+        "comparison": 6,
         "worked": 2
       },
       "unique_images": 0,
@@ -2952,7 +2733,7 @@
       "template": "revision",
       "figures": {
         "matrix": 8,
-        "comparison": 6,
+        "comparison": 8,
         "worked": 2
       },
       "unique_images": 0,
@@ -3024,7 +2805,7 @@
       "template": "revision",
       "figures": {
         "matrix": 8,
-        "comparison": 4,
+        "comparison": 6,
         "worked": 2
       },
       "unique_images": 0,
@@ -3096,6 +2877,7 @@
       "template": "scene",
       "figures": {
         "comparison": 2,
+        "sequence": 1,
         "worked": 1,
         "reading": 3
       },
@@ -3114,8 +2896,9 @@
       "template": "revision",
       "figures": {
         "matrix": 4,
-        "worked": 5,
-        "comparison": 3
+        "sequence": 2,
+        "comparison": 4,
+        "worked": 4
       },
       "unique_images": 0,
       "images": [],
@@ -3171,7 +2954,7 @@
       "template": "revision",
       "figures": {
         "matrix": 6,
-        "comparison": 6,
+        "comparison": 8,
         "worked": 2
       },
       "unique_images": 0,
@@ -3212,7 +2995,7 @@
       "template": "revision",
       "figures": {
         "matrix": 5,
-        "comparison": 3
+        "comparison": 5
       },
       "unique_images": 1,
       "images": [
@@ -3287,7 +3070,7 @@
       "template": "revision",
       "figures": {
         "matrix": 4,
-        "comparison": 2
+        "comparison": 5
       },
       "unique_images": 0,
       "images": [],
@@ -3328,7 +3111,7 @@
       "figures": {
         "worked": 2,
         "matrix": 2,
-        "comparison": 3
+        "comparison": 5
       },
       "unique_images": 0,
       "images": [],
@@ -3417,7 +3200,7 @@
       "template": "revision",
       "figures": {
         "matrix": 2,
-        "comparison": 6,
+        "comparison": 7,
         "worked": 2
       },
       "unique_images": 0,
@@ -3442,6 +3225,7 @@
       "title": "If… then",
       "template": "scene",
       "figures": {
+        "relations": 3,
         "worked": 3,
         "comparison": 1
       },
@@ -3478,7 +3262,8 @@
         "matrix": 6,
         "worked": 5,
         "relations": 2,
-        "comparison": 2
+        "reading": 1,
+        "comparison": 3
       },
       "unique_images": 1,
       "images": [
@@ -3587,7 +3372,7 @@
       "template": "revision",
       "figures": {
         "matrix": 10,
-        "comparison": 5,
+        "comparison": 7,
         "worked": 2
       },
       "unique_images": 0,
@@ -3659,7 +3444,7 @@
       "template": "revision",
       "figures": {
         "matrix": 6,
-        "comparison": 4,
+        "comparison": 6,
         "worked": 2
       },
       "unique_images": 0,
@@ -3760,7 +3545,7 @@
       "template": "revision",
       "figures": {
         "matrix": 12,
-        "comparison": 4,
+        "comparison": 6,
         "worked": 2
       },
       "unique_images": 0,
@@ -3816,6 +3601,7 @@
       "title": "Letters that vanish",
       "template": "scene",
       "figures": {
+        "sequence": 2,
         "comparison": 2
       },
       "unique_images": 1,
@@ -3851,7 +3637,8 @@
         "matrix": 5,
         "worked": 2,
         "sound_range": 1,
-        "comparison": 4
+        "sequence": 1,
+        "comparison": 5
       },
       "unique_images": 0,
       "images": [],
@@ -3892,6 +3679,7 @@
       "template": "scene",
       "figures": {
         "comparison": 1,
+        "sequence": 1,
         "reading": 6
       },
       "unique_images": 1,
@@ -3920,9 +3708,9 @@
       "title": "Everything about reading Somadeva",
       "template": "revision",
       "figures": {
-        "matrix": 1,
+        "sequence": 1,
         "comparison": 2,
-        "reading": 1
+        "reading": 2
       },
       "unique_images": 0,
       "images": [],

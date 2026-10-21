@@ -30,55 +30,56 @@ cards:
     taught_in: with.means#t1
     visuals:
     - id: v-linked-0
-      kind: relations
+      kind: reading
       title:
-        en: How the words are connected
-        hi: शब्द कैसे जुड़े हैं
-      explanation:
-        en: We go by boat.
-        hi: हम नाव से जाते हैं।
+        en: The pen is the means
+        hi: लेखनी साधन है
       items:
       - id: i0
-        sa: वयम्
+        sa: सा लेखन्या लिखति।
         meaning:
-          en: we
-          hi: हम
-      - id: i1
-        sa: नौकया
-        meaning:
-          en: by boat
-          hi: नाव से
-        check:
-          type: subanta
-          stem: नौका
-          linga: Stri
-          vibhakti: Trtiya
-          vacana: Eka
-        feature:
-          en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
-          hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
-        compare_from: नौका
-      - id: i2
-        sa: गच्छामः
-        meaning:
-          en: go
-          hi: जाते हैं
-        check:
-          type: tinanta
-          dhatu: गम्
-          lakara: Lat
-          purusha: Uttama
-          vacana: Bahu
-        feature:
-          en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
-          hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
-        compare_from: गम्
-      edges:
-      - source: i1
-        target: i2
-        label:
-          en: means used
-          hi: प्रयुक्त साधन
+          en: She writes with a pen.
+          hi: वह कलम से लिखती है।
+        words:
+        - sa: सा
+          gloss:
+            en: she
+            hi: वह
+        - sa: लेखन्या
+          gloss:
+            en: with a pen
+            hi: कलम से
+          check:
+            type: subanta
+            stem: लेखनी
+            linga: Stri
+            vibhakti: Trtiya
+            vacana: Eka
+        - sa: लिखति
+          gloss:
+            en: writes
+            hi: लिखती है
+          check:
+            type: tinanta
+            dhatu: लिख्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-girl-writes
+          brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+            and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+            central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+            letterlike decoration, border or watermark. A school-age girl in a simple muted indigo dress sits at a low desk
+            actively writing with a reed pen on one large ivory sheet. Her pen touches the single large exact Devanagari character
+            "अ" on that page. That is the ONLY visible writing. No other strokes, squiggles, letters or marks anywhere. The
+            hand, pen, inkpot, page and character must be clear. This teaches writing and the use of a pen.'
+          alt:
+            en: A girl writes अ with a pen
+            hi: लेखनी से अ लिखती बालिका
+          ratio: '4:3'
+          text_in_image:
+          - अ
   - skill: case.inst
     formula: बालकेन · बालिकया · नद्या
     rule:
@@ -255,60 +256,64 @@ cards:
     taught_in: with.together#t1
     visuals:
     - id: v-linked-2
-      kind: relations
+      kind: reading
       title:
-        en: How the words are connected
-        hi: शब्द कैसे जुड़े हैं
+        en: A companion is not a tool
+        hi: साथी और साधन अलग सम्बन्ध हैं
       explanation:
-        en: I go together with a friend.
-        hi: मैं मित्र के साथ जाता हूँ।
+        en: Imagine the boy in ochre saying this. सह includes the companion; it does not turn the first-person singular verb
+          into a plural.
+        hi: मान लें कि केसरिया कपड़े वाला बालक यह कह रहा है। सह साथी को जोड़ता है; इससे उत्तमपुरुष एकवचन की क्रिया बहुवचन
+          नहीं हो जाती।
       items:
       - id: i0
-        sa: अहम्
+        sa: अहम् मित्रेण सह गच्छामि।
         meaning:
-          en: I
-          hi: मैं
-      - id: i1
-        sa: मित्रेण
-        meaning:
-          en: with a friend
-          hi: मित्र के साथ
-        check:
-          type: subanta
-          stem: मित्र
-          linga: Napumsaka
-          vibhakti: Trtiya
-          vacana: Eka
-        feature:
-          en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · singular'
-          hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
-        compare_from: मित्र
-      - id: i2
-        sa: सह
-        meaning:
-          en: together with
-          hi: साथ
-      - id: i3
-        sa: गच्छामि
-        meaning:
-          en: go
-          hi: जाता हूँ
-        check:
-          type: tinanta
-          dhatu: गम्
-          lakara: Lat
-          purusha: Uttama
-          vacana: Eka
-        feature:
-          en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
-          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
-        compare_from: गम्
-      edges:
-      - source: i1
-        target: i3
-        label:
-          en: companion, with सह
-          hi: सह के साथ साथी
+          en: I go together with a friend.
+          hi: मैं मित्र के साथ जाता हूँ।
+        words:
+        - sa: अहम्
+          gloss:
+            en: I
+            hi: मैं
+        - sa: मित्रेण
+          gloss:
+            en: with a friend
+            hi: मित्र के साथ
+          check:
+            type: subanta
+            stem: मित्र
+            linga: Napumsaka
+            vibhakti: Trtiya
+            vacana: Eka
+        - sa: सह
+          gloss:
+            en: together with
+            hi: साथ
+        - sa: गच्छामि
+          gloss:
+            en: go
+            hi: जाता हूँ
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Eka
+        image:
+          id: teaching-walk-friend
+          brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+            with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Complete central people and objects,
+            no cropped bodies, simple quiet courtyard backdrop, readable on a phone. No decorative border, watermark, extra
+            people or letterlike marks. Exactly two school-age boys walking together side by side, both in profile toward
+            the right, one in an ochre kurta and the friend in a muted indigo kurta. Both face and step right, relaxed friendly
+            expressions. They are companions; neither pushes, pulls, carries or leads the other. No carried objects, writing,
+            symbols or arrows.'
+          alt:
+            en: Two friends walk together
+            hi: साथ चलते दो मित्र
+          ratio: '4:3'
+          text_in_image: []
   - skill: case.inst-saha
     formula: मित्रैः सह
     rule:
@@ -534,60 +539,64 @@ cards:
     taught_in: with.together#t1
     visuals:
     - id: v-linked-0
-      kind: relations
+      kind: reading
       title:
-        en: How the words are connected
-        hi: शब्द कैसे जुड़े हैं
+        en: A companion is not a tool
+        hi: साथी और साधन अलग सम्बन्ध हैं
       explanation:
-        en: I go together with a friend.
-        hi: मैं मित्र के साथ जाता हूँ।
+        en: Imagine the boy in ochre saying this. सह includes the companion; it does not turn the first-person singular verb
+          into a plural.
+        hi: मान लें कि केसरिया कपड़े वाला बालक यह कह रहा है। सह साथी को जोड़ता है; इससे उत्तमपुरुष एकवचन की क्रिया बहुवचन
+          नहीं हो जाती।
       items:
       - id: i0
-        sa: अहम्
+        sa: अहम् मित्रेण सह गच्छामि।
         meaning:
-          en: I
-          hi: मैं
-      - id: i1
-        sa: मित्रेण
-        meaning:
-          en: with a friend
-          hi: मित्र के साथ
-        check:
-          type: subanta
-          stem: मित्र
-          linga: Napumsaka
-          vibhakti: Trtiya
-          vacana: Eka
-        feature:
-          en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · singular'
-          hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
-        compare_from: मित्र
-      - id: i2
-        sa: सह
-        meaning:
-          en: together with
-          hi: साथ
-      - id: i3
-        sa: गच्छामि
-        meaning:
-          en: go
-          hi: जाता हूँ
-        check:
-          type: tinanta
-          dhatu: गम्
-          lakara: Lat
-          purusha: Uttama
-          vacana: Eka
-        feature:
-          en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
-          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
-        compare_from: गम्
-      edges:
-      - source: i1
-        target: i3
-        label:
-          en: companion, with सह
-          hi: सह के साथ साथी
+          en: I go together with a friend.
+          hi: मैं मित्र के साथ जाता हूँ।
+        words:
+        - sa: अहम्
+          gloss:
+            en: I
+            hi: मैं
+        - sa: मित्रेण
+          gloss:
+            en: with a friend
+            hi: मित्र के साथ
+          check:
+            type: subanta
+            stem: मित्र
+            linga: Napumsaka
+            vibhakti: Trtiya
+            vacana: Eka
+        - sa: सह
+          gloss:
+            en: together with
+            hi: साथ
+        - sa: गच्छामि
+          gloss:
+            en: go
+            hi: जाता हूँ
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Eka
+        image:
+          id: teaching-walk-friend
+          brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+            with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Complete central people and objects,
+            no cropped bodies, simple quiet courtyard backdrop, readable on a phone. No decorative border, watermark, extra
+            people or letterlike marks. Exactly two school-age boys walking together side by side, both in profile toward
+            the right, one in an ochre kurta and the friend in a muted indigo kurta. Both face and step right, relaxed friendly
+            expressions. They are companions; neither pushes, pulls, carries or leads the other. No carried objects, writing,
+            symbols or arrows.'
+          alt:
+            en: Two friends walk together
+            hi: साथ चलते दो मित्र
+          ratio: '4:3'
+          text_in_image: []
   - skill: case.inst
     rule:
       en: 'Do not look for a word for “by” or “with”: the ending {{एन}}/{{अया}} already says it.'
@@ -596,55 +605,56 @@ cards:
     taught_in: with.means#t1
     visuals:
     - id: v-linked-1
-      kind: relations
+      kind: reading
       title:
-        en: How the words are connected
-        hi: शब्द कैसे जुड़े हैं
-      explanation:
-        en: We go by boat.
-        hi: हम नाव से जाते हैं।
+        en: The pen is the means
+        hi: लेखनी साधन है
       items:
       - id: i0
-        sa: वयम्
+        sa: सा लेखन्या लिखति।
         meaning:
-          en: we
-          hi: हम
-      - id: i1
-        sa: नौकया
-        meaning:
-          en: by boat
-          hi: नाव से
-        check:
-          type: subanta
-          stem: नौका
-          linga: Stri
-          vibhakti: Trtiya
-          vacana: Eka
-        feature:
-          en: 'Stem: {{नौका}} · feminine · {{तृतीया}} · singular'
-          hi: 'प्रातिपदिक: {{नौका}} · {{स्त्रीलिंग}} · {{तृतीया}} · {{एकवचन}}'
-        compare_from: नौका
-      - id: i2
-        sa: गच्छामः
-        meaning:
-          en: go
-          hi: जाते हैं
-        check:
-          type: tinanta
-          dhatu: गम्
-          lakara: Lat
-          purusha: Uttama
-          vacana: Bahu
-        feature:
-          en: 'Root: {{गम्}} · plural · {{लट्}} · First person ({{उत्तमपुरुष}})'
-          hi: 'धातु: {{गम्}} · {{बहुवचन}} · {{लट्}} · उत्तमपुरुष'
-        compare_from: गम्
-      edges:
-      - source: i1
-        target: i2
-        label:
-          en: means used
-          hi: प्रयुक्त साधन
+          en: She writes with a pen.
+          hi: वह कलम से लिखती है।
+        words:
+        - sa: सा
+          gloss:
+            en: she
+            hi: वह
+        - sa: लेखन्या
+          gloss:
+            en: with a pen
+            hi: कलम से
+          check:
+            type: subanta
+            stem: लेखनी
+            linga: Stri
+            vibhakti: Trtiya
+            vacana: Eka
+        - sa: लिखति
+          gloss:
+            en: writes
+            hi: लिखती है
+          check:
+            type: tinanta
+            dhatu: लिख्
+            lakara: Lat
+            purusha: Prathama
+            vacana: Eka
+        image:
+          id: teaching-girl-writes
+          brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+            and restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Exactly one complete person, compact
+            central grouping readable at 320px phone width, very simple quiet courtyard background. No other people, reflections,
+            letterlike decoration, border or watermark. A school-age girl in a simple muted indigo dress sits at a low desk
+            actively writing with a reed pen on one large ivory sheet. Her pen touches the single large exact Devanagari character
+            "अ" on that page. That is the ONLY visible writing. No other strokes, squiggles, letters or marks anywhere. The
+            hand, pen, inkpot, page and character must be clear. This teaches writing and the use of a pen.'
+          alt:
+            en: A girl writes अ with a pen
+            hi: लेखनी से अ लिखती बालिका
+          ratio: '4:3'
+          text_in_image:
+          - अ
 - id: panini
   kind: revision
   title:
@@ -860,57 +870,61 @@ cards:
     taught_in: with.together#t1
     visuals:
     - id: v-linked-1
-      kind: relations
+      kind: reading
       title:
-        en: How the words are connected
-        hi: शब्द कैसे जुड़े हैं
+        en: A companion is not a tool
+        hi: साथी और साधन अलग सम्बन्ध हैं
       explanation:
-        en: I go together with a friend.
-        hi: मैं मित्र के साथ जाता हूँ।
+        en: Imagine the boy in ochre saying this. सह includes the companion; it does not turn the first-person singular verb
+          into a plural.
+        hi: मान लें कि केसरिया कपड़े वाला बालक यह कह रहा है। सह साथी को जोड़ता है; इससे उत्तमपुरुष एकवचन की क्रिया बहुवचन
+          नहीं हो जाती।
       items:
       - id: i0
-        sa: अहम्
+        sa: अहम् मित्रेण सह गच्छामि।
         meaning:
-          en: I
-          hi: मैं
-      - id: i1
-        sa: मित्रेण
-        meaning:
-          en: with a friend
-          hi: मित्र के साथ
-        check:
-          type: subanta
-          stem: मित्र
-          linga: Napumsaka
-          vibhakti: Trtiya
-          vacana: Eka
-        feature:
-          en: 'Stem: {{मित्र}} · neuter · {{तृतीया}} · singular'
-          hi: 'प्रातिपदिक: {{मित्र}} · {{नपुंसकलिंग}} · {{तृतीया}} · {{एकवचन}}'
-        compare_from: मित्र
-      - id: i2
-        sa: सह
-        meaning:
-          en: together with
-          hi: साथ
-      - id: i3
-        sa: गच्छामि
-        meaning:
-          en: go
-          hi: जाता हूँ
-        check:
-          type: tinanta
-          dhatu: गम्
-          lakara: Lat
-          purusha: Uttama
-          vacana: Eka
-        feature:
-          en: 'Root: {{गम्}} · singular · {{लट्}} · First person ({{उत्तमपुरुष}})'
-          hi: 'धातु: {{गम्}} · {{एकवचन}} · {{लट्}} · उत्तमपुरुष'
-        compare_from: गम्
-      edges:
-      - source: i1
-        target: i3
-        label:
-          en: companion, with सह
-          hi: सह के साथ साथी
+          en: I go together with a friend.
+          hi: मैं मित्र के साथ जाता हूँ।
+        words:
+        - sa: अहम्
+          gloss:
+            en: I
+            hi: मैं
+        - sa: मित्रेण
+          gloss:
+            en: with a friend
+            hi: मित्र के साथ
+          check:
+            type: subanta
+            stem: मित्र
+            linga: Napumsaka
+            vibhakti: Trtiya
+            vacana: Eka
+        - sa: सह
+          gloss:
+            en: together with
+            hi: साथ
+        - sa: गच्छामि
+          gloss:
+            en: go
+            hi: जाता हूँ
+          check:
+            type: tinanta
+            dhatu: गम्
+            lakara: Lat
+            purusha: Uttama
+            vacana: Eka
+        image:
+          id: teaching-walk-friend
+          brief: 'Use case: scientific-educational. One 4:3 landscape Sanskrit teaching illustration. Refined Indian watercolor
+            with restrained gouache on warm ivory paper, quiet ochre, sage and muted indigo. Complete central people and objects,
+            no cropped bodies, simple quiet courtyard backdrop, readable on a phone. No decorative border, watermark, extra
+            people or letterlike marks. Exactly two school-age boys walking together side by side, both in profile toward
+            the right, one in an ochre kurta and the friend in a muted indigo kurta. Both face and step right, relaxed friendly
+            expressions. They are companions; neither pushes, pulls, carries or leads the other. No carried objects, writing,
+            symbols or arrows.'
+          alt:
+            en: Two friends walk together
+            hi: साथ चलते दो मित्र
+          ratio: '4:3'
+          text_in_image: []
