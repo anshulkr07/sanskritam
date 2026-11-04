@@ -29,6 +29,8 @@ import SettingsScreen from "../screens/Settings";
 import ProgressScreen from "../screens/Progress";
 import LicencesScreen from "../screens/Licences";
 import PrivacyScreen from "../screens/Privacy";
+import ShopScreen from "../screens/Shop";
+import { HYBRID_COMMERCE } from "../services/commerce";
 import { haptics } from "../services/haptics";
 import { useAuth } from "../store/auth";
 import { accent, color, font, gradientOf, radius, space } from "../theme";
@@ -101,6 +103,7 @@ function DrawerMenu(props: DrawerContentComponentProps) {
         <MenuRow icon="home" label="Home" selected={active === "Tabs"} onPress={() => go("Tabs")} />
         <MenuRow icon="stats-chart" label="Progress" selected={active === "Progress"} onPress={() => go("Progress")} />
         <MenuRow icon="settings" label="Settings" selected={active === "Settings"} onPress={() => go("Settings")} />
+        {HYBRID_COMMERCE && <MenuRow icon="bag-outline" label="Books, Guru & Plus" selected={active === "Membership"} onPress={() => go("Membership")} />}
         <MenuRow icon="document-text" label="Licences" selected={active === "Licences"} onPress={() => go("Licences")} />
         <MenuRow
           icon="shield-checkmark"
@@ -189,6 +192,7 @@ export default function AppDrawer() {
       <Drawer.Screen name="Tabs" component={MainTabs} />
       <Drawer.Screen name="Progress" component={ProgressScreen} options={withHeader("Progress")} />
       <Drawer.Screen name="Settings" component={SettingsScreen} options={withHeader("Settings")} />
+      {HYBRID_COMMERCE && <Drawer.Screen name="Membership" component={ShopScreen} options={withHeader("Books, Guru & Plus")} />}
       <Drawer.Screen name="Licences" component={LicencesScreen} options={withHeader("Licences and credits")} />
       <Drawer.Screen name="Privacy" component={PrivacyScreen} options={withHeader("Privacy policy")} />
     </Drawer.Navigator>

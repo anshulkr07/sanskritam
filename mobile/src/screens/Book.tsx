@@ -1,4 +1,5 @@
 import Modal from "../components/AudioModal";
+import EditionOffer from "../components/EditionOffer";
 // Book: the fullscreen reading page (HANDOVER 7.4) — the one reading screen
 // for every book, classic or paged. A paged book reads one chapter at a time;
 // its last page turns on to the next chapter, and its first page offers the
@@ -248,6 +249,7 @@ function BookReader({ navigation, route }: Props) {
   return (
     <View style={[styles.root, { backgroundColor: theme.page, paddingTop: insets.top, paddingBottom: insets.bottom, paddingLeft: insets.left, paddingRight: insets.right }]}>
       <StatusBar style={themeName === "dark" ? "light" : "dark"} />
+      <EditionOffer titleId={bookKey + ":book"} />
       {chantOn ? (
         <ChantList
           verses={pages}

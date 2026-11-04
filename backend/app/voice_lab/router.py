@@ -3,6 +3,7 @@ import contextlib
 import json
 import time
 import logging
+import math
 
 from fastapi import APIRouter, Depends, WebSocket
 from pydantic import ValidationError
@@ -16,6 +17,9 @@ from .config import LabConfig
 from .session import STRATEGIES
 from .providers import provider_error
 from app.services.quota import QuotaExceeded, refund_quota
+from app.commerce import hybrid
+from app.commerce import service as commerce
+from app.commerce.models import VoiceCall
 
 router = APIRouter()
 MAX_SECONDS = 600
@@ -24,7 +28,40 @@ logger = logging.getLogger("shabd.voice_lab")
 
 @router.post("/voice-lab/ticket")
 def ticket(learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+    if hybrid.enabled():
+        commerce.lock_wallet(db, learner.id)
+        state = hybrid.snapshot(db, learner.id)
+        if not hybrid.voice_ready(db):
+            from fastapi import HTTPException
+            raise HTTPException(503, "Guru voice is being prepared")
+        if not (learner.google_sub or learner.apple_sub):
+            from fastapi import HTTPException
+            raise HTTPException(409, "Sign in with Google or Apple to try Guru")
+        if state["trial_seconds"] + state["paid_seconds"] < 1:
+            from fastapi import HTTPException
+            raise HTTPException(402, "Buy minutes to continue. No subscription required")
+        db.commit()
     return {"ticket": make_ticket(db, learner, None, scope="voice-lab"), "max_seconds": MAX_SECONDS}
+
+
+def reserve_minutes(learner_id):
+    with SessionLocal() as db:
+        call = hybrid.reserve_call(db, learner_id)
+        result = call.id, (call.trial_ms + call.paid_ms) / 1000
+        db.commit()
+        return result
+
+
+def update_call(learner_id, call_id, delivered=False, used_ms=None):
+    with SessionLocal() as db:
+        commerce.lock_wallet(db, learner_id)
+        call = db.get(VoiceCall, call_id)
+        if call and call.state == "reserved":
+            if delivered:
+                call.delivered_at = commerce.now()
+            else:
+                hybrid.settle_call(db, call, used_ms)
+            db.commit()
 
 
 def authenticate(value):
@@ -56,11 +93,20 @@ async def voice_lab(websocket: WebSocket):
     metered_audio = metered_native = 0
     lock = asyncio.Lock()
     started = time.monotonic()
+    call_id = None
+    first_audio = None
+    max_seconds = MAX_SECONDS
+    watchdog = None
     # Authenticate in the first frame so neither the bearer token nor the
     # single-use ticket appears in a proxy URL/access log.
     async def send(message):
+        nonlocal first_audio
         async with lock:
             await websocket.send_json(message)
+            if call_id and first_audio is None and message.get("type") == "audio" and message.get("data"):
+                first_audio = time.monotonic()
+                await asyncio.to_thread(update_call, learner_id, call_id, True)
+                await websocket.send_json({"type": "billing_started"})
 
     try:
         hello = json.loads(await asyncio.wait_for(websocket.receive_text(), 10))
@@ -74,6 +120,11 @@ async def voice_lab(websocket: WebSocket):
             await asyncio.to_thread(consume, learner_id, kind, amount)
 
         config = LabConfig.model_validate(hello.get("config", {}))
+        if hybrid.enabled():
+            # One measured pipeline for sold minutes; never let a client switch
+            # a low-cost pack to unbounded search, reasoning or cloud avatars.
+            config = LabConfig(**hybrid.VOICE_CONFIG)
+            call_id, max_seconds = await asyncio.to_thread(reserve_minutes, learner_id)
         capabilities = hello.get("capabilities") or {}
         playback_feedback = isinstance(capabilities, dict) and capabilities.get("playback_feedback") is True
         barge_in = isinstance(capabilities, dict) and capabilities.get("barge_in") is True
@@ -88,7 +139,7 @@ async def voice_lab(websocket: WebSocket):
             session.playback_feedback = playback_feedback
             session.barge_enabled = barge_in
             session.client_endpointing = client_endpointing
-            await session.start()
+            await asyncio.wait_for(session.start(), 25) if call_id else await session.start()
             await send({"type": "interrupted"})
             await send({"type": "notice", "message": reason + " Friend continues with the backup voice and reply service, without web search."})
 
@@ -97,16 +148,29 @@ async def voice_lab(websocket: WebSocket):
         session.barge_enabled = barge_in
         session.client_endpointing = client_endpointing
         try:
-            await session.start()
+            if call_id:
+                await asyncio.wait_for(session.start(), 25)
+            else:
+                await session.start()
         except Exception as exc:
             if config.pipeline != 3:
                 raise
             logger.warning("voice_native_start_failed error_type=%s", type(exc).__name__)
             await backup("The native voice provider is unavailable.")
-        await send({"type": "ready", "config": config.model_dump(), "max_seconds": MAX_SECONDS,
+        started = time.monotonic()
+        async def end_at_limit():
+            await asyncio.sleep(max_seconds)
+            with contextlib.suppress(Exception):
+                await send({"type": "fatal", "message": "Session time reached. Any unused minutes remain in your account."})
+            with contextlib.suppress(Exception):
+                await websocket.close()
+            with contextlib.suppress(Exception):
+                await session.close()
+        watchdog = asyncio.create_task(end_at_limit())
+        await send({"type": "ready", "config": config.model_dump(), "max_seconds": max_seconds,
                     "capabilities": {"playback_feedback": playback_feedback, "barge_in": barge_in, "client_endpointing": client_endpointing}})
         while True:
-            remaining = MAX_SECONDS - (time.monotonic() - started)
+            remaining = max_seconds - (time.monotonic() - started)
             if remaining <= 0:
                 await send({"type": "fatal", "message": "Call limit reached (10 minutes). Start another call."})
                 break
@@ -150,6 +214,9 @@ async def voice_lab(websocket: WebSocket):
                 if kind == "stop":
                     break
                 if kind == "config":
+                    if call_id:
+                        await send({"type": "notice", "message": "Guru uses the voice included in your minute pack."})
+                        continue
                     updated = LabConfig.model_validate({**config.model_dump(), **msg.get("config", {})})
                     structural = (updated.pipeline, updated.speaker, updated.live_model, updated.web_search, updated.thinking_budget, updated.temperature)
                     previous = (config.pipeline, config.speaker, config.live_model, config.web_search, config.thinking_budget, config.temperature)
@@ -184,6 +251,9 @@ async def voice_lab(websocket: WebSocket):
                         raise ValueError("Barge-in was not negotiated")
                     await session.barge_in()
                 elif kind == "text":
+                    if call_id:
+                        await send({"type": "notice", "message": "Use your microphone for this voice session."})
+                        continue
                     text = str(msg.get("text", "")).strip()[:2000]
                     if text:
                         await send({"type": "transcript", "role": "user", "text": text, "final": True})
@@ -200,9 +270,18 @@ async def voice_lab(websocket: WebSocket):
         with contextlib.suppress(Exception):
             await send({"type": "fatal", "message": message})
     finally:
+        used_ms = math.ceil((time.monotonic() - first_audio) * 1000) if first_audio else 0
+        if watchdog:
+            watchdog.cancel()
         if session:
             with contextlib.suppress(Exception):
-                await session.close()
+                if call_id:
+                    await asyncio.wait_for(session.close(), 5)
+                else:
+                    await session.close()
+        if call_id:
+            with contextlib.suppress(Exception):
+                await asyncio.to_thread(update_call, learner_id, call_id, False, used_ms)
         if learner_id:
             for kind, amount in (("stt_seconds", metered_audio), ("gemini_inr", metered_native * .1)):
                 if amount > .0001:

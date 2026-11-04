@@ -3,10 +3,11 @@ import { AESEncryptionKey, AESSealedData, aesDecryptAsync, aesEncryptAsync, Cryp
 import { Directory, File, Paths } from "expo-file-system";
 import * as SecureStore from "expo-secure-store";
 import { Platform } from "react-native";
+import { setCommerceOwner, offlineEditionAllowed, HYBRID_COMMERCE } from "./commerce";
 
 const LEGACY_KEY = "shabd.offline.audio.v1";
 const PREFIX = "shabd.offline.audio.v2.";
-type Entry = { uri: string; format: "aes-gcm-v1" };
+type Entry = { uri: string; format: "aes-gcm-v1"; titleId?: string };
 type Session = { owner: string; id: Promise<string>; entries: Record<string, Entry>; ready?: Promise<void>; key?: Promise<AESEncryptionKey>; queue: Promise<unknown>; loaded: boolean };
 let session: Session | null = null;
 const releases = new Set<() => void>();
@@ -17,6 +18,7 @@ const playbackDirectory = () => { const d = new Directory(Paths.cache, "protecte
 const inside = (uri: string, directory: Directory) => uri.startsWith(directory.uri.replace(/\/$/, "") + "/") && !uri.includes("..");
 
 export function setOfflineAudioOwner(owner: string | null): void {
+  setCommerceOwner(owner);
   if (Platform.OS === "web") return;
   if (session?.owner === owner) return;
   resetOfflineAudio();
@@ -90,7 +92,7 @@ export function hasOfflineAudio(url: string): boolean {
   const entry = session?.entries[url];
   return !!entry && entry.format === "aes-gcm-v1" && inside(entry.uri, encryptedDirectory()) && new File(entry.uri).exists;
 }
-export async function saveProtectedAudio(url: string, absoluteUrl: string, maxBytes: number): Promise<number> {
+export async function saveProtectedAudio(url: string, absoluteUrl: string, maxBytes: number, titleId?: string): Promise<number> {
   const s = current();
   await loadOfflineAudio();
   // Serialise map writes, including concurrent chapter downloads.
@@ -104,6 +106,7 @@ export async function saveProtectedAudio(url: string, absoluteUrl: string, maxBy
     const bytes = new Uint8Array(await response.arrayBuffer());
     if (!bytes.length || bytes.length > maxBytes) throw new Error("Audio is empty or exceeds the download limit.");
     const entry = await seal(s, bytes);
+    entry.titleId = titleId;
     if (session !== s) { new File(entry.uri).delete(); throw new Error("Account changed. Retry the download."); }
     const previous = { ...s.entries };
     s.entries[url] = entry; s.entries[absoluteUrl] = entry;
@@ -122,6 +125,9 @@ export async function resolveOfflineAudio(url: string): Promise<AudioLease> {
   await loadOfflineAudio();
   if (session !== s) throw new Error("Audio session changed.");
   const entry = s.entries[url];
+  if (entry && HYBRID_COMMERCE && (!entry.titleId || !await offlineEditionAllowed(entry.titleId))) {
+    if (!entry.titleId || !await offlineEditionAllowed(entry.titleId, true)) throw new Error("Reconnect to refresh access to this saved audiobook.");
+  }
   if (!entry || !hasOfflineAudio(url)) return fallback;
   const sealed = AESSealedData.fromCombined(await new File(entry.uri).bytes());
   const bytes = await aesDecryptAsync(sealed, await keyFor(s));

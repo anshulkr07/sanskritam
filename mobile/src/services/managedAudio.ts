@@ -1,6 +1,7 @@
 import { createAudioPlayer } from "expo-audio";
 import { audioTransport, type AudioKind } from "./audioTransport";
 import { needsOfflineAudioResolution, onOfflineAudioInvalidated, resolveOfflineAudio } from "./protectedAudio";
+import { renewPreparedMediaUri } from "./commerce";
 
 let lockOwner: { clear(): void } | null = null;
 
@@ -27,10 +28,11 @@ export function createManagedAudioPlayer(
     ready = (async () => {
       const uri = typeof next === "string" ? next : typeof next === "object" ? next?.uri : undefined;
       const lease = uri && needsOfflineAudioResolution(uri) ? await resolveOfflineAudio(uri) : null;
+      const resolvedUri = uri && (!lease || lease.uri === uri) ? await renewPreparedMediaUri(uri) : lease?.uri;
       if (removed || version !== sourceVersion) { lease?.release(); return; }
       const previousRelease = releaseSource;
       releaseSource = lease?.release ?? (() => {});
-      try { player.replace(lease ? typeof next === "object" ? { ...next, uri: lease.uri } : lease.uri : next ?? null); }
+      try { player.replace(resolvedUri ? typeof next === "object" ? { ...next, uri: resolvedUri } : resolvedUri : next ?? null); }
       finally { previousRelease(); }
       preparing = false;
       if (wantsPlay) player.play();

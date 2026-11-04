@@ -18,6 +18,9 @@ def context(db, learner_id=None):
 
 
 def has_title(db, learner_id, title_id):
+    from app.commerce import hybrid
+    if hybrid.enabled():
+        return hybrid.can_access(db, learner_id, title_id)
     return title_id in context(db, learner_id)["titles"]
 
 

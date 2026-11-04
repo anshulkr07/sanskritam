@@ -17,6 +17,11 @@ def now():
     return datetime.utcnow()
 
 
+def settings_hybrid_enabled():
+    from app.config import settings
+    return settings.commerce_hybrid_enabled
+
+
 def setting(db: Session, key: str, default=None):
     row = db.get(Setting, key)
     return row.value if row else default
@@ -24,7 +29,8 @@ def setting(db: Session, key: str, default=None):
 
 def product_catalogue(db):
     overrides = setting(db, "products", {})
-    return {key: {**value, "credits": overrides.get(key, {}).get("credits", value["credits"])} for key, value in PRODUCTS.items()}
+    from app.commerce.hybrid import PRODUCTS as hybrid_products
+    return {key: {**value, "credits": value["credits"] if key in hybrid_products else overrides.get(key, {}).get("credits", value["credits"])} for key, value in PRODUCTS.items()}
 
 
 def lock_wallet(db: Session, learner_id: str) -> Wallet:
@@ -236,6 +242,9 @@ def apply_purchase(db, learner_id, verified):
     if not product:
         raise HTTPException(422, "Unknown store product")
     credits = product["credits"]
+    from app.commerce import hybrid
+    if verified["product_id"] in hybrid.PRODUCTS and not settings_hybrid_enabled():
+        raise HTTPException(503, "This purchase model is not enabled")
     if verified.get("revoked"):
         raise HTTPException(409, "Purchase was revoked")
     previous_membership = None
@@ -293,11 +302,15 @@ def apply_purchase(db, learner_id, verified):
             previous_membership.paid_until = paid_until
             previous_membership.state = verified.get("state", "active")
             previous_membership.updated_at = now()
-        extend_titles(db, learner_id, paid_until, eligible_at=verified["paid_at"])
+        if not settings_hybrid_enabled():
+            extend_titles(db, learner_id, paid_until, eligible_at=verified["paid_at"])
     row = Purchase(learner_id=learner_id, provider=provider, transaction_id=tx,
                    original_id=verified["original_id"], product_id=verified["product_id"],
                    credits=credits, paid_at=verified["paid_at"], evidence={"billing_period": verified["paid_at"].isoformat(), **evidence})
     db.add(row)
+    db.flush()
+    if product["kind"] in {"edition", "voice_pack"}:
+        hybrid.grant(db, row, product)
     journal(db, wallet, credits, f"store:{provider}:{tx}", "store_" + product["kind"], {"product_id": row.product_id})
     db.flush()
     return row
@@ -310,6 +323,9 @@ def refund_purchase(db, purchase):
     journal(db, wallet, -purchase.credits, f"refund:{purchase.provider}:{purchase.transaction_id}",
             "refund", {"purchase_id": purchase.id}, allow_deficit=True)
     purchase.state = "refunded"
+    from app.commerce.hybrid import PRODUCTS as hybrid_products, revoke
+    if purchase.product_id in hybrid_products:
+        revoke(db, purchase)
     latest = db.query(Purchase).filter_by(provider=purchase.provider, original_id=purchase.original_id).order_by(Purchase.paid_at.desc()).first()
     if latest and latest.id == purchase.id:
         member = db.query(Membership).filter_by(provider=purchase.provider, original_id=purchase.original_id).first()

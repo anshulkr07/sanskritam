@@ -1,5 +1,9 @@
 # Sanskritam monetization setup
 
+New hybrid builds use [the 4 November 2026 setup](hybrid-commerce-20261104.md):
+direct permanent editions, Plus and independent Guru-minute packs. The credit,
+slot and rental products below are historical setup/reference, not the new offer.
+
 Implementation: native Google Play Billing and Apple In-App Purchase. No Dodo account is needed. Live commerce, sales, ads, rewards and organizer publication are separate switches and default to off.
 
 ## 1. Accounts you must finish

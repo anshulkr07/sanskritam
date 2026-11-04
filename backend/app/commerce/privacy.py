@@ -4,6 +4,9 @@ from app.commerce.models import (Profile, PayoutRequest, EventEntry, HostedEvent
 
 
 def delete_personal_data(db, learner_id):
+    from app.commerce.models import OwnedEdition, VoiceBalance, VoiceCall
+    for model in (OwnedEdition, VoiceBalance, VoiceCall):
+        db.query(model).filter_by(learner_id=learner_id).delete()
     from app.services.storage import get_storage
     entries = db.query(EventEntry).filter_by(learner_id=learner_id).all()
     for entry in entries:

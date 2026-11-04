@@ -6,7 +6,7 @@ import hashlib
 import json
 import math
 import secrets
-from datetime import timedelta
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Literal
 
@@ -28,8 +28,27 @@ from app.commerce.models import (Wallet, Ledger, Purchase, Title, Unlock, Member
 router = APIRouter(prefix="/commerce", tags=["Commerce"])
 
 
+@router.get("/shop")
+def shop(learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+    from app.commerce import hybrid
+    if not hybrid.enabled():
+        raise HTTPException(503, "Purchases are being prepared")
+    svc.lock_wallet(db, learner.id)
+    voice = hybrid.snapshot(db, learner.id)
+    member = svc.membership(db, learner.id)
+    result = {"enabled": True, "sales_enabled": settings.commerce_sales_enabled,
+        "account_verified": bool(learner.google_sub or learner.apple_sub),
+        "products": hybrid.offers(db), "regional_plus": hybrid.REGIONAL_PLUS,
+        "account_token": stores.account_token(learner.id), "google_account": stores.google_account(learner.id),
+        "member_until": member.paid_until if member else None, **voice}
+    db.commit()
+    return result
+
+
 @router.get("/terms", response_class=HTMLResponse)
 def commerce_terms():
+    if settings.commerce_hybrid_enabled:
+        return Path(__file__).with_name("hybrid_terms.html").read_text(encoding="utf-8")
     return Path(__file__).with_name("terms.html").read_text(encoding="utf-8")
 
 
@@ -122,7 +141,7 @@ class VerifyBody(BaseModel):
 @router.post("/purchases/verify")
 async def verify_purchase(body: VerifyBody, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
     enabled()
-    if not settings.commerce_sales_enabled:
+    if not settings.commerce_sales_enabled and not settings.commerce_hybrid_enabled:
         raise HTTPException(503, "Store sales are not enabled")
     if not learner.google_sub and not learner.apple_sub:
         raise HTTPException(409, "Link a verified Google or Apple sign-in before purchasing")
@@ -201,6 +220,8 @@ class UnlockBody(BaseModel):
 @router.post("/titles/unlock")
 def unlock(body: UnlockBody, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
     enabled()
+    if settings.commerce_hybrid_enabled:
+        raise HTTPException(409, "Buy this edition directly or access it with Plus")
     row = svc.unlock_title(db, learner.id, body.title_id, body.request_id, body.expected_credits)
     result = {"id": row.id, "title_id": row.title_id, "expires_at": row.expires_at}
     db.commit()
@@ -234,6 +255,19 @@ def skip(cooldown_id: str, body: SkipBody, learner: Learner = Depends(require_le
 @router.get("/titles/{title_id}/licence")
 def licence(title_id: str, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
     enabled()
+    from app.commerce import hybrid
+    if hybrid.enabled():
+        if not hybrid.can_access(db, learner.id, title_id):
+            raise HTTPException(403, "Buy this edition or subscribe to Plus")
+        owned = hybrid.owns(db, learner.id, title_id)
+        member = svc.membership(db, learner.id)
+        until = svc.now() + timedelta(days=3650 if owned or not hybrid.premium(db, title_id) else 7)
+        if owned:
+            until = datetime(9999, 1, 1)
+        if not owned and member and hybrid.premium(db, title_id):
+            until = min(until, member.paid_until)
+        payload = {"scope": "offline", "sub": learner.id, "title": title_id, "exp": until}
+        return {"licence": sign(payload), "expires_at": until, "owner": learner.id, "owned": owned}
     member = svc.membership(db, learner.id)
     access = svc.title_access(db, learner.id, title_id)
     if not member or not access:
@@ -299,7 +333,8 @@ def renew_media(body: MediaRenewBody, learner: Learner = Depends(require_learner
             raise ValueError("Wrong owner")
     except Exception as exc:
         raise HTTPException(401, "Invalid media authorization") from exc
-    if data.get("limit_ms") is None and data.get("title") != "daily:audio" and not svc.title_access(db, learner.id, data["title"]):
+    from app.commerce.access import has_title
+    if data.get("limit_ms") is None and data.get("title") != "daily:audio" and not has_title(db, learner.id, data["title"]):
         raise HTTPException(403, "This audio unlock has ended")
     if data.get("limit_ms") is not None:
         from app.commerce.access import protect_audio

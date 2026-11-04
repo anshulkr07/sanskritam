@@ -92,6 +92,35 @@ class Cooldown(Base):
     skipped = Column(Boolean, nullable=False, default=False)
 
 
+class OwnedEdition(Base):
+    __tablename__ = "commerce_owned_editions"
+    id = Column(String(64), primary_key=True, default=uid)
+    learner_id = Column(String(64), nullable=False, index=True)
+    title_id = Column(String(160), nullable=False)
+    purchase_id = Column(String(64), nullable=False)
+    revoked = Column(Boolean, nullable=False, default=False)
+    __table_args__ = (UniqueConstraint("purchase_id", "title_id", name="uq_owned_purchase_title"),)
+
+
+class VoiceBalance(Base):
+    __tablename__ = "commerce_voice_balances"
+    learner_id = Column(String(64), primary_key=True)
+    paid_ms = Column(Integer, nullable=False, default=0)
+    trial_used_ms = Column(Integer, nullable=False, default=0)
+
+
+class VoiceCall(Base):
+    __tablename__ = "commerce_voice_calls"
+    id = Column(String(64), primary_key=True, default=uid)
+    learner_id = Column(String(64), nullable=False, index=True)
+    trial_ms = Column(Integer, nullable=False)
+    paid_ms = Column(Integer, nullable=False)
+    billed_ms = Column(Integer, nullable=False, default=0)
+    state = Column(String(16), nullable=False, default="reserved")
+    expires_at = Column(DateTime, nullable=False)
+    delivered_at = Column(DateTime, nullable=True)
+
+
 class Reservation(Base):
     __tablename__ = "commerce_reservations"
     id = Column(String(64), primary_key=True, default=uid)

@@ -429,6 +429,8 @@ class Settings(BaseSettings):
 
     # Independently staged; live charges require verified store configuration.
     commerce_enabled: bool = False
+    commerce_hybrid_enabled: bool = False
+    commerce_voice_enabled: bool = False
     commerce_sales_enabled: bool = False
     commerce_ads_enabled: bool = False
     commerce_rewards_enabled: bool = False

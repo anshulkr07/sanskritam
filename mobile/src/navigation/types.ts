@@ -27,6 +27,8 @@ export type MainTabParamList = {
 };
 
 export type RootStackParamList = {
+  Shop: { titleId?: string } | undefined;
+  GuruVoice: undefined;
   StoryMap: undefined;
   StoryLeaf: { leafId: string };
   StoryLesson: { lessonId: string; track?: "story" | "simple" };

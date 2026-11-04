@@ -94,6 +94,9 @@ import WordJourneyScreen from "./src/screens/WordJourney";
 import DoYouKnowScreen from "./src/screens/DoYouKnow";
 import ReciteScreen from "./src/screens/Recite";
 import RecitePickerScreen from "./src/screens/RecitePicker";
+import ShopScreen from "./src/screens/Shop";
+import GuruVoiceScreen from "./src/screens/GuruVoice";
+import { HYBRID_COMMERCE } from "./src/services/commerce";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -234,6 +237,8 @@ function RootNavigator() {
 
             <Stack.Screen name="Calibration" component={CalibrationScreen} options={{ title: "Calibration" }} />
             {/* Voice: the companions inside one group, and the live call with one of them. */}
+            {HYBRID_COMMERCE && <Stack.Screen name="Shop" component={ShopScreen} options={{ title: "Books, Guru & Plus" }} />}
+            {HYBRID_COMMERCE && <Stack.Screen name="GuruVoice" component={GuruVoiceScreen} options={{ title: "Talk with Guru" }} />}
 
             {/* Parva: festivals and vrats. */}
             <Stack.Screen name="Parva" component={ParvaScreen} options={{ title: "Festivals" }} />

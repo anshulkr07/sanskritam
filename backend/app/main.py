@@ -135,7 +135,7 @@ def create_app() -> FastAPI:
 
     # Register routers
     from app.voice_lab.router import router as voice_lab_router
-    if settings.deferred_features_enabled:
+    if settings.deferred_features_enabled or (settings.commerce_enabled and settings.commerce_hybrid_enabled and settings.commerce_voice_enabled):
         app.include_router(voice_lab_router, tags=["Voice Lab"])
     from app.routers.health import router as health_router
     from app.routers.auth_router import router as auth_router
@@ -185,7 +185,7 @@ def create_app() -> FastAPI:
 
     app.include_router(health_router, tags=["Health"])
     from app.commerce.router import router as commerce_router
-    if settings.deferred_features_enabled:
+    if settings.deferred_features_enabled or (settings.commerce_enabled and settings.commerce_hybrid_enabled):
         app.include_router(commerce_router)
     app.include_router(auth_router, tags=["Auth"])
     app.include_router(me_router, tags=["Learner"])

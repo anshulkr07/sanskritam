@@ -15,6 +15,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import AlbumArt from "../components/book/AlbumArt";
 import { downloadBookAudio } from "../services/offlineBooks";
+import EditionOffer from "../components/EditionOffer";
 import { Alert } from "react-native";
 import { coverColour } from "../components/book/covers";
 import { useBookPages } from "../hooks/useBookPages";
@@ -80,6 +81,7 @@ export default function AudiobookScreen({ navigation, route }: Props) {
 
   const header = (
     <View>
+      <EditionOffer titleId={bookKey + ":audio"} />
       <Pressable accessibilityRole="button" onPress={() => {
         void downloadBookAudio(pages, bookKey).then(() => Alert.alert("Saved", "The audiobook is saved on this device.")).catch(e => Alert.alert("Download unavailable", e.message));
       }} style={{ padding: 12 }}><Text style={{ color: "#9e481b", fontWeight: "700" }}>Save audiobook offline</Text></Pressable>

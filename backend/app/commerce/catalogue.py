@@ -21,3 +21,6 @@ TITLE_PRICES = {"book": {"short": 30, "standard": 80, "long": 150},
                 "audio": {"short": 80, "standard": 200, "long": 500}}
 REGIONAL_MEMBERSHIPS = {"USD": [3.99, 8.99, 19.99], "EUR": [2.99, 6.99, 17.99],
                        "GBP": [2.49, 5.99, 14.99]}
+
+from app.commerce.hybrid import PRODUCTS as HYBRID_PRODUCTS
+PRODUCTS.update(HYBRID_PRODUCTS)

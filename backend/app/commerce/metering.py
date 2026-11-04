@@ -90,7 +90,7 @@ class CommerceRoute(APIRoute):
         original = super().get_route_handler()
         async def handle(request):
             action = PAID_PATHS.get(request.url.path)
-            if not settings.commerce_enabled or not action:
+            if not settings.commerce_enabled or settings.commerce_hybrid_enabled or not action:
                 return await original(request)
             from app.commerce.router import decode
             # Graph practice incurs no live model/synthesis charge.

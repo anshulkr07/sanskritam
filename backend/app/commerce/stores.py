@@ -171,7 +171,7 @@ async def finish_google(product_id, token):
     from urllib.parse import quote
     product = PRODUCTS[product_id]
     kind = "subscriptions" if product["kind"] == "subscription" else "products"
-    operation = "acknowledge" if kind == "subscriptions" else "consume"
+    operation = "acknowledge" if kind == "subscriptions" or product["kind"] == "edition" else "consume"
     path = f"purchases/{kind}/{quote(product_id, safe='')}/tokens/{quote(token, safe='')}:{operation}"
     await google_request(path, "POST", {} if operation == "acknowledge" else None)
 

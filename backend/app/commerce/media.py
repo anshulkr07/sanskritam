@@ -16,12 +16,12 @@ from app.commerce import service as svc
 
 async def serve_media(ticket, db, head=False):
     from app.commerce.router import decode
-    from app.commerce.access import has_ad
+    from app.commerce.access import has_ad, has_title
     data = decode(ticket, "media")
     row = db.get(Shloka, data["row"])
     if not row or not db.get(Learner, data["sub"]):
         raise HTTPException(404, "Unknown media")
-    if data.get("limit_ms") is None and data["title"] != "daily:audio" and not svc.title_access(db, data["sub"], data["title"]):
+    if data.get("limit_ms") is None and data["title"] != "daily:audio" and not has_title(db, data["sub"], data["title"]):
         raise HTTPException(403, "Audio access ended")
     if data["kind"] == "chant":
         audio = db.query(VerseAudio).filter_by(verse_uid=row.verse_uid, voice=settings.chant_voice).first()
