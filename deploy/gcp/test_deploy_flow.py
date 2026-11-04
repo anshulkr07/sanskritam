@@ -16,7 +16,8 @@ if os.name == "nt":
 
 @unittest.skipUnless(BASH, "Bash required for deployment integration checks")
 class DeployFlowTests(unittest.TestCase):
-    def run_deploy(self, database_url, *args, env_newline="\n", project_python=False, missing_driver=False):
+    def run_deploy(self, database_url, *args, env_newline="\n", project_python=False, missing_driver=False,
+                   missing_revision=False):
         with tempfile.TemporaryDirectory(prefix="deploy-flow-") as directory:
             root = Path(directory)
             (root / "Dockerfile").touch()
@@ -49,7 +50,12 @@ case "$*" in
   'secrets versions access '*) echo 'postgresql://user:good@db/app' ;;
   'secrets versions add '*) cat >/dev/null; echo 'projects/p/secrets/s/versions/52' ;;
   'projects describe '*) echo '123' ;;
-  'run services describe '*) echo 'https://test.invalid' ;;
+  'run services describe '*)
+    if [[ "$*" == *latestCreatedRevisionName* ]]; then
+      if [ "$TEST_MISSING_REVISION" != '1' ]; then echo 'shabd-api-new-build'; fi
+    else
+      echo 'https://test.invalid'
+    fi ;;
 esac
 ''',
                 "curl": '#!/bin/bash\necho \'{"status":"ok"}\'\n',
@@ -82,6 +88,7 @@ esac
                 env.pop(key, None)
             env["VERTEX_CREDENTIALS_FILE"] = "missing-test-credentials.json"
             env["TEST_MISSING_DRIVER"] = "1" if missing_driver else "0"
+            env["TEST_MISSING_REVISION"] = "1" if missing_revision else "0"
             command = 'export PATH="$PWD/bin:$PATH"; bash deploy/gcp/deploy.sh "$@"'
             result = subprocess.run([BASH, "-c", command, "deploy-test", *args],
                                     cwd=root, env=env, capture_output=True, text=True)
@@ -100,6 +107,21 @@ esac
         result, calls = self.run_deploy("postgresql://user:bad@db/app", "--rotate-database-url")
         self.assertNotEqual(result.returncode, 0)
         self.assertEqual(calls, "")
+
+    def test_successful_deploy_promotes_new_revision_despite_pinned_traffic(self):
+        result, calls = self.run_deploy("postgresql://user:good@db/app")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("run services update-traffic shabd-api", calls)
+        self.assertIn("--to-revisions=shabd-api-new-build=100", calls)
+        self.assertLess(calls.index("run deploy"), calls.index("run services update-traffic"))
+        self.assertIn("Revision: shabd-api-new-build", result.stdout)
+
+    def test_missing_deployed_revision_aborts_instead_of_checking_old_service(self):
+        result, calls = self.run_deploy("postgresql://user:good@db/app", missing_revision=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Cannot identify the deployed revision", result.stderr)
+        self.assertNotIn("run services update-traffic", calls)
+        self.assertNotIn("HEALTH OK", result.stdout)
 
     def test_valid_rotation_uploads_and_pins_new_version(self):
         result, calls = self.run_deploy("postgresql://user:good@db/app", "--rotate-database-url")

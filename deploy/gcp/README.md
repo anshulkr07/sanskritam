@@ -31,6 +31,9 @@ Rotation tests the new connection with `SELECT 1` before uploading anything.
 If it succeeds, the script syncs the database secret (reusing an identical value)
 and pins the new revision to that version. Failed validation aborts without changing cloud secrets.
 The deployment also fails if the HTTP health check fails.
+After building, it explicitly routes traffic to the newly created revision. This
+avoids reporting a healthy previous revision as a successful release when the
+service was pinned to a named revision or canary.
 
 Preflight also checks that this checkout recognizes the database's Alembic
 revision. A stale source upload missing an already-applied migration would

@@ -286,10 +286,23 @@ gcloud run deploy "$SERVICE" \
   --update-env-vars="ANALYZER=vidyut,LOG_LEVEL=INFO,DEV_LOGIN_ENABLED=false,TTS_SANSKRIT_CODE=sa-IN${AUDIO_ENV}${EXTRA_ENV}" \
   "${SECRET_FLAGS[@]}"
 
+# A service pinned to a named revision (for example a tagged canary) can keep
+# routing to that revision after a successful deploy. Health-checking the URL
+# alone then reports success for OLD code. Promote the newly created revision
+# explicitly before verifying the live service.
+DEPLOYED_REVISION=$(gcloud run services describe "$SERVICE" --project="$PROJECT_ID" --region="$REGION" --format='value(status.latestCreatedRevisionName)')
+if [[ "$DEPLOYED_REVISION" != "$SERVICE"-* ]]; then
+  echo "Cannot identify the deployed revision; traffic was not changed." >&2
+  exit 1
+fi
+gcloud run services update-traffic "$SERVICE" --project="$PROJECT_ID" --region="$REGION" \
+  --to-revisions="${DEPLOYED_REVISION}=100" --quiet
+
 # ── 3. Verify ────────────────────────────────────────────────────────────
 URL=$(gcloud run services describe "$SERVICE" --project="$PROJECT_ID" --region="$REGION" --format='value(status.url)')
 echo ""
 echo "Deployed: $URL"
+echo "Revision: $DEPLOYED_REVISION"
 echo "Health:   $URL/health"
 if ! curl --fail --silent --show-error --max-time 30 "$URL/health"; then
   echo "HEALTH CHECK FAILED — check logs: gcloud run services logs read $SERVICE --region $REGION" >&2

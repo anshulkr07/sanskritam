@@ -12,8 +12,8 @@
 - Fixed both native Google sign-in entry points to pass the configured iOS client
   ID. Play Services checks now run only on Android.
 - Fixed backend Apple identity-token verification to accept RS256. Previously it
-  allowed only ES256, rejecting Apple's actual identity tokens. The backend must
-  be redeployed for this fix to reach devices.
+  allowed only ES256, rejecting Apple's actual identity tokens. The backend fix
+  was deployed on 2026-11-04; real Apple login still needs device testing.
 - Enabled `ios.usesAppleSignIn` explicitly and used Apple's native, localized
   sign-in button after checking availability.
 - Added an `ios-testflight` EAS profile with store distribution, an independent
@@ -42,8 +42,8 @@
    compile this Swift/CocoaPods integration. Neither a native build nor device QA
    was performed in this change.
 2. Finish Apple Developer/App Store Connect setup, signing and the app record.
-   Confirm the server's `APPLE_CLIENT_ID` includes `com.sanskritam.app`, deploy the
-   RS256 fix, and verify real Google/Apple login and account linking.
+   The server's `APPLE_CLIENT_ID` now includes `com.sanskritam.app` and the RS256
+   fix is deployed. Verify real Google/Apple login and account linking.
 3. Implement Sign in with Apple token revocation on account deletion. The current
    app sends identity tokens only, does not retain/exchange authorization codes,
    and its provider-deletion outbox handles Stream only. This needs the Apple
@@ -62,6 +62,29 @@
    `hi` and `sa-Deva-IN` on letters, mātrās and words before choosing a new model.
 7. Complete App Store screenshots, privacy declarations, review instructions and
    any export-compliance answers in App Store Connect.
+
+## Backend deployment — 2026-11-04
+
+- Project `gen-lang-client-0232760726`, Cloud Run `shabd-api`, `asia-south1`.
+- Deployed a clean snapshot of commit `5f4df8f`; concurrent checkout edits were
+  excluded. Cloud Build `768a16c7-4d51-481d-8a04-490acfdc4b10` succeeded.
+- Image digest `sha256:bacc58011bed594b6c87b838672ca3db6662cc6751f8ede35db6e68178f70b2f`.
+- Revision `shabd-api-00095-zrr` serves 100% of traffic. The existing `canary` tag
+  points to this revision; the temporary verification tag was removed.
+- [Production health](https://shabd-api-829757572630.asia-south1.run.app/health)
+  returns 200. `/auth/apple` rejects invalid tokens with 401 rather than the old
+  501 configuration error. Unauthenticated writing requests remain rejected.
+- PostgreSQL is at `20261104_hybrid_commerce`, with all three new tables present.
+  Database secret version 52, storage settings and disabled purchase/deferred
+  flags were preserved. Vertex secret reference changed but its bytes did not.
+- Source filtering was narrowed to required Docker inputs (17 MB instead of
+  501 MB), excluding local database backups and credentials. The oversized attempt
+  was stopped before any new archive/build was created. Future deployments now
+  explicitly promote the created revision instead of checking a pinned old one.
+- 30 deployment tests and 46 selected authentication/commerce tests passed.
+- No mobile native build was started. iOS needs a TestFlight binary for the new
+  handwriting wrapper. Android also needs a fresh binary when testing the new
+  purchase/Guru voice functionality; a backend-only update needs neither rebuild.
 
 ## Commands
 
