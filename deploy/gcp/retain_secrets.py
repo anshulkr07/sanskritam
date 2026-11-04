@@ -11,6 +11,9 @@ from datetime import datetime, timedelta, timezone
 import json
 import shutil
 import subprocess
+import time
+from urllib.error import HTTPError
+from urllib.request import Request, urlopen
 
 MANAGED = {
     "admin-token", "apple-client-id", "gemini-api-keys", "google-client-id",
@@ -97,9 +100,30 @@ def main():
         raise RuntimeError("Traffic changed while planning; cleanup stopped")
     work = [(s, v) for s, details in plan.items() for v in details["destroy"]]
 
+    # One credential refresh for the batch; never log or persist the token.
+    auth = subprocess.run([shutil.which("gcloud") or "gcloud", "auth", "print-access-token"],
+                          capture_output=True, text=True, timeout=120)
+    if auth.returncode or not auth.stdout.strip():
+        raise RuntimeError("Could not authenticate cleanup; no further versions destroyed")
+    token = auth.stdout.strip()
+
     def destroy(item):
         secret, version = item
-        cloud("secrets", "versions", "destroy", version, f"--secret={secret}")
+        url = (f"https://secretmanager.googleapis.com/v1/projects/{args.project}"
+               f"/secrets/{secret}/versions/{version}:destroy")
+        for attempt in range(5):
+            request = Request(url, data=b"{}", method="POST", headers={
+                "Authorization": f"Bearer {token}", "Content-Type": "application/json"})
+            try:
+                with urlopen(request, timeout=60) as response:
+                    state = json.load(response).get("state")
+                if state != "DESTROYED":
+                    raise RuntimeError("Version destruction not confirmed")
+                return
+            except HTTPError as error:
+                if error.code not in (429, 500, 502, 503, 504) or attempt == 4:
+                    raise RuntimeError(f"Cleanup failed for {secret}/{version}: HTTP {error.code}") from None
+                time.sleep(2 ** attempt)
 
     with ThreadPoolExecutor(max_workers=6) as pool:
         list(pool.map(destroy, work))
