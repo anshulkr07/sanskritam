@@ -6,6 +6,12 @@ Run from the repository checkout:
 bash deploy/gcp/deploy.sh
 ```
 
+The cloud source archive and Docker context allow only the Dockerfile, backend
+application/migrations/configuration, and served frontend files. Local database
+backups, environment files, credentials, mobile sources, and generated media are
+not deployment input. Check the archive with `gcloud meta list-files-for-upload`
+when changing these rules.
+
 Normal deployments resolve `DATABASE_URL` from the last ready Cloud Run
 revision's Secret Manager reference. They ignore the local `DATABASE_URL`,
 test the selected database credentials before any cloud writes, and keep the

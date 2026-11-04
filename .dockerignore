@@ -1,54 +1,28 @@
-# Keep the build context small — Cloud Run --source builds bill per minute.
-.git
-.venv
-venv
-__pycache__
-**/__pycache__
-*.pyc
-.pytest_cache
+# Allow only the inputs COPYed by the backend Dockerfile.
+# Local app.db.bak-* files must never enter the cloud source archive.
+**
+!/.gcloudignore
+!/.dockerignore
+!/Dockerfile
+!/backend/
+!/backend/requirements.txt
+!/backend/alembic.ini
+!/backend/app/
+!/backend/app/**
+!/backend/migrations/
+!/backend/migrations/**
+!/frontend/
+!/frontend/**
 
-# Not needed in the image
-backend/.venv
-backend/evals-out
-backend/results
-backend/*.db
-backend/tests
-backend/scripts
-backend/app/evals/.cache
-backend/app/.authoring-cache
-research
-specs
-mobile
-icons
-*.md
-.github
-.vscode
-.claude
-.claude/
-# Build context only: never COPYed by the Dockerfile (it takes backend/app,
-# backend/migrations, backend/alembic.ini, requirements.txt and frontend/).
-# Each of these is hundreds of MB of upload + billed build minutes.
-chant_runs
-results
-storage
-deploy
-gpu
-gpu_jobs
-frontend/src
-Claude outputs/
-*.rar
-*.zip
-*.wav
-*.mp3
-
-# vidyut-data is downloaded fresh at build time (baked into image)
-backend/vidyut-data
-
-# Never bake secrets
-.env
-.env.local
-.env.deploy
-.env.deploy.bak-*
-vertex_credentials.json
-*credentials*.json
-service-account-key.json
+# Exclude generated files and credentials even inside allowed trees.
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+**/node_modules/
+**/.env*
+**/*.db*
+**/*credentials*.json
+**/service-account-key.json
+**/*.pem
+**/*.key
+/frontend/src/
