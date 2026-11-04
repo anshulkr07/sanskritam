@@ -7,6 +7,7 @@
 # duplicate the text, so "change the code, change the page" still holds.
 #
 # Deploy:  cd deploy/cloudflare/legal-site && npx wrangler deploy
+# Build homepage files first: node ../homepages/build.mjs
 
 name = "sanskritam-legal"
 main = "src/index.js"
@@ -18,3 +19,9 @@ account_id = "53e63a62bf8caf42f7a21f5450e8f5a6"
 routes = [
   { pattern = "sanskritam.vedicvalor.com", custom_domain = true }
 ]
+
+[assets]
+directory = "../homepages/dist/sanskritam"
+binding = "ASSETS"
+run_worker_first = true
+not_found_handling = "404-page"

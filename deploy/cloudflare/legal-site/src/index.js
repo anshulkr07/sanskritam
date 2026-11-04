@@ -1,7 +1,7 @@
-// Legal-site edge proxy for sanskritam.vedicvalor.com.
+// Sanskritam homepage and legal-site edge proxy at sanskritam.vedicvalor.com.
 //
 // The real content lives on the backend (app/routers/legal.py). This worker
-// forwards only the two Play-required pages and renders a tiny landing at /.
+// forwards the two Play-required pages; the homepage and its files are static.
 
 const ORIGIN = "https://shabd-api-829757572630.asia-south1.run.app";
 const ALLOWED = new Set(["/privacy", "/delete-account"]);
@@ -11,32 +11,8 @@ const ALLOWED = new Set(["/privacy", "/delete-account"]);
 // HSTS then keeps browsers on https for repeat visits.
 const HSTS = "max-age=31536000; includeSubDomains";
 
-function html(body, status = 200) {
-  return new Response(body, {
-    status,
-    headers: {
-      "content-type": "text/html; charset=utf-8",
-      "strict-transport-security": HSTS,
-    },
-  });
-}
-
-const LANDING = `<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sanskritam — Legal</title>
-<style>body{margin:0;background:#FFF8EE;color:#2B2118;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-main{max-width:44rem;margin:0 auto;padding:4rem 1.25rem}h1{font-size:1.9rem;margin:0 0 .5rem}
-a{color:#B5441A;display:block;margin:.5rem 0;font-size:1.1rem}</style>
-</head><body><main>
-<h1>Sanskritam</h1>
-<p>Legal information for the Sanskritam app.</p>
-<a href="/privacy">Privacy Policy</a>
-<a href="/delete-account">Delete your account</a>
-</main></body></html>`;
-
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     const url = new URL(request.url);
 
     // Force HTTPS. Prefer x-forwarded-proto (Cloudflare sets it) so the check
@@ -49,8 +25,12 @@ export default {
       return Response.redirect(secure.toString(), 301);
     }
 
-    if (url.pathname === "/") {
-      return html(LANDING);
+    if (url.pathname === "/" || url.pathname === "/index.html" ||
+        url.pathname === "/robots.txt" || url.pathname.startsWith("/assets/")) {
+      const asset = await env.ASSETS.fetch(request);
+      const response = new Response(asset.body, asset);
+      response.headers.set("strict-transport-security", HSTS);
+      return response;
     }
 
     if (!ALLOWED.has(url.pathname)) {
