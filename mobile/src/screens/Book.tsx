@@ -1,5 +1,6 @@
 import Modal from "../components/AudioModal";
 import EditionOffer from "../components/EditionOffer";
+import SponsoredCard from '../components/SponsoredCard';
 // Book: the fullscreen reading page (HANDOVER 7.4) — the one reading screen
 // for every book, classic or paged. A paged book reads one chapter at a time;
 // its last page turns on to the next chapter, and its first page offers the
@@ -307,6 +308,8 @@ function BookReader({ navigation, route }: Props) {
             }
             if (i >= pages.length && nextCh) {
               return (
+                <View style={{flex: 1}}>
+                {showAt >= pages.length && <SponsoredCard titleId={bookKey + ':book'} />}
                 <NextChapterPage
                   themeName={themeName}
                   bookTitle={plain(bookTitle)}
@@ -314,6 +317,7 @@ function BookReader({ navigation, route }: Props) {
                   verses={nextCh.count}
                   onOpen={() => openChapter(nextCh.chapter)}
                 />
+                </View>
               );
             }
             return (

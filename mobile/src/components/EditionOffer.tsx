@@ -5,6 +5,7 @@ import { HYBRID_COMMERCE, commerceCatalogue } from "../services/commerce";
 import type { RootStackParamList } from "../navigation/types";
 import { color } from "../theme";
 import { useAuth } from "../store/auth";
+import RewardedAccess from './RewardedAccess';
 
 export default function EditionOffer({ titleId }: { titleId: string }) {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
@@ -30,5 +31,6 @@ export default function EditionOffer({ titleId }: { titleId: string }) {
     <Pressable accessibilityRole="button" onPress={() => navigation.navigate("Shop", { titleId })}>
       <Text style={{ color: color.saffron, fontWeight: "700" }}>{label}</Text>
     </Pressable>
+    {!offer.owned && !offer.member && <RewardedAccess titleId={titleId} />}
   </View>;
 }

@@ -5,6 +5,14 @@
     "appVersionSource": "local"
   },
   "build": {
+    "ads-test": {
+      "extends": "preview",
+      "channel": "ads-test",
+      "env": {
+        "EXPO_PUBLIC_HYBRID_COMMERCE": "true",
+        "EXPO_PUBLIC_ADS_MODE": "test"
+      }
+    },
     "development": {
       "developmentClient": true,
       "distribution": "internal",

@@ -31,6 +31,18 @@ def test_camera_and_voice_disclosures_are_not_contradictory(client):
     assert "not practice audio on our servers" in text
     assert "Photos stay on this phone" not in text
 
+
+def test_optional_ads_disclosures_match_enabled_hybrid_release(client, monkeypatch):
+    monkeypatch.setattr(settings, "commerce_enabled", True)
+    monkeypatch.setattr(settings, "commerce_hybrid_enabled", True)
+    monkeypatch.setattr(settings, "commerce_ads_enabled", True)
+    text = client.get("/privacy").text
+    assert "Google Mobile Ads" in text and "non-personalized" in text
+    assert "purchased editions contain no ads" in text
+    assert "Lite and Plus are ad-free" in text
+    assert "We do not sell personal data or share it for advertising" not in text
+    assert "Advertising, Group chat" not in text
+
 def test_deletion_includes_provider_erasure_and_retry(client):
     for path in ("/privacy", "/delete-account"):
         text=client.get(path).text

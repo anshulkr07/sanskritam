@@ -40,6 +40,7 @@ export async function refreshCommerce() {
 }
 
 let owner: string | null = null;
+export const commerceOwner = () => owner;
 export function setCommerceOwner(id: string | null) { owner = id; }
 const licenceKey = (id: string, title: string) => `shabd.edition.licence.${encodeURIComponent(id)}.${encodeURIComponent(title)}`;
 export async function offlineEditionAllowed(titleId: string, acquire = false): Promise<boolean> {

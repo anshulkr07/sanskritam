@@ -106,9 +106,10 @@ are bounded by seven days or the verified paid-period end, whichever is sooner;
 revocations cannot reach a disconnected device immediately. An unlicensed saved
 audio file is never decrypted, but Lite can fall back to authorized online streaming.
 
-No advertising SDK or free-tier ad placements are enabled by this change. Lite
-and Plus are explicitly ad-free; future ad integrations must respect those benefits
-and keep purchased editions ad-free. Voice and future avatars are not bundled.
+The subsequent [AdMob integration](admob-setup-20261104.md) adds optional native
+and rewarded ads behind a separate native build mode and backend serving flag.
+Default builds still have ads off. Lite and Plus are explicitly ad-free, as are
+purchased editions. Voice and future avatars are not bundled.
 Deploy the updated backend before the Lite mobile build: it supplies the tier,
 catalogue inclusion, download entitlement and verified transaction-consumability
 fields used by the new client. Store receipt fulfilment does not depend on a SKU

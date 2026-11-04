@@ -362,3 +362,86 @@ def test_shop_and_purchase_api_without_membership(client, monkeypatch):
         for medium in ("book", "audio"):
             db.get(Title, "gita:" + medium).metadata_json = {}
         db.commit()
+
+
+@pytest.fixture
+def ad_client(db, monkeypatch):
+    from fastapi import FastAPI
+    from fastapi.testclient import TestClient
+    from app.auth import require_learner
+    from app.db import get_db
+    from app.commerce.router import router
+    monkeypatch.setattr(settings, "commerce_ads_enabled", True)
+    monkeypatch.setattr(settings, "commerce_signing_key", "test-key-with-more-than-thirty-two-characters")
+    app = FastAPI(); app.include_router(router)
+    app.dependency_overrides[get_db] = lambda: db
+    app.dependency_overrides[require_learner] = lambda: db.get(Learner, "u")
+    with TestClient(app) as client:
+        yield client
+
+
+def test_ads_require_explicit_adult_opt_in_and_support_withdrawal(ad_client):
+    assert not ad_client.get("/commerce/ads/eligibility").json()["allowed"]
+    path = "/commerce/ads/preferences"
+    assert not ad_client.put(path, json={"adult": False, "opted_in": True}).json()["allowed"]
+    assert ad_client.put(path, json={"adult": True, "opted_in": True}).json()["allowed"]
+    assert ad_client.post("/commerce/ads/ticket", json={"title_id": "", "kind": "native"}).status_code == 200
+    assert not ad_client.put(path, json={"adult": True, "opted_in": False}).json()["allowed"]
+    assert ad_client.post("/commerce/ads/ticket", json={"title_id": "", "kind": "native"}).status_code == 403
+
+
+@pytest.mark.parametrize("plan", ["lite", "plus"])
+def test_paid_members_never_receive_ad_tickets(db, ad_client, plan):
+    ad_client.put("/commerce/ads/preferences", json={"adult": True, "opted_in": True})
+    buy(db, plan + ".v2.monthly")
+    assert ad_client.get("/commerce/ads/eligibility").json()["ad_free"]
+    for kind in ("native", "reading", "audio"):
+        assert ad_client.post("/commerce/ads/ticket", json={"title_id": "gita:book", "kind": kind}).status_code == 403
+
+
+def test_owned_editions_suppress_ads_and_refund_only_changes_that_grant(db, ad_client):
+    ad_client.put("/commerce/ads/preferences", json={"adult": True, "opted_in": True})
+    purchased = buy(db, "edition.gita.book")
+    assert not ad_client.get("/commerce/ads/eligibility?title_id=gita:book").json()["allowed"]
+    assert ad_client.get("/commerce/ads/eligibility?title_id=gita:audio").json()["allowed"]
+    assert ad_client.post("/commerce/ads/ticket", json={"title_id": "gita:book", "kind": "native"}).status_code == 403
+    svc.refund_purchase(db, purchased); db.commit()
+    assert ad_client.get("/commerce/ads/eligibility?title_id=gita:book").json()["allowed"]
+
+
+def test_native_ad_tickets_enforce_cooldown_and_daily_cap(db, ad_client):
+    from app.commerce.models import AdGrant
+    ad_client.put("/commerce/ads/preferences", json={"adult": True, "opted_in": True})
+    body = {"title_id": "", "kind": "native"}
+    assert ad_client.post("/commerce/ads/ticket", json=body).status_code == 200
+    assert ad_client.post("/commerce/ads/ticket", json=body).status_code == 429
+    db.query(AdGrant).update({"created_at": svc.now() - timedelta(minutes=11)}); db.commit()
+    assert ad_client.post("/commerce/ads/ticket", json=body).status_code == 200
+    db.query(AdGrant).update({"created_at": svc.now() - timedelta(minutes=11)}); db.commit()
+    assert ad_client.post("/commerce/ads/ticket", json=body).status_code == 429
+
+
+def test_reward_requires_server_verification_and_is_idempotent(db, ad_client, monkeypatch):
+    from app.commerce import ads
+    from app.commerce.models import AdGrant
+    ad_client.put("/commerce/ads/preferences", json={"adult": True, "opted_in": True})
+    body = {"title_id": "gita:audio", "kind": "audio"}
+    ticket = ad_client.post("/commerce/ads/ticket", json=body).json()
+    assert not ad_client.get("/commerce/ads/" + ticket["id"]).json()["verified"]
+    async def signed(_query): return {"custom_data": ticket["ticket"], "transaction_id": "google-verified-completion"}
+    monkeypatch.setattr(ads, "verify_callback", signed)
+    for _ in range(2):
+        assert ad_client.get("/commerce/ads/ssv?fixture=verified").status_code == 200
+    assert ad_client.get("/commerce/ads/" + ticket["id"]).json()["verified"]
+    assert db.query(AdGrant).filter_by(transaction_id="google-verified-completion").count() == 1
+    for _ in range(2):
+        assert ad_client.post("/commerce/ads/ticket", json=body).status_code == 200
+    assert ad_client.post("/commerce/ads/ticket", json=body).status_code == 429
+
+
+def test_ad_kill_switch_and_reward_medium_validation(ad_client, monkeypatch):
+    ad_client.put("/commerce/ads/preferences", json={"adult": True, "opted_in": True})
+    assert ad_client.post("/commerce/ads/ticket", json={"title_id": "gita:book", "kind": "audio"}).status_code == 422
+    monkeypatch.setattr(settings, "commerce_ads_enabled", False)
+    assert not ad_client.get("/commerce/ads/eligibility").json()["allowed"]
+    assert ad_client.post("/commerce/ads/ticket", json={"title_id": "", "kind": "native"}).status_code == 403

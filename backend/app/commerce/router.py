@@ -425,19 +425,50 @@ class AdBody(BaseModel):
     target: str = Field(default="", max_length=100)
 
 
+@router.get("/ads/eligibility")
+def ad_eligibility(title_id: str = "", learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+    enabled()
+    from app.commerce.ad_policy import eligibility
+    return eligibility(db, learner.id, title_id)
+
+
+class AdPreferencesBody(BaseModel):
+    adult: bool
+    opted_in: bool
+
+
+@router.put("/ads/preferences")
+def ad_preferences(body: AdPreferencesBody, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+    enabled()
+    svc.lock_wallet(db, learner.id)
+    row = db.get(Profile, learner.id)
+    if row is None:
+        row = Profile(learner_id=learner.id)
+        db.add(row)
+    row.adult, row.ads_consent = body.adult, body.adult and body.opted_in
+    db.commit()
+    from app.commerce.ad_policy import eligibility
+    return eligibility(db, learner.id)
+
+
 @router.post("/ads/ticket")
 def ad_ticket(body: AdBody, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
     enabled()
-    if not settings.commerce_ads_enabled or svc.membership(db, learner.id):
-        raise HTTPException(403, "Advertising is unavailable")
-    if body.kind == "native" and not learner.streak:
-        raise HTTPException(403, "Complete a learning activity before native advertising")
     svc.lock_wallet(db, learner.id)
+    from app.commerce.ad_policy import eligibility
+    if not eligibility(db, learner.id, body.title_id)["allowed"]:
+        raise HTTPException(403, "Advertising is unavailable for this account or purchased edition")
+    if body.kind == "native" and not settings.commerce_hybrid_enabled and not learner.streak:
+        raise HTTPException(403, "Complete a learning activity before native advertising")
     profile = db.get(Profile, learner.id)
     if not profile or not profile.adult or not profile.ads_consent:
         raise HTTPException(403, "Advertising consent and adult profile required")
     if body.kind != "native" and not db.get(Title, body.title_id):
         raise HTTPException(404, "Unknown title")
+    if body.kind in {"reading", "audio"}:
+        title = db.get(Title, body.title_id)
+        if title.medium != ("book" if body.kind == "reading" else "audio") or not title.published:
+            raise HTTPException(422, "Choose a published edition matching this reward")
     target = body.target
     if body.kind == "reading":
         from app.models import CanonText, Shloka
@@ -463,6 +494,8 @@ def ad_ticket(body: AdBody, learner: Learner = Depends(require_learner), db: Ses
     # Count issued tickets too: concurrent ad requests cannot bypass the cap.
     if query.count() >= (2 if body.kind == "native" else 3):
         raise HTTPException(429, "Daily advertising limit reached")
+    if body.kind == "native" and settings.commerce_hybrid_enabled and query.filter(AdGrant.created_at > svc.now() - timedelta(minutes=10)).first():
+        raise HTTPException(429, "Advertising break is not due yet")
     row = AdGrant(learner_id=learner.id, title_id=body.title_id, kind=body.kind, target=target,
                   expires_at=svc.now() + timedelta(minutes=15))
     db.add(row)

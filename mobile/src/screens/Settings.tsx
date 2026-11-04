@@ -1,4 +1,5 @@
 import ProfilePhotoEditor from "../components/ProfilePhotoEditor";
+import AdvertisingSettings from '../components/AdvertisingSettings';
 import Modal from "../components/AudioModal";
 // Settings — its own drawer screen (U8-1). Account, appearance, Learn, sound
 // and motion, calendar, help. No mascot, no streak, no gamification: it is
@@ -227,6 +228,7 @@ export default function SettingsScreen() {
         <Text style={styles.note}>Used only for tithi and festival dates. Approximate, kept on this phone.</Text>
 
         <Heading>Help and about</Heading>
+        <AdvertisingSettings />
         <LinkRow label="Contact support and safety" onPress={() => void openExternal("mailto:sanskritam@vedicvalor.com")} />
         <LinkRow label="Licences and credits" onPress={openLicences} />
         <LinkRow label="Privacy policy" onPress={openPrivacy} />

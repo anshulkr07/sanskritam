@@ -3,6 +3,7 @@
 // "Coming soon" row at the end instead of greying out every shelf.
 
 import React, { useMemo } from "react";
+import SponsoredCard from '../components/SponsoredCard';
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
 import type { CanonText, Shloka } from "../api/client";
@@ -122,10 +123,11 @@ export default function BooksHome({
       initialNumToRender={3}
       maxToRenderPerBatch={2}
       windowSize={5}
-      renderItem={({ item: rail }) => {
+      renderItem={({ item: rail, index }) => {
         const soon = rail.title === "Coming soon";
         return (
           <View style={styles.rail}>
+            {index === 1 && <SponsoredCard />}
             <SectionHead title={rail.title} right={soon ? `${rail.books.length}` : undefined} />
             <FlatList
               horizontal
