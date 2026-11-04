@@ -6,6 +6,11 @@ Run from the repository checkout:
 bash deploy/gcp/deploy.sh
 ```
 
+Cloud Run scales to zero when idle (both service and revision minimums are zero).
+This avoids paying to keep an unused instance warm; the first request after idle
+can take longer while the application starts. CPU and memory remain 1 CPU / 2 GiB
+for requests that need them.
+
 The cloud source archive and Docker context allow only the Dockerfile, backend
 application/migrations/configuration, and served frontend files. Local database
 backups, environment files, credentials, mobile sources, and generated media are

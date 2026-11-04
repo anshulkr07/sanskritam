@@ -279,7 +279,8 @@ gcloud run deploy "$SERVICE" \
   --port=8000 \
   --memory=2Gi \
   --cpu=1 \
-  --min-instances=1 \
+  --min=0 \
+  --min-instances=0 \
   --max-instances=2 \
   --timeout=660s \
   --allow-unauthenticated \
