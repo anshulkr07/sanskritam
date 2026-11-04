@@ -312,6 +312,10 @@ fi
 echo ""
 echo "HEALTH OK"
 
+# Keep production and recent rollback credentials; prune obsolete history only
+# after the new release is healthy. Do not run deployments concurrently.
+python3 deploy/gcp/retain_secrets.py "$PROJECT_ID" "$REGION" "$SERVICE" --apply
+
 # ── 4. Daily content: Cloud Scheduler calls the tick every half hour ──────
 #       The tick is a job, not a request path. A call with nothing to do costs
 #       two small queries; a call with work to do stops opening pages after

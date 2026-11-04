@@ -17,7 +17,7 @@ if os.name == "nt":
 @unittest.skipUnless(BASH, "Bash required for deployment integration checks")
 class DeployFlowTests(unittest.TestCase):
     def run_deploy(self, database_url, *args, env_newline="\n", project_python=False, missing_driver=False,
-                   missing_revision=False):
+                   missing_revision=False, health_failure=False):
         with tempfile.TemporaryDirectory(prefix="deploy-flow-") as directory:
             root = Path(directory)
             (root / "Dockerfile").touch()
@@ -31,6 +31,7 @@ case "$1" in
   -c) exit "$TEST_MISSING_DRIVER" ;;
   -m) echo 'venv unavailable' >&2; exit 1 ;;
   *database_secret_binding.py) echo 'shabd-database-url:51' ;;
+  *retain_secrets.py) echo 'retention cleanup' >> "$PWD/cloud-calls.log"; exit 0 ;;
   *sync_secret.py)
     gcloud secrets versions add "$3" --project="$2" --data-file=- > /dev/null
     echo 52 ;;
@@ -58,7 +59,7 @@ case "$*" in
     fi ;;
 esac
 ''',
-                "curl": '#!/bin/bash\necho \'{"status":"ok"}\'\n',
+                "curl": '#!/bin/bash\nif [ "$TEST_HEALTH_FAILURE" = 1 ]; then exit 22; fi\necho \'{"status":"ok"}\'\n',
             }
             binary = root / "bin"
             binary.mkdir()
@@ -89,6 +90,7 @@ esac
             env["VERTEX_CREDENTIALS_FILE"] = "missing-test-credentials.json"
             env["TEST_MISSING_DRIVER"] = "1" if missing_driver else "0"
             env["TEST_MISSING_REVISION"] = "1" if missing_revision else "0"
+            env["TEST_HEALTH_FAILURE"] = "1" if health_failure else "0"
             command = 'export PATH="$PWD/bin:$PATH"; bash deploy/gcp/deploy.sh "$@"'
             result = subprocess.run([BASH, "-c", command, "deploy-test", *args],
                                     cwd=root, env=env, capture_output=True, text=True)
@@ -107,6 +109,16 @@ esac
         result, calls = self.run_deploy("postgresql://user:bad@db/app", "--rotate-database-url")
         self.assertNotEqual(result.returncode, 0)
         self.assertEqual(calls, "")
+
+    def test_failed_health_check_preserves_secret_history(self):
+        result, calls = self.run_deploy("postgresql://user:good@db/app", health_failure=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertNotIn("retention cleanup", calls)
+
+    def test_healthy_release_runs_retention_after_promotion(self):
+        result, calls = self.run_deploy("postgresql://user:good@db/app")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertLess(calls.index("run services update-traffic"), calls.index("retention cleanup"))
 
     def test_successful_deploy_promotes_new_revision_despite_pinned_traffic(self):
         result, calls = self.run_deploy("postgresql://user:good@db/app")
