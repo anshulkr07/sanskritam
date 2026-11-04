@@ -91,8 +91,23 @@ consent/notice and store disclosures.
 6. Copy AdMob's exact `app-ads.txt` publisher line and serve it at the root of the
    developer website linked in both store listings: `https://YOUR-DOMAIN/app-ads.txt`.
    Do not invent a publisher ID or publish Google's sample publisher ID. Wait for
-   AdMob to verify it. This task cannot supply the exact file until an account
-   publisher ID and the store-linked developer domain are known.
+   AdMob to verify it.
+
+   Owner supplied publisher ID `pub-6672536899650972` on 4 November 2026. The
+   matching line is now checked in at `deploy/cloudflare/homepages/app-ads.txt`;
+   the homepage build copies it to the Sanskritam static assets and its Worker
+   routes `/app-ads.txt` as plain text.
+
+   Published and verified HTTP 200 at
+   `https://sanskritam.vedicvalor.com/app-ads.txt` on 4 November 2026, with the exact
+   supplied line and `text/plain; charset=utf-8`. The deployment added a small
+   route around the existing live handler, preserving the older legal landing
+   page and both backend legal proxies. It did not publish the separately prepared
+   new homepages. Cloudflare Worker version:
+   `81d26b9e-d790-4197-8d32-34069e09d6fb`. The checked-in homepage builder/Worker
+   also includes the file so a later approved homepage deployment preserves it.
+   AdMob's own crawl/verification is separate: request Check for updates and allow
+   at least 24 hours for its status to refresh.
 7. Update Google Play's Contains ads, Advertising ID and Data safety declarations,
    and Apple's App Privacy disclosures to reflect the selected SDK version and
    actual data use. Review SDK privacy manifests and the published privacy policy.

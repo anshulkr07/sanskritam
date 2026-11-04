@@ -26,10 +26,14 @@ export default {
     }
 
     if (url.pathname === "/" || url.pathname === "/index.html" ||
-        url.pathname === "/robots.txt" || url.pathname.startsWith("/assets/")) {
+        url.pathname === "/robots.txt" || url.pathname === "/app-ads.txt" || url.pathname.startsWith("/assets/")) {
       const asset = await env.ASSETS.fetch(request);
       const response = new Response(asset.body, asset);
       response.headers.set("strict-transport-security", HSTS);
+      if (url.pathname === "/app-ads.txt") {
+        response.headers.set("content-type", "text/plain; charset=utf-8");
+        response.headers.set("cache-control", "public, max-age=300");
+      }
       return response;
     }
 

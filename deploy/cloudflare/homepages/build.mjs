@@ -14,5 +14,6 @@ for (const site of ['vedicvalor', 'sanskritam']) {
   await cp(path.join(root, 'assets'), path.join(output, 'assets'), { recursive: true });
   await copyFile(path.join(root, '_headers'), path.join(output, '_headers'));
   await copyFile(path.join(root, `${site}-robots.txt`), path.join(output, 'robots.txt'));
+  if (site === 'sanskritam') await copyFile(path.join(root, 'app-ads.txt'), path.join(output, 'app-ads.txt'));
   console.log(`Built ${site}: ${output}`);
 }

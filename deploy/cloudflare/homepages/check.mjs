@@ -15,13 +15,16 @@ const env = { ASSETS: { async fetch(request) {
 const redirect = await worker.fetch(new Request('http://sanskritam.vedicvalor.com/privacy'), env);
 assert.equal(redirect.status, 301);
 assert.equal(redirect.headers.get('location'), 'https://sanskritam.vedicvalor.com/privacy');
-for (const pathname of ['/', '/index.html', '/assets/site.css', '/robots.txt']) {
+for (const pathname of ['/', '/index.html', '/assets/site.css', '/robots.txt', '/app-ads.txt']) {
   const response = await worker.fetch(new Request(`https://sanskritam.vedicvalor.com${pathname}`), env);
   assert.equal(response.status, 200);
   assert.equal(await response.text(), 'static content');
   assert.match(response.headers.get('strict-transport-security'), /max-age=31536000/);
+  if (pathname === '/app-ads.txt') assert.match(response.headers.get('content-type'), /^text\/plain/);
 }
-assert.deepEqual(assetRequests, ['/', '/index.html', '/assets/site.css', '/robots.txt']);
+assert.deepEqual(assetRequests, ['/', '/index.html', '/assets/site.css', '/robots.txt', '/app-ads.txt']);
+assert.equal((await readFile(path.join(root, 'dist/sanskritam/app-ads.txt'), 'utf8')).trim(),
+  'google.com, pub-6672536899650972, DIRECT, f08c47fec0942fa0');
 const realFetch = globalThis.fetch;
 try {
   const legalRequests = [];
