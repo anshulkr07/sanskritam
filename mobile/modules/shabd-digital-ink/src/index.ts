@@ -4,7 +4,7 @@
 // practice screen. One function per seam in inkRecogniser.ts:
 //
 //   downloadModel("hi")  — fetch the Devanagari model on first use
-//                          (Play Services / ML Kit download, ~tens of MB,
+//                          (ML Kit download on Android/iOS, ~tens of MB,
 //                          needs network once, then fully offline).
 //   recognize("hi", strokes) — strokes in, [{text, score}] out.
 //                          Nothing leaves the device.
@@ -21,7 +21,7 @@
 // null. Callers check `isAvailable` first and fall back to the template
 // matcher without ever touching the native side.
 
-import { requireOptionalNativeModule } from "expo-modules-core";
+import { requireOptionalNativeModule } from "expo";
 
 export interface InkPoint {
   x: number;

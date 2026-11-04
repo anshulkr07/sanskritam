@@ -10,8 +10,13 @@ export async function linkCommunityAccount(provider: "google" | "apple") {
   if (provider === "google") {
     if (Platform.OS === "web" || !GOOGLE_LOGIN_ENABLED) throw Error("Google sign-in is available in the installed app.");
     const { GoogleSignin, isSuccessResponse } = await import("@react-native-google-signin/google-signin");
-    GoogleSignin.configure({ webClientId: GOOGLE_CLIENT_IDS.webClientId });
-    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+    GoogleSignin.configure({
+      webClientId: GOOGLE_CLIENT_IDS.webClientId,
+      iosClientId: GOOGLE_CLIENT_IDS.iosClientId || undefined,
+    });
+    if (Platform.OS === "android") {
+      await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+    }
     const response = await GoogleSignin.signIn();
     if (!isSuccessResponse(response)) return null;
     idToken = response.data.idToken;

@@ -25,6 +25,15 @@
       "distribution": "store",
       "channel": "android-internal"
     },
+    "ios-testflight": {
+      "extends": "production",
+      "environment": "production",
+      "distribution": "store",
+      "channel": "ios-testflight",
+      "ios": {
+        "autoIncrement": "buildNumber"
+      }
+    },
     "production-apk": {
       "extends": "production",
       "environment": "production",

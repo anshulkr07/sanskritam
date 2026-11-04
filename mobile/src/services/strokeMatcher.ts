@@ -1,7 +1,7 @@
 // strokeMatcher.ts — the no-native fallback for ink recognition (U12-2).
 //
-// When the on-device ML Kit module is absent (Expo Go, web, iOS before its
-// native module ships), drawing practice still works: the Writing screen is
+// When the on-device ML Kit module is absent (Expo Go, web, or a build without
+// the native wrapper), drawing practice still works: the Writing screen is
 // a COPY task — the reference letter is known — so this verifies shape
 // similarity against the authored P20-2 stroke paths instead of classifying
 // open handwriting. Pure TypeScript, zero dependencies, runs anywhere.

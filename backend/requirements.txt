@@ -7,7 +7,7 @@ pydantic>=2.6
 pydantic-settings>=2.2
 # Google + Apple Sign-in ID-token verification (accounts.google.com JWKS,
 # appleid.apple.com JWKS) — required by POST /auth/google and /auth/apple.
-# PyJWT verifies the RS256 (Google) / ES256 (Apple) signatures via the
+# PyJWT verifies Google and Apple RS256 identity-token signatures via the
 # vendors' public keys; cryptography is the JOSE backend for both.
 PyJWT>=2.8
 app-store-server-library>=1.9,<3

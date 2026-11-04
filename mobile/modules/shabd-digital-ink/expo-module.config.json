@@ -1,5 +1,8 @@
 {
-  "platforms": ["android"],
+  "platforms": ["android", "ios"],
+  "apple": {
+    "modules": ["ShabdDigitalInkModule"]
+  },
   "android": {
     "modules": ["expo.modules.shabddigitalink.ShabdDigitalInkModule"]
   }

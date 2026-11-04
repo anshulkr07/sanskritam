@@ -9,7 +9,7 @@
 //      the authored P20-2 paths. It can only ever answer the reference letter
 //      or abstain, so the server grades correct-or-unsure, never wrong.
 //
-// The model downloads once (Play Services) and then works offline. The
+// The model downloads once (ML Kit on Android/iOS) and then works offline. The
 // download starts when the writing screen opens (prepare()), the canvas shows
 // "Preparing handwriting…" until it lands, and if it cannot be fetched the
 // template matcher answers instead. A Check tap never silently does nothing.

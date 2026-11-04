@@ -17,7 +17,7 @@
 // The native flow verifies package name + signing-cert SHA-1 via Play Services
 // and returns an id_token whose aud is the configured webClientId, which the
 // backend (POST /auth/google) verifies. Apple works the same way against
-// POST /auth/apple (ES256 identityToken, aud = bundle/Services ID).
+// POST /auth/apple (RS256 identityToken, aud = bundle/Services ID).
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useEffect, useState } from "react";
@@ -54,7 +54,10 @@ const ICON_CREAM = "#FFF6ED";
 // the audience of the id_token the SDK returns and what the backend verifies,
 // so we pass the Web client ID (which is in the backend's accepted set).
 if (GOOGLE_CLIENT_IDS.webClientId) {
-  GoogleSignin.configure({ webClientId: GOOGLE_CLIENT_IDS.webClientId });
+  GoogleSignin.configure({
+    webClientId: GOOGLE_CLIENT_IDS.webClientId,
+    iosClientId: GOOGLE_CLIENT_IDS.iosClientId || undefined,
+  });
 }
 
 export default function LoginScreen() {
@@ -64,7 +67,7 @@ export default function LoginScreen() {
   const [error, setError] = useState<string | null>(null);
   // Sign in with Apple exists only on iOS with the native module (dev
   // build). Never rendered elsewhere: Guideline 4.8 is an iOS rule.
-  const [appleAvailable, setAppleAvailable] = useState(Platform.OS === "ios");
+  const [appleAvailable, setAppleAvailable] = useState(false);
   useEffect(() => {
     if (Platform.OS !== "ios") return;
     AppleAuthentication.isAvailableAsync()
@@ -80,7 +83,9 @@ export default function LoginScreen() {
     }
     setBusy("google");
     try {
-      await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+      if (Platform.OS === "android") {
+        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+      }
       const response = await GoogleSignin.signIn();
       if (isSuccessResponse(response)) {
         const idToken = response.data.idToken;
@@ -202,21 +207,16 @@ export default function LoginScreen() {
 
           {/* Continue with Apple: iOS only (Guideline 4.8). */}
           {appleAvailable && (
-            <Pressable
-              disabled={locked}
-              onPress={onApple}
-              style={({ pressed }) => [styles.btn, styles.appleBtn, pressed && styles.pressed, locked && styles.dim]}
-              accessibilityRole="button"
-              accessibilityLabel="Continue with Apple"
-              accessibilityState={{ disabled: locked, busy: busy === "apple" }}
-            >
-              {busy === "apple" ? (
-                <ActivityIndicator color={color.white} />
-              ) : (
-                <Ionicons name="logo-apple" size={20} color={color.white} />
-              )}
-              <Text style={styles.appleText}>Continue with Apple</Text>
-            </Pressable>
+            <View pointerEvents={locked ? "none" : "auto"} style={locked && styles.dim}>
+              <AppleAuthentication.AppleAuthenticationButton
+                buttonType={AppleAuthentication.AppleAuthenticationButtonType.CONTINUE}
+                buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
+                cornerRadius={radius.md}
+                style={styles.appleBtn}
+                onPress={() => { if (!locked) void onApple(); }}
+                accessibilityState={{ disabled: locked, busy: busy === "apple" }}
+              />
+            </View>
           )}
 
           <Pressable
@@ -312,8 +312,7 @@ const styles = StyleSheet.create({
   dim: { opacity: 0.55 },
   googleBtn: { backgroundColor: color.surface, borderWidth: 1, borderColor: color.border, ...shadow.card },
   googleText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.ink },
-  appleBtn: { backgroundColor: "#000000" },
-  appleText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: color.white },
+  appleBtn: { width: "100%", height: 54 },
   guestBtn: { backgroundColor: color.saffronLight },
   guestText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.base, color: accent.saffron.fg },
   error: {

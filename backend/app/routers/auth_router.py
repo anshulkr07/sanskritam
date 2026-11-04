@@ -178,7 +178,7 @@ async def apple_login(req: AppleAuthRequest, db: Session = Depends(get_db)):
     """Sign in with Apple: verify an identityToken, bind the learner to its ``sub``.
 
     App Store Guideline 4.8 makes this mandatory wherever Google sign-in is
-    offered. The client obtains an identityToken (JWT, ES256) via the platform
+    offered. The client obtains an identityToken (JWT, RS256) via the platform
     Sign in with Apple flow and sends it here with the ``display_name`` Apple
     supplied on first authorization (Apple never sends the name again). We
     verify the signature against Apple's public keys and the audience against
@@ -246,7 +246,7 @@ def _verify_apple_id_token(id_token: str, audience_cfg: str):
 
     ``audience_cfg`` may be a comma-separated list of client IDs (bundle ID
     and/or Services ID). A token whose ``aud`` matches ANY of them is
-    accepted. Apple signs with ES256 and publishes keys at
+    accepted. Apple signs identity tokens with RS256 and publishes keys at
     ``https://appleid.apple.com/auth/keys``; ``iss`` must be
     ``https://appleid.apple.com``. Deferred import so crypto is only pulled
     on demand.
@@ -265,7 +265,7 @@ def _verify_apple_id_token(id_token: str, audience_cfg: str):
         payload = jwt.decode(
             id_token,
             key,
-            algorithms=["ES256"],
+            algorithms=["RS256"],
             issuer="https://appleid.apple.com",
             options={"verify_exp": True, "verify_aud": False},
         )
