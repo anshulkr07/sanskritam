@@ -65,11 +65,16 @@ App Store availability is explicitly **coming soon**, with no placeholder link.
 
 - Existing app icon: `mobile/assets/icon.png`, resized to a 192px WebP.
 - Existing Gītā cover: `mobile/assets/covers/gita.webp`, kept in full proportion.
-  No new artwork was generated. Existing artwork policy was read before reuse.
+  Existing artwork policy was read before reuse.
 - Self-hosted Lora, DM Sans, and Tiro Devanagari Sanskrit, sourced from Google
   Fonts. SIL Open Font License files are included alongside the fonts.
-- The simple sun mark is native SVG. Sanskrit and all other text remain real
-  selectable HTML, independent of the images.
+- Vedic Valor's circular sun-and-crossed-swords emblem was adapted with the
+  built-in image generator from the owner's supplied reference on 2026-11-04.
+  Transparent WebPs at 64px, 192px, and 768px cover favicon, header/footer, and
+  larger brand uses. The generated original was discarded after verification;
+  the prompt, source/native hashes, dimensions, and derivative hashes are in
+  `specs/artwork/vedicvalor-brand-20261104.json`. Sanskrit and all other text
+  remain real selectable HTML, independent of the images.
 - No tracking, cookies, sign-in, forms, or third-party runtime requests.
 
 ## Verification

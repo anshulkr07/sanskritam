@@ -123,6 +123,16 @@ section[id] {
   font:8px/1 var(--sans);
   letter-spacing:.2em;
 }
+.valor .header .brand img {
+  width:44px;
+  height:44px;
+  object-fit:contain;
+}
+.valor .footer-brand img {
+  width:36px;
+  height:36px;
+  object-fit:contain;
+}
 .header nav {
   display:flex;
   gap:33px;
@@ -1019,6 +1029,14 @@ section[id] {
   }
 }
 @media(max-width:760px) {
+  .valor .header .brand img {
+    width:36px;
+    height:36px;
+  }
+  .valor .footer-brand img {
+    width:32px;
+    height:32px;
+  }
   .wrap {
     width:calc(100% - 40px);
   }
