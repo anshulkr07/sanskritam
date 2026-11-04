@@ -18,7 +18,7 @@ export async function loadOfflineBook(book: string, chapter?: string | null, med
 }
 export async function saveOfflineBook(book: string, chapter: string | null, title: string, pages: Shloka[]): Promise<void> {
   if (!pages.length) throw new Error("Open a chapter before saving it.");
-  if (!await offlineEditionAllowed(book + ":book", true)) throw new Error("Buy this edition or subscribe to save it offline.");
+  if (!await offlineEditionAllowed(book + ":book", true)) throw new Error("Buy this edition or subscribe to Plus to save it offline.");
   await AsyncStorage.setItem(keyFor(book, chapter), JSON.stringify({ book, chapter, title, pages, savedAt: Date.now() }));
 }
 export async function listOfflineBooks(): Promise<OfflineBook[]> {
@@ -31,7 +31,7 @@ export async function listOfflineBooks(): Promise<OfflineBook[]> {
   return packs.filter((_, i) => allowed[i]);
 }
 export async function downloadBookAudio(pages: Shloka[], book?: string): Promise<number> {
-  if (book && !await offlineEditionAllowed(book + ":audio", true)) throw new Error("Buy this audiobook or subscribe to save it offline.");
+  if (book && !await offlineEditionAllowed(book + ":audio", true)) throw new Error("Buy this audiobook or subscribe to Plus to save it offline.");
   if (Platform.OS === "web") throw new Error("Audio downloads are available in the mobile app.");
   await loadOfflineAudio();
   const { BASE_URL } = await import("../config");

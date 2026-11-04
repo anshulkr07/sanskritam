@@ -15,13 +15,12 @@ async function deliver(iap: IAP, purchase: import("react-native-iap").Purchase) 
   try {
     const proof = purchase.purchaseToken || (Platform.OS === "ios" ? await iap.getTransactionJwsIOS(purchase.productId) : null);
     if (!proof) throw new Error("The store has not provided a completed purchase proof yet.");
-    const result = await request<{ finish_transaction: boolean; store_finished: boolean }>("/commerce/purchases/verify", {
+    const result = await request<{ finish_transaction: boolean; store_finished: boolean; consumable: boolean }>("/commerce/purchases/verify", {
       method: "POST", body: JSON.stringify({ provider: Platform.OS === "ios" ? "apple" : "google", product_id: purchase.productId, proof }),
     }, true);
     if (result.finish_transaction && !result.store_finished) {
-      const product = catalogue?.products.find(p => p.id === purchase.productId);
-      if (!product) throw new Error("Refresh the store before finishing this purchase.");
-      await iap.finishTransaction({ purchase, isConsumable: product.kind === "voice_pack" });
+      // Restoring a paid subscription must also finish if its catalogue is delisted.
+      await iap.finishTransaction({ purchase, isConsumable: result.consumable });
     }
     await refreshCommerce();
     notify("Purchase verified. Your account is updated.");
@@ -61,7 +60,8 @@ export async function buyProduct(productId: string) {
   const product = catalogue.products.find(p => p.id === productId);
   if (!product) throw new Error("Unknown product");
   if (product.kind === "subscription") {
-    const existing = (await iap.getAvailablePurchases()).find(p => catalogue?.products.some(item => item.id === p.productId && item.kind === "subscription") && p.productId !== productId);
+    // A current plan can be delisted from new sales while its access is active.
+    const existing = (await iap.getAvailablePurchases()).find(p => /^com\.sanskritam\.app\.(lite|plus|pro)\.(v2\.)?(monthly|annual)$/.test(p.productId) && p.productId !== productId);
     const products = await iap.fetchProducts({ skus: [productId], type: "subs" });
     const subscription = products?.find(p => p.id === productId);
     const offers = subscription && "subscriptionOfferDetailsAndroid" in subscription ? subscription.subscriptionOfferDetailsAndroid : null;

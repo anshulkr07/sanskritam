@@ -38,9 +38,9 @@ def shop(learner: Learner = Depends(require_learner), db: Session = Depends(get_
     member = svc.membership(db, learner.id)
     result = {"enabled": True, "sales_enabled": settings.commerce_sales_enabled,
         "account_verified": bool(learner.google_sub or learner.apple_sub),
-        "products": hybrid.offers(db), "regional_plus": hybrid.REGIONAL_PLUS,
+        "products": hybrid.offers(db), "regional_plus": hybrid.REGIONAL_PLUS, "regional_lite": hybrid.REGIONAL_LITE,
         "account_token": stores.account_token(learner.id), "google_account": stores.google_account(learner.id),
-        "member_until": member.paid_until if member else None, **voice}
+        "member_until": member.paid_until if member else None, **voice, **hybrid.entitlements(db, learner.id)}
     db.commit()
     return result
 
@@ -170,7 +170,8 @@ async def verify_purchase(body: VerifyBody, learner: Learner = Depends(require_l
             pass
     result = svc.snapshot(db, learner.id)
     db.commit()
-    return {"purchase_id": purchase.id, "finish_transaction": True, "store_finished": store_finished, "wallet": result}
+    return {"purchase_id": purchase.id, "finish_transaction": True, "store_finished": store_finished,
+            "consumable": PRODUCTS[verified["product_id"]]["kind"] not in {"subscription", "edition"}, "wallet": result}
 
 
 def encrypt_proof(value):
@@ -257,8 +258,8 @@ def licence(title_id: str, learner: Learner = Depends(require_learner), db: Sess
     enabled()
     from app.commerce import hybrid
     if hybrid.enabled():
-        if not hybrid.can_access(db, learner.id, title_id):
-            raise HTTPException(403, "Buy this edition or subscribe to Plus")
+        if not hybrid.can_download(db, learner.id, title_id):
+            raise HTTPException(403, "Buy this edition or subscribe to Plus for downloads. Lite includes online reading and listening.")
         owned = hybrid.owns(db, learner.id, title_id)
         member = svc.membership(db, learner.id)
         until = svc.now() + timedelta(days=3650 if owned or not hybrid.premium(db, title_id) else 7)
@@ -266,8 +267,12 @@ def licence(title_id: str, learner: Learner = Depends(require_learner), db: Sess
             until = datetime(9999, 1, 1)
         if not owned and member and hybrid.premium(db, title_id):
             until = min(until, member.paid_until)
+        legacy = svc.title_access(db, learner.id, title_id)
+        if not owned and hybrid.premium(db, title_id) and legacy and not (member and member.tier in {"plus", "pro"}):
+            until = min(until, legacy.expires_at)
         payload = {"scope": "offline", "sub": learner.id, "title": title_id, "exp": until}
-        return {"licence": sign(payload), "expires_at": until, "owner": learner.id, "owned": owned}
+        return {"licence": sign(payload), "expires_at": until, "owner": learner.id, "owned": owned,
+                "premium": hybrid.premium(db, title_id)}
     member = svc.membership(db, learner.id)
     access = svc.title_access(db, learner.id, title_id)
     if not member or not access:

@@ -126,7 +126,14 @@ export async function resolveOfflineAudio(url: string): Promise<AudioLease> {
   if (session !== s) throw new Error("Audio session changed.");
   const entry = s.entries[url];
   if (entry && HYBRID_COMMERCE && (!entry.titleId || !await offlineEditionAllowed(entry.titleId))) {
-    if (!entry.titleId || !await offlineEditionAllowed(entry.titleId, true)) throw new Error("Reconnect to refresh access to this saved audiobook.");
+    // Lite may still stream a title whose former Plus download is no longer
+    // licensed. Return the original URL for server-authorized streaming.
+    if (!entry.titleId) return fallback;
+    try { if (!await offlineEditionAllowed(entry.titleId, true)) return fallback; }
+    catch {
+      if (session !== s) throw new Error("Audio session changed.");
+      return fallback;
+    }
   }
   if (!entry || !hasOfflineAudio(url)) return fallback;
   const sealed = AESSealedData.fromCombined(await new File(entry.uri).bytes());

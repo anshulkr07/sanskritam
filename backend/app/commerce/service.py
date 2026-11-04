@@ -102,7 +102,8 @@ def snapshot(db, learner_id):
             "balance": wallet.balance, "reserved": wallet.reserved,
             "available": max(0, wallet.balance - wallet.reserved), "deficit": max(0, -wallet.balance),
             "slots": TIERS[member.tier if member else "free"]["slots"],
-            "offline": bool(member), "background_audio": bool(member), "ad_free": bool(member),
+            "offline": bool(member and (not settings_hybrid_enabled() or member.tier in {"plus", "pro"})),
+            "background_audio": settings_hybrid_enabled() or bool(member), "ad_free": bool(member),
             "unlocks": [{"id": r.id, "title_id": r.title_id, "expires_at": r.expires_at} for r in unlocks],
             "cooldowns": [{"id": r.id, "until": r.until} for r in cooldowns]}
 

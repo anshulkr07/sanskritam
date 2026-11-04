@@ -5,9 +5,12 @@ import { BASE_URL } from "../config";
 
 export const HYBRID_COMMERCE = process.env.EXPO_PUBLIC_HYBRID_COMMERCE === "true";
 export type StoreProduct = { id: string; kind: "subscription" | "edition" | "voice_pack"; name: string;
-  inr: number; minutes?: number; titles?: string[] };
+  inr: number; minutes?: number; titles?: string[]; tier?: "lite" | "plus" };
 export type CommerceCatalogue = { enabled: boolean; sales_enabled: boolean; account_verified: boolean;
   account_token: string; google_account: string; member_until: string | null; products: StoreProduct[];
+  member_tier: "free" | "lite" | "plus" | "pro"; ad_free: boolean; background_audio: boolean;
+  catalogue: { id: string; name: string; medium: "book" | "audio"; lite_included: boolean }[];
+  included_titles: string[]; downloadable_titles: string[];
   paid_seconds: number; trial_seconds: number; deficit_seconds: number; voice_enabled: boolean;
   owned_titles: string[]; call_active: boolean };
 export const commerceCatalogue = () => request<CommerceCatalogue>("/commerce/shop", {}, true);
@@ -23,7 +26,12 @@ export async function refreshCommerce() {
       const titleId = decodeURIComponent(key.slice(prefix.length));
       const raw = await AsyncStorage.getItem(key);
       try {
-        if (raw && JSON.parse(raw).owned && !result.owned_titles.includes(titleId)) await AsyncStorage.removeItem(key);
+        if (raw) {
+          const grant = JSON.parse(raw);
+          if (grant.owned ? !result.owned_titles.includes(titleId) :
+            (grant.premium !== false || result.catalogue.some(t => t.id === titleId)) &&
+            !result.downloadable_titles.includes(titleId)) await AsyncStorage.removeItem(key);
+        }
       } catch { await AsyncStorage.removeItem(key); }
     }
   }
@@ -39,7 +47,10 @@ export async function offlineEditionAllowed(titleId: string, acquire = false): P
   const id = owner;
   if (!id) return false;
   if (acquire) {
-    const grant = await editionLicence(titleId);
+    // A server refusal must invalidate an earlier subscription download grant.
+    let grant;
+    try { grant = await editionLicence(titleId); }
+    catch (error) { await AsyncStorage.removeItem(licenceKey(id, titleId)); throw error; }
     if (owner !== id || grant.owner !== id) throw new Error("Account changed. Retry the download.");
     await AsyncStorage.setItem(licenceKey(id, titleId), JSON.stringify(grant));
   }
@@ -53,7 +64,7 @@ export async function offlineEditionAllowed(titleId: string, acquire = false): P
 // Offline licences are scoped by account and title. Server decides whether the
 // edition is free, owned, or temporarily available through membership.
 export async function editionLicence(titleId: string) {
-  return request<{ licence: string; owner: string; expires_at: string; owned: boolean }>(
+  return request<{ licence: string; owner: string; expires_at: string; owned: boolean; premium: boolean }>(
     `/commerce/titles/${encodeURIComponent(titleId)}/licence`, {}, true);
 }
 

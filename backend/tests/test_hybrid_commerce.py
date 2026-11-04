@@ -77,6 +77,118 @@ def test_existing_library_is_free_until_explicitly_marked_premium(db):
     assert hybrid.can_access(db, "u", "gita:book")
 
 
+@pytest.mark.parametrize("period", ["monthly", "annual"])
+def test_lite_access_is_explicit_per_medium_and_does_not_include_downloads(db, period):
+    from app.commerce.access import has_title
+    db.get(Title, "gita:book").metadata_json = {"premium": True, "lite_included": True}
+    purchase = buy(db, "lite.v2." + period)
+    assert purchase.credits == 0
+    assert svc.membership(db, "u").tier == "lite"
+    assert has_title(db, "u", "gita:book")
+    assert not has_title(db, "u", "gita:audio")
+    assert not hybrid.can_download(db, "u", "gita:book")
+    assert hybrid.can_download(db, "u", "free:book")
+    state = hybrid.entitlements(db, "u")
+    assert state["ad_free"] and state["background_audio"]
+    assert state["included_titles"] == ["gita:book"]
+    assert state["downloadable_titles"] == []
+    assert svc.snapshot(db, "u")["offline"] is False
+    db.get(Title, "gita:audio").metadata_json = {"premium": True, "lite_included": True}
+    db.commit()
+    assert has_title(db, "u", "gita:audio")
+    assert not hybrid.can_download(db, "u", "gita:audio")
+    assert hybrid.snapshot(db, "u")["paid_seconds"] == 0
+    svc.refund_purchase(db, purchase); db.commit()
+    assert not has_title(db, "u", "gita:book")
+    assert hybrid.entitlements(db, "u")["member_tier"] == "free"
+
+
+def test_lite_offers_require_a_published_explicit_starter_collection(db):
+    def lite_offers(): return [p for p in hybrid.offers(db) if p.get("tier") == "lite"]
+    assert not lite_offers()
+    title = db.get(Title, "gita:book")
+    title.metadata_json = {"premium": True, "lite_included": "true"}
+    assert not lite_offers()
+    title.metadata_json = {"premium": True, "lite_included": True}
+    assert len(lite_offers()) == 2
+    title.published = False
+    assert not lite_offers()
+    # Already-paid receipts restore even after the starter collection is delisted.
+    buy(db, "lite.v2.monthly"); buy(db, "lite.v2.monthly")
+    assert db.query(Purchase).count() == 1
+
+
+def test_plus_expiry_falls_back_to_lite_without_revoking_purchased_editions(db):
+    db.get(Title, "gita:book").metadata_json = {"premium": True, "lite_included": True}
+    buy(db, "lite.v2.annual", "lite")
+    buy(db, "plus.v2.monthly", "plus")
+    assert svc.membership(db, "u").tier == "plus"
+    assert hybrid.can_download(db, "u", "gita:book")
+    assert hybrid.can_access(db, "u", "gita:audio")
+    db.query(Membership).filter_by(tier="plus").update({"paid_until": svc.now() - timedelta(seconds=1)})
+    db.commit()
+    assert svc.membership(db, "u").tier == "lite"
+    assert hybrid.can_access(db, "u", "gita:book")
+    assert not hybrid.can_download(db, "u", "gita:book")
+    assert not hybrid.can_access(db, "u", "gita:audio")
+    buy(db, "edition.gita.bundle", "owned")
+    db.query(Membership).update({"paid_until": svc.now() - timedelta(seconds=1)})
+    db.commit()
+    for medium in ("book", "audio"):
+        assert hybrid.can_access(db, "u", "gita:" + medium)
+        assert hybrid.can_download(db, "u", "gita:" + medium)
+
+
+def test_verified_plan_change_and_delayed_receipt_do_not_restore_old_tier(db):
+    start = svc.now() - timedelta(days=31)
+    def receipt(tx, tier, paid_at, until):
+        return {"provider": "apple", "transaction_id": tx, "original_id": "plan-chain",
+                "product_id": hybrid.PREFIX + tier + ".v2.monthly", "paid_at": paid_at,
+                "paid_until": until, "state": "active", "evidence": {}}
+    plus = receipt("plus", "plus", start, start + timedelta(days=30))
+    svc.apply_purchase(db, "u", plus); db.commit()
+    lite = receipt("lite", "lite", start + timedelta(days=30), start + timedelta(days=60))
+    svc.apply_purchase(db, "u", lite); db.commit()
+    svc.apply_purchase(db, "u", plus); db.commit()
+    assert svc.membership(db, "u").tier == "lite"
+    assert not hybrid.can_access(db, "u", "gita:audio")
+    upgrade = receipt("upgrade", "plus", svc.now(), start + timedelta(days=60))
+    svc.apply_purchase(db, "u", upgrade); db.commit()
+    assert hybrid.can_download(db, "u", "gita:audio")
+
+
+def test_lite_shop_and_offline_api_enforce_download_rights(db, monkeypatch):
+    from fastapi import FastAPI
+    from fastapi.testclient import TestClient
+    from app.auth import require_learner
+    from app.db import get_db
+    from app.commerce.router import router
+    monkeypatch.setattr(settings, "commerce_signing_key", "test-key-with-more-than-thirty-two-characters")
+    db.get(Title, "gita:book").metadata_json = {"premium": True, "lite_included": True}
+    buy(db, "lite.v2.monthly")
+    app = FastAPI(); app.include_router(router)
+    app.dependency_overrides[get_db] = lambda: db
+    app.dependency_overrides[require_learner] = lambda: db.get(Learner, "u")
+    with TestClient(app) as client:
+        state = client.get("/commerce/shop").json()
+        assert state["member_tier"] == "lite" and state["ad_free"]
+        assert state["regional_lite"]["INR"] == [99, 799]
+        assert state["regional_lite"]["USD"] == [3.99, 29.99]
+        assert state["included_titles"] == ["gita:book"]
+        response = client.get("/commerce/titles/gita:book/licence")
+        assert response.status_code == 403 and "Plus" in response.json()["detail"]
+        assert client.get("/commerce/titles/gita:audio/licence").status_code == 403
+        buy(db, "plus.v2.monthly", "plus")
+        grant = client.get("/commerce/titles/gita:audio/licence").json()
+        assert grant["premium"] and not grant["owned"]
+        assert stores.iso(grant["expires_at"]) <= svc.now() + timedelta(days=7)
+        buy(db, "edition.gita.book", "owned")
+        db.query(Membership).update({"paid_until": svc.now() - timedelta(seconds=1)})
+        db.commit()
+        assert client.get("/commerce/titles/gita:book/licence").json()["owned"]
+        assert client.get("/commerce/titles/gita:audio/licence").status_code == 403
+
+
 def test_unpublished_editions_are_not_sold(db):
     db.get(Title, "gita:audio").published = False
     assert not any(p["id"].endswith("edition.gita.bundle") for p in hybrid.offers(db))
@@ -236,6 +348,7 @@ def test_shop_and_purchase_api_without_membership(client, monkeypatch):
     for _ in range(2):
         response = client.post("/commerce/purchases/verify", headers=headers, json=body)
         assert response.status_code == 200, response.text
+        assert response.json()["consumable"] is False
     monkeypatch.setattr(settings, "commerce_sales_enabled", False)
     assert client.post("/commerce/purchases/verify", headers=headers, json=body).status_code == 200
     state = client.get("/commerce/shop", headers=headers).json()

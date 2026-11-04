@@ -12,6 +12,8 @@ PREFIX = "com.sanskritam.app."
 from app.commerce.models import OwnedEdition, Title, VoiceBalance, VoiceCall
 
 PRODUCTS = {
+    PREFIX + "lite.v2.monthly": {"kind": "subscription", "tier": "lite", "credits": 0, "inr": 99, "name": "Lite monthly"},
+    PREFIX + "lite.v2.annual": {"kind": "subscription", "tier": "lite", "credits": 0, "inr": 799, "name": "Lite annual"},
     PREFIX + "plus.v2.monthly": {"kind": "subscription", "tier": "plus", "credits": 0, "inr": 299, "name": "Plus monthly"},
     PREFIX + "plus.v2.annual": {"kind": "subscription", "tier": "plus", "credits": 0, "inr": 2499, "name": "Plus annual"},
     **{PREFIX + f"guru.minutes.{minutes}": {"kind": "voice_pack", "credits": 0, "minutes": minutes,
@@ -30,6 +32,8 @@ for slug, name, prices in (("isha", "Īśopaniṣad", (99, 149, 249)),
 
 REGIONAL_PLUS = {"INR": [299, 2499], "USD": [9.99, 79.99], "GBP": [7.99, 59.99],
     "EUR": [8.99, 69.99], "CAD": [12.99, 99.99], "AUD": [14.99, 119.99], "AED": [29.99, 229.99]}
+REGIONAL_LITE = {"INR": [99, 799], "USD": [3.99, 29.99], "GBP": [2.99, 24.99],
+    "EUR": [3.49, 27.99], "CAD": [4.99, 39.99], "AUD": [5.99, 44.99], "AED": [12.99, 99.99]}
 TRIAL_MS = 180_000
 VOICE_PIPELINE_ID = "guru-sarvam-v1"
 VOICE_CONFIG = {"pipeline": 1, "persona": "guru", "tts_model": "bulbul:v3", "speaker": "ashutosh",
@@ -49,11 +53,42 @@ def owns(db, learner_id, title_id):
     return db.query(OwnedEdition).filter_by(learner_id=learner_id, title_id=title_id, revoked=False).first() is not None
 
 
+def lite_included(db, title_id):
+    title = db.get(Title, title_id)
+    return bool(premium(db, title_id) and title.metadata_json.get("lite_included") is True)
+
+
+def member_access(db, member, title_id):
+    return bool(member and (member.tier in {"plus", "pro"} or
+                           (member.tier == "lite" and lite_included(db, title_id))))
+
+
 def can_access(db, learner_id, title_id):
     from app.commerce import service as svc
     if not premium(db, title_id) or owns(db, learner_id, title_id):
         return True
-    return bool(svc.membership(db, learner_id) or svc.title_access(db, learner_id, title_id))
+    return bool(member_access(db, svc.membership(db, learner_id), title_id) or svc.title_access(db, learner_id, title_id))
+
+
+def can_download(db, learner_id, title_id):
+    from app.commerce import service as svc
+    # Preserve free-library downloads and previously purchased legacy unlocks.
+    if not premium(db, title_id) or owns(db, learner_id, title_id) or svc.title_access(db, learner_id, title_id):
+        return True
+    member = svc.membership(db, learner_id)
+    return bool(member and member.tier in {"plus", "pro"})
+
+
+def entitlements(db, learner_id):
+    from app.commerce import service as svc
+    member = svc.membership(db, learner_id)
+    titles = [t for t in db.query(Title).filter_by(published=True) if t.metadata_json.get("premium") is True]
+    return {"member_tier": member.tier if member else "free", "ad_free": bool(member),
+        "background_audio": True,
+        "catalogue": [{"id": t.id, "name": t.name, "medium": t.medium,
+                       "lite_included": lite_included(db, t.id)} for t in titles],
+        "included_titles": [t.id for t in titles if member_access(db, member, t.id)],
+        "downloadable_titles": [t.id for t in titles if can_download(db, learner_id, t.id)]}
 
 
 def voice_ready(db):
@@ -67,8 +102,9 @@ def voice_ready(db):
 
 def offers(db):
     has_premium = any(t.metadata_json.get("premium") is True for t in db.query(Title).filter_by(published=True))
+    has_lite = any(lite_included(db, t.id) for t in db.query(Title).filter_by(published=True))
     return [{"id": key, **value} for key, value in PRODUCTS.items()
-            if (value["kind"] != "subscription" or has_premium)
+            if (value["kind"] != "subscription" or (has_lite if value["tier"] == "lite" else has_premium))
             and (value["kind"] != "edition" or all(premium(db, t) for t in value["titles"]))
             and (value["kind"] != "voice_pack" or voice_ready(db))]
 

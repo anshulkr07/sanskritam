@@ -1,4 +1,4 @@
-# Books, Guru and Plus — 4 November 2026
+# Books, Guru, Lite and Plus — 4 November 2026
 
 This supersedes the old credit/slot/rental launch design in monetization-setup.md
 for new hybrid builds. No age-based pricing. Existing free library content stays
@@ -11,6 +11,8 @@ competitions, referral payouts or future video-avatar promises are restored.
 - Direct, account-bound, non-consumable book/audio/bundle purchases. No membership,
   slots or credit spending required. Owned editions do not expire. Plus gives
   access to published premium editions during a verified membership period.
+  Lite gives online access only to explicitly included starter editions. Both
+  subscriptions are ad-free and support background audio; Guru packs are separate.
 - Non-expiring 5/15/30-minute packs, one shared 180-second introductory voice
   trial per verified account, and no subscription requirement for voice.
 - Voice reservations under the account wallet lock, one active call per account,
@@ -42,6 +44,8 @@ SKUs; they remain verifiable for existing transactions and refunds.
 
 | Suffix | Store type | INR reference | USD reference |
 |---|---|---:|---:|
+| lite.v2.monthly | auto-renewing subscription | 99 | 3.99 |
+| lite.v2.annual | auto-renewing subscription | 799 | 29.99 |
 | plus.v2.monthly | auto-renewing subscription | 299 | 9.99 |
 | plus.v2.annual | auto-renewing subscription | 2499 | 79.99 |
 | guru.minutes.5 | consumable | 49 | 0.99 |
@@ -57,11 +61,18 @@ SKUs; they remain verifiable for existing transactions and refunds.
 | edition.katha.audio | non-consumable | 199 | 5.99 |
 | edition.katha.bundle | non-consumable | 299 | 8.99 |
 
+Regional Lite monthly/annual references: GBP 2.99/24.99; EUR 3.49/27.99;
+CAD 4.99/39.99; AUD 5.99/44.99; AED 12.99/99.99. These are starting reference
+prices; the app always displays verified store-localized prices.
+
 Regional Plus monthly/annual references: GBP 7.99/59.99; EUR 8.99/69.99;
 CAD 12.99/99.99; AUD 14.99/119.99; AED 29.99/229.99. Configure supported
-store price points and taxes. Put both subscriptions in one Apple subscription
-group; use matching monthly/annual Google base-plan periods. Period changes on
-Google are deferred rather than inferred from total annual versus monthly price.
+store price points and taxes. Put all four subscriptions in one Apple subscription
+group, with Plus above Lite and monthly/annual options at the same level within
+each tier. Use matching monthly/annual Google base-plan periods. All plan/period
+changes on Google are deferred rather than inferred from total annual versus
+monthly price. Access changes only when a verified store period takes effect.
+Configure and sandbox-test upgrades, downgrades and same-tier period changes.
 
 Edition SKUs map to a fixed list of title IDs in backend/app/commerce/hybrid.py.
 New books need explicit edition SKUs and mappings. A bundle grants its written
@@ -72,6 +83,36 @@ existing catalogue admin API, with `metadata.premium=true`. Both book and audio
 must be published premium titles for a bundle to appear. No premium editions are
 automatically created or made paid. Plus is offered only once premium content is
 published. Already-paid valid receipts are delivered even after delisting.
+
+## Lite catalogue and download policy
+
+Set `metadata.premium=true` and `metadata.lite_included=true` on each reviewed,
+published starter title through the existing catalogue admin API. Book and audio
+are separate title IDs: mark both if both are included. No titles are automatically
+made paid or added to Lite. The Shop lists actual included titles and hides Lite
+sales until at least one published premium starter title exists. Preserve a stable
+starter collection; do not silently rotate titles users are currently reading.
+
+The backend checks Lite inclusion for full reading, audio delivery and media-link
+renewal. A Lite membership alone cannot obtain a premium offline licence. Plus
+includes premium downloads; directly purchased editions include downloads on every
+tier and after membership ends. Existing free-library downloads and valid legacy
+unlocks are preserved. No database migration is needed beyond the hybrid migration.
+
+Shop responses expose the effective tier, included titles, downloadable titles,
+ad-free and background-audio benefits. Purchase/restore and Shop refresh remove
+cached licences that lost download rights. Previously issued Plus offline licences
+are bounded by seven days or the verified paid-period end, whichever is sooner;
+revocations cannot reach a disconnected device immediately. An unlicensed saved
+audio file is never decrypted, but Lite can fall back to authorized online streaming.
+
+No advertising SDK or free-tier ad placements are enabled by this change. Lite
+and Plus are explicitly ad-free; future ad integrations must respect those benefits
+and keep purchased editions ad-free. Voice and future avatars are not bundled.
+Deploy the updated backend before the Lite mobile build: it supplies the tier,
+catalogue inclusion, download entitlement and verified transaction-consumability
+fields used by the new client. Store receipt fulfilment does not depend on a SKU
+remaining listed for new sales.
 
 ## Staging activation
 
@@ -95,7 +136,7 @@ published. Already-paid valid receipts are delivered even after delisting.
    infrastructure. If this cannot be met, revise pricing/pipeline and its gate;
    never fabricate cost evidence. Packs and trial stay unavailable without it.
 6. Test linked accounts, purchase interruption/retry, restoration, cancellation,
-   renewal, period changes, refunds, owned offline reading/background audio,
+   renewal, Lite/Plus changes, period changes, refunds, owned offline reading/background audio,
    expired subscription downloads, account switching and deletion on devices.
 7. Test microphone permission refusal, native routing/AEC, leaving/backgrounding
    a call, startup failure, low balance, simultaneous calls, provider failures,
@@ -126,3 +167,11 @@ hybrid build flag enabled; Android autolinking resolves ShabdCallAudio. One
 existing Starlette/AnyIO deprecation warning remains. No Java/Android SDK toolchain
 was available for native compilation. Store products, production activation,
 live cost evidence and physical-device checks were not performed.
+
+Lite follow-up verification: 130 focused backend tests passed, including Lite
+catalogue inclusion, expiry/refunds, effective plan changes, offline licence denial
+and ownership preservation. Four mobile service regression tests passed with
+`node --test tests/commerce.test.cjs` (run from mobile), covering downgrade/refund
+cache invalidation and account isolation. TypeScript and Android/web exports with
+the hybrid flag enabled passed. Store configuration, real sandbox plan changes and
+physical-device playback remain launch checks; no production activation was made.
