@@ -6,6 +6,7 @@ from pathlib import Path
 import hashlib
 import json
 import subprocess
+import sys
 import wave
 import numpy as np
 
@@ -20,8 +21,6 @@ def run(args):
 def main():
     data=json.loads((OUT/"timeline.json").read_text(encoding="utf-8"))
     video=OUT/"media/videos/scene/1280p30/animation.mp4"
-    if not video.exists():
-        raise FileNotFoundError(f"Render scene.py at 720x1280, 30 fps first: {video}")
     sr=48000
     t=np.arange(sr*60)/sr
     score=np.zeros(len(t))
@@ -40,6 +39,11 @@ def main():
     with wave.open(str(OUT/"score.wav"),"wb") as f:
         f.setparams((1,2,sr,0,"NONE","not compressed"))
         f.writeframes((np.clip(score,-1,1)*32767).astype("<i2").tobytes())
+    if "--score-only" in sys.argv:
+        print(f"Procedural score ready: {OUT / 'score.wav'}")
+        return
+    if not video.exists():
+        raise FileNotFoundError(f"Render scene.py at 720x1280, 30 fps first: {video}")
     final=OUT/"prahlada-narasimha-60s.mp4"
     run(["ffmpeg","-y","-v","error","-i",str(video),"-i",str(OUT/"narration.wav"),
          "-i",str(OUT/"score.wav"),"-filter_complex",
