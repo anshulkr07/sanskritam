@@ -88,3 +88,33 @@ These capabilities exist in the engine; the prototype does not implement all of 
 Recommended next step: keep the current Three.js renderer for both looks, build
 reusable rigs/actions, and introduce Blender-authored models when the art and
 acting need it. Avoid changing engines before identifying a concrete limitation.
+
+## Additional framework evaluation
+
+The owner requested 30-second PixiJS/Spine, Babylon.js and Remotion/R3F examples.
+They confirmed no Spine Editor license and selected PixiJS-only for now. Do not
+describe this example as a Spine demonstration. Sources, implementation limits
+and reproduction commands are in `framework-tests/README.md`; generated media
+and verification artifacts are in `outputs/framework-tests/`.
+
+These examples deliberately reuse the existing story, character assets, rig
+poses and Sarvam narration. PixiJS renders projected textured quads from the
+shared puppet scene. Babylon.js renders native geometry/materials translated
+from the shared solid scene. Remotion/R3F embeds the shared solid Three.js scene
+through ThreeCanvas and an R3F primitive, with JSX captions and a Remotion Audio
+component. The factories still use Three.js for asset/pose preparation in all
+three; only Babylon/Pixi use a different rendering engine. This is a renderer
+and composition integration comparison, not three independently authored rigs.
+
+Do not infer a framework performance ranking from these runs: 2D and 3D have
+different workloads, the jobs ran concurrently, and software rendering, shader
+compilation, disk activity and memory pressure affect timing. The Babylon demo
+does not reproduce the original shadow rig. None of these tests establish the
+ceiling of its engine or measure advanced skeletal animation/physics features.
+
+Working recommendation for this series: Remotion/R3F is a useful composition and
+export layer for the preferred Three.js 3D look; direct Three.js remains viable.
+Keep PixiJS as an option for a dedicated 2D puppet library. A switch to Babylon
+would be better motivated by a specific engine feature than by the appearance
+of this prototype. Future quality work should prioritize rigs, expressions,
+reusable actions and data-driven storyboarding.

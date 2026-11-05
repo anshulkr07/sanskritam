@@ -10,6 +10,8 @@ earlier experiment; do not use it for new reels unless requested.
 - `outputs/prahlada/comparison-30/`: existing 30-second videos, cached voice,
   verification files and `play-with-sound.html` (local, ignored by Git).
 - `LEARNINGS.md`: decisions, limits, reference observations and tool comparison.
+- `framework-tests/`: additional native PixiJS (without Spine), Babylon.js and
+  Remotion + React Three Fiber comparisons; see its README for reproduction.
 
 From this folder:
 

@@ -1,0 +1,33 @@
+{
+  "name": "framework-tests",
+  "version": "1.0.0",
+  "description": "30-second native-renderer comparison with shared Sarvam narration",
+  "scripts": {
+    "studio": "remotion studio index.jsx",
+    "pixi": "node render-browser.mjs --pixi",
+    "babylon": "node render-browser.mjs",
+    "stills:pixi": "node render-browser.mjs --pixi --stills",
+    "stills:babylon": "node render-browser.mjs --stills",
+    "render:remotion": "remotion render index.jsx PrahladaR3F ../outputs/framework-tests/prahlada-remotion-r3f-30s.mp4 --browser-executable=\"C:/Program Files/Google/Chrome/Application/chrome.exe\" --gl=swangle --concurrency=1 --crf=19 --audio-codec=aac --audio-bitrate=192k",
+    "prepare": "node prepare.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "type": "commonjs",
+  "dependencies": {
+    "@babylonjs/core": "9.33.3",
+    "@react-three/fiber": "9.8.2",
+    "@remotion/bundler": "4.0.535",
+    "@remotion/cli": "4.0.535",
+    "@remotion/renderer": "4.0.535",
+    "@remotion/three": "4.0.535",
+    "esbuild": "0.28.2",
+    "pixi.js": "8.22.0",
+    "puppeteer-core": "25.16.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.535",
+    "three": "0.186.1"
+  },
+  "private": true
+}
