@@ -237,7 +237,7 @@ function RootNavigator() {
 
             <Stack.Screen name="Calibration" component={CalibrationScreen} options={{ title: "Calibration" }} />
             {/* Voice: the companions inside one group, and the live call with one of them. */}
-            {HYBRID_COMMERCE && <Stack.Screen name="Shop" component={ShopScreen} options={{ title: "Books, Guru & Plus" }} />}
+            {HYBRID_COMMERCE && <Stack.Screen name="Shop" component={ShopScreen} options={{ title: "Mudrā shop" }} />}
             {HYBRID_COMMERCE && <Stack.Screen name="GuruVoice" component={GuruVoiceScreen} options={{ title: "Talk with Guru" }} />}
 
             {/* Parva: festivals and vrats. */}

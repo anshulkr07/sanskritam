@@ -19,14 +19,14 @@ export class TtsAudioCache {
     const pending = this.inflight.get(key);
     if (pending) return pending;
     const request = Promise.resolve().then(fetcher).then((audio) => {
-      const length = audio.audio_base64?.length ?? 0;
+      const length = this.weight(audio);
       if (length > 0 && length <= this.maxChars / 4 && this.maxEntries > 0) {
         this.cache.set(key, audio);
         this.size += length;
         while (this.size > this.maxChars || this.cache.size > this.maxEntries) {
           const oldest = this.cache.keys().next().value;
           if (oldest === undefined) break;
-          this.size -= this.cache.get(oldest)!.audio_base64.length;
+          this.size -= this.weight(this.cache.get(oldest)!);
           this.cache.delete(oldest);
         }
       }
@@ -34,5 +34,9 @@ export class TtsAudioCache {
     }).finally(() => this.inflight.delete(key));
     this.inflight.set(key, request);
     return request;
+  }
+
+  private weight(audio: TTSResponse): number {
+    return (audio.audio_base64?.length ?? 0) + (audio.audio_url?.length ?? 0);
   }
 }

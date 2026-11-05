@@ -269,6 +269,45 @@ def _event(learner: Learner, kind: str, amount: float, surface: str, source: str
     )
 
 
+# "Watch an ad to keep asking": each Google-verified rewarded view (an AdGrant
+# of kind "ask", valid 24 hours) adds this much to the learner's own daily
+# allowance. Never to the shared service budgets, which protect the owner's
+# money whatever the ads earn. At most 3 rewarded views a day (ads_router).
+ASK_AD_BONUS = {GEMINI_KIND: 2.0, "llm_calls": 20}
+
+
+def ad_bonus(db: Session, learner_id: str, kind: str) -> float:
+    per = ASK_AD_BONUS.get(kind)
+    if not per or not (settings.commerce_ads_enabled and settings.commerce_enabled):
+        return 0.0
+    try:
+        from app.commerce.models import AdGrant
+        from app.commerce.service import now
+        views = db.query(AdGrant).filter_by(learner_id=learner_id, kind="ask").filter(
+            AdGrant.transaction_id.isnot(None), AdGrant.expires_at > now()).count()
+    except Exception:
+        return 0.0
+    return views * per
+
+
+def plan_tier(db: Session, learner: Learner) -> Optional[str]:
+    """"lite" or "plus" while the learner has a plan, else None. Fails closed."""
+    if not (settings.commerce_enabled and settings.commerce_hybrid_enabled):
+        return None
+    try:
+        from app.commerce.plans import tier_of
+        return tier_of(db, learner.id)
+    except Exception:
+        return None
+
+
+def plan_multiplier(tier: Optional[str]) -> float:
+    if not tier:
+        return 1.0
+    from app.commerce.plans import PLANS
+    return float(PLANS.get(tier, PLANS["free"])["daily_multiplier"])
+
+
 def _check_and_consume(
     db: Session,
     learner: Learner,
@@ -291,7 +330,8 @@ def _check_and_consume(
     if not settings.quota_enabled:
         return
 
-    limit = _limit(kind)
+    plan = plan_tier(db, learner)
+    limit = (_limit(kind) + ad_bonus(db, learner.id, kind)) * plan_multiplier(plan)
     pool = _POOL[kind]
     budget, budget_kind = _budget(pool)
     extra = max(0.0, (vendor_amount or 0.0) - amount)
@@ -323,7 +363,8 @@ def _check_and_consume(
         retry_after_s = 3600
         raise QuotaExceeded(kind=kind, used=used, limit=limit, retry_after_s=retry_after_s)
 
-    if budget > 0 and spent + (amount + extra) * _price_inr(kind) > budget:
+    # A plan's use is paid for: it never waits behind the shared free budget.
+    if budget > 0 and not plan and spent + (amount + extra) * _price_inr(kind) > budget:
         # Same simplification: the window rolls forward, so retry in an hour.
         raise QuotaExceeded(kind=budget_kind, used=spent, limit=budget, retry_after_s=budget_retry_after())
 

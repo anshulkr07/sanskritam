@@ -35,6 +35,10 @@ class StorageBackend(ABC):
         """Return the public URL for a stored path."""
         ...
 
+    def read(self, path: str) -> bytes:
+        """Read a public asset for clients that still require inline audio."""
+        raise NotImplementedError
+
     def store_private(self, data: bytes, path: str, content_type: str = "audio/mp4") -> str:
         """Store private bytes (competition recordings). Returns a key."""
         raise PrivateStorageOff("private storage not configured")
@@ -214,6 +218,11 @@ class R2Storage(StorageBackend):
             return True
         except Exception:
             return False
+
+    def read(self, path: str) -> bytes:
+        safe_path = path.replace("..", "").lstrip("/")
+        response = self._client.get_object(Bucket=self._bucket, Key=f"audio/{safe_path}")
+        return response["Body"].read()
 
     def _private_bucket_name(self) -> str:
         from app.config import settings

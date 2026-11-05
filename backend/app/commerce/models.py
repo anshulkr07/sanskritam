@@ -115,6 +115,9 @@ class VoiceCall(Base):
     learner_id = Column(String(64), nullable=False, index=True)
     trial_ms = Column(Integer, nullable=False)
     paid_ms = Column(Integer, nullable=False)
+    # Minutes from the learner's plan month (plans.guru_left), and which month.
+    plan_ms = Column(Integer, nullable=False, default=0, server_default="0")
+    plan_period = Column(String(32), nullable=True)
     billed_ms = Column(Integer, nullable=False, default=0)
     state = Column(String(16), nullable=False, default="reserved")
     expires_at = Column(DateTime, nullable=False)

@@ -163,16 +163,25 @@ def test_reward_callbacks_are_idempotent_and_transaction_cannot_be_reused(client
             tokens.append(sign({"scope": "ad", "sub": user, "id": row.id, "exp": row.expires_at}))
         db.commit()
     token = tokens[0]
+    import time
+    monkeypatch.setattr(settings, "commerce_admob_units", '["ca-app-pub-1/2747237135"]')
     async def verified(_):
-        return {"custom_data": token, "transaction_id": "ad-replay-" + user}
+        return {"custom_data": token, "transaction_id": "ad-replay-" + user, "ad_unit": "2747237135",
+                "timestamp": str(int(time.time() * 1000))}
     monkeypatch.setattr(ads, "verify_callback", verified)
     for _ in range(2):
-        assert client.get("/commerce/ads/ssv?verified-test-signature").status_code == 200
+        response = client.get("/commerce/ads/ssv?verified-test-signature")
+        assert response.status_code == 200 and response.json() == {"ok": True}
     token = tokens[1]
-    assert client.get("/commerce/ads/ssv?verified-test-signature").status_code == 409
+    # Signed but reused: answered 200 so Google stops retrying, and nothing is granted.
+    response = client.get("/commerce/ads/ssv?verified-test-signature")
+    assert response.status_code == 200 and response.json() == {"ok": False, "ignored": "transaction already used"}
+    with SessionLocal() as db:
+        assert db.query(AdGrant).filter_by(learner_id=user).filter(AdGrant.transaction_id.isnot(None)).count() == 1
 
 
-def test_ad_limits_consent_and_member_suppression(client, account, monkeypatch):
+def test_ad_limits_and_member_suppression(client, account, monkeypatch):
+    # No age or opt-in step: a free account gets rewarded tickets up to the daily cap.
     user, headers = account
     monkeypatch.setattr(settings, "commerce_ads_enabled", True)
     with SessionLocal() as db:
@@ -180,9 +189,6 @@ def test_ad_limits_consent_and_member_suppression(client, account, monkeypatch):
         db.add(Title(id=tid, slug=user, medium="book", name="Ad sample", credits=30, published=True))
         db.commit()
     body = {"title_id": tid, "kind": "practice"}
-    assert client.post("/commerce/ads/ticket", headers=headers, json=body).status_code == 403
-    with SessionLocal() as db:
-        db.add(Profile(learner_id=user, adult=True, ads_consent=True, country="IN")); db.commit()
     for _ in range(3):
         assert client.post("/commerce/ads/ticket", headers=headers, json=body).status_code == 200
     assert client.post("/commerce/ads/ticket", headers=headers, json=body).status_code == 429
@@ -191,16 +197,10 @@ def test_ad_limits_consent_and_member_suppression(client, account, monkeypatch):
     assert client.post("/commerce/ads/ticket", headers=headers, json=body).status_code == 403
 
 
-def test_native_cap_survives_ticket_expiry(client, account, monkeypatch):
+def test_native_ads_take_no_ticket(client, account, monkeypatch):
     user, headers = account
     monkeypatch.setattr(settings, "commerce_ads_enabled", True)
-    with SessionLocal() as db:
-        db.add(Profile(learner_id=user, adult=True, ads_consent=True, country="IN"))
-        db.get(Learner, user).streak = 1
-        for _ in range(2):
-            db.add(AdGrant(learner_id=user, title_id="", kind="native", expires_at=svc.now() - timedelta(minutes=1)))
-        db.commit()
-    assert client.post("/commerce/ads/ticket", headers=headers, json={"title_id": "", "kind": "native"}).status_code == 429
+    assert client.post("/commerce/ads/ticket", headers=headers, json={"title_id": "", "kind": "native"}).status_code == 422
 
 
 @pytest.mark.parametrize("unknown", [False, True])

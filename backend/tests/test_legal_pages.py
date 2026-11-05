@@ -43,6 +43,17 @@ def test_optional_ads_disclosures_match_enabled_hybrid_release(client, monkeypat
     assert "We do not sell personal data or share it for advertising" not in text
     assert "Advertising, Group chat" not in text
 
+def test_ads_disclosure_when_ads_launch_before_purchases(client, monkeypatch):
+    monkeypatch.setattr(settings, "commerce_enabled", False)
+    monkeypatch.setattr(settings, "commerce_hybrid_enabled", False)
+    monkeypatch.setattr(settings, "commerce_ads_enabled", True)
+    text = client.get("/privacy").text
+    assert "The free app shows ads" in text and "Google Mobile Ads" in text and "non-personalized" in text
+    assert "full-screen ad may also appear between verses" in text
+    assert "does not initialise advertising SDKs" not in text and "purchases, advertising," not in text
+    assert "Lite and Plus are ad-free" not in text and "rewarded" not in text
+    assert "We do not sell personal data or share it for advertising" not in text
+
 def test_deletion_includes_provider_erasure_and_retry(client):
     for path in ("/privacy", "/delete-account"):
         text=client.get(path).text

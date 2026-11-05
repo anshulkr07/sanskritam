@@ -218,7 +218,7 @@ export async function speak(
   })]);
   if (version !== routeVersion || GAME_ROUTES.has(speechRoute)) return silent();
   return playSource(
-    `data:audio/wav;base64,${res.audio_base64}`,
+    res.audio_url || `data:audio/wav;base64,${res.audio_base64}`,
     res.duration_hint || hintFor(text),
     onComplete,
     onStart,

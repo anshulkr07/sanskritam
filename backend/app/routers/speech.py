@@ -1,6 +1,8 @@
 """Speech endpoints: POST /speech/tts, POST /speech/stt."""
 
 import logging
+import asyncio
+import weakref
 from collections import OrderedDict
 
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
@@ -16,6 +18,7 @@ from app.services.lang_detect import is_sanskrit_code
 from app.services.learner_stt import transcribe_learner
 from app.services.sarvam import SarvamError, get_sarvam_client
 from app.services.quota import QuotaExceeded, check_and_consume, refund_quota
+from app.services import shared_tts
 
 logger = logging.getLogger("shabd.speech")
 
@@ -29,6 +32,7 @@ router = APIRouter(prefix="/speech", route_class=CommerceRoute)
 _tts_cache: "OrderedDict[tuple[str, str, str, float], str]" = OrderedDict()
 _tts_cache_bytes = 0
 _tts_cache_stats = {"hits": 0, "misses": 0}
+_tts_pending = weakref.WeakValueDictionary()
 
 
 def _tts_cache_get(key: tuple[str, str, str, float]) -> str | None:
@@ -83,11 +87,22 @@ async def text_to_speech(
     learner: Learner = Depends(require_learner),
     db: Session = Depends(get_db),
 ):
+    # Concurrent taps on this worker share the completed cache result. Weak
+    # references release idle locks instead of retaining every submitted text.
+    language = settings.tts_sanskrit_code if is_sanskrit_code(req.language_code) else req.language_code
+    key = (req.text, language, req.speaker, req.pace)
+    lock = _tts_pending.setdefault(key, asyncio.Lock())
+    async with lock:
+        return await _text_to_speech(req, learner, db)
+
+
+async def _text_to_speech(req, learner, db):
     """Generate bridge-language audio from text via Sarvam Bulbul v3.
 
     Quota is checked and consumed BEFORE the Sarvam call. Audio this instance
-    has already made for the same text, voice and pace is served from memory:
-    no Sarvam call, so no quota and no spend.
+    has already made for the same text, voice and pace is served from memory.
+    Verified public verses/translations also reuse saved R2 audio across
+    workers and restarts. URL-capable clients play those bytes through the CDN.
 
     ``sa-IN`` is accepted and spoken with ``settings.tts_sanskrit_code`` —
     native Sanskrit beta on this account. The app says what the
@@ -99,9 +114,13 @@ async def text_to_speech(
         language_code = settings.tts_sanskrit_code
 
     cache_key = (req.text, language_code, req.speaker, req.pace)
+    path = shared_tts.asset_path(db, req, language_code)
+    saved = await shared_tts.load(path, req.prefer_url)
+    if saved is not None:
+        return saved
     cached = _tts_cache_get(cache_key)
     if cached is not None:
-        return TTSResponse(audio_base64=cached)
+        return await shared_tts.publish(path, cached, req.prefer_url)
 
     # Check quota first — fail fast before any network call
     try:
@@ -137,7 +156,7 @@ async def text_to_speech(
         raise HTTPException(status_code=502, detail=f"TTS service error: {exc.detail}")
 
     _tts_cache_put(cache_key, audio_b64)
-    return TTSResponse(audio_base64=audio_b64)
+    return await shared_tts.publish(path, audio_b64, req.prefer_url)
 
 
 @router.post("/stt", response_model=STTResponse)

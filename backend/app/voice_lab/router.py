@@ -37,9 +37,9 @@ def ticket(learner: Learner = Depends(require_learner), db: Session = Depends(ge
         if not (learner.google_sub or learner.apple_sub):
             from fastapi import HTTPException
             raise HTTPException(409, "Sign in with Google or Apple to try Guru")
-        if state["trial_seconds"] + state["paid_seconds"] < 1:
+        if state["trial_seconds"] + state["plan_seconds"] + state["paid_seconds"] < 1:
             from fastapi import HTTPException
-            raise HTTPException(402, "Buy minutes to continue. No subscription required")
+            raise HTTPException(402, "Buy Guru minutes with Mudrā, or choose Lite or Plus for minutes every month")
         db.commit()
     return {"ticket": make_ticket(db, learner, None, scope="voice-lab"), "max_seconds": MAX_SECONDS}
 
@@ -47,7 +47,7 @@ def ticket(learner: Learner = Depends(require_learner), db: Session = Depends(ge
 def reserve_minutes(learner_id):
     with SessionLocal() as db:
         call = hybrid.reserve_call(db, learner_id)
-        result = call.id, (call.trial_ms + call.paid_ms) / 1000
+        result = call.id, (call.trial_ms + (call.plan_ms or 0) + call.paid_ms) / 1000
         db.commit()
         return result
 

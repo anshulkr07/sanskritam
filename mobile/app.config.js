@@ -1,7 +1,10 @@
 module.exports = ({ config }) => {
   const adsMode = process.env.EXPO_PUBLIC_ADS_MODE || 'off';
   if (!['off', 'test', 'live'].includes(adsMode)) throw new Error('Invalid EXPO_PUBLIC_ADS_MODE');
-  if (adsMode !== 'off' && process.env.EXPO_PUBLIC_HYBRID_COMMERCE !== 'true') throw new Error('Ads require the hybrid commerce build');
+  // Ads no longer need the Shop build: they can launch before purchases do.
+  // EAS sets EAS_BUILD_PLATFORM; a live build only needs real IDs for the
+  // platform it builds, so an Android launch works before an iOS app exists.
+  const building = process.env.EAS_BUILD_PLATFORM;
   const appId = (platform, sample) => {
     if (adsMode === 'test') {
       const id = process.env[`ADMOB_${platform}_APP_ID`] || sample;
@@ -9,9 +12,15 @@ module.exports = ({ config }) => {
       return id;
     }
     const id = process.env[`ADMOB_${platform}_APP_ID`];
+    // Without EAS_BUILD_PLATFORM (local config, OTA updates) Android is the one required.
+    const required = building ? building.toUpperCase() === platform : platform === 'ANDROID';
+    if (!id && !required) return undefined;
     if (!/^ca-app-pub-\d+~\d+$/.test(id || '') || id.includes('3940256099942544')) throw new Error(`Set a real ADMOB_${platform}_APP_ID`);
-    for (const format of ['NATIVE', 'REWARDED']) {
+    for (const format of ['NATIVE', 'INTERSTITIAL', 'REWARDED']) {
       const unit = process.env[`EXPO_PUBLIC_ADMOB_${platform}_${format}`];
+      // Optional: interstitials (the audiobook player's full-screen ads) and
+      // rewarded ads (they unlock paid editions, so they wait for the Shop).
+      if (format !== 'NATIVE' && !unit) continue;
       if (!/^ca-app-pub-\d+\/\d+$/.test(unit || '') || unit.includes('3940256099942544')) throw new Error(`Set a real ${platform} ${format} ad unit`);
     }
     return id;

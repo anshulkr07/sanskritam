@@ -5,7 +5,8 @@ when buying Plus works. The gate is off by default, so with no environment
 change nothing is locked for anyone.
 
 A free learner reads the first chapter of each Plus book; a book with one
-chapter gives its first 5 verses.
+chapter gives its first 5 verses. With commerce on, a paid book instead opens
+5% of its pages, the same pages for everyone (app/commerce/preview.py).
 """
 
 from __future__ import annotations
@@ -20,8 +21,9 @@ from app.services.entitlement import has_entitlement
 def plus_locked(db: Session | None, learner: Learner | None, text: CanonText) -> bool:
     """True when this learner may read only the preview of this book."""
     if settings.commerce_enabled:
-        from app.commerce.service import title_access
-        return not (db is not None and learner is not None and title_access(db, learner.id, text.slug + ":book"))
+        # Free books are open; a paid one is open once it is owned.
+        from app.commerce.access import has_title
+        return not (db is not None and learner is not None and has_title(db, learner.id, text.slug + ":book"))
     if not settings.canon_plus_gate:
         return False
     if (text.tier or "free") != "plus":

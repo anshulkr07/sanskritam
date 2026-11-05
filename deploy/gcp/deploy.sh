@@ -261,8 +261,14 @@ fi
 #       GEMINI_FREE_ENABLED          false turns the free-key route off
 #       GEMINI_FREE_ALLOW_PERSONAL   true lets birth-chart and match requests use the
 #                                   free keys too (default false: Google may read them)
+#       COMMERCE_ADS_ENABLED         true serves ads to free accounts (ad routes only;
+#                                   the Shop keeps its own switches). false = kill switch
+#       COMMERCE_LISTEN_AD_MINUTES   listening minutes between full-screen ads in the
+#                                   audiobook player (default 10; first at half)
+#                                   Rewarded unit IDs are a list, which this comma-joined
+#                                   flag cannot carry: backend/app/commerce/ad_config.json.
 EXTRA_ENV=""
-for var in LEGAL_CONTACT_EMAIL LEGAL_ENTITY_NAME QUOTA_DAILY_BUDGET_INR GEMINI_DAILY_BUDGET_INR GEMINI_DAILY_BUDGET_USD BUDGET_TIMEZONE DEFERRED_FEATURES_ENABLED CONTENT_GENERATION_ENABLED SAFETY_CONTACT_EMAIL SAFETY_REVIEWER_LABEL            CONTENT_WORDS_STOCK_DAYS CONTENT_FACTS_STOCK_DAYS CONTENT_DAILY_BUDGET_INR SCORER_URL SCORER_KEY SARVAM_STT_MODEL R2_PRIVATE_BUCKET GCS_PRIVATE_BUCKET ENV PRIZE_CONTACT_EMAIL BOOK_SEARCH_ENABLED GEMINI_FREE_ENABLED GEMINI_FREE_ALLOW_PERSONAL; do
+for var in LEGAL_CONTACT_EMAIL LEGAL_ENTITY_NAME QUOTA_DAILY_BUDGET_INR GEMINI_DAILY_BUDGET_INR GEMINI_DAILY_BUDGET_USD BUDGET_TIMEZONE DEFERRED_FEATURES_ENABLED CONTENT_GENERATION_ENABLED SAFETY_CONTACT_EMAIL SAFETY_REVIEWER_LABEL            CONTENT_WORDS_STOCK_DAYS CONTENT_FACTS_STOCK_DAYS CONTENT_DAILY_BUDGET_INR SCORER_URL SCORER_KEY SARVAM_STT_MODEL R2_PRIVATE_BUCKET GCS_PRIVATE_BUCKET ENV PRIZE_CONTACT_EMAIL BOOK_SEARCH_ENABLED GEMINI_FREE_ENABLED GEMINI_FREE_ALLOW_PERSONAL COMMERCE_ADS_ENABLED COMMERCE_LISTEN_AD_MINUTES; do
   if [ -n "${!var:-}" ]; then
     EXTRA_ENV="${EXTRA_ENV},${var}=${!var}"
   fi

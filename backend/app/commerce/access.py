@@ -5,13 +5,13 @@ from sqlalchemy import or_
 from app.config import settings
 from app.models import CanonText, Shloka, VerseAudio
 from app.commerce.models import AdGrant
-from app.commerce import service as svc
+from app.commerce import preview, service as svc
 
 
 def context(db, learner_id=None):
     key = ("commerce_access", learner_id)
     if key not in db.info:
-        db.info[key] = {"texts": db.query(CanonText).all(), "previews": {}, "audio": {}, "chapter_counts": {},
+        db.info[key] = {"texts": db.query(CanonText).all(), "previews": {}, "audio": {},
                         "titles": {r.title_id for r in svc.active_unlocks(db, learner_id)} if learner_id else set(),
                         "ads": db.query(AdGrant).filter_by(learner_id=learner_id).filter(AdGrant.transaction_id.isnot(None), AdGrant.expires_at > svc.now()).all() if learner_id else []}
     return db.info[key]
@@ -36,9 +36,12 @@ def canon_for(db, row):
     return None
 
 
-def has_ad(db, learner_id, title_id, kind, target=None):
-    return any(r.title_id == title_id and r.kind == kind and (target is None or r.target == target)
-               for r in context(db, learner_id)["ads"])
+def preview_ids(db, learner, text):
+    """The book's free preview pages (commerce/preview.py), cached per request."""
+    previews = context(db, learner.id)["previews"]
+    if text.slug not in previews:
+        previews[text.slug] = preview.free_ids(db, text)
+    return previews[text.slug]
 
 
 def reading_open(db, learner, text, row):
@@ -46,35 +49,11 @@ def reading_open(db, learner, text, row):
         return True
     if has_title(db, learner.id, text.slug + ":book"):
         return True
-    if text.paged and row.chapter and has_ad(db, learner.id, text.slug + ":book", "reading", row.chapter or ""):
-        counts = context(db, learner.id)["chapter_counts"]
-        if text.slug not in counts:
-            counts[text.slug] = db.query(Shloka.chapter).filter_by(book=text.slug, in_daily=False).distinct().count()
-        if counts[text.slug] > 1:
-            return True
-    previews = context(db, learner.id)["previews"]
-    if text.slug in previews:
-        value = previews[text.slug]
-        return row.id in value if isinstance(value, set) else row.chapter == value
-    if text.paged:
-        first = db.query(Shloka).filter_by(book=text.slug, in_daily=False).order_by(Shloka.seq, Shloka.id).first()
-        if not first:
-            return False
-        chapters = db.query(Shloka.chapter).filter_by(book=text.slug, in_daily=False).distinct().count()
-        if chapters > 1:
-            previews[text.slug] = first.chapter
-            return row.chapter == first.chapter
-        grants = sum(r.kind == "reading" and r.title_id == text.slug + ":book" for r in context(db, learner.id)["ads"])
-        allowed = db.query(Shloka.id).filter_by(book=text.slug, in_daily=False).order_by(Shloka.seq, Shloka.id).limit(5 * (1 + grants)).all()
-    else:
-        predicates = [Shloka.source_ref.contains(p) for p in (text.ref_prefixes or []) if p]
-        grants = sum(r.kind == "reading" and r.title_id == text.slug + ":book" for r in context(db, learner.id)["ads"])
-        allowed = db.query(Shloka.id).filter(Shloka.in_daily.is_(True), or_(*predicates)).order_by(Shloka.date, Shloka.id).limit(5 * (1 + grants)).all() if predicates else []
-    previews[text.slug] = {r[0] for r in allowed}
-    return row.id in previews[text.slug]
+    return row.id in preview_ids(db, learner, text)
 
 
-def audio_offset(db, learner, text, row):
+def audio_positions(db, learner, text):
+    """({verse id: ms from the start}, free ms of the preview, total running ms)."""
     cache = context(db, learner.id)["audio"]
     if text.slug not in cache:
         query = db.query(Shloka)
@@ -86,7 +65,7 @@ def audio_offset(db, learner, text, row):
         rows = query.all()
         uids = [r.verse_uid for r in rows if r.verse_uid]
         durations = {uid: duration for uid, duration in db.query(VerseAudio.verse_uid, VerseAudio.duration_ms).filter(VerseAudio.verse_uid.in_(uids), VerseAudio.voice == settings.chant_voice)}
-        offset, positions, seen = 0, {}, {}
+        offset, positions, seen, first = 0, {}, {}, 0
         for r in rows:
             if r.verse_uid in seen:
                 positions[r.id] = seen[r.verse_uid]
@@ -95,9 +74,11 @@ def audio_offset(db, learner, text, row):
             if r.verse_uid:
                 seen[r.verse_uid] = offset
             # Unmeasured legacy audio must not create unlimited free previews.
-            offset += int(durations.get(r.verse_uid) or (120000 if r.audio_url else 0))
-        cache[text.slug] = positions
-    return cache[text.slug].get(row.id, 120000)
+            length = int(durations.get(r.verse_uid) or (120000 if r.audio_url else 0))
+            first = first or length
+            offset += length
+        cache[text.slug] = positions, preview.audio_budget(offset, first), offset
+    return cache[text.slug]
 
 
 def filter_reading(db, learner, rows):
@@ -125,9 +106,9 @@ def protect_audio(db, learner, row, response, free_daily=False):
     unlocked = text is None or has_title(db, learner.id, slug + ":audio")
     limit_ms = None
     if not unlocked:
-        extension = 120000 * sum(r.kind == "audio" and r.title_id == slug + ":audio" for r in context(db, learner.id)["ads"])
-        used = audio_offset(db, learner, text, row)
-        limit_ms = max(0, 120000 + extension - used)
+        # The first 5% of the audiobook's running time is free (preview.py).
+        positions, budget, _ = audio_positions(db, learner, text)
+        limit_ms = max(0, budget - positions.get(row.id, budget))
     def url(kind):
         token = sign({"scope": "media", "sub": learner.id, "row": row.id, "kind": kind,
                       "limit_ms": limit_ms, "title": slug + ":audio", "exp": svc.now() + timedelta(minutes=5)})

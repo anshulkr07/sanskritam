@@ -7,7 +7,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { api, request, type PagedChapter, type Shloka } from "../api/client";
+import { api, request, type PagedChapter, type PagedVerses, type Shloka } from "../api/client";
 import { useQuery } from "./useQuery";
 import { setReadingChapter, setReadingPosition } from "../services/readingProgress";
 import { bookVerses, tierVerses } from "../utils/verses";
@@ -69,6 +69,15 @@ export function useBookPages(bookKey: string, chapter?: string | null, medium: "
   );
 
   const chapters: PagedChapter[] | null = pagedChapters?.chapters ?? null;
+  // A paid book read as its free preview: 5% of its pages, scattered through
+  // the book (owner, 2026-11-06). Where each free page sits in this chapter,
+  // so the reader can mark the pages in between.
+  const preview = useMemo(() => {
+    const data = pagedData as (PagedVerses & { positions?: number[] | null; count?: number }) | null;
+    const book = pagedChapters?.preview as ({ pages?: number; of?: number } | undefined);
+    if (!data?.locked || !data.positions?.length) return null;
+    return { positions: data.positions, count: data.count ?? data.positions.length, pages: book?.pages ?? 0, of: book?.of ?? 0 };
+  }, [pagedData, pagedChapters]);
   // Reading a chapter waits while its verses are fetched (or while the
   // catalogue that says the book is paged is still arriving).
   const chapterLoading = pagedChapter !== null && (pagedLoading || (!pagedText && canonLoading));
@@ -97,6 +106,7 @@ export function useBookPages(bookKey: string, chapter?: string | null, medium: "
     chapterLoading,
     chapterFailed,
     chapterRetry: pagedRetry,
+    preview,
     title,
     titleSa,
     persistAt,

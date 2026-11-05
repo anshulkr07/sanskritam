@@ -33,6 +33,7 @@ def shop(learner: Learner = Depends(require_learner), db: Session = Depends(get_
     from app.commerce import hybrid
     if not hybrid.enabled():
         raise HTTPException(503, "Purchases are being prepared")
+    from app.commerce import mudra, plans
     svc.lock_wallet(db, learner.id)
     voice = hybrid.snapshot(db, learner.id)
     member = svc.membership(db, learner.id)
@@ -40,7 +41,46 @@ def shop(learner: Learner = Depends(require_learner), db: Session = Depends(get_
         "account_verified": bool(learner.google_sub or learner.apple_sub),
         "products": hybrid.offers(db), "regional_plus": hybrid.REGIONAL_PLUS, "regional_lite": hybrid.REGIONAL_LITE,
         "account_token": stores.account_token(learner.id), "google_account": stores.google_account(learner.id),
-        "member_until": member.paid_until if member else None, **voice, **hybrid.entitlements(db, learner.id)}
+        "member_until": member.paid_until if member else None, **voice, **hybrid.entitlements(db, learner.id),
+        **mudra.wallet_view(db, learner.id), "plan": plans.view(db, learner), "plans": plans.public()}
+    db.commit()
+    return result
+
+
+@router.get("/mudra/history.csv")
+def mudra_history_csv(learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+    """The whole Mudrā history as a CSV file, for the shop's Download button."""
+    from fastapi.responses import Response
+    from app.commerce import hybrid, mudra
+    if not hybrid.enabled():
+        raise HTTPException(503, "Purchases are being prepared")
+    name = f"mudra-history-{svc.now():%Y-%m-%d}.csv"
+    return Response(mudra.history_csv(db, learner), media_type="text/csv; charset=utf-8",
+                    headers={"Content-Disposition": f'attachment; filename="{name}"', "Cache-Control": "private, no-store"})
+
+
+@router.get("/mudra/history")
+def mudra_history(learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+    """The shop's ledger: the latest Mudrā added and spent."""
+    from app.commerce import hybrid, mudra
+    if not hybrid.enabled():
+        raise HTTPException(503, "Purchases are being prepared")
+    return {"items": mudra.history(db, learner.id)}
+
+
+class SpendBody(BaseModel):
+    item: str = Field(pattern=r"^(title:[a-z0-9_-]{1,100}:(book|audio)|both:[a-z0-9_-]{1,100}|guru:(5|15|30))$")
+    request_id: str = Field(min_length=8, max_length=80)
+    expected: int = Field(ge=0, le=100000)
+
+
+@router.post("/mudra/spend")
+def mudra_spend(body: SpendBody, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+    """Buy a book, audiobook or Guru minutes with Mudrā; owned for good."""
+    from app.commerce import hybrid, mudra
+    if not hybrid.enabled():
+        raise HTTPException(503, "Mudrā are being prepared")
+    result = mudra.spend(db, learner.id, body.item, body.request_id, body.expected)
     db.commit()
     return result
 
@@ -259,14 +299,17 @@ def licence(title_id: str, learner: Learner = Depends(require_learner), db: Sess
     from app.commerce import hybrid
     if hybrid.enabled():
         if not hybrid.can_download(db, learner.id, title_id):
-            raise HTTPException(403, "Buy this edition or subscribe to Plus for downloads. Lite includes online reading and listening.")
+            if hybrid.premium(db, title_id):
+                raise HTTPException(403, "Buy this edition with Mudrā to save it offline. It is then yours to keep.")
+            raise HTTPException(403, "Lite and Plus save free books and chants for offline use.")
         owned = hybrid.owns(db, learner.id, title_id)
         member = svc.membership(db, learner.id)
-        until = svc.now() + timedelta(days=3650 if owned or not hybrid.premium(db, title_id) else 7)
+        until = svc.now() + timedelta(days=7)
         if owned:
             until = datetime(9999, 1, 1)
-        if not owned and member and hybrid.premium(db, title_id):
-            until = min(until, member.paid_until)
+        elif member:
+            # A free title saved offline with a plan stays readable while the plan lasts.
+            until = member.paid_until
         legacy = svc.title_access(db, learner.id, title_id)
         if not owned and hybrid.premium(db, title_id) and legacy and not (member and member.tier in {"plus", "pro"}):
             until = min(until, legacy.expires_at)
@@ -280,6 +323,26 @@ def licence(title_id: str, learner: Learner = Depends(require_learner), db: Sess
     until = min(svc.now() + timedelta(days=7), member.paid_until, access.expires_at)
     payload = {"scope": "offline", "sub": learner.id, "title": title_id, "exp": until}
     return {"licence": sign(payload), "expires_at": until, "owner": learner.id}
+
+
+@router.get("/titles/{title_id}/preview")
+def title_preview(title_id: str, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
+    """How much of an edition is free: 5% of a book's pages, or of an
+    audiobook's running time (commerce/preview.py)."""
+    from app.commerce import access, preview
+    from app.models import CanonText
+    slug, _, medium = title_id.rpartition(":")
+    text = db.query(CanonText).filter_by(slug=slug).first()
+    if text is None or medium not in {"book", "audio"}:
+        raise HTTPException(404, "Unknown edition")
+    owned = bool(access.has_title(db, learner.id, title_id))
+    if medium == "book":
+        total = len(preview.book_rows(db, text))
+        return {"title_id": title_id, "medium": medium, "owned": owned, "percent": 5,
+                "pages": preview.page_count(total), "of": total}
+    _, budget, total_ms = access.audio_positions(db, learner, text)
+    return {"title_id": title_id, "medium": medium, "owned": owned, "percent": 5,
+            "free_ms": min(budget, total_ms), "of_ms": total_ms}
 
 
 @router.get("/titles/{title_id}/content")
@@ -419,123 +482,7 @@ def referrals(learner: Learner = Depends(require_learner), db: Session = Depends
                          "available_at": r.available_at, "state": r.state} for r in rows]}
 
 
-class AdBody(BaseModel):
-    title_id: str = Field(max_length=160)
-    kind: Literal["reading", "audio", "practice", "native"]
-    target: str = Field(default="", max_length=100)
-
-
-@router.get("/ads/eligibility")
-def ad_eligibility(title_id: str = "", learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
-    enabled()
-    from app.commerce.ad_policy import eligibility
-    return eligibility(db, learner.id, title_id)
-
-
-class AdPreferencesBody(BaseModel):
-    adult: bool
-    opted_in: bool
-
-
-@router.put("/ads/preferences")
-def ad_preferences(body: AdPreferencesBody, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
-    enabled()
-    svc.lock_wallet(db, learner.id)
-    row = db.get(Profile, learner.id)
-    if row is None:
-        row = Profile(learner_id=learner.id)
-        db.add(row)
-    row.adult, row.ads_consent = body.adult, body.adult and body.opted_in
-    db.commit()
-    from app.commerce.ad_policy import eligibility
-    return eligibility(db, learner.id)
-
-
-@router.post("/ads/ticket")
-def ad_ticket(body: AdBody, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
-    enabled()
-    svc.lock_wallet(db, learner.id)
-    from app.commerce.ad_policy import eligibility
-    if not eligibility(db, learner.id, body.title_id)["allowed"]:
-        raise HTTPException(403, "Advertising is unavailable for this account or purchased edition")
-    if body.kind == "native" and not settings.commerce_hybrid_enabled and not learner.streak:
-        raise HTTPException(403, "Complete a learning activity before native advertising")
-    profile = db.get(Profile, learner.id)
-    if not profile or not profile.adult or not profile.ads_consent:
-        raise HTTPException(403, "Advertising consent and adult profile required")
-    if body.kind != "native" and not db.get(Title, body.title_id):
-        raise HTTPException(404, "Unknown title")
-    if body.kind in {"reading", "audio"}:
-        title = db.get(Title, body.title_id)
-        if title.medium != ("book" if body.kind == "reading" else "audio") or not title.published:
-            raise HTTPException(422, "Choose a published edition matching this reward")
-    target = body.target
-    if body.kind == "reading":
-        from app.models import CanonText, Shloka
-        title = db.get(Title, body.title_id)
-        canon = db.query(CanonText).filter_by(slug=title.slug).first()
-        if canon and canon.paged:
-            chapters = []
-            for chapter, in db.query(Shloka.chapter).filter_by(book=canon.slug, in_daily=False).order_by(Shloka.seq):
-                if chapter not in chapters:
-                    chapters.append(chapter)
-            if len(chapters) > 1:
-                claimed = {r.target for r in db.query(AdGrant).filter_by(learner_id=learner.id, title_id=body.title_id, kind="reading").filter(AdGrant.expires_at > svc.now())}
-                choices = [c for c in chapters[1:] if c not in claimed]
-                if not choices:
-                    raise HTTPException(409, "All additional chapters are already available")
-                target = target if target in choices else choices[0]
-    midnight = svc.now().replace(hour=0, minute=0, second=0, microsecond=0)
-    query = db.query(AdGrant).filter_by(learner_id=learner.id).filter(AdGrant.created_at >= midnight)
-    query = query.filter(AdGrant.kind == "native") if body.kind == "native" else query.filter(AdGrant.kind != "native")
-    from sqlalchemy import or_
-    if body.kind != "native":
-        query = query.filter(or_(AdGrant.transaction_id.isnot(None), AdGrant.expires_at > svc.now()))
-    # Count issued tickets too: concurrent ad requests cannot bypass the cap.
-    if query.count() >= (2 if body.kind == "native" else 3):
-        raise HTTPException(429, "Daily advertising limit reached")
-    if body.kind == "native" and settings.commerce_hybrid_enabled and query.filter(AdGrant.created_at > svc.now() - timedelta(minutes=10)).first():
-        raise HTTPException(429, "Advertising break is not due yet")
-    row = AdGrant(learner_id=learner.id, title_id=body.title_id, kind=body.kind, target=target,
-                  expires_at=svc.now() + timedelta(minutes=15))
-    db.add(row)
-    db.flush()
-    token = sign({"scope": "ad", "sub": learner.id, "id": row.id, "exp": row.expires_at})
-    db.commit()
-    return {"ticket": token, "id": row.id}
-
-
-@router.get("/ads/ssv")
-async def ad_callback(request: Request, db: Session = Depends(get_db)):
-    from app.commerce.ads import verify_callback
-    data = await verify_callback(request.url.query)
-    # A signed retry remains idempotent after the ticket's initial 15-minute window.
-    # Expiry below still prevents a late callback from granting a new extension.
-    payload = decode(data["custom_data"], "ad", allow_expired=True)
-    svc.lock_wallet(db, payload["sub"])
-    row = db.get(AdGrant, payload["id"])
-    if not row or row.learner_id != payload["sub"] or row.kind == "native":
-        raise HTTPException(422, "Unknown reward")
-    if row.transaction_id:
-        if row.transaction_id != data["transaction_id"]:
-            raise HTTPException(409, "Reward already claimed")
-        return {"ok": True}
-    if row.expires_at <= svc.now():
-        raise HTTPException(410, "Reward ticket expired")
-    if db.query(AdGrant).filter_by(transaction_id=data["transaction_id"]).first():
-        raise HTTPException(409, "Ad transaction already used for another reward")
-    row.transaction_id = data["transaction_id"]
-    row.expires_at = svc.now() + timedelta(hours=24)
-    db.commit()
-    return {"ok": True}
-
-
-@router.get("/ads/{grant_id}")
-def reward_status(grant_id: str, learner: Learner = Depends(require_learner), db: Session = Depends(get_db)):
-    row = db.get(AdGrant, grant_id)
-    if not row or row.learner_id != learner.id:
-        raise HTTPException(404, "Unknown reward")
-    return {"verified": bool(row.transaction_id and row.expires_at > svc.now()), "expires_at": row.expires_at}
+# Advertising endpoints live in app/commerce/ads_router.py (their own switch).
 
 
 class EventBody(BaseModel):

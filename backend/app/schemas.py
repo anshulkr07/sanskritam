@@ -659,10 +659,12 @@ class TTSRequest(BaseModel):
     speaker: str = "aditya"  # valid bulbul:v3 speaker (old 'meera' 400s)
     pace: float = Field(1.0, ge=0.5, le=2.0)
     surface: str = ""
+    prefer_url: bool = False  # older clients still receive inline WAV bytes
 
 
 class TTSResponse(BaseModel):
-    audio_base64: str
+    audio_base64: str = ""
+    audio_url: str = ""
     duration_hint: Optional[float] = None
 
 

@@ -559,6 +559,7 @@ export interface ExplainResponse {
 
 export interface TTSResponse {
   audio_base64: string;
+  audio_url?: string;
   duration_hint: number | null;
 }
 
@@ -1902,7 +1903,7 @@ export const api = {
       "/speech/tts",
       {
         method: "POST",
-        body: JSON.stringify({ text, language_code: languageCode, speaker, pace }),
+          body: JSON.stringify({ text, language_code: languageCode, speaker, pace, prefer_url: true }),
       },
       true,
     ),

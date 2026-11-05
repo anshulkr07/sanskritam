@@ -61,14 +61,20 @@ def test_refund_only_revokes_its_edition_not_other_purchases(db):
     assert hybrid.can_access(db, "u", "gita:audio")
 
 
-def test_plus_access_ends_without_changing_owned_audio(db):
+def test_plans_grant_mudra_and_no_ads_but_do_not_open_books(db):
+    # Mudrā (2026-11-06): a plan puts Mudrā in the wallet every plan month and
+    # removes ads; books and audiobooks are bought with Mudrā and kept.
     buy(db, "edition.gita.audio", "audio")
-    buy(db, "plus.v2.monthly", "membership")
-    assert hybrid.can_access(db, "u", "gita:book")
+    purchase = buy(db, "plus.v2.monthly", "membership")
+    assert purchase.credits == 500
+    assert svc.lock_wallet(db, "u").balance == 500
+    assert not hybrid.can_access(db, "u", "gita:book")
+    assert hybrid.entitlements(db, "u")["ad_free"]
     db.query(Membership).update({"paid_until": svc.now() - timedelta(seconds=1)})
     db.commit()
-    assert not hybrid.can_access(db, "u", "gita:book")
+    assert not hybrid.entitlements(db, "u")["ad_free"]
     assert hybrid.can_access(db, "u", "gita:audio")
+    assert svc.lock_wallet(db, "u").balance == 500  # Mudrā outlive the plan
 
 
 def test_existing_library_is_free_until_explicitly_marked_premium(db):
@@ -77,66 +83,41 @@ def test_existing_library_is_free_until_explicitly_marked_premium(db):
     assert hybrid.can_access(db, "u", "gita:book")
 
 
-@pytest.mark.parametrize("period", ["monthly", "annual"])
-def test_lite_access_is_explicit_per_medium_and_does_not_include_downloads(db, period):
-    from app.commerce.access import has_title
-    db.get(Title, "gita:book").metadata_json = {"premium": True, "lite_included": True}
+# An annual plan adds its first month's Mudrā with the payment, the rest monthly.
+@pytest.mark.parametrize("period, mudra", [("monthly", 150), ("annual", 150)])
+def test_lite_grants_its_mudra_and_a_refund_takes_them_back(db, period, mudra):
     purchase = buy(db, "lite.v2." + period)
-    assert purchase.credits == 0
+    assert purchase.credits == mudra
     assert svc.membership(db, "u").tier == "lite"
-    assert has_title(db, "u", "gita:book")
-    assert not has_title(db, "u", "gita:audio")
-    assert not hybrid.can_download(db, "u", "gita:book")
-    assert hybrid.can_download(db, "u", "free:book")
     state = hybrid.entitlements(db, "u")
     assert state["ad_free"] and state["background_audio"]
-    assert state["included_titles"] == ["gita:book"]
-    assert state["downloadable_titles"] == []
-    assert svc.snapshot(db, "u")["offline"] is False
-    db.get(Title, "gita:audio").metadata_json = {"premium": True, "lite_included": True}
-    db.commit()
-    assert has_title(db, "u", "gita:audio")
-    assert not hybrid.can_download(db, "u", "gita:audio")
-    assert hybrid.snapshot(db, "u")["paid_seconds"] == 0
+    assert state["included_titles"] == [] and state["downloadable_titles"] == []
+    assert not hybrid.can_download(db, "u", "gita:book")
+    assert hybrid.can_download(db, "u", "free:book")  # offline free books come with a plan
     svc.refund_purchase(db, purchase); db.commit()
-    assert not has_title(db, "u", "gita:book")
+    assert svc.lock_wallet(db, "u").balance == 0
     assert hybrid.entitlements(db, "u")["member_tier"] == "free"
+    assert not hybrid.can_download(db, "u", "free:book")
 
 
-def test_lite_offers_require_a_published_explicit_starter_collection(db):
-    def lite_offers(): return [p for p in hybrid.offers(db) if p.get("tier") == "lite"]
-    assert not lite_offers()
-    title = db.get(Title, "gita:book")
-    title.metadata_json = {"premium": True, "lite_included": "true"}
-    assert not lite_offers()
-    title.metadata_json = {"premium": True, "lite_included": True}
-    assert len(lite_offers()) == 2
-    title.published = False
-    assert not lite_offers()
-    # Already-paid receipts restore even after the starter collection is delisted.
+def test_store_offers_mudra_packs_and_plans_once_there_is_something_to_buy(db, monkeypatch):
+    monkeypatch.setattr(settings, "commerce_voice_enabled", False)  # Guru minutes count as something too
+    def kinds(): return sorted({p["kind"] for p in hybrid.offers(db)})
+    for medium in ("book", "audio"):
+        db.get(Title, "gita:" + medium).credits = 0
+    db.commit()
+    assert kinds() == []  # premium but unpriced: nothing to spend Mudrā on yet
+    db.get(Title, "gita:book").credits = 199
+    db.commit()
+    assert kinds() == ["refill", "subscription"]
+    packs = [p for p in hybrid.offers(db) if p["kind"] == "refill"]
+    assert len(packs) == 14 and {p["id"].rsplit(".", 1)[-1] for p in packs if p["preset"]} == {"100", "330", "1200"}
+    db.get(Title, "gita:book").published = False
+    db.commit()
+    assert kinds() == []
+    # Already-paid receipts restore even when nothing is on sale.
     buy(db, "lite.v2.monthly"); buy(db, "lite.v2.monthly")
     assert db.query(Purchase).count() == 1
-
-
-def test_plus_expiry_falls_back_to_lite_without_revoking_purchased_editions(db):
-    db.get(Title, "gita:book").metadata_json = {"premium": True, "lite_included": True}
-    buy(db, "lite.v2.annual", "lite")
-    buy(db, "plus.v2.monthly", "plus")
-    assert svc.membership(db, "u").tier == "plus"
-    assert hybrid.can_download(db, "u", "gita:book")
-    assert hybrid.can_access(db, "u", "gita:audio")
-    db.query(Membership).filter_by(tier="plus").update({"paid_until": svc.now() - timedelta(seconds=1)})
-    db.commit()
-    assert svc.membership(db, "u").tier == "lite"
-    assert hybrid.can_access(db, "u", "gita:book")
-    assert not hybrid.can_download(db, "u", "gita:book")
-    assert not hybrid.can_access(db, "u", "gita:audio")
-    buy(db, "edition.gita.bundle", "owned")
-    db.query(Membership).update({"paid_until": svc.now() - timedelta(seconds=1)})
-    db.commit()
-    for medium in ("book", "audio"):
-        assert hybrid.can_access(db, "u", "gita:" + medium)
-        assert hybrid.can_download(db, "u", "gita:" + medium)
 
 
 def test_verified_plan_change_and_delayed_receipt_do_not_restore_old_tier(db):
@@ -151,41 +132,43 @@ def test_verified_plan_change_and_delayed_receipt_do_not_restore_old_tier(db):
     svc.apply_purchase(db, "u", lite); db.commit()
     svc.apply_purchase(db, "u", plus); db.commit()
     assert svc.membership(db, "u").tier == "lite"
-    assert not hybrid.can_access(db, "u", "gita:audio")
     upgrade = receipt("upgrade", "plus", svc.now(), start + timedelta(days=60))
     svc.apply_purchase(db, "u", upgrade); db.commit()
-    assert hybrid.can_download(db, "u", "gita:audio")
+    assert svc.membership(db, "u").tier == "plus"
 
 
-def test_lite_shop_and_offline_api_enforce_download_rights(db, monkeypatch):
+def test_shop_and_offline_api_follow_mudra_ownership(db, monkeypatch):
     from fastapi import FastAPI
     from fastapi.testclient import TestClient
     from app.auth import require_learner
     from app.db import get_db
     from app.commerce.router import router
     monkeypatch.setattr(settings, "commerce_signing_key", "test-key-with-more-than-thirty-two-characters")
-    db.get(Title, "gita:book").metadata_json = {"premium": True, "lite_included": True}
-    buy(db, "lite.v2.monthly")
+    for medium, price in (("book", 199), ("audio", 249)):
+        db.get(Title, "gita:" + medium).credits = price
+    buy(db, "plus.v2.monthly")
     app = FastAPI(); app.include_router(router)
     app.dependency_overrides[get_db] = lambda: db
     app.dependency_overrides[require_learner] = lambda: db.get(Learner, "u")
     with TestClient(app) as client:
         state = client.get("/commerce/shop").json()
-        assert state["member_tier"] == "lite" and state["ad_free"]
-        assert state["regional_lite"]["INR"] == [99, 799]
-        assert state["regional_lite"]["USD"] == [3.99, 29.99]
-        assert state["included_titles"] == ["gita:book"]
+        assert state["member_tier"] == "plus" and state["ad_free"]
+        assert state["regional_lite"]["USD"] == [3.99, 39.99]
+        assert state["mudra"] == {"balance": 500, "available": 500, "deficit": 0}
+        assert state["plan"]["tier"] == "plus" and state["plan"]["guru"] == {"total_minutes": 120, "left_seconds": 7200}
+        assert state["plan"]["recite"] == {"per": "month", "total": 500, "used": 0, "left": 500}
+        assert state["plans"]["lite"]["recite_per_month"] == 100 and "daily_multiplier" not in state["plans"]["lite"]
+        assert state["prices"] == {"gita:book": 199, "gita:audio": 249}
+        assert state["discount"] == 50 and state["member_prices"] == {"gita:book": 99, "gita:audio": 124}
+        assert state["included_titles"] == []
         response = client.get("/commerce/titles/gita:book/licence")
-        assert response.status_code == 403 and "Plus" in response.json()["detail"]
-        assert client.get("/commerce/titles/gita:audio/licence").status_code == 403
-        buy(db, "plus.v2.monthly", "plus")
-        grant = client.get("/commerce/titles/gita:audio/licence").json()
-        assert grant["premium"] and not grant["owned"]
-        assert stores.iso(grant["expires_at"]) <= svc.now() + timedelta(days=7)
-        buy(db, "edition.gita.book", "owned")
+        assert response.status_code == 403 and "Mudrā" in response.json()["detail"]
+        bought = client.post("/commerce/mudra/spend", json={"item": "title:gita:book", "request_id": "first-book", "expected": 99})
+        assert bought.status_code == 200 and bought.json()["available"] == 401  # Plus pays half
         db.query(Membership).update({"paid_until": svc.now() - timedelta(seconds=1)})
         db.commit()
-        assert client.get("/commerce/titles/gita:book/licence").json()["owned"]
+        grant = client.get("/commerce/titles/gita:book/licence").json()
+        assert grant["owned"] and grant["premium"]
         assert client.get("/commerce/titles/gita:audio/licence").status_code == 403
 
 
@@ -308,11 +291,19 @@ def test_google_editions_acknowledged_not_consumed(monkeypatch):
 
 def test_hybrid_migration_round_trip(tmp_path, monkeypatch):
     migration = importlib.import_module("migrations.versions.20261104_hybrid_commerce")
+    plans = importlib.import_module("migrations.versions.20261106_plan_allowances")
     engine = create_engine("sqlite:///" + str(tmp_path / "migration.db"))
     with engine.begin() as connection:
-        monkeypatch.setattr(migration, "op", Operations(MigrationContext.configure(connection)))
+        operations = Operations(MigrationContext.configure(connection))
+        monkeypatch.setattr(migration, "op", operations)
+        monkeypatch.setattr(plans, "op", operations)
         migration.upgrade()
         assert len(inspect(connection).get_table_names()) == 3
+        plans.upgrade()
+        columns = {c["name"] for c in inspect(connection).get_columns("commerce_voice_calls")}
+        assert {"plan_ms", "plan_period"} <= columns
+        plans.downgrade()
+        assert "plan_ms" not in {c["name"] for c in inspect(connection).get_columns("commerce_voice_calls")}
         migration.downgrade()
         assert not inspect(connection).get_table_names()
     engine.dispose()
@@ -371,67 +362,63 @@ def ad_client(db, monkeypatch):
     from app.auth import require_learner
     from app.db import get_db
     from app.commerce.router import router
+    from app.commerce.ads_router import router as ads_router
     monkeypatch.setattr(settings, "commerce_ads_enabled", True)
     monkeypatch.setattr(settings, "commerce_signing_key", "test-key-with-more-than-thirty-two-characters")
-    app = FastAPI(); app.include_router(router)
+    monkeypatch.setattr(settings, "commerce_admob_units", '["ca-app-pub-1234567890/2747237135"]')
+    app = FastAPI(); app.include_router(router); app.include_router(ads_router)
     app.dependency_overrides[get_db] = lambda: db
     app.dependency_overrides[require_learner] = lambda: db.get(Learner, "u")
     with TestClient(app) as client:
         yield client
 
 
-def test_ads_require_explicit_adult_opt_in_and_support_withdrawal(ad_client):
-    assert not ad_client.get("/commerce/ads/eligibility").json()["allowed"]
-    path = "/commerce/ads/preferences"
-    assert not ad_client.put(path, json={"adult": False, "opted_in": True}).json()["allowed"]
-    assert ad_client.put(path, json={"adult": True, "opted_in": True}).json()["allowed"]
-    assert ad_client.post("/commerce/ads/ticket", json={"title_id": "", "kind": "native"}).status_code == 200
-    assert not ad_client.put(path, json={"adult": True, "opted_in": False}).json()["allowed"]
-    assert ad_client.post("/commerce/ads/ticket", json={"title_id": "", "kind": "native"}).status_code == 403
+def test_free_accounts_see_ads_with_no_age_or_opt_in_step(ad_client):
+    # Claiming to be under 18 must not be a way to skip ads: there is no such step.
+    policy = ad_client.get("/commerce/ads/eligibility").json()
+    assert policy == {"allowed": True, "enabled": True, "ad_free": False, "listen_ad_minutes": 10}
+    assert ad_client.put("/commerce/ads/preferences", json={"adult": False, "opted_in": False}).status_code in (404, 405)
+    # Native ads need no ticket any more.
+    assert ad_client.post("/commerce/ads/ticket", json={"title_id": "", "kind": "native"}).status_code == 422
 
 
 @pytest.mark.parametrize("plan", ["lite", "plus"])
-def test_paid_members_never_receive_ad_tickets(db, ad_client, plan):
-    ad_client.put("/commerce/ads/preferences", json={"adult": True, "opted_in": True})
+def test_paid_members_never_receive_ads(db, ad_client, plan):
     buy(db, plan + ".v2.monthly")
-    assert ad_client.get("/commerce/ads/eligibility").json()["ad_free"]
-    for kind in ("native", "reading", "audio"):
-        assert ad_client.post("/commerce/ads/ticket", json={"title_id": "gita:book", "kind": kind}).status_code == 403
+    policy = ad_client.get("/commerce/ads/eligibility").json()
+    assert policy["ad_free"] and not policy["allowed"]
+    for kind, title in (("practice", "gita:book"), ("ask", "")):
+        assert ad_client.post("/commerce/ads/ticket", json={"title_id": title, "kind": kind}).status_code == 403
 
 
 def test_owned_editions_suppress_ads_and_refund_only_changes_that_grant(db, ad_client):
-    ad_client.put("/commerce/ads/preferences", json={"adult": True, "opted_in": True})
     purchased = buy(db, "edition.gita.book")
     assert not ad_client.get("/commerce/ads/eligibility?title_id=gita:book").json()["allowed"]
     assert ad_client.get("/commerce/ads/eligibility?title_id=gita:audio").json()["allowed"]
-    assert ad_client.post("/commerce/ads/ticket", json={"title_id": "gita:book", "kind": "native"}).status_code == 403
+    assert ad_client.post("/commerce/ads/ticket", json={"title_id": "gita:book", "kind": "practice"}).status_code == 403
     svc.refund_purchase(db, purchased); db.commit()
     assert ad_client.get("/commerce/ads/eligibility?title_id=gita:book").json()["allowed"]
 
 
-def test_native_ad_tickets_enforce_cooldown_and_daily_cap(db, ad_client):
-    from app.commerce.models import AdGrant
-    ad_client.put("/commerce/ads/preferences", json={"adult": True, "opted_in": True})
-    body = {"title_id": "", "kind": "native"}
-    assert ad_client.post("/commerce/ads/ticket", json=body).status_code == 200
-    assert ad_client.post("/commerce/ads/ticket", json=body).status_code == 429
-    db.query(AdGrant).update({"created_at": svc.now() - timedelta(minutes=11)}); db.commit()
-    assert ad_client.post("/commerce/ads/ticket", json=body).status_code == 200
-    db.query(AdGrant).update({"created_at": svc.now() - timedelta(minutes=11)}); db.commit()
-    assert ad_client.post("/commerce/ads/ticket", json=body).status_code == 429
+def signed_reward(ticket, transaction="google-verified-completion", unit="2747237135"):
+    import time
+    async def signed(_query):
+        return {"custom_data": ticket, "transaction_id": transaction, "ad_unit": unit,
+                "timestamp": str(int(time.time() * 1000))}
+    return signed
 
 
 def test_reward_requires_server_verification_and_is_idempotent(db, ad_client, monkeypatch):
     from app.commerce import ads
     from app.commerce.models import AdGrant
-    ad_client.put("/commerce/ads/preferences", json={"adult": True, "opted_in": True})
-    body = {"title_id": "gita:audio", "kind": "audio"}
+    body = {"title_id": "gita:audio", "kind": "practice"}
     ticket = ad_client.post("/commerce/ads/ticket", json=body).json()
     assert not ad_client.get("/commerce/ads/" + ticket["id"]).json()["verified"]
-    async def signed(_query): return {"custom_data": ticket["ticket"], "transaction_id": "google-verified-completion"}
-    monkeypatch.setattr(ads, "verify_callback", signed)
+    # Google's callback carries only the number after the slash of the unit ID.
+    monkeypatch.setattr(ads, "verify_callback", signed_reward(ticket["ticket"]))
     for _ in range(2):
-        assert ad_client.get("/commerce/ads/ssv?fixture=verified").status_code == 200
+        response = ad_client.get("/commerce/ads/ssv?fixture=verified")
+        assert response.status_code == 200 and response.json() == {"ok": True}
     assert ad_client.get("/commerce/ads/" + ticket["id"]).json()["verified"]
     assert db.query(AdGrant).filter_by(transaction_id="google-verified-completion").count() == 1
     for _ in range(2):
@@ -439,9 +426,118 @@ def test_reward_requires_server_verification_and_is_idempotent(db, ad_client, mo
     assert ad_client.post("/commerce/ads/ticket", json=body).status_code == 429
 
 
-def test_ad_kill_switch_and_reward_medium_validation(ad_client, monkeypatch):
-    ad_client.put("/commerce/ads/preferences", json={"adult": True, "opted_in": True})
-    assert ad_client.post("/commerce/ads/ticket", json={"title_id": "gita:book", "kind": "audio"}).status_code == 422
+@pytest.mark.parametrize("problem, change", [
+    ("unrecognised ad unit", {"unit": "1111111111"}),
+    ("unknown reward ticket", {"ticket": "not-our-ticket"}),
+])
+def test_signed_callbacks_that_grant_nothing_still_get_200(db, ad_client, monkeypatch, problem, change):
+    # AdMob's "Verify URL" sends a signed test callback; refusing it blocks the SSV setup.
+    from app.commerce import ads
+    from app.commerce.models import AdGrant
+    ticket = ad_client.post("/commerce/ads/ticket", json={"title_id": "gita:audio", "kind": "practice"}).json()
+    monkeypatch.setattr(ads, "verify_callback", signed_reward(change.get("ticket", ticket["ticket"]), unit=change.get("unit", "2747237135")))
+    response = ad_client.get("/commerce/ads/ssv?fixture=test")
+    assert response.status_code == 200 and response.json() == {"ok": False, "ignored": problem}
+    assert db.query(AdGrant).filter(AdGrant.transaction_id.isnot(None)).count() == 0
+
+
+def test_unsigned_callback_is_refused(ad_client):
+    assert ad_client.get("/commerce/ads/ssv?ad_unit=2747237135&transaction_id=x&signature=bad&key_id=none").status_code == 401
+
+
+def test_ad_kill_switch_and_no_ad_opens_more_of_an_edition(ad_client, monkeypatch):
+    # Previews are a fixed 5% for everyone (owner, 2026-11-06): no reading or listening rewards.
+    for kind in ("reading", "audio"):
+        assert ad_client.post("/commerce/ads/ticket", json={"title_id": "gita:book", "kind": kind}).status_code == 422
     monkeypatch.setattr(settings, "commerce_ads_enabled", False)
     assert not ad_client.get("/commerce/ads/eligibility").json()["allowed"]
-    assert ad_client.post("/commerce/ads/ticket", json={"title_id": "", "kind": "native"}).status_code == 403
+    assert ad_client.post("/commerce/ads/ticket", json={"title_id": "gita:audio", "kind": "practice"}).status_code == 403
+
+
+def test_listening_ad_interval_comes_from_the_server_with_a_floor(ad_client, monkeypatch):
+    monkeypatch.setattr(settings, "commerce_listen_ad_minutes", 2)
+    assert ad_client.get("/commerce/ads/eligibility").json()["listen_ad_minutes"] == 5
+    monkeypatch.setattr(settings, "commerce_listen_ad_minutes", 12)
+    assert ad_client.get("/commerce/ads/eligibility").json()["listen_ad_minutes"] == 12
+
+
+def test_ads_launch_without_purchases(tmp_path, monkeypatch):
+    # COMMERCE_ADS_ENABLED alone mounts the ad routes; the shop stays off.
+    monkeypatch.setattr(settings, "commerce_enabled", False)
+    monkeypatch.setattr(settings, "commerce_hybrid_enabled", False)
+    monkeypatch.setattr(settings, "commerce_ads_enabled", True)
+    monkeypatch.setattr(settings, "deferred_features_enabled", False)
+    from app.main import create_app
+    paths = set(create_app().openapi()["paths"])  # routers are included lazily
+    assert "/commerce/ads/eligibility" in paths and "/commerce/ads/ssv" in paths
+    assert "/commerce/shop" not in paths
+    from app.commerce.ad_policy import eligibility
+    engine = create_engine("sqlite:///" + str(tmp_path / "ads-only.db"))  # no commerce tables needed
+    with sessionmaker(engine)() as db:
+        assert eligibility(db, "anyone") == {"allowed": True, "enabled": True, "ad_free": False}
+    engine.dispose()
+    monkeypatch.setattr(settings, "commerce_ads_enabled", False)
+    assert "/commerce/ads/eligibility" not in set(create_app().openapi()["paths"])
+
+
+def test_reward_problem_reads_the_numeric_unit_and_fresh_timestamp(monkeypatch):
+    from app.commerce import ads
+    monkeypatch.setattr(settings, "commerce_admob_units", '["ca-app-pub-1234567890/2747237135", "555"]')
+    fresh = {"ad_unit": "2747237135", "timestamp": "1700000000000", "transaction_id": "t", "custom_data": "c"}
+    assert ads.reward_problem(fresh, now_ms=1700000000000) is None
+    assert ads.reward_problem({**fresh, "ad_unit": "555"}, now_ms=1700000000000) is None
+    assert ads.reward_problem(fresh, now_ms=1700000000000 + 25 * 3600 * 1000) == "stale reward"
+    assert ads.reward_problem({**fresh, "custom_data": ""}, now_ms=1700000000000) == "missing reward identity"
+
+def test_reward_units_come_from_the_config_file_when_env_is_empty(tmp_path, monkeypatch):
+    # deploy.sh joins env vars with commas, so the list lives in ad_config.json.
+    import json
+    from app.commerce import ads
+    monkeypatch.setattr(settings, "commerce_admob_units", "[]")
+    path = tmp_path / "ad_config.json"
+    path.write_text(json.dumps({"rewarded_units": ["ca-app-pub-1/42"]}), encoding="utf-8")
+    monkeypatch.setattr(ads, "CONFIG_FILE", path)
+    assert ads.unit_ids() == {"42"}
+    monkeypatch.setattr(settings, "commerce_admob_units", '["7"]')
+    assert ads.unit_ids() == {"7"}
+    monkeypatch.setattr(settings, "commerce_admob_units", "[]")
+    monkeypatch.setattr(ads, "CONFIG_FILE", tmp_path / "missing.json")
+    assert ads.unit_ids() == set()
+
+
+def test_checked_in_ad_config_is_valid_and_empty_by_default():
+    import json
+    from app.commerce import ads
+    data = json.loads(ads.CONFIG_FILE.read_text(encoding="utf-8"))
+    assert data["rewarded_units"] == [] and "audio_breaks" not in data
+
+
+def test_an_ad_adds_to_todays_own_ai_allowance(db, ad_client, monkeypatch):
+    from app.commerce import ads
+    from app.services import quota
+    assert ad_client.get("/commerce/ads/ask-topup").json() == {"available": True, "left_today": 3}
+    ticket = ad_client.post("/commerce/ads/ticket", json={"kind": "ask"}).json()
+    assert quota.ad_bonus(db, "u", quota.GEMINI_KIND) == 0
+    monkeypatch.setattr(ads, "verify_callback", signed_reward(ticket["ticket"], transaction="ask-view"))
+    assert ad_client.get("/commerce/ads/ssv?fixture=ask").json() == {"ok": True}
+    assert quota.ad_bonus(db, "u", quota.GEMINI_KIND) == quota.ASK_AD_BONUS[quota.GEMINI_KIND]
+    assert quota.ad_bonus(db, "u", "llm_calls") == quota.ASK_AD_BONUS["llm_calls"]
+    assert quota.ad_bonus(db, "u", "tts_chars") == 0  # never the speech allowance
+    assert ad_client.get("/commerce/ads/ask-topup").json()["left_today"] == 2
+    buy(db, "lite.v2.monthly")  # paying members have no ads, so no ad top-up either
+    assert ad_client.get("/commerce/ads/ask-topup").json()["available"] is False
+
+
+def test_the_ad_bonus_raises_the_learners_limit_not_the_shared_budget(db, monkeypatch):
+    from app.commerce.models import AdGrant
+    from app.services import quota
+    monkeypatch.setattr(settings, "commerce_ads_enabled", True)
+    monkeypatch.setattr(settings, "quota_enabled", True)
+    monkeypatch.setattr(settings, "quota_llm_calls_per_day", 1)
+    learner = db.get(Learner, "u")
+    quota.check_and_consume(db, learner, "llm_calls", 1, surface="explain")
+    with pytest.raises(quota.QuotaExceeded):
+        quota.check_and_consume(db, learner, "llm_calls", 1, surface="explain")
+    db.add(AdGrant(learner_id="u", title_id="", kind="ask", transaction_id="seen", expires_at=svc.now() + timedelta(hours=24)))
+    db.commit()
+    quota.check_and_consume(db, learner, "llm_calls", 1, surface="explain")

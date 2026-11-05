@@ -1,12 +1,12 @@
-import Modal from "../AudioModal";
 // Paged books (handover_reading_shelf.md 7.4-7.7): the contents page, built in
 // the same shape as a classic book's (read/BookContents) — cover, what the
 // book is, how far in you are, Continue, then chapters that open onto their
 // verses. Tapping a verse opens the fullscreen Book reader; that is the one
-// reading screen for every book. Plus preview sheet for locked chapters.
+// reading screen for every book. A paid book shows its free preview (5% of
+// its pages, scattered, owner 2026-11-06); a chapter with none of them opens
+// the Mudrā sheet.
 
 import { Ionicons } from "@react-native-vector-icons/ionicons";
-import { CommonActions, useNavigation } from "@react-navigation/native";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Pressable,
@@ -19,7 +19,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { api, type CanonText, type PagedChapter, type Shloka } from "../../api/client";
 import { useQuery } from "../../hooks/useQuery";
-import { useReducedMotion } from "../../hooks/useReducedMotion";
 import { useTypeScale } from "../../hooks/useTypeScale";
 import { haptics } from "../../services/haptics";
 import { useBookActivity } from "../../hooks/useBookActivity";
@@ -30,46 +29,12 @@ import { plain } from "../../utils/text";
 import { firstLine, parseRef } from "../../utils/verses";
 import { positionKey, sectionsOf } from "../../utils/paged";
 import CoverArt from "./CoverArt";
+import BuyWithMudra from "../BuyWithMudra";
+import MudraCoin from "../MudraCoin";
+import { useEdition } from "../../hooks/useEdition";
 import { Button, EmptyState } from "../ui";
 import { T, sa, ui } from "../../read/look";
 import { NumBox, ProgressLine, SectionHead, SquareButton } from "../../read/ui";
-
-export function PlusSheet({
-  visible,
-  onClose,
-}: {
-  visible: boolean;
-  onClose: () => void;
-}) {
-  const reduced = useReducedMotion();
-  const membershipNavigation = useNavigation();
-  return (
-    <Modal
-      visible={visible}
-      transparent
-      animationType={reduced ? "none" : "fade"}
-      onRequestClose={onClose}
-    >
-      <View style={styles.sheetWrap}>
-        <View style={styles.sheet}>
-          <Text style={styles.sheetTitle}>Unlock with credits</Text>
-          <Text style={styles.sheetLine}>Unlock this title from Membership &amp; credits. Membership adds offline access, background audio and more active slots.</Text>
-          <Pressable style={styles.sheetBtn} accessibilityRole="button" onPress={() => {
-            onClose(); membershipNavigation.dispatch(CommonActions.navigate("MainTabs", { screen: "Membership" }));
-          }}><Text style={styles.sheetBtnText}>Membership &amp; credits</Text></Pressable>
-          <Pressable
-            onPress={onClose}
-            style={styles.sheetBtn}
-            accessibilityRole="button"
-            accessibilityLabel="Close"
-          >
-            <Text style={styles.sheetBtnText}>Close</Text>
-          </Pressable>
-        </View>
-      </View>
-    </Modal>
-  );
-}
 
 const DEPTH_LABEL: Record<string, string> = {
   full: "Full text",
@@ -108,6 +73,12 @@ export function PagedBookIndex({
   const q = useQuery(`paged-index-${text.slug}`, () => api.canonChapters(text.slug));
   const data = q.data;
   const [plusOpen, setPlusOpen] = useState(false);
+  const { edition } = useEdition(text.slug + ":book");
+  const forSale = !!data?.locked && !!edition && !edition.owned;
+  const bookPreview = data?.preview as ({ pages?: number; of?: number } | undefined);
+  const previewFact = bookPreview?.pages && bookPreview.of
+    ? `Free preview: ${bookPreview.pages} of ${bookPreview.of} pages`
+    : "Free preview: 5% of the pages";
   const [resume, setResume] = useState<{ chapter: string; index: number } | null>(null);
   // The chapter open on its verses (a one-chapter book is always open).
   const [openCh, setOpenCh] = useState<string | null>(null);
@@ -283,10 +254,28 @@ export function PagedBookIndex({
                       {f}
                     </Text>
                   ))}
-                  {text.locked ? <Text style={styles.fact}>Opening chapters free · rest with Plus</Text> : null}
+                  {data?.locked ? <Text style={styles.fact}>{previewFact}</Text> : null}
                 </View>
               </View>
             </View>
+
+            {forSale && edition && (
+              <View style={styles.buyBand}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.buyHead}>{many ? `Buy once, read all ${chapters.length}` : "Buy once, read every page"}</Text>
+                  <Text style={styles.buySub}>Offline too. Yours for good.</Text>
+                </View>
+                <Pressable
+                  onPress={() => setPlusOpen(true)}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Buy the book for ${edition.price} Mudrā`}
+                  style={({ pressed }) => [styles.buyBtn, pressed && { opacity: 0.85 }]}
+                >
+                  <MudraCoin size={16} />
+                  <Text style={styles.buyBtnText}>{edition.price.toLocaleString("en-IN")}</Text>
+                </Pressable>
+              </View>
+            )}
 
             {started && (
               <View style={styles.progress}>
@@ -327,6 +316,8 @@ export function PagedBookIndex({
           const done = activity.filter(page => page.chapter === c.chapter && page.read).length >= c.count && c.count > 0;
           const state = done ? "done" : started && i === nowAt ? "now" : "ahead";
           const isOpen = openCh === c.chapter;
+          // Free preview pages in this chapter, while the book is not owned.
+          const free = data?.locked ? (c as PagedChapter & { free?: number }).free ?? 0 : 0;
           return (
             <>
               {section.partFirst ? <Text style={styles.sectionLabel}>{section.label}</Text> : null}
@@ -342,14 +333,14 @@ export function PagedBookIndex({
                 style={styles.chapter}
                 accessibilityRole="button"
                 accessibilityState={{ expanded: isOpen && !c.locked }}
-                accessibilityLabel={c.locked ? `${label}, Plus` : `${label}. ${c.count} verses.`}
+                accessibilityLabel={c.locked ? `${label}, in the full book. Buy the book with Mudrā` : `${label}. ${c.count} verses${free ? `, ${free} free in the preview` : ""}.`}
               >
                 <NumBox state={state} label={c.chapter || "1"} />
                 <View style={styles.rowText}>
                   <Text style={styles.rowTitle}>{label}</Text>
-                  <Text style={[styles.rowSub, state === "now" && styles.rowSubNow]}>
+                  <Text style={[styles.rowSub, state === "now" && styles.rowSubNow, !!free && styles.rowSubFree]}>
                     {state === "now" && resume ? `You are at verse ${resume.index + 1} of ${c.count}` : `${c.count} verses`}
-                    {c.locked ? " · Plus" : ""}
+                    {c.locked ? " · in the full book" : free ? ` · ${free} free` : ""}
                   </Text>
                 </View>
                 {c.locked ? (
@@ -411,7 +402,12 @@ export function PagedBookIndex({
         }}
         renderSectionFooter={({ section }) => (many ? <View style={styles.rule} key={section.key} /> : null)}
       />
-      <PlusSheet visible={plusOpen} onClose={() => setPlusOpen(false)} />
+      <BuyWithMudra
+        visible={plusOpen}
+        titleId={text.slug + ":book"}
+        onClose={() => setPlusOpen(false)}
+        onBought={() => q.retry()}
+      />
     </SafeAreaView>
   );
 }
@@ -441,6 +437,12 @@ const styles = StyleSheet.create({
   rowTitle: { ...ui("semibold"), fontSize: 16, lineHeight: 21, color: T.ink },
   rowSub: { ...ui("regular"), color: T.ink3, fontSize: 13 },
   rowSubNow: { ...ui("semibold"), color: T.action },
+  rowSubFree: { ...ui("semibold"), color: T.action },
+  buyBand: { flexDirection: "row", alignItems: "center", gap: 12, marginTop: 18, paddingVertical: 14, borderTopWidth: 1, borderBottomWidth: 1, borderColor: T.lineStrong },
+  buyHead: { ...ui("bold"), fontSize: 15, color: T.ink },
+  buySub: { ...ui("regular"), fontSize: 13, color: T.ink2 },
+  buyBtn: { minHeight: 44, paddingHorizontal: 14, backgroundColor: T.action, flexDirection: "row", alignItems: "center", gap: 6 },
+  buyBtnText: { ...ui("bold"), fontSize: 15, color: "#FFFFFF" },
   verse: {
     flexDirection: "row",
     alignItems: "center",
@@ -463,4 +465,4 @@ const styles = StyleSheet.create({
   sheetBtnText: { color: "#FFFFFF", fontWeight: "800", fontSize: 16 },
 });
 
-export default { PagedBookIndex, PlusSheet };
+export default { PagedBookIndex };

@@ -15,6 +15,7 @@ import Modal from "../components/AudioModal";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
+import { useFocusEffect } from "@react-navigation/native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -41,8 +42,16 @@ import type { RootStackParamList } from "../navigation/types";
 import { addressOf, audioChapters, chapterAt, fmtClock, fmtLong, type AudioChapter } from "../read/audio";
 import { CREAM, CREAM_FAINT, T, accentOn, sa, softOn, ui } from "../read/look";
 import { nextChantIndex } from "../recite/chantClock";
+import SponsoredCard from "../components/SponsoredCard";
 import { setListenPosition } from "../services/audioProgress";
 import { haptics } from "../services/haptics";
+import { useListenBus } from "../services/listenBus";
+import { listenAds } from "../services/listenAds";
+import { HYBRID_COMMERCE } from "../services/commerce";
+import BuyWithMudra from "../components/BuyWithMudra";
+import { MudraAmount } from "../components/MudraCoin";
+import { useEdition, usePreviewSize } from "../hooks/useEdition";
+import { spokenLength } from "../services/mudra";
 import { plain } from "../utils/text";
 import { shelfTitle } from "../read/shelves";
 import { firstLine, speakerOf } from "../utils/verses";
@@ -127,6 +136,23 @@ export default function ListenScreen({ navigation, route }: Props) {
     },
   });
 
+  // A paid audiobook not yet owned plays its free preview (the server clips
+  // it to the first two minutes); the bar under the title offers the rest.
+  const { edition } = useEdition(bookKey + ":audio");
+  // The first 5% of the audiobook's running time is free (owner, 2026-11-06).
+  const previewSize = usePreviewSize(bookKey + ":audio", !!edition && !edition.owned);
+  const [buyOpen, setBuyOpen] = useState(false);
+
+  // Full-screen ads between verses show only while this screen is in front
+  // (services/listenAds); adBreak is the short notice before one.
+  const { adBreak } = useListenBus();
+  useFocusEffect(
+    useCallback(() => {
+      listenAds.setPlayerVisible(true);
+      return () => listenAds.setPlayerVisible(false);
+    }, []),
+  );
+
   // Player-first: start on open, unless this session is already sounding
   // (coming back from the mini player must not restart the verse).
   const started = useRef(false);
@@ -209,7 +235,41 @@ export default function ListenScreen({ navigation, route }: Props) {
         </Pressable>
       </View>
 
+      {!!edition && !edition.owned && (
+        <View style={[styles.preview, { borderColor: soft }]}>
+          <Text style={[styles.previewText, { color: soft }]}>
+            {previewSize?.free_ms ? `Free preview · the first ${spokenLength(previewSize.free_ms)} (5%)` : "Free preview · the first 5%"}
+          </Text>
+          <Pressable
+            onPress={() => setBuyOpen(true)}
+            accessibilityRole="button"
+            accessibilityLabel={`Buy the audiobook for ${edition.price} Mudrā`}
+            style={styles.previewBuy}
+          >
+            <MudraAmount amount={edition.price} size={15} textStyle={{ color: fill }} />
+          </Pressable>
+        </View>
+      )}
+      <BuyWithMudra
+        visible={buyOpen}
+        titleId={bookKey + ":audio"}
+        onClose={() => setBuyOpen(false)}
+        onBought={() => {
+          // Fresh, unclipped audio for the whole book: reopen the player where it was.
+          stop();
+          navigation.replace("Listen", { bookKey, chapter, index: curIdx });
+        }}
+      />
+
       <ScrollView style={styles.middle} contentContainerStyle={styles.middleBody} showsVerticalScrollIndicator={false}>
+        {adBreak && (
+          <View style={[styles.adBreak, { borderColor: soft }]} accessibilityLiveRegion="polite"
+            accessibilityLabel={`A short ad, then ${shelfTitle(title)} continues.`}>
+            <Text style={[styles.adBreakLabel, { color: accent }]}>ADVERTISEMENT</Text>
+            <Text style={styles.adBreakTitle}>A short ad, then the chant continues.</Text>
+            {HYBRID_COMMERCE && <Text style={[styles.adBreakNote, { color: soft }]}>Lite and Plus listen without ads.</Text>}
+          </View>
+        )}
         <AlbumArt bookKey={bookKey} titleSa={titleSa || shelfTitle(title)} size={art} framed />
         {!cur ? (
           <Text style={[styles.note, { color: soft }]}>{pages.length ? "" : "Loading the verses."}</Text>
@@ -256,6 +316,7 @@ export default function ListenScreen({ navigation, route }: Props) {
             {!hasChant && <Text style={[styles.note, { color: soft }]}>No chant yet for this book.</Text>}
           </View>
         )}
+        <SponsoredCard titleId={bookKey + ":audio"} />
       </ScrollView>
 
       <Scrubber
@@ -270,7 +331,7 @@ export default function ListenScreen({ navigation, route }: Props) {
       />
 
       <View style={styles.transport}>
-        <Pressable onPress={() => step(-1)} accessibilityRole="button" accessibilityLabel="Previous verse" style={styles.skip}>
+        <Pressable onPress={() => step(-1)} disabled={!!adBreak} accessibilityRole="button" accessibilityLabel="Previous verse" accessibilityState={{ disabled: !!adBreak }} style={[styles.skip, !!adBreak && styles.skipOff]}>
           <Ionicons name="play-skip-back" size={28} color={CREAM} />
         </Pressable>
         <Pressable
@@ -284,7 +345,7 @@ export default function ListenScreen({ navigation, route }: Props) {
         >
           <Ionicons name={isPlaying ? "pause" : "play"} size={32} color={fill} />
         </Pressable>
-        <Pressable onPress={() => step(1)} accessibilityRole="button" accessibilityLabel="Next verse" style={styles.skip}>
+        <Pressable onPress={() => step(1)} disabled={!!adBreak} accessibilityRole="button" accessibilityLabel="Next verse" accessibilityState={{ disabled: !!adBreak }} style={[styles.skip, !!adBreak && styles.skipOff]}>
           <Ionicons name="play-skip-forward" size={28} color={CREAM} />
         </Pressable>
       </View>
@@ -616,7 +677,15 @@ const styles = StyleSheet.create({
   time: { ...ui("regular"), fontSize: 12.5, fontVariant: ["tabular-nums"] },
   transport: { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 34, marginTop: 10 },
   skip: { width: 56, height: 56, alignItems: "center", justifyContent: "center" },
+  skipOff: { opacity: 0.35 },
   play: { width: 74, height: 74, backgroundColor: CREAM, alignItems: "center", justifyContent: "center" },
+  adBreak: { alignSelf: "stretch", borderWidth: 1, padding: 14, marginBottom: 14, gap: 4 },
+  adBreakLabel: { ...ui("semibold"), fontSize: 12, letterSpacing: 0.6 },
+  adBreakTitle: { ...ui("bold"), fontSize: 17, color: CREAM },
+  adBreakNote: { ...ui("regular"), fontSize: 13 },
+  preview: { flexDirection: "row", alignItems: "center", gap: 10, marginHorizontal: 18, marginBottom: 6, paddingLeft: 12, borderWidth: 1, minHeight: 44 },
+  previewText: { ...ui("semibold"), flex: 1, fontSize: 13 },
+  previewBuy: { backgroundColor: CREAM, minHeight: 44, paddingHorizontal: 14, justifyContent: "center" },
   options: { flexDirection: "row", paddingHorizontal: 10, marginTop: 12 },
   option: { flex: 1, alignItems: "center", justifyContent: "center", minHeight: 58, gap: 2 },
   optionIcon: { height: 26, alignItems: "center", justifyContent: "center" },

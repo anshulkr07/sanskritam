@@ -513,12 +513,16 @@ async function generateTTS() {
       language_code: $('tts-language').value,
       speaker: $('tts-speaker').value,
       pace: parseFloat($('tts-pace').value),
+      prefer_url: true,
     }, true);
 
     // Decode base64 audio and create playback
-    const audioBytes = Uint8Array.from(atob(data.audio_base64), c => c.charCodeAt(0));
-    const blob = new Blob([audioBytes], { type: 'audio/wav' });
-    const url = URL.createObjectURL(blob);
+    let url = data.audio_url;
+    if (!url) {
+      const audioBytes = Uint8Array.from(atob(data.audio_base64), c => c.charCodeAt(0));
+      const blob = new Blob([audioBytes], { type: 'audio/wav' });
+      url = URL.createObjectURL(blob);
+    }
 
     $('tts-audio').src = url;
     $('tts-output').style.display = 'block';
