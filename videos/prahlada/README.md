@@ -147,3 +147,8 @@ Python compilation checks passed. No human listening review is recorded.
 
 Run python videos/prahlada/voice-delivery.py to create the three -sarvam-voice.mp4 copies and sarvam-hindi-narration-30s.m4a. These reuse the cached project Sarvam narration, remove the musical bed, compress speech dynamics and use a default Hindi AAC stereo track. Video streams are copied unchanged. All three copies passed a full decode: 30 seconds, mean audio -18.1 dBFS, peak -1.9 dBFS. The original files also contained narration; muted inline playback was a possible explanation for the reported missing voice, not a verified cause.
 
+A local play-with-sound.html player explicitly unmutes playback on a button click.
+On 5 November, audio extracted from the delivered Three.js MP4 was transcribed
+through Sarvam Saaras v4; all eight Hindi narration sentences were recovered.
+This verifies embedded speech, but does not establish the cause of silence in
+the chat preview or verify the user device speaker output.

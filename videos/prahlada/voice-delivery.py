@@ -12,6 +12,36 @@ def run(args):
     return subprocess.run(args, check=True, capture_output=True, text=True)
 
 
+def write_player():
+    cards = "".join(
+        f'<section><h2>{title}</h2><video controls playsinline preload="metadata" '
+        f'src="prahlada-{name}-30s-sarvam-voice.mp4"></video>'
+        '<button type="button">Play with sound</button></section>'
+        for name, title in [("threejs-3d", "Three.js 3D"),
+                            ("shadow-puppets", "Illustrated puppets"), ("manim-3d", "Manim 3D")])
+    html = '''<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prahlada — play with sound</title>
+<style>body{margin:24px;background:#172a36;color:#f2d7a0;font:18px system-ui}
+main{display:flex;gap:24px;flex-wrap:wrap}section{width:min(340px,100%)}
+video{display:block;width:100%;max-height:65vh;background:black}
+button{padding:14px;margin-top:12px;cursor:pointer;font:inherit}
+p{max-width:800px}audio{display:block;margin:20px 0}</style>
+<h1>Prahlada · Sarvam Hindi narration</h1>
+<p>Choose “Play with sound”. Each button unmutes its video and sets player volume to 100%.
+Your computer's output volume and selected speaker still apply.</p>
+<audio controls src="sarvam-hindi-narration-30s.m4a"></audio><main>''' + cards + '''</main>
+<p id="status" role="status"></p><script>
+for(const button of document.querySelectorAll('button'))button.onclick=async()=>{
+ const video=button.parentElement.querySelector('video');
+ for(const other of document.querySelectorAll('video,audio'))if(other!==video)other.pause();
+ video.muted=false;video.defaultMuted=false;video.volume=1;
+ try{await video.play();document.querySelector('#status').textContent='Playing with sound enabled.'}
+ catch(error){document.querySelector('#status').textContent=error.message}
+};</script></html>'''
+    (OUT / "play-with-sound.html").write_text(html, encoding="utf-8")
+
+
 def main():
     narration = OUT / "narration.wav"
     voice = OUT / "sarvam-hindi-narration-30s.m4a"
@@ -45,6 +75,7 @@ def main():
                              sha256=hashlib.sha256(target.read_bytes()).hexdigest()))
     (OUT / "voice-delivery.json").write_text(json.dumps(evidence, indent=2), encoding="utf-8")
     print(json.dumps(evidence, indent=2))
+    write_player()
 
 
 if __name__ == "__main__":
