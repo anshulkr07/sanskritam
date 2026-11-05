@@ -142,3 +142,8 @@ Python compilation checks passed. No human listening review is recorded.
 - `prahlada-threejs-3d-30s.mp4`: 13,353,969 bytes; SHA-256 `a7884831365e6032249864be5199b768352807d09a861c36b777fbee165c063b`.
 - `prahlada-shadow-puppets-30s.mp4`: 9,217,589 bytes; SHA-256 `62daf233226563aa6a435c3c7a2527cf3f5d83d13d1fd5e8485224a5a6a2f923`.
 - `prahlada-manim-3d-30s.mp4`: 2,247,173 bytes; SHA-256 `4a87401f0b885879e0ca6537e10271aacc1c055250f615e19a7b2ec48e533f92`.
+
+### Voice-forward exports
+
+Run python videos/prahlada/voice-delivery.py to create the three -sarvam-voice.mp4 copies and sarvam-hindi-narration-30s.m4a. These reuse the cached project Sarvam narration, remove the musical bed, compress speech dynamics and use a default Hindi AAC stereo track. Video streams are copied unchanged. All three copies passed a full decode: 30 seconds, mean audio -18.1 dBFS, peak -1.9 dBFS. The original files also contained narration; muted inline playback was a possible explanation for the reported missing voice, not a verified cause.
+
