@@ -5,7 +5,7 @@ import json
 import re
 import subprocess
 
-OUT = Path(__file__).resolve().parents[2] / "results/videos/prahlada/comparison-30"
+OUT = Path(__file__).resolve().parents[2] / "codetovideo/outputs/prahlada/comparison-30"
 
 
 def run(args):
@@ -18,7 +18,8 @@ def write_player():
         f'src="prahlada-{name}-30s-sarvam-voice.mp4"></video>'
         '<button type="button">Play with sound</button></section>'
         for name, title in [("threejs-3d", "Three.js 3D"),
-                            ("shadow-puppets", "Illustrated puppets"), ("manim-3d", "Manim 3D")])
+                            ("shadow-puppets", "Illustrated puppets")]
+        if (OUT / f"prahlada-{name}-30s-sarvam-voice.mp4").exists())
     html = '''<!doctype html><html lang="en"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Prahlada — play with sound</title>
@@ -50,8 +51,10 @@ def main():
          "loudnorm=I=-14:TP=-1.5:LRA=7,aresample=48000,volume=2.5dB",
          "-ac", "2", "-c:a", "aac", "-b:a", "192k", "-t", "30", str(voice)])
     evidence = []
-    for name in ["threejs-3d", "shadow-puppets", "manim-3d"]:
+    for name in ["threejs-3d", "shadow-puppets"]:
         source = OUT / f"prahlada-{name}-30s.mp4"
+        if not source.exists():
+            continue
         target = OUT / f"prahlada-{name}-30s-sarvam-voice.mp4"
         run(["ffmpeg", "-y", "-v", "error", "-i", str(source), "-i", str(voice),
              "-map", "0:v:0", "-map", "1:a:0", "-c", "copy",
@@ -73,6 +76,8 @@ def main():
                              audio="AAC stereo, default Hindi track", mean_dbfs=mean,
                              peak_dbfs=peak, full_decode="passed",
                              sha256=hashlib.sha256(target.read_bytes()).hexdigest()))
+    if not evidence:
+        raise RuntimeError("Render a Three.js or puppet video before exporting narration")
     (OUT / "voice-delivery.json").write_text(json.dumps(evidence, indent=2), encoding="utf-8")
     print(json.dumps(evidence, indent=2))
     write_player()

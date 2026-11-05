@@ -1,5 +1,9 @@
 # Prahlada: Faith without fear
 
+**Historical episode notes below.** Continue from [../README.md](../README.md)
+and [../LEARNINGS.md](../LEARNINGS.md). The default `render.ps1` now renders
+Three.js or puppets; the old Manim wrapper is `render-manim-legacy.ps1`.
+
 A basic one-minute portrait film built with Manim Community Edition 0.22.0.
 All characters, palace architecture, light, movement and transitions are Python
 vector geometry. No image generator or video-generation model is used.
@@ -15,7 +19,7 @@ reflection is editorial commentary, not a quotation from scripture.
 From the repository root:
 
 ```powershell
-./videos/prahlada/render.ps1
+./codetovideo/prahlada/render-manim-legacy.ps1
 ```
 
 The script defaults to the installed Manim CE environment under the user's
@@ -30,7 +34,7 @@ a narration request regenerates only that clip. The generated track uses a
 measured pace adjustment to fit 60 seconds, with a guard against excessive
 acceleration. Eight scene durations add up to exactly 1,800 frames at 30 fps.
 
-Outputs are in ignored `results/videos/prahlada/`:
+Outputs are in ignored `codetovideo/outputs/prahlada/`:
 
 - `prahlada-narasimha-60s.mp4`: 720 × 1280 H.264/AAC delivery.
 - `narration.wav`, `score.wav`: separate audio tracks.
@@ -102,21 +106,21 @@ The Three.js renderer uses installed `three`, `puppeteer-core` and Chrome;
 override `VIDEO_RUNTIME_NODE_MODULES` and `VIDEO_CHROME` if needed.
 
 ```powershell
-backend/.venv/Scripts/python.exe videos/prahlada/narrate.py --short
+backend/.venv/Scripts/python.exe codetovideo/prahlada/narrate.py --short
 # The original narration establishes the source animation timeline; cached on repeat runs.
-backend/.venv/Scripts/python.exe videos/prahlada/narrate.py
-& "$env:USERPROFILE/.codex/mcp/video-tools/python-ce/Scripts/python.exe" videos/prahlada/finish.py --score-only
-node videos/prahlada/render-illustrated.mjs --short --3d
-node videos/prahlada/render-illustrated.mjs --short
-& "$env:USERPROFILE/.codex/mcp/video-tools/python-ce/Scripts/python.exe" -m manim render --renderer cairo --fps 15 -r 720,1280 --media_dir results/videos/prahlada/comparison-30/manim -o manim-raw.mp4 videos/prahlada/manim_3d.py Prahlada30
-& "$env:USERPROFILE/.codex/mcp/video-tools/python-ce/Scripts/python.exe" videos/prahlada/finish-comparison.py
+backend/.venv/Scripts/python.exe codetovideo/prahlada/narrate.py
+& "$env:USERPROFILE/.codex/mcp/video-tools/python-ce/Scripts/python.exe" codetovideo/prahlada/finish.py --score-only
+node codetovideo/prahlada/render-illustrated.mjs --short --3d
+node codetovideo/prahlada/render-illustrated.mjs --short
+& "$env:USERPROFILE/.codex/mcp/video-tools/python-ce/Scripts/python.exe" -m manim render --renderer cairo --fps 15 -r 720,1280 --media_dir codetovideo/outputs/prahlada/comparison-30/manim -o manim-raw.mp4 codetovideo/prahlada/manim_3d.py Prahlada30
+& "$env:USERPROFILE/.codex/mcp/video-tools/python-ce/Scripts/python.exe" codetovideo/prahlada/finish-comparison.py
 ```
 
 Each narration request is cached by its content hash. The two Three.js treatments
 map each shortened scene to the corresponding original animation interval,
 preserving the sequence and replacing captions with the shorter script. Outputs
 are 720 x 1280, 15 fps H.264/AAC in ignored
-`results/videos/prahlada/comparison-30/`:
+`codetovideo/outputs/prahlada/comparison-30/`:
 
 - `prahlada-threejs-3d-30s.mp4`
 - `prahlada-shadow-puppets-30s.mp4`
@@ -145,7 +149,7 @@ Python compilation checks passed. No human listening review is recorded.
 
 ### Voice-forward exports
 
-Run python videos/prahlada/voice-delivery.py to create the three -sarvam-voice.mp4 copies and sarvam-hindi-narration-30s.m4a. These reuse the cached project Sarvam narration, remove the musical bed, compress speech dynamics and use a default Hindi AAC stereo track. Video streams are copied unchanged. All three copies passed a full decode: 30 seconds, mean audio -18.1 dBFS, peak -1.9 dBFS. The original files also contained narration; muted inline playback was a possible explanation for the reported missing voice, not a verified cause.
+Run python codetovideo/prahlada/voice-delivery.py to create the three -sarvam-voice.mp4 copies and sarvam-hindi-narration-30s.m4a. These reuse the cached project Sarvam narration, remove the musical bed, compress speech dynamics and use a default Hindi AAC stereo track. Video streams are copied unchanged. All three copies passed a full decode: 30 seconds, mean audio -18.1 dBFS, peak -1.9 dBFS. The original files also contained narration; muted inline playback was a possible explanation for the reported missing voice, not a verified cause.
 
 A local play-with-sound.html player explicitly unmutes playback on a button click.
 On 5 November, audio extracted from the delivered Three.js MP4 was transcribed

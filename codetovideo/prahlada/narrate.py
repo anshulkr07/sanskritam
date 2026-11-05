@@ -13,7 +13,7 @@ import sys
 import wave
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "results/videos/prahlada"
+OUT = ROOT / "codetovideo/outputs/prahlada"
 SHORT = "--short" in sys.argv
 if SHORT:
     OUT = OUT / "comparison-30"

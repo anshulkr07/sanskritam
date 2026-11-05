@@ -143,7 +143,7 @@ class Prahlada30(ThreeDScene):
     """Complete 30-second geometric staging using the shared Sarvam timeline."""
     def construct(self):
         timeline=json.loads((Path(__file__).resolve().parents[2]/
-            "results/videos/prahlada/comparison-30/timeline.json").read_text(encoding="utf-8"))
+            "codetovideo/outputs/prahlada/comparison-30/timeline.json").read_text(encoding="utf-8"))
         durations=[s["duration"] for s in timeline["scenes"]]
         # Quantize scene boundaries to the chosen output frame rate.
         ends=[round((s["start"]+s["duration"])*15) for s in timeline["scenes"]]

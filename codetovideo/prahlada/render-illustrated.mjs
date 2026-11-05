@@ -9,7 +9,7 @@ import {createHash} from 'node:crypto';
 
 const dir=path.dirname(fileURLToPath(import.meta.url));
 const root=path.resolve(dir,'../..');
-const baseOut=path.join(root,'results/videos/prahlada');
+const baseOut=path.join(root,'codetovideo/outputs/prahlada');
 const short=process.argv.includes('--short');
 const out=short?path.join(baseOut,'comparison-30'):baseOut;
 const duration=short?30:60, fps=short?15:30, frameCount=duration*fps;

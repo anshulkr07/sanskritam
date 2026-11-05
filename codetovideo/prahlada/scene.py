@@ -7,7 +7,7 @@ import numpy as np
 from manim import *
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "results/videos/prahlada"
+OUT = ROOT / "codetovideo/outputs/prahlada"
 BG = "#0D2028"
 INK = "#F6EAD4"
 GOLD = "#DCAA55"
