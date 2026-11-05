@@ -1,5 +1,5 @@
 param(
-    [ValidateSet('threejs', 'puppets')][string]$Style = 'threejs',
+    [ValidateSet('threejs', 'puppets')][string]$Style = 'puppets',
     [string]$MediaPython = (Join-Path $env:USERPROFILE '.codex/mcp/video-tools/python-ce/Scripts/python.exe'),
     [switch]$PrepareOnly
 )

@@ -1,5 +1,17 @@
 # Decisions and learnings — 5 November 2026
 
+## Final owner selection
+
+After reviewing all seven completed versions, the owner finalized **Three.js
+illustrated puppets · 30-second reels**, with Sarvam Hindi narration. This
+supersedes the exploratory recommendations and two-style preference recorded
+below. `prahlada/render.ps1` now defaults to `puppets`. Use the original
+`prahlada/illustrated.mjs` treatment, rather than the later PixiJS comparison.
+The selected delivered example is
+`outputs/prahlada/comparison-30/prahlada-shadow-puppets-30s-sarvam-voice.mp4`.
+Preserve other experiments as reference. No new render or voice generation is
+needed merely to record this choice.
+
 ## Chosen direction
 
 Keep solid Three.js 3D and illustrated puppet animation. Both prototypes use

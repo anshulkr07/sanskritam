@@ -1,8 +1,10 @@
 # Continuing this project
 
 - Read `README.md` and `LEARNINGS.md` before continuing video work.
-- Owner prefers solid Three.js 3D and illustrated puppets. Do not use Manim for
-  new work unless requested; its source and outputs are historical experiments.
+- Owner finalized **Three.js illustrated puppets, 30-second reels**, on
+  5 November 2026. Use this style and duration for new reels by default.
+- Keep Sarvam Hindi narration. Other engines/styles and Manim are comparison
+  experiments; use them for new work only if requested.
 - Preserve Sarvam narration via the existing repository backend client/config.
   Keep both styles on the same narration when comparing them. Never copy secrets.
 - Preserve cached voice clips in ignored `outputs/`; changed text makes paid calls.

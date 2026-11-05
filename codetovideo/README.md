@@ -1,8 +1,12 @@
 # Code to video
 
 Continue video work in this folder. Owner choice, 5 November 2026:
-**solid Three.js 3D and illustrated puppets**. Manim is retained only as an
-earlier experiment; do not use it for new reels unless requested.
+**Three.js illustrated puppets · 30-second reels · Sarvam Hindi narration**.
+This is the finalized direction. Other styles and engines remain as comparison
+experiments for reference.
+
+Selected example: [Prahlada — Three.js illustrated puppets with Sarvam voice](outputs/prahlada/comparison-30/prahlada-shadow-puppets-30s-sarvam-voice.mp4).
+Editable visual source: `prahlada/illustrated.mjs`; narration: `prahlada/story-30.json`.
 
 ## Start here
 
@@ -16,8 +20,7 @@ earlier experiment; do not use it for new reels unless requested.
 From this folder:
 
 ```powershell
-./prahlada/render.ps1 -Style threejs
-./prahlada/render.ps1 -Style puppets
+./prahlada/render.ps1
 ```
 
 The wrapper resolves the repository root regardless of the current directory.
@@ -31,7 +34,6 @@ Direct commands from the repository root:
 
 ```powershell
 backend/.venv/Scripts/python.exe codetovideo/prahlada/narrate.py --short
-node codetovideo/prahlada/render-illustrated.mjs --short --3d
 node codetovideo/prahlada/render-illustrated.mjs --short
 python codetovideo/prahlada/voice-delivery.py
 ```
