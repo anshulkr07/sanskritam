@@ -8,7 +8,9 @@ the same image, settings, secrets and database as production, with
 - purchases, plans and test ads switched on;
 - lower shared AI caps;
 - staging's own signing key and Play service-account key;
-- scale to zero, at most one instance (idle costs nothing).
+- scale to zero (idle costs nothing), at most three instances. With one,
+  Cloud Run once took ten minutes to start a replacement after an idle
+  shutdown and refused the app's requests meanwhile (2026-11-06).
 
 Production's description includes plain environment values, so the caller
 keeps both files out of logs and deletes them afterwards.
@@ -49,17 +51,18 @@ def staging(service):
     template_meta.pop("name", None)  # revision names must start with the new service's name
     annotations = template_meta.setdefault("annotations", {})
     annotations.pop("autoscaling.knative.dev/minScale", None)
-    annotations["autoscaling.knative.dev/maxScale"] = "1"
+    annotations["autoscaling.knative.dev/maxScale"] = "3"
     template_meta["labels"] = {}
 
     container = template["spec"]["containers"][0]
     env = [e for e in container.get("env", []) if e["name"] not in FLAGS and e["name"] != "COMMERCE_SIGNING_KEY"]
     env += [{"name": k, "value": v} for k, v in FLAGS.items()]
-    # A catalogue-only admin key for staging (its SHA-256, from deploy-staging.sh),
-    # so books can be marked paid there without production's admin token.
+    # Staging's own owner key (its SHA-256, from deploy-staging.sh): marks books
+    # paid and sets commerce settings such as media_origins, without
+    # production's admin token. The database is shared, so its writes are real.
     if os.environ.get("STAGING_ADMIN_SHA"):
         env = [e for e in env if e["name"] != "COMMERCE_ADMIN_KEYS_JSON"]
-        env.append({"name": "COMMERCE_ADMIN_KEYS_JSON", "value": json.dumps({os.environ["STAGING_ADMIN_SHA"]: "catalogue"})})
+        env.append({"name": "COMMERCE_ADMIN_KEYS_JSON", "value": json.dumps({os.environ["STAGING_ADMIN_SHA"]: "owner"})})
     env.append({"name": "COMMERCE_SIGNING_KEY",
                 "valueFrom": {"secretKeyRef": {"name": "shabd-staging-signing-key", "key": "latest"}}})
     container["env"] = env

@@ -11,7 +11,7 @@
 # run the same code and the same database version.
 #
 # Low cost: no build of its own (it reuses production's image), scale to zero,
-# one instance at most, no scheduler jobs (production runs them), lower AI caps.
+# three instances at most, no scheduler jobs (production runs them), lower AI caps.
 #
 # Usage, from the repo root:
 #   CLOUDSDK_CORE_DISABLE_PROMPTS=1 PROJECT_ID=gen-lang-client-0232760726 bash deploy/gcp/deploy-staging.sh
@@ -35,7 +35,7 @@ PLAY_FILE="${PLAY_SERVICE_ACCOUNT_FILE:-mobile/service-account-key.json}"
 [ -f "$PLAY_FILE" ] || { echo "Missing $PLAY_FILE: staging needs a Play service-account key to verify purchases." >&2; exit 1; }
 python3 deploy/gcp/sync_secret.py "$PROJECT_ID" shabd-staging-play-account --file "$PLAY_FILE" >/dev/null
 
-# Staging's catalogue admin key: STAGING_ADMIN_TOKEN in the gitignored
+# Staging's owner admin key: STAGING_ADMIN_TOKEN in the gitignored
 # .env.deploy. Only its SHA-256 goes into staging's settings.
 STAGING_ADMIN_TOKEN=$(sed -n 's/\r$//; s/^STAGING_ADMIN_TOKEN=//p' "${ENV_FILE:-.env.deploy}" 2>/dev/null | tail -1)
 if [ -n "$STAGING_ADMIN_TOKEN" ]; then
