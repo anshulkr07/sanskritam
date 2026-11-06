@@ -69,7 +69,7 @@ const readingAppearance = load("src/services/readingAppearance.ts", {
 const verse = { id: "v1", source_ref: "Gītā 1.1", devanagari: "धर्मक्षेत्रे", word_breakdown: [] };
 const flattenStyle = style => Object.assign({}, ...(Array.isArray(style) ? style : [style]).filter(Boolean));
 for (const insets of [{ top: 0, bottom: 0, left: 0, right: 0 }, { top: 48, bottom: 24, left: 0, right: 0 }, { top: 59, bottom: 34, left: 12, right: 12 }]) {
-  for (const mode of ["read", "chant"]) for (const controls of [false, true]) {
+  for (const mode of ["read", "chant", "preview"]) for (const controls of [false, true]) {
     let stateIndex = 0;
     const Book = load("src/screens/Book.tsx", {
       react: { ...React, useState: initial => [stateIndex++ === 0 ? controls : initial, () => {}] },
@@ -77,6 +77,8 @@ for (const insets of [{ top: 0, bottom: 0, left: 0, right: 0 }, { top: 48, botto
       "react-native-safe-area-context": { useSafeAreaInsets: () => insets },
       "react-native-gesture-handler": { Gesture: { Tap: () => ({ onEnd() { return this; } }) } },
       "../hooks/useBookPages": { useBookPages: () => ({ pages: [verse], title: "Gītā", chapters: [], pagedChapter: null }) },
+      "../hooks/useEdition": { useEdition: () => ({ edition: mode === "preview" ? { price: 199, owned: false } : null }) },
+      "../read/readerAds": { useReaderAds: () => ({ placements: [] }) },
       "../hooks/useBookActivity": { useBookActivity: () => ({}) },
       "../hooks/useChant": { useChant: () => ({ at: 0, verse, hasChant: true }) },
       "../hooks/useReducedMotion": { useReducedMotion: () => true },
@@ -89,7 +91,7 @@ for (const insets of [{ top: 0, bottom: 0, left: 0, right: 0 }, { top: 48, botto
         useReadingAppearance: () => ({ appearance: readingAppearance.DEFAULT_READING_APPEARANCE, updateAppearance: () => {} }),
       },
     }, "\nexports.BookReader = BookReader;").BookReader;
-    const page = Book({ navigation: {}, route: { params: { bookKey: "gita", mode, index: 0 } } });
+    const page = Book({ navigation: {}, route: { params: { bookKey: "gita", mode, index: mode === "preview" ? 1 : 0 } } });
     const style = flattenStyle(page.props.style);
     for (const edge of ["top", "bottom", "left", "right"]) assert.equal(style[`padding${edge[0].toUpperCase() + edge.slice(1)}`], insets[edge]);
     const contentAt = page.children.findIndex(c => /ChantList|PageCurlBook/.test(c.type));
@@ -102,6 +104,21 @@ for (const insets of [{ top: 0, bottom: 0, left: 0, right: 0 }, { top: 48, botto
       assert.ok(playerWrap, "Chant player must be present");
       assert.notEqual(flattenStyle(playerWrap.props.style).position, "absolute", "Footer/player must reserve space below the page");
     }
+    if (mode === "preview") {
+      const pager = page.children[contentAt];
+      assert.equal(pager.props.index, 1);
+      const lock = pager.props.renderPage(1);
+      const scroll = lock.type(lock.props);
+      assert.equal(scroll.type, "ScrollView", "The purchase card must scroll on short screens");
+      const cover = scroll.children[0].children[1].children[0];
+      assert.match(cover.type, /CoverArt$/);
+      assert.equal(cover.props.bookKey, "gita");
+      if (controls) {
+        const footer = page.children.slice(contentAt + 1).find(c => c.type === "View" && flattenStyle(c.props.style).borderTopWidth);
+        assert.ok(footer, "The reader controls must be present");
+        assert.notEqual(flattenStyle(footer.props.style).position, "absolute", "Controls must reserve space below the preview");
+      }
+    }
   }
 }
-console.log("Screen layout: route coverage, game states, scrolling, and 12 reader inset/control combinations passed.");
+console.log("Screen layout: route coverage, game states, scrolling, and 18 reader inset/control combinations passed.");

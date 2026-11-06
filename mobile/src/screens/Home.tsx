@@ -1,4 +1,4 @@
-// Home — the daily hub (U8-2). The day streak, the greeting with today's XP
+// Home — the daily hub (U8-2). The Mudrā balance, the greeting with today's XP
 // goal beside it, the daily cards (today's tithi, the word's journey, the
 // śloka and the word) and the explore tiles. Lessons start from the Path tab;
 // the week's history is on Progress. Śloka and Varṇamālā are stack screens
@@ -7,8 +7,7 @@
 // Every number here comes from the server and says what it is, except the
 // tithi card, which the phone works out itself (src/kala). While it loads
 // a skeleton holds its place, never a fake 0 (U9-4). A failed card offers
-// retry in place (U10-3). The streak is DAYS, computed from the activity
-// history: learner.streak from /me is a run of correct answers, not days.
+// retry in place (U10-3).
 
 import { DrawerActions, useFocusEffect, useIsFocused, useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
@@ -19,7 +18,8 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Animated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from "react-native-reanimated";
 
-import { api, type ProgressDaily, type ProgressDay, type Shloka } from "../api/client";
+import { api, type ProgressDaily, type Shloka } from "../api/client";
+import MudraCoin from "../components/MudraCoin";
 import ProgressRing from "../components/ProgressRing";
 import { Skeleton } from "../components/Skeleton";
 import { Gesture, GuruNative } from "../components/guru";
@@ -37,13 +37,15 @@ import { useHomePlace } from "../home/useHomePlace";
 import { vocabularyForDate } from "../home/dailyVocabulary";
 import { haptics } from "../services/haptics";
 import { getStoryIndex, getStoryCompleted } from "../services/storyProgress";
+import { HYBRID_COMMERCE } from "../services/commerce";
+import { useShopCatalogue } from "../hooks/useShopCatalogue";
 import { useAuth } from "../store/auth";
 import { DrawerToggle } from "../navigation/DrawerToggle";
 import { duration, stagger } from "../motion";
 import type { TabScreenProps } from "../navigation/types";
 import { accent, color, fill, font, gradientOf, onFill, script, shadow, space, type AccentName } from "../theme";
 import { firstName } from "../utils/name";
-import { dayStreak, localToday } from "../utils/streak";
+import { localToday } from "../utils/streak";
 import { plain } from "../utils/text";
 import SponsoredCard from "../components/SponsoredCard";
 
@@ -52,6 +54,7 @@ type LoadState = "loading" | "ok" | "error";
 
 export default function HomeScreen({ navigation }: Props) {
   const { learner, refresh } = useAuth();
+  const balance = useShopCatalogue()?.mudra.available;
   const rootNav = useNavigation();
   const homePlace = useHomePlace(useIsFocused());
   const [placePickerOpen, setPlacePickerOpen] = useState(false);
@@ -62,8 +65,7 @@ export default function HomeScreen({ navigation }: Props) {
   const [storyTotal, setStoryTotal] = useState<number | null>(null);
   const [storyAt, setStoryAt] = useState(0);
   const [storyCompleted, setStoryCompleted] = useState(false);
-  // Today's XP and the day history the streak is computed from.
-  const [today, setToday] = useState<{ daily: ProgressDaily; history: ProgressDay[] } | null>(null);
+  const [today, setToday] = useState<ProgressDaily | null>(null);
   const [todayFailed, setTodayFailed] = useState(false);
 
   // The profile normally arrives with the session; fetch it only if missing.
@@ -86,8 +88,8 @@ export default function HomeScreen({ navigation }: Props) {
 
   const loadToday = useCallback(() => {
     setTodayFailed(false);
-    Promise.all([api.progressDaily(), api.progressHistory(90)])
-      .then(([daily, history]) => setToday({ daily, history }))
+    api.progressDaily()
+      .then(setToday)
       .catch(() => setTodayFailed(true));
   }, []);
 
@@ -119,9 +121,6 @@ export default function HomeScreen({ navigation }: Props) {
     rootNav.dispatch(DrawerActions.openDrawer());
   }, [rootNav]);
 
-  const todayKey = today?.daily.date ?? localToday();
-  const streak = today ? dayStreak(today.history, todayKey) : null;
-
   const name = firstName(learner?.display_name);
 
   return (
@@ -134,7 +133,17 @@ export default function HomeScreen({ navigation }: Props) {
             <Text style={styles.cityName} numberOfLines={1}>{homePlace.place?.label ?? (homePlace.ready ? "Choose city" : "Loading city…")}</Text>
             <Ionicons name="chevron-down" size={12} color={color.inkSoft} />
           </Pressable>
-          {streak != null && <StreakChip days={streak} />}
+          {HYBRID_COMMERCE && (
+            <Pressable
+              style={styles.balance}
+              onPress={() => navigation.navigate("Shop")}
+              accessibilityRole="button"
+              accessibilityLabel={balance === undefined ? "Open Mudrā shop" : `Open Mudrā shop. Balance ${balance} Mudrā.`}
+            >
+              <MudraCoin size={18} />
+              <Text style={styles.balanceText}>{balance?.toLocaleString("en-IN") ?? "—"}</Text>
+            </Pressable>
+          )}
         </View>
 
         <View style={styles.greetRow}>
@@ -219,18 +228,6 @@ function Entrance({ index, children }: { index: number; children: React.ReactNod
   return <Animated.View style={style}>{children}</Animated.View>;
 }
 
-// ─── Streak chip ──────────────────────────────────────────────────────
-
-function StreakChip({ days }: { days: number }) {
-  const label = `${days} ${days === 1 ? "day" : "days"}`;
-  return (
-    <View style={styles.streak} accessible accessibilityLabel={`${label} streak`}>
-      <Ionicons name="flame" size={16} color={days > 0 ? color.saffron : color.inkFaint} />
-      <Text style={styles.streakText}>{label}</Text>
-    </View>
-  );
-}
-
 // ─── Today's goal ─────────────────────────────────────────────────────
 // Sits at the right of the greeting: today's XP against the daily goal.
 
@@ -252,7 +249,7 @@ function TodayGoal({
   onRetry,
   onOpenProgress,
 }: {
-  today: { daily: ProgressDaily } | null;
+  today: ProgressDaily | null;
   failed: boolean;
   onRetry: () => void;
   onOpenProgress: () => void;
@@ -272,7 +269,7 @@ function TodayGoal({
       </View>
     );
   }
-  const { xp, goal_xp: goal, goal_met: met } = today.daily;
+  const { xp, goal_xp: goal, goal_met: met } = today;
   const target = goal || 50;
   return (
     <Pressable onPress={onOpenProgress} style={styles.goal} accessibilityRole="button" accessibilityLabel={`Today: ${xp} of ${target} XP${met ? ", goal met" : ""}. Open progress`}>
@@ -408,7 +405,7 @@ const styles = StyleSheet.create({
   topbar: { flexDirection: "row", alignItems: "center", gap: space.xs, minHeight: 44 },
   cityButton: { flex: 1, minWidth: 0, minHeight: 44, flexDirection: "row", alignItems: "center", gap: 4, marginRight: space.xs },
   cityName: { flexShrink: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: font.sizes.sm, color: color.inkSoft },
-  streak: {
+  balance: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
@@ -418,7 +415,7 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
     ...shadow.card,
   },
-  streakText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
+  balanceText: { fontFamily: "Nunito_800ExtraBold", fontWeight: "800", fontSize: font.sizes.sm, color: color.ink },
   greetRow: { flexDirection: "row", alignItems: "center", gap: space.md, marginTop: space.sm, marginBottom: space.lg },
   compCard: {
     flexDirection: "row",

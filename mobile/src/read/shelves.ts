@@ -1,6 +1,13 @@
 // The Read tab's shelves: which books sit in which row, for Books and Audio.
 
 import { plain } from "../utils/text";
+import { HYBRID_COMMERCE, type CommerceCatalogue } from "../services/commerce";
+
+export function shelfPrice(shop: CommerceCatalogue | null, titleId: string, locked = false): string | null {
+  if (!shop) return HYBRID_COMMERCE || locked ? null : "Free";
+  const list = shop.prices[titleId];
+  return list === undefined ? "Free" : `${(shop.member_prices[titleId] ?? list).toLocaleString("en-IN")} Mudrā`;
+}
 
 /** A book's English title for shelves and players: the catalogue's
  *  "(selections)" / "(complete)" / "(indexed)" tail is said by the line

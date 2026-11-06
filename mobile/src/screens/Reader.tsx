@@ -55,6 +55,7 @@ import { voicedCount } from "../read/audio";
 import { T, ui } from "../read/look";
 import type { Media } from "../read/ui";
 import { shelfTitle } from "../read/shelves";
+import { useShopCatalogue } from "../hooks/useShopCatalogue";
 
 // The graded shelf (U14-5 / P22-6): Simple (Units 2–3) · Sandhi (Unit 6) ·
 // Compounds (Unit 10). Same page pattern, tier passages mapped onto verses.
@@ -81,6 +82,7 @@ function ReaderSkeleton() {
 
 export default function ReaderScreen() {
   const { sized } = useTypeScale();
+  const shop = useShopCatalogue();
   // null = HOME; set = inside a book.
   const [bookKey, setBookKey] = useState<string | null>(null);
   // Restored "continue" positions: { [bookKey]: index }.
@@ -372,6 +374,7 @@ export default function ReaderScreen() {
       <SafeAreaView style={styles.safe} edges={["top"]}>
         <AudioHome
           media={media}
+          shop={shop}
           onMedia={setMedia}
           groups={groups}
           lastListen={lastListen}
@@ -386,6 +389,7 @@ export default function ReaderScreen() {
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <BooksHome
         media={media}
+        shop={shop}
         onMedia={setMedia}
         groups={groups}
         allVerses={allVerses}

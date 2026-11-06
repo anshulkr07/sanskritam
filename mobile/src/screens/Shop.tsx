@@ -9,7 +9,7 @@
 // piece at a time (commerce/plans.py).
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Linking, Pressable, RefreshControl, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { useFocusEffect } from "@react-navigation/native";
 
@@ -31,14 +31,28 @@ export default function Shop(_props: { route?: { params?: { titleId?: string } }
   const [prices, setPrices] = useState<Record<string, string>>({});
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const [yearly, setYearly] = useState(false);
   const [customAt, setCustomAt] = useState<number | null>(null);
   const refresh = useCallback(async () => {
     const result = await refreshCommerce();
     if (currentToken.current !== token) return;
     setShop(result);
-    setLedger(await mudraHistory().catch(() => []));
+    const entries = await mudraHistory().catch(() => []);
+    if (currentToken.current === token) setLedger(entries);
   }, [token]);
+  const refreshPrices = useCallback(async (active: () => boolean) => {
+    try {
+      const items = await connectStore(note => {
+        if (!active()) return;
+        setMessage(note);
+        void refresh().catch(() => {});
+      });
+      if (active()) setPrices(Object.fromEntries(items.map(p => [p.id, p.displayPrice])));
+    } catch (e) {
+      if (active()) setMessage(e instanceof Error ? e.message : "Couldn't load store prices.");
+    }
+  }, [refresh]);
   const run = async (fn: () => Promise<unknown>) => {
     if (busy) return;
     setBusy(true); setMessage("");
@@ -49,12 +63,26 @@ export default function Shop(_props: { route?: { params?: { titleId?: string } }
   useFocusEffect(useCallback(() => { void refresh().catch(e => setMessage(e.message)); }, [refresh]));
   useEffect(() => {
     let alive = true;
-    setShop(null); setPrices({});
-    void connectStore(note => { if (alive) { setMessage(note); void refresh().catch(() => {}); } })
-      .then(items => { if (alive) setPrices(Object.fromEntries(items.map(p => [p.id, p.displayPrice]))); })
-      .catch(e => { if (alive) setMessage(e.message); });
+    setShop(null); setLedger([]); setPrices({}); setRefreshing(false);
+    void refreshPrices(() => alive && currentToken.current === token);
     return () => { alive = false; };
-  }, [refresh]);
+  }, [refreshPrices, token]);
+
+  const pullToRefresh = async () => {
+    if (refreshing) return;
+    setRefreshing(true);
+    setMessage("");
+    try {
+      await Promise.all([
+        refresh().catch(e => {
+          if (currentToken.current === token) setMessage(e instanceof Error ? e.message : "Couldn't refresh the shop.");
+        }),
+        refreshPrices(() => currentToken.current === token),
+      ]);
+    } finally {
+      if (currentToken.current === token) setRefreshing(false);
+    }
+  };
 
   const products = shop?.products ?? [];
   // Every pack follows one rule (backend hybrid.mudra_for_inr); three are rows,
@@ -78,7 +106,7 @@ export default function Shop(_props: { route?: { params?: { titleId?: string } }
   const packOff = (p: StoreProduct | undefined) => !p || busy || !canPay || !prices[p.id];
 
   return (
-    <ScrollView contentContainerStyle={styles.page}>
+    <ScrollView contentContainerStyle={styles.page} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={pullToRefresh} />}>
       <View style={styles.head}>
         <View style={{ flex: 1 }}>
           <Text style={styles.headName}>मुद्रा</Text>

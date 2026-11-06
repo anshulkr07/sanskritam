@@ -8,13 +8,14 @@ import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
 import type { CanonText, Shloka } from "../api/client";
 import type { BookActivity } from "../services/bookActivity";
+import type { CommerceCatalogue } from "../services/commerce";
 import { useBookActivity } from "../hooks/useBookActivity";
 import CoverArt from "../components/book/CoverArt";
 import { haptics } from "../services/haptics";
 import { plain } from "../utils/text";
 import { addressOf, audioChapters, chapterAt } from "./audio";
 import { T, sa, ui } from "./look";
-import { RAIL_DEFS, shelfTitle } from "./shelves";
+import { RAIL_DEFS, shelfPrice, shelfTitle } from "./shelves";
 import { ProgressLine, ReadHeader, SectionHead, SquareButton, readStyles, type Media } from "./ui";
 
 const ALL_KEY = "all";
@@ -40,6 +41,7 @@ function metaOf(b: ShelfBook): string {
 
 export default function BooksHome({
   media,
+  shop,
   onMedia,
   groups,
   allVerses,
@@ -51,6 +53,7 @@ export default function BooksHome({
   bottomPad,
 }: {
   media: Media;
+  shop: CommerceCatalogue | null;
   onMedia: (m: Media) => void;
   groups: { text: CanonText | null; verses: Shloka[] }[];
   allVerses: Shloka[];
@@ -117,7 +120,7 @@ export default function BooksHome({
       ListHeaderComponent={
         <View style={{ gap: 18, marginBottom: 6 }}>
           <ReadHeader media={media} onMedia={onMedia} />
-          <ContinueReading groups={groups} allVerses={allVerses} positions={positions} activity={activity} onResume={onResume} onContents={onContents} />
+          <ContinueReading shop={shop} groups={groups} allVerses={allVerses} positions={positions} activity={activity} onResume={onResume} onContents={onContents} />
         </View>
       }
       initialNumToRender={3}
@@ -143,6 +146,7 @@ export default function BooksHome({
               renderItem={({ item: b }) => {
                 const read = (activity[b.key] ?? []).filter(page => page.read).length;
                 const frac = b.count ? Math.min(1, read / b.count) : 0;
+                const price = soon ? null : shelfPrice(shop, `${b.key}:book`, b.locked);
                 return <View style={styles.book}>
                 <Pressable
                   onPress={
@@ -155,7 +159,7 @@ export default function BooksHome({
                   }
                   disabled={soon}
                   accessibilityRole="button"
-                  accessibilityLabel={soon ? `${b.titleEn}. Coming soon.` : `${b.titleEn}. ${metaOf(b)}.`}
+                  accessibilityLabel={soon ? `${b.titleEn}. Coming soon.` : [b.titleEn, metaOf(b), price].filter(Boolean).join(". ")}
                   accessibilityState={{ disabled: soon }}
                   style={soon && styles.bookSoon}
                 >
@@ -166,6 +170,7 @@ export default function BooksHome({
                   <Text style={styles.bookMeta} numberOfLines={1}>
                     {soon ? "Soon" : metaOf(b)}
                   </Text>
+                  {price && <Text style={styles.price}>{price}</Text>}
                 </Pressable>
                 {!soon && <View style={{ gap: 4, marginTop: 7 }} accessibilityLabel={`${b.titleEn}: ${read} pages read${b.count ? ` of ${b.count}` : ""}`}>
                   <ProgressLine frac={frac} />
@@ -184,6 +189,7 @@ export default function BooksHome({
 
 /** The book last read, with where in it and two ways back in. */
 function ContinueReading({
+  shop,
   groups,
   allVerses,
   positions,
@@ -191,6 +197,7 @@ function ContinueReading({
   onResume,
   onContents,
 }: {
+  shop: CommerceCatalogue | null;
   groups: { text: CanonText | null; verses: Shloka[] }[];
   allVerses: Shloka[];
   positions: Record<string, number>;
@@ -224,6 +231,7 @@ function ContinueReading({
   const readCount = (activity[row.key] ?? []).filter(page => page.read).length;
   const pct = Math.min(100, Math.round((readCount / Math.max(1, total)) * 100));
   const address = addressOf(row.verses[row.at]);
+  const price = shelfPrice(shop, `${row.key}:book`, groups.find(g => g.text?.slug === row.key)?.text?.locked);
 
   return (
     <View style={styles.card} accessibilityLabel={`Continue reading ${row.title}`}>
@@ -242,6 +250,7 @@ function ContinueReading({
           <Text style={styles.cardMeta} numberOfLines={1}>
             {where}
           </Text>
+          {price && <Text style={styles.price}>{price}</Text>}
           <View style={styles.cardBarRow}>
             <ProgressLine frac={readCount / Math.max(1, total)} style={{ flex: 1 }} />
             <Text style={styles.cardPct}>{pct}% read</Text>
@@ -263,6 +272,7 @@ function ContinueReading({
 }
 
 const styles = StyleSheet.create({
+  price: { ...ui("bold"), fontSize: 13, color: T.ink, marginTop: 2 },
   body: { paddingHorizontal: 20, paddingTop: 14, paddingBottom: 120 },
   bodyMini: { paddingBottom: 200 },
   rail: { marginTop: 22, gap: 12 },

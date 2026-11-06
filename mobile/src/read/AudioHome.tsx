@@ -21,10 +21,11 @@ import { EmptyState } from "../components/ui";
 import { haptics } from "../services/haptics";
 import type { ListenPosition } from "../services/audioProgress";
 import { listenBus, useListenSummary } from "../services/listenBus";
+import type { CommerceCatalogue } from "../services/commerce";
 import { plain } from "../utils/text";
 import { addressOf, audioChapters, chantMs, chapterAt, fmtLong, msLeftInChapter, voicedCount } from "./audio";
 import { CREAM, CREAM_FAINT, T, accentOn, sa, softOn, ui } from "./look";
-import { AUDIO_GROUPS, SHELF_ORDER, audioGroupOf, shelfTitle, type AudioGroup } from "./shelves";
+import { AUDIO_GROUPS, SHELF_ORDER, audioGroupOf, shelfPrice, shelfTitle, type AudioGroup } from "./shelves";
 import { ProgressLine, ReadHeader, SectionHead, type Media } from "./ui";
 
 interface AudioBook {
@@ -41,6 +42,7 @@ const SHORT_MS = 10 * 60_000;
 
 export default function AudioHome({
   media,
+  shop,
   onMedia,
   groups,
   lastListen,
@@ -49,6 +51,7 @@ export default function AudioHome({
   onOpenPlayer,
 }: {
   media: Media;
+  shop: CommerceCatalogue | null;
   onMedia: (m: Media) => void;
   groups: { text: CanonText | null; verses: Shloka[] }[];
   lastListen: { bookKey: string; pos: ListenPosition } | null;
@@ -107,6 +110,7 @@ export default function AudioHome({
 
         <Hero
           book={hero}
+          price={shelfPrice(shop, `${hero.key}:audio`)}
           at={heroLive ? summary.at : heroAt}
           resumed={!!last}
           playing={heroLive && summary.isPlaying}
@@ -122,27 +126,31 @@ export default function AudioHome({
           <View style={styles.section}>
             <SectionHead title="Short listens" right="under 10 minutes" style={styles.pad} />
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.tiles}>
-              {shorts.map((b) => (
-                <Pressable
-                  key={b.key}
-                  onPress={() => {
-                    haptics.tap();
-                    onBook(b.key);
-                  }}
-                  accessibilityRole="button"
-                  accessibilityLabel={`${b.titleEn}. ${fmtLong(b.ms)}, ${b.voiced} verses.`}
-                  style={styles.tile}
-                >
-                  <View>
-                    <AlbumArt bookKey={b.key} titleSa={b.titleSa} size={124} />
-                    <Text style={styles.tag}>{fmtLong(b.ms)}</Text>
-                  </View>
-                  <Text style={styles.tileTitle} numberOfLines={1}>
-                    {b.titleEn}
-                  </Text>
-                  <Text style={styles.tileMeta}>{b.voiced} verses</Text>
-                </Pressable>
-              ))}
+              {shorts.map((b) => {
+                const price = shelfPrice(shop, `${b.key}:audio`);
+                return (
+                  <Pressable
+                    key={b.key}
+                    onPress={() => {
+                      haptics.tap();
+                      onBook(b.key);
+                    }}
+                    accessibilityRole="button"
+                    accessibilityLabel={[b.titleEn, `${fmtLong(b.ms)}, ${b.voiced} verses`, price].filter(Boolean).join(". ")}
+                    style={styles.tile}
+                  >
+                    <View>
+                      <AlbumArt bookKey={b.key} titleSa={b.titleSa} size={124} />
+                      <Text style={styles.tag}>{fmtLong(b.ms)}</Text>
+                    </View>
+                    <Text style={styles.tileTitle} numberOfLines={1}>
+                      {b.titleEn}
+                    </Text>
+                    <Text style={styles.tileMeta}>{b.voiced} verses</Text>
+                    {price && <Text style={styles.price}>{price}</Text>}
+                  </Pressable>
+                );
+              })}
             </ScrollView>
           </View>
         )}
@@ -173,6 +181,7 @@ export default function AudioHome({
           <View style={{ marginTop: 4 }}>
             {shown.map((b) => {
               const partial = b.voiced < b.verses.length;
+              const price = shelfPrice(shop, `${b.key}:audio`);
               return (
                 <View key={b.key} style={styles.row}>
                   <Pressable
@@ -181,7 +190,7 @@ export default function AudioHome({
                       onBook(b.key);
                     }}
                     accessibilityRole="button"
-                    accessibilityLabel={`${b.titleEn}. ${fmtLong(b.ms)}.`}
+                    accessibilityLabel={[b.titleEn, fmtLong(b.ms), price].filter(Boolean).join(". ")}
                     style={styles.rowMain}
                   >
                     <AlbumArt bookKey={b.key} titleSa={b.titleSa} size={56} />
@@ -192,6 +201,7 @@ export default function AudioHome({
                       <Text style={styles.rowMeta} numberOfLines={1}>
                         {fmtLong(b.ms)} · {partial ? `${b.voiced} of ${b.verses.length} verses` : `${b.voiced} verses`}
                       </Text>
+                      {price && <Text style={styles.price}>{price}</Text>}
                     </View>
                   </Pressable>
                   <Pressable
@@ -220,6 +230,7 @@ export default function AudioHome({
 /** The full-width band in the book's colour. */
 function Hero({
   book,
+  price,
   at,
   resumed,
   playing,
@@ -227,6 +238,7 @@ function Hero({
   onOpen,
 }: {
   book: AudioBook;
+  price: string | null;
   at: number;
   resumed: boolean;
   playing: boolean;
@@ -251,7 +263,7 @@ function Hero({
 
   return (
     <View style={[styles.hero, { backgroundColor: fill }]}>
-      <Pressable onPress={onOpen} accessibilityRole="button" accessibilityLabel={`${book.titleEn}, audiobook page`} style={styles.heroRow}>
+      <Pressable onPress={onOpen} accessibilityRole="button" accessibilityLabel={[`${book.titleEn}, audiobook page`, price].filter(Boolean).join(". ")} style={styles.heroRow}>
         <AlbumArt bookKey={book.key} titleSa={book.titleSa} size={112} />
         <View style={styles.heroText}>
           <Text style={[styles.heroEyebrow, { color: accentOn(fill) }]}>{resumed ? "CONTINUE LISTENING" : "START LISTENING"}</Text>
@@ -266,6 +278,7 @@ function Hero({
           <Text style={[styles.heroMeta, { color: soft }]} numberOfLines={1}>
             {where}
           </Text>
+          {price && <Text style={[styles.price, { color: CREAM }]}>{price}</Text>}
         </View>
       </Pressable>
       <View style={styles.heroBottom}>
@@ -294,6 +307,7 @@ function Hero({
 }
 
 const styles = StyleSheet.create({
+  price: { ...ui("bold"), fontSize: 13, color: T.ink, marginTop: 2 },
   scroll: { paddingTop: 14, paddingBottom: 140 },
   pad: { paddingHorizontal: 20 },
   hero: { marginTop: 16, paddingHorizontal: 20, paddingVertical: 18, gap: 14 },

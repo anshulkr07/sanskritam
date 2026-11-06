@@ -25,6 +25,7 @@ import type { RootStackParamList } from "../navigation/types";
 import { api, type PagedChapter, type Shloka } from "../api/client";
 import { cachedGet } from "../services/apiCache";
 import PageCurlBook, { useBookPage } from "../components/book/PageCurlBook";
+import CoverArt from "../components/book/CoverArt";
 import ReaderSlider from "../components/ReaderSlider";
 import ChantList from "../components/chant/ChantList";
 import ChantPlayer from "../components/chant/ChantPlayer";
@@ -118,6 +119,7 @@ function BookReader({ navigation, route }: Props) {
     title: bookTitle,
     persistAt,
     preview,
+    titleSa: bookTitleSa,
   } = useBookPages(bookKey, chapter ?? null);
   const nextCh = pagedChapter !== null ? nextChapter(chapters ?? [], pagedChapter) : null;
   const prevCh = pagedChapter !== null ? prevChapter(chapters ?? [], pagedChapter) : null;
@@ -242,6 +244,9 @@ function BookReader({ navigation, route }: Props) {
   }, [pages, !!nextCh, previewEnd, appearance.layout, readerAds.placements, preview]); // eslint-disable-line react-hooks/exhaustive-deps
   const [sheetAt, setSheetAt] = useState(0);
   const sheetIndex = sheets[sheetAt]?.verse === showAt ? sheetAt : Math.max(0, sheets.findIndex((sheet) => sheet.verse === showAt));
+  const currentSheet = sheets[sheetIndex];
+  const lockPageActive = !!currentSheet && (!!currentSheet.gap ||
+    (currentSheet.verse >= pages.length && (!!nextCh?.locked || previewEnd)));
   const currentMark = currentPage ? activity.find(item => item.chapter === pagedChapter && item.id === pageId(currentPage)) : undefined;
   useEffect(() => {
     if (!currentPage || currentMark?.read || !isFocused || indexOpen || aaOpen) return;
@@ -350,6 +355,8 @@ function BookReader({ navigation, route }: Props) {
               return (
                 <PreviewLockPage
                   themeName={themeName}
+                  bookKey={bookKey}
+                  titleSa={bookTitleSa || plain(bookTitle)}
                   head={pagedChapter ? `${plain(bookTitle)} · Chapter ${pagedChapter}` : plain(bookTitle)}
                   title={pagedChapter ? `Chapter ${pagedChapter}, ${where}` : where[0].toUpperCase() + where.slice(1)}
                   body={`These pages are not in the free preview. ${previewCopy} Buy it once to read every page, offline too.`}
@@ -371,6 +378,8 @@ function BookReader({ navigation, route }: Props) {
               return (
                 <PreviewLockPage
                   themeName={themeName}
+                  bookKey={bookKey}
+                  titleSa={bookTitleSa || plain(bookTitle)}
                   head={plain(bookTitle)}
                   title={`Chapter ${nextCh.chapter} continues ${plain(bookTitle)}`}
                   body={`None of its ${nextCh.count} pages are in the free preview. ${previewCopy} Buy the book once to read ${chapters?.length ? `all ${chapters.length} chapters` : "every chapter"}, offline too.`}
@@ -395,6 +404,8 @@ function BookReader({ navigation, route }: Props) {
               return (
                 <PreviewLockPage
                   themeName={themeName}
+                  bookKey={bookKey}
+                  titleSa={bookTitleSa || plain(bookTitle)}
                   head={plain(bookTitle)}
                   title="The free preview ends here"
                   body={`You have seen its free pages. ${previewCopy} Buy it once to read every page, offline too.`}
@@ -470,8 +481,8 @@ function BookReader({ navigation, route }: Props) {
         accessibilityLabel={controls ? "Hide controls" : "Show controls"}
         style={styles.middleTap}
       />}
-      {/* Tap the page for the bars; they float over it, so the page never
-          shrinks to make room, and a page turn puts them away. */}
+      {/* A page turn puts the bars away. On a locked page, reserve room for
+          the bottom controls so the purchase card can scroll above them. */}
       {controls && <View style={[styles.topBar, { paddingTop: insets.top, paddingLeft: insets.left, paddingRight: insets.right, backgroundColor: theme.bar, borderColor: theme.line }]}>
         <View style={styles.topRow}>
           <Pressable onPress={() => setIndexOpen(true)} accessibilityRole="button" accessibilityLabel="Book index" style={styles.toolbarAction}>
@@ -486,7 +497,10 @@ function BookReader({ navigation, route }: Props) {
         </View>
       </View>}
       {controls && !chantOn && (
-        <View style={[styles.bottomBar, { paddingBottom: insets.bottom + 8, paddingLeft: insets.left + 20, paddingRight: insets.right + 20, backgroundColor: theme.bar, borderColor: theme.line }]}>
+        <View style={[styles.bottomBar, lockPageActive ? styles.bottomBarDocked : {
+          position: "absolute", left: 0, right: 0, bottom: 0,
+          paddingBottom: insets.bottom + 8, paddingLeft: insets.left + 20, paddingRight: insets.right + 20,
+        }, { backgroundColor: theme.bar, borderColor: theme.line }]}>
           {/* Back a chapter, offered on its first page (a swipe back inside
               a chapter stays inside it). */}
           {showAt === 0 && prevCh && (
@@ -689,6 +703,8 @@ function NextChapterPage({
 // of the middle band that toggles the controls. Square corners.
 function PreviewLockPage({
   themeName,
+  bookKey,
+  titleSa,
   head,
   title,
   body,
@@ -698,6 +714,8 @@ function PreviewLockPage({
   skip,
 }: {
   themeName: ReaderThemeName;
+  bookKey: string;
+  titleSa: string;
   head: string;
   title: string;
   body: string;
@@ -708,14 +726,11 @@ function PreviewLockPage({
 }) {
   const theme = READER_THEMES[themeName];
   return (
-    <ScrollView contentContainerStyle={[styles.lockPage, { backgroundColor: theme.page }]}>
+    <ScrollView style={{ flex: 1, backgroundColor: theme.page }} contentContainerStyle={styles.lockPage}>
       <View style={styles.lockTop}>
         <Text style={[styles.runningHead, { color: theme.soft }]}>{head}</Text>
-        {/* A faded page: bars where the verse would be, never its text. */}
-        <View style={styles.ghost} importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>
-          {[250, 222].map((w) => <View key={w} style={[styles.ghostLine, { width: w, backgroundColor: theme.line }]} />)}
-          <View style={[styles.ghostRule, { backgroundColor: theme.line }]} />
-          {[286, 270, 180].map((w) => <View key={w} style={[styles.ghostText, { width: w, backgroundColor: theme.line, opacity: 0.6 }]} />)}
+        <View importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>
+          <CoverArt bookKey={bookKey} titleSa={titleSa} width={84} />
         </View>
       </View>
       <View style={[styles.lockCard, { borderTopColor: theme.line }]}>
@@ -766,18 +781,14 @@ const styles = StyleSheet.create({
   endBtn: { minHeight: 48, justifyContent: "center", paddingHorizontal: 20 },
   endBtnText: { fontSize: 16, fontWeight: "700" },
   endBuyText: { color: "#fff", fontSize: 17, fontFamily: "Mukta_700Bold", fontWeight: "700" },
-  lockPage: { flexGrow: 1, justifyContent: "space-between", paddingHorizontal: 20, paddingBottom: 64 },
-  lockTop: { alignItems: "center", gap: 18, marginTop: 56 },
-  ghost: { alignItems: "center", gap: 12, opacity: 0.7 },
-  ghostLine: { maxWidth: "90%", height: 12 },
-  ghostRule: { width: 48, height: 1, marginVertical: 6 },
-  ghostText: { maxWidth: "95%", height: 9 },
+  lockPage: { flexGrow: 1, justifyContent: "space-between", gap: 20, paddingHorizontal: 20, paddingBottom: 24 },
+  lockTop: { alignItems: "center", gap: 12, marginTop: 56 },
   lockCard: { gap: 14, borderTopWidth: 1, paddingTop: 24 },
   lockEyebrowRow: { flexDirection: "row", alignItems: "center", gap: 10 },
   lockEyebrow: { fontSize: 12, letterSpacing: 1.2, fontFamily: "Mukta_700Bold", fontWeight: "700" },
   lockTitle: { fontSize: 24, lineHeight: 30, fontFamily: "Mukta_700Bold", fontWeight: "700" },
   lockBody: { fontSize: 15, lineHeight: 22, fontFamily: "Mukta_400Regular" },
-  lockBuy: { minHeight: 54, backgroundColor: "#A63D17", flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8, paddingHorizontal: 16 },
+  lockBuy: { minHeight: 54, backgroundColor: "#A63D17", flexDirection: "row", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: 8, paddingHorizontal: 16, paddingVertical: 8 },
   lockSkip: { minHeight: 44, justifyContent: "center" },
   lockSkipText: { fontSize: 15, fontFamily: "Mukta_700Bold", fontWeight: "700" },
   lockHint: { fontSize: 13, textAlign: "center", fontFamily: "Mukta_400Regular" },
@@ -792,7 +803,8 @@ const styles = StyleSheet.create({
   topRow: { flexDirection: "row", alignItems: "stretch", height: 52 },
   toolbarAction: { flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6 },
   toolbarText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12 },
-  bottomBar: { position: "absolute", left: 0, right: 0, bottom: 0, zIndex: 5, elevation: 6, borderTopWidth: 1, paddingTop: 4 },
+  bottomBar: { zIndex: 5, elevation: 6, borderTopWidth: 1, paddingTop: 4 },
+  bottomBarDocked: { paddingBottom: 8, paddingHorizontal: 20 },
   learnButton: { flexDirection: "row", alignItems: "center", gap: 8, height: 40, paddingHorizontal: 14, marginTop: 12, borderWidth: 1, borderRadius: 0 },
   learnText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 14 },
   playerWrap: { borderTopWidth: 1 },
