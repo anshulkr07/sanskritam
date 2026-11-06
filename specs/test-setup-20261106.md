@@ -1,5 +1,15 @@
 # Testing purchases, plans and ads on your phone (staging) — 6 November 2026
 
+## Status (6 November 2026)
+
+| Piece | State |
+|---|---|
+| Production backend | Revision `shabd-api-00097-zmq` from commit 74be1cb. All new features are off, and `/commerce/*` returns 404. |
+| Staging backend | `https://shabd-api-staging-829757572630.asia-south1.run.app`. Same image and database as production, features on. |
+| Staging app | Version 1.8.0, build 14 (EAS build 00711165), submitted to the internal testing track. |
+| Cost guards | ₹500 monthly budget alert. Container images: the newest 5 are kept and older ones deleted after 7 days. |
+| Play service account | `sanskritam-play-submit@gen-lang-client-0232760726.iam.gserviceaccount.com` submits builds, and staging uses it to verify purchases. |
+
 ## 1. Staging backend (owner's choice, 2026-11-06)
 
 Staging is a second Cloud Run service, `shabd-api-staging`, in the same Google
@@ -96,8 +106,8 @@ Name each one "N Mudrā". Set the prices for other countries from
 
 Activate each base plan.
 
-**Service account.** Go to Users and permissions and grant the service account
-in `mobile/service-account-key.json`:
+**Service account.** Go to Users and permissions and grant
+`sanskritam-play-submit@gen-lang-client-0232760726.iam.gserviceaccount.com`:
 - View app information
 - View financial data
 - Manage orders and subscriptions
