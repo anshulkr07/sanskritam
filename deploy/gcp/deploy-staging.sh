@@ -35,6 +35,13 @@ PLAY_FILE="${PLAY_SERVICE_ACCOUNT_FILE:-mobile/service-account-key.json}"
 [ -f "$PLAY_FILE" ] || { echo "Missing $PLAY_FILE: staging needs a Play service-account key to verify purchases." >&2; exit 1; }
 python3 deploy/gcp/sync_secret.py "$PROJECT_ID" shabd-staging-play-account --file "$PLAY_FILE" >/dev/null
 
+# Staging's catalogue admin key: STAGING_ADMIN_TOKEN in the gitignored
+# .env.deploy. Only its SHA-256 goes into staging's settings.
+STAGING_ADMIN_TOKEN=$(sed -n 's/\r$//; s/^STAGING_ADMIN_TOKEN=//p' "${ENV_FILE:-.env.deploy}" 2>/dev/null | tail -1)
+if [ -n "$STAGING_ADMIN_TOKEN" ]; then
+  export STAGING_ADMIN_SHA=$(printf '%s' "$STAGING_ADMIN_TOKEN" | sha256sum | cut -d' ' -f1)
+fi
+
 # Production's description holds plain settings: keep it in a private temp dir.
 WORK=$(mktemp -d)
 trap 'rm -rf -- "$WORK"' EXIT

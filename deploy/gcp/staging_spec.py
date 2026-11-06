@@ -14,6 +14,7 @@ Production's description includes plain environment values, so the caller
 keeps both files out of logs and deletes them afterwards.
 """
 import json
+import os
 import sys
 
 STAGING = "shabd-api-staging"
@@ -54,6 +55,11 @@ def staging(service):
     container = template["spec"]["containers"][0]
     env = [e for e in container.get("env", []) if e["name"] not in FLAGS and e["name"] != "COMMERCE_SIGNING_KEY"]
     env += [{"name": k, "value": v} for k, v in FLAGS.items()]
+    # A catalogue-only admin key for staging (its SHA-256, from deploy-staging.sh),
+    # so books can be marked paid there without production's admin token.
+    if os.environ.get("STAGING_ADMIN_SHA"):
+        env = [e for e in env if e["name"] != "COMMERCE_ADMIN_KEYS_JSON"]
+        env.append({"name": "COMMERCE_ADMIN_KEYS_JSON", "value": json.dumps({os.environ["STAGING_ADMIN_SHA"]: "catalogue"})})
     env.append({"name": "COMMERCE_SIGNING_KEY",
                 "valueFrom": {"secretKeyRef": {"name": "shabd-staging-signing-key", "key": "latest"}}})
     container["env"] = env
