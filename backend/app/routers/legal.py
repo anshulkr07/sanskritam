@@ -17,14 +17,27 @@ def _page(title, body):
 @router.get("/privacy", response_class=HTMLResponse, include_in_schema=False)
 def privacy_policy():
     hybrid = settings.commerce_enabled and settings.commerce_hybrid_enabled
-    release = ("This release supports optional Lite and Plus subscriptions, permanent edition purchases, and Guru voice-minute packs through Apple or Google. Purchases are linked to a verified account. We retain store transaction and entitlement records, minute balances, and call timing for fulfilment, refunds and accounting. Guru voice sends audio and transient conversation context through our server to Sarvam AI for recognition, replies and synthesis; Sanskritam does not save call audio or transcripts as conversation history. Submitted reports retain the text you choose to report. Advertising, Group chat, referral payouts and paid competitions remain unavailable."
+    release = ("This release supports Mudrā, the app's in-app coins, bought as packs or added by optional Lite and Plus subscriptions through Apple or Google, and spent on books, audiobooks and Guru voice minutes. Purchases are linked to a verified account. We retain store transaction records, your Mudrā balance and history, what you bought with Mudrā, minute balances and call timing for fulfilment, refunds and accounting. Guru voice sends audio and transient conversation context through our server to Sarvam AI for recognition, replies and synthesis; Sanskritam does not save call audio or transcripts as conversation history. Submitted reports retain the text you choose to report. Advertising, Group chat, referral payouts and paid competitions remain unavailable."
         if hybrid else "This release has no memberships, paid books or audio, purchases, advertising, referral payouts, paid event hosting, prize competitions, Group chat or Voice companions. The app does not initialise advertising SDKs or use an advertising ID.")
     advertising = ""
     sharing = "We do not sell personal data or share it for advertising."
-    if hybrid and settings.commerce_ads_enabled:
-        release = release.replace("Advertising, Group chat", "Group chat")
-        advertising = '<h2>Optional advertising</h2><p>Adults can enable optional ads in Settings. Lite and Plus are ad-free, and purchased editions contain no ads. Google Mobile Ads and its User Messaging Platform process consent choices and may process IP address, device/ad identifiers, diagnostics and ad interactions. We request non-personalized ads; these may still use device storage and identifiers. Google privacy choices are available in Settings, and you can turn optional ads off there. Rewarded access is granted only after Google server verification. We retain ad eligibility choices, reward ticket identifiers and completion records to apply limits and prevent fraud. Demo test ads generate no revenue or paid-content entitlement. See <a href="https://policies.google.com/technologies/ads">Google advertising privacy</a>.</p>'
-        sharing = "Optional advertising shares the information described above with Google for ad delivery and measurement. We do not sell personal data."
+    # Ads have their own switch and can run before purchases launch.
+    if settings.commerce_ads_enabled:
+        release = (release.replace("Advertising, Group chat", "Group chat")
+                   .replace("purchases, advertising, referral", "purchases, referral")
+                   .replace(" The app does not initialise advertising SDKs or use an advertising ID.", " The free app shows ads, described below."))
+        paid = "Lite and Plus are ad-free, and purchased editions contain no ads. " if hybrid else ""
+        rewarded = ("Optional rewarded ads grant extra access only after Google server verification; we retain reward ticket identifiers and completion records to apply limits and prevent fraud. "
+                    if hybrid else "")
+        advertising = ('<h2>Advertising</h2><p>The free app shows ads from Google AdMob: in the Books library, as clearly labelled pages between book pages, and in the audiobook player. '
+                       'While the audiobook player is open, a full-screen ad may also appear between verses after several minutes of listening; the chant pauses for it and continues afterwards. '
+                       + paid +
+                       'We request non-personalized ads rated for general audiences, so ads are not chosen from your activity or profile. '
+                       'Google Mobile Ads and its User Messaging Platform process consent choices where the law requires them and may process IP address, device and advertising identifiers, diagnostics and ad interactions to deliver and measure ads, limit how often they appear and prevent fraud. '
+                       'Google privacy choices are available in Settings. '
+                       + rewarded +
+                       'Demo test ads generate no revenue. See <a href="https://policies.google.com/technologies/ads">Google advertising privacy</a>.</p>')
+        sharing = "Advertising shares the information described above with Google for ad delivery and measurement. We do not sell personal data."
     return _page("Sanskritam — Privacy Policy", f"""
 <h1>Privacy Policy</h1><p>Sanskritam · published by {escape(settings.legal_entity_name)} · updated {UPDATED}</p>
 <p>Contact and privacy requests: {_contact()}.</p>

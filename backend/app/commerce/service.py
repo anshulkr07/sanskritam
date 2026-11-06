@@ -323,6 +323,8 @@ def refund_purchase(db, purchase):
         return
     journal(db, wallet, -purchase.credits, f"refund:{purchase.provider}:{purchase.transaction_id}",
             "refund", {"purchase_id": purchase.id}, allow_deficit=True)
+    from app.commerce.plans import take_back_months
+    take_back_months(db, purchase, wallet)
     purchase.state = "refunded"
     from app.commerce.hybrid import PRODUCTS as hybrid_products, revoke
     if purchase.product_id in hybrid_products:

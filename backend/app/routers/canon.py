@@ -168,7 +168,7 @@ def get_canon_chapters(
     rows = (
         # Contents need only addresses and ordering. Loading full ORM rows
         # also transfers every verse's text, glosses and parse for large books.
-        db.query(Shloka.chapter, Shloka.seq, Shloka.source_ref)
+        db.query(Shloka.id, Shloka.chapter, Shloka.seq, Shloka.source_ref)
         .filter(Shloka.book == slug, Shloka.in_daily.is_(False))
         .order_by(Shloka.seq.asc())
         .all()
@@ -182,29 +182,38 @@ def get_canon_chapters(
     # The first chapter is already known; avoid reading the book a second time.
     preview = ordered[0] if ordered else ""
     one_chapter = len(ordered) <= 1
+    from app.config import settings
+    # Paid book under commerce: 5% of its pages, scattered (commerce/preview.py).
+    free = None
+    if settings.commerce_enabled and locked_book:
+        from app.commerce.access import preview_ids
+        free = preview_ids(db, learner, text)
     chapters = []
     for ch in ordered:
         verses = sorted(by_chapter[ch], key=lambda r: int(r.seq or 0))
         first = verses[0] if verses else None
         ch_locked = locked_book and (ch != preview)
-        from app.config import settings
-        if settings.commerce_enabled and first:
-            first_verse = db.query(Shloka).filter_by(book=slug, chapter=ch, in_daily=False).order_by(Shloka.seq).first()
-            ch_locked = not (first_verse and _access.verse_open(db, learner, text, first_verse))
-        chapters.append({
+        entry = {
             "chapter": ch,
             "section": _section_of(ch),
             "count": len(verses),
             "first_ref": (first.source_ref or "") if first else "",
-            "locked": bool(ch_locked),
-        })
+        }
+        if settings.commerce_enabled:
+            entry["free"] = sum(1 for v in verses if v.id in free) if free is not None else len(verses)
+            ch_locked = entry["free"] == 0
+        entry["locked"] = bool(ch_locked)
+        chapters.append(entry)
+    preview_info = {"chapter": preview, "verses": 5 if one_chapter else None}
+    if free is not None:
+        preview_info.update(pages=len(free), of=len(rows), percent=5)
     return {
         "slug": text.slug,
         "title_en": text.title_en or "",
         "title_sa": text.title_sa or "",
         "tier": text.tier or "free",
         "locked": bool(locked_book),
-        "preview": {"chapter": preview, "verses": 5 if one_chapter else None},
+        "preview": preview_info,
         "chapters": chapters,
     }
 
@@ -254,9 +263,15 @@ def get_canon_verses(
     preview = _access.preview_chapter(db, text)
     from app.config import settings
     if settings.commerce_enabled:
-        verses = [r for r in rows if _access.verse_open(db, learner, text, r)]
-        return {"slug": slug, "chapter": want, "locked": len(verses) < len(rows),
-                "locked_after": len(verses) if len(verses) < len(rows) else None,
+        # A preview's free pages are scattered: "positions" gives each returned
+        # verse's place in the chapter (0-based) so the reader can show the gaps.
+        open_rows = [(i, r) for i, r in enumerate(rows) if _access.verse_open(db, learner, text, r)]
+        verses = [r for _, r in open_rows]
+        partial = len(verses) < len(rows)
+        return {"slug": slug, "chapter": want, "locked": partial,
+                "locked_after": len(verses) if partial else None,
+                "positions": [i for i, _ in open_rows] if partial else None,
+                "count": len(rows),
                 "verses": _verse_responses(db, verses, learner)}
     # Is this a one-chapter book?
     known_all = [

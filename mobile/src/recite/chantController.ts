@@ -74,10 +74,18 @@ export interface ChantHost {
   onTime?(ms: number, durMs: number): void;
   onPlaying(playing: boolean): void;
   scrollTo(idx: number): void;
+  /** A break after verse `from`, before verse `to` (a full-screen ad), or
+   *  null. Nothing sounds while it lasts; the queue goes on when the promise
+   *  settles. Asked once as each verse ends on its way to the next. Optional. */
+  breakBefore?(from: number, to: number): Promise<void> | null;
+  /** A break began (true) or ended (false). Optional. */
+  onBreak?(on: boolean): void;
 }
 
 export const GAP_MS = 800;
 export const PREFETCH_AT = 0.7;
+/** A break whose ad never closes must not hold the book for ever. */
+export const BREAK_LIMIT_MS = 180_000;
 
 export class ChantController {
   private player: PlayerLike | null = null;
@@ -90,8 +98,14 @@ export class ChantController {
   private idx = -1;
   private playing = false;
   private wordLine: number | null = null; // the line whose word spans are cached
+  private brk = false; // waiting out a break between verses (an ad)
 
   constructor(private host: ChantHost) {}
+
+  /** A break is under way (Next, Previous and Play wait for it). */
+  get inBreak(): boolean {
+    return this.brk;
+  }
 
   get current(): number {
     return this.idx;
@@ -216,7 +230,8 @@ export class ChantController {
 
   /** Play after a pause, or from nothing. `from` is the verse the page is on. */
   resume(from: number): void {
-    if (this.playing) return;
+    // During an ad break the next verse starts by itself when the ad closes.
+    if (this.playing || this.brk) return;
     if (this.pending !== null) {
       const n = this.pending;
       this.pending = null;
@@ -245,6 +260,8 @@ export class ChantController {
   }
 
   step(dir: 1 | -1, from: number): void {
+    // During an ad break, Next and Previous wait for the ad to close.
+    if (this.brk) return;
     const cur = this.idx >= 0 ? this.idx : from;
     const n = nextChantIndex(this.host.pages(), cur, dir);
     if (n >= 0) void this.start(n);
@@ -274,6 +291,12 @@ export class ChantController {
     if (plan.kind === "repeat") {
       void this.start(idx);
     } else if (plan.kind === "next") {
+      let hold: Promise<void> | null = null;
+      try { hold = this.host.breakBefore?.(idx, plan.index) ?? null; } catch { hold = null; }
+      if (hold) {
+        void this.holdFor(hold, plan.index);
+        return;
+      }
       this.pending = plan.index;
       this.clearTimer();
       if (this.host.isBackground?.()) {
@@ -291,6 +314,32 @@ export class ChantController {
       this.setPlaying(false);
       try { this.player?.setActiveForLockScreen?.(false); } catch { /* gone */ }
     }
+  }
+
+  /** Waits out a break between two verses (a full-screen ad), then plays the
+   *  next. Nothing sounds meanwhile, and "not playing" also keeps
+   *  continueInBackground from starting the verse under the ad when the ad's
+   *  own screen sends the app to the background. A stop, or a start elsewhere,
+   *  ends the break. */
+  private async holdFor(hold: Promise<void>, next: number): Promise<void> {
+    const token = this.token;
+    this.setBreak(true);
+    this.setPlaying(false);
+    let limit: unknown = null;
+    await Promise.race([
+      hold.catch(() => {}),
+      new Promise<void>((resolve) => { limit = this.host.setTimer(resolve, BREAK_LIMIT_MS); }),
+    ]);
+    if (limit !== null) this.host.clearTimer(limit);
+    if (token !== this.token) return;
+    this.setBreak(false);
+    void this.start(next);
+  }
+
+  private setBreak(on: boolean): void {
+    if (this.brk === on) return;
+    this.brk = on;
+    try { this.host.onBreak?.(on); } catch { /* keep */ }
   }
 
   private buildAhead(idx: number): void {
@@ -320,6 +369,7 @@ export class ChantController {
     this.clearTimer();
     this.pending = null;
     this.ended = false;
+    this.setBreak(false);
     try { this.sub?.remove(); } catch { /* gone */ }
     this.sub = null;
     for (const p of [this.player, this.ahead?.player]) {

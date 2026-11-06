@@ -1,5 +1,11 @@
 # AdMob test integration and registration — 4 November 2026
 
+> **Superseded in part on 5 November 2026 by [ads-20261105.md](ads-20261105.md):**
+> ads now show to every free account (no opt-in, no age question), launch
+> without the Shop, appear as pages in the book reader and as full-screen ads
+> between verses in the audiobook player, and native ads take no server ticket.
+> The registration steps below still apply.
+
 The app now supports native sponsored cards between library shelves and on the
 next-chapter page, and optional rewarded video for additional reading/listening
 previews. Lite and Plus suppress all ads. Separately purchased editions suppress

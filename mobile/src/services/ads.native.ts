@@ -34,16 +34,96 @@ export async function adPrivacyOptions() {
   }
   initialization = null; adsRevision.changed();
 }
-export function adUnit(sdk: SDK, format: 'native' | 'rewarded') {
-  if (ADS_MODE === 'test') return format === 'native' ? sdk.TestIds.NATIVE : sdk.TestIds.REWARDED;
-  const id = Platform.OS === 'ios'
-    ? format === 'native' ? process.env.EXPO_PUBLIC_ADMOB_IOS_NATIVE : process.env.EXPO_PUBLIC_ADMOB_IOS_REWARDED
-    : format === 'native' ? process.env.EXPO_PUBLIC_ADMOB_ANDROID_NATIVE : process.env.EXPO_PUBLIC_ADMOB_ANDROID_REWARDED;
+
+// Expo inlines EXPO_PUBLIC_* only when written out in full, hence the table.
+const LIVE_UNITS = {
+  native: { ios: process.env.EXPO_PUBLIC_ADMOB_IOS_NATIVE, android: process.env.EXPO_PUBLIC_ADMOB_ANDROID_NATIVE },
+  rewarded: { ios: process.env.EXPO_PUBLIC_ADMOB_IOS_REWARDED, android: process.env.EXPO_PUBLIC_ADMOB_ANDROID_REWARDED },
+  interstitial: { ios: process.env.EXPO_PUBLIC_ADMOB_IOS_INTERSTITIAL, android: process.env.EXPO_PUBLIC_ADMOB_ANDROID_INTERSTITIAL },
+};
+
+export function adUnit(sdk: SDK, format: 'native' | 'rewarded' | 'interstitial') {
+  if (ADS_MODE === 'test') return format === 'native' ? sdk.TestIds.NATIVE : format === 'rewarded' ? sdk.TestIds.REWARDED : sdk.TestIds.INTERSTITIAL;
+  const id = Platform.OS === 'ios' ? LIVE_UNITS[format].ios : LIVE_UNITS[format].android;
   if (!id || !/^ca-app-pub-\d+\/\d+$/.test(id) || id.includes('3940256099942544')) throw new Error('Ad unit is not configured.');
   return id;
 }
 
-export async function watchReward(title: string, kind: 'reading' | 'audio'): Promise<string> {
+/** Rewarded units are optional in live builds until paid editions are on sale. */
+export function hasRewardedUnit(): boolean {
+  if (ADS_MODE === 'test') return true;
+  return !!(Platform.OS === 'ios' ? LIVE_UNITS.rewarded.ios : LIVE_UNITS.rewarded.android);
+}
+
+/** The audiobook player's full-screen ads need their own (optional) unit. */
+export function hasInterstitialUnit(): boolean {
+  if (!ADS_ENABLED) return false;
+  if (ADS_MODE === 'test') return true;
+  return !!(Platform.OS === 'ios' ? LIVE_UNITS.interstitial.ios : LIVE_UNITS.interstitial.android);
+}
+
+export type ShowableAd = { show(): Promise<void> };
+const LOAD_LIMIT_MS = 30_000;
+
+/** A full-screen ad (image or video), loaded and waiting. Its show()
+ *  resolves when the ad closes, fails or cannot show, never rejects. Null when
+ *  ads are off for this account, consent is not settled, or there is no unit.
+ *  Non-personalized and rated G, like every request here (prepareAds). */
+export async function loadInterstitial(): Promise<ShowableAd | null> {
+  if (!hasInterstitialUnit()) return null;
+  const sdk = await prepareAds();
+  if (!sdk) return null;
+  const ad = sdk.InterstitialAd.createForAdRequest(adUnit(sdk, 'interstitial'), { requestNonPersonalizedAdsOnly: true });
+  await new Promise<void>((resolve, reject) => {
+    const offs: (() => void)[] = [];
+    const done = (error?: unknown) => { clearTimeout(limit); offs.forEach(off => off()); if (error) reject(error); else resolve(); };
+    const limit = setTimeout(() => done(new Error('Ad load timed out.')), LOAD_LIMIT_MS);
+    offs.push(ad.addAdEventListener(sdk.AdEventType.LOADED, () => done()));
+    offs.push(ad.addAdEventListener(sdk.AdEventType.ERROR, error => done(error ?? new Error('No ad.'))));
+    try { ad.load(); } catch (error) { done(error ?? new Error('Ad failed to load.')); }
+  });
+  return {
+    show: () => new Promise<void>(resolve => {
+      const offs: (() => void)[] = [];
+      const done = () => { offs.forEach(off => off()); resolve(); };
+      offs.push(ad.addAdEventListener(sdk.AdEventType.CLOSED, done));
+      offs.push(ad.addAdEventListener(sdk.AdEventType.ERROR, done));
+      try { void ad.show().catch(done); } catch { done(); }
+    }),
+  };
+}
+
+export type LoadedNativeAd = { sdk: SDK; ad: import('react-native-google-mobile-ads').NativeAd };
+
+/** One native ad, ready to show, or null when ads are off for this account,
+ *  consent is not settled, or Google has nothing to fill (no ticket needed).
+ *  Every request is the kind that is safe at any age: non-personalized and,
+ *  through prepareAds, rated G. */
+export async function loadNativeAd(): Promise<LoadedNativeAd | null> {
+  const sdk = await prepareAds();
+  if (!sdk) return null;
+  const ad = await sdk.NativeAd.createForAdRequest(adUnit(sdk, 'native'), {
+    requestNonPersonalizedAdsOnly: true, startVideoMuted: true,
+    adChoicesPlacement: sdk.NativeAdChoicesPlacement.TOP_RIGHT,
+  });
+  return { sdk, ad };
+}
+
+// Previews are a fixed 5% for everyone (owner, 2026-11-06): an ad never opens
+// more of a book or audiobook. It can add practice time or Ask answers.
+export type RewardKind = 'practice' | 'ask';
+
+export async function watchReward(title: string, kind: RewardKind): Promise<string> {
+  return (await runReward(title, kind)).message;
+}
+
+/** "Watch an ad to keep asking": adds to today's own AI allowance once Google
+ *  confirms the view to the server (services/quota.ad_bonus). */
+export function watchAskReward(): Promise<{ granted: boolean; message: string }> {
+  return runReward('', 'ask');
+}
+
+async function runReward(title: string, kind: RewardKind): Promise<{ granted: boolean; message: string }> {
   if (rewardedBusy) throw new Error('An ad is already being prepared.');
   const owner = commerceOwner();
   const checkOwner = () => { if (!owner || commerceOwner() !== owner) throw new Error('Account changed. Reopen this edition.'); };
@@ -83,15 +163,19 @@ export async function watchReward(title: string, kind: 'reading' | 'audio'): Pro
       }));
       try { ad.load(); } catch (error) { finish(error instanceof Error ? error : new Error('Ad failed to load.')); }
     });
-    if (!earned) return 'Ad closed before completion. No extra access was granted.';
+    if (!earned) return { granted: false, message: 'Ad closed before completion. No extra access was granted.' };
     checkOwner();
-    if (ADS_MODE === 'test') return 'Google test ad completed. Demo ads do not grant paid content or generate revenue.';
+    if (ADS_MODE === 'test') return { granted: false, message: 'Google test ad completed. Demo ads do not grant paid content or generate revenue.' };
     for (let attempt = 0; attempt < 10; attempt++) {
       const status = await request<{verified: boolean}>(`/commerce/ads/${ticket.id}`, {}, true);
       checkOwner();
-      if (status.verified) { await refreshCommerce(); return 'Extra access is ready for 24 hours. Reopen this edition to refresh.'; }
+      if (status.verified) {
+        if (kind === 'ask') return { granted: true, message: 'Thank you. You can keep asking today.' };
+        await refreshCommerce();
+        return { granted: true, message: 'Extra practice time is ready for 24 hours.' };
+      }
       await new Promise(resolve => setTimeout(resolve, 1000));
     }
-    return 'Ad completed. Server verification is pending; reopen the edition shortly.';
+    return { granted: false, message: kind === 'ask' ? 'Ad completed. It is being confirmed; ask again in a moment.' : 'Ad completed. Server verification is pending; reopen the edition shortly.' };
   } finally { rewardedBusy = false; }
 }

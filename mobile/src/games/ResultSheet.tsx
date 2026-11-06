@@ -1,10 +1,11 @@
 // ResultSheet: score, best, New best, points, Play again and Done.
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { color, fill, font, onFill, space } from "../theme";
 import { haptics } from "../services/haptics";
+import { gameAds } from "../services/gameAds";
 
 export default function ResultSheet({
   score,
@@ -21,6 +22,16 @@ export default function ResultSheet({
   onAgain: () => void;
   onDone: () => void;
 }) {
+  // A finished game is a natural break: every second one, closing the results
+  // shows a full-screen ad first (free accounts; services/gameAds).
+  useEffect(() => { gameAds.finished(); }, []);
+  const leaving = useRef(false);
+  const leave = (next: () => void) => {
+    if (leaving.current) return;
+    leaving.current = true;
+    haptics.tap();
+    void gameAds.afterResults().catch(() => {}).finally(() => { leaving.current = false; next(); });
+  };
   return (
     <View style={styles.wrap}>
       <Text style={styles.title}>Done</Text>
@@ -32,10 +43,7 @@ export default function ResultSheet({
       <Text style={styles.xp}>+{xp} XP</Text>
       <View style={styles.row}>
         <Pressable
-          onPress={() => {
-            haptics.tap();
-            onAgain();
-          }}
+          onPress={() => leave(onAgain)}
           accessibilityRole="button"
           accessibilityLabel="Play again"
           style={styles.primary}
@@ -43,10 +51,7 @@ export default function ResultSheet({
           <Text style={styles.primaryText}>Play again</Text>
         </Pressable>
         <Pressable
-          onPress={() => {
-            haptics.tap();
-            onDone();
-          }}
+          onPress={() => leave(onDone)}
           accessibilityRole="button"
           accessibilityLabel="Done"
           style={styles.secondary}

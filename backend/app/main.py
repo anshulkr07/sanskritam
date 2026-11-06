@@ -185,8 +185,13 @@ def create_app() -> FastAPI:
 
     app.include_router(health_router, tags=["Health"])
     from app.commerce.router import router as commerce_router
-    if settings.deferred_features_enabled or (settings.commerce_enabled and settings.commerce_hybrid_enabled):
+    from app.commerce.ads_router import router as ads_router
+    commerce_live = settings.commerce_enabled and settings.commerce_hybrid_enabled
+    if settings.deferred_features_enabled or commerce_live:
         app.include_router(commerce_router)
+    # Ads have their own switch, so they can launch before purchases do.
+    if settings.deferred_features_enabled or commerce_live or settings.commerce_ads_enabled:
+        app.include_router(ads_router)
     app.include_router(auth_router, tags=["Auth"])
     app.include_router(me_router, tags=["Learner"])
     app.include_router(challenges_router, tags=["Challenges"])

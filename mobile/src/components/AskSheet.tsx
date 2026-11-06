@@ -57,6 +57,7 @@ import AnswerCard from "./ask/AnswerCard";
 import { Skeleton } from "./Skeleton";
 import PlaceChooser from "./PlaceChooser";
 import ReportButton from "./ReportButton";
+import AskTopUp from "./AskTopUp";
 import { haptics } from "../services/haptics";
 import { getKalaPrefs } from "../kala/prefs";
 import { getPhotoRecogniser } from "../services/photoRecogniser";
@@ -85,7 +86,7 @@ type Phase =
   | { kind: "idle" }
   | { kind: "loading"; question: string }
   | { kind: "answer"; data: AskResponse; question: string; place: AskPlace | null }
-  | { kind: "error"; message: string; question: string };
+  | { kind: "error"; message: string; question: string; limited?: boolean };
 
 interface Attachment {
   uri: string;
@@ -157,7 +158,7 @@ async function send(
 function errorMessage(e: unknown): string {
   if (e instanceof ApiError) {
     if (e.status === 0) return "Couldn't reach the teacher. Check your connection.";
-    if (e.status === 429) return "Too many questions right now. Try again soon.";
+    if (e.status === 429) return "Today's free questions are used up. Try again tomorrow.";
     if (e.status === 503) return "The teacher is busy. Try again in a moment.";
   }
   return "Something went wrong. Try again.";
@@ -251,7 +252,8 @@ export default function AskSheet({ visible, context, onClose, contentRef }: AskS
           place: placeOverride ?? place,
         });
       } catch (e) {
-        setPhase({ kind: "error", message: errorMessage(e), question: display?.trim() || q });
+        setPhase({ kind: "error", message: errorMessage(e), question: display?.trim() || q,
+          limited: e instanceof ApiError && e.status === 429 });
       }
     },
     [surface, subject, attach, detailed],
@@ -473,6 +475,7 @@ export default function AskSheet({ visible, context, onClose, contentRef }: AskS
                   <View style={styles.error} accessibilityRole="alert">
                     <Ionicons name="cloud-offline-outline" size={26} color={color.badText} />
                     <Text style={styles.errorText}>{phase.message}</Text>
+                    {phase.limited && <AskTopUp onGranted={() => void ask(phase.question)} />}
                     <Pressable
                       onPress={() => void ask(phase.question)}
                       accessibilityRole="button"

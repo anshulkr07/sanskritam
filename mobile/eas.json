@@ -61,6 +61,19 @@
         "EXPO_PUBLIC_GOOGLE_CLIENT_ID_IOS": "829757572630-63unmold7f790tfkhpns7rlkfqfupjgk.apps.googleusercontent.com",
         "EXPO_PUBLIC_GOOGLE_CLIENT_ID_WEB": "829757572630-4671983larm19abnu5qtopbbs6ehnbqp.apps.googleusercontent.com"
       }
+    },
+    "staging": {
+      "extends": "production",
+      "distribution": "store",
+      "channel": "staging",
+      "env": {
+        "EXPO_PUBLIC_SHBAD_RELEASE_URL": "https://shabd-api-staging-829757572630.asia-south1.run.app",
+        "EXPO_PUBLIC_HYBRID_COMMERCE": "true",
+        "EXPO_PUBLIC_ADS_MODE": "test",
+        "EXPO_PUBLIC_GOOGLE_CLIENT_ID_ANDROID": "829757572630-fburmj96vtc13snqnnt08rtu1jfdbbmn.apps.googleusercontent.com",
+        "EXPO_PUBLIC_GOOGLE_CLIENT_ID_IOS": "829757572630-63unmold7f790tfkhpns7rlkfqfupjgk.apps.googleusercontent.com",
+        "EXPO_PUBLIC_GOOGLE_CLIENT_ID_WEB": "829757572630-4671983larm19abnu5qtopbbs6ehnbqp.apps.googleusercontent.com"
+      }
     }
   },
   "submit": {
@@ -68,6 +81,12 @@
       "android": {
         "serviceAccountKeyPath": "./service-account-key.json",
         "track": "production"
+      }
+    },
+    "staging": {
+      "android": {
+        "serviceAccountKeyPath": "./service-account-key.json",
+        "track": "internal"
       }
     }
   }

@@ -16,7 +16,7 @@ from app.commerce import service as svc
 
 async def serve_media(ticket, db, head=False):
     from app.commerce.router import decode
-    from app.commerce.access import has_ad, has_title
+    from app.commerce.access import has_title
     data = decode(ticket, "media")
     row = db.get(Shloka, data["row"])
     if not row or not db.get(Learner, data["sub"]):

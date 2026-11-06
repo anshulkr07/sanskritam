@@ -1,36 +1,40 @@
-import React, { useCallback, useState } from "react";
-import { Pressable, Text, View } from "react-native";
-import { useFocusEffect, useNavigation, type NavigationProp } from "@react-navigation/native";
-import { HYBRID_COMMERCE, commerceCatalogue } from "../services/commerce";
-import type { RootStackParamList } from "../navigation/types";
-import { color } from "../theme";
-import { useAuth } from "../store/auth";
-import RewardedAccess from './RewardedAccess';
+import React, { useState } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import BuyWithMudra from "./BuyWithMudra";
+import { MudraAmount } from "./MudraCoin";
+import { useEdition, usePreviewSize } from "../hooks/useEdition";
+import { previewLine } from "../services/mudra";
+import { T, ui } from "../trail/theme";
+
+// A paid book or audiobook's own page: how much of it is free (5%, owner
+// 2026-11-06) and its Mudrā price. Nothing for free or owned titles.
 export default function EditionOffer({ titleId }: { titleId: string }) {
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-  const { token } = useAuth();
-  const [offer, setOffer] = useState<{ owned: boolean; member: boolean; lite: boolean; tier: string; canBuy: boolean } | null>(null);
-  useFocusEffect(useCallback(() => {
-    let alive = true;
-    setOffer(null);
-    if (HYBRID_COMMERCE) void commerceCatalogue().then(s => {
-      const title = s.catalogue.find(t => t.id === titleId);
-      if (alive) setOffer(title
-        ? { owned: s.owned_titles.includes(titleId), member: s.included_titles.includes(titleId),
-          lite: title.lite_included, tier: s.member_tier === "lite" ? "Lite" : "Plus",
-          canBuy: s.products.some(p => p.kind === "edition" && p.titles?.includes(titleId)) } : null);
-    }).catch(() => { if (alive) setOffer(null); });
-    return () => { alive = false; };
-  }, [titleId, token]));
-  if (!HYBRID_COMMERCE || !offer) return null;
-  const label = offer.owned ? "Purchased · keep this edition" : offer.member
-    ? `Included with ${offer.tier}${offer.canBuy ? ` · buy to keep${offer.tier === "Lite" ? " and download" : ""}` : ""}`
-    : `Preview · ${offer.canBuy ? "buy this edition or " : ""}access with ${offer.lite ? "Lite or Plus" : "Plus"}`;
-  return <View style={{ padding: 12, backgroundColor: color.bg }}>
-    <Pressable accessibilityRole="button" onPress={() => navigation.navigate("Shop", { titleId })}>
-      <Text style={{ color: color.saffron, fontWeight: "700" }}>{label}</Text>
-    </Pressable>
-    {!offer.owned && !offer.member && <RewardedAccess titleId={titleId} />}
-  </View>;
+  const { edition, refresh } = useEdition(titleId);
+  const size = usePreviewSize(titleId, !!edition && !edition.owned);
+  const [open, setOpen] = useState(false);
+  if (!edition || edition.owned) return null;
+  const audio = titleId.endsWith(":audio");
+  return (
+    <View style={styles.wrap}>
+      <Text style={styles.preview}>{previewLine(size, audio)}</Text>
+      <Pressable
+        onPress={() => setOpen(true)}
+        accessibilityRole="button"
+        accessibilityLabel={`Buy for ${edition.price} Mudrā`}
+        style={styles.buy}
+      >
+        <Text style={styles.buyText}>Buy for</Text>
+        <MudraAmount amount={edition.price} size={16} textStyle={{ color: T.white }} />
+      </Pressable>
+      <BuyWithMudra visible={open} titleId={titleId} onClose={() => setOpen(false)} onBought={refresh} />
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  wrap: { paddingHorizontal: 20, paddingVertical: 12, gap: 8, backgroundColor: T.paper, borderBottomWidth: 1, borderColor: T.line },
+  preview: { ...ui("regular"), color: T.ink2, fontSize: 14 },
+  buy: { flexDirection: "row", alignItems: "center", alignSelf: "flex-start", gap: 8, minHeight: 44, paddingHorizontal: 16, backgroundColor: T.action },
+  buyText: { ...ui("bold"), color: T.white, fontSize: 15 },
+});

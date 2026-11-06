@@ -1,6 +1,10 @@
 import Modal from "../components/AudioModal";
 import EditionOffer from "../components/EditionOffer";
-import SponsoredCard from '../components/SponsoredCard';
+import SponsoredPage from '../components/SponsoredPage';
+import BuyWithMudra from '../components/BuyWithMudra';
+import MudraCoin from '../components/MudraCoin';
+import { useEdition } from '../hooks/useEdition';
+import { useReaderAds } from '../read/readerAds';
 // Book: the fullscreen reading page (HANDOVER 7.4) — the one reading screen
 // for every book, classic or paged. A paged book reads one chapter at a time;
 // its last page turns on to the next chapter, and its first page offers the
@@ -18,7 +22,7 @@ import { FlatList, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimen
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import type { RootStackParamList } from "../navigation/types";
-import { api, type Shloka } from "../api/client";
+import { api, type PagedChapter, type Shloka } from "../api/client";
 import { cachedGet } from "../services/apiCache";
 import PageCurlBook, { useBookPage } from "../components/book/PageCurlBook";
 import ReaderSlider from "../components/ReaderSlider";
@@ -78,6 +82,7 @@ function BookReader({ navigation, route }: Props) {
   const ask = useAsk();
   const [controls, setControls] = useState(false);
   const [aaOpen, setAaOpen] = useState(false);
+  const [buyOpen, setBuyOpen] = useState(false);
   const [indexOpen, setIndexOpen] = useState(false);
   const [indexTab, setIndexTab] = useState<"pages" | "chapters" | "bookmarks">("pages");
   const activity = useBookActivity()[bookKey] ?? [];
@@ -112,10 +117,23 @@ function BookReader({ navigation, route }: Props) {
     chapterRetry,
     title: bookTitle,
     persistAt,
+    preview,
   } = useBookPages(bookKey, chapter ?? null);
   const nextCh = pagedChapter !== null ? nextChapter(chapters ?? [], pagedChapter) : null;
   const prevCh = pagedChapter !== null ? prevChapter(chapters ?? [], pagedChapter) : null;
-  const pageCount = pages.length + (nextCh ? 1 : 0);
+  // A paid book read as its free preview, with no next chapter to point to
+  // (one chapter, or a classic book): the last page offers the rest.
+  const { edition } = useEdition(bookKey + ":book");
+  const previewEnd = !nextCh && !!edition && !edition.owned && pages.length > 0;
+  // The preview's pages are scattered (5%, owner 2026-11-06); after a chapter
+  // with none of them, the next chapter that has some.
+  const nextFree = useMemo(() => {
+    const list = (chapters ?? []) as (PagedChapter & { free?: number })[];
+    const from = nextCh ? list.findIndex((c) => c.chapter === nextCh.chapter) : -1;
+    return from < 0 ? null : list.slice(from + 1).find((c) => (c.free ?? 0) > 0) ?? null;
+  }, [chapters, nextCh]);
+  const previewCopy = preview?.pages && preview.of ? `It has ${preview.pages} of the ${preview.of} pages, spread through the book.` : "It has 5% of the pages, spread through the book.";
+  const pageCount = pages.length + (nextCh || previewEnd ? 1 : 0);
   const theme = READER_THEMES[themeName];
   const readerScale = READER_SIZES[sizeStep] ?? 1;
 
@@ -188,18 +206,40 @@ function BookReader({ navigation, route }: Props) {
   useEffect(() => setLiveChapter(pagedChapter), [pagedChapter]);
   const showAt = !bound ? index ?? 0 : liveChapter === pagedChapter ? at : 0;
   const currentPage = pages[showAt];
+  // Free readers get an ad as its own page now and then (read/readerAds).
+  const readerAds = useReaderAds({
+    titleId: bookKey + ":book",
+    chapterKey: `${bookKey}:${pagedChapter ?? "book"}`,
+    at: showAt,
+    pageCount: pages.length,
+    hasNext: !!nextCh,
+  });
   // Option A gives each painted verse two sheets in the book: its painting,
   // then the verse. Everything else (slider, index, bookmarks, the saved
-  // position) still counts verses; the book alone counts sheets.
+  // position) still counts verses; the book alone counts sheets. An ad page
+  // follows a verse's sheet and carries that verse's number, so finding a
+  // verse's sheet (findIndex) always lands on the verse, never on the ad.
+  // In a preview, the pages between two free pages are one "in the full book"
+  // sheet; it carries the verse before it (the first verse for a chapter
+  // that opens with one), as an ad page does.
   const sheets = useMemo(() => {
-    const out: { verse: number; art: boolean }[] = [];
+    const out: { verse: number; art: boolean; ad?: string; gap?: { from: number; to: number } }[] = [];
     pages.forEach((page, i) => {
+      if (preview) {
+        const before = i === 0 ? -1 : preview.positions[i - 1];
+        if (preview.positions[i] - before > 1) out.push({ verse: Math.max(0, i - 1), art: false, gap: { from: before + 1, to: preview.positions[i] - 1 } });
+      }
       if (appearance.layout === "pages" && verseArtworkFor(page.source_ref)) out.push({ verse: i, art: true });
       out.push({ verse: i, art: false });
+      for (const p of readerAds.placements) if (p.after === i) out.push({ verse: i, art: false, ad: p.key });
     });
-    if (nextCh) out.push({ verse: pages.length, art: false });
+    const last = preview?.positions[preview.positions.length - 1];
+    if (preview && last !== undefined && last < preview.count - 1) {
+      out.push({ verse: Math.max(0, pages.length - 1), art: false, gap: { from: last + 1, to: preview.count - 1 } });
+    }
+    if (nextCh || previewEnd) out.push({ verse: pages.length, art: false });
     return out;
-  }, [pages, !!nextCh, appearance.layout]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [pages, !!nextCh, previewEnd, appearance.layout, readerAds.placements, preview]); // eslint-disable-line react-hooks/exhaustive-deps
   const [sheetAt, setSheetAt] = useState(0);
   const sheetIndex = sheets[sheetAt]?.verse === showAt ? sheetAt : Math.max(0, sheets.findIndex((sheet) => sheet.verse === showAt));
   const currentMark = currentPage ? activity.find(item => item.chapter === pagedChapter && item.id === pageId(currentPage)) : undefined;
@@ -294,11 +334,31 @@ function BookReader({ navigation, route }: Props) {
           index={sheetIndex}
           count={Math.max(1, sheets.length)}
           // A turned page puts the bars away, as a book's margins go quiet.
-          onIndexChange={(s) => { setSheetAt(s); setAt(sheets[s]?.verse ?? s); setControls(false); }}
+          onIndexChange={(s) => { setSheetAt(s); setAt(sheets[s]?.verse ?? s); setControls(false); readerAds.onShown(sheets[s]?.ad ?? null); }}
           reducedMotion={reduced}
-          labelFor={(s) => pages[sheets[s]?.verse ?? s]?.source_ref ?? (nextCh ? "Next chapter" : "")}
+          labelFor={(s) => sheets[s]?.ad ? "Advertisement" : sheets[s]?.gap ? "Not in the free preview" : pages[sheets[s]?.verse ?? s]?.source_ref ?? (nextCh ? "Next chapter" : previewEnd ? "Keep reading" : "")}
           renderPage={(s) => {
             const i = sheets[s]?.verse ?? s;
+            const adKey = sheets[s]?.ad;
+            if (adKey) {
+              return <SponsoredPage adKey={adKey} live={s === sheetIndex} page={theme.page} ink={theme.text} soft={theme.soft} line={theme.line} />;
+            }
+            const gap = sheets[s]?.gap;
+            if (gap) {
+              const where = gap.from === gap.to ? `page ${gap.from + 1}` : `pages ${gap.from + 1} to ${gap.to + 1}`;
+              const more = sheets.slice(s + 1).some((sheet) => !sheet.gap && !sheet.ad && sheet.verse < pages.length);
+              return (
+                <PreviewLockPage
+                  themeName={themeName}
+                  head={pagedChapter ? `${plain(bookTitle)} · Chapter ${pagedChapter}` : plain(bookTitle)}
+                  title={pagedChapter ? `Chapter ${pagedChapter}, ${where}` : where[0].toUpperCase() + where.slice(1)}
+                  body={`These pages are not in the free preview. ${previewCopy} Buy it once to read every page, offline too.`}
+                  price={edition?.price}
+                  onBuy={() => setBuyOpen(true)}
+                  hint={more ? "Turn the page for the next free page" : undefined}
+                />
+              );
+            }
             if (sheets[s]?.art && pages[i]) {
               return (
                 <Pressable style={{ flex: 1 }} onPress={() => setControls(c => !c)} accessibilityRole="button" accessibilityLabel={`Painting for ${pages[i].source_ref}. Turn the page for the verse`}>
@@ -306,10 +366,22 @@ function BookReader({ navigation, route }: Props) {
                 </Pressable>
               );
             }
+            if (i >= pages.length && nextCh && nextCh.locked) {
+              // Preview end B (owner's pick): the next chapter has no free pages.
+              return (
+                <PreviewLockPage
+                  themeName={themeName}
+                  head={plain(bookTitle)}
+                  title={`Chapter ${nextCh.chapter} continues ${plain(bookTitle)}`}
+                  body={`None of its ${nextCh.count} pages are in the free preview. ${previewCopy} Buy the book once to read ${chapters?.length ? `all ${chapters.length} chapters` : "every chapter"}, offline too.`}
+                  price={edition?.price}
+                  onBuy={() => setBuyOpen(true)}
+                  skip={nextFree ? { label: `Skip to chapter ${nextFree.chapter}, the next free page`, onPress: () => openChapter(nextFree.chapter) } : undefined}
+                />
+              );
+            }
             if (i >= pages.length && nextCh) {
               return (
-                <View style={{flex: 1}}>
-                {showAt >= pages.length && <SponsoredCard titleId={bookKey + ':book'} />}
                 <NextChapterPage
                   themeName={themeName}
                   bookTitle={plain(bookTitle)}
@@ -317,7 +389,18 @@ function BookReader({ navigation, route }: Props) {
                   verses={nextCh.count}
                   onOpen={() => openChapter(nextCh.chapter)}
                 />
-                </View>
+              );
+            }
+            if (i >= pages.length && previewEnd) {
+              return (
+                <PreviewLockPage
+                  themeName={themeName}
+                  head={plain(bookTitle)}
+                  title="The free preview ends here"
+                  body={`You have seen its free pages. ${previewCopy} Buy it once to read every page, offline too.`}
+                  price={edition?.price}
+                  onBuy={() => setBuyOpen(true)}
+                />
               );
             }
             return (
@@ -479,6 +562,12 @@ function BookReader({ navigation, route }: Props) {
           <ReadingAppearanceSettings value={appearance} onChange={updateAppearance} theme={theme} />
         </ScrollView>
       </Modal>
+      <BuyWithMudra
+        visible={buyOpen}
+        titleId={bookKey + ":book"}
+        onClose={() => setBuyOpen(false)}
+        onBought={() => { chapterRetry?.(); }}
+      />
     </View>
   );
 }
@@ -586,16 +675,73 @@ function NextChapterPage({
         <Text style={[styles.endNext, { color: theme.text }]} accessibilityRole="header">
           {label}
         </Text>
-        <Text style={[styles.roman, { color: theme.soft }]}>{verses} verses</Text>
+        {verses > 0 && <Text style={[styles.roman, { color: theme.soft }]}>{verses} verses</Text>}
       </View>
-      <Pressable
-        onPress={onOpen}
-        accessibilityRole="button"
-        accessibilityLabel={`Continue to ${label}`}
-        style={styles.endBtn}
-      >
+      <Pressable onPress={onOpen} accessibilityRole="button" accessibilityLabel={`Continue to ${label}`} style={styles.endBtn}>
         <Text style={[styles.endBtnText, { color: theme.accent }]}>Next chapter →</Text>
       </Pressable>
+    </ScrollView>
+  );
+}
+
+// Preview end B (owner's pick, 2026-11-06): a page outside the free preview.
+// A lock, what is in the full book, and one buy button low on the page, clear
+// of the middle band that toggles the controls. Square corners.
+function PreviewLockPage({
+  themeName,
+  head,
+  title,
+  body,
+  price,
+  onBuy,
+  hint,
+  skip,
+}: {
+  themeName: ReaderThemeName;
+  head: string;
+  title: string;
+  body: string;
+  price?: number;
+  onBuy: () => void;
+  hint?: string;
+  skip?: { label: string; onPress: () => void };
+}) {
+  const theme = READER_THEMES[themeName];
+  return (
+    <ScrollView contentContainerStyle={[styles.lockPage, { backgroundColor: theme.page }]}>
+      <View style={styles.lockTop}>
+        <Text style={[styles.runningHead, { color: theme.soft }]}>{head}</Text>
+        {/* A faded page: bars where the verse would be, never its text. */}
+        <View style={styles.ghost} importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>
+          {[250, 222].map((w) => <View key={w} style={[styles.ghostLine, { width: w, backgroundColor: theme.line }]} />)}
+          <View style={[styles.ghostRule, { backgroundColor: theme.line }]} />
+          {[286, 270, 180].map((w) => <View key={w} style={[styles.ghostText, { width: w, backgroundColor: theme.line, opacity: 0.6 }]} />)}
+        </View>
+      </View>
+      <View style={[styles.lockCard, { borderTopColor: theme.line }]}>
+        <View style={styles.lockEyebrowRow}>
+          <Ionicons name="lock-closed-outline" size={18} color={theme.soft} />
+          <Text style={[styles.lockEyebrow, { color: theme.soft }]}>IN THE FULL BOOK</Text>
+        </View>
+        <Text style={[styles.lockTitle, { color: theme.text }]} accessibilityRole="header">{title}</Text>
+        <Text style={[styles.lockBody, { color: theme.soft }]}>{body}</Text>
+        <Pressable
+          onPress={onBuy}
+          accessibilityRole="button"
+          accessibilityLabel={price ? `Buy the book for ${price} Mudrā` : "Buy the book"}
+          style={({ pressed }) => [styles.lockBuy, pressed && { opacity: 0.85 }]}
+        >
+          <Text style={styles.endBuyText}>{price ? "Buy the book for" : "Buy the book"}</Text>
+          {!!price && <MudraCoin size={19} />}
+          {!!price && <Text style={styles.endBuyText}>{price.toLocaleString("en-IN")}</Text>}
+        </Pressable>
+        {skip && (
+          <Pressable onPress={skip.onPress} accessibilityRole="button" style={styles.lockSkip}>
+            <Text style={[styles.lockSkipText, { color: theme.accent }]}>{skip.label} →</Text>
+          </Pressable>
+        )}
+        {!!hint && <Text style={[styles.lockHint, { color: theme.soft }]}>{hint}</Text>}
+      </View>
     </ScrollView>
   );
 }
@@ -619,6 +765,22 @@ const styles = StyleSheet.create({
   endNext: { fontSize: 24, fontWeight: "800", textAlign: "center" },
   endBtn: { minHeight: 48, justifyContent: "center", paddingHorizontal: 20 },
   endBtnText: { fontSize: 16, fontWeight: "700" },
+  endBuyText: { color: "#fff", fontSize: 17, fontFamily: "Mukta_700Bold", fontWeight: "700" },
+  lockPage: { flexGrow: 1, justifyContent: "space-between", paddingHorizontal: 20, paddingBottom: 64 },
+  lockTop: { alignItems: "center", gap: 18, marginTop: 56 },
+  ghost: { alignItems: "center", gap: 12, opacity: 0.7 },
+  ghostLine: { maxWidth: "90%", height: 12 },
+  ghostRule: { width: 48, height: 1, marginVertical: 6 },
+  ghostText: { maxWidth: "95%", height: 9 },
+  lockCard: { gap: 14, borderTopWidth: 1, paddingTop: 24 },
+  lockEyebrowRow: { flexDirection: "row", alignItems: "center", gap: 10 },
+  lockEyebrow: { fontSize: 12, letterSpacing: 1.2, fontFamily: "Mukta_700Bold", fontWeight: "700" },
+  lockTitle: { fontSize: 24, lineHeight: 30, fontFamily: "Mukta_700Bold", fontWeight: "700" },
+  lockBody: { fontSize: 15, lineHeight: 22, fontFamily: "Mukta_400Regular" },
+  lockBuy: { minHeight: 54, backgroundColor: "#A63D17", flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8, paddingHorizontal: 16 },
+  lockSkip: { minHeight: 44, justifyContent: "center" },
+  lockSkipText: { fontSize: 15, fontFamily: "Mukta_700Bold", fontWeight: "700" },
+  lockHint: { fontSize: 13, textAlign: "center", fontFamily: "Mukta_400Regular" },
   folio: { paddingVertical: 2, paddingHorizontal: 20, borderTopWidth: 1 },
   folioRow: { flexDirection: "row", alignItems: "center", gap: 8, minHeight: 40 },
   folioRef: { flex: 1, fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 13 },

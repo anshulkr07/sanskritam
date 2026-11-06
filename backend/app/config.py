@@ -447,7 +447,13 @@ class Settings(BaseSettings):
     commerce_google_notification_audience: str = ""
     commerce_google_notification_email: str = ""
     commerce_bundle_id: str = "com.sanskritam.app"
+    # Rewarded ad unit IDs are normally listed in app/commerce/ad_config.json
+    # (deploy.sh cannot pass JSON); a non-empty JSON list here wins.
+    # "ca-app-pub-…/123" or just "123".
     commerce_admob_units: str = "[]"
+    # Listening minutes between full-screen ads in the audiobook player
+    # (the first comes after half of it). The app enforces at least 5.
+    commerce_listen_ad_minutes: int = 10
 
     model_config = {"env_prefix": "", "env_file": _ENV_FILES, "extra": "ignore"}
 

@@ -24,6 +24,7 @@ import { paintedCover } from "../components/book/covers";
 import type { Shloka } from "../api/client";
 import { REPEAT_ORDER, type RepeatMode } from "../recite/chantClock";
 import { ChantController, type PlayerLike } from "../recite/chantController";
+import { listenAds } from "./listenAds";
 import { getAutoplay, setAutoplay as persistAutoplay } from "./audioProgress";
 
 const SPEEDS = [1, 1.25, 1.5, 0.75];
@@ -61,6 +62,8 @@ interface BusState {
   follow: boolean;
   /** Session id whose mini player bar the user closed. */
   miniHiddenFor: string | null;
+  /** The chant waits between verses for a full-screen ad (listenAds). */
+  adBreak: boolean;
 }
 
 let state: BusState = {
@@ -78,6 +81,7 @@ let state: BusState = {
   autoplay: true,
   follow: true,
   miniHiddenFor: null,
+  adBreak: false,
 };
 
 const listeners = new Set<() => void>();
@@ -133,7 +137,15 @@ const chant = new ChantController({
   },
   onLine: (line) => set({ lineNow: line }),
   onWord: (word) => set({ wordNow: word }),
-  onPlaying: (playing) => set({ isPlaying: playing }),
+  onPlaying: (playing) => {
+    listenAds.playing(playing);
+    set({ isPlaying: playing });
+  },
+  breakBefore: (from, to) => {
+    const s = state.session;
+    return s?.bookKey ? listenAds.take(s.pages, s.bookKey + ":audio", from, to) : null;
+  },
+  onBreak: (on) => set({ adBreak: on }),
   onProgress: (_line, frac) => set({ fillFrac: frac }),
   onTime: (ms, durMs) => set({ posMs: ms, durMs: Math.round(durMs) }),
   scrollTo: (idx) => {
@@ -162,6 +174,7 @@ function setAt(i: number): void {
 /** A screen claims the player for its book/chapter. A new id stops whatever
  *  was sounding; the same id just refreshes pages and callbacks. */
 export function bindSession(session: ListenSession, initialIndex: number | null): void {
+  if (session.bookKey) listenAds.prepare(session.bookKey + ":audio");
   const cur = state.session;
   if (cur?.id === session.id) {
     set({ session });

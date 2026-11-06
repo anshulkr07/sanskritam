@@ -45,6 +45,7 @@ import { accent, color, fill, font, gradientOf, onFill, script, shadow, space, t
 import { firstName } from "../utils/name";
 import { dayStreak, localToday } from "../utils/streak";
 import { plain } from "../utils/text";
+import SponsoredCard from "../components/SponsoredCard";
 
 type Props = TabScreenProps<"Home">;
 type LoadState = "loading" | "ok" | "error";
@@ -172,6 +173,8 @@ export default function HomeScreen({ navigation }: Props) {
             />
             <DailyMeaningTile />
           </View>
+          {/* One ad card on Home, below the day's own cards (free accounts only). */}
+          <SponsoredCard />
           <DailyRashiCard calendarPlace={homePlace.place} />
           {storyCompleted && <IntroductionTiles navigation={navigation} storyTotal={storyTotal} storyAt={storyAt} storyOnly />}
         </Entrance>

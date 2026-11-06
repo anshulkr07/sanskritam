@@ -1,28 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Image, Text, View } from 'react-native';
-import type { NativeAd } from 'react-native-google-mobile-ads';
 import { useAdEligibility } from '../hooks/useAdEligibility';
-import { request } from '../api/client';
-import { prepareAds, adUnit } from '../services/ads.native';
+import { loadNativeAd, type LoadedNativeAd } from '../services/ads.native';
 import { ADS_MODE } from '../services/adsState';
 import { color } from '../theme';
 
+// A native ad card: the Books library (above the second shelf) and the
+// audiobook player. Free accounts only; a no-fill or consent gap shows nothing.
 export default function SponsoredCard({titleId = ''}: {titleId?: string}) {
   const policy = useAdEligibility(titleId);
-  const [loaded, setLoaded] = useState<{sdk: NonNullable<Awaited<ReturnType<typeof prepareAds>>>; ad: NativeAd} | null>(null);
+  const [loaded, setLoaded] = useState<LoadedNativeAd | null>(null);
   useEffect(() => {
-    let active = true, native: NativeAd | null = null;
+    let active = true, current: LoadedNativeAd | null = null;
     setLoaded(null);
-    if (policy?.allowed) void (async () => {
-      const sdk = await prepareAds();
-      if (!sdk || !active) return;
-      await request('/commerce/ads/ticket', {method: 'POST', body: JSON.stringify({title_id: titleId, kind: 'native'})}, true);
-      if (!active) return;
-      native = await sdk.NativeAd.createForAdRequest(adUnit(sdk, 'native'), {requestNonPersonalizedAdsOnly: true, startVideoMuted: true});
-      if (!active) { native.destroy(); native = null; return; }
-      setLoaded({sdk, ad: native});
-    })().catch(() => {}); // No-fill, consent failure and caps leave the reading flow intact.
-    return () => { active = false; native?.destroy(); };
+    if (policy?.allowed) void loadNativeAd().then(result => {
+      current = result;
+      if (!active) { result?.ad.destroy(); current = null; return; }
+      setLoaded(result);
+    }).catch(() => {}); // No-fill, consent failure and errors leave the screen as it was.
+    return () => { active = false; current?.ad.destroy(); };
   }, [policy, titleId]);
   if (!policy?.allowed || !loaded) return null;
   const {sdk, ad} = loaded;

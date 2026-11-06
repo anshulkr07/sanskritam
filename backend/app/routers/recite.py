@@ -113,6 +113,9 @@ async def score_recite(
     secs = estimate_seconds(data)
     from app.commerce.access import require_practice
     require_practice(db, learner, shloka, secs)
+    # Scored practice: 2 a day free, or the plan month's allowance (commerce/plans.py).
+    from app.commerce.plans import check_recite
+    check_recite(db, learner)
     dur_ms = int(secs * 1000)
     # Sum today's duration.
     from sqlalchemy import func as _func
