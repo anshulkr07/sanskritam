@@ -23,6 +23,10 @@ Home waits on, stays a plain read.
 from __future__ import annotations
 
 from datetime import date
+from functools import cache
+import json
+from pathlib import Path
+import re
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
@@ -145,7 +149,35 @@ def list_shlokas(
     from app.services.chant_text import verse_uid as _uid
     uids = [(getattr(s, "verse_uid", "") or _uid(s.source_ref or "", s.devanagari or "")) for s in rows]
     cmap = _chant_map(db, uids)
-    return [protect_audio(db, learner, s, _shloka_response(s, cmap)) for s in rows]
+    title_access = {}
+    return [protect_audio(db, learner, s, _shloka_response(s, cmap), title_access=title_access) for s in rows]
+
+
+class VerseExplanation(BaseModel):
+    en: str = ""
+    hi: str = ""
+
+
+@cache
+def _gita_explanations() -> dict:
+    path = Path(__file__).resolve().parents[1] / "seeds" / "gita_explanations.json"
+    return json.loads(path.read_text(encoding="utf-8"))["verses"]
+
+
+@router.get("/shlokas/uid/{verse_uid}/explanation", response_model=VerseExplanation)
+def get_verse_explanation(
+    verse_uid: str,
+    learner: Learner = Depends(require_learner),
+    db: Session = Depends(get_db),
+):
+    row = db.query(Shloka).filter(Shloka.verse_uid == verse_uid).first()
+    if row is None:
+        raise HTTPException(404, "No such verse.")
+    from app.commerce.access import filter_reading
+    if not filter_reading(db, learner, [row]):
+        raise HTTPException(403, "Unlock the written title to read this verse")
+    ref = re.fullmatch(r"(?:Bhagavad G[īi]t[āa] |gita-)(\d{1,2})[.\-](\d{1,3})", (row.source_ref or "").strip(), re.IGNORECASE)
+    return _gita_explanations().get(f"{int(ref[1])}.{int(ref[2])}", {}) if ref else {}
 
 
 @router.get("/shlokas/uid/{verse_uid}", response_model=ShlokaResponse)

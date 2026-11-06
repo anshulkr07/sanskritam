@@ -59,7 +59,8 @@ def pay(db, product, tx, original=None, paid_at=None, days=30):
 def client(db):
     from app.commerce.router import router
     from app.routers.canon import router as canon_router
-    app = FastAPI(); app.include_router(router); app.include_router(canon_router)
+    from app.routers.shlokas import router as shlokas_router
+    app = FastAPI(); app.include_router(router); app.include_router(canon_router); app.include_router(shlokas_router)
     app.dependency_overrides[get_db] = lambda: db
     app.dependency_overrides[require_learner] = lambda: db.get(Learner, "u")
     with TestClient(app) as test_client:
@@ -109,6 +110,34 @@ def test_the_audio_preview_ends_at_five_percent_of_the_book(db, client):
     assert info == {"title_id": "gita:audio", "medium": "audio", "owned": False, "percent": 5,
                     "free_ms": 60_000, "of_ms": 1_200_000}
     assert client.get("/commerce/titles/gita:book/preview").json()["pages"] == 3
+
+
+def test_explanations_follow_written_preview_access(db, client):
+    first, second = db.get(Shloka, "v00"), db.get(Shloka, "v01")
+    first.source_ref = "Bhagavad Gītā 1.1"
+    second.source_ref = "Bhagavad Gītā 1.2"
+    db.commit()
+    def explanation(row):
+        return client.get(f"/shlokas/uid/{row.verse_uid}/explanation")
+    result = explanation(first)
+    assert result.status_code == 200 and all(result.json()[lang] for lang in ("en", "hi"))
+    assert explanation(second).status_code == 403
+    db.add(OwnedEdition(learner_id="u", title_id="gita:book", purchase_id="mudra:test"))
+    db.commit()
+    assert explanation(second).status_code == 200
+
+
+def test_bulk_read_checks_entitlement_once_per_title(db, monkeypatch):
+    calls = []
+    check = hybrid.can_access
+    def count(db, learner_id, title_id):
+        calls.append(title_id)
+        return check(db, learner_id, title_id)
+    monkeypatch.setattr(hybrid, "can_access", count)
+    rows = db.query(Shloka).order_by(Shloka.seq).all()
+    visible = access.filter_reading(db, db.get(Learner, "u"), rows)
+    assert len(visible) == 3
+    assert calls == ["gita:book"]
 
 
 def test_plan_guru_minutes_come_after_the_trial_and_before_bought_minutes(db):

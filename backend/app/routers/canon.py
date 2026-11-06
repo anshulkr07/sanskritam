@@ -227,7 +227,9 @@ def _verse_responses(db: Session, rows: list, learner=None) -> list:
     uids = [(getattr(s, "verse_uid", "") or _uid(s.source_ref or "", s.devanagari or "")) for s in rows]
     chants = _chant_map(db, uids)
     from app.commerce.access import protect_audio
-    return [protect_audio(db, learner, s, _shloka_response(s, chants)) if learner else _shloka_response(s, chants) for s in rows]
+    title_access = {}
+    return [protect_audio(db, learner, s, _shloka_response(s, chants), title_access=title_access)
+            if learner else _shloka_response(s, chants) for s in rows]
 
 
 @router.get("/canon/{slug}/verses")

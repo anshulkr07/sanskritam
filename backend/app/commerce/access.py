@@ -17,7 +17,11 @@ def context(db, learner_id=None):
     return db.info[key]
 
 
-def has_title(db, learner_id, title_id):
+def has_title(db, learner_id, title_id, *, cache=None):
+    if cache is not None:
+        if title_id not in cache:
+            cache[title_id] = has_title(db, learner_id, title_id)
+        return cache[title_id]
     from app.commerce import hybrid
     if hybrid.enabled():
         return hybrid.can_access(db, learner_id, title_id)
@@ -44,10 +48,10 @@ def preview_ids(db, learner, text):
     return previews[text.slug]
 
 
-def reading_open(db, learner, text, row):
+def reading_open(db, learner, text, row, *, title_access=None):
     if not settings.commerce_enabled:
         return True
-    if has_title(db, learner.id, text.slug + ":book"):
+    if has_title(db, learner.id, text.slug + ":book", cache=title_access):
         return True
     return row.id in preview_ids(db, learner, text)
 
@@ -85,25 +89,26 @@ def filter_reading(db, learner, rows):
     if not settings.commerce_enabled:
         return rows
     cache = {}
+    title_access = {}
     result = []
     for row in rows:
         key = row.book or row.source_ref
         if key not in cache:
             cache[key] = canon_for(db, row)
         text = cache[key]
-        if text is None or reading_open(db, learner, text, row):
+        if text is None or reading_open(db, learner, text, row, title_access=title_access):
             result.append(row)
     return result
 
 
-def protect_audio(db, learner, row, response, free_daily=False):
+def protect_audio(db, learner, row, response, free_daily=False, *, title_access=None):
     if not settings.commerce_enabled:
         return response
     from app.commerce.router import sign
     text = None if free_daily else canon_for(db, row)
     slug = text.slug if text else "daily"
     # Audio is a separate title. Preview is server-clipped, never a full URL.
-    unlocked = text is None or has_title(db, learner.id, slug + ":audio")
+    unlocked = text is None or has_title(db, learner.id, slug + ":audio", cache=title_access)
     limit_ms = None
     if not unlocked:
         # The first 5% of the audiobook's running time is free (preview.py).
