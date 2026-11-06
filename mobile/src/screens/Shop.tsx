@@ -12,6 +12,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Linking, Pressable, RefreshControl, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { useFocusEffect } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import MudraCoin from "../components/MudraCoin";
 import PlanCards from "../components/shop/PlanCards";
@@ -106,6 +107,7 @@ export default function Shop(_props: { route?: { params?: { titleId?: string } }
   const packOff = (p: StoreProduct | undefined) => !p || busy || !canPay || !prices[p.id];
 
   return (
+    <SafeAreaView style={styles.safe} edges={["bottom", "left", "right"]}>
     <ScrollView contentContainerStyle={styles.page} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={pullToRefresh} />}>
       <View style={styles.head}>
         <View style={{ flex: 1 }}>
@@ -212,6 +214,7 @@ export default function Shop(_props: { route?: { params?: { titleId?: string } }
       </View>
       <Text style={styles.small}>Mudrā can be spent only in Sanskritam. They have no cash value and cannot be cashed out or transferred.</Text>
     </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -237,6 +240,7 @@ function Section({ title, action, children }: {
 
 // Shop B: a ledger on paper. Rules, not boxes; one action colour; square corners.
 const styles = StyleSheet.create({
+  safe: { flex: 1, backgroundColor: T.paper },
   page: { paddingHorizontal: 20, paddingTop: 24, paddingBottom: 40, gap: 18, backgroundColor: T.paper },
   head: { flexDirection: "row", alignItems: "flex-end", borderBottomWidth: 2, borderColor: T.ink, paddingBottom: 12 },
   headName: { fontFamily: F.sa, fontSize: 20, lineHeight: 30, color: T.ink2 },

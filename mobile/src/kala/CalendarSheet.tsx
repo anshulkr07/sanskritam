@@ -16,7 +16,6 @@ import { Ionicons } from "@react-native-vector-icons/ionicons";
 import React, { useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import Animated, { Easing, FadeIn, FadeOut, SlideInDown, SlideOutDown } from "react-native-reanimated";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import PlaceChooser from "../components/PlaceChooser";
 import { Button } from "../components/ui";
@@ -43,7 +42,6 @@ interface Props {
 type Previews = Record<TraditionId, { text: string; script: TextScript }>;
 
 export default function CalendarSheet({ visible, place, onPlaceChanged, onClose }: Props) {
-  const insets = useSafeAreaInsets();
   const reduced = useReducedMotion();
   const [prefs, setPrefs] = useState<KalaPrefs>(getKalaPrefs);
   const [page, setPage] = useState<"main" | "place">("main");
@@ -118,7 +116,7 @@ export default function CalendarSheet({ visible, place, onPlaceChanged, onClose 
         <Animated.View
           entering={reduced ? undefined : SlideInDown.duration(180).easing(Easing.out(Easing.cubic))}
           exiting={reduced ? undefined : SlideOutDown.duration(140)}
-          style={[styles.sheet, { paddingBottom: insets.bottom + space.md }]}
+          style={[styles.sheet, { paddingBottom: space.md }]}
         >
           <View style={styles.grabber} />
 

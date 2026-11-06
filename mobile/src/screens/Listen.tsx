@@ -530,7 +530,6 @@ function VerseSheet({
   onPick: (v: Shloka) => void;
   onPractise: (v: Shloka) => void;
 }) {
-  const insets = useSafeAreaInsets();
   const [ci, setCi] = useState(Math.max(0, startChapter));
   useEffect(() => {
     if (visible) setCi(Math.max(0, startChapter));
@@ -545,7 +544,7 @@ function VerseSheet({
     <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose} statusBarTranslucent>
       <View style={styles.scrim}>
         <Pressable style={{ flex: 1 }} onPress={onClose} accessibilityRole="button" accessibilityLabel="Close the verse list" />
-        <View style={[styles.sheet, { paddingBottom: insets.bottom }]}>
+        <View style={styles.sheet}>
           <View style={styles.handle} />
           <View style={styles.sheetHead}>
             <View style={{ flex: 1 }}>

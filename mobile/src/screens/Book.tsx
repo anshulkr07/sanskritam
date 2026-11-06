@@ -22,7 +22,7 @@ import { FlatList, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimen
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import type { RootStackParamList } from "../navigation/types";
-import { api, type PagedChapter, type Shloka } from "../api/client";
+import { api, request, type PagedChapter, type Shloka } from "../api/client";
 import { cachedGet } from "../services/apiCache";
 import PageCurlBook, { useBookPage } from "../components/book/PageCurlBook";
 import CoverArt from "../components/book/CoverArt";
@@ -30,6 +30,7 @@ import ReaderSlider from "../components/ReaderSlider";
 import ChantList from "../components/chant/ChantList";
 import ChantPlayer from "../components/chant/ChantPlayer";
 import { useBookPages } from "../hooks/useBookPages";
+import { useQuery } from "../hooks/useQuery";
 import { useChant } from "../hooks/useChant";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useAsk } from "../ask/AskProvider";
@@ -39,12 +40,13 @@ import { plain } from "../utils/text";
 import { resolveReadingStart } from "../services/readingProgress";
 import { pageId, savePageActivity } from "../services/bookActivity";
 import { useBookActivity } from "../hooks/useBookActivity";
+import { useAuth } from "../store/auth";
 import { nextChapter, prevChapter } from "../utils/paged";
 import { VerseArtworkPage, VerseArtworkTop } from "../components/artwork/VerseArtworkViews";
 import ReadingAppearanceSettings from "../components/artwork/ReadingAppearanceSettings";
 import { verseArtworkFor } from "../components/artwork/verseArtwork";
 import { prefetchArtwork } from "../services/artworkCache";
-import { useReadingAppearance, type ReadingAppearance } from "../services/readingAppearance";
+import { READING_LANGUAGES, useReadingAppearance, type ReadingAppearance, type ReadingLanguage } from "../services/readingAppearance";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Book">;
 
@@ -83,6 +85,7 @@ function BookReader({ navigation, route }: Props) {
   const ask = useAsk();
   const [controls, setControls] = useState(false);
   const [aaOpen, setAaOpen] = useState(false);
+  const [languageOpen, setLanguageOpen] = useState(false);
   const [buyOpen, setBuyOpen] = useState(false);
   const [indexOpen, setIndexOpen] = useState(false);
   const [indexTab, setIndexTab] = useState<"pages" | "chapters" | "bookmarks">("pages");
@@ -421,6 +424,7 @@ function BookReader({ navigation, route }: Props) {
                 readerScale={readerScale}
                 roman={roman}
                 appearance={appearance}
+                live={s === sheetIndex}
                 onToggleControls={() => setControls(c => !c)}
                 onLearn={() => {
                   const v = pages[i];
@@ -491,6 +495,9 @@ function BookReader({ navigation, route }: Props) {
           <Pressable onPress={() => ask.open({ surface: "read", subject: verse?.devanagari ?? "" })} accessibilityRole="button" accessibilityLabel="Ask anything about this verse" style={styles.toolbarAction}>
             <Ionicons name="chatbubble-ellipses-outline" size={18} color={theme.text} /><Text style={[styles.toolbarText, { color: theme.text }]}>Ask anything</Text>
           </Pressable>
+          <Pressable onPress={() => setLanguageOpen(true)} accessibilityRole="button" accessibilityLabel={`Reading language, ${READING_LANGUAGES[appearance.language]}`} style={styles.toolbarAction}>
+            <Ionicons name="language-outline" size={18} color={theme.text} /><Text style={[styles.toolbarText, { color: theme.text }]}>{READING_LANGUAGES[appearance.language]}</Text>
+          </Pressable>
           <Pressable onPress={() => setAaOpen(true)} accessibilityRole="button" accessibilityLabel="Format reading page" style={styles.toolbarAction}>
             <Text style={{ color: theme.text, fontSize: 17, fontFamily: "Nunito_800ExtraBold", fontWeight: "800" }}>Aa</Text><Text style={[styles.toolbarText, { color: theme.text }]}>Format</Text>
           </Pressable>
@@ -525,7 +532,7 @@ function BookReader({ navigation, route }: Props) {
       )}
       <Modal visible={indexOpen} transparent animationType="fade" onRequestClose={() => setIndexOpen(false)}>
         <Pressable style={styles.scrim} onPress={() => setIndexOpen(false)} accessibilityRole="button" accessibilityLabel="Close book index" />
-        <View style={[styles.indexPanel, { height: Math.min(window.height * .8, 650), backgroundColor: theme.bar, paddingBottom: 16 + insets.bottom }]}>
+        <View style={[styles.indexPanel, { height: Math.min(window.height * .8, 650), backgroundColor: theme.bar }]}>
           <View style={styles.aaRowBetween}><View style={{ flex: 1 }}><Text style={[styles.aaTitle, { color: theme.text }]} numberOfLines={1}>{plain(bookTitle)}</Text><Text style={{ color: theme.soft, marginTop: 4 }}>{pagedChapter !== null ? "Chapters" : "Verse index"}</Text></View>
             <Pressable accessibilityRole="button" accessibilityLabel="Close index" onPress={() => setIndexOpen(false)} style={styles.iconBtn}><Ionicons name="close" size={22} color={theme.text} /></Pressable>
           </View>
@@ -549,9 +556,23 @@ function BookReader({ navigation, route }: Props) {
           <Pressable accessibilityRole="button" accessibilityLabel="Close book" onPress={() => { setIndexOpen(false); navigation.goBack(); }} style={styles.closeBook}><Text style={{ color: theme.text, fontWeight: "700" }}>Close book</Text></Pressable>
         </View>
       </Modal>
+      <Modal visible={languageOpen} transparent animationType="fade" onRequestClose={() => setLanguageOpen(false)}>
+        <Pressable style={styles.scrim} onPress={() => setLanguageOpen(false)} accessibilityRole="button" accessibilityLabel="Close reading languages" />
+        <View style={[styles.indexPanel, { backgroundColor: theme.bar }]} accessibilityViewIsModal>
+          <Text style={[styles.aaTitle, { color: theme.text }]} accessibilityRole="header">Reading language</Text>
+          {(Object.keys(READING_LANGUAGES) as ReadingLanguage[]).map(language => (
+            <Pressable key={language} accessibilityRole="radio" accessibilityState={{ checked: appearance.language === language }}
+              onPress={() => { updateAppearance({ language }); setLanguageOpen(false); }}
+              style={[styles.indexRow, { borderColor: theme.line }]}>
+              <Text style={{ color: theme.text, flex: 1, fontSize: 16 }}>{READING_LANGUAGES[language]}</Text>
+              {appearance.language === language && <Ionicons name="checkmark" size={20} color={theme.accent} />}
+            </Pressable>
+          ))}
+        </View>
+      </Modal>
       <Modal visible={aaOpen} transparent animationType="fade" onRequestClose={() => setAaOpen(false)}>
         <Pressable style={styles.scrim} onPress={() => setAaOpen(false)} accessibilityRole="button" accessibilityLabel="Close text settings" />
-        <ScrollView style={[styles.aaPanel, { maxHeight: "85%", backgroundColor: theme.bar, paddingBottom: 16 + insets.bottom, paddingLeft: 16 + insets.left, paddingRight: 16 + insets.right }]} contentContainerStyle={{ gap: 12 }} keyboardShouldPersistTaps="handled">
+        <ScrollView style={[styles.aaPanel, { backgroundColor: theme.bar }]} contentContainerStyle={styles.aaContent} keyboardShouldPersistTaps="handled">
           <View style={styles.aaRowBetween}><View><Text style={[styles.aaTitle, { color: theme.text }]}>Make it yours</Text><Text style={{ color: theme.soft, marginTop: 4 }}>A comfortable space to read and recite</Text></View><Pressable accessibilityRole="button" accessibilityLabel="Close format settings" onPress={() => setAaOpen(false)} style={styles.iconBtn}><Ionicons name="close" size={22} color={theme.text} /></Pressable></View>
           <Text style={{ color: theme.soft, fontWeight: "700" }}>PAPER & THEME</Text>
           <View style={styles.aaRow}>
@@ -592,6 +613,7 @@ export function ReaderPageView({
   readerScale,
   roman,
   appearance,
+  live = true,
   onLearn,
   onToggleControls,
 }: {
@@ -600,14 +622,22 @@ export function ReaderPageView({
   readerScale: number;
   roman: boolean;
   appearance: ReadingAppearance;
+  live?: boolean;
   onLearn: () => void;
   onToggleControls: () => void;
 }) {
   const theme = READER_THEMES[themeName];
   const window = useWindowDimensions();
   const { invalidate } = useBookPage();
+  const { learner } = useAuth();
   const touch = useRef({ x: 0, y: 0, time: 0, moved: false });
-  useEffect(() => { invalidate(); }, [invalidate, appearance, roman, readerScale, themeName]);
+  const explanationUid = live && learner && /^(?:Bhagavad G[īi]t[āa] |gita-)/i.test(verse?.source_ref ?? "") ? verse?.verse_uid : undefined;
+  const explanationQuery = useQuery<{ en: string; hi: string } | null>(
+    explanationUid ? `reader-explanation-${learner?.id}-${explanationUid}` : "reader-explanation-none",
+    () => explanationUid ? request(`/shlokas/uid/${encodeURIComponent(explanationUid)}/explanation`, {}, true) : Promise.resolve(null),
+  );
+  const explanation = explanationQuery.data?.[appearance.language];
+  useEffect(() => { invalidate(); }, [invalidate, appearance, explanation, roman, readerScale, themeName]);
   if (!verse) {
     return (
       <View style={styles.page}>
@@ -619,6 +649,8 @@ export function ReaderPageView({
   const painted = appearance.layout === "top" && !!verseArtworkFor(verse.source_ref);
   const textColor = appearance.textColor ?? theme.text;
   const softColor = appearance.textColor ?? theme.soft;
+  const hindi = appearance.language === "hi";
+  const translation = hindi ? verse.translation_hi : verse.translation_en;
   const sectionStyle = (key: "verse" | "roman" | "meaning" | "hindi", baseSize: number, baseLine: number) => {
     const value = appearance.sections[key];
     return { color: value.textColor ?? (key === "roman" || key === "hindi" ? softColor : key === "verse" ? appearance.textColor ?? theme.verse ?? textColor : textColor), opacity: appearance.textOpacity,
@@ -649,9 +681,18 @@ export function ReaderPageView({
         <Text style={[styles.roman, sectionStyle("roman", 14, 22)]}>{verse.iast}</Text>
       )}
       <View style={[styles.rule, { backgroundColor: theme.accent }]} />
-      {!!verse.translation_en && <Text style={[styles.trans, sectionStyle("meaning", 16, 26)]}>{plain(verse.translation_en)}</Text>}
-      {!!(verse as { translation_hi?: string }).translation_hi && (
-        <Text style={[styles.transHi, sectionStyle("hindi", 16, 26)]}>{plain((verse as { translation_hi?: string }).translation_hi ?? "")}</Text>
+      {!!translation && <Text style={[styles.trans, sectionStyle(hindi ? "hindi" : "meaning", 16, 26)]}>{plain(translation)}</Text>}
+      {!!explanation && (
+        <View style={styles.explanation}>
+          <Text style={[styles.explanationHeading, { color: textColor }]} accessibilityRole="header">{hindi ? "व्याख्या" : "Explanation"}</Text>
+          <Text style={[styles.explanationText, sectionStyle(hindi ? "hindi" : "meaning", 16, 26)]}>{explanation}</Text>
+          <Text style={[styles.runningHead, { color: softColor }]}>Bhagavad Gita Dataset · Deepak Rakshit · MIT</Text>
+        </View>
+      )}
+      {!!explanationUid && explanationQuery.failed && (
+        <Pressable onPress={explanationQuery.retry} accessibilityRole="button" style={styles.retryBtn}>
+          <Text style={[styles.retryText, { color: theme.accent }]}>{hindi ? "व्याख्या फिर से लोड करें" : "Retry loading explanation"}</Text>
+        </Pressable>
       )}
       {/* Owner's pick (2026-10-20, option B): a small square outline. */}
       <Pressable onTouchEnd={e => e.stopPropagation()} onPress={onLearn} accessibilityRole="button" accessibilityLabel="Learn & Recite this verse"
@@ -773,7 +814,9 @@ const styles = StyleSheet.create({
   roman: { fontStyle: "italic", fontSize: 14, textAlign: "center" },
   rule: { width: 48, height: 2, borderRadius: 1, marginVertical: 8 },
   trans: { fontSize: 16, lineHeight: 24, textAlign: "center" },
-  transHi: { fontSize: 15, lineHeight: 23, textAlign: "center" },
+  explanation: { width: "100%", maxWidth: 680, gap: 8 },
+  explanationHeading: { fontSize: 16, fontWeight: "700" },
+  explanationText: { textAlign: "auto" },
   endPage: { flexGrow: 1, justifyContent: "space-between", alignItems: "center", paddingHorizontal: 16, paddingTop: 24, paddingBottom: 32 },
   endMid: { alignItems: "center", gap: 6, marginTop: 56 },
   endDone: { fontSize: 12, fontWeight: "700", letterSpacing: 1, textTransform: "uppercase" },
@@ -800,9 +843,9 @@ const styles = StyleSheet.create({
   prevCh: { alignSelf: "flex-start", minHeight: 36, flexDirection: "row", alignItems: "center", gap: 6 },
   prevChText: { fontFamily: "Nunito_700Bold", fontSize: 12, fontWeight: "700" },
   topBar: { position: "absolute", top: 0, left: 0, right: 0, zIndex: 5, elevation: 6, borderBottomWidth: 1 },
-  topRow: { flexDirection: "row", alignItems: "stretch", height: 52 },
-  toolbarAction: { flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6 },
-  toolbarText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12 },
+  topRow: { flexDirection: "row", alignItems: "stretch", minHeight: 52 },
+  toolbarAction: { flex: 1, alignItems: "center", justifyContent: "center", gap: 2, padding: 4 },
+  toolbarText: { fontFamily: "Nunito_700Bold", fontWeight: "700", fontSize: 12, textAlign: "center" },
   bottomBar: { zIndex: 5, elevation: 6, borderTopWidth: 1, paddingTop: 4 },
   bottomBarDocked: { paddingBottom: 8, paddingHorizontal: 20 },
   learnButton: { flexDirection: "row", alignItems: "center", gap: 8, height: 40, paddingHorizontal: 14, marginTop: 12, borderWidth: 1, borderRadius: 0 },
@@ -814,7 +857,8 @@ const styles = StyleSheet.create({
   indexPanel: { position: "absolute", bottom: 0, left: 0, right: 0, padding: 20, gap: 12 },
   indexRow: { minHeight: 64, paddingVertical: 12, borderBottomWidth: 1, flexDirection: "row", alignItems: "center", gap: 12 },
   closeBook: { minHeight: 48, alignItems: "center", justifyContent: "center" },
-  aaPanel: { position: "absolute", bottom: 0, left: 0, right: 0, padding: 16, gap: 12 },
+  aaPanel: { position: "absolute", bottom: 0, left: 0, right: 0, maxHeight: "85%" },
+  aaContent: { padding: 16, paddingBottom: 24, gap: 12 },
   aaTitle: { fontFamily: "Nunito_800ExtraBold", fontSize: 23 },
   aaRow: { flexDirection: "row", gap: 8 },
   aaRowBetween: { flexDirection: "row", justifyContent: "space-between", minHeight: 44, alignItems: "center" },

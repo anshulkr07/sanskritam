@@ -14,9 +14,11 @@ export type SectionAppearance = { textColor: string | null; bold: boolean; scale
  */
 export const READING_LAYOUTS = ["pages", "top", "plain"] as const;
 export type ReadingLayout = typeof READING_LAYOUTS[number];
-export type ReadingAppearance = { layout: ReadingLayout; illustrated: boolean; imageOpacity: number; textOpacity: number; textColor: string | null; roman: boolean; sections: Record<ReadingSection, SectionAppearance> };
+export const READING_LANGUAGES = { en: "English", hi: "हिन्दी" } as const;
+export type ReadingLanguage = keyof typeof READING_LANGUAGES;
+export type ReadingAppearance = { layout: ReadingLayout; illustrated: boolean; imageOpacity: number; textOpacity: number; textColor: string | null; roman: boolean; language: ReadingLanguage; sections: Record<ReadingSection, SectionAppearance> };
 const defaultSections = (): ReadingAppearance["sections"] => Object.fromEntries(READING_SECTIONS.map(key => [key, { textColor: null, bold: false, scale: 1 }])) as ReadingAppearance["sections"];
-export const DEFAULT_READING_APPEARANCE: ReadingAppearance = { layout: "top", illustrated: true, imageOpacity: 0.48, textOpacity: 1, textColor: null, roman: false, sections: defaultSections() };
+export const DEFAULT_READING_APPEARANCE: ReadingAppearance = { layout: "top", illustrated: true, imageOpacity: 0.48, textOpacity: 1, textColor: null, roman: false, language: "en", sections: defaultSections() };
 const KEY = "shabd.read.appearance.v1";
 export function normalizeReadingAppearance(value: Partial<ReadingAppearance> | null): ReadingAppearance {
   const number = (n: unknown, fallback: number, min: number) => typeof n === "number" && Number.isFinite(n) ? Math.max(min, Math.min(1, n)) : fallback;
@@ -33,6 +35,7 @@ export function normalizeReadingAppearance(value: Partial<ReadingAppearance> | n
     : value?.illustrated === false ? "plain" : "top";
   return {
     layout,
+    language: value?.language === "hi" ? "hi" : "en",
     roman: value?.roman === true,
     sections,
     // Kept for older readers of the saved value: true unless the layout is plain.

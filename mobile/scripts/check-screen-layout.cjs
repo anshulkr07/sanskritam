@@ -36,6 +36,11 @@ for (const name of ["Smriti", "ShabdaRush", "VarnaJaal", "PracticeRound"]) {
     assert.equal(framed.children[0], child);
   }
 }
+for (const name of ["WordGroups", "PadaPath", "NumberBuilder", "Calibration"]) {
+  const framed = layout({ route: { name }, options: { headerShown: false }, children: element("content") });
+  assert.equal(framed.type, "SafeAreaView");
+  assert.ok(framed.props.edges.includes("bottom"), `${name} must clear the system navigation bar`);
+}
 for (const screen of navigator.children) {
   const name = screen.props.name;
   const framed = layout({ route: { name }, options: screen.props.options ?? {}, children: element("content") });
@@ -66,6 +71,20 @@ const readerTheme = load("src/screens/readerTheme.ts");
 const readingAppearance = load("src/services/readingAppearance.ts", {
   "@react-native-async-storage/async-storage": { __esModule: true, default: { getItem: async () => null, setItem: async () => {} } },
 });
+assert.equal(readingAppearance.normalizeReadingAppearance(null).language, "en");
+assert.equal(readingAppearance.normalizeReadingAppearance({ language: "hi" }).language, "hi");
+const AudioModal = load("src/components/AudioModal.tsx", {
+  "react-native": { ...native, Platform: { OS: "android" } },
+  "react-native-safe-area-context": { SafeAreaProvider: "SafeAreaProvider", SafeAreaView: "SafeAreaView" },
+}).default;
+const sheet = element("BottomSheet");
+const modal = AudioModal({ children: sheet, transparent: true, showAudio: false });
+assert.equal(modal.props.navigationBarTranslucent, true);
+const [modalProvider] = modal.children;
+assert.equal(modalProvider.type, "SafeAreaProvider");
+const [safeFrame] = modalProvider.children;
+assert.ok(safeFrame.props.edges.includes("bottom"));
+assert.equal(safeFrame.children[0].children[0], sheet, "Bottom sheets must position inside the safe frame");
 const verse = { id: "v1", source_ref: "Gītā 1.1", devanagari: "धर्मक्षेत्रे", word_breakdown: [] };
 const flattenStyle = style => Object.assign({}, ...(Array.isArray(style) ? style : [style]).filter(Boolean));
 for (const insets of [{ top: 0, bottom: 0, left: 0, right: 0 }, { top: 48, bottom: 24, left: 0, right: 0 }, { top: 59, bottom: 34, left: 12, right: 12 }]) {
@@ -88,6 +107,7 @@ for (const insets of [{ top: 0, bottom: 0, left: 0, right: 0 }, { top: 48, botto
       "../utils/text": { plain: t => t ?? "" },
       "./readerTheme": readerTheme,
       "../services/readingAppearance": {
+        READING_LANGUAGES: readingAppearance.READING_LANGUAGES,
         useReadingAppearance: () => ({ appearance: readingAppearance.DEFAULT_READING_APPEARANCE, updateAppearance: () => {} }),
       },
     }, "\nexports.BookReader = BookReader;").BookReader;

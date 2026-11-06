@@ -100,13 +100,13 @@ import { HYBRID_COMMERCE } from "./src/services/commerce";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-// These screens have no safe-area root of their own. Protect every state
-// (setup, loading, play and results), while the native header owns the top
-// on routes that show it. Tab screens and readers manage their own insets.
+// These screens delegate system-bar protection to the stack. The native
+// header still owns the top on routes that show it.
 const FRAMED_ROUTES = new Set<keyof RootStackParamList>([
-  "Certificate", "Contest", "ContestResults", "ContestRules", "MasterBoard",
-  "Paradigm", "Parva", "ParvaPage", "PracticeRound", "Recite", "RecitePicker",
-  "ShabdaRush", "Smriti", "VarnaJaal", "WordOrder",
+  "Calibration", "Certificate", "Contest", "ContestResults", "ContestRules",
+  "GuruVoice", "MasterBoard", "NumberBuilder", "PadaPath", "Paradigm", "Parva",
+  "ParvaPage", "PracticeRound", "Recite", "RecitePicker", "ShabdaRush", "Smriti",
+  "VarnaJaal", "WordGroups", "WordOrder",
 ]);
 
 const HEADER_OPTS = {
