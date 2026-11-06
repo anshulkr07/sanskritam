@@ -344,6 +344,20 @@ class Settings(BaseSettings):
     # third-party sign-in is offered). Comma-separated list of client IDs —
     # the app's bundle ID and/or Services ID. Empty => Apple login disabled.
     apple_client_id: str = ""
+    # Apple token revocation (App Review requires it on account deletion).
+    # APPLE_TEAM_ID + APPLE_KEY_ID identify the Sign in with Apple .p8 key;
+    # APPLE_PRIVATE_KEY holds its PEM contents. The same key signs the
+    # short-lived client secret used to exchange authorization codes and to
+    # revoke refresh tokens. A path is convenient for local development only.
+    apple_team_id: str = ""
+    apple_key_id: str = ""
+    apple_private_key: str = ""
+    apple_private_key_path: str = ""
+    # Encrypts the stored Apple refresh token. Empty falls back to
+    # COMMERCE_SIGNING_KEY, then to the .p8 key itself, so Apple-only
+    # deployments need no extra setting. Set a dedicated value to rotate it
+    # independently.
+    apple_token_key: str = ""
 
     # Privacy: raw audio retention opt-in
     retain_raw_audio: bool = False

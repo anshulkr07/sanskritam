@@ -66,7 +66,7 @@ interface AuthState {
   displayName: string;
   login: (displayName: string) => Promise<LearnerProfile>;
   googleLogin: (idToken: string) => Promise<LearnerProfile>;
-  appleLogin: (idToken: string, displayName?: string) => Promise<LearnerProfile>;
+  appleLogin: (idToken: string, authorizationCode?: string, displayName?: string) => Promise<LearnerProfile>;
   guestLogin: () => Promise<LearnerProfile>;
   finishOnboarding: () => Promise<void>;
   logout: () => Promise<void>;
@@ -146,8 +146,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // when Apple supplies it (first authorization); the backend falls back to
   // the relay-email local part, then a label.
   const appleLogin = useCallback(
-    async (idToken: string, name?: string): Promise<LearnerProfile> => {
-      const res = await api.appleLogin(idToken, name, ["en", "hi"], undefined);
+    async (idToken: string, authorizationCode?: string, name?: string): Promise<LearnerProfile> => {
+      const res = await api.appleLogin(idToken, authorizationCode, name, ["en", "hi"], undefined);
       setDisplayName(res.learner.display_name);
       await AsyncStorage.setItem(NAME_KEY, res.learner.display_name);
       return applySession(res);

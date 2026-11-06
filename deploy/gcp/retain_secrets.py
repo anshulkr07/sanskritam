@@ -16,7 +16,8 @@ from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
 MANAGED = {
-    "admin-token", "apple-client-id", "gemini-api-keys", "google-client-id",
+    "admin-token", "apple-client-id", "apple-key-id", "apple-private-key",
+    "apple-team-id", "apple-token-key", "gemini-api-keys", "google-client-id",
     "openrouter-api-key", "sarvam-api-key", "shabd-database-url",
     "stream-api-key", "stream-api-secret", "vertex-credentials",
 }
@@ -92,8 +93,18 @@ def main():
         return name, {"active": active, "keep": active - len(remove), "destroy": remove}
 
     with ThreadPoolExecutor(max_workers=4) as pool:
-        plan = dict(pool.map(plan_secret, sorted(MANAGED)))
-    print(json.dumps({"retained_revisions": sorted(retained), "secrets": plan}, indent=2), flush=True)
+        # Optional secrets (Apple revocation, Stream) may not exist until they
+        # are configured; an absent one has nothing to prune and must not stop
+        # cleanup for the rest. Listing also avoids treating a permission error
+        # as an empty secret.
+        existing = {item["name"].rsplit("/", 1)[-1]
+                    for item in cloud("secrets", "list") or []}
+        plan = dict(pool.map(plan_secret, sorted(MANAGED & existing)))
+    print(json.dumps({
+        "retained_revisions": sorted(retained),
+        "missing_secrets": sorted(MANAGED - existing),
+        "secrets": plan,
+    }, indent=2), flush=True)
     if not args.apply:
         return
     if service()["status"]["traffic"] != traffic:

@@ -26,7 +26,7 @@ working database credentials. Other configured secrets reuse their latest enable
 version when the value matches, and create a new version only when it changes.
 
 After the new revision passes its health check, `retain_secrets.py` automatically
-destroys obsolete versions of the ten app-managed secrets. It preserves references
+destroys obsolete versions of the app-managed secrets. It preserves references
 from every revision receiving traffic or carrying a tag, the three newest ready
 revisions, the two newest enabled versions of each secret, all alias targets, and
 versions created in the last seven days. Older revisions outside this rollback

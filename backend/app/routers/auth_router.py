@@ -2,6 +2,7 @@
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
+from starlette.concurrency import run_in_threadpool
 
 from app.auth import create_token
 from app.db import get_db
@@ -233,6 +234,19 @@ async def apple_login(req: AppleAuthRequest, db: Session = Depends(get_db)):
     if req.timezone and req.timezone.strip() and learner.timezone != req.timezone.strip():
         learner.timezone = req.timezone.strip()
         db.commit()
+
+    # The identity token cannot be revoked later. The app also forwards the
+    # one-time authorization code, which is exchanged and sealed here. A
+    # failed exchange must not block sign-in (Apple may be temporarily
+    # unavailable); the learner is simply left without a revocable token.
+    if req.authorization_code:
+        from app.services import apple_signin
+        encrypted = await run_in_threadpool(
+            apple_signin.authorization_for_code, req.authorization_code, payload,
+        )
+        if encrypted:
+            learner.apple_refresh_token = encrypted
+            db.commit()
 
     token = create_token(learner.id, db)
     return DevLoginResponse(

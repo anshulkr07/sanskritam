@@ -1706,10 +1706,13 @@ export const api = {
     }),
 
   // Sign in with Apple (Guideline 4.8 companion to Google). The identityToken
-  // comes from the platform flow; displayName is forwarded only when Apple
-  // supplies it (first authorization) — the backend falls back otherwise.
+  // comes from the platform flow; authorizationCode lets the server exchange
+  // it for the refresh token that account deletion revokes. displayName is
+  // forwarded only when Apple supplies it (first authorization) — the backend
+  // falls back otherwise.
   appleLogin: (
     idToken: string,
+    authorizationCode?: string,
     displayName?: string,
     bridgeLangs: BridgeLangs = ["en", "hi"],
     timezone?: string,
@@ -1718,6 +1721,7 @@ export const api = {
       method: "POST",
       body: JSON.stringify({
         id_token: idToken,
+        authorization_code: authorizationCode ?? null,
         display_name: displayName ?? null,
         bridge_langs: bridgeLangs,
         timezone,

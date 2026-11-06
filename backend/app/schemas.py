@@ -43,6 +43,10 @@ class AppleAuthRequest(BaseModel):
     # FIRST authorization, so the client forwards `display_name` when it has
     # one; otherwise we fall back to the email local part, then a label.
     id_token: str = Field(..., min_length=20)
+    # One-time code from the same Apple authorization. Exchanged for the
+    # refresh token that account deletion later revokes. Optional so older
+    # app builds can still sign in; such sessions are not revocable.
+    authorization_code: Optional[str] = Field(None, max_length=4096)
     bridge_langs: list[str] = Field(default=["en", "hi"])
     timezone: Optional[str] = Field(None, max_length=64)
     display_name: Optional[str] = Field(None, max_length=128)

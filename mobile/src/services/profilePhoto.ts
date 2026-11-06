@@ -7,6 +7,7 @@ import { GOOGLE_CLIENT_IDS, GOOGLE_LOGIN_ENABLED } from "../config";
 
 export async function linkCommunityAccount(provider: "google" | "apple") {
   let idToken: string | null = null;
+  let authorizationCode: string | null = null;
   if (provider === "google") {
     if (Platform.OS === "web" || !GOOGLE_LOGIN_ENABLED) throw Error("Google sign-in is available in the installed app.");
     const { GoogleSignin, isSuccessResponse } = await import("@react-native-google-signin/google-signin");
@@ -24,9 +25,16 @@ export async function linkCommunityAccount(provider: "google" | "apple") {
     const apple = await import("expo-apple-authentication");
     const response = await apple.signInAsync({ requestedScopes: [] });
     idToken = response.identityToken;
+    authorizationCode = response.authorizationCode;
   }
   if (!idToken) throw Error("Sign-in did not return an identity token. Try again.");
-  return request<MeResponse>(`/me/link/${provider}`, { method: "POST", body: JSON.stringify({ id_token: idToken }) }, true);
+  return request<MeResponse>(`/me/link/${provider}`, {
+    method: "POST",
+    body: JSON.stringify({
+      id_token: idToken,
+      authorization_code: authorizationCode ?? undefined,
+    }),
+  }, true);
 }
 
 export async function chooseProfilePhoto(): Promise<MeResponse | null> {

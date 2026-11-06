@@ -83,7 +83,9 @@ esac
             env = os.environ.copy()
             # Prevent any developer's exported settings reaching the test.
             for key in ("SARVAM_API_KEY", "OPENROUTER_API_KEY", "ADMIN_TOKEN",
-                        "GOOGLE_CLIENT_ID", "APPLE_CLIENT_ID", "GEMINI_API_KEYS",
+                        "GOOGLE_CLIENT_ID", "APPLE_CLIENT_ID", "APPLE_TEAM_ID",
+                        "APPLE_KEY_ID", "APPLE_PRIVATE_KEY", "APPLE_TOKEN_KEY",
+                        "GEMINI_API_KEYS",
                         "GCS_AUDIO_BUCKET", "AUDIO_STORAGE", "ENV_FILE",
                         "STREAM_API_KEY", "NEXT_PUBLIC_STREAM_API_KEY", "STREAM_API_SECRET"):
                 env.pop(key, None)

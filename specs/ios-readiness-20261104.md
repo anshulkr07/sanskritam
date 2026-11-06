@@ -16,6 +16,11 @@
   was deployed on 2026-11-04; real Apple login still needs device testing.
 - Enabled `ios.usesAppleSignIn` explicitly and used Apple's native, localized
   sign-in button after checking availability.
+- Added Sign in with Apple revocation on account deletion. The app sends the
+  one-time authorization code with Apple sign-in and account linking; the
+  backend exchanges it for a refresh token, stores it encrypted, and revokes
+  it with Apple's `/auth/revoke` endpoint. A retryable outbox keeps a failed
+  revocation alive after the learner row is deleted.
 - Added an `ios-testflight` EAS profile with store distribution, an independent
   update channel, inherited production environment, and incrementing build number.
 - Removed the direct `expo-modules-core` JS dependency; the local module uses
@@ -34,7 +39,7 @@
 | Permissions | Generated iOS config has camera, microphone, photo-library and location descriptions, Apple sign-in entitlement, background audio and iPad orientations. |
 | JavaScript / types | iOS Hermes bundle export and TypeScript check pass. This is not a Swift build. |
 | Backend regression | 57 selected Apple-authentication, handwriting and photographed-writing tests pass. |
-| Account deletion | In-app server/local account deletion exists. Apple authorization revocation is still missing; see pending items. |
+| Account deletion | In-app server/local account deletion exists. Apple authorization revocation is implemented: authorization-code exchange, encrypted token storage, revoke call, and retry outbox. Real-device confirmation is still pending. |
 
 ## Still required before App Store submission
 
@@ -44,11 +49,15 @@
 2. Finish Apple Developer/App Store Connect setup, signing and the app record.
    The server's `APPLE_CLIENT_ID` now includes `com.sanskritam.app` and the RS256
    fix is deployed. Verify real Google/Apple login and account linking.
-3. Implement Sign in with Apple token revocation on account deletion. The current
-   app sends identity tokens only, does not retain/exchange authorization codes,
-   and its provider-deletion outbox handles Stream only. This needs the Apple
-   team/key/client-secret configuration and an authorization-code/token flow;
-   local/server deletion alone does not revoke Apple's authorization.
+3. Finish Sign in with Apple revocation configuration and device testing. The
+   code now exchanges the app's authorization code, stores the refresh token
+   encrypted, and revokes it on deletion through Apple's `/auth/revoke`
+   endpoint; outages stay in the retry outbox. Still owner-side: create the
+   Sign in with Apple key in the Apple Developer portal and set
+   `APPLE_TEAM_ID`, `APPLE_KEY_ID`, and `APPLE_PRIVATE_KEY`
+   (`APPLE_TOKEN_KEY` is optional). Learners who signed in before this change
+   have no refresh token until their next Apple sign-in, so their older
+   sessions cannot be revoked.
 4. Resolve the existing Expo dependency warnings as a separate tested update.
    Expo Doctor flags SDK patch drift, the keyboard-controller version, and
    missing/New Architecture metadata for third-party native packages. No warnings
@@ -108,4 +117,6 @@ does not itself publish the app publicly.
 - [ML Kit language models](https://developers.google.com/ml-kit/vision/digital-ink-recognition/base-models)
 - [Expo SDK 57 Apple authentication](https://docs.expo.dev/versions/v57.0.0/sdk/apple-authentication/)
 - [Apple public signing keys](https://appleid.apple.com/auth/keys)
+- [Apple token exchange](https://developer.apple.com/documentation/signinwithapplerestapi/generate_and_validate_tokens)
+- [Apple token revocation](https://developer.apple.com/documentation/signinwithapplerestapi/revoke_tokens)
 - [Apple account deletion and token revocation](https://developer.apple.com/support/offering-account-deletion-in-your-app/)

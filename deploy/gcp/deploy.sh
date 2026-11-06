@@ -25,6 +25,17 @@
 #   APPLE_CLIENT_ID=...             optional — bundle ID and/or Services ID for
 #                                   /auth/apple (Guideline 4.8: mandatory if
 #                                   Google login is offered). Omit to disable.
+#   APPLE_TEAM_ID=...               Apple Developer team ID.
+#   APPLE_KEY_ID=...                Key ID of the "Sign in with Apple" .p8 key.
+#   APPLE_PRIVATE_KEY="..."         .p8 contents; quote it and use literal \n
+#                                   for newlines.
+#                                   TEAM_ID + KEY_ID + PRIVATE_KEY are required
+#                                   to revoke Apple's authorization on account
+#                                   deletion. Without them login still works but
+#                                   deletion cannot revoke Apple's token.
+#   APPLE_TOKEN_KEY=...             optional dedicated encryption secret for
+#                                   the stored Apple refresh token; falls back
+#                                   to COMMERCE_SIGNING_KEY, then the .p8 key.
 #   GEMINI_API_KEYS=key1,key2,key3  optional — free-tier Gemini keys, one per
 #                                   Google account (AI Studio), tried before paid
 #                                   Vertex (services/gemini_pool.py). Stored as the
@@ -155,6 +166,10 @@ declare -A SECRETS=(
   [admin-token]=ADMIN_TOKEN
   [google-client-id]=GOOGLE_CLIENT_ID
   [apple-client-id]=APPLE_CLIENT_ID
+  [apple-team-id]=APPLE_TEAM_ID
+  [apple-key-id]=APPLE_KEY_ID
+  [apple-private-key]=APPLE_PRIVATE_KEY
+  [apple-token-key]=APPLE_TOKEN_KEY
   [gemini-api-keys]=GEMINI_API_KEYS
   [stream-api-key]=STREAM_API_KEY
   [stream-api-secret]=STREAM_API_SECRET

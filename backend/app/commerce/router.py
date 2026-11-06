@@ -231,6 +231,9 @@ def decrypt_proof(value):
 class LinkBody(BaseModel):
     provider: Literal["google", "apple"]
     id_token: str = Field(min_length=20, max_length=20000)
+    # Apple only: the one-time code from this authorization, exchanged for a
+    # refresh token so account deletion can revoke it.
+    authorization_code: str | None = Field(None, max_length=4096)
 
 
 @router.post("/accounts/link")
@@ -248,6 +251,11 @@ def link_account(body: LinkBody, learner: Learner = Depends(require_learner), db
         raise HTTPException(409, "This sign-in is already attached to another account. Sign in to that account; contact support before merging purchases.")
     svc.lock_wallet(db, learner.id)
     setattr(learner, body.provider + "_sub", payload["sub"])
+    if body.provider == "apple" and body.authorization_code:
+        from app.services import apple_signin
+        encrypted = apple_signin.authorization_for_code(body.authorization_code, payload)
+        if encrypted:
+            learner.apple_refresh_token = encrypted
     db.commit()
     return {"ok": True}
 

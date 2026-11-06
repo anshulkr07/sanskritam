@@ -121,3 +121,7 @@ def test_deploy_script_provisions_audio_bucket():
     # Apple sign-in secret must ship wherever Google's does (Guideline 4.8).
     assert "APPLE_CLIENT_ID" in text
     assert "apple-client-id" in text
+    # Revocation needs the .p8 key, not just the client ID.
+    assert "APPLE_TEAM_ID" in text and "apple-team-id" in text
+    assert "APPLE_KEY_ID" in text and "apple-key-id" in text
+    assert "APPLE_PRIVATE_KEY" in text and "apple-private-key" in text

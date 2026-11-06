@@ -1,18 +1,31 @@
-"""Retryable third-party account erasure; no names, content or access tokens."""
+"""Retryable third-party account erasure; no names, content or plaintext tokens."""
 import logging
 from app.models import ProviderDeletion
-from app.services import community_audio
+from app.services import apple_signin, community_audio
 
 logger = logging.getLogger("shabd.safety")
+
 
 def enqueue_stream(db, uid):
     if not db.get(ProviderDeletion, ("stream", uid)):
         db.add(ProviderDeletion(provider="stream", subject=uid))
 
-def process(db, limit=20):
+
+def enqueue_apple(db, uid, encrypted_authorization):
+    """Queue Apple revocation before the learner row (and its token) is deleted."""
+    if not encrypted_authorization:
+        return
+    task = db.get(ProviderDeletion, ("apple", uid))
+    if task is None:
+        db.add(ProviderDeletion(
+            provider="apple", subject=uid, secret=encrypted_authorization,
+        ))
+    else:
+        task.secret = encrypted_authorization
+
+
+def _process_stream(db, limit):
     done = 0
-    if not community_audio.enabled():
-        return {"completed": 0, "pending": db.query(ProviderDeletion).count()}
     for task in db.query(ProviderDeletion).filter_by(provider="stream").order_by(ProviderDeletion.created_at).limit(limit).all():
         try:
             client = community_audio.client()
@@ -32,4 +45,36 @@ def process(db, limit=20):
         except Exception:
             db.rollback()
             logger.error("provider_deletion_retry_required provider=stream")
+    return done
+
+
+def _process_apple(db, limit):
+    done = 0
+    for task in db.query(ProviderDeletion).filter_by(provider="apple").order_by(ProviderDeletion.created_at).limit(limit).all():
+        authorization = apple_signin.decrypt_authorization(task.secret)
+        if authorization is None:
+            # Keep the row: deleting it would silently turn a key-rotation
+            # mistake into an unrevoked Apple authorization. The pending count
+            # and this log are the signal to restore the right key.
+            logger.error("provider_deletion_apple_unreadable_token")
+            continue
+        try:
+            if apple_signin.revoke_refresh_token(*authorization):
+                db.delete(task)
+                db.commit()
+                done += 1
+            else:
+                logger.error("provider_deletion_retry_required provider=apple")
+        except Exception:
+            db.rollback()
+            logger.error("provider_deletion_retry_required provider=apple")
+    return done
+
+
+def process(db, limit=20):
+    """Retry each provider independently; one being off must not block another."""
+    done = 0
+    if community_audio.enabled():
+        done += _process_stream(db, limit)
+    done += _process_apple(db, limit)
     return {"completed": done, "pending": db.query(ProviderDeletion).count()}

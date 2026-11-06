@@ -147,7 +147,11 @@ export default function LoginScreen() {
       const given = credential.fullName?.givenName?.trim() ?? "";
       const family = credential.fullName?.familyName?.trim() ?? "";
       const name = `${given} ${family}`.trim() || undefined;
-      await appleLogin(credential.identityToken, name);
+      await appleLogin(
+        credential.identityToken,
+        credential.authorizationCode ?? undefined,
+        name,
+      );
       await finishOnboarding();
     } catch (e) {
       if ((e as { code?: string }).code !== "ERR_REQUEST_CANCELED") {

@@ -63,6 +63,10 @@ class Learner(Base):
     # Unique — one Apple account maps to one learner (App Store Guideline 4.8
     # requires Apple sign-in wherever Google sign-in is offered).
     apple_sub = Column(String(64), unique=True, nullable=True, index=True)
+    # Apple refresh token + the client ID that minted it, encrypted by
+    # services/apple_signin.py. Needed only to revoke Apple's authorization
+    # when the account is deleted; the identity token alone cannot be revoked.
+    apple_refresh_token = Column(Text, nullable=True)
     deleted_at = Column(DateTime, nullable=True)  # soft-delete marker (replaced by hard-delete in P1-3, kept for migration compat)
     # Effective ratio the system uses (drifts within the user's ceiling)
     sanskrit_ratio = Column(Float, default=0.3)
@@ -1164,11 +1168,17 @@ class SafetyBlock(Base):
 
 
 class ProviderDeletion(Base):
-    """Minimal outbox that survives account deletion until a provider confirms."""
+    """Minimal outbox that survives account deletion until a provider confirms.
+
+    ``secret`` is only used by the Apple revocation task: the encrypted
+    refresh token and client ID. It never holds names, content or an
+    unencrypted access token.
+    """
     __tablename__ = "provider_deletions"
     provider = Column(String(32), primary_key=True)
     subject = Column(String(64), primary_key=True)
     task_id = Column(String(128), default="")
+    secret = Column(Text, nullable=False, default="")
     created_at = Column(DateTime, default=_utcnow)
 
 

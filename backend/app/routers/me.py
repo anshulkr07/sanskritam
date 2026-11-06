@@ -21,6 +21,9 @@ router = APIRouter()
 
 class LinkIdentityBody(BaseModel):
     id_token: str = Field(min_length=20, max_length=16000)
+    # Apple only: the one-time code from this authorization, exchanged for a
+    # refresh token so deletion can revoke Apple's authorization later.
+    authorization_code: str | None = Field(None, max_length=4096)
 
 
 @router.post("/me/link/{provider}", response_model=MeResponse)
@@ -51,6 +54,13 @@ async def link_identity(provider: str, body: LinkIdentityBody,
     if existing and existing.id != learner.id:
         raise HTTPException(409, "This account already has a Sanskritam profile. Sign out in Settings and sign in to that account. These profiles cannot be merged automatically.")
     setattr(learner, field, claims["sub"])
+    if provider == "apple" and body.authorization_code:
+        from app.services import apple_signin
+        encrypted = await run_in_threadpool(
+            apple_signin.authorization_for_code, body.authorization_code, claims,
+        )
+        if encrypted:
+            learner.apple_refresh_token = encrypted
     try:
         db.commit()
     except IntegrityError:
@@ -291,6 +301,13 @@ def delete_me(
     from app.models import ConversationSession, ConversationTurn
     from app.services.quota import retain_deleted_spend
     retain_deleted_spend(db, learner.id)
+
+    # Move Apple's encrypted refresh token into the provider outbox before the
+    # learner row is removed. The outbox survives deletion and is retried by
+    # the scheduled administrator endpoint until Apple confirms.
+    if learner.apple_refresh_token:
+        from app.services.provider_deletion import enqueue_apple
+        enqueue_apple(db, learner.id, learner.apple_refresh_token)
 
     # Nullify escape log references first (aggregate metrics are about content)
     db.execute(
