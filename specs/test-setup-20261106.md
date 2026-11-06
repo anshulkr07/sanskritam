@@ -13,9 +13,10 @@
 ## 1. Staging backend (owner's choice, 2026-11-06)
 
 Staging is a second Cloud Run service, `shabd-api-staging`, in the same Google
-Cloud project. It uses production's image, settings, secrets and database, with
-purchases, plans and test ads switched on (`deploy/gcp/staging_spec.py`). Only
-the staging app build points at it.
+Cloud project. It uses production's image and database, with purchases, plans
+and test ads switched on (`deploy/gcp/staging_spec.py`). Staging connects through
+Supabase's transaction pooler on port 6543 to leave the session pool available
+to production. Only the staging app build points at this service.
 
 The backend upgrades its database every time it starts, and both services share
 production's database. So the order is always:
@@ -29,7 +30,7 @@ Any change to the database's structure goes to production (switched off) before
 staging.
 
 Cost stays low. Staging has no build of its own, scales to zero, runs at most
-one instance and has no scheduler jobs, and its daily AI caps are ₹100 for
+three instances and has no scheduler jobs, and its daily AI caps are ₹100 for
 speech and $0.50 for Gemini.
 
 Test purchases land in production's database under the tester's own account,

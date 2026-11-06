@@ -46,7 +46,7 @@ fi
 WORK=$(mktemp -d)
 trap 'rm -rf -- "$WORK"' EXIT
 gcloud run services describe "$PROD" --project="$PROJECT_ID" --region="$REGION" --format=json > "$WORK/prod.json"
-python3 deploy/gcp/staging_spec.py < "$WORK/prod.json" > "$WORK/staging.yaml"
+python3 deploy/gcp/staging_spec.py "$PROJECT_ID" < "$WORK/prod.json" > "$WORK/staging.yaml"
 rm -f "$WORK/prod.json"
 gcloud run services replace "$WORK/staging.yaml" --project="$PROJECT_ID" --region="$REGION" >/dev/null
 gcloud run services add-iam-policy-binding "$STAGING" --project="$PROJECT_ID" --region="$REGION" \

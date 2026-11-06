@@ -8,6 +8,7 @@ the same image, settings, secrets and database as production, with
 - purchases, plans and test ads switched on;
 - lower shared AI caps;
 - staging's own signing key and Play service-account key;
+- the same database via Supabase's transaction pooler;
 - scale to zero (idle costs nothing), at most three instances. With one,
   Cloud Run once took ten minutes to start a replacement after an idle
   shutdown and refused the app's requests meanwhile (2026-11-06).
@@ -17,9 +18,15 @@ keeps both files out of logs and deletes them afterwards.
 """
 import json
 import os
+import shutil
+import subprocess
 import sys
+from urllib.parse import urlsplit
+
+from sync_secret import sync_secret
 
 STAGING = "shabd-api-staging"
+DATABASE_SECRET = "shabd-staging-database-url"
 FLAGS = {
     "COMMERCE_ENABLED": "true",
     "COMMERCE_HYBRID_ENABLED": "true",
@@ -33,7 +40,29 @@ FLAGS = {
 KEEP_ANNOTATIONS = {"run.googleapis.com/ingress", "run.googleapis.com/launch-stage"}
 
 
-def staging(service):
+def transaction_pooler_url(url: str) -> str:
+    parsed = urlsplit(url.strip())
+    if (parsed.scheme not in {"postgres", "postgresql"}
+            or not (parsed.hostname or "").endswith(".pooler.supabase.com")
+            or parsed.port not in {5432, 6543}):
+        raise ValueError("Expected a Supabase shared-pooler database URL.")
+    authority = parsed.netloc.rsplit(":", 1)[0]
+    return parsed._replace(netloc=f"{authority}:6543").geturl()
+
+
+def staging_database_version(service, project):
+    env = service["spec"]["template"]["spec"]["containers"][0]["env"]
+    ref = next(item["valueFrom"]["secretKeyRef"] for item in env if item["name"] == "DATABASE_URL")
+    source = subprocess.run(
+        [shutil.which("gcloud") or "gcloud", "secrets", "versions", "access", ref["key"],
+         f"--secret={ref['name']}", f"--project={project}"],
+        capture_output=True, check=True, timeout=120,
+    )
+    url = transaction_pooler_url(source.stdout.decode("utf-8"))
+    return sync_secret(project, DATABASE_SECRET, url.encode("utf-8"))
+
+
+def staging(service, database_version):
     meta = service["metadata"]
     out = {
         "apiVersion": service["apiVersion"],
@@ -55,8 +84,11 @@ def staging(service):
     template_meta["labels"] = {}
 
     container = template["spec"]["containers"][0]
-    env = [e for e in container.get("env", []) if e["name"] not in FLAGS and e["name"] != "COMMERCE_SIGNING_KEY"]
+    staging_env_names = FLAGS.keys() | {"COMMERCE_SIGNING_KEY", "DATABASE_URL"}
+    env = [e for e in container.get("env", []) if e["name"] not in staging_env_names]
     env += [{"name": k, "value": v} for k, v in FLAGS.items()]
+    env.append({"name": "DATABASE_URL",
+                "valueFrom": {"secretKeyRef": {"name": DATABASE_SECRET, "key": database_version}}})
     # Staging's own owner key (its SHA-256, from deploy-staging.sh): marks books
     # paid and sets commerce settings such as media_origins, without
     # production's admin token. The database is shared, so its writes are real.
@@ -75,4 +107,9 @@ def staging(service):
 
 
 if __name__ == "__main__":
-    json.dump(staging(json.load(sys.stdin)), sys.stdout, indent=1)
+    service = json.load(sys.stdin)
+    try:
+        database_version = staging_database_version(service, sys.argv[1])
+    except Exception:
+        sys.exit("Could not configure staging's transaction-pooler database secret.")
+    json.dump(staging(service, database_version), sys.stdout, indent=1)
